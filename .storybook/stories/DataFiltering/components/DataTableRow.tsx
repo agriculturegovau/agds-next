@@ -4,7 +4,7 @@ import { TableCell } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { useDataSelectionContext } from '../lib/contexts';
+import { useSortAndFilterContext } from '../lib/contexts';
 
 export const DataTableRowAssignee = ({
 	assignee,
@@ -33,7 +33,7 @@ export const DataTableRowCheckbox = ({
 	itemId: string;
 	businessName: string;
 }) => {
-	const { isRowSelected, toggleRowSelected } = useDataSelectionContext();
+	const { isRowSelected, toggleRowSelected } = useSortAndFilterContext();
 	return (
 		<TableCell>
 			<Checkbox

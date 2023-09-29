@@ -35,9 +35,10 @@ export const useSortAndFilter = (
 			...defaultFilters,
 			...args.filters,
 		},
+		selection: [],
 	});
 
-	const { sort, filters, pagination } = state;
+	const { sort, filters, pagination, selection } = state;
 
 	function setSort(sort: GetDataSort) {
 		dispatch({
@@ -45,9 +46,7 @@ export const useSortAndFilter = (
 			payload: sort,
 		});
 
-		dispatch({
-			type: 'RESET_PAGINATION',
-		});
+		dispatch({ type: 'RESET_PAGINATION' });
 	}
 
 	function setPagination(pagination: GetDataPagination) {
@@ -55,6 +54,7 @@ export const useSortAndFilter = (
 			type: 'SET_PAGINATION',
 			payload: pagination,
 		});
+		dispatch({ type: 'CLEAR_SELECTION' });
 	}
 
 	function setFilter(filters: Partial<GetDataFilters>) {
@@ -62,10 +62,8 @@ export const useSortAndFilter = (
 			type: 'SET_FILTER',
 			payload: filters,
 		});
-
-		dispatch({
-			type: 'RESET_PAGINATION',
-		});
+		dispatch({ type: 'RESET_PAGINATION' });
+		dispatch({ type: 'CLEAR_SELECTION' });
 	}
 
 	function setFilters(filters: GetDataFilters) {
@@ -73,15 +71,18 @@ export const useSortAndFilter = (
 			type: 'SET_FILTERS',
 			payload: filters,
 		});
-
-		dispatch({
-			type: 'RESET_PAGINATION',
-		});
+		dispatch({ type: 'RESET_PAGINATION' });
+		dispatch({ type: 'CLEAR_SELECTION' });
 	}
 
 	function resetFilters() {
 		dispatch({ type: 'RESET_FILTERS' });
 		dispatch({ type: 'RESET_PAGINATION' });
+		dispatch({ type: 'CLEAR_SELECTION' });
+	}
+
+	function isRowSelected(rowId: string) {
+		return selection.some((sId) => sId === rowId);
 	}
 
 	function removeFilter(key: keyof GetDataFilters) {
@@ -89,9 +90,27 @@ export const useSortAndFilter = (
 			type: 'REMOVE_FILTER',
 			payload: key,
 		});
+		dispatch({ type: 'RESET_PAGINATION' });
+		dispatch({ type: 'CLEAR_SELECTION' });
+	}
 
+	function toggleRowSelected(rowId: string) {
 		dispatch({
-			type: 'RESET_PAGINATION',
+			type: 'TOGGLE_ROW',
+			payload: rowId,
+		});
+	}
+
+	function selectRows(rowIds: string[]) {
+		dispatch({
+			type: 'SELECT_ROWS',
+			payload: rowIds,
+		});
+	}
+
+	function clearRowSelections() {
+		dispatch({
+			type: 'CLEAR_SELECTION',
 		});
 	}
 
@@ -108,6 +127,12 @@ export const useSortAndFilter = (
 		// pagination
 		pagination,
 		setPagination,
+		// selection
+		selection,
+		isRowSelected,
+		toggleRowSelected,
+		selectRows,
+		clearRowSelections,
 	};
 };
 
@@ -115,6 +140,7 @@ type SortFilterState = {
 	sort: GetDataSort;
 	filters: GetDataFilters;
 	pagination: GetDataPagination;
+	selection: string[];
 };
 
 type SortFilterReducerAction =
@@ -124,7 +150,10 @@ type SortFilterReducerAction =
 	| { type: 'REMOVE_FILTER'; payload: keyof GetDataFilters }
 	| { type: 'RESET_FILTERS' }
 	| { type: 'SET_PAGINATION'; payload: GetDataPagination }
-	| { type: 'RESET_PAGINATION' };
+	| { type: 'RESET_PAGINATION' }
+	| { type: 'TOGGLE_ROW'; payload: string }
+	| { type: 'SELECT_ROWS'; payload: string[] }
+	| { type: 'CLEAR_SELECTION' };
 
 export function sortFilterReducer(
 	state: SortFilterState,
@@ -178,6 +207,33 @@ export function sortFilterReducer(
 					page: 1,
 				},
 			};
+
+		case 'TOGGLE_ROW':
+			if (state.selection.includes(action.payload)) {
+				return {
+					...state,
+					selection: state.selection.filter((s) => s !== action.payload),
+				};
+			} else {
+				return {
+					...state,
+					selection: [...state.selection, action.payload],
+				};
+			}
+
+		case 'SELECT_ROWS':
+			// No rows are selected, so select all of them
+			return {
+				...state,
+				selection: action.payload,
+			};
+
+		case 'CLEAR_SELECTION':
+			return {
+				...state,
+				selection: [],
+			};
+
 		default:
 			return state;
 	}
