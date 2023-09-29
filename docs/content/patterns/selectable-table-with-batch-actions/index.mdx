@@ -125,15 +125,15 @@ The "Select all rows" checkbox should always be placed just above the Table elem
 
 ## Batch actions
 
-When one or more rows in a table are selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same inline action across multiple table items.
+When one or more rows in a table are selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same action across multiple table rows.
 
 [View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
 
 Once a row from the table has been selected, the `TableBatchActionsBar` component appears at the bottom of the table, presenting a set of possible actions to apply to all selected items.
 
-Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component which trigger. These buttons should trigger actions that open up [Drawers](/components/drawer). Drawers should contain the forms structured and focused manner. These buttons should be applicable for every row in the Table. If bulk actions can not be performed on every selectable row, do not include the action in the Bar.
+Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. Do not place form components inside the `TableBatchActionsBar` component, as they can introduce complexity related to validation and submission.
 
-Do not place form components inside the `TableBatchActionsBar` component, as they can introduce complexity related to validation and submission.
+Action buttons should trigger [Drawers](/components/drawer) when pressed, which should contain the form related for each button. Each action button should be applicable for every row in the Table. If certain actions can not be performed on every selectable row, do not include this action in the `TableBatchActionsBar`.
 
 ```jsx live
 () => {
