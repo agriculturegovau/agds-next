@@ -1,0 +1,224 @@
+---
+title: Selectable tables with batch actions
+description: Selectable Tables allow users to select one or more rows in a table simultaneously to perform batch actions against selected items.
+relatedComponents: ['table', 'checkbox', 'button', 'drawer']
+---
+
+## Selectable tables
+
+Selectable [Tables](/components/table) allow users to select one or more rows in a table simultaneously.
+
+[View basic Storybook demo](/storybook/TODO)
+
+### Individual row select
+
+To select an individual row, users can use the [Checkbox](/components/checkbox) in the first column ("Select") to toggle the selection of an individual row. Checkboxes in each rows have only two states, checked and unchecked.
+
+```jsx live
+() => {
+	const [isRowSelected, setIsRowSelected] = useState(false);
+	return (
+		<Table>
+			<TableHead>
+				<TableRow>
+					<TableHeader scope="col">Select</TableHeader>
+					<TableHeader scope="col">Example Column</TableHeader>
+					<TableHeader scope="col">Example Column</TableHeader>
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				<TableRow selected={isRowSelected}>
+					<TableCell>
+						<Checkbox
+							size="sm"
+							checked={isRowSelected}
+							onChange={() => setIsRowSelected((x) => !x)}
+						>
+							<VisuallyHidden>Select row</VisuallyHidden>
+						</Checkbox>
+					</TableCell>
+					<TableCell>Example Row</TableCell>
+					<TableCell>Example Row</TableCell>
+				</TableRow>
+			</TableBody>
+		</Table>
+	);
+};
+```
+
+### Selecting all rows
+
+Users can toggle the selection of all rows at once by togging the [Checkbox](/components/checkbox) above the table. Unlike the Checkboxes in each row, the "Select all rows" checkbox above the table has three states: check, unchecked, and indeterminate.
+
+When some, but not all, rows are selected, the "Select all rows" checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
+
+```jsx live
+() => {
+	const [selectedRows, setSelectedRows] = useState([]);
+
+	function toggleRowSelection(rowIdx) {
+		if (selectedRows.includes(rowIdx)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+		} else {
+			setSelectedRows((r) => [...r, rowIdx]);
+		}
+	}
+
+	const anyRowsChecked = selectedRows.length > 0;
+	const allRowsChecked = selectedRows.length === 3;
+
+	function toggleAllRows() {
+		if (anyRowsChecked) {
+			setSelectedRows([]);
+		} else {
+			setSelectedRows([0, 1, 2]);
+		}
+	}
+
+	return (
+		<Stack>
+			<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+				<Checkbox
+					size="sm"
+					checked={allRowsChecked}
+					indeterminate={anyRowsChecked && !allRowsChecked}
+					onChange={() => toggleAllRows()}
+				>
+					Select all rows
+				</Checkbox>
+			</Box>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Select</TableHeader>
+						<TableHeader scope="col">Example Column</TableHeader>
+						<TableHeader scope="col">Example Column</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{Array.from(new Array(3).keys()).map((idx) => {
+						const isRowSelected = selectedRows.includes(idx);
+						return (
+							<TableRow selected={isRowSelected}>
+								<TableCell>
+									<Checkbox
+										size="sm"
+										checked={isRowSelected}
+										onChange={() => toggleRowSelection(idx)}
+									>
+										<VisuallyHidden>Select</VisuallyHidden>
+									</Checkbox>
+								</TableCell>
+								<TableCell>Example Row {idx + 1}</TableCell>
+								<TableCell>Example Row</TableCell>
+							</TableRow>
+						);
+					})}
+				</TableBody>
+			</Table>
+		</Stack>
+	);
+};
+```
+
+## Batch actions
+
+When one or more rows in a table is selected, users can can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repetitively performing the same inline action across multiple table items.
+
+[View basic Storybook demo](/storybook/TODO)
+
+Once a row from the table has been selected, the `TableBatchActionsBar` component appears at the bottom of the table, presenting a set of possible actions to apply to all selected items.
+
+<DoHeading />
+
+- always place [Button](/components/button) components to trigger actions that open up [Drawers](/components/drawer) which contain the forms structured and focused manner.
+
+<DontHeading />
+
+- place form components inside of the `TableBatchActionsBar` component, as they can introduce inconsistencies and complexity related to validation and submission.
+
+```jsx live
+() => {
+	const [selectedRows, setSelectedRows] = useState([]);
+
+	function toggleRowSelection(rowIdx) {
+		if (selectedRows.includes(rowIdx)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+		} else {
+			setSelectedRows((r) => [...r, rowIdx]);
+		}
+	}
+
+	const anyRowsChecked = selectedRows.length > 0;
+	const allRowsChecked = selectedRows.length === 3;
+
+	function toggleAllRows() {
+		if (anyRowsChecked) {
+			setSelectedRows([]);
+		} else {
+			setSelectedRows([0, 1, 2]);
+		}
+	}
+
+	return (
+		<Stack gap={0.5}>
+			<Stack>
+				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+					<Checkbox
+						size="sm"
+						checked={allRowsChecked}
+						indeterminate={anyRowsChecked && !allRowsChecked}
+						onChange={() => toggleAllRows()}
+					>
+						Select all rows
+					</Checkbox>
+				</Box>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableHeader scope="col">Select</TableHeader>
+							<TableHeader scope="col">Example Column</TableHeader>
+							<TableHeader scope="col">Example Column</TableHeader>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{Array.from(new Array(3).keys()).map((idx) => {
+							const isRowSelected = selectedRows.includes(idx);
+							return (
+								<TableRow selected={isRowSelected}>
+									<TableCell>
+										<Checkbox
+											size="sm"
+											checked={isRowSelected}
+											onChange={() => toggleRowSelection(idx)}
+										>
+											<VisuallyHidden>Select</VisuallyHidden>
+										</Checkbox>
+									</TableCell>
+									<TableCell>Example Row {idx + 1}</TableCell>
+									<TableCell>Example Row</TableCell>
+								</TableRow>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</Stack>
+			{selectedRows.length > 0 ? (
+				<TableBatchActionsBar>
+					<TableBatchActionsTitle>
+						Apply action to {selectedRows.length} items
+					</TableBatchActionsTitle>
+					<ButtonGroup>
+						<Button variant="secondary" size="sm">
+							Example action
+						</Button>
+						<Button variant="tertiary" size="sm">
+							Delete
+						</Button>
+					</ButtonGroup>
+				</TableBatchActionsBar>
+			) : null}
+		</Stack>
+	);
+};
+```

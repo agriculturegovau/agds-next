@@ -4,7 +4,7 @@ import { AppLayout } from '../../../docs/content/templates/__shared/AppLayout';
 import { PageTitle } from '../../../docs/components/PageTitle';
 import { TableSelectable } from './TableSelectable';
 
-export function TableBatchActions({
+export function TableBatchActionsBar({
 	background,
 }: {
 	background: 'body' | 'bodyAlt';

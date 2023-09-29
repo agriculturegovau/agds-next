@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { TableBatchActions } from './TableBatchActions';
+import { TableBatchActionsBar } from './TableBatchActionsBar';
 
 const meta: Meta = {
 	title: 'content/Table/Batch actions',
@@ -11,9 +11,9 @@ const meta: Meta = {
 export default meta;
 
 export function BodyBackground() {
-	return <TableBatchActions background="body" />;
+	return <TableBatchActionsBar background="body" />;
 }
 
 export function BodyAltBackground() {
-	return <TableBatchActions background="bodyAlt" />;
+	return <TableBatchActionsBar background="bodyAlt" />;
 }

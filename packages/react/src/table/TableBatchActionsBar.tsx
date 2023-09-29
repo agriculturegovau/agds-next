@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 
 export type TableBatchActionsProps = PropsWithChildren<{}>;
 
-export function TableBatchActions({ children }: TableBatchActionsProps) {
+export function TableBatchActionsBar({ children }: TableBatchActionsProps) {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isStuck, setIsSticky] = useState(false);
 

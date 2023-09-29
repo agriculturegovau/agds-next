@@ -2,18 +2,18 @@ import { Fragment, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
-	TableBatchActions,
 	TableBody,
 	TableCell,
 	TableHead,
 	TableHeader,
 	TableRow,
 	TableWrapper,
+	TableBatchActionsBar,
+	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { H2, Heading } from '@ag.ds-next/react/heading';
-import { Text } from '@ag.ds-next/react/text';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Box } from '@ag.ds-next/react/box';
@@ -151,16 +151,11 @@ export function TableSelectable() {
 										</Table>
 									</TableWrapper>
 									{hasSelections && (
-										<TableBatchActions>
-											<Text
-												as="h3"
-												fontSize="md"
-												fontWeight="bold"
-												lineHeight="heading"
-											>
+										<TableBatchActionsBar>
+											<TableBatchActionsTitle>
 												Apply action to {selectedItems.length}{' '}
 												{plural(selectedItems.length, 'item', 'items')}
-											</Text>
+											</TableBatchActionsTitle>
 											<ButtonGroup>
 												<Button
 													variant="secondary"
@@ -177,7 +172,7 @@ export function TableSelectable() {
 													Delete
 												</Button>
 											</ButtonGroup>
-										</TableBatchActions>
+										</TableBatchActionsBar>
 									)}
 								</Stack>
 								<PaginationButtons
