@@ -13,6 +13,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
+import { PageContent } from '@ag.ds-next/react/content';
 import { H2, Heading } from '@ag.ds-next/react/heading';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
@@ -23,13 +24,8 @@ import { EXAMPLE_DATA, plural, RowData } from './utils';
 import { useRowSelection } from './useRowSelection';
 import { useNotification } from './useNotification';
 import { TableFilters } from './TableFilters';
-// import {
-// 	Box,
-// 	SearchInput,
-// 	Select,
-// } from '../../../docs/components/designSystemComponents';
 
-export function TableSelectable() {
+export function SelectableTableBatchActions() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [data, setData] = useState(EXAMPLE_DATA);
 
@@ -97,7 +93,7 @@ export function TableSelectable() {
 	}
 
 	return (
-		<Fragment>
+		<PageContent>
 			<Stack gap={1.5}>
 				<H2 id="certificates-heading">Certificates</H2>
 				<Stack gap={1}>
@@ -136,7 +132,7 @@ export function TableSelectable() {
 											</TableHead>
 											<TableBody>
 												{paginatedData.map((row) => (
-													<TableSelectableRow
+													<Row
 														key={row.id}
 														item={row}
 														isRowSelected={isRowSelected(row)}
@@ -200,11 +196,11 @@ export function TableSelectable() {
 				onDismiss={() => setModalAddTrackingOpen(false)}
 				onConfirm={addTrackingNumber}
 			/>
-		</Fragment>
+		</PageContent>
 	);
 }
 
-type TableSelectableRowProps = {
+type RowProps = {
 	item: RowData;
 	isRowSelected: boolean;
 	onRowSelectToggle: () => void;
@@ -212,13 +208,13 @@ type TableSelectableRowProps = {
 	addTrackingNumber: () => void;
 };
 
-function TableSelectableRow({
+function Row({
 	item,
 	isRowSelected,
 	onRowSelectToggle,
 	deleteRow,
 	addTrackingNumber,
-}: TableSelectableRowProps) {
+}: RowProps) {
 	const { certNumber, exporter, status, amount } = item;
 
 	const [deleteModalOpen, setDeleteModalOpen] = useState(false);

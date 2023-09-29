@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
-import { tokens } from '@ag.ds-next/react/core';
 
 export type PageTitleProps = {
 	pretext?: ReactNode;
@@ -32,12 +31,7 @@ export const PageTitle = ({
 			<H1>{title}</H1>
 		</Stack>
 		{introduction ? (
-			<Text
-				as="p"
-				fontSize="md"
-				color="muted"
-				maxWidth={tokens.maxWidth.bodyText}
-			>
+			<Text as="p" fontSize="md" color="muted">
 				{introduction}
 			</Text>
 		) : null}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { SelectableTableBatchActions } from '../../../../.storybook/stories/SelectableTableBatchActions/SelectableTableBatchActions';
 import { Checkbox } from '../checkbox';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
@@ -376,6 +377,10 @@ export const SelectableBasic: Story = {
 			</Stack>
 		);
 	},
+};
+
+export const SelectableWithBatchActions: Story = {
+	render: SelectableTableBatchActions,
 };
 
 const exampleData = [

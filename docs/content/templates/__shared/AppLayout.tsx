@@ -18,7 +18,6 @@ import { LinkList } from '@ag.ds-next/react/link-list';
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
 	applyMainElement?: boolean;
-	background?: 'body' | 'bodyAlt';
 }>;
 
 const sidebarLinks = [
@@ -53,7 +52,6 @@ const MAIN_CONTENT_ATTRS = {
 };
 
 export const AppLayout = ({
-	background,
 	children,
 	focusMode = false,
 	applyMainElement = true,
@@ -64,40 +62,38 @@ export const AppLayout = ({
 			<SkipLinks
 				links={[{ href: '#main-content', label: 'Skip to main content' }]}
 			/>
-			<Box background={background}>
-				<AgDsAppLayout focusMode={focusMode}>
-					<AppLayoutHeader
-						heading="Service name"
-						subLine="Service description that could be a little longer"
-						logo={<Logo />}
-						href="#"
-					/>
-					<AppLayoutSidebar items={sidebarLinks} />
-					<AppLayoutContent>
-						<Box
-							flexGrow={1}
-							{...(applyMainElement ? MAIN_CONTENT_ATTRS : undefined)}
-						>
-							{children}
-						</Box>
-						<AppLayoutFooter>
-							<nav aria-label="footer">
-								<LinkList links={footerLinks} horizontal />
-							</nav>
-							<AppLayoutFooterDivider />
-							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-								We acknowledge the traditional owners of country throughout
-								Australia and recognise their continuing connection to land,
-								waters and culture. We pay our respects to their Elders past,
-								present and emerging.
-							</Text>
-							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-								&copy; {year} Department of Agriculture, Fisheries and Forestry
-							</Text>
-						</AppLayoutFooter>
-					</AppLayoutContent>
-				</AgDsAppLayout>
-			</Box>
+			<AgDsAppLayout focusMode={focusMode}>
+				<AppLayoutHeader
+					heading="Service name"
+					subLine="Service description that could be a little longer"
+					logo={<Logo />}
+					href="#"
+				/>
+				<AppLayoutSidebar items={sidebarLinks} />
+				<AppLayoutContent>
+					<Box
+						flexGrow={1}
+						{...(applyMainElement ? MAIN_CONTENT_ATTRS : undefined)}
+					>
+						{children}
+					</Box>
+					<AppLayoutFooter>
+						<nav aria-label="footer">
+							<LinkList links={footerLinks} horizontal />
+						</nav>
+						<AppLayoutFooterDivider />
+						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+							We acknowledge the traditional owners of country throughout
+							Australia and recognise their continuing connection to land,
+							waters and culture. We pay our respects to their Elders past,
+							present and emerging.
+						</Text>
+						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+							&copy; {year} Department of Agriculture, Fisheries and Forestry
+						</Text>
+					</AppLayoutFooter>
+				</AppLayoutContent>
+			</AgDsAppLayout>
 		</Fragment>
 	);
 };

@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
 export const TableWrapper = ({ children }: { children: ReactNode }) => {
-	return (
-		<div css={{ position: 'relative', overflowX: 'auto' }}>{children}</div>
-	);
+	return <div css={{ overflowX: 'auto' }}>{children}</div>;
 };

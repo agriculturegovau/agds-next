@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { Text } from '@ag.ds-next/react/text';
 import { Modal } from '@ag.ds-next/react/modal';
-import { RowData } from './utils';
+import { plural, RowData } from './utils';
 
 export type ModalConfirmDeleteProps = {
 	isOpen: boolean;
@@ -30,8 +30,10 @@ export function ModalConfirmDelete({
 	const { title, description } = useMemo(() => {
 		if (Array.isArray(itemsToDelete)) {
 			return {
-				title: `Are you sure you want to delete ${itemsToDelete.length} certificates?`,
-				description: `These certificates will be deleted immediately. You can not undo this action.`,
+				title: `Are you sure you want to delete ${
+					itemsToDelete.length
+				} ${plural(itemsToDelete.length, 'certificate', 'certificates')}?`,
+				description: `Certificates will be deleted immediately. You can not undo this action.`,
 			};
 		}
 		return {

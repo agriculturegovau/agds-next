@@ -3,7 +3,7 @@ import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { FilterDrawer } from '@ag.ds-next/react/filter-drawer';
+import { Drawer } from '@ag.ds-next/react/drawer';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 
 export type ModalAddTrackingNumberProps = {
@@ -29,7 +29,7 @@ export function ModalAddTrackingNumber({
 	}
 
 	return (
-		<FilterDrawer
+		<Drawer
 			isOpen={isOpen}
 			onDismiss={onDismiss}
 			title="Add tracking number"
@@ -64,6 +64,6 @@ export function ModalAddTrackingNumber({
 					block
 				/>
 			</FormStack>
-		</FilterDrawer>
+		</Drawer>
 	);
 }

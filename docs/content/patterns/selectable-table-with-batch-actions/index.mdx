@@ -1,6 +1,6 @@
 ---
 title: Selectable tables with batch actions
-description: Selectable Tables allow users to select one or more rows in a table simultaneously to perform batch actions against selected items.
+description: Selectable tables allow users to select one or more rows simultaneously and perform batch actions against the selected items.
 relatedComponents: ['table', 'checkbox', 'button', 'drawer']
 ---
 
@@ -8,11 +8,11 @@ relatedComponents: ['table', 'checkbox', 'button', 'drawer']
 
 Selectable [Tables](/components/table) allow users to select one or more rows in a table simultaneously.
 
-[View basic Storybook demo](/storybook/TODO)
+[View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-basic)
 
 ### Individual row select
 
-To select an individual row, users can use the [Checkbox](/components/checkbox) in the first column ("Select") to toggle the selection of an individual row. Checkboxes in each rows have only two states, checked and unchecked.
+To select an individual row, users can use the [Checkbox](/components/checkbox) in the first column ("Select") to toggle the selection of an individual row. Checkboxes in each row have only two states: checked and unchecked.
 
 ```jsx live
 () => {
@@ -48,9 +48,11 @@ To select an individual row, users can use the [Checkbox](/components/checkbox) 
 
 ### Selecting all rows
 
-Users can toggle the selection of all rows at once by togging the [Checkbox](/components/checkbox) above the table. Unlike the Checkboxes in each row, the "Select all rows" checkbox above the table has three states: check, unchecked, and indeterminate.
+Users can toggle the selection of all rows at once by toggling the [Checkbox](/components/checkbox) above the table. Unlike the Checkboxes in each row, the "Select all rows" checkbox above the table has three states: checked, unchecked, and indeterminate.
 
 When some, but not all, rows are selected, the "Select all rows" checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
+
+The "Select all rows" checkbox should always be placed just above the Table element, with a border to divide the two elements. Don't use `TableCaption` component as it will sit in between the Checkbox and Table. Instead, using a [Heading](/components/heading) component and connext the heading and table via using using `aria-labelledby`. For more information, please refer to the [Labels and headings](/components/table#labels-and-headings) section of the Table documentation.
 
 ```jsx live
 () => {
@@ -123,19 +125,15 @@ When some, but not all, rows are selected, the "Select all rows" checkbox should
 
 ## Batch actions
 
-When one or more rows in a table is selected, users can can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repetitively performing the same inline action across multiple table items.
+When one or more rows in a table are selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same inline action across multiple table items.
 
-[View basic Storybook demo](/storybook/TODO)
+[View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
 
 Once a row from the table has been selected, the `TableBatchActionsBar` component appears at the bottom of the table, presenting a set of possible actions to apply to all selected items.
 
-<DoHeading />
+Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component which trigger. These buttons should trigger actions that open up [Drawers](/components/drawer). Drawers should contain the forms structured and focused manner.
 
-- always place [Button](/components/button) components to trigger actions that open up [Drawers](/components/drawer) which contain the forms structured and focused manner.
-
-<DontHeading />
-
-- place form components inside of the `TableBatchActionsBar` component, as they can introduce inconsistencies and complexity related to validation and submission.
+Do not place form components inside the `TableBatchActionsBar` component, as they can introduce complexity related to validation and submission.
 
 ```jsx live
 () => {
