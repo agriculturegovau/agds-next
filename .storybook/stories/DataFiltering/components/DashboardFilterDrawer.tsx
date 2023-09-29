@@ -56,6 +56,10 @@ export const DashboardFilterDrawer = ({
 		setFormState(filters);
 	};
 
+	const mockSortAndFilterFunc = () => {
+		throw new Error('Not implemented');
+	};
+
 	return (
 		<SortAndFilterProvider
 			value={{
@@ -65,19 +69,16 @@ export const DashboardFilterDrawer = ({
 				setFilter: setLocalFilter,
 				// The rest of these won't be called in the filter drawer
 				sort: { field: 'requestDate', order: 'ASC' },
-				setSort: () => {
-					throw new Error('Not implemented');
-				},
-				removeFilter: () => {
-					throw new Error('Not implemented');
-				},
-				resetFilters: () => {
-					throw new Error('Not implemented');
-				},
+				setSort: mockSortAndFilterFunc,
+				removeFilter: mockSortAndFilterFunc,
+				resetFilters: mockSortAndFilterFunc,
 				pagination: { page: 1, perPage: 1 },
-				setPagination: () => {
-					throw new Error('Not implemented');
-				},
+				setPagination: mockSortAndFilterFunc,
+				selection: [],
+				isRowSelected: mockSortAndFilterFunc,
+				toggleRowSelected: mockSortAndFilterFunc,
+				selectRows: mockSortAndFilterFunc,
+				clearRowSelections: mockSortAndFilterFunc,
 			}}
 		>
 			<Drawer

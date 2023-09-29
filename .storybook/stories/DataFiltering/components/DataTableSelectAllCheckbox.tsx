@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { Box } from '@ag.ds-next/react/box';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
@@ -12,16 +11,14 @@ export const DataTableSelectAllCheckbox = () => {
 		isSelectAllCheckboxIndeterminate,
 	} = useSelectAllRows(data);
 	return (
-		<Box paddingLeft={0.75} paddingBottom={0.75} borderBottom>
-			<Checkbox
-				size="sm"
-				checked={isSelectAllCheckboxChecked}
-				indeterminate={isSelectAllCheckboxIndeterminate}
-				onChange={toggleAllRowsSelected}
-			>
-				Select all rows
-			</Checkbox>
-		</Box>
+		<Checkbox
+			size="sm"
+			checked={isSelectAllCheckboxChecked}
+			indeterminate={isSelectAllCheckboxIndeterminate}
+			onChange={toggleAllRowsSelected}
+		>
+			Select all rows
+		</Checkbox>
 	);
 };
 

@@ -1,7 +1,6 @@
 import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
 import { useToggleState } from '@ag.ds-next/react/core';
 import {
 	ChevronDownIcon,
@@ -9,7 +8,6 @@ import {
 	FilterIcon,
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
-import { Prose } from '@ag.ds-next/react/prose';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
@@ -22,8 +20,13 @@ import {
 	FilterRegion,
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
+import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
 
-export const TableFilteringMedium = () => {
+export const TableFilteringMedium = ({
+	selectable,
+}: {
+	selectable?: boolean;
+}) => {
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	// IDs for accordion to ensure accessibility
@@ -31,23 +34,14 @@ export const TableFilteringMedium = () => {
 	const bodyId = 'filter-body';
 
 	return (
-		<PageContent>
-			<Stack gap={2}>
-				<Prose>
-					<h1>Table Filtering (Medium)</h1>
-					<p>
-						The medium filtering pattern is for cases where the number of
-						filterable fields is between 1 and 4 secondary filters. Our
-						FilterBar is used to reveal all filterable fields when the button is
-						pressed.
-					</p>
-				</Prose>
-				<div>
-					<ButtonLink href="#new" iconBefore={PlusIcon}>
-						New item
-					</ButtonLink>
-				</div>
+		<Stack gap={2}>
+			<div>
+				<ButtonLink href="#new" iconBefore={PlusIcon}>
+					New item
+				</ButtonLink>
+			</div>
 
+			<Stack gap={selectable ? 0 : 2}>
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
@@ -93,9 +87,17 @@ export const TableFilteringMedium = () => {
 					<ActiveFilters />
 				</FilterRegion>
 
-				<DataTable />
-				<DashboardPagination />
+				{selectable && (
+					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+						<DataTableSelectAllCheckbox />
+					</Box>
+				)}
+				<DataTable
+					selectable={true}
+					//  headingId={headingId}
+				/>
 			</Stack>
-		</PageContent>
+			<DashboardPagination />
+		</Stack>
 	);
 };
