@@ -4,7 +4,7 @@ import {
 	SortAndFilterProvider,
 } from '../../../../.storybook/stories/DataFiltering/lib/contexts';
 import { useSortAndFilter } from '../../../../.storybook/stories/DataFiltering/lib/useSortAndFilter';
-import { useData } from '../../../../.storybook/stories/DataFiltering/lib/utils';
+import { useFetchData } from '../../../../.storybook/stories/DataFiltering/lib/useFetchData';
 import { ListFiltering } from '../../../../.storybook/stories/DataFiltering/ListFiltering';
 import { Card, CardInner, CardLink } from '../card';
 import { Column, Columns } from '../columns';
@@ -131,7 +131,7 @@ export const Layout: Story = {
 const ListFilteringExample = () => {
 	const sortAndFilter = useSortAndFilter();
 	const { filters, pagination, sort } = sortAndFilter;
-	const data = useData({ filters, pagination, sort });
+	const data = useFetchData({ filters, pagination, sort });
 
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>

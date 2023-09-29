@@ -3,7 +3,7 @@ import { TableFilteringLarge } from './TableFilteringLarge';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { useData } from './lib/utils';
+import { useFetchData } from './lib/useFetchData';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 
 const meta: Meta = {
@@ -20,7 +20,7 @@ export const FilterSmall = {
 	render: function Render() {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useData({ filters, pagination, sort });
+		const data = useFetchData({ filters, pagination, sort });
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
@@ -36,7 +36,7 @@ export const FilterMedium = {
 	render: function Render() {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useData({ filters, pagination, sort });
+		const data = useFetchData({ filters, pagination, sort });
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
@@ -52,7 +52,7 @@ export const FilterLarge = {
 	render: function Render() {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useData({ filters, pagination, sort });
+		const data = useFetchData({ filters, pagination, sort });
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>

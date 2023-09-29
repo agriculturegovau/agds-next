@@ -1,6 +1,6 @@
 import { DataProvider, SortAndFilterContext } from '../lib/contexts';
 import { useSortAndFilter } from '../lib/useSortAndFilter';
-import { useData } from '../lib/utils';
+import { useFetchData } from '../lib/useFetchData';
 import { DataTable } from './DataTable';
 
 export default {
@@ -13,7 +13,7 @@ export const Application = () => {
 	});
 	const { filters, pagination, sort } = sortAndFilter;
 
-	const { data, totalPages, totalItems, loading } = useData({
+	const { data, totalPages, totalItems, loading } = useFetchData({
 		filters,
 		pagination,
 		sort,

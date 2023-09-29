@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
-import { useData } from './lib/utils';
+import { useFetchData } from './lib/useFetchData';
 import { ListFiltering } from './ListFiltering';
 
 const meta: Meta = {
@@ -18,7 +18,7 @@ export const List = {
 	render: function Render() {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useData({ filters, pagination, sort });
+		const data = useFetchData({ filters, pagination, sort });
 
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>

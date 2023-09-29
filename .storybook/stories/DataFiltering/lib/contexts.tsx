@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { SortAndFilter } from './useSortAndFilter';
-import { DashboardTableData } from './utils';
+import { DashboardTableData } from './useFetchData';
 
 // Sort and filter context
 export const SortAndFilterContext = createContext<SortAndFilter | undefined>(
