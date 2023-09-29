@@ -43,7 +43,7 @@ export function useSelectAllRows(pageData: BusinessForAuditWithIndex[]) {
 			selectRows(allPageItemIds);
 		} else {
 			// Some rows are selected, so deselect all of them
-			clearRowSelections;
+			clearRowSelections();
 		}
 	};
 
@@ -52,8 +52,6 @@ export function useSelectAllRows(pageData: BusinessForAuditWithIndex[]) {
 	const isSelectAllCheckboxIndeterminate = isEveryRowSelected
 		? false
 		: isAnyRowSelected;
-
-	console.log({ isSelectAllCheckboxChecked, isSelectAllCheckboxIndeterminate });
 
 	return {
 		isSelectAllCheckboxChecked,
