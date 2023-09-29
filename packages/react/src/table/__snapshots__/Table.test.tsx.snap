@@ -3,7 +3,7 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-13v4kqe-TableWrapper"
+    class="css-2ebmvj-TableWrapper"
   >
     <table
       class="css-r11i27-boxStyles-Table"
