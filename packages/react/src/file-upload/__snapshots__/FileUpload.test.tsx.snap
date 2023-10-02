@@ -106,13 +106,13 @@ exports[`FileUpload Basic renders correctly 1`] = `
         >
           <li
             aria-label="File. example.jpg"
-            class="css-1s35t4y-boxStyles-FileUploadFile"
+            class="css-izqcdk-boxStyles-FileUploadFile"
           >
             <div
-              class="css-1xkbxzi-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-jewojk-boxStyles"
+                class="css-ndr35g-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
@@ -133,34 +133,42 @@ exports[`FileUpload Basic renders correctly 1`] = `
                   />
                 </svg>
               </div>
-              <span
-                class="css-1fikbx5-boxStyles-Text-FileUploadFile"
+              <div
+                class="css-m7yzdn-boxStyles"
               >
-                example.jpg
-                 (
-                23 B
-                )
-              </span>
+                <span
+                  class="css-w8s9uh-boxStyles-Text-FileUploadFile"
+                >
+                  example.jpg
+                   (
+                  23 B
+                  )
+                </span>
+              </div>
             </div>
             <div
-              class="css-1ldvxqr-boxStyles"
+              class="css-7cw1w2-boxStyles"
             >
-              <button
-                aria-label="Remove file, example.jpg"
-                class="css-17v5uc2-BaseButton-Button"
-                type="button"
+              <div
+                class="css-1ctcrux-boxStyles"
               >
-                <span>
-                  <span
-                    class="css-oobk4c-Button"
-                  >
-                    Remove file
+                <button
+                  aria-label="Remove file, example.jpg"
+                  class="css-1clbjuu-BaseButton-Button"
+                  type="button"
+                >
+                  <span>
+                    <span
+                      class="css-oobk4c-Button"
+                    >
+                      Remove file
+                    </span>
+                    <span
+                      aria-live="assertive"
+                    />
                   </span>
-                  <span
-                    aria-live="assertive"
-                  />
-                </span>
-              </button>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
