@@ -58,11 +58,11 @@ export const FileUploadRejectedFile = ({
 				</Flex>
 			</Flex>
 
-			<Box flexShrink={0}>
-				<Button variant="tertiary" onClick={onRemove}>
+			<Flex flexShrink={0} alignItems="center" paddingRight={0.5}>
+				<Button variant="text" onClick={onRemove}>
 					Remove file
 				</Button>
-			</Box>
+			</Flex>
 		</Flex>
 	);
 };
