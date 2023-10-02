@@ -169,7 +169,7 @@ export function getErrorSummary(
 /** Creates and returns a URL of the image thumbnail in browser memory.
  * Returns undefined if the file is not an image. */
 export function getImageThumbnail(file: FileWithPath) {
-	const imageMimeTypes = /image\/(png|jpg|jpeg)/i;
+	const imageMimeTypes = /image\/(png|jpg|jpeg|webp|heic)/i;
 	const isImageType = file.type.match(imageMimeTypes);
 	return isImageType ? URL.createObjectURL(file) : undefined;
 }
