@@ -25,40 +25,39 @@ export const FileUploadRejectedFile = ({
 		<Flex
 			as="li"
 			gap={0.5}
-			alignItems="flex-start"
 			rounded
-			flexDirection="row"
 			justifyContent="space-between"
-			paddingY={1}
-			paddingLeft={1}
 			css={{
 				background: boxPalette.systemErrorMuted,
 			}}
 		>
-			<Flex gap={0.5}>
+			<Flex>
 				<FileUploadFileThumbnail file={file} />
-				<Box flexShrink={0}>
-					<AlertFilledIcon
-						color="error"
-						size="md"
-						aria-hidden="false"
-						aria-label="Error"
-						css={{ display: 'block' }}
-					/>
-				</Box>
-				<Stack gap={0.5}>
-					<Text fontWeight="bold" color="error">
-						{file.name} ({formatFileSize(file.size)}) could not be selected
-					</Text>
-					<ul css={{ margin: 0, padding: 0 }}>
-						{errors.map(({ message }, index) => (
-							<Text as="li" key={index} css={{ listStyle: 'inside' }}>
-								{message}
-							</Text>
-						))}
-					</ul>
-				</Stack>
+				<Flex paddingLeft={0.5} gap={0.5} paddingY={0.75}>
+					<Box flexShrink={0}>
+						<AlertFilledIcon
+							color="error"
+							size="md"
+							aria-hidden="false"
+							aria-label="Error"
+							css={{ display: 'block' }}
+						/>
+					</Box>
+					<Stack gap={0.5}>
+						<Text fontWeight="bold" color="error">
+							{file.name} ({formatFileSize(file.size)}) could not be selected
+						</Text>
+						<ul css={{ margin: 0, padding: 0 }}>
+							{errors.map(({ message }, index) => (
+								<Text as="li" key={index} css={{ listStyle: 'inside' }}>
+									{message}
+								</Text>
+							))}
+						</ul>
+					</Stack>
+				</Flex>
 			</Flex>
+
 			<Box flexShrink={0}>
 				<Button variant="tertiary" onClick={onRemove}>
 					Remove file
