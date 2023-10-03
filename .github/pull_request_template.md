@@ -16,6 +16,7 @@ Provide an overview of your changes here. Include screenshots, photos or links i
 - [ ] Manually test component in various devices (phone, tablet, desktop)
 - [ ] Manually test component using a keyboard
 - [ ] Manually test component using a screen reader
+- [ ] Manually tested in dark mode
 - [ ] Component meets [Web Content Accessibility Guidelines (WCAG) 2.1 standards](https://www.w3.org/TR/WCAG21/)
 - [ ] Add any necessary unit tests (HTML validation, snapshots etc)
 - [ ] Run `yarn test` to ensure tests are passing. If required, run `yarn test -u` to update any generated snapshots.
