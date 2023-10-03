@@ -11,8 +11,9 @@ import { formatFileSize } from './utils';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 
 type FileUploadRejectedFileProps = {
-	file: FileWithPath;
+	disableThumbnails?: boolean;
 	errors: { message: string; code: string }[];
+	file: FileWithPath;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -20,7 +21,9 @@ export const FileUploadRejectedFile = ({
 	file,
 	errors,
 	onRemove,
+	disableThumbnails,
 }: FileUploadRejectedFileProps) => {
+	const showThumbnail = !disableThumbnails;
 	return (
 		<Flex
 			as="li"
@@ -32,7 +35,7 @@ export const FileUploadRejectedFile = ({
 			}}
 		>
 			<Flex>
-				<FileUploadFileThumbnail file={file} />
+				{showThumbnail && <FileUploadFileThumbnail file={file} />}
 				<Flex paddingLeft={0.5} gap={0.5} paddingY={0.75}>
 					<Box flexShrink={0}>
 						<AlertFilledIcon

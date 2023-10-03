@@ -12,11 +12,16 @@ import { FileWithStatus, formatFileSize } from './utils';
 type FileUploadFileProps = {
 	file: FileWithStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
+	disableThumbnails?: boolean;
 };
 
-export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
+export const FileUploadFile = ({
+	file,
+	disableThumbnails,
+	onRemove,
+}: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
-
+	const showThumbnail = !disableThumbnails;
 	return (
 		<Flex
 			rounded
@@ -27,7 +32,7 @@ export const FileUploadFile = ({ file, onRemove }: FileUploadFileProps) => {
 			css={{ backgroundColor: TONE_MAP[status] }}
 		>
 			<Flex>
-				<FileUploadFileThumbnail file={file} />
+				{showThumbnail && <FileUploadFileThumbnail file={file} />}
 				<Flex alignItems="center" paddingLeft={0.5} gap={0.5}>
 					{status == 'success' && (
 						<Box flexShrink={0}>

@@ -22,6 +22,9 @@ const meta: Meta<typeof FileUpload> = {
 		const [value, setValue] = useState<FileWithStatus[]>(initialValue);
 		return <FileUpload {...props} value={value} onChange={setValue} />;
 	},
+	args: {
+		disableThumbnails: false,
+	},
 };
 
 const exampleFile = createExampleFile();
@@ -117,6 +120,13 @@ export const MultipleImages: Story = {
 			createExampleImageFile(),
 			createExampleImageFile(),
 		],
+	},
+};
+
+export const HiddenThumbnails: Story = {
+	args: {
+		label: 'Drivers licence',
+		disableThumbnails: true,
 	},
 };
 

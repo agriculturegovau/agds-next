@@ -5,6 +5,9 @@ import { createExampleFile, createExampleImageFile } from './test-utils';
 const meta: Meta = {
 	title: 'forms/FileUpload/Primitives/FileUploadFile',
 	component: FileUploadFile,
+	args: {
+		disableThumbnails: false,
+	},
 };
 
 export default meta;

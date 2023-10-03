@@ -42,6 +42,8 @@ type BaseInputProps = {
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file MIME types, e.g. `image/jpeg`, `application/pdf`. */
 	accept?: (AcceptedFileMimeTypes | CustomFileMimeType)[];
+	/** If true, the thumbnails will be hidden. */
+	disableThumbnails?: boolean;
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -73,6 +75,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			disabled,
 			label,
 			hideOptionalLabel,
+			disableThumbnails,
 			maxFiles,
 			maxSize,
 			multiple,
@@ -269,12 +272,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										<FileUploadFileList
 											files={value}
 											onRemove={handleRemoveFile}
+											disableThumbnails={disableThumbnails}
 										/>
 									) : null}
 									{fileRejections.length ? (
 										<FileUploadRejectedFileList
 											fileRejections={fileRejections}
 											handleRemoveRejection={handleRemoveRejection}
+											disableThumbnails={disableThumbnails}
 										/>
 									) : null}
 								</Stack>

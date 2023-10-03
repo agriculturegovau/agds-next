@@ -5,6 +5,9 @@ import { createExampleFile, createExampleImageFile } from './test-utils';
 const meta: Meta<typeof FileUploadRejectedFile> = {
 	title: 'forms/FileUpload/Primitives/FileUploadRejectedFile',
 	component: FileUploadRejectedFile,
+	args: {
+		disableThumbnails: false,
+	},
 };
 
 export default meta;
