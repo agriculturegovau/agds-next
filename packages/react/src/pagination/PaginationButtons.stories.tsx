@@ -1,14 +1,23 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Box } from '../box';
 import { PaginationButtons } from './PaginationButtons';
 
-export default {
+const meta: Meta<typeof PaginationButtons> = {
 	title: 'navigation/Pagination/PaginationButtons',
 	component: PaginationButtons,
-} as ComponentMeta<typeof PaginationButtons>;
+	args: {
+		totalPages: 10,
+	},
+};
 
-const Template: ComponentStory<typeof PaginationButtons> = (props) => {
+export default meta;
+
+type Story = StoryObj<typeof PaginationButtons>;
+
+export const Basic: Story = {};
+
+const Template: StoryFn<typeof PaginationButtons> = (props) => {
 	const [currentPage, setCurrentPage] = useState(5);
 	return (
 		<PaginationButtons
@@ -19,29 +28,27 @@ const Template: ComponentStory<typeof PaginationButtons> = (props) => {
 	);
 };
 
-export const OnLight: ComponentStory<typeof PaginationButtons> = (args) => (
-	<Template {...args} />
-);
-OnLight.args = {
-	totalPages: 10,
+export const OnLight: Story = {
+	render: (args) => <Template {...args} />,
 };
 
-export const OnDark: ComponentStory<typeof PaginationButtons> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
-	totalPages: 10,
+export const OnDark: Story = {
+	render: (args) => (
+		<Box palette="dark" background="body" padding={1.5}>
+			<Template {...args} />
+		</Box>
+	),
 };
 
-export const ManyPages = Template.bind({});
-ManyPages.args = {
-	totalPages: 300,
+export const ManyPages: Story = {
+	args: {
+		totalPages: 300,
+	},
 };
 
-export const CustomLimit = Template.bind({});
-CustomLimit.args = {
-	windowLimit: 5,
-	totalPages: 300,
+export const CustomLimit: Story = {
+	args: {
+		windowLimit: 5,
+		totalPages: 300,
+	},
 };
