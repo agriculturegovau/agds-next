@@ -36,7 +36,7 @@ export const FileUploadRejectedFile = ({
 		>
 			<Flex>
 				{showThumbnail && <FileUploadFileThumbnail file={file} />}
-				<Flex paddingLeft={0.5} gap={0.5} paddingY={0.75}>
+				<Flex paddingLeft={1} gap={0.5} paddingY={0.75}>
 					<Box flexShrink={0}>
 						<AlertFilledIcon
 							color="error"
@@ -61,7 +61,7 @@ export const FileUploadRejectedFile = ({
 				</Flex>
 			</Flex>
 
-			<Flex flexShrink={0} alignItems="center" paddingRight={0.5}>
+			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
 				<Button variant="text" onClick={onRemove}>
 					Remove file
 				</Button>

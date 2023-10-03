@@ -134,7 +134,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-m7yzdn-boxStyles"
+                class="css-w79ye0-boxStyles"
               >
                 <span
                   class="css-w8s9uh-boxStyles-Text-FileUploadFile"
@@ -147,10 +147,10 @@ exports[`FileUpload Basic renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-7cw1w2-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <div
-                class="css-1ctcrux-boxStyles"
+                class="css-79i25n-boxStyles"
               >
                 <button
                   aria-label="Remove file, example.jpg"

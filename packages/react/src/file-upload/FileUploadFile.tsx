@@ -33,7 +33,7 @@ export const FileUploadFile = ({
 		>
 			<Flex>
 				{showThumbnail && <FileUploadFileThumbnail file={file} />}
-				<Flex alignItems="center" paddingLeft={0.5} gap={0.5}>
+				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
 					{status == 'success' && (
 						<Box flexShrink={0}>
 							<SuccessFilledIcon
@@ -50,14 +50,13 @@ export const FileUploadFile = ({
 					</Text>
 				</Flex>
 			</Flex>
-
-			<Flex flexShrink={0} alignItems="center">
+			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
 				{status === 'uploading' ? (
-					<Box paddingY={1} paddingX={1.5}>
+					<Box paddingY={1}>
 						<LoadingDots label="uploading" />
 					</Box>
 				) : (
-					<Box paddingRight={0.5}>
+					<Box>
 						<Button
 							variant="text"
 							onClick={onRemove}
