@@ -1,18 +1,16 @@
 ---
 title: Selectable tables with batch actions
-description: Selectable tables allow users to select one or more rows simultaneously and perform batch actions against the selected items.
+description: Selectable tables allow users to select one or more rows simultaneously and perform batch actions against the selected rows.
+storybookPath: /story/content-table--selectable-basic
 relatedComponents: ['table', 'checkbox', 'button', 'drawer']
+githubTemplatePath: /.storybook/stories/SelectableTableBatchActions
 ---
 
-## Selectable tables
+## Individual row selection
 
-Selectable [Tables](/components/table) allow users to select one or more rows in a table simultaneously.
+To toggle the selection of an individual row, users can use the [Checkbox](/components/checkbox) in the first column which should have the row heading "Select".
 
-[View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-basic)
-
-### Individual row select
-
-To select an individual row, users can use the [Checkbox](/components/checkbox) in the first column ("Select") to toggle the selection of an individual row. Checkboxes in each row have only two states: checked and unchecked.
+Selected rows have a solid action coloured outline, which is achieved by setting `selected={true}` on the `TableRow` component.
 
 ```jsx live
 () => {
@@ -46,13 +44,13 @@ To select an individual row, users can use the [Checkbox](/components/checkbox) 
 };
 ```
 
-### Selecting all rows
+## Selecting all rows
 
-Users can toggle the selection of all rows at once by toggling the [Checkbox](/components/checkbox) above the table. Unlike the Checkboxes in each row, the "Select all rows" checkbox above the table has three states: checked, unchecked, and indeterminate.
+To toggle the selection of all rows at once, users can use the "Select all rows" checkbox above the table. The "Select all rows" checkbox should always be placed just above the table element, with a border to divide the two elements.
 
-When some, but not all, rows are selected, the "Select all rows" checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
+Do not use `TableCaption` component in combination with the "Select all rows" checkbox as the caption will sit in between the checkbox and table. Instead, place a [Heading](/components/heading) component above the Checkbox and connect the heading and table using `aria-labelledby`. For more information, please refer to the [Labels and headings](/components/table#labels-and-headings) section of the table documentation.
 
-The "Select all rows" checkbox should always be placed just above the Table element, with a border to divide the two elements. Don't use `TableCaption` component as it will sit in between the Checkbox and Table. Instead, using a [Heading](/components/heading) component and connext the heading and table via using using `aria-labelledby`. For more information, please refer to the [Labels and headings](/components/table#labels-and-headings) section of the Table documentation.
+Unlike the checkboxes in each row, the "Select all rows" checkbox above the table has three states: checked, unchecked, and indeterminate. When some, but not all, rows are selected, the "Select all rows" checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
 
 ```jsx live
 () => {
@@ -125,15 +123,17 @@ The "Select all rows" checkbox should always be placed just above the Table elem
 
 ## Batch actions
 
-When one or more rows in a table are selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same action across multiple table rows.
+When one or more rows in a table is selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same action across multiple table rows.
+
+Once a row from the table has been selected, the `TableBatchActionsBar` component is positioned sticky at the bottom of the table, presenting a set of possible actions to apply to all selected rows.
+
+Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. Do not place form components inside the `TableBatchActionsBar` component, as they can introduce inconsistencies as well as complexities related to validation and submission.
+
+Action buttons should trigger [Drawers](/components/drawer) when pressed, which should contain the form related for each action button.
+
+Each action button should be applicable for every row in the Table. If certain actions can not be performed on every selectable row, do not include this action in the `TableBatchActionsBar`.
 
 [View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
-
-Once a row from the table has been selected, the `TableBatchActionsBar` component appears at the bottom of the table, presenting a set of possible actions to apply to all selected items.
-
-Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. Do not place form components inside the `TableBatchActionsBar` component, as they can introduce complexity related to validation and submission.
-
-Action buttons should trigger [Drawers](/components/drawer) when pressed, which should contain the form related for each button. Each action button should be applicable for every row in the Table. If certain actions can not be performed on every selectable row, do not include this action in the `TableBatchActionsBar`.
 
 ```jsx live
 () => {
