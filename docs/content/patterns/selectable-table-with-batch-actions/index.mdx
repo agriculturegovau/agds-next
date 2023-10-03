@@ -127,11 +127,18 @@ When one or more rows in a table is selected, users can perform batch actions on
 
 Once a row from the table has been selected, the `TableBatchActionsBar` component is positioned sticky at the bottom of the table, presenting a set of possible actions to apply to all selected rows.
 
-Only [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. Do not place form components inside the `TableBatchActionsBar` component, as they can introduce inconsistencies as well as complexities related to validation and submission.
+Only small [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. When pressed, these buttons should trigger [Drawers](/components/drawer) that contain the form related to the action.
 
-Action buttons should trigger [Drawers](/components/drawer) when pressed, which should contain the form related for each action button.
+<DoHeading />
 
-Each action button should be applicable for every row in the Table. If certain actions can not be performed on every selectable row, do not include this action in the `TableBatchActionsBar`.
+- ensure each batch action can be performed on every selectable row
+- include a "Cancel" button at the end of the batch actions button group
+- use small buttons for batch actions
+
+<DontHeading />
+
+- include batch actions that can not be performed on every selectable row
+- place form components inside the `TableBatchActionsBar` component, as they can introduce inconsistencies as well as complexities related to validation and submission.
 
 [View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
 
@@ -210,8 +217,11 @@ Each action button should be applicable for every row in the Table. If certain a
 						<Button variant="secondary" size="sm">
 							Example action
 						</Button>
-						<Button variant="tertiary" size="sm">
+						<Button variant="secondary" size="sm">
 							Delete
+						</Button>
+						<Button variant="tertiary" size="sm" onClick={toggleAllRows}>
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</TableBatchActionsBar>

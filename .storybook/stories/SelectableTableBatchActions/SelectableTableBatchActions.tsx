@@ -162,11 +162,18 @@ export function SelectableTableBatchActions() {
 													Add tracking number
 												</Button>
 												<Button
-													variant="tertiary"
+													variant="secondary"
 													size="sm"
 													onClick={() => setDeleteModalOpen(true)}
 												>
 													Delete
+												</Button>
+												<Button
+													variant="tertiary"
+													size="sm"
+													onClick={toggleAllRows}
+												>
+													Cancel
 												</Button>
 											</ButtonGroup>
 										</TableBatchActionsBar>
