@@ -9,16 +9,14 @@ export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 	const width = '4.5rem';
 	return imagePreview ? (
 		<Box
-			as="img"
-			alt=""
-			role="presentation"
-			src={imagePreview}
 			rounded
 			flexShrink={0}
 			display={{ xs: 'none', md: 'block' }}
 			css={{
+				backgroundImage: `url(${imagePreview})`,
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
 				width: width,
-				'object-fit': 'cover',
 			}}
 		/>
 	) : (
