@@ -18,7 +18,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         class="css-11khhn7-boxStyles"
       >
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-10w2jzf-boxStyles-TableHeader"
@@ -50,7 +50,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         class="css-8u32cd-boxStyles"
       >
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -75,7 +75,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -100,7 +100,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -125,7 +125,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -150,7 +150,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -175,7 +175,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -200,7 +200,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
@@ -225,7 +225,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
-          class="css-1tx0oac-TableRow"
+          class="css-0"
         >
           <th
             class="css-eaiq6e-boxStyles-TableCell"
