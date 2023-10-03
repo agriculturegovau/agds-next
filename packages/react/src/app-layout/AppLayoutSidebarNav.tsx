@@ -151,9 +151,7 @@ function AppLayoutSidebarNavItemInner({
 					display: 'flex',
 					alignItems: 'center',
 					gap: mapSpacing(0.75),
-					color: isActive
-						? boxPalette.foregroundText
-						: boxPalette.foregroundAction,
+					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 					...(isActive && {
 						fontWeight: tokens.fontWeight.bold,
 						background: boxPalette.backgroundShadeAlt,
