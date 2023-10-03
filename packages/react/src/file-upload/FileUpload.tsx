@@ -75,7 +75,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			disabled,
 			label,
 			hideOptionalLabel,
-			hideThumbnails,
+			hideThumbnails = false,
 			maxFiles,
 			maxSize,
 			multiple,

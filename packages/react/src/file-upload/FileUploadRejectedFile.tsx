@@ -11,7 +11,7 @@ import { formatFileSize } from './utils';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 
 type FileUploadRejectedFileProps = {
-	hideThumbnails?: boolean;
+	hideThumbnails: boolean;
 	errors: { message: string; code: string }[];
 	file: FileWithPath;
 	onRemove: MouseEventHandler<HTMLButtonElement>;

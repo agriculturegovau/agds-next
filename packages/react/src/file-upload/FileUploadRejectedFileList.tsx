@@ -5,7 +5,7 @@ import type { RejectedFile } from './utils';
 type FileUploadRejectedFileListProps = {
 	fileRejections: RejectedFile[];
 	handleRemoveRejection: (fileName: string) => void;
-	hideThumbnails?: boolean;
+	hideThumbnails: boolean;
 };
 
 export const FileUploadRejectedFileList = ({
