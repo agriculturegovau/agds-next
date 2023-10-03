@@ -25,11 +25,12 @@ import { useRowSelection } from './useRowSelection';
 import { useNotification } from './useNotification';
 import { TableFilters } from './TableFilters';
 
+const PER_PAGE = 20;
+
 export function SelectableTableBatchActions() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [data, setData] = useState(EXAMPLE_DATA);
 
-	const PER_PAGE = 30;
 	const paginatedData = data.length
 		? data.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE)
 		: [];
@@ -110,8 +111,8 @@ export function SelectableTableBatchActions() {
 								Select all rows
 							</Checkbox>
 						</Box>
-						{paginatedData ? (
-							<Fragment>
+						{paginatedData.length ? (
+							<Stack gap={1}>
 								<Stack gap={0.5}>
 									<TableWrapper>
 										<Table striped aria-labelledby="certificates-heading">
@@ -176,11 +177,13 @@ export function SelectableTableBatchActions() {
 									onChange={setCurrentPage}
 									totalPages={totalPages}
 								/>
-							</Fragment>
+							</Stack>
 						) : (
-							<Heading type="h2" fontSize="lg">
-								No items found
-							</Heading>
+							<Stack paddingY={1}>
+								<Heading type="h3" fontSize="lg">
+									No certificates found
+								</Heading>
+							</Stack>
 						)}
 					</Stack>
 				</Stack>
