@@ -23,7 +23,7 @@ const meta: Meta<typeof FileUpload> = {
 		return <FileUpload {...props} value={value} onChange={setValue} />;
 	},
 	args: {
-		disableThumbnails: false,
+		hideThumbnails: false,
 	},
 };
 
@@ -126,7 +126,7 @@ export const MultipleImages: Story = {
 export const HiddenThumbnails: Story = {
 	args: {
 		label: 'Drivers licence',
-		disableThumbnails: true,
+		hideThumbnails: true,
 	},
 };
 

@@ -7,7 +7,7 @@ const meta: Meta<typeof FileUploadRejectedFileList> = {
 	component: FileUploadRejectedFileList,
 	argTypes: { handleRemoveRejection: { action: 'clicked' } },
 	args: {
-		disableThumbnails: false,
+		hideThumbnails: false,
 	},
 };
 export default meta;
@@ -44,7 +44,7 @@ export const Basic: Story = {
 
 export const HiddenThumbnails: Story = {
 	args: {
-		disableThumbnails: true,
+		hideThumbnails: true,
 		fileRejections: testFiles,
 		handleRemoveRejection: (id) => console.log(id),
 	},

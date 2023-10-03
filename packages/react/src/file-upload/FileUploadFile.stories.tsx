@@ -6,7 +6,7 @@ const meta: Meta = {
 	title: 'forms/FileUpload/Primitives/FileUploadFile',
 	component: FileUploadFile,
 	args: {
-		disableThumbnails: false,
+		hideThumbnails: false,
 	},
 };
 

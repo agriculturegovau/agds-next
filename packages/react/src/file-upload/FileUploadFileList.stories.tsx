@@ -6,7 +6,7 @@ const meta: Meta<typeof FileUploadFileList> = {
 	title: 'forms/FileUpload/Primitives/FileUploadFileList',
 	component: FileUploadFileList,
 	args: {
-		disableThumbnails: false,
+		hideThumbnails: false,
 	},
 };
 
@@ -54,7 +54,7 @@ export const Uploading: Story = {
 
 export const HiddenThumbnails: Story = {
 	args: {
-		disableThumbnails: true,
+		hideThumbnails: true,
 		files: [
 			createExampleFile({
 				name: 'example.pdf',

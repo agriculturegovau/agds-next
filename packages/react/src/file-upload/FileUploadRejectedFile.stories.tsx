@@ -6,7 +6,7 @@ const meta: Meta<typeof FileUploadRejectedFile> = {
 	title: 'forms/FileUpload/Primitives/FileUploadRejectedFile',
 	component: FileUploadRejectedFile,
 	args: {
-		disableThumbnails: false,
+		hideThumbnails: false,
 	},
 };
 

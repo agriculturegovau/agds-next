@@ -12,16 +12,16 @@ import { FileWithStatus, formatFileSize } from './utils';
 type FileUploadFileProps = {
 	file: FileWithStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
-	disableThumbnails?: boolean;
+	hideThumbnails?: boolean;
 };
 
 export const FileUploadFile = ({
 	file,
-	disableThumbnails,
+	hideThumbnails,
 	onRemove,
 }: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
-	const showThumbnail = !disableThumbnails;
+	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
 			rounded
