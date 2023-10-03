@@ -1,6 +1,5 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Box } from '../box';
 import { PaginationButtons } from './PaginationButtons';
 
 const meta: Meta<typeof PaginationButtons> = {
@@ -15,8 +14,6 @@ export default meta;
 
 type Story = StoryObj<typeof PaginationButtons>;
 
-export const Basic: Story = {};
-
 const Template: StoryFn<typeof PaginationButtons> = (props) => {
 	const [currentPage, setCurrentPage] = useState(5);
 	return (
@@ -28,25 +25,19 @@ const Template: StoryFn<typeof PaginationButtons> = (props) => {
 	);
 };
 
-export const OnLight: Story = {
+export const Basic: Story = {
 	render: (args) => <Template {...args} />,
 };
 
-export const OnDark: Story = {
-	render: (args) => (
-		<Box palette="dark" background="body" padding={1.5}>
-			<Template {...args} />
-		</Box>
-	),
-};
-
 export const ManyPages: Story = {
+	render: (args) => <Template {...args} />,
 	args: {
 		totalPages: 300,
 	},
 };
 
 export const CustomLimit: Story = {
+	render: (args) => <Template {...args} />,
 	args: {
 		windowLimit: 5,
 		totalPages: 300,
