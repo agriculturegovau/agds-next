@@ -5,6 +5,7 @@ group: Content
 storybookPath: /story/content-table--basic
 figmaGalleryNodeId: 11981%3A101727
 relatedComponents: ['summary-list']
+relatedPatterns: ['selectable-table-with-batch-actions']
 ---
 
 ```jsx live
@@ -343,7 +344,7 @@ You can see a working example of this component in the [Table Filtering Patterns
 
 ## Labels and headings
 
-A Table must have some form of caption or heading to describe the data it contains. This can be done using the `TableCaption` component, or referencing a heading using `aria-labelledBy`.
+A Table must have some form of caption or heading to describe the data it contains. This can be done using the `TableCaption` component, or referencing a heading using `aria-labelledby`.
 
 ```jsx live
 <Stack gap={1}>
@@ -535,4 +536,97 @@ If each table row can open a page to view more information, the cells in the fir
 		</TableBody>
 	</Table>
 </TableWrapper>
+```
+
+## Selectable with batch actions
+
+Selectable tables allow users to select one or more rows simultaneously and perform batch actions against the selected items.
+
+For more information, read the [Selectable tables with batch actions pattern](/patterns/selectable-table-with-batch-actions).
+
+```jsx live
+() => {
+	const [selectedRows, setSelectedRows] = useState([]);
+
+	function toggleRowSelection(rowIdx) {
+		if (selectedRows.includes(rowIdx)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+		} else {
+			setSelectedRows((r) => [...r, rowIdx]);
+		}
+	}
+
+	const anyRowsChecked = selectedRows.length > 0;
+	const allRowsChecked = selectedRows.length === 3;
+
+	function toggleAllRows() {
+		if (anyRowsChecked) {
+			setSelectedRows([]);
+		} else {
+			setSelectedRows([0, 1, 2]);
+		}
+	}
+
+	return (
+		<Stack gap={0.5}>
+			<Stack>
+				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+					<Checkbox
+						size="sm"
+						checked={allRowsChecked}
+						indeterminate={anyRowsChecked && !allRowsChecked}
+						onChange={() => toggleAllRows()}
+					>
+						Select all rows
+					</Checkbox>
+				</Box>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableHeader scope="col">Select</TableHeader>
+							<TableHeader scope="col">Example Column</TableHeader>
+							<TableHeader scope="col">Example Column</TableHeader>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{Array.from(new Array(3).keys()).map((idx) => {
+							const isRowSelected = selectedRows.includes(idx);
+							return (
+								<TableRow selected={isRowSelected}>
+									<TableCell>
+										<Checkbox
+											size="sm"
+											checked={isRowSelected}
+											onChange={() => toggleRowSelection(idx)}
+										>
+											<VisuallyHidden>Select</VisuallyHidden>
+										</Checkbox>
+									</TableCell>
+									<TableCell>Example Row {idx + 1}</TableCell>
+									<TableCell>Example Row</TableCell>
+								</TableRow>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</Stack>
+			{selectedRows.length > 0 ? (
+				<TableBatchActionsBar>
+					<TableBatchActionsTitle>
+						Apply action to {selectedRows.length}{' '}
+						{selectedRows.length === 1 ? 'item' : 'items'}
+					</TableBatchActionsTitle>
+					<ButtonGroup>
+						<Button variant="secondary" size="sm">
+							Example action
+						</Button>
+						<Button variant="tertiary" size="sm">
+							Delete
+						</Button>
+					</ButtonGroup>
+				</TableBatchActionsBar>
+			) : null}
+		</Stack>
+	);
+};
 ```
