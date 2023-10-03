@@ -226,7 +226,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -263,7 +263,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -289,7 +289,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -318,7 +318,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-nfe4e4-AppLayoutSidebarNavItemInner"
+            class="css-qmt8p8-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -345,7 +345,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -371,7 +371,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -410,7 +410,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-13mhly7-AppLayoutSidebarNavItemInner"
+            class="css-16x72y7-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/messages"
@@ -449,7 +449,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account/settings"
@@ -480,7 +480,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -514,7 +514,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-1qdaebs-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"

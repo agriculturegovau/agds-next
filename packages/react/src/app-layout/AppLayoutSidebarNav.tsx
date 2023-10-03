@@ -130,10 +130,7 @@ function AppLayoutSidebarNavItemInner({
 	return (
 		<li
 			css={{
-				'> a': {
-					textDecoration: 'none',
-				},
-
+				// Styles shared between all list items (links, buttons and text)
 				'> a, > button, > span': {
 					width: '100%',
 					boxSizing: 'border-box',
@@ -148,17 +145,16 @@ function AppLayoutSidebarNavItemInner({
 					},
 				},
 
+				// Styles shared between interactive list items (links and buttons)
 				'> a, > button': {
 					position: 'relative',
 					display: 'flex',
 					alignItems: 'center',
 					gap: mapSpacing(0.75),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
-
 					...(isActive && {
 						fontWeight: tokens.fontWeight.bold,
 						background: boxPalette.backgroundShadeAlt,
-						color: boxPalette.foregroundText,
 						'&:before': {
 							content: "''",
 							position: 'absolute',
@@ -184,6 +180,16 @@ function AppLayoutSidebarNavItemInner({
 					},
 
 					...focusStyles,
+				},
+
+				// Styles specific to text list items
+				'> span': {
+					color: boxPalette.foregroundText,
+				},
+
+				// Styles specific to link list items
+				'> a': {
+					textDecoration: 'none',
 				},
 			}}
 		>

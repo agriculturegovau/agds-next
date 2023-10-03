@@ -283,7 +283,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							/>
 
 							<SectionAlert tone="warning" title="This is a Section alert">
-								This is a description.
+								<Text as="p">This is a description.</Text>
 							</SectionAlert>
 
 							<Accordion>
