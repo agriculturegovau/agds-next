@@ -57,7 +57,7 @@ As normal, we indicate that the form is submitting by adding a `loading={true}` 
 			label="Avatar image"
 			hint="Formats accepted: .png, .jpg, .jpeg"
 			multiple={false}
-			accept={['image/jpeg' 'image/png']}
+			accept={['image/jpeg', 'image/png']}
 		/>
 		<LoadingBlanket label="Uploading file (53%)" />
 	</div>
@@ -75,18 +75,8 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 
 ```jsx live
 () => {
-	const uploadingFile = new File(['this is an example file'], 'example.jpg', {
-		type: 'image/jpeg',
-	});
-	uploadingFile.status = 'uploading';
-	const uploadedFile = new File(
-		['this is another example file that has uploaded'],
-		'example.jpg',
-		{
-			type: 'image/jpeg',
-		}
-	);
-	uploadedFile.status = 'success';
+	const uploadedFile = createExampleImageFile({ status: 'success' });
+	const uploadingFile = createExampleFile({ status: 'uploading' });
 	return (
 		<FileUpload
 			label="Avatar image"
@@ -115,6 +105,16 @@ Use the `maxSize` prop to set a maximum size for each file. This value is measur
 ```jsx
 <FileUpload maxSize={200} /> // 200kB
 <FileUpload maxSize={20000} /> // 20MB
+```
+
+## Hiding thumbnails
+
+By default, the `FileUpload` component will render a preview of every selected file.
+
+To disable this behaviour, set the `hideThumbnails` prop to `true`.
+
+```jsx
+<FileUpload hideThumbnails={true} />
 ```
 
 ## Accepted files

@@ -237,7 +237,11 @@ export {
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
 export { SectionAlert } from '@ag.ds-next/react/section-alert';
+export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 
 // Used to populate options on documentation site and playroom
 export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
-export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
+export {
+	createExampleFile,
+	createExampleImageFile,
+} from '@ag.ds-next/react/src/file-upload/test-utils';
