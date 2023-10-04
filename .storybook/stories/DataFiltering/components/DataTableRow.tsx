@@ -4,6 +4,7 @@ import { TableCell, TableRow } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { useSortAndFilterContext } from '../lib/contexts';
 
 export const DataTableRowAssignee = ({
@@ -22,6 +23,37 @@ export const DataTableRowAssignee = ({
 				<Avatar name={assignee} size="sm" aria-hidden />
 				<Text>{assignee}</Text>
 			</Flex>
+		</TableCell>
+	);
+};
+
+const itemStatusMap = {
+	notBooked: {
+		label: 'Not booked',
+		tone: 'neutral',
+	},
+	booked: {
+		label: 'Booked',
+		tone: 'info',
+	},
+	completed: {
+		label: 'Completed',
+		tone: 'success',
+	},
+	cancelled: {
+		label: 'Cancelled',
+		tone: 'error',
+	},
+} as const;
+
+export const DataTableRowStatus = ({
+	status,
+}: {
+	status: keyof typeof itemStatusMap;
+}) => {
+	return (
+		<TableCell>
+			<StatusBadge weight="subtle" {...itemStatusMap[status]} />
 		</TableCell>
 	);
 };

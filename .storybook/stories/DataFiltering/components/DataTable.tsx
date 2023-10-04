@@ -1,7 +1,6 @@
 import { forwardRef, Fragment } from 'react';
 import { format } from 'date-fns';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
@@ -24,7 +23,11 @@ import { Button } from '@ag.ds-next/react/button';
 import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
-import { DataTableRowAssignee, DataTableRow } from './DataTableRow';
+import {
+	DataTableRow,
+	DataTableRowAssignee,
+	DataTableRowStatus,
+} from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 
 export const tableId = 'data-table';
@@ -218,12 +221,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													<TableCell>
 														{format(requestDate, 'dd/MM/yyyy')}
 													</TableCell>
-													<TableCell>
-														<StatusBadge
-															weight="subtle"
-															{...STATUS_MAP[status]}
-														/>
-													</TableCell>
+													<DataTableRowStatus status={status} />
 												</DataTableRow>
 											);
 										}
@@ -238,25 +236,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 		);
 	}
 );
-
-export const STATUS_MAP = {
-	notBooked: {
-		label: 'Not booked',
-		tone: 'neutral',
-	},
-	booked: {
-		label: 'Booked',
-		tone: 'info',
-	},
-	completed: {
-		label: 'Completed',
-		tone: 'success',
-	},
-	cancelled: {
-		label: 'Cancelled',
-		tone: 'error',
-	},
-} as const;
 
 const headers: {
 	label: string;
