@@ -21,7 +21,10 @@ export type AppLayoutSidebarProps = {
 
 export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
-	const bestMatch = findBestMatch(items.flat(), activePath);
+	const bestMatch = findBestMatch(
+		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
+		activePath
+	);
 	return (
 		<Fragment>
 			{/* Desktop */}
