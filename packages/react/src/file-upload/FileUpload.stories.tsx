@@ -246,3 +246,16 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 		</form>
 	);
 };
+
+export const ExistingFiles: Story = {
+	args: {
+		label: 'Documents',
+		existingFiles: [
+			{
+				name: 'police-check.pdf',
+				size: 100000,
+				onDelete: () => console.log('Delete file'),
+			},
+		],
+	},
+};

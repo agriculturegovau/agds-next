@@ -18,6 +18,7 @@ import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
 	CustomFileMimeType,
+	ExistingFile,
 	fileTypeMapping,
 	FileWithStatus,
 	formatFileSize,
@@ -28,6 +29,7 @@ import {
 	RejectedFile,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
+import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -66,6 +68,7 @@ export type FileUploadProps = BaseInputProps & {
 	multiple?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	existingFiles?: ExistingFile[];
 };
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -86,6 +89,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			message,
 			invalid,
 			id,
+			existingFiles,
 			...consumerProps
 		},
 		forwardedRef
@@ -268,6 +272,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							{value.length || fileRejections.length ? (
 								<Stack gap={0.5}>
 									<Text color="muted">{getFilesTotal(value)}</Text>
+									{existingFiles?.length ? (
+										<FileUploadExistingFileList
+											files={existingFiles}
+											hideThumbnails={hideThumbnails}
+										/>
+									) : null}
 									{value.length ? (
 										<FileUploadFileList
 											files={value}
