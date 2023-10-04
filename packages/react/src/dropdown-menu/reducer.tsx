@@ -144,7 +144,8 @@ export function reducer(state: State, action: Action): State {
 
 			// Convert descendant nodes to lowercase text array
 			const items = Array.from(state.descendantNodes ?? []).map((node) =>
-				node.innerText.toLowerCase()
+				// As some labels can have multiple lines, remove any line breaks
+				node.innerText.toLowerCase().replace(/(\r\n|\n|\r)/gm, '')
 			);
 
 			// Re-order items to start the search from the current active index + offset
