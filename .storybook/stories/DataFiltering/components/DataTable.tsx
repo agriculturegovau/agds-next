@@ -25,6 +25,7 @@ import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import { DataTableRowAssignee, DataTableRow } from './DataTableRow';
+import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 
 export const tableId = 'data-table';
 
@@ -79,158 +80,161 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 		}
 
 		return (
-			<TableWrapper>
-				<Table
-					aria-rowcount={totalItems}
-					{...(headingId && { 'aria-labelledby': headingId })}
-					id={tableId}
-					ref={ref}
-					tabIndex={-1}
-					tableLayout="fixed"
-				>
-					{!headingId && (
-						<TableCaption>
-							{caption}
-							<VisuallyHidden>
-								, column headers with buttons are sortable.
-							</VisuallyHidden>
-						</TableCaption>
-					)}
-					<TableHead>
-						<TableRow aria-rowindex={1}>
-							{selectable && (
-								<TableHeader scope="col" width="5rem">
-									Select
-								</TableHeader>
-							)}
-							{headers.map(
-								({
-									label,
-									sortKey,
-									textAlign,
-									width,
-									isSortable: isFieldSortable,
-								}) => {
-									if (isTableSortable && isFieldSortable) {
-										const isFieldTheActiveSortField = sort?.field === sortKey;
-										const onClick = () =>
-											setSort?.({
-												field: sortKey,
-												order:
-													sort?.field === sortKey && sort?.order === 'ASC'
-														? 'DESC'
-														: 'ASC',
-											});
+			<Stack gap={0.5}>
+				<TableWrapper>
+					<Table
+						aria-rowcount={totalItems}
+						{...(headingId && { 'aria-labelledby': headingId })}
+						id={tableId}
+						ref={ref}
+						tabIndex={-1}
+						tableLayout="fixed"
+					>
+						{!headingId && (
+							<TableCaption>
+								{caption}
+								<VisuallyHidden>
+									, column headers with buttons are sortable.
+								</VisuallyHidden>
+							</TableCaption>
+						)}
+						<TableHead>
+							<TableRow>
+								{selectable && (
+									<TableHeader scope="col" width="5rem">
+										Select
+									</TableHeader>
+								)}
+								{headers.map(
+									({
+										label,
+										sortKey,
+										textAlign,
+										width,
+										isSortable: isFieldSortable,
+									}) => {
+										if (isTableSortable && isFieldSortable) {
+											const isFieldTheActiveSortField = sort?.field === sortKey;
+											const onClick = () =>
+												setSort?.({
+													field: sortKey,
+													order:
+														sort?.field === sortKey && sort?.order === 'ASC'
+															? 'DESC'
+															: 'ASC',
+												});
+											return (
+												<TableHeaderSortable
+													key={sortKey}
+													textAlign={textAlign}
+													width={width}
+													sort={
+														isFieldTheActiveSortField ? sort?.order : undefined
+													}
+													onClick={onClick}
+												>
+													{label}
+												</TableHeaderSortable>
+											);
+										}
 										return (
-											<TableHeaderSortable
+											<TableHeader
 												key={sortKey}
+												scope="col"
 												textAlign={textAlign}
 												width={width}
-												sort={
-													isFieldTheActiveSortField ? sort?.order : undefined
-												}
-												onClick={onClick}
 											>
 												{label}
-											</TableHeaderSortable>
+											</TableHeader>
 										);
 									}
-									return (
-										<TableHeader
-											key={sortKey}
-											scope="col"
-											textAlign={textAlign}
-											width={width}
-										>
-											{label}
-										</TableHeader>
-									);
-								}
-							)}
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{loading ? (
-							<Fragment>
-								{Array.from(Array(pagination.perPage).keys()).map((i) => (
-									<TableRow key={i}>
-										{selectable && (
+								)}
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{loading ? (
+								<Fragment>
+									{Array.from(Array(pagination.perPage).keys()).map((i) => (
+										<TableRow key={i}>
+											{selectable && (
+												<TableCell>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+											)}
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
-										)}
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonBox height={32} />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-									</TableRow>
-								))}
-							</Fragment>
-						) : (
-							<Fragment>
-								{data.map(
-									({
-										index,
-										id,
-										assignee,
-										businessName,
-										city,
-										state,
-										requestDate,
-										status,
-									}) => {
-										// Adding 2 because the table header row is the first row
-										const rowIndex = index + 2;
-										return (
-											<DataTableRow
-												key={id}
-												selectable={selectable}
-												itemId={id}
-												businessName={businessName}
-												rowIndex={rowIndex}
-											>
-												<TableCell as="th" scope="row">
-													<TextLink href={`#${id}`}>{businessName}</TextLink>
-												</TableCell>
-												<DataTableRowAssignee assignee={assignee} />
-												<TableCell>
-													{city}, {state}
-												</TableCell>
-												<TableCell>
-													{format(requestDate, 'dd/MM/yyyy')}
-												</TableCell>
-												<TableCell>
-													<StatusBadge
-														weight="subtle"
-														{...STATUS_MAP[status]}
-													/>
-												</TableCell>
-											</DataTableRow>
-										);
-									}
-								)}
-							</Fragment>
-						)}
-					</TableBody>
-				</Table>
-			</TableWrapper>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+											<TableCell>
+												<SkeletonBox height={32} />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+										</TableRow>
+									))}
+								</Fragment>
+							) : (
+								<Fragment>
+									{data.map(
+										({
+											index,
+											id,
+											assignee,
+											businessName,
+											city,
+											state,
+											requestDate,
+											status,
+										}) => {
+											// Adding 1 because the table header row is the first row
+											const rowIndex = index + 1;
+											return (
+												<DataTableRow
+													key={id}
+													selectable={selectable}
+													itemId={id}
+													businessName={businessName}
+													rowIndex={rowIndex}
+												>
+													<TableCell as="th" scope="row">
+														<TextLink href={`#${id}`}>{businessName}</TextLink>
+													</TableCell>
+													<DataTableRowAssignee assignee={assignee} />
+													<TableCell>
+														{city}, {state}
+													</TableCell>
+													<TableCell>
+														{format(requestDate, 'dd/MM/yyyy')}
+													</TableCell>
+													<TableCell>
+														<StatusBadge
+															weight="subtle"
+															{...STATUS_MAP[status]}
+														/>
+													</TableCell>
+												</DataTableRow>
+											);
+										}
+									)}
+								</Fragment>
+							)}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+				<DataTableBatchActionsBar />
+			</Stack>
 		);
 	}
 );

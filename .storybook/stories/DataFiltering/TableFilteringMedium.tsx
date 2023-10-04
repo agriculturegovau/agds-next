@@ -93,7 +93,7 @@ export const TableFilteringMedium = ({
 					</Box>
 				)}
 				<DataTable
-					selectable={true}
+					selectable={selectable}
 					//  headingId={headingId}
 				/>
 			</Stack>
