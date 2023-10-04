@@ -5,7 +5,7 @@ import { PaginationContainer } from './PaginationContainer';
 import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
-import { ItemsPerPageSelect } from './PaginationItemsPerPageSelect';
+import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
 
 export type PaginationProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -80,7 +80,6 @@ export function Pagination({
 					}
 				})}
 			</PaginationContainer>
-
 			{hasRightArea && (
 				<Flex
 					gap={1}
@@ -91,7 +90,7 @@ export function Pagination({
 					}}
 				>
 					{itemsPerPage && onChangeItemsPerPage && (
-						<ItemsPerPageSelect
+						<PaginationItemsPerPageSelect
 							value={itemsPerPage}
 							options={itemsPerPageOptions}
 							onChange={onChangeItemsPerPage}
