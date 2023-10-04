@@ -1,6 +1,6 @@
 import { PaginationSelect } from './PaginationSelect';
 
-export const ItemsPerPageSelect = ({
+export const PaginationItemsPerPageSelect = ({
 	value,
 	options = [10, 20, 50, 100],
 	onChange,
