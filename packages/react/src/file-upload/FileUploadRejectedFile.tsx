@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useMemo } from 'react';
 import { FileWithPath } from 'react-dropzone';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -7,7 +7,7 @@ import { Button } from '../button';
 import { boxPalette } from '../core';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
-import { formatFileSize } from './utils';
+import { formatFileSize, getImageThumbnail } from './utils';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 
 type FileUploadRejectedFileProps = {
@@ -24,6 +24,7 @@ export const FileUploadRejectedFile = ({
 	hideThumbnails,
 }: FileUploadRejectedFileProps) => {
 	const showThumbnail = !hideThumbnails;
+	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return (
 		<Flex
 			as="li"
@@ -35,7 +36,7 @@ export const FileUploadRejectedFile = ({
 			}}
 		>
 			<Flex>
-				{showThumbnail && <FileUploadFileThumbnail file={file} />}
+				{showThumbnail && <FileUploadFileThumbnail src={imagePreview} />}
 				<Flex paddingLeft={1} gap={0.5} paddingY={0.75}>
 					<Box flexShrink={0}>
 						<AlertFilledIcon
