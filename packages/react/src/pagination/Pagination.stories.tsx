@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Pagination } from './Pagination';
+import { generatePaginationRangeText } from './utils';
 
 const meta: Meta<typeof Pagination> = {
 	title: 'navigation/Pagination',
@@ -33,21 +34,39 @@ export const CustomLimit: Story = {
 	},
 };
 
-export const itemRangeText: Story = {
+export const standardRangeText: Story = {
+	name: 'Standard range text',
 	args: {
 		currentPage: 5,
-		itemRangeText: 'Showing 1-10 of 300 items',
+		itemRangeText: generatePaginationRangeText({
+			firstItem: 1,
+			lastItem: 10,
+			totalItems: 300,
+		}),
+	},
+};
+
+export const customRangeText: Story = {
+	name: 'Custom range text',
+	args: {
+		currentPage: 5,
+		itemRangeText: '1-10 of 300 certificates',
 	},
 };
 
 export const itemsPerPage: Story = {
 	args: {
-		currentPage: 5,
+		currentPage: 1,
 		itemsPerPage: 10,
 	},
 	render: function Render(args) {
-		const [itemsPerPage, setItemsPerPage] = useState(args.itemsPerPage);
-		const itemRangeText = `Showing 1-${itemsPerPage} of 300 items`;
+		const [itemsPerPage, setItemsPerPage] = useState(args.itemsPerPage || 10);
+		const itemRangeText = generatePaginationRangeText({
+			firstItem: (args.currentPage - 1) * itemsPerPage + 1, // (5 - 1) * 10 + 1 = 41
+			lastItem: args.currentPage * itemsPerPage, // 5 * 10 = 50
+			totalItems: 300,
+		});
+
 		return (
 			<Pagination
 				{...args}
