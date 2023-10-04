@@ -13,12 +13,18 @@ export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
 	activePath?: string;
 	/** Groups of navigation items to display. */
-	items: NavItem[][];
+	items: (
+		| NavItem[]
+		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
+	)[];
 };
 
 export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
-	const bestMatch = findBestMatch(items.flat(), activePath);
+	const bestMatch = findBestMatch(
+		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
+		activePath
+	);
 	return (
 		<Fragment>
 			{/* Desktop */}
