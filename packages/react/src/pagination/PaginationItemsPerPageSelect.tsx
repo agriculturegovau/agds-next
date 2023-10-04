@@ -4,6 +4,7 @@ export const PaginationItemsPerPageSelect = ({
 	value,
 	options = [10, 20, 50, 100],
 	onChange,
+	id = 'pagination-items-per-page',
 }: {
 	/** The selected number of items per page. */
 	value: number;
@@ -11,6 +12,8 @@ export const PaginationItemsPerPageSelect = ({
 	options?: number[];
 	/** Callback when the items per page is changed. */
 	onChange: (value: number) => void;
+	/** The id of the items-per-page select. */
+	id?: string;
 }) => {
 	return (
 		<PaginationSelect
@@ -22,6 +25,7 @@ export const PaginationItemsPerPageSelect = ({
 			value={`${value}`}
 			onChange={(e) => onChange(Number(e.target.value))}
 			maxWidth="sm"
+			id={id}
 		/>
 	);
 };

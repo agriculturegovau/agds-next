@@ -10,7 +10,7 @@ type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 type BaseSelectProps = {
 	autoFocus?: NativeSelectProps['autoFocus'];
 	disabled?: NativeSelectProps['disabled'];
-	id?: NativeSelectProps['id'];
+	id: NativeSelectProps['id'];
 	name?: NativeSelectProps['name'];
 	onBlur?: NativeSelectProps['onBlur'];
 	onChange?: NativeSelectProps['onChange'];
@@ -43,12 +43,9 @@ export const PaginationSelect = ({
 	id,
 	...props
 }: PaginationSelectProps) => {
-	const labelId = `${id}-label`;
-	const selectId = `${id}-select`;
-
 	return (
 		<Flex alignItems="center" gap={1}>
-			<Text as="label" fontWeight="bold" id={labelId}>
+			<Text as="label" fontWeight="bold" htmlFor={id}>
 				{label}
 			</Text>
 
@@ -58,7 +55,7 @@ export const PaginationSelect = ({
 					maxWidth: tokens.maxWidth.field[maxWidth],
 				}}
 			>
-				<select id={selectId} css={selectStyles} {...props}>
+				<select id={id} css={selectStyles} {...props}>
 					<SelectOptions options={options} placeholder={placeholder} />
 				</select>
 				<SelectIcon />
