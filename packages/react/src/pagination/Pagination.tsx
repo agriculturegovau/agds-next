@@ -1,8 +1,11 @@
+import { Flex } from '../flex';
+import { Text } from '../text';
 import { usePagination } from './usePagination';
 import { PaginationContainer } from './PaginationContainer';
 import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
+import { ItemsPerPageSelect } from './PaginationItemsPerPageSelect';
 
 export type PaginationProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -15,6 +18,14 @@ export type PaginationProps = {
 	windowLimit?: number;
 	/** The total number of pages. */
 	totalPages: number;
+	/** Text to describe the range of items shown. */
+	itemRangeText?: string;
+	/** The selected number of items per page. */
+	itemsPerPage?: number;
+	/** The options for the items per page select. */
+	itemsPerPageOptions?: number[];
+	/** Callback when the items per page is changed. */
+	onChangeItemsPerPage?: (itemsPerPage: number) => void;
 };
 
 export function Pagination({
@@ -23,35 +34,72 @@ export function Pagination({
 	windowLimit = 3,
 	currentPage,
 	totalPages,
+	itemRangeText,
+	itemsPerPage,
+	itemsPerPageOptions,
+	onChangeItemsPerPage,
 }: PaginationProps) {
 	const pagination = usePagination({ currentPage, windowLimit, totalPages });
+	const hasRightArea = (itemsPerPage && onChangeItemsPerPage) || itemRangeText;
+
 	return (
-		<PaginationContainer aria-label={ariaLabel}>
-			{pagination.map((item, idx) => {
-				switch (item.type) {
-					case 'direction':
-						return (
-							<PaginationItemDirection
-								key={item.direction}
-								direction={item.direction}
-								href={generateHref(item.pageNumber)}
-							/>
-						);
-					case 'page':
-						return (
-							<PaginationItemPage
-								key={idx}
-								href={generateHref(item.pageNumber)}
-								pageNumber={item.pageNumber}
-								isActive={item.isActive}
-							/>
-						);
-					case 'separator':
-						return <PaginationItemSeparator key={idx} />;
-					default:
-						return null;
-				}
-			})}
-		</PaginationContainer>
+		<Flex
+			gap={2}
+			alignItems="center"
+			justifyContent={hasRightArea ? 'space-between' : 'center'}
+			flexDirection={{
+				xs: 'column',
+				lg: 'row',
+			}}
+			flexWrap="wrap"
+		>
+			<PaginationContainer aria-label={ariaLabel}>
+				{pagination.map((item, idx) => {
+					switch (item.type) {
+						case 'direction':
+							return (
+								<PaginationItemDirection
+									key={item.direction}
+									direction={item.direction}
+									href={generateHref(item.pageNumber)}
+								/>
+							);
+						case 'page':
+							return (
+								<PaginationItemPage
+									key={idx}
+									href={generateHref(item.pageNumber)}
+									pageNumber={item.pageNumber}
+									isActive={item.isActive}
+								/>
+							);
+						case 'separator':
+							return <PaginationItemSeparator key={idx} />;
+						default:
+							return null;
+					}
+				})}
+			</PaginationContainer>
+
+			{hasRightArea && (
+				<Flex
+					gap={1}
+					alignItems="center"
+					flexDirection={{
+						xs: 'column',
+						lg: 'row',
+					}}
+				>
+					{itemsPerPage && onChangeItemsPerPage && (
+						<ItemsPerPageSelect
+							value={itemsPerPage}
+							options={itemsPerPageOptions}
+							onChange={onChangeItemsPerPage}
+						/>
+					)}
+					{itemRangeText && <Text>{itemRangeText}</Text>}
+				</Flex>
+			)}
+		</Flex>
 	);
 }
