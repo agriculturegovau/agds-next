@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Box } from '../box';
+import { tokens } from '../core';
 import { Flex } from '../flex';
 import { FileIcon } from '../icon/icons/FileIcon';
 import { FileWithStatus, getImageThumbnail } from './utils';
@@ -9,10 +10,11 @@ export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 	const width = '4.5rem';
 	return imagePreview ? (
 		<Box
-			rounded
 			flexShrink={0}
 			display={{ xs: 'none', md: 'block' }}
 			css={{
+				borderTopLeftRadius: tokens.borderRadius,
+				borderBottomLeftRadius: tokens.borderRadius,
 				backgroundImage: `url(${imagePreview})`,
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
@@ -22,7 +24,6 @@ export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 	) : (
 		<Flex
 			flexShrink={0}
-			rounded
 			border
 			borderColor="muted"
 			borderWidth="sm"
@@ -30,6 +31,8 @@ export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 			justifyContent="center"
 			display={{ xs: 'none', md: 'flex' }}
 			css={{
+				borderTopLeftRadius: tokens.borderRadius,
+				borderBottomLeftRadius: tokens.borderRadius,
 				width: width,
 			}}
 		>
