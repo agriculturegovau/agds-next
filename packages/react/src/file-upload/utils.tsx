@@ -8,8 +8,7 @@ export type FileWithStatus = FileWithPath & {
 };
 
 export type RejectedFile = {
-	fileName: string;
-	fileSize: number;
+	file: FileWithPath;
 	errors: { message: string; code: string }[];
 };
 
@@ -165,4 +164,12 @@ export function getErrorSummary(
 	}
 
 	return 'There’s an issue with one or more of your files';
+}
+
+/** Creates and returns a URL of the image thumbnail in browser memory.
+ * Returns undefined if the file is not an image. */
+export function getImageThumbnail(file: FileWithPath) {
+	const imageMimeTypes = /image\/(png|jpg|jpeg|webp|heic)/i;
+	const isImageType = file.type.match(imageMimeTypes);
+	return isImageType ? URL.createObjectURL(file) : undefined;
 }

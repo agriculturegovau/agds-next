@@ -6,63 +6,67 @@ import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
-import { FileStatus, formatFileSize } from './utils';
+import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
+import { FileWithStatus, formatFileSize } from './utils';
 
 type FileUploadFileProps = {
-	name: string;
-	size: number;
-	status?: FileStatus;
+	file: FileWithStatus;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
+	hideThumbnails?: boolean;
 };
 
 export const FileUploadFile = ({
-	status = 'none',
-	size,
-	name,
+	file,
+	hideThumbnails,
 	onRemove,
 }: FileUploadFileProps) => {
+	const { name, size, status = 'none' } = file;
+	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
 			rounded
-			alignItems="center"
 			as="li"
 			aria-label={`${status === 'success' ? 'Uploaded file' : 'File'}. ${name}`}
-			paddingY={0.5}
-			paddingLeft={1}
+			gap={0.5}
 			justifyContent="space-between"
 			css={{ backgroundColor: TONE_MAP[status] }}
 		>
-			<Flex alignItems="center" gap={0.5}>
-				{status == 'success' && (
-					<Box flexShrink={0}>
-						<SuccessFilledIcon
-							color="success"
-							size="md"
-							aria-hidden="false"
-							aria-label="Success"
-							css={{ display: 'block' }}
-						/>
-					</Box>
-				)}
-				<Text css={{ wordBreak: 'break-all' }}>
-					{name} ({formatFileSize(size)})
-				</Text>
+			<Flex>
+				{showThumbnail && <FileUploadFileThumbnail file={file} />}
+				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
+					{status == 'success' && (
+						<Box flexShrink={0}>
+							<SuccessFilledIcon
+								color="success"
+								size="md"
+								aria-hidden="false"
+								aria-label="Success"
+								css={{ display: 'block' }}
+							/>
+						</Box>
+					)}
+					<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
+						{name} ({formatFileSize(size)})
+					</Text>
+				</Flex>
 			</Flex>
-			<Box flexShrink={0}>
+			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
 				{status === 'uploading' ? (
-					<Box paddingY={1} paddingX={1.5}>
+					<Box paddingY={1}>
 						<LoadingDots label="uploading" />
 					</Box>
 				) : (
-					<Button
-						variant="tertiary"
-						onClick={onRemove}
-						aria-label={`Remove file, ${name}`}
-					>
-						Remove file
-					</Button>
+					<Box>
+						<Button
+							variant="text"
+							onClick={onRemove}
+							aria-label={`Remove file, ${name}`}
+						>
+							Remove file
+						</Button>
+					</Box>
 				)}
-			</Box>
+			</Flex>
 		</Flex>
 	);
 };

@@ -1,9 +1,13 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
+import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUploadRejectedFile> = {
 	title: 'forms/FileUpload/Primitives/FileUploadRejectedFile',
 	component: FileUploadRejectedFile,
+	args: {
+		hideThumbnails: false,
+	},
 };
 
 export default meta;
@@ -13,8 +17,7 @@ type Story = StoryObj<typeof FileUploadRejectedFile>;
 export const FileSize: Story = {
 	args: {
 		errors: [{ message: 'File size exceeds 10MB', code: 'file-too-large' }],
-		fileName: 'ExampleFile.jpg',
-		fileSize: 10_500_000,
+		file: createExampleImageFile(),
 	},
 };
 
@@ -27,8 +30,7 @@ export const InvalidType: Story = {
 				code: 'file-invalid-type',
 			},
 		],
-		fileName: 'ExampleFile.jpg',
-		fileSize: 4580,
+		file: createExampleFile(),
 	},
 };
 
@@ -42,7 +44,6 @@ export const Multiple: Story = {
 				code: 'file-invalid-type',
 			},
 		],
-		fileName: 'ExampleFile.jpg',
-		fileSize: 11_000_000,
+		file: createExampleFile(),
 	},
 };

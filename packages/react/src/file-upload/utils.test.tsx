@@ -4,6 +4,7 @@ import {
 	formatFileSize,
 	formatFileExtension,
 } from './utils';
+import { createExampleFile } from './test-utils';
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
@@ -13,8 +14,7 @@ describe('getErrorSummary', () => {
 	it('returns a message if there is a single rejection', () => {
 		const rejections = [
 			{
-				fileName: 'example.txt',
-				fileSize: 100000,
+				file: createExampleFile(),
 				errors: [
 					{
 						code: 'file-too-large',
@@ -32,8 +32,7 @@ describe('getErrorSummary', () => {
 	it('returns a message if there are multiple files too large', () => {
 		const rejections = [
 			{
-				fileName: 'example.txt',
-				fileSize: 100000,
+				file: createExampleFile(),
 				errors: [
 					{
 						code: 'file-too-large',
@@ -42,8 +41,7 @@ describe('getErrorSummary', () => {
 				],
 			},
 			{
-				fileName: 'example2.txt',
-				fileSize: 100000,
+				file: createExampleFile(),
 				errors: [
 					{
 						code: 'file-too-large',

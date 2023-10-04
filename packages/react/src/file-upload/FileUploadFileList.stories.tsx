@@ -1,34 +1,68 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { FileUploadFileList } from './FileUploadFileList';
-import { FileStatus, FileWithStatus } from './utils';
+import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUploadFileList> = {
 	title: 'forms/FileUpload/Primitives/FileUploadFileList',
 	component: FileUploadFileList,
+	args: {
+		hideThumbnails: false,
+	},
 };
 
 export default meta;
 
 type Story = StoryObj<typeof FileUploadFileList>;
 
-function createExampleFile(status?: FileStatus) {
-	const file: FileWithStatus = new File(['example'], 'example.jpg', {
-		type: 'image/jpeg',
-	});
-	file.status = status;
-	return file;
-}
-
 export const Basic: Story = {
 	args: {
-		files: [createExampleFile(), createExampleFile(), createExampleFile()],
+		files: [
+			createExampleFile({
+				name: 'example.pdf',
+				type: 'application/pdf',
+			}),
+			createExampleFile(),
+			createExampleFile(),
+		],
+		onRemove: (id) => console.log(id),
+	},
+};
+
+export const MixedFiles: Story = {
+	args: {
+		files: [
+			createExampleFile({
+				name: 'example.pdf',
+				type: 'application/pdf',
+			}),
+			createExampleImageFile(),
+			createExampleFile(),
+		],
 		onRemove: (id) => console.log(id),
 	},
 };
 
 export const Uploading: Story = {
 	args: {
-		files: [createExampleFile('uploading'), createExampleFile('success')],
+		files: [
+			createExampleFile({ status: 'uploading' }),
+			createExampleFile({ status: 'success' }),
+		],
+		onRemove: (id) => console.log(id),
+	},
+};
+
+export const HiddenThumbnails: Story = {
+	args: {
+		hideThumbnails: true,
+		files: [
+			createExampleFile({
+				name: 'example.pdf',
+				type: 'application/pdf',
+			}),
+			createExampleImageFile(),
+			createExampleFile(),
+		],
 		onRemove: (id) => console.log(id),
 	},
 };

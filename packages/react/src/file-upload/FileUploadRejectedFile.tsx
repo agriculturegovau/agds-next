@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+import { FileWithPath } from 'react-dropzone';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -7,62 +8,64 @@ import { boxPalette } from '../core';
 import { AlertFilledIcon } from '../icon';
 import { Text } from '../text';
 import { formatFileSize } from './utils';
+import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 
 type FileUploadRejectedFileProps = {
-	fileName: string;
-	fileSize: number;
+	hideThumbnails: boolean;
 	errors: { message: string; code: string }[];
+	file: FileWithPath;
 	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadRejectedFile = ({
-	fileName,
-	fileSize,
+	file,
 	errors,
 	onRemove,
+	hideThumbnails,
 }: FileUploadRejectedFileProps) => {
+	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
 			as="li"
 			gap={0.5}
-			alignItems="flex-start"
 			rounded
-			flexDirection="row"
 			justifyContent="space-between"
-			paddingY={1}
-			paddingLeft={1}
 			css={{
 				background: boxPalette.systemErrorMuted,
 			}}
 		>
-			<Flex gap={0.5}>
-				<Box flexShrink={0}>
-					<AlertFilledIcon
-						color="error"
-						size="md"
-						aria-hidden="false"
-						aria-label="Error"
-						css={{ display: 'block' }}
-					/>
-				</Box>
-				<Stack gap={0.5}>
-					<Text fontWeight="bold" color="error">
-						{fileName} ({formatFileSize(fileSize)}) could not be selected
-					</Text>
-					<ul css={{ margin: 0, padding: 0 }}>
-						{errors.map(({ message }, index) => (
-							<Text as="li" key={index} css={{ listStyle: 'inside' }}>
-								{message}
-							</Text>
-						))}
-					</ul>
-				</Stack>
+			<Flex>
+				{showThumbnail && <FileUploadFileThumbnail file={file} />}
+				<Flex paddingLeft={1} gap={0.5} paddingY={0.75}>
+					<Box flexShrink={0}>
+						<AlertFilledIcon
+							color="error"
+							size="md"
+							aria-hidden="false"
+							aria-label="Error"
+							css={{ display: 'block' }}
+						/>
+					</Box>
+					<Stack gap={0.5}>
+						<Text fontWeight="bold" color="error">
+							{file.name} ({formatFileSize(file.size)}) could not be selected
+						</Text>
+						<ul css={{ margin: 0, padding: 0 }}>
+							{errors.map(({ message }, index) => (
+								<Text as="li" key={index} css={{ listStyle: 'inside' }}>
+									{message}
+								</Text>
+							))}
+						</ul>
+					</Stack>
+				</Flex>
 			</Flex>
-			<Box flexShrink={0}>
-				<Button variant="tertiary" onClick={onRemove}>
+
+			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
+				<Button variant="text" onClick={onRemove}>
 					Remove file
 				</Button>
-			</Box>
+			</Flex>
 		</Flex>
 	);
 };

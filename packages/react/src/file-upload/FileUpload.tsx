@@ -42,6 +42,8 @@ type BaseInputProps = {
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file MIME types, e.g. `image/jpeg`, `application/pdf`. */
 	accept?: (AcceptedFileMimeTypes | CustomFileMimeType)[];
+	/** If true, the thumbnails will be hidden. */
+	hideThumbnails?: boolean;
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -73,6 +75,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			disabled,
 			label,
 			hideOptionalLabel,
+			hideThumbnails = false,
 			maxFiles,
 			maxSize,
 			multiple,
@@ -100,7 +103,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const handleRemoveRejection = (fileName: string) => {
 			setFileRejections(
-				fileRejections.filter((err) => err.fileName !== fileName)
+				fileRejections.filter((err) => err.file.name !== fileName)
 			);
 		};
 
@@ -163,8 +166,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		useEffect(() => {
 			setFileRejections(
 				dropzoneFileRejections.map(({ file, errors }) => ({
-					fileName: file.name,
-					fileSize: file.size,
+					file,
 					errors: errors.map((error) => ({
 						code: error.code,
 						message: getFileRejectionErrorMessage(
@@ -270,12 +272,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										<FileUploadFileList
 											files={value}
 											onRemove={handleRemoveFile}
+											hideThumbnails={hideThumbnails}
 										/>
 									) : null}
 									{fileRejections.length ? (
 										<FileUploadRejectedFileList
 											fileRejections={fileRejections}
 											handleRemoveRejection={handleRemoveRejection}
+											hideThumbnails={hideThumbnails}
 										/>
 									) : null}
 								</Stack>

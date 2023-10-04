@@ -13,6 +13,7 @@ import { Button } from '../button';
 import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { FileWithStatus } from './utils';
+import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUpload> = {
 	title: 'forms/FileUpload',
@@ -21,17 +22,24 @@ const meta: Meta<typeof FileUpload> = {
 		const [value, setValue] = useState<FileWithStatus[]>(initialValue);
 		return <FileUpload {...props} value={value} onChange={setValue} />;
 	},
+	args: {
+		hideThumbnails: false,
+	},
 };
 
-const exampleFile = new File(['this is an example file'], 'example.jpg', {
-	type: 'image/jpeg',
-});
+const exampleFile = createExampleFile();
 
 export default meta;
 
 type Story = StoryObj<typeof FileUpload>;
 
 export const Basic: Story = {
+	args: {
+		label: 'Drivers licence',
+	},
+};
+
+export const Populated: Story = {
 	args: {
 		label: 'Drivers licence',
 		value: [exampleFile],
@@ -107,6 +115,18 @@ export const MultipleImages: Story = {
 		maxFiles: 3,
 		accept: ['image/jpeg', 'image/png', 'image/heic'],
 		multiple: true,
+		value: [
+			createExampleImageFile(),
+			createExampleImageFile(),
+			createExampleImageFile(),
+		],
+	},
+};
+
+export const HiddenThumbnails: Story = {
+	args: {
+		label: 'Drivers licence',
+		hideThumbnails: true,
 	},
 };
 

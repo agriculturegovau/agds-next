@@ -100,6 +100,7 @@ export {
 	ExternalLinkIcon,
 	FacebookIcon,
 	FactoryIcon,
+	FileIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,

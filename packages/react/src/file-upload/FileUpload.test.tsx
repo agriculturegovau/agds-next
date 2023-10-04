@@ -28,6 +28,15 @@ function FileUploadExample(props?: Partial<FileUploadProps>) {
 }
 
 describe('FileUpload', () => {
+	/* URL.createObjectURL is not available in JSDOM, so we mock it out */
+	window.URL.createObjectURL = jest.fn();
+
+	afterEach(() => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		window.URL.createObjectURL.mockReset();
+	});
+
 	describe('Basic', () => {
 		it('renders correctly', () => {
 			const { container } = render(<FileUploadExample />);
