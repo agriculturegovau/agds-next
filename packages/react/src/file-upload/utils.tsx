@@ -12,6 +12,13 @@ export type RejectedFile = {
 	errors: { message: string; code: string }[];
 };
 
+export type ExistingFile = {
+	name: string;
+	size: number;
+	thumbnailSrc?: string;
+	onDelete: () => void;
+};
+
 export function formatFileSize(bytes: number) {
 	return filesize(bytes);
 }
