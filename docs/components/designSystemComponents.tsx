@@ -186,7 +186,11 @@ export {
 	HeroSubcategoryBannerTitle,
 } from '@ag.ds-next/react/hero-banner';
 export { LoadingDots, LoadingBlanket } from '@ag.ds-next/react/loading';
-export { Pagination, PaginationButtons } from '@ag.ds-next/react/pagination';
+export {
+	Pagination,
+	PaginationButtons,
+	generatePaginationRangeText,
+} from '@ag.ds-next/react/pagination';
 export {
 	SkeletonHeading,
 	SkeletonText,
