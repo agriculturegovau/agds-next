@@ -1,0 +1,60 @@
+---
+date: 4th October 2023
+title: AgDS Beta v1.13.0 release
+description: Small patches to App layout, extended Table primitives to support batch actions, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Fixed small issue in `AppLayoutSidebar` where the text color wasn't being applied correctly to text list items in dark mode
+- Extended the `items` prop in `AppLayoutSidebar` to accept an object with `options` and `items`. This allows consumers to control the padding between sidebar navigation groups.
+
+### [File upload](/components/file-upload)
+
+- Added thumbnails to selected files. This can be disabled via a new `hideThumbnails` prop
+- Extended the `accept` prop so MIME types that are not in the predefined list can be used
+- Exported `formatFileSize` utility function. Example usage: `import { formatFileSize } from '@ag.ds-next/react/file-upload'`
+- Upgraded internal `react-dropzone` dependency
+
+### [Icon](/components/icon)
+
+- Created new icon `FileIcon`
+
+### [table](/components/table)
+
+- Created new components for batch table actions: `TableBatchActionsBar` and `TableBatchActionsTitle`
+
+- Created new `TableRow` component. If you're using the standard `<tr>` HTML element, you can optionally upgrade to this new component.
+
+```diff
+<Table>
+  <TableHead>
+-   <tr>
++   <TableRow>
+      <TableHeader scope="col">Location</TableHeader>
+      <TableHeader scope="col">Population</TableHeader>
+-   </tr>
++   </TableRow>
+  </TableHead>
+  <TableBody>
+-   <tr>
++   <TableRow>
+      <TableCell>New South Wales</TableCell>
+      <TableCell>7,670,700</TableCell>
+-   <tr>
++   </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.13.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1402) for this release.
