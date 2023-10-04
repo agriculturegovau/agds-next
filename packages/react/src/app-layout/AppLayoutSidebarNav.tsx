@@ -25,7 +25,10 @@ export type NavItem = (NavLink | NavButton) & {
 
 export type AppLayoutSidebarNavProps = {
 	activePath?: string;
-	items: NavItem[][];
+	items: (
+		| NavItem[]
+		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
+	)[];
 	className?: string;
 };
 
@@ -36,24 +39,37 @@ export function AppLayoutSidebarNav({
 	return (
 		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
-				{items.map((group, idx, arr) => {
-					const groupHasSingleItem = group.length === 1;
-					const nextGroupHasSingleItem = items[idx + 1]?.length === 1;
-					const isLastItem = idx === arr.length - 1;
+				{items.map((group, idx) => {
+					const isFirstItem = idx === 0;
+					const groupItems = Array.isArray(group) ? group : group.items;
+
+					const disableGroupPadding = Array.isArray(group)
+						? false
+						: Boolean(group.options?.disableGroupPadding);
+
+					const prevGroup = items[idx - 1];
+					const prevGroupDisableGroupPadding = prevGroup
+						? Array.isArray(prevGroup)
+							? false
+							: Boolean(prevGroup.options?.disableGroupPadding)
+						: false;
+
 					return (
 						<Fragment key={idx}>
-							{group.map((item, idx) => (
+							{!isFirstItem ? (
+								<AppLayoutSidebarNavDivider
+									// As the divider is placed at the start of each group, padding top is determined by the previous group
+									disablePaddingTop={prevGroupDisableGroupPadding}
+									disablePaddingBottom={disableGroupPadding}
+								/>
+							) : null}
+							{groupItems.map((item, idx) => (
 								<AppLayoutSidebarNavListItem
 									key={idx}
 									item={item}
 									activePath={activePath}
 								/>
 							))}
-							{!isLastItem ? (
-								<AppLayoutSidebarNavDivider
-									disablePaddingY={groupHasSingleItem || nextGroupHasSingleItem}
-								/>
-							) : null}
 						</Fragment>
 					);
 				})}
@@ -150,6 +166,7 @@ function AppLayoutSidebarNavItemInner({
 					position: 'relative',
 					display: 'flex',
 					alignItems: 'center',
+
 					gap: mapSpacing(0.75),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 					...(isActive && {
@@ -199,12 +216,19 @@ function AppLayoutSidebarNavItemInner({
 }
 
 function AppLayoutSidebarNavDivider({
-	disablePaddingY,
+	disablePaddingTop,
+	disablePaddingBottom,
 }: {
-	disablePaddingY: boolean;
+	disablePaddingTop: boolean;
+	disablePaddingBottom: boolean;
 }) {
 	return (
-		<Box as="li" paddingY={disablePaddingY ? 0 : 1} aria-hidden="true">
+		<Box
+			as="li"
+			paddingTop={disablePaddingTop ? 0 : 1}
+			paddingBottom={disablePaddingBottom ? 0 : 1}
+			aria-hidden="true"
+		>
 			<hr
 				css={{
 					boxSizing: 'content-box',

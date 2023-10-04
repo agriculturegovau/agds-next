@@ -25,27 +25,33 @@ import {
 } from '../dropdown-menu';
 
 export const navigationItems = (businessName: string) => [
-	[
-		{
-			label: 'Back to my account',
-			icon: ChevronsLeftIcon,
-			href: '/account',
-		},
-	],
-	[
-		{
-			label: (
-				<Fragment>
-					<Text fontWeight="bold" fontSize="xs">
-						{businessName}
-					</Text>
-					<Text color="muted" fontSize="xs">
-						ABN: 00 000 000 000
-					</Text>
-				</Fragment>
-			),
-		},
-	],
+	{
+		options: { disableGroupPadding: true },
+		items: [
+			{
+				label: 'Back to my account',
+				icon: ChevronsLeftIcon,
+				href: '/account',
+			},
+		],
+	},
+	{
+		options: { disableGroupPadding: true },
+		items: [
+			{
+				label: (
+					<Fragment>
+						<Text fontWeight="bold" fontSize="xs">
+							{businessName}
+						</Text>
+						<Text color="muted" fontSize="xs">
+							ABN: 00 000 000 000
+						</Text>
+					</Fragment>
+				),
+			},
+		],
+	},
 	[
 		{
 			label: 'Dashboard',
@@ -68,23 +74,8 @@ export const navigationItems = (businessName: string) => [
 			href: '/compliance',
 		},
 	],
+
 	[
-		{
-			label: 'Messages',
-			icon: EmailIcon,
-			href: '/account/messages',
-			endElement: (
-				<span>
-					<NotificationBadge tone="action" value={6} max={99} aria-hidden />
-					<VisuallyHidden>, 6 unread</VisuallyHidden>
-				</span>
-			),
-		},
-		{
-			label: 'Account settings',
-			icon: SettingsIcon,
-			href: '/account/settings',
-		},
 		{
 			label: 'Help',
 			icon: HelpIcon,

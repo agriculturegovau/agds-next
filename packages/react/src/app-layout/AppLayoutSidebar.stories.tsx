@@ -40,7 +40,8 @@ export const WithoutIcons: Story = {
 	args: {
 		activePath: '/establishments',
 		items: navigationItems('Antfix').map((group) => {
-			return group.map((item) => {
+			const groupItems = Array.isArray(group) ? group : group.items;
+			return groupItems.map((item) => {
 				return { ...item, icon: undefined };
 			});
 		}),

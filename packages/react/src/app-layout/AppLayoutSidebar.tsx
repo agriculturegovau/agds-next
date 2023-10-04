@@ -13,7 +13,10 @@ export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
 	activePath?: string;
 	/** Groups of navigation items to display. */
-	items: NavItem[][];
+	items: (
+		| NavItem[]
+		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
+	)[];
 };
 
 export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
