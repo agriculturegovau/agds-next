@@ -18,10 +18,9 @@ import {
 	useWindowSize,
 	useAriaModalPolyfill,
 	packs,
-	useBoxPalette,
 	BoxPalette,
 } from '../core';
-import { hoverMap, MainNavBackground, localPaletteVars } from './utils';
+import { hoverMap, MainNavBackground, localPaletteVars, ids } from './utils';
 import { CloseButton, OpenButton } from './MenuButtons';
 
 export type NavContainerProps = PropsWithChildren<{
@@ -46,9 +45,6 @@ export function NavContainer({
 
 	const menuVisiblyOpen =
 		menuOpen && (windowWidth || 0) <= tokens.breakpoint.lg - 1;
-
-	// As the main nav element sometimes renders in a portal for a11y reasons, we need to know about the current box palette
-	const palette = useBoxPalette(containerRef);
 
 	return (
 		<Box
@@ -76,11 +72,7 @@ export function NavContainer({
 					paddingX={{ xs: 0.75, lg: 2 }}
 				>
 					{hasItems ? <OpenButton onClick={open} /> : null}
-					<NavContainerDialog
-						palette={palette}
-						menuVisiblyOpen={menuVisiblyOpen}
-						close={close}
-					>
+					<NavContainerDialog menuVisiblyOpen={menuVisiblyOpen} close={close}>
 						{children}
 					</NavContainerDialog>
 					{rightContent}
@@ -103,7 +95,6 @@ function NavContainerDialog({
 	children,
 	close,
 	menuVisiblyOpen,
-	palette,
 }: NavContainerDialogProps) {
 	// Close the component when the user presses the escape key
 	useEffect(() => {
@@ -124,7 +115,6 @@ function NavContainerDialog({
 	const element = (
 		<Box
 			ref={modalContainerRef}
-			palette={palette}
 			{...(menuVisiblyOpen
 				? {
 						role: 'dialog',
@@ -132,7 +122,7 @@ function NavContainerDialog({
 						'aria-modal': 'true',
 				  }
 				: null)}
-			id="main-nav-dialog"
+			id={ids.dialog}
 			css={{
 				[tokens.mediaQuery.max.md]: {
 					zIndex: tokens.zIndex.dialog,
@@ -145,7 +135,6 @@ function NavContainerDialog({
 					width: '100%',
 					maxWidth: MOBILE_MAX_WIDTH,
 					padding: mapSpacing(1),
-					boxSizing: 'border-box',
 					overflowY: 'auto',
 				},
 			}}

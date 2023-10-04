@@ -50,7 +50,7 @@ exports[`MainNav renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="css-1pzon0t-light-boxStyles-element"
+          class="css-15ay299-boxStyles-element"
           id="main-nav-dialog"
         >
           <div
@@ -103,7 +103,7 @@ exports[`MainNav renders correctly 1`] = `
               class="css-ijor8a-boxStyles"
             >
               <ul
-                class="css-5nrt7j-boxStyles-NavListContainer"
+                class="css-1p6h2o9-boxStyles-NavListContainer"
               >
                 <li
                   class="css-1a7bmr9-boxStyles-NavListItem"

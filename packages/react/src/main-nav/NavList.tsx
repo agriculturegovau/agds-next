@@ -95,7 +95,7 @@ function NavListContainer({
 							'& > li': {
 								borderTopWidth: tokens.borderWidth.sm,
 								borderTopStyle: 'solid',
-								borderTopColor: boxPalette.border,
+								borderTopColor: boxPalette.borderMuted,
 							},
 						},
 					}}

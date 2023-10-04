@@ -10,7 +10,12 @@ export const localPaletteVars = {
 	linkActiveBg: '--nav-linkActiveBg',
 	bottomBar: '--nav-bottomBar',
 };
+
 export const localPalette = {
 	linkHoverBg: `var(${localPaletteVars.linkHoverBg})`,
 	linkActiveBg: `var(${localPaletteVars.linkActiveBg})`,
+};
+
+export const ids = {
+	dialog: 'main-nav-dialog',
 };
