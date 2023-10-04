@@ -1,5 +1,69 @@
 # @ag.ds-next/react
 
+## 1.13.0
+
+### Minor Changes
+
+- 5cc29a9c0f: table: Created new components for batch table actions: `TableBatchActionsBar` and `TableBatchActionsTitle`
+- 6460150058: app-layout: Extended the `items` prop in `AppLayoutSidebar` to accept an object with `options` and `items`. This allows consumers to control the padding between sidebar navigation groups.
+
+  ```tsx
+  <AppLayoutSidebar
+  	activePath="/"
+  	items={[
+  		// pass an object with `options` and `items`
+  		{
+  			options: { disableGroupPadding: true },
+  			items: [{ label: 'Item A' }],
+  		},
+  		// pass an array of items
+  		[
+  			{ label: 'Item B', href: '/b' },
+  			{ label: 'Item C', href: '/c' },
+  			{ label: 'Item D', href: '/c' },
+  		],
+  	]}
+  />
+  ```
+
+- 61b5fabd85: icon: Created FileIcon
+- 862840c9bf: file-upload: Upgraded `react-dropzone` dependency
+
+  file-upload: Extended the `accept` prop so MIME types that are not in the predefined list can be used
+
+- b3e2e03b04: table: Created new `TableRow` component. If you're using the standard `<tr>` HTML element, you can optionally upgrade to this new component.
+
+  ```diff
+  <Table>
+    <TableHead>
+  -   <tr>
+  +   <TableRow>
+        <TableHeader scope="col">Location</TableHeader>
+        <TableHeader scope="col">Population</TableHeader>
+  -   </tr>
+  +   </TableRow>
+    </TableHead>
+    <TableBody>
+  -   <tr>
+  +   <TableRow>
+        <TableCell>New South Wales</TableCell>
+        <TableCell>7,670,700</TableCell>
+  -   <tr>
+  +   </TableRow>
+    </TableBody>
+  </Table>
+  ```
+
+### Patch Changes
+
+- 61b5fabd85: file-upload: Added thumbnails to selected files
+- 431294adf2: app-layout: Fixed small issue in `AppLayoutSidebar` where the text color wasn't being applied correctly to text list items in dark mode
+- bd89ce82ad: file-upload: Exported `formatFileSize` utility function. Example usage:
+
+  ```tsx
+  import { formatFileSize } from '@ag.ds-next/react/file-upload';
+  ```
+
 ## 1.12.0
 
 ### Minor Changes
