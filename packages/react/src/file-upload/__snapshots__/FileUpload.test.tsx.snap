@@ -112,7 +112,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
               class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-ndr35g-boxStyles-FileUploadFileThumbnail"
+                class="css-1xdd4ff-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
