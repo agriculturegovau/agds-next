@@ -1,7 +1,7 @@
 export * from './FileUpload';
+export { formatFileSize } from './utils';
 export type {
 	AcceptedFileMimeTypes,
 	FileWithStatus,
 	RejectedFile,
-	formatFileSize,
 } from './utils';
