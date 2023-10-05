@@ -19,9 +19,10 @@ Selected rows have a solid action coloured outline, which is achieved by setting
 		<Table>
 			<TableHead>
 				<TableRow>
-					<TableHeader scope="col">Select</TableHeader>
-					<TableHeader scope="col">Example Column</TableHeader>
-					<TableHeader scope="col">Example Column</TableHeader>
+					<TableHeader>Select</TableHeader>
+					<TableHeader scope="col">Reference</TableHeader>
+					<TableHeader scope="col">Date submitted</TableHeader>
+					<TableHeader scope="col">Actions</TableHeader>
 				</TableRow>
 			</TableHead>
 			<TableBody>
@@ -35,8 +36,16 @@ Selected rows have a solid action coloured outline, which is achieved by setting
 							<VisuallyHidden>Select row</VisuallyHidden>
 						</Checkbox>
 					</TableCell>
-					<TableCell>Example Row</TableCell>
-					<TableCell>Example Row</TableCell>
+					<TableCell as="th" scope="row" fontWeight="bold">
+						<TextLink href="#">REF-AB3CD4EF</TextLink>
+					</TableCell>
+					<TableCell>20/06/2022</TableCell>
+					<TableCell>
+						<Flex gap={1}>
+							<TextLink href="#">Download</TextLink>
+							<TextLink href="#">Delete</TextLink>
+						</Flex>
+					</TableCell>
 				</TableRow>
 			</TableBody>
 		</Table>
@@ -90,9 +99,10 @@ Unlike the checkboxes in each row, the "Select all rows" checkbox above the tabl
 			<Table>
 				<TableHead>
 					<TableRow>
-						<TableHeader scope="col">Select</TableHeader>
-						<TableHeader scope="col">Example Column</TableHeader>
-						<TableHeader scope="col">Example Column</TableHeader>
+						<TableHeader>Select</TableHeader>
+						<TableHeader scope="col">Reference</TableHeader>
+						<TableHeader scope="col">Date submitted</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -109,8 +119,16 @@ Unlike the checkboxes in each row, the "Select all rows" checkbox above the tabl
 										<VisuallyHidden>Select</VisuallyHidden>
 									</Checkbox>
 								</TableCell>
-								<TableCell>Example Row {idx + 1}</TableCell>
-								<TableCell>Example Row</TableCell>
+								<TableCell as="th" scope="row" fontWeight="bold">
+									<TextLink href="#">REF-AB3CD4EF</TextLink>
+								</TableCell>
+								<TableCell>20/06/2022</TableCell>
+								<TableCell>
+									<Flex gap={1}>
+										<TextLink href="#">Download</TextLink>
+										<TextLink href="#">Delete</TextLink>
+									</Flex>
+								</TableCell>
 							</TableRow>
 						);
 					})}
@@ -181,9 +199,10 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableHeader scope="col">Select</TableHeader>
-							<TableHeader scope="col">Example Column</TableHeader>
-							<TableHeader scope="col">Example Column</TableHeader>
+							<TableHeader>Select</TableHeader>
+							<TableHeader scope="col">Reference</TableHeader>
+							<TableHeader scope="col">Date submitted</TableHeader>
+							<TableHeader scope="col">Actions</TableHeader>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -200,8 +219,16 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 											<VisuallyHidden>Select</VisuallyHidden>
 										</Checkbox>
 									</TableCell>
-									<TableCell>Example Row {idx + 1}</TableCell>
-									<TableCell>Example Row</TableCell>
+									<TableCell as="th" scope="row" fontWeight="bold">
+										<TextLink href="#">REF-AB3CD4EF</TextLink>
+									</TableCell>
+									<TableCell>20/06/2022</TableCell>
+									<TableCell>
+										<Flex gap={1}>
+											<TextLink href="#">Download</TextLink>
+											<TextLink href="#">Delete</TextLink>
+										</Flex>
+									</TableCell>
 								</TableRow>
 							);
 						})}
@@ -215,7 +242,7 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 					</TableBatchActionsTitle>
 					<ButtonGroup>
 						<Button variant="secondary" size="sm">
-							Example action
+							Download
 						</Button>
 						<Button variant="secondary" size="sm">
 							Delete

@@ -583,9 +583,10 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableHeader scope="col">Select</TableHeader>
-							<TableHeader scope="col">Example Column</TableHeader>
-							<TableHeader scope="col">Example Column</TableHeader>
+							<TableHeader>Select</TableHeader>
+							<TableHeader scope="col">Reference</TableHeader>
+							<TableHeader scope="col">Date submitted</TableHeader>
+							<TableHeader scope="col">Actions</TableHeader>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -602,8 +603,16 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 											<VisuallyHidden>Select</VisuallyHidden>
 										</Checkbox>
 									</TableCell>
-									<TableCell>Example Row {idx + 1}</TableCell>
-									<TableCell>Example Row</TableCell>
+									<TableCell as="th" scope="row" fontWeight="bold">
+										<TextLink href="#">REF-AB3CD4EF</TextLink>
+									</TableCell>
+									<TableCell>20/06/2022</TableCell>
+									<TableCell>
+										<Flex gap={1}>
+											<TextLink href="#">Download</TextLink>
+											<TextLink href="#">Delete</TextLink>
+										</Flex>
+									</TableCell>
 								</TableRow>
 							);
 						})}
@@ -613,15 +622,17 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 			{selectedRows.length > 0 ? (
 				<TableBatchActionsBar>
 					<TableBatchActionsTitle>
-						Apply action to {selectedRows.length}{' '}
-						{selectedRows.length === 1 ? 'item' : 'items'}
+						Apply action to {selectedRows.length} items
 					</TableBatchActionsTitle>
 					<ButtonGroup>
 						<Button variant="secondary" size="sm">
-							Example action
+							Download
 						</Button>
-						<Button variant="tertiary" size="sm">
+						<Button variant="secondary" size="sm">
 							Delete
+						</Button>
+						<Button variant="tertiary" size="sm" onClick={toggleAllRows}>
+							Cancel
 						</Button>
 					</ButtonGroup>
 				</TableBatchActionsBar>

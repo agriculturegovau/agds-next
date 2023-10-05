@@ -15,6 +15,7 @@ import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { H2, Heading } from '@ag.ds-next/react/heading';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Box } from '@ag.ds-next/react/box';
@@ -119,7 +120,7 @@ export function SelectableTableBatchActions() {
 											<TableHead>
 												<TableRow>
 													<TableHeader scope="col" width="6rem">
-														Selection
+														Select
 													</TableHeader>
 													<TableHeader scope="col">
 														Certificate number
@@ -260,8 +261,8 @@ function Row({
 						aria-label={`Select certificate ${certNumber}`}
 					/>
 				</TableCell>
-				<TableCell as="th" scope="row">
-					{certNumber}
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
 				<TableCell>{exporter}</TableCell>
 				<TableCell>11/02/22 14:06</TableCell>
