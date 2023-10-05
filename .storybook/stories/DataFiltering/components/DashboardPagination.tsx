@@ -39,13 +39,12 @@ export const getPaginationText = ({
 }) => {
 	if (loading) return 'Audits';
 
-	const totalItemsPlural = totalItems === 1 ? '1 item' : `${totalItems} items`;
-	const firstItem = (pagination.page - 1) * pagination.perPage + 1;
-	const lastItem =
-		(pagination.page - 1) * pagination.perPage + pagination.perPage;
+	if (totalItems === 1) return '1 Audit';
 
-	const rangeExceedsTotalItems = lastItem > totalItems;
-	if (rangeExceedsTotalItems) return `Audits (${totalItemsPlural})`;
+	const { page, perPage } = pagination;
 
-	return `${firstItem} - ${lastItem} of ${totalItemsPlural} Audits`;
+	const firstItem = (page - 1) * perPage + 1;
+	const lastItem = (page - 1) * perPage + perPage;
+
+	return `${firstItem} - ${lastItem} of ${totalItems} Audits`;
 };
