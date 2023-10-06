@@ -7,6 +7,7 @@ export type DropdownMenuContextType = {
 	openMenu: () => void;
 	closeMenu: () => void;
 	toggleMenu: () => void;
+	descendantNodes: NodeListOf<HTMLDivElement> | undefined;
 	// Actions
 	goToPreviousMenuItem: () => void;
 	goToNextMenuItem: () => void;

@@ -4,6 +4,7 @@ import {
 	KeyboardEvent,
 	useCallback,
 } from 'react';
+import { visuallyHiddenStyles } from '../a11y';
 import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
@@ -48,7 +49,10 @@ export function DropdownMenuPanel({
 
 	const { style, ref: popoverRef } = popover.getPopoverProps();
 
-	if (!isMenuOpen) return null;
+	// Ensures the `DropdownMenuButton` component has a valid `aria-controls` attribute
+	if (!isMenuOpen) {
+		return <div id={panelId} css={visuallyHiddenStyles} />;
+	}
 
 	return (
 		<Popover
@@ -115,7 +119,13 @@ function useKeydownNavigation() {
 				closeMenu();
 				break;
 			default:
-				if (/^[a-zA-Z]{1}$/.test(event.key)) {
+				// If the key is a letter, update the search term
+				if (
+					/^[a-zA-Z]{1}$/.test(event.key) &&
+					// Bail if the user is holding a modifier key so they can use keyboard shortcuts
+					!event.metaKey &&
+					!event.ctrlKey
+				) {
 					event.preventDefault();
 					updateDescendantSearchTerm(event.key);
 				}

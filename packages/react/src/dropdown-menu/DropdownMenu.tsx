@@ -101,6 +101,7 @@ export function DropdownMenu({
 				openMenu,
 				closeMenu,
 				toggleMenu,
+				descendantNodes: state.descendantNodes,
 				// Actions
 				goToPreviousMenuItem,
 				goToNextMenuItem,
