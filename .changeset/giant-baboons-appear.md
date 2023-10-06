@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-table: Add support for aria-rowcount and aria-rowindex
+table: Added support for `aria-rowcount` and `aria-rowindex` on the `Table` component
