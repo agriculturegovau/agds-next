@@ -32,16 +32,12 @@ export const DashboardPagination = () => {
 };
 
 export const getPaginationText = ({
-	loading,
 	totalItems,
 	pagination,
 }: {
-	loading: boolean;
 	totalItems: number;
 	pagination: GetDataPagination;
 }) => {
-	if (loading) return 'Audits';
-
 	if (totalItems === 1) return '1 Audit';
 
 	const { page, perPage } = pagination;
