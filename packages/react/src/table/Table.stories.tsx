@@ -383,6 +383,66 @@ export const SelectableWithBatchActions: Story = {
 	render: SelectableTableBatchActions,
 };
 
+export const AriaRowcount: Story = {
+	name: 'with aria-rowcount',
+	args: {
+		tableLayout: 'fixed',
+	},
+	render: (args) => (
+		<TableWrapper>
+			<Table aria-rowcount={exampleData.length + 1} {...args}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<TableRow aria-rowindex={1}>
+						<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
+							Location
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '10rem', md: '20%' }}
+						>
+							Population
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous year %
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous decade %
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<TableRow key={index} aria-rowindex={index + 2}>
+								<TableCell as="th" scope="row">
+									{location}
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</TableRow>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
 const exampleData = [
 	{
 		id: 'nsw',
