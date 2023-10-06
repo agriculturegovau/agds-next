@@ -45,29 +45,48 @@ function TableFilteringSmallLoading() {
 }
 
 describe('SmallFilteringPattern', () => {
-	it('renders valid HTML with no a11y violations when loading', async () => {
-		const { container } = render(<TableFilteringSmallLoading />);
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			rules: {
-				// react 18s `useId` break this rule
-				'valid-id': 'off',
-			},
+	describe('when loading', () => {
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(<TableFilteringSmallLoading />);
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
+			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
-		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('renders valid HTML with no a11y violations when loaded', async () => {
-		const { container } = render(<TableFilteringSmallLoaded />);
+	describe('when loaded', () => {
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(<TableFilteringSmallLoaded />);
 
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-			rules: {
-				// react 18s `useId` break this rule
-				'valid-id': 'off',
-			},
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
+			});
+
+			expect(await axe(container)).toHaveNoViolations();
 		});
 
-		expect(await axe(container)).toHaveNoViolations();
+		it('has aria-attributes in Table', async () => {
+			const { container } = render(<TableFilteringSmallLoaded />);
+
+			const table = container.querySelector('table');
+			expect(table).toHaveAttribute('aria-rowcount', '100');
+
+			// the tr in the header should have aria-rowindex 1
+			const tHeadRow = container.querySelector('thead tr');
+			expect(tHeadRow).toHaveAttribute('aria-rowindex', '1');
+
+			// the first data row should have aria-rowindex 2
+			const tableRow = container.querySelector('tbody tr');
+			expect(tableRow).toHaveAttribute('aria-rowindex', '2');
+		});
 	});
 });

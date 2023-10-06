@@ -247,6 +247,9 @@ describe('Table', () => {
 			renderTableWithHeadings();
 			const table = screen.getByRole('table');
 
+			expect(table).toHaveAttribute('aria-labelledby');
+			expect(table).toHaveAttribute('aria-describedby');
+
 			expect(table).toHaveAccessibleDescription(
 				'This list of active establishment registrations'
 			);

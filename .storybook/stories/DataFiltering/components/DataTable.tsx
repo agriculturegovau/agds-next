@@ -77,7 +77,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 						</VisuallyHidden>
 					</TableCaption>
 					<TableHead>
-						<TableRow>
+						<TableRow aria-rowindex={1}>
 							{headers.map(
 								({
 									label,
@@ -165,8 +165,8 @@ export const DataTable = forwardRef<HTMLTableElement>(
 										requestDate,
 										status,
 									}) => {
-										// Adding 1 because the table header row is the first row
-										const rowIndex = index + 1;
+										// Adding 2 because the table header row is the first row
+										const rowIndex = index + 2;
 										return (
 											<TableRow key={id} aria-rowindex={rowIndex}>
 												<TableCell as="th" scope="row">

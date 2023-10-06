@@ -14,6 +14,8 @@ export type TableProps = PropsWithChildren<{
 	'aria-labelledby'?: string;
 	/** The id of the element that describes the table */
 	'aria-describedby'?: string;
+	/** The total number of rows in the table */
+	'aria-rowcount'?: number;
 	/** The id of the table */
 	id?: string;
 }>;
@@ -26,6 +28,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		tableLayout = 'auto',
 		'aria-labelledby': ariaLabelledby,
 		'aria-describedby': ariaDescribedby,
+		'aria-rowcount': ariaRowcount,
 		id,
 	},
 	ref
@@ -53,6 +56,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 				}}
 				aria-labelledby={ariaLabelledby}
 				aria-describedby={ariaDescribedby}
+				aria-rowcount={ariaRowcount}
 			>
 				{children}
 			</Box>
