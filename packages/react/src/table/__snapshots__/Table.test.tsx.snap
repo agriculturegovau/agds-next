@@ -6,6 +6,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-2ebmvj-TableWrapper"
   >
     <table
+      aria-rowcount="9"
       class="css-r11i27-boxStyles-Table"
       id="table"
     >
@@ -18,6 +19,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         class="css-11khhn7-boxStyles"
       >
         <tr
+          aria-rowindex="1"
           class="css-0"
         >
           <th
@@ -50,6 +52,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         class="css-8u32cd-boxStyles"
       >
         <tr
+          aria-rowindex="2"
           class="css-0"
         >
           <th
@@ -75,6 +78,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="3"
           class="css-0"
         >
           <th
@@ -100,6 +104,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="4"
           class="css-0"
         >
           <th
@@ -125,6 +130,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="5"
           class="css-0"
         >
           <th
@@ -150,6 +156,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="6"
           class="css-0"
         >
           <th
@@ -175,6 +182,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="7"
           class="css-0"
         >
           <th
@@ -200,6 +208,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="8"
           class="css-0"
         >
           <th
@@ -225,6 +234,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </td>
         </tr>
         <tr
+          aria-rowindex="9"
           class="css-0"
         >
           <th

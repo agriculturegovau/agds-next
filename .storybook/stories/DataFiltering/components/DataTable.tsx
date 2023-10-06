@@ -77,7 +77,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 						</VisuallyHidden>
 					</TableCaption>
 					<TableHead>
-						<TableRow>
+						<TableRow aria-rowindex={1}>
 							{headers.map(
 								({
 									label,

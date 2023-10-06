@@ -21,12 +21,12 @@ afterEach(cleanup);
 function renderTableWithCaption() {
 	return render(
 		<TableWrapper>
-			<Table id="table">
+			<Table id="table" aria-rowcount={9}>
 				<TableCaption>
 					Population of Australian states and territories, December 2015
 				</TableCaption>
 				<TableHead>
-					<TableRow>
+					<TableRow aria-rowindex={1}>
 						<TableHeader scope="col">Location</TableHeader>
 						<TableHeader textAlign="right" scope="col">
 							Population
@@ -40,7 +40,7 @@ function renderTableWithCaption() {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					<TableRow>
+					<TableRow aria-rowindex={2}>
 						<TableCell as="th" scope="row">
 							New South Wales
 						</TableCell>
@@ -48,7 +48,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">3.1%</TableCell>
 						<TableCell textAlign="right">12.9%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={3}>
 						<TableCell as="th" scope="row">
 							Victoria
 						</TableCell>
@@ -56,7 +56,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">2.5%</TableCell>
 						<TableCell textAlign="right">9.3%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={4}>
 						<TableCell as="th" scope="row">
 							Queensland
 						</TableCell>
@@ -64,7 +64,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">1.7%</TableCell>
 						<TableCell textAlign="right">13.3%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={5}>
 						<TableCell as="th" scope="row">
 							Western Australia
 						</TableCell>
@@ -72,7 +72,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">2.3%</TableCell>
 						<TableCell textAlign="right">11.6%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={6}>
 						<TableCell as="th" scope="row">
 							South Australia
 						</TableCell>
@@ -80,7 +80,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">2.0%</TableCell>
 						<TableCell textAlign="right">6.8%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={7}>
 						<TableCell as="th" scope="row">
 							Tasmania
 						</TableCell>
@@ -88,7 +88,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">4%</TableCell>
 						<TableCell textAlign="right">5.3%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={8}>
 						<TableCell as="th" scope="row">
 							Northern Territory
 						</TableCell>
@@ -96,7 +96,7 @@ function renderTableWithCaption() {
 						<TableCell textAlign="right">1.2%</TableCell>
 						<TableCell textAlign="right">4.5%</TableCell>
 					</TableRow>
-					<TableRow>
+					<TableRow aria-rowindex={9}>
 						<TableCell as="th" scope="row">
 							Australian Capital Territory
 						</TableCell>
@@ -122,9 +122,10 @@ function renderTableWithHeadings() {
 					id="table"
 					aria-labelledby="table-heading"
 					aria-describedby="table-description"
+					aria-rowcount={9}
 				>
 					<TableHead>
-						<TableRow>
+						<TableRow aria-rowindex={1}>
 							<TableHeader scope="col">Location</TableHeader>
 							<TableHeader textAlign="right" scope="col">
 								Population
@@ -138,7 +139,7 @@ function renderTableWithHeadings() {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						<TableRow>
+						<TableRow aria-rowindex={2}>
 							<TableCell as="th" scope="row">
 								New South Wales
 							</TableCell>
@@ -146,7 +147,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">3.1%</TableCell>
 							<TableCell textAlign="right">12.9%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={3}>
 							<TableCell as="th" scope="row">
 								Victoria
 							</TableCell>
@@ -154,7 +155,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">2.5%</TableCell>
 							<TableCell textAlign="right">9.3%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={4}>
 							<TableCell as="th" scope="row">
 								Queensland
 							</TableCell>
@@ -162,7 +163,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">1.7%</TableCell>
 							<TableCell textAlign="right">13.3%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={5}>
 							<TableCell as="th" scope="row">
 								Western Australia
 							</TableCell>
@@ -170,7 +171,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">2.3%</TableCell>
 							<TableCell textAlign="right">11.6%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={6}>
 							<TableCell as="th" scope="row">
 								South Australia
 							</TableCell>
@@ -178,7 +179,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">2.0%</TableCell>
 							<TableCell textAlign="right">6.8%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={7}>
 							<TableCell as="th" scope="row">
 								Tasmania
 							</TableCell>
@@ -186,7 +187,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">4%</TableCell>
 							<TableCell textAlign="right">5.3%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={8}>
 							<TableCell as="th" scope="row">
 								Northern Territory
 							</TableCell>
@@ -194,7 +195,7 @@ function renderTableWithHeadings() {
 							<TableCell textAlign="right">1.2%</TableCell>
 							<TableCell textAlign="right">4.5%</TableCell>
 						</TableRow>
-						<TableRow>
+						<TableRow aria-rowindex={9}>
 							<TableCell as="th" scope="row">
 								Australian Capital Territory
 							</TableCell>
@@ -232,6 +233,16 @@ describe('Table', () => {
 				'Population of Australian states and territories, December 2015'
 			);
 		});
+
+		it('has accessibility features', async () => {
+			const { container } = renderTableWithCaption();
+
+			const table = container.querySelector('table');
+			expect(table).toHaveAttribute('aria-rowcount');
+
+			const tableRow = container.querySelector('tr:nth-child(2)');
+			expect(tableRow).toHaveAttribute('aria-rowindex');
+		});
 	});
 
 	describe('with headings', () => {
@@ -251,6 +262,18 @@ describe('Table', () => {
 				'This list of active establishment registrations'
 			);
 			expect(table).toHaveAccessibleName('Applications');
+		});
+
+		it('has accessibility features', async () => {
+			const { container } = renderTableWithHeadings();
+
+			const table = container.querySelector('table');
+			expect(table).toHaveAttribute('aria-labelledby');
+			expect(table).toHaveAttribute('aria-describedby');
+			expect(table).toHaveAttribute('aria-rowcount');
+
+			const tableRow = container.querySelector('tr:nth-child(2)');
+			expect(tableRow).toHaveAttribute('aria-rowindex');
 		});
 	});
 });
