@@ -247,18 +247,13 @@ describe('Table', () => {
 			renderTableWithHeadings();
 			const table = screen.getByRole('table');
 
+			expect(table).toHaveAttribute('aria-labelledby');
+			expect(table).toHaveAttribute('aria-describedby');
+
 			expect(table).toHaveAccessibleDescription(
 				'This list of active establishment registrations'
 			);
 			expect(table).toHaveAccessibleName('Applications');
-		});
-
-		it('has accessibility features', async () => {
-			const { container } = renderTableWithHeadings();
-
-			const table = container.querySelector('table');
-			expect(table).toHaveAttribute('aria-labelledby');
-			expect(table).toHaveAttribute('aria-describedby');
 		});
 	});
 });
