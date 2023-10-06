@@ -5,13 +5,20 @@ import { useTableContext } from './TableContext';
 export type TableRowProps = PropsWithChildren<{
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
+	/** The row index of the table row. */
+	'aria-rowindex'?: number;
 }>;
 
-export function TableRow({ children, selected }: TableRowProps) {
+export function TableRow({
+	children,
+	selected,
+	'aria-rowindex': ariaRowindex,
+}: TableRowProps) {
 	const { tableLayout } = useTableContext();
 	return (
 		<tr
 			aria-selected={selected}
+			aria-rowindex={ariaRowindex}
 			css={
 				selected
 					? {
