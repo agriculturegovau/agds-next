@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { Callout } from '@ag.ds-next/react/callout';
 import { TableFilteringLarge } from './TableFilteringLarge';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { TableFilteringMedium } from './TableFilteringMedium';
@@ -47,14 +48,13 @@ export const FilterSmall = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Filtering (small)</h1>
-								<p>
+							<Callout title="Table Filtering (Small)">
+								<Text as="p">
 									In the most basic cases of filtering with up to three
 									filterable fields, we can show all filters in a row above the
 									table.
-								</p>
-							</Prose>
+								</Text>
+							</Callout>
 							<TableFilteringSmall />
 						</Stack>
 					</PageContent>
@@ -80,15 +80,14 @@ export const FilterMedium = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Filtering (Medium)</h1>
-								<p>
+							<Callout title="Table Filtering (Medium)">
+								<Text as="p">
 									The medium filtering pattern is for cases where the number of
 									filterable fields is between 1 and 4 secondary filters. Our
 									FilterBar is used to reveal all filterable fields when the
 									button is pressed.
-								</p>
-							</Prose>
+								</Text>
+							</Callout>
 							<TableFilteringMedium />
 						</Stack>
 					</PageContent>
@@ -114,16 +113,15 @@ export const FilterLarge = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Filtering (Large)</h1>
-								<p>
+							<Callout title="Table Filtering (Large)">
+								<Text as="p">
 									The large filtering pattern is for cases where the number of
 									filterable fields exceeds 6. Our Drawer component is used to
 									reveal all filters as the user elects to show them. You may
 									elect to show up to two primary filters in the main content
 									area next to the button which opens the drawer.
-								</p>
-							</Prose>
+								</Text>
+							</Callout>
 							<TableFilteringLarge />
 						</Stack>
 					</PageContent>
@@ -144,10 +142,11 @@ export const Selection = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Selection</h1>
-								<p>A table with pagination that allows rows to be selected.</p>
-							</Prose>
+							<Callout title="Table Selection">
+								<Text as="p">
+									A table with pagination that allows rows to be selected.
+								</Text>
+							</Callout>
 							<TableSelection />
 						</Stack>
 					</PageContent>
@@ -168,15 +167,14 @@ export const FilterAndSelectMedium = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Filtering (Medium)</h1>
-								<p>
+							<Callout title="Table Selection and Filtering (Medium)">
+								<Text as="p">
 									The medium filtering pattern is for cases where the number of
 									filterable fields is between 1 and 4 secondary filters. Our
 									FilterBar is used to reveal all filterable fields when the
 									button is pressed.
-								</p>
-							</Prose>
+								</Text>
+							</Callout>
 							<TableFilteringMedium selectable={true} />
 						</Stack>
 					</PageContent>
@@ -197,16 +195,15 @@ export const FilterAndSelectLarge = {
 				<DataProvider value={data}>
 					<PageContent>
 						<Stack gap={2}>
-							<Prose>
-								<h1>Table Filtering (Large)</h1>
-								<p>
+							<Callout title="Table Selection and Filtering (Large)">
+								<Text as="p">
 									The large filtering pattern is for cases where the number of
 									filterable fields exceeds 6. Our Drawer component is used to
 									reveal all filters as the user elects to show them. You may
 									elect to show up to two primary filters in the main content
 									area next to the button which opens the drawer.
-								</p>
-							</Prose>
+								</Text>
+							</Callout>
 							<TableFilteringLarge selectable={true} />
 						</Stack>
 					</PageContent>

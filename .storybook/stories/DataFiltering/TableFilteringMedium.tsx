@@ -8,6 +8,7 @@ import {
 	FilterIcon,
 	PlusIcon,
 } from '@ag.ds-next/react/icon';
+import { H2 } from '@ag.ds-next/react/heading';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
@@ -22,6 +23,8 @@ import {
 import { DashboardPagination } from './components/DashboardPagination';
 import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
 
+const headingId = 'table-heading';
+
 export const TableFilteringMedium = ({
 	selectable,
 }: {
@@ -35,13 +38,14 @@ export const TableFilteringMedium = ({
 
 	return (
 		<Stack gap={2}>
+			<H2 id={headingId}>Audits</H2>
 			<div>
 				<ButtonLink href="#new" iconBefore={PlusIcon}>
 					New item
 				</ButtonLink>
 			</div>
 
-			<Stack gap={selectable ? 0 : 2}>
+			<Stack gap={0}>
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
@@ -92,10 +96,7 @@ export const TableFilteringMedium = ({
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}
-				<DataTable
-					selectable={selectable}
-					//  headingId={headingId}
-				/>
+				<DataTable selectable={selectable} headingId={headingId} />
 			</Stack>
 			<DashboardPagination />
 		</Stack>
