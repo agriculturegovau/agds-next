@@ -166,7 +166,7 @@ export const DataTable = forwardRef<HTMLTableElement>(
 										status,
 									}) => {
 										// Adding 1 because the table header row is the first row
-										const rowIndex = index + 1;
+										const rowIndex = index + 2;
 										return (
 											<TableRow key={id} aria-rowindex={rowIndex}>
 												<TableCell as="th" scope="row">
