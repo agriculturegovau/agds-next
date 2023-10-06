@@ -91,27 +91,35 @@ export function reducer(state: State, action: Action): State {
 				lastKeyPressTime: 0,
 			};
 
-		case 'ACTIVATE_NEXT_DESCENDANT':
+		case 'ACTIVATE_NEXT_DESCENDANT': {
+			let newActiveDescendantIndex = 0;
+
+			// If current active descendant is not the last, increment index by 1
+			if (state.activeDescendantIndex < state.descendantCount) {
+				newActiveDescendantIndex = state.activeDescendantIndex + 1;
+			} else {
+				// If last descendant is currently active, loop back to the first
+				newActiveDescendantIndex = 0;
+			}
+
+			// Update the state with the new active descendant index and clear search term
+			return {
+				...state,
+				activeDescendantIndex: newActiveDescendantIndex,
+				descendantSearchTerm: '',
+				lastKeyPressTime: 0,
+			};
+		}
+
 		case 'ACTIVATE_PREVIOUS_DESCENDANT': {
 			let newActiveDescendantIndex = 0;
 
-			// Determine the new active descendant index based on the action type
-			if (action.type === 'ACTIVATE_NEXT_DESCENDANT') {
-				// If current active descendant is not the last, increment index by 1
-				if (state.activeDescendantIndex < state.descendantCount) {
-					newActiveDescendantIndex = state.activeDescendantIndex + 1;
-				} else {
-					// If last descendant is currently active, loop back to the first
-					newActiveDescendantIndex = 0;
-				}
+			// If current active descendant is not the first, decrement index by 1
+			if (state.activeDescendantIndex > 0) {
+				newActiveDescendantIndex = state.activeDescendantIndex - 1;
 			} else {
-				// If current active descendant is not the first, decrement index by 1
-				if (state.activeDescendantIndex > 0) {
-					newActiveDescendantIndex = state.activeDescendantIndex - 1;
-				} else {
-					// If first descendant is currently active, loop to the last
-					newActiveDescendantIndex = state.descendantCount;
-				}
+				// If first descendant is currently active, loop to the last
+				newActiveDescendantIndex = state.descendantCount;
 			}
 
 			// Update the state with the new active descendant index and clear search term
