@@ -7,6 +7,8 @@ export const generatePaginationRangeText = ({
 	totalItems,
 	firstItem,
 	lastItem,
+	singularNoun = 'item',
+	pluralNoun = 'items',
 }: {
 	/** Total number of items in the search results*/
 	totalItems: number;
@@ -14,9 +16,13 @@ export const generatePaginationRangeText = ({
 	firstItem: number;
 	/** The index of the last item in the current page */
 	lastItem: number;
+	/** The singular form of the noun to use for the items */
+	singularNoun?: string;
+	/** The plural form of the noun to use for the items */
+	pluralNoun?: string;
 }) => {
 	/**  If there is only one item, use the word "item" instead of "items" */
-	const noun = totalItems === 1 ? 'item' : `items`;
+	const noun = totalItems === 1 ? singularNoun : pluralNoun;
 
 	return `${firstItem} - ${lastItem} of ${totalItems} ${noun}`;
 };
