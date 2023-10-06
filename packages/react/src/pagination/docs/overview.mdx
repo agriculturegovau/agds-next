@@ -35,9 +35,7 @@ Use pagination to separate large lists of content, such as search results, into 
 
 ## Range text
 
-The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed.
-
-You can pass a generated string that suits your use-case, or use the `generatePaginationRangeText` function to generate a basic string for you. `generatePaginationRangeText` returns a string which follows the format of `1 - 10 of 458 items`.
+The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed. You can use the `generatePaginationRangeText` function to generate a string which follows the format of `1 - 10 of 458 items`.
 
 ```jsx live
 <Pagination
@@ -48,6 +46,8 @@ You can pass a generated string that suits your use-case, or use the `generatePa
 		totalItems: 458,
 		firstItem: 1,
 		lastItem: 10,
+		singularNoun: 'item',
+		pluralNoun: 'items',
 	})}
 />
 ```
