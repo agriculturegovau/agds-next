@@ -4,10 +4,9 @@ import { GetDataPagination } from '../lib/getData';
 
 export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();
-	const { data, loading, totalItems, totalPages } = useDataContext();
+	const { data, totalItems, totalPages } = useDataContext();
 
 	const rangeText = getPaginationText({
-		loading,
 		totalItems,
 		pagination,
 	});
@@ -29,16 +28,12 @@ export const DashboardPagination = () => {
 };
 
 export const getPaginationText = ({
-	loading,
 	totalItems,
 	pagination,
 }: {
-	loading: boolean;
 	totalItems: number;
 	pagination: GetDataPagination;
 }) => {
-	if (loading) return 'Audits';
-
 	if (totalItems === 1) return '1 Audit';
 
 	const { page, perPage } = pagination;

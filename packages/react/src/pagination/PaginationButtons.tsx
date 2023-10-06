@@ -82,13 +82,14 @@ export function PaginationButtons({
 			</PaginationContainer>
 			{hasRightArea && (
 				<Flex
-					gap={1}
+					gap={2}
 					alignItems="center"
 					flexDirection={{
 						xs: 'column',
 						lg: 'row',
 					}}
 				>
+					{itemRangeText && <Text>{itemRangeText}</Text>}
 					{itemsPerPage && onChangeItemsPerPage && (
 						<PaginationItemsPerPageSelect
 							value={itemsPerPage}
@@ -96,7 +97,6 @@ export function PaginationButtons({
 							onChange={onChangeItemsPerPage}
 						/>
 					)}
-					{itemRangeText && <Text>{itemRangeText}</Text>}
 				</Flex>
 			)}
 		</Flex>
