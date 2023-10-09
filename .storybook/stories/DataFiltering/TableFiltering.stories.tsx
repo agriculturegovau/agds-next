@@ -133,10 +133,15 @@ export const FilterLarge = {
 
 export const Selection = {
 	name: 'Row Selection',
-	render: function Render() {
+	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useFetchData({ filters, pagination, sort });
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
@@ -158,10 +163,16 @@ export const Selection = {
 
 export const FilterAndSelectMedium = {
 	name: 'Filter, sort and select (Medium)',
-	render: function Render() {
+	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useFetchData({ filters, pagination, sort });
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
+
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
@@ -186,10 +197,15 @@ export const FilterAndSelectMedium = {
 
 export const FilterAndSelectLarge = {
 	name: 'Filter, sort and select (Large)',
-	render: function Render() {
+	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
-		const data = useFetchData({ filters, pagination, sort });
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
 		return (
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
