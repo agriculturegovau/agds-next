@@ -1,12 +1,14 @@
-import { Flex } from '../flex';
 import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationContainer } from './PaginationContainer';
+import {
+	PaginationContainer,
+	PaginationOuterContainer,
+	PaginationSecondaryControlContainer,
+} from './PaginationContainer';
 import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
-import { PaginationOuterContainer } from './PaginationOuterContainer';
 
 export type PaginationButtonsProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -74,14 +76,7 @@ export function PaginationButtons({
 				})}
 			</PaginationContainer>
 			{hasRightArea && (
-				<Flex
-					gap={2}
-					alignItems="center"
-					flexDirection={{
-						xs: 'column',
-						lg: 'row',
-					}}
-				>
+				<PaginationSecondaryControlContainer>
 					{itemRangeText && <Text>{itemRangeText}</Text>}
 					{itemsPerPage && onChangeItemsPerPage && (
 						<PaginationItemsPerPageSelect
@@ -90,7 +85,7 @@ export function PaginationButtons({
 							onChange={onChangeItemsPerPage}
 						/>
 					)}
-				</Flex>
+				</PaginationSecondaryControlContainer>
 			)}
 		</PaginationOuterContainer>
 	);
