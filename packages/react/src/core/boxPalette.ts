@@ -113,6 +113,7 @@ export const boxPalette = {
 /**
  * Returns the current palette for a specific DOM element
  * Note: As this function relies on CSS vars, the value returned will not be available on the server
+ * Note: This will only return the value of the palette during the initial render. Any client side updates of the palette will not be captured via this hook.
  */
 export function useBoxPalette(element: RefObject<HTMLElement>) {
 	const [value, setValue] = useState<BoxPalette>();
