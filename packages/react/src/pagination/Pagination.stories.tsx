@@ -34,23 +34,17 @@ export const CustomLimit: Story = {
 	},
 };
 
-export const standardRangeText: Story = {
-	name: 'Standard range text',
+export const withRangeText: Story = {
+	name: 'with range text',
 	args: {
 		currentPage: 5,
 		itemRangeText: generatePaginationRangeText({
 			firstItem: 1,
 			lastItem: 10,
 			totalItems: 300,
+			singularNoun: 'certificate',
+			pluralNoun: 'certificates',
 		}),
-	},
-};
-
-export const customRangeText: Story = {
-	name: 'Custom range text',
-	args: {
-		currentPage: 5,
-		itemRangeText: '1-10 of 300 certificates',
 	},
 };
 
@@ -65,6 +59,8 @@ export const itemsPerPage: Story = {
 			firstItem: (args.currentPage - 1) * itemsPerPage + 1, // (5 - 1) * 10 + 1 = 41
 			lastItem: args.currentPage * itemsPerPage, // 5 * 10 = 50
 			totalItems: 300,
+			singularNoun: 'certificate',
+			pluralNoun: 'certificates',
 		});
 
 		return (
