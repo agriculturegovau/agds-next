@@ -102,7 +102,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 							</TableCaption>
 						)}
 						<TableHead>
-							<TableRow>
+							<TableRow aria-rowindex={1}>
 								{selectable && (
 									<TableHeader scope="col" width="5rem">
 										Select
@@ -201,8 +201,8 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											requestDate,
 											status,
 										}) => {
-											// Adding 1 because the table header row is the first row
-											const rowIndex = index + 1;
+											// Adding 2 because the table header row is the first row
+											const rowIndex = index + 2;
 											return (
 												<DataTableRow
 													key={id}
