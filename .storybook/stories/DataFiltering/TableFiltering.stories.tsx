@@ -33,7 +33,7 @@ const meta: Meta = {
 export default meta;
 
 export const FilterSmall = {
-	name: 'Filter and sort (Small)',
+	name: 'with filtering (Small)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -65,7 +65,7 @@ export const FilterSmall = {
 };
 
 export const FilterMedium = {
-	name: 'Filter and sort (Medium)',
+	name: 'with filtering (Medium)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -98,7 +98,7 @@ export const FilterMedium = {
 };
 
 export const FilterLarge = {
-	name: 'Filter and sort (Large)',
+	name: 'with filtering (Large)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -132,7 +132,7 @@ export const FilterLarge = {
 };
 
 export const Selection = {
-	name: 'Row Selection',
+	name: 'with selection',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -162,7 +162,7 @@ export const Selection = {
 };
 
 export const FilterAndSelectMedium = {
-	name: 'Filter, sort and select (Medium)',
+	name: 'with selection and filtering (Medium)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -196,7 +196,7 @@ export const FilterAndSelectMedium = {
 };
 
 export const FilterAndSelectLarge = {
-	name: 'Filter, sort and select (Large)',
+	name: 'with selection and filtering (Large)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
