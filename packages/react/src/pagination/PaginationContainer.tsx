@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
 
 export type PaginationContainerProps = PropsWithChildren<{
@@ -15,3 +15,49 @@ export const PaginationContainer = ({
 		</Flex>
 	</nav>
 );
+
+type PaginationOuterContainerProps = PropsWithChildren<{
+	hasRightArea: boolean;
+}>;
+
+/** A Flex container, responsible for laying-out the main Pagination controls and the
+ * secondary controls (items per page, item range text, etc.) */
+export const PaginationOuterContainer = ({
+	children,
+	hasRightArea,
+}: PaginationOuterContainerProps) => {
+	return (
+		<Flex
+			gap={1}
+			alignItems="center"
+			justifyContent={hasRightArea ? 'space-between' : 'center'}
+			flexDirection={{
+				xs: 'column',
+				lg: 'row',
+			}}
+			flexWrap="wrap"
+		>
+			{children}
+		</Flex>
+	);
+};
+
+export const PaginationSecondaryControlContainer = ({
+	children,
+}: {
+	children: ReactNode;
+}) => {
+	return (
+		<Flex
+			columnGap={2}
+			rowGap={1}
+			alignItems="center"
+			flexDirection={{
+				xs: 'column',
+				lg: 'row',
+			}}
+		>
+			{children}
+		</Flex>
+	);
+};
