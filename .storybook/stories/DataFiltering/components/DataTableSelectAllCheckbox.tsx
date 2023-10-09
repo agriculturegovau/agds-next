@@ -30,7 +30,9 @@ export function useSelectAllRows(pageData: BusinessForAuditWithIndex[]) {
 	const allPageItemIds = useMemo(() => pageData.map((i) => i.id), [pageData]);
 	const isAnyRowSelected = useMemo(() => selection.length > 0, [selection]);
 	const isEveryRowSelected = useMemo(
-		() => allPageItemIds.every((r) => selection.includes(r)),
+		() =>
+			allPageItemIds.length < 0 &&
+			allPageItemIds.every((r) => selection.includes(r)),
 		[allPageItemIds, selection]
 	);
 
