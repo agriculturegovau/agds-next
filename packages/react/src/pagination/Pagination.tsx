@@ -6,6 +6,7 @@ import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
+import { PaginationOuterContainer } from './PaginationOuterContainer';
 
 export type PaginationProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -40,19 +41,11 @@ export function Pagination({
 	onChangeItemsPerPage,
 }: PaginationProps) {
 	const pagination = usePagination({ currentPage, windowLimit, totalPages });
-	const hasRightArea = (itemsPerPage && onChangeItemsPerPage) || itemRangeText;
+	const hasRightArea: boolean =
+		(!!itemsPerPage && !!onChangeItemsPerPage) || !!itemRangeText;
 
 	return (
-		<Flex
-			gap={2}
-			alignItems="center"
-			justifyContent={hasRightArea ? 'space-between' : 'center'}
-			flexDirection={{
-				xs: 'column',
-				lg: 'row',
-			}}
-			flexWrap="wrap"
-		>
+		<PaginationOuterContainer hasRightArea={hasRightArea}>
 			<PaginationContainer aria-label={ariaLabel}>
 				{pagination.map((item, idx) => {
 					switch (item.type) {
@@ -99,6 +92,6 @@ export function Pagination({
 					)}
 				</Flex>
 			)}
-		</Flex>
+		</PaginationOuterContainer>
 	);
 }
