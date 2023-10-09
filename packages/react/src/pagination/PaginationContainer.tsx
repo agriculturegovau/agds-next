@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
 
 export type PaginationItemContainerProps = PropsWithChildren<{
