@@ -9,6 +9,7 @@ import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
+import { PaginationOuterContainer } from './PaginationOuterContainer';
 
 export type PaginationButtonsProps = {
 	/** Describes the navigation element to assistive technologies. */
