@@ -31,7 +31,7 @@ export const TableFilteringLarge = ({
 }: TableFilteringLargeProps) => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<Stack gap={2}>
+		<Stack gap={1.5}>
 			<H2 id={headingId}>Audits</H2>
 			<div>
 				<ButtonLink href="#new" iconBefore={PlusIcon}>
@@ -60,7 +60,7 @@ export const TableFilteringLarge = ({
 					<ActiveFilters />
 				</FilterRegion>
 				{selectable && (
-					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+					<Box padding={1} borderBottom>
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}

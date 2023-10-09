@@ -37,7 +37,7 @@ export const TableFilteringMedium = ({
 	const bodyId = 'filter-body';
 
 	return (
-		<Stack gap={2}>
+		<Stack gap={1.5}>
 			<H2 id={headingId}>Audits</H2>
 			<div>
 				<ButtonLink href="#new" iconBefore={PlusIcon}>
