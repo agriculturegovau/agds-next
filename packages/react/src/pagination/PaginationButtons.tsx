@@ -6,6 +6,7 @@ import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
+import { PaginationOuterContainer } from './PaginationOuterContainer';
 
 export type PaginationButtonsProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -40,19 +41,11 @@ export function PaginationButtons({
 	onChangeItemsPerPage,
 }: PaginationButtonsProps) {
 	const pagination = usePagination({ currentPage, totalPages, windowLimit });
-	const hasRightArea = (itemsPerPage && onChangeItemsPerPage) || itemRangeText;
+	const hasRightArea: boolean =
+		(!!itemsPerPage && !!onChangeItemsPerPage) || !!itemRangeText;
 
 	return (
-		<Flex
-			gap={2}
-			alignItems="center"
-			justifyContent={hasRightArea ? 'space-between' : 'center'}
-			flexDirection={{
-				xs: 'column',
-				lg: 'row',
-			}}
-			flexWrap="wrap"
-		>
+		<PaginationOuterContainer hasRightArea={hasRightArea}>
 			<PaginationContainer aria-label={ariaLabel}>
 				{pagination.map((item, idx) => {
 					switch (item.type) {
@@ -99,6 +92,6 @@ export function PaginationButtons({
 					)}
 				</Flex>
 			)}
-		</Flex>
+		</PaginationOuterContainer>
 	);
 }

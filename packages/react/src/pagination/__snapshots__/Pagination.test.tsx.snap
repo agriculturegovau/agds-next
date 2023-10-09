@@ -3,7 +3,7 @@
 exports[`Pagination renders correctly 1`] = `
 <div>
   <div
-    class="css-7087po-boxStyles"
+    class="css-10d2tcs-boxStyles"
   >
     <nav
       aria-label="pagination"
