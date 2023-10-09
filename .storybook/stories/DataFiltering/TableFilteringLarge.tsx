@@ -64,7 +64,11 @@ export const TableFilteringLarge = ({
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}
-				<DataTable ref={tableRef} headingId={headingId} />
+				<DataTable
+					ref={tableRef}
+					headingId={headingId}
+					selectable={selectable}
+				/>
 			</Stack>
 			<DashboardPagination />
 		</Stack>
