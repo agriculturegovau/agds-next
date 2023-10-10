@@ -199,6 +199,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
+		const showFileLists =
+			value.length || fileRejections.length || existingFiles?.length;
 		const fileSummaryText = getFilesTotal([...value, ...(existingFiles || [])]);
 
 		return (
@@ -271,9 +273,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{value.length ||
-							fileRejections.length ||
-							existingFiles?.length ? (
+							{showFileLists && (
 								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
@@ -291,7 +291,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										hideThumbnails={hideThumbnails}
 									/>
 								</Stack>
-							) : null}
+							)}
 						</Stack>
 					);
 				}}
