@@ -10,23 +10,6 @@ export const DashboardPagination = () => {
 
 	if (!data.length) return null;
 
-	console.log(
-		{
-			totalItems: totalItems,
-			currentPage: pagination.page,
-			itemsPerPage: pagination.perPage,
-			singularNoun: 'audit',
-			pluralNoun: 'audits',
-		},
-		generatePaginationRangeText({
-			totalItems: totalItems,
-			currentPage: pagination.page,
-			itemsPerPage: pagination.perPage,
-			singularNoun: 'audit',
-			pluralNoun: 'audits',
-		})
-	);
-
 	return (
 		<PaginationButtons
 			currentPage={pagination.page}
