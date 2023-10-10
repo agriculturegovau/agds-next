@@ -24,9 +24,6 @@ export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
 	) : (
 		<Flex
 			flexShrink={0}
-			border
-			borderColor="muted"
-			borderWidth="sm"
 			alignItems="center"
 			justifyContent="center"
 			display={{ xs: 'none', md: 'flex' }}
