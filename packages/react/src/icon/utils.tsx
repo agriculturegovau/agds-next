@@ -32,6 +32,7 @@ import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
 import { PauseIcon } from './icons/PauseIcon';
+import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
@@ -94,8 +95,9 @@ export const allIcons = {
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
-	PrintIcon,
+	PlayIcon,
 	PlusIcon,
+	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
