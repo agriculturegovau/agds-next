@@ -24,6 +24,7 @@ import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExitIcon } from './icons/ExitIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+import { InboxIcon } from './icons/InboxIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
@@ -88,6 +89,7 @@ export const allIcons = {
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
+	InboxIcon,
 	InfoIcon,
 	InfoFilledIcon,
 	InstagramIcon,

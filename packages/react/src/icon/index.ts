@@ -36,6 +36,7 @@ export { FileIcon } from './icons/FileIcon';
 export { FilterIcon } from './icons/FilterIcon';
 export { HelpIcon } from './icons/HelpIcon';
 export { HomeIcon } from './icons/HomeIcon';
+export { InboxIcon } from './icons/InboxIcon';
 export { InfoIcon } from './icons/InfoIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { InstagramIcon } from './icons/InstagramIcon';

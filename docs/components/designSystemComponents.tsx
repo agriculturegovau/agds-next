@@ -104,6 +104,7 @@ export {
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
+	InboxIcon,
 	InfoFilledIcon,
 	InfoIcon,
 	InstagramIcon,
