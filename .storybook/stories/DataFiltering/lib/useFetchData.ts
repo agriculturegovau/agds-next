@@ -11,6 +11,8 @@ export type DashboardTableData = {
 	totalPages: number;
 	/** The total number of items found in the search */
 	totalItems: number;
+	/** An error message, if any */
+	error?: string;
 };
 
 /** In a real app, this function would fetch data from an API. */
@@ -18,6 +20,7 @@ export function useFetchData({
 	sort,
 	filters,
 	pagination,
+	throwError,
 }: GetDataParams): DashboardTableData {
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<BusinessForAuditWithIndex[]>([]);
@@ -33,6 +36,16 @@ export function useFetchData({
 			setLoading(false);
 		});
 	}, [sort, filters, pagination]);
+
+	if (throwError) {
+		return {
+			error: 'Something went wrong',
+			loading: false,
+			data: [],
+			totalPages: 0,
+			totalItems: 0,
+		};
+	}
 
 	return { loading, data, totalPages, totalItems };
 }

@@ -31,9 +31,14 @@ export type GetDataFilters = {
 };
 
 export type GetDataParams = {
+	/** The sort to apply to the data */
 	sort: GetDataSort;
+	/** The pagination to apply to the data */
 	pagination: GetDataPagination;
+	/** The filters to apply to the data */
 	filters: GetDataFilters;
+	/** Whether to throw an error */
+	throwError?: boolean;
 };
 
 type GetDataResponse = {

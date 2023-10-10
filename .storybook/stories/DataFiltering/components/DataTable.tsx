@@ -19,9 +19,13 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
-import { BusinessForAudit } from '../lib/generateBusinessData';
-import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+import { Stack } from '@ag.ds-next/react/stack';
+import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
+import { Heading } from '@ag.ds-next/react/heading';
+import { Button } from '@ag.ds-next/react/button';
 import { generateTableCaption } from '../lib/utils';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+import { BusinessForAudit } from '../lib/generateBusinessData';
 
 const DataTableRowAssignee = ({
 	assignee,
@@ -47,8 +51,9 @@ export const tableId = 'data-table';
 
 export const DataTable = forwardRef<HTMLTableElement>(
 	function DataTable(_, ref) {
-		const { sort, setSort, pagination } = useSortAndFilterContext();
-		const { data, loading, totalItems } = useDataContext();
+		const { sort, setSort, pagination, resetFilters } =
+			useSortAndFilterContext();
+		const { data, loading, totalItems, error } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
 
 		const caption = generateTableCaption({
@@ -57,8 +62,34 @@ export const DataTable = forwardRef<HTMLTableElement>(
 			pagination,
 		});
 
+		if (error) {
+			return (
+				<Stack gap={1}>
+					<AlertFilledIcon color="error" size="lg" />
+					<Heading type="h2" fontSize="lg">
+						Failed to load
+					</Heading>
+					<Text>
+						There was an error loading the data. Please try refreshing the page
+						to try again.
+					</Text>
+				</Stack>
+			);
+		}
+
 		if (!loading && data.length === 0) {
-			return <Text>No results</Text>;
+			return (
+				<Stack gap={2} alignItems="flex-start" paddingY={1}>
+					<Stack gap={1}>
+						<HelpIcon size="lg" color="muted" />
+						<Heading type="h2" fontSize="lg">
+							No results found
+						</Heading>
+						<Text>Try adjusting your filter options.</Text>
+					</Stack>
+					<Button onClick={resetFilters}>Clear filters</Button>
+				</Stack>
+			);
 		}
 
 		return (
