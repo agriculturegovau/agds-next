@@ -1,11 +1,11 @@
 import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationItemContainer } from './PaginationItemContainer';
 import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
 import {
+	PaginationItemContainer,
 	PaginationContainer,
 	PaginationSecondaryControlContainer,
 } from './PaginationContainer';

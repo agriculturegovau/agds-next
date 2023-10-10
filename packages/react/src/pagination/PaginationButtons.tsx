@@ -1,7 +1,7 @@
 import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationItemContainer } from './PaginationItemContainer';
 import {
+	PaginationItemContainer,
 	PaginationContainer,
 	PaginationSecondaryControlContainer,
 } from './PaginationContainer';
