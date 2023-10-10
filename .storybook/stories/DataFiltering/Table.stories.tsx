@@ -15,7 +15,7 @@ const args = { throwError: false };
 type StoryArgs = typeof args;
 
 const meta: Meta = {
-	title: 'Patterns/Tables',
+	title: 'Content/Table/with filtering',
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -32,7 +32,7 @@ const meta: Meta = {
 export default meta;
 
 export const FilterSmall = {
-	name: 'with filtering (Small)',
+	name: 'Small',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -64,7 +64,7 @@ export const FilterSmall = {
 };
 
 export const FilterMedium = {
-	name: 'with filtering (Medium)',
+	name: 'Medium',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -97,7 +97,7 @@ export const FilterMedium = {
 };
 
 export const FilterLarge = {
-	name: 'with filtering (Large)',
+	name: 'Large',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -131,7 +131,7 @@ export const FilterLarge = {
 };
 
 export const FilterAndSelectMedium = {
-	name: 'with selection and filtering (Medium)',
+	name: 'Medium with selection',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -165,7 +165,7 @@ export const FilterAndSelectMedium = {
 };
 
 export const FilterAndSelectLarge = {
-	name: 'with selection and filtering (Large)',
+	name: 'Large with selection',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
