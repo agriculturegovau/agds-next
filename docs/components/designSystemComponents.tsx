@@ -110,6 +110,7 @@ export {
 	LinkedInIcon,
 	MenuIcon,
 	MinusIcon,
+	PauseIcon,
 	PlusIcon,
 	PrintIcon,
 	ProgressBlockedIcon,

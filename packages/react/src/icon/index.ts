@@ -40,6 +40,7 @@ export { InfoIcon } from './icons/InfoIcon';
 export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { InstagramIcon } from './icons/InstagramIcon';
 export { LinkedInIcon } from './icons/LinkedInIcon';
+export { PauseIcon } from './icons/PauseIcon';
 export { PrintIcon } from './icons/PrintIcon';
 export { PlusIcon } from './icons/PlusIcon';
 export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';

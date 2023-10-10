@@ -31,6 +31,7 @@ import { FileIcon } from './icons/FileIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
+import { PauseIcon } from './icons/PauseIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
@@ -92,6 +93,7 @@ export const allIcons = {
 	LinkedInIcon,
 	MenuIcon,
 	MinusIcon,
+	PauseIcon,
 	PrintIcon,
 	PlusIcon,
 	ProgressBlockedIcon,
