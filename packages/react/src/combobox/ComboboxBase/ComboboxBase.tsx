@@ -79,16 +79,15 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	};
 
 	const popover = usePopover({
+		// Popovers should always match the width of the related input
 		matchReferenceWidth: true,
+		// Popovers have a max-height as the list of options can be very long
 		maxHeight: 295,
-	});
-	const popoverProps = popover.getPopoverProps();
-	const comboboxPopoverMenuProps = combobox.getMenuProps({
-		...popoverProps,
-		style: {
-			...popoverProps.style,
-			display: combobox.isOpen ? 'block' : 'none',
-		},
+		// Minimum acceptable height of the popover before it gets flipped
+		minHeight: 195,
+		// For a11y reasons, the popover element is hidden with CSS and not conditionally rendered
+		hiddenWithCSS: true,
+		isOpen: combobox.isOpen,
 	});
 
 	const { id: labelId } = combobox.getLabelProps();
@@ -143,7 +142,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							)}
 						</ComboboxButtonContainer>
 					)}
-					<Popover as="ul" {...comboboxPopoverMenuProps}>
+					<Popover
+						as="ul"
+						{...combobox.getMenuProps(popover.getPopoverProps())}
+						visibility={combobox.isOpen ? 'visible' : 'hidden'}
+					>
 						{combobox.isOpen ? (
 							<Fragment>
 								{loading ? (

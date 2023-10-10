@@ -66,14 +66,15 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
 		},
-		onInputValueChange: ({ inputValue }) => {
+		onInputValueChange: ({ inputValue, isOpen }) => {
 			inputValue = inputValue?.toLowerCase() ?? '';
-			setInputItems(filterOptions(options, inputValue));
-		},
-		// When the menu is opened by the user, show the entire options list
-		// This is common in other Combobox implementations (react-aria, react-select, etc)
-		onIsOpenChange: ({ isOpen }) => {
-			if (isOpen) setInputItems(filterOptions(options, ''));
+			if (isOpen) {
+				setInputItems(filterOptions(options, inputValue));
+			} else {
+				// When the menu is closed by the user, reset the entire options
+				// This is common in other Combobox implementations (react-aria, react-select, etc)
+				setInputItems(filterOptions(options, ''));
+			}
 		},
 		stateReducer: (state, actionAndChanges) => {
 			const { type: actionAndChangesType, changes } = actionAndChanges;
