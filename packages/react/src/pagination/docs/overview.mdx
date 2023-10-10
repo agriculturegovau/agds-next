@@ -43,11 +43,11 @@ The `Pagination` component accepts a `itemRangeText` prop, which is used to disp
 	totalPages={10}
 	generateHref={(page) => `/example?page=${page}`}
 	itemRangeText={generatePaginationRangeText({
-		totalItems: 458,
-		firstItem: 1,
-		lastItem: 10,
-		singularNoun: 'item',
-		pluralNoun: 'items',
+		totalItems: 100,
+		currentPage: 5,
+		itemsPerPage: 10,
+		singularNoun: 'audit', // Optional
+		pluralNoun: 'audits', // Optional
 	})}
 />
 ```
@@ -58,17 +58,21 @@ The `Pagination` component accepts props which are used to display and change th
 
 - `itemsPerPage` - the number of items per page
 - `itemsPerPageOptions` - an array of numbers that are used to populate the items per page dropdown
-- `onChangeItemsPerPage` - a function that is called when the number of items per page is changed
+- `onItemsPerPageChange` - a function that is called when the number of items per page is changed
 
 ```jsx live
 <Pagination
 	currentPage={5}
 	totalPages={10}
 	generateHref={(page) => `/example?page=${page}`}
-	itemRangeText="1-25 of 458 results"
 	itemsPerPage={25}
 	itemsPerPageOptions={[10, 25, 50, 100]}
-	onChangeItemsPerPage={(itemsPerPage) => console.log(itemsPerPage)}
+	onItemsPerPageChange={(itemsPerPage) => console.log(itemsPerPage)}
+	itemRangeText={generatePaginationRangeText({
+		totalItems: 100,
+		currentPage: 5,
+		itemsPerPage: 25,
+	})}
 />
 ```
 

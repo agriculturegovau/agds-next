@@ -45,7 +45,7 @@ export const CustomLimit: Story = {
 	},
 };
 
-export const itemsPerPage: Story = {
+export const ItemsPerPage: Story = {
 	args: {
 		currentPage: 1,
 		itemsPerPage: 10,
@@ -54,18 +54,17 @@ export const itemsPerPage: Story = {
 		const [currentPage, setCurrentPage] = useState(args.currentPage || 1);
 		const [itemsPerPage, setItemsPerPage] = useState(args.itemsPerPage || 10);
 		const itemRangeText = generatePaginationRangeText({
-			firstItem: (currentPage - 1) * itemsPerPage + 1, // (5 - 1) * 10 + 1 = 41
-			lastItem: currentPage * itemsPerPage, // 5 * 10 = 50
-			totalItems: 300,
+			totalItems: 100,
+			currentPage: args.currentPage ?? 1,
+			itemsPerPage: args.itemsPerPage ?? 10,
 		});
-
 		return (
 			<PaginationButtons
 				{...args}
 				currentPage={currentPage}
 				onChange={setCurrentPage}
 				itemsPerPage={itemsPerPage}
-				onChangeItemsPerPage={(val) => setItemsPerPage(val)}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 				itemRangeText={itemRangeText}
 			/>
 		);

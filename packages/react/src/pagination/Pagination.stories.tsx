@@ -34,41 +34,38 @@ export const CustomLimit: Story = {
 	},
 };
 
-export const withRangeText: Story = {
-	name: 'with range text',
+export const WithRangeText: Story = {
 	args: {
 		currentPage: 5,
 		itemRangeText: generatePaginationRangeText({
-			firstItem: 1,
-			lastItem: 10,
-			totalItems: 300,
+			totalItems: 100,
+			currentPage: 5,
+			itemsPerPage: 10,
 			singularNoun: 'certificate',
 			pluralNoun: 'certificates',
 		}),
 	},
 };
 
-export const itemsPerPage: Story = {
+export const ItemsPerPage: Story = {
 	args: {
 		currentPage: 1,
 		itemsPerPage: 10,
 	},
 	render: function Render(args) {
 		const [itemsPerPage, setItemsPerPage] = useState(args.itemsPerPage || 10);
-		const itemRangeText = generatePaginationRangeText({
-			firstItem: (args.currentPage - 1) * itemsPerPage + 1, // (5 - 1) * 10 + 1 = 41
-			lastItem: args.currentPage * itemsPerPage, // 5 * 10 = 50
-			totalItems: 300,
-			singularNoun: 'certificate',
-			pluralNoun: 'certificates',
-		});
-
 		return (
 			<Pagination
 				{...args}
 				itemsPerPage={itemsPerPage}
-				onChangeItemsPerPage={(val) => setItemsPerPage(val)}
-				itemRangeText={itemRangeText}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
+				itemRangeText={generatePaginationRangeText({
+					totalItems: 100,
+					currentPage: args.currentPage ?? 1,
+					itemsPerPage: args.itemsPerPage ?? 10,
+					singularNoun: 'certificate',
+					pluralNoun: 'certificates',
+				})}
 			/>
 		);
 	},

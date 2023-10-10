@@ -5,24 +5,31 @@ export const BUTTON_SIZE_SM = '3rem' as const; // 48px
  * "1 - 10 of 458 items" */
 export const generatePaginationRangeText = ({
 	totalItems,
-	firstItem,
-	lastItem,
+	itemsPerPage,
+	currentPage,
 	singularNoun = 'item',
 	pluralNoun = 'items',
 }: {
-	/** Total number of items in the search results*/
+	/** The total number of items in the data list. */
 	totalItems: number;
-	/** The index of the first item in the current page */
-	firstItem: number;
-	/** The index of the last item in the current page */
-	lastItem: number;
-	/** The singular form of the noun to use for the items */
+	/** The number of items per page. */
+	itemsPerPage: number;
+	/** The current page number. */
+	currentPage: number;
+	/** The singular form of the noun to use for the items. */
 	singularNoun?: string;
-	/** The plural form of the noun to use for the items */
+	/** The plural form of the noun to use for the items. */
 	pluralNoun?: string;
 }) => {
-	/**  If there is only one item, use the word "item" instead of "items" */
+	// If there is only one item, use the word the singular noun instead of the plural
 	const noun = totalItems === 1 ? singularNoun : pluralNoun;
+
+	const firstItem = (currentPage - 1) * itemsPerPage + 1;
+
+	const lastItem = Math.min(
+		(currentPage - 1) * itemsPerPage + itemsPerPage,
+		totalItems
+	);
 
 	return `${firstItem} - ${lastItem} of ${totalItems} ${noun}`;
 };
