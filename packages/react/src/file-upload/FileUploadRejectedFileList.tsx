@@ -13,6 +13,10 @@ export const FileUploadRejectedFileList = ({
 	handleRemoveRejection,
 	hideThumbnails,
 }: FileUploadRejectedFileListProps) => {
+	if (!fileRejections.length) {
+		return null;
+	}
+
 	return (
 		<Stack as="ul" aria-label="Invalid files" gap={0.5}>
 			{fileRejections.map((rejection) => (

@@ -199,6 +199,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
+		const fileSummaryText = getFilesTotal([...value, ...(existingFiles || [])]);
+
 		return (
 			<Field
 				label={label}
@@ -269,29 +271,25 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{value.length || fileRejections.length ? (
+							{value.length ||
+							fileRejections.length ||
+							existingFiles?.length ? (
 								<Stack gap={0.5}>
-									<Text color="muted">{getFilesTotal(value)}</Text>
-									{existingFiles?.length ? (
-										<FileUploadExistingFileList
-											files={existingFiles}
-											hideThumbnails={hideThumbnails}
-										/>
-									) : null}
-									{value.length ? (
-										<FileUploadFileList
-											files={value}
-											onRemove={handleRemoveFile}
-											hideThumbnails={hideThumbnails}
-										/>
-									) : null}
-									{fileRejections.length ? (
-										<FileUploadRejectedFileList
-											fileRejections={fileRejections}
-											handleRemoveRejection={handleRemoveRejection}
-											hideThumbnails={hideThumbnails}
-										/>
-									) : null}
+									<Text color="muted">{fileSummaryText}</Text>
+									<FileUploadExistingFileList
+										files={existingFiles}
+										hideThumbnails={hideThumbnails}
+									/>
+									<FileUploadFileList
+										files={value}
+										onRemove={handleRemoveFile}
+										hideThumbnails={hideThumbnails}
+									/>
+									<FileUploadRejectedFileList
+										fileRejections={fileRejections}
+										handleRemoveRejection={handleRemoveRejection}
+										hideThumbnails={hideThumbnails}
+									/>
 								</Stack>
 							) : null}
 						</Stack>
