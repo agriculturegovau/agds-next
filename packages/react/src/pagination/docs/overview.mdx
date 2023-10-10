@@ -33,9 +33,32 @@ Use pagination to separate large lists of content, such as search results, into 
 - display more than 5 page numbers between the ellipses dividers
 - left or right align with the content you are paginating.
 
+## Pagination Buttons
+
+By default, the `Pagination` component renders a link for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
+
+This requires you to manage the state of the current page in the URL, which usually fine, but in scenarios where that isn't possible we offer a `PaginationButtons` component.
+
+`PaginationButtons` renders a button element for each list item which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
+
+```jsx live
+() => {
+	const [currentPage, setCurrentPage] = React.useState(5);
+	return (
+		<PaginationButtons
+			currentPage={currentPage}
+			onChange={setCurrentPage}
+			totalPages={10}
+		/>
+	);
+};
+```
+
 ## Range text
 
-The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed. You can use the `generatePaginationRangeText` function to generate a string which follows the format of `1 - 10 of 458 items`.
+The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed.
+
+Use the `generatePaginationRangeText` function to generate a string which follows the format of `1 - 10 of 458 items`.
 
 ```jsx live
 <Pagination
@@ -46,8 +69,8 @@ The `Pagination` component accepts a `itemRangeText` prop, which is used to disp
 		totalItems: 100,
 		currentPage: 5,
 		itemsPerPage: 10,
-		singularNoun: 'audit', // Optional
-		pluralNoun: 'audits', // Optional
+		singularNoun: 'audit', // optional
+		pluralNoun: 'audits', // optional
 	})}
 />
 ```
@@ -74,25 +97,4 @@ The `Pagination` component accepts props which are used to display and change th
 		itemsPerPage: 25,
 	})}
 />
-```
-
-## Pagination Buttons
-
-By default, the `Pagination` component renders a link for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
-
-This requires you to manage the state of the current page in the URL, which usually fine, but in scenarios where that isn't possible we offer a `PaginationButtons` component.
-
-`PaginationButtons` renders a button element for each list item which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
-
-```jsx live
-() => {
-	const [currentPage, setCurrentPage] = React.useState(5);
-	return (
-		<PaginationButtons
-			currentPage={currentPage}
-			onChange={setCurrentPage}
-			totalPages={10}
-		/>
-	);
-};
 ```

@@ -3,7 +3,7 @@ export const BUTTON_SIZE_SM = '3rem' as const; // 48px
 
 /** Generates some basic text for the item range in Pagination:
  * "1 - 10 of 458 items" */
-export const generatePaginationRangeText = ({
+export function generatePaginationRangeText({
 	totalItems,
 	itemsPerPage,
 	currentPage,
@@ -20,7 +20,7 @@ export const generatePaginationRangeText = ({
 	singularNoun?: string;
 	/** The plural form of the noun to use for the items. */
 	pluralNoun?: string;
-}) => {
+}) {
 	// If there is only one item, use the word the singular noun instead of the plural
 	const noun = totalItems === 1 ? singularNoun : pluralNoun;
 
@@ -32,4 +32,4 @@ export const generatePaginationRangeText = ({
 	);
 
 	return `${firstItem} - ${lastItem} of ${totalItems} ${noun}`;
-};
+}
