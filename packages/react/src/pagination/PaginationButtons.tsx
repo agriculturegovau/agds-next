@@ -1,8 +1,14 @@
+import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationContainer } from './PaginationContainer';
+import {
+	PaginationItemContainer,
+	PaginationContainer,
+	PaginationSecondaryControlContainer,
+} from './PaginationContainer';
 import { PaginationItemDirectionButton } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPageButton } from './PaginationItemPage';
+import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
 
 export type PaginationButtonsProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -15,6 +21,14 @@ export type PaginationButtonsProps = {
 	windowLimit?: number;
 	/** The total number of pages. */
 	totalPages: number;
+	/** Text to describe the range of items shown. */
+	itemRangeText?: string;
+	/** The selected number of items per page. */
+	itemsPerPage?: number;
+	/** The options for the items per page select. */
+	itemsPerPageOptions?: number[];
+	/** Callback when the items per page is changed. */
+	onItemsPerPageChange?: (itemsPerPage: number) => void;
 };
 
 export function PaginationButtons({
@@ -23,35 +37,56 @@ export function PaginationButtons({
 	currentPage,
 	totalPages,
 	windowLimit = 3,
+	itemRangeText,
+	itemsPerPage,
+	itemsPerPageOptions,
+	onItemsPerPageChange,
 }: PaginationButtonsProps) {
 	const pagination = usePagination({ currentPage, totalPages, windowLimit });
+	const hasRightArea = Boolean(
+		(itemsPerPage && onItemsPerPageChange) || itemRangeText
+	);
 	return (
-		<PaginationContainer aria-label={ariaLabel}>
-			{pagination.map((item, idx) => {
-				switch (item.type) {
-					case 'direction':
-						return (
-							<PaginationItemDirectionButton
-								key={item.direction}
-								direction={item.direction}
-								onClick={() => onChange(item.pageNumber)}
-							/>
-						);
-					case 'page':
-						return (
-							<PaginationItemPageButton
-								key={idx}
-								pageNumber={item.pageNumber}
-								onClick={() => onChange(item.pageNumber)}
-								isActive={item.isActive}
-							/>
-						);
-					case 'separator':
-						return <PaginationItemSeparator key={idx} />;
-					default:
-						return null;
-				}
-			})}
+		<PaginationContainer hasRightArea={hasRightArea}>
+			<PaginationItemContainer aria-label={ariaLabel}>
+				{pagination.map((item, idx) => {
+					switch (item.type) {
+						case 'direction':
+							return (
+								<PaginationItemDirectionButton
+									key={item.direction}
+									direction={item.direction}
+									onClick={() => onChange(item.pageNumber)}
+								/>
+							);
+						case 'page':
+							return (
+								<PaginationItemPageButton
+									key={idx}
+									pageNumber={item.pageNumber}
+									onClick={() => onChange(item.pageNumber)}
+									isActive={item.isActive}
+								/>
+							);
+						case 'separator':
+							return <PaginationItemSeparator key={idx} />;
+						default:
+							return null;
+					}
+				})}
+			</PaginationItemContainer>
+			{hasRightArea && (
+				<PaginationSecondaryControlContainer>
+					{itemRangeText && <Text>{itemRangeText}</Text>}
+					{itemsPerPage && onItemsPerPageChange && (
+						<PaginationItemsPerPageSelect
+							value={itemsPerPage}
+							options={itemsPerPageOptions}
+							onChange={onItemsPerPageChange}
+						/>
+					)}
+				</PaginationSecondaryControlContainer>
+			)}
 		</PaginationContainer>
 	);
 }

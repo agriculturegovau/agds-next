@@ -1,8 +1,14 @@
+import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationContainer } from './PaginationContainer';
 import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
+import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
+import {
+	PaginationItemContainer,
+	PaginationContainer,
+	PaginationSecondaryControlContainer,
+} from './PaginationContainer';
 
 export type PaginationProps = {
 	/** Describes the navigation element to assistive technologies. */
@@ -15,6 +21,14 @@ export type PaginationProps = {
 	windowLimit?: number;
 	/** The total number of pages. */
 	totalPages: number;
+	/** Text to describe the range of items shown. */
+	itemRangeText?: string;
+	/** The selected number of items per page. */
+	itemsPerPage?: number;
+	/** The options for the items per page select. */
+	itemsPerPageOptions?: number[];
+	/** Callback when the items per page is changed. */
+	onItemsPerPageChange?: (itemsPerPage: number) => void;
 };
 
 export function Pagination({
@@ -23,35 +37,56 @@ export function Pagination({
 	windowLimit = 3,
 	currentPage,
 	totalPages,
+	itemRangeText,
+	itemsPerPage,
+	itemsPerPageOptions,
+	onItemsPerPageChange,
 }: PaginationProps) {
 	const pagination = usePagination({ currentPage, windowLimit, totalPages });
+	const hasRightArea = Boolean(
+		(itemsPerPage && onItemsPerPageChange) || itemRangeText
+	);
 	return (
-		<PaginationContainer aria-label={ariaLabel}>
-			{pagination.map((item, idx) => {
-				switch (item.type) {
-					case 'direction':
-						return (
-							<PaginationItemDirection
-								key={item.direction}
-								direction={item.direction}
-								href={generateHref(item.pageNumber)}
-							/>
-						);
-					case 'page':
-						return (
-							<PaginationItemPage
-								key={idx}
-								href={generateHref(item.pageNumber)}
-								pageNumber={item.pageNumber}
-								isActive={item.isActive}
-							/>
-						);
-					case 'separator':
-						return <PaginationItemSeparator key={idx} />;
-					default:
-						return null;
-				}
-			})}
+		<PaginationContainer hasRightArea={hasRightArea}>
+			<PaginationItemContainer aria-label={ariaLabel}>
+				{pagination.map((item, idx) => {
+					switch (item.type) {
+						case 'direction':
+							return (
+								<PaginationItemDirection
+									key={item.direction}
+									direction={item.direction}
+									href={generateHref(item.pageNumber)}
+								/>
+							);
+						case 'page':
+							return (
+								<PaginationItemPage
+									key={idx}
+									href={generateHref(item.pageNumber)}
+									pageNumber={item.pageNumber}
+									isActive={item.isActive}
+								/>
+							);
+						case 'separator':
+							return <PaginationItemSeparator key={idx} />;
+						default:
+							return null;
+					}
+				})}
+			</PaginationItemContainer>
+			{hasRightArea ? (
+				<PaginationSecondaryControlContainer>
+					{itemRangeText ? <Text>{itemRangeText}</Text> : null}
+					{itemsPerPage && onItemsPerPageChange ? (
+						<PaginationItemsPerPageSelect
+							value={itemsPerPage}
+							options={itemsPerPageOptions}
+							onChange={onItemsPerPageChange}
+						/>
+					) : null}
+				</PaginationSecondaryControlContainer>
+			) : null}
 		</PaginationContainer>
 	);
 }

@@ -2,143 +2,147 @@
 
 exports[`PaginationButtons renders correctly 1`] = `
 <div>
-  <nav
-    aria-label="pagination"
+  <div
+    class="css-10d2tcs-boxStyles"
   >
-    <ol
-      class="css-1cc1bme-boxStyles"
+    <nav
+      aria-label="pagination"
     >
-      <li
-        class="css-6p575j-boxStyles"
+      <ol
+        class="css-1cc1bme-boxStyles"
       >
-        <button
-          aria-label="Go to previous page"
-          class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
-          type="button"
+        <li
+          class="css-6p575j-boxStyles"
         >
-          <svg
-            aria-hidden="true"
-            class="css-1krnro2-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+          <button
+            aria-label="Go to previous page"
+            class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
+            type="button"
           >
-            <path
-              d="M21 12L4 12"
-            />
-            <path
-              d="M8 17L3 12L8 7"
-            />
-          </svg>
-          <span
-            class="css-z3ioz-boxStyles"
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 12L4 12"
+              />
+              <path
+                d="M8 17L3 12L8 7"
+              />
+            </svg>
+            <span
+              class="css-z3ioz-boxStyles"
+            >
+              Previous
+            </span>
+          </button>
+        </li>
+        <li>
+          <button
+            aria-label="Go to page 1"
+            class="css-1yifu8x-BaseButton-boxStyles"
+            type="button"
           >
-            Previous
-          </span>
-        </button>
-      </li>
-      <li>
-        <button
-          aria-label="Go to page 1"
-          class="css-1yifu8x-BaseButton-boxStyles"
-          type="button"
-        >
-          1
-        </button>
-      </li>
-      <li
-        class="css-yxjemn-boxStyles"
-      >
-        <span
-          class="css-6j1v6l-boxStyles-Text"
-        >
-          …
-        </span>
-      </li>
-      <li>
-        <button
-          aria-label="Go to page 4"
-          class="css-1yifu8x-BaseButton-boxStyles"
-          type="button"
-        >
-          4
-        </button>
-      </li>
-      <li>
-        <button
-          aria-current="page"
-          aria-label="Go to page 5"
-          class="css-1gs1cx7-BaseButton-boxStyles-PaginationItemPageButton"
-          type="button"
-        >
-          5
-        </button>
-      </li>
-      <li>
-        <button
-          aria-label="Go to page 6"
-          class="css-1yifu8x-BaseButton-boxStyles"
-          type="button"
-        >
-          6
-        </button>
-      </li>
-      <li
-        class="css-yxjemn-boxStyles"
-      >
-        <span
-          class="css-6j1v6l-boxStyles-Text"
-        >
-          …
-        </span>
-      </li>
-      <li>
-        <button
-          aria-label="Go to page 10"
-          class="css-1yifu8x-BaseButton-boxStyles"
-          type="button"
-        >
-          10
-        </button>
-      </li>
-      <li
-        class="css-1vybkau-boxStyles"
-      >
-        <button
-          aria-label="Go to next page"
-          class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
-          type="button"
+            1
+          </button>
+        </li>
+        <li
+          class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-z3ioz-boxStyles"
+            class="css-6j1v6l-boxStyles-Text"
           >
-            Next
+            …
           </span>
-          <svg
-            aria-hidden="true"
-            class="css-1krnro2-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+        </li>
+        <li>
+          <button
+            aria-label="Go to page 4"
+            class="css-1yifu8x-BaseButton-boxStyles"
+            type="button"
           >
-            <path
-              d="M3 12L20 12"
-            />
-            <path
-              d="M16 7L21 12L16 17"
-            />
-          </svg>
-        </button>
-      </li>
-    </ol>
-  </nav>
+            4
+          </button>
+        </li>
+        <li>
+          <button
+            aria-current="page"
+            aria-label="Go to page 5"
+            class="css-1gs1cx7-BaseButton-boxStyles-PaginationItemPageButton"
+            type="button"
+          >
+            5
+          </button>
+        </li>
+        <li>
+          <button
+            aria-label="Go to page 6"
+            class="css-1yifu8x-BaseButton-boxStyles"
+            type="button"
+          >
+            6
+          </button>
+        </li>
+        <li
+          class="css-yxjemn-boxStyles"
+        >
+          <span
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            …
+          </span>
+        </li>
+        <li>
+          <button
+            aria-label="Go to page 10"
+            class="css-1yifu8x-BaseButton-boxStyles"
+            type="button"
+          >
+            10
+          </button>
+        </li>
+        <li
+          class="css-1vybkau-boxStyles"
+        >
+          <button
+            aria-label="Go to next page"
+            class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
+            type="button"
+          >
+            <span
+              class="css-z3ioz-boxStyles"
+            >
+              Next
+            </span>
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 12L20 12"
+              />
+              <path
+                d="M16 7L21 12L16 17"
+              />
+            </svg>
+          </button>
+        </li>
+      </ol>
+    </nav>
+  </div>
 </div>
 `;

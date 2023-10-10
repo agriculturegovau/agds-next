@@ -2,7 +2,7 @@
 title: Pagination
 description: Pagination separates large amounts of content into separate pages, which helps reduce cognitive load.
 group: Navigation
-storybookPath: /story/navigation-pagination--on-light
+storybookPath: /story/navigation-pagination--basic
 figmaGalleryNodeId: 11978%3A107147
 relatedPatterns: ['filtering-a-dataset']
 ---
@@ -52,4 +52,49 @@ This requires you to manage the state of the current page in the URL, which usua
 		/>
 	);
 };
+```
+
+## Range text
+
+The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed.
+
+Use the `generatePaginationRangeText` function to generate a string which follows the format of `1 - 10 of 458 items`.
+
+```jsx live
+<Pagination
+	currentPage={5}
+	totalPages={10}
+	generateHref={(page) => `/example?page=${page}`}
+	itemRangeText={generatePaginationRangeText({
+		totalItems: 100,
+		currentPage: 5,
+		itemsPerPage: 10,
+		singularNoun: 'audit', // optional
+		pluralNoun: 'audits', // optional
+	})}
+/>
+```
+
+## Items per page
+
+The `Pagination` component accepts props which are used to display and change the number of items per page.
+
+- `itemsPerPage` - the number of items per page
+- `itemsPerPageOptions` - an array of numbers that are used to populate the items per page dropdown
+- `onItemsPerPageChange` - a function that is called when the number of items per page is changed
+
+```jsx live
+<Pagination
+	currentPage={5}
+	totalPages={10}
+	generateHref={(page) => `/example?page=${page}`}
+	itemsPerPage={25}
+	itemsPerPageOptions={[10, 25, 50, 100]}
+	onItemsPerPageChange={(itemsPerPage) => console.log(itemsPerPage)}
+	itemRangeText={generatePaginationRangeText({
+		totalItems: 100,
+		currentPage: 5,
+		itemsPerPage: 25,
+	})}
+/>
 ```

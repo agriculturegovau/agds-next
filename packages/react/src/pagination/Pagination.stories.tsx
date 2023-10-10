@@ -1,45 +1,72 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from '../box';
+import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { Pagination } from './Pagination';
+import { generatePaginationRangeText } from './utils';
 
-export default {
+const meta: Meta<typeof Pagination> = {
 	title: 'navigation/Pagination',
 	component: Pagination,
-} as ComponentMeta<typeof Pagination>;
-
-const Template: ComponentStory<typeof Pagination> = (props) => {
-	return (
-		<Pagination {...props} generateHref={(pageNumber) => `#${pageNumber}`} />
-	);
+	args: {
+		currentPage: 5,
+		totalPages: 10,
+		generateHref: (pageNumber) => `#${pageNumber}`,
+	},
 };
 
-export const OnLight: ComponentStory<typeof Pagination> = (args) => (
-	<Template {...args} />
-);
-OnLight.args = {
-	currentPage: 5,
-	totalPages: 10,
+export default meta;
+
+type Story = StoryObj<typeof Pagination>;
+
+export const Basic: Story = {};
+
+export const ManyPages: Story = {
+	args: {
+		currentPage: 5,
+		totalPages: 300,
+	},
 };
 
-export const OnDark: ComponentStory<typeof Pagination> = (args) => (
-	<Box palette="dark" background="body" padding={1.5}>
-		<Template {...args} />
-	</Box>
-);
-OnDark.args = {
-	currentPage: 5,
-	totalPages: 10,
+export const CustomLimit: Story = {
+	args: {
+		windowLimit: 5,
+		currentPage: 5,
+		totalPages: 300,
+	},
 };
 
-export const ManyPages = Template.bind({});
-ManyPages.args = {
-	currentPage: 5,
-	totalPages: 300,
+export const WithRangeText: Story = {
+	args: {
+		currentPage: 5,
+		itemRangeText: generatePaginationRangeText({
+			totalItems: 100,
+			currentPage: 5,
+			itemsPerPage: 10,
+			singularNoun: 'certificate',
+			pluralNoun: 'certificates',
+		}),
+	},
 };
 
-export const CustomLimit = Template.bind({});
-CustomLimit.args = {
-	windowLimit: 5,
-	currentPage: 5,
-	totalPages: 300,
+export const ItemsPerPage: Story = {
+	args: {
+		currentPage: 1,
+		itemsPerPage: 10,
+	},
+	render: function Render(args) {
+		const [itemsPerPage, setItemsPerPage] = useState(args.itemsPerPage || 10);
+		return (
+			<Pagination
+				{...args}
+				itemsPerPage={itemsPerPage}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
+				itemRangeText={generatePaginationRangeText({
+					totalItems: 100,
+					currentPage: args.currentPage ?? 1,
+					itemsPerPage: args.itemsPerPage ?? 10,
+					singularNoun: 'certificate',
+					pluralNoun: 'certificates',
+				})}
+			/>
+		);
+	},
 };

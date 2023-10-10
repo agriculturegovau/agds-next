@@ -2,143 +2,147 @@
 
 exports[`Pagination renders correctly 1`] = `
 <div>
-  <nav
-    aria-label="pagination"
+  <div
+    class="css-10d2tcs-boxStyles"
   >
-    <ol
-      class="css-1cc1bme-boxStyles"
+    <nav
+      aria-label="pagination"
     >
-      <li
-        class="css-6p575j-boxStyles"
+      <ol
+        class="css-1cc1bme-boxStyles"
       >
-        <a
-          aria-label="Go to previous page"
-          class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
-          href="page-4"
+        <li
+          class="css-6p575j-boxStyles"
         >
-          <svg
-            aria-hidden="true"
-            class="css-1krnro2-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+          <a
+            aria-label="Go to previous page"
+            class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
+            href="page-4"
           >
-            <path
-              d="M21 12L4 12"
-            />
-            <path
-              d="M8 17L3 12L8 7"
-            />
-          </svg>
-          <span
-            class="css-z3ioz-boxStyles"
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 12L4 12"
+              />
+              <path
+                d="M8 17L3 12L8 7"
+              />
+            </svg>
+            <span
+              class="css-z3ioz-boxStyles"
+            >
+              Previous
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            aria-label="Go to page 1"
+            class="css-3n883g-boxStyles"
+            href="page-1"
           >
-            Previous
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          aria-label="Go to page 1"
-          class="css-3n883g-boxStyles"
-          href="page-1"
-        >
-          1
-        </a>
-      </li>
-      <li
-        class="css-yxjemn-boxStyles"
-      >
-        <span
-          class="css-6j1v6l-boxStyles-Text"
-        >
-          …
-        </span>
-      </li>
-      <li>
-        <a
-          aria-label="Go to page 4"
-          class="css-3n883g-boxStyles"
-          href="page-4"
-        >
-          4
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current="page"
-          aria-label="Go to page 5"
-          class="css-8bhquh-boxStyles-PaginationItemPage"
-          href="page-5"
-        >
-          5
-        </a>
-      </li>
-      <li>
-        <a
-          aria-label="Go to page 6"
-          class="css-3n883g-boxStyles"
-          href="page-6"
-        >
-          6
-        </a>
-      </li>
-      <li
-        class="css-yxjemn-boxStyles"
-      >
-        <span
-          class="css-6j1v6l-boxStyles-Text"
-        >
-          …
-        </span>
-      </li>
-      <li>
-        <a
-          aria-label="Go to page 10"
-          class="css-3n883g-boxStyles"
-          href="page-10"
-        >
-          10
-        </a>
-      </li>
-      <li
-        class="css-1vybkau-boxStyles"
-      >
-        <a
-          aria-label="Go to next page"
-          class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
-          href="page-6"
+            1
+          </a>
+        </li>
+        <li
+          class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-z3ioz-boxStyles"
+            class="css-6j1v6l-boxStyles-Text"
           >
-            Next
+            …
           </span>
-          <svg
-            aria-hidden="true"
-            class="css-1krnro2-Icon"
-            clip-rule="evenodd"
-            focusable="false"
-            height="24"
-            role="img"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
+        </li>
+        <li>
+          <a
+            aria-label="Go to page 4"
+            class="css-3n883g-boxStyles"
+            href="page-4"
           >
-            <path
-              d="M3 12L20 12"
-            />
-            <path
-              d="M16 7L21 12L16 17"
-            />
-          </svg>
-        </a>
-      </li>
-    </ol>
-  </nav>
+            4
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current="page"
+            aria-label="Go to page 5"
+            class="css-8bhquh-boxStyles-PaginationItemPage"
+            href="page-5"
+          >
+            5
+          </a>
+        </li>
+        <li>
+          <a
+            aria-label="Go to page 6"
+            class="css-3n883g-boxStyles"
+            href="page-6"
+          >
+            6
+          </a>
+        </li>
+        <li
+          class="css-yxjemn-boxStyles"
+        >
+          <span
+            class="css-6j1v6l-boxStyles-Text"
+          >
+            …
+          </span>
+        </li>
+        <li>
+          <a
+            aria-label="Go to page 10"
+            class="css-3n883g-boxStyles"
+            href="page-10"
+          >
+            10
+          </a>
+        </li>
+        <li
+          class="css-1vybkau-boxStyles"
+        >
+          <a
+            aria-label="Go to next page"
+            class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
+            href="page-6"
+          >
+            <span
+              class="css-z3ioz-boxStyles"
+            >
+              Next
+            </span>
+            <svg
+              aria-hidden="true"
+              class="css-1krnro2-Icon"
+              clip-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 12L20 12"
+              />
+              <path
+                d="M16 7L21 12L16 17"
+              />
+            </svg>
+          </a>
+        </li>
+      </ol>
+    </nav>
+  </div>
 </div>
 `;
