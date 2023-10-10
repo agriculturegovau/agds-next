@@ -65,7 +65,7 @@ export const itemsPerPage: Story = {
 				currentPage={currentPage}
 				onChange={setCurrentPage}
 				itemsPerPage={itemsPerPage}
-				onChangeItemsPerPage={(val) => setItemsPerPage(val)}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 				itemRangeText={itemRangeText}
 			/>
 		);
