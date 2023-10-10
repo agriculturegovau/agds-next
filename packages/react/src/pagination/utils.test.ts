@@ -1,51 +1,81 @@
 import { generatePaginationRangeText } from './utils';
 
 describe('generatePaginationRangeText', () => {
-	test('works correctly', () => {
+	test('basic usage works correctly', () => {
 		expect(
 			generatePaginationRangeText({
-				totalItems: 100,
-				firstItem: 10,
-				lastItem: 20,
+				totalItems: 50,
+				itemsPerPage: 10,
+				currentPage: 1,
 			})
-		).toEqual('10 - 20 of 100 items');
+		).toEqual('1 - 10 of 50 items');
 
 		expect(
 			generatePaginationRangeText({
 				totalItems: 50,
-				firstItem: 40,
-				lastItem: 45,
+				itemsPerPage: 10,
+				currentPage: 2,
 			})
-		).toEqual('40 - 45 of 50 items');
+		).toEqual('11 - 20 of 50 items');
 
 		expect(
 			generatePaginationRangeText({
 				totalItems: 1,
-				firstItem: 1,
-				lastItem: 1,
+				itemsPerPage: 10,
+				currentPage: 1,
 			})
 		).toEqual('1 - 1 of 1 item');
+	});
+
+	test('handles last page correctly', () => {
+		expect(
+			generatePaginationRangeText({
+				totalItems: 45,
+				itemsPerPage: 10,
+				currentPage: 5,
+			})
+		).toEqual('41 - 45 of 45 items');
+	});
+
+	test('handles singular items correctly ', () => {
+		expect(
+			generatePaginationRangeText({
+				totalItems: 1,
+				itemsPerPage: 10,
+				currentPage: 1,
+			})
+		).toEqual('1 - 1 of 1 item');
+
+		expect(
+			generatePaginationRangeText({
+				totalItems: 1,
+				itemsPerPage: 10,
+				currentPage: 1,
+				singularNoun: 'audit',
+				pluralNoun: 'audits',
+			})
+		).toEqual('1 - 1 of 1 audit');
 	});
 
 	test('handles alternative nouns correctly', () => {
 		expect(
 			generatePaginationRangeText({
-				totalItems: 100,
-				firstItem: 10,
-				lastItem: 20,
-				singularNoun: 'certificate',
-				pluralNoun: 'certificates',
+				totalItems: 50,
+				itemsPerPage: 10,
+				currentPage: 1,
+				singularNoun: 'audit',
+				pluralNoun: 'audits',
 			})
-		).toEqual('10 - 20 of 100 certificates');
+		).toEqual('1 - 10 of 50 audits');
 
 		expect(
 			generatePaginationRangeText({
 				totalItems: 1,
-				firstItem: 1,
-				lastItem: 1,
-				singularNoun: 'certificate',
-				pluralNoun: 'certificates',
+				itemsPerPage: 10,
+				currentPage: 1,
+				singularNoun: 'audit',
+				pluralNoun: 'audits',
 			})
-		).toEqual('1 - 1 of 1 certificate');
+		).toEqual('1 - 1 of 1 audit');
 	});
 });

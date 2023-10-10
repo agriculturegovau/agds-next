@@ -1,12 +1,12 @@
 import { Text } from '../text';
 import { usePagination } from './usePagination';
-import { PaginationContainer } from './PaginationContainer';
+import { PaginationItemContainer } from './PaginationItemContainer';
 import { PaginationItemDirection } from './PaginationItemDirection';
 import { PaginationItemSeparator } from './PaginationItemSeparator';
 import { PaginationItemPage } from './PaginationItemPage';
 import { PaginationItemsPerPageSelect } from './PaginationItemsPerPageSelect';
 import {
-	PaginationOuterContainer,
+	PaginationContainer,
 	PaginationSecondaryControlContainer,
 } from './PaginationContainer';
 
@@ -28,7 +28,7 @@ export type PaginationProps = {
 	/** The options for the items per page select. */
 	itemsPerPageOptions?: number[];
 	/** Callback when the items per page is changed. */
-	onChangeItemsPerPage?: (itemsPerPage: number) => void;
+	onItemsPerPageChange?: (itemsPerPage: number) => void;
 };
 
 export function Pagination({
@@ -40,15 +40,15 @@ export function Pagination({
 	itemRangeText,
 	itemsPerPage,
 	itemsPerPageOptions,
-	onChangeItemsPerPage,
+	onItemsPerPageChange,
 }: PaginationProps) {
 	const pagination = usePagination({ currentPage, windowLimit, totalPages });
-	const hasRightArea: boolean =
-		(!!itemsPerPage && !!onChangeItemsPerPage) || !!itemRangeText;
-
+	const hasRightArea = Boolean(
+		(itemsPerPage && onItemsPerPageChange) || itemRangeText
+	);
 	return (
-		<PaginationOuterContainer hasRightArea={hasRightArea}>
-			<PaginationContainer aria-label={ariaLabel}>
+		<PaginationContainer hasRightArea={hasRightArea}>
+			<PaginationItemContainer aria-label={ariaLabel}>
 				{pagination.map((item, idx) => {
 					switch (item.type) {
 						case 'direction':
@@ -74,19 +74,19 @@ export function Pagination({
 							return null;
 					}
 				})}
-			</PaginationContainer>
-			{hasRightArea && (
+			</PaginationItemContainer>
+			{hasRightArea ? (
 				<PaginationSecondaryControlContainer>
-					{itemRangeText && <Text>{itemRangeText}</Text>}
-					{itemsPerPage && onChangeItemsPerPage && (
+					{itemRangeText ? <Text>{itemRangeText}</Text> : null}
+					{itemsPerPage && onItemsPerPageChange ? (
 						<PaginationItemsPerPageSelect
 							value={itemsPerPage}
 							options={itemsPerPageOptions}
-							onChange={onChangeItemsPerPage}
+							onChange={onItemsPerPageChange}
 						/>
-					)}
+					) : null}
 				</PaginationSecondaryControlContainer>
-			)}
-		</PaginationOuterContainer>
+			) : null}
+		</PaginationContainer>
 	);
 }

@@ -1,8 +1,8 @@
 import { Text } from '../text';
 import { usePagination } from './usePagination';
+import { PaginationItemContainer } from './PaginationItemContainer';
 import {
 	PaginationContainer,
-	PaginationOuterContainer,
 	PaginationSecondaryControlContainer,
 } from './PaginationContainer';
 import { PaginationItemDirectionButton } from './PaginationItemDirection';
@@ -28,7 +28,7 @@ export type PaginationButtonsProps = {
 	/** The options for the items per page select. */
 	itemsPerPageOptions?: number[];
 	/** Callback when the items per page is changed. */
-	onChangeItemsPerPage?: (itemsPerPage: number) => void;
+	onItemsPerPageChange?: (itemsPerPage: number) => void;
 };
 
 export function PaginationButtons({
@@ -40,15 +40,15 @@ export function PaginationButtons({
 	itemRangeText,
 	itemsPerPage,
 	itemsPerPageOptions,
-	onChangeItemsPerPage,
+	onItemsPerPageChange,
 }: PaginationButtonsProps) {
 	const pagination = usePagination({ currentPage, totalPages, windowLimit });
-	const hasRightArea: boolean =
-		(!!itemsPerPage && !!onChangeItemsPerPage) || !!itemRangeText;
-
+	const hasRightArea = Boolean(
+		(itemsPerPage && onItemsPerPageChange) || itemRangeText
+	);
 	return (
-		<PaginationOuterContainer hasRightArea={hasRightArea}>
-			<PaginationContainer aria-label={ariaLabel}>
+		<PaginationContainer hasRightArea={hasRightArea}>
+			<PaginationItemContainer aria-label={ariaLabel}>
 				{pagination.map((item, idx) => {
 					switch (item.type) {
 						case 'direction':
@@ -74,19 +74,19 @@ export function PaginationButtons({
 							return null;
 					}
 				})}
-			</PaginationContainer>
+			</PaginationItemContainer>
 			{hasRightArea && (
 				<PaginationSecondaryControlContainer>
 					{itemRangeText && <Text>{itemRangeText}</Text>}
-					{itemsPerPage && onChangeItemsPerPage && (
+					{itemsPerPage && onItemsPerPageChange && (
 						<PaginationItemsPerPageSelect
 							value={itemsPerPage}
 							options={itemsPerPageOptions}
-							onChange={onChangeItemsPerPage}
+							onChange={onItemsPerPageChange}
 						/>
 					)}
 				</PaginationSecondaryControlContainer>
 			)}
-		</PaginationOuterContainer>
+		</PaginationContainer>
 	);
 }
