@@ -33,45 +33,6 @@ Use pagination to separate large lists of content, such as search results, into 
 - display more than 5 page numbers between the ellipses dividers
 - left or right align with the content you are paginating.
 
-## Range text
-
-The `Pagination` component accepts a `itemRangeText` prop, which is used to display the range of items currently being displayed. You can use the `generatePaginationRangeText` function to generate a string which follows the format of `1 - 10 of 458 items`.
-
-```jsx live
-<Pagination
-	currentPage={5}
-	totalPages={10}
-	generateHref={(page) => `/example?page=${page}`}
-	itemRangeText={generatePaginationRangeText({
-		totalItems: 458,
-		firstItem: 1,
-		lastItem: 10,
-		singularNoun: 'item',
-		pluralNoun: 'items',
-	})}
-/>
-```
-
-## Items per page
-
-The `Pagination` component accepts props which are used to display and change the number of items per page.
-
-- `itemsPerPage` - the number of items per page
-- `itemsPerPageOptions` - an array of numbers that are used to populate the items per page dropdown
-- `onChangeItemsPerPage` - a function that is called when the number of items per page is changed
-
-```jsx live
-<Pagination
-	currentPage={5}
-	totalPages={10}
-	generateHref={(page) => `/example?page=${page}`}
-	itemRangeText="1-25 of 458 results"
-	itemsPerPage={25}
-	itemsPerPageOptions={[10, 25, 50, 100]}
-	onChangeItemsPerPage={(itemsPerPage) => console.log(itemsPerPage)}
-/>
-```
-
 ## Pagination Buttons
 
 By default, the `Pagination` component renders a link for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
