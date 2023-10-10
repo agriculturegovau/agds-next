@@ -6,10 +6,11 @@ exports[`StatusBadge weight: regular tone: error renders correctly 1`] = `
     class="css-16xnn81-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Error"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -41,10 +42,11 @@ exports[`StatusBadge weight: regular tone: info renders correctly 1`] = `
     class="css-11uollg-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Information"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -98,10 +100,11 @@ exports[`StatusBadge weight: regular tone: success renders correctly 1`] = `
     class="css-1j8vzzn-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Success"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -132,10 +135,11 @@ exports[`StatusBadge weight: regular tone: warning renders correctly 1`] = `
     class="css-1mxhjjp-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Warning"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -170,10 +174,11 @@ exports[`StatusBadge weight: subtle tone: error renders correctly 1`] = `
     class="css-1ab91q-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Error"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -205,10 +210,11 @@ exports[`StatusBadge weight: subtle tone: info renders correctly 1`] = `
     class="css-1ab91q-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Information"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -262,10 +268,11 @@ exports[`StatusBadge weight: subtle tone: success renders correctly 1`] = `
     class="css-1ab91q-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Success"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -296,10 +303,11 @@ exports[`StatusBadge weight: subtle tone: warning renders correctly 1`] = `
     class="css-1ab91q-boxStyles-StatusBadge"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden="false"
+      aria-label="Warning"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
-      focusable="false"
+      focusable="true"
       height="24"
       role="img"
       viewBox="0 0 24 24"
