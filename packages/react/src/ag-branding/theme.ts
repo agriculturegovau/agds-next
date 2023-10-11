@@ -1,12 +1,5 @@
 import { Theme } from '../core';
 
-const primitives = {
-	navy1: '#0A1629',
-	navy2: '#122440',
-	navy3: '#162846',
-	navy4: '#20365B',
-};
-
 export const theme: Theme = {
 	lightForegroundAction: '#00558b',
 	lightAccent: '#F36C52',
@@ -20,10 +13,10 @@ export const theme: Theme = {
 	lightSystemWarningMuted: '#FFF2E5',
 	lightSystemInfo: '#008BD1',
 	lightSystemInfoMuted: '#E5F6FF',
-	darkBackgroundBody: primitives.navy1,
-	darkBackgroundShade: primitives.navy3,
-	darkBackgroundBodyAlt: primitives.navy3,
-	darkBackgroundShadeAlt: primitives.navy4,
+	darkBackgroundBody: '#0A1629',
+	darkBackgroundShade: '#162846',
+	darkBackgroundBodyAlt: '#162846',
+	darkBackgroundShadeAlt: '#20365B',
 	darkForegroundAction: '#9EE8FF',
 	darkSelected: '#9EE8FF', // use same color as action
 	darkSelectedMuted: '#162C50',
