@@ -61,9 +61,12 @@ export const FileUploadRejectedFile = ({
 					</Stack>
 				</Flex>
 			</Flex>
-
 			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
-				<Button variant="text" onClick={onRemove}>
+				<Button
+					variant="text"
+					onClick={onRemove}
+					aria-label={`Remove file, ${name}`}
+				>
 					Remove file
 				</Button>
 			</Flex>

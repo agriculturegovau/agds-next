@@ -48,7 +48,7 @@ export const FileUploadExistingFile = ({
 					<Button
 						variant="text"
 						onClick={onDelete}
-						aria-label={`Delete file, ${name}`}
+						aria-label={`Remove file, ${name}`}
 					>
 						Remove file
 					</Button>
