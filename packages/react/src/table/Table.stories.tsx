@@ -72,12 +72,12 @@ export const Basic: Story = {
 };
 
 export const Striped: Story = {
-	name: 'with striped rows',
+	name: 'With striped rows',
 	args: { striped: true },
 };
 
 export const FixedLayout: Story = {
-	name: 'with fixed layout',
+	name: 'With fixed layout',
 	args: {
 		tableLayout: 'fixed',
 	},
@@ -137,7 +137,7 @@ export const FixedLayout: Story = {
 };
 
 export const AriaRowcount: Story = {
-	name: 'with aria-rowcount',
+	name: 'With aria-rowcount',
 	render: (args) => (
 		<TableWrapper>
 			<Table aria-rowcount={exampleData.length + 1} {...args}>
@@ -194,7 +194,7 @@ export const AriaRowcount: Story = {
 };
 
 export const WithHeading: Story = {
-	name: 'with heading',
+	name: 'With heading',
 	args: {},
 	render: (args) => (
 		<Stack gap={1}>
@@ -245,7 +245,7 @@ export const WithHeading: Story = {
 };
 
 export const Actions: Story = {
-	name: 'with row actions',
+	name: 'With row actions',
 	args: {},
 	render: (args) => (
 		<TableWrapper>
@@ -342,7 +342,7 @@ export const Actions: Story = {
 };
 
 export const SelectableBasic: Story = {
-	name: 'with selectable rows',
+	name: 'With selectable rows',
 	render: function Render(props) {
 		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
@@ -442,7 +442,7 @@ export const SelectableBasic: Story = {
 };
 
 export const SelectableWithBatchActions: Story = {
-	name: 'with selectable rows and batch actions',
+	name: 'With selectable rows and batch actions',
 	render: SelectableTableBatchActions,
 };
 

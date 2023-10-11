@@ -32,7 +32,7 @@ const meta: Meta = {
 export default meta;
 
 export const FilterSmall = {
-	name: 'with filtering (Small)',
+	name: 'Filter and sort (Small)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -64,7 +64,7 @@ export const FilterSmall = {
 };
 
 export const FilterMedium = {
-	name: 'with filtering (Medium)',
+	name: 'Filter and sort (Medium)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -97,7 +97,7 @@ export const FilterMedium = {
 };
 
 export const FilterLarge = {
-	name: 'with filtering (Large)',
+	name: 'Filter and sort (Large)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;

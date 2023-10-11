@@ -9,13 +9,15 @@ import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+import { TableSelection } from './TableSelection';
+import { DataTable } from './components/DataTable';
 
 const args = { throwError: false };
 
 type StoryArgs = typeof args;
 
 const meta: Meta = {
-	title: 'Content/Table/with filtering',
+	title: 'Content/Table/Remote data examples',
 	parameters: {
 		layout: 'fullscreen',
 	},
@@ -31,8 +33,79 @@ const meta: Meta = {
 
 export default meta;
 
+export const LoadingAndSort = {
+	name: 'With sort',
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter({
+			itemsPerPage: 10,
+		});
+		const { filters, pagination, sort } = sortAndFilter;
+		const { data, totalPages, totalItems, loading } = useFetchData({
+			filters,
+			pagination,
+			sort,
+		});
+
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider
+					value={{
+						data: data,
+						loading: loading,
+						totalPages: totalPages,
+						totalItems: totalItems,
+					}}
+				>
+					<PageContent>
+						<Stack gap={2}>
+							<Callout title="Table Filtering (Small)">
+								<Text as="p">
+									In the most basic cases of filtering with up to three
+									filterable fields, we can show all filters in a row above the
+									table.
+								</Text>
+							</Callout>
+							<DataTable />
+						</Stack>
+					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
+export const Selection = {
+	name: 'With sort and selection',
+	render: function Render({ throwError }: StoryArgs) {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<PageContent>
+						<Stack gap={2}>
+							<Callout title="Table Selection">
+								<Text as="p">
+									A table with pagination that allows rows to be selected.
+								</Text>
+							</Callout>
+							<TableSelection />
+						</Stack>
+					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
 export const FilterSmall = {
-	name: 'Small',
+	name: 'With filtering (small)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -64,7 +137,7 @@ export const FilterSmall = {
 };
 
 export const FilterMedium = {
-	name: 'Medium',
+	name: 'With filtering (medium)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -96,42 +169,8 @@ export const FilterMedium = {
 	},
 };
 
-export const FilterLarge = {
-	name: 'Large',
-	render: function Render({ throwError }: StoryArgs) {
-		const sortAndFilter = useSortAndFilter();
-		const { filters, pagination, sort } = sortAndFilter;
-		const data = useFetchData({
-			filters,
-			pagination,
-			sort,
-			throwError,
-		});
-		return (
-			<SortAndFilterProvider value={sortAndFilter}>
-				<DataProvider value={data}>
-					<PageContent>
-						<Stack gap={2}>
-							<Callout title="Table Filtering (Large)">
-								<Text as="p">
-									The large filtering pattern is for cases where the number of
-									filterable fields exceeds 6. Our Drawer component is used to
-									reveal all filters as the user elects to show them. You may
-									elect to show up to two primary filters in the main content
-									area next to the button which opens the drawer.
-								</Text>
-							</Callout>
-							<TableFilteringLarge />
-						</Stack>
-					</PageContent>
-				</DataProvider>
-			</SortAndFilterProvider>
-		);
-	},
-};
-
 export const FilterAndSelectMedium = {
-	name: 'Medium with selection',
+	name: 'With filtering (medium) and selection',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -164,8 +203,42 @@ export const FilterAndSelectMedium = {
 	},
 };
 
+export const FilterLarge = {
+	name: 'With filtering (large) and selection',
+	render: function Render({ throwError }: StoryArgs) {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<PageContent>
+						<Stack gap={2}>
+							<Callout title="Table Filtering (Large)">
+								<Text as="p">
+									The large filtering pattern is for cases where the number of
+									filterable fields exceeds 6. Our Drawer component is used to
+									reveal all filters as the user elects to show them. You may
+									elect to show up to two primary filters in the main content
+									area next to the button which opens the drawer.
+								</Text>
+							</Callout>
+							<TableFilteringLarge />
+						</Stack>
+					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
 export const FilterAndSelectLarge = {
-	name: 'Large with selection',
+	name: 'With filtering (large) and selection',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
