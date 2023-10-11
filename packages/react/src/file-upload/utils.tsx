@@ -25,8 +25,7 @@ export function formatFileSize(bytes: number) {
 
 export function getFilesTotal(files: { size: number }[]) {
 	const label = files.length > 1 ? 'files' : 'file';
-	const size = files.reduce((a, { size }) => a + size, 0);
-	return `${files.length} ${label} selected (${formatFileSize(size)})`;
+	return `${files.length} ${label} selected`;
 }
 
 export const fileTypeMapping = {
@@ -48,6 +47,7 @@ export const fileTypeMapping = {
 	'audio/*': { extensions: [], label: 'Any audio file' },
 	'audio/mpeg': { extensions: ['.mp3'] },
 	'audio/wav': { extensions: ['.wav'] },
+	// Image
 	'image/*': { extensions: [], label: 'Any image file' },
 	'image/gif': { extensions: ['.gif'] },
 	'image/heic': { extensions: ['.heic'] },
