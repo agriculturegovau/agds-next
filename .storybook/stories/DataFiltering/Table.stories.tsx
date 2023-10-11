@@ -17,7 +17,7 @@ const args = { throwError: false };
 type StoryArgs = typeof args;
 
 const meta: Meta = {
-	title: 'Content/Table/Remote data examples',
+	title: 'Content/Table/Sort and filter examples',
 	parameters: {
 		layout: 'fullscreen',
 	},
