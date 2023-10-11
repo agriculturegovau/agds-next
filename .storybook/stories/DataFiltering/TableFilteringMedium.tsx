@@ -41,7 +41,7 @@ export const TableFilteringMedium = ({
 			<H2 id={headingId}>Audits</H2>
 			<div>
 				<ButtonLink href="#new" iconBefore={PlusIcon}>
-					New item
+					Create request
 				</ButtonLink>
 			</div>
 
