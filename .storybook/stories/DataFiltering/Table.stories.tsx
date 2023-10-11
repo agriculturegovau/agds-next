@@ -204,7 +204,7 @@ export const FilterAndSelectMedium = {
 };
 
 export const FilterLarge = {
-	name: 'With filtering (large) and selection',
+	name: 'With filtering (large)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;

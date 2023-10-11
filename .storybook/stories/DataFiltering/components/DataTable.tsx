@@ -91,6 +91,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}
+						tableLayout="fixed"
 					>
 						{!headingId && (
 							<TableCaption>
