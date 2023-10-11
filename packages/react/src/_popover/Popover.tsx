@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithChildren, useEffect, useMemo } from 'react';
+import { CSSProperties, PropsWithChildren, useEffect } from 'react';
 import {
 	type Placement,
 	type ReferenceType,
@@ -155,28 +155,23 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		floating.update,
 	]);
 
-	const popover = useMemo(() => {
-		function getReferenceProps() {
-			return {
-				ref: floating.refs.setReference,
-			};
-		}
-
-		function getPopoverProps() {
-			return {
-				ref: floating.refs.setFloating,
-				style: floating.floatingStyles,
-			};
-		}
-
+	function getReferenceProps() {
 		return {
-			getReferenceProps,
-			getPopoverProps,
-			referenceRef: floating.refs.reference,
-			popoverRef: floating.refs.floating,
-			update: floating.update,
+			ref: floating.refs.setReference,
 		};
-	}, [floating]);
+	}
 
-	return popover;
+	function getPopoverProps() {
+		return {
+			ref: floating.refs.setFloating,
+			style: floating.floatingStyles,
+		};
+	}
+
+	return {
+		getReferenceProps,
+		getPopoverProps,
+		referenceRef: floating.refs.reference,
+		popoverRef: floating.refs.floating,
+	};
 }
