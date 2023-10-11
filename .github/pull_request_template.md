@@ -9,6 +9,7 @@ Provide an overview of your changes here. Include screenshots, photos or links i
 - [ ] Prefix the PR title with the slug of the package or component - e.g. `accordion: Updated padding` or `docs: Updated header links`
 - [ ] Describe the changes clearly in the PR description
 - [ ] Read and check your code before tagging someone for review
+- [ ] Create a changeset file by running `yarn changeset`. [Learn more about change management](https://design-system.agriculture.gov.au/guides/change-management).
 
 **Testing**
 
