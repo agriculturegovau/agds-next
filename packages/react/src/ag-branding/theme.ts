@@ -14,8 +14,8 @@ export const theme: Theme = {
 	lightSystemInfo: '#008BD1',
 	lightSystemInfoMuted: '#E5F6FF',
 	darkBackgroundBody: '#0A1629',
-	darkBackgroundShade: '#162846',
-	darkBackgroundBodyAlt: '#162846',
+	darkBackgroundShade: '#122440',
+	darkBackgroundBodyAlt: '#1B3155',
 	darkBackgroundShadeAlt: '#20365B',
 	darkForegroundAction: '#9EE8FF',
 	darkSelected: '#9EE8FF', // use same color as action
