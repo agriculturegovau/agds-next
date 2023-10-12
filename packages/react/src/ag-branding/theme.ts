@@ -16,7 +16,7 @@ export const theme: Theme = {
 	darkBackgroundBody: '#0A1629',
 	darkBackgroundShade: '#122440',
 	darkBackgroundBodyAlt: '#1B3155',
-	darkBackgroundShadeAlt: '#20365B',
+	darkBackgroundShadeAlt: '#223A62',
 	darkForegroundAction: '#9EE8FF',
 	darkSelected: '#9EE8FF', // use same color as action
 	darkSelectedMuted: '#162C50',
