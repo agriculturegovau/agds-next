@@ -3,6 +3,7 @@ import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
 import { SuccessFilledIcon } from '../icon';
+import { TextLink } from '../text-link';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 import { ExistingFile, formatFileSize } from './utils';
 
@@ -15,7 +16,7 @@ export const FileUploadExistingFile = ({
 	file,
 	hideThumbnails,
 }: FileUploadExistingFileProps) => {
-	const { name, size, thumbnailSrc, onDelete } = file;
+	const { name, size, href, thumbnailSrc, onDelete } = file;
 	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
@@ -38,9 +39,22 @@ export const FileUploadExistingFile = ({
 							css={{ display: 'block' }}
 						/>
 					</Box>
-					<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
-						{name} ({formatFileSize(size)})
-					</Text>
+					{href ? (
+						<Text paddingY={1.5}>
+							<TextLink
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								css={{ wordBreak: 'break-all' }}
+							>
+								{name} ({formatFileSize(size)})
+							</TextLink>
+						</Text>
+					) : (
+						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
+							{name} ({formatFileSize(size)})
+						</Text>
+					)}
 				</Flex>
 			</Flex>
 			<Flex flexShrink={0} alignItems="center" paddingRight={1}>

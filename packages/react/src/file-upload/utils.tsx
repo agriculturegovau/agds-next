@@ -13,10 +13,16 @@ export type RejectedFile = {
 };
 
 export type ExistingFile = {
+	/** The file name */
 	name: string;
+	/** The file size in bytes */
 	size: number;
+	/** If the file is an image, provide a URL to a 72x72 thumbnail */
 	thumbnailSrc?: string;
+	/** Callback function when the user clicks the delete button */
 	onDelete: () => void;
+	/** Link to a webpage where the user can view/download the existing file (optional) */
+	href?: string;
 };
 
 export function formatFileSize(bytes: number) {
