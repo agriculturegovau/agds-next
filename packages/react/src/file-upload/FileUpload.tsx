@@ -23,9 +23,9 @@ import {
 	FileWithStatus,
 	formatFileSize,
 	getAcceptedFilesSummary,
+	getFileListSummaryText,
 	getErrorSummary,
 	getFileRejectionErrorMessage,
-	getFilesTotal,
 	RejectedFile,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
@@ -69,6 +69,7 @@ export type FileUploadProps = BaseInputProps & {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	existingFiles?: ExistingFile[];
+	onRemoveExistingFile?: (file: ExistingFile) => void;
 };
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -90,6 +91,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid,
 			id,
 			existingFiles,
+			onRemoveExistingFile,
 			...consumerProps
 		},
 		forwardedRef
@@ -199,9 +201,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
-		const showFileLists =
-			value.length || fileRejections.length || existingFiles?.length;
-		const fileSummaryText = getFilesTotal([...value, ...(existingFiles || [])]);
+		const showFileLists = Boolean(
+			value.length || fileRejections.length || existingFiles?.length
+		);
+
+		const fileSummaryText = getFileListSummaryText([
+			...value,
+			...(existingFiles || []),
+		]);
 
 		return (
 			<Field
@@ -278,6 +285,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
+										onRemove={onRemoveExistingFile}
 										hideThumbnails={hideThumbnails}
 									/>
 									<FileUploadFileList

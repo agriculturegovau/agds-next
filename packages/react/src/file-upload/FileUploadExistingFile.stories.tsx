@@ -14,12 +14,11 @@ export default meta;
 type Story = StoryObj<typeof FileUploadExistingFile>;
 
 export const Basic: Story = {
-	name: '.txt file',
+	name: '.png file',
 	args: {
 		file: {
-			name: 'example.pdf',
+			name: 'example.png',
 			size: 123456,
-			onDelete: () => console.log('Delete'),
 		},
 	},
 };
@@ -29,9 +28,18 @@ export const Image: Story = {
 	args: {
 		file: {
 			name: 'example.jpg',
+			size: 123456,
+		},
+	},
+};
+
+export const WithThumbnail: Story = {
+	name: '.jpg file',
+	args: {
+		file: {
+			name: 'example.jpg',
 			thumbnailSrc: 'https://via.placeholder.com/150',
 			size: 123456,
-			onDelete: () => console.log('Delete'),
 		},
 	},
 };
@@ -44,7 +52,6 @@ export const WithHref: Story = {
 			href: '#',
 			thumbnailSrc: 'https://via.placeholder.com/150',
 			size: 123456,
-			onDelete: () => console.log('Delete'),
 		},
 	},
 };

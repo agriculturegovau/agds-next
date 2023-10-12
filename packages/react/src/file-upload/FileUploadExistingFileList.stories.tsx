@@ -19,13 +19,11 @@ export const Basic: Story = {
 			{
 				name: 'example.pdf',
 				size: 123456,
-				onDelete: () => console.log('Delete file'),
 			},
 			{
 				name: 'example.jpg',
 				size: 123456,
 				thumbnailSrc: 'https://via.placeholder.com/150',
-				onDelete: () => console.log('Delete file'),
 			},
 		],
 	},

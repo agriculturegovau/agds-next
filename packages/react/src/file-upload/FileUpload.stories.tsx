@@ -12,7 +12,7 @@ import { FormStack } from '../form-stack';
 import { Button } from '../button';
 import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
-import { FileWithStatus } from './utils';
+import { ExistingFile, FileWithStatus } from './utils';
 import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUpload> = {
@@ -249,13 +249,40 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 
 export const ExistingFiles: Story = {
 	args: {
-		label: 'Documents',
+		label: 'Upload evidence',
+		hint: 'General hint information',
 		existingFiles: [
 			{
 				name: 'police-check.pdf',
 				size: 100000,
-				onDelete: () => console.log('Delete file'),
+			},
+			{
+				name: 'another-document.pdf',
+				size: 100000,
 			},
 		],
+	},
+	render: function Render(args) {
+		const [value, setValue] = useState<FileWithStatus[]>([]);
+
+		const [existingFiles, setExistingFiles] = useState(
+			args.existingFiles || []
+		);
+
+		function onRemoveExistingFile(fileToRemove: ExistingFile) {
+			setExistingFiles((existingFiles) =>
+				existingFiles.filter(({ name }) => name !== fileToRemove.name)
+			);
+		}
+
+		return (
+			<FileUpload
+				{...args}
+				value={value}
+				onChange={setValue}
+				existingFiles={existingFiles}
+				onRemoveExistingFile={onRemoveExistingFile}
+			/>
+		);
 	},
 };

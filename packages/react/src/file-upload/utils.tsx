@@ -13,24 +13,22 @@ export type RejectedFile = {
 };
 
 export type ExistingFile = {
-	/** The file name */
+	/** The file name. */
 	name: string;
-	/** The file size in bytes */
-	size: number;
-	/** If the file is an image, provide a URL to a 72x72 thumbnail */
-	thumbnailSrc?: string;
-	/** Callback function when the user clicks the delete button */
-	onDelete: () => void;
 	/** Link to a webpage where the user can view/download the existing file (optional) */
 	href?: string;
+	/** The file size in bytes (optional). */
+	size?: number;
+	/** If the file is an image, provide a URL to a 72x72 thumbnail. */
+	thumbnailSrc?: string;
 };
 
 export function formatFileSize(bytes: number) {
 	return filesize(bytes);
 }
 
-export function getFilesTotal(files: { size: number }[]) {
-	const label = files.length > 1 ? 'files' : 'file';
+export function getFileListSummaryText(files: {}[]) {
+	const label = files.length === 1 ? 'file' : 'files';
 	return `${files.length} ${label} selected`;
 }
 

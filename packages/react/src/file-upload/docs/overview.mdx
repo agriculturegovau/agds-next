@@ -142,7 +142,9 @@ This can be done by passing an object instead of a string with `mimeType` and `e
 
 ## Existing files
 
-You can display a list of files that have already been uploaded by using the `existingFiles` prop. Unlike `value` which expects an array of `File`, `existingFiles` expects an array of objects with a name, size, thumbnail url and an onDelete action.
+You can display a list of files that have already been uploaded by using the `existingFiles` and `onRemoveExistingFile` props.
+
+Unlike the `value`prop, which expects an array of`File`objects,`existingFiles` expects an array of objects with a name, size and thumbnail url.
 
 If a user attempts to delete an existing file, a destructive confirmation modal should be displayed. If confirmed, the file should be deleted on the server.
 
@@ -155,8 +157,10 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 			name: 'example.png',
 			size: 123456,
 			thumbnailUrl: 'https://via.placeholder.com/150',
-			onDelete: () => console.log('Delete file'),
 		},
 	]}
+	onRemoveExistingFile={(fileToRemove) => {
+		console.log('Remove existing file', fileToRemove);
+	}}
 />
 ```

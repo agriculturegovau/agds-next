@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Text } from '../text';
@@ -9,14 +10,16 @@ import { ExistingFile, formatFileSize } from './utils';
 
 type FileUploadExistingFileProps = {
 	file: ExistingFile;
+	onRemove: MouseEventHandler<HTMLButtonElement>;
 	hideThumbnails?: boolean;
 };
 
 export const FileUploadExistingFile = ({
 	file,
+	onRemove,
 	hideThumbnails,
 }: FileUploadExistingFileProps) => {
-	const { name, size, href, thumbnailSrc, onDelete } = file;
+	const { name, size, href, thumbnailSrc } = file;
 	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
@@ -47,12 +50,14 @@ export const FileUploadExistingFile = ({
 								rel="noopener noreferrer"
 								css={{ wordBreak: 'break-all' }}
 							>
-								{name} ({formatFileSize(size)})
+								{name}
+								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
 						</Text>
 					) : (
 						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
-							{name} ({formatFileSize(size)})
+							{name}
+							{size ? ` (${formatFileSize(size)})` : null}
 						</Text>
 					)}
 				</Flex>
@@ -61,7 +66,7 @@ export const FileUploadExistingFile = ({
 				<Box>
 					<Button
 						variant="text"
-						onClick={onDelete}
+						onClick={onRemove}
 						aria-label={`Remove file, ${name}`}
 					>
 						Remove file
