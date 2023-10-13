@@ -57,7 +57,12 @@ export const FileUploadExistingFile = ({
 					) : (
 						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
 							{name}
-							{size ? ` (${formatFileSize(size)})` : null}
+							{size ? (
+								<Text css={{ whiteSpace: 'nowrap' }}>
+									{' '}
+									({formatFileSize(size)})
+								</Text>
+							) : null}
 						</Text>
 					)}
 				</Flex>

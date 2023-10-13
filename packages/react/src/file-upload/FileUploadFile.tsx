@@ -47,7 +47,13 @@ export const FileUploadFile = ({
 						</Box>
 					)}
 					<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
-						{name} ({formatFileSize(size)})
+						{name}
+						{size ? (
+							<Text css={{ whiteSpace: 'nowrap' }}>
+								{' '}
+								({formatFileSize(size)})
+							</Text>
+						) : null}
 					</Text>
 				</Flex>
 			</Flex>

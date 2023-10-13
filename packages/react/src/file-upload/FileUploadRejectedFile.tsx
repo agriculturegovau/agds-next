@@ -49,7 +49,14 @@ export const FileUploadRejectedFile = ({
 					</Box>
 					<Stack gap={0.5}>
 						<Text fontWeight="bold" color="error">
-							{file.name} ({formatFileSize(file.size)}) could not be selected
+							{file.name}
+							{file.size ? (
+								<span css={{ whiteSpace: 'nowrap' }}>
+									{' '}
+									({formatFileSize(file.size)})
+								</span>
+							) : null}{' '}
+							could not be selected
 						</Text>
 						<ul css={{ margin: 0, padding: 0 }}>
 							{errors.map(({ message }, index) => (

@@ -140,9 +140,14 @@ exports[`FileUpload Basic renders correctly 1`] = `
                   class="css-w8s9uh-boxStyles-Text-FileUploadFile"
                 >
                   example.txt
-                   (
-                  18 B
-                  )
+                  <span
+                    class="css-1rfmi7i-boxStyles-Text-FileUploadFile"
+                  >
+                     
+                    (
+                    18 B
+                    )
+                  </span>
                 </span>
               </div>
             </div>
