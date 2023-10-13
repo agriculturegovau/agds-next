@@ -21,6 +21,8 @@ export type ExistingFile = {
 	size?: number;
 	/** If the file is an image, provide a URL to a 72x72 thumbnail. */
 	thumbnailSrc?: string;
+	/** Use the meta key to keep track of any extra file information, which can be useful when deleting the file. */
+	meta?: Record<string, unknown>;
 };
 
 export function formatFileSize(bytes: number) {

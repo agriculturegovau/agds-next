@@ -68,7 +68,9 @@ export type FileUploadProps = BaseInputProps & {
 	multiple?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** Used to display a list of files that have already been uploaded. */
 	existingFiles?: ExistingFile[];
+	/** Callback function called when an existing file is removed. */
 	onRemoveExistingFile?: (file: ExistingFile) => void;
 };
 

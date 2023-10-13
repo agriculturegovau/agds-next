@@ -251,7 +251,11 @@ export const ExistingFiles: Story = {
 	args: {
 		label: 'Upload evidence',
 		hint: 'General hint information',
-		existingFiles: [
+	},
+	render: function Render(args) {
+		const [value, setValue] = useState<FileWithStatus[]>([]);
+
+		const [existingFiles, setExistingFiles] = useState<ExistingFile[]>([
 			{
 				name: 'police-check.pdf',
 				size: 100000,
@@ -259,15 +263,11 @@ export const ExistingFiles: Story = {
 			{
 				name: 'another-document.pdf',
 				size: 100000,
+				// Use the `meta` key to keep track of any extra file information
+				// This can be useful when deleting the file
+				meta: { uid: 'abc-def', bucketId: '123-456' },
 			},
-		],
-	},
-	render: function Render(args) {
-		const [value, setValue] = useState<FileWithStatus[]>([]);
-
-		const [existingFiles, setExistingFiles] = useState(
-			args.existingFiles || []
-		);
+		]);
 
 		function onRemoveExistingFile(fileToRemove: ExistingFile) {
 			setExistingFiles((existingFiles) =>
