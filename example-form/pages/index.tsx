@@ -8,7 +8,7 @@ import {
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { SiteLayout } from '../components/SiteLayout';
+import { SiteLayout } from '../components/Layout/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { ServicesRecentlyViewedCardList } from '../components/ServicesRecentlyViewedCardList';
 

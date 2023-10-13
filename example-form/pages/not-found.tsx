@@ -4,7 +4,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { tokens } from '@ag.ds-next/react/core';
 import { PageContent } from '@ag.ds-next/react/content';
-import { SiteLayout } from '../components/SiteLayout';
+import { SiteLayout } from '../components/Layout/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
 export default function NotFoundPage() {

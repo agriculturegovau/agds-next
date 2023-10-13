@@ -9,7 +9,7 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Stack } from '@ag.ds-next/react/stack';
-import { SiteLayout } from '../../../components/SiteLayout';
+import { SiteLayout } from '../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { RegistrationsCardList } from '../../../components/RegistrationsCardList';
 
