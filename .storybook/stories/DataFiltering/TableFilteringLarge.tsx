@@ -2,9 +2,9 @@ import { RefObject } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { useTernaryState } from '@ag.ds-next/react/core';
-import { PageContent } from '@ag.ds-next/react/content';
 import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { Prose } from '@ag.ds-next/react/prose';
+import { Box } from '@ag.ds-next/react/box';
+import { H2 } from '@ag.ds-next/react/heading';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { DataTable } from './components/DataTable';
@@ -16,56 +16,61 @@ import {
 	FilterRegion,
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
+import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
 
 type TableFilteringLargeProps = {
+	selectable?: boolean;
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
-export const TableFilteringLarge = ({ tableRef }: TableFilteringLargeProps) => {
+const headingId = 'table-heading';
+
+export const TableFilteringLarge = ({
+	selectable,
+	tableRef,
+}: TableFilteringLargeProps) => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<PageContent>
-			<Stack gap={2}>
-				<Prose>
-					<h1>Table Filtering (Large)</h1>
-					<p>
-						The large filtering pattern is for cases where the number of
-						filterable fields exceeds 6. Our Drawer component is used to reveal
-						all filters as the user elects to show them. You may elect to show
-						up to two primary filters in the main content area next to the
-						button which opens the drawer.
-					</p>
-				</Prose>
-				<Stack gap={1}>
-					<div>
-						<ButtonLink href="#new" iconBefore={PlusIcon}>
-							New item
-						</ButtonLink>
-					</div>
-					<FilterRegion>
-						<FilterBar>
-							<FilterBarGroup>
-								<FilterSearchInput />
-								<Button
-									onClick={openDrawer}
-									variant="secondary"
-									iconBefore={FilterIcon}
-								>
-									Show filters
-								</Button>
-							</FilterBarGroup>
-							<SortBySelect />
-						</FilterBar>
-						<DashboardFilterDrawer
-							isDrawerOpen={isDrawerOpen}
-							closeDrawer={closeDrawer}
-						/>
-						<ActiveFilters />
-					</FilterRegion>
-				</Stack>
-				<DataTable ref={tableRef} />
-				<DashboardPagination />
+		<Stack gap={1.5}>
+			<H2 id={headingId}>Audits</H2>
+			<div>
+				<ButtonLink href="#new" iconBefore={PlusIcon}>
+					Create request
+				</ButtonLink>
+			</div>
+			<Stack gap={0}>
+				<FilterRegion>
+					<FilterBar>
+						<FilterBarGroup>
+							<FilterSearchInput />
+							<Button
+								onClick={openDrawer}
+								variant="secondary"
+								iconBefore={FilterIcon}
+							>
+								Show filters
+							</Button>
+						</FilterBarGroup>
+						<SortBySelect />
+					</FilterBar>
+					<DashboardFilterDrawer
+						isDrawerOpen={isDrawerOpen}
+						closeDrawer={closeDrawer}
+					/>
+					<ActiveFilters />
+				</FilterRegion>
+				{selectable && (
+					<Box padding={1} borderBottom>
+						<DataTableSelectAllCheckbox />
+					</Box>
+				)}
+				<DataTable
+					ref={tableRef}
+					headingId={headingId}
+					selectable={selectable}
+				/>
 			</Stack>
-		</PageContent>
+			<DashboardPagination />
+		</Stack>
 	);
 };

@@ -22,13 +22,12 @@ export function useFetchData({
 	pagination,
 	throwError,
 }: GetDataParams): DashboardTableData {
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<BusinessForAuditWithIndex[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalItems, setTotalItems] = useState(0);
 
 	useEffect(() => {
-		setLoading(true);
 		getData({ sort, filters, pagination }).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);

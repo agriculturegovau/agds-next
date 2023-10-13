@@ -1,8 +1,8 @@
 import { Stack } from '@ag.ds-next/react/stack';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
 import { PlusIcon } from '@ag.ds-next/react/icon';
-import { Prose } from '@ag.ds-next/react/prose';
+import { H2 } from '@ag.ds-next/react/heading';
+import { Box } from '@ag.ds-next/react/box';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DataTable } from './components/DataTable';
 import { SortBySelect } from './components/SortBySelect';
@@ -13,24 +13,25 @@ import {
 	FilterRegion,
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
+import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
 
-export const TableFilteringSmall = () => {
+const headingId = 'table-heading';
+
+export const TableFilteringSmall = ({
+	selectable,
+}: {
+	selectable?: boolean;
+}) => {
 	return (
-		<PageContent>
-			<Stack gap={2}>
-				<Prose>
-					<h1>Table Filtering (small)</h1>
-					<p>
-						In the most basic cases of filtering with up to three filterable
-						fields, we can show all filters in a row above the table.
-					</p>
-				</Prose>
-				<div>
-					<ButtonLink href="#new" iconBefore={PlusIcon}>
-						Create request
-					</ButtonLink>
-				</div>
+		<Stack gap={1.5}>
+			<H2 id={headingId}>Audits</H2>
+			<div>
+				<ButtonLink href="#new" iconBefore={PlusIcon}>
+					Create request
+				</ButtonLink>
+			</div>
 
+			<Stack gap={0}>
 				<FilterRegion>
 					<FilterBar>
 						<FilterBarGroup>
@@ -40,10 +41,14 @@ export const TableFilteringSmall = () => {
 						<SortBySelect />
 					</FilterBar>
 				</FilterRegion>
-
-				<DataTable />
-				<DashboardPagination />
+				{selectable && (
+					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+						<DataTableSelectAllCheckbox />
+					</Box>
+				)}
+				<DataTable headingId={headingId} />
 			</Stack>
-		</PageContent>
+			<DashboardPagination />
+		</Stack>
 	);
 };

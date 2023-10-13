@@ -72,10 +72,12 @@ export const Basic: Story = {
 };
 
 export const Striped: Story = {
+	name: 'With striped rows',
 	args: { striped: true },
 };
 
 export const FixedLayout: Story = {
+	name: 'With fixed layout',
 	args: {
 		tableLayout: 'fixed',
 	},
@@ -134,7 +136,65 @@ export const FixedLayout: Story = {
 	),
 };
 
+export const AriaRowcount: Story = {
+	name: 'With aria-rowcount',
+	render: (args) => (
+		<TableWrapper>
+			<Table aria-rowcount={exampleData.length + 1} {...args}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<TableRow aria-rowindex={1}>
+						<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
+							Location
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '10rem', md: '20%' }}
+						>
+							Population
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous year %
+						</TableHeader>
+						<TableHeader
+							scope="col"
+							textAlign="right"
+							width={{ xs: '14rem', md: '20%' }}
+						>
+							Change over previous decade %
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<TableRow key={index} aria-rowindex={index + 2}>
+								<TableCell as="th" scope="row">
+									{location}
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</TableRow>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
 export const WithHeading: Story = {
+	name: 'With heading',
 	args: {},
 	render: (args) => (
 		<Stack gap={1}>
@@ -185,6 +245,7 @@ export const WithHeading: Story = {
 };
 
 export const Actions: Story = {
+	name: 'With row actions',
 	args: {},
 	render: (args) => (
 		<TableWrapper>
@@ -281,6 +342,7 @@ export const Actions: Story = {
 };
 
 export const SelectableBasic: Story = {
+	name: 'With selectable rows',
 	render: function Render(props) {
 		const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
 
@@ -380,67 +442,8 @@ export const SelectableBasic: Story = {
 };
 
 export const SelectableWithBatchActions: Story = {
+	name: 'With selectable rows and batch actions',
 	render: SelectableTableBatchActions,
-};
-
-export const AriaRowcount: Story = {
-	name: 'with aria-rowcount',
-	args: {
-		tableLayout: 'fixed',
-	},
-	render: (args) => (
-		<TableWrapper>
-			<Table aria-rowcount={exampleData.length + 1} {...args}>
-				<TableCaption>
-					Population of Australian states and territories, December 2015
-				</TableCaption>
-				<TableHead>
-					<TableRow aria-rowindex={1}>
-						<TableHeader scope="col" width={{ xs: '14rem', md: '40%' }}>
-							Location
-						</TableHeader>
-						<TableHeader
-							scope="col"
-							textAlign="right"
-							width={{ xs: '10rem', md: '20%' }}
-						>
-							Population
-						</TableHeader>
-						<TableHeader
-							scope="col"
-							textAlign="right"
-							width={{ xs: '14rem', md: '20%' }}
-						>
-							Change over previous year %
-						</TableHeader>
-						<TableHeader
-							scope="col"
-							textAlign="right"
-							width={{ xs: '14rem', md: '20%' }}
-						>
-							Change over previous decade %
-						</TableHeader>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{exampleData.map(
-						({ location, population, growthYear, growthDecade }, index) => (
-							<TableRow key={index} aria-rowindex={index + 2}>
-								<TableCell as="th" scope="row">
-									{location}
-								</TableCell>
-								<TableCell textAlign="right">
-									{numberFormatter.format(population)}
-								</TableCell>
-								<TableCell textAlign="right">{growthYear}%</TableCell>
-								<TableCell textAlign="right">{growthDecade}%</TableCell>
-							</TableRow>
-						)
-					)}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	),
 };
 
 const exampleData = [
