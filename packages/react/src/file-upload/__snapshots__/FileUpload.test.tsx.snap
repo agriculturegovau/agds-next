@@ -98,14 +98,14 @@ exports[`FileUpload Basic renders correctly 1`] = `
         <span
           class="css-1rpt3h8-boxStyles-Text"
         >
-          1 file selected (23 B)
+          1 file selected
         </span>
         <ul
           aria-label="Selected files"
           class="css-1wcx0lf-boxStyles"
         >
           <li
-            aria-label="File. example.jpg"
+            aria-label="File. example.txt"
             class="css-izqcdk-boxStyles-FileUploadFile"
           >
             <div
@@ -139,10 +139,15 @@ exports[`FileUpload Basic renders correctly 1`] = `
                 <span
                   class="css-w8s9uh-boxStyles-Text-FileUploadFile"
                 >
-                  example.jpg
-                   (
-                  23 B
-                  )
+                  example.txt
+                  <span
+                    class="css-1rfmi7i-boxStyles-Text-FileUploadFile"
+                  >
+                     
+                    (
+                    18 B
+                    )
+                  </span>
                 </span>
               </div>
             </div>
@@ -153,7 +158,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
                 class="css-79i25n-boxStyles"
               >
                 <button
-                  aria-label="Remove file, example.jpg"
+                  aria-label="Remove file, example.txt"
                   class="css-1clbjuu-BaseButton-Button"
                   type="button"
                 >

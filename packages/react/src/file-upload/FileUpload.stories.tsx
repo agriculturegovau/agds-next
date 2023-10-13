@@ -12,7 +12,7 @@ import { FormStack } from '../form-stack';
 import { Button } from '../button';
 import { LoadingBlanket } from '../loading';
 import { FileUpload, FileUploadProps } from './FileUpload';
-import { FileWithStatus } from './utils';
+import { ExistingFile, FileWithStatus } from './utils';
 import { createExampleFile, createExampleImageFile } from './test-utils';
 
 const meta: Meta<typeof FileUpload> = {
@@ -245,4 +245,44 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 			</FormStack>
 		</form>
 	);
+};
+
+export const ExistingFiles: Story = {
+	args: {
+		label: 'Upload evidence',
+		hint: 'General hint information',
+	},
+	render: function Render(args) {
+		const [value, setValue] = useState<FileWithStatus[]>([]);
+
+		const [existingFiles, setExistingFiles] = useState<ExistingFile[]>([
+			{
+				name: 'police-check.pdf',
+				size: 100000,
+			},
+			{
+				name: 'another-document.pdf',
+				size: 100000,
+				// Use the `meta` key to keep track of any extra file information
+				// This can be useful when deleting the file
+				meta: { uid: 'abc-def', bucketId: '123-456' },
+			},
+		]);
+
+		function onRemoveExistingFile(fileToRemove: ExistingFile) {
+			setExistingFiles((existingFiles) =>
+				existingFiles.filter(({ name }) => name !== fileToRemove.name)
+			);
+		}
+
+		return (
+			<FileUpload
+				{...args}
+				value={value}
+				onChange={setValue}
+				existingFiles={existingFiles}
+				onRemoveExistingFile={onRemoveExistingFile}
+			/>
+		);
+	},
 };

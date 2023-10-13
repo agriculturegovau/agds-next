@@ -18,16 +18,18 @@ import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
 	CustomFileMimeType,
+	ExistingFile,
 	fileTypeMapping,
 	FileWithStatus,
 	formatFileSize,
 	getAcceptedFilesSummary,
+	getFileListSummaryText,
 	getErrorSummary,
 	getFileRejectionErrorMessage,
-	getFilesTotal,
 	RejectedFile,
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
+import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -66,6 +68,10 @@ export type FileUploadProps = BaseInputProps & {
 	multiple?: boolean;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** Used to display a list of files that have already been uploaded. */
+	existingFiles?: ExistingFile[];
+	/** Callback function called when an existing file is removed. */
+	onRemoveExistingFile?: (file: ExistingFile) => void;
 };
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -86,6 +92,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			message,
 			invalid,
 			id,
+			existingFiles,
+			onRemoveExistingFile,
 			...consumerProps
 		},
 		forwardedRef
@@ -195,6 +203,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
+		const showFileLists = Boolean(
+			value.length || fileRejections.length || existingFiles?.length
+		);
+
+		const fileSummaryText = getFileListSummaryText([
+			...value,
+			...(existingFiles || []),
+		]);
+
 		return (
 			<Field
 				label={label}
@@ -265,25 +282,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{value.length || fileRejections.length ? (
+							{showFileLists && (
 								<Stack gap={0.5}>
-									<Text color="muted">{getFilesTotal(value)}</Text>
-									{value.length ? (
-										<FileUploadFileList
-											files={value}
-											onRemove={handleRemoveFile}
-											hideThumbnails={hideThumbnails}
-										/>
-									) : null}
-									{fileRejections.length ? (
-										<FileUploadRejectedFileList
-											fileRejections={fileRejections}
-											handleRemoveRejection={handleRemoveRejection}
-											hideThumbnails={hideThumbnails}
-										/>
-									) : null}
+									<Text color="muted">{fileSummaryText}</Text>
+									<FileUploadExistingFileList
+										files={existingFiles}
+										onRemove={onRemoveExistingFile}
+										hideThumbnails={hideThumbnails}
+									/>
+									<FileUploadFileList
+										files={value}
+										onRemove={handleRemoveFile}
+										hideThumbnails={hideThumbnails}
+									/>
+									<FileUploadRejectedFileList
+										fileRejections={fileRejections}
+										handleRemoveRejection={handleRemoveRejection}
+										hideThumbnails={hideThumbnails}
+									/>
 								</Stack>
-							) : null}
+							)}
 						</Stack>
 					);
 				}}

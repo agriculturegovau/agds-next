@@ -1,21 +1,19 @@
-import { useMemo } from 'react';
 import { Box } from '../box';
 import { tokens } from '../core';
 import { Flex } from '../flex';
 import { FileIcon } from '../icon/icons/FileIcon';
-import { FileWithStatus, getImageThumbnail } from './utils';
 
-export const FileUploadFileThumbnail = ({ file }: { file: FileWithStatus }) => {
-	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
-	const width = '4.5rem';
-	return imagePreview ? (
+export const width = '4.5rem';
+
+export const FileUploadFileThumbnail = ({ src }: { src?: string }) => {
+	return src ? (
 		<Box
 			flexShrink={0}
 			display={{ xs: 'none', md: 'block' }}
 			css={{
 				borderTopLeftRadius: tokens.borderRadius,
 				borderBottomLeftRadius: tokens.borderRadius,
-				backgroundImage: `url(${imagePreview})`,
+				backgroundImage: `url(${src})`,
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				width: width,

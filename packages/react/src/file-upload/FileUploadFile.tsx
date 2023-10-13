@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useMemo } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { boxPalette } from '../core';
@@ -7,7 +7,7 @@ import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
-import { FileWithStatus, formatFileSize } from './utils';
+import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
 
 type FileUploadFileProps = {
 	file: FileWithStatus;
@@ -22,6 +22,7 @@ export const FileUploadFile = ({
 }: FileUploadFileProps) => {
 	const { name, size, status = 'none' } = file;
 	const showThumbnail = !hideThumbnails;
+	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return (
 		<Flex
 			rounded
@@ -32,7 +33,7 @@ export const FileUploadFile = ({
 			css={{ backgroundColor: TONE_MAP[status] }}
 		>
 			<Flex>
-				{showThumbnail && <FileUploadFileThumbnail file={file} />}
+				{showThumbnail && <FileUploadFileThumbnail src={imagePreview} />}
 				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
 					{status == 'success' && (
 						<Box flexShrink={0}>
@@ -46,7 +47,13 @@ export const FileUploadFile = ({
 						</Box>
 					)}
 					<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
-						{name} ({formatFileSize(size)})
+						{name}
+						{size ? (
+							<Text css={{ whiteSpace: 'nowrap' }}>
+								{' '}
+								({formatFileSize(size)})
+							</Text>
+						) : null}
 					</Text>
 				</Flex>
 			</Flex>

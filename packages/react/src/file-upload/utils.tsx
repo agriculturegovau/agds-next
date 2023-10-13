@@ -12,14 +12,26 @@ export type RejectedFile = {
 	errors: { message: string; code: string }[];
 };
 
+export type ExistingFile = {
+	/** The file name. */
+	name: string;
+	/** Link to a webpage where the user can view/download the existing file (optional) */
+	href?: string;
+	/** The file size in bytes (optional). */
+	size?: number;
+	/** If the file is an image, provide a URL to a 72x72 thumbnail. */
+	thumbnailSrc?: string;
+	/** Use the meta key to keep track of any extra file information, which can be useful when deleting the file. */
+	meta?: Record<string, unknown>;
+};
+
 export function formatFileSize(bytes: number) {
 	return filesize(bytes);
 }
 
-export function getFilesTotal(files: { size: number }[]) {
-	const label = files.length > 1 ? 'files' : 'file';
-	const size = files.reduce((a, { size }) => a + size, 0);
-	return `${files.length} ${label} selected (${formatFileSize(size)})`;
+export function getFileListSummaryText(files: {}[]) {
+	const label = files.length === 1 ? 'file' : 'files';
+	return `${files.length} ${label} selected`;
 }
 
 export const fileTypeMapping = {
@@ -41,6 +53,7 @@ export const fileTypeMapping = {
 	'audio/*': { extensions: [], label: 'Any audio file' },
 	'audio/mpeg': { extensions: ['.mp3'] },
 	'audio/wav': { extensions: ['.wav'] },
+	// Image
 	'image/*': { extensions: [], label: 'Any image file' },
 	'image/gif': { extensions: ['.gif'] },
 	'image/heic': { extensions: ['.heic'] },
