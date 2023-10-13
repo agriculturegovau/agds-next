@@ -4,6 +4,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { useState } from 'react';
 import { cleanup, render } from '../../../../test-utils';
 import { FileWithStatus } from './utils';
+import { createExampleFile } from './test-utils';
 import { FileUpload, FileUploadProps } from './FileUpload';
 
 expect.extend(toHaveNoViolations);
@@ -11,11 +12,7 @@ expect.extend(toHaveNoViolations);
 afterEach(cleanup);
 
 function FileUploadExample(props?: Partial<FileUploadProps>) {
-	const [value, setValue] = useState<FileWithStatus[]>([
-		new File(['this is an example file'], 'example.jpg', {
-			type: 'image/jpeg',
-		}),
-	]);
+	const [value, setValue] = useState<FileWithStatus[]>([createExampleFile()]);
 	return (
 		<FileUpload
 			label="Upload file"
