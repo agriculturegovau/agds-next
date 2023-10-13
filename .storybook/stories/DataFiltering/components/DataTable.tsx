@@ -1,6 +1,6 @@
 import { forwardRef, Fragment } from 'react';
 import { format } from 'date-fns';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+import { VisuallyHidden, visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
@@ -31,6 +31,7 @@ import {
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 
 export const tableId = 'data-table';
+const descriptionId = 'data-table-description';
 
 type DataTableProps = {
 	/** The id of the heading that describes the table */
@@ -84,10 +85,18 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		return (
 			<Stack gap={0.5}>
+				{headingId ? (
+					<div css={visuallyHiddenStyles} id={descriptionId}>
+						Table column headers with buttons are sortable.
+					</div>
+				) : null}
 				<TableWrapper>
 					<Table
 						aria-rowcount={totalItems}
-						{...(headingId && { 'aria-labelledby': headingId })}
+						{...(headingId && {
+							'aria-labelledby': headingId,
+							'aria-describedby': descriptionId,
+						})}
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}
