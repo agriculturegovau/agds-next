@@ -56,7 +56,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	) {
 		const ref = useRef<HTMLInputElement>(null);
 		const controlGroupContext = useControlGroupContext();
-		const invalid = invalidProp || controlGroupContext?.invalid;
+
+		// The invalid prop should override the context value
+		const invalid =
+			typeof invalidProp === 'boolean'
+				? invalidProp
+				: controlGroupContext?.invalid;
 
 		//`indeterminate` is set using the HTMLInputElement object's indeterminate property via JavaScript (it cannot be set using an HTML attribute)
 		// Read more about this here https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes
