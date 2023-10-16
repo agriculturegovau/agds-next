@@ -39,7 +39,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 ) {
 	const controlGroupContext = useControlGroupContext();
 	const invalid = invalidProp || controlGroupContext?.invalid;
-
 	return (
 		<RadioContainer disabled={disabled}>
 			<RadioInput
