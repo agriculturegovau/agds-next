@@ -1,0 +1,62 @@
+---
+date: 17th October 2023
+title: AgDS Beta v1.14.0 release
+description: Extended Pagination to support items range text and items per page select dropdown, improved accessibilty of the Dropdown menu, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Removed "Menu" button from mobile variant when in focus mode
+
+### [Checkbox](/components/checkbox)
+
+- If supplied, the `invalid` prop will now override the value of the `invalid` prop set in `ControlGroup`
+
+### [Combobox](/components/combobox)
+
+- Improved internal positioning engine
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Improved accessibility by ensuring that the `DropdownMenuButton` component always has a valid `aria-controls` attribute
+- Improved accessibility by allowing users to press `Enter`, `Space`, `ArrowDown` or `ArrowUp` keys to open up the dropdown menu and activate a child descendant
+- Fixed a bug where keyboard shortcuts couldn't be used when the dropdown menu was open - e.g. refresh the page using cmd + r
+- Improved accessibility by significantly improving the logic for searching for a child descendant
+
+### [Icon](/components/icon)
+
+- Created `InboxIcon`, `PauseIcon` and `PlayIcon`
+
+### [File upload](/components/file-upload)
+
+- Exported `formatFileSize` utility
+- Removed border from thumbnail
+- Added support for showing previously uploaded files with the new `existingFiles` and `onRemoveExistingFile` props.
+
+### [Main nav](/components/main-nav)
+
+- Updated the mobile variant to always render in the light palette
+
+### [Pagination](/components/pagination)
+
+- Extended `Pagination` and `PaginationButtons` components to support items range text and items per page select dropdown
+
+### [Status badge](/components/status-badge)
+
+- Made each icon in the `StatusBadge` component announceable by screen readers
+
+### [Table](/components/table)
+
+- Added support for `aria-rowcount` and `aria-rowindex` on the `Table` component
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.14.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1420) for this release.
