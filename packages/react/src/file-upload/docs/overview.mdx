@@ -152,11 +152,13 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 
 ```jsx live
 <FileUpload
+	label="Upload documents"
 	existingFiles={[
 		{
 			name: 'example.png',
 			size: 123456,
-			thumbnailSrc: 'https://via.placeholder.com/150',
+			thumbnailUrl: 'https://via.placeholder.com/150',
+			href: '#',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
 			meta: { uid: 'abc-def', bucketId: '123-456' },
