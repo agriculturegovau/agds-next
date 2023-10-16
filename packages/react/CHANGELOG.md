@@ -1,5 +1,33 @@
 # @ag.ds-next/react
 
+## 1.14.0
+
+### Minor Changes
+
+- ccd0546cf13: pagination: Extended `Pagination` and `PaginationButtons` components to support items range text and items per page select dropdown
+- 1739fc77e68: combobox: Improved internal positioning engine
+- 6643ea7d23e: icon: Created InboxIcon
+- 6643ea7d23e: icon: Created PauseIcon
+- 6643ea7d23e: icon: Created PlayIcon
+- 8a61c9819e9: file-upload: Added support for showing previously uploaded files with the new `existingFiles` and `onRemoveExistingFile` props.
+- 603fcc8ffc0: dropdown-menu: Improved accessibility by ensuring that the `DropdownMenuButton` component always has a valid `aria-controls` attribute
+
+  dropdown-menu: Improved accessibility by allowing users to press `Enter`, `Space`, `ArrowDown` or `ArrowUp` keys to open up the dropdown menu and activate a child descendant
+
+  dropdown-menu: Fixed a bug where keyboard shortcuts couldn't be used when the dropdown menu was open - e.g. refresh the page using cmd + r.
+
+  dropdown-menu: Improved accessibility by significantly improving the logic for searching for a child descendant
+
+### Patch Changes
+
+- 4d24b00efbb: status-badge: Made each icon in the `StatusBadge` component announceable by screen readers
+- bfb5825e0c1: table: Added support for `aria-rowcount` and `aria-rowindex` on the `Table` component
+- 799315b7181: file-upload: Removed border from thumbnail
+- 5379c038d6a: main-nav: Updated the mobile variant to always render in the light palette
+- 73e89b590e1: app-layout: Remove "Menu" button from mobile variant when in focus mode
+- ad7a1c3fa44: file-upload: Export `formatFileSize` utility
+- bd707f8c7d6: checkbox: If supplied, the `invalid` prop will now override the value of the `invalid` prop set in `ControlGroup`.
+
 ## 1.13.0
 
 ### Minor Changes
