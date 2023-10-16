@@ -38,12 +38,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	ref
 ) {
 	const controlGroupContext = useControlGroupContext();
-
-	// The invalid prop should override the context value
-	const invalid =
-		typeof invalidProp === 'boolean'
-			? invalidProp
-			: controlGroupContext?.invalid;
+	const invalid = invalidProp || controlGroupContext?.invalid;
 
 	return (
 		<RadioContainer disabled={disabled}>
