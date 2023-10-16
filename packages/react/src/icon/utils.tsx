@@ -24,6 +24,7 @@ import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExitIcon } from './icons/ExitIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
+import { InboxIcon } from './icons/InboxIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
@@ -31,6 +32,8 @@ import { FileIcon } from './icons/FileIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
+import { PauseIcon } from './icons/PauseIcon';
+import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
@@ -86,14 +89,17 @@ export const allIcons = {
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
+	InboxIcon,
 	InfoIcon,
 	InfoFilledIcon,
 	InstagramIcon,
 	LinkedInIcon,
 	MenuIcon,
 	MinusIcon,
-	PrintIcon,
+	PauseIcon,
+	PlayIcon,
 	PlusIcon,
+	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
