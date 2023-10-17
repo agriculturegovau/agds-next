@@ -18,6 +18,7 @@ type BaseTextInputProps = {
 	placeholder?: NativeInputProps['placeholder'];
 	value?: NativeInputProps['value'];
 	type?: NativeInputProps['type'];
+	maxLength?: NativeInputProps['maxLength'];
 };
 
 export type TextInputProps = BaseTextInputProps & {
