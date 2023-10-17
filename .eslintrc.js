@@ -29,9 +29,11 @@ module.exports = {
 		'import/order': [
 			'error',
 			{
-				// Ensure monorepo packages are imported between external dependencies and internal modules
 				pathGroups: [
+					// Ensure monorepo packages are imported between external dependencies and internal modules
 					{ pattern: '@ag.ds-next/**', group: 'external', position: 'after' },
+					// Ensure module aliases are imported after `@ag.ds` packages
+					{ pattern: '~/**', group: 'external', position: 'after' },
 				],
 				'newlines-between': 'never',
 				pathGroupsExcludedImportTypes: ['builtin'],
