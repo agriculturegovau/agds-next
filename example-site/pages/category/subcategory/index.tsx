@@ -9,8 +9,8 @@ import {
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
-import { SiteLayout } from '../../../components/SiteLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function SubcategoryPage() {
 	return (

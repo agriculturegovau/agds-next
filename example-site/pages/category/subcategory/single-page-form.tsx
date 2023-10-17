@@ -27,9 +27,9 @@ import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { Text } from '@ag.ds-next/react/text';
 import { Divider } from '@ag.ds-next/react/divider';
-import { SiteLayout } from '../../../components/SiteLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { PageTitle } from '../../../components/PageTitle';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageTitle } from '~/components/PageTitle';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764

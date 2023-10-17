@@ -1,4 +1,4 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/stack';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -13,8 +13,8 @@ import {
 } from '@ag.ds-next/react/hero-banner';
 import { Text } from '@ag.ds-next/react/text';
 // These have been extracted to be reusable across the site
-import { SiteLayout } from '../components/SiteLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function HomePage() {
 	return (

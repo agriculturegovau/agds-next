@@ -1,6 +1,6 @@
-import { SiteLayout } from '../../../../components/SiteLayout';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { FormExampleMultiStep } from '../../../../components/FormExampleMultiStep/FormExampleMultiStep';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { FormExampleMultiStep } from '~/components/FormExampleMultiStep/FormExampleMultiStep';
 
 export default function FormMultiPageFormPage() {
 	return (

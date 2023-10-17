@@ -13,8 +13,8 @@ import {
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { SiteLayout } from '../../../components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { SiteLayout } from '~/components/SiteLayout';
 
 export default function ContentPage() {
 	return (

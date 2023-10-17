@@ -7,10 +7,10 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { DocumentTitle } from '../../../../components/DocumentTitle';
-import { FormHelpCallout } from '../../../../components/FormHelpCallout';
-import { PageTitle } from '../../../../components/PageTitle';
-import { SiteLayout } from '../../../../components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { FormHelpCallout } from '~/components/FormHelpCallout';
+import { PageTitle } from '~/components/PageTitle';
+import { SiteLayout } from '~/components/SiteLayout';
 
 export default function FormMultiPageHomePage() {
 	return (

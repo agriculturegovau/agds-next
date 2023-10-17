@@ -16,8 +16,8 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { H1 } from '@ag.ds-next/react/heading';
-import { SiteLayout } from '../components/SiteLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 const formSchema = yup
 	.object({

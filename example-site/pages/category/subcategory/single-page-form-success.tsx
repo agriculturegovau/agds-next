@@ -6,10 +6,10 @@ import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
-import { PageTitle } from '../../../components/PageTitle';
-import { FormHelpCallout } from '../../../components/FormHelpCallout';
-import { SiteLayout } from '../../../components/SiteLayout';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { PageTitle } from '~/components/PageTitle';
+import { FormHelpCallout } from '~/components/FormHelpCallout';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function SinglePageFormSuccessPage() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);
