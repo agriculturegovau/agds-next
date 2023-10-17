@@ -10,14 +10,15 @@ type BaseTextInputProps = {
 	disabled?: NativeInputProps['disabled'];
 	id?: NativeInputProps['id'];
 	inputMode?: NativeInputProps['inputMode'];
+	maxLength?: NativeInputProps['maxLength'];
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onChange?: NativeInputProps['onChange'];
 	onFocus?: NativeInputProps['onFocus'];
 	pattern?: NativeInputProps['pattern'];
 	placeholder?: NativeInputProps['placeholder'];
-	value?: NativeInputProps['value'];
 	type?: NativeInputProps['type'];
+	value?: NativeInputProps['value'];
 };
 
 export type TextInputProps = BaseTextInputProps & {
