@@ -11,8 +11,8 @@ import { SiteLayout } from '../../../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../components/PageTitle';
+import { FormRegisterPetContext } from '../../../../../components/FormRegisterPetContext';
 import type { NextPageWithLayout } from '../../../../_app';
-import { FormRegisterPetContext } from '@/components/FormRegisterPetContext';
 
 const Page: NextPageWithLayout = () => {
 	return (
