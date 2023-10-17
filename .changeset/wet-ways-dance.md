@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-Minor update to state reducer
+dropdown-menu: Minor improvements to internal state reducer
