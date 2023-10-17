@@ -147,17 +147,13 @@ h1 {
 header {
 	background-color: #162846;
 	color: #fff;
-	border-bottom: 6px solid var(--agds-accent);
-}
-
-.header-inner {
-	max-width: 80rem;
-	margin: 0 auto;
+	border-bottom: 8px solid var(--agds-accent);
 	padding: 1rem 2rem
 }
 
+
 header svg {
-	max-width: 16rem;
+	height: 60px;
 }
 
 .button-primary {
@@ -322,9 +318,12 @@ legend {
 }
 
 .checkbox-group-message {
-	display: block;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
 	color: var(--agds-system-error);
 	margin-bottom: 1rem;
+	font-weight: bold;
 }
 
 .checkbox-group--invalid .checkbox-indicator {
@@ -369,4 +368,8 @@ ul.footer-link-list {
 	flex-direction: row;
 	gap: 1rem;
 	list-style: none;
+}
+
+ul.footer-link-list li a {
+	color: var(--agds-foreground-action);
 }
