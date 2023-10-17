@@ -8,7 +8,7 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Text } from '@ag.ds-next/react/text';
 import { Textarea } from '@ag.ds-next/react/textarea';
-import { PageTitle } from '~/components/PageTitle';
+import { PageTitle } from '../../../components/PageTitle';
 
 export function MultiPageFormStep() {
 	return (
