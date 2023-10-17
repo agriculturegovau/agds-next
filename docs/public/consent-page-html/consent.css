@@ -1,0 +1,372 @@
+:root {
+	--typography-xs: 0.875rem;
+	--typography-xs-nospace: 1.1428571428571428;
+	--typography-xs-heading: 1.1428571428571428;
+	--typography-xs-default: 1.4285714285714286;
+	--typography-sm: 1rem;
+	--typography-sm-nospace: 1;
+	--typography-sm-heading: 1.25;
+	--typography-sm-default: 1.5;
+	--typography-md: 1.25rem;
+	--typography-md-nospace: 1;
+	--typography-md-heading: 1.2;
+	--typography-md-default: 1.6;
+	--typography-lg: 1.5rem;
+	--typography-lg-nospace: 1;
+	--typography-lg-heading: 1.3333333333333333;
+	--typography-lg-default: 1.5;
+	--typography-xl: 2rem;
+	--typography-xl-nospace: 1;
+	--typography-xl-heading: 1.25;
+	--typography-xl-default: 1.5;
+	--typography-xxl: 2.5rem;
+	--typography-xxl-nospace: 1;
+	--typography-xxl-heading: 1.3;
+	--typography-xxl-default: 1.5;
+	--typography-xxxl: 3rem;
+	--typography-xxxl-nospace: 1;
+	--typography-xxxl-heading: 1.25;
+	--typography-xxxl-default: 1.5;
+
+	--agds-light-foreground-text: #313131;
+	--agds-light-foreground-action: #00558b;
+	--agds-light-foreground-focus: #9263de;
+	--agds-light-foreground-muted: #626262;
+	--agds-light-background-body: #FFFFFF;
+	--agds-light-background-shade: #f5f5f5;
+	--agds-light-background-body-alt: #ebebeb;
+	--agds-light-background-shade-alt: #e0e0e0;
+	--agds-light-selected: #00558b;
+	--agds-light-selected-muted: #EBF4FA;
+	--agds-light-border: #808080;
+	--agds-light-border-muted: #D3D3D3;
+	--agds-light-accent: #F36C52;
+	--agds-light-overlay: rgba(0, 0, 0, 0.8);
+	--agds-light-system-success: #00754E;
+	--agds-light-system-success-muted: #E5FFF6;
+	--agds-light-system-info: #008BD1;
+	--agds-light-system-info-muted: #E5F6FF;
+	--agds-light-system-error: #D10000;
+	--agds-light-system-error-muted: #FFF0F0;
+	--agds-light-system-warning: #D16900;
+	--agds-light-system-warning-muted: #FFF2E5;
+
+	--agds-foreground-text: var(--agds-light-foreground-text);
+	--agds-foreground-action: var(--agds-light-foreground-action);
+	--agds-foreground-focus: var(--agds-light-foreground-focus);
+	--agds-foreground-muted: var(--agds-light-foreground-muted);
+	--agds-background-body: var(--agds-light-background-body);
+	--agds-background-shade: var(--agds-light-background-shade);
+	--agds-background-body-alt: var(--agds-light-background-body-alt);
+	--agds-background-shade-alt: var(--agds-light-background-shade-alt);
+	--agds-border: var(--agds-light-border);
+	--agds-border-muted: var(--agds-light-border-muted);
+	--agds-selected: var(--agds-light-selected);
+	--agds-selected-muted: var(--agds-light-selected-muted);
+	--agds-accent: var(--agds-light-accent);
+	--agds-overlay: var(--agds-light-overlay);
+	--agds-system-error: var(--agds-light-system-error);
+	--agds-system-error-muted: var(--agds-light-system-error-muted);
+	--agds-system-success: var(--agds-light-system-success);
+	--agds-system-success-muted: var(--agds-light-system-success-muted);
+	--agds-system-warning: var(--agds-light-system-warning);
+	--agds-system-warning-muted: var(--agds-light-system-warning-muted);
+	--agds-system-info: var(--agds-light-system-info);
+	--agds-system-info-muted: var(--agds-light-system-info-muted);
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	margin: 0px;
+	font-size: var(--typography-sm);
+	line-height: var(--typography-sm-default);
+}
+
+.container {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 3rem 2rem 4rem;
+}
+
+.content {
+	max-width: 42em;
+}
+
+h1 {
+	margin: 0px;
+	font-weight: bold;
+	font-size: var(--typography-xxl);
+	line-height: var(--typography-xxl-heading);
+}
+
+.stack-1 {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.stack-1-5 {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.stack-2 {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.stack-3 {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.pretext {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	color: var(--agds-foreground-muted);
+	border-width: 0px;
+	font-weight: normal;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: var(--typography-md);
+	line-height: var(--typography-md-default);
+}
+
+.scrollable {
+	border-radius: 4px;
+	overflow-y: auto;
+	max-height: 20rem;
+	border: 1px solid var(--agds-border);
+	padding: 1rem;
+}
+
+header {
+	background-color: #162846;
+	color: #fff;
+	border-bottom: 6px solid var(--agds-accent);
+}
+
+.header-inner {
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 1rem 2rem
+}
+
+header svg {
+	max-width: 16rem;
+}
+
+.button-primary {
+	border-image: initial;
+	padding: 0px 1.5rem;
+	appearance: none;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	margin: 0px;
+	text-align: center;
+	font-size: var(--typography-sm);
+	line-height: var(--typography-sm-default);
+	height: 3rem;
+	gap: 0.5rem;
+	background: var(--agds-foreground-action);
+	border-color: var(--agds-foreground-action);
+	color: var(--agds-background-body);
+	text-decoration: none;
+}
+
+.button-secondary {
+	border-image: initial;
+	padding: 0px 1.5rem;
+	appearance: none;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	margin: 0px;
+	text-align: center;
+	font-size: var(--typography-sm);
+	line-height: var(--typography-sm-default);
+	height: 3rem;
+	gap: 0.5rem;
+	background: var(--agds-background-body);
+	border-color: var(--agds-foreground-action);
+	color: var(--agds-foreground-action);
+	text-decoration: none;
+}
+
+.button-group {
+	display: flex;
+	gap: 1rem;
+}
+
+.control-group {}
+
+fieldset {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+.fieldset-inner {
+
+	margin: 0.5rem 0px 0px;
+	padding: 0px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	gap: 0.5rem;
+}
+
+legend {
+	margin: 0px;
+	padding: 0px;
+	color: var(--agds-foreground-text);
+	font-weight: bold;
+	font-size: var(--typography-sm);
+	line-height: var(--typography-sm-default);
+}
+
+/** Checkbox **/
+.checkbox {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
+}
+
+.checkbox-input {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1;
+}
+
+.checkbox-input~span>svg {
+	opacity: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: none;
+	color: currentcolor;
+	stroke: currentcolor;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	stroke-width: 3;
+}
+
+.checkbox-input:checked~span>svg {
+	opacity: 1;
+}
+
+.checkbox-indicator {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	border: 3px solid var(--agds-border);
+	border-radius: 4px;
+}
+
+/** Checkbox Group **/
+
+.checkbox-group fieldset {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+.checkbox-group legend {
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.checkbox-group-items {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/** Checkbox Group Invalid **/
+
+.checkbox-group--invalid {
+	border-left: 4px solid var(--agds-system-error);
+	padding-left: 1rem;
+}
+
+.checkbox-group-message {
+	display: block;
+	color: var(--agds-system-error);
+	margin-bottom: 1rem;
+}
+
+.checkbox-group--invalid .checkbox-indicator {
+	background-color: var(--agds-light-system-error-muted);
+	border-color: var(--agds-system-error);
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0px;
+	margin: 0px;
+	overflow: visible;
+	border-right-width: initial;
+	border-bottom-width: initial;
+	border-left-width: initial;
+	border-style: solid none none;
+	border-image: initial;
+	border-top-width: 1px;
+	border-color: var(--agds-border-muted);
+	width: 100%;
+}
+
+footer {
+	padding: 3rem 0px;
+	border-top: 4px solid var(--agds-border-muted);
+	margin-top: 3rem;
+	display: flex;
+}
+
+footer p {
+	margin: 0px;
+}
+
+hr.footer-divider {
+	border: 1px solid var(--agds-border-muted);
+}
+
+ul.footer-link-list {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	list-style: none;
+}
