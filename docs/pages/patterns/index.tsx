@@ -5,10 +5,10 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
-import { getPatternList, PATTERNS_PATH } from '../../lib/mdx/patterns';
-import { getMarkdownData } from '../../lib/mdxUtils';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { getPatternList, PATTERNS_PATH } from '~/lib/mdx/patterns';
+import { getMarkdownData } from '~/lib/mdxUtils';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { CategoryPageTemplate } from '~/components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

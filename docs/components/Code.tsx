@@ -34,7 +34,7 @@ import {
 	ChevronDownIcon,
 	ChevronUpIcon,
 } from '@ag.ds-next/react/icon';
-import { withBasePath } from '../lib/img';
+import { withBasePath } from '~/lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { ConditionalFieldContainer } from './ConditionalFieldContainer';
 import { prismTheme } from './prism-theme';

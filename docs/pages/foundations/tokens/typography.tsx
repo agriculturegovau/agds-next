@@ -13,9 +13,9 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens, FontSize, Font } from '@ag.ds-next/react/core';
 import { Stack } from '@ag.ds-next/react/stack';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { LineHeightTokenChart } from '../../../components/TokenCharts';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { TokenLayout, TOKEN_PAGES } from '~/components/TokenLayout';
+import { LineHeightTokenChart } from '~/components/TokenCharts';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function TokensTypographyPage() {
 	return (

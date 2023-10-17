@@ -5,9 +5,9 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
-import { getFoundationList } from '../../lib/mdx/foundations';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { CategoryPageTemplate } from '~/components/CategoryPageTemplate';
+import { getFoundationList } from '~/lib/mdx/foundations';
 
 const title = 'Foundations';
 const description =

@@ -2,9 +2,9 @@ import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
 import { Box } from '@ag.ds-next/react/box';
 import { tokens } from '@ag.ds-next/react/core';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { BorderWidthTokenChart } from '../../../components/TokenCharts';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { TokenLayout, TOKEN_PAGES } from '~/components/TokenLayout';
+import { BorderWidthTokenChart } from '~/components/TokenCharts';
 
 export default function TokensBorderWidthPage() {
 	return (

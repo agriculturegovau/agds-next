@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { Pattern, getPatternBreadcrumbs } from '../lib/mdx/patterns';
+import { Pattern, getPatternBreadcrumbs } from '~/lib/mdx/patterns';
 import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';

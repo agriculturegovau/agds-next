@@ -11,12 +11,12 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../lib/mdx/packages';
-import { mdxComponents } from '../../../components/mdxComponents';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { PkgLayout } from '../../../components/PkgLayout';
-import { generateToc } from '../../../lib/generateToc';
-import { getPattern, Pattern } from '../../../lib/mdx/patterns';
+} from '~/lib/mdx/packages';
+import { mdxComponents } from '~/components/mdxComponents';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PkgLayout } from '~/components/PkgLayout';
+import { generateToc } from '~/lib/generateToc';
+import { getPattern, Pattern } from '~/lib/mdx/patterns';
 
 export default function Packages({
 	pkg,

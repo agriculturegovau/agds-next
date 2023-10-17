@@ -7,7 +7,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
 import { Stack } from '@ag.ds-next/react/stack';
-import { PageTitle } from '../../../components/PageTitle';
+import { PageTitle } from '~/components/PageTitle';
 
 export function MultiPageFormSuccess() {
 	const successPageAlertRef = useRef<HTMLDivElement>(null);

@@ -9,11 +9,11 @@ import {
 	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
-} from '../../../lib/mdx/packages';
-import { mdxComponents } from '../../../components/mdxComponents';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { PkgLayout } from '../../../components/PkgLayout';
-import { generateToc } from '../../../lib/generateToc';
+} from '~/lib/mdx/packages';
+import { mdxComponents } from '~/components/mdxComponents';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PkgLayout } from '~/components/PkgLayout';
+import { generateToc } from '~/lib/generateToc';
 
 export default function PackagesCode({
 	pkg,

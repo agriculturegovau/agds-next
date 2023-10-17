@@ -18,7 +18,7 @@ import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { PageTitle } from '../../../components/PageTitle';
+import { PageTitle } from '~/components/PageTitle';
 
 export function MultiPageFormSummary() {
 	return (

@@ -7,13 +7,13 @@ import {
 	getGuidesBreadcrumbs,
 	getGuideSlugs,
 	Guide,
-} from '../../lib/mdx/guides';
-import { mdxComponents } from '../../components/mdxComponents';
-import { SiteLayout } from '../../components/SiteLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
-import { generateToc } from '../../lib/generateToc';
+} from '~/lib/mdx/guides';
+import { mdxComponents } from '~/components/mdxComponents';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageLayout } from '~/components/PageLayout';
+import { PageTitle } from '~/components/PageTitle';
+import { generateToc } from '~/lib/generateToc';
 
 export default function Guides({
 	guide,

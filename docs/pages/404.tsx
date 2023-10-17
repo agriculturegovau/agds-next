@@ -4,8 +4,8 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
 import { tokens } from '@ag.ds-next/react/core';
-import { SiteLayout } from '../components/SiteLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function NotFoundPage() {
 	return (

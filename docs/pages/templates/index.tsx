@@ -7,11 +7,11 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
-import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
-import { getMarkdownData } from '../../lib/mdxUtils';
-import { withBasePath } from '../../lib/img';
+import { getTemplateList, TEMPLATES_PATH } from '~/lib/mdx/templates';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { CategoryPageTemplate } from '~/components/CategoryPageTemplate';
+import { getMarkdownData } from '~/lib/mdxUtils';
+import { withBasePath } from '~/lib/img';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

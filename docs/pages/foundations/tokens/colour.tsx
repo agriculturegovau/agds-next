@@ -8,11 +8,11 @@ import {
 	ColorTable,
 	colourTokens,
 	getTokensArrayFromObject,
-} from '../../../components/TokenColorTable';
-import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import { LinkComponent } from '../../../components/LinkComponent';
-import { withBasePath } from '../../../lib/img';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+} from '~/components/TokenColorTable';
+import { TokenLayout, TOKEN_PAGES } from '~/components/TokenLayout';
+import { LinkComponent } from '~/components/LinkComponent';
+import { withBasePath } from '~/lib/img';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function TokensColorPage() {
 	const [isDarkMode, setDarkMode] = useState(false);

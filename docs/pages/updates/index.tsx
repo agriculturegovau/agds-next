@@ -4,10 +4,10 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { getUpdatesList, UPDATE_PATH } from '../../lib/mdx/updates';
-import { getMarkdownData } from '../../lib/mdxUtils';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { getUpdatesList, UPDATE_PATH } from '~/lib/mdx/updates';
+import { getMarkdownData } from '~/lib/mdxUtils';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { CategoryPageTemplate } from '~/components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

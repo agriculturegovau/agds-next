@@ -9,11 +9,11 @@ import {
 	getTemplateNavLinks,
 	Template,
 	getTemplateSlugs,
-} from '../../lib/mdx/templates';
-import { withBasePath } from '../../lib/img';
-import { TemplateLayout } from '../../components/TemplateLayout';
-import { mdxComponents } from '../../components/mdxComponents';
-import { DocumentTitle } from '../../components/DocumentTitle';
+} from '~/lib/mdx/templates';
+import { withBasePath } from '~/lib/img';
+import { TemplateLayout } from '~/components/TemplateLayout';
+import { mdxComponents } from '~/components/mdxComponents';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function TemplatePage({
 	breadcrumbs,

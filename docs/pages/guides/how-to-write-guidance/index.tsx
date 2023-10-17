@@ -4,11 +4,11 @@ import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
-import { getMarkdownData } from '../../../lib/mdxUtils';
-import { GUIDE_PATH } from '../../../lib/mdx/guides';
-import { getContentGuideList } from '../../../lib/mdx/guidesHowToWriteGuidance';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { SubcategoryPageTemplate } from '../../../components/SubcategoryPageTemplate';
+import { getMarkdownData } from '~/lib/mdxUtils';
+import { GUIDE_PATH } from '~/lib/mdx/guides';
+import { getContentGuideList } from '~/lib/mdx/guidesHowToWriteGuidance';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { SubcategoryPageTemplate } from '~/components/SubcategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

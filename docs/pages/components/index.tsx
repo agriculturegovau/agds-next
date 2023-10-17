@@ -8,19 +8,16 @@ import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { getMarkdownData, serializeMarkdown } from '~/lib/mdxUtils';
 import {
 	COMPONENTS_PATH,
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
-} from '../../lib/mdx/packages';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import {
-	PkgCardList,
-	PkgCardListEmptyState,
-} from '../../components/PkgCardList';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+} from '~/lib/mdx/packages';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PkgCardList, PkgCardListEmptyState } from '~/components/PkgCardList';
+import { CategoryPageTemplate } from '~/components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

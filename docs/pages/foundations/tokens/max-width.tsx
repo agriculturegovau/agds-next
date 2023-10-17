@@ -12,8 +12,8 @@ import {
 	TableRow,
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { TokenLayout, TOKEN_PAGES } from '~/components/TokenLayout';
 
 const tokenDescriptions: Record<
 	Exclude<keyof (typeof tokens)['maxWidth'], 'field'>,

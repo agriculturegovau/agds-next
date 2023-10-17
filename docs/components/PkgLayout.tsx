@@ -7,7 +7,7 @@ import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '../lib/mdx/packages';
+import { getPkgBreadcrumbs, getPkgNavLinks, Pkg } from '~/lib/mdx/packages';
 import { PageTitle } from './PageTitle';
 import { PageLayout } from './PageLayout';
 import { FigmaLogo } from './FigmaLogo';

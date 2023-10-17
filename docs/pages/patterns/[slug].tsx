@@ -10,12 +10,12 @@ import {
 	getPatternBreadcrumbs,
 	getPatternNavLinks,
 	Pattern,
-} from '../../lib/mdx/patterns';
-import { generateToc } from '../../lib/generateToc';
-import { PatternLayout } from '../../components/PatternLayout';
-import { mdxComponents } from '../../components/mdxComponents';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { getPkg, Pkg } from '../../lib/mdx/packages';
+} from '~/lib/mdx/patterns';
+import { generateToc } from '~/lib/generateToc';
+import { PatternLayout } from '~/components/PatternLayout';
+import { mdxComponents } from '~/components/mdxComponents';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { getPkg, Pkg } from '~/lib/mdx/packages';
 
 export default function PatternPage({
 	breadcrumbs,

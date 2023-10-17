@@ -2,12 +2,12 @@ import { normalize } from 'path';
 import { InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
-import { getMarkdownData, serializeMarkdown } from '../lib/mdxUtils';
-import { SiteLayout } from '../components/SiteLayout';
-import { DocumentTitle } from '../components/DocumentTitle';
-import { PageTitle } from '../components/PageTitle';
-import { PageLayout } from '../components/PageLayout';
-import { mdxComponents } from '../components/mdxComponents';
+import { getMarkdownData, serializeMarkdown } from '~/lib/mdxUtils';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageTitle } from '~/components/PageTitle';
+import { PageLayout } from '~/components/PageLayout';
+import { mdxComponents } from '~/components/mdxComponents';
 
 export default function AboutPage({
 	title,

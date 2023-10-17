@@ -2,15 +2,11 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { mdxComponents } from '../../../components/mdxComponents';
-import { TokenLayout, TOKEN_PAGES } from '../../../components/TokenLayout';
-import {
-	getTokenPage,
-	getTokenSlugs,
-	TokenPage,
-} from '../../../lib/mdx/tokens';
-import { generateToc } from '../../../lib/generateToc';
-import { DocumentTitle } from '../../../components/DocumentTitle';
+import { mdxComponents } from '~/components/mdxComponents';
+import { TokenLayout, TOKEN_PAGES } from '~/components/TokenLayout';
+import { getTokenPage, getTokenSlugs, TokenPage } from '~/lib/mdx/tokens';
+import { generateToc } from '~/lib/generateToc';
+import { DocumentTitle } from '~/components/DocumentTitle';
 
 export default function TokensPage({
 	toc,

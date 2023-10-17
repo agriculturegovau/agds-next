@@ -2,18 +2,18 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
-import { mdxComponents } from '../../components/mdxComponents';
-import { SiteLayout } from '../../components/SiteLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
+import { mdxComponents } from '~/components/mdxComponents';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageLayout } from '~/components/PageLayout';
+import { PageTitle } from '~/components/PageTitle';
 import {
 	getFoundationList,
 	getFoundation,
 	getFoundationBreadcrumbs,
 	Foundation,
-} from '../../lib/mdx/foundations';
-import { generateToc } from '../../lib/generateToc';
+} from '~/lib/mdx/foundations';
+import { generateToc } from '~/lib/generateToc';
 
 export default function FoundationsPage({
 	breadcrumbs,

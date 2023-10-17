@@ -6,12 +6,12 @@ import {
 	getUpdateBreadcrumbs,
 	getUpdateSlugs,
 	Update,
-} from '../../lib/mdx/updates';
-import { mdxComponents } from '../../components/mdxComponents';
-import { SiteLayout } from '../../components/SiteLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
+} from '~/lib/mdx/updates';
+import { mdxComponents } from '~/components/mdxComponents';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageLayout } from '~/components/PageLayout';
+import { PageTitle } from '~/components/PageTitle';
 
 export default function Updates({
 	update,

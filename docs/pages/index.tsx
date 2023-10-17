@@ -11,10 +11,10 @@ import {
 	HeroBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { SiteLayout } from '../components/SiteLayout';
-import { PictogramCard } from '../components/PictogramCard';
-import { DocumentTitle } from '../components/DocumentTitle';
-import { withBasePath } from '../lib/img';
+import { SiteLayout } from '~/components/SiteLayout';
+import { PictogramCard } from '~/components/PictogramCard';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { withBasePath } from '~/lib/img';
 
 const description =
 	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';

@@ -2,19 +2,19 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
-import { mdxComponents } from '../../components/mdxComponents';
-import { SiteLayout } from '../../components/SiteLayout';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import { PageLayout } from '../../components/PageLayout';
-import { PageTitle } from '../../components/PageTitle';
+import { mdxComponents } from '~/components/mdxComponents';
+import { SiteLayout } from '~/components/SiteLayout';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { PageLayout } from '~/components/PageLayout';
+import { PageTitle } from '~/components/PageTitle';
 import {
 	getContentList,
 	getContent,
 	getContentBreadcrumbs,
 	Content,
 	getContentNavLinks,
-} from '../../lib/mdx/content';
-import { generateToc } from '../../lib/generateToc';
+} from '~/lib/mdx/content';
+import { generateToc } from '~/lib/generateToc';
 
 export default function ContentPage({
 	breadcrumbs,

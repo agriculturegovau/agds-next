@@ -6,13 +6,10 @@ import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
-import { DocumentTitle } from '../../../components/DocumentTitle';
-import { SubcategoryPageTemplate } from '../../../components/SubcategoryPageTemplate';
-import { TOKEN_NAV_LINKS } from '../../../components/TokenLayout';
-import {
-	getFoundation,
-	getFoundationBreadcrumbs,
-} from '../../../lib/mdx/foundations';
+import { DocumentTitle } from '~/components/DocumentTitle';
+import { SubcategoryPageTemplate } from '~/components/SubcategoryPageTemplate';
+import { TOKEN_NAV_LINKS } from '~/components/TokenLayout';
+import { getFoundation, getFoundationBreadcrumbs } from '~/lib/mdx/foundations';
 
 export default function TokensPage({
 	breadcrumbs,

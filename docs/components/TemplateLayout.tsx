@@ -3,7 +3,7 @@ import { Flex } from '@ag.ds-next/react/flex';
 import { SideNavProps } from '@ag.ds-next/react/side-nav';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Template, getTemplateBreadcrumbs } from '../lib/mdx/templates';
+import { Template, getTemplateBreadcrumbs } from '~/lib/mdx/templates';
 import { SiteLayout } from './SiteLayout';
 import { PageLayout } from './PageLayout';
 import { PageTitle } from './PageTitle';
