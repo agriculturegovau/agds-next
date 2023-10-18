@@ -260,7 +260,102 @@ header {
 }
 
 header svg {
-	height: 60px;
+	display: block;
+	height: 3.75rem;
+	flex-shrink: 0;
+}
+
+.css-1bbia95 {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	color: #fff;
+	border-width: 0px;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 1rem;
+	text-decoration: none;
+}
+
+.css-jljaej {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	justify-content: center;
+	align-items: flex-start;
+	max-width: 42em;
+}
+
+.css-1q058xa {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	color: #fff;
+	border-width: 0px;
+	font-weight: bold;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: var(--typography-lg);
+	line-height: var(--typography-lg-default);
+}
+
+.css-z0z53f {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	color: #bdd2d7;
+	border-width: 0px;
+	font-weight: normal;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: var(--typography-xs);
+	line-height: var(--typography-xs-default);
+}
+
+.css-1rizfce {
+	box-sizing: border-box;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+	display: flex;
+	flex-direction: row;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+	.css-1bbia95 {
+		flex-direction: row;
+		-webkit-box-align: center;
+		align-items: center;
+		gap: 0rem;
+	}
+
+	.css-jljaej {
+		padding-left: 1rem;
+		margin-left: 1rem;
+		border-left-width: 1px;
+		border-left-style: solid;
+		border-left-color: #95b7bf;
+	}
+
+	.css-1bbia95 {
+		flex-direction: row;
+		-webkit-box-align: center;
+		align-items: center;
+		gap: 0rem;
+	}
 }
 
 /* buttons */
