@@ -106,6 +106,10 @@ h1 {
 	line-height: var(--typography-xxl-heading);
 }
 
+h2:first-of-type {
+	margin-top: 0px;
+}
+
 .stack-1 {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -170,6 +174,13 @@ h1 {
 	max-height: 20rem;
 	border: 1px solid var(--agds-border);
 	padding: 1rem;
+}
+
+.scrollable:focus-visible {
+	outline-width: 3px;
+	outline-style: solid;
+	outline-color: var(--agds-foreground-focus);
+	outline-offset: 2px;
 }
 
 header {
@@ -350,6 +361,13 @@ legend {
 	stroke-linejoin: round;
 	stroke-linecap: round;
 	stroke-width: 3;
+}
+
+.checkbox-input:focus-visible~span:first-of-type {
+	outline-width: 3px;
+	outline-style: solid;
+	outline-color: var(--agds-foreground-focus);
+	outline-offset: 2px;
 }
 
 .checkbox-input:checked~span>svg {
