@@ -1,16 +1,30 @@
 ---
 title: Form stack
-description: Use the FormStack component to apply consistent spacing between form elements.
+description: The Form stack component is used to apply consistent vertical spacing between elements in forms.
 group: Forms
+relatedComponents: ['stack']
 ---
 
-### Basic
+<DoHeading />
+
+- use within forms to apply consistent vertical spacing between form elements
+- always use the default gap/spacing value of `2rem (32px)`
+
+<DontHeading />
+
+- use this component outside of forms
+- use any other gap/spacing value
+
+## Basic usage
+
+Below is a live code example of a simple form. In this example, notice how the `FormStack` component is being used to space out form elements evenly.
 
 ```jsx live
 <form>
 	<FormStack>
 		<TextInput label="Email" type="email" maxWidth="xl" />
 		<TextInput label="Password" type="password" maxWidth="xl" />
+		<Divider />
 		<ButtonGroup>
 			<Button type="submit">Submit</Button>
 			<Button type="button" variant="secondary">
