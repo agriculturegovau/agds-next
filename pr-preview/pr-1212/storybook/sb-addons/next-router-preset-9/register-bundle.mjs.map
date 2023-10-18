@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["<define:module>", "<define:process.env>", "<define:process.env.NODE_PATH>", "global-externals:@storybook/addons", "../../../../../node_modules/storybook-addon-next-router/src/preset/register.ts", "../../../../../node_modules/.cache/sb-manager/next-router-preset-9/register-bundle.mjs"],
-  "sourcesContent": ["", "", "", "export default __STORYBOOKADDONS__;\nconst { addons, types, mockChannel } = __STORYBOOKADDONS__;\nexport { addons, types, mockChannel };", null, "import '/home/runner/work/agds-next/agds-next/node_modules/storybook-addon-next-router/dist/preset/register.js';"],
-  "mappings": ";0oBAAA,IAAAA,EAAAC,EAAA,QCAA,IAAAC,EAAAC,EAAA,QCAA,IAAAC,EAAAC,EAAA,QCAA,IAAAC,EAAA,GAAAC,EAAAD,EAAA,YAAAE,EAAA,YAAAC,EAAA,gBAAAC,EAAA,UAAAC,IAAA,IAAOF,EACCD,EAAQG,EAAOD,EADvBE,EAAAC,EAAA,KAAAC,IAAAC,IAAAC,IAAOP,EAAQ,oBACT,CAAE,OAAAD,EAAQ,MAAAG,EAAO,YAAAD,GAAgB,4GCDvC,IAAAO,EAAA,WAEMC,EAAW,8BAEjBD,EAAA,OAAO,SAASC,EAAU,UAAA,CAE1B,CAAC,ICNDC,IAAAC,IAAAC,IAAA,IAAAC,EAAO",
-  "names": ["init_define_module", "__esmMin", "init_define_process_env", "__esmMin", "init_define_process_env_NODE_PATH", "__esmMin", "addons_exports", "__export", "addons", "addons_default", "mockChannel", "types", "init_addons", "__esmMin", "init_define_module", "init_define_process_env", "init_define_process_env_NODE_PATH", "addons_1", "ADDON_ID", "init_define_module", "init_define_process_env", "init_define_process_env_NODE_PATH", "import_register"]
-}
