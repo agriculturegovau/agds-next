@@ -99,6 +99,22 @@ body {
 	max-width: 42em;
 }
 
+a {
+	color: var(--agds-foreground-action);
+}
+
+a:hover {
+	color: var(--agds-foreground-text);
+	text-decoration: none;
+}
+
+a:focus-visible {
+	outline-width: 3px;
+	outline-style: solid;
+	outline-color: var(--agds-foreground-focus);
+	outline-offset: 2px;
+}
+
 h1 {
 	margin: 0px;
 	font-weight: bold;
@@ -277,6 +293,14 @@ header svg {
 	border-color: var(--agds-foreground-text);
 	color: var(--agds-foreground-text);
 	text-decoration: underline;
+}
+
+.button-primary:focus-visible,
+.button-secondary:focus-visible {
+	outline-width: 3px;
+	outline-style: solid;
+	outline-color: var(--agds-foreground-focus);
+	outline-offset: 2px;
 }
 
 .button-group {
