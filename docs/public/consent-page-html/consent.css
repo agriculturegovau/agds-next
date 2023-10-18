@@ -99,6 +99,10 @@ body {
 	max-width: 42em;
 }
 
+.width-100 {
+	width: 100%;
+}
+
 a {
 	color: var(--agds-foreground-action);
 }
@@ -122,8 +126,8 @@ h1 {
 	line-height: var(--typography-xxl-heading);
 }
 
-h2:first-of-type {
-	margin-top: 0px;
+h2 {
+	margin: 0px;
 }
 
 .stack-1 {
@@ -501,6 +505,7 @@ footer p {
 
 hr.footer-divider {
 	border: 1px solid var(--agds-border-muted);
+	width: 100%;
 }
 
 ul.footer-link-list {
