@@ -106,6 +106,31 @@ a:focus-visible {
 	outline-offset: 2px;
 }
 
+a.external-link svg {
+	width: 1rem;
+	height: 1rem;
+	fill: none;
+	color: currentcolor;
+	stroke: currentcolor;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	stroke-width: 2;
+	position: relative;
+	top: 3px;
+	margin-left: 0.25rem;
+}
+
+a.external-link span {
+	clip: rect(0 0 0 0);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
 h1 {
 	margin: 0px;
 	font-weight: bold;
