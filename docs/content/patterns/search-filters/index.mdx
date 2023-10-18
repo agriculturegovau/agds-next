@@ -1,0 +1,287 @@
+---
+title: Search filters
+description: Search filters help users find what they're looking for by displaying options that meet specified criteria.
+figmaTemplateNodeId: 18586-56265
+githubTemplatePath: /.storybook/stories/DataFiltering
+storybookPath: story/patterns-search-filters--cards
+relatedComponents: ['card', 'drawer', 'filter-sidebar', 'pagination', 'table']
+---
+
+Search filters help users find what they're looking for by displaying options that meet specified criteria.
+
+Applied filters are displayed as tags, so users can quickly see which filters have been applied to the dataset. Filters can be removed by dismissing the tags.
+
+The dataset should be displayed in a [Table](/components/table) or a list of [Cards](/components/cards) under the search filters. Refer to the specific component guidance to help determine which is more suitable to display your dataset.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1}>
+		<Flex
+			gap={1}
+			justifyContent="space-between"
+			flexDirection={['column', 'row']}
+		>
+			<Flex
+				flexDirection={['column', 'row']}
+				gap={1}
+				alignItems={['flex-start', 'flex-end']}
+			>
+				<SearchInput label="Search" hideOptionalLabel />
+				<Button variant="secondary" iconAfter={FilterIcon}>
+					Show filters
+				</Button>
+			</Flex>
+			<Select
+				label="Sort by"
+				hideOptionalLabel
+				options={[
+					{ value: 'newest', label: 'Newest to oldest' },
+					{ value: 'old', label: 'Oldest to newest' },
+				]}
+			/>
+		</Flex>
+		<Flex flexWrap="wrap" gap={0.75} alignItems="flex-end">
+			<Tags
+				heading={<Text fontWeight="bold">Active filters</Text>}
+				items={[
+					{ label: 'Category: Plant', onRemove: console.log },
+					{ label: 'Type: Organic', onRemove: console.log },
+					{ label: 'Assignee: John', onRemove: console.log },
+				]}
+			/>
+			<Button
+				size="sm"
+				variant="text"
+				onClick={console.log}
+				iconAfter={CloseIcon}
+			>
+				Clear filters
+			</Button>
+		</Flex>
+		<Divider />
+	</Stack>
+	<Stack gap={1.5}>
+		<H3>25 results</H3>
+		{Array.from(Array(5).keys()).map((idx) => (
+			<Card key={idx} shadow clickable>
+				<CardInner>
+					<Stack gap={1}>
+						<H3>
+							<CardLink href="#">Card heading</CardLink>
+						</H3>
+						<Text as="p">
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+							voluptat
+						</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		))}
+	</Stack>
+	<PaginationButtons
+		currentPage={5}
+		totalPages={10}
+		onChange={(page) => console.log(page)}
+	/>
+</Stack>
+```
+
+<DoHeading />
+
+- choose the right filter pattern to meet user needs
+- prioritise filters by expected usage
+- display 1-2 of the most important filters above the dataset
+- include [loading, empty, and error states](/patterns/loading-error-empty-states)
+
+<DontHeading />
+
+- remove the applied filter tags, as they allow users to see and remove active filters
+
+## Filter input
+
+Filters need to work within a limited space, so consider using input methods that do not need much space, such as:
+
+- [Search input](/component/search-input)
+- [Text input](/components/text-input)
+- [Select](/components/select)
+- [Checkbox](/components/checkbox)
+- [Radio](/components/radio)
+- [Combobox](/components/combobox)
+- [Switch](/components/switch)
+- [Date picker](/components/date-picker)
+- [Date range picker](/components/date-picker)
+
+## Filter sizes
+
+Filters are available in 3 sizes to accommodate a wide range of use cases and data sets:
+
+- **Small:** 1-2 filters
+- **Medium:** 3-6 filters
+- **Large:** 6+ filters
+
+<Table>
+	<TableCaption>How to decide on filter size</TableCaption>
+	<TableHead>
+		<TableRow>
+			<TableCell />
+			<TableHeader width="15%" scope="col">
+				Small
+			</TableHeader>
+			<TableHeader width="15%" scope="col">
+				Medium
+			</TableHeader>
+			<TableHeader width="15%" scope="col">
+				Large
+			</TableHeader>
+		</TableRow>
+	</TableHead>
+	<TableBody>
+		<TableRow>
+			<TableCell as="th" scope="row">
+				Number of filters
+			</TableCell>
+			<TableCell>1-2</TableCell>
+			<TableCell>3-6</TableCell>
+			<TableCell>6+</TableCell>
+		</TableRow>
+		<TableRow>
+			<TableCell as="th" scope="row">
+				Number of primary filters
+			</TableCell>
+			<TableCell>1-2</TableCell>
+			<TableCell>1-2</TableCell>
+			<TableCell>1-2</TableCell>
+		</TableRow>
+		<TableRow>
+			<TableCell as="th" scope="row">
+				Tags display active filters
+			</TableCell>
+			<TableCell>No</TableCell>
+			<TableCell>Yes</TableCell>
+			<TableCell>Yes</TableCell>
+		</TableRow>
+		<TableRow>
+			<TableCell as="th" scope="row">
+				Submission required
+			</TableCell>
+			<TableCell>No</TableCell>
+			<TableCell>No</TableCell>
+			<TableCell>Yes</TableCell>
+		</TableRow>
+	</TableBody>
+</Table>
+
+### Small
+
+1-2 visible filters sit above the dataset. Tags that display active filters are not needed in this case, as the filters are always visible.
+
+[View Storybook preview](/storybook/index.html?path=/story/patterns-search-filters--table-small)
+
+<ImageWithBorder
+	src="/img/patterns/search-filters-table-small.png"
+	alt="Screenshot of the small table filtering pattern"
+/>
+
+### Medium
+
+3-6 filters are displayed in an accordion that is triggered by a 'Show filters button.
+
+1 to 2 of the most used filters can be displayed outside the accordion to make them easier and faster to access.
+
+Applied filters are displayed as tags under the filter inputs. This helps users quickly see which filters have been applied. Filters can be removed by dismissing the tags.
+
+[View Storybook preview](/storybook/index.html?path=/story/patterns-search-filters--table-medium)
+
+<ImageWithBorder
+	src="/img/patterns/search-filters-table-medium.png"
+	alt="Screenshot of the medium table filtering pattern"
+/>
+
+### Large
+
+6 or more filters are displayed in a drawer that is triggered by a 'Show filters' button. The drawer has a submit button that applies the filters.
+
+1 to 2 of the most used filters can be displayed outside the drawer to make them easier and faster to access
+
+Applied filters are displayed as tags under the filter inputs. This helps users quickly see which filters have been applied. Filters can be removed by dismissing the tags.
+
+[View Storybook preview](/storybook/index.html?path=/story/patterns-search-filters--table-large)
+
+<ImageWithBorder
+	src="/img/patterns/search-filters-table-large.png"
+	alt="Screenshot of the large table filtering pattern"
+/>
+
+### Actions in drawer
+
+The [Drawer](/components/drawer) component should contain a total of 4 actions:
+
+1. **Apply filters button:** When pressed, filters should be applied and the drawer should be closed.
+2. **Clear filters button:** When pressed, filters should be reset to their original state. The drawer should stay open.
+3. **Close button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the ‘Cancel’ button.
+4. **Cancel button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the ‘Close’ button.nges that have been made since opening the Drawer should be discarded. This is essentially the same as the "Close" button.
+
+## Search filter sidebar
+
+If you have filters that need to be quickly accessed on a regular basis, you could consider putting them in a [Filter sidebar](/components/filter-sidebar) on the left so that they are always visible. The filter sidebar makes it faster and easier for users to access filters.
+
+Ensure that the correct HTML order is maintained by including a hero banner at the top, followed by the filter sidebar on the left, and the card listing on the right.
+
+Since the filters are always visible, there is no need to also include tags to show the active filters.
+
+[View Storybook preview](/storybook/index.html?path=/story/patterns-search-results--list)
+
+<ImageWithBorder
+	src="/img/patterns/search-filters-search-filter-sidebar.png"
+	alt="Screenshot of the search filter sidebar pattern"
+/>
+
+## Empty state
+
+When a search filter doesn't match any data, use an [empty state](/patterns/loading-error-empty-states) to let user’s know that they need to clear or change the search filter.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1}>
+		<Flex
+			gap={1}
+			justifyContent="space-between"
+			flexDirection={['column', 'row']}
+		>
+			<Flex
+				flexDirection={['column', 'row']}
+				gap={1}
+				alignItems={['flex-start', 'flex-end']}
+			>
+				<SearchInput label="Search" hideOptionalLabel />
+				<Button variant="secondary" iconAfter={FilterIcon}>
+					Show filters
+				</Button>
+			</Flex>
+			<Select
+				label="Sort by"
+				hideOptionalLabel
+				options={[
+					{ value: 'newest', label: 'Newest to oldest' },
+					{ value: 'old', label: 'Oldest to newest' },
+				]}
+			/>
+		</Flex>
+		<Divider />
+	</Stack>
+	<Stack gap={2} alignItems="flex-start">
+		<Stack gap={1}>
+			<HelpIcon size="lg" color="muted" />
+			<Heading type="h2" fontSize="lg">
+				No results found
+			</Heading>
+			<Text>Try adjusting your filter options.</Text>
+		</Stack>
+		<Button variant="secondary">Clear filters</Button>
+	</Stack>
+</Stack>
+```
+
+## Templates
+
+Coming soon
