@@ -229,8 +229,6 @@ header svg {
 	gap: 1rem;
 }
 
-.control-group {}
-
 fieldset {
 	padding: 0px;
 	margin: 0px;
@@ -261,9 +259,13 @@ legend {
 /** Checkbox **/
 .checkbox {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 0.5rem;
 	cursor: pointer;
+}
+
+.checkbox-label {
+	padding-top: 4px;
 }
 
 .checkbox-input {
@@ -301,6 +303,9 @@ legend {
 	height: 2rem;
 	border: 3px solid var(--agds-border);
 	border-radius: 4px;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
 }
 
 /** Checkbox Group **/
