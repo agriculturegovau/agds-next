@@ -4,7 +4,7 @@ import {
 	HeroCategoryBannerTitle,
 	HeroCategoryBannerSubtitle,
 } from '@ag.ds-next/react/hero-banner';
-import { SiteLayout } from '../../components/SiteLayout';
+import { SiteLayout } from '../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { ServicesCardList } from '../../components/ServicesCardList';
 

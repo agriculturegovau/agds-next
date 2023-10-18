@@ -9,11 +9,10 @@ import {
 import { useRouter } from 'next/router';
 import * as yup from 'yup';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
+import { ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
-import { SiteLayout } from '../SiteLayout';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
 import {
 	FormRegisterPetDetailsStep0,
@@ -213,33 +212,29 @@ export const FormRegisterPetDetails = () => {
 	};
 
 	return (
-		<SiteLayout focusMode>
-			<PageContent>
-				<context.Provider value={contextValue}>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-							<ContentBleed visible={{ md: false }}>
-								<ProgressIndicator
-									items={FORM_STEPS.map(({ label }, idx) => ({
-										label,
-										status: getStepStatus(idx),
-										onClick: () => setCurrentStep(idx),
-									}))}
-								/>
-							</ContentBleed>
-						</Column>
-						<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-							<Stack gap={3} alignItems="flex-start">
-								<DirectionButton direction="left" onClick={back}>
-									Back
-								</DirectionButton>
-								{FormStepComponent ? <FormStepComponent /> : null}
-							</Stack>
-						</Column>
-					</Columns>
-				</context.Provider>
-			</PageContent>
-		</SiteLayout>
+		<context.Provider value={contextValue}>
+			<Columns>
+				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+					<ContentBleed visible={{ md: false }}>
+						<ProgressIndicator
+							items={FORM_STEPS.map(({ label }, idx) => ({
+								label,
+								status: getStepStatus(idx),
+								onClick: () => setCurrentStep(idx),
+							}))}
+						/>
+					</ContentBleed>
+				</Column>
+				<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+					<Stack gap={3} alignItems="flex-start">
+						<DirectionButton direction="left" onClick={back}>
+							Back
+						</DirectionButton>
+						{FormStepComponent ? <FormStepComponent /> : null}
+					</Stack>
+				</Column>
+			</Columns>
+		</context.Provider>
 	);
 };
 
