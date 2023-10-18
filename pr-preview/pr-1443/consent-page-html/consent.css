@@ -184,6 +184,12 @@ header svg {
 	text-decoration: none;
 }
 
+.button-primary:hover {
+	background: var(--agds-foreground-text);
+	border-color: var(--agds-foreground-text);
+	text-decoration: underline;
+}
+
 .button-secondary {
 	border-image: initial;
 	padding: 0px 1.5rem;
@@ -210,6 +216,12 @@ header svg {
 	border-color: var(--agds-foreground-action);
 	color: var(--agds-foreground-action);
 	text-decoration: none;
+}
+
+.button-secondary:hover {
+	border-color: var(--agds-foreground-text);
+	color: var(--agds-foreground-text);
+	text-decoration: underline;
 }
 
 .button-group {
