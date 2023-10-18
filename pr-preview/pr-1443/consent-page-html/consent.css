@@ -82,25 +82,12 @@
 	--agds-system-info-muted: var(--agds-light-system-info-muted);
 }
 
+/* Global styles */
 body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	margin: 0px;
 	font-size: var(--typography-sm);
 	line-height: var(--typography-sm-default);
-}
-
-.container {
-	max-width: 80rem;
-	margin: 0 auto;
-	padding: 3rem 2rem 4rem;
-}
-
-.content {
-	max-width: 42em;
-}
-
-.width-100 {
-	width: 100%;
 }
 
 a {
@@ -128,6 +115,37 @@ h1 {
 
 h2 {
 	margin: 0px;
+}
+
+hr {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 0px;
+	margin: 0px;
+	overflow: visible;
+	border-right-width: initial;
+	border-bottom-width: initial;
+	border-left-width: initial;
+	border-style: solid none none;
+	-o-border-image: initial;
+	border-image: initial;
+	border-top-width: 1px;
+	border-color: var(--agds-border-muted);
+	width: 100%;
+}
+
+.container {
+	max-width: 80rem;
+	margin: 3rem auto 4rem;
+	padding: 0px 2rem;
+}
+
+.content {
+	max-width: 42em;
+}
+
+.width-100 {
+	width: 100%;
 }
 
 .stack-1 {
@@ -188,6 +206,7 @@ h2 {
 	line-height: var(--typography-md-default);
 }
 
+/* Scrollable-frame-thing */
 .scrollable {
 	border-radius: 4px;
 	overflow-y: auto;
@@ -203,6 +222,11 @@ h2 {
 	outline-offset: 2px;
 }
 
+.scrollable>p:first-of-type {
+	margin-top: 0px;
+}
+
+/* header */
 header {
 	background-color: #162846;
 	color: #fff;
@@ -210,11 +234,11 @@ header {
 	padding: 1rem 2rem
 }
 
-
 header svg {
 	height: 60px;
 }
 
+/* buttons */
 .button-primary {
 	-o-border-image: initial;
 	border-image: initial;
@@ -314,6 +338,8 @@ header svg {
 	gap: 1rem;
 }
 
+
+/* form */
 fieldset {
 	padding: 0px;
 	margin: 0px;
@@ -321,14 +347,10 @@ fieldset {
 }
 
 .fieldset-inner {
-
 	margin: 0.5rem 0px 0px;
 	padding: 0px;
-
 	display: -webkit-box;
-
 	display: -ms-flexbox;
-
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
@@ -352,7 +374,7 @@ legend {
 	line-height: var(--typography-sm-default);
 }
 
-/** Checkbox **/
+/* Checkbox */
 .checkbox {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -424,7 +446,7 @@ legend {
 	padding: 0px;
 }
 
-/** Checkbox Group **/
+/* Checkbox Group */
 
 .checkbox-group fieldset {
 	padding: 0px;
@@ -448,11 +470,16 @@ legend {
 	gap: 1rem;
 }
 
-/** Checkbox Group Invalid **/
+/* Checkbox Group Invalid */
 
 .checkbox-group--invalid {
 	border-left: 4px solid var(--agds-system-error);
 	padding-left: 1rem;
+}
+
+.checkbox-group--invalid .checkbox-indicator {
+	background-color: var(--agds-light-system-error-muted);
+	border-color: var(--agds-system-error);
 }
 
 .checkbox-group-message {
@@ -468,29 +495,12 @@ legend {
 	font-weight: bold;
 }
 
-.checkbox-group--invalid .checkbox-indicator {
-	background-color: var(--agds-light-system-error-muted);
-	border-color: var(--agds-system-error);
-}
 
-hr {
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box;
-	height: 0px;
-	margin: 0px;
-	overflow: visible;
-	border-right-width: initial;
-	border-bottom-width: initial;
-	border-left-width: initial;
-	border-style: solid none none;
-	-o-border-image: initial;
-	border-image: initial;
-	border-top-width: 1px;
-	border-color: var(--agds-border-muted);
-	width: 100%;
-}
+/* footer */
 
 footer {
+	max-width: 80rem;
+	margin: 0px auto;
 	padding: 3rem 0px;
 	border-top: 4px solid var(--agds-border-muted);
 	margin-top: 3rem;
