@@ -236,6 +236,7 @@ hr {
 
 /* Scrollable-frame-thing */
 .scrollable {
+	position: relative; /** Do not delete, otherwise external links cause the page layout to break. */
 	border-radius: 4px;
 	overflow-y: scroll;
 	max-height: 20rem;
@@ -249,7 +250,6 @@ hr {
 	outline-color: var(--agds-foreground-focus);
 	outline-offset: 2px;
 }
-
 
 .scrollable p, .scrollable ul, .scrollable h2, .scrollable h3 {
 	margin: 0;
