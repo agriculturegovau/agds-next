@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 :root {
 	--typography-xs: 0.875rem;
 	--typography-xs-nospace: 1.1428571428571428;
@@ -247,8 +240,29 @@ hr {
 	outline-offset: 2px;
 }
 
-.scrollable>p:first-of-type {
-	margin-top: 0px;
+
+.scrollable p, .scrollable ul, .scrollable h2, .scrollable h3 {
+	margin: 0;
+}
+
+.scrollable * + ul {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + p {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + h2 {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + h3 {
+	margin-top: 1.5rem;
+}
+
+.scrollable strong {
+	font-weight: bold;
 }
 
 /* header */
@@ -262,40 +276,60 @@ header {
 header svg {
 	display: block;
 	height: 3.75rem;
-	flex-shrink: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
 }
 
 .css-1bbia95 {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	list-style: none;
 	margin: 0px;
 	color: #fff;
 	border-width: 0px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	-webkit-box-pack: start;
-	justify-content: flex-start;
-	align-items: flex-start;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
 	gap: 1rem;
 	text-decoration: none;
 }
 
 .css-jljaej {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 	border-width: 0px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	-webkit-box-pack: center;
-	justify-content: center;
-	align-items: flex-start;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
 	max-width: 42em;
 }
 
 .css-1q058xa {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
@@ -308,7 +342,8 @@ header svg {
 }
 
 .css-z0z53f {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
@@ -321,24 +356,37 @@ header svg {
 }
 
 .css-1rizfce {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 	border-width: 0px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
 	-webkit-box-pack: start;
-	justify-content: flex-start;
-	align-items: flex-start;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
 	gap: 0.5rem;
 }
 
 @media (min-width: 768px) {
 	.css-1bbia95 {
-		flex-direction: row;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
 		-webkit-box-align: center;
-		align-items: center;
+		-ms-flex-align: center;
+		    align-items: center;
 		gap: 0rem;
 	}
 
@@ -351,9 +399,13 @@ header svg {
 	}
 
 	.css-1bbia95 {
-		flex-direction: row;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
 		-webkit-box-align: center;
-		align-items: center;
+		-ms-flex-align: center;
+		    align-items: center;
 		gap: 0rem;
 	}
 }
