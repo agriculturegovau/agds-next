@@ -237,7 +237,7 @@ hr {
 /* Scrollable-frame-thing */
 .scrollable {
 	border-radius: 4px;
-	overflow-y: auto;
+	overflow-y: scroll;
 	max-height: 20rem;
 	border: 1px solid var(--agds-border);
 	padding: 1rem;
