@@ -1,12 +1,22 @@
 ---
 title: Fieldset
-description: Use the fieldset component to group related form inputs.
+description: The Fieldset component is used to group related form fields and includes a descriptive legend to label the group, helping screen readers understand the relationship between these form fields.
 group: Forms
 storybookPath: /story/forms-fieldset--basic
-relatedComponents: ['field']
+relatedComponents: ['field', 'control-group']
 ---
 
-Fieldset is used to associate a number of related form fields as well as labels within a form. The legend provides an association and caption for the form fields in the fieldset.
+<DoHeading />
+
+- use the legend to describe the purpose of the related form fields
+- use when you have several questions relating to the same topic
+- provide useful hints where necessary
+- align form inputs using a [Form stack](/components/form-stack)
+
+<DontHeading />
+
+- use when you have a single form field that asks for a single piece of information
+- use to group Checkboxes and Radios - use [Control group](/components/control-group) instead
 
 ```jsx live
 <Fieldset
@@ -37,9 +47,9 @@ Fieldset is used to associate a number of related form fields as well as labels 
 </Fieldset>
 ```
 
-### Legend as page heading
+## Legend as page heading
 
-If you’re asking just one question per page, you can set the contents of the `legend` as the page heading, as shown in the example below. This is good practice as it means that users of screen readers will only hear the contents once.
+If you are asking just one question per page, you can set the contents of the `legend` as the page heading, as shown in the example below. This is good practice as it means that users of screen readers will only hear the contents once.
 
 ```jsx live
 <Fieldset
