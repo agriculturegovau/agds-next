@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 :root {
 	--typography-xs: 0.875rem;
 	--typography-xs-nospace: 1.1428571428571428;
@@ -247,8 +240,29 @@ hr {
 	outline-offset: 2px;
 }
 
-.scrollable>p:first-of-type {
-	margin-top: 0px;
+
+.scrollable p, .scrollable ul, .scrollable h2, .scrollable h3 {
+	margin: 0;
+}
+
+.scrollable * + ul {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + p {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + h2 {
+	margin-top: 1.5rem;
+}
+
+.scrollable * + h3 {
+	margin-top: 1.5rem;
+}
+
+.scrollable strong {
+	font-weight: bold;
 }
 
 /* header */
