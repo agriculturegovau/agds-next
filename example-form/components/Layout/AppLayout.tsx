@@ -33,7 +33,7 @@ import {
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
 import { useAuth, User } from '../../lib/useAuth';
-import NotFoundPage from '../../pages/not-found';
+import { PageNotAllowed } from '../PageNotAllowed';
 import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 
 type AppLayoutProps = PropsWithChildren<{
@@ -77,7 +77,7 @@ export function AppLayout({
 	if (!hasLoadedUser) return null;
 
 	// Application pages are not visible when you are logged out
-	if (!user) return <NotFoundPage />;
+	if (!user) return <PageNotAllowed />;
 
 	return (
 		<Fragment>

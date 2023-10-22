@@ -54,7 +54,6 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 	function signIn(user: User) {
 		sessionStorage.setItem('user', JSON.stringify(user));
 		setUserState(user);
-		router.push('/app');
 	}
 
 	function signOut() {

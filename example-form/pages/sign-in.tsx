@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, useRef, Fragment, ReactElement } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -21,7 +23,9 @@ import { useAuth, UserRole } from '../lib/useAuth';
 import type { NextPageWithLayout } from './_app';
 
 const Page: NextPageWithLayout = () => {
+	const { push } = useRouter();
 	const { signIn } = useAuth();
+	const searchParams = useSearchParams();
 
 	function onSubmit({ firstName, lastName, role }: FormSchema) {
 		signIn({
@@ -30,6 +34,10 @@ const Page: NextPageWithLayout = () => {
 			displayName: [firstName, lastName].join(' '),
 			role,
 		});
+		// When the user signs in, attempt to redirect them to the page they just tried to visit
+		// `redirectTo` param is set in `components/PageNotAllowed.tsx`
+		const redirectToParam = searchParams.get('redirectTo');
+		push(redirectToParam || '/app');
 	}
 
 	return (
