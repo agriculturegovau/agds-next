@@ -43,7 +43,7 @@ const variants = {
 	},
 	text: {
 		textAlign: 'left',
-		height: 'auto',
+		minHeight: 'auto',
 		paddingLeft: 0,
 		paddingRight: 0,
 		borderWidth: 0,
@@ -61,15 +61,20 @@ const variants = {
 
 export type ButtonVariant = keyof typeof variants;
 
+const { height: smButtonHeight, ...smButtonStyles } = packs.input.sm;
+const { height: mdButtonHeight, ...mdButtonStyles } = packs.input.md;
+
 const sizes = {
 	sm: {
-		...packs.input.sm,
+		...smButtonStyles,
+		minHeight: smButtonHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
-		...packs.input.md,
+		...mdButtonStyles,
+		minHeight: mdButtonHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
@@ -98,7 +103,6 @@ export function buttonStyles({
 	size: ButtonSize;
 }) {
 	return {
-		appearance: 'none',
 		boxSizing: 'border-box',
 		position: 'relative',
 		display: block ? 'flex' : 'inline-flex',
@@ -108,8 +112,6 @@ export function buttonStyles({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
-		cursor: 'pointer',
-		fontFamily: tokens.font.body,
 		margin: 0,
 
 		...(block && {
