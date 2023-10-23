@@ -43,7 +43,7 @@ exports[`Modal renders correctly 1`] = `
           class="css-1kzq3kl-boxStyles-ModalDialog"
         >
           <button
-            class="css-1me5i3x-BaseButton-Button"
+            class="css-1hl1ub4-BaseButton-Button"
             type="button"
           >
             <span>
@@ -60,7 +60,7 @@ exports[`Modal renders correctly 1`] = `
         </div>
         <button
           aria-label="Close modal"
-          class="css-1h2z8qx-BaseButton-ModalDialog"
+          class="css-1o5mvjj-BaseButton-ModalDialog"
           type="button"
         >
           <span>
@@ -75,7 +75,7 @@ exports[`Modal renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-9s3cfn-Icon"
+            class="css-10mbdw9-Button"
             clip-rule="evenodd"
             focusable="false"
             height="24"
