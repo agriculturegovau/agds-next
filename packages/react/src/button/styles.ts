@@ -61,20 +61,20 @@ const variants = {
 
 export type ButtonVariant = keyof typeof variants;
 
-const { height: smButtonHeight, ...smButtonStyles } = packs.input.sm;
-const { height: mdButtonHeight, ...mdButtonStyles } = packs.input.md;
+const { height: smHeight, ...smStyles } = packs.input.sm;
+const { height: mdHeight, ...mdStyles } = packs.input.md;
 
 const sizes = {
 	sm: {
-		...smButtonStyles,
-		minHeight: smButtonHeight,
+		...smStyles,
+		minHeight: smHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
-		...mdButtonStyles,
-		minHeight: mdButtonHeight,
+		...mdStyles,
+		minHeight: mdHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
