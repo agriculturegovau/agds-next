@@ -42,6 +42,7 @@ const variants = {
 		},
 	},
 	text: {
+		textAlign: 'left',
 		height: 'auto',
 		paddingLeft: 0,
 		paddingRight: 0,
@@ -103,13 +104,13 @@ export function buttonStyles({
 		display: block ? 'flex' : 'inline-flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		textAlign: 'center',
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
 		cursor: 'pointer',
 		fontFamily: tokens.font.body,
 		margin: 0,
-		textAlign: 'center',
 
 		...(block && {
 			width: '100%',
@@ -118,6 +119,11 @@ export function buttonStyles({
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
+		},
+
+		// Ensure button icons do not shrink
+		'& > svg': {
+			flexShrink: 0,
 		},
 
 		...focusStyles,
