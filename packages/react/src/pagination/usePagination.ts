@@ -47,7 +47,7 @@ export function usePagination({
 		}
 	}
 
-	// If we are not on the first page, create the 'previous' element
+	// If we are not on the first page, create the '← previous' element
 	if (currentPage > 1) {
 		elements.push({
 			type: 'direction',
@@ -58,8 +58,21 @@ export function usePagination({
 
 	// If we are passed page 2, create the '1 ...' elements
 	if (minPage > 1) {
-		elements.push({ type: 'page', pageNumber: 1, isActive: 1 === currentPage });
-		if (minPage > 2) elements.push({ type: 'separator' });
+		elements.push({
+			type: 'page',
+			pageNumber: 1,
+			isActive: 1 === currentPage,
+		});
+		// Only show the separator if there is 2 or more numbers between 1 and the first number
+		elements.push(
+			minPage > 3
+				? { type: 'separator' }
+				: {
+						type: 'page',
+						pageNumber: 2,
+						isActive: 2 === currentPage,
+				  }
+		);
 	}
 
 	// loop over range
@@ -69,7 +82,19 @@ export function usePagination({
 	}
 
 	// If we are not at the end of the list, create the 'n ...' elements
-	if (maxPage + 1 < totalPages) elements.push({ type: 'separator' });
+	if (maxPage + 1 < totalPages) {
+		// Only show the separator if there is 2 or more numbers between n and the last number
+		elements.push(
+			maxPage + 1 !== totalPages - 1
+				? { type: 'separator' }
+				: {
+						type: 'page',
+						pageNumber: totalPages - 1,
+						isActive: totalPages - 1 === currentPage,
+				  }
+		);
+	}
+
 	if (maxPage < totalPages) {
 		elements.push({
 			type: 'page',
@@ -78,7 +103,7 @@ export function usePagination({
 		});
 	}
 
-	// If we are not on the last page, create the 'next' element
+	// If we are not on the last page, create the 'next →' element
 	if (currentPage < totalPages) {
 		elements.push({
 			type: 'direction',
