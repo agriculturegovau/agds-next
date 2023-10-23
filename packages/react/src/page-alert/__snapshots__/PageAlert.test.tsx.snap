@@ -261,7 +261,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       </div>
       <button
         aria-label="Close"
-        class="css-motjk1-BaseButton-PageAlertCloseButton"
+        class="css-fx8c1r-BaseButton-PageAlertCloseButton"
         type="button"
       >
         <span>
@@ -276,7 +276,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-9s3cfn-Icon"
+          class="css-10mbdw9-Button"
           clip-rule="evenodd"
           focusable="false"
           height="24"

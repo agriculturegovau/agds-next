@@ -6,7 +6,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     aria-controls="dropdown-menu-:ru:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1clbjuu-BaseButton-Button"
+    class="css-65as1x-BaseButton-Button"
     id="dropdown-menu-:ru:-button"
     type="button"
   >
@@ -22,7 +22,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-9s3cfn-Icon"
+      class="css-10mbdw9-Button"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -182,7 +182,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     aria-controls="dropdown-menu-:r16:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1clbjuu-BaseButton-Button"
+    class="css-65as1x-BaseButton-Button"
     id="dropdown-menu-:r16:-button"
     type="button"
   >
@@ -198,7 +198,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-9s3cfn-Icon"
+      class="css-10mbdw9-Button"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -270,7 +270,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     aria-controls="dropdown-menu-:r1i:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1clbjuu-BaseButton-Button"
+    class="css-65as1x-BaseButton-Button"
     id="dropdown-menu-:r1i:-button"
     type="button"
   >
@@ -286,7 +286,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-9s3cfn-Icon"
+      class="css-10mbdw9-Button"
       clip-rule="evenodd"
       focusable="false"
       height="24"
@@ -401,7 +401,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     aria-controls="dropdown-menu-:r0:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1clbjuu-BaseButton-Button"
+    class="css-65as1x-BaseButton-Button"
     id="dropdown-menu-:r0:-button"
     type="button"
   >
@@ -417,7 +417,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-9s3cfn-Icon"
+      class="css-10mbdw9-Button"
       clip-rule="evenodd"
       focusable="false"
       height="24"
