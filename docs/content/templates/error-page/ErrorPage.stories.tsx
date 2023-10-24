@@ -30,7 +30,7 @@ export const ApplicationTemplate = {
 	name: 'Application layout',
 	render: () => (
 		<AppLayout>
-			<ErrorPage />
+			<ErrorPage isApplication />
 		</AppLayout>
 	),
 };
