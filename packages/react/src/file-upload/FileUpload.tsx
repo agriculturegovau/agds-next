@@ -1,19 +1,9 @@
-import {
-	forwardRef,
-	InputHTMLAttributes,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { Button } from '../button';
-import { packs, boxPalette, tokens, mergeRefs } from '../core';
+import { mergeRefs } from '../core';
 import { Field } from '../field';
-import { UploadIcon } from '../icon';
 import { Text } from '../text';
-import { visuallyHiddenStyles } from '../a11y';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
@@ -30,8 +20,7 @@ import {
 } from './utils';
 import { FileUploadFileList } from './FileUploadFileList';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
-
-type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
+import { FileUploadDropzone, NativeInputProps } from './FileUploadDropzone';
 
 type BaseInputProps = {
 	disabled?: NativeInputProps['disabled'];
@@ -98,7 +87,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		},
 		forwardedRef
 	) {
-		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
@@ -165,12 +153,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
 
-		const styles = fileInputStyles({
-			isDragActive,
-			disabled,
-			invalid: invalid || !!errorSummary,
-		});
-
 		useEffect(() => {
 			setFileRejections(
 				dropzoneFileRejections.map(({ file, errors }) => ({
@@ -225,63 +207,22 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{(a11yProps) => {
 					return (
 						<Stack gap={1.5} {...dropzoneProps}>
-							<Flex
-								gap={1}
-								padding={1.5}
-								alignItems="center"
-								flexDirection="column"
-								border
-								rounded
-								css={styles}
-							>
-								<UploadIcon size="lg" color="muted" />
-								<input
-									{...dropzoneInputProps}
-									{...a11yProps}
-									{...consumerProps}
-									/**
-									 * Dropzone needs to set a ref to the input, but we _also_
-									 * need to forward a ref to the input so consumers can use it.
-									 * The mergeRef utility allows us to do this.
-									 */
-									ref={mergeRefs([forwardedRef, dropzoneInputRef])}
-									css={visuallyHiddenStyles}
-								/>
-								<Flex
-									flexDirection="column"
-									alignItems="center"
-									css={{ textAlign: 'center' }}
-								>
-									<Text
-										color={isDragActive ? 'action' : 'muted'}
-										fontWeight="bold"
-									>
-										{isDragActive
-											? `Drop ${filesPlural} here`
-											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-										{isDragActive ? <>&hellip;</> : null}
-									</Text>
-									{maxSize ? (
-										<Text color="muted">
-											{multiple ? 'Each file' : 'File'} cannot exceed{' '}
-											{formattedMaxFileSize}.
-										</Text>
-									) : null}
-									{accept ? (
-										<Text color="muted">
-											Files accepted: {acceptedFilesSummary}
-										</Text>
-									) : null}
-								</Flex>
-								<Button
-									type="button"
-									variant="secondary"
-									onClick={open}
-									disabled={disabled}
-								>
-									Select {filesPlural}
-								</Button>
-							</Flex>
+							<FileUploadDropzone
+								isDragActive={isDragActive}
+								disabled={disabled}
+								invalid={invalid || !!errorSummary}
+								onClick={open}
+								ref={mergeRefs([forwardedRef, dropzoneInputRef])}
+								acceptedFilesSummary={acceptedFilesSummary}
+								maxFileSizeString={formattedMaxFileSize}
+								inputProps={
+									{
+										...dropzoneInputProps,
+										...a11yProps,
+										...consumerProps,
+									} as NativeInputProps
+								}
+							/>
 							{showFileLists && (
 								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
@@ -309,38 +250,3 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		);
 	}
 );
-
-const fileInputStyles = ({
-	disabled,
-	invalid,
-	isDragActive,
-}: {
-	disabled?: boolean;
-	invalid: boolean;
-	isDragActive: boolean;
-}) =>
-	({
-		borderWidth: tokens.borderWidth.lg,
-		borderStyle: 'dashed',
-		borderColor: boxPalette.border,
-		backgroundColor: boxPalette.backgroundBody,
-
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			borderColor: boxPalette.systemError,
-		}),
-
-		...(disabled && {
-			cursor: 'not-allowed',
-			borderColor: boxPalette.borderMuted,
-			backgroundColor: boxPalette.backgroundShade,
-			color: boxPalette.foregroundMuted,
-		}),
-
-		...(isDragActive && {
-			borderColor: boxPalette.foregroundAction,
-			backgroundColor: boxPalette.backgroundShade,
-		}),
-
-		'&:focus': packs.outline,
-	}) as const;
