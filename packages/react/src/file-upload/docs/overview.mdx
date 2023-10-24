@@ -148,7 +148,7 @@ Unlike the `value`prop, which expects an array of `File` objects, `existingFiles
 
 If a user attempts to delete an existing file, a destructive confirmation modal should be displayed. If confirmed, the file should be deleted on the server.
 
-Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images will to `thumbnailUrl` prop will result with long load times.
+Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images will to `thumbnailSrc` prop will result with long load times.
 
 ```jsx live
 <FileUpload
@@ -156,7 +156,7 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 		{
 			name: 'example.png',
 			size: 123456,
-			thumbnailUrl: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://via.placeholder.com/150',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
 			meta: { uid: 'abc-def', bucketId: '123-456' },
