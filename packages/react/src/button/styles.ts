@@ -43,7 +43,7 @@ const variants = {
 	},
 	text: {
 		textAlign: 'left',
-		height: 'auto',
+		minHeight: 'auto',
 		paddingLeft: 0,
 		paddingRight: 0,
 		borderWidth: 0,
@@ -61,15 +61,20 @@ const variants = {
 
 export type ButtonVariant = keyof typeof variants;
 
+const { height: smHeight, ...smStyles } = packs.input.sm;
+const { height: mdHeight, ...mdStyles } = packs.input.md;
+
 const sizes = {
 	sm: {
-		...packs.input.sm,
+		...smStyles,
+		minHeight: smHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(0.75),
 		paddingRight: mapSpacing(0.75),
 	},
 	md: {
-		...packs.input.md,
+		...mdStyles,
+		minHeight: mdHeight,
 		gap: mapSpacing(0.5),
 		paddingLeft: mapSpacing(1.5),
 		paddingRight: mapSpacing(1.5),
