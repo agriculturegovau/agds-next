@@ -157,3 +157,47 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 	);
 };
 ```
+
+## Custom rendering
+
+Use the `renderItem` prop to customise how each option in the dropdown list is rendered. This prop is a function that passes through the option as the first paramater, and the value of the text input (what the user is searching for) as the second paramater.
+
+When using this prop, you can optionally make use of the `defaultRenderItem` utility function to assist with styling the main label of the element.
+
+Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
+
+```jsx live
+() => {
+	const [value, onChange] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Pick a Star Wars character"
+			hint="Start typing to see results"
+			hideOptionalLabel
+			value={value}
+			onChange={onChange}
+			loadOptions={async function loadOptionsFromStarWarsApi(inputValue) {
+				const response = await fetch(
+					`https://swapi.dev/api/people/?search=${inputValue}`
+				).then((r) => r.json());
+				return response.results.map((result) => ({
+					label: result.name,
+					value: result.name,
+					birthYear: result.birth_year,
+				}));
+			}}
+			renderItem={(option, inputValue) => (
+				<Flex as="span" alignItems="center" gap={0.5}>
+					<Avatar name={option.label} size="sm" tone="action" />
+					<Stack as="span">
+						<span>{defaultRenderItem(option, inputValue)}</span>
+						<Text fontSize="xs" color="muted">
+							Birth Year: {option.birthYear}
+						</Text>
+					</Stack>
+				</Flex>
+			)}
+		/>
+	);
+};
+```

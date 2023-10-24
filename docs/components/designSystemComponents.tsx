@@ -199,7 +199,10 @@ export {
 	SkeletonText,
 	SkeletonBox,
 } from '@ag.ds-next/react/skeleton';
-export { Autocomplete } from '@ag.ds-next/react/autocomplete';
+export {
+	Autocomplete,
+	defaultRenderItem,
+} from '@ag.ds-next/react/autocomplete';
 export {
 	Combobox,
 	ComboboxMulti,
@@ -247,7 +250,10 @@ export { SectionAlert } from '@ag.ds-next/react/section-alert';
 export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 
 // Used to populate options on documentation site and playroom
-export { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
+export {
+	COUNTRY_OPTIONS,
+	NAME_OPTIONS,
+} from '@ag.ds-next/react/src/combobox/test-utils';
 export {
 	createExampleFile,
 	createExampleImageFile,

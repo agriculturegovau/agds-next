@@ -208,3 +208,20 @@ export const STATE_OPTIONS = [
 	{ label: 'Victoria', value: 'vic' },
 	{ label: 'Western Australia', value: 'wa' },
 ];
+
+export const NAME_OPTIONS = [
+	{ fullName: 'John Doe', jobTitle: 'Product Manager' },
+	{ fullName: 'Jane Smith', jobTitle: 'Software Engineer' },
+	{ fullName: 'Robert Johnson', jobTitle: 'UX Designer' },
+	{ fullName: 'Emily Davis', jobTitle: 'Product Manager' },
+	{ fullName: 'Michael Williams', jobTitle: 'Software Engineer' },
+	{ fullName: 'Sarah Wilson', jobTitle: 'UX Designer' },
+	{ fullName: 'David Brown', jobTitle: 'Product Manager' },
+	{ fullName: 'Olivia Taylor', jobTitle: 'Software Engineer' },
+	{ fullName: 'James Moore', jobTitle: 'UX Designer' },
+	{ fullName: 'Sophia Clark', jobTitle: 'Product Manager' },
+].map((option) => ({
+	...option,
+	label: option.fullName,
+	value: option.fullName,
+}));
