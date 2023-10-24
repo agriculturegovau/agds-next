@@ -124,19 +124,17 @@ export const CustomRenderName: Story = {
 				value={value}
 				onChange={onChange}
 				options={NAME_OPTIONS}
-				renderItem={(option, inputValue) => {
-					return (
-						<Flex as="span" alignItems="center" gap={0.5}>
-							<Avatar name={option.label} size="sm" tone="action" />
-							<Stack as="span">
-								<span>{defaultRenderItem(option, inputValue)}</span>
-								<Text fontSize="xs" color="muted">
-									Role: {option.jobTitle}
-								</Text>
-							</Stack>
-						</Flex>
-					);
-				}}
+				renderItem={(option, inputValue) => (
+					<Flex as="span" alignItems="center" gap={0.5}>
+						<Avatar name={option.label} size="sm" tone="action" />
+						<Stack as="span">
+							<span>{defaultRenderItem(option, inputValue)}</span>
+							<Text fontSize="xs" color="muted">
+								Role: {option.jobTitle}
+							</Text>
+						</Stack>
+					</Flex>
+				)}
 			/>
 		);
 	},
