@@ -6,6 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 import { AlertFilledIcon } from '@ag.ds-next/react/icon';
 import { Button } from '@ag.ds-next/react/button';
+import { Flex } from '@ag.ds-next/react/flex';
 
 export const ErrorPage = ({
 	isApplication = false,
@@ -15,11 +16,7 @@ export const ErrorPage = ({
 }) => {
 	return (
 		<PageContent>
-			<Stack
-				gap={1.5}
-				alignItems="flex-start"
-				maxWidth={tokens.maxWidth.bodyText}
-			>
+			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				{isApplication ? <AlertFilledIcon color="error" size="lg" /> : null}
 				<Prose>
 					<h1>An error occurred</h1>
@@ -28,7 +25,9 @@ export const ErrorPage = ({
 						vestibulum.
 					</p>
 				</Prose>
-				<Button>Button</Button>
+				<Flex alignItems="flex-start">
+					<Button>Button</Button>
+				</Flex>
 				<Callout title="Need help?">
 					<Prose>
 						<p>
