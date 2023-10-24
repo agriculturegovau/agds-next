@@ -52,7 +52,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         </div>
       </div>
       <button
-        class="css-elpnnz-BaseButton-GlobalAlertCloseButton"
+        class="css-12jvszj-BaseButton-GlobalAlertCloseButton"
         type="button"
       >
         <span>

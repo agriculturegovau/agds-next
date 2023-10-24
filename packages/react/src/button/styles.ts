@@ -103,6 +103,7 @@ export function buttonStyles({
 	size: ButtonSize;
 }) {
 	return {
+		appearance: 'none',
 		boxSizing: 'border-box',
 		position: 'relative',
 		display: block ? 'flex' : 'inline-flex',
@@ -112,6 +113,8 @@ export function buttonStyles({
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'solid',
 		borderRadius: tokens.borderRadius,
+		cursor: 'pointer',
+		fontFamily: tokens.font.body,
 		margin: 0,
 
 		...(block && {

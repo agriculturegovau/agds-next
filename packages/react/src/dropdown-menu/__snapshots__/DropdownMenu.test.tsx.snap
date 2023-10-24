@@ -6,7 +6,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     aria-controls="dropdown-menu-:ru:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1qbgh2t-BaseButton-Button"
+    class="css-psfrx5-BaseButton-Button"
     id="dropdown-menu-:ru:-button"
     type="button"
   >
@@ -182,7 +182,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     aria-controls="dropdown-menu-:r16:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1qbgh2t-BaseButton-Button"
+    class="css-psfrx5-BaseButton-Button"
     id="dropdown-menu-:r16:-button"
     type="button"
   >
@@ -270,7 +270,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     aria-controls="dropdown-menu-:r1i:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1qbgh2t-BaseButton-Button"
+    class="css-psfrx5-BaseButton-Button"
     id="dropdown-menu-:r1i:-button"
     type="button"
   >
@@ -401,7 +401,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     aria-controls="dropdown-menu-:r0:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-1qbgh2t-BaseButton-Button"
+    class="css-psfrx5-BaseButton-Button"
     id="dropdown-menu-:r0:-button"
     type="button"
   >
