@@ -18,6 +18,11 @@ const items = [
 			'Access and maintain all your business registration tasks in one place.',
 	},
 	{
+		title: 'Upload files',
+		slug: '/services/upload-files',
+		description: 'Bulk upload and categorise files',
+	},
+	{
 		title: 'Support',
 		slug: '/not-found',
 		description:
