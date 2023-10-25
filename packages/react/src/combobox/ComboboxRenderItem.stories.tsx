@@ -13,7 +13,7 @@ function ComboboxRenderItemTemplate(
 	props: ComboboxRenderItemProps & { isActiveItem: boolean }
 ) {
 	return (
-		<Popover style={{}}>
+		<Popover as="ul" style={{}}>
 			<ComboboxListItem isActiveItem={false} isInteractive={true}>
 				<ComboboxRenderItem {...props} />
 			</ComboboxListItem>
