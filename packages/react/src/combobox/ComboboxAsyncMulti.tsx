@@ -1,4 +1,4 @@
-import { Ref, useCallback, useMemo, useState } from 'react';
+import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
@@ -6,7 +6,6 @@ import {
 	DefaultComboboxOption,
 	useComboboxInputId,
 	filterOptions,
-	type RenderItem,
 } from './utils';
 import { useAsync } from './useAsync';
 
@@ -39,8 +38,8 @@ export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	onChange?: (value: Option[]) => void;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
-	/** Used to override the default item rendering.  */
-	renderItem?: RenderItem<Option>;
+	/** Used to override the default item rendering. */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */

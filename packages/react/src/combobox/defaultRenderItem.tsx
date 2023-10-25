@@ -1,11 +1,54 @@
+import { Fragment, ReactNode } from 'react';
 import { Text } from '../text';
-import { DefaultComboboxOption, splitLabel } from './utils';
+import { Stack } from '../stack';
+import { splitLabel } from './utils';
 
-export function defaultRenderItem<Option extends DefaultComboboxOption>(
-	item: Option,
-	inputValue: string
-) {
-	return splitLabel(item.label, inputValue).map((part, index) => {
+export type ComboboxRenderItemProps = {
+	/** The label of the item. */
+	itemLabel: string;
+	/** The value of the Combobox/Autocomplete text input. */
+	inputValue: string;
+	/** Supporting text for the item. */
+	tertiaryText?: string;
+	/** Supporting text for the item. */
+	secondaryText?: string;
+	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
+	beforeElement?: ReactNode;
+	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
+	endElement?: ReactNode;
+};
+
+export function ComboboxRenderItem({
+	itemLabel,
+	inputValue,
+	beforeElement,
+	endElement,
+	secondaryText,
+	tertiaryText,
+}: ComboboxRenderItemProps) {
+	return (
+		<Fragment>
+			{beforeElement}
+			<Stack as="span">
+				<span>{renderItemLabel(itemLabel, inputValue)}</span>
+				{secondaryText ? (
+					<Text color="muted" fontSize="xs">
+						{secondaryText}
+					</Text>
+				) : null}
+				{tertiaryText ? (
+					<Text color="muted" fontSize="xs">
+						{tertiaryText}
+					</Text>
+				) : null}
+			</Stack>
+			{endElement ? <div css={{ marginLeft: 'auto' }}>{endElement}</div> : null}
+		</Fragment>
+	);
+}
+
+function renderItemLabel(itemLabel: string, inputValue: string) {
+	return splitLabel(itemLabel, inputValue).map((part, index) => {
 		const isHighlighted = part.toLowerCase() === inputValue.toLowerCase();
 		if (isHighlighted) {
 			return (

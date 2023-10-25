@@ -1,12 +1,12 @@
-import { Fragment, Ref } from 'react';
+import { Fragment, ReactNode, Ref } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { FieldMaxWidth, packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
-import { DefaultComboboxOption, type RenderItem } from '../utils';
+import { DefaultComboboxOption } from '../utils';
+import { ComboboxRenderItem } from '../defaultRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
-import { ComboboxListItemOption } from './ComboboxListItemOption';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -41,7 +41,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: RenderItem<Option>;
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 };
 
@@ -66,7 +66,9 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 	inputRef: inputRefProp,
-	renderItem,
+	renderItem = (item, inputValue) => (
+		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
+	),
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
@@ -163,11 +165,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													<ComboboxListItemOption
-														option={item}
-														renderItem={renderItem}
-														inputValue={combobox.inputValue}
-													/>
+													{renderItem(item, combobox.inputValue)}
 												</ComboboxListItem>
 											))
 										) : (

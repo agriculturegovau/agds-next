@@ -160,7 +160,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ## Custom rendering
 
-Use the `renderItem` prop to customise how each option in the dropdown list is rendered. The `renderItem` prop is an object, which allows you to customise the `secondaryText`, `tertiaryText`, `beforeElement` and `endElement`.
+Use the `renderItem` prop to customise how each option in the dropdown list is rendered.
 
 Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
 
@@ -185,24 +185,14 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 					hairColor: result.hairColor,
 				}));
 			}}
-			// renderItem={(option, inputValue) => (
-			// 	<Flex as="span" alignItems="center" gap={0.5}>
-			// 		<Avatar name={option.label} size="sm" tone="action" />
-			// 		<Stack as="span">
-			// 			<span>{defaultRenderItem(option, inputValue)}</span>
-			// 			<Text fontSize="xs" color="muted">
-			// 				Birth year: {option.birthYear}
-			// 			</Text>
-			// 		</Stack>
-			// 	</Flex>
-			// )}
-			renderItem={{
-				secondaryText: (item) => `Birth year: ${item.birthYear}`,
-				tertiaryText: (item) => `Hair color: ${item.hairColor}`,
-				beforeElement: (item) => (
-					<Avatar name={item.name} size="sm" tone="action" aria-hidden />
-				),
-			}}
+			renderItem={(item, inputValue) => (
+				<AutocompleteRenderItem
+					itemLabel={item.label}
+					inputValue={inputValue}
+					secondaryText={`Birth year: ${item.birthYear}`}
+					tertiaryText={`Hair color: ${item.hairColor}`}
+				/>
+			)}
 		/>
 	);
 };

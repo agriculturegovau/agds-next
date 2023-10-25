@@ -2,10 +2,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Avatar } from '../avatar';
 import { NotificationBadge } from '../notification-badge';
-import { Stack } from '../stack';
-import { Text } from '../text';
 import { Combobox } from './Combobox';
-import { defaultRenderItem } from './defaultRenderItem';
+import { ComboboxRenderItem } from './defaultRenderItem';
 import { COUNTRY_OPTIONS, NAME_OPTIONS } from './test-utils';
 
 const meta: Meta<typeof Combobox> = {
@@ -69,53 +67,9 @@ export const Block: Story = {
 	},
 };
 
-function sample<T>(arr: T[]) {
-	return arr[Math.floor(Math.random() * arr.length)];
-}
-
-export const certificateOptions = Array.from(Array(20).keys())
-	.map(() => ({
-		certNumber: `CER-${Math.random().toPrecision(8).slice(2)}`,
-		exporter: sample(['Lorem', 'Ipsum', 'Dolar', 'Amet']),
-		status: sample(['Draft', 'Issued', 'Submitted']),
-	}))
-	.map((option) => ({
-		...option,
-		label: option.certNumber,
-		value: option.certNumber,
-	}));
-
-export type CertificateOption = (typeof certificateOptions)[number];
-
-export const CustomRender: Story = {
-	render: function Render() {
-		const [value, onChange] = useState<CertificateOption | null>(null);
-		return (
-			<Combobox
-				label="Select certificate"
-				hint="Start typing to see results"
-				value={value}
-				onChange={onChange}
-				options={certificateOptions}
-				renderItem={(option, inputValue) => (
-					<Stack as="span">
-						<span>{defaultRenderItem(option, inputValue)}</span>
-						<Text fontSize="xs" color="muted">
-							Exporter: {option.exporter}
-						</Text>
-						<Text fontSize="xs" color="muted">
-							Status: {option.status}
-						</Text>
-					</Stack>
-				)}
-			/>
-		);
-	},
-};
-
 type NameOption = (typeof NAME_OPTIONS)[number];
 
-export const CustomRenderName: Story = {
+export const CustomRender: Story = {
 	render: function Render() {
 		const [value, onChange] = useState<NameOption | null>(null);
 		return (
@@ -124,20 +78,25 @@ export const CustomRenderName: Story = {
 				value={value}
 				onChange={onChange}
 				options={NAME_OPTIONS}
-				renderItem={{
-					secondaryText: (option) => `Role: ${option.jobTitle}`,
-					tertiaryText: (option) => `Job: ${option.status}`,
-					beforeElement: (option) => (
-						<Avatar name={option.fullName} size="sm" tone="action" />
-					),
-					endElement: (option) =>
-						option.unreadMessageCount > 0 ? (
-							<NotificationBadge
-								value={option.unreadMessageCount}
-								tone="action"
-							/>
-						) : null,
-				}}
+				renderItem={(item, inputValue) => (
+					<ComboboxRenderItem
+						itemLabel={item.label}
+						inputValue={inputValue}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
+						beforeElement={
+							<Avatar name={item.fullName} size="sm" tone="action" />
+						}
+						endElement={
+							item.unreadMessageCount > 0 ? (
+								<NotificationBadge
+									value={item.unreadMessageCount}
+									tone="action"
+								/>
+							) : null
+						}
+					/>
+				)}
 			/>
 		);
 	},

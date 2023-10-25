@@ -1,12 +1,8 @@
-import { RefObject } from 'react';
+import { ReactNode, RefObject } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
-import {
-	DefaultComboboxOption,
-	useComboboxInputId,
-	type RenderItem,
-} from './utils';
+import { DefaultComboboxOption, useComboboxInputId } from './utils';
 import { useAsync } from './useAsync';
 
 export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
@@ -38,8 +34,8 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	onChange?: (value: Option | null) => void;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
-	/** Used to override the default item rendering.  */
-	renderItem?: RenderItem<Option>;
+	/** Used to override the default item rendering. */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** If true, the clear button will be rendered. */

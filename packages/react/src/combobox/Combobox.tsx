@@ -1,4 +1,4 @@
-import { Ref, useState } from 'react';
+import { ReactNode, Ref, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -6,7 +6,6 @@ import {
 	DefaultComboboxOption,
 	filterOptions,
 	useComboboxInputId,
-	type RenderItem,
 } from './utils';
 
 export type ComboboxProps<
@@ -45,7 +44,7 @@ export type ComboboxProps<
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
 	/** Used to override the default item rendering. */
-	renderItem?: RenderItem<Option>;
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 };
 
 export function Combobox<Option extends DefaultComboboxOption>({

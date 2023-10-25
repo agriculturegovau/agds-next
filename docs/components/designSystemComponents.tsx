@@ -199,12 +199,16 @@ export {
 	SkeletonText,
 	SkeletonBox,
 } from '@ag.ds-next/react/skeleton';
-export { Autocomplete } from '@ag.ds-next/react/autocomplete';
+export {
+	Autocomplete,
+	AutocompleteRenderItem,
+} from '@ag.ds-next/react/autocomplete';
 export {
 	Combobox,
 	ComboboxMulti,
 	ComboboxAsync,
 	ComboboxAsyncMulti,
+	ComboboxRenderItem,
 } from '@ag.ds-next/react/combobox';
 export { Details } from '@ag.ds-next/react/details';
 export {

@@ -1,7 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Avatar } from '../avatar';
+import { NotificationBadge } from '../notification-badge';
 import { ComboboxAsync } from './ComboboxAsync';
-import { COUNTRY_OPTIONS } from './test-utils';
+import { ComboboxRenderItem } from './defaultRenderItem';
+import { COUNTRY_OPTIONS, NAME_OPTIONS } from './test-utils';
 
 const meta: Meta<typeof ComboboxAsync> = {
 	title: 'forms/Combobox/ComboboxAsync',
@@ -72,5 +75,44 @@ export const Block: Story = {
 	args: {
 		...defaultArgs,
 		block: true,
+	},
+};
+
+type NameOption = (typeof NAME_OPTIONS)[number];
+
+export const CustomRender: Story = {
+	render: function Render() {
+		const [value, onChange] = useState<NameOption | null>(null);
+		return (
+			<ComboboxAsync
+				label="Search users"
+				value={value}
+				onChange={onChange}
+				loadOptions={async function loadOptions() {
+					// Simulate a slow network connection
+					await new Promise((resolve) => setTimeout(resolve, 1000));
+					return NAME_OPTIONS;
+				}}
+				renderItem={(item, inputValue) => (
+					<ComboboxRenderItem
+						itemLabel={item.label}
+						inputValue={inputValue}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
+						beforeElement={
+							<Avatar name={item.fullName} size="sm" tone="action" />
+						}
+						endElement={
+							item.unreadMessageCount > 0 ? (
+								<NotificationBadge
+									value={item.unreadMessageCount}
+									tone="action"
+								/>
+							) : null
+						}
+					/>
+				)}
+			/>
+		);
 	},
 };

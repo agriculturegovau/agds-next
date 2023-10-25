@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Avatar } from '../avatar';
 import { COUNTRY_OPTIONS } from '../combobox/test-utils';
 import { Autocomplete } from './Autocomplete';
+import { AutocompleteRenderItem } from './AutocompleteRenderItem';
 
 const meta: Meta<typeof Autocomplete> = {
 	title: 'forms/Autocomplete',
@@ -81,13 +81,14 @@ export const CustomRender: Story = {
 				value={value}
 				onChange={onChange}
 				loadOptions={loadOptionsFromStarWarsApi}
-				renderItem={{
-					secondaryText: (item) => `Birth year: ${item.birthYear}`,
-					tertiaryText: (item) => `Hair color: ${item.hairColor}`,
-					beforeElement: (item) => (
-						<Avatar name={item.name} size="sm" tone="action" aria-hidden />
-					),
-				}}
+				renderItem={(item, inputValue) => (
+					<AutocompleteRenderItem
+						itemLabel={item.label}
+						inputValue={inputValue}
+						secondaryText={`Birth year: ${item.birthYear}`}
+						tertiaryText={`Job: ${item.hairColor}`}
+					/>
+				)}
 			/>
 		);
 	},

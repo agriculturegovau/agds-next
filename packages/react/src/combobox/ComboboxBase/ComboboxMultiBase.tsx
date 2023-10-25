@@ -1,4 +1,11 @@
-import { Fragment, Ref, useCallback, MouseEvent, useRef } from 'react';
+import {
+	Fragment,
+	Ref,
+	useCallback,
+	MouseEvent,
+	useRef,
+	ReactNode,
+} from 'react';
 import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
@@ -16,9 +23,9 @@ import {
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../flex';
-import { DefaultComboboxOption, type RenderItem } from '../utils';
+import { DefaultComboboxOption } from '../utils';
+import { ComboboxRenderItem } from '../defaultRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
-import { ComboboxListItemOption } from './ComboboxListItemOption';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -55,7 +62,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: RenderItem<Option>;
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	// input ref
 	inputRef?: Ref<HTMLInputElement>;
 };
@@ -72,7 +79,9 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block = true,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem,
+	renderItem = (item, inputValue) => (
+		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
+	),
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
@@ -222,11 +231,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													<ComboboxListItemOption
-														option={item}
-														renderItem={renderItem}
-														inputValue={combobox.inputValue}
-													/>
+													{renderItem(item, combobox.inputValue)}
 												</ComboboxListItem>
 											))
 										) : (

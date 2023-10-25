@@ -1,7 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Avatar } from '../avatar';
+import { NotificationBadge } from '../notification-badge';
 import { ComboboxMulti } from './ComboboxMulti';
-import { COUNTRY_OPTIONS } from './test-utils';
+import { ComboboxRenderItem } from './defaultRenderItem';
+import { COUNTRY_OPTIONS, NAME_OPTIONS } from './test-utils';
 
 const meta: Meta<typeof ComboboxMulti> = {
 	title: 'forms/Combobox/ComboboxMulti',
@@ -61,5 +64,40 @@ export const Block: Story = {
 	args: {
 		...defaultArgs,
 		block: true,
+	},
+};
+
+type NameOption = (typeof NAME_OPTIONS)[number];
+
+export const CustomRender: Story = {
+	render: function Render() {
+		const [value, onChange] = useState<NameOption[]>([]);
+		return (
+			<ComboboxMulti
+				label="Search users"
+				value={value}
+				onChange={onChange}
+				options={NAME_OPTIONS}
+				renderItem={(item, inputValue) => (
+					<ComboboxRenderItem
+						itemLabel={item.label}
+						inputValue={inputValue}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
+						beforeElement={
+							<Avatar name={item.fullName} size="sm" tone="action" />
+						}
+						endElement={
+							item.unreadMessageCount > 0 ? (
+								<NotificationBadge
+									value={item.unreadMessageCount}
+									tone="action"
+								/>
+							) : null
+						}
+					/>
+				)}
+			/>
+		);
 	},
 };
