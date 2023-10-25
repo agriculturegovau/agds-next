@@ -1,4 +1,4 @@
-import { Fragment, ReactElement, useEffect } from 'react';
+import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
 import { H1 } from '@ag.ds-next/react/heading';
 import { DocumentTitle } from '../../../components/DocumentTitle';
@@ -6,11 +6,6 @@ import { AppLayout } from '../../../components/Layout/AppLayout';
 import type { NextPageWithLayout } from '../../_app';
 
 const Page: NextPageWithLayout = () => {
-	useEffect(() => {
-		// This is just for testing the error boundary. Please delete me.
-		throw new Error('Something went wrong');
-	}, []);
-
 	return (
 		<Fragment>
 			<DocumentTitle title="Businesses" />
