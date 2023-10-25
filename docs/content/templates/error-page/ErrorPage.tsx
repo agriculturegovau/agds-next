@@ -12,7 +12,7 @@ export const ErrorPage = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>An error occurred</h1>
+					<h1>Error page title</h1>
 					<p>
 						Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
 						vestibulum.
