@@ -16,14 +16,15 @@ import {
 // type FileAndCategory = { file: File; category: string };
 
 type FileWithCategoryProps = {
-	file: File;
+	name: string;
+	// TODO: size
 	category?: string;
 	onCategoryChange: (category: FileCategory) => void;
 	onRemove: () => void;
 };
 
 export const FileWithCategory = ({
-	file,
+	name,
 	category,
 	onCategoryChange,
 	onRemove,
@@ -77,7 +78,7 @@ export const FileWithCategory = ({
 		>
 			<Flex gap={1} alignItems="center">
 				<FileUploadFileThumbnail src={undefined} />
-				<Text>{file.name}</Text>
+				<Text>{name}</Text>
 			</Flex>
 
 			<Flex gap={1} alignItems="center" padding={1}>

@@ -12,7 +12,8 @@ import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Stack } from '@ag.ds-next/react/stack';
-import { NoiDocumentUpload } from './NoiDocumentUpload';
+import { NoiDocumentUploadInput } from './NoiDocumentUploadInput';
+import { ExistingFileWithCategory } from './utils';
 
 const formSchema = yup
 	.object({
@@ -20,6 +21,7 @@ const formSchema = yup
 			yup.object({
 				file: yup.mixed<File>().required('File is required'), // TODO Is this better?
 				category: yup.string().required('Category is required'),
+				artifactId: yup.string(),
 			})
 		),
 	})
@@ -27,15 +29,11 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export const NoiDocumentUploadForm = ({ initialValue }) => {
-	// const [isLoading, setIsLoading] = useState(true);
-
-	// const handleFirstFetch = async () => {
-	// 	const existingFiles = await getUploadedFiles();
-	// 	setFiles(existingFiles);
-	// 	setIsLoading(false);
-	// };
-
+export const NoiDocumentUploadForm = ({
+	initialValue = [],
+}: {
+	initialValue: ExistingFileWithCategory[];
+}) => {
 	const {
 		control,
 		handleSubmit,
@@ -43,7 +41,7 @@ export const NoiDocumentUploadForm = ({ initialValue }) => {
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
 		defaultValues: {
-			files: [],
+			files: initialValue,
 		},
 	});
 
@@ -104,7 +102,7 @@ export const NoiDocumentUploadForm = ({ initialValue }) => {
 					control={control}
 					name="files"
 					render={({ field: { value, onChange } }) => (
-						<NoiDocumentUpload value={value} onChange={onChange} />
+						<NoiDocumentUploadInput value={value} onChange={onChange} />
 					)}
 				/>
 				<Button type="submit">Save</Button>

@@ -6,7 +6,7 @@ import {
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { SiteLayout } from '../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { NoiDocumentUploadForm } from '../../components/NoiDocumentUpload/NoiDocumentUploadForm';
+import { NoiDocumentUpload } from '../../components/NoiDocumentUpload';
 
 export default function UploadPage() {
 	return (
@@ -24,7 +24,7 @@ export default function UploadPage() {
 					<HeroSubcategoryBannerTitle>Upload files</HeroSubcategoryBannerTitle>
 				</HeroSubcategoryBanner>
 				<SectionContent>
-					<NoiDocumentUploadForm />
+					<NoiDocumentUpload />
 				</SectionContent>
 			</SiteLayout>
 		</>

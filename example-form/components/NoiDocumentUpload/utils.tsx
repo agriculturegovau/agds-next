@@ -16,20 +16,32 @@ export type FileCategory = (typeof categories)[number]['value'];
 export type FileWithCategory = FileWithStatus & {
 	category?: FileCategory | undefined;
 	/** The ID of the uploaded artifact, for purposes of updating it */
-	id?: string;
+	artifactId?: string;
 };
 
-// const existingFiles = []
-const existingFiles: FileWithCategory[] = [
+export type ExistingFileWithCategory = {
+	file: {
+		name: string;
+		size: number;
+	};
+	category: FileCategory;
+	artifactId: string;
+};
+
+const existingFiles: ExistingFileWithCategory[] = [
 	{
-		name: 'drivers_license.pdf',
-		size: 25000,
+		file: {
+			name: 'drivers_license.pdf',
+			size: 25000,
+		},
 		category: 'DRIVERS_LICENSE',
-		id: '123456789ABCDEF',
+		artifactId: '123456789ABCDEF',
 	},
 ];
 
-export const getUploadedFiles = async (): Promise<FileWithCategory[]> => {
+export const getUploadedFiles = async (): Promise<
+	ExistingFileWithCategory[]
+> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(existingFiles);
