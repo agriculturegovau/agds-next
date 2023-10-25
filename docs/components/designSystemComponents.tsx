@@ -199,10 +199,7 @@ export {
 	SkeletonText,
 	SkeletonBox,
 } from '@ag.ds-next/react/skeleton';
-export {
-	Autocomplete,
-	defaultRenderItem,
-} from '@ag.ds-next/react/autocomplete';
+export { Autocomplete } from '@ag.ds-next/react/autocomplete';
 export {
 	Combobox,
 	ComboboxMulti,
