@@ -214,7 +214,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								onClick={open}
 								ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 								acceptedFilesSummary={acceptedFilesSummary}
-								maxFileSizeString={formattedMaxFileSize}
+								maxFileSizeString={maxSize ? formattedMaxFileSize : undefined}
 								inputProps={
 									{
 										...dropzoneInputProps,
