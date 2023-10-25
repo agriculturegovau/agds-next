@@ -75,5 +75,5 @@ type RenderItemObject<Option> = {
 };
 
 export type RenderItem<Option> =
-	| RenderItemFunction<Option>
-	| RenderItemObject<Option>;
+	| RenderItemObject<Option>
+	| RenderItemFunction<Option>;
