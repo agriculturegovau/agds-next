@@ -68,8 +68,8 @@ type RenderItemFunction<Option> = (
 ) => ReactNode;
 
 type RenderItemObject<Option> = {
-	secondaryText?: (item: Option, inputValue: string) => ReactNode;
-	tertiaryText?: (item: Option, inputValue: string) => ReactNode;
+	secondaryText?: (item: Option, inputValue: string) => string;
+	tertiaryText?: (item: Option, inputValue: string) => string;
 	beforeElement?: (item: Option, inputValue: string) => ReactNode;
 	endElement?: (item: Option, inputValue: string) => ReactNode;
 };
