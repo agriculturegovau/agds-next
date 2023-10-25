@@ -4,20 +4,13 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
-import { AlertFilledIcon } from '@ag.ds-next/react/icon';
 import { Button } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 
-export const ErrorPage = ({
-	isApplication = false,
-}: {
-	/** Whether the error page is being used within the AppLayout component. */
-	isApplication?: boolean;
-}) => {
+export const ErrorPage = () => {
 	return (
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
-				{isApplication ? <AlertFilledIcon color="error" size="lg" /> : null}
 				<Prose>
 					<h1>An error occurred</h1>
 					<p>

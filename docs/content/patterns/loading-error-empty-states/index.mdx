@@ -87,6 +87,25 @@ When creating an error message:
 
 If applicable, use a [Button](/components-button) component to provide the user with an option to retrieve the data again.
 
+### Section level error state
+
+Below is an example of an error that occured at the section level.
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<Stack gap={1}>
+		<AlertFilledIcon color="error" size="lg" />
+		<Heading type="h2" fontSize="lg">
+			Failed to load
+		</Heading>
+		<Text>There was an error loading the data. Click retry to try again.</Text>
+	</Stack>
+	<Button>Retry</Button>
+</Stack>
+```
+
+### Component level error state
+
 Below is an example of an error that occured at the component level.
 
 ```jsx live
@@ -102,6 +121,8 @@ Below is an example of an error that occured at the component level.
 	</Stack>
 </Flex>
 ```
+
+### Page level error state
 
 For errors which occur at the page level, see the [Error page template](/template/error-page).
 
