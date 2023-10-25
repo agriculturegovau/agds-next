@@ -5,15 +5,16 @@ export const categories = [
 	{ label: "Driver's License", value: 'DRIVERS_LICENSE' },
 	{ label: 'Proof of Insurance', value: 'PROOF_OF_INSURANCE' },
 	{ label: 'Vehicle Registration', value: 'VEHICLE_REGISTRATION' },
-] as const;
+];
 
-const categoryLabelMap = Object.fromEntries(
+export const categoryLabelMap = Object.fromEntries(
 	categories.map((category) => [category.value, category.label])
 ) as Record<keyof typeof categories, string>;
 
 export type FileCategory = (typeof categories)[number]['value'];
 
-export type FileWithCategory = FileWithStatus & {
+export type FileWithCategory = {
+	file: FileWithStatus;
 	category?: FileCategory | undefined;
 	/** The ID of the uploaded artifact, for purposes of updating it */
 	artifactId?: string;
@@ -65,6 +66,14 @@ export const uploadFile = async (file: FileWithPath): Promise<string> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(`FILE${Math.random().toPrecision(8).slice(2)}`);
+		}, 2000);
+	});
+};
+
+export const deleteFile = async (fileId: string) => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(fileId);
 		}, 2000);
 	});
 };

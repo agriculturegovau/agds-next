@@ -50,8 +50,7 @@ export const NoiDocumentUploadForm = ({
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
-		console.log(errors, event);
-		console.log('SOMETHING WENT WRONG');
+		console.log('SOMETHING WENT WRONG', errors, event);
 	};
 
 	// if (isLoading) {

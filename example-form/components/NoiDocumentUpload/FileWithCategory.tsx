@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Button } from '@ag.ds-next/react/button';
 import { Select } from '@ag.ds-next/react/select';
 import { Text } from '@ag.ds-next/react/text';
 import { LoadingDots } from '@ag.ds-next/react/loading';
-import { FileUploadFileThumbnail } from '@ag.ds-next/react/file-upload';
+import {
+	FileUploadFileThumbnail,
+	FileWithStatus,
+} from '@ag.ds-next/react/file-upload';
 import {
 	categories,
 	changeFileCategory,
@@ -16,56 +19,47 @@ import {
 // type FileAndCategory = { file: File; category: string };
 
 type FileWithCategoryProps = {
-	name: string;
-	// TODO: size
-	category?: string;
+	file: FileWithCategoryType;
 	onCategoryChange: (category: FileCategory) => void;
+	onArtifactIdChange: (artifactId: string) => void;
 	onRemove: () => void;
 };
 
 export const FileWithCategory = ({
-	name,
-	category,
+	file,
 	onCategoryChange,
+	onArtifactIdChange,
 	onRemove,
 }: FileWithCategoryProps) => {
-	const loading = false;
-	// const [category, setCategory] = useState<FileCategory | undefined>(
-	// 	file.category
-	// );
-	// const [loading, setLoading] = useState(false);
-	// /** The ID of the uploaded artifact, for purposes of updating it */
-	// const [fileId, setFileId] = useState<string | undefined>(undefined);
+	const [loading, setLoading] = useState(false);
+	const [attemptedUpload, setAttemptedUpload] = useState(false);
 
-	// const handleChangeCategory = async (newCategory: FileCategory) => {
-	// 	console.log('handleChangeCategory', newCategory);
-	// 	setCategory(newCategory);
-	// 	setLoading(true);
-	// 	await changeFileCategory(fileId, newCategory);
-	// 	setLoading(false);
-	// };
+	const handleChangeCategory = async (newCategory: FileCategory) => {
+		console.log('handleChangeCategory', newCategory);
+		onCategoryChange(newCategory);
 
-	// const handleUploadFile = async (file: FileWithCategoryType) => {
-	// 	console.log('handleUploadFile', file);
-	// 	setLoading(true);
-	// 	const artifactId = await uploadFile(file);
-	// 	setFileId(artifactId);
-	// 	setLoading(false);
-	// };
+		if (file.artifactId) {
+			setLoading(true);
+			await changeFileCategory(file.artifactId, newCategory);
+			setLoading(false);
+		}
+	};
 
-	// const handleOnRemove = async () => {
-	// 	if (fileId) {
-	// 		onRemove(fileId);
-	// 	}
-	// };
+	const handleUploadFile = async (file: FileWithStatus) => {
+		console.log('handleUploadFile', file);
+		setLoading(true);
+		const artifactId = await uploadFile(file);
+		onArtifactIdChange(artifactId);
+		setLoading(false);
+	};
 
-	// useEffect(() => {
-	// 	if (file.id) {
-	// 		setLoading(false);
-	// 	}
+	if (!file.artifactId && !attemptedUpload) {
+		setAttemptedUpload(true);
+		handleUploadFile(file.file);
+	}
 
-	// 	handleUploadFile(file);
-	// }, [file]);
+	// const imagePreview = useMemo(() => getImageThumbnail(file.file), [file]);
+	const imagePreview = undefined;
 
 	return (
 		<Flex
@@ -77,21 +71,15 @@ export const FileWithCategory = ({
 			justifyContent="space-between"
 		>
 			<Flex gap={1} alignItems="center">
-				<FileUploadFileThumbnail src={undefined} />
-				<Text>{name}</Text>
+				<FileUploadFileThumbnail src={imagePreview} />
+				<Text>{file.file.name}</Text>
 			</Flex>
 
 			<Flex gap={1} alignItems="center" padding={1}>
-				<Select
-					label="Category"
-					hideOptionalLabel
-					placeholder="Select a category"
-					options={categories}
-					value={category}
-					// disabled={loading}
-					onChange={(event) =>
-						onCategoryChange(event.target.value as FileCategory)
-					}
+				<FileCategorySelect
+					value={file.category}
+					onChange={handleChangeCategory}
+					disabled={loading}
 				/>
 
 				{loading ? (
@@ -103,5 +91,27 @@ export const FileWithCategory = ({
 				)}
 			</Flex>
 		</Flex>
+	);
+};
+
+const FileCategorySelect = ({
+	value,
+	onChange,
+	disabled,
+}: {
+	value: FileCategory | undefined;
+	onChange: (category: FileCategory) => void;
+	disabled: boolean;
+}) => {
+	return (
+		<Select
+			label="Category"
+			hideOptionalLabel
+			placeholder="Select a category"
+			options={categories}
+			value={value}
+			disabled={disabled}
+			onChange={(event) => onChange(event.target.value as FileCategory)}
+		/>
 	);
 };
