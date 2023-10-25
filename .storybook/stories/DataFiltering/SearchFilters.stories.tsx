@@ -3,23 +3,24 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Callout } from '@ag.ds-next/react/callout';
-import { TableFilteringLarge } from './TableFilteringLarge';
-import { TableFilteringSmall } from './TableFilteringSmall';
-import { TableFilteringMedium } from './TableFilteringMedium';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
-import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+import { ListFiltering } from './ListFiltering';
+import { TableFilteringSmall } from './TableFilteringSmall';
+import { TableFilteringMedium } from './TableFilteringMedium';
+import { TableFilteringLarge } from './TableFilteringLarge';
 
 const args = { throwError: false };
 
 type StoryArgs = typeof args;
 
 const meta: Meta = {
-	title: 'Patterns/Tables',
+	title: 'Patterns/Search filters',
 	parameters: {
 		layout: 'fullscreen',
 	},
-	args: args,
+	args,
 	argTypes: {
 		throwError: {
 			control: {
@@ -31,8 +32,34 @@ const meta: Meta = {
 
 export default meta;
 
-export const FilterSmall = {
-	name: 'Filter and sort (Small)',
+export const Cards = {
+	render: function Render() {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useFetchData({ filters, pagination, sort });
+
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<PageContent>
+						<Stack gap={2}>
+							<Callout title="Search filters with Cards">
+								<Text as="p">
+									The Card Filtering pattern is used for filtering and sorting a
+									list of cards, rather than a table.
+								</Text>
+							</Callout>
+							<ListFiltering />
+						</Stack>
+					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
+export const TableSmall = {
+	name: 'Table (small)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -63,8 +90,8 @@ export const FilterSmall = {
 	},
 };
 
-export const FilterMedium = {
-	name: 'Filter and sort (Medium)',
+export const TableMedium = {
+	name: 'Table (medium)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -96,8 +123,8 @@ export const FilterMedium = {
 	},
 };
 
-export const FilterLarge = {
-	name: 'Filter and sort (Large)',
+export const TableLarge = {
+	name: 'Table (large)',
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
