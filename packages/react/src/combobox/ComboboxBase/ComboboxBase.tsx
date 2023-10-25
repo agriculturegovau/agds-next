@@ -158,10 +158,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 										{inputItems?.length ? (
 											inputItems.map((item, index) => (
 												<ComboboxListItem
-													key={`${item.value}${index}`}
-													{...combobox.getItemProps({ item, index })}
+													key={`${item.value}-${index}`}
 													isActiveItem={combobox.highlightedIndex === index}
 													isInteractive={true}
+													{...combobox.getItemProps({ item, index })}
 												>
 													<ComboboxListItemOption
 														option={item}
