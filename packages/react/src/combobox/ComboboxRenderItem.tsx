@@ -28,7 +28,9 @@ export function ComboboxRenderItem({
 }: ComboboxRenderItemProps) {
 	return (
 		<Fragment>
-			{beforeElement}
+			{beforeElement ? (
+				<div css={{ flexShrink: 0 }}>{beforeElement}</div>
+			) : null}
 			<Stack as="span">
 				<span>{renderItemLabel(itemLabel, inputValue)}</span>
 				{secondaryText ? (
@@ -42,7 +44,9 @@ export function ComboboxRenderItem({
 					</Text>
 				) : null}
 			</Stack>
-			{endElement ? <div css={{ marginLeft: 'auto' }}>{endElement}</div> : null}
+			{endElement ? (
+				<div css={{ marginLeft: 'auto', flexShrink: 0 }}>{endElement}</div>
+			) : null}
 		</Fragment>
 	);
 }

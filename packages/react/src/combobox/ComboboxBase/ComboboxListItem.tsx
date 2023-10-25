@@ -10,7 +10,7 @@ type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 const hoverStyles = {
 	color: boxPalette.foregroundText,
 	backgroundColor: boxPalette.backgroundShade,
-	...packs.underline,
+	'> span': packs.underline,
 };
 
 export const ComboboxListItem = forwardRef<

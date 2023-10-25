@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Avatar } from '../avatar';
 import { NotificationBadge } from '../notification-badge';
 import { ComboboxAsync } from './ComboboxAsync';
-import { ComboboxRenderItem } from './defaultRenderItem';
+import { ComboboxRenderItem } from './ComboboxRenderItem';
 import { COUNTRY_OPTIONS, NAME_OPTIONS } from './test-utils';
 
 const meta: Meta<typeof ComboboxAsync> = {

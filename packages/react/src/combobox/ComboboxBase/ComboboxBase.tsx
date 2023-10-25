@@ -5,7 +5,7 @@ import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import { DefaultComboboxOption } from '../utils';
-import { ComboboxRenderItem } from '../defaultRenderItem';
+import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
