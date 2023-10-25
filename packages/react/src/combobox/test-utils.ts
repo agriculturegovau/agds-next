@@ -210,16 +210,66 @@ export const STATE_OPTIONS = [
 ];
 
 export const NAME_OPTIONS = [
-	{ fullName: 'John Doe', jobTitle: 'Product Manager' },
-	{ fullName: 'Jane Smith', jobTitle: 'Software Engineer' },
-	{ fullName: 'Robert Johnson', jobTitle: 'UX Designer' },
-	{ fullName: 'Emily Davis', jobTitle: 'Product Manager' },
-	{ fullName: 'Michael Williams', jobTitle: 'Software Engineer' },
-	{ fullName: 'Sarah Wilson', jobTitle: 'UX Designer' },
-	{ fullName: 'David Brown', jobTitle: 'Product Manager' },
-	{ fullName: 'Olivia Taylor', jobTitle: 'Software Engineer' },
-	{ fullName: 'James Moore', jobTitle: 'UX Designer' },
-	{ fullName: 'Sophia Clark', jobTitle: 'Product Manager' },
+	{
+		fullName: 'John Doe',
+		jobTitle: 'Product Manager',
+		status: 'Draft',
+		unreadMessageCount: 0,
+	},
+	{
+		fullName: 'Jane Smith',
+		jobTitle: 'Software Engineer',
+		status: 'Approved',
+		unreadMessageCount: 4,
+	},
+	{
+		fullName: 'Robert Johnson',
+		jobTitle: 'UX Designer',
+		status: 'Deactivated',
+		unreadMessageCount: 5,
+	},
+	{
+		fullName: 'Emily Davis',
+		jobTitle: 'Product Manager',
+		status: 'Approved',
+		unreadMessageCount: 6,
+	},
+	{
+		fullName: 'Michael Williams',
+		jobTitle: 'Software Engineer',
+		status: 'Approved',
+		unreadMessageCount: 0,
+	},
+	{
+		fullName: 'Sarah Wilson',
+		jobTitle: 'UX Designer',
+		status: 'Approved',
+		unreadMessageCount: 0,
+	},
+	{
+		fullName: 'David Brown',
+		jobTitle: 'Product Manager',
+		status: 'Deactivated',
+		unreadMessageCount: 0,
+	},
+	{
+		fullName: 'Olivia Taylor',
+		jobTitle: 'Software Engineer',
+		status: 'Approved',
+		unreadMessageCount: 6,
+	},
+	{
+		fullName: 'James Moore',
+		jobTitle: 'UX Designer',
+		status: 'Approved',
+		unreadMessageCount: 0,
+	},
+	{
+		fullName: 'Sophia Clark',
+		jobTitle: 'Product Manager',
+		status: 'Approved',
+		unreadMessageCount: 0,
+	},
 ].map((option) => ({
 	...option,
 	label: option.fullName,

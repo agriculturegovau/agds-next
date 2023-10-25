@@ -1,4 +1,4 @@
-import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
+import { Ref, useCallback, useMemo, useState } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
@@ -6,6 +6,7 @@ import {
 	DefaultComboboxOption,
 	useComboboxInputId,
 	filterOptions,
+	type RenderItem,
 } from './utils';
 
 export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
@@ -38,7 +39,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 	/** Used to override the default item rendering.  */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: RenderItem<Option>;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */

@@ -1,11 +1,4 @@
-import {
-	Fragment,
-	ReactNode,
-	Ref,
-	useCallback,
-	MouseEvent,
-	useRef,
-} from 'react';
+import { Fragment, Ref, useCallback, MouseEvent, useRef } from 'react';
 import {
 	UseComboboxReturnValue,
 	UseMultipleSelectionReturnValue,
@@ -23,9 +16,9 @@ import {
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../flex';
-import { defaultRenderItem } from '../defaultRenderItem';
-import { DefaultComboboxOption } from '../utils';
+import { DefaultComboboxOption, type RenderItem } from '../utils';
 import { ComboboxListItem } from './ComboboxListItem';
+import { ComboboxListItemOption } from './ComboboxListItemOption';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -62,7 +55,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: RenderItem<Option>;
 	// input ref
 	inputRef?: Ref<HTMLInputElement>;
 };
@@ -79,7 +72,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block = true,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem = defaultRenderItem,
+	renderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
@@ -224,12 +217,16 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 										{inputItems?.length ? (
 											inputItems.map((item, index) => (
 												<ComboboxListItem
-													key={`${item.value}-${index}`}
+													key={`${item.value}${index}`}
+													{...combobox.getItemProps({ item, index })}
 													isActiveItem={combobox.highlightedIndex === index}
 													isInteractive={true}
-													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item, combobox.inputValue)}
+													<ComboboxListItemOption
+														option={item}
+														renderItem={renderItem}
+														inputValue={combobox.inputValue}
+													/>
 												</ComboboxListItem>
 											))
 										) : (

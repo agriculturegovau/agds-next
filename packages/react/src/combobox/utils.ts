@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
@@ -60,3 +61,19 @@ export function splitLabel(optionLabel: string, inputValue: string) {
 
 	return results;
 }
+
+type RenderItemFunction<Option> = (
+	item: Option,
+	inputValue: string
+) => ReactNode;
+
+type RenderItemObject<Option> = {
+	secondaryText?: (item: Option, inputValue: string) => ReactNode;
+	tertiaryText?: (item: Option, inputValue: string) => ReactNode;
+	beforeElement?: (item: Option, inputValue: string) => ReactNode;
+	endElement?: (item: Option, inputValue: string) => ReactNode;
+};
+
+export type RenderItem<Option> =
+	| RenderItemFunction<Option>
+	| RenderItemObject<Option>;

@@ -1,12 +1,12 @@
-import { Fragment, Ref, ReactNode } from 'react';
+import { Fragment, Ref } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { FieldMaxWidth, packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
-import { DefaultComboboxOption } from '../utils';
-import { defaultRenderItem } from '../defaultRenderItem';
+import { DefaultComboboxOption, type RenderItem } from '../utils';
 import { ComboboxListItem } from './ComboboxListItem';
+import { ComboboxListItemOption } from './ComboboxListItemOption';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -41,7 +41,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: RenderItem<Option>;
 	combobox: UseComboboxReturnValue<Option>;
 };
 
@@ -60,13 +60,13 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	showDropdownTrigger = true,
 	clearable = false,
 	isAutocomplete,
-	renderItem = defaultRenderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
 	combobox,
 	inputItems,
 	inputRef: inputRefProp,
+	renderItem,
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
@@ -156,20 +156,20 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 								) : (
 									<Fragment>
 										{inputItems?.length ? (
-											inputItems.map((item, index) => {
-												const isActiveItem =
-													combobox.highlightedIndex === index;
-												return (
-													<ComboboxListItem
-														key={`${item.value}${index}`}
-														isActiveItem={isActiveItem}
-														isInteractive={true}
-														{...combobox.getItemProps({ item, index })}
-													>
-														{renderItem(item, combobox.inputValue)}
-													</ComboboxListItem>
-												);
-											})
+											inputItems.map((item, index) => (
+												<ComboboxListItem
+													key={`${item.value}${index}`}
+													{...combobox.getItemProps({ item, index })}
+													isActiveItem={combobox.highlightedIndex === index}
+													isInteractive={true}
+												>
+													<ComboboxListItemOption
+														option={item}
+														renderItem={renderItem}
+														inputValue={combobox.inputValue}
+													/>
+												</ComboboxListItem>
+											))
 										) : (
 											<ComboboxListEmptyResults message={emptyResultsMessage} />
 										)}

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Avatar } from '../avatar';
-import { Flex } from '../flex';
+import { NotificationBadge } from '../notification-badge';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { Combobox } from './Combobox';
@@ -124,17 +124,20 @@ export const CustomRenderName: Story = {
 				value={value}
 				onChange={onChange}
 				options={NAME_OPTIONS}
-				renderItem={(option, inputValue) => (
-					<Flex as="span" alignItems="center" gap={0.5}>
-						<Avatar name={option.label} size="sm" tone="action" />
-						<Stack as="span">
-							<span>{defaultRenderItem(option, inputValue)}</span>
-							<Text fontSize="xs" color="muted">
-								Role: {option.jobTitle}
-							</Text>
-						</Stack>
-					</Flex>
-				)}
+				renderItem={{
+					secondaryText: (option) => `Role: ${option.jobTitle}`,
+					tertiaryText: (option) => `Job: ${option.status}`,
+					beforeElement: (option) => (
+						<Avatar name={option.fullName} size="sm" tone="action" />
+					),
+					endElement: (option) =>
+						option.unreadMessageCount > 0 ? (
+							<NotificationBadge
+								value={option.unreadMessageCount}
+								tone="action"
+							/>
+						) : null,
+				}}
 			/>
 		);
 	},

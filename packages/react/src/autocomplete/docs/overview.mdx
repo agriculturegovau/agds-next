@@ -186,17 +186,23 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 					birthYear: result.birth_year,
 				}));
 			}}
-			renderItem={(option, inputValue) => (
-				<Flex as="span" alignItems="center" gap={0.5}>
-					<Avatar name={option.label} size="sm" tone="action" />
-					<Stack as="span">
-						<span>{defaultRenderItem(option, inputValue)}</span>
-						<Text fontSize="xs" color="muted">
-							Birth Year: {option.birthYear}
-						</Text>
-					</Stack>
-				</Flex>
-			)}
+			// renderItem={(option, inputValue) => (
+			// 	<Flex as="span" alignItems="center" gap={0.5}>
+			// 		<Avatar name={option.label} size="sm" tone="action" />
+			// 		<Stack as="span">
+			// 			<span>{defaultRenderItem(option, inputValue)}</span>
+			// 			<Text fontSize="xs" color="muted">
+			// 				Birth year: {option.birthYear}
+			// 			</Text>
+			// 		</Stack>
+			// 	</Flex>
+			// )}
+			renderOption={{
+				secondaryText: (option) => option.label,
+				tertiaryText: (option) => option.label,
+				beforeElement: (option) => option.label,
+				endElement: (option) => option.label,
+			}}
 		/>
 	);
 };

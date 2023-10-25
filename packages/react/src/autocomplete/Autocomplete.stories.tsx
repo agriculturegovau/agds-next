@@ -69,7 +69,7 @@ export const CustomEmptyResultsMessage: Story = {
 export const ExternalAPI = {
 	args: {
 		hideOptionalLabel: true,
-		label: 'Pick a Star Wars character',
+		label: 'Choose a Star Wars character',
 		loadOptions: loadOptionsFromStarWarsApi,
 	},
 };
@@ -79,23 +79,19 @@ export const CustomRender: Story = {
 		const [value, onChange] = useState<StarWarsCharacterOption | null>(null);
 		return (
 			<Autocomplete
-				label="Pick a Star Wars character"
+				label="Choose a Star Wars character"
 				hint="Start typing to see results"
 				hideOptionalLabel
 				value={value}
 				onChange={onChange}
 				loadOptions={loadOptionsFromStarWarsApi}
-				renderItem={(option, inputValue) => (
-					<Flex as="span" alignItems="center" gap={0.5}>
-						<Avatar name={option.label} size="sm" tone="action" />
-						<Stack as="span">
-							<span>{defaultRenderItem(option, inputValue)}</span>
-							<Text fontSize="xs" color="muted">
-								Birth Year: {option.birthYear}
-							</Text>
-						</Stack>
-					</Flex>
-				)}
+				renderOption={{
+					secondaryText: (option) => `Birth year: ${option.birthYear}`,
+					tertiaryText: (option) => `Hair color: ${option.hairColor}`,
+					beforeElement: (option) => (
+						<Avatar name={option.name} size="sm" tone="action" aria-hidden />
+					),
+				}}
 			/>
 		);
 	},
@@ -104,7 +100,9 @@ export const CustomRender: Story = {
 type StarWarsCharacterOption = {
 	label: string;
 	value: string;
+	name: string;
 	birthYear: string;
+	hairColor: string;
 };
 
 async function loadOptionsFromStarWarsApi(
@@ -113,11 +111,14 @@ async function loadOptionsFromStarWarsApi(
 	const response = await fetch(
 		`https://swapi.dev/api/people/?search=${inputValue}`
 	).then((r) => r.json());
+	console.log({ response });
 	return response.results.map(
-		(result: { name: string; birth_year: string }) => ({
+		(result: { name: string; birth_year: string; hair_color: string }) => ({
 			label: result.name,
 			value: result.name,
+			name: result.name,
 			birthYear: result.birth_year,
+			hairColor: result.hair_color,
 		})
 	);
 }

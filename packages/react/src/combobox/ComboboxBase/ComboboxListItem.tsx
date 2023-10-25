@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { Box } from '../../box';
-import { boxPalette } from '../../core';
+import { boxPalette, packs } from '../../core';
+import { Flex } from '../../flex';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;
@@ -9,8 +9,8 @@ type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 
 const hoverStyles = {
 	color: boxPalette.foregroundText,
-	textDecoration: 'underline',
 	backgroundColor: boxPalette.backgroundShade,
+	...packs.underline,
 };
 
 export const ComboboxListItem = forwardRef<
@@ -21,13 +21,15 @@ export const ComboboxListItem = forwardRef<
 	ref
 ) {
 	return (
-		<Box
+		<Flex
 			ref={ref}
 			as="li"
 			paddingX={1}
 			paddingY={0.75}
 			borderBottom
 			borderColor="muted"
+			alignItems="center"
+			gap={0.75}
 			css={{
 				...(isInteractive
 					? {
@@ -36,6 +38,7 @@ export const ComboboxListItem = forwardRef<
 							'&:hover': hoverStyles,
 					  }
 					: undefined),
+
 				...(isActiveItem ? hoverStyles : undefined),
 
 				'&:last-of-type': { borderBottom: 'none' },
@@ -43,6 +46,6 @@ export const ComboboxListItem = forwardRef<
 			{...props}
 		>
 			{children}
-		</Box>
+		</Flex>
 	);
 });
