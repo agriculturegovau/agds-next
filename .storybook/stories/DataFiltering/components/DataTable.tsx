@@ -13,6 +13,7 @@ import {
 	TableHeaderSortable,
 	TableWrapper,
 	TableRow,
+	TableProps,
 } from '@ag.ds-next/react/table';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
@@ -38,10 +39,15 @@ type DataTableProps = {
 	headingId?: string;
 	/** Whether the table should be selectable */
 	selectable?: boolean;
+	columns?: DataTableColumnKey[];
+	tableLayout?: TableProps['tableLayout'];
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, selectable }, ref) {
+	function DataTable(
+		{ headingId, selectable, columns = defaultHeaders, tableLayout = 'fixed' },
+		ref
+	) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
@@ -100,7 +106,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}
-						tableLayout="fixed"
+						tableLayout={tableLayout}
 					>
 						{!headingId && (
 							<TableCaption>
@@ -117,50 +123,50 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 										Select
 									</TableHeader>
 								)}
-								{headers.map(
-									({
+								{(
+									['businessName', ...columns] as (keyof BusinessForAudit)[]
+								).map((sortKey) => {
+									const {
 										label,
-										sortKey,
 										textAlign,
 										width,
 										isSortable: isFieldSortable,
-									}) => {
-										if (isTableSortable && isFieldSortable) {
-											const isFieldTheActiveSortField = sort?.field === sortKey;
-											const onClick = () =>
-												setSort?.({
-													field: sortKey,
-													order:
-														sort?.field === sortKey && sort?.order === 'ASC'
-															? 'DESC'
-															: 'ASC',
-												});
-											return (
-												<TableHeaderSortable
-													key={sortKey}
-													textAlign={textAlign}
-													width={width}
-													sort={
-														isFieldTheActiveSortField ? sort?.order : undefined
-													}
-													onClick={onClick}
-												>
-													{label}
-												</TableHeaderSortable>
-											);
-										}
+									} = dataTableHeaders[sortKey];
+									if (isTableSortable && isFieldSortable) {
+										const isFieldTheActiveSortField = sort?.field === sortKey;
+										const onClick = () =>
+											setSort?.({
+												field: sortKey,
+												order:
+													sort?.field === sortKey && sort?.order === 'ASC'
+														? 'DESC'
+														: 'ASC',
+											});
 										return (
-											<TableHeader
+											<TableHeaderSortable
 												key={sortKey}
-												scope="col"
 												textAlign={textAlign}
 												width={width}
+												sort={
+													isFieldTheActiveSortField ? sort?.order : undefined
+												}
+												onClick={onClick}
 											>
 												{label}
-											</TableHeader>
+											</TableHeaderSortable>
 										);
 									}
-								)}
+									return (
+										<TableHeader
+											key={sortKey}
+											scope="col"
+											textAlign={textAlign}
+											width={width}
+										>
+											{label}
+										</TableHeader>
+									);
+								})}
 							</TableRow>
 						</TableHead>
 						<TableBody>
@@ -178,29 +184,30 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonBox height={32} />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
+											{columns.map((columnKey) => {
+												if (columnKey === 'assignee') {
+													return (
+														<TableCell key={columnKey}>
+															<SkeletonBox height={32} />
+															<VisuallyHidden>Loading</VisuallyHidden>
+														</TableCell>
+													);
+												}
+
+												return (
+													<TableCell key={columnKey}>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												);
+											})}
 										</TableRow>
 									))}
 								</Fragment>
 							) : (
 								<Fragment>
-									{data.map(
-										({
+									{data.map((item) => {
+										const {
 											index,
 											id,
 											assignee,
@@ -209,32 +216,60 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											state,
 											requestDate,
 											status,
-										}) => {
-											// Adding 2 because the table header row is the first row
-											const rowIndex = index + 2;
-											return (
-												<DataTableRow
-													key={id}
-													selectable={selectable}
-													itemId={id}
-													businessName={businessName}
-													rowIndex={rowIndex}
-												>
-													<TableCell as="th" scope="row">
-														<TextLink href={`#${id}`}>{businessName}</TextLink>
-													</TableCell>
-													<DataTableRowAssignee assignee={assignee} />
-													<TableCell>
-														{city}, {state}
-													</TableCell>
-													<TableCell>
-														{format(requestDate, 'dd/MM/yyyy')}
-													</TableCell>
-													<DataTableRowStatus status={status} />
-												</DataTableRow>
-											);
-										}
-									)}
+										} = item;
+										// Adding 2 because the table header row is the first row
+										const rowIndex = index + 2;
+										return (
+											<DataTableRow
+												key={id}
+												selectable={selectable}
+												itemId={id}
+												businessName={businessName}
+												rowIndex={rowIndex}
+											>
+												<TableCell as="th" scope="row">
+													<TextLink href={`#${id}`}>{businessName}</TextLink>
+												</TableCell>
+												{columns.map((columnKey) => {
+													switch (columnKey) {
+														case 'assignee':
+															return (
+																<DataTableRowAssignee assignee={assignee} />
+															);
+														case 'requestDate':
+															return (
+																<TableCell>
+																	{format(requestDate, 'dd/MM/yyyy')}
+																</TableCell>
+															);
+														case 'status': {
+															return <DataTableRowStatus status={status} />;
+														}
+														case 'city': {
+															return (
+																<TableCell>
+																	{city}, {state}
+																</TableCell>
+															);
+														}
+														case 'services':
+														case 'destinations': {
+															return (
+																<TableCell>
+																	{item[columnKey].join(', ') || '-'}
+																</TableCell>
+															);
+														}
+
+														default:
+															return (
+																<TableCell>{item[columnKey] || '-'}</TableCell>
+															);
+													}
+												})}
+											</DataTableRow>
+										);
+									})}
 								</Fragment>
 							)}
 						</TableBody>
@@ -246,42 +281,69 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	}
 );
 
-const headers: {
-	label: string;
-	sortKey: keyof BusinessForAudit;
-	isSortable: boolean;
-	width?: TableHeaderProps['width'];
-	textAlign?: TableHeaderProps['textAlign'];
-}[] = [
-	{
+type Headers = {
+	[key in keyof BusinessForAudit]: {
+		label: string;
+		isSortable: boolean;
+		width?: TableHeaderProps['width'];
+		textAlign?: TableHeaderProps['textAlign'];
+	};
+};
+
+export const dataTableHeaders: Headers = {
+	businessName: {
 		label: 'Business name',
-		sortKey: 'businessName',
 		width: { xs: '20rem', lg: 'auto' },
 		isSortable: true,
 	},
-	{
+	assignee: {
 		label: 'Assignee',
-		sortKey: 'assignee',
 		width: '12rem',
 		isSortable: true,
 	},
-	{
+	city: {
 		label: 'City',
-		sortKey: 'city',
 		width: { xs: '16rem', lg: 'auto' },
 		isSortable: false,
 	},
-	{
+	requestDate: {
 		label: 'Date registered',
-		sortKey: 'requestDate',
 		textAlign: 'right',
 		width: '12rem',
 		isSortable: true,
 	},
-	{
+	status: {
 		label: 'Status',
-		sortKey: 'status',
 		width: '11rem',
 		isSortable: true,
 	},
-];
+	id: {
+		label: 'ID',
+		width: 'auto',
+		isSortable: false,
+	},
+	services: {
+		label: 'Services',
+		width: 'auto',
+		isSortable: false,
+	},
+	destinations: {
+		label: 'Destinations',
+		width: 'auto',
+		isSortable: false,
+	},
+	state: {
+		label: 'State',
+		width: 'auto',
+		isSortable: true,
+	},
+};
+
+type DataTableColumnKey = keyof BusinessForAudit;
+
+const defaultHeaders = [
+	'assignee',
+	'city',
+	'requestDate',
+	'status',
+] as DataTableColumnKey[];
