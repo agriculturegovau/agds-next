@@ -9,6 +9,7 @@ import { TableFilteringMedium } from './TableFilteringMedium';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+import { TableWithColumnToggle } from './TableWithColumnToggle';
 
 const args = { throwError: false };
 
@@ -224,6 +225,38 @@ export const FilterAndSelectLarge = {
 							<TableFilteringLarge selectable={true} />
 						</Stack>
 					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		);
+	},
+};
+
+export const FilterAndColumnSelect = {
+	name: 'With filtering (large) and column toggles',
+	render: function Render({ throwError }: StoryArgs) {
+		const sortAndFilter = useSortAndFilter();
+		const { filters, pagination, sort } = sortAndFilter;
+		const data = useFetchData({
+			filters,
+			pagination,
+			sort,
+			throwError,
+		});
+		return (
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<Stack gap={2} paddingX={2} paddingY={1}>
+						<Callout title="Table Filtering (Large) with toggleable columns">
+							<Text as="p">
+								The large filtering pattern is for cases where the number of
+								filterable fields exceeds 6. Our Drawer component is used to
+								reveal all filters as the user elects to show them. You may
+								elect to show up to two primary filters in the main content area
+								next to the button which opens the drawer.
+							</Text>
+						</Callout>
+						<TableWithColumnToggle selectable={true} />
+					</Stack>
 				</DataProvider>
 			</SortAndFilterProvider>
 		);
