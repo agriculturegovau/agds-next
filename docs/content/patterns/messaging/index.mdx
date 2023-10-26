@@ -60,13 +60,11 @@ Alert the user of something that has happened in an input component. They appear
 A border is added to the left-margin of the input to group the message to the component.
 
 ```jsx live
-<Field
+<TextInput
 	label="Email"
 	invalid
 	message="Enter an email address in the correct format, like name@example.com"
->
-	{(a11yProps) => <input type="email" {...a11yProps} />}
-</Field>
+/>
 ```
 
 ## Callout
