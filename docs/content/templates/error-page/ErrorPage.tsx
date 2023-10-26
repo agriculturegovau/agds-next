@@ -4,6 +4,8 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
+import { Button } from '@ag.ds-next/react/button';
+import { Flex } from '@ag.ds-next/react/flex';
 
 export const ErrorPage = () => {
 	return (
@@ -16,6 +18,9 @@ export const ErrorPage = () => {
 						vestibulum.
 					</p>
 				</Prose>
+				<Flex alignItems="flex-start">
+					<Button>Button</Button>
+				</Flex>
 				<Callout title="Need help?">
 					<Prose>
 						<p>

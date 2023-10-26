@@ -87,9 +87,9 @@ When creating an error message:
 
 If applicable, use a [Button](/components-button) component to provide the user with an option to retrieve the data again.
 
-### Page level error state
+### Section level error state
 
-Below is an example of an error that occured at the page level.
+Below is an example of an error that occured at the section level.
 
 ```jsx live
 <Stack gap={2} alignItems="flex-start">
@@ -122,6 +122,10 @@ Below is an example of an error that occured at the component level.
 </Flex>
 ```
 
+### Page level error state
+
+For errors which occur at the page level, see the [Error page template](/template/error-page).
+
 ## Empty state
 
 The empty state is displayed when data has loaded succesfully, but there is nothing available to show to the user.
@@ -133,9 +137,9 @@ This state could potentially be a result of either:
 
 Depending on what the cause the empty state is, provide clear messaging and a helpful action to get rid of the empty state via a [Button](/components/button) component.
 
-### Page level empty state examples
+### Section level empty state examples
 
-Below is an example of two different empty states at the page level.
+Below is an example of two different empty states at the section level.
 
 ```jsx live
 <Stack gap={2} alignItems="flex-start">
