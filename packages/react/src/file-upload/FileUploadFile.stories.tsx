@@ -35,6 +35,15 @@ export const Success: Story = {
 	},
 };
 
+export const WithLink: Story = {
+	name: '.txt file (with href)',
+	args: {
+		file: createExampleFile({
+			href: '#',
+		}),
+	},
+};
+
 export const Image: Story = {
 	name: '.jpg file',
 	args: {

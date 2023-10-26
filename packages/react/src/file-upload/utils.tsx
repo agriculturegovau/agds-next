@@ -5,6 +5,8 @@ export type FileStatus = 'none' | 'uploading' | 'success';
 
 export type FileWithStatus = FileWithPath & {
 	status?: FileStatus;
+	/** Link to a webpage where the user can view/download the existing file (optional) */
+	href?: string;
 };
 
 export type RejectedFile = {
