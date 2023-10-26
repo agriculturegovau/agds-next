@@ -81,6 +81,19 @@ An information hierarchy can be created with Callouts by applying the Feature, I
 </Callout>
 ```
 
-## Component error states
+## Loading, Error and Empty states
 
-## Error and Empty states
+When loading data in an application, it is important to consider and design for loading, empty, and error states. The compositions in our [Loading, Error and Empty state](/components/error-and-empty-states) patterns are designed to help you communicate these states to users.
+
+```jsx live
+<Stack gap={2} alignItems="flex-start">
+	<Stack gap={1}>
+		<AlertFilledIcon color="error" size="lg" />
+		<Heading type="h2" fontSize="lg">
+			Failed to load
+		</Heading>
+		<Text>There was an error loading the data. Click retry to try again.</Text>
+	</Stack>
+	<Button>Retry</Button>
+</Stack>
+```
