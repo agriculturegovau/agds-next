@@ -39,12 +39,12 @@ export type ComboboxProps<
 	onChange?: (value: Option | null) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
-	/** Used to override the default item rendering.  */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
+	/** Used to override the default item rendering. */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
 };
 
 export function Combobox<Option extends DefaultComboboxOption>({

@@ -214,3 +214,43 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 	);
 };
 ```
+
+## Custom rendering
+
+Use the `renderItem` prop to customise how each option in the dropdown list is rendered. Inside this function, you can make use of the `ComboboxRenderItem` component to style extra information.
+
+Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
+
+```jsx live
+() => {
+	const [value, onChange] = React.useState(null);
+	return (
+		<Combobox
+			label="Search users"
+			hint="Start typing to see results"
+			value={value}
+			onChange={onChange}
+			options={NAME_OPTIONS}
+			renderItem={(item, inputValue) => (
+				<ComboboxRenderItem
+					itemLabel={item.label}
+					inputValue={inputValue}
+					secondaryText={`Role: ${item.jobTitle}`}
+					tertiaryText={`Job: ${item.status}`}
+					beforeElement={
+						<Avatar name={item.fullName} size="sm" tone="action" />
+					}
+					endElement={
+						item.unreadMessageCount > 0 ? (
+							<NotificationBadge
+								value={item.unreadMessageCount}
+								tone="action"
+							/>
+						) : null
+					}
+				/>
+			)}
+		/>
+	);
+};
+```

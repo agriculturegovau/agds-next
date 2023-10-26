@@ -37,7 +37,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	onChange?: (value: Option[]) => void;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
-	/** Used to override the default item rendering.  */
+	/** Used to override the default item rendering. */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;

@@ -1,10 +1,10 @@
 import {
 	Fragment,
-	ReactNode,
 	Ref,
 	useCallback,
 	MouseEvent,
 	useRef,
+	ReactNode,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -23,8 +23,8 @@ import {
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../flex';
-import { defaultRenderItem } from '../defaultRenderItem';
 import { DefaultComboboxOption } from '../utils';
+import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
@@ -79,7 +79,9 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block = true,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem = defaultRenderItem,
+	renderItem = (item, inputValue) => (
+		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
+	),
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,

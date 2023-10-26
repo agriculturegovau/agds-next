@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { COUNTRY_OPTIONS } from '../combobox/test-utils';
+import { useState } from 'react';
+import { Avatar } from '../avatar';
+import { COUNTRY_OPTIONS, NAME_OPTIONS } from '../combobox/test-utils';
+import { NotificationBadge } from '../notification-badge';
 import { Autocomplete } from './Autocomplete';
+import { AutocompleteRenderItem } from './AutocompleteRenderItem';
 
 const meta: Meta<typeof Autocomplete> = {
 	title: 'forms/Autocomplete',
@@ -63,15 +67,59 @@ export const CustomEmptyResultsMessage: Story = {
 export const ExternalAPI = {
 	args: {
 		hideOptionalLabel: true,
-		label: 'Pick a Star Wars character',
-		loadOptions: async function loadOptions(inputValue: string) {
+		label: 'Choose a Star Wars character',
+		loadOptions: async function loadOptionsFromStarWarsApi(inputValue: string) {
 			const response = await fetch(
 				`https://swapi.dev/api/people/?search=${inputValue}`
 			).then((r) => r.json());
-			return response.results.map((result: { name: string }) => ({
-				label: result.name,
-				value: result.name,
-			}));
+			return response.results.map(
+				(result: { name: string; birth_year: string; hair_color: string }) => ({
+					label: result.name,
+					value: result.name,
+					name: result.name,
+					birthYear: result.birth_year,
+					hairColor: result.hair_color,
+				})
+			);
 		},
+	},
+};
+
+type NameOption = (typeof NAME_OPTIONS)[number];
+
+export const CustomRender: Story = {
+	render: function Render() {
+		const [value, onChange] = useState<NameOption | null>(null);
+		return (
+			<Autocomplete
+				label="Search users"
+				value={value}
+				onChange={onChange}
+				loadOptions={async function loadOptions() {
+					// Simulate a slow network connection
+					await new Promise((resolve) => setTimeout(resolve, 1000));
+					return NAME_OPTIONS;
+				}}
+				renderItem={(item, inputValue) => (
+					<AutocompleteRenderItem
+						itemLabel={item.label}
+						inputValue={inputValue}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
+						beforeElement={
+							<Avatar name={item.fullName} size="sm" tone="action" />
+						}
+						endElement={
+							item.unreadMessageCount > 0 ? (
+								<NotificationBadge
+									value={item.unreadMessageCount}
+									tone="action"
+								/>
+							) : null
+						}
+					/>
+				)}
+			/>
+		);
 	},
 };

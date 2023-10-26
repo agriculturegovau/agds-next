@@ -34,7 +34,7 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	onChange?: (value: Option | null) => void;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
-	/** Used to override the default item rendering.  */
+	/** Used to override the default item rendering. */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;

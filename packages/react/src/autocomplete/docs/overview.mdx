@@ -157,3 +157,46 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 	);
 };
 ```
+
+## Custom rendering
+
+Use the `renderItem` prop to customise how each option in the dropdown list is rendered. Inside this function, you can make use of the `AutocompleteRenderItem` component to style extra information.
+
+Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
+
+```jsx live
+() => {
+	const [value, onChange] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Search users"
+			value={value}
+			onChange={onChange}
+			loadOptions={async function loadOptions() {
+				// Simulate a slow network connection
+				await new Promise((resolve) => setTimeout(resolve, 1000));
+				return NAME_OPTIONS;
+			}}
+			renderItem={(item, inputValue) => (
+				<AutocompleteRenderItem
+					itemLabel={item.label}
+					inputValue={inputValue}
+					secondaryText={`Role: ${item.jobTitle}`}
+					tertiaryText={`Job: ${item.status}`}
+					beforeElement={
+						<Avatar name={item.fullName} size="sm" tone="action" />
+					}
+					endElement={
+						item.unreadMessageCount > 0 ? (
+							<NotificationBadge
+								value={item.unreadMessageCount}
+								tone="action"
+							/>
+						) : null
+					}
+				/>
+			)}
+		/>
+	);
+};
+```
