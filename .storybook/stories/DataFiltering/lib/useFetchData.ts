@@ -28,6 +28,7 @@ export function useFetchData({
 	const [totalItems, setTotalItems] = useState(0);
 
 	useEffect(() => {
+		setLoading(true);
 		getData({ sort, filters, pagination }).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);
