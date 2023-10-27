@@ -5,6 +5,7 @@ export type FileStatus = 'none' | 'uploading' | 'success';
 
 export type FileWithStatus = FileWithPath & {
 	status?: FileStatus;
+	href?: string;
 };
 
 export type RejectedFile = {

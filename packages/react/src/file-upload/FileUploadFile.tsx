@@ -6,6 +6,7 @@ import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
 import { SuccessFilledIcon } from '../icon';
+import { TextLink } from '../text-link';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
 
@@ -20,7 +21,7 @@ export const FileUploadFile = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadFileProps) => {
-	const { name, size, status = 'none' } = file;
+	const { name, size, status = 'none', href } = file;
 	const showThumbnail = !hideThumbnails;
 	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return (
@@ -46,15 +47,29 @@ export const FileUploadFile = ({
 							/>
 						</Box>
 					)}
-					<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
-						{name}
-						{size ? (
-							<Text css={{ whiteSpace: 'nowrap' }}>
-								{' '}
-								({formatFileSize(size)})
-							</Text>
-						) : null}
-					</Text>
+					{href ? (
+						<Text paddingY={1.5}>
+							<TextLink
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								css={{ wordBreak: 'break-all' }}
+							>
+								{name}
+								{size ? ` (${formatFileSize(size)})` : null}
+							</TextLink>
+						</Text>
+					) : (
+						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
+							{name}
+							{size ? (
+								<Text css={{ whiteSpace: 'nowrap' }}>
+									{' '}
+									({formatFileSize(size)})
+								</Text>
+							) : null}
+						</Text>
+					)}
 				</Flex>
 			</Flex>
 			<Flex flexShrink={0} alignItems="center" paddingRight={1}>

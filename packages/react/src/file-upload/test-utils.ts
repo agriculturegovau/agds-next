@@ -18,8 +18,9 @@ export function createExampleFile(args?: {
 export function createExampleImageFile(args?: {
 	name?: string;
 	status?: FileStatus;
+	href?: string;
 }): FileWithStatus {
-	const { name = 'example.jpg', status } = args || {};
+	const { name = 'example.jpg', status, href } = args || {};
 
 	// Created by passing a 72x72 jpg to onlinejpgtools.com/convert-jpg-to-base64
 	const imageBase64 =
@@ -31,6 +32,7 @@ export function createExampleImageFile(args?: {
 		type: 'image/jpg',
 	});
 	file.status = status;
+	file.href = href;
 	return file;
 }
 

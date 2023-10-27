@@ -75,3 +75,10 @@ export const Word: Story = {
 		}),
 	},
 };
+
+export const WithHref: Story = {
+	name: 'with href',
+	args: {
+		file: createExampleImageFile({ href: '#' }),
+	},
+};
