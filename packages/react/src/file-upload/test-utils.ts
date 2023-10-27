@@ -4,14 +4,21 @@ export function createExampleFile(args?: {
 	status?: FileStatus;
 	name?: string;
 	type?: string;
+	href?: string;
 }): FileWithStatus {
-	const { status, name = 'example.txt', type = 'text/plain' } = args || {};
+	const {
+		status,
+		name = 'example.txt',
+		type = 'text/plain',
+		href,
+	} = args || {};
 
 	const bits = ['examplefilecontent'];
 	const file: FileWithStatus = new File(bits, name, {
 		type,
 	});
 	file.status = status;
+	file.href = href;
 	return file;
 }
 
