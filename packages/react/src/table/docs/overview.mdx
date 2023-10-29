@@ -546,7 +546,7 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 
 ```jsx live
 () => {
-	const [selectedRows, setSelectedRows] = useState([]);
+	const [selectedRows, setSelectedRows] = React.useState([]);
 
 	function toggleRowSelection(rowIdx) {
 		if (selectedRows.includes(rowIdx)) {

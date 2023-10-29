@@ -14,7 +14,7 @@ Selected rows have a solid action coloured outline, which is achieved by setting
 
 ```jsx live
 () => {
-	const [isRowSelected, setIsRowSelected] = useState(false);
+	const [isRowSelected, setIsRowSelected] = React.useState(false);
 	return (
 		<Table>
 			<TableHead>
@@ -63,7 +63,7 @@ Unlike the checkboxes in each row, the "Select all rows" checkbox above the tabl
 
 ```jsx live
 () => {
-	const [selectedRows, setSelectedRows] = useState([]);
+	const [selectedRows, setSelectedRows] = React.useState([]);
 
 	function toggleRowSelection(rowIdx) {
 		if (selectedRows.includes(rowIdx)) {
@@ -162,7 +162,7 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 
 ```jsx live
 () => {
-	const [selectedRows, setSelectedRows] = useState([]);
+	const [selectedRows, setSelectedRows] = React.useState([]);
 
 	function toggleRowSelection(rowIdx) {
 		if (selectedRows.includes(rowIdx)) {
