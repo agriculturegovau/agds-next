@@ -35,6 +35,7 @@ import {
 import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
 import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
+import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
@@ -92,7 +93,9 @@ export function AppLayout({
 						flexGrow={1}
 						{...(applyMainElement ? MAIN_CONTENT_ATTRS : undefined)}
 					>
-						{children}
+						<ErrorBoundary fallback={<ErrorBoundaryPageFallback />}>
+							{children}
+						</ErrorBoundary>
 					</Box>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
