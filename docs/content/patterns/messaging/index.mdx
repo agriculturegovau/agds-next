@@ -1,11 +1,9 @@
 ---
 title: Messaging
-description: We have a system of components and patterns to help you communicate various types of messages to users.
+description: Messaging conveys contextual information to the user, provides information in relation to a service or interaction, and provides feedback in response to their actions or the current system status.
 relatedComponents:
   ['page-alert', 'global-alert', 'section-alert', 'field', 'callout']
 ---
-
-Messaging conveys contextual information to the user, provides information in relation to a service or interaction, and provides feedback in response to their actions or the current system status.
 
 ## Global alert
 
@@ -55,7 +53,7 @@ Section alerts appear above an interactive component or at the top of a page sec
 
 ## Invalid field
 
-Alert the user of something that has happened in an input component. They appear above the input and after any label or hint text.
+Invalid [Fields](/components/field) alert the user of something that has happened in an input component. They appear above the input and after any label or hint text.
 
 A border is added to the left-margin of the input to group the message to the component.
 
@@ -79,9 +77,9 @@ An information hierarchy can be created with Callouts by applying the Feature, I
 </Callout>
 ```
 
-## Loading, Error and Empty states
+## Loading, empty and error states
 
-When loading data in an application, it is important to consider and design for loading, empty, and error states. The compositions in our [Loading, Error and Empty state](/components/error-and-empty-states) patterns are designed to help you communicate these states to users.
+When loading data in an application, it is important to consider and design for loading, empty, and error states. The compositions in our [Loading, Error and Empty state](/patterns/loading-error-empty-states) patterns are designed to help you communicate these states to users.
 
 ```jsx live
 <Stack gap={2} alignItems="flex-start">
@@ -98,7 +96,7 @@ When loading data in an application, it is important to consider and design for 
 
 ## Error page template
 
-The [Error page template](/components/error-page-template) is used to display a full page error message to the user, if something goes wrong while loading the page.
+The [Error page template](/templates/error-page) is used to display a full page error message to the user, if something goes wrong while loading the page.
 
 This could include 404 errors, or if the application is down for maintenance.
 
