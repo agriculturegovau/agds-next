@@ -580,44 +580,46 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 						Select all rows
 					</Checkbox>
 				</Box>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableHeader>Select</TableHeader>
-							<TableHeader scope="col">Reference</TableHeader>
-							<TableHeader scope="col">Date submitted</TableHeader>
-							<TableHeader scope="col">Actions</TableHeader>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{Array.from(new Array(3).keys()).map((idx) => {
-							const isRowSelected = selectedRows.includes(idx);
-							return (
-								<TableRow selected={isRowSelected}>
-									<TableCell>
-										<Checkbox
-											size="sm"
-											checked={isRowSelected}
-											onChange={() => toggleRowSelection(idx)}
-										>
-											<VisuallyHidden>Select</VisuallyHidden>
-										</Checkbox>
-									</TableCell>
-									<TableCell as="th" scope="row" fontWeight="bold">
-										<TextLink href="#">REF-AB3CD4EF</TextLink>
-									</TableCell>
-									<TableCell>20/06/2022</TableCell>
-									<TableCell>
-										<Flex gap={1}>
-											<TextLink href="#">Download</TextLink>
-											<TextLink href="#">Delete</TextLink>
-										</Flex>
-									</TableCell>
-								</TableRow>
-							);
-						})}
-					</TableBody>
-				</Table>
+				<TableWrapper>
+					<Table>
+						<TableHead>
+							<TableRow>
+								<TableHeader>Select</TableHeader>
+								<TableHeader scope="col">Reference</TableHeader>
+								<TableHeader scope="col">Date submitted</TableHeader>
+								<TableHeader scope="col">Actions</TableHeader>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{Array.from(new Array(3).keys()).map((idx) => {
+								const isRowSelected = selectedRows.includes(idx);
+								return (
+									<TableRow selected={isRowSelected}>
+										<TableCell>
+											<Checkbox
+												size="sm"
+												checked={isRowSelected}
+												onChange={() => toggleRowSelection(idx)}
+											>
+												<VisuallyHidden>Select</VisuallyHidden>
+											</Checkbox>
+										</TableCell>
+										<TableCell as="th" scope="row" fontWeight="bold">
+											<TextLink href="#">REF-AB3CD4EF</TextLink>
+										</TableCell>
+										<TableCell>20/06/2022</TableCell>
+										<TableCell>
+											<Flex gap={1}>
+												<TextLink href="#">Download</TextLink>
+												<TextLink href="#">Delete</TextLink>
+											</Flex>
+										</TableCell>
+									</TableRow>
+								);
+							})}
+						</TableBody>
+					</Table>
+				</TableWrapper>
 			</Stack>
 			{selectedRows.length > 0 ? (
 				<TableBatchActionsBar>
