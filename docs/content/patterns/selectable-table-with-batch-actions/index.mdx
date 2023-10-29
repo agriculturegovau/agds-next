@@ -14,41 +14,43 @@ Selected rows have a solid action coloured outline, which is achieved by setting
 
 ```jsx live
 () => {
-	const [isRowSelected, setIsRowSelected] = useState(false);
+	const [isRowSelected, setIsRowSelected] = React.useState(false);
 	return (
-		<Table>
-			<TableHead>
-				<TableRow>
-					<TableHeader>Select</TableHeader>
-					<TableHeader scope="col">Reference</TableHeader>
-					<TableHeader scope="col">Date submitted</TableHeader>
-					<TableHeader scope="col">Actions</TableHeader>
-				</TableRow>
-			</TableHead>
-			<TableBody>
-				<TableRow selected={isRowSelected}>
-					<TableCell>
-						<Checkbox
-							size="sm"
-							checked={isRowSelected}
-							onChange={() => setIsRowSelected((x) => !x)}
-						>
-							<VisuallyHidden>Select row</VisuallyHidden>
-						</Checkbox>
-					</TableCell>
-					<TableCell as="th" scope="row" fontWeight="bold">
-						<TextLink href="#">REF-AB3CD4EF</TextLink>
-					</TableCell>
-					<TableCell>20/06/2022</TableCell>
-					<TableCell>
-						<Flex gap={1}>
-							<TextLink href="#">Download</TextLink>
-							<TextLink href="#">Delete</TextLink>
-						</Flex>
-					</TableCell>
-				</TableRow>
-			</TableBody>
-		</Table>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader>Select</TableHeader>
+						<TableHeader scope="col">Reference</TableHeader>
+						<TableHeader scope="col">Date submitted</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					<TableRow selected={isRowSelected}>
+						<TableCell>
+							<Checkbox
+								size="sm"
+								checked={isRowSelected}
+								onChange={() => setIsRowSelected((x) => !x)}
+							>
+								<VisuallyHidden>Select row</VisuallyHidden>
+							</Checkbox>
+						</TableCell>
+						<TableCell as="th" scope="row" fontWeight="bold">
+							<TextLink href="#">REF-AB3CD4EF</TextLink>
+						</TableCell>
+						<TableCell>20/06/2022</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink href="#">Download</TextLink>
+								<TextLink href="#">Delete</TextLink>
+							</Flex>
+						</TableCell>
+					</TableRow>
+				</TableBody>
+			</Table>
+		</TableWrapper>
 	);
 };
 ```
@@ -63,7 +65,7 @@ Unlike the checkboxes in each row, the "Select all rows" checkbox above the tabl
 
 ```jsx live
 () => {
-	const [selectedRows, setSelectedRows] = useState([]);
+	const [selectedRows, setSelectedRows] = React.useState([]);
 
 	function toggleRowSelection(rowIdx) {
 		if (selectedRows.includes(rowIdx)) {
@@ -96,106 +98,7 @@ Unlike the checkboxes in each row, the "Select all rows" checkbox above the tabl
 					Select all rows
 				</Checkbox>
 			</Box>
-			<Table>
-				<TableHead>
-					<TableRow>
-						<TableHeader>Select</TableHeader>
-						<TableHeader scope="col">Reference</TableHeader>
-						<TableHeader scope="col">Date submitted</TableHeader>
-						<TableHeader scope="col">Actions</TableHeader>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{Array.from(new Array(3).keys()).map((idx) => {
-						const isRowSelected = selectedRows.includes(idx);
-						return (
-							<TableRow selected={isRowSelected}>
-								<TableCell>
-									<Checkbox
-										size="sm"
-										checked={isRowSelected}
-										onChange={() => toggleRowSelection(idx)}
-									>
-										<VisuallyHidden>Select</VisuallyHidden>
-									</Checkbox>
-								</TableCell>
-								<TableCell as="th" scope="row" fontWeight="bold">
-									<TextLink href="#">REF-AB3CD4EF</TextLink>
-								</TableCell>
-								<TableCell>20/06/2022</TableCell>
-								<TableCell>
-									<Flex gap={1}>
-										<TextLink href="#">Download</TextLink>
-										<TextLink href="#">Delete</TextLink>
-									</Flex>
-								</TableCell>
-							</TableRow>
-						);
-					})}
-				</TableBody>
-			</Table>
-		</Stack>
-	);
-};
-```
-
-## Batch actions
-
-When one or more rows in a table is selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same action across multiple table rows.
-
-Once a row from the table has been selected, the `TableBatchActionsBar` component is positioned sticky at the bottom of the table, presenting a set of possible actions to apply to all selected rows.
-
-Only small [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. When pressed, these buttons should trigger [Drawers](/components/drawer) that contain the form related to the action.
-
-<DoHeading />
-
-- ensure each batch action can be performed on every selectable row
-- include a "Cancel" button at the end of the batch actions button group
-- use small buttons for batch actions
-
-<DontHeading />
-
-- include batch actions that can not be performed on every selectable row
-- place form components inside the `TableBatchActionsBar` component, as they can introduce inconsistencies as well as complexities related to validation and submission.
-
-[View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
-
-```jsx live
-() => {
-	const [selectedRows, setSelectedRows] = useState([]);
-
-	function toggleRowSelection(rowIdx) {
-		if (selectedRows.includes(rowIdx)) {
-			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
-		} else {
-			setSelectedRows((r) => [...r, rowIdx]);
-		}
-	}
-
-	const anyRowsChecked = selectedRows.length > 0;
-	const allRowsChecked = selectedRows.length === 3;
-
-	function toggleAllRows() {
-		if (anyRowsChecked) {
-			setSelectedRows([]);
-		} else {
-			setSelectedRows([0, 1, 2]);
-		}
-	}
-
-	return (
-		<Stack gap={0.5}>
-			<Stack>
-				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
-					<Checkbox
-						size="sm"
-						checked={allRowsChecked}
-						indeterminate={anyRowsChecked && !allRowsChecked}
-						onChange={() => toggleAllRows()}
-					>
-						Select all rows
-					</Checkbox>
-				</Box>
+			<TableWrapper>
 				<Table>
 					<TableHead>
 						<TableRow>
@@ -234,6 +137,109 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 						})}
 					</TableBody>
 				</Table>
+			</TableWrapper>
+		</Stack>
+	);
+};
+```
+
+## Batch actions
+
+When one or more rows in a table is selected, users can perform batch actions on the selected rows. Batch actions can increase user efficiency compared to the effort of repeatedly performing the same action across multiple table rows.
+
+Once a row from the table has been selected, the `TableBatchActionsBar` component is positioned sticky at the bottom of the table, presenting a set of possible actions to apply to all selected rows.
+
+Only small [Buttons](/components/button) should be placed inside of the `TableBatchActionsBar` component. When pressed, these buttons should trigger [Drawers](/components/drawer) that contain the form related to the action.
+
+<DoHeading />
+
+- ensure each batch action can be performed on every selectable row
+- include a "Cancel" button at the end of the batch actions button group
+- use small buttons for batch actions
+
+<DontHeading />
+
+- include batch actions that can not be performed on every selectable row
+- place form components inside the `TableBatchActionsBar` component, as they can introduce inconsistencies as well as complexities related to validation and submission.
+
+[View an example in Storybook](/storybook/index.html?path=/story/content-table--selectable-with-batch-actions)
+
+```jsx live
+() => {
+	const [selectedRows, setSelectedRows] = React.useState([]);
+
+	function toggleRowSelection(rowIdx) {
+		if (selectedRows.includes(rowIdx)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+		} else {
+			setSelectedRows((r) => [...r, rowIdx]);
+		}
+	}
+
+	const anyRowsChecked = selectedRows.length > 0;
+	const allRowsChecked = selectedRows.length === 3;
+
+	function toggleAllRows() {
+		if (anyRowsChecked) {
+			setSelectedRows([]);
+		} else {
+			setSelectedRows([0, 1, 2]);
+		}
+	}
+
+	return (
+		<Stack gap={0.5}>
+			<Stack>
+				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+					<Checkbox
+						size="sm"
+						checked={allRowsChecked}
+						indeterminate={anyRowsChecked && !allRowsChecked}
+						onChange={() => toggleAllRows()}
+					>
+						Select all rows
+					</Checkbox>
+				</Box>
+				<TableWrapper>
+					<Table>
+						<TableHead>
+							<TableRow>
+								<TableHeader>Select</TableHeader>
+								<TableHeader scope="col">Reference</TableHeader>
+								<TableHeader scope="col">Date submitted</TableHeader>
+								<TableHeader scope="col">Actions</TableHeader>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{Array.from(new Array(3).keys()).map((idx) => {
+								const isRowSelected = selectedRows.includes(idx);
+								return (
+									<TableRow selected={isRowSelected}>
+										<TableCell>
+											<Checkbox
+												size="sm"
+												checked={isRowSelected}
+												onChange={() => toggleRowSelection(idx)}
+											>
+												<VisuallyHidden>Select</VisuallyHidden>
+											</Checkbox>
+										</TableCell>
+										<TableCell as="th" scope="row" fontWeight="bold">
+											<TextLink href="#">REF-AB3CD4EF</TextLink>
+										</TableCell>
+										<TableCell>20/06/2022</TableCell>
+										<TableCell>
+											<Flex gap={1}>
+												<TextLink href="#">Download</TextLink>
+												<TextLink href="#">Delete</TextLink>
+											</Flex>
+										</TableCell>
+									</TableRow>
+								);
+							})}
+						</TableBody>
+					</Table>
+				</TableWrapper>
 			</Stack>
 			{selectedRows.length > 0 ? (
 				<TableBatchActionsBar>
