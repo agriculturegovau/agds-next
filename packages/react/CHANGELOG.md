@@ -1,5 +1,24 @@
 # @ag.ds-next/react
 
+## 1.15.0
+
+### Minor Changes
+
+- e1d185aef1d: button: Switched to `min-height` instead of `height` to better accommodate buttons with multi-line labels
+- 9be9c23e8a4: autocomplete: Improved the `renderItem` prop which controls how each option in the dropdown list is rendered. Inside this function, consumers can style extra information about an option by using a new component called `AutocompleteRenderItem`.
+
+  combobox: Improved the `renderItem` prop which controls how each option in the dropdown list is rendered. Inside this function, consumers can style extra information about an option by using a new component called `ComboboxRenderItem`.
+
+### Patch Changes
+
+- 33cbe1ea10a: text-input: Add support for max-length
+- eced5863244: pagination: Fixed small bug where separators were sometimes being displayed unnecessarily
+- 7d63c871570: button: Added flex-shrinking to icons to prevent from shrinking when the button label spans multiple lines
+
+  button: Updated text alignment for the `text` button variant
+
+- 3a66a0df9b3: dropdown-menu: Minor improvements to internal state reducer
+
 ## 1.14.0
 
 ### Minor Changes
