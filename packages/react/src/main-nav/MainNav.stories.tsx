@@ -18,6 +18,9 @@ const meta: Meta<typeof MainNav> = {
 		],
 		activePath: '#content',
 	},
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export default meta;
