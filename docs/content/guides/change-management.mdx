@@ -3,7 +3,7 @@ title: Change management
 opener: How we classify and communicate changes to our design system.
 ---
 
-The design system is a living piece of software and is constantly evolving to meet the needs of our users. We want to ensure that we are communicating changes to our users in a way that is clear and easy to understand.
+TheThe design system is a living system that is constantly evolving and changing to meet the needs of our users. We want to communicate these changes simply and clearly for our users to understand.
 
 See our [updates page](https://design-system.agriculture.gov.au/updates) for our changelog.
 
@@ -11,7 +11,7 @@ See our [updates page](https://design-system.agriculture.gov.au/updates) for our
 
 We aim to release a new version of the design system [via npm](https://www.npmjs.com/package/@ag.ds-next/react) every two weeks, or the end of a sprint. This ensures that we are releasing changes regularly and giving our users a chance to provide feedback on changes before they are released.
 
-This is a general guideline and we may release more frequently if there are important changes to be released.
+This is a general guideline, and we may release more frequently if there are important changes to be released.
 
 ## Change Types
 
@@ -25,14 +25,14 @@ We follow the [Semantic Versioning](https://semver.org/) system to classify chan
 
 ### Patch (fix)
 
-A change that fixes a bug or makes a small improvement which does not affect the API of the component. The consumer isn't expected to change their code in order to implement the update.
+A change that fixes a bug or makes a small improvement which does not affect the API of the component. The consumer isn't expected to change their code to implement the update.
 
 For example...
 
 - A minor visual change to a component
 - Resolving a crash or other kind of bug
 
-The GitHub pull request related to a patch change can reviewed, merged and released as soon as a AgDS team member is free.
+The GitHub pull request related to a patch change can reviewed, merged, and released as soon as a AgDS team member is free.
 
 ### Minor (feature)
 
@@ -43,11 +43,11 @@ For example...
 - A new component
 - A new prop on an existing component
 
-The GitHub pull request related to a patch change can be reviewed, merged and released as soon as a AgDS team member is free.
+The GitHub pull request related to a patch change can be reviewed, merged, and released as soon as a AgDS team member is free.
 
 ### Major (breaking)
 
-A change which breaks the API of existing component(s). A user is expected to make a change to their code in order for it to continue working.
+A change which breaks the API of existing component(s). A user is expected to make a change to their code for it to continue working.
 
 For example...
 
@@ -66,20 +66,20 @@ For example...
 
 ### 'No change'
 
-Changes that do not effect our published artefacts such as the documentation website updates do not require any versioning updates.
+Changes that do not affect our published artefacts such as the documentation website updates do not require any versioning updates.
 
 ## Deprecation
 
-As a general rule, we do our best to design with the future in mind, to avoid breaking changes. However, sometimes new information or ideas come to light which mean that we need to change our approach. In these cases, we will deprecate a component or prop.
+As a rule, we do our best to design with the future in mind, to avoid breaking changes. However, sometimes new information or ideas come to light which mean that we need to change our approach. In these cases, we will deprecate a component or prop.
 
 Deprecation is a process of warning users that a component or prop will be removed in a future release. This gives users a chance to update their code before the change is made.
 
-If we intend to deprecate a component or prop, the process for commmunicating breaking changes, as outlined above, must be followed. A Github Pull Request will be created as a draft and will include the "deprecation" label. The community will be given one week to give feedback, before we decide whether to merge the PR and release the change.
+If we intend to deprecate a component or prop, the process for communicating breaking changes, as outlined above, must be followed. A Github Pull Request will be created as a draft and will include the "deprecation" label. The community will be given one week to give feedback, before we decide whether to merge the PR and release the change.
 
 ## About Changesets
 
 We use [Changesets](https://github.com/changesets/changesets) to communicate the changes to our users and to automate the release process.
 
-Every pull request which changes a component must include a changeset file. This file describes the change, and is used to generate the release notes and to determine the version number of the next release.
+Every pull request which changes a component must include a changeset file. This file describes the change and is used to generate the release notes and to determine the version number of the next release.
 
 To create a changeset, run `yarn changeset` in the root of the repository. Then commit the changeset file and push it to your branch.
