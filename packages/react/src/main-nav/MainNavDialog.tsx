@@ -6,9 +6,9 @@ import { Box } from '../box';
 import { boxPalette, tokens, useAriaModalPolyfill, canUseDOM } from '../core';
 import { Flex } from '../flex';
 import { MainNavCloseButton } from './MainNavMenuButtons';
-import { MAIN_NAV_MOBILE_MAX_WIDTH } from './utils';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavDialogNavList } from './MainNavDialogNavList';
+import { mobileBreakpoint, mobileMaxWidth } from './utils';
 
 export type MainNavDialogProps = {
 	activePath: string;
@@ -46,7 +46,7 @@ export function MainNavDialog({
 	if (!isMobileMenuOpen) return null;
 
 	return createPortal(
-		<Box ref={modalContainerRef} display={{ lg: 'none' }}>
+		<Box ref={modalContainerRef} display={{ [mobileBreakpoint]: 'none' }}>
 			<LockScroll />
 			<Overlay onClick={closeMobileMenu} />
 			<FocusLock returnFocus>
@@ -56,8 +56,8 @@ export function MainNavDialog({
 					background="shade"
 					flexDirection="column"
 					padding={1}
-					gap={1}
-					width={MAIN_NAV_MOBILE_MAX_WIDTH}
+					gap={0.5}
+					width={mobileMaxWidth}
 					css={{
 						position: 'fixed',
 						zIndex: tokens.zIndex.dialog,
@@ -67,7 +67,7 @@ export function MainNavDialog({
 						overflowY: 'auto',
 					}}
 				>
-					<MainNavCloseButton onClick={close} />
+					<MainNavCloseButton onClick={closeMobileMenu} />
 					<MainNavDialogNavList
 						aria-label="main"
 						items={items}

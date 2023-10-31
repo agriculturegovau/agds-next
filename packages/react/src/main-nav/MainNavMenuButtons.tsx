@@ -1,9 +1,9 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { BaseButton } from '../button';
 import { Flex } from '../flex';
-import { boxPalette } from '../core';
+import { boxPalette, packs } from '../core';
 import { CloseIcon, MenuIcon } from '../icon';
-import { ids } from './utils';
+import { ids, mobileBreakpoint } from './utils';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{
@@ -14,7 +14,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 	return (
 		<Flex
 			as={BaseButton}
-			display={{ xs: 'flex', lg: 'none' }}
+			display={{ xs: 'flex', [mobileBreakpoint]: 'none' }}
 			flexDirection="column"
 			justifyContent="center"
 			alignItems="center"
@@ -32,6 +32,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 				'&:hover': {
 					color: boxPalette.foregroundText,
 					backgroundColor: localPalette.linkHoverBg,
+					...packs.underline,
 				},
 			}}
 		>
@@ -62,10 +63,12 @@ export function MainNavCloseButton({ onClick }: MainNavCloseButtonProps) {
 			aria-controls={ids.dialog}
 			aria-expanded="true"
 			css={{
+				alignSelf: 'flex-start',
 				color: boxPalette.foregroundAction,
 				'&:hover': {
 					color: boxPalette.foregroundText,
 					backgroundColor: localPalette.linkHoverBg,
+					...packs.underline,
 				},
 			}}
 		>

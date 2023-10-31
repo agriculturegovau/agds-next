@@ -3,6 +3,7 @@ import { Flex } from '../flex';
 import { useLinkComponent, LinkProps } from '../core';
 import { BaseButton, BaseButtonProps } from '../button';
 import { MainNavListItem } from './MainNavListItem';
+import { mobileBreakpoint } from './utils';
 
 type MainNavListLink = Omit<LinkProps, 'children'>;
 
@@ -17,6 +18,7 @@ export type MainNavListProps = {
 	'aria-label': string;
 	activePath: string;
 	items?: MainNavListItemType[];
+	/** `primary` is used for the main navigation items on the left. `secondary` is on the right. */
 	type: 'primary' | 'secondary';
 };
 
@@ -30,8 +32,13 @@ export function MainNavList({
 	return (
 		<Flex
 			as="nav"
-			display={type === 'primary' ? { xs: 'none', lg: 'flex' } : undefined}
 			aria-label={ariaLabel}
+			// Primary links are hidden on desktop as they are visible in the sidebar
+			display={
+				type === 'primary'
+					? { xs: 'none', [mobileBreakpoint]: 'flex' }
+					: undefined
+			}
 		>
 			<Flex as="ul">
 				{items?.map(({ label, endElement, ...item }, index) => {

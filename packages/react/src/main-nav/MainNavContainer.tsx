@@ -25,7 +25,6 @@ export function MainNavContainer({
 	activePath,
 }: MainNavContainerProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const hasItems = Boolean(items?.length);
 	return (
 		<Box
 			id={id}
@@ -47,7 +46,7 @@ export function MainNavContainer({
 				minHeight="3.5rem"
 				css={{ margin: '0 auto' }}
 			>
-				{hasItems ? <MainNavOpenButton onClick={openMobileMenu} /> : null}
+				{items?.length ? <MainNavOpenButton onClick={openMobileMenu} /> : null}
 				<MainNavList
 					aria-label="main"
 					type="primary"

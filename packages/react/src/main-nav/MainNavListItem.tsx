@@ -3,6 +3,7 @@ import { focusStyles } from '../box';
 import { boxPalette, mapSpacing, packs } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
+import { mobileBreakpoint } from './utils';
 
 export type MainNavListItemProps = PropsWithChildren<{
 	active: boolean;
@@ -13,7 +14,7 @@ export function MainNavListItem({ active, children }: MainNavListItemProps) {
 	return (
 		<Flex
 			as="li"
-			fontSize={{ xs: 'xs', lg: 'sm' }}
+			fontSize={{ xs: 'xs', [mobileBreakpoint]: 'sm' }}
 			css={{
 				' a, button': {
 					boxSizing: 'border-box',
@@ -22,12 +23,12 @@ export function MainNavListItem({ active, children }: MainNavListItemProps) {
 					flexDirection: 'row',
 					alignItems: 'center',
 					gap: mapSpacing(0.5),
-					color: boxPalette.foregroundAction,
 					paddingLeft: mapSpacing(1),
 					paddingRight: mapSpacing(1),
+					color: boxPalette.foregroundAction,
 					textDecoration: 'none',
 
-					// Underline overlay for active menu item
+					// Active s
 					...(active && {
 						color: boxPalette.foregroundText,
 						'&:after': {

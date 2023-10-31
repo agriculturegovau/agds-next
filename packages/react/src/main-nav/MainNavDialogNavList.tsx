@@ -71,10 +71,14 @@ export function MainNavDialogNavListItem({
 					alignItems: 'center',
 					justifyContent: 'space-between',
 					gap: mapSpacing(0.5),
-					color: boxPalette[active ? 'foregroundText' : 'foregroundAction'],
 					padding: mapSpacing(1),
+					color: boxPalette.foregroundAction,
 					textDecoration: 'none',
-					fontWeight: active ? 'bold' : undefined,
+
+					...(active && {
+						color: boxPalette.foregroundText,
+						fontWeight: 'bold',
+					}),
 
 					'&:hover': {
 						color: boxPalette.foregroundText,
