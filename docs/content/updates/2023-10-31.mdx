@@ -1,0 +1,43 @@
+---
+date: 31st October 2023
+title: AgDS Beta v1.15.0 release
+description: Various minor bug fixes and improvements.
+---
+
+## Updates
+
+### [Autocomplete](/components/autocomplete)
+
+- Improved the `renderItem` prop which controls how each option in the dropdown list is rendered. Inside this function, consumers can style extra information about an option by using a new component called `AutocompleteRenderItem`.
+
+### [Button](/components/button)
+
+- Added flex-shrinking to icons to prevent from shrinking when the button label spans multiple lines
+- Switched to min-height instead of height to better accommodate buttons with multi-line labels
+- Updated text alignment for the text button variant
+
+### [Combobox](/components/combobox)
+
+- Improved the `renderItem` prop which controls how each option in the dropdown list is rendered. Inside this function, consumers can style extra information about an option by using a new component called `ComboboxRenderItem`.
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Minor improvements to internal state reducer
+
+### [Pagination](/components/text-input)
+
+- Fixed small bug where separators were sometimes being displayed unnecessarily
+
+### [Text input](/components/text-input)
+
+- Added support for `max-length`
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.15.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1441) for this release.
