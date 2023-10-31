@@ -73,6 +73,19 @@ export const SecondaryButtons: Story = {
 	},
 };
 
+export const Dropdown: Story = {
+	args: {
+		secondaryItems: [
+			{
+				onClick: console.log,
+				label: 'Sign in',
+				endElement: <AvatarIcon color="action" />,
+				dropdown: 'hello world',
+			},
+		],
+	},
+};
+
 export const NoItems: Story = {
 	args: {
 		items: undefined,

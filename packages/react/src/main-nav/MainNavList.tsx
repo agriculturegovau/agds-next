@@ -4,6 +4,10 @@ import { useLinkComponent, LinkProps } from '../core';
 import { BaseButton, BaseButtonProps } from '../button';
 import { MainNavListItem } from './MainNavListItem';
 import { mobileBreakpoint } from './utils';
+import {
+	MainNavListDropdown,
+	MainNavListItemDropdown,
+} from './MainNavListItemDropdown';
 
 type MainNavListLink = Omit<LinkProps, 'children'>;
 
@@ -17,7 +21,7 @@ export type MainNavListItemType = (MainNavListLink | MainNavListButton) & {
 export type MainNavListProps = {
 	'aria-label': string;
 	activePath: string;
-	items?: MainNavListItemType[];
+	items?: (MainNavListItemType | MainNavListDropdown)[];
 	/** `primary` is used for the main navigation items on the left. `secondary` is on the right. */
 	type: 'primary' | 'secondary';
 };
@@ -42,7 +46,7 @@ export function MainNavList({
 		>
 			<Flex as="ul">
 				{items?.map(({ label, endElement, ...item }, index) => {
-					if (isItemLink(item)) {
+					if ('href' in item) {
 						const active = item.href === activePath;
 						return (
 							<MainNavListItem
@@ -57,6 +61,18 @@ export function MainNavList({
 							</MainNavListItem>
 						);
 					}
+
+					if ('dropdown' in item) {
+						return (
+							<MainNavListItemDropdown
+								key={index}
+								label={label}
+								endElement={endElement}
+								{...item}
+							/>
+						);
+					}
+
 					return (
 						<MainNavListItem
 							key={index}
