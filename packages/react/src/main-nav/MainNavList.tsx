@@ -15,6 +15,7 @@ type MainNavListButton = Omit<BaseButtonProps, 'children'>;
 
 export type MainNavListItemType = (MainNavListLink | MainNavListButton) & {
 	label: ReactNode;
+	beforeElement?: ReactNode;
 	endElement?: ReactNode;
 };
 
@@ -45,16 +46,13 @@ export function MainNavList({
 			}
 		>
 			<Flex as="ul">
-				{items?.map(({ label, endElement, ...item }, index) => {
+				{items?.map(({ label, beforeElement, endElement, ...item }, index) => {
 					if ('href' in item) {
 						const active = item.href === activePath;
 						return (
-							<MainNavListItem
-								key={index}
-								active={active}
-								hasEndElement={Boolean(endElement)}
-							>
+							<MainNavListItem key={index} active={active}>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
+									{beforeElement}
 									<span>{label}</span>
 									{endElement}
 								</Link>
@@ -64,22 +62,21 @@ export function MainNavList({
 
 					if ('dropdown' in item) {
 						return (
-							<MainNavListItemDropdown
-								key={index}
-								label={label}
-								endElement={endElement}
-								{...item}
-							/>
+							<MainNavListItem key={index} active={false}>
+								<MainNavListItemDropdown
+									label={label}
+									beforeElement={beforeElement}
+									endElement={endElement}
+									{...item}
+								/>
+							</MainNavListItem>
 						);
 					}
 
 					return (
-						<MainNavListItem
-							key={index}
-							active={false}
-							hasEndElement={Boolean(endElement)}
-						>
+						<MainNavListItem key={index} active={false}>
 							<BaseButton {...item}>
+								{beforeElement}
 								<span>{label}</span>
 								{endElement}
 							</BaseButton>

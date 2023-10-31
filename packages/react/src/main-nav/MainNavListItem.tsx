@@ -7,7 +7,6 @@ import { mobileBreakpoint } from './utils';
 
 export type MainNavListItemProps = PropsWithChildren<{
 	active: boolean;
-	hasEndElement: boolean;
 }>;
 
 export function MainNavListItem({ active, children }: MainNavListItemProps) {

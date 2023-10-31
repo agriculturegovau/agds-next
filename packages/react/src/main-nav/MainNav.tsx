@@ -4,6 +4,7 @@ import { MainNavContainer } from './MainNavContainer';
 import { MainNavDialog } from './MainNavDialog';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavBackground } from './localPalette';
+import { MainNavListDropdown } from './MainNavListItemDropdown';
 
 export type MainNavProps = PropsWithChildren<{
 	/** Used for highlighting the active navigation item. */
@@ -15,7 +16,7 @@ export type MainNavProps = PropsWithChildren<{
 	/** List of navigation items to display. */
 	items?: MainNavListItemType[];
 	/** Optional list of navigation items to display on the right of the component. */
-	secondaryItems?: MainNavListItemType[];
+	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 }>;
 
 export function MainNav({
