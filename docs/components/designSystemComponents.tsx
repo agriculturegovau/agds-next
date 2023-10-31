@@ -260,3 +260,5 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
+
+export { TimeInput } from '@ag.ds-next/react/time-input';
