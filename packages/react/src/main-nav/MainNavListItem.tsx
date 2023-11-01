@@ -15,7 +15,7 @@ export function MainNavListItem({ active, children }: MainNavListItemProps) {
 			as="li"
 			fontSize={{ xs: 'xs', [mobileBreakpoint]: 'sm' }}
 			css={{
-				' a, button': {
+				' > a, > button': {
 					boxSizing: 'border-box',
 					position: 'relative',
 					display: 'flex',

@@ -6,14 +6,15 @@ import { setLocalPaletteVars, MainNavBackground } from './localPalette';
 import { MainNavOpenButton } from './MainNavMenuButtons';
 import { MainNavBottomBar } from './MainNavBottomBar';
 import { MainNavList, MainNavListItemType } from './MainNavList';
+import { MainNavListDropdown } from './MainNavListItemDropdown';
 
 export type MainNavContainerProps = {
 	activePath: string;
 	background: MainNavBackground;
 	id?: string;
-	items?: MainNavListItemType[];
 	openMobileMenu: () => void;
-	secondaryItems?: MainNavListItemType[];
+	items?: MainNavListItemType[];
+	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };
 
 export function MainNavContainer({

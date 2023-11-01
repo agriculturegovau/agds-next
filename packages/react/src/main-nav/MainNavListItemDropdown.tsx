@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseButton } from '../button';
+import { packs } from '../core';
 import {
 	DropdownMenu,
 	useDropdownMenuButton,
@@ -18,13 +19,13 @@ export type MainNavListDropdown = {
 export function MainNavListItemDropdown(props: MainNavListDropdown) {
 	return (
 		<DropdownMenu popoverPlacement="bottom-end" popoverOffset={-8}>
-			<AppLayoutHeaderAccountDropdownButton {...props} />
+			<MainNavListItemDropdownButton {...props} />
 			{props.dropdown}
 		</DropdownMenu>
 	);
 }
 
-function AppLayoutHeaderAccountDropdownButton({
+function MainNavListItemDropdownButton({
 	label,
 	beforeElement,
 	endElement,
@@ -36,17 +37,12 @@ function AppLayoutHeaderAccountDropdownButton({
 			ref={ref}
 			css={[
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
-				{
-					'&:hover': {
-						// TODO fix
-						'& > span:first-of-type': { textDecoration: 'none !important' },
-					},
-				},
+				{ maxWidth: '16rem', overflow: 'hidden' },
 			]}
 			{...buttonProps}
 		>
-			{beforeElement}
-			<span data-agds-dropdown>{label}</span>
+			<div css={{ flexShrink: 0 }}>{beforeElement}</div>
+			<span css={packs.truncate}>{label}</span>
 			{endElement}
 			{isMenuOpen ? (
 				<ChevronUpIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />

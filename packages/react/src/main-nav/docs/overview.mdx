@@ -1,6 +1,6 @@
 ---
 title: Main nav
-description: The main nav is the primary way users navigate the UI. It is consistently visible throughout the service.
+description: The main nav is the primary way users navigate the user interface. It is consistently visible throughout the service.
 group: Navigation
 storybookPath: /story/navigation-mainnav--body
 figmaGalleryNodeId: 11978%3A107135
@@ -13,10 +13,8 @@ relatedComponents: ['header']
 		activePath="#home"
 		items={[
 			{ href: '#home', label: 'Home' },
-			{ href: '#content', label: 'Content page' },
-			{ href: '#form', label: 'Form page' },
-			{ href: '#', label: 'Simple terms' },
-			{ href: '#', label: 'Distinct from each other' },
+			{ href: '#about', label: 'About' },
+			{ href: '#contact', label: 'Contact' },
 		]}
 	/>
 </Box>
@@ -24,11 +22,11 @@ relatedComponents: ['header']
 
 The main navigation component is intended to be used as the primary means of navigation around the website. It typically accommodates the top level of the information architecture.
 
-Most sites will require some form of navigation to help users find the information they’re looking for. While a horizontal navigation bar is just one option for navigation design, it is one of the most visible and familiar ways of helping users navigate a site.
+Most sites will require some form of navigation to help users find the information they are looking for. While a horizontal navigation bar is just one option for navigation design, it is one of the most visible and familiar ways of helping users navigate a site.
 
 The main navigation component is designed to work closely with the header component and collapses down to a conventional open/close menu button on smaller devices.
 
-Note: Because the main navigation component is a horizontal list, it doesn’t accommodate a large amount of items. If you need more space, consider another navigation component such as the [side nav](/components/side-nav).
+Note: Because the main navigation component is a horizontal list, it does not accommodate a large amount of items. If you need more space, consider another navigation component such as the [side nav](/components/side-nav).
 
 <DoHeading />
 
@@ -36,9 +34,101 @@ Note: Because the main navigation component is a horizontal list, it doesn’t a
 - use to enable universal access to system-level tasks and functions – for example, Log in, Account settings, and Messages
 - use concise labels
 - model your navigation according to most frequently accessed tasks and information
-- implement below the Header component.
+- implement below the [Header](/components/header) component.
 
 <DontHeading />
 
 - use hover to expand dropdown lists
 - include more than 8 items where possible.
+
+## Secondary items
+
+Use the `secondaryItems` prop to add navigational items to the right side of the Main nav. Since secondary items are not included in the hamburger/dialog menu on smaller devices, it is important to add a maximum of 2 secondary items.
+
+```jsx live
+<Box palette="dark">
+	<MainNav
+		activePath="#home"
+		items={[
+			{ href: '#home', label: 'Home' },
+			{ href: '#about', label: 'About' },
+			{ href: '#contact', label: 'Contact' },
+		]}
+		secondaryItems={[
+			{
+				href: '#sign-in',
+				label: 'Sign in',
+				endElement: <AvatarIcon color="action" />,
+			},
+		]}
+	/>
+</Box>
+```
+
+### Dropdown
+
+Secondary items can also display a [Dropdown menu](/components/dropdown-menu) by utilising the `dropdown` key.
+
+```jsx live
+() => {
+	const [selectedBusiness, setSelectedBusiness] = React.useState('Antfix');
+	return (
+		<Box palette="dark">
+			<MainNav
+				activePath="#home"
+				items={[
+					{ href: '#home', label: 'Home' },
+					{ href: '#about', label: 'About' },
+					{ href: '#contact', label: 'Contact' },
+				]}
+				secondaryItems={[
+					{
+						label: 'Moe Syzlack',
+						beforeElement: (
+							<Avatar name="Moe Syzlack" tone="action" size="md" />
+						),
+						dropdown: (
+							<DropdownMenuPanel palette="light">
+								<DropdownMenuGroup label="Businesses">
+									<DropdownMenuItemRadio
+										checked={selectedBusiness === 'Antfix'}
+										onClick={() => setSelectedBusiness('Antfix')}
+										secondaryText="Sydney"
+									>
+										Antfix
+									</DropdownMenuItemRadio>
+									<DropdownMenuItemRadio
+										checked={selectedBusiness === 'Produce Fresh'}
+										onClick={() => setSelectedBusiness('Produce Fresh')}
+										secondaryText="Brisbane"
+									>
+										Produce Fresh
+									</DropdownMenuItemRadio>
+									<DropdownMenuItemRadio
+										checked={selectedBusiness === 'Organic Co'}
+										onClick={() => setSelectedBusiness('Organic Co')}
+										secondaryText="Canberra"
+									>
+										Organic Co
+									</DropdownMenuItemRadio>
+									<DropdownMenuGroupLink href="#">
+										View all
+									</DropdownMenuGroupLink>
+								</DropdownMenuGroup>
+								<DropdownMenuGroup label="My account">
+									<DropdownMenuItemLink href="#messages" icon={EmailIcon}>
+										Messages
+									</DropdownMenuItemLink>
+									<DropdownMenuItem onClick={console.log} icon={ExitIcon}>
+										Sign out
+									</DropdownMenuItem>
+								</DropdownMenuGroup>
+							</DropdownMenuPanel>
+						),
+					},
+				]}
+			/>
+		</Box>
+	);
+};
+```
