@@ -4,7 +4,10 @@ import { filesize } from './filesize';
 export type FileStatus = 'none' | 'uploading' | 'success';
 
 export type FileWithStatus = FileWithPath & {
+	/** Use to indicate the upload status of a file. */
 	status?: FileStatus;
+	/** Used to link to a webpage where the user can view/download the existing file. */
+	href?: string;
 };
 
 export type RejectedFile = {

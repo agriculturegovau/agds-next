@@ -153,7 +153,10 @@ const InstantUploadTemplate = (args: FileUploadProps) => {
 		setTimeout(() => {
 			setValue(
 				acceptedFiles.map((file) => {
-					if (file.status === 'uploading') file.status = 'success';
+					if (file.status === 'uploading') {
+						file.status = 'success';
+						file.href = '#';
+					}
 					return file;
 				})
 			);
