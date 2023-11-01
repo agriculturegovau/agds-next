@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, useMemo } from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
@@ -44,10 +44,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			message,
 			invalid,
 			id,
+			disabled = false,
 			...props
 		},
 		ref
 	) {
+		const styles = useFileInputStyles({ disabled });
 		return (
 			<Field
 				label={label}
@@ -61,29 +63,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				{(a11yProps) => (
 					<input
 						ref={ref}
-						css={{
-							...fontGrid('sm', 'default'),
-							fontFamily: tokens.font.body,
-							color: boxPalette.foregroundText,
-
-							'::file-selector-button': {
-								...buttonStyles({
-									size: 'md',
-									variant: 'secondary',
-									block: false,
-								}),
-								margin: `0 ${mapSpacing(1)} 0 0`,
-							},
-
-							'&:disabled': {
-								cursor: 'not-allowed',
-								opacity: 0.3,
-							},
-
-							'&:focus': packs.outline,
-						}}
+						css={styles}
 						{...a11yProps}
 						type="file"
+						disabled={disabled}
 						{...props}
 					/>
 				)}
@@ -91,3 +74,37 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		);
 	}
 );
+
+function useFileInputStyles({ disabled }: { disabled: boolean }) {
+	const fileSelectorButtonStyles = useMemo(() => {
+		// Use `buttonStyles` to generate the styles for a standard secondary button
+		const defaultButtonStyles = buttonStyles({
+			size: 'md',
+			variant: 'secondary',
+			block: false,
+		});
+		return {
+			...defaultButtonStyles,
+			margin: `0 ${mapSpacing(1)} 0 0`,
+			// '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
+			'&:hover': disabled
+				? { cursor: 'not-allowed' }
+				: defaultButtonStyles['&:not(:disabled):hover'],
+		};
+	}, [disabled]);
+
+	return {
+		...fontGrid('sm', 'default'),
+		fontFamily: tokens.font.body,
+		color: boxPalette.foregroundText,
+
+		'&::file-selector-button': fileSelectorButtonStyles,
+
+		'&:disabled': {
+			cursor: 'not-allowed',
+			opacity: 0.3,
+		},
+
+		'&:focus': packs.outline,
+	};
+}
