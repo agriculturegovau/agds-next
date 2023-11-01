@@ -50,10 +50,10 @@ export function MainNavList({
 					if ('href' in item) {
 						const active = item.href === activePath;
 						return (
-							<MainNavListItem key={index} active={active}>
+							<MainNavListItem key={index} active={active} type={type}>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
 									{beforeElement}
-									<span data-main-nav-list-item-label>{label}</span>
+									<span>{label}</span>
 									{endElement}
 								</Link>
 							</MainNavListItem>
@@ -62,22 +62,21 @@ export function MainNavList({
 
 					if ('dropdown' in item) {
 						return (
-							<MainNavListItem key={index} active={false}>
-								<MainNavListItemDropdown
-									label={label}
-									beforeElement={beforeElement}
-									endElement={endElement}
-									{...item}
-								/>
-							</MainNavListItem>
+							<MainNavListItemDropdown
+								key={index}
+								label={label}
+								beforeElement={beforeElement}
+								endElement={endElement}
+								{...item}
+							/>
 						);
 					}
 
 					return (
-						<MainNavListItem key={index} active={false}>
+						<MainNavListItem key={index} active={false} type={type}>
 							<BaseButton {...item}>
 								{beforeElement}
-								<span data-main-nav-list-item-label>{label}</span>
+								<span>{label}</span>
 								{endElement}
 							</BaseButton>
 						</MainNavListItem>

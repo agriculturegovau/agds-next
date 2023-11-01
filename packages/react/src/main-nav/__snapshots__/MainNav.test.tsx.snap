@@ -7,13 +7,13 @@ exports[`MainNav renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-w3jofv-boxStyles-MainNavContainer"
+      class="css-hcet0s-boxStyles-MainNavContainer"
     >
       <button
         aria-controls="main-nav-dialog"
         aria-expanded="false"
         aria-label="Open main menu"
-        class="css-a67i0q-BaseButton-boxStyles-MainNavOpenButton"
+        class="css-jb434h-BaseButton-boxStyles-MainNavOpenButton"
         type="button"
       >
         <svg
@@ -47,54 +47,46 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-rg3gl3-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/"
             >
-              <span
-                data-main-nav-list-item-label="true"
-              >
+              <span>
                 Home
               </span>
             </a>
           </li>
           <li
-            class="css-rg3gl3-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/content"
             >
-              <span
-                data-main-nav-list-item-label="true"
-              >
+              <span>
                 Content page
               </span>
             </a>
           </li>
           <li
-            class="css-rg3gl3-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/form"
             >
-              <span
-                data-main-nav-list-item-label="true"
-              >
+              <span>
                 Form page
               </span>
             </a>
           </li>
           <li
-            class="css-1f4xryj-boxStyles-MainNavListItem"
+            class="css-1nz3t6v-boxStyles-MainNavListItem"
           >
             <a
               aria-current="page"
               href="/simple"
             >
-              <span
-                data-main-nav-list-item-label="true"
-              >
+              <span>
                 Simple page
               </span>
             </a>
@@ -109,14 +101,12 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-rg3gl3-boxStyles-MainNavListItem"
+            class="css-1cp7t2w-boxStyles-MainNavListItem"
           >
             <a
               href="#sign-in"
             >
-              <span
-                data-main-nav-list-item-label="true"
-              >
+              <span>
                 Sign in
               </span>
               <svg

@@ -20,7 +20,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 			alignItems="center"
 			fontSize="xs"
 			lineHeight="nospace"
-			padding={1}
+			paddingX={1}
 			gap={0.5}
 			focus
 			onClick={onClick}

@@ -7,6 +7,7 @@ import { MainNavOpenButton } from './MainNavMenuButtons';
 import { MainNavBottomBar } from './MainNavBottomBar';
 import { MainNavList, MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
+import { mobileBreakpoint } from './utils';
 
 export type MainNavContainerProps = {
 	activePath: string;
@@ -42,9 +43,9 @@ export function MainNavContainer({
 			<Flex
 				justifyContent="space-between"
 				maxWidth={tokens.maxWidth.container}
-				paddingX={tokens.containerPadding}
+				paddingX={{ xs: 0.75, [mobileBreakpoint]: 2 }}
 				width="100%"
-				minHeight="3.5rem"
+				minHeight={{ xs: '5rem', [mobileBreakpoint]: '3.5rem' }}
 				css={{ margin: '0 auto' }}
 			>
 				{items?.length ? <MainNavOpenButton onClick={openMobileMenu} /> : null}

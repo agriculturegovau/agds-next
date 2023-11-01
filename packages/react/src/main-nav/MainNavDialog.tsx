@@ -53,7 +53,7 @@ export function MainNavDialog({
 				<Flex
 					role="dialog"
 					aria-modal="true"
-					background="shade"
+					background="body"
 					flexDirection="column"
 					padding={1}
 					gap={0.5}

@@ -1,33 +1,45 @@
 import type { PropsWithChildren } from 'react';
 import { focusStyles } from '../box';
-import { boxPalette, mapSpacing, packs } from '../core';
+import { boxPalette, mapSpacing, mapResponsiveProp, packs, mq } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
 import { mobileBreakpoint } from './utils';
 
 export type MainNavListItemProps = PropsWithChildren<{
 	active: boolean;
+	type: 'primary' | 'secondary';
 }>;
 
-export function MainNavListItem({ active, children }: MainNavListItemProps) {
+export function MainNavListItem({
+	active,
+	children,
+	type,
+}: MainNavListItemProps) {
 	return (
 		<Flex
 			as="li"
 			fontSize={{ xs: 'xs', [mobileBreakpoint]: 'sm' }}
-			css={{
+			css={mq({
 				' > a, > button': {
 					boxSizing: 'border-box',
 					position: 'relative',
 					display: 'flex',
-					flexDirection: 'row',
+					flexDirection:
+						type === 'primary'
+							? 'row'
+							: mapResponsiveProp({
+									xs: 'column-reverse',
+									[mobileBreakpoint]: 'row',
+							  }),
 					alignItems: 'center',
+					justifyContent: 'center',
 					gap: mapSpacing(0.5),
 					paddingLeft: mapSpacing(1),
 					paddingRight: mapSpacing(1),
 					color: boxPalette.foregroundAction,
 					textDecoration: 'none',
 
-					// Active s
+					// Active styles
 					...(active && {
 						color: boxPalette.foregroundText,
 						'&:after': {
@@ -55,14 +67,14 @@ export function MainNavListItem({ active, children }: MainNavListItemProps) {
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 
-						'& > span[data-main-nav-list-item-label]': packs.underline,
+						'& > span:first-of-type': packs.underline,
 
 						'&::after': {
 							background: localPalette.linkHoverBg,
 						},
 					},
 				},
-			}}
+			})}
 		>
 			{children}
 		</Flex>
