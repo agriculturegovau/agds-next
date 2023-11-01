@@ -108,6 +108,27 @@ export const SecondaryDropdown: Story = {
 	},
 };
 
+export const SecondaryDropdownNoAvatar: Story = {
+	args: {
+		secondaryItems: [
+			{
+				label: 'Moe Syzlack',
+				dropdown: (
+					<DropdownMenuPanel palette="light">
+						<DropdownMenuItemLink href="#profile">Profile</DropdownMenuItemLink>
+						<DropdownMenuItemLink href="#messages">
+							Messages
+						</DropdownMenuItemLink>
+						<DropdownMenuItemLink href="#account-settings">
+							Account settings
+						</DropdownMenuItemLink>
+					</DropdownMenuPanel>
+				),
+			},
+		],
+	},
+};
+
 export const SecondaryDropdownLongName: Story = {
 	args: {
 		secondaryItems: [

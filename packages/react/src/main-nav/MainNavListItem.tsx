@@ -55,7 +55,7 @@ export function MainNavListItem({ active, children }: MainNavListItemProps) {
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 
-						'& > span:first-of-type': packs.underline,
+						'& > span[data-main-nav-list-item-label]': packs.underline,
 
 						'&::after': {
 							background: localPalette.linkHoverBg,

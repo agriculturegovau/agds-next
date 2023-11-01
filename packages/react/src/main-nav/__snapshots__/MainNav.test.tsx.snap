@@ -47,46 +47,54 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-3imq13-boxStyles-MainNavListItem"
+            class="css-rg3gl3-boxStyles-MainNavListItem"
           >
             <a
               href="/"
             >
-              <span>
+              <span
+                data-main-nav-list-item-label="true"
+              >
                 Home
               </span>
             </a>
           </li>
           <li
-            class="css-3imq13-boxStyles-MainNavListItem"
+            class="css-rg3gl3-boxStyles-MainNavListItem"
           >
             <a
               href="/content"
             >
-              <span>
+              <span
+                data-main-nav-list-item-label="true"
+              >
                 Content page
               </span>
             </a>
           </li>
           <li
-            class="css-3imq13-boxStyles-MainNavListItem"
+            class="css-rg3gl3-boxStyles-MainNavListItem"
           >
             <a
               href="/form"
             >
-              <span>
+              <span
+                data-main-nav-list-item-label="true"
+              >
                 Form page
               </span>
             </a>
           </li>
           <li
-            class="css-kd1msc-boxStyles-MainNavListItem"
+            class="css-1f4xryj-boxStyles-MainNavListItem"
           >
             <a
               aria-current="page"
               href="/simple"
             >
-              <span>
+              <span
+                data-main-nav-list-item-label="true"
+              >
                 Simple page
               </span>
             </a>
@@ -101,12 +109,14 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-3imq13-boxStyles-MainNavListItem"
+            class="css-rg3gl3-boxStyles-MainNavListItem"
           >
             <a
               href="#sign-in"
             >
-              <span>
+              <span
+                data-main-nav-list-item-label="true"
+              >
                 Sign in
               </span>
               <svg

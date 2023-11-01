@@ -41,8 +41,10 @@ function MainNavListItemDropdownButton({
 			]}
 			{...buttonProps}
 		>
-			<div css={{ flexShrink: 0 }}>{beforeElement}</div>
-			<span css={packs.truncate}>{label}</span>
+			{beforeElement}
+			<span data-main-nav-list-item-label css={packs.truncate}>
+				{label}
+			</span>
 			{endElement}
 			{isMenuOpen ? (
 				<ChevronUpIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />

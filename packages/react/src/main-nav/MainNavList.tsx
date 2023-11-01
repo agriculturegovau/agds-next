@@ -53,7 +53,7 @@ export function MainNavList({
 							<MainNavListItem key={index} active={active}>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
 									{beforeElement}
-									<span>{label}</span>
+									<span data-main-nav-list-item-label>{label}</span>
 									{endElement}
 								</Link>
 							</MainNavListItem>
@@ -77,7 +77,7 @@ export function MainNavList({
 						<MainNavListItem key={index} active={false}>
 							<BaseButton {...item}>
 								{beforeElement}
-								<span>{label}</span>
+								<span data-main-nav-list-item-label>{label}</span>
 								{endElement}
 							</BaseButton>
 						</MainNavListItem>
