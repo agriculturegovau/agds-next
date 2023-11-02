@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
 import { Avatar } from '../avatar';
 import { NotificationBadge } from '../notification-badge';
+import { Text } from '../text';
 import { Popover } from '../_popover';
 import { ComboboxListItem } from './ComboboxBase/ComboboxListItem';
 import {
@@ -81,5 +83,25 @@ export const WithEndElement: Story = {
 			<Avatar name={nameOption.fullName} size="sm" tone="action" />
 		),
 		endElement: <NotificationBadge value={2} tone="action" />,
+	},
+};
+
+export const WithThreeLinesText: Story = {
+	args: {
+		inputValue: '',
+		itemLabel: nameOption.fullName,
+		secondaryText: (
+			<Fragment>
+				<Text color="muted" fontSize="xs">
+					Role: {nameOption.jobTitle}
+				</Text>
+				<Text color="muted" fontSize="xs">
+					Status: {nameOption.status}
+				</Text>
+				<Text color="muted" fontSize="xs">
+					Another text line
+				</Text>
+			</Fragment>
+		),
 	},
 };
