@@ -44,10 +44,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			message,
 			invalid,
 			id,
+			disabled,
 			...props
 		},
 		ref
 	) {
+		const styles = useFileInputStyles();
 		return (
 			<Field
 				label={label}
@@ -61,29 +63,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				{(a11yProps) => (
 					<input
 						ref={ref}
-						css={{
-							...fontGrid('sm', 'default'),
-							fontFamily: tokens.font.body,
-							color: boxPalette.foregroundText,
-
-							'::file-selector-button': {
-								...buttonStyles({
-									size: 'md',
-									variant: 'secondary',
-									block: false,
-								}),
-								margin: `0 ${mapSpacing(1)} 0 0`,
-							},
-
-							'&:disabled': {
-								cursor: 'not-allowed',
-								opacity: 0.3,
-							},
-
-							'&:focus': packs.outline,
-						}}
+						css={styles}
 						{...a11yProps}
 						type="file"
+						disabled={disabled}
 						{...props}
 					/>
 				)}
@@ -91,3 +74,37 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		);
 	}
 );
+
+function useFileInputStyles() {
+	// Use `buttonStyles` to generate the styles for a standard secondary button
+	const defaultButtonStyles = buttonStyles({
+		size: 'md',
+		variant: 'secondary',
+		block: false,
+	});
+
+	return {
+		...fontGrid('sm', 'default'),
+		fontFamily: tokens.font.body,
+		color: boxPalette.foregroundText,
+
+		'&::file-selector-button': {
+			...defaultButtonStyles,
+			margin: `0 ${mapSpacing(1)} 0 0`,
+		},
+
+		'&:hover': {
+			cursor: 'pointer',
+			'&:not(:disabled)::file-selector-button':
+				defaultButtonStyles['&:not(:disabled):hover'],
+		},
+
+		'&:disabled': {
+			cursor: 'not-allowed',
+			opacity: 0.3,
+			'&::file-selector-button': { cursor: 'not-allowed' },
+		},
+
+		'&:focus': packs.outline,
+	};
+}
