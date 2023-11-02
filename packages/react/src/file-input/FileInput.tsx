@@ -82,20 +82,24 @@ function useFileInputStyles({ disabled }: { disabled?: boolean }) {
 		variant: 'secondary',
 		block: false,
 	});
-	// '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
-	const fileSelectorButtonStyles = {
-		...defaultButtonStyles,
-		margin: `0 ${mapSpacing(1)} 0 0`,
-		'&:hover': disabled
-			? { cursor: 'not-allowed' }
-			: defaultButtonStyles['&:not(:disabled):hover'],
-	};
+
 	return {
 		...fontGrid('sm', 'default'),
 		fontFamily: tokens.font.body,
 		color: boxPalette.foregroundText,
 
-		'&::file-selector-button': fileSelectorButtonStyles,
+		'&::file-selector-button': {
+			...defaultButtonStyles,
+			margin: `0 ${mapSpacing(1)} 0 0`,
+		},
+
+		'&:hover': {
+			cursor: 'pointer',
+			'&::file-selector-button': disabled
+				? { cursor: 'not-allowed' }
+				: // '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
+				  defaultButtonStyles['&:not(:disabled):hover'],
+		},
 
 		'&:disabled': {
 			cursor: 'not-allowed',
