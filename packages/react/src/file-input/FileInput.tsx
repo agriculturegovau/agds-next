@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, useMemo } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
@@ -76,23 +76,20 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 );
 
 function useFileInputStyles({ disabled }: { disabled?: boolean }) {
-	const fileSelectorButtonStyles = useMemo(() => {
-		// Use `buttonStyles` to generate the styles for a standard secondary button
-		const defaultButtonStyles = buttonStyles({
-			size: 'md',
-			variant: 'secondary',
-			block: false,
-		});
-		return {
-			...defaultButtonStyles,
-			margin: `0 ${mapSpacing(1)} 0 0`,
-			// '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
-			'&:hover': disabled
-				? { cursor: 'not-allowed' }
-				: defaultButtonStyles['&:not(:disabled):hover'],
-		};
-	}, [disabled]);
-
+	// Use `buttonStyles` to generate the styles for a standard secondary button
+	const defaultButtonStyles = buttonStyles({
+		size: 'md',
+		variant: 'secondary',
+		block: false,
+	});
+	// '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
+	const fileSelectorButtonStyles = {
+		...defaultButtonStyles,
+		margin: `0 ${mapSpacing(1)} 0 0`,
+		'&:hover': disabled
+			? { cursor: 'not-allowed' }
+			: defaultButtonStyles['&:not(:disabled):hover'],
+	};
 	return {
 		...fontGrid('sm', 'default'),
 		fontFamily: tokens.font.body,
