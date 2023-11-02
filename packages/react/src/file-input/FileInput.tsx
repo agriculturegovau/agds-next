@@ -44,7 +44,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			message,
 			invalid,
 			id,
-			disabled = false,
+			disabled,
 			...props
 		},
 		ref
@@ -75,7 +75,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	}
 );
 
-function useFileInputStyles({ disabled }: { disabled: boolean }) {
+function useFileInputStyles({ disabled }: { disabled?: boolean }) {
 	const fileSelectorButtonStyles = useMemo(() => {
 		// Use `buttonStyles` to generate the styles for a standard secondary button
 		const defaultButtonStyles = buttonStyles({
