@@ -86,7 +86,7 @@ export const WithEndElement: Story = {
 	},
 };
 
-export const WithThreeLinesText: Story = {
+export const WithFourLinesText: Story = {
 	args: {
 		inputValue: '',
 		itemLabel: nameOption.fullName,
