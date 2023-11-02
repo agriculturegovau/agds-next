@@ -49,7 +49,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		},
 		ref
 	) {
-		const styles = useFileInputStyles({ disabled });
+		const styles = useFileInputStyles();
 		return (
 			<Field
 				label={label}
@@ -75,7 +75,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	}
 );
 
-function useFileInputStyles({ disabled }: { disabled?: boolean }) {
+function useFileInputStyles() {
 	// Use `buttonStyles` to generate the styles for a standard secondary button
 	const defaultButtonStyles = buttonStyles({
 		size: 'md',
@@ -95,15 +95,14 @@ function useFileInputStyles({ disabled }: { disabled?: boolean }) {
 
 		'&:hover': {
 			cursor: 'pointer',
-			'&::file-selector-button': disabled
-				? { cursor: 'not-allowed' }
-				: // '&:not(:disabled):hover' is not supported by the '::file-selector-button' component, but we still want the hover styles
-				  defaultButtonStyles['&:not(:disabled):hover'],
+			'&:not(:disabled)::file-selector-button':
+				defaultButtonStyles['&:not(:disabled):hover'],
 		},
 
 		'&:disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
+			'&::file-selector-button': { cursor: 'not-allowed' },
 		},
 
 		'&:focus': packs.outline,
