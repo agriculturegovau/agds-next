@@ -1,8 +1,10 @@
-import { PropsWithChildren } from 'react';
-import { findBestMatch } from '../core';
-import { NavContainer } from './NavContainer';
-import { NavList, NavListItem } from './NavList';
-import { MainNavBackground } from './utils';
+import { PropsWithChildren, Fragment } from 'react';
+import { findBestMatch, useTernaryState } from '../core';
+import { MainNavContainer } from './MainNavContainer';
+import { MainNavDialog } from './MainNavDialog';
+import { MainNavListItemType } from './MainNavList';
+import { MainNavBackground } from './localPalette';
+import { MainNavListDropdown } from './MainNavListItemDropdown';
 
 export type MainNavProps = PropsWithChildren<{
 	/** Used for highlighting the active navigation item. */
@@ -12,9 +14,9 @@ export type MainNavProps = PropsWithChildren<{
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** List of navigation items to display. */
-	items?: NavListItem[];
+	items?: MainNavListItemType[];
 	/** Optional list of navigation items to display on the right of the component. */
-	secondaryItems?: NavListItem[];
+	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 }>;
 
 export function MainNav({
@@ -24,30 +26,31 @@ export function MainNav({
 	secondaryItems,
 	id,
 }: MainNavProps) {
+	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
+		useTernaryState(false);
+
 	const bestMatch = findBestMatch(
 		[...(items || []), ...(secondaryItems || [])],
 		activePath
 	);
+
 	return (
-		<NavContainer
-			background={background}
-			id={id}
-			hasItems={items && items.length > 0}
-			rightContent={
-				<NavList
-					aria-label="secondary"
-					items={secondaryItems}
-					activePath={bestMatch}
-					type="secondary"
-				/>
-			}
-		>
-			<NavList
-				aria-label="main"
+		<Fragment>
+			<MainNavContainer
+				background={background}
+				id={id}
+				openMobileMenu={openMobileMenu}
+				activePath={bestMatch}
+				items={items}
+				secondaryItems={secondaryItems}
+			/>
+			{/* Mobile dialog menu */}
+			<MainNavDialog
+				isMobileMenuOpen={isMobileMenuOpen}
+				closeMobileMenu={closeMobileMenu}
 				items={items}
 				activePath={bestMatch}
-				type="primary"
 			/>
-		</NavContainer>
+		</Fragment>
 	);
 }

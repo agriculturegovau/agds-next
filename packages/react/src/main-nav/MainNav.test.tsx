@@ -2,6 +2,8 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup } from '../../../../test-utils';
+import { DropdownMenuItem, DropdownMenuPanel } from '../dropdown-menu';
+import { Avatar } from '../avatar';
 import { AvatarIcon } from '../icon';
 import { MainNav, MainNavProps } from './MainNav';
 
@@ -44,7 +46,6 @@ describe('MainNav', () => {
 		const { container } = renderMainNav({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			rules: { 'no-inline-style': 'off' },
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
@@ -67,5 +68,31 @@ describe('MainNav', () => {
 			const currentPage = container.querySelector("[aria-current='page']");
 			expect(currentPage).toHaveTextContent('Simple page');
 		});
+	});
+
+	it('supports a dropdown in secondary items', async () => {
+		const { container } = renderMainNav({
+			secondaryItems: [
+				{
+					label: 'Moe Syzlack',
+					beforeElement: <Avatar name="Moe Syzlack" tone="action" size="md" />,
+					dropdown: (
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Item 1</DropdownMenuItem>
+							<DropdownMenuItem>Item 2</DropdownMenuItem>
+							<DropdownMenuItem>Item 3</DropdownMenuItem>
+						</DropdownMenuPanel>
+					),
+				},
+			],
+		});
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
+		});
+		expect(await axe(container)).toHaveNoViolations();
 	});
 });
