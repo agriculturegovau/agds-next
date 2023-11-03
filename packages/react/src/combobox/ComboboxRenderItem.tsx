@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, isValidElement, ReactNode } from 'react';
 import { Text } from '../text';
 import { Stack } from '../stack';
 import { splitLabel } from './utils';
@@ -9,9 +9,9 @@ export type ComboboxRenderItemProps = {
 	/** The value of the Combobox/Autocomplete text input. */
 	inputValue: string;
 	/** Supporting text for the item. */
-	tertiaryText?: string;
+	tertiaryText?: ReactNode;
 	/** Supporting text for the item. */
-	secondaryText?: string;
+	secondaryText?: ReactNode;
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
 	beforeElement?: ReactNode;
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
@@ -34,14 +34,22 @@ export function ComboboxRenderItem({
 			<Stack as="span">
 				<span>{renderItemLabel(itemLabel, inputValue)}</span>
 				{secondaryText ? (
-					<Text color="muted" fontSize="xs">
-						{secondaryText}
-					</Text>
+					isValidElement(secondaryText) ? (
+						secondaryText
+					) : (
+						<Text color="muted" fontSize="xs">
+							{secondaryText}
+						</Text>
+					)
 				) : null}
 				{tertiaryText ? (
-					<Text color="muted" fontSize="xs">
-						{tertiaryText}
-					</Text>
+					isValidElement(tertiaryText) ? (
+						tertiaryText
+					) : (
+						<Text color="muted" fontSize="xs">
+							{tertiaryText}
+						</Text>
+					)
 				) : null}
 			</Stack>
 			{endElement ? (
