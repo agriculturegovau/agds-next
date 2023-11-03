@@ -14,22 +14,45 @@ relatedComponents: ['link-list', 'side-nav', 'sub-nav']
 		links={[
 			{ href: '#section-1', label: 'Section 1' },
 			{ href: '#section-2', label: 'Section 2' },
+			{ href: '#section-3', label: 'Section 3' },
 		]}
 	/>
-	<Prose>
-		<h2 id="section-1">Section 1</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-			praesentium at voluptas voluptate, minus accusamus doloremque repellat
-			molestias id.
-		</p>
-		<h2 id="section-2">Section 2</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-			praesentium at voluptas voluptate, minus accusamus doloremque repellat
-			molestias id.
-		</p>
-	</Prose>
+	<Stack id="section-1" alignItems="flex-start" gap={1.5}>
+		<H2>Section 1</H2>
+		<Text as="p">
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+		</Text>
+		<DirectionLink direction="up" href="#main-content">
+			Back to top
+		</DirectionLink>
+	</Stack>
+	<Stack id="section-1" alignItems="flex-start" gap={1.5}>
+		<H2>Section 2</H2>
+		<Text as="p">
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+		</Text>
+		<DirectionLink direction="up" href="#main-content">
+			Back to top
+		</DirectionLink>
+	</Stack>
+	<Stack id="section-3" alignItems="flex-start" gap={1.5}>
+		<H2>Section 3</H2>
+		<Text as="p">
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+			This is a standard paragraph - sm/default (P). This is a standard
+			paragraph - sm/default (P). This is a standard paragraph - sm/default (P).
+		</Text>
+		<DirectionLink direction="up" href="#main-content">
+			Back to top
+		</DirectionLink>
+	</Stack>
 </Stack>
 ```
 
