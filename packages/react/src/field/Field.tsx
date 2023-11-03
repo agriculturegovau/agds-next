@@ -13,6 +13,8 @@ export type FieldProps = {
 	id?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** If true, the valid state will be rendered. */
+	valid?: boolean;
 	/** Describes the purpose of the field. */
 	label: string;
 	/** Defines an identifier (ID) of the label element, which must be unique. */
@@ -31,6 +33,7 @@ export const Field = ({
 	children,
 	hint,
 	id,
+	valid,
 	invalid,
 	label,
 	labelId,
@@ -63,8 +66,10 @@ export const Field = ({
 				{label}
 			</FieldLabel>
 			{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-			{message && invalid ? (
-				<FieldMessage id={messageId}>{message}</FieldMessage>
+			{(invalid || valid) && message ? (
+				<FieldMessage id={messageId} invalid={Boolean(invalid)}>
+					{message}
+				</FieldMessage>
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
 		</FieldContainer>

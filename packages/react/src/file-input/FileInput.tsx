@@ -1,4 +1,10 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import {
+	ChangeEvent,
+	forwardRef,
+	InputHTMLAttributes,
+	useCallback,
+	useState,
+} from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
@@ -45,19 +51,31 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			invalid,
 			id,
 			disabled,
+			onChange: onChangeProp,
 			...props
 		},
 		ref
 	) {
 		const styles = useFileInputStyles();
+		const [hasFile, setHasFile] = useState(false);
+
+		const onChange = useCallback(
+			(event: ChangeEvent<HTMLInputElement>) => {
+				onChangeProp?.(event);
+				setHasFile(Boolean(event.target.files?.length));
+			},
+			[onChangeProp]
+		);
+
 		return (
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
-				message={message}
+				valid={hasFile} // This component shows the "valid" state whenever we have a value
 				invalid={invalid}
+				message={invalid ? message : hasFile ? 'File added' : undefined}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -67,6 +85,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 						{...a11yProps}
 						type="file"
 						disabled={disabled}
+						onChange={onChange}
 						{...props}
 					/>
 				)}
