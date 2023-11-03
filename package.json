@@ -8,7 +8,7 @@
 		"packages/*",
 		"docs",
 		"example-site",
-		"example-form"
+		"yourgov"
 	],
 	"scripts": {
 		"build": "preconstruct build",
@@ -17,21 +17,19 @@
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
 		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
-		"example-form:build": "yarn --cwd example-form build",
-		"example-form:dev": "yarn --cwd example-form dev",
 		"example:build": "yarn --cwd example-site build",
 		"example:dev": "yarn --cwd example-site dev",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"fresh": "yarn clean && yarn",
 		"postinstall": "manypkg check && preconstruct dev",
-		"lint": "yarn lint:packages && yarn lint:storybook && yarn lint:example && yarn lint:example-form && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
+		"lint": "yarn lint:packages && yarn lint:storybook && yarn lint:example && yarn lint:yourgov && yarn lint:docs && yarn lint:prettier && yarn lint:typescript",
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:example": "yarn --cwd example-site lint",
-		"lint:example-form": "yarn --cwd example-form lint",
 		"lint:packages": "yarn eslint \"packages/**/*.{js,jsx,ts,tsx}\"",
 		"lint:prettier": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"lint:storybook": "yarn eslint \".storybook/**/*.{js,jsx,ts,tsx}\"",
 		"lint:typescript": "tsc --noEmit",
+		"lint:yourgov": "yarn --cwd yourgov lint",
 		"new:icon": "plop --plopfile scripts/new-icon/script.mjs && yarn format && yarn manypkg fix && yarn install && yarn test",
 		"new:package": "plop --plopfile scripts/new-package.mjs && yarn format && yarn manypkg fix && yarn install",
 		"playroom:build": "yarn --cwd docs playroom:build",
@@ -39,7 +37,9 @@
 		"publish-changed": "yarn build && yarn changeset publish",
 		"storybook:build": "storybook build -o docs/public/storybook",
 		"storybook:dev": "storybook dev --port 6006 --no-open",
-		"test": "jest"
+		"test": "jest",
+		"yourgov:build": "yarn --cwd yourgov build",
+		"yourgov:dev": "yarn --cwd yourgov dev"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.22.9",
