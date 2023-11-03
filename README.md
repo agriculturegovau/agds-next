@@ -36,7 +36,7 @@ For development run one or more of the following commands:
 - `yarn storybook:dev` – start storybook
 - `yarn playroom:dev` – start playroom
 - `yarn example:dev` – start the example site
-- `yarn example-form:dev` – start the example form site
+- `yarn yourgov:dev` – start the example form site
 
 ### Website
 
@@ -48,7 +48,7 @@ You can run the builds locally for testing. The order of commands here is import
 yarn storybook:build
 yarn playroom:build
 yarn example:build
-yarn example-form:build
+yarn yourgov:build
 yarn docs:build
 ```
 

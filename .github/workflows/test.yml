@@ -92,8 +92,8 @@ jobs:
       - name: Example
         run: yarn lint:example
 
-      - name: Example form
-        run: yarn lint:example-form
+      - name: Yourgov
+        run: yarn lint:yourgov
 
       - name: Storybook
         run: yarn lint:storybook

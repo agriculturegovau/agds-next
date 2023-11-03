@@ -1,13 +1,13 @@
 const withPreconstruct = require('@preconstruct/next');
 
-const basePath = `${process.env.BASE_PATH ?? ''}/example-form`;
+const basePath = `${process.env.BASE_PATH ?? ''}/yourgov`;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
 	basePath,
 	output: 'export',
-	distDir: '../docs/public/example-form',
+	distDir: '../docs/public/yourgov',
 	experimental: {
 		/**
 		 * WARNING: If you are a consumer of the design system reading this you DO NOT need this config in your project.
