@@ -39,6 +39,14 @@ export const Invalid: Story = {
 	},
 };
 
+export const Valid: Story = {
+	args: {
+		label: 'Example',
+		message: 'This field is valid',
+		valid: true,
+	},
+};
+
 export const SecondaryLabel: Story = {
 	args: {
 		label: 'Example',
