@@ -56,8 +56,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		},
 		ref
 	) {
-		const styles = useFileInputStyles();
 		const [hasFile, setHasFile] = useState(false);
+		const styles = useFileInputStyles({ hasFile });
 
 		const onChange = useCallback(
 			(event: ChangeEvent<HTMLInputElement>) => {
@@ -73,9 +73,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
-				valid={hasFile} // This component shows the "valid" state whenever we have a value
 				invalid={invalid}
-				message={invalid ? message : hasFile ? 'File added' : undefined}
+				message={message}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -94,10 +93,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	}
 );
 
-function useFileInputStyles() {
+function useFileInputStyles({ hasFile }: { hasFile: boolean }) {
 	// Use `buttonStyles` to generate the styles for a standard secondary button
 	const defaultButtonStyles = buttonStyles({
-		size: 'md',
+		size: 'sm',
 		variant: 'secondary',
 		block: false,
 	});
@@ -106,6 +105,7 @@ function useFileInputStyles() {
 		...fontGrid('sm', 'default'),
 		fontFamily: tokens.font.body,
 		color: boxPalette.foregroundText,
+		fontWeight: hasFile ? tokens.fontWeight.bold : tokens.fontWeight.normal,
 
 		'&::file-selector-button': {
 			...defaultButtonStyles,
