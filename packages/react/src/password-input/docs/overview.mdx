@@ -1,32 +1,25 @@
 ---
 title: Password input
-description: The password component lets the user enter a hidden password which they can reveal if needed.
+description: The Password input component allows users to securely enter a password. The text is obscured by default, but can be revealed by pressing the "Show password" checkbox.
 group: Forms
 storybookPath: /story/forms-passwordinput--basic
 figmaGalleryNodeId: 12444%3A100673
-relatedComponents: ['autocomplete', 'combobox', 'textarea']
+relatedComponents: ['text-input']
 ---
 
 ```jsx live
 <PasswordInput label="Password" />
 ```
 
-By default, the `PasswordInput` component does not expand to fill the available space.
-
 <DoHeading />
 
-- use when unique information needs to be entered that can’t be answered through preset options
-- indicate if input is optional
-- provide useful hints where necessary
-- provide an error message when input is invalid
-- align form inputs using a [Form stack](/components/form-stack)
-- hide the ‘optional’ label when filtering data.
+- use to allow a user to securely enter a password
+- obscure the password by default
 
 <DontHeading />
 
-- use if a dropdown, select, or radio button can be used instead
-- hide the 'optional' label within a form
-- use placeholder text as a substitute for a label.
+- use for anything else besides passwords
+- display the password by default
 
 ## Hint
 
@@ -69,7 +62,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<PasswordInput label="Invalid" invalid message="This input is invalid" />
+<PasswordInput label="Password" invalid message="Enter your password" />
 ```
 
 ## Disabled
@@ -77,7 +70,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
 
 ```jsx live
-<PasswordInput label="Name" disabled />
+<PasswordInput label="Password" value="abc123" disabled />
 ```
 
 ## Maximum widths

@@ -16,7 +16,6 @@ type BasePasswordInputProps = {
 	onBlur?: NativeInputProps['onBlur'];
 	onChange?: NativeInputProps['onChange'];
 	onFocus?: NativeInputProps['onFocus'];
-	placeholder?: NativeInputProps['placeholder'];
 	value?: NativeInputProps['value'];
 };
 
