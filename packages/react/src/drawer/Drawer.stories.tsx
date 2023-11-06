@@ -10,11 +10,11 @@ import { DateRangePicker, DateRangeWithString } from '../date-range-picker';
 import { Divider } from '../divider';
 import { Fieldset } from '../fieldset';
 import { FormStack } from '../form-stack';
+import { Prose } from '../prose';
 import { Radio } from '../radio';
 import { Select } from '../select';
 import { Stack } from '../stack';
 import { Switch } from '../switch';
-import { Text } from '../text';
 import { Drawer } from './Drawer';
 
 const meta: Meta<typeof Drawer> = {
@@ -51,7 +51,74 @@ export const Basic: Story = {
 						</ButtonGroup>
 					}
 				>
-					<Text as="p">Drawer body area.</Text>
+					<Select
+						label="Example filter"
+						hideOptionalLabel
+						placeholder="Please select"
+						options={[
+							{ value: 'a', label: 'Option A' },
+							{ value: 'b', label: 'Option B' },
+							{ value: 'c', label: 'Option C' },
+						]}
+					/>
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const LargeWidth: Story = {
+	args: {
+		title: 'Large Drawer',
+		width: 'lg',
+	},
+	render: function Render(props) {
+		const [isOpen, open, close] = useTernaryState(false);
+		return (
+			<Fragment>
+				<Button onClick={open}>Open Large Drawer</Button>
+				<Drawer
+					isOpen={isOpen}
+					onDismiss={close}
+					title={props.title}
+					width={props.width}
+					actions={
+						<ButtonGroup>
+							<Button onClick={close}>Primary</Button>
+							<Button variant="secondary" onClick={close}>
+								Secondary
+							</Button>
+							<Button variant="tertiary" onClick={close}>
+								Tertiary
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<Prose>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+							cursus risus nec velit imperdiet, sit amet blandit libero
+							ullamcorper. Maecenas vel fermentum sapien. Aenean mollis
+							tincidunt imperdiet. Morbi efficitur consectetur quam nec aliquam.
+							Quisque id consequat arcu, hendrerit vulputate libero. Morbi et
+							libero placerat, ultrices lacus pulvinar, maximus massa. Nam
+							tempor eu nisl dignissim malesuada. Quisque blandit turpis vel
+							egestas posuere.
+						</p>
+						<p>
+							Integer nec ex massa. Integer at semper enim. Vestibulum elit
+							tortor, ultricies quis lectus elementum, tempor pharetra ex. In ut
+							nulla vitae neque vehicula venenatis. Pellentesque faucibus eget
+							tortor ac venenatis. Proin et vulputate nunc. Etiam vitae dui
+							pellentesque, sollicitudin dolor congue, imperdiet mauris. Aliquam
+							a massa magna. Suspendisse condimentum sapien id nisi luctus
+							accumsan. Cras maximus sapien et lorem malesuada, et euismod
+							mauris tincidunt. Nulla facilisi. Donec ultricies eros eget
+							lobortis aliquam. Sed cursus ipsum et mauris sodales semper eget
+							vel diam. Nulla tincidunt rutrum ipsum in molestie. In hac
+							habitasse platea dictumst.
+						</p>
+					</Prose>
 				</Drawer>
 			</Fragment>
 		);

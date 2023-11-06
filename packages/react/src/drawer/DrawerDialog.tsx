@@ -12,9 +12,17 @@ import { useDrawerId } from './utils';
 export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	onDismiss: () => void;
+	style: { translateX: SpringValue<string> };
 	title: string;
-	style?: { translateX: SpringValue<string> };
+	width: DrawerDialogWidth;
 }>;
+
+const WIDTH_MAP = {
+	md: '32rem', // 512px
+	lg: '45rem', // 720px
+};
+
+export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
 
 const AnimatedFlex = animated(Flex);
 
@@ -24,8 +32,10 @@ export function DrawerDialog({
 	title,
 	onDismiss,
 	style,
+	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
+
 	return (
 		<FocusLock returnFocus>
 			<AnimatedFlex
@@ -34,7 +44,7 @@ export function DrawerDialog({
 				aria-modal="true"
 				background="body"
 				aria-labelledby={titleId}
-				maxWidth="32rem"
+				maxWidth={WIDTH_MAP[width]}
 				css={{
 					boxShadow: tokens.shadow.lg,
 					position: 'fixed',
