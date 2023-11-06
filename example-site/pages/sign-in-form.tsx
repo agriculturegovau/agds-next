@@ -115,20 +115,18 @@ const SignInForm = () => {
 						maxWidth="xl"
 						required
 					/>
-					<Stack gap={0.75}>
-						<PasswordInput
-							label="Password"
-							{...register('password')}
-							id="password"
-							invalid={Boolean(errors.password?.message)}
-							message={errors.password?.message}
-							maxWidth="xl"
-							required
-						/>
-						<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
-							Forgot password?
-						</TextLink>
-					</Stack>
+					<PasswordInput
+						label="Password"
+						{...register('password')}
+						id="password"
+						invalid={Boolean(errors.password?.message)}
+						message={errors.password?.message}
+						maxWidth="xl"
+						required
+					/>
+					<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
+						Forgot password?
+					</TextLink>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
 							Sign in
