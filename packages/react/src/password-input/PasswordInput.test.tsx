@@ -29,24 +29,29 @@ describe('PasswordInput', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('Toggles input type', async () => {
+	it('Toggles input type correctly', async () => {
 		const { container } = renderPasswordInput({
 			label: 'Password',
 		});
 
 		const inputElement = await container.querySelector('input');
 		expect(inputElement).toBeInTheDocument();
+		expect(inputElement).toHaveAttribute('type', 'password');
+
 		if (!inputElement) return;
 
 		const checkboxElement = await container.querySelector(
 			'input[type="checkbox"]'
 		);
 		expect(checkboxElement).toBeInTheDocument();
+		expect(checkboxElement).toHaveAttribute('aria-controls', inputElement.id);
 		if (!checkboxElement) return;
 
-		expect(inputElement).toHaveAttribute('type', 'password');
+		// Clicking the Checkbox once should change the input type to "text"
 		await userEvent.click(checkboxElement);
 		expect(inputElement).toHaveAttribute('type', 'text');
+
+		// Clicking the Checkbox again should change the input type back to "password"
 		await userEvent.click(checkboxElement);
 		expect(inputElement).toHaveAttribute('type', 'password');
 	});
