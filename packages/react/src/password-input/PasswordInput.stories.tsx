@@ -1,64 +1,74 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-// import { Stack } from '../stack';
+import { Meta, StoryObj } from '@storybook/react';
+import { Stack } from '../stack';
 import { PasswordInput } from './PasswordInput';
 
-export default {
+const meta: Meta<typeof PasswordInput> = {
 	title: 'forms/PasswordInput',
 	component: PasswordInput,
-} as ComponentMeta<typeof PasswordInput>;
-
-const Template: ComponentStory<typeof PasswordInput> = (args) => (
-	<PasswordInput {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Example',
 };
 
-// export const Required = Template.bind({});
-// Required.args = {
-// 	required: true,
-// 	label: 'Example',
-// };
+export default meta;
 
-// export const HideOptionalLabel = Template.bind({});
-// HideOptionalLabel.args = {
-// 	label: 'Example',
-// 	hideOptionalLabel: true,
-// };
+type Story = StoryObj<typeof PasswordInput>;
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	disabled: true,
-	label: 'Password',
-	value: 'Disabled',
+export const Basic: Story = {
+	args: {
+		label: 'Password',
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Password',
-	message: 'Enter a password',
-	invalid: true,
+export const Required: Story = {
+	args: {
+		label: 'Password',
+		required: true,
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Password',
-	hint: 'Password should be at least 8 characters',
+export const HideOptionalLabel: Story = {
+	args: {
+		label: 'Password',
+		hideOptionalLabel: true,
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	block: true,
-	label: 'Password',
+export const Disabled: Story = {
+	args: {
+		label: 'Password',
+		disabled: true,
+		value: 'Disabled',
+	},
 };
 
-// export const MaxWidths: ComponentStory<typeof PasswordInput> = (args) => (
-// 	<Stack gap={1}>
-// 		{(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((size) => (
-// 			<PasswordInput key={size} {...args} label={size} maxWidth={size} />
-// 		))}
-// 	</Stack>
-// );
-// MaxWidths.args = {};
+export const Invalid: Story = {
+	args: {
+		label: 'Password',
+		message: 'Enter your password',
+		invalid: true,
+		required: true,
+	},
+};
+
+export const Hint: Story = {
+	args: {
+		label: 'Password',
+		hint: 'Password should be at least 8 characters',
+	},
+};
+
+export const Block: Story = {
+	args: {
+		block: true,
+		label: 'Password',
+	},
+};
+
+export const MaxWidths: Story = {
+	args: {},
+	render: (args) => (
+		<Stack gap={1}>
+			{(['md', 'lg', 'xl'] as const).map((size) => (
+				<PasswordInput key={size} {...args} label={size} maxWidth={size} />
+			))}
+		</Stack>
+	),
+};

@@ -1,5 +1,5 @@
-import { forwardRef, InputHTMLAttributes, useState } from 'react';
-import { FieldMaxWidth, useId } from '../core';
+import { forwardRef, InputHTMLAttributes } from 'react';
+import { useId, useToggleState } from '../core';
 import { TextInput } from '../text-input';
 import { Checkbox } from '../checkbox';
 import { Stack } from '../stack';
@@ -36,27 +36,27 @@ export type PasswordInputProps = BasePasswordInputProps & {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: FieldMaxWidth;
+	maxWidth?: 'md' | 'lg' | 'xl';
 };
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 	function PasswordInput({ id: idProp, ...props }, ref) {
-		const id = usePasswordInputId(idProp);
-		const [checked, setChecked] = useState(false);
+		const inputId = usePasswordInputId(idProp);
+		const [checked, toggleChecked] = useToggleState(false, true);
 		return (
 			<Stack gap={1}>
 				<TextInput
 					ref={ref}
 					{...props}
-					id={id}
+					id={inputId}
 					type={checked ? 'text' : 'password'}
 				/>
 				<Checkbox
 					disabled={props.disabled}
-					aria-controls={id}
+					aria-controls={inputId}
 					size="sm"
 					checked={checked}
-					onChange={(event) => setChecked(event.target.checked)}
+					onChange={toggleChecked}
 				>
 					Show password
 				</Checkbox>

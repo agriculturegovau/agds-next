@@ -1,8 +1,8 @@
 ---
 title: Password input
-description: This component allows users to enter free-form text.
+description: The password component lets the user enter a hidden password which they can reveal if needed.
 group: Forms
-storybookPath: /story/forms-textinput--basic
+storybookPath: /story/forms-passwordinput--basic
 figmaGalleryNodeId: 12444%3A100673
 relatedComponents: ['autocomplete', 'combobox', 'textarea']
 ---
@@ -11,7 +11,7 @@ relatedComponents: ['autocomplete', 'combobox', 'textarea']
 <PasswordInput label="Password" />
 ```
 
-By default, the `TextInput` component does not expand to fill the available space.
+By default, the `PasswordInput` component does not expand to fill the available space.
 
 <DoHeading />
 
@@ -37,7 +37,7 @@ Don't use long paragraphs and lists in hint text. Screen readers read out the en
 Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
-<TextInput label="Name" hint="Hint text" />
+<PasswordInput label="Name" hint="Hint text" />
 ```
 
 ## Required
@@ -54,9 +54,9 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ```jsx live
 <Stack gap={1}>
-	<TextInput label="Required" required />
-	<TextInput label="Optional" required={false} />
-	<TextInput
+	<PasswordInput label="Required" required />
+	<PasswordInput label="Optional" required={false} />
+	<PasswordInput
 		label="Optional with hideOptionalLabel"
 		required={false}
 		hideOptionalLabel={true}
@@ -69,7 +69,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<TextInput label="Invalid" invalid message="This input is invalid" />
+<PasswordInput label="Invalid" invalid message="This input is invalid" />
 ```
 
 ## Disabled
@@ -77,7 +77,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
 
 ```jsx live
-<TextInput label="Name" disabled />
+<PasswordInput label="Name" disabled />
 ```
 
 ## Maximum widths
@@ -88,11 +88,9 @@ As an example, input fields for postcodes should have a smaller width than field
 
 ```jsx live
 <Stack gap={1}>
-	<TextInput label="xs input" maxWidth="xs" />
-	<TextInput label="sm input" maxWidth="sm" />
-	<TextInput label="md input" maxWidth="md" />
-	<TextInput label="lg input" maxWidth="lg" />
-	<TextInput label="xl input" maxWidth="xl" />
+	<PasswordInput label="md input" maxWidth="md" />
+	<PasswordInput label="lg input" maxWidth="lg" />
+	<PasswordInput label="xl input" maxWidth="xl" />
 </Stack>
 ```
 
@@ -101,5 +99,5 @@ As an example, input fields for postcodes should have a smaller width than field
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<TextInput label="Name" block />
+<PasswordInput label="Name" block />
 ```
