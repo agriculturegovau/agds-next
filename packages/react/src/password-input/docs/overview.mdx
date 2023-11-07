@@ -1,6 +1,6 @@
 ---
 title: Password input
-description: The Password input component allows users to securely enter a password. The text is obscured by default, but can be revealed by pressing the "Show password" checkbox.
+description: The password input component allows users to securely enter a password. The text is obscured by default, but can be revealed by pressing the "Show password" checkbox.
 group: Forms
 storybookPath: /story/forms-passwordinput--basic
 figmaGalleryNodeId: 12444%3A100673
@@ -8,12 +8,12 @@ relatedComponents: ['text-input']
 ---
 
 ```jsx live
-<PasswordInput label="Password" />
+<PasswordInput label="Password" required />
 ```
 
 <DoHeading />
 
-- use to allow a user to securely enter a password
+- use to hide characters as a user enters their password
 - obscure the password by default
 
 <DontHeading />
@@ -30,7 +30,7 @@ Don't use long paragraphs and lists in hint text. Screen readers read out the en
 Don't include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
 ```jsx live
-<PasswordInput label="Password" hint="Hint text" />
+<PasswordInput label="Password" hint="Hint text" required />
 ```
 
 ## Required
@@ -62,7 +62,12 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
 
 ```jsx live
-<PasswordInput label="Password" invalid message="Enter your password" />
+<PasswordInput
+	label="Password"
+	invalid
+	message="Enter your password"
+	required
+/>
 ```
 
 ## Disabled
@@ -70,7 +75,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete. Disabled input elements in a form will not be submitted.
 
 ```jsx live
-<PasswordInput label="Password" value="abc123" disabled />
+<PasswordInput label="Password" value="abc123" disabled required />
 ```
 
 ## Maximum widths
@@ -81,9 +86,9 @@ As an example, input fields for postcodes should have a smaller width than field
 
 ```jsx live
 <Stack gap={1}>
-	<PasswordInput label="md input" maxWidth="md" />
-	<PasswordInput label="lg input" maxWidth="lg" />
-	<PasswordInput label="xl input" maxWidth="xl" />
+	<PasswordInput label="md input" maxWidth="md" required />
+	<PasswordInput label="lg input" maxWidth="lg" required />
+	<PasswordInput label="xl input" maxWidth="xl" required />
 </Stack>
 ```
 
@@ -92,5 +97,5 @@ As an example, input fields for postcodes should have a smaller width than field
 Use the `block` prop to expand the component to fill the available space.
 
 ```jsx live
-<PasswordInput label="Password" block />
+<PasswordInput label="Password" block required />
 ```
