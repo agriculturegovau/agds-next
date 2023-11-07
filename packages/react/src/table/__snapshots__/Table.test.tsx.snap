@@ -10,7 +10,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       id="table"
     >
       <caption
-        class="css-qt4zh6-boxStyles-Text-TableCaption"
+        class="css-1hi5g7n-boxStyles-Text"
       >
         Population of Australian states and territories, December 2015
       </caption>
@@ -21,25 +21,25 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-10w2jzf-boxStyles-TableHeader"
+            class="css-1gy3b36-boxStyles"
             scope="col"
           >
             Location
           </th>
           <th
-            class="css-1o9pafm-boxStyles-TableHeader"
+            class="css-gt3plj-boxStyles"
             scope="col"
           >
             Population
           </th>
           <th
-            class="css-1o9pafm-boxStyles-TableHeader"
+            class="css-gt3plj-boxStyles"
             scope="col"
           >
             Change over previous year %
           </th>
           <th
-            class="css-1o9pafm-boxStyles-TableHeader"
+            class="css-gt3plj-boxStyles"
             scope="col"
           >
             Change over previous decade %
@@ -53,23 +53,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             New South Wales
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             7,670,700
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             3.1%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             12.9%
           </td>
@@ -78,23 +78,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Victoria
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             5,996,400
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             2.5%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             9.3%
           </td>
@@ -103,23 +103,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Queensland
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             4,808,800
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             1.7%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             13.3%
           </td>
@@ -128,23 +128,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Western Australia
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             2,603,900
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             2.3%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             11.6%
           </td>
@@ -153,23 +153,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             South Australia
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             1,702,800
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             2.0%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             6.8%
           </td>
@@ -178,23 +178,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Tasmania
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             517,400
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             4%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             5.3%
           </td>
@@ -203,23 +203,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Northern Territory
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             244,400
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             1.2%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             4.5%
           </td>
@@ -228,23 +228,23 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-0"
         >
           <th
-            class="css-eaiq6e-boxStyles-TableCell"
+            class="css-1qlct29-boxStyles-TableCell"
             scope="row"
           >
             Australian Capital Territory
           </th>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             393,000
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             2.4%
           </td>
           <td
-            class="css-1d44a78-boxStyles-TableCell"
+            class="css-18s06pf-boxStyles-TableCell"
           >
             9.6%
           </td>
