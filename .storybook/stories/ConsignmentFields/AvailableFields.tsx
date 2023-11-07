@@ -55,45 +55,55 @@ export function AvailableFields(props: AvailableFieldsProps) {
 				Available fields
 			</Text>
 			{props.fields.length > 0 ? (
-				<Stack as="ul" height="100%" background="shade" border>
-					<Flex
-						as="li"
-						padding={0.75}
-						borderBottom
-						borderBottomWidth="lg"
-						borderColor="muted"
-					>
-						<Checkbox
-							size="sm"
-							checked={allRowsChecked}
-							indeterminate={anyRowsChecked && !allRowsChecked}
-							onChange={toggleAllRows}
+				<Flex
+					height="100%"
+					flexDirection="column"
+					justifyContent="space-between"
+					background="shade"
+					border
+				>
+					<Stack as="ul">
+						<Flex
+							as="li"
+							padding={0.75}
+							borderBottom
+							borderBottomWidth="lg"
+							borderColor="muted"
 						>
-							Select all fields
-						</Checkbox>
-					</Flex>
-					{props.fields.map((field, idx) => {
-						const isSelected = selectedFields.some(({ id }) => id === field.id);
-
-						function onChange() {
-							setSelectedFields(
-								isSelected
-									? (x) => x.filter((f) => f.id !== field.id)
-									: (x) => [...x, field]
+							<Checkbox
+								size="sm"
+								checked={allRowsChecked}
+								indeterminate={anyRowsChecked && !allRowsChecked}
+								onChange={toggleAllRows}
+							>
+								Select all fields
+							</Checkbox>
+						</Flex>
+						{props.fields.map((field, idx) => {
+							const isSelected = selectedFields.some(
+								({ id }) => id === field.id
 							);
-						}
 
-						return (
-							<FieldsListItem
-								key={field.id}
-								field={field}
-								isFirstItem={idx === 0}
-								isSelected={isSelected}
-								onChange={onChange}
-								addField={addField}
-							/>
-						);
-					})}
+							function onChange() {
+								setSelectedFields(
+									isSelected
+										? (x) => x.filter((f) => f.id !== field.id)
+										: (x) => [...x, field]
+								);
+							}
+
+							return (
+								<FieldsListItem
+									key={field.id}
+									field={field}
+									isFirstItem={idx === 0}
+									isSelected={isSelected}
+									onChange={onChange}
+									addField={addField}
+								/>
+							);
+						})}
+					</Stack>
 					{selectedFields.length > 0 && (
 						<TableBatchActionsBar>
 							<TableBatchActionsTitle>
@@ -119,7 +129,7 @@ export function AvailableFields(props: AvailableFieldsProps) {
 							</ButtonGroup>
 						</TableBatchActionsBar>
 					)}
-				</Stack>
+				</Flex>
 			) : (
 				<EmptyState />
 			)}
