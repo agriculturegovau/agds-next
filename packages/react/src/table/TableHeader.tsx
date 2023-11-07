@@ -27,9 +27,7 @@ export const TableHeader = ({
 			fontWeight="bold"
 			focus
 			width={width}
-			css={{
-				textAlign,
-			}}
+			textAlign={textAlign}
 			{...props}
 		>
 			{children}
