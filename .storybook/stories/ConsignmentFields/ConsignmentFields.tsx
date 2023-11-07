@@ -6,6 +6,7 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageContent } from '@ag.ds-next/react/content';
+import { tokens } from '@ag.ds-next/react/core';
 import { ConsignmentFieldsPageLoading } from './ConsignmentFieldsPageLoading';
 import { AvailableFields } from './AvailableFields';
 import { AddedFields } from './AddedFields';
@@ -36,9 +37,9 @@ export function ConsignmentFieldsPage() {
 	return (
 		<PageContent>
 			<Stack gap={3}>
-				<Stack gap={1.5}>
+				<Stack gap={1}>
 					<H2>Add consignment fields</H2>
-					<Text as="p">
+					<Text as="p" maxWidth={tokens.maxWidth.bodyText}>
 						Select the fields relevant to the entire consignment that will be
 						populated in the XML based on the information input by the exporter
 						when submitting their REX.
