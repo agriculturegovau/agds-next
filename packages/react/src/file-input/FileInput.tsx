@@ -1,4 +1,10 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import {
+	ChangeEvent,
+	forwardRef,
+	InputHTMLAttributes,
+	useCallback,
+	useState,
+} from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
@@ -45,19 +51,30 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			invalid,
 			id,
 			disabled,
+			onChange: onChangeProp,
 			...props
 		},
 		ref
 	) {
-		const styles = useFileInputStyles();
+		const [hasFile, setHasFile] = useState(false);
+		const styles = useFileInputStyles({ hasFile });
+
+		const onChange = useCallback(
+			(event: ChangeEvent<HTMLInputElement>) => {
+				onChangeProp?.(event);
+				setHasFile(Boolean(event.target.files?.length));
+			},
+			[onChangeProp]
+		);
+
 		return (
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
-				message={message}
 				invalid={invalid}
+				message={message}
 				id={id}
 			>
 				{(a11yProps) => (
@@ -67,6 +84,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 						{...a11yProps}
 						type="file"
 						disabled={disabled}
+						onChange={onChange}
 						{...props}
 					/>
 				)}
@@ -75,10 +93,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	}
 );
 
-function useFileInputStyles() {
+function useFileInputStyles({ hasFile }: { hasFile: boolean }) {
 	// Use `buttonStyles` to generate the styles for a standard secondary button
 	const defaultButtonStyles = buttonStyles({
-		size: 'md',
+		size: 'sm',
 		variant: 'secondary',
 		block: false,
 	});
@@ -87,6 +105,7 @@ function useFileInputStyles() {
 		...fontGrid('sm', 'default'),
 		fontFamily: tokens.font.body,
 		color: boxPalette.foregroundText,
+		fontWeight: hasFile ? tokens.fontWeight.bold : tokens.fontWeight.normal,
 
 		'&::file-selector-button': {
 			...defaultButtonStyles,

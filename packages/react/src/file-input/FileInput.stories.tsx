@@ -1,60 +1,68 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { FileInput } from './FileInput';
 
-export default {
+const meta: Meta<typeof FileInput> = {
 	title: 'Forms/FileInput',
 	component: FileInput,
-} as ComponentMeta<typeof FileInput>;
-
-const Template: ComponentStory<typeof FileInput> = (args) => (
-	<FileInput {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Example',
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	required: true,
-	label: 'Example',
+export default meta;
+
+type Story = StoryObj<typeof FileInput>;
+
+export const Basic: Story = {
+	args: {
+		label: 'Example',
+	},
 };
 
-export const AcceptableFileTypes = Template.bind({});
-AcceptableFileTypes.args = {
-	label: 'Example',
-	hint: 'Acceptable file types: .jpg, .png, .heic',
-	accept: 'image/*',
+export const Required: Story = {
+	args: {
+		required: true,
+		label: 'Example',
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	label: 'Example',
-	hideOptionalLabel: true,
+export const AcceptableFileTypes: Story = {
+	args: {
+		label: 'Example',
+		hint: 'Acceptable file types: .jpg, .png, .heic',
+		accept: 'image/*',
+	},
 };
 
-export const Multiple = Template.bind({});
-Multiple.args = {
-	multiple: true,
-	label: 'Example',
+export const HideOptionalLabel: Story = {
+	args: {
+		label: 'Example',
+		hideOptionalLabel: true,
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	disabled: true,
-	label: 'Example',
+export const Multiple: Story = {
+	args: {
+		multiple: true,
+		label: 'Example',
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Example',
-	message: 'Please choose a valid file',
-	invalid: true,
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+		label: 'Example',
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Example',
-	hint: 'General hint information',
+export const Invalid: Story = {
+	args: {
+		label: 'Example',
+		message: 'Please choose a valid file',
+		invalid: true,
+	},
+};
+
+export const Hint: Story = {
+	args: {
+		label: 'Example',
+		hint: 'General hint information',
+	},
 };
