@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { Button } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -16,7 +17,8 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Text } from '@ag.ds-next/react/text';
 import { H1 } from '@ag.ds-next/react/heading';
-import { useAuth, UserRole } from '../lib/useAuth';
+import { useAuth } from '../lib/useAuth';
+import { mockUser } from '../data/mockUsers';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { SiteLayout } from '../components/Layout/SiteLayout';
 import type { NextPageWithLayout } from './_app';
@@ -24,13 +26,8 @@ import type { NextPageWithLayout } from './_app';
 const Page: NextPageWithLayout = () => {
 	const { signIn } = useAuth();
 
-	function onSubmit({ firstName, lastName, role }: FormSchema) {
-		signIn({
-			firstName,
-			lastName,
-			displayName: [firstName, lastName].join(' '),
-			role,
-		});
+	function onSubmit() {
+		signIn(mockUser);
 	}
 
 	return (
@@ -151,21 +148,18 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 						maxWidth="xl"
 						required
 					/>
-					<Stack gap={0.75}>
-						<TextInput
-							label="Password"
-							type="password"
-							{...register('password')}
-							id="password"
-							invalid={Boolean(errors.password?.message)}
-							message={errors.password?.message}
-							maxWidth="xl"
-							required
-						/>
-						<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
-							Forgot password?
-						</TextLink>
-					</Stack>
+					<PasswordInput
+						label="Password"
+						{...register('password')}
+						id="password"
+						invalid={Boolean(errors.password?.message)}
+						message={errors.password?.message}
+						maxWidth="xl"
+						required
+					/>
+					<div>
+						<TextLink href="#">Forgot password?</TextLink>
+					</div>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
 							Sign in

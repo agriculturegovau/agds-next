@@ -7,13 +7,10 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 
-export type UserRole = 'Employer' | 'Employee';
-
 export type User = {
 	firstName: string;
 	lastName: string;
 	displayName: string;
-	role: UserRole;
 };
 
 type AuthContextType = {
