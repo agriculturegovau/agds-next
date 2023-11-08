@@ -35,7 +35,7 @@ export default function ServicesPage() {
 									description="Link a business to access services online. You will need to use Relationship Authorisation Manager (RAM)."
 								/>
 								<ServiceCard
-									href="/not-found"
+									href="/services/food-drink-hospitality/operate-a-food-truck-van-or-stall-on-public-areas"
 									title="Operate a food truck, van or stall on public areas"
 									description="Food trucks, vans and stalls must be registered to operate on public areas."
 								/>
@@ -77,7 +77,7 @@ export default function ServicesPage() {
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
 									href="/not-found"
-									title="Agriculture and farming "
+									title="Agriculture and farming"
 								/>
 								<ServiceCard
 									href="/not-found"
@@ -89,22 +89,18 @@ export default function ServicesPage() {
 								/>
 								<ServiceCard href="/not-found" title="Cleaning" />
 								<ServiceCard
-									href="/not-found"
+									href="/services/food-drink-hospitality"
 									title="Food, drink and hospitality"
 								/>
-
 								<ServiceCard
 									href="/not-found"
 									title="Motor vehicle and road transport"
 								/>
-
 								<ServiceCard href="/not-found" title="Private healthcare" />
-
 								<ServiceCard
 									href="/not-found"
 									title="Real estate and property"
 								/>
-
 								<ServiceCard href="/not-found" title="Retail" />
 							</Columns>
 						</Stack>

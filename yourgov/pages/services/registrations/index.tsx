@@ -13,7 +13,7 @@ import { SiteLayout } from '../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { RegistrationsCardList } from '../../../components/RegistrationsCardList';
 
-export default function RegistrationsPage() {
+export default function Page() {
 	const pageAlertRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 	const registrationId = router.query.registrationId;
