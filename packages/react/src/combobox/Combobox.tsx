@@ -1,4 +1,4 @@
-import { ReactNode, Ref, useState } from 'react';
+import { ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -57,6 +57,11 @@ export function Combobox<Option extends DefaultComboboxOption>({
 }: ComboboxProps<Option>) {
 	const inputId = useComboboxInputId(id);
 	const [inputItems, setInputItems] = useState<Option[]>(options);
+
+	// The effect ensures the list of options change whenever the `options` prop changes
+	useEffect(() => {
+		setInputItems(options);
+	}, [options]);
 
 	const combobox = useCombobox<Option>({
 		items: inputItems,
