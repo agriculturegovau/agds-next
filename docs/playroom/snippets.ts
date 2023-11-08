@@ -1166,6 +1166,11 @@ items={[
 		name: 'Warning',
 		code: `<SectionAlert tone="warning" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
+	{
+		group: 'PasswordInput',
+		name: 'Basic',
+		code: `<PasswordInput label="Password" />`,
+	},
 ];
 
 export default snippets;

@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { Button } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -114,21 +115,18 @@ const SignInForm = () => {
 						maxWidth="xl"
 						required
 					/>
-					<Stack gap={0.75}>
-						<TextInput
-							label="Password"
-							type="password"
-							{...register('password')}
-							id="password"
-							invalid={Boolean(errors.password?.message)}
-							message={errors.password?.message}
-							maxWidth="xl"
-							required
-						/>
-						<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
-							Forgot password?
-						</TextLink>
-					</Stack>
+					<PasswordInput
+						label="Password"
+						{...register('password')}
+						id="password"
+						invalid={Boolean(errors.password?.message)}
+						message={errors.password?.message}
+						maxWidth="xl"
+						required
+					/>
+					<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
+						Forgot password?
+					</TextLink>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
 							Sign in

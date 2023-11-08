@@ -249,6 +249,7 @@ export {
 } from '@ag.ds-next/react/dropdown-menu';
 export { SectionAlert } from '@ag.ds-next/react/section-alert';
 export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
+export { PasswordInput } from '@ag.ds-next/react/password-input';
 
 // Used to populate options on documentation site and playroom
 export {
