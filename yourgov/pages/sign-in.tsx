@@ -47,10 +47,11 @@ const Page: NextPageWithLayout = () => {
 							<Divider />
 							<Prose>
 								<p>
-									Don&apos;t have an account? <a href="#">Create account</a>
+									Don&apos;t have an account?{' '}
+									<a href="/not-found">Create account</a>
 								</p>
 								<p>
-									Read our <a href="#">privacy policy</a>
+									Read our <a href="/not-found">privacy policy</a>
 								</p>
 							</Prose>
 						</Stack>
@@ -158,7 +159,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 						required
 					/>
 					<div>
-						<TextLink href="#">Forgot password?</TextLink>
+						<TextLink href="/not-found">Forgot password?</TextLink>
 					</div>
 					<div>
 						<Button type="submit" loading={isSubmitting}>

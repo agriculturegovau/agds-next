@@ -56,15 +56,15 @@ const Page: NextPageWithLayout = () => {
 								<Prose>
 									<ul>
 										<li>
-											<a href="#">State pet registration rules</a>
+											<a href="/not-found">State pet registration rules</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="/not-found">
 												National pet registration legislative framework
 											</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="/not-found">
 												Meaningful link label that shows link purpose
 											</a>
 										</li>
