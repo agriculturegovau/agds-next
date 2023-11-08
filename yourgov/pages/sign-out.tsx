@@ -4,7 +4,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { PageContent } from '@ag.ds-next/react/content';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { YourGovLayout } from '../components/Layout/YourGovLayout';
+import { SiteLayout } from '../components/Layout/SiteLayout';
 import { useAuth } from '../lib/useAuth';
 import type { NextPageWithLayout } from './_app';
 
@@ -39,5 +39,5 @@ const Page: NextPageWithLayout = () => {
 export default Page;
 
 Page.getLayout = function getLayout(page: ReactElement) {
-	return <YourGovLayout>{page}</YourGovLayout>;
+	return <SiteLayout focusMode>{page}</SiteLayout>;
 };
