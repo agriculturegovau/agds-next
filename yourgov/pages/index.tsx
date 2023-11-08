@@ -125,7 +125,7 @@ export default function HomePage() {
 									</H3>
 									<Text as="p">
 										An easier and faster way to connect with government services
-										for your business
+										for your business.
 									</Text>
 								</Stack>
 							</CardInner>
@@ -137,7 +137,7 @@ export default function HomePage() {
 										<CardLink href="/help">Help</CardLink>
 									</H3>
 									<Text as="p">
-										Information and support to help you use yourGov
+										Information and support to help you use yourGov.
 									</Text>
 								</Stack>
 							</CardInner>

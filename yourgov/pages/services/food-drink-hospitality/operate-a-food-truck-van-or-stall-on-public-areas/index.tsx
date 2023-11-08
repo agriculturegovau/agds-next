@@ -240,7 +240,7 @@ export default function Page() {
 										</p>
 									</Prose>
 									<ButtonGroup>
-										<ButtonLink href="/not-found" variant="primary">
+										<ButtonLink href="/sign-in" variant="primary">
 											Sign in to apply
 										</ButtonLink>
 										<ButtonLink href="/not-found" variant="secondary">
