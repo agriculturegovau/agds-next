@@ -40,9 +40,7 @@ export const TableHeaderSortable = ({
 				borderBottom: true,
 				borderBottomWidth: 'xl',
 			})}
-			css={{
-				textAlign,
-			}}
+			textAlign={textAlign}
 		>
 			<Flex
 				as={BaseButton}

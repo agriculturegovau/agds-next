@@ -13,9 +13,7 @@ export const TableCaption = ({ children }: TableCaptionProps) => {
 			fontWeight="bold"
 			paddingBottom={0.5}
 			display="table-caption"
-			css={{
-				textAlign: 'left',
-			}}
+			textAlign="left"
 		>
 			{children}
 		</Text>

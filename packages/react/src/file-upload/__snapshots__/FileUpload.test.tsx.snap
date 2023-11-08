@@ -67,7 +67,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           type="file"
         />
         <div
-          class="css-107qz7x-boxStyles-FileUpload"
+          class="css-iij6ui-boxStyles"
         >
           <span
             class="css-g6olve-boxStyles-Text"

@@ -39,9 +39,9 @@ export function AppLayoutHeaderAccount({
 			alignItems="center"
 			flexShrink={0}
 			gap={0.5}
+			textAlign="right"
 			css={mq({
 				textDecoration: 'none',
-				textAlign: 'right',
 				maxWidth: ['16rem', '18rem'],
 				...(hasLink && {
 					'&:hover': {

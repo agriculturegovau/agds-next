@@ -250,7 +250,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								<Flex
 									flexDirection="column"
 									alignItems="center"
-									css={{ textAlign: 'center' }}
+									textAlign="center"
 								>
 									<Text
 										color={isDragActive ? 'action' : 'muted'}

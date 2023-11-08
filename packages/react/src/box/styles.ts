@@ -114,6 +114,7 @@ type TypographyProps = Partial<{
 	fontFamily: ResponsiveProp<Font>;
 	fontSize: ResponsiveProp<FontSize>;
 	lineHeight: LineHeight;
+	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
 }>;
 
 function typographyStyles({
@@ -121,6 +122,7 @@ function typographyStyles({
 	fontFamily,
 	fontSize: _fontSize,
 	lineHeight: _lineHeight = 'default',
+	textAlign,
 }: TypographyProps) {
 	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
 		fontGrid(t, _lineHeight)
@@ -143,6 +145,7 @@ function typographyStyles({
 		fontFamily: mapResponsiveProp(fontFamily, (t) => tokens.font[t]),
 		fontSize,
 		lineHeight,
+		textAlign: mapResponsiveProp(textAlign),
 		'& ::selection': {
 			color: boxPalette.backgroundBody,
 			backgroundColor: boxPalette.foregroundAction,
@@ -459,6 +462,7 @@ export function boxStyles({
 	fontFamily,
 	fontSize,
 	lineHeight,
+	textAlign,
 	focus,
 	link,
 	highContrastOutline,
@@ -533,6 +537,7 @@ export function boxStyles({
 					fontFamily,
 					fontSize,
 					lineHeight,
+					textAlign,
 				}),
 
 				...(link ? linkStyles : undefined),

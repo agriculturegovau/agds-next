@@ -36,7 +36,8 @@ export const TableCell = ({
 			fontWeight={fontWeight}
 			focus
 			display={display}
-			css={{ verticalAlign, textAlign }}
+			textAlign={textAlign}
+			css={{ verticalAlign }}
 			scope={scope}
 		>
 			{children}
