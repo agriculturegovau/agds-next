@@ -121,7 +121,9 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 
 const footerLinks = [
 	{ label: 'Home', href: '/' },
+	{ label: 'About', href: '/not-found' },
 	{ label: 'Services', href: '/services' },
+	{ label: 'Help', href: '/not-found' },
 ];
 
 const SiteFooter = () => {
