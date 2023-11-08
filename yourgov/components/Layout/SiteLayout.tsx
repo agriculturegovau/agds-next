@@ -72,7 +72,9 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 		return {
 			primary: [
 				{ label: 'Home', href: '/' },
+				{ label: 'About', href: '/not-found' },
 				{ label: 'Services', href: '/services' },
+				{ label: 'Help', href: '/not-found' },
 			],
 			secondary: [
 				user
@@ -90,6 +92,9 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 		};
 	}, [user, onSignInButtonClick]);
 
+	// Prevent the header links from being incorrectly highlighted
+	const asPath = router.asPath.endsWith('not-found') ? '' : router.asPath;
+
 	return (
 		<Stack palette="dark">
 			<Header
@@ -101,7 +106,7 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 			{!focusMode ? (
 				<MainNav
 					id="main-nav"
-					activePath={router.asPath}
+					activePath={asPath}
 					items={navItems.primary}
 					secondaryItems={navItems.secondary}
 				/>
