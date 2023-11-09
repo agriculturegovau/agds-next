@@ -8,9 +8,9 @@ import type { NextPageWithLayout } from '../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Account settings" />
+			<DocumentTitle title="Licences and permits" />
 			<PageContent>
-				<H1>Account settings</H1>
+				<H1>Licences and permits</H1>
 			</PageContent>
 		</Fragment>
 	);

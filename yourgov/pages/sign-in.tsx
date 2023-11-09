@@ -1,4 +1,6 @@
 import { Fragment, ReactElement, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -24,10 +26,14 @@ import { SiteLayout } from '../components/Layout/SiteLayout';
 import type { NextPageWithLayout } from './_app';
 
 const Page: NextPageWithLayout = () => {
+	const router = useRouter();
+	const searchParams = useSearchParams();
 	const { signIn } = useAuth();
 
 	function onSubmit() {
 		signIn(mockUser);
+		const redirectTo = searchParams.get('redirectTo');
+		router.push(redirectTo ? `/app?redirectTo=${redirectTo}` : '/app');
 	}
 
 	return (

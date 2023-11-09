@@ -1,4 +1,6 @@
 import { Fragment, ReactElement } from 'react';
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { PageContent } from '@ag.ds-next/react/content';
 import { H1, H2, H3 } from '@ag.ds-next/react/heading';
 import { Card, CardInner } from '@ag.ds-next/react/card';
@@ -8,13 +10,22 @@ import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
 import { AppLayout } from '../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
+import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { useAuth } from '../../lib/useAuth';
 import type { NextPageWithLayout } from '../_app';
 
 const Page: NextPageWithLayout = () => {
+	const router = useRouter();
+	const searchParams = useSearchParams();
 	const { user } = useAuth();
 	const { linkedBusinesses, setSelectedBusiness } = useLinkedBusinesses();
+
+	function goToBusiness(business: Business) {
+		setSelectedBusiness(business);
+		const redirectTo = searchParams.get('redirectTo');
+		router.push(redirectTo ?? '/app/dashboard');
+	}
+
 	return (
 		<Fragment>
 			<DocumentTitle title="Account" />
@@ -32,10 +43,7 @@ const Page: NextPageWithLayout = () => {
 											<Text as="p" color="muted">
 												ABN {b.abn}
 											</Text>
-											<Button
-												variant="text"
-												onClick={() => setSelectedBusiness(b)}
-											>
+											<Button variant="text" onClick={() => goToBusiness(b)}>
 												Go to business
 											</Button>
 										</Stack>
