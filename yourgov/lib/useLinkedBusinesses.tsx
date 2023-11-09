@@ -11,6 +11,7 @@ import { mockBusinesses } from '../data/mockBusinesses';
 export type Business = {
 	name: string;
 	abn: string;
+	role: string;
 };
 
 type LinkedBusinessesType = {

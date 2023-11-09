@@ -42,10 +42,10 @@ type AppLayoutProps = PropsWithChildren<{
 }>;
 
 const footerLinks = [
-	{ label: 'Label', href: '/not-found' },
-	{ label: 'Label', href: '/not-found' },
-	{ label: 'Label', href: '/not-found' },
-	{ label: 'Label', href: '/not-found' },
+	{ label: 'About', href: '/not-found' },
+	{ label: 'Help', href: '/not-found' },
+	{ label: 'Accessibility', href: '/not-found' },
+	{ label: 'Disclaimer', href: '/not-found' },
 ];
 
 const MAIN_CONTENT_ATTRS = {
