@@ -26,7 +26,7 @@ export default function Page() {
 	return (
 		<>
 			<DocumentTitle title="Content page example" />
-			<SiteLayout>
+			<SiteLayout applyMainElement={false}>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>

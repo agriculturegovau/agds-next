@@ -15,12 +15,18 @@ import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { useAuth } from '../../lib/useAuth';
 
+type SiteLayoutProps = PropsWithChildren<{
+	/** If true, the area between the header and footer will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
+	applyMainElement?: boolean;
+	/** If true, the `MainNav` component will not be rendered. Used on pages with focused tasks such as multi-page forms. */
+	focusMode?: boolean;
+}>;
+
 export const SiteLayout = ({
 	children,
+	applyMainElement = true,
 	focusMode = false,
-}: PropsWithChildren<{
-	focusMode?: boolean;
-}>) => {
+}: SiteLayoutProps) => {
 	const { isRedirectingToSignIn } = useAuth();
 
 	const skipLinks = useMemo(() => {
@@ -42,11 +48,13 @@ export const SiteLayout = ({
 			>
 				<SiteHeader focusMode={focusMode} />
 				<Box
-					as="main"
-					id="main-content"
-					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
 					flexGrow={1}
+					{...(applyMainElement && {
+						as: 'main',
+						id: 'main-content',
+						tabIndex: -1,
+						css: { '&:focus': { outline: 'none' } },
+					})}
 				>
 					{children}
 				</Box>
