@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Prose } from '@ag.ds-next/react/prose';
 import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
@@ -263,29 +264,31 @@ export default function Page() {
 										</p>
 										<ul>
 											<li>
-												<a href="/not-found">
+												<Link href="/not-found">
 													Understand food safety requirements
-												</a>
+												</Link>
 											</li>
 											<li>
-												<a href="/not-found">New laws for food businesses</a>
+												<Link href="/not-found">
+													New laws for food businesses
+												</Link>
 											</li>
 											<li>
-												<a href="/not-found">
+												<Link href="/not-found">
 													Restricted areas and exclusion zones
-												</a>
+												</Link>
 											</li>
 											<li>
-												<a href="/not-found">Hours of operation</a>
+												<Link href="/not-found">Hours of operation</Link>
 											</li>
 										</ul>
 										<h3>Related approvals</h3>
 										<ul>
 											<li>
-												<a href="/not-found">Serve alcohol on premises</a>
+												<Link href="/not-found">Serve alcohol on premises</Link>
 											</li>
 											<li>
-												<a href="/not-found">Outdoor dining approval</a>
+												<Link href="/not-found">Outdoor dining approval</Link>
 											</li>
 										</ul>
 									</Prose>

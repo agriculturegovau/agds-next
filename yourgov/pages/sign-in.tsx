@@ -10,7 +10,6 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Prose } from '@ag.ds-next/react/prose';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
@@ -51,15 +50,15 @@ const Page: NextPageWithLayout = () => {
 							</Stack>
 							<SignInForm onSubmit={onSubmit} />
 							<Divider />
-							<Prose>
-								<p>
+							<Stack gap={1.5}>
+								<Text as="p">
 									Don&apos;t have an account?{' '}
-									<a href="/not-found">Create account</a>
-								</p>
-								<p>
-									Read our <a href="/not-found">privacy policy</a>
-								</p>
-							</Prose>
+									<TextLink href="/not-found">Create account</TextLink>
+								</Text>
+								<Text as="p">
+									Read our <TextLink href="/not-found">privacy policy</TextLink>
+								</Text>
+							</Stack>
 						</Stack>
 					</Column>
 				</Columns>
