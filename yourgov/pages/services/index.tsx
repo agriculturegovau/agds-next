@@ -13,7 +13,7 @@ import { Columns } from '@ag.ds-next/react/columns';
 import { SiteLayout } from '../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 
-export default function ServicesPage() {
+export default function Page() {
 	return (
 		<>
 			<DocumentTitle title="Services" />

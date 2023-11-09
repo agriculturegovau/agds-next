@@ -1,4 +1,4 @@
-import { Fragment, ReactElement, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
@@ -22,9 +22,8 @@ import { useAuth } from '../lib/useAuth';
 import { mockUser } from '../data/mockUsers';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { SiteLayout } from '../components/Layout/SiteLayout';
-import type { NextPageWithLayout } from './_app';
 
-const Page: NextPageWithLayout = () => {
+export default function Page() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const { signIn } = useAuth();
@@ -38,40 +37,37 @@ const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
 			<DocumentTitle title="Sign in" />
-			<PageContent>
-				<Columns>
-					<Column columnSpan={{ xs: 12, md: 7 }}>
-						<Stack gap={3}>
-							<Stack gap={0.5}>
-								<H1>Sign in to yourGov</H1>
-								<Text as="p" fontSize="md" color="muted">
-									Access government services, quickly and securely.
-								</Text>
+			<SiteLayout focusMode>
+				<PageContent>
+					<Columns>
+						<Column columnSpan={{ xs: 12, md: 7 }}>
+							<Stack gap={3}>
+								<Stack gap={0.5}>
+									<H1>Sign in to yourGov</H1>
+									<Text as="p" fontSize="md" color="muted">
+										Access government services, quickly and securely.
+									</Text>
+								</Stack>
+								<SignInForm onSubmit={onSubmit} />
+								<Divider />
+								<Stack gap={1.5}>
+									<Text as="p">
+										Don&apos;t have an account?{' '}
+										<TextLink href="/not-found">Create account</TextLink>
+									</Text>
+									<Text as="p">
+										Read our{' '}
+										<TextLink href="/not-found">privacy policy</TextLink>
+									</Text>
+								</Stack>
 							</Stack>
-							<SignInForm onSubmit={onSubmit} />
-							<Divider />
-							<Stack gap={1.5}>
-								<Text as="p">
-									Don&apos;t have an account?{' '}
-									<TextLink href="/not-found">Create account</TextLink>
-								</Text>
-								<Text as="p">
-									Read our <TextLink href="/not-found">privacy policy</TextLink>
-								</Text>
-							</Stack>
-						</Stack>
-					</Column>
-				</Columns>
-			</PageContent>
+						</Column>
+					</Columns>
+				</PageContent>
+			</SiteLayout>
 		</Fragment>
 	);
-};
-
-export default Page;
-
-Page.getLayout = function getLayout(page: ReactElement) {
-	return <SiteLayout focusMode>{page}</SiteLayout>;
-};
+}
 
 const formSchema = yup
 	.object({

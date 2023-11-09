@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
@@ -7,9 +8,9 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { SiteLayout } from '../components/Layout/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 
-export default function NotFoundPage() {
+export default function Page() {
 	return (
-		<>
+		<Fragment>
 			<DocumentTitle title="Page not found" />
 			<SiteLayout>
 				<PageContent>
@@ -25,6 +26,6 @@ export default function NotFoundPage() {
 					</Stack>
 				</PageContent>
 			</SiteLayout>
-		</>
+		</Fragment>
 	);
 }

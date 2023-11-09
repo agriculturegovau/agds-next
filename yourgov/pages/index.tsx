@@ -15,7 +15,7 @@ import { SiteLayout } from '../components/Layout/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { useWithBasePath } from '../lib/useWithBasePath';
 
-export default function HomePage() {
+export default function Page() {
 	const withBasePath = useWithBasePath();
 	return (
 		<>
