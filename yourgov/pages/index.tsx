@@ -92,8 +92,8 @@ export default function HomePage() {
 
 				<div css={{ '> section > div': { paddingBottom: '0!important' } }}>
 					<SectionContent background="bodyAlt">
-						<Columns cols={{ xs: 1, sm: 2 }} gap={3} alignItems="center">
-							<Stack gap={1.5} alignItems="flex-start">
+						<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
+							<Stack gap={1.5} alignItems="flex-start" paddingTop={{ sm: 1 }}>
 								<H2>Intending to make, serve or sell alcohol?</H2>
 								<Text as="p">
 									Get tailored step-by-step guidance on what approvals your
