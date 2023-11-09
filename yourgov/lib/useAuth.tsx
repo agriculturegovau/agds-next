@@ -5,7 +5,6 @@ import {
 	useContext,
 	PropsWithChildren,
 } from 'react';
-import { useRouter } from 'next/router';
 
 export type User = {
 	firstName: string;
@@ -18,8 +17,6 @@ type AuthContextType = {
 	hasLoadedUser: boolean;
 	signIn: (user: User) => void;
 	signOut: () => void;
-	isRedirectingToSignIn: boolean;
-	onSignInButtonClick: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,8 +32,6 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }: PropsWithChildren<{}>) {
-	const router = useRouter();
-
 	const [hasLoadedUser, setHasLoadedUser] = useState(false);
 	const [userState, setUserState] = useState<User | null>(null);
 
@@ -58,16 +53,6 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 		setUserState(null);
 	}
 
-	const [isRedirectingToSignIn, setIsRedirectingToSignIn] = useState(false);
-
-	function onSignInButtonClick() {
-		setIsRedirectingToSignIn(true);
-		setTimeout(() => {
-			setIsRedirectingToSignIn(false);
-			router.push('/sign-in');
-		}, 2000);
-	}
-
 	return (
 		<AuthContext.Provider
 			value={{
@@ -75,8 +60,6 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 				hasLoadedUser,
 				signIn,
 				signOut,
-				onSignInButtonClick,
-				isRedirectingToSignIn,
 			}}
 		>
 			{children}

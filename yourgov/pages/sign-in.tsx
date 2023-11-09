@@ -37,7 +37,7 @@ export default function Page() {
 	return (
 		<Fragment>
 			<DocumentTitle title="Sign in" />
-			<SiteLayout focusMode>
+			<SiteLayout>
 				<PageContent>
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 7 }}>

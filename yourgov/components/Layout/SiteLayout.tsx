@@ -4,7 +4,6 @@ import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
 import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -27,8 +26,6 @@ export const SiteLayout = ({
 	applyMainElement = true,
 	focusMode = false,
 }: SiteLayoutProps) => {
-	const { isRedirectingToSignIn } = useAuth();
-
 	const skipLinks = useMemo(() => {
 		const items = [{ href: '#main-content', label: 'Skip to main content' }];
 		if (!focusMode) {
@@ -59,12 +56,6 @@ export const SiteLayout = ({
 					{children}
 				</Box>
 				<SiteFooter />
-				{isRedirectingToSignIn && (
-					<LoadingBlanket
-						fullScreen={true}
-						label="You are being redirected to sign in with yourGov"
-					/>
-				)}
 			</Flex>
 		</>
 	);
@@ -74,7 +65,7 @@ export const SiteLayout = ({
 
 const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 	const router = useRouter();
-	const { user, onSignInButtonClick } = useAuth();
+	const { user } = useAuth();
 
 	const navItems = useMemo(() => {
 		return {
@@ -93,12 +84,12 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 					  }
 					: {
 							label: 'Sign in',
-							onClick: onSignInButtonClick,
+							href: '/sign-in',
 							endElement: <AvatarIcon />,
 					  },
 			],
 		};
-	}, [user, onSignInButtonClick]);
+	}, [user]);
 
 	// Prevent the header links from being incorrectly highlighted
 	const asPath = router.asPath.endsWith('not-found') ? '' : router.asPath;
