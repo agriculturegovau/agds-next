@@ -142,16 +142,13 @@ function AppLayoutHeader({ user }: { user: User }) {
 								))}
 							</DropdownMenuGroup>
 							<DropdownMenuGroup label="My account">
-								<DropdownMenuItemLink href="/app/profile" icon={AvatarIcon}>
+								<DropdownMenuItemLink href="/app/not-found" icon={AvatarIcon}>
 									Profile
 								</DropdownMenuItemLink>
 								<DropdownMenuItemLink href="/app/messages" icon={EmailIcon}>
 									Messages
 								</DropdownMenuItemLink>
-								<DropdownMenuItemLink
-									href="/app/account-settings"
-									icon={SettingsIcon}
-								>
+								<DropdownMenuItemLink href="/app/not-found" icon={SettingsIcon}>
 									Account settings
 								</DropdownMenuItemLink>
 							</DropdownMenuGroup>
