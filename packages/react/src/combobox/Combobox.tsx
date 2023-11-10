@@ -45,6 +45,9 @@ export type ComboboxProps<
 	inputRef?: Ref<HTMLInputElement>;
 	/** Used to override the default item rendering. */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
+
+	/** Clearable */
+	clearable?: boolean;
 };
 
 export function Combobox<Option extends DefaultComboboxOption>({
@@ -71,7 +74,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
 		},
-		onInputValueChange: ({ inputValue, isOpen }) => {
+		onInputValueChange: ({ inputValue, isOpen, selectedItem }) => {
 			inputValue = inputValue?.toLowerCase() ?? '';
 			if (isOpen) {
 				setInputItems(filterOptions(options, inputValue));
