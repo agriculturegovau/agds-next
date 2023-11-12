@@ -74,6 +74,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			onChange?.(selectedItem);
 		},
 		onInputValueChange: ({ inputValue, isOpen }) => {
+			inputValue = inputValue?.toLowerCase() ?? '';
 			if (isOpen) {
 				setInputItems(filterOptions(options, inputValue));
 			} else {
