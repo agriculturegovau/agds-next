@@ -45,8 +45,7 @@ export type ComboboxProps<
 	inputRef?: Ref<HTMLInputElement>;
 	/** Used to override the default item rendering. */
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
-
-	/** Clearable */
+	/** If true, the clear button will be rendered when there is a selected option. */
 	clearable?: boolean;
 };
 
@@ -74,8 +73,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
 		},
-		onInputValueChange: ({ inputValue, isOpen, selectedItem }) => {
-			inputValue = inputValue?.toLowerCase() ?? '';
+		onInputValueChange: ({ inputValue, isOpen }) => {
 			if (isOpen) {
 				setInputItems(filterOptions(options, inputValue));
 			} else {
