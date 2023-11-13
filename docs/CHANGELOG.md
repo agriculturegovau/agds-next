@@ -1,5 +1,20 @@
 # @ag.ds-next/docs
 
+## 0.6.6
+
+### Patch Changes
+
+- c5a4373ce5c: combobox: Fixed a bug where changing the value of the `options` prob would not immediately update the list of options.
+- Updated dependencies [c85a4fdfe0c]
+- Updated dependencies [5948f43f9b6]
+- Updated dependencies [2fe8c26bc9d]
+- Updated dependencies [79e31f8fb38]
+- Updated dependencies [db4243407d4]
+- Updated dependencies [d7c4fcde9b4]
+- Updated dependencies [97723bb52b6]
+- Updated dependencies [65f7f83e0c9]
+  - @ag.ds-next/react@1.16.0
+
 ## 0.6.5
 
 ### Patch Changes

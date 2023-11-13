@@ -1,5 +1,29 @@
 # @ag.ds-next/react
 
+## 1.16.0
+
+### Minor Changes
+
+- c85a4fdfe0c: file-input: Decreased the "Choose files" button size
+
+  file-input: Increased visual prominence of when a file has been uploaded by changing the font weight when a file has been added
+
+- 5948f43f9b6: password-input: Initial release of component
+- 2fe8c26bc9d: file-upload: Added support for `href` in `FileWithStatus`
+- 79e31f8fb38: main-nav: Made improvements to component under the hood to better improve performance and code readability.
+
+  main-nav: Extended the `secondaryItems` prop to allow users to add a dropdown menu.
+
+- db4243407d4: combobox: Added new `clearable` prop to `Combobox`. If true, the clear button ("x") will be rendered when there is a selected option.
+- d7c4fcde9b4: file-input: Fixed hover styles in file selector button
+- 97723bb52b6: combobox: Added support for react nodes in the `secondaryText` and `tertiaryText` props in the `ComboboxRenderItem` component
+
+  autocomplete: Added support for react nodes in the `secondaryText` and `tertiaryText` props in the `AutocompleteRenderItem` component
+
+### Patch Changes
+
+- 65f7f83e0c9: ag-branding: Updated `darkBackgroundShade` and `darkBackgroundBodyAlt` color
+
 ## 1.15.0
 
 ### Minor Changes
