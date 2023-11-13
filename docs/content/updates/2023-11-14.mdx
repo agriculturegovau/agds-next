@@ -1,0 +1,51 @@
+---
+date: 14th November 2023
+title: AgDS Beta v1.16.0 release
+description: Initial release of Password input, improvements to Combobox, plus various minor bug fixes and improvements.
+---
+
+## Updates
+
+### [AG Branding](/components/autocomplete)
+
+- Updated `darkBackgroundShade` and `darkBackgroundBodyAlt` colors
+
+### [Autocomplete](/components/autocomplete)
+
+- Added support for react nodes in the `secondaryText` and `tertiaryText` props in the `AutocompleteRenderItem` component
+
+### [Combobox](/components/combobox)
+
+- Added new `clearable` prop to `Combobox`. If true, the clear button ("x") will be rendered when there is a selected option
+- Fixed a bug where changing the value of the `options` prob would not immediately update the list of options
+- Added support for react nodes in the `secondaryText` and `tertiaryText` props in the `ComboboxRenderItem` component
+
+### [File input](/components/file-input)
+
+- Increased visual prominence of when a file has been uploaded by changing the font weight when a file has been added
+- Decreased the "Choose files" button size
+- Fixed hover styles in file selector button
+
+### [File upload](/components/file-upload)
+
+- Added support for `href` in `FileWithStatus`
+
+### [Main nav](/components/main-nav)
+
+- Extended the `secondaryItems` prop to allow users to add a dropdown menu
+- Made improvements to component under the hood to better improve performance and code readability
+
+### [Password input](/components/password-input)
+
+- Initial release of component
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.16.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1472) for this release.
+
