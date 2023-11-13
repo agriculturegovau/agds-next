@@ -127,19 +127,19 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 					/>
 					{hasButtons && (
 						<ComboboxButtonContainer>
+							{showClearButton && (
+								<ComboboxClearButton
+									disabled={disabled}
+									onClick={combobox.reset}
+								/>
+							)}
+							{hasBothButtons && <ComboboxButtonDivider />}
 							{showDropdownTrigger && (
 								<ComboboxDropdownTrigger
 									{...combobox.getToggleButtonProps({
 										isOpen: combobox.isOpen,
 										disabled,
 									})}
-								/>
-							)}
-							{hasBothButtons && <ComboboxButtonDivider />}
-							{showClearButton && (
-								<ComboboxClearButton
-									disabled={disabled}
-									onClick={combobox.reset}
 								/>
 							)}
 						</ComboboxButtonContainer>

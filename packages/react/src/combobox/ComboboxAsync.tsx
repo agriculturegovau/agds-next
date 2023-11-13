@@ -38,7 +38,7 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
-	/** If true, the clear button will be rendered. */
+	/** If true, the clear button will be rendered when there is a selected option. */
 	clearable?: boolean;
 	/** @deprecated This prop is no longer being used. When true, the dropdown will open when the user focuses on the element  */
 	openDropdownOnFocus?: boolean;

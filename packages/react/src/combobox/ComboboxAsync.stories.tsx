@@ -78,6 +78,13 @@ export const Block: Story = {
 	},
 };
 
+export const Clearable: Story = {
+	args: {
+		...defaultArgs,
+		clearable: true,
+	},
+};
+
 type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {

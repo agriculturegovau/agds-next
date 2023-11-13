@@ -215,6 +215,26 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 };
 ```
 
+## Clearable
+
+Use the `clearable` prop to render a clear ("x") button when there is a selected option.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+			clearable
+		/>
+	);
+};
+```
+
 ## Custom rendering
 
 Use the `renderItem` prop to customise how each option in the dropdown list is rendered. Inside this function, you can make use of the `ComboboxRenderItem` component to style extra information.
