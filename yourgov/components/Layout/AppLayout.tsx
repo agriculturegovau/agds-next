@@ -32,7 +32,7 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
-import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
+import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
 import { IconApproval, IconUsers } from '../CustomIcons';
 
@@ -109,9 +109,16 @@ export function AppLayout({
 }
 
 function AppLayoutHeader({ user }: { user: User }) {
-	const { pathname } = useRouter();
+	const { pathname, push } = useRouter();
 	const { linkedBusinesses, selectedBusiness, setSelectedBusiness } =
 		useLinkedBusinesses();
+
+	function onBusinessClick(business: Business) {
+		setSelectedBusiness(business);
+		push('/app/dashboard');
+	}
+
+	const isAppHomePage = pathname === '/app';
 
 	return (
 		<AgDSAppLayoutHeader
@@ -121,10 +128,10 @@ function AppLayoutHeader({ user }: { user: User }) {
 			href="/app"
 			accountDetails={{
 				name: user.displayName,
-				secondaryText: selectedBusiness?.name,
-				dropdown:
-					pathname === '/app' ? null : (
-						<DropdownMenuPanel palette="light">
+				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
+				dropdown: (
+					<DropdownMenuPanel palette="light">
+						{isAppHomePage ? null : (
 							<DropdownMenuGroup label="Businesses">
 								{linkedBusinesses.map((b) => (
 									<DropdownMenuItemRadio
@@ -135,29 +142,30 @@ function AppLayoutHeader({ user }: { user: User }) {
 												: false
 										}
 										secondaryText={`ABN ${b.abn}`}
-										onClick={() => setSelectedBusiness(b)}
+										onClick={() => onBusinessClick(b)}
 									>
 										{b.name}
 									</DropdownMenuItemRadio>
 								))}
 							</DropdownMenuGroup>
-							<DropdownMenuGroup label="My account">
-								<DropdownMenuItemLink href="/app/not-found" icon={AvatarIcon}>
-									Profile
-								</DropdownMenuItemLink>
-								<DropdownMenuItemLink href="/app/messages" icon={EmailIcon}>
-									Messages
-								</DropdownMenuItemLink>
-								<DropdownMenuItemLink href="/app/not-found" icon={SettingsIcon}>
-									Account settings
-								</DropdownMenuItemLink>
-							</DropdownMenuGroup>
-							<DropdownMenuDivider />
-							<DropdownMenuItemLink href="/sign-out" icon={ExitIcon}>
-								Sign out
+						)}
+						<DropdownMenuGroup label="My account">
+							<DropdownMenuItemLink href="/not-found" icon={AvatarIcon}>
+								Profile
 							</DropdownMenuItemLink>
-						</DropdownMenuPanel>
-					),
+							<DropdownMenuItemLink href="/not-found" icon={EmailIcon}>
+								Messages
+							</DropdownMenuItemLink>
+							<DropdownMenuItemLink href="/not-found" icon={SettingsIcon}>
+								Account settings
+							</DropdownMenuItemLink>
+						</DropdownMenuGroup>
+						<DropdownMenuDivider />
+						<DropdownMenuItemLink href="/sign-out" icon={ExitIcon}>
+							Sign out
+						</DropdownMenuItemLink>
+					</DropdownMenuPanel>
+				),
 			}}
 		/>
 	);

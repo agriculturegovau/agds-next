@@ -11,11 +11,27 @@ import {
 	TabPanel,
 } from '@ag.ds-next/react/tabs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import {
+	TableWrapper,
+	Table,
+	TableHead,
+	TableRow,
+	TableHeader,
+	TableBody,
+	TableCell,
+} from '@ag.ds-next/react/table';
+import { H2 } from '@ag.ds-next/react/heading';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/Layout/AppLayout';
-import type { NextPageWithLayout } from '../../_app';
 import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
+import type { NextPageWithLayout } from '../../_app';
+import {
+	mockApplicationHistory,
+	mockCurrentApprovals,
+} from '../../../data/mockLicencesAndPermits';
 
 const Page: NextPageWithLayout = () => {
 	return (
@@ -38,7 +54,6 @@ const Page: NextPageWithLayout = () => {
 							</CallToActionLink>
 						}
 					/>
-
 					<Tabs>
 						<TabList>
 							<TabButton>Current approvals</TabButton>
@@ -46,10 +61,98 @@ const Page: NextPageWithLayout = () => {
 						</TabList>
 						<TabPanels>
 							<TabPanel>
-								<p>TODO</p>
+								<Stack gap={1.5}>
+									<H2 id="current-approvals-heading">Current approvals</H2>
+									<TableWrapper>
+										<Table aria-labelledby="current-approvals-heading">
+											<TableHead>
+												<TableRow>
+													<TableHeader scope="col" width="25%">
+														Approval number
+													</TableHeader>
+													<TableHeader scope="col" width="25%">
+														Approval type
+													</TableHeader>
+													<TableHeader scope="col" width="25%">
+														Approval status
+													</TableHeader>
+													<TableHeader scope="col" width="25%">
+														Approved date
+													</TableHeader>
+												</TableRow>
+											</TableHead>
+											<TableBody>
+												{mockCurrentApprovals.map((approval, index) => (
+													<TableRow key={index}>
+														<TableCell as="th" scope="row" fontWeight="bold">
+															<TextLink href="/not-found">
+																{approval.approvalNumber}
+															</TextLink>
+														</TableCell>
+														<TableCell>{approval.type}</TableCell>
+														<TableCell>
+															<StatusBadge
+																weight="subtle"
+																{...approval.status}
+															/>
+														</TableCell>
+														<TableCell>{approval.approvedDate}</TableCell>
+													</TableRow>
+												))}
+											</TableBody>
+										</Table>
+									</TableWrapper>
+								</Stack>
 							</TabPanel>
 							<TabPanel>
-								<p>TODO</p>
+								<Stack gap={1.5}>
+									<H2 id="application-history-heading">Application history</H2>
+									<TableWrapper>
+										<Table aria-labelledby="application-history-heading">
+											<TableHead>
+												<TableRow>
+													<TableHeader scope="col" width="25%">
+														Reference number
+													</TableHeader>
+													<TableHeader scope="col" width="25%">
+														Application type
+													</TableHeader>
+													<TableHeader scope="col" width="25%">
+														Application status
+													</TableHeader>
+													<TableHeader
+														scope="col"
+														textAlign="right"
+														width="25%"
+													>
+														Actions
+													</TableHeader>
+												</TableRow>
+											</TableHead>
+											<TableBody>
+												{mockApplicationHistory.map((application, index) => (
+													<TableRow key={index}>
+														<TableCell as="th" scope="row" fontWeight="bold">
+															<TextLink href="/not-found">
+																{application.referenceNumber}
+															</TextLink>
+														</TableCell>
+														<TableCell>{application.type}</TableCell>
+														<TableCell>
+															<StatusBadge
+																weight="subtle"
+																{...application.status}
+															/>
+														</TableCell>
+														<TableCell textAlign="right">
+															<TextLink href="/not-found">View</TextLink>
+														</TableCell>
+													</TableRow>
+												))}
+											</TableBody>
+										</Table>
+									</TableWrapper>
+								</Stack>
 							</TabPanel>
 						</TabPanels>
 					</Tabs>
