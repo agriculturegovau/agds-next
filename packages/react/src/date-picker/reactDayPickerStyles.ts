@@ -91,6 +91,7 @@ export const reactDayPickerStyles = (range: boolean) =>
 		// Table
 		'.rdp-months': {
 			display: 'flex',
+			height: '23.5rem',
 		},
 		'.rdp-month': {
 			margin: `0 ${mapSpacing(1)}`,
