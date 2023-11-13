@@ -6,11 +6,9 @@ import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import {
 	ExitIcon,
 	HomeIcon,
-	FactoryIcon,
 	EmailIcon,
 	SettingsIcon,
 	HelpIcon,
-	SuccessIcon,
 	AvatarIcon,
 	ChevronsLeftIcon,
 } from '@ag.ds-next/react/icon';
@@ -36,6 +34,7 @@ import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
 import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
+import { IconApproval, IconUsers } from '../CustomIcons';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
@@ -43,19 +42,10 @@ type AppLayoutProps = PropsWithChildren<{
 }>;
 
 const footerLinks = [
-	{ label: 'Label', href: '#' },
-	{
-		label: 'Label',
-		href: '#',
-	},
-	{
-		label: 'Label',
-		href: '#',
-	},
-	{
-		label: 'Label',
-		href: '#',
-	},
+	{ label: 'About', href: '/not-found' },
+	{ label: 'Help', href: '/not-found' },
+	{ label: 'Accessibility', href: '/not-found' },
+	{ label: 'Disclaimer', href: '/not-found' },
 ];
 
 const MAIN_CONTENT_ATTRS = {
@@ -152,16 +142,13 @@ function AppLayoutHeader({ user }: { user: User }) {
 								))}
 							</DropdownMenuGroup>
 							<DropdownMenuGroup label="My account">
-								<DropdownMenuItemLink href="/app/profile" icon={AvatarIcon}>
+								<DropdownMenuItemLink href="/app/not-found" icon={AvatarIcon}>
 									Profile
 								</DropdownMenuItemLink>
 								<DropdownMenuItemLink href="/app/messages" icon={EmailIcon}>
 									Messages
 								</DropdownMenuItemLink>
-								<DropdownMenuItemLink
-									href="/app/account-settings"
-									icon={SettingsIcon}
-								>
+								<DropdownMenuItemLink href="/app/not-found" icon={SettingsIcon}>
 									Account settings
 								</DropdownMenuItemLink>
 							</DropdownMenuGroup>
@@ -210,20 +197,46 @@ function AppLayoutSidebar() {
 				],
 			},
 			[
-				{ label: 'Dashboard', href: '/app/dashboard', icon: HomeIcon },
-				{ label: 'Businesses', href: '/app/businesses', icon: FactoryIcon },
-				{ label: 'Compliance', href: '/app/compliance', icon: SuccessIcon },
+				{
+					label: 'Dashboard',
+					href: '/app/dashboard',
+					icon: HomeIcon,
+				},
+				{
+					label: 'Licences and permits',
+					href: '/app/licences-and-permits',
+					icon: IconApproval,
+				},
+				{
+					label: 'Staff access',
+					href: '/not-found',
+					icon: IconUsers,
+				},
 			],
 			[
-				{ label: 'Messages', href: '/app/messages', icon: EmailIcon },
+				{
+					label: 'Messages',
+					href: '/app/messages',
+					icon: EmailIcon,
+				},
 				{
 					label: 'Account settings',
-					href: '/app/account-settings',
+					href: '/not-found',
 					icon: SettingsIcon,
 				},
-				{ label: 'Help', href: '/app/help', icon: HelpIcon },
+				{
+					label: 'Help',
+					href: '/not-found',
+					icon: HelpIcon,
+				},
 			],
-			[{ label: 'Sign out', href: '/sign-out', icon: ExitIcon }],
+			[
+				{
+					label: 'Sign out',
+					href: '/sign-out',
+					icon: ExitIcon,
+				},
+			],
 		],
 		[selectedBusiness?.abn, selectedBusiness?.name]
 	);

@@ -1,68 +1,78 @@
-import { useEffect, useState, useRef, Fragment, ReactElement } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { Divider } from '@ag.ds-next/react/divider';
 import { Text } from '@ag.ds-next/react/text';
 import { H1 } from '@ag.ds-next/react/heading';
-import { Column, Columns } from '@ag.ds-next/react/columns';
-import { Select } from '@ag.ds-next/react/select';
+import { useAuth } from '../lib/useAuth';
+import { mockUser } from '../data/mockUsers';
 import { DocumentTitle } from '../components/DocumentTitle';
-import { YourGovLayout } from '../components/Layout/YourGovLayout';
-import { useAuth, UserRole } from '../lib/useAuth';
-import type { NextPageWithLayout } from './_app';
+import { SiteLayout } from '../components/Layout/SiteLayout';
 
-const Page: NextPageWithLayout = () => {
+export default function Page() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
 	const { signIn } = useAuth();
 
-	function onSubmit({ firstName, lastName, role }: FormSchema) {
-		signIn({
-			firstName,
-			lastName,
-			displayName: [firstName, lastName].join(' '),
-			role,
-		});
+	function onSubmit() {
+		signIn(mockUser);
+		const redirectTo = searchParams.get('redirectTo');
+		router.push(redirectTo ? `/app?redirectTo=${redirectTo}` : '/app');
 	}
 
 	return (
 		<Fragment>
 			<DocumentTitle title="Sign in" />
-			<PageContent>
-				<Columns>
-					<Column columnSpan={{ xs: 12, md: 7 }}>
-						<Stack gap={1.5}>
-							<H1>Sign in with yourGov</H1>
-							<SignInForm onSubmit={onSubmit} />
-						</Stack>
-					</Column>
-				</Columns>
-			</PageContent>
+			<SiteLayout>
+				<PageContent>
+					<Columns>
+						<Column columnSpan={{ xs: 12, md: 7 }}>
+							<Stack gap={3}>
+								<Stack gap={0.5}>
+									<H1>Sign in to yourGov</H1>
+									<Text as="p" fontSize="md" color="muted">
+										Access government services, quickly and securely.
+									</Text>
+								</Stack>
+								<SignInForm onSubmit={onSubmit} />
+								<Divider />
+								<Stack gap={1.5}>
+									<Text as="p">
+										Don&apos;t have an account?{' '}
+										<TextLink href="/not-found">Create account</TextLink>
+									</Text>
+									<Text as="p">
+										Read our{' '}
+										<TextLink href="/not-found">privacy policy</TextLink>
+									</Text>
+								</Stack>
+							</Stack>
+						</Column>
+					</Columns>
+				</PageContent>
+			</SiteLayout>
 		</Fragment>
 	);
-};
-
-export default Page;
-
-Page.getLayout = function getLayout(page: ReactElement) {
-	return <YourGovLayout>{page}</YourGovLayout>;
-};
+}
 
 const formSchema = yup
 	.object({
-		firstName: yup.string().required('Enter your first name'),
-		lastName: yup.string().required('Enter your last name'),
-		role: yup
-			.mixed<UserRole>()
-			.oneOf(['Employee', 'Employer'], 'Select a role')
-			.required('Select a role'),
+		email: yup.string().email('Invalid email').required('Enter your email'),
+		password: yup.string().required('Enter your password'),
 	})
 	.required();
 
@@ -84,11 +94,12 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		resolver: yupResolver(formSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		console.log(data);
 		setIsSubmitting(true);
 		setTimeout(() => {
+			props.onSubmit(data);
 			setIsSubmitting(false);
-			props?.onSubmit(data);
 		}, 3000);
 	};
 
@@ -130,45 +141,27 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 				<FormStack>
 					<TextInput
-						label="First name"
-						{...register('firstName')}
-						id="firstName"
-						autoComplete="given-name"
-						invalid={Boolean(errors.firstName?.message)}
-						message={errors.firstName?.message}
+						label="Email"
+						type="email"
+						{...register('email')}
+						id="email"
+						invalid={Boolean(errors.email?.message)}
+						message={errors.email?.message}
 						maxWidth="xl"
 						required
 					/>
-					<TextInput
-						label="Last name"
-						{...register('lastName')}
-						id="lastName"
-						autoComplete="family-name"
-						invalid={Boolean(errors.lastName?.message)}
-						message={errors.lastName?.message}
+					<PasswordInput
+						label="Password"
+						{...register('password')}
+						id="password"
+						invalid={Boolean(errors.password?.message)}
+						message={errors.password?.message}
 						maxWidth="xl"
 						required
 					/>
-					<Select
-						label="Role"
-						{...register('role')}
-						id="role"
-						placeholder="Please select"
-						invalid={Boolean(errors.role?.message)}
-						message={errors.role?.message}
-						maxWidth="xl"
-						required
-						options={[
-							{
-								label: 'Employer',
-								value: 'Employer',
-							},
-							{
-								label: 'Employee',
-								value: 'Employee',
-							},
-						]}
-					/>
+					<div>
+						<TextLink href="/not-found">Forgot password?</TextLink>
+					</div>
 					<div>
 						<Button type="submit" loading={isSubmitting}>
 							Sign in
@@ -179,3 +172,13 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		</Stack>
 	);
 }
+
+export const SignInFormPage = () => {
+	return (
+		<PageContent>
+			<Columns>
+				<Column columnSpan={{ xs: 12, md: 7 }}></Column>
+			</Columns>
+		</PageContent>
+	);
+};

@@ -1,14 +1,14 @@
-export const mockBusinesses = [
+import { Business } from '../lib/useLinkedBusinesses';
+
+export const mockBusinesses: Business[] = [
 	{
-		name: 'Acme Corp',
-		abn: '00 000 000 001',
+		name: "Trucker's Choice Tomatoes",
+		abn: '00 000 000 000',
+		role: 'Principal Authority',
 	},
 	{
-		name: 'Produce Fresh',
-		abn: '00 000 000 002',
-	},
-	{
-		name: 'Organic Co',
-		abn: '00 000 000 003',
+		name: "Gumble's Gumbo",
+		abn: '00 000 000 000',
+		role: 'Principal Authority',
 	},
 ];

@@ -7,6 +7,8 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Divider } from '@ag.ds-next/react/divider';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { SiteLayout } from '../../../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../components/FormHelpCallout';
@@ -53,23 +55,23 @@ const Page: NextPageWithLayout = () => {
 							<Divider />
 							<Stack gap={1.5}>
 								<H2>Information on pet registration rules and regulations</H2>
-								<Prose>
-									<ul>
-										<li>
-											<a href="#">State pet registration rules</a>
-										</li>
-										<li>
-											<a href="#">
-												National pet registration legislative framework
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												Meaningful link label that shows link purpose
-											</a>
-										</li>
-									</ul>
-								</Prose>
+								<UnorderedList>
+									<ListItem>
+										<TextLink href="/not-found">
+											State pet registration rules
+										</TextLink>
+									</ListItem>
+									<ListItem>
+										<TextLink href="/not-found">
+											National pet registration legislative framework
+										</TextLink>
+									</ListItem>
+									<ListItem>
+										<TextLink href="/not-found">
+											Meaningful link label that shows link purpose
+										</TextLink>
+									</ListItem>
+								</UnorderedList>
 							</Stack>
 							<FormHelpCallout />
 						</Stack>
