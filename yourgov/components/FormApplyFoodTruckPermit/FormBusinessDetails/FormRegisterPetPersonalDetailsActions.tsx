@@ -5,9 +5,9 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
-import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
+import { useFormBusinessDetails } from './FormBusinessDetails';
 
-export const FormRegisterPetPersonalDetailsActions = () => {
+export const FormBusinessDetailsActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const {
@@ -16,7 +16,7 @@ export const FormRegisterPetPersonalDetailsActions = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel,
-	} = useFormRegisterPetPersonalDetails();
+	} = useFormBusinessDetails();
 
 	return (
 		<Fragment>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,41 +8,41 @@ import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { H2 } from '@ag.ds-next/react/heading';
+import { Prose } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
+import { Details } from '@ag.ds-next/react/details';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { useToggleState } from '@ag.ds-next/react/core';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Select } from '@ag.ds-next/react/select';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
-import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
-import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
+import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
+import { useFormBusinessDetails } from './FormBusinessDetails';
 
 export const formSchema = yup
 	.object({
-		streetAddress: yup.string().required('Enter your address'),
-		suburbTownCity: yup.string().required('Enter your suburb'),
-		state: yup.string().required('Enter your state'),
-		postcode: yup
+		firstName: yup.string().required('Enter your first name'),
+		lastName: yup.string().required('Enter your last name'),
+		email: yup
 			.string()
-			.length(4, 'Invalid postcode')
-			.required('Enter your postcode'),
+			.email('Enter a valid email')
+			.required('Enter your email'),
 	})
 	.required();
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormRegisterPetPersonalDetailsStep1 = () => {
-	const [isFormVisibile, toggleFormVisibilty] = useToggleState(false, true);
-	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
+export const FormBusinessDetailsStep0 = () => {
+	const { next, stepFormState, isSideFlow, setIsSideFlow } =
+		useFormBusinessDetails();
+
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const headingRef = useRef<HTMLHeadingElement>(null);
@@ -69,16 +69,20 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			toggleFormVisibilty();
+			setIsSideFlow(false);
 			setHasClosedForm(true);
 		}, 1500);
 	};
 
-	const onDiscardChangesClick = () => {
+	function onDiscardChangesClick() {
 		reset();
-		toggleFormVisibilty();
+		setIsSideFlow(false);
 		setHasClosedForm(true);
-	};
+	}
+
+	function changeDetails() {
+		setIsSideFlow(true);
+	}
 
 	useEffect(() => {
 		if (!hasClosedForm) return;
@@ -105,14 +109,14 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<FormRegisterPetPersonalDetailsContainer
-			title="Address details"
-			introduction="Provide the address details for where pet will be housed."
+		<FormBusinessDetailsContainer
+			title="Owner details"
+			introduction="Confirm your name and contact details."
 		>
-			<Stack gap={3} alignItems="flex-start">
-				{isFormVisibile ? (
-					<Stack gap={1.5}>
-						<H2>Update address details</H2>
+			<Stack gap={3} alignItems="flex-start" width="100%">
+				{isSideFlow ? (
+					<Stack gap={1.5} width="100%">
+						<H2>Update personal details</H2>
 						<FormRequiredFieldsMessage />
 						<Stack
 							as="form"
@@ -145,56 +149,35 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									</PageAlert>
 								)}
 								<TextInput
-									label="Street address"
-									autoComplete="street-address"
-									{...register('streetAddress')}
-									id="streetAddress"
-									invalid={Boolean(errors.streetAddress?.message)}
-									message={errors.streetAddress?.message}
+									label="First name"
+									autoComplete="given-name"
+									{...register('firstName')}
+									id="firstName"
+									invalid={Boolean(errors.firstName?.message)}
+									message={errors.firstName?.message}
 									maxWidth="xl"
 									autoFocus
 									required
 								/>
 								<TextInput
-									label="Suburb, town or city"
-									autoComplete="address-level2"
-									{...register('suburbTownCity')}
-									id="suburbTownCity"
-									invalid={Boolean(errors.suburbTownCity?.message)}
-									message={errors.suburbTownCity?.message}
+									label="Last name"
+									autoComplete="family-name"
+									{...register('lastName')}
+									id="lastName"
+									invalid={Boolean(errors.lastName?.message)}
+									message={errors.lastName?.message}
 									maxWidth="xl"
 									required
 								/>
-								<Select
-									label="State or territory"
-									{...register('state')}
-									id="state"
-									placeholder="Select"
-									options={[
-										{ label: 'NSW', value: 'nsw' },
-										{ label: 'QLD', value: 'qld' },
-										{ label: 'ACT', value: 'act' },
-										{ label: 'VIC', value: 'vic' },
-										{ label: 'TAS', value: 'tas' },
-										{ label: 'NT', value: 'nt' },
-										{ label: 'SA', value: 'sa' },
-										{ label: 'WA', value: 'wa' },
-									]}
-									invalid={Boolean(errors.state?.message)}
-									message={errors.state?.message}
-									maxWidth="md"
-									required
-								/>
 								<TextInput
-									label="Postcode"
-									inputMode="numeric"
-									pattern="[0-9]*"
-									autoComplete="postal-code"
-									{...register('postcode')}
-									id="postcode"
-									invalid={Boolean(errors.postcode?.message)}
-									message={errors.postcode?.message}
-									maxWidth="sm"
+									label="Email"
+									type="email"
+									autoComplete="email"
+									{...register('email')}
+									id="email"
+									invalid={Boolean(errors.email?.message)}
+									message={errors.email?.message}
+									maxWidth="xl"
 									required
 								/>
 							</FormStack>
@@ -209,49 +192,59 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 						</Stack>
 					</Stack>
 				) : (
-					<>
+					<Fragment>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
 							<H2 ref={headingRef} tabIndex={-1} focus>
-								Check address details
+								Confirm business owner details
 							</H2>
+							<Details label="How were my details prefilled?" iconBefore>
+								<Prose>
+									<p>
+										We’re working hard to improve the way we do business with
+										you. This includes making applications and registrations
+										easier to use.
+									</p>
+									<p>
+										If we already have some of the information you need to tell
+										us, we’ll pre-fill it into your applications. This saves you
+										entering all your details yourself.
+									</p>
+									<p>
+										It’s important to check the pre-filled information in your
+										report before you submit it.
+									</p>
+								</Prose>
+							</Details>
 							<SummaryList>
 								<SummaryListItem>
-									<SummaryListItemTerm>Street address</SummaryListItemTerm>
+									<SummaryListItemTerm>First name</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.streetAddress}
+										{localFormState.firstName}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 								<SummaryListItem>
-									<SummaryListItemTerm>
-										Suburb, town or city
-									</SummaryListItemTerm>
+									<SummaryListItemTerm>Last name</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.suburbTownCity}
+										{localFormState.lastName}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 								<SummaryListItem>
-									<SummaryListItemTerm>State</SummaryListItemTerm>
+									<SummaryListItemTerm>Email</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.state}
-									</SummaryListItemDescription>
-								</SummaryListItem>
-								<SummaryListItem>
-									<SummaryListItemTerm>Post code</SummaryListItemTerm>
-									<SummaryListItemDescription>
-										{localFormState.postcode}
+										{localFormState.email}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>
-							<Button variant="text" onClick={() => toggleFormVisibilty()}>
-								Change address
+							<Button variant="text" onClick={changeDetails}>
+								Change details
 							</Button>
 						</Stack>
 						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
-							<FormRegisterPetPersonalDetailsActions />
+							<FormBusinessDetailsActions />
 						</Box>
-					</>
+					</Fragment>
 				)}
 			</Stack>
-		</FormRegisterPetPersonalDetailsContainer>
+		</FormBusinessDetailsContainer>
 	);
 };

@@ -2,10 +2,11 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
-import { FormStepTitle } from '../FormStepTitle';
-import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
+import { FormStepTitle } from '../../FormStepTitle';
+import { useFormApplyFoodTruckPermit } from '../FormApplyFoodTruckPermitContext';
+import { useFormBusinessDetails } from './FormBusinessDetails';
 
-export const FormRegisterPetDetailsContainer = ({
+export const FormBusinessDetailsContainer = ({
 	children,
 	title,
 	introduction,
@@ -16,8 +17,10 @@ export const FormRegisterPetDetailsContainer = ({
 	introduction: string;
 	callToAction?: ReactNode;
 }) => {
+	const ctx = useFormApplyFoodTruckPermit();
+
 	const titleRef = useRef<HTMLHeadingElement>(null);
-	const { hasCompletedPreviousStep, currentStep } = useFormRegisterPetDetails();
+	const { hasCompletedPreviousStep, currentStep } = useFormBusinessDetails();
 
 	// Focus the title of the current step as the user navigates between form steps
 	useEffect(() => {
@@ -28,10 +31,10 @@ export const FormRegisterPetDetailsContainer = ({
 		<Stack gap={3} width="100%">
 			<FormStepTitle
 				titleRef={titleRef}
-				formTitle="Your pet’s details"
+				formTitle={ctx.title}
 				stepTitle={title}
 				introduction={introduction}
-				callToAction={hasCompletedPreviousStep ? callToAction : undefined}
+				callToAction={callToAction}
 			/>
 			{hasCompletedPreviousStep ? (
 				children

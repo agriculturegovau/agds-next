@@ -1,4 +1,7 @@
 import { Fragment, ReactElement } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Details } from '@ag.ds-next/react/details';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -7,11 +10,16 @@ import { Prose } from '@ag.ds-next/react/prose';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Radio } from '@ag.ds-next/react/radio';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { AppLayout } from '../../../../../components/Layout/AppLayout';
 import type { NextPageWithLayout } from '../../../../_app';
 import { PageTitle } from '../../../../../components/PageTitle';
 import { HelpCallout } from '../../../../../components/HelpCallout';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { useRouter } from 'next/router';
 
 const Page: NextPageWithLayout = () => {
 	return (
@@ -51,7 +59,7 @@ const Page: NextPageWithLayout = () => {
 								}
 							/>
 
-							<p>Form content</p>
+							<Form />
 
 							<Divider />
 
@@ -118,3 +126,60 @@ export default Page;
 Page.getLayout = function getLayout(page: ReactElement) {
 	return <AppLayout>{page}</AppLayout>;
 };
+
+const formSchema = yup
+	.object({
+		businessType: yup.string().typeError('Business type is required'),
+	})
+	.required();
+
+type FormSchema = yup.InferType<typeof formSchema>;
+
+function Form() {
+	const router = useRouter();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormSchema>({
+		resolver: yupResolver(formSchema),
+	});
+
+	function onSubmit(data: FormSchema) {
+		router.push({
+			pathname: `/app/licences-and-permits/apply/mobile-food-vendor-permit/form`,
+			query: { type: data.businessType?.toLowerCase() },
+		});
+	}
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<FormStack>
+				<ControlGroup
+					label="What type of business do you operate?"
+					invalid={Boolean(errors.businessType?.message)}
+					message={errors.businessType?.message}
+					required
+					block
+				>
+					{['Food van', 'Food truck', 'Market stall', 'Ice-cream truck'].map(
+						(option) => (
+							<Radio
+								key={option}
+								{...register('businessType')}
+								value={option}
+								invalid={Boolean(errors.businessType?.message)}
+							>
+								{option}
+							</Radio>
+						)
+					)}
+				</ControlGroup>
+				<ButtonGroup>
+					<Button type="submit">Get started</Button>
+				</ButtonGroup>
+			</FormStack>
+		</form>
+	);
+}

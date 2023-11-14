@@ -12,21 +12,23 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
-import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
-import { FormRegisterPetPersonalDetailsContainer } from './FormRegisterPetPersonalDetailsContainer';
+import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { useFormBusinessDetails } from './FormBusinessDetails';
+import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
+import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
 
 export const formSchema = yup
 	.object({
-		contactMethod: yup
+		businessName: yup.string().required('Business or company name is required'),
+		tradingName: yup.string(),
+		businessStructure: yup
 			.string()
-			.typeError('Select an option')
-			.required('Select an option'),
-		mobileNumber: yup.string().when('contactMethod', (value, schema) => {
-			if (value === 'SMS') {
-				return schema.required('Mobile number is required');
+			.typeError('Business structure is required')
+			.required('Business structure is required'),
+		abn: yup.string().when('businessStructure', (value, schema) => {
+			if (value === 'Business') {
+				return schema.required('ABN is required');
 			}
 			return schema;
 		}),
@@ -35,8 +37,8 @@ export const formSchema = yup
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormRegisterPetPersonalDetailsStep2 = () => {
-	const { next } = useFormRegisterPetPersonalDetails();
+export const FormBusinessDetailsStep1 = () => {
+	const { next, stepFormState } = useFormBusinessDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -48,8 +50,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
-		reValidateMode: 'onChange',
-		defaultValues: {},
+		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
 	});
 
@@ -72,16 +73,16 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('contactMethod') === 'SMS';
+	const showConditionalField = watch('businessStructure') === 'Business';
 
 	useEffect(() => {
 		if (isSubmitted) trigger();
 	}, [trigger, isSubmitted, showConditionalField]);
 
 	return (
-		<FormRegisterPetPersonalDetailsContainer
-			title="Preferred contact method"
-			introduction="We may need to contact you to check details of your application."
+		<FormBusinessDetailsContainer
+			title="Business details"
+			introduction="Your business details must match your business registration."
 			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
@@ -112,41 +113,59 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							</UnorderedList>
 						</PageAlert>
 					)}
+					<TextInput
+						id="businessName"
+						label="Business or company name"
+						hint="Hint text"
+						{...register('businessName')}
+						invalid={Boolean(errors.businessName?.message)}
+						message={errors.businessName?.message}
+						required
+					/>
+
+					<TextInput
+						id="tradingName"
+						label="Trading name"
+						hint="Hint text"
+						{...register('tradingName')}
+						invalid={Boolean(errors.tradingName?.message)}
+						message={errors.tradingName?.message}
+					/>
+
 					<ControlGroup
 						id="checkbox"
-						label="Preferred contact method"
-						invalid={Boolean(errors.contactMethod)}
-						message={errors.contactMethod?.message}
+						label="Business structure"
+						hint="Hint text"
+						invalid={Boolean(errors.businessStructure)}
+						message={errors.businessStructure?.message}
 						required
 						block
 					>
-						<Radio {...register('contactMethod')} value="Mail">
-							Mail
-						</Radio>
-						<Radio {...register('contactMethod')} value="SMS">
-							SMS
+						<Radio {...register('businessStructure')} value="Business">
+							Business
 						</Radio>
 						{showConditionalField ? (
 							<ConditionalFieldContainer>
 								<TextInput
-									id="mobilePhone"
-									type="tel"
-									autoComplete="tel"
-									label="Provide mobile phone number"
-									{...register('mobileNumber')}
-									invalid={Boolean(errors.mobileNumber?.message)}
-									message={errors.mobileNumber?.message}
+									id="abn"
+									label="Australian Business Number (ABN)"
+									{...register('abn')}
+									invalid={Boolean(errors.abn?.message)}
+									message={errors.abn?.message}
 									required
 								/>
 							</ConditionalFieldContainer>
 						) : null}
-						<Radio {...register('contactMethod')} value="Email">
-							Email
+						<Radio {...register('businessStructure')} value="Company">
+							Company
+						</Radio>
+						<Radio {...register('businessStructure')} value="Sole trader">
+							Sole trader
 						</Radio>
 					</ControlGroup>
 				</FormStack>
-				<FormRegisterPetPersonalDetailsActions />
+				<FormBusinessDetailsActions />
 			</Stack>
-		</FormRegisterPetPersonalDetailsContainer>
+		</FormBusinessDetailsContainer>
 	);
 };

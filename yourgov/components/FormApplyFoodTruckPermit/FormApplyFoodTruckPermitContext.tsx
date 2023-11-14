@@ -6,20 +6,19 @@ import {
 	useState,
 } from 'react';
 import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import {
 	FormState as Task1FormState,
 	formSchema as task1FormSchema,
-} from './FormRegisterPetPersonalDetails/FormRegisterPetPersonalDetails';
-import {
-	FormState as Task2FormState,
-	formSchema as task2FormSchema,
-} from './FormRegisterPetDetails/FormRegisterPetDetails';
+} from './FormBusinessDetails/FormBusinessDetails';
 
 type ContextType = {
+	title: string;
+	homePageUrl: string;
 	/** The task form state. */
 	task1FormState: FormState[0];
-	task2FormState: FormState[1];
+	// task2FormState: FormState[1];
 	/** Function to be called to start a task. Ensures the statuses on the home page task list is updated correctly. */
 	startTask: (taskNumber: number) => void;
 	/** Function to get the status of a task. */
@@ -37,7 +36,6 @@ type TaskFormState = Record<string, any>;
 
 type FormState = {
 	[0]: Task1FormState & { completed: boolean };
-	[1]: Task2FormState & { completed: boolean };
 };
 
 const defaultFormState: FormState = {
@@ -47,25 +45,13 @@ const defaultFormState: FormState = {
 			firstName: 'Alex',
 			lastName: 'Citizen',
 			email: 'alex.citizen@gmail.com',
-			dob: new Date('1999-09-09'),
 			completed: false,
 		},
-		1: {
-			streetAddress: '21 East Wallaby Way',
-			suburbTownCity: 'Petsville',
-			state: 'nsw',
-			postcode: '2123',
-			completed: false,
-		},
-		completed: false,
-	},
-	// Task 2
-	1: {
 		completed: false,
 	},
 };
 
-export const FormRegisterPetContext = ({
+export const FormApplyFoodTruckPermitContext = ({
 	children,
 }: {
 	children: ReactNode;
@@ -75,6 +61,13 @@ export const FormRegisterPetContext = ({
 	const [recentlyCompletedStepIdx, setRecentlyCompletedStepIdx] =
 		useState<number>();
 	const [formState, setFormState] = useState<FormState>(defaultFormState);
+
+	const params = useSearchParams();
+	const title = `Apply for a ${params.get('type')} permit`;
+
+	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${params.get(
+		'type'
+	)}`;
 
 	const completeForm = useCallback(() => {
 		// Show the success message
@@ -87,10 +80,10 @@ export const FormRegisterPetContext = ({
 
 	const completeTask = useCallback(
 		(taskNumber: number) => {
-			router.push(`/services/registrations/pet`);
+			router.push(homePageUrl);
 			setRecentlyCompletedStepIdx(taskNumber - 1);
 		},
-		[router]
+		[homePageUrl, router]
 	);
 
 	const submitTask1 = useCallback(
@@ -100,10 +93,9 @@ export const FormRegisterPetContext = ({
 				...current,
 				[0]: { ...taskFormState, completed: true },
 			}));
-			const hasCompletedTask2 = task2FormSchema.isValidSync(formState[1]);
-			hasCompletedTask2 ? completeForm() : completeTask(1);
+			completeTask(1);
 		},
-		[formState, completeForm, completeTask]
+		[completeTask]
 	);
 
 	const submitTask2 = useCallback(
@@ -142,18 +134,20 @@ export const FormRegisterPetContext = ({
 	}, []);
 
 	const contextValue = {
+		title,
+		homePageUrl,
 		startTask,
 		getTaskStatus,
 		submitTask1,
 		submitTask2,
 		task1FormState: formState[0],
-		task2FormState: formState[1],
+		// task2FormState: formState[1],
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;
 };
 
-export const useFormRegisterPet = () => {
+export function useFormApplyFoodTruckPermit() {
 	const value = useContext(context);
 
 	if (!value) {
@@ -161,4 +155,4 @@ export const useFormRegisterPet = () => {
 	}
 
 	return value;
-};
+}

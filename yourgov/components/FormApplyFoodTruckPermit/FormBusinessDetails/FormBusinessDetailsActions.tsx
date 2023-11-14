@@ -5,9 +5,9 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
-import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
+import { useFormBusinessDetails } from './FormBusinessDetails';
 
-export const FormRegisterPetDetailsActions = () => {
+export const FormBusinessDetailsActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const {
@@ -16,7 +16,7 @@ export const FormRegisterPetDetailsActions = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel,
-	} = useFormRegisterPetDetails();
+	} = useFormBusinessDetails();
 
 	return (
 		<Fragment>
@@ -24,7 +24,7 @@ export const FormRegisterPetDetailsActions = () => {
 				<Divider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						{currentStep === 4 ? 'Submit task' : 'Save and continue'}
+						{currentStep === 3 ? 'Submit task' : 'Save and continue'}
 					</Button>
 					<Button
 						type="button"
