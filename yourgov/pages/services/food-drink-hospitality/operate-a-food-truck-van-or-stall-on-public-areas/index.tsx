@@ -7,11 +7,9 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { Callout } from '@ag.ds-next/react/callout';
 import { Text } from '@ag.ds-next/react/text';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { SideNav } from '@ag.ds-next/react/side-nav';
-import { TextLink } from '@ag.ds-next/react/text-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import {
 	Accordion,
@@ -20,6 +18,7 @@ import {
 } from '@ag.ds-next/react/accordion';
 import { SiteLayout } from '../../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
+import { HelpCallout } from '../../../../components/HelpCallout';
 
 export default function Page() {
 	const router = useRouter();
@@ -242,7 +241,7 @@ export default function Page() {
 									</Prose>
 									<ButtonGroup>
 										<ButtonLink
-											href="/sign-in?redirectTo=/app/licences-and-permits"
+											href="/sign-in?redirectTo=/app/licences-and-permits/apply/mobile-food-vendor-permit"
 											variant="primary"
 										>
 											Sign in to apply
@@ -294,17 +293,7 @@ export default function Page() {
 									</Prose>
 								</Stack>
 
-								<Callout title="Need help?">
-									<Text as="p">
-										Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
-										Friday)
-										<br />
-										Email{' '}
-										<TextLink href="/not-found">
-											emailaccount@yourgov.gov.au
-										</TextLink>
-									</Text>
-								</Callout>
+								<HelpCallout />
 							</Stack>
 						</Column>
 					</Columns>

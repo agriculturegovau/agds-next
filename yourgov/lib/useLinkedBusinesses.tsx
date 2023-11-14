@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import {
 	useEffect,
 	useState,
@@ -35,7 +34,6 @@ export function useLinkedBusinesses() {
 }
 
 export function LinkedBusinessesProvider({ children }: PropsWithChildren<{}>) {
-	const router = useRouter();
 	const [selectedBusinessState, setSelectedBusinessState] =
 		useState<Business | null>(null);
 
@@ -49,8 +47,6 @@ export function LinkedBusinessesProvider({ children }: PropsWithChildren<{}>) {
 	function setSelectedBusiness(business: Business) {
 		sessionStorage.setItem('selectedBusiness', JSON.stringify(business));
 		setSelectedBusinessState(business);
-		// Always navigate to the dashboard when switching businesses
-		router.push('/app/dashboard');
 	}
 
 	return (
