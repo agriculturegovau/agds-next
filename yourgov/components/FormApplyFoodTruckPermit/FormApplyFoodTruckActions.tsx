@@ -5,9 +5,9 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
-import { useFormBusinessDetails } from './FormBusinessDetails';
+import { useFormEmployeeDetails } from './FormEmployeeDetails/FormEmployeeDetails';
 
-export const FormBusinessDetailsActions = () => {
+export const FormApplyFoodTruckActions = () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const {
@@ -16,7 +16,7 @@ export const FormBusinessDetailsActions = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel,
-	} = useFormBusinessDetails();
+	} = useFormEmployeeDetails();
 
 	return (
 		<Fragment>

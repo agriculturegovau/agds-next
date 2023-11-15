@@ -12,6 +12,10 @@ import {
 	FormState as Task1FormState,
 	formSchema as task1FormSchema,
 } from './FormBusinessDetails/FormBusinessDetails';
+import {
+	FormState as Task2FormState,
+	// formSchema as task2FormSchema,
+} from './FormEmployeeDetails/FormEmployeeDetails';
 
 type ContextType = {
 	title: string;
@@ -36,6 +40,7 @@ type TaskFormState = Record<string, any>;
 
 type FormState = {
 	[0]: Task1FormState & { completed: boolean };
+	[1]: Task2FormState & { completed: boolean };
 };
 
 const defaultFormState: FormState = {
@@ -45,6 +50,30 @@ const defaultFormState: FormState = {
 			firstName: 'Alex',
 			lastName: 'Citizen',
 			email: 'alex.citizen@gmail.com',
+			completed: false,
+		},
+		completed: false,
+	},
+	// Task 2
+	1: {
+		0: {
+			employees: [
+				{
+					firstName: 'Homer',
+					lastName: 'Simpson',
+					email: 'homer.simpson@gmail.com',
+				},
+				{
+					firstName: 'Lenny',
+					lastName: 'Leonardson',
+					email: 'lenny.leonardson@gmail.com',
+				},
+				{
+					firstName: 'Waylon',
+					lastName: 'Smithers',
+					email: 'walon.smithers@gmail.com',
+				},
+			],
 			completed: false,
 		},
 		completed: false,
@@ -141,7 +170,7 @@ export const FormApplyFoodTruckPermitContext = ({
 		submitTask1,
 		submitTask2,
 		task1FormState: formState[0],
-		// task2FormState: formState[1],
+		task2FormState: formState[1],
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;

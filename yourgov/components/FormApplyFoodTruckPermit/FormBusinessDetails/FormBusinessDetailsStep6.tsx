@@ -9,9 +9,9 @@ import {
 	FormDefinitionListItemDate,
 	FormDefinitionListItemDateRange,
 } from '../../FormDefinitionList';
+import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
 import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
-import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
 
 export const FormBusinessDetailsStep6 = () => {
 	const { formState, goToStep, next } = useFormBusinessDetails();
@@ -160,7 +160,7 @@ export const FormBusinessDetailsStep6 = () => {
 			</Stack>
 
 			<form onSubmit={onSubmit}>
-				<FormBusinessDetailsActions />
+				<FormApplyFoodTruckActions />
 			</form>
 		</FormBusinessDetailsContainer>
 	);

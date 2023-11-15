@@ -14,8 +14,8 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
 import { useFormBusinessDetails } from './FormBusinessDetails';
-import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
 import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
 
 export const formSchema = yup
@@ -253,7 +253,7 @@ export const FormBusinessDetailsStep2 = () => {
 						</FormStack>
 					</Fieldset>
 				</FormStack>
-				<FormBusinessDetailsActions />
+				<FormApplyFoodTruckActions />
 			</Stack>
 		</FormBusinessDetailsContainer>
 	);

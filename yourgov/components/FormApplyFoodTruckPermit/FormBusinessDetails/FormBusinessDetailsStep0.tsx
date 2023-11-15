@@ -22,8 +22,8 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
 import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
-import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
 import { useFormBusinessDetails } from './FormBusinessDetails';
 
 export const formSchema = yup
@@ -240,7 +240,7 @@ export const FormBusinessDetailsStep0 = () => {
 							</Button>
 						</Stack>
 						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
-							<FormBusinessDetailsActions />
+							<FormApplyFoodTruckActions />
 						</Box>
 					</Fragment>
 				)}

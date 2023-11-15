@@ -12,8 +12,8 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
 import { useFormBusinessDetails } from './FormBusinessDetails';
-import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
 import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
 
 // `yup.date()` can sometimes give false positives with certain string values
@@ -170,7 +170,7 @@ export const FormBusinessDetailsStep4 = () => {
 						required
 					/>
 				</FormStack>
-				<FormBusinessDetailsActions />
+				<FormApplyFoodTruckActions />
 			</Stack>
 		</FormBusinessDetailsContainer>
 	);

@@ -3,3 +3,4 @@ export {
 	useFormApplyFoodTruckPermit,
 } from './FormApplyFoodTruckPermitContext';
 export { FormBusinessDetails } from './FormBusinessDetails/FormBusinessDetails';
+export { FormEmployeeDetails } from './FormEmployeeDetails/FormEmployeeDetails';

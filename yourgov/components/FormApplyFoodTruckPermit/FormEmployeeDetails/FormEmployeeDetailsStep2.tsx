@@ -6,49 +6,38 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Radio } from '@ag.ds-next/react/radio';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Callout } from '@ag.ds-next/react/callout';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
-import { useFormBusinessDetails } from './FormBusinessDetails';
-import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
+import { useFormEmployeeDetails } from './FormEmployeeDetails';
+import { FormEmployeeDetailsContainer } from './FormEmployeeDetailsContainer';
 
 export const formSchema = yup
 	.object({
-		businessName: yup.string().required('Business or company name is required'),
-		tradingName: yup.string(),
-		businessStructure: yup
-			.string()
-			.typeError('Business structure is required')
-			.required('Business structure is required'),
-		abn: yup.string().when('businessStructure', (value, schema) => {
-			if (value === 'Business') {
-				return schema.required('ABN is required');
-			}
-			return schema;
-		}),
+		foodSafetySupervisor: yup
+			.array()
+			.of(yup.string().required())
+			.typeError('Choose at least 1 food safety supervisor.'),
 	})
 	.required();
 
 export type FormSchema = yup.InferType<typeof formSchema>;
 
-export const FormBusinessDetailsStep1 = () => {
-	const { next, stepFormState } = useFormBusinessDetails();
+export const FormEmployeeDetailsStep2 = () => {
+	const { next, stepFormState } = useFormEmployeeDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const {
-		watch,
 		register,
 		handleSubmit,
-		trigger,
-		formState: { errors, isSubmitted },
+		formState: { errors },
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
@@ -73,14 +62,10 @@ export const FormBusinessDetailsStep1 = () => {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('businessStructure') === 'Business';
-
-	useEffect(() => {
-		if (isSubmitted) trigger();
-	}, [trigger, isSubmitted, showConditionalField]);
+	console.log({ errors });
 
 	return (
-		<FormBusinessDetailsContainer
+		<FormEmployeeDetailsContainer
 			title="Business details"
 			introduction="Your business details must match your business registration."
 			callToAction={<FormRequiredFieldsMessage />}
@@ -113,59 +98,46 @@ export const FormBusinessDetailsStep1 = () => {
 							</UnorderedList>
 						</PageAlert>
 					)}
-					<TextInput
-						id="businessName"
-						label="Business or company name"
-						hint="Hint text"
-						{...register('businessName')}
-						invalid={Boolean(errors.businessName?.message)}
-						message={errors.businessName?.message}
-						required
-					/>
-
-					<TextInput
-						id="tradingName"
-						label="Trading name"
-						hint="Hint text"
-						{...register('tradingName')}
-						invalid={Boolean(errors.tradingName?.message)}
-						message={errors.tradingName?.message}
-					/>
-
 					<ControlGroup
 						id="checkbox"
-						label="Business structure"
-						hint="Hint text"
-						invalid={Boolean(errors.businessStructure)}
-						message={errors.businessStructure?.message}
+						label="Who is the appointed Food Safety Supervisor for this business?"
+						hint="You may choose more than one"
+						invalid={Boolean(errors.foodSafetySupervisor)}
+						message={errors.foodSafetySupervisor?.message}
 						required
 						block
 					>
-						<Radio {...register('businessStructure')} value="Business">
-							Business
-						</Radio>
-						{showConditionalField ? (
-							<ConditionalFieldContainer>
-								<TextInput
-									id="abn"
-									label="Australian Business Number (ABN)"
-									{...register('abn')}
-									invalid={Boolean(errors.abn?.message)}
-									message={errors.abn?.message}
-									required
-								/>
-							</ConditionalFieldContainer>
-						) : null}
-						<Radio {...register('businessStructure')} value="Company">
-							Company
-						</Radio>
-						<Radio {...register('businessStructure')} value="Sole trader">
-							Sole trader
-						</Radio>
+						{foodSafetyOfficers.map((officer) => (
+							<Checkbox
+								key={officer}
+								{...register('foodSafetySupervisor')}
+								value={officer}
+							>
+								{officer}
+							</Checkbox>
+						))}
 					</ControlGroup>
+
+					<Callout
+						title="Food Safety Supervisor Certificate(s) required"
+						tone="info"
+					>
+						<Text>
+							You will be required to upload a Food Safety Supervisor
+							Certificate for each staff member appointed as a Food Safety
+							Supervisor in the ‘Upload documents’ task of this application.
+						</Text>
+					</Callout>
 				</FormStack>
 				<FormApplyFoodTruckActions />
 			</Stack>
-		</FormBusinessDetailsContainer>
+		</FormEmployeeDetailsContainer>
 	);
 };
+
+const foodSafetyOfficers = [
+	'Barney Gumble (business owner)',
+	'Homer Jay Simpson',
+	'Marjorie Jacqueline Simpson',
+	'Abraham Jebediah Simpson',
+];

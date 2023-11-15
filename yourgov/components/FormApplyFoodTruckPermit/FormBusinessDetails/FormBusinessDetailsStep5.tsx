@@ -4,8 +4,8 @@ import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Combobox } from '@ag.ds-next/react/combobox';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
 import { useFormBusinessDetails } from './FormBusinessDetails';
-import { FormBusinessDetailsActions } from './FormBusinessDetailsActions';
 import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
 
 export const formSchema = yup
@@ -60,7 +60,7 @@ export const FormBusinessDetailsStep5 = () => {
 						/>
 					)}
 				/>
-				<FormBusinessDetailsActions />
+				<FormApplyFoodTruckActions />
 			</Stack>
 		</FormBusinessDetailsContainer>
 	);

@@ -1,4 +1,5 @@
 import { Fragment, ReactElement } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -14,7 +15,6 @@ import {
 	useFormApplyFoodTruckPermit,
 } from '../../../../../../components/FormApplyFoodTruckPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
-import { useSearchParams } from 'next/navigation';
 
 const TASKS = [
 	{
@@ -25,17 +25,17 @@ const TASKS = [
 	{
 		label: 'Provide employee details',
 		message: 'Provide employee names and email addresses',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2',
 	},
 	{
 		label: 'Upload documents',
 		message: 'Provide the documents required for your application',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-3',
 	},
 	{
 		label: 'Review and submit',
 		message: 'Check all details and submit your application',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-4',
 	},
 ];
 
