@@ -59,18 +59,18 @@ const defaultFormState: FormState = {
 		0: {
 			employees: [
 				{
-					firstName: 'Homer',
-					lastName: 'Simpson',
+					givenName: 'Homer',
+					familyName: 'Simpson',
 					email: 'homer.simpson@gmail.com',
 				},
 				{
-					firstName: 'Lenny',
-					lastName: 'Leonardson',
+					givenName: 'Lenny',
+					familyName: 'Leonardson',
 					email: 'lenny.leonardson@gmail.com',
 				},
 				{
-					firstName: 'Waylon',
-					lastName: 'Smithers',
+					givenName: 'Waylon',
+					familyName: 'Smithers',
 					email: 'walon.smithers@gmail.com',
 				},
 			],
