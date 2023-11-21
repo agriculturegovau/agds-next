@@ -13,7 +13,6 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormTask1Container } from './FormTask1Container';
-import { FormContainer } from './FormContainer';
 import { FormActions } from './FormActions';
 
 // `yup.date()` can sometimes give false positives with certain string values
@@ -83,69 +82,67 @@ export function FormTask1Step4() {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<FormTask1Container>
-			<FormContainer
-				title="Vehicle registratio"
-				introduction="What times would you like to operate?"
-				callToAction={<FormRequiredFieldsMessage />}
+		<FormTask1Container
+			formTitle="Vehicle registratio"
+			formIntroduction="What times would you like to operate?"
+			formCallToAction={<FormRequiredFieldsMessage />}
+		>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
 			>
-				<Stack
-					as="form"
-					gap={3}
-					onSubmit={handleSubmit(onSubmit, onError)}
-					noValidate
-				>
-					<FormStack>
-						{hasErrors && (
-							<PageAlert
-								ref={errorRef}
-								tone="error"
-								title="There is a problem"
-								tabIndex={-1}
-							>
-								<Text as="p">
-									Please correct the following fields and try again
-								</Text>
-								<UnorderedList>
-									{flatErrors.map((error) => (
-										<ListItem key={error.key}>
-											<TextLink href={`#${error.key}`} onClick={scrollToField}>
-												{error.message}
-											</TextLink>
-										</ListItem>
-									))}
-								</UnorderedList>
-							</PageAlert>
+				<FormStack>
+					{hasErrors && (
+						<PageAlert
+							ref={errorRef}
+							tone="error"
+							title="There is a problem"
+							tabIndex={-1}
+						>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{flatErrors.map((error) => (
+									<ListItem key={error.key}>
+										<TextLink href={`#${error.key}`} onClick={scrollToField}>
+											{error.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
+						</PageAlert>
+					)}
+					<TextInput
+						label="Vehicle registration number"
+						hint="Enter a plate number, maximum 6 digits. For example ABC123."
+						id="registrationNumber"
+						{...register('registrationNumber')}
+						invalid={Boolean(errors.registrationNumber?.message)}
+						message={errors.registrationNumber?.message}
+						required
+					/>
+					<Controller
+						control={control}
+						name="registrationExpiry"
+						render={({ field: { ref, ...field } }) => (
+							<DatePicker
+								inputRef={ref}
+								label="Vehicle registration expiry"
+								{...field}
+								id="registrationExpiry"
+								invalid={Boolean(errors.registrationExpiry?.message)}
+								message={errors.registrationExpiry?.message}
+								maxWidth="xl"
+								required
+							/>
 						)}
-						<TextInput
-							label="Vehicle registration number"
-							hint="Enter a plate number, maximum 6 digits. For example ABC123."
-							id="registrationNumber"
-							{...register('registrationNumber')}
-							invalid={Boolean(errors.registrationNumber?.message)}
-							message={errors.registrationNumber?.message}
-							required
-						/>
-						<Controller
-							control={control}
-							name="registrationExpiry"
-							render={({ field: { ref, ...field } }) => (
-								<DatePicker
-									inputRef={ref}
-									label="Vehicle registration expiry"
-									{...field}
-									id="registrationExpiry"
-									invalid={Boolean(errors.registrationExpiry?.message)}
-									message={errors.registrationExpiry?.message}
-									maxWidth="xl"
-									required
-								/>
-							)}
-						/>
-					</FormStack>
-					<FormActions />
-				</Stack>
-			</FormContainer>
+					/>
+				</FormStack>
+				<FormActions />
+			</Stack>
 		</FormTask1Container>
 	);
 }

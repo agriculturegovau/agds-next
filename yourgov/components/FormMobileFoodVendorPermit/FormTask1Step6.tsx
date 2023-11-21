@@ -6,7 +6,6 @@ import { Combobox } from '@ag.ds-next/react/combobox';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
-import { FormContainer } from './FormContainer';
 
 export const formSchema = yup
 	.object({
@@ -37,33 +36,31 @@ export function FormTask1Step6() {
 	};
 
 	return (
-		<FormTask1Container>
-			<FormContainer
-				title="Food served"
-				introduction="What type of food will you be serving?"
-				callToAction={<FormRequiredFieldsMessage />}
-			>
-				<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
-					<Controller
-						control={control}
-						name="cuisine"
-						render={({ field: { ref, ...field } }) => (
-							<Combobox
-								label="Cuisines"
-								hint="Start typing to see results"
-								inputRef={ref}
-								options={cuisineOptions}
-								required
-								{...field}
-								id="cuisine"
-								invalid={Boolean(errors.cuisine?.message)}
-								message={errors.cuisine?.message}
-							/>
-						)}
-					/>
-					<FormActions />
-				</Stack>
-			</FormContainer>
+		<FormTask1Container
+			formTitle="Food served"
+			formIntroduction="What type of food will you be serving?"
+			formCallToAction={<FormRequiredFieldsMessage />}
+		>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+				<Controller
+					control={control}
+					name="cuisine"
+					render={({ field: { ref, ...field } }) => (
+						<Combobox
+							label="Cuisines"
+							hint="Start typing to see results"
+							inputRef={ref}
+							options={cuisineOptions}
+							required
+							{...field}
+							id="cuisine"
+							invalid={Boolean(errors.cuisine?.message)}
+							message={errors.cuisine?.message}
+						/>
+					)}
+				/>
+				<FormActions />
+			</Stack>
 		</FormTask1Container>
 	);
 }

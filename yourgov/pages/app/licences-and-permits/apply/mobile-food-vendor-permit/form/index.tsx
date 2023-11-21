@@ -15,7 +15,7 @@ import {
 } from '../../../../../../components/FormMobileFoodVendorPermit/Context';
 import type { NextPageWithLayout } from '../../../../../_app';
 
-const TASKS = [
+export const TASKS = [
 	{
 		label: 'Provide business details',
 		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1',

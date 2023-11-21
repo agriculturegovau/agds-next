@@ -1,22 +1,20 @@
 import { FormEvent } from 'react';
-// import { Stack } from '@ag.ds-next/react/stack';
-// import { H2 } from '@ag.ds-next/react/heading';
-// import { Button } from '@ag.ds-next/react/button';
-// import {
-// 	FormDefinitionList,
-// 	FormDefinitionListItem,
-// 	FormDefinitionListItemAddress,
-// 	FormDefinitionListItemDate,
-// 	FormDefinitionListItemDateRange,
-// } from '../../FormDefinitionList';
-// import { useFormBusinessDetails } from './FormBusinessDetails';
-// import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
-import { FormContainer } from './FormContainer';
+import { Stack } from '@ag.ds-next/react/stack';
+import { H2 } from '@ag.ds-next/react/heading';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import {
+	FormDefinitionList,
+	FormDefinitionListItem,
+	FormDefinitionListItemAddress,
+	FormDefinitionListItemDate,
+	FormDefinitionListItemDateRange,
+} from '../FormDefinitionList';
 import { FormActions } from './FormActions';
-import { FormTask1Container } from './FormTask1Container';
+import { FormTask1Container, task1FormSteps } from './FormTask1Container';
+import { useFormMobileFoodVendorPermit } from './Context';
 
 export function FormTask1Step7() {
-	// const { formState, goToStep, next } = useFormBusinessDetails();
+	const { formState } = useFormMobileFoodVendorPermit();
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -24,148 +22,143 @@ export function FormTask1Step7() {
 	};
 
 	return (
-		<FormTask1Container>
-			<FormContainer
-				title="Confirm and submit"
-				introduction="Check and confirm all details on this page."
-			>
-				<form onSubmit={onSubmit}>
-					<FormActions />
-				</form>
-			</FormContainer>
+		<FormTask1Container
+			formTitle="Confirm and submit"
+			formIntroduction="Check and confirm all details on this page."
+		>
+			{/** Owner details */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[0].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItem
+						label="First name"
+						value={formState.task1.step1?.firstName}
+					/>
+					<FormDefinitionListItem
+						label="Last name"
+						value={formState.task1.step1?.lastName}
+					/>
+					<FormDefinitionListItem
+						label="Email"
+						value={formState.task1.step1?.email}
+					/>
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[0].href}>
+					Change owner details
+				</ButtonLink>
+			</Stack>
+			{/** Business details */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[0].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItem
+						label="Business or company name"
+						value={formState.task1.step2?.businessName}
+					/>
+					<FormDefinitionListItem
+						label="Trading name"
+						value={formState.task1.step2?.tradingName}
+					/>
+					<FormDefinitionListItem
+						label="Business structure"
+						value={formState.task1.step2?.businessStructure}
+					/>
+					{formState.task1.step2?.businessStructure === 'Business' && (
+						<FormDefinitionListItem
+							label="Australian Business Number (ABN)"
+							value={formState.task1.step2?.abn}
+						/>
+					)}
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[1].href}>
+					Change business details
+				</ButtonLink>
+			</Stack>
+			{/** Business address */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[2].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItemAddress
+						label="Street address"
+						address={formState.task1.step3?.streetAddress}
+						suburb={formState.task1.step3?.suburbTownCity}
+						state={formState.task1.step3?.state}
+						postcode={formState.task1.step3?.postcode}
+					/>
+					{formState.task1.step3?.isPostalAddressSameAsStreetAddress ? (
+						<FormDefinitionListItem
+							label="Postal address"
+							value="Same as street address"
+						/>
+					) : (
+						<FormDefinitionListItemAddress
+							label="Postal address"
+							address={formState.task1.step3?.postalAddress}
+							suburb={formState.task1.step3?.postalSuburbTownCity}
+							state={formState.task1.step3?.postalState}
+							postcode={formState.task1.step3?.postalPostcode}
+						/>
+					)}
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[2].href}>
+					Change business address
+				</ButtonLink>
+			</Stack>
+			{/** Vehicle registration */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[3].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItem
+						label="Vehicle registration number"
+						value={formState.task1.step4?.registrationNumber}
+					/>
+					<FormDefinitionListItemDate
+						label="Vehicle registration expiry"
+						value={formState.task1.step4?.registrationExpiry}
+					/>
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[3].href}>
+					Change vehicle registration
+				</ButtonLink>
+			</Stack>
+			{/** Trading time */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[4].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItemDateRange
+						label="Period active"
+						from={formState.task1.step5?.tradingPeriod?.from}
+						to={formState.task1.step5?.tradingPeriod?.to}
+					/>
+					<FormDefinitionListItem
+						label="Opening time"
+						value={formState.task1.step5?.openingTime}
+					/>
+					<FormDefinitionListItem
+						label="Closing time"
+						value={formState.task1.step5?.closingTime}
+					/>
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[5].href}>
+					Change trading time
+				</ButtonLink>
+			</Stack>
+			{/** Food served */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<H2>{task1FormSteps[6].label}</H2>
+				<FormDefinitionList>
+					<FormDefinitionListItem
+						label="Cuisine"
+						value={formState.task1.step6?.cuisine?.label}
+					/>
+				</FormDefinitionList>
+				<ButtonLink variant="text" href={task1FormSteps[6].href}>
+					Change food services
+				</ButtonLink>
+			</Stack>
+			<form onSubmit={onSubmit}>
+				<FormActions />
+			</form>
 		</FormTask1Container>
 	);
 }
-
-// 	{/** Owner details */}
-// 	<Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Owner details</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItem
-// 			label="First name"
-// 			value={formState[0]?.firstName}
-// 		/>
-// 		<FormDefinitionListItem
-// 			label="Last name"
-// 			value={formState[0]?.lastName}
-// 		/>
-// 		<FormDefinitionListItem label="Email" value={formState[0]?.email} />
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(0)}>
-// 		Change owner details
-// 	</Button>
-// </Stack>
-
-// {/** Business details */}
-// <Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Business details</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItem
-// 			label="Business or company name"
-// 			value={formState[1]?.businessName}
-// 		/>
-// 		<FormDefinitionListItem
-// 			label="Trading name"
-// 			value={formState[1]?.tradingName}
-// 		/>
-// 		<FormDefinitionListItem
-// 			label="Business structure"
-// 			value={formState[1]?.businessStructure}
-// 		/>
-// 		{formState[1]?.businessStructure === 'Business' && (
-// 			<FormDefinitionListItem
-// 				label="Australian Business Number (ABN)"
-// 				value={formState[1]?.abn}
-// 			/>
-// 		)}
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(1)}>
-// 		Change business details
-// 	</Button>
-// </Stack>
-
-// {/** Business details */}
-// <Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Business address</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItemAddress
-// 			label="Street address"
-// 			address={formState[2]?.streetAddress}
-// 			suburb={formState[2]?.suburbTownCity}
-// 			state={formState[2]?.state}
-// 			postcode={formState[2]?.postcode}
-// 		/>
-// 		{formState[2]?.isPostalAddressSameAsStreetAddress ? (
-// 			<FormDefinitionListItem
-// 				label="Postal address"
-// 				value="Same as street address"
-// 			/>
-// 		) : (
-// 			<FormDefinitionListItemAddress
-// 				label="Postal address"
-// 				address={formState[2]?.postalAddress}
-// 				suburb={formState[2]?.postalSuburbTownCity}
-// 				state={formState[2]?.postalState}
-// 				postcode={formState[2]?.postalPostcode}
-// 			/>
-// 		)}
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(2)}>
-// 		Change business details
-// 	</Button>
-// </Stack>
-
-// {/** Vehicle registration */}
-// <Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Vehicle registration</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItem
-// 			label="Vehicle registration number"
-// 			value={formState[3]?.registrationNumber}
-// 		/>
-// 		<FormDefinitionListItemDate
-// 			label="Vehicle registration expiry"
-// 			value={formState[3]?.registrationExpiry}
-// 		/>
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(3)}>
-// 		Change vehicle registration
-// 	</Button>
-// </Stack>
-
-// {/** Trading time */}
-// <Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Trading time</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItemDateRange
-// 			label="Period active"
-// 			from={formState[4]?.tradingPeriod?.from}
-// 			to={formState[4]?.tradingPeriod?.to}
-// 		/>
-// 		<FormDefinitionListItem
-// 			label="Opening time"
-// 			value={formState[4]?.openingTime}
-// 		/>
-// 		<FormDefinitionListItem
-// 			label="Closing time"
-// 			value={formState[4]?.closingTime}
-// 		/>
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(4)}>
-// 		Change trading time
-// 	</Button>
-// </Stack>
-
-// {/** Food served */}
-// <Stack gap={1.5} alignItems="flex-start">
-// 	<H2>Food served</H2>
-// 	<FormDefinitionList>
-// 		<FormDefinitionListItem
-// 			label="Cuisine"
-// 			value={formState[5]?.cuisine?.label}
-// 		/>
-// 	</FormDefinitionList>
-// 	<Button variant="text" onClick={() => goToStep(5)}>
-// 		Change food served
-// 	</Button>
-// </Stack>

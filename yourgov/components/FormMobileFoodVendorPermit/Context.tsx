@@ -5,9 +5,9 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
+import { FormState, defaultFormState } from './FormState';
 
 type ContextType = {
 	formTitle: string;
@@ -20,27 +20,10 @@ type ContextType = {
 
 	isSideFlow: boolean;
 	setIsSideFlow: (isSideFlow: boolean) => void;
+	formState: FormState;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
-
-type FormState = {
-	// Task 1 form state
-	[1]: Record<string, unknown> & { completed: boolean };
-	// Task 2 form state
-	[2]: Record<string, unknown> & { completed: boolean };
-	// Task 3 form state
-	[3]: Record<string, unknown> & { completed: boolean };
-	// Task 4 form state
-	[4]: Record<string, unknown> & { completed: boolean };
-};
-
-const defaultFormState: FormState = {
-	1: { completed: false },
-	2: { completed: false },
-	3: { completed: false },
-	4: { completed: false },
-};
 
 type FormMobileFoodVendorPermitProps = PropsWithChildren<{}>;
 
@@ -50,7 +33,7 @@ export function FormMobileFoodVendorPermit({
 	const [currentTaskIdx, setCurrentTaskIdx] = useState<number>();
 	const [recentlyCompletedStepIdx, setRecentlyCompletedStepIdx] =
 		useState<number>();
-	const [formState, setFormState] = useState<FormState>(defaultFormState);
+	const [formState, setFormState] = useState(defaultFormState);
 
 	const searchParams = useSearchParams();
 	const typeSearchParm = searchParams.get('type') ?? '';
@@ -88,6 +71,7 @@ export function FormMobileFoodVendorPermit({
 		getTaskStatus,
 		isSideFlow,
 		setIsSideFlow,
+		formState,
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;

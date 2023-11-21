@@ -15,7 +15,6 @@ import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
 // import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
-import { FormContainer } from './FormContainer';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -96,85 +95,83 @@ export function FormTask1Step5() {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<FormTask1Container>
-			<FormContainer
-				title="Trading time"
-				introduction="What times would you like to operate?"
-				callToAction={<FormRequiredFieldsMessage />}
+		<FormTask1Container
+			formTitle="Trading time"
+			formIntroduction="What times would you like to operate?"
+			formCallToAction={<FormRequiredFieldsMessage />}
+		>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
 			>
-				<Stack
-					as="form"
-					gap={3}
-					onSubmit={handleSubmit(onSubmit, onError)}
-					noValidate
-				>
-					<FormStack>
-						{hasErrors && (
-							<PageAlert
-								ref={errorRef}
-								tone="error"
-								title="There is a problem"
-								tabIndex={-1}
-							>
-								<Text as="p">
-									Please correct the following fields and try again
-								</Text>
-								<UnorderedList>
-									{flatErrors.map((error) => (
-										<ListItem key={error.key}>
-											<TextLink href={`#${error.key}`} onClick={scrollToField}>
-												{error.message}
-											</TextLink>
-										</ListItem>
-									))}
-								</UnorderedList>
-							</PageAlert>
+				<FormStack>
+					{hasErrors && (
+						<PageAlert
+							ref={errorRef}
+							tone="error"
+							title="There is a problem"
+							tabIndex={-1}
+						>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{flatErrors.map((error) => (
+									<ListItem key={error.key}>
+										<TextLink href={`#${error.key}`} onClick={scrollToField}>
+											{error.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
+						</PageAlert>
+					)}
+					<Controller
+						control={control}
+						name="tradingPeriod"
+						render={({ field: { ref, value, onChange, ...field } }) => (
+							<DateRangePicker
+								legend="Period active"
+								fromInputRef={ref}
+								{...field}
+								id="tradingPeriod"
+								value={value}
+								onChange={onChange}
+								onFromInputChange={(from) => onChange({ ...value, from })}
+								onToInputChange={(to) => onChange({ ...value, to })}
+								fromInvalid={Boolean(errors.tradingPeriod?.from?.message)}
+								toInvalid={Boolean(errors.tradingPeriod?.to?.message)}
+								message={
+									errors.tradingPeriod?.from?.message ||
+									errors.tradingPeriod?.to?.message
+								}
+								required
+							/>
 						)}
-						<Controller
-							control={control}
-							name="tradingPeriod"
-							render={({ field: { ref, value, onChange, ...field } }) => (
-								<DateRangePicker
-									legend="Period active"
-									fromInputRef={ref}
-									{...field}
-									id="tradingPeriod"
-									value={value}
-									onChange={onChange}
-									onFromInputChange={(from) => onChange({ ...value, from })}
-									onToInputChange={(to) => onChange({ ...value, to })}
-									fromInvalid={Boolean(errors.tradingPeriod?.from?.message)}
-									toInvalid={Boolean(errors.tradingPeriod?.to?.message)}
-									message={
-										errors.tradingPeriod?.from?.message ||
-										errors.tradingPeriod?.to?.message
-									}
-									required
-								/>
-							)}
-						/>
-						<TextInput
-							label="Opening time"
-							hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-							id="openingTime"
-							{...register('openingTime')}
-							invalid={Boolean(errors.openingTime?.message)}
-							message={errors.openingTime?.message}
-							required
-						/>
-						<TextInput
-							label="Closing time"
-							hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-							id="closingTime"
-							{...register('closingTime')}
-							invalid={Boolean(errors.closingTime?.message)}
-							message={errors.closingTime?.message}
-							required
-						/>
-					</FormStack>
-					<FormActions />
-				</Stack>
-			</FormContainer>
+					/>
+					<TextInput
+						label="Opening time"
+						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+						id="openingTime"
+						{...register('openingTime')}
+						invalid={Boolean(errors.openingTime?.message)}
+						message={errors.openingTime?.message}
+						required
+					/>
+					<TextInput
+						label="Closing time"
+						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+						id="closingTime"
+						{...register('closingTime')}
+						invalid={Boolean(errors.closingTime?.message)}
+						message={errors.closingTime?.message}
+						required
+					/>
+				</FormStack>
+				<FormActions />
+			</Stack>
 		</FormTask1Container>
 	);
 }

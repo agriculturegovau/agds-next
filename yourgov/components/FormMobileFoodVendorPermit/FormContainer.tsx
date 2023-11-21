@@ -1,21 +1,25 @@
-import { ReactNode, useRef } from 'react';
+import { PropsWithChildren, ReactNode, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 // import { PageAlert } from '@ag.ds-next/react/page-alert';
 // import { Text } from '@ag.ds-next/react/text';
 import { FormStepTitle } from '../FormStepTitle';
+import { TASKS } from '../../pages/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 // import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
-export function FormContainer({
-	children,
-	title,
-	introduction,
-	callToAction,
-}: {
-	children: ReactNode;
+export type FormContainerProps = PropsWithChildren<{
+	task: 1 | 2 | 3 | 4;
 	title: string;
 	introduction: string;
 	callToAction?: ReactNode;
-}) {
+}>;
+
+export function FormContainer({
+	children,
+	task,
+	title,
+	introduction,
+	callToAction,
+}: FormContainerProps) {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	// const { hasCompletedPreviousStep, currentStep } = useFormRegisterPetDetails();
 
@@ -28,7 +32,7 @@ export function FormContainer({
 		<Stack gap={3} width="100%">
 			<FormStepTitle
 				titleRef={titleRef}
-				formTitle="Your pet’s details"
+				formTitle={FORM_TITLE_MAP[task]}
 				stepTitle={title}
 				introduction={introduction}
 				// callToAction={hasCompletedPreviousStep ? callToAction : undefined}
@@ -51,3 +55,10 @@ export function FormContainer({
 		</Stack>
 	);
 }
+
+const FORM_TITLE_MAP = {
+	1: TASKS[0].label,
+	2: TASKS[1].label,
+	3: TASKS[2].label,
+	4: TASKS[3].label,
+};

@@ -16,7 +16,6 @@ import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 // import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
-import { FormContainer } from './FormContainer';
 import { FormActions } from './FormActions';
 
 export const formSchema = yup
@@ -81,94 +80,92 @@ export function FormTask1Step2() {
 	}, [trigger, isSubmitted, showConditionalField]);
 
 	return (
-		<FormTask1Container>
-			<FormContainer
-				title="Business details"
-				introduction="Your business details must match your business registration."
-				callToAction={<FormRequiredFieldsMessage />}
+		<FormTask1Container
+			formTitle="Business details"
+			formIntroduction="Your business details must match your business registration."
+			formCallToAction={<FormRequiredFieldsMessage />}
+		>
+			<Stack
+				as="form"
+				gap={3}
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
 			>
-				<Stack
-					as="form"
-					gap={3}
-					onSubmit={handleSubmit(onSubmit, onError)}
-					noValidate
-				>
-					<FormStack>
-						{hasErrors && (
-							<PageAlert
-								ref={errorRef}
-								tone="error"
-								title="There is a problem"
-								tabIndex={-1}
-							>
-								<Text as="p">
-									Please correct the following fields and try again
-								</Text>
-								<UnorderedList>
-									{Object.entries(errors).map(([key, value]) => (
-										<ListItem key={key}>
-											<TextLink href={`#${key}`} onClick={scrollToField}>
-												{value.message}
-											</TextLink>
-										</ListItem>
-									))}
-								</UnorderedList>
-							</PageAlert>
-						)}
-						<TextInput
-							id="businessName"
-							label="Business or company name"
-							hint="Hint text"
-							{...register('businessName')}
-							invalid={Boolean(errors.businessName?.message)}
-							message={errors.businessName?.message}
-							required
-						/>
-
-						<TextInput
-							id="tradingName"
-							label="Trading name"
-							hint="Hint text"
-							{...register('tradingName')}
-							invalid={Boolean(errors.tradingName?.message)}
-							message={errors.tradingName?.message}
-						/>
-
-						<ControlGroup
-							id="checkbox"
-							label="Business structure"
-							hint="Hint text"
-							invalid={Boolean(errors.businessStructure)}
-							message={errors.businessStructure?.message}
-							required
-							block
+				<FormStack>
+					{hasErrors && (
+						<PageAlert
+							ref={errorRef}
+							tone="error"
+							title="There is a problem"
+							tabIndex={-1}
 						>
-							<Radio {...register('businessStructure')} value="Business">
-								Business
-							</Radio>
-							{showConditionalField ? (
-								<ConditionalFieldContainer>
-									<TextInput
-										id="abn"
-										label="Australian Business Number (ABN)"
-										{...register('abn')}
-										invalid={Boolean(errors.abn?.message)}
-										message={errors.abn?.message}
-										required
-									/>
-								</ConditionalFieldContainer>
-							) : null}
-							<Radio {...register('businessStructure')} value="Company">
-								Company
-							</Radio>
-							<Radio {...register('businessStructure')} value="Sole trader">
-								Sole trader
-							</Radio>
-						</ControlGroup>
-					</FormStack>
-					<FormActions />
-				</Stack>
-			</FormContainer>
+							<Text as="p">
+								Please correct the following fields and try again
+							</Text>
+							<UnorderedList>
+								{Object.entries(errors).map(([key, value]) => (
+									<ListItem key={key}>
+										<TextLink href={`#${key}`} onClick={scrollToField}>
+											{value.message}
+										</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
+						</PageAlert>
+					)}
+					<TextInput
+						id="businessName"
+						label="Business or company name"
+						hint="Hint text"
+						{...register('businessName')}
+						invalid={Boolean(errors.businessName?.message)}
+						message={errors.businessName?.message}
+						required
+					/>
+
+					<TextInput
+						id="tradingName"
+						label="Trading name"
+						hint="Hint text"
+						{...register('tradingName')}
+						invalid={Boolean(errors.tradingName?.message)}
+						message={errors.tradingName?.message}
+					/>
+
+					<ControlGroup
+						id="checkbox"
+						label="Business structure"
+						hint="Hint text"
+						invalid={Boolean(errors.businessStructure)}
+						message={errors.businessStructure?.message}
+						required
+						block
+					>
+						<Radio {...register('businessStructure')} value="Business">
+							Business
+						</Radio>
+						{showConditionalField ? (
+							<ConditionalFieldContainer>
+								<TextInput
+									id="abn"
+									label="Australian Business Number (ABN)"
+									{...register('abn')}
+									invalid={Boolean(errors.abn?.message)}
+									message={errors.abn?.message}
+									required
+								/>
+							</ConditionalFieldContainer>
+						) : null}
+						<Radio {...register('businessStructure')} value="Company">
+							Company
+						</Radio>
+						<Radio {...register('businessStructure')} value="Sole trader">
+							Sole trader
+						</Radio>
+					</ControlGroup>
+				</FormStack>
+				<FormActions />
+			</Stack>
 		</FormTask1Container>
 	);
 }
