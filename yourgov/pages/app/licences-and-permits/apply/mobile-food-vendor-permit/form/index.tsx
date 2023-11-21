@@ -1,5 +1,4 @@
 import { Fragment, ReactElement } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -10,41 +9,41 @@ import { SiteLayout } from '../../../../../../components/Layout/SiteLayout';
 import { DocumentTitle } from '../../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../../components/PageTitle';
-// import {
-// 	FormApplyFoodTruckPermitContext,
-// 	useFormApplyFoodTruckPermit,
-// } from '../../../../../../components/FormApplyFoodTruckPermit';
+import {
+	useFormMobileFoodVendorPermit,
+	FormMobileFoodVendorPermit,
+} from '../../../../../../components/FormMobileFoodVendorPermit/Context';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const TASKS = [
 	{
 		label: 'Provide business details',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1',
 		message: 'Confirm your business details',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1',
 	},
 	{
 		label: 'Provide employee details',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1',
 		message: 'Provide employee names and email addresses',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2',
 	},
 	{
 		label: 'Upload documents',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-3/step-1',
 		message: 'Provide the documents required for your application',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-3',
 	},
 	{
 		label: 'Review and submit',
+		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-4/step-1',
 		message: 'Check all details and submit your application',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-4',
 	},
 ];
 
 const Page: NextPageWithLayout = () => {
-	const { title, getTaskStatus } = useFormApplyFoodTruckPermit();
-	const type = useSearchParams().get('type');
+	const { formTitle, typeSearchParm, getTaskStatus } =
+		useFormMobileFoodVendorPermit();
 	return (
 		<Fragment>
-			<DocumentTitle title={title} />
+			<DocumentTitle title={formTitle} />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -56,7 +55,7 @@ const Page: NextPageWithLayout = () => {
 								Back
 							</DirectionLink>
 							<PageTitle
-								title={title}
+								title={formTitle}
 								introduction="Seek approval for your food van or truck to operate in our area."
 								callToAction={
 									<Text as="p" color="muted">
@@ -68,7 +67,7 @@ const Page: NextPageWithLayout = () => {
 								ordered={true}
 								items={TASKS.map((task, idx) => ({
 									...task,
-									href: task.href + `?type=${type}`,
+									href: task.href + `?type=${typeSearchParm}`,
 									status: getTaskStatus(idx),
 								}))}
 							/>
@@ -86,7 +85,7 @@ export default Page;
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<SiteLayout focusMode>
-			<FormApplyFoodTruckPermitContext>{page}</FormApplyFoodTruckPermitContext>
+			<FormMobileFoodVendorPermit>{page}</FormMobileFoodVendorPermit>
 		</SiteLayout>
 	);
 };

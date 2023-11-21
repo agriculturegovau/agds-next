@@ -1,6 +1,6 @@
 import {
 	createContext,
-	ReactNode,
+	PropsWithChildren,
 	useCallback,
 	useContext,
 	useState,
@@ -8,137 +8,55 @@ import {
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
-// import {
-// 	FormState as Task1FormState,
-// 	formSchema as task1FormSchema,
-// } from './FormBusinessDetails/FormBusinessDetails';
-// import {
-// 	FormState as Task2FormState,
-// 	// formSchema as task2FormSchema,
-// } from './FormEmployeeDetails/FormEmployeeDetails';
 
 type ContextType = {
-	title: string;
+	formTitle: string;
+	typeSearchParm: string;
 	homePageUrl: string;
-
 	/** Function to be called to start a task. Ensures the statuses on the home page task list is updated correctly. */
 	startTask: (taskNumber: number) => void;
 	/** Function to get the status of a task. */
 	getTaskStatus: (taskIndex: number) => TaskListItemStatus;
-	/** Function to be called at the end of task 1 (personal details). */
-	submitTask1: (taskFormState: TaskFormState) => void;
-	/** Function to be called at the end of task 2 (pet details). */
-	submitTask2: (taskFormState: TaskFormState) => void;
+
+	isSideFlow: boolean;
+	setIsSideFlow: (isSideFlow: boolean) => void;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type TaskFormState = Record<string, any>;
-
 type FormState = {
-	[0]: Record<string, unknown> & { completed: boolean };
+	// Task 1 form state
 	[1]: Record<string, unknown> & { completed: boolean };
+	// Task 2 form state
+	[2]: Record<string, unknown> & { completed: boolean };
+	// Task 3 form state
+	[3]: Record<string, unknown> & { completed: boolean };
+	// Task 4 form state
+	[4]: Record<string, unknown> & { completed: boolean };
 };
 
 const defaultFormState: FormState = {
-	// // Task 1
-	// 0: {
-	// 	0: {
-	// 		firstName: 'Alex',
-	// 		lastName: 'Citizen',
-	// 		email: 'alex.citizen@gmail.com',
-	// 		completed: false,
-	// 	},
-	// 	completed: false,
-	// },
-	// // Task 2
-	// 1: {
-	// 	0: {
-	// 		employees: [
-	// 			{
-	// 				givenName: 'Homer',
-	// 				familyName: 'Simpson',
-	// 				email: 'homer.simpson@gmail.com',
-	// 			},
-	// 			{
-	// 				givenName: 'Lenny',
-	// 				familyName: 'Leonardson',
-	// 				email: 'lenny.leonardson@gmail.com',
-	// 			},
-	// 			{
-	// 				givenName: 'Waylon',
-	// 				familyName: 'Smithers',
-	// 				email: 'walon.smithers@gmail.com',
-	// 			},
-	// 		],
-	// 		completed: false,
-	// 	},
-	// 	completed: false,
-	// },
+	1: { completed: false },
+	2: { completed: false },
+	3: { completed: false },
+	4: { completed: false },
 };
 
-export const FormApplyFoodTruckPermitContext = ({
+type FormMobileFoodVendorPermitProps = PropsWithChildren<{}>;
+
+export function FormMobileFoodVendorPermit({
 	children,
-}: {
-	children: ReactNode;
-}) => {
-	const router = useRouter();
+}: FormMobileFoodVendorPermitProps) {
 	const [currentTaskIdx, setCurrentTaskIdx] = useState<number>();
 	const [recentlyCompletedStepIdx, setRecentlyCompletedStepIdx] =
 		useState<number>();
 	const [formState, setFormState] = useState<FormState>(defaultFormState);
 
-	const params = useSearchParams();
-	const title = `Apply for a ${params.get('type')} permit`;
+	const searchParams = useSearchParams();
+	const typeSearchParm = searchParams.get('type') ?? '';
 
-	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${params.get(
-		'type'
-	)}`;
-
-	const completeForm = useCallback(() => {
-		// Show the success message
-		router.push('/services/registrations?registrationId=PET123456');
-		// "Reset" the form
-		setCurrentTaskIdx(undefined);
-		setRecentlyCompletedStepIdx(undefined);
-		setFormState(defaultFormState);
-	}, [router]);
-
-	const completeTask = useCallback(
-		(taskNumber: number) => {
-			router.push(homePageUrl);
-			setRecentlyCompletedStepIdx(taskNumber - 1);
-		},
-		[homePageUrl, router]
-	);
-
-	const submitTask1 = useCallback(
-		(taskFormState: TaskFormState) => {
-			setCurrentTaskIdx(undefined);
-			setFormState((current) => ({
-				...current,
-				[0]: { ...taskFormState, completed: true },
-			}));
-			completeTask(1);
-		},
-		[completeTask]
-	);
-
-	const submitTask2 = useCallback(
-		(taskFormState: TaskFormState) => {
-			setCurrentTaskIdx(undefined);
-			setFormState((current) => ({
-				...current,
-				[1]: { ...taskFormState, completed: true },
-			}));
-			// const hasAlreadyCompletedTask1 = task1FormSchema.isValidSync(
-			// 	formState[0]
-			// );
-			// hasAlreadyCompletedTask1 ? completeForm() : completeTask(2);
-		},
-		[formState, completeForm, completeTask]
-	);
+	const formTitle = `Apply for a ${typeSearchParm} permit`;
+	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${typeSearchParm}`;
 
 	const getTaskStatus = useCallback(
 		(idx: number): TaskListItemStatus => {
@@ -160,21 +78,22 @@ export const FormApplyFoodTruckPermitContext = ({
 		setRecentlyCompletedStepIdx(undefined);
 	}, []);
 
+	const [isSideFlow, setIsSideFlow] = useState(false);
+
 	const contextValue = {
-		title,
+		formTitle,
+		typeSearchParm,
 		homePageUrl,
 		startTask,
 		getTaskStatus,
-		submitTask1,
-		submitTask2,
-		// task1FormState: formState[0],
-		// task2FormState: formState[1],
+		isSideFlow,
+		setIsSideFlow,
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;
-};
+}
 
-export function useFormApplyFoodTruckPermit() {
+export function useFormMobileFoodVendorPermit() {
 	const value = useContext(context);
 
 	if (!value) {
