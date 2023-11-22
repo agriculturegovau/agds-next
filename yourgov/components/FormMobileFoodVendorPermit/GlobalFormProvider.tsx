@@ -1,6 +1,7 @@
 import { DeepPartial } from 'react-hook-form';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useSessionFormState } from '../../lib/useSessionFormState';
 import { FormState, defaultFormState } from './FormState';
 
 type ContextType = {
@@ -25,7 +26,8 @@ type FormMobileFoodVendorPermitProps = PropsWithChildren<{}>;
 export function GlobalFormProvider({
 	children,
 }: FormMobileFoodVendorPermitProps) {
-	const [formState, setFormState] = useState(
+	const [formState, setFormState] = useSessionFormState(
+		'FormMobileFoodVendorPermit',
 		defaultFormState as DeepPartial<FormState>
 	);
 

@@ -1,5 +1,6 @@
 import { Fragment, PropsWithChildren } from 'react';
 import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -57,7 +58,7 @@ export function FormDefinitionListItemAddress({
 
 type FormDefinitionListItemDateProps = {
 	label: string;
-	value: Date | undefined;
+	value: Date | string | undefined;
 };
 
 export function FormDefinitionListItemDate({
@@ -68,7 +69,14 @@ export function FormDefinitionListItemDate({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{!value ? null : <Fragment>{format(value, 'dd/MM/yyyy')}</Fragment>}
+				{!value ? null : (
+					<Fragment>
+						{format(
+							typeof value === 'string' ? parseISO(value) : value,
+							'dd/MM/yyyy'
+						)}
+					</Fragment>
+				)}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
@@ -91,7 +99,11 @@ export function FormDefinitionListItemDateRange({
 			<SummaryListItemDescription>
 				{!from || !to ? null : (
 					<Fragment>
-						{format(from, 'dd/MM/yyyy')} – {format(to, 'dd/MM/yyyy')}
+						{format(
+							typeof from === 'string' ? parseISO(from) : from,
+							'dd/MM/yyyy'
+						)}{' '}
+						– {format(typeof to === 'string' ? parseISO(to) : to, 'dd/MM/yyyy')}
 					</Fragment>
 				)}
 			</SummaryListItemDescription>
