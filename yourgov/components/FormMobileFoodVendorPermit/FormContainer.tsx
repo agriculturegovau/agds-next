@@ -1,17 +1,10 @@
-import {
-	Fragment,
-	PropsWithChildren,
-	ReactNode,
-	useEffect,
-	useRef,
-} from 'react';
+import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 // import { PageAlert } from '@ag.ds-next/react/page-alert';
 // import { Text } from '@ag.ds-next/react/text';
 import { FormStepTitle } from '../FormStepTitle';
 import { TASKS } from '../../pages/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 import { useGlobalForm } from './GlobalFormProvider';
-import { DocumentTitle } from '../DocumentTitle';
 // import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export type FormContainerProps = PropsWithChildren<{

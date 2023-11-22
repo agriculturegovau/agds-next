@@ -2,7 +2,10 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { ContentBleed } from '@ag.ds-next/react/content';
-import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
+import {
+	ProgressIndicator,
+	ProgressIndicatorItemStatus,
+} from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { useGlobalForm } from './GlobalFormProvider';
@@ -25,7 +28,7 @@ export function FormTask1Container({
 	const { isSideFlow, formState, typeSearchParm } = useGlobalForm();
 	const { backHref } = useFormTask1Context();
 
-	function getStepStatus(stepIndex: number) {
+	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
 		if (step.href === pathname) return 'doing';
 		if (formState.task1?.[step.formStateKey]?.completed) return 'done';

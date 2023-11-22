@@ -1,6 +1,7 @@
 import { DeepPartial } from 'react-hook-form';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import { useSessionFormState } from '../../lib/useSessionFormState';
 import { FormState, defaultFormState } from './FormState';
 
@@ -8,6 +9,10 @@ type ContextType = {
 	formTitle: string;
 	typeSearchParm: string;
 	homePageUrl: string;
+	// task status
+	getTaskStatus: (
+		key: 'task1' | 'task2' | 'task3' | 'task4'
+	) => TaskListItemStatus;
 	// Side flow
 	isSideFlow: boolean;
 	setIsSideFlow: (isSideFlow: boolean) => void;
@@ -41,10 +46,18 @@ export function GlobalFormProvider({
 
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
+	function getTaskStatus(
+		taskKey: 'task1' | 'task2' | 'task3' | 'task4'
+	): TaskListItemStatus {
+		if (formState[taskKey]?.completed) return 'done';
+		return 'todo';
+	}
+
 	const contextValue: ContextType = {
 		formTitle,
 		typeSearchParm,
 		homePageUrl,
+		getTaskStatus,
 		// Side flow
 		isSideFlow,
 		setIsSideFlow,
