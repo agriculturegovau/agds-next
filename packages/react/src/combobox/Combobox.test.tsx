@@ -83,6 +83,31 @@ describe('Combobox', () => {
 		expect(inputRef.current?.id).toBe(id);
 	});
 
+	it('accepts `onFocus` and `onBlur` props', async () => {
+		const onFocus = jest.fn();
+		const onBlur = jest.fn();
+		const { container } = renderCombobox({ onFocus, onBlur });
+
+		const input = container.querySelector('input');
+		expect(input).toBeInTheDocument();
+		if (!input) return;
+
+		// Click the input, which should focus the element
+		await act(async () => await input.click());
+		await waitFor(() => expect(input).toHaveFocus());
+		expect(input).toHaveAttribute('aria-expanded', 'true');
+
+		// Check the events have been called correctly
+		expect(onFocus).toHaveBeenCalledTimes(1);
+		expect(onBlur).toHaveBeenCalledTimes(0);
+
+		// After blur of the input, // check the events have been called correctly
+		await act(async () => await input.blur());
+		expect(input).not.toHaveAttribute('aria-expanded', 'true');
+		expect(onFocus).toHaveBeenCalledTimes(1);
+		expect(onBlur).toHaveBeenCalledTimes(1);
+	});
+
 	it('listBox is described by the label correctly', async () => {
 		const { container } = renderCombobox();
 		const label = container.querySelector('label');
