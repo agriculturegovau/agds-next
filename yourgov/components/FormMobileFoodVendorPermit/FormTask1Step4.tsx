@@ -14,6 +14,8 @@ import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
+import { useGlobalForm } from './GlobalFormProvider';
+import { useFormTask1Context } from './FormTask1Provider';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -38,7 +40,9 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step4() {
-	// const { next, stepFormState } = useFormBusinessDetails();
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
+
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -49,13 +53,17 @@ export function FormTask1Step4() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: {},
+		defaultValues: formState.task1?.step4,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		// next(data);
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step4: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	const onError = () => {
@@ -83,7 +91,7 @@ export function FormTask1Step4() {
 
 	return (
 		<FormTask1Container
-			formTitle="Vehicle registratio"
+			formTitle="Vehicle registration"
 			formIntroduction="What times would you like to operate?"
 			formCallToAction={<FormRequiredFieldsMessage />}
 		>

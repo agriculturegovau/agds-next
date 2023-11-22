@@ -1,3 +1,4 @@
+import { DeepPartial } from '../../lib/types';
 import { FormSchema as Task1Step1FormSchema } from './FormTask1Step1';
 import { FormSchema as Task1Step2FormSchema } from './FormTask1Step2';
 import { FormSchema as Task1Step3FormSchema } from './FormTask1Step3';
@@ -37,13 +38,17 @@ export type FormState = {
 export const defaultFormState: DeepPartial<FormState> = {
 	task1: {
 		step1: {
-			firstName: 'Hello',
-			lastName: 'ex',
-			email: 'test@gmail.com',
+			firstName: 'Barney',
+			lastName: 'Gumble',
+			email: 'gumble@email.com',
 			completed: false,
 		},
 		step3: {
 			isPostalAddressSameAsStreetAddress: true,
+			completed: false,
+		},
+		step5: {
+			tradingPeriod: { from: undefined, to: undefined },
 			completed: false,
 		},
 	},
@@ -51,9 +56,3 @@ export const defaultFormState: DeepPartial<FormState> = {
 	task3: { completed: false },
 	task4: { completed: false },
 };
-
-type DeepPartial<T> = T extends object
-	? {
-			[P in keyof T]?: DeepPartial<T[P]>;
-	  }
-	: T;

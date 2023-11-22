@@ -16,7 +16,8 @@ import { Text } from '@ag.ds-next/react/text';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
-import { useFormMobileFoodVendorPermit } from './Context';
+import { useGlobalForm } from './GlobalFormProvider';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export const formSchema = yup
 	.object({
@@ -51,12 +52,12 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step3() {
-	const { formState } = useFormMobileFoodVendorPermit();
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
+
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
-
-	const defaultValues = formState.task1.step3;
 
 	const {
 		watch,
@@ -64,13 +65,17 @@ export function FormTask1Step3() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: defaultValues,
+		defaultValues: formState.task1?.step3,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		// next(data);
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step3: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	const onError = () => {

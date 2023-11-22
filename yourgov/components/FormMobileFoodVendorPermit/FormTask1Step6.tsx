@@ -6,6 +6,8 @@ import { Combobox } from '@ag.ds-next/react/combobox';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
+import { useGlobalForm } from './GlobalFormProvider';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export const formSchema = yup
 	.object({
@@ -20,19 +22,24 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step6() {
-	// const { next, stepFormState } = useFormBusinessDetails();
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: {},
+		defaultValues: formState.task1?.step6,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		// next(data);
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step6: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	return (

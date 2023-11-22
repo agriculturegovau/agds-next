@@ -1,15 +1,19 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
 import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
-import { FormMobileFoodVendorPermit } from '../../../../../../../components/FormMobileFoodVendorPermit/Context';
-import { SiteLayout } from '../../../../../../../components/Layout/SiteLayout';
-import { FormTask1Step3 } from '../../../../../../../components/FormMobileFoodVendorPermit/FormTask1Step3';
+import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
+import {
+	GlobalFormProvider,
+	FormTask1Provider,
+	FormTask1Step3,
+	task1FormSteps,
+} from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="TODO" />
+			<DocumentTitle title={task1FormSteps[2].label} />
 			<PageContent>
 				<FormTask1Step3 />
 			</PageContent>
@@ -21,8 +25,10 @@ export default Page;
 
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
-		<SiteLayout focusMode>
-			<FormMobileFoodVendorPermit>{page}</FormMobileFoodVendorPermit>
-		</SiteLayout>
+		<AppLayout focusMode>
+			<GlobalFormProvider>
+				<FormTask1Provider>{page}</FormTask1Provider>
+			</GlobalFormProvider>
+		</AppLayout>
 	);
 };

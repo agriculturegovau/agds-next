@@ -1,0 +1,93 @@
+import { useRouter } from 'next/router';
+import { createContext, PropsWithChildren, useContext } from 'react';
+import { useGlobalForm } from './GlobalFormProvider';
+
+const formHomePage =
+	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+
+export const task1FormSteps = [
+	{
+		formStateKey: 'step1',
+		label: 'Owner details',
+		href: formHomePage + '/task-1/step-1',
+	},
+	{
+		formStateKey: 'step2',
+		label: 'Business details',
+		href: formHomePage + '/task-1/step-2',
+	},
+	{
+		formStateKey: 'step3',
+		label: 'Business address',
+		href: formHomePage + '/task-1/step-3',
+	},
+	{
+		formStateKey: 'step4',
+		label: 'Vehicle registration',
+		href: formHomePage + '/task-1/step-4',
+	},
+	{
+		formStateKey: 'step5',
+		label: 'Trading time',
+		href: formHomePage + '/task-1/step-5',
+	},
+	{
+		formStateKey: 'step6',
+		label: 'Food served',
+		href: formHomePage + '/task-1/step-6',
+	},
+	{
+		formStateKey: 'step7',
+		label: 'Confirm and submit',
+		href: formHomePage + '/task-1/step-7',
+	},
+] as const;
+
+type ContextType = {
+	backHref: string;
+	submitStep: () => void;
+};
+
+const context = createContext<ContextType | undefined>(undefined);
+
+export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
+	const { pathname, push } = useRouter();
+	const { setIsSubmittingStep, typeSearchParm } = useGlobalForm();
+
+	const currentStepIndex = task1FormSteps.findIndex(
+		({ href }) => href === pathname
+	);
+
+	function submitStep() {
+		setIsSubmittingStep(true);
+		setTimeout(() => {
+			push(
+				`${
+					task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage
+				}?type=${typeSearchParm}`
+			);
+			setIsSubmittingStep(false);
+		}, 1500);
+	}
+
+	const backHref = `${
+		task1FormSteps[currentStepIndex - 1]?.href ?? formHomePage
+	}?type=${typeSearchParm}`;
+
+	const contextValue = {
+		backHref,
+		submitStep,
+	};
+
+	return <context.Provider value={contextValue}>{children}</context.Provider>;
+}
+
+export function useFormTask1Context() {
+	const value = useContext(context);
+
+	if (!value) {
+		throw new Error('Context provider not found');
+	}
+
+	return value;
+}

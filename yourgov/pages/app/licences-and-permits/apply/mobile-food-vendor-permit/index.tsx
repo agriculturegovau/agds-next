@@ -12,7 +12,7 @@ import { AppLayout } from '../../../../../components/Layout/AppLayout';
 import type { NextPageWithLayout } from '../../../../_app';
 import { PageTitle } from '../../../../../components/PageTitle';
 import { HelpCallout } from '../../../../../components/HelpCallout';
-import { GettingStartedForm } from '../../../../../components/FormMobileFoodVendorPermit/GettingStartedForm';
+import { GettingStartedForm } from '../../../../../components/FormMobileFoodVendorPermit';
 
 const Page: NextPageWithLayout = () => {
 	return (

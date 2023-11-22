@@ -17,6 +17,8 @@ import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 // import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
+import { useGlobalForm } from './GlobalFormProvider';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export const formSchema = yup
 	.object({
@@ -38,7 +40,9 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step2() {
-	// const { next, stepFormState } = useFormBusinessDetails();
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
+
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -50,13 +54,17 @@ export function FormTask1Step2() {
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
-		defaultValues: {},
+		defaultValues: formState.task1?.step2,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		// next(data);
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step2: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	const onError = () => {

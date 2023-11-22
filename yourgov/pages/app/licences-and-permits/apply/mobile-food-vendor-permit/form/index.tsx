@@ -10,9 +10,9 @@ import { DocumentTitle } from '../../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../../components/FormHelpCallout';
 import { PageTitle } from '../../../../../../components/PageTitle';
 import {
-	useFormMobileFoodVendorPermit,
-	FormMobileFoodVendorPermit,
-} from '../../../../../../components/FormMobileFoodVendorPermit/Context';
+	useGlobalForm,
+	GlobalFormProvider,
+} from '../../../../../../components/FormMobileFoodVendorPermit/GlobalFormProvider';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 export const TASKS = [
@@ -39,8 +39,7 @@ export const TASKS = [
 ];
 
 const Page: NextPageWithLayout = () => {
-	const { formTitle, typeSearchParm, getTaskStatus } =
-		useFormMobileFoodVendorPermit();
+	const { formTitle, typeSearchParm } = useGlobalForm();
 	return (
 		<Fragment>
 			<DocumentTitle title={formTitle} />
@@ -68,7 +67,8 @@ const Page: NextPageWithLayout = () => {
 								items={TASKS.map((task, idx) => ({
 									...task,
 									href: task.href + `?type=${typeSearchParm}`,
-									status: getTaskStatus(idx),
+									status: 'todo',
+									// status: getTaskStatus(idx),
 								}))}
 							/>
 							<FormHelpCallout />
@@ -85,7 +85,7 @@ export default Page;
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<SiteLayout focusMode>
-			<FormMobileFoodVendorPermit>{page}</FormMobileFoodVendorPermit>
+			<GlobalFormProvider>{page}</GlobalFormProvider>
 		</SiteLayout>
 	);
 };

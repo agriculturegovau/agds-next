@@ -15,6 +15,8 @@ import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
 // import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
+import { useGlobalForm } from './GlobalFormProvider';
+import { useFormTask1Context } from './FormTask1Provider';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -46,7 +48,8 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step5() {
-	// const { next, stepFormState } = useFormBusinessDetails();
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -57,16 +60,17 @@ export function FormTask1Step5() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		defaultValues: {
-			// ...stepFormState,
-			tradingPeriod: { from: undefined, to: undefined },
-		},
+		defaultValues: formState.task1?.step5,
 		resolver: yupResolver(formSchema),
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
-		// next(data);
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step5: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	const onError = () => {

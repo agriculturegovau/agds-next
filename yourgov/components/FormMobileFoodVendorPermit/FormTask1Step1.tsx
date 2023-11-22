@@ -22,13 +22,10 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { useFormMobileFoodVendorPermit } from './Context';
+import { useGlobalForm } from './GlobalFormProvider';
 import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
-// import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-// import { FormApplyFoodTruckActions } from '../FormApplyFoodTruckActions';
-// import { FormBusinessDetailsContainer } from './FormBusinessDetailsContainer';
-// import { useFormBusinessDetails } from './FormBusinessDetails';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export const formSchema = yup
 	.object({
@@ -44,15 +41,16 @@ export const formSchema = yup
 export type FormSchema = yup.InferType<typeof formSchema>;
 
 export function FormTask1Step1() {
-	const { isSideFlow, setIsSideFlow, formState } =
-		useFormMobileFoodVendorPermit();
+	const { isSideFlow, setIsSideFlow, formState, setFormState } =
+		useGlobalForm();
+	const { submitStep } = useFormTask1Context();
 
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const headingRef = useRef<HTMLHeadingElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
-	const defaultValues = formState.task1.step1;
+	const defaultValues = formState.task1?.step1;
 
 	const {
 		register,
@@ -71,6 +69,8 @@ export function FormTask1Step1() {
 	const onSave: SubmitHandler<FormSchema> = (data) => {
 		setFocusedError(false);
 		setIsSaving(true);
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		setLocalFormState(data);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
@@ -96,8 +96,12 @@ export function FormTask1Step1() {
 		setHasClosedForm(false);
 	}, [hasClosedForm]);
 
-	const onSubmit: SubmitHandler<FormSchema> = () => {
-		// next(localFormState);
+	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+		setFormState({
+			...formState,
+			task1: { ...formState.task1, step1: { ...data, completed: true } },
+		});
+		submitStep();
 	};
 
 	const onError: SubmitErrorHandler<FormSchema> = () => {
@@ -118,6 +122,7 @@ export function FormTask1Step1() {
 		<FormTask1Container
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
+			formCallToAction={isSideFlow ? <FormRequiredFieldsMessage /> : undefined}
 		>
 			<Stack gap={3} alignItems="flex-start" width="100%">
 				{isSideFlow ? (
@@ -225,19 +230,19 @@ export function FormTask1Step1() {
 								<SummaryListItem>
 									<SummaryListItemTerm>First name</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.firstName}
+										{localFormState?.firstName}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 								<SummaryListItem>
 									<SummaryListItemTerm>Last name</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.lastName}
+										{localFormState?.lastName}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 								<SummaryListItem>
 									<SummaryListItemTerm>Email</SummaryListItemTerm>
 									<SummaryListItemDescription>
-										{localFormState.email}
+										{localFormState?.email}
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>

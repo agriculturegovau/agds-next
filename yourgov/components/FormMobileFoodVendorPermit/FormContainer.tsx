@@ -1,9 +1,17 @@
-import { PropsWithChildren, ReactNode, useRef } from 'react';
+import {
+	Fragment,
+	PropsWithChildren,
+	ReactNode,
+	useEffect,
+	useRef,
+} from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 // import { PageAlert } from '@ag.ds-next/react/page-alert';
 // import { Text } from '@ag.ds-next/react/text';
 import { FormStepTitle } from '../FormStepTitle';
 import { TASKS } from '../../pages/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+import { useGlobalForm } from './GlobalFormProvider';
+import { DocumentTitle } from '../DocumentTitle';
 // import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export type FormContainerProps = PropsWithChildren<{
@@ -20,23 +28,23 @@ export function FormContainer({
 	introduction,
 	callToAction,
 }: FormContainerProps) {
+	const { formTitle } = useGlobalForm();
 	const titleRef = useRef<HTMLHeadingElement>(null);
-	// const { hasCompletedPreviousStep, currentStep } = useFormRegisterPetDetails();
 
 	// Focus the title of the current step as the user navigates between form steps
-	// useEffect(() => {
-	// 	titleRef.current?.focus();
-	// }, [currentStep]);
+	useEffect(() => {
+		titleRef.current?.focus();
+	}, []);
 
 	return (
 		<Stack gap={3} width="100%">
 			<FormStepTitle
 				titleRef={titleRef}
-				formTitle={FORM_TITLE_MAP[task]}
+				formTitle={[formTitle, FORM_TITLE_MAP[task]].join(' - ')}
 				stepTitle={title}
 				introduction={introduction}
-				// callToAction={hasCompletedPreviousStep ? callToAction : undefined}
 				callToAction={callToAction}
+				// callToAction={hasCompletedPreviousStep ? callToAction : undefined} // FIXME
 			/>
 			{children}
 			{/* {hasCompletedPreviousStep ? (

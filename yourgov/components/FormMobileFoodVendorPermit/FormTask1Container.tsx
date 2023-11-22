@@ -4,40 +4,10 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
-import { DirectionButton } from '@ag.ds-next/react/direction-link';
-import { useFormMobileFoodVendorPermit } from './Context';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { useGlobalForm } from './GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-
-export const task1FormSteps = [
-	{
-		label: 'Owner details',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1',
-	},
-	{
-		label: 'Business details',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-2',
-	},
-	{
-		label: 'Business address',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-3',
-	},
-	{
-		label: 'Vehicle registration',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-4',
-	},
-	{
-		label: 'Trading time',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-5',
-	},
-	{
-		label: 'Food served',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-6',
-	},
-	{
-		label: 'Confirm and submit',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-7',
-	},
-];
+import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 type FormTask1ContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -51,12 +21,14 @@ export function FormTask1Container({
 	formCallToAction,
 	children,
 }: FormTask1ContainerProps) {
-	const router = useRouter();
-	const { isSideFlow } = useFormMobileFoodVendorPermit();
+	const { pathname } = useRouter();
+	const { isSideFlow, formState, typeSearchParm } = useGlobalForm();
+	const { backHref } = useFormTask1Context();
 
 	function getStepStatus(stepIndex: number) {
 		const step = task1FormSteps[stepIndex];
-		if (step.href === router.asPath) return 'doing';
+		if (step.href === pathname) return 'doing';
+		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
 		return 'todo';
 	}
 
@@ -68,7 +40,7 @@ export function FormTask1Container({
 						<ProgressIndicator
 							items={task1FormSteps.map(({ label, href }, index) => ({
 								label,
-								href,
+								href: href + `?type=${typeSearchParm}`,
 								status: getStepStatus(index),
 							}))}
 						/>
@@ -80,12 +52,9 @@ export function FormTask1Container({
 				columnStart={isSideFlow ? undefined : { lg: 5 }}
 			>
 				<Stack gap={3} alignItems="flex-start">
-					<DirectionButton
-						direction="left"
-						// onClick={back}
-					>
+					<DirectionLink direction="left" href={backHref}>
 						Back
-					</DirectionButton>
+					</DirectionLink>
 					<FormContainer
 						task={1}
 						title={formTitle}

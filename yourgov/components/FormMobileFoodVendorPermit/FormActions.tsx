@@ -5,29 +5,26 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
+import { useGlobalForm } from './GlobalFormProvider';
 // import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export function FormActions() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
-	// const {
-	// 	currentStep,
-	// 	isSubmittingStep,
-	// 	saveAndExit,
-	// 	isSavingBeforeExiting,
-	// 	cancel,
-	// } = useFormRegisterPetDetails();
+	const {
+		// currentStep,
+		isSubmittingStep,
+		// saveAndExit,
+		// isSavingBeforeExiting,
+		// cancel,
+	} = useGlobalForm();
 
 	return (
 		<Fragment>
 			<Stack gap={3}>
 				<Divider />
 				<ButtonGroup>
-					<Button
-						type="submit"
-						variant="primary"
-						// loading={isSubmittingStep}
-					>
+					<Button type="submit" variant="primary" loading={isSubmittingStep}>
 						Save and continue
 						{/* {currentStep === 4 ? 'Submit task' : 'Save and continue'} */}
 					</Button>
