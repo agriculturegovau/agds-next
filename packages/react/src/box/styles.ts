@@ -390,8 +390,8 @@ type FocusProps = Partial<{
 }>;
 export const focusStyles = {
 	':focus': packs.outline,
-	// ':focus:not(:focus-visible)': { outline: 'none' },
-	// ':focus-visible': packs.outline,
+	':focus:not(:focus-visible)': { outline: 'none' },
+	':focus-visible': packs.outline,
 };
 
 type HighContrastProps = Partial<{
