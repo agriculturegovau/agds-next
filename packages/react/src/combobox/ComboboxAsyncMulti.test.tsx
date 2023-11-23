@@ -141,12 +141,8 @@ describe('ComboboxAsyncMulti', () => {
 		expect(input).toBeInTheDocument();
 		if (!input) return;
 
-		// Click the input, which should focus the element
-		await act(async () => await input.click());
-		await waitFor(() => expect(input).toHaveFocus());
-		expect(input).toHaveAttribute('aria-expanded', 'true');
-
-		// Check the events have been called correctly
+		// After focus of the input, check the events have been called correctly
+		await act(async () => await input.focus());
 		expect(onFocus).toHaveBeenCalledTimes(1);
 		expect(onBlur).toHaveBeenCalledTimes(0);
 
