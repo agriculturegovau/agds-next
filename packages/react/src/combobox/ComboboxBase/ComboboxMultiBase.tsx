@@ -6,6 +6,7 @@ import {
 	useRef,
 	ReactNode,
 	FocusEventHandler,
+	FocusEvent,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -193,17 +194,11 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 										ref: inputRefs,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
-										onFocus: (event) => {
-											// Ignoring typescript here as the downshift has typed this event with `HTMLElement`, not `HTMLInputElement` element
-											// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-											// @ts-ignore
+										onFocus: (event: FocusEvent<HTMLInputElement>) => {
 											onFocus?.(event);
 											setInputFocused();
 										},
-										onBlur: (event) => {
-											// Ignoring typescript here as the downshift has typed this event with `HTMLElement`, not `HTMLInputElement` element
-											// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-											// @ts-ignore
+										onBlur: (event: FocusEvent<HTMLInputElement>) => {
 											onBlur?.(event);
 											setInputBlurred();
 										},
