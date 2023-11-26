@@ -119,9 +119,9 @@ const ProgressIndicatorItem = ({
 					as="span"
 					flexDirection="column-reverse"
 					flexGrow={1}
-					gap={0}
+					gap={0.25}
 					justifyContent="center"
-					paddingY={0.75}
+					paddingY={1}
 					fontFamily="body"
 					fontWeight={active ? 'bold' : 'normal'}
 					borderBottom
