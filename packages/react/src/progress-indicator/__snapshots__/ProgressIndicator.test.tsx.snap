@@ -98,7 +98,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-kcfiwy-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
@@ -172,7 +172,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-48tv73-boxStyles"
+                class="css-vly98i-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
@@ -233,7 +233,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-kcfiwy-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
@@ -355,7 +355,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-kcfiwy-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
@@ -429,7 +429,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-48tv73-boxStyles"
+                class="css-vly98i-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
@@ -490,7 +490,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 />
               </span>
               <span
-                class="css-1bt7nbc-boxStyles"
+                class="css-kcfiwy-boxStyles"
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
