@@ -51,7 +51,8 @@ describe('Accordion', () => {
 
 	it('to have correct aria attributes when toggling accordion item', async () => {
 		renderAccordion();
-		const titleEl = screen.getByText('Accordion 1');
+		const titleEl = screen.getByText('Accordion 1')
+			.parentElement as HTMLButtonElement;
 		const bodyEl = screen.getByText('Accordion 1 text content.').parentElement
 			?.parentElement?.parentElement as HTMLDivElement;
 		expect(titleEl).toBeInTheDocument();

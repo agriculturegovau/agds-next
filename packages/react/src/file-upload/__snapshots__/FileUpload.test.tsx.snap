@@ -6,23 +6,23 @@ exports[`FileUpload Basic renders correctly 1`] = `
     class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-shvtw2-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-cnptgw-boxStyles"
       >
         Upload file
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-1ttfsk5-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-16izone-boxStyles"
       id="field-:r0:-hint"
     >
       General hint information
@@ -70,7 +70,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           class="css-iij6ui-boxStyles"
         >
           <span
-            class="css-g6olve-boxStyles-Text"
+            class="css-1ivixw9-boxStyles"
           >
             Drag and drop file here or select file to upload.
           </span>
@@ -96,7 +96,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
         class="css-1wcx0lf-boxStyles"
       >
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-y7wzk4-boxStyles"
         >
           1 file selected
         </span>
@@ -137,11 +137,11 @@ exports[`FileUpload Basic renders correctly 1`] = `
                 class="css-w79ye0-boxStyles"
               >
                 <span
-                  class="css-w8s9uh-boxStyles-Text-FileUploadFile"
+                  class="css-12l84m0-boxStyles-FileUploadFile"
                 >
                   example.txt
                   <span
-                    class="css-1rfmi7i-boxStyles-Text-FileUploadFile"
+                    class="css-save26-boxStyles-FileUploadFile"
                   >
                      
                     (

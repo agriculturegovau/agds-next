@@ -2,7 +2,6 @@ import { Fragment, useMemo, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
 import { PageContent } from '../content';
-import { tokens } from '../core';
 import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
@@ -107,13 +106,13 @@ function AppLayoutTemplate({
 							/>
 						</nav>
 						<AppLayoutFooterDivider />
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							We acknowledge the traditional owners of country throughout
 							Australia and recognise their continuing connection to land,
 							waters and culture. We pay our respects to their Elders past,
 							present and emerging.
 						</Text>
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							&copy; {year} Department of Agriculture, Fisheries and Forestry
 						</Text>
 					</AppLayoutFooter>

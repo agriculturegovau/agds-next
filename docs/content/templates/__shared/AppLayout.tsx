@@ -64,8 +64,8 @@ export const AppLayout = ({
 			/>
 			<AgDsAppLayout focusMode={focusMode}>
 				<AppLayoutHeader
-					heading="Service name"
-					subLine="Service description that could be a little longer"
+					heading="Lorem ipsum dolor sit amet consectetur adipiscing elit at auctor sit amet posuere nec mi pellentesque alique"
+					subLine="Lorem ipsum dolor sit amet consectetur adipiscing elit aenean tempus volutpat lacus in accumsan vestibulum rutrum velit non nulla porta aliquet aliquam leo lorem vehicula at auctor sit amet posuere nec mi pellentesque alique"
 					logo={<Logo />}
 					href="#"
 				/>
@@ -82,13 +82,13 @@ export const AppLayout = ({
 							<LinkList links={footerLinks} horizontal />
 						</nav>
 						<AppLayoutFooterDivider />
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							We acknowledge the traditional owners of country throughout
 							Australia and recognise their continuing connection to land,
 							waters and culture. We pay our respects to their Elders past,
 							present and emerging.
 						</Text>
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							&copy; {year} Department of Agriculture, Fisheries and Forestry
 						</Text>
 					</AppLayoutFooter>

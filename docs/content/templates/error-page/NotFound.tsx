@@ -7,7 +7,7 @@ import { tokens } from '@ag.ds-next/react/core';
 export const NotFound = () => {
 	return (
 		<PageContent>
-			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
+			<Stack gap={1.5}>
 				<Prose>
 					<h1>Page not found</h1>
 					<p>

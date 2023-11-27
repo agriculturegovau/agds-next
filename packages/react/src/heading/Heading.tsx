@@ -1,5 +1,7 @@
-import { forwardRefWithAs } from '../core';
+import { forwardRefWithAs, tokens } from '../core';
 import { Box, BoxProps } from '../box';
+
+const defaultMaxWidth = tokens.maxWidth.bodyText;
 
 export const headingFontSizeMap = {
 	h1: 'xxl',
@@ -26,6 +28,7 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 		fontFamily = 'body',
 		fontWeight = 'bold',
 		lineHeight = 'heading',
+		maxWidth = defaultMaxWidth,
 		...props
 	},
 	ref
@@ -42,6 +45,7 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 			fontFamily={fontFamily}
 			fontWeight={fontWeight}
 			lineHeight={lineHeight}
+			maxWidth={maxWidth}
 			{...props}
 		/>
 	);

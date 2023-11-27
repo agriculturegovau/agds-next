@@ -3,7 +3,6 @@ import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { Box } from '@ag.ds-next/react/box';
-import { tokens } from '@ag.ds-next/react/core';
 
 const footerLinks = [
 	{ label: 'About', href: '/about' },
@@ -36,12 +35,12 @@ export const SiteFooter = () => {
 					<LinkList links={footerLinks} horizontal />
 				</nav>
 				<FooterDivider />
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					We acknowledge the traditional owners of country throughout Australia
 					and recognise their continuing connection to land, waters and culture.
 					We pay our respects to their Elders past, present and emerging.
 				</Text>
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					&copy; {year} Department of Agriculture, Fisheries and Forestry
 				</Text>
 			</Footer>

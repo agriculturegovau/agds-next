@@ -10,15 +10,15 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-cnptgw-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1ttfsk5-boxStyles"
         >
            
           (optional)
@@ -58,7 +58,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option A
             </span>
@@ -91,7 +91,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option B
             </span>
@@ -124,7 +124,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option C
             </span>
@@ -157,7 +157,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option D
             </span>
@@ -180,15 +180,15 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-cnptgw-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1ttfsk5-boxStyles"
         >
            
           (optional)
@@ -198,7 +198,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
         class="css-1ypnbyi-boxStyles-ControlGroup"
       >
         <span
-          class="css-lw0v8u-boxStyles-Text"
+          class="css-16izone-boxStyles"
           id="control-group-:r2:-hint"
         >
           Hint text
@@ -231,7 +231,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-tfsyf8-boxStyles-Text"
+            class="css-c4jpvn-boxStyles"
             id="control-group-:r2:-message"
           >
             Error message
@@ -270,7 +270,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option A
             </span>
@@ -305,7 +305,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option B
             </span>
@@ -340,7 +340,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option C
             </span>
@@ -375,7 +375,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-13n6ocz-boxStyles-CheckboxLabel"
             >
               Option D
             </span>
@@ -397,15 +397,15 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-cnptgw-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1ttfsk5-boxStyles"
         >
            
           (optional)
@@ -433,7 +433,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option A
             </span>
@@ -454,7 +454,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option B
             </span>
@@ -475,7 +475,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option C
             </span>
@@ -496,7 +496,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option D
             </span>
@@ -519,15 +519,15 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
       class="css-faxsk2-ControlGroup"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-cnptgw-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1ttfsk5-boxStyles"
         >
            
           (optional)
@@ -537,7 +537,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
         class="css-1ypnbyi-boxStyles-ControlGroup"
       >
         <span
-          class="css-lw0v8u-boxStyles-Text"
+          class="css-16izone-boxStyles"
           id="control-group-:r7:-hint"
         >
           Hint text
@@ -570,7 +570,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-tfsyf8-boxStyles-Text"
+            class="css-c4jpvn-boxStyles"
             id="control-group-:r7:-message"
           >
             Error message
@@ -597,7 +597,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option A
             </span>
@@ -620,7 +620,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option B
             </span>
@@ -643,7 +643,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option C
             </span>
@@ -666,7 +666,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-llm9kd-boxStyles-RadioLabel"
             >
               Option D
             </span>

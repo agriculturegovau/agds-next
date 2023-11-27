@@ -4,6 +4,7 @@ import { Flex } from '../flex';
 import { tokens } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { BaseButton } from '../button/';
+import { Text } from '../text';
 import { hoverColorMap, AccordionBackground } from './utils';
 
 export type AccordionTitleProps = PropsWithChildren<{
@@ -32,10 +33,6 @@ export const AccordionTitle = ({
 				aria-controls={ariaControls}
 				aria-expanded={isOpen}
 				onClick={onClick}
-				color="action"
-				fontSize="md"
-				lineHeight="heading"
-				fontWeight="bold"
 				background={background}
 				paddingY={1}
 				justifyContent="space-between"
@@ -49,7 +46,14 @@ export const AccordionTitle = ({
 					},
 				}}
 			>
-				{children}
+				<Text
+					fontSize="md"
+					lineHeight="heading"
+					fontWeight="bold"
+					color="action"
+				>
+					{children}
+				</Text>
 				<ChevronDownIcon
 					weight="bold"
 					css={{

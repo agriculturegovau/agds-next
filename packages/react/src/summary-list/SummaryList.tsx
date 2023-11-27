@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Flex } from '../flex';
+import { Text } from '../text';
 
 type PropsWithOnlyChildren = {
 	children: ReactNode;
@@ -31,8 +32,8 @@ export function SummaryListItemDescription({
 	children,
 }: SummaryListItemDescriptionProps) {
 	return (
-		<Flex as="dd" flexGrow={1} fontSize="sm" color="text">
-			{children}
+		<Flex as="dd" flexGrow={1}>
+			<Text fontSize="sm">{children}</Text>
 		</Flex>
 	);
 }

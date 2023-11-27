@@ -38,8 +38,8 @@ export const SiteLayout = ({
 			<Stack palette="dark">
 				<Header
 					background="bodyAlt"
-					heading="Service name"
-					subline="Service description that could be a little longer"
+					heading="Lorem ipsum dolor sit amet consectetur adipiscing elit at auctor sit amet posuere nec mi pellentesque alique"
+					subline="Lorem ipsum dolor sit amet consectetur adipiscing elit aenean tempus volutpat lacus in accumsan vestibulum rutrum velit non nulla porta aliquet aliquam leo lorem vehicula at auctor sit amet posuere nec mi pellentesque alique"
 					logo={<Logo />}
 					href="#"
 				/>
@@ -77,13 +77,13 @@ export const SiteLayout = ({
 					</nav>
 					<FooterDivider />
 
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						We acknowledge the traditional owners of country throughout
 						Australia and recognise their continuing connection to land, waters
 						and culture. We pay our respects to their Elders past, present and
 						emerging.
 					</Text>
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						&copy; {new Date().getFullYear()} Department of Agriculture,
 						Fisheries and Forestry
 					</Text>

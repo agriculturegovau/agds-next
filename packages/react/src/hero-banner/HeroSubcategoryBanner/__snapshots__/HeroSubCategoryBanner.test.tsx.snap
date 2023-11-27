@@ -125,7 +125,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             </ol>
           </nav>
           <h1
-            class="css-18pa81a-boxStyles"
+            class="css-1sak4l9-boxStyles"
           >
             Subcategory banner title - xxl/display (H1)
           </h1>

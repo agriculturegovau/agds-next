@@ -1,7 +1,7 @@
 export type Option = { label: string; value: string };
 
 export const COUNTRY_OPTIONS = [
-	'Afghanistan',
+	'Afghanistan is a really long country that spans multiple lines cmon this can be way longer than that Afghanistan is a really long country that spans multiple lines cmon this can be way longer than that',
 	'Albania',
 	'Algeria',
 	'Andorra',

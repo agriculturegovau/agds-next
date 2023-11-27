@@ -10,50 +10,50 @@ exports[`InpageNav renders correctly 1`] = `
       class="css-1wcx0lf-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-1ydz0kj-TextLink-InpageNavItem"
           href="#section-1"
         >
           Section 1
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-1ydz0kj-TextLink-InpageNavItem"
           href="#section-2"
         >
           Section 2
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-1ydz0kj-TextLink-InpageNavItem"
           href="#section-3"
         >
           Section 3
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-1ydz0kj-TextLink-InpageNavItem"
           href="#section-4"
         >
           Section 4
         </a>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-shvtw2-boxStyles"
       >
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-1ydz0kj-TextLink-InpageNavItem"
           href="#section-5"
         >
           Section 5

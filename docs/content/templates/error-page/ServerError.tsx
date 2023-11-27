@@ -3,12 +3,11 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { tokens } from '@ag.ds-next/react/core';
 
 export const ServerError = () => {
 	return (
 		<PageContent>
-			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
+			<Stack gap={1.5}>
 				<Prose>
 					<h1>Something's not right</h1>
 					<p>

@@ -6,24 +6,24 @@ exports[`ComboboxAsync renders correctly 1`] = `
     class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-shvtw2-boxStyles"
       for="combobox-input-:r0:"
       id="downshift-:r1:-label"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-cnptgw-boxStyles"
       >
         Find your state
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-1ttfsk5-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-16izone-boxStyles"
       id="field-combobox-input-:r0:-hint"
     >
       Start typing to see results

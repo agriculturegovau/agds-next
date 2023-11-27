@@ -25,7 +25,10 @@ type AccordionTemplateProps = {
 const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion title" background={background}>
+			<AccordionItem
+				title="Accordion title with really long label that spans multiple lines accordion title with really long label that spans multiple lines"
+				background={background}
+			>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>

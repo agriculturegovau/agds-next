@@ -62,13 +62,13 @@ exports[`Header renders correctly 1`] = `
                 class="css-1qp4da6-boxStyles"
               >
                 <span
-                  class="css-1vexym9-boxStyles-Text"
+                  class="css-r04n2j-boxStyles"
                 >
                   Export Service
                 </span>
               </div>
               <span
-                class="css-uuauj4-boxStyles-Text"
+                class="css-wt7dbh-boxStyles"
               >
                 Supporting Australian agricultural exports
               </span>

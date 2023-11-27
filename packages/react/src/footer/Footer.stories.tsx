@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { tokens } from '../core';
 import { Logo } from '../ag-branding';
 import { Box } from '../box';
 import { Stack } from '../stack';
@@ -29,12 +28,12 @@ const meta: Meta<typeof Footer> = {
 					/>
 				</nav>
 				<FooterDivider />
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					We acknowledge the traditional owners of country throughout Australia
 					and recognise their continuing connection to land, waters and culture.
 					We pay our respects to their Elders past, present and emerging.
 				</Text>
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					&copy; {year} Department of Agriculture, Fisheries and Forestry
 				</Text>
 			</Footer>
@@ -135,12 +134,12 @@ export const ComplexContent: Story = {
 					<Logo />
 				</Box>
 				<FooterDivider />
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					We acknowledge the traditional owners of country throughout Australia
 					and recognise their continuing connection to land, waters and culture.
 					We pay our respects to their Elders past, present and emerging.
 				</Text>
-				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				<Text fontSize="xs">
 					&copy; {year} Department of Agriculture, Fisheries and Forestry
 				</Text>
 			</Footer>

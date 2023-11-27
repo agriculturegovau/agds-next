@@ -133,31 +133,37 @@ export const proseClass = css({
 
 	[`h1${notSelector}`]: {
 		...fontGrid('xxl', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
 	[`h2${notSelector}`]: {
 		...fontGrid('xl', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
 	[`h3${notSelector}`]: {
 		...fontGrid('lg', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
 	[`h4${notSelector}`]: {
 		...fontGrid('md', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
 	[`h5${notSelector}`]: {
 		...fontGrid('sm', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
 	[`h6${notSelector}`]: {
 		...fontGrid('xs', 'heading'),
+		maxWidth: tokens.maxWidth.bodyText,
 		marginTop: 0,
 		marginBottom: 0,
 	},
@@ -181,7 +187,7 @@ export const proseClass = css({
 	},
 
 	/**
-	 * Stong emphasis.
+	 * Strong emphasis.
 	 */
 	[`strong${notSelector}, b${notSelector}`]: {
 		fontWeight: 'bold',
