@@ -223,7 +223,7 @@ exports[`AppLayout renders correctly 1`] = `
         />
       </div>
     </header>
-    <aside
+    <div
       class="css-4plgz3-boxStyles-AppLayoutSidebar"
     >
       <nav
@@ -486,7 +486,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
         </ul>
       </nav>
-    </aside>
+    </div>
     <div
       class="css-zu5yim-boxStyles-AppLayoutContent"
     >
