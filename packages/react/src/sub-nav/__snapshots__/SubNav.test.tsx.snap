@@ -3,7 +3,7 @@
 exports[`SubNav renders correctly 1`] = `
 <div>
   <nav
-    aria-label="secondary"
+    aria-label="Content"
     class="css-29r04f-boxStyles-SubNavContainer"
   >
     <ul

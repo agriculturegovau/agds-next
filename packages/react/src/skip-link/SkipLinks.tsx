@@ -9,7 +9,7 @@ export type SkipLinksProps = {
 
 export const SkipLinks = ({
 	links,
-	'aria-label': ariaLabel = 'skip links',
+	'aria-label': ariaLabel = 'Skip links',
 }: SkipLinksProps) => (
 	<SkipLinkContainer aria-label={ariaLabel}>
 		{links.map(({ label, ...props }, idx) => (

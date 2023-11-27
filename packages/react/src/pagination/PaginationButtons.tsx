@@ -32,7 +32,7 @@ export type PaginationButtonsProps = {
 };
 
 export function PaginationButtons({
-	'aria-label': ariaLabel = 'pagination',
+	'aria-label': ariaLabel = 'Pagination',
 	onChange,
 	currentPage,
 	totalPages,

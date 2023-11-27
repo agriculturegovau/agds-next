@@ -16,7 +16,7 @@ export type BreadcrumbsProps = {
 };
 
 export const Breadcrumbs = ({
-	'aria-label': ariaLabel = 'breadcrumb',
+	'aria-label': ariaLabel = 'Breadcrumbs',
 	links,
 }: BreadcrumbsProps) => {
 	const firstLinkRef = useRef<HTMLAnchorElement>(null);

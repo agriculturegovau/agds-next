@@ -3,7 +3,7 @@
 exports[`InpageNav renders correctly 1`] = `
 <div>
   <nav
-    aria-label="in page"
+    aria-label="In page"
     class="css-1hxu0qr-boxStyles-InpageNavContainer"
   >
     <ul

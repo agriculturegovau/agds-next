@@ -2,7 +2,7 @@
 
 exports[`SideNav renders correctly 1`] = `
 <div>
-  <aside
+  <div
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <button
@@ -247,6 +247,6 @@ exports[`SideNav renders correctly 1`] = `
         </nav>
       </div>
     </div>
-  </aside>
+  </div>
 </div>
 `;

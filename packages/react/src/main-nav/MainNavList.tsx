@@ -20,7 +20,7 @@ export type MainNavListItemType = (MainNavListLink | MainNavListButton) & {
 };
 
 export type MainNavListProps = {
-	'aria-label': string;
+	'aria-label'?: string;
 	activePath: string;
 	items?: (MainNavListItemType | MainNavListDropdown)[];
 	/** `primary` is used for the main navigation items on the left. `secondary` is on the right. */
@@ -28,7 +28,7 @@ export type MainNavListProps = {
 };
 
 export function MainNavList({
-	'aria-label': ariaLabel,
+	'aria-label': ariaLabel = 'Main',
 	activePath,
 	items,
 	type,

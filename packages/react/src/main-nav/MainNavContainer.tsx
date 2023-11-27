@@ -49,15 +49,10 @@ export function MainNavContainer({
 				css={{ margin: '0 auto' }}
 			>
 				{items?.length ? <MainNavOpenButton onClick={openMobileMenu} /> : null}
-				<MainNavList
-					aria-label="main"
-					type="primary"
-					items={items}
-					activePath={activePath}
-				/>
+				<MainNavList type="primary" items={items} activePath={activePath} />
 				{secondaryItems?.length ? (
 					<MainNavList
-						aria-label="secondary"
+						aria-label="Supplementary"
 						type="secondary"
 						items={secondaryItems}
 						activePath={activePath}

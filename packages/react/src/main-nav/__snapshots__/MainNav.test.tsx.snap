@@ -40,7 +40,7 @@ exports[`MainNav renders correctly 1`] = `
         Menu
       </button>
       <nav
-        aria-label="main"
+        aria-label="Main"
         class="css-1a5bfv5-boxStyles"
       >
         <ul
@@ -94,7 +94,7 @@ exports[`MainNav renders correctly 1`] = `
         </ul>
       </nav>
       <nav
-        aria-label="secondary"
+        aria-label="Supplementary"
         class="css-1jhrbpg-boxStyles"
       >
         <ul

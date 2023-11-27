@@ -32,7 +32,7 @@ export type PaginationProps = {
 };
 
 export function Pagination({
-	'aria-label': ariaLabel = 'pagination',
+	'aria-label': ariaLabel = 'Pagination',
 	generateHref,
 	windowLimit = 3,
 	currentPage,

@@ -41,7 +41,6 @@ export function SideNav({
 
 	return (
 		<CollapsingSideBar
-			as="aside"
 			collapseButtonLabel={collapseTitle}
 			background={background}
 		>

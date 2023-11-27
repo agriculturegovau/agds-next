@@ -9,7 +9,7 @@ export type SearchBoxProps = PropsWithChildren<{
 }>;
 
 export const SearchBox = ({
-	'aria-label': ariaLabel = 'sitewide',
+	'aria-label': ariaLabel = 'Sitewide',
 	children,
 	onSubmit,
 }: SearchBoxProps) => (
