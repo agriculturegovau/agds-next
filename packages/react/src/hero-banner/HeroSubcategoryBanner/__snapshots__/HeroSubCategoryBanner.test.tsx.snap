@@ -15,7 +15,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
           class="css-eg651i-boxStyles"
         >
           <nav
-            aria-label="breadcrumb"
+            aria-label="Breadcrumbs"
           >
             <ol
               class="css-njrw75-boxStyles-BreadcrumbsContainer"

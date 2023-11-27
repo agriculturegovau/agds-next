@@ -3,7 +3,7 @@
 exports[`SkipLinks renders correctly 1`] = `
 <div>
   <nav
-    aria-label="skip links"
+    aria-label="Skip links"
   >
     <a
       class="css-168ctfx-SkipLinkItem"

@@ -37,7 +37,7 @@ describe('Breadcrumbs', () => {
 	it('renders a default aria-label', async () => {
 		renderBreadcrumbs({});
 		const navEl = await screen.getByRole('navigation');
-		expect(navEl).toHaveAttribute('aria-label', 'breadcrumb');
+		expect(navEl).toHaveAttribute('aria-label', 'Breadcrumbs');
 	});
 
 	it('announces "current page" to screen reader users', async () => {

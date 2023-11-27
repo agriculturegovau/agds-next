@@ -6,7 +6,7 @@ exports[`Pagination renders correctly 1`] = `
     class="css-10d2tcs-boxStyles"
   >
     <nav
-      aria-label="pagination"
+      aria-label="Pagination"
     >
       <ol
         class="css-1cc1bme-boxStyles"

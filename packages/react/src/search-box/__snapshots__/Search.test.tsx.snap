@@ -3,7 +3,7 @@
 exports[`SearchBox renders correctly 1`] = `
 <div>
   <form
-    aria-label="sitewide"
+    aria-label="Sitewide"
     role="search"
   >
     <div
