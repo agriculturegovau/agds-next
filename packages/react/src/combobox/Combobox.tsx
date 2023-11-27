@@ -1,4 +1,4 @@
-import { ReactNode, Ref, useEffect, useState } from 'react';
+import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -37,6 +37,10 @@ export type ComboboxProps<
 	value?: Option | null;
 	/** Function to be fired following a change event. */
 	onChange?: (value: Option | null) => void;
+	/** Function to be fired following a focus event. */
+	onFocus?: FocusEventHandler<HTMLInputElement>;
+	/** Function to be fired following a blur event. */
+	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 	/** Message to display when no options match the users search term. */

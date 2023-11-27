@@ -1,4 +1,11 @@
-import { ReactNode, Ref, useCallback, useMemo, useState } from 'react';
+import {
+	FocusEventHandler,
+	ReactNode,
+	Ref,
+	useCallback,
+	useMemo,
+	useState,
+} from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
@@ -35,6 +42,10 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	value?: Option[];
 	/** Function to be fired following a change event. */
 	onChange?: (value: Option[]) => void;
+	/** Function to be fired following a focus event. */
+	onFocus?: FocusEventHandler<HTMLInputElement>;
+	/** Function to be fired following a blur event. */
+	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
 	/** Used to override the default item rendering. */

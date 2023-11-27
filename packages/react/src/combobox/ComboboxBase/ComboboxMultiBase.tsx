@@ -5,6 +5,8 @@ import {
 	MouseEvent,
 	useRef,
 	ReactNode,
+	FocusEventHandler,
+	FocusEvent,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -63,8 +65,10 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
-	// input ref
+	// input props
 	inputRef?: Ref<HTMLInputElement>;
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	onFocus?: FocusEventHandler<HTMLInputElement>;
 };
 
 export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
@@ -91,6 +95,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	setSelectedItems,
 	multiSelection,
 	inputRef: inputRefProp,
+	onBlur,
+	onFocus,
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -188,8 +194,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 										ref: inputRefs,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
-										onFocus: setInputFocused,
-										onBlur: setInputBlurred,
+										onFocus: (event: FocusEvent<HTMLInputElement>) => {
+											onFocus?.(event);
+											setInputFocused();
+										},
+										onBlur: (event: FocusEvent<HTMLInputElement>) => {
+											onBlur?.(event);
+											setInputBlurred();
+										},
 									})
 								)}
 								css={styles.input}

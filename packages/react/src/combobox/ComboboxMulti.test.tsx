@@ -109,4 +109,25 @@ describe('ComboboxMulti', () => {
 		expect(listBox).toBeInTheDocument();
 		expect(listBox).toHaveAttribute('aria-labelledby', label?.id);
 	});
+
+	it('accepts `onFocus` and `onBlur` props', async () => {
+		const onFocus = jest.fn();
+		const onBlur = jest.fn();
+		const { container } = renderComboboxMulti({ onFocus, onBlur });
+
+		const input = container.querySelector('input');
+		expect(input).toBeInTheDocument();
+		if (!input) return;
+
+		// After focus of the input, check the events have been called correctly
+		await act(async () => await input.focus());
+		expect(onFocus).toHaveBeenCalledTimes(1);
+		expect(onBlur).toHaveBeenCalledTimes(0);
+
+		// After blur of the input, // check the events have been called correctly
+		await act(async () => await input.blur());
+		expect(input).not.toHaveAttribute('aria-expanded', 'true');
+		expect(onFocus).toHaveBeenCalledTimes(1);
+		expect(onBlur).toHaveBeenCalledTimes(1);
+	});
 });

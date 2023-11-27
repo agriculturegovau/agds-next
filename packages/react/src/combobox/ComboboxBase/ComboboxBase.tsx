@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, Ref } from 'react';
+import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { FieldMaxWidth, packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
@@ -36,13 +36,16 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	clearable?: boolean;
 	isAutocomplete: boolean;
 	// Downshift
-	inputRef?: Ref<HTMLInputElement>;
 	loading?: boolean;
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
+	// input props
+	inputRef?: Ref<HTMLInputElement>;
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	onFocus?: FocusEventHandler<HTMLInputElement>;
 };
 
 export function ComboboxBase<Option extends DefaultComboboxOption>({
@@ -66,6 +69,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	combobox,
 	inputItems,
 	inputRef: inputRefProp,
+	onBlur,
+	onFocus,
 	renderItem = (item, inputValue) => (
 		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
 	),
@@ -123,6 +128,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							ref: inputRefProp,
 							type: 'text',
 							name: inputName,
+							onBlur,
+							onFocus,
 						})}
 					/>
 					{hasButtons && (

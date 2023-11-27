@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from 'react';
+import { FocusEventHandler, ReactNode, RefObject } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
@@ -32,6 +32,10 @@ export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
 	value?: Option | null;
 	/** Function to be fired following a change event. */
 	onChange?: (value: Option | null) => void;
+	/** Function to be fired following a focus event. */
+	onFocus?: FocusEventHandler<HTMLInputElement>;
+	/** Function to be fired following a blur event. */
+	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
 	/** Used to override the default item rendering. */
