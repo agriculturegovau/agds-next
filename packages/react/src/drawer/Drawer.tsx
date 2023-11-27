@@ -16,7 +16,7 @@ import {
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
-import { DrawerDialog } from './DrawerDialog';
+import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
 
 export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
@@ -27,6 +27,8 @@ export type DrawerProps = PropsWithChildren<{
 	onDismiss: () => void;
 	/** The title of the drawer. It can span lines but should not be too long. */
 	title: string;
+	/** The width of the drawer. */
+	width?: DrawerDialogWidth;
 }>;
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
@@ -35,6 +37,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	isOpen = false,
 	onDismiss,
 	title,
+	width = 'md',
 }) => {
 	// Close the Drawer when the user presses the escape key
 	useEffect(() => {
@@ -77,6 +80,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 							onDismiss={onDismiss}
 							title={title}
 							actions={actions}
+							width={width}
 							style={{ translateX }}
 						>
 							{children}
