@@ -66,7 +66,7 @@ function AppLayoutTemplate({
 					>
 						<PageContent>
 							<Prose>
-								<h2>Content heading</h2>
+								<h1>Page heading</h1>
 								<p>See Template stories for more in context examples</p>
 								<p>
 									Etiam porta sem malesuada magna mollis euismod. Maecenas

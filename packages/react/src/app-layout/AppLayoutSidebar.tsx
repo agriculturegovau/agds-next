@@ -29,7 +29,6 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		<Fragment>
 			{/* Desktop */}
 			<Stack
-				as="aside"
 				gap={1}
 				background="bodyAlt"
 				borderRight
