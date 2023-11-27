@@ -27,9 +27,9 @@ Consider using other formats such as tables if more than 12 cards are required.
 		<Card shadow clickable>
 			<CardInner>
 				<Stack gap={1}>
-					<Box as="h3">
+					<Heading as="h3" type="h4">
 						<CardLink href="#">Card link</CardLink>
-					</Box>
+					</Heading>
 					<Text>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
 						finibus leo.
@@ -48,9 +48,9 @@ Consider using other formats such as tables if more than 12 cards are required.
 		<Card clickable>
 			<CardInner>
 				<Stack gap={1}>
-					<Box as="h3">
+					<Heading as="h3" type="h4">
 						<CardLink href="#">Card link</CardLink>
-					</Box>
+					</Heading>
 					<Text>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
 						finibus leo.
@@ -120,7 +120,9 @@ Use feature headers to give the card heading more visual prominence.
 	<Column columnSpan={6}>
 		<Card>
 			<CardHeader>
-				<Heading type="h4">Feature card title</Heading>
+				<Heading as="h3" type="h4">
+					Feature card title
+				</Heading>
 			</CardHeader>
 			<CardInner>
 				<Text as="p">Additional conent relating to the card</Text>
@@ -130,7 +132,9 @@ Use feature headers to give the card heading more visual prominence.
 	<Column columnSpan={6}>
 		<Card>
 			<CardHeader background="bodyAlt">
-				<Heading type="h4">Feature card title</Heading>
+				<Heading as="h3" type="h4">
+					Feature card title
+				</Heading>
 			</CardHeader>
 			<CardInner>
 				<Text as="p">Additional conent relating to the card</Text>

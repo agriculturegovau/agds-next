@@ -31,7 +31,7 @@ export default function UpdatesHome({
 								<Card as="li" key={label} clickable shadow>
 									<CardInner>
 										<Stack gap={1}>
-											<Heading type="h3">
+											<Heading as="h2" type="h3">
 												<CardLink href={href}>{label}</CardLink>
 											</Heading>
 											{description ? <Text as="p">{description}</Text> : null}

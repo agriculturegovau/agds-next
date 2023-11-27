@@ -19,6 +19,7 @@ export default function AboutPage({
 			<DocumentTitle title={title} />
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
+					applyMainElement={true}
 					breadcrumbs={[{ href: '/', label: 'Home' }, { label: title }]}
 					editPath="/docs/content/about.mdx"
 				>

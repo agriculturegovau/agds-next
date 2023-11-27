@@ -12,7 +12,11 @@ import type { MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
-import { PageAlert, PageAlertProps } from '@ag.ds-next/react/page-alert';
+import {
+	PageAlert,
+	PageAlertProps,
+	PageAlertTitle,
+} from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
 	SummaryList,
@@ -99,7 +103,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</Box>
 	),
 	ButtonLink,
-	FigmaEmbed: ({ src }: { src: string }) => (
+	FigmaEmbed: ({ src, title }: { src: string; title: string }) => (
 		<Box
 			width="100%"
 			height="0"
@@ -118,6 +122,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 				allowFullScreen
 				height="100%"
 				width="100%"
+				title={title}
 				css={{
 					position: 'absolute',
 					top: 0,
@@ -154,6 +159,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			<PageAlert {...props} />
 		</div>
 	),
+	PageAlertTitle,
 	ComponentPropsTable: ({ name }: { name: string }) => {
 		if (!(name in generatedComponentPropsData)) {
 			return (

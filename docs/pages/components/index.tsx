@@ -112,13 +112,7 @@ export default function PackagesHome({
 						</Stack>
 					</Column>
 
-					<Column
-						as="main"
-						id={listId}
-						tabIndex={-1}
-						css={{ '&:focus': { outline: 'none' } }}
-						columnSpan={{ xs: 12, md: 6, lg: 8 }}
-					>
+					<Column id={listId} columnSpan={{ xs: 12, md: 6, lg: 8 }}>
 						{filteredPkgs?.length ? (
 							<Stack gap={2}>
 								<Text

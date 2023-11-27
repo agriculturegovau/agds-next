@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
+import { Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Columns } from '@ag.ds-next/react/columns';
@@ -36,9 +36,9 @@ export default function TokensPage({
 							<Flex flexDirection="column-reverse">
 								<CardInner>
 									<Stack gap={1} flexGrow={1}>
-										<Box as="h3">
+										<Heading as="h2" type="h4">
 											<CardLink href={href}>{label}</CardLink>
-										</Box>
+										</Heading>
 										<Text>{description}</Text>
 									</Stack>
 								</CardInner>

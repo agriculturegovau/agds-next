@@ -251,7 +251,7 @@ For more information, see Structuring headings and labels in [Content structure]
 	<H2>What do you want to export or prepare for export?</H2>
 
 	<Stack as="ul" gap={1}>
-		<Card shadow clickable>
+		<Card as="li" shadow clickable>
 			<CardInner>
 				<Stack gap={1}>
 					<H3>
@@ -265,7 +265,7 @@ For more information, see Structuring headings and labels in [Content structure]
 			</CardInner>
 		</Card>
 
-		<Card shadow clickable>
+		<Card as="li" shadow clickable>
 			<CardInner>
 				<Stack gap={1}>
 					<H3>
@@ -661,11 +661,11 @@ A search engine optimised (SEO) URL:
 - has 20 to 70 characters if possible
 - is consistent with the H1 on the page if possible. But try not to repeat a word if it's already a part of the URL domain/folder URL stem.
 
-<ExampleContent heading={<H4>Example</H4>}>
+<ExampleContent heading={<H3>Example</H3>}>
 	https://exports.agriculture.gov.au/help/register-establishment
 </ExampleContent>
 
-<ExampleContent heading={<H4>Example</H4>}>
+<ExampleContent heading={<H3>Example</H3>}>
 	https://exports.agriculture.gov.au/guides/export-guide-agricultural-goods
 </ExampleContent>
 

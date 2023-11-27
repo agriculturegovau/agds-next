@@ -29,12 +29,6 @@ export default function PackagesRationale({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
-				skipLinks={[
-					{
-						label: `Skip to ${pkg.title} rationale`,
-						href: '#pkg-content',
-					},
-				]}
 				editPath={`/packages/react/src/${pkg.slug}/docs/rationale.mdx`}
 			>
 				{toc?.length > 1 ? (
