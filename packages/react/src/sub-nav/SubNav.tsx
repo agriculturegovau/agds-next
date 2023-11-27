@@ -17,7 +17,7 @@ export function SubNav({
 	links,
 	activePath,
 	id,
-	'aria-label': ariaLabel = 'secondary',
+	'aria-label': ariaLabel = 'Content',
 	background = 'body',
 }: SubNavProps) {
 	const bestMatch = findBestMatch(links, activePath);
