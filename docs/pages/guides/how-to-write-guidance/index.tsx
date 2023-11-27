@@ -1,6 +1,6 @@
 import { normalize } from 'path';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Box } from '@ag.ds-next/react/box';
+import { Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
@@ -34,11 +34,11 @@ export default function ContentGuidesHome({
 						<Card as="li" key={title} clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
-									<Box as="h3">
+									<Heading as="h2" type="h4">
 										<CardLink href={`/guides/how-to-write-guidance/${slug}`}>
 											{title}
 										</CardLink>
-									</Box>
+									</Heading>
 									{overview ? <Text as="p">{overview}</Text> : null}
 								</Stack>
 							</CardInner>

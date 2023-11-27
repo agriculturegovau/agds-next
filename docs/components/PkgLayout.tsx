@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Prose } from '@ag.ds-next/react/prose';
-import { SkipLinksProps } from '@ag.ds-next/react/skip-link';
 import { SubNav } from '@ag.ds-next/react/sub-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
@@ -21,13 +20,11 @@ export function PkgLayout({
 	pkg,
 	navLinks,
 	breadcrumbs,
-	skipLinks,
 	editPath,
 }: PropsWithChildren<{
 	pkg: Pkg;
 	navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
 	breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
-	skipLinks?: SkipLinksProps['links'];
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
@@ -42,7 +39,6 @@ export function PkgLayout({
 				}}
 				editPath={editPath}
 				breadcrumbs={breadcrumbs}
-				skipLinks={skipLinks}
 			>
 				<PageTitle
 					title={pkg.title}

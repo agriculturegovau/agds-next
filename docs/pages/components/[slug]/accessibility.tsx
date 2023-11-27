@@ -29,12 +29,6 @@ export default function PackagesAccessibility({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
-				skipLinks={[
-					{
-						label: `Skip to ${pkg.title} accessibility`,
-						href: '#pkg-content',
-					},
-				]}
 				editPath={`/packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
 			>
 				{toc?.length > 1 ? (

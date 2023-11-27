@@ -19,7 +19,6 @@ export const prismTheme = {
 				'boolean',
 				'variable',
 				'tag',
-
 				'builtin',
 				'char',
 				'class-name',
@@ -45,7 +44,7 @@ export const prismTheme = {
 				'deleted',
 			],
 			style: {
-				color: '#f55d70',
+				color: '#f56172',
 			},
 		},
 		{

@@ -2,7 +2,7 @@ import { normalize } from 'path';
 import { Fragment } from 'react';
 import { Columns } from '@ag.ds-next/react/columns';
 import { boxPalette } from '@ag.ds-next/react/core';
-import { Box } from '@ag.ds-next/react/box';
+import { Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
 import { mq } from '@ag.ds-next/react/core';
@@ -62,9 +62,9 @@ function TemplateCard({
 			/>
 			<CardInner>
 				<Stack gap={1} flexGrow={1}>
-					<Box as="h3">
+					<Heading as="h2" type="h4">
 						<CardLink href={`/templates/${slug}`}>{title}</CardLink>
-					</Box>
+					</Heading>
 					<Text>{description}</Text>
 				</Stack>
 			</CardInner>

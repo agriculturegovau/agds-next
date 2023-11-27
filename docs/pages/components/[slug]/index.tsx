@@ -34,12 +34,6 @@ export default function Packages({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
-				skipLinks={[
-					{
-						label: `Skip to ${pkg.title} overview`,
-						href: '#pkg-content',
-					},
-				]}
 				editPath={`/packages/react/src/${pkg.slug}/docs/overview.mdx`}
 			>
 				{toc?.length > 1 ? (

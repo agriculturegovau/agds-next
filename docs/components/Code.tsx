@@ -115,7 +115,7 @@ function LiveCode({
 				</CardHeader>
 			)}
 			<LivePreview
-				aria-label="Rendered code snippet example"
+				aria-label={`Rendered code snippet example ${id}`}
 				// Prevents prose styles from being inherited in live code examples (except for the prose example)
 				className={enableProse ? undefined : unsetProseStylesClassname}
 				css={{
@@ -125,6 +125,7 @@ function LiveCode({
 					fontFamily: tokens.font.body, // because pre applies gets monospace font.
 					padding: mapSpacing(1.5),
 				}}
+				role="region"
 			/>
 			<Flex
 				flexWrap="wrap"
@@ -221,7 +222,6 @@ const StaticCode = ({
 			rounded
 			borderColor="muted"
 			css={{
-				overflow: 'hidden',
 				marginTop: mapSpacing(1.5),
 
 				pre: {
@@ -242,6 +242,7 @@ const StaticCode = ({
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
 							style={style}
+							tabIndex={0}
 						>
 							<code>
 								{tokens.map((line, lineKey) => (

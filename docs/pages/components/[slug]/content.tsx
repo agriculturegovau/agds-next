@@ -29,12 +29,6 @@ export default function PackagesContent({
 				pkg={pkg}
 				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
-				skipLinks={[
-					{
-						label: `Skip to ${pkg.title} content`,
-						href: '#pkg-content',
-					},
-				]}
 				editPath={`/packages/react/src/${pkg.slug}/docs/content.mdx`}
 			>
 				{toc?.length > 1 ? (

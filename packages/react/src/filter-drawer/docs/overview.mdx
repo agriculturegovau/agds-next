@@ -5,7 +5,12 @@ group: Layout
 deprecated: true
 ---
 
-<PageAlert tone="info" title="This component has been renamed">
+<PageAlert
+	tone="info"
+	title={
+		<PageAlertTitle as="h2">This component has been renamed</PageAlertTitle>
+	}
+>
 	<Text as="p">
 		{'Filter drawer has been renamed to '}
 		<TextLink href="/components/drawer">{'Drawer'}</TextLink>
