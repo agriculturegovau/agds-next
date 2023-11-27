@@ -1,18 +1,24 @@
-import { DeepPartial } from 'react-hook-form';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { useRouter } from 'next/router';
+import {
+	createContext,
+	PropsWithChildren,
+	useCallback,
+	useContext,
+	useState,
+} from 'react';
 import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
+import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { FormState, defaultFormState } from './FormState';
+import { FormState, defaultFormState, TaskKey } from './FormState';
 
 type ContextType = {
 	formTitle: string;
 	typeSearchParm: string;
 	homePageUrl: string;
-	// task status
-	getTaskStatus: (
-		key: 'task1' | 'task2' | 'task3' | 'task4'
-	) => TaskListItemStatus;
+	// Task status
+	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
+	startTask: (key: TaskKey) => void;
 	// Side flow
 	isSideFlow: boolean;
 	setIsSideFlow: (isSideFlow: boolean) => void;
@@ -22,6 +28,10 @@ type ContextType = {
 	// Is submitting step
 	isSubmittingStep: boolean;
 	setIsSubmittingStep: (value: boolean) => void;
+	// Actions
+	cancel: () => void;
+	saveAndExit: () => void;
+	isSavingBeforeExiting: boolean;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
@@ -31,6 +41,8 @@ type FormMobileFoodVendorPermitProps = PropsWithChildren<{}>;
 export function GlobalFormProvider({
 	children,
 }: FormMobileFoodVendorPermitProps) {
+	const router = useRouter();
+
 	const [formState, setFormState] = useSessionFormState(
 		'FormMobileFoodVendorPermit',
 		defaultFormState as DeepPartial<FormState>
@@ -42,31 +54,65 @@ export function GlobalFormProvider({
 	const formTitle = `Apply for a ${typeSearchParm} permit`;
 	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${typeSearchParm}`;
 
-	const [isSideFlow, setIsSideFlow] = useState(false);
+	const getTaskStatus = useCallback(
+		(taskKey: TaskKey): TaskListItemStatus => {
+			{
+				if (formState[taskKey]?.completed) return 'doneRecently';
+				if (formState[taskKey]?.started) return 'doing';
+				return 'todo';
+			}
+		},
+		[formState]
+	);
 
+	const startTask = useCallback(
+		(taskKey: TaskKey) => {
+			setFormState((formState) => ({
+				...formState,
+				[taskKey]: { ...formState[taskKey], started: true },
+			}));
+		},
+		[setFormState]
+	);
+
+	const [isSideFlow, setIsSideFlow] = useState(false);
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
-	function getTaskStatus(
-		taskKey: 'task1' | 'task2' | 'task3' | 'task4'
-	): TaskListItemStatus {
-		if (formState[taskKey]?.completed) return 'done';
-		return 'todo';
-	}
+	const cancel = useCallback(() => {
+		router.push(homePageUrl);
+		setFormState(defaultFormState as DeepPartial<FormState>);
+	}, [homePageUrl, router, setFormState]);
+
+	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
+
+	const saveAndExit = useCallback(() => {
+		setIsSavingBeforeExiting(true);
+		setTimeout(() => {
+			setIsSavingBeforeExiting(false);
+			router.push(homePageUrl);
+		}, 1500);
+	}, [homePageUrl, router]);
 
 	const contextValue: ContextType = {
 		formTitle,
 		typeSearchParm,
 		homePageUrl,
+		// task status
 		getTaskStatus,
-		// Side flow
+		startTask,
+		// side flow
 		isSideFlow,
 		setIsSideFlow,
-		// Form state
+		// form state
 		formState,
 		setFormState,
-		// Submitting step
+		// submitting step
 		isSubmittingStep,
 		setIsSubmittingStep,
+		// form actions
+		cancel,
+		saveAndExit,
+		isSavingBeforeExiting,
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;

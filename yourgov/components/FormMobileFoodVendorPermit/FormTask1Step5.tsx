@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
@@ -11,41 +10,29 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import { DeepPartial } from '../../lib/types';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
-// import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
+import { parseDateField } from './utils';
+import {
+	task1Step5FormSchema,
+	Task1Step5FormSchema,
+} from './FormTask1FormState';
 
-// `yup.date()` can sometimes give false positives with certain string values
-// Fixes https://github.com/jquense/yup/issues/764
-// Tests for this can be found in `packages/react/src/date-picker/test-utils.ts`
-const yupDateField = yup
-	.date()
-	.transform((current, orig) => (typeof orig === 'string' ? orig : current))
-	.typeError('Enter a valid date');
-
-export const formSchema = yup
-	.object({
-		tradingPeriod: yup
-			.object({
-				from: yupDateField
-					.required('Enter a valid date')
-					// Ensures the start date is always after the end date
-					.max(yup.ref('to'), 'Start date must be before the end date'),
-				to: yupDateField
-					.required('Enter a valid date')
-					// Ensures the start date is always after the end date
-					.min(yup.ref('from'), 'Start date must be before the end date'),
-			})
-			.required('Enter a valid date'),
-		openingTime: yup.string().required('Start time is required'),
-		closingTime: yup.string().required('End time is required'),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
+	const from = step?.tradingPeriod?.from as string | Date | undefined;
+	const to = step?.tradingPeriod?.from as string | Date | undefined;
+	return {
+		...step,
+		tradingPeriod: {
+			from: parseDateField(from),
+			to: parseDateField(to),
+		},
+	};
+}
 
 export function FormTask1Step5() {
 	const { formState, setFormState } = useGlobalForm();
@@ -59,12 +46,12 @@ export function FormTask1Step5() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormSchema>({
-		defaultValues: formState.task1?.step5,
-		resolver: yupResolver(formSchema),
+	} = useForm<Task1Step5FormSchema>({
+		defaultValues: transformDefaultValues(formState.task1?.step5),
+		resolver: yupResolver(task1Step5FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step5FormSchema> = (data) => {
 		setFocusedError(false);
 		setFormState({
 			...formState,

@@ -1,6 +1,5 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Combobox } from '@ag.ds-next/react/combobox';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
@@ -8,18 +7,10 @@ import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
-
-export const formSchema = yup
-	.object({
-		cuisine: yup
-			.object()
-			.shape({ label: yup.string().required(), value: yup.string().required() })
-			.typeError('Cuisine is required')
-			.default(null),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+import {
+	task1Step6FormSchema,
+	Task1Step6FormSchema,
+} from './FormTask1FormState';
 
 export function FormTask1Step6() {
 	const { formState, setFormState } = useGlobalForm();
@@ -29,12 +20,12 @@ export function FormTask1Step6() {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormSchema>({
+	} = useForm<Task1Step6FormSchema>({
 		defaultValues: formState.task1?.step6,
-		resolver: yupResolver(formSchema),
+		resolver: yupResolver(task1Step6FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step6FormSchema> = (data) => {
 		setFormState({
 			...formState,
 			task1: { ...formState.task1, step6: { ...data, completed: true } },

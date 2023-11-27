@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -18,38 +17,10 @@ import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
-
-export const formSchema = yup
-	.object({
-		// street address
-		streetAddress: yup.string().required('Enter your street address'),
-		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
-		state: yup.string().required('Enter your state'),
-		postcode: yup.string().required('Enter your postcode'),
-		// postal address
-		isPostalAddressSameAsStreetAddress: yup.boolean(),
-		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postal address'),
-		}),
-		postalSuburbTownCity: yup
-			.string()
-			.when('isPostalAddressSameAsStreetAddress', {
-				is: false,
-				then: yup.string().required('Enter your suburb, town or city'),
-			}),
-		postalState: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your state'),
-		}),
-		postalPostcode: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postcode'),
-		}),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+import {
+	task1Step3FormSchema,
+	Task1Step3FormSchema,
+} from './FormTask1FormState';
 
 export function FormTask1Step3() {
 	const { formState, setFormState } = useGlobalForm();
@@ -64,12 +35,12 @@ export function FormTask1Step3() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormSchema>({
+	} = useForm<Task1Step3FormSchema>({
 		defaultValues: formState.task1?.step3,
-		resolver: yupResolver(formSchema),
+		resolver: yupResolver(task1Step3FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step3FormSchema> = (data) => {
 		setFocusedError(false);
 		setFormState({
 			...formState,

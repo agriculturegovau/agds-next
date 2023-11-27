@@ -11,13 +11,8 @@ import { useGlobalForm } from './GlobalFormProvider';
 export function FormActions() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
-	const {
-		// currentStep,
-		isSubmittingStep,
-		// saveAndExit,
-		// isSavingBeforeExiting,
-		// cancel,
-	} = useGlobalForm();
+	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
+		useGlobalForm();
 
 	return (
 		<Fragment>
@@ -26,13 +21,12 @@ export function FormActions() {
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
 						Save and continue
-						{/* {currentStep === 4 ? 'Submit task' : 'Save and continue'} */}
 					</Button>
 					<Button
 						type="button"
 						variant="secondary"
-						// loading={isSavingBeforeExiting}
-						// onClick={saveAndExit}
+						loading={isSavingBeforeExiting}
+						onClick={saveAndExit}
 					>
 						Save and exit
 					</Button>
@@ -47,11 +41,7 @@ export function FormActions() {
 				title="Are you sure you want to cancel?"
 				actions={
 					<ButtonGroup>
-						<Button
-						// onClick={cancel}
-						>
-							Yes, cancel
-						</Button>
+						<Button onClick={cancel}>Yes, cancel</Button>
 						<Button variant="secondary" onClick={closeModal}>
 							No, take me back
 						</Button>

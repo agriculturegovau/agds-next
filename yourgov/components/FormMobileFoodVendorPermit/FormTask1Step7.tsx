@@ -13,7 +13,11 @@ export function FormTask1Step7() {
 		event.preventDefault();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step7: { completed: true } },
+			task1: {
+				...formState.task1,
+				step7: { completed: true },
+				completed: true,
+			},
 		});
 		submitStep();
 	}
@@ -23,7 +27,7 @@ export function FormTask1Step7() {
 			formTitle="Confirm and submit"
 			formIntroduction="Check and confirm all details on this page."
 		>
-			<FormTask1Review />
+			<FormTask1Review headingsLevel="h2" />
 			<form onSubmit={onSubmit}>
 				<FormActions />
 			</form>

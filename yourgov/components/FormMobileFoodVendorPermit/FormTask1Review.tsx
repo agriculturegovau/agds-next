@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
-import { H2 } from '@ag.ds-next/react/heading';
+import { H2, H3 } from '@ag.ds-next/react/heading';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
 	FormDefinitionList,
@@ -12,13 +11,23 @@ import {
 import { useGlobalForm } from './GlobalFormProvider';
 import { task1FormSteps } from './FormTask1Provider';
 
-export function FormTask1Review() {
+type FormTask1ReviewProps = {
+	headingsLevel: 'h2' | 'h3';
+};
+
+const HEADINGS_MAP = {
+	h2: H2,
+	h3: H3,
+} as const;
+
+export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 	const { formState } = useGlobalForm();
+	const HeadingComponent = HEADINGS_MAP[headingsLevel];
 	return (
-		<Fragment>
+		<Stack gap={3}>
 			{/** Owner details */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[0].label}</H2>
+				<HeadingComponent>{task1FormSteps[0].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
 						label="First name"
@@ -39,7 +48,7 @@ export function FormTask1Review() {
 			</Stack>
 			{/** Business details */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[1].label}</H2>
+				<HeadingComponent>{task1FormSteps[1].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
 						label="Business or company name"
@@ -66,7 +75,7 @@ export function FormTask1Review() {
 			</Stack>
 			{/** Business address */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[2].label}</H2>
+				<HeadingComponent>{task1FormSteps[2].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItemAddress
 						label="Street address"
@@ -96,7 +105,7 @@ export function FormTask1Review() {
 			</Stack>
 			{/** Vehicle registration */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[3].label}</H2>
+				<HeadingComponent>{task1FormSteps[3].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
 						label="Vehicle registration number"
@@ -113,7 +122,7 @@ export function FormTask1Review() {
 			</Stack>
 			{/** Trading time */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[4].label}</H2>
+				<HeadingComponent>{task1FormSteps[4].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItemDateRange
 						label="Period active"
@@ -135,7 +144,7 @@ export function FormTask1Review() {
 			</Stack>
 			{/** Food served */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<H2>{task1FormSteps[5].label}</H2>
+				<HeadingComponent>{task1FormSteps[5].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
 						label="Cuisine"
@@ -146,6 +155,6 @@ export function FormTask1Review() {
 					Change food services
 				</ButtonLink>
 			</Stack>
-		</Fragment>
+		</Stack>
 	);
 }

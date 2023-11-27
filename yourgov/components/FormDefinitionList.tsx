@@ -58,7 +58,7 @@ export function FormDefinitionListItemAddress({
 
 type FormDefinitionListItemDateProps = {
 	label: string;
-	value: Date | string | undefined;
+	value: unknown;
 };
 
 export function FormDefinitionListItemDate({
@@ -72,7 +72,7 @@ export function FormDefinitionListItemDate({
 				{!value ? null : (
 					<Fragment>
 						{format(
-							typeof value === 'string' ? parseISO(value) : value,
+							typeof value === 'string' ? parseISO(value) : (value as Date),
 							'dd/MM/yyyy'
 						)}
 					</Fragment>
@@ -84,8 +84,8 @@ export function FormDefinitionListItemDate({
 
 type FormDefinitionListItemDateRangeProps = {
 	label: string;
-	from: Date | undefined;
-	to: Date | undefined;
+	from: unknown | undefined;
+	to: unknown | undefined;
 };
 
 export function FormDefinitionListItemDateRange({
@@ -100,10 +100,14 @@ export function FormDefinitionListItemDateRange({
 				{!from || !to ? null : (
 					<Fragment>
 						{format(
-							typeof from === 'string' ? parseISO(from) : from,
+							typeof from === 'string' ? parseISO(from) : (from as Date),
 							'dd/MM/yyyy'
 						)}{' '}
-						– {format(typeof to === 'string' ? parseISO(to) : to, 'dd/MM/yyyy')}
+						–{' '}
+						{format(
+							typeof to === 'string' ? parseISO(to) : (to as Date),
+							'dd/MM/yyyy'
+						)}
 					</Fragment>
 				)}
 			</SummaryListItemDescription>

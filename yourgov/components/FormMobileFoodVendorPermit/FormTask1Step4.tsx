@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
@@ -11,33 +10,28 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DeepPartial } from '../../lib/types';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
+import { parseDateField } from './utils';
+import {
+	Task1Step4FormSchema,
+	task1Step4FormSchema,
+} from './FormTask1FormState';
 
-// `yup.date()` can sometimes give false positives with certain string values
-// Fixes https://github.com/jquense/yup/issues/764
-// Tests for this can be found in `packages/react/src/date-picker/test-utils.ts`
-const yupDateField = yup
-	.date()
-	.transform((current, orig) => (typeof orig === 'string' ? orig : current))
-	.typeError('Enter a valid date');
-
-export const formSchema = yup
-	.object({
-		registrationNumber: yup
-			.string()
-			.max(6, 'Register number can not be longer than 6 characters')
-			.required('Vehicle registration number is required'),
-		registrationExpiry: yupDateField.required(
-			'Vehicle registration expiry is required'
-		),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
+	const registrationExpiry = step?.registrationExpiry as
+		| string
+		| Date
+		| undefined;
+	return {
+		...step,
+		registrationExpiry: parseDateField(registrationExpiry),
+	};
+}
 
 export function FormTask1Step4() {
 	const { formState, setFormState } = useGlobalForm();
@@ -52,12 +46,12 @@ export function FormTask1Step4() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormSchema>({
-		defaultValues: formState.task1?.step4,
-		resolver: yupResolver(formSchema),
+	} = useForm<Task1Step4FormSchema>({
+		defaultValues: transformDefaultValues(formState.task1?.step4),
+		resolver: yupResolver(task1Step4FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step4FormSchema> = (data) => {
 		setFocusedError(false);
 		setFormState({
 			...formState,

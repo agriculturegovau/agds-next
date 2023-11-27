@@ -12,38 +12,13 @@ import { PageTitle } from '../../../../../../components/PageTitle';
 import {
 	useGlobalForm,
 	GlobalFormProvider,
-} from '../../../../../../components/FormMobileFoodVendorPermit/GlobalFormProvider';
+	globalFormTasks,
+} from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
 
-export const TASKS = [
-	{
-		formStateKey: 'task1',
-		label: 'Provide business details',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1',
-		message: 'Confirm your business details',
-	},
-	{
-		formStateKey: 'task2',
-		label: 'Provide employee details',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1',
-		message: 'Provide employee names and email addresses',
-	},
-	{
-		formStateKey: 'task3',
-		label: 'Upload documents',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-3/step-1',
-		message: 'Provide the documents required for your application',
-	},
-	{
-		formStateKey: 'task4',
-		label: 'Review and submit',
-		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-4/step-1',
-		message: 'Check all details and submit your application',
-	},
-] as const;
-
 const Page: NextPageWithLayout = () => {
-	const { formTitle, typeSearchParm, getTaskStatus } = useGlobalForm();
+	const { formTitle, typeSearchParm, getTaskStatus, startTask } =
+		useGlobalForm();
 	return (
 		<Fragment>
 			<DocumentTitle title={formTitle} />
@@ -68,11 +43,15 @@ const Page: NextPageWithLayout = () => {
 							/>
 							<TaskList
 								ordered={true}
-								items={TASKS.map((task) => ({
-									...task,
-									href: task.href + `?type=${typeSearchParm}`,
-									status: getTaskStatus(task.formStateKey),
-								}))}
+								items={globalFormTasks.map(
+									({ formStateKey, href, label, message }) => ({
+										label,
+										message,
+										href: href + `?type=${typeSearchParm}`,
+										status: getTaskStatus(formStateKey),
+										onClick: () => startTask(formStateKey),
+									})
+								)}
 							/>
 							<FormHelpCallout />
 						</Stack>

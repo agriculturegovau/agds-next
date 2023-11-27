@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
@@ -26,19 +25,10 @@ import { useGlobalForm } from './GlobalFormProvider';
 import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
-
-export const formSchema = yup
-	.object({
-		firstName: yup.string().required('Enter your first name'),
-		lastName: yup.string().required('Enter your last name'),
-		email: yup
-			.string()
-			.email('Enter a valid email')
-			.required('Enter your email'),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+import {
+	task1Step1FormSchema,
+	Task1Step1FormSchema,
+} from './FormTask1FormState';
 
 export function FormTask1Step1() {
 	const { isSideFlow, setIsSideFlow, formState, setFormState } =
@@ -57,16 +47,16 @@ export function FormTask1Step1() {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm<FormSchema>({
+	} = useForm<Task1Step1FormSchema>({
 		defaultValues: defaultValues,
-		resolver: yupResolver(formSchema),
+		resolver: yupResolver(task1Step1FormSchema),
 	});
 
 	const [hasClosedForm, setHasClosedForm] = useState(false);
 	const [localFormState, setLocalFormState] = useState(defaultValues);
 	const [isSaving, setIsSaving] = useState(false);
 
-	const onSave: SubmitHandler<FormSchema> = (data) => {
+	const onSave: SubmitHandler<Task1Step1FormSchema> = (data) => {
 		setFocusedError(false);
 		setIsSaving(true);
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -96,7 +86,7 @@ export function FormTask1Step1() {
 		setHasClosedForm(false);
 	}, [hasClosedForm]);
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
 		setFormState({
 			...formState,
 			task1: { ...formState.task1, step1: { ...data, completed: true } },
@@ -104,7 +94,7 @@ export function FormTask1Step1() {
 		submitStep();
 	};
 
-	const onError: SubmitErrorHandler<FormSchema> = () => {
+	const onError: SubmitErrorHandler<Task1Step1FormSchema> = () => {
 		setFocusedError(false);
 	};
 

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
@@ -14,30 +13,14 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-// import { useFormBusinessDetails } from './FormBusinessDetails';
 import { FormTask1Container } from './FormTask1Container';
 import { FormActions } from './FormActions';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
-
-export const formSchema = yup
-	.object({
-		businessName: yup.string().required('Business or company name is required'),
-		tradingName: yup.string(),
-		businessStructure: yup
-			.string()
-			.typeError('Business structure is required')
-			.required('Business structure is required'),
-		abn: yup.string().when('businessStructure', (value, schema) => {
-			if (value === 'Business') {
-				return schema.required('ABN is required');
-			}
-			return schema;
-		}),
-	})
-	.required();
-
-export type FormSchema = yup.InferType<typeof formSchema>;
+import {
+	task1Step2FormSchema,
+	Task1Step2FormSchema,
+} from './FormTask1FormState';
 
 export function FormTask1Step2() {
 	const { formState, setFormState } = useGlobalForm();
@@ -53,12 +36,12 @@ export function FormTask1Step2() {
 		handleSubmit,
 		trigger,
 		formState: { errors, isSubmitted },
-	} = useForm<FormSchema>({
+	} = useForm<Task1Step2FormSchema>({
 		defaultValues: formState.task1?.step2,
-		resolver: yupResolver(formSchema),
+		resolver: yupResolver(task1Step2FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step2FormSchema> = (data) => {
 		setFocusedError(false);
 		setFormState({
 			...formState,

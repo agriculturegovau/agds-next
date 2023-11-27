@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 // import { PageAlert } from '@ag.ds-next/react/page-alert';
 // import { Text } from '@ag.ds-next/react/text';
 import { FormStepTitle } from '../FormStepTitle';
-import { TASKS } from '../../pages/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+import { globalFormTasks } from './globalFormTasks';
 import { useGlobalForm } from './GlobalFormProvider';
 // import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
@@ -58,8 +58,8 @@ export function FormContainer({
 }
 
 const FORM_TITLE_MAP = {
-	1: TASKS[0].label,
-	2: TASKS[1].label,
-	3: TASKS[2].label,
-	4: TASKS[3].label,
+	1: globalFormTasks[0].label,
+	2: globalFormTasks[1].label,
+	3: globalFormTasks[2].label,
+	4: globalFormTasks[3].label,
 };

@@ -1,5 +1,6 @@
 // Global form context
-export { GlobalFormProvider } from './GlobalFormProvider';
+export { GlobalFormProvider, useGlobalForm } from './GlobalFormProvider';
+export { globalFormTasks } from './globalFormTasks';
 
 // Getting started forms
 export { GettingStartedForm } from './GettingStartedForm';
