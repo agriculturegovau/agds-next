@@ -14,6 +14,7 @@ const config: StorybookConfig = {
 	features: {
 		breakingChangesV7: false,
 		storyStoreV7: false,
+		buildStoriesJson: true,
 	},
 	addons: [
 		'@storybook/addon-links',
@@ -24,7 +25,6 @@ const config: StorybookConfig = {
 		'../packages/*/src/**/*.stories.@(ts|tsx)',
 		'../example-site/**/*.stories.@(ts|tsx)',
 		'../docs/content/**/*.stories.@(ts|tsx)',
-		'./stories/*.@(ts|tsx)',
 		'./stories/**/*.stories.@(ts|tsx)',
 	],
 	staticDirs: ['../example-site/public'],
