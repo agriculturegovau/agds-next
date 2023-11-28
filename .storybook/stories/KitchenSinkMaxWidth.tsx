@@ -114,6 +114,13 @@ const backgroundMapper = {
 
 type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
+const title =
+	'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique';
+const subHeading =
+	'Lorem ipsum dolor sit amet consectetur adipiscing elit aenean tempus volutpat lacus in accumsan. Vestibulum rutrum velit non nulla porta aliquet aliquam leo lorem, vehicula at auctor sit amet, posuere nec mi.';
+const body =
+	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer scelerisque at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum consequat, libero justo lacinia tortor, id varius tortor ante sit amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus lacinia libero.';
+
 function KitchenSink({ background }: KitchenSinkProps) {
 	const { page, opposite } = backgroundMapper[background];
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
@@ -122,16 +129,8 @@ function KitchenSink({ background }: KitchenSinkProps) {
 		<Fragment>
 			<HeroBanner background={opposite}>
 				<HeroBannerTitleContainer>
-					<HeroBannerTitle>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean
-						tempus volutpat lacus in accumsan.
-					</HeroBannerTitle>
-					<HeroBannerSubtitle>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-						tempus volutpat lacus in accumsan. Vestibulum rutrum velit non nulla
-						porta aliquet. Aliquam leo lorem, vehicula at auctor sit amet,
-						posuere nec mi. Pellentesque alique
-					</HeroBannerSubtitle>
+					<HeroBannerTitle>{title}</HeroBannerTitle>
+					<HeroBannerSubtitle>{subHeading}</HeroBannerSubtitle>
 				</HeroBannerTitleContainer>
 				<SearchBox onSubmit={() => undefined}>
 					<SearchBoxInput label="Search this website" />
@@ -142,38 +141,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 			</HeroBanner>
 			<PageContent background={page}>
 				<Stack gap={3}>
-					<PageAlert
-						tone="info"
-						title="Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean tempus volutpat lacus in accumsan."
-					>
-						<Text as="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-							tempus volutpat lacus in accumsan. Vestibulum rutrum velit non
-							nulla porta aliquet. Aliquam leo lorem, vehicula at auctor sit
-							amet, posuere nec mi. Pellentesque alique
-						</Text>
+					<PageAlert tone="info" title={title}>
+						<Text as="p">{body}</Text>
 					</PageAlert>
 
-					<PageAlert
-						tone="error"
-						title="Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean tempus volutpat lacus in accumsan."
-					>
+					<PageAlert tone="error" title={title}>
 						<UnorderedList>
 							<ListItem>
-								<TextLink href="#email">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Aenean tempus volutpat lacus in accumsan. Vestibulum rutrum
-									velit non nulla porta aliquet. Aliquam leo lorem, vehicula at
-									auctor sit amet, posuere nec mi. Pellentesque alique
-								</TextLink>
-							</ListItem>
-							<ListItem>
-								<TextLink href="#email">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Aenean tempus volutpat lacus in accumsan. Vestibulum rutrum
-									velit non nulla porta aliquet. Aliquam leo lorem, vehicula at
-									auctor sit amet, posuere nec mi. Pellentesque alique
-								</TextLink>
+								<TextLink href="#email">{subHeading}</TextLink>
 							</ListItem>
 						</UnorderedList>
 					</PageAlert>
@@ -193,131 +168,45 @@ function KitchenSink({ background }: KitchenSinkProps) {
 						]}
 					/>
 					<H1>Kitchen sink</H1>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-						Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis
-						parturient montes, nascetur ridiculus mus. Integer scelerisque at
-						ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
-						consequat, libero justo lacinia tortor, id varius tortor ante sit
-						amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam lacinia.
-						Ut dolor quam, gravida eu dui quis, molestie lacinia dolor. Fusce
-						lacus mi, pharetra molestie tortor eu, finibus lacinia libero.
-					</Text>
+					<Text>{body}</Text>
 
 					<Callout
 						title="Callout Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus integer scelerisque at ligula tempor eleifend"
 						tone="neutral"
 						onBodyAlt={page === 'bodyAlt'}
 					>
-						<Text as="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							Quisque ac lacinia elit. Orci varius natoque penatibus et magnis
-							dis parturient montes, nascetur ridiculus mus. Integer scelerisque
-							at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
-							consequat, libero justo lacinia tortor, id varius tortor ante sit
-							amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam
-							lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia
-							dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus
-							lacinia libero.
-						</Text>
+						<Text as="p">{body}</Text>
 					</Callout>
 
 					<SectionAlert
 						tone="warning"
 						title="Section alert Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus integer scelerisque at ligula tempor eleifend"
 					>
-						<Text as="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							Quisque ac lacinia elit. Orci varius natoque penatibus et magnis
-							dis parturient montes, nascetur ridiculus mus. Integer scelerisque
-							at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
-							consequat, libero justo lacinia tortor, id varius tortor ante sit
-							amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam
-							lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia
-							dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus
-							lacinia libero.
-						</Text>
+						<Text as="p">{body}</Text>
 					</SectionAlert>
 
 					<Accordion>
-						<AccordionItem
-							title="Accordion title with really long label that spans multiple lines accordion title with really long label that spans multiple lines"
-							background={page}
-						>
+						<AccordionItem title={title} background={page}>
 							<AccordionItemContent>
-								<Text as="p">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes, nascetur ridiculus mus. Integer
-									scelerisque at ligula tempor eleifend. Vestibulum volutpat,
-									dolor eu rutrum consequat, libero justo lacinia tortor, id
-									varius tortor ante sit amet nisl. Aenean at dui diam. Cras a
-									ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui
-									quis, molestie lacinia dolor. Fusce lacus mi, pharetra
-									molestie tortor eu, finibus lacinia libero.
-								</Text>
+								<Text as="p">{body}</Text>
 							</AccordionItemContent>
 						</AccordionItem>
 						<AccordionItem title="Accordion Two" background={page}>
 							<AccordionItemContent>
-								<Text as="p">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes, nascetur ridiculus mus. Integer
-									scelerisque at ligula tempor eleifend. Vestibulum volutpat,
-									dolor eu rutrum consequat, libero justo lacinia tortor, id
-									varius tortor ante sit amet nisl. Aenean at dui diam. Cras a
-									ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui
-									quis, molestie lacinia dolor. Fusce lacus mi, pharetra
-									molestie tortor eu, finibus lacinia libero.
-								</Text>
+								<Text as="p">{body}</Text>
 							</AccordionItemContent>
 						</AccordionItem>
 					</Accordion>
 
-					<Details
-						label="Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus integer scelerisque at ligula tempor eleifend"
-						onBodyAlt={page === 'bodyAlt'}
-					>
-						<Text as="p">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							Quisque ac lacinia elit. Orci varius natoque penatibus et magnis
-							dis parturient montes, nascetur ridiculus mus. Integer scelerisque
-							at ligula tempor eleifend. Vestibulum volutpat, dolor eu rutrum
-							consequat, libero justo lacinia tortor, id varius tortor ante sit
-							amet nisl. Aenean at dui diam. Cras a ligula a ante aliquam
-							lacinia. Ut dolor quam, gravida eu dui quis, molestie lacinia
-							dolor. Fusce lacus mi, pharetra molestie tortor eu, finibus
-							lacinia libero.
-						</Text>
+					<Details label={title} onBodyAlt={page === 'bodyAlt'}>
+						<Text as="p">{body}</Text>
 					</Details>
 
 					<Card>
 						<CardInner>
 							<Stack gap={1}>
-								<Heading type="h2">
-									Orci varius natoque penatibus et magnis dis parturient montes,
-									nascetur ridiculus mus integer scelerisque at ligula tempor
-									eleifend
-								</Heading>
-								<Text as="p">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes, nascetur ridiculus mus. Integer
-									scelerisque at ligula tempor eleifend. Vestibulum volutpat,
-									dolor eu rutrum consequat, libero justo lacinia tortor, id
-									varius tortor ante sit amet nisl. Aenean at dui diam. Cras a
-									ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui
-									quis, molestie lacinia dolor. Fusce lacus mi, pharetra
-									molestie tortor eu, finibus lacinia libero.
-								</Text>
+								<Heading type="h2">{title}</Heading>
+								<Text as="p">{body}</Text>
 							</Stack>
 						</CardInner>
 					</Card>
@@ -330,24 +219,13 @@ function KitchenSink({ background }: KitchenSinkProps) {
 						</TabList>
 						<TabPanels>
 							<TabPanel>
-								<Text>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes, nascetur ridiculus mus. Integer
-									scelerisque at ligula tempor eleifend. Vestibulum volutpat,
-									dolor eu rutrum consequat, libero justo lacinia tortor, id
-									varius tortor ante sit amet nisl. Aenean at dui diam. Cras a
-									ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui
-									quis, molestie lacinia dolor. Fusce lacus mi, pharetra
-									molestie tortor eu, finibus lacinia libero.
-								</Text>
+								<Text>{body}</Text>
 							</TabPanel>
 							<TabPanel>
-								<Text>Tab panel 2.</Text>
+								<Text>{body}</Text>
 							</TabPanel>
 							<TabPanel>
-								<Text>Tab panel 3.</Text>
+								<Text>{body}</Text>
 							</TabPanel>
 						</TabPanels>
 					</Tabs>
@@ -366,25 +244,25 @@ function KitchenSink({ background }: KitchenSinkProps) {
 
 					<H2>Forms</H2>
 					<FormStack>
-						<Textarea label="Lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque at arcu eleifend, varius enim non, eleifend nibh" />
+						<Textarea label={title} />
 						<TextInput
-							label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh."
-							hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh."
+							label={title}
+							hint={title}
 							invalid
-							message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh."
+							message={title}
 							id="email"
 						/>
 						<DatePicker
 							label="Birth date"
-							hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh."
+							hint={title}
 							value={new Date()}
 							onChange={() => undefined}
 						/>
 						<Select
-							label="Example"
+							label={title}
 							placeholder="Please select"
 							options={[
-								{ value: 'a', label: 'Option A' },
+								{ value: 'a', label: title },
 								{ value: 'b', label: 'Option B' },
 								{ value: 'c', label: 'Option C' },
 							]}
@@ -397,42 +275,26 @@ function KitchenSink({ background }: KitchenSinkProps) {
 						/>
 						<Textarea label="Message" />
 						<ControlGroup label="Device" block>
-							<Radio checked={false}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							</Radio>
-							<Radio checked={false}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							</Radio>
-							<Radio checked={true}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-							</Radio>
+							<Radio checked={false}>{title}</Radio>
+							<Radio checked={false}>{title}</Radio>
+							<Radio checked={true}>{title}</Radio>
 						</ControlGroup>
-						<Checkbox checked={true}>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-						</Checkbox>
+						<Checkbox checked={true}>{title}</Checkbox>
 						<Autocomplete
-							label="Find your country"
-							hint="Start typing to see results"
+							label={title}
+							hint={title}
 							loadOptions={async function loadOptions() {
 								return COUNTRY_OPTIONS;
 							}}
 							block
 						/>
 						<Combobox
-							label="Select country"
-							hint="Start typing to see results"
+							label={title}
+							hint={title}
 							options={COUNTRY_OPTIONS}
 							block
 						/>
-						<Switch
-							label="Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque at arcu eleifend varius enim non eleifend nibh"
-							checked={true}
-							onChange={console.log}
-						/>
+						<Switch label={title} checked={true} onChange={console.log} />
 						<ButtonGroup>
 							<Button size="md">Primary</Button>
 							<Button size="md" variant="secondary">
@@ -447,22 +309,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					<Divider />
 
 					<DirectionLink direction="left" href="#">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque
-						at arcu eleifend, varius enim non, eleifend nibh
+						{title}
 					</DirectionLink>
 
-					<CallToActionLink href="#">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque
-						at arcu eleifend, varius enim non, eleifend nibh
-					</CallToActionLink>
+					<CallToActionLink href="#">{title}</CallToActionLink>
 
 					<div>
 						<DropdownMenu>
-							<DropdownMenuButton>
-								Open dropdown menu Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit pellentesque at arcu eleifend, varius enim non,
-								eleifend nibh
-							</DropdownMenuButton>
+							<DropdownMenuButton>{title}</DropdownMenuButton>
 							<DropdownMenuPanel>
 								<DropdownMenuItem>Profile</DropdownMenuItem>
 								<DropdownMenuItem>Messages</DropdownMenuItem>
@@ -473,27 +327,13 @@ function KitchenSink({ background }: KitchenSinkProps) {
 						</DropdownMenu>
 					</div>
 
-					<StatusBadge
-						tone="info"
-						label="Lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque at arcu eleifend, varius enim non, eleifend nibh"
-					/>
+					<StatusBadge tone="info" label={title} />
 
 					<Stack gap={1.5}>
 						<SummaryList>
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
-								<SummaryListItemDescription>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes, nascetur ridiculus mus. Integer
-									scelerisque at ligula tempor eleifend. Vestibulum volutpat,
-									dolor eu rutrum consequat, libero justo lacinia tortor, id
-									varius tortor ante sit amet nisl. Aenean at dui diam. Cras a
-									ligula a ante aliquam lacinia. Ut dolor quam, gravida eu dui
-									quis, molestie lacinia dolor. Fusce lacus mi, pharetra
-									molestie tortor eu, finibus lacinia libero.
-								</SummaryListItemDescription>
+								<SummaryListItemDescription>{body}</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
@@ -518,10 +358,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					</Stack>
 
 					<Table striped>
-						<TableCaption>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean
-							tempus volutpat lacus in accumsan.
-						</TableCaption>
+						<TableCaption>{title}</TableCaption>
 						<TableHead>
 							<TableRow>
 								<TableHeader scope="col">Location</TableHeader>
@@ -532,12 +369,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 						</TableHead>
 						<TableBody>
 							<TableRow>
-								<TableCell>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at arcu eleifend, varius enim non, eleifend nibh.
-									Quisque ac lacinia elit. Orci varius natoque penatibus et
-									magnis dis parturient montes,
-								</TableCell>
+								<TableCell>{title}</TableCell>
 								<TableCell textAlign="right">7,670,700</TableCell>
 							</TableRow>
 							<TableRow>
@@ -606,11 +438,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					</ButtonGroup>
 				}
 			>
-				<Text as="p">
-					This is the Modal Body paragraph, it provides detailed instruction and
-					context for the the modal action. It can also span lines but long form
-					content should be avoided.
-				</Text>
+				<Text as="p">{body}</Text>
 			</Modal>
 		</Fragment>
 	);
@@ -620,12 +448,8 @@ export const WesbsiteLayout = {
 	name: 'Website layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
-				<Text as="p">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
-					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
-					cursus orci vulputate nibh sagittis blandit.
-				</Text>
+			<GlobalAlert onDismiss={console.log} title={title}>
+				<Text as="p">{body}</Text>
 			</GlobalAlert>
 			<SiteLayout>
 				<KitchenSink {...args} />
@@ -638,19 +462,8 @@ export const ApplicationLayout = {
 	name: 'Application layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert
-				onDismiss={console.log}
-				title="Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis"
-			>
-				<Text as="p">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus
-					volutpat lacus in accumsan. Vestibulum rutrum velit non nulla porta
-					aliquet. Aliquam leo lorem, vehicula at auctor sit amet, posuere nec
-					mi. Pellentesque aliquet placerat rhoncus. Sed aliquam malesuada
-					gravida. Aenean ac porta dolor. Cras vestibulum tristique justo eu
-					pretium. Donec quis lorem augue. Donec laoreet mattis nisl sed
-					gravida. Vestibulum id pharetra risus.
-				</Text>
+			<GlobalAlert onDismiss={console.log} title={title}>
+				<Text as="p">{subHeading}</Text>
 			</GlobalAlert>
 			<AppLayout>
 				<KitchenSink {...args} />
