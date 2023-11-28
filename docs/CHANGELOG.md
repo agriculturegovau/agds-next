@@ -1,5 +1,17 @@
 # @ag.ds-next/docs
 
+## 0.6.7
+
+### Patch Changes
+
+- f4928d2ea96: Fix many, simple a11y errors detected by axe such as incorrect landmarks, incorrect heading order and incorrect use of aria attributes.
+- Updated dependencies [548da280cb1]
+- Updated dependencies [53f13b06519]
+- Updated dependencies [1f4d51b7c77]
+- Updated dependencies [158bd561f52]
+- Updated dependencies [49ded9bd0a3]
+  - @ag.ds-next/react@1.17.0
+
 ## 0.6.6
 
 ### Patch Changes
