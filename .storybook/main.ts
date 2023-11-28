@@ -14,6 +14,7 @@ const config: StorybookConfig = {
 	features: {
 		breakingChangesV7: false,
 		storyStoreV7: false,
+		buildStoriesJson: true,
 	},
 	addons: [
 		'@storybook/addon-links',
