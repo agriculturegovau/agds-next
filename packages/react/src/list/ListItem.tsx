@@ -8,8 +8,8 @@ export function ListItem({ children, ...props }: ListItemProps) {
 	return (
 		<Text
 			as="li"
+			display="list-item"
 			css={{
-				display: 'list-item',
 				listStyle: 'unset',
 				'&:not(:first-of-type)': {
 					marginTop: mapSpacing(0.5),

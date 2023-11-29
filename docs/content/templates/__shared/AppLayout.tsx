@@ -1,5 +1,4 @@
 import { PropsWithChildren, Fragment } from 'react';
-import { tokens } from '@ag.ds-next/react/core';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { WebsiteIcon, ExitIcon } from '@ag.ds-next/react/icon';
@@ -64,8 +63,8 @@ export const AppLayout = ({
 			/>
 			<AgDsAppLayout focusMode={focusMode}>
 				<AppLayoutHeader
-					heading="Lorem ipsum dolor sit amet consectetur adipiscing elit at auctor sit amet posuere nec mi pellentesque alique"
-					subLine="Lorem ipsum dolor sit amet consectetur adipiscing elit aenean tempus volutpat lacus in accumsan vestibulum rutrum velit non nulla porta aliquet aliquam leo lorem vehicula at auctor sit amet posuere nec mi pellentesque alique"
+					heading="Service name"
+					subLine="Service description that could be a little longer"
 					logo={<Logo />}
 					href="#"
 				/>

@@ -178,6 +178,7 @@ type LayoutProps = Partial<{
 		| 'table-caption'
 		| 'grid'
 		| 'inline-grid'
+		| 'list-item'
 	>;
 	flexDirection: ResponsiveProp<
 		'row' | 'column' | 'row-reverse' | 'column-reverse'

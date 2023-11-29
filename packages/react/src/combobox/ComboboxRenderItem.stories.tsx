@@ -64,13 +64,7 @@ export const WithTertiaryText: Story = {
 export const WithBeforeElement: Story = {
 	args: {
 		inputValue: '',
-		itemLabel:
-			nameOption.fullName +
-			nameOption.fullName +
-			nameOption.fullName +
-			nameOption.fullName +
-			nameOption.fullName +
-			nameOption.fullName,
+		itemLabel: nameOption.fullName,
 		secondaryText: `Role: ${nameOption.jobTitle}`,
 		tertiaryText: `Status: ${nameOption.status}`,
 		beforeElement: (

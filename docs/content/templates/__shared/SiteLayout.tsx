@@ -8,7 +8,6 @@ import { LinkList } from '@ag.ds-next/react/link-list';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
-import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
 export const MAIN_CONTENT_ATTRS = {
@@ -38,8 +37,8 @@ export const SiteLayout = ({
 			<Stack palette="dark">
 				<Header
 					background="bodyAlt"
-					heading="Lorem ipsum dolor sit amet consectetur adipiscing elit at auctor sit amet posuere nec mi pellentesque alique"
-					subline="Lorem ipsum dolor sit amet consectetur adipiscing elit aenean tempus volutpat lacus in accumsan vestibulum rutrum velit non nulla porta aliquet aliquam leo lorem vehicula at auctor sit amet posuere nec mi pellentesque alique"
+					heading="Service name"
+					subline="Service description that could be a little longer"
 					logo={<Logo />}
 					href="#"
 				/>
