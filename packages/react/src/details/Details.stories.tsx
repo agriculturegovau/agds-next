@@ -32,7 +32,7 @@ export const WithIcon: Story = {
 export const WithLongLabel: Story = {
 	args: {
 		label:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu eleifend, varius enim non, eleifend nibh. Quisque ac lacinia elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer',
+			'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
 		children: (
 			<Text>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at

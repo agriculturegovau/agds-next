@@ -289,3 +289,18 @@ export const EdgeToEdgeImage: Story = {
 		</Accordion>
 	),
 };
+
+export const LongTitle: Story = {
+	render: () => (
+		<Accordion>
+			<AccordionItem title="Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique">
+				<AccordionItemContent>
+					<Text as="p">
+						Vestibulum vulputate laoreet auctor in hac habitasse platea dictumst
+						quisque et neque a enim finibus sodales sit amet ut dolor.
+					</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	),
+};

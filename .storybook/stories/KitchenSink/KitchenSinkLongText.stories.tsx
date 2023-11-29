@@ -79,12 +79,12 @@ import { Drawer } from '@ag.ds-next/react/drawer';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Modal } from '@ag.ds-next/react/modal';
 import { useTernaryState } from '@ag.ds-next/react/core';
-import { COUNTRY_OPTIONS } from '../../docs/components/designSystemComponents';
-import { SiteLayout } from '../../docs/content/templates/__shared/SiteLayout';
-import { AppLayout } from '../../docs/content/templates/__shared/AppLayout';
+import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
+import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
+import { AppLayout } from '../../../docs/content/templates/__shared/AppLayout';
 
 const meta: Meta = {
-	title: 'Testing/Kitchen sink max-width',
+	title: 'Testing/Kitchen sink/Long text',
 	parameters: {
 		layout: 'fullscreen',
 	},

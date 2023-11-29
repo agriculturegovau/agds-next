@@ -85,6 +85,13 @@ LegendAsPageHeading.args = {
 	),
 };
 
+export const LongLabels = Template.bind({});
+LongLabels.args = {
+	legend:
+		'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
+	hint: 'Aliquam auctor erat ante id suscipit neque ornare eu nunc mi justo rhoncus at lacinia mollis consectetur nec nunc donec viverra ex at blandit viverra',
+};
+
 export const Modular = () => (
 	<FieldsetContainer>
 		<Stack gap={0.75}>
