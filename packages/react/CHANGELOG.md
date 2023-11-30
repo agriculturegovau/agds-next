@@ -1,5 +1,25 @@
 # @ag.ds-next/react
 
+## 1.17.0
+
+### Minor Changes
+
+- 548da280cb1: - breadcrumbs: Update default `aria-label` to `'Breadcrumbs'`.
+  - inpage-nav: Update default `aria-label` to `'In page'`.
+  - pagination: Update default `aria-label` to `'Pagination'`.
+  - search-box: Update default `aria-label` to `'Sitewide'`.
+  - skip-link: Update default `aria-label` to `'Skip links'`.
+  - sub-nav: Update default `aria-label` to `'Content'`.
+  - main-nav `MainNavList`: Add default `aria-label` of `'Main'` and update 2nd use to `'Supplementary'`.
+  - side-nav. Render as `div` instead of `aside'`.
+- 53f13b06519: combobox: Added support for `onBlur` and `onFocus` props to all Combobox component variants (`Combobox`, `ComboboxAsync`, `ComboboxMulti`, `ComboboxAsyncMulti`)
+- 49ded9bd0a3: drawer: Added new `width` prop which can be either Medium `md` (512px) or `lg` (720px).
+
+### Patch Changes
+
+- 1f4d51b7c77: app-layout: Improved accessibility by replacing the underlying HTML sidebar element from an `aside` to a `div`.
+- 158bd561f52: progress-indicator: Tweaked padding and spacing values of list item elements to more closely match designs
+
 ## 1.16.0
 
 ### Minor Changes
