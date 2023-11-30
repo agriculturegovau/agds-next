@@ -1,0 +1,67 @@
+---
+date: 30th November 2023
+title: AgDS Beta v1.17.0 release
+description: Small accessibility improvements, plus various minor bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Improved accessibility by replacing the underlying HTML sidebar element from an `aside` to a `div`
+
+### [Breadcrumbs](/components/breadcrumbs)
+
+- Update default `aria-label` to `'Breadcrumbs'`
+
+### [Combobox](/components/combobox)
+
+- Added support for `onBlur` and `onFocus` props to all Combobox component variants (`Combobox`, `ComboboxAsync`, `ComboboxMulti`, `ComboboxAsyncMulti`)
+
+### [Drawer](/components/progress-indicator)
+
+- Added new `width` prop which can be either Medium `md` (512px) or `lg` (720px)
+
+### [Inpage nav](/components/inpage-nav)
+
+- Update default `aria-label` to `'In page'`
+
+### [Main nav](/components/main-nav)
+
+- Add default `aria-label` of `'Main'` and update 2nd use to `'Supplementary'`
+
+### [Pagination](/components/pagination)
+
+- Update default `aria-label` to `'Pagination'`
+
+### [Progress indicator](/components/progress-indicator)
+
+- Tweaked padding and spacing values of list item elements to more closely match designs
+
+### [Search box](/components/search-box)
+
+- Update default `aria-label` to `'Sitewide'`
+
+### [Side nav](/components/side-nav)
+
+- Improved accessibility by replacing the underlying HTML element from `aside` to `div`
+
+### [Skip link](/components/skip-link)
+
+- Update default `aria-label` to `'Skip links'`
+
+### [Sub nav](/components/sub-nav)
+
+- Update default `aria-label` to `'Content'`
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.17.0"
+```
+
+## Full Changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/steelthreads/agds-next/pull/1492) for this release.
+
+This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to main, this PR will be updated.
