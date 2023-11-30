@@ -71,7 +71,7 @@ export function PageTemplate({
 								},
 								{
 									label: 'Starter kit',
-									href: 'https://github.com/steelthreads/agds-starter-kit',
+									href: 'https://github.com/agriculture-gov-au/agds-starter-kit',
 								},
 							]}
 							horizontal

@@ -18,7 +18,7 @@ const NAV_ITEMS = {
 	secondary: [
 		{
 			label: 'GitHub',
-			href: 'https://github.com/steelthreads/agds-next',
+			href: 'https://github.com/agriculture-gov-au/agds-next',
 			endElement: <GithubIcon />,
 		},
 	],
