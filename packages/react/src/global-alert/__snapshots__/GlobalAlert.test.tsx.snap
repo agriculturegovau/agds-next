@@ -42,10 +42,10 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-1vb6vic-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-5mksp7-boxStyles"
           >
             Alert description.
           </p>
@@ -137,10 +137,10 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-1vb6vic-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-5mksp7-boxStyles"
           >
             Alert description.
           </p>
@@ -193,10 +193,10 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-1vb6vic-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-5mksp7-boxStyles"
           >
             Alert description.
           </p>

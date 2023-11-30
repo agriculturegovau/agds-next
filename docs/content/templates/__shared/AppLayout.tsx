@@ -1,5 +1,4 @@
 import { PropsWithChildren, Fragment } from 'react';
-import { tokens } from '@ag.ds-next/react/core';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 import { WebsiteIcon, ExitIcon } from '@ag.ds-next/react/icon';
@@ -82,13 +81,13 @@ export const AppLayout = ({
 							<LinkList links={footerLinks} horizontal />
 						</nav>
 						<AppLayoutFooterDivider />
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							We acknowledge the traditional owners of country throughout
 							Australia and recognise their continuing connection to land,
 							waters and culture. We pay our respects to their Elders past,
 							present and emerging.
 						</Text>
-						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+						<Text fontSize="xs">
 							&copy; {year} Department of Agriculture, Fisheries and Forestry
 						</Text>
 					</AppLayoutFooter>

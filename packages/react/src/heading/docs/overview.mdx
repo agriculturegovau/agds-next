@@ -76,3 +76,13 @@ If you wish to use a pair a different heading size with a different HTML element
 	</Heading>
 </Stack>
 ```
+
+## Max width
+
+All `Heading` components have a default max width of` 42em`, aligning with the [bodyText max width token](/foundations/tokens/max-width).
+
+To opt out of this behaviour, set the `maxWidth` prop to `"none"`
+
+```jsx live
+<H3 maxWidth="none">Example heading with no maxiumum width.</H3>
+```

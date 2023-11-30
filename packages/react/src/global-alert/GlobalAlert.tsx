@@ -50,7 +50,6 @@ export function GlobalAlert({
 						<Heading
 							as="h2"
 							type="h3"
-							maxWidth={tokens.maxWidth.bodyText}
 							css={{
 								...(addTitleMargin && {
 									marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
@@ -62,7 +61,6 @@ export function GlobalAlert({
 						</Heading>
 					) : null}
 					<Box
-						maxWidth={tokens.maxWidth.bodyText}
 						css={{
 							...(addContentMargin && {
 								marginRight: '2.5rem', // (1.5rem icon + 1rem gap)

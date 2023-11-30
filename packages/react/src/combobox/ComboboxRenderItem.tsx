@@ -67,6 +67,7 @@ function renderItemLabel(itemLabel: string, inputValue: string) {
 				<Text
 					key={index}
 					as="mark"
+					display="inline"
 					color="inherit"
 					fontWeight="bold"
 					css={{ background: 'none' }}
@@ -76,7 +77,7 @@ function renderItemLabel(itemLabel: string, inputValue: string) {
 			);
 		}
 		return (
-			<Text key={index} as="span" color="inherit">
+			<Text key={index} as="span" display="inline" color="inherit">
 				{part}
 			</Text>
 		);

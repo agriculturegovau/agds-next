@@ -1,8 +1,9 @@
 import { forwardRef, PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { mapSpacing } from '../core';
+import { mapSpacing, tokens } from '../core';
 import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
+import { Text } from '../text';
 
 export type DetailsProps = PropsWithChildren<{
 	/** If the Details component is placed on a page with `bodyAlt` background, set this prop to `true`. */
@@ -36,7 +37,6 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					link
 					focus
 					alignItems="center"
-					fontWeight="bold"
 					paddingY={0.5}
 					rounded
 				>
@@ -44,13 +44,19 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 						<InfoIcon
 							weight="regular"
 							size="md"
-							css={{ marginRight: mapSpacing(0.5) }}
+							css={{ marginRight: mapSpacing(0.5), flexShrink: 0 }}
 						/>
 					)}
-					{label}
+					<Text
+						color="inherit"
+						fontWeight="bold"
+						maxWidth={tokens.maxWidth.bodyText}
+					>
+						{label}
+					</Text>
 					<ChevronDownIcon
 						weight="bold"
-						css={{ marginLeft: mapSpacing(0.25) }}
+						css={{ marginLeft: mapSpacing(0.25), flexShrink: 0 }}
 					/>
 				</Flex>
 				<Box

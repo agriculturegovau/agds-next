@@ -25,7 +25,10 @@ type AccordionTemplateProps = {
 const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
 	<Box padding={1.5} background={background}>
 		<Accordion>
-			<AccordionItem title="Accordion title" background={background}>
+			<AccordionItem
+				title="Accordion title with really long label that spans multiple lines accordion title with really long label that spans multiple lines"
+				background={background}
+			>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -280,6 +283,21 @@ export const EdgeToEdgeImage: Story = {
 						In this example, we remove the default padding from the
 						AccordionItem, in order to achieve the edge-to-edge image above.
 						This Text is wrapped in the AccordionItemContent component.
+					</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	),
+};
+
+export const LongTitle: Story = {
+	render: () => (
+		<Accordion>
+			<AccordionItem title="Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique">
+				<AccordionItemContent>
+					<Text as="p">
+						Vestibulum vulputate laoreet auctor in hac habitasse platea dictumst
+						quisque et neque a enim finibus sodales sit amet ut dolor.
 					</Text>
 				</AccordionItemContent>
 			</AccordionItem>

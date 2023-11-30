@@ -3,12 +3,11 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { tokens } from '@ag.ds-next/react/core';
 
 export const ThirdPartyOutage = () => {
 	return (
 		<PageContent>
-			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
+			<Stack gap={1.5}>
 				<Prose>
 					<h1>There&apos;s a problem with the Export Service</h1>
 					<p>

@@ -8,6 +8,7 @@ export function ListItem({ children, ...props }: ListItemProps) {
 	return (
 		<Text
 			as="li"
+			display="list-item"
 			css={{
 				listStyle: 'unset',
 				'&:not(:first-of-type)': {

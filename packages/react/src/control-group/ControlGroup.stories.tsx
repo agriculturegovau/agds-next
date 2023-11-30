@@ -87,6 +87,18 @@ export const CheckboxGroupInvalid: Story = {
 	render: CheckboxTemplate,
 };
 
+export const CheckboxGroupLongLabels: Story = {
+	args: {
+		label:
+			'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
+		hint: 'Aliquam auctor erat ante id suscipit neque ornare eu nunc mi justo rhoncus at lacinia mollis consectetur nec nunc donec viverra ex at blandit viverra',
+		message:
+			'Vestibulum vulputate laoreet auctor in hac habitasse platea dictumst quisque et neque a enim finibus sodales sit amet ut dolor',
+		invalid: true,
+	},
+	render: CheckboxTemplate,
+};
+
 function RadioTemplate({
 	label = 'Preferred contact method',
 	block = true,
@@ -150,6 +162,18 @@ export const RadioGroupInvalid: Story = {
 	args: {
 		message: 'Select a preferred contact method',
 		required: true,
+		invalid: true,
+	},
+	render: RadioTemplate,
+};
+
+export const RadioGroupLongLabels: Story = {
+	args: {
+		label:
+			'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
+		hint: 'Aliquam auctor erat ante id suscipit neque ornare eu nunc mi justo rhoncus at lacinia mollis consectetur nec nunc donec viverra ex at blandit viverra',
+		message:
+			'Vestibulum vulputate laoreet auctor in hac habitasse platea dictumst quisque et neque a enim finibus sodales sit amet ut dolor',
 		invalid: true,
 	},
 	render: RadioTemplate,

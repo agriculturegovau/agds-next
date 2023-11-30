@@ -65,6 +65,25 @@ export const Basic: Story = {
 	},
 };
 
+export const LongLabel: Story = {
+	render: (args) => (
+		<Stack gap={3}>
+			<InpageNav {...args} />
+			<ExampleContent />
+		</Stack>
+	),
+	args: {
+		title: 'On this page',
+		links: [
+			{
+				href: '#',
+				label:
+					'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
+			},
+		],
+	},
+};
+
 export const Modular = () => (
 	<Stack gap={3}>
 		<InpageNavContainer aria-label="In page">

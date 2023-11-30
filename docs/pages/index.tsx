@@ -1,4 +1,3 @@
-import { tokens } from '@ag.ds-next/react/core';
 import { Columns } from '@ag.ds-next/react/columns';
 import { SectionContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -77,7 +76,7 @@ export default function Homepage() {
 								/>
 							</Columns>
 						</Stack>
-						<Text as="p" maxWidth={tokens.maxWidth.bodyText}>
+						<Text as="p">
 							<TextLink href="/about">
 								The Agriculture Design System (AgDS)
 							</TextLink>{' '}

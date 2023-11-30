@@ -8,7 +8,6 @@ import { LinkList } from '@ag.ds-next/react/link-list';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
-import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
 
 export const MAIN_CONTENT_ATTRS = {
@@ -77,13 +76,13 @@ export const SiteLayout = ({
 					</nav>
 					<FooterDivider />
 
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						We acknowledge the traditional owners of country throughout
 						Australia and recognise their continuing connection to land, waters
 						and culture. We pay our respects to their Elders past, present and
 						emerging.
 					</Text>
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						&copy; {new Date().getFullYear()} Department of Agriculture,
 						Fisheries and Forestry
 					</Text>

@@ -52,3 +52,13 @@ There are two font weights available, `normal` is the default.
 	</Text>
 </Stack>
 ```
+
+## Max width
+
+All `Text` components have a default max width of` 42em`, aligning with the [bodyText max width token](/foundations/tokens/max-width).
+
+To opt out of this behaviour, set the `maxWidth` prop to `"none"`
+
+```jsx live
+<Text maxWidth="none">Example text with no maxiumum width.</Text>
+```

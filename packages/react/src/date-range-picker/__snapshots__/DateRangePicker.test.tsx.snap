@@ -10,15 +10,15 @@ exports[`DateRangePicker renders correctly 1`] = `
       class="css-1lbpzz2-DateRangePicker"
     >
       <legend
-        class="css-1r0k8hi-boxStyles-DateRangePicker"
+        class="css-fh0jv1-boxStyles-DateRangePicker"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-cnptgw-boxStyles"
         >
           Date range
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-1ttfsk5-boxStyles"
         >
            
           (optional)
@@ -34,16 +34,16 @@ exports[`DateRangePicker renders correctly 1`] = `
             class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-shvtw2-boxStyles"
               for="field-:r1:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-cnptgw-boxStyles"
               >
                 Start date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-1ttfsk5-boxStyles"
               >
                  
                 (dd/mm/yyyy) (optional)
@@ -109,16 +109,16 @@ exports[`DateRangePicker renders correctly 1`] = `
             class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-shvtw2-boxStyles"
               for="field-:r2:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-cnptgw-boxStyles"
               >
                 End date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-1ttfsk5-boxStyles"
               >
                  
                 (dd/mm/yyyy) (optional)

@@ -21,3 +21,11 @@ export const Basic: Story = {
 		label: 'Show establishments',
 	},
 };
+
+export const LongLabel: Story = {
+	args: {
+		size: 'md',
+		label:
+			'Proin posuere dui arcu id facilisis augue dignissim nec cras eu libero volutpat pellentesque metus in risus at venenatis facilisis pellentesque alique',
+	},
+};

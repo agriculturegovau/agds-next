@@ -2,7 +2,6 @@ import { PropsWithChildren, useMemo } from 'react';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
-import { tokens } from '@ag.ds-next/react/core';
 import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Header } from '@ag.ds-next/react/header';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
@@ -78,13 +77,13 @@ export function PageTemplate({
 						/>
 					</nav>
 					<FooterDivider />
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						We acknowledge the traditional owners of country throughout
 						Australia and recognise their continuing connection to land, waters
 						and culture. We pay our respects to their Elders past, present and
 						emerging.
 					</Text>
-					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					<Text fontSize="xs">
 						&copy; {year} Department of Agriculture, Fisheries and Forestry
 					</Text>
 				</Footer>

@@ -1,5 +1,6 @@
 import { ElementType, PropsWithChildren, useMemo } from 'react';
 import { Box } from '../box';
+import { tokens } from '../core';
 import { Text } from '../text';
 
 export type FieldLabelProps = PropsWithChildren<{
@@ -37,12 +38,18 @@ export const FieldLabel = ({
 			.join(' ');
 	}, [required, secondaryLabelProp, hideOptionalLabel]);
 	return (
-		<Box as={as} id={id} htmlFor={htmlFor} className={className}>
-			<Text as="span" fontWeight="bold">
+		<Box
+			as={as}
+			id={id}
+			htmlFor={htmlFor}
+			className={className}
+			maxWidth={tokens.maxWidth.bodyText}
+		>
+			<Text display="inline" fontWeight="bold">
 				{children}
 			</Text>
 			{secondaryLabel ? (
-				<Text as="span" color="muted">
+				<Text display="inline" color="muted">
 					{' '}
 					{secondaryLabel}
 				</Text>

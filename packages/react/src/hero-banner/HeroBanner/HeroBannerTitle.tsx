@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Stack } from '../../stack';
-import { tokens } from '../../core';
 import { Heading } from '../../heading';
 import { Text } from '../../text';
 
@@ -21,7 +20,7 @@ export const HeroBannerTitle = ({ children }: HeroBannerTitleProps) => (
 export type HeroBannerSubTitleProps = { children: ReactNode };
 
 export const HeroBannerSubtitle = ({ children }: HeroBannerSubTitleProps) => (
-	<Text as="p" fontSize="md" maxWidth={tokens.maxWidth.bodyText}>
+	<Text as="p" fontSize="md">
 		{children}
 	</Text>
 );

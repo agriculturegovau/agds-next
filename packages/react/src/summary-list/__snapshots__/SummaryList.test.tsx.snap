@@ -14,9 +14,13 @@ exports[`SummaryList renders correctly 1`] = `
         First name
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-yup5oz-boxStyles"
       >
-        Will
+        <span
+          class="css-5mksp7-boxStyles"
+        >
+          Will
+        </span>
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"
@@ -38,9 +42,13 @@ exports[`SummaryList renders correctly 1`] = `
         Last name
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-yup5oz-boxStyles"
       >
-        Power
+        <span
+          class="css-5mksp7-boxStyles"
+        >
+          Power
+        </span>
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"
@@ -62,11 +70,15 @@ exports[`SummaryList renders correctly 1`] = `
         Contact information
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-yup5oz-boxStyles"
       >
-        +61 9912 3456
-        <br />
-        will.power@example.com
+        <span
+          class="css-5mksp7-boxStyles"
+        >
+          +61 9912 3456
+          <br />
+          will.power@example.com
+        </span>
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"
@@ -88,9 +100,13 @@ exports[`SummaryList renders correctly 1`] = `
         Date of birth
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-yup5oz-boxStyles"
       >
-        09/06/1995
+        <span
+          class="css-5mksp7-boxStyles"
+        >
+          09/06/1995
+        </span>
       </dd>
       <dd
         class="css-1jhrbpg-boxStyles"

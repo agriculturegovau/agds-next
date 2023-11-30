@@ -1,7 +1,9 @@
-import { forwardRefWithAs } from '../core';
+import { forwardRefWithAs, tokens } from '../core';
 import { Box, BoxProps } from '../box';
 
 export type TextProps = BoxProps;
+
+const defaultMaxWidth = tokens.maxWidth.bodyText;
 
 export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 	{
@@ -11,6 +13,8 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 		fontSize = 'sm',
 		fontWeight = 'normal',
 		lineHeight = 'default',
+		display = 'inline-block',
+		maxWidth = defaultMaxWidth,
 		...props
 	},
 	ref
@@ -19,15 +23,13 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 		<Box
 			ref={ref}
 			as={as}
-			css={{
-				marginTop: 0,
-				marginBottom: 0,
-			}}
 			color={color}
 			fontFamily={fontFamily}
 			fontSize={fontSize}
 			fontWeight={fontWeight}
 			lineHeight={lineHeight}
+			maxWidth={maxWidth}
+			display={display}
 			{...props}
 		/>
 	);

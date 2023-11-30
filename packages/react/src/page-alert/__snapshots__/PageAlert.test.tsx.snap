@@ -36,7 +36,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-13b6wcx-boxStyles-PageAlertTitle"
         >
           There is a problem
         </h3>
@@ -44,7 +44,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
           class="css-1qfj7jm-UnorderedList"
         >
           <li
-            class="css-tdgyc3-boxStyles-Text-ListItem"
+            class="css-luie2w-boxStyles-ListItem"
           >
             <a
               class="css-ma0bjl-TextLink"
@@ -96,12 +96,12 @@ exports[`PageAlert tone: info renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-13b6wcx-boxStyles-PageAlertTitle"
         >
           Notice
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-5mksp7-boxStyles"
         >
           All vacancies close on the advertised closing date unless otherwise specified.
         </p>
@@ -147,12 +147,12 @@ exports[`PageAlert tone: success renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-13b6wcx-boxStyles-PageAlertTitle"
         >
           Submission successful
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-5mksp7-boxStyles"
         >
           Your application has been successfully submitted.
         </p>
@@ -198,12 +198,12 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-13b6wcx-boxStyles-PageAlertTitle"
         >
           Browser out of date
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-5mksp7-boxStyles"
         >
           Your web browser is out of date.
         </p>
@@ -249,12 +249,12 @@ exports[`PageAlert with a close button renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-1a10dg0-boxStyles-Text-PageAlertTitle"
+          class="css-1j2siud-boxStyles-PageAlertTitle"
         >
           PageAlert with close button
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-5mksp7-boxStyles"
         >
           This is a Page alert component.
         </p>

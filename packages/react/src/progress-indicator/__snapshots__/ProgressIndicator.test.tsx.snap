@@ -9,12 +9,12 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1vc7t4r-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-13gyjuh-boxStyles"
       >
         1 of 3 steps completed
       </span>
@@ -102,13 +102,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Introduction
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   Completed
                 </span>
@@ -176,13 +176,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Business Contacts
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   In progress
                 </span>
@@ -237,13 +237,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Case Studies
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   Not started
                 </span>
@@ -266,12 +266,12 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1vc7t4r-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-13gyjuh-boxStyles"
       >
         1 of 3 steps completed
       </span>
@@ -359,13 +359,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Introduction
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   Completed
                 </span>
@@ -433,13 +433,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Business Contacts
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   In progress
                 </span>
@@ -494,13 +494,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 data-agds-progress-indicator-item-text-container=""
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-5mksp7-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Case Studies
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-140546v-boxStyles-ProgressIndicatorItem"
                 >
                   Not started
                 </span>

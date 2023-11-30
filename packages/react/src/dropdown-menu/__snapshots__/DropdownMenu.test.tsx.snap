@@ -74,7 +74,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Profile
         </span>
@@ -108,7 +108,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Messages
         </span>
@@ -118,7 +118,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <span
           aria-hidden="true"
-          class="css-uouzcn-boxStyles-Text-NotificationBadge"
+          class="css-ipadq6-boxStyles-NotificationBadge"
         >
           99+
         </span>
@@ -163,7 +163,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Account settings
         </span>
@@ -231,7 +231,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           About
         </span>
@@ -251,7 +251,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Contact
         </span>
@@ -313,7 +313,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       role="group"
     >
       <span
-        class="css-1xlltnd-boxStyles-Text"
+        class="css-1h6q8m7-boxStyles"
         id="dropdown-menu-:r1i:-group-:r1j:"
       >
         Businesses
@@ -328,12 +328,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-goz1ed-boxStyles-Text"
+            class="css-1l02rat-boxStyles"
           >
             Antfix
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-13gyjuh-boxStyles"
           >
             Sydney
           </span>
@@ -352,12 +352,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-433uqb-boxStyles-Text"
+            class="css-e58jhf-boxStyles"
           >
             Produce Fresh
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-13gyjuh-boxStyles"
           >
             Brisbane
           </span>
@@ -376,12 +376,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-goz1ed-boxStyles-Text"
+            class="css-1l02rat-boxStyles"
           >
             Organic Co
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-13gyjuh-boxStyles"
           >
             Canberra
           </span>
@@ -449,7 +449,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Item 1
         </span>
@@ -468,7 +468,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Item 2
         </span>
@@ -487,7 +487,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1ipa084-boxStyles"
         >
           Item 3
         </span>

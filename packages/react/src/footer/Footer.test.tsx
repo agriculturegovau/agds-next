@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { tokens } from '../core';
 import { Text } from '../text';
 import { LinkList } from '../link-list';
 import { render, cleanup } from '../../../../test-utils';
@@ -27,12 +26,12 @@ function renderFooter(props?: Partial<FooterProps>) {
 				/>
 			</nav>
 			<FooterDivider />
-			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+			<Text fontSize="xs">
 				We acknowledge the traditional owners of country throughout Australia
 				and recognise their continuing connection to land, waters and culture.
 				We pay our respects to their Elders past, present and emerging.
 			</Text>
-			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+			<Text fontSize="xs">
 				&copy; 2022 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer>
