@@ -41,11 +41,7 @@ export function GlobalAlert({
 				flexShrink={0}
 				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
 			>
-				<Icon
-					aria-hidden="false"
-					aria-label={ariaLabel}
-					color="inherit"
-				/>
+				<Icon aria-hidden="false" aria-label={ariaLabel} color="inherit" />
 			</Flex>
 			<Flex
 				flexGrow={1}
