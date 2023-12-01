@@ -12,6 +12,7 @@ export function GlobalAlertCloseButton({
 }: GlobalAlertCloseButtonProps) {
 	return (
 		<Button
+			aria-label="Close"
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"
