@@ -61,7 +61,7 @@ export default function PackagesCode({
 					<p>
 						You can view the full source code for this package on{' '}
 						<a
-							href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
+							href={`https://github.com/agriculturegovau/agds-next/tree/main/packages/react/src/${pkg.slug}`}
 						>
 							Github
 						</a>

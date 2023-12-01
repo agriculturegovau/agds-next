@@ -2,7 +2,7 @@ import { GlobalAlert } from '@ag.ds-next/react/global-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 
-const ORG = 'steelthreads';
+const ORG = 'agriculturegovau';
 const REPO = 'agds-next';
 
 export function PullRequestPreviewBanner({

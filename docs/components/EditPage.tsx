@@ -1,6 +1,6 @@
 import { TextLink } from '@ag.ds-next/react/text-link';
 
-const ORG = 'steelthreads';
+const ORG = 'agriculturegovau';
 const REPO = 'agds-next';
 const BRANCH = 'main';
 

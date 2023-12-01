@@ -72,7 +72,7 @@ export function PkgLayout({
 
 								<ButtonLink
 									variant="text"
-									href={`https://github.com/steelthreads/agds-next/tree/main/packages/react/src/${pkg.slug}`}
+									href={`https://github.com/agriculturegovau/agds-next/tree/main/packages/react/src/${pkg.slug}`}
 									iconBefore={GithubLogo}
 								>
 									View in Github

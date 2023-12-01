@@ -23,7 +23,7 @@ const footerLinks = [
 	},
 	{
 		label: 'Starter kit',
-		href: 'https://github.com/steelthreads/agds-starter-kit',
+		href: 'https://github.com/agriculturegovau/agds-starter-kit',
 	},
 ];
 
