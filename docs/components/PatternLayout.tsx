@@ -67,7 +67,7 @@ export function PatternLayout({
 						{pattern.githubTemplatePath && (
 							<ButtonLink
 								variant="text"
-								href={`https://github.com/agriculture-gov-au/agds-next/blob/main${pattern.githubTemplatePath}`}
+								href={`https://github.com/agriculturegovau/agds-next/blob/main${pattern.githubTemplatePath}`}
 								iconBefore={GithubLogo}
 							>
 								View in Github

@@ -78,7 +78,7 @@ export function TemplateLayout({
 						{template.githubTemplatePath && (
 							<ButtonLink
 								variant="text"
-								href={`https://github.com/agriculture-gov-au/agds-next/blob/main${template.githubTemplatePath}`}
+								href={`https://github.com/agriculturegovau/agds-next/blob/main${template.githubTemplatePath}`}
 								iconBefore={GithubLogo}
 							>
 								View in Github

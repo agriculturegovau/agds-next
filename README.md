@@ -6,7 +6,7 @@ The Agriculture Design System (AgDS) is a new design system for the Department o
 
 ## Before you clone this repository…
 
-If you are starting a new project, you should clone the [starter kit](https://github.com/agriculture-gov-au/agds-starter-kit).
+If you are starting a new project, you should clone the [starter kit](https://github.com/agriculturegovau/agds-starter-kit).
 
 If you are looking to implement AgDS components, you need to [install packages from NPM](https://design-system.agriculture.gov.au/guides/getting-started#if-youre-implementing-components-in-an-existing-project).
 
@@ -40,7 +40,7 @@ For development run one or more of the following commands:
 
 ### Website
 
-Deployment of the website is handled by [github actions](https://github.com/agriculture-gov-au/agds-next/actions/workflows/deploy-docs.yml). The site is deployed automatically anytime changes are merged to the `main` branch.
+Deployment of the website is handled by [github actions](https://github.com/agriculturegovau/agds-next/actions/workflows/deploy-docs.yml). The site is deployed automatically anytime changes are merged to the `main` branch.
 
 You can run the builds locally for testing. The order of commands here is important. Because storybook, playroom, the example site and example form site is being bundled into the docs site it must be built first.
 

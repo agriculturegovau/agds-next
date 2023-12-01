@@ -73,7 +73,7 @@ export default function Homepage() {
 								<PictogramCard
 									title="Starter kit"
 									pictogram="starter"
-									href="https://github.com/agriculture-gov-au/agds-starter-kit"
+									href="https://github.com/agriculturegovau/agds-starter-kit"
 								/>
 							</Columns>
 						</Stack>

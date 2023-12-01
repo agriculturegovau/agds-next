@@ -26,7 +26,7 @@ const meta: Meta<typeof AppLayoutFooter> = {
 							},
 							{
 								label: 'Starter kit',
-								href: 'https://github.com/agriculture-gov-au/agds-starter-kit',
+								href: 'https://github.com/agriculturegovau/agds-starter-kit',
 							},
 						]}
 						horizontal
