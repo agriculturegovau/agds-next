@@ -43,7 +43,7 @@ function LoadingState() {
 					<Card as="li" key={i} shadow>
 						<CardInner>
 							<Stack gap={1}>
-								<SkeletonHeading type="h3" width="50%" />
+								<SkeletonHeading type="h2" width="50%" />
 								<SkeletonText fontSize="sm" width="25%" />
 								<VisuallyHidden>Loading</VisuallyHidden>
 							</Stack>
@@ -106,7 +106,7 @@ function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 						<Card as="li" key={item.id} shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<Heading type="h3">
+									<Heading as="h2" type="h3">
 										<CardLink href="#">{item.name}</CardLink>
 									</Heading>
 									<Text as="p">

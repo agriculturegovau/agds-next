@@ -24,7 +24,6 @@ export const Example = () => {
 		<Flex flexDirection="column" as="ul">
 			<Flex
 				as="li"
-				aria-selected="false"
 				borderColor="muted"
 				borderY
 				css={{
