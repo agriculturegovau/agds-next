@@ -39,7 +39,7 @@ exports[`SectionAlert which is dismissable renders correctly 1`] = `
       </div>
     </div>
     <button
-      aria-label="Close"
+      aria-label="Dismiss"
       class="css-1myr4hy-BaseButton-SectionAlertDismissButton"
       type="button"
     >
