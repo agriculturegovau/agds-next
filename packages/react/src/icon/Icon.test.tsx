@@ -41,7 +41,7 @@ describe('Icon', () => {
 				);
 				const el = container.querySelector('svg');
 				expect(el).toHaveAttribute('aria-hidden', 'false');
-				expect(el).toHaveAttribute('focusable', 'true');
+				expect(el).toHaveAttribute('focusable', 'false');
 				expect(el).toHaveAttribute('aria-label', 'Hello world');
 			});
 		});

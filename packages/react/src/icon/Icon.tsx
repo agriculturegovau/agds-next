@@ -64,8 +64,6 @@ export const createIcon = (children: ReactNode, name: string) => {
 			size,
 			(s) => iconWeights[weight][s]
 		);
-		// Focusable is the opposite of `aria-hidden`
-		const focusable = [true, 'true'].includes(ariaHidden) ? 'false' : 'true';
 		return (
 			<svg
 				// Note the width and height attribute is a fallback for older browsers.
@@ -88,7 +86,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 				role="img"
 				style={style}
 				className={className}
-				focusable={focusable}
+				focusable="false"
 				aria-hidden={ariaHidden}
 				aria-label={ariaLabel}
 			>
