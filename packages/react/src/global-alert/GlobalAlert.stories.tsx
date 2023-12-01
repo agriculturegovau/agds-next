@@ -27,6 +27,20 @@ export const Basic: Story = {
 	},
 };
 
+export const Information: Story = {
+	args: {
+		onDismiss: undefined,
+		children: (
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit.
+			</Text>
+		),
+		tone: 'info',
+	},
+};
+
 export const WithDismiss: Story = {
 	args: {
 		onDismiss: console.log,

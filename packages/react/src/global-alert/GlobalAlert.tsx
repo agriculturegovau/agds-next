@@ -26,9 +26,14 @@ export function GlobalAlert({
 
 	const addTitleMargin = Boolean(onDismiss);
 	const addContentMargin = Boolean(onDismiss && !title);
+	const ariaLabel = tone === 'warning' ? 'Warning' : 'Information';
 
 	return (
-		<Flex as="section" aria-label={title} css={{ backgroundColor: bg }}>
+		<Flex
+			as="section"
+			aria-label={title || ariaLabel}
+			css={{ backgroundColor: bg }}
+		>
 			<Flex
 				alignItems="center"
 				justifyContent="center"
@@ -36,7 +41,11 @@ export function GlobalAlert({
 				flexShrink={0}
 				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
 			>
-				<Icon aria-hidden="false" aria-label="Warning" color="inherit" />
+				<Icon
+					aria-hidden="false"
+					aria-label={ariaLabel}
+					color="inherit"
+				/>
 			</Flex>
 			<Flex
 				flexGrow={1}
