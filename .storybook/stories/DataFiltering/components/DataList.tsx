@@ -8,6 +8,7 @@ import { HelpIcon } from '@ag.ds-next/react/icon';
 import { Button } from '@ag.ds-next/react/button';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
 import { useSortAndFilterContext } from '../lib/contexts';
+import { tableId } from './DataTable';
 
 type DataListProps = {
 	loading: boolean;
@@ -20,7 +21,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 
 	if (loading) {
 		return (
-			<Stack as="ul" gap={1}>
+			<Stack as="ul" gap={1} id={tableId}>
 				{Array.from({ length: 10 }, (_, i) => i).map((i) => (
 					<DataListItemSkeleton key={i} />
 				))}
@@ -30,7 +31,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 
 	if (!data.length)
 		return (
-			<Stack gap={2} alignItems="flex-start">
+			<Stack gap={2} alignItems="flex-start" id={tableId}>
 				<Stack gap={1}>
 					<HelpIcon size="lg" color="muted" />
 					<Heading type="h2" fontSize="lg">
@@ -43,7 +44,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 		);
 
 	return (
-		<Stack as="ul" gap={1}>
+		<Stack as="ul" gap={1} id={tableId}>
 			{data.map((item) => (
 				<DataListItem key={item.id} data={item} />
 			))}

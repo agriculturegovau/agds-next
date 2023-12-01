@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FileUploadExistingFile } from './FileUploadExistingFile';
 
 const meta: Meta = {
@@ -7,6 +8,13 @@ const meta: Meta = {
 	args: {
 		hideThumbnails: false,
 	},
+	decorators: [
+		(Story) => (
+			<Stack as="ul">
+				<Story />
+			</Stack>
+		),
+	],
 };
 
 export default meta;

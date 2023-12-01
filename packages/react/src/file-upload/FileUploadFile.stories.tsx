@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FileUploadFile } from './FileUploadFile';
 import { createExampleFile, createExampleImageFile } from './test-utils';
 
@@ -8,6 +9,13 @@ const meta: Meta = {
 	args: {
 		hideThumbnails: false,
 	},
+	decorators: [
+		(Story) => (
+			<Stack as="ul">
+				<Story />
+			</Stack>
+		),
+	],
 };
 
 export default meta;

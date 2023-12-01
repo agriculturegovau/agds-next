@@ -1,4 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
 import { createExampleFile, createExampleImageFile } from './test-utils';
 
@@ -8,6 +9,13 @@ const meta: Meta<typeof FileUploadRejectedFile> = {
 	args: {
 		hideThumbnails: false,
 	},
+	decorators: [
+		(Story) => (
+			<Stack as="ul">
+				<Story />
+			</Stack>
+		),
+	],
 };
 
 export default meta;
