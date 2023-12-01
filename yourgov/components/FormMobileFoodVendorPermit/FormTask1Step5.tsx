@@ -51,13 +51,13 @@ export function FormTask1Step5() {
 		resolver: yupResolver(task1Step5FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<Task1Step5FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: { ...formState.task1, step5: { ...data, completed: true } },
 		});
-		submitStep();
 	};
 
 	const onError = () => {
@@ -142,6 +142,7 @@ export function FormTask1Step5() {
 							/>
 						)}
 					/>
+					{/** TODO Replace with an actual time input component (when available) */}
 					<TextInput
 						label="Opening time"
 						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
@@ -151,6 +152,7 @@ export function FormTask1Step5() {
 						message={errors.openingTime?.message}
 						required
 					/>
+					{/** TODO Replace with an actual time input component (when available) */}
 					<TextInput
 						label="Closing time"
 						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"

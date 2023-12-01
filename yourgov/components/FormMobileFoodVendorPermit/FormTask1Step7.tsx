@@ -9,8 +9,9 @@ export function FormTask1Step7() {
 	const { formState, setFormState } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
-	function onSubmit(event: FormEvent<HTMLFormElement>) {
+	async function onSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: {
@@ -19,7 +20,6 @@ export function FormTask1Step7() {
 				completed: true,
 			},
 		});
-		submitStep();
 	}
 
 	return (

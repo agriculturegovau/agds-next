@@ -1,6 +1,6 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupDateField } from './utils';
+import { yupDateField, yupPhoneField } from './utils';
 
 export const task1Step1FormSchema = yup
 	.object({
@@ -10,10 +10,21 @@ export const task1Step1FormSchema = yup
 			.string()
 			.email('Enter a valid email')
 			.required('Enter your email'),
+		contactPhoneNumber: yupPhoneField.optional(),
 	})
 	.required();
 
 export type Task1Step1FormSchema = yup.InferType<typeof task1Step1FormSchema>;
+
+export const task1Step1Part2FormSchema = yup
+	.object({
+		contactPhoneNumber: yupPhoneField.optional(),
+	})
+	.required();
+
+export type Task1Step1Part2FormSchema = yup.InferType<
+	typeof task1Step1Part2FormSchema
+>;
 
 export const task1Step2FormSchema = yup
 	.object({

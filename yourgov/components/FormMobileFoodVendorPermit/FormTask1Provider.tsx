@@ -1,5 +1,10 @@
 import { useRouter } from 'next/router';
-import { createContext, PropsWithChildren, useContext } from 'react';
+import {
+	createContext,
+	PropsWithChildren,
+	useCallback,
+	useContext,
+} from 'react';
 import { useGlobalForm } from './GlobalFormProvider';
 
 const formHomePage =
@@ -58,17 +63,17 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 		({ href }) => href === pathname
 	);
 
-	function submitStep() {
+	const submitStep = useCallback(async () => {
 		setIsSubmittingStep(true);
-		setTimeout(() => {
-			push(
-				`${
-					task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage
-				}?type=${typeSearchParm}`
-			);
-			setIsSubmittingStep(false);
-		}, 1500);
-	}
+		// Fake API network call
+		await new Promise((resolve) => setTimeout(resolve, 1500));
+		push(
+			`${
+				task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage
+			}?type=${typeSearchParm}`
+		);
+		setIsSubmittingStep(false);
+	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
 
 	const backHref = `${
 		task1FormSteps[currentStepIndex - 1]?.href ?? formHomePage

@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box } from '@ag.ds-next/react/box';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -28,12 +27,12 @@ import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step1FormSchema,
 	Task1Step1FormSchema,
+	task1Step1Part2FormSchema,
+	Task1Step1Part2FormSchema,
 } from './FormTask1FormState';
 
 export function FormTask1Step1() {
-	const { isSideFlow, setIsSideFlow, formState, setFormState } =
-		useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+	const { isSideFlow, setIsSideFlow, formState } = useGlobalForm();
 
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -85,14 +84,6 @@ export function FormTask1Step1() {
 		headingRef.current?.focus();
 		setHasClosedForm(false);
 	}, [hasClosedForm]);
-
-	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
-		setFormState({
-			...formState,
-			task1: { ...formState.task1, step1: { ...data, completed: true } },
-		});
-		submitStep();
-	};
 
 	const onError: SubmitErrorHandler<Task1Step1FormSchema> = () => {
 		setFocusedError(false);
@@ -240,12 +231,55 @@ export function FormTask1Step1() {
 								Change details
 							</Button>
 						</Stack>
-						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
-							<FormActions />
-						</Box>
+						<AdditionalDetailsForm />
 					</Fragment>
 				)}
 			</Stack>
 		</FormTask1Container>
+	);
+}
+
+function AdditionalDetailsForm() {
+	const { formState, setFormState } = useGlobalForm();
+	const { submitStep } = useFormTask1Context();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Task1Step1Part2FormSchema>({
+		defaultValues: {
+			contactPhoneNumber: formState.task1?.step1?.contactPhoneNumber,
+		},
+		resolver: yupResolver(task1Step1Part2FormSchema),
+	});
+
+	const onSubmit: SubmitHandler<Task1Step1Part2FormSchema> = async (data) => {
+		await submitStep();
+		setFormState({
+			...formState,
+			task1: {
+				...formState.task1,
+				step1: { ...formState.task1?.step1, ...data, completed: true },
+			},
+		});
+	};
+
+	return (
+		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack gap={1.5}>
+				<H2>Additional details</H2>
+				<TextInput
+					label="Contact phone number"
+					hint="Any Australian mobile or landline, for example 0444111222 or 02 9988 7766"
+					id="contactPhoneNumber"
+					{...register('contactPhoneNumber')}
+					invalid={Boolean(errors.contactPhoneNumber?.message)}
+					message={errors.contactPhoneNumber?.message}
+					required
+				/>
+			</Stack>
+			<FormActions />
+		</Stack>
 	);
 }

@@ -25,12 +25,12 @@ export function FormTask1Step6() {
 		resolver: yupResolver(task1Step6FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<Task1Step6FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: { ...formState.task1, step6: { ...data, completed: true } },
 		});
-		submitStep();
 	};
 
 	return (

@@ -40,6 +40,10 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 					<FormDefinitionListItem
 						label="Email"
 						value={formState.task1?.step1?.email}
+					/>{' '}
+					<FormDefinitionListItem
+						label="Contact number"
+						value={formState.task1?.step1?.contactPhoneNumber}
 					/>
 				</FormDefinitionList>
 				<ButtonLink variant="text" href={task1FormSteps[0].href}>

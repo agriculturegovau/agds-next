@@ -40,13 +40,13 @@ export function FormTask1Step3() {
 		resolver: yupResolver(task1Step3FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<Task1Step3FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Task1Step3FormSchema> = async (data) => {
 		setFocusedError(false);
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: { ...formState.task1, step3: { ...data, completed: true } },
 		});
-		submitStep();
 	};
 
 	const onError = () => {
