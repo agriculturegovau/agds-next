@@ -164,7 +164,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 </Stack>
 ```
 
-## Disabled radios
+## Disabled
 
 Disabled radios can be used to indicate inputs that are no longer valid or expired.
 
@@ -178,7 +178,7 @@ Disabled radios can be used to indicate inputs that are no longer valid or expir
 </ControlGroup>
 ```
 
-## Small radios
+## Small
 
 Use the `size` prop to change the size of the radio.
 
@@ -214,3 +214,19 @@ Use the `size` prop to change the size of the radio.
 	);
 };
 ```
+
+## Default selection
+
+There will often be cases where it makes sense to have an option selected by default and others where it’s more suitable not to select a default option.
+
+It may be a appropriate to select a default option when:
+
+- it’s the most common or popular option.
+- it’s the recommended option.
+- the application already knows the answer.
+
+Otherwise, avoid selecting a default option, as users could mistakenly miss or skip the question, as it looks like it’s already been completed.
+
+- It’s especially important not to select a default option when:
+- the question is important or has legal consequences.
+- when the user needs to make conscious action to confirm their choice.
