@@ -22,11 +22,10 @@ export function GlobalAlert({
 	title,
 	tone = 'warning',
 }: GlobalAlertProps) {
-	const { bg, fg, Icon } = toneMap[tone];
+	const { ariaLabel, bg, fg, Icon } = toneMap[tone];
 
 	const addTitleMargin = Boolean(onDismiss);
 	const addContentMargin = Boolean(onDismiss && !title);
-	const ariaLabel = tone === 'warning' ? 'Warning' : 'Information';
 
 	return (
 		<Flex
@@ -86,11 +85,13 @@ export function GlobalAlert({
 
 const toneMap = {
 	info: {
+		ariaLabel: 'Information',
 		bg: boxPalette.systemInfoMuted,
 		fg: boxPalette.systemInfo,
 		Icon: InfoFilledIcon,
 	},
 	warning: {
+		ariaLabel: 'Warning',
 		bg: boxPalette.systemWarningMuted,
 		fg: boxPalette.systemWarning,
 		Icon: WarningFilledIcon,
