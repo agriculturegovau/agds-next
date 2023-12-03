@@ -39,8 +39,8 @@ export function Core({
 						},
 					},
 					{
-						// Apply the light pallet by default
-						'body,html': boxPalettes.light,
+						// Apply the light palette by default
+						'body, html': boxPalettes.light,
 					},
 					applyReset && {
 						// FIXME: apply the css reset
@@ -49,6 +49,9 @@ export function Core({
 							padding: 0,
 							background: boxPalette.backgroundBody,
 							fontFamily: tokens.font.body,
+						},
+						html: {
+							scrollbarGutter: 'stable',
 						},
 					},
 				]}
