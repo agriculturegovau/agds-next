@@ -10,9 +10,9 @@ export const ServerError = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>Something's not right</h1>
+					<h1>Something’s not right</h1>
 					<p>
-						There's a problem with the Export Service. We're working to fix it.
+						There’s a problem with the Export Service. We’re working to fix it.
 						Please try again later.
 					</p>
 					<p>You may be able to access other parts of the Export Service.</p>

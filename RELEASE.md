@@ -36,11 +36,11 @@ Use this output in the next step.
 
 Search the repository for any components that have been marked as unreleased. You can do this by searching for `unreleased: true`. If there any components marked as unreleased, they would have been released in the previous step so this piece of frontmatter needs to be removed.
 
-Create a new `.mdx` file in `docs/content/updates` with todays date as the file name.
+Create a new `.mdx` file in `docs/content/updates` with today’s date as the file name.
 
 Use the latest release as the template for the release notes. It should include:
 
-- Summary headline of what's in the release
+- Summary headline of what’s in the release
 - Release description of what is new. This may be taken from the changelogs but should remove the noise. In some cases it may be better to write something new.
 - Verbose release notes link (link to the PR)
 

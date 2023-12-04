@@ -14,7 +14,7 @@ export const DontHeading = () => (
 	<p>
 		<Flex as="span" alignItems="center" gap={0.5}>
 			<AlertFilledIcon color="error" />
-			<strong>Don&apos;t</strong>
+			<strong>Don’t</strong>
 		</Flex>
 	</p>
 );
