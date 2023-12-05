@@ -88,7 +88,7 @@ A better choice here is to take the parts of `Accordion` which are common / reus
 
 ### Avoid polluting the global scope
 
-This Design-System will likely be adopted either only partially or incrementally. For this reason it is important that we avoid polluting global namespaces and scopes in css and javascript.
+This Design-System will likely be adopted either only partially or incrementally. For this reason it is important that we avoid polluting global namespaces and scopes in CSS and JavaScript.
 
 This is why the neither `core` or `prose` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it's children.
 
