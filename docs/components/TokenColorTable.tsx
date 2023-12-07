@@ -92,7 +92,7 @@ export const colourTokens: {
 		systemSuccessMuted: {
 			light: theme.lightSystemSuccessMuted,
 			dark: theme.darkSystemSuccessMuted,
-			desc: 'Used as a background for a Component with an `success` tone.',
+			desc: 'Used as a background for a Component with a `success` tone.',
 		},
 		systemError: {
 			light: theme.lightSystemError,
@@ -122,7 +122,7 @@ export const colourTokens: {
 		systemWarningMuted: {
 			light: theme.lightSystemWarningMuted,
 			dark: theme.darkSystemWarningMuted,
-			desc: 'Used as a background for a Component with an `warning` tone.',
+			desc: 'Used as a background for a Component with a `warning` tone.',
 		},
 	},
 	miscellaneous: {

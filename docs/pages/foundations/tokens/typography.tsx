@@ -61,8 +61,8 @@ export default function TokensTypographyPage() {
 							typographic scale.
 						</li>
 						<li>
-							Developers can use the fontSize and lineHeight props available on
-							typographic components which use of the fontGrid function.
+							Developers can use the `fontSize` and `lineHeight` props available
+							on typographic components which use of the fontGrid function.
 						</li>
 					</ul>
 					<h2 id="font-size">Font size</h2>
@@ -87,7 +87,7 @@ export default function TokensTypographyPage() {
 					</p>
 					<p>
 						Government services are provided for everyone, regardless of their
-						situation or location. By choosing to use system fonts users
+						situation or location. By choosing to use system fonts, users
 						download less data and make fewer HTTP requests. This means that
 						people on low-end devices or internet connections in remote areas
 						can access government services easier.

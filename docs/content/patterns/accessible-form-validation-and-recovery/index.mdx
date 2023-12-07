@@ -6,16 +6,16 @@ relatedComponents: ['page-alert']
 
 <DoHeading />
 
-- summarise the errors as a list inside of a [Page alert](/components/page-alert) component with the 'error' tone when more than one form validation error has occurred
+- summarise the errors as a list inside of a [Page alert](/components/page-alert) component with the `'error'` tone when more than one form validation error has occurred
 - place the [Page alert](/components/page-alert) component near the top of the page, below the H1 and introductory paragraph, and focus immediately after a submission attempt
 - validate a form page when the user attempts to submit or save and continue
 - always display fields with form validation errors as invalid with error messages
-- retain the users input after an unsuccessful form submission
+- retain the user’s input after an unsuccessful form submission
 
 <DontHeading />
 
 - use the [Page alert](/components/page-alert) component if there is only one form validation error - instead focus the invalid field
-- use HTML5 validation
+- use native HTML5 validation
 - validate a form when the user is typing
 - depend only on client-side validation - also use server-side validation
 
@@ -25,15 +25,15 @@ A form should validate when a user attempts to submit the form. This should occu
 
 This approach prevents interrupting users while they are still entering information. Real-time validation while the user is still typing can be problematic, especially for users who type slowly.
 
-## Retaining users input
+## Retaining user’s input
 
-It is important that users do not lose the data they have entered when they attempt to submit the form. Retaining the users input allows them to correct any errors without starting over.
+It is important that users do not lose the data they have entered when they attempt to submit the form. Retaining the user’s input allows them to correct any errors without starting over.
 
 ## Summarising form validation errors
 
-When more than one form validation error has occurred, form validation errors should be summarised as a list inside of a [Page alert](/components/page-alert) component with the 'error' tone. The [Page alert](/components/page-alert) component should be placed at the top of the form and focused immediately after a submission attempt to ensure it is visible and announced to screen reader users.
+When more than one form validation error has occurred, form validation errors should be summarised as a list inside of a [Page alert](/components/page-alert) component with the `'error'` tone. The [Page alert](/components/page-alert) component should be placed at the top of the form and focused immediately after a submission attempt to ensure it is visible and announced to screen reader users.
 
-To helps users quickly identify and navigate to the problematic areas of the form, each error in the list should scroll and focus the user focus respective form field when clicked. This can be done with the [useScrollToField](/components/field#usescrolltofield) hook.
+To helps users quickly identify and navigate to the problematic areas of the form, each error in the list should scroll and focus the respective form field when clicked. This can be done with the [useScrollToField](/components/field#usescrolltofield) hook.
 
 If there is only one form validation error, the [Page alert](/components/page-alert) component and error summary should not be displayed and the invalid form field should be focused immediately after a submission attempt.
 
