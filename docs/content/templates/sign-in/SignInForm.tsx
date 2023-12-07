@@ -155,7 +155,7 @@ export const SignInFormPage = () => {
 						<Divider />
 						<Prose>
 							<p>
-								Don&apos;t have an account? <a href="#">Create account</a>
+								Don’t have an account? <a href="#">Create account</a>
 							</p>
 							<p>
 								Read our <a href="#">privacy policy</a>
