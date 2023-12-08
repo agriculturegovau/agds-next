@@ -82,9 +82,9 @@ const getSortLabel = (sort?: TableSortDirection) => {
 const getSortIcon = (sort?: TableSortDirection) => {
 	switch (sort) {
 		case 'ASC':
-			return ArrowDownIcon;
-		case 'DESC':
 			return ArrowUpIcon;
+		case 'DESC':
+			return ArrowDownIcon;
 		default:
 			return ArrowUpDownIcon;
 	}
