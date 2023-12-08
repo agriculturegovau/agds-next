@@ -81,7 +81,7 @@ const EXAMPLE_BUSINESSES: Partial<BusinessForAudit>[] = [
 	},
 	{ businessName: 'The Land Down Under Livestock Co.' },
 	{ businessName: 'The Oz Harvest Co.' },
-	{ businessName: "The Aussie Farmer's Market" },
+	{ businessName: 'The Aussie Farmer’s Market' },
 	{ businessName: 'The Australian Crop Co.' },
 	{
 		businessName: 'The Great Barrier Reef Seafood Co.',

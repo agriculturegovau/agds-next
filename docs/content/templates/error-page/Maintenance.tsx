@@ -9,10 +9,10 @@ export const Maintenance = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>We&apos;re updating the Export Service</h1>
+					<h1>We’re updating the Export Service</h1>
 					<p>
-						While we&apos;re down for planned maintenance, you won&apos;t be
-						able to access our services.
+						While we’re down for planned maintenance, you won’t be able to
+						access our services.
 					</p>
 					<p>Please check back soon.</p>
 				</Prose>

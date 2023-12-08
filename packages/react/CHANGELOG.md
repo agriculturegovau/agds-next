@@ -77,7 +77,7 @@
 
   dropdown-menu: Improved accessibility by allowing users to press `Enter`, `Space`, `ArrowDown` or `ArrowUp` keys to open up the dropdown menu and activate a child descendant
 
-  dropdown-menu: Fixed a bug where keyboard shortcuts couldn't be used when the dropdown menu was open - e.g. refresh the page using cmd + r.
+  dropdown-menu: Fixed a bug where keyboard shortcuts couldn’t be used when the dropdown menu was open - e.g. refresh the page using cmd + r.
 
   dropdown-menu: Improved accessibility by significantly improving the logic for searching for a child descendant
 
@@ -122,7 +122,7 @@
 
   file-upload: Extended the `accept` prop so MIME types that are not in the predefined list can be used
 
-- b3e2e03b04: table: Created new `TableRow` component. If you're using the standard `<tr>` HTML element, you can optionally upgrade to this new component.
+- b3e2e03b04: table: Created new `TableRow` component. If you’re using the standard `<tr>` HTML element, you can optionally upgrade to this new component.
 
   ```diff
   <Table>
@@ -148,7 +148,7 @@
 ### Patch Changes
 
 - 61b5fabd85: file-upload: Added thumbnails to selected files
-- 431294adf2: app-layout: Fixed small issue in `AppLayoutSidebar` where the text color wasn't being applied correctly to text list items in dark mode
+- 431294adf2: app-layout: Fixed small issue in `AppLayoutSidebar` where the text color wasn’t being applied correctly to text list items in dark mode
 - bd89ce82ad: file-upload: Exported `formatFileSize` utility function. Example usage:
 
   ```tsx
@@ -415,7 +415,7 @@
   + import { StatusBadge } from '@ag.ds-next/react/status-badge';
   ```
 
-- 0942aab35d: `DateRangePicker` has been moved to it's own entry point.
+- 0942aab35d: `DateRangePicker` has been moved to it’s own entry point.
 
   `DateRangePicker` will continue to work out of the the `@ag.ds-next/react/date-picker` entrypoint, but this usage has been marked as deprecated and will be removed in the next major release.
 
@@ -460,7 +460,7 @@
 
 ### Minor Changes
 
-- f4aed33922: Replaced some react spring animations with CSS animations/transitions. This change improves performance by removing Javascript and utilising the browser's ability to process CSS.
+- f4aed33922: Replaced some react spring animations with CSS animations/transitions. This change improves performance by removing Javascript and utilising the browser’s ability to process CSS.
 
   Accordion: Replaced chevron icon react spring animation with CSS animation
 

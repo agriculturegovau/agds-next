@@ -10,14 +10,14 @@ export const ScheduledThirdPartyOutage = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>There&apos;s a problem with the Export Service</h1>
+					<h1>There’s a problem with the Export Service</h1>
 					<p>
 						Relationship Autorisation Manager (RAM) is down for system
 						maintenance from 11:30 pm, 15 October to 7pm, 16 October.
 					</p>
 					<p>
-						During this time you can&apos;t create an account or sign into the
-						Export Service. Please try again later.
+						During this time you can’t create an account or sign into the Export
+						Service. Please try again later.
 					</p>
 				</Prose>
 				<Callout title="Need more help?">
