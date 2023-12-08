@@ -23,7 +23,7 @@ relatedComponents: ['combobox', 'select']
 </DropdownMenu>
 ```
 
-A dropdown menu displays a list of actions when triggered by a `DropdownMenuButton`. Dropdown menu's float on top of the content they sit on. Consider using them when there isn't sufficient space to display actions.
+A dropdown menu displays a list of actions when triggered by a `DropdownMenuButton`. Dropdown menu’s float on top of the content they sit on. Consider using them when there isn’t sufficient space to display actions.
 
 Dropdown menus pose multiple usability problems which you should consider before using them:
 
@@ -33,8 +33,8 @@ Dropdown menus pose multiple usability problems which you should consider before
 
 <DoHeading />
 
-- ensure that actions in the dropdown can be accessed elsewhere on the same page, as some users won't be able to access them via the dropdown menu
-- only use a dropdown menu if there's insufficient space to display actions
+- ensure that actions in the dropdown can be accessed elsewhere on the same page, as some users won’t be able to access them via the dropdown menu
+- only use a dropdown menu if there’s insufficient space to display actions
 - trigger a dropdown menu on click of an element
 - keep the dropdown menu open until a user has made a selection or clicked outside the menu
 - organise actions in a logical way
@@ -44,14 +44,14 @@ Dropdown menus pose multiple usability problems which you should consider before
 
 <DontHeading />
 
-- use a dropdown menu if there's space to display actions
-- trigger a dropdown menu on hover of an element, ensure it's triggered on click
+- use a dropdown menu if there’s space to display actions
+- trigger a dropdown menu on hover of an element, ensure it’s triggered on click
 - use in the [Main nav](/components/main-nav) or other nav components
 - use a dropdown menu in a form where users need to select a single option - use a [Select](/components/select) component instead.
 
 ## Triggers
 
-Dropdown menu's can be triggered by a`DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
+Dropdown menu’s can be triggered by a`DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
 
 ```jsx live
 <Stack gap={1}>
@@ -76,7 +76,7 @@ Dropdown menu's can be triggered by a`DropdownMenuButton`, which can accept all 
 
 ## Placement
 
-By default the dropdown menu is aligned to the bottom left (`bottom-start`) of the `DropdownMenuButton` when opened. It can alternatively be aligned to the bottom right (`bottom-end`) or the bottom (`bottom`). If there's not enough space in the browser window to align the menu on the left, the dropdown menu will automatically be aligned to the right to help ensure it fits on the screen.
+By default the dropdown menu is aligned to the bottom left (`bottom-start`) of the `DropdownMenuButton` when opened. It can alternatively be aligned to the bottom right (`bottom-end`) or the bottom (`bottom`). If there’s not enough space in the browser window to align the menu on the left, the dropdown menu will automatically be aligned to the right to help ensure it fits on the screen.
 
 ```jsx live
 <Stack gap={2} alignItems="center">
@@ -114,7 +114,7 @@ The simplest dropdown menu contains text only list items. Use `DropdownMenuItem`
 </DropdownMenu>
 ```
 
-If you're opening links in a new tab, we recommend you use the `ExternalLinkIcon`.
+If you’re opening links in a new tab, we recommend you use the `ExternalLinkIcon`.
 
 ```jsx live
 <DropdownMenu>
@@ -162,7 +162,7 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 
 ## Divider
 
-Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the list. This helps ensure they're not actioned by mistake.
+Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the list. This helps ensure they’re not actioned by mistake.
 
 ```jsx live
 <DropdownMenu>

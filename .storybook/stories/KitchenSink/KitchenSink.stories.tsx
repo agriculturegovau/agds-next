@@ -128,7 +128,7 @@ const sideNavItems = [
 			},
 		],
 	},
-	{ href: '#four', label: "What's new for individuals" },
+	{ href: '#four', label: 'What’s new for individuals' },
 	{ href: '#five', label: 'Why you may receive a tax bill' },
 ];
 

@@ -16,7 +16,7 @@ We encourage mobile design at 320px wide to encourage consideration of the small
 
 The AgDS React library provides first class support for responsive styles. The best way to take advantage of our breakpoints and responsive design is to use our **Responsive Props**. Instead of manually writing CSS media queries throughout your codebase, our primitive components allow you to provide objects to generate responsive styles in your project.
 
-In this example, we've made a simple Box, and passed an object to the `padding` prop. The keys in the object refer to the breakpoint name.
+In this example, we’ve made a simple Box, and passed an object to the `padding` prop. The keys in the object refer to the breakpoint name.
 
 ```tsx live showCode
 <Box background="shade" padding={{ xs: 1, sm: 2, md: 4 }}>
@@ -46,7 +46,7 @@ Under the hood, this simple example has generated the following CSS:
 
 You can see the breakpoints and internal media queries are written to be mobile-first. This means that the styles for the smallest breakpoint are applied first, and then progressively overridden as the viewport gets larger. The `padding` value is set to `1rem` by default - or from 0px, which is the `xs` breakpoint - and then we override it at each breakpoint, through a series of `min-width` media queries.
 
-You don't need to provide a value for every breakpoint. Just provide a value for mobile (xs), and add any additional breakpoint values as needed.
+You don’t need to provide a value for every breakpoint. Just provide a value for mobile (xs), and add any additional breakpoint values as needed.
 
 You can also define responsive styles as an array. To interpret array responsive values, we convert the values defined in our `breakpoints` token and sort them in ascending order. To skip certain breakpoints, you can pass `null` to any item in the array to avoid generating unnecessary CSS. This approach is not recommended.
 
@@ -58,7 +58,7 @@ You can also define responsive styles as an array. To interpret array responsive
 
 ### Usage in style objects
 
-Using our primitive components - including Responsive Props - is the best way to compose layouts. But sometimes primitive components don't support all of the style attributes you need. In these cases, you can use our breakpoints in your style objects, through the use of the `mq` and `mapResponsiveProp` functions.
+Using our primitive components - including Responsive Props - is the best way to compose layouts. But sometimes primitive components don’t support all of the style attributes you need. In these cases, you can use our breakpoints in your style objects, through the use of the `mq` and `mapResponsiveProp` functions.
 
 ```tsx
 import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';

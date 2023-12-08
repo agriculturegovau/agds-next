@@ -43,7 +43,10 @@ const boilerplateAppLayoutHeaderDropdown = `
 
 const boilerplateSiteTemplate = (content: string) => `
 	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
-		<MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} />
+		<MainNav
+			items={[{ label: 'Home', href: '/' }]}
+			secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]}
+		/>
 	</Box>
 	<PageContent as="main">${content}</PageContent>
 	<Box dark>

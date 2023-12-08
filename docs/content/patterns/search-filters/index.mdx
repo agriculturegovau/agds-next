@@ -1,13 +1,13 @@
 ---
 title: Search filters
-description: Search filters help users find what they're looking for by displaying options that meet specified criteria.
+description: Search filters help users find what they’re looking for by displaying options that meet specified criteria.
 figmaTemplateNodeId: 18586-56265
 githubTemplatePath: /.storybook/stories/DataFiltering
 storybookPath: story/patterns-search-filters--cards
 relatedComponents: ['card', 'drawer', 'filter-sidebar', 'pagination', 'table']
 ---
 
-Search filters help users find what they're looking for by displaying options that meet specified criteria.
+Search filters help users find what they’re looking for by displaying options that meet specified criteria.
 
 Applied filters are displayed as tags, so users can quickly see which filters have been applied to the dataset. Filters can be removed by dismissing the tags.
 
@@ -184,7 +184,7 @@ Filters are available in 3 sizes to accommodate a wide range of use cases and da
 
 ### Medium
 
-3-6 filters are displayed in an accordion that is triggered by a 'Show filters' button.
+3-6 filters are displayed in an accordion that is triggered by a ‘Show filters’ button.
 
 1 to 2 of the most used filters can be displayed outside the accordion to make them easier and faster to access.
 
@@ -199,7 +199,7 @@ Applied filters are displayed as tags under the filter inputs. This helps users 
 
 ### Large
 
-6 or more filters are displayed in a drawer that is triggered by a 'Show filters' button. The drawer has a submit button that applies the filters.
+6 or more filters are displayed in a drawer that is triggered by a ‘Show filters’ button. The drawer has a submit button that applies the filters.
 
 1 to 2 of the most used filters can be displayed outside the drawer to make them easier and faster to access.
 
@@ -218,8 +218,8 @@ The [Drawer](/components/drawer) component should contain a total of 4 actions:
 
 1. **Apply filters button:** When pressed, filters should be applied and the drawer should be closed.
 2. **Clear filters button:** When pressed, filters should be reset to their original state. The drawer should stay open.
-3. **Close button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the 'Cance' button.
-4. **Cancel button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the 'Close' button.
+3. **Close button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the ‘Cancel’ button.
+4. **Cancel button:** When pressed, the drawer should close. Any changes that have been made since opening the drawer should be discarded. This is essentially the same as the ‘Close’ button.
 
 ## Search filter sidebar
 
@@ -238,7 +238,7 @@ Since the filters are always visible, there is no need to also include tags to s
 
 ## Empty state
 
-When a search filter doesn't match any data, use an [empty state](/patterns/loading-error-empty-states) to let user’s know that they need to clear or change the search filter.
+When a search filter doesn’t match any data, use an [empty state](/patterns/loading-error-empty-states) to let user’s know that they need to clear or change the search filter.
 
 ```jsx live
 <Stack gap={3}>

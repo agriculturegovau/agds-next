@@ -121,7 +121,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/whats-new-for-individuals"
               >
                 <span>
-                  What's new for individuals
+                  What’s new for individuals
                 </span>
               </a>
             </li>

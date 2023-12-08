@@ -8,7 +8,7 @@ githubTemplatePath: /.storybook/stories/SelectableTableBatchActions
 
 ## Individual row selection
 
-To toggle the selection of an individual row, users can use the [Checkbox](/components/checkbox) in the first column which should have the row heading "Select".
+To toggle the selection of an individual row, users can use the [Checkbox](/components/checkbox) in the first column which should have the row heading ‘Select’.
 
 Selected rows have a solid action coloured outline, which is achieved by setting `selected={true}` on the `TableRow` component.
 
@@ -57,11 +57,11 @@ Selected rows have a solid action coloured outline, which is achieved by setting
 
 ## Selecting all rows
 
-To toggle the selection of all rows at once, users can use the "Select all rows" checkbox above the table. The "Select all rows" checkbox should always be placed just above the table element, with a border to divide the two elements.
+To toggle the selection of all rows at once, users can use the ‘Select all rows’ checkbox above the table. The ‘Select all rows’ checkbox should always be placed just above the table element, with a border to divide the two elements.
 
-Do not use `TableCaption` component in combination with the "Select all rows" checkbox as the caption will sit in between the checkbox and table. Instead, place a [Heading](/components/heading) component above the Checkbox and connect the heading and table using `aria-labelledby`. For more information, please refer to the [Labels and headings](/components/table#labels-and-headings) section of the table documentation.
+Do not use `TableCaption` component in combination with the ‘Select all rows’ checkbox as the caption will sit in between the checkbox and table. Instead, place a [Heading](/components/heading) component above the Checkbox and connect the heading and table using `aria-labelledby`. For more information, please refer to the [Labels and headings](/components/table#labels-and-headings) section of the table documentation.
 
-Unlike the checkboxes in each row, the "Select all rows" checkbox above the table has three states: checked, unchecked, and indeterminate. When some, but not all, rows are selected, the "Select all rows" checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
+Unlike the checkboxes in each row, the ‘Select all rows’ checkbox above the table has three states: checked, unchecked, and indeterminate. When some, but not all, rows are selected, the ‘Select all rows’ checkbox should enter an indeterminate state. This visual indicator signals to users that not all rows are selected and allows them to toggle all rows on or off with a single click.
 
 ```jsx live
 () => {
@@ -154,7 +154,7 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 <DoHeading />
 
 - ensure each batch action can be performed on every selectable row
-- include a "Cancel" button at the end of the batch actions button group
+- include a ‘Cancel’ button at the end of the batch actions button group
 - use small buttons for batch actions
 
 <DontHeading />
