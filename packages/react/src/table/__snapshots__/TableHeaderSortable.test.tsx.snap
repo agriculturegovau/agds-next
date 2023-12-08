@@ -33,10 +33,10 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M12 3L12 20"
+                d="M12 21V4"
               />
               <path
-                d="M17 16L12 21L7 16"
+                d="M7 8L12 3L17 8"
               />
             </svg>
           </button>
@@ -80,10 +80,10 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M12 21V4"
+                d="M12 3L12 20"
               />
               <path
-                d="M7 8L12 3L17 8"
+                d="M17 16L12 21L7 16"
               />
             </svg>
           </button>

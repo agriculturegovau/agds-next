@@ -35,6 +35,14 @@ export const SortBySelect = () => {
 					value: 'requestDate-DESC',
 					label: 'Date registered (newest first)',
 				},
+				{
+					value: 'status-ASC',
+					label: 'Status (A-Z)',
+				},
+				{
+					value: 'status-DESC',
+					label: 'Status (Z-A)',
+				},
 			]}
 			value={`${sort.field}-${sort.order}`}
 			aria-controls={tableId}

@@ -14,7 +14,7 @@ This is an idea that comes from Perl and can be used when thinking about how to 
 
 A simple example of this is the `LinkList` component.
 
-In it's simplest and most easy to use form, the component takes a `links` prop which is a list of the `href` and text `label` for each link.
+In it’s simplest and most easy to use form, the component takes a `links` prop which is a list of the `href` and text `label` for each link.
 
 ```jsx
 import { LinkList } from '@ag.ds-next/link-list';
@@ -77,7 +77,7 @@ So components which are a composition of several other components (like `LinkLis
 
 It is fully expected that almost every design-system component will depend on `core` and `box` but beyond that, we should try to limit cross dependencies as much as possible.
 
-> It's tempting to look, for example, at the `SideNavigation` component, see that in mobile it collapses to an accordion and then try to use the `Accordion` inside of `SideNavigation`.
+> It’s tempting to look, for example, at the `SideNavigation` component, see that in mobile it collapses to an accordion and then try to use the `Accordion` inside of `SideNavigation`.
 
 Going down this path is fraught.
 
@@ -90,15 +90,15 @@ A better choice here is to take the parts of `Accordion` which are common / reus
 
 This Design-System will likely be adopted either only partially or incrementally. For this reason it is important that we avoid polluting global namespaces and scopes in CSS and JavaScript.
 
-This is why the neither `core` or `prose` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it's children.
+This is why the neither `core` or `prose` apply a default `fontFamily` or `color` and why the global reset is minimal and optional. For each component in the design system we need to consider whether it is appropriate for the component to apply styling to it’s children.
 
 #### Examples:
 
 In the context of `LinkList`, it makes sense to apply styles to the child `a` tags (`color`, `textDecoration`, `fontFamily` etc.). That is the purpose of the component.
 
-In the case of `Box` or `Stack`, unless the user has specified a property we should not apply anything that effects the component's children.
+In the case of `Box` or `Stack`, unless the user has specified a property we should not apply anything that effects the component’s children.
 
-When choosing defaults it's important to consider that some css properties will be inherited by child elements while others will not.
+When choosing defaults it’s important to consider that some css properties will be inherited by child elements while others will not.
 Eg, setting color on a `Box` will apply that color to child text nodes. Setting `width` will only change the width of the `Box` component itself.
 
 ## Component / Feature checklist
@@ -117,7 +117,7 @@ For new components or features, use the following check list to ensure you have 
 
 Can you answer the following questions:
 
-> If I couldn't see the screen how would I know:
+> If I couldn’t see the screen how would I know:
 >
 > - what this is?
 > - what this does?

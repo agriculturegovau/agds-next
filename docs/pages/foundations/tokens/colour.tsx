@@ -193,10 +193,10 @@ export default function TokensColorPage() {
 							<strong>Do</strong> pair foreground and background colours.
 						</li>
 						<li>
-							<strong>Don&apos;t</strong> mix light and dark variables.
+							<strong>Don’t</strong> mix light and dark variables.
 						</li>
 						<li>
-							<strong>Don&apos;t</strong> pair foreground with foreground or
+							<strong>Don’t</strong> pair foreground with foreground or
 							background with background.
 						</li>
 					</ul>

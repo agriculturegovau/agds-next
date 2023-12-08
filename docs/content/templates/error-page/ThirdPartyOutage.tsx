@@ -10,9 +10,9 @@ export const ThirdPartyOutage = () => {
 		<PageContent>
 			<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
 				<Prose>
-					<h1>There&apos;s a problem with the Export Service</h1>
+					<h1>There’s a problem with the Export Service</h1>
 					<p>
-						Digital Identity is currently experiencing an outage. You can&apos;t
+						Digital Identity is currently experiencing an outage. You can’t
 						create an account or sign into the Export Service right now. Please
 						try again later.
 					</p>

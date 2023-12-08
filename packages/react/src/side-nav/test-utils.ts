@@ -25,7 +25,7 @@ export const defaultTestingProps: SideNavProps = {
 		},
 		{
 			href: '/whats-new-for-individuals',
-			label: "What's new for individuals",
+			label: 'What’s new for individuals',
 		},
 		{
 			href: '/why-you-may-receive-a-tax-bill',

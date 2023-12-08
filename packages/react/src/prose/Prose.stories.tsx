@@ -242,6 +242,6 @@ const UnstyledContent = () => (
 
 		<hr />
 
-		<p>And that&apos;s a wrap.</p>
+		<p>And that’s a wrap.</p>
 	</Fragment>
 );
