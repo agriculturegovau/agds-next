@@ -1,3 +1,46 @@
+const boilerplateAppLayoutHeaderDropdown = `
+	<DropdownMenuPanel palette="light">
+		<DropdownMenuGroup label="Businesses">
+			{['Antfix', 'Produce Fresh', 'Organic Co'].map((businessName) => (
+				<DropdownMenuItemRadio
+					key={businessName}
+					checked={businessName === 'Antfix'}
+					secondaryText="ABN 00 000 000 000"
+					onClick={() => console.log(businessName)}
+				>
+					{businessName}
+				</DropdownMenuItemRadio>
+			))}
+			<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+		</DropdownMenuGroup>
+		<DropdownMenuDivider />
+		<DropdownMenuGroup label="My account">
+			<DropdownMenuItemLink href="/profile" icon={AvatarIcon}>
+				Profile
+			</DropdownMenuItemLink>
+			<DropdownMenuItemLink
+				href="/messages"
+				icon={EmailIcon}
+				endElement={
+					<span>
+						<NotificationBadge tone="action" value={6} max={99} aria-hidden />
+						<VisuallyHidden>, 6 unread</VisuallyHidden>
+					</span>
+				}
+			>
+				Messages
+			</DropdownMenuItemLink>
+			<DropdownMenuItemLink href="/account-settings" icon={SettingsIcon}>
+				Account settings
+			</DropdownMenuItemLink>
+		</DropdownMenuGroup>
+		<DropdownMenuDivider />
+		<DropdownMenuItem onClick={() => console.log('sign out')} icon={ExitIcon}>
+			Sign out
+		</DropdownMenuItem>
+	</DropdownMenuPanel>
+`;
+
 const boilerplateSiteTemplate = (content: string) => `
 	<Box dark><Header background="bodyAlt" logo={<Logo />} heading="Export Service" />
 		<MainNav items={[{ label: "Home", href: "/" }]} secondaryItems={[{ label: 'Sign in', endElement: <AvatarIcon />}]} />
@@ -27,9 +70,9 @@ const boilerplateAppTemplate = (content: string) => `
 		logo={<Logo />}
 		href="#"
 		accountDetails={{
-			"name": "Toto Wolff",
-			"secondaryText": "Antfix",
-			"href": "#",
+			name: 'Toto Wolff',
+			secondaryText: 'My account',
+			dropdown: ${boilerplateAppLayoutHeaderDropdown}
 		}}
 	/>
 	<AppLayoutSidebar
@@ -299,6 +342,58 @@ const snippets = [
 		</Footer></Box>`,
 	},
 	{
+		group: 'AppLayoutHeader',
+		name: 'Without Account',
+		code: `
+			<AppLayout>
+				<AppLayoutHeader
+					heading="Service name"
+					subLine="Service description that could be a little longer"
+					logo={<Logo />}
+					href="#"
+				/>
+			</AppLayout>
+		`,
+	},
+	{
+		group: 'AppLayoutHeader',
+		name: 'With Account Link',
+		code: `
+			<AppLayout>
+				<AppLayoutHeader
+					heading="Service name"
+					subLine="Service description that could be a little longer"
+					logo={<Logo />}
+					href="#"
+					accountDetails={{
+						name: 'Toto Wolff',
+						secondaryText: 'Antfix',
+						href: '#',
+					}}
+				/>
+			</AppLayout>
+		`,
+	},
+	{
+		group: 'AppLayoutHeader',
+		name: 'With Account Dropdown',
+		code: `
+			<AppLayout>
+				<AppLayoutHeader
+					heading="Service name"
+					subLine="Service description that could be a little longer"
+					logo={<Logo />}
+					href="#"
+					accountDetails={{
+						name: 'Toto Wolff',
+						secondaryText: 'My account',
+						dropdown: ${boilerplateAppLayoutHeaderDropdown}
+					}}
+				/>
+			</AppLayout>
+		`,
+	},
+	{
 		group: 'Footer',
 		name: 'Complex',
 		code: `<Box dark>
@@ -368,7 +463,7 @@ const snippets = [
 			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
 				&copy; 2022 Department of Agriculture, Fisheries and Forestry
 			</Text>
-	</Footer></Box>`,
+		</Footer></Box>`,
 	},
 	{
 		group: 'SideNav',
