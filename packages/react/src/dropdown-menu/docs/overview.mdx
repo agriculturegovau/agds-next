@@ -23,13 +23,13 @@ relatedComponents: ['combobox', 'select']
 </DropdownMenu>
 ```
 
-A dropdown menu displays a list of actions when triggered by a `DropdownMenuButton`. Dropdown menu’s float on top of the content they sit on. Consider using them when there isn’t sufficient space to display actions.
+A dropdown menu displays a list of actions when triggered by a `DropdownMenuButton`. Dropdown menus float on top of the content they sit on. Consider using them when there isn’t sufficient space to display actions.
 
 Dropdown menus pose multiple usability problems which you should consider before using them:
 
 - since the actions in a dropdown menu are hidden by default, they could be missed.
 - dropdown menus can increase cognitive load, as users need to recall what the actions were. This can be especially problematic for users with cognitive impairments.
-- due to their fiddly nature, some users can struggle to use dropdown menus. Elderly people and people with motor impairments in particular often have difficulty using dropdown menus.
+- due to their fiddly nature, some users can struggle to use dropdown menus. Elderly people and people with motor impairments, in particular, often have difficulty using dropdown menus.
 
 <DoHeading />
 
@@ -51,7 +51,7 @@ Dropdown menus pose multiple usability problems which you should consider before
 
 ## Triggers
 
-Dropdown menu’s can be triggered by a`DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
+Dropdown menus can be triggered by a `DropdownMenuButton`, which can accept all of the same props as [Button](/components/button). This gives you flexibility in what your trigger looks like.
 
 ```jsx live
 <Stack gap={1}>
@@ -95,7 +95,7 @@ By default the dropdown menu is aligned to the bottom left (`bottom-start`) of t
 
 ## Text only
 
-The simplest dropdown menu contains text only list items. Use `DropdownMenuItem` to perform on page actions and `DropdownMenuItemLink` to link to separate pages.
+The simplest dropdown menu contains text only list items. Use `DropdownMenuItem` to perform on-page actions and `DropdownMenuItemLink` to link to separate pages.
 
 ```jsx live
 <DropdownMenu>
@@ -162,7 +162,7 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 
 ## Divider
 
-Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the list. This helps ensure they’re not actioned by mistake.
+Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the list. This helps ensure they’re less likely to be actioned by mistake.
 
 ```jsx live
 <DropdownMenu>

@@ -16,7 +16,7 @@ relatedComponents: ['date-range-picker']
 
 Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
 
-For an example of using this component in a form built with `react-hook-form` and `yup`, please see the [Single-page form template](/template/single-page-form).
+For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/template/single-page-form).
 
 <DoHeading />
 
@@ -43,7 +43,7 @@ As we do not have any sort of input masking due to accessibility concerns, there
 
 For example, if the Date picker component was an optional field. If a user inputs an invalid value via the text input, the `onChange` event will never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
 
-To fix this issue, you can use the `onInputChange` prop to keep track of the users input. The `value` prop can also be set to a string, which represents the value of the text input.
+To fix this issue, you can use the `onInputChange` prop to keep track of the user’s input. The `value` prop can also be set to a string, which represents the value of the text input.
 
 ```jsx live
 () => {
@@ -109,7 +109,7 @@ Use the `block` prop to expand the component to fill the available space.
 
 ## Invalid
 
-Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+Use the `invalid` prop to indicate if the user input is invalid.
 
 ```jsx live
 () => {

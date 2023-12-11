@@ -50,7 +50,7 @@ export type SummaryListProps = PropsWithOnlyChildren;
 
 /**
  * SummaryList displays a list of terms and descriptions as key value pairs.
- * It is similar to a two-column table, but renders a HTML Description List (`<dl>`) element.
+ * It is similar to a two-column table, but renders an HTML Description List (`<dl>`) element.
  */
 export function SummaryList({ children }: SummaryListProps) {
 	return (

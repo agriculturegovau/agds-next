@@ -98,7 +98,7 @@ Don’t include links within hint text. While screen readers will read out the l
 
 ## Invalid
 
-Use the `invalid` prop to indicate if the user input is invalid (does not validate according to the elements settings).
+Use the `invalid` prop to indicate if the user input is invalid.
 
 ```jsx live
 () => {
@@ -131,7 +131,7 @@ Use the `invalid` prop to indicate if the user input is invalid (does not valida
 
 The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
 
-Using the `required` prop, this component will automatically append ‘(optional)’ to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
 
 ### Hide optional label
 

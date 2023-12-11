@@ -53,7 +53,7 @@ Error messages are used to notify the user when a form field has not passed vali
 
 The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
 
-Using the `required` prop, this component will automatically append ‘(optional)’ to the label as well as using [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen reader user that the field is required.
+Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
 
 ### Hide optional label
 
@@ -85,7 +85,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 `useScrollToField` is a hook that can be used to scroll and focus users to a form field on the same page.
 
-Because our labels or legends appear above the input, when using native browsers APIs users will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focussing the element solves this.
+Because our labels or legends appear above the input, when using native browsers APIs, users will be presented with an input without any context, as the label or legend will be off the top of the screen. Manually handling the click event, scrolling the question into view and then focusing the element solves this.
 
 Please refer to the [example site single-page form example](/example-site/single-page-form) to see an example of this hook in use.
 
