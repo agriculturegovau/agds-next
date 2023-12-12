@@ -153,7 +153,7 @@ export function getFileRejectionErrorMessage(
 export function getErrorSummary(
 	rejections: RejectedFile[],
 	formattedMaxFileSize: string,
-	maxFiles: number | undefined
+	maxFiles: number
 ) {
 	if (!rejections?.length) return;
 
@@ -166,7 +166,9 @@ export function getErrorSummary(
 	const firstErrorCode = uniqueErrorCodes[0];
 
 	if (firstErrorCode === 'too-many-files') {
-		return `You can not select more than ${maxFiles} files`;
+		return `You can not select more than ${maxFiles} ${
+			maxFiles === 1 ? 'file' : 'files'
+		}`;
 	}
 
 	if (uniqueErrorCodes.length === 1) {

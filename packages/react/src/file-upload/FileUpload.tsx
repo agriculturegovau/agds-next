@@ -82,7 +82,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			label,
 			hideOptionalLabel,
 			hideThumbnails = false,
-			maxFiles,
+			maxFiles = 1,
 			maxSize,
 			multiple,
 			value = [],
