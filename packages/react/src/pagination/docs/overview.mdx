@@ -15,7 +15,7 @@ relatedPatterns: ['search-filters']
 />
 ```
 
-Pagination allows users to see total number of pages, which page they are viewing, and how to navigate to other pages.
+Pagination allows users to see the total number of pages, which page they are viewing, and how to navigate to other pages.
 
 Use pagination to separate large lists of content, such as search results, into smaller lists that are easier to interact with. Showing content on several pages prevents your content from becoming too long and overwhelming.
 
@@ -35,11 +35,11 @@ Use pagination to separate large lists of content, such as search results, into 
 
 ## Pagination Buttons
 
-By default, the `Pagination` component renders a link for each list item. We strongly recommend using wherever possible as it the most inclusive and accessible solution for users.
+By default, the `Pagination` component renders a link for each list item. We strongly recommend using links wherever possible as it the most inclusive and accessible solution for users.
 
-This requires you to manage the state of the current page in the URL, which usually fine, but in scenarios where that isn’t possible we offer a `PaginationButtons` component.
+Links require you to manage the state of the current page in the URL, which usually is fine, but in scenarios where that isn’t possible, we offer a `PaginationButtons` component.
 
-`PaginationButtons` renders a button element for each list item which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
+`PaginationButtons` renders a button element for each list item, which makes it possible to manage the state outside of the URL, e.g. `React.useState`.
 
 ```jsx live
 () => {

@@ -49,6 +49,14 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 () => {
 	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState('31/1o/2020');
+	const onInputChange = (e) => {
+		console.log(`onInputChange, e`, onInputChange, e);
+		setValue(e);
+	};
+	const onChange = (e) => {
+		console.log(`onChange, e`, onChange, e);
+		setValue(e);
+	};
 
 	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
 	const invalid = React.useMemo(() => {
@@ -61,8 +69,8 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 		<DatePicker
 			label="Select date"
 			value={value}
-			onChange={setValue}
-			onInputChange={setValue}
+			onChange={onChange}
+			onInputChange={onInputChange}
 			{...(invalid && {
 				invalid: true,
 				message: 'Enter a valid date',

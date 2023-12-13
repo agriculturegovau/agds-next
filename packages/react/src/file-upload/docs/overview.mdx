@@ -129,7 +129,7 @@ For a complete list allowed file formats, please refer to [the source code](http
 
 ### Custom accepted file types
 
-If the file type you need to support isn’t list of allowed file formats, you can pass in your own file type to the `accept` prop.
+If the file type you need to support isn’t in the list of allowed file formats, you can pass in your own file type to the `accept` prop.
 
 This can be done by passing an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component. By default, the label will be generated using the file extension.
 
@@ -144,11 +144,11 @@ This can be done by passing an object instead of a string with `mimeType` and `e
 
 You can display a list of files that have already been uploaded by using the `existingFiles` and `onRemoveExistingFile` props.
 
-Unlike the `value`prop, which expects an array of `File` objects, `existingFiles` expects an array of objects with a name, size and thumbnail url.
+Unlike the `value` prop, which expects an array of `File` objects, `existingFiles` expects an array of objects with a name, size and thumbnail url.
 
 If a user attempts to delete an existing file, a destructive confirmation modal should be displayed. If confirmed, the file should be deleted on the server.
 
-Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images will to `thumbnailSrc` prop will result with long load times.
+Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images to `thumbnailSrc` prop will result with long load times.
 
 ```jsx live
 <FileUpload
