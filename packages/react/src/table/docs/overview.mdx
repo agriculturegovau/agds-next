@@ -435,6 +435,86 @@ A Table must have some form of caption or heading to describe the data it contai
 </Stack>
 ```
 
+## ‘colSpan’ and ‘rowSpan’
+
+Some tables require cells which represent multiple rows or columns. Instead of repeating the spanning data each time, you can use the `colSpan` and `rowSpan` props to specify how a specific cell spans multiple columns and rows, respectively.
+
+```jsx live
+<TableWrapper>
+	<Table>
+		<TableCaption>Items sold December 2023</TableCaption>
+		<TableHead>
+			<TableRow>
+				<TableHeader colSpan="2"></TableHeader>
+				<TableHeader scope="col">Trousers</TableHeader>
+				<TableHeader scope="col">Skirts</TableHeader>
+				<TableHeader scope="col">Dresses</TableHeader>
+				<TableHeader scope="col">Bracelets</TableHeader>
+				<TableHeader scope="col">Rings</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" rowSpan="2" scope="rowgroup">
+					Australia
+				</TableCell>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Canberra
+				</TableCell>
+				<TableCell as="td">80</TableCell>
+				<TableCell as="td">12</TableCell>
+				<TableCell as="td">43</TableCell>
+				<TableCell as="td">36</TableCell>
+				<TableCell as="td">19</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Sydney
+				</TableCell>
+				<TableCell as="td">89</TableCell>
+				<TableCell as="td">34</TableCell>
+				<TableCell as="td">69</TableCell>
+				<TableCell as="td">85</TableCell>
+				<TableCell as="td">38</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" rowSpan="3" scope="rowgroup">
+					Belgium
+				</TableCell>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Antwerp
+				</TableCell>
+				<TableCell as="td">56</TableCell>
+				<TableCell as="td">22</TableCell>
+				<TableCell as="td">43</TableCell>
+				<TableCell as="td">72</TableCell>
+				<TableCell as="td">23</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Brussels
+				</TableCell>
+				<TableCell as="td">51</TableCell>
+				<TableCell as="td">27</TableCell>
+				<TableCell as="td">38</TableCell>
+				<TableCell as="td">69</TableCell>
+				<TableCell as="td">28</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Gent
+				</TableCell>
+				<TableCell as="td">46</TableCell>
+				<TableCell as="td">18</TableCell>
+				<TableCell as="td">50</TableCell>
+				<TableCell as="td">61</TableCell>
+				<TableCell as="td">15</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
 ## Actions
 
 The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column, beneath the table header labeled ‘Actions’.
