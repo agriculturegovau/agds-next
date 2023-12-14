@@ -125,7 +125,10 @@ export default function PackagesHome({
 									lineHeight="heading"
 								>
 									{hasFilters ? 'Components' : 'All Components'} (
-									{filteredPkgs.length} items)
+									{filteredPkgs.length === 1
+										? '1 item'
+										: `${filteredPkgs.length} items`}
+									)
 								</Text>
 
 								<PkgCardList items={filteredPkgs} />

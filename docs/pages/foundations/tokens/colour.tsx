@@ -45,7 +45,7 @@ export default function TokensColorPage() {
 				<Prose>
 					<h2 id="colour-palettes">Colour palettes</h2>
 					<p>
-						There are 2 colour palettes, light and dark. Each colour palette is
+						There are 2 colour palettes: light and dark. Each colour palette is
 						divided into foreground, background, border, and system colours
 						which all have a specific purpose.
 					</p>

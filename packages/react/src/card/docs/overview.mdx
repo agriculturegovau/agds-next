@@ -13,7 +13,7 @@ Cards can contain multiple elements, such as images, links, actions, text and mo
 
 Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should be equal in height and the same type.
 
-Consider using other formats such as tables if more than 12 cards are required.
+Consider using other formats such as tables, if more than 12 cards are required.
 
 ```jsx live
 <Flex gap={1} flexDirection="row">
@@ -66,7 +66,7 @@ Consider using other formats such as tables if more than 12 cards are required.
 
 - use link cards to provide a contextual link to another page
 - limit links to one per card
-- avoid images for the most part unless they add relevant information
+- avoid images for the most part, unless they add relevant information
 - use a pictogram (64 pixels) if it provides meaningful context
 - use appropriate alt text for images.
 
@@ -82,7 +82,7 @@ Consider using other formats such as tables if more than 12 cards are required.
 
 ## Images
 
-A card with an image. For full width images, add the img tag outside the `CardInner` container. For images with inner padding, add the img tag inside the `CardInner` container.
+For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding, add the `img` tag inside the `CardInner` container.
 
 ```jsx live
 <Card>

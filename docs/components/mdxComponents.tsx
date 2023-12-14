@@ -35,6 +35,7 @@ import {
 	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
+import { Callout } from '@ag.ds-next/react/callout';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
@@ -56,6 +57,11 @@ import {
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
+	blockquote: ({ children }) => (
+		<div className={proseBlockClassname}>
+			<Callout>{children}</Callout>
+		</div>
+	),
 	pre: ({
 		children,
 		live,

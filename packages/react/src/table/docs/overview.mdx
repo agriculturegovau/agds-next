@@ -84,7 +84,7 @@ relatedPatterns: ['selectable-table-with-batch-actions', 'search-filters']
 
 Tables are used to scan for information and compare values. They are useful for displaying exact values or information that would be hard to read in body text.
 
-For data tables with a small amount of rows use the default table. Align text columns and corresponding data cells to the left. When comparing numbers in a column, align data cells and column headers to the right.
+For data tables with a small amount of rows, use the default table. Align text columns and corresponding data cells to the left. When comparing numbers in a column, align data cells and column headers to the right.
 
 <DoHeading />
 
@@ -113,13 +113,13 @@ For data tables with a small amount of rows use the default table. Align text co
 
 ## Striped
 
-Use tiger stripes for tables with complex information:
+Use zebra stripes for tables with complex information:
 
 - 4 or more rows
 - 3 or more columns
 - comparing important or similar information.
 
-You can enable tiger stripes by applying the `striped` prop.
+You can enable zebra stripes by applying the `striped` prop.
 
 ```jsx live
 <TableWrapper>
@@ -347,9 +347,7 @@ A Table must have some form of caption or heading to describe the data it contai
 ```jsx live
 <Stack gap={1}>
 	<H3 id="table-heading">Applications</H3>
-	<Text id="table-description">
-		This list of active establishment registrations
-	</Text>
+	<Text id="table-description">Active establishment registrations</Text>
 	<TableWrapper>
 		<Table aria-labelledby="table-heading" aria-describedby="table-description">
 			<TableHead>
@@ -439,7 +437,7 @@ A Table must have some form of caption or heading to describe the data it contai
 
 ## Actions
 
-The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column beneath the table header labeled ‘Actions’.
+The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column, beneath the table header labeled ‘Actions’.
 
 If each table row can open a page to view more information, the cells in the first column should be displayed as bold clickable links under the table header labeled with the unique identifier.
 
