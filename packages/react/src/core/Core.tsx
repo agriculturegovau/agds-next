@@ -43,7 +43,6 @@ export function Core({
 						'body, html': boxPalettes.light,
 					},
 					applyReset && {
-						// FIXME: apply the css reset
 						'body, html': {
 							margin: 0,
 							padding: 0,
@@ -51,6 +50,7 @@ export function Core({
 							fontFamily: tokens.font.body,
 						},
 						html: {
+							// Prevent shifting layout between short & long pages
 							scrollbarGutter: 'stable',
 						},
 					},
