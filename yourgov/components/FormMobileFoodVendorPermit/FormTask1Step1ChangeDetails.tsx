@@ -6,15 +6,17 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { H2 } from '@ag.ds-next/react/heading';
+import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Divider } from '@ag.ds-next/react/divider';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useGlobalForm } from './GlobalFormProvider';
-import { FormTask1Container } from './FormTask1Container';
 import {
 	task1Step1FormSchema,
 	Task1Step1FormSchema,
@@ -74,91 +76,96 @@ export function FormTask1Step1ChangeDetails() {
 	}, [hasErrors, focusedError, errors]);
 
 	return (
-		<FormTask1Container
-			formTitle="Owner details"
-			formIntroduction="Confirm your name and contact details."
-			formCallToAction={<FormRequiredFieldsMessage />}
-			isSideFlow
-			backHref={step1Path}
-		>
-			<Stack gap={3} alignItems="flex-start" width="100%">
-				<Stack gap={1.5} width="100%">
-					<H2>Update personal details</H2>
-					<FormRequiredFieldsMessage />
-					<Stack
-						as="form"
-						gap={3}
-						onSubmit={handleSubmit(onSubmit, onError)}
-						noValidate
-					>
-						<FormStack>
-							{hasErrors && (
-								<PageAlert
-									ref={errorRef}
-									tone="error"
-									title="There is a problem"
-									tabIndex={-1}
-								>
-									<Text as="p">
-										Please correct the following fields and try again
-									</Text>
-									<UnorderedList>
-										{Object.entries(errors).map(([key, value]) => (
-											<ListItem key={key}>
-												<TextLink href={`#${key}`} onClick={scrollToField}>
-													{Array.isArray(value)
-														? value[0].message
-														: value.message}
-												</TextLink>
-											</ListItem>
-										))}
-									</UnorderedList>
-								</PageAlert>
-							)}
-							<TextInput
-								label="First name"
-								autoComplete="given-name"
-								{...register('firstName')}
-								id="firstName"
-								invalid={Boolean(errors.firstName?.message)}
-								message={errors.firstName?.message}
-								maxWidth="xl"
-								autoFocus
-								required
-							/>
-							<TextInput
-								label="Last name"
-								autoComplete="family-name"
-								{...register('lastName')}
-								id="lastName"
-								invalid={Boolean(errors.lastName?.message)}
-								message={errors.lastName?.message}
-								maxWidth="xl"
-								required
-							/>
-							<TextInput
-								label="Email"
-								type="email"
-								autoComplete="email"
-								{...register('email')}
-								id="email"
-								invalid={Boolean(errors.email?.message)}
-								message={errors.email?.message}
-								maxWidth="xl"
-								required
-							/>
-						</FormStack>
-						<ButtonGroup>
-							<Button type="submit" loading={isSaving}>
-								Save changes
-							</Button>
-							<Button variant="tertiary" onClick={onDiscardChangesClick}>
-								Discard changes
-							</Button>
-						</ButtonGroup>
+		<Columns>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
+				<Stack gap={3} alignItems="flex-start">
+					<DirectionLink direction="left" href={step1Path}>
+						Back
+					</DirectionLink>
+					<Stack gap={1.5}>
+						<H1>Provide business owner details</H1>
+						<Text as="p" fontSize="md" color="muted">
+							Confirm your name and contact details.
+						</Text>
+						<FormRequiredFieldsMessage />
+					</Stack>
+					<Stack gap={1.5} width="100%">
+						<Stack
+							as="form"
+							gap={3}
+							onSubmit={handleSubmit(onSubmit, onError)}
+							noValidate
+						>
+							<FormStack>
+								{hasErrors && (
+									<PageAlert
+										ref={errorRef}
+										tone="error"
+										title="There is a problem"
+										tabIndex={-1}
+									>
+										<Text as="p">
+											Please correct the following fields and try again
+										</Text>
+										<UnorderedList>
+											{Object.entries(errors).map(([key, value]) => (
+												<ListItem key={key}>
+													<TextLink href={`#${key}`} onClick={scrollToField}>
+														{Array.isArray(value)
+															? value[0].message
+															: value.message}
+													</TextLink>
+												</ListItem>
+											))}
+										</UnorderedList>
+									</PageAlert>
+								)}
+								<TextInput
+									label="First name"
+									autoComplete="given-name"
+									{...register('firstName')}
+									id="firstName"
+									invalid={Boolean(errors.firstName?.message)}
+									message={errors.firstName?.message}
+									maxWidth="xl"
+									autoFocus
+									required
+								/>
+								<TextInput
+									label="Last name"
+									autoComplete="family-name"
+									{...register('lastName')}
+									id="lastName"
+									invalid={Boolean(errors.lastName?.message)}
+									message={errors.lastName?.message}
+									maxWidth="xl"
+									required
+								/>
+								<TextInput
+									label="Email"
+									type="email"
+									autoComplete="email"
+									{...register('email')}
+									id="email"
+									invalid={Boolean(errors.email?.message)}
+									message={errors.email?.message}
+									maxWidth="xl"
+									required
+								/>
+							</FormStack>
+							<Divider />
+							<ButtonGroup>
+								<Button type="submit" loading={isSaving}>
+									Save changes
+								</Button>
+								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+									Discard changes
+								</Button>
+							</ButtonGroup>
+						</Stack>
 					</Stack>
 				</Stack>
-			</Stack>
-		</FormTask1Container>
+			</Column>
+		</Columns>
 	);
 }
