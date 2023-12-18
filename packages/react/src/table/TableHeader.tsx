@@ -3,6 +3,8 @@ import { Box } from '../box';
 import { ResponsiveProp } from '../core';
 
 export type TableHeaderProps = PropsWithChildren<{
+	/** The HTML element to render. */
+	as?: 'td' | 'th';
 	/** Specifies how many columns this cell spans */
 	colSpan?: number;
 	/** Can be used to conditionally hide or show table cells at different breakpoints. */
@@ -18,6 +20,7 @@ export type TableHeaderProps = PropsWithChildren<{
 }>;
 
 export const TableHeader = ({
+	as = 'th',
 	children,
 	colSpan,
 	rowSpan,
@@ -28,7 +31,7 @@ export const TableHeader = ({
 }: TableHeaderProps) => {
 	return (
 		<Box
-			as="th"
+			as={as}
 			color="text"
 			colSpan={colSpan}
 			focus
