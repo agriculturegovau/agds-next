@@ -68,7 +68,7 @@ export function AppLayout({
 	if (!hasLoadedUser) return null;
 
 	// Application pages are not visible when you are logged out
-	if (!user) return <NotFoundPage />;
+	// if (!user) return <NotFoundPage />;
 
 	return (
 		<Fragment>
@@ -108,7 +108,7 @@ export function AppLayout({
 	);
 }
 
-function AppLayoutHeader({ user }: { user: User }) {
+function AppLayoutHeader({ user }: { user?: User }) {
 	const { pathname, push } = useRouter();
 	const { linkedBusinesses, selectedBusiness, setSelectedBusiness } =
 		useLinkedBusinesses();
@@ -127,7 +127,7 @@ function AppLayoutHeader({ user }: { user: User }) {
 			logo={<Logo />}
 			href="/app"
 			accountDetails={{
-				name: user.displayName,
+				name: user?.displayName ?? 'UNKNOWN',
 				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
 				dropdown: (
 					<DropdownMenuPanel palette="light">

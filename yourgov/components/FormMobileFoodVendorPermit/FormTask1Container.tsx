@@ -13,19 +13,23 @@ import { FormContainer } from './FormContainer';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 type FormTask1ContainerProps = PropsWithChildren<{
+	isSideFlow?: boolean;
+	backHref?: string;
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
 }>;
 
 export function FormTask1Container({
+	isSideFlow = false,
+	backHref: backHrefProp,
 	formTitle,
 	formIntroduction,
 	formCallToAction,
 	children,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
-	const { isSideFlow, formState, typeSearchParm } = useGlobalForm();
+	const { formState, typeSearchParm } = useGlobalForm();
 	const { backHref } = useFormTask1Context();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
@@ -55,7 +59,7 @@ export function FormTask1Container({
 				columnStart={isSideFlow ? undefined : { lg: 5 }}
 			>
 				<Stack gap={3} alignItems="flex-start">
-					<DirectionLink direction="left" href={backHref}>
+					<DirectionLink direction="left" href={backHrefProp ?? backHref}>
 						Back
 					</DirectionLink>
 					<FormContainer

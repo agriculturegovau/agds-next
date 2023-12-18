@@ -19,9 +19,6 @@ type ContextType = {
 	// Task status
 	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
 	startTask: (key: TaskKey) => void;
-	// Side flow
-	isSideFlow: boolean;
-	setIsSideFlow: (isSideFlow: boolean) => void;
 	// Form state
 	formState: DeepPartial<FormState>;
 	setFormState: (formState: DeepPartial<FormState>) => void;
@@ -75,7 +72,6 @@ export function GlobalFormProvider({
 		[setFormState]
 	);
 
-	const [isSideFlow, setIsSideFlow] = useState(false);
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
 	const cancel = useCallback(() => {
@@ -100,9 +96,6 @@ export function GlobalFormProvider({
 		// task status
 		getTaskStatus,
 		startTask,
-		// side flow
-		isSideFlow,
-		setIsSideFlow,
 		// form state
 		formState,
 		setFormState,

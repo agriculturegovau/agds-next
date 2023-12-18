@@ -8,6 +8,7 @@ export { GettingStartedForm } from './GettingStartedForm';
 // Task 1
 export { FormTask1Provider, task1FormSteps } from './FormTask1Provider';
 export { FormTask1Step1 } from './FormTask1Step1';
+export { FormTask1Step1ChangeDetails } from './FormTask1Step1ChangeDetails';
 export { FormTask1Step2 } from './FormTask1Step2';
 export { FormTask1Step3 } from './FormTask1Step3';
 export { FormTask1Step4 } from './FormTask1Step4';
