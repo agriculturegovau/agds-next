@@ -1,6 +1,5 @@
 import * as yup from 'yup';
-import parseISO from 'date-fns/parseISO';
-import isValid from 'date-fns/isValid';
+import { parseISO, isValid } from 'date-fns';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -12,8 +11,11 @@ export const yupDateField = yup
 
 // Session storage converts converts dates to ISO strings, so we need to convert these values back to dates
 export function parseDateField(value: Date | string | undefined) {
-	const parsedValue = typeof value === 'string' ? parseISO(value) : value;
-	return isValid(parsedValue) ? (value as Date) : undefined;
+	if (typeof value === 'string') {
+		const parsedValue = parseISO(value);
+		return isValid(parsedValue) ? parsedValue : undefined;
+	}
+	return value;
 }
 
 export const yupPhoneField = yup

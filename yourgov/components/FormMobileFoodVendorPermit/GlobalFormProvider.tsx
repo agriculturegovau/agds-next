@@ -40,7 +40,7 @@ export function GlobalFormProvider({
 }: FormMobileFoodVendorPermitProps) {
 	const router = useRouter();
 
-	const [formState, setFormState] = useSessionFormState(
+	const [hasSynced, formState, setFormState] = useSessionFormState(
 		'FormMobileFoodVendorPermit',
 		defaultFormState as DeepPartial<FormState>
 	);
@@ -88,6 +88,8 @@ export function GlobalFormProvider({
 			router.push(homePageUrl);
 		}, 1500);
 	}, [homePageUrl, router]);
+
+	if (!hasSynced) return null;
 
 	const contextValue: ContextType = {
 		formTitle,

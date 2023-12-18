@@ -6,7 +6,7 @@ export function useSessionFormState<FormState>(
 	key: string,
 	initialValue: Partial<FormState>
 ) {
-	// const [hasSynced, setHasSynced] = useState(false);
+	const [hasSynced, setHasSynced] = useState(false);
 	const [localFormState, setLocalFormState] = useState(initialValue);
 
 	useEffect(() => {
@@ -14,6 +14,7 @@ export function useSessionFormState<FormState>(
 		const value = sessionStorage.getItem(key);
 		const parsedValue = value ? (JSON.parse(value) as FormState) : null;
 		if (parsedValue) setLocalFormState(parsedValue);
+		setHasSynced(true);
 	}, [initialValue, key]);
 
 	const setState = useCallback(
@@ -29,7 +30,7 @@ export function useSessionFormState<FormState>(
 		[localFormState, key]
 	);
 
-	return [localFormState, setState] as const;
+	return [hasSynced, localFormState, setState] as const;
 }
 
 export function useHasStartedSessionForm(key: string) {
