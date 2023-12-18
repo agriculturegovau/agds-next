@@ -153,7 +153,7 @@ export function getFileRejectionErrorMessage(
 export function getErrorSummary(
 	rejections: RejectedFile[],
 	formattedMaxFileSize: string,
-	maxFiles: number
+	maxFiles = 1
 ) {
 	if (!rejections?.length) return;
 
