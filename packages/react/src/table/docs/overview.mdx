@@ -445,12 +445,12 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 		<TableCaption>Items sold December 2023</TableCaption>
 		<TableHead>
 			<TableRow>
-				<TableHeader colSpan="2"></TableHeader>
+				<TableHeader>Country</TableHeader>
+				<TableHeader>City</TableHeader>
 				<TableHeader scope="col">Trousers</TableHeader>
 				<TableHeader scope="col">Skirts</TableHeader>
 				<TableHeader scope="col">Dresses</TableHeader>
 				<TableHeader scope="col">Bracelets</TableHeader>
-				<TableHeader scope="col">Rings</TableHeader>
 			</TableRow>
 		</TableHead>
 		<TableBody>
@@ -461,21 +461,19 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 				<TableCell as="th" fontWeight="bold" scope="row">
 					Canberra
 				</TableCell>
-				<TableCell>80</TableCell>
-				<TableCell>12</TableCell>
-				<TableCell>43</TableCell>
-				<TableCell>36</TableCell>
-				<TableCell>19</TableCell>
+				<TableCell textAlign="right">80</TableCell>
+				<TableCell textAlign="right">12</TableCell>
+				<TableCell textAlign="right">43</TableCell>
+				<TableCell textAlign="right">36</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" fontWeight="bold" scope="row">
 					Sydney
 				</TableCell>
-				<TableCell>89</TableCell>
-				<TableCell>34</TableCell>
-				<TableCell>69</TableCell>
-				<TableCell>85</TableCell>
-				<TableCell>38</TableCell>
+				<TableCell textAlign="right">89</TableCell>
+				<TableCell textAlign="right">34</TableCell>
+				<TableCell textAlign="right">69</TableCell>
+				<TableCell textAlign="right">85</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" fontWeight="bold" rowSpan="3" scope="rowgroup">
@@ -484,31 +482,28 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 				<TableCell as="th" fontWeight="bold" scope="row">
 					Antwerp
 				</TableCell>
-				<TableCell>56</TableCell>
-				<TableCell>22</TableCell>
-				<TableCell>43</TableCell>
-				<TableCell>72</TableCell>
-				<TableCell>23</TableCell>
+				<TableCell textAlign="right">56</TableCell>
+				<TableCell textAlign="right">22</TableCell>
+				<TableCell textAlign="right">43</TableCell>
+				<TableCell textAlign="right">72</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" fontWeight="bold" scope="row">
 					Brussels
 				</TableCell>
-				<TableCell>51</TableCell>
-				<TableCell>27</TableCell>
-				<TableCell>38</TableCell>
-				<TableCell>69</TableCell>
-				<TableCell>28</TableCell>
+				<TableCell textAlign="right">51</TableCell>
+				<TableCell textAlign="right">27</TableCell>
+				<TableCell textAlign="right">38</TableCell>
+				<TableCell textAlign="right">69</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" fontWeight="bold" scope="row">
 					Gent
 				</TableCell>
-				<TableCell>46</TableCell>
-				<TableCell>18</TableCell>
-				<TableCell>50</TableCell>
-				<TableCell>61</TableCell>
-				<TableCell>15</TableCell>
+				<TableCell textAlign="right">46</TableCell>
+				<TableCell textAlign="right">18</TableCell>
+				<TableCell textAlign="right">50</TableCell>
+				<TableCell textAlign="right">61</TableCell>
 			</TableRow>
 		</TableBody>
 	</Table>
@@ -538,11 +533,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-AB3CD4EF</TextLink>
 				</TableCell>
-				<TableCell>20/06/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">20/06/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -553,11 +548,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-5GH6IJ7K</TextLink>
 				</TableCell>
-				<TableCell>25/06/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">25/06/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -568,11 +563,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-M8NO9PQR</TextLink>
 				</TableCell>
-				<TableCell>02/07/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">02/07/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="success" label="Completed" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -583,11 +578,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-S1TU2VWX</TextLink>
 				</TableCell>
-				<TableCell>05/08/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">05/08/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -598,11 +593,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-Y3ZA4B5C</TextLink>
 				</TableCell>
-				<TableCell>19/10/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">19/10/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="success" label="Completed" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
