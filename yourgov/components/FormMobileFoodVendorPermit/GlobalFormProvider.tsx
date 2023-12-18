@@ -89,6 +89,7 @@ export function GlobalFormProvider({
 		}, 1500);
 	}, [homePageUrl, router]);
 
+	// Prevent the form rendering until the users progress has been loaded from session storage
 	if (!hasSynced) return null;
 
 	const contextValue: ContextType = {
