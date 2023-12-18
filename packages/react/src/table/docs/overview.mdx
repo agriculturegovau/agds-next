@@ -435,6 +435,80 @@ A Table must have some form of caption or heading to describe the data it contai
 </Stack>
 ```
 
+## ‘colSpan’ and ‘rowSpan’
+
+Some tables require cells which represent multiple rows or columns. Instead of repeating the spanning data each time, you can use the `colSpan` and `rowSpan` props to specify how a specific cell spans multiple columns and rows, respectively.
+
+```jsx live
+<TableWrapper>
+	<Table>
+		<TableCaption>Items sold December 2023</TableCaption>
+		<TableHead>
+			<TableRow>
+				<TableHeader as="td" colSpan={2}></TableHeader>
+				<TableHeader scope="col">Trousers</TableHeader>
+				<TableHeader scope="col">Skirts</TableHeader>
+				<TableHeader scope="col">Dresses</TableHeader>
+				<TableHeader scope="col">Bracelets</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" rowSpan="2" scope="rowgroup">
+					Australia
+				</TableCell>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Canberra
+				</TableCell>
+				<TableCell textAlign="right">80</TableCell>
+				<TableCell textAlign="right">12</TableCell>
+				<TableCell textAlign="right">43</TableCell>
+				<TableCell textAlign="right">36</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Sydney
+				</TableCell>
+				<TableCell textAlign="right">89</TableCell>
+				<TableCell textAlign="right">34</TableCell>
+				<TableCell textAlign="right">69</TableCell>
+				<TableCell textAlign="right">85</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" rowSpan="3" scope="rowgroup">
+					Belgium
+				</TableCell>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Antwerp
+				</TableCell>
+				<TableCell textAlign="right">56</TableCell>
+				<TableCell textAlign="right">22</TableCell>
+				<TableCell textAlign="right">43</TableCell>
+				<TableCell textAlign="right">72</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Brussels
+				</TableCell>
+				<TableCell textAlign="right">51</TableCell>
+				<TableCell textAlign="right">27</TableCell>
+				<TableCell textAlign="right">38</TableCell>
+				<TableCell textAlign="right">69</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" fontWeight="bold" scope="row">
+					Gent
+				</TableCell>
+				<TableCell textAlign="right">46</TableCell>
+				<TableCell textAlign="right">18</TableCell>
+				<TableCell textAlign="right">50</TableCell>
+				<TableCell textAlign="right">61</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
 ## Actions
 
 The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column, beneath the table header labeled ‘Actions’.
@@ -458,11 +532,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-AB3CD4EF</TextLink>
 				</TableCell>
-				<TableCell>20/06/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">20/06/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -473,11 +547,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-5GH6IJ7K</TextLink>
 				</TableCell>
-				<TableCell>25/06/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">25/06/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -488,11 +562,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-M8NO9PQR</TextLink>
 				</TableCell>
-				<TableCell>02/07/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">02/07/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="success" label="Completed" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -503,11 +577,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-S1TU2VWX</TextLink>
 				</TableCell>
-				<TableCell>05/08/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">05/08/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="info" label="In progress" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>
@@ -518,11 +592,11 @@ If each table row can open a page to view more information, the cells in the fir
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">REF-Y3ZA4B5C</TextLink>
 				</TableCell>
-				<TableCell>19/10/2022</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">19/10/2022</TableCell>
+				<TableCell textAlign="right">
 					<StatusBadge weight="subtle" tone="success" label="Completed" />
 				</TableCell>
-				<TableCell>
+				<TableCell textAlign="right">
 					<Flex gap={1}>
 						<TextLink href="#">Edit</TextLink>
 						<TextLink href="#">Download</TextLink>

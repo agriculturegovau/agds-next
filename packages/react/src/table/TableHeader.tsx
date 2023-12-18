@@ -3,8 +3,14 @@ import { Box } from '../box';
 import { ResponsiveProp } from '../core';
 
 export type TableHeaderProps = PropsWithChildren<{
+	/** The HTML element to render. */
+	as?: 'td' | 'th';
+	/** Specifies how many columns this cell spans */
+	colSpan?: number;
 	/** Can be used to conditionally hide or show table cells at different breakpoints. */
 	display?: ResponsiveProp<'none' | 'table-cell'>;
+	/** Specifies how many rows this cell spans */
+	rowSpan?: number;
 	/** Defines the cells that the header (defined in the <th>) element relates to. */
 	scope?: 'col' | 'row' | 'colgroup' | 'rowgroup';
 	/** Sets the horizontal alignment of the content. */
@@ -14,20 +20,27 @@ export type TableHeaderProps = PropsWithChildren<{
 }>;
 
 export const TableHeader = ({
+	as = 'th',
 	children,
+	colSpan,
+	rowSpan,
+	scope,
 	textAlign = 'left',
 	width,
 	...props
 }: TableHeaderProps) => {
 	return (
 		<Box
-			as="th"
+			as={as}
 			color="text"
-			padding={0.75}
-			fontWeight="bold"
+			colSpan={colSpan}
 			focus
-			width={width}
+			fontWeight="bold"
+			padding={0.75}
+			rowSpan={rowSpan}
+			scope={scope}
 			textAlign={textAlign}
+			width={width}
 			{...props}
 		>
 			{children}
