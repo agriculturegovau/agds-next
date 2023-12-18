@@ -50,11 +50,11 @@ function ClearableDateRangePicker({
 }
 
 const fromDateFieldBase = yupDateField
-	// Ensures the start date is always after the end date
+	// Ensures the end date is always after the start date
 	.max(yup.ref('to'), 'Start date must be before the end date');
 
 const toDateFieldBase = yupDateField
-	// Ensures the start date is always after the end date
+	// Ensures the end date is always after the start date
 	.min(yup.ref('from'), 'Start date must be before the end date');
 
 const formSchema = (required: boolean) =>

@@ -64,7 +64,7 @@ export function FormTask1Step5() {
 		setFocusedError(false);
 	};
 
-	// As our form schema contains nested objects, we are the converting errors from a nested object to a simple flat array
+	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
 	const flatErrors = Object.entries(errors)
 		.map(([key, value]) => {
 			if ('message' in value) return { key, message: value.message };
