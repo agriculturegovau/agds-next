@@ -6,7 +6,6 @@ import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
-// import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export function FormActions() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
