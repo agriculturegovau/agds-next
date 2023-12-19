@@ -32,5 +32,5 @@ export const yupPhoneField = yup
 	})
 	.matches(/^\d+.{9}$/, {
 		excludeEmptyString: true,
-		message: 'Number must be 10 digits',
+		message: 'Phone number must be 10 digits',
 	});
