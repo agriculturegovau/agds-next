@@ -74,6 +74,7 @@ export function AppLayoutSidebarDialog({
 							<AnimatedBox
 								display={{ [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
 								role="dialog"
+								aria-label="Menu"
 								aria-modal="true"
 								background="shade"
 								width={APP_LAYOUT_SIDEBAR_WIDTH}
