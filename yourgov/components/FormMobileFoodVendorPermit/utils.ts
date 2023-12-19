@@ -23,14 +23,15 @@ export const yupPhoneField = yup
 	.transform((current) => current.replace(/ /g, ''))
 	.matches(/^\d+$/, {
 		excludeEmptyString: true,
-		message: 'Number must not include letters or symbols',
+		message: 'Phone number must not include letters or symbols',
 	})
 	.matches(/^0\d+$/, {
 		excludeEmptyString: true,
 		message:
 			"Mobile numbers must begin with '04', landline numbers must begin with an area code",
 	})
-	.matches(/^\d+.{9}$/, {
-		excludeEmptyString: true,
-		message: 'Phone number must be 10 digits',
-	});
+	.test(
+		'10-digits-with-spaces',
+		'Phone number must be 10 digits',
+		(value) => value?.trim().length === 10
+	);
