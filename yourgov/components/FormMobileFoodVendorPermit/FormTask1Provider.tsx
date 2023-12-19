@@ -4,6 +4,7 @@ import {
 	PropsWithChildren,
 	useCallback,
 	useContext,
+	useMemo,
 } from 'react';
 import { useGlobalForm } from './GlobalFormProvider';
 
@@ -49,20 +50,25 @@ export const task1FormSteps = [
 ] as const;
 
 type ContextType = {
+	/** The href of the previous step. */
 	backHref: string;
-	submitStep: () => void;
+	/** Callback function to submit the current step. */
+	submitStep: () => Promise<void>;
+	/** If true, the user can access the "confirm and submit step".  */
+	canConfirmAndSubmit: boolean;
 };
 
 const context = createContext<ContextType | undefined>(undefined);
 
 export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
-	const { setIsSubmittingStep, typeSearchParm } = useGlobalForm();
+	const { setIsSubmittingStep, typeSearchParm, formState } = useGlobalForm();
 
 	const currentStepIndex = task1FormSteps.findIndex(
 		({ href }) => href === pathname
 	);
 
+	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
 		setIsSubmittingStep(true);
 		// Fake API network call
@@ -75,13 +81,30 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 		setIsSubmittingStep(false);
 	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
 
+	// The href of the previous step
 	const backHref = `${
 		task1FormSteps[currentStepIndex - 1]?.href ?? formHomePage
 	}?type=${typeSearchParm}`;
 
+	// If true, the user can access the "confirm and submit step"
+	const canConfirmAndSubmit = useMemo(() => {
+		if (
+			!formState.task1?.step1?.completed ||
+			!formState.task1?.step2?.completed ||
+			!formState.task1?.step3?.completed ||
+			!formState.task1?.step4?.completed ||
+			!formState.task1?.step5?.completed ||
+			!formState.task1?.step6?.completed
+		) {
+			return false;
+		}
+		return true;
+	}, [formState]);
+
 	const contextValue = {
 		backHref,
 		submitStep,
+		canConfirmAndSubmit,
 	};
 
 	return <context.Provider value={contextValue}>{children}</context.Provider>;

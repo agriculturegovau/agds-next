@@ -75,6 +75,14 @@ export function FormTask1Step1ChangeDetails() {
 		}
 	}, [hasErrors, focusedError, errors]);
 
+	const titleRef = useRef<HTMLHeadingElement>(null);
+
+	// Focus the title when the user navigates to this page
+	// This usually happens in `FormContainer` component but we can't use that component here
+	useEffect(() => {
+		titleRef.current?.focus();
+	}, []);
+
 	return (
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -83,7 +91,9 @@ export function FormTask1Step1ChangeDetails() {
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
-						<H1>Provide business owner details</H1>
+						<H1 ref={titleRef} tabIndex={-1} focus>
+							Provide business owner details
+						</H1>
 						<Text as="p" fontSize="md" color="muted">
 							Confirm your name and contact details.
 						</Text>
@@ -128,7 +138,6 @@ export function FormTask1Step1ChangeDetails() {
 									invalid={Boolean(errors.firstName?.message)}
 									message={errors.firstName?.message}
 									maxWidth="xl"
-									autoFocus
 									required
 								/>
 								<TextInput

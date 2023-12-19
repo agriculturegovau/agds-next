@@ -13,16 +13,12 @@ import { FormContainer } from './FormContainer';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 type FormTask1ContainerProps = PropsWithChildren<{
-	isSideFlow?: boolean;
-	backHref?: string;
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
 }>;
 
 export function FormTask1Container({
-	isSideFlow = false,
-	backHref: backHrefProp,
 	formTitle,
 	formIntroduction,
 	formCallToAction,
@@ -30,36 +26,36 @@ export function FormTask1Container({
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, typeSearchParm } = useGlobalForm();
-	const { backHref } = useFormTask1Context();
+	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
+		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'doing';
+		// After submitting each step, the `completed` key is set to `true`
 		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
+		// The final step (confirm and submit) can only be viewed when all previous steps are complete
+		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
+		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
 
 	return (
 		<Columns>
-			{!isSideFlow && (
-				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-					<ContentBleed visible={{ md: false }}>
-						<ProgressIndicator
-							items={task1FormSteps.map(({ label, href }, index) => ({
-								label,
-								href: href + `?type=${typeSearchParm}`,
-								status: getStepStatus(index),
-							}))}
-						/>
-					</ContentBleed>
-				</Column>
-			)}
-			<Column
-				columnSpan={{ xs: 12, md: 8 }}
-				columnStart={isSideFlow ? undefined : { lg: 5 }}
-			>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ContentBleed visible={{ md: false }}>
+					<ProgressIndicator
+						items={task1FormSteps.map(({ label, href }, index) => ({
+							label,
+							href: href + `?type=${typeSearchParm}`,
+							status: getStepStatus(index),
+						}))}
+					/>
+				</ContentBleed>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
-					<DirectionLink direction="left" href={backHrefProp ?? backHref}>
+					<DirectionLink direction="left" href={backHref}>
 						Back
 					</DirectionLink>
 					<FormContainer
