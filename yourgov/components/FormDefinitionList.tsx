@@ -48,9 +48,11 @@ export function FormDefinitionListItemAddress({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{!address || !suburb || !state || !postcode
-					? null
-					: `${address}, ${suburb} ${state} ${postcode}`}
+				{address && suburb && state && postcode ? (
+					<Fragment>
+						{address}, {suburb} {state} {postcode}
+					</Fragment>
+				) : null}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
@@ -69,14 +71,14 @@ export function FormDefinitionListItemDate({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{!value ? null : (
+				{value ? (
 					<Fragment>
 						{format(
 							typeof value === 'string' ? parseISO(value) : (value as Date),
 							'dd/MM/yyyy'
 						)}
 					</Fragment>
-				)}
+				) : null}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
@@ -97,7 +99,7 @@ export function FormDefinitionListItemDateRange({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{!from || !to ? null : (
+				{from && to ? (
 					<Fragment>
 						{format(
 							typeof from === 'string' ? parseISO(from) : (from as Date),
@@ -109,7 +111,7 @@ export function FormDefinitionListItemDateRange({
 							'dd/MM/yyyy'
 						)}
 					</Fragment>
-				)}
+				) : null}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
