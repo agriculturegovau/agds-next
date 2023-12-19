@@ -119,7 +119,7 @@ export function FormTask1Step4() {
 					)}
 					<TextInput
 						label="Vehicle registration number"
-						hint="Enter a plate number, maximum 6 digits. For example ABC123."
+						hint="Enter a plate number, maximum 6 characters. For example ABC123."
 						id="registrationNumber"
 						{...register('registrationNumber')}
 						invalid={Boolean(errors.registrationNumber?.message)}
