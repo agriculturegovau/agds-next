@@ -45,7 +45,7 @@ export function FormTask1Step6() {
 					name="cuisine"
 					render={({ field: { ref, ...field } }) => (
 						<Combobox
-							label="Cuisines"
+							label="Cuisine"
 							hint="Start typing to see results"
 							inputRef={ref}
 							options={cuisineOptions}
