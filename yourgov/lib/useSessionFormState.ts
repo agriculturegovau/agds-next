@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type SetStateValue<TValue> = TValue | ((prevState: TValue) => TValue);
 
@@ -17,6 +17,9 @@ export function useSessionFormState<FormState>(
 		setHasSynced(true);
 	}, [initialValue, key]);
 
+	const localFormStateRef = useRef(localFormState);
+	localFormStateRef.current = localFormState;
+
 	const setState = useCallback(
 		(value: SetStateValue<Partial<FormState>>) => {
 			function writeStorage(key: string, value: Partial<FormState>) {
@@ -24,10 +27,10 @@ export function useSessionFormState<FormState>(
 				setLocalFormState(value);
 			}
 			value instanceof Function
-				? writeStorage(key, value(localFormState))
+				? writeStorage(key, value(localFormStateRef.current))
 				: writeStorage(key, value);
 		},
-		[localFormState, key]
+		[key]
 	);
 
 	return [hasSynced, localFormState, setState] as const;

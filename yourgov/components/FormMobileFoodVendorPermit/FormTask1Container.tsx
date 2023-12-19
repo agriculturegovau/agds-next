@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { ContentBleed } from '@ag.ds-next/react/content';
@@ -25,7 +25,7 @@ export function FormTask1Container({
 	children,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, typeSearchParm } = useGlobalForm();
+	const { formState, typeSearchParm, startTask } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
@@ -39,6 +39,11 @@ export function FormTask1Container({
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
+
+	// Ensure the task is marked as started when visiting any of the task 1 pages
+	useEffect(() => {
+		startTask('task1');
+	}, [startTask]);
 
 	return (
 		<Columns>
