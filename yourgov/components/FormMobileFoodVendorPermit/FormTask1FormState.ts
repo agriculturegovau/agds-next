@@ -81,7 +81,7 @@ export const task1Step4FormSchema = yup
 	.object({
 		registrationNumber: yup
 			.string()
-			.max(6, 'Register number can not be longer than 6 characters')
+			.max(6, 'Registration number can not be longer than 6 characters')
 			.required('Vehicle registration number is required'),
 		registrationExpiry: yupDateField.required(
 			'Vehicle registration expiry is required'
