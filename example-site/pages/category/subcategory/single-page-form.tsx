@@ -53,11 +53,11 @@ const formSchema = yup
 			.object({
 				from: yupDateField
 					.required('Enter a valid date')
-					// Ensures the start date is always after the end date
+					// Ensures the start date is always before the end date
 					.max(yup.ref('to'), 'Start date must be before the end date'),
 				to: yupDateField
 					.required('Enter a valid date')
-					// Ensures the start date is always after the end date
+					// Ensures the end date is always after the start date
 					.min(yup.ref('from'), 'Start date must be before the end date'),
 			})
 			.required('Enter a valid date'),
@@ -145,7 +145,7 @@ const SinglePageForm = () => {
 		if (isSubmitted) trigger();
 	}, [isPostalAddressSameAsStreetAddress, trigger, isSubmitted]);
 
-	// As our form schema contains nested objects, we are the converting errors from a nested object to a simple flat array
+	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
 	const flatErrors = Object.entries(errors)
 		.map(([key, value]) => {
 			if ('message' in value) return { key, message: value.message };
