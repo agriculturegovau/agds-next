@@ -76,8 +76,7 @@ export function GlobalFormProvider({
 
 	const cancel = useCallback(() => {
 		router.push(homePageUrl);
-		setFormState(defaultFormState as DeepPartial<FormState>);
-	}, [homePageUrl, router, setFormState]);
+	}, [homePageUrl, router]);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
 
