@@ -13,7 +13,7 @@ describe('yupPhoneField', () => {
 			yupPhoneField.validateSync('04xyz');
 		}).toThrow('Phone number must not include letters or symbols');
 		expect(() => {
-			yupPhoneField.validateSync('#o43o_~!');
+			yupPhoneField.validateSync('#o43o	_~! ');
 		}).toThrow('Phone number must not include letters or symbols');
 	});
 

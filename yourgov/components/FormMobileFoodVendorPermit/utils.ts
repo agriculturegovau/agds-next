@@ -20,7 +20,7 @@ export function parseDateField(value: Date | string | undefined) {
 
 export const yupPhoneField = yup
 	.string()
-	.transform((current) => current.replace(/ /g, ''))
+	.transform((current) => current.replace(/\s/g, ''))
 	.matches(/^\d+$/, {
 		excludeEmptyString: true,
 		message: 'Phone number must not include letters or symbols',
@@ -30,8 +30,4 @@ export const yupPhoneField = yup
 		message:
 			"Mobile numbers must begin with '04', landline numbers must begin with an area code",
 	})
-	.test(
-		'10-digits-with-spaces',
-		'Phone number must be 10 digits',
-		(value) => value?.trim().length === 10
-	);
+	.length(10, 'Phone number must be 10 digits');
