@@ -53,7 +53,7 @@ const formSchema = yup
 			.object({
 				from: yupDateField
 					.required('Enter a valid date')
-					// Ensures the end date is always after the start date
+					// Ensures the start date is always before the end date
 					.max(yup.ref('to'), 'Start date must be before the end date'),
 				to: yupDateField
 					.required('Enter a valid date')
