@@ -94,9 +94,11 @@ const calendarComponents: CustomComponents = {
 	// By default, the year select will include the previous and next 10 years
 	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
 	CaptionLabel: function CaptionLabel({ displayMonth, id }: CaptionLabelProps) {
+		const { goToMonth } = useNavigation();
+
+		const month = getMonth(displayMonth);
 		const year = getYear(displayMonth);
 
-		const { goToMonth } = useNavigation();
 		const onYearChange = useCallback(
 			(event: ChangeEvent<HTMLSelectElement>) => {
 				const year = parseInt(event.target.value);
@@ -104,6 +106,15 @@ const calendarComponents: CustomComponents = {
 				goToMonth(new Date(year, getMonth(displayMonth), 1));
 			},
 			[goToMonth, displayMonth]
+		);
+
+		const onMonthChange = useCallback(
+			(event: ChangeEvent<HTMLSelectElement>) => {
+				const monthIndex = parseInt(event.target.value);
+				// Go to the first day of the month
+				goToMonth(new Date(year, monthIndex, 1));
+			},
+			[goToMonth, year]
 		);
 
 		const { yearRange } = useCalendarLabelContext();
@@ -121,10 +132,26 @@ const calendarComponents: CustomComponents = {
 				yearOptions = [...yearOptions, year].sort();
 			}
 
-			return yearOptions;
+			return yearOptions.map((year) => ({ value: year, label: year }));
 		}, [year, yearRange]);
 
-		const formattedMonth = format(displayMonth, 'MMMM');
+		const monthOptions = useMemo(() => {
+			return [
+				{ label: 'January', value: 0 },
+				{ label: 'February', value: 1 },
+				{ label: 'March', value: 2 },
+				{ label: 'April', value: 3 },
+				{ label: 'May', value: 4 },
+				{ label: 'June', value: 5 },
+				{ label: 'July', value: 6 },
+				{ label: 'August', value: 7 },
+				{ label: 'September', value: 8 },
+				{ label: 'October', value: 9 },
+				{ label: 'November', value: 10 },
+				{ label: 'December', value: 11 },
+			];
+		}, []);
+
 		const formattedMonthYear = format(displayMonth, 'MMMM yyyy');
 
 		return yearOptions.length > 1 ? (
@@ -137,25 +164,19 @@ const calendarComponents: CustomComponents = {
 				>
 					{formattedMonthYear}
 				</h2>
-				<Flex alignItems="center" gap={0.5} width="100%">
-					<Flex
-						as="span"
-						color="text"
-						fontSize="lg"
-						lineHeight="heading"
-						fontWeight="bold"
-						width="50%"
-						justifyContent="flex-end"
-					>
-						{formattedMonth}
-					</Flex>
-					<Flex width="50%" justifyContent="flex-start">
-						<YearSelect
-							options={yearOptions}
-							value={year}
-							onChange={onYearChange}
-						/>
-					</Flex>
+				<Flex justifyContent="center" gap={0.5} width="100%">
+					<YearMonthSelect
+						label="Month"
+						options={monthOptions}
+						value={month}
+						onChange={onMonthChange}
+					/>
+					<YearMonthSelect
+						label="Year"
+						options={yearOptions}
+						value={year}
+						onChange={onYearChange}
+					/>
 				</Flex>
 			</Fragment>
 		) : (
@@ -174,21 +195,23 @@ const calendarComponents: CustomComponents = {
 	},
 };
 
-function YearSelect({
+function YearMonthSelect({
+	label,
 	options,
 	value,
 	onChange,
 }: {
-	options: number[];
-	value: number;
+	label: string;
+	options: { value: number | string; label: string | number }[];
+	value: number | string;
 	onChange: ChangeEventHandler<HTMLSelectElement>;
 }) {
 	const autoId = useId();
-	const selectId = `calendar-${autoId}-year`;
+	const selectId = `calendar-${autoId}-select`;
 	return (
 		<div css={{ position: 'relative' }}>
 			<label htmlFor={selectId} css={visuallyHiddenStyles}>
-				Year
+				{label}
 			</label>
 			<Box
 				as="select"
@@ -199,8 +222,7 @@ function YearSelect({
 				focus
 				paddingRight={1.5}
 				color="text"
-				fontSize="lg"
-				lineHeight="nospace"
+				fontSize="md"
 				fontWeight="bold"
 				css={{
 					height: '2rem',
@@ -213,8 +235,10 @@ function YearSelect({
 					paddingRight: mapSpacing(2),
 				}}
 			>
-				{options.map((option) => (
-					<option key={option}>{option}</option>
+				{options.map((option, index) => (
+					<option key={index} value={option.value}>
+						{option.label}
+					</option>
 				))}
 			</Box>
 			<ChevronDownIcon
