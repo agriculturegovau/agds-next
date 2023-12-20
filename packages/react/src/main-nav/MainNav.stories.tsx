@@ -68,7 +68,7 @@ export const SecondaryLinks: Story = {
 			{
 				href: '#sign-in',
 				label: 'Sign in',
-				endElement: <AvatarIcon color="action" />,
+				endElement: <AvatarIcon color="inherit" />,
 			},
 		],
 	},
@@ -80,7 +80,7 @@ export const SecondaryButtons: Story = {
 			{
 				onClick: console.log,
 				label: 'Sign in',
-				endElement: <AvatarIcon color="action" />,
+				endElement: <AvatarIcon color="inherit" />,
 			},
 		],
 	},
@@ -164,7 +164,7 @@ export const NoItems: Story = {
 			{
 				onClick: console.log,
 				label: 'Sign in',
-				endElement: <AvatarIcon color="action" />,
+				endElement: <AvatarIcon color="inherit" />,
 			},
 		],
 	},

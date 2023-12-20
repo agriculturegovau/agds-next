@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseButton } from '../button';
-import { boxPalette, packs } from '../core';
+import { boxPalette, packs, setHoverActionPaletteVars } from '../core';
 import {
 	DropdownMenu,
 	useDropdownMenuButton,
@@ -60,6 +60,7 @@ function MainNavListItemDropdownButton({
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 						'& > span[data-main-nav-list-item-label]': packs.underline,
+						...setHoverActionPaletteVars(),
 					},
 				},
 			]}

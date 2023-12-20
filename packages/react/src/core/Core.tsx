@@ -7,6 +7,7 @@ import { boxPalettes, boxPalette } from './boxPalette';
 import { tokens } from './tokens';
 import { generateFontGrid } from './utils/fontGrid';
 import { printTheme } from './printTheme';
+import { actionPalette, setBaseActionPaletteVars } from './actionPalette';
 
 export type CoreProps = PropsWithChildren<
 	{
@@ -41,6 +42,10 @@ export function Core({
 					{
 						// Apply the light palette by default
 						'body, html': boxPalettes.light,
+					},
+					{
+						// Apply the light palette by default
+						'body, html': setBaseActionPaletteVars(),
 					},
 					applyReset && {
 						'body, html': {

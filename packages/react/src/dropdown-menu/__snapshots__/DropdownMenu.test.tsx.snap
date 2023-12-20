@@ -45,7 +45,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:rv:"
       role="menuitem"
       tabindex="-1"
@@ -84,7 +84,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r10:"
       role="menuitem"
       tabindex="-1"
@@ -118,7 +118,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <span
           aria-hidden="true"
-          class="css-uouzcn-boxStyles-Text-NotificationBadge"
+          class="css-z0yq6n-boxStyles-Text-NotificationBadge"
         >
           99+
         </span>
@@ -134,7 +134,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r11:"
       role="menuitem"
       tabindex="-1"
@@ -221,7 +221,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     tabindex="-1"
   >
     <a
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       href="/about"
       id="dropdown-menu-:r16:-item-:r17:"
       role="menuitem"
@@ -241,7 +241,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       />
     </a>
     <a
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       href="/contact"
       id="dropdown-menu-:r16:-item-:r18:"
       role="menuitem"
@@ -440,7 +440,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r1:"
       role="menuitem"
       tabindex="-1"
@@ -459,7 +459,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r2:"
       role="menuitem"
       tabindex="-1"
@@ -478,7 +478,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-151jww1-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r3:"
       role="menuitem"
       tabindex="-1"
