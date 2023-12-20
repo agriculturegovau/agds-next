@@ -16,7 +16,7 @@ export const formSchema = yup
 			.string()
 			.typeError('Select an option')
 			.required('Select an option')
-			.matches(/(Dog)/, 'You must select "Dog" to proceed'),
+			.matches(/(Dog)/, 'You must select “Dog” to proceed'),
 	})
 	.required();
 

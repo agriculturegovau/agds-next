@@ -52,7 +52,7 @@ export default function Page() {
 								<Divider />
 								<Stack gap={1.5}>
 									<Text as="p">
-										Don&apos;t have an account?{' '}
+										Don’t have an account?{' '}
 										<TextLink href="/not-found">Create account</TextLink>
 									</Text>
 									<Text as="p">

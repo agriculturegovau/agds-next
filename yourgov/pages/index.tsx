@@ -90,7 +90,7 @@ export default function Page() {
 					</Stack>
 				</SectionContent>
 
-				<div css={{ '> section > div': { paddingBottom: '0!important' } }}>
+				<div css={{ '> section > div': { paddingBottom: '0 !important' } }}>
 					<SectionContent background="bodyAlt">
 						<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
 							<Stack gap={1.5} alignItems="flex-start" paddingTop={{ sm: 1 }}>
@@ -104,10 +104,15 @@ export default function Page() {
 									Find liquor licence tool
 								</ButtonLink>
 							</Stack>
-							<div>
+							<div
+								css={{
+									alignItems: 'flex-end',
+									display: 'flex',
+								}}
+							>
 								<img
 									src={withBasePath('/screenshot.png')}
-									alt="Screenshot of the Find your liquor license tool home page"
+									alt="Screenshot of the Find your liquor licence tool home page"
 									css={{ display: 'block', maxWidth: '100%' }}
 								/>
 							</div>

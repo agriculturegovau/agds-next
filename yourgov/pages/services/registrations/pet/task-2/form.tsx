@@ -9,7 +9,7 @@ import type { NextPageWithLayout } from '../../../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Your pet's details | Register a pet" />
+			<DocumentTitle title="Your pet’s details | Register a pet" />
 			<PageContent>
 				<FormRegisterPetDetails />
 			</PageContent>

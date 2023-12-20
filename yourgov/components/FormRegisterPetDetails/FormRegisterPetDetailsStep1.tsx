@@ -26,13 +26,13 @@ import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export const formSchema = yup
 	.object({
-		name: yup.string().required("Enter your pet's name"),
-		breed: yup.string().required("Select your pet's breed"),
-		dob: yup.date().required("Enter your pet's date of birth"),
+		name: yup.string().required('Enter your pet’s name'),
+		breed: yup.string().required('Select your pet’s breed'),
+		dob: yup.date().required('Enter your pet’s date of birth'),
 		sex: yup
 			.string()
-			.typeError("Select your pet's sex")
-			.required("Select your pet's sex"),
+			.typeError('Select your pet’s sex')
+			.required('Select your pet’s sex'),
 	})
 	.required();
 
@@ -571,7 +571,7 @@ const DOG_BREEDS = [
 	'Spinone Italiano',
 	'Sporting Lucas Terrier',
 	'St. Bernard',
-	"St. John's water dog",
+	'St. John’s water dog',
 	'Stabyhoun',
 	'Staffordshire Bull Terrier',
 	'Standard Schnauzer',

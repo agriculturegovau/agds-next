@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, H3 } from '@ag.ds-next/react/heading';
+import { H1, H2, Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -38,11 +38,11 @@ const Page: NextPageWithLayout = () => {
 							<CardInner>
 								<Stack gap={1}>
 									<IconApproval size="lg" color="action" />
-									<H3>
+									<Heading as="h2" type="h3">
 										<CardLink href="/app/licences-and-permits">
 											Manage licences and permits
 										</CardLink>
-									</H3>
+									</Heading>
 									<Text>Apply for and manage your business approvals</Text>
 								</Stack>
 							</CardInner>
@@ -51,9 +51,9 @@ const Page: NextPageWithLayout = () => {
 							<CardInner>
 								<Stack gap={1}>
 									<IconUsers size="lg" color="action" />
-									<H3>
+									<Heading as="h2" type="h3">
 										<CardLink href="/not-found">Manage staff access</CardLink>
-									</H3>
+									</Heading>
 									<Text>
 										Manage people who can act on behalf of the business and
 										assign roles based on tasks and information they need to
@@ -72,11 +72,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<H3>
+										<Heading as="h2" type="h3">
 											<CardLink href="/not-found">
 												Industry-specific training courses
 											</CardLink>
-										</H3>
+										</Heading>
 										<Text>
 											Explore hundreds of training courses offered by TAFE and
 											other training providers.
@@ -87,11 +87,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<H3>
+										<Heading as="h2" type="h3">
 											<CardLink href="/not-found">
 												Liquor licencing and information
 											</CardLink>
-										</H3>
+										</Heading>
 										<Text>
 											Use the liquor licence tool to quickly find the right
 											licence for your specific situation.
@@ -102,7 +102,7 @@ const Page: NextPageWithLayout = () => {
 						</Columns>
 					</Stack>
 
-					<Columns as="ul" cols={{ xs: 1, sm: 4 }}>
+					<Columns cols={{ xs: 1, sm: 4 }}>
 						<Column columnSpan={{ xs: 1, sm: 3 }}>
 							<HelpCallout />
 						</Column>
