@@ -5,25 +5,30 @@ import {
 	RefObject,
 	useCallback,
 	useMemo,
+	useRef,
 } from 'react';
 import format from 'date-fns/format';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
-	Labels,
 	DayPicker,
 	DayPickerSingleProps,
 	DayPickerRangeProps,
 	useNavigation,
 	CaptionLabelProps,
+	RowProps,
+	useDayPicker,
+	useDayRender,
+	DayProps,
+	Button as ReactDayPickerButton,
 } from 'react-day-picker';
-import { getMonth, getYear } from 'date-fns';
+import { getMonth, getUnixTime, getYear } from 'date-fns';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
-import { CalendarContainer } from './CalendarContainer';
+import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 
 export type CalendarSingleProps = Omit<
@@ -34,7 +39,7 @@ export type CalendarSingleProps = Omit<
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
-			<CalendarContainer range={false}>
+			<CalendarContainer>
 				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
@@ -45,11 +50,13 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
+	inputMode?: 'from' | 'to';
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
 	returnFocusRef,
+	inputMode,
 	...props
 }: CalendarRangeProps) {
 	return (
@@ -61,20 +68,12 @@ export function CalendarRange({
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
-			<CalendarContainer range={true}>
+			<CalendarRangeContainer dateRange={props.selected}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
-			</CalendarContainer>
+			</CalendarRangeContainer>
 		</FocusLock>
 	);
 }
-
-const calendarLabels: Partial<Labels> = {
-	// This improves the aria label for each day button
-	// More info: https://github.com/gpbl/react-day-picker/pull/1582
-	labelDay: (day, _, options) => {
-		return format(day, 'do MMMM yyyy (EEEE)', options);
-	},
-};
 
 const currentYear = getYear(new Date());
 
@@ -192,6 +191,57 @@ const calendarComponents: CustomComponents = {
 			</Box>
 		);
 	},
+	// Custom `Row` component to improve accessibility of markup from react-day-picker
+	// Default: https://github.com/gpbl/react-day-picker/blob/main/src/components/Row/Row.tsx
+	Row: function Row(props: RowProps) {
+		const { styles, classNames, components } = useDayPicker();
+		const DayComponent = components?.Day;
+		return (
+			<tr className={classNames.row} style={styles.row}>
+				{props.dates.map((date) => (
+					<td
+						key={getUnixTime(date)}
+						className={classNames.cell}
+						style={styles.cell}
+						role="gridcell"
+					>
+						{DayComponent ? (
+							<DayComponent displayMonth={props.displayMonth} date={date} />
+						) : null}
+					</td>
+				))}
+			</tr>
+		);
+	},
+	// Custom `Day` component to improve accessibility of markup from react-day-picker
+	// Default: https://github.com/gpbl/react-day-picker/blob/main/src/components/Day/Day.tsx
+	Day: function Day(props: DayProps) {
+		const buttonRef = useRef<HTMLButtonElement>(null);
+		const dayRender = useDayRender(props.date, props.displayMonth, buttonRef);
+
+		if (dayRender.isHidden) {
+			return null;
+		}
+
+		if (!dayRender.isButton) {
+			return <div {...dayRender.divProps} role={undefined} />;
+		}
+
+		return (
+			<ReactDayPickerButton
+				name="day"
+				ref={buttonRef}
+				{...dayRender.buttonProps}
+				// Remove `role` from `dayRender.buttonProps`
+				role={undefined}
+				// `aria-selected` is not valid on a button element, use `aria-pressed` instead
+				aria-selected={undefined}
+				aria-pressed={dayRender.buttonProps['aria-selected']}
+				// Improve the aria labels of each button
+				aria-label={format(props.date, 'do MMMM yyyy (EEEE)')}
+			/>
+		);
+	},
 };
 
 function YearMonthSelect({
@@ -257,5 +307,4 @@ function YearMonthSelect({
 
 const defaultDayPickerProps = {
 	components: calendarComponents,
-	labels: calendarLabels,
 };

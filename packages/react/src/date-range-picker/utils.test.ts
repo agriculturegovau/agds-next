@@ -1,5 +1,10 @@
 import { subMonths } from 'date-fns';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import {
+	ensureValidDateRange,
+	getCalendarDefaultMonth,
+	getFromDateInputButtonAriaLabel,
+	getToDateInputButtonAriaLabel,
+} from './utils';
 
 describe('ensureValidDateRange', () => {
 	const validDateRange = {
@@ -89,5 +94,39 @@ describe('getCalendarDefaultMonth', () => {
 				numberOfMonths
 			)?.getFullYear()
 		).toEqual(1990);
+	});
+});
+
+describe('getFromDateInputButtonAriaLabel', () => {
+	it('returns `Choose start date` when no date is set', () => {
+		expect(getFromDateInputButtonAriaLabel(undefined)).toEqual(
+			'Choose start date'
+		);
+		expect(getFromDateInputButtonAriaLabel('')).toEqual('Choose start date');
+	});
+
+	it('returns `Change start date, x` when a date is set', () => {
+		expect(getFromDateInputButtonAriaLabel('14/02/1990')).toEqual(
+			'Change start date, Wednesday February 14th, 1990'
+		);
+		expect(getFromDateInputButtonAriaLabel('05/06/2010')).toEqual(
+			'Change start date, Saturday June 5th, 2010'
+		);
+	});
+});
+
+describe('getToDateInputButtonAriaLabel', () => {
+	it('returns `Choose end date` when no date is set', () => {
+		expect(getToDateInputButtonAriaLabel(undefined)).toEqual('Choose end date');
+		expect(getToDateInputButtonAriaLabel('')).toEqual('Choose end date');
+	});
+
+	it('returns `Change end date, x` when a date is set', () => {
+		expect(getToDateInputButtonAriaLabel('14/02/1990')).toEqual(
+			'Change end date, Wednesday February 14th, 1990'
+		);
+		expect(getToDateInputButtonAriaLabel('05/06/2010')).toEqual(
+			'Change end date, Saturday June 5th, 2010'
+		);
 	});
 });

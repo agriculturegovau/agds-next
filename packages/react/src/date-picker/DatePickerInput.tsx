@@ -1,11 +1,10 @@
-import { forwardRef, MouseEventHandler, RefObject, useMemo } from 'react';
+import { forwardRef, MouseEventHandler, RefObject } from 'react';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
-import { parseDate, formatHumanReadableDate } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
@@ -16,6 +15,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	};
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
+	buttonAriaLabel: string;
 };
 
 export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
@@ -32,6 +32,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			buttonRef,
 			maxWidth: maxWidthProp = 'md',
 			buttonOnClick,
+			buttonAriaLabel,
 			disabled,
 			value,
 			...props
@@ -49,13 +50,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			borderTopRightRadius: 0,
 			borderBottomRightRadius: 0,
 		};
-
-		const ariaLabel = useMemo(() => {
-			if (typeof value !== 'string') return 'Choose date';
-			const parsed = parseDate(value);
-			if (!parsed) return 'Choose date';
-			return `Change Date, ${formatHumanReadableDate(parsed)}`;
-		}, [value]);
 
 		return (
 			<Field
@@ -87,7 +81,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							onClick={buttonOnClick}
 							disabled={disabled}
 							variant="secondary"
-							aria-label={ariaLabel}
+							aria-label={buttonAriaLabel}
 							css={{
 								borderTopLeftRadius: 0,
 								borderBottomLeftRadius: 0,

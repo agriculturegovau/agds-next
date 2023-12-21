@@ -78,3 +78,11 @@ export function getCalendarDefaultMonth(
 	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
 	return undefined;
 }
+
+// Aria label for the Calendar widget popover
+export function getDateInputButtonAriaLabel(value: string | undefined) {
+	if (typeof value !== 'string') return 'Choose date';
+	const parsed = parseDate(value);
+	if (!parsed) return 'Choose date';
+	return `Change date, ${formatHumanReadableDate(parsed)}`;
+}

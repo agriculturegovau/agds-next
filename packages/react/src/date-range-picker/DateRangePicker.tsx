@@ -30,7 +30,12 @@ import {
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import {
+	ensureValidDateRange,
+	getCalendarDefaultMonth,
+	getFromDateInputButtonAriaLabel,
+	getToDateInputButtonAriaLabel,
+} from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -336,6 +341,7 @@ export const DateRangePicker = ({
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
+							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
 						/>
 						<DateInput
 							aria-describedby={
@@ -348,6 +354,7 @@ export const DateRangePicker = ({
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
 							buttonOnClick={onToTriggerClick}
+							buttonAriaLabel={getToDateInputButtonAriaLabel(toInputValue)}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
@@ -367,6 +374,7 @@ export const DateRangePicker = ({
 								returnFocusRef={
 									inputMode === 'from' ? fromTriggerRef : toTriggerRef
 								}
+								inputMode={inputMode}
 							/>
 						</Popover>
 					)}

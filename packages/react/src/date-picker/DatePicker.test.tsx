@@ -150,7 +150,7 @@ describe('DatePicker', () => {
 		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
 		expect(await getCalendarTrigger()).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${formattedDate}`
+			`Change date, ${formattedDate}`
 		);
 
 		// Click the `clear` button to clear the value
@@ -205,7 +205,7 @@ describe('DatePicker', () => {
 		// The calendar button trigger should have an aria-label with the formatted display value
 		expect(await getCalendarTrigger()).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${formattedDate}`
+			`Change date, ${formattedDate}`
 		);
 	});
 

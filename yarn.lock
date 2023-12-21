@@ -14346,10 +14346,10 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.6.1.tgz#7dc2aed2d7c72fac89694e834d179e32f3da563b"
   integrity sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==
 
-react-day-picker@^8.3.5:
-  version "8.3.5"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-8.3.5.tgz#db00f7657e71f697055dcecbe2d9e91f84e4b026"
-  integrity sha512-cSMNjbn5IKZLVgfvPopbg+Dk5qQPesi2prlxXBrXlCODUThk5Zyu5fDn7njZt3y7ih65gWbZId0D0lnhyiF1GQ==
+react-day-picker@^8.10.0:
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-8.10.0.tgz#729c5b9564967a924213978fb9c0751884a60595"
+  integrity sha512-mz+qeyrOM7++1NCb1ARXmkjMkzWVh2GL9YiPbRjKe0zHccvekk4HE+0MPOZOrosn8r8zTHIIeOUXTmXRqmkRmg==
 
 react-docgen-typescript@^2.2.2:
   version "2.2.2"

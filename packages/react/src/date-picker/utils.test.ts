@@ -5,6 +5,7 @@ import {
 	parseDate,
 	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
+	getDateInputButtonAriaLabel,
 } from './utils';
 
 describe('parseDate', () => {
@@ -128,5 +129,21 @@ describe('getCalendarDefaultMonth', () => {
 				to: 2100,
 			})?.getFullYear()
 		).toEqual(1990);
+	});
+});
+
+describe('getDateInputButtonAriaLabel', () => {
+	it('returns `Choose date` when no date is set', () => {
+		expect(getDateInputButtonAriaLabel(undefined)).toEqual('Choose date');
+		expect(getDateInputButtonAriaLabel('')).toEqual('Choose date');
+	});
+
+	it('returns `Change date, x` when a date is set', () => {
+		expect(getDateInputButtonAriaLabel('14/02/1990')).toEqual(
+			'Change date, Wednesday February 14th, 1990'
+		);
+		expect(getDateInputButtonAriaLabel('05/06/2010')).toEqual(
+			'Change date, Saturday June 5th, 2010'
+		);
 	});
 });
