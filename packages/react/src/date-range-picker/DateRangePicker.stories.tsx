@@ -99,6 +99,15 @@ export const ToInvalid: Story = {
 	},
 };
 
+export const ToInvalidWithHint: Story = {
+	args: {
+		legend: 'Date range',
+		toInvalid: true,
+		message: 'Enter a valid date',
+		hint: 'Hint text',
+	},
+};
+
 export const Required: Story = {
 	args: {
 		legend: 'Date range',
