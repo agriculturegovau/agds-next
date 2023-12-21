@@ -36,7 +36,7 @@ const items = [
 		title: 'Register an event',
 		slug: '/not-found',
 		description:
-			"You'll need to register if your event serves food or alcohol.",
+			'You’ll need to register if your event serves food or alcohol.',
 	},
 ];
 

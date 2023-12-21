@@ -10,7 +10,7 @@ import { Select } from '@ag.ds-next/react/select';
 import { Text } from '@ag.ds-next/react/text';
 import { FilterIcon } from '@ag.ds-next/react/icon';
 import { Divider } from '@ag.ds-next/react/divider';
-import { H3 } from '@ag.ds-next/react/heading';
+import { H2, H3 } from '@ag.ds-next/react/heading';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { AppLayout } from '../../../../components/Layout/AppLayout';
@@ -63,7 +63,7 @@ const Page: NextPageWithLayout = () => {
 						<Divider />
 					</Stack>
 					<Stack gap={1}>
-						<H3>1 result</H3>
+						<H2>1 result</H2>
 
 						<Card shadow clickable>
 							<CardInner>

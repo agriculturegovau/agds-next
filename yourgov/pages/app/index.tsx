@@ -1,7 +1,7 @@
 import { Fragment, ReactElement } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, H3 } from '@ag.ds-next/react/heading';
+import { H1, H2, Heading } from '@ag.ds-next/react/heading';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
@@ -53,9 +53,9 @@ const Page: NextPageWithLayout = () => {
 							<CardInner>
 								<Stack gap={1}>
 									<EmailIcon color="action" size="lg" />
-									<H3>
+									<Heading as="h2" type="h3">
 										<CardLink href="/not-found">Messages</CardLink>
-									</H3>
+									</Heading>
 									<Text as="p" color="muted">
 										View all messages
 									</Text>
@@ -67,9 +67,9 @@ const Page: NextPageWithLayout = () => {
 							<CardInner>
 								<Stack gap={1}>
 									<AvatarIcon color="action" size="lg" />
-									<H3>
+									<Heading as="h2" type="h3">
 										<CardLink href="/not-found">Profile</CardLink>
-									</H3>
+									</Heading>
 									<Text as="p" color="muted">
 										Manage your details and preferences
 									</Text>
@@ -96,7 +96,7 @@ const Page: NextPageWithLayout = () => {
 												<Tag>{b.abn}</Tag>
 												<Text>ABN</Text>
 											</Flex>
-											<H3>
+											<Heading as="h2" type="h3">
 												<CardLink
 													href={businessHref}
 													// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -105,7 +105,7 @@ const Page: NextPageWithLayout = () => {
 												>
 													{b.name}
 												</CardLink>
-											</H3>
+											</Heading>
 											<Text>Role: {b.role}</Text>
 										</Stack>
 									</CardInner>

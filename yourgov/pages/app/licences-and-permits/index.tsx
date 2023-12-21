@@ -157,7 +157,7 @@ const Page: NextPageWithLayout = () => {
 						</TabPanels>
 					</Tabs>
 
-					<Columns as="ul" cols={{ xs: 1, sm: 4 }}>
+					<Columns cols={{ xs: 1, sm: 4 }}>
 						<Column columnSpan={{ xs: 1, sm: 3 }}>
 							<HelpCallout />
 						</Column>

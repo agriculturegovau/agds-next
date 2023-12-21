@@ -103,7 +103,7 @@ export default function Page() {
 								<ServiceCard
 									href="/not-found"
 									title="Opening a small bar in NSW"
-									description="Get an overview of what's required to open a small bar in NSW."
+									description="Get an overview of what’s required to open a small bar in NSW."
 								/>
 								<ServiceCard
 									href="/not-found"

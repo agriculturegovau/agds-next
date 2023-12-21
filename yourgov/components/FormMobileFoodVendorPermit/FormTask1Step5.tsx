@@ -6,7 +6,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
@@ -102,7 +102,9 @@ export function FormTask1Step5() {
 						<PageAlert
 							ref={errorRef}
 							tone="error"
-							title="There is a problem"
+							title={
+								<PageAlertTitle as="h2">There is a problem</PageAlertTitle>
+							}
 							tabIndex={-1}
 						>
 							<Text as="p">

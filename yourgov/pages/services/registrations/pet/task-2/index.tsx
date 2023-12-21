@@ -19,7 +19,7 @@ import type { NextPageWithLayout } from '../../../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Your pet's details | Register a pet" />
+			<DocumentTitle title="Your pet’s details | Register a pet" />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -31,7 +31,7 @@ const Page: NextPageWithLayout = () => {
 								Back
 							</DirectionLink>
 							<PageTitle
-								title="Your pet's details"
+								title="Your pet’s details"
 								introduction="Under state regulation you are required to register any pet living with you in your domestic residence in an urban zone."
 							/>
 							<Stack gap={1.5}>

@@ -1,5 +1,5 @@
 import { Stack } from '@ag.ds-next/react/stack';
-import { SectionContent } from '@ag.ds-next/react/content';
+import { Content, SectionContent } from '@ag.ds-next/react/content';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import {
 	HeroBanner,
@@ -11,6 +11,7 @@ import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Text } from '@ag.ds-next/react/text';
 import { Columns } from '@ag.ds-next/react/columns';
+import { Flex } from '@ag.ds-next/react/flex';
 import { SiteLayout } from '../components/Layout/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { useWithBasePath } from '../lib/useWithBasePath';
@@ -90,30 +91,33 @@ export default function Page() {
 					</Stack>
 				</SectionContent>
 
-				<div css={{ '> section > div': { paddingBottom: '0!important' } }}>
-					<SectionContent background="bodyAlt">
-						<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
-							<Stack gap={1.5} alignItems="flex-start" paddingTop={{ sm: 1 }}>
-								<H2>Intending to make, serve or sell alcohol?</H2>
-								<Text as="p">
-									Get tailored step-by-step guidance on what approvals your
-									business will need to sell and or serve alcohol. Just answer a
-									few quick questions about your business.
-								</Text>
-								<ButtonLink href="/not-found">
-									Find liquor licence tool
-								</ButtonLink>
-							</Stack>
-							<div>
-								<img
-									src={withBasePath('/screenshot.png')}
-									alt="Screenshot of the Find your liquor license tool home page"
-									css={{ display: 'block', maxWidth: '100%' }}
-								/>
-							</div>
-						</Columns>
-					</SectionContent>
-				</div>
+				<Content as="section" background="bodyAlt">
+					<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
+						<Stack
+							gap={1.5}
+							alignItems="flex-start"
+							paddingBottom={{ xs: 0, sm: 3, md: 4 }}
+							paddingTop={{ xs: 3, md: 4 }}
+						>
+							<H2>Intending to make, serve or sell alcohol?</H2>
+							<Text as="p">
+								Get tailored step-by-step guidance on what approvals your
+								business will need to sell and or serve alcohol. Just answer a
+								few quick questions about your business.
+							</Text>
+							<ButtonLink href="/not-found">
+								Find liquor licence tool
+							</ButtonLink>
+						</Stack>
+						<Flex alignItems="flex-end" paddingTop={{ md: 4 }}>
+							<img
+								src={withBasePath('/screenshot.png')}
+								alt="Screenshot of the Find your liquor licence tool home page"
+								css={{ display: 'block', maxWidth: '100%' }}
+							/>
+						</Flex>
+					</Columns>
+				</Content>
 
 				<SectionContent>
 					<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
