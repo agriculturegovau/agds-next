@@ -276,20 +276,22 @@ export const DateRangePicker = ({
 	const invalid = fromInvalid || toInvalid;
 
 	const { fieldsetId, hintId, messageId } = useDateRangePickerIds(id);
-	const describedByIds = [
-		invalid && message ? messageId : null,
+	const fromDescribedByIds = [
+		fromInvalid && message ? messageId : null,
 		hint ? hintId : null,
-	].filter(Boolean);
-	const describedBy = describedByIds.length
-		? describedByIds.join(' ')
-		: undefined;
+	]
+		.filter(Boolean)
+		.join(' ');
+	const toDescribedByIds = [
+		toInvalid && message ? messageId : null,
+		hint ? hintId : null,
+	]
+		.filter(Boolean)
+		.join(' ');
 
 	return (
 		<FieldContainer invalid={invalid} id={fieldsetId}>
-			<fieldset
-				aria-describedby={describedBy}
-				css={{ padding: 0, margin: 0, border: 'none' }}
-			>
+			<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
 				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
 				<FieldLabel
 					as="legend"
@@ -309,6 +311,9 @@ export const DateRangePicker = ({
 					) : null}
 					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
 						<DateInput
+							aria-describedby={
+								fromDescribedByIds.length > 0 ? fromDescribedByIds : null
+							}
 							ref={fromInputRef}
 							label={fromLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
@@ -321,6 +326,9 @@ export const DateRangePicker = ({
 							invalid={{ field: false, input: fromInvalid }}
 						/>
 						<DateInput
+							aria-describedby={
+								toDescribedByIds.length > 0 ? toDescribedByIds : null
+							}
 							ref={toInputRef}
 							label={toLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
