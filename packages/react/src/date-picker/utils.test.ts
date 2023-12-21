@@ -6,6 +6,7 @@ import {
 	formatHumanReadableDate,
 	parseDate,
 	transformValuePropToInputValue,
+	ensureValidDateRange,
 } from './utils';
 
 describe('parseDate', () => {
@@ -128,5 +129,22 @@ describe('transformValuePropToInputValue', () => {
 		expect(transformValuePropToInputValue(exampleDate)).toEqual(
 			formatDate(exampleDate)
 		);
+	});
+});
+
+describe('ensureValidDateRange', () => {
+	const validDateRange = {
+		from: new Date(1999, 0, 0),
+		to: new Date(2000, 0, 0),
+	};
+	const invalidDateRange = {
+		from: new Date(2000, 0, 0),
+		to: new Date(1999, 0, 0),
+	};
+	test('allows valid date ranges', () => {
+		expect(ensureValidDateRange(validDateRange)).toEqual(validDateRange);
+	});
+	test('fixes invalid date ranges', () => {
+		expect(ensureValidDateRange(invalidDateRange)).toEqual(validDateRange);
 	});
 });

@@ -27,6 +27,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
+	ensureValidDateRange,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { DateInput } from './../date-picker/DatePickerInput';
@@ -181,10 +182,10 @@ export const DateRangePicker = ({
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = {
+			const nextValue = ensureValidDateRange({
 				from: containedDate,
 				to: valueAsDateOrUndefined.to,
-			};
+			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
@@ -206,16 +207,18 @@ export const DateRangePicker = ({
 	const onToInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const inputValue = e.target.value;
+
 			// Immediately update the input field
 			setToInputValue(inputValue);
+
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
 			const containedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = {
+			const nextValue = ensureValidDateRange({
 				from: valueAsDateOrUndefined.from,
 				to: containedDate,
-			};
+			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called

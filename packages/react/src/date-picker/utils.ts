@@ -35,6 +35,19 @@ export function constrainDate(
 	return date;
 }
 
+export function ensureValidDateRange(dateRange: {
+	from: Date | undefined;
+	to: Date | undefined;
+}) {
+	const { to, from } = dateRange;
+
+	if (from && to && isBefore(to, from)) {
+		return { from: to, to: from };
+	}
+
+	return dateRange;
+}
+
 // Ensure a valid date range is always sent back to the consumer
 export function getValidDateRange(
 	inputMode: 'from' | 'to',
