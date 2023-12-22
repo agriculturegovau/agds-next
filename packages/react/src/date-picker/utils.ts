@@ -87,3 +87,23 @@ export function transformValuePropToInputValue(
 	if (isValidDate(valueProp)) return formatDate(valueProp);
 	return '';
 }
+
+export function getCalendarDefaultMonth(
+	valueAsDateOrUndefined: Date | undefined,
+	initialMonth: Date | undefined,
+	yearRange: { from: number; to: number } | undefined
+): Date | undefined {
+	// If the date picker has a value, open up the month of the date value
+	if (valueAsDateOrUndefined) return valueAsDateOrUndefined;
+	// If an `initialMonth` prop has been set, use that value
+	if (initialMonth) return initialMonth;
+	// If a `yearRange` prop has been set, use the middle year of the range
+	if (yearRange) {
+		const middleYear = yearRange.from + (yearRange.to - yearRange.from) / 2;
+		const date = new Date();
+		date.setFullYear(middleYear);
+		return date;
+	}
+	// Otherwise, returning undefined will fallback to the current month
+	return undefined;
+}

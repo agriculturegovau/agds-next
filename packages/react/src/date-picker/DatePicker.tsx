@@ -18,6 +18,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
+	getCalendarDefaultMonth,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -171,6 +172,12 @@ export const DatePicker = ({
 
 	const valueAsDateOrUndefined = typeof value === 'string' ? undefined : value;
 
+	const defaultMonth = getCalendarDefaultMonth(
+		valueAsDateOrUndefined,
+		initialMonth,
+		yearRange
+	);
+
 	return (
 		<div {...popover.getReferenceProps()}>
 			<DateInput
@@ -189,7 +196,7 @@ export const DatePicker = ({
 						initialFocus
 						selected={valueAsDateOrUndefined}
 						onSelect={onSelect}
-						defaultMonth={valueAsDateOrUndefined || initialMonth}
+						defaultMonth={defaultMonth}
 						yearRange={yearRange}
 						numberOfMonths={1}
 						disabled={disabledCalendarDays}
