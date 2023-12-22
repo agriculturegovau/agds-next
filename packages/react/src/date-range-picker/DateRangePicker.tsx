@@ -31,6 +31,7 @@ import {
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { DateInput } from './../date-picker/DatePickerInput';
+import { getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -292,6 +293,12 @@ export const DateRangePicker = ({
 		.filter(Boolean)
 		.join(' ');
 
+	const defaultMonth = getCalendarDefaultMonth(
+		inputMode,
+		valueAsDateOrUndefined,
+		yearRange
+	);
+
 	return (
 		<FieldContainer invalid={invalid} id={fieldsetId}>
 			<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
@@ -349,7 +356,7 @@ export const DateRangePicker = ({
 					<Popover {...popover.getPopoverProps()}>
 						<CalendarRange
 							initialFocus
-							defaultMonth={valueAsDateOrUndefined.from}
+							defaultMonth={defaultMonth}
 							selected={valueAsDateOrUndefined}
 							onSelect={onSelect}
 							numberOfMonths={numberOfMonths}
