@@ -491,8 +491,8 @@ describe('DateRangePicker', () => {
 	});
 
 	it('form: can be submitted with a value', async () => {
-		const fromValidDateAsString = '02/03/2023';
-		const toValidDateAsString = '03/03/2023';
+		const fromValidDateAsString = '02/03/2024';
+		const toValidDateAsString = '03/03/2024';
 
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
@@ -722,8 +722,8 @@ describe('DateRangePicker', () => {
 		expect(await getToInput()).toHaveValue('hello');
 		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
 
-		const fromValidDateAsString = '02/03/2023';
-		const toValidDateAsString = '03/03/2023';
+		const fromValidDateAsString = '02/03/2024';
+		const toValidDateAsString = '03/03/2024';
 
 		// Type in a valid value
 		await userEvent.clear(await getFromInput());

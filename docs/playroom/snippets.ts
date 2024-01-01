@@ -340,7 +340,7 @@ const snippets = [
 				We pay our respects to their Elders past, present and emerging.
 			</Text>
 			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-				&copy; 2022 Department of Agriculture, Fisheries and Forestry
+				&copy; 2024 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer></Box>`,
 	},
@@ -464,7 +464,7 @@ const snippets = [
 				We pay our respects to their Elders past, present and emerging.
 			</Text>
 			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-				&copy; 2022 Department of Agriculture, Fisheries and Forestry
+				&copy; 2024 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer></Box>`,
 	},

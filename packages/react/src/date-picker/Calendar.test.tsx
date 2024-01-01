@@ -18,8 +18,8 @@ function renderCalendarSingle(props: CalendarSingleProps) {
 }
 
 const dateRange = {
-	from: new Date(2022, 5, 1),
-	to: new Date(2022, 5, 7),
+	from: new Date(2024, 5, 1),
+	to: new Date(2024, 5, 7),
 };
 
 describe('Calendar Single', () => {

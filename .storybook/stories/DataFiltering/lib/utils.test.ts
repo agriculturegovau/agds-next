@@ -73,7 +73,7 @@ describe('doesBusinessMatchFilters', () => {
 		id: '123',
 		city: 'Orange',
 		state: 'NSW',
-		requestDate: new Date('2023-01-01'),
+		requestDate: new Date('2024-01-01'),
 		services: ['Loading'],
 		destinations: ['Japan', 'Fiji'],
 	};
@@ -183,7 +183,7 @@ describe('getNumberOfActiveFilters', () => {
 				businessName: undefined,
 				state: undefined,
 				requestDate: {
-					from: new Date('2023-01-01'),
+					from: new Date('2024-01-01'),
 					to: undefined,
 				},
 				status: undefined,
@@ -198,8 +198,8 @@ describe('getNumberOfActiveFilters', () => {
 				businessName: undefined,
 				state: undefined,
 				requestDate: {
-					from: new Date('2023-01-01'),
-					to: new Date('2023-06-01'),
+					from: new Date('2024-01-01'),
+					to: new Date('2024-06-01'),
 				},
 				status: undefined,
 				services: undefined,

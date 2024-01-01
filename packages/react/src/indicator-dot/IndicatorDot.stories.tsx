@@ -49,7 +49,7 @@ export const Example = () => {
 
 				<Text fontSize="sm">
 					Your application to register establishment X needs more information.
-					Please provide Y by 12 June 2022 to avoid delays.
+					Please provide Y by 12 June 2024 to avoid delays.
 				</Text>
 
 				<div>

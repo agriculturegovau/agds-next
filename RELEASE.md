@@ -46,8 +46,8 @@ Use the latest release as the template for the release notes. It should include:
 
 ## Github release notes
 
-Create a draft release on GitHub based on the above tag (such as 2022-01-05).
+Create a draft release on GitHub based on the above tag (such as 2024-01-05).
 
-Give the release a title using the date of the release like `January 5th, 2022`.
+Give the release a title using the date of the release like `January 5th, 2024`.
 
 It should use the same content as the docs website release notes.

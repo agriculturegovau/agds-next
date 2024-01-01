@@ -37,6 +37,6 @@ export const mockCurrentApprovals = [
 		approvalNumber: 'ODP-224377842',
 		type: 'On-premises liquor licence',
 		status: { tone: 'success', label: 'Approved' },
-		approvedDate: '1 Jul 2023',
+		approvedDate: '1 Jul 2024',
 	},
 ] as const;
