@@ -418,7 +418,7 @@ describe('DatePicker', () => {
 		expect(await getInput()).toHaveValue('hello');
 		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
 
-		const validDateAsString = '02/03/2023';
+		const validDateAsString = '02/03/2024';
 
 		// Type in a valid value
 		await userEvent.clear(await getInput());
