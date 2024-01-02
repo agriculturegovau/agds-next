@@ -11,20 +11,14 @@ jobs:
   jest:
     name: Unit Tests
     runs-on: ubuntu-latest
-    env:
-      CI: true
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js 18.18.2
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.18.2
 
       - name: Get number of CPU cores
         id: cpu-cores
@@ -53,18 +47,14 @@ jobs:
   linting:
     name: Linting
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js 18.18.2
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.18.2
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -110,18 +100,14 @@ jobs:
   build:
     name: Build packages
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js 18.18.2
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.18.2
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
