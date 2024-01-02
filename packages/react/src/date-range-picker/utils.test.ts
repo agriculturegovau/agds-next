@@ -1,4 +1,4 @@
-import { subDays } from 'date-fns';
+import { subMonths } from 'date-fns';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 describe('ensureValidDateRange', () => {
@@ -44,12 +44,11 @@ describe('getCalendarDefaultMonth', () => {
 		expect(getCalendarDefaultMonth('to', valueProp, yearRangeProp, 1)).toEqual(
 			valueProp.to
 		);
-
 		expect(
 			getCalendarDefaultMonth('from', valueProp, yearRangeProp, 2)
-		).toEqual(subDays(valueProp.from, 1));
+		).toEqual(valueProp.from);
 		expect(getCalendarDefaultMonth('to', valueProp, yearRangeProp, 2)).toEqual(
-			subDays(valueProp.to, 1)
+			subMonths(valueProp.to, 1)
 		);
 	});
 

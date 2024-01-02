@@ -1,4 +1,4 @@
-import { isBefore, subMonths } from 'date-fns';
+import { isBefore, subMonths, differenceInMonths } from 'date-fns';
 
 // If the end date is before the start date, swap the end date with the start
 // This prevents the users from typing invalid date ranges
@@ -46,8 +46,20 @@ export function getCalendarDefaultMonth(
 		return undefined;
 	})();
 
-	// When there are 2 months being displayed (i.e. on desktop), show the "to" month on the right side
 	if (value && inputMode === 'to' && numberOfMonths === 2) {
+		const monthsRangeCount = (() => {
+			return valueAsDateOrUndefined?.from && valueAsDateOrUndefined?.to
+				? differenceInMonths(
+						valueAsDateOrUndefined.to,
+						valueAsDateOrUndefined.from
+				  )
+				: -1;
+		})();
+
+		// If there is only 1 month between the "from" and "to" dates, show the "to" month on the left side so it matches the "from" date
+		if (monthsRangeCount === 0) return value;
+
+		// When there are 2 months being displayed (i.e. on desktop), show the "to" month on the right side
 		return subMonths(value, 1);
 	}
 
