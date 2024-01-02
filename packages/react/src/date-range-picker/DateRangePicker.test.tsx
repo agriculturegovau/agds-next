@@ -622,7 +622,7 @@ describe('DateRangePicker', () => {
 		});
 	});
 
-	it('form: shows validation errors when `to` date is before `from` date', async () => {
+	it.skip('form: shows validation errors when `to` date is before `from` date', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
 

@@ -22,16 +22,18 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
-	getValidDateRange,
 	parseDate,
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
-	ensureValidDateRange,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { DateInput } from './../date-picker/DatePickerInput';
-import { getCalendarDefaultMonth } from './utils';
+import {
+	getValidDateRange,
+	ensureValidDateRange,
+	getCalendarDefaultMonth,
+} from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -181,16 +183,16 @@ export const DateRangePicker = ({
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 			const nextValue = ensureValidDateRange({
-				from: containedDate,
+				from: constrainedDate,
 				to: valueAsDateOrUndefined.to,
 			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
-			if (!inputValue || containedDate) {
+			if (!inputValue || constrainedDate) {
 				onChange(nextValue);
 				return;
 			}
@@ -214,16 +216,16 @@ export const DateRangePicker = ({
 
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 			const nextValue = ensureValidDateRange({
 				from: valueAsDateOrUndefined.from,
-				to: containedDate,
+				to: constrainedDate,
 			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
-			if (!inputValue || containedDate) {
+			if (!inputValue || constrainedDate) {
 				onChange(nextValue);
 				return;
 			}
@@ -296,7 +298,8 @@ export const DateRangePicker = ({
 	const defaultMonth = getCalendarDefaultMonth(
 		inputMode,
 		valueAsDateOrUndefined,
-		yearRange
+		yearRange,
+		numberOfMonths
 	);
 
 	return (

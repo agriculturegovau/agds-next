@@ -323,109 +323,53 @@ exports[`Calendar Range renders correctly 1`] = `
                   class="rdp-head_row"
                 >
                   <th
+                    aria-label="Sunday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Su
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Sunday
-                    </span>
+                    Su
                   </th>
                   <th
+                    aria-label="Monday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Mo
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Monday
-                    </span>
+                    Mo
                   </th>
                   <th
+                    aria-label="Tuesday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Tu
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Tuesday
-                    </span>
+                    Tu
                   </th>
                   <th
+                    aria-label="Wednesday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      We
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Wednesday
-                    </span>
+                    We
                   </th>
                   <th
+                    aria-label="Thursday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Th
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Thursday
-                    </span>
+                    Th
                   </th>
                   <th
+                    aria-label="Friday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Fr
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Friday
-                    </span>
+                    Fr
                   </th>
                   <th
+                    aria-label="Saturday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Sa
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Saturday
-                    </span>
+                    Sa
                   </th>
                 </tr>
               </thead>
@@ -437,30 +381,61 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="1st June 2024 (Saturday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_start"
                       name="day"
+                      role="gridcell"
                       tabindex="0"
                       type="button"
                     >
@@ -473,12 +448,13 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="2nd June 2024 (Sunday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -487,12 +463,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="3rd June 2024 (Monday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -501,12 +478,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="4th June 2024 (Tuesday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -515,12 +493,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="5th June 2024 (Wednesday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -529,12 +508,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="6th June 2024 (Thursday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -543,12 +523,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="7th June 2024 (Friday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_end"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -557,11 +538,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="8th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -574,11 +556,12 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="9th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -587,11 +570,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="10th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -600,11 +584,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="11th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -613,11 +598,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="12th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -626,11 +612,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="13th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -639,11 +626,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="14th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -652,11 +640,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="15th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -669,11 +658,12 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="16th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -682,11 +672,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="17th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -695,11 +686,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="18th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -708,11 +700,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="19th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -721,11 +714,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="20th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -734,11 +728,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="21st June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -747,11 +742,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="22nd June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -764,11 +760,12 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="23rd June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -777,11 +774,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="24th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -790,11 +788,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="25th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -803,11 +802,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="26th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -816,11 +816,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="27th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -829,11 +830,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="28th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -842,11 +844,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="29th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -859,11 +862,12 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="30th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -872,22 +876,52 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1227,109 +1261,53 @@ exports[`Calendar Single renders correctly 1`] = `
                   class="rdp-head_row"
                 >
                   <th
+                    aria-label="Sunday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Su
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Sunday
-                    </span>
+                    Su
                   </th>
                   <th
+                    aria-label="Monday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Mo
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Monday
-                    </span>
+                    Mo
                   </th>
                   <th
+                    aria-label="Tuesday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Tu
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Tuesday
-                    </span>
+                    Tu
                   </th>
                   <th
+                    aria-label="Wednesday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      We
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Wednesday
-                    </span>
+                    We
                   </th>
                   <th
+                    aria-label="Thursday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Th
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Thursday
-                    </span>
+                    Th
                   </th>
                   <th
+                    aria-label="Friday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Fr
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Friday
-                    </span>
+                    Fr
                   </th>
                   <th
+                    aria-label="Saturday"
                     class="rdp-head_cell"
                     scope="col"
                   >
-                    <span
-                      aria-hidden="true"
-                    >
-                      Sa
-                    </span>
-                    <span
-                      class="rdp-vhidden"
-                    >
-                      Saturday
-                    </span>
+                    Sa
                   </th>
                 </tr>
               </thead>
@@ -1341,30 +1319,61 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="1st June 2024 (Saturday)"
-                      aria-pressed="true"
+                      aria-selected="true"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected"
                       name="day"
+                      role="gridcell"
                       tabindex="0"
                       type="button"
                     >
@@ -1377,11 +1386,12 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="2nd June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1390,11 +1400,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="3rd June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1403,11 +1414,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="4th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1416,11 +1428,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="5th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1429,11 +1442,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="6th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1442,11 +1456,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="7th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1455,11 +1470,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="8th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1472,11 +1488,12 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="9th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1485,11 +1502,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="10th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1498,11 +1516,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="11th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1511,11 +1530,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="12th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1524,11 +1544,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="13th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1537,11 +1558,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="14th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1550,11 +1572,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="15th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1567,11 +1590,12 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="16th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1580,11 +1604,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="17th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1593,11 +1618,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="18th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1606,11 +1632,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="19th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1619,11 +1646,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="20th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1632,11 +1660,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="21st June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1645,11 +1674,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="22nd June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1662,11 +1692,12 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="23rd June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1675,11 +1706,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="24th June 2024 (Monday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1688,11 +1720,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="25th June 2024 (Tuesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1701,11 +1734,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="26th June 2024 (Wednesday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1714,11 +1748,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="27th June 2024 (Thursday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1727,11 +1762,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="28th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1740,11 +1776,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="29th June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1757,11 +1794,12 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <td
                     class="rdp-cell"
+                    role="presentation"
                   >
                     <button
-                      aria-label="30th June 2024 (Sunday)"
                       class="rdp-button_reset rdp-button rdp-day"
                       name="day"
+                      role="gridcell"
                       tabindex="-1"
                       type="button"
                     >
@@ -1770,22 +1808,52 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                   <td
                     class="rdp-cell"
-                  />
+                    role="presentation"
+                  >
+                    <div
+                      role="gridcell"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>

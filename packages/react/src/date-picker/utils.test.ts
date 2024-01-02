@@ -4,6 +4,7 @@ import {
 	formatHumanReadableDate,
 	parseDate,
 	transformValuePropToInputValue,
+	getCalendarDefaultMonth,
 } from './utils';
 
 describe('parseDate', () => {
@@ -75,5 +76,57 @@ describe('transformValuePropToInputValue', () => {
 		expect(transformValuePropToInputValue(exampleDate)).toEqual(
 			formatDate(exampleDate)
 		);
+	});
+});
+
+describe('getCalendarDefaultMonth', () => {
+	test('returns undefined when no props are set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = undefined;
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(undefined);
+	});
+
+	test('uses the value prop when set', () => {
+		const valueProp = new Date(2024, 0, 0);
+		const initialMonthProp = undefined;
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(valueProp);
+	});
+
+	test('uses the initialMonth prop when set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = new Date(2024, 0, 0);
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(initialMonthProp);
+	});
+
+	test('uses the middle year from the yearRange prop when set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 2010,
+				to: 2020,
+			})?.getFullYear()
+		).toEqual(2015);
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 2005,
+				to: 2008,
+			})?.getFullYear()
+		).toEqual(2006);
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 2005,
+				to: 2005,
+			})?.getFullYear()
+		).toEqual(2005);
 	});
 });
