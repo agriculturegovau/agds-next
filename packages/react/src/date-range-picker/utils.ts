@@ -1,4 +1,4 @@
-import { isBefore, isAfter, subMonths } from 'date-fns';
+import { isBefore, subMonths } from 'date-fns';
 
 // If the end date is before the start date, swap the end date with the start
 // This prevents the users from typing invalid date ranges
@@ -13,33 +13,6 @@ export function ensureValidDateRange(dateRange: {
 	}
 
 	return dateRange;
-}
-
-// Ensure a valid date range is always sent back to the consumer
-export function getValidDateRange(
-	inputMode: 'from' | 'to',
-	selectedDay: Date,
-	currentRange: { from: Date | undefined; to: Date | undefined }
-) {
-	// The user is selecting a start date
-	if (inputMode === 'from') {
-		// If a start date has not been set, we can continue on
-		if (!currentRange.to) return { from: selectedDay, to: undefined };
-
-		// Ensure the start date is before the end date
-		return isBefore(selectedDay, currentRange.to)
-			? { from: selectedDay, to: currentRange.to }
-			: { from: selectedDay, to: undefined };
-	}
-
-	// The user is selecting a end date
-	// If a start date has not been set, we can continue on
-	if (!currentRange.from) return { from: undefined, to: selectedDay };
-
-	// Ensure the end date is after the start date
-	return isAfter(selectedDay, currentRange.from)
-		? { from: currentRange.from, to: selectedDay }
-		: { from: selectedDay, to: undefined };
 }
 
 // The default calendar month is the first month to display when the date picker is opened

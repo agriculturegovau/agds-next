@@ -29,11 +29,7 @@ import {
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { DateInput } from './../date-picker/DatePickerInput';
-import {
-	getValidDateRange,
-	ensureValidDateRange,
-	getCalendarDefaultMonth,
-} from './utils';
+import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -144,11 +140,13 @@ export const DateRangePicker = ({
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
-			const range = getValidDateRange(
-				inputMode,
-				selectedDay,
-				valueAsDateOrUndefined
+
+			const range = ensureValidDateRange(
+				inputMode === 'from'
+					? { from: selectedDay, to: valueAsDateOrUndefined.to }
+					: { from: valueAsDateOrUndefined.from, to: selectedDay }
 			);
+
 			onChange(range);
 			setFromInputValue(range.from ? formatDate(range.from) : '');
 			setToInputValue(range.to ? formatDate(range.to) : '');
