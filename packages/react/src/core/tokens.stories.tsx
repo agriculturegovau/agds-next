@@ -10,9 +10,11 @@ import { ShadowTokenChart } from '../../../../docs/components/TokenCharts';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, Spacing } from './tokens';
 
-export default {
+const meta = {
 	title: 'foundations/Core/Tokens',
 };
+
+export default meta;
 
 export const Color = () => {
 	const palettes = ['light', 'dark'] as const;
