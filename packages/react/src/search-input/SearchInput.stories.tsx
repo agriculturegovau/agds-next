@@ -1,81 +1,85 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Stack } from '../stack';
 import { SearchInput } from './SearchInput';
 
-export default {
+const meta: Meta<typeof SearchInput> = {
 	title: 'forms/SearchInput',
 	component: SearchInput,
-} as ComponentMeta<typeof SearchInput>;
-
-const Template: ComponentStory<typeof SearchInput> = (args) => {
-	return <SearchInput {...args} />;
+	args: {
+		label: 'Search',
+	},
 };
 
-const ControlledTemplate: ComponentStory<typeof SearchInput> = (args) => {
-	const [value, setValue] = useState('');
-	return <SearchInput {...args} value={value} onChange={setValue} />;
+export default meta;
+
+type Story = StoryObj<typeof SearchInput>;
+
+export const Basic: Story = {
+	args: {},
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	label: 'Search',
+export const Required: Story = {
+	args: {
+		required: true,
+	},
 };
 
-export const Required = Template.bind({});
-Required.args = {
-	label: 'Search',
-	required: true,
+export const HideOptionalLabel: Story = {
+	args: {
+		hideOptionalLabel: true,
+	},
 };
 
-export const HideOptionalLabel = Template.bind({});
-HideOptionalLabel.args = {
-	label: 'Search',
-	hideOptionalLabel: true,
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+		value: 'Disabled value',
+	},
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-	label: 'Search',
-	disabled: true,
+export const Invalid: Story = {
+	args: {
+		required: true,
+		message: 'A search term is required to see results',
+		invalid: true,
+	},
 };
 
-export const Invalid = Template.bind({});
-Invalid.args = {
-	label: 'Search',
-	required: true,
-	message: 'A search term is required to see results',
-	invalid: true,
+export const Hint: Story = {
+	args: {
+		hint: 'Start typing to see results',
+	},
 };
 
-export const Hint = Template.bind({});
-Hint.args = {
-	label: 'Search',
-	hint: 'Start typing to see results',
+export const Block: Story = {
+	args: {
+		block: true,
+	},
 };
 
-export const Block = Template.bind({});
-Block.args = {
-	label: 'Search',
-	block: true,
+export const Controlled: Story = {
+	args: {},
+	render: function Render(args) {
+		const [value, setValue] = useState('');
+		return <SearchInput {...args} value={value} onChange={setValue} />;
+	},
 };
 
-export const Controlled = ControlledTemplate.bind({});
-Controlled.args = {
-	label: 'Search',
-	block: true,
+export const MaxWidths: Story = {
+	args: {},
+	render: function Render(args) {
+		return (
+			<Stack gap={1}>
+				{(['md', 'lg', 'xl'] as const).map((size) => (
+					<SearchInput
+						key={size}
+						{...args}
+						label={`SearchInput max width ${size}`}
+						maxWidth={size}
+					/>
+				))}
+			</Stack>
+		);
+	},
 };
-
-export const MaxWidths: ComponentStory<typeof SearchInput> = (args) => (
-	<Stack gap={1}>
-		{(['md', 'lg', 'xl'] as const).map((size) => (
-			<SearchInput
-				key={size}
-				{...args}
-				label={`SearchInput max width ${size}`}
-				maxWidth={size}
-			/>
-		))}
-	</Stack>
-);
-MaxWidths.args = {};
