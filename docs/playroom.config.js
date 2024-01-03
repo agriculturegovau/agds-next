@@ -15,7 +15,9 @@ module.exports = {
 			rules: [
 				{
 					test: /\.[tj]sx?$/,
-					exclude: /(node_modules)/,
+					// Certain files in the playroom package need to be transpiled by babel
+					// Otherwise the error 'Missing class properties transform in node_modules/playroom/src/Playroom/CodeEditor/CodeMirror2.tsx` is thrown
+					exclude: /node_modules\/(?!playroom)/,
 					use: {
 						loader: 'babel-loader',
 						options: {
