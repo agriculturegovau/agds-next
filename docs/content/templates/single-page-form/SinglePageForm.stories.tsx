@@ -3,12 +3,14 @@ import { AppLayout } from '../__shared/AppLayout';
 import { SinglePageFormPage } from './SinglePageForm';
 import { SinglePageFormSuccess } from './SinglePageFormSuccess';
 
-export default {
+const meta = {
 	title: 'Templates/Single-page form',
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
+
+export default meta;
 
 export const FormPage = {
 	name: 'Website form',
