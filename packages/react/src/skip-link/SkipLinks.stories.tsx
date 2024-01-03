@@ -1,28 +1,34 @@
 import { Fragment } from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Prose } from '../prose';
 import { Stack } from '../stack';
 import { SkipLinkItem } from './SkipLinkItem';
 import { SkipLinks } from './SkipLinks';
 import { SkipLinkContainer } from './SkipLinkContainer';
 
-export default {
+const meta: Meta<typeof SkipLinks> = {
 	title: 'navigation/SkipLinks',
 	component: SkipLinks,
-	subcomponents: { SkipLinkContainer, SkipLinkItem },
-} as ComponentMeta<typeof SkipLinks>;
+};
 
-export const Basic = () => (
-	<Fragment>
-		<SkipLinks
-			links={[
-				{ href: '#main-content', label: 'Skip to main content' },
-				{ href: '#main-nav', label: 'Skip to main navigation' },
-			]}
-		/>
-		<ExampleContent />
-	</Fragment>
-);
+export default meta;
+
+type Story = StoryObj<typeof SkipLinks>;
+
+export const Basic: Story = {
+	args: {
+		links: [
+			{ href: '#main-content', label: 'Skip to main content' },
+			{ href: '#main-nav', label: 'Skip to main navigation' },
+		],
+	},
+	render: (args) => (
+		<Fragment>
+			<SkipLinks {...args} />
+			<ExampleContent />
+		</Fragment>
+	),
+};
 
 export const Modular = () => (
 	<Fragment>
