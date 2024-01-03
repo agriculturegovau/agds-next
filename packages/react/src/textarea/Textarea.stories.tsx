@@ -31,6 +31,7 @@ export const HideOptionalLabel: Story = {
 export const Disabled: Story = {
 	args: {
 		disabled: true,
+		value: 'Disabled value',
 	},
 };
 
