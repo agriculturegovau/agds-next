@@ -1,140 +1,78 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import {
-	TaskListContainer,
-	TaskList,
-	TaskListHeading,
-	TaskListItemsContainer,
-	TaskListItemLink,
-	TaskListItemButton,
-} from './index';
+import { Meta, StoryObj } from '@storybook/react';
+import { TaskList, TaskListProps } from './index';
 
-export default {
+const meta: Meta<typeof TaskList> = {
 	title: 'forms/TaskList',
 	component: TaskList,
-	subcomponents: {
-		TaskListContainer,
-		TaskListHeading,
-		TaskListItemsContainer,
-		TaskListItemLink,
-		TaskListItemButton,
-	},
-} as ComponentMeta<typeof TaskList>;
+	args: {},
+};
 
-const exampleLinkItems = [
+export default meta;
+
+type Story = StoryObj<typeof TaskList>;
+
+const exampleLinkItems: TaskListProps['items'] = [
 	{
 		href: '#',
 		label: 'Check eligibility',
 		message: 'Short description of the task',
-		status: 'done' as const,
+		status: 'done',
 	},
 	{
 		href: '#',
 		label: 'Personal details',
 		message: 'Short description of the task',
-		status: 'doing' as const,
+		status: 'doneRecently',
 	},
 	{
 		href: '#',
 		label: 'Business details',
 		message: 'Short description of the task',
-		status: 'todo' as const,
+		status: 'doing',
 	},
 	{
 		href: '#',
 		label: 'Export',
 		message: 'Short description of the task',
-		status: 'todo' as const,
+		status: 'todo',
 	},
 	{
 		href: '#',
 		label: 'Review and submit',
 		message: 'Not available until previous tasks are done',
-		status: 'blocked' as const,
+		status: 'blocked',
 	},
 ];
 
-const exampleOrderedButtonItems = [
-	{
-		onClick: console.log,
-		label: 'Check eligibility',
-		status: 'done' as const,
-	},
-	{
-		onClick: console.log,
-		label: 'Personal details',
-		status: 'done' as const,
-	},
-	{
-		onClick: console.log,
-		label: 'Business details',
-		status: 'doing' as const,
-	},
-	{
-		onClick: console.log,
-		label: 'Export',
-		status: 'todo' as const,
-	},
-	{
-		onClick: console.log,
-		label: 'Review and submit',
-		message: 'Not available until previous tasks are done',
-		status: 'blocked' as const,
-	},
-];
+const exampleButtonItems: TaskListProps['items'] = exampleLinkItems
+	.map((item) => ({ ...item, onClick: console.log }))
+	.map((item) => {
+		if ('href' in item) delete item.href;
+		return item;
+	});
 
-const Template: ComponentStory<typeof TaskList> = (args) => (
-	<TaskList {...args} />
-);
-
-export const Unordered = Template.bind({});
-Unordered.args = {
-	items: exampleLinkItems,
+export const Unordered: Story = {
+	args: {
+		items: exampleLinkItems,
+	},
 };
 
-export const Ordered = Template.bind({});
-Ordered.args = {
-	ordered: true,
-	items: exampleLinkItems,
+export const Ordered: Story = {
+	args: {
+		items: exampleLinkItems,
+		ordered: true,
+	},
 };
 
-export const RecentlyCompleted = Template.bind({});
-RecentlyCompleted.args = {
-	items: exampleLinkItems.map((item, idx) => {
-		if (idx !== 1) return item;
-		return {
-			...item,
-			status: 'doneRecently',
-		};
-	}),
+export const Buttons: Story = {
+	args: {
+		items: exampleButtonItems,
+	},
 };
 
-export const Button = Template.bind({});
-Button.args = {
-	items: exampleOrderedButtonItems,
+export const OrderedButtons: Story = {
+	args: {
+		items: exampleButtonItems,
+		ordered: true,
+	},
 };
-
-export const ModularLinks = () => (
-	<TaskListContainer>
-		<TaskListHeading stepsCompleted={1} totalSteps={5} />
-		<TaskListItemsContainer>
-			{exampleLinkItems.map(({ label, ...props }, index) => (
-				<TaskListItemLink key={index} {...props}>
-					{label}
-				</TaskListItemLink>
-			))}
-		</TaskListItemsContainer>
-	</TaskListContainer>
-);
-
-export const ModularButtons = () => (
-	<TaskListContainer>
-		<TaskListHeading stepsCompleted={2} totalSteps={5} />
-		<TaskListItemsContainer>
-			{exampleOrderedButtonItems.map(({ label, ...props }, index) => (
-				<TaskListItemButton key={index} {...props}>
-					{label}
-				</TaskListItemButton>
-			))}
-		</TaskListItemsContainer>
-	</TaskListContainer>
-);
