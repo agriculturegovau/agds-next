@@ -1,29 +1,33 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Avatar } from './Avatar';
 
-export default {
+const meta: Meta<typeof Avatar> = {
 	title: 'Content/Avatar',
 	component: Avatar,
-} as ComponentMeta<typeof Avatar>;
-
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
-
-export const Basic = Template.bind({});
-Basic.args = {
-	name: 'William Mead',
-	tone: 'neutral',
-	size: 'md',
 };
 
-export const Tone = Template.bind({});
-Tone.args = {
-	name: 'William Mead',
-	tone: 'action',
-	size: 'md',
+export default meta;
+
+type Story = StoryObj<typeof Avatar>;
+
+export const Basic: Story = {
+	args: {
+		name: 'William Mead',
+		tone: 'neutral',
+		size: 'md',
+	},
+};
+
+export const Tone: Story = {
+	args: {
+		name: 'William Mead',
+		tone: 'action',
+		size: 'md',
+	},
 };
 
 const SIZE_MAP = {
@@ -42,18 +46,18 @@ const TONE_MAP = {
 	action: 'action',
 } as const;
 
-export const Sizes: ComponentStory<typeof Avatar> = ({ size, ...args }) => {
-	return (
+export const Sizes: Story = {
+	args: {
+		name: 'William Mead',
+		tone: 'neutral',
+	},
+	render: (args) => (
 		<Flex alignItems="center" gap={1}>
 			{sizes.map((size) => (
 				<Avatar key={size} {...args} size={size} />
 			))}
 		</Flex>
-	);
-};
-Sizes.args = {
-	name: 'William Mead',
-	tone: 'neutral',
+	),
 };
 
 export const CompositeNames = () => {
