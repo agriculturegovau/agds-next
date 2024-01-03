@@ -1,0 +1,1 @@
+import{j as t}from"./responsive-1d67a6a2.js";import{F as e}from"./Stack-43f3e7c4.js";const o=({children:r})=>t(e,{gap:1,flexDirection:["column","row"],alignItems:["stretch","center"],children:r});try{o.displayName="ButtonGroup",o.__docgenInfo={description:"",displayName:"ButtonGroup",props:{}}}catch{}export{o as B};

@@ -1,0 +1,1 @@
+import{r as o}from"./index-42611d8b.js";const n=o.createContext(void 0);function r(){const t=o.useContext(n);if(t===void 0)throw new Error("`AppLayoutContext` not found.");return t}const s="xl",a="16rem";export{n as A,s as a,a as b,r as u};

@@ -1,0 +1,1 @@
+import{j as e}from"./responsive-1d67a6a2.js";import{F as r}from"./Stack-43f3e7c4.js";function o({children:t}){return e(r,{flexDirection:"column",css:{minWidth:"0"},children:t})}try{o.displayName="AppLayoutContent",o.__docgenInfo={description:"",displayName:"AppLayoutContent",props:{}}}catch{}export{o as A};
