@@ -1,43 +1,34 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { LinkList, LinkListItem, LinkListContainer } from './index';
+import { Meta, StoryObj } from '@storybook/react';
+import { LinkList } from './LinkList';
 
-export default {
+const meta: Meta<typeof LinkList> = {
 	title: 'navigation/LinkList',
 	component: LinkList,
-	subcomponents: { LinkListContainer, LinkListItem },
-} as ComponentMeta<typeof LinkList>;
-
-const exampleLinks = [
-	{ href: '#', label: 'Home' },
-	{ href: '#', label: 'Establishments' },
-	{ href: '#', label: 'Applications' },
-	{
-		href: 'https://design-system.agriculture.gov.au',
-		label: 'External link',
-		target: '_blank',
-		rel: 'noopener',
+	args: {
+		links: [
+			{ href: '#', label: 'Home' },
+			{ href: '#', label: 'Establishments' },
+			{ href: '#', label: 'Applications' },
+			{
+				href: 'https://design-system.agriculture.gov.au',
+				label: 'External link',
+				target: '_blank',
+				rel: 'noopener',
+			},
+		],
 	},
-];
-
-export const Basic: ComponentStory<typeof LinkList> = (args) => (
-	<LinkList {...args} />
-);
-Basic.args = {
-	links: exampleLinks,
 };
 
-export const Horizontal: ComponentStory<typeof LinkList> = (args) => (
-	<LinkList {...args} />
-);
-Horizontal.args = {
-	links: exampleLinks,
-	horizontal: true,
+export default meta;
+
+type Story = StoryObj<typeof LinkList>;
+
+export const Basic: Story = {
+	args: {},
 };
 
-export const Modular: ComponentStory<typeof LinkList> = (args) => (
-	<LinkListContainer {...args}>
-		<LinkListItem href="#one">One</LinkListItem>
-		<LinkListItem href="#two">Two</LinkListItem>
-		<LinkListItem href="#three">Three</LinkListItem>
-	</LinkListContainer>
-);
+export const Horizontal: Story = {
+	args: {
+		horizontal: true,
+	},
+};
