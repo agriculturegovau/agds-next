@@ -1,14 +1,22 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
 import { Logo as AgLogo } from './Logo';
 
-export default {
+const meta: Meta<typeof AgLogo> = {
 	title: 'Brand/AGBranding',
 	component: AgLogo,
-} as ComponentMeta<typeof AgLogo>;
+};
 
-export const Logo: ComponentStory<typeof AgLogo> = () => (
-	<Box maxWidth={600} color="text">
-		<AgLogo />
-	</Box>
-);
+export default meta;
+
+type Story = StoryObj<typeof AgLogo>;
+
+export const Logo: Story = {
+	decorators: [
+		(Story) => (
+			<Box maxWidth={600} color="text">
+				<Story />
+			</Box>
+		),
+	],
+};

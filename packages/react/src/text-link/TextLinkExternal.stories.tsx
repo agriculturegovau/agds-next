@@ -1,17 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { TextLinkExternal } from './TextLinkExternal';
 
-export default {
+const meta: Meta<typeof TextLinkExternal> = {
 	title: 'navigation/TextLink/TextLinkExternal',
 	component: TextLinkExternal,
-} as ComponentMeta<typeof TextLinkExternal>;
-
-const Template: ComponentStory<typeof TextLinkExternal> = (args) => {
-	return <TextLinkExternal {...args} />;
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-	children: 'External link',
-	href: 'https://design-system.agriculture.gov.au',
+export default meta;
+
+type Story = StoryObj<typeof TextLinkExternal>;
+
+export const Basic: Story = {
+	args: {
+		children: 'External link',
+		href: 'https://design-system.agriculture.gov.au',
+	},
 };

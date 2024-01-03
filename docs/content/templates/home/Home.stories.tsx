@@ -1,12 +1,14 @@
 import { SiteLayout } from '../__shared/SiteLayout';
 import { Home as HomeComponent } from './Home';
 
-export default {
+const meta = {
 	title: 'Templates/Home page',
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
+
+export default meta;
 
 export const Home = {
 	name: 'Website layout',

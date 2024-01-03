@@ -1,4 +1,3 @@
-import { Meta } from '@storybook/react';
 import { AppLayout } from '../__shared/AppLayout';
 import { SiteLayout } from '../__shared/SiteLayout';
 import { NotFound as NotFoundPage } from './NotFound';
@@ -8,7 +7,7 @@ import { ScheduledThirdPartyOutage as ScheduledThirdPartyOutagePage } from './Sc
 import { ThirdPartyOutage as ThirdPartyPage } from './ThirdPartyOutage';
 import { ErrorPage } from './ErrorPage';
 
-const meta: Meta<typeof ErrorPage> = {
+const meta = {
 	title: 'Templates/Error page',
 	parameters: {
 		layout: 'fullscreen',

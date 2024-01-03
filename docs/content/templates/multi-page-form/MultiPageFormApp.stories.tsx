@@ -4,12 +4,14 @@ import { MultiPageFormStep } from './MultiPageFormStep';
 import { MultiPageFormSummary } from './MultiPageFormSummary';
 import { MultiPageFormSuccess } from './MultiPageFormSuccess';
 
-export default {
+const meta = {
 	title: 'Templates/Multi-page form/Application layout',
 	parameters: {
 		layout: 'fullscreen',
 	},
 };
+
+export default meta;
 
 export const IntroPage = {
 	render: () => (

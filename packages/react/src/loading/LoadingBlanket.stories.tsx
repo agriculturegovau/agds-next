@@ -1,44 +1,55 @@
 import { Fragment } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Header } from '../header';
 import { Logo } from '../ag-branding/';
 import { MainNav } from '../main-nav';
-import { Content } from '../content';
+import { PageContent } from '../content';
 import { Prose } from '../prose';
-import {
-	LoadingBlanket,
-	LoadingBlanketProps,
-	LoadingBlanketContainer,
-	LoadingBlanketContent,
-	LoadingBlanketLabel,
-	LoadingDots,
-} from './index';
+import { LoadingBlanket } from './index';
 
-export default {
+const meta: Meta<typeof LoadingBlanket> = {
 	title: 'content/Loading/LoadingBlanket',
 	component: LoadingBlanket,
-} as ComponentMeta<typeof LoadingBlanket>;
+};
 
-const Template = (props: LoadingBlanketProps) => (
-	<Box
-		background="body"
-		height="300px"
-		width="100%"
-		padding={1}
-		border
-		css={{ position: 'relative' }}
-	>
-		<LoadingBlanket {...props} />
-	</Box>
-);
+export default meta;
 
-export const Basic: ComponentStory<typeof LoadingBlanket> = (args) => (
-	<Template {...args} />
-);
-Basic.args = {
-	label: 'Component loading state message',
+type Story = StoryObj<typeof LoadingBlanket>;
+
+export const Basic: Story = {
+	args: {
+		label: 'Component loading state message',
+	},
+	render: (args) => (
+		<Box
+			background="body"
+			height="300px"
+			width="100%"
+			padding={1}
+			border
+			css={{ position: 'relative' }}
+		>
+			<LoadingBlanket {...args} />
+		</Box>
+	),
+};
+
+export const FullScreen: Story = {
+	args: {
+		label: 'Loading state message',
+		fullScreen: true,
+	},
+	parameters: {
+		layout: 'fullscreen',
+	},
+	render: (args) => (
+		<Box background="body">
+			<FullScreenContent />
+			<LoadingBlanket {...args} />
+		</Box>
+	),
 };
 
 const FullScreenContent = () => (
@@ -47,7 +58,7 @@ const FullScreenContent = () => (
 			<Header logo={<Logo />} heading="Export Service" />
 			<MainNav items={[{ label: 'Hello', href: '#' }]} />
 		</Stack>
-		<Content>
+		<PageContent>
 			<Prose>
 				<h1>Page heading</h1>
 				<p>
@@ -97,29 +108,6 @@ const FullScreenContent = () => (
 					ullamcorper.
 				</p>
 			</Prose>
-		</Content>
+		</PageContent>
 	</Fragment>
-);
-
-export const FullScreen: ComponentStory<typeof LoadingBlanket> = (args) => (
-	<Box background="body">
-		<FullScreenContent />
-		<LoadingBlanket {...args} />
-	</Box>
-);
-FullScreen.args = {
-	fullScreen: true,
-	label: 'Loading state message',
-};
-
-export const Modular = () => (
-	<Box background="body" dark>
-		<FullScreenContent />
-		<LoadingBlanketContainer fullScreen>
-			<LoadingBlanketContent>
-				<LoadingDots size="lg" />
-				<LoadingBlanketLabel>Loading</LoadingBlanketLabel>
-			</LoadingBlanketContent>
-		</LoadingBlanketContainer>
-	</Box>
 );

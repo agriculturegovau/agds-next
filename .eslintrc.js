@@ -48,13 +48,6 @@ module.exports = {
 			files: ['packages/**/*', '.storybook/**/*'],
 			rules: { '@next/next/no-html-link-for-pages': 'off' },
 		},
-		// CSF and import/no-anonymous-default-export
-		{
-			files: ['**/*.stories.ts', '**/*.stories.tsx'],
-			rules: {
-				'import/no-anonymous-default-export': 'off',
-			},
-		},
 		// Scrips written in plain JS need to use require
 		{
 			files: ['*.js'],

@@ -1,14 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { TextLink } from './TextLink';
 
-export default {
+const meta: Meta<typeof TextLink> = {
 	title: 'navigation/TextLink',
 	component: TextLink,
-} as ComponentMeta<typeof TextLink>;
-
-const Template: ComponentStory<typeof TextLink> = (args) => {
-	return <TextLink {...args} />;
 };
 
-export const Basic = Template.bind({});
-Basic.args = { children: 'Internal link', href: '#' };
+export default meta;
+
+type Story = StoryObj<typeof TextLink>;
+
+export const Basic: Story = {
+	args: {
+		children: 'Internal link',
+		href: '#',
+	},
+};

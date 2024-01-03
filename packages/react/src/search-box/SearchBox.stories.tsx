@@ -1,53 +1,58 @@
+import { Meta, StoryObj } from '@storybook/react';
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SearchBox } from './SearchBox';
 import { SearchBoxButton } from './SearchBoxButton';
 import { SearchBoxInput } from './SearchBoxInput';
 
-export default {
+const meta: Meta<typeof SearchBox> = {
 	title: 'forms/SearchBox',
 	component: SearchBox,
-	subcomponents: { SearchBoxButton, SearchBoxInput },
-} as ComponentMeta<typeof SearchBox>;
-
-export const Basic: ComponentStory<typeof SearchBox> = () => (
-	<SearchBox>
-		<SearchBoxInput />
-		<SearchBoxButton>Search</SearchBoxButton>
-	</SearchBox>
-);
-
-export const LabelVisible: ComponentStory<typeof SearchBoxInput> = (args) => (
-	<SearchBox>
-		<SearchBoxInput {...args} />
-		<SearchBoxButton>Search</SearchBoxButton>
-	</SearchBox>
-);
-LabelVisible.args = {
-	label: 'Search this website',
-	labelVisible: true,
 };
 
-export const ButtonLabel: ComponentStory<typeof SearchBoxButton> = (args) => (
-	<SearchBox>
-		<SearchBoxInput />
-		<SearchBoxButton {...args} />
-	</SearchBox>
-);
-ButtonLabel.args = {
-	children: 'Custom label',
+export default meta;
+
+type Story = StoryObj<typeof SearchBox>;
+
+export const Basic: Story = {
+	args: {},
+	render: (args) => (
+		<SearchBox {...args}>
+			<SearchBoxInput />
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
+	),
 };
 
-export const ResponsiveButtonIcon: ComponentStory<typeof SearchBoxButton> = (
-	args
-) => (
-	<SearchBox>
-		<SearchBoxInput />
-		<SearchBoxButton {...args}>Search</SearchBoxButton>
-	</SearchBox>
-);
-ResponsiveButtonIcon.args = {
-	iconOnly: { xs: true, sm: false },
+export const LabelVisible: Story = {
+	args: {},
+	render: (args) => (
+		<SearchBox {...args}>
+			<SearchBoxInput label="Search this website" labelVisible />
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
+	),
+};
+
+export const ButtonLabel: Story = {
+	args: {},
+	render: (args) => (
+		<SearchBox {...args}>
+			<SearchBoxInput />
+			<SearchBoxButton>Custom label</SearchBoxButton>
+		</SearchBox>
+	),
+};
+
+export const ResponsiveButtonIcon: Story = {
+	args: {},
+	render: (args) => (
+		<SearchBox {...args}>
+			<SearchBoxInput />
+			<SearchBoxButton iconOnly={{ xs: true, sm: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
+	),
 };
 
 export const Controlled = () => {
