@@ -1,8 +1,0 @@
-<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="33" y="9" width="6" height="56" transform="translate(-1 73) rotate(-90)" style="fill:#808080"></rect>
-<rect x="33" y="21" width="6" height="56" transform="translate(-13 85) rotate(-90)" style="fill:#808080"></rect>
-<rect x="33" y="33" width="6" height="56" transform="translate(-25 97) rotate(-90)" style="fill:#808080"></rect>
-<path d="M8,8V26H64V8Zm28,8H54v2H36ZM12,22l6-10,6,10Zm46,0H36V20H58Zm0-8H36V12H58Z" style="fill:#00558B"></path>
-<path d="M18,18.67a.83.83,0,1,0,.86.83A.85.85,0,0,0,18,18.67Z" style="fill:#00558B"></path>
-<polygon points="17.57 18.25 18.43 18.25 18.86 15.33 17.14 15.33 17.57 18.25" style="fill:#00558B"></polygon>
-</svg>
