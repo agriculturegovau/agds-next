@@ -12,6 +12,7 @@ const config: StorybookConfig = {
 		builder: '@storybook/builder-vite',
 	},
 	features: {
+		storyStoreV7: false,
 		buildStoriesJson: true,
 	},
 	addons: [
