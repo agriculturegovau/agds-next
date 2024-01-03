@@ -1,17 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { DirectionLink } from './index';
+import { DirectionButton } from './index';
 
-const meta: Meta<typeof DirectionLink> = {
-	title: 'navigation/DirectionLink',
-	component: DirectionLink,
+const meta: Meta<typeof DirectionButton> = {
+	title: 'navigation/DirectionLink/DirectionButton',
+	component: DirectionButton,
 	args: {
-		href: '#',
+		onClick: console.log,
 	},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DirectionLink>;
+type Story = StoryObj<typeof DirectionButton>;
 
 export const Basic: Story = {
 	args: {
