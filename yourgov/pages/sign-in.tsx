@@ -40,7 +40,7 @@ export default function Page() {
 			<SiteLayout>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ xs: 12, md: 7 }}>
+						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
 								<Stack gap={0.5}>
 									<H1>Sign in to yourGov</H1>
@@ -172,13 +172,3 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		</Stack>
 	);
 }
-
-export const SignInFormPage = () => {
-	return (
-		<PageContent>
-			<Columns>
-				<Column columnSpan={{ xs: 12, md: 7 }}></Column>
-			</Columns>
-		</PageContent>
-	);
-};

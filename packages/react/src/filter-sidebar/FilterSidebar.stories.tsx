@@ -62,7 +62,7 @@ export const Layout: Story = {
 					links={[{ href: '#main-content', label: 'Skip to main content' }]}
 				/>
 
-				<Columns gap={{ xs: 1, md: 3 }}>
+				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
 							<FilterSidebar

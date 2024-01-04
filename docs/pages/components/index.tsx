@@ -68,7 +68,7 @@ export default function PackagesHome({
 				description={description}
 				editPath="/docs/content/components/index.mdx"
 			>
-				<Columns gap={{ xs: 1, md: 3 }}>
+				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
 							<FilterSidebar onClearFilters={resetFilters}>
