@@ -63,7 +63,7 @@ export const Layout: Story = {
 				/>
 
 				<Columns gap={{ xs: 1, md: 3 }}>
-					<Column columnSpan={{ xs: 12, md: 4 }}>
+					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
 							<FilterSidebar
 								activeFiltersCount={args.activeFiltersCount}
@@ -84,6 +84,7 @@ export const Layout: Story = {
 						tabIndex={-1}
 						css={{ '&:focus': { outline: 'none' } }}
 						columnSpan={{ xs: 12, md: 8 }}
+						columnStart={{ lg: 5 }}
 					>
 						<Stack gap={2}>
 							<Text
@@ -136,7 +137,9 @@ const ListFilteringExample = () => {
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
 			<DataProvider value={data}>
-				<ListFiltering />
+				<PageContent>
+					<ListFiltering />
+				</PageContent>
 			</DataProvider>
 		</SortAndFilterProvider>
 	);

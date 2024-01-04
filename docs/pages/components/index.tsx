@@ -69,7 +69,7 @@ export default function PackagesHome({
 				editPath="/docs/content/components/index.mdx"
 			>
 				<Columns gap={{ xs: 1, md: 3 }}>
-					<Column columnSpan={{ xs: 12, md: 6, lg: 4 }}>
+					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
 							<FilterSidebar onClearFilters={resetFilters}>
 								<FormStack>
@@ -111,8 +111,11 @@ export default function PackagesHome({
 							</FilterSidebar>
 						</Stack>
 					</Column>
-
-					<Column id={listId} columnSpan={{ xs: 12, md: 6, lg: 8 }}>
+					<Column
+						id={listId}
+						columnSpan={{ xs: 12, md: 8 }}
+						columnStart={{ lg: 5 }}
+					>
 						{filteredPkgs?.length ? (
 							<Stack gap={2}>
 								<Text
