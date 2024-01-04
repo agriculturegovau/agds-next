@@ -1,4 +1,3 @@
-import { boxPalette, tokens } from '@ag.ds-next/react/core';
 import { Box } from '@ag.ds-next/react/box';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
@@ -87,13 +86,8 @@ export const ListFiltering = () => {
 						alignItems={{ xs: 'flex-start', md: 'flex-end' }}
 						gap={1}
 						paddingBottom={{ md: 1 }}
-						css={{
-							[tokens.mediaQuery.min.md]: {
-								borderBottomStyle: 'solid',
-								borderBottomColor: boxPalette.border,
-								borderBottomWidth: tokens.borderWidth.sm,
-							},
-						}}
+						borderBottom
+						borderBottomWidth={{ xs: 'none', md: 'sm' }}
 					>
 						<Text
 							as="h2"
