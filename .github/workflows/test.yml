@@ -76,26 +76,8 @@ jobs:
       - name: Generate component props
         run: yarn docs:generate-component-props
 
-      - name: Packages
-        run: yarn lint:packages
-
-      - name: Example
-        run: yarn lint:example
-
-      - name: Yourgov
-        run: yarn lint:yourgov
-
-      - name: Storybook
-        run: yarn lint:storybook
-
-      - name: Docs
-        run: yarn lint:docs
-
-      - name: Prettier
-        run: yarn lint:prettier
-
-      - name: Typescript
-        run: yarn lint:typescript
+      - name: Lint
+        run: yarn lint
 
   build:
     name: Build packages
