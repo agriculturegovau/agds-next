@@ -42,7 +42,7 @@ For development run one or more of the following commands:
 
 Deployment of the website is handled by [github actions](https://github.com/agriculturegovau/agds-next/actions/workflows/deploy-docs.yml). The site is deployed automatically anytime changes are merged to the `main` branch.
 
-You can run the builds locally for testing. The order of commands here is important. Because storybook, playroom, the example site and example form site is being bundled into the docs site it must be built first.
+You can run the builds locally for testing. The order of commands here is important. Because storybook, playroom, the example site and example form site is being bundled into the docs site public folder, they all must be built before the docs site.
 
 ```sh
 yarn storybook:build

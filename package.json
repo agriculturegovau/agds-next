@@ -12,7 +12,7 @@
 	],
 	"scripts": {
 		"build": "preconstruct build",
-		"build-site": "concurrently 'yarn:*:build'",
+		"build-site": "concurrently 'yarn:*(!docs):build' --kill-others-on-fail && yarn docs:build",
 		"clean": "rimraf \"**/node_modules\" \"**/yarn-error.log\" \"**/out.log\" \"**/.DS_Store\" \"**/dist\" \"**/out\" \"**/.next\"",
 		"docs:build": "yarn --cwd docs build",
 		"docs:dev": "yarn --cwd docs dev",
@@ -23,7 +23,7 @@
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"fresh": "yarn clean && yarn",
 		"postinstall": "manypkg check && preconstruct dev",
-		"lint": "concurrently 'yarn:lint:*'",
+		"lint": "concurrently 'yarn:lint:*' --kill-others-on-fail",
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:example": "yarn --cwd example-site lint",
 		"lint:packages": "yarn eslint \"packages/**/*.{js,jsx,ts,tsx}\"",
