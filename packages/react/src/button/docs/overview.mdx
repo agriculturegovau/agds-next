@@ -128,8 +128,10 @@ An icon can be used next to a [meaningful text label](/components/button/rationa
 
 Use icons that accurately communicate the label meaning and describe the action. For example, search fields on mobile often use a magnifying glass icon without a label due to space constraints.
 
+The icon should appear before the text except when the icon indicates direction, e.g. Next or external links.
+
 ```jsx live
-<ButtonLink href="/sign-out" iconAfter={AvatarIcon}>
+<ButtonLink href="/sign-out" iconBefore={AvatarIcon}>
 	Sign out
 </ButtonLink>
 ```
