@@ -40,12 +40,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: |
-          yarn storybook:build
-          yarn playroom:build
-          yarn example:build
-          yarn yourgov:build
-          yarn docs:build
+        run: yarn build-site
         env:
           GITHUB_PR_PREVIEW_NUMBER: ${{ github.event.number }}
           BASE_PATH: /pr-preview/pr-${{ github.event.number }}
