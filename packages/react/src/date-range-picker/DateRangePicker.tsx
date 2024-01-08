@@ -28,6 +28,7 @@ import {
 	transformValuePropToInputValue,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
+import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
@@ -353,22 +354,24 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				{isCalendarOpen && (
-					<Popover {...popover.getPopoverProps()}>
-						<CalendarRange
-							initialFocus
-							defaultMonth={defaultMonth}
-							selected={valueAsDateOrUndefined}
-							onSelect={onSelect}
-							numberOfMonths={numberOfMonths}
-							disabled={disabledCalendarDays}
-							returnFocusRef={
-								inputMode === 'from' ? fromTriggerRef : toTriggerRef
-							}
-							yearRange={yearRange}
-						/>
-					</Popover>
-				)}
+				<CalendarProvider>
+					{isCalendarOpen && (
+						<Popover {...popover.getPopoverProps()}>
+							<CalendarRange
+								initialFocus
+								defaultMonth={defaultMonth}
+								selected={valueAsDateOrUndefined}
+								onSelect={onSelect}
+								numberOfMonths={numberOfMonths}
+								disabled={disabledCalendarDays}
+								returnFocusRef={
+									inputMode === 'from' ? fromTriggerRef : toTriggerRef
+								}
+								yearRange={yearRange}
+							/>
+						</Popover>
+					)}
+				</CalendarProvider>
 			</fieldset>
 		</FieldContainer>
 	);

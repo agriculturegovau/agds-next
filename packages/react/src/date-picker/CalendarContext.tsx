@@ -1,19 +1,19 @@
 import {
 	createContext,
+	MutableRefObject,
 	PropsWithChildren,
 	useContext,
 	useRef,
-	MutableRefObject,
 } from 'react';
 
 const CalendarContext = createContext<
-	{ yearsVisitedRef: MutableRefObject<Map<number, boolean>> } | undefined
+	MutableRefObject<Map<number, boolean>> | undefined
 >(undefined);
 
 export function CalendarProvider({ children }: PropsWithChildren<{}>) {
 	const yearsVisitedRef = useRef(new Map<number, boolean>());
 	return (
-		<CalendarContext.Provider value={{ yearsVisitedRef }}>
+		<CalendarContext.Provider value={yearsVisitedRef}>
 			{children}
 		</CalendarContext.Provider>
 	);

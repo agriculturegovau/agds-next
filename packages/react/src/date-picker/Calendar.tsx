@@ -119,10 +119,10 @@ const calendarComponents: CustomComponents = {
 		);
 
 		const { yearRange } = useCalendarLabelContext();
-		const { yearsVisitedRef } = useCalendarContext();
+		const yearsVisitedRef = useCalendarContext();
 
 		const yearOptions = useMemo(() => {
-			// Update the map of visited years whenever the 'year' changes
+			// Update the map of visited years whenever the year changes
 			yearsVisitedRef.current.set(year, true);
 
 			const lowerBound = yearRange?.from ?? currentYear - 10;
