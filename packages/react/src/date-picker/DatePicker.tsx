@@ -12,6 +12,7 @@ import { SelectSingleEventHandler } from 'react-day-picker';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
 import { CalendarSingle } from './Calendar';
+import { CalendarProvider } from './CalendarContext';
 import { DateInput } from './DatePickerInput';
 import {
 	parseDate,
@@ -179,30 +180,32 @@ export const DatePicker = ({
 	);
 
 	return (
-		<div {...popover.getReferenceProps()}>
-			<DateInput
-				{...props}
-				maxWidth={maxWidth}
-				invalid={{ field: invalid, input: invalid }}
-				ref={inputRef}
-				value={inputValue}
-				onChange={onInputChange}
-				buttonRef={triggerRef}
-				buttonOnClick={toggleCalendar}
-			/>
-			{isCalendarOpen && (
-				<Popover {...popover.getPopoverProps()}>
-					<CalendarSingle
-						initialFocus
-						selected={valueAsDateOrUndefined}
-						onSelect={onSelect}
-						defaultMonth={defaultMonth}
-						yearRange={yearRange}
-						numberOfMonths={1}
-						disabled={disabledCalendarDays}
-					/>
-				</Popover>
-			)}
-		</div>
+		<CalendarProvider>
+			<div {...popover.getReferenceProps()}>
+				<DateInput
+					{...props}
+					maxWidth={maxWidth}
+					invalid={{ field: invalid, input: invalid }}
+					ref={inputRef}
+					value={inputValue}
+					onChange={onInputChange}
+					buttonRef={triggerRef}
+					buttonOnClick={toggleCalendar}
+				/>
+				{isCalendarOpen && (
+					<Popover {...popover.getPopoverProps()}>
+						<CalendarSingle
+							initialFocus
+							selected={valueAsDateOrUndefined}
+							onSelect={onSelect}
+							defaultMonth={defaultMonth}
+							yearRange={yearRange}
+							numberOfMonths={1}
+							disabled={disabledCalendarDays}
+						/>
+					</Popover>
+				)}
+			</div>
+		</CalendarProvider>
 	);
 };

@@ -1,4 +1,12 @@
-import { isDate, format, parse, isValid, isBefore, isAfter } from 'date-fns';
+import {
+	isDate,
+	format,
+	parse,
+	isValid,
+	isBefore,
+	isAfter,
+	closestTo,
+} from 'date-fns';
 
 // Date format is not configurable
 const dateFormat = 'dd/MM/yyyy';
@@ -60,10 +68,9 @@ export function getCalendarDefaultMonth(
 	if (initialMonth) return initialMonth;
 	// If a `yearRange` prop has been set, use the middle year of the range
 	if (yearRange) {
-		const middleYear = yearRange.from + (yearRange.to - yearRange.from) / 2;
-		const date = new Date();
-		date.setFullYear(middleYear);
-		return date;
+		const lowDate = new Date(yearRange.from, 0, 1);
+		const highDate = new Date(yearRange.to, 11, 31);
+		return closestTo(new Date(), [lowDate, highDate]);
 	}
 	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
 	return undefined;

@@ -26,6 +26,7 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer } from './CalendarContainer';
+import { useCalendarContext } from './CalendarContext';
 
 export type CalendarSingleProps = Omit<
 	DayPickerSingleProps,
@@ -118,8 +119,12 @@ const calendarComponents: CustomComponents = {
 		);
 
 		const { yearRange } = useCalendarLabelContext();
+		const { yearsVisitedRef } = useCalendarContext();
 
 		const yearOptions = useMemo(() => {
+			// Update the map of visited years whenever the 'year' changes
+			yearsVisitedRef.current.set(year, true);
+
 			const lowerBound = yearRange?.from ?? currentYear - 10;
 			const upperBound = yearRange?.to ?? currentYear + 10;
 
@@ -127,13 +132,18 @@ const calendarComponents: CustomComponents = {
 				{ length: upperBound - lowerBound + 1 },
 				(_, i) => i + lowerBound
 			);
+
 			// Ensures that if the user navigates to a year outside the dropdown, the dropdown options are updated
-			if (yearOptions.length > 1 && !yearOptions.includes(year)) {
-				yearOptions = [...yearOptions, year].sort();
+			if (yearOptions.length > 1) {
+				yearsVisitedRef.current.forEach((_, key) => {
+					if (!yearOptions.includes(key)) {
+						yearOptions = [...yearOptions, key].sort();
+					}
+				});
 			}
 
 			return yearOptions.map((year) => ({ value: year, label: year }));
-		}, [year, yearRange]);
+		}, [year, yearRange, yearsVisitedRef]);
 
 		const monthOptions = useMemo(() => {
 			return [
