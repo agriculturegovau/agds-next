@@ -66,11 +66,14 @@ export function getCalendarDefaultMonth(
 	if (valueAsDateOrUndefined) return valueAsDateOrUndefined;
 	// If an `initialMonth` prop has been set, use that value
 	if (initialMonth) return initialMonth;
-	// If a `yearRange` prop has been set, use the middle year of the range
+	// If a `yearRange` prop has been set, use the closest day to todays date
 	if (yearRange) {
-		const lowDate = new Date(yearRange.from, 0, 1);
-		const highDate = new Date(yearRange.to, 11, 31);
-		return closestTo(new Date(), [lowDate, highDate]);
+		// Create a date on the first day of the range
+		const earliestDateInRange = new Date(yearRange.from, 0, 1);
+		// Create a date on the last day of the range
+		const lastDateInRange = new Date(yearRange.to, 11, 31);
+		// Use the closest day to todays date
+		return closestTo(new Date(), [earliestDateInRange, lastDateInRange]);
 	}
 	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
 	return undefined;

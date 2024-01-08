@@ -107,7 +107,7 @@ describe('getCalendarDefaultMonth', () => {
 		).toEqual(initialMonthProp);
 	});
 
-	test('uses the middle year from the yearRange prop when set', () => {
+	test('uses the closest date from the yearRange prop when set', () => {
 		const valueProp = undefined;
 		const initialMonthProp = undefined;
 		expect(
@@ -115,18 +115,18 @@ describe('getCalendarDefaultMonth', () => {
 				from: 2010,
 				to: 2020,
 			})?.getFullYear()
-		).toEqual(2015);
+		).toEqual(2020);
 		expect(
 			getCalendarDefaultMonth(valueProp, initialMonthProp, {
-				from: 2005,
-				to: 2008,
+				from: 2030,
+				to: 2050,
 			})?.getFullYear()
-		).toEqual(2006);
+		).toEqual(2030);
 		expect(
 			getCalendarDefaultMonth(valueProp, initialMonthProp, {
-				from: 2005,
-				to: 2005,
+				from: 1990,
+				to: 2100,
 			})?.getFullYear()
-		).toEqual(2005);
+		).toEqual(1990);
 	});
 });

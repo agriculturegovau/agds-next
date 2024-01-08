@@ -354,7 +354,7 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				<CalendarProvider>
+				<CalendarProvider yearRange={yearRange}>
 					{isCalendarOpen && (
 						<Popover {...popover.getPopoverProps()}>
 							<CalendarRange
@@ -367,7 +367,6 @@ export const DateRangePicker = ({
 								returnFocusRef={
 									inputMode === 'from' ? fromTriggerRef : toTriggerRef
 								}
-								yearRange={yearRange}
 							/>
 						</Popover>
 					)}

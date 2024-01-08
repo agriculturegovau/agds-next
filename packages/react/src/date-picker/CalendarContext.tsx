@@ -6,24 +6,34 @@ import {
 	useRef,
 } from 'react';
 
-const CalendarContext = createContext<
-	MutableRefObject<Map<number, boolean>> | undefined
->(undefined);
+type ContextType = {
+	yearsVisitedRef: MutableRefObject<Map<number, true>>;
+	yearRange: CalendarProviderProps['yearRange'];
+};
 
-export function CalendarProvider({ children }: PropsWithChildren<{}>) {
-	const yearsVisitedRef = useRef(new Map<number, boolean>());
+const Context = createContext<ContextType | undefined>(undefined);
+
+export type CalendarProviderProps = PropsWithChildren<{
+	yearRange: { from: number; to: number } | undefined;
+}>;
+
+export function CalendarProvider({
+	children,
+	yearRange,
+}: CalendarProviderProps) {
+	const yearsVisitedRef = useRef(new Map<number, true>());
 	return (
-		<CalendarContext.Provider value={yearsVisitedRef}>
+		<Context.Provider value={{ yearsVisitedRef, yearRange }}>
 			{children}
-		</CalendarContext.Provider>
+		</Context.Provider>
 	);
 }
 
-export function useCalendarContext() {
-	const context = useContext(CalendarContext);
+export function useCalendar() {
+	const context = useContext(Context);
 
 	if (!context) {
-		throw new Error('CalendarProvider not found');
+		throw new Error('Context not found.');
 	}
 
 	return context;

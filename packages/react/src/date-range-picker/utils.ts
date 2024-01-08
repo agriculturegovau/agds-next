@@ -1,4 +1,4 @@
-import { isBefore, subMonths, differenceInMonths } from 'date-fns';
+import { isBefore, subMonths, differenceInMonths, closestTo } from 'date-fns';
 
 // If the end date is before the start date, swap the end date with the start
 // This prevents the users from typing invalid date ranges
@@ -28,20 +28,19 @@ export function getCalendarDefaultMonth(
 		if (inputMode === 'from' && valueAsDateOrUndefined.from) {
 			return valueAsDateOrUndefined.from;
 		}
-
 		// Open up the 'to' date if the user has clicked the end date picker
 		if (inputMode === 'to' && valueAsDateOrUndefined.to) {
 			return valueAsDateOrUndefined.to;
 		}
-
-		// If a `yearRange` prop has been set, use the middle year of the range
+		// If a `yearRange` prop has been set, use the closest day to todays date
 		if (yearRange) {
-			const middleYear = yearRange.from + (yearRange.to - yearRange.from) / 2;
-			const date = new Date();
-			date.setFullYear(middleYear);
-			return date;
+			// Create a date on the first day of the range
+			const earliestDateInRange = new Date(yearRange.from, 0, 1);
+			// Create a date on the last day of the range
+			const lastDateInRange = new Date(yearRange.to, 11, 31);
+			// Use the closest day to todays date
+			return closestTo(new Date(), [earliestDateInRange, lastDateInRange]);
 		}
-
 		// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
 		return undefined;
 	})();

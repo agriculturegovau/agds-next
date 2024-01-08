@@ -180,18 +180,18 @@ export const DatePicker = ({
 	);
 
 	return (
-		<CalendarProvider>
-			<div {...popover.getReferenceProps()}>
-				<DateInput
-					{...props}
-					maxWidth={maxWidth}
-					invalid={{ field: invalid, input: invalid }}
-					ref={inputRef}
-					value={inputValue}
-					onChange={onInputChange}
-					buttonRef={triggerRef}
-					buttonOnClick={toggleCalendar}
-				/>
+		<div {...popover.getReferenceProps()}>
+			<DateInput
+				{...props}
+				maxWidth={maxWidth}
+				invalid={{ field: invalid, input: invalid }}
+				ref={inputRef}
+				value={inputValue}
+				onChange={onInputChange}
+				buttonRef={triggerRef}
+				buttonOnClick={toggleCalendar}
+			/>
+			<CalendarProvider yearRange={yearRange}>
 				{isCalendarOpen && (
 					<Popover {...popover.getPopoverProps()}>
 						<CalendarSingle
@@ -199,13 +199,12 @@ export const DatePicker = ({
 							selected={valueAsDateOrUndefined}
 							onSelect={onSelect}
 							defaultMonth={defaultMonth}
-							yearRange={yearRange}
 							numberOfMonths={1}
 							disabled={disabledCalendarDays}
 						/>
 					</Popover>
 				)}
-			</div>
-		</CalendarProvider>
+			</CalendarProvider>
+		</div>
 	);
 };

@@ -1,11 +1,9 @@
 import {
 	ChangeEvent,
 	ChangeEventHandler,
-	createContext,
 	Fragment,
 	RefObject,
 	useCallback,
-	useContext,
 	useMemo,
 } from 'react';
 import format from 'date-fns/format';
@@ -26,22 +24,18 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer } from './CalendarContainer';
-import { useCalendarContext } from './CalendarContext';
+import { useCalendar } from './CalendarContext';
 
 export type CalendarSingleProps = Omit<
 	DayPickerSingleProps,
 	'mode' | 'components'
-> & {
-	yearRange?: { from: number; to: number };
-};
+>;
 
-export function CalendarSingle({ yearRange, ...props }: CalendarSingleProps) {
+export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
 			<CalendarContainer range={false}>
-				<CalendarLabelContext.Provider value={{ yearRange }}>
-					<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
-				</CalendarLabelContext.Provider>
+				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -51,12 +45,10 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	yearRange?: { from: number; to: number };
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
-	yearRange,
 	returnFocusRef,
 	...props
 }: CalendarRangeProps) {
@@ -70,9 +62,7 @@ export function CalendarRange({
 			}}
 		>
 			<CalendarContainer range={true}>
-				<CalendarLabelContext.Provider value={{ yearRange }}>
-					<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
-				</CalendarLabelContext.Provider>
+				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -118,8 +108,7 @@ const calendarComponents: CustomComponents = {
 			[goToMonth, year]
 		);
 
-		const { yearRange } = useCalendarLabelContext();
-		const yearsVisitedRef = useCalendarContext();
+		const { yearRange, yearsVisitedRef } = useCalendar();
 
 		const yearOptions = useMemo(() => {
 			// Update the map of visited years whenever the year changes
@@ -264,20 +253,6 @@ function YearMonthSelect({
 			/>
 		</div>
 	);
-}
-
-type CalendarLabelContextType = {
-	yearRange?: { from: number; to: number };
-};
-
-const CalendarLabelContext = createContext<
-	CalendarLabelContextType | undefined
->(undefined);
-
-function useCalendarLabelContext() {
-	const context = useContext(CalendarLabelContext);
-	if (!context) throw Error('No context found');
-	return context;
 }
 
 const defaultDayPickerProps = {
