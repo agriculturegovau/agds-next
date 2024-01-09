@@ -54,10 +54,10 @@ describe('formatDate', () => {
 
 describe('formatHumanReadableDate', () => {
 	expect(formatHumanReadableDate(new Date(2020, 0, 31))).toEqual(
-		'Friday January 31st, 2020'
+		'31st January 2020 (Friday)'
 	);
 	expect(formatHumanReadableDate(new Date(2020, 11, 6))).toEqual(
-		'Sunday December 6th, 2020'
+		'6th December 2020 (Sunday)'
 	);
 });
 
@@ -140,10 +140,10 @@ describe('getDateInputButtonAriaLabel', () => {
 
 	it('returns `Change date, x` when a date is set', () => {
 		expect(getDateInputButtonAriaLabel('14/02/1990')).toEqual(
-			'Change date, Wednesday February 14th, 1990'
+			'Change date, 14th February 1990 (Wednesday)'
 		);
 		expect(getDateInputButtonAriaLabel('05/06/2010')).toEqual(
-			'Change date, Saturday June 5th, 2010'
+			'Change date, 5th June 2010 (Saturday)'
 		);
 	});
 });

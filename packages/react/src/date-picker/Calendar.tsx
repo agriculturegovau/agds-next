@@ -7,7 +7,6 @@ import {
 	useMemo,
 	useRef,
 } from 'react';
-import format from 'date-fns/format';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
@@ -22,7 +21,7 @@ import {
 	DayProps,
 	Button as ReactDayPickerButton,
 } from 'react-day-picker';
-import { getMonth, getUnixTime, getYear } from 'date-fns';
+import { format, getMonth, getUnixTime, getYear } from 'date-fns';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
@@ -30,6 +29,7 @@ import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
+import { formatHumanReadableDate } from './utils';
 
 export type CalendarSingleProps = Omit<
 	DayPickerSingleProps,
@@ -242,7 +242,7 @@ const calendarComponents: CustomComponents = {
 				aria-selected={undefined}
 				aria-pressed={dayRender.buttonProps['aria-selected']}
 				// Improve the aria labels of each button
-				aria-label={format(props.date, 'do MMMM yyyy (EEEE)')}
+				aria-label={formatHumanReadableDate(props.date)}
 			/>
 		);
 	},

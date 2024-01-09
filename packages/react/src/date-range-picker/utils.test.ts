@@ -107,10 +107,10 @@ describe('getFromDateInputButtonAriaLabel', () => {
 
 	it('returns `Change start date, x` when a date is set', () => {
 		expect(getFromDateInputButtonAriaLabel('14/02/1990')).toEqual(
-			'Change start date, Wednesday February 14th, 1990'
+			'Change start date, 14th February 1990 (Wednesday)'
 		);
 		expect(getFromDateInputButtonAriaLabel('05/06/2010')).toEqual(
-			'Change start date, Saturday June 5th, 2010'
+			'Change start date, 5th June 2010 (Saturday)'
 		);
 	});
 });
@@ -123,10 +123,10 @@ describe('getToDateInputButtonAriaLabel', () => {
 
 	it('returns `Change end date, x` when a date is set', () => {
 		expect(getToDateInputButtonAriaLabel('14/02/1990')).toEqual(
-			'Change end date, Wednesday February 14th, 1990'
+			'Change end date, 14th February 1990 (Wednesday)'
 		);
 		expect(getToDateInputButtonAriaLabel('05/06/2010')).toEqual(
-			'Change end date, Saturday June 5th, 2010'
+			'Change end date, 5th June 2010 (Saturday)'
 		);
 	});
 });
