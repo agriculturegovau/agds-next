@@ -374,7 +374,6 @@ export const DateRangePicker = ({
 								returnFocusRef={
 									inputMode === 'from' ? fromTriggerRef : toTriggerRef
 								}
-								inputMode={inputMode}
 							/>
 						</Popover>
 					)}
