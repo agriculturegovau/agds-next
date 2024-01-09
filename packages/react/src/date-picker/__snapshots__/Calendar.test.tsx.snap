@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-jcbcx-boxStyles-CalendarRangeContainer"
+      class="css-1uf4w3m-boxStyles-CalendarRangeContainer"
     >
       <div
         class="rdp "
@@ -901,7 +901,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1fceoa2-boxStyles-CalendarContainer"
+      class="css-kzkr3t-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "

@@ -111,15 +111,13 @@ export const reactDayPickerStyles = {
 		padding: 0,
 		textAlign: 'center',
 	},
-	'.rdp-day_selected': {
-		'&:not([disabled]), &:focus:not([disabled]), &:active:not([disabled]), &:hover:not([disabled])':
-			{
-				backgroundColor: boxPalette.selected,
-				color: boxPalette.backgroundBody,
-				fontWeight: tokens.fontWeight.bold,
-				'&:not(:focus)': highContrastOutlineStyles,
-			},
-	},
+	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
+		{
+			'&:not(:focus)': highContrastOutlineStyles,
+			backgroundColor: boxPalette.selected,
+			color: boxPalette.backgroundBody,
+			fontWeight: tokens.fontWeight.bold,
+		},
 } as const;
 
 export const reactDayRangePickerStyles = (dateRange?: {
@@ -141,7 +139,7 @@ export const reactDayRangePickerStyles = (dateRange?: {
 
 	return {
 		// Middle of the date range
-		'.rdp-day_range_middle:not([disabled])': {
+		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
 			backgroundColor: boxPalette.selectedMuted,
 			color: boxPalette.foregroundText,
 			borderRadius: 0,
