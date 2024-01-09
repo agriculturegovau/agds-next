@@ -79,7 +79,7 @@ export function getCalendarDefaultMonth(
 	return undefined;
 }
 
-// Aria label for the Calendar widget popover
+// Gets the `aria-label` for the button that opens the calendar picker
 export function getDateInputButtonAriaLabel(value: string | undefined) {
 	if (typeof value !== 'string') return 'Choose date';
 	const parsed = parseDate(value);
