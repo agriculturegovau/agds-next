@@ -222,7 +222,13 @@ const calendarComponents: CustomComponents = {
 		}
 
 		if (!dayRender.isButton) {
-			return <div {...dayRender.divProps} role={undefined} />;
+			return (
+				<div
+					{...dayRender.divProps}
+					// Remove `role` from `dayRender.divProps`
+					role={undefined}
+				/>
+			);
 		}
 
 		return (
