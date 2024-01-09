@@ -72,7 +72,7 @@ export function getCalendarDefaultMonth(
 		const earliestDateInRange = new Date(yearRange.from, 0, 1);
 		// Create a date on the last day of the range
 		const lastDateInRange = new Date(yearRange.to, 11, 31);
-		// Use the closest day to todays date
+		// Use the closest day to today's date
 		return closestTo(new Date(), [earliestDateInRange, lastDateInRange]);
 	}
 	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
