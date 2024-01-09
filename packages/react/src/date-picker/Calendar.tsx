@@ -50,13 +50,11 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	inputMode?: 'from' | 'to';
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
 	returnFocusRef,
-	inputMode,
 	...props
 }: CalendarRangeProps) {
 	return (
