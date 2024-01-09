@@ -124,19 +124,9 @@ export const reactDayRangePickerStyles = (dateRange?: {
 	from?: Date;
 	to?: Date;
 }) => {
+	const { from, to } = dateRange ?? {};
 	const startStyles = { borderRadius: '50% 0 0 50%' };
 	const endStyles = { borderRadius: '0 50% 50% 0' };
-
-	function startAndEndStyles() {
-		const { from, to } = dateRange ?? {};
-		// Use a fully rounded circle for single day date-ranges
-		if (from && to) return { borderRadius: '50%' };
-		// `react-day-picker` adds the start and end classes to days when only a start OR end date has been entered
-		// This improves the styles for when a user is selecting a date range for the first time
-		if (from && !to) return startStyles;
-		if (!from && to) return endStyles;
-	}
-
 	return {
 		// Middle of the date range
 		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
@@ -149,6 +139,16 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		// End day of date range
 		'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
 		// Start and end days of date range
-		'.rdp-day_range_start.rdp-day_range_end': startAndEndStyles(),
+		'.rdp-day_range_start.rdp-day_range_end': {
+			borderRadius: '0',
+			...(from && {
+				borderBottomLeftRadius: '50%',
+				borderTopLeftRadius: '50%',
+			}),
+			...(to && {
+				borderBottomRightRadius: '50%',
+				borderTopRightRadius: '50%',
+			}),
+		},
 	};
 };
