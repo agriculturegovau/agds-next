@@ -1,4 +1,9 @@
-import { isBefore, subMonths, differenceInMonths, closestTo } from 'date-fns';
+import {
+	isBefore,
+	subMonths,
+	differenceInCalendarMonths,
+	closestTo,
+} from 'date-fns';
 
 // If the end date is before the start date, swap the end date with the start
 // This prevents the users from typing invalid date ranges
@@ -48,7 +53,7 @@ export function getCalendarDefaultMonth(
 	if (value && inputMode === 'to' && numberOfMonths === 2) {
 		const monthsRangeCount = (() => {
 			return valueAsDateOrUndefined?.from && valueAsDateOrUndefined?.to
-				? differenceInMonths(
+				? differenceInCalendarMonths(
 						valueAsDateOrUndefined.to,
 						valueAsDateOrUndefined.from
 				  )

@@ -59,6 +59,8 @@ export const DisabledYearRange: Story = {
 export const Range = () => {
 	const [range, setRange] = useState<DateRange>();
 	return (
-		<CalendarRange selected={range} numberOfMonths={2} onSelect={setRange} />
+		<CalendarProvider yearRange={undefined}>
+			<CalendarRange selected={range} numberOfMonths={2} onSelect={setRange} />
+		</CalendarProvider>
 	);
 };
