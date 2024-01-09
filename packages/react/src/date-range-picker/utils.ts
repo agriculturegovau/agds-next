@@ -32,7 +32,7 @@ export function getCalendarDefaultMonth(
 		if (inputMode === 'to' && valueAsDateOrUndefined.to) {
 			return valueAsDateOrUndefined.to;
 		}
-		// If a `yearRange` prop has been set, use the closest day to todays date
+		// If a `yearRange` prop has been set, use the closest day to today's date
 		if (yearRange) {
 			// Create a date on the first day of the range
 			const earliestDateInRange = new Date(yearRange.from, 0, 1);
