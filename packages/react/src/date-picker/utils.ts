@@ -1,4 +1,12 @@
-import { isDate, format, parse, isValid, isBefore, isAfter } from 'date-fns';
+import {
+	isDate,
+	format,
+	parse,
+	isValid,
+	isBefore,
+	isAfter,
+	closestTo,
+} from 'date-fns';
 
 // Date format is not configurable
 const dateFormat = 'dd/MM/yyyy';
@@ -35,33 +43,6 @@ export function constrainDate(
 	return date;
 }
 
-// Ensure a valid date range is always sent back to the consumer
-export function getValidDateRange(
-	inputMode: 'from' | 'to',
-	selectedDay: Date,
-	currentRange: { from: Date | undefined; to: Date | undefined }
-) {
-	// The user is selecting a start date
-	if (inputMode === 'from') {
-		// If a start date has not been set, we can continue on
-		if (!currentRange.to) return { from: selectedDay, to: undefined };
-
-		// Ensure the start date is before the end date
-		return isBefore(selectedDay, currentRange.to)
-			? { from: selectedDay, to: currentRange.to }
-			: { from: selectedDay, to: undefined };
-	}
-
-	// The user is selecting a end date
-	// If a start date has not been set, we can continue on
-	if (!currentRange.from) return { from: undefined, to: selectedDay };
-
-	// Ensure the end date is after the start date
-	return isAfter(selectedDay, currentRange.from)
-		? { from: currentRange.from, to: selectedDay }
-		: { from: selectedDay, to: undefined };
-}
-
 // Since the `value` prop can either be a date object, undefined or a string (which represents the text input value)
 // we need to be able to take that value and transform it into the display value of the text input
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
@@ -73,4 +54,27 @@ export function transformValuePropToInputValue(
 	if (typeof valueProp === 'undefined') return '';
 	if (isValidDate(valueProp)) return formatDate(valueProp);
 	return '';
+}
+
+// The default calendar month is the first month to display when the date picker is opened
+export function getCalendarDefaultMonth(
+	valueAsDateOrUndefined: Date | undefined,
+	initialMonth: Date | undefined,
+	yearRange: { from: number; to: number } | undefined
+): Date | undefined {
+	// If the date picker has a `value` prop set, go to the month of that date
+	if (valueAsDateOrUndefined) return valueAsDateOrUndefined;
+	// If an `initialMonth` prop has been set, use that value
+	if (initialMonth) return initialMonth;
+	// If a `yearRange` prop has been set, use the closest day to today's date
+	if (yearRange) {
+		// Create a date on the first day of the range
+		const earliestDateInRange = new Date(yearRange.from, 0, 1);
+		// Create a date on the last day of the range
+		const lastDateInRange = new Date(yearRange.to, 11, 31);
+		// Use the closest day to today's date
+		return closestTo(new Date(), [earliestDateInRange, lastDateInRange]);
+	}
+	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
+	return undefined;
 }

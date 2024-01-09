@@ -622,40 +622,6 @@ describe('DateRangePicker', () => {
 		});
 	});
 
-	it('form: shows validation errors when `to` date is before `from` date', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DateRangePickerInsideForm
-				required={true}
-				onSubmit={onSubmit}
-				onError={onError}
-			/>
-		);
-
-		// Type in an invalid value
-		const fromDate = '05/01/2000';
-		const toDate = '01/01/2000'; // Before from date
-		await userEvent.type(await getFromInput(), fromDate);
-		await userEvent.type(await getToInput(), toDate);
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage(
-			'Start date must be before the end date'
-		);
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getFromInput()).toHaveFocus();
-		expect(await getFromInput()).toHaveValue(fromDate);
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-		expect(await getToInput()).toHaveValue(toDate);
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
-	});
-
 	it('form: shows validation errors as an optional field', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();

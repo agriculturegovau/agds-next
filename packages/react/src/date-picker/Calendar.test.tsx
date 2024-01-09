@@ -8,13 +8,21 @@ import {
 	CalendarRange,
 	CalendarRangeProps,
 } from './Calendar';
+import { CalendarProvider, CalendarProviderProps } from './CalendarContext';
 
 expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function renderCalendarSingle(props: CalendarSingleProps) {
-	return render(<CalendarSingle {...props} />);
+function renderCalendarSingle({
+	yearRange,
+	...props
+}: CalendarSingleProps & CalendarProviderProps) {
+	return render(
+		<CalendarProvider yearRange={yearRange}>
+			<CalendarSingle {...props} />
+		</CalendarProvider>
+	);
 }
 
 const dateRange = {
@@ -56,8 +64,15 @@ describe('Calendar Single', () => {
 	});
 });
 
-function renderCalendarRange(props: CalendarRangeProps) {
-	return render(<CalendarRange {...props} />);
+function renderCalendarRange({
+	yearRange,
+	...props
+}: CalendarRangeProps & CalendarProviderProps) {
+	return render(
+		<CalendarProvider yearRange={yearRange}>
+			<CalendarRange {...props} />
+		</CalendarProvider>
+	);
 }
 
 describe('Calendar Range', () => {

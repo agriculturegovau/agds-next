@@ -2,20 +2,25 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { subDays, addDays, getYear } from 'date-fns';
-import { CalendarRange, CalendarSingle } from './Calendar';
+import { CalendarRange, CalendarSingle, CalendarSingleProps } from './Calendar';
+import { CalendarProvider, CalendarProviderProps } from './CalendarContext';
 
-const meta: Meta<typeof CalendarSingle> = {
+const meta: Meta<CalendarSingleProps & CalendarProviderProps> = {
 	title: 'forms/DatePicker/Calendar',
 	component: CalendarSingle,
-	render: function Render(props) {
+	render: function Render({ yearRange, ...props }) {
 		const [value, setValue] = useState<Date>();
-		return <CalendarSingle selected={value} onSelect={setValue} {...props} />;
+		return (
+			<CalendarProvider yearRange={yearRange}>
+				<CalendarSingle selected={value} onSelect={setValue} {...props} />
+			</CalendarProvider>
+		);
 	},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CalendarSingle>;
+type Story = StoryObj<CalendarSingleProps & CalendarProviderProps>;
 
 const today = new Date();
 const lastWeek = subDays(today, 7);
@@ -54,6 +59,8 @@ export const DisabledYearRange: Story = {
 export const Range = () => {
 	const [range, setRange] = useState<DateRange>();
 	return (
-		<CalendarRange selected={range} numberOfMonths={2} onSelect={setRange} />
+		<CalendarProvider yearRange={undefined}>
+			<CalendarRange selected={range} numberOfMonths={2} onSelect={setRange} />
+		</CalendarProvider>
 	);
 };

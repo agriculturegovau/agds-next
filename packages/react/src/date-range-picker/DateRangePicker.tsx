@@ -22,14 +22,15 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
-	getValidDateRange,
 	parseDate,
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
+import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
+import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -140,11 +141,13 @@ export const DateRangePicker = ({
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
-			const range = getValidDateRange(
-				inputMode,
-				selectedDay,
-				valueAsDateOrUndefined
+
+			const range = ensureValidDateRange(
+				inputMode === 'from'
+					? { from: selectedDay, to: valueAsDateOrUndefined.to }
+					: { from: valueAsDateOrUndefined.from, to: selectedDay }
 			);
+
 			onChange(range);
 			setFromInputValue(range.from ? formatDate(range.from) : '');
 			setToInputValue(range.to ? formatDate(range.to) : '');
@@ -179,16 +182,16 @@ export const DateRangePicker = ({
 			setFromInputValue(inputValue);
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = {
-				from: containedDate,
+			const nextValue = ensureValidDateRange({
+				from: constrainedDate,
 				to: valueAsDateOrUndefined.to,
-			};
+			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
-			if (!inputValue || containedDate) {
+			if (!inputValue || constrainedDate) {
 				onChange(nextValue);
 				return;
 			}
@@ -206,20 +209,22 @@ export const DateRangePicker = ({
 	const onToInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const inputValue = e.target.value;
+
 			// Immediately update the input field
 			setToInputValue(inputValue);
+
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
-			const containedDate = constrainDate(parsedDate, minDate, maxDate);
+			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			const nextValue = {
+			const nextValue = ensureValidDateRange({
 				from: valueAsDateOrUndefined.from,
-				to: containedDate,
-			};
+				to: constrainedDate,
+			});
 
 			// When there is no value OR there is a valid date, only trigger the `onChange` callback
 			// `onInputChange` will not be called
-			if (!inputValue || containedDate) {
+			if (!inputValue || constrainedDate) {
 				onChange(nextValue);
 				return;
 			}
@@ -289,6 +294,13 @@ export const DateRangePicker = ({
 		.filter(Boolean)
 		.join(' ');
 
+	const defaultMonth = getCalendarDefaultMonth(
+		inputMode,
+		valueAsDateOrUndefined,
+		yearRange,
+		numberOfMonths
+	);
+
 	return (
 		<FieldContainer invalid={invalid} id={fieldsetId}>
 			<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
@@ -342,22 +354,23 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				{isCalendarOpen && (
-					<Popover {...popover.getPopoverProps()}>
-						<CalendarRange
-							initialFocus
-							defaultMonth={valueAsDateOrUndefined.from}
-							selected={valueAsDateOrUndefined}
-							onSelect={onSelect}
-							numberOfMonths={numberOfMonths}
-							disabled={disabledCalendarDays}
-							returnFocusRef={
-								inputMode === 'from' ? fromTriggerRef : toTriggerRef
-							}
-							yearRange={yearRange}
-						/>
-					</Popover>
-				)}
+				<CalendarProvider yearRange={yearRange}>
+					{isCalendarOpen && (
+						<Popover {...popover.getPopoverProps()}>
+							<CalendarRange
+								initialFocus
+								defaultMonth={defaultMonth}
+								selected={valueAsDateOrUndefined}
+								onSelect={onSelect}
+								numberOfMonths={numberOfMonths}
+								disabled={disabledCalendarDays}
+								returnFocusRef={
+									inputMode === 'from' ? fromTriggerRef : toTriggerRef
+								}
+							/>
+						</Popover>
+					)}
+				</CalendarProvider>
 			</fieldset>
 		</FieldContainer>
 	);

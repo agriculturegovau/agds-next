@@ -1,11 +1,10 @@
-import { add } from 'date-fns';
 import {
 	constrainDate,
-	getValidDateRange,
 	formatDate,
 	formatHumanReadableDate,
 	parseDate,
 	transformValuePropToInputValue,
+	getCalendarDefaultMonth,
 } from './utils';
 
 describe('parseDate', () => {
@@ -47,57 +46,6 @@ describe('constrainDate', () => {
 	});
 });
 
-describe('getValidDateRange', () => {
-	test('works from empty values', () => {
-		const today = new Date();
-		const nextWeek = add(today, { weeks: 1 });
-
-		expect(
-			getValidDateRange('from', today, { from: undefined, to: undefined })
-		).toStrictEqual({ from: today, to: undefined });
-
-		expect(
-			getValidDateRange('to', nextWeek, { from: today, to: undefined })
-		).toStrictEqual({ from: today, to: nextWeek });
-	});
-
-	test('works with existing values', () => {
-		const today = new Date();
-		const nextWeek = add(today, { weeks: 1 });
-		const nextMonth = add(today, { months: 1 });
-
-		expect(
-			getValidDateRange('from', today, { from: nextMonth, to: nextMonth })
-		).toStrictEqual({ from: today, to: nextMonth });
-
-		expect(
-			getValidDateRange('to', nextMonth, { from: today, to: nextWeek })
-		).toStrictEqual({ from: today, to: nextMonth });
-
-		expect(
-			getValidDateRange('to', nextWeek, { from: today, to: nextMonth })
-		).toStrictEqual({ from: today, to: nextWeek });
-	});
-
-	test('selecting a start date after the end date', () => {
-		const today = new Date();
-		const nextWeek = add(today, { weeks: 1 });
-		const nextMonth = add(today, { months: 1 });
-		expect(
-			getValidDateRange('from', nextMonth, { from: today, to: nextWeek })
-		).toStrictEqual({ from: nextMonth, to: undefined });
-	});
-
-	test('selecting a end date before the start date', () => {
-		const today = new Date();
-		const nextWeek = add(today, { weeks: 1 });
-		const nextMonth = add(today, { months: 1 });
-		expect(
-			getValidDateRange('to', today, { from: nextWeek, to: nextMonth })
-		).toStrictEqual({ from: today, to: undefined });
-	});
-});
-
 describe('formatDate', () => {
 	expect(formatDate(new Date(2020, 0, 31))).toEqual('31/01/2020');
 	expect(formatDate(new Date(2020, 11, 6))).toEqual('06/12/2020');
@@ -128,5 +76,57 @@ describe('transformValuePropToInputValue', () => {
 		expect(transformValuePropToInputValue(exampleDate)).toEqual(
 			formatDate(exampleDate)
 		);
+	});
+});
+
+describe('getCalendarDefaultMonth', () => {
+	test('returns undefined when no props are set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = undefined;
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(undefined);
+	});
+
+	test('uses the value prop when set', () => {
+		const valueProp = new Date(2024, 0, 0);
+		const initialMonthProp = undefined;
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(valueProp);
+	});
+
+	test('uses the initialMonth prop when set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = new Date(2024, 0, 0);
+		const yearRangeProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
+		).toEqual(initialMonthProp);
+	});
+
+	test('uses the closest date from the yearRange prop when set', () => {
+		const valueProp = undefined;
+		const initialMonthProp = undefined;
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 2010,
+				to: 2020,
+			})?.getFullYear()
+		).toEqual(2020);
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 2030,
+				to: 2050,
+			})?.getFullYear()
+		).toEqual(2030);
+		expect(
+			getCalendarDefaultMonth(valueProp, initialMonthProp, {
+				from: 1990,
+				to: 2100,
+			})?.getFullYear()
+		).toEqual(1990);
 	});
 });

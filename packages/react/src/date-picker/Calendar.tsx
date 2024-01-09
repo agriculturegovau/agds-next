@@ -1,11 +1,9 @@
 import {
 	ChangeEvent,
 	ChangeEventHandler,
-	createContext,
 	Fragment,
 	RefObject,
 	useCallback,
-	useContext,
 	useMemo,
 } from 'react';
 import format from 'date-fns/format';
@@ -26,21 +24,18 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer } from './CalendarContainer';
+import { useCalendar } from './CalendarContext';
 
 export type CalendarSingleProps = Omit<
 	DayPickerSingleProps,
 	'mode' | 'components'
-> & {
-	yearRange?: { from: number; to: number };
-};
+>;
 
-export function CalendarSingle({ yearRange, ...props }: CalendarSingleProps) {
+export function CalendarSingle(props: CalendarSingleProps) {
 	return (
 		<FocusLock autoFocus={false} returnFocus>
 			<CalendarContainer range={false}>
-				<CalendarLabelContext.Provider value={{ yearRange }}>
-					<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
-				</CalendarLabelContext.Provider>
+				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -50,12 +45,10 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	yearRange?: { from: number; to: number };
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
-	yearRange,
 	returnFocusRef,
 	...props
 }: CalendarRangeProps) {
@@ -69,9 +62,7 @@ export function CalendarRange({
 			}}
 		>
 			<CalendarContainer range={true}>
-				<CalendarLabelContext.Provider value={{ yearRange }}>
-					<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
-				</CalendarLabelContext.Provider>
+				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
 		</FocusLock>
 	);
@@ -117,9 +108,12 @@ const calendarComponents: CustomComponents = {
 			[goToMonth, year]
 		);
 
-		const { yearRange } = useCalendarLabelContext();
+		const { yearRange, yearsVisitedRef } = useCalendar();
 
 		const yearOptions = useMemo(() => {
+			// Update the map of visited years whenever the year changes
+			yearsVisitedRef.current.set(year, true);
+
 			const lowerBound = yearRange?.from ?? currentYear - 10;
 			const upperBound = yearRange?.to ?? currentYear + 10;
 
@@ -127,13 +121,18 @@ const calendarComponents: CustomComponents = {
 				{ length: upperBound - lowerBound + 1 },
 				(_, i) => i + lowerBound
 			);
+
 			// Ensures that if the user navigates to a year outside the dropdown, the dropdown options are updated
-			if (yearOptions.length > 1 && !yearOptions.includes(year)) {
-				yearOptions = [...yearOptions, year].sort();
+			if (yearOptions.length > 1) {
+				yearsVisitedRef.current.forEach((_, key) => {
+					if (!yearOptions.includes(key)) {
+						yearOptions = [...yearOptions, key].sort();
+					}
+				});
 			}
 
 			return yearOptions.map((year) => ({ value: year, label: year }));
-		}, [year, yearRange]);
+		}, [year, yearRange, yearsVisitedRef]);
 
 		const monthOptions = useMemo(() => {
 			return [
@@ -254,20 +253,6 @@ function YearMonthSelect({
 			/>
 		</div>
 	);
-}
-
-type CalendarLabelContextType = {
-	yearRange?: { from: number; to: number };
-};
-
-const CalendarLabelContext = createContext<
-	CalendarLabelContextType | undefined
->(undefined);
-
-function useCalendarLabelContext() {
-	const context = useContext(CalendarLabelContext);
-	if (!context) throw Error('No context found');
-	return context;
 }
 
 const defaultDayPickerProps = {
