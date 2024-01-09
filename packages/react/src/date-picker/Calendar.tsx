@@ -26,7 +26,7 @@ import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { visuallyHiddenStyles } from '../a11y';
+import { VisuallyHidden, visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 import { formatHumanReadableDate } from './utils';
@@ -218,7 +218,7 @@ const calendarComponents: CustomComponents = {
 		const dayRender = useDayRender(props.date, props.displayMonth, buttonRef);
 
 		if (dayRender.isHidden) {
-			return null;
+			return <VisuallyHidden>Blank</VisuallyHidden>;
 		}
 
 		if (!dayRender.isButton) {

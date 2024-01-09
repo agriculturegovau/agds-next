@@ -382,27 +382,63 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
@@ -853,27 +889,63 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1272,27 +1344,63 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
@@ -1737,27 +1845,63 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                   <td
                     class="rdp-cell"
                     role="gridcell"
-                  />
+                  >
+                    <span
+                      class="css-avudkd-VisuallyHidden"
+                    >
+                      Blank
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
