@@ -20,6 +20,7 @@ import {
 	constrainDate,
 	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
+	getDateInputButtonAriaLabel,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -190,6 +191,7 @@ export const DatePicker = ({
 				onChange={onInputChange}
 				buttonRef={triggerRef}
 				buttonOnClick={toggleCalendar}
+				buttonAriaLabel={getDateInputButtonAriaLabel(inputValue)}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{isCalendarOpen && (

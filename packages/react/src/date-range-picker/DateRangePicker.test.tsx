@@ -218,11 +218,11 @@ describe('DateRangePicker', () => {
 		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
 		expect(calendarTriggers[0]).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${fromFormattedDate}`
+			`Change start date, ${fromFormattedDate}`
 		);
 		expect(calendarTriggers[1]).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${toFormattedDate}`
+			`Change end date, ${toFormattedDate}`
 		);
 
 		// Click the `clear` button to clear the value
@@ -236,8 +236,14 @@ describe('DateRangePicker', () => {
 		expect(inputs[1]).toHaveValue('');
 
 		// The calendar button triggers aria-label should be updated
-		expect(calendarTriggers[0]).toHaveAttribute('aria-label', 'Choose date');
-		expect(calendarTriggers[1]).toHaveAttribute('aria-label', 'Choose date');
+		expect(calendarTriggers[0]).toHaveAttribute(
+			'aria-label',
+			'Choose start date'
+		);
+		expect(calendarTriggers[1]).toHaveAttribute(
+			'aria-label',
+			'Choose end date'
+		);
 	});
 
 	it('responds to an `onChange` callback', async () => {
@@ -271,11 +277,11 @@ describe('DateRangePicker', () => {
 		// The calendar button triggers should have an aria-label with the formatted display value
 		expect(calendarTriggers[0]).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${fromFormattedDate}`
+			`Change start date, ${fromFormattedDate}`
 		);
 		expect(calendarTriggers[1]).toHaveAttribute(
 			'aria-label',
-			`Change Date, ${toFormattedDate}`
+			`Change end date, ${toFormattedDate}`
 		);
 	});
 

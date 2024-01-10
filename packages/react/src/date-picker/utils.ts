@@ -14,7 +14,7 @@ const dateFormat = 'dd/MM/yyyy';
 export const formatDate = (date: Date) => format(date, dateFormat);
 
 export const formatHumanReadableDate = (date: Date) =>
-	format(date, 'eeee MMMM do, yyyy');
+	format(date, 'do MMMM yyyy (EEEE)');
 
 // https://github.com/date-fns/date-fns/issues/942
 export const parseDate = (value: string) => {
@@ -77,4 +77,12 @@ export function getCalendarDefaultMonth(
 	}
 	// Otherwise, returning undefined will fallback to the current month (react-day-picker behaviour)
 	return undefined;
+}
+
+// Gets the `aria-label` for the button that opens the calendar picker
+export function getDateInputButtonAriaLabel(value: string | undefined) {
+	if (typeof value !== 'string') return 'Choose date';
+	const parsed = parseDate(value);
+	if (!parsed) return 'Choose date';
+	return `Change date, ${formatHumanReadableDate(parsed)}`;
 }
