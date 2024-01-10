@@ -125,8 +125,17 @@ export const reactDayRangePickerStyles = (dateRange?: {
 	to?: Date;
 }) => {
 	const { from, to } = dateRange ?? {};
-	const startStyles = { borderRadius: '50% 0 0 50%' };
-	const endStyles = { borderRadius: '0 50% 50% 0' };
+	const startStyles = {
+		borderRadius: 0,
+		borderBottomLeftRadius: '50%',
+		borderTopLeftRadius: '50%',
+	};
+	const endStyles = {
+		borderRadius: 0,
+		borderBottomRightRadius: '50%',
+		borderTopRightRadius: '50%',
+	};
+
 	return {
 		// Middle of the date range
 		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
@@ -140,15 +149,8 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
 		// Start and end days of date range
 		'.rdp-day_range_start.rdp-day_range_end': {
-			borderRadius: '0',
-			...(from && {
-				borderBottomLeftRadius: '50%',
-				borderTopLeftRadius: '50%',
-			}),
-			...(to && {
-				borderBottomRightRadius: '50%',
-				borderTopRightRadius: '50%',
-			}),
+			...(from && startStyles),
+			...(to && endStyles),
 		},
 	};
 };
