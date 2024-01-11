@@ -38,10 +38,8 @@ export const ListFiltering = () => {
 				<Stack
 					gap={1}
 					css={{
-						// Align the borders in the sidebar and main content area
-						[tokens.mediaQuery.min.md]: {
-							marginTop: '3.5rem',
-						},
+						// This margin ensures that the left and column align nicely on desktop
+						[tokens.mediaQuery.min.md]: { marginTop: '3.5rem' },
 					}}
 				>
 					<FilterSidebar
