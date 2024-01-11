@@ -1,4 +1,5 @@
 import { Box } from '@ag.ds-next/react/box';
+import { tokens } from '@ag.ds-next/react/core';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
@@ -34,7 +35,15 @@ export const ListFiltering = () => {
 	return (
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-				<Stack gap={1}>
+				<Stack
+					gap={1}
+					css={{
+						// Align the borders in the sidebar and main content area
+						[tokens.mediaQuery.min.md]: {
+							marginTop: '3.5rem',
+						},
+					}}
+				>
 					<FilterSidebar
 						activeFiltersCount={activeFiltersCount}
 						onClearFilters={resetFilters}
