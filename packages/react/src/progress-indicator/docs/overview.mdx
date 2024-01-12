@@ -10,11 +10,13 @@ relatedComponents: ['task-list']
 ```jsx live
 <ProgressIndicator
 	items={[
-		{ href: '#', label: 'Introduction', status: 'done' },
-		{ href: '#', label: 'Organisations', status: 'started' },
-		{ href: '#', label: 'Business contacts', status: 'doing' },
-		{ href: '#', label: 'Case studies', status: 'todo' },
-		{ href: '#', label: 'Attachments', status: 'blocked' },
+		{ label: 'Introduction', status: 'done', href: '#' },
+		{ label: 'Submit evidence', status: 'saved', href: '#' },
+		{ label: 'Organisations', status: 'started', href: '#' },
+		{ label: 'Business contacts', status: 'error', href: '#' },
+		{ label: 'Case studies', status: 'todo', href: '#' },
+		{ label: 'Attachments', status: 'doing', href: '#' },
+		{ label: 'Review and submit', status: 'blocked', href: '#' },
 	]}
 />
 ```
@@ -107,6 +109,20 @@ The `status` prop can be used to indicate the status of each item. The following
 			<TableCell>Cannot start yet</TableCell>
 			<TableCell>The task is not available yet for the user to do</TableCell>
 		</TableRow>
+		<TableRow>
+			<TableCell>
+				<code>saved</code>
+			</TableCell>
+			<TableCell>Saved</TableCell>
+			<TableCell>The user has saved input</TableCell>
+		</TableRow>
+		<TableRow>
+			<TableCell>
+				<code>error</code>
+			</TableCell>
+			<TableCell>Error</TableCell>
+			<TableCell>There is an error that requires attention</TableCell>
+		</TableRow>
 	</TableBody>
 </Table>
 
@@ -117,11 +133,13 @@ If an item does not specify an `href` attribute, a `button` element will be rend
 ```jsx live
 <ProgressIndicator
 	items={[
-		{ onClick: console.log, label: 'Introduction', status: 'done' },
-		{ onClick: console.log, label: 'Organisations', status: 'started' },
-		{ onClick: console.log, label: 'Business contacts', status: 'doing' },
-		{ onClick: console.log, label: 'Case studies', status: 'todo' },
-		{ onClick: console.log, label: 'Attachments', status: 'blocked' },
+		{ label: 'Introduction', status: 'done', onClick: console.log },
+		{ label: 'Submit evidence', status: 'saved', onClick: console.log },
+		{ label: 'Organisations', status: 'started', onClick: console.log },
+		{ label: 'Business contacts', status: 'error', onClick: console.log },
+		{ label: 'Case studies', status: 'todo', onClick: console.log },
+		{ label: 'Attachments', status: 'doing', onClick: console.log },
+		{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 	]}
 />
 ```
