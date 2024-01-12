@@ -37,6 +37,13 @@ export const Basic: Story = {
 	},
 };
 
+export const HiddenSubtitle: Story = {
+	args: {
+		items: exampleLinkItems,
+		hideSubtitle: true,
+	},
+};
+
 export const OnBodyAlt: Story = {
 	name: 'On bodyAlt background',
 	args: {
