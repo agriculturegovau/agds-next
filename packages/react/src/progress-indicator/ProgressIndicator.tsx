@@ -28,22 +28,22 @@ export const ProgressIndicator = ({
 	// The title in this component is not configurable
 	const title = 'Progress';
 
-	const subtitle = (function getSubtitle() {
-		if (hideSubtitle) return;
-		const totalSteps = items.length;
-		const stepsCompleted = items.filter(
-			(item) => item.status === 'done'
-		).length;
-		return `${stepsCompleted} of ${totalSteps} steps completed`;
-	})();
+	const totalSteps = items.length;
+	const stepsCompleted = items.filter((item) => item.status === 'done').length;
+	const subTitle = `${stepsCompleted} of ${totalSteps} steps completed`;
 
 	return (
 		<CollapsingSideBar
 			as="section"
 			background={background}
-			title={<CollapsingSideBarTitle title={title} subtitle={subtitle} />}
+			title={
+				<CollapsingSideBarTitle
+					title={title}
+					subtitle={hideSubtitle ? undefined : subTitle}
+				/>
+			}
 			// When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
-			collapseButtonLabel={subtitle || title}
+			collapseButtonLabel={hideSubtitle ? title : subTitle}
 		>
 			<ProgressIndicatorList>
 				{items.map(({ label, ...props }, index) => {
