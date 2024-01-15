@@ -29,10 +29,13 @@ describe('Icon', () => {
 			it('renders correct default attributes', () => {
 				const { container } = render(<IconComponent />);
 				const el = container.querySelector('svg');
-				expect(el).toHaveAttribute('viewBox', '0 0 24 24');
-				expect(el).toHaveAttribute('role', 'img');
 				expect(el).toHaveAttribute('aria-hidden', 'true');
+				expect(el).toHaveAttribute('clip-rule', 'evenodd');
+				expect(el).toHaveAttribute('fill-rule', 'evenodd');
 				expect(el).toHaveAttribute('focusable', 'false');
+				expect(el).toHaveAttribute('role', 'img');
+				expect(el).toHaveAttribute('viewBox', '0 0 24 24');
+				expect(el).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg');
 			});
 
 			it('supports aria-labels', () => {

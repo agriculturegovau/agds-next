@@ -72,6 +72,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 				height="24"
 				viewBox="0 0 24 24"
 				clipRule="evenodd"
+				fillRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
 				css={mq({
 					width: resolvedSize,

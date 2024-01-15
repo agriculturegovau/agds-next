@@ -14,6 +14,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         aria-label="Warning"
         class="css-qhpjst-Icon"
         clip-rule="evenodd"
+        fill-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
@@ -22,10 +23,8 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          clip-rule="evenodd"
           d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
           fill="currentColor"
-          fill-rule="evenodd"
           stroke="none"
         />
       </svg>
@@ -70,6 +69,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
           aria-hidden="true"
           class="css-10mbdw9-Button"
           clip-rule="evenodd"
+          fill-rule="evenodd"
           focusable="false"
           height="24"
           role="img"
@@ -110,6 +110,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
         aria-label="Information"
         class="css-qhpjst-Icon"
         clip-rule="evenodd"
+        fill-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
@@ -118,10 +119,8 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          clip-rule="evenodd"
           d="M12 1C5.9 1 1 5.9 1 12C1 18.1 5.9 23 12 23C18.1 23 23 18.1 23 12C23 5.9 18.1 1 12 1ZM12 18C11.4477 18 11 17.5523 11 17V11C11 10.4477 11.4477 10 12 10C12.5523 10 13 10.4477 13 11V17C13 17.5523 12.5523 18 12 18ZM12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8Z"
           fill="currentColor"
-          fill-rule="evenodd"
           stroke="none"
         />
       </svg>
@@ -166,6 +165,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
         aria-label="Warning"
         class="css-qhpjst-Icon"
         clip-rule="evenodd"
+        fill-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
@@ -174,10 +174,8 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          clip-rule="evenodd"
           d="M0 20.8L12 0L24 20.8H0ZM12 7C12.5523 7 13 7.44772 13 8V13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13V8C11 7.44772 11.4477 7 12 7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z"
           fill="currentColor"
-          fill-rule="evenodd"
           stroke="none"
         />
       </svg>
