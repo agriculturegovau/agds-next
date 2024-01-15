@@ -144,6 +144,23 @@ If an item does not specify an `href` attribute, a `button` element will be rend
 />
 ```
 
+## Hiding the sub title
+
+The Progress indicator component displays a subtitle "x of y steps completed" by default. To hide this subtitle, set the `hideSubtitle` prop to `true`.
+
+```jsx live
+<ProgressIndicator
+	hideSubtitle
+	items={[
+		{ href: '#', label: 'Introduction', status: 'done' },
+		{ href: '#', label: 'Organisations', status: 'started' },
+		{ href: '#', label: 'Business contacts', status: 'doing' },
+		{ href: '#', label: 'Case studies', status: 'todo' },
+		{ href: '#', label: 'Attachments', status: 'blocked' },
+	]}
+/>
+```
+
 ## Notes
 
 <ol>

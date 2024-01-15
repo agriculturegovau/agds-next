@@ -14,23 +14,33 @@ import { ProgressIndicatorList } from './ProgressIndicatorList';
 export type ProgressIndicatorProps = {
 	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
 	background?: 'body' | 'bodyAlt';
+	/** The list of items to display. */
 	items: ProgressIndicatorItem[];
+	/** If true, the `subTitle` above the list of items will not be rendered. */
+	hideSubtitle?: boolean;
 };
 
 export const ProgressIndicator = ({
 	background,
 	items,
+	hideSubtitle = false,
 }: ProgressIndicatorProps) => {
-	const stepsCompleted = items.filter((item) => item.status === 'done').length;
-	const totalSteps = items.length;
-	const subTitle = `${stepsCompleted} of ${totalSteps} steps completed`;
+	// The title in this component is not configurable
+	const title = 'Progress';
+
+	const subTitle = hideSubtitle
+		? undefined
+		: `${items.filter(({ status }) => status === 'done').length} of ${
+				items.length
+		  } steps completed`;
 
 	return (
 		<CollapsingSideBar
 			as="section"
-			collapseButtonLabel={subTitle}
 			background={background}
-			title={<CollapsingSideBarTitle title="Progress" subtitle={subTitle} />}
+			title={<CollapsingSideBarTitle title={title} subtitle={subTitle} />}
+			// When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
+			collapseButtonLabel={subTitle || title}
 		>
 			<ProgressIndicatorList>
 				{items.map(({ label, ...props }, index) => {
