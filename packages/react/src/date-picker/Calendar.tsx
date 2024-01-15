@@ -193,20 +193,20 @@ const calendarComponents: CustomComponents = {
 	// Default: https://github.com/gpbl/react-day-picker/blob/main/src/components/Row/Row.tsx
 	Row: function Row(props: RowProps) {
 		const { styles, classNames, components } = useDayPicker();
+
+		// Will always have a DayComponent. To satisfy TypeScript only
 		const DayComponent = components?.Day;
+		if (!DayComponent) return null;
 
 		return (
 			<tr className={classNames.row} style={styles.row}>
-				{props.dates.map(
-					(date) =>
-						DayComponent ? (
-							<DayComponent
-								displayMonth={props.displayMonth}
-								date={date}
-								key={getUnixTime(date)}
-							/>
-						) : null // Will always have a DayComponent. To satisfy TypeScript only
-				)}
+				{props.dates.map((date) => (
+					<DayComponent
+						key={getUnixTime(date)}
+						displayMonth={props.displayMonth}
+						date={date}
+					/>
+				))}
 			</tr>
 		);
 	},
