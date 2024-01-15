@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
-import { ProgressIndicator } from './index';
+import { ProgressIndicator, ProgressIndicatorItem } from './index';
 
 const meta: Meta<typeof ProgressIndicator> = {
 	title: 'forms/ProgressIndicator',
@@ -11,24 +11,24 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const exampleLinkItems = [
-	{ href: '#', label: 'Introduction', status: 'done' as const },
-	{ href: '#', label: 'Organisations', status: 'started' as const },
-	{ href: '#', label: 'Business contacts', status: 'doing' as const },
-	{ href: '#', label: 'Case studies', status: 'todo' as const },
-	{ href: '#', label: 'Attachments', status: 'blocked' as const },
+const exampleLinkItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', href: '#' },
+	{ label: 'Submit evidence', status: 'saved', href: '#' },
+	{ label: 'Organisations', status: 'started', href: '#' },
+	{ label: 'Business contacts', status: 'error', href: '#' },
+	{ label: 'Case studies', status: 'todo', href: '#' },
+	{ label: 'Attachments', status: 'doing', href: '#' },
+	{ label: 'Review and submit', status: 'blocked', href: '#' },
 ];
 
-const exampleButtonItems = [
-	{ onClick: console.log, label: 'Introduction', status: 'done' as const },
-	{ onClick: console.log, label: 'Organisations', status: 'started' as const },
-	{
-		onClick: console.log,
-		label: 'Business contacts',
-		status: 'doing' as const,
-	},
-	{ onClick: console.log, label: 'Case studies', status: 'todo' as const },
-	{ onClick: console.log, label: 'Attachments', status: 'blocked' as const },
+const exampleButtonItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', onClick: console.log },
+	{ label: 'Submit evidence', status: 'saved', onClick: console.log },
+	{ label: 'Organisations', status: 'started', onClick: console.log },
+	{ label: 'Business contacts', status: 'error', onClick: console.log },
+	{ label: 'Case studies', status: 'todo', onClick: console.log },
+	{ label: 'Attachments', status: 'doing', onClick: console.log },
+	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 ];
 
 export const Basic: Story = {

@@ -14,11 +14,11 @@ function renderProgressIndicator(props: ProgressIndicatorProps) {
 
 describe('ProgressIndicator', () => {
 	describe('With anchors', () => {
-		const exampleProps = {
+		const exampleProps: ProgressIndicatorProps = {
 			items: [
-				{ href: '#', label: 'Introduction', status: 'done' as const },
-				{ href: '#', label: 'Business Contacts', status: 'doing' as const },
-				{ href: '#', label: 'Case Studies', status: 'todo' as const },
+				{ href: '#', label: 'Introduction', status: 'done' },
+				{ href: '#', label: 'Business Contacts', status: 'doing' },
+				{ href: '#', label: 'Case Studies', status: 'todo' },
 			],
 		};
 		it('renders correctly', () => {
@@ -39,22 +39,22 @@ describe('ProgressIndicator', () => {
 		});
 	});
 	describe('With buttons', () => {
-		const exampleProps = {
+		const exampleProps: ProgressIndicatorProps = {
 			items: [
 				{
 					onClick: console.log,
 					label: 'Introduction',
-					status: 'done' as const,
+					status: 'done',
 				},
 				{
 					onClick: console.log,
 					label: 'Business Contacts',
-					status: 'doing' as const,
+					status: 'doing',
 				},
 				{
 					onClick: console.log,
 					label: 'Case Studies',
-					status: 'todo' as const,
+					status: 'todo',
 				},
 			],
 		};

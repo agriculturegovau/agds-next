@@ -9,6 +9,8 @@ import {
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
+	SuccessIcon,
+	AlertIcon,
 } from '../icon';
 import { boxPalette, LinkProps, packs, tokens } from '../core';
 import { BaseButton } from '../button';
@@ -236,5 +238,15 @@ const statusMap = {
 		label: 'Completed',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
+	},
+	saved: {
+		label: 'Saved',
+		icon: SuccessIcon,
+		iconColor: 'success',
+	},
+	error: {
+		label: 'Error',
+		icon: AlertIcon,
+		iconColor: 'error',
 	},
 } as const;
