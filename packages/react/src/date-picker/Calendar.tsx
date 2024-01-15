@@ -194,20 +194,19 @@ const calendarComponents: CustomComponents = {
 	Row: function Row(props: RowProps) {
 		const { styles, classNames, components } = useDayPicker();
 		const DayComponent = components?.Day;
+
 		return (
 			<tr className={classNames.row} style={styles.row}>
-				{props.dates.map((date) => (
-					<td
-						key={getUnixTime(date)}
-						className={classNames.cell}
-						style={styles.cell}
-						role="gridcell"
-					>
-						{DayComponent ? (
-							<DayComponent displayMonth={props.displayMonth} date={date} />
-						) : null}
-					</td>
-				))}
+				{props.dates.map(
+					(date) =>
+						DayComponent ? (
+							<DayComponent
+								displayMonth={props.displayMonth}
+								date={date}
+								key={getUnixTime(date)}
+							/>
+						) : null // Will always have a DayComponent. To satisfy TypeScript only
+				)}
 			</tr>
 		);
 	},
@@ -215,35 +214,51 @@ const calendarComponents: CustomComponents = {
 	// Default: https://github.com/gpbl/react-day-picker/blob/main/src/components/Day/Day.tsx
 	Day: function Day(props: DayProps) {
 		const buttonRef = useRef<HTMLButtonElement>(null);
-		const dayRender = useDayRender(props.date, props.displayMonth, buttonRef);
-
-		if (dayRender.isHidden) {
-			return <VisuallyHidden>Blank</VisuallyHidden>;
-		}
-
-		if (!dayRender.isButton) {
-			return (
-				<div
-					{...dayRender.divProps}
-					// Remove `role` from `dayRender.divProps`
-					role={undefined}
-				/>
-			);
-		}
+		const { classNames, styles } = useDayPicker();
+		const { activeModifiers, buttonProps, divProps, isButton, isHidden } =
+			useDayRender(props.date, props.displayMonth, buttonRef);
 
 		return (
-			<ReactDayPickerButton
-				name="day"
-				ref={buttonRef}
-				{...dayRender.buttonProps}
-				// Remove `role` from `dayRender.buttonProps`
-				role={undefined}
-				// `aria-selected` is not valid on a button element, use `aria-pressed` instead
-				aria-selected={undefined}
-				aria-pressed={dayRender.buttonProps['aria-selected']}
-				// Improve the aria labels of each button
-				aria-label={formatHumanReadableDate(props.date)}
-			/>
+			<td
+				aria-selected={
+					// React Day Picker incorrectly marks ranges as selected
+					activeModifiers.range_middle ? undefined : activeModifiers.selected
+				}
+				className={classNames.cell}
+				role="gridcell"
+				style={styles.cell}
+			>
+				{isHidden ? (
+					// Announce Blank so SR screen reader virtual cursor appears
+					<VisuallyHidden>Blank</VisuallyHidden>
+				) : !isButton ? (
+					// This case should never happen, but catering for it as per the OOTB RDP
+					<div
+						{...divProps}
+						// Remove `role` from `divProps`
+						role={undefined}
+					/>
+				) : (
+					<ReactDayPickerButton
+						name="day"
+						ref={buttonRef}
+						{...buttonProps}
+						// Improve the aria labels of each button.
+						// Selected and dates within range are manually announced.
+						aria-label={`${
+							activeModifiers.selected && !activeModifiers.range_middle
+								? 'Selected. '
+								: ''
+						}${formatHumanReadableDate(props.date)}${
+							activeModifiers.range_middle ? '. Between selected dates' : ''
+						}`}
+						// Remove `aria-selected` from `buttonProps`. It's on the `<td>`
+						aria-selected={undefined}
+						// Remove `role` from `buttonProps`
+						role={undefined}
+					/>
+				)}
+			</td>
 		);
 	},
 };

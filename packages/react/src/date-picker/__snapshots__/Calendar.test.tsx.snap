@@ -440,12 +440,12 @@ exports[`Calendar Range renders correctly 1`] = `
                     </span>
                   </td>
                   <td
+                    aria-selected="true"
                     class="rdp-cell"
                     role="gridcell"
                   >
                     <button
-                      aria-label="1st June 2024 (Saturday)"
-                      aria-pressed="true"
+                      aria-label="Selected. 1st June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_start"
                       name="day"
                       tabindex="0"
@@ -463,8 +463,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     role="gridcell"
                   >
                     <button
-                      aria-label="2nd June 2024 (Sunday)"
-                      aria-pressed="true"
+                      aria-label="2nd June 2024 (Sunday). Between selected dates"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
@@ -478,8 +477,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     role="gridcell"
                   >
                     <button
-                      aria-label="3rd June 2024 (Monday)"
-                      aria-pressed="true"
+                      aria-label="3rd June 2024 (Monday). Between selected dates"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
@@ -493,8 +491,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     role="gridcell"
                   >
                     <button
-                      aria-label="4th June 2024 (Tuesday)"
-                      aria-pressed="true"
+                      aria-label="4th June 2024 (Tuesday). Between selected dates"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
@@ -508,8 +505,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     role="gridcell"
                   >
                     <button
-                      aria-label="5th June 2024 (Wednesday)"
-                      aria-pressed="true"
+                      aria-label="5th June 2024 (Wednesday). Between selected dates"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
@@ -523,8 +519,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     role="gridcell"
                   >
                     <button
-                      aria-label="6th June 2024 (Thursday)"
-                      aria-pressed="true"
+                      aria-label="6th June 2024 (Thursday). Between selected dates"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
@@ -534,12 +529,12 @@ exports[`Calendar Range renders correctly 1`] = `
                     </button>
                   </td>
                   <td
+                    aria-selected="true"
                     class="rdp-cell"
                     role="gridcell"
                   >
                     <button
-                      aria-label="7th June 2024 (Friday)"
-                      aria-pressed="true"
+                      aria-label="Selected. 7th June 2024 (Friday)"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_end"
                       name="day"
                       tabindex="-1"
@@ -1402,12 +1397,12 @@ exports[`Calendar Single renders correctly 1`] = `
                     </span>
                   </td>
                   <td
+                    aria-selected="true"
                     class="rdp-cell"
                     role="gridcell"
                   >
                     <button
-                      aria-label="1st June 2024 (Saturday)"
-                      aria-pressed="true"
+                      aria-label="Selected. 1st June 2024 (Saturday)"
                       class="rdp-button_reset rdp-button rdp-day rdp-day_selected"
                       name="day"
                       tabindex="0"
