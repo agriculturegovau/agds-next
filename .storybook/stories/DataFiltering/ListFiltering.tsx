@@ -1,4 +1,5 @@
 import { Box } from '@ag.ds-next/react/box';
+import { tokens } from '@ag.ds-next/react/core';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
@@ -32,9 +33,15 @@ export const ListFiltering = () => {
 	});
 
 	return (
-		<Columns gap={{ xs: 1, md: 3 }}>
-			<Column columnSpan={{ xs: 12, md: 4 }}>
-				<Stack gap={1}>
+		<Columns>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<Stack
+					gap={1}
+					css={{
+						// This margin ensures that the left and column align nicely on desktop
+						[tokens.mediaQuery.min.md]: { marginTop: '3.5rem' },
+					}}
+				>
 					<FilterSidebar
 						activeFiltersCount={activeFiltersCount}
 						onClearFilters={resetFilters}
@@ -77,13 +84,17 @@ export const ListFiltering = () => {
 				tabIndex={-1}
 				css={{ '&:focus': { outline: 'none' } }}
 				columnSpan={{ xs: 12, md: 8 }}
+				columnStart={{ lg: 5 }}
 			>
 				<Stack gap={2}>
 					<Flex
 						flexDirection={{ xs: 'column', md: 'row' }}
 						justifyContent={{ xs: 'flex-start', md: 'space-between' }}
 						alignItems={{ xs: 'flex-start', md: 'flex-end' }}
-						gap={1.5}
+						gap={1}
+						paddingBottom={{ md: 1 }}
+						borderBottom
+						borderBottomWidth={{ xs: 'none', md: 'sm' }}
 					>
 						<Text
 							as="h2"

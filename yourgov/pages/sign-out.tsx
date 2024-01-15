@@ -22,7 +22,7 @@ export default function Page() {
 			<SiteLayout>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ xs: 12, md: 7 }}>
+						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={1.5}>
 								<H1>Sign out</H1>
 								<PageAlert tone="success" title="Sign out successful">

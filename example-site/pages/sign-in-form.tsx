@@ -145,7 +145,7 @@ export default function SignInFormPage() {
 			<SiteLayout template={{ name: 'Sign-in form', slug: 'sign-in' }}>
 				<PageContent>
 					<Columns>
-						<Column columnSpan={{ xs: 12, md: 7 }}>
+						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
 								<Stack gap={0.5}>
 									<H1>Sign in form - xxl/display (H1)</H1>
