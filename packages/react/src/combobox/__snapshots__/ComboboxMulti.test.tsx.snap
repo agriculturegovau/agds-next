@@ -70,6 +70,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
               aria-hidden="true"
               class="css-qhpjst-Icon"
               clip-rule="evenodd"
+              fill-rule="evenodd"
               focusable="false"
               height="24"
               role="img"

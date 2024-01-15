@@ -18,6 +18,7 @@ exports[`Checkbox renders correctly 1`] = `
         aria-hidden="true"
         class="css-1xyaayo-Icon"
         clip-rule="evenodd"
+        fill-rule="evenodd"
         focusable="false"
         height="24"
         role="img"

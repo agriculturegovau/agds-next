@@ -54,6 +54,7 @@ exports[`LinkList renders correctly 1`] = `
           aria-hidden="true"
           class="css-5y4dg8-TextLinkExternal"
           clip-rule="evenodd"
+          fill-rule="evenodd"
           focusable="false"
           height="24"
           role="img"

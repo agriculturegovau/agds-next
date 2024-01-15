@@ -35,6 +35,7 @@ exports[`Autocomplete renders correctly 1`] = `
         aria-hidden="true"
         class="css-4vrme3-ComboboxSearchIcon"
         clip-rule="evenodd"
+        fill-rule="evenodd"
         focusable="false"
         height="24"
         role="img"
