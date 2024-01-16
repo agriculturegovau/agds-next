@@ -1,0 +1,93 @@
+---
+date: 16th January 2024
+title: AgDS Beta v1.18.0 release
+description: UX and accessibility improvements to Date pickers. Add new statuses to Progress indicator. Improve UX of table sorting, plus various minor bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Fix accessibility of `AppLayoutSidebarDialog` by giving it a "Menu" label
+- Upgrade internal dependency of `react-focus-lock`
+
+### [Core](/components/core)
+
+- Add `scrollbar-gutter` to prevent layout shift between short & long pages
+
+### [Date picker](/components/date-picker)
+
+- Update calendar widget to include a month select
+- Improve logic for determining what initial month to display when the calendar is opened by the user
+- Change day buttons from toggle buttons to normal buttons
+- Improve the ARIA label of the button that opens the calendar picker
+- Announce selected date upfront
+- Upgrade internal dependency of `react-day-picker`
+- Upgrade internal dependency of `react-focus-lock`
+
+### [Date range picker](/components/date-range-picker)
+
+- Updated calendar widget to include a month select
+- Improved logic for determining what initial month to display when the calendar is opened by the user
+- Improved UX by ensuring that only valid date ranges can be entered when using the inputs to enter a date
+- Improved range styles inside of the calendar picker
+- Change day buttons from toggle buttons to normal buttons
+- Correctly associate error message to appropriate date inputs
+- Improved the ARIA labels of the buttons that opens the calendar picker
+- Announce selected dates upfront
+- Announce dates within ranges
+- Upgraded internal dependency of `react-day-picker`
+- Upgrade internal dependency of `react-focus-lock`
+
+### [Drawer](/components/drawer)
+
+- Upgrade internal dependency of `react-focus-lock`
+
+### [File upload](/components/file-upload)
+
+- Set `getErrorSummary().maxFiles` to have a default of `1` to fix `too-many-files` error message
+
+### [Global alert](/components/global-alert)
+
+- Fixed accessible label of region and close button
+
+### [Icon](/components/icon)
+
+- Fixed incorrect usage of `focusable` attribute, which should always be set to `"false"`
+- Make `fillRule="evenodd"` default.
+- Remove icon-specific usage of `fillRule` and `clipRule`
+
+### [Main nav](/components/main-nav)
+
+- Upgrade internal dependency of `react-focus-lock`
+
+### [Modal](/components/modal)
+
+- Upgrade internal dependency of `react-focus-lock`
+
+### [Progress indicator](/components/progress-indicator)
+
+- Added two new statuses for items: `'saved'` and `'error'`
+- Added new prop: `hideSubtitle`
+
+### [Section alert](/components/section-alert)
+
+- Correctly label dismiss button to match visible text
+
+### [Table](/components/table)
+
+- Add `colSpan` and `rowSpan` support to `TableCell` and `TableHeader`
+- Add `as` support to `TableHeader`
+- Reverse sortable arrow directions so ascending points up & descending points down
+- Allow focus on `TableWrapper` to fix accessibility for keyboard users
+- Fixed `scope` on `TableHeader`
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.18.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1518) for this release.
