@@ -1,5 +1,65 @@
 # @ag.ds-next/react
 
+## 1.18.0
+
+### Minor Changes
+
+- eb1ff4c52ae: date-picker:
+
+  - Upgraded internal dependency of `react-day-picker`
+  - Improved the ARIA label of the button that opens the calendar picker
+
+  date-range-picker:
+
+  - Upgraded internal dependency of `react-day-picker`
+  - Improved the ARIA labels of the buttons that opens the calendar picker
+  - Improved range styles inside of the calendar picker
+
+- df428a1a1c5: date-picker: Updated calendar widget to include a month select
+
+  date-range-picker: Updated calendar widget to include a month select
+
+- ac627a12898: progress-indicator: Added two new statuses for items: `'saved'` and `'error'`.
+- 4293723f322: progress-indicator: Added new prop `hideSubtitle`
+- 81f4f8d0a79: core: Add scrollbar-gutter to prevent layout shift between short & long pages.
+- b3fcefa9352: date-picker: Improved logic for determining what initial month to display when the calendar is opened by the user.
+
+  date-range-picker: Improved logic for determining what initial month to display when the calendar is opened by the user.
+
+  date-range-picker: Improved UX by ensuring that only valid date ranges can be entered when using the inputs to enter a date.
+
+- 4ba6cf84f48: table: Add `colSpan` and `rowSpan` support to `TableCell` and `TableHeader`.
+  table: Add `as` support to `TableHeader`.
+  table: Fixed `scope` on `TableHeader`.
+- 8a6ec918201: icon: Fixed incorrect usage of `focusable` attribute, which should always be set to "false"
+
+### Patch Changes
+
+- 94a0550fe17: icon: Make `fillRule="evenodd"` default. Remove icon-specific usage of `fillRule` and `clipRule`.
+- 80e30b52dcd: section-alert: Correctly label dismiss button to match visible text.
+- 691a33d18b7: date-range-picker: Correctly associate error message to appropriate date inputs.
+- 4237eaba7a2: app-layout: Fix a11y of `AppLayoutSidebarDialog` by giving it a "Menu" label.
+- abdddaa51b0: storybook: Fix various accessibility issues in Storybook stories.
+- 51d103a66af: global-alert: Fixed accessible label of region and close button.
+- e2bbf35bda9: table: Allow focus on `TableWrapper` to fix accessibility for keyboard users.
+- d12b727557f: file-upload: Set `getErrorSummary().maxFiles` to have a default of 1 to fix `too-many-files` error message.
+- 67d48135aa5: table: Reverse sortable arrow directions so ascending points up & descending points down.
+- 9e354eb3559: date-picker: Change day buttons from toggle buttons to normal buttons. Announce selected date upfront.
+
+  date-range-picker: Change day buttons from toggle buttons to normal buttons. Announce selected dates upfront and dates within regions.
+
+- 68047540933: app-layout: Upgraded internal dependency of `react-focus-lock`
+
+  date-picker: Upgraded internal dependency of `react-focus-lock`
+
+  date-range-picker: Upgraded internal dependency of `react-focus-lock`
+
+  drawer: Upgraded internal dependency of `react-focus-lock`
+
+  main-nav: Upgraded internal dependency of `react-focus-lock`
+
+  modal: Upgraded internal dependency of `react-focus-lock`
+
 ## 1.17.0
 
 ### Minor Changes
