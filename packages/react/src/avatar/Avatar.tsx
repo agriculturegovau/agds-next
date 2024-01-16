@@ -55,7 +55,7 @@ export function Avatar({
 
 const TONE_MAP = {
 	neutral: boxPalette.foregroundMuted,
-	action: actionPalette.fg,
+	action: actionPalette.action,
 };
 
 type AvatarTone = keyof typeof TONE_MAP;

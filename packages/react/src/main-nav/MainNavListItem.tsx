@@ -2,11 +2,11 @@ import type { PropsWithChildren } from 'react';
 import { focusStyles } from '../box';
 import {
 	boxPalette,
+	actionPalettes,
 	mapSpacing,
 	mapResponsiveProp,
 	packs,
 	mq,
-	setHoverActionPaletteVars,
 } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
@@ -69,7 +69,7 @@ export function MainNavListItem({
 						'&:after': { zIndex: -1 },
 					},
 
-					...setHoverActionPaletteVars(),
+					...actionPalettes.hover,
 
 					// Hover styles
 					'&:hover': {

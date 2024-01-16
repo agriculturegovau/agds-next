@@ -1,25 +1,19 @@
+import { css } from '@emotion/react';
 import { boxPalette } from '../core';
 
 const actionPaletteVars = {
-	fg: '--agds-action-palette-panel-bg',
-	bg: '--agds-action-palette-panel-fg',
+	action: '--agds-action-palette',
 } as const;
 
 export const actionPalette = {
-	fg: `var(${actionPaletteVars.fg})`,
-	bg: `var(${actionPaletteVars.bg})`,
+	action: `var(${actionPaletteVars.action})`,
 } as const;
 
-export function setBaseActionPaletteVars() {
-	return {
-		[actionPaletteVars.fg]: boxPalette.foregroundAction,
-		[actionPaletteVars.bg]: boxPalette.foregroundAction,
-	};
-}
-
-export function setHoverActionPaletteVars() {
-	return {
-		[actionPaletteVars.fg]: boxPalette.foregroundText,
-		[actionPaletteVars.bg]: boxPalette.foregroundText,
-	};
-}
+export const actionPalettes = {
+	base: css({
+		[actionPaletteVars.action]: boxPalette.foregroundAction,
+	}),
+	hover: css({
+		[actionPaletteVars.action]: boxPalette.foregroundAction,
+	}),
+};
