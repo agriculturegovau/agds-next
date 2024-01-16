@@ -77,7 +77,7 @@ exports[`AppLayout renders correctly 1`] = `
             aria-controls="dropdown-menu-:r0:-panel"
             aria-expanded="false"
             aria-haspopup="true"
-            class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-1wn298b-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
             id="dropdown-menu-:r0:-button"
             type="button"
           >
@@ -99,7 +99,7 @@ exports[`AppLayout renders correctly 1`] = `
                 class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 <span
-                  class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                  class="css-uscra7-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
                 >
                   Toto Wolff
                 </span>
@@ -137,7 +137,7 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-1orthae-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -170,7 +170,7 @@ exports[`AppLayout renders correctly 1`] = `
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
           aria-haspopup="true"
-          class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+          class="css-1wn298b-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
         >
@@ -192,7 +192,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                class="css-uscra7-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
               >
                 Toto Wolff
               </span>
