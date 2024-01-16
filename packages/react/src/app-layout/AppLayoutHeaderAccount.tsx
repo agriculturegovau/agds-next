@@ -1,6 +1,6 @@
 import { Avatar } from '../avatar';
 import { Flex } from '../flex';
-import { mq, packs, useLinkComponent } from '../core';
+import { boxPalette, mq, packs, useLinkComponent } from '../core';
 import { Text } from '../text';
 import type { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccountDropdown } from './AppLayoutHeaderAccountDropdown';
@@ -34,6 +34,7 @@ export function AppLayoutHeaderAccount({
 			{...(hasLink && {
 				as: Link,
 				href,
+				link: true,
 				focus: true,
 			})}
 			alignItems="center"
@@ -45,16 +46,15 @@ export function AppLayoutHeaderAccount({
 				maxWidth: ['16rem', '18rem'],
 				...(hasLink && {
 					'&:hover': {
-						'& > span > span': {
-							textDecoration: 'underline',
-						},
+						color: boxPalette.foregroundText,
+						'& > span > span': packs.underline,
 					},
 				}),
 			})}
 		>
 			<Flex as="span" flexDirection="column" css={{ overflow: 'hidden' }}>
 				<Text
-					color="action"
+					color="inherit"
 					fontWeight="bold"
 					fontSize="xs"
 					css={packs.truncate}

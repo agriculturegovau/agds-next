@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, packs, tokens } from '../core';
 import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';
 import { AppLayoutHeaderProps } from './AppLayoutHeader';
@@ -58,8 +58,8 @@ function AppLayoutHeaderNavMenuButton({
 			focus
 			css={{
 				'&:hover': {
+					...packs.underline,
 					backgroundColor: boxPalette.backgroundShade,
-					textDecoration: 'underline',
 				},
 			}}
 		>
