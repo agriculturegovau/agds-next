@@ -6,47 +6,71 @@ import {
 	isBefore,
 	isAfter,
 	closestTo,
+	isMatch,
 } from 'date-fns';
 
-export const dateFormats = {
-	'dd/mm/yyyy': {
-		format: 'dd/MM/yyyy',
-		display: 'dd/mm/yyyy',
-	},
-	'mm/dd/yyyy': {
-		format: 'MM/dd/yyyy',
-		display: 'mm/dd/yyyy',
-	},
-} as const;
+// Date format is not configurable
+const displayDateFormat = 'dd/MM/yyyy';
 
-export type DateFormat = keyof typeof dateFormats;
+const acceptedDateFormats = [
+	displayDateFormat, // 18/02/2023
+	'MM/dd/yyyy', // 02/18/2023
+	'do MMMM yyyy', // 8th February 2023
+	'do MMM yyyy', // 8th Feb 2023
+	'MMMM do yyyy', // February 8th 2023
+	'MMM do yyyy', // Feb 8th 2023
+	'd MMMM yyyy', // 8 February 2023
+	'd MMM yyyy', // 8 Feb 2023
+	'MMMM d yyyy', // February 8 2023
+	'MMM d yyyy', // Feb 8 2023
+	'dd MMMM yyyy', // 08 February 2023
+	'dd MMM yyyy', // 08 Feb 2023
+	'MMMM dd yyyy', // February 08 2023
+	'MMM dd yyyy', // Feb 08 2023
+];
 
-export const formatDate = (date: Date, displayDateFormat: DateFormat) =>
-	format(date, dateFormats[displayDateFormat].format);
+export const formatDate = (date: Date) => format(date, displayDateFormat);
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
 
-// https://github.com/date-fns/date-fns/issues/942
-export const parseDate = (value: string, displayDateFormat: DateFormat) => {
-	const format = dateFormats[displayDateFormat].format;
+export const parseDate = (value: string) => {
+	const now = new Date();
 
-	let [first = '', second = '', third = ''] = value.split('/');
+	let updatedValue = value;
 
-	// Ensure the first and segments (either day or month) are padded with a leading zero so users can type '1' instead of '01'
-	first = first.length === 1 ? first.padStart(2, '0') : first;
-	second = second.length === 1 ? second.padStart(2, '0') : second;
-	// Ensure the third segment (year) is padded with '19' or '20' depending on the year, e.g. '19' becomes '2019' but '93' becomes '1993'
-	third =
-		third.length === 2
-			? third.padStart(4, Number(third) > 50 ? '19' : '20')
-			: third;
+	for (const displayDateFormat of acceptedDateFormats) {
+		const splitValue = value.split('/');
 
-	const newValue = `${first}/${second}/${third}`;
+		// If the user is attempting to type in dd/mm/yyyy or mm/dd/yyyy
+		if (splitValue.length > 1) {
+			let firstSegment = splitValue[0] || '';
+			let secondSegment = splitValue[1] || '';
+			const thirdSegment = splitValue[2] || '';
 
-	if (newValue.length !== format.length) return undefined;
-	const parsed = parse(newValue, format, new Date());
-	if (isValidDate(parsed)) return parsed;
+			// Ensure the first and segments (either day or month) are padded with a leading zero so users can type '1' instead of '01'
+			firstSegment =
+				firstSegment.length === 1
+					? firstSegment.padStart(2, '0')
+					: firstSegment;
+			secondSegment =
+				secondSegment.length === 1
+					? secondSegment.padStart(2, '0')
+					: secondSegment;
+
+			// If the year isn't full,
+			if (thirdSegment && thirdSegment.length !== 4) {
+				break;
+			}
+
+			updatedValue = [firstSegment, secondSegment, thirdSegment].join('/');
+		}
+
+		if (isMatch(updatedValue, displayDateFormat)) {
+			const parsed = parse(updatedValue, displayDateFormat, now);
+			if (isValidDate(parsed)) return parsed;
+		}
+	}
 
 	return undefined;
 };
@@ -73,12 +97,11 @@ export function constrainDate(
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
-	valueProp: Date | string | undefined,
-	displayDateFormat: DateFormat
+	valueProp: Date | string | undefined
 ): string {
 	if (typeof valueProp === 'string') return valueProp;
 	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp, displayDateFormat);
+	if (isValidDate(valueProp)) return formatDate(valueProp);
 	return '';
 }
 
@@ -106,12 +129,9 @@ export function getCalendarDefaultMonth(
 }
 
 // Gets the `aria-label` for the button that opens the calendar picker
-export function getDateInputButtonAriaLabel(
-	value: string | undefined,
-	displayDateFormat: DateFormat
-) {
+export function getDateInputButtonAriaLabel(value: string | undefined) {
 	if (typeof value !== 'string') return 'Choose date';
-	const parsed = parseDate(value, displayDateFormat);
+	const parsed = parseDate(value);
 	if (!parsed) return 'Choose date';
 	return `Change date, ${formatHumanReadableDate(parsed)}`;
 }

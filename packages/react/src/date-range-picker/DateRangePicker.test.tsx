@@ -192,11 +192,11 @@ describe('DateRangePicker', () => {
 
 	it('updates correctly based on the `value` prop', async () => {
 		const fromDateString = '01/01/2000';
-		const fromDate = parseDate(fromDateString, 'dd/mm/yyyy') as Date;
+		const fromDate = parseDate(fromDateString) as Date;
 		const fromFormattedDate = formatHumanReadableDate(fromDate);
 
 		const toDateString = '02/01/2000';
-		const toDate = parseDate(toDateString, 'dd/mm/yyyy') as Date;
+		const toDate = parseDate(toDateString) as Date;
 		const toFormattedDate = formatHumanReadableDate(toDate);
 
 		const { container } = render(
@@ -255,11 +255,11 @@ describe('DateRangePicker', () => {
 		});
 
 		const fromDateString = '01/01/2000';
-		const fromDate = parseDate(fromDateString, 'dd/mm/yyyy') as Date;
+		const fromDate = parseDate(fromDateString) as Date;
 		const fromFormattedDate = formatHumanReadableDate(fromDate);
 
 		const toDateString = '02/01/2000';
-		const toDate = parseDate(toDateString, 'dd/mm/yyyy') as Date;
+		const toDate = parseDate(toDateString) as Date;
 		const toFormattedDate = formatHumanReadableDate(toDate);
 
 		// Type in the input fields
@@ -523,8 +523,8 @@ describe('DateRangePicker', () => {
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: {
-				from: parseDate(fromValidDateAsString, 'dd/mm/yyyy'),
-				to: parseDate(toValidDateAsString, 'dd/mm/yyyy'),
+				from: parseDate(fromValidDateAsString),
+				to: parseDate(toValidDateAsString),
 			},
 		});
 	});
@@ -712,8 +712,8 @@ describe('DateRangePicker', () => {
 		await userEvent.click(await getSubmitButton());
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: {
-				from: parseDate(fromValidDateAsString, 'dd/mm/yyyy'),
-				to: parseDate(toValidDateAsString, 'dd/mm/yyyy'),
+				from: parseDate(fromValidDateAsString),
+				to: parseDate(toValidDateAsString),
 			},
 		});
 	});
