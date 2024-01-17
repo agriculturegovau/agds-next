@@ -99,17 +99,19 @@ describe('getCalendarDefaultMonth', () => {
 
 describe('getFromDateInputButtonAriaLabel', () => {
 	it('returns `Choose start date` when no date is set', () => {
-		expect(getFromDateInputButtonAriaLabel(undefined)).toEqual(
+		expect(getFromDateInputButtonAriaLabel(undefined, 'dd/mm/yyyy')).toEqual(
 			'Choose start date'
 		);
-		expect(getFromDateInputButtonAriaLabel('')).toEqual('Choose start date');
+		expect(getFromDateInputButtonAriaLabel('', 'dd/mm/yyyy')).toEqual(
+			'Choose start date'
+		);
 	});
 
 	it('returns `Change start date, x` when a date is set', () => {
-		expect(getFromDateInputButtonAriaLabel('14/02/1990')).toEqual(
+		expect(getFromDateInputButtonAriaLabel('14/02/1990', 'dd/mm/yyyy')).toEqual(
 			'Change start date, 14th February 1990 (Wednesday)'
 		);
-		expect(getFromDateInputButtonAriaLabel('05/06/2010')).toEqual(
+		expect(getFromDateInputButtonAriaLabel('05/06/2010', 'dd/mm/yyyy')).toEqual(
 			'Change start date, 5th June 2010 (Saturday)'
 		);
 	});
@@ -117,15 +119,19 @@ describe('getFromDateInputButtonAriaLabel', () => {
 
 describe('getToDateInputButtonAriaLabel', () => {
 	it('returns `Choose end date` when no date is set', () => {
-		expect(getToDateInputButtonAriaLabel(undefined)).toEqual('Choose end date');
-		expect(getToDateInputButtonAriaLabel('')).toEqual('Choose end date');
+		expect(getToDateInputButtonAriaLabel(undefined, 'dd/mm/yyyy')).toEqual(
+			'Choose end date'
+		);
+		expect(getToDateInputButtonAriaLabel('', 'dd/mm/yyyy')).toEqual(
+			'Choose end date'
+		);
 	});
 
 	it('returns `Change end date, x` when a date is set', () => {
-		expect(getToDateInputButtonAriaLabel('14/02/1990')).toEqual(
+		expect(getToDateInputButtonAriaLabel('14/02/1990', 'dd/mm/yyyy')).toEqual(
 			'Change end date, 14th February 1990 (Wednesday)'
 		);
-		expect(getToDateInputButtonAriaLabel('05/06/2010')).toEqual(
+		expect(getToDateInputButtonAriaLabel('05/06/2010', 'dd/mm/yyyy')).toEqual(
 			'Change end date, 5th June 2010 (Saturday)'
 		);
 	});

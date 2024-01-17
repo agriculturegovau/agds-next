@@ -9,12 +9,14 @@ import {
 	useState,
 } from 'react';
 import { SelectSingleEventHandler } from 'react-day-picker';
+import { useDebouncedCallback } from 'use-debounce';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
 import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
 import { DateInput } from './DatePickerInput';
 import {
+	DateFormat,
 	parseDate,
 	formatDate,
 	constrainDate,
@@ -74,6 +76,8 @@ type DatePickerBaseProps = {
 	onInputChange?: (inputValue: string) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
+
+	dateFormat?: DateFormat;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -91,6 +95,7 @@ export const DatePicker = ({
 	inputRef,
 	invalid = false,
 	maxWidth = 'md',
+	dateFormat = 'dd/mm/yyyy',
 	...props
 }: DatePickerProps) => {
 	const triggerRef = useRef<HTMLButtonElement>(null);
@@ -105,26 +110,22 @@ export const DatePicker = ({
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(selectedDay));
+			setInputValue(formatDate(selectedDay, dateFormat));
 			// Trigger the callback
 			onChange(selectedDay);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},
-		[onChange, closeCalendar]
+		[onChange, closeCalendar, dateFormat]
 	);
 
 	const [inputValue, setInputValue] = useState(
-		transformValuePropToInputValue(value)
+		transformValuePropToInputValue(value, dateFormat)
 	);
 
-	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-		// Update the UI immediately
-		const inputValue = e.target.value;
-		setInputValue(inputValue);
-
+	const debouncedParsed = useDebouncedCallback(() => {
 		// Attempt to parse the date using the text input value
-		const parsedDate = parseDate(inputValue);
+		const parsedDate = parseDate(inputValue, dateFormat);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 		// When there is no value OR there is a valid date, only trigger the `onChange` callback
@@ -136,12 +137,20 @@ export const DatePicker = ({
 
 		onChange(constrainedDate);
 		onInputChangeProp?.(inputValue);
+	}, 200);
+
+	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		// Update the UI immediately
+		const inputValue = e.target.value;
+		setInputValue(inputValue);
+
+		debouncedParsed();
 	};
 
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(transformValuePropToInputValue(value));
-	}, [value]);
+		setInputValue(transformValuePropToInputValue(value, dateFormat));
+	}, [value, dateFormat]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -184,6 +193,7 @@ export const DatePicker = ({
 		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
+				dateFormat={dateFormat}
 				maxWidth={maxWidth}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
@@ -191,7 +201,7 @@ export const DatePicker = ({
 				onChange={onInputChange}
 				buttonRef={triggerRef}
 				buttonOnClick={toggleCalendar}
-				buttonAriaLabel={getDateInputButtonAriaLabel(inputValue)}
+				buttonAriaLabel={getDateInputButtonAriaLabel(inputValue, dateFormat)}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{isCalendarOpen && (

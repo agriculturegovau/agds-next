@@ -5,6 +5,7 @@ import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
+import { DateFormat } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
@@ -13,6 +14,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalids state. */
 		input: boolean;
 	};
+	dateFormat: DateFormat;
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
@@ -35,6 +37,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			buttonAriaLabel,
 			disabled,
 			value,
+			dateFormat,
 			...props
 		},
 		ref
@@ -54,7 +57,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		return (
 			<Field
 				label={label}
-				secondaryLabel="(dd/mm/yyyy)"
+				secondaryLabel={`(${dateFormat})`}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}

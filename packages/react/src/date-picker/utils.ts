@@ -8,19 +8,44 @@ import {
 	closestTo,
 } from 'date-fns';
 
-// Date format is not configurable
-const dateFormat = 'dd/MM/yyyy';
+export const dateFormats = {
+	'dd/mm/yyyy': {
+		format: 'dd/MM/yyyy',
+		display: 'dd/mm/yyyy',
+	},
+	'mm/dd/yyyy': {
+		format: 'MM/dd/yyyy',
+		display: 'mm/dd/yyyy',
+	},
+} as const;
 
-export const formatDate = (date: Date) => format(date, dateFormat);
+export type DateFormat = keyof typeof dateFormats;
+
+export const formatDate = (date: Date, displayDateFormat: DateFormat) =>
+	format(date, dateFormats[displayDateFormat].format);
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
 
 // https://github.com/date-fns/date-fns/issues/942
-export const parseDate = (value: string) => {
-	if (value.length !== dateFormat.length) return undefined;
+export const parseDate = (value: string, displayDateFormat: DateFormat) => {
+	const format = dateFormats[displayDateFormat].format;
 
-	const parsed = parse(value, dateFormat, new Date());
+	let [first = '', second = '', third = ''] = value.split('/');
+
+	// Ensure the first and segments (either day or month) are padded with a leading zero so users can type '1' instead of '01'
+	first = first.length === 1 ? first.padStart(2, '0') : first;
+	second = second.length === 1 ? second.padStart(2, '0') : second;
+	// Ensure the third segment (year) is padded with '19' or '20' depending on the year, e.g. '19' becomes '2019' but '93' becomes '1993'
+	third =
+		third.length === 2
+			? third.padStart(4, Number(third) > 50 ? '19' : '20')
+			: third;
+
+	const newValue = `${first}/${second}/${third}`;
+
+	if (newValue.length !== format.length) return undefined;
+	const parsed = parse(newValue, format, new Date());
 	if (isValidDate(parsed)) return parsed;
 
 	return undefined;
@@ -48,11 +73,12 @@ export function constrainDate(
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
-	valueProp: Date | string | undefined
+	valueProp: Date | string | undefined,
+	displayDateFormat: DateFormat
 ): string {
 	if (typeof valueProp === 'string') return valueProp;
 	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp);
+	if (isValidDate(valueProp)) return formatDate(valueProp, displayDateFormat);
 	return '';
 }
 
@@ -80,9 +106,12 @@ export function getCalendarDefaultMonth(
 }
 
 // Gets the `aria-label` for the button that opens the calendar picker
-export function getDateInputButtonAriaLabel(value: string | undefined) {
+export function getDateInputButtonAriaLabel(
+	value: string | undefined,
+	displayDateFormat: DateFormat
+) {
 	if (typeof value !== 'string') return 'Choose date';
-	const parsed = parseDate(value);
+	const parsed = parseDate(value, displayDateFormat);
 	if (!parsed) return 'Choose date';
 	return `Change date, ${formatHumanReadableDate(parsed)}`;
 }

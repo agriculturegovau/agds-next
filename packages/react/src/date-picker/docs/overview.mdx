@@ -10,7 +10,19 @@ relatedComponents: ['date-range-picker']
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
-	return <DatePicker label="Select date" value={value} onChange={setValue} />;
+
+	function onInputChange(e) {
+		console.log(e, 'value');
+	}
+
+	return (
+		<DatePicker
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			onInputChange={onInputChange}
+		/>
+	);
 };
 ```
 
@@ -195,6 +207,33 @@ The `yearRange` prop can be used to change the range of options to display in ca
 			yearRange={yearRange}
 			value={value}
 			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Date formats
+
+### dd/mm/yyyy
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return <DatePicker label="Select date" value={value} onChange={setValue} />;
+};
+```
+
+### mm/dd/yyyy
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePicker
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			dateFormat="mm/dd/yyyy"
 		/>
 	);
 };

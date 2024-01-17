@@ -135,7 +135,7 @@ describe('DatePicker', () => {
 
 	it('updates correctly based on the `value` prop', async () => {
 		const dateString = '01/01/2000';
-		const date = parseDate(dateString) as Date;
+		const date = parseDate(dateString, 'dd/mm/yyyy') as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
 		const { container } = render(<ClearableDatePicker initialValue={date} />);
@@ -192,7 +192,7 @@ describe('DatePicker', () => {
 		}
 
 		const dateString = '01/01/2000';
-		const date = parseDate(dateString) as Date;
+		const date = parseDate(dateString, 'dd/mm/yyyy') as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
 		// Type in the input field
@@ -237,7 +237,7 @@ describe('DatePicker', () => {
 
 	it('form: can be submitted with a value', async () => {
 		const dateString = '01/01/2000';
-		const date = parseDate(dateString) as Date;
+		const date = parseDate(dateString, 'dd/mm/yyyy') as Date;
 
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
@@ -429,7 +429,7 @@ describe('DatePicker', () => {
 		// Submit the form
 		await userEvent.click(await getSubmitButton());
 		expect(onSubmit).toHaveBeenCalledWith({
-			date: parseDate(validDateAsString),
+			date: parseDate(validDateAsString, 'dd/mm/yyyy'),
 		});
 	});
 });
