@@ -8,12 +8,12 @@ import { MainNavBottomBar } from './MainNavBottomBar';
 import { MainNavList, MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
 import { mobileBreakpoint } from './utils';
+import { useMainNavContext } from './MainNavContext';
 
 export type MainNavContainerProps = {
 	activePath: string;
 	background: MainNavBackground;
 	id?: string;
-	openMobileMenu: () => void;
 	items?: MainNavListItemType[];
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };
@@ -21,12 +21,12 @@ export type MainNavContainerProps = {
 export function MainNavContainer({
 	id,
 	background,
-	openMobileMenu,
 	items,
 	secondaryItems,
 	activePath,
 }: MainNavContainerProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const { openMobileMenu } = useMainNavContext();
 	return (
 		<Box
 			id={id}

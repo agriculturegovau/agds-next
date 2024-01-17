@@ -8,21 +8,17 @@ import { Flex } from '../flex';
 import { MainNavCloseButton } from './MainNavMenuButtons';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavDialogNavList } from './MainNavDialogNavList';
+import { useMainNavContext } from './MainNavContext';
 import { mobileBreakpoint, mobileMaxWidth } from './utils';
 
 export type MainNavDialogProps = {
 	activePath: string;
-	closeMobileMenu: () => void;
-	isMobileMenuOpen: boolean;
 	items?: MainNavListItemType[];
 };
 
-export function MainNavDialog({
-	isMobileMenuOpen,
-	closeMobileMenu,
-	items,
-	activePath,
-}: MainNavDialogProps) {
+export function MainNavDialog({ items, activePath }: MainNavDialogProps) {
+	const { isMobileMenuOpen, closeMobileMenu } = useMainNavContext();
+
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isMobileMenuOpen);
 

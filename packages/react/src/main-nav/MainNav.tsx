@@ -1,10 +1,11 @@
-import { PropsWithChildren, Fragment } from 'react';
-import { findBestMatch, useTernaryState } from '../core';
+import { PropsWithChildren } from 'react';
+import { findBestMatch } from '../core';
 import { MainNavContainer } from './MainNavContainer';
 import { MainNavDialog } from './MainNavDialog';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavBackground } from './localPalette';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
+import { MainNavProvider } from './MainNavContext';
 
 export type MainNavProps = PropsWithChildren<{
 	/** Used for highlighting the active navigation item. */
@@ -26,31 +27,22 @@ export function MainNav({
 	secondaryItems,
 	id,
 }: MainNavProps) {
-	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
-		useTernaryState(false);
-
 	const bestMatch = findBestMatch(
 		[...(items || []), ...(secondaryItems || [])],
 		activePath
 	);
 
 	return (
-		<Fragment>
+		<MainNavProvider>
 			<MainNavContainer
 				background={background}
 				id={id}
-				openMobileMenu={openMobileMenu}
 				activePath={bestMatch}
 				items={items}
 				secondaryItems={secondaryItems}
 			/>
 			{/* Mobile dialog menu */}
-			<MainNavDialog
-				isMobileMenuOpen={isMobileMenuOpen}
-				closeMobileMenu={closeMobileMenu}
-				items={items}
-				activePath={bestMatch}
-			/>
-		</Fragment>
+			<MainNavDialog items={items} activePath={bestMatch} />
+		</MainNavProvider>
 	);
 }

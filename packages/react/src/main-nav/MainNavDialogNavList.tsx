@@ -1,10 +1,11 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, MouseEvent } from 'react';
 import { Flex } from '../flex';
 import { boxPalette, useLinkComponent, mapSpacing, packs } from '../core';
 import { BaseButton } from '../button';
 import { focusStyles } from '../box';
 import { localPalette } from './localPalette';
 import { isItemLink, MainNavListItemType } from './MainNavList';
+import { useMainNavContext } from './MainNavProvider';
 
 export type MainNavDialogNavListProps = {
 	'aria-label': string;
@@ -18,24 +19,38 @@ export function MainNavDialogNavList({
 	items,
 }: MainNavDialogNavListProps) {
 	const Link = useLinkComponent();
+	const { closeMobileMenu } = useMainNavContext();
 	return (
 		<nav aria-label={ariaLabel}>
 			<Flex as="ul" flexDirection="column" borderTop borderColor="muted">
 				{items?.map(({ label, endElement, ...item }, index) => {
+					// Close the main nav whenever a list item is clicked
+					function onClick(event: MouseEvent<HTMLButtonElement>) {
+						closeMobileMenu();
+						if ('onClick' in item) item.onClick?.(event);
+					}
+
 					if (isItemLink(item)) {
 						const active = item.href === activePath;
 						return (
 							<MainNavDialogNavListItem key={index} active={active}>
-								<Link aria-current={active ? 'page' : undefined} {...item}>
+								<Link
+									aria-current={active ? 'page' : undefined}
+									{...item}
+									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+									// @ts-ignore
+									onClick={onClick}
+								>
 									<span>{label}</span>
 									{endElement}
 								</Link>
 							</MainNavDialogNavListItem>
 						);
 					}
+
 					return (
 						<MainNavDialogNavListItem key={index} active={false}>
-							<BaseButton {...item}>
+							<BaseButton {...item} onClick={onClick}>
 								<span>{label}</span>
 								{endElement}
 							</BaseButton>
