@@ -86,6 +86,20 @@ export const reactDayPickerStyles = {
 			textDecoration: 'underline',
 		},
 		...focusStyles,
+		// Today's button
+		'&.rdp-day_today': {
+			position: 'relative',
+			fontWeight: tokens.fontWeight.bold,
+			'&:after': {
+				content: '""',
+				position: 'absolute',
+				bottom: '0.3rem',
+				height: '0.5rem',
+				width: '0.5rem',
+				borderRadius: '0.25rem',
+				backgroundColor: 'currentColor',
+			},
+		},
 	},
 	// Table
 	'.rdp-months': {
