@@ -24,7 +24,7 @@ export function MainNavDialogNavList({
 		<nav aria-label={ariaLabel}>
 			<Flex as="ul" flexDirection="column" borderTop borderColor="muted">
 				{items?.map(({ label, endElement, ...item }, index) => {
-					// Close the main nav whenever a list item is clicked
+					// Close the dialog whenever a list item is clicked
 					function onClick(event: MouseEvent<HTMLButtonElement>) {
 						closeMobileMenu();
 						if ('onClick' in item) item.onClick?.(event);

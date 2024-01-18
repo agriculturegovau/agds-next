@@ -98,7 +98,7 @@ function AppLayoutSidebarNavListItem({
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
 
-	// Close the main nav whenever a list item is clicked
+	// Close the dialog whenever a list item is clicked
 	function onClick(event: MouseEvent<HTMLButtonElement>) {
 		closeMobileMenu();
 		if ('onClick' in item) item.onClick?.(event);
