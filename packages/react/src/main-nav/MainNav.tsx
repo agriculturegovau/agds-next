@@ -5,7 +5,7 @@ import { MainNavDialog } from './MainNavDialog';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavBackground } from './localPalette';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
-import { MainNavProvider } from './MainNavContext';
+import { MainNavProvider } from './MainNavProvider';
 
 export type MainNavProps = PropsWithChildren<{
 	/** Used for highlighting the active navigation item. */

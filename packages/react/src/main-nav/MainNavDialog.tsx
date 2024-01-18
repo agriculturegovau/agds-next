@@ -8,7 +8,7 @@ import { Flex } from '../flex';
 import { MainNavCloseButton } from './MainNavMenuButtons';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavDialogNavList } from './MainNavDialogNavList';
-import { useMainNavContext } from './MainNavContext';
+import { useMainNavContext } from './MainNavProvider';
 import { mobileBreakpoint, mobileMaxWidth } from './utils';
 
 export type MainNavDialogProps = {

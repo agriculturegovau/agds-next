@@ -8,7 +8,7 @@ import { MainNavBottomBar } from './MainNavBottomBar';
 import { MainNavList, MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
 import { mobileBreakpoint } from './utils';
-import { useMainNavContext } from './MainNavContext';
+import { useMainNavContext } from './MainNavProvider';
 
 export type MainNavContainerProps = {
 	activePath: string;

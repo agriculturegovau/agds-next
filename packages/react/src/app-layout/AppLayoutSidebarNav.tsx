@@ -2,7 +2,6 @@ import {
 	ComponentType,
 	Fragment,
 	MouseEvent,
-	MouseEventHandler,
 	PropsWithChildren,
 	ReactNode,
 } from 'react';
@@ -116,6 +115,9 @@ function AppLayoutSidebarNavListItem({
 				<Link
 					aria-current={active ? 'page' : undefined}
 					{...restItemProps}
+					// Ignoring typescript here because `LinkProps` does not currently support `onClick`
+					// The code will run fine though, as link props are spread
+					// TODO we should add support for `onClick` in `LinkProps` and remove this `@ts-ignore`
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-ignore
 					onClick={onClick}
