@@ -96,7 +96,7 @@ function AppLayoutSidebarNavListItem({
 }: AppLayoutSidebarNavListItemProps) {
 	const { closeMobileMenu } = useAppLayoutContext();
 	const Link = useLinkComponent();
-	const { endElement, icon: Icon, label, ...restItemProps } = item;
+	const { endElement, icon: Icon, label, ...itemProps } = item;
 
 	// Close the dialog whenever a list item is clicked
 	function onClick(event: MouseEvent<HTMLButtonElement>) {
@@ -114,7 +114,7 @@ function AppLayoutSidebarNavListItem({
 			>
 				<Link
 					aria-current={active ? 'page' : undefined}
-					{...restItemProps}
+					{...itemProps}
 					// Ignoring typescript here because `LinkProps` does not currently support `onClick`
 					// The code will run fine though, as link props are spread
 					// TODO we should add support for `onClick` in `LinkProps` and remove this `@ts-ignore`
@@ -137,7 +137,7 @@ function AppLayoutSidebarNavListItem({
 				isActive={false}
 				hasEndElement={Boolean(endElement)}
 			>
-				<BaseButton {...restItemProps} onClick={onClick}>
+				<BaseButton {...itemProps} onClick={onClick}>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
