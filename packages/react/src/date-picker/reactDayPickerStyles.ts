@@ -86,7 +86,7 @@ export const reactDayPickerStyles = {
 			textDecoration: 'underline',
 		},
 		...focusStyles,
-		// Todays button
+		// Today's button
 		'&.rdp-day_today': {
 			position: 'relative',
 			fontWeight: tokens.fontWeight.bold,
