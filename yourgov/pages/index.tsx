@@ -1,3 +1,4 @@
+import { Fragment, ReactElement } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Content, SectionContent } from '@ag.ds-next/react/content';
 import { H2, H3 } from '@ag.ds-next/react/heading';
@@ -19,139 +20,137 @@ import { useWithBasePath } from '../lib/useWithBasePath';
 export default function Page() {
 	const withBasePath = useWithBasePath();
 	return (
-		<>
+		<Fragment>
 			<DocumentTitle title="Home" />
-			<SiteLayout>
-				<HeroBanner
-					background="bodyAlt"
-					image={
-						<img
-							src={withBasePath('/hero-banner.png')}
-							role="presentation"
-							alt=""
-						/>
-					}
-				>
-					<HeroBannerTitleContainer>
-						<HeroBannerTitle>
-							Find and access government services
-						</HeroBannerTitle>
-						<HeroBannerSubtitle>
-							Manage all your government services in one secure and easy to
-							access place online.
-						</HeroBannerSubtitle>
-						<ButtonGroup>
-							<ButtonLink href="/not-found" variant="primary">
-								Create account
-							</ButtonLink>
-							<ButtonLink href="/sign-in" variant="secondary">
-								Sign in
-							</ButtonLink>
-						</ButtonGroup>
-					</HeroBannerTitleContainer>
-				</HeroBanner>
+			<HeroBanner
+				background="bodyAlt"
+				image={
+					<img
+						src={withBasePath('/hero-banner.png')}
+						role="presentation"
+						alt=""
+					/>
+				}
+			>
+				<HeroBannerTitleContainer>
+					<HeroBannerTitle>Find and access government services</HeroBannerTitle>
+					<HeroBannerSubtitle>
+						Manage all your government services in one secure and easy to access
+						place online.
+					</HeroBannerSubtitle>
+					<ButtonGroup>
+						<ButtonLink href="/not-found" variant="primary">
+							Create account
+						</ButtonLink>
+						<ButtonLink href="/sign-in" variant="secondary">
+							Sign in
+						</ButtonLink>
+					</ButtonGroup>
+				</HeroBannerTitleContainer>
+			</HeroBanner>
 
-				<SectionContent>
-					<Stack gap={1.5}>
-						<H2>Why create an account?</H2>
-						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
-							<Stack as="li" gap={1}>
-								<PictogramProfile />
-								<H3>Secure and easy way to share your details</H3>
-								<Text>
-									Use your yourGov profile to easily provide your personal
-									details when you access any government service.
-								</Text>
-							</Stack>
-							<Stack as="li" gap={1}>
-								<PictogramDocumentTick />
-								<H3>Find and manage business approvals</H3>
-								<Text>
-									Search, apply and manage business licences and permits online
-									in one place.
-								</Text>
-							</Stack>
-							<Stack as="li" gap={1}>
-								<PictogramCalculator />
-								<H3>Manage benefits and payments</H3>
-								<Text>
-									Find what you are eligible for and then claim and manage your
-									payments online.
-								</Text>
-							</Stack>
-							<Stack as="li" gap={1}>
-								<PictogramTrack />
-								<H3>Track the progress of applications</H3>
-								<Text>
-									Receive real-time alerts for your government approvals,
-									applications and transactions.
-								</Text>
-							</Stack>
-						</Columns>
-					</Stack>
-				</SectionContent>
-
-				<Content as="section" background="bodyAlt">
-					<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
-						<Stack
-							gap={1.5}
-							alignItems="flex-start"
-							paddingBottom={{ xs: 0, sm: 3, md: 4 }}
-							paddingTop={{ xs: 3, md: 4 }}
-						>
-							<H2>Intending to make, serve or sell alcohol?</H2>
-							<Text as="p">
-								Get tailored step-by-step guidance on what approvals your
-								business will need to sell and or serve alcohol. Just answer a
-								few quick questions about your business.
+			<SectionContent>
+				<Stack gap={1.5}>
+					<H2>Why create an account?</H2>
+					<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
+						<Stack as="li" gap={1}>
+							<PictogramProfile />
+							<H3>Secure and easy way to share your details</H3>
+							<Text>
+								Use your yourGov profile to easily provide your personal details
+								when you access any government service.
 							</Text>
-							<ButtonLink href="/not-found">
-								Find liquor licence tool
-							</ButtonLink>
 						</Stack>
-						<Flex alignItems="flex-end" paddingTop={{ md: 4 }}>
-							<img
-								src={withBasePath('/screenshot.png')}
-								alt="Screenshot of the Find your liquor licence tool home page"
-								css={{ display: 'block', maxWidth: '100%' }}
-							/>
-						</Flex>
+						<Stack as="li" gap={1}>
+							<PictogramDocumentTick />
+							<H3>Find and manage business approvals</H3>
+							<Text>
+								Search, apply and manage business licences and permits online in
+								one place.
+							</Text>
+						</Stack>
+						<Stack as="li" gap={1}>
+							<PictogramCalculator />
+							<H3>Manage benefits and payments</H3>
+							<Text>
+								Find what you are eligible for and then claim and manage your
+								payments online.
+							</Text>
+						</Stack>
+						<Stack as="li" gap={1}>
+							<PictogramTrack />
+							<H3>Track the progress of applications</H3>
+							<Text>
+								Receive real-time alerts for your government approvals,
+								applications and transactions.
+							</Text>
+						</Stack>
 					</Columns>
-				</Content>
+				</Stack>
+			</SectionContent>
 
-				<SectionContent>
-					<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-						<Card as="li" shadow clickable>
-							<CardInner>
-								<Stack gap={1}>
-									<H3>
-										<CardLink href="/services">Services</CardLink>
-									</H3>
-									<Text as="p">
-										An easier and faster way to connect with government services
-										for your business.
-									</Text>
-								</Stack>
-							</CardInner>
-						</Card>
-						<Card as="li" shadow clickable>
-							<CardInner>
-								<Stack gap={1}>
-									<H3>
-										<CardLink href="/help">Help</CardLink>
-									</H3>
-									<Text as="p">
-										Information and support to help you use yourGov.
-									</Text>
-								</Stack>
-							</CardInner>
-						</Card>
-					</Columns>
-				</SectionContent>
-			</SiteLayout>
-		</>
+			<Content as="section" background="bodyAlt">
+				<Columns cols={{ xs: 1, sm: 2 }} gap={3}>
+					<Stack
+						gap={1.5}
+						alignItems="flex-start"
+						paddingBottom={{ xs: 0, sm: 3, md: 4 }}
+						paddingTop={{ xs: 3, md: 4 }}
+					>
+						<H2>Intending to make, serve or sell alcohol?</H2>
+						<Text as="p">
+							Get tailored step-by-step guidance on what approvals your business
+							will need to sell and or serve alcohol. Just answer a few quick
+							questions about your business.
+						</Text>
+						<ButtonLink href="/not-found">Find liquor licence tool</ButtonLink>
+					</Stack>
+					<Flex alignItems="flex-end" paddingTop={{ md: 4 }}>
+						<img
+							src={withBasePath('/screenshot.png')}
+							alt="Screenshot of the Find your liquor licence tool home page"
+							css={{ display: 'block', maxWidth: '100%' }}
+						/>
+					</Flex>
+				</Columns>
+			</Content>
+
+			<SectionContent>
+				<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
+					<Card as="li" shadow clickable>
+						<CardInner>
+							<Stack gap={1}>
+								<H3>
+									<CardLink href="/services">Services</CardLink>
+								</H3>
+								<Text as="p">
+									An easier and faster way to connect with government services
+									for your business.
+								</Text>
+							</Stack>
+						</CardInner>
+					</Card>
+					<Card as="li" shadow clickable>
+						<CardInner>
+							<Stack gap={1}>
+								<H3>
+									<CardLink href="/help">Help</CardLink>
+								</H3>
+								<Text as="p">
+									Information and support to help you use yourGov.
+								</Text>
+							</Stack>
+						</CardInner>
+					</Card>
+				</Columns>
+			</SectionContent>
+		</Fragment>
 	);
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+	return <SiteLayout>{page}</SiteLayout>;
+};
 
 function PictogramProfile() {
 	return (

@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from 'react';
+import { useEffect, Fragment, ReactElement } from 'react';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -19,20 +19,22 @@ export default function Page() {
 	return (
 		<Fragment>
 			<DocumentTitle title="Sign out" />
-			<SiteLayout>
-				<PageContent>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 8 }}>
-							<Stack gap={1.5}>
-								<H1>Sign out</H1>
-								<PageAlert tone="success" title="Sign out successful">
-									<Text>You have been successfully signed out.</Text>
-								</PageAlert>
-							</Stack>
-						</Column>
-					</Columns>
-				</PageContent>
-			</SiteLayout>
+			<PageContent>
+				<Columns>
+					<Column columnSpan={{ xs: 12, md: 8 }}>
+						<Stack gap={1.5}>
+							<H1>Sign out</H1>
+							<PageAlert tone="success" title="Sign out successful">
+								<Text>You have been successfully signed out.</Text>
+							</PageAlert>
+						</Stack>
+					</Column>
+				</Columns>
+			</PageContent>
 		</Fragment>
 	);
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+	return <SiteLayout>{page}</SiteLayout>;
+};

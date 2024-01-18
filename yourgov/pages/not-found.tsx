@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, ReactElement } from 'react';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
@@ -12,20 +12,22 @@ export default function Page() {
 	return (
 		<Fragment>
 			<DocumentTitle title="Page not found" />
-			<SiteLayout>
-				<PageContent>
-					<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
-						<H1>Oops! This page does not exist.</H1>
-						<Text as="p" fontSize="md">
-							You have reached a page which is not part of the testing process.
-						</Text>
-						<Text as="p">
-							Please go back to the{' '}
-							<TextLink href="/">yourGov home page</TextLink>.
-						</Text>
-					</Stack>
-				</PageContent>
-			</SiteLayout>
+			<PageContent>
+				<Stack gap={1.5} maxWidth={tokens.maxWidth.bodyText}>
+					<H1>Oops! This page does not exist.</H1>
+					<Text as="p" fontSize="md">
+						You have reached a page which is not part of the testing process.
+					</Text>
+					<Text as="p">
+						Please go back to the{' '}
+						<TextLink href="/">yourGov home page</TextLink>.
+					</Text>
+				</Stack>
+			</PageContent>
 		</Fragment>
 	);
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+	return <SiteLayout>{page}</SiteLayout>;
+};
