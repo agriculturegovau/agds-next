@@ -37,37 +37,36 @@ export const formatHumanReadableDate = (date: Date) =>
 export const parseDate = (value: string) => {
 	const now = new Date();
 
-	let updatedValue = value;
-
 	for (const displayDateFormat of acceptedDateFormats) {
-		const splitValue = value.split('/');
+		// Split input value by spaces and slashes
+		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023']
+		const splitValue = value.split(/ |\//g);
 
-		// If the user is attempting to type in dd/mm/yyyy or mm/dd/yyyy
-		if (splitValue.length > 1) {
-			let firstSegment = splitValue[0] || '';
-			let secondSegment = splitValue[1] || '';
-			const thirdSegment = splitValue[2] || '';
+		let firstSegment = splitValue[0] || '';
+		let secondSegment = splitValue[1] || '';
+		const thirdSegment = splitValue[2] || '';
 
-			// Ensure the first and segments (either day or month) are padded with a leading zero so users can type '1' instead of '01'
+		// Don't attempt to parse dates that haven't got a complete year
+		if (thirdSegment.length !== 4) {
+			return;
+		}
+
+		// When users have types in single digit months or years, pad the start with '0'
+		// e.g. '1/2/2023' => '01/02/2023'
+		if (value.includes('/')) {
 			firstSegment =
-				firstSegment.length === 1
+				firstSegment.length === 1 && !isNaN(Number(firstSegment))
 					? firstSegment.padStart(2, '0')
 					: firstSegment;
 			secondSegment =
-				secondSegment.length === 1
+				secondSegment.length === 1 && !isNaN(Number(secondSegment))
 					? secondSegment.padStart(2, '0')
 					: secondSegment;
-
-			// If the year isn't full,
-			if (thirdSegment && thirdSegment.length !== 4) {
-				break;
-			}
-
-			updatedValue = [firstSegment, secondSegment, thirdSegment].join('/');
+			value = [firstSegment, secondSegment, thirdSegment].join('/');
 		}
 
-		if (isMatch(updatedValue, displayDateFormat)) {
-			const parsed = parse(updatedValue, displayDateFormat, now);
+		if (isMatch(value, displayDateFormat)) {
+			const parsed = parse(value, displayDateFormat, now);
 			if (isValidDate(parsed)) return parsed;
 		}
 	}

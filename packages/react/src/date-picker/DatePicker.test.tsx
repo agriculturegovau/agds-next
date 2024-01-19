@@ -325,43 +325,6 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it('form: shows validation errors as an optional field with a semi-real date value', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
-				onError={onError}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), '1/2/2020');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('1/2/2020');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: undefined,
-		});
-	});
-
 	it('form: shows validation errors as an optional field', async () => {
 		const onSubmit = jest.fn();
 		const onError = jest.fn();
