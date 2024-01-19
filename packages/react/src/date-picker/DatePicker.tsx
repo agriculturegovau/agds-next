@@ -119,27 +119,32 @@ export const DatePicker = ({
 		transformValuePropToInputValue(value)
 	);
 
-	const debouncedParsed = useDebouncedCallback((inputValue: string) => {
-		// Attempt to parse the date using the text input value
-		const parsedDate = parseDate(inputValue);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const debouncedAttemptDateParse = useDebouncedCallback(
+		(inputValue: string) => {
+			// Attempt to parse the date using the text input value
+			const parsedDate = parseDate(inputValue);
+			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-		// When there is no value OR there is a valid date, only trigger the `onChange` callback
-		// `onInputChange` will not be called
-		if (!inputValue || constrainedDate) {
+			// When there is no value OR there is a valid date, only trigger the `onChange` callback
+			// `onInputChange` will not be called
+			if (!inputValue || constrainedDate) {
+				onChange(constrainedDate);
+				return;
+			}
+
+			// Trigger the callbacks
 			onChange(constrainedDate);
-			return;
-		}
-
-		onChange(constrainedDate);
-		onInputChangeProp?.(inputValue);
-	}, 200);
+			onInputChangeProp?.(inputValue);
+		},
+		200
+	);
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-		// Update the UI immediately
 		const inputValue = e.target.value;
+		// Immediately update the input field
 		setInputValue(inputValue);
-		debouncedParsed(inputValue);
+		// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
+		debouncedAttemptDateParse(inputValue);
 	};
 
 	// Update the text input when the value updates

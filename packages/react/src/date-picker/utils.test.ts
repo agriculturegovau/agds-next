@@ -55,6 +55,8 @@ describe('parseDate', () => {
 
 	describe('works on alternative date formats', () => {
 		const testFormats = [
+			'8-2-2023',
+			'08-02-2023',
 			'8th February 2023',
 			'8th Feb 2023',
 			'February 8th 2023',

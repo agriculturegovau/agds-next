@@ -14,7 +14,9 @@ const displayDateFormat = 'dd/MM/yyyy';
 
 const acceptedDateFormats = [
 	displayDateFormat, // 18/02/2023
+	'dd-MM-yyyy', // 18-02-2023
 	'MM/dd/yyyy', // 02/18/2023
+	'MM-dd-yyyy', // 02-18-2023
 	'do MMMM yyyy', // 8th February 2023
 	'do MMM yyyy', // 8th Feb 2023
 	'MMMM do yyyy', // February 8th 2023
@@ -38,9 +40,9 @@ export const parseDate = (value: string) => {
 	const now = new Date();
 
 	for (const displayDateFormat of acceptedDateFormats) {
-		// Split input value by spaces and slashes
-		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023']
-		const splitValue = value.split(/ |\//g);
+		// Split input value by spaces, slashes and dashes
+		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
+		const splitValue = value.split(/ |\/|-/g);
 
 		let firstSegment = splitValue[0] || '';
 		let secondSegment = splitValue[1] || '';
