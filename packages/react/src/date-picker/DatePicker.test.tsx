@@ -17,6 +17,13 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
+// Mock `useDebouncedCallback` so that the callback is called immediately
+jest.mock('use-debounce', () => ({
+	useDebouncedCallback: jest.fn().mockImplementation((callback) => {
+		return callback;
+	}),
+}));
+
 function renderDatePicker(props: DatePickerProps) {
 	return render(<DatePicker {...props} />);
 }

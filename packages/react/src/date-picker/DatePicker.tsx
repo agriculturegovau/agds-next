@@ -119,7 +119,7 @@ export const DatePicker = ({
 		transformValuePropToInputValue(value)
 	);
 
-	const debouncedParsed = useDebouncedCallback(() => {
+	const debouncedParsed = useDebouncedCallback((inputValue: string) => {
 		// Attempt to parse the date using the text input value
 		const parsedDate = parseDate(inputValue);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
@@ -139,8 +139,7 @@ export const DatePicker = ({
 		// Update the UI immediately
 		const inputValue = e.target.value;
 		setInputValue(inputValue);
-
-		debouncedParsed();
+		debouncedParsed(inputValue);
 	};
 
 	// Update the text input when the value updates
