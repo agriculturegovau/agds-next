@@ -10,24 +10,7 @@ relatedComponents: ['date-range-picker']
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
-
-	const onInputChange = (e) => {
-		console.log(`onInputChange`, e);
-		setValue(e);
-	};
-	const onChange = (e) => {
-		console.log(`onChange`, e);
-		setValue(e);
-	};
-
-	return (
-		<DatePicker
-			label="Select date"
-			value={value}
-			onChange={onChange}
-			onInputChange={onInputChange}
-		/>
-	);
+	return <DatePicker label="Select date" value={value} onChange={setValue} />;
 };
 ```
 
@@ -66,12 +49,14 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 () => {
 	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState('31/1o/2020');
+
 	const onInputChange = (e) => {
-		console.log(`onInputChange, e`, onInputChange, e);
+		console.log(`onInputChange`, e);
 		setValue(e);
 	};
+
 	const onChange = (e) => {
-		console.log(`onChange, e`, onChange, e);
+		console.log(`onChange`, e);
 		setValue(e);
 	};
 
