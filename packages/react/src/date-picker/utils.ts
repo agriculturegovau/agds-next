@@ -15,8 +15,10 @@ const displayDateFormat = 'dd/MM/yyyy';
 const acceptedDateFormats = [
 	displayDateFormat, // 18/02/2023
 	'dd-MM-yyyy', // 18-02-2023
+	'dd MM yyyy', // 18 02 2023
 	'MM/dd/yyyy', // 02/18/2023
 	'MM-dd-yyyy', // 02-18-2023
+	'MM dd yyyy', // 02 18 2023
 	'do MMMM yyyy', // 8th February 2023
 	'do MMM yyyy', // 8th Feb 2023
 	'MMMM do yyyy', // February 8th 2023
@@ -44,27 +46,11 @@ export const parseDate = (value: string) => {
 		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
 		const splitValue = value.split(/ |\/|-/g);
 
-		let firstSegment = splitValue[0] || '';
-		let secondSegment = splitValue[1] || '';
-		const thirdSegment = splitValue[2] || '';
+		const yearSegment = splitValue[2] || '';
 
 		// Don't attempt to parse dates that haven't got a complete year
-		if (thirdSegment.length !== 4) {
+		if (yearSegment.length !== 4) {
 			return;
-		}
-
-		// When users have types in single digit months or years, pad the start with '0'
-		// e.g. '1/2/2023' => '01/02/2023'
-		if (value.includes('/')) {
-			firstSegment =
-				firstSegment.length === 1 && !isNaN(Number(firstSegment))
-					? firstSegment.padStart(2, '0')
-					: firstSegment;
-			secondSegment =
-				secondSegment.length === 1 && !isNaN(Number(secondSegment))
-					? secondSegment.padStart(2, '0')
-					: secondSegment;
-			value = [firstSegment, secondSegment, thirdSegment].join('/');
 		}
 
 		if (isMatch(value, displayDateFormat)) {
