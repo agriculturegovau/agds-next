@@ -5,6 +5,7 @@ import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { format } from 'date-fns';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
 import { Stack } from '../stack';
@@ -27,6 +28,17 @@ jest.mock('use-debounce', () => ({
 		return callback;
 	}),
 }));
+
+// Mock the current date so snapshot outputs are always consistent
+const mockSystemTime = new Date(2015, 7, 5);
+beforeAll(() => {
+	jest.useFakeTimers({ advanceTimers: true });
+	jest.setSystemTime(mockSystemTime);
+});
+
+afterAll(() => {
+	jest.useRealTimers();
+});
 
 function renderDateRangePicker(props: DateRangePickerProps) {
 	return render(<DateRangePicker {...props} />);
@@ -355,8 +367,12 @@ describe('DateRangePicker', () => {
 		const inputToId = await (await getToInput())?.id;
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
-		expect(labelFrom?.textContent).toEqual('Start date (dd/mm/yyyy)');
-		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy)');
+		expect(labelFrom?.textContent).toEqual(
+			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
+		);
+		expect(labelTo?.textContent).toEqual(
+			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
+		);
 	});
 
 	it('shows date format when no legend is supplied', async () => {
@@ -371,9 +387,11 @@ describe('DateRangePicker', () => {
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
 		expect(labelFrom?.textContent).toEqual(
-			'Start date (dd/mm/yyyy) (optional)'
+			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
 		);
-		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy) (optional)');
+		expect(labelTo?.textContent).toEqual(
+			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
+		);
 	});
 
 	it('invalid: can render an invalid state when both fields are invalid', async () => {
