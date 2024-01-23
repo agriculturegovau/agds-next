@@ -82,6 +82,47 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 };
 ```
 
+## Changing the date format
+
+The Date picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
+
+When a valid date is typed, the date will be formatted using the `dateFormat` prop, which is set to `dd/MM/yyyy` by default.
+
+To modify the date format, you can change the `dateFormat` prop to one of the supported date formats:
+
+- `dd/MM/yyyy` (e.g. 18/02/2023)
+- `dd-MM-yyyy` (e.g. 18-02-2023)
+- `dd MM yyyy` (e.g. 18 02 2023)
+- `MM/dd/yyyy` (e.g. 02/18/2023)
+- `MM-dd-yyyy` (e.g. 02-18-2023)
+- `MM dd yyyy` (e.g. 02 18 2023)
+- `do MMMM yyyy` (e.g. 8th February 2023)
+- `do MMM yyyy` (e.g. 8th Feb 2023)
+- `MMMM do yyyy` (e.g. February 8th 2023)
+- `MMM do yyyy` (e.g. Feb 8th 2023)
+- `d MMMM yyyy` (e.g. 8 February 2023)
+- `d MMM yyyy` (e.g. 8 Feb 2023)
+- `MMMM d yyyy` (e.g. February 8 2023)
+- `MMM d yyyy` (e.g. Feb 8 2023)
+- `dd MMMM yyyy` (e.g. 08 February 2023)
+- `dd MMM yyyy` (e.g. 08 Feb 2023)
+- `MMMM dd yyyy` (e.g. February 08 2023)
+- `MMM dd yyyy` (e.g. Feb 08 2023)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePicker
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			dateFormat="d MMM yyyy"
+		/>
+	);
+};
+```
+
 ## Hint
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
@@ -197,45 +238,6 @@ The `yearRange` prop can be used to change the range of options to display in ca
 			yearRange={yearRange}
 			value={value}
 			onChange={setValue}
-		/>
-	);
-};
-```
-
-## Alternative date formats
-
-Use the `dateFormat` prop to change the format of the date displayed in the text input and secondary label.
-
-While the Date picker component prefers the `dd/mm/yyyy` date format, any of the current dates are accepted:
-
-- `dd/MM/yyyy` (e.g. 18/02/2023)
-- `dd-MM-yyyy` (e.g. 18-02-2023)
-- `dd MM yyyy` (e.g. 18 02 2023)
-- `MM/dd/yyyy` (e.g. 02/18/2023)
-- `MM-dd-yyyy` (e.g. 02-18-2023)
-- `MM dd yyyy` (e.g. 02 18 2023)
-- `do MMMM yyyy` (e.g. 8th February 2023)
-- `do MMM yyyy` (e.g. 8th Feb 2023)
-- `MMMM do yyyy` (e.g. February 8th 2023)
-- `MMM do yyyy` (e.g. Feb 8th 2023)
-- `d MMMM yyyy` (e.g. 8 February 2023)
-- `d MMM yyyy` (e.g. 8 Feb 2023)
-- `MMMM d yyyy` (e.g. February 8 2023)
-- `MMM d yyyy` (e.g. Feb 8 2023)
-- `dd MMMM yyyy` (e.g. 08 February 2023)
-- `dd MMM yyyy` (e.g. 08 Feb 2023)
-- `MMMM dd yyyy` (e.g. February 08 2023)
-- `MMM dd yyyy` (e.g. Feb 08 2023)
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState();
-	return (
-		<DatePicker
-			label="Select date"
-			value={value}
-			onChange={setValue}
-			dateFormat="d MMM yyyy"
 		/>
 	);
 };

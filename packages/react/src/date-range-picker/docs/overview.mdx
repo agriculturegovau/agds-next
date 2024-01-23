@@ -238,11 +238,13 @@ If a valid date is entered using the text input but it falls outside the constra
 };
 ```
 
-## Alternative date formats
+## Changing the date format
 
-Use the `dateFormat` prop to change the format of the date displayed in the text input and secondary label.
+The Date range picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
 
-While the Date range picker component prefers the `dd/mm/yyyy` date format, any of the current dates are accepted:
+When a valid date is typed, the date will be formatted using the dateFormat prop, which is set to dd/MM/yyyy by default.
+
+To modify the date format, you can change the dateFormat prop to one of the supported date formats:
 
 - `dd/MM/yyyy` (e.g. 18/02/2023)
 - `dd-MM-yyyy` (e.g. 18-02-2023)
