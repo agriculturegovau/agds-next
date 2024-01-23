@@ -8,12 +8,17 @@ relatedComponents: ['file-input']
 ---
 
 ```jsx live
-<FileUpload
-	label="Avatar image"
-	hint="Formats accepted: .png, .jpg, .jpeg"
-	multiple={false}
-	accept={['image/jpeg', 'image/png']}
-/>
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<FileUpload
+			label="Upload documents"
+			multiple={true}
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
 ```
 
 File upload is used in forms to enable users to upload files they need. There are 2 ways to upload – via drag and drop or file selection via search.
@@ -53,12 +58,7 @@ As normal, we indicate that the form is submitting by adding a `loading={true}` 
 ```jsx live
 <FormStack>
 	<div style={{ position: 'relative' }}>
-		<FileUpload
-			label="Avatar image"
-			hint="Formats accepted: .png, .jpg, .jpeg"
-			multiple={false}
-			accept={['image/jpeg', 'image/png']}
-		/>
+		<FileUpload label="Upload documents" multiple={false} />
 		<LoadingBlanket label="Uploading file (53%)" />
 	</div>
 	<div>
@@ -77,14 +77,35 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 () => {
 	const uploadedFile = createExampleImageFile({ status: 'success' });
 	const uploadingFile = createExampleFile({ status: 'uploading' });
+
+	const [value, setValue] = React.useState([uploadedFile, uploadingFile]);
+
+	function onChange(files) {
+		setValue(
+			files.map((file) => {
+				file.status = file.status || 'uploading';
+				return file;
+			})
+		);
+		// Show uploaded state after simulated network request
+		setTimeout(() => {
+			setValue(
+				files.map((file) => {
+					if (file.status == 'uploading') {
+						file.status = 'success';
+					}
+					return file;
+				})
+			);
+		}, 1500);
+	}
+
 	return (
 		<FileUpload
-			label="Avatar image"
-			hint="Formats accepted: .png, .jpg, .jpeg"
-			multiple={false}
-			accept={['image/jpeg', 'image/png']}
-			value={[uploadedFile, uploadingFile]}
-			onChange={console.log}
+			label="Upload documents"
+			multiple={true}
+			value={value}
+			onChange={onChange}
 		/>
 	);
 };
@@ -151,9 +172,8 @@ If a user attempts to delete an existing file, a destructive confirmation modal 
 Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images to `thumbnailSrc` prop will result with long load times.
 
 ```jsx live
-<FileUpload
-	label="Upload documents"
-	existingFiles={[
+() => {
+	const [existingFiles, setExistingFiles] = useState([
 		{
 			name: 'example.png',
 			size: 123456,
@@ -163,9 +183,25 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 			// This can be useful info when deleting the file
 			meta: { uid: 'abc-def', bucketId: '123-456' },
 		},
-	]}
-	onRemoveExistingFile={(fileToRemove) => {
-		console.log('Remove existing file', fileToRemove);
-	}}
-/>
+	]);
+
+	function onRemoveExistingFile(fileToRemove) {
+		setExistingFiles((existingFiles) =>
+			existingFiles.filter((file) => file.meta.uid !== fileToRemove.meta.uid)
+		);
+	}
+
+	const [value, setValue] = React.useState();
+
+	return (
+		<FileUpload
+			label="Upload documents"
+			multiple={true}
+			value={value}
+			onChange={setValue}
+			existingFiles={existingFiles}
+			onRemoveExistingFile={onRemoveExistingFile}
+		/>
+	);
+};
 ```
