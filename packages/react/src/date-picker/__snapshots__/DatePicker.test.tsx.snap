@@ -19,7 +19,7 @@ exports[`DatePicker renders correctly 1`] = `
           class="css-1rpt3h8-boxStyles-Text"
         >
            
-          (dd/mm/yyyy) (optional)
+          (e.g. 20/06/2020) (optional)
         </span>
       </label>
       <div

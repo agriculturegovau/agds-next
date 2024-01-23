@@ -1,10 +1,12 @@
-import { forwardRef, MouseEventHandler, RefObject } from 'react';
+import { forwardRef, MouseEventHandler, RefObject, useMemo } from 'react';
+import { format } from 'date-fns';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
+import { acceptedDateFormats, AcceptedDateFormat } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
@@ -13,6 +15,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalids state. */
 		input: boolean;
 	};
+	dateFormat: AcceptedDateFormat;
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
@@ -35,6 +38,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			buttonAriaLabel,
 			disabled,
 			value,
+			dateFormat: dateFormatProp,
 			...props
 		},
 		ref
@@ -51,10 +55,20 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			borderBottomRightRadius: 0,
 		};
 
+		// The secondary label should show todays date in the supplied date format
+		// Fallback to our default date format of `dd/MM/yyyy` if the provided format is not supported
+		// Typescript will complain about incorrect usage, but not everyone relies on typescript
+		const secondaryLabel = useMemo(() => {
+			const dateFormat = acceptedDateFormats.includes(dateFormatProp)
+				? dateFormatProp
+				: 'dd/MM/yyyy';
+			return '(e.g. ' + format(new Date(), dateFormat) + ')';
+		}, [dateFormatProp]);
+
 		return (
 			<Field
 				label={label}
-				secondaryLabel="(dd/mm/yyyy)"
+				secondaryLabel={secondaryLabel}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
