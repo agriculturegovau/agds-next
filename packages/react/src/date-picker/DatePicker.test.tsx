@@ -24,6 +24,17 @@ jest.mock('use-debounce', () => ({
 	}),
 }));
 
+// Mock the current date so snapshot outputs are always consistent
+const mockSystemTime = new Date(2015, 7, 5);
+beforeAll(() => {
+	jest.useFakeTimers({ advanceTimers: true });
+	jest.setSystemTime(mockSystemTime);
+});
+
+afterAll(() => {
+	jest.useRealTimers();
+});
+
 function renderDatePicker(props: DatePickerProps) {
 	return render(<DatePicker {...props} />);
 }
@@ -116,18 +127,12 @@ async function getSubmitButton() {
 
 describe('DatePicker', () => {
 	it('renders correctly', () => {
-		// Mock the current date so snapshot outputs are always consistent
-		jest.useFakeTimers().setSystemTime(new Date(2020, 5, 20));
-
 		const { container } = renderDatePicker({
 			label: 'Example',
 			value: new Date(2000, 0, 1),
 			onChange: console.log,
 		});
 		expect(container).toMatchSnapshot();
-
-		// Reset mock timers
-		jest.useRealTimers();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {

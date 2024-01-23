@@ -73,6 +73,12 @@ export const Block: Story = {
 	},
 };
 
+export const AlternativeDateFormat: Story = {
+	args: {
+		dateFormat: 'd MMM yyyy',
+	},
+};
+
 export const ScrollExample: Story = {
 	render: (props) => (
 		<Box>
