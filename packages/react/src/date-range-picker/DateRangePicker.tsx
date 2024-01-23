@@ -245,7 +245,7 @@ export const DateRangePicker = ({
 			onChange(nextValue);
 			onToInputChangeProp?.(inputValue);
 		},
-		250
+		200
 	);
 
 	const onToInputChange = useCallback(
