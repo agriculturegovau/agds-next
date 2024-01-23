@@ -10,17 +10,79 @@ import {
 
 describe('parseDate', () => {
 	test('works on valid dates', () => {
-		expect(parseDate('31/01/1950')).not.toEqual(undefined);
-		expect(parseDate('31/12/1999')).not.toEqual(undefined);
-		expect(parseDate('01/01/2000')).not.toEqual(undefined);
+		expect(parseDate('31/01/1950')).toEqual(new Date(1950, 0, 31));
+		expect(parseDate('9/12/1999')).toEqual(new Date(1999, 11, 9));
+		expect(parseDate('01/01/2000')).toEqual(new Date(2000, 0, 1));
 	});
+
+	test('works on partially valid dates', () => {
+		expect(parseDate('5/2/2000')).toEqual(new Date(2000, 1, 5));
+		expect(parseDate('5/10/2000')).toEqual(new Date(2000, 9, 5));
+		expect(parseDate('05/4/2000')).toEqual(new Date(2000, 3, 5));
+		expect(parseDate('05/4/24')).toEqual(undefined);
+		expect(parseDate('5/04/19')).toEqual(undefined);
+		expect(parseDate('5/04/25')).toEqual(undefined);
+		expect(parseDate('5/04/50')).toEqual(undefined);
+		expect(parseDate('5/04/51')).toEqual(undefined);
+		expect(parseDate('5/04/73')).toEqual(undefined);
+	});
+
 	test('works on invalid dates and invalid formats', () => {
 		expect(parseDate('50/50/2019')).toEqual(undefined);
 		expect(parseDate('50/50/19')).toEqual(undefined);
-		expect(parseDate('31/01/19')).toEqual(undefined);
 		expect(parseDate('31/01/199')).toEqual(undefined);
 		expect(parseDate('31-01-19')).toEqual(undefined);
 		expect(parseDate('1-2-3')).toEqual(undefined);
+	});
+
+	describe('prefers `dd/mm/yyyy` over `mm/dd/yyyy`', () => {
+		['02/10/2023', '2/10/2023'].forEach((example) => {
+			test(`Format "${example}"`, () => {
+				const formattedDate = parseDate(example);
+				expect(formattedDate).toEqual(new Date(2023, 9, 2));
+			});
+		});
+	});
+
+	describe('parses valid `mm/dd/yyyy` dates', () => {
+		['02/22/2023', '2/22/2023'].forEach((example) => {
+			test(`Format "${example}"`, () => {
+				const formattedDate = parseDate(example);
+				expect(formattedDate).toEqual(new Date(2023, 1, 22));
+			});
+		});
+	});
+
+	describe('works on alternative date formats', () => {
+		const testFormats = [
+			'8-2-2023',
+			'08-02-2023',
+			'8-02-2023',
+			'08-2-2023',
+			'8 2 2023',
+			'08 02 2023',
+			'8 02 2023',
+			'08 2 2023',
+			'8th February 2023',
+			'8th Feb 2023',
+			'February 8th 2023',
+			'Feb 8th 2023',
+			'8 February 2023',
+			'8 Feb 2023',
+			'February 8 2023',
+			'Feb 8 2023',
+			'08 February 2023',
+			'08 Feb 2023',
+			'February 08 2023',
+			'Feb 08 2023',
+		];
+
+		testFormats.forEach((example) => {
+			test(`Format "${example}"`, () => {
+				const formattedDate = parseDate(example);
+				expect(formattedDate).toEqual(new Date(2023, 1, 8));
+			});
+		});
 	});
 });
 

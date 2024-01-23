@@ -7,6 +7,7 @@ import {
 	useEffect,
 	useMemo,
 } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -180,11 +181,9 @@ export const DateRangePicker = ({
 	const [fromInputValue, setFromInputValue] = useState(
 		transformValuePropToInputValue(value.from)
 	);
-	const onFromInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
-			// Immediately update the input field
-			setFromInputValue(inputValue);
+
+	const debouncedAttemptDateParseFromDate = useDebouncedCallback(
+		(inputValue: string) => {
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
 			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
@@ -201,23 +200,31 @@ export const DateRangePicker = ({
 				return;
 			}
 
+			// Trigger the callbacks
 			onChange(nextValue);
 			onFromInputChangeProp?.(inputValue);
 		},
-		[maxDate, minDate, onChange, valueAsDateOrUndefined, onFromInputChangeProp]
+		200
+	);
+
+	const onFromInputChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const inputValue = e.target.value;
+			// Immediately update the input field
+			setFromInputValue(inputValue);
+			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
+			debouncedAttemptDateParseFromDate(inputValue);
+		},
+		[debouncedAttemptDateParseFromDate]
 	);
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
 		transformValuePropToInputValue(value.to)
 	);
-	const onToInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
 
-			// Immediately update the input field
-			setToInputValue(inputValue);
-
+	const debouncedAttemptDateParseToDate = useDebouncedCallback(
+		(inputValue: string) => {
 			// Ensure the text entered is a valid date
 			const parsedDate = parseDate(inputValue);
 			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
@@ -234,10 +241,22 @@ export const DateRangePicker = ({
 				return;
 			}
 
+			// Trigger the callbacks
 			onChange(nextValue);
 			onToInputChangeProp?.(inputValue);
 		},
-		[maxDate, minDate, onChange, onToInputChangeProp, valueAsDateOrUndefined]
+		200
+	);
+
+	const onToInputChange = useCallback(
+		(e: ChangeEvent<HTMLInputElement>) => {
+			const inputValue = e.target.value;
+			// Immediately update the input field
+			setToInputValue(inputValue);
+			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
+			debouncedAttemptDateParseToDate(inputValue);
+		},
+		[debouncedAttemptDateParseToDate]
 	);
 
 	// Update the text inputs when the value updates

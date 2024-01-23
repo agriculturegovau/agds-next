@@ -6,22 +6,58 @@ import {
 	isBefore,
 	isAfter,
 	closestTo,
+	isMatch,
 } from 'date-fns';
 
 // Date format is not configurable
-const dateFormat = 'dd/MM/yyyy';
+const displayDateFormat = 'dd/MM/yyyy';
 
-export const formatDate = (date: Date) => format(date, dateFormat);
+const acceptedDateFormats = [
+	displayDateFormat, // 18/02/2023
+	'dd-MM-yyyy', // 18-02-2023
+	'dd MM yyyy', // 18 02 2023
+	'MM/dd/yyyy', // 02/18/2023
+	'MM-dd-yyyy', // 02-18-2023
+	'MM dd yyyy', // 02 18 2023
+	'do MMMM yyyy', // 8th February 2023
+	'do MMM yyyy', // 8th Feb 2023
+	'MMMM do yyyy', // February 8th 2023
+	'MMM do yyyy', // Feb 8th 2023
+	'd MMMM yyyy', // 8 February 2023
+	'd MMM yyyy', // 8 Feb 2023
+	'MMMM d yyyy', // February 8 2023
+	'MMM d yyyy', // Feb 8 2023
+	'dd MMMM yyyy', // 08 February 2023
+	'dd MMM yyyy', // 08 Feb 2023
+	'MMMM dd yyyy', // February 08 2023
+	'MMM dd yyyy', // Feb 08 2023
+];
+
+export const formatDate = (date: Date) => format(date, displayDateFormat);
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
 
-// https://github.com/date-fns/date-fns/issues/942
 export const parseDate = (value: string) => {
-	if (value.length !== dateFormat.length) return undefined;
+	const now = new Date();
 
-	const parsed = parse(value, dateFormat, new Date());
-	if (isValidDate(parsed)) return parsed;
+	for (const displayDateFormat of acceptedDateFormats) {
+		// Split input value by spaces, slashes and dashes
+		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
+		const splitValue = value.split(/ |\/|-/g);
+
+		const yearSegment = splitValue[2] || '';
+
+		// Don't attempt to parse dates that haven't got a complete year
+		if (yearSegment.length !== 4) {
+			return;
+		}
+
+		if (isMatch(value, displayDateFormat)) {
+			const parsed = parse(value, displayDateFormat, now);
+			if (isValidDate(parsed)) return parsed;
+		}
+	}
 
 	return undefined;
 };

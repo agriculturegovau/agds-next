@@ -21,6 +21,13 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
+// Mock `useDebouncedCallback` so that the callback is called immediately
+jest.mock('use-debounce', () => ({
+	useDebouncedCallback: jest.fn().mockImplementation((callback) => {
+		return callback;
+	}),
+}));
+
 function renderDateRangePicker(props: DateRangePickerProps) {
 	return render(<DateRangePicker {...props} />);
 }
@@ -583,43 +590,6 @@ describe('DateRangePicker', () => {
 		await expect(await getFromInput()).toHaveValue('');
 		await userEvent.clear(await getToInput());
 		await expect(await getToInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			dateRange: { from: undefined, to: undefined },
-		});
-	});
-
-	it('form: shows validation errors as an optional field with a semi-real date value', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
-				onError={onError}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getFromInput(), '1/2/2020');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getFromInput()).toHaveFocus();
-		expect(await getFromInput()).toHaveValue('1/2/2020');
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getFromInput());
-		await expect(await getFromInput()).toHaveValue('');
 
 		// Submit the form
 		await userEvent.click(await getSubmitButton());

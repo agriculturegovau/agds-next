@@ -49,12 +49,14 @@ To fix this issue, you can use the `onInputChange` prop to keep track of the use
 () => {
 	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState('31/1o/2020');
+
 	const onInputChange = (e) => {
-		console.log(`onInputChange, e`, onInputChange, e);
+		console.log(`onInputChange`, e);
 		setValue(e);
 	};
+
 	const onChange = (e) => {
-		console.log(`onChange, e`, onChange, e);
+		console.log(`onChange`, e);
 		setValue(e);
 	};
 
