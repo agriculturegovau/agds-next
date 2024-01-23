@@ -2,7 +2,9 @@ import {
 	Fragment,
 	MouseEventHandler,
 	PropsWithChildren,
+	useCallback,
 	useEffect,
+	useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
@@ -31,7 +33,15 @@ export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 export function AppLayoutSidebarDialog({
 	children,
 }: AppLayoutSidebarDialogProps) {
+	// When true, the focus will be returned to the menu button. Otherwise, focus will be returned to the body when the user presses a new route.
+	const [returnFocusToTrigger, setReturnFocusToTrigger] = useState(false);
+
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
+
+	const closeMobileMenuAndFocusMenuButton = useCallback(() => {
+		setReturnFocusToTrigger(true);
+		closeMobileMenu();
+	}, [closeMobileMenu]);
 
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isMobileMenuOpen);
@@ -42,22 +52,42 @@ export function AppLayoutSidebarDialog({
 			if (e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				closeMobileMenu();
+				closeMobileMenuAndFocusMenuButton();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [closeMobileMenu]);
+	}, [closeMobileMenuAndFocusMenuButton]);
 
 	// Animation styles
+	const [finishedTransition, setFinishedTransition] = useState(false);
+
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const dialogTransitions = useTransition([isMobileMenuOpen], {
 		from: { translateX: '-100%', opacity: 0 },
-		enter: { translateX: '0%', opacity: 1 },
-		leave: { translateX: '-100%', opacity: 0 },
+		enter: {
+			translateX: '0%',
+			opacity: 1,
+			onRest: () => {
+				if (isMobileMenuOpen) setFinishedTransition(false);
+			},
+		},
+		leave: {
+			translateX: '-100%',
+			opacity: 0,
+			onRest: () => {
+				if (isMobileMenuOpen) return;
+				setFinishedTransition(true);
+			},
+		},
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
 	});
+
+	// Reset the focus to false when the transition is finished
+	useEffect(() => {
+		setReturnFocusToTrigger(false);
+	}, [finishedTransition]);
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
@@ -69,8 +99,11 @@ export function AppLayoutSidebarDialog({
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						<Overlay onClick={closeMobileMenu} style={{ opacity }} />
-						<FocusLock returnFocus>
+						<Overlay
+							onClick={closeMobileMenuAndFocusMenuButton}
+							style={{ opacity }}
+						/>
+						<FocusLock returnFocus={returnFocusToTrigger}>
 							<AnimatedBox
 								display={{ [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
 								role="dialog"
@@ -88,7 +121,7 @@ export function AppLayoutSidebarDialog({
 								}}
 								style={{ translateX }}
 							>
-								<CloseMenuButton onClick={closeMobileMenu} />
+								<CloseMenuButton onClick={closeMobileMenuAndFocusMenuButton} />
 								{children}
 							</AnimatedBox>
 						</FocusLock>
