@@ -33,10 +33,11 @@ export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 export function AppLayoutSidebarDialog({
 	children,
 }: AppLayoutSidebarDialogProps) {
-	// When true, the focus will be returned to the menu button. Otherwise, focus will be returned to the body when the user presses a new route.
-	const [returnFocusToTrigger, setReturnFocusToTrigger] = useState(false);
-
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
+
+	// When true, the focus will be returned to the menu button.
+	// Otherwise, focus will be returned to the body, which should happen when the user presses a nav link.
+	const [returnFocusToTrigger, setReturnFocusToTrigger] = useState(false);
 
 	const closeMobileMenuAndFocusMenuButton = useCallback(() => {
 		setReturnFocusToTrigger(true);
