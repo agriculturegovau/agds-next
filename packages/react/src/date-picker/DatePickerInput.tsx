@@ -6,7 +6,7 @@ import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
-import { acceptedDateFormats, AcceptedDateFormat } from './utils';
+import { acceptedDateFormats, AcceptedDateFormats } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
@@ -15,7 +15,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalids state. */
 		input: boolean;
 	};
-	dateFormat: AcceptedDateFormat;
+	dateFormat: AcceptedDateFormats;
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;

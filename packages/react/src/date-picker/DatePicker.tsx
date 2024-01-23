@@ -22,7 +22,7 @@ import {
 	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
-	AcceptedDateFormat,
+	AcceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -76,8 +76,8 @@ type DatePickerBaseProps = {
 	onInputChange?: (inputValue: string) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
-	/** The date format for dates. */
-	dateFormat?: AcceptedDateFormat;
+	/** Used to adjust the date format displayed in the text input and secondary label. */
+	dateFormat?: AcceptedDateFormats;
 };
 
 export type DatePickerProps = DatePickerInputProps &

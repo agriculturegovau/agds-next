@@ -27,7 +27,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
-	AcceptedDateFormat,
+	AcceptedDateFormats,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
@@ -93,8 +93,8 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	toInputRef?: Ref<HTMLInputElement>;
 	/** The range of options to display in calendar year select. */
 	yearRange?: { from: number; to: number };
-	/** The date format for dates. */
-	dateFormat?: AcceptedDateFormat;
+	/** Used to adjust the date format displayed in the text input and secondary label. */
+	dateFormat?: AcceptedDateFormats;
 };
 
 export const DateRangePicker = ({

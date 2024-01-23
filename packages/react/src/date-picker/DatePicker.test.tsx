@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
 import { Stack } from '../stack';
 import { Button } from '../button';
-import { DatePicker, DatePickerProps } from './DatePicker';
+import { DatePicker, type DatePickerProps } from './DatePicker';
 import { formatHumanReadableDate, parseDate } from './utils';
 import { yupDateField, errorMessage } from './test-utils';
 
@@ -35,8 +35,37 @@ afterAll(() => {
 	jest.useRealTimers();
 });
 
-function renderDatePicker(props: DatePickerProps) {
-	return render(<DatePicker {...props} />);
+type ControlledDatePickerProps = Omit<DatePickerProps, 'value' | 'onChange'> & {
+	initialValue?: DatePickerProps['value']; // value is not allowed as it is controlled, but a `initialValue` can be passed in
+	onChange?: DatePickerProps['onChange']; // onChange is optional
+};
+
+function renderDatePicker(props: ControlledDatePickerProps) {
+	return render(<ControlledDatePicker {...props} />);
+}
+
+function ControlledDatePicker({
+	onChange: onChangeProp,
+	initialValue: initialValueProp,
+	...props
+}: ControlledDatePickerProps) {
+	const [value, setValue] = useState<Date | string | undefined>(
+		initialValueProp
+	);
+
+	function onChange(value: Date | undefined) {
+		setValue(value);
+		onChangeProp?.(value);
+	}
+
+	return (
+		<DatePicker
+			value={value}
+			onChange={onChange}
+			onInputChange={setValue}
+			{...props}
+		/>
+	);
 }
 
 function ClearableDatePicker({ initialValue }: { initialValue?: Date }) {
@@ -129,8 +158,7 @@ describe('DatePicker', () => {
 	it('renders correctly', () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
-			value: new Date(2000, 0, 1),
-			onChange: console.log,
+			initialValue: new Date(2000, 0, 1),
 		});
 		expect(container).toMatchSnapshot();
 	});
@@ -138,8 +166,7 @@ describe('DatePicker', () => {
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDatePicker({
 			label: 'Example',
-			value: new Date(2000, 1, 1),
-			onChange: console.log,
+			initialValue: new Date(2000, 1, 1),
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -187,8 +214,7 @@ describe('DatePicker', () => {
 	it('can render an invalid state', async () => {
 		renderDatePicker({
 			label: 'Example',
-			value: new Date(2000, 1, 1),
-			onChange: console.log,
+			initialValue: new Date(2000, 1, 1),
 			invalid: true,
 			message: errorMessage,
 		});
@@ -201,7 +227,6 @@ describe('DatePicker', () => {
 
 		const { container } = renderDatePicker({
 			label: 'Example',
-			value: undefined,
 			onChange: onChange,
 		});
 
@@ -225,6 +250,29 @@ describe('DatePicker', () => {
 			'aria-label',
 			`Change date, ${formattedDate}`
 		);
+	});
+
+	it('formats valid dates to the default date format (`dd/mm/yyyy`)', async () => {
+		renderDatePicker({ label: 'Example' });
+
+		// Type a valid date in the input field that isn't in the display format
+		await userEvent.type(await getInput(), 'June 5th 2023');
+
+		// The input should be formatted to dd/mm/yyyy
+		expect(await getInput()).toHaveValue('05/06/2023');
+	});
+
+	it('formats valid dates to the `dateFormat` prop', async () => {
+		renderDatePicker({
+			label: 'Example',
+			dateFormat: 'd MMM yyyy',
+		});
+
+		// Type a valid date in the input field that isn't in the display format
+		await userEvent.type(await getInput(), '05 06 2023');
+
+		// The input should be formatted to the dateFormat prop
+		expect(await getInput()).toHaveValue('5 Jun 2023');
 	});
 
 	it('formSchema: yupDateField works when optional', () => {
