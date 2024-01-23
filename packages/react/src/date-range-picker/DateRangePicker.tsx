@@ -27,6 +27,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
+	AcceptedDateFormat,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
@@ -92,6 +93,8 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	toInputRef?: Ref<HTMLInputElement>;
 	/** The range of options to display in calendar year select. */
 	yearRange?: { from: number; to: number };
+	/** The date format for dates. */
+	dateFormat?: AcceptedDateFormat;
 };
 
 export const DateRangePicker = ({
@@ -115,6 +118,7 @@ export const DateRangePicker = ({
 	fromInputRef,
 	toInputRef,
 	yearRange,
+	dateFormat = 'dd/MM/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
@@ -155,8 +159,8 @@ export const DateRangePicker = ({
 			);
 
 			onChange(range);
-			setFromInputValue(range.from ? formatDate(range.from) : '');
-			setToInputValue(range.to ? formatDate(range.to) : '');
+			setFromInputValue(range.from ? formatDate(range.from, dateFormat) : '');
+			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
 				closeCalendar();
@@ -174,12 +178,12 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined]
+		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
 	);
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from)
+		transformValuePropToInputValue(value.from, dateFormat)
 	);
 
 	const debouncedAttemptDateParseFromDate = useDebouncedCallback(
@@ -220,7 +224,7 @@ export const DateRangePicker = ({
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to)
+		transformValuePropToInputValue(value.to, dateFormat)
 	);
 
 	const debouncedAttemptDateParseToDate = useDebouncedCallback(
@@ -261,9 +265,9 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(transformValuePropToInputValue(value.from));
-		setToInputValue(transformValuePropToInputValue(value.to));
-	}, [value]);
+		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
+		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
+	}, [value, dateFormat]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -357,10 +361,11 @@ export const DateRangePicker = ({
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
 							buttonOnClick={onFromTriggerClick}
+							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
-							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
+							dateFormat={dateFormat}
 						/>
 						<DateInput
 							aria-describedby={
@@ -377,6 +382,7 @@ export const DateRangePicker = ({
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
+							dateFormat={dateFormat}
 						/>
 					</Flex>
 				</Stack>
