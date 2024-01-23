@@ -9,11 +9,8 @@ import {
 	isMatch,
 } from 'date-fns';
 
-// Date format is not configurable
-const displayDateFormat = 'dd/MM/yyyy';
-
-const acceptedDateFormats = [
-	displayDateFormat, // 18/02/2023
+export const acceptedDateFormats = [
+	'dd/MM/yyyy', // 18/02/2023
 	'dd-MM-yyyy', // 18-02-2023
 	'dd MM yyyy', // 18 02 2023
 	'MM/dd/yyyy', // 02/18/2023
@@ -31,9 +28,12 @@ const acceptedDateFormats = [
 	'dd MMM yyyy', // 08 Feb 2023
 	'MMMM dd yyyy', // February 08 2023
 	'MMM dd yyyy', // Feb 08 2023
-];
+] as const;
 
-export const formatDate = (date: Date) => format(date, displayDateFormat);
+export type AcceptedDateFormat = (typeof acceptedDateFormats)[number];
+
+export const formatDate = (date: Date, dateformat: AcceptedDateFormat) =>
+	format(date, dateformat);
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
@@ -84,11 +84,12 @@ export function constrainDate(
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
-	valueProp: Date | string | undefined
+	valueProp: Date | string | undefined,
+	dateFormat: AcceptedDateFormat
 ): string {
 	if (typeof valueProp === 'string') return valueProp;
 	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp);
+	if (isValidDate(valueProp)) return formatDate(valueProp, dateFormat);
 	return '';
 }
 

@@ -22,6 +22,7 @@ import {
 	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
+	AcceptedDateFormat,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -75,6 +76,8 @@ type DatePickerBaseProps = {
 	onInputChange?: (inputValue: string) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
+	/** The date format for dates. */
+	dateFormat?: AcceptedDateFormat;
 };
 
 export type DatePickerProps = DatePickerInputProps &
@@ -92,6 +95,7 @@ export const DatePicker = ({
 	inputRef,
 	invalid = false,
 	maxWidth = 'md',
+	dateFormat = 'dd/MM/yyyy',
 	...props
 }: DatePickerProps) => {
 	const triggerRef = useRef<HTMLButtonElement>(null);
@@ -106,17 +110,17 @@ export const DatePicker = ({
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(selectedDay));
+			setInputValue(formatDate(selectedDay, dateFormat));
 			// Trigger the callback
 			onChange(selectedDay);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},
-		[onChange, closeCalendar]
+		[onChange, closeCalendar, dateFormat]
 	);
 
 	const [inputValue, setInputValue] = useState(
-		transformValuePropToInputValue(value)
+		transformValuePropToInputValue(value, dateFormat)
 	);
 
 	const debouncedAttemptDateParse = useDebouncedCallback(
@@ -149,8 +153,8 @@ export const DatePicker = ({
 
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(transformValuePropToInputValue(value));
-	}, [value]);
+		setInputValue(transformValuePropToInputValue(value, dateFormat));
+	}, [value, dateFormat]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -193,6 +197,7 @@ export const DatePicker = ({
 		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
+				dateFormat={dateFormat}
 				maxWidth={maxWidth}
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
