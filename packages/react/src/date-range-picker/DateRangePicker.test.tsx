@@ -333,11 +333,8 @@ describe('DateRangePicker', () => {
 		);
 	});
 
-	it('formats valid dates to the default date format (dd/mm/yyyy)', async () => {
+	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
 		renderDateRangePicker({});
-
-		const inputFromId = await (await getFromInput())?.id;
-		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
 
 		// Type valid dates in the input fields that are not in the display format
 		await userEvent.type(await getFromInput(), '5 June 2023');

@@ -252,13 +252,13 @@ describe('DatePicker', () => {
 		);
 	});
 
-	it('formats valid dates to the default date format (`dd/mm/yyyy`)', async () => {
+	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
 		renderDatePicker({ label: 'Example' });
 
 		// Type a valid date in the input field that isn't in the display format
 		await userEvent.type(await getInput(), 'June 5th 2023');
 
-		// The input should be formatted to dd/mm/yyyy
+		// The input should be formatted to dd/MM/yyyy
 		expect(await getInput()).toHaveValue('05/06/2023');
 	});
 
