@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import { mapResponsiveProp, mq, useTernaryState } from '../core';
 import { AppLayoutContext } from './AppLayoutContext';
 import {
@@ -14,6 +14,7 @@ export type AppLayoutProps = PropsWithChildren<{
 export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
 		useTernaryState(false);
+	const mobileMenuOpenMenuButtonRef = useRef<HTMLButtonElement>(null);
 	return (
 		<AppLayoutContext.Provider
 			value={{
@@ -21,6 +22,7 @@ export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 				isMobileMenuOpen,
 				openMobileMenu,
 				closeMobileMenu,
+				mobileMenuOpenMenuButtonRef,
 			}}
 		>
 			<AppLayoutGrid focusMode={focusMode}>{children}</AppLayoutGrid>

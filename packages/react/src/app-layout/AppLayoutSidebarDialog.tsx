@@ -4,7 +4,7 @@ import {
 	PropsWithChildren,
 	useCallback,
 	useEffect,
-	useState,
+	useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { useTransition, animated, SpringValue } from '@react-spring/web';
@@ -33,14 +33,16 @@ export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
 export function AppLayoutSidebarDialog({
 	children,
 }: AppLayoutSidebarDialogProps) {
-	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
+	const { isMobileMenuOpen, closeMobileMenu, mobileMenuOpenMenuButtonRef } =
+		useAppLayoutContext();
 
-	// When true, the focus will be returned to the menu button.
-	// Otherwise, focus will be returned to the body, which should happen when the user presses a nav link.
-	const [returnFocusToTrigger, setReturnFocusToTrigger] = useState(false);
+	// When true, the focus will be returned to the menu button when the dialog is closed.
+	// Otherwise, focus will be should be returned the body.
+	// This is false by default, so focus will be returned to the body when a user presses a link in the dialog.
+	const shouldReturnFocusToTriggerRef = useRef(false);
 
-	const closeMobileMenuAndFocusMenuButton = useCallback(() => {
-		setReturnFocusToTrigger(true);
+	const closeMobileMenuAndFocusOpenMenuButton = useCallback(() => {
+		shouldReturnFocusToTriggerRef.current = true;
 		closeMobileMenu();
 	}, [closeMobileMenu]);
 
@@ -53,42 +55,39 @@ export function AppLayoutSidebarDialog({
 			if (e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				closeMobileMenuAndFocusMenuButton();
+				closeMobileMenuAndFocusOpenMenuButton();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [closeMobileMenuAndFocusMenuButton]);
-
-	// Animation styles
-	const [finishedTransition, setFinishedTransition] = useState(false);
+	}, [closeMobileMenuAndFocusOpenMenuButton]);
 
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const dialogTransitions = useTransition([isMobileMenuOpen], {
 		from: { translateX: '-100%', opacity: 0 },
-		enter: {
-			translateX: '0%',
-			opacity: 1,
-			onRest: () => {
-				if (isMobileMenuOpen) setFinishedTransition(false);
-			},
-		},
-		leave: {
-			translateX: '-100%',
-			opacity: 0,
-			onRest: () => {
-				if (isMobileMenuOpen) return;
-				setFinishedTransition(true);
-			},
-		},
+		enter: { translateX: '0%', opacity: 1 },
+		leave: { translateX: '-100%', opacity: 0 },
 		config: { duration: 150 },
 		immediate: prefersReducedMotion,
 	});
 
-	// Reset the focus to false when the transition is finished
-	useEffect(() => {
-		setReturnFocusToTrigger(false);
-	}, [finishedTransition]);
+	const onFocusLockDeactivation = useCallback(() => {
+		// This should only run when the mobile menu is opened
+		if (isMobileMenuOpen) return;
+
+		if (shouldReturnFocusToTriggerRef.current) {
+			// Focus the "menu button trigger"
+			mobileMenuOpenMenuButtonRef.current?.focus();
+		} else {
+			// User has changed route, so focus the body
+			document.querySelector('main')?.setAttribute('tabIndex', '-1');
+			document.querySelector('main')?.focus();
+			document.querySelector('main')?.removeAttribute('tabIndex');
+		}
+
+		// Reset the `shouldReturnFocusToTriggerRef` value
+		shouldReturnFocusToTriggerRef.current = false;
+	}, [isMobileMenuOpen, mobileMenuOpenMenuButtonRef]);
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
@@ -101,10 +100,15 @@ export function AppLayoutSidebarDialog({
 				item ? (
 					<div ref={modalContainerRef}>
 						<Overlay
-							onClick={closeMobileMenuAndFocusMenuButton}
+							onClick={closeMobileMenuAndFocusOpenMenuButton}
 							style={{ opacity }}
 						/>
-						<FocusLock returnFocus={returnFocusToTrigger}>
+						<FocusLock
+							onDeactivation={() => {
+								// https://github.com/theKashey/react-focus-lock?tab=readme-ov-file#unmounting-and-focus-management
+								window.setTimeout(onFocusLockDeactivation, 250);
+							}}
+						>
 							<AnimatedBox
 								display={{ [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
 								role="dialog"
@@ -122,7 +126,9 @@ export function AppLayoutSidebarDialog({
 								}}
 								style={{ translateX }}
 							>
-								<CloseMenuButton onClick={closeMobileMenuAndFocusMenuButton} />
+								<CloseMenuButton
+									onClick={closeMobileMenuAndFocusOpenMenuButton}
+								/>
 								{children}
 							</AnimatedBox>
 						</FocusLock>

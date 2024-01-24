@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useRef } from 'react';
 import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
@@ -44,8 +44,12 @@ function AppLayoutHeaderNavMenuButton({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+	const { mobileMenuOpenMenuButtonRef } = useAppLayoutContext();
 	return (
 		<Flex
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			ref={mobileMenuOpenMenuButtonRef}
 			as={BaseButton}
 			onClick={onClick}
 			flexDirection="column"
