@@ -1,7 +1,8 @@
-import { createContext, useContext } from 'react';
+import { createContext, RefObject, useContext } from 'react';
 
 export type AppLayoutContextType = {
 	focusMode: boolean;
+	mobileMenuOpenMenuButtonRef: RefObject<HTMLButtonElement>;
 	isMobileMenuOpen: boolean;
 	openMobileMenu: () => void;
 	closeMobileMenu: () => void;

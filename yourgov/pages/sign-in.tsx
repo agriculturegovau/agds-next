@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, ReactElement, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
@@ -37,37 +37,38 @@ export default function Page() {
 	return (
 		<Fragment>
 			<DocumentTitle title="Sign in" />
-			<SiteLayout>
-				<PageContent>
-					<Columns>
-						<Column columnSpan={{ xs: 12, md: 8 }}>
-							<Stack gap={3}>
-								<Stack gap={0.5}>
-									<H1>Sign in to yourGov</H1>
-									<Text as="p" fontSize="md" color="muted">
-										Access government services, quickly and securely.
-									</Text>
-								</Stack>
-								<SignInForm onSubmit={onSubmit} />
-								<Divider />
-								<Stack gap={1.5}>
-									<Text as="p">
-										Don’t have an account?{' '}
-										<TextLink href="/not-found">Create account</TextLink>
-									</Text>
-									<Text as="p">
-										Read our{' '}
-										<TextLink href="/not-found">privacy policy</TextLink>
-									</Text>
-								</Stack>
+			<PageContent>
+				<Columns>
+					<Column columnSpan={{ xs: 12, md: 8 }}>
+						<Stack gap={3}>
+							<Stack gap={0.5}>
+								<H1>Sign in to yourGov</H1>
+								<Text as="p" fontSize="md" color="muted">
+									Access government services, quickly and securely.
+								</Text>
 							</Stack>
-						</Column>
-					</Columns>
-				</PageContent>
-			</SiteLayout>
+							<SignInForm onSubmit={onSubmit} />
+							<Divider />
+							<Stack gap={1.5}>
+								<Text as="p">
+									Don’t have an account?{' '}
+									<TextLink href="/not-found">Create account</TextLink>
+								</Text>
+								<Text as="p">
+									Read our <TextLink href="/not-found">privacy policy</TextLink>
+								</Text>
+							</Stack>
+						</Stack>
+					</Column>
+				</Columns>
+			</PageContent>
 		</Fragment>
 	);
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+	return <SiteLayout>{page}</SiteLayout>;
+};
 
 const formSchema = yup
 	.object({
