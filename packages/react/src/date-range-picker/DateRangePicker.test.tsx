@@ -361,8 +361,7 @@ describe('DateRangePicker', () => {
 		const defaultLegend = 'Date range';
 
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: false,
 		});
 		expect(await await (await getLegend(defaultLegend)).textContent).toEqual(
@@ -374,8 +373,7 @@ describe('DateRangePicker', () => {
 		const defaultLegend = 'Date range';
 
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: true,
 		});
 		expect(await (await getLegend(defaultLegend)).textContent).toEqual(
@@ -388,8 +386,7 @@ describe('DateRangePicker', () => {
 
 		renderDateRangePicker({
 			legend,
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
 		expect(await (await getLegend(legend)).textContent).toEqual(
 			`${legend} (optional)`
@@ -471,7 +468,6 @@ describe('DateRangePicker', () => {
 	it('invalid: can render an invalid state when only to is invalid', async () => {
 		renderDateRangePicker({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
 			fromInvalid: false,
 			toInvalid: true,
 			message: errorMessage,
