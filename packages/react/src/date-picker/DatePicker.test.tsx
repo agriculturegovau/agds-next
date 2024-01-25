@@ -45,8 +45,8 @@ function renderDatePicker(props: ControlledDatePickerProps) {
 }
 
 function ControlledDatePicker({
-	onChange: onChangeProp,
 	initialValue: initialValueProp,
+	onChange: onChangeProp,
 	...props
 }: ControlledDatePickerProps) {
 	const [value, setValue] = useState<Date | string | undefined>(
