@@ -64,6 +64,7 @@ function AppLayoutHeaderAccountDropdownButton({
 				overflow: 'hidden',
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,
+					color: boxPalette.foregroundText,
 					// Underline the name + secondary text
 					'& > span:last-of-type > span:last-of-type': packs.underline,
 				},
@@ -86,7 +87,7 @@ function AppLayoutHeaderAccountDropdownButton({
 					css={{ overflow: 'hidden' }}
 				>
 					<Text
-						color="action"
+						color="inherit"
 						fontWeight="bold"
 						fontSize="xs"
 						css={packs.truncate}
