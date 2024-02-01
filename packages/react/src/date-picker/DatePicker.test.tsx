@@ -241,8 +241,8 @@ describe('DatePicker', () => {
 		// Type in the input field
 		await userEvent.type(await getInput(), dateString);
 		expect(await getInput()).toHaveValue(dateString);
+		await userEvent.keyboard('{Tab}');
 
-		expect(onChange).toHaveBeenCalledTimes(dateString.length);
 		expect(onChange).toHaveBeenLastCalledWith(date);
 
 		// The calendar button trigger should have an aria-label with the formatted display value
@@ -257,6 +257,7 @@ describe('DatePicker', () => {
 
 		// Type a valid date in the input field that isn't in the display format
 		await userEvent.type(await getInput(), 'June 5th 2023');
+		await userEvent.keyboard('{Tab}');
 
 		// The input should be formatted to dd/MM/yyyy
 		expect(await getInput()).toHaveValue('05/06/2023');
@@ -270,6 +271,7 @@ describe('DatePicker', () => {
 
 		// Type a valid date in the input field that isn't in the display format
 		await userEvent.type(await getInput(), '05 06 2023');
+		await userEvent.keyboard('{Tab}');
 
 		// The input should be formatted to the dateFormat prop
 		expect(await getInput()).toHaveValue('5 Jun 2023');
