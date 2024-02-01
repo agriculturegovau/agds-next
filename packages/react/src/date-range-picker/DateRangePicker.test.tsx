@@ -312,13 +312,13 @@ describe('DateRangePicker', () => {
 
 		// Type in the input fields
 		await userEvent.type(await getFromInput(), fromDateString);
+		await userEvent.keyboard('{Tab}');
 		expect(await getFromInput()).toHaveValue(fromDateString);
 		await userEvent.type(await getToInput(), toDateString);
+		await userEvent.keyboard('{Tab}');
 		expect(await getToInput()).toHaveValue(toDateString);
 
-		expect(onChange).toHaveBeenCalledTimes(
-			fromDateString.length + toDateString.length
-		);
+		expect(onChange).toHaveBeenCalledTimes(2);
 
 		const calendarTriggers = container.querySelectorAll('button');
 
@@ -338,7 +338,9 @@ describe('DateRangePicker', () => {
 
 		// Type valid dates in the input fields that are not in the display format
 		await userEvent.type(await getFromInput(), '5 June 2023');
+		await userEvent.keyboard('{Tab}');
 		await userEvent.type(await getToInput(), '10 June 2023');
+		await userEvent.keyboard('{Tab}');
 
 		// The inputs should be formatted to dd/mm/yyyy
 		expect(await getFromInput()).toHaveValue('05/06/2023');
@@ -350,7 +352,9 @@ describe('DateRangePicker', () => {
 
 		// Type valid dates in the input fields that are not in the display format
 		await userEvent.type(await getFromInput(), '05/06/2023 ');
+		await userEvent.keyboard('{Tab}');
 		await userEvent.type(await getToInput(), '10/06/2023 ');
+		await userEvent.keyboard('{Tab}');
 
 		// The inputs should be formatted to the dateFormat prop
 		expect(await getFromInput()).toHaveValue('5 Jun 2023');
