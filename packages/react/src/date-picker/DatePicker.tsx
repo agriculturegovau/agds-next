@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	FocusEvent,
 	InputHTMLAttributes,
 	Ref,
 	useCallback,
@@ -9,7 +10,6 @@ import {
 	useState,
 } from 'react';
 import { SelectSingleEventHandler } from 'react-day-picker';
-import { useDebouncedCallback } from 'use-debounce';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
 import { CalendarSingle } from './Calendar';
@@ -123,32 +123,24 @@ export const DatePicker = ({
 		transformValuePropToInputValue(value, dateFormat)
 	);
 
-	const debouncedAttemptDateParse = useDebouncedCallback(
-		(inputValue: string) => {
-			// Attempt to parse the date using the text input value
-			const parsedDate = parseDate(inputValue);
-			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const onInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
 
-			// When there is no value OR there is a valid date, only trigger the `onChange` callback
-			// `onInputChange` will not be called
-			if (!inputValue || constrainedDate) {
-				onChange(constrainedDate);
-				return;
-			}
+		// Attempt to parse the date using the text input value
+		const parsedDate = parseDate(inputValue);
+		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			// Trigger the callbacks
+		if (!inputValue || constrainedDate) {
 			onChange(constrainedDate);
+		} else {
 			onInputChangeProp?.(inputValue);
-		},
-		200
-	);
+		}
+	};
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
 		// Immediately update the input field
 		setInputValue(inputValue);
-		// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
-		debouncedAttemptDateParse(inputValue);
 	};
 
 	// Update the text input when the value updates
@@ -202,6 +194,7 @@ export const DatePicker = ({
 				invalid={{ field: invalid, input: invalid }}
 				ref={inputRef}
 				value={inputValue}
+				onBlur={onInputBlur}
 				onChange={onInputChange}
 				buttonRef={triggerRef}
 				buttonOnClick={toggleCalendar}

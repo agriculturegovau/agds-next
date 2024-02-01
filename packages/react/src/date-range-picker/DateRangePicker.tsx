@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	FocusEvent,
 	useCallback,
 	Ref,
 	useRef,
@@ -7,7 +8,6 @@ import {
 	useEffect,
 	useMemo,
 } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -186,82 +186,60 @@ export const DateRangePicker = ({
 		transformValuePropToInputValue(value.from, dateFormat)
 	);
 
-	const debouncedAttemptDateParseFromDate = useDebouncedCallback(
-		(inputValue: string) => {
-			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
-			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
 
-			const nextValue = ensureValidDateRange({
-				from: constrainedDate,
-				to: valueAsDateOrUndefined.to,
-			});
+		// Ensure the text entered is a valid date
+		const parsedDate = parseDate(inputValue);
+		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			// When there is no value OR there is a valid date, only trigger the `onChange` callback
-			// `onInputChange` will not be called
-			if (!inputValue || constrainedDate) {
-				onChange(nextValue);
-				return;
-			}
+		const nextValue = ensureValidDateRange({
+			from: constrainedDate,
+			to: valueAsDateOrUndefined.to,
+		});
 
-			// Trigger the callbacks
+		if (!inputValue || constrainedDate) {
 			onChange(nextValue);
+		} else {
 			onFromInputChangeProp?.(inputValue);
-		},
-		200
-	);
+		}
+	};
 
-	const onFromInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
-			// Immediately update the input field
-			setFromInputValue(inputValue);
-			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
-			debouncedAttemptDateParseFromDate(inputValue);
-		},
-		[debouncedAttemptDateParseFromDate]
-	);
+	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+		// Immediately update the input field
+		setFromInputValue(inputValue);
+	};
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
 		transformValuePropToInputValue(value.to, dateFormat)
 	);
 
-	const debouncedAttemptDateParseToDate = useDebouncedCallback(
-		(inputValue: string) => {
-			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
-			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
 
-			const nextValue = ensureValidDateRange({
-				from: valueAsDateOrUndefined.from,
-				to: constrainedDate,
-			});
+		// Ensure the text entered is a valid date
+		const parsedDate = parseDate(inputValue);
+		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			// When there is no value OR there is a valid date, only trigger the `onChange` callback
-			// `onInputChange` will not be called
-			if (!inputValue || constrainedDate) {
-				onChange(nextValue);
-				return;
-			}
+		const nextValue = ensureValidDateRange({
+			from: valueAsDateOrUndefined.from,
+			to: constrainedDate,
+		});
 
-			// Trigger the callbacks
+		if (!inputValue || constrainedDate) {
 			onChange(nextValue);
+		} else {
 			onToInputChangeProp?.(inputValue);
-		},
-		200
-	);
+		}
+	};
 
-	const onToInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
-			// Immediately update the input field
-			setToInputValue(inputValue);
-			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
-			debouncedAttemptDateParseToDate(inputValue);
-		},
-		[debouncedAttemptDateParseToDate]
-	);
+	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+		// Immediately update the input field
+		setToInputValue(inputValue);
+	};
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
@@ -358,6 +336,7 @@ export const DateRangePicker = ({
 							label={fromLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={fromInputValue}
+							onBlur={onFromInputBlur}
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
 							buttonOnClick={onFromTriggerClick}
@@ -375,6 +354,7 @@ export const DateRangePicker = ({
 							label={toLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={toInputValue}
+							onBlur={onToInputBlur}
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
 							buttonOnClick={onToTriggerClick}
