@@ -103,7 +103,8 @@ export const textInputStyles = ({
 		...packs.input.md,
 
 		...(maxWidth && {
-			maxWidth: tokens.maxWidth.field[maxWidth],
+			maxWidth: '100vw',
+			width: tokens.maxWidth.field[maxWidth],
 		}),
 
 		...(block && {
