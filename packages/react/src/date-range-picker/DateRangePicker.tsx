@@ -10,17 +10,13 @@ import {
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '../flex';
-import { Stack } from '../stack';
 import {
-	mapSpacing,
 	tokens,
 	useClickOutside,
 	useTernaryState,
 	useWindowSize,
-	useId,
 } from '../core';
-import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
-import { visuallyHiddenStyles } from '../a11y';
+import { GroupedFields, useGroupedFieldsIds } from '../grouped-fields';
 import { Popover, usePopover } from '../_popover';
 import {
 	parseDate,
@@ -286,7 +282,7 @@ export const DateRangePicker = ({
 
 	const invalid = fromInvalid || toInvalid;
 
-	const { fieldsetId, hintId, messageId } = useDateRangePickerIds(id);
+	const { hintId, messageId } = useGroupedFieldsIds(id);
 	const fromDescribedByIds = [
 		fromInvalid && message ? messageId : null,
 		hint ? hintId : null,
@@ -308,90 +304,69 @@ export const DateRangePicker = ({
 	);
 
 	return (
-		<FieldContainer invalid={invalid} id={fieldsetId}>
-			<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
-				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
-				<FieldLabel
-					as="legend"
+		<GroupedFields
+			invalid={invalid}
+			legend={legend ?? 'Date range'}
+			hint={hint}
+			hintId={hintId}
+			message={message}
+			messageId={messageId}
+		>
+			<Flex flexWrap="wrap" gap={1} inline {...popover.getReferenceProps()}>
+				<DateInput
+					aria-describedby={
+						fromDescribedByIds.length > 0 ? fromDescribedByIds : null
+					}
+					buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
+					buttonOnClick={onFromTriggerClick}
+					buttonRef={fromTriggerRef}
+					dateFormat={dateFormat}
+					disabled={disabled}
+					hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
+					invalid={{ field: false, input: fromInvalid }}
+					label={fromLabel}
+					onBlur={onFromInputBlur}
+					onChange={onFromInputChange}
+					ref={fromInputRef}
 					required={required}
-					hideOptionalLabel={hideOptionalLabel}
-					css={legend ? undefined : visuallyHiddenStyles}
-				>
-					{legend ?? 'Date range'}
-				</FieldLabel>
-				<Stack
-					gap={0.5}
-					css={{ marginTop: legend ? mapSpacing(0.5) : undefined }}
-				>
-					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
-					{message && invalid ? (
-						<FieldMessage id={messageId}>{message}</FieldMessage>
-					) : null}
-					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
-						<DateInput
-							aria-describedby={
-								fromDescribedByIds.length > 0 ? fromDescribedByIds : null
+					value={fromInputValue}
+				/>
+				<DateInput
+					aria-describedby={
+						toDescribedByIds.length > 0 ? toDescribedByIds : null
+					}
+					buttonAriaLabel={getToDateInputButtonAriaLabel(toInputValue)}
+					buttonOnClick={onToTriggerClick}
+					buttonRef={toTriggerRef}
+					dateFormat={dateFormat}
+					disabled={disabled}
+					hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
+					invalid={{ field: false, input: toInvalid }}
+					label={toLabel}
+					onBlur={onToInputBlur}
+					onChange={onToInputChange}
+					ref={toInputRef}
+					required={required}
+					value={toInputValue}
+				/>
+			</Flex>
+			<CalendarProvider yearRange={yearRange}>
+				{isCalendarOpen && (
+					<Popover {...popover.getPopoverProps()}>
+						<CalendarRange
+							defaultMonth={defaultMonth}
+							disabled={disabledCalendarDays}
+							initialFocus
+							numberOfMonths={numberOfMonths}
+							onSelect={onSelect}
+							returnFocusRef={
+								inputMode === 'from' ? fromTriggerRef : toTriggerRef
 							}
-							ref={fromInputRef}
-							label={fromLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={fromInputValue}
-							onBlur={onFromInputBlur}
-							onChange={onFromInputChange}
-							buttonRef={fromTriggerRef}
-							buttonOnClick={onFromTriggerClick}
-							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: fromInvalid }}
-							dateFormat={dateFormat}
+							selected={valueAsDateOrUndefined}
 						/>
-						<DateInput
-							aria-describedby={
-								toDescribedByIds.length > 0 ? toDescribedByIds : null
-							}
-							ref={toInputRef}
-							label={toLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={toInputValue}
-							onBlur={onToInputBlur}
-							onChange={onToInputChange}
-							buttonRef={toTriggerRef}
-							buttonOnClick={onToTriggerClick}
-							buttonAriaLabel={getToDateInputButtonAriaLabel(toInputValue)}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: toInvalid }}
-							dateFormat={dateFormat}
-						/>
-					</Flex>
-				</Stack>
-				<CalendarProvider yearRange={yearRange}>
-					{isCalendarOpen && (
-						<Popover {...popover.getPopoverProps()}>
-							<CalendarRange
-								initialFocus
-								defaultMonth={defaultMonth}
-								selected={valueAsDateOrUndefined}
-								onSelect={onSelect}
-								numberOfMonths={numberOfMonths}
-								disabled={disabledCalendarDays}
-								returnFocusRef={
-									inputMode === 'from' ? fromTriggerRef : toTriggerRef
-								}
-							/>
-						</Popover>
-					)}
-				</CalendarProvider>
-			</fieldset>
-		</FieldContainer>
+					</Popover>
+				)}
+			</CalendarProvider>
+		</GroupedFields>
 	);
 };
-
-export function useDateRangePickerIds(idProp?: string) {
-	const autoId = useId(idProp);
-	const fieldsetId = idProp ? idProp : `date-range-picker-${autoId}`;
-	const hintId = `date-range-picker-${autoId}-hint`;
-	const messageId = `date-range-picker-${autoId}-message`;
-	return { fieldsetId, hintId, messageId };
-}
