@@ -66,6 +66,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
+				maxWidth={maxWidth}
 				message={message}
 				invalid={invalid}
 				id={id}

@@ -1,12 +1,13 @@
 import { PropsWithChildren } from 'react';
 import { Stack } from '../stack';
-import { boxPalette } from '../core';
+import { FieldMaxWidth, boxPalette } from '../core';
 
 export type FieldContainerProps = PropsWithChildren<{
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	maxWidth?: FieldMaxWidth;
 }>;
 
 export const FieldContainer = ({

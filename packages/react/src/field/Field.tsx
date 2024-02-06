@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useId } from '../core';
+import { useId, FieldMaxWidth, tokens } from '../core';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
@@ -14,6 +14,7 @@ export type FieldProps = {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
+	maxWidth?: FieldMaxWidth;
 	label: string;
 	/** Defines an identifier (ID) of the label element, which must be unique. */
 	labelId?: string;
@@ -34,6 +35,7 @@ export const Field = ({
 	invalid,
 	label,
 	labelId,
+	maxWidth,
 	secondaryLabel,
 	hideOptionalLabel,
 	message,
@@ -52,7 +54,7 @@ export const Field = ({
 	});
 
 	return (
-		<FieldContainer invalid={invalid}>
+		<FieldContainer invalid={invalid} maxWidth={maxWidth}>
 			<FieldLabel
 				id={labelId}
 				htmlFor={fieldId}
@@ -67,6 +69,21 @@ export const Field = ({
 				<FieldMessage id={messageId}>{message}</FieldMessage>
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
+			{maxWidth ? (
+				// This acts as spacer so that inputs always try to be as wide as their maxWidth
+				<span
+					css={{
+						display: 'block',
+						height: 0,
+						maxWidth: tokens.maxWidth.field[maxWidth],
+						overflow: 'hidden',
+						'::after': {
+							content:
+								'"---------------------------------------------------------------"',
+						},
+					}}
+				/>
+			) : null}
 		</FieldContainer>
 	);
 };

@@ -64,6 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
+				maxWidth={maxWidth}
 				message={message}
 				invalid={invalid}
 				id={id}
@@ -103,8 +104,7 @@ export const textInputStyles = ({
 		...packs.input.md,
 
 		...(maxWidth && {
-			maxWidth: '100vw',
-			width: tokens.maxWidth.field[maxWidth],
+			maxWidth: tokens.maxWidth.field[maxWidth],
 		}),
 
 		...(block && {

@@ -107,6 +107,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
+				maxWidth={maxWidthProp}
 				message={message}
 				invalid={invalid}
 				id={id}
