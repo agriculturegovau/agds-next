@@ -14,10 +14,11 @@ export type FieldProps = {
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
-	maxWidth?: FieldMaxWidth;
 	label: string;
 	/** Defines an identifier (ID) of the label element, which must be unique. */
 	labelId?: string;
+	/** The maximum width of the field. */
+	maxWidth?: FieldMaxWidth;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
 	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
@@ -54,7 +55,7 @@ export const Field = ({
 	});
 
 	return (
-		<FieldContainer invalid={invalid} maxWidth={maxWidth}>
+		<FieldContainer invalid={invalid}>
 			<FieldLabel
 				id={labelId}
 				htmlFor={fieldId}
