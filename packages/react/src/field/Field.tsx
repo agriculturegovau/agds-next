@@ -71,9 +71,9 @@ export const Field = ({
 			{typeof children === 'function' ? children(a11yProps) : children}
 			{maxWidth ? (
 				// This acts as spacer so that inputs always try to be as wide as their maxWidth
-				<span
+				<div
+					aria-hidden
 					css={{
-						display: 'block',
 						height: 0,
 						maxWidth: tokens.maxWidth.field[maxWidth],
 						overflow: 'hidden',
