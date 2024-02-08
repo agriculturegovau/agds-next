@@ -54,8 +54,8 @@ type ControlledDatePickerProps = Omit<
 };
 
 function ControlledDateRangePicker({
-	onChange: onChangeProp,
 	initialValue = { from: undefined, to: undefined },
+	onChange: onChangeProp,
 	...props
 }: ControlledDatePickerProps) {
 	const [value, setValue] = useState<DateRangeWithString>(initialValue);

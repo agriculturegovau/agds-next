@@ -27,7 +27,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
-	AcceptedDateFormats,
+	type AcceptedDateFormats,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';

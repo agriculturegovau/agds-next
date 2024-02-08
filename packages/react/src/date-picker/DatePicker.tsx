@@ -22,7 +22,7 @@ import {
 	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
-	AcceptedDateFormats,
+	type AcceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
