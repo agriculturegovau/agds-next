@@ -49,7 +49,7 @@ type ControlledDatePickerProps = Omit<
 	DateRangePickerProps,
 	'value' | 'onChange'
 > & {
-	initialValue?: DateRangePickerProps['value']; // value is not allowed as it is controlled, but a `initialValue` can be passed in
+	initialValue?: DateRangePickerProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
 	onChange?: DateRangePickerProps['onChange']; // onChange is optional
 };
 

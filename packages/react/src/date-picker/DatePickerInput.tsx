@@ -55,9 +55,9 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			borderBottomRightRadius: 0,
 		};
 
-		// The secondary label should show todays date in the supplied date format (via the `dateFormat` prop)
+		// The secondary label should show today's date in the supplied date format (via the `dateFormat` prop)
 		// If the supplied date format is not an accepted format, fallback to the default date format of `dd/MM/yyyy`
-		// Note: Typescript will complain about incorrect values passed into the `dateFormat` prop, but not everyone relies on Typescript
+		// Note: TypeScript will complain about incorrect values passed into the `dateFormat` prop, but not everyone relies on TypeScript
 		const secondaryLabel = useMemo(() => {
 			const dateFormat = acceptedDateFormats.includes(dateFormatProp)
 				? dateFormatProp
