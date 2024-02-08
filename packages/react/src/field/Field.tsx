@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useId, FieldMaxWidth, tokens } from '../core';
+import { FieldMaxWidth, tokens, useId } from '../core';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
@@ -71,7 +71,8 @@ export const Field = ({
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
 			{maxWidth ? (
-				// This acts as spacer so that inputs always try to be as wide as their maxWidth
+				// This acts as spacer so that inputs always try to be as wide as their maxWidth.
+				// Otherwise, when inside a Flex they will shrink to an undesired size.
 				<div
 					aria-hidden
 					css={{

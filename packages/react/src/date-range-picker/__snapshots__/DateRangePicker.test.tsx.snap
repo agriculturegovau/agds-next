@@ -105,6 +105,10 @@ exports[`DateRangePicker renders correctly 1`] = `
                 </span>
               </button>
             </div>
+            <div
+              aria-hidden="true"
+              class="css-1e19z34-Field"
+            />
           </div>
           <div
             class="css-1904cz9-boxStyles-FieldContainer"
@@ -181,6 +185,10 @@ exports[`DateRangePicker renders correctly 1`] = `
                 </span>
               </button>
             </div>
+            <div
+              aria-hidden="true"
+              class="css-1e19z34-Field"
+            />
           </div>
         </div>
       </div>

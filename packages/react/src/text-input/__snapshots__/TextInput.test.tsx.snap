@@ -28,6 +28,10 @@ exports[`TextInput Basic renders correctly 1`] = `
       id="field-:r0:"
       type="text"
     />
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
+    />
   </div>
 </div>
 `;
@@ -94,6 +98,10 @@ exports[`TextInput Invalid renders correctly 1`] = `
       id="field-:r4:"
       type="text"
     />
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
+    />
   </div>
 </div>
 `;
@@ -132,6 +140,10 @@ exports[`TextInput With hint renders correctly 1`] = `
       class="css-sgg6k9"
       id="field-:r2:"
       type="text"
+    />
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
     />
   </div>
 </div>

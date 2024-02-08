@@ -58,6 +58,10 @@ exports[`SearchInput Basic renders correctly 1`] = `
         value=""
       />
     </div>
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
+    />
   </div>
 </div>
 `;
@@ -154,6 +158,10 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         value=""
       />
     </div>
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
+    />
   </div>
 </div>
 `;
@@ -223,6 +231,10 @@ exports[`SearchInput With hint renders correctly 1`] = `
         value=""
       />
     </div>
+    <div
+      aria-hidden="true"
+      class="css-1e19z34-Field"
+    />
   </div>
 </div>
 `;
