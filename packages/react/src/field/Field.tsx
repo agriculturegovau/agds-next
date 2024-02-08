@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { FieldMaxWidth, tokens, useId } from '../core';
+import { FieldMaxWidth, mapSpacing, tokens, useId } from '../core';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
@@ -77,6 +77,7 @@ export const Field = ({
 					aria-hidden
 					css={{
 						height: 0,
+						marginTop: `-${mapSpacing(0.5)}`,
 						maxWidth: tokens.maxWidth.field[maxWidth],
 						overflow: 'hidden',
 						'::after': {

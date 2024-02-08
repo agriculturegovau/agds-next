@@ -80,7 +80,7 @@ exports[`DatePicker renders correctly 1`] = `
       </div>
       <div
         aria-hidden="true"
-        class="css-1e19z34-Field"
+        class="css-9l8g4f-Field"
       />
     </div>
   </div>

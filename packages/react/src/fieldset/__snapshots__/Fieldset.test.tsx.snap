@@ -46,7 +46,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1e19z34-Field"
+            class="css-9l8g4f-Field"
           />
         </div>
         <div
@@ -71,7 +71,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1e19z34-Field"
+            class="css-9l8g4f-Field"
           />
         </div>
       </div>
@@ -132,7 +132,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1e19z34-Field"
+            class="css-9l8g4f-Field"
           />
         </div>
         <div
@@ -157,7 +157,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1e19z34-Field"
+            class="css-9l8g4f-Field"
           />
         </div>
       </div>
