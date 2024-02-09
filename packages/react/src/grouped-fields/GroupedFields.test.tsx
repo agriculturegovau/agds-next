@@ -10,6 +10,8 @@ expect.extend(toHaveNoViolations);
 afterEach(cleanup);
 
 function renderGroupedFields(props?: Partial<GroupedFieldsProps>) {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	return render(<GroupedFields {...props} />);
 }
 

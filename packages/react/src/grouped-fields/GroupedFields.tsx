@@ -6,11 +6,16 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 
+interface FieldProps {
+	'aria-describedby': string | null;
+	'aria-invalid': boolean;
+}
+
 export type GroupedFieldsProps = {
 	/** The two form inputs. */
 	children: (props: {
-		firstFieldProps: any;
-		secondFieldProps: any;
+		firstFieldProps: FieldProps;
+		secondFieldProps: FieldProps;
 	}) => ReactNode;
 	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
@@ -92,7 +97,9 @@ export function GroupedFields({
 					) : null}
 					<Flex flexWrap="wrap" gap={1} inline>
 						{typeof children === 'function'
-							? children({ firstFieldProps, secondFieldProps })
+							? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							  // @ts-ignore
+							  children({ firstFieldProps, secondFieldProps })
 							: children}
 					</Flex>
 				</Stack>
