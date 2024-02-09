@@ -260,3 +260,5 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
+
+export { GroupedFields } from '@ag.ds-next/react/grouped-fields';
