@@ -56,7 +56,7 @@ export function GroupedFields({
 		]
 			.filter(Boolean)
 			.join(' '),
-		invalid: { field: false, input: firstInvalid },
+		'aria-invalid': firstInvalid,
 	};
 	const secondFieldProps = {
 		'aria-describedy': [
@@ -65,7 +65,7 @@ export function GroupedFields({
 		]
 			.filter(Boolean)
 			.join(' '),
-		invalid: { field: false, input: secondInvalid },
+		'aria-invalid': secondInvalid,
 	};
 
 	console.log(`firstFieldProps`, firstFieldProps);
@@ -91,7 +91,9 @@ export function GroupedFields({
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
 					<Flex flexWrap="wrap" gap={1} inline>
-						{children({ firstFieldProps, secondFieldProps })}
+						{typeof children === 'function'
+							? children({ firstFieldProps, secondFieldProps })
+							: children}
 					</Flex>
 				</Stack>
 			</Box>
