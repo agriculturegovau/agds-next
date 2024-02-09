@@ -10,7 +10,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
-		/** If true, only the input element will be rendered in an invalids state. */
+		/** If true, only the input element will be rendered in an invalid state. */
 		input: boolean;
 	};
 	buttonRef: RefObject<HTMLButtonElement>;

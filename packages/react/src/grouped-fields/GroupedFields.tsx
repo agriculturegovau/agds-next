@@ -8,15 +8,20 @@ import { Stack } from '../stack';
 
 export type GroupedFieldsProps = {
 	/** The two form inputs. */
-	children: ReactNode;
+	children: (props: {
+		firstFieldProps: any;
+		secondFieldProps: any;
+	}) => ReactNode;
 	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
 	/** Provides extra information about the group of fields. */
 	hint?: string;
 	/** The unique ID for the hint text returned from useGroupedFieldsIds. */
-	hintId: string;
+	id: string;
 	/** If true, the invalid state will be rendered for the start date. */
-	invalid?: boolean;
+	firstInvalid?: boolean;
+	/** If true, the invalid state will be rendered for the start date. */
+	secondInvalid?: boolean;
 	/** Describes the purpose of the group of fields. */
 	legend: string;
 	/** If true, the legend is hidden for sighted users. */
@@ -34,13 +39,37 @@ export function GroupedFields({
 	hideOptionalLabel = false,
 	hint,
 	id,
-	invalid = false,
+	firstInvalid = false,
+	secondInvalid = false,
+	// invalid = false,
 	legend,
 	legendIsVisuallyHidden = false,
 	message,
 	required = false,
 }: GroupedFieldsProps) {
 	const { hintId, messageId } = useGroupedFieldsIds(id);
+	const invalid = firstInvalid || secondInvalid;
+	const firstFieldProps = {
+		'aria-describedy': [
+			firstInvalid && message ? messageId : null,
+			hint ? hintId : null,
+		]
+			.filter(Boolean)
+			.join(' '),
+		invalid: { field: false, input: firstInvalid },
+	};
+	const secondFieldProps = {
+		'aria-describedy': [
+			secondInvalid && message ? messageId : null,
+			hint ? hintId : null,
+		]
+			.filter(Boolean)
+			.join(' '),
+		invalid: { field: false, input: secondInvalid },
+	};
+
+	console.log(`firstFieldProps`, firstFieldProps);
+	console.log(`secondFieldProps`, secondFieldProps);
 
 	return (
 		<FieldContainer invalid={invalid}>
@@ -62,7 +91,7 @@ export function GroupedFields({
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
 					<Flex flexWrap="wrap" gap={1} inline>
-						{children}
+						{children({ firstFieldProps, secondFieldProps })}
 					</Flex>
 				</Stack>
 			</Box>
