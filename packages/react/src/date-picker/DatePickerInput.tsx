@@ -6,7 +6,7 @@ import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
-import { acceptedDateFormats, AcceptedDateFormats } from './utils';
+import { acceptedDateFormats, type AcceptedDateFormats } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
