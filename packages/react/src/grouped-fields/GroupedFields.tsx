@@ -14,8 +14,8 @@ interface FieldProps {
 export type GroupedFieldsProps = {
 	/** The two form inputs. */
 	children: (props: {
-		firstFieldProps: FieldProps;
-		secondFieldProps: FieldProps;
+		field1Props: FieldProps;
+		field2Props: FieldProps;
 	}) => ReactNode;
 	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
@@ -24,64 +24,60 @@ export type GroupedFieldsProps = {
 	/** The unique ID for the hint text returned from useGroupedFieldsIds. */
 	id: string;
 	/** If true, the invalid state will be rendered for the start date. */
-	firstInvalid?: boolean;
+	field1Invalid?: boolean;
 	/** If true, the invalid state will be rendered for the start date. */
-	secondInvalid?: boolean;
+	field2Invalid?: boolean;
 	/** Describes the purpose of the group of fields. */
 	legend: string;
-	/** If true, the legend is hidden for sighted users. */
-	legendIsVisuallyHidden?: boolean;
 	/** Message to show when the field is invalid. */
 	message?: string;
 	/** The unique ID for the message text returned from useGroupedFieldsIds. */
 	messageId: string;
 	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
+	/** If true, the legend is hidden for sighted users. */
+	visuallyHiddenLegend?: boolean;
 };
 
 export function GroupedFields({
 	children,
+	field1Invalid = false,
+	field2Invalid = false,
 	hideOptionalLabel = false,
 	hint,
 	id,
-	firstInvalid = false,
-	secondInvalid = false,
-	// invalid = false,
 	legend,
-	legendIsVisuallyHidden = false,
 	message,
 	required = false,
+	visuallyHiddenLegend = false,
 }: GroupedFieldsProps) {
 	const { hintId, messageId } = useGroupedFieldsIds(id);
-	const invalid = firstInvalid || secondInvalid;
-	const firstFieldProps = {
-		'aria-describedy': [
-			firstInvalid && message ? messageId : null,
+	const invalid = field1Invalid || field2Invalid;
+	const field1Props = {
+		'aria-describedby': [
+			field1Invalid && message ? messageId : null,
 			hint ? hintId : null,
 		]
 			.filter(Boolean)
 			.join(' '),
-		'aria-invalid': firstInvalid,
+		'aria-invalid': field1Invalid,
 	};
-	const secondFieldProps = {
-		'aria-describedy': [
-			secondInvalid && message ? messageId : null,
+	const field2Props = {
+		'aria-describedby': [
+			field2Invalid && message ? messageId : null,
 			hint ? hintId : null,
 		]
 			.filter(Boolean)
 			.join(' '),
-		'aria-invalid': secondInvalid,
+		'aria-invalid': field2Invalid,
 	};
-
-	console.log(`firstFieldProps`, firstFieldProps);
-	console.log(`secondFieldProps`, secondFieldProps);
 
 	return (
 		<FieldContainer invalid={invalid}>
 			<Box as="fieldset">
 				<FieldLabel
 					as="legend"
-					css={legendIsVisuallyHidden ? visuallyHiddenStyles : undefined}
+					css={visuallyHiddenLegend ? visuallyHiddenStyles : undefined}
 					hideOptionalLabel={hideOptionalLabel}
 					required={required}
 				>
@@ -99,7 +95,7 @@ export function GroupedFields({
 						{typeof children === 'function'
 							? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 							  // @ts-ignore
-							  children({ firstFieldProps, secondFieldProps })
+							  children({ field1Props, field2Props })
 							: children}
 					</Flex>
 				</Stack>

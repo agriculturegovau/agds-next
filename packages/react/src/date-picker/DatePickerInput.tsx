@@ -42,7 +42,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		const { maxWidth, ...styles } = {
 			...textInputStyles({
 				block,
-				invalid: invalid.input,
 				maxWidth: maxWidthProp,
 			}),
 			width: '100%',

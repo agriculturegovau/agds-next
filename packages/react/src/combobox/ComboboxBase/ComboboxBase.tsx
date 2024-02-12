@@ -43,6 +43,8 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 	// input props
+	'aria-describedby'?: string;
+	'aria-invalid'?: boolean;
 	inputRef?: Ref<HTMLInputElement>;
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	onFocus?: FocusEventHandler<HTMLInputElement>;
@@ -74,13 +76,14 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	renderItem = (item, inputValue) => (
 		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
 	),
+	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
 
 	const { maxWidth, ...inputStyles } = {
-		...textInputStyles({ block, maxWidth: maxWidthProp, invalid }),
+		...textInputStyles({ block, maxWidth: maxWidthProp }),
 		...packs.truncate,
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
@@ -126,6 +129,12 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 						disabled={disabled}
 						{...combobox.getInputProps({
 							...a11yProps,
+							...{
+								'aria-describedby':
+									props['aria-describedby'] || a11yProps['aria-describedby'],
+								'aria-invalid':
+									props['aria-invalid'] || a11yProps['aria-invalid'],
+							},
 							ref: inputRefProp,
 							type: 'text',
 							name: inputName,

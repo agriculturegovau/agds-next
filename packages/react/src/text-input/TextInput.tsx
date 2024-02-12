@@ -84,7 +84,6 @@ export const textInputStyles = ({
 }: {
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
-	invalid?: boolean;
 	multiline?: boolean;
 }) =>
 	({

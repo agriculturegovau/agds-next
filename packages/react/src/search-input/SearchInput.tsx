@@ -97,7 +97,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 		const [maxWidth, styles] = searchInputStyles({
 			block,
 			maxWidth: maxWidthProp,
-			invalid,
 			showClearButton,
 		});
 
@@ -143,18 +142,15 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 function searchInputStyles({
 	block,
 	maxWidth: maxWidthProp,
-	invalid,
 	showClearButton,
 }: {
 	block?: boolean;
 	maxWidth: NonNullable<SearchInputMaxWidth>;
-	invalid?: boolean;
 	showClearButton: boolean;
 }) {
 	const { maxWidth, ...baseStyles } = textInputStyles({
 		block,
 		maxWidth: maxWidthProp,
-		invalid,
 	});
 	return [
 		maxWidth,

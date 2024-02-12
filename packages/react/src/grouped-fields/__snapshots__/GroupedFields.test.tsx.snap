@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GroupedFields renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <fieldset
+      class="css-79i25n-boxStyles"
+    >
+      <legend
+        class="css-sq8uxm-boxStyles"
+      >
+        <span
+          class="css-433uqb-boxStyles-Text"
+        />
+        <span
+          class="css-1rpt3h8-boxStyles-Text"
+        >
+           
+          (optional)
+        </span>
+      </legend>
+      <div
+        class="css-jbjqoz-boxStyles-GroupedFields"
+      >
+        <div
+          class="css-72257o-boxStyles"
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;

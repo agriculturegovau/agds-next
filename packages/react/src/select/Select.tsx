@@ -75,7 +75,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		},
 		ref
 	) {
-		const styles = selectStyles({ block, invalid });
+		const styles = selectStyles({ block });
 		return (
 			<Field
 				label={label}
@@ -166,13 +166,7 @@ const SelectIcon = ({ disabled }: { disabled?: boolean }) => (
 	/>
 );
 
-const selectStyles = ({
-	block,
-	invalid,
-}: {
-	block?: boolean;
-	invalid?: boolean;
-}) =>
+const selectStyles = ({ block }: { block?: boolean }) =>
 	({
 		position: 'relative',
 		appearance: 'none',
@@ -198,10 +192,10 @@ const selectStyles = ({
 			display: 'block',
 		}),
 
-		...(invalid && {
+		'&[aria-invalid="true"]': {
 			backgroundColor: boxPalette.systemErrorMuted,
 			borderColor: boxPalette.systemError,
-		}),
+		},
 
 		'&:disabled': {
 			opacity: 1, // Overwrites default browser styles
