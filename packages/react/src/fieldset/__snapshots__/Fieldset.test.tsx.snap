@@ -4,7 +4,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r0:-hint"
-    class="css-1ceugzq-FieldsetContainer"
+    class="css-79i25n-boxStyles"
     id="fieldset-:r0:"
   >
     <legend
@@ -84,7 +84,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r9:-hint"
-    class="css-1ceugzq-FieldsetContainer"
+    class="css-79i25n-boxStyles"
     id="fieldset-:r9:"
   >
     <legend>

@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { mapSpacing, useId } from '../core';
@@ -49,10 +50,7 @@ export const ControlGroup = ({
 			invalid={invalid}
 		>
 			<FieldContainer invalid={invalid} id={groupId}>
-				<fieldset
-					aria-describedby={describedBy}
-					css={{ padding: 0, margin: 0, border: 'none' }}
-				>
+				<Box as="fieldset" aria-describedby={describedBy}>
 					{label ? (
 						<FieldLabel
 							as="legend"
@@ -80,7 +78,7 @@ export const ControlGroup = ({
 							{children}
 						</Flex>
 					</Stack>
-				</fieldset>
+				</Box>
 			</FieldContainer>
 		</ControlGroupProvider>
 	);

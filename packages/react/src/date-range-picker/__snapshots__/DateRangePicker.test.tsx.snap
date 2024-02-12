@@ -7,7 +7,7 @@ exports[`DateRangePicker renders correctly 1`] = `
     id="date-range-picker-:r0:"
   >
     <fieldset
-      class="css-1lbpzz2-DateRangePicker"
+      class="css-79i25n-boxStyles"
     >
       <legend
         class="css-1r0k8hi-boxStyles-DateRangePicker"
