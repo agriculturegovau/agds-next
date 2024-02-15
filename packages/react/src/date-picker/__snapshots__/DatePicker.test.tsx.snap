@@ -78,6 +78,10 @@ exports[`DatePicker renders correctly 1`] = `
           </span>
         </button>
       </div>
+      <div
+        aria-hidden="true"
+        class="css-9l8g4f-Field"
+      />
     </div>
   </div>
 </div>

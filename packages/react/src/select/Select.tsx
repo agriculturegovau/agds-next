@@ -82,6 +82,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
+				maxWidth={maxWidth}
 				message={message}
 				invalid={invalid}
 				id={id}

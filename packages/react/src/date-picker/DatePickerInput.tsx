@@ -68,6 +68,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		return (
 			<Field
 				label={label}
+				maxWidth={maxWidthProp}
 				secondaryLabel={secondaryLabel}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}

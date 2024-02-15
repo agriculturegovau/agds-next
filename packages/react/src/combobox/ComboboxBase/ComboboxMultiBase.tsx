@@ -155,6 +155,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 			hideOptionalLabel={hideOptionalLabel}
 			required={Boolean(required)}
 			hint={hint}
+			maxWidth={maxWidthProp}
 			message={message}
 			invalid={invalid}
 			id={inputId}

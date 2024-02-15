@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useId } from '../core';
+import { FieldMaxWidth, mapSpacing, tokens, useId } from '../core';
 import { FieldContainer } from './FieldContainer';
 import { FieldLabel } from './FieldLabel';
 import { FieldHint } from './FieldHint';
@@ -17,6 +17,8 @@ export type FieldProps = {
 	label: string;
 	/** Defines an identifier (ID) of the label element, which must be unique. */
 	labelId?: string;
+	/** The maximum width of the field. */
+	maxWidth?: FieldMaxWidth;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
 	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
@@ -34,6 +36,7 @@ export const Field = ({
 	invalid,
 	label,
 	labelId,
+	maxWidth,
 	secondaryLabel,
 	hideOptionalLabel,
 	message,
@@ -67,6 +70,23 @@ export const Field = ({
 				<FieldMessage id={messageId}>{message}</FieldMessage>
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
+			{maxWidth ? (
+				// This acts as spacer so that inputs always try to be as wide as their maxWidth.
+				// Otherwise, when inside a Flex they will shrink to an undesired size.
+				<div
+					aria-hidden
+					css={{
+						height: 0,
+						marginTop: `-${mapSpacing(0.5)}`,
+						maxWidth: tokens.maxWidth.field[maxWidth],
+						overflow: 'hidden',
+						'::after': {
+							content:
+								'"---------------------------------------------------------------"',
+						},
+					}}
+				/>
+			) : null}
 		</FieldContainer>
 	);
 };

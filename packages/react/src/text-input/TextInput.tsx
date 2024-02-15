@@ -64,6 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
+				maxWidth={maxWidth}
 				message={message}
 				invalid={invalid}
 				id={id}

@@ -44,6 +44,10 @@ exports[`Fieldset Basic renders correctly 1`] = `
             id="field-:r1:"
             type="text"
           />
+          <div
+            aria-hidden="true"
+            class="css-9l8g4f-Field"
+          />
         </div>
         <div
           class="css-1904cz9-boxStyles-FieldContainer"
@@ -64,6 +68,10 @@ exports[`Fieldset Basic renders correctly 1`] = `
             class="css-sgg6k9"
             id="field-:r2:"
             type="text"
+          />
+          <div
+            aria-hidden="true"
+            class="css-9l8g4f-Field"
           />
         </div>
       </div>
@@ -122,6 +130,10 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             id="field-:ra:"
             type="text"
           />
+          <div
+            aria-hidden="true"
+            class="css-9l8g4f-Field"
+          />
         </div>
         <div
           class="css-1904cz9-boxStyles-FieldContainer"
@@ -142,6 +154,10 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             class="css-sgg6k9"
             id="field-:rb:"
             type="text"
+          />
+          <div
+            aria-hidden="true"
+            class="css-9l8g4f-Field"
           />
         </div>
       </div>

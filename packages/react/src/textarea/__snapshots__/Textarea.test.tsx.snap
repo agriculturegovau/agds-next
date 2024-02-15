@@ -27,6 +27,10 @@ exports[`Textarea Basic renders correctly 1`] = `
       class="css-18qypsc"
       id="field-:r0:"
     />
+    <div
+      aria-hidden="true"
+      class="css-9l8g4f-Field"
+    />
   </div>
 </div>
 `;
@@ -92,6 +96,10 @@ exports[`Textarea Invalid renders correctly 1`] = `
       class="css-y6rxld"
       id="field-:r4:"
     />
+    <div
+      aria-hidden="true"
+      class="css-9l8g4f-Field"
+    />
   </div>
 </div>
 `;
@@ -129,6 +137,10 @@ exports[`Textarea With hint renders correctly 1`] = `
       aria-required="false"
       class="css-18qypsc"
       id="field-:r2:"
+    />
+    <div
+      aria-hidden="true"
+      class="css-9l8g4f-Field"
     />
   </div>
 </div>
