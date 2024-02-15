@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	FocusEvent,
 	useCallback,
 	Ref,
 	useRef,
@@ -7,7 +8,6 @@ import {
 	useEffect,
 	useMemo,
 } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -27,6 +27,7 @@ import {
 	formatDate,
 	constrainDate,
 	transformValuePropToInputValue,
+	type AcceptedDateFormats,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
@@ -92,6 +93,8 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	toInputRef?: Ref<HTMLInputElement>;
 	/** The range of options to display in calendar year select. */
 	yearRange?: { from: number; to: number };
+	/** Used to adjust the date format displayed in the text input and secondary label. */
+	dateFormat?: AcceptedDateFormats;
 };
 
 export const DateRangePicker = ({
@@ -115,6 +118,7 @@ export const DateRangePicker = ({
 	fromInputRef,
 	toInputRef,
 	yearRange,
+	dateFormat = 'dd/MM/yyyy',
 }: DateRangePickerProps) => {
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
@@ -155,8 +159,8 @@ export const DateRangePicker = ({
 			);
 
 			onChange(range);
-			setFromInputValue(range.from ? formatDate(range.from) : '');
-			setToInputValue(range.to ? formatDate(range.to) : '');
+			setFromInputValue(range.from ? formatDate(range.from, dateFormat) : '');
+			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
 				closeCalendar();
@@ -174,96 +178,74 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined]
+		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
 	);
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from)
+		transformValuePropToInputValue(value.from, dateFormat)
 	);
 
-	const debouncedAttemptDateParseFromDate = useDebouncedCallback(
-		(inputValue: string) => {
-			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
-			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
 
-			const nextValue = ensureValidDateRange({
-				from: constrainedDate,
-				to: valueAsDateOrUndefined.to,
-			});
+		// Ensure the text entered is a valid date
+		const parsedDate = parseDate(inputValue);
+		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			// When there is no value OR there is a valid date, only trigger the `onChange` callback
-			// `onInputChange` will not be called
-			if (!inputValue || constrainedDate) {
-				onChange(nextValue);
-				return;
-			}
+		const nextValue = ensureValidDateRange({
+			from: constrainedDate,
+			to: valueAsDateOrUndefined.to,
+		});
 
-			// Trigger the callbacks
+		if (!inputValue || constrainedDate) {
 			onChange(nextValue);
+		} else {
 			onFromInputChangeProp?.(inputValue);
-		},
-		200
-	);
+		}
+	};
 
-	const onFromInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
-			// Immediately update the input field
-			setFromInputValue(inputValue);
-			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
-			debouncedAttemptDateParseFromDate(inputValue);
-		},
-		[debouncedAttemptDateParseFromDate]
-	);
+	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+		// Immediately update the input field
+		setFromInputValue(inputValue);
+	};
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to)
+		transformValuePropToInputValue(value.to, dateFormat)
 	);
 
-	const debouncedAttemptDateParseToDate = useDebouncedCallback(
-		(inputValue: string) => {
-			// Ensure the text entered is a valid date
-			const parsedDate = parseDate(inputValue);
-			const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
 
-			const nextValue = ensureValidDateRange({
-				from: valueAsDateOrUndefined.from,
-				to: constrainedDate,
-			});
+		// Ensure the text entered is a valid date
+		const parsedDate = parseDate(inputValue);
+		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-			// When there is no value OR there is a valid date, only trigger the `onChange` callback
-			// `onInputChange` will not be called
-			if (!inputValue || constrainedDate) {
-				onChange(nextValue);
-				return;
-			}
+		const nextValue = ensureValidDateRange({
+			from: valueAsDateOrUndefined.from,
+			to: constrainedDate,
+		});
 
-			// Trigger the callbacks
+		if (!inputValue || constrainedDate) {
 			onChange(nextValue);
+		} else {
 			onToInputChangeProp?.(inputValue);
-		},
-		200
-	);
+		}
+	};
 
-	const onToInputChange = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			const inputValue = e.target.value;
-			// Immediately update the input field
-			setToInputValue(inputValue);
-			// Attempt to parse the date using the text input value. Debounced so it happens after the user finishes typing.
-			debouncedAttemptDateParseToDate(inputValue);
-		},
-		[debouncedAttemptDateParseToDate]
-	);
+	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+		// Immediately update the input field
+		setToInputValue(inputValue);
+	};
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(transformValuePropToInputValue(value.from));
-		setToInputValue(transformValuePropToInputValue(value.to));
-	}, [value]);
+		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
+		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
+	}, [value, dateFormat]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -354,13 +336,15 @@ export const DateRangePicker = ({
 							label={fromLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={fromInputValue}
+							onBlur={onFromInputBlur}
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
 							buttonOnClick={onFromTriggerClick}
+							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
-							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
+							dateFormat={dateFormat}
 						/>
 						<DateInput
 							aria-describedby={
@@ -370,6 +354,7 @@ export const DateRangePicker = ({
 							label={toLabel}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							value={toInputValue}
+							onBlur={onToInputBlur}
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
 							buttonOnClick={onToTriggerClick}
@@ -377,6 +362,7 @@ export const DateRangePicker = ({
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
+							dateFormat={dateFormat}
 						/>
 					</Flex>
 				</Stack>

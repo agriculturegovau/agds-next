@@ -122,6 +122,12 @@ export const Labels: Story = {
 	},
 };
 
+export const AlternativeDateFormat: Story = {
+	args: {
+		dateFormat: 'd MMM yyyy',
+	},
+};
+
 export const ScrollExample: Story = {
 	render: (props) => (
 		<Box>

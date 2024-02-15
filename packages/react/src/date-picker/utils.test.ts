@@ -110,8 +110,8 @@ describe('constrainDate', () => {
 });
 
 describe('formatDate', () => {
-	expect(formatDate(new Date(2020, 0, 31))).toEqual('31/01/2020');
-	expect(formatDate(new Date(2020, 11, 6))).toEqual('06/12/2020');
+	expect(formatDate(new Date(2020, 0, 31), 'dd/MM/yyyy')).toEqual('31/01/2020');
+	expect(formatDate(new Date(2020, 11, 6), 'dd/MM/yyyy')).toEqual('06/12/2020');
 });
 
 describe('formatHumanReadableDate', () => {
@@ -125,19 +125,21 @@ describe('formatHumanReadableDate', () => {
 
 describe('transformValuePropToInputValue', () => {
 	test('works with undefined', () => {
-		expect(transformValuePropToInputValue(undefined)).toEqual('');
+		expect(transformValuePropToInputValue(undefined, 'dd/MM/yyyy')).toEqual('');
 	});
 
 	test('works with strings', () => {
-		expect(transformValuePropToInputValue('')).toEqual('');
-		expect(transformValuePropToInputValue('abc')).toEqual('abc');
-		expect(transformValuePropToInputValue('aa/bb/cccc')).toEqual('aa/bb/cccc');
+		expect(transformValuePropToInputValue('', 'dd/MM/yyyy')).toEqual('');
+		expect(transformValuePropToInputValue('abc', 'dd/MM/yyyy')).toEqual('abc');
+		expect(transformValuePropToInputValue('aa/bb/cccc', 'dd/MM/yyyy')).toEqual(
+			'aa/bb/cccc'
+		);
 	});
 
 	test('works with dates', () => {
 		const exampleDate = new Date(1999, 11, 10);
-		expect(transformValuePropToInputValue(exampleDate)).toEqual(
-			formatDate(exampleDate)
+		expect(transformValuePropToInputValue(exampleDate, 'dd/MM/yyyy')).toEqual(
+			formatDate(exampleDate, 'dd/MM/yyyy')
 		);
 	});
 });

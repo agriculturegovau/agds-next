@@ -21,7 +21,7 @@ For an example of using this component in a form built with [react-hook-form](ht
 <DoHeading />
 
 - always display the date format above the text input
-- use Australian date format 'dd/mm/yyyy'
+- prefer Australian date format 'dd/mm/yyyy'
 - allow users to navigate dates via the calendar
 - ensure users can enter dates via the calendar or text input
 - Make sure error messages are specific about what input is required.
@@ -39,11 +39,9 @@ The Date picker component has two methods of input:
 1. Typing in a date string (dd/mm/yyyy) via the text input
 2. Selecting a date via the calendar widget
 
-As we do not have any sort of input masking due to accessibility concerns, there is a possibilty for the user to enter an invalid value via the text input. In some scenarios, it can be useful to know what the value of the text input is so the user can be informed of any invalid values.
+As we do not have any sort of input masking due to accessibility and user experience concerns, it is possible for the user to enter an invalid value via the text input.
 
-For example, if the Date picker component was an optional field. If a user inputs an invalid value via the text input, the `onChange` event will never fire. This may lead the user to believe what they have typed is valid when actually their input will not be saved.
-
-To fix this issue, you can use the `onInputChange` prop to keep track of the user’s input. The `value` prop can also be set to a string, which represents the value of the text input.
+In this case, you can use the `onInputChange` prop to keep track of the user’s input. The `value` prop can also be set to a string, which represents the value of the text input.
 
 ```jsx live
 () => {
@@ -197,6 +195,47 @@ The `yearRange` prop can be used to change the range of options to display in ca
 			yearRange={yearRange}
 			value={value}
 			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Changing the date format
+
+The Date picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
+
+When a valid date is typed, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
+
+To modify the date format, you can change the `dateFormat` prop to one of these supported date formats:
+
+- `'dd/MM/yyyy'` (e.g. 18/02/2023)
+- `'dd-MM-yyyy'` (e.g. 18-02-2023)
+- `'dd MM yyyy'` (e.g. 18 02 2023)
+- `'MM/dd/yyyy'` (e.g. 02/18/2023)
+- `'MM-dd-yyyy'` (e.g. 02-18-2023)
+- `'MM dd yyyy'` (e.g. 02 18 2023)
+- `'do MMMM yyyy'` (e.g. 8th February 2023)
+- `'do MMM yyyy'` (e.g. 8th Feb 2023)
+- `'MMMM do yyyy'` (e.g. February 8th 2023)
+- `'MMM do yyyy'` (e.g. Feb 8th 2023)
+- `'d MMMM yyyy'` (e.g. 8 February 2023)
+- `'d MMM yyyy'` (e.g. 8 Feb 2023)
+- `'MMMM d yyyy'` (e.g. February 8 2023)
+- `'MMM d yyyy'` (e.g. Feb 8 2023)
+- `'dd MMMM yyyy'` (e.g. 08 February 2023)
+- `'dd MMM yyyy'` (e.g. 08 Feb 2023)
+- `'MMMM dd yyyy'` (e.g. February 08 2023)
+- `'MMM dd yyyy'` (e.g. Feb 08 2023)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePicker
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			dateFormat="d MMM yyyy"
 		/>
 	);
 };
