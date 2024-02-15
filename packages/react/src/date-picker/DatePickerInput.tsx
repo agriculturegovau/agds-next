@@ -1,10 +1,12 @@
-import { forwardRef, MouseEventHandler, RefObject } from 'react';
+import { forwardRef, MouseEventHandler, RefObject, useMemo } from 'react';
+import { format } from 'date-fns';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
 import { mapSpacing } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
+import { acceptedDateFormats, type AcceptedDateFormats } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
@@ -13,6 +15,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalids state. */
 		input: boolean;
 	};
+	dateFormat: AcceptedDateFormats;
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
@@ -35,6 +38,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			buttonAriaLabel,
 			disabled,
 			value,
+			dateFormat: dateFormatProp,
 			...props
 		},
 		ref
@@ -51,10 +55,20 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			borderBottomRightRadius: 0,
 		};
 
+		// The secondary label should show today's date in the supplied date format (via the `dateFormat` prop)
+		// If the supplied date format is not an accepted format, fallback to the default date format of `dd/MM/yyyy`
+		// Note: TypeScript will complain about incorrect values passed into the `dateFormat` prop, but not everyone relies on TypeScript
+		const secondaryLabel = useMemo(() => {
+			const dateFormat = acceptedDateFormats.includes(dateFormatProp)
+				? dateFormatProp
+				: 'dd/MM/yyyy';
+			return '(e.g. ' + format(new Date(), dateFormat) + ')';
+		}, [dateFormatProp]);
+
 		return (
 			<Field
 				label={label}
-				secondaryLabel="(dd/mm/yyyy)"
+				secondaryLabel={secondaryLabel}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}

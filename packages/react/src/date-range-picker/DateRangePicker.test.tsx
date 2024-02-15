@@ -5,6 +5,7 @@ import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { format } from 'date-fns';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
 import { Stack } from '../stack';
@@ -12,9 +13,10 @@ import { Button } from '../button';
 import { formatHumanReadableDate, parseDate } from '../date-picker/utils';
 import { yupDateField, errorMessage } from '../date-picker/test-utils';
 import {
+	type DateRange,
+	type DateRangeWithString,
+	type DateRangePickerProps,
 	DateRangePicker,
-	DateRangePickerProps,
-	DateRangeWithString,
 } from './DateRangePicker';
 
 expect.extend(toHaveNoViolations);
@@ -28,8 +30,50 @@ jest.mock('use-debounce', () => ({
 	}),
 }));
 
-function renderDateRangePicker(props: DateRangePickerProps) {
-	return render(<DateRangePicker {...props} />);
+// Mock the current date so snapshot outputs are always consistent
+const mockSystemTime = new Date(2015, 7, 5);
+beforeAll(() => {
+	jest.useFakeTimers({ advanceTimers: true });
+	jest.setSystemTime(mockSystemTime);
+});
+
+afterAll(() => {
+	jest.useRealTimers();
+});
+
+function renderDateRangePicker(props: ControlledDatePickerProps) {
+	return render(<ControlledDateRangePicker {...props} />);
+}
+
+type ControlledDatePickerProps = Omit<
+	DateRangePickerProps,
+	'value' | 'onChange'
+> & {
+	initialValue?: DateRangePickerProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
+	onChange?: DateRangePickerProps['onChange']; // onChange is optional
+};
+
+function ControlledDateRangePicker({
+	initialValue = { from: undefined, to: undefined },
+	onChange: onChangeProp,
+	...props
+}: ControlledDatePickerProps) {
+	const [value, setValue] = useState<DateRangeWithString>(initialValue);
+
+	function onChange(value: DateRange) {
+		setValue(value);
+		onChangeProp?.(value);
+	}
+
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={onChange}
+			onFromInputChange={(from) => setValue({ ...value, from })}
+			onToInputChange={(to) => setValue({ ...value, to })}
+			{...props}
+		/>
+	);
 }
 
 function ClearableDateRangePicker({
@@ -174,16 +218,14 @@ async function getSubmitButton() {
 describe('DateRangePicker', () => {
 	it('renders correctly', () => {
 		const { container } = renderDateRangePicker({
-			value: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDateRangePicker({
-			value: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -257,7 +299,6 @@ describe('DateRangePicker', () => {
 		const onChange = jest.fn();
 
 		const { container } = renderDateRangePicker({
-			value: { from: undefined, to: undefined },
 			onChange: onChange,
 		});
 
@@ -271,13 +312,13 @@ describe('DateRangePicker', () => {
 
 		// Type in the input fields
 		await userEvent.type(await getFromInput(), fromDateString);
+		await userEvent.keyboard('{Tab}');
 		expect(await getFromInput()).toHaveValue(fromDateString);
 		await userEvent.type(await getToInput(), toDateString);
+		await userEvent.keyboard('{Tab}');
 		expect(await getToInput()).toHaveValue(toDateString);
 
-		expect(onChange).toHaveBeenCalledTimes(
-			fromDateString.length + toDateString.length
-		);
+		expect(onChange).toHaveBeenCalledTimes(2);
 
 		const calendarTriggers = container.querySelectorAll('button');
 
@@ -292,12 +333,39 @@ describe('DateRangePicker', () => {
 		);
 	});
 
+	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
+		renderDateRangePicker({});
+
+		// Type valid dates in the input fields that are not in the display format
+		await userEvent.type(await getFromInput(), '5 June 2023');
+		await userEvent.keyboard('{Tab}');
+		await userEvent.type(await getToInput(), '10 June 2023');
+		await userEvent.keyboard('{Tab}');
+
+		// The inputs should be formatted to dd/mm/yyyy
+		expect(await getFromInput()).toHaveValue('05/06/2023');
+		expect(await getToInput()).toHaveValue('10/06/2023');
+	});
+
+	it('formats valid dates to the `dateFormat` prop', async () => {
+		renderDateRangePicker({ dateFormat: 'd MMM yyyy' });
+
+		// Type valid dates in the input fields that are not in the display format
+		await userEvent.type(await getFromInput(), '05/06/2023 ');
+		await userEvent.keyboard('{Tab}');
+		await userEvent.type(await getToInput(), '10/06/2023 ');
+		await userEvent.keyboard('{Tab}');
+
+		// The inputs should be formatted to the dateFormat prop
+		expect(await getFromInput()).toHaveValue('5 Jun 2023');
+		expect(await getToInput()).toHaveValue('10 Jun 2023');
+	});
+
 	it('legend: renders a hidden legend by default when optional', async () => {
 		const defaultLegend = 'Date range';
 
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: false,
 		});
 		expect(await await (await getLegend(defaultLegend)).textContent).toEqual(
@@ -309,8 +377,7 @@ describe('DateRangePicker', () => {
 		const defaultLegend = 'Date range';
 
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: true,
 		});
 		expect(await (await getLegend(defaultLegend)).textContent).toEqual(
@@ -323,8 +390,7 @@ describe('DateRangePicker', () => {
 
 		renderDateRangePicker({
 			legend,
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
 		expect(await (await getLegend(legend)).textContent).toEqual(
 			`${legend} (optional)`
@@ -337,8 +403,7 @@ describe('DateRangePicker', () => {
 		renderDateRangePicker({
 			legend,
 			required: true,
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
 		expect(await (await getLegend(legend)).textContent).toEqual(`${legend}`);
 	});
@@ -346,23 +411,7 @@ describe('DateRangePicker', () => {
 	it('shows date format when legend is supplied', async () => {
 		const { container } = renderDateRangePicker({
 			legend: 'Date range',
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
-		});
-		const inputFromId = await (await getFromInput())?.id;
-		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
-
-		const inputToId = await (await getToInput())?.id;
-		const labelTo = container.querySelector(`[for="${inputToId}"]`);
-
-		expect(labelFrom?.textContent).toEqual('Start date (dd/mm/yyyy)');
-		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy)');
-	});
-
-	it('shows date format when no legend is supplied', async () => {
-		const { container } = renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
 		const inputFromId = await (await getFromInput())?.id;
 		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
@@ -371,15 +420,34 @@ describe('DateRangePicker', () => {
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
 		expect(labelFrom?.textContent).toEqual(
-			'Start date (dd/mm/yyyy) (optional)'
+			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
 		);
-		expect(labelTo?.textContent).toEqual('End date (dd/mm/yyyy) (optional)');
+		expect(labelTo?.textContent).toEqual(
+			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
+		);
+	});
+
+	it('shows date format when no legend is supplied', async () => {
+		const { container } = renderDateRangePicker({
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
+		});
+		const inputFromId = await (await getFromInput())?.id;
+		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
+
+		const inputToId = await (await getToInput())?.id;
+		const labelTo = container.querySelector(`[for="${inputToId}"]`);
+
+		expect(labelFrom?.textContent).toEqual(
+			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
+		);
+		expect(labelTo?.textContent).toEqual(
+			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
+		);
 	});
 
 	it('invalid: can render an invalid state when both fields are invalid', async () => {
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: true,
 			toInvalid: true,
 			message: errorMessage,
@@ -391,8 +459,7 @@ describe('DateRangePicker', () => {
 
 	it('invalid: can render an invalid state when only from is invalid', async () => {
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: true,
 			toInvalid: false,
 			message: errorMessage,
@@ -404,8 +471,7 @@ describe('DateRangePicker', () => {
 
 	it('invalid: can render an invalid state when only to is invalid', async () => {
 		renderDateRangePicker({
-			value: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
-			onChange: console.log,
+			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: false,
 			toInvalid: true,
 			message: errorMessage,

@@ -9,31 +9,31 @@ import {
 	isMatch,
 } from 'date-fns';
 
-// Date format is not configurable
-const displayDateFormat = 'dd/MM/yyyy';
+export const acceptedDateFormats = [
+	'dd/MM/yyyy', // e.g. 18/02/2023
+	'dd-MM-yyyy', // e.g. 18-02-2023
+	'dd MM yyyy', // e.g. 18 02 2023
+	'MM/dd/yyyy', // e.g. 02/18/2023
+	'MM-dd-yyyy', // e.g. 02-18-2023
+	'MM dd yyyy', // e.g. 02 18 2023
+	'do MMMM yyyy', // e.g. 8th February 2023
+	'do MMM yyyy', // e.g. 8th Feb 2023
+	'MMMM do yyyy', // e.g. February 8th 2023
+	'MMM do yyyy', // e.g. Feb 8th 2023
+	'd MMMM yyyy', // e.g. 8 February 2023
+	'd MMM yyyy', // e.g. 8 Feb 2023
+	'MMMM d yyyy', // e.g. February 8 2023
+	'MMM d yyyy', // e.g. Feb 8 2023
+	'dd MMMM yyyy', // e.g. 08 February 2023
+	'dd MMM yyyy', // e.g. 08 Feb 2023
+	'MMMM dd yyyy', // e.g. February 08 2023
+	'MMM dd yyyy', // e.g. Feb 08 2023
+] as const;
 
-const acceptedDateFormats = [
-	displayDateFormat, // 18/02/2023
-	'dd-MM-yyyy', // 18-02-2023
-	'dd MM yyyy', // 18 02 2023
-	'MM/dd/yyyy', // 02/18/2023
-	'MM-dd-yyyy', // 02-18-2023
-	'MM dd yyyy', // 02 18 2023
-	'do MMMM yyyy', // 8th February 2023
-	'do MMM yyyy', // 8th Feb 2023
-	'MMMM do yyyy', // February 8th 2023
-	'MMM do yyyy', // Feb 8th 2023
-	'd MMMM yyyy', // 8 February 2023
-	'd MMM yyyy', // 8 Feb 2023
-	'MMMM d yyyy', // February 8 2023
-	'MMM d yyyy', // Feb 8 2023
-	'dd MMMM yyyy', // 08 February 2023
-	'dd MMM yyyy', // 08 Feb 2023
-	'MMMM dd yyyy', // February 08 2023
-	'MMM dd yyyy', // Feb 08 2023
-];
+export type AcceptedDateFormats = (typeof acceptedDateFormats)[number];
 
-export const formatDate = (date: Date) => format(date, displayDateFormat);
+export const formatDate = (date: Date, dateformat: AcceptedDateFormats) =>
+	format(date, dateformat);
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
@@ -84,11 +84,12 @@ export function constrainDate(
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
-	valueProp: Date | string | undefined
+	valueProp: Date | string | undefined,
+	dateFormat: AcceptedDateFormats
 ): string {
 	if (typeof valueProp === 'string') return valueProp;
 	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp);
+	if (isValidDate(valueProp)) return formatDate(valueProp, dateFormat);
 	return '';
 }
 

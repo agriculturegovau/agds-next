@@ -28,7 +28,7 @@ For an example of using this component in a form built with [react-hook-form](ht
 <DoHeading />
 
 - always display the date format above the text input
-- use Australian date format 'dd/mm/yyyy'
+- prefer Australian date format 'dd/mm/yyyy'
 - allow users to navigate dates via the calendar
 - ensure users can enter dates via the calendar or text input
 - make sure error messages are specific about what input is required.
@@ -46,9 +46,9 @@ The Date range picker component has two methods of input:
 1. Typing in a date string (dd/mm/yyyy) via the text inputs
 2. Selecting a date via the calendar widgets
 
-As we do not have any sort of input masking due to accessibility concerns, it is possible for the user to enter invalid values via the text inputs.
+Since we do not have any sort of input masking due to accessibility and user experience concerns, it is possible for the user to enter invalid values via the text inputs.
 
-You can use the `onFromInputChange` and `onToInputChange` props to keep track of the user’s input. The `value.from` and `value.to` props can also be set to a string, which represents the value of the text inputs.
+In this case, you can use the `onFromInputChange` and `onToInputChange` props to keep track of the user’s input. The `value.from` and `value.to` props can also be set to a string, which represents the value of the text inputs.
 
 ```jsx live
 () => {
@@ -69,12 +69,27 @@ You can use the `onFromInputChange` and `onToInputChange` props to keep track of
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.from);
 
+	const onFromInputChange = (from) => {
+		console.log(`onFromInputChange`, from);
+		setValue({ ...value, from });
+	};
+
+	const onToInputChange = (to) => {
+		console.log(`onToInputChange`, to);
+		setValue({ ...value, to });
+	};
+
+	const onChange = (e) => {
+		console.log(`onChange`, e);
+		setValue(e);
+	};
+
 	return (
 		<DateRangePicker
 			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
+			onChange={onChange}
+			onFromInputChange={onFromInputChange}
+			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
@@ -233,6 +248,48 @@ If a valid date is entered using the text input but it falls outside the constra
 			onToInputChange={(to) => setValue({ ...value, to })}
 			minDate={lastWeek}
 			maxDate={nextWeek}
+		/>
+	);
+};
+```
+
+## Changing the date format
+
+The Date range picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
+
+When a valid date is typed, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
+
+To modify the date format, you can change the `dateFormat` prop to one of these supported date formats:
+
+- `'dd/MM/yyyy'` (e.g. 18/02/2023)
+- `'dd-MM-yyyy'` (e.g. 18-02-2023)
+- `'dd MM yyyy'` (e.g. 18 02 2023)
+- `'MM/dd/yyyy'` (e.g. 02/18/2023)
+- `'MM-dd-yyyy'` (e.g. 02-18-2023)
+- `'MM dd yyyy'` (e.g. 02 18 2023)
+- `'do MMMM yyyy'` (e.g. 8th February 2023)
+- `'do MMM yyyy'` (e.g. 8th Feb 2023)
+- `'MMMM do yyyy'` (e.g. February 8th 2023)
+- `'MMM do yyyy'` (e.g. Feb 8th 2023)
+- `'d MMMM yyyy'` (e.g. 8 February 2023)
+- `'d MMM yyyy'` (e.g. 8 Feb 2023)
+- `'MMMM d yyyy'` (e.g. February 8 2023)
+- `'MMM d yyyy'` (e.g. Feb 8 2023)
+- `'dd MMMM yyyy'` (e.g. 08 February 2023)
+- `'dd MMM yyyy'` (e.g. 08 Feb 2023)
+- `'MMMM dd yyyy'` (e.g. February 08 2023)
+- `'MMM dd yyyy'` (e.g. Feb 08 2023)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={setValue}
+			onFromInputChange={(from) => setValue({ ...value, from })}
+			onToInputChange={(to) => setValue({ ...value, to })}
+			dateFormat="d MMM yyyy"
 		/>
 	);
 };
