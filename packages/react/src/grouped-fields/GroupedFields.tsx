@@ -6,37 +6,55 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 
-interface FieldProps {
+type FieldA11yProps = {
 	'aria-describedby': string | null;
 	'aria-invalid': boolean;
-}
+};
 
 export type GroupedFieldsProps = {
 	/** The two form inputs. */
 	children: (props: {
-		field1Props: FieldProps;
-		field2Props: FieldProps;
-	}) => ReactNode;
+		field1Props: FieldA11yProps;
+		field2Props: FieldA11yProps;
+	}) => ReactNode | ReactNode;
+	/** If true, the invalid state will be rendered for field 1. */
+	field1Invalid?: boolean;
+	/** If true, the invalid state will be rendered for field 2. */
+	field2Invalid?: boolean;
 	/** If true, "(optional)" will never be appended to the legend even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
 	/** Provides extra information about the group of fields. */
 	hint?: string;
-	/** The unique ID for the hint text returned from useGroupedFieldsIds. */
-	id: string;
-	/** If true, the invalid state will be rendered for the start date. */
-	field1Invalid?: boolean;
-	/** If true, the invalid state will be rendered for the start date. */
-	field2Invalid?: boolean;
+	/** A unique ID used as the basis for internal IDs. */
+	id?: string;
 	/** Describes the purpose of the group of fields. */
 	legend: string;
-	/** Message to show when the field is invalid. */
+	/** Message to show when either field is invalid. */
 	message?: string;
-	/** The unique ID for the message text returned from useGroupedFieldsIds. */
-	messageId: string;
 	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
 	/** If true, the legend is hidden for sighted users. */
-	visuallyHiddenLegend?: boolean;
+	visuallyHideLegend?: boolean;
+};
+
+const getAriaDescribedById = ({
+	hint,
+	hintId,
+	invalid,
+	message,
+	messageId,
+}: {
+	hint?: string;
+	hintId: string;
+	invalid?: boolean;
+	message?: string;
+	messageId: string;
+}) => {
+	const id = [invalid && message ? messageId : null, hint ? hintId : null]
+		.filter(Boolean)
+		.join(' ');
+
+	return id.length > 0 ? id : null;
 };
 
 export function GroupedFields({
@@ -49,26 +67,28 @@ export function GroupedFields({
 	legend,
 	message,
 	required = false,
-	visuallyHiddenLegend = false,
+	visuallyHideLegend = false,
 }: GroupedFieldsProps) {
 	const { hintId, messageId } = useGroupedFieldsIds(id);
 	const invalid = field1Invalid || field2Invalid;
 	const field1Props = {
-		'aria-describedby': [
-			field1Invalid && message ? messageId : null,
-			hint ? hintId : null,
-		]
-			.filter(Boolean)
-			.join(' '),
+		'aria-describedby': getAriaDescribedById({
+			hint,
+			hintId,
+			invalid: field1Invalid,
+			message,
+			messageId,
+		}),
 		'aria-invalid': field1Invalid,
 	};
 	const field2Props = {
-		'aria-describedby': [
-			field2Invalid && message ? messageId : null,
-			hint ? hintId : null,
-		]
-			.filter(Boolean)
-			.join(' '),
+		'aria-describedby': getAriaDescribedById({
+			hint,
+			hintId,
+			invalid: field2Invalid,
+			message,
+			messageId,
+		}),
 		'aria-invalid': field2Invalid,
 	};
 
@@ -77,14 +97,14 @@ export function GroupedFields({
 			<Box as="fieldset">
 				<FieldLabel
 					as="legend"
-					css={visuallyHiddenLegend ? visuallyHiddenStyles : undefined}
+					css={visuallyHideLegend ? visuallyHiddenStyles : undefined}
 					hideOptionalLabel={hideOptionalLabel}
 					required={required}
 				>
 					{legend}
 				</FieldLabel>
 				<Stack
-					css={{ marginTop: legend ? mapSpacing(0.5) : undefined }}
+					css={{ marginTop: visuallyHideLegend ? undefined : mapSpacing(0.5) }}
 					gap={0.5}
 				>
 					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
@@ -93,9 +113,7 @@ export function GroupedFields({
 					) : null}
 					<Flex flexWrap="wrap" gap={1} inline>
 						{typeof children === 'function'
-							? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-							  // @ts-ignore
-							  children({ field1Props, field2Props })
+							? children({ field1Props, field2Props })
 							: children}
 					</Flex>
 				</Stack>
