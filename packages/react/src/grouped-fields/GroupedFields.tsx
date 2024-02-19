@@ -16,7 +16,7 @@ export type GroupedFieldsProps = {
 	children: (props: {
 		field1Props: FieldA11yProps;
 		field2Props: FieldA11yProps;
-	}) => ReactNode | ReactNode;
+	}) => ReactNode;
 	/** If true, the invalid state will be rendered for field 1. */
 	field1Invalid?: boolean;
 	/** If true, the invalid state will be rendered for field 2. */
@@ -112,9 +112,7 @@ export function GroupedFields({
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
 					<Flex flexWrap="wrap" gap={1} inline>
-						{typeof children === 'function'
-							? children({ field1Props, field2Props })
-							: children}
+						{children({ field1Props, field2Props })}
 					</Flex>
 				</Stack>
 			</Box>
