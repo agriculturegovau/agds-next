@@ -63,29 +63,6 @@ export const HideOptionalLabel: Story = {
 	),
 };
 
-export const Required: Story = {
-	render: () => (
-		<GroupedFields legend="Grouped fields" required>
-			{({ field1Props, field2Props }) => (
-				<>
-					<TextInput label="TextInput" required {...field1Props} />
-					<Select
-						label="Select"
-						placeholder="Please select"
-						options={[
-							{ value: 'a', label: 'Option A' },
-							{ value: 'b', label: 'Option B' },
-							{ value: 'c', label: 'Option C' },
-						]}
-						required
-						{...field2Props}
-					/>
-				</>
-			)}
-		</GroupedFields>
-	),
-};
-
 export const VisuallyHideLegend: Story = {
 	render: () => (
 		<GroupedFields legend="Grouped fields" visuallyHideLegend>
@@ -220,9 +197,9 @@ export const AllPossibleFieldsInvalid: Story = {
 			<GroupedFields
 				field1Invalid
 				field2Invalid
+				hideOptionalLabel
 				legend="All fields which can render in a group, invalid"
 				message="Enter a valid value"
-				required
 			>
 				{({ field1Props, field2Props }) => (
 					<>
@@ -251,9 +228,9 @@ export const AllPossibleFieldsInvalid: Story = {
 			<GroupedFields
 				field1Invalid
 				field2Invalid
+				hideOptionalLabel
 				legend="All fields which can render in a group, invalid"
 				message="Enter a valid value"
-				required
 			>
 				{({ field1Props, field2Props }) => (
 					<>
@@ -281,9 +258,9 @@ export const AllPossibleFieldsInvalid: Story = {
 			<GroupedFields
 				field1Invalid
 				field2Invalid
+				hideOptionalLabel
 				legend="All fields which can render in a group, invalid"
 				message="Enter a valid value"
-				required
 			>
 				{({ field1Props, field2Props }) => (
 					<>
@@ -295,9 +272,9 @@ export const AllPossibleFieldsInvalid: Story = {
 			<GroupedFields
 				field1Invalid
 				field2Invalid
+				hideOptionalLabel
 				legend="All fields which can render in a group, invalid"
 				message="Enter a valid value"
-				required
 			>
 				{({ field1Props, field2Props }) => (
 					<>
@@ -319,9 +296,9 @@ export const AllPossibleFieldsInvalid: Story = {
 			<GroupedFields
 				field1Invalid
 				field2Invalid
+				hideOptionalLabel
 				legend="All fields which can render in a group, invalid"
 				message="Enter a valid value"
-				required
 			>
 				{({ field1Props, field2Props }) => (
 					<>

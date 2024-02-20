@@ -66,7 +66,6 @@ export function GroupedFields({
 	id,
 	legend,
 	message,
-	required = false,
 	visuallyHideLegend = false,
 }: GroupedFieldsProps) {
 	const { hintId, messageId } = useGroupedFieldsIds(id);
@@ -99,7 +98,7 @@ export function GroupedFields({
 					as="legend"
 					css={visuallyHideLegend ? visuallyHiddenStyles : undefined}
 					hideOptionalLabel={hideOptionalLabel}
-					required={required}
+					required={false}
 				>
 					{legend}
 				</FieldLabel>
