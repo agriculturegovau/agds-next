@@ -112,6 +112,7 @@ const ProgressIndicatorItem = ({
 		>
 			<Flex
 				as={as}
+				aria-current={isActive ? 'true' : undefined}
 				gap={1}
 				css={{
 					width: '100%',
