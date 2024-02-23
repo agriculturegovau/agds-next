@@ -47,7 +47,7 @@ export const ProgressIndicatorItemLink = ({
 }: ProgressIndicatorItemLinkProps) => (
 	<ProgressIndicatorItem
 		as={TextLink}
-		isActive={isActive === undefined ? status === 'doing' : isActive}
+		isActive={isActive || false}
 		status={status}
 		{...props}
 	>
@@ -186,6 +186,9 @@ const ProgressIndicatorItemIcon = ({
 	const ringWidth = tokens.borderWidth.md;
 	const ringGap = 3;
 	const ringInset = ringWidth + ringGap;
+	const processedIconColor: IconColour =
+		status === 'doing' && !isActive ? 'border' : iconColor;
+
 	return (
 		<Flex as="span" flexDirection="column" alignItems="center">
 			<ProgressIndicatorItemTimeline />
@@ -211,7 +214,7 @@ const ProgressIndicatorItemIcon = ({
 			>
 				<Icon
 					size="md"
-					color={iconColor}
+					color={processedIconColor}
 					css={{
 						position: 'relative',
 						display: 'block',
