@@ -24,7 +24,14 @@ export type ProgressIndicatorItem = (
 	isActive?: boolean;
 };
 
-export type ProgressIndicatorItemStatus = keyof typeof statusMap;
+export type ProgressIndicatorItemStatus =
+	| 'blocked'
+	| 'doing'
+	| 'started'
+	| 'todo'
+	| 'done'
+	| 'saved'
+	| 'error';
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
 	background?: ProgressIndicatorBackground;
@@ -226,7 +233,17 @@ const progressIndicatorItemTextContainerDataAttr =
 const progressIndicatorItemTextDataAttr =
 	'data-agds-progress-indicator-item-text';
 
-const statusMap = {
+type IconColour = 'border' | 'selected' | 'success' | 'error';
+
+type StatusMapCollection = Record<ProgressIndicatorItemStatus, StatusMapItem>;
+
+interface StatusMapItem {
+	label: string;
+	icon: typeof ProgressBlockedIcon;
+	iconColor: IconColour;
+}
+
+const statusMap: StatusMapCollection = {
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,
@@ -262,4 +279,4 @@ const statusMap = {
 		icon: AlertIcon,
 		iconColor: 'error',
 	},
-} as const;
+};
