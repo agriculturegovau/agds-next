@@ -90,6 +90,7 @@ import { Drawer } from '@ag.ds-next/react/drawer';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Modal } from '@ag.ds-next/react/modal';
+import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -457,6 +458,28 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									checked={true}
 									onChange={console.log}
 								/>
+								<GroupedFields
+									field1Invalid
+									legend="Grouped fields"
+									message="Enter a valid value"
+									required
+								>
+									{({ field1Props, field2Props }) => (
+										<>
+											<TextInput label="TextInput" required {...field1Props} />
+											<Select
+												label="Select"
+												placeholder="Please select"
+												options={[
+													{ value: 'a', label: 'Option A' },
+													{ value: 'b', label: 'Option B' },
+													{ value: 'c', label: 'Option C' },
+												]}
+												{...field2Props}
+											/>
+										</>
+									)}
+								</GroupedFields>
 
 								<ButtonGroup>
 									<Button size="md">Primary</Button>

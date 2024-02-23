@@ -250,6 +250,7 @@ export {
 export { SectionAlert } from '@ag.ds-next/react/section-alert';
 export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 export { PasswordInput } from '@ag.ds-next/react/password-input';
+export { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 
 // Used to populate options on documentation site and playroom
 export {
@@ -260,5 +261,3 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
-
-export { GroupedFields } from '@ag.ds-next/react/grouped-fields';
