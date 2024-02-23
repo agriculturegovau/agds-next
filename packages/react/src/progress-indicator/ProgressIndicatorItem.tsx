@@ -21,6 +21,7 @@ export type ProgressIndicatorItem = (
 	| ProgressIndicatorItemLinkProps
 ) & {
 	label: string;
+	isActive?: boolean;
 };
 
 export type ProgressIndicatorItemStatus = keyof typeof statusMap;
@@ -28,13 +29,21 @@ export type ProgressIndicatorItemStatus = keyof typeof statusMap;
 export type ProgressIndicatorItemLinkProps = LinkProps & {
 	background?: ProgressIndicatorBackground;
 	status: ProgressIndicatorItemStatus;
+	isActive?: boolean;
 };
 
 export const ProgressIndicatorItemLink = ({
 	children,
+	isActive,
+	status,
 	...props
 }: ProgressIndicatorItemLinkProps) => (
-	<ProgressIndicatorItem as={TextLink} {...props}>
+	<ProgressIndicatorItem
+		as={TextLink}
+		isActive={isActive === undefined ? status === 'doing' : isActive}
+		status={status}
+		{...props}
+	>
 		{children}
 	</ProgressIndicatorItem>
 );
@@ -43,6 +52,7 @@ export type ProgressIndicatorItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
 		background?: ProgressIndicatorBackground;
 		status: ProgressIndicatorItemStatus;
+		isActive: boolean;
 	};
 
 export const ProgressIndicatorItemButton = ({
@@ -58,6 +68,7 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
 	background?: ProgressIndicatorBackground;
 	status: ProgressIndicatorItemStatus;
+	isActive: boolean;
 }>;
 
 const ProgressIndicatorItem = ({
@@ -65,9 +76,9 @@ const ProgressIndicatorItem = ({
 	background = 'body',
 	children,
 	status,
+	isActive,
 	...props
 }: ProgressIndicatorItemProps) => {
-	const active = status === 'doing';
 	const { label } = statusMap[status];
 
 	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
@@ -102,7 +113,7 @@ const ProgressIndicatorItem = ({
 						backgroundColor: backgroundColorMap[background],
 					},
 					[listItemLinkTextSelector]: {
-						fontWeight: active ? 'bold' : 'normal',
+						fontWeight: isActive ? 'bold' : 'normal',
 					},
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
@@ -115,7 +126,7 @@ const ProgressIndicatorItem = ({
 				focus
 				{...props}
 			>
-				<ProgressIndicatorItemIcon status={status} />
+				<ProgressIndicatorItemIcon status={status} isActive={isActive} />
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
 					as="span"
@@ -125,7 +136,7 @@ const ProgressIndicatorItem = ({
 					justifyContent="center"
 					paddingY={1}
 					fontFamily="body"
-					fontWeight={active ? 'bold' : 'normal'}
+					fontWeight={isActive ? 'bold' : 'normal'}
 					borderBottom
 					borderColor="muted"
 				>
@@ -159,8 +170,10 @@ const ProgressIndicatorItemTimeline = () => (
 
 const ProgressIndicatorItemIcon = ({
 	status,
+	isActive,
 }: {
 	status: ProgressIndicatorItemStatus;
+	isActive: boolean;
 }) => {
 	const { icon: Icon, iconColor } = statusMap[status];
 	const ringWidth = tokens.borderWidth.md;
@@ -175,7 +188,7 @@ const ProgressIndicatorItemIcon = ({
 					position: 'relative',
 					paddingLeft: ringInset,
 					paddingRight: ringInset,
-					...(status === 'doing' && {
+					...(isActive && {
 						':before': {
 							position: 'absolute',
 							top: -ringInset,
