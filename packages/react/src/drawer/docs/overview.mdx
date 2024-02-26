@@ -39,6 +39,9 @@ relatedPatterns: ['search-filters']
 
 <DoHeading />
 
+- consider using a side action page first – side action pages support more use cases than side drawers
+- only use side drawers for filters, small overflow form actions and related guidance content
+- only use for external (customer-facing) forms if there is a need to maintain some context of the current page, otherwise link to a separate page
 - read the [Search filters pattern](/patterns/search-filters)
 - use a [Button group](/components/button#button-group) to display actions
 - include a meaningful title - e.g. ‘Filter by’
@@ -46,6 +49,8 @@ relatedPatterns: ['search-filters']
 
 <DontHeading />
 
+- use for long forms or any content that is likely to cause a user to scroll vertically or horizontally in the drawer – link to a separate page instead
+- provide navigation or multiple pages inside a drawer
 - remove the ‘Close’ button
 - remove the overlay
 - change default behaviour
