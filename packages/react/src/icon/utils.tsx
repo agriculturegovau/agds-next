@@ -6,6 +6,7 @@ import { ArrowRightIcon } from './icons/ArrowRightIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
+import { CalendarIcon } from './icons/CalendarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
 import { CheckIcon } from './icons/CheckIcon';
@@ -24,22 +25,22 @@ import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExitIcon } from './icons/ExitIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
-import { InboxIcon } from './icons/InboxIcon';
-import { InfoIcon } from './icons/InfoIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
 import { FileIcon } from './icons/FileIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
+import { InboxIcon } from './icons/InboxIcon';
+import { InfoFilledIcon } from './icons/InfoFilledIcon';
+import { InfoIcon } from './icons/InfoIcon';
+import { InstagramIcon } from './icons/InstagramIcon';
+import { LinkedInIcon } from './icons/LinkedInIcon';
+import { MenuIcon } from './icons/MenuIcon';
+import { MinusIcon } from './icons/MinusIcon';
 import { PauseIcon } from './icons/PauseIcon';
 import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
-import { InfoFilledIcon } from './icons/InfoFilledIcon';
-import { InstagramIcon } from './icons/InstagramIcon';
-import { MenuIcon } from './icons/MenuIcon';
-import { MinusIcon } from './icons/MinusIcon';
-import { LinkedInIcon } from './icons/LinkedInIcon';
 import { PrintIcon } from './icons/PrintIcon';
 import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
@@ -52,8 +53,8 @@ import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UploadIcon } from './icons/UploadIcon';
-import { WarningIcon } from './icons/WarningIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
+import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
 
 export const allIcons = {
@@ -65,6 +66,7 @@ export const allIcons = {
 	ArrowUpIcon,
 	ArrowUpDownIcon,
 	AvatarIcon,
+	CalendarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
 	CheckIcon,
@@ -77,8 +79,8 @@ export const allIcons = {
 	ChevronsUpDownIcon,
 	CloseIcon,
 	CopyIcon,
-	DownloadIcon,
 	DeleteIcon,
+	DownloadIcon,
 	EditIcon,
 	EmailIcon,
 	ExitIcon,
@@ -90,8 +92,8 @@ export const allIcons = {
 	HelpIcon,
 	HomeIcon,
 	InboxIcon,
-	InfoIcon,
 	InfoFilledIcon,
+	InfoIcon,
 	InstagramIcon,
 	LinkedInIcon,
 	MenuIcon,
@@ -111,7 +113,7 @@ export const allIcons = {
 	ThumbsUpIcon,
 	TwitterIcon,
 	UploadIcon,
-	WarningIcon,
 	WarningFilledIcon,
+	WarningIcon,
 	WebsiteIcon,
 };
