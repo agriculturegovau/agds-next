@@ -31,9 +31,25 @@ const exampleButtonItems: ProgressIndicatorItem[] = [
 	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 ];
 
+const exampleCustomActiveItem: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', href: '#', isActive: true },
+	{ label: 'Submit evidence', status: 'saved', href: '#' },
+	{ label: 'Organisations', status: 'started', href: '#' },
+	{ label: 'Business contacts', status: 'error', href: '#' },
+	{ label: 'Case studies', status: 'todo', href: '#' },
+	{ label: 'Attachments', status: 'doing', href: '#' },
+	{ label: 'Review and submit', status: 'blocked', href: '#' },
+];
+
 export const Basic: Story = {
 	args: {
 		items: exampleLinkItems,
+	},
+};
+
+export const CustomActiveItem: Story = {
+	args: {
+		items: exampleCustomActiveItem,
 	},
 };
 
