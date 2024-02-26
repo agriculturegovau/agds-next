@@ -144,6 +144,24 @@ If an item does not specify an `href` attribute, a `button` element will be rend
 />
 ```
 
+## Custom active item
+
+By default, the item with status `'doing'` will be marked as active. If you would like a different item to be marked as active, then apply an `isActive: true` property to the item.
+
+```jsx live
+<ProgressIndicator
+	items={[
+		{ label: 'Introduction', status: 'done', href: '#', isActive: true },
+		{ label: 'Submit evidence', status: 'saved', href: '#' },
+		{ label: 'Organisations', status: 'started', href: '#' },
+		{ label: 'Business contacts', status: 'error', href: '#' },
+		{ label: 'Case studies', status: 'todo', href: '#' },
+		{ label: 'Attachments', status: 'doing', href: '#' },
+		{ label: 'Review and submit', status: 'blocked', href: '#' },
+	]}
+/>
+```
+
 ## Hiding the sub title
 
 The Progress indicator component displays a subtitle "x of y steps completed" by default. To hide this subtitle, set the `hideSubtitle` prop to `true`.
