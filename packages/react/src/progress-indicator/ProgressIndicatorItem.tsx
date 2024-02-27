@@ -47,7 +47,7 @@ export const ProgressIndicatorItemLink = ({
 }: ProgressIndicatorItemLinkProps) => (
 	<ProgressIndicatorItem
 		as={TextLink}
-		isActive={isActive || false}
+		isActive={Boolean(isActive)}
 		status={status}
 		{...props}
 	>
