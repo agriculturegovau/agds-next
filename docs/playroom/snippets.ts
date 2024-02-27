@@ -1283,6 +1283,27 @@ const snippets = [
 		name: 'Basic',
 		code: `<PasswordInput label="Password" />`,
 	},
+	{
+		group: 'GroupedFields',
+		name: 'Basic',
+		code: `<GroupedFields legend="Grouped fields">
+			{({ field1Props, field2Props }) => (
+				<>
+					<TextInput label="TextInput" {...field1Props} />
+					<Select
+						label="Select"
+						placeholder="Please select"
+						options={[
+							{ value: 'a', label: 'Option A' },
+							{ value: 'b', label: 'Option B' },
+							{ value: 'c', label: 'Option C' },
+						]}
+						{...field2Props}
+					/>
+				</>
+			)}
+		</GroupedFields>`,
+	},
 ];
 
 export default snippets;

@@ -66,6 +66,8 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	emptyResultsMessage?: string;
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	// input props
+	'aria-describedby'?: string;
+	'aria-invalid'?: boolean;
 	inputRef?: Ref<HTMLInputElement>;
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	onFocus?: FocusEventHandler<HTMLInputElement>;
@@ -97,6 +99,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
+	...props
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -120,7 +123,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const styles = comboboxMultiStyles({
 		block,
 		disabled,
-		invalid,
+		invalid: invalid || Boolean(props['aria-invalid']),
 		isInputFocused,
 		maxWidth: maxWidthProp,
 		showClearButton,
@@ -189,9 +192,16 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 						<div css={styles.inputContainer}>
 							<input
 								disabled={disabled}
-								{...a11yProps}
 								{...combobox.getInputProps(
 									multiSelection.getDropdownProps({
+										...a11yProps,
+										...{
+											'aria-describedby':
+												props['aria-describedby'] ||
+												a11yProps['aria-describedby'],
+											'aria-invalid':
+												props['aria-invalid'] || a11yProps['aria-invalid'],
+										},
 										ref: inputRefs,
 										type: 'text',
 										preventKeyAction: combobox.isOpen,
@@ -328,10 +338,10 @@ function comboboxMultiStyles({
 			fontFamily: tokens.font.body,
 			...fontGrid('sm', 'default'),
 
-			...(invalid && {
+			'&[aria-invalid="true"]': {
 				backgroundColor: boxPalette.systemErrorMuted,
 				borderColor: boxPalette.systemError,
-			}),
+			},
 
 			'&:focus': {
 				outline: 'none',

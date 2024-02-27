@@ -9,6 +9,7 @@ import {
 	useMemo,
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
+import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import {
@@ -309,7 +310,7 @@ export const DateRangePicker = ({
 
 	return (
 		<FieldContainer invalid={invalid} id={fieldsetId}>
-			<fieldset css={{ padding: 0, margin: 0, border: 'none' }}>
+			<Box as="fieldset">
 				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
 				<FieldLabel
 					as="legend"
@@ -383,7 +384,7 @@ export const DateRangePicker = ({
 						</Popover>
 					)}
 				</CalendarProvider>
-			</fieldset>
+			</Box>
 		</FieldContainer>
 	);
 };

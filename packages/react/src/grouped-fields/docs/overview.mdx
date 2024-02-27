@@ -1,0 +1,256 @@
+---
+title: Grouped fields
+description: The Grouped fields component allows two closely related form inputs to be grouped together.
+group: Forms
+storybookPath: /story/forms-groupedfields--basic
+unreleased: true
+figmaGalleryNodeId: 20225-16760
+relatedComponents:
+  [
+    'autocomplete',
+    'combobox',
+    'date-picker',
+    'password-input',
+    'search-input',
+    'select',
+    'text-input',
+    'textarea',
+  ]
+---
+
+```jsx live
+<GroupedFields legend="Item weight">
+	{({ field1Props, field2Props }) => (
+		<>
+			<TextInput label="Weight" {...field1Props} />
+			<Select
+				label="Unit"
+				options={[
+					{ value: 'mg', label: 'mg' },
+					{ value: 'g', label: 'g' },
+					{ value: 'kg', label: 'kg' },
+					{ value: 'ton', label: 'ton' },
+				]}
+				hideOptionalLabel
+				maxWidth="sm"
+				value="kg"
+				{...field2Props}
+			/>
+		</>
+	)}
+</GroupedFields>
+```
+
+Grouped fields allows two related form inputs to be composed together while providing the ability to present and describe this relationship and any invalid input errors.
+
+It uses the [render props pattern](https://www.patterns.dev/react/render-props-pattern/) to spread a series of necessary attributes to the `children` form inputs.
+
+<DoHeading />
+
+- group two related inputs, such as weight and unit, and date and time
+- always provide a meaningful legend, regardless if it is visible or visually hidden
+- use the group’s optional label instead of the inputs’ labels when both fields are optional.
+- provide hint text for instruction
+
+<DontHeading />
+
+- group unrelated inputs to save space or reduce the length of a form
+
+## Hide optional label
+
+When both inputs are required or one input is optional and the other has no empty state, hide the group’s optional label with the `hideOptionalLabel` prop.
+
+```jsx live
+<FormStack>
+	<GroupedFields legend="Item weight" hideOptionalLabel>
+		{({ field1Props, field2Props }) => (
+			<>
+				<TextInput label="Weight" {...field1Props} required />
+				<Select
+					label="Unit"
+					options={[
+						{ value: 'mg', label: 'mg' },
+						{ value: 'g', label: 'g' },
+						{ value: 'kg', label: 'kg' },
+						{ value: 'ton', label: 'ton' },
+					]}
+					maxWidth="sm"
+					placeholder="Choose"
+					required
+					{...field2Props}
+				/>
+			</>
+		)}
+	</GroupedFields>
+
+	<GroupedFields legend="Item weight" hideOptionalLabel>
+		{({ field1Props, field2Props }) => (
+			<>
+				<TextInput label="Weight" {...field1Props} />
+				<Select
+					label="Unit"
+					options={[
+						{ value: 'mg', label: 'mg' },
+						{ value: 'g', label: 'g' },
+						{ value: 'kg', label: 'kg' },
+						{ value: 'ton', label: 'ton' },
+					]}
+					maxWidth="sm"
+					value="kg"
+					hideOptionalLabel
+					{...field2Props}
+				/>
+			</>
+		)}
+	</GroupedFields>
+</FormStack>
+```
+
+## Visually hide legend
+
+When a group’s relationship is clear to the average sighted user, you can choose to visually hide the `legend` to reduce cognitive load with the `visuallyHideLegend` prop.
+
+When both fields are required, remember to also use `hideOptionalLabel` so screen reader users are not informed that required fields are optional.
+
+```jsx live
+<GroupedFields legend="Item weight" hideOptionalLabel visuallyHideLegend>
+	{({ field1Props, field2Props }) => (
+		<>
+			<TextInput label="Weight" {...field1Props} required />
+			<Select
+				label="Unit"
+				options={[
+					{ value: 'mg', label: 'mg' },
+					{ value: 'g', label: 'g' },
+					{ value: 'kg', label: 'kg' },
+					{ value: 'ton', label: 'ton' },
+				]}
+				maxWidth="sm"
+				placeholder="Choose"
+				required
+				{...field2Props}
+			/>
+		</>
+	)}
+</GroupedFields>
+```
+
+## Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don’t use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+<GroupedFields legend="Item weight" hint="Example hint text">
+	{({ field1Props, field2Props }) => (
+		<>
+			<TextInput label="Weight" {...field1Props} required />
+			<Select
+				label="Unit"
+				options={[
+					{ value: 'mg', label: 'mg' },
+					{ value: 'g', label: 'g' },
+					{ value: 'kg', label: 'kg' },
+					{ value: 'ton', label: 'ton' },
+				]}
+				maxWidth="sm"
+				value="kg"
+				{...field2Props}
+			/>
+		</>
+	)}
+</GroupedFields>
+```
+
+## Invalid
+
+Use the `field1Invalid`, `field2Invalid` and `message` props to indicate if the user input is invalid.
+
+The `message` should be helpful but generic enough to apply and make sense to both inputs.
+
+```jsx live
+<FormStack>
+	<GroupedFields
+		legend="Item weight"
+		hideOptionalLabel
+		message="Enter a valid item weight"
+		field1Invalid
+	>
+		{({ field1Props, field2Props }) => (
+			<>
+				<TextInput label="Weight" {...field1Props} required />
+				<Select
+					label="Unit"
+					options={[
+						{ value: 'mg', label: 'mg' },
+						{ value: 'g', label: 'g' },
+						{ value: 'kg', label: 'kg' },
+						{ value: 'ton', label: 'ton' },
+					]}
+					maxWidth="sm"
+					placeholder="Choose"
+					required
+					value="kg"
+					{...field2Props}
+				/>
+			</>
+		)}
+	</GroupedFields>
+
+	<GroupedFields
+		legend="Item weight"
+		hideOptionalLabel
+		message="Enter a valid item weight"
+		field2Invalid
+	>
+		{({ field1Props, field2Props }) => (
+			<>
+				<TextInput label="Weight" {...field1Props} required value="10" />
+				<Select
+					label="Unit"
+					options={[
+						{ value: 'mg', label: 'mg' },
+						{ value: 'g', label: 'g' },
+						{ value: 'kg', label: 'kg' },
+						{ value: 'ton', label: 'ton' },
+					]}
+					maxWidth="sm"
+					placeholder="Choose"
+					required
+					{...field2Props}
+				/>
+			</>
+		)}
+	</GroupedFields>
+
+	<GroupedFields
+		legend="Item weight"
+		hideOptionalLabel
+		message="Enter a valid item weight"
+		field1Invalid
+		field2Invalid
+	>
+		{({ field1Props, field2Props }) => (
+			<>
+				<TextInput label="Weight" {...field1Props} required />
+				<Select
+					label="Unit"
+					options={[
+						{ value: 'mg', label: 'mg' },
+						{ value: 'g', label: 'g' },
+						{ value: 'kg', label: 'kg' },
+						{ value: 'ton', label: 'ton' },
+					]}
+					maxWidth="sm"
+					placeholder="Choose"
+					required
+					{...field2Props}
+				/>
+			</>
+		)}
+	</GroupedFields>
+</FormStack>
+```

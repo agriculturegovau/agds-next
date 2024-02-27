@@ -57,7 +57,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		const styles = textInputStyles({
 			block,
 			maxWidth,
-			invalid,
 			multiline: true,
 		});
 		return (
