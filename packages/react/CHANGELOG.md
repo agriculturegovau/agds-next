@@ -1,5 +1,33 @@
 # @ag.ds-next/react
 
+## 1.19.0
+
+### Minor Changes
+
+- f0b9db1d249: date-picker: Allow alternative date formats to be entered via the text input, e.g. `28-2-2023`, `28/2/2023`, `28th Feb 2023` etc.
+
+  date-range-picker: Allow alternative date formats to be entered via the text input, e.g. `28-2-2023`, `28/2/2023`, `28th Feb 2023` etc.
+
+- 5d8489f53de: date-picker: Add new prop `dateFormat`, which can be used to adjust the date format displayed in the text input and secondary label.
+
+  date-picker: Validate date formats `onBlur` instead of `onInputChange`.
+
+  date-range-picker: Add new prop `dateFormat`, which can be used to adjust the date format displayed in the text input and secondary label.
+
+  date-range-picker: Validate date formats `onBlur` instead of `onInputChange`.
+
+- d25a2142196: grouped-fields: Initial release of component. To support this component, change how invalid state is applied to autocomplete, combobox, date-picker, date-range-picker, password-input, search, search-input, select, textarea and text-input.
+
+### Patch Changes
+
+- 2f5aca86679: field: Ensure all form inputs always try to achieve their maxWidth.
+- 5b9cc2fbce3: date-picker: Add indicator dot to today’s date in calendar widget
+
+  date-range-picker: Add indicator dot to today’s date in calendar widget
+
+- 90294ca5c3c: icon: Add CalendarIcon to list of all icons.
+- 5e37b79b433: icon: Update Warning and WarningFilled icons
+
 ## 1.18.0
 
 ### Minor Changes
