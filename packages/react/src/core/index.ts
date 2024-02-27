@@ -6,5 +6,6 @@ export * from './utils';
 export * from './theme';
 export * from './goldTheme';
 export * from './boxPalette';
+export * from './actionPalette';
 export * from './globalPalette';
 export * from './responsive';

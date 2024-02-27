@@ -26,6 +26,9 @@ type PaletteProps = Partial<{
 }>;
 
 function paletteStyles({ palette, dark, light }: PaletteProps) {
+	// FIXME We also need to update the `actionPalette` here to use the right box palette vars whenever the `palette` changes
+	// Currently, the action palette is broken in dark mode because it is using the light palette vars
+
 	if (palette) {
 		// If the `palette` prop is a string, nothing special is required
 		if (typeof palette === 'string') return boxPalettes[palette];

@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, actionPalette, tokens } from '../core';
 import { getInitialsFromName } from './utils';
 
 type NativeDivProps = HTMLAttributes<HTMLDivElement>;
@@ -26,16 +26,19 @@ export function Avatar({
 	'aria-label': ariaLabel,
 }: AvatarProps) {
 	const initials = getInitialsFromName(name);
-	const color = TONE_PROP[toneProp];
+	const color = TONE_MAP[toneProp];
 	const { size, fontSize } = SIZE_MAP[sizeProp];
 	return (
 		<Flex
 			as="span"
+			aria-hidden={ariaHidden}
+			aria-label={ariaLabel}
 			alignItems="center"
 			justifyContent="center"
 			flexShrink={0}
+			fontSize={fontSize}
+			fontWeight="bold"
 			css={{
-				textDecoration: 'none',
 				height: `${size}rem`,
 				width: `${size}rem`,
 				borderRadius: '50%',
@@ -44,22 +47,18 @@ export function Avatar({
 				borderColor: color,
 				color: color,
 			}}
-			fontSize={fontSize}
-			fontWeight="bold"
-			aria-hidden={ariaHidden}
-			aria-label={ariaLabel}
 		>
 			{initials}
 		</Flex>
 	);
 }
 
-const TONE_PROP = {
+const TONE_MAP = {
 	neutral: boxPalette.foregroundMuted,
-	action: boxPalette.foregroundAction,
+	action: actionPalette.action,
 };
 
-type AvatarTone = keyof typeof TONE_PROP;
+type AvatarTone = keyof typeof TONE_MAP;
 
 const SIZE_MAP = {
 	sm: { fontSize: 'xs', size: 2 },

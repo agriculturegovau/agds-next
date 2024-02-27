@@ -5,7 +5,13 @@ import {
 	useEffect,
 	useRef,
 } from 'react';
-import { boxPalette, forwardRefWithAs, mergeRefs, packs } from '../core';
+import {
+	actionPalettes,
+	boxPalette,
+	forwardRefWithAs,
+	mergeRefs,
+	packs,
+} from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { Text } from '../text';
@@ -81,6 +87,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						'& > div:first-of-type > span': packs.underline,
+						...actionPalettes.hover,
 					},
 				}}
 				{...props}

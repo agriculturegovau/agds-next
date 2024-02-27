@@ -1062,7 +1062,6 @@ const snippets = [
 		name: 'Action',
 		code: '	<NotificationBadge tone="action" value={16} max={99} />',
 	},
-
 	{
 		group: 'NotificationBadge',
 		name: 'Neutral',

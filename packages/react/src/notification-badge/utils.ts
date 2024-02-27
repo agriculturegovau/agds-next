@@ -1,8 +1,8 @@
-import { boxPalette } from '../core';
+import { actionPalette, boxPalette } from '../core';
 
 export const badgeToneMap = {
 	neutral: boxPalette.foregroundMuted,
-	action: boxPalette.foregroundAction,
+	action: actionPalette.action,
 } as const;
 
 export type BadgeTone = keyof typeof badgeToneMap;

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { NotificationBadge } from './NotificationBadge';
 
 const meta: Meta<typeof NotificationBadge> = {
@@ -8,21 +8,36 @@ const meta: Meta<typeof NotificationBadge> = {
 
 export default meta;
 
-export const Basic = {
+type Story = StoryObj<typeof NotificationBadge>;
+
+export const Basic: Story = {
+	args: {
+		value: 48,
+	},
+};
+
+export const ActionTone: Story = {
 	args: {
 		value: 48,
 		tone: 'action',
 	},
 };
 
-export const Neutral = {
+export const NeutralTone: Story = {
 	args: {
 		value: 48,
 		tone: 'neutral',
 	},
 };
 
-export const Max = {
+export const InheritTone: Story = {
+	args: {
+		value: 48,
+		tone: 'inherit',
+	},
+};
+
+export const Max: Story = {
 	args: {
 		value: 100,
 		max: 99,

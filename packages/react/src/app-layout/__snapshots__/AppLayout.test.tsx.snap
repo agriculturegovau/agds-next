@@ -91,7 +91,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-1cow25h-boxStyles-Avatar"
+                class="css-1gfcmg9-boxStyles-Avatar"
               >
                 TW
               </span>
@@ -184,7 +184,7 @@ exports[`AppLayout renders correctly 1`] = `
             class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
           >
             <span
-              class="css-1cow25h-boxStyles-Avatar"
+              class="css-1gfcmg9-boxStyles-Avatar"
             >
               TW
             </span>

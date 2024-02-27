@@ -1,6 +1,13 @@
 import type { PropsWithChildren } from 'react';
 import { focusStyles } from '../box';
-import { boxPalette, mapSpacing, mapResponsiveProp, packs, mq } from '../core';
+import {
+	boxPalette,
+	actionPalettes,
+	mapSpacing,
+	mapResponsiveProp,
+	packs,
+	mq,
+} from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
 import { mobileBreakpoint } from './utils';
@@ -62,10 +69,12 @@ export function MainNavListItem({
 						'&:after': { zIndex: -1 },
 					},
 
+					...actionPalettes.hover,
+
 					// Hover styles
 					'&:hover': {
-						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
+						color: boxPalette.foregroundText,
 
 						'& > span:first-of-type': packs.underline,
 
