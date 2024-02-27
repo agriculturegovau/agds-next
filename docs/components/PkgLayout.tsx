@@ -15,20 +15,7 @@ import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
 import { PageAlert } from './designSystemComponents';
 
-export function PkgLayout({
-	children,
-	pkg,
-	navLinks,
-	breadcrumbs,
-	editPath,
-}: PropsWithChildren<{
-	pkg: Pkg;
-	navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
-	breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
-	editPath?: string;
-}>) {
-	const { asPath } = useRouter();
-
+export function calculateImportString(pkg: Pkg) {
 	// if only 1, it outputs a string like this:
 	// import { ComponentName } from '@ag.ds-next/react/component-name';
 	// if more than 1, it outputs a string like this:
@@ -46,6 +33,24 @@ export function PkgLayout({
 	const importString = `import { ${
 		importNames + closingBracket
 	} from '@ag.ds-next/react/${pkg.name}';`;
+
+	return importString;
+}
+
+export function PkgLayout({
+	children,
+	pkg,
+	navLinks,
+	breadcrumbs,
+	editPath,
+}: PropsWithChildren<{
+	pkg: Pkg;
+	navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
+	breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
+	editPath?: string;
+}>) {
+	const { asPath } = useRouter();
+	const importString = calculateImportString(pkg);
 
 	return (
 		<SiteLayout applyMainElement={false}>
