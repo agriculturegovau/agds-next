@@ -29,8 +29,23 @@ export function PkgLayout({
 }>) {
 	const { asPath } = useRouter();
 
-	const importNames = pkg.importNames?.join(', ');
-	const importString = `import { ${importNames} } from '@ag.ds-next/react/${pkg.name}';`;
+	// if only 1, it outputs a string like this:
+	// import { ComponentName } from '@ag.ds-next/react/component-name';
+	// if more than 1, it outputs a string like this:
+	// import {
+	//     ComponentOne,
+	//     ComponentTwo,
+	// } from '@ag.ds-next/react/component-name'
+	// This helps keep the string readable and not require scrolling
+	const hasMultipleImports = (pkg.importNames?.length || 0) > 1;
+	const tabInset = '\n    ';
+	const importNames = hasMultipleImports
+		? tabInset + pkg.importNames?.join(',' + tabInset)
+		: pkg.importNames?.join(', ');
+	const closingBracket = hasMultipleImports ? ',\n}' : ' }';
+	const importString = `import { ${
+		importNames + closingBracket
+	} from '@ag.ds-next/react/${pkg.name}';`;
 
 	return (
 		<SiteLayout applyMainElement={false}>
