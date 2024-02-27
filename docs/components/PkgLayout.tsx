@@ -28,6 +28,10 @@ export function PkgLayout({
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
+
+	const importNames = pkg.importNames?.join(', ');
+	const importString = `import { ${importNames} } from '@ag.ds-next/react/${pkg.name}';`;
+
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
@@ -86,7 +90,7 @@ export function PkgLayout({
 						{!pkg.unreleased ? (
 							<Prose>
 								<pre>
-									<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+									<code>{importString}</code>
 								</pre>
 							</Prose>
 						) : (
