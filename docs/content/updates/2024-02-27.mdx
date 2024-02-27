@@ -1,0 +1,44 @@
+---
+date: 27th February 2024
+title: AgDS Beta v1.19.0 release
+description: Add alternative date format support to Date pickers. Add new Grouped fields component, plus various minor bug fixes and improvements.
+---
+
+## Updates
+
+### [Date picker](/components/date-picker)
+
+- Allow alternative date formats to be entered via the text input, e.g. `28-2-2023`, `28/2/2023`, `28th Feb 2023` etc
+- Add new prop `dateFormat`, which can be used to adjust the date format displayed in the text input and secondary label
+- Validate date formats `onBlur` instead of `onInputChange`
+- Add indicator dot to today’s date in calendar widget
+
+### [Date range picker](/components/date-range-picker)
+
+- Allow alternative date formats to be entered via the text input, e.g. `28-2-2023`, `28/2/2023`, `28th Feb 2023` etc
+- Add new prop `dateFormat`, which can be used to adjust the date format displayed in the text input and secondary label
+- Validate date formats `onBlur` instead of `onInputChange`
+- Add indicator dot to today’s date in calendar widget
+
+### [Field](/components/field)
+
+- Ensure all form inputs always try to achieve their `maxWidth`
+
+### [Grouped fields](/components/grouped-fields)
+
+- Initial release of component. To support this component, change how the `invalid` state is applied to autocomplete, combobox, date-picker, date-range-picker, password-input, search, search-input, select, textarea and text-input
+
+### [Icon](/components/icon)
+
+- Update Warning and WarningFilled icons
+- Add `CalendarIcon` to list of all icons.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.19.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1558) for this release.
