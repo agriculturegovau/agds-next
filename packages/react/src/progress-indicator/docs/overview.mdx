@@ -15,7 +15,7 @@ relatedComponents: ['task-list']
 		{ label: 'Organisations', status: 'started', href: '#' },
 		{ label: 'Business contacts', status: 'error', href: '#' },
 		{ label: 'Case studies', status: 'todo', href: '#' },
-		{ label: 'Attachments', status: 'doing', href: '#' },
+		{ label: 'Attachments', status: 'started', href: '#', isActive: true },
 		{ label: 'Review and submit', status: 'blocked', href: '#' },
 	]}
 />
@@ -126,30 +126,6 @@ The `status` prop can be used to indicate the status of each item. The following
 	</TableBody>
 </Table>
 
-## Custom active item
-
-By default, the item with status `'doing'` will be marked as active. If you would like a different item to be marked as active, then apply an `isActive: true` property to the item.
-Currently, only the `'doing'`, `'started'`, and `'blocked'` statuses may recieve the `isActive: true` property.
-
-```jsx live
-<ProgressIndicator
-	items={[
-		{ label: 'Introduction', status: 'done', href: '#' },
-		{ label: 'Submit evidence', status: 'saved', href: '#' },
-		{ label: 'Organisations', status: 'started', href: '#' },
-		{ label: 'Business contacts', status: 'error', href: '#' },
-		{ label: 'Case studies', status: 'todo', href: '#' },
-		{ label: 'Attachments', status: 'doing', href: '#' },
-		{
-			label: 'Review and submit',
-			status: 'blocked',
-			href: '#',
-			isActive: true,
-		},
-	]}
-/>
-```
-
 ## Buttons
 
 If an item does not specify an `href` attribute, a `button` element will be rendered. This enables you to respond to various mouse events, such as `onClick`.
@@ -162,7 +138,12 @@ If an item does not specify an `href` attribute, a `button` element will be rend
 		{ label: 'Organisations', status: 'started', onClick: console.log },
 		{ label: 'Business contacts', status: 'error', onClick: console.log },
 		{ label: 'Case studies', status: 'todo', onClick: console.log },
-		{ label: 'Attachments', status: 'doing', onClick: console.log },
+		{
+			label: 'Attachments',
+			status: 'started',
+			onClick: console.log,
+			isActive: true,
+		},
 		{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 	]}
 />
@@ -178,7 +159,12 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 	items={[
 		{ href: '#', label: 'Introduction', status: 'done' },
 		{ href: '#', label: 'Organisations', status: 'started' },
-		{ href: '#', label: 'Business contacts', status: 'doing' },
+		{
+			href: '#',
+			label: 'Business contacts',
+			status: 'started',
+			isActive: true,
+		},
 		{ href: '#', label: 'Case studies', status: 'todo' },
 		{ href: '#', label: 'Attachments', status: 'blocked' },
 	]}

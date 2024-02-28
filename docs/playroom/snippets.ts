@@ -639,12 +639,12 @@ const snippets = [
 		name: 'Basic',
 		code: `<ProgressIndicator
 			items={[
-				{ label: 'Introduction', status: 'done', href: '#', isActive: true },
+				{ label: 'Introduction', status: 'done', href: '#' },
 				{ label: 'Submit evidence', status: 'saved', href: '#' },
-				{ label: 'Organisations', status: 'started', href: '#' },
+				{ label: 'Organisations', status: 'started', href: '#', isActive: true },
 				{ label: 'Business contacts', status: 'error', href: '#' },
 				{ label: 'Case studies', status: 'todo', href: '#' },
-				{ label: 'Attachments', status: 'doing', href: '#' },
+				{ label: 'Attachments', status: 'started', href: '#' },
 				{ label: 'Review and submit', status: 'blocked', href: '#' },
 			]}
 		/>`,
