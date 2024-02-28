@@ -42,9 +42,8 @@ export const ProgressIndicator = ({
 		hasExplicitActiveDeclared
 			? items
 			: items.map((item) => ({
-					isActive: item.status === 'doing',
-					// placing rest after isActive so people can overwrite the isActive value to false
 					...item,
+					isActive: item.status === 'doing',
 			  }));
 
 	return (
