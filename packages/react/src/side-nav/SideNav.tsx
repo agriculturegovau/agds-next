@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Box } from '../box';
 import { LinkProps } from '../core';
 import {
@@ -9,7 +10,7 @@ import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
 
 type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
-	label: string;
+	label: ReactNode;
 	items?: SideNavMenuItemType[];
 };
 

@@ -8,6 +8,7 @@ import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 import { SearchInput } from './designSystemComponents';
+import { getPictogram, pictograms } from './pictograms';
 
 type PageLayoutProps = PropsWithChildren<{
 	/** If true, the main content area will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
@@ -52,9 +53,34 @@ export function PageLayout({
 	const filteredItems =
 		useMemo(
 			() =>
-				sideNav?.items.filter((item) =>
-					searchTerm ? item.label.includes(searchTerm) : true
-				),
+				sideNav?.items
+					.map((item) => {
+						const slug = item.href?.replace('/components/', '');
+						const icon = getPictogram(
+							pictograms[slug as keyof typeof pictograms]
+						);
+						return {
+							...item,
+							label: slug ? (
+								<Flex alignItems={'center'} gap={0.5}>
+									<img
+										src={icon.src}
+										alt=""
+										aria-hidden="true"
+										height={20}
+										width={20}
+									/>
+									{/* <Icon /> */}
+									{item.label}
+								</Flex>
+							) : (
+								item.label
+							),
+						};
+					})
+					.filter((item) =>
+						searchTerm ? item.href?.includes(searchTerm.toLowerCase()) : true
+					),
 			[searchTerm, sideNav?.items]
 		) || [];
 

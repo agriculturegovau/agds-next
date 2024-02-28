@@ -7,6 +7,7 @@ import {
 	stripMdxExtension,
 } from '../mdxUtils';
 import { slugify } from '../slugify';
+import { pictograms } from '../../components/pictograms';
 
 export const COMPONENTS_PATH = normalize(`${process.cwd()}/content/components`);
 
@@ -99,6 +100,7 @@ function pkgNavMetaData(
 		description: (data?.description ?? null) as string | null,
 		deprecated: (data?.deprecated ?? false) as boolean,
 		slug,
+		pictogram: pictograms[slug as keyof typeof pictograms]
 	};
 }
 
