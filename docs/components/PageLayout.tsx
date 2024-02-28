@@ -1,4 +1,4 @@
-import { ComponentProps, PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { PageContent, ContentBleed } from '@ag.ds-next/react/content';
 import { Flex } from '@ag.ds-next/react/flex';
@@ -6,9 +6,8 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Columns, Column } from '@ag.ds-next/react/columns';
 import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
-import { DefaultComboboxOption } from '@ag.ds-next/react/combobox';
 import { EditPage } from './EditPage';
-import { ComponentQuickNav } from './ComponentQuickNav';
+import { SearchInput } from './designSystemComponents';
 
 type PageLayoutProps = PropsWithChildren<{
 	/** If true, the main content area will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
@@ -48,30 +47,38 @@ export function PageLayout({
 	sideNav,
 }: PageLayoutProps) {
 	const router = useRouter();
-	const quickNavOptions: Array<DefaultComboboxOption> | undefined =
-		sideNav?.items
-			.map((item) =>
-				item.href
-					? {
-							label: item.label,
-							value: item.href,
-					  }
-					: undefined
-			)
-			.filter(isTruthy);
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const filteredItems =
+		useMemo(
+			() =>
+				sideNav?.items.filter((item) =>
+					searchTerm ? item.label.includes(searchTerm) : true
+				),
+			[searchTerm, sideNav?.items]
+		) || [];
+
 	return (
 		<PageContent>
 			<Columns>
 				{sideNav && (
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<ContentBleed visible={{ md: false }}>
-							<ComponentQuickNav options={quickNavOptions} />
+							<div role="search" aria-label="components">
+								<SearchInput
+									label="Filter navigation"
+									value={searchTerm}
+									onChange={setSearchTerm}
+									maxWidth="xl"
+									hideOptionalLabel
+								/>
+							</div>
 							<SideNav
 								collapseTitle="In this section"
 								activePath={router.asPath}
 								title={sideNav.title}
 								titleLink={sideNav.titleLink}
-								items={sideNav.items}
+								items={filteredItems}
 							/>
 						</ContentBleed>
 					</Column>

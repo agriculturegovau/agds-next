@@ -53,7 +53,7 @@ export default function PackagesHome({
 
 				return (
 					p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					// p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
 					p.description?.toLowerCase().includes(searchTerm.toLowerCase())
 				);
 			}),
