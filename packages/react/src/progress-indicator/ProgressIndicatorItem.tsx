@@ -92,9 +92,9 @@ const ProgressIndicatorItem = ({
 
 	if (isActive) {
 		const activeStatusWhiteList: Array<ProgressIndicatorItemStatus> = [
+			'blocked',
 			'doing',
 			'started',
-			'blocked',
 		];
 		if (!activeStatusWhiteList.includes(status)) {
 			throw new Error(

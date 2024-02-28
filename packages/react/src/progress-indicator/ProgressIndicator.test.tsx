@@ -156,110 +156,57 @@ describe('ProgressIndicator', () => {
 			};
 		}
 
-		describe('blocked status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('blocked', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('blocked', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
+		const activeStatusWhiteList: Array<ProgressIndicatorItemStatus> = [
+			'blocked',
+			'doing',
+			'started',
+		];
+		const activeStatusBlackList: Array<ProgressIndicatorItemStatus> = [
+			'done',
+			'error',
+			'saved',
+			'todo',
+		];
+		const allStatuses: Array<ProgressIndicatorItemStatus> = [
+			...activeStatusWhiteList,
+			...activeStatusBlackList,
+		];
 
-		describe('doing status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('doing', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('doing', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
-		describe('done status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('done', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('done', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
-		describe('error status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('error', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('error', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
-		describe('saved status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('saved', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('saved', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
-		describe('started status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('started', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('started', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
-			});
-		});
-		describe('todo status active', () => {
-			it('renders active link', () => {
-				const { container } = renderProgressIndicator(
-					createList('todo', { href: '#' })
-				);
-				expect(container).toMatchSnapshot();
-			});
-			it('renders active button', () => {
-				const { container } = renderProgressIndicator(
-					createList('todo', { onClick: console.log })
-				);
-				expect(container).toMatchSnapshot();
+		allStatuses.forEach((status) => {
+			const isWhiteListedStatus = activeStatusWhiteList.includes(status);
+			describe(`${status} status active`, () => {
+				function runTest(
+					extraProperties: Partial<ProgressIndicatorItem>
+				): void {
+					try {
+						const { container } = renderProgressIndicator(
+							createList(status, extraProperties)
+						);
+						if (isWhiteListedStatus) {
+							expect(container).toMatchSnapshot();
+						}
+					} catch (err) {
+						expect((err as Error).message).toBe(
+							`The "${status}" status cannot be set to active. Please use one of the following status types instead: ${activeStatusWhiteList.join(
+								', '
+							)}`
+						);
+					}
+				}
+
+				it('renders active link', () => {
+					runTest({ href: '#' });
+				});
+				it('renders active button', () => {
+					runTest({ onClick: console.log });
+				});
 			});
 		});
 
 		describe('renders valid HTML with no a11y violations', () => {
 			it('renders valid active link', async () => {
 				const { container } = renderProgressIndicator(
-					createList('done', { href: '#' })
+					createList('started', { href: '#' })
 				);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
@@ -273,7 +220,7 @@ describe('ProgressIndicator', () => {
 			});
 			it('renders valid active button', async () => {
 				const { container } = renderProgressIndicator(
-					createList('done', { onClick: console.log })
+					createList('started', { onClick: console.log })
 				);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
