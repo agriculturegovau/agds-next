@@ -126,27 +126,10 @@ The `status` prop can be used to indicate the status of each item. The following
 	</TableBody>
 </Table>
 
-## Buttons
-
-If an item does not specify an `href` attribute, a `button` element will be rendered. This enables you to respond to various mouse events, such as `onClick`.
-
-```jsx live
-<ProgressIndicator
-	items={[
-		{ label: 'Introduction', status: 'done', onClick: console.log },
-		{ label: 'Submit evidence', status: 'saved', onClick: console.log },
-		{ label: 'Organisations', status: 'started', onClick: console.log },
-		{ label: 'Business contacts', status: 'error', onClick: console.log },
-		{ label: 'Case studies', status: 'todo', onClick: console.log },
-		{ label: 'Attachments', status: 'doing', onClick: console.log },
-		{ label: 'Review and submit', status: 'blocked', onClick: console.log },
-	]}
-/>
-```
-
 ## Custom active item
 
 By default, the item with status `'doing'` will be marked as active. If you would like a different item to be marked as active, then apply an `isActive: true` property to the item.
+Currently, only the `'doing'`, `'started'`, and `'blocked'` statuses may recieve the `isActive: true` property.
 
 ```jsx live
 <ProgressIndicator
@@ -163,6 +146,24 @@ By default, the item with status `'doing'` will be marked as active. If you woul
 			href: '#',
 			isActive: true,
 		},
+	]}
+/>
+```
+
+## Buttons
+
+If an item does not specify an `href` attribute, a `button` element will be rendered. This enables you to respond to various mouse events, such as `onClick`.
+
+```jsx live
+<ProgressIndicator
+	items={[
+		{ label: 'Introduction', status: 'done', onClick: console.log },
+		{ label: 'Submit evidence', status: 'saved', onClick: console.log },
+		{ label: 'Organisations', status: 'started', onClick: console.log },
+		{ label: 'Business contacts', status: 'error', onClick: console.log },
+		{ label: 'Case studies', status: 'todo', onClick: console.log },
+		{ label: 'Attachments', status: 'doing', onClick: console.log },
+		{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 	]}
 />
 ```
