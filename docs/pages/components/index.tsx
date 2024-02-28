@@ -1,25 +1,26 @@
 import { normalize } from 'path';
 import { useMemo, useState } from 'react';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Column, Columns } from '@ag.ds-next/react/columns';
-import { DefaultComboboxOption } from '@ag.ds-next/react/combobox';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
-import { ComponentQuickNav } from '../../components/ComponentQuickNav';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import {
-	PkgCardList,
-	PkgCardListEmptyState,
-} from '../../components/PkgCardList';
+import { SearchInput } from '@ag.ds-next/react/search-input';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 import {
 	COMPONENTS_PATH,
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
 } from '../../lib/mdx/packages';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { DocumentTitle } from '../../components/DocumentTitle';
+import {
+	PkgCardList,
+	PkgCardListEmptyState,
+} from '../../components/PkgCardList';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -31,13 +32,15 @@ export default function PackagesHome({
 	title,
 	description,
 }: StaticProps) {
+	const [searchTerm, setSearchTerm] = useState('');
 	const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
 	const resetFilters = () => {
+		setSearchTerm('');
 		setActiveCategories([]);
 	};
 
-	const hasFilters = activeCategories.length > 0;
+	const hasFilters = searchTerm !== '' || activeCategories.length > 0;
 
 	const filteredPkgs = useMemo(
 		() =>
@@ -45,16 +48,16 @@ export default function PackagesHome({
 				if (activeCategories.length) {
 					if (!activeCategories.includes(p.groupName)) return false;
 				}
-				return true;
-			}),
-		[pkgList, activeCategories]
-	);
 
-	const comboboxOptions: Array<DefaultComboboxOption> = filteredPkgs.map(
-		(comp) => ({
-			label: comp.title,
-			value: `/components/${comp.slug}`,
-		})
+				if (!searchTerm) return true;
+
+				return (
+					p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					p.description?.toLowerCase().includes(searchTerm.toLowerCase())
+				);
+			}),
+		[pkgList, searchTerm, activeCategories]
 	);
 
 	return (
@@ -68,32 +71,44 @@ export default function PackagesHome({
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
-							<ComponentQuickNav options={comboboxOptions} />
-							<ControlGroup
-								label="Filter components by category"
-								hint="Filtering applies immediately"
-								block={true}
-								hideOptionalLabel
-								aria-controls={listId}
-							>
-								{groupList.map(({ title }) => (
-									<Checkbox
-										key={title}
-										value={title}
-										checked={activeCategories.includes(title)}
-										onChange={(e) => {
-											const checked = e.target.checked;
-											setActiveCategories(
-												checked
-													? [...activeCategories, title]
-													: activeCategories?.filter((s) => s !== title)
-											);
-										}}
+							<FilterSidebar onClearFilters={resetFilters}>
+								<FormStack>
+									<div role="search" aria-label="components">
+										<SearchInput
+											label="Find a component"
+											hint="Filter by name or category"
+											value={searchTerm}
+											onChange={setSearchTerm}
+											maxWidth="xl"
+											hideOptionalLabel
+										/>
+									</div>
+									<ControlGroup
+										label="Category"
+										block={true}
+										hideOptionalLabel
+										aria-controls={listId}
 									>
-										{title}
-									</Checkbox>
-								))}
-							</ControlGroup>
+										{groupList.map(({ title }) => (
+											<Checkbox
+												key={title}
+												value={title}
+												checked={activeCategories.includes(title)}
+												onChange={(e) => {
+													const checked = e.target.checked;
+													setActiveCategories(
+														checked
+															? [...activeCategories, title]
+															: activeCategories?.filter((s) => s !== title)
+													);
+												}}
+											>
+												{title}
+											</Checkbox>
+										))}
+									</ControlGroup>
+								</FormStack>
+							</FilterSidebar>
 						</Stack>
 					</Column>
 					<Column
