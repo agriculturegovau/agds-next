@@ -70,35 +70,32 @@ export default function PackagesHome({
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
-							<FilterSidebar onClearFilters={resetFilters}>
-								<FormStack>
-									<ComponentQuickNav options={comboboxOptions} />
-									<ControlGroup
-										label="Filter by category"
-										block={true}
-										hideOptionalLabel
-										aria-controls={listId}
+							<ComponentQuickNav options={comboboxOptions} />
+							<ControlGroup
+								label="Filter components by category"
+								hint="Filtering applies immediately"
+								block={true}
+								hideOptionalLabel
+								aria-controls={listId}
+							>
+								{groupList.map(({ title }) => (
+									<Checkbox
+										key={title}
+										value={title}
+										checked={activeCategories.includes(title)}
+										onChange={(e) => {
+											const checked = e.target.checked;
+											setActiveCategories(
+												checked
+													? [...activeCategories, title]
+													: activeCategories?.filter((s) => s !== title)
+											);
+										}}
 									>
-										{groupList.map(({ title }) => (
-											<Checkbox
-												key={title}
-												value={title}
-												checked={activeCategories.includes(title)}
-												onChange={(e) => {
-													const checked = e.target.checked;
-													setActiveCategories(
-														checked
-															? [...activeCategories, title]
-															: activeCategories?.filter((s) => s !== title)
-													);
-												}}
-											>
-												{title}
-											</Checkbox>
-										))}
-									</ControlGroup>
-								</FormStack>
-							</FilterSidebar>
+										{title}
+									</Checkbox>
+								))}
+							</ControlGroup>
 						</Stack>
 					</Column>
 					<Column
