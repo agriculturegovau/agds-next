@@ -90,6 +90,21 @@ const ProgressIndicatorItem = ({
 
 	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
 
+	if (isActive) {
+		const activeStatusWhiteList: Array<ProgressIndicatorItemStatus> = [
+			'doing',
+			'started',
+			'blocked',
+		];
+		if (!activeStatusWhiteList.includes(status)) {
+			throw new Error(
+				`The "${status}" status cannot be set to active. Please use one of the following status types instead: ${activeStatusWhiteList.join(
+					', '
+				)}`
+			);
+		}
+	}
+
 	return (
 		<Box
 			as="li"
