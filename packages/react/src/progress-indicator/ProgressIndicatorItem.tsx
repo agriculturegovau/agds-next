@@ -203,7 +203,7 @@ const ProgressIndicatorItemIcon = ({
 	const ringGap = 3;
 	const ringInset = ringWidth + ringGap;
 	const processedIconColor: IconColour =
-		status === 'doing' && !isActive ? 'border' : iconColor;
+		isActive && iconColor === 'border' ? 'selected' : iconColor;
 
 	return (
 		<Flex as="span" flexDirection="column" alignItems="center">
@@ -271,7 +271,7 @@ const statusMap: StatusMapCollection = {
 	doing: {
 		label: 'In progress',
 		icon: ProgressDoingIcon,
-		iconColor: 'selected',
+		iconColor: 'border',
 	},
 	started: {
 		label: 'In progress',
