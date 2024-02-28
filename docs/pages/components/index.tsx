@@ -1,26 +1,27 @@
 import { normalize } from 'path';
 import { useMemo, useState } from 'react';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { Column, Columns } from '@ag.ds-next/react/columns';
+import { DefaultComboboxOption } from '@ag.ds-next/react/combobox';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { Column, Columns } from '@ag.ds-next/react/columns';
-import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
+import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { ComponentQuickNav } from '../../components/ComponentQuickNav';
+import { DocumentTitle } from '../../components/DocumentTitle';
+import {
+	PkgCardList,
+	PkgCardListEmptyState,
+} from '../../components/PkgCardList';
 import {
 	COMPONENTS_PATH,
 	getPkgGroupList,
 	getPkgList,
 	getPkgNavLinks,
 } from '../../lib/mdx/packages';
-import { DocumentTitle } from '../../components/DocumentTitle';
-import {
-	PkgCardList,
-	PkgCardListEmptyState,
-} from '../../components/PkgCardList';
-import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
+import { getMarkdownData, serializeMarkdown } from '../../lib/mdxUtils';
 
 type StaticProps = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
@@ -32,15 +33,13 @@ export default function PackagesHome({
 	title,
 	description,
 }: StaticProps) {
-	const [searchTerm, setSearchTerm] = useState('');
 	const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
 	const resetFilters = () => {
-		setSearchTerm('');
 		setActiveCategories([]);
 	};
 
-	const hasFilters = searchTerm !== '' || activeCategories.length > 0;
+	const hasFilters = activeCategories.length > 0;
 
 	const filteredPkgs = useMemo(
 		() =>
@@ -48,16 +47,16 @@ export default function PackagesHome({
 				if (activeCategories.length) {
 					if (!activeCategories.includes(p.groupName)) return false;
 				}
-
-				if (!searchTerm) return true;
-
-				return (
-					p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					p.description?.toLowerCase().includes(searchTerm.toLowerCase())
-				);
+				return true;
 			}),
-		[pkgList, searchTerm, activeCategories]
+		[pkgList, activeCategories]
+	);
+
+	const comboboxOptions: Array<DefaultComboboxOption> = filteredPkgs.map(
+		(comp) => ({
+			label: comp.title,
+			value: `/components/${comp.slug}`,
+		})
 	);
 
 	return (
@@ -73,18 +72,9 @@ export default function PackagesHome({
 						<Stack gap={1}>
 							<FilterSidebar onClearFilters={resetFilters}>
 								<FormStack>
-									<div role="search" aria-label="components">
-										<SearchInput
-											label="Find a component"
-											hint="Filter by name or category"
-											value={searchTerm}
-											onChange={setSearchTerm}
-											maxWidth="xl"
-											hideOptionalLabel
-										/>
-									</div>
+									<ComponentQuickNav options={comboboxOptions} />
 									<ControlGroup
-										label="Category"
+										label="Filter by category"
 										block={true}
 										hideOptionalLabel
 										aria-controls={listId}
