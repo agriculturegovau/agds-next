@@ -1,4 +1,9 @@
-import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
+import {
+	ButtonHTMLAttributes,
+	ElementType,
+	PropsWithChildren,
+	useEffect,
+} from 'react';
 import { Box, backgroundColorMap } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -104,6 +109,14 @@ const ProgressIndicatorItem = ({
 			);
 		}
 	}
+
+	useEffect(() => {
+		if (status === 'doing') {
+			console.warn(
+				'The "doing" status is deprecated. Use the "started" status with "isActive: true" applied instead.'
+			);
+		}
+	}, [status]);
 
 	return (
 		<Box
