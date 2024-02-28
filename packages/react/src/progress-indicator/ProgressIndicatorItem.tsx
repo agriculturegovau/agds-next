@@ -38,11 +38,29 @@ export type ProgressIndicatorItemStatus =
 	| 'saved'
 	| 'error';
 
-export type ProgressIndicatorItemLinkProps = LinkProps & {
+export interface ProgressIndicatorItemLinkProps extends LinkProps {
+	/** Determines the background colour of the progress indicator item. */
 	background?: ProgressIndicatorBackground;
+	/** Determines what style the item displays as.
+	 *
+	 * `blocked` = The user cannot start this step yet.
+	 *
+	 * `started` = The user has reached this step and begun work on it.
+	 *
+	 * `doing` = **(deprecated)** The user is actively working on this step (Use `started` with `isActive: true` instead).
+	 *
+	 * `todo` = The user has not started this step yet.
+	 *
+	 * `saved` = The user has submitted valid data however the data has not been approved yet. If no approval is needed, use the `done` status instead.
+	 *
+	 * `done` = The user has submitted valid data and it has been approved, no more work needs to be done on this step.
+	 *
+	 * `error` = The user has submitted invalid data and is not currently viewing the page.
+	 */
 	status: ProgressIndicatorItemStatus;
+	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
 	isActive?: boolean;
-};
+}
 
 export const ProgressIndicatorItemLink = ({
 	children,
