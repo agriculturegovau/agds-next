@@ -11,7 +11,7 @@ export function ComponentQuickNav({ options }: ComponentQuickNavProps) {
 
 	useEffect(() => {
 		if (quickNavigateSelection) {
-			window.location.pathname = quickNavigateSelection.value;
+			window.location = quickNavigateSelection.value as string & Location;
 		}
 	}, [quickNavigateSelection]);
 
@@ -19,6 +19,7 @@ export function ComponentQuickNav({ options }: ComponentQuickNavProps) {
 		<Combobox
 			label="Quick navigate to a component"
 			hint="Search for a component by name. Selecting that component will navigate immediately."
+			id="ComponentQuickNav"
 			value={quickNavigateSelection}
 			onChange={setQuickNavigateSelection}
 			options={options || []}

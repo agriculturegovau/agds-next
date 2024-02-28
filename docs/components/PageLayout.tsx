@@ -34,7 +34,7 @@ type PageLayoutProps = PropsWithChildren<{
  * @param value - Any value you want to test the truthiness of
  * @returns Boolean
  */
-function isTruthy<Test>(value: Test): value is Truthy<Test> {
+export function isTruthy<Test>(value: Test): value is Truthy<Test> {
 	return Boolean(value);
 }
 type Falsy = false | '' | 0 | null | undefined;

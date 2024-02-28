@@ -15,6 +15,15 @@ export const SiteLayout = ({
 	applyMainElement = true,
 	children,
 }: SiteLayoutProps) => {
+	const skipLinks = [
+		{ href: '#main-content', label: 'Skip to main content' },
+		{
+			href: '#ComponentQuickNav',
+			label: 'Skip to component quick navigation',
+		},
+		{ href: '#main-nav', label: 'Skip to main navigation' },
+	];
+
 	return (
 		<>
 			{process.env.NEXT_PUBLIC_GITHUB_PR_PREVIEW_NUMBER ? (
@@ -22,12 +31,7 @@ export const SiteLayout = ({
 					prPreviewNumber={process.env.NEXT_PUBLIC_GITHUB_PR_PREVIEW_NUMBER}
 				/>
 			) : null}
-			<SkipLinks
-				links={[
-					{ href: '#main-content', label: 'Skip to main content' },
-					{ href: '#main-nav', label: 'Skip to main navigation' },
-				]}
-			/>
+			<SkipLinks links={skipLinks} />
 			<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
 				<SiteHeader />
 				<Box

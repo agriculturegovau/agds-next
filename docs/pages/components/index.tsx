@@ -4,8 +4,6 @@ import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DefaultComboboxOption } from '@ag.ds-next/react/combobox';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
-import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { CategoryPageTemplate } from '../../components/CategoryPageTemplate';
