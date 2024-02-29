@@ -43,19 +43,19 @@ export interface ProgressIndicatorItemLinkProps extends LinkProps {
 	background?: ProgressIndicatorBackground;
 	/** Determines what style the item displays as.
 	 *
-	 * `blocked` = The user cannot start this step yet.
+	 * `blocked` = This step is not available yet for the user to do.
 	 *
-	 * `started` = The user has reached this step and begun work on it.
+	 * `started` = The user has reached this step and has begun work on it though it is not complete yet.
 	 *
 	 * `doing` = **(deprecated)** The user is actively working on this step (Use `started` with `isActive: true` instead).
 	 *
-	 * `todo` = The user has not started this step yet.
+	 * `todo` = The user has not started this step yet but it is available for the user to do.
 	 *
-	 * `saved` = The user has submitted valid data however the data has not been approved yet. If no approval is needed, use the `done` status instead.
+	 * `saved` = The user has submitted valid data however the data has not been approved or finalised yet. If no approval is needed, use the `done` status instead.
 	 *
-	 * `done` = The user has submitted valid data and it has been approved, no more work needs to be done on this step.
+	 * `done` = The user has submitted valid data and it has been approved if approval is needed. No more work needs to be done on this step.
 	 *
-	 * `error` = The user has submitted invalid data and is not currently viewing the page.
+	 * `error` = There is an error on this step that requires attention and this step is not currently active.
 	 */
 	status: ProgressIndicatorItemStatus;
 	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */

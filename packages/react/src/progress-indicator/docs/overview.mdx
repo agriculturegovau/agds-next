@@ -77,14 +77,10 @@ The `status` prop can be used to indicate the status of each item. The following
 				<code>todo</code>
 			</TableCell>
 			<TableCell>Not started</TableCell>
-			<TableCell>The step is available for the user to do</TableCell>
-		</TableRow>
-		<TableRow>
 			<TableCell>
-				<code>doing</code>
+				The user has not started this step yet but it is available for the user
+				to do.
 			</TableCell>
-			<TableCell>In progress</TableCell>
-			<TableCell>The step is currently active or selected</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
@@ -92,7 +88,8 @@ The `status` prop can be used to indicate the status of each item. The following
 			</TableCell>
 			<TableCell>In progress</TableCell>
 			<TableCell>
-				The step has been partially completed but is not active or selected
+				The user has reached this step and has begun work on it though it is not
+				complete yet.
 			</TableCell>
 		</TableRow>
 		<TableRow>
@@ -100,31 +97,49 @@ The `status` prop can be used to indicate the status of each item. The following
 				<code>done</code>
 			</TableCell>
 			<TableCell>Completed</TableCell>
-			<TableCell>The step has been completed</TableCell>
+			<TableCell>
+				The user has submitted valid data and it has been approved if approval
+				is needed. No more work is needed on this step.
+			</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
 				<code>blocked</code>
 			</TableCell>
 			<TableCell>Cannot start yet</TableCell>
-			<TableCell>The task is not available yet for the user to do</TableCell>
+			<TableCell>This step is not available yet for the user to do.</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
 				<code>saved</code>
 			</TableCell>
 			<TableCell>Saved</TableCell>
-			<TableCell>The user has saved input</TableCell>
+			<TableCell>
+				The user has submitted valid data however the data has not been approved
+				or finalised yet. If no approval is needed, use the "done" status
+				instead.
+			</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
 				<code>error</code>
 			</TableCell>
 			<TableCell>Error</TableCell>
-			<TableCell>There is an error that requires attention</TableCell>
+			<TableCell>
+				There is an error on this step that requires attention and this step is
+				not currently active.
+			</TableCell>
 		</TableRow>
 	</TableBody>
 </Table>
+
+## Active state handling
+
+The `isActive: true` property needs to be applied to the currently active item.
+
+Currently, only the `'started'`, and `'blocked'` statuses may recieve the `isActive: true` property.
+
+If the user navigates to a page that is a different status, the status of that page should be changed to `'started'` (unless `'blocked'` is more appropriate).
 
 ## Buttons
 
