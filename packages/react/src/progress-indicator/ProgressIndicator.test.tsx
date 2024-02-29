@@ -105,7 +105,7 @@ describe('ProgressIndicator', () => {
 			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
-	describe('With custom active item', () => {
+	describe('With isActive applied', () => {
 		function createList(
 			activeStatus: ProgressIndicatorItemStatus,
 			extraProperties: Partial<ProgressIndicatorItem>
@@ -161,6 +161,7 @@ describe('ProgressIndicator', () => {
 		allProgressStatuses.forEach((status) => {
 			const isWhiteListedStatus =
 				activeProgressStatusAllowedList.includes(status);
+
 			describe(`${status} status active`, () => {
 				function runTest(
 					extraProperties: Partial<ProgressIndicatorItem>
