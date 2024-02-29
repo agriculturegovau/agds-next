@@ -56,20 +56,20 @@ export function PageLayout({
 				sideNav?.items
 					.map((item) => {
 						const slug = item.href?.replace('/components/', '');
-						const icon = getPictogram(
-							pictograms[slug as keyof typeof pictograms]
-						);
+						const icon = slug ? getPictogram(slug) : undefined;
 						return {
 							...item,
 							label: slug ? (
 								<Flex alignItems={'center'} gap={0.5}>
-									<img
-										src={icon.src}
-										alt=""
-										aria-hidden="true"
-										height={20}
-										width={20}
-									/>
+									{icon && (
+										<img
+											src={icon.src}
+											alt=""
+											aria-hidden="true"
+											height={20}
+											width={20}
+										/>
+									)}
 									{/* <Icon /> */}
 									{item.label}
 								</Flex>
