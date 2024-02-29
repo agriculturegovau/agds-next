@@ -77,10 +77,7 @@ The `status` prop can be used to indicate the status of each item. The following
 				<code>todo</code>
 			</TableCell>
 			<TableCell>Not started</TableCell>
-			<TableCell>
-				The user has not started this step yet but it is available for the user
-				to do.
-			</TableCell>
+			<TableCell>The step is available for the user to start.</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
@@ -88,8 +85,8 @@ The `status` prop can be used to indicate the status of each item. The following
 			</TableCell>
 			<TableCell>In progress</TableCell>
 			<TableCell>
-				The user has reached this step and has begun work on it though it is not
-				complete yet.
+				The user has reached this step and begun working on it, but it still
+				needs to be completed.
 			</TableCell>
 		</TableRow>
 		<TableRow>
@@ -98,8 +95,8 @@ The `status` prop can be used to indicate the status of each item. The following
 			</TableCell>
 			<TableCell>Completed</TableCell>
 			<TableCell>
-				The user has submitted valid data and it has been approved if approval
-				is needed. No more work is needed on this step.
+				The user has submitted valid data and it has been approved or verified
+				(where necessary). This step is complete.
 			</TableCell>
 		</TableRow>
 		<TableRow>
@@ -107,7 +104,9 @@ The `status` prop can be used to indicate the status of each item. The following
 				<code>blocked</code>
 			</TableCell>
 			<TableCell>Cannot start yet</TableCell>
-			<TableCell>This step is not available yet for the user to do.</TableCell>
+			<TableCell>
+				This step is not yet available for the user to start.
+			</TableCell>
 		</TableRow>
 		<TableRow>
 			<TableCell>
@@ -115,9 +114,8 @@ The `status` prop can be used to indicate the status of each item. The following
 			</TableCell>
 			<TableCell>Saved</TableCell>
 			<TableCell>
-				The user has submitted valid data however the data has not been approved
-				or finalised yet. If no approval is needed, use the "done" status
-				instead.
+				The user has submitted valid data; however, the data can still be
+				changed by the user or affected by conditional logic.
 			</TableCell>
 		</TableRow>
 		<TableRow>
@@ -126,8 +124,7 @@ The `status` prop can be used to indicate the status of each item. The following
 			</TableCell>
 			<TableCell>Error</TableCell>
 			<TableCell>
-				There is an error on this step that requires attention and this step is
-				not currently active.
+				There is an error on this step that requires attention.
 			</TableCell>
 		</TableRow>
 	</TableBody>
