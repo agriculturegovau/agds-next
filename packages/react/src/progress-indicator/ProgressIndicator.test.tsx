@@ -6,6 +6,8 @@ import { ProgressIndicator, ProgressIndicatorProps } from './ProgressIndicator';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemStatus,
+	activeProgressStatusAllowedList,
+	allProgressStatuses,
 } from './ProgressIndicatorItem';
 
 expect.extend(toHaveNoViolations);
@@ -156,24 +158,9 @@ describe('ProgressIndicator', () => {
 			};
 		}
 
-		const activeStatusWhiteList: Array<ProgressIndicatorItemStatus> = [
-			'blocked',
-			'doing',
-			'started',
-		];
-		const activeStatusBlackList: Array<ProgressIndicatorItemStatus> = [
-			'done',
-			'error',
-			'saved',
-			'todo',
-		];
-		const allStatuses: Array<ProgressIndicatorItemStatus> = [
-			...activeStatusWhiteList,
-			...activeStatusBlackList,
-		];
-
-		allStatuses.forEach((status) => {
-			const isWhiteListedStatus = activeStatusWhiteList.includes(status);
+		allProgressStatuses.forEach((status) => {
+			const isWhiteListedStatus =
+				activeProgressStatusAllowedList.includes(status);
 			describe(`${status} status active`, () => {
 				function runTest(
 					extraProperties: Partial<ProgressIndicatorItem>
@@ -187,7 +174,7 @@ describe('ProgressIndicator', () => {
 						}
 					} catch (err) {
 						expect((err as Error).message).toBe(
-							`The "${status}" status cannot be set to active. Please use one of the following status types instead: ${activeStatusWhiteList.join(
+							`The "${status}" status cannot be set to active. Please use one of the following status types instead: ${activeProgressStatusAllowedList.join(
 								', '
 							)}`
 						);
