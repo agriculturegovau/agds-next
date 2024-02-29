@@ -76,6 +76,7 @@ export default function PackagesHome({
 									<div role="search" aria-label="components">
 										<SearchInput
 											label="Find a component"
+											id="component-filter"
 											hint="Filter by name or category"
 											value={searchTerm}
 											onChange={setSearchTerm}

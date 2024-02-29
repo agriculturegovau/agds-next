@@ -18,8 +18,8 @@ export const SiteLayout = ({
 	const skipLinks = [
 		{ href: '#main-content', label: 'Skip to main content' },
 		{
-			href: '#ComponentQuickNav',
-			label: 'Skip to component quick navigation',
+			href: '#component-filter',
+			label: 'Skip to component navigation filter',
 		},
 		{ href: '#main-nav', label: 'Skip to main navigation' },
 	];
@@ -31,8 +31,18 @@ export const SiteLayout = ({
 					prPreviewNumber={process.env.NEXT_PUBLIC_GITHUB_PR_PREVIEW_NUMBER}
 				/>
 			) : null}
-			<SkipLinks links={skipLinks} />
-			<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
+			<Flex
+				flexDirection="column"
+				fontFamily="body"
+				minHeight="100vh"
+				css={{
+					// Hide the #component-filter skip link if the component filter does not exist on the page
+					'&:not(:has(#component-filter)) a[href="#component-filter"]': {
+						display: 'none',
+					},
+				}}
+			>
+				<SkipLinks links={skipLinks} />
 				<SiteHeader />
 				<Box
 					flexGrow={1}

@@ -8,7 +8,7 @@ import { SideNav } from '@ag.ds-next/react/side-nav';
 import { Breadcrumbs, BreadcrumbsProps } from '@ag.ds-next/react/breadcrumbs';
 import { EditPage } from './EditPage';
 import { SearchInput } from './designSystemComponents';
-import { getPictogram, pictograms } from './pictograms';
+import { getPictogram } from './pictograms';
 
 type PageLayoutProps = PropsWithChildren<{
 	/** If true, the main content area will be a 'main' element with the ID of 'main-content' applied (used for skip links). */
@@ -55,7 +55,6 @@ export function PageLayout({
 											width={20}
 										/>
 									)}
-									{/* <Icon /> */}
 									{item.label}
 								</Flex>
 							) : (
@@ -82,6 +81,7 @@ export function PageLayout({
 									onChange={setSearchTerm}
 									maxWidth="xl"
 									hideOptionalLabel
+									id="component-filter"
 								/>
 							</div>
 							<SideNav
