@@ -74,22 +74,13 @@ export function PageLayout({
 				{sideNav && (
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<ContentBleed visible={{ md: false }}>
-							<div role="search" aria-label="components">
-								<SearchInput
-									label="Filter navigation"
-									value={searchTerm}
-									onChange={setSearchTerm}
-									maxWidth="xl"
-									hideOptionalLabel
-									id="component-filter"
-								/>
-							</div>
 							<SideNav
 								collapseTitle="In this section"
 								activePath={router.asPath}
 								title={sideNav.title}
 								titleLink={sideNav.titleLink}
 								items={filteredItems}
+								isFilterable
 							/>
 						</ContentBleed>
 					</Column>
