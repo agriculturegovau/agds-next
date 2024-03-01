@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { Box } from '../box';
 
 export type FieldsetContainerProps = PropsWithChildren<{
 	'aria-describedby'?: string;
@@ -10,11 +11,7 @@ export const FieldsetContainer = ({
 	children,
 	id,
 }: FieldsetContainerProps) => (
-	<fieldset
-		aria-describedby={ariaDescribedby}
-		id={id}
-		css={{ padding: 0, margin: 0, border: 'none' }}
-	>
+	<Box as="fieldset" aria-describedby={ariaDescribedby} id={id}>
 		{children}
-	</fieldset>
+	</Box>
 );

@@ -27,7 +27,7 @@ exports[`Select Basic renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-naousk"
+        class="css-kwpsq8"
         id="field-:r0:"
       >
         <option
@@ -98,7 +98,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-naousk"
+        class="css-kwpsq8"
         id="field-:r2:"
       >
         <optgroup
@@ -226,7 +226,7 @@ exports[`Select Invalid renders correctly 1`] = `
         aria-describedby="field-:r6:-message"
         aria-invalid="true"
         aria-required="false"
-        class="css-d1mr8q"
+        class="css-kwpsq8"
         id="field-:r6:"
       >
         <option
@@ -297,7 +297,7 @@ exports[`Select With hint renders correctly 1`] = `
       <select
         aria-invalid="false"
         aria-required="false"
-        class="css-naousk"
+        class="css-kwpsq8"
         id="field-:r4:"
       >
         <option

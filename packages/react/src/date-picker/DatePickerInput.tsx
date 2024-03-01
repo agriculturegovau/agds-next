@@ -12,7 +12,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
-		/** If true, only the input element will be rendered in an invalids state. */
+		/** If true, only the input element will be rendered in an invalid state. */
 		input: boolean;
 	};
 	dateFormat: AcceptedDateFormats;
@@ -46,7 +46,6 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 		const { maxWidth, ...styles } = {
 			...textInputStyles({
 				block,
-				invalid: invalid.input,
 				maxWidth: maxWidthProp,
 			}),
 			width: '100%',

@@ -4,7 +4,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r0:-hint"
-    class="css-1ceugzq-FieldsetContainer"
+    class="css-79i25n-boxStyles"
     id="fieldset-:r0:"
   >
     <legend
@@ -40,7 +40,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           <input
             aria-invalid="false"
             aria-required="true"
-            class="css-sgg6k9"
+            class="css-mtd7ku"
             id="field-:r1:"
             type="text"
           />
@@ -65,7 +65,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           <input
             aria-invalid="false"
             aria-required="true"
-            class="css-sgg6k9"
+            class="css-mtd7ku"
             id="field-:r2:"
             type="text"
           />
@@ -84,7 +84,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r9:-hint"
-    class="css-1ceugzq-FieldsetContainer"
+    class="css-79i25n-boxStyles"
     id="fieldset-:r9:"
   >
     <legend>
@@ -126,7 +126,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           <input
             aria-invalid="false"
             aria-required="true"
-            class="css-sgg6k9"
+            class="css-mtd7ku"
             id="field-:ra:"
             type="text"
           />
@@ -151,7 +151,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           <input
             aria-invalid="false"
             aria-required="true"
-            class="css-sgg6k9"
+            class="css-mtd7ku"
             id="field-:rb:"
             type="text"
           />

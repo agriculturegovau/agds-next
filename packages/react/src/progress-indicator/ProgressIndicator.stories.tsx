@@ -17,7 +17,7 @@ const exampleLinkItems: ProgressIndicatorItem[] = [
 	{ label: 'Organisations', status: 'started', href: '#' },
 	{ label: 'Business contacts', status: 'error', href: '#' },
 	{ label: 'Case studies', status: 'todo', href: '#' },
-	{ label: 'Attachments', status: 'doing', href: '#' },
+	{ label: 'Attachments', status: 'started', href: '#', isActive: true },
 	{ label: 'Review and submit', status: 'blocked', href: '#' },
 ];
 
@@ -27,7 +27,12 @@ const exampleButtonItems: ProgressIndicatorItem[] = [
 	{ label: 'Organisations', status: 'started', onClick: console.log },
 	{ label: 'Business contacts', status: 'error', onClick: console.log },
 	{ label: 'Case studies', status: 'todo', onClick: console.log },
-	{ label: 'Attachments', status: 'doing', onClick: console.log },
+	{
+		label: 'Attachments',
+		status: 'started',
+		onClick: console.log,
+		isActive: true,
+	},
 	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 ];
 

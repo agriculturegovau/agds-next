@@ -57,7 +57,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 		},
 		ref
 	) {
-		const styles = textInputStyles({ block, maxWidth, invalid });
+		const styles = textInputStyles({ block, maxWidth });
 		return (
 			<Field
 				label={label}
@@ -80,12 +80,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 export const textInputStyles = ({
 	block,
 	maxWidth,
-	invalid,
 	multiline,
 }: {
 	block?: boolean;
 	maxWidth?: FieldMaxWidth;
-	invalid?: boolean;
 	multiline?: boolean;
 }) =>
 	({
@@ -113,17 +111,17 @@ export const textInputStyles = ({
 			width: '100%',
 		}),
 
-		...(invalid && {
-			backgroundColor: boxPalette.systemErrorMuted,
-			borderColor: boxPalette.systemError,
-		}),
-
 		...(multiline && {
 			paddingTop: mapSpacing(0.5),
 			paddingBottom: mapSpacing(0.5),
 			height: 'auto',
 			minHeight: '6rem',
 		}),
+
+		'&[aria-invalid="true"]': {
+			backgroundColor: boxPalette.systemErrorMuted,
+			borderColor: boxPalette.systemError,
+		},
 
 		'&:disabled': {
 			cursor: 'not-allowed',

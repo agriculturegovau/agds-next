@@ -639,9 +639,13 @@ const snippets = [
 		name: 'Basic',
 		code: `<ProgressIndicator
 			items={[
-				{ href: '#', label: 'Introduction', status: 'doing' },
-				{ href: '#', label: 'Business Contacts', status: 'todo' },
-				{ href: '#', label: 'Case Studies', status: 'done' },
+				{ label: 'Introduction', status: 'done', href: '#' },
+				{ label: 'Submit evidence', status: 'saved', href: '#' },
+				{ label: 'Organisations', status: 'started', href: '#', isActive: true },
+				{ label: 'Business contacts', status: 'error', href: '#' },
+				{ label: 'Case studies', status: 'todo', href: '#' },
+				{ label: 'Attachments', status: 'started', href: '#' },
+				{ label: 'Review and submit', status: 'blocked', href: '#' },
 			]}
 		/>`,
 	},
@@ -1282,6 +1286,27 @@ const snippets = [
 		group: 'PasswordInput',
 		name: 'Basic',
 		code: `<PasswordInput label="Password" />`,
+	},
+	{
+		group: 'GroupedFields',
+		name: 'Basic',
+		code: `<GroupedFields legend="Grouped fields">
+			{({ field1Props, field2Props }) => (
+				<>
+					<TextInput label="TextInput" {...field1Props} />
+					<Select
+						label="Select"
+						placeholder="Please select"
+						options={[
+							{ value: 'a', label: 'Option A' },
+							{ value: 'b', label: 'Option B' },
+							{ value: 'c', label: 'Option C' },
+						]}
+						{...field2Props}
+					/>
+				</>
+			)}
+		</GroupedFields>`,
 	},
 ];
 

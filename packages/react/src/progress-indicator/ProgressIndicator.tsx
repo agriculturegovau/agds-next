@@ -34,6 +34,18 @@ export const ProgressIndicator = ({
 				items.length
 		  } steps completed`;
 
+	const hasExplicitActiveDeclared =
+		items.filter(({ isActive }) => isActive).length > 0;
+
+	// If no explicit active items are declared, the 'doing' status item receives active state by default
+	const itemsWithDefaultActive: ProgressIndicatorItem[] =
+		hasExplicitActiveDeclared
+			? items
+			: items.map((item) => ({
+					...item,
+					isActive: item.status === 'doing',
+			  }));
+
 	return (
 		<CollapsingSideBar
 			as="section"
@@ -43,7 +55,7 @@ export const ProgressIndicator = ({
 			collapseButtonLabel={subTitle || title}
 		>
 			<ProgressIndicatorList>
-				{items.map(({ label, ...props }, index) => {
+				{itemsWithDefaultActive.map(({ label, ...props }, index) => {
 					if (isItemLink(props)) {
 						return (
 							<ProgressIndicatorItemLink

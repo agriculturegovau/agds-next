@@ -7,7 +7,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
     id="control-group-:r0:"
   >
     <fieldset
-      class="css-faxsk2-ControlGroup"
+      class="css-79i25n-boxStyles"
     >
       <legend
         class="css-79i25n-boxStyles"
@@ -181,7 +181,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
   >
     <fieldset
       aria-describedby="control-group-:r2:-message control-group-:r2:-hint"
-      class="css-faxsk2-ControlGroup"
+      class="css-79i25n-boxStyles"
     >
       <legend
         class="css-79i25n-boxStyles"
@@ -401,7 +401,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
     id="control-group-:r5:"
   >
     <fieldset
-      class="css-faxsk2-ControlGroup"
+      class="css-79i25n-boxStyles"
     >
       <legend
         class="css-79i25n-boxStyles"
@@ -523,7 +523,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
   >
     <fieldset
       aria-describedby="control-group-:r7:-message control-group-:r7:-hint"
-      class="css-faxsk2-ControlGroup"
+      class="css-79i25n-boxStyles"
     >
       <legend
         class="css-79i25n-boxStyles"

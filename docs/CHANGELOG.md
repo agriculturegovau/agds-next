@@ -1,5 +1,22 @@
 # @ag.ds-next/docs
 
+## 0.7.0
+
+### Minor Changes
+
+- d25a2142196: grouped-fields: Initial release of component. To support this component, change how invalid state is applied to autocomplete, combobox, date-picker, date-range-picker, password-input, search, search-input, select, textarea and text-input.
+
+### Patch Changes
+
+- Updated dependencies [2f5aca86679]
+- Updated dependencies [f0b9db1d249]
+- Updated dependencies [5b9cc2fbce3]
+- Updated dependencies [5d8489f53de]
+- Updated dependencies [90294ca5c3c]
+- Updated dependencies [d25a2142196]
+- Updated dependencies [5e37b79b433]
+  - @ag.ds-next/react@1.19.0
+
 ## 0.6.8
 
 ### Patch Changes
