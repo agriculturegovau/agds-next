@@ -32,11 +32,11 @@ export type ProgressIndicatorItem = (
 export type ProgressIndicatorItemStatus =
 	| 'blocked'
 	| 'doing'
-	| 'started'
-	| 'todo'
 	| 'done'
+	| 'error'
 	| 'saved'
-	| 'error';
+	| 'started'
+	| 'todo';
 
 export interface ProgressIndicatorItemLinkProps extends LinkProps {
 	/** Determines the background colour of the progress indicator item. */
@@ -45,17 +45,17 @@ export interface ProgressIndicatorItemLinkProps extends LinkProps {
 	 *
 	 * `blocked` = This step is not yet available for the user to start.
 	 *
-	 * `started` =  The user has reached this step and begun working on it, but it still needs to be completed.
+	 * `doing` = **(deprecated)** This step has been started and the user is actively working on this step (Use `started` with `isActive: true` instead).
 	 *
-	 * `doing` = **(deprecated)** The user is actively working on this step (Use `started` with `isActive: true` instead).
+	 * `done` = This step is complete. The user has submitted valid data and it has been verified (where necessary).
 	 *
-	 * `todo` =  The step is available for the user to start.
+	 * `error` = This step has an error that requires attention.
 	 *
-	 * `saved` = The user has submitted valid data; however, the data can still be changed by the user or affected by conditional logic.
+	 * `saved` = This step has valid saved data that can still be changed.
 	 *
-	 * `done` = The user has submitted valid data and it has been approved or verified (where necessary). This step is complete.
+	 * `started` = This step has been started and still needs to be completed.
 	 *
-	 * `error` = There is an error on this step that requires attention.
+	 * `todo` =  This step is available for the user to start.
 	 */
 	status: ProgressIndicatorItemStatus;
 	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
