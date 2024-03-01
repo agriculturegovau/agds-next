@@ -55,7 +55,7 @@ export interface ProgressIndicatorItemLinkProps extends LinkProps {
 	 *
 	 * `started` = This step has been started and still needs to be completed.
 	 *
-	 * `todo` =  This step is available for the user to start.
+	 * `todo` = This step is available for the user to start.
 	 */
 	status: ProgressIndicatorItemStatus;
 	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
