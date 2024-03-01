@@ -119,7 +119,16 @@ export const pictograms = {
 	'text-input': textInput,
 };
 
-export function getPictogram(slug: string) {
+interface Pictogram {
+	/** Pass this value into an img element src attribute to display the image */
+	src: string;
+	height: number;
+	width: number;
+	blurHeight: number;
+	blurWidth: number;
+}
+
+export function getPictogram(slug: string): Pictogram {
 	if (slug in pictograms) {
 		return pictograms[slug as keyof typeof pictograms];
 	}

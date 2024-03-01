@@ -14,6 +14,7 @@ import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
 import { PageAlert } from './designSystemComponents';
+import { getPictogram } from './pictograms';
 
 export function PkgLayout({
 	children,
@@ -43,6 +44,7 @@ export function PkgLayout({
 				<PageTitle
 					title={pkg.title}
 					introduction={pkg.description}
+					iconSrc={getPictogram(pkg.slug).src}
 					callToAction={
 						(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
 							<Flex

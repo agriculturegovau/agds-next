@@ -6,6 +6,7 @@ import { Text } from '@ag.ds-next/react/text';
 export type PageTitleProps = {
 	pretext?: ReactNode;
 	title: ReactNode;
+	iconSrc?: string;
 	introduction?: ReactNode;
 	callToAction?: ReactNode;
 };
@@ -15,6 +16,7 @@ export const PageTitle = ({
 	title,
 	introduction,
 	callToAction,
+	iconSrc,
 }: PageTitleProps) => (
 	<Stack gap={1.5}>
 		<Stack>
@@ -28,7 +30,12 @@ export const PageTitle = ({
 					{pretext}
 				</Text>
 			) : null}
-			<H1>{title}</H1>
+			<H1 display={'flex'} alignItems={'center'} gap={0.5}>
+				{iconSrc && (
+					<img src={iconSrc} alt="" aria-hidden height={50} width={50} />
+				)}
+				{title}
+			</H1>
 		</Stack>
 		{introduction ? (
 			<Text as="p" fontSize="md" color="muted">
