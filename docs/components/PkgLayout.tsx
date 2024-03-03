@@ -15,15 +15,21 @@ import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
 import { PageAlert } from './designSystemComponents';
 
+/**
+ * Calculates what the import statment would be by providing it package data.
+ *
+ * If only 1 import, it outputs a string like this:
+ * import { ComponentName } from '@ag.ds-next/react/component-name';
+ *
+ * If more than 1 import, it outputs a string like this:
+ * import {
+ *     ComponentOne,
+ *     ComponentTwo,
+ * } from '@ag.ds-next/react/component-name'
+ *
+ * This helps keep the string readable and not require scrolling
+ */
 export function calculateImportString(pkg: Pkg) {
-	// if only 1, it outputs a string like this:
-	// import { ComponentName } from '@ag.ds-next/react/component-name';
-	// if more than 1, it outputs a string like this:
-	// import {
-	//     ComponentOne,
-	//     ComponentTwo,
-	// } from '@ag.ds-next/react/component-name'
-	// This helps keep the string readable and not require scrolling
 	const hasMultipleImports = (pkg.importNames?.length || 0) > 1;
 	const tabInset = '\n    ';
 	const importNames = hasMultipleImports
