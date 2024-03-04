@@ -38,7 +38,7 @@ exports[`SectionAlert which is dismissable renders correctly 1`] = `
       </div>
     </div>
     <button
-      aria-label="Dismiss"
+      aria-label="Close"
       class="css-1myr4hy-BaseButton-SectionAlertDismissButton"
       type="button"
     >
@@ -46,7 +46,7 @@ exports[`SectionAlert which is dismissable renders correctly 1`] = `
         <span
           class="css-oobk4c-Button"
         >
-          Dismiss
+          Close
         </span>
         <span
           aria-live="assertive"

@@ -16,7 +16,7 @@ export const SectionAlertDismissButton = ({
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"
-			aria-label="Dismiss"
+			aria-label="Close"
 			css={{
 				flexShrink: 0,
 				// Hide the button text on small screens
@@ -28,7 +28,7 @@ export const SectionAlertDismissButton = ({
 				},
 			}}
 		>
-			Dismiss
+			Close
 		</Button>
 	);
 };
