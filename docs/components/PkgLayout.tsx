@@ -30,9 +30,7 @@ import { PageAlert } from './designSystemComponents';
  * This helps keep the string readable and not require scrolling
  */
 export function calculateImportString(pkg: Pkg) {
-	const importCount = pkg.importNames?.length || 0;
-	const hasMultipleImports = importCount > 1;
-	const tabInset = '\n    ';
+	const hasMultipleImports = (pkg.importNames?.length || 0) > 1;
 
 	function getImportNames(): string {
 		if (!pkg.importNames?.length) {
@@ -43,6 +41,7 @@ export function calculateImportString(pkg: Pkg) {
 			return ' ' + defaultImportName;
 		}
 		if (hasMultipleImports) {
+			const tabInset = '\n    ';
 			return tabInset + pkg.importNames?.join(',' + tabInset);
 		}
 		return ' ' + pkg.importNames.join(', ');
