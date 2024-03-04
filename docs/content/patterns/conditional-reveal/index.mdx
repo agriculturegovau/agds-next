@@ -1,25 +1,25 @@
 ---
-title: Conditionally revealed questions
-description: Conditionally reveal a related question when a user selects a specific radio or checkbox option. This ensures that users only encounter questions when it is applicable to their selection.
+title: Conditionally revealed content
+description: Conditionally reveal a question or information related to a specific radio or checkbox option when a user selects it. This ensures that users only encounter conditionally revealed content when it is applicable to their selection.
 relatedComponents: ['radio', 'checkbox']
 ---
 
 <DoHeading />
 
-- only reveal 1 related question
-- reveal the related question directly under the initial question
-- use another page if there are multiple related questions
+- limit what is revealed to 1 related question or piece of information
+- reveal the related question or information directly under the initial question
+- use another page or drawer if there are multiple related questions
 - only use with vertically stacked checkboxes or radios
 
 <DontHeading />
 
-- reveal more than 1 related question
+- reveal more than 1 related question or piece of information
 - use with horizontally stacked checkboxes or radios
-- reveal anything that is not a question.
+- reveal anything that is not a question or piece of information relating directly to a specific radio or checkbox option.
 
 ## Radio
 
-You can ask users a related question when they select a particular [Radio](/components/radio), so they only see the question when it is relevant to them.
+You can reveal a related question or information specific to that option when users select a particular [Radio](/components/radio), so they only see that content when it is relevant to them.
 
 ```jsx live
 () => {
@@ -62,7 +62,7 @@ You can ask users a related question when they select a particular [Radio](/comp
 
 ## Checkbox
 
-You can ask users a related question when they select a particular [Checkbox](/components/checkbox), so they only see the question when it is relevant to them.
+You can reveal a related question or information related to that option when a user selects a particular [Checkbox](/components/checkbox), so they only see that content when it is relevant to them.
 
 ```jsx live
 () => {
