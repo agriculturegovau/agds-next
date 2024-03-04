@@ -30,17 +30,35 @@ import { PageAlert } from './designSystemComponents';
  * This helps keep the string readable and not require scrolling
  */
 export function calculateImportString(pkg: Pkg) {
-	const hasMultipleImports = (pkg.importNames?.length || 0) > 1;
+	const importCount = pkg.importNames?.length || 0;
+	const hasMultipleImports = importCount > 1;
 	const tabInset = '\n    ';
-	const importNames = hasMultipleImports
-		? tabInset + pkg.importNames?.join(',' + tabInset)
-		: pkg.importNames?.join(', ');
+
+	function getImportNames(): string {
+		if (!pkg.importNames?.length) {
+			const defaultImportName = pkg.slug
+				.split('-')
+				.map(capitalizeFirstLetter)
+				.join('');
+			return ' ' + defaultImportName;
+		}
+		if (hasMultipleImports) {
+			return tabInset + pkg.importNames?.join(',' + tabInset);
+		}
+		return ' ' + pkg.importNames.join(', ');
+	}
+
+	const importNames = getImportNames();
 	const closingBracket = hasMultipleImports ? ',\n}' : ' }';
-	const importString = `import { ${
+	const importString = `import {${
 		importNames + closingBracket
 	} from '@ag.ds-next/react/${pkg.name}';`;
 
 	return importString;
+}
+
+function capitalizeFirstLetter(str: string) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function PkgLayout({

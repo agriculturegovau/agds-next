@@ -15,21 +15,16 @@ const PKG_PATH = normalize(`${REACT_PKG_PATH}/src`);
 const pkgReadmePath = (slug: string) => `${PKG_PATH}/${slug}/docs/overview.mdx`;
 const pkgDocsPath = (slug: string) => normalize(`${PKG_PATH}/${slug}/docs`);
 
-function capitalizeFirstLetter(str: string) {
-	return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 export async function getPkg(slug: string) {
 	const { data } = await getMarkdownData(pkgReadmePath(slug));
 	const subNavItems = await getPkgSubNavItems(slug);
-	const defaultImportName = slug.split('-').map(capitalizeFirstLetter).join('')
 	return {
 		slug,
 		name: slug,
 		title: (data.title ?? slug) as string,
 		description: (data.description ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
-		importNames: (data.importNames ?? [defaultImportName]) as string[] | null,
+		importNames: (data.importNames ?? null) as string[] | null,
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
 		subNavItems: subNavItems ?? null,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
