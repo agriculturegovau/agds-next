@@ -1,5 +1,5 @@
-import { Pkg } from '../lib/mdx/packages';
-import { calculateImportString } from './PkgLayout';
+import { Pkg } from '../../lib/mdx/packages';
+import { calculateImportString } from './calculateImportString';
 
 const examplePkg: Pkg = {
 	name: 'example-package',

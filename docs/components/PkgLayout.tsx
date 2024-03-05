@@ -14,6 +14,7 @@ import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
 import { PageAlert } from './designSystemComponents';
+import { calculateImportString } from './utils/calculateImportString';
 
 export function PkgLayout({
 	children,
