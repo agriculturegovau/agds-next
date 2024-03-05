@@ -7,10 +7,36 @@ figmaGalleryNodeId: 18568%3A86192
 relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 ---
 
+```jsx live
+<Flex flexWrap="wrap" gap={1}>
+	<StatusBadge status="success" emphasis="high" label="Success" />
+	<StatusBadge status="error" emphasis="high" label="Error" />
+	<StatusBadge status="warning" emphasis="high" label="Warning" />
+	<StatusBadge status="info" emphasis="high" label="Warning" />
+	<StatusBadge status="success" emphasis="medium" label="Success" />
+	<StatusBadge status="error" emphasis="medium" label="Error" />
+	<StatusBadge status="warning" emphasis="medium" label="Warning" />
+	<StatusBadge status="info" emphasis="medium" label="Warning" />
+	<StatusBadge status="success" emphasis="low" label="Success" />
+	<StatusBadge status="error" emphasis="low" label="Error" />
+	<StatusBadge status="warning" emphasis="low" label="Warning" />
+	<StatusBadge status="paused" emphasis="low" label="Paused" />
+	<StatusBadge status="info" emphasis="low" label="Info" />
+	<StatusBadge status="unknown" emphasis="low" label="Unknown" />
+	<StatusBadge status="todo" emphasis="low" label="Todo" />
+	<StatusBadge
+		status="inProgress"
+		emphasis="low"
+		tone="info"
+		label="In progress"
+	/>
+	<StatusBadge status="blocked" emphasis="low" label="Blocked" />
+</Flex>
+```
+
 <DoHeading />
 
 - use to indicate the status of a task or process
-- use to help users differentiate between multiple statuses
 - apply the `subtle` weight in tables to reduce visual emphasis and overall height of the parent component
 
 <DontHeading />
@@ -25,27 +51,3 @@ relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 Choosing a `tone` for Status badge allows the user to understand the importance and severity of the message at a glance. It automatically applies appropriate colour and iconography.
 
 The five supported tones are `info`, `success`, `error`, `warning` and `neutral`.
-
-```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<StatusBadge tone="info" label="In progress" />
-	<StatusBadge tone="success" label="Resolved" />
-	<StatusBadge tone="error" label="Rejected" />
-	<StatusBadge tone="warning" label="Attention" />
-	<StatusBadge tone="neutral" label="Draft" />
-</Flex>
-```
-
-## Weight
-
-Apply the `subtle` weight in tables to reduce visual emphasis and overall height of the parent component. The `subtle` weight can reduce complexity and repetition in dense compositions where multiple status badges are applied.
-
-```jsx live
-<Flex flexWrap="wrap" gap={2}>
-	<StatusBadge weight="subtle" tone="info" label="In progress" />
-	<StatusBadge weight="subtle" tone="success" label="Resolved" />
-	<StatusBadge weight="subtle" tone="error" label="Rejected" />
-	<StatusBadge weight="subtle" tone="warning" label="Attention" />
-	<StatusBadge weight="subtle" tone="neutral" label="Draft" />
-</Flex>
-```

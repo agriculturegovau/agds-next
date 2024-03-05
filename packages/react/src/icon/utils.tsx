@@ -44,6 +44,7 @@ import { PlusIcon } from './icons/PlusIcon';
 import { PrintIcon } from './icons/PrintIcon';
 import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
+import { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SettingsIcon } from './icons/SettingsIcon';
@@ -54,6 +55,7 @@ import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UploadIcon } from './icons/UploadIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
+import { WarningRoundIcon } from './icons/WarningRoundIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
 
@@ -104,6 +106,7 @@ export const allIcons = {
 	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
+	ProgressPausedIcon,
 	ProgressTodoIcon,
 	SearchIcon,
 	SettingsIcon,
@@ -114,6 +117,7 @@ export const allIcons = {
 	TwitterIcon,
 	UploadIcon,
 	WarningFilledIcon,
+	WarningRoundIcon,
 	WarningIcon,
 	WebsiteIcon,
 };
