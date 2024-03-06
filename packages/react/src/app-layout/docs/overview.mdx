@@ -16,6 +16,211 @@ The app layout is a single component that consists of 3 parts. All 3 parts shoul
 
 Use the app layout for web applications, not informational websites, as the layout is better suited to task-oriented interactions.
 
+```jsx live
+<>
+	<SkipLinks
+		links={[{ href: '#main-content', label: 'Skip to main content' }]}
+	/>
+	<AppLayout>
+		<AppLayoutHeader
+			href="/"
+			heading="Export Service"
+			subLine="Supporting Australian agricultural exports"
+			badgeLabel="Beta"
+			logo={<Logo />}
+			accountDetails={{
+				name: 'Benjamin Harrington',
+				secondaryText: 'My account',
+				dropdown: (
+					<DropdownMenuPanel palette="light">
+						<DropdownMenuGroup label="Businesses">
+							{['Antfix', 'Produce Fresh', 'Organic Co'].map(
+								function (businessName) {
+									return (
+										<DropdownMenuItemRadio
+											key={businessName}
+											checked={businessName === 'Antfix'}
+											secondaryText="ABN 00 000 000 000"
+											onClick={function () {}}
+										>
+											{businessName}
+										</DropdownMenuItemRadio>
+									);
+								}
+							)}
+							<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
+						</DropdownMenuGroup>
+						<DropdownMenuDivider />
+						<DropdownMenuGroup label="My account">
+							<DropdownMenuItemLink href="/profile" icon={AvatarIcon}>
+								Profile
+							</DropdownMenuItemLink>
+							<DropdownMenuItemLink
+								href="/messages"
+								icon={EmailIcon}
+								endElement={
+									<span>
+										<NotificationBadge
+											tone="action"
+											value={6}
+											max={99}
+											aria-hidden
+										/>
+										<VisuallyHidden>, 6 unread</VisuallyHidden>
+									</span>
+								}
+							>
+								Messages
+							</DropdownMenuItemLink>
+							<DropdownMenuItemLink
+								href="/account-settings"
+								icon={SettingsIcon}
+							>
+								Account settings
+							</DropdownMenuItemLink>
+						</DropdownMenuGroup>
+						<DropdownMenuDivider />
+						<DropdownMenuItem
+							onClick={() => console.log('sign out')}
+							icon={ExitIcon}
+						>
+							Sign out
+						</DropdownMenuItem>
+					</DropdownMenuPanel>
+				),
+			}}
+		/>
+		<AppLayoutSidebar
+			activePath="/"
+			items={[
+				{
+					options: { disableGroupPadding: true },
+					items: [
+						{
+							label: 'Back to my account',
+							icon: ChevronsLeftIcon,
+							href: '/account',
+						},
+					],
+				},
+				{
+					options: { disableGroupPadding: true },
+					items: [
+						{
+							label: (
+								<Fragment>
+									<Text fontWeight="bold" fontSize="xs">
+										Antfix
+									</Text>
+									<Text color="muted" fontSize="xs">
+										ABN: 00 000 000 000
+									</Text>
+								</Fragment>
+							),
+						},
+					],
+				},
+				[
+					{
+						label: 'Dashboard',
+						icon: HomeIcon,
+						href: '/',
+					},
+					{
+						label: 'Establishments',
+						icon: FactoryIcon,
+						href: '/establishments',
+					},
+					{
+						label: 'Data and Insights',
+						icon: ChartLineIcon,
+						href: '/intelligence',
+					},
+					{
+						label: 'Compliance',
+						icon: SuccessIcon,
+						href: '/compliance',
+					},
+				],
+
+				[
+					{
+						label: 'Help',
+						icon: HelpIcon,
+						href: '/help',
+					},
+				],
+				[
+					{
+						label: 'Sign out',
+						onClick: console.log,
+						icon: ExitIcon,
+					},
+				],
+			]}
+		/>
+		<AppLayoutContent>
+			<main
+				id="main-content"
+				tabIndex={-1}
+				css={{ '&:focus': { outline: 'none' } }}
+			>
+				<PageContent>
+					<Prose>
+						<h1>Page heading</h1>
+						<p>See Template stories for more in context examples</p>
+						<p>
+							Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus
+							mollis interdum. Aenean lacinia bibendum nulla sed consectetur.
+							Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+							vestibulum. Donec ullamcorper nulla non metus auctor fringilla.
+						</p>
+						<p>
+							Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+							auctor. Cras justo odio, dapibus ac facilisis in, egestas eget
+							quam. Donec sed odio dui. Maecenas sed diam eget risus varius
+							blandit sit amet non magna. Nullam id dolor id nibh ultricies
+							vehicula ut id elit.
+						</p>
+					</Prose>
+				</PageContent>
+			</main>
+			<AppLayoutFooter>
+				<nav aria-label="footer">
+					<LinkList
+						links={[
+							{ label: 'Home', href: '/' },
+							{
+								label: 'Storybook',
+								href: 'https://design-system.agriculture.gov.au/storybook/index.html',
+							},
+							{
+								label: 'Playroom',
+								href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+							},
+							{
+								label: 'Starter kit',
+								href: 'https://github.com/agriculturegovau/agds-starter-kit',
+							},
+						]}
+						horizontal
+					/>
+				</nav>
+				<AppLayoutFooterDivider />
+				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					We acknowledge the traditional owners of country throughout Australia
+					and recognise their continuing connection to land, waters and culture.
+					We pay our respects to their Elders past, present and emerging.
+				</Text>
+				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+					&copy; 2024 Department of Agriculture, Fisheries and Forestry
+				</Text>
+			</AppLayoutFooter>
+		</AppLayoutContent>
+	</AppLayout>
+</>
+```
+
 <ImageWithBorder
 	alt="Screenshot of App layout components with annotations labelling the header, sidebar and footer"
 	src="/img/components/app-layout.png"
