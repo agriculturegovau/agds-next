@@ -16,6 +16,11 @@ The app layout is a single component that consists of 3 parts. All 3 parts shoul
 
 Use the app layout for web applications, not informational websites, as the layout is better suited to task-oriented interactions.
 
+<ImageWithBorder
+	alt="Screenshot of App layout components with annotations labelling the header, sidebar and footer"
+	src="/img/components/app-layout.png"
+/>
+
 ```jsx live
 <>
 	<SkipLinks
@@ -23,7 +28,7 @@ Use the app layout for web applications, not informational websites, as the layo
 	/>
 	<AppLayout>
 		<AppLayoutHeader
-			href="/"
+			href="#/"
 			heading="Export Service"
 			subLine="Supporting Australian agricultural exports"
 			badgeLabel="Beta"
@@ -31,67 +36,10 @@ Use the app layout for web applications, not informational websites, as the layo
 			accountDetails={{
 				name: 'Benjamin Harrington',
 				secondaryText: 'My account',
-				dropdown: (
-					<DropdownMenuPanel palette="light">
-						<DropdownMenuGroup label="Businesses">
-							{['Antfix', 'Produce Fresh', 'Organic Co'].map(
-								function (businessName) {
-									return (
-										<DropdownMenuItemRadio
-											key={businessName}
-											checked={businessName === 'Antfix'}
-											secondaryText="ABN 00 000 000 000"
-											onClick={function () {}}
-										>
-											{businessName}
-										</DropdownMenuItemRadio>
-									);
-								}
-							)}
-							<DropdownMenuGroupLink href="#">View all</DropdownMenuGroupLink>
-						</DropdownMenuGroup>
-						<DropdownMenuDivider />
-						<DropdownMenuGroup label="My account">
-							<DropdownMenuItemLink href="/profile" icon={AvatarIcon}>
-								Profile
-							</DropdownMenuItemLink>
-							<DropdownMenuItemLink
-								href="/messages"
-								icon={EmailIcon}
-								endElement={
-									<span>
-										<NotificationBadge
-											tone="action"
-											value={6}
-											max={99}
-											aria-hidden
-										/>
-										<VisuallyHidden>, 6 unread</VisuallyHidden>
-									</span>
-								}
-							>
-								Messages
-							</DropdownMenuItemLink>
-							<DropdownMenuItemLink
-								href="/account-settings"
-								icon={SettingsIcon}
-							>
-								Account settings
-							</DropdownMenuItemLink>
-						</DropdownMenuGroup>
-						<DropdownMenuDivider />
-						<DropdownMenuItem
-							onClick={() => console.log('sign out')}
-							icon={ExitIcon}
-						>
-							Sign out
-						</DropdownMenuItem>
-					</DropdownMenuPanel>
-				),
 			}}
 		/>
 		<AppLayoutSidebar
-			activePath="/"
+			activePath="#/"
 			items={[
 				{
 					options: { disableGroupPadding: true },
@@ -99,7 +47,7 @@ Use the app layout for web applications, not informational websites, as the layo
 						{
 							label: 'Back to my account',
 							icon: ChevronsLeftIcon,
-							href: '/account',
+							href: '#account',
 						},
 					],
 				},
@@ -124,30 +72,41 @@ Use the app layout for web applications, not informational websites, as the layo
 					{
 						label: 'Dashboard',
 						icon: HomeIcon,
-						href: '/',
+						href: '#/',
 					},
 					{
 						label: 'Establishments',
 						icon: FactoryIcon,
-						href: '/establishments',
+						href: '#establishments',
 					},
 					{
 						label: 'Data and Insights',
 						icon: ChartLineIcon,
-						href: '/intelligence',
+						href: '#intelligence',
 					},
 					{
 						label: 'Compliance',
 						icon: SuccessIcon,
-						href: '/compliance',
+						href: '#compliance',
 					},
 				],
 
 				[
 					{
+						label: 'Messages',
+						icon: EmailIcon,
+						href: '#messages',
+						endElement: <NotificationBadge tone="action" value={8} max={99} />,
+					},
+					{
+						label: 'Account settings',
+						icon: SettingsIcon,
+						href: '#settings',
+					},
+					{
 						label: 'Help',
 						icon: HelpIcon,
-						href: '/help',
+						href: '#help',
 					},
 				],
 				[
@@ -189,18 +148,18 @@ Use the app layout for web applications, not informational websites, as the layo
 				<nav aria-label="footer">
 					<LinkList
 						links={[
-							{ label: 'Home', href: '/' },
+							{ label: 'Home', href: '#/' },
 							{
 								label: 'Storybook',
-								href: 'https://design-system.agriculture.gov.au/storybook/index.html',
+								href: '#https://design-system.agriculture.gov.au/storybook/index.html',
 							},
 							{
 								label: 'Playroom',
-								href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+								href: '#https://design-system.agriculture.gov.au/playroom/index.html',
 							},
 							{
 								label: 'Starter kit',
-								href: 'https://github.com/agriculturegovau/agds-starter-kit',
+								href: '#https://github.com/agriculturegovau/agds-starter-kit',
 							},
 						]}
 						horizontal
@@ -220,11 +179,6 @@ Use the app layout for web applications, not informational websites, as the layo
 	</AppLayout>
 </>
 ```
-
-<ImageWithBorder
-	alt="Screenshot of App layout components with annotations labelling the header, sidebar and footer"
-	src="/img/components/app-layout.png"
-/>
 
 ## Usage guidelines
 
