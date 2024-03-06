@@ -1,17 +1,24 @@
-import { ComponentType, Fragment, PropsWithChildren, ReactNode } from 'react';
 import {
-	boxPalette,
+	ComponentType,
+	Fragment,
+	PropsWithChildren,
+	ReactNode,
+	useContext,
+} from 'react';
+import { Box, focusStyles } from '../box';
+import { BaseButton, BaseButtonProps } from '../button';
+import {
 	LinkProps,
+	boxPalette,
 	mapSpacing,
 	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
-import { Box, focusStyles } from '../box';
 import { Flex } from '../flex';
-import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 import { Stack } from '../stack';
+import { AppLayoutContext } from './AppLayoutContext';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -143,6 +150,11 @@ function AppLayoutSidebarNavItemInner({
 	children,
 	hasEndElement,
 }: AppLayoutSidebarNavItemInnerProps) {
+	const { background } = useContext(AppLayoutContext) || {};
+	const activeBackgroundColor =
+		background === 'bodyAlt'
+			? boxPalette.backgroundShade
+			: boxPalette.backgroundShadeAlt;
 	return (
 		<li
 			css={{
@@ -171,7 +183,7 @@ function AppLayoutSidebarNavItemInner({
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 					...(isActive && {
 						fontWeight: tokens.fontWeight.bold,
-						background: boxPalette.backgroundShadeAlt,
+						background: activeBackgroundColor,
 						'&:before': {
 							content: "''",
 							position: 'absolute',
