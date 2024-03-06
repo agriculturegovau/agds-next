@@ -21,6 +21,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 				isMobileMenuOpen: true,
 				openMobileMenu: console.log,
 				closeMobileMenu: console.log,
+				background: 'body',
 			}}
 		>
 			<Flex flexDirection="column" css={{ minHeight: '100vh' }}>
