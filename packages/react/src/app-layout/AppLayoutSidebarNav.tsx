@@ -144,9 +144,9 @@ function AppLayoutSidebarNavItemInner({
 	children,
 	hasEndElement,
 }: AppLayoutSidebarNavItemInnerProps) {
-	const { background } = useAppLayoutContext();
+	const { pallet } = useAppLayoutContext();
 	const activeBackgroundColor =
-		background === 'bodyAlt'
+		pallet === 'light'
 			? boxPalette.backgroundShade
 			: boxPalette.backgroundShadeAlt;
 	return (

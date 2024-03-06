@@ -25,9 +25,9 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
 		activePath
 	);
-	const { background } = useAppLayoutContext();
+	const { pallet } = useAppLayoutContext();
 
-	const sidebarBackground = background === 'body' ? 'bodyAlt' : undefined;
+	const sidebarBackground = pallet === 'dark' ? 'bodyAlt' : undefined;
 
 	return (
 		<Fragment>

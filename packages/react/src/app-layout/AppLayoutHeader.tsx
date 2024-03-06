@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { BorderColor, Box } from '../box';
 import { BoxPalette, tokens } from '../core';
 import { Flex } from '../flex';
-import { AppLayoutBackground, useAppLayoutContext } from './AppLayoutContext';
+import { AppLayoutPallet, useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
@@ -13,12 +13,12 @@ interface Theming {
 	borderColor: BorderColor;
 }
 
-const themes: Record<AppLayoutBackground, Theming> = {
-	body: {
+const themes: Record<AppLayoutPallet, Theming> = {
+	dark: {
 		borderColor: 'accent',
 		palette: 'dark',
 	},
-	bodyAlt: {
+	light: {
 		borderColor: 'selected',
 		palette: 'light',
 	},
@@ -59,8 +59,8 @@ export function AppLayoutHeader({
 	badgeLabel,
 	accountDetails,
 }: AppLayoutHeaderProps) {
-	const { background } = useAppLayoutContext();
-	const { borderColor, palette } = themes[background];
+	const { pallet } = useAppLayoutContext();
+	const { borderColor, palette } = themes[pallet];
 
 	return (
 		<Flex
