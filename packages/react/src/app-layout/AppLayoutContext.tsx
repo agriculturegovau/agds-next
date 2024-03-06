@@ -1,8 +1,12 @@
 import { createContext, useContext } from 'react';
 
+export type AppLayoutBackground = 'body' | 'bodyAlt';
+
 export type AppLayoutContextType = {
 	focusMode: boolean;
 	isMobileMenuOpen: boolean;
+	/** Controls what colour theme the AppLayout components display in, `'bodyAlt'` is light theme. */
+	background: AppLayoutBackground;
 	openMobileMenu: () => void;
 	closeMobileMenu: () => void;
 };
