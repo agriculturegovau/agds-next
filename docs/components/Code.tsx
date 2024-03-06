@@ -8,6 +8,7 @@ import React, {
 	useContext,
 } from 'react';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
+import { useDebouncedCallback } from 'use-debounce';
 import { createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
@@ -75,13 +76,10 @@ function LiveCode({
 		copy(localCopy);
 	}, [localCopy]);
 
-	const handleChange = useCallback(
-		(code: string) => {
-			liveOnChange(code);
-			setLocalCopy(code);
-		},
-		[liveOnChange]
-	);
+	const handleChange = useDebouncedCallback((code: string) => {
+		liveOnChange(code);
+		setLocalCopy(code);
+	}, 200);
 
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
