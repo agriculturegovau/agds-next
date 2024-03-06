@@ -1,12 +1,12 @@
-import { ReactNode, useContext } from 'react';
+import { ReactNode } from 'react';
 import { BorderColor, Box } from '../box';
-import { Flex } from '../flex';
 import { BoxPalette, tokens } from '../core';
-import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
+import { Flex } from '../flex';
+import { AppLayoutBackground, useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
+import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
-import { AppLayoutBackground, AppLayoutContext } from './AppLayoutContext';
 
 interface Theming {
 	palette: BoxPalette;
@@ -59,7 +59,7 @@ export function AppLayoutHeader({
 	badgeLabel,
 	accountDetails,
 }: AppLayoutHeaderProps) {
-	const { background = 'body' } = useContext(AppLayoutContext) || {};
+	const { background } = useAppLayoutContext();
 	const { borderColor, palette } = themes[background];
 
 	return (
