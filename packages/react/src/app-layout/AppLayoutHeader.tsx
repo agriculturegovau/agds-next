@@ -60,7 +60,7 @@ export function AppLayoutHeader({
 	accountDetails,
 }: AppLayoutHeaderProps) {
 	const { pallet } = useAppLayoutContext();
-	const { borderColor, palette } = themes[pallet];
+	const { borderColor, palette } = themes[pallet] || {};
 
 	return (
 		<Flex
