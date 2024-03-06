@@ -705,3 +705,21 @@ export const ApplicationLayout = {
 		</Fragment>
 	),
 };
+
+export const ApplicationLayoutLight = {
+	name: 'Application layout - light theme',
+	render: (args: KitchenSinkProps) => (
+		<Fragment>
+			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
+				<Text as="p">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+					cursus orci vulputate nibh sagittis blandit.
+				</Text>
+			</GlobalAlert>
+			<AppLayout pallet="light">
+				<KitchenSink {...args} />
+			</AppLayout>
+		</Fragment>
+	),
+};
