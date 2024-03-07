@@ -90,7 +90,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 							isValidElement(title) ? (
 								title
 							) : (
-								<PageAlertTitle hasDismissButton={Boolean(closeHandler)}>
+								<PageAlertTitle hasCloseButton={Boolean(closeHandler)}>
 									{title}
 								</PageAlertTitle>
 							)

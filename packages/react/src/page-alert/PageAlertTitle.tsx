@@ -4,13 +4,16 @@ import { Text } from '../text';
 
 export type PageAlertTitleProps = PropsWithChildren<{
 	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+	/** @deprecated use `hasCloseButton` instead */
 	hasDismissButton?: boolean;
+	hasCloseButton?: boolean;
 }>;
 
 export const PageAlertTitle = ({
 	as = 'h3',
 	children,
 	hasDismissButton,
+	hasCloseButton,
 }: PageAlertTitleProps) => (
 	<Text
 		as={as}
@@ -18,7 +21,7 @@ export const PageAlertTitle = ({
 		lineHeight="heading"
 		fontWeight="bold"
 		css={mq({
-			marginRight: hasDismissButton ? '2.5rem' : undefined,
+			marginRight: hasCloseButton || hasDismissButton ? '2.5rem' : undefined,
 			[tokens.mediaQuery.min.sm]: {
 				marginRight: '0',
 			},
