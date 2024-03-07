@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { boxPalette, mapSpacing, tokens } from '../core';
+import { boxPalette, mapSpacing } from '../core';
 import {
 	SuccessIcon,
 	AlertIcon,
@@ -21,8 +21,13 @@ import { WarningRoundIcon } from '../icon/icons/WarningRoundIcon';
 import { ProgressPausedIcon } from '../icon/icons/ProgressPausedIcon';
 
 export type StatusBadgeProps = {
-	appearance?: StatusBadgeWeight;
-	emphasis: 'high' | 'medium' | 'low';
+	/** The visual appearance of the badge. */
+	appearance?: StatusBadgeAppearance;
+	/** Determines the strength and tone of the icon and badge. */
+	emphasis: keyof typeof emphasisAndStatusMap;
+	/** The text label in the badge. */
+	label: ReactNode;
+	/** Determines the type of icon rendered. */
 	status:
 		| 'success'
 		| 'error'
@@ -33,16 +38,110 @@ export type StatusBadgeProps = {
 		| 'doing'
 		| 'blocked'
 		| 'paused';
-	/** The visual weight to apply. */
-	weight?: StatusBadgeWeight;
-	/** The status that is printed in the text label. */
-	label: ReactNode;
-	/** The color tone to apply. */
+	/** @deprecated The visual weight to apply. */
+	weight?: StatusBadgeAppearance;
+	/** @deprecated The color tone to apply. */
 	tone: StatusBadgeTone;
 };
 
-const map = {
+export const StatusBadge = ({
+	appearance = 'regular',
+	emphasis,
+	label,
+	status,
+	tone,
+	weight = 'regular',
+}: StatusBadgeProps) => {
+	const hasStatus = Boolean(status);
+	const hasEmphasis = Boolean(emphasis);
+
+	// Updated props take precedence of Legacy
+	if (hasStatus && hasEmphasis) {
+		const resolvedEmphasis = emphasisAndStatusMap[emphasis];
+		const resolvedStatus = resolvedEmphasis.status[status];
+		const Icon = resolvedStatus.icon;
+
+		return (
+			<Flex
+				alignItems="center"
+				background="body"
+				borderColor={resolvedStatus.tone}
+				display="inline-flex"
+				gap={0.5}
+				{...(appearance === 'regular' ? regularAppearanceStyles : {})}
+				css={{
+					borderRadius,
+					'& svg': {
+						flexShrink: 0,
+						width: iconWidth,
+					},
+				}}
+			>
+				<Icon
+					aria-hidden="false"
+					color={resolvedStatus.tone}
+					aria-label={`${resolvedEmphasis.label} ${resolvedStatus.label}`}
+				/>
+				<Text
+					as="span"
+					fontSize="sm"
+					lineHeight="nospace"
+					css={{ whiteSpace: 'nowrap' }}
+				>
+					{label}
+				</Text>
+			</Flex>
+		);
+	}
+
+	// Legacy StatusBadge
+	console.warn(
+		'The "tone" and  "weight" props are deprecated. Use the "appearance", "emphasis" and "status" props instead.'
+	);
+	const { icon: LegacyIcon, tone: legacyTone } = legacyToneMap[tone || 'info'];
+	return (
+		<Flex
+			background="body"
+			display="inline-flex"
+			alignItems="center"
+			gap={0.5}
+			borderColor={legacyTone}
+			{...(weight === 'regular' ? regularAppearanceStyles : {})}
+			css={{
+				borderRadius,
+				'& svg': {
+					flexShrink: 0,
+					width: iconWidth,
+				},
+			}}
+		>
+			<LegacyIcon />
+			<Text
+				as="span"
+				fontSize="sm"
+				lineHeight="nospace"
+				css={{ whiteSpace: 'nowrap' }}
+			>
+				{label}
+			</Text>
+		</Flex>
+	);
+};
+
+const borderRadius = mapSpacing(1); // 16px
+const height = mapSpacing(2); // 32px
+const iconWidth = '1.375rem'; // 22px
+
+const regularAppearanceStyles = {
+	border: true,
+	borderWidth: 'sm',
+	paddingX: 1,
+	height,
+} as const;
+
+const emphasisAndStatusMap = {
 	high: {
+		label: 'High',
 		status: {
 			success: {
 				label: 'Success',
@@ -67,6 +166,7 @@ const map = {
 		},
 	},
 	medium: {
+		label: 'Medium',
 		status: {
 			success: {
 				label: 'Success',
@@ -91,197 +191,101 @@ const map = {
 		},
 	},
 	low: {
+		label: 'Low',
 		status: {
 			success: {
 				label: 'Success',
 				icon: SuccessIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			error: {
 				label: 'Error',
 				icon: AlertIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			warning: {
 				label: 'Warning',
 				icon: WarningRoundIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			paused: {
 				label: 'Paused',
 				icon: ProgressPausedIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			info: {
 				label: 'Info',
 				icon: InfoIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			unknown: {
 				label: 'Help',
 				icon: HelpIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			todo: {
 				label: 'Todo',
 				icon: ProgressTodoIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			inProgress: {
 				label: 'In Progress',
 				icon: ProgressDoingIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 			blocked: {
 				label: 'Blocked',
 				icon: ProgressBlockedIcon,
-				tone: 'neutral',
+				tone: 'border',
 			},
 		},
 	},
 };
 
-export const StatusBadge = ({
-	appearance,
-	emphasis = 'high',
-	status = 'error',
-	label,
-	weight = 'regular',
-	tone,
-}: StatusBadgeProps) => {
-	const { borderColor, icon: Icon } = toneMap[tone || 'info'];
-	const hasStatus = Boolean(status);
-	const hasEmphasis = Boolean(emphasis);
+export type StatusBadgeAppearance = 'subtle' | 'regular';
 
-	let resolvedStuff = {};
+// Legacy
 
-	if (hasStatus && hasEmphasis) {
-		resolvedStuff = map[emphasis].status[status];
-		const Icon = resolvedStuff.icon;
-		return (
-			<Flex
-				display="inline-flex"
-				alignItems="center"
-				gap={0.5}
-				css={{
-					...(weight === 'regular' && {
-						height,
-						background: boxPalette.backgroundBody,
-						borderWidth: tokens.borderWidth.sm,
-						borderStyle: 'solid',
-						// borderColor,
-						borderRadius,
-						paddingLeft: mapSpacing(1),
-						paddingRight: mapSpacing(1),
-					}),
-					'& svg': {
-						flexShrink: 0,
-						width: iconWidth,
-					},
-				}}
-			>
-				<Icon
-					aria-hidden="false"
-					color={resolvedStuff.tone}
-					aria-label={resolvedStuff.label}
-				/>
-				<Text
-					as="span"
-					fontSize="sm"
-					lineHeight="nospace"
-					css={{ whiteSpace: 'nowrap' }}
-				>
-					{label}
-				</Text>
-			</Flex>
-		);
-	}
+export type StatusBadgeTone = keyof typeof legacyToneMap;
 
-	console.log(`resolvedStuff`, resolvedStuff);
-
-	return (
-		<Flex
-			display="inline-flex"
-			alignItems="center"
-			gap={0.5}
-			css={{
-				...(weight === 'regular' && {
-					height,
-					background: boxPalette.backgroundBody,
-					borderWidth: tokens.borderWidth.sm,
-					borderStyle: 'solid',
-					borderColor,
-					borderRadius,
-					paddingLeft: mapSpacing(1),
-					paddingRight: mapSpacing(1),
-				}),
-				'& svg': {
-					flexShrink: 0,
-					width: iconWidth,
-				},
-			}}
-		>
-			<Icon />
-			<Text
-				as="span"
-				fontSize="sm"
-				lineHeight="nospace"
-				css={{ whiteSpace: 'nowrap' }}
-			>
-				{label}
-			</Text>
-		</Flex>
-	);
-};
-
-const height = mapSpacing(2); // 32px
-const borderRadius = mapSpacing(1); // 16px
-const iconWidth = '1.375rem'; // 22px
-
-export type StatusBadgeTone = keyof typeof toneMap;
-
-const NeutralDot = () => (
-	<Box
-		highContrastOutline
-		css={{
-			width: 8,
-			height: 8,
-			borderRadius: 4,
-			backgroundColor: boxPalette.foregroundMuted,
-		}}
-	/>
-);
-
-const toneMap = {
+const legacyToneMap = {
 	neutral: {
-		borderColor: boxPalette.border,
-		icon: () => <NeutralDot />,
+		icon: () => (
+			<Box
+				highContrastOutline
+				css={{
+					width: 8,
+					height: 8,
+					borderRadius: 4,
+					backgroundColor: boxPalette.foregroundMuted,
+				}}
+			/>
+		),
+		tone: 'border',
 	},
 	success: {
-		borderColor: boxPalette.systemSuccess,
 		icon: () => (
 			<SuccessIcon color="success" aria-hidden="false" aria-label="Success" />
 		),
+		tone: 'success',
 	},
 	error: {
-		borderColor: boxPalette.systemError,
 		icon: () => (
 			<AlertIcon color="error" aria-hidden="false" aria-label="Error" />
 		),
+		tone: 'error',
 	},
 
 	info: {
-		borderColor: boxPalette.systemInfo,
 		icon: () => (
 			<InfoIcon color="info" aria-hidden="false" aria-label="Information" />
 		),
+		tone: 'info',
 	},
 	warning: {
-		borderColor: boxPalette.systemWarning,
 		icon: () => (
 			<WarningIcon color="warning" aria-hidden="false" aria-label="Warning" />
 		),
+		tone: 'warning',
 	},
 } as const;
-
-export type StatusBadgeWeight = 'subtle' | 'regular';
