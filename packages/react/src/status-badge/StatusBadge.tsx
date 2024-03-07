@@ -23,46 +23,26 @@ import { ProgressPausedIcon } from '../icon/icons/ProgressPausedIcon';
 export type StatusBadgeProps = {
 	/** The visual appearance of the badge. */
 	appearance?: StatusBadgeAppearance;
-	/** Determines the strength and tone of the icon and badge. */
-	emphasis: keyof typeof emphasisAndStatusMap;
 	/** The text label in the badge. */
 	label: ReactNode;
-	/** Determines the type of icon rendered. */
-	status:
-		| 'blocked'
-		| 'doing'
-		| 'draft'
-		| 'error'
-		| 'info'
-		| 'paused'
-		| 'success'
-		| 'unknown'
-		| 'warning';
 	/** @deprecated The visual weight to apply. */
 	weight?: StatusBadgeAppearance;
 	/** @deprecated The color tone to apply. */
 	tone: StatusBadgeTone;
+	/** Determines the tone and icon of the badge. */
+	type: keyof typeof typeMap;
 };
 
 export const StatusBadge = ({
 	appearance = 'regular',
-	emphasis,
 	label,
-	status,
 	tone,
+	type,
 	weight = 'regular',
 }: StatusBadgeProps) => {
-	const hasStatus = Boolean(status);
-	const hasEmphasis = Boolean(emphasis);
-
 	// Updated props take precedence of Legacy
-	if (hasStatus && hasEmphasis) {
-		const resolvedEmphasis = emphasisAndStatusMap[emphasis];
-		const {
-			icon: Icon,
-			iconLabel,
-			tone,
-		} = resolvedEmphasis.status[status as keyof typeof resolvedEmphasis.status];
+	if (type) {
+		const { icon: Icon, iconLabel, tone } = typeMap[type];
 
 		return (
 			<Flex
@@ -80,11 +60,7 @@ export const StatusBadge = ({
 					},
 				}}
 			>
-				<Icon
-					aria-hidden="false"
-					color={tone}
-					aria-label={`${resolvedEmphasis.iconLabel} ${iconLabel}`}
-				/>
+				<Icon aria-hidden="false" color={tone} aria-label={iconLabel} />
 				<Text
 					as="span"
 					fontSize="sm"
@@ -99,16 +75,16 @@ export const StatusBadge = ({
 
 	// Legacy StatusBadge
 	console.warn(
-		'The "tone" and  "weight" props are deprecated. Use the "appearance", "emphasis" and "status" props instead.'
+		'The "tone" and "weight" props are deprecated. Use the "type" and "appearance" props instead.'
 	);
 	const { icon: LegacyIcon, tone: legacyTone } = legacyToneMap[tone || 'info'];
 	return (
 		<Flex
-			background="body"
-			display="inline-flex"
 			alignItems="center"
-			gap={0.5}
+			background="body"
 			borderColor={legacyTone}
+			display="inline-flex"
+			gap={0.5}
 			{...(weight === 'regular' ? regularAppearanceStyles : {})}
 			css={{
 				borderRadius,
@@ -142,106 +118,91 @@ const regularAppearanceStyles = {
 	paddingX: 1,
 } as const;
 
-const emphasisAndStatusMap = {
-	high: {
-		iconLabel: 'High',
-		status: {
-			success: {
-				icon: SuccessFilledIcon,
-				iconLabel: 'Success',
-				tone: 'success',
-			},
-			error: {
-				icon: AlertFilledIcon,
-				iconLabel: 'Error',
-				tone: 'error',
-			},
-			warning: {
-				icon: WarningFilledIcon,
-				iconLabel: 'Warning',
-				tone: 'warning',
-			},
-			info: {
-				icon: InfoFilledIcon,
-				iconLabel: 'Info',
-				tone: 'info',
-			},
-		},
+const typeMap = {
+	blockedLow: {
+		icon: ProgressBlockedIcon,
+		iconLabel: 'Blocked',
+		tone: 'border',
 	},
-	medium: {
-		iconLabel: 'Medium',
-		status: {
-			success: {
-				icon: SuccessIcon,
-				iconLabel: 'Success',
-				tone: 'success',
-			},
-			error: {
-				icon: AlertIcon,
-				iconLabel: 'Error',
-				tone: 'error',
-			},
-			warning: {
-				icon: WarningIcon,
-				iconLabel: 'Warning',
-				tone: 'warning',
-			},
-			info: {
-				icon: InfoIcon,
-				iconLabel: 'Info',
-				tone: 'info',
-			},
-		},
+	errorHigh: {
+		icon: AlertFilledIcon,
+		iconLabel: 'High Error',
+		tone: 'error',
 	},
-	low: {
-		iconLabel: 'Low',
-		status: {
-			success: {
-				icon: SuccessIcon,
-				iconLabel: 'Success',
-				tone: 'border',
-			},
-			error: {
-				icon: AlertIcon,
-				iconLabel: 'Error',
-				tone: 'border',
-			},
-			warning: {
-				icon: WarningRoundIcon,
-				iconLabel: 'Warning',
-				tone: 'border',
-			},
-			paused: {
-				icon: ProgressPausedIcon,
-				iconLabel: 'Paused',
-				tone: 'border',
-			},
-			info: {
-				icon: InfoIcon,
-				iconLabel: 'Info',
-				tone: 'border',
-			},
-			unknown: {
-				icon: HelpIcon,
-				iconLabel: 'Help',
-				tone: 'border',
-			},
-			todo: {
-				icon: ProgressTodoIcon,
-				iconLabel: 'Todo',
-				tone: 'border',
-			},
-			inProgress: {
-				icon: ProgressDoingIcon,
-				iconLabel: 'In Progress',
-				tone: 'border',
-			},
-			blocked: {
-				icon: ProgressBlockedIcon,
-				iconLabel: 'Blocked',
-				tone: 'border',
-			},
-		},
+	errorLow: {
+		icon: AlertIcon,
+		iconLabel: 'Low Error',
+		tone: 'border',
+	},
+	errorMedium: {
+		icon: AlertIcon,
+		iconLabel: 'Medium Error',
+		tone: 'error',
+	},
+	inProgressLow: {
+		icon: ProgressDoingIcon,
+		iconLabel: 'In Progress',
+		tone: 'border',
+	},
+	infoHigh: {
+		icon: InfoFilledIcon,
+		iconLabel: 'High Info',
+		tone: 'info',
+	},
+	infoLow: {
+		icon: InfoIcon,
+		iconLabel: 'Low Info',
+		tone: 'border',
+	},
+	infoMedium: {
+		icon: InfoIcon,
+		iconLabel: 'Medium Info',
+		tone: 'info',
+	},
+	pausedLow: {
+		icon: ProgressPausedIcon,
+		iconLabel: 'Paused',
+		tone: 'border',
+	},
+	successHigh: {
+		icon: SuccessFilledIcon,
+		iconLabel: 'High Success',
+		tone: 'success',
+	},
+	successLow: {
+		icon: SuccessIcon,
+		iconLabel: 'Low Success',
+		tone: 'border',
+	},
+	successMedium: {
+		icon: SuccessIcon,
+		iconLabel: 'Medium Success',
+		tone: 'success',
+	},
+	todoLow: {
+		icon: ProgressTodoIcon,
+		iconLabel: 'Todo',
+		tone: 'border',
+	},
+	unknownLow: {
+		icon: HelpIcon,
+		iconLabel: 'Help',
+		tone: 'border',
+	},
+	warningHigh: {
+		icon: WarningFilledIcon,
+		iconLabel: 'High Warning',
+		tone: 'warning',
+	},
+	warningLow: {
+		icon: WarningRoundIcon,
+		iconLabel: 'Low Warning',
+		tone: 'border',
+	},
+	warningMedium: {
+		icon: WarningIcon,
+		iconLabel: 'Medium Warning',
+		tone: 'warning',
 	},
 } as const;
 

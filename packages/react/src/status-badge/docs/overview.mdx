@@ -8,127 +8,62 @@ relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 ---
 
 ```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<StatusBadge status="success" emphasis="high" label="Success" />
-	<StatusBadge status="error" emphasis="high" label="Error" />
-	<StatusBadge status="warning" emphasis="high" label="Warning" />
-	<StatusBadge status="info" emphasis="high" label="Warning" />
-	<StatusBadge status="success" emphasis="medium" label="Success" />
-	<StatusBadge status="error" emphasis="medium" label="Error" />
-	<StatusBadge status="warning" emphasis="medium" label="Warning" />
-	<StatusBadge status="info" emphasis="medium" label="Warning" />
-	<StatusBadge status="success" emphasis="low" label="Success" />
-	<StatusBadge status="error" emphasis="low" label="Error" />
-	<StatusBadge status="warning" emphasis="low" label="Warning" />
-	<StatusBadge status="paused" emphasis="low" label="Paused" />
-	<StatusBadge status="info" emphasis="low" label="Info" />
-	<StatusBadge status="unknown" emphasis="low" label="Unknown" />
-	<StatusBadge status="todo" emphasis="low" label="Todo" />
-	<StatusBadge
-		status="inProgress"
-		emphasis="low"
-		tone="info"
-		label="In progress"
-	/>
-	<StatusBadge status="blocked" emphasis="low" label="Blocked" />
+<Flex gap={1} flexDirection="column">
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge type="successHigh" label="Success" />
+		<StatusBadge type="errorHigh" label="Error" />
+		<StatusBadge type="warningHigh" label="Warning" />
+		<StatusBadge type="infoHigh" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge type="successMedium" label="Success" />
+		<StatusBadge type="errorMedium" label="Error" />
+		<StatusBadge type="warningMedium" label="Warning" />
+		<StatusBadge type="infoMedium" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge type="successLow" label="Success" />
+		<StatusBadge type="errorLow" label="Error" />
+		<StatusBadge type="warningLow" label="Warning" />
+		<StatusBadge type="infoLow" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge type="blockedLow" label="Blocked" />
+		<StatusBadge type="inProgressLow" label="In progress" />
+		<StatusBadge type="pausedLow" label="Paused" />
+		<StatusBadge type="todoLow" label="Todo" />
+		<StatusBadge type="unknownLow" label="Unknown" />
+	</Flex>
 </Flex>
 ```
 
 ```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<StatusBadge
-		appearance="subtle"
-		status="success"
-		emphasis="high"
-		label="Success"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="error"
-		emphasis="high"
-		label="Error"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="warning"
-		emphasis="high"
-		label="Warning"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="info"
-		emphasis="high"
-		label="Warning"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="success"
-		emphasis="medium"
-		label="Success"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="error"
-		emphasis="medium"
-		label="Error"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="warning"
-		emphasis="medium"
-		label="Warning"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="info"
-		emphasis="medium"
-		label="Warning"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="success"
-		emphasis="low"
-		label="Success"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="error"
-		emphasis="low"
-		label="Error"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="warning"
-		emphasis="low"
-		label="Warning"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="paused"
-		emphasis="low"
-		label="Paused"
-	/>
-	<StatusBadge appearance="subtle" status="info" emphasis="low" label="Info" />
-	<StatusBadge
-		appearance="subtle"
-		status="unknown"
-		emphasis="low"
-		label="Unknown"
-	/>
-	<StatusBadge appearance="subtle" status="todo" emphasis="low" label="Todo" />
-	<StatusBadge
-		appearance="subtle"
-		status="inProgress"
-		emphasis="low"
-		tone="info"
-		label="In progress"
-	/>
-	<StatusBadge
-		appearance="subtle"
-		status="blocked"
-		emphasis="low"
-		label="Blocked"
-	/>
+<Flex gap={1} flexDirection="column">
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge appearance="subtle" type="successHigh" label="Success" />
+		<StatusBadge appearance="subtle" type="errorHigh" label="Error" />
+		<StatusBadge appearance="subtle" type="warningHigh" label="Warning" />
+		<StatusBadge appearance="subtle" type="infoHigh" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge appearance="subtle" type="successMedium" label="Success" />
+		<StatusBadge appearance="subtle" type="errorMedium" label="Error" />
+		<StatusBadge appearance="subtle" type="warningMedium" label="Warning" />
+		<StatusBadge appearance="subtle" type="infoMedium" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge appearance="subtle" type="successLow" label="Success" />
+		<StatusBadge appearance="subtle" type="errorLow" label="Error" />
+		<StatusBadge appearance="subtle" type="warningLow" label="Warning" />
+		<StatusBadge appearance="subtle" type="infoLow" label="Info" />
+	</Flex>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge appearance="subtle" type="blockedLow" label="Blocked" />
+		<StatusBadge appearance="subtle" type="inProgressLow" label="In progress" />
+		<StatusBadge appearance="subtle" type="pausedLow" label="Paused" />
+		<StatusBadge appearance="subtle" type="todoLow" label="Todo" />
+		<StatusBadge appearance="subtle" type="unknownLow" label="Unknown" />
+	</Flex>
 </Flex>
 ```
 
