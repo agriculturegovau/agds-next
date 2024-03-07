@@ -28,15 +28,15 @@ export type StatusBadgeProps = {
 	/** @deprecated The visual weight to apply. */
 	weight?: StatusBadgeAppearance;
 	/** @deprecated The color tone to apply. */
-	tone: StatusBadgeTone;
+	tone?: StatusBadgeTone;
 	/** Determines the tone and icon of the badge. */
-	type: keyof typeof typeMap;
+	type?: keyof typeof typeMap;
 };
 
 export const StatusBadge = ({
 	appearance = 'regular',
 	label,
-	tone,
+	tone = 'neutral',
 	type,
 	weight = 'regular',
 }: StatusBadgeProps) => {
@@ -60,7 +60,7 @@ export const StatusBadge = ({
 					},
 				}}
 			>
-				<Icon aria-hidden="false" color={tone} aria-label={iconLabel} />
+				<Icon aria-hidden="false" aria-label={iconLabel} color={tone} />
 				<Text
 					as="span"
 					fontSize="sm"
@@ -238,7 +238,6 @@ const legacyToneMap = {
 		),
 		tone: 'error',
 	},
-
 	info: {
 		icon: () => (
 			<InfoIcon color="info" aria-hidden="false" aria-label="Information" />
