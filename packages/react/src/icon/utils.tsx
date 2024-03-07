@@ -5,6 +5,7 @@ import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
+import { AttachmentIcon } from './icons/AttachmentIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
 import { CalendarIcon } from './icons/CalendarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
@@ -66,6 +67,7 @@ export const allIcons = {
 	ArrowRightIcon,
 	ArrowUpIcon,
 	ArrowUpDownIcon,
+	AttachmentIcon,
 	AvatarIcon,
 	CalendarIcon,
 	ChartBarIcon,
