@@ -16,7 +16,7 @@ import {
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
-import { getCloseHandler } from '../getCloseHandler';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
 
 export type DrawerProps = PropsWithChildren<{
@@ -43,7 +43,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	title,
 	width = 'md',
 }) => {
-	const handleClose = getCloseHandler(onClose, onDismiss)
+	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	// Close the Drawer when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {

@@ -1,6 +1,6 @@
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Fn = (params: any) => void
+type Fn = (params?: any) => void
 
 export function getRequiredCloseHandler(onClose: Fn | undefined, onDismiss: Fn | undefined): Fn {
 	const closeHandler = onClose ? onClose : onDismiss
