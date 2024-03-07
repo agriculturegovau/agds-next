@@ -1071,7 +1071,6 @@ exports[`Icon ProgressBlockedIcon renders correctly 1`] = `
     />
     ,
     <line
-      stroke-linecap="round"
       x1="7"
       x2="17"
       y1="12"
@@ -1119,6 +1118,27 @@ exports[`Icon ProgressDoingIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ProgressPausedIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8.5 7v8m5-8v8M11 1a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ProgressTodoIcon renders correctly 1`] = `
 <div>
   <svg
@@ -1138,7 +1158,6 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
       cy="12"
       r="10.5"
       stroke-dasharray="4 4"
-      stroke-linecap="round"
     />
   </svg>
 </div>
@@ -1380,6 +1399,27 @@ exports[`Icon WarningIcon renders correctly 1`] = `
   >
     <path
       d="M3 22h18c.7 0 1.2-.8.9-1.5l-9-17.8c-.4-.7-1.4-.7-1.8 0l-9 17.8c-.3.7.2 1.5.9 1.5ZM12 14V9m0 9h0"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon WarningRoundIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11 6v6m0 4h-.01M1 11C1 5.477 5.477 1 11 1s10 4.477 10 10-4.477 10-10 10S1 16.523 1 11Z"
     />
   </svg>
 </div>

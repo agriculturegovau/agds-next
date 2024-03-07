@@ -30,7 +30,7 @@ export type StatusBadgeProps = {
 	/** @deprecated The color tone to apply. */
 	tone?: StatusBadgeTone;
 	/** Determines the tone and icon of the badge. */
-	type?: keyof typeof typeMap;
+	type?: StatusBadgeType;
 };
 
 export const StatusBadge = ({
@@ -139,11 +139,6 @@ const typeMap = {
 		iconLabel: 'Medium Error',
 		tone: 'error',
 	},
-	inProgressLow: {
-		icon: ProgressDoingIcon,
-		iconLabel: 'In Progress',
-		tone: 'border',
-	},
 	infoHigh: {
 		icon: InfoFilledIcon,
 		iconLabel: 'High Info',
@@ -158,6 +153,11 @@ const typeMap = {
 		icon: InfoIcon,
 		iconLabel: 'Medium Info',
 		tone: 'info',
+	},
+	inProgressLow: {
+		icon: ProgressDoingIcon,
+		iconLabel: 'In Progress',
+		tone: 'border',
 	},
 	pausedLow: {
 		icon: ProgressPausedIcon,
@@ -205,6 +205,8 @@ const typeMap = {
 		tone: 'warning',
 	},
 } as const;
+
+export type StatusBadgeType = keyof typeof typeMap;
 
 export type StatusBadgeAppearance = 'subtle' | 'regular';
 

@@ -6,7 +6,8 @@ import {
 	StatusBadge,
 	StatusBadgeProps,
 	StatusBadgeTone,
-	StatusBadgeWeight,
+	StatusBadgeAppearance,
+	StatusBadgeType,
 } from './StatusBadge';
 
 expect.extend(toHaveNoViolations);
@@ -17,9 +18,29 @@ function renderStatusBadge(props: StatusBadgeProps) {
 	return render(<StatusBadge {...props} />);
 }
 
-const weights: StatusBadgeWeight[] = ['subtle', 'regular'];
+const appearances: StatusBadgeAppearance[] = ['subtle', 'regular'];
 
-const tones: StatusBadgeTone[] = [
+const types: StatusBadgeType[] = [
+	'blockedLow',
+	'errorHigh',
+	'errorLow',
+	'errorMedium',
+	'infoHigh',
+	'infoLow',
+	'infoMedium',
+	'inProgressLow',
+	'pausedLow',
+	'successHigh',
+	'successLow',
+	'successMedium',
+	'todoLow',
+	'unknownLow',
+	'warningHigh',
+	'warningLow',
+	'warningMedium',
+];
+
+const legacyTones: StatusBadgeTone[] = [
 	'error',
 	'success',
 	'warning',
@@ -28,24 +49,51 @@ const tones: StatusBadgeTone[] = [
 ];
 
 describe('StatusBadge', () => {
-	weights.forEach((weight) => {
-		describe(`weight: ${weight}`, () => {
-			tones.forEach((tone) => {
-				describe(`tone: ${tone}`, () => {
+	appearances.forEach((appearance) => {
+		describe(`appearance: ${appearance}`, () => {
+			types.forEach((type) => {
+				describe(`type: ${type}`, () => {
 					it('renders correctly', () => {
 						const { container } = renderStatusBadge({
-							weight,
-							tone,
-							label: `Example`,
+							appearance,
+							type,
+							label: 'Example',
 						});
 						expect(container).toMatchSnapshot();
 					});
 
 					it('renders valid HTML with no a11y violations', async () => {
 						const { container } = renderStatusBadge({
-							weight,
+							appearance,
+							type,
+							label: 'Example',
+						});
+						expect(container).toHTMLValidate({
+							extends: ['html-validate:recommended'],
+						});
+						expect(await axe(container)).toHaveNoViolations();
+					});
+				});
+			});
+		});
+
+		describe(`Legacy weight: ${appearance}`, () => {
+			legacyTones.forEach((tone) => {
+				describe(`tone: ${tone}`, () => {
+					it('renders correctly', () => {
+						const { container } = renderStatusBadge({
+							weight: appearance,
 							tone,
-							label: `Example`,
+							label: 'Example',
+						});
+						expect(container).toMatchSnapshot();
+					});
+
+					it('renders valid HTML with no a11y violations', async () => {
+						const { container } = renderStatusBadge({
+							weight: appearance,
+							tone,
+							label: 'Example',
 						});
 						expect(container).toHTMLValidate({
 							extends: ['html-validate:recommended'],

@@ -397,7 +397,6 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   cy="12"
                   r="10.5"
                   stroke-dasharray="4 4"
-                  stroke-linecap="round"
                 />
               </svg>
             </span>
@@ -435,7 +434,6 @@ exports[`TaskList With anchors renders correctly 1`] = `
                     cy="12"
                     r="10.5"
                     stroke-dasharray="4 4"
-                    stroke-linecap="round"
                   />
                 </svg>
                 <span
@@ -879,7 +877,6 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   cy="12"
                   r="10.5"
                   stroke-dasharray="4 4"
-                  stroke-linecap="round"
                 />
               </svg>
             </span>
@@ -917,7 +914,6 @@ exports[`TaskList With buttons renders correctly 1`] = `
                     cy="12"
                     r="10.5"
                     stroke-dasharray="4 4"
-                    stroke-linecap="round"
                   />
                 </svg>
                 <span

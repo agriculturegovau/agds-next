@@ -152,7 +152,6 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -496,7 +495,6 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -682,7 +680,6 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -1026,7 +1023,6 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -1213,7 +1209,6 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -1556,7 +1551,6 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -1743,7 +1737,6 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -2086,7 +2079,6 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -2272,7 +2264,6 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -2616,7 +2607,6 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -2802,7 +2792,6 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -3146,7 +3135,6 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -3332,7 +3320,6 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -3676,7 +3663,6 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
@@ -3862,7 +3848,6 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     />
                     ,
                     <line
-                      stroke-linecap="round"
                       x1="7"
                       x2="17"
                       y1="12"
@@ -4206,7 +4191,6 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       cy="12"
                       r="10.5"
                       stroke-dasharray="4 4"
-                      stroke-linecap="round"
                     />
                   </svg>
                 </span>
