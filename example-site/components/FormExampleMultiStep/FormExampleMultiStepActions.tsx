@@ -41,7 +41,7 @@ export const FormExampleMultiStepActions = () => {
 			</Stack>
 			<Modal
 				isOpen={isModalOpen}
-				onDismiss={closeModal}
+				onClose={closeModal}
 				title="Are you sure you want to cancel?"
 				actions={
 					<ButtonGroup>

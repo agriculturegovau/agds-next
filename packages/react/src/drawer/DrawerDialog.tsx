@@ -7,11 +7,14 @@ import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
 
 export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
-	onDismiss: () => void;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
+	onClose?: () => void;
 	style: { translateX: SpringValue<string> };
 	title: string;
 	width: DrawerDialogWidth;
@@ -31,10 +34,12 @@ export function DrawerDialog({
 	children,
 	title,
 	onDismiss,
+	onClose,
 	style,
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
+	const handleClose = getRequiredCloseHandler(onClose, onDismiss)
 
 	return (
 		<FocusLock returnFocus>
@@ -64,7 +69,7 @@ export function DrawerDialog({
 				{actions ? <DrawerFooter>{actions}</DrawerFooter> : null}
 				<Button
 					variant="text"
-					onClick={onDismiss}
+					onClick={handleClose}
 					iconAfter={CloseIcon}
 					css={mq({
 						position: 'fixed',

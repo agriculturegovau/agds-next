@@ -61,7 +61,7 @@ describe('GlobalAlert', () => {
 			const { container } = renderGlobalAlert({
 				title: 'Alert title',
 				children: <Text as="p">Alert description.</Text>,
-				onDismiss: jest.fn(),
+				onClose: jest.fn(),
 			});
 			expect(container).toMatchSnapshot();
 		});
@@ -70,7 +70,7 @@ describe('GlobalAlert', () => {
 			const { container } = renderGlobalAlert({
 				title: 'Alert title',
 				children: <Text as="p">Alert description.</Text>,
-				onDismiss: jest.fn(),
+				onClose: jest.fn(),
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -81,15 +81,15 @@ describe('GlobalAlert', () => {
 			});
 		});
 
-		it('responds to an `onDismiss event', async () => {
-			const onDismiss = jest.fn();
+		it('responds to an `onClose event', async () => {
+			const onClose = jest.fn();
 			renderGlobalAlert({
 				title: 'Alert title',
 				children: <Text as="p">Alert description.</Text>,
-				onDismiss,
+				onClose,
 			});
 			await userEvent.click(screen.getByText('Close'));
-			expect(onDismiss).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledTimes(1);
 		});
 	});
 });

@@ -14,6 +14,7 @@ import {
 	SuccessFilledIcon,
 	WarningFilledIcon,
 } from '../icon';
+import { getOptionalCloseHandler } from '../getCloseHandler';
 import { PageAlertTitle } from './PageAlertTitle';
 import { PageAlertCloseButton } from './PageAlertCloseButton';
 
@@ -30,14 +31,17 @@ export type PageAlertProps = PropsWithChildren<{
 	/** The tone of the alert. */
 	tone: PageAlertTone;
 	/** Function to be called when the 'Close' button is pressed. */
+	onClose?: MouseEventHandler<HTMLButtonElement>;
+	/** @deprecated use `onClose` instead */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
 }>;
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 	function PageAlert(
-		{ id, role, children, onDismiss, title, tone, tabIndex },
+		{ id, role, children, onClose, onDismiss, title, tone, tabIndex },
 		ref
 	) {
+		const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
 		const { fg, bg, icon } = pageAlertToneMap[tone];
 		return (
 			<Flex
@@ -70,7 +74,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 					css={{
 						// When there is a dismiss button and no title
 						// We need to add extra padding to avoid overlapping
-						marginRight: onDismiss && !title ? '3rem' : undefined,
+						marginRight: closeHandler && !title ? '3rem' : undefined,
 						[tokens.mediaQuery.min.sm]: {
 							marginRight: '0',
 						},
@@ -86,14 +90,14 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 							isValidElement(title) ? (
 								title
 							) : (
-								<PageAlertTitle hasDismissButton={Boolean(onDismiss)}>
+								<PageAlertTitle hasDismissButton={Boolean(closeHandler)}>
 									{title}
 								</PageAlertTitle>
 							)
 						) : null}
 						{children}
 					</Flex>
-					{onDismiss ? <PageAlertCloseButton onClick={onDismiss} /> : null}
+					{closeHandler ? <PageAlertCloseButton onClick={closeHandler} /> : null}
 				</Flex>
 			</Flex>
 		);

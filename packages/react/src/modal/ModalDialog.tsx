@@ -6,14 +6,17 @@ import { Stack } from '../stack';
 import { mapSpacing, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { ModalTitle } from './ModalTitle';
 import { useModalId } from './utils';
 
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
 	/** Function to be called when the modal is closed. */
-	onDismiss: () => void;
+	onClose?: () => void;
 	/** The title of the modal dialog. It can span lines but should not be too long. */
 	title: string;
 }>;
@@ -24,8 +27,10 @@ export const ModalDialog = ({
 	actions,
 	children,
 	title,
+	onClose,
 	onDismiss,
 }: ModalDialogProps) => {
+	const closeHandler = getRequiredCloseHandler(onClose, onDismiss)
 	const { titleId } = useModalId();
 	return (
 		<FocusLock returnFocus>
@@ -61,7 +66,7 @@ export const ModalDialog = ({
 				<Button
 					variant="text"
 					aria-label="Close modal"
-					onClick={onDismiss}
+					onClick={closeHandler}
 					iconAfter={CloseIcon}
 					css={{ order: -1, alignSelf: 'flex-end' }}
 				>

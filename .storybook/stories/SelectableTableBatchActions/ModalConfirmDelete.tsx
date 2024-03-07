@@ -7,7 +7,9 @@ import { plural, RowData } from './utils';
 export type ModalConfirmDeleteProps = {
 	isOpen: boolean;
 	onConfirm: () => void;
+	/** @deprecated use `onClose` instead */
 	onDismiss: () => void;
+	onClose: () => void;
 	itemsToDelete: RowData | RowData[];
 };
 
@@ -15,6 +17,7 @@ export function ModalConfirmDelete({
 	isOpen,
 	onConfirm,
 	onDismiss,
+	onClose,
 	itemsToDelete,
 }: ModalConfirmDeleteProps) {
 	const [submitting, setSubmitting] = useState(false);
@@ -46,13 +49,14 @@ export function ModalConfirmDelete({
 		<Modal
 			isOpen={isOpen}
 			onDismiss={onDismiss}
+			onClose={onClose}
 			title={title}
 			actions={
 				<ButtonGroup>
 					<Button loading={submitting} onClick={onSubmit}>
 						Delete items
 					</Button>
-					<Button variant="secondary" onClick={onDismiss}>
+					<Button variant="secondary" onClick={onClose || onDismiss}>
 						Cancel
 					</Button>
 				</ButtonGroup>

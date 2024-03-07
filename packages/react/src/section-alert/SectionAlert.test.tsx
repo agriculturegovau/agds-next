@@ -54,30 +54,30 @@ describe('SectionAlert', () => {
 	});
 
 	describe(`which is dismissable`, () => {
-		const onDismiss = jest.fn();
+		const onClose = jest.fn();
 
 		it('renders correctly', () => {
 			const { container } = renderSectionAlert({
-				onDismiss: onDismiss,
+				onClose: onClose,
 			});
 			expect(container).toMatchSnapshot();
 		});
 		it('renders a valid HTML structure', () => {
 			const { container } = renderSectionAlert({
-				onDismiss: onDismiss,
+				onClose: onClose,
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
 		});
-		it('calls the onDismiss function when clicked', () => {
+		it('calls the onClose function when clicked', () => {
 			const { getByRole } = renderSectionAlert({
-				onDismiss: onDismiss,
+				onClose: onClose,
 			});
 			const dismissButton = getByRole('button');
-			expect(onDismiss).not.toHaveBeenCalled();
+			expect(onClose).not.toHaveBeenCalled();
 			dismissButton.click();
-			expect(onDismiss).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledTimes(1);
 		});
 	});
 });

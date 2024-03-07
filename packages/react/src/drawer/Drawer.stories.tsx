@@ -37,7 +37,7 @@ export const Basic: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -79,7 +79,7 @@ export const LargeWidth: Story = {
 				<Button onClick={open}>Open Large Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={
@@ -172,7 +172,7 @@ export const FiltersBasic: Story = {
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
 					isOpen={isDrawerOpen}
-					onDismiss={onCloseClick}
+					onClose={onCloseClick}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -301,7 +301,7 @@ export const FiltersWithFieldsets: Story = {
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
 					isOpen={isDrawerOpen}
-					onDismiss={onCloseClick}
+					onClose={onCloseClick}
 					title={props.title}
 					actions={
 						<ButtonGroup>

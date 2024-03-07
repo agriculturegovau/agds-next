@@ -14,7 +14,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	actions,
 	children,
 	isOpen = false,
-	onDismiss,
+	onClose,
 	title,
 }) => {
 	// Close the modal when the user presses the escape key
@@ -23,12 +23,12 @@ export const Modal: FunctionComponent<ModalProps> = ({
 			if (isOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				onDismiss();
+				onClose();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isOpen, onDismiss]);
+	}, [isOpen, onClose]);
 
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
@@ -43,7 +43,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={modalContainerRef}>
-				<ModalDialog onDismiss={onDismiss} title={title} actions={actions}>
+				<ModalDialog onClose={onClose} title={title} actions={actions}>
 					{children}
 				</ModalDialog>
 			</ModalCover>

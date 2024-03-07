@@ -5,11 +5,14 @@ import { Stack } from '../stack';
 import { boxPalette, tokens } from '../core';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
+import { getOptionalCloseHandler } from '../getCloseHandler';
 import { GlobalAlertCloseButton } from './GlobalAlertCloseButton';
 
 export type GlobalAlertProps = PropsWithChildren<{
-	/** Function to be called when the 'Close' button is pressed. */
+	/** @deprecated use `onClose` instead */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
+	/** Function to be called when the 'Close' button is pressed. */
+	onClose?: MouseEventHandler<HTMLButtonElement>;
 	/** The title of the alert. */
 	title?: string;
 	/** The tone of the alert. */
@@ -19,13 +22,16 @@ export type GlobalAlertProps = PropsWithChildren<{
 export function GlobalAlert({
 	children,
 	onDismiss,
+	onClose,
 	title,
 	tone = 'warning',
 }: GlobalAlertProps) {
 	const { ariaLabel, bg, fg, Icon } = toneMap[tone];
 
-	const addTitleMargin = Boolean(onDismiss);
-	const addContentMargin = Boolean(onDismiss && !title);
+	const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
+
+	const addTitleMargin = Boolean(closeHandler);
+	const addContentMargin = Boolean(closeHandler && !title);
 
 	return (
 		<Flex
@@ -77,7 +83,7 @@ export function GlobalAlert({
 						{children}
 					</Box>
 				</Stack>
-				{onDismiss ? <GlobalAlertCloseButton onClick={onDismiss} /> : null}
+				{closeHandler ? <GlobalAlertCloseButton onClick={closeHandler} /> : null}
 			</Flex>
 		</Flex>
 	);

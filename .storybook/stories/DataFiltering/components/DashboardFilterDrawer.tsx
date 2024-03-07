@@ -84,7 +84,7 @@ export const DashboardFilterDrawer = ({
 			<Drawer
 				title="Filter by"
 				isOpen={isDrawerOpen}
-				onDismiss={cancel}
+				onClose={cancel}
 				actions={
 					<ButtonGroup>
 						<Button onClick={applyFilters}>Apply filters</Button>

@@ -27,7 +27,7 @@ export function useNotification() {
 					ref={notification.ref}
 					tabIndex={-1}
 					tone="success"
-					onDismiss={() => dismissNotification()}
+					onClose={() => dismissNotification()}
 					title={notification.message}
 				/>
 			);

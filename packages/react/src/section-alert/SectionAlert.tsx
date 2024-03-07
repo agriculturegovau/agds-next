@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
+import { getOptionalCloseHandler } from '../getCloseHandler';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
 
@@ -24,16 +25,19 @@ export type SectionAlertProps = {
 	tabIndex?: number;
 	/** The tone of the alert. */
 	tone: SectionAlertTone;
-	/** Function to be called when the 'Close' button is pressed. */
+	/** @deprecated use `onClose` instead */
 	onDismiss?: MouseEventHandler<HTMLButtonElement>;
+	/** Function to be called when the 'Close' button is pressed. */
+	onClose?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
-		{ id, role, tabIndex, tone, title, children, onDismiss, ...props },
+		{ id, role, tabIndex, tone, title, children, onClose, onDismiss, ...props },
 		ref
 	) {
 		const Icon = sectionAlertIconMap[tone];
+		const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
 		return (
 			<Flex
 				ref={ref}
@@ -60,7 +64,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 						{children}
 					</Flex>
 				</Flex>
-				{onDismiss ? <SectionAlertDismissButton onClick={onDismiss} /> : null}
+				{closeHandler ? <SectionAlertDismissButton onClick={closeHandler} /> : null}
 			</Flex>
 		);
 	}

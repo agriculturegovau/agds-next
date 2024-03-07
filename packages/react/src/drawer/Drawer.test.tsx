@@ -16,7 +16,7 @@ function renderBaseDrawer() {
 	return render(
 		<Drawer
 			isOpen
-			onDismiss={() => undefined}
+			onClose={() => undefined}
 			title="Drawer title"
 			actions={<Button>Example action</Button>}
 		>
@@ -34,7 +34,7 @@ function DrawerExample() {
 			</Button>
 			<Drawer
 				isOpen={isOpen}
-				onDismiss={close}
+				onClose={close}
 				title="Drawer title"
 				actions={
 					<Button onClick={close} data-testid="close-button">

@@ -145,7 +145,7 @@ export const FocusMode: StoryObj<typeof AppLayout> = {
 export const WithGlobalAlert: StoryObj<typeof AppLayout> = {
 	render: (args) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log}>
+			<GlobalAlert onClose={console.log}>
 				<Text as="p">
 					This application will be down for maintenance on Sunday from 11am to
 					2pm.

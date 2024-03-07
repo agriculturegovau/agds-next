@@ -16,7 +16,7 @@ function renderBaseModal() {
 	return render(
 		<Modal
 			isOpen
-			onDismiss={() => undefined}
+			onClose={() => undefined}
 			title="Modal title"
 			actions={<Button>Close modal</Button>}
 		>
@@ -34,7 +34,7 @@ function ModalExample() {
 			</Button>
 			<Modal
 				isOpen={isModalOpen}
-				onDismiss={closeModal}
+				onClose={closeModal}
 				title="Modal title"
 				actions={
 					<Button onClick={closeModal} data-testid="close-modal-button">
