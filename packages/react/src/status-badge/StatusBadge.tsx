@@ -29,15 +29,15 @@ export type StatusBadgeProps = {
 	label: ReactNode;
 	/** Determines the type of icon rendered. */
 	status:
-		| 'success'
-		| 'error'
-		| 'warning'
-		| 'info'
-		| 'unknown'
-		| 'draft'
-		| 'doing'
 		| 'blocked'
-		| 'paused';
+		| 'doing'
+		| 'draft'
+		| 'error'
+		| 'info'
+		| 'paused'
+		| 'success'
+		| 'unknown'
+		| 'warning';
 	/** @deprecated The visual weight to apply. */
 	weight?: StatusBadgeAppearance;
 	/** @deprecated The color tone to apply. */
@@ -58,14 +58,17 @@ export const StatusBadge = ({
 	// Updated props take precedence of Legacy
 	if (hasStatus && hasEmphasis) {
 		const resolvedEmphasis = emphasisAndStatusMap[emphasis];
-		const resolvedStatus = resolvedEmphasis.status[status];
-		const Icon = resolvedStatus.icon;
+		const {
+			icon: Icon,
+			iconLabel,
+			tone,
+		} = resolvedEmphasis.status[status as keyof typeof resolvedEmphasis.status];
 
 		return (
 			<Flex
 				alignItems="center"
 				background="body"
-				borderColor={resolvedStatus.tone}
+				borderColor={tone}
 				display="inline-flex"
 				gap={0.5}
 				{...(appearance === 'regular' ? regularAppearanceStyles : {})}
@@ -79,8 +82,8 @@ export const StatusBadge = ({
 			>
 				<Icon
 					aria-hidden="false"
-					color={resolvedStatus.tone}
-					aria-label={`${resolvedEmphasis.label} ${resolvedStatus.label}`}
+					color={tone}
+					aria-label={`${resolvedEmphasis.iconLabel} ${iconLabel}`}
 				/>
 				<Text
 					as="span"
@@ -135,117 +138,116 @@ const iconWidth = '1.375rem'; // 22px
 const regularAppearanceStyles = {
 	border: true,
 	borderWidth: 'sm',
-	paddingX: 1,
 	height,
+	paddingX: 1,
 } as const;
 
 const emphasisAndStatusMap = {
 	high: {
-		label: 'High',
+		iconLabel: 'High',
 		status: {
 			success: {
-				label: 'Success',
 				icon: SuccessFilledIcon,
+				iconLabel: 'Success',
 				tone: 'success',
 			},
 			error: {
-				label: 'Error',
 				icon: AlertFilledIcon,
+				iconLabel: 'Error',
 				tone: 'error',
 			},
 			warning: {
-				label: 'Warning',
 				icon: WarningFilledIcon,
+				iconLabel: 'Warning',
 				tone: 'warning',
 			},
 			info: {
-				label: 'Info',
 				icon: InfoFilledIcon,
+				iconLabel: 'Info',
 				tone: 'info',
 			},
 		},
 	},
 	medium: {
-		label: 'Medium',
+		iconLabel: 'Medium',
 		status: {
 			success: {
-				label: 'Success',
 				icon: SuccessIcon,
+				iconLabel: 'Success',
 				tone: 'success',
 			},
 			error: {
-				label: 'Error',
 				icon: AlertIcon,
+				iconLabel: 'Error',
 				tone: 'error',
 			},
 			warning: {
-				label: 'Warning',
 				icon: WarningIcon,
+				iconLabel: 'Warning',
 				tone: 'warning',
 			},
 			info: {
-				label: 'Info',
 				icon: InfoIcon,
+				iconLabel: 'Info',
 				tone: 'info',
 			},
 		},
 	},
 	low: {
-		label: 'Low',
+		iconLabel: 'Low',
 		status: {
 			success: {
-				label: 'Success',
 				icon: SuccessIcon,
+				iconLabel: 'Success',
 				tone: 'border',
 			},
 			error: {
-				label: 'Error',
 				icon: AlertIcon,
+				iconLabel: 'Error',
 				tone: 'border',
 			},
 			warning: {
-				label: 'Warning',
 				icon: WarningRoundIcon,
+				iconLabel: 'Warning',
 				tone: 'border',
 			},
 			paused: {
-				label: 'Paused',
 				icon: ProgressPausedIcon,
+				iconLabel: 'Paused',
 				tone: 'border',
 			},
 			info: {
-				label: 'Info',
 				icon: InfoIcon,
+				iconLabel: 'Info',
 				tone: 'border',
 			},
 			unknown: {
-				label: 'Help',
 				icon: HelpIcon,
+				iconLabel: 'Help',
 				tone: 'border',
 			},
 			todo: {
-				label: 'Todo',
 				icon: ProgressTodoIcon,
+				iconLabel: 'Todo',
 				tone: 'border',
 			},
 			inProgress: {
-				label: 'In Progress',
 				icon: ProgressDoingIcon,
+				iconLabel: 'In Progress',
 				tone: 'border',
 			},
 			blocked: {
-				label: 'Blocked',
 				icon: ProgressBlockedIcon,
+				iconLabel: 'Blocked',
 				tone: 'border',
 			},
 		},
 	},
-};
+} as const;
 
 export type StatusBadgeAppearance = 'subtle' | 'regular';
 
-// Legacy
-
+// Deprecated Legacy
 export type StatusBadgeTone = keyof typeof legacyToneMap;
 
 const legacyToneMap = {
