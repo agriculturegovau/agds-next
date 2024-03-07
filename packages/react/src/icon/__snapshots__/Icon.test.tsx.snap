@@ -167,6 +167,27 @@ exports[`Icon ArrowUpIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon AttachmentIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon AvatarIcon renders correctly 1`] = `
 <div>
   <svg
@@ -979,6 +1000,30 @@ exports[`Icon PauseIcon renders correctly 1`] = `
       width="4"
       x="14"
       y="4"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon PieChartIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21.21 15.89A10 10 0 1 1 8 2.83"
+    />
+    <path
+      d="M22 12A10 10 0 0 0 12 2v10z"
     />
   </svg>
 </div>
