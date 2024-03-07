@@ -39,6 +39,7 @@ import { LinkedInIcon } from './icons/LinkedInIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
 import { PauseIcon } from './icons/PauseIcon';
+import { PieChartIcon } from './icons/PieChartIcon';
 import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { PrintIcon } from './icons/PrintIcon';
@@ -99,6 +100,7 @@ export const allIcons = {
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
+	PieChartIcon,
 	PlayIcon,
 	PlusIcon,
 	PrintIcon,

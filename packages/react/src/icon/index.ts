@@ -42,6 +42,7 @@ export { InfoFilledIcon } from './icons/InfoFilledIcon';
 export { InstagramIcon } from './icons/InstagramIcon';
 export { LinkedInIcon } from './icons/LinkedInIcon';
 export { PauseIcon } from './icons/PauseIcon';
+export { PieChartIcon } from './icons/PieChartIcon';
 export { PlayIcon } from './icons/PlayIcon';
 export { PlusIcon } from './icons/PlusIcon';
 export { PrintIcon } from './icons/PrintIcon';
