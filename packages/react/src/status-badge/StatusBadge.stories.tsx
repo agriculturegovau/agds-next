@@ -9,7 +9,6 @@ import {
 	TableWrapper,
 	TableRow,
 } from '../table';
-import { TextLink } from '../text-link';
 import { StatusBadge } from './StatusBadge';
 
 const meta: Meta<typeof StatusBadge> = {
@@ -140,7 +139,7 @@ export const UnknownLow: Story = {
 	},
 };
 
-export const InTableExample: Story = {
+export const SubtleAppearanceInTable: Story = {
 	render: () => {
 		const data = [
 			{

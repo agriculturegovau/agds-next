@@ -307,7 +307,7 @@ exports[`StatusBadge appearance: regular type: blockedLow renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Blocked"
+      aria-label="Low Blocked"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -439,7 +439,7 @@ exports[`StatusBadge appearance: regular type: inProgressLow renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="In Progress"
+      aria-label="Low In Progress"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -580,7 +580,7 @@ exports[`StatusBadge appearance: regular type: pausedLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Paused"
+      aria-label="Low Paused"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -712,7 +712,7 @@ exports[`StatusBadge appearance: regular type: todoLow renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Todo"
+      aria-label="Low Todo"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -744,7 +744,7 @@ exports[`StatusBadge appearance: regular type: unknownLow renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Help"
+      aria-label="Low Help"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -870,7 +870,7 @@ exports[`StatusBadge appearance: subtle type: blockedLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Blocked"
+      aria-label="Low Blocked"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1002,7 +1002,7 @@ exports[`StatusBadge appearance: subtle type: inProgressLow renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="In Progress"
+      aria-label="Low In Progress"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1143,7 +1143,7 @@ exports[`StatusBadge appearance: subtle type: pausedLow renders correctly 1`] = 
   >
     <svg
       aria-hidden="false"
-      aria-label="Paused"
+      aria-label="Low Paused"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1275,7 +1275,7 @@ exports[`StatusBadge appearance: subtle type: todoLow renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Todo"
+      aria-label="Low Todo"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1307,7 +1307,7 @@ exports[`StatusBadge appearance: subtle type: unknownLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Help"
+      aria-label="Low Help"
       class="css-1ilzd8v-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"

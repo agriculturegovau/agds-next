@@ -4,9 +4,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { cleanup, render } from '../../../../test-utils';
 import {
 	StatusBadge,
+	StatusBadgeAppearance,
 	StatusBadgeProps,
 	StatusBadgeTone,
-	StatusBadgeAppearance,
 	StatusBadgeType,
 } from './StatusBadge';
 
@@ -18,7 +18,7 @@ function renderStatusBadge(props: StatusBadgeProps) {
 	return render(<StatusBadge {...props} />);
 }
 
-const appearances: StatusBadgeAppearance[] = ['subtle', 'regular'];
+const appearances: StatusBadgeAppearance[] = ['regular', 'subtle'];
 
 const types: StatusBadgeType[] = [
 	'blockedLow',

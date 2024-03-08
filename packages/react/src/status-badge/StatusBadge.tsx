@@ -37,11 +37,11 @@ export type StatusBadgeProps = {
 export const StatusBadge = ({
 	appearance = 'regular',
 	label,
-	tone = 'neutral',
+	tone = 'info',
 	type,
 	weight = 'regular',
 }: StatusBadgeProps) => {
-	// Updated props take precedence of Legacy
+	// Updated props take precedence over Legacy
 	if (type) {
 		const { icon: Icon, iconLabel, tone } = typeMap[type];
 
@@ -78,7 +78,7 @@ export const StatusBadge = ({
 	console.warn(
 		'The "tone" and "weight" props are deprecated. Use the "type" and "appearance" props instead.'
 	);
-	const { icon: LegacyIcon, tone: legacyTone } = legacyToneMap[tone || 'info'];
+	const { icon: LegacyIcon, tone: legacyTone } = legacyToneMap[tone];
 	return (
 		<Flex
 			alignItems="center"
@@ -122,7 +122,7 @@ const regularAppearanceStyles = {
 const typeMap = {
 	blockedLow: {
 		icon: ProgressBlockedIcon,
-		iconLabel: 'Blocked',
+		iconLabel: 'Low Blocked',
 		tone: 'border',
 	},
 	errorHigh: {
@@ -157,12 +157,12 @@ const typeMap = {
 	},
 	inProgressLow: {
 		icon: ProgressDoingIcon,
-		iconLabel: 'In Progress',
+		iconLabel: 'Low In Progress',
 		tone: 'border',
 	},
 	pausedLow: {
 		icon: ProgressPausedIcon,
-		iconLabel: 'Paused',
+		iconLabel: 'Low Paused',
 		tone: 'border',
 	},
 	successHigh: {
@@ -182,12 +182,12 @@ const typeMap = {
 	},
 	todoLow: {
 		icon: ProgressTodoIcon,
-		iconLabel: 'Todo',
+		iconLabel: 'Low Todo',
 		tone: 'border',
 	},
 	unknownLow: {
 		icon: HelpIcon,
-		iconLabel: 'Help',
+		iconLabel: 'Low Help',
 		tone: 'border',
 	},
 	warningHigh: {
@@ -209,7 +209,7 @@ const typeMap = {
 
 export type StatusBadgeType = keyof typeof typeMap;
 
-export type StatusBadgeAppearance = 'subtle' | 'regular';
+export type StatusBadgeAppearance = 'regular' | 'subtle';
 
 // Deprecated Legacy
 export type StatusBadgeTone = keyof typeof legacyToneMap;
