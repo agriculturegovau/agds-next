@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-icons: added AttachmentIcon and PieChartIcon
+icon: Add AttachmentIcon and PieChartIcon.
