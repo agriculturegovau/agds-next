@@ -3,34 +3,35 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { boxPalette, mapSpacing } from '../core';
 import {
-	SuccessIcon,
-	AlertIcon,
-	InfoIcon,
-	WarningIcon,
-	SuccessFilledIcon,
+	AlertCircleIcon,
 	AlertFilledIcon,
-	WarningFilledIcon,
+	AlertIcon,
 	HelpIcon,
-	ProgressTodoIcon,
-	ProgressDoingIcon,
-	ProgressBlockedIcon,
 	InfoFilledIcon,
+	InfoIcon,
+	ProgressBlockedIcon,
+	ProgressDoingIcon,
+	ProgressPausedIcon,
+	ProgressTodoIcon,
+	SuccessFilledIcon,
+	SuccessIcon,
+	WarningCircleIcon,
+	WarningFilledIcon,
+	WarningIcon,
 } from '../icon';
 import { Text } from '../text';
-import { WarningRoundIcon } from '../icon/icons/WarningRoundIcon';
-import { ProgressPausedIcon } from '../icon/icons/ProgressPausedIcon';
 
 export type StatusBadgeProps = {
 	/** The visual appearance of the badge. */
 	appearance?: StatusBadgeAppearance;
 	/** The text label in the badge. */
 	label: ReactNode;
-	/** @deprecated The visual weight to apply. */
-	weight?: StatusBadgeAppearance;
 	/** @deprecated The color tone to apply. */
 	tone?: StatusBadgeTone;
 	/** Determines the tone and icon of the badge. */
 	type?: StatusBadgeType;
+	/** @deprecated The visual weight to apply. */
+	weight?: StatusBadgeAppearance;
 };
 
 export const StatusBadge = ({
@@ -130,7 +131,7 @@ const typeMap = {
 		tone: 'error',
 	},
 	errorLow: {
-		icon: AlertIcon,
+		icon: AlertCircleIcon,
 		iconLabel: 'Low Error',
 		tone: 'border',
 	},
@@ -195,7 +196,7 @@ const typeMap = {
 		tone: 'warning',
 	},
 	warningLow: {
-		icon: WarningRoundIcon,
+		icon: WarningCircleIcon,
 		iconLabel: 'Low Warning',
 		tone: 'border',
 	},

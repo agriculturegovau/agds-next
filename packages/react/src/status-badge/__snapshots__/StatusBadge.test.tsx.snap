@@ -55,19 +55,8 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -114,13 +103,11 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -218,19 +205,8 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -277,13 +253,11 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -344,17 +318,8 @@ exports[`StatusBadge appearance: regular type: blockedLow renders correctly 1`] 
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
-      />
-      ,
-      <line
-        x1="7"
-        x2="17"
-        y1="12"
-        y2="12"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
       />
     </svg>
     <span
@@ -418,13 +383,7 @@ exports[`StatusBadge appearance: regular type: errorLow renders correctly 1`] = 
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M16.7525 1.79686C16.5646 1.6069 16.3086 1.5 16.0414 1.5H8.04987C7.78544 1.5 7.53178 1.60473 7.34437 1.79128L1.79451 7.31592C1.60598 7.50359 1.5 7.75863 1.5 8.02464V15.8844C1.5 16.1478 1.60386 16.4005 1.78903 16.5877L7.34344 22.2032C7.53128 22.3931 7.7873 22.5 8.05441 22.5H15.9501C16.2146 22.5 16.4682 22.3953 16.6556 22.2087L22.2055 16.6841C22.394 16.4964 22.5 16.2414 22.5 15.9754V8.02003C22.5 7.75675 22.3962 7.5041 22.2111 7.31689L16.7525 1.79686Z"
-      />
-      <path
-        d="M8 16L16 8"
-      />
-      <path
-        d="M16 16L8 8"
+        d="m16 8-4 4m0 0-4 4m4-4L8 8m4 4 4 4m6-4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -506,10 +465,8 @@ exports[`StatusBadge appearance: regular type: inProgressLow renders correctly 1
         fill="currentColor"
         stroke="none"
       />
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -572,19 +529,8 @@ exports[`StatusBadge appearance: regular type: infoLow renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -614,19 +560,8 @@ exports[`StatusBadge appearance: regular type: infoMedium renders correctly 1`] 
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -657,7 +592,7 @@ exports[`StatusBadge appearance: regular type: pausedLow renders correctly 1`] =
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M8.5 7v8m5-8v8M11 1a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+        d="M10 16V8m4 8V8m8 4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -720,13 +655,11 @@ exports[`StatusBadge appearance: regular type: successLow renders correctly 1`] 
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -756,13 +689,11 @@ exports[`StatusBadge appearance: regular type: successMedium renders correctly 1
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -792,10 +723,8 @@ exports[`StatusBadge appearance: regular type: todoLow renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
         stroke-dasharray="4 4"
       />
     </svg>
@@ -891,7 +820,7 @@ exports[`StatusBadge appearance: regular type: warningLow renders correctly 1`] 
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M11 6v6m0 4h-.01M1 11C1 5.477 5.477 1 11 1s10 4.477 10 10-4.477 10-10 10S1 16.523 1 11Z"
+        d="M12 7v6m0 4h-.01M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
       />
     </svg>
     <span
@@ -952,17 +881,8 @@ exports[`StatusBadge appearance: subtle type: blockedLow renders correctly 1`] =
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
-      />
-      ,
-      <line
-        x1="7"
-        x2="17"
-        y1="12"
-        y2="12"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
       />
     </svg>
     <span
@@ -1026,13 +946,7 @@ exports[`StatusBadge appearance: subtle type: errorLow renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M16.7525 1.79686C16.5646 1.6069 16.3086 1.5 16.0414 1.5H8.04987C7.78544 1.5 7.53178 1.60473 7.34437 1.79128L1.79451 7.31592C1.60598 7.50359 1.5 7.75863 1.5 8.02464V15.8844C1.5 16.1478 1.60386 16.4005 1.78903 16.5877L7.34344 22.2032C7.53128 22.3931 7.7873 22.5 8.05441 22.5H15.9501C16.2146 22.5 16.4682 22.3953 16.6556 22.2087L22.2055 16.6841C22.394 16.4964 22.5 16.2414 22.5 15.9754V8.02003C22.5 7.75675 22.3962 7.5041 22.2111 7.31689L16.7525 1.79686Z"
-      />
-      <path
-        d="M8 16L16 8"
-      />
-      <path
-        d="M16 16L8 8"
+        d="m16 8-4 4m0 0-4 4m4-4L8 8m4 4 4 4m6-4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -1114,10 +1028,8 @@ exports[`StatusBadge appearance: subtle type: inProgressLow renders correctly 1`
         fill="currentColor"
         stroke="none"
       />
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -1180,19 +1092,8 @@ exports[`StatusBadge appearance: subtle type: infoLow renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -1222,19 +1123,8 @@ exports[`StatusBadge appearance: subtle type: infoMedium renders correctly 1`] =
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-      />
-      <line
-        x1="12"
-        x2="12"
-        y1="17"
-        y2="11"
-      />
       <path
-        d="M12 7H12.01"
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
       />
     </svg>
     <span
@@ -1265,7 +1155,7 @@ exports[`StatusBadge appearance: subtle type: pausedLow renders correctly 1`] = 
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M8.5 7v8m5-8v8M11 1a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+        d="M10 16V8m4 8V8m8 4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
     </svg>
     <span
@@ -1328,13 +1218,11 @@ exports[`StatusBadge appearance: subtle type: successLow renders correctly 1`] =
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -1364,13 +1252,11 @@ exports[`StatusBadge appearance: subtle type: successMedium renders correctly 1`
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       />
       <path
-        d="M7 13L10 16L17 9"
+        d="m7 13 3 3 7-7"
       />
     </svg>
     <span
@@ -1400,10 +1286,8 @@ exports[`StatusBadge appearance: subtle type: todoLow renders correctly 1`] = `
       width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="10.5"
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
         stroke-dasharray="4 4"
       />
     </svg>
@@ -1499,7 +1383,7 @@ exports[`StatusBadge appearance: subtle type: warningLow renders correctly 1`] =
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M11 6v6m0 4h-.01M1 11C1 5.477 5.477 1 11 1s10 4.477 10 10-4.477 10-10 10S1 16.523 1 11Z"
+        d="M12 7v6m0 4h-.01M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
       />
     </svg>
     <span

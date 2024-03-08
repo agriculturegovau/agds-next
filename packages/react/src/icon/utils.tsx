@@ -1,3 +1,4 @@
+import { AlertCircleIcon } from './icons/AlertCircleIcon';
 import { AlertFilledIcon } from './icons/AlertFilledIcon';
 import { AlertIcon } from './icons/AlertIcon';
 import { ArrowDownIcon } from './icons/ArrowDownIcon';
@@ -54,12 +55,13 @@ import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UploadIcon } from './icons/UploadIcon';
+import { WarningCircleIcon } from './icons/WarningCircleIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
-import { WarningRoundIcon } from './icons/WarningRoundIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
 
 export const allIcons = {
+	AlertCircleIcon,
 	AlertFilledIcon,
 	AlertIcon,
 	ArrowDownIcon,
@@ -116,8 +118,8 @@ export const allIcons = {
 	ThumbsUpIcon,
 	TwitterIcon,
 	UploadIcon,
+	WarningCircleIcon,
 	WarningFilledIcon,
-	WarningRoundIcon,
 	WarningIcon,
 	WebsiteIcon,
 };

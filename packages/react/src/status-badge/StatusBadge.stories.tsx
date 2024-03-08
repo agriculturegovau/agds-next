@@ -21,151 +21,188 @@ export default meta;
 
 type Story = StoryObj<typeof StatusBadge>;
 
-export const Info: Story = {
+export const SuccessHigh: Story = {
 	args: {
-		tone: 'info',
+		label: 'Success',
+		type: 'successHigh',
+	},
+};
+
+export const SuccessMedium: Story = {
+	args: {
+		label: 'Success',
+		type: 'successMedium',
+	},
+};
+
+export const SuccessLow: Story = {
+	args: {
+		label: 'Success',
+		type: 'successLow',
+	},
+};
+
+export const ErrorHigh: Story = {
+	args: {
+		label: 'Error',
+		type: 'errorHigh',
+	},
+};
+
+export const ErrorMedium: Story = {
+	args: {
+		label: 'Error',
+		type: 'errorMedium',
+	},
+};
+
+export const ErrorLow: Story = {
+	args: {
+		label: 'Error',
+		type: 'errorLow',
+	},
+};
+
+export const WarningHigh: Story = {
+	args: {
+		label: 'Warning',
+		type: 'warningHigh',
+	},
+};
+
+export const WarningMedium: Story = {
+	args: {
+		label: 'Warning',
+		type: 'warningMedium',
+	},
+};
+
+export const WarningLow: Story = {
+	args: {
+		label: 'Warning',
+		type: 'warningLow',
+	},
+};
+
+export const InfoHigh: Story = {
+	args: {
+		label: 'Info',
+		type: 'infoHigh',
+	},
+};
+
+export const InfoMedium: Story = {
+	args: {
+		label: 'Info',
+		type: 'infoMedium',
+	},
+};
+
+export const InfoLow: Story = {
+	args: {
+		label: 'Info',
+		type: 'infoLow',
+	},
+};
+
+export const BlockedLow: Story = {
+	args: {
+		label: 'Blocked',
+		type: 'blockedLow',
+	},
+};
+
+export const InProgressLow: Story = {
+	args: {
 		label: 'In progress',
+		type: 'inProgressLow',
 	},
 };
 
-export const InfoSubtle: Story = {
+export const PausedLow: Story = {
 	args: {
-		weight: 'subtle',
-		tone: 'info',
-		label: 'Resolved',
+		label: 'Paused',
+		type: 'pausedLow',
 	},
 };
 
-export const Success: Story = {
+export const TodoLow: Story = {
 	args: {
-		tone: 'success',
-		label: 'Resolved',
+		label: 'Todo',
+		type: 'todoLow',
 	},
 };
 
-export const SuccessSubtle: Story = {
+export const UnknownLow: Story = {
 	args: {
-		weight: 'subtle',
-		tone: 'success',
-		label: 'Resolved',
+		label: 'Unknown',
+		type: 'unknownLow',
 	},
 };
 
-export const Error: Story = {
-	args: {
-		tone: 'error',
-		label: 'Rejected',
-	},
-};
+export const InTableExample: Story = {
+	render: () => {
+		const data = [
+			{
+				id: 'RE4321–2201–03',
+				businessName: 'Orange Meat Works',
+				type: 'Record keeping—Minor',
+				status: 'Pending',
+				statusType: 'infoMedium',
+			},
+			{
+				id: 'RE4321–2201–02',
+				businessName: 'Orange Meat Works',
+				type: 'Hygiene—Major',
+				status: 'Approved',
+				statusType: 'successHigh',
+			},
+			{
+				id: 'RE4321–2201–01',
+				businessName: 'Molong Meat Works',
+				type: 'Record keeping—Minor',
+				status: 'Conflicted',
+				statusType: 'warningLow',
+			},
+			{
+				id: 'RE4321–2201–00',
+				businessName: 'Orange Meat Works',
+				type: 'Record keeping—Minor',
+				status: 'Rejected',
+				statusType: 'errorMedium',
+			},
+		] as const;
 
-export const ErrorSubtle: Story = {
-	args: {
-		weight: 'subtle',
-		tone: 'error',
-		label: 'Rejected',
-	},
-};
-
-export const Warning: Story = {
-	args: {
-		tone: 'warning',
-		label: 'Attention',
-	},
-};
-
-export const WarningSubtle: Story = {
-	args: {
-		weight: 'subtle',
-		tone: 'warning',
-		label: 'Attention',
-	},
-};
-
-export const Neutral: Story = {
-	args: {
-		tone: 'neutral',
-		label: 'Draft',
-	},
-};
-
-export const NeutralSubtle: Story = {
-	args: {
-		weight: 'subtle',
-		tone: 'neutral',
-		label: 'Draft',
-	},
-};
-
-export const InTable = () => {
-	const data = [
-		{
-			id: 'RE4321–2201–03',
-			businessName: 'Orange Meat Works',
-			type: 'Record keeping—Minor',
-			status: 'Pending',
-		},
-		{
-			id: 'RE4321–2201–02',
-			businessName: 'Orange Meat Works',
-			type: 'Hygiene—Major',
-			status: 'Open',
-		},
-		{
-			id: 'RE4321–2201–01',
-			businessName: 'Molong Meat Works',
-			type: 'Record keeping—Minor',
-			status: 'Open',
-		},
-		{
-			id: 'RE4321–2201–00',
-			businessName: 'Orange Meat Works',
-			type: 'Record keeping—Minor',
-			status: 'Closed',
-		},
-	] as const;
-
-	const toneMapper = {
-		Closed: 'success',
-		Open: 'warning',
-		Pending: 'info',
-		Draft: 'neutral',
-	} as const;
-
-	return (
-		<TableWrapper>
-			<Table>
-				<TableCaption>Corrective action requests (CAR)</TableCaption>
-				<TableHead>
-					<TableRow>
-						<TableHeader>CAR number</TableHeader>
-						<TableHeader>Establishment name</TableHeader>
-						<TableHeader>Activity and severity</TableHeader>
-						<TableHeader>Status</TableHeader>
-						<TableHeader>Actions</TableHeader>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{data.map(({ id, businessName, status, type }) => (
-						<TableRow key={id}>
-							<TableCell>{id}</TableCell>
-							<TableCell>{businessName}</TableCell>
-							<TableCell>{type}</TableCell>
-							<TableCell>
-								<StatusBadge
-									weight="subtle"
-									tone={toneMapper[status]}
-									label={status}
-								/>
-							</TableCell>
-							<TableCell>
-								<TextLink href={`#${id}`}>
-									{status == 'Closed' ? 'View' : 'Manage'}
-								</TextLink>
-							</TableCell>
+		return (
+			<TableWrapper>
+				<Table>
+					<TableCaption>Corrective action requests (CAR)</TableCaption>
+					<TableHead>
+						<TableRow>
+							<TableHeader>CAR number</TableHeader>
+							<TableHeader>Establishment name</TableHeader>
+							<TableHeader>Activity and severity</TableHeader>
+							<TableHeader>Status</TableHeader>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableWrapper>
-	);
+					</TableHead>
+					<TableBody>
+						{data.map(({ id, businessName, status, statusType, type }) => (
+							<TableRow key={id}>
+								<TableCell>{id}</TableCell>
+								<TableCell>{businessName}</TableCell>
+								<TableCell>{type}</TableCell>
+								<TableCell>
+									<StatusBadge
+										appearance="subtle"
+										type={statusType}
+										label={status}
+									/>
+								</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableWrapper>
+		);
+	},
 };

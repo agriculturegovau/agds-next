@@ -145,17 +145,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -228,10 +219,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -352,13 +341,11 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -430,10 +417,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -490,10 +475,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -673,17 +656,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -756,10 +730,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -880,13 +852,11 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -958,10 +928,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -1018,10 +986,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -1202,17 +1168,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -1284,10 +1241,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -1408,13 +1363,11 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -1486,10 +1439,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -1546,10 +1497,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -1730,17 +1679,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -1812,10 +1752,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -1936,13 +1874,11 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -2014,10 +1950,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -2074,10 +2008,8 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -2257,17 +2189,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -2340,10 +2263,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -2464,13 +2385,11 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -2542,10 +2461,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -2602,10 +2519,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -2785,17 +2700,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -2868,10 +2774,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -2992,13 +2896,11 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -3070,10 +2972,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -3130,10 +3030,8 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -3313,17 +3211,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -3395,10 +3284,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -3519,13 +3406,11 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -3598,10 +3483,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -3658,10 +3541,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>
@@ -3841,17 +3722,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
-                    />
-                    ,
-                    <line
-                      x1="7"
-                      x2="17"
-                      y1="12"
-                      y2="12"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
                     />
                   </svg>
                 </span>
@@ -3923,10 +3795,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -4047,13 +3917,11 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                     <path
-                      d="M7 13L10 16L17 9"
+                      d="m7 13 3 3 7-7"
                     />
                   </svg>
                 </span>
@@ -4126,10 +3994,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                       fill="currentColor"
                       stroke="none"
                     />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     />
                   </svg>
                 </span>
@@ -4186,10 +4052,8 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10.5"
+                    <path
+                      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                       stroke-dasharray="4 4"
                     />
                   </svg>

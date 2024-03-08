@@ -1,6 +1,6 @@
 import { createIcon } from '../Icon';
 
 export const ProgressPausedIcon = createIcon(
-	<path d="M8.5 7v8m5-8v8M11 1a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" />,
+	<path d="M10 16V8m4 8V8m8 4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z" />,
 	'ProgressPausedIcon'
 );
