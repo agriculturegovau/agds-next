@@ -1,31 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import parseTime from 'user-time';
+import parseTimeOriginal from 'user-time';
 import { type ChangeEvent, type FocusEvent, useState, useEffect } from 'react';
 import { TextInput, TextInputProps } from '@ag.ds-next/react/text-input';
-
-export type TimeInputProps = {
-	onChange?: (inputValue: string) => void;
-	timeFormat: keyof typeof timeFormats;
-};
-
-const timeFormats = {
-	'h:mm aaa': {
-		hour: 'numeric',
-		hourCycle: 'h12',
-		minute: '2-digit',
-	},
-	'hh:mm aaa': {
-		hour: '2-digit',
-		hourCycle: 'h12',
-		minute: '2-digit',
-	},
-	'HH:mm': {
-		hour: '2-digit',
-		hourCycle: 'h24',
-		minute: '2-digit',
-	},
-} as const;
+import {
+	parseTime,
+	transformValuePropToInputValue,
+	type TimeFormat,
+} from './utils';
 
 export function TimeInput({
 	label = 'Time',
@@ -33,13 +15,15 @@ export function TimeInput({
 	timeFormat = 'h:mm aaa',
 	value,
 	...props
-}: TimeInputProps & TextInputProps) {
-	// console.log(`parseTime`, parseTime);
-	const [inputValue, setInputValue] = useState(value);
+}: Exclude<TextInputProps, 'value'> & TimeInputProps) {
+	const [inputValue, setInputValue] = useState(
+		transformValuePropToInputValue(value, timeFormat)
+	);
+	console.log(`value`, value);
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(value);
-	}, [value]);
+		setInputValue(transformValuePropToInputValue(value, timeFormat));
+	}, [timeFormat, value]);
 
 	console.log(`inputValue`, inputValue);
 	const onBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -48,12 +32,10 @@ export function TimeInput({
 		console.log(`onBlur inputValue`, inputValue);
 
 		try {
-			const parsedTime = parseTime(inputValue, {
-				timeFormat: timeFormats[timeFormat],
-			});
-			console.log(`parsedTime.formattedTime`, parsedTime.formattedTime);
+			const parsedTime = parseTime(inputValue, 'HH:mm');
+			console.log(`parsedTime`, parsedTime);
 
-			onChangeProp?.(parsedTime.formattedTime);
+			onChangeProp?.(parsedTime);
 		} catch (e) {
 			console.warn(e);
 
@@ -79,3 +61,20 @@ export function TimeInput({
 		/>
 	);
 }
+
+export type TimeInputProps = {
+	onChange?: (inputValue: string) => void;
+	timeFormat: TimeFormat;
+	value: string | undefined;
+};
+
+export const isValidTime = (value: string) => {
+	try {
+		parseTimeOriginal(value, {
+			timeFormat: 'HH:mm',
+		});
+		return true;
+	} catch (e) {
+		return false;
+	}
+};

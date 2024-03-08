@@ -10,20 +10,14 @@ figmaGalleryNodeId: REPLACE_ME
 ```jsx live
 () => {
 	// Set the value to a value that the user might think is valid
-	const [value, setValue] = React.useState('9:5o');
+	const [value, setValue] = React.useState('9:66');
 
 	const onChange = (e) => {
 		console.log(`onChange playroom`, e);
 		setValue(e);
 	};
 
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	const invalid = React.useMemo(() => {
-		// return !/^\d{1,2}(:?\d{2})?\s?(am|pm)?$/.test(value);
-		return !/^0?([1-9]|10|11|12|13|14|15|16|17|18|19|20|21|22|23):?([0-5][0-9])?\s?(am|pm)?$/.test(
-			value
-		);
-	}, [value]);
+	const invalid = !isValidTime(value);
 
 	console.group('playroom');
 	console.log(`invalid`, invalid);
@@ -32,13 +26,11 @@ figmaGalleryNodeId: REPLACE_ME
 
 	return (
 		<TimeInput
+			invalid={invalid}
 			label="Time"
-			value={value}
+			message="Enter a valid time"
 			onChange={onChange}
-			{...(invalid && {
-				invalid: true,
-				message: 'Enter a valid time',
-			})}
+			value={value}
 		/>
 	);
 };
