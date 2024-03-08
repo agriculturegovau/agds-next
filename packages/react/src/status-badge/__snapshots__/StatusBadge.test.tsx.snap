@@ -308,7 +308,7 @@ exports[`StatusBadge appearance: regular type: blockedLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Low Blocked"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -372,7 +372,7 @@ exports[`StatusBadge appearance: regular type: errorLow renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Low Error"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -440,7 +440,7 @@ exports[`StatusBadge appearance: regular type: inProgressLow renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Low In Progress"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -519,7 +519,7 @@ exports[`StatusBadge appearance: regular type: infoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Low Info"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -581,7 +581,7 @@ exports[`StatusBadge appearance: regular type: pausedLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Low Paused"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -645,7 +645,7 @@ exports[`StatusBadge appearance: regular type: successLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Low Success"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -713,7 +713,7 @@ exports[`StatusBadge appearance: regular type: todoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Low Todo"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -745,7 +745,7 @@ exports[`StatusBadge appearance: regular type: unknownLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Low Help"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -809,7 +809,7 @@ exports[`StatusBadge appearance: regular type: warningLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Low Warning"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -871,7 +871,7 @@ exports[`StatusBadge appearance: subtle type: blockedLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Low Blocked"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -935,7 +935,7 @@ exports[`StatusBadge appearance: subtle type: errorLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Low Error"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1003,7 +1003,7 @@ exports[`StatusBadge appearance: subtle type: inProgressLow renders correctly 1`
     <svg
       aria-hidden="false"
       aria-label="Low In Progress"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1082,7 +1082,7 @@ exports[`StatusBadge appearance: subtle type: infoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Low Info"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1144,7 +1144,7 @@ exports[`StatusBadge appearance: subtle type: pausedLow renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Low Paused"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1208,7 +1208,7 @@ exports[`StatusBadge appearance: subtle type: successLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Low Success"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1276,7 +1276,7 @@ exports[`StatusBadge appearance: subtle type: todoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Low Todo"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1308,7 +1308,7 @@ exports[`StatusBadge appearance: subtle type: unknownLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Low Help"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1372,7 +1372,7 @@ exports[`StatusBadge appearance: subtle type: warningLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Low Warning"
-      class="css-1ilzd8v-Icon"
+      class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

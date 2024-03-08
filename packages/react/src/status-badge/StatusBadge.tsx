@@ -43,13 +43,13 @@ export const StatusBadge = ({
 }: StatusBadgeProps) => {
 	// Updated props take precedence over Legacy
 	if (type) {
-		const { icon: Icon, iconLabel, tone } = typeMap[type];
+		const { borderColor, icon: Icon, iconColor, iconLabel } = typeMap[type];
 
 		return (
 			<Flex
 				alignItems="center"
 				background="body"
-				borderColor={tone}
+				borderColor={borderColor}
 				display="inline-flex"
 				gap={0.5}
 				{...(appearance === 'regular' ? regularAppearanceStyles : {})}
@@ -61,7 +61,7 @@ export const StatusBadge = ({
 					},
 				}}
 			>
-				<Icon aria-hidden="false" aria-label={iconLabel} color={tone} />
+				<Icon aria-hidden="false" aria-label={iconLabel} color={iconColor} />
 				<Text
 					as="span"
 					fontSize="sm"
@@ -121,89 +121,106 @@ const regularAppearanceStyles = {
 
 const typeMap = {
 	blockedLow: {
+		borderColor: 'border',
 		icon: ProgressBlockedIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Blocked',
-		tone: 'border',
 	},
 	errorHigh: {
+		borderColor: 'error',
 		icon: AlertFilledIcon,
+		iconColor: 'error',
 		iconLabel: 'High Error',
-		tone: 'error',
 	},
 	errorLow: {
+		borderColor: 'border',
 		icon: AlertCircleIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Error',
-		tone: 'border',
 	},
 	errorMedium: {
+		borderColor: 'error',
 		icon: AlertIcon,
+		iconColor: 'error',
 		iconLabel: 'Medium Error',
-		tone: 'error',
 	},
 	infoHigh: {
+		borderColor: 'info',
 		icon: InfoFilledIcon,
+		iconColor: 'info',
 		iconLabel: 'High Info',
-		tone: 'info',
 	},
 	infoLow: {
+		borderColor: 'border',
 		icon: InfoIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Info',
-		tone: 'border',
 	},
 	infoMedium: {
+		borderColor: 'info',
 		icon: InfoIcon,
+		iconColor: 'info',
 		iconLabel: 'Medium Info',
-		tone: 'info',
 	},
 	inProgressLow: {
+		borderColor: 'border',
 		icon: ProgressDoingIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low In Progress',
-		tone: 'border',
 	},
 	pausedLow: {
+		borderColor: 'border',
 		icon: ProgressPausedIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Paused',
-		tone: 'border',
 	},
 	successHigh: {
+		borderColor: 'success',
 		icon: SuccessFilledIcon,
+		iconColor: 'success',
 		iconLabel: 'High Success',
-		tone: 'success',
 	},
 	successLow: {
+		borderColor: 'border',
 		icon: SuccessIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Success',
-		tone: 'border',
 	},
 	successMedium: {
+		borderColor: 'success',
 		icon: SuccessIcon,
+		iconColor: 'success',
 		iconLabel: 'Medium Success',
-		tone: 'success',
 	},
 	todoLow: {
+		borderColor: 'border',
 		icon: ProgressTodoIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Todo',
-		tone: 'border',
 	},
 	unknownLow: {
+		borderColor: 'border',
 		icon: HelpIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Help',
-		tone: 'border',
 	},
 	warningHigh: {
+		borderColor: 'warning',
 		icon: WarningFilledIcon,
+		iconColor: 'warning',
 		iconLabel: 'High Warning',
-		tone: 'warning',
 	},
 	warningLow: {
+		borderColor: 'border',
 		icon: WarningCircleIcon,
+		iconColor: 'muted',
 		iconLabel: 'Low Warning',
-		tone: 'border',
 	},
 	warningMedium: {
+		borderColor: 'warning',
 		icon: WarningIcon,
+		iconColor: 'warning',
 		iconLabel: 'Medium Warning',
-		tone: 'warning',
 	},
 } as const;
 
