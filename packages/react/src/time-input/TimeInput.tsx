@@ -1,10 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import parseTimeOriginal from 'user-time';
 import { type ChangeEvent, type FocusEvent, useState, useEffect } from 'react';
 import { TextInput, TextInputProps } from '@ag.ds-next/react/text-input';
 import {
-	parseTime,
+	formatTime,
 	transformValuePropToInputValue,
 	type TimeFormat,
 } from './utils';
@@ -31,16 +28,10 @@ export function TimeInput({
 		const inputValue = e.target?.value;
 		console.log(`onBlur inputValue`, inputValue);
 
-		try {
-			const parsedTime = parseTime(inputValue, 'HH:mm');
-			console.log(`parsedTime`, parsedTime);
+		const normalizedTime = formatTime(inputValue, 'HH:mm');
+		console.log(`normalizedTime`, normalizedTime);
 
-			onChangeProp?.(parsedTime);
-		} catch (e) {
-			console.warn(e);
-
-			onChangeProp?.(inputValue);
-		}
+		onChangeProp?.(normalizedTime);
 	};
 
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -66,15 +57,4 @@ export type TimeInputProps = {
 	onChange?: (inputValue: string) => void;
 	timeFormat: TimeFormat;
 	value: string | undefined;
-};
-
-export const isValidTime = (value: string) => {
-	try {
-		parseTimeOriginal(value, {
-			timeFormat: 'HH:mm',
-		});
-		return true;
-	} catch (e) {
-		return false;
-	}
 };

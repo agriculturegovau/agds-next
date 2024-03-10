@@ -1,11 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import parseTimeOriginal from 'user-time';
-// import { TimeFormat } from './TimeInput';
-
-// Since the `value` prop can either be a date object, undefined or a string (which represents the text input value)
-// we need to be able to take that value and transform it into the display value of the text input
-// For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
+import parseTime from 'user-time';
 
 export const timeFormats = {
 	'h:mm aaa': {
@@ -27,21 +22,33 @@ export const timeFormats = {
 
 export type TimeFormat = keyof typeof timeFormats;
 
-export function parseTime(value: string | undefined, timeFormat: TimeFormat) {
+export function formatTime(value: string | undefined, timeFormat: TimeFormat) {
 	try {
-		const { formattedTime } = parseTimeOriginal(value, {
+		const { formattedTime } = parseTime(value, {
 			timeFormat: timeFormats[timeFormat],
 		});
 		// console.log(`displayedTime.formattedTime`, displayedTime.formattedTime);
 		// console.log(`standardTime.formattedTime`, standardTime.formattedTime);
 
 		// onChangeProp?.(displayedTime.formattedTime);
-		if (formattedTime.startsWith('24:')) {
+		if (timeFormat === 'HH:mm' && formattedTime.startsWith('24:')) {
 			return `00:${formattedTime.split(':')[1]}`;
 		}
 		return formattedTime;
 	} catch (e) {
+		console.warn(e);
 		return value;
+	}
+}
+
+export function isValidTime(value: string) {
+	try {
+		parseTime(value, {
+			timeFormat: 'HH:mm',
+		});
+		return true;
+	} catch (e) {
+		return false;
 	}
 }
 
@@ -51,5 +58,5 @@ export function transformValuePropToInputValue(
 	timeFormat: TimeFormat
 ): string {
 	if (typeof valueProp === 'undefined') return '';
-	return parseTime(valueProp, timeFormat);
+	return formatTime(valueProp, timeFormat);
 }

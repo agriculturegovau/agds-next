@@ -262,4 +262,8 @@ export {
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
 
-export { TimeInput, isValidTime } from '@ag.ds-next/react/time-input';
+export {
+	TimeInput,
+	formatTime,
+	isValidTime,
+} from '@ag.ds-next/react/time-input';
