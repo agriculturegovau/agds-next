@@ -1,6 +1,58 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import parseTime from 'user-time';
+// import parseTime from 'user-time';
+
+const parseTime = (
+	timeString,
+	{
+		defaultDate = new Date(),
+		defaultTimeOfDay = 'am',
+		timeFormat = { minute: 'numeric', hour: 'numeric', hourCycle: 'h12' },
+	} = {}
+) => {
+	if (typeof timeString !== 'string') throw new Error('Strings only');
+	const date = defaultDate;
+	// eslint-disable-next-line no-nested-ternary
+	const time = (
+		timeString.match(/\d+/) !== null
+			? timeString.length === 3
+				? timeString.match(/(\w{1})(\w{1,2})/).slice(1)
+				: timeString.match(/\d{1,2}/gi)
+			: []
+	)
+		// eslint-disable-next-line no-bitwise
+		.map((digit) => digit | 0);
+	let error = false;
+	if (time.length === 0 || time.length > 3) error = true;
+	if (time[0] > 24) error = true;
+	if (time.length > 1 && time[1] > 59) error = true;
+	if (error) throw new Error('Unable to parse time');
+	console.log(`time`, time);
+	console.log(`timeString`, timeString);
+	date.setHours(time[0]);
+	date.setMinutes(time[1] ?? 0);
+	date.setSeconds(time[2] ?? 0);
+	if (time[0] <= 12) {
+		const letters = timeString.match(/[a-zA-Z]{1,2}/) ?? [];
+		console.log(`letters`, letters);
+		const timeOfDay =
+			letters.length > 0 ? letters[0].toLowerCase() : defaultTimeOfDay;
+		console.log(`timeOfDay`, timeOfDay);
+		switch (timeOfDay) {
+			case 'pm':
+				date.setHours(time[0] === 12 ? 12 : time[0] + 12);
+				break;
+			default:
+				date.setHours(time[0] % 12);
+				break;
+		}
+	}
+	console.log(`date`, date);
+	return {
+		ISOString: date.toISOString(),
+		formattedTime: new Intl.DateTimeFormat('en-GB', timeFormat).format(date),
+	};
+};
 
 export const timeFormats = {
 	'h:mm aaa': {
@@ -22,18 +74,22 @@ export const timeFormats = {
 
 export type TimeFormat = keyof typeof timeFormats;
 
+export const acceptedTimeFormats = ['h:mm aaa', 'hh:mm aaa', 'HH:mm'] as const;
+
+export type AcceptedTimeFormats = (typeof acceptedTimeFormats)[number];
+
 export function formatTime(value: string | undefined, timeFormat: TimeFormat) {
 	try {
-		const { formattedTime } = parseTime(value, {
-			timeFormat: timeFormats[timeFormat],
-		});
-		// console.log(`displayedTime.formattedTime`, displayedTime.formattedTime);
-		// console.log(`standardTime.formattedTime`, standardTime.formattedTime);
+		const { formattedTime } = parseTime(value);
+		console.log(`formattedTime`, formattedTime);
+		// const foo = parseTime(value);
+		// console.log(`value`, value);
+		// console.log(`foo`, foo);
 
-		// onChangeProp?.(displayedTime.formattedTime);
 		if (timeFormat === 'HH:mm' && formattedTime.startsWith('24:')) {
 			return `00:${formattedTime.split(':')[1]}`;
 		}
+
 		return formattedTime;
 	} catch (e) {
 		console.warn(e);
@@ -44,15 +100,15 @@ export function formatTime(value: string | undefined, timeFormat: TimeFormat) {
 export function isValidTime(value: string) {
 	try {
 		parseTime(value, {
-			timeFormat: 'HH:mm',
+			timeFormat: timeFormats['HH:mm'],
 		});
+
 		return true;
 	} catch (e) {
 		return false;
 	}
 }
 
-// If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
 	valueProp: string | undefined,
 	timeFormat: TimeFormat

@@ -7,7 +7,6 @@ import {
 } from './utils';
 
 export function TimeInput({
-	label = 'Time',
 	onChange: onChangeProp,
 	timeFormat = 'h:mm aaa',
 	value,
@@ -45,7 +44,6 @@ export function TimeInput({
 	return (
 		<TextInput
 			{...props}
-			label={label}
 			value={inputValue}
 			onBlur={onBlur}
 			onChange={onChange}
