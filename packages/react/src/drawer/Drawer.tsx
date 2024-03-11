@@ -115,5 +115,12 @@ function Overlay({
 }
 
 function LockScroll() {
-	return <Global styles={{ body: { overflow: 'hidden' } }} />;
+	return (
+		<Global
+			styles={{
+				html: { scrollbarGutter: 'auto' },
+				body: { overflow: 'hidden' },
+			}}
+		/>
+	);
 }
