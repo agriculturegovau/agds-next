@@ -5,6 +5,7 @@ import {
 	PropsWithChildren,
 	ReactNode,
 	useEffect,
+	useRef,
 } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
@@ -39,6 +40,12 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	title,
 	width = 'md',
 }) => {
+	const scrollbarWidth = useRef<number>(0);
+	useEffect(() => {
+		scrollbarWidth.current =
+			window.innerWidth - document.documentElement.clientWidth;
+	}, []);
+
 	// Close the Drawer when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -71,7 +78,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 
 	return createPortal(
 		<Fragment>
-			{isOpen ? <LockScroll /> : null}
+			{isOpen ? <LockScroll scrollbarWidth={scrollbarWidth.current} /> : null}
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
@@ -114,11 +121,11 @@ function Overlay({
 	);
 }
 
-function LockScroll() {
+function LockScroll({ scrollbarWidth }: { scrollbarWidth: number }) {
 	return (
 		<Global
 			styles={{
-				html: { scrollbarGutter: 'auto' },
+				html: { marginRight: scrollbarWidth, scrollbarGutter: 'auto' },
 				body: { overflow: 'hidden' },
 			}}
 		/>
