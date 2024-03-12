@@ -125,6 +125,7 @@ function LockScroll({ scrollbarWidth }: { scrollbarWidth: number }) {
 	return (
 		<Global
 			styles={{
+				// Fixes this Chrome/Edge bug https://issues.chromium.org/issues/40835364
 				html: { marginRight: scrollbarWidth, scrollbarGutter: 'auto' },
 				body: { overflow: 'hidden' },
 			}}
