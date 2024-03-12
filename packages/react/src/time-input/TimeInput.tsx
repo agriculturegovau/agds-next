@@ -9,34 +9,39 @@ import {
 export function TimeInput({
 	onChange: onChangeProp,
 	timeFormat = 'h:mm aaa',
-	value,
+	value = {
+		formatted: '',
+		value: '',
+	},
 	...props
-}: Exclude<TextInputProps, 'value'> & TimeInputProps) {
+}: Omit<TextInputProps, 'value'> & TimeInputProps) {
 	const [inputValue, setInputValue] = useState(
-		transformValuePropToInputValue(value, timeFormat)
+		transformValuePropToInputValue(value.value, timeFormat)
 	);
 	console.log(`value`, value);
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(transformValuePropToInputValue(value, timeFormat));
+		setInputValue(transformValuePropToInputValue(value.value, timeFormat));
 	}, [timeFormat, value]);
 
-	console.log(`inputValue`, inputValue);
+	// console.log(`inputValue`, inputValue);
 	const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-		console.log(`onBlur e`, e);
+		// console.log(`onBlur e`, e);
 		const inputValue = e.target?.value;
-		console.log(`onBlur inputValue`, inputValue);
+		console.log(`inputValue`, inputValue);
 
 		const normalizedTime = formatTime(inputValue, 'HH:mm');
-		console.log(`normalizedTime`, normalizedTime);
-
-		onChangeProp?.(normalizedTime);
+		// console.log(`normalizedTime`, normalizedTime);
+		onChangeProp?.({
+			formatted: formatTime(inputValue, timeFormat),
+			value: normalizedTime,
+		});
 	};
 
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		console.log(`onChange e`, e);
+		// console.log(`onChange e`, e);
 		const inputValue = e.target?.value;
-		console.log(`onChange inputValue`, inputValue);
+		// console.log(`onChange inputValue`, inputValue);
 		// Immediately update the input field
 		setInputValue(inputValue);
 	};
@@ -44,15 +49,20 @@ export function TimeInput({
 	return (
 		<TextInput
 			{...props}
-			value={inputValue}
 			onBlur={onBlur}
 			onChange={onChange}
+			value={inputValue}
 		/>
 	);
 }
 
-export type TimeInputProps = {
-	onChange?: (inputValue: string) => void;
-	timeFormat: TimeFormat;
+type TimeValue = {
+	formatted?: string | undefined;
 	value: string | undefined;
+};
+
+export type TimeInputProps = {
+	onChange?: (args: TimeValue) => void;
+	timeFormat: TimeFormat;
+	value: TimeValue;
 };

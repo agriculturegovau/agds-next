@@ -10,19 +10,14 @@ figmaGalleryNodeId: REPLACE_ME
 ```jsx live
 () => {
 	// Set the value to a value that the user might think is valid
-	const [value, setValue] = React.useState('9:66');
+	const [value, setValue] = React.useState({ value: '9:66' });
 
 	const onChange = (e) => {
-		console.log(`onChange playroom`, e);
+		console.log('onChange', e);
 		setValue(e);
 	};
 
-	const invalid = !isValidTime(value);
-
-	console.group('playroom');
-	console.log(`invalid`, invalid);
-	console.log(`value`, value);
-	console.groupEnd('playroom');
+	const invalid = !isValidTime(value.value);
 
 	return (
 		<TimeInput

@@ -199,11 +199,11 @@ export const DateRangePicker = ({
 			to: valueAsDateOrUndefined.to,
 		});
 
-		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
-		} else {
-			onFromInputChangeProp?.(inputValue);
-		}
+		// if (!inputValue || constrainedDate) {
+		onChange(nextValue || inputValue);
+		// } else {
+		// onFromInputChangeProp?.(inputValue);
+		// }
 	};
 
 	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
