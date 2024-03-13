@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '@ag.ds-next/react/text';
 import { cleanup, render } from '../../../../test-utils';
+import { closeHandlerErrorMessage } from '../getCloseHandler';
 import { SectionAlert } from './SectionAlert';
 import type { SectionAlertProps } from './SectionAlert';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
@@ -53,18 +54,19 @@ describe('SectionAlert', () => {
 		});
 	});
 
-	describe(`which is dismissable`, () => {
+	describe(`which is closable`, () => {
 		const onClose = jest.fn();
+		const onDismiss = jest.fn();
 
 		it('renders correctly', () => {
 			const { container } = renderSectionAlert({
-				onClose: onClose,
+				onClose,
 			});
 			expect(container).toMatchSnapshot();
 		});
 		it('renders a valid HTML structure', () => {
 			const { container } = renderSectionAlert({
-				onClose: onClose,
+				onClose,
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
@@ -72,12 +74,29 @@ describe('SectionAlert', () => {
 		});
 		it('calls the onClose function when clicked', () => {
 			const { getByRole } = renderSectionAlert({
-				onClose: onClose,
+				onClose,
 			});
 			const dismissButton = getByRole('button');
 			expect(onClose).not.toHaveBeenCalled();
 			dismissButton.click();
 			expect(onClose).toHaveBeenCalledTimes(1);
+		});
+		it('calls the onDismiss function when clicked', () => {
+			const { getByRole } = renderSectionAlert({
+				onDismiss,
+			});
+			const dismissButton = getByRole('button');
+			expect(onDismiss).not.toHaveBeenCalled();
+			dismissButton.click();
+			expect(onDismiss).toHaveBeenCalledTimes(1);
+		});
+		it('errors if both onDismiss and onClose are provided', () => {
+			expect(() =>
+				renderSectionAlert({
+					onClose,
+					onDismiss,
+				})
+			).toThrow(closeHandlerErrorMessage);
 		});
 	});
 });

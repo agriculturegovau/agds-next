@@ -6,6 +6,7 @@ import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { ListItem, UnorderedList } from '../list';
 import { cleanup, render, screen } from '../../../../test-utils';
+import { closeHandlerErrorMessage } from '../getCloseHandler';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 
@@ -112,7 +113,7 @@ describe('PageAlert', () => {
 				tone: 'info',
 				title: 'PageAlert with close button',
 				children: <Text as="p">This is a Page alert component.</Text>,
-				onClose: onClose,
+				onClose,
 			});
 
 			const el = screen.getByLabelText('Close');
@@ -121,6 +122,35 @@ describe('PageAlert', () => {
 			expect(el.tagName).toEqual('BUTTON');
 			await userEvent.click(el);
 			expect(onClose).toHaveBeenCalledTimes(1);
+		});
+
+		it('responds to an onDismiss event', async () => {
+			const onDismiss = jest.fn();
+			renderPageAlert({
+				tone: 'info',
+				title: 'PageAlert with close button',
+				children: <Text as="p">This is a Page alert component.</Text>,
+				onDismiss,
+			});
+
+			const el = screen.getByLabelText('Close');
+			expect(el).toBeInTheDocument();
+			expect(el).toHaveAccessibleName('Close');
+			expect(el.tagName).toEqual('BUTTON');
+			await userEvent.click(el);
+			expect(onDismiss).toHaveBeenCalledTimes(1);
+		});
+
+		it('errors if both onDismiss and onClose are provided', () => {
+			expect(() =>
+				renderPageAlert({
+					tone: 'info',
+					title: 'PageAlert with close button',
+					children: <Text as="p">This is a Page alert component.</Text>,
+					onDismiss: jest.fn(),
+					onClose: jest.fn(),
+				})
+			).toThrow(closeHandlerErrorMessage);
 		});
 	});
 });
