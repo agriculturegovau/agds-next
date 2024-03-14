@@ -5,9 +5,9 @@ import { cleanup, render } from '../../../../test-utils';
 import {
 	StatusBadge,
 	StatusBadgeAppearance,
+	StatusBadgeLegacyTone,
 	StatusBadgeProps,
 	StatusBadgeTone,
-	StatusBadgeType,
 } from './StatusBadge';
 
 expect.extend(toHaveNoViolations);
@@ -20,8 +20,8 @@ function renderStatusBadge(props: StatusBadgeProps) {
 
 const appearances: StatusBadgeAppearance[] = ['regular', 'subtle'];
 
-const types: StatusBadgeType[] = [
-	'blockedLow',
+const tones: StatusBadgeTone[] = [
+	'cannotStartLow',
 	'errorHigh',
 	'errorLow',
 	'errorMedium',
@@ -29,34 +29,34 @@ const types: StatusBadgeType[] = [
 	'infoLow',
 	'infoMedium',
 	'inProgressLow',
+	'notStartedLow',
 	'pausedLow',
 	'successHigh',
 	'successLow',
 	'successMedium',
-	'todoLow',
 	'unknownLow',
 	'warningHigh',
 	'warningLow',
 	'warningMedium',
 ];
 
-const legacyTones: StatusBadgeTone[] = [
+const legacyTones: StatusBadgeLegacyTone[] = [
 	'error',
-	'success',
-	'warning',
 	'info',
 	'neutral',
+	'success',
+	'warning',
 ];
 
 describe('StatusBadge', () => {
 	appearances.forEach((appearance) => {
 		describe(`appearance: ${appearance}`, () => {
-			types.forEach((type) => {
-				describe(`type: ${type}`, () => {
+			tones.forEach((tone) => {
+				describe(`tone: ${tone}`, () => {
 					it('renders correctly', () => {
 						const { container } = renderStatusBadge({
 							appearance,
-							type,
+							tone,
 							label: 'Example',
 						});
 						expect(container).toMatchSnapshot();
@@ -65,7 +65,7 @@ describe('StatusBadge', () => {
 					it('renders valid HTML with no a11y violations', async () => {
 						const { container } = renderStatusBadge({
 							appearance,
-							type,
+							tone,
 							label: 'Example',
 						});
 						expect(container).toHTMLValidate({

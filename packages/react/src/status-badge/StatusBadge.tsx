@@ -26,10 +26,8 @@ export type StatusBadgeProps = {
 	appearance?: StatusBadgeAppearance;
 	/** The text label in the badge. */
 	label: ReactNode;
-	/** @deprecated The color tone to apply. */
-	tone?: StatusBadgeTone;
-	/** Determines the tone and icon of the badge. */
-	type?: StatusBadgeType;
+	/** Determines the colour, icon and announcement of the badge. */
+	tone?: StatusBadgeTone | StatusBadgeLegacyTone;
 	/** @deprecated The visual weight to apply. */
 	weight?: StatusBadgeAppearance;
 };
@@ -38,21 +36,26 @@ export const StatusBadge = ({
 	appearance = 'regular',
 	label,
 	tone = 'info',
-	type,
 	weight = 'regular',
 }: StatusBadgeProps) => {
-	// Updated props take precedence over Legacy
-	if (type) {
-		const { borderColor, icon: Icon, iconColor, iconLabel } = typeMap[type];
+	console.log(`tone`, tone);
+	const isLegacy = legacyToneMapKeys.includes(tone);
+
+	if (isLegacy) {
+		console.warn(
+			`The "tone='${tone}'" and "weight" props are deprecated. Use the tones which include emphasis and "appearance" props instead.`
+		);
+		const { icon: LegacyIcon, tone: legacyTone } =
+			legacyToneMap[tone as StatusBadgeLegacyTone];
 
 		return (
 			<Flex
 				alignItems="center"
 				background="body"
-				borderColor={borderColor}
+				borderColor={legacyTone}
 				display="inline-flex"
 				gap={0.5}
-				{...(appearance === 'regular' ? regularAppearanceStyles : {})}
+				{...(weight === 'regular' ? regularAppearanceStyles : {})}
 				css={{
 					borderRadius,
 					'& svg': {
@@ -61,7 +64,7 @@ export const StatusBadge = ({
 					},
 				}}
 			>
-				<Icon aria-hidden="false" aria-label={iconLabel} color={iconColor} />
+				<LegacyIcon />
 				<Text
 					as="span"
 					fontSize="sm"
@@ -74,19 +77,21 @@ export const StatusBadge = ({
 		);
 	}
 
-	// Legacy StatusBadge
-	console.warn(
-		'The "tone" and "weight" props are deprecated. Use the "type" and "appearance" props instead.'
-	);
-	const { icon: LegacyIcon, tone: legacyTone } = legacyToneMap[tone];
+	const {
+		borderColor,
+		icon: Icon,
+		iconColor,
+		iconLabel,
+	} = toneMap[tone as StatusBadgeTone];
+
 	return (
 		<Flex
 			alignItems="center"
 			background="body"
-			borderColor={legacyTone}
+			borderColor={borderColor}
 			display="inline-flex"
 			gap={0.5}
-			{...(weight === 'regular' ? regularAppearanceStyles : {})}
+			{...(appearance === 'regular' ? regularAppearanceStyles : {})}
 			css={{
 				borderRadius,
 				'& svg': {
@@ -95,7 +100,11 @@ export const StatusBadge = ({
 				},
 			}}
 		>
-			<LegacyIcon />
+			<Icon
+				aria-hidden="false"
+				aria-label={`Status: ${iconLabel}`}
+				color={iconColor}
+			/>
 			<Text
 				as="span"
 				fontSize="sm"
@@ -119,117 +128,116 @@ const regularAppearanceStyles = {
 	paddingX: 1,
 } as const;
 
-const typeMap = {
-	blockedLow: {
+const toneMap = {
+	cannotStartLow: {
 		borderColor: 'border',
 		icon: ProgressBlockedIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Blocked',
+		iconLabel: 'cannot start, low emphasis',
 	},
 	errorHigh: {
 		borderColor: 'error',
 		icon: AlertFilledIcon,
 		iconColor: 'error',
-		iconLabel: 'High Error',
+		iconLabel: 'error, high emphasis',
 	},
 	errorLow: {
 		borderColor: 'border',
 		icon: AlertCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Error',
+		iconLabel: 'error, low emphasis',
 	},
 	errorMedium: {
 		borderColor: 'error',
 		icon: AlertIcon,
 		iconColor: 'error',
-		iconLabel: 'Medium Error',
+		iconLabel: 'error, medium emphasis',
 	},
 	infoHigh: {
 		borderColor: 'info',
 		icon: InfoFilledIcon,
 		iconColor: 'info',
-		iconLabel: 'High Info',
+		iconLabel: 'information, high emphasis',
 	},
 	infoLow: {
 		borderColor: 'border',
 		icon: InfoIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Info',
+		iconLabel: 'information, low emphasis',
 	},
 	infoMedium: {
 		borderColor: 'info',
 		icon: InfoIcon,
 		iconColor: 'info',
-		iconLabel: 'Medium Info',
+		iconLabel: 'information, medium emphasis',
 	},
 	inProgressLow: {
 		borderColor: 'border',
 		icon: ProgressDoingIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low In Progress',
+		iconLabel: 'in, low emphasis progress',
+	},
+	notStartedLow: {
+		borderColor: 'border',
+		icon: ProgressTodoIcon,
+		iconColor: 'muted',
+		iconLabel: 'not started, low emphasis',
 	},
 	pausedLow: {
 		borderColor: 'border',
 		icon: ProgressPausedIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Paused',
+		iconLabel: 'paused, low emphasis',
 	},
 	successHigh: {
 		borderColor: 'success',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
-		iconLabel: 'High Success',
+		iconLabel: 'success, high emphasis',
 	},
 	successLow: {
 		borderColor: 'border',
 		icon: SuccessIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Success',
+		iconLabel: 'success, low emphasis',
 	},
 	successMedium: {
 		borderColor: 'success',
 		icon: SuccessIcon,
 		iconColor: 'success',
-		iconLabel: 'Medium Success',
-	},
-	todoLow: {
-		borderColor: 'border',
-		icon: ProgressTodoIcon,
-		iconColor: 'muted',
-		iconLabel: 'Low Todo',
+		iconLabel: 'success, medium emphasis',
 	},
 	unknownLow: {
 		borderColor: 'border',
 		icon: HelpIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Help',
+		iconLabel: 'help, low emphasis',
 	},
 	warningHigh: {
 		borderColor: 'warning',
 		icon: WarningFilledIcon,
 		iconColor: 'warning',
-		iconLabel: 'High Warning',
+		iconLabel: 'warning, high emphasis',
 	},
 	warningLow: {
 		borderColor: 'border',
 		icon: WarningCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'Low Warning',
+		iconLabel: 'warning, low emphasis',
 	},
 	warningMedium: {
 		borderColor: 'warning',
 		icon: WarningIcon,
 		iconColor: 'warning',
-		iconLabel: 'Medium Warning',
+		iconLabel: 'warning, medium emphasis',
 	},
 } as const;
 
-export type StatusBadgeType = keyof typeof typeMap;
-
+export type StatusBadgeTone = keyof typeof toneMap;
 export type StatusBadgeAppearance = 'regular' | 'subtle';
 
 // Deprecated Legacy
-export type StatusBadgeTone = keyof typeof legacyToneMap;
+export type StatusBadgeLegacyTone = keyof typeof legacyToneMap;
 
 const legacyToneMap = {
 	neutral: {
@@ -271,3 +279,5 @@ const legacyToneMap = {
 		tone: 'warning',
 	},
 } as const;
+
+const legacyToneMapKeys = Object.keys(legacyToneMap);

@@ -23,119 +23,119 @@ type Story = StoryObj<typeof StatusBadge>;
 export const SuccessHigh: Story = {
 	args: {
 		label: 'Success',
-		type: 'successHigh',
+		tone: 'successHigh',
 	},
 };
 
 export const SuccessMedium: Story = {
 	args: {
 		label: 'Success',
-		type: 'successMedium',
+		tone: 'successMedium',
 	},
 };
 
 export const SuccessLow: Story = {
 	args: {
 		label: 'Success',
-		type: 'successLow',
+		tone: 'successLow',
 	},
 };
 
 export const ErrorHigh: Story = {
 	args: {
 		label: 'Error',
-		type: 'errorHigh',
+		tone: 'errorHigh',
 	},
 };
 
 export const ErrorMedium: Story = {
 	args: {
 		label: 'Error',
-		type: 'errorMedium',
+		tone: 'errorMedium',
 	},
 };
 
 export const ErrorLow: Story = {
 	args: {
 		label: 'Error',
-		type: 'errorLow',
+		tone: 'errorLow',
 	},
 };
 
 export const WarningHigh: Story = {
 	args: {
 		label: 'Warning',
-		type: 'warningHigh',
+		tone: 'warningHigh',
 	},
 };
 
 export const WarningMedium: Story = {
 	args: {
 		label: 'Warning',
-		type: 'warningMedium',
+		tone: 'warningMedium',
 	},
 };
 
 export const WarningLow: Story = {
 	args: {
 		label: 'Warning',
-		type: 'warningLow',
+		tone: 'warningLow',
 	},
 };
 
 export const InfoHigh: Story = {
 	args: {
 		label: 'Info',
-		type: 'infoHigh',
+		tone: 'infoHigh',
 	},
 };
 
 export const InfoMedium: Story = {
 	args: {
 		label: 'Info',
-		type: 'infoMedium',
+		tone: 'infoMedium',
 	},
 };
 
 export const InfoLow: Story = {
 	args: {
 		label: 'Info',
-		type: 'infoLow',
+		tone: 'infoLow',
 	},
 };
 
-export const BlockedLow: Story = {
+export const CannotStartLow: Story = {
 	args: {
-		label: 'Blocked',
-		type: 'blockedLow',
+		label: 'Cannot start',
+		tone: 'cannotStartLow',
 	},
 };
 
 export const InProgressLow: Story = {
 	args: {
 		label: 'In progress',
-		type: 'inProgressLow',
+		tone: 'inProgressLow',
 	},
 };
 
 export const PausedLow: Story = {
 	args: {
 		label: 'Paused',
-		type: 'pausedLow',
+		tone: 'pausedLow',
 	},
 };
 
-export const TodoLow: Story = {
+export const NotStartedLow: Story = {
 	args: {
-		label: 'Todo',
-		type: 'todoLow',
+		label: 'Not started',
+		tone: 'notStartedLow',
 	},
 };
 
 export const UnknownLow: Story = {
 	args: {
 		label: 'Unknown',
-		type: 'unknownLow',
+		tone: 'unknownLow',
 	},
 };
 
@@ -145,30 +145,30 @@ export const SubtleAppearanceInTable: Story = {
 			{
 				id: 'RE4321–2201–03',
 				businessName: 'Orange Meat Works',
-				type: 'Record keeping—Minor',
 				status: 'Pending',
-				statusType: 'infoMedium',
+				tone: 'infoMedium',
+				type: 'Record keeping—Minor',
 			},
 			{
 				id: 'RE4321–2201–02',
 				businessName: 'Orange Meat Works',
-				type: 'Hygiene—Major',
 				status: 'Approved',
-				statusType: 'successHigh',
+				tone: 'successHigh',
+				type: 'Hygiene—Major',
 			},
 			{
 				id: 'RE4321–2201–01',
 				businessName: 'Molong Meat Works',
-				type: 'Record keeping—Minor',
 				status: 'Conflicted',
-				statusType: 'warningLow',
+				tone: 'warningLow',
+				type: 'Record keeping—Minor',
 			},
 			{
 				id: 'RE4321–2201–00',
 				businessName: 'Orange Meat Works',
-				type: 'Record keeping—Minor',
 				status: 'Rejected',
-				statusType: 'errorMedium',
+				tone: 'errorMedium',
+				type: 'Record keeping—Minor',
 			},
 		] as const;
 
@@ -185,17 +185,13 @@ export const SubtleAppearanceInTable: Story = {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{data.map(({ id, businessName, status, statusType, type }) => (
+						{data.map(({ id, businessName, status, tone, type }) => (
 							<TableRow key={id}>
 								<TableCell>{id}</TableCell>
 								<TableCell>{businessName}</TableCell>
 								<TableCell>{type}</TableCell>
 								<TableCell>
-									<StatusBadge
-										appearance="subtle"
-										type={statusType}
-										label={status}
-									/>
+									<StatusBadge appearance="subtle" tone={tone} label={status} />
 								</TableCell>
 							</TableRow>
 						))}

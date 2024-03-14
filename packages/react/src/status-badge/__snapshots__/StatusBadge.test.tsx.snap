@@ -300,14 +300,14 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: blockedLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Blocked"
+      aria-label="Status: cannot start, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -331,14 +331,14 @@ exports[`StatusBadge appearance: regular type: blockedLow renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: errorHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] = `
 <div>
   <div
     class="css-1kwau38-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Error"
+      aria-label="Status: error, high emphasis"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -364,14 +364,14 @@ exports[`StatusBadge appearance: regular type: errorHigh renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: errorLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Error"
+      aria-label="Status: error, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -395,14 +395,14 @@ exports[`StatusBadge appearance: regular type: errorLow renders correctly 1`] = 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: errorMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`] = `
 <div>
   <div
     class="css-1kwau38-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Error"
+      aria-label="Status: error, medium emphasis"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -432,14 +432,14 @@ exports[`StatusBadge appearance: regular type: errorMedium renders correctly 1`]
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: inProgressLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low In Progress"
+      aria-label="Status: in, low emphasis progress"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -478,14 +478,14 @@ exports[`StatusBadge appearance: regular type: inProgressLow renders correctly 1
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: infoHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = `
 <div>
   <div
     class="css-d0fvsj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Info"
+      aria-label="Status: information, high emphasis"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -511,14 +511,14 @@ exports[`StatusBadge appearance: regular type: infoHigh renders correctly 1`] = 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: infoLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Info"
+      aria-label="Status: information, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -542,14 +542,14 @@ exports[`StatusBadge appearance: regular type: infoLow renders correctly 1`] = `
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: infoMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] = `
 <div>
   <div
     class="css-d0fvsj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Info"
+      aria-label="Status: information, medium emphasis"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -573,14 +573,46 @@ exports[`StatusBadge appearance: regular type: infoMedium renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: pausedLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Paused"
+      aria-label="Status: not started, low emphasis"
+      class="css-4amf2f-Icon"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+        stroke-dasharray="4 4"
+      />
+    </svg>
+    <span
+      class="css-10dvol5-boxStyles-Text-StatusBadge"
+    >
+      Example
+    </span>
+  </div>
+</div>
+`;
+
+exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] = `
+<div>
+  <div
+    class="css-1o4iv6m-boxStyles-StatusBadge"
+  >
+    <svg
+      aria-hidden="false"
+      aria-label="Status: paused, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -604,14 +636,14 @@ exports[`StatusBadge appearance: regular type: pausedLow renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: successHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`] = `
 <div>
   <div
     class="css-1yao3c9-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Success"
+      aria-label="Status: success, high emphasis"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -637,14 +669,14 @@ exports[`StatusBadge appearance: regular type: successHigh renders correctly 1`]
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: successLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Success"
+      aria-label="Status: success, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -671,14 +703,14 @@ exports[`StatusBadge appearance: regular type: successLow renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: successMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1`] = `
 <div>
   <div
     class="css-1yao3c9-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Success"
+      aria-label="Status: success, medium emphasis"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -705,46 +737,14 @@ exports[`StatusBadge appearance: regular type: successMedium renders correctly 1
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: todoLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Todo"
-      class="css-4amf2f-Icon"
-      clip-rule="evenodd"
-      fill-rule="evenodd"
-      focusable="false"
-      height="24"
-      role="img"
-      viewBox="0 0 24 24"
-      width="24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
-        stroke-dasharray="4 4"
-      />
-    </svg>
-    <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
-    >
-      Example
-    </span>
-  </div>
-</div>
-`;
-
-exports[`StatusBadge appearance: regular type: unknownLow renders correctly 1`] = `
-<div>
-  <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
-  >
-    <svg
-      aria-hidden="false"
-      aria-label="Low Help"
+      aria-label="Status: help, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -768,14 +768,14 @@ exports[`StatusBadge appearance: regular type: unknownLow renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: warningHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`] = `
 <div>
   <div
     class="css-1t5js0n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Warning"
+      aria-label="Status: warning, high emphasis"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -801,14 +801,14 @@ exports[`StatusBadge appearance: regular type: warningHigh renders correctly 1`]
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: warningLow renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] = `
 <div>
   <div
     class="css-1o4iv6m-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Warning"
+      aria-label="Status: warning, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -832,14 +832,14 @@ exports[`StatusBadge appearance: regular type: warningLow renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: regular type: warningMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1`] = `
 <div>
   <div
     class="css-1t5js0n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Warning"
+      aria-label="Status: warning, medium emphasis"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -863,14 +863,14 @@ exports[`StatusBadge appearance: regular type: warningMedium renders correctly 1
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: blockedLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Blocked"
+      aria-label="Status: cannot start, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -894,14 +894,14 @@ exports[`StatusBadge appearance: subtle type: blockedLow renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: errorHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Error"
+      aria-label="Status: error, high emphasis"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -927,14 +927,14 @@ exports[`StatusBadge appearance: subtle type: errorHigh renders correctly 1`] = 
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: errorLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Error"
+      aria-label="Status: error, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -958,14 +958,14 @@ exports[`StatusBadge appearance: subtle type: errorLow renders correctly 1`] = `
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: errorMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Error"
+      aria-label="Status: error, medium emphasis"
       class="css-1h89p7b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -995,14 +995,14 @@ exports[`StatusBadge appearance: subtle type: errorMedium renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: inProgressLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low In Progress"
+      aria-label="Status: in, low emphasis progress"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1041,14 +1041,14 @@ exports[`StatusBadge appearance: subtle type: inProgressLow renders correctly 1`
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: infoHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Info"
+      aria-label="Status: information, high emphasis"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1074,14 +1074,14 @@ exports[`StatusBadge appearance: subtle type: infoHigh renders correctly 1`] = `
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: infoLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Info"
+      aria-label="Status: information, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1105,14 +1105,14 @@ exports[`StatusBadge appearance: subtle type: infoLow renders correctly 1`] = `
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: infoMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Info"
+      aria-label="Status: information, medium emphasis"
       class="css-1curl5b-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1136,14 +1136,46 @@ exports[`StatusBadge appearance: subtle type: infoMedium renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: pausedLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Paused"
+      aria-label="Status: not started, low emphasis"
+      class="css-4amf2f-Icon"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+        stroke-dasharray="4 4"
+      />
+    </svg>
+    <span
+      class="css-10dvol5-boxStyles-Text-StatusBadge"
+    >
+      Example
+    </span>
+  </div>
+</div>
+`;
+
+exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = `
+<div>
+  <div
+    class="css-oil8xj-boxStyles-StatusBadge"
+  >
+    <svg
+      aria-hidden="false"
+      aria-label="Status: paused, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1167,14 +1199,14 @@ exports[`StatusBadge appearance: subtle type: pausedLow renders correctly 1`] = 
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: successHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Success"
+      aria-label="Status: success, high emphasis"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1200,14 +1232,14 @@ exports[`StatusBadge appearance: subtle type: successHigh renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: successLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Success"
+      aria-label="Status: success, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1234,14 +1266,14 @@ exports[`StatusBadge appearance: subtle type: successLow renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: successMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Success"
+      aria-label="Status: success, medium emphasis"
       class="css-1esj8rc-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1268,46 +1300,14 @@ exports[`StatusBadge appearance: subtle type: successMedium renders correctly 1`
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: todoLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Todo"
-      class="css-4amf2f-Icon"
-      clip-rule="evenodd"
-      fill-rule="evenodd"
-      focusable="false"
-      height="24"
-      role="img"
-      viewBox="0 0 24 24"
-      width="24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
-        stroke-dasharray="4 4"
-      />
-    </svg>
-    <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
-    >
-      Example
-    </span>
-  </div>
-</div>
-`;
-
-exports[`StatusBadge appearance: subtle type: unknownLow renders correctly 1`] = `
-<div>
-  <div
-    class="css-oil8xj-boxStyles-StatusBadge"
-  >
-    <svg
-      aria-hidden="false"
-      aria-label="Low Help"
+      aria-label="Status: help, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1331,14 +1331,14 @@ exports[`StatusBadge appearance: subtle type: unknownLow renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: warningHigh renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="High Warning"
+      aria-label="Status: warning, high emphasis"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1364,14 +1364,14 @@ exports[`StatusBadge appearance: subtle type: warningHigh renders correctly 1`] 
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: warningLow renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Low Warning"
+      aria-label="Status: warning, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1395,14 +1395,14 @@ exports[`StatusBadge appearance: subtle type: warningLow renders correctly 1`] =
 </div>
 `;
 
-exports[`StatusBadge appearance: subtle type: warningMedium renders correctly 1`] = `
+exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`] = `
 <div>
   <div
     class="css-oil8xj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
-      aria-label="Medium Warning"
+      aria-label="Status: warning, medium emphasis"
       class="css-qz15ef-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"

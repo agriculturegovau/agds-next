@@ -11,7 +11,7 @@ relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 
 - use to indicate the status of an item or it’s progress through a process
 - apply the `'subtle'` `appearance` in tables to reduce visual emphasis and overall height of the parent component
-- apply the correct attention levels to communicate the urgency or importance of the status.
+- apply the correct emphasis levels to communicate the urgency or importance of the status tone.
 
 <DontHeading />
 
@@ -19,17 +19,17 @@ relatedComponents: ['notification-badge', 'indicator-dot', 'tags']
 - use the `'subtle'` `appearance` outside of tables or dense parent components
 - use when colour and icon don’t convey meaning, or use when the semantic meaning of the badge, colour and icon, does not match your use case.
 
-## Status and attention
+## Status and emphasis
 
-The `type` prop combines both a status and attention, and sets the correct importance and severity of the Status badge by automatically applying appropriate colour, iconography and accessible descriptions.
+The `tone` prop combines both a status and emphasis, which sets the correct importance and severity of the Status badge by automatically applying appropriate colour, iconography and accessible descriptions.
 
-There a nine unique types with five levels of attention. All types are available in Low attention but others are only available in Medium and High.
+There a nine unique tones with five levels of emphasis. All tones are available in Low emphasis but others are only available in Medium and High.
 
-### High attention
+### High emphasis
 
-High attention Status badges use filled icons and are available in four tone colours.
+High emphasis Status badges use filled icons and are available in four tone colours.
 
-Use high attention status badges for:
+Use high emphasis status badges for:
 
 - form validation alerts
 - global, page and section alerts
@@ -39,51 +39,51 @@ Use high attention status badges for:
 
 ```jsx live
 <Flex flexWrap="wrap" gap={1}>
-	<StatusBadge type="successHigh" label="Success" />
-	<StatusBadge type="errorHigh" label="Error" />
-	<StatusBadge type="warningHigh" label="Warning" />
-	<StatusBadge type="infoHigh" label="Info" />
+	<StatusBadge tone="successHigh" label="Success" />
+	<StatusBadge tone="errorHigh" label="Error" />
+	<StatusBadge tone="warningHigh" label="Warning" />
+	<StatusBadge tone="infoHigh" label="Info" />
 </Flex>
 ```
 
-### Medium attention
+### Medium emphasis
 
-Medium attention Status badges use stroked icons and are available in five tone colours.
+Medium emphasis Status badges use stroked icons and are available in five tone colours.
 
-Use Medium attention status badges for:
+Use Medium emphasis status badges for:
 
 - convey non-urgent status in a list
 - convey an objects progress through a process.
 
 ```jsx live
 <Flex flexWrap="wrap" gap={1}>
-	<StatusBadge type="successMedium" label="Success" />
-	<StatusBadge type="errorMedium" label="Error" />
-	<StatusBadge type="warningMedium" label="Warning" />
-	<StatusBadge type="infoMedium" label="Info" />
+	<StatusBadge tone="successMedium" label="Success" />
+	<StatusBadge tone="errorMedium" label="Error" />
+	<StatusBadge tone="warningMedium" label="Warning" />
+	<StatusBadge tone="infoMedium" label="Info" />
 </Flex>
 ```
 
-### Low attention
+### Low emphasis
 
-Low attention Status badges use stroked icons and are available in the default, neutral colour only.
+Low emphasis Status badges use stroked icons and are available in the default, neutral colour only.
 
-Use Low attention status badges for:
+Use Low emphasis status badges for:
 
 - convey non-urgent status in a list
 - convey an objects progress through a process.
 
 ```jsx live
 <Flex flexWrap="wrap" gap={1}>
-	<StatusBadge type="successLow" label="Success" />
-	<StatusBadge type="errorLow" label="Error" />
-	<StatusBadge type="warningLow" label="Warning" />
-	<StatusBadge type="infoLow" label="Info" />
-	<StatusBadge type="blockedLow" label="Blocked" />
-	<StatusBadge type="inProgressLow" label="In progress" />
-	<StatusBadge type="pausedLow" label="Paused" />
-	<StatusBadge type="todoLow" label="Todo" />
-	<StatusBadge type="unknownLow" label="Unknown" />
+	<StatusBadge tone="successLow" label="Success" />
+	<StatusBadge tone="errorLow" label="Error" />
+	<StatusBadge tone="warningLow" label="Warning" />
+	<StatusBadge tone="infoLow" label="Info" />
+	<StatusBadge tone="cannotStartLow" label="Cannot start" />
+	<StatusBadge tone="inProgressLow" label="In progress" />
+	<StatusBadge tone="pausedLow" label="Paused" />
+	<StatusBadge tone="notStartedLow" label="Not started" />
+	<StatusBadge tone="unknownLow" label="Unknown" />
 </Flex>
 ```
 
@@ -94,29 +94,33 @@ Apply the `'subtle'` `appearance` in tables to reduce visual emphasis and over
 ```jsx live
 <Flex gap={2} flexDirection="column">
 	<Flex flexWrap="wrap" gap={2}>
-		<StatusBadge appearance="subtle" type="successHigh" label="Success" />
-		<StatusBadge appearance="subtle" type="errorHigh" label="Error" />
-		<StatusBadge appearance="subtle" type="warningHigh" label="Warning" />
-		<StatusBadge appearance="subtle" type="infoHigh" label="Info" />
+		<StatusBadge appearance="subtle" tone="successHigh" label="Success" />
+		<StatusBadge appearance="subtle" tone="errorHigh" label="Error" />
+		<StatusBadge appearance="subtle" tone="warningHigh" label="Warning" />
+		<StatusBadge appearance="subtle" tone="infoHigh" label="Info" />
 	</Flex>
 	<Flex flexWrap="wrap" gap={2}>
-		<StatusBadge appearance="subtle" type="successMedium" label="Success" />
-		<StatusBadge appearance="subtle" type="errorMedium" label="Error" />
-		<StatusBadge appearance="subtle" type="warningMedium" label="Warning" />
-		<StatusBadge appearance="subtle" type="infoMedium" label="Info" />
+		<StatusBadge appearance="subtle" tone="successMedium" label="Success" />
+		<StatusBadge appearance="subtle" tone="errorMedium" label="Error" />
+		<StatusBadge appearance="subtle" tone="warningMedium" label="Warning" />
+		<StatusBadge appearance="subtle" tone="infoMedium" label="Info" />
 	</Flex>
 	<Flex flexWrap="wrap" gap={2}>
-		<StatusBadge appearance="subtle" type="successLow" label="Success" />
-		<StatusBadge appearance="subtle" type="errorLow" label="Error" />
-		<StatusBadge appearance="subtle" type="warningLow" label="Warning" />
-		<StatusBadge appearance="subtle" type="infoLow" label="Info" />
+		<StatusBadge appearance="subtle" tone="successLow" label="Success" />
+		<StatusBadge appearance="subtle" tone="errorLow" label="Error" />
+		<StatusBadge appearance="subtle" tone="warningLow" label="Warning" />
+		<StatusBadge appearance="subtle" tone="infoLow" label="Info" />
 	</Flex>
 	<Flex flexWrap="wrap" gap={2}>
-		<StatusBadge appearance="subtle" type="blockedLow" label="Blocked" />
-		<StatusBadge appearance="subtle" type="inProgressLow" label="In progress" />
-		<StatusBadge appearance="subtle" type="pausedLow" label="Paused" />
-		<StatusBadge appearance="subtle" type="todoLow" label="Todo" />
-		<StatusBadge appearance="subtle" type="unknownLow" label="Unknown" />
+		<StatusBadge
+			appearance="subtle"
+			tone="cannotStartLow"
+			label="Cannot start"
+		/>
+		<StatusBadge appearance="subtle" tone="inProgressLow" label="In progress" />
+		<StatusBadge appearance="subtle" tone="pausedLow" label="Paused" />
+		<StatusBadge appearance="subtle" tone="notStartedLow" label="Not started" />
+		<StatusBadge appearance="subtle" tone="unknownLow" label="Unknown" />
 	</Flex>
 </Flex>
 ```
