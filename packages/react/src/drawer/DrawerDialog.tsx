@@ -39,7 +39,7 @@ export function DrawerDialog({
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
-	const handleClose = getRequiredCloseHandler(onClose, onDismiss)
+	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 
 	return (
 		<FocusLock returnFocus>

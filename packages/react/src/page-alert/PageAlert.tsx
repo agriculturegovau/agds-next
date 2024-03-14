@@ -41,7 +41,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 		{ id, role, children, onClose, onDismiss, title, tone, tabIndex },
 		ref
 	) {
-		const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
+		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 		const { fg, bg, icon } = pageAlertToneMap[tone];
 		return (
 			<Flex
@@ -97,7 +97,9 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 						) : null}
 						{children}
 					</Flex>
-					{closeHandler ? <PageAlertCloseButton onClick={closeHandler} /> : null}
+					{closeHandler ? (
+						<PageAlertCloseButton onClick={closeHandler} />
+					) : null}
 				</Flex>
 			</Flex>
 		);

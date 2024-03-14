@@ -37,7 +37,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		ref
 	) {
 		const Icon = sectionAlertIconMap[tone];
-		const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
+		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 		return (
 			<Flex
 				ref={ref}
@@ -64,7 +64,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 						{children}
 					</Flex>
 				</Flex>
-				{closeHandler ? <SectionAlertDismissButton onClick={closeHandler} /> : null}
+				{closeHandler ? (
+					<SectionAlertDismissButton onClick={closeHandler} />
+				) : null}
 			</Flex>
 		);
 	}

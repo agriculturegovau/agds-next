@@ -28,7 +28,7 @@ export function GlobalAlert({
 }: GlobalAlertProps) {
 	const { ariaLabel, bg, fg, Icon } = toneMap[tone];
 
-	const closeHandler = getOptionalCloseHandler(onClose, onDismiss)
+	const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
 	const addTitleMargin = Boolean(closeHandler);
 	const addContentMargin = Boolean(closeHandler && !title);
@@ -83,7 +83,9 @@ export function GlobalAlert({
 						{children}
 					</Box>
 				</Stack>
-				{closeHandler ? <GlobalAlertCloseButton onClick={closeHandler} /> : null}
+				{closeHandler ? (
+					<GlobalAlertCloseButton onClick={closeHandler} />
+				) : null}
 			</Flex>
 		</Flex>
 	);

@@ -30,7 +30,7 @@ export const ModalDialog = ({
 	onClose,
 	onDismiss,
 }: ModalDialogProps) => {
-	const closeHandler = getRequiredCloseHandler(onClose, onDismiss)
+	const closeHandler = getRequiredCloseHandler(onClose, onDismiss);
 	const { titleId } = useModalId();
 	return (
 		<FocusLock returnFocus>
