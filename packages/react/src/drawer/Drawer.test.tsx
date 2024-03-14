@@ -6,6 +6,7 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
+import { closeHandlerErrorMessage } from '../getCloseHandler';
 import { Drawer } from './Drawer';
 
 expect.extend(toHaveNoViolations);
@@ -47,9 +48,34 @@ function DrawerExample() {
 		</div>
 	);
 }
+function OnDismissDrawerExample() {
+	const [isOpen, open, close] = useTernaryState(false);
+	return (
+		<div>
+			<Button onClick={open} data-testid="open-button">
+				Open
+			</Button>
+			<Drawer
+				isOpen={isOpen}
+				onDismiss={close}
+				title="Drawer title"
+				actions={
+					<Button onClick={close} data-testid="close-button">
+						Close modal
+					</Button>
+				}
+			>
+				<Text as="p">This is the Drawer content.</Text>
+			</Drawer>
+		</div>
+	);
+}
 
 function renderDrawer() {
 	return render(<DrawerExample />);
+}
+function renderOnDismissDrawer() {
+	return render(<OnDismissDrawerExample />);
 }
 
 describe('Drawer', () => {
@@ -89,5 +115,36 @@ describe('Drawer', () => {
 		await waitFor(() =>
 			expect(screen.getByTestId('open-button')).toHaveFocus()
 		);
+	});
+	it('onDismiss draw focuses the correct elements when opening and closing', async () => {
+		renderOnDismissDrawer();
+
+		// Open the Drawer by clicking the "Open" button
+		await userEvent.click(screen.getByTestId('open-button'));
+		expect(await screen.findByRole('dialog')).toBeInTheDocument();
+
+		// Title should have focus
+		expect(await screen.getByText('Drawer title')).toHaveFocus();
+
+		// Close the Drawer by clicking the "Close" button
+		await userEvent.click(screen.getByTestId('close-button'));
+
+		// After closing the Drawer, the "Open" button should be focused
+		// Note: We need to wait for the closing animation
+		await waitFor(() =>
+			expect(screen.getByTestId('open-button')).toHaveFocus()
+		);
+	});
+	it('errors if provided both onClose and onDismiss', () => {
+		expect(() =>
+			render(
+				<Drawer
+					isOpen
+					onClose={jest.fn}
+					onDismiss={jest.fn}
+					title="Draw title"
+				/>
+			)
+		).toThrow(closeHandlerErrorMessage);
 	});
 });

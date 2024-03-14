@@ -6,6 +6,7 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup } from '../../../../test-utils';
+import { closeHandlerErrorMessage } from '../getCloseHandler';
 import { Modal } from './Modal';
 
 expect.extend(toHaveNoViolations);
@@ -48,8 +49,32 @@ function ModalExample() {
 	);
 }
 
+function OnDismissExample() {
+	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+	return (
+		<div>
+			<Button onClick={openModal} data-testid="open-modal-button">
+				Open modal
+			</Button>
+			<Modal
+				isOpen={isModalOpen}
+				onDismiss={closeModal}
+				title="Modal title"
+				actions={
+					<Button onClick={closeModal} data-testid="close-modal-button">
+						Close modal
+					</Button>
+				}
+			/>
+		</div>
+	);
+}
+
 function renderModal() {
 	return render(<ModalExample />);
+}
+function renderDismissModal() {
+	return render(<OnDismissExample />);
 }
 
 describe('Modal', () => {
@@ -82,5 +107,30 @@ describe('Modal', () => {
 		await userEvent.click(await screen.getByTestId('close-modal-button'));
 		// After closing the modal, the "Open modal" button should be focused
 		expect(await screen.getByTestId('open-modal-button')).toHaveFocus();
+	});
+	it('onDismiss modal focuses the correct elements when opening and closing', async () => {
+		renderDismissModal();
+		// Open the modal by clicking the "Open modal" button
+		await userEvent.click(await screen.getByTestId('open-modal-button'));
+		expect(await screen.findByRole('dialog')).toBeInTheDocument();
+		// Title should have focus
+		expect(await screen.getByText('Modal title')).toHaveFocus();
+		// Close the modal
+		await userEvent.click(await screen.getByTestId('close-modal-button'));
+		// After closing the modal, the "Open modal" button should be focused
+		expect(await screen.getByTestId('open-modal-button')).toHaveFocus();
+	});
+
+	it('errors if provided both onClose and onDismiss', () => {
+		expect(() =>
+			render(
+				<Modal
+					isOpen
+					onClose={jest.fn}
+					onDismiss={jest.fn}
+					title="Modal title"
+				/>
+			)
+		).toThrow(closeHandlerErrorMessage);
 	});
 });
