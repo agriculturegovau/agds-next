@@ -38,7 +38,6 @@ export const StatusBadge = ({
 	tone = 'info',
 	weight = 'regular',
 }: StatusBadgeProps) => {
-	console.log(`tone`, tone);
 	const isLegacy = legacyToneMapKeys.includes(tone);
 
 	if (isLegacy) {
