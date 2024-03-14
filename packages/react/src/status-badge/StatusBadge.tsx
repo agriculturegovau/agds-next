@@ -46,6 +46,8 @@ export const StatusBadge = ({
 		);
 		const { icon: LegacyIcon, tone: legacyTone } =
 			legacyToneMap[tone as StatusBadgeLegacyTone];
+		const appearanceStyleProps =
+			weight === 'regular' ? regularAppearanceStyleProps : {};
 
 		return (
 			<Flex
@@ -54,7 +56,6 @@ export const StatusBadge = ({
 				borderColor={legacyTone}
 				display="inline-flex"
 				gap={0.5}
-				{...(weight === 'regular' ? regularAppearanceStyles : {})}
 				css={{
 					borderRadius,
 					'& svg': {
@@ -62,6 +63,7 @@ export const StatusBadge = ({
 						width: iconWidth,
 					},
 				}}
+				{...appearanceStyleProps}
 			>
 				<LegacyIcon />
 				<Text
@@ -82,6 +84,8 @@ export const StatusBadge = ({
 		iconColor,
 		iconLabel,
 	} = toneMap[tone as StatusBadgeTone];
+	const appearanceStyleProps =
+		appearance === 'regular' ? regularAppearanceStyleProps : {};
 
 	return (
 		<Flex
@@ -90,7 +94,6 @@ export const StatusBadge = ({
 			borderColor={borderColor}
 			display="inline-flex"
 			gap={0.5}
-			{...(appearance === 'regular' ? regularAppearanceStyles : {})}
 			css={{
 				borderRadius,
 				'& svg': {
@@ -98,6 +101,7 @@ export const StatusBadge = ({
 					width: iconWidth,
 				},
 			}}
+			{...appearanceStyleProps}
 		>
 			<Icon
 				aria-hidden="false"
@@ -120,7 +124,7 @@ const borderRadius = mapSpacing(1); // 16px
 const height = mapSpacing(2); // 32px
 const iconWidth = '1.375rem'; // 22px
 
-const regularAppearanceStyles = {
+const regularAppearanceStyleProps = {
 	border: true,
 	borderWidth: 'sm',
 	height,
