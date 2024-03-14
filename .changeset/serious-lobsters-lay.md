@@ -2,4 +2,4 @@
 '@ag.ds-next/docs': patch
 ---
 
-patterns: Update Conditionally revealed content
+docs: Patterns: update conditionally revealed content
