@@ -43,7 +43,7 @@ export const StatusBadge = ({
 
 	if (isLegacy) {
 		console.warn(
-			`The "tone='${tone}'" and "weight" props are deprecated. Use the tones which include emphasis and "appearance" props instead.`
+			`The "tone='${tone}'" and "weight" props are deprecated. Use the tones which include emphasis and the "appearance" prop instead.`
 		);
 		const { icon: LegacyIcon, tone: legacyTone } =
 			legacyToneMap[tone as StatusBadgeLegacyTone];
