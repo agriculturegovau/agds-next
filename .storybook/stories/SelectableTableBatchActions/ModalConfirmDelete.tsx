@@ -2,14 +2,15 @@ import { useMemo, useState } from 'react';
 import { ButtonGroup, Button } from '@ag.ds-next/react/button';
 import { Text } from '@ag.ds-next/react/text';
 import { Modal } from '@ag.ds-next/react/modal';
+import { getRequiredCloseHandler } from '@ag.ds-next/react/src/getCloseHandler';
 import { plural, RowData } from './utils';
 
 export type ModalConfirmDeleteProps = {
 	isOpen: boolean;
 	onConfirm: () => void;
 	/** @deprecated use `onClose` instead */
-	onDismiss: () => void;
-	onClose: () => void;
+	onDismiss?: () => void;
+	onClose?: () => void;
 	itemsToDelete: RowData | RowData[];
 };
 
@@ -21,6 +22,8 @@ export function ModalConfirmDelete({
 	itemsToDelete,
 }: ModalConfirmDeleteProps) {
 	const [submitting, setSubmitting] = useState(false);
+
+	const closeHandler = getRequiredCloseHandler(onClose, onDismiss);
 
 	function onSubmit() {
 		setSubmitting(true);
@@ -48,8 +51,7 @@ export function ModalConfirmDelete({
 	return (
 		<Modal
 			isOpen={isOpen}
-			onDismiss={onDismiss}
-			onClose={onClose}
+			onClose={closeHandler}
 			title={title}
 			actions={
 				<ButtonGroup>
