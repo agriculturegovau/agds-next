@@ -135,18 +135,127 @@ If a user leaves a task partially completed by pressing ‘save and exit’, sav
 
 If a user presses on a task that’s ‘in progress’, return them to where they left off and display a callout at the top of the page to let them know that this is where they got to previously. See example below.
 
-<Box paddingTop={3}>
-	{/* Image needs to be updated with a better version
-	<img
-		src="/img/patterns/return-to-partial-completion-task.png"
-		alt="Return to partial completion task"
-	/>
-	*/}
-	<img
-		src="/pr-preview/pr-1585/img/patterns/return-to-partial-completion-task.png"
-		alt="Return to partial completion task"
-	/>
-</Box>
+```tsx live
+() => {
+	const FORM_STEPS = [
+		{
+			label: 'Contact details',
+			status: 'done',
+			href: '#',
+		},
+		{
+			label: 'Address',
+			status: 'started',
+			href: '#',
+			isActive: true,
+		},
+		{
+			label: 'Upload files',
+			status: 'todo',
+			href: '#',
+		},
+	];
+
+	return (
+		<Columns>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ContentBleed visible={{ md: false }}>
+					<ProgressIndicator items={FORM_STEPS} />
+				</ContentBleed>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+				<Stack gap={3} alignItems="flex-start">
+					<DirectionButton direction="left" onClick={() => {}}>
+						Back
+					</DirectionButton>
+
+					<PageAlert
+						tone="info"
+						title="Continue from where you left off"
+						onClose={() => {}}
+					>
+						<Text as="p">
+							We've saved your progress so you can continue from here.
+						</Text>
+					</PageAlert>
+
+					<Stack as="form" gap={3} onSubmit={() => {}} noValidate>
+						<Stack gap={2}>
+							<H1 tabIndex={-1} focus aria-label={`Application form, Address`}>
+								<Text
+									display="block"
+									fontSize="sm"
+									color="muted"
+									fontWeight="bold"
+									lineHeight="heading"
+								>
+									Application form
+								</Text>
+								Address
+							</H1>
+							<Text as="p" fontSize="md" color="muted">
+								Where can we send the package?
+							</Text>
+						</Stack>
+						<TextInput
+							label="Street address line 1"
+							required
+							maxWidth="lg"
+							autoComplete="address-line1"
+						/>
+						<TextInput
+							label="Street address line 2"
+							required
+							maxWidth="lg"
+							autoComplete="address-line2"
+						/>
+						<TextInput
+							label="Suburb, town or city"
+							required
+							autoComplete="address-level2"
+						/>
+						<Select
+							label="State or territory"
+							maxWidth="sm"
+							options={[
+								{ value: 'act', label: 'ACT' },
+								{ value: 'nsw', label: 'NSW' },
+								{ value: 'vic', label: 'VIC' },
+								{ value: 'wa', label: 'WA' },
+								{ value: 'nt', label: 'NT' },
+								{ value: 'sa', label: 'SA' },
+								{ value: 'tas', label: 'TAS' },
+							]}
+							autoComplete="address-level1"
+						/>
+						<TextInput
+							label="Postcode"
+							required
+							maxWidth="xs"
+							autoComplete="postal-code"
+						/>
+
+						<Stack gap={3}>
+							<Divider />
+							<ButtonGroup>
+								<Button type="submit" variant="primary">
+									Save and continue
+								</Button>
+								<Button type="button" variant="secondary" onClick={() => {}}>
+									Save and exit
+								</Button>
+								<Button type="button" variant="tertiary" onClick={() => {}}>
+									Cancel
+								</Button>
+							</ButtonGroup>
+						</Stack>
+					</Stack>
+				</Stack>
+			</Column>
+		</Columns>
+	);
+};
+```
 
 ## Cancelled tasks
 
