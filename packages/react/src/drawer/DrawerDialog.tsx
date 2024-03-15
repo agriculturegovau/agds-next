@@ -11,12 +11,16 @@ import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
 
 export type DrawerDialogProps = PropsWithChildren<{
+	/** Used to render buttons at the bottom of the draw. */
 	actions?: ReactNode;
-	/** @deprecated use `onClose` instead */
+	/** @deprecated use `onClose` instead. */
 	onDismiss?: () => void;
+	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
 	style: { translateX: SpringValue<string> };
+	/** The title displayed at the top of the draw. */
 	title: string;
+	/** The width of the draw. */
 	width: DrawerDialogWidth;
 }>;
 

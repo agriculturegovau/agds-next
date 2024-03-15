@@ -15,7 +15,7 @@ export type ModalDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	/** @deprecated use `onClose` instead */
 	onDismiss?: () => void;
-	/** Function to be called when the modal is closed. */
+	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
 	/** The title of the modal dialog. It can span lines but should not be too long. */
 	title: string;
