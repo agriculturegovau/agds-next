@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { findBestMatch, tokens } from '../core';
 import { Stack } from '../stack';
-import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
+import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
@@ -25,12 +25,16 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
 		activePath
 	);
+	const { pallet } = useAppLayoutContext();
+
+	const sidebarBackground = pallet === 'dark' ? 'bodyAlt' : undefined;
+
 	return (
 		<Fragment>
 			{/* Desktop */}
 			<Stack
 				gap={1}
-				background="bodyAlt"
+				background={sidebarBackground}
 				borderRight
 				borderColor="muted"
 				flexGrow={1}

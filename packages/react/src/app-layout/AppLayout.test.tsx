@@ -11,6 +11,7 @@ import {
 	ExampleAccountDropdown,
 	exampleData,
 } from './test-utils';
+import { AppLayoutPallet } from './AppLayoutContext';
 import {
 	AppLayout,
 	AppLayoutHeader,
@@ -27,14 +28,16 @@ afterEach(cleanup);
 function renderAppLayout({
 	activePath = '/establishments',
 	focusMode = false,
+	pallet = 'dark',
 }: {
 	activePath?: string;
 	focusMode?: boolean;
+	pallet?: AppLayoutPallet;
 }) {
 	const businessList = exampleData.businessNames.medium;
 	const businessName = exampleData.businessNames.medium[0];
 	return render(
-		<AppLayout focusMode={focusMode}>
+		<AppLayout focusMode={focusMode} pallet={pallet}>
 			<AppLayoutHeader
 				id="header"
 				href="#"
@@ -141,6 +144,17 @@ describe('AppLayout', () => {
 			});
 			const currentPage = container.querySelector("[aria-current='page']");
 			expect(currentPage).toHaveTextContent('Establishments');
+		});
+	});
+
+	describe('Renders themes correctly', () => {
+		test('dark', () => {
+			const { container } = renderAppLayout({ pallet: 'dark' });
+			expect(container).toMatchSnapshot();
+		});
+		test('light', () => {
+			const { container } = renderAppLayout({ pallet: 'light' });
+			expect(container).toMatchSnapshot();
 		});
 	});
 });

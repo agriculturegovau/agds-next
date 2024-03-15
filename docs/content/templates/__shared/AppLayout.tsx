@@ -14,10 +14,12 @@ import {
 import { Box } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
+import { AppLayoutPallet } from '@ag.ds-next/react/src/app-layout/AppLayoutContext';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
 	applyMainElement?: boolean;
+	pallet?: AppLayoutPallet;
 }>;
 
 const sidebarLinks = [
@@ -55,6 +57,7 @@ export const AppLayout = ({
 	children,
 	focusMode = false,
 	applyMainElement = true,
+	pallet = 'dark',
 }: AppLayoutProps) => {
 	const year = new Date().getFullYear();
 	return (
@@ -62,7 +65,7 @@ export const AppLayout = ({
 			<SkipLinks
 				links={[{ href: '#main-content', label: 'Skip to main content' }]}
 			/>
-			<AgDsAppLayout focusMode={focusMode}>
+			<AgDsAppLayout focusMode={focusMode} pallet={pallet}>
 				<AppLayoutHeader
 					heading="Service name"
 					subLine="Service description that could be a little longer"

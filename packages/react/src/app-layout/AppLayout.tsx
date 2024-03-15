@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { mapResponsiveProp, mq, useTernaryState } from '../core';
-import { AppLayoutContext } from './AppLayoutContext';
+import { AppLayoutPallet, AppLayoutContext } from './AppLayoutContext';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
@@ -9,9 +9,15 @@ import {
 export type AppLayoutProps = PropsWithChildren<{
 	/** Set to `true` while users are completing multi-page forms to reduce distractions. When true, the app layout sidebar will not be rendered. */
 	focusMode?: boolean;
+	/** Controls what colour theme the AppLayout components display in, `'bodyAlt'` is light theme. */
+	pallet?: AppLayoutPallet;
 }>;
 
-export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
+export function AppLayout({
+	children,
+	focusMode = false,
+	pallet = 'dark',
+}: AppLayoutProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
 		useTernaryState(false);
 	return (
@@ -21,6 +27,7 @@ export function AppLayout({ children, focusMode = false }: AppLayoutProps) {
 				isMobileMenuOpen,
 				openMobileMenu,
 				closeMobileMenu,
+				pallet,
 			}}
 		>
 			<AppLayoutGrid focusMode={focusMode}>{children}</AppLayoutGrid>

@@ -1,11 +1,28 @@
 import { ReactNode } from 'react';
-import { Box } from '../box';
+import { BorderColor, Box } from '../box';
+import { BoxPalette, tokens } from '../core';
 import { Flex } from '../flex';
-import { tokens } from '../core';
-import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
+import { AppLayoutPallet, useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
+import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
+
+interface Theming {
+	palette: BoxPalette;
+	borderColor: BorderColor;
+}
+
+const themes: Record<AppLayoutPallet, Theming> = {
+	dark: {
+		borderColor: 'accent',
+		palette: 'dark',
+	},
+	light: {
+		borderColor: 'selected',
+		palette: 'light',
+	},
+};
 
 export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
@@ -42,15 +59,18 @@ export function AppLayoutHeader({
 	badgeLabel,
 	accountDetails,
 }: AppLayoutHeaderProps) {
+	const { pallet } = useAppLayoutContext();
+	const { borderColor, palette } = themes[pallet] || {};
+
 	return (
 		<Flex
 			as="header"
 			id={id}
-			palette="dark"
+			palette={palette}
 			flexDirection="column"
 			borderBottom
 			borderBottomWidth="xxl"
-			borderColor="accent"
+			borderColor={borderColor}
 			css={{
 				[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 					gridColumnStart: 1,
