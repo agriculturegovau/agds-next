@@ -1,8 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// import parseTime from 'user-time';
-
-const parseTime = (timeString = '', timeFormat: TimeFormat) => {
+// Borrowed heavily from https://github.com/jrmedd/user-time
+export const parseTime = (timeString = '', timeFormat: TimeFormat) => {
 	const date = new Date();
 	const time = (
 		timeString.match(/\d+/) !== null
@@ -29,9 +26,14 @@ const parseTime = (timeString = '', timeFormat: TimeFormat) => {
 	date.setMinutes(time[1] ?? 0);
 	date.setSeconds(time[2] ?? 0);
 
-	if (time[0] <= 11) {
+	if (time[0] <= 12) {
 		const letters = timeString.match(/[a-zA-Z]{1,2}/) ?? [];
-		const timeOfDay = letters.length > 0 ? letters[0].toLowerCase() : 'am';
+		const timeOfDay =
+			letters.length > 0
+				? letters[0].toLowerCase()
+				: time[0] === 12
+				? 'pm'
+				: 'am';
 		switch (timeOfDay) {
 			case 'pm':
 				date.setHours(time[0] === 12 ? 12 : time[0] + 12);
@@ -74,7 +76,7 @@ export const timeFormats = {
 
 export type TimeFormat = keyof typeof timeFormats;
 
-export const acceptedTimeFormats = Object.keys(timeFormats);
+const acceptedTimeFormats = Object.keys(timeFormats);
 
 export type AcceptedTimeFormats = (typeof acceptedTimeFormats)[number];
 
