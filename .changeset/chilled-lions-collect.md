@@ -5,3 +5,5 @@
 ---
 
 drawer, global-alert, modal, page-alert, section-alert: Deprecating onDismiss in favour of onClose
+
+page-alert: Deprecating hasDismissButton in favour of hasCloseButton
