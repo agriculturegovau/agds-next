@@ -9,15 +9,12 @@ import { DatePicker } from '@ag.ds-next/react/date-picker';
 export type ModalAddTrackingNumberProps = {
 	isOpen: boolean;
 	onConfirm: () => void;
-	/** @deprecated use `onClose` instead */
-	onDismiss?: () => void;
-	onClose?: () => void;
+	onClose: () => void;
 };
 
 export function ModalAddTrackingNumber({
 	isOpen,
 	onConfirm,
-	onDismiss,
 	onClose,
 }: ModalAddTrackingNumberProps) {
 	const [date, setDate] = useState<Date | string>();
@@ -35,7 +32,6 @@ export function ModalAddTrackingNumber({
 		<Drawer
 			isOpen={isOpen}
 			onClose={onClose}
-			onDismiss={onDismiss}
 			title="Add tracking number"
 			actions={
 				<ButtonGroup>
