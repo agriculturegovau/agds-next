@@ -6,7 +6,6 @@ import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { ListItem, UnorderedList } from '../list';
 import { cleanup, render, screen } from '../../../../test-utils';
-import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 

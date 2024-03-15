@@ -6,7 +6,6 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
-import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { Drawer } from './Drawer';
 
 expect.extend(toHaveNoViolations);

@@ -4,7 +4,6 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { cleanup, render, screen } from '../../../../test-utils';
-import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { GlobalAlert, GlobalAlertProps, GlobalAlertTone } from './GlobalAlert';
 
 expect.extend(toHaveNoViolations);

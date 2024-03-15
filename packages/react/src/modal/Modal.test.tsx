@@ -6,7 +6,6 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup } from '../../../../test-utils';
-import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { Modal } from './Modal';
 
 expect.extend(toHaveNoViolations);

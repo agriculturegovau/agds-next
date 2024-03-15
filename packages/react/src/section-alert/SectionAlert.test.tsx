@@ -2,7 +2,6 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '@ag.ds-next/react/text';
 import { cleanup, render } from '../../../../test-utils';
-import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { SectionAlert } from './SectionAlert';
 import type { SectionAlertProps } from './SectionAlert';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
