@@ -5,6 +5,7 @@ import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
+import { AttachmentIcon } from './icons/AttachmentIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
 import { CalendarIcon } from './icons/CalendarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
@@ -39,6 +40,7 @@ import { LinkedInIcon } from './icons/LinkedInIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
 import { PauseIcon } from './icons/PauseIcon';
+import { PieChartIcon } from './icons/PieChartIcon';
 import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { PrintIcon } from './icons/PrintIcon';
@@ -65,6 +67,7 @@ export const allIcons = {
 	ArrowRightIcon,
 	ArrowUpIcon,
 	ArrowUpDownIcon,
+	AttachmentIcon,
 	AvatarIcon,
 	CalendarIcon,
 	ChartBarIcon,
@@ -99,6 +102,7 @@ export const allIcons = {
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
+	PieChartIcon,
 	PlayIcon,
 	PlusIcon,
 	PrintIcon,
