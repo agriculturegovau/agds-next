@@ -24,14 +24,10 @@ export function TimeInput({
 		setInputValue(transformValuePropToInputValue(value.value, timeFormat));
 	}, [timeFormat, value]);
 
-	// console.log(`inputValue`, inputValue);
 	const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-		// console.log(`onBlur e`, e);
 		const inputValue = e.target?.value;
-		console.log(`inputValue`, inputValue);
-
 		const normalizedTime = formatTime(inputValue, 'HH:mm');
-		// console.log(`normalizedTime`, normalizedTime);
+
 		onChangeProp?.({
 			formatted: formatTime(inputValue, timeFormat),
 			value: normalizedTime,
@@ -39,9 +35,7 @@ export function TimeInput({
 	};
 
 	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		// console.log(`onChange e`, e);
 		const inputValue = e.target?.value;
-		// console.log(`onChange inputValue`, inputValue);
 		// Immediately update the input field
 		setInputValue(inputValue);
 	};
