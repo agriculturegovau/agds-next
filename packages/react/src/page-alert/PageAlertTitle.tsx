@@ -14,19 +14,24 @@ export const PageAlertTitle = ({
 	children,
 	hasDismissButton,
 	hasCloseButton,
-}: PageAlertTitleProps) => (
-	<Text
-		as={as}
-		fontSize="lg"
-		lineHeight="heading"
-		fontWeight="bold"
-		css={mq({
-			marginRight: hasCloseButton || hasDismissButton ? '2.5rem' : undefined,
-			[tokens.mediaQuery.min.sm]: {
-				marginRight: '0',
-			},
-		})}
-	>
-		{children}
-	</Text>
-);
+}: PageAlertTitleProps) => {
+	if (hasDismissButton !== undefined) {
+		console.warn('hasDismissButton is deprecated. Use hasCloseButton instead.');
+	}
+	return (
+		<Text
+			as={as}
+			fontSize="lg"
+			lineHeight="heading"
+			fontWeight="bold"
+			css={mq({
+				marginRight: hasCloseButton || hasDismissButton ? '2.5rem' : undefined,
+				[tokens.mediaQuery.min.sm]: {
+					marginRight: '0',
+				},
+			})}
+		>
+			{children}
+		</Text>
+	);
+};
