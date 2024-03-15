@@ -10,7 +10,7 @@ export function getRequiredCloseHandler(
 ): Fn {
 	const closeHandler = onClose ? onClose : onDismiss;
 
-	warnIfBothAreDefined(onClose, onDismiss);
+	handleWarnings(onClose, onDismiss);
 
 	if (!closeHandler) {
 		throw new Error('onClose prop is required');
@@ -23,16 +23,18 @@ export function getOptionalCloseHandler(
 	onClose: Fn | undefined,
 	onDismiss: Fn | undefined
 ): Fn | undefined {
-	warnIfBothAreDefined(onClose, onDismiss);
+	handleWarnings(onClose, onDismiss);
 
 	return onClose ? onClose : onDismiss;
 }
 
-function warnIfBothAreDefined(
+function handleWarnings(
 	onClose: Fn | undefined,
 	onDismiss: Fn | undefined
 ) {
 	if (onClose && onDismiss) {
 		console.warn(closeHandlerWarningMessage)
+	} else if (onDismiss) {
+		console.warn('onDismiss is deprecated. Use onClose instead.')
 	}
 }
