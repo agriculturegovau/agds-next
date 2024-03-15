@@ -107,8 +107,14 @@ Include 2 actions below the task list:
 - **Cancel** - Allows users to discard the form. If they have entered any information, make sure you trigger a destructive modal dialog (seen below) to let users know that they will loose their progress.
 
 <Box paddingTop={3}>
+	{/* When PR review is comlete use this image instead
 	<img
 		src="/img/patterns/task-list-destructive-dialog.png"
+		alt="Return to partial completion task"
+	/>
+	*/}
+	<img
+		src="/pr-preview/pr-1585/img/patterns/task-list-destructive-dialog.png"
 		alt="Destructive modal dialog"
 	/>
 </Box>
@@ -130,9 +136,14 @@ If a user leaves a task partially completed by pressing ‘save and exit’, sav
 If a user presses on a task that’s ‘in progress’, return them to where they left off and display a callout at the top of the page to let them know that this is where they got to previously. See example below.
 
 <Box paddingTop={3}>
-	{/* Image needs to be updated with a better version */}
+	{/* Image needs to be updated with a better version
 	<img
 		src="/img/patterns/return-to-partial-completion-task.png"
+		alt="Return to partial completion task"
+	/>
+	*/}
+	<img
+		src="/pr-preview/pr-1585/img/patterns/return-to-partial-completion-task.png"
 		alt="Return to partial completion task"
 	/>
 </Box>
