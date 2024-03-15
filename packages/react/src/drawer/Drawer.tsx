@@ -17,6 +17,7 @@ import {
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
 
 export type DrawerProps = PropsWithChildren<{
@@ -24,8 +25,10 @@ export type DrawerProps = PropsWithChildren<{
 	actions?: ReactNode;
 	/** If true, the drawer will be displayed. */
 	isOpen?: boolean;
-	/** Function to be called when the drawer is closed. */
-	onDismiss: () => void;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
+	/** Function to be called when the 'Close' button is pressed. */
+	onClose?: () => void;
 	/** The title of the drawer. It can span lines but should not be too long. */
 	title: string;
 	/** The width of the drawer. */
@@ -36,11 +39,14 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	actions,
 	children,
 	isOpen = false,
+	onClose,
 	onDismiss,
 	title,
 	width = 'md',
 }) => {
+	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	const scrollbarWidth = useRef<number>(0);
+
 	useEffect(() => {
 		scrollbarWidth.current =
 			window.innerWidth - document.documentElement.clientWidth;
@@ -52,12 +58,12 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 			if (isOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				onDismiss();
+				handleClose();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isOpen, onDismiss]);
+	}, [isOpen, handleClose]);
 
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
@@ -82,9 +88,9 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						<Overlay onClick={() => onDismiss()} style={{ opacity }} />
+						<Overlay onClick={handleClose} style={{ opacity }} />
 						<DrawerDialog
-							onDismiss={onDismiss}
+							onClose={handleClose}
 							title={title}
 							actions={actions}
 							width={width}

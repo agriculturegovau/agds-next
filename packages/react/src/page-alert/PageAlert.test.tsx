@@ -87,7 +87,7 @@ describe('PageAlert', () => {
 				tone: 'info',
 				title: 'PageAlert with close button',
 				children: <Text as="p">This is a Page alert component.</Text>,
-				onDismiss: jest.fn(),
+				onClose: jest.fn(),
 			});
 
 			expect(container).toMatchSnapshot();
@@ -98,12 +98,29 @@ describe('PageAlert', () => {
 				tone: 'info',
 				title: 'PageAlert with close button',
 				children: <Text as="p">This is a Page alert component.</Text>,
-				onDismiss: jest.fn(),
+				onClose: jest.fn(),
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
 			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		it('responds to an onClose event', async () => {
+			const onClose = jest.fn();
+			renderPageAlert({
+				tone: 'info',
+				title: 'PageAlert with close button',
+				children: <Text as="p">This is a Page alert component.</Text>,
+				onClose,
+			});
+
+			const el = screen.getByLabelText('Close');
+			expect(el).toBeInTheDocument();
+			expect(el).toHaveAccessibleName('Close');
+			expect(el.tagName).toEqual('BUTTON');
+			await userEvent.click(el);
+			expect(onClose).toHaveBeenCalledTimes(1);
 		});
 
 		it('responds to an onDismiss event', async () => {
@@ -112,7 +129,7 @@ describe('PageAlert', () => {
 				tone: 'info',
 				title: 'PageAlert with close button',
 				children: <Text as="p">This is a Page alert component.</Text>,
-				onDismiss: onDismiss,
+				onDismiss,
 			});
 
 			const el = screen.getByLabelText('Close');

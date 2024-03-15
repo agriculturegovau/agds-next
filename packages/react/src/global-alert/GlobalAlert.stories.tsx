@@ -16,7 +16,7 @@ type Story = StoryObj<typeof GlobalAlert>;
 
 export const Basic: Story = {
 	args: {
-		onDismiss: undefined,
+		onClose: undefined,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -29,7 +29,7 @@ export const Basic: Story = {
 
 export const Information: Story = {
 	args: {
-		onDismiss: undefined,
+		onClose: undefined,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -43,7 +43,7 @@ export const Information: Story = {
 
 export const WithDismiss: Story = {
 	args: {
-		onDismiss: console.log,
+		onClose: console.log,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -57,7 +57,7 @@ export const WithDismiss: Story = {
 export const WithTitle: Story = {
 	args: {
 		title: 'Alert title',
-		onDismiss: undefined,
+		onClose: undefined,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -71,7 +71,7 @@ export const WithTitle: Story = {
 export const WithTitleAndDismiss: Story = {
 	args: {
 		title: 'Alert title',
-		onDismiss: console.log,
+		onClose: console.log,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -85,7 +85,7 @@ export const WithTitleAndDismiss: Story = {
 export const WithLongMessage: Story = {
 	args: {
 		title: 'Alert title',
-		onDismiss: undefined,
+		onClose: undefined,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -100,7 +100,7 @@ export const WithLongMessage: Story = {
 export const WithLongMessageAndTitle: Story = {
 	args: {
 		title: 'The Export Service is currently down due to regular maintenance',
-		onDismiss: undefined,
+		onClose: undefined,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
@@ -115,7 +115,7 @@ export const WithLongMessageAndTitle: Story = {
 export const WithLongMessageAndTitleAndDismiss: Story = {
 	args: {
 		title: 'The Export Service is currently down due to regular maintenance',
-		onDismiss: console.log,
+		onClose: console.log,
 		children: (
 			<Text as="p">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa

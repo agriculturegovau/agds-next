@@ -199,12 +199,12 @@ export function SelectableTableBatchActions() {
 			<ModalConfirmDelete
 				itemsToDelete={selectedItems}
 				isOpen={deleteModalOpen}
-				onDismiss={() => setDeleteModalOpen(false)}
+				onClose={() => setDeleteModalOpen(false)}
 				onConfirm={deleteSelectedItems}
 			/>
 			<ModalAddTrackingNumber
 				isOpen={ModalAddTrackingOpen}
-				onDismiss={() => setModalAddTrackingOpen(false)}
+				onClose={() => setModalAddTrackingOpen(false)}
 				onConfirm={addTrackingNumber}
 			/>
 		</PageContent>
@@ -282,12 +282,12 @@ function Row({
 			<ModalConfirmDelete
 				itemsToDelete={item}
 				isOpen={deleteModalOpen}
-				onDismiss={() => setDeleteModalOpen(false)}
+				onClose={() => setDeleteModalOpen(false)}
 				onConfirm={onDeleteConfirm}
 			/>
 			<ModalAddTrackingNumber
 				isOpen={modalAddTrackingOpen}
-				onDismiss={() => setModalAddTrackingOpen(false)}
+				onClose={() => setModalAddTrackingOpen(false)}
 				onConfirm={onAddTrackingConfirm}
 			/>
 		</Fragment>

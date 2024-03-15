@@ -16,7 +16,7 @@ relatedPatterns: ['search-filters']
 			<Button onClick={openDrawer}>Open Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
-				onDismiss={closeDrawer}
+				onClose={closeDrawer}
 				title="Drawer title"
 				actions={
 					<ButtonGroup>
@@ -87,7 +87,7 @@ The Drawer comes in the following 2 widths:
 			<Button onClick={openDrawer}>Open Medium Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
-				onDismiss={closeDrawer}
+				onClose={closeDrawer}
 				title="Medium Drawer"
 				actions={
 					<ButtonGroup>
@@ -126,7 +126,7 @@ The Drawer comes in the following 2 widths:
 			<Button onClick={openDrawer}>Open Large Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
-				onDismiss={closeDrawer}
+				onClose={closeDrawer}
 				title="Large Drawer"
 				width="lg"
 				actions={
