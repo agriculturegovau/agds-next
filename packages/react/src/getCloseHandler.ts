@@ -28,13 +28,10 @@ export function getOptionalCloseHandler(
 	return onClose ? onClose : onDismiss;
 }
 
-function handleWarnings(
-	onClose: Fn | undefined,
-	onDismiss: Fn | undefined
-) {
+function handleWarnings(onClose: Fn | undefined, onDismiss: Fn | undefined) {
 	if (onClose && onDismiss) {
-		console.warn(closeHandlerWarningMessage)
+		console.warn(closeHandlerWarningMessage);
 	} else if (onDismiss) {
-		console.warn('onDismiss is deprecated. Use onClose instead.')
+		console.warn('onDismiss is deprecated. Use onClose instead.');
 	}
 }
