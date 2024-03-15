@@ -6,7 +6,7 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
-import { closeHandlerErrorMessage } from '../getCloseHandler';
+import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { Drawer } from './Drawer';
 
 expect.extend(toHaveNoViolations);
@@ -134,17 +134,5 @@ describe('Drawer', () => {
 		await waitFor(() =>
 			expect(screen.getByTestId('open-button')).toHaveFocus()
 		);
-	});
-	it('errors if provided both onClose and onDismiss', () => {
-		expect(() =>
-			render(
-				<Drawer
-					isOpen
-					onClose={jest.fn}
-					onDismiss={jest.fn}
-					title="Draw title"
-				/>
-			)
-		).toThrow(closeHandlerErrorMessage);
 	});
 });

@@ -6,7 +6,7 @@ import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup } from '../../../../test-utils';
-import { closeHandlerErrorMessage } from '../getCloseHandler';
+import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { Modal } from './Modal';
 
 expect.extend(toHaveNoViolations);
@@ -119,18 +119,5 @@ describe('Modal', () => {
 		await userEvent.click(await screen.getByTestId('close-modal-button'));
 		// After closing the modal, the "Open modal" button should be focused
 		expect(await screen.getByTestId('open-modal-button')).toHaveFocus();
-	});
-
-	it('errors if provided both onClose and onDismiss', () => {
-		expect(() =>
-			render(
-				<Modal
-					isOpen
-					onClose={jest.fn}
-					onDismiss={jest.fn}
-					title="Modal title"
-				/>
-			)
-		).toThrow(closeHandlerErrorMessage);
 	});
 });

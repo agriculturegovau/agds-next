@@ -4,7 +4,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
 import { cleanup, render, screen } from '../../../../test-utils';
-import { closeHandlerErrorMessage } from '../getCloseHandler';
+import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { GlobalAlert, GlobalAlertProps, GlobalAlertTone } from './GlobalAlert';
 
 expect.extend(toHaveNoViolations);
@@ -102,17 +102,6 @@ describe('GlobalAlert', () => {
 			});
 			await userEvent.click(screen.getByText('Close'));
 			expect(onDismiss).toHaveBeenCalledTimes(1);
-		});
-
-		it('errors if both `onDismiss` and `onClose` are provided', () => {
-			expect(() =>
-				renderGlobalAlert({
-					title: 'Alert title',
-					children: <Text as="p">Alert description.</Text>,
-					onDismiss: jest.fn(),
-					onClose: jest.fn(),
-				})
-			).toThrow(closeHandlerErrorMessage);
 		});
 	});
 });

@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Fn = (params?: any) => void;
 
-export const closeHandlerErrorMessage =
-	'Do not use onDismiss in combination with onClose. Use onClose by itself. onDismiss is deprecated.';
+export const closeHandlerWarningMessage =
+	'Do not use onDismiss in combination with onClose. Use onClose by itself. onDismiss is deprecated. Only onClose will be called.';
 
 export function getRequiredCloseHandler(
 	onClose: Fn | undefined,
@@ -10,7 +10,7 @@ export function getRequiredCloseHandler(
 ): Fn {
 	const closeHandler = onClose ? onClose : onDismiss;
 
-	throwErrorIfBothAreDefined(onClose, onDismiss);
+	warnIfBothAreDefined(onClose, onDismiss);
 
 	if (!closeHandler) {
 		throw new Error('onClose prop is required');
@@ -23,16 +23,16 @@ export function getOptionalCloseHandler(
 	onClose: Fn | undefined,
 	onDismiss: Fn | undefined
 ): Fn | undefined {
-	throwErrorIfBothAreDefined(onClose, onDismiss);
+	warnIfBothAreDefined(onClose, onDismiss);
 
 	return onClose ? onClose : onDismiss;
 }
 
-function throwErrorIfBothAreDefined(
+function warnIfBothAreDefined(
 	onClose: Fn | undefined,
 	onDismiss: Fn | undefined
 ) {
 	if (onClose && onDismiss) {
-		throw new Error(closeHandlerErrorMessage);
+		console.warn(closeHandlerWarningMessage)
 	}
 }

@@ -6,7 +6,7 @@ import { Text } from '../text';
 import { TextLink } from '../text-link';
 import { ListItem, UnorderedList } from '../list';
 import { cleanup, render, screen } from '../../../../test-utils';
-import { closeHandlerErrorMessage } from '../getCloseHandler';
+import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { PageAlert, PageAlertProps } from './PageAlert';
 import { PageAlertTitle } from './PageAlertTitle';
 
@@ -139,18 +139,6 @@ describe('PageAlert', () => {
 			expect(el.tagName).toEqual('BUTTON');
 			await userEvent.click(el);
 			expect(onDismiss).toHaveBeenCalledTimes(1);
-		});
-
-		it('errors if both onDismiss and onClose are provided', () => {
-			expect(() =>
-				renderPageAlert({
-					tone: 'info',
-					title: 'PageAlert with close button',
-					children: <Text as="p">This is a Page alert component.</Text>,
-					onDismiss: jest.fn(),
-					onClose: jest.fn(),
-				})
-			).toThrow(closeHandlerErrorMessage);
 		});
 	});
 });

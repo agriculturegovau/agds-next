@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { Text } from '@ag.ds-next/react/text';
 import { cleanup, render } from '../../../../test-utils';
-import { closeHandlerErrorMessage } from '../getCloseHandler';
+import { closeHandlerWarningMessage } from '../getCloseHandler';
 import { SectionAlert } from './SectionAlert';
 import type { SectionAlertProps } from './SectionAlert';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
@@ -89,14 +89,6 @@ describe('SectionAlert', () => {
 			expect(onDismiss).not.toHaveBeenCalled();
 			dismissButton.click();
 			expect(onDismiss).toHaveBeenCalledTimes(1);
-		});
-		it('errors if both onDismiss and onClose are provided', () => {
-			expect(() =>
-				renderSectionAlert({
-					onClose,
-					onDismiss,
-				})
-			).toThrow(closeHandlerErrorMessage);
 		});
 	});
 });
