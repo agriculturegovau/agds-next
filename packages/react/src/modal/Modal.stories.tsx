@@ -25,7 +25,7 @@ export const Basic: Story = {
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
 					isOpen={isModalOpen}
-					onDismiss={closeModal}
+					onClose={closeModal}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -61,7 +61,7 @@ export const ConfirmingDestructiveAction: Story = {
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
 					isOpen={isModalOpen}
-					onDismiss={closeModal}
+					onClose={closeModal}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -93,7 +93,7 @@ export const ConfirmingFormCancellation: Story = {
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
 					isOpen={isModalOpen}
-					onDismiss={closeModal}
+					onClose={closeModal}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -124,7 +124,7 @@ export const LeavingFormPage: Story = {
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
 					isOpen={isModalOpen}
-					onDismiss={closeModal}
+					onClose={closeModal}
 					title={props.title}
 					actions={
 						<ButtonGroup>

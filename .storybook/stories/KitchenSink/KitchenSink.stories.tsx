@@ -279,7 +279,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							<SectionAlert
 								tone="success"
 								title="This is a Section alert"
-								onDismiss={console.log}
+								onClose={console.log}
 							/>
 
 							<SectionAlert tone="warning" title="This is a Section alert">
@@ -628,7 +628,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 			</PageContent>
 			<Drawer
 				isOpen={isDrawerOpen}
-				onDismiss={closeDrawer}
+				onClose={closeDrawer}
 				title="Drawer title"
 				actions={
 					<ButtonGroup>
@@ -646,7 +646,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 			</Drawer>
 			<Modal
 				isOpen={isModalOpen}
-				onDismiss={closeModal}
+				onClose={closeModal}
 				title="This is the title of the modal dialog, it can span lines but should not be too long."
 				actions={
 					<ButtonGroup>
@@ -674,7 +674,7 @@ export const WesbsiteLayout = {
 	name: 'Website layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
+			<GlobalAlert onClose={console.log} title="Scheduled outage">
 				<Text as="p">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
 					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
@@ -692,7 +692,7 @@ export const ApplicationLayout = {
 	name: 'Application layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onDismiss={console.log} title="Scheduled outage">
+			<GlobalAlert onClose={console.log} title="Scheduled outage">
 				<Text as="p">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
 					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque

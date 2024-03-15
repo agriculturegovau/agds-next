@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SectionAlert which is dismissable renders correctly 1`] = `
+exports[`SectionAlert which is closable renders correctly 1`] = `
 <div>
   <div
     class="css-h23zy0-boxStyles"

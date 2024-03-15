@@ -2,6 +2,7 @@ import { Fragment, FunctionComponent, useEffect } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
 import { canUseDOM, useAriaModalPolyfill } from '../core';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { ModalCover } from './ModalCover';
 import { ModalDialog, ModalDialogProps } from './ModalDialog';
 
@@ -14,21 +15,24 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	actions,
 	children,
 	isOpen = false,
+	onClose,
 	onDismiss,
 	title,
 }) => {
+	const closeHandler = getRequiredCloseHandler(onClose, onDismiss);
+
 	// Close the modal when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (isOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				onDismiss();
+				closeHandler();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isOpen, onDismiss]);
+	}, [closeHandler, isOpen]);
 
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
@@ -43,7 +47,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={modalContainerRef}>
-				<ModalDialog onDismiss={onDismiss} title={title} actions={actions}>
+				<ModalDialog onClose={closeHandler} title={title} actions={actions}>
 					{children}
 				</ModalDialog>
 			</ModalCover>

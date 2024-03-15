@@ -37,7 +37,7 @@ export const Basic: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -79,7 +79,7 @@ export const LargeWidth: Story = {
 				<Button onClick={open}>Open Large Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={
@@ -119,6 +119,73 @@ export const LargeWidth: Story = {
 							habitasse platea dictumst.
 						</p>
 					</Prose>
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const SmallPageContentLargeDrawerContent: Story = {
+	args: {
+		title: 'Scrollable Drawer Content',
+	},
+	render: function Render(props) {
+		const [isOpen, open, close] = useTernaryState(false);
+		return (
+			<Fragment>
+				<Button onClick={open}>Open Drawer</Button>
+				<Drawer
+					isOpen={isOpen}
+					onDismiss={close}
+					title={props.title}
+					width={props.width}
+					actions={
+						<ButtonGroup>
+							<Button onClick={close}>Primary</Button>
+							<Button variant="secondary" onClick={close}>
+								Secondary
+							</Button>
+							<Button variant="tertiary" onClick={close}>
+								Tertiary
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<LargeProseContent />
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const LargePageContentLargeDrawerContent: Story = {
+	args: {
+		title: 'Scrollable Drawer Content',
+	},
+	render: function Render(props) {
+		const [isOpen, open, close] = useTernaryState(false);
+		return (
+			<Fragment>
+				<Button onClick={open}>Open Drawer</Button>
+				<LargeProseContent />
+				<Drawer
+					isOpen={isOpen}
+					onDismiss={close}
+					title={props.title}
+					width={props.width}
+					actions={
+						<ButtonGroup>
+							<Button onClick={close}>Primary</Button>
+							<Button variant="secondary" onClick={close}>
+								Secondary
+							</Button>
+							<Button variant="tertiary" onClick={close}>
+								Tertiary
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<LargeProseContent />
 				</Drawer>
 			</Fragment>
 		);
@@ -172,7 +239,7 @@ export const FiltersBasic: Story = {
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
 					isOpen={isDrawerOpen}
-					onDismiss={onCloseClick}
+					onClose={onCloseClick}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -301,7 +368,7 @@ export const FiltersWithFieldsets: Story = {
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
 					isOpen={isDrawerOpen}
-					onDismiss={onCloseClick}
+					onClose={onCloseClick}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -444,3 +511,155 @@ export const FiltersWithFieldsets: Story = {
 		);
 	},
 };
+
+const LargeProseContent = () => (
+	<Prose>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Tempus urna et
+			pharetra pharetra massa massa. Volutpat diam ut venenatis tellus in metus
+			vulputate eu. Adipiscing elit duis tristique sollicitudin nibh sit amet.
+			Vivamus arcu felis bibendum ut tristique et. Et tortor at risus viverra
+			adipiscing at in tellus integer. Euismod in pellentesque massa placerat
+			duis ultricies lacus sed. Ornare arcu dui vivamus arcu felis bibendum.
+			Sapien pellentesque habitant morbi tristique senectus et netus et
+			malesuada. Et tortor consequat id porta nibh venenatis. Cras adipiscing
+			enim eu turpis egestas pretium aenean. Erat velit scelerisque in dictum
+			non. Pretium fusce id velit ut tortor pretium. Eu ultrices vitae auctor eu
+			augue ut lectus arcu bibendum. Magna eget est lorem ipsum dolor sit.
+		</p>
+
+		<p>
+			Ut aliquam purus sit amet luctus venenatis lectus magna. Eu facilisis sed
+			odio morbi quis commodo odio. Pharetra vel turpis nunc eget. Adipiscing
+			commodo elit at imperdiet dui accumsan sit amet nulla. Ipsum consequat
+			nisl vel pretium lectus. Malesuada nunc vel risus commodo viverra maecenas
+			accumsan lacus vel. Arcu ac tortor dignissim convallis. Ipsum suspendisse
+			ultrices gravida dictum fusce ut placerat orci nulla. Feugiat sed lectus
+			vestibulum mattis ullamcorper. Risus in hendrerit gravida rutrum quisque
+			non. Tincidunt nunc pulvinar sapien et ligula. Penatibus et magnis dis
+			parturient montes nascetur ridiculus mus. Ultrices tincidunt arcu non
+			sodales neque. Duis at consectetur lorem donec.
+		</p>
+
+		<p>
+			Turpis tincidunt id aliquet risus. Ut lectus arcu bibendum at varius vel
+			pharetra. Magna ac placerat vestibulum lectus. Euismod elementum nisi quis
+			eleifend quam. Morbi tristique senectus et netus et malesuada. Justo
+			laoreet sit amet cursus sit. Et malesuada fames ac turpis egestas sed. Eu
+			non diam phasellus vestibulum lorem sed risus ultricies. Quis imperdiet
+			massa tincidunt nunc. Ornare lectus sit amet est placerat in egestas. Sed
+			viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Lacinia
+			quis vel eros donec ac. Vitae sapien pellentesque habitant morbi. Donec et
+			odio pellentesque diam volutpat commodo sed egestas egestas. Vulputate
+			sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Quam
+			vulputate dignissim suspendisse in est ante in nibh. Justo nec ultrices
+			dui sapien eget mi proin. Aliquet nibh praesent tristique magna sit amet.
+		</p>
+		<p>
+			Laoreet suspendisse interdum consectetur libero. Nulla pellentesque
+			dignissim enim sit amet venenatis urna cursus eget. Elit sed vulputate mi
+			sit amet mauris commodo quis imperdiet. Nisl suscipit adipiscing bibendum
+			est ultricies integer quis. Rutrum tellus pellentesque eu tincidunt tortor
+			aliquam nulla. Malesuada fames ac turpis egestas sed tempus urna et. Ipsum
+			dolor sit amet consectetur adipiscing elit duis tristique. Euismod
+			elementum nisi quis eleifend quam. Vulputate mi sit amet mauris commodo
+			quis imperdiet massa. Sit amet porttitor eget dolor. Enim lobortis
+			scelerisque fermentum dui faucibus. Dapibus ultrices in iaculis nunc sed
+			augue lacus. Nulla porttitor massa id neque aliquam vestibulum. Netus et
+			malesuada fames ac turpis egestas integer eget aliquet. Proin nibh nisl
+			condimentum id. Duis at tellus at urna condimentum mattis. Tellus molestie
+			nunc non blandit massa. At erat pellentesque adipiscing commodo elit at
+			imperdiet dui.
+		</p>
+		<p>
+			Imperdiet proin fermentum leo vel orci porta non. Odio morbi quis commodo
+			odio aenean sed adipiscing diam donec. Cursus in hac habitasse platea
+			dictumst quisque sagittis. Blandit aliquam etiam erat velit scelerisque in
+			dictum. Ridiculus mus mauris vitae ultricies. Interdum velit laoreet id
+			donec ultrices. Est pellentesque elit ullamcorper dignissim cras tincidunt
+			lobortis. Sed nisi lacus sed viverra tellus in. Vel elit scelerisque
+			mauris pellentesque pulvinar pellentesque habitant morbi. Vitae congue
+			mauris rhoncus aenean. Ut porttitor leo a diam sollicitudin tempor.
+			Tincidunt arcu non sodales neque sodales ut etiam. At elementum eu
+			facilisis sed. Euismod in pellentesque massa placerat duis. In arcu cursus
+			euismod quis viverra nibh cras pulvinar. Neque egestas congue quisque
+			egestas diam in. Sem fringilla ut morbi tincidunt augue interdum. Sit amet
+			tellus cras adipiscing enim.
+		</p>
+
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Tempus urna et
+			pharetra pharetra massa massa. Volutpat diam ut venenatis tellus in metus
+			vulputate eu. Adipiscing elit duis tristique sollicitudin nibh sit amet.
+			Vivamus arcu felis bibendum ut tristique et. Et tortor at risus viverra
+			adipiscing at in tellus integer. Euismod in pellentesque massa placerat
+			duis ultricies lacus sed. Ornare arcu dui vivamus arcu felis bibendum.
+			Sapien pellentesque habitant morbi tristique senectus et netus et
+			malesuada. Et tortor consequat id porta nibh venenatis. Cras adipiscing
+			enim eu turpis egestas pretium aenean. Erat velit scelerisque in dictum
+			non. Pretium fusce id velit ut tortor pretium. Eu ultrices vitae auctor eu
+			augue ut lectus arcu bibendum. Magna eget est lorem ipsum dolor sit.
+		</p>
+
+		<p>
+			Ut aliquam purus sit amet luctus venenatis lectus magna. Eu facilisis sed
+			odio morbi quis commodo odio. Pharetra vel turpis nunc eget. Adipiscing
+			commodo elit at imperdiet dui accumsan sit amet nulla. Ipsum consequat
+			nisl vel pretium lectus. Malesuada nunc vel risus commodo viverra maecenas
+			accumsan lacus vel. Arcu ac tortor dignissim convallis. Ipsum suspendisse
+			ultrices gravida dictum fusce ut placerat orci nulla. Feugiat sed lectus
+			vestibulum mattis ullamcorper. Risus in hendrerit gravida rutrum quisque
+			non. Tincidunt nunc pulvinar sapien et ligula. Penatibus et magnis dis
+			parturient montes nascetur ridiculus mus. Ultrices tincidunt arcu non
+			sodales neque. Duis at consectetur lorem donec.
+		</p>
+
+		<p>
+			Turpis tincidunt id aliquet risus. Ut lectus arcu bibendum at varius vel
+			pharetra. Magna ac placerat vestibulum lectus. Euismod elementum nisi quis
+			eleifend quam. Morbi tristique senectus et netus et malesuada. Justo
+			laoreet sit amet cursus sit. Et malesuada fames ac turpis egestas sed. Eu
+			non diam phasellus vestibulum lorem sed risus ultricies. Quis imperdiet
+			massa tincidunt nunc. Ornare lectus sit amet est placerat in egestas. Sed
+			viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Lacinia
+			quis vel eros donec ac. Vitae sapien pellentesque habitant morbi. Donec et
+			odio pellentesque diam volutpat commodo sed egestas egestas. Vulputate
+			sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Quam
+			vulputate dignissim suspendisse in est ante in nibh. Justo nec ultrices
+			dui sapien eget mi proin. Aliquet nibh praesent tristique magna sit amet.
+		</p>
+		<p>
+			Laoreet suspendisse interdum consectetur libero. Nulla pellentesque
+			dignissim enim sit amet venenatis urna cursus eget. Elit sed vulputate mi
+			sit amet mauris commodo quis imperdiet. Nisl suscipit adipiscing bibendum
+			est ultricies integer quis. Rutrum tellus pellentesque eu tincidunt tortor
+			aliquam nulla. Malesuada fames ac turpis egestas sed tempus urna et. Ipsum
+			dolor sit amet consectetur adipiscing elit duis tristique. Euismod
+			elementum nisi quis eleifend quam. Vulputate mi sit amet mauris commodo
+			quis imperdiet massa. Sit amet porttitor eget dolor. Enim lobortis
+			scelerisque fermentum dui faucibus. Dapibus ultrices in iaculis nunc sed
+			augue lacus. Nulla porttitor massa id neque aliquam vestibulum. Netus et
+			malesuada fames ac turpis egestas integer eget aliquet. Proin nibh nisl
+			condimentum id. Duis at tellus at urna condimentum mattis. Tellus molestie
+			nunc non blandit massa. At erat pellentesque adipiscing commodo elit at
+			imperdiet dui.
+		</p>
+		<p>
+			Imperdiet proin fermentum leo vel orci porta non. Odio morbi quis commodo
+			odio aenean sed adipiscing diam donec. Cursus in hac habitasse platea
+			dictumst quisque sagittis. Blandit aliquam etiam erat velit scelerisque in
+			dictum. Ridiculus mus mauris vitae ultricies. Interdum velit laoreet id
+			donec ultrices. Est pellentesque elit ullamcorper dignissim cras tincidunt
+			lobortis. Sed nisi lacus sed viverra tellus in. Vel elit scelerisque
+			mauris pellentesque pulvinar pellentesque habitant morbi. Vitae congue
+			mauris rhoncus aenean. Ut porttitor leo a diam sollicitudin tempor.
+			Tincidunt arcu non sodales neque sodales ut etiam. At elementum eu
+			facilisis sed. Euismod in pellentesque massa placerat duis. In arcu cursus
+			euismod quis viverra nibh cras pulvinar. Neque egestas congue quisque
+			egestas diam in. Sem fringilla ut morbi tincidunt augue interdum. Sit amet
+			tellus cras adipiscing enim.
+		</p>
+	</Prose>
+);

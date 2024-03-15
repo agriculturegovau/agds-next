@@ -9,7 +9,7 @@ const meta: Meta<typeof PageAlert> = {
 	title: 'content/PageAlert',
 	component: PageAlert,
 	args: {
-		onDismiss: undefined,
+		onClose: undefined,
 	},
 	render: (args) => (
 		<PageAlert {...args}>
@@ -78,7 +78,7 @@ export const WithClose: Story = {
 	args: {
 		title: 'Page alert title that is long and spans multiple lines',
 		tone: 'success',
-		onDismiss: () => console.log('Closed'),
+		onClose: () => console.log('Closed'),
 	},
 };
 
@@ -96,7 +96,7 @@ export const WithCloseNoTitle: Story = {
 	),
 	args: {
 		tone: 'success',
-		onDismiss: () => console.log('Closed'),
+		onClose: () => console.log('Closed'),
 	},
 };
 
@@ -115,6 +115,6 @@ export const WithCloseAndChildTitle: Story = {
 	args: {
 		tone: 'success',
 		title: <PageAlertTitle as="h2">Page Alert title as H2</PageAlertTitle>,
-		onDismiss: () => console.log('Closed'),
+		onClose: () => console.log('Closed'),
 	},
 };

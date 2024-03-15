@@ -7,13 +7,20 @@ import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
+import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
 
 export type DrawerDialogProps = PropsWithChildren<{
+	/** Used to render buttons at the bottom of the draw. */
 	actions?: ReactNode;
-	onDismiss: () => void;
+	/** @deprecated use `onClose` instead. */
+	onDismiss?: () => void;
+	/** Function to be called when the 'Close' button is pressed. */
+	onClose?: () => void;
 	style: { translateX: SpringValue<string> };
+	/** The title displayed at the top of the draw. */
 	title: string;
+	/** The width of the draw. */
 	width: DrawerDialogWidth;
 }>;
 
@@ -31,10 +38,12 @@ export function DrawerDialog({
 	children,
 	title,
 	onDismiss,
+	onClose,
 	style,
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
+	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 
 	return (
 		<FocusLock returnFocus>
@@ -64,7 +73,7 @@ export function DrawerDialog({
 				{actions ? <DrawerFooter>{actions}</DrawerFooter> : null}
 				<Button
 					variant="text"
-					onClick={onDismiss}
+					onClick={handleClose}
 					iconAfter={CloseIcon}
 					css={mq({
 						position: 'fixed',
