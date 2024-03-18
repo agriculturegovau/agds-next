@@ -5,7 +5,12 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
+import {
+	useDropzone,
+	DropzoneOptions,
+	FileRejection,
+	FileError,
+} from 'react-dropzone';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Button } from '../button';
@@ -39,6 +44,11 @@ type BaseInputProps = {
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onFocus?: NativeInputProps['onFocus'];
+};
+
+const tooManyFilesError: FileError = {
+	code: 'too-many-files',
+	message: 'Too many files',
 };
 
 export type FileUploadProps = BaseInputProps & {
@@ -101,6 +111,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+		const remainingFilesCount =
+			maxFiles === undefined ? Infinity : maxFiles - value.length;
 
 		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);
 
@@ -147,7 +159,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			fileRejections: dropzoneFileRejections,
 		} = useDropzone({
 			accept,
-			maxFiles,
+			// maxFiles: remainingFilesCount,
 			// converts kB to B
 			maxSize: maxSize && maxSize * 1000,
 			multiple,
@@ -171,21 +183,56 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid: invalid || !!errorSummary,
 		});
 
+		const valueChangeToken = JSON.stringify(value);
+
 		useEffect(() => {
-			setFileRejections(
-				dropzoneFileRejections.map(({ file, errors }) => ({
-					file,
-					errors: errors.map((error) => ({
-						code: error.code,
-						message: getFileRejectionErrorMessage(
-							error,
-							formattedMaxFileSize,
-							acceptedFilesSummary
-						),
-					})),
-				}))
-			);
-		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
+			const isOverMaxFilesLimit = maxFiles && value.length > maxFiles;
+			debugger;
+			if (isOverMaxFilesLimit) {
+				const fileRejections: Array<RejectedFile> = value
+					.filter((_file, index) => index >= maxFiles)
+					.map((file) => {
+						const otherFileErrors =
+							dropzoneFileRejections
+								.find(
+									({ file: thisFile }) =>
+										JSON.stringify(thisFile) === JSON.stringify(file)
+								)
+								?.errors.filter((err) => err.code !== tooManyFilesError.code) ||
+							[];
+						return {
+							file,
+							errors: [...otherFileErrors, tooManyFilesError],
+						};
+					});
+				// onChange(
+				// 	value.filter((val) =>
+				// 		fileRejections.every((rej) => rej.file.path !== val.path)
+				// 	)
+				// );
+				setFileRejections(fileRejections);
+			} else {
+				setFileRejections(
+					dropzoneFileRejections.map(({ file, errors }) => ({
+						file,
+						errors: errors.map((error) => ({
+							code: error.code,
+							message: getFileRejectionErrorMessage(
+								error,
+								formattedMaxFileSize,
+								acceptedFilesSummary
+							),
+						})),
+					}))
+				);
+			}
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, [
+			valueChangeToken,
+			dropzoneFileRejections,
+			formattedMaxFileSize,
+			acceptedFilesSummary,
+		]);
 
 		const {
 			// We are using an _actual_ button, so we don't need these props

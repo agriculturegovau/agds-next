@@ -115,8 +115,21 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 
 Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
 
-```jsx
-<FileUpload multiple={true} maxFiles={3} />
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<FileUpload
+			label="Upload files"
+			hint="Try uploading more than 3 files to see what the maxFiles prop does"
+			value={value}
+			onChange={setValue}
+			multiple={true}
+			maxFiles={3}
+			required
+		/>
+	);
+};
 ```
 
 ## Maximum file size
