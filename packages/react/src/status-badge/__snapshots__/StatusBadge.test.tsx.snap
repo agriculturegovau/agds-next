@@ -439,7 +439,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: in, low emphasis progress"
+      aria-label="Status: in progress, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1002,7 +1002,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: in, low emphasis progress"
+      aria-label="Status: in progress, low emphasis"
       class="css-4amf2f-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"

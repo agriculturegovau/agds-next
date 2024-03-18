@@ -178,7 +178,7 @@ const toneMap = {
 		borderColor: 'border',
 		icon: ProgressDoingIcon,
 		iconColor: 'muted',
-		iconLabel: 'in, low emphasis progress',
+		iconLabel: 'in progress, low emphasis',
 	},
 	notStartedLow: {
 		borderColor: 'border',
