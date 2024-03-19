@@ -1,11 +1,6 @@
-import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const InfoIcon = createIcon(
-	<Fragment>
-		<circle cx="12" cy="12" r="10" />
-		<line x1="12" y1="17" x2="12" y2="11" />
-		<path d="M12 7H12.01" />
-	</Fragment>,
+	<path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01" />,
 	'InfoIcon'
 );

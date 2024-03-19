@@ -403,13 +403,11 @@ exports[`AppLayout renders correctly 1`] = `
                 width="24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10.5"
+                <path
+                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                 />
                 <path
-                  d="M7 13L10 16L17 9"
+                  d="m7 13 3 3 7-7"
                 />
               </svg>
               <span>

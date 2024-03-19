@@ -1038,28 +1038,28 @@ const snippets = [
 	},
 	{
 		group: 'StatusBadge',
-		name: 'Success',
-		code: '<StatusBadge tone="success" label="Accepted" />',
+		name: 'SuccessHigh',
+		code: '<StatusBadge tone="successHigh" label="Accepted" />',
 	},
 	{
 		group: 'StatusBadge',
-		name: 'Info',
-		code: '<StatusBadge tone="info" label="Pending" />',
+		name: 'InfoMedium',
+		code: '<StatusBadge tone="infoMedium" label="Updated" />',
 	},
 	{
 		group: 'StatusBadge',
-		name: 'Warning',
-		code: '<StatusBadge tone="warning" label="Alert" />',
+		name: 'WarningMedium',
+		code: '<StatusBadge tone="warningMedium" label="Alert" />',
 	},
 	{
 		group: 'StatusBadge',
-		name: 'Error',
-		code: '<StatusBadge tone="error" label="Rejected" />',
+		name: 'ErrorLow',
+		code: '<StatusBadge tone="errorLow" label="Deleted" />',
 	},
 	{
 		group: 'StatusBadge',
-		name: 'Neutral',
-		code: '<StatusBadge tone="neutral" label="Draft" />',
+		name: 'PausedLow',
+		code: '<StatusBadge tone="pausedLow" label="Paused" />',
 	},
 	{
 		group: 'NotificationBadge',

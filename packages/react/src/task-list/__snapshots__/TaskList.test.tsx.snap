@@ -273,10 +273,8 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   fill="currentColor"
                   stroke="none"
                 />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10.5"
+                <path
+                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                 />
               </svg>
             </span>
@@ -324,10 +322,8 @@ exports[`TaskList With anchors renders correctly 1`] = `
                     fill="currentColor"
                     stroke="none"
                   />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
+                  <path
+                    d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                   />
                 </svg>
                 <span
@@ -392,12 +388,9 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 width="24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10.5"
+                <path
+                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                   stroke-dasharray="4 4"
-                  stroke-linecap="round"
                 />
               </svg>
             </span>
@@ -430,12 +423,9 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
+                  <path
+                    d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     stroke-dasharray="4 4"
-                    stroke-linecap="round"
                   />
                 </svg>
                 <span
@@ -755,10 +745,8 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   fill="currentColor"
                   stroke="none"
                 />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10.5"
+                <path
+                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                 />
               </svg>
             </span>
@@ -806,10 +794,8 @@ exports[`TaskList With buttons renders correctly 1`] = `
                     fill="currentColor"
                     stroke="none"
                   />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
+                  <path
+                    d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                   />
                 </svg>
                 <span
@@ -874,12 +860,9 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 width="24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10.5"
+                <path
+                  d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                   stroke-dasharray="4 4"
-                  stroke-linecap="round"
                 />
               </svg>
             </span>
@@ -912,12 +895,9 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10.5"
+                  <path
+                    d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
                     stroke-dasharray="4 4"
-                    stroke-linecap="round"
                   />
                 </svg>
                 <span
