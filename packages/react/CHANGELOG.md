@@ -1,5 +1,28 @@
 # @ag.ds-next/react
 
+## 1.20.0
+
+### Minor Changes
+
+- 96b48e102f7: progress-indicator: Added ability to customise which item is treated as active. If no active item is specified, it defaults to the `"doing"` status for backwards compatibility.
+
+  Also, the `"doing"` status has been marked as **deprecated** (throws a console warning) and encourages the use of the `"started"` status with `isActive: true` applied as a replacement.
+
+- 65e9b26418e: drawer, global-alert, modal, page-alert, section-alert: Deprecating onDismiss in favour of onClose
+
+  page-alert: Deprecating hasDismissButton in favour of hasCloseButton
+
+- 4ca5c8eee02: status-badge: Add 9 new tones in 3 levels of attention. Deprecate existing `tone` values and the `weight` prop.
+
+  icon: Add new AlertCircle, ProgressPaused and WarningCircle icons. Update the paths of existing circular icons.
+
+- 3c755d8f224: icon: Add AttachmentIcon and PieChartIcon.
+
+### Patch Changes
+
+- 863c839d92d: section-alert: Changed "Dismiss" button text to say "Close" instead. This was to align with Global Alert and Modal.
+- 8b08d4cc6d1: drawer: Fix scrollbar not appearing in Chrome/Edge on platforms with permanent scrollbars
+
 ## 1.19.0
 
 ### Minor Changes

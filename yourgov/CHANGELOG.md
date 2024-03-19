@@ -1,5 +1,21 @@
 # @ag.ds-next/yourgov
 
+## 0.3.6
+
+### Patch Changes
+
+- 65e9b26418e: drawer, global-alert, modal, page-alert, section-alert: Deprecating onDismiss in favour of onClose
+
+  page-alert: Deprecating hasDismissButton in favour of hasCloseButton
+
+- Updated dependencies [96b48e102f7]
+- Updated dependencies [65e9b26418e]
+- Updated dependencies [4ca5c8eee02]
+- Updated dependencies [863c839d92d]
+- Updated dependencies [8b08d4cc6d1]
+- Updated dependencies [3c755d8f224]
+  - @ag.ds-next/react@1.20.0
+
 ## 0.3.5
 
 ### Patch Changes
