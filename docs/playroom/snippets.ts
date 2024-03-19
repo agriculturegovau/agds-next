@@ -1039,27 +1039,27 @@ const snippets = [
 	{
 		group: 'StatusBadge',
 		name: 'SuccessHigh',
-		code: '<StatusBadge type="successHigh" label="Accepted" />',
+		code: '<StatusBadge tone="successHigh" label="Accepted" />',
 	},
 	{
 		group: 'StatusBadge',
 		name: 'InfoMedium',
-		code: '<StatusBadge type="infoMedium" label="Pending" />',
+		code: '<StatusBadge tone="infoMedium" label="Pending" />',
 	},
 	{
 		group: 'StatusBadge',
 		name: 'WarningMedium',
-		code: '<StatusBadge type="warningMedium" label="Alert" />',
+		code: '<StatusBadge tone="warningMedium" label="Alert" />',
 	},
 	{
 		group: 'StatusBadge',
 		name: 'ErrorLow',
-		code: '<StatusBadge type="errorLow" label="Rejected" />',
+		code: '<StatusBadge tone="errorLow" label="Rejected" />',
 	},
 	{
 		group: 'StatusBadge',
 		name: 'PausedLow',
-		code: '<StatusBadge type="pausedLow" label="Paused" />',
+		code: '<StatusBadge tone="pausedLow" label="Paused" />',
 	},
 	{
 		group: 'NotificationBadge',
