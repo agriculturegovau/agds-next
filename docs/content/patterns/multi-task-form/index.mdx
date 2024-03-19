@@ -1,0 +1,263 @@
+---
+title: Multi-task form
+description: Use this pattern to break up large forms into multiple smaller tasks to decrease cognitive load.
+relatedComponents: ['task-list']
+---
+
+<DoHeading />
+
+- allow users to navigate to any task
+- use only for longer transactions involving multiple tasks that may take several sessions to complete
+- use for tasks that are single page and multi-page forms
+- use to break up long and complicated form processes
+- use for processes of 2 - 10 steps
+
+<DontHeading />
+
+- use for fewer than 2 tasks
+- disable tasks - allow users to navigate to pages and use page alerts to indicate a task is not available yet
+- mix with other navigation patterns - for example, [Side nav](/components/side-nav)
+- change labels or icons
+
+## Structure
+
+- Use the [task list component](/components/task-list) to display a list of tasks.
+- Create tasks using [single-page](/templates/single-page-form) or [multi-page](/templates/multi-page-form) forms.
+- Include a ‘confirm and submit’ task at the end to allow users to review their form inputs.
+
+## Task list
+
+Once you’ve broken up your form into logical tasks, use the task list component to display the list of tasks.
+
+The task list supports sequential or non-sequential completion of a form.
+
+- **Sequential** - If tasks need to be completed in order, one after the other, use the sequential variant of task list. This variant numbers each task to help indicate that tasks need to be completed in order, starting with task 1.
+- **Non-sequential** - If a form can be completed in any order, use the non-sequential variant of task list seen below. This gives users the flexibility of completing tasks as they please. If they’re not ready or able to complete a certain task, they can move onto another one without getting blocked.
+
+```jsx live
+() => {
+	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
+
+	return (
+		<>
+			<Flex gap={3} flexDirection="column">
+				<TaskList
+					items={[
+						{
+							href: '#',
+							label: 'Personal details',
+							status: 'done',
+							message: 'Short description of the task',
+						},
+						{
+							href: '#',
+							label: 'Address details',
+							status: 'doing',
+							message: 'Short description of the task',
+						},
+						{
+							href: '#',
+							label: 'Upload files',
+							status: 'todo',
+							message: 'Short description of the task',
+						},
+						{
+							href: '#',
+							label: 'Confirm and submit',
+							status: 'todo',
+							message: 'Short description of the task',
+						},
+					]}
+				/>
+				<Flex gap={1}>
+					<Button onClick={() => {}} variant="secondary">
+						Save and exit
+					</Button>
+					<Button onClick={openModal} variant="tertiary">
+						Cancel
+					</Button>
+				</Flex>
+			</Flex>
+			<Modal
+				isOpen={isModalOpen}
+				onDismiss={closeModal}
+				title="Discard form?"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeModal}>Discard form</Button>
+						<Button variant="secondary" onClick={closeModal}>
+							Save and exit
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">
+					You will lose all information you’ve entered. This can’t be undone.
+					Alternatively, you can save your form progress and complete it later.
+				</Text>
+			</Modal>
+		</>
+	);
+};
+```
+
+Include 2 actions below the task list:
+
+- **Save and exit** - Allows users to leave the form and save their progress. Form inputs should be saved on exit without validating them. Make sure the user can come back to continue their form at a later time. The user should land on the task list when they come back to continue their form. This helps them understand where they are up to in the process.
+- **Cancel** - Allows users to discard the form. If they have entered any information, make sure you trigger a destructive modal dialog (seen below) to let users know that they will lose their progress.
+
+<ImageWithBorder
+	src="/img/patterns/task-list-destructive-dialog.png"
+	alt="Destructive modal dialog"
+/>
+
+## Task management
+
+Each task in a multi-task form can either be a [single page form](/templates/single-page-form) or a [multi-page form](/templates/multi-page-form). Make sure you refer to the guidelines for each template before using it.
+
+## Completed tasks
+
+Once a task has been completed, return users to the task list and set the task status to completed.
+
+## Leaving a partially completed task
+
+If a user leaves a task partially completed by pressing ‘save and exit’, save their progress and return them to the task list. Set the task status to ‘in progress’, so they can come back to this task at a later time.
+
+## Returning to a partially completed task
+
+If a user presses on a task that’s ‘in progress’, return them to where they left off and display a callout at the top of the page to let them know that this is where they got to previously. See example below.
+
+```tsx live
+() => {
+	const [showContinueAlert, setContinueAlert] = useState(true);
+	const FORM_STEPS = [
+		{
+			label: 'Contact details',
+			status: 'done',
+			href: '#',
+		},
+		{
+			label: 'Address',
+			status: 'started',
+			href: '#',
+			isActive: true,
+		},
+		{
+			label: 'Upload files',
+			status: 'todo',
+			href: '#',
+		},
+	];
+
+	return (
+		<Columns>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ContentBleed visible={{ md: false }}>
+					<ProgressIndicator items={FORM_STEPS} />
+				</ContentBleed>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+				<Stack gap={3} alignItems="flex-start">
+					<DirectionButton direction="left" onClick={() => {}}>
+						Back
+					</DirectionButton>
+
+					{showContinueAlert && (
+						<PageAlert
+							tone="info"
+							title="Continue from where you left off"
+							onClose={() => setContinueAlert(false)}
+						>
+							<Text as="p">
+								We’ve saved your progress so you can continue from here.
+							</Text>
+						</PageAlert>
+					)}
+
+					<Stack as="form" gap={3} onSubmit={() => {}} noValidate>
+						<Stack gap={2}>
+							<H1 tabIndex={-1} focus aria-label="Application form, Address">
+								<Text
+									display="block"
+									fontSize="sm"
+									color="muted"
+									fontWeight="bold"
+									lineHeight="heading"
+								>
+									Application form
+								</Text>
+								Address
+							</H1>
+							<Text as="p" fontSize="md" color="muted">
+								Where can we send the package?
+							</Text>
+						</Stack>
+						<TextInput
+							label="Street address line 1"
+							required
+							maxWidth="lg"
+							autoComplete="address-line1"
+						/>
+						<TextInput
+							label="Street address line 2"
+							required
+							maxWidth="lg"
+							autoComplete="address-line2"
+						/>
+						<TextInput
+							label="Suburb, town or city"
+							required
+							autoComplete="address-level2"
+						/>
+						<Select
+							label="State or territory"
+							maxWidth="sm"
+							options={[
+								{ value: 'act', label: 'ACT' },
+								{ value: 'nsw', label: 'NSW' },
+								{ value: 'vic', label: 'VIC' },
+								{ value: 'wa', label: 'WA' },
+								{ value: 'nt', label: 'NT' },
+								{ value: 'sa', label: 'SA' },
+								{ value: 'tas', label: 'TAS' },
+							]}
+							autoComplete="address-level1"
+						/>
+						<TextInput
+							label="Postcode"
+							required
+							maxWidth="xs"
+							autoComplete="postal-code"
+						/>
+
+						<Stack gap={3}>
+							<Divider />
+							<ButtonGroup>
+								<Button type="submit" variant="primary">
+									Save and continue
+								</Button>
+								<Button type="button" variant="secondary" onClick={() => {}}>
+									Save and exit
+								</Button>
+								<Button type="button" variant="tertiary" onClick={() => {}}>
+									Cancel
+								</Button>
+							</ButtonGroup>
+						</Stack>
+					</Stack>
+				</Stack>
+			</Column>
+		</Columns>
+	);
+};
+```
+
+## Cancelled tasks
+
+If a user starts a task and presses the ‘cancel’ button or back link, discard the task. Make sure you trigger a modal dialog to let users know that they will lose their progress for that task. If they accept losing their progress, return them to the task list and set the task status to ‘not started’.
+
+## Invalid tasks
+
+If a user tries to submit a form or continue to the next step and forgets to complete a required field, or inputs an invalid value, the form should trigger an error alert. The user won’t be able to continue or submit that task until the invalid error is fixed.
+
+For more detail on form validation, check out [accessible form validation and error recovery](/patterns/accessible-form-validation-and-recovery).

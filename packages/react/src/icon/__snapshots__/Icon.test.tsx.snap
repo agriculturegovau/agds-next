@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Icon AlertCircleIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m16 8-4 4m0 0-4 4m4-4L8 8m4 4 4 4m6-4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon AlertFilledIcon renders correctly 1`] = `
 <div>
   <svg
@@ -858,19 +879,8 @@ exports[`Icon InfoIcon renders correctly 1`] = `
     width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle
-      cx="12"
-      cy="12"
-      r="10"
-    />
-    <line
-      x1="12"
-      x2="12"
-      y1="17"
-      y2="11"
-    />
     <path
-      d="M12 7H12.01"
+      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM12 17v-6M12 7h.01"
     />
   </svg>
 </div>
@@ -1109,18 +1119,8 @@ exports[`Icon ProgressBlockedIcon renders correctly 1`] = `
     width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
-    />
-    ,
-    <line
-      stroke-linecap="round"
-      x1="7"
-      x2="17"
-      y1="12"
-      y2="12"
+    <path
+      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
     />
   </svg>
 </div>
@@ -1155,10 +1155,29 @@ exports[`Icon ProgressDoingIcon renders correctly 1`] = `
       fill="currentColor"
       stroke="none"
     />
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
+    <path
+      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon ProgressPausedIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 16V8m4 8V8m8 4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
     />
   </svg>
 </div>
@@ -1178,12 +1197,9 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
     width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
+    <path
+      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
       stroke-dasharray="4 4"
-      stroke-linecap="round"
     />
   </svg>
 </div>
@@ -1281,13 +1297,11 @@ exports[`Icon SuccessIcon renders correctly 1`] = `
     width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <circle
-      cx="12"
-      cy="12"
-      r="10.5"
+    <path
+      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
     />
     <path
-      d="M7 13L10 16L17 9"
+      d="m7 13 3 3 7-7"
     />
   </svg>
 </div>
@@ -1381,6 +1395,27 @@ exports[`Icon UploadIcon renders correctly 1`] = `
     />
     <path
       d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon WarningCircleIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-9s3cfn-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 7v6m0 4h-.01M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
     />
   </svg>
 </div>

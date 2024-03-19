@@ -4,38 +4,122 @@ For general guidance on content, go to the [TFTM content patterns](/content/cont
 
 Some common examples of labels for each tone.
 
+### High emphasis
+
 ```jsx live
-<Flex flexWrap="wrap" gap={1}>
-	<Stack gap={0.5} alignItems="flex-start">
-		<StatusBadge tone="success" label="Approved" />
-		<StatusBadge tone="success" label="Accepted" />
-		<StatusBadge tone="success" label="Online" />
-		<StatusBadge tone="success" label="Open" />
-		<StatusBadge tone="success" label="Available" />
-		<StatusBadge tone="success" label="Success" />
-	</Stack>
+<Flex flexDirection="column" gap={1}>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="successHigh" label="Accepted" />
+		<StatusBadge tone="successHigh" label="Approved" />
+		<StatusBadge tone="successHigh" label="Completed" />
+		<StatusBadge tone="successHigh" label="Success" />
+	</Flex>
 
-	<Stack gap={0.5} alignItems="flex-start">
-		<StatusBadge tone="info" label="In progress" />
-		<StatusBadge tone="info" label="Pending" />
-		<StatusBadge tone="info" label="New" />
-	</Stack>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="errorHigh" label="Error" />
+		<StatusBadge tone="errorHigh" label="Rejected" />
+	</Flex>
 
-	<Stack gap={0.5} alignItems="flex-start">
-		<StatusBadge tone="warning" label="Due" />
-		<StatusBadge tone="warning" label="Alert" />
-		<StatusBadge tone="warning" label="Attention" />
-	</Stack>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="warningHigh" label="Alert" />
+		<StatusBadge tone="warningHigh" label="Warning" />
+	</Flex>
 
-	<Stack gap={0.5} alignItems="flex-start">
-		<StatusBadge tone="error" label="Rejected" />
-		<StatusBadge tone="error" label="Outage" />
-		<StatusBadge tone="error" label="Overdue" />
-		<StatusBadge tone="error" label="Error" />
-	</Stack>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="infoHigh" label="Active" />
+		<StatusBadge tone="infoHigh" label="Departed" />
+		<StatusBadge tone="infoHigh" label="Information requested" />
+		<StatusBadge tone="infoHigh" label="Updated" />
+	</Flex>
+</Flex>
+```
 
-	<Stack gap={0.5} alignItems="flex-start">
-		<StatusBadge tone="neutral" label="Draft" />
-	</Stack>
+### Medium emphasis
+
+```jsx live
+<Flex flexDirection="column" gap={1}>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="successMedium" label="Available" />
+		<StatusBadge tone="successMedium" label="Completed" />
+		<StatusBadge tone="successMedium" label="Downloaded" />
+		<StatusBadge tone="successMedium" label="Online" />
+		<StatusBadge tone="successMedium" label="Open" />
+		<StatusBadge tone="successMedium" label="Requested" />
+		<StatusBadge tone="successMedium" label="Submitted" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="errorMedium" label="Cancelled" />
+		<StatusBadge tone="errorMedium" label="Overdue" />
+		<StatusBadge tone="errorMedium" label="Revoked" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="warningMedium" label="Attention" />
+		<StatusBadge tone="warningMedium" label="Expired" />
+		<StatusBadge tone="warningMedium" label="Not submitted" />
+		<StatusBadge tone="warningMedium" label="On hold" />
+		<StatusBadge tone="warningMedium" label="Paused" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="infoMedium" label="Active" />
+		<StatusBadge tone="infoMedium" label="Departed" />
+		<StatusBadge tone="infoMedium" label="Information requested" />
+		<StatusBadge tone="infoMedium" label="Updated" />
+	</Flex>
+</Flex>
+```
+
+### Low emphasis
+
+```jsx live
+<Flex flexDirection="column" gap={1}>
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="successLow" label="Active" />
+		<StatusBadge tone="successLow" label="Booked" />
+		<StatusBadge tone="successLow" label="To be added" />
+		<StatusBadge tone="successLow" label="Submnitted" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="errorLow" label="Deleted" />
+		<StatusBadge tone="errorLow" label="Not booked" />
+		<StatusBadge tone="errorLow" label="To be removed" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="warningLow" label="Attention" />
+		<StatusBadge tone="warningLow" label="Warning" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="infoLow" label="To be updated" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="unknownLow" label="Unknown" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="notStartedLow" label="Not requested" />
+		<StatusBadge tone="notStartedLow" label="Not started" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="inProgressLow" label="Assessing" />
+		<StatusBadge tone="inProgressLow" label="Draft" />
+		<StatusBadge tone="inProgressLow" label="In progress" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="cannotStartLow" label="Cannot start yet" />
+		<StatusBadge tone="cannotStartLow" label="On hold" />
+		<StatusBadge tone="cannotStartLow" label="Withdrawn" />
+	</Flex>
+
+	<Flex flexWrap="wrap" gap={1}>
+		<StatusBadge tone="pausedLow" label="Paused" />
+	</Flex>
 </Flex>
 ```
