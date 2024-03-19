@@ -1,5 +1,26 @@
 # @ag.ds-next/docs
 
+## 0.8.0
+
+### Minor Changes
+
+- 96b48e102f7: progress-indicator: Added ability to customise which item is treated as active. If no active item is specified, it defaults to the `"doing"` status for backwards compatibility.
+
+  Also, the `"doing"` status has been marked as **deprecated** (throws a console warning) and encourages the use of the `"started"` status with `isActive: true` applied as a replacement.
+
+- a85dc72f764: docs: Added guidance for using the multi-task form pattern
+
+### Patch Changes
+
+- 869da4a99b2: docs: Patterns: update conditionally revealed content
+- Updated dependencies [96b48e102f7]
+- Updated dependencies [65e9b26418e]
+- Updated dependencies [4ca5c8eee02]
+- Updated dependencies [863c839d92d]
+- Updated dependencies [8b08d4cc6d1]
+- Updated dependencies [3c755d8f224]
+  - @ag.ds-next/react@1.20.0
+
 ## 0.7.0
 
 ### Minor Changes
