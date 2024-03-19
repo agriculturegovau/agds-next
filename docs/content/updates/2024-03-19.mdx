@@ -1,0 +1,61 @@
+---
+date: 19th March 2024
+title: AgDS Beta v1.20.0 release
+description: New statuses for Status badge, active states for various Progress indicator steps, 5 new icons, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [Drawer](/components/drawer)
+
+- Fix scrollbar not appearing in Chrome/Edge on platforms with permanent scrollbars
+- Deprecating onDismiss in favour of onClose
+
+### [Global alert](/components/global-alert)
+
+- Deprecating onDismiss in favour of onClose
+
+### [Icon](/components/icon)
+
+- Add `AlertCircle`, `Attachment`, `PieChart`, `ProgressPaused` and `WarningCircle` icons.
+
+### [Modal](/components/modal)
+
+- Deprecating onDismiss in favour of onClose
+
+### [Page alert](/components/page-alert)
+
+- Deprecating onDismiss in favour of onClose
+- Deprecating hasDismissButton in favour of hasCloseButton
+
+### [Progress indicator](/components/progress-indicator)
+
+- Added ability to customise which item is treated as active. If no active item is specified, it defaults to the `'doing'` status for backwards compatibility
+- The `'doing'` status has been marked as deprecated and encourages the use of the `'started'` with `isActive: true` applied as a replacement
+
+### [Section alert](/components/section-alert)
+
+- Deprecating onDismiss in favour of onClose
+- Changed 'Dismiss' button text to 'Close' to align with Global Alert and Modal
+
+### [Status badge](/components/status-badge)
+
+- Add 9 new status tones in 3 levels of emphasis. Deprecate existing `tone` values and the `weight` prop
+
+### [Multi-task form pattern](/patterns/multi-task-form)
+
+- Add guidance for using the multi-task form pattern
+
+### [Conditionally revealed content pattern](/patterns/conditional-reveal)
+
+- Improve guidance
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.20.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1574) for this release.
