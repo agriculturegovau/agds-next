@@ -183,13 +183,18 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid: invalid || !!errorSummary,
 		});
 
-		const valueChangeToken = JSON.stringify(value);
+		const valueChangeToken = JSON.stringify(
+			value.filter((file) =>
+				fileRejections.every(
+					(rejectedFile) => rejectedFile.file.path !== file.path
+				)
+			)
+		);
 
 		useEffect(() => {
 			const isOverMaxFilesLimit = maxFiles && value.length > maxFiles;
-			debugger;
 			if (isOverMaxFilesLimit) {
-				const fileRejections: Array<RejectedFile> = value
+				const fileRejectionList: Array<RejectedFile> = value
 					.filter((_file, index) => index >= maxFiles)
 					.map((file) => {
 						const otherFileErrors =
@@ -205,12 +210,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							errors: [...otherFileErrors, tooManyFilesError],
 						};
 					});
-				// onChange(
-				// 	value.filter((val) =>
-				// 		fileRejections.every((rej) => rej.file.path !== val.path)
-				// 	)
-				// );
-				setFileRejections(fileRejections);
+				setFileRejections(fileRejectionList);
+				onChange(
+					value.filter((val) =>
+						fileRejections.every((rej) => rej.file.path !== val.path)
+					)
+				);
 			} else {
 				setFileRejections(
 					dropzoneFileRejections.map(({ file, errors }) => ({
@@ -233,6 +238,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			formattedMaxFileSize,
 			acceptedFilesSummary,
 		]);
+
+		// useEffect(() => {
+		// 	const isOverMaxFilesLimit = maxFiles && value.length > maxFiles;
+		// 	debugger;
+		// 	if (isOverMaxFilesLimit) {
+		// 		onChange(
+		// 			value.filter((val) =>
+		// 				fileRejections.every((rej) => rej.file.path !== val.path)
+		// 			)
+		// 		);
+		// 	}
+		// }, [
+		// 	fileRejections,
+		// 	maxFiles,
+		// ]);
 
 		const {
 			// We are using an _actual_ button, so we don't need these props
@@ -338,6 +358,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										hideThumbnails={hideThumbnails}
 									/>
 									<FileUploadFileList
+										// if we want to include rejected files in the `value` that is exposed to the client, we should just filter the rejected values out here
 										files={value}
 										onRemove={handleRemoveFile}
 										hideThumbnails={hideThumbnails}
