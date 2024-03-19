@@ -1044,7 +1044,7 @@ const snippets = [
 	{
 		group: 'StatusBadge',
 		name: 'InfoMedium',
-		code: '<StatusBadge tone="infoMedium" label="Pending" />',
+		code: '<StatusBadge tone="infoMedium" label="Updated" />',
 	},
 	{
 		group: 'StatusBadge',
@@ -1054,7 +1054,7 @@ const snippets = [
 	{
 		group: 'StatusBadge',
 		name: 'ErrorLow',
-		code: '<StatusBadge tone="errorLow" label="Rejected" />',
+		code: '<StatusBadge tone="errorLow" label="Deleted" />',
 	},
 	{
 		group: 'StatusBadge',
