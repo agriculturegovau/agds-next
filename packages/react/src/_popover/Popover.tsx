@@ -7,6 +7,7 @@ import {
 	offset,
 	flip,
 	size,
+	shift,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
@@ -33,6 +34,8 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 				boxShadow: tokens.shadow.lg,
 				zIndex: tokens.zIndex.popover,
 				visibility,
+				minHeight: 'min-content',
+				overflow: 'hidden',
 			}}
 			{...props}
 		>
@@ -42,13 +45,14 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 });
 
 const DEFAULT_OFFSET = 8;
+const MIN_SIDE_GUTTER_WIDTH = 4;
 
 type UsePopoverOptions = {
 	/** The placement of the popover element in relation to the reference element. */
 	placement?: Placement;
-	/** The minimum acceptable height of the popover element before the `flip` middleware takes over.  */
+	/** The minimum acceptable height in `px` of the popover element before the `flip` middleware takes over.  */
 	minHeight?: number;
-	/** The maximum height of the popover element. */
+	/** The maximum height in `px` of the popover element. */
 	maxHeight?: number;
 	/** If true, the popover element will match the width of the reference element. */
 	matchReferenceWidth?: boolean;
@@ -68,8 +72,8 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		hiddenWithCSS = false,
 		placement = 'bottom-start',
 		matchReferenceWidth = false,
-		minHeight: minHeightOption,
-		maxHeight: maxHeightOption,
+		minHeight,
+		maxHeight,
 		offset: offsetOption = DEFAULT_OFFSET,
 	} = options || {};
 
@@ -79,43 +83,31 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
-			// Changes the placement of the floating element in order to keep it in view
-			// https://floating-ui.com/docs/flip
-			flip({ padding: DEFAULT_OFFSET }),
 			// Allows you to change the size of the floating element
 			// https://floating-ui.com/docs/size
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({
-					availableWidth,
-					availableHeight: _availableHeight,
-					elements,
-					rects,
-				}) {
-					// Popovers can have a predefined max-height if there is enough room on the screen
-					const maxHeight =
-						maxHeightOption && _availableHeight > maxHeightOption
-							? maxHeightOption
-							: _availableHeight;
-
-					// Minimum acceptable height before `flip` will take over
-					const availableHeight = minHeightOption
-						? Math.max(minHeightOption, maxHeight)
-						: maxHeight;
-
+				apply({ elements, rects }) {
 					Object.assign(elements.floating.style, {
-						maxHeight: `${availableHeight}px`,
+						height: 'max-content',
+						...(!!maxHeight && { maxHeight: `${maxHeight}px` }),
+						...(!!minHeight && { minHeight: `${minHeight}px` }),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
 									width: `${rects.reference.width}px`,
 							  }
 							: {
-									maxWidth: `${availableWidth}px`,
+									maxWidth: `calc(100vw - ${2 * MIN_SIDE_GUTTER_WIDTH}px)`,
+									overflowX: 'auto',
 							  }),
 					});
 				},
 			}),
+			// Changes the placement of the floating element in order to keep it in view
+			// https://floating-ui.com/docs/flip
+			flip({ padding: DEFAULT_OFFSET }),
 		],
 		// Ensures the floating element remains anchored to its reference element
 		// https://floating-ui.com/docs/react#anchoring
@@ -161,10 +153,16 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		};
 	}
 
-	function getPopoverProps() {
+	function getPopoverProps(isOpen?: boolean) {
 		return {
 			ref: floating.refs.setFloating,
-			style: floating.floatingStyles,
+			style: {
+				...floating.floatingStyles,
+				// For conditional rendering to work, we always render the Popover
+				// and only conditionally render the content. Hiding these borders
+				// when the Popover is closed prevents artefacts remaining in the UI.
+				...(isOpen && { borderLeftWidth: 0, borderRightWidth: 0 }),
+			},
 		};
 	}
 

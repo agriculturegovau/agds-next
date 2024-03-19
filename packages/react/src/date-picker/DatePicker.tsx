@@ -201,8 +201,8 @@ export const DatePicker = ({
 				buttonAriaLabel={getDateInputButtonAriaLabel(inputValue)}
 			/>
 			<CalendarProvider yearRange={yearRange}>
-				{isCalendarOpen && (
-					<Popover {...popover.getPopoverProps()}>
+				<Popover {...popover.getPopoverProps(isCalendarOpen)}>
+					{isCalendarOpen && (
 						<CalendarSingle
 							initialFocus
 							selected={valueAsDateOrUndefined}
@@ -211,8 +211,8 @@ export const DatePicker = ({
 							numberOfMonths={1}
 							disabled={disabledCalendarDays}
 						/>
-					</Popover>
-				)}
+					)}
+				</Popover>
 			</CalendarProvider>
 		</div>
 	);
