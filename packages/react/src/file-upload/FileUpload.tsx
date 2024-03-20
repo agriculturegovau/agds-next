@@ -380,7 +380,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										hideThumbnails={hideThumbnails}
 									/>
 									<FileUploadFileList
-										// if we want to include rejected files in the `value` that is exposed to the client, we should just filter the rejected values out here
 										files={value}
 										onRemove={handleRemoveFile}
 										hideThumbnails={hideThumbnails}
