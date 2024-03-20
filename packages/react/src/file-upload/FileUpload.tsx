@@ -92,6 +92,27 @@ function sortRejectionByName(a: FileRejection, b: FileRejection): number {
 	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
 }
 
+function reformatDropzoneErrors(
+	dropzoneFileRejections: Array<FileRejection>,
+	maxSize: number | undefined,
+	acceptedFilesSummary: string | undefined
+): Array<FileRejection> {
+	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
+	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+
+	return dropzoneFileRejections.map(({ file, errors }) => ({
+		file,
+		errors: errors.map((error) => ({
+			code: error.code,
+			message: getFileRejectionErrorMessage(
+				error,
+				formattedMaxFileSize,
+				acceptedFilesSummary
+			),
+		})),
+	}));
+}
+
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
@@ -229,27 +250,27 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			if (isOverMaxFilesLimit) {
 				const tooManyFilesRejectionList: Array<RejectedFile> = value
 					.filter((_file, index) => index >= maxFiles)
-					.map((file) => {
-						const otherFileErrors =
-							dropzoneFileRejections
-								.find(
-									({ file: thisFile }) =>
-										JSON.stringify(thisFile) === JSON.stringify(file)
-								)
-								?.errors.filter((err) => err.code !== tooManyFilesError.code) ||
-							[];
-						return {
-							file,
-							errors: [...otherFileErrors, tooManyFilesError],
-						};
-					});
+					.map((file) => ({
+						file,
+						errors: [tooManyFilesError],
+					}));
 
 				const dropzoneRejections = dropzoneFileRejections.map((rej) => ({
 					...rej,
 					errors: [...rej.errors, tooManyFilesError],
 				}));
+
+				const reformattedDropzoneRejections = reformatDropzoneErrors(
+					dropzoneRejections,
+					maxSize,
+					acceptedFilesSummary
+				);
+
 				const prevRejections = fileRejections.filter((prevFileRej) =>
-					[...tooManyFilesRejectionList, ...dropzoneRejections].every(
+					[
+						...tooManyFilesRejectionList,
+						...reformattedDropzoneRejections,
+					].every(
 						(newFileRej) =>
 							JSON.stringify(newFileRej.file) !==
 							JSON.stringify(prevFileRej.file)
@@ -259,7 +280,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					[
 						...prevRejections,
 						...tooManyFilesRejectionList,
-						...dropzoneRejections,
+						...reformattedDropzoneRejections,
 					].toSorted(sortRejectionByName)
 				);
 				onChange(
@@ -269,17 +290,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				);
 			} else if (dropzoneFileRejections.length > 0) {
 				setFileRejections(
-					dropzoneFileRejections.map(({ file, errors }) => ({
-						file,
-						errors: errors.map((error) => ({
-							code: error.code,
-							message: getFileRejectionErrorMessage(
-								error,
-								formattedMaxFileSize,
-								acceptedFilesSummary
-							),
-						})),
-					}))
+					reformatDropzoneErrors(
+						dropzoneFileRejections,
+						maxSize,
+						acceptedFilesSummary
+					)
 				);
 			}
 			// eslint-disable-next-line react-hooks/exhaustive-deps
