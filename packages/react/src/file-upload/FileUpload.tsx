@@ -192,9 +192,15 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		);
 
 		useEffect(() => {
-			const isOverMaxFilesLimit = maxFiles && value.length > maxFiles;
+			const allAttemptedUploads = [
+				...value,
+				...fileRejections.map((rej) => rej.file),
+			];
+			const isOverMaxFilesLimit =
+				maxFiles && allAttemptedUploads.length > maxFiles;
+
 			if (isOverMaxFilesLimit) {
-				const fileRejectionList: Array<RejectedFile> = value
+				const tooManyFilesRejectionList: Array<RejectedFile> = value
 					.filter((_file, index) => index >= maxFiles)
 					.map((file) => {
 						const otherFileErrors =
@@ -210,12 +216,24 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							errors: [...otherFileErrors, tooManyFilesError],
 						};
 					});
-				const otherRejections = dropzoneFileRejections.map((rej) => ({
+
+				const dropzoneRejections = dropzoneFileRejections.map((rej) => ({
 					...rej,
 					errors: [...rej.errors, tooManyFilesError],
 				}));
+				const prevRejections = fileRejections.filter((prevFileRej) =>
+					[...tooManyFilesRejectionList, ...dropzoneRejections].every(
+						(newFileRej) =>
+							JSON.stringify(newFileRej.file) !==
+							JSON.stringify(prevFileRej.file)
+					)
+				);
 				setFileRejections(
-					[...fileRejectionList, ...otherRejections].toSorted((a, b) =>
+					[
+						...prevRejections,
+						...tooManyFilesRejectionList,
+						...dropzoneRejections,
+					].toSorted((a, b) =>
 						a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1
 					)
 				);
