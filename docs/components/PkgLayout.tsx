@@ -14,6 +14,7 @@ import { StorybookLogo } from './StorybookLogo';
 import { GithubLogo } from './GithubLogo';
 import { SiteLayout } from './SiteLayout';
 import { PageAlert } from './designSystemComponents';
+import { calculateImportString } from './utils/calculateImportString';
 
 export function PkgLayout({
 	children,
@@ -28,6 +29,8 @@ export function PkgLayout({
 	editPath?: string;
 }>) {
 	const { asPath } = useRouter();
+	const importString = calculateImportString(pkg);
+
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
@@ -86,7 +89,7 @@ export function PkgLayout({
 						{!pkg.unreleased ? (
 							<Prose>
 								<pre>
-									<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+									<code>{importString}</code>
 								</pre>
 							</Prose>
 						) : (

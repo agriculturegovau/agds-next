@@ -16,6 +16,7 @@
 		"clean": "rimraf \"**/node_modules\" \"**/yarn-error.log\" \"**/out.log\" \"**/.DS_Store\" \"**/dist\" \"**/out\" \"**/.next\"",
 		"docs:build": "yarn --cwd docs build",
 		"docs:dev": "yarn --cwd docs dev",
+		"docs:generate-component-imports": "yarn --cwd docs generate-component-imports",
 		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
 		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
 		"example:build": "yarn --cwd example-site build",

@@ -12,7 +12,10 @@ import {
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
-import { PkgLayout } from '../../../components/PkgLayout';
+import {
+	PkgLayout,
+	calculateImportString,
+} from '../../../components/PkgLayout';
 import { generateToc } from '../../../lib/generateToc';
 
 export default function PackagesCode({
@@ -54,7 +57,7 @@ export default function PackagesCode({
 					</p>
 					<p>For example:</p>
 					<pre>
-						<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
+						<code>{calculateImportString(pkg)}</code>
 					</pre>
 					<MDXRemote {...source} components={mdxComponents} />
 					<h2 id="source">Source</h2>
