@@ -210,13 +210,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							errors: [...otherFileErrors, tooManyFilesError],
 						};
 					});
-				setFileRejections(fileRejectionList);
+				const otherRejections = dropzoneFileRejections.map((rej) => ({
+					...rej,
+					errors: [...rej.errors, tooManyFilesError],
+				}));
+				setFileRejections(
+					[...fileRejectionList, ...otherRejections].toSorted((a, b) =>
+						a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1
+					)
+				);
 				onChange(
 					value.filter((val) =>
 						fileRejections.every((rej) => rej.file.path !== val.path)
 					)
 				);
-			} else {
+			} else if (dropzoneFileRejections.length > 0) {
 				setFileRejections(
 					dropzoneFileRejections.map(({ file, errors }) => ({
 						file,
