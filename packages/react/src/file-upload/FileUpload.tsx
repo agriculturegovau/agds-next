@@ -85,34 +85,6 @@ export type FileUploadProps = BaseInputProps & {
 	onRemoveExistingFile?: (file: ExistingFile) => void;
 };
 
-function sortFileByName(a: FileWithPath, b: FileWithPath): number {
-	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-}
-function sortRejectionByName(a: FileRejection, b: FileRejection): number {
-	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
-}
-
-function reformatDropzoneErrors(
-	dropzoneFileRejections: Array<FileRejection>,
-	maxSize: number | undefined,
-	acceptedFilesSummary: string | undefined
-): Array<FileRejection> {
-	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
-	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
-
-	return dropzoneFileRejections.map(({ file, errors }) => ({
-		file,
-		errors: errors.map((error) => ({
-			code: error.code,
-			message: getFileRejectionErrorMessage(
-				error,
-				formattedMaxFileSize,
-				acceptedFilesSummary
-			),
-		})),
-	}));
-}
-
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
@@ -429,7 +401,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	}
 );
 
-const fileInputStyles = ({
+function fileInputStyles({
 	disabled,
 	invalid,
 	isDragActive,
@@ -437,8 +409,8 @@ const fileInputStyles = ({
 	disabled?: boolean;
 	invalid: boolean;
 	isDragActive: boolean;
-}) =>
-	({
+}) {
+	return {
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
 		borderColor: boxPalette.border,
@@ -462,4 +434,34 @@ const fileInputStyles = ({
 		}),
 
 		'&:focus': packs.outline,
-	}) as const;
+	} as const;
+}
+
+function sortFileByName(a: FileWithPath, b: FileWithPath): number {
+	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+}
+
+function sortRejectionByName(a: FileRejection, b: FileRejection): number {
+	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
+}
+
+function reformatDropzoneErrors(
+	dropzoneFileRejections: Array<FileRejection>,
+	maxSize: number | undefined,
+	acceptedFilesSummary: string | undefined
+): Array<FileRejection> {
+	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
+	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+
+	return dropzoneFileRejections.map(({ file, errors }) => ({
+		file,
+		errors: errors.map((error) => ({
+			code: error.code,
+			message: getFileRejectionErrorMessage(
+				error,
+				formattedMaxFileSize,
+				acceptedFilesSummary
+			),
+		})),
+	}));
+}
