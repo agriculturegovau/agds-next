@@ -179,7 +179,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			fileRejections: dropzoneFileRejections,
 		} = useDropzone({
 			accept,
-			// maxFiles: remainingFilesCount,
 			// converts kB to B
 			maxSize: maxSize && maxSize * 1000,
 			multiple,
