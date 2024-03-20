@@ -5,21 +5,17 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import {
-	useDropzone,
-	DropzoneOptions,
-	FileRejection,
-	FileError,
-	FileWithPath,
-} from 'react-dropzone';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
-import { Button } from '../button';
-import { packs, boxPalette, tokens, mergeRefs } from '../core';
-import { Field } from '../field';
-import { UploadIcon } from '../icon';
-import { Text } from '../text';
+import { DropzoneOptions, FileError, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
+import { Button } from '../button';
+import { boxPalette, mergeRefs, packs, tokens } from '../core';
+import { Field } from '../field';
+import { Flex } from '../flex';
+import { UploadIcon } from '../icon';
+import { Stack } from '../stack';
+import { Text } from '../text';
+import { FileUploadExistingFileList } from './FileUploadExistingFileList';
+import { FileUploadFileList } from './FileUploadFileList';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
@@ -29,13 +25,13 @@ import {
 	FileWithStatus,
 	formatFileSize,
 	getAcceptedFilesSummary,
-	getFileListSummaryText,
 	getErrorSummary,
-	getFileRejectionErrorMessage,
+	getFileListSummaryText,
+	reformatDropzoneErrors,
 	RejectedFile,
+	sortFileByName,
+	sortRejectionByName,
 } from './utils';
-import { FileUploadFileList } from './FileUploadFileList';
-import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -433,33 +429,4 @@ function fileInputStyles({
 
 		'&:focus': packs.outline,
 	} as const;
-}
-
-function sortFileByName(a: FileWithPath, b: FileWithPath): number {
-	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-}
-
-function sortRejectionByName(a: FileRejection, b: FileRejection): number {
-	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
-}
-
-function reformatDropzoneErrors(
-	dropzoneFileRejections: Array<FileRejection>,
-	maxSize: number | undefined,
-	acceptedFilesSummary: string | undefined
-): Array<FileRejection> {
-	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
-	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
-
-	return dropzoneFileRejections.map(({ file, errors }) => ({
-		file,
-		errors: errors.map((error) => ({
-			code: error.code,
-			message: getFileRejectionErrorMessage(
-				error,
-				formattedMaxFileSize,
-				acceptedFilesSummary
-			),
-		})),
-	}));
 }

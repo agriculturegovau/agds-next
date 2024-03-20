@@ -1,4 +1,4 @@
-import type { FileError, FileWithPath } from 'react-dropzone';
+import type { FileError, FileRejection, FileWithPath } from 'react-dropzone';
 import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
@@ -131,6 +131,38 @@ export function getAcceptedFilesSummary(
 
 export function formatFileExtension(ext: string) {
 	return ext.replace(/^\./, '');
+}
+
+export function sortFileByName(a: FileWithPath, b: FileWithPath): number {
+	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+}
+
+export function sortRejectionByName(
+	a: FileRejection,
+	b: FileRejection
+): number {
+	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
+}
+
+export function reformatDropzoneErrors(
+	dropzoneFileRejections: Array<FileRejection>,
+	maxSize: number | undefined,
+	acceptedFilesSummary: string | undefined
+): Array<FileRejection> {
+	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
+	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+
+	return dropzoneFileRejections.map(({ file, errors }) => ({
+		file,
+		errors: errors.map((error) => ({
+			code: error.code,
+			message: getFileRejectionErrorMessage(
+				error,
+				formattedMaxFileSize,
+				acceptedFilesSummary
+			),
+		})),
+	}));
 }
 
 export function getFileRejectionErrorMessage(
