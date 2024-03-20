@@ -1,8 +1,13 @@
+import { FileWithPath } from 'react-dropzone';
 import {
 	getErrorSummary,
 	getAcceptedFilesSummary,
 	formatFileSize,
 	formatFileExtension,
+	sortFileByName,
+	RejectedFile,
+	tooManyFilesError,
+	sortRejectionByName,
 } from './utils';
 import { createExampleFile } from './test-utils';
 
@@ -168,3 +173,29 @@ describe('formatFileExtension', () => {
 		expect(formatFileExtension('.docx')).toEqual('docx');
 	});
 });
+
+describe('sortFileByName', () => {
+	it('sorts files by file name correctly', () => {
+		const A: FileWithPath = createExampleFile({ name: 'A' });
+		const B: FileWithPath = createExampleFile({ name: 'B' });
+		const C: FileWithPath = createExampleFile({ name: 'C' });
+		const files: Array<FileWithPath> = [B, C, A];
+		expect(files.sort(sortFileByName)).toMatchObject([A, B, C]);
+	});
+});
+
+describe('sortRejectionByName', () => {
+	it('sorts rejected files by file name correctly', () => {
+		const createFile = (name: string): RejectedFile => ({
+			file: createExampleFile({ name }),
+			errors: [tooManyFilesError],
+		});
+		const A: RejectedFile = createFile('A');
+		const B: RejectedFile = createFile('B');
+		const C: RejectedFile = createFile('C');
+		const files: Array<RejectedFile> = [B, C, A];
+		expect(files.sort(sortRejectionByName)).toMatchObject([A, B, C]);
+	});
+});
+
+// reformatDropzoneErrors doesn't need to be tested since it is mostly just a wrapper around formatting file size which already has plenty of tests

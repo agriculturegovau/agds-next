@@ -5,7 +5,7 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import { DropzoneOptions, FileError, useDropzone } from 'react-dropzone';
+import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
@@ -31,6 +31,7 @@ import {
 	RejectedFile,
 	sortFileByName,
 	sortRejectionByName,
+	tooManyFilesError,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -41,11 +42,6 @@ type BaseInputProps = {
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
 	onFocus?: NativeInputProps['onFocus'];
-};
-
-const tooManyFilesError: FileError = {
-	code: 'too-many-files',
-	message: 'Too many files',
 };
 
 export type FileUploadProps = BaseInputProps & {

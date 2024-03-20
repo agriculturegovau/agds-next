@@ -144,6 +144,11 @@ export function sortRejectionByName(
 	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
 }
 
+export const tooManyFilesError: FileError = {
+	code: 'too-many-files',
+	message: 'Too many files',
+};
+
 export function reformatDropzoneErrors(
 	dropzoneFileRejections: Array<FileRejection>,
 	maxSize: number | undefined,
