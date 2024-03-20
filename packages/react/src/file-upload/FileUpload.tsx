@@ -128,7 +128,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					rej.errors.every((err) => err.code === tooManyFilesError.code)
 				);
 				const acceptedFile = acceptableFiles[0].file;
-				const newFiles = [...newBaseSetOfFiles, acceptedFile].toSorted(
+				const newFiles = [...newBaseSetOfFiles, acceptedFile].sort(
 					sortFileByName
 				);
 
@@ -253,7 +253,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						...prevRejections,
 						...tooManyFilesRejectionList,
 						...reformattedDropzoneRejections,
-					].toSorted(sortRejectionByName)
+					].sort(sortRejectionByName)
 				);
 				onChange(
 					value.filter((val) =>
