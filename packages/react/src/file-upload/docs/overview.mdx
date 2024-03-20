@@ -113,7 +113,7 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 
 ## Multiple files
 
-Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
+Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected. Acceptable files that are marked as being over the upload limit will backfill accepted files if any are removed.
 
 ```jsx live
 () => {

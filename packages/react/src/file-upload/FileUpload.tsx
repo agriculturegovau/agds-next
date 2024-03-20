@@ -10,6 +10,7 @@ import {
 	DropzoneOptions,
 	FileRejection,
 	FileError,
+	FileWithPath,
 } from 'react-dropzone';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -84,6 +85,13 @@ export type FileUploadProps = BaseInputProps & {
 	onRemoveExistingFile?: (file: ExistingFile) => void;
 };
 
+function sortFileByName(a: FileWithPath, b: FileWithPath): number {
+	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+}
+function sortRejectionByName(a: FileRejection, b: FileRejection): number {
+	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
+}
+
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
@@ -111,14 +119,33 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
-		const remainingFilesCount =
-			maxFiles === undefined ? Infinity : maxFiles - value.length;
 
 		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);
 
 		const handleRemoveFile = (file: FileWithStatus) => {
 			const indexOfFile = value.indexOf(file);
-			onChange(value.filter((_, index) => index !== indexOfFile));
+			const newBaseSetOfFiles = value.filter(
+				(_, index) => index !== indexOfFile
+			);
+			const hasTooManyFilesError = fileRejections.some((rej) =>
+				rej.errors.some((err) => err.code === tooManyFilesError.code)
+			);
+			if (hasTooManyFilesError) {
+				const acceptableFiles = fileRejections.filter((rej) =>
+					rej.errors.every((err) => err.code === tooManyFilesError.code)
+				);
+				const acceptedFile = acceptableFiles[0].file;
+				const newFiles = [...newBaseSetOfFiles, acceptedFile].toSorted(
+					sortFileByName
+				);
+
+				setFileRejections((prevRejections) =>
+					prevRejections.filter((rej) => rej.file.path !== acceptedFile.path)
+				);
+				onChange(newFiles);
+			} else {
+				onChange(newBaseSetOfFiles);
+			}
 		};
 
 		const handleRemoveRejection = (fileName: string) => {
@@ -233,9 +260,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						...prevRejections,
 						...tooManyFilesRejectionList,
 						...dropzoneRejections,
-					].toSorted((a, b) =>
-						a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1
-					)
+					].toSorted(sortRejectionByName)
 				);
 				onChange(
 					value.filter((val) =>
@@ -264,21 +289,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			formattedMaxFileSize,
 			acceptedFilesSummary,
 		]);
-
-		// useEffect(() => {
-		// 	const isOverMaxFilesLimit = maxFiles && value.length > maxFiles;
-		// 	debugger;
-		// 	if (isOverMaxFilesLimit) {
-		// 		onChange(
-		// 			value.filter((val) =>
-		// 				fileRejections.every((rej) => rej.file.path !== val.path)
-		// 			)
-		// 		);
-		// 	}
-		// }, [
-		// 	fileRejections,
-		// 	maxFiles,
-		// ]);
 
 		const {
 			// We are using an _actual_ button, so we don't need these props
