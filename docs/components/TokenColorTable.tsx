@@ -141,6 +141,11 @@ export const colourTokens: {
 			dark: theme.darkOverlay,
 			desc: 'Used as an overlay for modals and other components that sit on top of the main background. The main content area beneath is considered disabled and not interactive.',
 		},
+		overlayMuted: {
+			light: theme.lightOverlayMuted,
+			dark: theme.darkOverlayMuted,
+			desc: 'Used as an overlay for drawers that sit on top of the main background, where maintaining some visibility of the main content area beneath may be beneficial. The main content area beneath is considered disabled and not interactive.',
+		},
 		focus: {
 			light: theme.lightForegroundFocus,
 			dark: theme.darkForegroundFocus,
