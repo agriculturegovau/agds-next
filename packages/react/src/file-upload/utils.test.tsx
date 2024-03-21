@@ -1,4 +1,9 @@
-import { FileWithPath } from 'react-dropzone';
+import {
+	ErrorCode,
+	FileError,
+	FileRejection,
+	FileWithPath,
+} from 'react-dropzone';
 import { createExampleFile } from './test-utils';
 import {
 	RejectedFile,
@@ -9,6 +14,7 @@ import {
 	sortFileByName,
 	sortRejectionByName,
 	TOO_MANY_FILES_ERROR,
+	applyTooManyFilesError,
 } from './utils';
 
 describe('getErrorSummary', () => {
@@ -177,14 +183,12 @@ describe('formatFileExtension', () => {
 describe('sortFileByName', () => {
 	it('sorts files by file name correctly', () => {
 		const A = createExampleFile({ name: 'A' });
-		const B = createExampleFile({ name: 'B' });
+		const B = createExampleFile({ name: 'b' }); // lowercase on purpose
 		const C = createExampleFile({ name: 'C' });
 		const files: Array<FileWithPath> = [B, C, A];
-		expect(files.sort(sortFileByName).map((file) => file.name)).toMatchObject([
-			A.name,
-			B.name,
-			C.name,
-		]);
+		expect(JSON.stringify(files.sort(sortFileByName))).toBe(
+			JSON.stringify([A, B, C])
+		);
 	});
 });
 
@@ -195,12 +199,12 @@ describe('sortRejectionByName', () => {
 			errors: [TOO_MANY_FILES_ERROR],
 		});
 		const A = createRejectedFile('A');
-		const B = createRejectedFile('B');
+		const B = createRejectedFile('b'); // lowercase on purpose
 		const C = createRejectedFile('C');
 		const files: Array<RejectedFile> = [B, C, A];
-		expect(
-			files.sort(sortRejectionByName).map((rejection) => rejection.file.name)
-		).toMatchObject([A.file.name, B.file.name, C.file.name]);
+		expect(JSON.stringify(files.sort(sortRejectionByName))).toBe(
+			JSON.stringify([A, B, C])
+		);
 	});
 });
 
