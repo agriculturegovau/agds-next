@@ -120,18 +120,22 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				const acceptableFiles = fileRejections.filter((rej) =>
 					rej.errors.every((err) => err.code === tooManyFilesError.code)
 				);
-				const acceptedFile = acceptableFiles[0].file;
-				const newFiles = [...newBaseSetOfFiles, acceptedFile].sort(
-					sortFileByName
-				);
 
-				setFileRejections((prevRejections) =>
-					prevRejections.filter((rej) => rej.file.path !== acceptedFile.path)
-				);
-				onChange(newFiles);
-			} else {
-				onChange(newBaseSetOfFiles);
+				if (acceptableFiles.length > 0) {
+					const acceptedFile = acceptableFiles[0].file;
+					const newFiles = [...newBaseSetOfFiles, acceptedFile].sort(
+						sortFileByName
+					);
+
+					setFileRejections((prevRejections) =>
+						prevRejections.filter((rej) => rej.file.path !== acceptedFile.path)
+					);
+					onChange(newFiles);
+					return;
+				}
 			}
+
+			onChange(newBaseSetOfFiles);
 		};
 
 		const handleRemoveRejection = (fileName: string) => {
