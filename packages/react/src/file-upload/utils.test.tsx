@@ -1,15 +1,15 @@
 import { FileWithPath } from 'react-dropzone';
-import {
-	getErrorSummary,
-	getAcceptedFilesSummary,
-	formatFileSize,
-	formatFileExtension,
-	sortFileByName,
-	RejectedFile,
-	tooManyFilesError,
-	sortRejectionByName,
-} from './utils';
 import { createExampleFile } from './test-utils';
+import {
+	RejectedFile,
+	formatFileExtension,
+	formatFileSize,
+	getAcceptedFilesSummary,
+	getErrorSummary,
+	sortFileByName,
+	sortRejectionByName,
+	tooManyFilesError,
+} from './utils';
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
