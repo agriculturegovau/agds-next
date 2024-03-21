@@ -33,6 +33,8 @@ export type DrawerProps = PropsWithChildren<{
 	title: string;
 	/** The width of the drawer. */
 	width?: DrawerDialogWidth;
+	/** Lighten the overlay so that people can see the main content underneath more easily while the draw is open. */
+	lightOverlay?: boolean;
 }>;
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
@@ -43,6 +45,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	onDismiss,
 	title,
 	width = 'md',
+	lightOverlay = false,
 }) => {
 	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	const scrollbarWidth = useRef<number>(0);
