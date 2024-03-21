@@ -176,25 +176,31 @@ describe('formatFileExtension', () => {
 
 describe('sortFileByName', () => {
 	it('sorts files by file name correctly', () => {
-		const A: FileWithPath = createExampleFile({ name: 'A' });
-		const B: FileWithPath = createExampleFile({ name: 'B' });
-		const C: FileWithPath = createExampleFile({ name: 'C' });
+		const A = createExampleFile({ name: 'A' });
+		const B = createExampleFile({ name: 'B' });
+		const C = createExampleFile({ name: 'C' });
 		const files: Array<FileWithPath> = [B, C, A];
-		expect(files.sort(sortFileByName)).toMatchObject([A, B, C]);
+		expect(files.sort(sortFileByName).map((file) => file.name)).toMatchObject([
+			A.name,
+			B.name,
+			C.name,
+		]);
 	});
 });
 
 describe('sortRejectionByName', () => {
 	it('sorts rejected files by file name correctly', () => {
-		const createFile = (name: string): RejectedFile => ({
+		const createRejectedFile = (name: string): RejectedFile => ({
 			file: createExampleFile({ name }),
 			errors: [tooManyFilesError],
 		});
-		const A: RejectedFile = createFile('A');
-		const B: RejectedFile = createFile('B');
-		const C: RejectedFile = createFile('C');
+		const A = createRejectedFile('A');
+		const B = createRejectedFile('B');
+		const C = createRejectedFile('C');
 		const files: Array<RejectedFile> = [B, C, A];
-		expect(files.sort(sortRejectionByName)).toMatchObject([A, B, C]);
+		expect(
+			files.sort(sortRejectionByName).map((rejection) => rejection.file.name)
+		).toMatchObject([A.file.name, B.file.name, C.file.name]);
 	});
 });
 
