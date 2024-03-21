@@ -7,7 +7,7 @@ export const parseTime = (timeString = '', timeFormat: TimeFormat) => {
 				? timeString.match(/(\w{1})(\w{1,2})/).slice(1)
 				: timeString.match(/\d{1,2}/gi)
 			: []
-	).map((digit) => digit | 0);
+	).map((digit) => Number(digit) | 0);
 
 	let error = false;
 
@@ -30,7 +30,7 @@ export const parseTime = (timeString = '', timeFormat: TimeFormat) => {
 		const letters = timeString.match(/[a-zA-Z]{1,2}/) ?? [];
 		const timeOfDay =
 			letters.length > 0
-				? letters[0].toLowerCase()
+				? letters[0]?.toLowerCase()
 				: time[0] === 12
 				? 'pm'
 				: 'am';

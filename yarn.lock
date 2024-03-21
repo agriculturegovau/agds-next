@@ -16500,11 +16500,6 @@ use-sidecar@^1.1.2:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
 
-user-time@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/user-time/-/user-time-1.0.5.tgz#b1442882155ab5606bc258fa6d006909c5debac0"
-  integrity sha512-/fazDJaaxLL+IEWuD4aa7xUnMx2AjOTXGCmm+YeVQsw4rhzvcCaxV3VPuyYvq6JfFI0DwrA2LKMS4m/+IhXvcw==
-
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

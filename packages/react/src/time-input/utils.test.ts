@@ -1,4 +1,4 @@
-import { isValidTime, parseTime } from './utils';
+import { parseTime } from './utils';
 
 describe('parseTime', () => {
 	test('Single or double-digits less than 12 return time in am', () => {
