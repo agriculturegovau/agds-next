@@ -203,12 +203,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		);
 
 		useEffect(() => {
-			const allAttemptedUploads = [
-				...value,
-				...fileRejections.map((rej) => rej.file),
-			];
 			const isOverMaxFilesLimit =
-				maxFiles && allAttemptedUploads.length > maxFiles;
+				maxFiles && value.length + fileRejections.length > maxFiles;
 
 			if (isOverMaxFilesLimit) {
 				const tooManyFilesRejectionList: Array<RejectedFile> = value
