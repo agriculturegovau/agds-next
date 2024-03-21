@@ -121,15 +121,18 @@ Selecting multiple files is also supported with FileUpload. Simply add `multiple
 	return (
 		<FileUpload
 			label="Upload files"
-			hint="Try uploading more than 3 files to see what the maxFiles prop does"
+			hint="Upload a maximum of three files"
 			value={value}
 			onChange={setValue}
 			multiple={true}
 			maxFiles={3}
-			required
 		/>
 	);
 };
+```
+
+```jsx
+<FileUpload multiple={true} maxFiles={3} />
 ```
 
 ## Maximum file size
