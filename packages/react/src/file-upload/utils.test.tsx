@@ -8,7 +8,7 @@ import {
 	getErrorSummary,
 	sortFileByName,
 	sortRejectionByName,
-	tooManyFilesError,
+	TOO_MANY_FILES_ERROR,
 } from './utils';
 
 describe('getErrorSummary', () => {
@@ -192,7 +192,7 @@ describe('sortRejectionByName', () => {
 	it('sorts rejected files by file name correctly', () => {
 		const createRejectedFile = (name: string): RejectedFile => ({
 			file: createExampleFile({ name }),
-			errors: [tooManyFilesError],
+			errors: [TOO_MANY_FILES_ERROR],
 		});
 		const A = createRejectedFile('A');
 		const B = createRejectedFile('B');

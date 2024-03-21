@@ -32,7 +32,7 @@ import {
 	RejectedFile,
 	sortFileByName,
 	sortRejectionByName,
-	tooManyFilesError,
+	TOO_MANY_FILES_ERROR,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -114,11 +114,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				(_, index) => index !== indexOfFile
 			);
 			const hasTooManyFilesError = fileRejections.some((rej) =>
-				rej.errors.some((err) => err.code === tooManyFilesError.code)
+				rej.errors.some((err) => err.code === TOO_MANY_FILES_ERROR.code)
 			);
 			if (hasTooManyFilesError) {
 				const acceptableFiles = fileRejections.filter((rej) =>
-					rej.errors.every((err) => err.code === tooManyFilesError.code)
+					rej.errors.every((err) => err.code === TOO_MANY_FILES_ERROR.code)
 				);
 
 				if (acceptableFiles.length > 0) {
@@ -216,7 +216,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					.slice(maxFiles)
 					.map((file) => ({
 						file,
-						errors: [tooManyFilesError],
+						errors: [TOO_MANY_FILES_ERROR],
 					}));
 
 				const reformattedDropzoneRejections = reformatDropzoneErrors(
@@ -241,7 +241,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						)
 						.map((fileRej) => {
 							const isMissingTooManyFilesError = fileRej.errors.every(
-								(err) => err.code !== tooManyFilesError.code
+								(err) => err.code !== TOO_MANY_FILES_ERROR.code
 							);
 							return isMissingTooManyFilesError
 								? applyTooManyFilesError(fileRej)
