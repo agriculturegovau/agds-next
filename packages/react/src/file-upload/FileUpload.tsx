@@ -208,7 +208,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 			if (isOverMaxFilesLimit) {
 				const tooManyFilesRejectionList: Array<RejectedFile> = value
-					.filter((_file, index) => index >= maxFiles)
+					.slice(maxFiles)
 					.map((file) => ({
 						file,
 						errors: [tooManyFilesError],
