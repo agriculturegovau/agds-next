@@ -91,8 +91,8 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 				apply({ elements, rects }) {
 					Object.assign(elements.floating.style, {
 						height: 'max-content',
-						...(!!maxHeight && { maxHeight: `${maxHeight}px` }),
-						...(!!minHeight && { minHeight: `${minHeight}px` }),
+						...(maxHeight !== undefined && { maxHeight: `${maxHeight}px` }),
+						...(minHeight !== undefined && { minHeight: `${minHeight}px` }),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
