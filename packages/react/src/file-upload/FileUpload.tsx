@@ -19,6 +19,7 @@ import { FileUploadFileList } from './FileUploadFileList';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
+	applyTooManyFilesError,
 	CustomFileMimeType,
 	ExistingFile,
 	fileTypeMapping,
@@ -214,34 +215,38 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						errors: [tooManyFilesError],
 					}));
 
-				const dropzoneRejections = dropzoneFileRejections.map((rej) => ({
-					...rej,
-					errors: [...rej.errors, tooManyFilesError],
-				}));
-
 				const reformattedDropzoneRejections = reformatDropzoneErrors(
-					dropzoneRejections,
+					dropzoneFileRejections,
 					maxSize,
 					acceptedFilesSummary
-				);
+				).map(applyTooManyFilesError);
 
-				const prevRejections = fileRejections.filter((prevFileRej) =>
-					[
+				setFileRejections((prevRejections) => {
+					const newRejections = [
 						...tooManyFilesRejectionList,
 						...reformattedDropzoneRejections,
-					].every(
-						(newFileRej) =>
-							JSON.stringify(newFileRej.file) !==
-							JSON.stringify(prevFileRej.file)
-					)
-				);
-				setFileRejections(
-					[
-						...prevRejections,
-						...tooManyFilesRejectionList,
-						...reformattedDropzoneRejections,
-					].sort(sortRejectionByName)
-				);
+					];
+
+					const filteredPrevRejections = prevRejections
+						.filter((prevFileRej) =>
+							newRejections.every(
+								(newFileRej) =>
+									JSON.stringify(newFileRej.file) !==
+									JSON.stringify(prevFileRej.file)
+							)
+						)
+						.map((fileRej) => {
+							const isMissingTooManyFilesError = fileRej.errors.every(
+								(err) => err.code !== tooManyFilesError.code
+							);
+							return isMissingTooManyFilesError
+								? applyTooManyFilesError(fileRej)
+								: fileRej;
+						});
+					return [...filteredPrevRejections, ...newRejections].sort(
+						sortRejectionByName
+					);
+				});
 				onChange(
 					value.filter((val) =>
 						fileRejections.every((rej) => rej.file.path !== val.path)

@@ -170,6 +170,13 @@ export function reformatDropzoneErrors(
 	}));
 }
 
+export function applyTooManyFilesError(rej: FileRejection) {
+	return {
+		...rej,
+		errors: [...rej.errors, tooManyFilesError],
+	};
+}
+
 export function getFileRejectionErrorMessage(
 	{ code, message }: FileError,
 	formattedMaxFileSize: string,
