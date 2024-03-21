@@ -17,6 +17,11 @@ import {
 	applyTooManyFilesError,
 } from './utils';
 
+const FILE_TOO_LARGE_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.FileTooLarge,
+	message: 'File size exceeds 200 kB',
+};
+
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
 		expect(getErrorSummary([], '1MB', 1)).toBeUndefined();
@@ -177,6 +182,24 @@ describe('formatFileExtension', () => {
 		expect(formatFileExtension('.tsx')).toEqual('tsx');
 		expect(formatFileExtension('.pdf')).toEqual('pdf');
 		expect(formatFileExtension('.docx')).toEqual('docx');
+	});
+});
+
+describe('applyTooManyFilesError', () => {
+	it('Adds the TOO_MANY_FILES_ERROR to an existing rejection', () => {
+		const file = createExampleFile();
+
+		const rejection: FileRejection = {
+			file,
+			errors: [FILE_TOO_LARGE_ERROR_EXAMPLE],
+		};
+
+		expect(JSON.stringify(applyTooManyFilesError(rejection))).toBe(
+			JSON.stringify({
+				file,
+				errors: [FILE_TOO_LARGE_ERROR_EXAMPLE, TOO_MANY_FILES_ERROR],
+			})
+		);
 	});
 });
 
