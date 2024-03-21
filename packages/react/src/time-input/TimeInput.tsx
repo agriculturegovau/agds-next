@@ -11,17 +11,16 @@ export function TimeInput({
 	timeFormat = 'h:mm aaa',
 	value = {
 		formatted: '',
-		value: '',
+		raw: '',
 	},
 	...props
 }: Omit<TextInputProps, 'value'> & TimeInputProps) {
 	const [inputValue, setInputValue] = useState(
-		transformValuePropToInputValue(value.value, timeFormat)
+		transformValuePropToInputValue(value.raw, timeFormat)
 	);
-	console.log(`value`, value);
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(transformValuePropToInputValue(value.value, timeFormat));
+		setInputValue(transformValuePropToInputValue(value.raw, timeFormat));
 	}, [timeFormat, value]);
 
 	const onBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -30,7 +29,7 @@ export function TimeInput({
 
 		onChangeProp?.({
 			formatted: formatTime(inputValue, timeFormat),
-			value: normalizedTime,
+			raw: normalizedTime,
 		});
 	};
 
@@ -52,7 +51,7 @@ export function TimeInput({
 
 type TimeValue = {
 	formatted?: string | undefined;
-	value: string | undefined;
+	raw: string | undefined;
 };
 
 export type TimeInputProps = {
