@@ -1,4 +1,9 @@
-import type { FileError, FileRejection, FileWithPath } from 'react-dropzone';
+import {
+	ErrorCode,
+	type FileError,
+	type FileRejection,
+	type FileWithPath,
+} from 'react-dropzone';
 import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
@@ -12,7 +17,7 @@ export type FileWithStatus = FileWithPath & {
 
 export type RejectedFile = {
 	file: FileWithPath;
-	errors: { message: string; code: string }[];
+	errors: FileError[];
 };
 
 export type ExistingFile = {
@@ -145,7 +150,7 @@ export function sortRejectionByName(
 }
 
 export const TOO_MANY_FILES_ERROR: FileError = {
-	code: 'too-many-files',
+	code: ErrorCode.TooManyFiles,
 	message: 'Too many files',
 };
 
