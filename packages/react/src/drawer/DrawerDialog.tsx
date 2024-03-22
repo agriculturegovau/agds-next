@@ -48,7 +48,6 @@ export function DrawerDialog({
 	return (
 		<FocusLock returnFocus>
 			<AnimatedFlex
-				data-draw-component="dialog"
 				flexDirection="column"
 				role="dialog"
 				aria-modal="true"
