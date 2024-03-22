@@ -9,8 +9,8 @@ import {
 import { Field } from '../field';
 import { TextInputProps, textInputStyles } from '../text-input';
 import {
-	formatTime,
 	acceptedTimeFormats,
+	formatTime,
 	transformValuePropToInputValue,
 	type TimeFormat,
 } from './utils';

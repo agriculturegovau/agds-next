@@ -1,7 +1,7 @@
 import { isValid } from 'date-fns';
 
 // This has been borrowed heavily from https://github.com/jrmedd/user-time
-export const parseTime = (timeString = '', timeFormat: TimeFormat) => {
+export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	if (!timeString) {
 		return '';
 	}
@@ -58,6 +58,18 @@ export const parseTime = (timeString = '', timeFormat: TimeFormat) => {
 	}
 };
 
+export function isValidTime(value: string) {
+	return isValid(new Date(`1970-01-01T${formatTime(value, 'HH:mm')}`));
+}
+
+export function transformValuePropToInputValue(
+	valueProp: string | undefined,
+	timeFormat: TimeFormat
+): string {
+	if (typeof valueProp === 'undefined') return '';
+	return formatTime(valueProp, timeFormat);
+}
+
 export const timeFormats = {
 	'h:mm aaa': {
 		hour: 'numeric',
@@ -78,28 +90,8 @@ export const timeFormats = {
 
 export type TimeFormat = keyof typeof timeFormats;
 
-export const acceptedTimeFormats = Object.keys(timeFormats);
+export const acceptedTimeFormats = Object.keys(
+	timeFormats
+) as Array<TimeFormat>;
 
 export type AcceptedTimeFormats = (typeof acceptedTimeFormats)[number];
-
-export function formatTime(value: string | undefined, timeFormat: TimeFormat) {
-	try {
-		const formattedTime = parseTime(value, timeFormat);
-		return formattedTime;
-	} catch (e) {
-		console.warn(e);
-		return value;
-	}
-}
-
-export function isValidTime(value: string) {
-	return isValid(new Date(`1970-01-01T${parseTime(value, 'HH:mm')}`));
-}
-
-export function transformValuePropToInputValue(
-	valueProp: string | undefined,
-	timeFormat: TimeFormat
-): string {
-	if (typeof valueProp === 'undefined') return '';
-	return formatTime(valueProp, timeFormat);
-}
