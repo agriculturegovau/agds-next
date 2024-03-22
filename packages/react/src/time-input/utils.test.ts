@@ -2,37 +2,37 @@ import { isValidTime, parseTime } from './utils';
 
 describe('isValidTime', () => {
 	test('Valid values', () => {
-		expect(isValidTime('0')).toBe(true);
-		expect(isValidTime('1')).toBe(true);
-		expect(isValidTime('11')).toBe(true);
-		expect(isValidTime('111')).toBe(true);
-		expect(isValidTime('1111')).toBe(true);
-		expect(isValidTime('11111')).toBe(true);
-		expect(isValidTime('111111')).toBe(true);
-		expect(isValidTime('21')).toBe(true);
-		expect(isValidTime('2100')).toBe(true);
-		expect(isValidTime('21:00')).toBe(true);
-		expect(isValidTime('24')).toBe(true);
-		expect(isValidTime('9')).toBe(true);
-		expect(isValidTime('9:00')).toBe(true);
-		expect(isValidTime('9am')).toBe(true);
-		expect(isValidTime('9pm')).toBe(true);
-		expect(isValidTime('9 am')).toBe(true);
-		expect(isValidTime('9 pm')).toBe(true);
-		expect(isValidTime("9 o'clock")).toBe(true);
+		expect(isValidTime('0')).toEqual(true);
+		expect(isValidTime('1')).toEqual(true);
+		expect(isValidTime('11')).toEqual(true);
+		expect(isValidTime('111')).toEqual(true);
+		expect(isValidTime('1111')).toEqual(true);
+		expect(isValidTime('11111')).toEqual(true);
+		expect(isValidTime('111111')).toEqual(true);
+		expect(isValidTime('21')).toEqual(true);
+		expect(isValidTime('2100')).toEqual(true);
+		expect(isValidTime('21:00')).toEqual(true);
+		expect(isValidTime('24')).toEqual(true);
+		expect(isValidTime('9')).toEqual(true);
+		expect(isValidTime('9:00')).toEqual(true);
+		expect(isValidTime('9am')).toEqual(true);
+		expect(isValidTime('9pm')).toEqual(true);
+		expect(isValidTime('9 am')).toEqual(true);
+		expect(isValidTime('9 pm')).toEqual(true);
+		expect(isValidTime("9 o'clock")).toEqual(true);
 	});
 
 	test('Invalid values', () => {
-		expect(isValidTime('666')).toBe(false);
-		expect(isValidTime('6666')).toBe(false);
-		expect(isValidTime('66666')).toBe(false);
-		expect(isValidTime('666666')).toBe(false);
-		expect(isValidTime('25')).toBe(false);
-		expect(isValidTime('2500')).toBe(false);
-		expect(isValidTime('25:00')).toBe(false);
-		expect(isValidTime('9:66')).toBe(false);
-		expect(isValidTime('pm')).toBe(false);
-		expect(isValidTime(`am`)).toBe(false);
+		expect(isValidTime('666')).toEqual(false);
+		expect(isValidTime('6666')).toEqual(false);
+		expect(isValidTime('66666')).toEqual(false);
+		expect(isValidTime('666666')).toEqual(false);
+		expect(isValidTime('25')).toEqual(false);
+		expect(isValidTime('2500')).toEqual(false);
+		expect(isValidTime('25:00')).toEqual(false);
+		expect(isValidTime('9:66')).toEqual(false);
+		expect(isValidTime('pm')).toEqual(false);
+		expect(isValidTime('am')).toEqual(false);
 	});
 });
 
