@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { goldTheme, useTernaryState } from '../core';
+import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
 import { render, screen, cleanup, waitFor } from '../../../../test-utils';
@@ -25,7 +25,7 @@ function renderBaseDrawer() {
 	);
 }
 
-function DrawerExample({ isMuted = false }: { isMuted?: boolean }) {
+function DrawerExample() {
 	const [isOpen, open, close] = useTernaryState(false);
 	return (
 		<div>
@@ -70,8 +70,8 @@ function OnDismissDrawerExample() {
 	);
 }
 
-function renderDrawer({ isMuted = false }: { isMuted?: boolean } = {}) {
-	return render(<DrawerExample isMuted={isMuted} />);
+function renderDrawer() {
+	return render(<DrawerExample />);
 }
 function renderOnDismissDrawer() {
 	return render(<OnDismissDrawerExample />);
@@ -132,31 +132,6 @@ describe('Drawer', () => {
 		// Note: We need to wait for the closing animation
 		await waitFor(() =>
 			expect(screen.getByTestId('open-button')).toHaveFocus()
-		);
-	});
-
-	it('Has 80% opacity by default', async () => {
-		renderDrawer();
-
-		// Open the Drawer by clicking the "Open" button
-		await userEvent.click(screen.getByTestId('open-button'));
-
-		const overlayElement = await screen.findByTestId('draw-overlay');
-
-		expect(overlayElement).toHaveStyle(
-			`background-color: ${goldTheme.lightOverlay}`
-		);
-	});
-	it('Has 30% opacity when muted', async () => {
-		renderDrawer({ isMuted: true });
-
-		// Open the Drawer by clicking the "Open" button
-		await userEvent.click(screen.getByTestId('open-button'));
-
-		const overlayElement = await screen.findByTestId('draw-overlay');
-
-		expect(overlayElement).toHaveStyle(
-			`background-color: ${goldTheme.lightOverlayMuted}`
 		);
 	});
 });

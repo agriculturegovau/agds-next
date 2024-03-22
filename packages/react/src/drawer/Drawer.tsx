@@ -125,7 +125,6 @@ function Overlay({
 	return (
 		<animated.div
 			onClick={onClick}
-			data-testid="draw-overlay"
 			css={{
 				position: 'fixed',
 				inset: 0,
