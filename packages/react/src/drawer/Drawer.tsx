@@ -90,11 +90,11 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 			{isOpen ? <LockScroll scrollbarWidth={scrollbarWidth.current} /> : null}
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
-					<div ref={modalContainerRef}>
+					<div ref={modalContainerRef} data-draw-component="container">
 						<Overlay
 							onClick={handleClose}
 							style={{ opacity }}
-							mutedOverlay={mutedOverlay}
+							muted={mutedOverlay}
 						/>
 						<DrawerDialog
 							onClose={handleClose}
@@ -116,21 +116,20 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 function Overlay({
 	onClick,
 	style,
-	mutedOverlay,
+	muted,
 }: {
 	onClick: MouseEventHandler<HTMLDivElement>;
 	style: { opacity: SpringValue<number> };
-	mutedOverlay: boolean;
+	muted: boolean;
 }) {
 	return (
 		<animated.div
+			data-draw-component="overlay"
 			onClick={onClick}
 			css={{
 				position: 'fixed',
 				inset: 0,
-				backgroundColor: mutedOverlay
-					? boxPalette.overlayMuted
-					: boxPalette.overlay,
+				backgroundColor: muted ? boxPalette.overlayMuted : boxPalette.overlay,
 				zIndex: tokens.zIndex.overlay,
 			}}
 			style={style}
