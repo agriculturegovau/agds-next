@@ -71,9 +71,8 @@ type DatePickerBaseProps = {
 	/** The value of the field. */
 	value: Date | string | undefined;
 	/** Function to be fired following a change event. */
-	onChange: (day: Date | undefined | string) => void;
+	onChange: (day: Date | undefined) => void;
 	/** Function to be fired when the input value is updated. */
-	/** @deprecated Just use onChange */
 	onInputChange?: (inputValue: string) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
@@ -87,6 +86,7 @@ export type DatePickerProps = DatePickerInputProps &
 
 export const DatePicker = ({
 	value,
+	onBlur: onBlurProp,
 	onChange,
 	onInputChange: onInputChangeProp,
 	minDate,
@@ -131,7 +131,13 @@ export const DatePicker = ({
 		const parsedDate = parseDate(inputValue);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-		onChange(constrainedDate || inputValue);
+		if (!inputValue || constrainedDate) {
+			onChange(constrainedDate);
+		} else {
+			onInputChangeProp?.(inputValue);
+		}
+
+		onBlurProp?.(e);
 	};
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {

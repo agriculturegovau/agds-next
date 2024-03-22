@@ -91,6 +91,7 @@ To modify the time format, you can change the `timeFormat` prop to one of these 
 	const [value, setValue] = React.useState({ raw: '9pm' });
 
 	const onChange = (e) => {
+		console.log('onChange', e);
 		setValue(e);
 	};
 
