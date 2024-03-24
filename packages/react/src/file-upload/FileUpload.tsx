@@ -251,13 +251,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					)
 				);
 			} else if (dropzoneFileRejections.length > 0) {
-				setFileRejections(
-					reformatDropzoneErrors(
+				setFileRejections((prevRejections) => {
+					const newRejections = reformatDropzoneErrors(
 						dropzoneFileRejections,
 						maxSize,
 						acceptedFilesSummary
-					)
-				);
+					);
+					return [...prevRejections, ...newRejections];
+				});
 			}
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [
