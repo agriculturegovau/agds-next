@@ -138,17 +138,6 @@ export function formatFileExtension(ext: string) {
 	return ext.replace(/^\./, '');
 }
 
-export function sortFileByName(a: FileWithPath, b: FileWithPath): number {
-	return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-}
-
-export function sortRejectionByName(
-	a: FileRejection,
-	b: FileRejection
-): number {
-	return a.file.name.toLowerCase() > b.file.name.toLowerCase() ? 1 : -1;
-}
-
 export const TOO_MANY_FILES_ERROR: FileError = {
 	code: ErrorCode.TooManyFiles,
 	message: 'Too many files',

@@ -1,20 +1,12 @@
-import {
-	ErrorCode,
-	FileError,
-	FileRejection,
-	FileWithPath,
-} from 'react-dropzone';
+import { ErrorCode, FileError, FileRejection } from 'react-dropzone';
 import { createExampleFile } from './test-utils';
 import {
-	RejectedFile,
+	TOO_MANY_FILES_ERROR,
+	applyTooManyFilesError,
 	formatFileExtension,
 	formatFileSize,
 	getAcceptedFilesSummary,
 	getErrorSummary,
-	sortFileByName,
-	sortRejectionByName,
-	TOO_MANY_FILES_ERROR,
-	applyTooManyFilesError,
 } from './utils';
 
 const FILE_TOO_LARGE_ERROR_EXAMPLE: FileError = {
@@ -199,34 +191,6 @@ describe('applyTooManyFilesError', () => {
 				file,
 				errors: [FILE_TOO_LARGE_ERROR_EXAMPLE, TOO_MANY_FILES_ERROR],
 			})
-		);
-	});
-});
-
-describe('sortFileByName', () => {
-	it('sorts files by file name correctly', () => {
-		const A = createExampleFile({ name: 'A' });
-		const B = createExampleFile({ name: 'b' }); // lowercase on purpose
-		const C = createExampleFile({ name: 'C' });
-		const files: Array<FileWithPath> = [B, C, A];
-		expect(JSON.stringify(files.sort(sortFileByName))).toBe(
-			JSON.stringify([A, B, C])
-		);
-	});
-});
-
-describe('sortRejectionByName', () => {
-	it('sorts rejected files by file name correctly', () => {
-		const createRejectedFile = (name: string): RejectedFile => ({
-			file: createExampleFile({ name }),
-			errors: [TOO_MANY_FILES_ERROR],
-		});
-		const A = createRejectedFile('A');
-		const B = createRejectedFile('b'); // lowercase on purpose
-		const C = createRejectedFile('C');
-		const files: Array<RejectedFile> = [B, C, A];
-		expect(JSON.stringify(files.sort(sortRejectionByName))).toBe(
-			JSON.stringify([A, B, C])
 		);
 	});
 });

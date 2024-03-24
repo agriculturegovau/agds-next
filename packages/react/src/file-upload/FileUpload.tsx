@@ -30,8 +30,6 @@ import {
 	getFileListSummaryText,
 	reformatDropzoneErrors,
 	RejectedFile,
-	sortFileByName,
-	sortRejectionByName,
 	TOO_MANY_FILES_ERROR,
 } from './utils';
 
@@ -123,9 +121,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 				if (acceptableFiles.length > 0) {
 					const acceptedFile = acceptableFiles[0].file;
-					const newFiles = [...newBaseSetOfFiles, acceptedFile].sort(
-						sortFileByName
-					);
+					const newFiles = [...newBaseSetOfFiles, acceptedFile];
 
 					setFileRejections((prevRejections) =>
 						prevRejections.filter((rej) => rej.file.path !== acceptedFile.path)
@@ -247,9 +243,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								? applyTooManyFilesError(fileRej)
 								: fileRej;
 						});
-					return [...filteredPrevRejections, ...newRejections].sort(
-						sortRejectionByName
-					);
+					return [...filteredPrevRejections, ...newRejections];
 				});
 				onChange(
 					value.filter((val) =>
