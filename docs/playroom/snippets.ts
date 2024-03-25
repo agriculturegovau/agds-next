@@ -347,51 +347,6 @@ const snippets: Array<Snippet> = [
 		</Footer></Box>`,
 	},
 	{
-		group: 'Drawer',
-		name: 'Basic',
-		code: `<Drawer
-			isOpen={false}
-			onClose={() => {}}
-			title="Drawer title"
-			actions={
-				<ButtonGroup>
-					<Button onClick={() => {}}>Primary</Button>
-					<Button variant="secondary" onClick={() => {}}>
-						Secondary
-					</Button>
-					<Button variant="tertiary" onClick={() => {}}>
-						Tertiary
-					</Button>
-				</ButtonGroup>
-			}
-		>
-			<Text as="p">Drawer body area.</Text>
-		</Drawer>`,
-	},
-	{
-		group: 'Drawer',
-		name: 'Muted',
-		code: `<Drawer
-			isOpen={false}
-			onClose={() => {}}
-			mutedOverlay
-			title="Drawer title"
-			actions={
-				<ButtonGroup>
-					<Button onClick={() => {}}>Primary</Button>
-					<Button variant="secondary" onClick={() => {}}>
-						Secondary
-					</Button>
-					<Button variant="tertiary" onClick={() => {}}>
-						Tertiary
-					</Button>
-				</ButtonGroup>
-			}
-		>
-			<Text as="p">Drawer body area.</Text>
-		</Drawer>`,
-	},
-	{
 		group: 'AppLayoutHeader',
 		name: 'Without Account',
 		code: `
