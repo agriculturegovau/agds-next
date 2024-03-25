@@ -245,11 +245,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						});
 					return [...filteredPrevRejections, ...newRejections];
 				});
-				onChange(
-					value.filter((val) =>
-						fileRejections.every((rej) => rej.file.path !== val.path)
-					)
-				);
+				onChange(value.slice(0, maxFiles));
 			} else if (dropzoneFileRejections.length > 0) {
 				setFileRejections((prevRejections) => {
 					const newRejections = reformatDropzoneErrors(
