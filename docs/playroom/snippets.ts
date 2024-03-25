@@ -1,4 +1,4 @@
-import { Snippet } from "playroom";
+import { Snippet } from 'playroom';
 
 const boilerplateAppLayoutHeaderDropdown = `
 	<DropdownMenuPanel palette="light">
