@@ -74,42 +74,6 @@ The Drawer can be closed by either:
 
 When closing the Drawer, focus should be returned to the button that opened the Drawer.
 
-## Drawer with muted overlay
-
-By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mutedOverlay={true}`, the opacity can be reduced to 30%. This muted version allows sighted users with cognitive disabilites to more easily retain the context of the main page content while interacting with the drawer content.
-
-```jsx live
-() => {
-	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
-	return (
-		<React.Fragment>
-			<Button onClick={openDrawer}>Open Muted Drawer</Button>
-			<Drawer
-				isOpen={isDrawerOpen}
-				onClose={closeDrawer}
-				mutedOverlay={true}
-				title="Drawer title"
-				actions={
-					<ButtonGroup>
-						<Button onClick={closeDrawer}>Primary</Button>
-						<Button variant="secondary" onClick={closeDrawer}>
-							Secondary
-						</Button>
-						<Button variant="tertiary" onClick={closeDrawer}>
-							Tertiary
-						</Button>
-					</ButtonGroup>
-				}
-			>
-				<Text as="p">
-					Notice that the main page content is much easier to read.
-				</Text>
-			</Drawer>
-		</React.Fragment>
-	);
-};
-```
-
 ## Drawer widths
 
 The Drawer comes in the following 2 widths:
@@ -342,6 +306,42 @@ The Drawer comes in the following 2 widths:
 						interdum. Sit amet tellus cras adipiscing enim.
 					</p>
 				</Prose>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```
+
+## Drawer with muted overlay
+
+By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mutedOverlay={true}`, the opacity can be reduced to 30%. This muted version allows sighted users with cognitive disabilites to more easily retain the context of the main page content while interacting with the drawer content.
+
+```jsx live
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Muted Drawer</Button>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				mutedOverlay={true}
+				title="Drawer title"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Primary</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Secondary
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Tertiary
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">
+					Notice that the main page content is much easier to read.
+				</Text>
 			</Drawer>
 		</React.Fragment>
 	);
