@@ -350,7 +350,7 @@ const snippets: Array<Snippet> = [
 		group: 'Drawer',
 		name: 'Basic',
 		code: `<Drawer
-			isOpen={true}
+			isOpen={false}
 			onClose={() => {}}
 			title="Drawer title"
 			actions={
@@ -372,7 +372,7 @@ const snippets: Array<Snippet> = [
 		group: 'Drawer',
 		name: 'Muted',
 		code: `<Drawer
-			isOpen={true}
+			isOpen={false}
 			onClose={() => {}}
 			mutedOverlay
 			title="Drawer title"
