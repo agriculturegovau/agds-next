@@ -33,7 +33,7 @@ export type DrawerProps = PropsWithChildren<{
 	title: string;
 	/** The width of the drawer. */
 	width?: DrawerDialogWidth;
-	/** Lighten the overlay so that people can see the main content underneath more easily while the draw is open. */
+	/** Lighten the overlay so that the main content underneath is more visible while the draw is open. */
 	mutedOverlay?: boolean;
 }>;
 
