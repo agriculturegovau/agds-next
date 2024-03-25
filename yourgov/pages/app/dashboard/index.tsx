@@ -88,13 +88,13 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<Heading as="h2" type="h3">
-											<CardLink href="/not-found">
-												Liquor licencing and information
+											<CardLink href="/app/licences-and-permits/apply">
+												Apply for a permit
 											</CardLink>
 										</Heading>
 										<Text>
-											Use the liquor licence tool to quickly find the right
-											licence for your specific situation.
+											Use the permit tool to quickly create a new permit
+											application.
 										</Text>
 									</Stack>
 								</CardInner>
