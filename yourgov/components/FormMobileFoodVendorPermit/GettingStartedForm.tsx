@@ -44,18 +44,16 @@ export function GettingStartedForm() {
 					required
 					block
 				>
-					{['Food van', 'Food truck', 'Market stall', 'Ice-cream truck'].map(
-						(option) => (
-							<Radio
-								key={option}
-								{...register('businessType')}
-								value={option}
-								invalid={Boolean(errors.businessType?.message)}
-							>
-								{option}
-							</Radio>
-						)
-					)}
+					{['Food van', 'Coffee truck', 'Market stall'].map((option) => (
+						<Radio
+							key={option}
+							{...register('businessType')}
+							value={option}
+							invalid={Boolean(errors.businessType?.message)}
+						>
+							{option}
+						</Radio>
+					))}
 				</ControlGroup>
 				<ButtonGroup>
 					<Button type="submit">Get started</Button>
