@@ -1,3 +1,5 @@
+import { Snippet } from "playroom";
+
 const boilerplateAppLayoutHeaderDropdown = `
 	<DropdownMenuPanel palette="light">
 		<DropdownMenuGroup label="Businesses">
@@ -103,7 +105,7 @@ const boilerplateAppTemplate = (content: string) => `
 </AppLayout>
 `;
 
-const snippets = [
+const snippets: Array<Snippet> = [
 	{
 		group: 'Boilerplate',
 		name: 'Basic',
@@ -343,6 +345,51 @@ const snippets = [
 				&copy; 2024 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer></Box>`,
+	},
+	{
+		group: 'Drawer',
+		name: 'Basic',
+		code: `<Drawer
+			isOpen={true}
+			onClose={() => {}}
+			title="Drawer title"
+			actions={
+				<ButtonGroup>
+					<Button onClick={() => {}}>Primary</Button>
+					<Button variant="secondary" onClick={() => {}}>
+						Secondary
+					</Button>
+					<Button variant="tertiary" onClick={() => {}}>
+						Tertiary
+					</Button>
+				</ButtonGroup>
+			}
+		>
+			<Text as="p">Drawer body area.</Text>
+		</Drawer>`,
+	},
+	{
+		group: 'Drawer',
+		name: 'Muted',
+		code: `<Drawer
+			isOpen={true}
+			onClose={() => {}}
+			mutedOverlay
+			title="Drawer title"
+			actions={
+				<ButtonGroup>
+					<Button onClick={() => {}}>Primary</Button>
+					<Button variant="secondary" onClick={() => {}}>
+						Secondary
+					</Button>
+					<Button variant="tertiary" onClick={() => {}}>
+						Tertiary
+					</Button>
+				</ButtonGroup>
+			}
+		>
+			<Text as="p">Drawer body area.</Text>
+		</Drawer>`,
 	},
 	{
 		group: 'AppLayoutHeader',
