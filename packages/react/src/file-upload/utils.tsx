@@ -246,3 +246,12 @@ export function checkRejectionsHaveSameFiles(
 		JSON.stringify(rejectionListTwo.map((rej) => rej.file))
 	);
 }
+
+export function removeItemAtIndex<ItemType>(
+	array: Array<ItemType>,
+	index: number
+) {
+	const cloneArray = [...array];
+	cloneArray.splice(index, 1);
+	return cloneArray;
+}
