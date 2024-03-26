@@ -1,3 +1,5 @@
+import { Snippet } from 'playroom';
+
 const boilerplateAppLayoutHeaderDropdown = `
 	<DropdownMenuPanel palette="light">
 		<DropdownMenuGroup label="Businesses">
@@ -103,7 +105,7 @@ const boilerplateAppTemplate = (content: string) => `
 </AppLayout>
 `;
 
-const snippets = [
+const snippets: Array<Snippet> = [
 	{
 		group: 'Boilerplate',
 		name: 'Basic',
