@@ -9,19 +9,17 @@ import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
+import { Divider } from '../divider';
 import { Field } from '../field';
 import { Flex } from '../flex';
 import { UploadIcon } from '../icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { Divider } from '../divider';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
-	applyTooManyFilesError,
-	checkRejectionsHaveSameFiles,
 	convertFileToTooManyFilesRejection,
 	CustomFileMimeType,
 	ExistingFile,
@@ -32,8 +30,6 @@ import {
 	getErrorSummary,
 	getFileListSummaryText,
 	reformatDropzoneErrors,
-	RejectedFile,
-	TOO_MANY_FILES_ERROR,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -157,12 +153,25 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					const newAcceptedFiles = [...prevAcceptedFiles, ...acceptedFiles];
 
 					if (maxFiles && newAcceptedFiles.length > maxFiles) {
-						setWaitingListRejections((prevWaitingList) => [
-							...prevWaitingList,
-							...newAcceptedFiles
+						setWaitingListRejections((prevWaitingList) => {
+							const newWaitingList = newAcceptedFiles
 								.slice(maxFiles)
-								.map(convertFileToTooManyFilesRejection),
-						]);
+								.map(convertFileToTooManyFilesRejection);
+
+							if (
+								JSON.stringify(prevWaitingList) ===
+								JSON.stringify(newWaitingList)
+							) {
+								return prevWaitingList;
+							}
+
+							return [
+								...prevWaitingList,
+								...newAcceptedFiles
+									.slice(maxFiles)
+									.map(convertFileToTooManyFilesRejection),
+							];
+						});
 						return newAcceptedFiles.slice(0, maxFiles);
 					}
 
@@ -173,10 +182,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
-		useEffect(() => {
-			onChange?.(acceptedFiles);
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [acceptedFiles]);
+		// useEffect(() => {
+		// 	onChange?.(acceptedFiles);
+		// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// }, [acceptedFiles]);
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into a format accepted by react-dropzone
 		const accept = useMemo(() => {
