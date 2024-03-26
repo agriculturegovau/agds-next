@@ -63,11 +63,11 @@ export function isValidTime(value: string) {
 }
 
 export function transformValuePropToInputValue(
-	valueProp: string | undefined,
+	value: string | undefined,
 	timeFormat: TimeFormat
 ): string {
-	if (typeof valueProp === 'undefined') return '';
-	return formatTime(valueProp, timeFormat);
+	if (typeof value === 'undefined') return '';
+	return formatTime(value, timeFormat);
 }
 
 export const timeFormats = {
