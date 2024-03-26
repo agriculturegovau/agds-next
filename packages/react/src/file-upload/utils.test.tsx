@@ -3,6 +3,7 @@ import { createExampleFile } from './test-utils';
 import {
 	TOO_MANY_FILES_ERROR,
 	applyTooManyFilesError,
+	convertFileToTooManyFilesRejection,
 	formatFileExtension,
 	formatFileSize,
 	getAcceptedFilesSummary,
@@ -190,6 +191,19 @@ describe('applyTooManyFilesError', () => {
 			JSON.stringify({
 				file,
 				errors: [FILE_TOO_LARGE_ERROR_EXAMPLE, TOO_MANY_FILES_ERROR],
+			})
+		);
+	});
+});
+
+describe('convertFileToTooManyFilesRejection', () => {
+	test('converts the file into a too many files rejection error', () => {
+		const file = createExampleFile();
+		const rejection = convertFileToTooManyFilesRejection(file);
+		expect(JSON.stringify(rejection)).toBe(
+			JSON.stringify({
+				file,
+				errors: [TOO_MANY_FILES_ERROR],
 			})
 		);
 	});

@@ -229,3 +229,10 @@ export function getImageThumbnail(file: FileWithPath) {
 	const isImageType = file.type.match(imageMimeTypes);
 	return isImageType ? URL.createObjectURL(file) : undefined;
 }
+
+export function convertFileToTooManyFilesRejection(file: FileWithPath) {
+	return {
+		file,
+		errors: [TOO_MANY_FILES_ERROR],
+	};
+}
