@@ -1,5 +1,16 @@
 # @ag.ds-next/docs
 
+## 0.9.0
+
+### Minor Changes
+
+- 89ffacb7672: drawer: Added `mutedOverlay` prop to the Drawer component so that context with the main page content can be more easily retained.
+
+### Patch Changes
+
+- Updated dependencies [89ffacb7672]
+  - @ag.ds-next/react@1.21.0
+
 ## 0.8.0
 
 ### Minor Changes
