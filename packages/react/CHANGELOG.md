@@ -1,5 +1,15 @@
 # @ag.ds-next/react
 
+## 1.21.0
+
+### Minor Changes
+
+- 89ffacb7672: drawer: Added `mutedOverlay` prop to the Drawer component so that context with the main page content can be more easily retained.
+
+### Patch Changes
+
+- 342c6a450af: docs: grouped-fields. Update select options. Allow appropriate ones to be changed
+
 ## 1.20.0
 
 ### Minor Changes
