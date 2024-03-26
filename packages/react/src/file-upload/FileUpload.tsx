@@ -104,6 +104,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
+		if (maxFiles !== undefined && maxFiles < 1) {
+			throw new Error('maxFiles cannot be less than 1');
+		}
+
 		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);
 
 		const handleRemoveFile = (file: FileWithStatus) => {
