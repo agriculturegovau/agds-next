@@ -30,6 +30,7 @@ import {
 	getErrorSummary,
 	getFileListSummaryText,
 	reformatDropzoneErrors,
+	removeItemAtIndex,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -139,11 +140,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const handleRemoveWaitingListItem = (index: number) => {
 			setWaitingListRejections((prevWaitingList) =>
-				prevWaitingList.splice(index, 1)
+				removeItemAtIndex(prevWaitingList, index)
 			);
 		};
 		const handleRemoveInvalidItem = (index: number) => {
-			setInvalidRejections((prevRejections) => prevRejections.splice(index, 1));
+			setInvalidRejections((prevRejections) =>
+				removeItemAtIndex(prevRejections, index)
+			);
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
