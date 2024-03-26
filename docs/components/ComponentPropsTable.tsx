@@ -43,6 +43,27 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 		</TableHead>
 		<TableBody>
 			{Object.values(data.props).map((prop) => {
+				let defaultValue = prop.defaultValue?.value;
+
+				if (defaultValue) {
+					if (
+						prop.type.name === 'boolean' ||
+						(typeof defaultValue === 'string' && defaultValue.startsWith('['))
+					) {
+						// Do nothing
+					} else if (
+						typeof defaultValue === 'string' &&
+						defaultValue.startsWith('{')
+					) {
+						defaultValue = defaultValue
+							.replace(/\n/g, '')
+							.replace(/\t/g, ' ')
+							.replace(/, \}/, ' }');
+					} else {
+						defaultValue = JSON.stringify(defaultValue);
+					}
+				}
+
 				return (
 					<TableRow key={prop.name}>
 						<TableCell>
@@ -54,10 +75,10 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 						<TableCell>
 							<span css={{ wordBreak: 'break-word' }}>
 								{prop.type.name}
-								{prop.defaultValue?.value ? (
-									<span css={{ display: 'block' }}>
+								{defaultValue ? (
+									<span css={{ display: 'block', whiteSpace: 'pre-wrap' }}>
 										<strong>Default: </strong>
-										{JSON.stringify(prop.defaultValue.value)}
+										{String(defaultValue)}
 									</span>
 								) : null}
 							</span>

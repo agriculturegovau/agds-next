@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeInput renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <label
+      class="css-79i25n-boxStyles"
+      for="field-:r0:"
+    >
+      <span
+        class="css-433uqb-boxStyles-Text"
+      >
+        Time
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+         
+        (e.g. 9:30 pm) (optional)
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      aria-required="false"
+      class="css-mtd7ku"
+      id="field-:r0:"
+      type="text"
+      value=""
+    />
+    <div
+      aria-hidden="true"
+      class="css-9l8g4f-Field"
+    />
+  </div>
+</div>
+`;
+
+exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+  >
+    <label
+      class="css-79i25n-boxStyles"
+      for="field-:r2:"
+    >
+      <span
+        class="css-433uqb-boxStyles-Text"
+      >
+        Time
+      </span>
+      <span
+        class="css-1rpt3h8-boxStyles-Text"
+      >
+         
+        (e.g. 9:30 pm) (optional)
+      </span>
+    </label>
+    <input
+      aria-invalid="false"
+      aria-required="false"
+      class="css-mtd7ku"
+      id="field-:r2:"
+      type="text"
+      value="9:30 pm"
+    />
+    <div
+      aria-hidden="true"
+      class="css-9l8g4f-Field"
+    />
+  </div>
+</div>
+`;
