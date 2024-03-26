@@ -20,6 +20,7 @@ import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
 	applyTooManyFilesError,
+	checkRejectionsHaveSameFiles,
 	convertFileToTooManyFilesRejection,
 	CustomFileMimeType,
 	ExistingFile,
@@ -222,7 +223,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					dropzoneFileRejections,
 					maxSize,
 					acceptedFilesSummary
-				).map(applyTooManyFilesError);
+				).map((rejection, index) => {
+					const sizeRejectionIndex =
+						acceptedFiles.length + tooManyFilesRejectionList.length + index;
+					return maxFiles && sizeRejectionIndex > maxFiles
+						? applyTooManyFilesError(rejection)
+						: rejection;
+				});
 
 				setFileRejections((prevRejections) => {
 					const newRejections = [
@@ -243,7 +250,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								: fileRej;
 						}
 					);
-					return [...modifiedPrevRejections, ...newRejections];
+					const areSameFiles = checkRejectionsHaveSameFiles(
+						prevRejections,
+						newRejections
+					);
+					return areSameFiles
+						? newRejections
+						: [...modifiedPrevRejections, ...newRejections];
 				});
 				onChange(value.slice(0, maxFiles));
 			} else if (dropzoneFileRejections.length > 0) {
@@ -253,7 +266,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						maxSize,
 						acceptedFilesSummary
 					);
-					const allRejections = [...prevRejections, ...newRejections];
+					const areSameFiles = checkRejectionsHaveSameFiles(
+						prevRejections,
+						newRejections
+					);
+
+					const allRejections = areSameFiles
+						? newRejections
+						: [...prevRejections, ...newRejections];
 					const isOverMax = checkIsOverMaxFilesLimit(allRejections);
 
 					if (isOverMax) {

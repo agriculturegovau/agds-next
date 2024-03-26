@@ -236,3 +236,13 @@ export function convertFileToTooManyFilesRejection(file: FileWithPath) {
 		errors: [TOO_MANY_FILES_ERROR],
 	};
 }
+
+export function checkRejectionsHaveSameFiles(
+	rejectionListOne: Array<FileRejection>,
+	rejectionListTwo: Array<FileRejection>
+): boolean {
+	return (
+		JSON.stringify(rejectionListOne.map((rej) => rej.file)) ===
+		JSON.stringify(rejectionListTwo.map((rej) => rej.file))
+	);
+}
