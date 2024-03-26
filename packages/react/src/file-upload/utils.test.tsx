@@ -1,8 +1,10 @@
 import { ErrorCode, FileError, FileRejection } from 'react-dropzone';
 import { createExampleFile } from './test-utils';
 import {
+	FileWithStatus,
 	TOO_MANY_FILES_ERROR,
 	applyTooManyFilesError,
+	checkRejectionsHaveSameFiles,
 	convertFileToTooManyFilesRejection,
 	formatFileExtension,
 	formatFileSize,
@@ -14,6 +16,47 @@ const FILE_TOO_LARGE_ERROR_EXAMPLE: FileError = {
 	code: ErrorCode.FileTooLarge,
 	message: 'File size exceeds 200 kB',
 };
+
+describe('createExampleFile', () => {
+	test('default file data', () => {
+		expect(
+			JSON.stringify(
+				createExampleFile({
+					lastModified: 100,
+				})
+			)
+		).toBe(
+			JSON.stringify({
+				name: 'example.txt',
+				type: 'text/plain',
+				lastModified: 100,
+				size: 100,
+			})
+		);
+	});
+	test('custom file data', () => {
+		expect(
+			JSON.stringify(
+				createExampleFile({
+					href: '/',
+					name: 'example',
+					status: 'success',
+					type: 'image/png',
+					lastModified: 100,
+				})
+			)
+		).toBe(
+			JSON.stringify({
+				name: 'example',
+				type: 'image/png',
+				lastModified: 100,
+				size: 100,
+				status: 'success',
+				href: '/',
+			})
+		);
+	});
+});
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
@@ -206,6 +249,48 @@ describe('convertFileToTooManyFilesRejection', () => {
 				errors: [TOO_MANY_FILES_ERROR],
 			})
 		);
+	});
+});
+
+describe('checkRejectionsHaveSameFiles', () => {
+	const createRejectedFile = (args: Partial<FileWithStatus> = {}) =>
+		convertFileToTooManyFilesRejection(createExampleFile(args));
+
+	const fileA = createRejectedFile({ name: 'A' });
+	const fileB = createRejectedFile({ name: 'B' });
+	const fileC = createRejectedFile({ name: 'C' });
+
+	const fileD = createRejectedFile({ name: 'D' });
+	const fileE = createRejectedFile({ name: 'E' });
+	const fileF = createRejectedFile({ name: 'F' });
+
+	const rejectionListOne = [fileA, fileB, fileC];
+	const rejectionListTwo = [fileD, fileE, fileF];
+	const rejectionListThree = [
+		{
+			...fileA,
+			errors: [{ code: ErrorCode.FileTooLarge, message: 'too large' }],
+		},
+		fileB,
+		fileC,
+	];
+
+	test('exactly same', () => {
+		expect(
+			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListOne)
+		).toBe(true);
+	});
+	test('different', () => {
+		console.log(JSON.stringify({ rejectionListOne }));
+		console.log('nn', JSON.stringify({ rejectionListTwo }), 'nn');
+		expect(
+			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListTwo)
+		).toBe(false);
+	});
+	test('same files but different errors', () => {
+		expect(
+			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListThree)
+		).toBe(true);
 	});
 });
 
