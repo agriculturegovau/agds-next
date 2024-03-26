@@ -20,6 +20,7 @@ import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
 	applyTooManyFilesError,
+	convertFileToTooManyFilesRejection,
 	CustomFileMimeType,
 	ExistingFile,
 	fileTypeMapping,
@@ -199,25 +200,23 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			invalid: invalid || !!errorSummary,
 		});
 
-		const valueChangeToken = JSON.stringify(
-			value.filter((file) =>
-				fileRejections.every(
-					(rejectedFile) => rejectedFile.file.path !== file.path
-				)
-			)
-		);
+		const changeToken = JSON.stringify([
+			value,
+			dropzoneFileRejections,
+			formattedMaxFileSize,
+			acceptedFilesSummary,
+		]);
 
 		useEffect(() => {
-			const isOverMaxFilesLimit =
-				maxFiles && value.length + fileRejections.length > maxFiles;
+			const checkIsOverMaxFilesLimit = (rejections = fileRejections) =>
+				maxFiles && value.length + rejections.length > maxFiles;
+			const isOverMaxFilesLimit = checkIsOverMaxFilesLimit();
+			const acceptedFiles = maxFiles ? value.slice(0, maxFiles - 1) : value;
 
 			if (isOverMaxFilesLimit) {
 				const tooManyFilesRejectionList: Array<RejectedFile> = value
 					.slice(maxFiles)
-					.map((file) => ({
-						file,
-						errors: [TOO_MANY_FILES_ERROR],
-					}));
+					.map(convertFileToTooManyFilesRejection);
 
 				const reformattedDropzoneRejections = reformatDropzoneErrors(
 					dropzoneFileRejections,
@@ -231,23 +230,20 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						...reformattedDropzoneRejections,
 					];
 
-					const filteredPrevRejections = prevRejections
-						.filter((prevFileRej) =>
-							newRejections.every(
-								(newFileRej) =>
-									JSON.stringify(newFileRej.file) !==
-									JSON.stringify(prevFileRej.file)
-							)
-						)
-						.map((fileRej) => {
+					const modifiedPrevRejections = prevRejections.map(
+						(fileRej, index) => {
 							const isMissingTooManyFilesError = fileRej.errors.every(
 								(err) => err.code !== TOO_MANY_FILES_ERROR.code
 							);
-							return isMissingTooManyFilesError
+							const isOverFileLimit =
+								maxFiles && acceptedFiles.length + index >= maxFiles;
+
+							return isMissingTooManyFilesError && isOverFileLimit
 								? applyTooManyFilesError(fileRej)
 								: fileRej;
-						});
-					return [...filteredPrevRejections, ...newRejections];
+						}
+					);
+					return [...modifiedPrevRejections, ...newRejections];
 				});
 				onChange(value.slice(0, maxFiles));
 			} else if (dropzoneFileRejections.length > 0) {
@@ -257,16 +253,28 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						maxSize,
 						acceptedFilesSummary
 					);
-					return [...prevRejections, ...newRejections];
+					const allRejections = [...prevRejections, ...newRejections];
+					const isOverMax = checkIsOverMaxFilesLimit(allRejections);
+
+					if (isOverMax) {
+						return allRejections.map((rej, index) => {
+							const hasTooManyFilesError = rej.errors.some(
+								(err) => err.code === TOO_MANY_FILES_ERROR.code
+							);
+							const isRejOverMaxFilesLimit =
+								!hasTooManyFilesError &&
+								maxFiles &&
+								acceptedFiles.length + index >= maxFiles;
+
+							return isRejOverMaxFilesLimit ? applyTooManyFilesError(rej) : rej;
+						});
+					}
+
+					return allRejections;
 				});
 			}
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [
-			valueChangeToken,
-			dropzoneFileRejections,
-			formattedMaxFileSize,
-			acceptedFilesSummary,
-		]);
+		}, [changeToken]);
 
 		const {
 			// We are using an _actual_ button, so we don't need these props
