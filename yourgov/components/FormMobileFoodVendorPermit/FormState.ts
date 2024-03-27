@@ -1,11 +1,12 @@
 import { DeepPartial } from '../../lib/types';
 import { task1DefaultFormState, Task1FormState } from './FormTask1FormState';
+import { Task2Step1FormSchema } from './task2/FormTask2FormState';
 
 // TODO Create task 2 of the form
 export type Task2FormState = {
 	started: boolean;
 	completed: boolean;
-	[1]: { started: boolean; completed: boolean };
+	step1: Task2Step1FormSchema & { completed: boolean };
 };
 
 // TODO Create task 3 of the form
