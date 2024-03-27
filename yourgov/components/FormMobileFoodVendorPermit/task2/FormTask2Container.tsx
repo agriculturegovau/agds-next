@@ -30,14 +30,12 @@ export function FormTask2Container({
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task2FormSteps[stepIndex];
-		console.log({ step });
-		debugger;
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'doing';
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.task2?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
-		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
+		if (step.formStateKey !== 'step1' && !canConfirmAndSubmit) return 'blocked';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
@@ -66,7 +64,7 @@ export function FormTask2Container({
 						Back
 					</DirectionLink>
 					<FormContainer
-						task={1}
+						task={2}
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}

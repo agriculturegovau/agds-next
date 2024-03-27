@@ -7,47 +7,29 @@ import {
 	useMemo,
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { FormStep } from '../types';
+import { Task2StepNumber } from './Task2Types';
 
 const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
-export const task2FormSteps = [
+export const task2FormSteps: Array<FormStep<Task2StepNumber>> = [
 	{
 		formStateKey: 'step1',
-		label: 'Owner details',
+		label: 'Employees',
 		href: formHomePage + '/task-2/step-1',
 	},
 	{
 		formStateKey: 'step2',
-		label: 'Business details',
+		label: 'Food Safety Supervisor',
 		href: formHomePage + '/task-2/step-2',
 	},
 	{
 		formStateKey: 'step3',
-		label: 'Business address',
+		label: 'Review and complete task',
 		href: formHomePage + '/task-2/step-3',
 	},
-	{
-		formStateKey: 'step4',
-		label: 'Vehicle registration',
-		href: formHomePage + '/task-2/step-4',
-	},
-	{
-		formStateKey: 'step5',
-		label: 'Trading time',
-		href: formHomePage + '/task-2/step-5',
-	},
-	{
-		formStateKey: 'step6',
-		label: 'Food served',
-		href: formHomePage + '/task-2/step-6',
-	},
-	{
-		formStateKey: 'step7',
-		label: 'Confirm and submit',
-		href: formHomePage + '/task-2/step-7',
-	},
-] as const;
+];
 
 type ContextType = {
 	/** The href of the previous step. */
@@ -89,12 +71,9 @@ export function FormTask2Provider({ children }: PropsWithChildren<{}>) {
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
 		if (
-			!formState.task2?.step1?.completed //||
-			// !formState.task2?.step2?.completed ||
-			// !formState.task2?.step3?.completed ||
-			// !formState.task2?.step4?.completed ||
-			// !formState.task2?.step5?.completed ||
-			// !formState.task2?.step6?.completed
+			!formState.task2?.step1?.completed ||
+			!formState.task2?.step2?.completed ||
+			!formState.task2?.step3?.completed
 		) {
 			return false;
 		}

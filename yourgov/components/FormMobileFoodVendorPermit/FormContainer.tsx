@@ -40,6 +40,8 @@ export function FormContainer({
 	);
 }
 
+console.log(1, globalFormTasks[1].label);
+
 const FORM_TITLE_MAP = {
 	1: globalFormTasks[0].label,
 	2: globalFormTasks[1].label,

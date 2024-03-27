@@ -7,6 +7,8 @@ export type Task2FormState = {
 	started: boolean;
 	completed: boolean;
 	step1: Task2Step1FormSchema & { completed: boolean };
+	step2: Task2Step1FormSchema & { completed: boolean }; //TODO
+	step3: Task2Step1FormSchema & { completed: boolean }; //TODO
 };
 
 // TODO Create task 3 of the form

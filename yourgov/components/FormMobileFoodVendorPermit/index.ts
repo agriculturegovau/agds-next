@@ -17,5 +17,10 @@ export { FormTask1Step6 } from './task1/FormTask1Step6';
 export { FormTask1Step7 } from './task1/FormTask1Step7';
 export { FormTask1Review } from './task1/FormTask1Review';
 
+// Task 2
+export { FormTask2Provider, task2FormSteps } from './task2/FormTask2Provider';
+export { FormTask2Step1 } from './task2/FormTask2Step1';
+export { FormTask2Step1AddEmployee } from './task2/FormTask2Step1AddEmployee';
+
 // Task 4
 export { FormTask4Step1 } from './FormTask4Step1';

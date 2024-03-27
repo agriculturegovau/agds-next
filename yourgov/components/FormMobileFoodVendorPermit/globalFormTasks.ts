@@ -1,4 +1,13 @@
-export const globalFormTasks = [
+interface GlobalFormTask {
+	formStateKey: TaskKey,
+	label: string,
+	href: string,
+	message: string,
+}
+
+type TaskKey = 'task1' | 'task2' | 'task3' | 'task4'
+
+export const globalFormTasks: Array<GlobalFormTask> = [
 	{
 		formStateKey: 'task1',
 		label: 'Provide business details',
@@ -23,4 +32,4 @@ export const globalFormTasks = [
 		href: '/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-4/step-1',
 		message: 'Check all details and submit your application',
 	},
-] as const;
+];

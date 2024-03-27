@@ -7,11 +7,13 @@ import {
 	useMemo,
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { FormStep } from '../types';
+import { Task1StepNumber } from './Task1Types';
 
 const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
-export const task1FormSteps = [
+export const task1FormSteps: Array<FormStep<Task1StepNumber>> = [
 	{
 		formStateKey: 'step1',
 		label: 'Owner details',
@@ -47,7 +49,7 @@ export const task1FormSteps = [
 		label: 'Confirm and submit',
 		href: formHomePage + '/task-1/step-7',
 	},
-] as const;
+];
 
 type ContextType = {
 	/** The href of the previous step. */
