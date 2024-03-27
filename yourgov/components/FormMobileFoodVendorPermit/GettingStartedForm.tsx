@@ -1,11 +1,12 @@
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/router';
+import { ReactElement, ReactNode } from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 
 const formSchema = yup
 	.object({
@@ -15,7 +16,11 @@ const formSchema = yup
 
 type FormSchema = yup.InferType<typeof formSchema>;
 
-export function GettingStartedForm() {
+export function GettingStartedForm({
+	children,
+}: {
+	children: (button: ReactElement) => ReactNode;
+}) {
 	const router = useRouter();
 
 	const {
@@ -55,9 +60,11 @@ export function GettingStartedForm() {
 						</Radio>
 					))}
 				</ControlGroup>
-				<ButtonGroup>
-					<Button type="submit">Get started</Button>
-				</ButtonGroup>
+				{children(
+					<ButtonGroup>
+						<Button type="submit">Apply for permit</Button>
+					</ButtonGroup>
+				)}
 			</FormStack>
 		</form>
 	);
