@@ -123,25 +123,34 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		];
 		const allRejections = [...waitingListRejections, ...invalidRejections];
 
-		const handleRemoveAcceptedFile = (file: FileWithStatus) => {
+		const handleRemoveAcceptedFile = (index: number) => {
 			setAcceptedFiles((prevAcceptedFiles) => {
-				const filteredAcceptedFiles = prevAcceptedFiles.filter(
-					(prevFile) => prevFile.name !== file.name
+				const updatedAcceptedFiles = removeItemAtIndex(
+					prevAcceptedFiles,
+					index
 				);
 				if (waitingListRejections.length) {
 					const newAcceptedFile = waitingListRejections[0].file;
-					handleRemoveWaitingListItem(0);
+					handleRemoveWaitingListItem(0, newAcceptedFile);
 
-					return [...filteredAcceptedFiles, newAcceptedFile];
+					return [...updatedAcceptedFiles, newAcceptedFile];
 				}
-				return filteredAcceptedFiles;
+				return updatedAcceptedFiles;
 			});
 		};
 
-		const handleRemoveWaitingListItem = (index: number) => {
-			setWaitingListRejections((prevWaitingList) =>
-				removeItemAtIndex(prevWaitingList, index)
-			);
+		const handleRemoveWaitingListItem = (
+			index: number,
+			file?: FileWithStatus
+		) => {
+			setWaitingListRejections((prevWaitingList) => {
+				if (file && prevWaitingList[index]?.file.name === file.name) {
+					return removeItemAtIndex(prevWaitingList, index);
+				} else if (!file) {
+					return removeItemAtIndex(prevWaitingList, index);
+				}
+				return prevWaitingList;
+			});
 		};
 		const handleRemoveInvalidItem = (index: number) => {
 			setInvalidRejections((prevRejections) =>
