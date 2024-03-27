@@ -29,13 +29,12 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 			borderColor="muted"
 			rounded
 			css={{
-				position: 'relative',
-				overflowY: 'auto',
 				boxShadow: tokens.shadow.lg,
-				zIndex: tokens.zIndex.popover,
-				visibility,
 				minHeight: 'min-content',
-				overflow: 'hidden',
+				overflow: 'auto',
+				position: 'relative',
+				visibility,
+				zIndex: tokens.zIndex.popover,
 			}}
 			{...props}
 		>
@@ -83,9 +82,11 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
+			// https://floating-ui.com/docs/flip#combining-with-shift
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Allows you to change the size of the floating element
 			// https://floating-ui.com/docs/size
-			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
 				apply({ elements, rects }) {
@@ -153,16 +154,10 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		};
 	}
 
-	function getPopoverProps(isOpen?: boolean) {
+	function getPopoverProps() {
 		return {
 			ref: floating.refs.setFloating,
-			style: {
-				...floating.floatingStyles,
-				// For conditional rendering to work, we always render the Popover
-				// and only conditionally render the content. Hiding these borders
-				// when the Popover is closed prevents artefacts remaining in the UI.
-				...(isOpen && { borderLeftWidth: 0, borderRightWidth: 0 }),
-			},
+			style: floating.floatingStyles,
 		};
 	}
 
