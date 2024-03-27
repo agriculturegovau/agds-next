@@ -1,4 +1,9 @@
-import type { FileError, FileWithPath } from 'react-dropzone';
+import {
+	ErrorCode,
+	type FileError,
+	type FileRejection,
+	type FileWithPath,
+} from 'react-dropzone';
 import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
@@ -12,7 +17,7 @@ export type FileWithStatus = FileWithPath & {
 
 export type RejectedFile = {
 	file: FileWithPath;
-	errors: { message: string; code: string }[];
+	errors: FileError[];
 };
 
 export type ExistingFile = {
@@ -133,6 +138,39 @@ export function formatFileExtension(ext: string) {
 	return ext.replace(/^\./, '');
 }
 
+export const TOO_MANY_FILES_ERROR: FileError = {
+	code: ErrorCode.TooManyFiles,
+	message: 'Too many files',
+};
+
+export function reformatDropzoneErrors(
+	dropzoneFileRejections: Array<FileRejection>,
+	maxSize: number | undefined,
+	acceptedFilesSummary: string | undefined
+): Array<FileRejection> {
+	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
+	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
+
+	return dropzoneFileRejections.map(({ file, errors }) => ({
+		file,
+		errors: errors.map((error) => ({
+			code: error.code,
+			message: getFileRejectionErrorMessage(
+				error,
+				formattedMaxFileSize,
+				acceptedFilesSummary
+			),
+		})),
+	}));
+}
+
+export function applyTooManyFilesError(rej: FileRejection) {
+	return {
+		...rej,
+		errors: [...rej.errors, TOO_MANY_FILES_ERROR],
+	};
+}
+
 export function getFileRejectionErrorMessage(
 	{ code, message }: FileError,
 	formattedMaxFileSize: string,
@@ -190,4 +228,30 @@ export function getImageThumbnail(file: FileWithPath) {
 	const imageMimeTypes = /image\/(png|jpg|jpeg|webp|heic)/i;
 	const isImageType = file.type.match(imageMimeTypes);
 	return isImageType ? URL.createObjectURL(file) : undefined;
+}
+
+export function convertFileToTooManyFilesRejection(file: FileWithPath) {
+	return {
+		file,
+		errors: [TOO_MANY_FILES_ERROR],
+	};
+}
+
+export function checkRejectionsHaveSameFiles(
+	rejectionListOne: Array<FileRejection>,
+	rejectionListTwo: Array<FileRejection>
+): boolean {
+	return (
+		JSON.stringify(rejectionListOne.map((rej) => rej.file)) ===
+		JSON.stringify(rejectionListTwo.map((rej) => rej.file))
+	);
+}
+
+export function removeItemAtIndex<ItemType>(
+	array: Array<ItemType>,
+	index: number
+) {
+	const cloneArray = [...array];
+	cloneArray.splice(index, 1);
+	return cloneArray;
 }

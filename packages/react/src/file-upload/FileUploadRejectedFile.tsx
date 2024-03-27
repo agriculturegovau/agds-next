@@ -72,7 +72,7 @@ export const FileUploadRejectedFile = ({
 				<Button
 					variant="text"
 					onClick={onRemove}
-					aria-label={`Remove file, ${name}`}
+					aria-label={`Remove file, ${file.name}`}
 				>
 					Remove file
 				</Button>

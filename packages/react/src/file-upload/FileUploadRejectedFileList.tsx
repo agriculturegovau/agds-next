@@ -1,10 +1,10 @@
 import { Stack } from '../stack';
 import { FileUploadRejectedFile } from './FileUploadRejectedFile';
-import type { RejectedFile } from './utils';
+import type { FileWithStatus, RejectedFile } from './utils';
 
 type FileUploadRejectedFileListProps = {
 	fileRejections: RejectedFile[];
-	handleRemoveRejection: (fileName: string) => void;
+	handleRemoveRejection: (index: number, file: FileWithStatus) => void;
 	hideThumbnails: boolean;
 };
 
@@ -19,11 +19,11 @@ export const FileUploadRejectedFileList = ({
 
 	return (
 		<Stack as="ul" aria-label="Invalid files" gap={0.5}>
-			{fileRejections.map((rejection) => (
+			{fileRejections.map((rejection, index) => (
 				<FileUploadRejectedFile
 					key={rejection.file.name}
 					{...rejection}
-					onRemove={() => handleRemoveRejection(rejection.file.name)}
+					onRemove={() => handleRemoveRejection(index, rejection.file)}
 					hideThumbnails={hideThumbnails}
 				/>
 			))}

@@ -5,21 +5,31 @@ export function createExampleFile(args?: {
 	name?: string;
 	type?: string;
 	href?: string;
+	lastModified?: number;
 }): FileWithStatus {
 	const {
 		status,
 		name = 'example.txt',
 		type = 'text/plain',
 		href,
+		lastModified = new Date().getMilliseconds(),
 	} = args || {};
 
 	const bits = ['examplefilecontent'];
-	const file: FileWithStatus = new File(bits, name, {
+	const { prototype, ...baseFile } = new File(bits, name, {
 		type,
 	});
+
+	const file: Omit<FileWithStatus, 'prototype'> = {
+		...baseFile,
+		name,
+		type,
+		lastModified,
+		size: 100,
+	};
 	file.status = status;
 	file.href = href;
-	return file;
+	return file as FileWithStatus;
 }
 
 export function createExampleImageFile(args?: {
