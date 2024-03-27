@@ -10,13 +10,13 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { DeepPartial } from '../../lib/types';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormTask1Container } from './FormTask1Container';
-import { FormActions } from './FormActions';
-import { useGlobalForm } from './GlobalFormProvider';
+import { DeepPartial } from '../../../lib/types';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormActions } from '../FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { parseDateField } from '../utils';
 import { useFormTask1Context } from './FormTask1Provider';
-import { parseDateField } from './utils';
+import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step4FormSchema,
 	task1Step4FormSchema,

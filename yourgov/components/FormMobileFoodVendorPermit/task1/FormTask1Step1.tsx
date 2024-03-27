@@ -12,8 +12,8 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { useGlobalForm } from './GlobalFormProvider';
-import { FormActions } from './FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { FormActions } from '../FormActions';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import {

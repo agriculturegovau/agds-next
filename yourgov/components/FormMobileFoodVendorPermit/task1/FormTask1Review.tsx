@@ -7,8 +7,8 @@ import {
 	FormDefinitionListItemAddress,
 	FormDefinitionListItemDate,
 	FormDefinitionListItemDateRange,
-} from '../FormDefinitionList';
-import { useGlobalForm } from './GlobalFormProvider';
+} from '../../FormDefinitionList';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { task1FormSteps } from './FormTask1Provider';
 
 type FormTask1ReviewProps = {

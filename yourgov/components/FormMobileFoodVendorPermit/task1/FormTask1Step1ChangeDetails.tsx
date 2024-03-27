@@ -15,8 +15,8 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { useGlobalForm } from './GlobalFormProvider';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1FormSchema,
 	Task1Step1FormSchema,

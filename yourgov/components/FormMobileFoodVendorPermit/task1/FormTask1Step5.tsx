@@ -10,13 +10,13 @@ import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { DeepPartial } from '../../lib/types';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormActions } from './FormActions';
+import { DeepPartial } from '../../../lib/types';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormActions } from '../FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { parseDateField } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
-import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
-import { parseDateField } from './utils';
 import {
 	task1Step5FormSchema,
 	Task1Step5FormSchema,

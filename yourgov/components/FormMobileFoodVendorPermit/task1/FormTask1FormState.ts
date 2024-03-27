@@ -1,6 +1,6 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupDateField, yupPhoneField } from './utils';
+import { yupDateField, yupPhoneField } from '../utils';
 
 export const task1Step1FormSchema = yup
 	.object({

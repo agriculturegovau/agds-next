@@ -6,7 +6,7 @@ import {
 	useContext,
 	useMemo,
 } from 'react';
-import { useGlobalForm } from './GlobalFormProvider';
+import { useGlobalForm } from '../GlobalFormProvider';
 
 const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';

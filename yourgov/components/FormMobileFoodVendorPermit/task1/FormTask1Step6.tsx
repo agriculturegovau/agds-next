@@ -2,10 +2,10 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Combobox } from '@ag.ds-next/react/combobox';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormActions } from './FormActions';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { FormActions } from '../FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step6FormSchema,

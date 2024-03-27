@@ -1,5 +1,5 @@
 import { DeepPartial } from '../../lib/types';
-import { task1DefaultFormState, Task1FormState } from './FormTask1FormState';
+import { task1DefaultFormState, Task1FormState } from './task1/FormTask1FormState';
 import { Task2Step1FormSchema } from './task2/FormTask2FormState';
 
 // TODO Create task 2 of the form
