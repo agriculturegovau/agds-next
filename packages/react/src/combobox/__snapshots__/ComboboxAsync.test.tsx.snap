@@ -79,7 +79,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
       </div>
       <ul
         aria-labelledby="downshift-:r1:-label"
-        class="css-172ol7r-boxStyles-Popover"
+        class="css-mbum3s-boxStyles-Popover"
         id="downshift-:r1:-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
