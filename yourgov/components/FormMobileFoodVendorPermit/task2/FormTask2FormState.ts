@@ -1,30 +1,24 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupDateField, yupPhoneField } from '../utils';
+import { yupDateField } from '../utils';
 
-export const task2Step1FormSchema = yup
-	.object({
-		firstName: yup.string().required('Enter your first name'),
-		lastName: yup.string().required('Enter your last name'),
-		email: yup
-			.string()
-			.email('Enter a valid email')
-			.required('Enter your email'),
-		contactPhoneNumber: yupPhoneField.optional(),
-	})
+export const task2Step1FormSchema = yup.object({
+	firstName: yup.string().required('Enter your first name'),
+	lastName: yup.string().required('Enter your last name'),
+	email: yup
+		.string()
+		.email('Enter a valid email')
+		.required('Enter your email'),
+})
 	.required();
 
 export type Task2Step1FormSchema = yup.InferType<typeof task2Step1FormSchema>;
 
-export const task2Step1Part2FormSchema = yup
-	.object({
-		contactPhoneNumber: yupPhoneField.optional(),
-	})
-	.required();
+export const arrayOfTask2Step1FormSchema = yup.object().shape({
+	employeeList: yup.array().of(task2Step1FormSchema).required('No employees added')
+})
 
-export type Task2Step1Part2FormSchema = yup.InferType<
-	typeof task2Step1Part2FormSchema
->;
+export type ArrayOfTask2Step1FormSchema = yup.InferType<typeof arrayOfTask2Step1FormSchema>;
 
 export const task2Step2FormSchema = yup
 	.object({

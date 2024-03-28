@@ -27,6 +27,10 @@ export function FormTask2Step1AddEmployee() {
 	const router = useRouter();
 	const { formState, setFormState, typeSearchParm } = useGlobalForm();
 
+	const employeeList = formState.task2?.step1?.employeeList || [];
+
+	console.log('FormTask2Step1AddEmployee', { formState });
+
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -36,7 +40,7 @@ export function FormTask2Step1AddEmployee() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Task2Step1FormSchema>({
-		defaultValues: formState.task2?.step1,
+		// defaultValues: formState.task2?.step1?.employeeList,
 		resolver: yupResolver(task2Step1FormSchema),
 	});
 
@@ -45,6 +49,8 @@ export function FormTask2Step1AddEmployee() {
 	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1?type=${typeSearchParm}`;
 
 	const onSubmit: SubmitHandler<Task2Step1FormSchema> = (data) => {
+		console.log('onSubmit', { data });
+		debugger;
 		setFocusedError(false);
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
@@ -52,7 +58,13 @@ export function FormTask2Step1AddEmployee() {
 			setIsSaving(false);
 			setFormState({
 				...formState,
-				task2: { ...formState.task2, step1: { ...data } },
+				task2: {
+					...formState.task2,
+					step1: {
+						...formState.task2?.step1,
+						employeeList: [...employeeList, data],
+					},
+				},
 			});
 			router.push(step1Path);
 		}, 1500);
@@ -83,6 +95,8 @@ export function FormTask2Step1AddEmployee() {
 	useEffect(() => {
 		titleRef.current?.focus();
 	}, []);
+
+	const errorList = Object.entries(errors);
 
 	return (
 		<Columns>
@@ -119,7 +133,7 @@ export function FormTask2Step1AddEmployee() {
 											Please correct the following fields and try again
 										</Text>
 										<UnorderedList>
-											{Object.entries(errors).map(([key, value]) => (
+											{errorList?.map(([key, value]) => (
 												<ListItem key={key}>
 													<TextLink href={`#${key}`} onClick={scrollToField}>
 														{Array.isArray(value)
@@ -136,8 +150,8 @@ export function FormTask2Step1AddEmployee() {
 									autoComplete="given-name"
 									{...register('firstName')}
 									id="firstName"
-									invalid={Boolean(errors.firstName?.message)}
-									message={errors.firstName?.message}
+									invalid={Boolean(errors?.firstName?.message)}
+									message={errors?.firstName?.message}
 									maxWidth="xl"
 									required
 								/>
@@ -146,8 +160,8 @@ export function FormTask2Step1AddEmployee() {
 									autoComplete="family-name"
 									{...register('lastName')}
 									id="lastName"
-									invalid={Boolean(errors.lastName?.message)}
-									message={errors.lastName?.message}
+									invalid={Boolean(errors?.lastName?.message)}
+									message={errors?.lastName?.message}
 									maxWidth="xl"
 									required
 								/>
@@ -157,8 +171,8 @@ export function FormTask2Step1AddEmployee() {
 									autoComplete="email"
 									{...register('email')}
 									id="email"
-									invalid={Boolean(errors.email?.message)}
-									message={errors.email?.message}
+									invalid={Boolean(errors?.email?.message)}
+									message={errors?.email?.message}
 									maxWidth="xl"
 									hint="An invite to link this business to their yourGov account will be sent to this address"
 									required

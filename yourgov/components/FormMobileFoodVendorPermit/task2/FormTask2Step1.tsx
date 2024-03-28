@@ -9,8 +9,8 @@ import { FormActions } from '../FormActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask2Container } from './FormTask2Container';
 import {
-	Task2Step1Part2FormSchema,
-	task2Step1Part2FormSchema,
+	ArrayOfTask2Step1FormSchema,
+	arrayOfTask2Step1FormSchema,
 } from './FormTask2FormState';
 import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
@@ -20,26 +20,34 @@ export function FormTask2Step1() {
 	// const stepFormState = formState.task2?.step1;
 	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee?type=${typeSearchParm}`;
 
+	console.log('FormTask2Step1', { formState });
+
+	// const employeeList = formState.task2?.step1?.employeeList;
+
 	const {
 		// register,
 		handleSubmit,
 		// formState: { errors },
-	} = useForm<Task2Step1Part2FormSchema>({
-		defaultValues: {
-			contactPhoneNumber: formState.task2?.step1?.contactPhoneNumber,
-		},
-		resolver: yupResolver(task2Step1Part2FormSchema),
+	} = useForm<ArrayOfTask2Step1FormSchema>({
+		resolver: yupResolver(arrayOfTask2Step1FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<Task2Step1Part2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<ArrayOfTask2Step1FormSchema> = async (data) => {
 		await submitStep();
-		setFormState({
-			...formState,
-			task2: {
-				...formState.task2,
-				step1: { ...formState.task2?.step1, ...data, completed: true },
-			},
-		});
+		console.log({ data });
+		debugger;
+		// setFormState({
+		// 	...formState,
+		// 	task2: {
+		// 		...formState.task2,
+		// 		step1: {
+		// 			...formState.task2?.step1,
+		// 			// ...data,
+		// 			employeeList: formState.task2?.step1?.employeeList,
+		// 			completed: true,
+		// 		},
+		// 	},
+		// });
 	};
 
 	return (

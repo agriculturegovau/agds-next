@@ -12,7 +12,7 @@ import type { NextPageWithLayout } from '../../../../../../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Provide business owner details" />
+			<DocumentTitle title="Add employee" />
 			<PageContent>
 				<FormTask2Step1AddEmployee />
 			</PageContent>
