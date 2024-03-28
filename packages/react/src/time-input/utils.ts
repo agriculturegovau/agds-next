@@ -10,8 +10,8 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	const time = (
 		timeString.match(/\d+/) !== null
 			? timeString.length === 3
-				? timeString.match(/(\w{1})(\w{1,2})/).slice(1)
-				: timeString.match(/\d{1,2}/gi)
+				? timeString.match(/(\w{1})(\w{1,2})/)?.slice(1) || []
+				: timeString.match(/\d{1,2}/gi) || []
 			: []
 	).map((digit) => Number(digit) | 0);
 
@@ -58,7 +58,7 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	}
 };
 
-export function isValidTime(value: string) {
+export function isValidTime(value = '') {
 	return isValid(new Date(`1970-01-01T${formatTime(value, 'HH:mm')}`));
 }
 
