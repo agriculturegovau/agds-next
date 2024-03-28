@@ -44,7 +44,7 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
 		const [inputValue, setInputValue] = useState(
 			transformValuePropToInputValue(value?.raw, timeFormatProp)
 		);
-		// Update the text input when the value updates
+		// Update the input when the value and/or timeFormat updates
 		useEffect(() => {
 			setInputValue(transformValuePropToInputValue(value.raw, timeFormatProp));
 		}, [timeFormatProp, value]);

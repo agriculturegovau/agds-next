@@ -44,7 +44,6 @@ describe('formatTime', () => {
 			expect(formatTime(`${i}`, 'hh:mm aaa')).toEqual(
 				`${i}:00 am`.padStart(8, '0')
 			);
-
 			expect(formatTime(`${i}`, 'HH:mm')).toEqual(`${i}:00`.padStart(5, '0'));
 		}
 	});

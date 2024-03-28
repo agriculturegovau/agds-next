@@ -17,8 +17,8 @@ function renderTimeInput(props?: ControlledTimeInputProps) {
 }
 
 function ControlledTimeInput({
-	value: valueProp,
 	onChange: onChangeProp,
+	value: valueProp,
 	...props
 }: ControlledTimeInputProps) {
 	const [value, setValue] = useState<TimeValue | undefined>(valueProp);
@@ -78,9 +78,9 @@ describe('TimeInput', () => {
 
 	it('can render an invalid state', async () => {
 		renderTimeInput({
-			value: { raw: 'a' },
 			invalid: true,
 			message: errorMessage,
+			value: { raw: 'a' },
 		});
 		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
@@ -95,7 +95,7 @@ describe('TimeInput', () => {
 		});
 		const input = await getInput();
 
-		await user.type(input, '09:30');
+		await user.type(input, '930');
 		await user.keyboard('{Tab}');
 
 		expect(onChange).toHaveBeenCalledWith({

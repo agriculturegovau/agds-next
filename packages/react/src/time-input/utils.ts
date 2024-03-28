@@ -10,8 +10,8 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	const time = (
 		timeString.match(/\d+/) !== null
 			? timeString.length === 3
-				? timeString.match(/(\w{1})(\w{1,2})/)?.slice(1) || []
-				: timeString.match(/\d{1,2}/gi) || []
+				? timeString.match(/(\w{1})(\w{1,2})/)?.slice(1) ?? []
+				: timeString.match(/\d{1,2}/gi) ?? []
 			: []
 	).map((digit) => Number(digit) | 0);
 
@@ -23,10 +23,6 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	) {
 		return timeString;
 	}
-
-	date.setHours(time[0]);
-	date.setMinutes(time[1] ?? 0);
-	date.setSeconds(time[2] ?? 0);
 
 	if (time[0] <= 12) {
 		const letters = timeString.match(/[a-zA-Z]{1,2}/) ?? [];
@@ -44,7 +40,12 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 				date.setHours(time[0] % 12);
 				break;
 		}
+	} else {
+		date.setHours(time[0]);
 	}
+
+	date.setMinutes(time[1] ?? 0);
+	date.setSeconds(time[2] ?? 0);
 
 	const formattedTime = new Intl.DateTimeFormat(
 		'en-GB',
@@ -53,9 +54,9 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 
 	if (timeFormat === 'HH:mm' && formattedTime.startsWith('24:')) {
 		return `00:${formattedTime.split(':')[1]}`;
-	} else {
-		return formattedTime;
 	}
+
+	return formattedTime;
 };
 
 export function isValidTime(value = '') {
