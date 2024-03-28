@@ -110,7 +110,7 @@ export type TimeValue = {
 	raw?: string;
 };
 
-export type TimeInputProps = Omit<TextInputProps, 'value'> & {
+export type TimeInputProps = Omit<TextInputProps, 'onChange' | 'value'> & {
 	onChange?: (args: TimeValue) => void;
 	timeFormat?: TimeFormat;
 	value?: TimeValue;
