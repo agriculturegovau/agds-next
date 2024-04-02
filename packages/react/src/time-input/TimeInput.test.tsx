@@ -33,17 +33,14 @@ function ControlledTimeInput({
 	);
 }
 
-async function getInput() {
-	const el = await screen.getByRole('textbox');
-	expect(el).toBeInstanceOf(HTMLInputElement);
-	expect(el).toBeInTheDocument();
+function getInput() {
+	const el = screen.getByRole('textbox');
 	return el as HTMLInputElement;
 }
 
 async function getErrorMessage() {
 	const el = await screen.findByText(errorMessage);
 	expect(el).toBeInstanceOf(HTMLSpanElement);
-	expect(el).toBeInTheDocument();
 	return el as HTMLSpanElement;
 }
 
@@ -73,7 +70,7 @@ describe('TimeInput', () => {
 		});
 		expect(container).toMatchSnapshot();
 
-		expect(await getInput()).toHaveValue('9:30 pm');
+		expect(getInput()).toHaveValue('9:30 pm');
 	});
 
 	it('can render an invalid state', async () => {
@@ -82,7 +79,7 @@ describe('TimeInput', () => {
 			message: errorMessage,
 			value: { raw: 'a' },
 		});
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(getInput()).toBeInvalid();
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
@@ -93,7 +90,7 @@ describe('TimeInput', () => {
 		renderTimeInput({
 			onChange,
 		});
-		const input = await getInput();
+		const input = getInput();
 
 		await user.type(input, '930');
 		await user.keyboard('{Tab}');
@@ -108,7 +105,7 @@ describe('TimeInput', () => {
 		const user = userEvent.setup();
 
 		renderTimeInput();
-		const input = await getInput();
+		const input = getInput();
 
 		await user.type(input, '09:30');
 		await user.keyboard('{Tab}');
@@ -122,7 +119,7 @@ describe('TimeInput', () => {
 		renderTimeInput({
 			timeFormat: 'HH:mm',
 		});
-		const input = await getInput();
+		const input = getInput();
 
 		await user.type(input, '9:30 pm');
 		await user.keyboard('{Tab}');

@@ -12,9 +12,9 @@ relatedComponents: ['text-input']
 () => {
 	const [value, setValue] = React.useState({ raw: '' });
 
-	const onChange = (e) => {
-		console.log('onChange', e);
-		setValue(e);
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
 	};
 
 	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
@@ -37,8 +37,6 @@ Time input is a controlled component which means consumers of this component nee
 
 The `onChange` handler provides an object with both a `raw` and `formatted` version of the time. `raw` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
 
-For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
-
 <DoHeading />
 
 - use when users are specifically required to enter a specific time.
@@ -55,9 +53,9 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 () => {
 	const [value, setValue] = React.useState({ raw: '9:66' });
 
-	const onChange = (e) => {
-		console.log('onChange', e);
-		setValue(e);
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
 	};
 
 	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
@@ -90,9 +88,9 @@ To modify the time format, you can change the `timeFormat` prop to one of these 
 () => {
 	const [value, setValue] = React.useState({ raw: '9pm' });
 
-	const onChange = (e) => {
-		console.log('onChange', e);
-		setValue(e);
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
 	};
 
 	return (

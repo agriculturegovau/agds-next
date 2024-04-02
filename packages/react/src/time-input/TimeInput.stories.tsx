@@ -36,8 +36,8 @@ export const DifferentTimeFormat: Story = {
 function Render(props: TimeInputProps) {
 	const [value, setValue] = useState<TimeValue>(props.value || { raw: '' });
 
-	const onChange = (e: TimeValue) => {
-		setValue(e);
+	const onChange = (timeValue: TimeValue) => {
+		setValue(timeValue);
 	};
 
 	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
