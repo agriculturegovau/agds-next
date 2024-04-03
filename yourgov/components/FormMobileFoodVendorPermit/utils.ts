@@ -1,5 +1,8 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
+import { z } from 'zod';
+
+export const zodDateField = z.date({ invalid_type_error: 'Enter a valid date' })
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764

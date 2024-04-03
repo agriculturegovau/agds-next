@@ -1,24 +1,23 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
+import { z } from "zod";
 import { yupDateField } from '../utils';
 
-export const task2Step1FormSchema = yup.object({
-	firstName: yup.string().required('Enter your first name'),
-	lastName: yup.string().required('Enter your last name'),
-	email: yup
+export const task2Step1FormSchema = z.object({
+	firstName: z.string({ required_error: 'Enter your first name' }),
+	lastName: z.string({ required_error: 'Enter your last name' }),
+	email: z
 		.string()
-		.email('Enter a valid email')
-		.required('Enter your email'),
-})
-	.required();
+		.email({ message: 'Enter a valid email' }),
+});
 
-export type Task2Step1FormSchema = yup.InferType<typeof task2Step1FormSchema>;
+export type Task2Step1FormSchema = z.infer<typeof task2Step1FormSchema>;
 
-export const arrayOfTask2Step1FormSchema = yup.object().shape({
-	employeeList: yup.array().of(task2Step1FormSchema).required('No employees added')
+export const arrayOfTask2Step1FormSchema = z.object({
+	employeeList: z.array(task2Step1FormSchema).nonempty({ message: 'No employees added' })
 })
 
-export type ArrayOfTask2Step1FormSchema = yup.InferType<typeof arrayOfTask2Step1FormSchema>;
+export type ArrayOfTask2Step1FormSchema = z.infer<typeof arrayOfTask2Step1FormSchema>
 
 export const task2Step2FormSchema = yup
 	.object({
