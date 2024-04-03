@@ -18,6 +18,7 @@ import { Callout } from '@ag.ds-next/react/callout';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { isTruthy } from '../../../lib/isTruthy';
 import {
 	Task2Step1FormSchema,
 	task2Step1FormSchema,
@@ -27,7 +28,8 @@ export function FormTask2Step1AddEmployee() {
 	const router = useRouter();
 	const { formState, setFormState, typeSearchParm } = useGlobalForm();
 
-	const employeeList = formState.task2?.step1?.employeeList || [];
+	const employeeList =
+		formState.task2?.step1?.employeeList?.filter(isTruthy) || [];
 
 	console.log('FormTask2Step1AddEmployee', { formState });
 
