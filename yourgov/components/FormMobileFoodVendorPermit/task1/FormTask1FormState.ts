@@ -11,16 +11,14 @@ export const task1Step1FormSchema = yup
 			.email('Enter a valid email')
 			.required('Enter your email'),
 		contactPhoneNumber: yupPhoneField.optional(),
-	})
-	.required();
+	});
 
 export type Task1Step1FormSchema = yup.InferType<typeof task1Step1FormSchema>;
 
 export const task1Step1Part2FormSchema = yup
 	.object({
 		contactPhoneNumber: yupPhoneField.optional(),
-	})
-	.required();
+	}).optional();
 
 export type Task1Step1Part2FormSchema = yup.InferType<
 	typeof task1Step1Part2FormSchema
@@ -40,8 +38,7 @@ export const task1Step2FormSchema = yup
 			}
 			return schema;
 		}),
-	})
-	.required();
+	});
 
 export type Task1Step2FormSchema = yup.InferType<typeof task1Step2FormSchema>;
 

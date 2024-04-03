@@ -2,6 +2,7 @@ import { ReactNode, Ref } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
+import { FormRequiredFieldsMessage } from './FormRequiredFieldsMessage';
 
 export type FormStepTitleProps = {
 	titleRef: Ref<HTMLHeadingElement>;
@@ -43,6 +44,8 @@ export function FormStepTitle({
 					{introduction}
 				</Text>
 			) : null}
+			<FormRequiredFieldsMessage />
+
 			{callToAction}
 		</Stack>
 	);

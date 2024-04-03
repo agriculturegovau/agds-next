@@ -1,25 +1,25 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Stack } from '@ag.ds-next/react/stack';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Details } from '@ag.ds-next/react/details';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Details } from '@ag.ds-next/react/details';
+import { Stack } from '@ag.ds-next/react/stack';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { useGlobalForm } from '../GlobalFormProvider';
+import { TextInput } from '@ag.ds-next/react/text-input';
 import { FormActions } from '../FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step1Part2FormSchema,
 	Task1Step1Part2FormSchema,
+	task1Step1Part2FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step1() {
 	const { formState, typeSearchParm } = useGlobalForm();
@@ -72,7 +72,7 @@ export function FormTask1Step1() {
 						</SummaryListItem>
 					</SummaryList>
 					<ButtonLink href={step1ChangeDetailsPath} variant="text">
-						Change details
+						Change business owner details
 					</ButtonLink>
 				</Stack>
 				<AdditionalDetailsForm />
@@ -108,7 +108,7 @@ function AdditionalDetailsForm() {
 	};
 
 	return (
-		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
 			<Stack gap={1.5}>
 				<H2>Additional details</H2>
 				<TextInput
@@ -116,9 +116,7 @@ function AdditionalDetailsForm() {
 					hint="Any Australian mobile or landline, for example 0444111222 or 02 9988 7766"
 					id="contactPhoneNumber"
 					{...register('contactPhoneNumber')}
-					invalid={Boolean(errors.contactPhoneNumber?.message)}
 					message={errors.contactPhoneNumber?.message}
-					required
 				/>
 			</Stack>
 			<FormActions />
