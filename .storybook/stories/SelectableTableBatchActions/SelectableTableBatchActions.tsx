@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -26,7 +26,7 @@ import { useRowSelection } from './useRowSelection';
 import { useNotification } from './useNotification';
 import { TableFilters } from './TableFilters';
 
-const PER_PAGE = 20;
+const PER_PAGE = 333;
 
 export function SelectableTableBatchActions() {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -94,11 +94,26 @@ export function SelectableTableBatchActions() {
 		);
 	}
 
+	const ref = useRef<HTMLDivElement>(null);
+	const [isStuck, setIsSticky] = useState(false);
+
+	useEffect(() => {
+		if (!ref.current) return;
+		const observer = new IntersectionObserver(
+			([e]) => {
+				setIsSticky(!e.isIntersecting);
+			},
+			{ threshold: 1 }
+		);
+		observer.observe(ref.current);
+		return () => observer.disconnect();
+	}, []);
+
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
 				<H2 id="certificates-heading">Certificates</H2>
-				<Stack gap={1}>
+				<Stack gap={1} css={{ maxWidth: 640 }}>
 					{renderNotification()}
 					<TableFilters />
 					<Stack gap={0}>
@@ -149,42 +164,62 @@ export function SelectableTableBatchActions() {
 										</Table>
 									</TableWrapper>
 									{hasSelections && (
-										<TableBatchActionsBar>
-											<TableBatchActionsTitle>
-												Apply action to {selectedItems.length}{' '}
-												{plural(selectedItems.length, 'item', 'items')}
-											</TableBatchActionsTitle>
-											<ButtonGroup>
-												<Button
-													variant="secondary"
-													size="sm"
-													onClick={() => setModalAddTrackingOpen(true)}
-												>
-													Add tracking number
-												</Button>
-												<Button
-													variant="secondary"
-													size="sm"
-													onClick={() => setDeleteModalOpen(true)}
-												>
-													Delete
-												</Button>
-												<Button
-													variant="tertiary"
-													size="sm"
-													onClick={toggleAllRows}
-												>
-													Cancel
-												</Button>
-											</ButtonGroup>
-										</TableBatchActionsBar>
+										<Box css={{ bottom: 0, position: 'sticky', zIndex: 2 }}>
+											<TableBatchActionsBar>
+												<TableBatchActionsTitle>
+													Apply action to {selectedItems.length}{' '}
+													{plural(selectedItems.length, 'item', 'items')}
+												</TableBatchActionsTitle>
+												<ButtonGroup>
+													<Button
+														variant="secondary"
+														size="sm"
+														onClick={() => setModalAddTrackingOpen(true)}
+													>
+														Add tracking number
+													</Button>
+													<Button
+														variant="secondary"
+														size="sm"
+														onClick={() => setDeleteModalOpen(true)}
+													>
+														Delete
+													</Button>
+													<Button
+														variant="tertiary"
+														size="sm"
+														onClick={toggleAllRows}
+													>
+														Cancel
+													</Button>
+												</ButtonGroup>
+											</TableBatchActionsBar>
+										</Box>
 									)}
 								</Stack>
-								<PaginationButtons
-									currentPage={currentPage}
-									onChange={setCurrentPage}
-									totalPages={totalPages}
-								/>
+								<Box
+									background="body"
+									css={{
+										bottom: -1,
+										position: 'sticky',
+										zIndex: 1,
+										...(isStuck && {
+											borderBottomLeftRadius: 0,
+											borderBottomRightRadius: 0,
+											borderBottomWidth: 0,
+											boxShadow: `0 -2px 4px rgba(0, 0, 0, 0.3)`,
+											padding: 16,
+										}),
+									}}
+									ref={ref}
+									rounded
+								>
+									<PaginationButtons
+										currentPage={currentPage}
+										onChange={setCurrentPage}
+										totalPages={totalPages}
+									/>
+								</Box>
 							</Stack>
 						) : (
 							<Stack paddingY={1}>

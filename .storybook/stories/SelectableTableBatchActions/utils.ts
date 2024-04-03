@@ -9,7 +9,7 @@ function randomNumber(min: number, max: number) {
 	return Math.random() * (max - min + 1) + min;
 }
 
-export const EXAMPLE_DATA = Array.from(Array(40).keys()).map((idx) => ({
+export const EXAMPLE_DATA = Array.from(Array(1000).keys()).map((idx) => ({
 	id: `${idx}`,
 	certNumber: `CER${Math.random().toPrecision(8).slice(2)}`,
 	exporter: sample(exporters),
