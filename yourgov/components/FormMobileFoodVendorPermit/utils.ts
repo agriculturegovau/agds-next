@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
 import { z } from 'zod';
 
-export const zodDateField = z.date({ invalid_type_error: 'Enter a valid date' })
+export const zodDateField = (message = 'Enter a valid date') => z.date({ invalid_type_error: 'Enter a valid date', required_error: message })
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -20,6 +20,12 @@ export function parseDateField(value: Date | string | undefined) {
 	}
 	return value;
 }
+
+export const zodPhoneField = (message = 'Enter a phone number') => z.string({ required_error: message })
+	.regex(/^[\d\s]+$/, { message: 'Phone number must not include letters or symbols' })
+	.regex(/^0[\d\s]+$/, { message: `Mobile numbers must begin with '04', landline numbers must begin with an area code` })
+	// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
+	.refine((val) => val.replace(/\s/g, '').length === 10) as unknown as ReturnType<typeof z.string>
 
 export const yupPhoneField = yup
 	.string()

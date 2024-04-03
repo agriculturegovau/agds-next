@@ -1,125 +1,117 @@
 import { DeepPartial } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupDateField, yupPhoneField } from '../utils';
+import { ZodIssueCode, z } from 'zod';
+import { zodDateField, zodPhoneField } from '../utils';
 
-export const task1Step1FormSchema = yup
+export const task1Step1FormSchema = z
 	.object({
-		firstName: yup.string().required('Enter your first name'),
-		lastName: yup.string().required('Enter your last name'),
-		email: yup
-			.string()
-			.email('Enter a valid email')
-			.required('Enter your email'),
-		contactPhoneNumber: yupPhoneField.optional(),
+		firstName: z.string({ required_error: 'Enter your first name' }),
+		lastName: z.string({ required_error: 'Enter your last name' }),
+		email: z
+			.string({ required_error: 'Enter your email' })
+			.email('Enter a valid email'),
+		contactPhoneNumber: zodPhoneField().optional(),
 	});
 
-export type Task1Step1FormSchema = yup.InferType<typeof task1Step1FormSchema>;
+export type Task1Step1FormSchema = z.infer<typeof task1Step1FormSchema>;
 
-export const task1Step1Part2FormSchema = yup
+export const task1Step1Part2FormSchema = z
 	.object({
-		contactPhoneNumber: yupPhoneField.optional(),
-	}).optional();
+		contactPhoneNumber: zodPhoneField().optional(),
+	});
 
-export type Task1Step1Part2FormSchema = yup.InferType<
+export type Task1Step1Part2FormSchema = z.infer<
 	typeof task1Step1Part2FormSchema
 >;
 
-export const task1Step2FormSchema = yup
+export const task1Step2FormSchema = z
 	.object({
-		businessName: yup.string().required('Business or company name is required'),
-		tradingName: yup.string(),
-		businessStructure: yup
-			.string()
-			.typeError('Business structure is required')
-			.required('Business structure is required'),
-		abn: yup.string().when('businessStructure', (value, schema) => {
-			if (value === 'Business') {
-				return schema.required('ABN is required');
-			}
-			return schema;
-		}),
+		businessName: z.string({ required_error: 'Business or company name is required' }),
+		tradingName: z.string({ required_error: 'A trading name is required' }),
+		businessStructure: z
+			.string({ required_error: 'Business structure is required' }),
+		abn: z.string().optional()
+	}).refine((value) => {
+		return value.businessStructure === 'Business' ? Boolean(value.abn) : true
+	}, {
+		message: 'ABN is required'
 	});
 
-export type Task1Step2FormSchema = yup.InferType<typeof task1Step2FormSchema>;
+export type Task1Step2FormSchema = z.infer<typeof task1Step2FormSchema>;
 
-export const task1Step3FormSchema = yup
+export const task1Step3FormSchema = z
 	.object({
 		// street address
-		streetAddress: yup.string().required('Enter your street address'),
-		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
-		state: yup.string().required('Enter your state'),
-		postcode: yup.string().required('Enter your postcode'),
+		streetAddress: z.string({ required_error: 'Enter your street address' }),
+		suburbTownCity: z.string({ required_error: 'Enter your suburb, town or city' }),
+		state: z.string({ required_error: 'Enter your state' }),
+		postcode: z.string({ required_error: 'Enter your postcode' }),
 		// postal address
-		isPostalAddressSameAsStreetAddress: yup.boolean(),
-		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postal address'),
-		}),
-		postalSuburbTownCity: yup
-			.string()
-			.when('isPostalAddressSameAsStreetAddress', {
-				is: false,
-				then: yup.string().required('Enter your suburb, town or city'),
-			}),
-		postalState: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your state'),
-		}),
-		postalPostcode: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postcode'),
-		}),
+		isPostalAddressSameAsStreetAddress: z.boolean(),
+		postalAddress: z.string().optional(),
+		postalSuburbTownCity: z.string().optional(),
+		postalState: z.string().optional(),
+		postalPostcode: z.string().optional(),
 	})
-	.required();
-
-export type Task1Step3FormSchema = yup.InferType<typeof task1Step3FormSchema>;
-
-export const task1Step4FormSchema = yup
-	.object({
-		registrationNumber: yup
-			.string()
-			.max(6, 'Registration number can not be longer than 6 characters')
-			.required('Vehicle registration number is required'),
-		registrationExpiry: yupDateField.required(
-			'Vehicle registration expiry is required'
-		),
-	})
-	.required();
-
-export type Task1Step4FormSchema = yup.InferType<typeof task1Step4FormSchema>;
-
-export const task1Step5FormSchema = yup
-	.object({
-		tradingPeriod: yup
-			.object({
-				from: yupDateField
-					.required('Enter a valid date')
-					// Ensures the start date is always before the end date
-					.max(yup.ref('to'), 'Start date must be before the end date'),
-				to: yupDateField
-					.required('Enter a valid date')
-					// Ensures the end date is always after the start date
-					.min(yup.ref('from'), 'Start date must be before the end date'),
+	.superRefine((value, context) => {
+		function addIssue(label: string) {
+			context.addIssue({
+				code: ZodIssueCode.invalid_string,
+				message: `Enter your ${label}`,
+				validation: { includes: '' }
 			})
-			.required('Enter a valid date'),
-		openingTime: yup.string().required('Start time is required'),
-		closingTime: yup.string().required('End time is required'),
-	})
-	.required();
+		}
 
-export type Task1Step5FormSchema = yup.InferType<typeof task1Step5FormSchema>;
+		if (!value.isPostalAddressSameAsStreetAddress) {
+			if (!value.postalAddress) {
+				addIssue('postal address')
+			}
+			if (!value.postalSuburbTownCity) {
+				addIssue('suburb, town or city')
+			}
+			if (!value.postalState) {
+				addIssue('state')
+			}
+			if (!value.postalPostcode) {
+				addIssue('postcode')
+			}
+		}
+	});
 
-export const task1Step6FormSchema = yup
+export type Task1Step3FormSchema = z.infer<typeof task1Step3FormSchema>;
+
+export const task1Step4FormSchema = z
 	.object({
-		cuisine: yup
-			.object()
-			.shape({ label: yup.string().required(), value: yup.string().required() })
-			.typeError('Cuisine is required')
-			.default(null),
-	})
-	.required();
+		registrationNumber: z
+			.string({ required_error: 'Vehicle registration number is required' })
+			.max(6, 'Registration number can not be longer than 6 characters'),
+		registrationExpiry: zodDateField('Vehicle registration expiry is required'),
+	});
 
-export type Task1Step6FormSchema = yup.InferType<typeof task1Step6FormSchema>;
+export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
+
+export const task1Step5FormSchema = z
+	.object({
+		tradingPeriod: z.object({
+			from: zodDateField(),
+			to: zodDateField(),
+		}),
+		openingTime: z.string({ required_error: 'Start time is required' }),
+		closingTime: z.string({ required_error: 'End time is required' }),
+	}).refine(value => {
+		const { from, to } = value.tradingPeriod || {}
+		// Ensures the start date is always before the end date
+		return from && to ? from <= to : true
+	}, {
+		message: 'Start date must be before the end date'
+	});
+
+export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
+
+export const task1Step6FormSchema = z.object({
+	cuisine: z.object({ label: z.string(), value: z.string() }, { required_error: 'Cuisine is required' }),
+});
+
+export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;
 
 export type Task1FormState = {
 	started: boolean;

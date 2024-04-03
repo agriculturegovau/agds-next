@@ -1,26 +1,26 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Radio } from '@ag.ds-next/react/radio';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Radio } from '@ag.ds-next/react/radio';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormActions } from '../FormActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step2FormSchema,
 	Task1Step2FormSchema,
+	task1Step2FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step2() {
 	const { formState, setFormState } = useGlobalForm();
@@ -38,7 +38,7 @@ export function FormTask1Step2() {
 		formState: { errors, isSubmitted },
 	} = useForm<Task1Step2FormSchema>({
 		defaultValues: formState.task1?.step2,
-		resolver: yupResolver(task1Step2FormSchema),
+		resolver: zodResolver(task1Step2FormSchema),
 	});
 
 	const onSubmit: SubmitHandler<Task1Step2FormSchema> = async (data) => {
