@@ -25,11 +25,17 @@ export function parseDateField(value: Date | string | undefined) {
 	return value;
 }
 
-export const zodPhoneField = (message = 'Enter a phone number') => z.string({ required_error: message })
-	.regex(/^[\d\s]+$/, { message: 'Phone number must not include letters or symbols' })
-	.regex(/^0[\d\s]+$/, { message: `Mobile numbers must begin with '04', landline numbers must begin with an area code` })
-	// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
-	.refine((val) => val.replace(/\s/g, '').length === 10) as unknown as ReturnType<typeof z.string>
+const zodPhoneFieldCore = (message: string, isOptional = false) => {
+	const string = isOptional ? z.string() : zodString(message)
+
+	return string.regex(/^[\d\s]+$/, { message: 'Phone number must not include letters or symbols' })
+		.regex(/^0[\d\s]+$/, { message: `Mobile numbers must begin with '04', landline numbers must begin with an area code` })
+		// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
+		.refine((val) => val.replace(/\s/g, '').length === 10) as unknown as ReturnType<typeof z.string>
+}
+
+export const zodPhoneField = (message = 'Enter a phone number') => zodPhoneFieldCore(message, false)
+export const zodPhoneFieldOptional = () => zodPhoneFieldCore('', true).optional()
 
 export const yupPhoneField = yup
 	.string()
