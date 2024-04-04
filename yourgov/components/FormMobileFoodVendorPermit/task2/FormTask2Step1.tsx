@@ -7,7 +7,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { Text } from '@ag.ds-next/react/text';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask2Container } from './FormTask2Container';
 import {
@@ -84,7 +84,7 @@ export function FormTask2Step1() {
 						Add employee
 					</ButtonLink>
 				</Stack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask2Container>
 	);

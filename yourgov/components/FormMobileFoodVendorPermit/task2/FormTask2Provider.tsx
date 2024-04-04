@@ -42,6 +42,7 @@ type ContextType = {
 
 const context = createContext<ContextType | undefined>(undefined);
 
+// A lot of this code can probably be deduped once task 2 is completed
 export function FormTask2Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
 	const { setIsSubmittingStep, typeSearchParm, formState } = useGlobalForm();

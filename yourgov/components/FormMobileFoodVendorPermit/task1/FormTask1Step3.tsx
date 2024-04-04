@@ -13,7 +13,7 @@ import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
@@ -225,7 +225,7 @@ export function FormTask1Step3() {
 						</FormStack>
 					</Fieldset>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

@@ -56,6 +56,7 @@ export function FormTask2Step1AddEmployee() {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
+			// bring in lodash set() (warning: lodash set() mutates so need to handle that or look for an alternative)
 			setFormState({
 				...formState,
 				task2: {

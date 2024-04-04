@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Combobox } from '@ag.ds-next/react/combobox';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
@@ -57,7 +57,7 @@ export function FormTask1Step6() {
 						/>
 					)}
 				/>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

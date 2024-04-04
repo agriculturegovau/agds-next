@@ -12,7 +12,7 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { DeepPartial } from '../../../lib/types';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { parseDateField } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
@@ -165,7 +165,7 @@ export function FormTask1Step5() {
 						required
 					/>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

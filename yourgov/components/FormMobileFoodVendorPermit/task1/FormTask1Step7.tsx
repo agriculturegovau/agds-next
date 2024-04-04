@@ -2,7 +2,7 @@ import { FormEvent, Fragment } from 'react';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import { FormTask1Review } from './FormTask1Review';
@@ -33,7 +33,7 @@ export function FormTask1Step7() {
 				<Fragment>
 					<FormTask1Review headingsLevel="h2" />
 					<form onSubmit={onSubmit}>
-						<FormActions />
+						<StepActions />
 					</form>
 				</Fragment>
 			) : (

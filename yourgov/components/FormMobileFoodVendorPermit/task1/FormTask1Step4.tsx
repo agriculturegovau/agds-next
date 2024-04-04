@@ -12,7 +12,7 @@ import { useScrollToField } from '@ag.ds-next/react/field';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { DeepPartial } from '../../../lib/types';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { parseDateField } from '../utils';
 import { useFormTask1Context } from './FormTask1Provider';
@@ -143,7 +143,7 @@ export function FormTask1Step4() {
 						)}
 					/>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

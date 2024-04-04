@@ -18,6 +18,7 @@ type FormTask2ContainerProps = PropsWithChildren<{
 	formCallToAction?: ReactNode;
 }>;
 
+// After step 1 and 2 are completed, then review code and see if this can be deduped
 export function FormTask2Container({
 	formTitle,
 	formIntroduction,

@@ -13,7 +13,7 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import {
@@ -155,7 +155,7 @@ export function FormTask1Step2() {
 						</Radio>
 					</ControlGroup>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

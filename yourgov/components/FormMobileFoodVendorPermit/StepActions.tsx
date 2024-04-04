@@ -7,7 +7,8 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
-export function FormActions() {
+// add onClick handler that can be used to call `submitStep` function
+export function StepActions() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =

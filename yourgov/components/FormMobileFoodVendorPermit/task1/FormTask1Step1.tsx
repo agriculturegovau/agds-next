@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Details } from '@ag.ds-next/react/details';
 import { H2 } from '@ag.ds-next/react/heading';
@@ -12,7 +13,7 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { FormActions } from '../FormActions';
+import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import {
@@ -93,7 +94,7 @@ function AdditionalDetailsForm() {
 		defaultValues: {
 			contactPhoneNumber: formState.task1?.step1?.contactPhoneNumber,
 		},
-		resolver: yupResolver(task1Step1Part2FormSchema),
+		resolver: zodResolver(task1Step1Part2FormSchema),
 	});
 
 	const onSubmit: SubmitHandler<Task1Step1Part2FormSchema> = async (data) => {
@@ -119,7 +120,7 @@ function AdditionalDetailsForm() {
 					message={errors.contactPhoneNumber?.message}
 				/>
 			</Stack>
-			<FormActions />
+			<StepActions />
 		</Stack>
 	);
 }
