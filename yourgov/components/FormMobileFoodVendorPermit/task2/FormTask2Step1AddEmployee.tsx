@@ -50,7 +50,6 @@ export function FormTask2Step1AddEmployee() {
 
 	const onSubmit: SubmitHandler<Task2Step1FormSchema> = (data) => {
 		console.log('onSubmit', { data });
-		debugger;
 		setFocusedError(false);
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
