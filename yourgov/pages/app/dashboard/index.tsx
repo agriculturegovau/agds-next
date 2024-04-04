@@ -88,7 +88,7 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<Heading as="h2" type="h3">
-											<CardLink href="/app/licences-and-permits/apply">
+											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
 												Apply for a permit
 											</CardLink>
 										</Heading>
