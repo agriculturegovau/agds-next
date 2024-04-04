@@ -133,9 +133,9 @@ export const task2DefaultFormState: DeepPartial<Task2FormState> = {
 	started: false,
 	completed: false,
 	step1: {
-		firstName: 'Barney',
-		lastName: 'Gumble',
-		email: 'gumble@email.com',
+		firstName: 'Charlie',
+		lastName: 'Walker',
+		email: 'cwalker@email.com',
 		completed: false,
 	},
 	step3: {
