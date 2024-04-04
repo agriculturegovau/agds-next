@@ -12,7 +12,6 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -49,7 +48,6 @@ export function FormTask1Step2() {
 			task1: { ...formState.task1, step2: { ...data, completed: true } },
 		});
 	};
-
 	const onError = () => {
 		setFocusedError(false);
 	};
@@ -74,7 +72,6 @@ export function FormTask1Step2() {
 		<FormTask1Container
 			formTitle="Business details"
 			formIntroduction="Your business details must match your business registration."
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
@@ -107,7 +104,6 @@ export function FormTask1Step2() {
 					<TextInput
 						id="businessName"
 						label="Business or company name"
-						hint="Hint text"
 						{...register('businessName')}
 						invalid={Boolean(errors.businessName?.message)}
 						message={errors.businessName?.message}
@@ -117,7 +113,6 @@ export function FormTask1Step2() {
 					<TextInput
 						id="tradingName"
 						label="Trading name"
-						hint="Hint text"
 						{...register('tradingName')}
 						invalid={Boolean(errors.tradingName?.message)}
 						message={errors.tradingName?.message}
@@ -126,7 +121,6 @@ export function FormTask1Step2() {
 					<ControlGroup
 						id="checkbox"
 						label="Business structure"
-						hint="Hint text"
 						invalid={Boolean(errors.businessStructure)}
 						message={errors.businessStructure?.message}
 						required
