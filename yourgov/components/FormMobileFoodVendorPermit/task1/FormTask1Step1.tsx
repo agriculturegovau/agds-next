@@ -70,29 +70,31 @@ export function FormTask1Step1() {
 							onClose={() => setIsSuccessMessageVisible(false)}
 						/>
 					)}
-					<SummaryList>
-						<SummaryListItem>
-							<SummaryListItemTerm>First name</SummaryListItemTerm>
-							<SummaryListItemDescription>
-								{stepFormState?.firstName}
-							</SummaryListItemDescription>
-						</SummaryListItem>
-						<SummaryListItem>
-							<SummaryListItemTerm>Last name</SummaryListItemTerm>
-							<SummaryListItemDescription>
-								{stepFormState?.lastName}
-							</SummaryListItemDescription>
-						</SummaryListItem>
-						<SummaryListItem>
-							<SummaryListItemTerm>Email</SummaryListItemTerm>
-							<SummaryListItemDescription>
-								{stepFormState?.email}
-							</SummaryListItemDescription>
-						</SummaryListItem>
-					</SummaryList>
-					<ButtonLink href={step1ChangeDetailsPath} variant="text">
-						Change business owner details
-					</ButtonLink>
+					<Stack gap={1.5} alignItems="flex-start">
+						<SummaryList>
+							<SummaryListItem>
+								<SummaryListItemTerm>First name</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									{stepFormState?.firstName}
+								</SummaryListItemDescription>
+							</SummaryListItem>
+							<SummaryListItem>
+								<SummaryListItemTerm>Last name</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									{stepFormState?.lastName}
+								</SummaryListItemDescription>
+							</SummaryListItem>
+							<SummaryListItem>
+								<SummaryListItemTerm>Email</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									{stepFormState?.email}
+								</SummaryListItemDescription>
+							</SummaryListItem>
+						</SummaryList>
+						<ButtonLink href={step1ChangeDetailsPath} variant="text">
+							Change business owner details
+						</ButtonLink>
+					</Stack>
 				</Stack>
 				<AdditionalDetailsForm />
 			</Stack>
