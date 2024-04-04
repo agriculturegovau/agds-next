@@ -21,7 +21,7 @@ function ControlledTimeInput({
 	value: valueProp,
 	...props
 }: ControlledTimeInputProps) {
-	const [value, setValue] = useState<TimeValue | undefined>(valueProp);
+	const [value, setValue] = useState<TimeValue>(valueProp);
 
 	function onChange(value: TimeValue) {
 		setValue(value);

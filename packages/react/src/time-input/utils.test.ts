@@ -12,6 +12,7 @@ describe('isValidTime', () => {
 		expect(isValidTime('21')).toEqual(true);
 		expect(isValidTime('2100')).toEqual(true);
 		expect(isValidTime('21:00')).toEqual(true);
+		expect(isValidTime('21:00:00')).toEqual(true);
 		expect(isValidTime('24')).toEqual(true);
 		expect(isValidTime('9')).toEqual(true);
 		expect(isValidTime('9:00')).toEqual(true);
@@ -31,6 +32,7 @@ describe('isValidTime', () => {
 		expect(isValidTime('25')).toEqual(false);
 		expect(isValidTime('2500')).toEqual(false);
 		expect(isValidTime('25:00')).toEqual(false);
+		expect(isValidTime('25:00:00')).toEqual(false);
 		expect(isValidTime('9:66')).toEqual(false);
 		expect(isValidTime('pm')).toEqual(false);
 		expect(isValidTime('am')).toEqual(false);
@@ -95,15 +97,17 @@ describe('formatTime', () => {
 	});
 
 	test('4-digit numbers', () => {
+		expect(formatTime('0000', 'h:mm aaa')).toEqual('12:00 am');
 		expect(formatTime('0115', 'h:mm aaa')).toEqual('1:15 am');
 		expect(formatTime('0230', 'h:mm aaa')).toEqual('2:30 am');
 		expect(formatTime('0345', 'h:mm aaa')).toEqual('3:45 am');
+		expect(formatTime('1200', 'h:mm aaa')).toEqual('12:00 pm');
 		expect(formatTime('1315', 'h:mm aaa')).toEqual('1:15 pm');
 		expect(formatTime('1430', 'h:mm aaa')).toEqual('2:30 pm');
 		expect(formatTime('1545', 'h:mm aaa')).toEqual('3:45 pm');
 	});
 
-	test('5-digit numbers', () => {
+	test('6-digit numbers', () => {
 		expect(formatTime('011500', 'h:mm aaa')).toEqual('1:15 am');
 		expect(formatTime('023015', 'h:mm aaa')).toEqual('2:30 am');
 		expect(formatTime('034530', 'h:mm aaa')).toEqual('3:45 am');

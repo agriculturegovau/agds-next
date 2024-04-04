@@ -94,5 +94,3 @@ export type TimeFormat = keyof typeof timeFormats;
 export const acceptedTimeFormats = Object.keys(
 	timeFormats
 ) as Array<TimeFormat>;
-
-export type AcceptedTimeFormats = (typeof acceptedTimeFormats)[number];

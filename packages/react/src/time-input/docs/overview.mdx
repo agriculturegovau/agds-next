@@ -4,20 +4,20 @@ description: The Time input component allows users to enter a time free-form, an
 group: Forms
 storybookPath: /story/Forms-TimeInput--basic
 unreleased: true
-figmaGalleryNodeId: REPLACE_ME
+figmaGalleryNodeId: 20846:18895
 relatedComponents: ['text-input']
 ---
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState({ raw: '' });
+	const [value, setValue] = React.useState();
 
 	const onChange = (timeValue) => {
 		console.log('onChange', timeValue);
 		setValue(timeValue);
 	};
 
-	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.raw);
 
 	return (
 		<TimeInput
@@ -58,7 +58,7 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 		setValue(timeValue);
 	};
 
-	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.raw);
 
 	return (
 		<TimeInput
@@ -86,7 +86,7 @@ To modify the time format, you can change the `timeFormat` prop to one of these 
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState({ raw: '9pm' });
+	const [value, setValue] = React.useState();
 
 	const onChange = (timeValue) => {
 		console.log('onChange', timeValue);

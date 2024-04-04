@@ -29,18 +29,19 @@ export const Invalid: Story = {
 export const DifferentTimeFormat: Story = {
 	args: {
 		timeFormat: 'HH:mm',
+		value: { raw: '21:30' },
 	},
 	render: Render,
 };
 
 function Render(props: TimeInputProps) {
-	const [value, setValue] = useState<TimeValue>(props.value || { raw: '' });
+	const [value, setValue] = useState<TimeValue>(props.value);
 
 	const onChange = (timeValue: TimeValue) => {
 		setValue(timeValue);
 	};
 
-	const invalid = Boolean(value.raw) && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value?.raw);
 
 	return (
 		<TimeInput

@@ -16,7 +16,7 @@ import {
 } from './utils';
 
 // This const object is required for the tests and also makes the component slightly more performant
-const STABLE_DEFAUT_VALUE = {
+const STABLE_DEFAUT_VALUE: TimeValue = {
 	formatted: '',
 	raw: '',
 };
@@ -105,10 +105,14 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
 	}
 );
 
-export type TimeValue = {
-	formatted?: string;
-	raw?: string;
-};
+export type TimeValue =
+	| {
+			/** The time in the format that is displayed to the user **/
+			formatted?: string;
+			/** The time in a consistent 24 hour format **/
+			raw: string;
+	  }
+	| undefined;
 
 export type TimeInputProps = Omit<TextInputProps, 'onChange' | 'value'> & {
 	onChange?: (args: TimeValue) => void;
