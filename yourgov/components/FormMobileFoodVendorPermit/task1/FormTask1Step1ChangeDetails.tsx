@@ -46,7 +46,7 @@ export function FormTask1Step1ChangeDetails() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1?type=${typeSearchParm}`;
+	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1?type=${typeSearchParm}&success=true`;
 
 	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
 		setFocusedError(false);

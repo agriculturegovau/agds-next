@@ -1,10 +1,13 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Details } from '@ag.ds-next/react/details';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -24,14 +27,23 @@ import { useFormTask1Context } from './FormTask1Provider';
 export function FormTask1Step1() {
 	const { formState, typeSearchParm } = useGlobalForm();
 	const stepFormState = formState.task1?.step1;
-	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1/change-details?type=${typeSearchParm}`;
+	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-foodvendor-permit/form/task-1/step-1/change-details?type=${typeSearchParm}`;
+	const { query } = useRouter();
+	const isUpdated = query.success === 'true';
+	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
+		useState(isUpdated);
+
+	useEffect(() => {
+		setIsSuccessMessageVisible(isUpdated);
+	}, [isUpdated]);
+
 	return (
 		<FormTask1Container
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
 		>
 			<Stack gap={3} alignItems="flex-start" width="100%">
-				<Stack gap={1.5} alignItems="flex-start" width="100%">
+				<Stack gap={1.5} width="100%">
 					<H2>Confirm business owner details</H2>
 					<Details label="How were my details prefilled?" iconBefore>
 						<Prose>
@@ -51,6 +63,13 @@ export function FormTask1Step1() {
 							</p>
 						</Prose>
 					</Details>
+					{isSuccessMessageVisible && (
+						<SectionAlert
+							title="Business owner details have been updated"
+							tone="success"
+							onClose={() => setIsSuccessMessageVisible(false)}
+						/>
+					)}
 					<SummaryList>
 						<SummaryListItem>
 							<SummaryListItemTerm>First name</SummaryListItemTerm>
@@ -113,7 +132,9 @@ function AdditionalDetailsForm() {
 				<H2>Additional details</H2>
 				<TextInput
 					label="Contact phone number"
-					hint="Any Australian mobile or landline, for example 0444111222 or 02 9988 7766"
+					hint={
+						'Any Australian mobile or landline, for example 0444111222 or 02 9988 7766'
+					}
 					id="contactPhoneNumber"
 					{...register('contactPhoneNumber')}
 					message={errors.contactPhoneNumber?.message}
