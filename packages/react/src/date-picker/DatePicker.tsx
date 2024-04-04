@@ -104,7 +104,7 @@ export const DatePicker = ({
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
-	const popover = usePopover();
+	const popover = usePopover({ fixHeightAsContentHeight: true });
 
 	const onSelect = useCallback<SelectSingleEventHandler>(
 		(_, selectedDay, modifiers) => {
@@ -191,14 +191,14 @@ export const DatePicker = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
-			initialFocus: true,
-			selected: valueAsDateOrUndefined,
-			onSelect: onSelect,
-			defaultMonth: defaultMonth,
-			numberOfMonths: 1,
+			defaultMonth,
 			disabled: disabledCalendarDays,
+			initialFocus: true,
+			numberOfMonths: 1,
+			onSelect,
+			selected: valueAsDateOrUndefined,
 		}),
-		[valueAsDateOrUndefined, onSelect, defaultMonth, disabledCalendarDays]
+		[defaultMonth, disabledCalendarDays, onSelect, valueAsDateOrUndefined]
 	);
 
 	return (
@@ -231,7 +231,7 @@ export const DatePicker = ({
 					// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
 					<Popover
 						{...popoverProps}
-						css={{ visibility: isCalendarOpen ? 'visible' : 'hidden' }}
+						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 					>
 						{isCalendarOpen && <CalendarSingle {...calendarProps} />}
 					</Popover>

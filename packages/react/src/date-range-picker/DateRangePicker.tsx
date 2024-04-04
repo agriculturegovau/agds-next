@@ -121,6 +121,7 @@ export const DateRangePicker = ({
 	yearRange,
 	dateFormat = 'dd/MM/yyyy',
 }: DateRangePickerProps) => {
+	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
@@ -132,14 +133,16 @@ export const DateRangePicker = ({
 	function onFromTriggerClick() {
 		setInputMode('from');
 		toggleCalendar();
+		setHasCalendarOpened(true);
 	}
 
 	function onToTriggerClick() {
 		setInputMode('to');
 		toggleCalendar();
+		setHasCalendarOpened(true);
 	}
 
-	const popover = usePopover();
+	const popover = usePopover({ fixHeightAsContentHeight: true });
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
@@ -308,6 +311,29 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
+	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
+	const calendarProps = useMemo(
+		() => ({
+			defaultMonth,
+			disabled: disabledCalendarDays,
+			initialFocus: true,
+			numberOfMonths,
+			onSelect,
+			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
+			selected: valueAsDateOrUndefined,
+		}),
+		[
+			defaultMonth,
+			disabledCalendarDays,
+			inputMode,
+			numberOfMonths,
+			onSelect,
+			valueAsDateOrUndefined,
+		]
+	);
+
 	return (
 		<FieldContainer invalid={invalid} id={fieldsetId}>
 			<Box as="fieldset">
@@ -368,19 +394,17 @@ export const DateRangePicker = ({
 					</Flex>
 				</Stack>
 				<CalendarProvider yearRange={yearRange}>
-					{isCalendarOpen && (
-						<Popover {...popover.getPopoverProps()}>
-							<CalendarRange
-								initialFocus
-								defaultMonth={defaultMonth}
-								selected={valueAsDateOrUndefined}
-								onSelect={onSelect}
-								numberOfMonths={numberOfMonths}
-								disabled={disabledCalendarDays}
-								returnFocusRef={
-									inputMode === 'from' ? fromTriggerRef : toTriggerRef
-								}
-							/>
+					{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
+					{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
+						isCalendarOpen && (
+							<Popover {...popoverProps}>
+								<CalendarRange {...calendarProps} />
+							</Popover>
+						)
+					) : (
+						// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
+						<Popover {...popoverProps}>
+							{isCalendarOpen && <CalendarRange {...calendarProps} />}
 						</Popover>
 					)}
 				</CalendarProvider>

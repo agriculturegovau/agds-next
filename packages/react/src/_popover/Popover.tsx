@@ -13,8 +13,12 @@ import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
 
 export type PopoverProps = PropsWithChildren<{
-	visibility?: 'visible' | 'hidden';
+	/** Fix the height of the popover to match the height of the content. */
+	fixHeightAsContentHeight?: boolean;
+	/** The styles to set on the Popover. */
 	style: CSSProperties;
+	/** Whether the Popover is visible. This uses the CSS `visibility` attribute. */
+	visibility?: 'visible' | 'hidden';
 }>;
 
 export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
@@ -47,33 +51,36 @@ const DEFAULT_OFFSET = 8;
 const MIN_SIDE_GUTTER_WIDTH = 4;
 
 type UsePopoverOptions = {
-	/** The placement of the popover element in relation to the reference element. */
-	placement?: Placement;
-	/** The minimum acceptable height in `px` of the popover element before the `flip` middleware takes over.  */
-	minHeight?: number;
-	/** The maximum height in `px` of the popover element. */
-	maxHeight?: number;
-	/** If true, the popover element will match the width of the reference element. */
-	matchReferenceWidth?: boolean;
-	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
-	offset?: number;
-	/** If true, the popover element is open. Required when using the `hiddenWithCSS` option. */
-	isOpen?: boolean;
+	/** Fix the height of the popover to match the height of the content. */
+	fixHeightAsContentHeight?: boolean;
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
 	hiddenWithCSS?: boolean;
+	/** If true, the popover element is open. Required when using the `hiddenWithCSS` option. */
+	isOpen?: boolean;
+	/** If true, the popover element will match the width of the reference element. */
+	matchReferenceWidth?: boolean;
+	/** The maximum height in `px` of the popover element. */
+	maxHeight?: number;
+	/** The minimum acceptable height in `px` of the popover element before the `flip` middleware takes over.  */
+	minHeight?: number;
+	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
+	offset?: number;
+	/** The placement of the popover element in relation to the reference element. */
+	placement?: Placement;
 };
 
 export function usePopover<RT extends ReferenceType = ReferenceType>(
 	options?: UsePopoverOptions
 ) {
 	const {
-		isOpen,
+		fixHeightAsContentHeight,
 		hiddenWithCSS = false,
-		placement = 'bottom-start',
+		isOpen,
 		matchReferenceWidth = false,
-		minHeight,
 		maxHeight,
+		minHeight,
 		offset: offsetOption = DEFAULT_OFFSET,
+		placement = 'bottom-start',
 	} = options || {};
 
 	const floating = useFloating<RT>({
@@ -89,10 +96,12 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({ elements, rects }) {
+				apply({ availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						height: 'max-content',
-						...(maxHeight !== undefined && { maxHeight: `${maxHeight}px` }),
+						...(fixHeightAsContentHeight && { height: 'max-content' }),
+						...(!fixHeightAsContentHeight && {
+							maxHeight: `${maxHeight || availableHeight}px`,
+						}),
 						...(minHeight !== undefined && { minHeight: `${minHeight}px` }),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
