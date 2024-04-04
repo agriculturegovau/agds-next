@@ -1,14 +1,13 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
 import { z } from "zod";
-import { yupDateField } from '../utils';
+import { yupDateField, zodString } from '../utils';
 
 export const task2Step1FormSchema = z.object({
-	firstName: z.string({ required_error: 'Enter your first name' }),
-	lastName: z.string({ required_error: 'Enter your last name' }),
-	email: z
-		.string()
-		.email({ message: 'Enter a valid email' }),
+	firstName: zodString('Enter your first name'),
+	lastName: zodString('Enter your last name'),
+	email: zodString('Enter a valid email')
+		.email({ message: 'Not a valid email address' }),
 });
 
 export type Task2Step1FormSchema = z.infer<typeof task2Step1FormSchema>;
