@@ -232,6 +232,8 @@ describe('DateRangePicker', () => {
 			rules: {
 				// react 18s `useId` break this rule
 				'valid-id': 'off',
+				// Our Popover component uses inline styles as recommended by floating-ui - https://floating-ui.com/docs/usefloating#usage
+				'no-inline-style': 'off',
 			},
 		});
 		await act(async () => {
