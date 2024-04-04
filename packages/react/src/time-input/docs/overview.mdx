@@ -1,6 +1,6 @@
 ---
 title: Time input
-description: The Time input component allows users to enter a time free-form, and in various formats.
+description: The Time input component allows users to enter a time in multiple formats.
 group: Forms
 storybookPath: /story/Forms-TimeInput--basic
 unreleased: true
@@ -74,9 +74,9 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 
 ## Changing the time format
 
-The Time input component allows users to enter dates in various formats. To input 9:00 pm, a user could input '9pm', '9:00pm', '2100', '21:00', or other minor variations on these formats.
+The Time input component allows users to enter times in various formats. To input 9:00 pm, a user could input '9pm', '9:00pm', '2100', '21:00', 'T21:00:00.000Z', or other, lenient variations on these formats.
 
-When a valid date is typed, the date will be formatted using the `timeFormat` prop, which is set to `'h:mm aaa'` by default.
+When a valid time is typed, on blur, the time will be formatted using the `timeFormat` prop, which is set to `'h:mm aaa'` by default.
 
 To modify the time format, you can change the `timeFormat` prop to one of these supported time formats:
 
