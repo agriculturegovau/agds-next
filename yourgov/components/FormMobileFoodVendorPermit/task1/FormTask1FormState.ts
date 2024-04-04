@@ -1,14 +1,12 @@
 import { DeepPartial } from 'react-hook-form';
 import { ZodIssueCode, z } from 'zod';
-import { zodDateField, zodPhoneField } from '../utils';
+import { zodDateField, zodPhoneField, zodString, zodStringOptional } from '../utils';
 
 export const task1Step1FormSchema = z
 	.object({
-		firstName: z.string({ required_error: 'Enter your first name' }),
-		lastName: z.string({ required_error: 'Enter your last name' }),
-		email: z
-			.string({ required_error: 'Enter your email' })
-			.email('Enter a valid email'),
+		firstName: zodString('Enter your first name'),
+		lastName: zodString('Enter your last name'),
+		email: zodString('Enter your email').email('Enter a valid email'),
 		contactPhoneNumber: zodPhoneField().optional(),
 	});
 
@@ -25,14 +23,15 @@ export type Task1Step1Part2FormSchema = z.infer<
 
 export const task1Step2FormSchema = z
 	.object({
-		businessName: z.string({ required_error: 'Business or company name is required' }),
-		tradingName: z.string({ required_error: 'A trading name is required' }),
-		businessStructure: z
-			.string({ required_error: 'Business structure is required' }),
-		abn: z.string().optional()
-	}).refine((value) => {
+		businessName: zodString('Business or company name is required'),
+		tradingName: zodStringOptional(),
+		businessStructure: zodString('Business structure is required'),
+		abn: zodStringOptional()
+	})
+	.refine((value) => {
 		return value.businessStructure === 'Business' ? Boolean(value.abn) : true
 	}, {
+		path: ['abn'],
 		message: 'ABN is required'
 	});
 
@@ -41,16 +40,16 @@ export type Task1Step2FormSchema = z.infer<typeof task1Step2FormSchema>;
 export const task1Step3FormSchema = z
 	.object({
 		// street address
-		streetAddress: z.string({ required_error: 'Enter your street address' }),
-		suburbTownCity: z.string({ required_error: 'Enter your suburb, town or city' }),
-		state: z.string({ required_error: 'Enter your state' }),
-		postcode: z.string({ required_error: 'Enter your postcode' }),
+		streetAddress: zodString('Enter your street address'),
+		suburbTownCity: zodString('Enter your suburb, town or city'),
+		state: zodString('Enter your state'),
+		postcode: zodString('Enter your postcode'),
 		// postal address
 		isPostalAddressSameAsStreetAddress: z.boolean(),
-		postalAddress: z.string().optional(),
-		postalSuburbTownCity: z.string().optional(),
-		postalState: z.string().optional(),
-		postalPostcode: z.string().optional(),
+		postalAddress: zodStringOptional(),
+		postalSuburbTownCity: zodStringOptional(),
+		postalState: zodStringOptional(),
+		postalPostcode: zodStringOptional(),
 	})
 	.superRefine((value, context) => {
 		function addIssue(label: string) {
@@ -81,8 +80,7 @@ export type Task1Step3FormSchema = z.infer<typeof task1Step3FormSchema>;
 
 export const task1Step4FormSchema = z
 	.object({
-		registrationNumber: z
-			.string({ required_error: 'Vehicle registration number is required' })
+		registrationNumber: zodString('Vehicle registration number is required')
 			.max(6, 'Registration number can not be longer than 6 characters'),
 		registrationExpiry: zodDateField('Vehicle registration expiry is required'),
 	});
@@ -95,8 +93,8 @@ export const task1Step5FormSchema = z
 			from: zodDateField(),
 			to: zodDateField(),
 		}),
-		openingTime: z.string({ required_error: 'Start time is required' }),
-		closingTime: z.string({ required_error: 'End time is required' }),
+		openingTime: zodString('Start time is required'),
+		closingTime: zodString('End time is required'),
 	}).refine(value => {
 		const { from, to } = value.tradingPeriod || {}
 		// Ensures the start date is always before the end date
@@ -108,7 +106,7 @@ export const task1Step5FormSchema = z
 export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
 
 export const task1Step6FormSchema = z.object({
-	cuisine: z.object({ label: z.string(), value: z.string() }, { required_error: 'Cuisine is required' }),
+	cuisine: z.object({ label: zodString(), value: zodString() }, { required_error: 'Cuisine is required' }),
 });
 
 export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;

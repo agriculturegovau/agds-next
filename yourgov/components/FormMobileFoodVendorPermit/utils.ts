@@ -2,6 +2,10 @@ import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
 import { z } from 'zod';
 
+// Empty strings do not trigger Zod required field error validation
+export const zodString = (message?: string) => z.string().trim().min(1, { message })
+export const zodStringOptional = () => z.string().optional()
+
 export const zodDateField = (message = 'Enter a valid date') => z.date({ invalid_type_error: 'Enter a valid date', required_error: message })
 
 // `yup.date()` can sometimes give false positives with certain string values
