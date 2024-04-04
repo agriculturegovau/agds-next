@@ -1,5 +1,6 @@
 ---
 '@ag.ds-next/react': minor
+'@ag.ds-next/docs': minor
 ---
 
 TimeInput: Initial release of component
