@@ -41,7 +41,7 @@ function Render(props: TimeInputProps) {
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value?.raw);
+	const invalid = value && !isValidTime(value.raw);
 
 	return (
 		<TimeInput

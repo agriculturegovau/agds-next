@@ -9,18 +9,13 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	const date = new Date();
 	const time = (
 		timeString.match(/\d+/) !== null
-			? timeString.length === 3
+			? timeString.replace(/\s/g, '').length === 3
 				? timeString.match(/(\w{1})(\w{1,2})/)?.slice(1) ?? []
 				: timeString.match(/\d{1,2}/gi) ?? []
 			: []
 	).map((digit) => Number(digit) | 0);
 
-	if (
-		time.length === 0 ||
-		time.length > 3 ||
-		time[0] > 24 ||
-		(time.length > 1 && time[1] > 59)
-	) {
+	if (time.length === 0 || time[0] > 24 || (time.length > 1 && time[1] > 59)) {
 		return timeString;
 	}
 
@@ -34,6 +29,7 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 				: 'am';
 		switch (timeOfDay) {
 			case 'pm':
+			case 'p':
 				date.setHours(time[0] === 12 ? 12 : time[0] + 12);
 				break;
 			default:
