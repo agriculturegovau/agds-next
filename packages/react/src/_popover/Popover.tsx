@@ -98,9 +98,11 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
 				apply({ availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						...(fixHeightAsContentHeight ? { height: 'max-content' } : {
-							maxHeight: `${maxHeight || availableHeight}px`,
-						}),
+						...(fixHeightAsContentHeight
+							? { height: 'max-content' }
+							: {
+									maxHeight: `${maxHeight || availableHeight}px`,
+							  }),
 						...(minHeight !== undefined && { minHeight: `${minHeight}px` }),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
