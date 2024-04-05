@@ -12,8 +12,12 @@ import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
 
 export type PopoverProps = PropsWithChildren<{
-	visibility?: 'visible' | 'hidden';
+	/** Fix the height of the popover to match the height of the content. */
+	fixHeightAsContentHeight?: boolean;
+	/** The styles to set on the Popover. */
 	style: CSSProperties;
+	/** Whether the Popover is visible. This uses the CSS `visibility` attribute. */
+	visibility?: 'visible' | 'hidden';
 }>;
 
 export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
@@ -44,6 +48,8 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 const DEFAULT_OFFSET = 8;
 
 type UsePopoverOptions = {
+	/** Fix the height of the popover to match the height of the content. */
+	fixHeightAsContentHeight?: boolean;
 	/** The placement of the popover element in relation to the reference element. */
 	placement?: Placement;
 	/** The minimum acceptable height of the popover element before the `flip` middleware takes over.  */
@@ -65,11 +71,12 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 ) {
 	const {
 		isOpen,
+		fixHeightAsContentHeight,
 		hiddenWithCSS = false,
 		placement = 'bottom-start',
 		matchReferenceWidth = false,
-		minHeight: minHeightOption,
-		maxHeight: maxHeightOption,
+		minHeight,
+		maxHeight,
 		offset: offsetOption = DEFAULT_OFFSET,
 	} = options || {};
 
@@ -86,25 +93,14 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({
-					availableWidth,
-					availableHeight: _availableHeight,
-					elements,
-					rects,
-				}) {
-					// Popovers can have a predefined max-height if there is enough room on the screen
-					const maxHeight =
-						maxHeightOption && _availableHeight > maxHeightOption
-							? maxHeightOption
-							: _availableHeight;
-
-					// Minimum acceptable height before `flip` will take over
-					const availableHeight = minHeightOption
-						? Math.max(minHeightOption, maxHeight)
-						: maxHeight;
-
+				apply({ availableHeight, availableWidth, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						maxHeight: `${availableHeight}px`,
+						...(fixHeightAsContentHeight
+							? { height: 'max-content' }
+							: {
+									maxHeight: `${maxHeight || availableHeight}px`,
+							  }),
+						...(minHeight !== undefined && { minHeight: `${minHeight}px` }),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
@@ -112,6 +108,7 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 							  }
 							: {
 									maxWidth: `${availableWidth}px`,
+									overflowX: 'auto',
 							  }),
 					});
 				},
