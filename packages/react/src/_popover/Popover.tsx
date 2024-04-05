@@ -13,8 +13,6 @@ import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
 
 export type PopoverProps = PropsWithChildren<{
-	/** Fix the height of the popover to match the height of the content. */
-	fixHeightAsContentHeight?: boolean;
 	/** The styles to set on the Popover. */
 	style: CSSProperties;
 	/** Whether the Popover is visible. This uses the CSS `visibility` attribute. */
@@ -51,8 +49,6 @@ const DEFAULT_OFFSET = 8;
 const MIN_SIDE_GUTTER_WIDTH = 4;
 
 type UsePopoverOptions = {
-	/** Fix the height of the popover to match the height of the content. */
-	fixHeightAsContentHeight?: boolean;
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
 	hiddenWithCSS?: boolean;
 	/** If true, the popover element is open. Required when using the `hiddenWithCSS` option. */
@@ -73,12 +69,11 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 	options?: UsePopoverOptions
 ) {
 	const {
-		fixHeightAsContentHeight,
 		hiddenWithCSS = false,
 		isOpen,
 		matchReferenceWidth = false,
-		maxHeight,
-		minHeight,
+		minHeight: minHeightOption,
+		maxHeight: maxHeightOption,
 		offset: offsetOption = DEFAULT_OFFSET,
 		placement = 'bottom-start',
 	} = options || {};
@@ -96,14 +91,20 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({ availableHeight, elements, rects }) {
+				apply({ availableHeight: _availableHeight, elements, rects }) {
+					// Popovers can have a predefined max-height if there is enough room on the screen
+					const maxHeight =
+						maxHeightOption && _availableHeight > maxHeightOption
+							? maxHeightOption
+							: _availableHeight;
+
+					// Minimum acceptable height before `flip` will take over
+					const availableHeight = minHeightOption
+						? Math.max(minHeightOption, maxHeight)
+						: maxHeight;
+
 					Object.assign(elements.floating.style, {
-						...(fixHeightAsContentHeight
-							? { height: 'max-content' }
-							: {
-									maxHeight: `${maxHeight || availableHeight}px`,
-							  }),
-						...(minHeight !== undefined && { minHeight: `${minHeight}px` }),
+						maxHeight: `${availableHeight}px`,
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
