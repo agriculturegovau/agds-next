@@ -25,10 +25,11 @@ import { EXAMPLE_DATA, plural, RowData } from './utils';
 import { useRowSelection } from './useRowSelection';
 import { useNotification } from './useNotification';
 import { TableFilters } from './TableFilters';
+import { Prose } from '@ag.ds-next/react/prose';
 
 const PER_PAGE = 333;
 
-export function SelectableTableBatchActions() {
+export function SelectableTableBatchActionsScrolling() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [data, setData] = useState(EXAMPLE_DATA);
 
@@ -97,26 +98,104 @@ export function SelectableTableBatchActions() {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isStuck, setIsSticky] = useState(false);
 
-	useEffect(() => {
-		if (!ref.current) return;
-		const observer = new IntersectionObserver(
-			([e]) => {
-				setIsSticky(!e.isIntersecting);
-			},
-			{ threshold: 1 }
-		);
-		observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
+	// useEffect(() => {
+	// 	if (!ref.current) return;
+	// 	const observer = new IntersectionObserver(
+	// 		([e]) => {
+	// 			setIsSticky(!e.isIntersecting);
+	// 		},
+	// 		{ threshold: 1 }
+	// 	);
+	// 	observer.observe(ref.current);
+	// 	return () => observer.disconnect();
+	// }, []);
 
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
+				<Prose>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+				</Prose>
 				<H2 id="certificates-heading">Certificates</H2>
 				<Stack gap={1} css={{ maxWidth: 600 }}>
 					{renderNotification()}
 					<TableFilters />
-					<Stack gap={0}>
+					<Stack
+						gap={0}
+						// css={{
+						// 	maxHeight: 'calc(100dvh - 76px)',
+						// 	overflow: 'auto',
+						// 	// position: 'sticky',
+						// 	// top: 16,
+						// }}
+						// focus
+						// tabIndex={0}
+					>
 						<Box paddingLeft={0.75} paddingBottom={1} borderBottom>
 							<Checkbox
 								size="sm"
@@ -127,10 +206,20 @@ export function SelectableTableBatchActions() {
 								Select all rows
 							</Checkbox>
 						</Box>
-						{paginatedData.length ? (
-							<Stack gap={1}>
-								<Stack gap={0.5}>
-									<TableWrapper>
+						<Box
+							css={{
+								maxHeight: 'calc(100dvh - 120px)',
+								overflow: 'auto',
+								// position: 'sticky',
+								// top: 16,
+							}}
+							focus
+							tabIndex={0}
+						>
+							{paginatedData.length ? (
+								<Stack gap={1}>
+									<Stack gap={0.5}>
+										{/* <TableWrapper> */}
 										<Table striped aria-labelledby="certificates-heading">
 											<TableHead>
 												<TableRow>
@@ -162,9 +251,8 @@ export function SelectableTableBatchActions() {
 												))}
 											</TableBody>
 										</Table>
-									</TableWrapper>
-									{hasSelections && (
-										<Box css={{ bottom: 0, position: 'sticky', zIndex: 2 }}>
+										{/* </TableWrapper> */}
+										{hasSelections && (
 											<TableBatchActionsBar>
 												<TableBatchActionsTitle>
 													Apply action to {selectedItems.length}{' '}
@@ -194,42 +282,106 @@ export function SelectableTableBatchActions() {
 													</Button>
 												</ButtonGroup>
 											</TableBatchActionsBar>
-										</Box>
-									)}
+										)}
+									</Stack>
 								</Stack>
-								<Box
-									background="body"
-									css={{
-										bottom: -1,
-										position: 'sticky',
-										zIndex: 1,
-										...(isStuck && {
-											borderBottomLeftRadius: 0,
-											borderBottomRightRadius: 0,
-											borderBottomWidth: 0,
-											boxShadow: `0 -2px 4px rgba(0, 0, 0, 0.3)`,
-											padding: 16,
-										}),
-									}}
-									ref={ref}
-									rounded
-								>
-									<PaginationButtons
-										currentPage={currentPage}
-										onChange={setCurrentPage}
-										totalPages={totalPages}
-									/>
-								</Box>
-							</Stack>
-						) : (
-							<Stack paddingY={1}>
-								<Heading type="h3" fontSize="lg">
-									No certificates found
-								</Heading>
-							</Stack>
-						)}
+							) : (
+								<Stack paddingY={1}>
+									<Heading type="h3" fontSize="lg">
+										No certificates found
+									</Heading>
+								</Stack>
+							)}
+						</Box>
 					</Stack>
+					{paginatedData.length ? (
+						<Box
+							ref={ref}
+							css={
+								{
+									// maxHeight: 'calc(100dvh - 76px)',
+									// overflow: 'auto',
+									// position: 'sticky',
+									// bottom: 0,
+								}
+							}
+						>
+							<PaginationButtons
+								currentPage={currentPage}
+								onChange={setCurrentPage}
+								totalPages={totalPages}
+							/>
+						</Box>
+					) : null}
 				</Stack>
+				<Prose>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+				</Prose>
 			</Stack>
 			<ModalConfirmDelete
 				itemsToDelete={selectedItems}
@@ -289,12 +441,14 @@ function Row({
 		<Fragment>
 			<TableRow selected={isRowSelected}>
 				<TableCell>
-					<Checkbox
-						size="sm"
-						checked={isRowSelected}
-						onChange={onRowSelectToggle}
-						aria-label={`Select certificate ${certNumber}`}
-					/>
+					<Box css={{ position: 'relative' }}>
+						<Checkbox
+							size="sm"
+							checked={isRowSelected}
+							onChange={onRowSelectToggle}
+							aria-label={`Select certificate ${certNumber}`}
+						/>
+					</Box>
 				</TableCell>
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">{certNumber}</TextLink>
