@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -7,7 +7,6 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
@@ -19,13 +18,13 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Box } from '@ag.ds-next/react/box';
+import { Prose } from '@ag.ds-next/react/prose';
 import { ModalConfirmDelete } from './ModalConfirmDelete';
 import { ModalAddTrackingNumber } from './ModalAddTrackingNumber';
 import { EXAMPLE_DATA, plural, RowData } from './utils';
 import { useRowSelection } from './useRowSelection';
 import { useNotification } from './useNotification';
 import { TableFilters } from './TableFilters';
-import { Prose } from '@ag.ds-next/react/prose';
 
 const PER_PAGE = 333;
 
@@ -96,19 +95,6 @@ export function SelectableTableBatchActionsScrolling() {
 	}
 
 	const ref = useRef<HTMLDivElement>(null);
-	const [isStuck, setIsSticky] = useState(false);
-
-	// useEffect(() => {
-	// 	if (!ref.current) return;
-	// 	const observer = new IntersectionObserver(
-	// 		([e]) => {
-	// 			setIsSticky(!e.isIntersecting);
-	// 		},
-	// 		{ threshold: 1 }
-	// 	);
-	// 	observer.observe(ref.current);
-	// 	return () => observer.disconnect();
-	// }, []);
 
 	return (
 		<PageContent>
