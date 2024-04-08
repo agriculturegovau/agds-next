@@ -42,6 +42,7 @@ export function FormTask1Step1ChangeDetails() {
 	} = useForm<Task1Step1FormSchema>({
 		defaultValues: formState.task1?.step1,
 		resolver: zodResolver(task1Step1FormSchema),
+		mode: 'onBlur',
 	});
 
 	const [isSaving, setIsSaving] = useState(false);

@@ -1,26 +1,26 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { useScrollToField } from '@ag.ds-next/react/field';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { useScrollToField } from '@ag.ds-next/react/field';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { DeepPartial } from '../../../lib/types';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
 import { parseDateField } from '../utils';
-import { useFormTask1Context } from './FormTask1Provider';
 import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step4FormSchema,
 	task1Step4FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
 	const registrationExpiry = step?.registrationExpiry as
@@ -48,7 +48,8 @@ export function FormTask1Step4() {
 		formState: { errors },
 	} = useForm<Task1Step4FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step4),
-		resolver: yupResolver(task1Step4FormSchema),
+		resolver: zodResolver(task1Step4FormSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step4FormSchema> = async (data) => {

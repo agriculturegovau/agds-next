@@ -1,26 +1,26 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
+import { useScrollToField } from '@ag.ds-next/react/field';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Select } from '@ag.ds-next/react/select';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { useScrollToField } from '@ag.ds-next/react/field';
-import { Text } from '@ag.ds-next/react/text';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step3FormSchema,
 	Task1Step3FormSchema,
+	task1Step3FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step3() {
 	const { formState, setFormState } = useGlobalForm();
@@ -37,7 +37,8 @@ export function FormTask1Step3() {
 		formState: { errors },
 	} = useForm<Task1Step3FormSchema>({
 		defaultValues: formState.task1?.step3,
-		resolver: yupResolver(task1Step3FormSchema),
+		resolver: zodResolver(task1Step3FormSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step3FormSchema> = async (data) => {

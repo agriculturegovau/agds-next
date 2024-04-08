@@ -31,6 +31,7 @@ export function FormTask2Step1() {
 		// formState: { errors },
 	} = useForm<ArrayOfTask2Step1FormSchema>({
 		resolver: zodResolver(arrayOfTask2Step1FormSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<ArrayOfTask2Step1FormSchema> = async (data) => {

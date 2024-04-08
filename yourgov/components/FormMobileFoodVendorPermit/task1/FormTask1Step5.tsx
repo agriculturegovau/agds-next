@@ -1,26 +1,26 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { useScrollToField } from '@ag.ds-next/react/field';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import { useScrollToField } from '@ag.ds-next/react/field';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { DeepPartial } from '../../../lib/types';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
 import { parseDateField } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step5FormSchema,
 	Task1Step5FormSchema,
+	task1Step5FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 	const from = step?.tradingPeriod?.from as string | Date | undefined;
@@ -48,7 +48,8 @@ export function FormTask1Step5() {
 		formState: { errors },
 	} = useForm<Task1Step5FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step5),
-		resolver: yupResolver(task1Step5FormSchema),
+		resolver: zodResolver(task1Step5FormSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {

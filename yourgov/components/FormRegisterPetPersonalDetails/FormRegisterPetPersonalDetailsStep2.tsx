@@ -51,6 +51,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		reValidateMode: 'onChange',
 		defaultValues: {},
 		resolver: yupResolver(formSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

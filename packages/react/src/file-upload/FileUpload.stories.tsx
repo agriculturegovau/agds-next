@@ -193,6 +193,7 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 			file: [],
 		},
 		resolver: yupResolver(formSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = async (data) => {

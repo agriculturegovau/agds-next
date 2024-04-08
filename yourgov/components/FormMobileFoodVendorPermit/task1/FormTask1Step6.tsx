@@ -1,16 +1,16 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Stack } from '@ag.ds-next/react/stack';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Combobox } from '@ag.ds-next/react/combobox';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step6FormSchema,
 	Task1Step6FormSchema,
+	task1Step6FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step6() {
 	const { formState, setFormState } = useGlobalForm();
@@ -22,7 +22,8 @@ export function FormTask1Step6() {
 		formState: { errors },
 	} = useForm<Task1Step6FormSchema>({
 		defaultValues: formState.task1?.step6,
-		resolver: yupResolver(task1Step6FormSchema),
+		resolver: zodResolver(task1Step6FormSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {

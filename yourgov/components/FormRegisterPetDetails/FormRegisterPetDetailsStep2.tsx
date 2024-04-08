@@ -43,6 +43,7 @@ export const FormRegisterPetDetailsStep2 = () => {
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState ?? { files: [] },
 		resolver: yupResolver(formSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

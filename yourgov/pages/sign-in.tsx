@@ -92,6 +92,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		formState: { errors },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

@@ -53,6 +53,7 @@ export const FormExampleMultiStep3 = () => {
 		reValidateMode: 'onChange',
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
+		mode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
