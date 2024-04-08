@@ -1,20 +1,20 @@
 import { DeepPartial } from 'react-hook-form';
 import { ZodIssueCode, z } from 'zod';
-import { zodDateField, zodPhoneField, zodString, zodStringOptional } from '../utils';
+import { zodDateField, zodPhoneFieldOptional, zodString, zodStringOptional } from '../utils';
 
 export const task1Step1FormSchema = z
 	.object({
 		firstName: zodString('Enter your first name'),
 		lastName: zodString('Enter your last name'),
 		email: zodString('Enter your email').email('Enter a valid email'),
-		contactPhoneNumber: zodPhoneField().optional(),
+		contactPhoneNumber: zodPhoneFieldOptional(),
 	});
 
 export type Task1Step1FormSchema = z.infer<typeof task1Step1FormSchema>;
 
 export const task1Step1Part2FormSchema = z
 	.object({
-		contactPhoneNumber: zodPhoneField().optional(),
+		contactPhoneNumber: zodPhoneFieldOptional(),
 	});
 
 export type Task1Step1Part2FormSchema = z.infer<

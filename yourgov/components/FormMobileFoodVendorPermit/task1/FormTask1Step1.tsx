@@ -141,6 +141,7 @@ function AdditionalDetailsForm() {
 					id="contactPhoneNumber"
 					{...register('contactPhoneNumber')}
 					message={errors.contactPhoneNumber?.message}
+					invalid={Boolean(errors.contactPhoneNumber)}
 				/>
 			</Stack>
 			<StepActions />
