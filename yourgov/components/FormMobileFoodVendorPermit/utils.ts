@@ -26,17 +26,25 @@ export function parseDateField(value: Date | string | undefined) {
 	return value;
 }
 
-const zodPhoneFieldCore = (message: string, isOptional = false) => {
-	const string = isOptional ? z.string() : zodString(message)
-
-	return string.regex(/^[\d\s]+$/, { message: 'Phone number must not include letters or symbols' })
-		.regex(/^0[\d\s]+$/, { message: `Mobile numbers must begin with '04', landline numbers must begin with an area code` })
-		// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
-		.refine((val) => val.replace(/\s/g, '').length === 10) as unknown as ReturnType<typeof z.string>
+const phoneError = {
+	lettersOrSymbols: 'Phone number must not include letters or symbols',
+	start0402: `Mobile numbers must begin with '04', landline numbers must begin with '02'`,
+	digitCount: 'The Phone number is expected to be 10 digits long'
 }
 
-export const zodPhoneField = (message = 'Enter a phone number') => zodPhoneFieldCore(message, false)
-export const zodPhoneFieldOptional = () => zodPhoneFieldCore('', true).optional()
+export function zodPhoneField(message = 'Enter a phone number') {
+	return zodString(message).regex(/^[\d\s]+$/, { message: phoneError.lettersOrSymbols })
+		.regex(/^0[42][\d\s]+$/, { message: phoneError.start0402 })
+		// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
+		.refine((val) => val.replace(/\s/g, '').length === 10, { message: phoneError.digitCount })
+}
+export function zodPhoneFieldOptional() {
+	return zodStringOptional()
+		.refine(value => !value || /^[\d\s]+$/.test(value), { message: phoneError.lettersOrSymbols })
+		.refine(value => !value || /^0[42][\d\s]+$/.test(value), { message: phoneError.start0402 })
+		// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
+		.refine(value => !value || value?.replace(/\s/g, '').length === 10, { message: phoneError.digitCount })
+}
 
 export const yupPhoneField = yup
 	.string()
