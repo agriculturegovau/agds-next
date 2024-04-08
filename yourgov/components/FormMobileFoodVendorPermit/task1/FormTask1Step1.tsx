@@ -27,7 +27,7 @@ import { useFormTask1Context } from './FormTask1Provider';
 export function FormTask1Step1() {
 	const { formState, typeSearchParm } = useGlobalForm();
 	const stepFormState = formState.task1?.step1;
-	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-foodvendor-permit/form/task-1/step-1/change-details?type=${typeSearchParm}`;
+	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1/change-details?type=${typeSearchParm}`;
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
