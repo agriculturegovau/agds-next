@@ -182,7 +182,7 @@ export function SelectableTableBatchActionsScrolling() {
 					</p>
 				</Prose>
 				<H2 id="certificates-heading">Certificates</H2>
-				<Stack gap={1} css={{ maxWidth: 600 }}>
+				<Stack gap={1}>
 					{renderNotification()}
 					<TableFilters />
 					<Stack
@@ -231,6 +231,9 @@ export function SelectableTableBatchActionsScrolling() {
 													</TableHeader>
 													<TableHeader scope="col">Exporter</TableHeader>
 													<TableHeader scope="col">Date Issued</TableHeader>
+													<TableHeader scope="col">Another</TableHeader>
+													<TableHeader scope="col">Random</TableHeader>
+													<TableHeader scope="col">Column</TableHeader>
 													<TableHeader scope="col">Status</TableHeader>
 													<TableHeader scope="col">Amount</TableHeader>
 													<TableHeader scope="col">Actions</TableHeader>
@@ -252,37 +255,6 @@ export function SelectableTableBatchActionsScrolling() {
 											</TableBody>
 										</Table>
 										{/* </TableWrapper> */}
-										{hasSelections && (
-											<TableBatchActionsBar>
-												<TableBatchActionsTitle>
-													Apply action to {selectedItems.length}{' '}
-													{plural(selectedItems.length, 'item', 'items')}
-												</TableBatchActionsTitle>
-												<ButtonGroup>
-													<Button
-														variant="secondary"
-														size="sm"
-														onClick={() => setModalAddTrackingOpen(true)}
-													>
-														Add tracking number
-													</Button>
-													<Button
-														variant="secondary"
-														size="sm"
-														onClick={() => setDeleteModalOpen(true)}
-													>
-														Delete
-													</Button>
-													<Button
-														variant="tertiary"
-														size="sm"
-														onClick={toggleAllRows}
-													>
-														Cancel
-													</Button>
-												</ButtonGroup>
-											</TableBatchActionsBar>
-										)}
 									</Stack>
 								</Stack>
 							) : (
@@ -294,6 +266,33 @@ export function SelectableTableBatchActionsScrolling() {
 							)}
 						</Box>
 					</Stack>
+					{hasSelections && (
+						<TableBatchActionsBar>
+							<TableBatchActionsTitle>
+								Apply action to {selectedItems.length}{' '}
+								{plural(selectedItems.length, 'item', 'items')}
+							</TableBatchActionsTitle>
+							<ButtonGroup>
+								<Button
+									variant="secondary"
+									size="sm"
+									onClick={() => setModalAddTrackingOpen(true)}
+								>
+									Add tracking number
+								</Button>
+								<Button
+									variant="secondary"
+									size="sm"
+									onClick={() => setDeleteModalOpen(true)}
+								>
+									Delete
+								</Button>
+								<Button variant="tertiary" size="sm" onClick={toggleAllRows}>
+									Cancel
+								</Button>
+							</ButtonGroup>
+						</TableBatchActionsBar>
+					)}
 					{paginatedData.length ? (
 						<Box
 							ref={ref}
@@ -454,6 +453,9 @@ function Row({
 					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
 				<TableCell>{exporter}</TableCell>
+				<TableCell>Foo&nbsp;Bar&nbsp;Baz</TableCell>
+				<TableCell>Qux&nbsp;Quux&nbsp;Corge</TableCell>
+				<TableCell>Grault&nbsp;Garply&nbsp;Waldo</TableCell>
 				<TableCell>11/02/22 14:06</TableCell>
 				<TableCell>{status}</TableCell>
 				<TableCell>{amount}</TableCell>
