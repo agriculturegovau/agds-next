@@ -14,6 +14,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { checkHasErrors } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step2FormSchema,
@@ -53,8 +54,7 @@ export function FormTask1Step2() {
 		setFocusedError(false);
 	};
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = checkHasErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
