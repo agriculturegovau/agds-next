@@ -115,7 +115,8 @@ function AdditionalDetailsForm() {
 			contactPhoneNumber: formState.task1?.step1?.contactPhoneNumber,
 		},
 		resolver: zodResolver(task1Step1Part2FormSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step1Part2FormSchema> = async (data) => {

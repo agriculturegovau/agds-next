@@ -29,7 +29,8 @@ export function GettingStartedForm({
 		formState: { errors },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	function onSubmit(data: FormSchema) {

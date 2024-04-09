@@ -26,7 +26,8 @@ export const FormExampleMultiStep2 = () => {
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

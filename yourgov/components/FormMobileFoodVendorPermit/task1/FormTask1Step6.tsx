@@ -23,7 +23,8 @@ export function FormTask1Step6() {
 	} = useForm<Task1Step6FormSchema>({
 		defaultValues: formState.task1?.step6,
 		resolver: zodResolver(task1Step6FormSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {

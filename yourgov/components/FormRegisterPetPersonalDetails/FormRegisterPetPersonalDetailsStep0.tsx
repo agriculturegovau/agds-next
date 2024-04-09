@@ -65,7 +65,8 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const [hasClosedForm, setHasClosedForm] = useState(false);

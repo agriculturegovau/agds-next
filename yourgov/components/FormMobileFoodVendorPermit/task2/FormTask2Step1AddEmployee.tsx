@@ -42,7 +42,8 @@ export function FormTask2Step1AddEmployee() {
 	} = useForm<Task2Step1FormSchema>({
 		// defaultValues: formState.task2?.step1?.employeeList,
 		resolver: zodResolver(task2Step1FormSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const [isSaving, setIsSaving] = useState(false);

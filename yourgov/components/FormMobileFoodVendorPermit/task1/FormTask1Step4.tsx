@@ -49,7 +49,8 @@ export function FormTask1Step4() {
 	} = useForm<Task1Step4FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step4),
 		resolver: zodResolver(task1Step4FormSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step4FormSchema> = async (data) => {

@@ -50,10 +50,10 @@ export const FormExampleMultiStep3 = () => {
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
-		reValidateMode: 'onChange',
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

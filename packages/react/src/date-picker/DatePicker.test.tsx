@@ -106,7 +106,8 @@ function DatePickerInsideForm({
 		formState: { errors },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema(required)),
-		mode: 'onBlur',
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 	return (
 		<form
