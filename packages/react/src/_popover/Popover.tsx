@@ -114,7 +114,6 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 							  }
 							: {
 									maxWidth: `${availableWidth}px`,
-									overflowX: 'auto',
 							  }),
 					});
 				},
