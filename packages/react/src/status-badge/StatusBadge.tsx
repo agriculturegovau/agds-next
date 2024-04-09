@@ -52,7 +52,6 @@ export const StatusBadge = ({
 		return (
 			<Flex
 				alignItems="center"
-				background="body"
 				borderColor={legacyTone}
 				display="inline-flex"
 				gap={0.5}
@@ -90,7 +89,6 @@ export const StatusBadge = ({
 	return (
 		<Flex
 			alignItems="center"
-			background="body"
 			borderColor={borderColor}
 			display="inline-flex"
 			gap={0.5}
@@ -125,6 +123,7 @@ const height = mapSpacing(2); // 32px
 const iconWidth = '1.375rem'; // 22px
 
 const regularAppearanceStyleProps = {
+	background: 'body',
 	border: true,
 	borderWidth: 'sm',
 	height,
