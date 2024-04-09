@@ -2,10 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
-import { Stack } from '@ag.ds-next/react/stack';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { Text } from '@ag.ds-next/react/text';
-import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
 	TableBody,
@@ -15,8 +13,10 @@ import {
 	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { StepActions } from '../StepActions';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
 import { FormTask2Container } from './FormTask2Container';
 import {
 	ArrayOfTask2Step1FormSchema,
@@ -104,7 +104,17 @@ export function FormTask2Step1() {
 								<TableBody>
 									{formState.task2?.step1?.employeeList?.map((employee) => (
 										<TableRow key={employee?.email}>
-											<TableCell>{`${employee?.firstName} ${employee?.lastName}`}</TableCell>
+											<TableCell>
+												<TextLink
+													href={
+														step1AddEmployeePath +
+														'&employeeId=' +
+														employee?.email
+													}
+												>
+													{`${employee?.firstName} ${employee?.lastName}`}
+												</TextLink>
+											</TableCell>
 											<TableCell>{employee?.email}</TableCell>
 											<TableCell>
 												<Button

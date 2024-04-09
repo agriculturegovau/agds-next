@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useParams } from 'next/navigation';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -25,6 +26,7 @@ import {
 
 export function FormTask2Step1AddEmployee() {
 	const router = useRouter();
+	const employeeId = router.query.employeeId;
 	const { formState, setFormState, typeSearchParm } = useGlobalForm();
 
 	const employeeList = formState.task2?.step1?.employeeList || [];
@@ -35,12 +37,16 @@ export function FormTask2Step1AddEmployee() {
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
+	const storedEmployee = employeeList.find((emp) => emp?.email === employeeId);
+
+	console.log({ storedEmployee, employeeId });
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Task2Step1FormSchema>({
-		// defaultValues: formState.task2?.step1?.employeeList,
+		defaultValues: storedEmployee,
 		resolver: zodResolver(task2Step1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
