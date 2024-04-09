@@ -18,6 +18,7 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Text } from '@ag.ds-next/react/text';
 import { H1 } from '@ag.ds-next/react/heading';
+import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { useAuth } from '../lib/useAuth';
 import { mockUser } from '../data/mockUsers';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -139,6 +140,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 					</UnorderedList>
 				</PageAlert>
 			)}
+			{isSubmitting && <LoadingBlanket label="Logging in" />}
 			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 				<FormStack>
 					<TextInput
