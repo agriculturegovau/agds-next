@@ -193,7 +193,7 @@ exports[`DateRangePicker renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-jtglfd-boxStyles-Popover"
+        class="css-1nvymef-boxStyles-Popover"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
       />
     </fieldset>
