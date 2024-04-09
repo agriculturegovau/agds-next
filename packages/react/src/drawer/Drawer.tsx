@@ -33,6 +33,8 @@ export type DrawerProps = PropsWithChildren<{
 	title: string;
 	/** The width of the drawer. */
 	width?: DrawerDialogWidth;
+	/** Lighten the overlay so that the main content underneath is more visible while the draw is open. */
+	mutedOverlay?: boolean;
 }>;
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
@@ -43,6 +45,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	onDismiss,
 	title,
 	width = 'md',
+	mutedOverlay = false,
 }) => {
 	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	const scrollbarWidth = useRef<number>(0);
@@ -88,7 +91,11 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
 					<div ref={modalContainerRef}>
-						<Overlay onClick={handleClose} style={{ opacity }} />
+						<Overlay
+							onClick={handleClose}
+							style={{ opacity }}
+							mutedOverlay={mutedOverlay}
+						/>
 						<DrawerDialog
 							onClose={handleClose}
 							title={title}
@@ -109,9 +116,11 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 function Overlay({
 	onClick,
 	style,
+	mutedOverlay,
 }: {
 	onClick: MouseEventHandler<HTMLDivElement>;
 	style: { opacity: SpringValue<number> };
+	mutedOverlay: boolean;
 }) {
 	return (
 		<animated.div
@@ -119,7 +128,9 @@ function Overlay({
 			css={{
 				position: 'fixed',
 				inset: 0,
-				backgroundColor: boxPalette.overlay,
+				backgroundColor: mutedOverlay
+					? boxPalette.overlayMuted
+					: boxPalette.overlay,
 				zIndex: tokens.zIndex.overlay,
 			}}
 			style={style}
