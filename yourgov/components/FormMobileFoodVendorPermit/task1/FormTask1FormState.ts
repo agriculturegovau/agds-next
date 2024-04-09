@@ -52,26 +52,27 @@ export const task1Step3FormSchema = z
 		postalPostcode: zodStringOptional(),
 	})
 	.superRefine((value, context) => {
-		function addIssue(label: string) {
+		function addIssue(key: keyof typeof value, label: string) {
 			context.addIssue({
 				code: ZodIssueCode.invalid_string,
 				message: `Enter your ${label}`,
-				validation: { includes: '' }
+				validation: { includes: '' },
+				path: [key]
 			})
 		}
 
 		if (!value.isPostalAddressSameAsStreetAddress) {
 			if (!value.postalAddress) {
-				addIssue('postal address')
+				addIssue('postalAddress', 'postal address')
 			}
 			if (!value.postalSuburbTownCity) {
-				addIssue('suburb, town or city')
+				addIssue('postalSuburbTownCity', 'suburb, town or city')
 			}
 			if (!value.postalState) {
-				addIssue('state')
+				addIssue('postalState', 'state')
 			}
 			if (!value.postalPostcode) {
-				addIssue('postcode')
+				addIssue('postalPostcode', 'postcode')
 			}
 		}
 	});
