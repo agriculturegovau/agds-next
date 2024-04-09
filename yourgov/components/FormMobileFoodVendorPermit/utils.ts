@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
-import { z } from 'zod';
+import { ZodIssueCode, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
 
 // Empty strings do not trigger Zod required field error validation
@@ -9,6 +9,33 @@ export const zodStringOptional = () => z.string().optional()
 
 export const zodDateField = (message = 'Enter a valid date') => z.date({ invalid_type_error: 'Enter a valid date', required_error: message })
 
+interface ZodTimeFieldProps {
+	label: string
+	requiredMessage?: string
+	invalidMessage?: string
+}
+
+export function zodTimeField({ label, requiredMessage = `${label} is required`, invalidMessage = `${label} is an invalid time` }: ZodTimeFieldProps) {
+	return z.object({
+		raw: zodString(requiredMessage),
+		formatted: zodString(requiredMessage),
+	}).superRefine((value, context) => {
+		if (!value.raw) {
+			context.addIssue({
+				code: ZodIssueCode.invalid_string,
+				message: requiredMessage,
+				validation: { includes: '' },
+			})
+		}
+		if (!/^\d\d:\d\d$/.test(value.raw)) {
+			context.addIssue({
+				code: ZodIssueCode.invalid_string,
+				message: invalidMessage,
+				validation: { includes: '' },
+			})
+		}
+	})
+}
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
 // Tests for this can be found in `packages/react/src/date-picker/test-utils.ts`

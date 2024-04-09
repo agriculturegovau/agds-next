@@ -8,10 +8,9 @@ import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { TimeInput } from '@ag.ds-next/react/time-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DeepPartial } from '../../../lib/types';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { parseDateField } from '../utils';
@@ -43,7 +42,6 @@ export function FormTask1Step5() {
 
 	const {
 		control,
-		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Task1Step5FormSchema>({
@@ -145,25 +143,35 @@ export function FormTask1Step5() {
 							/>
 						)}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Opening time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="openingTime"
-						{...register('openingTime')}
-						invalid={Boolean(errors.openingTime?.message)}
-						message={errors.openingTime?.message}
-						required
+					<Controller
+						control={control}
+						name="openingTime"
+						render={({ field: { ref, ...field } }) => (
+							<TimeInput
+								label="Opening time"
+								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+								id="openingTime"
+								{...field}
+								invalid={Boolean(errors.openingTime?.message)}
+								message={errors.openingTime?.message}
+								required
+							/>
+						)}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Closing time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="closingTime"
-						{...register('closingTime')}
-						invalid={Boolean(errors.closingTime?.message)}
-						message={errors.closingTime?.message}
-						required
+					<Controller
+						control={control}
+						name="closingTime"
+						render={({ field: { ref, ...field } }) => (
+							<TimeInput
+								label="Closing time"
+								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+								id="closingTime"
+								{...field}
+								invalid={Boolean(errors.closingTime?.message)}
+								message={errors.closingTime?.message}
+								required
+							/>
+						)}
 					/>
 				</FormStack>
 				<StepActions />

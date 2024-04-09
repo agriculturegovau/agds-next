@@ -1,6 +1,6 @@
 import { DeepPartial } from 'react-hook-form';
 import { ZodIssueCode, z } from 'zod';
-import { zodDateField, zodPhoneFieldOptional, zodString, zodStringOptional } from '../utils';
+import { zodDateField, zodPhoneFieldOptional, zodString, zodStringOptional, zodTimeField } from '../utils';
 
 export const task1Step1FormSchema = z
 	.object({
@@ -96,8 +96,8 @@ export const task1Step5FormSchema = z
 			from: zodDateField(),
 			to: zodDateField(),
 		}),
-		openingTime: zodString('Start time is required'),
-		closingTime: zodString('End time is required'),
+		openingTime: zodTimeField({ label: 'Opening time' }),
+		closingTime: zodTimeField({ label: 'Closing time' }),
 	}).refine(value => {
 		const { from, to } = value.tradingPeriod || {}
 		// Ensures the start date is always before the end date
