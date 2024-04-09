@@ -86,6 +86,7 @@ export type DatePickerProps = DatePickerInputProps &
 
 export const DatePicker = ({
 	value,
+	onBlur: onBlurProp,
 	onChange,
 	onInputChange: onInputChangeProp,
 	minDate,
@@ -136,6 +137,8 @@ export const DatePicker = ({
 		} else {
 			onInputChangeProp?.(inputValue);
 		}
+
+		onBlurProp?.(e);
 	};
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
