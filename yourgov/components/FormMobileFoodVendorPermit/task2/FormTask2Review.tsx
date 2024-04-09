@@ -129,9 +129,9 @@ export function FormTask2Review({ headingsLevel }: FormTask2ReviewProps) {
 				<HeadingComponent>{task2FormSteps[4].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItemDateRange
-						label="Period active"
-						from={formState.task2?.step5?.tradingPeriod?.from}
-						to={formState.task2?.step5?.tradingPeriod?.to}
+						fromLabel="Period active"
+						fromValue={formState.task2?.step5?.tradingPeriod?.from}
+						toLabel={formState.task2?.step5?.tradingPeriod?.to}
 					/>
 					<FormDefinitionListItem
 						label="Opening time"

@@ -1,8 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Combobox } from '@ag.ds-next/react/combobox';
+import { ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { Stack } from '@ag.ds-next/react/stack';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
@@ -45,9 +44,9 @@ export function FormTask1Step6() {
 					control={control}
 					name="cuisine"
 					render={({ field: { ref, ...field } }) => (
-						<Combobox
-							label="Cuisine"
-							hint="Start typing to see results"
+						<ComboboxMulti
+							label="Select food types"
+							hint="Start typing to see results. You can add multiple selections."
 							inputRef={ref}
 							options={cuisineOptions}
 							required

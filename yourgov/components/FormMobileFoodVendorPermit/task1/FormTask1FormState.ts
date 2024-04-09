@@ -109,7 +109,7 @@ export const task1Step5FormSchema = z
 export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
 
 export const task1Step6FormSchema = z.object({
-	cuisine: z.object({ label: zodString(), value: zodString() }, { required_error: 'Cuisine is required' }),
+	cuisine: z.array(z.object({ label: zodString(), value: zodString() }, { required_error: 'Cuisine is required' })),
 });
 
 export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;
