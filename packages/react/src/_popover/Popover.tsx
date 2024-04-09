@@ -7,7 +7,6 @@ import {
 	offset,
 	flip,
 	size,
-	shift,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
