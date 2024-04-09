@@ -7,6 +7,7 @@ import {
 	offset,
 	flip,
 	size,
+	shift,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
@@ -32,11 +33,12 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 			borderColor="muted"
 			rounded
 			css={{
-				position: 'relative',
-				overflowY: 'auto',
 				boxShadow: tokens.shadow.lg,
-				zIndex: tokens.zIndex.popover,
+				minHeight: 'min-content',
+				overflow: 'auto',
+				position: 'relative',
 				visibility,
+				zIndex: tokens.zIndex.popover,
 			}}
 			{...props}
 		>
@@ -46,6 +48,7 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 });
 
 const DEFAULT_OFFSET = 8;
+const MIN_SIDE_GUTTER_WIDTH = 4;
 
 type UsePopoverOptions = {
 	/** Fix the height of the popover to match the height of the content. */
@@ -86,6 +89,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
+			// https://floating-ui.com/docs/flip#combining-with-shift
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Changes the placement of the floating element in order to keep it in view
 			// https://floating-ui.com/docs/flip
 			flip({ padding: DEFAULT_OFFSET }),

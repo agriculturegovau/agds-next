@@ -39,10 +39,10 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:ru:-button"
-    class="css-1191aff-boxStyles-boxStyles-Popover"
+    class="css-cygkin-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:ru:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(4px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
     tabindex="-1"
   >
     <div
@@ -219,10 +219,10 @@ exports[`DropdownMenu Links renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r16:-button"
-    class="css-1191aff-boxStyles-boxStyles-Popover"
+    class="css-cygkin-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r16:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(4px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
     tabindex="-1"
   >
     <a
@@ -308,10 +308,10 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r1i:-button"
-    class="css-1191aff-boxStyles-boxStyles-Popover"
+    class="css-cygkin-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(4px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
     tabindex="-1"
   >
     <div
@@ -440,10 +440,10 @@ exports[`DropdownMenu renders correctly 1`] = `
   </button>
   <div
     aria-labelledby="dropdown-menu-:r0:-button"
-    class="css-1191aff-boxStyles-boxStyles-Popover"
+    class="css-cygkin-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r0:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(4px, 8px); max-height: -16px; max-width: -16px; overflow-x: auto;"
     tabindex="-1"
   >
     <div
