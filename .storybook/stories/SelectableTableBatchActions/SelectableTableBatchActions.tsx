@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -7,7 +7,6 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
@@ -19,6 +18,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { Flex } from '@ag.ds-next/react/flex';
 import { PaginationButtons } from '@ag.ds-next/react/pagination';
 import { Box } from '@ag.ds-next/react/box';
+import { Prose } from '@ag.ds-next/react/prose';
 import { ModalConfirmDelete } from './ModalConfirmDelete';
 import { ModalAddTrackingNumber } from './ModalAddTrackingNumber';
 import { EXAMPLE_DATA, plural, RowData } from './utils';
@@ -94,26 +94,79 @@ export function SelectableTableBatchActions() {
 		);
 	}
 
-	const ref = useRef<HTMLDivElement>(null);
-	const [isStuck, setIsSticky] = useState(false);
-
-	useEffect(() => {
-		if (!ref.current) return;
-		const observer = new IntersectionObserver(
-			([e]) => {
-				setIsSticky(!e.isIntersecting);
-			},
-			{ threshold: 1 }
-		);
-		observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
 	return (
 		<PageContent>
 			<Stack gap={1.5}>
+				<Prose>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+				</Prose>
 				<H2 id="certificates-heading">Certificates</H2>
-				<Stack gap={1} css={{ maxWidth: 600 }}>
+				<Stack gap={1}>
 					{renderNotification()}
 					<TableFilters />
 					<Stack gap={0}>
@@ -127,10 +180,18 @@ export function SelectableTableBatchActions() {
 								Select all rows
 							</Checkbox>
 						</Box>
-						{paginatedData.length ? (
-							<Stack gap={1}>
-								<Stack gap={0.5}>
-									<TableWrapper>
+						<Box
+							css={{
+								// The negative number represents the height of the Select all checkbox and pagination above and below the table. You should ideally use a ref to measure their height
+								maxHeight: 'calc(100dvh - 120px)',
+								overflow: 'auto',
+							}}
+							focus
+							tabIndex={0}
+						>
+							{paginatedData.length ? (
+								<Stack gap={1}>
+									<Stack gap={0.5}>
 										<Table striped aria-labelledby="certificates-heading">
 											<TableHead>
 												<TableRow>
@@ -142,6 +203,9 @@ export function SelectableTableBatchActions() {
 													</TableHeader>
 													<TableHeader scope="col">Exporter</TableHeader>
 													<TableHeader scope="col">Date Issued</TableHeader>
+													<TableHeader scope="col">Another</TableHeader>
+													<TableHeader scope="col">Random</TableHeader>
+													<TableHeader scope="col">Column</TableHeader>
 													<TableHeader scope="col">Status</TableHeader>
 													<TableHeader scope="col">Amount</TableHeader>
 													<TableHeader scope="col">Actions</TableHeader>
@@ -162,74 +226,120 @@ export function SelectableTableBatchActions() {
 												))}
 											</TableBody>
 										</Table>
-									</TableWrapper>
-									{hasSelections && (
-										<Box css={{ bottom: 0, position: 'sticky', zIndex: 2 }}>
-											<TableBatchActionsBar>
-												<TableBatchActionsTitle>
-													Apply action to {selectedItems.length}{' '}
-													{plural(selectedItems.length, 'item', 'items')}
-												</TableBatchActionsTitle>
-												<ButtonGroup>
-													<Button
-														variant="secondary"
-														size="sm"
-														onClick={() => setModalAddTrackingOpen(true)}
-													>
-														Add tracking number
-													</Button>
-													<Button
-														variant="secondary"
-														size="sm"
-														onClick={() => setDeleteModalOpen(true)}
-													>
-														Delete
-													</Button>
-													<Button
-														variant="tertiary"
-														size="sm"
-														onClick={toggleAllRows}
-													>
-														Cancel
-													</Button>
-												</ButtonGroup>
-											</TableBatchActionsBar>
-										</Box>
-									)}
+									</Stack>
 								</Stack>
-								<Box
-									background="body"
-									css={{
-										bottom: -1,
-										position: 'sticky',
-										zIndex: 1,
-										...(isStuck && {
-											borderBottomLeftRadius: 0,
-											borderBottomRightRadius: 0,
-											borderBottomWidth: 0,
-											boxShadow: `0 -2px 4px rgba(0, 0, 0, 0.3)`,
-											padding: 16,
-										}),
-									}}
-									ref={ref}
-									rounded
-								>
-									<PaginationButtons
-										currentPage={currentPage}
-										onChange={setCurrentPage}
-										totalPages={totalPages}
-									/>
-								</Box>
-							</Stack>
-						) : (
-							<Stack paddingY={1}>
-								<Heading type="h3" fontSize="lg">
-									No certificates found
-								</Heading>
-							</Stack>
-						)}
+							) : (
+								<Stack paddingY={1}>
+									<Heading type="h3" fontSize="lg">
+										No certificates found
+									</Heading>
+								</Stack>
+							)}
+						</Box>
 					</Stack>
+					{hasSelections && (
+						<TableBatchActionsBar>
+							<TableBatchActionsTitle>
+								Apply action to {selectedItems.length}{' '}
+								{plural(selectedItems.length, 'item', 'items')}
+							</TableBatchActionsTitle>
+							<ButtonGroup>
+								<Button
+									variant="secondary"
+									size="sm"
+									onClick={() => setModalAddTrackingOpen(true)}
+								>
+									Add tracking number
+								</Button>
+								<Button
+									variant="secondary"
+									size="sm"
+									onClick={() => setDeleteModalOpen(true)}
+								>
+									Delete
+								</Button>
+								<Button variant="tertiary" size="sm" onClick={toggleAllRows}>
+									Cancel
+								</Button>
+							</ButtonGroup>
+						</TableBatchActionsBar>
+					)}
+					{paginatedData.length ? (
+						<PaginationButtons
+							currentPage={currentPage}
+							onChange={setCurrentPage}
+							totalPages={totalPages}
+						/>
+					) : null}
 				</Stack>
+				<Prose>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+					<h2>Heading level 2, proceeding H1</h2>
+
+					<p>
+						This is an opening paragraph, that{' '}
+						<a href="/site">contains an internal link</a>.
+					</p>
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+						expedita tenetur blanditiis in libero distinctio inventore porro
+						quaerat, eum aspernatur{' '}
+						<a
+							href="https://more.domain.tld/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path/more/path"
+							rel="external"
+						>
+							and one that has a line break
+						</a>{' '}
+						dolorum animi a perferendis, obcaecati, accusantium dignissimos
+						atque, voluptates veniam!
+					</p>
+
+					<h2>Heading level 2</h2>
+					<h3>Heading level 3, proceeding H2</h3>
+					<p>
+						The purpose of the <kbd>Tab</kbd> character is indentation;
+						conversely, using the <kbd>Space</kbd> character for indentation
+						carries no semantic meaning—if you code this way your indentation
+						schema may as well be a form of{' '}
+						<abbr title="American Standard Code for Information Interchange">
+							ASCII
+						</abbr>{' '}
+						art. ;-)
+					</p>
+				</Prose>
 			</Stack>
 			<ModalConfirmDelete
 				itemsToDelete={selectedItems}
@@ -289,17 +399,22 @@ function Row({
 		<Fragment>
 			<TableRow selected={isRowSelected}>
 				<TableCell>
-					<Checkbox
-						size="sm"
-						checked={isRowSelected}
-						onChange={onRowSelectToggle}
-						aria-label={`Select certificate ${certNumber}`}
-					/>
+					<Box css={{ position: 'relative' }}>
+						<Checkbox
+							size="sm"
+							checked={isRowSelected}
+							onChange={onRowSelectToggle}
+							aria-label={`Select certificate ${certNumber}`}
+						/>
+					</Box>
 				</TableCell>
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
 				<TableCell>{exporter}</TableCell>
+				<TableCell>Foo&nbsp;Bar&nbsp;Baz</TableCell>
+				<TableCell>Qux&nbsp;Quux&nbsp;Corge</TableCell>
+				<TableCell>Grault&nbsp;Garply&nbsp;Waldo</TableCell>
 				<TableCell>11/02/22 14:06</TableCell>
 				<TableCell>{status}</TableCell>
 				<TableCell>{amount}</TableCell>

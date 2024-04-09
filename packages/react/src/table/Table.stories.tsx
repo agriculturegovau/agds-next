@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { SelectableTableBatchActions } from '../../../../.storybook/stories/SelectableTableBatchActions/SelectableTableBatchActions';
-import { SelectableTableBatchActionsScrolling } from '../../../../.storybook/stories/SelectableTableBatchActions/SelectableTableBatchActionsScrolling';
 import { Checkbox } from '../checkbox';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
@@ -445,11 +444,6 @@ export const SelectableBasic: Story = {
 export const SelectableWithBatchActions: Story = {
 	name: 'With selectable rows and batch actions',
 	render: SelectableTableBatchActions,
-};
-
-export const SelectableWithBatchActionsScrolling: Story = {
-	name: 'With selectable rows and batch actions Scrolling',
-	render: SelectableTableBatchActionsScrolling,
 };
 
 const exampleData = [
