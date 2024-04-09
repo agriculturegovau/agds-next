@@ -81,6 +81,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Changes the placement of the floating element in order to keep it in view
+			// https://floating-ui.com/docs/flip
+			flip({ padding: DEFAULT_OFFSET }),
 			// Allows you to change the size of the floating element
 			// https://floating-ui.com/docs/size
 			size({
@@ -116,9 +119,6 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 					});
 				},
 			}),
-			// Changes the placement of the floating element in order to keep it in view
-			// https://floating-ui.com/docs/flip
-			flip({ padding: DEFAULT_OFFSET }),
 		],
 		// Ensures the floating element remains anchored to its reference element
 		// https://floating-ui.com/docs/react#anchoring
