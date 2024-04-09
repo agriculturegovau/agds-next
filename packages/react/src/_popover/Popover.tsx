@@ -32,7 +32,6 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 			rounded
 			css={{
 				boxShadow: tokens.shadow.lg,
-				minHeight: 'min-content',
 				overflow: 'auto',
 				position: 'relative',
 				visibility,
@@ -84,9 +83,6 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
-			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
-			// https://floating-ui.com/docs/flip#combining-with-shift
-			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Allows you to change the size of the floating element
 			// https://floating-ui.com/docs/size
 			size({
