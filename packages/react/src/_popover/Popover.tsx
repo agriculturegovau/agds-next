@@ -44,7 +44,6 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 });
 
 const DEFAULT_OFFSET = 8;
-const MIN_SIDE_GUTTER_WIDTH = 4;
 
 type UsePopoverOptions = {
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
@@ -86,7 +85,12 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({ availableHeight: _availableHeight, elements, rects }) {
+				apply({
+					availableHeight: _availableHeight,
+					availableWidth,
+					elements,
+					rects,
+				}) {
 					// Popovers can have a predefined max-height if there is enough room on the screen
 					const maxHeight =
 						maxHeightOption && _availableHeight > maxHeightOption
@@ -106,7 +110,7 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 									width: `${rects.reference.width}px`,
 							  }
 							: {
-									maxWidth: `calc(100vw - ${2 * MIN_SIDE_GUTTER_WIDTH}px)`,
+									maxWidth: `${availableWidth}px`,
 									overflowX: 'auto',
 							  }),
 					});
