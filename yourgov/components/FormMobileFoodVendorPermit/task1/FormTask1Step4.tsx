@@ -89,7 +89,6 @@ export function FormTask1Step4() {
 		<FormTask1Container
 			formTitle="Vehicle registration"
 			formIntroduction="What times would you like to operate?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

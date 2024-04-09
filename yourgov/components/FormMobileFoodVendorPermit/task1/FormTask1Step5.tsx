@@ -91,7 +91,6 @@ export function FormTask1Step5() {
 		<FormTask1Container
 			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

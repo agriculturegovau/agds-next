@@ -82,7 +82,6 @@ export function FormTask1Step3() {
 		<FormTask1Container
 			formTitle="Business address"
 			formIntroduction="Add your business address."
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"

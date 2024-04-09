@@ -43,7 +43,7 @@ export const task1Step3FormSchema = z
 		streetAddress: zodString('Enter your street address'),
 		suburbTownCity: zodString('Enter your suburb, town or city'),
 		state: zodString('Enter your state'),
-		postcode: zodString('Enter your postcode'),
+		postcode: zodString('Enter your postcode').length(4, { message: 'An australian postcode is 4 digits long' }),
 		// postal address
 		isPostalAddressSameAsStreetAddress: z.boolean(),
 		postalAddress: zodStringOptional(),
@@ -52,10 +52,10 @@ export const task1Step3FormSchema = z
 		postalPostcode: zodStringOptional(),
 	})
 	.superRefine((value, context) => {
-		function addIssue(key: keyof typeof value, label: string) {
+		function addIssue(key: keyof typeof value, label: string, message?: string) {
 			context.addIssue({
 				code: ZodIssueCode.invalid_string,
-				message: `Enter your ${label}`,
+				message: message || `Enter your ${label}`,
 				validation: { includes: '' },
 				path: [key]
 			})
@@ -73,6 +73,8 @@ export const task1Step3FormSchema = z
 			}
 			if (!value.postalPostcode) {
 				addIssue('postalPostcode', 'postcode')
+			} else if (value.postalPostcode.length !== 4) {
+				addIssue('postalPostcode', 'postcode', 'An australian postcode is 4 digits long')
 			}
 		}
 	});

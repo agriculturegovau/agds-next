@@ -39,7 +39,6 @@ export function FormTask1Step6() {
 		<FormTask1Container
 			formTitle="Food served"
 			formIntroduction="What type of food will you be serving?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
