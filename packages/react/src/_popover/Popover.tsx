@@ -99,7 +99,7 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({ availableHeight, availableWidth, elements, rects }) {
+				apply({ availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
 						...(fixHeightAsContentHeight
 							? { height: 'max-content' }
@@ -113,7 +113,7 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 									width: `${rects.reference.width}px`,
 							  }
 							: {
-									maxWidth: `${availableWidth}px`,
+									maxWidth: `calc(100vw - ${2 * MIN_SIDE_GUTTER_WIDTH}px)`,
 									overflowX: 'auto',
 							  }),
 					});
