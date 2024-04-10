@@ -3,6 +3,10 @@ import {
 	CollapsingSideBar,
 	CollapsingSideBarTitle,
 } from '../_collapsing-side-bar';
+import { UnorderedList } from '../list';
+import { ReplyIcon } from '../icon';
+import { Flex } from '../flex';
+import { Text } from '../text';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -37,13 +41,13 @@ export const ProgressIndicator = ({
 	const hasExplicitActiveDeclared =
 		items.filter(({ isActive }) => isActive).length > 0;
 
-	// If no explicit active items are declared, the 'doing' status item receives active state by default
+	// If no explicit active items are declared, the 'started' status item receives active state by default
 	const itemsWithDefaultActive: ProgressIndicatorItem[] =
 		hasExplicitActiveDeclared
 			? items
 			: items.map((item) => ({
 					...item,
-					isActive: item.status === 'doing',
+					isActive: item.status === 'started', // TODO: test this?
 			  }));
 
 	return (
@@ -55,28 +59,56 @@ export const ProgressIndicator = ({
 			collapseButtonLabel={subTitle || title}
 		>
 			<ProgressIndicatorList>
-				{itemsWithDefaultActive.map(({ label, ...props }, index) => {
-					if (isItemLink(props)) {
+				{itemsWithDefaultActive.map(
+					({ label, levelTwoItem, ...props }, index) => {
+						if (isItemLink(props)) {
+							return (
+								<ProgressIndicatorItemLink
+									key={index}
+									background={background}
+									{...props}
+								>
+									{label}
+									{levelTwoItem && (
+										<Flex
+											alignItems="center"
+											paddingTop={1}
+											gap={0.5}
+											css={{ fontWeight: 'normal' }}
+										>
+											<ReplyIcon color="selected" />
+											<Text color="muted" fontSize="xs">
+												{levelTwoItem.label}
+											</Text>
+										</Flex>
+									)}
+								</ProgressIndicatorItemLink>
+							);
+						}
 						return (
-							<ProgressIndicatorItemLink
+							<ProgressIndicatorItemButton
 								key={index}
 								background={background}
 								{...props}
 							>
 								{label}
-							</ProgressIndicatorItemLink>
+								{levelTwoItem && (
+									<Flex
+										alignItems="center"
+										paddingTop={1}
+										gap={0.5}
+										css={{ fontWeight: 'normal' }}
+									>
+										<ReplyIcon color="selected" />
+										<Text color="muted" fontSize="xs">
+											{levelTwoItem.label}
+										</Text>
+									</Flex>
+								)}
+							</ProgressIndicatorItemButton>
 						);
 					}
-					return (
-						<ProgressIndicatorItemButton
-							key={index}
-							background={background}
-							{...props}
-						>
-							{label}
-						</ProgressIndicatorItemButton>
-					);
-				})}
+				)}
 			</ProgressIndicatorList>
 		</CollapsingSideBar>
 	);

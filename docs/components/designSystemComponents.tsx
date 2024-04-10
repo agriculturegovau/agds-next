@@ -118,6 +118,7 @@ export {
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
+	ReplyIcon,
 	SearchIcon,
 	SettingsIcon,
 	SuccessFilledIcon,

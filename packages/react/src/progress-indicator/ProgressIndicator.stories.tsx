@@ -36,6 +36,20 @@ const exampleButtonItems: ProgressIndicatorItem[] = [
 	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
 ];
 
+const exampleLevelTwoItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', onClick: console.log },
+	{ label: 'Submit evidence', status: 'saved', onClick: console.log },
+	{
+		label: 'Organisations',
+		status: 'started',
+		onClick: console.log,
+		levelTwoItem: { label: 'Change organisation name' },
+	},
+	{ label: 'Business contacts', status: 'error', onClick: console.log },
+	{ label: 'Case studies', status: 'todo', onClick: console.log },
+	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
+];
+
 export const Basic: Story = {
 	args: {
 		items: exampleLinkItems,
@@ -68,5 +82,11 @@ export const OnBodyAlt: Story = {
 export const Buttons: Story = {
 	args: {
 		items: exampleButtonItems,
+	},
+};
+
+export const LevelTwoStep: Story = {
+	args: {
+		items: exampleLevelTwoItems,
 	},
 };

@@ -27,6 +27,9 @@ export type ProgressIndicatorItem = (
 ) & {
 	label: string;
 	isActive?: boolean;
+	levelTwoItem?: {
+		label: string;
+	};
 };
 
 export type ProgressIndicatorItemStatus =
@@ -38,7 +41,7 @@ export type ProgressIndicatorItemStatus =
 	| 'started'
 	| 'todo';
 
-export interface ProgressIndicatorItemLinkProps extends LinkProps {
+export type ProgressIndicatorItemLinkProps = LinkProps & {
 	/** Determines the background colour of the progress indicator item. */
 	background?: ProgressIndicatorBackground;
 	/** Determines what style the item displays as.
@@ -60,7 +63,7 @@ export interface ProgressIndicatorItemLinkProps extends LinkProps {
 	status: ProgressIndicatorItemStatus;
 	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
 	isActive?: boolean;
-}
+};
 
 export const ProgressIndicatorItemLink = ({
 	children,
