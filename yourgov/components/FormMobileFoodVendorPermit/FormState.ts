@@ -1,14 +1,14 @@
 import { DeepPartial } from '../../lib/types';
 import { task1DefaultFormState, Task1FormState } from './task1/FormTask1FormState';
-import { ArrayOfTask2Step1FormSchema } from './task2/FormTask2FormState';
+import { task2DefaultFormState, Task2Step1Schema } from './task2/FormTask2FormState';
 
 // TODO Create task 2 of the form
 export type Task2FormState = {
 	started: boolean;
 	completed: boolean;
-	step1: ArrayOfTask2Step1FormSchema & { completed: boolean };
-	step2: ArrayOfTask2Step1FormSchema & { completed: boolean }; //TODO
-	step3: ArrayOfTask2Step1FormSchema & { completed: boolean }; //TODO
+	step1: Task2Step1Schema & { completed: boolean };
+	step2: Task2Step1Schema & { completed: boolean }; //TODO
+	step3: Task2Step1Schema & { completed: boolean }; //TODO
 };
 
 // TODO Create task 3 of the form
@@ -34,7 +34,7 @@ export type FormState = {
 
 export const defaultFormState: DeepPartial<FormState> = {
 	task1: task1DefaultFormState,
-	task2: { started: false, completed: false },
+	task2: task2DefaultFormState,
 	task3: { started: false, completed: false },
 	task4: { started: false, completed: false },
 };

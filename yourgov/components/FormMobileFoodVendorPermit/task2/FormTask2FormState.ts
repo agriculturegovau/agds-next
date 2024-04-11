@@ -1,22 +1,22 @@
 import { DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
 import { z } from "zod";
-import { yupDateField, zodString } from '../utils';
+import { zodString } from '../utils';
 
-export const task2Step1FormSchema = z.object({
+export const task2Step1EmployeeSchema = z.object({
 	firstName: zodString('Enter your first name'),
 	lastName: zodString('Enter your last name'),
 	email: zodString('Enter a valid email')
 		.email({ message: 'Not a valid email address' }),
 });
 
-export type Task2Step1FormSchema = z.infer<typeof task2Step1FormSchema>;
+export type Task2Step1EmployeeSchema = z.infer<typeof task2Step1EmployeeSchema>;
 
-export const arrayOfTask2Step1FormSchema = z.object({
-	employeeList: z.array(task2Step1FormSchema).nonempty({ message: 'No employees added' })
+export const task2Step1Schema = z.object({
+	employeeList: z.array(task2Step1EmployeeSchema, { required_error: 'required_error' }).nonempty({ message: 'No employees added' })
 })
 
-export type ArrayOfTask2Step1FormSchema = z.infer<typeof arrayOfTask2Step1FormSchema>
+export type Task2Step1Schema = z.infer<typeof task2Step1Schema>
 
 export const task2Step2FormSchema = yup
 	.object({
@@ -69,80 +69,19 @@ export const task2Step3FormSchema = yup
 
 export type Task2Step3FormSchema = yup.InferType<typeof task2Step3FormSchema>;
 
-export const task2Step4FormSchema = yup
-	.object({
-		registrationNumber: yup
-			.string()
-			.max(6, 'Registration number can not be longer than 6 characters')
-			.required('Vehicle registration number is required'),
-		registrationExpiry: yupDateField.required(
-			'Vehicle registration expiry is required'
-		),
-	})
-	.required();
-
-export type Task2Step4FormSchema = yup.InferType<typeof task2Step4FormSchema>;
-
-export const task2Step5FormSchema = yup
-	.object({
-		tradingPeriod: yup
-			.object({
-				from: yupDateField
-					.required('Enter a valid date')
-					// Ensures the start date is always before the end date
-					.max(yup.ref('to'), 'Start date must be before the end date'),
-				to: yupDateField
-					.required('Enter a valid date')
-					// Ensures the end date is always after the start date
-					.min(yup.ref('from'), 'Start date must be before the end date'),
-			})
-			.required('Enter a valid date'),
-		openingTime: yup.string().required('Start time is required'),
-		closingTime: yup.string().required('End time is required'),
-	})
-	.required();
-
-export type Task2Step5FormSchema = yup.InferType<typeof task2Step5FormSchema>;
-
-export const task2Step6FormSchema = yup
-	.object({
-		cuisine: yup
-			.object()
-			.shape({ label: yup.string().required(), value: yup.string().required() })
-			.typeError('Cuisine is required')
-			.default(null),
-	})
-	.required();
-
-export type Task2Step6FormSchema = yup.InferType<typeof task2Step6FormSchema>;
-
 export type Task2FormState = {
 	started: boolean;
 	completed: boolean;
-	step1: Task2Step1FormSchema & { completed: boolean };
+	step1: Task2Step1Schema & { completed: boolean };
 	step2: Task2Step2FormSchema & { completed: boolean };
 	step3: Task2Step3FormSchema & { completed: boolean };
-	step4: Task2Step4FormSchema & { completed: boolean };
-	step5: Task2Step5FormSchema & { completed: boolean };
-	step6: Task2Step6FormSchema & { completed: boolean };
-	step7: { completed: boolean };
 };
 
 export const task2DefaultFormState: DeepPartial<Task2FormState> = {
 	started: false,
 	completed: false,
 	step1: {
-		firstName: 'Charlie',
-		lastName: 'Walker',
-		email: 'cwalker@email.com',
-		completed: false,
-	},
-	step3: {
-		isPostalAddressSameAsStreetAddress: true,
-		completed: false,
-	},
-	step5: {
-		tradingPeriod: { from: undefined, to: undefined },
+		employeeList: [],
 		completed: false,
 	},
 };

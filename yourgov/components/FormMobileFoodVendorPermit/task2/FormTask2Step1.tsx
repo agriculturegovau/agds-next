@@ -1,8 +1,9 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormEventHandler, useState } from 'react';
+import { z } from 'zod';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -19,9 +20,9 @@ import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask2Container } from './FormTask2Container';
 import {
-	ArrayOfTask2Step1FormSchema,
-	Task2Step1FormSchema,
-	arrayOfTask2Step1FormSchema,
+	Task2Step1EmployeeSchema,
+	Task2Step1Schema,
+	task2Step1Schema,
 } from './FormTask2FormState';
 import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
@@ -31,26 +32,20 @@ export function FormTask2Step1() {
 	// const stepFormState = formState.task2?.step1;
 	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee?type=${typeSearchParm}`;
 
-	console.log('FormTask2Step1', { formState });
-
-	// const employeeList = formState.task2?.step1?.employeeList;
-
-	const {
-		// register,
-		handleSubmit,
-		// formState: { errors },
-	} = useForm<ArrayOfTask2Step1FormSchema>({
-		resolver: zodResolver(arrayOfTask2Step1FormSchema),
-		mode: 'onSubmit',
-		reValidateMode: 'onBlur',
-	});
+	const [errors, setErrors] = useState<z.ZodFormattedError<Task2Step1Schema>>();
 
 	const hasEmployees = (formState.task2?.step1?.employeeList?.length || 0) > 0;
 
-	const onSubmit: SubmitHandler<ArrayOfTask2Step1FormSchema> = async (data) => {
-		arrayOfTask2Step1FormSchema.parse(data);
+	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+		const validation = task2Step1Schema.safeParse(formState.task2?.step1);
+
+		if (!validation.success) {
+			setErrors(validation.error.format());
+			event.preventDefault();
+			return;
+		}
+
 		await submitStep();
-		console.log({ data });
 		setFormState({
 			...formState,
 			task2: {
@@ -65,7 +60,9 @@ export function FormTask2Step1() {
 		});
 	};
 
-	function removeEmployee(employee: Partial<Task2Step1FormSchema> | undefined) {
+	function removeEmployee(
+		employee: Partial<Task2Step1EmployeeSchema> | undefined
+	) {
 		setFormState({
 			...formState,
 			task2: {
@@ -87,7 +84,16 @@ export function FormTask2Step1() {
 			formTitle={task2FormSteps[0].label}
 			formIntroduction="Add your employee details."
 		>
-			<Stack as="form" gap={3} width="100%" onSubmit={handleSubmit(onSubmit)}>
+			<Stack as="form" gap={3} width="100%" onSubmit={onSubmit}>
+				{errors?.employeeList?._errors && (
+					<PageAlert tone="error" title={errors.employeeList?._errors[0]}>
+						<Text>
+							You need to add some staff. You’re amazing, but you can’t do this
+							alone. Life is better with friends and team mates.
+						</Text>
+					</PageAlert>
+				)}
+
 				<H2>List of employees</H2>
 
 				{hasEmployees && (
