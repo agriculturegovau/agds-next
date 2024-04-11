@@ -18,63 +18,32 @@ export const task2Step1Schema = z.object({
 
 export type Task2Step1Schema = z.infer<typeof task2Step1Schema>
 
-export const task2Step2FormSchema = yup
+export const task2Step2Schema = z
 	.object({
-		businessName: yup.string().required('Business or company name is required'),
-		tradingName: yup.string(),
-		businessStructure: yup
-			.string()
-			.typeError('Business structure is required')
-			.required('Business structure is required'),
-		abn: yup.string().when('businessStructure', (value, schema) => {
-			if (value === 'Business') {
-				return schema.required('ABN is required');
-			}
-			return schema;
-		}),
-	})
-	.required();
+		foodSafetySupervisor: zodString('Select a food safety supervisor'),
+	});
 
-export type Task2Step2FormSchema = yup.InferType<typeof task2Step2FormSchema>;
+export type Task2Step2Schema = z.infer<typeof task2Step2Schema>;
 
-export const task2Step3FormSchema = yup
+export const task2Step3Schema = z
 	.object({
 		// street address
-		streetAddress: yup.string().required('Enter your street address'),
-		suburbTownCity: yup.string().required('Enter your suburb, town or city'),
-		state: yup.string().required('Enter your state'),
-		postcode: yup.string().required('Enter your postcode'),
+		streetAddress: z.string(),
+		suburbTownCity: z.string(),
+		state: z.string(),
+		postcode: z.string(),
 		// postal address
-		isPostalAddressSameAsStreetAddress: yup.boolean(),
-		postalAddress: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postal address'),
-		}),
-		postalSuburbTownCity: yup
-			.string()
-			.when('isPostalAddressSameAsStreetAddress', {
-				is: false,
-				then: yup.string().required('Enter your suburb, town or city'),
-			}),
-		postalState: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your state'),
-		}),
-		postalPostcode: yup.string().when('isPostalAddressSameAsStreetAddress', {
-			is: false,
-			then: yup.string().required('Enter your postcode'),
-		}),
+		isPostalAddressSameAsStreetAddress: z.boolean(),
 	})
-	.required();
 
-export type Task2Step3FormSchema = yup.InferType<typeof task2Step3FormSchema>;
+export type Task2Step3Schema = z.infer<typeof task2Step3Schema>;
 
 export type Task2FormState = {
 	started: boolean;
 	completed: boolean;
 	step1: Task2Step1Schema & { completed: boolean };
-	step2: Task2Step2FormSchema & { completed: boolean };
-	step3: Task2Step3FormSchema & { completed: boolean };
+	step2: Task2Step2Schema & { completed: boolean };
+	step3: Task2Step3Schema & { completed: boolean };
 };
 
 export const task2DefaultFormState: DeepPartial<Task2FormState> = {
