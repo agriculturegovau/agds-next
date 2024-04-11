@@ -1,5 +1,6 @@
 import { FormEventHandler, useState } from 'react';
 import { z } from 'zod';
+import { useRouter } from 'next/router';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
@@ -27,14 +28,19 @@ import {
 import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
 export function FormTask2Step1() {
+	const { query } = useRouter();
 	const { submitStep } = useFormTask2Context();
 	const { formState, typeSearchParm, setFormState } = useGlobalForm();
 	// const stepFormState = formState.task2?.step1;
 	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee?type=${typeSearchParm}`;
 
+	const [isSuccessVisible, setIsSuccessVisible] = useState(
+		query.success === 'true'
+	);
 	const [errors, setErrors] = useState<z.ZodFormattedError<Task2Step1Schema>>();
 
-	const hasEmployees = (formState.task2?.step1?.employeeList?.length || 0) > 0;
+	const employeeList = formState.task2?.step1?.employeeList || [];
+	const hasEmployees = employeeList.length > 0;
 
 	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		const validation = task2Step1Schema.safeParse(formState.task2?.step1);
@@ -53,7 +59,7 @@ export function FormTask2Step1() {
 				step1: {
 					...formState.task2?.step1,
 					// ...data,
-					employeeList: formState.task2?.step1?.employeeList,
+					employeeList,
 					completed: true,
 				},
 			},
@@ -70,7 +76,7 @@ export function FormTask2Step1() {
 				step1: {
 					...formState.task2?.step1,
 					// ...data,
-					employeeList: formState.task2?.step1?.employeeList?.filter(
+					employeeList: employeeList?.filter(
 						(emp) => emp?.email !== employee?.email
 					),
 					completed: true,
@@ -79,12 +85,14 @@ export function FormTask2Step1() {
 		});
 	}
 
+	const lastEmployee = employeeList[employeeList.length - 1];
+
 	return (
 		<FormTask2Container
 			formTitle={task2FormSteps[0].label}
 			formIntroduction="Add your employee details."
 		>
-			<Stack as="form" gap={3} width="100%" onSubmit={onSubmit}>
+			<Stack as="form" gap={2} width="100%" onSubmit={onSubmit}>
 				{errors?.employeeList?._errors && (
 					<PageAlert tone="error" title={errors.employeeList?._errors[0]}>
 						<Text>
@@ -95,6 +103,19 @@ export function FormTask2Step1() {
 				)}
 
 				<H2>List of employees</H2>
+
+				{isSuccessVisible && lastEmployee && (
+					<PageAlert
+						tone="success"
+						title="Employee added"
+						onClose={() => setIsSuccessVisible(false)}
+					>
+						<Text>
+							{lastEmployee.firstName} {lastEmployee.lastName} has been added as
+							an employee.
+						</Text>
+					</PageAlert>
+				)}
 
 				{hasEmployees && (
 					<TableWrapper>
