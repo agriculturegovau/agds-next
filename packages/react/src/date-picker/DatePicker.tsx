@@ -235,7 +235,7 @@ export const DatePicker = ({
 					<Popover
 						{...popoverProps}
 						visibility={isCalendarOpen ? 'visible' : 'hidden'}
-						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that opening the date picker for the first time when the input is at the bottom of the screen can't render the calendar almost hidden, e.g. 2px height.
+						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
 					>
 						{isCalendarOpen && <CalendarSingle {...calendarProps} />}
 					</Popover>
