@@ -3,8 +3,7 @@ import {
 	CollapsingSideBar,
 	CollapsingSideBarTitle,
 } from '../_collapsing-side-bar';
-import { UnorderedList } from '../list';
-import { ReplyIcon } from '../icon';
+import { CornerDownRightIcon } from '../icon';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import {
@@ -76,8 +75,8 @@ export const ProgressIndicator = ({
 											gap={0.5}
 											css={{ fontWeight: 'normal' }}
 										>
-											<ReplyIcon color="selected" />
-											<Text color="muted" fontSize="xs">
+											<CornerDownRightIcon color="selected" />
+											<Text color="inherit" fontSize="xs">
 												{levelTwoItem.label}
 											</Text>
 										</Flex>
@@ -99,8 +98,8 @@ export const ProgressIndicator = ({
 										gap={0.5}
 										css={{ fontWeight: 'normal' }}
 									>
-										<ReplyIcon color="selected" />
-										<Text color="muted" fontSize="xs">
+										<CornerDownRightIcon color="selected" />
+										<Text color="inherit" fontSize="xs">
 											{levelTwoItem.label}
 										</Text>
 									</Flex>
