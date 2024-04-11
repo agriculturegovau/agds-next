@@ -26,13 +26,20 @@ export const task1Step2FormSchema = z
 		businessName: zodString('Business or company name is required'),
 		tradingName: zodStringOptional(),
 		businessStructure: zodString('Business structure is required'),
-		abn: zodStringOptional()
+		abn: zodStringOptional(),
+		acn: zodStringOptional(),
 	})
 	.refine((value) => {
 		return value.businessStructure === 'Business' ? Boolean(value.abn) : true
 	}, {
 		path: ['abn'],
 		message: 'ABN is required'
+	})
+	.refine((value) => {
+		return value.businessStructure === 'Company' ? Boolean(value.acn) : true
+	}, {
+		path: ['acn'],
+		message: 'ACN is required'
 	});
 
 export type Task1Step2FormSchema = z.infer<typeof task1Step2FormSchema>;

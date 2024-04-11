@@ -64,11 +64,12 @@ export function FormTask1Step2() {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const showConditionalField = watch('businessStructure') === 'Business';
+	const showAbn = watch('businessStructure') === 'Business';
+	const showAcn = watch('businessStructure') === 'Company';
 
 	useEffect(() => {
 		if (isSubmitted) trigger();
-	}, [trigger, isSubmitted, showConditionalField]);
+	}, [trigger, isSubmitted, showAbn]);
 
 	return (
 		<FormTask1Container
@@ -131,7 +132,7 @@ export function FormTask1Step2() {
 						<Radio {...register('businessStructure')} value="Business">
 							Business
 						</Radio>
-						{showConditionalField ? (
+						{showAbn ? (
 							<ConditionalFieldContainer>
 								<TextInput
 									id="abn"
@@ -146,6 +147,18 @@ export function FormTask1Step2() {
 						<Radio {...register('businessStructure')} value="Company">
 							Company
 						</Radio>
+						{showAcn ? (
+							<ConditionalFieldContainer>
+								<TextInput
+									id="acn"
+									label="Australian Company Number (ACN)"
+									{...register('acn')}
+									invalid={Boolean(errors.acn?.message)}
+									message={errors.acn?.message}
+									required
+								/>
+							</ConditionalFieldContainer>
+						) : null}
 						<Radio {...register('businessStructure')} value="Sole trader">
 							Sole trader
 						</Radio>
