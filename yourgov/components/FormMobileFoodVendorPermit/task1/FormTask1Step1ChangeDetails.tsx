@@ -107,7 +107,7 @@ export function FormTask1Step1ChangeDetails() {
 
 	return (
 		<Columns>
-			<Column columnSpan={{ xs: 12, md: 4 }}>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ProgressIndicator
 					items={task1FormSteps.map(({ label, href }, index) => ({
 						label,
@@ -117,7 +117,7 @@ export function FormTask1Step1ChangeDetails() {
 					}))}
 				/>
 			</Column>
-			<Column columnSpan={{ xs: 12, md: 8 }}>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionLink direction="left" href={step1Path}>
 						Back

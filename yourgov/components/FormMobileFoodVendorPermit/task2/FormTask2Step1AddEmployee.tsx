@@ -16,12 +16,17 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Callout } from '@ag.ds-next/react/callout';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import {
+	ProgressIndicator,
+	ProgressIndicatorItemStatus,
+} from '@ag.ds-next/react/progress-indicator';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	Task2Step1EmployeeSchema,
 	task2Step1EmployeeSchema,
 } from './FormTask2FormState';
+import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
 export function FormTask2Step1AddEmployee() {
 	const router = useRouter();
@@ -30,15 +35,11 @@ export function FormTask2Step1AddEmployee() {
 
 	const employeeList = formState.task2?.step1?.employeeList || [];
 
-	console.log('FormTask2Step1AddEmployee', { formState });
-
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const storedEmployee = employeeList.find((emp) => emp?.email === employeeId);
-
-	console.log({ storedEmployee, employeeId });
 
 	const {
 		register,
@@ -73,7 +74,7 @@ export function FormTask2Step1AddEmployee() {
 					},
 				},
 			});
-			router.push(step1Path);
+			router.push(step1Path + '&success=true');
 		}, 1500);
 	};
 
@@ -104,10 +105,30 @@ export function FormTask2Step1AddEmployee() {
 	}, []);
 
 	const errorList = Object.entries(errors);
+	const { canConfirmAndSubmit } = useFormTask2Context();
+
+	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
+		const step = task2FormSteps[stepIndex];
+		if (step.formStateKey === 'step1') return 'started';
+		// The final step (confirm and submit) can only be viewed when all previous steps are complete
+		if (step.formStateKey === 'step3' && !canConfirmAndSubmit) return 'blocked';
+		// Otherwise, the step still needs to be done
+		return 'todo';
+	}
 
 	return (
-		<Columns>
-			<Column columnSpan={{ xs: 12, md: 8 }}>
+		<Columns columnGap={2}>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ProgressIndicator
+					items={task2FormSteps.map(({ label, href }, index) => ({
+						label,
+						href: href + `?type=${typeSearchParm}`,
+						status: getStepStatus(index),
+						isActive: index === 0,
+					}))}
+				/>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionLink direction="left" href={step1Path}>
 						Back

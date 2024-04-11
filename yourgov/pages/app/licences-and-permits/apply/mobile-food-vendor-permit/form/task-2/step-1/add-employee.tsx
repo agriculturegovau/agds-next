@@ -1,12 +1,12 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { AppLayout } from '../../../../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../../../../components/DocumentTitle';
 import {
-	GlobalFormProvider,
-	FormTask1Provider,
+	FormTask2Provider,
 	FormTask2Step1AddEmployee,
+	GlobalFormProvider,
 } from '../../../../../../../../components/FormMobileFoodVendorPermit';
+import { AppLayout } from '../../../../../../../../components/Layout/AppLayout';
 import type { NextPageWithLayout } from '../../../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
@@ -26,7 +26,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<AppLayout focusMode>
 			<GlobalFormProvider>
-				<FormTask1Provider>{page}</FormTask1Provider>
+				<FormTask2Provider>{page}</FormTask2Provider>
 			</GlobalFormProvider>
 		</AppLayout>
 	);
