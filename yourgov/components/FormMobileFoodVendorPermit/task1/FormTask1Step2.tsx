@@ -14,7 +14,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { checkHasErrors } from '../utils';
+import { checkHasMultipleErrors } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step2FormSchema,
@@ -55,7 +55,7 @@ export function FormTask1Step2() {
 		setFocusedError(false);
 	};
 
-	const hasErrors = checkHasErrors(errors);
+	const hasErrors = checkHasMultipleErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

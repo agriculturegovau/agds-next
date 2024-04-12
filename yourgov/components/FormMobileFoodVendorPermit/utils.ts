@@ -4,7 +4,10 @@ import { ZodIssueCode, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
 
 // Empty strings do not trigger Zod required field error validation
-export const zodString = (message?: string) => z.string().trim().min(1, { message })
+export const zodString = (message?: string) => z.string({
+	invalid_type_error: message,
+	required_error: message,
+}).trim().min(1, { message })
 export const zodStringOptional = () => z.string().optional()
 
 export const zodDateField = (message = 'Enter a valid date') => z.date({ invalid_type_error: 'Enter a valid date', required_error: message })
@@ -88,6 +91,11 @@ export const yupPhoneField = yup
 	.length(10, 'Phone number must be 10 digits');
 
 // Only show the page alert if there is more than 1 error
-export function checkHasErrors(errors: FieldValues) {
+export function checkHasMultipleErrors(errors: FieldValues) {
 	return Object.keys(errors).length > 1
+};
+
+// If only 1 input on the page, check if that input has an error
+export function checkHasError(errors: FieldValues) {
+	return Object.keys(errors).length > 0
 };

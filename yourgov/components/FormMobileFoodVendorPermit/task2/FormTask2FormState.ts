@@ -53,4 +53,8 @@ export const task2DefaultFormState: DeepPartial<Task2FormState> = {
 		employeeList: [],
 		completed: false,
 	},
+	step2: {
+		foodSafetySupervisor: '',
+		completed: false,
+	}
 };
