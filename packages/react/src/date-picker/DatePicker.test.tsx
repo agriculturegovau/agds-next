@@ -172,8 +172,12 @@ describe('DatePicker', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
-			// react 18s `useId` break this rule
-			rules: { 'valid-id': 'off' },
+			rules: {
+				// React 18's `useId` breaks this rule
+				'valid-id': 'off',
+				// Our Popover component uses inline styles as recommended by floating-ui - https://floating-ui.com/docs/usefloating#usage
+				'no-inline-style': 'off',
+			},
 		});
 		await act(async () => {
 			expect(await axe(container)).toHaveNoViolations();
