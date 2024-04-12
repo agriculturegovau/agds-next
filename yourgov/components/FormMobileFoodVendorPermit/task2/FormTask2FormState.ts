@@ -1,5 +1,4 @@
 import { DeepPartial } from 'react-hook-form';
-import * as yup from 'yup';
 import { z } from "zod";
 import { zodString } from '../utils';
 
@@ -13,7 +12,11 @@ export const task2Step1EmployeeSchema = z.object({
 export type Task2Step1EmployeeSchema = z.infer<typeof task2Step1EmployeeSchema>;
 
 export const task2Step1Schema = z.object({
-	employeeList: z.array(task2Step1EmployeeSchema, { required_error: 'required_error' }).nonempty({ message: 'No employees added' })
+	employeeList: z.array(task2Step1EmployeeSchema, {
+		required_error: 'No employees added'
+	}).nonempty({
+		message: 'No employees added'
+	})
 })
 
 export type Task2Step1Schema = z.infer<typeof task2Step1Schema>

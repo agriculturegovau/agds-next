@@ -73,8 +73,7 @@ export function FormTask2Provider({ children }: PropsWithChildren<{}>) {
 	const canConfirmAndSubmit = useMemo(() => {
 		if (
 			!formState.task2?.step1?.completed ||
-			!formState.task2?.step2?.completed ||
-			!formState.task2?.step3?.completed
+			!formState.task2?.step2?.completed
 		) {
 			return false;
 		}

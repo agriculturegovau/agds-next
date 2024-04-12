@@ -67,7 +67,7 @@ export function FormTask2Step2() {
 							emp && (
 								<Radio
 									{...register('foodSafetySupervisor')}
-									value={emp.email}
+									value={JSON.stringify(emp)}
 									key={emp.email}
 								>
 									{emp.firstName} {emp.lastName}

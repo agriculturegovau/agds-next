@@ -1,24 +1,15 @@
+import { useRouter } from 'next/router';
 import { FormEventHandler, useState } from 'react';
 import { z } from 'zod';
-import { useRouter } from 'next/router';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
+import { ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-	TableWrapper,
-} from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
+import { EmployeeTable } from './EmployeeTable';
 import { FormTask2Container } from './FormTask2Container';
 import {
 	Task2Step1EmployeeSchema,
@@ -118,53 +109,11 @@ export function FormTask2Step1() {
 				)}
 
 				{hasEmployees && (
-					<TableWrapper>
-						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<Table>
-								<TableHead>
-									<TableRow>
-										<TableHeader scope="col">Employee name</TableHeader>
-										<TableHeader scope="col">Email address</TableHeader>
-										<TableHeader scope="col">Action</TableHeader>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{formState.task2?.step1?.employeeList?.map((employee) => (
-										<TableRow key={employee?.email}>
-											<TableCell>
-												<TextLink
-													href={
-														step1AddEmployeePath +
-														'&employeeId=' +
-														employee?.email
-													}
-												>
-													{`${employee?.firstName} ${employee?.lastName}`}
-												</TextLink>
-											</TableCell>
-											<TableCell>{employee?.email}</TableCell>
-											<TableCell>
-												<Button
-													onClick={() => removeEmployee(employee)}
-													variant="text"
-												>
-													Remove
-												</Button>
-											</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</Table>
-							<ButtonLink
-								href={step1AddEmployeePath}
-								variant="secondary"
-								size="sm"
-								iconBefore={PlusIcon}
-							>
-								Add employee
-							</ButtonLink>
-						</Stack>
-					</TableWrapper>
+					<EmployeeTable
+						employeeList={employeeList}
+						onRemoveEmployee={removeEmployee}
+						step1AddEmployeePath={step1AddEmployeePath}
+					/>
 				)}
 
 				{!hasEmployees && (
