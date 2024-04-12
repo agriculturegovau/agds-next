@@ -39,7 +39,13 @@ export function FormTask2Step2() {
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step2: { ...data, completed: true } },
+			task2: {
+				...formState.task2,
+				step2: {
+					...data,
+					completed: true,
+				},
+			},
 		});
 	};
 
