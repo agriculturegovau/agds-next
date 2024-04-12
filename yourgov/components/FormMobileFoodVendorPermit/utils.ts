@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
-import { ZodIssueCode, z } from 'zod';
+import { ZodIssueCode, ZodTypeAny, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
 
 // Empty strings do not trigger Zod required field error validation
@@ -89,6 +89,10 @@ export const yupPhoneField = yup
 			"Mobile numbers must begin with '04', landline numbers must begin with an area code",
 	})
 	.length(10, 'Phone number must be 10 digits');
+
+export function zodArray<SchemaType extends ZodTypeAny>(schema: SchemaType, message: string) {
+	return z.array(schema, { required_error: message }).nonempty({ message: message })
+}
 
 // Only show the page alert if there is more than 1 error
 export function checkHasMultipleErrors(errors: FieldValues) {
