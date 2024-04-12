@@ -44,10 +44,10 @@ export function FormTask2Step1() {
 
 	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		const validation = task2Step1Schema.safeParse(formState.task2?.step1);
+		event.preventDefault();
 
 		if (!validation.success) {
 			setErrors(validation.error.format());
-			event.preventDefault();
 			return;
 		}
 
