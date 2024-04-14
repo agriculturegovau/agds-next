@@ -12,7 +12,6 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
