@@ -1,22 +1,16 @@
-import { FormEventHandler } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ButtonLink } from '@ag.ds-next/react/button';
-import { H2, H3 } from '@ag.ds-next/react/heading';
-import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Callout } from '@ag.ds-next/react/callout';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Callout } from '@ag.ds-next/react/callout';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
-import { Task1Step2FormSchema } from '../task1/FormTask1FormState';
-import { checkHasError, checkHasMultipleErrors } from '../utils';
+import { checkHasError } from '../utils';
 import { FormTask2Container } from './FormTask2Container';
-import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 import { Task2Step2Schema, task2Step2Schema } from './FormTask2FormState';
+import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
 export function FormTask2Step2() {
 	const { submitStep } = useFormTask2Context();
