@@ -3,4 +3,4 @@
 '@ag.ds-next/docs': minor
 ---
 
-Added level two item support for ProgressIndicator
+progress-indicator: Added level two item support for ProgressIndicator

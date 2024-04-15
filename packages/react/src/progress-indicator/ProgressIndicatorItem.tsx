@@ -55,7 +55,7 @@ export type ProgressIndicatorItemLinkProps = LinkProps & {
 	 * `todo` = This step is available for the user to start.
 	 */
 	status: ProgressIndicatorItemStatus;
-	/** Set this item as currently active. Only supported for the `blocked`, `started`, and `doing` statuses */
+	/** Set this item as currently active. Only supported for the `blocked`, `started`, and `started` statuses */
 	isActive?: boolean;
 };
 
