@@ -13,13 +13,13 @@ import {
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Task2Step1EmployeeSchema } from './FormTask2FormState';
 
+type EmployeeList = Array<Partial<Task2Step1EmployeeSchema> | undefined>;
+
 interface EmployeeTableProps {
-	employeeList:
-		| Array<Partial<Task2Step1EmployeeSchema> | undefined>
-		| undefined;
+	employeeList: EmployeeList | undefined;
 	readOnly?: boolean;
 	step1AddEmployeePath?: string;
-	onRemoveEmployee?: (employee: Task2Step1EmployeeSchema) => void;
+	onRemoveEmployee?: (employee: EmployeeList[0]) => void;
 }
 
 export function getFullEmployeeName(
