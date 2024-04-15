@@ -1,11 +1,11 @@
 interface GlobalFormTask {
-	formStateKey: TaskKey,
-	label: string,
-	href: string,
-	message: string,
+	formStateKey: TaskKey;
+	label: string;
+	href: string;
+	message: string;
 }
 
-type TaskKey = 'task1' | 'task2' | 'task3' | 'task4'
+type TaskKey = 'task1' | 'task2' | 'task3' | 'task4';
 
 export const globalFormTasks: Array<GlobalFormTask> = [
 	{

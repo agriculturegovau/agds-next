@@ -1,6 +1,13 @@
 import { DeepPartial } from '../../lib/types';
-import { task1DefaultFormState, Task1FormState } from './task1/FormTask1FormState';
-import { task2DefaultFormState, Task2Step1Schema, Task2Step2Schema } from './task2/FormTask2FormState';
+import {
+	task1DefaultFormState,
+	Task1FormState,
+} from './task1/FormTask1FormState';
+import {
+	task2DefaultFormState,
+	Task2Step1Schema,
+	Task2Step2Schema,
+} from './task2/FormTask2FormState';
 
 // TODO Create task 2 of the form
 export type Task2FormState = {

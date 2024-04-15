@@ -1,4 +1,3 @@
-
 // https://stackoverflow.com/a/58110124/1611058
 /**
  * A strongly typed version of `Boolean()`
@@ -9,9 +8,9 @@
  * @returns Boolean
  */
 export function isTruthy<Test>(value: Test): value is Truthy<Test> {
-	return Boolean(value)
+	return Boolean(value);
 }
 
-type Falsy = false | '' | 0 | null | undefined
+type Falsy = false | '' | 0 | null | undefined;
 
-type Truthy<T> = T extends Falsy ? never : T // from lodash
+type Truthy<T> = T extends Falsy ? never : T; // from lodash
