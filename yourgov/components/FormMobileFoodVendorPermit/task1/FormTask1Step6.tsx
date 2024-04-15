@@ -4,6 +4,7 @@ import { ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
+import { ShallowErrors } from '../types';
 import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step6FormSchema,
@@ -25,6 +26,8 @@ export function FormTask1Step6() {
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
+
+	const typeCorrectedErrors = errors as ShallowErrors<Task1Step6FormSchema>;
 
 	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {
 		await submitStep();
@@ -52,8 +55,8 @@ export function FormTask1Step6() {
 							required
 							{...field}
 							id="cuisine"
-							invalid={Boolean(errors.cuisine?.message)}
-							message={errors.cuisine?.message}
+							invalid={Boolean(typeCorrectedErrors.cuisine?.message)}
+							message={typeCorrectedErrors.cuisine?.message}
 						/>
 					)}
 				/>

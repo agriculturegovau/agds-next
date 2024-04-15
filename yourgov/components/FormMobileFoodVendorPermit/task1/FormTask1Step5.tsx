@@ -1,11 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import {
-	Controller,
-	FieldErrors,
-	SubmitHandler,
-	useForm,
-} from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -13,11 +8,12 @@ import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { TimeInput } from '@ag.ds-next/react/time-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
+import { ShallowErrors } from '../types';
 import { parseDateField } from '../utils';
 import { FormTask1Container } from './FormTask1Container';
 import {
@@ -38,9 +34,6 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 	};
 }
 
-// Not actually boolean but it doesn't need to be any more complex than this for our purposes
-type FixedErrorsType = FieldErrors<Record<keyof Task1Step5FormSchema, boolean>>;
-
 export function FormTask1Step5() {
 	const { formState, setFormState } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
@@ -59,7 +52,7 @@ export function FormTask1Step5() {
 		reValidateMode: 'onBlur',
 	});
 
-	const errorsTypeFix = errors as FixedErrorsType;
+	const typeCorrectedErrors = errors as ShallowErrors<Task1Step5FormSchema>;
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
@@ -162,8 +155,8 @@ export function FormTask1Step5() {
 								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
 								id="openingTime"
 								{...field}
-								invalid={Boolean(errorsTypeFix.openingTime?.message)}
-								message={errorsTypeFix.openingTime?.message}
+								invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
+								message={typeCorrectedErrors.openingTime?.message}
 								required
 							/>
 						)}
@@ -177,8 +170,8 @@ export function FormTask1Step5() {
 								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
 								id="closingTime"
 								{...field}
-								invalid={Boolean(errorsTypeFix.closingTime?.message)}
-								message={errorsTypeFix.closingTime?.message}
+								invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+								message={typeCorrectedErrors.closingTime?.message}
 								required
 							/>
 						)}
