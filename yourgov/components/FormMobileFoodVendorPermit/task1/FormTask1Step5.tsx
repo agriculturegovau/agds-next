@@ -1,6 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import {
+	Controller,
+	FieldErrors,
+	SubmitHandler,
+	useForm,
+} from 'react-hook-form';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -33,6 +38,9 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 	};
 }
 
+// Not actually boolean but it doesn't need to be any more complex than this for our purposes
+type FixedErrorsType = FieldErrors<Record<keyof Task1Step5FormSchema, boolean>>;
+
 export function FormTask1Step5() {
 	const { formState, setFormState } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
@@ -50,6 +58,8 @@ export function FormTask1Step5() {
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
+
+	const errorsTypeFix = errors as FixedErrorsType;
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
@@ -152,8 +162,8 @@ export function FormTask1Step5() {
 								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
 								id="openingTime"
 								{...field}
-								invalid={Boolean(errors.openingTime?.message)}
-								message={errors.openingTime?.message}
+								invalid={Boolean(errorsTypeFix.openingTime?.message)}
+								message={errorsTypeFix.openingTime?.message}
 								required
 							/>
 						)}
@@ -167,8 +177,8 @@ export function FormTask1Step5() {
 								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
 								id="closingTime"
 								{...field}
-								invalid={Boolean(errors.closingTime?.message)}
-								message={errors.closingTime?.message}
+								invalid={Boolean(errorsTypeFix.closingTime?.message)}
+								message={errorsTypeFix.closingTime?.message}
 								required
 							/>
 						)}
