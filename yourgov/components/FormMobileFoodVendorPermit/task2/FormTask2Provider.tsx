@@ -8,10 +8,8 @@ import {
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormStep } from '../types';
+import { formHomePage, getTaskCompletionUrl } from '../utils';
 import { Task2StepNumber } from './Task2Types';
-
-const formHomePage =
-	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
 export const task2FormSteps: Array<FormStep<Task2StepNumber>> = [
 	{
@@ -56,11 +54,13 @@ export function FormTask2Provider({ children }: PropsWithChildren<{}>) {
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
-		push(
-			`${
-				task2FormSteps[currentStepIndex + 1]?.href ?? formHomePage
-			}?type=${typeSearchParm}`
-		);
+		const taskCompletionUrl = getTaskCompletionUrl({
+			currentStepIndex,
+			steps: task2FormSteps,
+			taskHighlight: 2,
+			typeSearchParm,
+		});
+		push(taskCompletionUrl);
 		setIsSubmittingStep(false);
 	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
 

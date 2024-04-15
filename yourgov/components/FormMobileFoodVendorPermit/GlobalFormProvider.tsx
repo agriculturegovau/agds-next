@@ -54,7 +54,11 @@ export function GlobalFormProvider({
 	const getTaskStatus = useCallback(
 		(taskKey: TaskKey): TaskListItemStatus => {
 			{
-				if (formState[taskKey]?.completed) return 'doneRecently';
+				const isDoneRecently =
+					taskKey === `task${router.query.taskHighlight}` &&
+					formState[taskKey]?.completed;
+				if (isDoneRecently) return 'doneRecently';
+				if (formState[taskKey]?.completed) return 'done';
 				if (formState[taskKey]?.started) return 'doing';
 				return 'todo';
 			}

@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
 import { ZodIssueCode, ZodTypeAny, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
+import { FormStep } from './types';
 
 // Empty strings do not trigger Zod required field error validation
 export const zodString = (message?: string) =>
@@ -131,4 +132,15 @@ export function checkHasMultipleErrors(errors: FieldValues) {
 // If only 1 input on the page, check if that input has an error
 export function checkHasError(errors: FieldValues) {
 	return Object.keys(errors).length > 0;
+}
+
+export const formHomePage = '/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+
+interface GetTaskNavigationUrlParams {
+	steps: Array<FormStep<any>>, currentStepIndex: number, typeSearchParm: string, taskHighlight: number
+}
+
+export function getTaskCompletionUrl({ currentStepIndex, steps, taskHighlight, typeSearchParm }: GetTaskNavigationUrlParams) {
+	const nextStepUrl = steps[currentStepIndex + 1]?.href
+	return nextStepUrl ? `${nextStepUrl}?type=${typeSearchParm}` : `${formHomePage}?type=${typeSearchParm}&taskHighlight=${taskHighlight}`
 }
