@@ -5,38 +5,23 @@ import {
 } from './task1/FormTask1FormState';
 import {
 	task2DefaultFormState,
-	Task2Step1Schema,
-	Task2Step2Schema,
+	Task2FormState,
 } from './task2/FormTask2FormState';
+import { Task3FormState } from './task3/FormTask3FormState';
 
-// TODO Create task 2 of the form
-export type Task2FormState = {
-	started: boolean;
-	completed: boolean;
-	step1: Task2Step1Schema & { completed: boolean };
-	step2: Task2Step2Schema & { completed: boolean }; //TODO
-	step3: Task2Step1Schema & { completed: boolean }; //TODO
-};
+type Temp_Task4FormState = {}
 
-// TODO Create task 3 of the form
-export type Task3FormState = {
-	started: boolean;
-	completed: boolean;
-	[1]: { started: boolean; completed: boolean };
-};
-
-// TODO Create task 4 of the form
-export type Task4FormState = {
-	started: boolean;
-	completed: boolean;
-	[1]: { started: boolean; completed: boolean };
-};
+interface TaskCompletion {
+	started: boolean,
+	completed: boolean,
+	completedRecently: boolean,
+}
 
 export type FormState = {
-	task1: Partial<Task1FormState> & { completed: boolean };
-	task2: Partial<Task2FormState> & { completed: boolean };
-	task3: Partial<Task3FormState> & { completed: boolean };
-	task4: Partial<Task4FormState> & { completed: boolean };
+	task1: Partial<Task1FormState> & TaskCompletion;
+	task2: Partial<Task2FormState> & TaskCompletion;
+	task3: Partial<Task3FormState> & TaskCompletion;
+	task4: Partial<Temp_Task4FormState> & TaskCompletion;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {

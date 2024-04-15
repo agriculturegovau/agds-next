@@ -63,7 +63,7 @@ export function GlobalFormProvider({
 				return 'todo';
 			}
 		},
-		[formState]
+		[formState, router.query.taskHighlight]
 	);
 
 	const startTask = useCallback(

@@ -124,6 +124,10 @@ export function zodArray<SchemaType extends ZodTypeAny>(
 		.nonempty({ message: message });
 }
 
+export function zodFile(message: string) {
+	return z.instanceof(File, { message })
+}
+
 // Only show the page alert if there is more than 1 error
 export function checkHasMultipleErrors(errors: FieldValues) {
 	return Object.keys(errors).length > 1;

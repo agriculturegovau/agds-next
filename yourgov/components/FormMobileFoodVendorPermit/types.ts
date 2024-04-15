@@ -1,4 +1,5 @@
 import { FieldErrors, FieldValues } from 'react-hook-form';
+import { Dispatch, SetStateAction } from 'react';
 import { Task2StepNumber } from './task2/Task2Types';
 import { Task1StepNumber } from './task1/Task1Types';
 
@@ -16,3 +17,5 @@ export type AnyStepNumber = Task1StepNumber | Task2StepNumber;
  */
 // Not actually boolean but it doesn't need to be any more complex than this for our purposes
 export type ShallowErrors<Schema extends FieldValues> = FieldErrors<Record<keyof Schema, boolean>>
+
+export type SetStateFn<T> = Dispatch<SetStateAction<T>>
