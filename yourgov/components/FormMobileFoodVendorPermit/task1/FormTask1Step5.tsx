@@ -1,6 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useRef, useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import {
+	Controller,
+	FieldError,
+	SubmitHandler,
+	useForm,
+} from 'react-hook-form';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -70,7 +75,8 @@ export function FormTask1Step5() {
 	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
 	const flatErrors = Object.entries(errors)
 		.map(([key, value]) => {
-			if ('message' in value) return { key, message: value.message };
+			if ('message' in value)
+				return { key, message: (value as FieldError).message };
 			if ('from' in value) return { key, message: value.from?.message };
 			if ('to' in value) return { key, message: value.to?.message };
 		})
