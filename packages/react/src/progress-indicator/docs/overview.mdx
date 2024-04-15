@@ -179,6 +179,40 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 />
 ```
 
+## Adding level 2 steps
+
+If one of the steps in a multi-step form has a secondary task, use a separate page for the secondary task. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
+
+```jsx live
+<ProgressIndicator
+	hideSubtitle
+	items={[
+		{ href: '#', label: 'Introduction', status: 'done' },
+		{
+			href: '#',
+			label: 'Organisations',
+			status: 'started',
+			levelTwoItem: { label: 'Add an organisation', href: '#' },
+		},
+		{ href: '#', label: 'Review and submit', status: 'blocked' },
+	]}
+/>
+```
+
+### An example of a level 2 step
+
+Let’s say that a user is completing a multi-step application form. They want to change their pre-filled details, so they select the link to change their details.
+
+_IMAGE ONE GOES HERE_
+
+The link takes the user to a separate page where they can change their details. This page is still within the main step, so a level 2 step is displayed in the progress indicator. This helps the user understand where they are in the process.
+
+_IMAGE TWO GOES HERE_
+
+Once the user saves their changes, they’re taken back to the main step page and a section alert is displayed to let them know that their changes were made successfully. The level 2 step is no longer displayed in the progress indicator. It’s only displayed when the user is on the level 2 step page.
+
+_IMAGE THREE GOES HERE_
+
 ## Notes
 
 <ol>

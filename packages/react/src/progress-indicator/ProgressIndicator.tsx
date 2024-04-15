@@ -3,9 +3,6 @@ import {
 	CollapsingSideBar,
 	CollapsingSideBarTitle,
 } from '../_collapsing-side-bar';
-import { CornerDownRightIcon } from '../icon';
-import { Flex } from '../flex';
-import { Text } from '../text';
 import {
 	ProgressIndicatorItem,
 	ProgressIndicatorItemButton,
@@ -58,56 +55,28 @@ export const ProgressIndicator = ({
 			collapseButtonLabel={subTitle || title}
 		>
 			<ProgressIndicatorList>
-				{itemsWithDefaultActive.map(
-					({ label, levelTwoItem, ...props }, index) => {
-						if (isItemLink(props)) {
-							return (
-								<ProgressIndicatorItemLink
-									key={index}
-									background={background}
-									{...props}
-								>
-									{label}
-									{levelTwoItem && (
-										<Flex
-											alignItems="center"
-											paddingTop={1}
-											gap={0.5}
-											css={{ fontWeight: 'normal' }}
-										>
-											<CornerDownRightIcon color="selected" />
-											<Text color="inherit" fontSize="xs">
-												{levelTwoItem.label}
-											</Text>
-										</Flex>
-									)}
-								</ProgressIndicatorItemLink>
-							);
-						}
+				{itemsWithDefaultActive.map(({ label, ...props }, index) => {
+					if (isItemLink(props)) {
 						return (
-							<ProgressIndicatorItemButton
+							<ProgressIndicatorItemLink
 								key={index}
 								background={background}
 								{...props}
 							>
 								{label}
-								{levelTwoItem && (
-									<Flex
-										alignItems="center"
-										paddingTop={1}
-										gap={0.5}
-										css={{ fontWeight: 'normal' }}
-									>
-										<CornerDownRightIcon color="selected" />
-										<Text color="inherit" fontSize="xs">
-											{levelTwoItem.label}
-										</Text>
-									</Flex>
-								)}
-							</ProgressIndicatorItemButton>
+							</ProgressIndicatorItemLink>
 						);
 					}
-				)}
+					return (
+						<ProgressIndicatorItemButton
+							key={index}
+							background={background}
+							{...props}
+						>
+							{label}
+						</ProgressIndicatorItemButton>
+					);
+				})}
 			</ProgressIndicatorList>
 		</CollapsingSideBar>
 	);

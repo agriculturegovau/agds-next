@@ -16,6 +16,7 @@ import {
 	ProgressTodoIcon,
 	SuccessIcon,
 	AlertIcon,
+	CornerDownRightIcon,
 } from '../icon';
 import { boxPalette, LinkProps, packs, tokens } from '../core';
 import { BaseButton } from '../button';
@@ -29,17 +30,10 @@ export type ProgressIndicatorItem = (
 	isActive?: boolean;
 	levelTwoItem?: {
 		label: string;
-	};
+	} & (LinkProps | ButtonHTMLAttributes<HTMLButtonElement>);
 };
 
-export type ProgressIndicatorItemStatus =
-	| 'blocked'
-	| 'doing'
-	| 'done'
-	| 'error'
-	| 'saved'
-	| 'started'
-	| 'todo';
+export type ProgressIndicatorItemStatus = keyof typeof statusMap;
 
 export type ProgressIndicatorItemLinkProps = LinkProps & {
 	/** Determines the background colour of the progress indicator item. */
@@ -61,7 +55,7 @@ export type ProgressIndicatorItemLinkProps = LinkProps & {
 	 * `todo` = This step is available for the user to start.
 	 */
 	status: ProgressIndicatorItemStatus;
-	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
+	/** Set this item as currently active. Only supported for the `blocked`, `started`, and `doing` statuses */
 	isActive?: boolean;
 };
 
@@ -109,22 +103,22 @@ export const allProgressStatuses: Array<ProgressIndicatorItemStatus> = [
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
-	background?: ProgressIndicatorBackground;
-	status: ProgressIndicatorItemStatus;
 	isActive: boolean;
+	status: ProgressIndicatorItemStatus;
+	background?: ProgressIndicatorBackground;
+	levelTwoItem?: ProgressIndicatorItem['levelTwoItem'];
 }>;
 
 const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
 	children,
-	status,
 	isActive,
+	levelTwoItem,
+	status,
 	...props
 }: ProgressIndicatorItemProps) => {
-	const { label } = statusMap[status];
-
-	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
+	const { label: statusLabel } = statusMap[status];
 
 	if (isActive && !activeProgressStatusAllowedList.includes(status)) {
 		throw new Error(
@@ -162,69 +156,106 @@ const ProgressIndicatorItem = ({
 				},
 			}}
 		>
-			<Flex
-				as={as}
-				aria-current={isActive || undefined}
-				gap={1}
+			<Box
+				as="span"
+				aria-current={isActive || undefined} // TODO: Should this be 'step'? Also, I think this has some browser/screen-reader combo issues e.g. edge + NVDA and chrome/firefox/edge + JAWS (from A11y Slack)
+				columnGap={0.5}
 				css={{
-					width: '100%',
+					display: 'grid',
+					gridTemplateColumns: 'min-content 1fr',
+					gridTemplateRows: 'min-content 1fr',
 					textDecoration: 'none',
+					width: '100%',
 					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
 						backgroundColor: backgroundColorMap[background],
-					},
-					[listItemLinkTextSelector]: {
-						fontWeight: isActive ? 'bold' : 'normal',
-					},
-					'&:hover': {
-						backgroundColor: hoverColorMap[background],
-						[`[${progressIndicatorItemRingDataAttr}]:before`]: {
-							backgroundColor: hoverColorMap[background],
-						},
-						[listItemLinkTextSelector]: packs.underline,
 					},
 				}}
 				focus
 				{...props}
 			>
 				<ProgressIndicatorItemIcon status={status} isActive={isActive} />
+
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
-					as="span"
-					flexDirection="column-reverse"
+					as={as}
+					css={{
+						textDecoration: 'none',
+						'&:hover': {
+							backgroundColor: hoverColorMap[background],
+						},
+						'&:hover span:not(:last-of-type)': {
+							...packs.underline,
+						},
+					}}
 					flexGrow={1}
+					fontFamily="body"
 					gap={0.25}
 					justifyContent="center"
+					paddingLeft={0.5}
 					paddingY={1}
-					fontFamily="body"
-					fontWeight={isActive ? 'bold' : 'normal'}
-					borderBottom
-					borderColor="muted"
+					{...(!levelTwoItem && { borderBottom: true, borderColor: 'muted' })}
 				>
-					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
+					<Text
+						fontWeight={isActive ? 'bold' : 'normal'}
+						{...{ [progressIndicatorItemTextDataAttr]: '' }}
+					>
 						{children}
 					</Text>
+
 					<Text
 						color="muted"
 						fontSize="xs"
+						gridColumnStart={2}
 						lineHeight="nospace"
-						css={{ textDecoration: 'none' }}
 					>
-						{label}
+						{statusLabel}
 					</Text>
 				</Stack>
-			</Flex>
+
+				{levelTwoItem && (
+					<>
+						<ProgressIndicatorItemTimeline />
+
+						<Flex
+							alignItems="center"
+							as={as}
+							borderBottom
+							borderColor="muted"
+							color="text"
+							css={{
+								textDecoration: 'none',
+								'&:hover': {
+									backgroundColor: hoverColorMap[background],
+									...packs.underline,
+								},
+							}}
+							gap={0.5}
+							gridColumnStart={2}
+							padding={0.5}
+							paddingBottom={1}
+						>
+							<CornerDownRightIcon color="selected" />
+
+							<Text color="inherit" fontSize="xs" fontWeight="bold">
+								{levelTwoItem.label}
+							</Text>
+						</Flex>
+					</>
+				)}
+			</Box>
 		</Box>
 	);
 };
 
 const ProgressIndicatorItemTimeline = () => (
 	<span
-		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 		css={{
-			width: tokens.borderWidth.md,
 			backgroundColor: boxPalette.border,
 			flex: 1,
+			justifySelf: 'center',
+			width: tokens.borderWidth.md,
 		}}
+		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 	/>
 );
 
@@ -239,12 +270,22 @@ const ProgressIndicatorItemIcon = ({
 	const ringWidth = tokens.borderWidth.md;
 	const ringGap = 3;
 	const ringInset = ringWidth + ringGap;
-	const processedIconColor: IconColour =
+	const processedIconColor =
 		isActive && iconColor === 'border' ? 'selected' : iconColor;
 
 	return (
-		<Flex as="span" flexDirection="column" alignItems="center">
+		<Flex
+			alignItems="center"
+			as="span"
+			css={{
+				gridColumnStart: 1,
+				gridRowStart: 1,
+				height: '100%',
+			}}
+			flexDirection="column"
+		>
 			<ProgressIndicatorItemTimeline />
+
 			<span
 				{...{ [progressIndicatorItemRingDataAttr]: '' }}
 				css={{
@@ -275,6 +316,7 @@ const ProgressIndicatorItemIcon = ({
 					}}
 				/>
 			</span>
+
 			<ProgressIndicatorItemTimeline />
 		</Flex>
 	);
@@ -289,17 +331,7 @@ const progressIndicatorItemTextContainerDataAttr =
 const progressIndicatorItemTextDataAttr =
 	'data-agds-progress-indicator-item-text';
 
-type IconColour = 'border' | 'selected' | 'success' | 'error';
-
-type StatusMapCollection = Record<ProgressIndicatorItemStatus, StatusMapItem>;
-
-interface StatusMapItem {
-	label: string;
-	icon: typeof ProgressBlockedIcon;
-	iconColor: IconColour;
-}
-
-const statusMap: StatusMapCollection = {
+const statusMap = {
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,
@@ -335,4 +367,4 @@ const statusMap: StatusMapCollection = {
 		icon: AlertIcon,
 		iconColor: 'error',
 	},
-};
+} as const;

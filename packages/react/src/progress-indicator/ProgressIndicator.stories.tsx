@@ -22,32 +22,58 @@ const exampleLinkItems: ProgressIndicatorItem[] = [
 ];
 
 const exampleButtonItems: ProgressIndicatorItem[] = [
-	{ label: 'Introduction', status: 'done', onClick: console.log },
-	{ label: 'Submit evidence', status: 'saved', onClick: console.log },
-	{ label: 'Organisations', status: 'started', onClick: console.log },
-	{ label: 'Business contacts', status: 'error', onClick: console.log },
-	{ label: 'Case studies', status: 'todo', onClick: console.log },
+	{ label: 'Introduction', status: 'done', onClick: console.info },
+	{ label: 'Submit evidence', status: 'saved', onClick: console.info },
+	{ label: 'Organisations', status: 'started', onClick: console.info },
+	{ label: 'Business contacts', status: 'error', onClick: console.info },
+	{ label: 'Case studies', status: 'todo', onClick: console.info },
 	{
 		label: 'Attachments',
 		status: 'started',
-		onClick: console.log,
+		onClick: console.info,
 		isActive: true,
 	},
-	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
+	{ label: 'Review and submit', status: 'blocked', onClick: console.info },
 ];
 
-const exampleLevelTwoItems: ProgressIndicatorItem[] = [
-	{ label: 'Introduction', status: 'done', onClick: console.log },
-	{ label: 'Submit evidence', status: 'saved', onClick: console.log },
+const exampleLevelTwoButtonItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', onClick: console.info },
+	{ label: 'Submit evidence', status: 'saved', onClick: console.info },
 	{
 		label: 'Organisations',
 		status: 'started',
-		onClick: console.log,
+		isActive: true,
+		onClick: console.info,
+		levelTwoItem: { label: 'Change organisation name', href: '#' },
+	},
+	{ label: 'Business contacts', status: 'error', onClick: console.info },
+	{ label: 'Case studies', status: 'todo', onClick: console.info },
+	{
+		label: 'Attachments',
+		status: 'started',
+		onClick: console.info,
+	},
+	{ label: 'Review and submit', status: 'blocked', onClick: console.info },
+];
+
+const exampleLevelTwoLinkItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', href: '#' },
+	{ label: 'Submit evidence', status: 'saved', href: '#' },
+	{
+		label: 'Organisations',
+		status: 'started',
+		isActive: true,
+		href: '#',
 		levelTwoItem: { label: 'Change organisation name' },
 	},
-	{ label: 'Business contacts', status: 'error', onClick: console.log },
-	{ label: 'Case studies', status: 'todo', onClick: console.log },
-	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
+	{ label: 'Business contacts', status: 'error', href: '#' },
+	{ label: 'Case studies', status: 'todo', href: '#' },
+	{
+		label: 'Attachments',
+		status: 'started',
+		href: '#',
+	},
+	{ label: 'Review and submit', status: 'blocked', href: '#' },
 ];
 
 export const Basic: Story = {
@@ -85,8 +111,14 @@ export const Buttons: Story = {
 	},
 };
 
-export const LevelTwoStep: Story = {
+export const LevelTwoStepButtons: Story = {
 	args: {
-		items: exampleLevelTwoItems,
+		items: exampleLevelTwoButtonItems,
+	},
+};
+
+export const LevelTwoStepLinks: Story = {
+	args: {
+		items: exampleLevelTwoLinkItems,
 	},
 };
