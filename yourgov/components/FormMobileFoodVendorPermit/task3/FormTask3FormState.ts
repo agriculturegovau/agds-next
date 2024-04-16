@@ -16,7 +16,6 @@ export const task3FileSchema = z.object({
 	code: z.enum(fileCodes),
 	type: zodString(),
 	file: zodFile('File missing'),
-	size: zodString(),
 });
 
 export type Task3FileSchema = z.infer<typeof task3FileSchema>;

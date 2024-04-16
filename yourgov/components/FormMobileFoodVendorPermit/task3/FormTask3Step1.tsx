@@ -6,6 +6,8 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
+import { Callout } from '@ag.ds-next/react/callout';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask3Container } from './FormTask3Container';
@@ -29,23 +31,22 @@ export function FormTask3Step1() {
 	const [errors, setErrors] = useState<z.ZodFormattedError<Task3Step1Schema>>();
 	const [lastAddedFile, setLastAddedFile] = useState<Task3FileSchema>();
 
-	const fileCollection = formState.task3?.step1
-		?.fileCollection as Task3Step1Schema['fileCollection'];
-	const hasFiles = Object.values(fileCollection).filter(Boolean).length > 0;
+	const fileCollection =
+		(formState.task3?.step1
+			?.fileCollection as Task3Step1Schema['fileCollection']) || {};
 
 	function handleFileUpload(
 		file: FileWithStatus,
-		openDrawer: FileCode | undefined
+		uploadKey: FileCode | undefined
 	) {
-		if (!openDrawer) {
+		if (!uploadKey) {
 			return;
 		}
 
 		const newFormattedFile: Task3FileSchema = {
 			file,
-			code: openDrawer,
-			size: file.size.toString(),
-			type: fileCollection[openDrawer]?.type || 'unknown',
+			code: uploadKey,
+			type: fileCollection[uploadKey]?.type || 'unknown',
 		};
 
 		setLastAddedFile(newFormattedFile);
@@ -58,9 +59,33 @@ export function FormTask3Step1() {
 					// ...data,
 					fileCollection: {
 						...fileCollection,
-						[openDrawer]: newFormattedFile,
+						[uploadKey]: newFormattedFile,
 					},
 					completed: true,
+				},
+			},
+		});
+	}
+	function handleFileDelete(uploadKey: FileCode | undefined) {
+		if (!uploadKey) {
+			return;
+		}
+
+		setFormState({
+			...formState,
+			task3: {
+				...formState.task3,
+				step1: {
+					...formState.task3?.step1,
+					// ...data,
+					fileCollection: {
+						...fileCollection,
+						[uploadKey]: {
+							type: fileCollection[uploadKey].type,
+							code: uploadKey,
+						},
+					},
+					completed: false,
 				},
 			},
 		});
@@ -93,7 +118,7 @@ export function FormTask3Step1() {
 	return (
 		<FormTask3Container
 			formTitle={task3FormSteps[0].label}
-			formIntroduction="Add your employee details."
+			formIntroduction="Upload all documents listed in the table below."
 		>
 			<Stack as="form" gap={2} width="100%" onSubmit={onSubmit}>
 				{errors?.fileCollection?._errors && (
@@ -101,8 +126,6 @@ export function FormTask3Step1() {
 						<Text>Files need to be uploaded.</Text>
 					</PageAlert>
 				)}
-
-				<H2>List of employees</H2>
 
 				{isSuccessVisible && lastAddedFile && (
 					<PageAlert
@@ -117,12 +140,17 @@ export function FormTask3Step1() {
 					</PageAlert>
 				)}
 
-				{hasFiles && (
-					<UploadsTable
-						fileCollection={fileCollection}
-						onFileUpload={handleFileUpload}
-					/>
-				)}
+				<Callout
+					tone="info"
+					title="Based on your answers, you must provide a Food Safety Supervisor Certificate for Charlie Walker."
+					variant="compact"
+				/>
+
+				<UploadsTable
+					fileCollection={fileCollection}
+					onFileUpload={handleFileUpload}
+					onFileDelete={handleFileDelete}
+				/>
 				<StepActions />
 			</Stack>
 		</FormTask3Container>

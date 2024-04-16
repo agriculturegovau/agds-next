@@ -7,7 +7,7 @@ import {
 	task2DefaultFormState,
 	Task2FormState,
 } from './task2/FormTask2FormState';
-import { Task3FormState } from './task3/FormTask3FormState';
+import { task3DefaultFormState, Task3FormState } from './task3/FormTask3FormState';
 
 type Temp_Task4FormState = {}
 
@@ -27,7 +27,7 @@ export type FormState = {
 export const defaultFormState: DeepPartial<FormState> = {
 	task1: task1DefaultFormState,
 	task2: task2DefaultFormState,
-	task3: { started: false, completed: false },
+	task3: task3DefaultFormState,
 	task4: { started: false, completed: false },
 };
 

@@ -125,7 +125,15 @@ export function zodArray<SchemaType extends ZodTypeAny>(
 }
 
 export function zodFile(message: string) {
-	return z.instanceof(File, { message })
+	return z.object({
+		lastModified: z.number(),
+		name: zodString(),
+		size: z.number(),
+		type: zodString(),
+	}, {
+		invalid_type_error: message,
+		required_error: message,
+	}) as unknown as z.ZodType<File>
 }
 
 // Only show the page alert if there is more than 1 error

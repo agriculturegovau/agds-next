@@ -25,21 +25,8 @@ export function FormTask3Container({
 	formCallToAction,
 	children,
 }: FormTask3ContainerProps) {
-	const { pathname } = useRouter();
-	const { formState, typeSearchParm, startTask } = useGlobalForm();
-	const { backHref, canConfirmAndSubmit } = useFormTask3Context();
-
-	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = task3FormSteps[stepIndex];
-		// Current step is always in progress when the URL matches
-		if (step.href === pathname) return 'doing';
-		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task3?.[step.formStateKey]?.completed) return 'done';
-		// The final step (confirm and submit) can only be viewed when all previous steps are complete
-		if (step.formStateKey !== 'step1' && !canConfirmAndSubmit) return 'blocked';
-		// Otherwise, the step still needs to be done
-		return 'todo';
-	}
+	const { startTask } = useGlobalForm();
+	const { backHref } = useFormTask3Context();
 
 	// Ensure the task is marked as started when visiting any of the task 1 pages
 	useEffect(() => {
@@ -48,24 +35,13 @@ export function FormTask3Container({
 
 	return (
 		<Columns>
-			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-				<ContentBleed visible={{ md: false }}>
-					<ProgressIndicator
-						items={task3FormSteps.map(({ label, href }, index) => ({
-							label,
-							href: href + `?type=${typeSearchParm}`,
-							status: getStepStatus(index),
-						}))}
-					/>
-				</ContentBleed>
-			</Column>
-			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionLink direction="left" href={backHref}>
 						Back
 					</DirectionLink>
 					<FormContainer
-						task={2}
+						task={3}
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
