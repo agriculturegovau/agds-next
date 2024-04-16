@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
 import { FormEventHandler, useState } from 'react';
 import { z } from 'zod';
-import { FileWithStatus } from '@ag.ds-next/react/file-upload';
-import { H2 } from '@ag.ds-next/react/heading';
+import { Callout } from '@ag.ds-next/react/callout';
+import { FileWithStatus, formatFileSize } from '@ag.ds-next/react/file-upload';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
-import { SectionAlert } from '@ag.ds-next/react/section-alert';
-import { Callout } from '@ag.ds-next/react/callout';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask3Container } from './FormTask3Container';
@@ -47,6 +45,8 @@ export function FormTask3Step1() {
 			file,
 			code: uploadKey,
 			type: fileCollection[uploadKey]?.type || 'unknown',
+			fileName: file.name,
+			fileSize: formatFileSize(file.size),
 		};
 
 		setLastAddedFile(newFormattedFile);

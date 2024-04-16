@@ -16,6 +16,10 @@ export const task3FileSchema = z.object({
 	code: z.enum(fileCodes),
 	type: zodString(),
 	file: zodFile('File missing'),
+	// fileName and fileSize need to be singled out because a lot of the
+	// `file` property data is lost when stored in Session Storage.
+	fileName: zodString(),
+	fileSize: zodString(),
 });
 
 export type Task3FileSchema = z.infer<typeof task3FileSchema>;

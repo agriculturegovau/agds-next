@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Drawer } from '@ag.ds-next/react/drawer';
-import {
-	FileUpload,
-	FileWithStatus,
-	formatFileSize,
-} from '@ag.ds-next/react/file-upload';
+import { FileUpload, FileWithStatus } from '@ag.ds-next/react/file-upload';
+import { DeleteIcon, UploadIcon } from '@ag.ds-next/react/icon';
+import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -16,10 +14,8 @@ import {
 	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { LoadingBlanket } from '@ag.ds-next/react/loading';
-import { DeleteIcon, UploadIcon } from '@ag.ds-next/react/icon';
-import { SetStateFn } from '../types';
 import { isTruthy } from '../../../lib/isTruthy';
+import { SetStateFn } from '../types';
 import { FileCode, Task3Step1Schema } from './FormTask3FormState';
 
 type FileCollection = Task3Step1Schema['fileCollection'];
@@ -69,12 +65,8 @@ export function UploadsTable({
 							return (
 								<TableRow key={fileData?.code}>
 									<TableCell>{fileData?.type}</TableCell>
-									<TableCell>{fileData?.file?.name}</TableCell>
-									<TableCell>
-										{fileData?.file?.size
-											? formatFileSize(fileData.file.size)
-											: ''}
-									</TableCell>
+									<TableCell>{fileData?.fileName}</TableCell>
+									<TableCell>{fileData?.fileSize}</TableCell>
 									{!readOnly && (
 										<TableCell>
 											{fileData?.file ? (
