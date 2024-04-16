@@ -17,7 +17,7 @@ relatedComponents: ['text-input']
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput
@@ -35,7 +35,7 @@ Time input is superset of [Text input](/components/text-input), with additional 
 
 Time input is a controlled component which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
 
-The `onChange` handler provides an object with both a `raw` and `formatted` version of the time. `raw` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
+The `onChange` handler provides an object with both a `value` and `formatted` version of the time. `value` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
 
 <DoHeading />
 
@@ -51,14 +51,14 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState({ raw: '9:66' });
+	const [value, setValue] = React.useState({ value: '9:66' });
 
 	const onChange = (timeValue) => {
 		console.log('onChange', timeValue);
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput

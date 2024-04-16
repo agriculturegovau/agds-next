@@ -18,7 +18,7 @@ import {
 // This const object is required for the tests and also makes the component slightly more performant
 const STABLE_DEFAUT_VALUE: TimeValue = {
 	formatted: '',
-	raw: '',
+	value: '',
 };
 
 export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
@@ -42,11 +42,13 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
 		ref
 	) {
 		const [inputValue, setInputValue] = useState(
-			transformValuePropToInputValue(value?.raw, timeFormatProp)
+			transformValuePropToInputValue(value?.value, timeFormatProp)
 		);
 		// Update the input when the value and/or timeFormat updates
 		useEffect(() => {
-			setInputValue(transformValuePropToInputValue(value.raw, timeFormatProp));
+			setInputValue(
+				transformValuePropToInputValue(value.value, timeFormatProp)
+			);
 		}, [timeFormatProp, value]);
 
 		const onBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -55,7 +57,7 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
 
 			onChangeProp?.({
 				formatted: formatTime(inputValue, timeFormatProp),
-				raw: normalizedTime,
+				value: normalizedTime,
 			});
 
 			onBlurProp?.(e);
@@ -110,7 +112,7 @@ export type TimeValue =
 			/** The time in the format that is displayed to the user **/
 			formatted?: string;
 			/** The time in a consistent 24 hour format **/
-			raw: string;
+			value: string;
 	  }
 	| undefined;
 

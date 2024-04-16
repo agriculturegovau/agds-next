@@ -1,0 +1,132 @@
+import { FocusEventHandler, ReactNode, RefObject } from 'react';
+import { useCombobox } from 'downshift';
+import { FieldMaxWidth } from '../core';
+import { ComboboxBase } from '../combobox/ComboboxBase/ComboboxBase';
+import { DefaultComboboxOption, useComboboxInputId } from '../combobox/utils';
+import { useAsync } from '../combobox/useAsync';
+import { filterOptions } from './utils';
+
+export type ComboboxAsyncProps<Option extends DefaultComboboxOption> = {
+	/** Describes the purpose of the field. */
+	label: string;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** If true, the field will stretch to the fill the width of its container. */
+	block?: boolean;
+	/** The maximum width of the field. */
+	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	/** If true, the field will not be interactive. */
+	disabled?: boolean;
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+	/** A string specifying a name for the input control. */
+	name?: string;
+	/** The value of the field. */
+	value?: Option | null;
+	/** Function to be fired following a change event. */
+	onChange?: (value: Option | null) => void;
+	/** Function to be fired following a focus event. */
+	onFocus?: FocusEventHandler<HTMLInputElement>;
+	/** Function to be fired following a blur event. */
+	onBlur?: FocusEventHandler<HTMLInputElement>;
+	/** Function to be used when options need to be loaded over the network. */
+	loadOptions: (inputValue: string) => Promise<Option[]>;
+	/** Used to override the default item rendering. */
+	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Message to display when no options match the users search term. */
+	emptyResultsMessage?: string;
+	/** If true, the clear button will be rendered when there is a selected option. */
+	clearable?: boolean;
+	/** @deprecated This prop is no longer being used. When true, the dropdown will open when the user focuses on the element  */
+	openDropdownOnFocus?: boolean;
+	/** If true, the dropdown trigger will be rendered. */
+	showDropdownTrigger?: boolean;
+	/** Ref to the input element. */
+	inputRef?: RefObject<HTMLInputElement>;
+};
+
+export function TimeSelectAsync<Option extends DefaultComboboxOption>({
+	clearable = false,
+	id,
+	inputRef: inputRefProp,
+	loadOptions: loadOptionsProp,
+	maxWidth = 'md',
+	onChange,
+	showDropdownTrigger = true,
+	value,
+	...props
+}: ComboboxAsyncProps<Option>) {
+	const inputId = useComboboxInputId(id);
+
+	const isAutocomplete = !showDropdownTrigger;
+
+	const {
+		loading,
+		networkError,
+		inputItems,
+		onInputValueChange,
+		onIsOpenChange,
+	} = useAsync<Option>(loadOptionsProp, filterOptions);
+
+	const combobox = useCombobox<Option>({
+		selectedItem: value,
+		inputId,
+		items: inputItems,
+		defaultHighlightedIndex: 0,
+		itemToString: (item) => item?.label ?? '',
+		onInputValueChange,
+		onIsOpenChange,
+		onSelectedItemChange: ({ selectedItem = null }) => {
+			onChange?.(selectedItem);
+		},
+		stateReducer: (state, actionAndChanges) => {
+			const { type: actionAndChangesType, changes } = actionAndChanges;
+			const shouldOpen = (changes.inputValue?.length ?? 0) > 0;
+			switch (actionAndChangesType) {
+				case useCombobox.stateChangeTypes.InputBlur:
+					return {
+						...changes,
+						inputValue: state.selectedItem?.label ?? '',
+					};
+				case useCombobox.stateChangeTypes.InputClick:
+					if (!isAutocomplete) return changes;
+					return {
+						...changes,
+						isOpen: false,
+					};
+				case useCombobox.stateChangeTypes.InputChange:
+					if (!isAutocomplete) return changes;
+					return {
+						...changes,
+						isOpen: shouldOpen,
+					};
+				default:
+					return changes;
+			}
+		},
+	});
+
+	return (
+		<ComboboxBase
+			clearable={clearable}
+			combobox={combobox}
+			inputId={inputId}
+			inputItems={inputItems}
+			inputRef={inputRefProp}
+			isAutocomplete={isAutocomplete}
+			maxWidth={maxWidth}
+			loading={loading}
+			networkError={networkError}
+			showDropdownTrigger={showDropdownTrigger}
+			{...props}
+		/>
+	);
+}

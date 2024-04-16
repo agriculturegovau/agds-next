@@ -1,11 +1,11 @@
 ---
-title: Combobox
-description: This component allows users to select from a list of options. It’s especially useful when there are many options to choose from.
+title: TimeSelect
+description: Description of TimeSelect
 group: Forms
-storybookPath: /story/forms-combobox-combobox--basic
-figmaGalleryNodeId: 12925%3A104632
-relatedComponents: ['autocomplete', 'select', 'text-input', 'dropdown-menu']
-relatedPatterns: ['selecting-multiple-options']
+storybookPath: /story/Forms-TimeSelect--basic
+unreleased: true
+figmaGalleryNodeId: REPLACE_ME
+relatedComponents: ['combobox', 'time-input']
 ---
 
 As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
@@ -16,12 +16,12 @@ All Combobox components are [controlled components](https://reactjs.org/docs/for
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -49,12 +49,12 @@ Use the `Combobox` component when users can choose a single item from a predefin
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -68,57 +68,15 @@ Use the `ComboboxAsync` component when users can choose a single item from a lis
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<ComboboxAsync
-			label="Select country"
+		<TimeSelectAsync
+			label="Select time"
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
 				await new Promise((resolve) => setTimeout(resolve, 500));
-				return COUNTRY_OPTIONS;
-			}}
-		/>
-	);
-};
-```
-
-## ComboboxMulti
-
-Use the `ComboboxMulti` component when users can choose multiple items from a predefined list of options.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState([]);
-	return (
-		<ComboboxMulti
-			label="Select country"
-			hint="Start typing to see results"
-			value={value}
-			onChange={setValue}
-			options={COUNTRY_OPTIONS}
-		/>
-	);
-};
-```
-
-## ComboboxAsyncMulti
-
-Use the `ComboboxAsyncMulti` component when users can choose multiple items from a list of options that needs to be fetched over the network.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState([]);
-	return (
-		<ComboboxAsyncMulti
-			label="Select country"
-			hint="Start typing to see results"
-			value={value}
-			onChange={setValue}
-			loadOptions={async function loadOptions(inputValue) {
-				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 500));
-				return COUNTRY_OPTIONS;
+				return TIME_OPTIONS;
 			}}
 		/>
 	);
@@ -133,13 +91,13 @@ Use the `block` prop to expand the component to fill the available space.
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			block
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -161,13 +119,13 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			hideOptionalLabel
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -182,14 +140,14 @@ Use the `invalid` prop to indicate if the user input is invalid.
 	const [value, setValue] = React.useState(null);
 	const invalid = !value;
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			invalid={invalid}
 			message={invalid ? 'Country is required' : undefined}
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -203,13 +161,13 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			disabled
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 		/>
 	);
 };
@@ -223,53 +181,13 @@ Use the `clearable` prop to render a clear ("x") button when there is a selected
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<Combobox
-			label="Select country"
+		<TimeSelect
+			label="Select time"
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
-			options={COUNTRY_OPTIONS}
+			options={TIME_OPTIONS}
 			clearable
-		/>
-	);
-};
-```
-
-## Custom rendering
-
-Use the `renderItem` prop to customise how each option in the dropdown list is rendered. Inside this function, you can make use of the `ComboboxRenderItem` component to style extra information.
-
-Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
-
-```jsx live
-() => {
-	const [value, onChange] = React.useState(null);
-	return (
-		<Combobox
-			label="Search users"
-			hint="Start typing to see results"
-			value={value}
-			onChange={onChange}
-			options={NAME_OPTIONS}
-			renderItem={(item, inputValue) => (
-				<ComboboxRenderItem
-					itemLabel={item.label}
-					inputValue={inputValue}
-					secondaryText={`Role: ${item.jobTitle}`}
-					tertiaryText={`Job: ${item.status}`}
-					beforeElement={
-						<Avatar name={item.fullName} size="sm" tone="action" />
-					}
-					endElement={
-						item.unreadMessageCount > 0 ? (
-							<NotificationBadge
-								value={item.unreadMessageCount}
-								tone="action"
-							/>
-						) : null
-					}
-				/>
-			)}
 		/>
 	);
 };

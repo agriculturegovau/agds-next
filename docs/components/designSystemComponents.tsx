@@ -261,8 +261,11 @@ export {
 export {
 	COUNTRY_OPTIONS,
 	NAME_OPTIONS,
+	TIME_OPTIONS,
 } from '@ag.ds-next/react/src/combobox/test-utils';
 export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
+
+export { TimeSelect, TimeSelectAsync } from '@ag.ds-next/react/time-select';
