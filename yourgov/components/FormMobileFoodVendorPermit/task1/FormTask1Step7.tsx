@@ -1,6 +1,5 @@
 import { FormEvent, Fragment } from 'react';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Text } from '@ag.ds-next/react/text';
+import { NotAvailableAlert } from '../FormTask4Step1';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
@@ -37,15 +36,7 @@ export function FormTask1Step7() {
 					</form>
 				</Fragment>
 			) : (
-				<PageAlert
-					tone="warning"
-					title="This section of the form is not ready to be completed"
-				>
-					<Text as="p">
-						Before starting this part of the form, you will need to go back and
-						complete all of the previous sections.
-					</Text>
-				</PageAlert>
+				<NotAvailableAlert />
 			)}
 		</FormTask1Container>
 	);
