@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
 import { ZodIssueCode, ZodTypeAny, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
-import { FormStep } from './types';
+import { AnyStepNumber, FormStep } from './types';
 import { TaskKey } from './FormState';
 
 // Empty strings do not trigger Zod required field error validation
@@ -153,7 +153,7 @@ export const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
 interface GetTaskNavigationUrlParams {
-	steps: Array<FormStep<any>>;
+	steps: Array<FormStep<AnyStepNumber>>;
 	currentStepIndex: number;
 	typeSearchParm: string;
 	taskHighlight: number;
