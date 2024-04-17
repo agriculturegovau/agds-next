@@ -16,9 +16,6 @@ export const zodString = (message?: string) =>
 		.min(1, { message });
 export const zodStringOptional = () => z.string().optional();
 
-export const zodDateField = (message = 'Enter a valid date') =>
-	z.date({ invalid_type_error: 'Enter a valid date', required_error: message });
-
 interface ZodTimeFieldProps {
 	label: string;
 	requiredMessage?: string;

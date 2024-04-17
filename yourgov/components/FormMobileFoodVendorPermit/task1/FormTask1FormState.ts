@@ -114,7 +114,7 @@ export const task1Step4FormSchema = z.object({
 		6,
 		'Registration number can not be longer than 6 characters'
 	),
-	registrationExpiry: zodDateField('Vehicle registration expiry is required'),
+	registrationExpiry: zodString('Vehicle registration expiry is required'),
 });
 
 export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
@@ -122,8 +122,8 @@ export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
 export const task1Step5FormSchema = z
 	.object({
 		tradingPeriod: z.object({
-			from: zodDateField(),
-			to: zodDateField(),
+			from: zodString(),
+			to: zodString(),
 		}),
 		openingTime: zodTimeField({ label: 'Opening time' }),
 		closingTime: zodTimeField({ label: 'Closing time' }),
