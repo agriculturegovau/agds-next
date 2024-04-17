@@ -13,6 +13,10 @@ import { useSessionFormState } from '../../lib/useSessionFormState';
 import { defaultFormState, FormState, TaskKey } from './FormState';
 import { getPrevTaskKey } from './utils';
 
+// It is a pain to have to go through the entire form flow to demo things on specific pages
+// Set this to true to allow skipping past steps and tasks
+const ENABLE_STEP_SKIPPING = false;
+
 type ContextType = {
 	formTitle: string;
 	typeSearchParm: string;
@@ -71,8 +75,12 @@ export function GlobalFormProvider({
 		[formState, router.query.taskHighlight]
 	);
 
-	const checkIsTaskAvailable = (taskKey: TaskKey) =>
-		getTaskStatus(taskKey) !== 'blocked';
+	const checkIsTaskAvailable = useCallback(
+		(taskKey: TaskKey) => {
+			return getTaskStatus(taskKey) !== 'blocked' || ENABLE_STEP_SKIPPING;
+		},
+		[getTaskStatus]
+	);
 
 	const startTask = useCallback(
 		(taskKey: TaskKey) => {
