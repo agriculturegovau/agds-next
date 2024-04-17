@@ -179,7 +179,11 @@ function UploadDrawer({
 	const [isLoading, setIsLoading] = useState(false);
 	const [hasError, setHasError] = useState(false);
 
-	const documentType = uploadKey ? fileCollection?.[uploadKey].type : undefined;
+	const selectedFileData = uploadKey ? fileCollection?.[uploadKey] : undefined;
+
+	useEffect(() => {
+		setFilesList([selectedFileData?.file].filter(isTruthy));
+	}, [uploadKey, selectedFileData]);
 
 	useEffect(() => {
 		if (fileList.length > 0) {
@@ -204,7 +208,7 @@ function UploadDrawer({
 		<Drawer
 			isOpen={Boolean(uploadKey)}
 			onClose={() => setUploadKey(undefined)}
-			title={documentType || 'Upload document'}
+			title={selectedFileData?.type || 'Upload document'}
 			actions={
 				<ButtonGroup>
 					<Button
@@ -236,7 +240,6 @@ function UploadDrawer({
 					'application/msword',
 					'application/pdf',
 					'application/vnd.ms-excel',
-					'application/xml',
 					'application/zip',
 				]}
 			/>
