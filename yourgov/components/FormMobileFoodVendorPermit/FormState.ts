@@ -11,8 +11,7 @@ import {
 	task3DefaultFormState,
 	Task3FormState,
 } from './task3/FormTask3FormState';
-
-type Temp_Task4FormState = {};
+import { Task4FormState } from './task4/FormTask4FormState';
 
 interface TaskCompletion {
 	started: boolean;
@@ -24,7 +23,7 @@ export type FormState = {
 	task1: Partial<Task1FormState> & TaskCompletion;
 	task2: Partial<Task2FormState> & TaskCompletion;
 	task3: Partial<Task3FormState> & TaskCompletion;
-	task4: Partial<Temp_Task4FormState> & TaskCompletion;
+	task4: Partial<Task4FormState> & TaskCompletion;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {

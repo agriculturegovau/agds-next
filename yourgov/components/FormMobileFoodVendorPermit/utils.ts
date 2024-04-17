@@ -174,5 +174,5 @@ export function getTaskCompletionUrl({
 export function getPrevTaskKey(currentTaskKey: TaskKey) {
 	const prevTaskNumber = parseInt(/(\d)$/.exec(currentTaskKey)?.[1] || '1') - 1;
 	const prevTaskKey = `task${prevTaskNumber}` as TaskKey;
-	return prevTaskKey
+	return prevTaskKey;
 }

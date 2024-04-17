@@ -9,7 +9,9 @@ import { globalFormTasks } from '../globalFormTasks';
 import { FormTask1Review } from '../task1/FormTask1Review';
 import { FormTask2Review } from '../task2/FormTask2Review';
 import { FormTask3Review } from '../task3/FormTask3Review';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask4Container } from './FormTask4Container';
+import { useFormTask4Context } from './FormTask4Provider';
 
 export function ValidationSectionAlert() {
 	return (
@@ -35,9 +37,19 @@ export function NotAvailableAlert() {
 }
 
 export function FormTask4Step1() {
-	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+	const { submitStep } = useFormTask4Context();
+	const { formState, setFormState } = useGlobalForm();
+
+	const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		// next();
+		await submitStep();
+		setFormState({
+			...formState,
+			task4: {
+				...formState.task4,
+				completed: true,
+			},
+		});
 	};
 
 	return (

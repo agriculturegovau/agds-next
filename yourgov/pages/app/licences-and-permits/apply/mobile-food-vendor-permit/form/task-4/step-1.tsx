@@ -7,6 +7,7 @@ import {
 	FormTask4Step1,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
+import { FormTask4Provider } from '../../../../../../../components/FormMobileFoodVendorPermit/task4/FormTask4Provider';
 
 const Page: NextPageWithLayout = () => {
 	return (
@@ -24,7 +25,9 @@ export default Page;
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<SiteLayout focusMode>
-			<GlobalFormProvider>{page}</GlobalFormProvider>
+			<GlobalFormProvider>
+				<FormTask4Provider>{page}</FormTask4Provider>
+			</GlobalFormProvider>
 		</SiteLayout>
 	);
 };
