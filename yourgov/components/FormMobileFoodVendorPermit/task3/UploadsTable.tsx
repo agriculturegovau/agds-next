@@ -17,7 +17,6 @@ import {
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { Modal } from '@ag.ds-next/react/modal';
-import { isTruthy } from '../../../lib/isTruthy';
 import { SetStateFn } from '../types';
 import {
 	FileCode,
@@ -25,7 +24,7 @@ import {
 	Task3Step1Schema,
 } from './FormTask3FormState';
 
-type FileCollection = Task3Step1Schema['fileCollection'];
+export type FileCollection = Task3Step1Schema['fileCollection'];
 
 type FileUploadFn = (
 	file: FileWithStatus,
@@ -33,10 +32,10 @@ type FileUploadFn = (
 ) => void;
 
 interface UploadTableProps {
-	onFileUpload: FileUploadFn;
-	onFileDelete: (uploadCode: FileCode | undefined) => void;
+	onFileUpload?: FileUploadFn;
+	onFileDelete?: (uploadCode: FileCode | undefined) => void;
 	readOnly?: boolean;
-	fileCollection: FileCollection;
+	fileCollection: FileCollection | undefined;
 }
 
 export function UploadsTable({
@@ -50,16 +49,16 @@ export function UploadsTable({
 	const [deletionFile, setDeletionFile] = useState<Task3FileSchema>();
 
 	const handleFileUpload: FileUploadFn = (file, uploadCode) => {
-		onFileUpload(file, uploadCode);
-		uploadCode && setSuccessFile(fileCollection[uploadCode]);
+		onFileUpload?.(file, uploadCode);
+		uploadCode && fileCollection && setSuccessFile(fileCollection[uploadCode]);
 	};
 
 	function handleFileDelete() {
-		onFileDelete(deletionFile?.code);
+		onFileDelete?.(deletionFile?.code);
 		setDeletionFile(undefined);
 	}
 
-	const fileList = Object.values(fileCollection);
+	const fileList = fileCollection ? Object.values(fileCollection) : [];
 
 	return (
 		<>

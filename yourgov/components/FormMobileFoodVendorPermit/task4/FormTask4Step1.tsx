@@ -7,6 +7,8 @@ import { Text } from '@ag.ds-next/react/text';
 import { StepActions } from '../StepActions';
 import { globalFormTasks } from '../globalFormTasks';
 import { FormTask1Review } from '../task1/FormTask1Review';
+import { FormTask2Review } from '../task2/FormTask2Review';
+import { FormTask3Review } from '../task3/FormTask3Review';
 import { FormTask4Container } from './FormTask4Container';
 
 export function ValidationSectionAlert() {
@@ -51,17 +53,12 @@ export function FormTask4Step1() {
 			{/** Provide employee details */}
 			<Stack gap={1.5}>
 				<H2>{globalFormTasks[1].label}</H2>
-				<p>TODO</p>
+				<FormTask2Review headingsLevel="h3" />
 			</Stack>
 			{/** Upload documents */}
 			<Stack gap={1.5}>
 				<H2>{globalFormTasks[2].label}</H2>
-				<p>TODO</p>
-			</Stack>
-			{/** Review and submit */}
-			<Stack gap={1.5}>
-				<H2>{globalFormTasks[3].label}</H2>
-				<p>TODO</p>
+				<FormTask3Review />
 			</Stack>
 			<form onSubmit={onSubmit}>
 				<StepActions />
