@@ -16,9 +16,14 @@ import {
 } from '@ag.ds-next/react/table';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Text } from '@ag.ds-next/react/text';
+import { Modal } from '@ag.ds-next/react/modal';
 import { isTruthy } from '../../../lib/isTruthy';
 import { SetStateFn } from '../types';
-import { FileCode, Task3Step1Schema } from './FormTask3FormState';
+import {
+	FileCode,
+	Task3FileSchema,
+	Task3Step1Schema,
+} from './FormTask3FormState';
 
 type FileCollection = Task3Step1Schema['fileCollection'];
 
@@ -34,8 +39,6 @@ interface UploadTableProps {
 	fileCollection: FileCollection;
 }
 
-// TODO: destructive action dialog on remove
-
 export function UploadsTable({
 	readOnly,
 	onFileUpload,
@@ -43,23 +46,28 @@ export function UploadsTable({
 	fileCollection,
 }: UploadTableProps) {
 	const [uploadKey, setUploadKey] = useState<FileCode>();
-	const [successKey, setSuccessKey] = useState<FileCode>();
+	const [successFile, setSuccessFile] = useState<Task3FileSchema>();
+	const [deletionFile, setDeletionFile] = useState<Task3FileSchema>();
 
 	const handleFileUpload: FileUploadFn = (file, uploadCode) => {
 		onFileUpload(file, uploadCode);
-		setSuccessKey(uploadCode);
+		uploadCode && setSuccessFile(fileCollection[uploadCode]);
 	};
 
+	function handleFileDelete() {
+		onFileDelete(deletionFile?.code);
+		setDeletionFile(undefined);
+	}
+
 	const fileList = Object.values(fileCollection);
-	const successFile = successKey && fileCollection[successKey];
 
 	return (
 		<>
-			{successKey && (
+			{successFile && (
 				<SectionAlert
 					tone="success"
 					title={`${successFile?.type} has been added`}
-					onClose={() => setSuccessKey(undefined)}
+					onClose={() => setSuccessFile(undefined)}
 				>
 					<Text as="p">{successFile?.fileName} has been added</Text>
 				</SectionAlert>
@@ -94,7 +102,7 @@ export function UploadsTable({
 											<TableCell>
 												{fileData?.file ? (
 													<Button
-														onClick={() => onFileDelete?.(fileData?.code)}
+														onClick={() => setDeletionFile(fileData)}
 														variant="text"
 														iconBefore={DeleteIcon}
 													>
@@ -124,6 +132,29 @@ export function UploadsTable({
 					fileCollection={fileCollection}
 				/>
 			</TableWrapper>
+			<Modal
+				title={`Are you sure you want to remove "${deletionFile?.fileName}"?`}
+				onClose={() => setDeletionFile(undefined)}
+				isOpen={Boolean(deletionFile)}
+				actions={
+					<ButtonGroup>
+						<Button onClick={handleFileDelete}>Delete file</Button>
+						<Button
+							variant="tertiary"
+							onClick={() => setDeletionFile(undefined)}
+						>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">
+					The {deletionFile?.type} file is about to be deleted.
+				</Text>
+				<Text as="p">
+					It will be deleted immediately. You can’t undo this action.
+				</Text>
+			</Modal>
 		</>
 	);
 }
