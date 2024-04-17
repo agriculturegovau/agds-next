@@ -11,6 +11,7 @@ import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
 import { FormState, defaultFormState, TaskKey } from './FormState';
+import { getPrevTaskKey } from './utils';
 
 type ContextType = {
 	formTitle: string;
@@ -53,15 +54,18 @@ export function GlobalFormProvider({
 
 	const getTaskStatus = useCallback(
 		(taskKey: TaskKey): TaskListItemStatus => {
-			{
-				const isDoneRecently =
-					taskKey === `task${router.query.taskHighlight}` &&
-					formState[taskKey]?.completed;
-				if (isDoneRecently) return 'doneRecently';
-				if (formState[taskKey]?.completed) return 'done';
-				if (formState[taskKey]?.started) return 'doing';
-				return 'todo';
-			}
+			const prevTaskKey = getPrevTaskKey(taskKey);
+			const isPrevTaskComplete =
+				taskKey === 'task1' || Boolean(formState[prevTaskKey]?.completed);
+			const isDoneRecently =
+				taskKey === `task${router.query.taskHighlight}` &&
+				formState[taskKey]?.completed;
+
+			if (!isPrevTaskComplete) return 'blocked';
+			if (isDoneRecently) return 'doneRecently';
+			if (formState[taskKey]?.completed) return 'done';
+			if (formState[taskKey]?.started) return 'doing';
+			return 'todo';
 		},
 		[formState, router.query.taskHighlight]
 	);

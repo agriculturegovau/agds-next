@@ -3,6 +3,7 @@ import { parseISO, isValid } from 'date-fns';
 import { ZodIssueCode, ZodTypeAny, z } from 'zod';
 import { FieldValues } from 'react-hook-form';
 import { FormStep } from './types';
+import { TaskKey } from './FormState';
 
 // Empty strings do not trigger Zod required field error validation
 export const zodString = (message?: string) =>
@@ -169,4 +170,10 @@ export function getTaskCompletionUrl({
 	return nextStepUrl
 		? `${nextStepUrl}?type=${typeSearchParm}`
 		: `${formHomePage}?type=${typeSearchParm}&taskHighlight=${taskHighlight}`;
+}
+
+export function getPrevTaskKey(currentTaskKey: TaskKey) {
+	const prevTaskNumber = parseInt(/(\d)$/.exec(currentTaskKey)?.[1] || '1') - 1;
+	const prevTaskKey = `task${prevTaskNumber}` as TaskKey;
+	return prevTaskKey
 }
