@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
-import { NotAvailableAlert } from '../FormMobileFoodVendorPermit/FormTask4Step1';
+import { NotAvailableAlert } from '../FormMobileFoodVendorPermit/task4/FormTask4Step1';
 import { FormStepTitle } from '../FormStepTitle';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 

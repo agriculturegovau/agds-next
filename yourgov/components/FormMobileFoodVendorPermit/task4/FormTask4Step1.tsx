@@ -4,10 +4,10 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
+import { StepActions } from '../StepActions';
+import { globalFormTasks } from '../globalFormTasks';
+import { FormTask1Review } from '../task1/FormTask1Review';
 import { FormTask4Container } from './FormTask4Container';
-import { StepActions } from './StepActions';
-import { globalFormTasks } from './globalFormTasks';
-import { FormTask1Review } from './task1/FormTask1Review';
 
 export function ValidationSectionAlert() {
 	return (

@@ -10,7 +10,7 @@ import {
 	FormDefinitionListItemDateRange,
 } from '../../FormDefinitionList';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { ValidationSectionAlert } from '../FormTask4Step1';
+import { ValidationSectionAlert } from '../task4/FormTask4Step1';
 import { task1FormSteps } from './FormTask1Provider';
 import {
 	task1Step1FormSchema,

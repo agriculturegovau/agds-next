@@ -9,7 +9,7 @@ import {
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from '../FormContainer';
-import { NotAvailableAlert } from '../FormTask4Step1';
+import { NotAvailableAlert } from '../task4/FormTask4Step1';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 

@@ -23,4 +23,4 @@ export { FormTask2Step1 } from './task2/FormTask2Step1';
 export { FormTask2Step1AddEmployee } from './task2/FormTask2Step1AddEmployee';
 
 // Task 4
-export { FormTask4Step1 } from './FormTask4Step1';
+export { FormTask4Step1 } from './task4/FormTask4Step1';
