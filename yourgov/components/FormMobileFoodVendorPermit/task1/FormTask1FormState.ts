@@ -5,7 +5,7 @@ import {
 	zodPhoneFieldOptional,
 	zodString,
 	zodStringOptional,
-	zodTimeField
+	zodTimeField,
 } from '../utils';
 
 export const task1Step1FormSchema = z.object({
