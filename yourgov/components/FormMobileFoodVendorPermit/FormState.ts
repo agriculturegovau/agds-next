@@ -7,14 +7,17 @@ import {
 	task2DefaultFormState,
 	Task2FormState,
 } from './task2/FormTask2FormState';
-import { task3DefaultFormState, Task3FormState } from './task3/FormTask3FormState';
+import {
+	task3DefaultFormState,
+	Task3FormState,
+} from './task3/FormTask3FormState';
 
-type Temp_Task4FormState = {}
+type Temp_Task4FormState = {};
 
 interface TaskCompletion {
-	started: boolean,
-	completed: boolean,
-	completedRecently: boolean,
+	started: boolean;
+	completed: boolean;
+	completedRecently: boolean;
 }
 
 export type FormState = {

@@ -16,6 +16,8 @@ export type AnyStepNumber = Task1StepNumber | Task2StepNumber;
  * This type treats those object fields as simple boolean fields as a work around.
  */
 // Not actually boolean but it doesn't need to be any more complex than this for our purposes
-export type ShallowErrors<Schema extends FieldValues> = FieldErrors<Record<keyof Schema, boolean>>
+export type ShallowErrors<Schema extends FieldValues> = FieldErrors<
+	Record<keyof Schema, boolean>
+>;
 
-export type SetStateFn<T> = Dispatch<SetStateAction<T>>
+export type SetStateFn<T> = Dispatch<SetStateAction<T>>;

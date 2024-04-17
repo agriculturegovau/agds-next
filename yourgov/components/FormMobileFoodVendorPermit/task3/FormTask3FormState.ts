@@ -8,9 +8,9 @@ const fileCodes = [
 	'vehicleBuildAndLayoutPlans',
 	'foodSafetySupervisorCertificate',
 	'suggestedMenuOrListOfFoodsBeingSold',
-] as const
+] as const;
 
-export type FileCode = typeof fileCodes[number]
+export type FileCode = (typeof fileCodes)[number];
 
 export const task3FileSchema = z.object({
 	code: z.enum(fileCodes),
@@ -31,7 +31,7 @@ export const task3Step1Schema = z.object({
 		vehicleBuildAndLayoutPlans: task3FileSchema,
 		foodSafetySupervisorCertificate: task3FileSchema,
 		suggestedMenuOrListOfFoodsBeingSold: task3FileSchema,
-	})
+	}),
 });
 
 export type Task3Step1Schema = z.infer<typeof task3Step1Schema>;
@@ -61,7 +61,7 @@ export const task3DefaultFormState: DeepPartial<Task3FormState> = {
 			},
 			foodSafetySupervisorCertificate: {
 				code: 'foodSafetySupervisorCertificate',
-				type: 'Food Safety Supervisor Certificate'
+				type: 'Food Safety Supervisor Certificate',
 			},
 			suggestedMenuOrListOfFoodsBeingSold: {
 				code: 'suggestedMenuOrListOfFoodsBeingSold',

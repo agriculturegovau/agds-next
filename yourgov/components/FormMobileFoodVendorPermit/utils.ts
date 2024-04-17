@@ -125,15 +125,18 @@ export function zodArray<SchemaType extends ZodTypeAny>(
 }
 
 export function zodFile(message: string) {
-	return z.object({
-		lastModified: z.number(),
-		name: zodString(),
-		size: z.number(),
-		type: zodString(),
-	}, {
-		invalid_type_error: message,
-		required_error: message,
-	}) as unknown as z.ZodType<File>
+	return z.object(
+		{
+			lastModified: z.number(),
+			name: zodString(),
+			size: z.number(),
+			type: zodString(),
+		},
+		{
+			invalid_type_error: message,
+			required_error: message,
+		}
+	) as unknown as z.ZodType<File>;
 }
 
 // Only show the page alert if there is more than 1 error
@@ -146,13 +149,24 @@ export function checkHasError(errors: FieldValues) {
 	return Object.keys(errors).length > 0;
 }
 
-export const formHomePage = '/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+export const formHomePage =
+	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
 interface GetTaskNavigationUrlParams {
-	steps: Array<FormStep<any>>, currentStepIndex: number, typeSearchParm: string, taskHighlight: number
+	steps: Array<FormStep<any>>;
+	currentStepIndex: number;
+	typeSearchParm: string;
+	taskHighlight: number;
 }
 
-export function getTaskCompletionUrl({ currentStepIndex, steps, taskHighlight, typeSearchParm }: GetTaskNavigationUrlParams) {
-	const nextStepUrl = steps[currentStepIndex + 1]?.href
-	return nextStepUrl ? `${nextStepUrl}?type=${typeSearchParm}` : `${formHomePage}?type=${typeSearchParm}&taskHighlight=${taskHighlight}`
+export function getTaskCompletionUrl({
+	currentStepIndex,
+	steps,
+	taskHighlight,
+	typeSearchParm,
+}: GetTaskNavigationUrlParams) {
+	const nextStepUrl = steps[currentStepIndex + 1]?.href;
+	return nextStepUrl
+		? `${nextStepUrl}?type=${typeSearchParm}`
+		: `${formHomePage}?type=${typeSearchParm}&taskHighlight=${taskHighlight}`;
 }
