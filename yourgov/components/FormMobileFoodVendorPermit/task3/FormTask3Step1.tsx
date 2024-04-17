@@ -111,6 +111,7 @@ export function FormTask3Step1() {
 					fileCollection,
 					completed: true,
 				},
+				completed: true,
 			},
 		});
 	};
