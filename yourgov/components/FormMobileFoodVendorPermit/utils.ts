@@ -128,10 +128,12 @@ export function zodArray<SchemaType extends ZodTypeAny>(
 export function zodFile(message: string) {
 	return z.object(
 		{
-			lastModified: z.number(),
-			name: zodString(),
-			size: z.number(),
-			type: zodString(),
+			lastModified: z.number().optional(),
+			name: zodStringOptional(),
+			size: z.number().optional(),
+			type: zodStringOptional(),
+			// This is the only value that remains after JSON.stringify() is run when storing values in session storage
+			path: zodString(),
 		},
 		{
 			invalid_type_error: message,
