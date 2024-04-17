@@ -179,11 +179,7 @@ function UploadDrawer({
 	const [isLoading, setIsLoading] = useState(false);
 	const [hasError, setHasError] = useState(false);
 
-	const prefillFile = uploadKey ? fileCollection?.[uploadKey] : undefined;
-
-	useEffect(() => {
-		setFilesList([prefillFile?.file].filter(isTruthy));
-	}, [prefillFile, uploadKey]);
+	const documentType = uploadKey ? fileCollection?.[uploadKey].type : undefined;
 
 	useEffect(() => {
 		if (fileList.length > 0) {
@@ -208,7 +204,7 @@ function UploadDrawer({
 		<Drawer
 			isOpen={Boolean(uploadKey)}
 			onClose={() => setUploadKey(undefined)}
-			title={prefillFile?.type || 'Upload document'}
+			title={documentType || 'Upload document'}
 			actions={
 				<ButtonGroup>
 					<Button
