@@ -80,10 +80,12 @@ export function UploadsTable({
 								<TableHeader scope="col" width="33%">
 									Document type
 								</TableHeader>
-								<TableHeader scope="col" width="40%">
+								<TableHeader scope="col" width="42%">
 									File
 								</TableHeader>
-								<TableHeader scope="col">Size</TableHeader>
+								<TableHeader scope="col" width="15%">
+									Size
+								</TableHeader>
 								{!readOnly && (
 									<TableHeader scope="col" width="10%">
 										Action
