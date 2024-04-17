@@ -1,16 +1,11 @@
 import { PropsWithChildren, ReactNode, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { ContentBleed } from '@ag.ds-next/react/content';
-import {
-	ProgressIndicator,
-	ProgressIndicatorItemStatus,
-} from '@ag.ds-next/react/progress-indicator';
-import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { useGlobalForm } from '../GlobalFormProvider';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from '../FormContainer';
-import { task3FormSteps, useFormTask3Context } from './FormTask3Provider';
+import { NotAvailableAlert } from '../FormTask4Step1';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { useFormTask3Context } from './FormTask3Provider';
 
 type FormTask3ContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -25,8 +20,10 @@ export function FormTask3Container({
 	formCallToAction,
 	children,
 }: FormTask3ContainerProps) {
-	const { startTask } = useGlobalForm();
+	const { startTask, checkIsTaskAvailable } = useGlobalForm();
 	const { backHref } = useFormTask3Context();
+
+	const isTaskAvailable = checkIsTaskAvailable('task3');
 
 	// Ensure the task is marked as started when visiting any of the task 1 pages
 	useEffect(() => {
@@ -46,7 +43,7 @@ export function FormTask3Container({
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
 					>
-						{children}
+						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

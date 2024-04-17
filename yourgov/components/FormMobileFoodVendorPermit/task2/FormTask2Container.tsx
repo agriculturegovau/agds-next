@@ -1,15 +1,16 @@
-import { PropsWithChildren, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { PropsWithChildren, ReactNode, useEffect } from 'react';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { ContentBleed } from '@ag.ds-next/react/content';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import {
 	ProgressIndicator,
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from '../FormContainer';
+import { NotAvailableAlert } from '../FormTask4Step1';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
 type FormTask2ContainerProps = PropsWithChildren<{
@@ -26,8 +27,11 @@ export function FormTask2Container({
 	children,
 }: FormTask2ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, typeSearchParm, startTask } = useGlobalForm();
+	const { formState, typeSearchParm, startTask, checkIsTaskAvailable } =
+		useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask2Context();
+
+	const isTaskAvailable = checkIsTaskAvailable('task2');
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task2FormSteps[stepIndex];
@@ -70,7 +74,7 @@ export function FormTask2Container({
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
 					>
-						{children}
+						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

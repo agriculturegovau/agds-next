@@ -1,8 +1,10 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from './FormContainer';
+import { NotAvailableAlert } from './FormTask4Step1';
+import { useGlobalForm } from './GlobalFormProvider';
 
 type FormTask1ContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -16,6 +18,9 @@ export function FormTask4Container({
 	formCallToAction,
 	children,
 }: FormTask1ContainerProps) {
+	const { checkIsTaskAvailable } = useGlobalForm();
+	const isTaskAvailable = checkIsTaskAvailable('task4');
+
 	return (
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -32,7 +37,7 @@ export function FormTask4Container({
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
 					>
-						{children}
+						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

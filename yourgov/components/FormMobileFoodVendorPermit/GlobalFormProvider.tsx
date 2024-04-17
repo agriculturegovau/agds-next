@@ -1,3 +1,4 @@
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import {
 	createContext,
@@ -6,11 +7,10 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { FormState, defaultFormState, TaskKey } from './FormState';
+import { defaultFormState, FormState, TaskKey } from './FormState';
 import { getPrevTaskKey } from './utils';
 
 type ContextType = {
@@ -20,6 +20,7 @@ type ContextType = {
 	// Task status
 	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
 	startTask: (key: TaskKey) => void;
+	checkIsTaskAvailable: (key: TaskKey) => boolean;
 	// Form state
 	formState: DeepPartial<FormState>;
 	setFormState: (formState: DeepPartial<FormState>) => void;
@@ -70,6 +71,9 @@ export function GlobalFormProvider({
 		[formState, router.query.taskHighlight]
 	);
 
+	const checkIsTaskAvailable = (taskKey: TaskKey) =>
+		getTaskStatus(taskKey) !== 'blocked';
+
 	const startTask = useCallback(
 		(taskKey: TaskKey) => {
 			setFormState((formState) => ({
@@ -106,6 +110,7 @@ export function GlobalFormProvider({
 		// task status
 		getTaskStatus,
 		startTask,
+		checkIsTaskAvailable,
 		// form state
 		formState,
 		setFormState,
