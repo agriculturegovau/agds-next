@@ -126,6 +126,7 @@ export function UploadsTable({
 					</Table>
 				</Stack>
 				<UploadDrawer
+					key={uploadKey}
 					uploadKey={uploadKey}
 					setUploadKey={setUploadKey}
 					onFileUpload={handleFileUpload}
@@ -180,10 +181,6 @@ function UploadDrawer({
 	const [hasError, setHasError] = useState(false);
 
 	const selectedFileData = uploadKey ? fileCollection?.[uploadKey] : undefined;
-
-	useEffect(() => {
-		setFilesList([selectedFileData?.file].filter(isTruthy));
-	}, [uploadKey, selectedFileData]);
 
 	useEffect(() => {
 		if (fileList.length > 0) {
