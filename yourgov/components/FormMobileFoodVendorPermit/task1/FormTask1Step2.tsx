@@ -23,7 +23,7 @@ import {
 import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step2() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const scrollToField = useScrollToField();
@@ -38,17 +38,27 @@ export function FormTask1Step2() {
 		formState: { errors, isSubmitted },
 	} = useForm<Task1Step2FormSchema>({
 		defaultValues: formState.task1?.step2,
-		resolver: zodResolver(task1Step2FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step2FormSchema> = async (data) => {
 		setFocusedError(false);
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step2: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step2: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 	const onError = () => {

@@ -21,7 +21,8 @@ import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 export function FormTask2Step1() {
 	const { query } = useRouter();
 	const { submitStep } = useFormTask2Context();
-	const { formState, typeSearchParm, setFormState } = useGlobalForm();
+	const { formState, typeSearchParm, setFormState, isSavingBeforeExiting } =
+		useGlobalForm();
 	// const stepFormState = formState.task2?.step1;
 	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee?type=${typeSearchParm}`;
 
@@ -42,7 +43,7 @@ export function FormTask2Step1() {
 			return;
 		}
 
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
 			task2: {
@@ -51,8 +52,10 @@ export function FormTask2Step1() {
 					...formState.task2?.step1,
 					// ...data,
 					employeeList,
-					completed: true,
+					completed: !isSavingBeforeExiting,
+					started: true,
 				},
+				started: true,
 			},
 		});
 	};
@@ -70,7 +73,6 @@ export function FormTask2Step1() {
 					employeeList: employeeList?.filter(
 						(emp) => emp?.email !== employee?.email
 					),
-					completed: true,
 				},
 			},
 		});

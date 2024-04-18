@@ -63,9 +63,7 @@ export function FormTask1Step5() {
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
-		if (!isSavingBeforeExiting) {
-			await submitStep();
-		}
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
 			task1: {
@@ -75,6 +73,7 @@ export function FormTask1Step5() {
 					completed: !isSavingBeforeExiting,
 					started: true,
 				},
+				started: true,
 			},
 		});
 	};

@@ -21,7 +21,7 @@ import { UploadsTable } from './UploadsTable';
 export function FormTask3Step1() {
 	const { query } = useRouter();
 	const { submitStep } = useFormTask3Context();
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 
 	const [isSuccessVisible, setIsSuccessVisible] = useState(
 		query.success === 'true'
@@ -61,8 +61,10 @@ export function FormTask3Step1() {
 						...fileCollection,
 						[uploadKey]: newFormattedFile,
 					},
-					completed: true,
+					completed: !isSavingBeforeExiting,
+					started: true,
 				},
+				started: true,
 			},
 		});
 	}
@@ -95,12 +97,12 @@ export function FormTask3Step1() {
 		const validation = task3Step1Schema.safeParse(formState.task3?.step1);
 		event.preventDefault();
 
-		if (!validation.success) {
+		if (!isSavingBeforeExiting && !validation.success) {
 			setErrors(validation.error.format());
 			return;
 		}
 
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
 			task3: {
@@ -109,9 +111,11 @@ export function FormTask3Step1() {
 					...formState.task3?.step1,
 					// ...data,
 					fileCollection,
-					completed: true,
+					completed: !isSavingBeforeExiting,
+					started: true,
 				},
-				completed: true,
+				completed: !isSavingBeforeExiting,
+				started: true,
 			},
 		});
 	};

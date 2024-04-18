@@ -103,7 +103,7 @@ export function FormTask1Step1() {
 }
 
 function AdditionalDetailsForm() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const {
@@ -125,7 +125,13 @@ function AdditionalDetailsForm() {
 			...formState,
 			task1: {
 				...formState.task1,
-				step1: { ...formState.task1?.step1, ...data, completed: true },
+				step1: {
+					...formState.task1?.step1,
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
 			},
 		});
 	};

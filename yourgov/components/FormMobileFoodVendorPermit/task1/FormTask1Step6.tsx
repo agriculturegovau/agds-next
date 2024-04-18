@@ -13,7 +13,7 @@ import {
 import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step6() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const {
@@ -22,7 +22,9 @@ export function FormTask1Step6() {
 		formState: { errors },
 	} = useForm<Task1Step6FormSchema>({
 		defaultValues: formState.task1?.step6,
-		resolver: zodResolver(task1Step6FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step6FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
@@ -30,10 +32,18 @@ export function FormTask1Step6() {
 	const typeCorrectedErrors = errors as ShallowErrors<Task1Step6FormSchema>;
 
 	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step6: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step6: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 

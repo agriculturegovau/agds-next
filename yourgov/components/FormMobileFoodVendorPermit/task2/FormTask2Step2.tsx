@@ -14,7 +14,7 @@ import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 
 export function FormTask2Step2() {
 	const { submitStep } = useFormTask2Context();
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 
 	const employeeList = formState.task2?.step1?.employeeList || [];
 
@@ -24,21 +24,23 @@ export function FormTask2Step2() {
 		formState: { errors },
 	} = useForm<Task2Step2Schema>({
 		defaultValues: formState.task2?.step2,
-		resolver: zodResolver(task2Step2Schema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(task2Step2Schema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task2Step2Schema> = async (data) => {
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
 			task2: {
 				...formState.task2,
 				step2: {
 					...data,
-					completed: true,
+					completed: !isSavingBeforeExiting,
+					started: true,
 				},
+				started: true,
 			},
 		});
 	};
