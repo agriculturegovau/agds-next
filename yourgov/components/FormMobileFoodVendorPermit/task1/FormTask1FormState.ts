@@ -2,6 +2,7 @@ import { DeepPartial } from 'react-hook-form';
 import { ZodIssueCode, z } from 'zod';
 import {
 	zodArray,
+	zodDateField,
 	zodPhoneFieldOptional,
 	zodString,
 	zodStringOptional,
@@ -118,11 +119,13 @@ export const task1Step4FormSchema = z.object({
 
 export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
 
+const periodActiveMessage = 'Period active start and end date is required';
+
 export const task1Step5FormSchema = z
 	.object({
 		tradingPeriod: z.object({
-			from: zodDateField(),
-			to: zodDateField(),
+			from: zodDateField(periodActiveMessage),
+			to: zodDateField(periodActiveMessage),
 		}),
 		openingTime: zodTimeField({ label: 'Opening time' }),
 		closingTime: zodTimeField({ label: 'Closing time' }),

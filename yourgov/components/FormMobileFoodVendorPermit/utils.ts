@@ -37,10 +37,16 @@ export function zodTimeField({
 	invalidMessage = `${label} is an invalid time`,
 }: ZodTimeFieldProps) {
 	return z
-		.object({
-			raw: zodString(requiredMessage),
-			formatted: zodString(requiredMessage),
-		})
+		.object(
+			{
+				raw: zodString(requiredMessage),
+				formatted: zodString(requiredMessage),
+			},
+			{
+				required_error: requiredMessage,
+				invalid_type_error: invalidMessage,
+			}
+		)
 		.superRefine((value, context) => {
 			if (!value.raw) {
 				context.addIssue({
