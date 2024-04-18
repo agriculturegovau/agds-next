@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormStep } from '../types';
-import { formHomePage, getTaskCompletionUrl } from '../utils';
+import { formHomePage } from '../utils';
 
 export const task4FormSteps: Array<FormStep<'step1'>> = [
 	{
