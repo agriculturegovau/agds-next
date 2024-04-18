@@ -13,9 +13,12 @@ import {
 } from './task3/FormTask3FormState';
 import { Task4FormState } from './task4/FormTask4FormState';
 
-interface TaskCompletion {
-	started: boolean;
+export type Completion = {
+	started?: boolean;
 	completed: boolean;
+};
+
+interface TaskCompletion extends Completion {
 	completedRecently: boolean;
 }
 

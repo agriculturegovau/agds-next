@@ -1,6 +1,7 @@
 import { DeepPartial } from 'react-hook-form';
 import { z } from 'zod';
 import { zodFile, zodString } from '../utils';
+import { Completion } from '../FormState';
 
 const fileCodes = [
 	'rmsVehicleRegistration',
@@ -36,10 +37,8 @@ export const task3Step1Schema = z.object({
 
 export type Task3Step1Schema = z.infer<typeof task3Step1Schema>;
 
-export type Task3FormState = {
-	started: boolean;
-	completed: boolean;
-	step1: Task3Step1Schema & { completed: boolean };
+export type Task3FormState = Completion & {
+	step1: Task3Step1Schema & Completion;
 };
 
 export const task3DefaultFormState: DeepPartial<Task3FormState> = {

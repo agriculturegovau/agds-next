@@ -14,6 +14,7 @@ import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
+import { Completion } from '../FormMobileFoodVendorPermit/FormState';
 import {
 	FormRegisterPetPersonalDetailsStep0,
 	formSchema as formRegisterPetPersonalDetailsStep0Schema,
@@ -83,9 +84,9 @@ const context = createContext<ContextType | undefined>(undefined);
 type StepFormState = Record<string, any>;
 
 export type FormState = Partial<{
-	[0]: FormRegisterPetPersonalDetailsStep0Schema & { completed: boolean };
-	[1]: FormRegisterPetPersonalDetailsStep1Schema & { completed: boolean };
-	[2]: FormRegisterPetPersonalDetailsStep2Schema & { completed: boolean };
+	[0]: FormRegisterPetPersonalDetailsStep0Schema & Completion;
+	[1]: FormRegisterPetPersonalDetailsStep1Schema & Completion;
+	[2]: FormRegisterPetPersonalDetailsStep2Schema & Completion;
 }>;
 
 export const formSchema = yup.object({

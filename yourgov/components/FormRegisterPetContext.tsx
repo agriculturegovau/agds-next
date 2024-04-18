@@ -15,6 +15,7 @@ import {
 	FormState as Task2FormState,
 	formSchema as task2FormSchema,
 } from './FormRegisterPetDetails/FormRegisterPetDetails';
+import { Completion } from './FormMobileFoodVendorPermit/FormState';
 
 type ContextType = {
 	/** The task form state. */
@@ -36,8 +37,8 @@ const context = createContext<ContextType | undefined>(undefined);
 type TaskFormState = Record<string, any>;
 
 type FormState = {
-	[0]: Task1FormState & { completed: boolean };
-	[1]: Task2FormState & { completed: boolean };
+	[0]: Task1FormState & Completion;
+	[1]: Task2FormState & Completion;
 };
 
 const defaultFormState: FormState = {

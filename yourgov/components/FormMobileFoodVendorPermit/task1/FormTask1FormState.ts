@@ -8,6 +8,7 @@ import {
 	zodStringOptional,
 	zodTimeField,
 } from '../utils';
+import { Completion } from '../FormState';
 
 export const task1Step1FormSchema = z.object({
 	firstName: zodString('Enter your first name'),
@@ -152,16 +153,14 @@ export const task1Step6FormSchema = z.object({
 
 export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;
 
-export type Task1FormState = {
-	started: boolean;
-	completed: boolean;
-	step1: Task1Step1FormSchema & { completed: boolean };
-	step2: Task1Step2FormSchema & { completed: boolean };
-	step3: Task1Step3FormSchema & { completed: boolean };
-	step4: Task1Step4FormSchema & { completed: boolean };
-	step5: Task1Step5FormSchema & { completed: boolean };
-	step6: Task1Step6FormSchema & { completed: boolean };
-	step7: { completed: boolean };
+export type Task1FormState = Completion & {
+	step1: Task1Step1FormSchema & Completion;
+	step2: Task1Step2FormSchema & Completion;
+	step3: Task1Step3FormSchema & Completion;
+	step4: Task1Step4FormSchema & Completion;
+	step5: Task1Step5FormSchema & Completion;
+	step6: Task1Step6FormSchema & Completion;
+	step7: Completion;
 };
 
 export const task1DefaultFormState: DeepPartial<Task1FormState> = {
