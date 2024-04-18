@@ -65,7 +65,7 @@ export function FormTask4Step1() {
 	const scrollToField = useScrollToField();
 
 	const onSubmit: SubmitHandler<Task4Step1FormSchema> = async (data) => {
-		await submitStep();
+		!isSavingBeforeExiting && (await submitStep());
 		setFormState({
 			...formState,
 			task4: {
