@@ -10,3 +10,4 @@ export * from './TableCell';
 export * from './TableWrapper';
 export * from './TableBatchActionsBar';
 export * from './TableBatchActionsTitle';
+export * from './ExpansionTableDemo';
