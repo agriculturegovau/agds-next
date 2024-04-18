@@ -6,18 +6,24 @@ import { AnyStepNumber, FormStep } from './types';
 import { TaskKey } from './FormState';
 
 // Empty strings do not trigger Zod required field error validation
-export const zodString = (message?: string) =>
-	z
+export function zodString(message?: string) {
+	return z
 		.string({
 			invalid_type_error: message,
 			required_error: message,
 		})
 		.trim()
 		.min(1, { message });
+}
+
 export const zodStringOptional = () => z.string().optional();
 
-export const zodDateField = (message = 'Enter a valid date') =>
-	z.date({ invalid_type_error: 'Enter a valid date', required_error: message });
+export function zodDateField(message = 'Enter a valid date') {
+	return z.date({
+		invalid_type_error: 'Enter a valid date',
+		required_error: message,
+	});
+}
 
 interface ZodTimeFieldProps {
 	label: string;
