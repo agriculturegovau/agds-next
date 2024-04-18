@@ -43,15 +43,9 @@ export function FormTask4Provider({ children }: PropsWithChildren<{}>) {
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
-		const taskCompletionUrl = getTaskCompletionUrl({
-			currentStepIndex,
-			steps: task4FormSteps,
-			taskHighlight: 4,
-			typeSearchParm,
-		});
-		push(taskCompletionUrl);
+		push(formHomePage + '/application-submitted');
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
+	}, [push, setIsSubmittingStep]);
 
 	// The href of the previous step
 	const backHref = `${

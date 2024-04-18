@@ -8,7 +8,7 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
 // add onClick handler that can be used to call `submitStep` function
-export function StepActions() {
+export function StepActions({ submitText = 'Save and continue' }) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
@@ -20,7 +20,7 @@ export function StepActions() {
 				<Divider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						Save and continue
+						{submitText}
 					</Button>
 					<Button
 						type="submit"
