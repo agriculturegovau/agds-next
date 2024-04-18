@@ -9,7 +9,15 @@ import {
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormStep } from '../types';
 import { formHomePage, getTaskCompletionUrl } from '../utils';
-import { Task1StepNumber } from './Task1Types';
+
+export type Task1StepNumber =
+	| 'step1'
+	| 'step2'
+	| 'step3'
+	| 'step4'
+	| 'step5'
+	| 'step6'
+	| 'step7';
 
 export const task1FormSteps: Array<FormStep<Task1StepNumber>> = [
 	{

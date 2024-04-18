@@ -1,15 +1,16 @@
 import { FieldErrors, FieldValues } from 'react-hook-form';
 import { Dispatch, SetStateAction } from 'react';
-import { Task2StepNumber } from './task2/Task2Types';
-import { Task1StepNumber } from './task1/Task1Types';
+import { Task1StepNumber } from './task1/FormTask1Provider';
+import { Task2StepNumber } from './task2/FormTask2Provider';
+import { Task3StepNumber } from './task3/FormTask3Provider';
 
-export interface FormStep<StepNumber extends AnyStepNumber> {
+export interface FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> {
 	label: string;
 	href: string;
 	formStateKey: StepNumber;
 }
 
-export type AnyStepNumber = Task1StepNumber | Task2StepNumber;
+export type AnyStepNumber = Task1StepNumber | Task2StepNumber | Task3StepNumber;
 
 /**
  * React Form does not apply the errors types correctly to fields stored as objects.
