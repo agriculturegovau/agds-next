@@ -1,6 +1,7 @@
-import { ButtonLink } from '@ag.ds-next/react/button';
-import { H2, H3 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
+import { H2, H3 } from '@ag.ds-next/react/heading';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import {
 	FormDefinitionList,
 	FormDefinitionListItem,
@@ -10,6 +11,7 @@ import {
 } from '../../FormDefinitionList';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { ValidationSectionAlert } from '../task4/FormTask4Step1';
+import { task1FormSteps } from './FormTask1Provider';
 import {
 	task1Step1FormSchema,
 	task1Step2FormSchema,
@@ -18,7 +20,6 @@ import {
 	task1Step5FormSchema,
 	task1Step6FormSchema,
 } from './FormTask1FormState';
-import { task1FormSteps } from './FormTask1Provider';
 
 type FormTask1ReviewProps = {
 	headingsLevel: 'h2' | 'h3';
