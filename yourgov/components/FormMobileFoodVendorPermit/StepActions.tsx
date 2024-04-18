@@ -23,7 +23,7 @@ export function StepActions() {
 						Save and continue
 					</Button>
 					<Button
-						type="button"
+						type="submit"
 						variant="secondary"
 						loading={isSavingBeforeExiting}
 						onClick={saveAndExit}

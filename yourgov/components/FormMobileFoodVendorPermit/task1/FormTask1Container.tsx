@@ -34,10 +34,13 @@ export function FormTask1Container({
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
+		const stateStep = formState.task1?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'doing';
 		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
+		if (stateStep?.completed) return 'done';
+		// The user has save and existed
+		if (stateStep?.started) return 'started';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
 		// Otherwise, the step still needs to be done

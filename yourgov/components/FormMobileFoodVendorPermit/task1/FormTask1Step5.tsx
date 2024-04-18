@@ -40,7 +40,7 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 }
 
 export function FormTask1Step5() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,9 @@ export function FormTask1Step5() {
 		formState: { errors },
 	} = useForm<Task1Step5FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step5),
-		resolver: zodResolver(task1Step5FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step5FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
@@ -61,10 +63,19 @@ export function FormTask1Step5() {
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
-		await submitStep();
+		if (!isSavingBeforeExiting) {
+			await submitStep();
+		}
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step5: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step5: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+			},
 		});
 	};
 

@@ -70,7 +70,12 @@ const context = createContext<ContextType | undefined>(undefined);
 
 export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
-	const { setIsSubmittingStep, typeSearchParm, formState } = useGlobalForm();
+	const {
+		setIsSubmittingStep,
+		typeSearchParm,
+		formState,
+		isSavingBeforeExiting,
+	} = useGlobalForm();
 
 	const currentStepIndex = task1FormSteps.findIndex(
 		({ href }) => href === pathname
@@ -82,16 +87,25 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
 
-		const taskCompletionUrl = getTaskCompletionUrl({
-			currentStepIndex,
-			steps: task1FormSteps,
-			taskHighlight: 1,
-			typeSearchParm,
-		});
+		if (!isSavingBeforeExiting) {
+			const taskCompletionUrl = getTaskCompletionUrl({
+				currentStepIndex,
+				steps: task1FormSteps,
+				taskHighlight: 1,
+				typeSearchParm,
+			});
 
-		push(taskCompletionUrl);
+			push(taskCompletionUrl);
+		}
+
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
+	}, [
+		currentStepIndex,
+		push,
+		setIsSubmittingStep,
+		typeSearchParm,
+		isSavingBeforeExiting,
+	]);
 
 	// The href of the previous step
 	const backHref = `${
