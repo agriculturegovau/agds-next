@@ -1,4 +1,4 @@
-import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
+import { FocusEventHandler, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from '../combobox/ComboboxBase/ComboboxBase';
@@ -9,9 +9,7 @@ import {
 import { type TimeFormat } from '../time-input/utils';
 import { filterOptions, generateTimeArray } from './utils';
 
-export type ComboboxProps<
-	Option extends DefaultComboboxOption = DefaultComboboxOption,
-> = {
+export type ComboboxProps = {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -35,21 +33,21 @@ export type ComboboxProps<
 	/** A string specifying a name for the input control. */
 	name?: string;
 	/** The value of the field. */
-	value?: Option | null;
+	value?: DefaultComboboxOption | null;
 	/** Function to be fired following a change event. */
-	onChange?: (value: Option | null) => void;
+	onChange?: (value: DefaultComboboxOption | null) => void;
 	/** Function to be fired following a focus event. */
 	onFocus?: FocusEventHandler<HTMLInputElement>;
 	/** Function to be fired following a blur event. */
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** The list of options to show in the dropdown. */
-	options: Option[];
+	// options: Option[];
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
 	/** Used to override the default item rendering. */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	// renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** If true, the clear button will be rendered when there is a selected option. */
 	clearable?: boolean;
 	max?: string;
@@ -58,7 +56,7 @@ export type ComboboxProps<
 	timeFormat: TimeFormat;
 };
 
-export function TimeSelect<Option extends DefaultComboboxOption>({
+export function TimeSelect({
 	id,
 	inputRef: inputRefProp,
 	maxWidth = 'md',
@@ -66,20 +64,23 @@ export function TimeSelect<Option extends DefaultComboboxOption>({
 	min = '00:00',
 	max = '23:00',
 	step = 15,
-	options,
+	// options,
 	timeFormat = 'h:mm aaa',
 	value,
 	...props
-}: ComboboxProps<Option>) {
+}: ComboboxProps) {
 	const inputId = useComboboxInputId(id);
-	const [inputItems, setInputItems] = useState<Option[]>(options);
+	const [inputItems, setInputItems] = useState<DefaultComboboxOption[]>([]);
+	const [options /* setOptions */] = useState<DefaultComboboxOption[]>(
+		generateTimeArray({ min, max, step, timeFormat })
+	);
 
 	useEffect(() => {
-		const timeArray = generateTimeArray<Option>({ min, max, step, timeFormat });
+		const timeArray = generateTimeArray({ min, max, step, timeFormat });
 		setInputItems(timeArray);
-	}, [options, min, max, step, timeFormat]);
+	}, [min, max, step, timeFormat]);
 
-	const combobox = useCombobox<Option>({
+	const combobox = useCombobox<DefaultComboboxOption>({
 		items: inputItems,
 		selectedItem: value,
 		inputId,

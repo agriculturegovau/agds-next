@@ -34,7 +34,7 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 	});
 }
 
-export function generateTimeArray<Option>({
+export function generateTimeArray({
 	min,
 	max,
 	step,
@@ -44,7 +44,7 @@ export function generateTimeArray<Option>({
 	max: string;
 	step: number;
 	timeFormat: TimeFormat;
-}): Option[] {
+}) {
 	// Parse min and max times
 	const [parsedMinHours, parsedMinMinutes] = parseTime(min);
 	const [parsedMaxHours, parsedMaxMinutes] = parseTime(max);
@@ -72,7 +72,7 @@ export function generateTimeArray<Option>({
 	const maxTotalMinutes = maxHours * 60 + maxMinutes;
 
 	// Initialize result array
-	const result: Option[] = [];
+	const result = [];
 
 	// Iterate through the time range and add times to the result array
 	for (
@@ -84,10 +84,12 @@ export function generateTimeArray<Option>({
 		const minutes = totalMinutes % 60;
 		const HHmm = formatValue(hours, minutes);
 
-		result.push({
+		const val = {
 			label: formatTime(HHmm, timeFormat),
 			value: HHmm,
-		});
+		};
+
+		result.push(val);
 	}
 
 	return result;
