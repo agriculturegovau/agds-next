@@ -10,4 +10,5 @@ export * from './TableCell';
 export * from './TableWrapper';
 export * from './TableBatchActionsBar';
 export * from './TableBatchActionsTitle';
-export * from './ExpansionTableDemo';
+export * from './TableExpansionButtonCell';
+export * from './TableExpansionContentRow';

@@ -9,10 +9,6 @@ relatedPatterns: ['selectable-table-with-batch-actions', 'search-filters']
 ---
 
 ```jsx live
-<ExpansionTableDemo />
-```
-
-```jsx live
 <TableWrapper>
 	<Table>
 		<TableCaption>
@@ -114,6 +110,92 @@ For data tables with a small amount of rows, use the default table. Align text c
 - use bespoke styling - follow consistent layouts and styles
 - nest tables inside tables
 - don’t use inside an accorion.
+
+## Expandable table rows
+
+```jsx live
+() => {
+	const tableData = [
+		{
+			location: 'New South Wales',
+			population: '7,670,700',
+			changeOverYear: '3.1%',
+			key: 'nsw',
+		},
+		{
+			location: 'Victoria',
+			population: '5,996,400',
+			changeOverYear: '2.5%',
+			key: 'vic',
+		},
+		{
+			location: 'Queensland',
+			population: '4,808,800',
+			changeOverYear: '1.7%',
+			key: 'qld',
+		},
+	];
+
+	const [expansionState, setExpansionState] = useState < BooleanCollection > {};
+
+	return (
+		<TableWrapper>
+			<Table>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col">
+							More info
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{tableData.map((item) => (
+						<>
+							<TableRow key={item.location}>
+								<TableCell>{item.location}</TableCell>
+								<TableCell textAlign="right">{item.population}</TableCell>
+								<TableCell textAlign="right">{item.changeOverYear}</TableCell>
+								<TableExpansionButtonCell
+									dataKey={item.key}
+									expansionState={expansionState}
+									setExpansionState={setExpansionState}
+								/>
+							</TableRow>
+							<TableExpansionContentRow
+								dataKey={item.key}
+								expansionState={expansionState}
+								colSpan={4}
+							>
+								<Text as="p">
+									This is some text. Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Non modo carum sibi quemque, verum etiam
+									vehementer carum esse? Quid iudicant sensus? Quod ea non
+									occurrentia fingunt, vincunt Aristonem; Quacumque enim
+									ingredimur, in aliqua historia vestigium ponimus.
+									Progredientibus autem aetatibus sensim tardeve potius quasi
+									nosmet ipsos cognoscimus. Verba tu fingas et ea dicas, quae
+									non sentias? Duo Reges: constructio interrete. Sed vos
+									squalidius, illorum vides quam niteat oratio.
+								</Text>
+							</TableExpansionContentRow>
+						</>
+					))}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	);
+};
+```
 
 ## Striped
 

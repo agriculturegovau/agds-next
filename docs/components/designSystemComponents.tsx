@@ -174,7 +174,9 @@ export {
 	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
-	ExpansionTableDemo,
+	TableExpansionButtonCell,
+	TableExpansionContentRow,
+	type BooleanCollection,
 } from '@ag.ds-next/react/table';
 export { DatePicker } from '@ag.ds-next/react/date-picker';
 export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
