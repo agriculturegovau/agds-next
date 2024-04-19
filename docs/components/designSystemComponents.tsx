@@ -251,6 +251,11 @@ export { SectionAlert } from '@ag.ds-next/react/section-alert';
 export { FilterSidebar } from '@ag.ds-next/react/filter-sidebar';
 export { PasswordInput } from '@ag.ds-next/react/password-input';
 export { GroupedFields } from '@ag.ds-next/react/grouped-fields';
+export {
+	TimeInput,
+	formatTime,
+	isValidTime,
+} from '@ag.ds-next/react/time-input';
 
 // Used to populate options on documentation site and playroom
 export {

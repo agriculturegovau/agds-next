@@ -1,12 +1,12 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.19.0",
+	"version": "1.20.0",
 	"license": "MIT",
 	"main": "dist/ag.ds-next-react.cjs.js",
 	"module": "dist/ag.ds-next-react.esm.js",
 	"dependencies": {
 		"@babel/runtime": "^7.4.5",
-		"@floating-ui/react-dom": "^2.0.1",
+		"@floating-ui/react-dom": "^2.0.8",
 		"@react-spring/web": "^9.4.5",
 		"date-fns": "^2.28.0",
 		"downshift": "^8.1.0",

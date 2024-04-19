@@ -15,6 +15,7 @@ import { Radio } from '../radio';
 import { Select } from '../select';
 import { Stack } from '../stack';
 import { Switch } from '../switch';
+import { Text } from '../text';
 import { Drawer } from './Drawer';
 
 const meta: Meta<typeof Drawer> = {
@@ -61,6 +62,28 @@ export const Basic: Story = {
 							{ value: 'c', label: 'Option C' },
 						]}
 					/>
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const MutedOverlay: Story = {
+	args: {
+		title: 'Drawer title',
+	},
+	render: function Render(props) {
+		const [isOpen, open, close] = useTernaryState(false);
+		return (
+			<Fragment>
+				<Button onClick={open}>Open Drawer</Button>
+				<Drawer
+					isOpen={isOpen}
+					onClose={close}
+					title={props.title}
+					mutedOverlay
+				>
+					<Text>Draw content</Text>
 				</Drawer>
 			</Fragment>
 		);
