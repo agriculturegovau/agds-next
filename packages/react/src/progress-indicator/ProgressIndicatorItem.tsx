@@ -16,11 +16,9 @@ import {
 	ProgressIndicatorItemWithLevelTwoItems,
 	statusMap,
 } from './utils';
-import { ProgressIndicatorProps } from './ProgressIndicator';
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	status: ProgressIndicatorItemStatus;
-	activePath?: ProgressIndicatorProps['activePath'];
 	as: ElementType;
 	background?: ProgressIndicatorBackground;
 	isActive?: boolean;
@@ -30,7 +28,6 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 }>;
 
 export const ProgressIndicatorItem = ({
-	activePath,
 	as,
 	background = 'body',
 	children,

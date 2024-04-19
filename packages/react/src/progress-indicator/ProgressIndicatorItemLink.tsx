@@ -1,6 +1,5 @@
 import { LinkProps } from '../core';
 import { TextLink } from '../text-link';
-import { ProgressIndicatorProps } from './ProgressIndicator';
 import { ProgressIndicatorItem } from './ProgressIndicatorItem';
 import {
 	ProgressIndicatorBackground,
@@ -25,8 +24,6 @@ export type ProgressIndicatorItemLinkProps = LinkProps & {
 	 * `todo` = This step is available for the user to start.
 	 */
 	status: ProgressIndicatorItemStatus;
-	/** Used for highlighting the active step. */
-	activePath?: ProgressIndicatorProps['activePath'];
 	/** Determines the background colour of the progress indicator item. */
 	background?: ProgressIndicatorBackground;
 	/** @deprecated use `activePath`. */
