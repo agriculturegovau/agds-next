@@ -4,3 +4,4 @@
 ---
 
 progress-indicator: Added level two item support for ProgressIndicator
+icons: Added CornerRightDownIcon

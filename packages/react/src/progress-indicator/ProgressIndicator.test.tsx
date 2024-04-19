@@ -4,11 +4,11 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { render, cleanup } from '../../../../test-utils';
 import { ProgressIndicator, ProgressIndicatorProps } from './ProgressIndicator';
 import {
-	ProgressIndicatorItem,
-	ProgressIndicatorItemStatus,
 	activeProgressStatusAllowedList,
 	allProgressStatuses,
-} from './ProgressIndicatorItem';
+	ProgressIndicatorItemStatus,
+	ProgressIndicatorItem,
+} from './utils';
 
 expect.extend(toHaveNoViolations);
 

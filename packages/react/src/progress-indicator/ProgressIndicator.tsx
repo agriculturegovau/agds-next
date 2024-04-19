@@ -4,27 +4,44 @@ import {
 	CollapsingSideBarTitle,
 } from '../_collapsing-side-bar';
 import {
-	ProgressIndicatorItem,
-	ProgressIndicatorItemButton,
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemLinkProps,
-} from './ProgressIndicatorItem';
+} from './ProgressIndicatorItemLink';
+import { ProgressIndicatorItemButton } from './ProgressIndicatorItemButton';
 import { ProgressIndicatorList } from './ProgressIndicatorList';
+import {
+	ProgressIndicatorItem,
+	ProgressIndicatorItemWithLevelTwoItems,
+} from './utils';
 
 export type ProgressIndicatorProps = {
+	/** The list of items, including sub items, to display. Use in conjunction with `activePath`. Note sub items are only available when using links. */
+	items: (ProgressIndicatorItem | ProgressIndicatorItemWithLevelTwoItems)[];
+	/** Used for highlighting the active step. This should match the active item's `href` (or label if no href is supplied). */
+	activePath?: string;
 	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
 	background?: 'body' | 'bodyAlt';
-	/** The list of items to display. */
-	items: ProgressIndicatorItem[];
 	/** If true, the `subTitle` above the list of items will not be rendered. */
 	hideSubtitle?: boolean;
 };
 
 export const ProgressIndicator = ({
+	activePath,
 	background,
 	items,
 	hideSubtitle = false,
 }: ProgressIndicatorProps) => {
+	// Warn when no `activePath` is defined but level two items are used.
+	if (
+		process.env.NODE_ENV !== 'production' &&
+		activePath === undefined &&
+		items.some((item) => 'items' in item && item.items?.length)
+	) {
+		console.warn(
+			'ProgressIndicator: When using level two items, you need to define an `activePath`. Please add a value for the `activePath` prop.'
+		);
+	}
+
 	// The title in this component is not configurable
 	const title = 'Progress';
 
@@ -34,49 +51,76 @@ export const ProgressIndicator = ({
 				items.length
 		  } steps completed`;
 
-	const hasExplicitActiveDeclared =
-		items.filter(({ isActive }) => isActive).length > 0;
+	/* **LEGACY HANDLER**
+	 * This is now legacy, please keep this for backwards compatibility.
+	 */
+	const hasExplicitActiveDeclared = items.some(({ isActive }) => isActive);
 
-	// If no explicit active items are declared, the 'started' status item receives active state by default
-	const itemsWithDefaultActive: ProgressIndicatorItem[] =
-		hasExplicitActiveDeclared
-			? items
-			: items.map((item) => ({
+	/* **LEGACY HANDLER**
+	 * NOTE: This is for handling legacy props. We deprecated status='doing' in
+	 * favour of status='started' and this code applies `isActive` to the legacy 'doing'
+	 * items, enabling backwards compatibility. We then deprecated the `isActive` prop
+	 * in favour of `activePath` to help manage level two active items and for
+	 * consistency across other nav list components.
+	 */
+	const itemsWithDefaultActive = hasExplicitActiveDeclared
+		? items
+		: items.map((item) => {
+				/* **LEGACY HANDLER**
+				 * If no explicit active items are declared, the 'doing' status item receives active state by default.
+				 * NOTE: this is important to keep for backwards compatibility.
+				 */
+				const isActiveFromLegacyDoingStatus = item.status === 'doing'; // TODO: write tests to safeguard this legacy handling
+
+				const activePathMatcher = 'href' in item ? item.href : item.label;
+				const isActivePath =
+					!!activePathMatcher && activePath?.startsWith(activePathMatcher);
+
+				const isActive = isActiveFromLegacyDoingStatus || isActivePath || false;
+
+				const levelTwoItemsWithIsActive =
+					'items' in item
+						? item.items?.map((levelTwoItem) => ({
+								...levelTwoItem,
+								isActive:
+									'href' in levelTwoItem && levelTwoItem.href === activePath,
+						  }))
+						: undefined;
+
+				return {
 					...item,
-					isActive: item.status === 'started', // TODO: test this?
-			  }));
+					isActive,
+					items: levelTwoItemsWithIsActive,
+				};
+		  });
 
 	return (
 		<CollapsingSideBar
 			as="section"
 			background={background}
+			collapseButtonLabel={subTitle || title} // When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
 			title={<CollapsingSideBarTitle title={title} subtitle={subTitle} />}
-			// When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
-			collapseButtonLabel={subTitle || title}
 		>
 			<ProgressIndicatorList>
-				{itemsWithDefaultActive.map(({ label, ...props }, index) => {
-					if (isItemLink(props)) {
-						return (
-							<ProgressIndicatorItemLink
-								key={index}
-								background={background}
-								{...props}
-							>
-								{label}
-							</ProgressIndicatorItemLink>
-						);
-					}
-					return (
+				{itemsWithDefaultActive.map(({ label, ...props }) =>
+					isItemLink(props) ? (
+						<ProgressIndicatorItemLink
+							key={label}
+							background={background}
+							{...props}
+						>
+							{label}
+						</ProgressIndicatorItemLink>
+					) : (
 						<ProgressIndicatorItemButton
-							key={index}
+							key={label}
 							background={background}
 							{...props}
 						>
 							{label}
 						</ProgressIndicatorItemButton>
-					);
-				})}
+					)
+				)}
 			</ProgressIndicatorList>
 		</CollapsingSideBar>
 	);
