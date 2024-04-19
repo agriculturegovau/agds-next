@@ -122,9 +122,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...invalidRejections.map((rej) => rej.file),
 		];
 
+		const changeToken = JSON.stringify(acceptedFiles);
 		useEffect(() => {
 			onChange?.(acceptedFiles);
-		}, [acceptedFiles, onChange]);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, [changeToken]);
 
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
