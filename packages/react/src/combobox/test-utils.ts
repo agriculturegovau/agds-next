@@ -286,7 +286,8 @@ export const TIME_OPTIONS = Array.from({ length: 24 })
 			const hhmm = `${hour}:${minute}`;
 
 			return {
-				label: formatTime(hhmm, 'h:mm aaa'),
+				// label: formatTime(hhmm, 'h:mm aaa'),
+				label: formatTime(hhmm, 'HH:mm'),
 				value: hhmm,
 			};
 		});

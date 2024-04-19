@@ -75,6 +75,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		inputId,
 		itemToString: (item) => item?.label ?? '',
 		onSelectedItemChange: ({ selectedItem = null }) => {
+			console.log(`selectedItem`, selectedItem);
 			onChange?.(selectedItem);
 		},
 		onInputValueChange: ({ inputValue, isOpen }) => {

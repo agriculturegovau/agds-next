@@ -2,8 +2,12 @@ import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from '../combobox/ComboboxBase/ComboboxBase';
-import { DefaultComboboxOption, useComboboxInputId } from '../combobox/utils';
-import { filterOptions } from './utils';
+import {
+	type DefaultComboboxOption,
+	useComboboxInputId,
+} from '../combobox/utils';
+import { type TimeFormat } from '../time-input/utils';
+import { filterOptions, generateTimeArray } from './utils';
 
 export type ComboboxProps<
 	Option extends DefaultComboboxOption = DefaultComboboxOption,
@@ -48,6 +52,10 @@ export type ComboboxProps<
 	renderItem?: (item: Option, inputValue: string) => ReactNode;
 	/** If true, the clear button will be rendered when there is a selected option. */
 	clearable?: boolean;
+	max?: string;
+	min?: string;
+	step?: number;
+	timeFormat: TimeFormat;
 };
 
 export function TimeSelect<Option extends DefaultComboboxOption>({
@@ -55,17 +63,21 @@ export function TimeSelect<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	maxWidth = 'md',
 	onChange,
+	min = '00:00',
+	max = '23:00',
+	step = 15,
 	options,
+	timeFormat = 'h:mm aaa',
 	value,
 	...props
 }: ComboboxProps<Option>) {
 	const inputId = useComboboxInputId(id);
 	const [inputItems, setInputItems] = useState<Option[]>(options);
 
-	// The effect ensures the list of options change whenever the `options` prop changes
 	useEffect(() => {
-		setInputItems(options);
-	}, [options]);
+		const timeArray = generateTimeArray<Option>({ min, max, step, timeFormat });
+		setInputItems(timeArray);
+	}, [options, min, max, step, timeFormat]);
 
 	const combobox = useCombobox<Option>({
 		items: inputItems,

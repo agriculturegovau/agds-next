@@ -48,6 +48,7 @@ Use the `Combobox` component when users can choose a single item from a predefin
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
+	console.log(`value`, value);
 	return (
 		<Combobox
 			label="Select country"
