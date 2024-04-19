@@ -9,15 +9,15 @@ import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
-import { Divider } from '../divider';
 import { Field } from '../field';
 import { Flex } from '../flex';
 import { UploadIcon } from '../icon';
+import { ListItem, UnorderedList } from '../list';
+import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
-import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
 import {
 	AcceptedFileMimeTypes,
 	convertFileToTooManyFilesRejection,
@@ -121,9 +121,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...waitingListRejections.map((rej) => rej.file),
 			...invalidRejections.map((rej) => rej.file),
 		];
-		const allRejections = [...waitingListRejections, ...invalidRejections];
+
+		useEffect(() => {
+			onChange?.(acceptedFiles);
+		}, [acceptedFiles, onChange]);
 
 		const handleRemoveAcceptedFile = (index: number) => {
+			clearErrors();
 			setAcceptedFiles((prevAcceptedFiles) => {
 				const updatedAcceptedFiles = removeItemAtIndex(
 					prevAcceptedFiles,
@@ -152,13 +156,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				return prevWaitingList;
 			});
 		};
-		const handleRemoveInvalidItem = (index: number) => {
-			setInvalidRejections((prevRejections) =>
-				removeItemAtIndex(prevRejections, index)
-			);
-		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
+			clearErrors();
 			// replace file if multiple is false
 			if (multiple) {
 				setAcceptedFiles((prevAcceptedFiles) => {
@@ -194,10 +194,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			}
 		};
 
-		// useEffect(() => {
-		// 	onChange?.(acceptedFiles);
-		// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-		// }, [acceptedFiles]);
+		function clearErrors() {
+			setWaitingListRejections([]);
+			setInvalidRejections([]);
+		}
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into a format accepted by react-dropzone
 		const accept = useMemo(() => {
@@ -242,18 +242,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			]);
 		}, [dropzoneFileRejections]);
 
-		const errorSummary = getErrorSummary(
-			allRejections,
-			formattedMaxFileSize,
-			maxFiles
-		);
-
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
 
 		const styles = fileInputStyles({
 			isDragActive,
 			disabled,
-			invalid: invalid || !!errorSummary,
+			invalid,
 		});
 
 		const {
@@ -275,7 +269,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const showFileLists = Boolean(allFiles.length);
 
 		const fileSummaryText = getFileListSummaryText([
-			...value,
+			...acceptedFiles,
 			...(existingFiles || []),
 		]);
 
@@ -285,8 +279,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
-				message={message || errorSummary}
-				invalid={invalid || !!errorSummary}
+				message={message}
+				invalid={invalid}
 				id={id}
 			>
 				{(a11yProps) => {
@@ -351,6 +345,41 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							</Flex>
 							{showFileLists && (
 								<Stack gap={0.5}>
+									{Boolean(
+										waitingListRejections.length || invalidRejections.length
+									) && (
+										<SectionAlert
+											title="The following files could not be selected"
+											tone="error"
+											onClose={clearErrors}
+										>
+											<Text as="p">
+												These files did not meet upload requirements, were not
+												listed, and will not be uploaded
+											</Text>
+											<UnorderedList>
+												{[
+													...invalidRejections,
+													...waitingListRejections,
+												].flatMap((file) => {
+													return (
+														<ListItem key={file.file.name}>
+															<Text as="strong" color="error" fontWeight="bold">
+																{file.file.name}
+															</Text>{' '}
+															<span>
+																({formatFileSize(file.file.size)}){' - '}
+																{getErrorSummary(
+																	file.errors,
+																	formattedMaxFileSize
+																)}
+															</span>
+														</ListItem>
+													);
+												})}
+											</UnorderedList>
+										</SectionAlert>
+									)}
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
@@ -362,33 +391,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										onRemove={handleRemoveAcceptedFile}
 										hideThumbnails={hideThumbnails}
 									/>
-									{waitingListRejections.length > 0 && (
-										<>
-											<Divider />
-											<Text fontWeight="bold" color="error">
-												These files are valid but are over the file limit.
-												Delete accepted files to make space for them.
-											</Text>
-											<FileUploadRejectedFileList
-												fileRejections={waitingListRejections}
-												handleRemoveRejection={handleRemoveWaitingListItem}
-												hideThumbnails={hideThumbnails}
-											/>
-										</>
-									)}
-									{invalidRejections.length > 0 && (
-										<>
-											<Divider />
-											<Text fontWeight="bold" color="error">
-												These files are invalid and cannot be uploaded.
-											</Text>
-											<FileUploadRejectedFileList
-												fileRejections={invalidRejections}
-												handleRemoveRejection={handleRemoveInvalidItem}
-												hideThumbnails={hideThumbnails}
-											/>
-										</>
-									)}
 								</Stack>
 							)}
 						</Stack>
@@ -405,7 +407,7 @@ function fileInputStyles({
 	isDragActive,
 }: {
 	disabled?: boolean;
-	invalid: boolean;
+	invalid?: boolean;
 	isDragActive: boolean;
 }) {
 	return {

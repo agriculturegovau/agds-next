@@ -83,6 +83,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 					strokeLinejoin: 'round',
 					strokeLinecap: 'round',
 					strokeWidth: resolvedWeight,
+					flexShrink: 0,
 				})}
 				role="img"
 				style={style}

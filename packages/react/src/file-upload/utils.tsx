@@ -189,37 +189,24 @@ export function getFileRejectionErrorMessage(
 }
 
 export function getErrorSummary(
-	rejections: RejectedFile[],
-	formattedMaxFileSize: string,
-	maxFiles = 1
+	rejections: FileError[],
+	formattedMaxFileSize: string
 ) {
 	if (!rejections?.length) return;
 
 	const uniqueErrorCodes = Array.from(
-		new Set(
-			rejections.map(({ errors }) => errors.map(({ code }) => code)).flat()
-		)
-	);
+		new Set(rejections.map(({ code }) => code))
+	) as Array<ErrorCode>;
 
-	const firstErrorCode = uniqueErrorCodes[0];
-
-	if (firstErrorCode === 'too-many-files') {
-		return `You can not select more than ${maxFiles} ${
-			maxFiles === 1 ? 'file' : 'files'
-		}`;
+	if (uniqueErrorCodes.includes(ErrorCode.FileInvalidType)) {
+		return 'Invalid file type';
 	}
 
-	if (uniqueErrorCodes.length === 1) {
-		if (firstErrorCode === 'file-too-large') {
-			return `Each file must be smaller than ${formattedMaxFileSize}`;
-		}
-
-		if (firstErrorCode === 'file-invalid-type') {
-			return `Some files are not of the correct format`;
-		}
+	if (uniqueErrorCodes.includes(ErrorCode.FileTooLarge)) {
+		return `File is over ${formattedMaxFileSize}`;
 	}
 
-	return 'There’s an issue with one or more of your files';
+	return 'Too many files';
 }
 
 /** Creates and returns a URL of the image thumbnail in browser memory.
