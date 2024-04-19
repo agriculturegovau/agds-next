@@ -1,5 +1,5 @@
-import { DefaultComboboxOption } from '../combobox';
-import { formatTime, TimeFormat } from '../time-input/utils';
+import { type DefaultComboboxOption } from '../combobox/utils';
+import { formatTime, type TimeFormat } from '../time-input/utils';
 
 export function filterOptions<Option extends DefaultComboboxOption>(
 	options: Option[],
@@ -14,7 +14,7 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 		const hasMatch =
 			HHmm.includes(sanitizedInputValue) ||
 			option.label.toLowerCase().includes(sanitizedInputValue) ||
-			// When 12 and 24 is typed, show 00:XX as a helper for all scenarios
+			// When 12 and 24 is typed, show 00:XX options
 			(HHmm.startsWith('00') &&
 				sanitizedInputValue.length < 4 &&
 				(sanitizedInputValue.startsWith('12') ||
@@ -34,7 +34,7 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 	});
 }
 
-export function generateTimeArray({
+export function generateOptions({
 	min,
 	max,
 	step,
@@ -71,10 +71,9 @@ export function generateTimeArray({
 	const minTotalMinutes = minHours * 60 + minMinutes;
 	const maxTotalMinutes = maxHours * 60 + maxMinutes;
 
-	// Initialize result array
-	const result = [];
+	const options = [];
 
-	// Iterate through the time range and add times to the result array
+	// Iterate through the time range and add times to the options array
 	for (
 		let totalMinutes = minTotalMinutes;
 		totalMinutes <= maxTotalMinutes;
@@ -84,15 +83,17 @@ export function generateTimeArray({
 		const minutes = totalMinutes % 60;
 		const HHmm = formatValue(hours, minutes);
 
-		const val = {
-			label: formatTime(HHmm, timeFormat),
-			value: HHmm,
-		};
+		if (HHmm !== '24:00') {
+			const val = {
+				label: formatTime(HHmm, timeFormat),
+				value: HHmm,
+			};
 
-		result.push(val);
+			options.push(val);
+		}
 	}
 
-	return result;
+	return options;
 }
 
 function clampNumber(num: number, min: number, max: number) {
@@ -101,8 +102,7 @@ function clampNumber(num: number, min: number, max: number) {
 
 function parseTime(timeString: string) {
 	const [hours, minutes] = timeString.split(':').map(Number);
-
-	return [clampNumber(hours, 0, 23), clampNumber(minutes, 0, 59)];
+	return [clampNumber(hours, 0, 24), clampNumber(minutes, 0, 59)];
 }
 
 function formatValue(hours: number, minutes: number) {

@@ -1,2 +1,2 @@
 export * from './TimeSelect';
-export * from './TimeSelectAsync';
+export { formatTime, isValidTime } from '../time-input/utils';

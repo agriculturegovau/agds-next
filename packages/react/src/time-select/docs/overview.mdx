@@ -10,7 +10,7 @@ relatedComponents: ['combobox', 'time-input']
 
 As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
 
-All Combobox components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
+All TimeSelect components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
 
 ```jsx live
 () => {
@@ -21,10 +21,165 @@ All Combobox components are [controlled components](https://reactjs.org/docs/for
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
-			options={TIME_OPTIONS}
 			min="14:00"
 			max="19:00"
 			step={15}
+		/>
+	);
+};
+```
+
+<DoHeading />
+
+- use to help users select from a large list
+- provide concise options
+- create hint text to let the user know they can search or select
+- use a pre-filled list so users can search or scroll
+- consider whether the list of selections is complex enough to merit searching and filtering
+- indicate whether input is optional.
+
+<DontHeading />
+
+- use if the list of possible results is small – use [Select](/components/select) instead
+- leave the list open once an option is selected.
+
+## TimeSelect
+
+Use the `TimeSelect` component when users can choose a single item from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## TimeSelectAsync
+
+Use the `TimeSelectAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loading
+		/>
+	);
+};
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			block
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indicate to screen reader users that a field is optional but don’t want to show the ‘(optional)’ label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			hideOptionalLabel
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const invalid = !value;
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			invalid={invalid}
+			message={invalid ? 'Country is required' : undefined}
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			disabled
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Clearable
+
+Use the `clearable` prop to render a clear ("x") button when there is a selected option.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<TimeSelect
+			label="Select time"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			clearable
 		/>
 	);
 };
