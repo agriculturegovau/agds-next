@@ -167,10 +167,12 @@ If one of the steps in a multi-step form has a secondary task, such as adding an
 			href: '/organisations',
 			label: 'Organisations',
 			status: 'started',
-			levelTwoItem: {
-				label: 'Add an organisation',
-				href: '/organisations/add-organisation',
-			},
+			items: [
+				{
+					label: 'Add an organisation',
+					href: '/organisations/add-organisation',
+				},
+			],
 		},
 		{ href: '/review', label: 'Review and submit', status: 'blocked' },
 	]}
