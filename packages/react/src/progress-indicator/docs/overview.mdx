@@ -9,14 +9,15 @@ relatedComponents: ['task-list']
 
 ```jsx live
 <ProgressIndicator
+	activePath="/organisations"
 	items={[
-		{ label: 'Introduction', status: 'done', href: '#' },
-		{ label: 'Submit evidence', status: 'saved', href: '#' },
-		{ label: 'Organisations', status: 'started', href: '#' },
-		{ label: 'Business contacts', status: 'error', href: '#' },
-		{ label: 'Case studies', status: 'todo', href: '#' },
-		{ label: 'Attachments', status: 'started', href: '#', isActive: true },
-		{ label: 'Review and submit', status: 'blocked', href: '#' },
+		{ label: 'Introduction', status: 'done', href: '/introduction' },
+		{ label: 'Submit evidence', status: 'saved', href: '/evidence' },
+		{ label: 'Organisations', status: 'started', href: '/organisations' },
+		{ label: 'Business contacts', status: 'error', href: '/contacts' },
+		{ label: 'Case studies', status: 'todo', href: '/case-studies' },
+		{ label: 'Attachments', status: 'started', href: '/attachments' },
+		{ label: 'Review and submit', status: 'blocked', href: '/review' },
 	]}
 />
 ```
@@ -126,36 +127,9 @@ The `status` prop can be used to indicate the status of each item. The following
 	</TableBody>
 </Table>
 
-## Active state handling
+## Currently active item
 
-The `isActive: true` property needs to be applied to the currently active item.
-
-Currently, only the `'started'`, and `'blocked'` statuses may receive the `isActive: true` property.
-
-If the user navigates to a page that is a different status, the status of that page should be changed to `'started'` (unless `'blocked'` is more appropriate).
-
-## Buttons
-
-If an item does not specify an `href` attribute, a `button` element will be rendered. This enables you to respond to various mouse events, such as `onClick`.
-
-```jsx live
-<ProgressIndicator
-	items={[
-		{ label: 'Introduction', status: 'done', onClick: console.log },
-		{ label: 'Submit evidence', status: 'saved', onClick: console.log },
-		{ label: 'Organisations', status: 'started', onClick: console.log },
-		{ label: 'Business contacts', status: 'error', onClick: console.log },
-		{ label: 'Case studies', status: 'todo', onClick: console.log },
-		{
-			label: 'Attachments',
-			status: 'started',
-			onClick: console.log,
-			isActive: true,
-		},
-		{ label: 'Review and submit', status: 'blocked', onClick: console.log },
-	]}
-/>
-```
+To indicate the currently active item, whether level 1 or level 2, pass in a matching path to the `activePath` prop. E.g. `activePath="/organistions/change-name"`.
 
 ## Hiding the sub title
 
@@ -163,38 +137,42 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 
 ```jsx live
 <ProgressIndicator
+	activePath="/organisations"
 	hideSubtitle
 	items={[
-		{ href: '#', label: 'Introduction', status: 'done' },
-		{ href: '#', label: 'Organisations', status: 'started' },
+		{ href: '/introduction', label: 'Introduction', status: 'done' },
+		{ href: '/organisations', label: 'Organisations', status: 'started' },
 		{
-			href: '#',
+			href: '/contacts',
 			label: 'Business contacts',
 			status: 'started',
-			isActive: true,
 		},
-		{ href: '#', label: 'Case studies', status: 'todo' },
-		{ href: '#', label: 'Attachments', status: 'blocked' },
+		{ href: '/case-studies', label: 'Case studies', status: 'todo' },
+		{ href: '/attachments', label: 'Attachments', status: 'blocked' },
 	]}
 />
 ```
 
 ## Adding level 2 steps
 
-If one of the steps in a multi-step form has a secondary task, use a separate page for the secondary task. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
+If one of the steps in a multi-step form has a secondary task, such as adding an employee with name and email to a list of employees, use a separate page for the secondary task. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
 
 ```jsx live
 <ProgressIndicator
+	activePath="/organisations/add-organisation"
 	hideSubtitle
 	items={[
-		{ href: '#', label: 'Introduction', status: 'done' },
+		{ href: '/introduction', label: 'Introduction', status: 'done' },
 		{
-			href: '#',
+			href: '/organisations',
 			label: 'Organisations',
 			status: 'started',
-			levelTwoItem: { label: 'Add an organisation', href: '#' },
+			levelTwoItem: {
+				label: 'Add an organisation',
+				href: '/organisations/add-organisation',
+			},
 		},
-		{ href: '#', label: 'Review and submit', status: 'blocked' },
+		{ href: '/review', label: 'Review and submit', status: 'blocked' },
 	]}
 />
 ```
