@@ -242,6 +242,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					acceptedFilesSummary
 				),
 			]);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [dropzoneFileRejections]);
 
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
