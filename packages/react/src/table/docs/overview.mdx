@@ -121,18 +121,60 @@ For data tables with a small amount of rows, use the default table. Align text c
 			population: '7,670,700',
 			changeOverYear: '3.1%',
 			key: 'nsw',
+			subItems: [
+				{
+					age: '18-25',
+					employment: '56%',
+					income: '$48,000',
+					key: 'nsw1',
+				},
+				{
+					age: '26-35',
+					employment: '78%',
+					income: '$65,000',
+					key: 'nsw2',
+				},
+			],
 		},
 		{
 			location: 'Victoria',
 			population: '5,996,400',
 			changeOverYear: '2.5%',
 			key: 'vic',
+			subItems: [
+				{
+					age: '18-25',
+					employment: '45%',
+					income: '$52,000',
+					key: 'vic1',
+				},
+				{
+					age: '26-35',
+					employment: '72%',
+					income: '$73,000',
+					key: 'vic2',
+				},
+			],
 		},
 		{
 			location: 'Queensland',
 			population: '4,808,800',
 			changeOverYear: '1.7%',
 			key: 'qld',
+			subItems: [
+				{
+					age: '18-25',
+					employment: '86%',
+					income: '$34,000',
+					key: 'qld1',
+				},
+				{
+					age: '26-35',
+					employment: '65%',
+					income: '$48,000',
+					key: 'qld2',
+				},
+			],
 		},
 	];
 
@@ -176,17 +218,28 @@ For data tables with a small amount of rows, use the default table. Align text c
 								expansionState={expansionState}
 								colSpan={4}
 							>
-								<Text as="p">
-									This is some text. Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Non modo carum sibi quemque, verum etiam
-									vehementer carum esse? Quid iudicant sensus? Quod ea non
-									occurrentia fingunt, vincunt Aristonem; Quacumque enim
-									ingredimur, in aliqua historia vestigium ponimus.
-									Progredientibus autem aetatibus sensim tardeve potius quasi
-									nosmet ipsos cognoscimus. Verba tu fingas et ea dicas, quae
-									non sentias? Duo Reges: constructio interrete. Sed vos
-									squalidius, illorum vides quam niteat oratio.
-								</Text>
+								<TableWrapper>
+									<Table>
+										<TableHead>
+											<TableRow>
+												<TableHeader scope="col">Age range</TableHeader>
+												<TableHeader scope="col">Employment rate</TableHeader>
+												<TableHeader scope="col">Average income</TableHeader>
+											</TableRow>
+										</TableHead>
+										<TableBody>
+											{item.subItems.map((subItem, index) => (
+												<>
+													<TableRow key={subItem.key}>
+														<TableCell>{subItem.age}</TableCell>
+														<TableCell>{subItem.employment}</TableCell>
+														<TableCell>{subItem.income}</TableCell>
+													</TableRow>
+												</>
+											))}
+										</TableBody>
+									</Table>
+								</TableWrapper>
 							</TableExpansionContentRow>
 						</>
 					))}
