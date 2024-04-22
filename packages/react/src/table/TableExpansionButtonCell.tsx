@@ -8,6 +8,13 @@ export type BooleanCollection<Key extends string = string> = Partial<
 	Record<Key, boolean>
 >;
 
+const expanderTextStyles = {
+	display: 'block',
+	gridColumn: '1',
+	gridRow: '1',
+	textAlign: 'right',
+} as const;
+
 export type ExpansionProps<ExpansionKey extends string> = {
 	expansionState: BooleanCollection<ExpansionKey>;
 	dataKey: ExpansionKey;
@@ -38,7 +45,27 @@ export function TableExpansionButtonCell<ExpansionKey extends string>({
 					}));
 				}}
 			>
-				{isExpanded ? 'Collapse' : 'Expand'}
+				{/* HTML structure ensures that the width of the expansion button column remains consistent */}
+				<span css={{ display: 'grid' }}>
+					<span
+						css={{
+							...expanderTextStyles,
+							opacity: isExpanded ? 0 : 1,
+						}}
+						aria-hidden={isExpanded}
+					>
+						Expand
+					</span>
+					<span
+						css={{
+							...expanderTextStyles,
+							opacity: isExpanded ? 1 : 0,
+						}}
+						aria-hidden={!isExpanded}
+					>
+						Collapse
+					</span>
+				</span>
 			</Button>
 			<VisuallyHidden>
 				<div aria-live="polite">{!isExpanded ? 'Row collapsed' : ''}</div>
