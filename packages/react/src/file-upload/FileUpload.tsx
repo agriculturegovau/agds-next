@@ -11,11 +11,12 @@ import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
 import { Field } from '../field';
 import { Flex } from '../flex';
-import { UploadIcon } from '../icon';
+import { CloseIcon, DeleteIcon, UploadIcon } from '../icon';
 import { ListItem, UnorderedList } from '../list';
 import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
+import { Columns } from '../columns';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import {
@@ -382,7 +383,24 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											</UnorderedList>
 										</SectionAlert>
 									)}
-									<Text color="muted">{fileSummaryText}</Text>
+									<div
+										css={{ display: 'flex', justifyContent: 'space-between' }}
+									>
+										<Text color="muted">{fileSummaryText}</Text>
+										{acceptedFiles.length > 0 && (
+											<Button
+												variant="text"
+												iconAfter={DeleteIcon}
+												css={{ marginRight: 12 }}
+												onClick={() => {
+													clearErrors();
+													setAcceptedFiles([]);
+												}}
+											>
+												Remove all files
+											</Button>
+										)}
+									</div>
 									<FileUploadExistingFileList
 										files={existingFiles}
 										onRemove={onRemoveExistingFile}
