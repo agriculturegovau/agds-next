@@ -230,7 +230,7 @@ describe('ProgressIndicator', () => {
 			});
 		});
 
-		describe('when the "doing" status is defined and no `isActive` nor `activePath` are defined', () => {
+		describe('when the "doing" status is defined plus both `isActive` and `activePath` are not defined', () => {
 			test.each([
 				['Introduction Completed', false],
 				['Submit evidence In progress', true],
