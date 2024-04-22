@@ -124,8 +124,8 @@ export const ProgressIndicatorItem = ({
 					<>
 						<ProgressIndicatorItemTimeline />
 
-						<ul css={{ padding: 0 }}>
-							<li css={{ listStyle: 'none' }}>
+						<Box as="ul">
+							<Box as="li">
 								<Flex
 									alignItems="center"
 									aria-current={true}
@@ -151,8 +151,8 @@ export const ProgressIndicatorItem = ({
 										{items.find((item) => item.isActive)?.label}
 									</Text>
 								</Flex>
-							</li>
-						</ul>
+							</Box>
+						</Box>
 					</>
 				)}
 			</Box>

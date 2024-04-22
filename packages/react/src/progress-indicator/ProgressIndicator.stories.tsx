@@ -15,7 +15,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const exampleLinkItems: ProgressIndicatorItem[] = [
+const exampleItems: ProgressIndicatorItem[] = [
 	{ label: 'Introduction', status: 'done', href: '/introduction' },
 	{ label: 'Submit evidence', status: 'saved', href: '/evidence' },
 	{ label: 'Organisations', status: 'started', href: '/organisations' },
@@ -26,7 +26,7 @@ const exampleLinkItems: ProgressIndicatorItem[] = [
 ];
 
 const exampleLevelTwoLinkItems: ProgressIndicatorItemWithLevelTwoItems[] =
-	exampleLinkItems.map((item) =>
+	exampleItems.map((item) =>
 		item.label === 'Organisations'
 			? {
 					...item,
@@ -40,31 +40,17 @@ const exampleLevelTwoLinkItems: ProgressIndicatorItemWithLevelTwoItems[] =
 			: item
 	);
 
-const exampleButtonItems: ProgressIndicatorItem[] = [
-	{ label: 'Introduction', status: 'done', onClick: console.info },
-	{ label: 'Submit evidence', status: 'saved', onClick: console.info },
-	{ label: 'Organisations', status: 'started', onClick: console.info },
-	{ label: 'Business contacts', status: 'error', onClick: console.info },
-	{ label: 'Case studies', status: 'todo', onClick: console.info },
-	{
-		label: 'Attachments',
-		status: 'started',
-		onClick: console.info,
-	},
-	{ label: 'Review and submit', status: 'blocked', onClick: console.info },
-];
-
 export const Basic: Story = {
 	args: {
 		activePath: '/organisations',
-		items: exampleLinkItems,
+		items: exampleItems,
 	},
 };
 
 export const HiddenSubtitle: Story = {
 	args: {
 		activePath: '/organisations',
-		items: exampleLinkItems,
+		items: exampleItems,
 		hideSubtitle: true,
 	},
 };
@@ -74,7 +60,7 @@ export const OnBodyAlt: Story = {
 	args: {
 		activePath: 'Attachments',
 		background: 'bodyAlt',
-		items: exampleButtonItems,
+		items: exampleItems,
 	},
 	parameters: {
 		layout: 'fullscreen',
@@ -84,13 +70,6 @@ export const OnBodyAlt: Story = {
 			<ProgressIndicator {...props} />
 		</Box>
 	),
-};
-
-export const Buttons: Story = {
-	args: {
-		activePath: 'Attachments',
-		items: exampleButtonItems,
-	},
 };
 
 export const LevelTwoStepLinks: Story = {
