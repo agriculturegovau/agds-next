@@ -108,7 +108,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			throw new Error('maxFiles cannot be less than 1');
 		}
 
-		const [acceptedFiles, setAcceptedFiles] = useState<FileWithStatus[]>([]);
+		const [acceptedFiles, setAcceptedFiles] = useState<FileWithStatus[]>(value);
 		const [waitingListRejections, setWaitingListRejections] = useState<
 			FileRejection[]
 		>([]);
