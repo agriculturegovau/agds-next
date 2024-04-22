@@ -70,7 +70,6 @@ export const ProgressIndicatorItem = ({
 				css={{
 					display: 'grid',
 					gridTemplateColumns: 'min-content 1fr',
-					gridTemplateRows: 'min-content 1fr',
 					textDecoration: 'none',
 					width: '100%',
 					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
@@ -110,12 +109,7 @@ export const ProgressIndicatorItem = ({
 						{children}
 					</Text>
 
-					<Text
-						color="muted"
-						fontSize="xs"
-						gridColumnStart={2}
-						lineHeight="nospace"
-					>
+					<Text color="muted" fontSize="xs" lineHeight="nospace">
 						{statusLabel}
 					</Text>
 				</Stack>
@@ -141,7 +135,6 @@ export const ProgressIndicatorItem = ({
 										},
 									}}
 									gap={0.5}
-									gridColumnStart={2}
 									padding={0.5}
 									paddingBottom={1}
 								>
@@ -193,7 +186,6 @@ const ProgressIndicatorItemIcon = ({
 			css={{
 				gridColumnStart: 1,
 				gridRowStart: 1,
-				height: '100%',
 			}}
 			flexDirection="column"
 		>
