@@ -256,6 +256,7 @@ export {
 	formatTime,
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
+export { TimePicker } from '@ag.ds-next/react/time-picker';
 
 // Used to populate options on documentation site and playroom
 export {
@@ -267,5 +268,3 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
-
-export { TimeSelect, TimeSelectAsync } from '@ag.ds-next/react/time-select';

@@ -3,4 +3,4 @@
 '@ag.ds-next/docs': minor
 ---
 
-TimeSelect: Initial release of component
+TimePicker: Initial release of component

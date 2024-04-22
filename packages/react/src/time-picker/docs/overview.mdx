@@ -1,8 +1,8 @@
 ---
-title: TimeSelect
-description: Description of TimeSelect
+title: TimePicker
+description: Description of TimePicker
 group: Forms
-storybookPath: /story/Forms-TimeSelect--basic
+storybookPath: /story/Forms-TimePicker--basic
 unreleased: true
 figmaGalleryNodeId: REPLACE_ME
 relatedComponents: ['combobox', 'time-input']
@@ -10,13 +10,13 @@ relatedComponents: ['combobox', 'time-input']
 
 As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
 
-All TimeSelect components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
+All TimePicker components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			value={value}
@@ -43,15 +43,15 @@ All TimeSelect components are [controlled components](https://reactjs.org/docs/f
 - use if the list of possible results is small – use [Select](/components/select) instead
 - leave the list open once an option is selected.
 
-## TimeSelect
+## TimePicker
 
-Use the `TimeSelect` component when users can choose a single item from a predefined list of options.
+Use the `TimePicker` component when users can choose a single item from a predefined list of options.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			value={value}
@@ -61,15 +61,15 @@ Use the `TimeSelect` component when users can choose a single item from a predef
 };
 ```
 
-## TimeSelectAsync
+## TimePickerAsync
 
-Use the `TimeSelectAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
+Use the `TimePickerAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			value={value}
@@ -88,7 +88,7 @@ Use the `block` prop to expand the component to fill the available space.
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			block
@@ -115,7 +115,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			hideOptionalLabel
@@ -135,7 +135,7 @@ Use the `invalid` prop to indicate if the user input is invalid.
 	const [value, setValue] = React.useState(null);
 	const invalid = !value;
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			invalid={invalid}
@@ -155,7 +155,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			disabled
@@ -174,7 +174,7 @@ Use the `clearable` prop to render a clear ("x") button when there is a selected
 () => {
 	const [value, setValue] = React.useState(null);
 	return (
-		<TimeSelect
+		<TimePicker
 			label="Select time"
 			hint="Start typing to see results"
 			value={value}

@@ -9,7 +9,7 @@ import {
 import { type TimeFormat } from '../time-input/utils';
 import { filterOptions, generateOptions } from './utils';
 
-export type TimeSelectProps = Omit<ComboboxProps, 'options'> & {
+export type TimePickerProps = Omit<ComboboxProps, 'options'> & {
 	loading?: boolean;
 	max?: string;
 	min?: string;
@@ -17,7 +17,7 @@ export type TimeSelectProps = Omit<ComboboxProps, 'options'> & {
 	timeFormat: TimeFormat;
 };
 
-export function TimeSelect({
+export function TimePicker({
 	id,
 	inputRef: inputRefProp,
 	max = '24:00',
@@ -28,7 +28,7 @@ export function TimeSelect({
 	timeFormat = 'h:mm aaa',
 	value,
 	...props
-}: TimeSelectProps) {
+}: TimePickerProps) {
 	const inputId = useComboboxInputId(id);
 	const [options, setOptions] = useState<DefaultComboboxOption[]>(
 		generateOptions({ min, max, step, timeFormat })
