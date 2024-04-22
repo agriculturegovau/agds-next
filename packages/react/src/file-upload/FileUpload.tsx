@@ -11,12 +11,11 @@ import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
 import { Field } from '../field';
 import { Flex } from '../flex';
-import { CloseIcon, DeleteIcon, UploadIcon } from '../icon';
+import { DeleteIcon, UploadIcon } from '../icon';
 import { ListItem, UnorderedList } from '../list';
 import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { Columns } from '../columns';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import {
