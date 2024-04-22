@@ -2,6 +2,7 @@ import { Interpolation } from '@emotion/react';
 import { ReactNode, useEffect, useRef } from 'react';
 import { Theme } from '../core';
 import { Box } from '../box';
+import { VisuallyHidden } from '../a11y';
 import { ExpansionProps } from './TableExpansionButtonCell';
 
 type ExpansionContentCellProps<ExpansionKey extends string> =
@@ -63,6 +64,7 @@ export function TableExpansionContentRow<ExpansionKey extends string>({
 						key={String(isExpanded)}
 						tabIndex={-1}
 					>
+						<VisuallyHidden>Previous row expanded content.</VisuallyHidden>
 						{children}
 					</Box>
 				</div>
