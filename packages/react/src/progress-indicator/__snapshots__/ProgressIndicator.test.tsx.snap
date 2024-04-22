@@ -1022,7 +1022,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied blocked status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -1533,7 +1533,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied blocked status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -2044,7 +2044,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied doing status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -2555,7 +2555,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied doing status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -3066,7 +3066,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied started status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -3577,7 +3577,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied started status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
