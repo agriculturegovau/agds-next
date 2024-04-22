@@ -16,7 +16,7 @@ export function createExampleFile(args?: {
 	} = args || {};
 
 	const bits = ['examplefilecontent'];
-	const { prototype, ...baseFile } = new File(bits, name, {
+	const baseFile = new File(bits, name, {
 		type,
 	});
 
