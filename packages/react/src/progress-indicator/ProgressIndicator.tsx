@@ -56,6 +56,12 @@ export const ProgressIndicator = ({
 	 */
 	const hasExplicitActiveDeclared = items.some(({ isActive }) => isActive);
 
+	if (process.env.NODE_ENV !== 'production' && hasExplicitActiveDeclared) {
+		console.warn(
+			'ProgressIndicator: The `isActive` prop is deprecated. Please use `activePath` in the parent component, `<ProgressIndicator />`.'
+		);
+	}
+
 	/* **LEGACY HANDLER**
 	 * NOTE: This is for handling legacy props. We deprecated status='doing' in
 	 * favour of status='started' and this code applies `isActive` to the legacy 'doing'
@@ -70,7 +76,7 @@ export const ProgressIndicator = ({
 				 * If no explicit active items are declared, the 'doing' status item receives active state by default.
 				 * NOTE: this is important to keep for backwards compatibility.
 				 */
-				const isActiveFromLegacyDoingStatus = item.status === 'doing'; // TODO: write tests to safeguard this legacy handling
+				const isActiveFromLegacyDoingStatus = item.status === 'doing';
 
 				const activePathMatcher = 'href' in item ? item.href : item.label;
 				const isActivePath =

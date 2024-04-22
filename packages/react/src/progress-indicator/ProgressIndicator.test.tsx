@@ -12,7 +12,7 @@ import {
 
 expect.extend(toHaveNoViolations);
 
-function createList(
+function createLegacyList(
 	activeStatus: ProgressIndicatorItemStatus,
 	extraProperties: Partial<ProgressIndicatorItem>
 ): ProgressIndicatorProps {
@@ -173,7 +173,7 @@ describe('ProgressIndicator', () => {
 					): void {
 						try {
 							const { container } = renderProgressIndicator(
-								createList(status, extraProperties)
+								createLegacyList(status, extraProperties)
 							);
 							if (isWhiteListedStatus) {
 								expect(container).toMatchSnapshot();
@@ -200,7 +200,7 @@ describe('ProgressIndicator', () => {
 			describe('renders valid HTML with no a11y violations', () => {
 				it('renders valid active link', async () => {
 					const { container } = renderProgressIndicator(
-						createList('started', { href: '#' })
+						createLegacyList('started', { href: '#' })
 					);
 					expect(container).toHTMLValidate({
 						extends: ['html-validate:recommended'],
@@ -215,7 +215,7 @@ describe('ProgressIndicator', () => {
 
 				it('renders valid active button', async () => {
 					const { container } = renderProgressIndicator(
-						createList('started', { onClick: console.info })
+						createLegacyList('started', { onClick: console.info })
 					);
 					expect(container).toHTMLValidate({
 						extends: ['html-validate:recommended'],

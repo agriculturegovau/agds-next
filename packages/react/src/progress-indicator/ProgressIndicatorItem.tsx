@@ -1,4 +1,4 @@
-import { ElementType, PropsWithChildren, useEffect } from 'react';
+import { ElementType, PropsWithChildren } from 'react';
 import { Box, backgroundColorMap } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -38,13 +38,11 @@ export const ProgressIndicatorItem = ({
 }: ProgressIndicatorItemProps) => {
 	const { label: statusLabel } = statusMap[status];
 
-	useEffect(() => {
-		if (status === 'doing') {
-			console.warn(
-				'The "doing" status is deprecated. Use the "started" status with `activePath`.'
-			);
-		}
-	}, [status]);
+	if (process.env.NODE_ENV !== 'production' && status === 'doing') {
+		console.warn(
+			'ProgressIndicator: The "doing" status is deprecated. Use the "started" status with `activePath`.'
+		);
+	}
 
 	return (
 		<Box
@@ -85,7 +83,7 @@ export const ProgressIndicatorItem = ({
 
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
-					aria-current={(isActive && !items) || undefined} // TODO: Should this be 'step'? Also, I think this has some browser/screen-reader combo issues e.g. edge + NVDA and chrome/firefox/edge + JAWS (from A11y Slack)
+					aria-current={isActive || undefined}
 					as={as}
 					css={{
 						textDecoration: 'none',
@@ -126,31 +124,35 @@ export const ProgressIndicatorItem = ({
 					<>
 						<ProgressIndicatorItemTimeline />
 
-						<Flex
-							alignItems="center"
-							aria-current={true} // TODO: should this be "step"?
-							as={as}
-							borderBottom
-							borderColor="muted"
-							color="text"
-							css={{
-								textDecoration: 'none',
-								'&:hover': {
-									backgroundColor: hoverColorMap[background],
-									...packs.underline,
-								},
-							}}
-							gap={0.5}
-							gridColumnStart={2}
-							padding={0.5}
-							paddingBottom={1}
-						>
-							<CornerDownRightIcon color="selected" />
+						<ul css={{ padding: 0 }}>
+							<li css={{ listStyle: 'none' }}>
+								<Flex
+									alignItems="center"
+									aria-current={true}
+									as={as}
+									borderBottom
+									borderColor="muted"
+									color="text"
+									css={{
+										textDecoration: 'none',
+										'&:hover': {
+											backgroundColor: hoverColorMap[background],
+											...packs.underline,
+										},
+									}}
+									gap={0.5}
+									gridColumnStart={2}
+									padding={0.5}
+									paddingBottom={1}
+								>
+									<CornerDownRightIcon color="selected" />
 
-							<Text color="inherit" fontSize="xs" fontWeight="bold">
-								{items.find((item) => item.isActive)?.label}
-							</Text>
-						</Flex>
+									<Text color="inherit" fontSize="xs" fontWeight="bold">
+										{items.find((item) => item.isActive)?.label}
+									</Text>
+								</Flex>
+							</li>
+						</ul>
 					</>
 				)}
 			</Box>
