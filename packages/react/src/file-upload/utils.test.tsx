@@ -15,7 +15,17 @@ import {
 
 const FILE_TOO_LARGE_ERROR_EXAMPLE: FileError = {
 	code: ErrorCode.FileTooLarge,
-	message: 'File size exceeds 200 kB',
+	message: 'File size exceeds 1 MB',
+};
+
+const FILE_TYPE_INVALID_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.FileInvalidType,
+	message: 'File format is invalid',
+};
+
+const TOO_MANY_FILES_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.TooManyFiles,
+	message: 'Over the max files limit',
 };
 
 describe('createExampleFile', () => {
@@ -61,52 +71,22 @@ describe('createExampleFile', () => {
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
-		expect(getErrorSummary([], '1MB', 1)).toBeUndefined();
+		expect(getErrorSummary([], '1MB')).toBeUndefined();
 	});
 
-	it('returns a message if there is a single rejection', () => {
-		const rejections = [
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
-		];
+	it('returns a message if there file is too large', () => {
+		const errors = [FILE_TOO_LARGE_ERROR_EXAMPLE];
 
-		expect(getErrorSummary(rejections, '1MB', 1)).toEqual(
-			'Each file must be smaller than 1MB'
-		);
+		expect(getErrorSummary(errors, '1MB')).toEqual('File is over 1MB');
 	});
-
-	it('returns a message if there are multiple files too large', () => {
-		const rejections = [
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
+	it('returns invalid file type as the highest priority error', () => {
+		const errors = [
+			FILE_TOO_LARGE_ERROR_EXAMPLE,
+			TOO_MANY_FILES_ERROR_EXAMPLE,
+			FILE_TYPE_INVALID_ERROR_EXAMPLE,
 		];
 
-		expect(getErrorSummary(rejections, '1MB', 2)).toEqual(
-			'Each file must be smaller than 1MB'
-		);
+		expect(getErrorSummary(errors, '1MB')).toEqual('Invalid file type');
 	});
 });
 
