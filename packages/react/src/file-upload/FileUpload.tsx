@@ -109,7 +109,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		}
 
 		const [acceptedFiles, setAcceptedFiles] = useState<FileWithStatus[]>(value);
-		const [waitingListRejections, setWaitingListRejections] = useState<
+		const [tooManyFilesRejections, setTooManyFilesRejections] = useState<
 			FileRejection[]
 		>([]);
 		const [invalidRejections, setInvalidRejections] = useState<FileRejection[]>(
@@ -118,9 +118,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const allFiles = [
 			...acceptedFiles,
-			...waitingListRejections.map((rej) => rej.file),
+			...tooManyFilesRejections.map((rej) => rej.file),
 			...invalidRejections.map((rej) => rej.file),
 		];
+
+		const allRejections = [...invalidRejections, ...tooManyFilesRejections];
 
 		const changeToken = JSON.stringify(acceptedFiles);
 		useEffect(() => {
@@ -135,8 +137,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					prevAcceptedFiles,
 					index
 				);
-				if (waitingListRejections.length) {
-					const newAcceptedFile = waitingListRejections[0].file;
+				if (tooManyFilesRejections.length) {
+					const newAcceptedFile = tooManyFilesRejections[0].file;
 					handleRemoveWaitingListItem(0, newAcceptedFile);
 
 					return [...updatedAcceptedFiles, newAcceptedFile];
@@ -149,7 +151,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			index: number,
 			file?: FileWithStatus
 		) => {
-			setWaitingListRejections((prevWaitingList) => {
+			setTooManyFilesRejections((prevWaitingList) => {
 				if (file && prevWaitingList[index]?.file.name === file.name) {
 					return removeItemAtIndex(prevWaitingList, index);
 				} else if (!file) {
@@ -167,20 +169,20 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					const newAcceptedFiles = [...prevAcceptedFiles, ...acceptedFiles];
 
 					if (maxFiles && newAcceptedFiles.length > maxFiles) {
-						setWaitingListRejections((prevWaitingList) => {
-							const newWaitingList = newAcceptedFiles
+						setTooManyFilesRejections((prevTooManyFilesList) => {
+							const newTooManyFilesList = newAcceptedFiles
 								.slice(maxFiles)
 								.map(convertFileToTooManyFilesRejection);
 
 							if (
-								JSON.stringify(prevWaitingList) ===
-								JSON.stringify(newWaitingList)
+								JSON.stringify(prevTooManyFilesList) ===
+								JSON.stringify(newTooManyFilesList)
 							) {
-								return prevWaitingList;
+								return prevTooManyFilesList;
 							}
 
 							return [
-								...prevWaitingList,
+								...prevTooManyFilesList,
 								...newAcceptedFiles
 									.slice(maxFiles)
 									.map(convertFileToTooManyFilesRejection),
@@ -197,7 +199,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		};
 
 		function clearErrors() {
-			setWaitingListRejections([]);
+			setTooManyFilesRejections([]);
 			setInvalidRejections([]);
 		}
 
@@ -269,7 +271,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
-		const showFileLists = Boolean(allFiles.length);
+		const areFileListsVisible = Boolean(allFiles.length);
 
 		const fileSummaryText = getFileListSummaryText([
 			...acceptedFiles,
@@ -346,11 +348,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{showFileLists && (
+							{areFileListsVisible && (
 								<Stack gap={0.5}>
-									{Boolean(
-										waitingListRejections.length || invalidRejections.length
-									) && (
+									{Boolean(allRejections.length) && (
 										<SectionAlert
 											title="The following files could not be selected"
 											tone="error"
@@ -358,13 +358,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										>
 											<Text as="p">
 												These files did not meet upload requirements, were not
-												listed, and will not be uploaded
+												listed, and will not be uploaded.
 											</Text>
 											<UnorderedList>
-												{[
-													...invalidRejections,
-													...waitingListRejections,
-												].flatMap((file) => {
+												{allRejections.map((file) => {
 													return (
 														<ListItem key={file.file.name}>
 															<Text as="strong" color="error" fontWeight="bold">
@@ -383,9 +380,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											</UnorderedList>
 										</SectionAlert>
 									)}
-									<div
-										css={{ display: 'flex', justifyContent: 'space-between' }}
-									>
+									<Flex justifyContent="space-between" alignItems="center">
 										<Text color="muted">{fileSummaryText}</Text>
 										{acceptedFiles.length > 0 && (
 											<Button
@@ -400,7 +395,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												Remove all files
 											</Button>
 										)}
-									</div>
+									</Flex>
 									<FileUploadExistingFileList
 										files={existingFiles}
 										onRemove={onRemoveExistingFile}
