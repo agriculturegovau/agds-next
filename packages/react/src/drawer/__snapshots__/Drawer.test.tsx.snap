@@ -81,7 +81,7 @@ exports[`Drawer renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-10mbdw9-Button"
+            class="css-1utch44-Button"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

@@ -4,13 +4,13 @@ exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <aside
     aria-label="Filters"
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
   >
     <div
-      class="css-1w8myos-boxStyles"
+      class="css-1u29idf-boxStyles-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-1qsxf5s-boxStyles-boxStyles-Text"
       >
         Filter by
       </h2>
@@ -18,14 +18,14 @@ exports[`FilterSidebar renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
+      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
       Filters (1)
       <svg
         aria-hidden="true"
-        class="css-1te2wbi-SideBarCollapseButton"
+        class="css-aklm4x-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -46,10 +46,10 @@ exports[`FilterSidebar renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1b13c5y-boxStyles-boxStyles"
       >
         <div
-          class="css-16ved0q-boxStyles"
+          class="css-aysnyc-boxStyles-boxStyles"
         />
       </div>
     </div>

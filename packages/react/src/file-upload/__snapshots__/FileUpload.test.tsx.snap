@@ -35,7 +35,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-dvkgk8-Icon"
+          class="css-1np7bk4-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -96,11 +96,46 @@ exports[`FileUpload Basic renders correctly 1`] = `
       <div
         class="css-1wcx0lf-boxStyles"
       >
-        <span
-          class="css-1rpt3h8-boxStyles-Text"
+        <div
+          class="css-dwokeu-FileUpload"
         >
-          1 file selected
-        </span>
+          <span
+            class="css-1rpt3h8-boxStyles-Text"
+          >
+            1 file selected
+          </span>
+          <button
+            class="css-h7u37w-BaseButton-FileUpload"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Remove all files
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+            <svg
+              aria-hidden="true"
+              class="css-1utch44-Button"
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 5.99999H21M10 17.5V10M14 17.5V10M13.8 1.99999H10.2C9.53726 1.99999 9 1.89543 9 3V5.99999H15V3C15 1.89543 14.4627 1.99999 13.8 1.99999ZM18.657 20.7769C18.5944 21.4682 17.964 22.0001 17.2073 22H6.7937C6.03694 22.0001 5.40656 21.4682 5.344 20.7769L4 5.99999H20L18.657 20.7769Z"
+              />
+            </svg>
+          </button>
+        </div>
         <ul
           aria-label="Selected files"
           class="css-1wcx0lf-boxStyles"
@@ -117,7 +152,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-4amf2f-Icon"
+                  class="css-1ca8hrh-Icon"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"

@@ -22,7 +22,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-1utch44-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -56,7 +56,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-tqhls1-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -96,7 +96,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-tqhls1-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -147,7 +147,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-tqhls1-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -202,7 +202,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-1utch44-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -291,7 +291,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-1utch44-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -423,7 +423,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-1utch44-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

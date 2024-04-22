@@ -45,7 +45,7 @@ exports[`DatePicker renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1aretzv-DateInput"
+                class="css-kn3q4y-DateInput"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

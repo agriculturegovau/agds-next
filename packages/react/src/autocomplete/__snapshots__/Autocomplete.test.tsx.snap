@@ -33,7 +33,7 @@ exports[`Autocomplete renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-4vrme3-ComboboxSearchIcon"
+        class="css-15ts34v-ComboboxSearchIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

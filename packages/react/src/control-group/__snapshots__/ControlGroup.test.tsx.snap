@@ -43,7 +43,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -77,7 +77,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -111,7 +111,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -145,7 +145,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -216,7 +216,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-1cvvs16-FieldMessage"
+              class="css-nqqlih-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -258,7 +258,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -294,7 +294,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -330,7 +330,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -366,7 +366,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1xyaayo-Icon"
+                class="css-1toyjuw-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -558,7 +558,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-1cvvs16-FieldMessage"
+              class="css-nqqlih-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

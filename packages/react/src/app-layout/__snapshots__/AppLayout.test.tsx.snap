@@ -112,7 +112,7 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
             <svg
               aria-hidden="true"
-              class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+              class="css-1ns2vef-AppLayoutHeaderAccountDropdownButton"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -142,7 +142,7 @@ exports[`AppLayout renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-9s3cfn-Icon"
+            class="css-1fvc68f-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -205,7 +205,7 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+            class="css-1ns2vef-AppLayoutHeaderAccountDropdownButton"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -244,7 +244,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -308,7 +308,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -339,7 +339,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -366,7 +366,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -393,7 +393,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -431,7 +431,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -467,7 +467,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-x9dl13-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

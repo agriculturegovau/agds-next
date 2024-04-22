@@ -12,7 +12,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-qhpjst-Icon"
+        class="css-x9dl13-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -67,7 +67,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-10mbdw9-Button"
+          class="css-1utch44-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -108,7 +108,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-qhpjst-Icon"
+        class="css-x9dl13-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -163,7 +163,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-qhpjst-Icon"
+        class="css-x9dl13-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

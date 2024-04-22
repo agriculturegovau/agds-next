@@ -55,7 +55,7 @@ exports[`Card With link renders correctly 1`] = `
           Linking out
           <svg
             aria-hidden="true"
-            class="css-9s3cfn-Icon"
+            class="css-1fvc68f-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
