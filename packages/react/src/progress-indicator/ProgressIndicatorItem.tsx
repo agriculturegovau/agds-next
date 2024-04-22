@@ -180,15 +180,7 @@ const ProgressIndicatorItemIcon = ({
 		isActive && iconColor === 'border' ? 'selected' : iconColor;
 
 	return (
-		<Flex
-			alignItems="center"
-			as="span"
-			css={{
-				gridColumnStart: 1,
-				gridRowStart: 1,
-			}}
-			flexDirection="column"
-		>
+		<Flex alignItems="center" as="span" flexDirection="column">
 			<ProgressIndicatorItemTimeline />
 
 			<span

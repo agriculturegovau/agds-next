@@ -59,10 +59,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -108,7 +108,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -119,10 +119,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -166,7 +166,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -177,10 +177,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -240,7 +240,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -251,10 +251,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -304,7 +304,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -315,10 +315,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -365,7 +365,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -376,10 +376,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -438,7 +438,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -449,10 +449,10 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -497,7 +497,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -570,10 +570,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -619,7 +619,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -630,10 +630,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -677,7 +677,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -688,10 +688,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -751,7 +751,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -762,10 +762,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -815,7 +815,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -826,10 +826,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -876,7 +876,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -887,10 +887,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -949,7 +949,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -960,10 +960,10 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1008,7 +1008,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -1081,10 +1081,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1130,7 +1130,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -1141,10 +1141,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1189,7 +1189,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -1200,10 +1200,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1262,7 +1262,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -1273,10 +1273,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1326,7 +1326,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -1337,10 +1337,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1387,7 +1387,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -1398,10 +1398,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1460,7 +1460,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -1471,10 +1471,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1519,7 +1519,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -1592,10 +1592,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1641,7 +1641,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -1652,10 +1652,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1700,7 +1700,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -1711,10 +1711,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1773,7 +1773,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -1784,10 +1784,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1837,7 +1837,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -1848,10 +1848,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1898,7 +1898,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -1909,10 +1909,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -1971,7 +1971,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -1982,10 +1982,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2030,7 +2030,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -2103,10 +2103,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2152,7 +2152,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -2163,10 +2163,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2210,7 +2210,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -2221,10 +2221,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2284,7 +2284,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -2295,10 +2295,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2348,7 +2348,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -2359,10 +2359,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2409,7 +2409,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -2420,10 +2420,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2482,7 +2482,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -2493,10 +2493,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2541,7 +2541,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -2614,10 +2614,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2663,7 +2663,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -2674,10 +2674,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2721,7 +2721,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -2732,10 +2732,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2795,7 +2795,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -2806,10 +2806,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2859,7 +2859,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -2870,10 +2870,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2920,7 +2920,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -2931,10 +2931,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -2993,7 +2993,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -3004,10 +3004,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3052,7 +3052,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -3125,10 +3125,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3174,7 +3174,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -3185,10 +3185,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3232,7 +3232,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -3243,10 +3243,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3305,7 +3305,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -3316,10 +3316,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3369,7 +3369,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -3380,10 +3380,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3430,7 +3430,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -3441,10 +3441,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3504,7 +3504,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -3515,10 +3515,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3563,7 +3563,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
@@ -3636,10 +3636,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3685,7 +3685,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Done
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
@@ -3696,10 +3696,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3743,7 +3743,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Blocked
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
@@ -3754,10 +3754,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3816,7 +3816,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Doing
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -3827,10 +3827,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3880,7 +3880,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Error
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
@@ -3891,10 +3891,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -3941,7 +3941,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Saved
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
@@ -3952,10 +3952,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -4015,7 +4015,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   Started
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
@@ -4026,10 +4026,10 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
             <span
-              class="css-16p3oyl-boxStyles-ProgressIndicatorItem"
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
-                class="css-m55r9h-boxStyles-ProgressIndicatorItemIcon"
+                class="css-11emnjx-boxStyles"
               >
                 <span
                   class="css-1umyplw-ProgressIndicatorItemTimeline"
@@ -4074,7 +4074,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   To do
                 </span>
                 <span
-                  class="css-ggwrn2-boxStyles-Text"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
