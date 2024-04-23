@@ -11,7 +11,7 @@ import { Button } from '../button';
 import { boxPalette, mergeRefs, packs, tokens } from '../core';
 import { Field } from '../field';
 import { Flex } from '../flex';
-import { DeleteIcon, UploadIcon } from '../icon';
+import { UploadIcon } from '../icon';
 import { ListItem, UnorderedList } from '../list';
 import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
