@@ -1310,6 +1310,11 @@ const snippets: Array<Snippet> = [
 			)}
 		</GroupedFields>`,
 	},
+	{
+		group: 'TimeInput',
+		name: 'Basic',
+		code: `<TimeInput label="Time" value={{ raw: '930' }} onChange={() => {}} />`,
+	},
 ];
 
 export default snippets;

@@ -47,10 +47,10 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 			<Column columnSpan={{ xs: 12, md: 4 }}>
 				<FilterSidebar activeFiltersCount={3}>
 					<FormStack>
-						<TextInput block label="Example input 2" value="Example" />
-						<TextInput block label="Example input 3" value="Example" />
-						<TextInput block label="Example input 1" value="Example" />
-						<TextInput block label="Example input 4" value="Example" />
+						<TextInput block label="Example input 1" />
+						<TextInput block label="Example input 2" />
+						<TextInput block label="Example input 3" />
+						<TextInput block label="Example input 4" />
 					</FormStack>
 				</FilterSidebar>
 			</Column>
@@ -65,8 +65,8 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 						Search results
 					</Text>
 					<Stack as="ul" gap={1}>
-						{listData.map((item) => (
-							<Card as="li" shadow clickable key={item.id}>
+						{listData.map((item, index) => (
+							<Card as="li" shadow clickable key={index}>
 								<CardInner>
 									<Stack gap={0.5} width="100%" flexWrap="wrap">
 										<H3>

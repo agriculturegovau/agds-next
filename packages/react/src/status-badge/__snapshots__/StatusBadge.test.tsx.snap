@@ -153,7 +153,7 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
 exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -190,7 +190,7 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -221,7 +221,7 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <div
       class="css-1fa9oau-boxStyles-icon"
@@ -238,7 +238,7 @@ exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -272,7 +272,7 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -866,7 +866,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
 exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -897,7 +897,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
 exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -930,7 +930,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -961,7 +961,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -998,7 +998,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1044,7 +1044,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1077,7 +1077,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1108,7 +1108,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1139,7 +1139,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1171,7 +1171,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1202,7 +1202,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1235,7 +1235,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1269,7 +1269,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1303,7 +1303,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1334,7 +1334,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1367,7 +1367,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1398,7 +1398,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-oil8xj-boxStyles-StatusBadge"
+    class="css-1ncy008-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"

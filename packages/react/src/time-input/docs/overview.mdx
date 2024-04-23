@@ -1,0 +1,105 @@
+---
+title: Time input
+description: The Time input component allows users to enter a time in multiple formats.
+group: Forms
+storybookPath: /story/Forms-TimeInput--basic
+unreleased: true
+figmaGalleryNodeId: 20846:18895
+relatedComponents: ['text-input']
+---
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	const invalid = value && !isValidTime(value.raw);
+
+	return (
+		<TimeInput
+			invalid={invalid}
+			label="Time"
+			message="Enter a valid time"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```
+
+Time input is superset of [Text input](/components/text-input), with additional functionality specific to entering times. It accepts all of Text input’s props, with changes to `onChange` and `value`.
+
+Time input is a controlled component which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+
+The `onChange` handler provides an object with both a `raw` and `formatted` version of the time. `raw` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
+
+<DoHeading />
+
+- use when users are specifically required to enter a specific time.
+
+<DontHeading />
+
+- use when users are required to enter free-form text that isn’t a time.
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid. The `isValidTime()` function can be used to help identify whether the input is valid.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ raw: '9:66' });
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	const invalid = value && !isValidTime(value.raw);
+
+	return (
+		<TimeInput
+			invalid={invalid}
+			label="Time"
+			message="Enter a valid time"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```
+
+## Changing the time format
+
+The Time input component allows users to enter times in various formats. To input 9:00 pm, a user could input '9pm', '9:00pm', '2100', '21:00', 'T21:00:00.000Z', or other, lenient variations on these formats.
+
+When a valid time is typed, on blur, the time will be formatted using the `timeFormat` prop, which is set to `'h:mm aaa'` by default.
+
+To modify the time format, you can change the `timeFormat` prop to one of these supported time formats:
+
+- `'h:mm aaa'` (e.g. 9:00 am, 9:00 pm)
+- `'hh:mm aaa'` (e.g. 09:00 am, 09:00 pm)
+- `'HH:mm'` (e.g. 09:00, 21:00)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	return (
+		<TimeInput
+			label="Time"
+			onChange={onChange}
+			timeFormat="HH:mm"
+			value={value}
+		/>
+	);
+};
+```

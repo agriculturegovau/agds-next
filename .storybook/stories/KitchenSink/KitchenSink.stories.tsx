@@ -91,6 +91,7 @@ import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Modal } from '@ag.ds-next/react/modal';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
+import { TimeInput } from '@ag.ds-next/react/time-input';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -480,6 +481,8 @@ function KitchenSink({ background }: KitchenSinkProps) {
 										</>
 									)}
 								</GroupedFields>
+
+								<TimeInput label="Start time" onChange={() => undefined} />
 
 								<ButtonGroup>
 									<Button size="md">Primary</Button>

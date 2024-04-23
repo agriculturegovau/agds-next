@@ -16,7 +16,7 @@ relatedComponents: ['date-range-picker']
 
 Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
 
-For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/template/single-page-form).
+For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
 
 <DoHeading />
 
@@ -204,7 +204,7 @@ The `yearRange` prop can be used to change the range of options to display in ca
 
 The Date picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
 
-When a valid date is typed, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
+When a valid date is typed, on blur, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
 
 To modify the date format, you can change the `dateFormat` prop to one of these supported date formats:
 
