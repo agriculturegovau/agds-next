@@ -47,7 +47,9 @@ export function generateOptions({
 }) {
 	const [parsedMinHours, parsedMinMinutes] = parseTime(min);
 	const [parsedMaxHours, parsedMaxMinutes] = parseTime(max);
-	const validInterval = Math.round(clampNumber(interval, 1, 60));
+	const validInterval = isNaN(Number(interval))
+		? 60
+		: Math.round(clampNumber(Number(interval), 1, 180));
 
 	let minHours;
 	let minMinutes;
@@ -58,6 +60,14 @@ export function generateOptions({
 		minHours = parsedMaxHours;
 		minMinutes = parsedMaxMinutes;
 		maxHours = parsedMinHours;
+		maxMinutes = parsedMinMinutes;
+	} else if (
+		parsedMinHours === parsedMaxHours &&
+		parsedMinMinutes > parsedMaxMinutes
+	) {
+		minHours = parsedMinHours;
+		minMinutes = parsedMaxMinutes;
+		maxHours = parsedMaxHours;
 		maxMinutes = parsedMinMinutes;
 	} else {
 		minHours = parsedMinHours;
@@ -82,8 +92,8 @@ export function generateOptions({
 		const minutes = totalMinutes % 60;
 		const HHmm = formatValue(hours, minutes);
 
-		// We put midnight first, so don't also want it at the end
-		if (HHmm !== '24:00') {
+		// We put midnight first, so don't also want it at the end. This also helps to clamp anything 24:XX
+		if (hours !== 24) {
 			const val = {
 				label: formatTime(HHmm, timeFormat),
 				value: HHmm,
@@ -96,16 +106,17 @@ export function generateOptions({
 	return options;
 }
 
-function clampNumber(num: number, min: number, max: number) {
-	return Math.min(Math.max(num, min), max);
+export function clampNumber(num: number, min: number, max: number) {
+	const clampedNumber = Math.min(Math.max(num, min), max);
+	return isNaN(clampedNumber) ? 0 : clampedNumber;
 }
 
-function parseTime(timeString: string) {
+export function parseTime(timeString: string) {
 	const [hours, minutes] = timeString.split(':').map(Number);
 	return [clampNumber(hours, 0, 24), clampNumber(minutes, 0, 59)];
 }
 
-function formatValue(hours: number, minutes: number) {
+export function formatValue(hours: number, minutes: number) {
 	const formattedHours = String(hours).padStart(2, '0');
 	const formattedMinutes = String(minutes).padStart(2, '0');
 	return `${formattedHours}:${formattedMinutes}`;
