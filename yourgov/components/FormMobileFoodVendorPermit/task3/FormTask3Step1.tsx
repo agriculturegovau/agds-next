@@ -50,7 +50,8 @@ export function FormTask3Step1() {
 		};
 
 		setLastAddedFile(newFormattedFile);
-		setFormState({
+
+		const newFormState = {
 			...formState,
 			task3: {
 				...formState.task3,
@@ -66,7 +67,10 @@ export function FormTask3Step1() {
 				},
 				started: true,
 			},
-		});
+		};
+
+		setFormState(newFormState);
+		refreshValidation(newFormState);
 	}
 	function handleFileDelete(uploadKey: FileCode | undefined) {
 		if (!uploadKey) {
@@ -93,8 +97,17 @@ export function FormTask3Step1() {
 		});
 	}
 
+	function validate(stateToValidate = formState) {
+		return task3Step1Schema.safeParse(stateToValidate?.task3?.step1);
+	}
+
+	function refreshValidation(stateToValidate = formState) {
+		const validation = validate(stateToValidate);
+		setErrors(validation.success ? undefined : validation.error.format());
+	}
+
 	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-		const validation = task3Step1Schema.safeParse(formState.task3?.step1);
+		const validation = validate();
 		event.preventDefault();
 
 		if (!isSavingBeforeExiting && !validation.success) {
@@ -126,12 +139,6 @@ export function FormTask3Step1() {
 			formIntroduction="Upload all documents listed in the table below."
 		>
 			<Stack as="form" gap={2} width="100%" onSubmit={onSubmit}>
-				{errors?.fileCollection?._errors && (
-					<PageAlert tone="error" title={errors.fileCollection?._errors[0]}>
-						<Text>Files need to be uploaded.</Text>
-					</PageAlert>
-				)}
-
 				{isSuccessVisible && lastAddedFile && (
 					<PageAlert
 						tone="success"
@@ -155,6 +162,7 @@ export function FormTask3Step1() {
 					fileCollection={fileCollection}
 					onFileUpload={handleFileUpload}
 					onFileDelete={handleFileDelete}
+					errors={errors}
 				/>
 				<StepActions />
 			</Stack>

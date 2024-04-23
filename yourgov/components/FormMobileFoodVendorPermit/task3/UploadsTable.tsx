@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { z } from 'zod';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Drawer } from '@ag.ds-next/react/drawer';
 import { FileUpload, FileWithStatus } from '@ag.ds-next/react/file-upload';
@@ -12,11 +13,13 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-	TableWrapper,
 } from '@ag.ds-next/react/table';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { Modal } from '@ag.ds-next/react/modal';
+import { Box, focusStyles, linkStyles } from '@ag.ds-next/react/box';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { SetStateFn } from '../types';
 import {
 	FileCode,
@@ -36,6 +39,7 @@ interface UploadTableProps {
 	onFileDelete?: (uploadCode: FileCode | undefined) => void;
 	readOnly?: boolean;
 	fileCollection: FileCollection | undefined;
+	errors: z.ZodFormattedError<Task3Step1Schema> | undefined;
 }
 
 export function UploadsTable({
@@ -43,6 +47,7 @@ export function UploadsTable({
 	onFileUpload,
 	onFileDelete,
 	fileCollection,
+	errors,
 }: UploadTableProps) {
 	const [uploadKey, setUploadKey] = useState<FileCode>();
 	const [successFile, setSuccessFile] = useState<Task3FileSchema>();
@@ -60,6 +65,10 @@ export function UploadsTable({
 
 	const fileList = fileCollection ? Object.values(fileCollection) : [];
 
+	const errorKeys = Object.keys(errors?.fileCollection || {}).filter(
+		(key) => key !== '_errors'
+	) as Array<FileCode>;
+
 	return (
 		<>
 			{successFile && (
@@ -71,69 +80,107 @@ export function UploadsTable({
 					<Text as="p">{successFile?.fileName} has been added</Text>
 				</SectionAlert>
 			)}
-			<TableWrapper>
-				<Stack gap={1.5} alignItems="flex-start" width="100%">
-					<Table>
-						<TableHead>
-							<TableRow>
-								<TableHeader scope="col" width="33%">
-									Document type
+			{errorKeys.length > 0 && (
+				<SectionAlert
+					tone="error"
+					title="You must upload the following documents"
+				>
+					<UnorderedList>
+						{errorKeys.map((errorKey) => {
+							const file = fileCollection?.[errorKey];
+							return (
+								<ListItem key={errorKey}>
+									{/* TextLink component is not able to receive focus from an anchor */}
+									<a
+										href={'#upload-' + errorKey}
+										css={[linkStyles, focusStyles]}
+									>
+										{file?.type}
+									</a>
+								</ListItem>
+							);
+						})}
+					</UnorderedList>
+				</SectionAlert>
+			)}
+			<Stack gap={1.5} alignItems="flex-start" width="100%">
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableHeader scope="col" width="33%">
+								Document type
+							</TableHeader>
+							<TableHeader scope="col" width="42%">
+								File
+							</TableHeader>
+							<TableHeader scope="col" width="15%">
+								Size
+							</TableHeader>
+							{!readOnly && (
+								<TableHeader scope="col" width="10%">
+									Action
 								</TableHeader>
-								<TableHeader scope="col" width="42%">
-									File
-								</TableHeader>
-								<TableHeader scope="col" width="15%">
-									Size
-								</TableHeader>
-								{!readOnly && (
-									<TableHeader scope="col" width="10%">
-										Action
-									</TableHeader>
-								)}
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{fileList?.map((fileData) => {
-								return (
-									<TableRow key={fileData?.code}>
-										<TableCell>{fileData?.type}</TableCell>
-										<TableCell>{fileData?.fileName}</TableCell>
-										<TableCell>{fileData?.fileSize}</TableCell>
-										{!readOnly && (
-											<TableCell>
-												{fileData?.file ? (
-													<Button
-														onClick={() => setDeletionFile(fileData)}
-														variant="text"
-														iconBefore={DeleteIcon}
-													>
-														Remove
-													</Button>
-												) : (
-													<Button
-														onClick={() => setUploadKey?.(fileData?.code)}
-														variant="text"
-														iconBefore={UploadIcon}
-													>
-														Upload
-													</Button>
-												)}
-											</TableCell>
+							)}
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{fileList?.map((fileData) => {
+							const hasError = errorKeys.includes(fileData.code);
+
+							return (
+								<Box
+									as="tr"
+									background={hasError ? 'error' : undefined}
+									key={fileData?.code}
+								>
+									<TableCell>{fileData?.type}</TableCell>
+									<TableCell>
+										{hasError ? (
+											<StatusBadge
+												label="Not provided"
+												tone="errorMedium"
+												appearance="subtle"
+											/>
+										) : (
+											fileData?.fileName
 										)}
-									</TableRow>
-								);
-							})}
-						</TableBody>
-					</Table>
-				</Stack>
-				<UploadDrawer
-					key={uploadKey}
-					uploadKey={uploadKey}
-					setUploadKey={setUploadKey}
-					onFileUpload={handleFileUpload}
-					fileCollection={fileCollection}
-				/>
-			</TableWrapper>
+									</TableCell>
+									<TableCell>{fileData?.fileSize}</TableCell>
+									{!readOnly && (
+										<TableCell>
+											{fileData?.file ? (
+												<Button
+													onClick={() => setDeletionFile(fileData)}
+													variant="text"
+													iconBefore={DeleteIcon}
+												>
+													Remove
+												</Button>
+											) : (
+												<Button
+													onClick={() => setUploadKey?.(fileData?.code)}
+													variant="text"
+													iconBefore={UploadIcon}
+													id={'upload-' + fileData?.code}
+												>
+													Upload
+												</Button>
+											)}
+										</TableCell>
+									)}
+								</Box>
+							);
+						})}
+					</TableBody>
+				</Table>
+			</Stack>
+			<UploadDrawer
+				key={uploadKey}
+				uploadKey={uploadKey}
+				setUploadKey={setUploadKey}
+				onFileUpload={handleFileUpload}
+				fileCollection={fileCollection}
+			/>
 			<Modal
 				title={`Are you sure you want to remove "${deletionFile?.fileName}"?`}
 				onClose={() => setDeletionFile(undefined)}
