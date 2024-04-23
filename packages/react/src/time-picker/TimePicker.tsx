@@ -21,6 +21,13 @@ export function TimePicker({
 	value,
 	...props
 }: TimePickerProps) {
+	const {
+		// We remove this prop so that it can't be passed to ComboboxBase
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		renderItem,
+		...consumerProps
+	} = props;
 	const inputId = useComboboxInputId(id);
 	const [options, setOptions] = useState<DefaultComboboxOption[]>(
 		generateOptions({ interval, max, min, timeFormat })
@@ -73,12 +80,12 @@ export function TimePicker({
 			inputRef={inputRefProp}
 			isAutocomplete={false}
 			maxWidth={maxWidth}
-			{...props}
+			{...consumerProps}
 		/>
 	);
 }
 
-export type TimePickerProps = Omit<ComboboxProps, 'options'> & {
+export type TimePickerProps = Omit<ComboboxProps, 'options' | 'renderItem'> & {
 	/* A number of minutes between 1 & 60 to create options at appropriate intervals. */
 	interval?: number;
 	/* A boolean indicating whether to render the options' loading state. */
