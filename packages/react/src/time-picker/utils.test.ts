@@ -7,7 +7,7 @@ import {
 } from './utils';
 
 describe('filterOptions', () => {
-	test('should filter options correctly', () => {
+	test('Filters options correctly', () => {
 		const options = [
 			/* 0 */ { label: '00:00', value: '00:00' },
 			/* 1 */ { label: '12:00 am', value: '00:00' },
@@ -127,7 +127,7 @@ describe('filterOptions', () => {
 		expect(filterOptions(options, '')).toEqual(options);
 	});
 
-	test('should filter out options from a different array but with the same value', () => {
+	test('Filters out options from a different array but with the same value', () => {
 		expect(
 			filterOptions(
 				[
@@ -220,6 +220,62 @@ describe('generateOptions', () => {
 			{ label: '12:00 pm', value: '12:00' },
 			{ label: '3:00 pm', value: '15:00' },
 			{ label: '6:00 pm', value: '18:00' },
+		]);
+	});
+
+	test('Time formats', () => {
+		expect(
+			generateOptions({
+				interval: 180,
+				min: '00:00',
+				max: '24:00',
+				timeFormat: 'h:mm aaa',
+			})
+		).toEqual([
+			{ label: '12:00 am', value: '00:00' },
+			{ label: '3:00 am', value: '03:00' },
+			{ label: '6:00 am', value: '06:00' },
+			{ label: '9:00 am', value: '09:00' },
+			{ label: '12:00 pm', value: '12:00' },
+			{ label: '3:00 pm', value: '15:00' },
+			{ label: '6:00 pm', value: '18:00' },
+			{ label: '9:00 pm', value: '21:00' },
+		]);
+
+		expect(
+			generateOptions({
+				interval: 180,
+				min: '00:00',
+				max: '24:00',
+				timeFormat: 'hh:mm aaa',
+			})
+		).toEqual([
+			{ label: '12:00 am', value: '00:00' },
+			{ label: '03:00 am', value: '03:00' },
+			{ label: '06:00 am', value: '06:00' },
+			{ label: '09:00 am', value: '09:00' },
+			{ label: '12:00 pm', value: '12:00' },
+			{ label: '03:00 pm', value: '15:00' },
+			{ label: '06:00 pm', value: '18:00' },
+			{ label: '09:00 pm', value: '21:00' },
+		]);
+
+		expect(
+			generateOptions({
+				interval: 180,
+				min: '00:00',
+				max: '24:00',
+				timeFormat: 'HH:mm',
+			})
+		).toEqual([
+			{ label: '00:00', value: '00:00' },
+			{ label: '03:00', value: '03:00' },
+			{ label: '06:00', value: '06:00' },
+			{ label: '09:00', value: '09:00' },
+			{ label: '12:00', value: '12:00' },
+			{ label: '15:00', value: '15:00' },
+			{ label: '18:00', value: '18:00' },
+			{ label: '21:00', value: '21:00' },
 		]);
 	});
 
@@ -425,6 +481,28 @@ describe('generateOptions', () => {
 
 		expect(
 			generateOptions({
+				interval: 60,
+				min: 'a',
+				max: '02',
+				timeFormat: 'h:mm aaa',
+			})
+		).toEqual([
+			{ label: '12:00 am', value: '00:00' },
+			{ label: '1:00 am', value: '01:00' },
+			{ label: '2:00 am', value: '02:00' },
+		]);
+
+		expect(
+			generateOptions({
+				interval: 60,
+				min: 'a',
+				max: 'b',
+				timeFormat: 'h:mm aaa',
+			})
+		).toEqual([{ label: '12:00 am', value: '00:00' }]);
+
+		expect(
+			generateOptions({
 				interval: 15,
 				min: '0:30',
 				max: 'a:00',
@@ -477,6 +555,17 @@ describe('clampNumber', () => {
 		expect(clampNumber(2, 0, 1)).toEqual(1);
 		expect(clampNumber(2, 1, 1)).toEqual(1);
 	});
+
+	test('Returns 0 for invalid values', () => {
+		/* eslint-disable @typescript-eslint/ban-ts-comment */
+		// @ts-ignore
+		expect(clampNumber('a', 0, 0)).toEqual(0);
+		// @ts-ignore
+		expect(clampNumber(2, 'a', 1)).toEqual(0);
+		// @ts-ignore
+		expect(clampNumber(2, 1, 'a')).toEqual(0);
+		/* eslint-enable @typescript-eslint/ban-ts-comment */
+	});
 });
 
 describe('parseTime', () => {
@@ -498,7 +587,7 @@ describe('parseTime', () => {
 		expect(parseTime('25:30')).toEqual([24, 30]);
 	});
 
-	test('Invalid strings return 0', () => {
+	test('Returns 0 for invalid strings', () => {
 		expect(parseTime('00')).toEqual([0, 0]);
 		expect(parseTime('a')).toEqual([0, 0]);
 		expect(parseTime('a:b')).toEqual([0, 0]);
