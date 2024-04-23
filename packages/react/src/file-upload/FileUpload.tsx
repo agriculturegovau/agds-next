@@ -382,7 +382,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									)}
 									<Flex justifyContent="space-between" alignItems="center">
 										<Text color="muted">{fileSummaryText}</Text>
-										{acceptedFiles.length > 0 && (
+										{/* This "remove all files" button requires more thought and discussion before implementing */}
+										{/* {acceptedFiles.length > 0 && (
 											<Button
 												variant="text"
 												iconAfter={DeleteIcon}
@@ -394,7 +395,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											>
 												Remove all files
 											</Button>
-										)}
+										)} */}
 									</Flex>
 									<FileUploadExistingFileList
 										files={existingFiles}
