@@ -9,36 +9,28 @@ import {
 import { type TimeFormat } from '../time-input/utils';
 import { filterOptions, generateOptions } from './utils';
 
-export type TimePickerProps = Omit<ComboboxProps, 'options'> & {
-	loading?: boolean;
-	max?: string;
-	min?: string;
-	step?: number;
-	timeFormat: TimeFormat;
-};
-
 export function TimePicker({
 	id,
 	inputRef: inputRefProp,
+	interval = 15,
 	max = '24:00',
 	maxWidth = 'md',
 	min = '00:00',
 	onChange,
-	step = 15,
 	timeFormat = 'h:mm aaa',
 	value,
 	...props
 }: TimePickerProps) {
 	const inputId = useComboboxInputId(id);
 	const [options, setOptions] = useState<DefaultComboboxOption[]>(
-		generateOptions({ min, max, step, timeFormat })
+		generateOptions({ interval, max, min, timeFormat })
 	);
 	const [inputItems, setInputItems] =
 		useState<DefaultComboboxOption[]>(options);
 
 	useEffect(() => {
-		setOptions(generateOptions({ min, max, step, timeFormat }));
-	}, [min, max, step, timeFormat]);
+		setOptions(generateOptions({ interval, max, min, timeFormat }));
+	}, [interval, max, min, timeFormat]);
 
 	const combobox = useCombobox<DefaultComboboxOption>({
 		items: inputItems,
@@ -85,3 +77,16 @@ export function TimePicker({
 		/>
 	);
 }
+
+export type TimePickerProps = Omit<ComboboxProps, 'options'> & {
+	/* A number of minutes between 1 & 60 to create options at appropriate intervals. */
+	interval?: number;
+	/* A boolean indicating whether to render the options' loading state. */
+	loading?: boolean;
+	/* The maximum time for options to end in HH:mm. */
+	max?: string;
+	/* The minimum time for options to start in HH:mm. */
+	min?: string;
+	/* The format to render the options. */
+	timeFormat: TimeFormat;
+};

@@ -117,7 +117,10 @@ export type TimeValue =
 	| undefined;
 
 export type TimeInputProps = Omit<TextInputProps, 'onChange' | 'value'> & {
+	/** Function to be fired following a change event. */
 	onChange?: (args: TimeValue) => void;
+	/* The format to render the value and hint text. */
 	timeFormat?: TimeFormat;
+	/* The value of the input. */
 	value?: TimeValue;
 };

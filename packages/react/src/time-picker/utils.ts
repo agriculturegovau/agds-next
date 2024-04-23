@@ -35,20 +35,19 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 }
 
 export function generateOptions({
-	min,
+	interval,
 	max,
-	step,
+	min,
 	timeFormat,
 }: {
-	min: string;
+	interval: number;
 	max: string;
-	step: number;
+	min: string;
 	timeFormat: TimeFormat;
 }) {
-	// Parse min and max times
 	const [parsedMinHours, parsedMinMinutes] = parseTime(min);
 	const [parsedMaxHours, parsedMaxMinutes] = parseTime(max);
-	const validStep = Math.round(clampNumber(step, 1, 60));
+	const validInterval = Math.round(clampNumber(interval, 1, 60));
 
 	let minHours;
 	let minMinutes;
@@ -77,12 +76,13 @@ export function generateOptions({
 	for (
 		let totalMinutes = minTotalMinutes;
 		totalMinutes <= maxTotalMinutes;
-		totalMinutes += validStep
+		totalMinutes += validInterval
 	) {
 		const hours = Math.floor(totalMinutes / 60);
 		const minutes = totalMinutes % 60;
 		const HHmm = formatValue(hours, minutes);
 
+		// We put midnight first, so don't also want it at the end
 		if (HHmm !== '24:00') {
 			const val = {
 				label: formatTime(HHmm, timeFormat),
