@@ -1,29 +1,34 @@
 ---
-title: TimePicker
-description: Description of TimePicker
+title: Time picker
+description: The Time picker component allows users to easily select a time from a list of options.
 group: Forms
 storybookPath: /story/Forms-TimePicker--basic
 unreleased: true
-figmaGalleryNodeId: REPLACE_ME
+figmaGalleryNodeId: 20846:18895
 relatedComponents: ['combobox', 'time-input']
 ---
 
-As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
+As the user enters text into the field, its autocomplete offers suggestions and highlights ones that best match the text entered. The list closes when an option is selected.
 
-All TimePicker components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
+Time picker is superset of [Combobox](/components/combobox), with additional functionality specific to entering times. It accepts all of Combobox’s props, with the exception of `options`.
+
+Time picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
 	return (
 		<TimePicker
-			label="Select time"
+			label="Select a time"
 			hint="Start typing to see results"
 			value={value}
-			onChange={setValue}
-			min="14:00"
-			max="19:00"
-			step={15}
+			onChange={onChange}
 		/>
 	);
 };
@@ -31,96 +36,120 @@ All TimePicker components are [controlled components](https://reactjs.org/docs/f
 
 <DoHeading />
 
-- use to help users select from a large list
-- provide concise options
+- use to help users select from a large list of specific times
+- use an appropriate time format for the options
+- use an appropriate range and intervals for the options
 - create hint text to let the user know they can search or select
-- use a pre-filled list so users can search or scroll
 - consider whether the list of selections is complex enough to merit searching and filtering
 - indicate whether input is optional.
 
 <DontHeading />
 
 - use if the list of possible results is small – use [Select](/components/select) instead
-- leave the list open once an option is selected.
+- use when users are required to enter an exact, arbitrary time. Use Time input instead.
 
-## TimePicker
+## Time picker
 
-Use the `TimePicker` component when users can choose a single item from a predefined list of options.
+Use the `TimePicker` component when users can choose a single item from a predefined list of options. Regardless of the time format used for the options, it supports multiple time formats to be entered and matched against.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
 	return (
 		<TimePicker
-			label="Select time"
+			label="Select a time"
 			hint="Start typing to see results"
 			value={value}
-			onChange={setValue}
+			onChange={onChange}
 		/>
 	);
 };
 ```
 
-## TimePickerAsync
+## Changing the time range and intervals
 
-Use the `TimePickerAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
+By default, Time picker displays options from 12 am to 11:45 pm at 15 minute intervals. This can be customised by setting the `min`, `max` and `step` props. `min` and `max` accept at 24 hour time string in the `HH:mm` format (such as `'09:00'`). `step` accepts a number of minutes between `1` and `60` to create the options at appropriate intervals between the `min` and `max` times.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
 	return (
 		<TimePicker
-			label="Select time"
+			label="Select a time"
 			hint="Start typing to see results"
 			value={value}
-			onChange={setValue}
+			onChange={onChange}
+			min="09:00"
+			max="17:00"
+			step={30}
+		/>
+	);
+};
+```
+
+## Changing the time format
+
+Like Time input, the Time picker component allows users to enter times in various formats, however, its options are always displayed in a specific format (`'h:mm aaa'` by default). To input 9:00 pm, a user could input '9pm', '9:00pm', '2100', '21:00' or other, lenient variations on these formats.
+
+To modify the time format used in the options, you can change the `timeFormat` prop to one of these supported time formats:
+
+- `'h:mm aaa'` (e.g. 9:00 am, 9:00 pm)
+- `'hh:mm aaa'` (e.g. 09:00 am, 09:00 pm)
+- `'HH:mm'` (e.g. 09:00, 21:00)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	return (
+		<TimePicker
+			label="Select a time"
+			hint="Start typing to see results"
+			value={value}
+			onChange={onChange}
+			timeFormat="HH:mm"
+		/>
+	);
+};
+```
+
+## Loading options
+
+Unlike `ComboboxAsync` which can asynchronously load its options over the network, Time picker instead uses the simple, boolean `loading` prop to indicate that the options are not yet ready to be displayed.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	return (
+		<TimePicker
+			label="Select a time"
+			hint="Start typing to see results"
+			value={value}
+			onChange={onChange}
 			loading
-		/>
-	);
-};
-```
-
-## Block
-
-Use the `block` prop to expand the component to fill the available space.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<TimePicker
-			label="Select time"
-			hint="Start typing to see results"
-			block
-			value={value}
-			onChange={setValue}
-		/>
-	);
-};
-```
-
-## Required
-
-The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
-
-Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
-
-### Hide optional label
-
-The `hideOptionalLabel` prop can be used in situations where you want to indicate to screen reader users that a field is optional but don’t want to show the ‘(optional)’ label.
-
-The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<TimePicker
-			label="Select time"
-			hint="Start typing to see results"
-			hideOptionalLabel
-			value={value}
-			onChange={setValue}
 		/>
 	);
 };
@@ -128,58 +157,27 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ## Invalid
 
-Use the `invalid` prop to indicate if the user input is invalid.
+Use the `invalid` prop to indicate if the user input is invalid. The `isValidTime()` function can be used to help identify whether the input is valid.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(null);
-	const invalid = !value;
+	const [value, setValue] = React.useState({ label: '9:66', value: '9:66' });
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	const invalid = value && !isValidTime(value.value);
+
 	return (
 		<TimePicker
-			label="Select time"
-			hint="Start typing to see results"
 			invalid={invalid}
-			message={invalid ? 'Country is required' : undefined}
-			value={value}
-			onChange={setValue}
-		/>
-	);
-};
-```
-
-## Disabled
-
-Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<TimePicker
-			label="Select time"
+			label="Select a time"
 			hint="Start typing to see results"
-			disabled
+			message="Enter a valid time"
+			onChange={onChange}
 			value={value}
-			onChange={setValue}
-		/>
-	);
-};
-```
-
-## Clearable
-
-Use the `clearable` prop to render a clear ("x") button when there is a selected option.
-
-```jsx live
-() => {
-	const [value, setValue] = React.useState(null);
-	return (
-		<TimePicker
-			label="Select time"
-			hint="Start typing to see results"
-			value={value}
-			onChange={setValue}
-			clearable
 		/>
 	);
 };

@@ -4,8 +4,8 @@ description: The Time input component allows users to enter a time in multiple f
 group: Forms
 storybookPath: /story/Forms-TimeInput--basic
 unreleased: true
-figmaGalleryNodeId: 20846:18895
-relatedComponents: ['text-input']
+figmaGalleryNodeId: 21206:68504
+relatedComponents: ['text-input', 'time-picker']
 ---
 
 ```jsx live
@@ -39,11 +39,12 @@ The `onChange` handler provides an object with both a `value` and `formatted` ve
 
 <DoHeading />
 
-- use when users are specifically required to enter a specific time.
+- use when users are specifically required to enter an exact, arbitrary time.
 
 <DontHeading />
 
-- use when users are required to enter free-form text that isn’t a time.
+- use when users are required to enter free-form text that isn’t a time
+- use when users are required to enter a specific, constrained time. Use Time picker instead.
 
 ## Invalid
 
