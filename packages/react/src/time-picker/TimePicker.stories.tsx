@@ -22,8 +22,30 @@ type Story = StoryObj<typeof TimePicker>;
 
 export const Basic: Story = {};
 
-export const DifferentTimeFormat: Story = {
+export const CustomRange: Story = {
 	args: {
+		min: '09:00',
+		max: '17:00',
+	},
+};
+
+export const CustomInterval: Story = {
+	args: {
+		interval: 60,
+	},
+};
+
+export const CustomTimeFormat: Story = {
+	args: {
+		timeFormat: 'HH:mm',
+	},
+};
+
+export const CustomRangeIntervalAndTimeFormat: Story = {
+	args: {
+		interval: 60,
+		min: '09:00',
+		max: '17:00',
 		timeFormat: 'HH:mm',
 	},
 };
