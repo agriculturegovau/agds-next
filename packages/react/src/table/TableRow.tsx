@@ -7,12 +7,15 @@ export type TableRowProps = PropsWithChildren<{
 	selected?: boolean;
 	/** The row index of the table row. */
 	'aria-rowindex'?: number;
+	/** Style the row when one cell contains an error. */
+	hasRowError?: boolean;
 }>;
 
 export function TableRow({
 	children,
 	selected,
 	'aria-rowindex': ariaRowindex,
+	hasRowError,
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
 	return (
@@ -59,6 +62,10 @@ export function TableRow({
 							// More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
 							'@supports (-webkit-appearance: -apple-pay-button)':
 								alternativeSelectedStyles,
+					  }
+					: hasRowError
+					? {
+							background: '#fff0f0',
 					  }
 					: undefined
 			}

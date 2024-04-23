@@ -4,7 +4,6 @@ import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
 	TableBody,
-	TableCaption,
 	TableCell,
 	TableHead,
 	TableHeader,
@@ -18,7 +17,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { AlertFilledIcon, UploadIcon } from '@ag.ds-next/react/icon';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Box } from '@ag.ds-next/react/box';
-import { generateTableCaption } from '../lib/utils';
+import { StatusBadge } from '@ag.ds-next/react/status-badge';
 
 const descriptionId = 'data-table-description';
 
@@ -27,21 +26,23 @@ type DataTableProps = {
 	headingId?: string;
 	/** The id of the table. */
 	tableId?: string;
+	/** Open drawer. */
+	openDrawer: () => void;
+	/** Data for assessment files table. */
+	assessmentFiles: {
+		documentType: string;
+		file: string;
+		size: string;
+		label: string;
+		buttonId: string;
+		error?: boolean;
+	}[];
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, tableId }, ref) {
+	function DataTable({ assessmentFiles, headingId, tableId, openDrawer }, ref) {
 		const error = false;
 		const loading = false;
-
-		const caption = generateTableCaption({
-			loading,
-			totalItems: 100,
-			pagination: {
-				page: 1,
-				perPage: 10,
-			},
-		});
 
 		if (error) {
 			return (
@@ -57,20 +58,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 				</Stack>
 			);
 		}
-
-		// if (!loading && data.length === 0) {
-		// 	return (
-		// 		<Stack gap={2} alignItems="flex-start" paddingY={1}>
-		// 			<Stack gap={1}>
-		// 				<HelpIcon size="lg" color="muted" />
-		// 				<Heading type="h2" fontSize="lg">
-		// 					No results found
-		// 				</Heading>
-		// 				<Text>Try adjusting your filter options.</Text>
-		// 			</Stack>
-		// 		</Stack>
-		// 	);
-		// }
 
 		return (
 			<Stack gap={0.5}>
@@ -91,14 +78,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						tabIndex={-1}
 						tableLayout="fixed"
 					>
-						{!headingId && (
-							<TableCaption>
-								{caption}
-								<VisuallyHidden>
-									, column headers with buttons are sortable.
-								</VisuallyHidden>
-							</TableCaption>
-						)}
 						<TableHead>
 							<TableRow aria-rowindex={1}>
 								{headers.map(({ label, textAlign, width }) => {
@@ -145,23 +124,43 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 								</Fragment>
 							) : (
 								<Fragment>
-									{data.map(
-										({ documentType, error, file, size, label }, index) => {
+									{assessmentFiles.map(
+										(
+											{ buttonId, documentType, error, file, size, label },
+											index
+										) => {
 											// Adding 2 because the table header row is the first row
 											const rowIndex = index + 2;
 											return (
-												<TableRow aria-rowindex={rowIndex} key={documentType}>
+												<TableRow
+													hasRowError={error}
+													aria-rowindex={rowIndex}
+													key={documentType}
+												>
 													<TableCell as="th" scope="row">
 														{documentType}
 													</TableCell>
 													<TableCell>
-														<Box background={error ? 'error' : undefined}>
-															{file}
-														</Box>
+														<Box>{file}</Box>
 													</TableCell>
-													<TableCell>{size}</TableCell>
 													<TableCell>
-														<Button iconBefore={UploadIcon} variant="text">
+														{size ? (
+															size
+														) : (
+															<StatusBadge
+																label="File missing"
+																appearance="subtle"
+																tone="errorHigh"
+															/>
+														)}
+													</TableCell>
+													<TableCell>
+														<Button
+															iconBefore={UploadIcon}
+															id={buttonId}
+															variant="text"
+															onClick={openDrawer}
+														>
 															{label}
 														</Button>
 													</TableCell>
@@ -181,63 +180,24 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 const headers: {
 	label: string;
-	// sortKey: keyof BusinessForAudit;
 	width?: TableHeaderProps['width'];
 	textAlign?: TableHeaderProps['textAlign'];
 }[] = [
 	{
 		label: 'Document type',
-		// sortKey: 'documentType',
 		width: { xs: '20rem', lg: 'auto' },
 	},
 	{
 		label: 'File',
-		// sortKey: 'file',
 		width: '12rem',
 	},
 	{
 		label: 'Size',
-		// sortKey: 'size',
 		width: { xs: '16rem', lg: 'auto' },
 	},
 	{
 		label: 'Label',
-		// sortKey: 'label',
 		textAlign: 'left',
 		width: '12rem',
-	},
-];
-
-const data = [
-	{
-		documentType: 'RMS Vehicle registration',
-		file: 'filename.pdf',
-		size: '88kb',
-		label: 'Upload',
-	},
-	{
-		documentType: 'Operational Plan of Management',
-		file: 'filename.pdf',
-		size: '88kb',
-		label: 'Upload',
-	},
-	{
-		documentType: 'Vehicle build and layout plans',
-		file: 'filename.pdf',
-		size: '',
-		label: 'Upload',
-		error: true,
-	},
-	{
-		documentType: 'Food Safety Supervisor Certificate for Alex',
-		file: 'filename.pdf',
-		size: '88kb',
-		label: 'Upload',
-	},
-	{
-		documentType: 'Suggested menu or list of foods being sold',
-		file: 'filename.pdf',
-		size: '88kb',
-		label: 'Upload',
 	},
 ];

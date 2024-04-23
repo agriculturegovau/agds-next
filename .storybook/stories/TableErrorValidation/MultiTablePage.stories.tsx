@@ -1,9 +1,10 @@
-import { RefObject, useState } from 'react';
+import { ChangeEvent, RefObject, useEffect, useRef, useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '@ag.ds-next/react/stack';
-// import { useTernaryState } from '@ag.ds-next/react/core';
 import { H1, H2 } from '@ag.ds-next/react/heading';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
+import { useTernaryState } from '@ag.ds-next/react/src/core';
+import { Drawer } from '@ag.ds-next/react/src/drawer';
 import {
 	DatePicker,
 	ListItem,
@@ -16,7 +17,6 @@ import {
 	UnorderedList,
 } from '../../../docs/components/designSystemComponents';
 import { DataTable } from './components/DataTable';
-// import { DashboardFilterDrawer } from './components/DashboardFilterDrawer';
 
 type MultiTablePageProps = {
 	tableRef?: RefObject<HTMLTableElement>;
@@ -31,24 +31,24 @@ const defaultPageErrors = [
 	{
 		href: `#${locationTextInputId}`,
 		message: 'Location of assessment',
-		name: 'location',
+		name: 'location' as const,
 	},
 	{
 		href: `#${dateOfAssessmentDatePickerId}`,
 		message: 'Date of assessment',
-		name: 'date',
+		name: 'date' as const,
 	},
 	{
-		href: `#${tableId}`,
+		href: `#section-alert`,
 		message: 'Assessment files',
-		name: 'files',
+		name: 'files' as const,
 	},
 ];
 type DefaultPageErrors = typeof defaultPageErrors;
 
 const defaultTableErrors = [
 	{
-		href: `#${tableId}`,
+		href: '#vehicle-build-and-layout-plans-upload-button',
 		message: 'Upload files',
 		name: 'files',
 	},
@@ -56,15 +56,58 @@ const defaultTableErrors = [
 type DefaultTableErrors = typeof defaultTableErrors;
 
 export const MultiTablePage = ({ tableRef }: MultiTablePageProps) => {
+	const pageAlertRef = useRef<HTMLDivElement>(null);
 	const [dateValue, setDateValue] = useState<Date>();
+	const [locationValue, setLocationValue] = useState<string>();
 	const [pageErrors, setPageErrors] =
 		useState<DefaultPageErrors>(defaultPageErrors);
 	const [tableErrors, setTableErrors] =
 		useState<DefaultTableErrors>(defaultTableErrors);
+	const [assessmentFiles, setAssessmentFiles] = useState(
+		defaultAssessmentFiles
+	);
 
-	// const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+	const onSaveAndContinue = () => {
+		const nameToValidityMap = {
+			date: !!dateValue,
+			files: assessmentFiles.every(({ error }) => !error),
+			location: !!locationValue,
+		};
+		setTableErrors((prevTableErrors) =>
+			assessmentFiles.every(({ error }) => !error) ? [] : prevTableErrors
+		);
+		setPageErrors((prevPageErrors) =>
+			prevPageErrors.filter(({ name }) => !nameToValidityMap[name])
+		);
+	};
+
+	const mockUploadFile = () => {
+		setAssessmentFiles((prevAssessmentFiles) =>
+			prevAssessmentFiles
+				.filter(({ error }) => !error)
+				.concat([
+					{
+						documentType: 'Vehicle build and layout plans',
+						file: 'filename.pdf',
+						size: '88kb',
+						label: 'Upload',
+						buttonId: 'vehicle-build-and-layout-plans-upload-button',
+						error: true,
+					},
+				])
+		);
+		closeDrawer();
+		pageAlertRef?.current?.focus();
+	};
+
+	useEffect(() => {
+		pageAlertRef?.current?.focus();
+	}, [pageErrors.length]);
+
 	return (
-		<Stack gap={2}>
+		<Stack gap={2} padding={2}>
 			<H1 id={tableHeadingId}>Assessment details</H1>
 
 			<Text fontSize="md">Upload all documents listed in the table below.</Text>
@@ -72,7 +115,12 @@ export const MultiTablePage = ({ tableRef }: MultiTablePageProps) => {
 			<Text>All fields are required unless marked optional.</Text>
 
 			{!!pageErrors.length && (
-				<PageAlert tone="error" title="There is a problem">
+				<PageAlert
+					tabIndex={-1}
+					ref={pageAlertRef}
+					tone="error"
+					title="There is a problem"
+				>
 					<Text as="p">Please correct the following fields and try again</Text>
 					<UnorderedList>
 						{pageErrors.map(({ href, message }) => (
@@ -89,8 +137,12 @@ export const MultiTablePage = ({ tableRef }: MultiTablePageProps) => {
 				invalid={pageErrors.some(({ name }) => name === 'location')}
 				label="Location of assessment"
 				message={pageErrors.find(({ name }) => name === 'location')?.message}
+				onChange={(event: ChangeEvent<HTMLInputElement>) =>
+					setLocationValue(event.target.value)
+				}
 				name="location"
 				required
+				value={locationValue}
 			/>
 
 			<DatePicker
@@ -107,39 +159,60 @@ export const MultiTablePage = ({ tableRef }: MultiTablePageProps) => {
 			<Stack gap={1}>
 				<H2>Assessment files</H2>
 
-				<SectionAlert
-					title="You must provide decisions for each change in the table below"
-					tone="error"
-				>
-					<Stack gap={0.5} alignItems="flex-start">
-						<UnorderedList>
-							{tableErrors.map(({ href, message }) => (
-								<ListItem key={href}>
-									<TextLink href={href}>{message}</TextLink>
-								</ListItem>
-							))}
-						</UnorderedList>
-					</Stack>
-				</SectionAlert>
+				{!!tableErrors.length && (
+					<SectionAlert
+						id="section-alert"
+						title="You must provide decisions for each change in the table below"
+						tone="error"
+						tabIndex={-1}
+					>
+						<Stack gap={0.5} alignItems="flex-start">
+							<UnorderedList>
+								{tableErrors.map(({ href, message }) => (
+									<ListItem key={href}>
+										<TextLink href={href}>{message}</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
+						</Stack>
+					</SectionAlert>
+				)}
 
 				<DataTable
+					assessmentFiles={assessmentFiles}
 					ref={tableRef}
 					headingId={tableHeadingId}
 					tableId={tableId}
+					openDrawer={openDrawer}
 				/>
 			</Stack>
 
 			<ButtonGroup>
-				<Button>Save and continue</Button>
+				<Button onClick={onSaveAndContinue}>Save and continue</Button>
 				<Button variant="secondary">Save and exit</Button>
 				<Button variant="text">Cancel</Button>
 			</ButtonGroup>
+
+			<>
+				<Drawer
+					isOpen={isDrawerOpen}
+					onClose={closeDrawer}
+					title="Medium Drawer"
+					actions={
+						<ButtonGroup>
+							<Button onClick={closeDrawer}>Done</Button>
+						</ButtonGroup>
+					}
+				>
+					<Button onClick={mockUploadFile}>Mock upload file</Button>
+				</Drawer>
+			</>
 		</Stack>
 	);
 };
 
 const meta: Meta<typeof MultiTablePage> = {
-	title: 'Patterns/Data loading/Table',
+	title: 'Patterns/Multi Table Page/Table',
 	component: MultiTablePage,
 	render: (args) => (
 		<PageContent>
@@ -165,3 +238,42 @@ export const Basic: Story = {
 		);
 	},
 };
+
+const defaultAssessmentFiles = [
+	{
+		documentType: 'RMS Vehicle registration',
+		file: 'filename.pdf',
+		size: '88kb',
+		label: 'Upload',
+		buttonId: 'rms-vehicle-registration-upload-button',
+	},
+	{
+		documentType: 'Operational Plan of Management',
+		file: 'filename.pdf',
+		size: '88kb',
+		label: 'Upload',
+		buttonId: 'operational-plan-of-management-upload-button',
+	},
+	{
+		documentType: 'Vehicle build and layout plans',
+		file: 'filename.pdf',
+		size: '',
+		label: 'Upload',
+		buttonId: 'vehicle-build-and-layout-plans-upload-button',
+		error: true,
+	},
+	{
+		documentType: 'Food Safety Supervisor Certificate for Alex',
+		file: 'filename.pdf',
+		size: '88kb',
+		label: 'Upload',
+		buttonId: 'food-safety-supervisor-certificate-for-alex-upload-button',
+	},
+	{
+		documentType: 'Suggested menu or list of foods being sold',
+		file: 'filename.pdf',
+		size: '88kb',
+		label: 'Upload',
+		buttonId: 'suggested-menu-or-list-of-foods-being-sold-upload-button',
+	},
+];
