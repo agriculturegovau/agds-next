@@ -29,7 +29,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -540,7 +540,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -1051,7 +1051,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -1562,7 +1562,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -2073,7 +2073,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -2584,7 +2584,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -3095,7 +3095,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -3606,7 +3606,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-1te2wbi-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

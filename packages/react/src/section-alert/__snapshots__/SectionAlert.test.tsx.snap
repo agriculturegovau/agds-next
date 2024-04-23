@@ -11,7 +11,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-m2bw0l"
+        class="css-1nsxo07"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -93,7 +93,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-m2bw0l"
+        class="css-1nsxo07"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -139,7 +139,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Error"
-        class="css-bxxvy5"
+        class="css-icnoq1"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -180,7 +180,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-m2bw0l"
+        class="css-1nsxo07"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -221,7 +221,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-17knyan"
+        class="css-wwom9k"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
