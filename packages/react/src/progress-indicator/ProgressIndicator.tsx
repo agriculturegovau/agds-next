@@ -15,7 +15,7 @@ import {
 } from './utils';
 
 export type ProgressIndicatorProps = {
-	/** The list of items, including sub items, to display. Use in conjunction with `activePath`. Note sub items are only available when using links. */
+	/** The list of items, including level 2 items, to display. Use in conjunction with `activePath`. Note level 2 items are only available when using links. */
 	items: (ProgressIndicatorItem | ProgressIndicatorItemWithLevelTwoItems)[];
 	/** Used for highlighting the active step. This should match the active item's `href` (or label if no href is supplied). */
 	activePath?: string;

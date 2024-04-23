@@ -119,8 +119,9 @@ export const ProgressIndicatorItem = ({
 						<ProgressIndicatorItemTimeline />
 
 						<Box as="ul">
-							<Box as="li">
+							<Box as="li" css={{ position: 'relative' }}>
 								<Flex
+									{...items.find((item) => item.isActive)}
 									alignItems="center"
 									aria-current={true}
 									as={as}
@@ -132,6 +133,17 @@ export const ProgressIndicatorItem = ({
 										'&:hover': {
 											backgroundColor: hoverColorMap[background],
 											...packs.underline,
+
+											// Extra highlighted space on hover for visual balance (not when focused which avoids hover styles covering the focus ring)
+											':not(:focus)::before': {
+												backgroundColor: hoverColorMap[background],
+												content: '""',
+												height: '0.5rem',
+												left: 0,
+												position: 'absolute',
+												top: '-0.5rem',
+												width: '100%',
+											},
 										},
 									}}
 									gap={0.5}

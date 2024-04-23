@@ -9,26 +9,28 @@ relatedComponents: ['task-list']
 
 ```jsx live
 <ProgressIndicator
-	activePath="/organisations"
+	activePath="#organisations"
 	items={[
-		{ label: 'Introduction', status: 'done', href: '/introduction' },
-		{ label: 'Submit evidence', status: 'saved', href: '/evidence' },
-		{ label: 'Organisations', status: 'started', href: '/organisations' },
-		{ label: 'Business contacts', status: 'error', href: '/contacts' },
-		{ label: 'Case studies', status: 'todo', href: '/case-studies' },
-		{ label: 'Attachments', status: 'started', href: '/attachments' },
-		{ label: 'Review and submit', status: 'blocked', href: '/review' },
+		{ label: 'Introduction', status: 'done', href: '#introduction' },
+		{ label: 'Submit evidence', status: 'saved', href: '#evidence' },
+		{ label: 'Organisations', status: 'started', href: '#organisations' },
+		{ label: 'Business contacts', status: 'error', href: '#contacts' },
+		{ label: 'Case studies', status: 'todo', href: '#case-studies' },
+		{ label: 'Attachments', status: 'started', href: '#attachments' },
+		{ label: 'Review and submit', status: 'blocked', href: '#review' },
 	]}
 />
 ```
 
-Progress indicators are used to show users how many steps are needed to complete a form and where they are in the process of completing it. This helps users know how much is left to do and how far along they are.
+Progress indicators are used to help users navigate to each step of a multi-step form, show users how many steps are needed to complete and where they are in the process of completing it. This helps users know how much is left to do and how far along they are.
 
 Progress indicators can be applied to larger tasks that can be completed in any order and returned to at a later date, like doing a tax return or applying for a driver’s licence.
 
 Progress indicators can be applied to multi-step forms if the form has a known number of steps to be completed. <sup><a href="#cite-1">1</a></sup>
 
 Avoid adding or removing pages to a multi-step form where a progress indicator is used as this can confuse and mislead users. Consider another approach if the number of steps might change due to user input. <sup><a href="#cite-2">2</a></sup>
+
+Progress indicators contain level 1 links to each page of a multi-step form. When additional pages are required for secondary actions nested in level 1 pages, level 2 links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the to the previous step.
 
 <DoHeading />
 
@@ -137,55 +139,55 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 
 ```jsx live
 <ProgressIndicator
-	activePath="/organisations"
+	activePath="#organisations"
 	hideSubtitle
 	items={[
-		{ href: '/introduction', label: 'Introduction', status: 'done' },
-		{ href: '/organisations', label: 'Organisations', status: 'started' },
+		{ href: '#introduction', label: 'Introduction', status: 'done' },
+		{ href: '#organisations', label: 'Organisations', status: 'started' },
 		{
-			href: '/contacts',
+			href: '#contacts',
 			label: 'Business contacts',
 			status: 'started',
 		},
-		{ href: '/case-studies', label: 'Case studies', status: 'todo' },
-		{ href: '/attachments', label: 'Attachments', status: 'blocked' },
+		{ href: '#case-studies', label: 'Case studies', status: 'todo' },
+		{ href: '#attachments', label: 'Attachments', status: 'blocked' },
 	]}
 />
 ```
 
 ## Adding level 2 steps
 
-If one of the steps in a multi-step form has a secondary task, such as adding an employee with name and email to a list of employees, use a separate page for the secondary task. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
+If one of the steps in a multi-step form has a secondary step, such as adding an employee with name and email to a list of employees, use a separate page for the secondary step. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
 
 ```jsx live
 <ProgressIndicator
-	activePath="/organisations/add-organisation"
+	activePath="#organisations/add-organisation"
 	hideSubtitle
 	items={[
-		{ href: '/introduction', label: 'Introduction', status: 'done' },
+		{ href: '#introduction', label: 'Introduction', status: 'done' },
 		{
-			href: '/organisations',
+			href: '#organisations',
 			label: 'Organisations',
 			status: 'started',
 			items: [
 				{
 					label: 'Add an organisation',
-					href: '/organisations/add-organisation',
+					href: '#organisations/add-organisation',
 				},
 			],
 		},
-		{ href: '/review', label: 'Review and submit', status: 'blocked' },
+		{ href: '#review', label: 'Review and submit', status: 'blocked' },
 	]}
 />
 ```
 
 ### An example of a level 2 step
 
-Let’s say that a user is completing a multi-step application form. They want to change their pre-filled details, so they select the link to change their details.
+Progress indicators contain level 1 links to each page of a multi-step form. When additional pages are required for secondary actions nested in level 1 pages, level 2 links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the to the previous step.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--1.png" alt="" />
 
-The link takes the user to a separate page where they can change their details. This page is still within the main step, so a level 2 step is displayed in the progress indicator. This helps the user understand where they are in the process.
+The level 2 step is separate page, so it is displayed under the main level 1 step in the progress indicator. This helps the user understand where they are in the process.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--2.png" alt="" />
 
