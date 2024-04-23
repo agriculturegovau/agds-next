@@ -135,7 +135,7 @@ export const ProgressIndicatorItem = ({
 											...packs.underline,
 
 											// Extra highlighted space on hover for visual balance (not when focused which avoids hover styles covering the focus ring)
-											':not(:focus)::before': {
+											':not(:focus-visible)::before': {
 												backgroundColor: hoverColorMap[background],
 												content: '""',
 												height: '0.5rem',
