@@ -1315,6 +1315,11 @@ const snippets: Array<Snippet> = [
 		name: 'Basic',
 		code: `<TimeInput label="Time" value={{ value: '930' }} onChange={() => {}} />`,
 	},
+	{
+		group: 'TimePicker',
+		name: 'Basic',
+		code: `<TimePicker label="Select a time" onChange={() => {}} />`,
+	},
 ];
 
 export default snippets;
