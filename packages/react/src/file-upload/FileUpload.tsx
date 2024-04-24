@@ -105,7 +105,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
 		if (maxFiles !== undefined && maxFiles < 1) {
-			throw new Error('maxFiles cannot be less than 1');
+			console.warn(
+				'FileUpload: maxFiles cannot be less than 1. The property is being ignored.'
+			);
 		}
 
 		const [acceptedFiles, setAcceptedFiles] = useState<FileWithStatus[]>(value);
