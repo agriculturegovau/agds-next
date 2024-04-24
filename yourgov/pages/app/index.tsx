@@ -1,32 +1,30 @@
-import { Fragment, ReactElement, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, Heading } from '@ag.ds-next/react/heading';
-import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Stack } from '@ag.ds-next/react/stack';
-import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
-import { Text } from '@ag.ds-next/react/text';
-import { Columns } from '@ag.ds-next/react/columns';
-import { Tag } from '@ag.ds-next/react/tags';
-import { Divider } from '@ag.ds-next/react/divider';
+import { Fragment, ReactElement } from 'react';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Avatar } from '@ag.ds-next/react/src/avatar';
-import { Flex } from '@ag.ds-next/react/flex';
-import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
 import { Callout } from '@ag.ds-next/react/callout';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Columns } from '@ag.ds-next/react/columns';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Divider } from '@ag.ds-next/react/divider';
+import { Flex } from '@ag.ds-next/react/flex';
+import { H1, H2, Heading } from '@ag.ds-next/react/heading';
+import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { Avatar } from '@ag.ds-next/react/src/avatar';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Tag } from '@ag.ds-next/react/tags';
+import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { AppLayout } from '../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
+import { AppLayout } from '../../components/Layout/AppLayout';
 import { useAuth } from '../../lib/useAuth';
+import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import type { NextPageWithLayout } from '../_app';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
 
 const Page: NextPageWithLayout = () => {
 	const searchParams = useSearchParams();
 	const { user } = useAuth();
 	const { linkedBusinesses, setSelectedBusiness } = useLinkedBusinesses();
-	const [isAlertVisible, setIsAlertVisible] = useState(true);
 
 	const redirectToParam = searchParams.get('redirectTo');
 	const businessHref = redirectToParam ?? '/app/dashboard';
@@ -36,20 +34,6 @@ const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
 			<DocumentTitle title="Account" />
-			{isAlertVisible && (
-				<PageAlert
-					tone="info"
-					title="We are planning a maintenance outage to upgrade the service on 25 May 2024 from 12pm to 5pm AEDT."
-					onClose={() => {
-						setIsAlertVisible(false);
-					}}
-				>
-					<Text as="p">
-						You won't be able to access yourGov during that time. We apologise
-						for any inconvenience.
-					</Text>
-				</PageAlert>
-			)}
 			<PageContent>
 				<Stack gap={3}>
 					<Flex gap={1} alignItems="center">
