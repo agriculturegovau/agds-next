@@ -195,7 +195,6 @@ describe('filterOptions', () => {
 				options[11],
 				options[12],
 				options[15],
-				options[16],
 			]);
 		});
 

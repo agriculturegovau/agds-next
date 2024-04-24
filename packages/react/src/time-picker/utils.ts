@@ -25,12 +25,17 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 		const isFormattedTimeMatch = formatted24hrTime === option.value;
 
 		function checkIsA12thHour(hour: string) {
-			return ['00', '12', '24'].includes(hour);
+			if (optionHour === '00') {
+				return ['00', '24'].includes(hour);
+			}
+			return hour === '12';
 		}
 
 		const isAnyHourMatch = optionHour === inputHour;
-		const isA12thHourMatch =
-			checkIsA12thHour(inputHour) && checkIsA12thHour(optionHour);
+
+		const is12thHourOption = checkIsA12thHour(optionHour);
+		const is12thHourInput = inputValue === '12' || checkIsA12thHour(inputHour);
+		const isA12thHourMatch = is12thHourOption && is12thHourInput;
 
 		const isRoughHourMatch =
 			isLessThan4Char && (isAnyHourMatch || isA12thHourMatch);
