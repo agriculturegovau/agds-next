@@ -1,5 +1,3 @@
-import { formatTime } from '../time-input';
-
 export type Option = { label: string; value: string };
 
 export const COUNTRY_OPTIONS = [
@@ -277,19 +275,3 @@ export const NAME_OPTIONS = [
 	label: option.fullName,
 	value: option.fullName,
 }));
-
-export const TIME_OPTIONS = Array.from({ length: 24 })
-	.map((_, hourIndex) => {
-		const hour = String(hourIndex).padStart(2, '0');
-		return Array.from({ length: 4 }).map((_, minuteIndex) => {
-			const minute = String(minuteIndex * 15).padStart(2, '0');
-			const hhmm = `${hour}:${minute}`;
-
-			return {
-				// label: formatTime(hhmm, 'h:mm aaa'),
-				label: formatTime(hhmm, 'HH:mm'),
-				value: hhmm,
-			};
-		});
-	})
-	.flat();

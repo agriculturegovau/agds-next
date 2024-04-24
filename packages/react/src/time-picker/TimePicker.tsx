@@ -40,10 +40,10 @@ export function TimePicker({
 	}, [interval, max, min, timeFormat]);
 
 	const combobox = useCombobox<DefaultComboboxOption>({
-		items: inputItems,
-		selectedItem: value,
 		inputId,
+		items: inputItems,
 		itemToString: (item) => item?.label ?? '',
+		selectedItem: value,
 		onSelectedItemChange: ({ selectedItem = null }) => {
 			onChange?.(selectedItem);
 		},
@@ -86,14 +86,14 @@ export function TimePicker({
 }
 
 export type TimePickerProps = Omit<ComboboxProps, 'options' | 'renderItem'> & {
-	/* A number of minutes between 1 & 60 to create options at appropriate intervals. */
+	/* A number of minutes between 1 & 180 to create options at appropriate intervals. */
 	interval?: number;
-	/* A boolean indicating whether to render the options' loading state. */
+	/* A boolean indicating whether to render the option's loading state. */
 	loading?: boolean;
-	/* The maximum time for options to end in HH:mm. */
+	/* The maximum time for options to end (HH:mm). */
 	max?: string;
-	/* The minimum time for options to start in HH:mm. */
+	/* The minimum time for options to start (HH:mm). */
 	min?: string;
-	/* The format to render the options. */
+	/* The format to render the options' labels. */
 	timeFormat?: TimeFormat;
 };

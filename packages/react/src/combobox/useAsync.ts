@@ -1,9 +1,6 @@
 import { useCallback, useReducer, useRef, Reducer, useMemo } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import {
-	DefaultComboboxOption,
-	filterOptions as filterOptionsFn,
-} from './utils';
+import { DefaultComboboxOption, filterOptions } from './utils';
 
 type Action<Option> =
 	| { type: 'START_LOADING' }
@@ -54,8 +51,7 @@ function reducer<Option>(
 }
 
 export function useAsync<Option extends DefaultComboboxOption>(
-	loadOptionsProp: (inputValue: string) => Promise<Option[]>,
-	filterOptions = filterOptionsFn
+	loadOptionsProp: (inputValue: string) => Promise<Option[]>
 ) {
 	const [{ loading, networkError, inputItems }, dispatch] = useReducer<
 		Reducer<State<Option>, Action<Option>>
@@ -91,7 +87,7 @@ export function useAsync<Option extends DefaultComboboxOption>(
 				dispatch({ type: 'SET_ERROR' });
 			}
 		};
-	}, [loadOptionsProp, filterOptions]);
+	}, [loadOptionsProp]);
 
 	const debouncedFetchOptions = useDebouncedCallback(fetchOptions, 200);
 

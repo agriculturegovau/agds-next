@@ -262,7 +262,6 @@ export { TimePicker } from '@ag.ds-next/react/time-picker';
 export {
 	COUNTRY_OPTIONS,
 	NAME_OPTIONS,
-	TIME_OPTIONS,
 } from '@ag.ds-next/react/src/combobox/test-utils';
 export {
 	createExampleFile,
