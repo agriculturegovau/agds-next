@@ -13,6 +13,7 @@ export function TimePicker({
 	id,
 	inputRef: inputRefProp,
 	interval = 15,
+	loading = false,
 	max = '24:00',
 	maxWidth = 'md',
 	min = '00:00',
@@ -79,6 +80,7 @@ export function TimePicker({
 			inputId={inputId}
 			inputRef={inputRefProp}
 			isAutocomplete={false}
+			loading={loading}
 			maxWidth={maxWidth}
 			{...consumerProps}
 		/>
@@ -86,14 +88,14 @@ export function TimePicker({
 }
 
 export type TimePickerProps = Omit<ComboboxProps, 'options' | 'renderItem'> & {
-	/* A number of minutes between 1 & 180 to create options at appropriate intervals. */
+	/** A number of minutes between 1 & 180 to create options at appropriate intervals. */
 	interval?: number;
-	/* A boolean indicating whether to render the option's loading state. */
+	/** A boolean indicating whether to render the option's loading state. */
 	loading?: boolean;
-	/* The maximum time for options to end (HH:mm). */
+	/** The maximum time for options to end (HH:mm). */
 	max?: string;
-	/* The minimum time for options to start (HH:mm). */
+	/** The minimum time for options to start (HH:mm). */
 	min?: string;
-	/* The format to render the options' labels. */
+	/** The format to render the options' labels. */
 	timeFormat?: TimeFormat;
 };
