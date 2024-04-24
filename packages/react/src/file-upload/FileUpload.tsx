@@ -362,23 +362,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											</UnorderedList>
 										</SectionAlert>
 									)}
-									<Flex justifyContent="space-between" alignItems="center">
-										<Text color="muted">{fileSummaryText}</Text>
-										{/* This "remove all files" button requires more thought and discussion before implementing */}
-										{/* {acceptedFiles.length > 0 && (
-											<Button
-												variant="text"
-												iconAfter={DeleteIcon}
-												css={{ marginRight: 12 }}
-												onClick={() => {
-													clearErrors();
-													setAcceptedFiles([]);
-												}}
-											>
-												Remove all files
-											</Button>
-										)} */}
-									</Flex>
+									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
 										onRemove={onRemoveExistingFile}
