@@ -16,6 +16,7 @@ import { ListItem, UnorderedList } from '../list';
 import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
+import { Box } from '../box';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import {
@@ -272,68 +273,74 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			>
 				{(a11yProps) => {
 					return (
-						<Stack gap={1.5} {...dropzoneProps}>
-							<Flex
-								gap={1}
-								padding={1.5}
-								alignItems="center"
-								flexDirection="column"
-								border
-								rounded
-								css={styles}
-							>
-								<UploadIcon size="lg" color="muted" />
-								<input
-									{...dropzoneInputProps}
-									{...a11yProps}
-									{...consumerProps}
-									/**
-									 * Dropzone needs to set a ref to the input, but we _also_
-									 * need to forward a ref to the input so consumers can use it.
-									 * The mergeRef utility allows us to do this.
-									 */
-									ref={mergeRefs([forwardedRef, dropzoneInputRef])}
-									css={visuallyHiddenStyles}
-								/>
+						<div {...dropzoneProps}>
+							<Box paddingBottom={1}>
 								<Flex
-									flexDirection="column"
+									gap={1}
+									padding={1.5}
 									alignItems="center"
-									textAlign="center"
+									flexDirection="column"
+									border
+									rounded
+									css={styles}
 								>
-									<Text
-										color={isDragActive ? 'action' : 'muted'}
-										fontWeight="bold"
+									<UploadIcon size="lg" color="muted" />
+									<input
+										{...dropzoneInputProps}
+										{...a11yProps}
+										{...consumerProps}
+										/**
+										 * Dropzone needs to set a ref to the input, but we _also_
+										 * need to forward a ref to the input so consumers can use it.
+										 * The mergeRef utility allows us to do this.
+										 */
+										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
+										css={visuallyHiddenStyles}
+									/>
+									<Flex
+										flexDirection="column"
+										alignItems="center"
+										textAlign="center"
 									>
-										{isDragActive
-											? `Drop ${filesPlural} here`
-											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-										{isDragActive ? <>&hellip;</> : null}
-									</Text>
-									{maxSize ? (
-										<Text color="muted">
-											{multiple ? 'Each file' : 'File'} cannot exceed{' '}
-											{formattedMaxFileSize}.
+										<Text
+											color={isDragActive ? 'action' : 'muted'}
+											fontWeight="bold"
+										>
+											{isDragActive
+												? `Drop ${filesPlural} here`
+												: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
+											{isDragActive ? <>&hellip;</> : null}
 										</Text>
-									) : null}
-									{accept ? (
-										<Text color="muted">
-											Files accepted: {acceptedFilesSummary}
-										</Text>
-									) : null}
+										{maxSize ? (
+											<Text color="muted">
+												{multiple ? 'Each file' : 'File'} cannot exceed{' '}
+												{formattedMaxFileSize}.
+											</Text>
+										) : null}
+										{accept ? (
+											<Text color="muted">
+												Files accepted: {acceptedFilesSummary}
+											</Text>
+										) : null}
+									</Flex>
+									<Button
+										type="button"
+										variant="secondary"
+										onClick={open}
+										disabled={disabled}
+									>
+										Select {filesPlural}
+									</Button>
 								</Flex>
-								<Button
-									type="button"
-									variant="secondary"
-									onClick={open}
-									disabled={disabled}
-								>
-									Select {filesPlural}
-								</Button>
-							</Flex>
+							</Box>
 
-							<Stack gap={0.5}>
-								<div role="alert">
-									{Boolean(allRejections.length) && (
+							{/*
+								For screen readers to reliably detect when the error appears,
+								the role="alert" element must always be mounted in the DOM
+							*/}
+							<div role="alert">
+								{Boolean(allRejections.length) && (
+									<Box paddingTop={0.5} paddingBottom={1}>
 										<SectionAlert
 											title="The following files could not be selected"
 											tone="error"
@@ -362,25 +369,25 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												})}
 											</UnorderedList>
 										</SectionAlert>
-									)}
-								</div>
-								{areFileListsVisible && (
-									<>
-										<Text color="muted">{fileSummaryText}</Text>
-										<FileUploadExistingFileList
-											files={existingFiles}
-											onRemove={onRemoveExistingFile}
-											hideThumbnails={hideThumbnails}
-										/>
-										<FileUploadFileList
-											files={acceptedFiles}
-											onRemove={handleRemoveAcceptedFile}
-											hideThumbnails={hideThumbnails}
-										/>
-									</>
+									</Box>
 								)}
-							</Stack>
-						</Stack>
+							</div>
+							{areFileListsVisible && (
+								<Stack gap={0.5}>
+									<Text color="muted">{fileSummaryText}</Text>
+									<FileUploadExistingFileList
+										files={existingFiles}
+										onRemove={onRemoveExistingFile}
+										hideThumbnails={hideThumbnails}
+									/>
+									<FileUploadFileList
+										files={acceptedFiles}
+										onRemove={handleRemoveAcceptedFile}
+										hideThumbnails={hideThumbnails}
+									/>
+								</Stack>
+							)}
+						</div>
 					);
 				}}
 			</Field>
