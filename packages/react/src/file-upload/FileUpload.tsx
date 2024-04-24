@@ -139,27 +139,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					prevAcceptedFiles,
 					index
 				);
-				if (tooManyFilesRejections.length) {
-					const newAcceptedFile = tooManyFilesRejections[0].file;
-					handleRemoveWaitingListItem(0, newAcceptedFile);
-
-					return [...updatedAcceptedFiles, newAcceptedFile];
-				}
 				return updatedAcceptedFiles;
-			});
-		};
-
-		const handleRemoveWaitingListItem = (
-			index: number,
-			file?: FileWithStatus
-		) => {
-			setTooManyFilesRejections((prevWaitingList) => {
-				if (file && prevWaitingList[index]?.file.name === file.name) {
-					return removeItemAtIndex(prevWaitingList, index);
-				} else if (!file) {
-					return removeItemAtIndex(prevWaitingList, index);
-				}
-				return prevWaitingList;
 			});
 		};
 
