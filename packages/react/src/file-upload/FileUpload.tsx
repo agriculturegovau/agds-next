@@ -110,7 +110,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			);
 		}
 
-		const [acceptedFiles, setAcceptedFiles] = useState<FileWithStatus[]>(value);
+		const [acceptedFiles, setAcceptedFiles] = useState(value);
 		const [tooManyFilesRejections, setTooManyFilesRejections] = useState<
 			FileRejection[]
 		>([]);
