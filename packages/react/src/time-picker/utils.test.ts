@@ -60,7 +60,11 @@ describe('filterOptions', () => {
 			expect(filterOptions(options, '1200')).toEqual([options[5], options[6]]);
 		});
 		test('12:00', () => {
-			expect(filterOptions(options, '12:00')).toEqual([options[5], options[6]]);
+			expect(filterOptions(options, '12:00')).toEqual([
+				options[1],
+				options[5],
+				options[6],
+			]);
 		});
 		test('24', () => {
 			expect(filterOptions(options, '24')).toEqual([
@@ -138,6 +142,7 @@ describe('filterOptions', () => {
 				options[10],
 				options[11],
 				options[12],
+				options[14],
 			]);
 		});
 		test('900', () => {
@@ -152,6 +157,8 @@ describe('filterOptions', () => {
 				options[2],
 				options[3],
 				options[4],
+				options[11],
+				options[12],
 			]);
 		});
 

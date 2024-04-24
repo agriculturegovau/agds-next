@@ -11,15 +11,38 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 
 	return options.filter(function filterOption(option) {
 		const HHmm = option.value.split(':').join('');
+
+		const isMatchWithValue = HHmm.includes(sanitizedInputValue);
+		const isMatchWithLabel = option.label
+			.toLowerCase()
+			.includes(sanitizedInputValue);
+		const isLessThan4Char = sanitizedInputValue.length < 4;
+
+		const formatted24hrTime = formatTime(sanitizedInputValue, 'HH:mm');
+		const [inputHour] = formatted24hrTime.split(':');
+		const [optionHour] = option.value.split(':');
+
+		const isFormattedTimeMatch = formatted24hrTime === option.value;
+
+		function checkIsA12thHour(hour: string) {
+			return ['00', '12', '24'].includes(hour);
+		}
+
+		const isAnyHourMatch = optionHour === inputHour;
+		const isA12thHourMatch =
+			checkIsA12thHour(inputHour) && checkIsA12thHour(optionHour);
+
+		const isRoughHourMatch =
+			isLessThan4Char && (isAnyHourMatch || isA12thHourMatch);
+
+		const isPartialLabelMatch = option.label.includes(inputValue);
+
 		const hasMatch =
-			HHmm.includes(sanitizedInputValue) ||
-			option.label.toLowerCase().includes(sanitizedInputValue) ||
-			// When 12 and 24 is typed, show 00:XX options
-			(HHmm.startsWith('00') &&
-				sanitizedInputValue.length < 4 &&
-				(sanitizedInputValue.startsWith('12') ||
-					sanitizedInputValue.startsWith('24'))) ||
-			formatTime(sanitizedInputValue, 'HH:mm') === option.value;
+			isMatchWithValue ||
+			isMatchWithLabel ||
+			isRoughHourMatch ||
+			isPartialLabelMatch ||
+			isFormattedTimeMatch;
 
 		if (typeof selectedItems === 'undefined') {
 			return hasMatch;
