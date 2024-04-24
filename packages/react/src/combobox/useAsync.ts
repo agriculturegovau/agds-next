@@ -91,7 +91,7 @@ export function useAsync<Option extends DefaultComboboxOption>(
 				dispatch({ type: 'SET_ERROR' });
 			}
 		};
-	}, [loadOptionsProp]);
+	}, [loadOptionsProp, filterOptions]);
 
 	const debouncedFetchOptions = useDebouncedCallback(fetchOptions, 200);
 

@@ -95,5 +95,5 @@ export type TimePickerProps = Omit<ComboboxProps, 'options' | 'renderItem'> & {
 	/* The minimum time for options to start in HH:mm. */
 	min?: string;
 	/* The format to render the options. */
-	timeFormat: TimeFormat;
+	timeFormat?: TimeFormat;
 };

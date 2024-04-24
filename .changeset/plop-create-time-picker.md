@@ -4,3 +4,5 @@
 ---
 
 TimePicker: Initial release of component
+
+TimeInput: Update `TimeValue` to use `.value` instead of `.raw`
