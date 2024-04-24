@@ -96,15 +96,11 @@ exports[`FileUpload Basic renders correctly 1`] = `
       <div
         class="css-1wcx0lf-boxStyles"
       >
-        <div
-          class="css-gtshp4-boxStyles"
+        <span
+          class="css-1rpt3h8-boxStyles-Text"
         >
-          <span
-            class="css-1rpt3h8-boxStyles-Text"
-          >
-            1 file selected
-          </span>
-        </div>
+          1 file selected
+        </span>
         <ul
           aria-label="Selected files"
           class="css-1wcx0lf-boxStyles"
