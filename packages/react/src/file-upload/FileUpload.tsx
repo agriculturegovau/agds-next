@@ -339,8 +339,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											onClose={clearErrors}
 										>
 											<Text as="p">
-												These files did not meet upload requirements, were not
-												listed, and will not be uploaded.
+												Please review this list of files that we were unable to
+												accept for the stated reasons:
 											</Text>
 											<UnorderedList>
 												{allRejections.map((file) => {
