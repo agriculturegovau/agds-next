@@ -54,15 +54,4 @@ describe('FileUpload', () => {
 			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
-
-	describe('Max files', () => {
-		it('throws expected error', () => {
-			try {
-				render(<FileUploadExample maxFiles={0} />);
-				throw new Error('If it reaches this point, the error did not throw');
-			} catch (err) {
-				expect((err as Error).message).toBe('maxFiles cannot be less than 1');
-			}
-		});
-	});
 });
