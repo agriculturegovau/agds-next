@@ -330,8 +330,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									Select {filesPlural}
 								</Button>
 							</Flex>
-							{areFileListsVisible && (
-								<Stack gap={0.5}>
+
+							<Stack gap={0.5}>
+								<div role="alert">
 									{Boolean(allRejections.length) && (
 										<SectionAlert
 											title="The following files could not be selected"
@@ -362,19 +363,23 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											</UnorderedList>
 										</SectionAlert>
 									)}
-									<Text color="muted">{fileSummaryText}</Text>
-									<FileUploadExistingFileList
-										files={existingFiles}
-										onRemove={onRemoveExistingFile}
-										hideThumbnails={hideThumbnails}
-									/>
-									<FileUploadFileList
-										files={acceptedFiles}
-										onRemove={handleRemoveAcceptedFile}
-										hideThumbnails={hideThumbnails}
-									/>
-								</Stack>
-							)}
+								</div>
+								{areFileListsVisible && (
+									<>
+										<Text color="muted">{fileSummaryText}</Text>
+										<FileUploadExistingFileList
+											files={existingFiles}
+											onRemove={onRemoveExistingFile}
+											hideThumbnails={hideThumbnails}
+										/>
+										<FileUploadFileList
+											files={acceptedFiles}
+											onRemove={handleRemoveAcceptedFile}
+											hideThumbnails={hideThumbnails}
+										/>
+									</>
+								)}
+							</Stack>
 						</Stack>
 					);
 				}}
