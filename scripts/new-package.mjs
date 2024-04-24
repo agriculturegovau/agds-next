@@ -10,7 +10,7 @@ export default function newPackage(
 			{
 				type: 'input',
 				name: 'packageName',
-				message: 'Package name, all lowercase (e.g. button-link)',
+				message: 'Package name, in kebab-case (e.g. button-link)',
 				validate: (answer) => answer.length > 0,
 			},
 			{
