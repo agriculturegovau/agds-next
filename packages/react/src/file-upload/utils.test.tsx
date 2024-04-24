@@ -263,8 +263,6 @@ describe('checkRejectionsHaveSameFiles', () => {
 		).toBe(true);
 	});
 	test('different', () => {
-		console.log(JSON.stringify({ rejectionListOne }));
-		console.log('nn', JSON.stringify({ rejectionListTwo }), 'nn');
 		expect(
 			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListTwo)
 		).toBe(false);
