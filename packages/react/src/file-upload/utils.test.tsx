@@ -74,11 +74,6 @@ describe('getErrorSummary', () => {
 		expect(getErrorSummary([], '1MB')).toBeUndefined();
 	});
 
-	it('returns a message if there file is too large', () => {
-		const errors = [FILE_TOO_LARGE_ERROR_EXAMPLE];
-
-		expect(getErrorSummary(errors, '1MB')).toEqual('File is over 1MB');
-	});
 	it('returns invalid file type as the highest priority error', () => {
 		const errors = [
 			FILE_TOO_LARGE_ERROR_EXAMPLE,
@@ -87,6 +82,12 @@ describe('getErrorSummary', () => {
 		];
 
 		expect(getErrorSummary(errors, '1MB')).toEqual('Invalid file type');
+	});
+
+	it('returns a message if the file is too large as the 2nd highest priority error', () => {
+		const errors = [TOO_MANY_FILES_ERROR_EXAMPLE, FILE_TOO_LARGE_ERROR_EXAMPLE];
+
+		expect(getErrorSummary(errors, '1MB')).toEqual('File is over 1MB');
 	});
 });
 
