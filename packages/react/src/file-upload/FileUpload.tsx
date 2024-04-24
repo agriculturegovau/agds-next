@@ -343,16 +343,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												accept for the stated reasons:
 											</Text>
 											<UnorderedList>
-												{allRejections.map((file) => {
+												{allRejections.map((rejection) => {
 													return (
-														<ListItem key={file.file.name}>
+														<ListItem key={rejection.file.name}>
 															<Text as="strong" color="error" fontWeight="bold">
-																{file.file.name}
+																{rejection.file.name}
 															</Text>{' '}
 															<span>
-																({formatFileSize(file.file.size)}){' - '}
+																({formatFileSize(rejection.file.size)}){' - '}
 																{getErrorSummary(
-																	file.errors,
+																	rejection.errors,
 																	formattedMaxFileSize
 																)}
 															</span>
