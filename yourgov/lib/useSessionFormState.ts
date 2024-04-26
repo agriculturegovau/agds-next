@@ -27,18 +27,19 @@ export function useSessionFormState<FormState>(
 	const localFormStateRef = useRef(localFormState);
 	localFormStateRef.current = localFormState;
 
-	const setState = useCallback(
-		(value: SetStateValue<Partial<FormState>>) => {
-			function writeStorage(key: string, value: Partial<FormState>) {
-				safeSessionStorage?.setItem(key, JSON.stringify(value));
-				setLocalFormState(value);
-			}
-			value instanceof Function
-				? writeStorage(key, value(localFormStateRef.current))
-				: writeStorage(key, value);
-		},
-		[key]
-	);
+	const setState: (value: SetStateValue<Partial<FormState>>) => undefined =
+		useCallback(
+			(value) => {
+				function writeStorage(key: string, value: Partial<FormState>) {
+					safeSessionStorage?.setItem(key, JSON.stringify(value));
+					setLocalFormState(value);
+				}
+				value instanceof Function
+					? writeStorage(key, value(localFormStateRef.current))
+					: writeStorage(key, value);
+			},
+			[key]
+		);
 
 	return [hasSynced, localFormState, setState] as const;
 }
