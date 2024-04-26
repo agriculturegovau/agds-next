@@ -8,6 +8,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { LinkComponent } from '../components/LinkComponent';
 import { AuthProvider } from '../lib/useAuth';
 import { LinkedBusinessesProvider } from '../lib/useLinkedBusinesses';
+import { safeSessionStorage } from '../lib/useSessionFormState';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -18,10 +19,9 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-	const sessionStorageValue =
-		typeof sessionStorage === undefined
-			? undefined
-			: sessionStorage.getItem('isGlobalAlertVisible');
+	const sessionStorageValue = safeSessionStorage?.getItem(
+		'isGlobalAlertVisible'
+	);
 	const defaultAlertVisibility = sessionStorageValue === 'false' ? false : true;
 	const [isAlertVisible, setIsAlertVisible] = useState(defaultAlertVisibility);
 
@@ -36,7 +36,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 							tone="info"
 							title="We are planning a maintenance outage to upgrade the service on 25 May 2024 from 12pm to 5pm AEDT"
 							onClose={() => {
-								sessionStorage.setItem('isGlobalAlertVisible', 'false');
+								safeSessionStorage?.setItem('isGlobalAlertVisible', 'false');
 								setIsAlertVisible(false);
 							}}
 						>
