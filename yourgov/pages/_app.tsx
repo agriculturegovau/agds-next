@@ -1,8 +1,8 @@
-import { useEffect, useState, type ReactElement, type ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import { Core } from '@ag.ds-next/react/core';
+import { useState, type ReactElement, type ReactNode } from 'react';
 import { theme } from '@ag.ds-next/react/ag-branding';
+import { Core } from '@ag.ds-next/react/core';
 import { GlobalAlert } from '@ag.ds-next/react/global-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkComponent } from '../components/LinkComponent';
