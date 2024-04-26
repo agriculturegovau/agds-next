@@ -147,7 +147,6 @@ export function FormTask1Step4() {
 								id="registrationExpiry"
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								message={errors.registrationExpiry?.message}
-								maxWidth="xl"
 								required
 							/>
 						)}
