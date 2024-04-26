@@ -3,7 +3,7 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -22,7 +22,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
@@ -50,7 +50,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -514,7 +514,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -533,7 +533,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r2:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r2:-button"
       type="button"
     >
@@ -561,7 +561,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -1025,7 +1025,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 exports[`ProgressIndicator With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -1044,7 +1044,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
     <button
       aria-controls="collapsing-side-bar-:r5:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r5:-button"
       type="button"
     >
@@ -1072,7 +1072,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -1536,7 +1536,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 exports[`ProgressIndicator With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -1555,7 +1555,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
     <button
       aria-controls="collapsing-side-bar-:r4:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r4:-button"
       type="button"
     >
@@ -1583,7 +1583,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -2047,7 +2047,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 exports[`ProgressIndicator With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -2066,7 +2066,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
     <button
       aria-controls="collapsing-side-bar-:r7:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r7:-button"
       type="button"
     >
@@ -2094,7 +2094,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -2558,7 +2558,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 exports[`ProgressIndicator With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -2577,7 +2577,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
     <button
       aria-controls="collapsing-side-bar-:r6:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r6:-button"
       type="button"
     >
@@ -2605,7 +2605,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -3069,7 +3069,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 exports[`ProgressIndicator With isActive applied started status active renders active button 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -3088,7 +3088,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
     <button
       aria-controls="collapsing-side-bar-:r9:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r9:-button"
       type="button"
     >
@@ -3116,7 +3116,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"
@@ -3580,7 +3580,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
 exports[`ProgressIndicator With isActive applied started status active renders active link 1`] = `
 <div>
   <section
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
       class="css-w0ukyp-boxStyles"
@@ -3599,7 +3599,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
     <button
       aria-controls="collapsing-side-bar-:r8:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r8:-button"
       type="button"
     >
@@ -3627,7 +3627,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <ul
           class="css-d1p7wm-boxStyles-ProgressIndicatorList"

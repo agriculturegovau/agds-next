@@ -4,13 +4,13 @@ exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <aside
     aria-label="Filters"
-    class="css-8mah9h-boxStyles-boxStyles-CollapsingSideBarContainer"
+    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
   >
     <div
-      class="css-1u29idf-boxStyles-boxStyles"
+      class="css-1w8myos-boxStyles"
     >
       <h2
-        class="css-1qsxf5s-boxStyles-boxStyles-Text"
+        class="css-kip0vn-boxStyles-Text"
       >
         Filter by
       </h2>
@@ -18,7 +18,7 @@ exports[`FilterSidebar renders correctly 1`] = `
     <button
       aria-controls="collapsing-side-bar-:r0:-body"
       aria-expanded="false"
-      class="css-1xvyurq-BaseButton-boxStyles-boxStyles-SideBarCollapseButton"
+      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
       id="collapsing-side-bar-:r0:-button"
       type="button"
     >
@@ -46,10 +46,10 @@ exports[`FilterSidebar renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-1b13c5y-boxStyles-boxStyles"
+        class="css-79i25n-boxStyles"
       >
         <div
-          class="css-aysnyc-boxStyles-boxStyles"
+          class="css-16ved0q-boxStyles"
         />
       </div>
     </div>
