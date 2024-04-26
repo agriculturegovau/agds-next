@@ -157,7 +157,7 @@ export function FormTask1Step3() {
 								invalid={Boolean(errors.state?.message)}
 								message={errors.state?.message}
 								required
-								maxWidth="md"
+								maxWidth="sm"
 							/>
 							<TextInput
 								label="Postcode"
@@ -217,7 +217,7 @@ export function FormTask1Step3() {
 										invalid={Boolean(errors.postalState?.message)}
 										message={errors.postalState?.message}
 										required
-										maxWidth="md"
+										maxWidth="sm"
 									/>
 									<TextInput
 										label="Postcode"
