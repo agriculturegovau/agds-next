@@ -10,6 +10,7 @@ export type FormStepTitleProps = {
 	stepTitle: string;
 	introduction?: ReactNode;
 	callToAction?: ReactNode;
+	hideRequiredFieldsMessage: boolean;
 };
 
 // Based on PageTitle, but with a different heading levels
@@ -19,6 +20,7 @@ export function FormStepTitle({
 	stepTitle,
 	introduction,
 	callToAction,
+	hideRequiredFieldsMessage,
 }: FormStepTitleProps) {
 	return (
 		<Stack gap={1.5}>
@@ -44,7 +46,7 @@ export function FormStepTitle({
 					{introduction}
 				</Text>
 			) : null}
-			<FormRequiredFieldsMessage />
+			{!hideRequiredFieldsMessage && <FormRequiredFieldsMessage />}
 
 			{callToAction}
 		</Stack>

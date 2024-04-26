@@ -9,6 +9,7 @@ export type FormContainerProps = PropsWithChildren<{
 	title: string;
 	introduction: string;
 	callToAction?: ReactNode;
+	hideRequiredFieldsMessage: boolean | undefined;
 }>;
 
 export function FormContainer({
@@ -17,6 +18,7 @@ export function FormContainer({
 	title,
 	introduction,
 	callToAction,
+	hideRequiredFieldsMessage,
 }: FormContainerProps) {
 	const { formTitle } = useGlobalForm();
 	const titleRef = useRef<HTMLHeadingElement>(null);
@@ -34,6 +36,7 @@ export function FormContainer({
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={callToAction}
+				hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 			/>
 			{children}
 		</Stack>

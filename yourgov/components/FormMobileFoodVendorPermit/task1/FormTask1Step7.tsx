@@ -27,6 +27,7 @@ export function FormTask1Step7() {
 		<FormTask1Container
 			formTitle="Confirm and submit"
 			formIntroduction="Check and confirm all details on this page."
+			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>
