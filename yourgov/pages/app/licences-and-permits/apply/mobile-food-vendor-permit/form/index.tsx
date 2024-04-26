@@ -1,19 +1,22 @@
 import { Fragment, ReactElement } from 'react';
-import { Columns, Column } from '@ag.ds-next/react/columns';
+import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
+import { Details } from '@ag.ds-next/react/details';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
 import { TaskList } from '@ag.ds-next/react/task-list';
 import { Text } from '@ag.ds-next/react/text';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { SiteLayout } from '../../../../../../components/Layout/SiteLayout';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { DocumentTitle } from '../../../../../../components/DocumentTitle';
 import { FormHelpCallout } from '../../../../../../components/FormHelpCallout';
-import { PageTitle } from '../../../../../../components/PageTitle';
 import {
-	useGlobalForm,
 	GlobalFormProvider,
 	globalFormTasks,
+	useGlobalForm,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
+import { SiteLayout } from '../../../../../../components/Layout/SiteLayout';
+import { PageTitle } from '../../../../../../components/PageTitle';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
@@ -35,9 +38,41 @@ const Page: NextPageWithLayout = () => {
 								title={formTitle}
 								introduction="Seek approval for your food truck to operate in our area."
 								callToAction={
-									<Text as="p" color="muted">
-										Takes around 20 minutes.
-									</Text>
+									<>
+										<Details
+											label="What you need to apply for a permit"
+											iconBefore
+										>
+											<Prose>
+												<p>
+													To complete this application you will need to provide:
+												</p>
+												<ul>
+													<li>
+														vehicle registration details and vehicle plans
+													</li>
+													<li>operational plan of management</li>
+													<li>food safety supervisor certificate</li>
+													<li>
+														names of any employees who will be handling food.
+													</li>
+													<li>
+														once you have confirmed business and employee
+														details we will provide a checklist of required
+														documents
+													</li>
+												</ul>
+												<p>
+													<TextLink href="#not-sure-where-to-link-to">
+														Learn more about applying for a permit
+													</TextLink>
+												</p>
+											</Prose>
+										</Details>
+										<Text as="p" color="muted">
+											Takes around 20 minutes.
+										</Text>
+									</>
 								}
 							/>
 							<TaskList
