@@ -143,7 +143,7 @@ function AdditionalDetailsForm() {
 				<TextInput
 					label="Contact phone number"
 					hint={
-						'Any Australian mobile or landline, for example 0444111222 or 02 9988 7766'
+						'Any Australian mobile or landline. For example 0444111222 or 02 9988 7766'
 					}
 					id="contactPhoneNumber"
 					{...register('contactPhoneNumber')}
