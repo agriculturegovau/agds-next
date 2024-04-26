@@ -82,12 +82,9 @@ const Page: NextPageWithLayout = () => {
 
 												<h2 id="what-you-will-need">What happens next</h2>
 												<p>
-													To complete this application you will need to provide:
+													It will take 10 business days for your application to
+													be reviewed by a yourGov representative.
 												</p>
-												<ul>
-													<li>Address details</li>
-													<li>current vaccination certificate</li>
-												</ul>
 
 												<Box paddingTop={3}>{Button}</Box>
 
