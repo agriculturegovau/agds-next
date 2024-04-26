@@ -124,10 +124,10 @@ export function FormTask1Step1ChangeDetails() {
 					</DirectionLink>
 					<Stack gap={1.5}>
 						<H1 ref={titleRef} tabIndex={-1} focus>
-							Provide business owner details
+							Change business owner details
 						</H1>
 						<Text as="p" fontSize="md" color="muted">
-							Confirm your name and contact details.
+							Change your name and contact details.
 						</Text>
 						<FormRequiredFieldsMessage />
 					</Stack>
@@ -163,7 +163,7 @@ export function FormTask1Step1ChangeDetails() {
 									</PageAlert>
 								)}
 								<TextInput
-									label="First name"
+									label="Given name/s"
 									autoComplete="given-name"
 									{...register('firstName')}
 									id="firstName"
@@ -173,7 +173,7 @@ export function FormTask1Step1ChangeDetails() {
 									required
 								/>
 								<TextInput
-									label="Last name"
+									label="Family name"
 									autoComplete="family-name"
 									{...register('lastName')}
 									id="lastName"
@@ -183,7 +183,7 @@ export function FormTask1Step1ChangeDetails() {
 									required
 								/>
 								<TextInput
-									label="Email"
+									label="Email address"
 									type="email"
 									autoComplete="email"
 									{...register('email')}
