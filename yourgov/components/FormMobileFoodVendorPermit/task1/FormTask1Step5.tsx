@@ -144,7 +144,6 @@ export function FormTask1Step5() {
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
 							<DateRangePicker
-								legend="Period active"
 								fromInputRef={ref}
 								{...field}
 								id="tradingPeriod"
