@@ -50,7 +50,8 @@ export function FormDefinitionListItemAddress({
 			<SummaryListItemDescription>
 				{address && suburb && state && postcode ? (
 					<Fragment>
-						{address}, {suburb} {state} {postcode}
+						{address},<br />
+						{suburb} {state} {postcode}
 					</Fragment>
 				) : null}
 			</SummaryListItemDescription>

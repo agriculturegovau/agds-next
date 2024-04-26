@@ -199,7 +199,7 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 					<ValidationSectionAlert />
 				)}
 				<ButtonLink variant="text" href={task1FormSteps[5].href}>
-					Change food services
+					Change food served
 				</ButtonLink>
 			</Stack>
 		</Stack>
