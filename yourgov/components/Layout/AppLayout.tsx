@@ -211,7 +211,7 @@ function AppLayoutSidebar() {
 					icon: HomeIcon,
 				},
 				{
-					label: 'Licences and permits',
+					label: 'Permits',
 					href: '/app/licences-and-permits',
 					icon: IconApproval,
 				},
