@@ -18,7 +18,7 @@ import { GettingStartedForm } from '../../../../../components/FormMobileFoodVend
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage licences and permits" />
+			<DocumentTitle title="Manage permits" />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={8}>
@@ -30,11 +30,11 @@ const Page: NextPageWithLayout = () => {
 										href: '/app',
 									},
 									{
-										label: 'Manage licences and permits',
+										label: 'Manage permits',
 										href: '/app/licences-and-permits',
 									},
 									{
-										label: 'Apply for a new licence or permit',
+										label: 'Apply for a new permit',
 										href: '/app/licences-and-permits/apply',
 									},
 									{

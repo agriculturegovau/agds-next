@@ -40,7 +40,7 @@ const Page: NextPageWithLayout = () => {
 									<IconApproval size="lg" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/licences-and-permits">
-											Manage licences and permits
+											Manage permits
 										</CardLink>
 									</Heading>
 									<Text>Apply for and manage your business approvals</Text>

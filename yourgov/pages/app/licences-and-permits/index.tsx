@@ -36,21 +36,21 @@ import {
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage licences and permits" />
+			<DocumentTitle title="Manage permits" />
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs
 						links={[
 							{ label: 'Home', href: '/app' },
-							{ label: 'Manage licences and permits' },
+							{ label: 'Manage permits' },
 						]}
 					/>
 					<PageTitle
-						title="Manage licences and permits"
+						title="Manage permits"
 						introduction="Stay compliant by registering for business licences and permits."
 						callToAction={
 							<CallToActionLink href="/app/licences-and-permits/apply">
-								Apply for a new licence or permit
+								Apply for a permit
 							</CallToActionLink>
 						}
 					/>
