@@ -121,6 +121,7 @@ export function FormTask1Step2() {
 						invalid={Boolean(errors.businessName?.message)}
 						message={errors.businessName?.message}
 						required
+						maxWidth="xl"
 					/>
 
 					<TextInput
@@ -129,6 +130,7 @@ export function FormTask1Step2() {
 						{...register('tradingName')}
 						invalid={Boolean(errors.tradingName?.message)}
 						message={errors.tradingName?.message}
+						maxWidth="xl"
 					/>
 
 					<ControlGroup
