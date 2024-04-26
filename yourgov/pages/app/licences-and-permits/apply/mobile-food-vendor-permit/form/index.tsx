@@ -33,7 +33,7 @@ const Page: NextPageWithLayout = () => {
 							</DirectionLink>
 							<PageTitle
 								title={formTitle}
-								introduction="Seek approval for your food van or truck to operate in our area."
+								introduction="Seek approval for your food truck to operate in our area."
 								callToAction={
 									<Text as="p" color="muted">
 										Takes around 20 minutes.

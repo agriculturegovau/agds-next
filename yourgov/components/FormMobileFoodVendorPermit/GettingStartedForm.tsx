@@ -51,7 +51,7 @@ export function GettingStartedForm({
 					required
 					block
 				>
-					{['Food van', 'Coffee truck', 'Market stall'].map((option) => (
+					{['Food truck', 'Market stall', 'Coffee van'].map((option) => (
 						<Radio
 							key={option}
 							{...register('businessType')}

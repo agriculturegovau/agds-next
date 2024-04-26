@@ -157,7 +157,7 @@ export default function Page() {
 										</p>
 									</Prose>
 									<Accordion>
-										<AccordionItem title="Food van permit">
+										<AccordionItem title="Food truck permit">
 											<AccordionItemContent>
 												<Prose>
 													<p>

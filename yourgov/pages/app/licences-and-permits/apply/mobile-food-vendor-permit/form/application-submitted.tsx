@@ -31,7 +31,7 @@ const Page: NextPageWithLayout = () => {
 								>
 									Application submitted
 								</Text>
-								Apply for a food van permit
+								Apply for a food truck permit
 							</H1>
 
 							<PageAlert
