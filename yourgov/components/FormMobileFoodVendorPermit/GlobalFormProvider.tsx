@@ -66,7 +66,7 @@ export function GlobalFormProvider({
 				taskKey === `task${router.query.taskHighlight}` &&
 				formState[taskKey]?.completed;
 
-			if (!isPrevTaskComplete) return 'blocked';
+			if (!isPrevTaskComplete && taskKey !== 'task2') return 'blocked';
 			if (isDoneRecently) return 'doneRecently';
 			if (formState[taskKey]?.completed) return 'done';
 			if (formState[taskKey]?.started) return 'doing';
