@@ -348,7 +348,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										>
 											<Text as="p">
 												Please review this list of files that were unable to be
-												accept for the stated reasons:
+												accepted for the stated reasons:
 											</Text>
 											<UnorderedList>
 												{allRejections.map((rejection) => {
