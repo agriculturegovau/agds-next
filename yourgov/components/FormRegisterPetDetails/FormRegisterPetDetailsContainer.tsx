@@ -9,11 +9,13 @@ export const FormRegisterPetDetailsContainer = ({
 	title,
 	introduction,
 	callToAction,
+	hideRequiredFieldsMessage,
 }: {
 	children: ReactNode;
 	title: string;
 	introduction: string;
 	callToAction?: ReactNode;
+	hideRequiredFieldsMessage?: boolean;
 }) => {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const { hasCompletedPreviousStep, currentStep } = useFormRegisterPetDetails();
@@ -31,6 +33,7 @@ export const FormRegisterPetDetailsContainer = ({
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={hasCompletedPreviousStep ? callToAction : undefined}
+				hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 			/>
 			{hasCompletedPreviousStep ? children : <NotAvailableAlert />}
 		</Stack>

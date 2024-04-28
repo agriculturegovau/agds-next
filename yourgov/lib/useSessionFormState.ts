@@ -27,7 +27,7 @@ export function useSessionFormState<FormState>(
 	const localFormStateRef = useRef(localFormState);
 	localFormStateRef.current = localFormState;
 
-	const setState: (value: SetStateValue<Partial<FormState>>) => undefined =
+	const setState: (value: SetStateValue<Partial<FormState>>) => void =
 		useCallback(
 			(value) => {
 				function writeStorage(key: string, value: Partial<FormState>) {

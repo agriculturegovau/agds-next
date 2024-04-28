@@ -39,7 +39,7 @@ interface UploadTableProps {
 	onFileDelete?: (uploadCode: FileCode | undefined) => void;
 	readOnly?: boolean;
 	fileCollection: FileCollection | undefined;
-	errors: z.ZodFormattedError<Task3Step1Schema> | undefined;
+	errors?: z.ZodFormattedError<Task3Step1Schema>;
 }
 
 export function UploadsTable({

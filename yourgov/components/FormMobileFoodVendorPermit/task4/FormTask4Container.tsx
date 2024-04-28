@@ -36,6 +36,7 @@ export function FormTask4Container({
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
+						hideRequiredFieldsMessage
 					>
 						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>

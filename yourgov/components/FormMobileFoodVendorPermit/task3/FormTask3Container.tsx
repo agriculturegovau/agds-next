@@ -11,6 +11,7 @@ type FormTask3ContainerProps = PropsWithChildren<{
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
+	hideRequiredFieldsMessage?: boolean;
 }>;
 
 // After step 1 and 2 are completed, then review code and see if this can be deduped
@@ -19,6 +20,7 @@ export function FormTask3Container({
 	formIntroduction,
 	formCallToAction,
 	children,
+	hideRequiredFieldsMessage,
 }: FormTask3ContainerProps) {
 	const { startTask, checkIsTaskAvailable } = useGlobalForm();
 	const { backHref } = useFormTask3Context();
@@ -42,6 +44,7 @@ export function FormTask3Container({
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
+						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 					>
 						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>

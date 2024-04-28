@@ -32,6 +32,7 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={callToAction}
+				hideRequiredFieldsMessage
 			/>
 			{hasCompletedPreviousStep ? children : <NotAvailableAlert />}
 		</Stack>

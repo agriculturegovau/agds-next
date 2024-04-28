@@ -17,6 +17,7 @@ type FormTask2ContainerProps = PropsWithChildren<{
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
+	hideRequiredFieldsMessage?: boolean;
 }>;
 
 // After step 1 and 2 are completed, then review code and see if this can be deduped
@@ -25,6 +26,7 @@ export function FormTask2Container({
 	formIntroduction,
 	formCallToAction,
 	children,
+	hideRequiredFieldsMessage,
 }: FormTask2ContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, typeSearchParm, startTask, checkIsTaskAvailable } =
@@ -73,6 +75,7 @@ export function FormTask2Container({
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
+						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 					>
 						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>
