@@ -347,7 +347,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											onClose={clearErrors}
 										>
 											<Text as="p">
-												Please review this list of files that we were unable to
+												Please review this list of files that were unable to be
 												accept for the stated reasons:
 											</Text>
 											<UnorderedList>
