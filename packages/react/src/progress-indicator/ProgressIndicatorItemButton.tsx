@@ -8,8 +8,8 @@ import { ProgressIndicatorItem } from './ProgressIndicatorItem';
 
 export type ProgressIndicatorItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
-		background?: ProgressIndicatorBackground;
 		status: ProgressIndicatorItemStatus;
+		background?: ProgressIndicatorBackground;
 		isActive?: boolean;
 	};
 

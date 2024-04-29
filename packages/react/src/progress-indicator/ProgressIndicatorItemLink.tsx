@@ -11,7 +11,7 @@ export type ProgressIndicatorItemLinkProps = LinkProps & {
 	 *
 	 * `blocked` = This step is not yet available for the user to start.
 	 *
-	 * `doing` = **(deprecated)** This step has been started and the user is actively working on this step (Use `started` with `isActive: true` instead).
+	 * `doing` = **(deprecated)** This step has been started and the user is actively working on this step.
 	 *
 	 * `done` = This step is complete. The user has submitted valid data and it has been verified (where necessary).
 	 *

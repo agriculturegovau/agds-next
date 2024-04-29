@@ -97,7 +97,7 @@ export type ProgressIndicatorItem<
 
 type LevelTwoItem = {
 	label: string;
-} & (LinkProps | ButtonHTMLAttributes<HTMLButtonElement>);
+} & LinkProps;
 
 export type ProgressIndicatorItemWithLevelTwoItems<
 	T extends { isActive?: boolean } = {},

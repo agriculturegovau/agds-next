@@ -18,8 +18,8 @@ import {
 } from './utils';
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
-	status: ProgressIndicatorItemStatus;
 	as: ElementType;
+	status: ProgressIndicatorItemStatus;
 	background?: ProgressIndicatorBackground;
 	isActive?: boolean;
 	items?: ProgressIndicatorItemWithLevelTwoItems<{
