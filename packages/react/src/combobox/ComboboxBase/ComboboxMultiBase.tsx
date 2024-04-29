@@ -103,6 +103,22 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
 
+	if (maxWidthProp) {
+		if (!['md', 'lg', 'xl'].includes(maxWidthProp)) {
+			console.error(
+				`ComboboxMulti: The \`maxWidth\` value "${maxWidthProp}" is not supported`
+			);
+		}
+		if (block) {
+			// Ideally AgDS would automatically set block to false if maxWidth is defined.
+			// The AgDS team need to first do research on the usage of the maxWidth property on ComboBox.
+			// The team need to ensure that this change would not break any existing UIs.
+			console.warn(
+				`ComboboxMulti: The \`maxWidth\` property is being ignored. Fix by setting the \`block\` property to \`false\`.`
+			);
+		}
+	}
+
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
 
