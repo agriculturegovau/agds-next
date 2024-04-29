@@ -1,4 +1,3 @@
-import { ButtonHTMLAttributes } from 'react';
 import { LinkProps, boxPalette } from '../core';
 import {
 	AlertIcon,
