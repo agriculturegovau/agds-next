@@ -213,6 +213,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxSize: maxSize && maxSize * 1000,
 			multiple,
 			onDropAccepted: handleDropAccepted,
+			onDropRejected: clearErrors,
 			disabled,
 			noClick: true,
 			noKeyboard: true,
