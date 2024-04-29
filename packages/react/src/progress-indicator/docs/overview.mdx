@@ -159,7 +159,9 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 
 ## Adding level 2 steps
 
-If one of the steps in a multi-step form has a secondary step, such as adding an employee with name and email to a list of employees, use a separate page for the secondary step. Let users know where they are by using a level 2 step in the progress indicator. A level 2 step sits under the main step. There can only be a single level 2 step for each main step.
+If a level 1 page has a secondary step, such as editing its content, use a separate page for this secondary step.
+
+When users navigate to this secondary step, let them know where they are by adding a nested level 2 step `item`. Only one level 2 step may exist for each level 1 step.
 
 ```jsx live
 <ProgressIndicator
