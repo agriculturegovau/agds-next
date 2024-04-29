@@ -102,6 +102,25 @@ Use the `ComboboxMulti` component when users can choose multiple items from a pr
 };
 ```
 
+Note that in order to apply `maxWidth` to a `ComboboxMulti`, the `block` property needs to be set to `false`.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	return (
+		<ComboboxMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+			maxWidth="lg"
+			block={false}
+		/>
+	);
+};
+```
+
 ## ComboboxAsyncMulti
 
 Use the `ComboboxAsyncMulti` component when users can choose multiple items from a list of options that needs to be fetched over the network.
