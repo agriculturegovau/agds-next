@@ -58,7 +58,7 @@ export const ProgressIndicator = ({
 
 	if (process.env.NODE_ENV !== 'production' && hasExplicitActiveDeclared) {
 		console.warn(
-			'ProgressIndicator: The `isActive` key is deprecated. Please use `activePath` in the parent component, `<ProgressIndicator />`.'
+			'ProgressIndicator: The `isActive` key is deprecated. Please set `activePath` in the `<ProgressIndicator />`.'
 		);
 	}
 
