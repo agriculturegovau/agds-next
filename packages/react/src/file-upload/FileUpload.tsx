@@ -262,6 +262,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...(existingFiles || []),
 		]);
 
+		const hasMultipleFileRejections = allRejections.length > 1;
+
 		return (
 			<Field
 				label={label}
@@ -343,32 +345,66 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								{Boolean(allRejections.length) && (
 									<Box paddingTop={0.5} paddingBottom={1}>
 										<SectionAlert
-											title="The following files could not be selected"
+											title={
+												hasMultipleFileRejections
+													? 'The following files could not be selected'
+													: 'A file could not be selected'
+											}
 											tone="error"
 											onClose={clearErrors}
 										>
-											<Text as="p">
-												Please review this list of files that were unable to be
-												accepted for the stated reasons:
-											</Text>
-											<UnorderedList>
-												{allRejections.map((rejection) => {
-													return (
-														<ListItem key={rejection.file.name}>
-															<Text as="strong" color="error" fontWeight="bold">
-																{rejection.file.name}
-															</Text>{' '}
-															<span>
-																({formatFileSize(rejection.file.size)}){' - '}
-																{getErrorSummary(
-																	rejection.errors,
-																	formattedMaxFileSize
-																)}
-															</span>
-														</ListItem>
-													);
-												})}
-											</UnorderedList>
+											{hasMultipleFileRejections ? (
+												// multiple files
+												<Text as="p">
+													Please review this list of files that were unable to
+													be accepted for the stated reasons:
+												</Text>
+											) : (
+												// single file
+												<Text as="p">
+													Please review the following file that was unable to be
+													accepted for the stated reason:
+												</Text>
+											)}
+											{hasMultipleFileRejections && (
+												<UnorderedList>
+													{allRejections.map((rejection) => {
+														return (
+															<ListItem key={rejection.file.name}>
+																<Text
+																	as="strong"
+																	color="error"
+																	fontWeight="bold"
+																>
+																	{rejection.file.name}
+																</Text>{' '}
+																<span>
+																	({formatFileSize(rejection.file.size)}){' - '}
+																	{getErrorSummary(
+																		rejection.errors,
+																		formattedMaxFileSize
+																	)}
+																</span>
+															</ListItem>
+														);
+													})}
+												</UnorderedList>
+											)}
+											{!hasMultipleFileRejections && (
+												<Box as="p">
+													<Text as="strong" color="error" fontWeight="bold">
+														{allRejections[0].file.name}
+													</Text>{' '}
+													<span>
+														({formatFileSize(allRejections[0].file.size)})
+														{' - '}
+														{getErrorSummary(
+															allRejections[0].errors,
+															formattedMaxFileSize
+														)}
+													</span>
+												</Box>
+											)}
 										</SectionAlert>
 									</Box>
 								)}
