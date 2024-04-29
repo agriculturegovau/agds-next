@@ -68,6 +68,7 @@ export function FormTask1Step6() {
 							invalid={Boolean(typeCorrectedErrors.cuisine?.message)}
 							message={typeCorrectedErrors.cuisine?.message}
 							maxWidth="xl"
+							block={false}
 						/>
 					)}
 				/>
