@@ -115,7 +115,8 @@ type TypographyProps = Partial<{
 	fontSize: ResponsiveProp<FontSize>;
 	lineHeight: LineHeight;
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
-	breakWord: boolean;
+	/** Allow long words to wrap if there is not enough space to fit them */
+	breakWords: boolean;
 }>;
 
 function typographyStyles({
@@ -467,7 +468,7 @@ export function boxStyles({
 	focus,
 	link,
 	highContrastOutline,
-	breakWord,
+	breakWords,
 	...restProps
 }: BoxProps) {
 	return [
@@ -480,7 +481,7 @@ export function boxStyles({
 				listStyle: 'none',
 				margin: 0,
 				padding: 0,
-				wordWrap: breakWord ? 'break-word' : 'normal',
+				wordWrap: breakWords ? 'break-word' : 'normal',
 			},
 
 			mq({
