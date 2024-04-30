@@ -38,42 +38,44 @@ Note that all children will inherit this behaviour by default. To make `breakWor
 wrap the site in a `Box` with `breakWords` set to `true`.
 
 ```jsx live
-<Stack gap={1}>
-	<Box maxWidth={500} border padding={1}>
-		<strong>Default behaviour</strong>{' '}
-		<Text as="p">
-			aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
-		</Text>
-	</Box>
-	<Box maxWidth={500} border padding={1} breakWords={true}>
-		<Stack gap={1}>
-			<div>
-				<strong>
-					<code>breakWords</code> = true
-				</strong>{' '}
-				<Text as="p">
-					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
-				</Text>
-			</div>
-			<Box border padding={1}>
-				<strong>
-					Child <code>breakWords</code> value is inherited from parent
-				</strong>{' '}
-				<Text as="p">
-					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
-				</Text>
-			</Box>
-			<Box border padding={1} breakWords={false}>
-				<strong>
-					Child <code>breakWords</code> = false (explicit)
-				</strong>{' '}
-				<Text as="p">
-					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
-				</Text>
-			</Box>
-		</Stack>
-	</Box>
-</Stack>
+<Box css={{ overflow: 'auto' }}>
+	<Stack gap={1}>
+		<Box maxWidth="75%" border padding={1}>
+			<strong>Default behaviour</strong>{' '}
+			<Text as="p">
+				aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+			</Text>
+		</Box>
+		<Box maxWidth="75%" border padding={1} breakWords={true}>
+			<Stack gap={1}>
+				<div>
+					<strong>
+						<code>breakWords</code> = true
+					</strong>{' '}
+					<Text as="p">
+						aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+					</Text>
+				</div>
+				<Box border padding={1}>
+					<strong>
+						Child <code>breakWords</code> value is inherited from parent
+					</strong>{' '}
+					<Text as="p">
+						aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+					</Text>
+				</Box>
+				<Box border padding={1} breakWords={false}>
+					<strong>
+						Child <code>breakWords</code> = false (explicit)
+					</strong>{' '}
+					<Text as="p">
+						aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+					</Text>
+				</Box>
+			</Stack>
+		</Box>
+	</Stack>
+</Box>
 ```
 
 ## Responsive props
