@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-Added breakWords prop to Box typography styles
+Box: Added breakWords prop to allow words to break.
