@@ -488,7 +488,7 @@ export function boxStyles({
 				wordWrap:
 					(breakWords === true && 'break-word') ||
 					(breakWords === false && 'normal') ||
-					undefined,
+					'inherit',
 			},
 
 			mq({
