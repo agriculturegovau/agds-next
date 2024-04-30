@@ -485,7 +485,10 @@ export function boxStyles({
 				listStyle: 'none',
 				margin: 0,
 				padding: 0,
-				wordWrap: breakWords ? 'break-word' : 'normal',
+				wordWrap:
+					(breakWords === true && 'break-word') ||
+					(breakWords === false && 'normal') ||
+					undefined,
 			},
 
 			mq({
