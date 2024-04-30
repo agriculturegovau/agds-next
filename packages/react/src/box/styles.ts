@@ -115,7 +115,11 @@ type TypographyProps = Partial<{
 	fontSize: ResponsiveProp<FontSize>;
 	lineHeight: LineHeight;
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
-	/** Allow long words to wrap if there is not enough space to fit them */
+	/**
+	 * Allow long words to wrap if there is not enough space to fit them.
+	 *
+	 * Note that all child elements will inherit this behavior.
+	 */
 	breakWords: boolean;
 }>;
 
