@@ -469,10 +469,10 @@ export function boxStyles({
 	fontSize,
 	lineHeight,
 	textAlign,
+	breakWords,
 	focus,
 	link,
 	highContrastOutline,
-	breakWords,
 	...restProps
 }: BoxProps) {
 	return [
