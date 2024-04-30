@@ -83,7 +83,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	inputId,
 	disabled = false,
 	block = true,
-	maxWidth: maxWidthProp = 'xl',
+	maxWidth: maxWidthProp,
 	// clearable = false,
 	renderItem = (item, inputValue) => (
 		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
