@@ -25,7 +25,11 @@ import {
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../flex';
-import { DefaultComboboxOption } from '../utils';
+import {
+	ComboboxMaxWidthValues,
+	DefaultComboboxOption,
+	validateMaxWidth,
+} from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
@@ -52,7 +56,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	disabled?: boolean;
 	// Styles
 	block?: boolean;
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: Extract<FieldMaxWidth, ComboboxMaxWidthValues>;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	// Downshift
@@ -104,11 +108,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	if (maxWidthProp) {
-		if (!['md', 'lg', 'xl'].includes(maxWidthProp)) {
-			console.error(
-				`ComboboxMulti: The \`maxWidth\` value "${maxWidthProp}" is not supported`
-			);
-		}
+		validateMaxWidth('ComboboxMulti', maxWidthProp);
+
 		if (block) {
 			// Ideally AgDS would automatically set block to false if maxWidth is defined.
 			// The AgDS team need to first do research on the usage of the maxWidth property on ComboBox.

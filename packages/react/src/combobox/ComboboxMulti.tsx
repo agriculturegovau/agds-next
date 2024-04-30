@@ -13,6 +13,7 @@ import {
 	DefaultComboboxOption,
 	useComboboxInputId,
 	filterOptions,
+	ComboboxMaxWidthValues,
 } from './utils';
 
 export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
@@ -31,7 +32,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: Extract<FieldMaxWidth, ComboboxMaxWidthValues>;
 	/** If true, the field will not be interactive. */
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */

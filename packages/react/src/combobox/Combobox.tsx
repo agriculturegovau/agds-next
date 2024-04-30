@@ -3,6 +3,7 @@ import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
 import {
+	ComboboxMaxWidthValues,
 	DefaultComboboxOption,
 	filterOptions,
 	useComboboxInputId,
@@ -26,7 +27,7 @@ export type ComboboxProps<
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: Extract<FieldMaxWidth, ComboboxMaxWidthValues>;
 	/** If true, the field will not be interactive. */
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
