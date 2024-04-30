@@ -105,37 +105,37 @@ describe('ProgressIndicator', () => {
 		const exampleProps: ProgressIndicatorProps = {
 			items: [
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Done',
 					status: 'done',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Blocked',
 					status: 'blocked',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Doing',
 					status: 'doing',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Error',
 					status: 'error',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Saved',
 					status: 'saved',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'Started',
 					status: 'started',
 				},
 				{
-					onClick: console.info,
+					onClick: console.log,
 					label: 'To do',
 					status: 'todo',
 				},
@@ -192,7 +192,7 @@ describe('ProgressIndicator', () => {
 					});
 
 					it('renders active button', () => {
-						runTest({ onClick: console.info });
+						runTest({ onClick: console.log });
 					});
 				});
 			});
@@ -215,7 +215,7 @@ describe('ProgressIndicator', () => {
 
 				it('renders valid active button', async () => {
 					const { container } = renderProgressIndicator(
-						createLegacyList('started', { onClick: console.info })
+						createLegacyList('started', { onClick: console.log })
 					);
 					expect(container).toHTMLValidate({
 						extends: ['html-validate:recommended'],

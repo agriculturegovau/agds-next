@@ -4,7 +4,7 @@ import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { CornerDownRightIcon } from '../icon';
-import { boxPalette, packs, tokens } from '../core';
+import { boxPalette, mapSpacing, packs, tokens } from '../core';
 import {
 	hoverColorMap,
 	ProgressIndicatorBackground,
@@ -138,10 +138,10 @@ export const ProgressIndicatorItem = ({
 											':not(:focus-visible)::before': {
 												backgroundColor: hoverColorMap[background],
 												content: '""',
-												height: '0.5rem',
+												height: mapSpacing(0.5),
 												left: 0,
 												position: 'absolute',
-												top: '-0.5rem',
+												top: `-${mapSpacing(0.5)}`,
 												width: '100%',
 											},
 										},
