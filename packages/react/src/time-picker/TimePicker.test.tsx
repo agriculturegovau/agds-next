@@ -2,12 +2,10 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, act, waitFor } from '../../../../test-utils';
+import { act, render, screen, waitFor } from '../../../../test-utils';
 import { TimePicker, type TimePickerProps } from './TimePicker';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
 
 function renderTimePicker(props?: Pick<TimePickerProps, 'loading'>) {
 	return render(
@@ -27,11 +25,11 @@ describe('TimePicker', () => {
 
 	it('renders correctly when loading', async () => {
 		const { container } = renderTimePicker({ loading: true });
-		const input = container.querySelector('input');
-		expect(input).toBeInTheDocument();
-		if (!input) return;
-
-		await act(async () => input.click());
+		const input = screen.getByRole('combobox', {
+			name: 'Select a time (optional)',
+		});
+		const user = userEvent.setup();
+		await user.click(input);
 		expect(container).toMatchSnapshot();
 	});
 
@@ -66,9 +64,10 @@ describe('TimePicker', () => {
 		expect(input.value).toBe('1245');
 
 		const options = container.querySelectorAll('li');
-		expect(options.length).toBe(1);
-		expect(options[0].textContent).toBe('12:45 pm');
+		expect(options.length).toBe(2);
+		expect(options[0].textContent).toBe('12:45 am');
+		expect(options[1].textContent).toBe('12:45 pm');
 		await userEvent.click(options[0]);
-		expect(input.value).toBe('12:45 pm');
+		expect(input.value).toBe('12:45 am');
 	});
 });

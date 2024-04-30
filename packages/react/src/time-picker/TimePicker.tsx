@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { type ComboboxProps } from '../combobox/Combobox';
 import { ComboboxBase } from '../combobox/ComboboxBase/ComboboxBase';
-import {
-	type DefaultComboboxOption,
-	useComboboxInputId,
-} from '../combobox/utils';
+import { useComboboxInputId } from '../combobox/utils';
 import { type TimeFormat } from '../time-input/utils';
 import { filterOptions, generateOptions } from './utils';
 
@@ -22,25 +19,17 @@ export function TimePicker({
 	value,
 	...props
 }: TimePickerProps) {
-	const {
-		// We remove this prop so that it can't be passed to ComboboxBase
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		renderItem,
-		...consumerProps
-	} = props;
 	const inputId = useComboboxInputId(id);
-	const [options, setOptions] = useState<DefaultComboboxOption[]>(
+	const [options, setOptions] = useState(
 		generateOptions({ interval, max, min, timeFormat })
 	);
-	const [inputItems, setInputItems] =
-		useState<DefaultComboboxOption[]>(options);
+	const [inputItems, setInputItems] = useState(options);
 
 	useEffect(() => {
 		setOptions(generateOptions({ interval, max, min, timeFormat }));
 	}, [interval, max, min, timeFormat]);
 
-	const combobox = useCombobox<DefaultComboboxOption>({
+	const combobox = useCombobox({
 		inputId,
 		items: inputItems,
 		itemToString: (item) => item?.label ?? '',
@@ -82,7 +71,8 @@ export function TimePicker({
 			isAutocomplete={false}
 			loading={loading}
 			maxWidth={maxWidth}
-			{...consumerProps}
+			{...props}
+			renderItem={undefined}
 		/>
 	);
 }
@@ -96,6 +86,10 @@ export type TimePickerProps = Omit<ComboboxProps, 'options' | 'renderItem'> & {
 	max?: string;
 	/** The minimum time for options to start (HH:mm). */
 	min?: string;
+	/** Options are automatically generated with interval, max and min. */
+	options?: never;
+	/** Item rendering is handled internally by TimePicker. */
+	renderItem?: never;
 	/** The format to render the options' labels. */
 	timeFormat?: TimeFormat;
 };

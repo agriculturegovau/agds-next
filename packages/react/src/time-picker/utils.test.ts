@@ -24,8 +24,10 @@ describe('filterOptions', () => {
 			/* 12 */ { label: '09:00 pm', value: '21:00' },
 			/* 13 */ { label: '23:59', value: '23:59' },
 			/* 14 */ { label: '11:59 pm', value: '23:59' },
-			/* 15 */ { label: '12:43 am', value: '00:43' },
-			/* 16 */ { label: '12:43 pm', value: '12:43' },
+			/* 15 */ { label: '12:13 am', value: '00:13' },
+			/* 16 */ { label: '12:13 pm', value: '12:13' },
+			/* 17 */ { label: '12:59 am', value: '00:59' },
+			/* 18 */ { label: '12:59 pm', value: '12:59' },
 		];
 
 		test('12', () => {
@@ -36,29 +38,42 @@ describe('filterOptions', () => {
 				options[6],
 				options[15],
 				options[16],
+				options[17],
+				options[18],
 			]);
 		});
+
 		test("12 o'clock", () => {
 			expect(filterOptions(options, "12 o'clock")).toEqual([
 				options[0],
 				options[1],
 			]);
 		});
+
 		test('12am', () => {
 			expect(filterOptions(options, '12am')).toEqual([options[0], options[1]]);
 		});
+
 		test('12 am', () => {
 			expect(filterOptions(options, '12 am')).toEqual([options[0], options[1]]);
 		});
+
 		test('12pm', () => {
 			expect(filterOptions(options, '12pm')).toEqual([options[5], options[6]]);
 		});
+
 		test('12 pm', () => {
 			expect(filterOptions(options, '12 pm')).toEqual([options[5], options[6]]);
 		});
+
 		test('1200', () => {
-			expect(filterOptions(options, '1200')).toEqual([options[5], options[6]]);
+			expect(filterOptions(options, '1200')).toEqual([
+				options[1],
+				options[5],
+				options[6],
+			]);
 		});
+
 		test('12:00', () => {
 			expect(filterOptions(options, '12:00')).toEqual([
 				options[1],
@@ -66,27 +81,31 @@ describe('filterOptions', () => {
 				options[6],
 			]);
 		});
+
 		test('24', () => {
 			expect(filterOptions(options, '24')).toEqual([
 				options[0],
 				options[1],
 				options[15],
-				options[16],
+				options[17],
 			]);
 		});
 
 		test('2400', () => {
 			expect(filterOptions(options, '2400')).toEqual([options[0], options[1]]);
 		});
+
 		test('24:00', () => {
 			expect(filterOptions(options, '24:00')).toEqual([options[0], options[1]]);
 		});
-		test('12:43', () => {
-			expect(filterOptions(options, '12:43')).toEqual([
+
+		test('12:13', () => {
+			expect(filterOptions(options, '12:13')).toEqual([
 				options[15],
 				options[16],
 			]);
 		});
+
 		test('5', () => {
 			expect(filterOptions(options, '5')).toEqual([
 				options[7],
@@ -94,8 +113,11 @@ describe('filterOptions', () => {
 				options[9],
 				options[13],
 				options[14],
+				options[17],
+				options[18],
 			]);
 		});
+
 		test('9', () => {
 			expect(filterOptions(options, '9')).toEqual([
 				options[2],
@@ -105,6 +127,8 @@ describe('filterOptions', () => {
 				options[12],
 				options[13],
 				options[14],
+				options[17],
+				options[18],
 			]);
 		});
 
@@ -115,11 +139,13 @@ describe('filterOptions', () => {
 				options[4],
 			]);
 		});
+
 		test('9am', () => {
 			expect(filterOptions(options, '9am')).toEqual([
 				options[2],
 				options[3],
 				options[4],
+				options[17],
 			]);
 		});
 
@@ -128,30 +154,40 @@ describe('filterOptions', () => {
 				options[2],
 				options[3],
 				options[4],
+				options[17],
 			]);
 		});
+
 		test('9pm', () => {
 			expect(filterOptions(options, '9pm')).toEqual([
 				options[10],
 				options[11],
 				options[12],
+				options[14],
+				options[18],
 			]);
 		});
+
 		test('9 pm', () => {
 			expect(filterOptions(options, '9 pm')).toEqual([
 				options[10],
 				options[11],
 				options[12],
 				options[14],
+				options[18],
 			]);
 		});
+
 		test('900', () => {
 			expect(filterOptions(options, '900')).toEqual([
 				options[2],
 				options[3],
 				options[4],
+				options[11],
+				options[12],
 			]);
 		});
+
 		test('9:00', () => {
 			expect(filterOptions(options, '9:00')).toEqual([
 				options[2],
@@ -168,8 +204,10 @@ describe('filterOptions', () => {
 				options[3],
 				options[4],
 				options[15],
+				options[17],
 			]);
 		});
+
 		test('pm', () => {
 			expect(filterOptions(options, 'pm')).toEqual([
 				options[6],
@@ -179,6 +217,7 @@ describe('filterOptions', () => {
 				options[12],
 				options[14],
 				options[16],
+				options[18],
 			]);
 		});
 
@@ -195,15 +234,18 @@ describe('filterOptions', () => {
 				options[11],
 				options[12],
 				options[15],
+				options[17],
 			]);
 		});
 
-		test('25', () => {
-			expect(filterOptions(options, '25')).toEqual([]);
+		test('33', () => {
+			expect(filterOptions(options, '33')).toEqual([]);
 		});
+
 		test('99', () => {
 			expect(filterOptions(options, '99')).toEqual([]);
 		});
+
 		test('z', () => {
 			expect(filterOptions(options, 'z')).toEqual([]);
 		});

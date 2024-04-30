@@ -8,48 +8,26 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 ) {
 	const sanitizedInputValue =
 		inputValue?.toLowerCase().replace(/\W/g, '') ?? '';
+	const formattedInputValue = formatTime(sanitizedInputValue, 'HH:mm');
 
 	return options.filter(function filterOption(option) {
-		const HHmm = option.value.split(':').join('');
-
-		const isMatchWithValue = HHmm.includes(sanitizedInputValue);
-		const isMatchWithLabel = option.label
-			.toLowerCase()
-			.includes(sanitizedInputValue);
-		const isLessThan4Char = sanitizedInputValue.length < 4;
-
-		const formatted24hrTime = formatTime(sanitizedInputValue, 'HH:mm');
-		const [inputHour] = formatted24hrTime.split(':');
-		const [optionHour] = option.value.split(':');
-
-		const isFormattedTimeMatch = formatted24hrTime === option.value;
-
-		function checkIsA12thHour(hour: string) {
-			if (optionHour === '00') {
-				return ['00', '24'].includes(hour);
-			}
-			return hour === '12';
-		}
-
-		const isAnyHourMatch = optionHour === inputHour;
-
-		const is12thHourOption = checkIsA12thHour(optionHour);
-		const is12thHourInput = inputValue === '12' || checkIsA12thHour(inputHour);
-		const isA12thHourMatch = is12thHourOption && is12thHourInput;
-
-		const isRoughHourMatch =
-			isLessThan4Char && (isAnyHourMatch || isA12thHourMatch);
-
-		const isPartialLabelMatch = option.label.includes(inputValue);
+		const [HH, mm] = option.value.split(':');
+		const HHmm = `${HH}${mm}`;
 
 		const hasMatch =
-			isMatchWithValue ||
-			isMatchWithLabel ||
-			isRoughHourMatch ||
-			isPartialLabelMatch ||
-			isFormattedTimeMatch;
+			formattedInputValue === option.value ||
+			HHmm.includes(sanitizedInputValue) ||
+			option.label.toLowerCase().includes(sanitizedInputValue) ||
+			(sanitizedInputValue.length < 4 &&
+				(sanitizedInputValue.startsWith('12') ||
+					sanitizedInputValue.startsWith('24')) &&
+				HH === '00') ||
+			option.label
+				.toLowerCase()
+				.replace(/\W/g, '')
+				.includes(sanitizedInputValue);
 
-		if (typeof selectedItems === 'undefined') {
+		if (!selectedItems) {
 			return hasMatch;
 		}
 
@@ -79,10 +57,10 @@ export function generateOptions({
 		? 60
 		: Math.round(clampNumber(Number(interval), 1, 180));
 
-	let minHours;
-	let minMinutes;
-	let maxHours;
-	let maxMinutes;
+	let minHours: number;
+	let minMinutes: number;
+	let maxHours: number;
+	let maxMinutes: number;
 
 	if (parsedMinHours > parsedMaxHours) {
 		minHours = parsedMaxHours;
@@ -108,7 +86,7 @@ export function generateOptions({
 	const minTotalMinutes = minHours * 60 + minMinutes;
 	const maxTotalMinutes = maxHours * 60 + maxMinutes;
 
-	const options = [];
+	const options: Array<DefaultComboboxOption> = [];
 
 	// Iterate through the time range and add times to the options array
 	for (
@@ -122,7 +100,7 @@ export function generateOptions({
 
 		// We put midnight first, so don't also want it at the end. This also helps to clamp anything 24:XX
 		if (hours !== 24) {
-			const val = {
+			const val: DefaultComboboxOption = {
 				label: formatTime(HHmm, timeFormat),
 				value: HHmm,
 			};
