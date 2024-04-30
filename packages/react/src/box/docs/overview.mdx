@@ -30,6 +30,52 @@ Apply styles like padding, border radius, background color and more by using ava
 </Box>
 ```
 
+## Breaking long words
+
+If an unbroken word is too long to fit in in a `Box`, use the `breakWords` property to allow words to break.
+
+Note that all children will inherit this behaviour by default. To make `breakWords` the default behaviour of your site/app,
+wrap the site in a <code>Box</code> with <code>breakWords</code> set to <code>true</code>.
+
+```jsx live
+<Stack gap={1}>
+	<Box maxWidth={500} border padding={1}>
+		<strong>Default behaviour</strong>{' '}
+		<Text as="p">
+			aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+		</Text>
+	</Box>
+	<Box maxWidth={500} border padding={1} breakWords={true}>
+		<Stack gap={1}>
+			<div>
+				<strong>
+					<code>breakWords</code> = true
+				</strong>{' '}
+				<Text as="p">
+					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+				</Text>
+			</div>
+			<Box border padding={1}>
+				<strong>
+					Child <code>breakWords</code> value is inherited from parent
+				</strong>{' '}
+				<Text as="p">
+					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+				</Text>
+			</Box>
+			<Box border padding={1} breakWords={false}>
+				<strong>
+					Child <code>breakWords</code> = false (explicit)
+				</strong>{' '}
+				<Text as="p">
+					aVeryLongWordThatIsUnbrokenAndNeedsToBeBrokenUpUsingCssForItToRenderNicelyOnThePage
+				</Text>
+			</Box>
+		</Stack>
+	</Box>
+</Stack>
+```
+
 ## Responsive props
 
 The Box component supports the responsive prop syntax on most props. For more information about responsive props, see our documentation for [Breakpoints](/foundations/tokens/breakpoints#responsive-design-in-code).
