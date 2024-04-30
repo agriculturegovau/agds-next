@@ -1,5 +1,5 @@
 ---
-'@ag.ds-next/react': patch
+'@ag.ds-next/react': minor
 ---
 
 Box: Added breakWords prop to allow words to break.
