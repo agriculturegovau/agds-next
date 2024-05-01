@@ -75,7 +75,7 @@ Use the `ComboboxAsync` component when users can choose a single item from a lis
 			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 1500));
+				await new Promise((resolve) => setTimeout(resolve, 500));
 				return COUNTRY_OPTIONS;
 			}}
 		/>
@@ -117,7 +117,7 @@ Use the `ComboboxAsyncMulti` component when users can choose multiple items from
 			onChange={setValue}
 			loadOptions={async function loadOptions(inputValue) {
 				// Simulate a slow network call
-				await new Promise((resolve) => setTimeout(resolve, 1500));
+				await new Promise((resolve) => setTimeout(resolve, 500));
 				return COUNTRY_OPTIONS;
 			}}
 		/>

@@ -256,6 +256,7 @@ export {
 	formatTime,
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
+export { TimePicker } from '@ag.ds-next/react/time-picker';
 
 // Used to populate options on documentation site and playroom
 export {

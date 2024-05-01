@@ -4,8 +4,8 @@ description: The Time input component allows users to enter a time in multiple f
 group: Forms
 storybookPath: /story/Forms-TimeInput--basic
 unreleased: true
-figmaGalleryNodeId: 20846:18895
-relatedComponents: ['text-input']
+figmaGalleryNodeId: 21206:68504
+relatedComponents: ['text-input', 'time-picker']
 ---
 
 ```jsx live
@@ -17,7 +17,7 @@ relatedComponents: ['text-input']
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput
@@ -31,19 +31,20 @@ relatedComponents: ['text-input']
 };
 ```
 
-Time input is superset of [Text input](/components/text-input), with additional functionality specific to entering times. It accepts all of Text input’s props, with changes to `onChange` and `value`.
+Time input is a superset of [Text input](/components/text-input), with additional functionality specific to entering times. It accepts all of Text input’s props, with changes to `onChange` and `value`.
 
 Time input is a controlled component which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
 
-The `onChange` handler provides an object with both a `raw` and `formatted` version of the time. `raw` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
+The `onChange` handler provides an object with both a `value` and `formatted` version of the time. `value` is always in `'HH:mm'` and `formatted` is provided in the `timeFormat` used. You can use this to display the time elsewhere in the UI, where necessary.
 
 <DoHeading />
 
-- use when users are specifically required to enter a specific time.
+- use when users are specifically required to enter an exact, arbitrary time.
 
 <DontHeading />
 
-- use when users are required to enter free-form text that isn’t a time.
+- use when users are required to enter free-form text that isn’t a time
+- use when users are required to enter a specific, constrained time – use Time picker instead.
 
 ## Invalid
 
@@ -51,14 +52,14 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState({ raw: '9:66' });
+	const [value, setValue] = React.useState({ value: '9:66' });
 
 	const onChange = (timeValue) => {
 		console.log('onChange', timeValue);
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput

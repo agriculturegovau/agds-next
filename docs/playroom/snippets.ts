@@ -1313,7 +1313,12 @@ const snippets: Array<Snippet> = [
 	{
 		group: 'TimeInput',
 		name: 'Basic',
-		code: `<TimeInput label="Time" value={{ raw: '930' }} onChange={() => {}} />`,
+		code: `<TimeInput label="Time" value={{ value: '930' }} onChange={() => {}} />`,
+	},
+	{
+		group: 'TimePicker',
+		name: 'Basic',
+		code: `<TimePicker label="Select a time" onChange={() => {}} />`,
 	},
 ];
 
