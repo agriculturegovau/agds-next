@@ -640,14 +640,25 @@ const snippets: Array<Snippet> = [
 		group: 'ProgressIndicator',
 		name: 'Basic',
 		code: `<ProgressIndicator
+			activePath="#organisations/change-name"
 			items={[
-				{ label: 'Introduction', status: 'done', href: '#' },
-				{ label: 'Submit evidence', status: 'saved', href: '#' },
-				{ label: 'Organisations', status: 'started', href: '#', isActive: true },
-				{ label: 'Business contacts', status: 'error', href: '#' },
-				{ label: 'Case studies', status: 'todo', href: '#' },
-				{ label: 'Attachments', status: 'started', href: '#' },
-				{ label: 'Review and submit', status: 'blocked', href: '#' },
+				{ label: 'Introduction', status: 'done', href: '#introduction' },
+				{ label: 'Submit evidence', status: 'saved', href: '#evidence' },
+				{
+					label: 'Organisations',
+					status: 'started',
+					href: '#organisations',
+					items: [
+						{
+							label: 'Change organisation name',
+							href: '#organisations/change-name',
+						},
+					],
+				},
+				{ label: 'Business contacts', status: 'error', href: '#contacts' },
+				{ label: 'Case studies', status: 'todo', href: '#case-studies' },
+				{ label: 'Attachments', status: 'started', href: '#attachments' },
+				{ label: 'Review and submit', status: 'blocked', href: '#review' },
 			]}
 		/>`,
 	},

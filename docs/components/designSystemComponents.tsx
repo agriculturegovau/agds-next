@@ -92,6 +92,7 @@ export {
 	ChevronUpIcon,
 	CloseIcon,
 	CopyIcon,
+	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
 	EditIcon,
