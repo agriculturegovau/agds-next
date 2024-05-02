@@ -1,10 +1,14 @@
 import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { FieldMaxWidth, packs } from '../../core';
+import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
-import { DefaultComboboxOption } from '../utils';
+import {
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
+	validateMaxWidth,
+} from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
@@ -31,7 +35,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	disabled?: boolean;
 	// Styles
 	block?: boolean;
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: ComboboxMaxWidthValues;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	isAutocomplete: boolean;
@@ -81,6 +85,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
+
+	validateMaxWidth('ComboBox', maxWidthProp);
 
 	const { maxWidth, ...inputStyles } = {
 		...textInputStyles({ block, maxWidth: maxWidthProp }),
