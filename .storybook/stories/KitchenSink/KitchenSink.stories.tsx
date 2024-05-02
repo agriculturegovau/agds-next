@@ -92,6 +92,7 @@ import { PasswordInput } from '@ag.ds-next/react/password-input';
 import { Modal } from '@ag.ds-next/react/modal';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { TimeInput } from '@ag.ds-next/react/time-input';
+import { TimePicker } from '@ag.ds-next/react/time-picker';
 import { useTernaryState } from '@ag.ds-next/react/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -483,6 +484,8 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								</GroupedFields>
 
 								<TimeInput label="Start time" onChange={() => undefined} />
+
+								<TimePicker label="Select a time" onChange={() => undefined} />
 
 								<ButtonGroup>
 									<Button size="md">Primary</Button>

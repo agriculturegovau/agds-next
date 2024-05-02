@@ -85,7 +85,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			} else {
 				// When the menu is closed by the user, reset the entire options
 				// This is common in other Combobox implementations (react-aria, react-select, etc)
-				setInputItems(filterOptions(options, ''));
+				setInputItems(options);
 			}
 		},
 		stateReducer: (state, actionAndChanges) => {
