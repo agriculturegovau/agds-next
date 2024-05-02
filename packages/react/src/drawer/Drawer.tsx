@@ -23,29 +23,32 @@ import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
 export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
+	/** On close of the drawer, this element will be focused, rather than the trigger. */
+	elementToFocusOnClose?: HTMLElement | null;
 	/** If true, the drawer will be displayed. */
 	isOpen?: boolean;
-	/** @deprecated use `onClose` instead */
-	onDismiss?: () => void;
+	/** Lighten the overlay so that the main content underneath is more visible while the draw is open. */
+	mutedOverlay?: boolean;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
 	/** The title of the drawer. It can span lines but should not be too long. */
 	title: string;
 	/** The width of the drawer. */
 	width?: DrawerDialogWidth;
-	/** Lighten the overlay so that the main content underneath is more visible while the draw is open. */
-	mutedOverlay?: boolean;
 }>;
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
 	actions,
 	children,
+	elementToFocusOnClose,
 	isOpen = false,
+	mutedOverlay = false,
 	onClose,
 	onDismiss,
 	title,
 	width = 'md',
-	mutedOverlay = false,
 }) => {
 	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	const scrollbarWidth = useRef<number>(0);
@@ -97,11 +100,12 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 							mutedOverlay={mutedOverlay}
 						/>
 						<DrawerDialog
-							onClose={handleClose}
-							title={title}
 							actions={actions}
-							width={width}
+							elementToFocusOnClose={elementToFocusOnClose}
+							onClose={handleClose}
 							style={{ translateX }}
+							title={title}
+							width={width}
 						>
 							{children}
 						</DrawerDialog>

@@ -347,3 +347,63 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 	);
 };
 ```
+
+## Focus custom element on close
+
+When the drawer closes, focus is returned to the element that triggered its opening. You can override this behaviour by passing a custom element to the `elementToFocusOnClose` prop. This is useful when an action performed in the drawer causes an error and focus should be returned to an alert on close.\_createMdxContent
+
+```jsx live
+() => {
+	const sectionAlertRef = React.useRef(null);
+	const [error, setError] = React.useState('');
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+	const openDrawerClearError = () => {
+		openDrawer();
+		setError('');
+	};
+
+	const closeDrawerWithError = () => {
+		closeDrawer();
+		setError('We were unable to perform the action, please try again later.');
+	};
+
+	return (
+		<Stack alignItems="start" gap={2}>
+			<SectionAlert
+				alignItems="start"
+				focusAll
+				isHidden={Boolean(!error)}
+				ref={sectionAlertRef}
+				tabIndex={-1}
+				title="Something went wrong"
+				tone="error"
+			>
+				<Text as="p">{error}</Text>
+			</SectionAlert>
+
+			<Button onClick={openDrawerClearError}>Open Drawer</Button>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawerWithError}>Close with error</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Close with no error
+						</Button>
+					</ButtonGroup>
+				}
+				elementToFocusOnClose={sectionAlertRef.current}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Drawer title"
+			>
+				<Text as="p">
+					When pressing 'Close drawer with error', focus will be set to the
+					alert.
+				</Text>
+			</Drawer>
+		</Stack>
+	);
+};
+```

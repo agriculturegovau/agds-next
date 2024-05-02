@@ -23,13 +23,18 @@ export type PageAlertTone = keyof typeof pageAlertToneMap;
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
 export type PageAlertProps = PropsWithChildren<{
+	/** The tone of the alert. */
+	tone: PageAlertTone;
+	/** The id of the alert. */
 	id?: string;
+	/** Whether the alert should be hidden but still in the DOM. */
+	isHidden?: boolean;
+	/** The WAI-ARIA role. */
 	role?: DivProps['role'];
+	/** Tab index order. */
 	tabIndex?: number;
 	/** The title of the alert. */
 	title?: ReactNode;
-	/** The tone of the alert. */
-	tone: PageAlertTone;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: MouseEventHandler<HTMLButtonElement>;
 	/** @deprecated use `onClose` instead */
@@ -38,21 +43,26 @@ export type PageAlertProps = PropsWithChildren<{
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 	function PageAlert(
-		{ id, role, children, onClose, onDismiss, title, tone, tabIndex },
+		{ id, isHidden, role, children, onClose, onDismiss, title, tone, tabIndex },
 		ref
 	) {
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 		const { fg, bg, icon } = pageAlertToneMap[tone];
+
 		return (
 			<Flex
+				css={{
+					backgroundColor: bg,
+					position: 'relative',
+					...(isHidden && { display: 'none' }),
+				}}
+				focusAll
+				highContrastOutline
+				id={id}
 				ref={ref}
 				role={role}
-				id={id}
-				tabIndex={tabIndex}
 				rounded
-				focus
-				highContrastOutline
-				css={{ backgroundColor: bg, position: 'relative' }}
+				tabIndex={tabIndex}
 			>
 				<Flex
 					padding={0.5}

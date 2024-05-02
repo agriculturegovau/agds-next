@@ -19,6 +19,8 @@ export type SectionAlertProps = {
 	children?: ReactNode;
 	/** The ID of the alert. */
 	id?: string;
+	/** Whether the alert should be hidden but still in the DOM. */
+	isHidden?: boolean;
 	/** The role of the alert. */
 	role?: DivProps['role'];
 	/** The tab index of the alert. */
@@ -33,28 +35,41 @@ export type SectionAlertProps = {
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
-		{ id, role, tabIndex, tone, title, children, onClose, onDismiss, ...props },
+		{
+			children,
+			id,
+			isHidden,
+			onClose,
+			onDismiss,
+			role,
+			tabIndex,
+			title,
+			tone,
+			...props
+		},
 		ref
 	) {
 		const Icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
+
 		return (
 			<Flex
-				ref={ref}
-				role={role}
-				id={id}
-				tabIndex={tabIndex}
-				rounded
-				focus
+				alignItems="center"
 				background={tone}
 				borderColor={tone}
 				borderLeft
 				borderLeftWidth="xl"
-				highContrastOutline
 				gap={0.5}
-				padding={1}
-				alignItems="center"
+				highContrastOutline
+				id={id}
+				focusAll
 				justifyContent="space-between"
+				padding={1}
+				ref={ref}
+				role={role}
+				rounded
+				tabIndex={tabIndex}
+				{...(isHidden && { display: 'none' })}
 				{...props}
 			>
 				<Flex gap={0.5}>
