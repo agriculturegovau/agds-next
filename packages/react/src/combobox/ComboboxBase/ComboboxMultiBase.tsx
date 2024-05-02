@@ -15,7 +15,6 @@ import {
 import { Popover, usePopover } from '../../_popover';
 import {
 	boxPalette,
-	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
 	mergeRefs,
@@ -56,7 +55,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	disabled?: boolean;
 	// Styles
 	block?: boolean;
-	maxWidth?: Extract<FieldMaxWidth, ComboboxMaxWidthValues>;
+	maxWidth?: ComboboxMaxWidthValues;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	// Downshift
@@ -87,7 +86,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	inputId,
 	disabled = false,
 	block = true,
-	maxWidth: maxWidthProp,
+	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
 	renderItem = (item, inputValue) => (
 		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />

@@ -1,6 +1,6 @@
 import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { FieldMaxWidth, packs } from '../../core';
+import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
@@ -35,7 +35,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	disabled?: boolean;
 	// Styles
 	block?: boolean;
-	maxWidth?: Extract<FieldMaxWidth, ComboboxMaxWidthValues>;
+	maxWidth?: ComboboxMaxWidthValues;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	isAutocomplete: boolean;
