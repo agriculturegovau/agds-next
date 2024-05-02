@@ -6,9 +6,7 @@ export function useComboboxInputId(idProp?: string) {
 }
 
 const comboboxMaxWidthValues = ['md', 'lg', 'xl'] as const;
-export type ComboboxMaxWidthValues =
-	| (typeof comboboxMaxWidthValues)[number]
-	| undefined;
+export type ComboboxMaxWidthValues = (typeof comboboxMaxWidthValues)[number];
 
 export function validateMaxWidth(
 	componentType: string,

@@ -28,7 +28,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the field will stretch to the fill the width of its container. */
+	/** If true, the field will stretch to the fill the width of its container and ignore maxWidth. */
 	block?: boolean;
 	/** The maximum width of the field. */
 	maxWidth?: ComboboxMaxWidthValues;
@@ -57,6 +57,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 };
 
 export function ComboboxMulti<Option extends DefaultComboboxOption>({
+	block = true,
 	id,
 	value,
 	onChange,
@@ -145,6 +146,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 
 	return (
 		<ComboboxMultiBase
+			block={block}
 			combobox={combobox}
 			multiSelection={multiSelection}
 			inputItems={items}

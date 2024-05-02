@@ -54,7 +54,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	inputName?: string;
 	disabled?: boolean;
 	// Styles
-	block?: boolean;
+	block: boolean;
 	maxWidth?: ComboboxMaxWidthValues;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
@@ -85,7 +85,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	invalid = false,
 	inputId,
 	disabled = false,
-	block = true,
+	block,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
 	renderItem = (item, inputValue) => (
@@ -106,17 +106,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	if (process.env.NODE_ENV !== 'production' && maxWidthProp) {
-		validateMaxWidth('ComboboxMulti', maxWidthProp);
-
-		if (block) {
-			// Future enhancement: Automatically set block to false if maxWidth is defined.
-			// Requires usage research to ensure that this change would not break existing UIs.
-			console.warn(
-				`ComboboxMulti: The \`maxWidth\` prop is being ignored. Fix by setting the \`block\` prop to \`false\`.`
-			);
-		}
-	}
+	validateMaxWidth('ComboboxMulti', maxWidthProp);
 
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
@@ -303,10 +293,9 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
-			...(!block &&
-				maxWidth && {
-					maxWidth: tokens.maxWidth.field[maxWidth],
-				}),
+			...(!block && {
+				maxWidth: tokens.maxWidth.field[maxWidth],
+			}),
 		},
 		container: {
 			position: 'relative',

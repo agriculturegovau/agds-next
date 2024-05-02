@@ -3,4 +3,8 @@
 '@ag.ds-next/docs': patch
 ---
 
-combobox-multi: Added documentation and console warning/error messages when maxWidth prop is used incorrectly.
+combobox: Warn if unsupported maxWidth prop is set.
+
+combobox-multi: Warn if unsupported maxWidth prop is set.
+
+combobox-multi: Add default `block` value to docs props.
