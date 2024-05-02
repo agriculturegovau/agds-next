@@ -48,6 +48,7 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 				if (defaultValue) {
 					if (
 						prop.type.name === 'boolean' ||
+						prop.type.name === 'number' ||
 						(typeof defaultValue === 'string' && defaultValue.startsWith('['))
 					) {
 						// Do nothing
