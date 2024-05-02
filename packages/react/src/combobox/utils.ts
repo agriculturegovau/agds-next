@@ -14,7 +14,6 @@ export function validateMaxWidth(
 ) {
 	if (
 		process.env.NODE_ENV !== 'production' &&
-		maxWidth &&
 		!comboboxMaxWidthValues.includes(maxWidth)
 	) {
 		console.warn(
