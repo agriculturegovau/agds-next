@@ -1,5 +1,36 @@
 # @ag.ds-next/react
 
+## 1.21.0
+
+### Minor Changes
+
+- 317f42af5c2: progress-indicator: Added level two item support for ProgressIndicator
+  icons: Added CornerRightDownIcon
+- 89ffacb7672: drawer: Added `mutedOverlay` prop to the Drawer component so that context with the main page content can be more easily retained.
+- 2774726c192: TimeInput: Initial release of component
+
+  DatePicker: Also call consumer’s `onBlur` function when passed
+
+- 0b266d74b89: TimePicker: Initial release of component
+
+  TimeInput: Update `TimeValue` to use `.value` instead of `.raw`
+
+### Patch Changes
+
+- 7460e609496: time-input: Fix Figma link.
+
+  time-picker: Fix Figma link.
+
+- a3d65cb143f: date-picker: Fix DatePicker scrolling to the top of the page on first open.
+- 342c6a450af: docs: grouped-fields. Update select options. Allow appropriate ones to be changed
+- bc39ac06327: combobox: Warn if unsupported maxWidth prop is set.
+
+  combobox-multi: Warn if unsupported maxWidth prop is set.
+
+  combobox-multi: Add default `block` value to docs props.
+
+- 360e446abfb: status-badge: Remove background colour for subtle appearance
+
 ## 1.20.0
 
 ### Minor Changes
