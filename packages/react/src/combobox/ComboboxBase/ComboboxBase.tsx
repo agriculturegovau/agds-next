@@ -5,8 +5,8 @@ import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import {
-	ComboboxMaxWidthValues,
-	DefaultComboboxOption,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';

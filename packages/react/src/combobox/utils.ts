@@ -5,15 +5,21 @@ export function useComboboxInputId(idProp?: string) {
 	return idProp || `combobox-input-${autoId}`;
 }
 
-export const comboboxMaxWidthValues = ['md', 'lg', 'xl'] as const;
-export type ComboboxMaxWidthValues = (typeof comboboxMaxWidthValues)[number];
+const comboboxMaxWidthValues = ['md', 'lg', 'xl'] as const;
+export type ComboboxMaxWidthValues =
+	| (typeof comboboxMaxWidthValues)[number]
+	| undefined;
 
 export function validateMaxWidth(
 	componentType: string,
-	maxWidth: ComboboxMaxWidthValues | undefined
+	maxWidth: ComboboxMaxWidthValues
 ) {
-	if (maxWidth && !['md', 'lg', 'xl'].includes(maxWidth)) {
-		console.error(
+	if (
+		process.env.NODE_ENV !== 'production' &&
+		maxWidth &&
+		!comboboxMaxWidthValues.includes(maxWidth)
+	) {
+		console.warn(
 			`${componentType}: The \`maxWidth\` value "${maxWidth}" is not supported. Supported values are: ${comboboxMaxWidthValues.join(
 				', '
 			)}`

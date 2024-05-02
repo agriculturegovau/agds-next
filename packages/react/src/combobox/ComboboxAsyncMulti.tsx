@@ -10,10 +10,10 @@ import { useCombobox, useMultipleSelection } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
 import {
-	DefaultComboboxOption,
-	useComboboxInputId,
 	filterOptions,
-	ComboboxMaxWidthValues,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
+	useComboboxInputId,
 } from './utils';
 import { useAsync } from './useAsync';
 

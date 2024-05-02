@@ -3,8 +3,8 @@ import { useCombobox } from 'downshift';
 import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
 import {
-	ComboboxMaxWidthValues,
-	DefaultComboboxOption,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
 	useComboboxInputId,
 } from './utils';
 import { useAsync } from './useAsync';

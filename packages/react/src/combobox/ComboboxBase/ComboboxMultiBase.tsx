@@ -26,8 +26,8 @@ import {
 import { Field } from '../../field';
 import { Flex } from '../../flex';
 import {
-	ComboboxMaxWidthValues,
-	DefaultComboboxOption,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
@@ -107,15 +107,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	if (maxWidthProp) {
+	if (process.env.NODE_ENV !== 'production' && maxWidthProp) {
 		validateMaxWidth('ComboboxMulti', maxWidthProp);
 
 		if (block) {
-			// Ideally AgDS would automatically set block to false if maxWidth is defined.
-			// The AgDS team need to first do research on the usage of the maxWidth property on ComboBox.
-			// The team need to ensure that this change would not break any existing UIs.
+			// Future enhancement: Automatically set block to false if maxWidth is defined.
+			// Requires usage research to ensure that this change would not break existing UIs.
 			console.warn(
-				`ComboboxMulti: The \`maxWidth\` property is being ignored. Fix by setting the \`block\` property to \`false\`.`
+				`ComboboxMulti: The \`maxWidth\` prop is being ignored. Fix by setting the \`block\` prop to \`false\`.`
 			);
 		}
 	}
@@ -300,14 +299,15 @@ function comboboxMultiStyles({
 	disabled: boolean;
 	invalid: boolean;
 	isInputFocused: boolean;
-	maxWidth: FieldMaxWidth;
+	maxWidth: ComboboxMaxWidthValues;
 	showClearButton: boolean;
 }) {
 	return {
 		fieldContainer: {
-			...(!block && {
-				maxWidth: tokens.maxWidth.field[maxWidth],
-			}),
+			...(!block &&
+				maxWidth && {
+					maxWidth: tokens.maxWidth.field[maxWidth],
+				}),
 		},
 		container: {
 			position: 'relative',

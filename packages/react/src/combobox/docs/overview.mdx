@@ -102,7 +102,7 @@ Use the `ComboboxMulti` component when users can choose multiple items from a pr
 };
 ```
 
-Note that in order to apply `maxWidth` to a `ComboboxMulti`, the `block` property needs to be set to `false`.
+Should you wish to apply `maxWidth` to a `ComboboxMulti`, ensure the `block` prop is `false`.
 
 ```jsx live
 () => {
@@ -114,7 +114,7 @@ Note that in order to apply `maxWidth` to a `ComboboxMulti`, the `block` propert
 			value={value}
 			onChange={setValue}
 			options={COUNTRY_OPTIONS}
-			maxWidth="lg"
+			maxWidth="xl"
 			block={false}
 		/>
 	);
