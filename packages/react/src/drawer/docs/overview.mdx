@@ -369,9 +369,8 @@ When the drawer closes, focus is returned to the element that triggered its open
 	};
 
 	return (
-		<Stack alignItems="start" gap={2}>
+		<Stack gap={2}>
 			<SectionAlert
-				alignItems="start"
 				focusAll
 				isHidden={Boolean(!error)}
 				ref={sectionAlertRef}
@@ -382,7 +381,9 @@ When the drawer closes, focus is returned to the element that triggered its open
 				<Text as="p">{error}</Text>
 			</SectionAlert>
 
-			<Button onClick={openDrawerClearError}>Open Drawer</Button>
+			<Box alignSelf="start">
+				<Button onClick={openDrawerClearError}>Open Drawer</Button>
+			</Box>
 
 			<Drawer
 				actions={

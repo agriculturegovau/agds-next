@@ -97,3 +97,32 @@ Avoid dismissing error messages which block the user from completing a task. Ins
 	</SectionAlert>
 </Stack>
 ```
+
+## Focusing the alert
+
+In the event you need to focus the alert, set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
+
+```jsx live
+() => {
+	const sectionAlertRef = React.useRef(null);
+
+	return (
+		<Stack gap={2}>
+			<Box alignSelf="start">
+				<Button onClick={() => sectionAlertRef.current.focus()}>
+					Focus the alert
+				</Button>
+			</Box>
+
+			<SectionAlert
+				ref={sectionAlertRef}
+				tabIndex={-1}
+				title="Something went wrong"
+				tone="error"
+			>
+				<Text as="p">There was an error submitting the application.</Text>
+			</SectionAlert>
+		</Stack>
+	);
+};
+```

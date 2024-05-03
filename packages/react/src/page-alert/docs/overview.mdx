@@ -113,3 +113,40 @@ Use the `onClose` prop to make the alert dismissable. Ensure Page alerts that ar
 	</Text>
 </PageAlert>
 ```
+
+## Focusing the alert
+
+In the event you need to focus the alert, set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
+
+```jsx live
+() => {
+	const pageAlertRef = React.useRef(null);
+
+	return (
+		<Stack gap={2}>
+			<Box alignSelf="start">
+				<Button onClick={() => pageAlertRef.current.focus()}>
+					Focus the alert
+				</Button>
+			</Box>
+
+			<PageAlert
+				ref={pageAlertRef}
+				tabIndex={-1}
+				title="There is a problem"
+				tone="error"
+			>
+				<Text as="p">Please correct the following fields and try again</Text>
+				<UnorderedList>
+					<ListItem>
+						<TextLink href="#">Full name must not be empty</TextLink>
+					</ListItem>
+					<ListItem>
+						<TextLink href="#">Email must not be empty</TextLink>
+					</ListItem>
+				</UnorderedList>
+			</PageAlert>
+		</Stack>
+	);
+};
+```

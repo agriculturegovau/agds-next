@@ -3,7 +3,7 @@
 exports[`SectionAlert which is closable renders correctly 1`] = `
 <div>
   <div
-    class="css-h23zy0-boxStyles"
+    class="css-ggchj3-boxStyles"
   >
     <div
       class="css-1urm0li-boxStyles"
@@ -85,7 +85,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
 exports[`SectionAlert with a description renders correctly 1`] = `
 <div>
   <div
-    class="css-h23zy0-boxStyles"
+    class="css-ggchj3-boxStyles"
   >
     <div
       class="css-1urm0li-boxStyles"
@@ -131,7 +131,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
 exports[`SectionAlert with error tone renders correctly 1`] = `
 <div>
   <div
-    class="css-vnrke9-boxStyles"
+    class="css-1egllhf-boxStyles"
   >
     <div
       class="css-1urm0li-boxStyles"
@@ -172,7 +172,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
 exports[`SectionAlert with success tone renders correctly 1`] = `
 <div>
   <div
-    class="css-h23zy0-boxStyles"
+    class="css-ggchj3-boxStyles"
   >
     <div
       class="css-1urm0li-boxStyles"
@@ -213,7 +213,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
 exports[`SectionAlert with warning tone renders correctly 1`] = `
 <div>
   <div
-    class="css-xkbh3e-boxStyles"
+    class="css-1ssy6rb-boxStyles"
   >
     <div
       class="css-1urm0li-boxStyles"
