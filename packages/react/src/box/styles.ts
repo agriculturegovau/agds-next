@@ -1,4 +1,4 @@
-import { css, CSSObject } from '@emotion/react';
+import { css } from '@emotion/react';
 import {
 	tokens,
 	BoxPalette,
