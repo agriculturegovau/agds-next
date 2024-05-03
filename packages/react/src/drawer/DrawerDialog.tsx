@@ -14,7 +14,7 @@ import { DrawerProps } from './Drawer';
 export type DrawerDialogProps = PropsWithChildren<{
 	/** Used to render buttons at the bottom of the draw. */
 	actions?: ReactNode;
-	/** On close of the drawer, this element will be focused, rather than the trigger. */
+	/** On close of the drawer, this element will be focused, rather than the trigger element. */
 	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
 	/** @deprecated use `onClose` instead. */
 	onDismiss?: () => void;

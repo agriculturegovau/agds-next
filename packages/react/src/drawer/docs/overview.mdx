@@ -350,7 +350,7 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 
 ## Focus custom element on close
 
-When the drawer closes, focus is returned to the element that triggered its opening. You can override this behaviour by passing a custom element to the `elementToFocusOnClose` prop. This is useful when an action performed in the drawer causes an error and focus should be returned to an alert on close.\_createMdxContent
+When the drawer closes, focus is returned to the element that triggered its opening. You can override this behaviour by passing a custom element to the `elementToFocusOnClose` prop. This is useful when an action performed in the drawer causes an error and focus should be returned to an alert on close.
 
 ```jsx live
 () => {
@@ -358,12 +358,12 @@ When the drawer closes, focus is returned to the element that triggered its open
 	const [error, setError] = React.useState('');
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 
-	const openDrawerClearError = () => {
+	const openDrawerAndClearError = () => {
 		openDrawer();
 		setError('');
 	};
 
-	const closeDrawerWithError = () => {
+	const closeWithError = () => {
 		closeDrawer();
 		setError('We were unable to perform the action, please try again later.');
 	};
@@ -382,13 +382,13 @@ When the drawer closes, focus is returned to the element that triggered its open
 			</SectionAlert>
 
 			<Box alignSelf="start">
-				<Button onClick={openDrawerClearError}>Open Drawer</Button>
+				<Button onClick={openDrawerAndClearError}>Open Drawer</Button>
 			</Box>
 
 			<Drawer
 				actions={
 					<ButtonGroup>
-						<Button onClick={closeDrawerWithError}>Close with error</Button>
+						<Button onClick={closeWithError}>Close with error</Button>
 						<Button variant="secondary" onClick={closeDrawer}>
 							Close with no error
 						</Button>
@@ -400,8 +400,8 @@ When the drawer closes, focus is returned to the element that triggered its open
 				title="Drawer title"
 			>
 				<Text as="p">
-					When pressing 'Close drawer with error', focus will be set to the
-					alert.
+					When pressing 'Close with error', an error alert will be rendered and
+					focused.
 				</Text>
 			</Drawer>
 		</Stack>

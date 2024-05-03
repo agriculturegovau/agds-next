@@ -23,7 +23,7 @@ import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
 export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** On close of the drawer, this element will be focused, rather than the trigger. */
+	/** On close of the drawer, this element will be focused, rather than the trigger element. */
 	elementToFocusOnClose?: HTMLElement | null;
 	/** If true, the drawer will be displayed. */
 	isOpen?: boolean;
