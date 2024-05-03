@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-Box: Added breakWords prop to allow words to break across multiple lines.
+box: Add `breakWords` prop to let words break across multiple lines where necessary

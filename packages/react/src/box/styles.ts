@@ -145,6 +145,9 @@ type TypographyProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
 	 */
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
+	/** If true, applies the CSS word-break: break-word property, or word-break: normal if false.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+	 */
 	breakWords: boolean;
 }>;
 
@@ -178,7 +181,7 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		textAlign: mapResponsiveProp(textAlign),
-		wordWrap:
+		wordBreak:
 			(breakWords === true && 'break-word') ||
 			(breakWords === false && 'normal') ||
 			// wordWrap will inherit by default
