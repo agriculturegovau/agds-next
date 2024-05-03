@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, CSSObject } from '@emotion/react';
 import {
 	tokens,
 	BoxPalette,
@@ -449,12 +449,12 @@ type PaddingProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
 	 */
 	paddingBottom: ResponsiveProp<Spacing>;
-	/** Maps tokens to the CSS padding-bottom property.
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
-	 */
-	paddingRight: ResponsiveProp<Spacing>;
 	/** Maps tokens to the CSS padding-right property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
+	 */
+	paddingRight: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-left property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
 	 */
 	paddingLeft: ResponsiveProp<Spacing>;
 	/** Maps tokens to the CSS padding-left and padding-right properties.
