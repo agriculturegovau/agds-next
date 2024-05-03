@@ -7,6 +7,9 @@ import {
 	TableCaption,
 	TableRow,
 } from '@ag.ds-next/react/table';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 
 export type ComponentPropsTableProps = {
 	data: {
@@ -65,6 +68,11 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 					}
 				}
 
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				const [_description, desc, _see, url] =
+					prop.description.match(/^(.*?)(\n?@see\s+)?(https?:\/\/\S+)?$/m) ||
+					[];
+
 				return (
 					<TableRow key={prop.name}>
 						<TableCell>
@@ -85,7 +93,14 @@ export const ComponentPropsTable = ({ data }: ComponentPropsTableProps) => (
 							</span>
 						</TableCell>
 						<TableCell>
-							<span css={{ wordBreak: 'break-word' }}>{prop.description}</span>
+							<Stack css={{ wordBreak: 'break-word' }} gap={0.25}>
+								{desc}
+								{url ? (
+									<Text fontSize="xs">
+										<TextLink href={url}>{url}</TextLink>
+									</Text>
+								) : null}
+							</Stack>
 						</TableCell>
 					</TableRow>
 				);
