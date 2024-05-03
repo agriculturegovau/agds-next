@@ -124,6 +124,7 @@ function typographyStyles({
 	fontSize: _fontSize,
 	lineHeight: _lineHeight = 'default',
 	textAlign,
+	breakWords,
 }: TypographyProps) {
 	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
 		fontGrid(t, _lineHeight)
@@ -147,6 +148,11 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		textAlign: mapResponsiveProp(textAlign),
+		wordWrap:
+			(breakWords === true && 'break-word') ||
+			(breakWords === false && 'normal') ||
+			// wordWrap will inherit by default
+			undefined,
 		'& ::selection': {
 			color: boxPalette.backgroundBody,
 			backgroundColor: boxPalette.foregroundAction,
@@ -480,11 +486,6 @@ export function boxStyles({
 				listStyle: 'none',
 				margin: 0,
 				padding: 0,
-				wordWrap:
-					(breakWords === true && 'break-word') ||
-					(breakWords === false && 'normal') ||
-					// wordWrap will inherit by default
-					undefined,
 			},
 
 			mq({
@@ -545,6 +546,7 @@ export function boxStyles({
 					fontSize,
 					lineHeight,
 					textAlign,
+					breakWords,
 				}),
 
 				...(link ? linkStyles : undefined),
