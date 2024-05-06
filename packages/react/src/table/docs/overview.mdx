@@ -542,7 +542,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">20/06/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -557,7 +561,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">25/06/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -572,7 +580,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">02/07/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="success" label="Completed" />
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -587,7 +599,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">05/08/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -602,7 +618,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">19/10/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="success" label="Completed" />
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -672,7 +692,7 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 							{Array.from(new Array(3).keys()).map((idx) => {
 								const isRowSelected = selectedRows.includes(idx);
 								return (
-									<TableRow selected={isRowSelected}>
+									<TableRow selected={isRowSelected} key={idx}>
 										<TableCell>
 											<Checkbox
 												size="sm"
@@ -720,4 +740,96 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 		</Stack>
 	);
 };
+```
+
+## Row with action and error
+
+To indicate an error in a row containing an action, set the `hasRowError` prop to `true`. This should be accompanied by an section alert.
+
+```jsx live
+<Stack gap={2}>
+	<SectionAlert title="There was an error" tone="error">
+		<UnorderedList>
+			<ListItem>
+				<TextLink href="#operational-plan-of-management-upload-button">
+					File is missing for Operational Plan of Management
+				</TextLink>
+			</ListItem>
+		</UnorderedList>
+	</SectionAlert>
+
+	<TableWrapper>
+		<Table>
+			<TableCaption>Assessment files</TableCaption>
+			<TableHead>
+				<TableRow>
+					<TableHeader scope="col">Document type</TableHeader>
+					<TableHeader scope="col">File</TableHeader>
+					<TableHeader scope="col">Size</TableHeader>
+					<TableHeader scope="col">Action</TableHeader>
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				<TableRow aria-rowindex={2}>
+					<TableCell as="th" scope="row">
+						RMS Vehicle registration
+					</TableCell>
+					<TableCell>
+						<Box>filename.pdf</Box>
+					</TableCell>
+					<TableCell>88kb</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="rms-vehicle-registration-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow aria-rowindex={3} hasRowError={true}>
+					<TableCell as="th" scope="row">
+						Operational Plan of Management
+					</TableCell>
+					<TableCell></TableCell>
+					<TableCell>
+						<StatusBadge
+							label="File missing"
+							appearance="subtle"
+							tone="errorHigh"
+						/>
+					</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="operational-plan-of-management-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow aria-rowindex={4}>
+					<TableCell as="th" scope="row">
+						Vehicle build and layout plans
+					</TableCell>
+					<TableCell>
+						<Box>filename.pdf</Box>
+					</TableCell>
+					<TableCell>88kb</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="vehicle-build-and-layout-plans-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+			</TableBody>
+		</Table>
+	</TableWrapper>
+</Stack>
 ```
