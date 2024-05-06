@@ -65,7 +65,7 @@ describe('TimeInput', () => {
 	it('updates correctly based on the `value` prop', async () => {
 		const { container } = renderTimeInput({
 			value: {
-				raw: '2130',
+				value: '2130',
 			},
 		});
 		expect(container).toMatchSnapshot();
@@ -77,7 +77,7 @@ describe('TimeInput', () => {
 		renderTimeInput({
 			invalid: true,
 			message: errorMessage,
-			value: { raw: 'a' },
+			value: { value: 'a' },
 		});
 		expect(getInput()).toBeInvalid();
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
@@ -97,7 +97,7 @@ describe('TimeInput', () => {
 
 		expect(onChange).toHaveBeenCalledWith({
 			formatted: '9:30 am',
-			raw: '09:30',
+			value: '09:30',
 		});
 	});
 

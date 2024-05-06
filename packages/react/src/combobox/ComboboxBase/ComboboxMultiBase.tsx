@@ -15,7 +15,6 @@ import {
 import { Popover, usePopover } from '../../_popover';
 import {
 	boxPalette,
-	FieldMaxWidth,
 	fontGrid,
 	mapSpacing,
 	mergeRefs,
@@ -25,7 +24,11 @@ import {
 } from '../../core';
 import { Field } from '../../field';
 import { Flex } from '../../flex';
-import { DefaultComboboxOption } from '../utils';
+import {
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
+	validateMaxWidth,
+} from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
@@ -51,8 +54,8 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	inputName?: string;
 	disabled?: boolean;
 	// Styles
-	block?: boolean;
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	block: boolean;
+	maxWidth?: ComboboxMaxWidthValues;
 	showDropdownTrigger?: boolean;
 	clearable?: boolean;
 	// Downshift
@@ -82,7 +85,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	invalid = false,
 	inputId,
 	disabled = false,
-	block = true,
+	block,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
 	renderItem = (item, inputValue) => (
@@ -102,6 +105,8 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	...props
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	validateMaxWidth('ComboboxMulti', maxWidthProp);
 
 	const [isInputFocused, setInputFocused, setInputBlurred] =
 		useTernaryState(false);
@@ -283,7 +288,7 @@ function comboboxMultiStyles({
 	disabled: boolean;
 	invalid: boolean;
 	isInputFocused: boolean;
-	maxWidth: FieldMaxWidth;
+	maxWidth: ComboboxMaxWidthValues;
 	showClearButton: boolean;
 }) {
 	return {

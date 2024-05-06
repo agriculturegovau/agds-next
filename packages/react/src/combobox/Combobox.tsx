@@ -1,10 +1,10 @@
 import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
-import { FieldMaxWidth } from '../core';
 import { ComboboxBase } from './ComboboxBase';
 import {
-	DefaultComboboxOption,
 	filterOptions,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
 	useComboboxInputId,
 } from './utils';
 
@@ -26,7 +26,7 @@ export type ComboboxProps<
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: ComboboxMaxWidthValues;
 	/** If true, the field will not be interactive. */
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
@@ -84,7 +84,7 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			} else {
 				// When the menu is closed by the user, reset the entire options
 				// This is common in other Combobox implementations (react-aria, react-select, etc)
-				setInputItems(filterOptions(options, ''));
+				setInputItems(options);
 			}
 		},
 		stateReducer: (state, actionAndChanges) => {

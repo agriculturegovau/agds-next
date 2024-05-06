@@ -10,14 +10,13 @@ export default function newPackage(
 			{
 				type: 'input',
 				name: 'packageName',
-				message: 'Package name, all lowercase (e.g. button)',
+				message: 'Package name, in kebab-case (e.g. button-link)',
 				validate: (answer) => answer.length > 0,
 			},
 			{
 				type: 'input',
 				name: 'componentName',
-				message:
-					'Component name, please use appropriate uppercase (e.g. Button)',
+				message: 'Component name, in PascalCase (e.g. ButtonLink)',
 				validate: (answer) => answer.length > 0,
 			},
 			{
@@ -56,7 +55,7 @@ export default function newPackage(
 				type: 'add',
 				path: '../.changeset/plop-create-{{packageName}}.md',
 				template:
-					"---\n'@ag.ds-next/react': minor\n---\n\n{{componentName}}: Created new component\n",
+					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\n{{componentName}}: Initial release of component\n",
 			});
 
 			return actions;
