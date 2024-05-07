@@ -9,7 +9,7 @@ export type FormContainerProps = PropsWithChildren<{
 	title: string;
 	introduction: string;
 	callToAction?: ReactNode;
-	hideRequiredFieldsMessage: boolean | undefined;
+	hideRequiredFieldsMessage?: boolean;
 }>;
 
 export function FormContainer({
@@ -42,8 +42,6 @@ export function FormContainer({
 		</Stack>
 	);
 }
-
-console.log(1, globalFormTasks[1].label);
 
 const FORM_TITLE_MAP = {
 	1: globalFormTasks[0].label,

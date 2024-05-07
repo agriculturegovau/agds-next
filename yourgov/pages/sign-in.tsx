@@ -2,8 +2,8 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@ag.ds-next/react/button';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
@@ -23,6 +23,7 @@ import { useAuth } from '../lib/useAuth';
 import { mockUser } from '../data/mockUsers';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { SiteLayout } from '../components/Layout/SiteLayout';
+import { zodString } from '../components/FormMobileFoodVendorPermit/utils';
 
 export default function Page() {
 	const router = useRouter();
@@ -37,7 +38,7 @@ export default function Page() {
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Sign in" />
+			<DocumentTitle title="Sign in to yourGov" />
 			<SiteLayout>
 				<PageContent>
 					<Columns>
@@ -70,14 +71,12 @@ export default function Page() {
 	);
 }
 
-const formSchema = yup
-	.object({
-		email: yup.string().email('Invalid email').required('Enter your email'),
-		password: yup.string().required('Enter your password'),
-	})
-	.required();
+const formSchema = z.object({
+	email: zodString('Enter your email').email('Enter a valid email'),
+	password: zodString('Enter your password'),
+});
 
-type FormSchema = yup.InferType<typeof formSchema>;
+type FormSchema = z.infer<typeof formSchema>;
 
 function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -92,13 +91,12 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		resolver: yupResolver(formSchema),
+		resolver: zodResolver(formSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {
-		console.log(data);
 		setIsSubmitting(true);
 		setTimeout(() => {
 			props.onSubmit(data);
@@ -106,8 +104,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 		}, 3000);
 	};
 
-	const onError: SubmitErrorHandler<FormSchema> = (errors, event) => {
-		console.log(errors, event);
+	const onError: SubmitErrorHandler<FormSchema> = () => {
 		setHasFocusedClientErrorRef(false);
 	};
 
@@ -141,7 +138,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 					</UnorderedList>
 				</PageAlert>
 			)}
-			{isSubmitting && <LoadingBlanket label="Logging in" />}
+			{isSubmitting && <LoadingBlanket fullScreen label="Signing in" />}
 			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 				<FormStack>
 					<TextInput

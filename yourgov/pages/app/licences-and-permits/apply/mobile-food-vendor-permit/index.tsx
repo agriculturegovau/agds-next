@@ -18,7 +18,7 @@ import { GettingStartedForm } from '../../../../../components/FormMobileFoodVend
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage permits" />
+			<DocumentTitle title="Apply for a mobile food vendor permit" />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={8}>

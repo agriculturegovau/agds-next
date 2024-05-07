@@ -131,24 +131,22 @@ function AppLayoutHeader({ user }: { user: User }) {
 				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
 				dropdown: (
 					<DropdownMenuPanel palette="light">
-						{isAppHomePage ? null : (
-							<DropdownMenuGroup label="Businesses">
-								{linkedBusinesses.map((b) => (
-									<DropdownMenuItemRadio
-										key={b.name}
-										checked={
-											selectedBusiness?.name
-												? selectedBusiness.name === b.name
-												: false
-										}
-										secondaryText={`ABN ${b.abn}`}
-										onClick={() => onBusinessClick(b)}
-									>
-										{b.name}
-									</DropdownMenuItemRadio>
-								))}
-							</DropdownMenuGroup>
-						)}
+						<DropdownMenuGroup label="Businesses">
+							{linkedBusinesses.map((b) => (
+								<DropdownMenuItemRadio
+									key={b.name}
+									checked={
+										selectedBusiness?.name
+											? selectedBusiness.name === b.name
+											: false
+									}
+									secondaryText={`ABN ${b.abn}`}
+									onClick={() => onBusinessClick(b)}
+								>
+									{b.name}
+								</DropdownMenuItemRadio>
+							))}
+						</DropdownMenuGroup>
 						<DropdownMenuGroup label="My account">
 							<DropdownMenuItemLink href="/not-found" icon={AvatarIcon}>
 								Profile
