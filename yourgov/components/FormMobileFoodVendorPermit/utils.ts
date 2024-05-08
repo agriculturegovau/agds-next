@@ -39,7 +39,7 @@ export function zodTimeField({
 	return z
 		.object(
 			{
-				raw: zodString(requiredMessage),
+				value: zodString(requiredMessage),
 				formatted: zodString(requiredMessage),
 			},
 			{
@@ -48,14 +48,14 @@ export function zodTimeField({
 			}
 		)
 		.superRefine((value, context) => {
-			if (!value.raw) {
+			if (!value.value) {
 				context.addIssue({
 					code: ZodIssueCode.invalid_string,
 					message: requiredMessage,
 					validation: { includes: '' },
 				});
 			}
-			if (!/^\d\d:\d\d$/.test(value.raw)) {
+			if (!/^\d\d:\d\d$/.test(value.value)) {
 				context.addIssue({
 					code: ZodIssueCode.invalid_string,
 					message: invalidMessage,

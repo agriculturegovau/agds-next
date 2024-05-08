@@ -109,11 +109,23 @@ export function FormTask1Step1ChangeDetails() {
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ProgressIndicator
-					items={task1FormSteps.map(({ label, href }, index) => ({
+					activePath={`${
+						task1FormSteps[0].items && task1FormSteps[0].items[0]?.href
+					}?type=${typeSearchParm}`}
+					items={task1FormSteps.map(({ label, href, items }, index) => ({
 						label,
-						href: href + `?type=${typeSearchParm}`,
+						href: `${href}?type=${typeSearchParm}`,
 						status: getStepStatus(index),
-						isActive: index === 0,
+						...(index === 0
+							? {
+									items: [
+										{
+											label: items && items[0]?.label,
+											href: `${items && items[0]?.href}?type=${typeSearchParm}`,
+										},
+									],
+							  }
+							: undefined),
 					}))}
 				/>
 			</Column>

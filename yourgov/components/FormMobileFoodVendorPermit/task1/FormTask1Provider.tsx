@@ -24,6 +24,12 @@ export const task1FormSteps: Array<FormStep<Task1StepNumber>> = [
 		formStateKey: 'step1',
 		label: 'Owner details',
 		href: formHomePage + '/task-1/step-1',
+		items: [
+			{
+				label: 'Change business owner details',
+				href: formHomePage + '/task-1/step-1/change-details',
+			},
+		],
 	},
 	{
 		formStateKey: 'step2',

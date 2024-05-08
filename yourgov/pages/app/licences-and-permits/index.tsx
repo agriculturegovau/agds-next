@@ -49,7 +49,7 @@ const Page: NextPageWithLayout = () => {
 						title="Manage permits"
 						introduction="Stay compliant by registering for business licences and permits."
 						callToAction={
-							<CallToActionLink href="/app/licences-and-permits/apply">
+							<CallToActionLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
 								Apply for a permit
 							</CallToActionLink>
 						}

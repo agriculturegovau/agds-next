@@ -8,6 +8,10 @@ export interface FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> {
 	label: string;
 	href: string;
 	formStateKey: StepNumber;
+	items?: Array<{
+		href: string;
+		label: string;
+	}>;
 }
 
 export type AnyStepNumber = Task1StepNumber | Task2StepNumber | Task3StepNumber;
