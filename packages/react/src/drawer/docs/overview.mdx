@@ -354,7 +354,7 @@ When the drawer closes, focus is returned to the element that triggered its open
 
 ```jsx live
 () => {
-	const sectionAlertRef = React.useRef(null);
+	const sectionAlertContainerRef = React.useRef(null);
 	const [error, setError] = React.useState('');
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 
@@ -370,16 +370,22 @@ When the drawer closes, focus is returned to the element that triggered its open
 
 	return (
 		<Stack gap={2}>
-			<SectionAlert
-				focusAll
-				isHidden={Boolean(!error)}
-				ref={sectionAlertRef}
+			<Box
+				css={error ? undefined : { display: 'none' }}
+				focusFor="all"
+				ref={sectionAlertContainerRef}
 				tabIndex={-1}
-				title="Something went wrong"
-				tone="error"
 			>
-				<Text as="p">{error}</Text>
-			</SectionAlert>
+				<SectionAlert
+					isHidden={Boolean(!error)}
+					ref={sectionAlertContainerRef}
+					tabIndex={-1}
+					title="Something went wrong"
+					tone="error"
+				>
+					<Text as="p">{error}</Text>
+				</SectionAlert>
+			</Box>
 
 			<Box alignSelf="start">
 				<Button onClick={openDrawerAndClearError}>Open Drawer</Button>
@@ -394,7 +400,7 @@ When the drawer closes, focus is returned to the element that triggered its open
 						</Button>
 					</ButtonGroup>
 				}
-				elementToFocusOnClose={sectionAlertRef.current}
+				elementToFocusOnClose={sectionAlertContainerRef.current}
 				isOpen={isDrawerOpen}
 				onClose={closeDrawer}
 				title="Drawer title"

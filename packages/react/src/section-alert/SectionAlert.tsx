@@ -7,6 +7,7 @@ import {
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
 import { getOptionalCloseHandler } from '../getCloseHandler';
+import { useFocusOnMount } from '../core/utils/useFocusOnMount';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
 
@@ -17,10 +18,10 @@ export type SectionAlertProps = {
 	title: string;
 	/** The content of the alert description. */
 	children?: ReactNode;
+	/** Whether the alert should be focused as soon as it's rendered. */
+	focusOnMount?: boolean;
 	/** The ID of the alert. */
 	id?: string;
-	/** Whether the alert should be hidden but still in the DOM. */
-	isHidden?: boolean;
 	/** The role of the alert. */
 	role?: DivProps['role'];
 	/** The tab index of the alert. */
@@ -38,7 +39,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		{
 			children,
 			id,
-			isHidden,
+			focusOnMount,
 			onClose,
 			onDismiss,
 			role,
@@ -47,8 +48,13 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 			tone,
 			...props
 		},
-		ref
+		forwardedRef
 	) {
+		const ref = useFocusOnMount<HTMLDivElement>({
+			disabled: !focusOnMount,
+			forwardedRef,
+		});
+
 		const Icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
@@ -62,14 +68,13 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				gap={0.5}
 				highContrastOutline
 				id={id}
-				focusAll
+				focusFor="all"
 				justifyContent="space-between"
 				padding={1}
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex}
-				{...(isHidden && { display: 'none' })}
+				tabIndex={tabIndex || (focusOnMount ? -1 : undefined)}
 				{...props}
 			>
 				<Flex gap={0.5}>

@@ -40,7 +40,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 				ref={ref}
 				tabIndex={tabIndex}
 				fontSize="sm"
-				focus
+				focusFor="keyboard"
 				width="100%"
 				display="table"
 				id={id}

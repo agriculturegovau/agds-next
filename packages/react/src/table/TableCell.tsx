@@ -41,7 +41,7 @@ export const TableCell = ({
 			colSpan={colSpan}
 			css={{ verticalAlign }}
 			display={display}
-			focus
+			focusFor="keyboard"
 			fontWeight={fontWeight}
 			padding={0.75}
 			rowSpan={rowSpan}

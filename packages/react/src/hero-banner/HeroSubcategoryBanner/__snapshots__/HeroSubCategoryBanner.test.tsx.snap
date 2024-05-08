@@ -3,25 +3,25 @@
 exports[`HeroSubcategoryBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-d9obf2-boxStyles"
+    class="css-gy7lno-boxStyles"
   >
     <div
-      class="css-ou39vu-boxStyles"
+      class="css-4vn658-boxStyles"
     >
       <div
-        class="css-1rhmzip-boxStyles"
+        class="css-1gs27pt-boxStyles"
       >
         <div
-          class="css-eg651i-boxStyles"
+          class="css-zkbjb8-boxStyles"
         >
           <nav
             aria-label="Breadcrumbs"
           >
             <ol
-              class="css-njrw75-boxStyles-BreadcrumbsContainer"
+              class="css-s1vxaf-boxStyles-BreadcrumbsContainer"
             >
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-d2ys52-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -47,7 +47,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-d2ys52-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -75,7 +75,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </button>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-d2ys52-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -101,7 +101,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-d2ys52-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -129,7 +129,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             </ol>
           </nav>
           <h1
-            class="css-18pa81a-boxStyles"
+            class="css-erkn7y-boxStyles"
           >
             Subcategory banner title - xxl/display (H1)
           </h1>

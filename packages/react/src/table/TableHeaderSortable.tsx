@@ -52,7 +52,7 @@ export const TableHeaderSortable = ({
 				width="100%"
 				justifyContent="space-between"
 				alignItems="center"
-				focus
+				focusFor="keyboard"
 				css={{
 					...packs.underline,
 					svg: {

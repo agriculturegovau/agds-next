@@ -6,11 +6,11 @@ exports[`AppLayout renders correctly 1`] = `
     class="css-jlzmfo-AppLayoutGrid"
   >
     <header
-      class="css-42lvlx-dark-boxStyles-AppLayoutHeader"
+      class="css-14xb3ti-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
       <div
-        class="css-k6tsvc-boxStyles"
+        class="css-1lw5ana-boxStyles"
       >
         <a
           class="css-1qgwds3-boxStyles-AppLayoutHeaderBrand"
@@ -47,31 +47,31 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </svg>
           <div
-            class="css-1l41q-boxStyles-AppLayoutHeaderBrand"
+            class="css-8igoc4-boxStyles-AppLayoutHeaderBrand"
           >
             <div
-              class="css-1qp4da6-boxStyles"
+              class="css-7nwa70-boxStyles"
             >
               <span
-                class="css-1lv1g9v-boxStyles-Text"
+                class="css-tcqhx-boxStyles-Text"
               >
                 Export Service
               </span>
               <div
-                class="css-c5y8sd-boxStyles-AppLayoutHeaderBrandBadge"
+                class="css-qcvxln-boxStyles-AppLayoutHeaderBrandBadge"
               >
                 Beta
               </div>
             </div>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              class="css-11wrux5-boxStyles-Text"
             >
               Supporting Australian agricultural exports
             </span>
           </div>
         </a>
         <div
-          class="css-10mrbgs-boxStyles"
+          class="css-v23vad-boxStyles"
         >
           <button
             aria-controls="dropdown-menu-:r0:-panel"
@@ -88,23 +88,23 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
             <span
               aria-hidden="true"
-              class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              class="css-17ypspl-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-1cow25h-boxStyles-Avatar"
+                class="css-73zyub-boxStyles-Avatar"
               >
                 TW
               </span>
               <span
-                class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+                class="css-1m3xgys-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 <span
-                  class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                  class="css-1okcaj1-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
                 >
                   Toto Wolff
                 </span>
                 <span
-                  class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                  class="css-19nvkkp-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
                 >
                   My account
                 </span>
@@ -134,10 +134,10 @@ exports[`AppLayout renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-o9emw-boxStyles-AppLayoutHeaderNav"
+        class="css-2n48ie-boxStyles-AppLayoutHeaderNav"
       >
         <button
-          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-1w64ssa-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -181,23 +181,23 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
           <span
             aria-hidden="true"
-            class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-17ypspl-boxStyles-AppLayoutHeaderAccountDropdownButton"
           >
             <span
-              class="css-1cow25h-boxStyles-Avatar"
+              class="css-73zyub-boxStyles-Avatar"
             >
               TW
             </span>
             <span
-              class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              class="css-1m3xgys-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                class="css-1okcaj1-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
               >
                 Toto Wolff
               </span>
               <span
-                class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                class="css-19nvkkp-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
               >
                 My account
               </span>
@@ -227,14 +227,14 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <div
-      class="css-4plgz3-boxStyles-AppLayoutSidebar"
+      class="css-16na0gh-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
-        class="css-wutooc-boxStyles"
+        class="css-1x7nwlw-boxStyles"
       >
         <ul
-          class="css-o80hmi-boxStyles"
+          class="css-kk9y65-boxStyles"
         >
           <li
             class="css-11lpl70-AppLayoutSidebarNavItemInner"
@@ -268,7 +268,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-1dz6j0b-boxStyles"
+            class="css-eh5g4a-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -278,15 +278,15 @@ exports[`AppLayout renders correctly 1`] = `
             class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <span
-              class="css-1i7cdx8-boxStyles"
+              class="css-6pvomj-boxStyles"
             >
               <span
-                class="css-1yrx73q-boxStyles-Text"
+                class="css-c7y334-boxStyles-Text"
               >
                 Malesuada lacus a tortor blandit fermentum phasellus
               </span>
               <span
-                class="css-1lp7dl8-boxStyles-Text"
+                class="css-11wrux5-boxStyles-Text"
               >
                 ABN: 00 000 000 000
               </span>
@@ -294,7 +294,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-wizjf8-boxStyles"
+            class="css-1ha2ew-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -417,7 +417,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-boytaj-boxStyles"
+            class="css-1hs0drp-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -452,7 +452,7 @@ exports[`AppLayout renders correctly 1`] = `
           </li>
           <li
             aria-hidden="true"
-            class="css-boytaj-boxStyles"
+            class="css-1hs0drp-boxStyles"
           >
             <hr
               class="css-166wurb-AppLayoutSidebarNavDivider"
@@ -496,7 +496,7 @@ exports[`AppLayout renders correctly 1`] = `
       </nav>
     </div>
     <div
-      class="css-zu5yim-boxStyles-AppLayoutContent"
+      class="css-1rgr07f-boxStyles-AppLayoutContent"
     >
       <main
         class="css-z5n8zt-renderAppLayout"
@@ -511,22 +511,22 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-owhoi8-AppLayoutFooter"
       >
         <div
-          class="css-ou39vu-boxStyles"
+          class="css-4vn658-boxStyles"
         >
           <div
-            class="css-1rhmzip-boxStyles"
+            class="css-1gs27pt-boxStyles"
           >
             <div
-              class="css-1yys21m-boxStyles"
+              class="css-dmq3qt-boxStyles"
             >
               <nav
                 aria-label="footer"
               >
                 <ul
-                  class="css-u0m30q-boxStyles"
+                  class="css-1yei2so-boxStyles"
                 >
                   <li
-                    class="css-79i25n-boxStyles"
+                    class="css-5wkuiz-boxStyles"
                   >
                     <a
                       class="css-ma0bjl-TextLink"
@@ -542,12 +542,12 @@ exports[`AppLayout renders correctly 1`] = `
                 class="css-14u6sul-AppLayoutFooterDivider"
               />
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-lysq3l-boxStyles-Text"
               >
                 We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
               </span>
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-lysq3l-boxStyles-Text"
               >
                 © 2024 Department of Agriculture, Fisheries and Forestry
               </span>

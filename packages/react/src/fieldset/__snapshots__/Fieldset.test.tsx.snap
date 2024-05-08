@@ -4,16 +4,16 @@ exports[`Fieldset Basic renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r0:-hint"
-    class="css-79i25n-boxStyles"
+    class="css-5wkuiz-boxStyles"
     id="fieldset-:r0:"
   >
     <legend
-      class="css-5k6djv-boxStyles-Text"
+      class="css-jhnu76-boxStyles-Text"
     >
       What is your name?
     </legend>
     <span
-      class="css-1jadulg-boxStyles-Text-FieldsetHint"
+      class="css-w03fpm-boxStyles-Text-FieldsetHint"
       id="fieldset-:r0:-hint"
     >
       We will only use this to respond to your requests
@@ -22,17 +22,17 @@ exports[`Fieldset Basic renders correctly 1`] = `
       class="css-1dnalsd-FieldsetContent"
     >
       <div
-        class="css-h0krvw-boxStyles"
+        class="css-1uilwq9-boxStyles"
       >
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-o0wi17-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
             for="field-:r1:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-jro2y9-boxStyles-Text"
             >
               First name
             </span>
@@ -50,14 +50,14 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-o0wi17-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
             for="field-:r2:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-jro2y9-boxStyles-Text"
             >
               Last name
             </span>
@@ -84,12 +84,12 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r9:-hint"
-    class="css-79i25n-boxStyles"
+    class="css-5wkuiz-boxStyles"
     id="fieldset-:r9:"
   >
     <legend>
       <h1
-        class="css-18pa81a-boxStyles"
+        class="css-erkn7y-boxStyles"
       >
         What is your name?
       </h1>
@@ -99,7 +99,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
       id="fieldset-:r9:-hint"
     >
       <span
-        class="css-1xaqzgm-boxStyles-Text"
+        class="css-qokt5p-boxStyles-Text"
       >
         We will only use this to respond to your requests
       </span>
@@ -108,17 +108,17 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
       class="css-1dnalsd-FieldsetContent"
     >
       <div
-        class="css-h0krvw-boxStyles"
+        class="css-1uilwq9-boxStyles"
       >
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-o0wi17-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
             for="field-:ra:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-jro2y9-boxStyles-Text"
             >
               First name
             </span>
@@ -136,14 +136,14 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-o0wi17-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
             for="field-:rb:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-jro2y9-boxStyles-Text"
             >
               Last name
             </span>

@@ -3,7 +3,7 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <div
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-vvcqld-boxStyles-CollapsingSideBarContainer"
   >
     <button
       aria-controls="collapsing-side-bar-:r1:-body"
@@ -36,15 +36,15 @@ exports[`SideNav renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <nav
           aria-labelledby="sideNav-:r0:-title"
-          class="css-zipzg2-boxStyles"
+          class="css-khcdj5-boxStyles"
           id="sideNav-:r0:-nav"
         >
           <h2
-            class="css-dueube-boxStyles"
+            class="css-2oiukf-boxStyles"
             id="sideNav-:r0:-title"
           >
             <a
@@ -55,7 +55,7 @@ exports[`SideNav renders correctly 1`] = `
             </a>
           </h2>
           <ul
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
           >
             <li
               class="css-0"
@@ -93,7 +93,7 @@ exports[`SideNav renders correctly 1`] = `
                 </span>
               </a>
               <ul
-                class="css-79i25n-boxStyles"
+                class="css-5wkuiz-boxStyles"
               >
                 <li
                   class="css-0"
@@ -151,7 +151,7 @@ exports[`SideNav renders correctly 1`] = `
                 </span>
               </a>
               <ul
-                class="css-79i25n-boxStyles"
+                class="css-5wkuiz-boxStyles"
               >
                 <li
                   class="css-0"
@@ -170,7 +170,7 @@ exports[`SideNav renders correctly 1`] = `
                     </span>
                   </a>
                   <ul
-                    class="css-79i25n-boxStyles"
+                    class="css-5wkuiz-boxStyles"
                   >
                     <li
                       class="css-0"

@@ -15,6 +15,7 @@ import {
 	WarningFilledIcon,
 } from '../icon';
 import { getOptionalCloseHandler } from '../getCloseHandler';
+import { useFocusOnMount } from '../core/utils/useFocusOnMount';
 import { PageAlertTitle } from './PageAlertTitle';
 import { PageAlertCloseButton } from './PageAlertCloseButton';
 
@@ -25,10 +26,10 @@ type DivProps = HTMLAttributes<HTMLDivElement>;
 export type PageAlertProps = PropsWithChildren<{
 	/** The tone of the alert. */
 	tone: PageAlertTone;
+	/** Whether the alert should be focused as soon as it's rendered. */
+	focusOnMount?: boolean;
 	/** The id of the alert. */
 	id?: string;
-	/** Whether the alert should be hidden but still in the DOM. */
-	isHidden?: boolean;
 	/** The WAI-ARIA role. */
 	role?: DivProps['role'];
 	/** Tab index order. */
@@ -43,9 +44,24 @@ export type PageAlertProps = PropsWithChildren<{
 
 export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 	function PageAlert(
-		{ id, isHidden, role, children, onClose, onDismiss, title, tone, tabIndex },
-		ref
+		{
+			id,
+			focusOnMount,
+			role,
+			children,
+			onClose,
+			onDismiss,
+			title,
+			tone,
+			tabIndex,
+		},
+		forwardedRef
 	) {
+		const ref = useFocusOnMount<HTMLDivElement>({
+			disabled: !focusOnMount,
+			forwardedRef,
+		});
+
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 		const { fg, bg, icon } = pageAlertToneMap[tone];
 
@@ -54,15 +70,14 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				css={{
 					backgroundColor: bg,
 					position: 'relative',
-					...(isHidden && { display: 'none' }),
 				}}
-				focusAll
+				focusFor="all"
 				highContrastOutline
 				id={id}
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex}
+				tabIndex={tabIndex || (focusOnMount ? -1 : undefined)}
 			>
 				<Flex
 					padding={0.5}

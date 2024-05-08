@@ -57,7 +57,7 @@ function AppLayoutHeaderAccountDropdownButton({
 			padding={1}
 			gap={1}
 			color="action"
-			focus
+			focusFor="keyboard"
 			css={mq({
 				height: '100%',
 				maxWidth: ['16rem', '18rem'],

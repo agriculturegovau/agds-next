@@ -38,7 +38,7 @@ const CallToAction = ({
 				fontWeight="bold"
 				fontSize="md"
 				link
-				focus
+				focusFor="keyboard"
 				{...props}
 			>
 				{children}

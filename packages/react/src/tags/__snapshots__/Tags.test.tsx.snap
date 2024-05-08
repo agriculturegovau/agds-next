@@ -3,24 +3,24 @@
 exports[`Tags With links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-6pvomj-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-jro2y9-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-1v8nyuq-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-g30ilf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -28,13 +28,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-g30ilf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -42,13 +42,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-g30ilf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -63,24 +63,24 @@ exports[`Tags With links renders correctly 1`] = `
 exports[`Tags With onRemove renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-6pvomj-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-jro2y9-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-1v8nyuq-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vrwcf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -119,13 +119,13 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vrwcf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -164,13 +164,13 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vrwcf-boxStyles"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1xejrxv-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -216,50 +216,50 @@ exports[`Tags With onRemove renders correctly 1`] = `
 exports[`Tags Without links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-6pvomj-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-jro2y9-boxStyles-Text"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-1v8nyuq-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-udgasg-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
           >
             Foo
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-udgasg-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
           >
             Bar
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-udgasg-boxStyles"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-5wkuiz-boxStyles"
           >
             Baz
           </span>

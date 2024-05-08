@@ -19,7 +19,7 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-1zh0al-boxStyles-ModalDialog"
+        class="css-1xutv0p-boxStyles-ModalDialog"
         role="dialog"
       >
         <h2
@@ -31,16 +31,16 @@ exports[`Modal renders correctly 1`] = `
           Modal title
         </h2>
         <div
-          class="css-79i25n-boxStyles"
+          class="css-5wkuiz-boxStyles"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-1pd2agg-boxStyles-Text"
           >
             This is the Modal Body paragraph.
           </p>
         </div>
         <div
-          class="css-1kzq3kl-boxStyles-ModalDialog"
+          class="css-xyc98d-boxStyles-ModalDialog"
         >
           <button
             class="css-1xaxpdg-BaseButton-Button"

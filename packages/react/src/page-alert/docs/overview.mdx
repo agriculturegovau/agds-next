@@ -118,34 +118,33 @@ Use the `onClose` prop to make the alert dismissable. Ensure Page alerts that ar
 
 In the event you need to focus the alert, set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
 
+_NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
+
 ```jsx live
 () => {
-	const pageAlertRef = React.useRef(null);
+	const [showAlert, setShowAlert] = React.useState(false);
 
 	return (
 		<Stack gap={2}>
 			<Box alignSelf="start">
-				<Button onClick={() => pageAlertRef.current.focus()}>
-					Focus the alert
+				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
+					Toggle alert
 				</Button>
 			</Box>
 
-			<PageAlert
-				ref={pageAlertRef}
-				tabIndex={-1}
-				title="There is a problem"
-				tone="error"
-			>
-				<Text as="p">Please correct the following fields and try again</Text>
-				<UnorderedList>
-					<ListItem>
-						<TextLink href="#">Full name must not be empty</TextLink>
-					</ListItem>
-					<ListItem>
-						<TextLink href="#">Email must not be empty</TextLink>
-					</ListItem>
-				</UnorderedList>
-			</PageAlert>
+			{showAlert && (
+				<PageAlert focusOnMount title="There is a problem" tone="error">
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						<ListItem>
+							<TextLink href="#">Full name must not be empty</TextLink>
+						</ListItem>
+						<ListItem>
+							<TextLink href="#">Email must not be empty</TextLink>
+						</ListItem>
+					</UnorderedList>
+				</PageAlert>
+			)}
 		</Stack>
 	);
 };

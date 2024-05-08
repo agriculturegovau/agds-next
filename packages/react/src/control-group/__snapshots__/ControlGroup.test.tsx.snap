@@ -3,35 +3,35 @@
 exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-o0wi17-boxStyles-FieldContainer"
     id="control-group-:r0:"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-5wkuiz-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-jro2y9-boxStyles-Text"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-k6o2y8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-8b68yy-boxStyles-ControlGroup"
       >
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-ndg8x5-boxStyles"
         >
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               class="css-rw5u1c-CheckboxInput"
@@ -39,7 +39,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-1xi33f8-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -59,13 +59,13 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               class="css-rw5u1c-CheckboxInput"
@@ -73,7 +73,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-1xi33f8-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -93,13 +93,13 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               class="css-rw5u1c-CheckboxInput"
@@ -107,7 +107,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-1xi33f8-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -127,13 +127,13 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               class="css-rw5u1c-CheckboxInput"
@@ -141,7 +141,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-1xi33f8-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -161,7 +161,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option D
             </span>
@@ -176,42 +176,42 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-14covec-boxStyles-FieldContainer"
     id="control-group-:r2:"
   >
     <fieldset
       aria-describedby="control-group-:r2:-message control-group-:r2:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-5wkuiz-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-jro2y9-boxStyles-Text"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-k6o2y8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-8b68yy-boxStyles-ControlGroup"
       >
         <span
-          class="css-lw0v8u-boxStyles-Text"
+          class="css-1snwtx3-boxStyles-Text"
           id="control-group-:r2:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1ogxqpt-boxStyles"
         >
           <div
-            class="css-1ldvxqr-boxStyles"
+            class="css-xc7nz3-boxStyles"
           >
             <svg
               aria-hidden="false"
@@ -234,17 +234,17 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-tfsyf8-boxStyles-Text"
+            class="css-1s1crk9-boxStyles-Text"
             id="control-group-:r2:-message"
           >
             Error message
           </span>
         </div>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-ndg8x5-boxStyles"
         >
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               aria-describedby="control-group-:r2:-message"
@@ -254,7 +254,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-1pr90xe-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -274,13 +274,13 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               aria-describedby="control-group-:r2:-message"
@@ -290,7 +290,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-1pr90xe-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -310,13 +310,13 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               aria-describedby="control-group-:r2:-message"
@@ -326,7 +326,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-1pr90xe-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -346,13 +346,13 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-152xi27-boxStyles-CheckboxContainer"
           >
             <input
               aria-describedby="control-group-:r2:-message"
@@ -362,7 +362,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-1pr90xe-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
@@ -382,7 +382,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+              class="css-1dnya56-boxStyles-Text-CheckboxLabel"
             >
               Option D
             </span>
@@ -397,35 +397,35 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 exports[`ControlGroup  With Radios renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-o0wi17-boxStyles-FieldContainer"
     id="control-group-:r5:"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-5wkuiz-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-jro2y9-boxStyles-Text"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-k6o2y8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-8b68yy-boxStyles-ControlGroup"
       >
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-ndg8x5-boxStyles"
         >
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               class="css-yl6hsu-RadioInput"
@@ -433,20 +433,20 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-ngo8j3-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               class="css-yl6hsu-RadioInput"
@@ -454,20 +454,20 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-ngo8j3-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               class="css-yl6hsu-RadioInput"
@@ -475,20 +475,20 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-ngo8j3-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               class="css-yl6hsu-RadioInput"
@@ -496,14 +496,14 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-ngo8j3-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option D
             </span>
@@ -518,42 +518,42 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
 exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-14covec-boxStyles-FieldContainer"
     id="control-group-:r7:"
   >
     <fieldset
       aria-describedby="control-group-:r7:-message control-group-:r7:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-5wkuiz-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-jro2y9-boxStyles-Text"
         >
           Control group label
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-k6o2y8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-8b68yy-boxStyles-ControlGroup"
       >
         <span
-          class="css-lw0v8u-boxStyles-Text"
+          class="css-1snwtx3-boxStyles-Text"
           id="control-group-:r7:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1ogxqpt-boxStyles"
         >
           <div
-            class="css-1ldvxqr-boxStyles"
+            class="css-xc7nz3-boxStyles"
           >
             <svg
               aria-hidden="false"
@@ -576,17 +576,17 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-tfsyf8-boxStyles-Text"
+            class="css-1s1crk9-boxStyles-Text"
             id="control-group-:r7:-message"
           >
             Error message
           </span>
         </div>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-ndg8x5-boxStyles"
         >
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               aria-describedby="control-group-:r7:-message"
@@ -596,20 +596,20 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-359uwz-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               aria-describedby="control-group-:r7:-message"
@@ -619,20 +619,20 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-359uwz-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               aria-describedby="control-group-:r7:-message"
@@ -642,20 +642,20 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-359uwz-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1ey0muh-boxStyles-RadioContainer"
           >
             <input
               aria-describedby="control-group-:r7:-message"
@@ -665,14 +665,14 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-359uwz-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-mtobf4-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-812asu-boxStyles-Text-RadioLabel"
+              class="css-a5w3re-boxStyles-Text-RadioLabel"
             >
               Option D
             </span>

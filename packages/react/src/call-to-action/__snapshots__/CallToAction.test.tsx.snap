@@ -3,7 +3,7 @@
 exports[`CallToActionButton renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-421smw-boxStyles-CallToAction"
   >
     <button
       class="css-zekh05-BaseButton-boxStyles"
@@ -35,7 +35,7 @@ exports[`CallToActionButton renders correctly 1`] = `
 exports[`CallToActionLink renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-421smw-boxStyles-CallToAction"
   >
     <a
       class="css-5s16cd-TextLink-boxStyles"

@@ -27,7 +27,7 @@ export function PaginationItemPage({
 				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 				fontWeight={isActive ? 'bold' : 'normal'}
 				link
-				focus
+				focusFor="keyboard"
 				aria-current={isActive ? 'page' : undefined}
 				css={
 					isActive
@@ -65,7 +65,7 @@ export function PaginationItemPageButton({
 				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 				fontWeight={isActive ? 'bold' : 'normal'}
 				link
-				focus
+				focusFor="keyboard"
 				css={
 					isActive
 						? { color: boxPalette.foregroundText, textDecoration: 'none' }

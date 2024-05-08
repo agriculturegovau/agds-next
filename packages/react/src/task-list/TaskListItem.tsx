@@ -90,7 +90,7 @@ const TaskListItem = ({
 				color="text"
 				borderBottom
 				width="100%"
-				focus
+				focusFor="keyboard"
 				css={{
 					position: 'relative',
 					textDecoration: 'none',

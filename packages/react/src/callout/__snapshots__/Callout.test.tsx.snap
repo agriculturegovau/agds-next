@@ -3,18 +3,18 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-1gkhklp-boxStyles"
+    class="css-eyaagd-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-eht1we-boxStyles-Callout"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-otn5ec-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -26,10 +26,10 @@ exports[`Callout renders correctly 1`] = `
 exports[`Callout with compact variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-tgtnb7-boxStyles"
+    class="css-wabexl-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-8zjc5-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -52,15 +52,15 @@ exports[`Callout with compact variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1be1aj7-boxStyles-Callout"
+      class="css-fakuip-boxStyles-Callout"
     >
       <h2
-        class="css-1nbyqjf-boxStyles-Text"
+        class="css-fphzhv-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -72,18 +72,18 @@ exports[`Callout with compact variant and info tone renders correctly 1`] = `
 exports[`Callout with compact variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-1qwxuo7-boxStyles"
+    class="css-18eevsc-boxStyles"
   >
     <div
-      class="css-1be1aj7-boxStyles-Callout"
+      class="css-fakuip-boxStyles-Callout"
     >
       <h2
-        class="css-1nbyqjf-boxStyles-Text"
+        class="css-fphzhv-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -95,10 +95,10 @@ exports[`Callout with compact variant and neutral tone renders correctly 1`] = `
 exports[`Callout with feature variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-10b68go-boxStyles"
+    class="css-k1e6hx-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-8zjc5-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -121,15 +121,15 @@ exports[`Callout with feature variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-eht1we-boxStyles-Callout"
     >
       <h2
-        class="css-zmcwms-boxStyles-Text"
+        class="css-rc6g26-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -141,18 +141,18 @@ exports[`Callout with feature variant and info tone renders correctly 1`] = `
 exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-12qxj53-boxStyles"
+    class="css-1cchvzx-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-eht1we-boxStyles-Callout"
     >
       <h2
-        class="css-zmcwms-boxStyles-Text"
+        class="css-rc6g26-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -164,10 +164,10 @@ exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
 exports[`Callout with regular variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-15cw9y2-boxStyles"
+    class="css-dgpgln-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-8zjc5-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -190,15 +190,15 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-eht1we-boxStyles-Callout"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-otn5ec-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>
@@ -210,18 +210,18 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
 exports[`Callout with regular variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-1gkhklp-boxStyles"
+    class="css-eyaagd-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-eht1we-boxStyles-Callout"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-otn5ec-boxStyles-Text"
       >
         Callout heading
       </h2>
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-1pd2agg-boxStyles-Text"
       >
         Description of the callout.
       </p>

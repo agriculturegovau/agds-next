@@ -3,7 +3,7 @@
 exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-goupah-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -29,7 +29,7 @@ exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -40,7 +40,7 @@ exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = 
 exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-3s2zsu-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -60,7 +60,7 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -71,13 +71,13 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: regular tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <div
-      class="css-1fa9oau-boxStyles-icon"
+      class="css-18o8xct-boxStyles-icon"
     />
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -88,7 +88,7 @@ exports[`StatusBadge Legacy weight: regular tone: neutral renders correctly 1`] 
 exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-ppwzl9-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -111,7 +111,7 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -122,7 +122,7 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
 exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-zl0vbj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -142,7 +142,7 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -153,7 +153,7 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
 exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -179,7 +179,7 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -190,7 +190,7 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -210,7 +210,7 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -221,13 +221,13 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <div
-      class="css-1fa9oau-boxStyles-icon"
+      class="css-18o8xct-boxStyles-icon"
     />
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -238,7 +238,7 @@ exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -261,7 +261,7 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -272,7 +272,7 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -292,7 +292,7 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -303,7 +303,7 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -323,7 +323,7 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -334,7 +334,7 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
 exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-goupah-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -356,7 +356,7 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -367,7 +367,7 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -387,7 +387,7 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -398,7 +398,7 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
 exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-goupah-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -424,7 +424,7 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -435,7 +435,7 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -470,7 +470,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -481,7 +481,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
 exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-3s2zsu-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -503,7 +503,7 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -514,7 +514,7 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
 exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -534,7 +534,7 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -545,7 +545,7 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
 exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-3s2zsu-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -565,7 +565,7 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -576,7 +576,7 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -597,7 +597,7 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -608,7 +608,7 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
 exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -628,7 +628,7 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -639,7 +639,7 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-ppwzl9-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -661,7 +661,7 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -672,7 +672,7 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -695,7 +695,7 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -706,7 +706,7 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-ppwzl9-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -729,7 +729,7 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -740,7 +740,7 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
 exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -760,7 +760,7 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -771,7 +771,7 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-zl0vbj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -793,7 +793,7 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -804,7 +804,7 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-n39hav-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -824,7 +824,7 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -835,7 +835,7 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-zl0vbj-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -855,7 +855,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -866,7 +866,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
 exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -886,7 +886,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -897,7 +897,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
 exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -919,7 +919,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -930,7 +930,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -950,7 +950,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -961,7 +961,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -987,7 +987,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -998,7 +998,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1033,7 +1033,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1044,7 +1044,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1066,7 +1066,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1077,7 +1077,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1097,7 +1097,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1108,7 +1108,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1128,7 +1128,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1139,7 +1139,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1160,7 +1160,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1171,7 +1171,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1191,7 +1191,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1202,7 +1202,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1224,7 +1224,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1235,7 +1235,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1258,7 +1258,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1269,7 +1269,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1292,7 +1292,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1303,7 +1303,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1323,7 +1323,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1334,7 +1334,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1356,7 +1356,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1367,7 +1367,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1387,7 +1387,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>
@@ -1398,7 +1398,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-3dt8me-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
@@ -1418,7 +1418,7 @@ exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`
       />
     </svg>
     <span
-      class="css-10dvol5-boxStyles-Text-StatusBadge"
+      class="css-1ayaca8-boxStyles-Text-StatusBadge"
     >
       Example
     </span>

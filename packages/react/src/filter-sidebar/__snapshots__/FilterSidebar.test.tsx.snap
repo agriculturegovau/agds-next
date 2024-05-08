@@ -4,13 +4,13 @@ exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <aside
     aria-label="Filters"
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-vvcqld-boxStyles-CollapsingSideBarContainer"
   >
     <div
-      class="css-1w8myos-boxStyles"
+      class="css-1b926vh-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-otn5ec-boxStyles-Text"
       >
         Filter by
       </h2>
@@ -46,10 +46,10 @@ exports[`FilterSidebar renders correctly 1`] = `
       style="display: none; height: 0px; overflow: hidden;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <div
-          class="css-16ved0q-boxStyles"
+          class="css-1hd7lb3-boxStyles"
         />
       </div>
     </div>

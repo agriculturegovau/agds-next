@@ -3,21 +3,21 @@
 exports[`Card Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1yrx9yp-boxStyles-Card"
+    class="css-1m8tih5-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-1j647ly-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-zb2sjq-boxStyles"
       >
         <h2
-          class="css-e6rsgj-boxStyles"
+          class="css-lltnmr-boxStyles"
         >
           Card heading
         </h2>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-1pd2agg-boxStyles-Text"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
@@ -30,21 +30,21 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-e7y0n5-boxStyles-Card"
+    class="css-1z0lqm5-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-1j647ly-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-zb2sjq-boxStyles"
       >
         <h2
-          class="css-e6rsgj-boxStyles"
+          class="css-lltnmr-boxStyles"
         >
           Card heading
         </h2>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-1pd2agg-boxStyles-Text"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>

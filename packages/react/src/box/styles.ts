@@ -385,19 +385,18 @@ export const linkStyles = {
 };
 
 type FocusProps = Partial<{
-	/** If true, the focus indicator will be shown when the element receives keyboard focus. */
+	/** @deprecated use focusFor="keyboard". */
 	focus: boolean;
-	/** If true, the focus indicator will be shown when the element receives keyboard and programmatic focus. */
-	focusAll: boolean;
+	/** Display a focus indicator when the element receives focus. 'all' includes programmatic focus and 'keyboard' is for keyboard only focus*/
+	focusFor: 'all' | 'keyboard';
 }>;
 export const focusStyles = {
 	':focus': packs.outline,
 	':focus:not(:focus-visible)': { outline: 'none' },
 	':focus-visible': packs.outline,
 };
-export const focusAllStyles = {
-	...focusStyles,
-	'&:focus:not(:focus-visible)': packs.outline,
+export const focusStylesAll = {
+	':focus': packs.outline,
 };
 
 type HighContrastProps = Partial<{
@@ -443,7 +442,7 @@ export function boxStyles({
 	flexShrink,
 	flexWrap,
 	focus,
-	focusAll,
+	focusFor,
 	fontFamily,
 	fontSize,
 	fontWeight,
@@ -475,6 +474,17 @@ export function boxStyles({
 	width,
 	...restProps
 }: BoxProps) {
+	/* **LEGACY HANDLER**
+	 * We've deprecated `focus` in favour of `focusFor?: 'all | 'keyboard'. This
+	 * displays the focus ring for elements that are programmatically focused.
+	 *
+	 * `focus` maps to `focusFor: 'keyboard' for backwards compatibility.
+	 */
+	focusFor = focusFor || (focus ? 'all' : undefined);
+	if (focus && process.env.NODE_ENV !== 'production') {
+		console.warn('The `focus` prop is deprecated. Use `focusFor="keyboard"`.');
+	}
+
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
@@ -548,8 +558,7 @@ export function boxStyles({
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(focus ? focusStyles : undefined),
-				...(focusAll ? focusAllStyles : undefined),
+				...(focusFor === 'all' ? focusStylesAll : focusStyles),
 				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),

@@ -8,7 +8,7 @@ exports[`Tabs renders correctly 1`] = `
   >
     <div
       aria-orientation="horizontal"
-      class="css-1be2o1s-boxStyles"
+      class="css-198afvk-boxStyles"
       role="tablist"
     >
       <button

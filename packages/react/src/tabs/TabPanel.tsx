@@ -20,7 +20,7 @@ export function TabPanel({ children }: TabPanelProps) {
 			aria-labelledby={tabButtonId}
 			display={isSelected ? undefined : 'none'}
 			tabIndex={isSelected ? 0 : -1}
-			focus
+			focusFor="keyboard"
 			border
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={1.5}

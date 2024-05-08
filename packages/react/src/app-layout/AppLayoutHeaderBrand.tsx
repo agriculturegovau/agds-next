@@ -34,7 +34,7 @@ export function AppLayoutHeaderBrand({
 			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={{ xs: 'flex-start', md: 'center' }}
 			gap={{ xs: 1, md: 0 }}
-			focus
+			focusFor="keyboard"
 			color="text"
 			css={{
 				textDecoration: 'none',

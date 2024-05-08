@@ -102,26 +102,25 @@ Avoid dismissing error messages which block the user from completing a task. Ins
 
 In the event you need to focus the alert, set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
 
+_NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
+
 ```jsx live
 () => {
-	const sectionAlertRef = React.useRef(null);
+	const [showAlert, setShowAlert] = React.useState(false);
 
 	return (
 		<Stack gap={2}>
 			<Box alignSelf="start">
-				<Button onClick={() => sectionAlertRef.current.focus()}>
-					Focus the alert
+				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
+					Toggle alert
 				</Button>
 			</Box>
 
-			<SectionAlert
-				ref={sectionAlertRef}
-				tabIndex={-1}
-				title="Something went wrong"
-				tone="error"
-			>
-				<Text as="p">There was an error submitting the application.</Text>
-			</SectionAlert>
+			{showAlert && (
+				<SectionAlert focusOnMount title="Something went wrong" tone="error">
+					<Text as="p">There was an error submitting the application.</Text>
+				</SectionAlert>
+			)}
 		</Stack>
 	);
 };

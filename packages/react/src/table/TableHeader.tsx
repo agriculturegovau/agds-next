@@ -34,7 +34,7 @@ export const TableHeader = ({
 			as={as}
 			color="text"
 			colSpan={colSpan}
-			focus
+			focusFor="keyboard"
 			fontWeight="bold"
 			padding={0.75}
 			rowSpan={rowSpan}

@@ -3,13 +3,13 @@
 exports[`Accordion renders correctly 1`] = `
 <div>
   <div
-    class="css-xgo9nn-boxStyles"
+    class="css-pw7gn9-boxStyles"
   >
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-1lfspd1-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <button
           aria-controls="accordion-:r0:-body"
@@ -46,10 +46,10 @@ exports[`Accordion renders correctly 1`] = `
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-5t9dyv-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-1pd2agg-boxStyles-Text"
             >
               Accordion 1 text content.
             </p>
@@ -58,10 +58,10 @@ exports[`Accordion renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-1lfspd1-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-5wkuiz-boxStyles"
       >
         <button
           aria-controls="accordion-:r1:-body"
@@ -98,10 +98,10 @@ exports[`Accordion renders correctly 1`] = `
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-5t9dyv-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-1pd2agg-boxStyles-Text"
             >
               Accordion 2 text content.
             </p>

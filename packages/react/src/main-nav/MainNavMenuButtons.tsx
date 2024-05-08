@@ -22,7 +22,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 			lineHeight="nospace"
 			paddingX={1}
 			gap={0.5}
-			focus
+			focusFor="keyboard"
 			onClick={onClick}
 			aria-label="Open main menu"
 			aria-controls={ids.dialog}
@@ -57,7 +57,7 @@ export function MainNavCloseButton({ onClick }: MainNavCloseButtonProps) {
 			lineHeight="nospace"
 			gap={0.5}
 			padding={1}
-			focus
+			focusFor="keyboard"
 			onClick={onClick}
 			aria-label="Close main menu"
 			aria-controls={ids.dialog}

@@ -3,7 +3,7 @@
 exports[`Radio renders correctly 1`] = `
 <div>
   <label
-    class="css-6pplfb-boxStyles-RadioContainer"
+    class="css-1ey0muh-boxStyles-RadioContainer"
   >
     <input
       class="css-yl6hsu-RadioInput"
@@ -12,14 +12,14 @@ exports[`Radio renders correctly 1`] = `
       type="radio"
     />
     <span
-      class="css-osss6w-boxStyles-RadioIndicator"
+      class="css-ngo8j3-boxStyles-RadioIndicator"
     >
       <span
-        class="css-1sqol0e-boxStyles-RadioIndicator"
+        class="css-mtobf4-boxStyles-RadioIndicator"
       />
     </span>
     <span
-      class="css-812asu-boxStyles-Text-RadioLabel"
+      class="css-a5w3re-boxStyles-Text-RadioLabel"
     >
       My Radio
     </span>

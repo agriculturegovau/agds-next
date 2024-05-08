@@ -51,7 +51,7 @@ function MainNavListItemDropdownButton({
 			color="action"
 			height="100%"
 			maxWidth="16rem"
-			focus
+			focusFor="keyboard"
 			css={[
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
 				{
