@@ -145,6 +145,10 @@ type TypographyProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
 	 */
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
+	/** If true, applies the CSS word-break: break-word property, or word-break: normal if false.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+	 */
+	breakWords: boolean;
 }>;
 
 function typographyStyles({
@@ -153,6 +157,7 @@ function typographyStyles({
 	fontSize: _fontSize,
 	lineHeight: _lineHeight = 'default',
 	textAlign,
+	breakWords,
 }: TypographyProps) {
 	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
 		fontGrid(t, _lineHeight)
@@ -176,6 +181,11 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		textAlign: mapResponsiveProp(textAlign),
+		wordBreak:
+			(breakWords === true && 'break-word') ||
+			(breakWords === false && 'normal') ||
+			// wordWrap will inherit by default
+			undefined,
 		'& ::selection': {
 			color: boxPalette.backgroundBody,
 			backgroundColor: boxPalette.foregroundAction,
@@ -599,6 +609,7 @@ export function boxStyles({
 	fontSize,
 	lineHeight,
 	textAlign,
+	breakWords,
 	focus,
 	link,
 	highContrastOutline,
@@ -674,6 +685,7 @@ export function boxStyles({
 					fontSize,
 					lineHeight,
 					textAlign,
+					breakWords,
 				}),
 
 				...(link ? linkStyles : undefined),
