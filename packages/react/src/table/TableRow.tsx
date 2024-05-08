@@ -7,7 +7,7 @@ export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
 	'aria-rowindex'?: number;
 	/** Style the row when one cell contains an error. */
-	hasRowError?: boolean;
+	invalid?: boolean;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
 }>;
@@ -15,7 +15,7 @@ export type TableRowProps = PropsWithChildren<{
 export function TableRow({
 	'aria-rowindex': ariaRowindex,
 	children,
-	hasRowError,
+	invalid,
 	selected,
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
@@ -53,7 +53,7 @@ export function TableRow({
 
 					// Chrome and Firefox doesn't support :after elements in fixed table layouts
 					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
-					...(tableLayout === 'fixed' ? alternativeSelectedStyles : undefined),
+					...(tableLayout === 'fixed' && alternativeSelectedStyles),
 
 					// Safari does not support relative positioning on `tr` elements
 					// FIXME Once safari fixes this issue, these alternative styles should be removed
@@ -61,7 +61,7 @@ export function TableRow({
 					'@supports (-webkit-appearance: -apple-pay-button)':
 						alternativeSelectedStyles,
 				}),
-				...(hasRowError && {
+				...(invalid && {
 					background: theme.lightSystemErrorMuted,
 				}),
 			}}

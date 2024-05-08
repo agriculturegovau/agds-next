@@ -109,7 +109,8 @@ For data tables with a small amount of rows, use the default table. Align text c
 - have too many rows. Use pagination or start another table where logical – for example, an alphabetical list, Table 1: A to D, Table 2: E to H and so on
 - use bespoke styling - follow consistent layouts and styles
 - nest tables inside tables
-- don’t use inside an accorion.
+- use inside an accorion
+- set a row as invalid without adding a section alert.
 
 ## Striped
 
@@ -742,9 +743,9 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 };
 ```
 
-## Row with action and error
+## Indicating an invalid row
 
-To indicate an error in a row containing an action, set the `hasRowError` prop to `true`. This should be accompanied by an section alert.
+To indicate an error in a row containing an action, set the `invalid` prop to `true`. This should be accompanied by a section alert.
 
 ```jsx live
 <Stack gap={2}>
@@ -788,7 +789,7 @@ To indicate an error in a row containing an action, set the `hasRowError` prop t
 						</Button>
 					</TableCell>
 				</TableRow>
-				<TableRow aria-rowindex={3} hasRowError={true}>
+				<TableRow aria-rowindex={3} invalid={true}>
 					<TableCell as="th" scope="row">
 						Operational Plan of Management
 					</TableCell>
