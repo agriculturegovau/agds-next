@@ -6,7 +6,7 @@ import { useTableContext } from './TableContext';
 export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
 	'aria-rowindex'?: number;
-	/** Style the row when one cell contains an error. */
+	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
