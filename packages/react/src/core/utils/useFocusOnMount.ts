@@ -29,6 +29,8 @@ export function useFocusOnMount<T extends HTMLElement>({
 		}
 
 		ref?.current?.focus?.();
+
+		// We only want to focus once on mount, so we keep the dependency array empty.
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return ref;

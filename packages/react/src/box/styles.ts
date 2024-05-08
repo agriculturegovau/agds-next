@@ -399,6 +399,11 @@ export const focusStylesAll = {
 	':focus': packs.outline,
 };
 
+const focusStylesMap = {
+	all: focusStylesAll,
+	keyboard: focusStyles,
+};
+
 type HighContrastProps = Partial<{
 	/** If true, a solid outline will be visible in windows high contrast mode. */
 	highContrastOutline: boolean;
@@ -480,7 +485,7 @@ export function boxStyles({
 	 *
 	 * `focus` maps to `focusFor: 'keyboard' for backwards compatibility.
 	 */
-	focusFor = focusFor || (focus ? 'all' : undefined);
+	focusFor = focusFor || (focus ? 'keyboard' : undefined);
 	if (focus && process.env.NODE_ENV !== 'production') {
 		console.warn('The `focus` prop is deprecated. Use `focusFor="keyboard"`.');
 	}
@@ -558,7 +563,7 @@ export function boxStyles({
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(focusFor === 'all' ? focusStylesAll : focusStyles),
+				...(focusFor ? focusStylesMap[focusFor] : undefined),
 				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),
