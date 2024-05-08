@@ -21,6 +21,7 @@ import { ChevronsRightIcon } from './icons/ChevronsRightIcon';
 import { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { CopyIcon } from './icons/CopyIcon';
+import { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { DownloadIcon } from './icons/DownloadIcon';
 import { EditIcon } from './icons/EditIcon';
@@ -86,6 +87,7 @@ export const allIcons = {
 	ChevronsUpDownIcon,
 	CloseIcon,
 	CopyIcon,
+	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
 	EditIcon,

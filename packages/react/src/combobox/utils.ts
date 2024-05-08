@@ -5,6 +5,25 @@ export function useComboboxInputId(idProp?: string) {
 	return idProp || `combobox-input-${autoId}`;
 }
 
+const comboboxMaxWidthValues = ['md', 'lg', 'xl'] as const;
+export type ComboboxMaxWidthValues = (typeof comboboxMaxWidthValues)[number];
+
+export function validateMaxWidth(
+	componentType: string,
+	maxWidth: ComboboxMaxWidthValues
+) {
+	if (
+		process.env.NODE_ENV !== 'production' &&
+		!comboboxMaxWidthValues.includes(maxWidth)
+	) {
+		console.warn(
+			`${componentType}: The \`maxWidth\` value "${maxWidth}" is not supported. Supported values are: ${comboboxMaxWidthValues.join(
+				', '
+			)}`
+		);
+	}
+}
+
 export type DefaultComboboxOption = { label: string; value: string };
 
 export function filterOptions<Option extends DefaultComboboxOption>(
