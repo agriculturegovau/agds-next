@@ -1,20 +1,19 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { ReactElement, ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Radio } from '@ag.ds-next/react/radio';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { zodString } from './utils';
 
-const formSchema = yup
-	.object({
-		businessType: yup.string().typeError('Business type is required'),
-	})
-	.required();
+const formSchema = z.object({
+	businessType: zodString('Business type is required'),
+});
 
-type FormSchema = yup.InferType<typeof formSchema>;
+type FormSchema = z.infer<typeof formSchema>;
 
 export function GettingStartedForm({
 	children,
@@ -28,7 +27,7 @@ export function GettingStartedForm({
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormSchema>({
-		resolver: yupResolver(formSchema),
+		resolver: zodResolver(formSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
