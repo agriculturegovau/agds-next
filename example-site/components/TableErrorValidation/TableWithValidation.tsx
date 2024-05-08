@@ -133,19 +133,21 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			)
 		);
 
-		// TODO: fix this
 		setTableErrors(
-			assessmentFiles
-				.map((assessmentFile) =>
+			assessmentFiles.reduce<SampleTableErrors>(
+				(acc, assessmentFile) =>
 					assessmentFile.file
-						? null
-						: {
-								href: `#${assessmentFile.buttonId}`,
-								message: `Upload a file for ${assessmentFile.documentType}`,
-								name: 'files',
-						  }
-				)
-				.filter(Boolean)
+						? acc
+						: [
+								...acc,
+								{
+									href: `#${assessmentFile.buttonId}`,
+									message: `Upload a file for ${assessmentFile.documentType}`,
+									name: 'files',
+								},
+						  ],
+				[]
+			)
 		);
 		closeDrawer();
 	};
@@ -164,19 +166,25 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			)
 		);
 		// TODO: page error setting across all actions
-		setPageErrors([samplePageErrors[2]]);
+		setPageErrors((prevPageErrors) => [
+			...prevPageErrors,
+			samplePageErrors.find((pageError) => pageError.href === '#section-alert'),
+		]);
 		setTableErrors(
-			assessmentFiles
-				.map((assessmentFile) =>
+			assessmentFiles.reduce<SampleTableErrors>(
+				(acc, assessmentFile) =>
 					assessmentFile.file
-						? null
-						: {
-								href: `#${assessmentFile.buttonId}`,
-								message: `Upload a file for ${assessmentFile.documentType}`,
-								name: 'files',
-						  }
-				)
-				.filter(Boolean)
+						? acc
+						: [
+								...acc,
+								{
+									href: `#${assessmentFile.buttonId}`,
+									message: `Upload a file for ${assessmentFile.documentType}`,
+									name: 'files',
+								},
+						  ],
+				[]
+			)
 		);
 		closeDrawer();
 	};
@@ -214,17 +222,20 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			)
 		);
 		setTableErrors(() =>
-			assessmentFiles
-				.map((assessmentFile) =>
+			assessmentFiles.reduce<SampleTableErrors>(
+				(acc, assessmentFile) =>
 					assessmentFile.file
-						? null
-						: {
-								href: `#${assessmentFile.buttonId}`,
-								message: `Upload a file for ${assessmentFile.documentType}`,
-								name: 'files',
-						  }
-				)
-				.filter(Boolean)
+						? acc
+						: [
+								...acc,
+								{
+									href: `#${assessmentFile.buttonId}`,
+									message: `Upload a file for ${assessmentFile.documentType}`,
+									name: 'files',
+								},
+						  ],
+				[]
+			)
 		);
 		setPageErrors(() =>
 			samplePageErrors.filter(({ name }) => !nameToValidityMap[name])
