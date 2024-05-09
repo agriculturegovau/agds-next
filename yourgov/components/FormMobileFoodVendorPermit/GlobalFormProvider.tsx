@@ -1,4 +1,3 @@
-import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import {
 	createContext,
@@ -19,7 +18,6 @@ const ENABLE_STEP_SKIPPING = false;
 
 type ContextType = {
 	formTitle: string;
-	typeSearchParm: string;
 	homePageUrl: string;
 	// Task status
 	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
@@ -51,11 +49,8 @@ export function GlobalFormProvider({
 		defaultFormState as DeepPartial<FormState>
 	);
 
-	const searchParams = useSearchParams();
-	const typeSearchParm = searchParams.get('type') ?? '';
-
-	const formTitle = `Apply for a ${typeSearchParm} permit`;
-	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${typeSearchParm}`;
+	const formTitle = `Apply for a ${formState.type} permit`;
+	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${formState.type}`;
 
 	const getTaskStatus = useCallback(
 		(taskKey: TaskKey): TaskListItemStatus => {
@@ -113,7 +108,6 @@ export function GlobalFormProvider({
 
 	const contextValue: ContextType = {
 		formTitle,
-		typeSearchParm,
 		homePageUrl,
 		// task status
 		getTaskStatus,

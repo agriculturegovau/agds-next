@@ -29,7 +29,7 @@ import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step1ChangeDetails() {
 	const router = useRouter();
-	const { formState, setFormState, typeSearchParm } = useGlobalForm();
+	const { formState, setFormState } = useGlobalForm();
 
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -48,7 +48,7 @@ export function FormTask1Step1ChangeDetails() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1?type=${typeSearchParm}`;
+	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1`;
 
 	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
 		setFocusedError(false);
@@ -111,21 +111,12 @@ export function FormTask1Step1ChangeDetails() {
 				<ProgressIndicator
 					activePath={`${
 						task1FormSteps[0].items && task1FormSteps[0].items[0]?.href
-					}?type=${typeSearchParm}`}
+					}`}
 					items={task1FormSteps.map(({ label, href, items }, index) => ({
 						label,
-						href: `${href}?type=${typeSearchParm}`,
+						href,
 						status: getStepStatus(index),
-						...(index === 0
-							? {
-									items: [
-										{
-											label: items && items[0]?.label,
-											href: `${items && items[0]?.href}?type=${typeSearchParm}`,
-										},
-									],
-							  }
-							: undefined),
+						items: index === 0 ? items : undefined,
 					}))}
 				/>
 			</Column>

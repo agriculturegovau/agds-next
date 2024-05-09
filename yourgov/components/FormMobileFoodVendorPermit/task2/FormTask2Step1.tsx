@@ -21,10 +21,9 @@ import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 export function FormTask2Step1() {
 	const { query } = useRouter();
 	const { submitStep } = useFormTask2Context();
-	const { formState, typeSearchParm, setFormState, isSavingBeforeExiting } =
-		useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	// const stepFormState = formState.task2?.step1;
-	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee?type=${typeSearchParm}`;
+	const step1AddEmployeePath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1/add-employee`;
 
 	const [isSuccessVisible, setIsSuccessVisible] = useState(
 		query.success === 'true'

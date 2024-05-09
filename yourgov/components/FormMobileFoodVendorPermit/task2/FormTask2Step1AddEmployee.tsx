@@ -31,7 +31,7 @@ import { task2FormSteps, useFormTask2Context } from './FormTask2Provider';
 export function FormTask2Step1AddEmployee() {
 	const router = useRouter();
 	const employeeId = router.query.employeeId;
-	const { formState, setFormState, typeSearchParm } = useGlobalForm();
+	const { formState, setFormState } = useGlobalForm();
 
 	const employeeList = formState.task2?.step1?.employeeList || [];
 
@@ -54,7 +54,7 @@ export function FormTask2Step1AddEmployee() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1?type=${typeSearchParm}`;
+	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-2/step-1`;
 
 	const onSubmit: SubmitHandler<Task2Step1EmployeeSchema> = (data) => {
 		console.log('onSubmit', { data });
@@ -122,7 +122,7 @@ export function FormTask2Step1AddEmployee() {
 				<ProgressIndicator
 					items={task2FormSteps.map(({ label, href }, index) => ({
 						label,
-						href: href + `?type=${typeSearchParm}`,
+						href,
 						status: getStepStatus(index),
 						isActive: index === 0,
 					}))}

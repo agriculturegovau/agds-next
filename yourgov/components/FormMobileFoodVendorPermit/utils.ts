@@ -170,7 +170,6 @@ export const formHomePage =
 interface GetTaskNavigationUrlParams {
 	steps: Array<FormStep>;
 	currentStepIndex: number;
-	typeSearchParm: string;
 	taskHighlight: number;
 }
 
@@ -178,12 +177,11 @@ export function getTaskCompletionUrl({
 	currentStepIndex,
 	steps,
 	taskHighlight,
-	typeSearchParm,
 }: GetTaskNavigationUrlParams) {
 	const nextStepUrl = steps[currentStepIndex + 1]?.href;
 	return nextStepUrl
-		? `${nextStepUrl}?type=${typeSearchParm}`
-		: `${formHomePage}?type=${typeSearchParm}&taskHighlight=${taskHighlight}`;
+		? nextStepUrl
+		: `${formHomePage}?taskHighlight=${taskHighlight}`;
 }
 
 export function getPrevTaskKey(currentTaskKey: TaskKey) {

@@ -21,7 +21,7 @@ import { PageTitle } from '../../../../../../components/PageTitle';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
-	const { formTitle, typeSearchParm, getTaskStatus } = useGlobalForm();
+	const { formTitle, getTaskStatus } = useGlobalForm();
 	return (
 		<Fragment>
 			<DocumentTitle title={formTitle} />
@@ -79,7 +79,7 @@ const Page: NextPageWithLayout = () => {
 									({ formStateKey, href, label, message }) => ({
 										label,
 										message,
-										href: href + `?type=${typeSearchParm}`,
+										href,
 										status: getTaskStatus(formStateKey),
 									})
 								)}

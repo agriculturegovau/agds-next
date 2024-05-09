@@ -28,8 +28,7 @@ export function FormTask1Container({
 	hideRequiredFieldsMessage,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, typeSearchParm, startTask, getTaskStatus } =
-		useGlobalForm();
+	const { formState, startTask, getTaskStatus } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
 
 	const isTaskAvailable = getTaskStatus('task1') !== 'blocked';
@@ -61,7 +60,7 @@ export function FormTask1Container({
 					<ProgressIndicator
 						items={task1FormSteps.map(({ label, href }, index) => ({
 							label,
-							href: href + `?type=${typeSearchParm}`,
+							href,
 							status: getStepStatus(index),
 						}))}
 					/>

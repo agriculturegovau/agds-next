@@ -29,8 +29,7 @@ export function FormTask2Container({
 	hideRequiredFieldsMessage,
 }: FormTask2ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, typeSearchParm, startTask, checkIsTaskAvailable } =
-		useGlobalForm();
+	const { formState, startTask, checkIsTaskAvailable } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask2Context();
 
 	const isTaskAvailable = checkIsTaskAvailable('task2');
@@ -59,7 +58,7 @@ export function FormTask2Container({
 					<ProgressIndicator
 						items={task2FormSteps.map(({ label, href }, index) => ({
 							label,
-							href: href + `?type=${typeSearchParm}`,
+							href,
 							status: getStepStatus(index),
 						}))}
 					/>

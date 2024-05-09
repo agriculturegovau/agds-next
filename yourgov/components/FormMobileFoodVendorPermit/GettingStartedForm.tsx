@@ -8,6 +8,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { zodString } from './utils';
+import { useGlobalForm } from './GlobalFormProvider';
 
 const formSchema = z.object({
 	businessType: zodString('Business type is required'),
@@ -32,11 +33,16 @@ export function GettingStartedForm({
 		reValidateMode: 'onBlur',
 	});
 
+	const { formState, setFormState } = useGlobalForm();
+
 	function onSubmit(data: FormSchema) {
+		setFormState({
+			...formState,
+			type: data.businessType?.toLowerCase(),
+		});
 		router.push({
 			pathname:
 				'/app/licences-and-permits/apply/mobile-food-vendor-permit/form',
-			query: { type: data.businessType?.toLowerCase() },
 		});
 	}
 

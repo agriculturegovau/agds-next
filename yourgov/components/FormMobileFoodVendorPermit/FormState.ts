@@ -27,6 +27,7 @@ export type FormState = {
 	task2: Partial<Task2FormState> & TaskCompletion;
 	task3: Partial<Task3FormState> & TaskCompletion;
 	task4: Partial<Task4FormState> & TaskCompletion;
+	type: string;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {

@@ -34,7 +34,7 @@ const context = createContext<ContextType | undefined>(undefined);
 // A lot of this code can probably be deduped once task 2 is completed
 export function FormTask3Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
-	const { setIsSubmittingStep, typeSearchParm, formState } = useGlobalForm();
+	const { setIsSubmittingStep, formState } = useGlobalForm();
 
 	const currentStepIndex = task3FormSteps.findIndex(
 		({ href }) => href === pathname
@@ -49,16 +49,15 @@ export function FormTask3Provider({ children }: PropsWithChildren<{}>) {
 			currentStepIndex,
 			steps: task3FormSteps,
 			taskHighlight: 3,
-			typeSearchParm,
 		});
 		push(taskCompletionUrl);
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
+	}, [currentStepIndex, push, setIsSubmittingStep]);
 
 	// The href of the previous step
 	const backHref = `${
 		task3FormSteps[currentStepIndex - 1]?.href ?? formHomePage
-	}?type=${typeSearchParm}`;
+	}`;
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
