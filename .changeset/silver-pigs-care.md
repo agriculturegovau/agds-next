@@ -8,6 +8,6 @@ core: Add new `useFocusOnMount` hook to allow an element to be focused when it�
 
 drawer: Add `elementToFocusOnClose` prop to allow custom element to be focused when the drawer closes.
 
-page-alert: Add `focusOnMount` prop to focus the alert as soon as it's rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+page-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
 
-section-alert: Add `focusOnMount` prop to focus the alert as soon as it's rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+section-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
