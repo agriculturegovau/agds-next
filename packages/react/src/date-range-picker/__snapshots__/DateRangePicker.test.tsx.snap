@@ -3,54 +3,54 @@
 exports[`DateRangePicker renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
     id="date-range-picker-:r0:"
   >
     <fieldset
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
     >
       <legend
-        class="css-1i6fl5d-boxStyles-DateRangePicker"
+        class="css-1r0k8hi-boxStyles-DateRangePicker"
       >
         <span
-          class="css-jro2y9-boxStyles-Text"
+          class="css-433uqb-boxStyles-Text"
         >
           Date range
         </span>
         <span
-          class="css-k6o2y8-boxStyles-Text"
+          class="css-1rpt3h8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-dmvz9k-boxStyles-DateRangePicker"
+        class="css-1fqlpl4-boxStyles-DateRangePicker"
       >
         <div
-          class="css-4nrkwy-boxStyles"
+          class="css-72257o-boxStyles"
         >
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r1:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 Start date
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (e.g. 05/08/2015) (optional)
               </span>
             </label>
             <div
-              class="css-sdkpi6-boxStyles-DateInput"
+              class="css-7swrfr-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
@@ -111,26 +111,26 @@ exports[`DateRangePicker renders correctly 1`] = `
             />
           </div>
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r2:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 End date
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (e.g. 05/08/2015) (optional)
               </span>
             </label>
             <div
-              class="css-sdkpi6-boxStyles-DateInput"
+              class="css-7swrfr-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
@@ -193,7 +193,7 @@ exports[`DateRangePicker renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-yj3tqx-boxStyles-Popover"
+        class="css-1nvymef-boxStyles-Popover"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
       />
     </fieldset>

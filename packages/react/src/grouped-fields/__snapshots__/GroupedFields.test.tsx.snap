@@ -3,34 +3,34 @@
 exports[`GroupedFields invalid: can render an invalid state when both fields are invalid 1`] = `
 <div>
   <div
-    class="css-14covec-boxStyles-FieldContainer"
+    class="css-1n67ua0-boxStyles-FieldContainer"
   >
     <fieldset
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
     >
       <legend
-        class="css-1h6rv12-boxStyles"
+        class="css-sq8uxm-boxStyles"
       >
         <span
-          class="css-jro2y9-boxStyles-Text"
+          class="css-433uqb-boxStyles-Text"
         >
           Grouped fields
         </span>
         <span
-          class="css-k6o2y8-boxStyles-Text"
+          class="css-1rpt3h8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1boy5h3-boxStyles-GroupedFields"
+        class="css-1imrrw5-boxStyles-GroupedFields"
       >
         <div
-          class="css-1ogxqpt-boxStyles"
+          class="css-1xkbxzi-boxStyles"
         >
           <div
-            class="css-xc7nz3-boxStyles"
+            class="css-1ldvxqr-boxStyles"
           >
             <svg
               aria-hidden="false"
@@ -53,29 +53,29 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             </svg>
           </div>
           <span
-            class="css-1s1crk9-boxStyles-Text"
+            class="css-tfsyf8-boxStyles-Text"
             id="grouped-fields-:r6:-message"
           >
             Enter a valid value
           </span>
         </div>
         <div
-          class="css-4nrkwy-boxStyles"
+          class="css-72257o-boxStyles"
         >
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r7:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 TextInput
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (optional)
@@ -95,19 +95,19 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             />
           </div>
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r8:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 Select
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (optional)
@@ -176,46 +176,46 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
 exports[`GroupedFields renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <fieldset
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
     >
       <legend
-        class="css-1h6rv12-boxStyles"
+        class="css-sq8uxm-boxStyles"
       >
         <span
-          class="css-jro2y9-boxStyles-Text"
+          class="css-433uqb-boxStyles-Text"
         >
           Grouped fields
         </span>
         <span
-          class="css-k6o2y8-boxStyles-Text"
+          class="css-1rpt3h8-boxStyles-Text"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1boy5h3-boxStyles-GroupedFields"
+        class="css-1imrrw5-boxStyles-GroupedFields"
       >
         <div
-          class="css-4nrkwy-boxStyles"
+          class="css-72257o-boxStyles"
         >
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r1:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 TextInput
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (optional)
@@ -234,19 +234,19 @@ exports[`GroupedFields renders correctly 1`] = `
             />
           </div>
           <div
-            class="css-o0wi17-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
-              class="css-5wkuiz-boxStyles"
+              class="css-79i25n-boxStyles"
               for="field-:r2:"
             >
               <span
-                class="css-jro2y9-boxStyles-Text"
+                class="css-433uqb-boxStyles-Text"
               >
                 Select
               </span>
               <span
-                class="css-k6o2y8-boxStyles-Text"
+                class="css-1rpt3h8-boxStyles-Text"
               >
                  
                 (optional)

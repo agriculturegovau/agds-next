@@ -3,7 +3,7 @@
 exports[`NotificationBadge tone: action renders correctly 1`] = `
 <div>
   <span
-    class="css-uf6c7q-boxStyles-Text-NotificationBadge"
+    class="css-uouzcn-boxStyles-Text-NotificationBadge"
   >
     5
   </span>
@@ -13,7 +13,7 @@ exports[`NotificationBadge tone: action renders correctly 1`] = `
 exports[`NotificationBadge tone: neutral renders correctly 1`] = `
 <div>
   <span
-    class="css-yljgqv-boxStyles-Text-NotificationBadge"
+    class="css-1olmu3e-boxStyles-Text-NotificationBadge"
   >
     5
   </span>

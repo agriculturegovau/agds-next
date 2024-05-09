@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-zpbiv5-boxStyles-CalendarRangeContainer"
+      class="css-113xs51-boxStyles-CalendarRangeContainer"
     >
       <div
         class="rdp "
@@ -34,7 +34,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 June 2024
               </h2>
               <div
-                class="css-1ddtj2t-boxStyles"
+                class="css-v0gr9g-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"
@@ -972,7 +972,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1xgdpdj-boxStyles-CalendarContainer"
+      class="css-1qnfusx-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -995,7 +995,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 June 2024
               </h2>
               <div
-                class="css-1ddtj2t-boxStyles"
+                class="css-v0gr9g-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"

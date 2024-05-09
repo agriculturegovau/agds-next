@@ -3,19 +3,19 @@
 exports[`TimeInput renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Time
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (e.g. 9:30 pm) (optional)
@@ -40,19 +40,19 @@ exports[`TimeInput renders correctly 1`] = `
 exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Time
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (e.g. 9:30 pm) (optional)

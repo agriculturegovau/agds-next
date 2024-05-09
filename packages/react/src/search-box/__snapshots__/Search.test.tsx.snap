@@ -7,13 +7,13 @@ exports[`SearchBox renders correctly 1`] = `
     role="search"
   >
     <div
-      class="css-gkpgka-boxStyles"
+      class="css-vfcxlf-boxStyles"
     >
       <div
-        class="css-18dwga-boxStyles"
+        class="css-12in0u0-boxStyles"
       >
         <label
-          class="css-4iav0r-boxStyles-Text-SearchBoxLabel"
+          class="css-1dixsb6-boxStyles-Text-SearchBoxLabel"
           for="search-:r0:"
         >
           Search
@@ -26,7 +26,7 @@ exports[`SearchBox renders correctly 1`] = `
         />
       </div>
       <div
-        class="css-vrmzjg-boxStyles-SearchBoxButton"
+        class="css-7ymq3t-boxStyles-SearchBoxButton"
       >
         <button
           aria-label="Search"

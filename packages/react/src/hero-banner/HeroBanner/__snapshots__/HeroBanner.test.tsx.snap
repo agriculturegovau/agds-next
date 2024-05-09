@@ -3,10 +3,10 @@
 exports[`HeroBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-x5p4mb-boxStyles-HeroBannerContainer"
+    class="css-um3mzy-boxStyles-HeroBannerContainer"
   >
     <div
-      class="css-mg3khw-boxStyles-HeroBannerMobileImage"
+      class="css-1l77tz3-boxStyles-HeroBannerMobileImage"
     >
       <img
         alt=""
@@ -15,27 +15,27 @@ exports[`HeroBanner renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-4vn658-boxStyles"
+      class="css-ou39vu-boxStyles"
     >
       <div
-        class="css-1gs27pt-boxStyles"
+        class="css-1rhmzip-boxStyles"
       >
         <div
-          class="css-sjt2bv-boxStyles"
+          class="css-1jhrbpg-boxStyles"
         >
           <div
-            class="css-1g8ew4j-boxStyles-HeroBannerContent"
+            class="css-1uuwobt-boxStyles-HeroBannerContent"
           >
             <div
-              class="css-ru2kv7-boxStyles"
+              class="css-1mxr31d-boxStyles"
             >
               <h1
-                class="css-1l8dvhq-boxStyles"
+                class="css-1wl1hqt-boxStyles"
               >
                 Website hero banner title
               </h1>
               <p
-                class="css-y0o3b3-boxStyles-Text"
+                class="css-kvrtyp-boxStyles-Text"
               >
                 Short hero banner sentence
               </p>
@@ -57,7 +57,7 @@ exports[`HeroBanner renders correctly 1`] = `
             </button>
           </div>
           <div
-            class="css-hcnf12-boxStyles-HeroBannerImage"
+            class="css-u86tm4-boxStyles-HeroBannerImage"
           >
             <img
               alt=""

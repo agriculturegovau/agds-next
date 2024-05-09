@@ -3,27 +3,27 @@
 exports[`ComboboxAsyncMulti renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="combobox-input-:r0:"
       id="downshift-:r1:-label"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Find your state
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1snwtx3-boxStyles-Text"
+      class="css-lw0v8u-boxStyles-Text"
       id="field-combobox-input-:r0:-hint"
     >
       Start typing to see results
@@ -32,7 +32,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
       class="css-0"
     >
       <div
-        class="css-c7bhp2-boxStyles"
+        class="css-8mqth-boxStyles"
       >
         <div
           class="css-1e6s4pi"
@@ -55,7 +55,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-15zilkh-boxStyles-ComboboxButtonContainer"
+          class="css-1733k8b-boxStyles-ComboboxButtonContainer"
         >
           <button
             aria-controls="downshift-:r1:-menu"
@@ -87,7 +87,7 @@ exports[`ComboboxAsyncMulti renders correctly 1`] = `
       </div>
       <ul
         aria-labelledby="downshift-:r1:-label"
-        class="css-1jfsuam-boxStyles-Popover"
+        class="css-x1k9i4-boxStyles-Popover"
         id="downshift-:r1:-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"

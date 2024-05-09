@@ -4,26 +4,26 @@ exports[`DatePicker renders correctly 1`] = `
 <div>
   <div>
     <div
-      class="css-o0wi17-boxStyles-FieldContainer"
+      class="css-1904cz9-boxStyles-FieldContainer"
     >
       <label
-        class="css-5wkuiz-boxStyles"
+        class="css-79i25n-boxStyles"
         for="field-:r0:"
       >
         <span
-          class="css-jro2y9-boxStyles-Text"
+          class="css-433uqb-boxStyles-Text"
         >
           Example
         </span>
         <span
-          class="css-k6o2y8-boxStyles-Text"
+          class="css-1rpt3h8-boxStyles-Text"
         >
            
           (e.g. 05/08/2015) (optional)
         </span>
       </label>
       <div
-        class="css-sdkpi6-boxStyles-DateInput"
+        class="css-7swrfr-boxStyles-DateInput"
       >
         <input
           aria-invalid="false"
@@ -84,7 +84,7 @@ exports[`DatePicker renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-k4p2io-boxStyles-Popover-DatePicker"
+      class="css-7k6877-boxStyles-Popover-DatePicker"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     />
   </div>

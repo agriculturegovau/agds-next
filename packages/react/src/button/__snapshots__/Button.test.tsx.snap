@@ -18,7 +18,7 @@ exports[`Button Loading renders correctly 1`] = `
       >
         <span
           aria-atomic="false"
-          class="css-mbfust-boxStyles-ButtonLoadingDots"
+          class="css-zovuvr-boxStyles-ButtonLoadingDots"
         >
           <span
             class="css-avudkd-VisuallyHidden"
@@ -27,15 +27,15 @@ exports[`Button Loading renders correctly 1`] = `
           </span>
           <span
             aria-hidden="true"
-            class="css-fctk6k-boxStyles-LoadingDots"
+            class="css-1b171kd-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-vxu2zj-boxStyles-LoadingDots"
+            class="css-1c8uen7-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-4d4sgn-boxStyles-LoadingDots"
+            class="css-1udhakn-boxStyles-LoadingDots"
           />
         </span>
       </span>

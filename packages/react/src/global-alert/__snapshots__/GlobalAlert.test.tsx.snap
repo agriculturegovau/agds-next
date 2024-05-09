@@ -4,10 +4,10 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1j7q8eq-boxStyles-GlobalAlert"
+    class="css-1nshtlu-boxStyles-GlobalAlert"
   >
     <div
-      class="css-1d7p1pb-boxStyles-GlobalAlert"
+      class="css-10khfcq-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
@@ -30,21 +30,21 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-damzp3-boxStyles-GlobalAlert"
+      class="css-13n9wj6-boxStyles-GlobalAlert"
     >
       <div
-        class="css-hynln9-boxStyles"
+        class="css-1k241lf-boxStyles"
       >
         <h2
-          class="css-gywqfv-boxStyles-GlobalAlert"
+          class="css-1qnzlr7-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1dng7qv-boxStyles-GlobalAlert"
+          class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-1pd2agg-boxStyles-Text"
+            class="css-6j1v6l-boxStyles-Text"
           >
             Alert description.
           </p>
@@ -100,10 +100,10 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1igfdn0-boxStyles-GlobalAlert"
+    class="css-1wlrpz7-boxStyles-GlobalAlert"
   >
     <div
-      class="css-1uzy8k0-boxStyles-GlobalAlert"
+      class="css-vh758l-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
@@ -126,21 +126,21 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-damzp3-boxStyles-GlobalAlert"
+      class="css-13n9wj6-boxStyles-GlobalAlert"
     >
       <div
-        class="css-hynln9-boxStyles"
+        class="css-1k241lf-boxStyles"
       >
         <h2
-          class="css-v8j1ba-boxStyles-GlobalAlert"
+          class="css-1drfnkh-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1dng7qv-boxStyles-GlobalAlert"
+          class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-1pd2agg-boxStyles-Text"
+            class="css-6j1v6l-boxStyles-Text"
           >
             Alert description.
           </p>
@@ -155,10 +155,10 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1j7q8eq-boxStyles-GlobalAlert"
+    class="css-1nshtlu-boxStyles-GlobalAlert"
   >
     <div
-      class="css-1d7p1pb-boxStyles-GlobalAlert"
+      class="css-10khfcq-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
@@ -181,21 +181,21 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-damzp3-boxStyles-GlobalAlert"
+      class="css-13n9wj6-boxStyles-GlobalAlert"
     >
       <div
-        class="css-hynln9-boxStyles"
+        class="css-1k241lf-boxStyles"
       >
         <h2
-          class="css-v8j1ba-boxStyles-GlobalAlert"
+          class="css-1drfnkh-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1dng7qv-boxStyles-GlobalAlert"
+          class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-1pd2agg-boxStyles-Text"
+            class="css-6j1v6l-boxStyles-Text"
           >
             Alert description.
           </p>

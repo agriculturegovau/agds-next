@@ -6,17 +6,17 @@ exports[`OrderedList renders correctly 1`] = `
     class="css-1ubtfrw-OrderedList"
   >
     <li
-      class="css-1oi2qm9-boxStyles-Text-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 1
     </li>
     <li
-      class="css-1oi2qm9-boxStyles-Text-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 2
     </li>
     <li
-      class="css-1oi2qm9-boxStyles-Text-ListItem"
+      class="css-tdgyc3-boxStyles-Text-ListItem"
     >
       Item 3
     </li>

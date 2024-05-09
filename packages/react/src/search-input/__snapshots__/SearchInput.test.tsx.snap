@@ -3,19 +3,19 @@
 exports[`SearchInput Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Search
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (optional)
@@ -69,29 +69,29 @@ exports[`SearchInput Basic renders correctly 1`] = `
 exports[`SearchInput Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-14covec-boxStyles-FieldContainer"
+    class="css-1n67ua0-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r4:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Search
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1ogxqpt-boxStyles"
+      class="css-1xkbxzi-boxStyles"
     >
       <div
-        class="css-xc7nz3-boxStyles"
+        class="css-1ldvxqr-boxStyles"
       >
         <svg
           aria-hidden="false"
@@ -114,7 +114,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-1s1crk9-boxStyles-Text"
+        class="css-tfsyf8-boxStyles-Text"
         id="field-:r4:-message"
       >
         A search term is required to see results
@@ -169,26 +169,26 @@ exports[`SearchInput Invalid renders correctly 1`] = `
 exports[`SearchInput With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Search
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1snwtx3-boxStyles-Text"
+      class="css-lw0v8u-boxStyles-Text"
       id="field-:r2:-hint"
     >
       Hint text

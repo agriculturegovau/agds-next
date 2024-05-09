@@ -3,11 +3,11 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-4dxnlp-boxStyles-MainNavContainer"
+    class="css-t2550t-boxStyles-MainNavContainer"
     tabindex="-1"
   >
     <div
-      class="css-2wlwv1-boxStyles-MainNavContainer"
+      class="css-hcet0s-boxStyles-MainNavContainer"
     >
       <button
         aria-controls="main-nav-dialog"
@@ -42,13 +42,13 @@ exports[`MainNav renders correctly 1`] = `
       </button>
       <nav
         aria-label="Main"
-        class="css-1xwtnty-boxStyles"
+        class="css-1a5bfv5-boxStyles"
       >
         <ul
-          class="css-sjt2bv-boxStyles"
+          class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-jg6w12-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/"
@@ -59,7 +59,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-jg6w12-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/content"
@@ -70,7 +70,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-jg6w12-boxStyles-MainNavListItem"
+            class="css-1e0n7jq-boxStyles-MainNavListItem"
           >
             <a
               href="/form"
@@ -81,7 +81,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1s9867r-boxStyles-MainNavListItem"
+            class="css-1nz3t6v-boxStyles-MainNavListItem"
           >
             <a
               aria-current="page"
@@ -96,13 +96,13 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
       <nav
         aria-label="Supplementary"
-        class="css-sjt2bv-boxStyles"
+        class="css-1jhrbpg-boxStyles"
       >
         <ul
-          class="css-sjt2bv-boxStyles"
+          class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-1walz1e-boxStyles-MainNavListItem"
+            class="css-1cp7t2w-boxStyles-MainNavListItem"
           >
             <a
               href="#sign-in"
@@ -137,7 +137,7 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
     </div>
     <div
-      class="css-1oz97dm-boxStyles"
+      class="css-1hkgiol-boxStyles"
     />
   </div>
 </div>

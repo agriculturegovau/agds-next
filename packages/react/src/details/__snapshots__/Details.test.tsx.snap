@@ -27,10 +27,10 @@ exports[`Details renders correctly 1`] = `
       </svg>
     </summary>
     <div
-      class="css-mv4k4a-boxStyles"
+      class="css-725nwa-boxStyles"
     >
       <p
-        class="css-1pd2agg-boxStyles-Text"
+        class="css-6j1v6l-boxStyles-Text"
       >
         This is a small paragraph of text that is supplementary to the main page content.
       </p>

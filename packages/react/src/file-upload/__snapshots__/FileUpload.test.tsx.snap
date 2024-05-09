@@ -3,35 +3,35 @@
 exports[`FileUpload Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-o0wi17-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
-      class="css-5wkuiz-boxStyles"
+      class="css-79i25n-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-jro2y9-boxStyles-Text"
+        class="css-433uqb-boxStyles-Text"
       >
         Upload file
       </span>
       <span
-        class="css-k6o2y8-boxStyles-Text"
+        class="css-1rpt3h8-boxStyles-Text"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1snwtx3-boxStyles-Text"
+      class="css-lw0v8u-boxStyles-Text"
       id="field-:r0:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-ru2kv7-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-1lbebmu-boxStyles"
+        class="css-ten69t-boxStyles"
       >
         <svg
           aria-hidden="true"
@@ -68,10 +68,10 @@ exports[`FileUpload Basic renders correctly 1`] = `
           type="file"
         />
         <div
-          class="css-bj7l0b-boxStyles"
+          class="css-iij6ui-boxStyles"
         >
           <span
-            class="css-jhm33y-boxStyles-Text"
+            class="css-g6olve-boxStyles-Text"
           >
             Drag and drop file here or select file to upload.
           </span>
@@ -94,26 +94,26 @@ exports[`FileUpload Basic renders correctly 1`] = `
         </button>
       </div>
       <div
-        class="css-sdy44e-boxStyles"
+        class="css-1wcx0lf-boxStyles"
       >
         <span
-          class="css-k6o2y8-boxStyles-Text"
+          class="css-1rpt3h8-boxStyles-Text"
         >
           1 file selected
         </span>
         <ul
           aria-label="Selected files"
-          class="css-sdy44e-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <li
             aria-label="File. example.txt"
-            class="css-8kbe5b-boxStyles-FileUploadFile"
+            class="css-izqcdk-boxStyles-FileUploadFile"
           >
             <div
-              class="css-sjt2bv-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-u7iph0-boxStyles-FileUploadFileThumbnail"
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
@@ -136,14 +136,14 @@ exports[`FileUpload Basic renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-vb88bg-boxStyles"
+                class="css-w79ye0-boxStyles"
               >
                 <span
-                  class="css-7oj430-boxStyles-Text-FileUploadFile"
+                  class="css-w8s9uh-boxStyles-Text-FileUploadFile"
                 >
                   example.txt
                   <span
-                    class="css-3yhpij-boxStyles-Text-FileUploadFile"
+                    class="css-1rfmi7i-boxStyles-Text-FileUploadFile"
                   >
                      
                     (
@@ -154,10 +154,10 @@ exports[`FileUpload Basic renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-2hb6pj-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <div
-                class="css-5wkuiz-boxStyles"
+                class="css-79i25n-boxStyles"
               >
                 <button
                   aria-label="Remove file, example.txt"

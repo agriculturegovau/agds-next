@@ -3,23 +3,23 @@
 exports[`SummaryList renders correctly 1`] = `
 <div>
   <dl
-    class="css-1w2febu-boxStyles"
+    class="css-11haoc9-boxStyles"
   >
     <div
-      class="css-vd0h91-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-y5p74d-boxStyles"
+        class="css-1w3kdnx-boxStyles"
       >
         First name
       </dt>
       <dd
-        class="css-e32fxr-boxStyles"
+        class="css-6wwdos-boxStyles"
       >
         Will
       </dd>
       <dd
-        class="css-sjt2bv-boxStyles"
+        class="css-1jhrbpg-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -30,20 +30,20 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-vd0h91-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-y5p74d-boxStyles"
+        class="css-1w3kdnx-boxStyles"
       >
         Last name
       </dt>
       <dd
-        class="css-e32fxr-boxStyles"
+        class="css-6wwdos-boxStyles"
       >
         Power
       </dd>
       <dd
-        class="css-sjt2bv-boxStyles"
+        class="css-1jhrbpg-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -54,22 +54,22 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-vd0h91-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-y5p74d-boxStyles"
+        class="css-1w3kdnx-boxStyles"
       >
         Contact information
       </dt>
       <dd
-        class="css-e32fxr-boxStyles"
+        class="css-6wwdos-boxStyles"
       >
         +61 9912 3456
         <br />
         will.power@example.com
       </dd>
       <dd
-        class="css-sjt2bv-boxStyles"
+        class="css-1jhrbpg-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"
@@ -80,20 +80,20 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-vd0h91-boxStyles"
+      class="css-1gkaq3c-boxStyles"
     >
       <dt
-        class="css-y5p74d-boxStyles"
+        class="css-1w3kdnx-boxStyles"
       >
         Date of birth
       </dt>
       <dd
-        class="css-e32fxr-boxStyles"
+        class="css-6wwdos-boxStyles"
       >
         09/06/1995
       </dd>
       <dd
-        class="css-sjt2bv-boxStyles"
+        class="css-1jhrbpg-boxStyles"
       >
         <a
           class="css-ma0bjl-TextLink"

@@ -3,19 +3,19 @@
 exports[`Footer renders correctly 1`] = `
 <div>
   <footer
-    class="css-1s218g4-boxStyles-Footer"
+    class="css-1qjnm0n-boxStyles-Footer"
   >
     <div
-      class="css-1id1t9q-boxStyles"
+      class="css-1qpkcxh-boxStyles"
     >
       <nav
         aria-label="footer"
       >
         <ul
-          class="css-1yei2so-boxStyles"
+          class="css-u0m30q-boxStyles"
         >
           <li
-            class="css-5wkuiz-boxStyles"
+            class="css-79i25n-boxStyles"
           >
             <a
               class="css-ma0bjl-TextLink"
@@ -25,7 +25,7 @@ exports[`Footer renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-5wkuiz-boxStyles"
+            class="css-79i25n-boxStyles"
           >
             <a
               class="css-ma0bjl-TextLink"
@@ -35,7 +35,7 @@ exports[`Footer renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-5wkuiz-boxStyles"
+            class="css-79i25n-boxStyles"
           >
             <a
               class="css-ma0bjl-TextLink"
@@ -45,7 +45,7 @@ exports[`Footer renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-5wkuiz-boxStyles"
+            class="css-79i25n-boxStyles"
           >
             <a
               class="css-ma0bjl-TextLink"
@@ -61,12 +61,12 @@ exports[`Footer renders correctly 1`] = `
         class="css-jcokw4-FooterDivider"
       />
       <span
-        class="css-lysq3l-boxStyles-Text"
+        class="css-1sbhbx-boxStyles-Text"
       >
         We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
       </span>
       <span
-        class="css-lysq3l-boxStyles-Text"
+        class="css-1sbhbx-boxStyles-Text"
       >
         © 2024 Department of Agriculture, Fisheries and Forestry
       </span>
