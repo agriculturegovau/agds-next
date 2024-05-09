@@ -179,7 +179,7 @@ export const SideBarCollapseButton = ({
 			alignItems="center"
 			width="100%"
 			link
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			borderBottom
 			css={{
 				'&:hover': {

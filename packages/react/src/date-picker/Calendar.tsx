@@ -287,7 +287,7 @@ function YearMonthSelect({
 				value={value}
 				onChange={onChange}
 				rounded
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 				paddingRight={1.5}
 				color="text"
 				fontSize="md"

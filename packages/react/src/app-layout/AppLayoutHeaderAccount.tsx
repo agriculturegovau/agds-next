@@ -34,7 +34,7 @@ export function AppLayoutHeaderAccount({
 			{...(hasLink && {
 				as: Link,
 				href,
-				focusFor: 'keyboard',
+				focusRingFor: 'keyboard',
 			})}
 			alignItems="center"
 			flexShrink={0}

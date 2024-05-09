@@ -76,7 +76,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 			aria-controls={panelId}
 			paddingX={1.5}
 			paddingY={0.75}
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			css={{
 				position: 'relative',
 				display: 'flex',

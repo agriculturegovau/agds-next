@@ -166,7 +166,7 @@ function CloseMenuButton({
 				color="action"
 				fontSize="xs"
 				padding={1}
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 			>
 				<CloseIcon />
 				<span aria-hidden="true">Close</span>

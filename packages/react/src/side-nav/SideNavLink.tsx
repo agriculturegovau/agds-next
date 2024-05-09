@@ -33,7 +33,7 @@ export function SideNavLink({
 				borderBottom
 				borderBottomWidth="sm"
 				borderColor="muted"
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 				{...props}
 				css={{
 					textDecoration: 'none',

@@ -42,7 +42,7 @@ export const AccordionTitle = ({
 				alignItems="center"
 				width="100%"
 				link
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 				css={{
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],

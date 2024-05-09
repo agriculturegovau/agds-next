@@ -76,7 +76,7 @@ export const ProgressIndicatorItem = ({
 						backgroundColor: backgroundColorMap[background],
 					},
 				}}
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 			>
 				<ProgressIndicatorItemIcon status={status} isActive={isActive} />
 

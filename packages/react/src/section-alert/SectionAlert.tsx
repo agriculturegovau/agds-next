@@ -68,7 +68,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				gap={0.5}
 				highContrastOutline
 				id={id}
-				focusFor="all"
+				focusRingFor="all"
 				justifyContent="space-between"
 				padding={1}
 				ref={ref}

@@ -68,7 +68,7 @@ export function DropdownMenuPanel({
 			onKeyDown={onKeyDown}
 			palette={palette}
 			flexDirection="column"
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			style={style}
 		>
 			{children}

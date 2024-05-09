@@ -71,7 +71,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 					backgroundColor: bg,
 					position: 'relative',
 				}}
-				focusFor="all"
+				focusRingFor="all"
 				highContrastOutline
 				id={id}
 				ref={ref}

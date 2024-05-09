@@ -33,7 +33,7 @@ export function HeaderBrand({
 			flexDirection={{ xs: 'column', md: 'row' }}
 			color="text"
 			gap={1}
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			alignItems="stretch"
 			css={{
 				textDecoration: 'none',

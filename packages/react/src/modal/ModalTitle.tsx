@@ -12,7 +12,7 @@ export const ModalTitle = ({ children, id }: ModalTitleProps) => {
 			lineHeight="heading"
 			id={id}
 			data-autofocus
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			tabIndex={-1}
 		>
 			{children}

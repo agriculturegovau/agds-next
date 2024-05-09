@@ -143,7 +143,7 @@ function DrawerHeaderTitle({ children, id }: DrawerHeaderTitleProps) {
 			lineHeight="heading"
 			id={id}
 			data-autofocus
-			focusFor="keyboard"
+			focusRingFor="keyboard"
 			tabIndex={-1}
 			css={{
 				display: 'inline-block',

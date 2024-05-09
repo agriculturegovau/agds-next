@@ -69,7 +69,7 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 				padding={1}
 				width="18rem"
 				link
-				focusFor="keyboard"
+				focusRingFor="keyboard"
 				css={{
 					textDecoration: 'none',
 
