@@ -533,7 +533,7 @@ export const linkStyles = {
 type FocusProps = Partial<{
 	/** @deprecated use focusRingFor="keyboard". */
 	focus: boolean;
-	/** Display a focus indicator when the element receives focus. 'all' includes programmatic focus and 'keyboard' is for keyboard only focus*/
+	/** Display a focus indicator when the element receives focus. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus*/
 	focusRingFor: 'all' | 'keyboard';
 }>;
 export const focusStyles = {
