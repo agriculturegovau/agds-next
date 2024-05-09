@@ -376,12 +376,7 @@ When the drawer closes, focus is returned to the element that triggered its open
 				ref={sectionAlertContainerRef}
 				tabIndex={-1}
 			>
-				<SectionAlert
-					ref={sectionAlertContainerRef}
-					tabIndex={-1}
-					title="Something went wrong"
-					tone="error"
-				>
+				<SectionAlert title="Something went wrong" tone="error">
 					<Text as="p">{error}</Text>
 				</SectionAlert>
 			</Box>
