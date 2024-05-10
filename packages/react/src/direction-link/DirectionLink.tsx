@@ -62,7 +62,7 @@ const BaseDirectionLink = ({
 			fontFamily="body"
 			fontWeight="normal"
 			link
-			focus
+			focusRingFor="keyboard"
 			css={{ alignSelf: 'flex-start' }}
 			{...props}
 		>

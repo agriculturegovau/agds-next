@@ -34,7 +34,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					as="summary"
 					inline
 					link
-					focus
+					focusRingFor="keyboard"
 					alignItems="center"
 					fontWeight="bold"
 					paddingY={0.5}

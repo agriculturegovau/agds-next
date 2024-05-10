@@ -30,7 +30,7 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 				gap={0.25}
 				fontSize="sm"
 				color="text"
-				focus
+				focusRingFor="keyboard"
 				css={{
 					cursor: 'pointer',
 					...(disabled && {
@@ -53,7 +53,7 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 						event.stopPropagation();
 						onRemove();
 					}}
-					focus
+					focusRingFor="keyboard"
 					css={{
 						cursor: 'pointer',
 						svg: { display: 'block', color: boxPalette.foregroundAction },

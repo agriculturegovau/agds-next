@@ -347,3 +347,65 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 	);
 };
 ```
+
+## Focus custom element on close
+
+When a drawer closes, focus is returned to the element that opened it. You can override this behaviour by passing an element to the `elementToFocusOnClose` prop. This can be used in situations, for example, when an action performed in the drawer causes an error, setting the main page in an error state, and requiring the user’s focus to be returned to the alert instead.
+
+```jsx live
+() => {
+	const sectionAlertContainerRef = React.useRef(null);
+	const [error, setError] = React.useState('');
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+	const openDrawerAndClearError = () => {
+		openDrawer();
+		setError('');
+	};
+
+	const closeWithError = () => {
+		closeDrawer();
+		setError('We were unable to perform the action, please try again later.');
+	};
+
+	return (
+		<Stack gap={2}>
+			<Box css={error ? undefined : { display: 'none' }}>
+				<SectionAlert
+					focusRingFor="all"
+					ref={sectionAlertContainerRef}
+					tabIndex={-1}
+					title="Something went wrong"
+					tone="error"
+				>
+					<Text as="p">{error}</Text>
+				</SectionAlert>
+			</Box>
+
+			<Box alignSelf="start">
+				<Button onClick={openDrawerAndClearError}>Open Drawer</Button>
+			</Box>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeWithError}>Close with error</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Close with no error
+						</Button>
+					</ButtonGroup>
+				}
+				elementToFocusOnClose={sectionAlertContainerRef.current}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Drawer title"
+			>
+				<Text as="p">
+					When pressing 'Close with error', an error alert will be rendered and
+					focused.
+				</Text>
+			</Drawer>
+		</Stack>
+	);
+};
+```
