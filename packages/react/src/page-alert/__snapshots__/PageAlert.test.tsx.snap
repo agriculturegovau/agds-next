@@ -3,7 +3,7 @@
 exports[`PageAlert tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-nrc1qj-boxStyles-PageAlert"
+    class="css-4co8rc-boxStyles-PageAlert"
   >
     <div
       class="css-1k8g9lc-boxStyles-PageAlert"
@@ -62,7 +62,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
 exports[`PageAlert tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-i0rwwd-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -112,7 +112,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
 exports[`PageAlert tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-12967ez-boxStyles-PageAlert"
+    class="css-1fz8glh-boxStyles-PageAlert"
   >
     <div
       class="css-pnbgw6-boxStyles-PageAlert"
@@ -162,7 +162,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
 exports[`PageAlert tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-6yhwwh-boxStyles-PageAlert"
+    class="css-rl6354-boxStyles-PageAlert"
   >
     <div
       class="css-11ssqox-boxStyles-PageAlert"
@@ -212,7 +212,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
 exports[`PageAlert with a close button renders correctly 1`] = `
 <div>
   <div
-    class="css-i0rwwd-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"

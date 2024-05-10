@@ -28,7 +28,7 @@ export function SideNavTitle({
 					fontWeight="bold"
 					lineHeight="heading"
 					display="block"
-					focus
+					focusRingFor="keyboard"
 					href={href}
 					aria-current={isCurrentPage ? 'page' : undefined}
 					css={{

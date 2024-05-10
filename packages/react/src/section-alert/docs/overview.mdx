@@ -97,3 +97,67 @@ Avoid dismissing error messages which block the user from completing a task. Ins
 	</SectionAlert>
 </Stack>
 ```
+
+## Focusing the alert
+
+_NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
+
+In the event you need to focus the alert, you can do so in one of two ways:
+
+1. [Manually set focus](#manually-set-focus).
+2. [Automatically focus on mount](#automatically-focus-on-mount).
+
+### Manually set focus
+
+Press the "Focus the alert" button below to set focus on the alert. To achieve this, we set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
+
+```jsx live
+() => {
+	const alertRef = React.useRef(null);
+
+	return (
+		<Stack gap={2}>
+			<Box alignSelf="start">
+				<Button onClick={() => alertRef.current.focus()}>
+					Focus the alert
+				</Button>
+			</Box>
+
+			<SectionAlert
+				ref={alertRef}
+				tabIndex={-1}
+				title="Submission successful"
+				tone="success"
+			>
+				<Text as="p">Your application has been successfully submitted.</Text>
+			</SectionAlert>
+		</Stack>
+	);
+};
+```
+
+### Automatically focus on mount
+
+Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted it will be focused. Here we use the `focusOnMount` boolean prop to automatically handle the focusing.
+
+```jsx live
+() => {
+	const [showAlert, setShowAlert] = React.useState(false);
+
+	return (
+		<Stack gap={2}>
+			<Box alignSelf="start">
+				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
+					Toggle alert
+				</Button>
+			</Box>
+
+			{showAlert && (
+				<SectionAlert focusOnMount title="Something went wrong" tone="error">
+					<Text as="p">There was an error submitting the application.</Text>
+				</SectionAlert>
+			)}
+		</Stack>
+	);
+};
+```

@@ -531,13 +531,23 @@ export const linkStyles = {
 };
 
 type FocusProps = Partial<{
-	/** If true, the focus indicator will be shown when the element receives keyboard focus. */
+	/** @deprecated use focusRingFor="keyboard". */
 	focus: boolean;
+	/** Display a focus indicator when the element receives focus. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus*/
+	focusRingFor: 'all' | 'keyboard';
 }>;
 export const focusStyles = {
 	':focus': packs.outline,
 	':focus:not(:focus-visible)': { outline: 'none' },
 	':focus-visible': packs.outline,
+};
+export const focusStylesAll = {
+	':focus': packs.outline,
+};
+
+const focusStylesMap = {
+	all: focusStylesAll,
+	keyboard: focusStyles,
 };
 
 type HighContrastProps = Partial<{
@@ -559,13 +569,11 @@ export type BoxProps = PaletteProps &
 	PaddingProps;
 
 export function boxStyles({
-	palette,
-	dark,
-	light,
-	color,
+	alignItems,
 	background,
 	border,
-	borderWidth,
+	borderBottom,
+	borderBottomWidth,
 	borderColor,
 	borderLeft,
 	borderLeftWidth,
@@ -573,48 +581,64 @@ export function boxStyles({
 	borderRightWidth,
 	borderTop,
 	borderTopWidth,
-	borderBottom,
-	borderBottomWidth,
+	borderWidth,
 	borderX,
 	borderY,
-	rounded,
+	breakWords,
+	color,
+	columnGap,
+	dark,
 	display,
 	flexDirection,
-	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridColumnSpan,
-	gridColumnStart,
-	gridColumnEnd,
-	justifyContent,
-	alignItems,
-	gap,
-	columnGap,
-	rowGap,
-	width,
-	minWidth,
-	maxWidth,
-	height,
-	minHeight,
-	maxHeight,
-	paddingTop,
-	paddingBottom,
-	paddingRight,
-	paddingLeft,
-	paddingX,
-	paddingY,
-	padding,
-	fontWeight,
+	flexWrap,
+	focus,
+	focusRingFor,
 	fontFamily,
 	fontSize,
-	lineHeight,
-	textAlign,
-	breakWords,
-	focus,
-	link,
+	fontWeight,
+	gap,
+	gridColumnEnd,
+	gridColumnSpan,
+	gridColumnStart,
+	height,
 	highContrastOutline,
+	justifyContent,
+	light,
+	lineHeight,
+	link,
+	maxHeight,
+	maxWidth,
+	minHeight,
+	minWidth,
+	padding,
+	paddingBottom,
+	paddingLeft,
+	paddingRight,
+	paddingTop,
+	paddingX,
+	paddingY,
+	palette,
+	rounded,
+	rowGap,
+	textAlign,
+	width,
 	...restProps
 }: BoxProps) {
+	/* **LEGACY HANDLER**
+	 * We've deprecated `focus` in favour of `focusRingFor?: 'all | 'keyboard'. This
+	 * displays the focus ring for elements that are programmatically focused.
+	 *
+	 * `focus` maps to `focusRingFor: 'keyboard' for backwards compatibility.
+	 */
+	focusRingFor = focusRingFor || (focus ? 'keyboard' : undefined);
+	if (focus && process.env.NODE_ENV !== 'production') {
+		console.warn(
+			'The `focus` prop is deprecated. Use `focusRingFor="keyboard"`.'
+		);
+	}
+
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
@@ -689,7 +713,7 @@ export function boxStyles({
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(focus ? focusStyles : undefined),
+				...(focusRingFor ? focusStylesMap[focusRingFor] : undefined),
 				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),
