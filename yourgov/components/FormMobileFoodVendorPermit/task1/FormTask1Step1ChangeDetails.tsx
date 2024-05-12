@@ -60,7 +60,7 @@ export function FormTask1Step1ChangeDetails() {
 				...formState,
 				task1: { ...formState.task1, step1: { ...data } },
 			});
-			router.push(`${step1Path}&success=true`);
+			router.push(`${step1Path}?success=true`);
 		}, 1500);
 	};
 
@@ -172,7 +172,7 @@ export function FormTask1Step1ChangeDetails() {
 									id="firstName"
 									invalid={Boolean(errors.firstName?.message)}
 									message={errors.firstName?.message}
-									maxWidth="xl"
+									maxWidth="lg"
 									required
 								/>
 								<TextInput
@@ -182,7 +182,7 @@ export function FormTask1Step1ChangeDetails() {
 									id="lastName"
 									invalid={Boolean(errors.lastName?.message)}
 									message={errors.lastName?.message}
-									maxWidth="xl"
+									maxWidth="lg"
 									required
 								/>
 								<TextInput
