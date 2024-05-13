@@ -95,7 +95,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			message,
 			invalid,
 			id,
-			existingFiles,
+			existingFiles = [],
 			onRemoveExistingFile,
 			...consumerProps
 		},
@@ -255,12 +255,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...dropzoneInputProps
 		} = getInputProps();
 
-		const areFileListsVisible = Boolean(allFiles.length);
-
 		const fileSummaryText = getFileListSummaryText([
 			...acceptedFiles,
-			...(existingFiles || []),
+			...existingFiles,
 		]);
+
+		const showFileLists = Boolean(allFiles.length || existingFiles?.length);
 
 		const hasMultipleFileRejections = allRejections.length > 1;
 
@@ -342,74 +342,59 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								the role="alert" element must always be mounted in the DOM
 							*/}
 							<div role="alert">
-								{Boolean(allRejections.length) && (
-									<Box paddingTop={0.5} paddingBottom={1}>
+								{allRejections.length > 0 && (
+									<Box breakWords paddingTop={0.5} paddingBottom={1}>
 										<SectionAlert
-											title={
-												hasMultipleFileRejections
-													? 'The following files could not be selected'
-													: 'A file could not be selected'
-											}
+											title={`The following ${
+												hasMultipleFileRejections ? 'files' : 'file'
+											} could not be selected`}
 											tone="error"
 											onClose={clearErrors}
 										>
+											<Text as="p">
+												{hasMultipleFileRejections
+													? 'These files were unable to be accepted for the following reasons:'
+													: 'This file was unable to be accepted for the following reason:'}
+											</Text>
 											{hasMultipleFileRejections ? (
-												// multiple files
-												<Text as="p">
-													Please review this list of files that were unable to
-													be accepted for the stated reasons:
-												</Text>
-											) : (
-												// single file
-												<Text as="p">
-													Please review the following file that was unable to be
-													accepted for the stated reason:
-												</Text>
-											)}
-											{hasMultipleFileRejections && (
 												<UnorderedList>
 													{allRejections.map((rejection) => {
 														return (
 															<ListItem key={rejection.file.name}>
-																<Text
-																	as="strong"
-																	color="error"
-																	fontWeight="bold"
-																>
+																<Text color="error" fontWeight="bold">
 																	{rejection.file.name}
 																</Text>{' '}
-																<span>
+																<Text>
 																	({formatFileSize(rejection.file.size)}){' - '}
 																	{getErrorSummary(
 																		rejection.errors,
 																		formattedMaxFileSize
 																	)}
-																</span>
+																</Text>
 															</ListItem>
 														);
 													})}
 												</UnorderedList>
-											)}
-											{!hasMultipleFileRejections && (
-												<Box as="p">
-													<Text as="strong" color="error" fontWeight="bold">
+											) : (
+												<Text as="p">
+													<Text color="error" fontWeight="bold">
 														{allRejections[0].file.name}
 													</Text>{' '}
-													<span>
+													<Text>
 														({formatFileSize(allRejections[0].file.size)})
 														{' - '}
 														{getErrorSummary(
 															allRejections[0].errors,
 															formattedMaxFileSize
 														)}
-													</span>
-												</Box>
+													</Text>
+												</Text>
 											)}
 										</SectionAlert>
 									</Box>
 								)}
 							</div>
-							{areFileListsVisible && (
+							{showFileLists && (
 								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList

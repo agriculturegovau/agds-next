@@ -50,17 +50,17 @@ export const FileUploadFile = ({
 					{href ? (
 						<Text paddingY={1.5}>
 							<TextLink
+								breakWords
 								href={href}
 								target="_blank"
 								rel="noopener noreferrer"
-								css={{ wordBreak: 'break-all' }}
 							>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
 						</Text>
 					) : (
-						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
+						<Text breakWords paddingY={1.5}>
 							{name}
 							{size ? (
 								<Text css={{ whiteSpace: 'nowrap' }}>

@@ -181,7 +181,7 @@ export function getFileRejectionErrorMessage(
 	}
 
 	if (code === 'file-invalid-type') {
-		if (!acceptedFilesSummary) return `File must be an acceptable format`;
+		if (!acceptedFilesSummary) return 'File must be an accepted format';
 		return `File must be one of the following types: ${acceptedFilesSummary}`;
 	}
 
