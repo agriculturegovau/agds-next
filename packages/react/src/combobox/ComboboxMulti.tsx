@@ -7,12 +7,12 @@ import {
 	useState,
 } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
-import { FieldMaxWidth } from '../core';
 import { ComboboxMultiBase } from './ComboboxBase';
 import {
-	DefaultComboboxOption,
-	useComboboxInputId,
 	filterOptions,
+	type ComboboxMaxWidthValues,
+	type DefaultComboboxOption,
+	useComboboxInputId,
 } from './utils';
 
 export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
@@ -28,10 +28,10 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
-	/** If true, the field will stretch to the fill the width of its container. */
+	/** If true, the field will stretch to the fill the width of its container and ignore maxWidth. */
 	block?: boolean;
 	/** The maximum width of the field. */
-	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
+	maxWidth?: ComboboxMaxWidthValues;
 	/** If true, the field will not be interactive. */
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
@@ -57,6 +57,7 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 };
 
 export function ComboboxMulti<Option extends DefaultComboboxOption>({
+	block = true,
 	id,
 	value,
 	onChange,
@@ -145,6 +146,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 
 	return (
 		<ComboboxMultiBase
+			block={block}
 			combobox={combobox}
 			multiSelection={multiSelection}
 			inputItems={items}

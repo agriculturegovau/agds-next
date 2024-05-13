@@ -21,7 +21,7 @@ export const Basic: Story = {
 
 export const Invalid: Story = {
 	args: {
-		value: { raw: '9:66' },
+		value: { value: '9:66' },
 	},
 	render: Render,
 };
@@ -29,7 +29,7 @@ export const Invalid: Story = {
 export const DifferentTimeFormat: Story = {
 	args: {
 		timeFormat: 'HH:mm',
-		value: { raw: '21:30' },
+		value: { value: '21:30' },
 	},
 	render: Render,
 };
@@ -41,7 +41,7 @@ function Render(props: TimeInputProps) {
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.raw);
+	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput

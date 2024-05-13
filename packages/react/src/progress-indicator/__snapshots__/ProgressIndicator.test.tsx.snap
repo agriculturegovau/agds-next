@@ -58,15 +58,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -93,13 +92,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -108,25 +108,24 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -151,13 +150,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -166,26 +166,24 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              aria-current="true"
-              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -225,40 +223,41 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <a
+                aria-current="true"
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -289,13 +288,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -304,25 +304,24 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -350,13 +349,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -365,25 +365,24 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -423,13 +422,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -438,25 +438,24 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -482,13 +481,14 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -497,12 +497,12 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
         </ul>
       </div>
@@ -569,15 +569,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -604,13 +603,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -619,25 +619,24 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -662,13 +661,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -677,26 +677,24 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              aria-current="true"
-              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -736,40 +734,41 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <button
+                aria-current="true"
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -800,13 +799,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -815,25 +815,24 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -861,13 +860,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -876,25 +876,24 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -934,13 +933,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -949,25 +949,24 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -993,13 +992,14 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1008,12 +1008,12 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
         </ul>
       </div>
@@ -1022,7 +1022,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied blocked status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -1080,15 +1080,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1115,13 +1114,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1130,26 +1130,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              aria-current="true"
-              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1174,40 +1172,41 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <button
+                aria-current="true"
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1247,13 +1246,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1262,25 +1262,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1311,13 +1310,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1326,25 +1326,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1372,13 +1371,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1387,25 +1387,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1445,13 +1444,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1460,25 +1460,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1504,13 +1503,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1519,12 +1519,12 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
         </ul>
       </div>
@@ -1533,7 +1533,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied blocked status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -1591,15 +1591,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1626,13 +1625,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1641,26 +1641,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              aria-current="true"
-              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1685,40 +1683,41 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <a
+                aria-current="true"
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1758,13 +1757,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1773,25 +1773,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1822,13 +1821,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1837,25 +1837,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1883,13 +1882,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1898,25 +1898,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1956,13 +1955,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -1971,25 +1971,24 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2015,13 +2014,14 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2030,12 +2030,12 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
         </ul>
       </div>
@@ -2044,7 +2044,7 @@ exports[`ProgressIndicator With isActive applied blocked status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied doing status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -2102,15 +2102,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2137,13 +2136,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2152,25 +2152,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2195,13 +2194,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2210,26 +2210,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              aria-current="true"
-              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2269,40 +2267,41 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <button
+                aria-current="true"
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2333,13 +2332,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2348,25 +2348,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2394,13 +2393,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2409,25 +2409,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2467,13 +2466,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2482,25 +2482,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2526,13 +2525,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2541,12 +2541,12 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
         </ul>
       </div>
@@ -2555,7 +2555,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied doing status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -2613,15 +2613,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2648,13 +2647,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2663,25 +2663,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2706,13 +2705,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2721,26 +2721,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              aria-current="true"
-              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2780,40 +2778,41 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <a
+                aria-current="true"
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2844,13 +2843,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2859,25 +2859,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2905,13 +2904,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2920,25 +2920,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2978,13 +2977,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -2993,25 +2993,24 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3037,13 +3036,14 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3052,12 +3052,12 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
         </ul>
       </div>
@@ -3066,7 +3066,7 @@ exports[`ProgressIndicator With isActive applied doing status active renders act
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied started status active renders active button 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active button 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -3124,15 +3124,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3159,13 +3158,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3174,25 +3174,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3217,13 +3216,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3232,25 +3232,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3290,13 +3289,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3305,25 +3305,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3354,13 +3353,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3369,25 +3369,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3415,13 +3414,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3430,26 +3430,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              aria-current="true"
-              class="css-locwej-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3489,40 +3487,41 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <button
+                aria-current="true"
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <button
-              class="css-b1b1hj-BaseButton-boxStyles-ProgressIndicatorItem"
-              type="button"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3548,13 +3547,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <button
+                class="css-jdqqf2-BaseButton-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                type="button"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3563,12 +3563,12 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </button>
+              </button>
+            </span>
           </li>
         </ul>
       </div>
@@ -3577,7 +3577,7 @@ exports[`ProgressIndicator With isActive applied started status active renders a
 </div>
 `;
 
-exports[`ProgressIndicator With isActive applied started status active renders active link 1`] = `
+exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active link 1`] = `
 <div>
   <section
     class="css-109i52p-boxStyles-CollapsingSideBarContainer"
@@ -3635,15 +3635,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3670,13 +3669,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3685,25 +3685,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Done
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Completed
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3728,13 +3727,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3743,25 +3743,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Blocked
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Cannot start yet
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3801,13 +3800,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3816,25 +3816,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Doing
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3865,13 +3864,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3880,25 +3880,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Error
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Error
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3926,13 +3925,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -3941,26 +3941,24 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   Saved
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Saved
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              aria-current="true"
-              class="css-tc9df-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4000,40 +3998,41 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-vly98i-boxStyles"
+              <a
+                aria-current="true"
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-433uqb-boxStyles-Text"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   In progress
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
           <li
             class="css-10qlzin-boxStyles-ProgressIndicatorItem"
           >
-            <a
-              class="css-12el6hy-TextLink-boxStyles-ProgressIndicatorItem"
-              href="#"
+            <span
+              class="css-sx8ayf-boxStyles-ProgressIndicatorItem"
             >
               <span
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4059,13 +4058,14 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   </svg>
                 </span>
                 <span
-                  class="css-rz0ge3-ProgressIndicatorItemTimeline"
+                  class="css-1umyplw-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
-              <span
-                class="css-kcfiwy-boxStyles"
+              <a
+                class="css-amnlrl-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
+                href="#"
               >
                 <span
                   class="css-6j1v6l-boxStyles-Text"
@@ -4074,12 +4074,12 @@ exports[`ProgressIndicator With isActive applied started status active renders a
                   To do
                 </span>
                 <span
-                  class="css-117pubc-boxStyles-Text-ProgressIndicatorItem"
+                  class="css-1f7oqqc-boxStyles-Text"
                 >
                   Not started
                 </span>
-              </span>
-            </a>
+              </a>
+            </span>
           </li>
         </ul>
       </div>

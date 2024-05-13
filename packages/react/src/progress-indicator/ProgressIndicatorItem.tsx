@@ -1,143 +1,48 @@
-import {
-	ButtonHTMLAttributes,
-	ElementType,
-	PropsWithChildren,
-	useEffect,
-} from 'react';
+import { ElementType, PropsWithChildren } from 'react';
 import { Box, backgroundColorMap } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { TextLink } from '../text-link';
+import { CornerDownRightIcon } from '../icon';
+import { boxPalette, mapSpacing, packs, tokens } from '../core';
 import {
-	ProgressBlockedIcon,
-	ProgressDoingIcon,
-	SuccessFilledIcon,
-	ProgressTodoIcon,
-	SuccessIcon,
-	AlertIcon,
-} from '../icon';
-import { boxPalette, LinkProps, packs, tokens } from '../core';
-import { BaseButton } from '../button';
-import { hoverColorMap, ProgressIndicatorBackground } from './utils';
-
-export type ProgressIndicatorItem = (
-	| ProgressIndicatorItemButtonProps
-	| ProgressIndicatorItemLinkProps
-) & {
-	label: string;
-	isActive?: boolean;
-};
-
-export type ProgressIndicatorItemStatus =
-	| 'blocked'
-	| 'doing'
-	| 'done'
-	| 'error'
-	| 'saved'
-	| 'started'
-	| 'todo';
-
-export interface ProgressIndicatorItemLinkProps extends LinkProps {
-	/** Determines the background colour of the progress indicator item. */
-	background?: ProgressIndicatorBackground;
-	/** Determines what style the item displays as.
-	 *
-	 * `blocked` = This step is not yet available for the user to start.
-	 *
-	 * `doing` = **(deprecated)** This step has been started and the user is actively working on this step (Use `started` with `isActive: true` instead).
-	 *
-	 * `done` = This step is complete. The user has submitted valid data and it has been verified (where necessary).
-	 *
-	 * `error` = This step has an error that requires attention.
-	 *
-	 * `saved` = This step has valid saved data that can still be changed.
-	 *
-	 * `started` = This step has been started and still needs to be completed.
-	 *
-	 * `todo` = This step is available for the user to start.
-	 */
-	status: ProgressIndicatorItemStatus;
-	/** Set this item as currently active. Only supporte for the `blocked`, `started`, and `doing` statuses */
-	isActive?: boolean;
-}
-
-export const ProgressIndicatorItemLink = ({
-	children,
-	isActive,
-	status,
-	...props
-}: ProgressIndicatorItemLinkProps) => (
-	<ProgressIndicatorItem
-		as={TextLink}
-		isActive={Boolean(isActive)}
-		status={status}
-		{...props}
-	>
-		{children}
-	</ProgressIndicatorItem>
-);
-
-export type ProgressIndicatorItemButtonProps =
-	ButtonHTMLAttributes<HTMLButtonElement> & {
-		background?: ProgressIndicatorBackground;
-		status: ProgressIndicatorItemStatus;
-		isActive: boolean;
-	};
-
-export const ProgressIndicatorItemButton = ({
-	children,
-	...props
-}: ProgressIndicatorItemButtonProps) => (
-	<ProgressIndicatorItem as={BaseButton} {...props}>
-		{children}
-	</ProgressIndicatorItem>
-);
-
-export const activeProgressStatusAllowedList: Array<ProgressIndicatorItemStatus> =
-	['blocked', 'doing', 'started'];
-
-export const activeProgressStatusBlockedList: Array<ProgressIndicatorItemStatus> =
-	['done', 'error', 'saved', 'todo'];
-export const allProgressStatuses: Array<ProgressIndicatorItemStatus> = [
-	...activeProgressStatusAllowedList,
-	...activeProgressStatusBlockedList,
-];
+	hoverColorMap,
+	ProgressIndicatorBackground,
+	progressIndicatorItemRingDataAttr,
+	ProgressIndicatorItemStatus,
+	progressIndicatorItemTextContainerDataAttr,
+	progressIndicatorItemTextDataAttr,
+	progressIndicatorItemTimelineDataAttr,
+	ProgressIndicatorItemWithLevelTwoItems,
+	statusMap,
+} from './utils';
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;
-	background?: ProgressIndicatorBackground;
 	status: ProgressIndicatorItemStatus;
-	isActive: boolean;
+	background?: ProgressIndicatorBackground;
+	isActive?: boolean;
+	items?: ProgressIndicatorItemWithLevelTwoItems<{
+		isActive: boolean;
+	}>['items'];
 }>;
 
-const ProgressIndicatorItem = ({
+export const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
 	children,
-	status,
 	isActive,
+	items,
+	status,
 	...props
 }: ProgressIndicatorItemProps) => {
-	const { label } = statusMap[status];
+	const { label: statusLabel } = statusMap[status];
 
-	const listItemLinkTextSelector = '> span:last-of-type > span:first-of-type';
-
-	if (isActive && !activeProgressStatusAllowedList.includes(status)) {
-		throw new Error(
-			`The "${status}" status cannot be set to active. Please use one of the following status types instead: ${activeProgressStatusAllowedList.join(
-				', '
-			)}`
+	if (process.env.NODE_ENV !== 'production' && status === 'doing') {
+		console.warn(
+			'ProgressIndicator: The "doing" status is deprecated. Use the "started" status with `activePath`.'
 		);
 	}
-
-	useEffect(() => {
-		if (status === 'doing') {
-			console.warn(
-				'The "doing" status is deprecated. Use the "started" status with "isActive: true" applied instead.'
-			);
-		}
-	}, [status]);
 
 	return (
 		<Box
@@ -159,69 +64,116 @@ const ProgressIndicatorItem = ({
 				},
 			}}
 		>
-			<Flex
-				as={as}
-				aria-current={isActive || undefined}
-				gap={1}
+			<Box
+				as="span"
+				columnGap={0.5}
 				css={{
-					width: '100%',
+					display: 'grid',
+					gridTemplateColumns: 'min-content 1fr',
 					textDecoration: 'none',
+					width: '100%',
 					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
 						backgroundColor: backgroundColorMap[background],
 					},
-					[listItemLinkTextSelector]: {
-						fontWeight: isActive ? 'bold' : 'normal',
-					},
-					'&:hover': {
-						backgroundColor: hoverColorMap[background],
-						[`[${progressIndicatorItemRingDataAttr}]:before`]: {
-							backgroundColor: hoverColorMap[background],
-						},
-						[listItemLinkTextSelector]: packs.underline,
-					},
 				}}
-				focus
-				{...props}
+				focusRingFor="keyboard"
 			>
 				<ProgressIndicatorItemIcon status={status} isActive={isActive} />
+
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
-					as="span"
-					flexDirection="column-reverse"
+					aria-current={isActive || undefined}
+					as={as}
+					css={{
+						textDecoration: 'none',
+						'&:hover': {
+							backgroundColor: hoverColorMap[background],
+						},
+						'&:hover span:not(:last-of-type)': {
+							...packs.underline,
+						},
+					}}
 					flexGrow={1}
+					fontFamily="body"
 					gap={0.25}
 					justifyContent="center"
+					paddingX={0.5}
 					paddingY={1}
-					fontFamily="body"
-					fontWeight={isActive ? 'bold' : 'normal'}
-					borderBottom
-					borderColor="muted"
+					{...(!items && { borderBottom: true, borderColor: 'muted' })}
+					{...props}
 				>
-					<Text {...{ [progressIndicatorItemTextDataAttr]: '' }}>
+					<Text
+						fontWeight={isActive ? 'bold' : 'normal'}
+						{...{ [progressIndicatorItemTextDataAttr]: '' }}
+					>
 						{children}
 					</Text>
-					<Text
-						color="muted"
-						fontSize="xs"
-						lineHeight="nospace"
-						css={{ textDecoration: 'none' }}
-					>
-						{label}
+
+					<Text color="muted" fontSize="xs" lineHeight="nospace">
+						{statusLabel}
 					</Text>
 				</Stack>
-			</Flex>
+
+				{isActive && items?.some((item) => item.isActive) && (
+					<>
+						<ProgressIndicatorItemTimeline />
+
+						<Box as="ul">
+							<Box as="li" css={{ position: 'relative' }}>
+								<Flex
+									{...items.find((item) => item.isActive)}
+									alignItems="center"
+									aria-current={true}
+									as={as}
+									borderBottom
+									borderColor="muted"
+									color="text"
+									css={{
+										textDecoration: 'none',
+										'&:hover': {
+											backgroundColor: hoverColorMap[background],
+											...packs.underline,
+
+											// Extra highlighted space on hover for visual balance (not when focused which avoids hover styles covering the focus ring)
+											':not(:focus-visible)::before': {
+												backgroundColor: hoverColorMap[background],
+												content: '""',
+												height: mapSpacing(0.5),
+												left: 0,
+												position: 'absolute',
+												top: `-${mapSpacing(0.5)}`,
+												width: '100%',
+											},
+										},
+									}}
+									gap={0.5}
+									padding={0.5}
+									paddingBottom={1}
+								>
+									<CornerDownRightIcon color="selected" />
+
+									<Text color="inherit" fontSize="xs" fontWeight="bold">
+										{items.find((item) => item.isActive)?.label}
+									</Text>
+								</Flex>
+							</Box>
+						</Box>
+					</>
+				)}
+			</Box>
 		</Box>
 	);
 };
 
 const ProgressIndicatorItemTimeline = () => (
 	<span
-		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 		css={{
-			width: tokens.borderWidth.md,
 			backgroundColor: boxPalette.border,
 			flex: 1,
+			justifySelf: 'center',
+			width: tokens.borderWidth.md,
 		}}
+		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 	/>
 );
 
@@ -230,18 +182,19 @@ const ProgressIndicatorItemIcon = ({
 	isActive,
 }: {
 	status: ProgressIndicatorItemStatus;
-	isActive: boolean;
+	isActive?: boolean;
 }) => {
 	const { icon: Icon, iconColor } = statusMap[status];
 	const ringWidth = tokens.borderWidth.md;
 	const ringGap = 3;
 	const ringInset = ringWidth + ringGap;
-	const processedIconColor: IconColour =
+	const processedIconColor =
 		isActive && iconColor === 'border' ? 'selected' : iconColor;
 
 	return (
-		<Flex as="span" flexDirection="column" alignItems="center">
+		<Flex alignItems="center" as="span" flexDirection="column">
 			<ProgressIndicatorItemTimeline />
+
 			<span
 				{...{ [progressIndicatorItemRingDataAttr]: '' }}
 				css={{
@@ -272,64 +225,8 @@ const ProgressIndicatorItemIcon = ({
 					}}
 				/>
 			</span>
+
 			<ProgressIndicatorItemTimeline />
 		</Flex>
 	);
-};
-
-const progressIndicatorItemTimelineDataAttr =
-	'data-agds-progress-indicator-item-timeline-action';
-const progressIndicatorItemRingDataAttr =
-	'data-agds-progress-indicator-item-ring';
-const progressIndicatorItemTextContainerDataAttr =
-	'data-agds-progress-indicator-item-text-container';
-const progressIndicatorItemTextDataAttr =
-	'data-agds-progress-indicator-item-text';
-
-type IconColour = 'border' | 'selected' | 'success' | 'error';
-
-type StatusMapCollection = Record<ProgressIndicatorItemStatus, StatusMapItem>;
-
-interface StatusMapItem {
-	label: string;
-	icon: typeof ProgressBlockedIcon;
-	iconColor: IconColour;
-}
-
-const statusMap: StatusMapCollection = {
-	blocked: {
-		label: 'Cannot start yet',
-		icon: ProgressBlockedIcon,
-		iconColor: 'border',
-	},
-	doing: {
-		label: 'In progress',
-		icon: ProgressDoingIcon,
-		iconColor: 'border',
-	},
-	started: {
-		label: 'In progress',
-		icon: ProgressDoingIcon,
-		iconColor: 'border',
-	},
-	todo: {
-		label: 'Not started',
-		icon: ProgressTodoIcon,
-		iconColor: 'border',
-	},
-	done: {
-		label: 'Completed',
-		icon: SuccessFilledIcon,
-		iconColor: 'success',
-	},
-	saved: {
-		label: 'Saved',
-		icon: SuccessIcon,
-		iconColor: 'success',
-	},
-	error: {
-		label: 'Error',
-		icon: AlertIcon,
-		iconColor: 'error',
-	},
 };

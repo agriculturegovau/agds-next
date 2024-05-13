@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
-import { ProgressIndicator, ProgressIndicatorItem } from './index';
+import {
+	ProgressIndicatorItem,
+	ProgressIndicatorItemWithLevelTwoItems,
+} from './utils';
+import { ProgressIndicator } from './index';
 
 const meta: Meta<typeof ProgressIndicator> = {
 	title: 'forms/ProgressIndicator',
@@ -11,40 +15,42 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const exampleLinkItems: ProgressIndicatorItem[] = [
-	{ label: 'Introduction', status: 'done', href: '#' },
-	{ label: 'Submit evidence', status: 'saved', href: '#' },
-	{ label: 'Organisations', status: 'started', href: '#' },
-	{ label: 'Business contacts', status: 'error', href: '#' },
-	{ label: 'Case studies', status: 'todo', href: '#' },
-	{ label: 'Attachments', status: 'started', href: '#', isActive: true },
-	{ label: 'Review and submit', status: 'blocked', href: '#' },
+const exampleItems: ProgressIndicatorItem[] = [
+	{ label: 'Introduction', status: 'done', href: '#introduction' },
+	{ label: 'Submit evidence', status: 'saved', href: '#evidence' },
+	{ label: 'Organisations', status: 'started', href: '#organisations' },
+	{ label: 'Business contacts', status: 'error', href: '#contacts' },
+	{ label: 'Case studies', status: 'todo', href: '#case-studies' },
+	{ label: 'Attachments', status: 'started', href: '#attachments' },
+	{ label: 'Review and submit', status: 'blocked', href: '#review' },
 ];
 
-const exampleButtonItems: ProgressIndicatorItem[] = [
-	{ label: 'Introduction', status: 'done', onClick: console.log },
-	{ label: 'Submit evidence', status: 'saved', onClick: console.log },
-	{ label: 'Organisations', status: 'started', onClick: console.log },
-	{ label: 'Business contacts', status: 'error', onClick: console.log },
-	{ label: 'Case studies', status: 'todo', onClick: console.log },
-	{
-		label: 'Attachments',
-		status: 'started',
-		onClick: console.log,
-		isActive: true,
-	},
-	{ label: 'Review and submit', status: 'blocked', onClick: console.log },
-];
+const exampleLevelTwoLinkItems: ProgressIndicatorItemWithLevelTwoItems[] =
+	exampleItems.map((item) =>
+		item.label === 'Organisations'
+			? {
+					...item,
+					items: [
+						{
+							label: 'Change organisation name',
+							href: '#organisations/change-name',
+						},
+					],
+			  }
+			: item
+	);
 
 export const Basic: Story = {
 	args: {
-		items: exampleLinkItems,
+		activePath: '#organisations',
+		items: exampleItems,
 	},
 };
 
 export const HiddenSubtitle: Story = {
 	args: {
-		items: exampleLinkItems,
+		activePath: '#organisations',
+		items: exampleItems,
 		hideSubtitle: true,
 	},
 };
@@ -52,8 +58,9 @@ export const HiddenSubtitle: Story = {
 export const OnBodyAlt: Story = {
 	name: 'On bodyAlt background',
 	args: {
+		activePath: '#organisations',
 		background: 'bodyAlt',
-		items: exampleButtonItems,
+		items: exampleItems,
 	},
 	parameters: {
 		layout: 'fullscreen',
@@ -65,8 +72,9 @@ export const OnBodyAlt: Story = {
 	),
 };
 
-export const Buttons: Story = {
+export const LevelTwoStepLinks: Story = {
 	args: {
-		items: exampleButtonItems,
+		activePath: '#organisations/change-name',
+		items: exampleLevelTwoLinkItems,
 	},
 };

@@ -20,8 +20,17 @@ import {
 } from '../core';
 
 type PaletteProps = Partial<{
+	/** Sets the colour palette, which can also be changed at breakpoints.
+	 * @see https://design-system.agriculture.gov.au/foundations/tokens/colour
+	 */
 	palette: ResponsiveProp<BoxPalette>;
+	/** Sets the colour palette to dark always.
+	 * @see https://design-system.agriculture.gov.au/foundations/tokens/colour
+	 */
 	dark: boolean;
+	/** Sets the colour palette to light always.
+	 * @see https://design-system.agriculture.gov.au/foundations/tokens/colour
+	 */
 	light: boolean;
 }>;
 
@@ -94,7 +103,13 @@ export const backgroundColorMap = {
 export type BackgroundColor = keyof typeof backgroundColorMap;
 
 type ColorProps = Partial<{
+	/** Maps tokens to the CSS color property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color
+	 */
 	color: ResponsiveProp<ForegroundColor>;
+	/** Maps tokens to the CSS background-color property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
+	 */
 	background: ResponsiveProp<BackgroundColor>;
 }>;
 
@@ -110,11 +125,30 @@ function colorStyles({ color, background }: ColorProps) {
 }
 
 type TypographyProps = Partial<{
+	/** Maps tokens to the CSS font-weight property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
+	 */
 	fontWeight: ResponsiveProp<FontWeight>;
+	/** Maps tokens to the CSS font-family property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
+	 */
 	fontFamily: ResponsiveProp<Font>;
+	/** Maps tokens to the CSS font-size property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
+	 */
 	fontSize: ResponsiveProp<FontSize>;
+	/** Maps tokens to the CSS line-height property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+	 */
 	lineHeight: LineHeight;
+	/** Maps tokens to the CSS text-align property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
+	 */
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
+	/** If true, applies the CSS word-break: break-word property, or word-break: normal if false.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+	 */
+	breakWords: boolean;
 }>;
 
 function typographyStyles({
@@ -123,6 +157,7 @@ function typographyStyles({
 	fontSize: _fontSize,
 	lineHeight: _lineHeight = 'default',
 	textAlign,
+	breakWords,
 }: TypographyProps) {
 	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
 		fontGrid(t, _lineHeight)
@@ -146,6 +181,11 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		textAlign: mapResponsiveProp(textAlign),
+		wordBreak:
+			(breakWords === true && 'break-word') ||
+			(breakWords === false && 'normal') ||
+			// wordWrap will inherit by default
+			undefined,
 		'& ::selection': {
 			color: boxPalette.backgroundBody,
 			backgroundColor: boxPalette.foregroundAction,
@@ -160,6 +200,9 @@ function isEntry(a: unknown): a is {
 	return !!a; // ie. not null or undefined
 }
 type LayoutProps = Partial<{
+	/** Sets the CSS display property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+	 */
 	display: ResponsiveProp<
 		| 'block'
 		| 'flex'
@@ -179,15 +222,39 @@ type LayoutProps = Partial<{
 		| 'grid'
 		| 'inline-grid'
 	>;
+	/** Sets the CSS flex-direction property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+	 */
 	flexDirection: ResponsiveProp<
 		'row' | 'column' | 'row-reverse' | 'column-reverse'
 	>;
+	/** Sets the CSS flex-wrap property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
+	 */
 	flexWrap: ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
+	/** Sets the CSS flex-grow property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
+	 */
 	flexGrow: ResponsiveProp<number>;
+	/** Sets the CSS flex-shrink property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
+	 */
 	flexShrink: ResponsiveProp<number>;
+	/** Sets a subset of the CSS grid-columns property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-columns
+	 */
 	gridColumnSpan: ResponsiveProp<number>;
+	/** Sets the CSS grid-column-start property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start
+	 */
 	gridColumnStart: ResponsiveProp<number>;
+	/** Sets the CSS grid-column-end property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end
+	 */
 	gridColumnEnd: ResponsiveProp<number>;
+	/** Sets the CSS justify-content property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+	 */
 	justifyContent: ResponsiveProp<
 		| 'flex-start'
 		| 'flex-end'
@@ -196,17 +263,47 @@ type LayoutProps = Partial<{
 		| 'space-around'
 		| 'space-evenly'
 	>;
+	/** Sets the CSS align-items property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+	 */
 	alignItems: ResponsiveProp<
 		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
 	>;
+	/** Maps tokens to the CSS gap property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+	 */
 	gap: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS column-gap property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+	 */
 	columnGap: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS row-gap property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
+	 */
 	rowGap: ResponsiveProp<Spacing>;
+	/** Sets the CSS width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/width
+	 */
 	width: ResponsiveProp<number | string>;
+	/** Sets the CSS min-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-width
+	 */
 	minWidth: ResponsiveProp<number | string>;
+	/** Sets the CSS max-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
+	 */
 	maxWidth: ResponsiveProp<number | string>;
+	/** Sets the CSS height property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/height
+	 */
 	height: ResponsiveProp<number | string>;
+	/** Sets the CSS min-height property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
+	 */
 	minHeight: ResponsiveProp<number | string>;
+	/** Sets the CSS max-height property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-height
+	 */
 	maxHeight: ResponsiveProp<number | string>;
 }>;
 
@@ -255,19 +352,47 @@ function layoutStyles({
 }
 
 type BorderProps = Partial<{
+	/** If true, renders a border on all sides using the relevant width. */
 	border: ResponsiveProp<boolean>;
+	/** Maps tokens to the CSS border-width property. Default: 'sm'.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-width
+	 */
 	borderWidth: ResponsiveProp<BorderWidth>;
+	/** Maps tokens to the CSS border-color property. Default: 'border'.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
+	 */
 	borderColor: ResponsiveProp<BorderColor>;
+	/** If true, renders a border on the left side using the relevant width. */
 	borderLeft: ResponsiveProp<boolean>;
+	/** Maps tokens to the CSS border-left-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width
+	 */
 	borderLeftWidth: ResponsiveProp<BorderWidth>;
+	/** If true, renders a border on the right side using the relevant width. */
 	borderRight: ResponsiveProp<boolean>;
+	/** Maps tokens to the CSS border-right-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width
+	 */
 	borderRightWidth: ResponsiveProp<BorderWidth>;
+	/** If true, renders a border on the top side using the relevant width. */
 	borderTop: ResponsiveProp<boolean>;
+	/** Maps tokens to the CSS border-top-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width
+	 */
 	borderTopWidth: ResponsiveProp<BorderWidth>;
+	/** If true, renders a border on the bottom side using the relevant width. */
 	borderBottom: ResponsiveProp<boolean>;
+	/** Maps tokens to the CSS border-bottom-width property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width
+	 */
 	borderBottomWidth: ResponsiveProp<BorderWidth>;
+	/** If true, renders a border on the left and right sides using the relevant width. */
 	borderX: ResponsiveProp<boolean>;
+	/** If true, renders a border on the top and bottom sides using the relevant width. */
 	borderY: ResponsiveProp<boolean>;
+	/** If true, rounds the element's corners by mapping tokens.borderRadius to the CSS border-radius property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+	 */
 	rounded: boolean;
 }>;
 
@@ -326,12 +451,33 @@ function borderStyles({
 }
 
 type PaddingProps = Partial<{
+	/** Maps tokens to the CSS padding-top property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
+	 */
 	paddingTop: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-bottom property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
+	 */
 	paddingBottom: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-right property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
+	 */
 	paddingRight: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-left property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
+	 */
 	paddingLeft: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-left and padding-right properties.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
+	 */
 	paddingX: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding-bottom and padding-top properties.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
+	 */
 	paddingY: ResponsiveProp<Spacing>;
+	/** Maps tokens to the CSS padding property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+	 */
 	padding: ResponsiveProp<Spacing>;
 }>;
 
@@ -385,13 +531,23 @@ export const linkStyles = {
 };
 
 type FocusProps = Partial<{
-	/** If true, the focus indicator will be shown when the element receives keyboard focus. */
+	/** @deprecated use focusRingFor="keyboard". */
 	focus: boolean;
+	/** Display a focus indicator when the element receives focus. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus*/
+	focusRingFor: 'all' | 'keyboard';
 }>;
 export const focusStyles = {
 	':focus': packs.outline,
 	':focus:not(:focus-visible)': { outline: 'none' },
 	':focus-visible': packs.outline,
+};
+export const focusStylesAll = {
+	':focus': packs.outline,
+};
+
+const focusStylesMap = {
+	all: focusStylesAll,
+	keyboard: focusStyles,
 };
 
 type HighContrastProps = Partial<{
@@ -413,13 +569,11 @@ export type BoxProps = PaletteProps &
 	PaddingProps;
 
 export function boxStyles({
-	palette,
-	dark,
-	light,
-	color,
+	alignItems,
 	background,
 	border,
-	borderWidth,
+	borderBottom,
+	borderBottomWidth,
 	borderColor,
 	borderLeft,
 	borderLeftWidth,
@@ -427,47 +581,64 @@ export function boxStyles({
 	borderRightWidth,
 	borderTop,
 	borderTopWidth,
-	borderBottom,
-	borderBottomWidth,
+	borderWidth,
 	borderX,
 	borderY,
-	rounded,
+	breakWords,
+	color,
+	columnGap,
+	dark,
 	display,
 	flexDirection,
-	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridColumnSpan,
-	gridColumnStart,
-	gridColumnEnd,
-	justifyContent,
-	alignItems,
-	gap,
-	columnGap,
-	rowGap,
-	width,
-	minWidth,
-	maxWidth,
-	height,
-	minHeight,
-	maxHeight,
-	paddingTop,
-	paddingBottom,
-	paddingRight,
-	paddingLeft,
-	paddingX,
-	paddingY,
-	padding,
-	fontWeight,
+	flexWrap,
+	focus,
+	focusRingFor,
 	fontFamily,
 	fontSize,
-	lineHeight,
-	textAlign,
-	focus,
-	link,
+	fontWeight,
+	gap,
+	gridColumnEnd,
+	gridColumnSpan,
+	gridColumnStart,
+	height,
 	highContrastOutline,
+	justifyContent,
+	light,
+	lineHeight,
+	link,
+	maxHeight,
+	maxWidth,
+	minHeight,
+	minWidth,
+	padding,
+	paddingBottom,
+	paddingLeft,
+	paddingRight,
+	paddingTop,
+	paddingX,
+	paddingY,
+	palette,
+	rounded,
+	rowGap,
+	textAlign,
+	width,
 	...restProps
 }: BoxProps) {
+	/* **LEGACY HANDLER**
+	 * We've deprecated `focus` in favour of `focusRingFor?: 'all | 'keyboard'. This
+	 * displays the focus ring for elements that are programmatically focused.
+	 *
+	 * `focus` maps to `focusRingFor: 'keyboard' for backwards compatibility.
+	 */
+	focusRingFor = focusRingFor || (focus ? 'keyboard' : undefined);
+	if (focus && process.env.NODE_ENV !== 'production') {
+		console.warn(
+			'The `focus` prop is deprecated. Use `focusRingFor="keyboard"`.'
+		);
+	}
+
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
@@ -538,10 +709,11 @@ export function boxStyles({
 					fontSize,
 					lineHeight,
 					textAlign,
+					breakWords,
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(focus ? focusStyles : undefined),
+				...(focusRingFor ? focusStylesMap[focusRingFor] : undefined),
 				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),

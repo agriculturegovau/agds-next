@@ -18,7 +18,7 @@ export function BreadcrumbsToggle({ onClick }: BreadcrumbsToggleProps) {
 				alignItems="center"
 				justifyContent="center"
 				fontSize="sm"
-				focus
+				focusRingFor="keyboard"
 				link
 			>
 				&hellip;

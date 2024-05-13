@@ -38,14 +38,14 @@ export type ButtonProps = CommonButtonProps &
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
 		{
-			type = 'button',
 			block = false,
-			iconBefore: IconBefore,
-			iconAfter: IconAfter,
 			children,
-			size = 'md',
+			iconAfter: IconAfter,
+			iconBefore: IconBefore,
 			loading = false,
 			loadingLabel = 'Busy',
+			size = 'md',
+			type = 'button',
 			variant = 'primary',
 			...props
 		},

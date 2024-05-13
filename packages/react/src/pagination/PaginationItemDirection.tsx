@@ -113,7 +113,7 @@ const BaseDirectionLink = ({
 			fontFamily="body"
 			fontWeight="normal"
 			link
-			focus
+			focusRingFor="keyboard"
 			width={{ xs: BUTTON_SIZE_XS, sm: 'auto' }}
 			height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 			css={{

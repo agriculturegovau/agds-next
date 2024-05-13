@@ -9,10 +9,13 @@ import { Button } from '../button';
 import { Text } from '../text';
 import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
+import { DrawerProps } from './Drawer';
 
 export type DrawerDialogProps = PropsWithChildren<{
 	/** Used to render buttons at the bottom of the draw. */
 	actions?: ReactNode;
+	/** On close of the drawer, this element will be focused, rather than the trigger element. */
+	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
 	/** @deprecated use `onClose` instead. */
 	onDismiss?: () => void;
 	/** Function to be called when the 'Close' button is pressed. */
@@ -36,17 +39,29 @@ const AnimatedFlex = animated(Flex);
 export function DrawerDialog({
 	actions,
 	children,
-	title,
-	onDismiss,
+	elementToFocusOnClose,
 	onClose,
+	onDismiss,
 	style,
+	title,
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
 	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 
 	return (
-		<FocusLock returnFocus>
+		<FocusLock
+			returnFocus={
+				elementToFocusOnClose
+					? () => {
+							// Running focus after focus-lock-react does its cleanup, more info here: https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+							window.setTimeout(() => elementToFocusOnClose.focus(), 0);
+
+							return false;
+					  }
+					: true // Return focus to trigger on close
+			}
+		>
 			<AnimatedFlex
 				flexDirection="column"
 				role="dialog"
@@ -128,7 +143,7 @@ function DrawerHeaderTitle({ children, id }: DrawerHeaderTitleProps) {
 			lineHeight="heading"
 			id={id}
 			data-autofocus
-			focus
+			focusRingFor="keyboard"
 			tabIndex={-1}
 			css={{
 				display: 'inline-block',
