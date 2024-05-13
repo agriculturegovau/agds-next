@@ -6,6 +6,7 @@ import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import {
+	Box,
 	DatePicker,
 	ListItem,
 	PageAlert,
@@ -147,23 +148,25 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 
 			<Text>All fields are required unless marked optional.</Text>
 
-			<PageAlert
-				isHidden={Boolean(!pageErrors.length)}
-				ref={pageAlertRef}
-				title="There is a problem"
-				tone="error"
-			>
-				<Text as="p">Please correct the following fields and try again</Text>
-				<UnorderedList>
-					{pageErrors.map(({ href, message }) => {
-						return (
-							<ListItem key={href}>
-								<TextLink href={href}>{message}</TextLink>
-							</ListItem>
-						);
-					})}
-				</UnorderedList>
-			</PageAlert>
+			<Box css={pageErrors.length ? undefined : { display: 'none' }}>
+				<PageAlert
+					ref={pageAlertRef}
+					tabIndex={-1}
+					title="There is a problem"
+					tone="error"
+				>
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						{pageErrors.map(({ href, message }) => {
+							return (
+								<ListItem key={href}>
+									<TextLink href={href}>{message}</TextLink>
+								</ListItem>
+							);
+						})}
+					</UnorderedList>
+				</PageAlert>
+			</Box>
 
 			<TextInput
 				id={locationTextInputId}

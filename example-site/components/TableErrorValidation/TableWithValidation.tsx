@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import {
+	Box,
 	DatePicker,
 	ListItem,
 	PageAlert,
@@ -68,36 +69,41 @@ const defaultAssessmentFiles = [
 ];
 export type AssessmentFile = (typeof defaultAssessmentFiles)[number];
 
-const samplePageErrors = [
-	{
-		href: `#${locationTextInputId}`,
-		message: 'Location of assessment',
-		name: 'location' as const,
-	},
-	{
-		href: `#${dateOfAssessmentDatePickerId}`,
-		message: 'Date of assessment',
-		name: 'date' as const,
-	},
-	{
-		href: `#section-alert`,
-		message: 'Assessment files',
-		name: 'files' as const,
-	},
-];
-type SamplePageErrors = typeof samplePageErrors;
+const locationPageError = {
+	href: `#${locationTextInputId}`,
+	message: 'Location of assessment',
+	name: 'location' as const,
+};
 
-const sampleTableErrors = [
-	{
-		href: '#vehicle-build-and-layout-plans-upload-button',
-		message: 'Upload files',
-		name: 'files',
-	},
-];
-type SampleTableErrors = typeof sampleTableErrors;
+const datePageError = {
+	href: `#${dateOfAssessmentDatePickerId}`,
+	message: 'Date of assessment',
+	name: 'date' as const,
+};
+
+const filesPageError = {
+	href: `#section-alert`,
+	message: 'Assessment files',
+	name: 'files' as const,
+};
+
+type PageError =
+	| typeof locationPageError
+	| typeof datePageError
+	| typeof filesPageError;
+
+// const getPageErrors = ({name}: {name: PageErrors[number]['name']}) => {
+
+// }
+
+const sampleTableError = {
+	href: '#vehicle-build-and-layout-plans-upload-button',
+	message: 'Upload files',
+	name: 'files',
+};
+type SampleTableError = typeof sampleTableError;
 
 export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
-	const pageAlertRef = useRef<HTMLDivElement>(null);
 	const tableSectionAlertRef = useRef<HTMLDivElement>(null);
 
 	// Input data
@@ -112,29 +118,28 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 		useState<AssessmentFile>();
 
 	// Errors
-	const [pageErrors, setPageErrors] = useState<SamplePageErrors>([]);
-	const [tableErrors, setTableErrors] = useState<SampleTableErrors>([]);
+	const [pageErrors, setPageErrors] = useState<PageError[]>([]);
+	const [tableErrors, setTableErrors] = useState<SampleTableError[]>([]);
 
 	// Drawer state
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 
 	// Actions handlers (includes some mocking)
 	const mockUploadFile = () => {
-		setAssessmentFiles((prevAssessmentFiles) =>
-			prevAssessmentFiles.map((prevAssessmentFile) =>
-				currentAssessmentFile?.documentType === prevAssessmentFile.documentType
-					? {
-							...prevAssessmentFile,
-							file: 'filename.pdf',
-							size: '88kb',
-							error: false,
-					  }
-					: prevAssessmentFile
-			)
+		const newAssessmentFiles = assessmentFiles.map((prevAssessmentFile) =>
+			currentAssessmentFile?.documentType === prevAssessmentFile.documentType
+				? {
+						...prevAssessmentFile,
+						file: 'filename.pdf',
+						size: '88kb',
+						error: false,
+				  }
+				: prevAssessmentFile
 		);
+		setAssessmentFiles(newAssessmentFiles);
 
 		setTableErrors(
-			assessmentFiles.reduce<SampleTableErrors>(
+			newAssessmentFiles.reduce<SampleTableError[]>(
 				(acc, assessmentFile) =>
 					assessmentFile.file
 						? acc
@@ -153,25 +158,22 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 	};
 
 	const mockUploadError = () => {
-		setAssessmentFiles((prevAssessmentFiles) =>
-			prevAssessmentFiles.map((prevAssessmentFile) =>
-				currentAssessmentFile?.documentType === prevAssessmentFile.documentType
-					? {
-							...prevAssessmentFile,
-							file: '',
-							size: '',
-							error: true,
-					  }
-					: prevAssessmentFile
-			)
+		const newAssessmentFiles = assessmentFiles.map((prevAssessmentFile) =>
+			currentAssessmentFile?.documentType === prevAssessmentFile.documentType
+				? {
+						...prevAssessmentFile,
+						file: '',
+						size: '',
+						error: true,
+				  }
+				: prevAssessmentFile
 		);
-		// TODO: page error setting across all actions
-		setPageErrors((prevPageErrors) => [
-			...prevPageErrors,
-			samplePageErrors.find((pageError) => pageError.href === '#section-alert'),
-		]);
+		setAssessmentFiles(newAssessmentFiles);
+		setPageErrors((prevPageErrors) => {
+			return Array.from(new Set([...prevPageErrors, filesPageError]));
+		});
 		setTableErrors(
-			assessmentFiles.reduce<SampleTableErrors>(
+			newAssessmentFiles.reduce<SampleTableError[]>(
 				(acc, assessmentFile) =>
 					assessmentFile.file
 						? acc
@@ -207,22 +209,21 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 
 	const onSaveAndContinue = () => {
 		const nameToValidityMap = {
-			date: !!dateValue,
-			files: assessmentFiles.every(({ error }) => !error),
 			location: !!locationValue,
+			date: !!dateValue,
+			files: assessmentFiles.every(({ file }) => !!file),
 		};
-		setAssessmentFiles((prevAssessmentFiles) =>
-			prevAssessmentFiles.map((assessmentFile) =>
-				assessmentFile.file
-					? assessmentFile
-					: {
-							...assessmentFile,
-							error: true,
-					  }
-			)
+		const newAssessmentFiles = assessmentFiles.map((assessmentFile) =>
+			assessmentFile.file
+				? assessmentFile
+				: {
+						...assessmentFile,
+						error: true,
+				  }
 		);
+		setAssessmentFiles(newAssessmentFiles);
 		setTableErrors(() =>
-			assessmentFiles.reduce<SampleTableErrors>(
+			newAssessmentFiles.reduce<SampleTableError[]>(
 				(acc, assessmentFile) =>
 					assessmentFile.file
 						? acc
@@ -238,10 +239,10 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			)
 		);
 		setPageErrors(() =>
-			samplePageErrors.filter(({ name }) => !nameToValidityMap[name])
+			[locationPageError, datePageError, filesPageError].filter(
+				({ name }) => !nameToValidityMap[name]
+			)
 		);
-		pageAlertRef.current?.focus();
-		//		setPageErrors([samplePageErrors[2]]);
 	};
 
 	return (
@@ -252,24 +253,20 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 
 			<Text>All fields are required unless marked optional.</Text>
 
-			<PageAlert
-				isHidden={Boolean(pageErrors.length <= 2)}
-				ref={pageAlertRef}
-				tabIndex={-1}
-				title="There is a problem"
-				tone="error"
-			>
-				<Text as="p">Please correct the following fields and try again</Text>
-				<UnorderedList>
-					{pageErrors.map(({ href, message }) => {
-						return (
-							<ListItem key={href}>
-								<TextLink href={href}>{message}</TextLink>
-							</ListItem>
-						);
-					})}
-				</UnorderedList>
-			</PageAlert>
+			{pageErrors.length >= 2 && (
+				<PageAlert focusOnMount title="There is a problem" tone="error">
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						{pageErrors.map(({ href, message }) => {
+							return (
+								<ListItem key={href}>
+									<TextLink href={href}>{message}</TextLink>
+								</ListItem>
+							);
+						})}
+					</UnorderedList>
+				</PageAlert>
+			)}
 
 			<TextInput
 				id={locationTextInputId}
@@ -298,24 +295,25 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			<Stack gap={1}>
 				<H2>Assessment files</H2>
 
-				<SectionAlert
-					id="section-alert"
-					isHidden={Boolean(!tableErrors.length)}
-					ref={tableSectionAlertRef}
-					tabIndex={-1}
-					title="You must provide decisions for each change in the table below"
-					tone="error"
-				>
-					<Stack gap={0.5} alignItems="flex-start">
-						<UnorderedList>
-							{tableErrors.map(({ href, message }) => (
-								<ListItem key={href}>
-									<TextLink href={href}>{message}</TextLink>
-								</ListItem>
-							))}
-						</UnorderedList>
-					</Stack>
-				</SectionAlert>
+				<Box css={tableErrors.length ? undefined : { display: 'none' }}>
+					<SectionAlert
+						id="section-alert"
+						ref={tableSectionAlertRef}
+						tabIndex={-1}
+						title="You must provide decisions for each change in the table below"
+						tone="error"
+					>
+						<Stack gap={0.5} alignItems="flex-start">
+							<UnorderedList>
+								{tableErrors.map(({ href, message }) => (
+									<ListItem key={href}>
+										<TextLink href={href}>{message}</TextLink>
+									</ListItem>
+								))}
+							</UnorderedList>
+						</Stack>
+					</SectionAlert>
+				</Box>
 
 				<DataTable
 					assessmentFiles={assessmentFiles}
@@ -346,7 +344,9 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 							<Button onClick={closeDrawer}>Done</Button>
 						</ButtonGroup>
 					}
-					elementToFocusOnClose={tableSectionAlertRef.current}
+					elementToFocusOnClose={
+						tableErrors.length ? tableSectionAlertRef.current : undefined
+					}
 				>
 					<Stack gap={2}>
 						<Text>{currentAssessmentFile?.documentType}</Text>

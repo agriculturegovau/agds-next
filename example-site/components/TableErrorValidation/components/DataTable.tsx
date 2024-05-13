@@ -128,7 +128,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											return (
 												<TableRow
 													aria-rowindex={rowIndex}
-													hasRowError={error}
+													invalid={error}
 													key={documentType}
 												>
 													<TableCell as="th" scope="row">
@@ -150,6 +150,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													</TableCell>
 													<TableCell>
 														<Button
+															focusRingFor="all"
 															iconBefore={UploadIcon}
 															id={buttonId}
 															onClick={() =>

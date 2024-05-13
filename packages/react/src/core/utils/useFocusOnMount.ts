@@ -14,9 +14,11 @@ import { mergeRefs } from './mergeRefs';
 export function useFocusOnMount<T extends HTMLElement>({
 	disabled,
 	forwardedRef,
+	focusOnUpdate = [],
 }: {
 	disabled?: boolean;
 	forwardedRef?: MutableRefObject<T> | LegacyRef<T>;
+	focusOnUpdate?: ReadonlyArray<unknown>;
 } = {}) {
 	const fallbackRef = useRef<T>(null);
 	const ref = forwardedRef
@@ -29,9 +31,7 @@ export function useFocusOnMount<T extends HTMLElement>({
 		}
 
 		ref?.current?.focus?.();
-
-		// We only want to focus once on mount, so we keep the dependency array empty.
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, focusOnUpdate);
 
 	return ref;
 }

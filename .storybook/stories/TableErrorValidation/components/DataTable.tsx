@@ -133,8 +133,8 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											const rowIndex = index + 2;
 											return (
 												<TableRow
-													hasRowError={error}
 													aria-rowindex={rowIndex}
+													invalid={error}
 													key={documentType}
 												>
 													<TableCell as="th" scope="row">
