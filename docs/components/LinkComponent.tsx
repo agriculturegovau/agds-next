@@ -21,6 +21,6 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 			return <a ref={ref} href={hrefAsString} {...props} />;
 		}
 
-		return <Link shallow ref={ref} href={href} {...props} />;
+		return <Link ref={ref} href={href} {...props} />;
 	}
 );
