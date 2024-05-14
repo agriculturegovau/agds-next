@@ -43,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		{
 			block = false,
 			children,
-			focusRingFor,
+			focusRingFor = 'keyboard',
 			iconAfter: IconAfter,
 			iconBefore: IconBefore,
 			loading = false,
@@ -92,6 +92,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 		{
 			children,
 			block = false,
+			focusRingFor = 'keyboard',
 			iconBefore: IconBefore,
 			iconAfter: IconAfter,
 			size = 'md',
@@ -100,7 +101,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, size, variant });
+		const styles = buttonStyles({ block, focusRingFor, size, variant });
 		const Link = useLinkComponent();
 		return (
 			<Link ref={ref} css={styles} {...props}>
