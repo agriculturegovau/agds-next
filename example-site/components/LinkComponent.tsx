@@ -15,8 +15,8 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 		// Regex finds links starting with: `http://` | `https://` | `//`
 		const hrefAsString = typeof href === 'string' ? href : href?.pathname;
 		if (
-			(hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) ||
-			hrefAsString?.includes('#')
+			hrefAsString &&
+			(/^(https?:\/\/|\/\/)/i.test(hrefAsString) || hrefAsString?.includes('#'))
 		) {
 			return <a ref={ref} href={hrefAsString} {...props} />;
 		}

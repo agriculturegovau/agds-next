@@ -124,7 +124,7 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 	// Drawer state
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 
-	// Actions handlers (includes some mocking)
+	// Action handlers (includes some mocking)
 	const mockUploadFile = () => {
 		const newAssessmentFiles = assessmentFiles.map((prevAssessmentFile) =>
 			currentAssessmentFile?.documentType === prevAssessmentFile.documentType
@@ -208,7 +208,7 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 	};
 
 	const onSaveAndContinue = () => {
-		const nameToValidityMap = {
+		const nameToInputValidityMap = {
 			location: !!locationValue,
 			date: !!dateValue,
 			files: assessmentFiles.every(({ file }) => !!file),
@@ -221,6 +221,7 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 						error: true,
 				  }
 		);
+
 		setAssessmentFiles(newAssessmentFiles);
 		setTableErrors(() =>
 			newAssessmentFiles.reduce<SampleTableError[]>(
@@ -240,7 +241,7 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 		);
 		setPageErrors(() =>
 			[locationPageError, datePageError, filesPageError].filter(
-				({ name }) => !nameToValidityMap[name]
+				({ name }) => !nameToInputValidityMap[name]
 			)
 		);
 	};
@@ -254,7 +255,11 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 			<Text>All fields are required unless marked optional.</Text>
 
 			{pageErrors.length >= 2 && (
-				<PageAlert focusOnMount title="There is a problem" tone="error">
+				<PageAlert
+					focusOnUpdate={pageErrors}
+					title="There is a problem"
+					tone="error"
+				>
 					<Text as="p">Please correct the following fields and try again</Text>
 					<UnorderedList>
 						{pageErrors.map(({ href, message }) => {
