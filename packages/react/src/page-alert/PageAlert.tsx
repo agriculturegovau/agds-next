@@ -15,7 +15,7 @@ import {
 	WarningFilledIcon,
 } from '../icon';
 import { getOptionalCloseHandler } from '../getCloseHandler';
-import { useFocusOnMount } from '../core/utils/useFocusOnMount';
+import { useFocus } from '../core/utils/useFocus';
 import { PageAlertTitle } from './PageAlertTitle';
 import { PageAlertCloseButton } from './PageAlertCloseButton';
 
@@ -28,6 +28,8 @@ export type PageAlertProps = PropsWithChildren<{
 	tone: PageAlertTone;
 	/** Whether the alert should be focused as soon as it's rendered. */
 	focusOnMount?: boolean;
+	/** Focus the alert when a value in this array updates. */
+	focusOnUpdate?: ReadonlyArray<unknown>;
 	/** The id of the alert. */
 	id?: string;
 	/** The WAI-ARIA role. */
@@ -47,6 +49,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 		{
 			id,
 			focusOnMount,
+			focusOnUpdate,
 			role,
 			children,
 			onClose,
@@ -57,9 +60,10 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 		},
 		forwardedRef
 	) {
-		const ref = useFocusOnMount<HTMLDivElement>({
-			disabled: !focusOnMount,
+		const ref = useFocus<HTMLDivElement>({
+			disabled: !focusOnMount && !focusOnUpdate,
 			forwardedRef,
+			focusOnUpdate,
 		});
 
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
@@ -77,7 +81,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex || (focusOnMount ? -1 : undefined)}
+				tabIndex={tabIndex || (focusOnMount || focusOnUpdate ? -1 : undefined)}
 			>
 				<Flex
 					padding={0.5}
