@@ -14,10 +14,13 @@ export const LinkComponent = forwardRef<HTMLAnchorElement, LinkComponentProps>(
 		// Use an `a` tag when linking externally
 		// Regex finds links starting with: `http://` | `https://` | `//`
 		const hrefAsString = typeof href === 'string' ? href : href?.pathname;
-		if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
+		if (
+			(hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) ||
+			hrefAsString?.includes('#')
+		) {
 			return <a ref={ref} href={hrefAsString} {...props} />;
 		}
 
-		return <Link ref={ref} href={href} {...props} />;
+		return <Link shallow ref={ref} href={href} {...props} />;
 	}
 );
