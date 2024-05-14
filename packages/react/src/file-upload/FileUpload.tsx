@@ -146,10 +146,24 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			clearErrors();
-			// replace file if multiple is false
 			if (multiple) {
 				setAcceptedFiles((prevAcceptedFiles) => {
-					const newAcceptedFiles = [...prevAcceptedFiles, ...acceptedFiles];
+					const prevAcceptedFilesSet = new Set(
+						prevAcceptedFiles.map(
+							(file) => `${file.name}-${file.size}-${file.type}`
+						)
+					);
+					const filteredAcceptedFiles = acceptedFiles.filter(
+						(file) =>
+							!prevAcceptedFilesSet.has(
+								`${file.name}-${file.size}-${file.type}`
+							)
+					);
+
+					const newAcceptedFiles = [
+						...prevAcceptedFiles,
+						...filteredAcceptedFiles,
+					];
 
 					if (maxFiles && newAcceptedFiles.length > maxFiles) {
 						setTooManyFilesRejections((prevTooManyFilesList) => {
