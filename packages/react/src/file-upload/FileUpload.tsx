@@ -276,8 +276,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			>
 				{(a11yProps) => {
 					return (
-						<div {...dropzoneProps}>
-							<Box paddingBottom={1}>
+						<>
+							<Box paddingBottom={1} {...dropzoneProps}>
 								<Flex
 									gap={1}
 									padding={1.5}
@@ -305,15 +305,33 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										alignItems="center"
 										textAlign="center"
 									>
-										<Text
-											color={isDragActive ? 'action' : 'muted'}
-											fontWeight="bold"
-										>
-											{isDragActive
-												? `Drop ${filesPlural} here`
-												: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-											{isDragActive ? <>&hellip;</> : null}
-										</Text>
+										{/* This maintains the space created by the default text so when a user drags over the dropzone, its height doesn't change, which can ruin the drag. We then vertically centre the isDragActive text */}
+										<span css={{ position: 'relative' }}>
+											<Text
+												color="muted"
+												css={{
+													visibility: isDragActive ? 'hidden' : undefined,
+												}}
+												fontWeight="bold"
+											>
+												Drag and drop {filesPlural} here or select {filesPlural}{' '}
+												to upload.
+											</Text>
+											<Text
+												css={{
+													display: isDragActive ? 'block' : 'none',
+													left: 0,
+													position: 'absolute',
+													right: 0,
+													top: '50%',
+													transform: 'translateY(-50%)',
+												}}
+												color="action"
+												fontWeight="bold"
+											>
+												Drop {filesPlural} here…
+											</Text>
+										</span>
 										{maxSize ? (
 											<Text color="muted">
 												{multiple ? 'Each file' : 'File'} cannot exceed{' '}
@@ -409,7 +427,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									/>
 								</Stack>
 							)}
-						</div>
+						</>
 					);
 				}}
 			</Field>
