@@ -32,7 +32,7 @@ exports[`Checkbox renders correctly 1`] = `
       </svg>
     </span>
     <span
-      class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+      class="css-1f6xqkn-boxStyles-CheckboxLabel"
     >
       My checkbox
     </span>

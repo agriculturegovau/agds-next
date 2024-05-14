@@ -14,7 +14,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         Task list
       </h2>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
         2
          of 
@@ -61,7 +61,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
@@ -93,7 +93,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Completed
                   <span
@@ -104,7 +104,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -165,7 +165,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
@@ -197,7 +197,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Completed
                   <span
@@ -208,7 +208,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -282,7 +282,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
@@ -327,7 +327,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   In progress
                   <span
@@ -338,7 +338,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -398,7 +398,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
@@ -429,7 +429,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Not started
                   <span
@@ -440,7 +440,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               >
                 Not available until previous tasks are done
               </span>
@@ -486,7 +486,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         Task list
       </h2>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
         2
          of 
@@ -533,7 +533,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
@@ -565,7 +565,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Completed
                   <span
@@ -576,7 +576,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -637,7 +637,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
@@ -669,7 +669,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Completed
                   <span
@@ -680,7 +680,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -754,7 +754,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
@@ -799,7 +799,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   In progress
                   <span
@@ -810,7 +810,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               />
             </span>
           </span>
@@ -870,7 +870,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               class="css-1wcx0lf-boxStyles"
             >
               <span
-                class="css-3sibcn-boxStyles-Text-TaskListItem"
+                class="css-1dl24o0-boxStyles-TaskListItem"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
@@ -901,7 +901,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-1b077g7-boxStyles-Text"
+                  class="css-nqv792-boxStyles"
                 >
                   Not started
                   <span
@@ -912,7 +912,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-b9vsdp-boxStyles-Text-TaskListItem"
+                class="css-1lb8bbj-boxStyles-TaskListItem"
               >
                 Not available until previous tasks are done
               </span>

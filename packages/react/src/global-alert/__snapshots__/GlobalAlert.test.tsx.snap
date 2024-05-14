@@ -44,7 +44,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
           class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             Alert description.
           </p>
@@ -140,7 +140,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
           class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             Alert description.
           </p>
@@ -195,7 +195,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
           class="css-1inkcod-boxStyles-GlobalAlert"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             Alert description.
           </p>

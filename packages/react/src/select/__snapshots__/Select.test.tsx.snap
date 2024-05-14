@@ -10,12 +10,12 @@ exports[`Select Basic renders correctly 1`] = `
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -81,12 +81,12 @@ exports[`Select Grouped options renders correctly 1`] = `
       for="field-:r2:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -175,12 +175,12 @@ exports[`Select Invalid renders correctly 1`] = `
       for="field-:r6:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -213,7 +213,7 @@ exports[`Select Invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-tfsyf8-boxStyles-Text"
+        class="css-o7cidz-boxStyles"
         id="field-:r6:-message"
       >
         This field is required
@@ -280,12 +280,12 @@ exports[`Select With hint renders correctly 1`] = `
       for="field-:r4:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)

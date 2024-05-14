@@ -58,7 +58,7 @@ exports[`PaginationButtons renders correctly 1`] = `
           class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             …
           </span>
@@ -95,7 +95,7 @@ exports[`PaginationButtons renders correctly 1`] = `
           class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             …
           </span>

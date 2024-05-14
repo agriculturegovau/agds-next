@@ -11,7 +11,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       id="table"
     >
       <caption
-        class="css-1hi5g7n-boxStyles-Text"
+        class="css-ryzpmp-boxStyles"
       >
         Population of Australian states and territories, December 2015
       </caption>

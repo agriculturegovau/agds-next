@@ -31,7 +31,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -113,12 +113,12 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Section alert description text
         </p>
@@ -159,7 +159,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -200,7 +200,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -241,7 +241,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>

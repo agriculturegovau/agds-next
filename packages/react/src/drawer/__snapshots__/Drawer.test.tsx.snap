@@ -29,7 +29,7 @@ exports[`Drawer renders correctly 1`] = `
           class="css-1fzj2hl-boxStyles-DrawerHeader"
         >
           <h2
-            class="css-17ywrtq-boxStyles-Text-DrawerHeaderTitle"
+            class="css-1ri2f4k-boxStyles-DrawerHeaderTitle"
             data-autofocus="true"
             id="drawer-:r0:-title"
             tabindex="-1"
@@ -41,7 +41,7 @@ exports[`Drawer renders correctly 1`] = `
           class="css-1r9s54p-boxStyles-DrawerContent"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             Example content.
           </p>

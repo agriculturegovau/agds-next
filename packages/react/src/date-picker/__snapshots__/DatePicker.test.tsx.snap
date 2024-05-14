@@ -11,12 +11,12 @@ exports[`DatePicker renders correctly 1`] = `
         for="field-:r0:"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Example
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-axuon-boxStyles"
         >
            
           (e.g. 05/08/2015) (optional)

@@ -9,12 +9,12 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -102,13 +102,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -160,13 +160,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -234,13 +234,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -298,13 +298,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -359,13 +359,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -432,13 +432,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -491,13 +491,13 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -520,12 +520,12 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -613,13 +613,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -671,13 +671,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -745,13 +745,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -809,13 +809,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -870,13 +870,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -943,13 +943,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -1002,13 +1002,13 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -1031,12 +1031,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -1124,13 +1124,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -1183,13 +1183,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -1256,13 +1256,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -1320,13 +1320,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -1381,13 +1381,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -1454,13 +1454,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -1513,13 +1513,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -1542,12 +1542,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -1635,13 +1635,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -1694,13 +1694,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -1767,13 +1767,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -1831,13 +1831,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -1892,13 +1892,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -1965,13 +1965,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -2024,13 +2024,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -2053,12 +2053,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -2146,13 +2146,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -2204,13 +2204,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -2278,13 +2278,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -2342,13 +2342,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -2403,13 +2403,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -2476,13 +2476,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -2535,13 +2535,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -2564,12 +2564,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -2657,13 +2657,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -2715,13 +2715,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -2789,13 +2789,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -2853,13 +2853,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -2914,13 +2914,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -2987,13 +2987,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -3046,13 +3046,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -3075,12 +3075,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -3168,13 +3168,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -3226,13 +3226,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -3299,13 +3299,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -3363,13 +3363,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -3424,13 +3424,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -3498,13 +3498,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -3557,13 +3557,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 type="button"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>
@@ -3586,12 +3586,12 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       class="css-w0ukyp-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Progress
       </h2>
       <span
-        class="css-1lp7dl8-boxStyles-Text"
+        class="css-1ntyv7o-boxStyles"
       >
         1 of 7 steps completed
       </span>
@@ -3679,13 +3679,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Done
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Completed
                 </span>
@@ -3737,13 +3737,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Blocked
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Cannot start yet
                 </span>
@@ -3810,13 +3810,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Doing
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -3874,13 +3874,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Error
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Error
                 </span>
@@ -3935,13 +3935,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Saved
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Saved
                 </span>
@@ -4009,13 +4009,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-433uqb-boxStyles-Text"
+                  class="css-1jywj6f-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   Started
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   In progress
                 </span>
@@ -4068,13 +4068,13 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 href="#"
               >
                 <span
-                  class="css-6j1v6l-boxStyles-Text"
+                  class="css-dbscsh-boxStyles"
                   data-agds-progress-indicator-item-text=""
                 >
                   To do
                 </span>
                 <span
-                  class="css-1f7oqqc-boxStyles-Text"
+                  class="css-1pmeqda-boxStyles"
                 >
                   Not started
                 </span>

@@ -10,12 +10,12 @@ exports[`FileInput invalid renders correctly 1`] = `
       for="field-:r2:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -48,7 +48,7 @@ exports[`FileInput invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-tfsyf8-boxStyles-Text"
+        class="css-o7cidz-boxStyles"
         id="field-:r2:-message"
       >
         This file is not valid
@@ -76,12 +76,12 @@ exports[`FileInput renders correctly 1`] = `
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)

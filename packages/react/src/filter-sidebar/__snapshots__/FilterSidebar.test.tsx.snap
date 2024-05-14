@@ -10,7 +10,7 @@ exports[`FilterSidebar renders correctly 1`] = `
       class="css-1w8myos-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Filter by
       </h2>

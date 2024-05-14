@@ -17,7 +17,7 @@ exports[`Card Basic renders correctly 1`] = `
           Card heading
         </h2>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
@@ -44,7 +44,7 @@ exports[`Card With link renders correctly 1`] = `
           Card heading
         </h2>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
