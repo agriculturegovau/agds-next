@@ -118,10 +118,103 @@ Use the `onClose` prop to make the alert dismissable. Ensure Page alerts that ar
 
 _NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
 
-In the event you need to focus the alert, you can do so in one of two ways:
+In the event you need to focus the alert, you can do so in one of three ways:
 
-1. [Manually set focus](#manually-set-focus).
-2. [Automatically focus on mount](#automatically-focus-on-mount).
+1. [Automatically focus on mount](#automatically-focus-on-mount).
+2. [Automatically focus on update](#automatically-focus-on-update).
+3. [Manually set focus](#manually-set-focus).
+
+### Automatically focus on mount
+
+Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted it will be focused. Here we use the `focusOnMount` boolean prop to automatically handle the focusing.
+
+```jsx live
+() => {
+	const [showAlert, setShowAlert] = React.useState(false);
+
+	return (
+		<Stack gap={2}>
+			<Box alignSelf="start">
+				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
+					Toggle alert
+				</Button>
+			</Box>
+
+			{showAlert && (
+				<PageAlert focusOnMount title="There is a problem" tone="error">
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						<ListItem>
+							<TextLink href="#">Full name must not be empty.</TextLink>
+						</ListItem>
+						<ListItem>
+							<TextLink href="#">Email must not be empty.</TextLink>
+						</ListItem>
+					</UnorderedList>
+				</PageAlert>
+			)}
+		</Stack>
+	);
+};
+```
+
+### Automatically focus on update
+
+Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted and subsequently updated it will be focused. Here we use the `focusOnUpdate` prop to automatically handle the focusing both on mount, and on updates to the alert's content.
+
+Once the alert is displayed, try updating the content by pressing the "Update alert content" button. This will focus the alert.
+
+```jsx live
+() => {
+	const defaultContent = [
+		'Full name must not be empty.',
+		'Email must not be empty.',
+		'Phone number must not be empty.',
+	];
+
+	const [showAlert, setShowAlert] = React.useState(false);
+	const [content, setContent] = React.useState(defaultContent);
+
+	return (
+		<Stack gap={2}>
+			<ButtonGroup>
+				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
+					Toggle alert
+				</Button>
+
+				<Button
+					onClick={() =>
+						setContent((prevContent) =>
+							prevContent.length === 2
+								? defaultContent
+								: defaultContent.slice(0, 2)
+						)
+					}
+				>
+					Update alert content
+				</Button>
+			</ButtonGroup>
+
+			{showAlert && (
+				<PageAlert
+					focusOnUpdate={content}
+					title="There is a problem"
+					tone="error"
+				>
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						{content.map((text) => (
+							<ListItem key={text}>
+								<TextLink href="#">{text}</TextLink>
+							</ListItem>
+						))}
+					</UnorderedList>
+				</PageAlert>
+			)}
+		</Stack>
+	);
+};
+```
 
 ### Manually set focus
 
@@ -147,40 +240,6 @@ Press the "Focus the alert" button below to set focus on the alert. To achieve t
 			>
 				<Text as="p">Your application has been successfully submitted.</Text>
 			</PageAlert>
-		</Stack>
-	);
-};
-```
-
-### Automatically focus on mount
-
-Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted it will be focused. Here we use the `focusOnMount` boolean prop to automatically handle the focusing.
-
-```jsx live
-() => {
-	const [showAlert, setShowAlert] = React.useState(false);
-
-	return (
-		<Stack gap={2}>
-			<Box alignSelf="start">
-				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
-					Toggle alert
-				</Button>
-			</Box>
-
-			{showAlert && (
-				<PageAlert focusOnMount title="There is a problem" tone="error">
-					<Text as="p">Please correct the following fields and try again</Text>
-					<UnorderedList>
-						<ListItem>
-							<TextLink href="#">Full name must not be empty</TextLink>
-						</ListItem>
-						<ListItem>
-							<TextLink href="#">Email must not be empty</TextLink>
-						</ListItem>
-					</UnorderedList>
-				</PageAlert>
-			)}
 		</Stack>
 	);
 };
