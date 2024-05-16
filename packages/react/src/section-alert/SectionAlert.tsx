@@ -87,7 +87,8 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				{closeHandler ? (
 					<SectionAlertDismissButton
 						onClick={closeHandler}
-						alignSelf={children ? 'start' : undefined}
+						// TODO: Use new alignSelf prop
+						alignSelf="start"
 					/>
 				) : null}
 			</Flex>

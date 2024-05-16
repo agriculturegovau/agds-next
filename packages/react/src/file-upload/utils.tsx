@@ -145,10 +145,9 @@ export const TOO_MANY_FILES_ERROR: FileError = {
 
 export function reformatDropzoneErrors(
 	dropzoneFileRejections: Array<FileRejection>,
-	maxSize: number | undefined,
-	acceptedFilesSummary: string | undefined
+	maxSizeBytes: number,
+	acceptedFilesSummary?: string
 ): Array<FileRejection> {
-	const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 	const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
 	return dropzoneFileRejections.map(({ file, errors }) => ({
