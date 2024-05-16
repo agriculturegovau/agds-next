@@ -82,21 +82,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		{
 			accept: acceptProp,
 			disabled,
-			label,
+			existingFiles = [],
 			hideOptionalLabel,
 			hideThumbnails = false,
+			hint,
+			id,
+			invalid,
+			label,
 			maxFiles,
 			maxSize,
-			multiple,
-			value = [],
-			onChange,
-			required,
-			hint,
 			message,
-			invalid,
-			id,
-			existingFiles = [],
+			multiple,
+			onChange,
 			onRemoveExistingFile,
+			required,
+			value = [],
 			...consumerProps
 		},
 		forwardedRef
@@ -118,12 +118,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const [invalidRejections, setInvalidRejections] = useState<FileRejection[]>(
 			[]
 		);
-
-		const allFiles = [
-			...acceptedFiles,
-			...tooManyFilesRejections.map((rej) => rej.file),
-			...invalidRejections.map((rej) => rej.file),
-		];
 
 		const allRejections = [...invalidRejections, ...tooManyFilesRejections];
 
@@ -262,7 +256,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		} = getRootProps();
 
 		const {
-			ref: dropzoneInputRef,
 			// We don't want the input to be `display: none`, as we are using visuallyHiddenStyles instead.
 			style: _unusedStyleProps,
 			...dropzoneInputProps
@@ -273,9 +266,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			...existingFiles,
 		]);
 
-		const showFileLists = Boolean(allFiles.length || existingFiles?.length);
+		const showFileLists = Boolean(
+			acceptedFiles.length || existingFiles?.length
+		);
 
-		const hasMultipleFileRejections = allRejections.length > 1;
+		const pluralAllRejections = allRejections.length > 1;
 
 		return (
 			<Field
@@ -305,12 +300,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										{...dropzoneInputProps}
 										{...a11yProps}
 										{...consumerProps}
-										/**
-										 * Dropzone needs to set a ref to the input, but we _also_
-										 * need to forward a ref to the input so consumers can use it.
-										 * The mergeRef utility allows us to do this.
-										 */
-										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
+										ref={forwardedRef}
 										css={visuallyHiddenStyles}
 									/>
 									<Flex
@@ -377,17 +367,17 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<Box breakWords paddingTop={0.5} paddingBottom={1}>
 										<SectionAlert
 											title={`The following ${
-												hasMultipleFileRejections ? 'files' : 'file'
+												pluralAllRejections ? 'files' : 'file'
 											} could not be selected`}
 											tone="error"
 											onClose={clearErrors}
 										>
 											<Text as="p">
-												{hasMultipleFileRejections
+												{pluralAllRejections
 													? 'These files were unable to be accepted for the following reasons:'
 													: 'This file was unable to be accepted for the following reason:'}
 											</Text>
-											{hasMultipleFileRejections ? (
+											{
 												<UnorderedList>
 													{allRejections.map((rejection) => {
 														return (
@@ -406,21 +396,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 														);
 													})}
 												</UnorderedList>
-											) : (
-												<Text as="p">
-													<Text color="error" fontWeight="bold">
-														{allRejections[0].file.name}
-													</Text>{' '}
-													<Text>
-														({formatFileSize(allRejections[0].file.size)})
-														{' - '}
-														{getErrorSummary(
-															allRejections[0].errors,
-															formattedMaxFileSize
-														)}
-													</Text>
-												</Text>
-											)}
+											}
 										</SectionAlert>
 									</Box>
 								)}

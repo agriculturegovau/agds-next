@@ -75,15 +75,15 @@ export const createIcon = (children: ReactNode, name: string) => {
 				fillRule="evenodd"
 				xmlns="http://www.w3.org/2000/svg"
 				css={mq({
-					width: resolvedSize,
-					height: resolvedSize,
-					fill: 'none',
 					color: color ? iconColors[color] : 'currentcolor',
-					stroke: 'currentcolor',
-					strokeLinejoin: 'round',
-					strokeLinecap: 'round',
-					strokeWidth: resolvedWeight,
+					fill: 'none',
 					flexShrink: 0,
+					height: resolvedSize,
+					stroke: 'currentcolor',
+					strokeLinecap: 'round',
+					strokeLinejoin: 'round',
+					strokeWidth: resolvedWeight,
+					width: resolvedSize,
 				})}
 				role="img"
 				style={style}

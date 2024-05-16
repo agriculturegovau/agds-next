@@ -4,14 +4,14 @@ import { FileWithStatus } from './utils';
 
 type FileUploadFileListProps = {
 	files: FileWithStatus[];
-	onRemove: (index: number, file: FileWithStatus) => void;
 	hideThumbnails?: boolean;
+	onRemove: (index: number) => void;
 };
 
 export const FileUploadFileList = ({
 	files,
-	onRemove,
 	hideThumbnails,
+	onRemove,
 }: FileUploadFileListProps) => {
 	if (!files.length) {
 		return null;
@@ -23,7 +23,7 @@ export const FileUploadFileList = ({
 				<FileUploadFile
 					key={index}
 					file={file}
-					onRemove={() => onRemove(index, file)}
+					onRemove={() => onRemove(index)}
 					hideThumbnails={hideThumbnails}
 				/>
 			))}
