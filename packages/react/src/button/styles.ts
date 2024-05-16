@@ -1,4 +1,4 @@
-import { focusStyles } from '../box';
+import { BoxProps, focusStylesMap } from '../box';
 import { packs, boxPalette, tokens, mapSpacing } from '../core';
 
 const variants = {
@@ -95,12 +95,14 @@ export const loadingSize = {
 
 export function buttonStyles({
 	block,
-	variant,
+	focusRingFor = 'keyboard',
 	size,
+	variant,
 }: {
 	block: boolean;
-	variant: ButtonVariant;
 	size: ButtonSize;
+	variant: ButtonVariant;
+	focusRingFor?: BoxProps['focusRingFor'];
 }) {
 	return {
 		appearance: 'none',
@@ -131,7 +133,7 @@ export function buttonStyles({
 			flexShrink: 0,
 		},
 
-		...focusStyles,
+		...focusStylesMap[focusRingFor],
 		...sizes[size],
 		...variants[variant],
 	} as const;

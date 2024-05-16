@@ -553,7 +553,7 @@ export const focusStylesAll = {
 	':focus': packs.outline,
 };
 
-const focusStylesMap = {
+export const focusStylesMap = {
 	all: focusStylesAll,
 	keyboard: focusStyles,
 };
