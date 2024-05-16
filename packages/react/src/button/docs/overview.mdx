@@ -201,11 +201,31 @@ On mobile, buttons will be stacked on top of one another and span the full width
 A button will receive a focus ring when navigated to via the keyboard. If you need to display a focus ring outside of these interactions, e.g. when navigating to a button via a link, use the `focusRingFor` prop.
 
 ```jsx live
-<Stack gap={2} alignItems="flex-start">
+<Stack alignItems="flex-start" gap={2}>
 	<TextLink href="#focus-button-via-link">Focus the button</TextLink>
 
 	<Button focusRingFor="all" id="focus-button-via-link">
 		Upload
 	</Button>
 </Stack>
+```
+
+You can also programmatically focus a button using a `ref`.
+
+```jsx live
+() => {
+	const ref = React.useRef(null);
+
+	return (
+		<Stack alignItems="flex-start" gap={2}>
+			<Button onClick={() => ref.current.focus()} variant="secondary">
+				Focus the button
+			</Button>
+
+			<Button focusRingFor="all" ref={ref}>
+				Upload
+			</Button>
+		</Stack>
+	);
+};
 ```
