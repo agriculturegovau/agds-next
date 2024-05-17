@@ -121,14 +121,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const allRejections = [...invalidRejections, ...tooManyFilesRejections];
 
-		const changeToken = JSON.stringify(acceptedFiles);
-		useEffect(() => {
-			onChange?.(acceptedFiles);
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [changeToken]);
-
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
+
 			setAcceptedFiles((prevAcceptedFiles) => {
 				const updatedAcceptedFiles = removeItemAtIndex(
 					prevAcceptedFiles,
@@ -136,10 +131,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				);
 				return updatedAcceptedFiles;
 			});
+
+			onChange?.(acceptedFiles);
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			clearErrors();
+
 			if (multiple) {
 				setAcceptedFiles((prevAcceptedFiles) => {
 					const prevAcceptedFilesSet = new Set(
@@ -187,6 +185,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			} else {
 				setAcceptedFiles(acceptedFiles);
 			}
+
+			onChange?.(acceptedFiles);
 		};
 
 		function clearErrors() {
@@ -240,10 +240,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
 
-		const styles = fileInputStyles({
-			isDragActive,
+		const styles = dropzoneStyles({
 			disabled,
 			invalid,
+			isDragActive,
 		});
 
 		const {
@@ -358,49 +358,42 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								</Flex>
 							</Box>
 
-							{/*
-								For screen readers to reliably detect when the error appears,
-								the role="alert" element must always be mounted in the DOM
-							*/}
-							<div role="alert">
-								{allRejections.length > 0 && (
-									<Box breakWords paddingTop={0.5} paddingBottom={1}>
-										<SectionAlert
-											title={`The following ${
-												pluralAllRejections ? 'files' : 'file'
-											} could not be selected`}
-											tone="error"
-											onClose={clearErrors}
-										>
-											<Text as="p">
-												{pluralAllRejections
-													? 'These files were unable to be accepted for the following reasons:'
-													: 'This file was unable to be accepted for the following reason:'}
-											</Text>
-											{
-												<UnorderedList>
-													{allRejections.map((rejection) => {
-														return (
-															<ListItem key={rejection.file.name}>
-																<Text color="error" fontWeight="bold">
-																	{rejection.file.name}
-																</Text>{' '}
-																<Text>
-																	({formatFileSize(rejection.file.size)}){' - '}
-																	{getErrorSummary(
-																		rejection.errors,
-																		formattedMaxFileSize
-																	)}
-																</Text>
-															</ListItem>
-														);
-													})}
-												</UnorderedList>
-											}
-										</SectionAlert>
-									</Box>
-								)}
-							</div>
+							{allRejections.length > 0 && (
+								<Box breakWords paddingTop={0.5} paddingBottom={1}>
+									<SectionAlert
+										role="alert"
+										title={`The following ${
+											pluralAllRejections ? 'files' : 'file'
+										} could not be selected`}
+										tone="error"
+										onClose={clearErrors}
+									>
+										<Text as="p">
+											{pluralAllRejections
+												? 'These files were unable to be accepted for the following reasons:'
+												: 'This file was unable to be accepted for the following reason:'}
+										</Text>
+										{
+											<UnorderedList>
+												{allRejections.map((rejection) => (
+													<ListItem key={rejection.file.name}>
+														<Text color="error" fontWeight="bold">
+															{rejection.file.name}
+														</Text>{' '}
+														<Text>
+															({formatFileSize(rejection.file.size)}){' - '}
+															{getErrorSummary(
+																rejection.errors,
+																formattedMaxFileSize
+															)}
+														</Text>
+													</ListItem>
+												))}
+											</UnorderedList>
+										}
+									</SectionAlert>
+								</Box>
+							)}
 							{showFileLists && (
 								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
@@ -424,7 +417,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	}
 );
 
-function fileInputStyles({
+function dropzoneStyles({
 	disabled,
 	invalid,
 	isDragActive,
@@ -455,7 +448,5 @@ function fileInputStyles({
 			borderColor: boxPalette.foregroundAction,
 			backgroundColor: boxPalette.backgroundShade,
 		}),
-
-		'&:focus': packs.outline,
 	} as const;
 }
