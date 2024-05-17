@@ -1,3 +1,4 @@
+import { CSSObject } from '@emotion/react';
 import { BoxProps, focusStylesMap } from '../box';
 import { packs, boxPalette, tokens, mapSpacing } from '../core';
 
@@ -103,7 +104,7 @@ export function buttonStyles({
 	block: boolean;
 	size: ButtonSize;
 	variant: ButtonVariant;
-	alignSelf?: BoxProps['alignSelf'];
+	alignSelf?: CSSObject['alignSelf'];
 	focusRingFor?: BoxProps['focusRingFor'];
 }) {
 	return {

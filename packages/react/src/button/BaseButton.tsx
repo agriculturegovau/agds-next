@@ -6,12 +6,12 @@ import {
 	useRef,
 	PropsWithChildren,
 } from 'react';
+import { CSSObject } from '@emotion/react';
 import { mergeRefs, tokens } from '../core';
-import { BoxProps } from '../box';
 
 type NativeButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type BaseButtonProps = Pick<BoxProps, 'alignSelf'> &
+export type BaseButtonProps = Pick<CSSObject, 'alignSelf'> &
 	PropsWithChildren<{
 		/** Identifies the element (or elements) whose contents or presence are controlled by the current element. */
 		'aria-controls'?: NativeButtonProps['aria-controls'];
