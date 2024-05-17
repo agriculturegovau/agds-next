@@ -41,6 +41,7 @@ export type ButtonProps = CommonButtonProps &
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
 		{
+			alignSelf,
 			block = false,
 			children,
 			focusRingFor = 'keyboard',
@@ -55,7 +56,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, focusRingFor, size, variant });
+		const styles = buttonStyles({
+			alignSelf,
+			block,
+			focusRingFor,
+			size,
+			variant,
+		});
 		return (
 			<BaseButton ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (

@@ -267,13 +267,25 @@ type LayoutProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 */
 	alignItems: ResponsiveProp<
-		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
 	>;
 	/** Sets the CSS align-self property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
 	 */
 	alignSelf: ResponsiveProp<
-		'stretch' | 'start' | 'end' | 'center' | 'baseline'
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
 	>;
 	/** Maps tokens to the CSS gap property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gap

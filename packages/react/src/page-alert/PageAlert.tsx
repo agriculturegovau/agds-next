@@ -61,9 +61,9 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 		forwardedRef
 	) {
 		const ref = useFocus<HTMLDivElement>({
-			disabled: !focusOnMount && !focusOnUpdate,
-			forwardedRef,
+			focusOnMount,
 			focusOnUpdate,
+			forwardedRef,
 		});
 
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
@@ -81,7 +81,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex || (focusOnMount || focusOnUpdate ? -1 : undefined)}
+				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 			>
 				<Flex
 					padding={0.5}

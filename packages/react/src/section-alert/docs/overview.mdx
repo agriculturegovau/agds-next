@@ -118,11 +118,12 @@ Press the "Toggle alert" button below to mount/unmount the alert. Notice that ea
 
 	return (
 		<Stack gap={2}>
-			<Box alignSelf="start">
-				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
-					Toggle alert
-				</Button>
-			</Box>
+			<Button
+				alignSelf="start"
+				onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}
+			>
+				Toggle alert
+			</Button>
 
 			{showAlert && (
 				<SectionAlert focusOnMount title="Something went wrong" tone="error">
@@ -142,42 +143,41 @@ Once the alert is displayed, try updating the content by pressing the "Update al
 
 ```jsx live
 () => {
-	const defaultContent = [
-		'There was an error submitting the application.',
-		'Please try again later.',
+	const availableErrors = [
+		'Full name must not be empty.',
+		'Email must not be empty.',
 	];
 
-	const [showAlert, setShowAlert] = React.useState(false);
-	const [content, setContent] = React.useState(defaultContent);
+	const [errors, setErrors] = React.useState([]);
 
 	return (
 		<Stack gap={2}>
-			<ButtonGroup>
-				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
-					Toggle alert
-				</Button>
+			<Button
+				alignSelf="start"
+				onClick={() =>
+					// Here we mock the updating of errors in our list
+					setErrors((prevErrors) =>
+						availableErrors
+							.toReversed()
+							.slice(
+								availableErrors.length - prevErrors.length - 1,
+								availableErrors.length - prevErrors.length + 1
+							)
+							.reverse()
+					)
+				}
+			>
+				Update alert content
+			</Button>
 
-				<Button
-					onClick={() =>
-						setContent((prevContent) =>
-							prevContent.length === 1
-								? defaultContent
-								: defaultContent.slice(0, 1)
-						)
-					}
-				>
-					Update alert content
-				</Button>
-			</ButtonGroup>
-
-			{showAlert && (
+			{!!errors.length && (
 				<SectionAlert
-					focusOnUpdate={content}
+					focusOnUpdate={errors}
 					title="Something went wrong"
 					tone="error"
 				>
 					<UnorderedList>
-						{content.map((text) => (
+						{errors.map((text) => (
 							<ListItem key={text}>
 								<Text as="p">{text}</Text>
 							</ListItem>
@@ -200,11 +200,9 @@ Press the "Focus the alert" button below to set focus on the alert. To achieve t
 
 	return (
 		<Stack gap={2}>
-			<Box alignSelf="start">
-				<Button onClick={() => alertRef.current.focus()}>
-					Focus the alert
-				</Button>
-			</Box>
+			<Button alignSelf="start" onClick={() => alertRef.current.focus()}>
+				Focus the alert
+			</Button>
 
 			<SectionAlert
 				ref={alertRef}

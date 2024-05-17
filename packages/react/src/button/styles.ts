@@ -94,6 +94,7 @@ export const loadingSize = {
 } as const;
 
 export function buttonStyles({
+	alignSelf,
 	block,
 	focusRingFor = 'keyboard',
 	size,
@@ -102,9 +103,11 @@ export function buttonStyles({
 	block: boolean;
 	size: ButtonSize;
 	variant: ButtonVariant;
+	alignSelf?: BoxProps['alignSelf'];
 	focusRingFor?: BoxProps['focusRingFor'];
 }) {
 	return {
+		alignSelf,
 		appearance: 'none',
 		boxSizing: 'border-box',
 		position: 'relative',

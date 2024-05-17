@@ -54,7 +54,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		forwardedRef
 	) {
 		const ref = useFocus<HTMLDivElement>({
-			disabled: !focusOnMount && !focusOnUpdate,
+			focusOnMount,
 			focusOnUpdate,
 			forwardedRef,
 		});
@@ -78,7 +78,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex || (focusOnMount || focusOnUpdate ? -1 : undefined)}
+				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 				{...props}
 			>
 				<Flex gap={0.5}>
