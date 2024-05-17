@@ -31,11 +31,11 @@ exports[`FileUpload Basic renders correctly 1`] = `
       class="css-1imne19-boxStyles"
     >
       <div
-        class="css-ten69t-boxStyles"
+        class="css-1qmc73y-boxStyles"
       >
         <svg
           aria-hidden="true"
-          class="css-1np7bk4-Icon"
+          class="css-1iylkid-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -111,9 +111,6 @@ exports[`FileUpload Basic renders correctly 1`] = `
       </div>
     </div>
     <div
-      role="alert"
-    />
-    <div
       class="css-1wcx0lf-boxStyles"
     >
       <span
@@ -137,7 +134,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-1ca8hrh-Icon"
+                class="css-16t9tz1-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

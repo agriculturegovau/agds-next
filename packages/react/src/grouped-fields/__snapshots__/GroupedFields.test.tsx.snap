@@ -35,7 +35,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-nqqlih-FieldMessage"
+              class="css-rg60c6-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -146,7 +146,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               </select>
               <svg
                 aria-hidden="true"
-                class="css-w5x974-SelectIcon"
+                class="css-1d43ke6-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -284,7 +284,7 @@ exports[`GroupedFields renders correctly 1`] = `
               </select>
               <svg
                 aria-hidden="true"
-                class="css-w5x974-SelectIcon"
+                class="css-1d43ke6-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

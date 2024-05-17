@@ -29,7 +29,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -74,7 +74,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -134,7 +134,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -192,7 +192,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -266,7 +266,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -330,7 +330,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -391,7 +391,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -464,7 +464,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -540,7 +540,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -585,7 +585,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -645,7 +645,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -703,7 +703,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -777,7 +777,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -841,7 +841,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -902,7 +902,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -975,7 +975,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1051,7 +1051,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -1096,7 +1096,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1156,7 +1156,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1215,7 +1215,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1288,7 +1288,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1352,7 +1352,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1413,7 +1413,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1486,7 +1486,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1562,7 +1562,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -1607,7 +1607,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1667,7 +1667,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1726,7 +1726,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1799,7 +1799,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1863,7 +1863,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1924,7 +1924,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1997,7 +1997,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2073,7 +2073,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -2118,7 +2118,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2178,7 +2178,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2236,7 +2236,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2310,7 +2310,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2374,7 +2374,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2435,7 +2435,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2508,7 +2508,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2584,7 +2584,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -2629,7 +2629,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2689,7 +2689,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2747,7 +2747,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2821,7 +2821,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2885,7 +2885,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -2946,7 +2946,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3019,7 +3019,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3095,7 +3095,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -3140,7 +3140,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3200,7 +3200,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3258,7 +3258,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3331,7 +3331,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3395,7 +3395,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3456,7 +3456,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3530,7 +3530,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3606,7 +3606,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       1 of 7 steps completed
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -3651,7 +3651,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3711,7 +3711,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3769,7 +3769,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3842,7 +3842,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-wjs9gt-ProgressIndicatorItemIcon"
+                    class="css-sl2m64-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3906,7 +3906,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-d608ku-ProgressIndicatorItemIcon"
+                    class="css-129g82x-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -3967,7 +3967,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1fqpcmt-ProgressIndicatorItemIcon"
+                    class="css-1fcsucc-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -4041,7 +4041,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-1iz91r-ProgressIndicatorItemIcon"
+                    class="css-117wm52-ProgressIndicatorItemIcon"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"

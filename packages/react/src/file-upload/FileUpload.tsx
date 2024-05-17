@@ -8,7 +8,7 @@ import {
 import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
-import { boxPalette, mergeRefs, packs, tokens } from '../core';
+import { boxPalette, tokens } from '../core';
 import { Field } from '../field';
 import { Flex } from '../flex';
 import { UploadIcon } from '../icon';

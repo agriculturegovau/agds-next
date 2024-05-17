@@ -68,7 +68,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-x9dl13-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

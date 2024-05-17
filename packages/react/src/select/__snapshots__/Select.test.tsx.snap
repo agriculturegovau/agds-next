@@ -48,7 +48,7 @@ exports[`Select Basic renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-w5x974-SelectIcon"
+        class="css-1d43ke6-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -142,7 +142,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-w5x974-SelectIcon"
+        class="css-1d43ke6-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -195,7 +195,7 @@ exports[`Select Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-nqqlih-FieldMessage"
+          class="css-rg60c6-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -247,7 +247,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-w5x974-SelectIcon"
+        class="css-1d43ke6-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -318,7 +318,7 @@ exports[`Select With hint renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-w5x974-SelectIcon"
+        class="css-1d43ke6-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

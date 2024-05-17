@@ -8,7 +8,7 @@ exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Error"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -45,7 +45,7 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Information"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -93,7 +93,7 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Success"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -127,7 +127,7 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Warning"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -158,7 +158,7 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Error"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -195,7 +195,7 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Information"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -243,7 +243,7 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Success"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -277,7 +277,7 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Warning"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -308,7 +308,7 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
     <svg
       aria-hidden="false"
       aria-label="Status: cannot start, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -339,7 +339,7 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: error, high emphasis"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -372,7 +372,7 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Status: error, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -403,7 +403,7 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
     <svg
       aria-hidden="false"
       aria-label="Status: error, medium emphasis"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -440,7 +440,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Status: in progress, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -486,7 +486,7 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Status: information, high emphasis"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -519,7 +519,7 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Status: information, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -550,7 +550,7 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: information, medium emphasis"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -581,7 +581,7 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Status: not started, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -613,7 +613,7 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: paused, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -644,7 +644,7 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
     <svg
       aria-hidden="false"
       aria-label="Status: success, high emphasis"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -677,7 +677,7 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: success, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -711,7 +711,7 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Status: success, medium emphasis"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -745,7 +745,7 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: help, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -776,7 +776,7 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
     <svg
       aria-hidden="false"
       aria-label="Status: warning, high emphasis"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -809,7 +809,7 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: warning, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -840,7 +840,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Status: warning, medium emphasis"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -871,7 +871,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
     <svg
       aria-hidden="false"
       aria-label="Status: cannot start, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -902,7 +902,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Status: error, high emphasis"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -935,7 +935,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Status: error, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -966,7 +966,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: error, medium emphasis"
-      class="css-n6oc7j-Icon"
+      class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1003,7 +1003,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
     <svg
       aria-hidden="false"
       aria-label="Status: in progress, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1049,7 +1049,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Status: information, high emphasis"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1082,7 +1082,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
     <svg
       aria-hidden="false"
       aria-label="Status: information, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1113,7 +1113,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: information, medium emphasis"
-      class="css-16hza8q-Icon"
+      class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1144,7 +1144,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
     <svg
       aria-hidden="false"
       aria-label="Status: not started, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1176,7 +1176,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
     <svg
       aria-hidden="false"
       aria-label="Status: paused, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1207,7 +1207,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: success, high emphasis"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1240,7 +1240,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: success, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1274,7 +1274,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
     <svg
       aria-hidden="false"
       aria-label="Status: success, medium emphasis"
-      class="css-1oi18xt-Icon"
+      class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1308,7 +1308,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: help, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1339,7 +1339,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
     <svg
       aria-hidden="false"
       aria-label="Status: warning, high emphasis"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1372,7 +1372,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
     <svg
       aria-hidden="false"
       aria-label="Status: warning, low emphasis"
-      class="css-1ca8hrh-Icon"
+      class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1403,7 +1403,7 @@ exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`
     <svg
       aria-hidden="false"
       aria-label="Status: warning, medium emphasis"
-      class="css-1achyqd-Icon"
+      class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

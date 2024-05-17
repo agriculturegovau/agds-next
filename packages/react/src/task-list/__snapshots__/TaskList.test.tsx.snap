@@ -40,7 +40,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-t89lqx-TaskListItem"
+                class="css-1wpwzfj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -76,7 +76,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-m66hfy-TaskListItem"
+                  class="css-6t7fnj-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -110,7 +110,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -144,7 +144,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-t89lqx-TaskListItem"
+                class="css-1wpwzfj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -180,7 +180,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-m66hfy-TaskListItem"
+                  class="css-6t7fnj-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -214,7 +214,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -248,7 +248,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-117uehh-TaskListItem"
+                class="css-1d9b4dj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -297,7 +297,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-5jjwhq-TaskListItem"
+                  class="css-y64xti-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -344,7 +344,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -378,7 +378,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-117uehh-TaskListItem"
+                class="css-1d9b4dj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -413,7 +413,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-5jjwhq-TaskListItem"
+                  class="css-y64xti-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -448,7 +448,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -512,7 +512,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-t89lqx-TaskListItem"
+                class="css-1wpwzfj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -548,7 +548,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-m66hfy-TaskListItem"
+                  class="css-6t7fnj-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -582,7 +582,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -616,7 +616,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-t89lqx-TaskListItem"
+                class="css-1wpwzfj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -652,7 +652,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-m66hfy-TaskListItem"
+                  class="css-6t7fnj-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -686,7 +686,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -720,7 +720,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-117uehh-TaskListItem"
+                class="css-1d9b4dj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -769,7 +769,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-5jjwhq-TaskListItem"
+                  class="css-y64xti-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -816,7 +816,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -850,7 +850,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-117uehh-TaskListItem"
+                class="css-1d9b4dj-TaskListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -885,7 +885,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-5jjwhq-TaskListItem"
+                  class="css-y64xti-TaskListItem"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -920,7 +920,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1ypreto-Icon"
+            class="css-1pw6exk-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

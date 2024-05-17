@@ -84,7 +84,7 @@ exports[`Button With Icon renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-1utch44-Button"
+      class="css-sbsftc-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

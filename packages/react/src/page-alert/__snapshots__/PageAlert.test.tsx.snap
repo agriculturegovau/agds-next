@@ -11,7 +11,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Error"
-        class="css-1fvc68f-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -70,7 +70,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-1fvc68f-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -120,7 +120,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1fvc68f-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -170,7 +170,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-1fvc68f-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -220,7 +220,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-1fvc68f-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -271,7 +271,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-1utch44-Button"
+          class="css-sbsftc-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

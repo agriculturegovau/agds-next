@@ -48,13 +48,8 @@ export const FileUploadFile = ({
 						</Box>
 					)}
 					{href ? (
-						<Text paddingY={1.5}>
-							<TextLink
-								breakWords
-								href={href}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
+						<Text breakWords paddingY={1.5}>
+							<TextLink href={href} target="_blank" rel="noopener noreferrer">
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>

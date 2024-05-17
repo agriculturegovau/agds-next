@@ -21,7 +21,7 @@ exports[`PaginationButtons renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1qgam64-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -124,7 +124,7 @@ exports[`PaginationButtons renders correctly 1`] = `
             </span>
             <svg
               aria-hidden="true"
-              class="css-1qgam64-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

@@ -62,7 +62,7 @@ exports[`Field Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-nqqlih-FieldMessage"
+          class="css-rg60c6-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

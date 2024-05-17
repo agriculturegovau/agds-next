@@ -23,7 +23,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
             Example
             <svg
               aria-hidden="true"
-              class="css-x9dl13-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -71,7 +71,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
             Example
             <svg
               aria-hidden="true"
-              class="css-x9dl13-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -118,7 +118,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
             Example
             <svg
               aria-hidden="true"
-              class="css-x9dl13-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

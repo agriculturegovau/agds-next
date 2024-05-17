@@ -18,7 +18,7 @@ exports[`MainNav renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1fvc68f-Icon"
+          class="css-lq07bo-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -112,7 +112,7 @@ exports[`MainNav renders correctly 1`] = `
               </span>
               <svg
                 aria-hidden="true"
-                class="css-laoxex-Icon"
+                class="css-1ovc7ig-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

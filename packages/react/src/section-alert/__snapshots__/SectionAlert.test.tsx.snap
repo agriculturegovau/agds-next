@@ -11,7 +11,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1oi18xt-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -39,7 +39,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="css-1myr4hy-BaseButton-SectionAlertDismissButton"
+      class="css-1dy6gfp-BaseButton-SectionAlertDismissButton"
       type="button"
     >
       <span>
@@ -54,7 +54,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="css-1utch44-Button"
+        class="css-sbsftc-Button"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -93,7 +93,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1oi18xt-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -139,7 +139,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Error"
-        class="css-n6oc7j-Icon"
+        class="css-1w78ld0-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -180,7 +180,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1oi18xt-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -221,7 +221,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-1achyqd-Icon"
+        class="css-15hefj6-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

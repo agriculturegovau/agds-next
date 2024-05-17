@@ -26,7 +26,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1vkwxj3-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -96,7 +96,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-nqqlih-FieldMessage"
+          class="css-rg60c6-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -125,7 +125,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1vkwxj3-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -198,7 +198,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1vkwxj3-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

@@ -15,7 +15,7 @@ exports[`CollapsingSideBar renders correctly 1`] = `
       Collapse button label
       <svg
         aria-hidden="true"
-        class="css-aklm4x-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
