@@ -115,40 +115,31 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			);
 		}
 
-		const [acceptedFiles, setAcceptedFiles] = useState(value);
 		const [tooManyFilesRejections, setTooManyFilesRejections] = useState<
 			FileRejection[]
 		>([]);
 		const [invalidRejections, setInvalidRejections] = useState<FileRejection[]>(
 			[]
 		);
+		const [allRejections, setAllRejections] = useState<FileRejection[]>([]);
 
-		const allRejections = [...invalidRejections, ...tooManyFilesRejections];
+		useEffect(() => {
+			setAllRejections([...invalidRejections, ...tooManyFilesRejections]);
+		}, [invalidRejections, tooManyFilesRejections]);
 
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
-
-			setAcceptedFiles((prevAcceptedFiles) => {
-				const updatedAcceptedFiles = removeItemAtIndex(
-					prevAcceptedFiles,
-					index
-				);
-				return updatedAcceptedFiles;
-			});
-
-			onChange?.(acceptedFiles);
+			onChange?.(removeItemAtIndex(value, index));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			clearErrors();
+			let validFiles;
 
-			setAcceptedFiles((prevAcceptedFiles) => {
-				// If we're not multiple, we have only one file, so we'll use it
-				if (!multiple) return acceptedFiles;
-
+			if (multiple) {
 				// We don't accept duplicate files, so remove them
 				const acceptedFilesWithNoDuplicates = Object.values<FileWithStatus>(
-					[...prevAcceptedFiles, ...acceptedFiles].reduce((acc, file) => {
+					[...value, ...acceptedFiles].reduce((acc, file) => {
 						return {
 							...acc,
 							[`${file.name}-${file.size}-${file.type}`]: file,
@@ -168,13 +159,17 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					]);
 
 					// ...And return the list of files up to the max file limit
-					return acceptedFilesWithNoDuplicates.slice(0, validMaxFiles);
+					validFiles = acceptedFilesWithNoDuplicates.slice(0, validMaxFiles);
+				} else {
+					validFiles = acceptedFilesWithNoDuplicates;
 				}
+			}
+			// If we're not multiple, we have only one file, so we'll use it
+			else {
+				validFiles = acceptedFiles;
+			}
 
-				return acceptedFilesWithNoDuplicates;
-			});
-
-			onChange?.(acceptedFiles);
+			onChange?.(validFiles);
 		};
 
 		function clearErrors() {
@@ -255,14 +250,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		} = getInputProps();
 
 		const fileSummaryText = getFileListSummaryText([
-			...acceptedFiles,
+			...value,
 			...existingFiles,
 		]);
 
-		const showFileLists = Boolean(
-			acceptedFiles.length || existingFiles?.length
-		);
-
+		const showFileLists = Boolean(value.length || existingFiles?.length);
 		const pluralAllRejections = allRejections.length > 1;
 
 		return (
@@ -402,7 +394,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										onRemove={onRemoveExistingFile}
 									/>
 									<FileUploadFileList
-										files={acceptedFiles}
+										files={value}
 										hideThumbnails={hideThumbnails}
 										onRemove={handleRemoveAcceptedFile}
 									/>
