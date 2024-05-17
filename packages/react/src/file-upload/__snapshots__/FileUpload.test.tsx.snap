@@ -76,12 +76,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
             <span
               class="css-vffudx-boxStyles-FileUpload"
             >
-              Drag and drop 
-              file
-               here or select 
-              file
-               
-              to upload.
+              Drag and drop a file or select a file to upload.
             </span>
             <span
               class="css-110dnkz-boxStyles-FileUpload"
@@ -123,8 +118,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
         class="css-1wcx0lf-boxStyles"
       >
         <li
-          aria-label="File. example.txt"
-          class="css-izqcdk-boxStyles-FileUploadFile"
+          class="css-1ydwyx-boxStyles"
         >
           <div
             class="css-1jhrbpg-boxStyles"

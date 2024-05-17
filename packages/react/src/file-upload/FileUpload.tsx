@@ -105,7 +105,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
+		let validMaxFiles = maxFiles;
+
 		if (maxFiles !== undefined && maxFiles < 1) {
+			validMaxFiles = undefined;
+
 			console.warn(
 				'FileUpload: maxFiles cannot be less than 1. The property is being ignored.'
 			);
@@ -138,53 +142,37 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
 			clearErrors();
 
-			if (multiple) {
-				setAcceptedFiles((prevAcceptedFiles) => {
-					const prevAcceptedFilesSet = new Set(
-						prevAcceptedFiles.map(
-							(file) => `${file.name}-${file.size}-${file.type}`
-						)
-					);
-					const filteredAcceptedFiles = acceptedFiles.filter(
-						(file) =>
-							!prevAcceptedFilesSet.has(
-								`${file.name}-${file.size}-${file.type}`
-							)
-					);
+			setAcceptedFiles((prevAcceptedFiles) => {
+				// If we're not multiple, we have only one file, so we'll use it
+				if (!multiple) return acceptedFiles;
 
-					const newAcceptedFiles = [
-						...prevAcceptedFiles,
-						...filteredAcceptedFiles,
-					];
+				// We don't accept duplicate files, so remove them
+				const acceptedFilesWithNoDuplicates = Object.values<FileWithStatus>(
+					[...prevAcceptedFiles, ...acceptedFiles].reduce((acc, file) => {
+						return {
+							...acc,
+							[`${file.name}-${file.size}-${file.type}`]: file,
+						};
+					}, {})
+				);
 
-					if (maxFiles && newAcceptedFiles.length > maxFiles) {
-						setTooManyFilesRejections((prevTooManyFilesList) => {
-							const newTooManyFilesList = newAcceptedFiles
-								.slice(maxFiles)
-								.map(convertFileToTooManyFilesRejection);
+				if (
+					validMaxFiles &&
+					acceptedFilesWithNoDuplicates.length > validMaxFiles
+				) {
+					// When we have a max files limit, we'll merge the error list with any existing errors...
+					setTooManyFilesRejections(() => [
+						...acceptedFilesWithNoDuplicates
+							.slice(validMaxFiles)
+							.map(convertFileToTooManyFilesRejection),
+					]);
 
-							if (
-								JSON.stringify(prevTooManyFilesList) ===
-								JSON.stringify(newTooManyFilesList)
-							) {
-								return prevTooManyFilesList;
-							}
+					// ...And return the list of files up to the max file limit
+					return acceptedFilesWithNoDuplicates.slice(0, validMaxFiles);
+				}
 
-							return [
-								...prevTooManyFilesList,
-								...newAcceptedFiles
-									.slice(maxFiles)
-									.map(convertFileToTooManyFilesRejection),
-							];
-						});
-						return newAcceptedFiles.slice(0, maxFiles);
-					}
-
-					return newAcceptedFiles;
-				});
-			} else {
-				setAcceptedFiles(acceptedFiles);
-			}
+				return acceptedFilesWithNoDuplicates;
+			});
 
 			onChange?.(acceptedFiles);
 		};
@@ -327,8 +315,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												}}
 												fontWeight="bold"
 											>
-												Drag and drop {filesPlural} here or select {filesPlural}{' '}
-												to upload.
+												{multiple
+													? 'Drag and drop files here or select files to upload.'
+													: 'Drag and drop a file or select a file to upload.'}
 											</Text>
 											<Text
 												css={{
@@ -409,13 +398,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
-										onRemove={onRemoveExistingFile}
 										hideThumbnails={hideThumbnails}
+										onRemove={onRemoveExistingFile}
 									/>
 									<FileUploadFileList
 										files={acceptedFiles}
-										onRemove={handleRemoveAcceptedFile}
 										hideThumbnails={hideThumbnails}
+										onRemove={handleRemoveAcceptedFile}
 									/>
 								</Stack>
 							)}

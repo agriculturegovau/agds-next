@@ -1,7 +1,6 @@
 import { MouseEventHandler, useMemo } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { boxPalette } from '../core';
 import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
@@ -12,8 +11,8 @@ import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
 
 type FileUploadFileProps = {
 	file: FileWithStatus;
-	onRemove: MouseEventHandler<HTMLButtonElement>;
 	hideThumbnails?: boolean;
+	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadFile = ({
@@ -26,30 +25,29 @@ export const FileUploadFile = ({
 	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return (
 		<Flex
-			rounded
 			as="li"
-			aria-label={`${status === 'success' ? 'Uploaded file' : 'File'}. ${name}`}
+			background={status === 'success' ? status : 'shade'}
 			gap={0.5}
 			justifyContent="space-between"
-			css={{ backgroundColor: TONE_MAP[status] }}
+			rounded
 		>
 			<Flex>
 				{showThumbnail && <FileUploadFileThumbnail src={imagePreview} />}
-				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
+				<Flex alignItems="center" gap={0.5} paddingLeft={1}>
 					{status == 'success' && (
 						<Box flexShrink={0}>
 							<SuccessFilledIcon
-								color="success"
-								size="md"
 								aria-hidden="false"
 								aria-label="Success"
+								color="success"
 								css={{ display: 'block' }}
+								size="md"
 							/>
 						</Box>
 					)}
 					{href ? (
 						<Text breakWords paddingY={1.5}>
-							<TextLink href={href} target="_blank" rel="noopener noreferrer">
+							<TextLink href={href} rel="noopener noreferrer" target="_blank">
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
@@ -67,17 +65,17 @@ export const FileUploadFile = ({
 					)}
 				</Flex>
 			</Flex>
-			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
+			<Flex alignItems="center" flexShrink={0} paddingRight={1}>
 				{status === 'uploading' ? (
 					<Box paddingY={1}>
-						<LoadingDots label="uploading" />
+						<LoadingDots label="Uploading" />
 					</Box>
 				) : (
 					<Box>
 						<Button
-							variant="text"
-							onClick={onRemove}
 							aria-label={`Remove file, ${name}`}
+							onClick={onRemove}
+							variant="text"
 						>
 							Remove file
 						</Button>
@@ -87,9 +85,3 @@ export const FileUploadFile = ({
 		</Flex>
 	);
 };
-
-const TONE_MAP = {
-	none: boxPalette.backgroundShade,
-	uploading: boxPalette.backgroundShade,
-	success: boxPalette.systemSuccessMuted,
-} as const;

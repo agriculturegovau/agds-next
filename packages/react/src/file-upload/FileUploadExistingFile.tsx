@@ -10,41 +10,40 @@ import { ExistingFile, formatFileSize } from './utils';
 
 type FileUploadExistingFileProps = {
 	file: ExistingFile;
-	onRemove: MouseEventHandler<HTMLButtonElement>;
 	hideThumbnails?: boolean;
+	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadExistingFile = ({
 	file,
-	onRemove,
 	hideThumbnails,
+	onRemove,
 }: FileUploadExistingFileProps) => {
 	const { name, size, href, thumbnailSrc } = file;
 	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
-			rounded
 			as="li"
-			aria-label={`Uploaded file. ${name}`}
+			background="success"
 			gap={0.5}
 			justifyContent="space-between"
-			background="success"
+			rounded
 		>
 			<Flex>
 				{showThumbnail && <FileUploadFileThumbnail src={thumbnailSrc} />}
-				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
+				<Flex alignItems="center" gap={0.5} paddingLeft={1}>
 					<Box flexShrink={0}>
 						<SuccessFilledIcon
-							color="success"
-							size="md"
 							aria-hidden="false"
 							aria-label="Success"
+							color="success"
 							css={{ display: 'block' }}
+							size="md"
 						/>
 					</Box>
 					{href ? (
 						<Text breakWords paddingY={1.5}>
-							<TextLink href={href} target="_blank" rel="noopener noreferrer">
+							<TextLink href={href} rel="noopener noreferrer" target="_blank">
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
@@ -62,12 +61,12 @@ export const FileUploadExistingFile = ({
 					)}
 				</Flex>
 			</Flex>
-			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
+			<Flex alignItems="center" flexShrink={0} paddingRight={1}>
 				<Box>
 					<Button
-						variant="text"
-						onClick={onRemove}
 						aria-label={`Remove file, ${name}`}
+						onClick={onRemove}
+						variant="text"
 					>
 						Remove file
 					</Button>

@@ -11,12 +11,7 @@ relatedComponents: ['file-input']
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<FileUpload
-			label="Upload documents"
-			multiple={true}
-			value={value}
-			onChange={setValue}
-		/>
+		<FileUpload label="Upload documents" value={value} onChange={setValue} />
 	);
 };
 ```
