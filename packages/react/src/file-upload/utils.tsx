@@ -163,13 +163,6 @@ export function reformatDropzoneErrors(
 	}));
 }
 
-export function applyTooManyFilesError(rej: FileRejection) {
-	return {
-		...rej,
-		errors: [...rej.errors, TOO_MANY_FILES_ERROR],
-	};
-}
-
 export function getFileRejectionErrorMessage(
 	{ code, message }: FileError,
 	formattedMaxFileSize: string,
@@ -205,7 +198,7 @@ export function getErrorSummary(
 		return `File is over ${formattedMaxFileSize}`;
 	}
 
-	return 'Too many files';
+	return TOO_MANY_FILES_ERROR.message;
 }
 
 /** Creates and returns a URL of the image thumbnail in browser memory.
@@ -221,16 +214,6 @@ export function convertFileToTooManyFilesRejection(file: FileWithPath) {
 		file,
 		errors: [TOO_MANY_FILES_ERROR],
 	};
-}
-
-export function checkRejectionsHaveSameFiles(
-	rejectionListOne: Array<FileRejection>,
-	rejectionListTwo: Array<FileRejection>
-): boolean {
-	return (
-		JSON.stringify(rejectionListOne.map((rej) => rej.file)) ===
-		JSON.stringify(rejectionListTwo.map((rej) => rej.file))
-	);
 }
 
 export function removeItemAtIndex<ItemType>(

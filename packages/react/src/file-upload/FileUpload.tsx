@@ -8,7 +8,7 @@ import {
 import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, mergeRefs, tokens } from '../core';
 import { Field } from '../field';
 import { Flex } from '../flex';
 import { UploadIcon } from '../icon';
@@ -256,6 +256,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		} = getRootProps();
 
 		const {
+			/**
+			 * Warning! This ref is required for the button click to work in Safari and Firefox.
+			 * Also, linting doesn't complain about this TS error, but VS Code does so can't @ts-ignore etc.
+			 */
+			ref: dropzoneInputRef,
 			// We don't want the input to be `display: none`, as we are using visuallyHiddenStyles instead.
 			style: _unusedStyleProps,
 			...dropzoneInputProps
@@ -300,7 +305,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										{...dropzoneInputProps}
 										{...a11yProps}
 										{...consumerProps}
-										ref={forwardedRef}
+										/**
+										 * Dropzone needs to set a ref to the input, but we _also_
+										 * need to forward a ref to the input so consumers can use it.
+										 * The mergeRef utility allows us to do this.
+										 */
+										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 										css={visuallyHiddenStyles}
 									/>
 									<Flex

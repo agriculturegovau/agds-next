@@ -1,10 +1,7 @@
-import { ErrorCode, FileError, FileRejection } from 'react-dropzone';
+import { ErrorCode, FileError } from 'react-dropzone';
 import { createExampleFile } from './test-utils';
 import {
-	FileWithStatus,
 	TOO_MANY_FILES_ERROR,
-	applyTooManyFilesError,
-	checkRejectionsHaveSameFiles,
 	convertFileToTooManyFilesRejection,
 	formatFileExtension,
 	formatFileSize,
@@ -203,24 +200,6 @@ describe('formatFileExtension', () => {
 	});
 });
 
-describe('applyTooManyFilesError', () => {
-	it('Adds the TOO_MANY_FILES_ERROR to an existing rejection', () => {
-		const file = createExampleFile();
-
-		const rejection: FileRejection = {
-			file,
-			errors: [FILE_TOO_LARGE_ERROR_EXAMPLE],
-		};
-
-		expect(JSON.stringify(applyTooManyFilesError(rejection))).toBe(
-			JSON.stringify({
-				file,
-				errors: [FILE_TOO_LARGE_ERROR_EXAMPLE, TOO_MANY_FILES_ERROR],
-			})
-		);
-	});
-});
-
 describe('convertFileToTooManyFilesRejection', () => {
 	test('converts the file into a too many files rejection error', () => {
 		const file = createExampleFile();
@@ -231,46 +210,6 @@ describe('convertFileToTooManyFilesRejection', () => {
 				errors: [TOO_MANY_FILES_ERROR],
 			})
 		);
-	});
-});
-
-describe('checkRejectionsHaveSameFiles', () => {
-	const createRejectedFile = (args: Partial<FileWithStatus> = {}) =>
-		convertFileToTooManyFilesRejection(createExampleFile(args));
-
-	const fileA = createRejectedFile({ name: 'A' });
-	const fileB = createRejectedFile({ name: 'B' });
-	const fileC = createRejectedFile({ name: 'C' });
-
-	const fileD = createRejectedFile({ name: 'D' });
-	const fileE = createRejectedFile({ name: 'E' });
-	const fileF = createRejectedFile({ name: 'F' });
-
-	const rejectionListOne = [fileA, fileB, fileC];
-	const rejectionListTwo = [fileD, fileE, fileF];
-	const rejectionListThree = [
-		{
-			...fileA,
-			errors: [{ code: ErrorCode.FileTooLarge, message: 'too large' }],
-		},
-		fileB,
-		fileC,
-	];
-
-	test('exactly same', () => {
-		expect(
-			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListOne)
-		).toBe(true);
-	});
-	test('different', () => {
-		expect(
-			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListTwo)
-		).toBe(false);
-	});
-	test('same files but different errors', () => {
-		expect(
-			checkRejectionsHaveSameFiles(rejectionListOne, rejectionListThree)
-		).toBe(true);
 	});
 });
 
