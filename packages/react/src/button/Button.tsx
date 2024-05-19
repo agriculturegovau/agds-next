@@ -12,7 +12,7 @@ import {
 } from './styles';
 import { BaseButton, BaseButtonProps } from './BaseButton';
 
-type CommonButtonProps = {
+type CommonButtonProps = Pick<BoxProps, 'alignSelf'> & {
 	/** If true, the button will stretch to the fill the width of its container. */
 	block?: boolean;
 	/** Display a focus indicator when the button receives focus. By default, this is set to 'keyboard'. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus. */
@@ -97,6 +97,7 @@ export type ButtonLinkProps = CommonButtonProps & LinkProps;
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 	function ButtonLink(
 		{
+			alignSelf,
 			children,
 			block = false,
 			focusRingFor = 'keyboard',
@@ -108,7 +109,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, focusRingFor, size, variant });
+		const styles = buttonStyles({
+			alignSelf,
+			block,
+			focusRingFor,
+			size,
+			variant,
+		});
 		const Link = useLinkComponent();
 		return (
 			<Link ref={ref} css={styles} {...props}>
