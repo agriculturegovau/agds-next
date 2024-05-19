@@ -99,7 +99,7 @@ function useFileInputStyles({ hasFile }: { hasFile: boolean }) {
 		size: 'sm',
 		variant: 'secondary',
 		block: false,
-	});
+	})[0]; // Take the first element in the responsive array since we aren't producing a responsive button.
 
 	return {
 		...fontGrid('sm', 'default'),
