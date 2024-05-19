@@ -43,7 +43,7 @@ exports[`Modal renders correctly 1`] = `
           class="css-1kzq3kl-boxStyles-ModalDialog"
         >
           <button
-            class="css-1xaxpdg-BaseButton-Button"
+            class="css-br8ukx-BaseButton-Button"
             type="button"
           >
             <span>
@@ -60,7 +60,7 @@ exports[`Modal renders correctly 1`] = `
         </div>
         <button
           aria-label="Close modal"
-          class="css-xzbqql-BaseButton-ModalDialog"
+          class="css-chhero-BaseButton-ModalDialog"
           type="button"
         >
           <span>
