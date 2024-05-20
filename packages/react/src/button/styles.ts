@@ -111,11 +111,9 @@ type ResponsiveStylesArgs = BaseStylesArgs & {
 	alignSelf?: BoxProps['alignSelf'];
 };
 
-type ReturnStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
-	? ReturnType<typeof getBaseStyles>
-	: T extends ResponsiveStylesArgs
-	? ReturnType<typeof mq>
-	: never;
+type ButtonStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
+	? ReturnType<typeof getBaseStyles> // For backwards compatibility we return a single object of CSS properties, unless...
+	: ReturnType<typeof mq>; // ...we have a responsive property included as an arg, then we return the responsive array of CSS properties.
 
 function getBaseStyles({
 	block,
@@ -164,7 +162,7 @@ export function buttonStyles<T extends ResponsiveStylesArgs>({
 	focusRingFor = 'keyboard',
 	size,
 	variant,
-}: T): ReturnStyles<T> {
+}: T): ButtonStyles<T> {
 	const styles = getBaseStyles({ block, focusRingFor, size, variant });
 
 	return (
@@ -174,5 +172,5 @@ export function buttonStyles<T extends ResponsiveStylesArgs>({
 					...styles,
 			  })
 			: styles
-	) as ReturnStyles<T>;
+	) as ButtonStyles<T>;
 }
