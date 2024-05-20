@@ -7,7 +7,7 @@ import {
 import { Flex } from '@ag.ds-next/react/flex';
 import { Text } from '@ag.ds-next/react/text';
 import { getOptionalCloseHandler } from '../getCloseHandler';
-import { useFocusOnMount } from '../core/utils/useFocusOnMount';
+import { useFocus } from '../core/utils/useFocus';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
 
@@ -20,6 +20,8 @@ export type SectionAlertProps = {
 	children?: ReactNode;
 	/** Whether the alert should be focused as soon as it's rendered. */
 	focusOnMount?: boolean;
+	/** Focus the alert when a value in this array updates. */
+	focusOnUpdate?: ReadonlyArray<unknown>;
 	/** The ID of the alert. */
 	id?: string;
 	/** The role of the alert. */
@@ -40,6 +42,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 			children,
 			id,
 			focusOnMount,
+			focusOnUpdate,
 			onClose,
 			onDismiss,
 			role,
@@ -50,8 +53,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		},
 		forwardedRef
 	) {
-		const ref = useFocusOnMount<HTMLDivElement>({
-			disabled: !focusOnMount,
+		const ref = useFocus<HTMLDivElement>({
+			focusOnMount,
+			focusOnUpdate,
 			forwardedRef,
 		});
 
@@ -74,7 +78,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				ref={ref}
 				role={role}
 				rounded
-				tabIndex={tabIndex || (focusOnMount ? -1 : undefined)}
+				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 				{...props}
 			>
 				<Flex gap={0.5}>

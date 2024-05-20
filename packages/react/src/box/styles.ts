@@ -267,7 +267,25 @@ type LayoutProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 */
 	alignItems: ResponsiveProp<
-		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
+	>;
+	/** Sets the CSS align-self property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
+	 */
+	alignSelf: ResponsiveProp<
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
 	>;
 	/** Maps tokens to the CSS gap property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gap
@@ -308,6 +326,7 @@ type LayoutProps = Partial<{
 }>;
 
 function layoutStyles({
+	alignSelf,
 	display,
 	flexDirection,
 	flexWrap,
@@ -329,6 +348,7 @@ function layoutStyles({
 	maxHeight,
 }: LayoutProps) {
 	return {
+		alignSelf: mapResponsiveProp(alignSelf),
 		display: mapResponsiveProp(display),
 		flexDirection: mapResponsiveProp(flexDirection),
 		flexWrap: mapResponsiveProp(flexWrap),
@@ -545,7 +565,7 @@ export const focusStylesAll = {
 	':focus': packs.outline,
 };
 
-const focusStylesMap = {
+export const focusStylesMap = {
 	all: focusStylesAll,
 	keyboard: focusStyles,
 };
@@ -570,6 +590,7 @@ export type BoxProps = PaletteProps &
 
 export function boxStyles({
 	alignItems,
+	alignSelf,
 	background,
 	border,
 	borderBottom,
@@ -672,6 +693,7 @@ export function boxStyles({
 				}),
 
 				...layoutStyles({
+					alignSelf,
 					display,
 					flexDirection,
 					flexWrap,
