@@ -39,7 +39,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="css-1dy6gfp-BaseButton-SectionAlertDismissButton"
+      class="css-1xr7ch-BaseButton-SectionAlertDismissButton"
       type="button"
     >
       <span>

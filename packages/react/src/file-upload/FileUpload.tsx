@@ -352,12 +352,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							{allRejections.length > 0 && (
 								<Box breakWords paddingTop={0.5} paddingBottom={1}>
 									<SectionAlert
-										role="alert"
+										focusOnMount
+										onClose={clearErrors}
 										title={`The following ${
 											pluralAllRejections ? 'files' : 'file'
 										} could not be selected`}
 										tone="error"
-										onClose={clearErrors}
 									>
 										<Text as="p">
 											{pluralAllRejections
