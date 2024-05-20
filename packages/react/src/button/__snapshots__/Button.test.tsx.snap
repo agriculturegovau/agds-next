@@ -3,7 +3,7 @@
 exports[`Button Loading renders correctly 1`] = `
 <div>
   <button
-    class="css-br8ukx-BaseButton-Button"
+    class="css-1xaxpdg-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -47,7 +47,7 @@ exports[`Button Loading renders correctly 1`] = `
 exports[`Button Small Button renders correctly 1`] = `
 <div>
   <button
-    class="css-1ckekkv-BaseButton-Button"
+    class="css-uwq2hm-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -68,7 +68,7 @@ exports[`Button Small Button renders correctly 1`] = `
 exports[`Button With Icon renders correctly 1`] = `
 <div>
   <button
-    class="css-br8ukx-BaseButton-Button"
+    class="css-1xaxpdg-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -110,7 +110,7 @@ exports[`Button With Icon renders correctly 1`] = `
 exports[`Button renders correctly 1`] = `
 <div>
   <button
-    class="css-br8ukx-BaseButton-Button"
+    class="css-1xaxpdg-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -131,7 +131,7 @@ exports[`Button renders correctly 1`] = `
 exports[`ButtonLink renders correctly 1`] = `
 <div>
   <a
-    class="css-x9014c-ButtonLink"
+    class="css-pvrlzo-ButtonLink"
     data-testid="example"
     href="#"
   >

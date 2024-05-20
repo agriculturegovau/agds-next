@@ -100,21 +100,30 @@ export const loadingSize = {
 	md: 'md',
 } as const;
 
-export function buttonStyles({
-	alignSelf,
+type BaseStylesArgs = {
+	block: boolean;
+	size: ButtonSize;
+	variant: ButtonVariant;
+	focusRingFor?: BoxProps['focusRingFor'];
+};
+
+type ResponsiveStylesArgs = BaseStylesArgs & {
+	alignSelf?: BoxProps['alignSelf'];
+};
+
+type ReturnStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
+	? ReturnType<typeof getBaseStyles>
+	: T extends ResponsiveStylesArgs
+	? ReturnType<typeof mq>
+	: never;
+
+function getBaseStyles({
 	block,
 	focusRingFor = 'keyboard',
 	size,
 	variant,
-}: {
-	block: boolean;
-	size: ButtonSize;
-	variant: ButtonVariant;
-	alignSelf?: BoxProps['alignSelf'];
-	focusRingFor?: BoxProps['focusRingFor'];
-}) {
-	return mq({
-		alignSelf: mapResponsiveProp(alignSelf),
+}: BaseStylesArgs) {
+	return {
 		appearance: 'none',
 		boxSizing: 'border-box',
 		position: 'relative',
@@ -146,5 +155,24 @@ export function buttonStyles({
 		...focusStylesMap[focusRingFor],
 		...sizes[size],
 		...variants[variant],
-	} as const);
+	} as const;
+}
+
+export function buttonStyles<T extends ResponsiveStylesArgs>({
+	alignSelf,
+	block,
+	focusRingFor = 'keyboard',
+	size,
+	variant,
+}: T): ReturnStyles<T> {
+	const styles = getBaseStyles({ block, focusRingFor, size, variant });
+
+	return (
+		alignSelf
+			? mq({
+					alignSelf: mapResponsiveProp(alignSelf),
+					...styles,
+			  })
+			: styles
+	) as ReturnStyles<T>;
 }

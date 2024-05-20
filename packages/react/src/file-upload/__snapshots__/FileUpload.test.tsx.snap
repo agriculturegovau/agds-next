@@ -77,7 +77,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </span>
         </div>
         <button
-          class="css-1qbs7pk-BaseButton-Button"
+          class="css-g9kgvi-BaseButton-Button"
           type="button"
         >
           <span>
@@ -161,7 +161,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
               >
                 <button
                   aria-label="Remove file, example.txt"
-                  class="css-1oy4pqi-BaseButton-Button"
+                  class="css-psfrx5-BaseButton-Button"
                   type="button"
                 >
                   <span>
