@@ -12,6 +12,7 @@ import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 import { Stack } from '../stack';
+import { useAppLayoutContext } from './AppLayoutContext';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -89,14 +90,16 @@ function AppLayoutSidebarNavListItem({
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
+	const { closeMobileMenu } = useAppLayoutContext();
 
 	// Link list item
 	if ('href' in item) {
 		const active = item.href === activePath;
 		return (
 			<AppLayoutSidebarNavItemInner
-				isActive={activePath === item.href}
 				hasEndElement={Boolean(endElement)}
+				isActive={activePath === item.href}
+				onClick={closeMobileMenu}
 			>
 				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
 					{Icon ? <Icon color="inherit" /> : null}
@@ -111,8 +114,9 @@ function AppLayoutSidebarNavListItem({
 	if ('onClick' in item) {
 		return (
 			<AppLayoutSidebarNavItemInner
-				isActive={false}
 				hasEndElement={Boolean(endElement)}
+				isActive={false}
+				onClick={closeMobileMenu}
 			>
 				<BaseButton {...restItemProps}>
 					{Icon ? <Icon color="inherit" /> : null}
@@ -134,14 +138,16 @@ function AppLayoutSidebarNavListItem({
 }
 
 type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
-	isActive: boolean;
 	hasEndElement: boolean;
+	isActive: boolean;
+	onClick?: () => void;
 }>;
 
 function AppLayoutSidebarNavItemInner({
-	isActive,
 	children,
 	hasEndElement,
+	isActive,
+	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
 	return (
 		<li
@@ -209,6 +215,7 @@ function AppLayoutSidebarNavItemInner({
 					textDecoration: 'none',
 				},
 			}}
+			onClick={onClick}
 		>
 			{children}
 		</li>
