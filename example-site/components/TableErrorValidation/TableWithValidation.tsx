@@ -246,7 +246,8 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 		setPageErrors(newPageErrors);
 
 		if (newPageErrors.length < 2 && newTableErrors.length) {
-			tableSectionAlertRef?.current?.focus();
+			// Focus section alert one tick after it's made visible
+			setTimeout(() => tableSectionAlertRef?.current?.focus(), 0);
 		}
 	};
 
