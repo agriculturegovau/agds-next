@@ -31,18 +31,8 @@ export const Basic: Story = {
 	},
 };
 
-export const Image: Story = {
-	name: '.jpg file',
-	args: {
-		file: {
-			name: 'example.jpg',
-			size: 123456,
-		},
-	},
-};
-
 export const WithThumbnail: Story = {
-	name: '.jpg file',
+	name: '.jpg file with thumbnail',
 	args: {
 		file: {
 			name: 'example.jpg',

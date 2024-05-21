@@ -79,6 +79,7 @@ export const MultipleFiles: Story = {
 	args: {
 		label: 'Identity documents',
 		multiple: true,
+		maxFiles: 5,
 	},
 };
 
@@ -127,6 +128,11 @@ export const HiddenThumbnails: Story = {
 	args: {
 		label: 'Drivers licence',
 		hideThumbnails: true,
+		value: [
+			createExampleImageFile(),
+			createExampleImageFile(),
+			createExampleImageFile(),
+		],
 	},
 };
 
@@ -264,10 +270,12 @@ export const ExistingFiles: Story = {
 				size: 100000,
 			},
 			{
-				name: 'another-document.pdf',
-				size: 100000,
-				// Use the `meta` key to keep track of any extra file information
-				// This can be useful when deleting the file
+				name: 'example.png',
+				size: 123456,
+				thumbnailSrc: 'https://via.placeholder.com/150',
+				href: '#',
+				// Use the meta key to keep track of any extra file info
+				// This can be useful info when deleting the file
 				meta: { uid: 'abc-def', bucketId: '123-456' },
 			},
 		]);
