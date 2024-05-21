@@ -91,21 +91,25 @@ For data tables with a small amount of rows, use the default table. Align text c
 - use for datasets with more than 2 columns
 - use for tabular data - not layouts
 - provide a meaningful caption (heading), or use aria-labelledby to reference a heading
-- keep row heights small.
+- keep row heights small
 - use a simple table structure - complex tables are difficult to navigate.
 - use Pagination to break up tables with many rows
 - align text left and numeric data right
-- only include text, tags, links and status badges as content
-- use a human readable format for numeric data – for example, 1,234,000 instead of 12340000.
+- only include text, tags, links, actions and status badges as content
+- only use dropdown menu if you require three or more actions in a table cell
+- always use a label on the dropdown menu button
+- use a human readable format for numeric data – for example, 1,234,000 instead of 12340000
 - allow row sorting by using `TableHeaderSortable`.
 
 <DontHeading />
 
-- repeat information across cells. If each cell has the same content, add it as the column header – for example, Width (cm).
+- repeat information across cells. If each cell has the same content, add it as the column header – for example, Width (cm)
 - nest tables inside tables
 - use if a list, paragraph of text or diagram will work
 - use to summarise form collection data - use a [Summary list](/components/summary-list)
-- add lists, diagrams or images.
+- add lists, diagrams or images
+- use a combination of actions in table cells and actions in dropdown menus together in the same table row
+- put form inputs in table cells - use an action in a cell to open a drawer or navigate to another page instead
 - have too many rows. Use pagination or start another table where logical – for example, an alphabetical list, Table 1: A to D, Table 2: E to H and so on
 - use bespoke styling - follow consistent layouts and styles
 - nest tables inside tables
@@ -522,7 +526,9 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 
 The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column, beneath the table header labeled ‘Actions’.
 
-If each table row can open a page to view more information, the cells in the first column should be displayed as bold clickable links under the table header labeled with the unique identifier.
+If rows contain three or more actions, they can instead be replaced with a Dropdown menu containing these actions.
+
+Links that open a page to view a record or more information should be located in the first column, be labelled with a unique identifier, and display as bold text.
 
 ```jsx live
 <TableWrapper>

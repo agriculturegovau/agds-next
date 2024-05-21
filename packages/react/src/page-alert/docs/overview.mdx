@@ -118,39 +118,11 @@ Use the `onClose` prop to make the alert dismissable. Ensure Page alerts that ar
 
 _NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
 
-In the event you need to focus the alert, you can do so in one of two ways:
+In the event you need to focus the alert, you can do so in one of three ways:
 
-1. [Manually set focus](#manually-set-focus).
-2. [Automatically focus on mount](#automatically-focus-on-mount).
-
-### Manually set focus
-
-Press the "Focus the alert" button below to set focus on the alert. To achieve this, we set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
-
-```jsx live
-() => {
-	const alertRef = React.useRef(null);
-
-	return (
-		<Stack gap={2}>
-			<Box alignSelf="start">
-				<Button onClick={() => alertRef.current.focus()}>
-					Focus the alert
-				</Button>
-			</Box>
-
-			<PageAlert
-				ref={alertRef}
-				tabIndex={-1}
-				title="Submission successful"
-				tone="success"
-			>
-				<Text as="p">Your application has been successfully submitted.</Text>
-			</PageAlert>
-		</Stack>
-	);
-};
-```
+1. [Automatically focus on mount](#automatically-focus-on-mount).
+2. [Automatically focus on update](#automatically-focus-on-update).
+3. [Manually set focus](#manually-set-focus).
 
 ### Automatically focus on mount
 
@@ -162,25 +134,109 @@ Press the "Toggle alert" button below to mount/unmount the alert. Notice that ea
 
 	return (
 		<Stack gap={2}>
-			<Box alignSelf="start">
-				<Button onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}>
-					Toggle alert
-				</Button>
-			</Box>
+			<Button
+				alignSelf="start"
+				onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}
+			>
+				Toggle alert
+			</Button>
 
 			{showAlert && (
 				<PageAlert focusOnMount title="There is a problem" tone="error">
 					<Text as="p">Please correct the following fields and try again</Text>
 					<UnorderedList>
 						<ListItem>
-							<TextLink href="#">Full name must not be empty</TextLink>
+							<TextLink href="#">Full name must not be empty.</TextLink>
 						</ListItem>
 						<ListItem>
-							<TextLink href="#">Email must not be empty</TextLink>
+							<TextLink href="#">Email must not be empty.</TextLink>
 						</ListItem>
 					</UnorderedList>
 				</PageAlert>
 			)}
+		</Stack>
+	);
+};
+```
+
+### Automatically focus on update
+
+Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted and subsequently updated it will be focused. Here we use the `focusOnUpdate` prop to automatically handle the focusing both on mount, and on updates to the alert's content.
+
+Once the alert is displayed, try updating the content by pressing the "Update alert content" button. This will focus the alert.
+
+```jsx live
+() => {
+	const availableErrors = [
+		'Full name must not be empty.',
+		'Email must not be empty.',
+		'Phone number must not be empty.',
+	];
+
+	const [errors, setErrors] = React.useState([
+		availableErrors[0], // When we have one error, we don't display the page alert (see do's and don'ts for more info)
+	]);
+
+	return (
+		<Stack gap={2}>
+			<Button
+				alignSelf="start"
+				onClick={() =>
+					// Here we mock the updating of errors in our list
+					setErrors((prevErrors) =>
+						availableErrors
+							.toReversed()
+							.slice(availableErrors.length - prevErrors.length - 1)
+							.reverse()
+					)
+				}
+			>
+				Update alert errors
+			</Button>
+
+			{errors.length > 1 && (
+				<PageAlert
+					focusOnUpdate={errors}
+					title="There is a problem"
+					tone="error"
+				>
+					<Text as="p">Please correct the following fields and try again</Text>
+					<UnorderedList>
+						{errors.map((text) => (
+							<ListItem key={text}>
+								<TextLink href="#">{text}</TextLink>
+							</ListItem>
+						))}
+					</UnorderedList>
+				</PageAlert>
+			)}
+		</Stack>
+	);
+};
+```
+
+### Manually set focus
+
+Press the "Focus the alert" button below to set focus on the alert. To achieve this, we set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
+
+```jsx live
+() => {
+	const alertRef = React.useRef(null);
+
+	return (
+		<Stack gap={2}>
+			<Button alignSelf="start" onClick={() => alertRef.current.focus()}>
+				Focus the alert
+			</Button>
+
+			<PageAlert
+				ref={alertRef}
+				tabIndex={-1}
+				title="Submission successful"
+				tone="success"
+			>
+				<Text as="p">Your application has been successfully submitted.</Text>
+			</PageAlert>
 		</Stack>
 	);
 };
