@@ -221,29 +221,33 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 						error: true,
 				  }
 		);
+		const newTableErrors = newAssessmentFiles.reduce<SampleTableError[]>(
+			(acc, assessmentFile) =>
+				assessmentFile.file
+					? acc
+					: [
+							...acc,
+							{
+								href: `#${assessmentFile.buttonId}`,
+								message: `Upload a file for ${assessmentFile.documentType}`,
+								name: 'files',
+							},
+					  ],
+			[]
+		);
+		const newPageErrors = [
+			locationPageError,
+			datePageError,
+			filesPageError,
+		].filter(({ name }) => !nameToInputValidityMap[name]);
 
 		setAssessmentFiles(newAssessmentFiles);
-		setTableErrors(() =>
-			newAssessmentFiles.reduce<SampleTableError[]>(
-				(acc, assessmentFile) =>
-					assessmentFile.file
-						? acc
-						: [
-								...acc,
-								{
-									href: `#${assessmentFile.buttonId}`,
-									message: `Upload a file for ${assessmentFile.documentType}`,
-									name: 'files',
-								},
-						  ],
-				[]
-			)
-		);
-		setPageErrors(() =>
-			[locationPageError, datePageError, filesPageError].filter(
-				({ name }) => !nameToInputValidityMap[name]
-			)
-		);
+		setTableErrors(newTableErrors);
+		setPageErrors(newPageErrors);
+
+		if (newPageErrors.length < 2 && newTableErrors.length) {
+			tableSectionAlertRef?.current?.focus();
+		}
 	};
 
 	return (
@@ -338,34 +342,31 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 				<Button variant="text">Cancel</Button>
 			</ButtonGroup>
 
-			<>
-				<Drawer
-					key={pageErrors.length}
-					isOpen={isDrawerOpen}
-					onClose={closeDrawer}
-					title="Medium Drawer"
-					actions={
-						<ButtonGroup>
-							<Button onClick={closeDrawer}>Done</Button>
-						</ButtonGroup>
-					}
-					elementToFocusOnClose={
-						tableErrors.length ? tableSectionAlertRef.current : undefined
-					}
-				>
-					<Stack gap={2}>
-						<Text>{currentAssessmentFile?.documentType}</Text>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Medium Drawer"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Done</Button>
+					</ButtonGroup>
+				}
+				elementToFocusOnClose={
+					tableErrors.length ? tableSectionAlertRef.current : undefined
+				}
+			>
+				<Stack gap={2}>
+					<Text>{currentAssessmentFile?.documentType}</Text>
 
-						<Button onClick={mockUploadFile}>Mock upload file</Button>
+					<Button onClick={mockUploadFile}>Mock upload file</Button>
 
-						<Button onClick={mockUploadError}>Mock upload error</Button>
+					<Button onClick={mockUploadError}>Mock upload error</Button>
 
-						<Button variant="tertiary" onClick={removeFile}>
-							Remove file
-						</Button>
-					</Stack>
-				</Drawer>
-			</>
+					<Button variant="tertiary" onClick={removeFile}>
+						Remove file
+					</Button>
+				</Stack>
+			</Drawer>
 		</Stack>
 	);
 };

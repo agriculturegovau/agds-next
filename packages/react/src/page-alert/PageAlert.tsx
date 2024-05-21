@@ -64,7 +64,6 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 			focusOnMount,
 			focusOnUpdate,
 			forwardedRef,
-			focusOnUpdate,
 		});
 
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
