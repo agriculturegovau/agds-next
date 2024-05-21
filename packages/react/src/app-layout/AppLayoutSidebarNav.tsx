@@ -99,7 +99,7 @@ function AppLayoutSidebarNavListItem({
 			<AppLayoutSidebarNavItemInner
 				hasEndElement={Boolean(endElement)}
 				isActive={activePath === item.href}
-				onClick={closeMobileMenu}
+				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
 					{Icon ? <Icon color="inherit" /> : null}
@@ -116,7 +116,7 @@ function AppLayoutSidebarNavListItem({
 			<AppLayoutSidebarNavItemInner
 				hasEndElement={Boolean(endElement)}
 				isActive={false}
-				onClick={closeMobileMenu}
+				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<BaseButton {...restItemProps}>
 					{Icon ? <Icon color="inherit" /> : null}
