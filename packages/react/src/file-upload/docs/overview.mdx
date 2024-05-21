@@ -184,11 +184,19 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 		{
 			name: 'example.png',
 			size: 123456,
-			thumbnailUrl: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://via.placeholder.com/150',
 			href: '#',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
 			meta: { uid: 'abc-def', bucketId: '123-456' },
+		},
+		{
+			name: 'example-no-thumbnail.doc',
+			size: 654321,
+			href: '#',
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'fed=cba', bucketId: '654-321' },
 		},
 	]);
 
