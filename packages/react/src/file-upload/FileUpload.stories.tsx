@@ -35,41 +35,41 @@ type Story = StoryObj<typeof FileUpload>;
 
 export const Basic: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 	},
 };
 
 export const Populated: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		value: [exampleFile],
 	},
 };
 
 export const Required: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		required: true,
 	},
 };
 
 export const HideOptionalLabel: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		hideOptionalLabel: true,
 	},
 };
 
 export const Disabled: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		disabled: true,
 	},
 };
 
 export const Invalid: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		message: 'Please choose a valid file',
 		invalid: true,
 	},
@@ -87,7 +87,7 @@ export const OnlyAcceptedFormats: Story = {
 	args: {
 		label: 'Identity documents',
 		required: true,
-		hint: 'May include images of your passport, drivers licence etc.',
+		hint: 'May include images of your passport, driver’s licence etc.',
 		maxSize: 200,
 		accept: [
 			'image/jpeg',
@@ -126,7 +126,7 @@ export const MultipleImages: Story = {
 
 export const HiddenThumbnails: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		hideThumbnails: true,
 		value: [
 			createExampleImageFile(),
