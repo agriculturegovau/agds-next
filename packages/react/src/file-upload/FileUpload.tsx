@@ -131,7 +131,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
-			clearErrors();
+			setInvalidRejections([]);
 			let validFiles;
 
 			if (multiple) {
@@ -201,7 +201,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			maxSize: maxSizeBytes || undefined,
 			multiple,
 			onDropAccepted: handleDropAccepted,
-			onDropRejected: clearErrors,
 			disabled,
 			noClick: true,
 			noKeyboard: true,
