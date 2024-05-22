@@ -22,7 +22,7 @@ const meta: Meta<typeof AppLayoutFooter> = {
 							},
 							{
 								label: 'Playroom',
-								href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+								href: 'https://design-system.agriculture.gov.au/playroom',
 							},
 							{
 								label: 'Starter kit',
