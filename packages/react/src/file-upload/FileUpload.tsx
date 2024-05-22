@@ -269,7 +269,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			>
 				{(a11yProps) => {
 					return (
-						<>
+						<Stack gap={1.5}>
 							<Box {...dropzoneProps}>
 								<Flex
 									gap={1}
@@ -350,7 +350,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							</Box>
 
 							{allRejections.length > 0 && (
-								<Box breakWords paddingTop={1.5}>
+								<Box breakWords>
 									<SectionAlert
 										focusOnMount
 										onClose={clearErrors}
@@ -386,7 +386,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 								</Box>
 							)}
 							{showFileLists && (
-								<Stack gap={0.5} paddingTop={1.5}>
+								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
@@ -400,7 +400,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									/>
 								</Stack>
 							)}
-						</>
+						</Stack>
 					);
 				}}
 			</Field>

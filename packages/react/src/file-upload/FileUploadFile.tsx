@@ -4,7 +4,7 @@ import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
 import { LoadingDots } from '../loading';
-import { SuccessFilledIcon } from '../icon';
+import { CloseIcon, SuccessFilledIcon } from '../icon';
 import { TextLink } from '../text-link';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
@@ -71,15 +71,14 @@ export const FileUploadFile = ({
 						<LoadingDots label="Uploading" />
 					</Box>
 				) : (
-					<Box>
-						<Button
-							aria-label={`Remove file, ${name}`}
-							onClick={onRemove}
-							variant="text"
-						>
-							Remove file
-						</Button>
-					</Box>
+					<Button
+						aria-label={`Remove file: ${name}`}
+						iconBefore={CloseIcon}
+						onClick={onRemove}
+						variant="text"
+					>
+						Remove
+					</Button>
 				)}
 			</Flex>
 		</Flex>

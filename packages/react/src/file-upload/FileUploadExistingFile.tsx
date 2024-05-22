@@ -3,7 +3,7 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
-import { SuccessFilledIcon } from '../icon';
+import { CloseIcon, SuccessFilledIcon } from '../icon';
 import { TextLink } from '../text-link';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 import { ExistingFile, formatFileSize } from './utils';
@@ -62,15 +62,14 @@ export const FileUploadExistingFile = ({
 				</Flex>
 			</Flex>
 			<Flex alignItems="center" flexShrink={0} paddingRight={1}>
-				<Box>
-					<Button
-						aria-label={`Remove file, ${name}`}
-						onClick={onRemove}
-						variant="text"
-					>
-						Remove file
-					</Button>
-				</Box>
+				<Button
+					aria-label={`Remove file: ${name}`}
+					iconBefore={CloseIcon}
+					onClick={onRemove}
+					variant="text"
+				>
+					Remove
+				</Button>
 			</Flex>
 		</Flex>
 	);

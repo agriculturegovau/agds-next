@@ -28,158 +28,183 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-79i25n-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-1qmc73y-boxStyles"
+        class="css-79i25n-boxStyles"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1iylkid-Icon"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 15L12 3"
-          />
-          <path
-            d="M8 7L12.0002 3.00024"
-          />
-          <path
-            d="M16 7L12 3"
-          />
-          <path
-            d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
-          />
-        </svg>
-        <input
-          aria-describedby="field-:r2:-hint"
-          aria-invalid="false"
-          aria-required="false"
-          class="css-5ur8x"
-          id="field-:r2:"
-          tabindex="-1"
-          type="file"
-        />
         <div
-          class="css-iij6ui-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
-          <span
-            class="css-1ay4t5v-FileUpload"
+          <svg
+            aria-hidden="true"
+            class="css-1iylkid-Icon"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <span
-              class="css-vffudx-boxStyles-FileUpload"
-            >
-              Drag and drop a file or select a file to upload.
-            </span>
-            <span
-              class="css-110dnkz-boxStyles-FileUpload"
-            >
-              Drop 
-              file
-               here…
-            </span>
-          </span>
-        </div>
-        <button
-          class="css-g9kgvi-BaseButton-Button"
-          type="button"
-        >
-          <span>
-            <span
-              class="css-oobk4c-Button"
-            >
-              Select 
-              file
-            </span>
-            <span
-              aria-live="assertive"
+            <path
+              d="M12 15L12 3"
             />
-          </span>
-        </button>
-      </div>
-    </div>
-    <div
-      class="css-ahyeq3-boxStyles"
-    >
-      <span
-        class="css-axuon-boxStyles"
-      >
-        1 file selected
-      </span>
-      <ul
-        aria-label="Selected files"
-        class="css-1wcx0lf-boxStyles"
-      >
-        <li
-          class="css-1ydwyx-boxStyles"
-        >
+            <path
+              d="M8 7L12.0002 3.00024"
+            />
+            <path
+              d="M16 7L12 3"
+            />
+            <path
+              d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
+            />
+          </svg>
+          <input
+            aria-describedby="field-:r2:-hint"
+            aria-invalid="false"
+            aria-required="false"
+            class="css-5ur8x"
+            id="field-:r2:"
+            tabindex="-1"
+            type="file"
+          />
           <div
-            class="css-1jhrbpg-boxStyles"
+            class="css-iij6ui-boxStyles"
           >
-            <div
-              class="css-iineh1-boxStyles-FileUploadFileThumbnail"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-16t9tz1-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
-                />
-                <polyline
-                  points="13 2 13 9 20 9"
-                />
-              </svg>
-            </div>
-            <div
-              class="css-w79ye0-boxStyles"
+            <span
+              class="css-1ay4t5v-FileUpload"
             >
               <span
-                class="css-ayz5ov-boxStyles"
+                class="css-vffudx-boxStyles-FileUpload"
               >
-                example.txt
-                <span
-                  class="css-1ehfodt-boxStyles-FileUploadFile"
-                >
-                   
-                  (
-                  100 B
-                  )
-                </span>
+                Drag and drop a file or select a file to upload.
               </span>
-            </div>
+              <span
+                class="css-110dnkz-boxStyles-FileUpload"
+              >
+                Drop 
+                file
+                 here…
+              </span>
+            </span>
           </div>
-          <div
-            class="css-jd5yi9-boxStyles"
+          <button
+            class="css-g9kgvi-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Select 
+                file
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="css-1wcx0lf-boxStyles"
+      >
+        <span
+          class="css-axuon-boxStyles"
+        >
+          1 file selected
+        </span>
+        <ul
+          aria-label="Selected files"
+          class="css-1wcx0lf-boxStyles"
+        >
+          <li
+            class="css-1ydwyx-boxStyles"
           >
             <div
-              class="css-79i25n-boxStyles"
+              class="css-1jhrbpg-boxStyles"
+            >
+              <div
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-16t9tz1-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  />
+                  <polyline
+                    points="13 2 13 9 20 9"
+                  />
+                </svg>
+              </div>
+              <div
+                class="css-w79ye0-boxStyles"
+              >
+                <span
+                  class="css-ayz5ov-boxStyles"
+                >
+                  example.txt
+                  <span
+                    class="css-1ehfodt-boxStyles-FileUploadFile"
+                  >
+                     
+                    (
+                    100 B
+                    )
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-jd5yi9-boxStyles"
             >
               <button
-                aria-label="Remove file, example.txt"
+                aria-label="Remove file: example.txt"
                 class="css-psfrx5-BaseButton-Button"
                 type="button"
               >
+                <svg
+                  aria-hidden="true"
+                  class="css-sbsftc-Button"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
                 <span>
                   <span
                     class="css-oobk4c-Button"
                   >
-                    Remove file
+                    Remove
                   </span>
                   <span
                     aria-live="assertive"
@@ -187,9 +212,9 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
                 </span>
               </button>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -223,81 +248,85 @@ exports[`FileUpload Basic renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-79i25n-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-1qmc73y-boxStyles"
+        class="css-79i25n-boxStyles"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1iylkid-Icon"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 15L12 3"
-          />
-          <path
-            d="M8 7L12.0002 3.00024"
-          />
-          <path
-            d="M16 7L12 3"
-          />
-          <path
-            d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
-          />
-        </svg>
-        <input
-          aria-describedby="field-:r0:-hint"
-          aria-invalid="false"
-          aria-required="false"
-          class="css-5ur8x"
-          id="field-:r0:"
-          tabindex="-1"
-          type="file"
-        />
         <div
-          class="css-iij6ui-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
-          <span
-            class="css-1ay4t5v-FileUpload"
+          <svg
+            aria-hidden="true"
+            class="css-1iylkid-Icon"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 15L12 3"
+            />
+            <path
+              d="M8 7L12.0002 3.00024"
+            />
+            <path
+              d="M16 7L12 3"
+            />
+            <path
+              d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
+            />
+          </svg>
+          <input
+            aria-describedby="field-:r0:-hint"
+            aria-invalid="false"
+            aria-required="false"
+            class="css-5ur8x"
+            id="field-:r0:"
+            tabindex="-1"
+            type="file"
+          />
+          <div
+            class="css-iij6ui-boxStyles"
           >
             <span
-              class="css-vffudx-boxStyles-FileUpload"
+              class="css-1ay4t5v-FileUpload"
             >
-              Drag and drop a file or select a file to upload.
+              <span
+                class="css-vffudx-boxStyles-FileUpload"
+              >
+                Drag and drop a file or select a file to upload.
+              </span>
+              <span
+                class="css-110dnkz-boxStyles-FileUpload"
+              >
+                Drop 
+                file
+                 here…
+              </span>
             </span>
-            <span
-              class="css-110dnkz-boxStyles-FileUpload"
-            >
-              Drop 
-              file
-               here…
+          </div>
+          <button
+            class="css-g9kgvi-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Select 
+                file
+              </span>
+              <span
+                aria-live="assertive"
+              />
             </span>
-          </span>
+          </button>
         </div>
-        <button
-          class="css-g9kgvi-BaseButton-Button"
-          type="button"
-        >
-          <span>
-            <span
-              class="css-oobk4c-Button"
-            >
-              Select 
-              file
-            </span>
-            <span
-              aria-live="assertive"
-            />
-          </span>
-        </button>
       </div>
     </div>
   </div>
@@ -332,114 +361,206 @@ exports[`FileUpload Existing files renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-79i25n-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
-        class="css-1qmc73y-boxStyles"
+        class="css-79i25n-boxStyles"
       >
-        <svg
-          aria-hidden="true"
-          class="css-1iylkid-Icon"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 15L12 3"
-          />
-          <path
-            d="M8 7L12.0002 3.00024"
-          />
-          <path
-            d="M16 7L12 3"
-          />
-          <path
-            d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
-          />
-        </svg>
-        <input
-          aria-describedby="field-:r4:-hint"
-          aria-invalid="false"
-          aria-required="false"
-          class="css-5ur8x"
-          id="field-:r4:"
-          tabindex="-1"
-          type="file"
-        />
         <div
-          class="css-iij6ui-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
-          <span
-            class="css-1ay4t5v-FileUpload"
+          <svg
+            aria-hidden="true"
+            class="css-1iylkid-Icon"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 15L12 3"
+            />
+            <path
+              d="M8 7L12.0002 3.00024"
+            />
+            <path
+              d="M16 7L12 3"
+            />
+            <path
+              d="M21 16V19.6682C20.9975 20.0205 20.8849 20.3575 20.6863 20.6065C20.4878 20.8556 20.2192 20.9969 19.9383 21H4.06166C3.78085 20.9969 3.51224 20.8556 3.31367 20.6065C3.1151 20.3575 3.00245 20.0205 3 19.6682V16"
+            />
+          </svg>
+          <input
+            aria-describedby="field-:r4:-hint"
+            aria-invalid="false"
+            aria-required="false"
+            class="css-5ur8x"
+            id="field-:r4:"
+            tabindex="-1"
+            type="file"
+          />
+          <div
+            class="css-iij6ui-boxStyles"
           >
             <span
-              class="css-vffudx-boxStyles-FileUpload"
+              class="css-1ay4t5v-FileUpload"
             >
-              Drag and drop a file or select a file to upload.
+              <span
+                class="css-vffudx-boxStyles-FileUpload"
+              >
+                Drag and drop a file or select a file to upload.
+              </span>
+              <span
+                class="css-110dnkz-boxStyles-FileUpload"
+              >
+                Drop 
+                file
+                 here…
+              </span>
             </span>
-            <span
-              class="css-110dnkz-boxStyles-FileUpload"
-            >
-              Drop 
-              file
-               here…
+          </div>
+          <button
+            class="css-g9kgvi-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Select 
+                file
+              </span>
+              <span
+                aria-live="assertive"
+              />
             </span>
-          </span>
+          </button>
         </div>
-        <button
-          class="css-g9kgvi-BaseButton-Button"
-          type="button"
-        >
-          <span>
-            <span
-              class="css-oobk4c-Button"
-            >
-              Select 
-              file
-            </span>
-            <span
-              aria-live="assertive"
-            />
-          </span>
-        </button>
       </div>
-    </div>
-    <div
-      class="css-ahyeq3-boxStyles"
-    >
-      <span
-        class="css-axuon-boxStyles"
-      >
-        2 files selected
-      </span>
-      <ul
-        aria-label="Existing files"
+      <div
         class="css-1wcx0lf-boxStyles"
       >
-        <li
-          class="css-8coe2o-boxStyles"
+        <span
+          class="css-axuon-boxStyles"
         >
-          <div
-            class="css-1jhrbpg-boxStyles"
+          2 files selected
+        </span>
+        <ul
+          aria-label="Existing files"
+          class="css-1wcx0lf-boxStyles"
+        >
+          <li
+            class="css-8coe2o-boxStyles"
           >
             <div
-              class="css-v42gao-boxStyles-FileUploadFileThumbnail"
-            />
-            <div
-              class="css-w79ye0-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-1ldvxqr-boxStyles"
+                class="css-v42gao-boxStyles-FileUploadFileThumbnail"
+              />
+              <div
+                class="css-w79ye0-boxStyles"
+              >
+                <div
+                  class="css-1ldvxqr-boxStyles"
+                >
+                  <svg
+                    aria-hidden="false"
+                    aria-label="Success"
+                    class="css-1qd7isr-FileUploadExistingFile"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="css-ayz5ov-boxStyles"
+                >
+                  <a
+                    class="css-ma0bjl-TextLink"
+                    href="#"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    example.png
+                     (123.46 kB)
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-jd5yi9-boxStyles"
+            >
+              <button
+                aria-label="Remove file: example.png"
+                class="css-psfrx5-BaseButton-Button"
+                type="button"
               >
                 <svg
-                  aria-hidden="false"
-                  aria-label="Success"
-                  class="css-1qd7isr-FileUploadExistingFile"
+                  aria-hidden="true"
+                  class="css-sbsftc-Button"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+                <span>
+                  <span
+                    class="css-oobk4c-Button"
+                  >
+                    Remove
+                  </span>
+                  <span
+                    aria-live="assertive"
+                  />
+                </span>
+              </button>
+            </div>
+          </li>
+          <li
+            class="css-8coe2o-boxStyles"
+          >
+            <div
+              class="css-1jhrbpg-boxStyles"
+            >
+              <div
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-16t9tz1-Icon"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -450,91 +571,65 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-                    fill="currentColor"
-                    stroke="none"
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  />
+                  <polyline
+                    points="13 2 13 9 20 9"
                   />
                 </svg>
               </div>
-              <span
-                class="css-ayz5ov-boxStyles"
+              <div
+                class="css-w79ye0-boxStyles"
               >
-                <a
-                  class="css-ma0bjl-TextLink"
-                  href="#"
-                  rel="noopener noreferrer"
-                  target="_blank"
+                <div
+                  class="css-1ldvxqr-boxStyles"
                 >
-                  example.png
-                   (123.46 kB)
-                </a>
-              </span>
+                  <svg
+                    aria-hidden="false"
+                    aria-label="Success"
+                    class="css-1qd7isr-FileUploadExistingFile"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="css-ayz5ov-boxStyles"
+                >
+                  <a
+                    class="css-ma0bjl-TextLink"
+                    href="#"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    example-no-thumbnail.doc
+                     (654.32 kB)
+                  </a>
+                </span>
+              </div>
             </div>
-          </div>
-          <div
-            class="css-jd5yi9-boxStyles"
-          >
             <div
-              class="css-79i25n-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <button
-                aria-label="Remove file, example.png"
+                aria-label="Remove file: example-no-thumbnail.doc"
                 class="css-psfrx5-BaseButton-Button"
                 type="button"
               >
-                <span>
-                  <span
-                    class="css-oobk4c-Button"
-                  >
-                    Remove file
-                  </span>
-                  <span
-                    aria-live="assertive"
-                  />
-                </span>
-              </button>
-            </div>
-          </div>
-        </li>
-        <li
-          class="css-8coe2o-boxStyles"
-        >
-          <div
-            class="css-1jhrbpg-boxStyles"
-          >
-            <div
-              class="css-iineh1-boxStyles-FileUploadFileThumbnail"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-16t9tz1-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
-                />
-                <polyline
-                  points="13 2 13 9 20 9"
-                />
-              </svg>
-            </div>
-            <div
-              class="css-w79ye0-boxStyles"
-            >
-              <div
-                class="css-1ldvxqr-boxStyles"
-              >
                 <svg
-                  aria-hidden="false"
-                  aria-label="Success"
-                  class="css-1qd7isr-FileUploadExistingFile"
+                  aria-hidden="true"
+                  class="css-sbsftc-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -544,44 +639,24 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24ZM17.7071 9.70711C18.0976 9.31658 18.0976 8.68342 17.7071 8.29289C17.3166 7.90237 16.6834 7.90237 16.2929 8.29289L10 14.5858L7.70711 12.2929C7.31658 11.9024 6.68342 11.9024 6.29289 12.2929C5.90237 12.6834 5.90237 13.3166 6.29289 13.7071L9.29289 16.7071C9.68342 17.0976 10.3166 17.0976 10.7071 16.7071L17.7071 9.70711Z"
-                    fill="currentColor"
-                    stroke="none"
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
                   />
                 </svg>
-              </div>
-              <span
-                class="css-ayz5ov-boxStyles"
-              >
-                <a
-                  class="css-ma0bjl-TextLink"
-                  href="#"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  example-no-thumbnail.doc
-                   (654.32 kB)
-                </a>
-              </span>
-            </div>
-          </div>
-          <div
-            class="css-jd5yi9-boxStyles"
-          >
-            <div
-              class="css-79i25n-boxStyles"
-            >
-              <button
-                aria-label="Remove file, example-no-thumbnail.doc"
-                class="css-psfrx5-BaseButton-Button"
-                type="button"
-              >
                 <span>
                   <span
                     class="css-oobk4c-Button"
                   >
-                    Remove file
+                    Remove
                   </span>
                   <span
                     aria-live="assertive"
@@ -589,9 +664,9 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                 </span>
               </button>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
