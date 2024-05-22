@@ -55,6 +55,41 @@ describe('FileUpload', () => {
 		});
 	});
 
+	describe('Multiple, maxSize and accepted file extensions', () => {
+		it('renders correctly', () => {
+			const { container } = render(
+				<FileUploadExample
+					accept={['image/jpeg', 'image/png']}
+					maxSize={3000}
+					multiple
+				/>
+			);
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(
+				<FileUploadExample
+					accept={['image/jpeg', 'image/png']}
+					maxSize={3000}
+					multiple
+				/>
+			);
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+					// html-validate doesn't like aria-label on list elements, even though it's valid
+					'aria-label-misuse': 'off',
+					// html-validate doesn't like multiple without ="true" even though it's valid
+					'attribute-boolean-style': 'off',
+				},
+			});
+			expect(await axe(container)).toHaveNoViolations();
+		});
+	});
+
 	describe('1 selected file', () => {
 		it('renders correctly', () => {
 			const { container } = render(
