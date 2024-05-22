@@ -66,6 +66,7 @@ export const FileUploadExistingFile = ({
 					aria-label={`Remove file: ${name}`}
 					iconBefore={CloseIcon}
 					onClick={onRemove}
+					size="sm"
 					variant="text"
 				>
 					Remove

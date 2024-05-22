@@ -177,7 +177,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-sbsftc-Button"
+                  class="css-aw6h11-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -513,7 +513,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-sbsftc-Button"
+                  class="css-aw6h11-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -629,7 +629,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-sbsftc-Button"
+                  class="css-aw6h11-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"

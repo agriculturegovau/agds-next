@@ -18,12 +18,12 @@ export const FileUploadExistingFileList = ({
 	}
 
 	return (
-		<Stack as="ul" aria-label="Existing files" gap={0.5}>
+		<Stack aria-label="Existing files" as="ul" gap={0.5}>
 			{files.map((file, index) => (
 				<FileUploadExistingFile
-					key={index}
 					file={file}
 					hideThumbnails={hideThumbnails}
+					key={index}
 					onRemove={() => onRemove?.(file)}
 				/>
 			))}

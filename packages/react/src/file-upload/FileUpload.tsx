@@ -10,7 +10,6 @@ import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
 import { boxPalette, mergeRefs, tokens } from '../core';
 import { Field } from '../field';
-import { Flex } from '../flex';
 import { UploadIcon } from '../icon';
 import { ListItem, UnorderedList } from '../list';
 import { SectionAlert } from '../section-alert';
@@ -121,11 +120,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const [invalidRejections, setInvalidRejections] = useState<FileRejection[]>(
 			[]
 		);
-		const [allRejections, setAllRejections] = useState<FileRejection[]>([]);
-
-		useEffect(() => {
-			setAllRejections([...invalidRejections, ...tooManyFilesRejections]);
-		}, [invalidRejections, tooManyFilesRejections]);
+		const allRejections = useMemo(
+			() => [...invalidRejections, ...tooManyFilesRejections],
+			[invalidRejections, tooManyFilesRejections]
+		);
 
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
@@ -271,14 +269,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					return (
 						<Stack gap={1.5}>
 							<Box {...dropzoneProps}>
-								<Flex
+								<Stack
+									alignItems="center"
+									border
+									css={styles}
 									gap={1}
 									padding={1.5}
-									alignItems="center"
-									flexDirection="column"
-									border
 									rounded
-									css={styles}
 								>
 									<UploadIcon size="lg" color="muted" />
 									<input
@@ -290,14 +287,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										 * need to forward a ref to the input so consumers can use it.
 										 * The mergeRef utility allows us to do this.
 										 */
-										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 										css={visuallyHiddenStyles}
+										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 									/>
-									<Flex
-										flexDirection="column"
-										alignItems="center"
-										textAlign="center"
-									>
+									<Stack alignItems="center" textAlign="center">
 										{/* This maintains the space created by the default text so when a user drags over the dropzone, its height doesn't change, which can ruin the drag. We then vertically centre the isDragActive text */}
 										<span css={{ position: 'relative' }}>
 											<Text
@@ -312,6 +305,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 													: 'Drag and drop a file or select a file to upload.'}
 											</Text>
 											<Text
+												color="action"
 												css={{
 													display: isDragActive ? 'block' : 'none',
 													left: 0,
@@ -320,7 +314,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 													top: '50%',
 													transform: 'translateY(-50%)',
 												}}
-												color="action"
 												fontWeight="bold"
 											>
 												Drop {filesPlural} here…
@@ -334,19 +327,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										) : null}
 										{accept ? (
 											<Text color="muted">
-												Files accepted: {acceptedFilesSummary}
+												Files accepted: {acceptedFilesSummary}.
 											</Text>
 										) : null}
-									</Flex>
+									</Stack>
 									<Button
+										disabled={disabled}
+										onClick={open}
 										type="button"
 										variant="secondary"
-										onClick={open}
-										disabled={disabled}
 									>
 										Select {filesPlural}
 									</Button>
-								</Flex>
+								</Stack>
 							</Box>
 
 							{allRejections.length > 0 && (
