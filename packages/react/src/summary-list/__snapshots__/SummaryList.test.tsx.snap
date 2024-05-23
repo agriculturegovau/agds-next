@@ -6,7 +6,7 @@ exports[`SummaryList renders correctly 1`] = `
     class="css-11haoc9-boxStyles"
   >
     <div
-      class="css-1gkaq3c-boxStyles"
+      class="css-balq7b-boxStyles"
     >
       <dt
         class="css-1w3kdnx-boxStyles"
@@ -30,7 +30,7 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-1gkaq3c-boxStyles"
+      class="css-balq7b-boxStyles"
     >
       <dt
         class="css-1w3kdnx-boxStyles"
@@ -54,7 +54,7 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-1gkaq3c-boxStyles"
+      class="css-balq7b-boxStyles"
     >
       <dt
         class="css-1w3kdnx-boxStyles"
@@ -80,7 +80,7 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-1gkaq3c-boxStyles"
+      class="css-balq7b-boxStyles"
     >
       <dt
         class="css-1w3kdnx-boxStyles"
