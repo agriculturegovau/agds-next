@@ -29,7 +29,6 @@ import {
 	getAcceptedFilesSummary,
 	getErrorSummary,
 	getFileListSummaryText,
-	reformatDropzoneErrors,
 	removeItemAtIndex,
 } from './utils';
 
@@ -115,15 +114,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		}
 
 		const [tooManyFilesRejections, setTooManyFilesRejections] = useState<
-			FileRejection[]
-		>([]);
-		const [invalidRejections, setInvalidRejections] = useState<FileRejection[]>(
-			[]
-		);
-		const allRejections = useMemo(
-			() => [...invalidRejections, ...tooManyFilesRejections],
-			[invalidRejections, tooManyFilesRejections]
-		);
+			FileRejection[] | undefined
+		>(undefined);
+		const [invalidRejections, setInvalidRejections] = useState<
+			FileRejection[] | undefined
+		>(undefined);
 
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
@@ -131,7 +126,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
-			setInvalidRejections([]);
+			clearErrors();
 			let validFiles;
 
 			if (multiple) {
@@ -150,11 +145,11 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					acceptedFilesWithNoDuplicates.length > validMaxFiles
 				) {
 					// When we have a max files limit, we'll merge the error list with any existing errors...
-					setTooManyFilesRejections(() => [
-						...acceptedFilesWithNoDuplicates
+					setTooManyFilesRejections(() =>
+						acceptedFilesWithNoDuplicates
 							.slice(validMaxFiles)
-							.map(convertFileToTooManyFilesRejection),
-					]);
+							.map(convertFileToTooManyFilesRejection)
+					);
 
 					// ...And return the list of files up to the max file limit
 					validFiles = acceptedFilesWithNoDuplicates.slice(0, validMaxFiles);
@@ -171,8 +166,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		};
 
 		function clearErrors() {
-			setTooManyFilesRejections([]);
-			setInvalidRejections([]);
+			setTooManyFilesRejections(undefined);
+			setInvalidRejections(undefined);
 		}
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into a format accepted by react-dropzone
@@ -207,15 +202,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		});
 
 		useEffect(() => {
-			setInvalidRejections((prevInvalid) => [
-				...prevInvalid,
-				...reformatDropzoneErrors(
-					dropzoneFileRejections,
-					maxSizeBytes,
-					acceptedFilesSummary
-				),
-			]);
-			// eslint-disable-next-line react-hooks/exhaustive-deps
+			if (dropzoneFileRejections.length > 0) {
+				setInvalidRejections(dropzoneFileRejections);
+			}
 		}, [dropzoneFileRejections]);
 
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
@@ -252,7 +241,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		]);
 
 		const showFileLists = Boolean(value.length || existingFiles?.length);
-		const pluralAllRejections = allRejections.length > 1;
+		const hasRejections =
+			(invalidRejections && invalidRejections?.length > 0) ||
+			(tooManyFilesRejections && tooManyFilesRejections?.length > 0);
+		const pluralAllRejections =
+			(invalidRejections && invalidRejections?.length > 1) ||
+			(tooManyFilesRejections && tooManyFilesRejections?.length > 1);
 
 		return (
 			<Field
@@ -340,8 +334,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Button>
 								</Stack>
 							</Box>
-
-							{allRejections.length > 0 && (
+							{hasRejections && (
 								<Box breakWords>
 									<SectionAlert
 										focusOnMount
@@ -358,7 +351,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										</Text>
 										{
 											<UnorderedList>
-												{allRejections.map((rejection) => (
+												{[
+													...(invalidRejections ?? []),
+													...(tooManyFilesRejections ?? []),
+												].map((rejection) => (
 													<ListItem key={rejection.file.name}>
 														<Text color="error" fontWeight="bold">
 															{rejection.file.name}

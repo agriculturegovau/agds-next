@@ -217,5 +217,3 @@ test('removeItemAtIndex', () => {
 	const items = ['a', 'b', 'c'];
 	expect(removeItemAtIndex(items, 1)).toEqual(['a', 'c']);
 });
-
-// reformatDropzoneErrors doesn't need to be tested since it is mostly just a wrapper around formatting file size which already has plenty of tests

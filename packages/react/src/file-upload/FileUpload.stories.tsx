@@ -88,8 +88,9 @@ export const OnlyAcceptedFormats: Story = {
 		label: 'Identity documents',
 		required: true,
 		hint: 'May include images of your passport, driver’s licence etc.',
-		maxSize: 200,
+		maxSize: 400,
 		accept: [
+			'image/gif',
 			'image/jpeg',
 			'image/png',
 			'application/pdf',
