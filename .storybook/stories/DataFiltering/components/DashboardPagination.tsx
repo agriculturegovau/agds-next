@@ -24,8 +24,37 @@ export const DashboardPagination = () => {
 			})}
 			itemsPerPage={pagination.perPage}
 			onItemsPerPageChange={(perPage) =>
-				setPagination({ ...pagination, perPage })
+				setPagination({
+					page: getValidPage(
+						pagination.page,
+						totalItems,
+						perPage,
+						pagination.perPage
+					),
+					perPage,
+				})
 			}
 		/>
 	);
+};
+
+const getValidPage = (
+	currentPage: number,
+	totalItems: number,
+	perPage: number,
+	prevPerPage: number
+) => {
+	// So the user doesn't lose their position in the nav order,
+	// we find the lowest displayed item number and ensure it is
+	// still on the page when we change items per page.
+	const lowestDisplayedItemNumber = Math.floor(
+		currentPage * prevPerPage + (1 - prevPerPage)
+	);
+	const newPageWithLowestDisplayedItemNumber = Math.floor(
+		lowestDisplayedItemNumber / perPage + 1
+	);
+
+	return currentPage > totalItems / perPage
+		? Math.ceil(totalItems / perPage)
+		: newPageWithLowestDisplayedItemNumber;
 };
