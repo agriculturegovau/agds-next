@@ -395,9 +395,7 @@ When a drawer closes, focus is returned to the element that opened it. You can o
 						</Button>
 					</ButtonGroup>
 				}
-				elementToFocusOnClose={
-					error ? sectionAlertContainerRef.current : undefined
-				}
+				elementToFocusOnClose={sectionAlertContainerRef.current}
 				isOpen={isDrawerOpen}
 				onClose={closeDrawer}
 				title="Drawer title"
