@@ -92,9 +92,6 @@ type PageError =
 	| typeof datePageError
 	| typeof filesPageError;
 
-// const getPageErrors = ({name}: {name: PageErrors[number]['name']}) => {
-
-// }
 
 const sampleTableError = {
 	href: '#vehicle-build-and-layout-plans-upload-button',
