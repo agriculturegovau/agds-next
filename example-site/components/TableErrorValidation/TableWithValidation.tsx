@@ -92,7 +92,6 @@ type PageError =
 	| typeof datePageError
 	| typeof filesPageError;
 
-
 const sampleTableError = {
 	href: '#vehicle-build-and-layout-plans-upload-button',
 	message: 'Upload files',
