@@ -359,9 +359,11 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 
 					<Button onClick={mockUploadError}>Mock upload error</Button>
 
-					<Button variant="tertiary" onClick={removeFile}>
-						Remove file
-					</Button>
+					{currentAssessmentFile?.file && (
+						<Button variant="tertiary" onClick={removeFile}>
+							Remove file
+						</Button>
+					)}
 				</Stack>
 			</Drawer>
 		</Stack>

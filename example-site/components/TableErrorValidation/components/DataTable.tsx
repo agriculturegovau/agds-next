@@ -150,6 +150,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													</TableCell>
 													<TableCell>
 														<Button
+															aria-label={`Upload: ${documentType}`}
 															focusRingFor="all"
 															iconBefore={UploadIcon}
 															id={buttonId}
