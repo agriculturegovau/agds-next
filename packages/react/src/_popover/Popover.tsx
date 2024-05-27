@@ -7,6 +7,7 @@ import {
 	offset,
 	flip,
 	size,
+	shift,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
@@ -44,6 +45,7 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 });
 
 const DEFAULT_OFFSET = 8;
+const MIN_SIDE_GUTTER_WIDTH = 1;
 
 type UsePopoverOptions = {
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
@@ -56,6 +58,8 @@ type UsePopoverOptions = {
 	maxHeight?: number;
 	/** The minimum acceptable height in `px` of the popover element before the `flip` middleware takes over.  */
 	minHeight?: number;
+	/** Setting this to true prevents vertical scroll by stretching the popover height to match its content height. This uses the CSS value of `max-content` for `height`. */
+	noVerticalScroll?: boolean;
 	/** Used to control the vertical distance between the reference element and popover element. Value is in pixels. */
 	offset?: number;
 	/** The placement of the popover element in relation to the reference element. */
@@ -69,8 +73,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 		hiddenWithCSS = false,
 		isOpen,
 		matchReferenceWidth = false,
-		minHeight: minHeightOption,
-		maxHeight: maxHeightOption,
+		minHeight,
+		maxHeight,
+		noVerticalScroll,
 		offset: offsetOption = DEFAULT_OFFSET,
 		placement = 'bottom-start',
 	} = options || {};
@@ -81,6 +86,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
+			// https://floating-ui.com/docs/flip#combining-with-shift
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Changes the placement of the floating element in order to keep it in view
 			// https://floating-ui.com/docs/flip
 			flip({ padding: DEFAULT_OFFSET }),
@@ -88,32 +96,23 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({
-					availableHeight: _availableHeight,
-					availableWidth,
-					elements,
-					rects,
-				}) {
-					// Popovers can have a predefined max-height if there is enough room on the screen
-					const maxHeight =
-						maxHeightOption && _availableHeight > maxHeightOption
-							? maxHeightOption
-							: _availableHeight;
-
-					// Minimum acceptable height before `flip` will take over
-					const availableHeight = minHeightOption
-						? Math.max(minHeightOption, maxHeight)
-						: maxHeight;
-
+				apply({ availableHeight, elements, rects }) {
 					Object.assign(elements.floating.style, {
-						maxHeight: `${availableHeight}px`,
+						...(noVerticalScroll
+							? { height: 'max-content' }
+							: {
+									maxHeight: `${maxHeight || availableHeight}px`,
+							  }),
+						...(minHeight !== undefined && {
+							minHeight: `${minHeight}px`,
+						}),
 						// https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
 									width: `${rects.reference.width}px`,
 							  }
 							: {
-									maxWidth: `${availableWidth}px`,
+									maxWidth: `calc(100vw - ${2 * MIN_SIDE_GUTTER_WIDTH}px)`,
 							  }),
 					});
 				},

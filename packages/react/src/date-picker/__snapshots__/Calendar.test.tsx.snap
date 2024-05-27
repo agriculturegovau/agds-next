@@ -11,7 +11,7 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-113xs51-boxStyles-CalendarRangeContainer"
+      class="css-o38wyj-boxStyles-CalendarRangeContainer"
     >
       <div
         class="rdp "
@@ -46,7 +46,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Month
                   </label>
                   <select
-                    class="css-x8yzpz-boxStyles-YearMonthSelect"
+                    class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r4:-select"
                   >
                     <option
@@ -137,7 +137,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Year
                   </label>
                   <select
-                    class="css-x8yzpz-boxStyles-YearMonthSelect"
+                    class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r5:-select"
                   >
                     <option
@@ -972,7 +972,7 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1qnfusx-boxStyles-CalendarContainer"
+      class="css-ul8rx6-boxStyles-CalendarContainer"
     >
       <div
         class="rdp "
@@ -1007,7 +1007,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Month
                   </label>
                   <select
-                    class="css-x8yzpz-boxStyles-YearMonthSelect"
+                    class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r0:-select"
                   >
                     <option
@@ -1098,7 +1098,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Year
                   </label>
                   <select
-                    class="css-x8yzpz-boxStyles-YearMonthSelect"
+                    class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r1:-select"
                   >
                     <option

@@ -175,7 +175,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
         class="css-1kb9pg4-boxStyles-Popover"
         id="downshift-:r4:-menu"
         role="listbox"
-        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: 195px; width: 0px;"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: 295px; min-height: 195px; width: 0px;"
       >
         <li
           class="css-15t0jo8-boxStyles-ComboboxListItem"

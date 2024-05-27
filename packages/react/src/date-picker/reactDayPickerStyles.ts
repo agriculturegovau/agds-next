@@ -2,7 +2,8 @@ import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
-const cellSize = '3rem';
+const cellSizeLarge = '3rem';
+const cellSizeSmall = '2.75rem';
 
 export const reactDayPickerStyles = {
 	// Visually hidden
@@ -56,25 +57,26 @@ export const reactDayPickerStyles = {
 	},
 	// Days of week
 	'.rdp-head_cell': {
-		verticalAlign: 'middle',
-		textAlign: 'center',
+		color: boxPalette.foregroundMuted,
+		fontWeight: tokens.fontWeight.normal,
+		height: cellSizeSmall,
 		margin: 0,
 		padding: 0,
-		width: cellSize,
-		height: cellSize,
-		fontWeight: tokens.fontWeight.normal,
-		color: boxPalette.foregroundMuted,
+		textAlign: 'center',
+		verticalAlign: 'middle',
+		width: cellSizeSmall,
+		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...fontGrid('sm', 'default'),
 	},
 	// Day button
 	'.rdp-day': {
-		display: 'flex',
-		justifyContent: 'center',
 		alignItems: 'center',
-		width: cellSize,
-		height: cellSize,
 		borderRadius: tokens.borderRadius,
 		color: boxPalette.foregroundAction,
+		display: 'flex',
+		height: cellSizeSmall,
+		justifyContent: 'center',
+		width: cellSizeSmall,
 		'&[disabled]': {
 			color: boxPalette.foregroundText,
 			opacity: 0.3,
@@ -85,6 +87,7 @@ export const reactDayPickerStyles = {
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 		},
+		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...focusStyles,
 		// Today's button
 		'&.rdp-day_today': {
@@ -112,18 +115,21 @@ export const reactDayPickerStyles = {
 		'&:last-of-type': { marginRight: 0 },
 	},
 	'.rdp-table': {
-		margin: 0,
-		maxWidth: `calc(${cellSize} * 7)`,
 		borderCollapse: 'collapse',
+		height: cellSizeSmall,
+		margin: 0,
+		width: cellSizeSmall,
+		'@media(min-width: 375px)': { maxWidth: `calc(${cellSizeLarge} * 7)` },
 	},
 	'.rdp-tbody': {
 		border: 0,
 	},
 	'.rdp-cell': {
-		width: cellSize,
-		height: cellSize,
+		height: cellSizeSmall,
 		padding: 0,
 		textAlign: 'center',
+		width: cellSizeSmall,
+		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 	},
 	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 		{
