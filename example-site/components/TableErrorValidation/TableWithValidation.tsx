@@ -93,6 +93,7 @@ type PageError =
 	| typeof filesPageError;
 
 const sampleTableError = {
+	documentType: 'Vehicle build and layout plans',
 	href: '#vehicle-build-and-layout-plans-upload-button',
 	message: 'Upload files',
 	name: 'files',
@@ -135,19 +136,9 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 		setAssessmentFiles(newAssessmentFiles);
 
 		setTableErrors(
-			newAssessmentFiles.reduce<SampleTableError[]>(
-				(acc, assessmentFile) =>
-					assessmentFile.file
-						? acc
-						: [
-								...acc,
-								{
-									href: `#${assessmentFile.buttonId}`,
-									message: `Upload a file for ${assessmentFile.documentType}`,
-									name: 'files',
-								},
-						  ],
-				[]
+			tableErrors.filter(
+				(tableError) =>
+					tableError.documentType !== currentAssessmentFile?.documentType
 			)
 		);
 		closeDrawer();
@@ -171,16 +162,17 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 		setTableErrors(
 			newAssessmentFiles.reduce<SampleTableError[]>(
 				(acc, assessmentFile) =>
-					assessmentFile.file
-						? acc
-						: [
+					assessmentFile.documentType === currentAssessmentFile?.documentType
+						? [
 								...acc,
 								{
+									documentType: currentAssessmentFile.documentType,
 									href: `#${assessmentFile.buttonId}`,
 									message: `Upload a file for ${assessmentFile.documentType}`,
 									name: 'files',
 								},
-						  ],
+						  ]
+						: acc,
 				[]
 			)
 		);
@@ -224,6 +216,7 @@ export const TableWithValidation = ({ tableRef }: MultiTablePageProps) => {
 					: [
 							...acc,
 							{
+								documentType: assessmentFile.documentType,
 								href: `#${assessmentFile.buttonId}`,
 								message: `Upload a file for ${assessmentFile.documentType}`,
 								name: 'files',
