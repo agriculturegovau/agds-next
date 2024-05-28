@@ -1,9 +1,4 @@
-import {
-	ErrorCode,
-	type FileError,
-	type FileRejection,
-	type FileWithPath,
-} from 'react-dropzone';
+import { ErrorCode, type FileError, type FileWithPath } from 'react-dropzone';
 import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';

@@ -52,7 +52,9 @@ Selecting multiple files is also supported with FileUpload. Simply add `multiple
 			value={value}
 			onChange={setValue}
 			multiple={true}
-			maxFiles={3}
+			maxFiles={2}
+			maxSize={200}
+			accept={['image/jpeg', 'image/png']}
 		/>
 	);
 };

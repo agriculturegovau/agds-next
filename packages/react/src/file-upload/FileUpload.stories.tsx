@@ -100,6 +100,7 @@ export const OnlyAcceptedFormats: Story = {
 			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 		],
 		multiple: true,
+		maxFiles: 3,
 	},
 };
 
