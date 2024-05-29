@@ -26,6 +26,7 @@ export type NavItem = (NavLink | NavButton) & {
 
 export type AppLayoutSidebarNavProps = {
 	activePath?: string;
+	background?: 'body' | 'bodyAlt';
 	items: (
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
@@ -35,6 +36,7 @@ export type AppLayoutSidebarNavProps = {
 
 export function AppLayoutSidebarNav({
 	activePath,
+	background,
 	items,
 }: AppLayoutSidebarNavProps) {
 	return (
@@ -66,9 +68,10 @@ export function AppLayoutSidebarNav({
 							) : null}
 							{groupItems.map((item, idx) => (
 								<AppLayoutSidebarNavListItem
-									key={idx}
-									item={item}
 									activePath={activePath}
+									background={background}
+									item={item}
+									key={idx}
 								/>
 							))}
 						</Fragment>
@@ -81,11 +84,13 @@ export function AppLayoutSidebarNav({
 
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
+	background?: 'body' | 'bodyAlt';
 	item: NavItem;
 };
 
 function AppLayoutSidebarNavListItem({
 	activePath,
+	background,
 	item,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
@@ -97,6 +102,7 @@ function AppLayoutSidebarNavListItem({
 		const active = item.href === activePath;
 		return (
 			<AppLayoutSidebarNavItemInner
+				background={background}
 				hasEndElement={Boolean(endElement)}
 				isActive={activePath === item.href}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
@@ -114,6 +120,7 @@ function AppLayoutSidebarNavListItem({
 	if ('onClick' in item) {
 		return (
 			<AppLayoutSidebarNavItemInner
+				background={background}
 				hasEndElement={Boolean(endElement)}
 				isActive={false}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
@@ -129,7 +136,11 @@ function AppLayoutSidebarNavListItem({
 
 	// Text-only list item
 	return (
-		<AppLayoutSidebarNavItemInner isActive={false} hasEndElement={false}>
+		<AppLayoutSidebarNavItemInner
+			background={background}
+			isActive={false}
+			hasEndElement={false}
+		>
 			<Stack as="span" gap={0.25}>
 				{label}
 			</Stack>
@@ -138,12 +149,14 @@ function AppLayoutSidebarNavListItem({
 }
 
 type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
+	background?: 'body' | 'bodyAlt';
 	hasEndElement: boolean;
 	isActive: boolean;
 	onClick?: () => void;
 }>;
 
 function AppLayoutSidebarNavItemInner({
+	background,
 	children,
 	hasEndElement,
 	isActive,
@@ -177,7 +190,10 @@ function AppLayoutSidebarNavItemInner({
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 					...(isActive && {
 						fontWeight: tokens.fontWeight.bold,
-						background: boxPalette.backgroundShadeAlt,
+						background:
+							boxPalette[
+								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
+							],
 						'&:before': {
 							content: "''",
 							position: 'absolute',
@@ -197,7 +213,10 @@ function AppLayoutSidebarNavItemInner({
 					}),
 
 					'&:hover': {
-						background: boxPalette.backgroundShadeAlt,
+						background:
+							boxPalette[
+								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
+							],
 						color: boxPalette.foregroundText,
 						'& > span:first-of-type': packs.underline,
 					},

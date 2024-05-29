@@ -12,6 +12,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 	},
 	args: {
 		activePath: '/establishments',
+		background: 'bodyAlt',
 		items: navigationItems('Antfix'),
 	},
 	render: (props) => (
@@ -35,6 +36,12 @@ export default meta;
 type Story = StoryObj<typeof AppLayoutSidebar>;
 
 export const Basic: Story = {};
+
+export const BodyBackground: Story = {
+	args: {
+		background: 'body',
+	},
+};
 
 export const WithoutIcons: Story = {
 	args: {
