@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import {
 	findBestMatch,
-	ResponsiveProp,
 	tokens,
 	type BoxPalette,
+	type ResponsiveProp,
 } from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
@@ -65,7 +65,7 @@ export function AppLayoutSidebar({
 			<AppLayoutSidebarDialog palette={palette}>
 				<AppLayoutSidebarNav
 					activePath={bestMatch}
-					// This is hardcoded at bodyAlt because the dialog is hardcoded as shade
+					// This is hardcoded as bodyAlt because the dialog is hardcoded as shade
 					background="bodyAlt"
 					items={items}
 				/>

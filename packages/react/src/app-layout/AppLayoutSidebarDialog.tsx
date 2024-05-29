@@ -73,7 +73,7 @@ export function AppLayoutSidebarDialog({
 			{isMobileMenuOpen && <LockScroll />}
 			{dialogTransitions(({ translateX, opacity }, item) =>
 				item ? (
-					<Box ref={modalContainerRef}>
+					<div ref={modalContainerRef}>
 						<Overlay onClick={closeMobileMenu} style={{ opacity }} />
 						<FocusLock returnFocus>
 							<AnimatedBox
@@ -98,7 +98,7 @@ export function AppLayoutSidebarDialog({
 								{children}
 							</AnimatedBox>
 						</FocusLock>
-					</Box>
+					</div>
 				) : null
 			)}
 		</Fragment>,

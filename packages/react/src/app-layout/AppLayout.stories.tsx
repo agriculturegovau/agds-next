@@ -28,8 +28,8 @@ function AppLayoutTemplate({
 	internal = false,
 	namesLength = 'regular',
 }: AppLayoutProps & {
-	namesLength?: 'regular' | 'short' | 'medium' | 'long';
 	internal?: boolean;
+	namesLength?: 'regular' | 'short' | 'medium' | 'long';
 }) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	const businesses = exampleData.businessNames[namesLength];
