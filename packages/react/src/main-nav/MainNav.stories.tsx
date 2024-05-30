@@ -15,7 +15,6 @@ import {
 import { Header } from '../header';
 import { AvatarIcon, EmailIcon, ExitIcon } from '../icon';
 import { NotificationBadge } from '../notification-badge';
-import { SearchInput } from '../search-input';
 import { SearchBox, SearchBoxButton, SearchBoxInput } from '../search-box';
 import { MainNav } from './MainNav';
 import { MainNavBottomBar } from './MainNavBottomBar';
