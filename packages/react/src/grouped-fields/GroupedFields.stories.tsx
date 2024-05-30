@@ -113,7 +113,6 @@ export const Field1Invalid: Story = {
 			field1Invalid
 			legend="Grouped fields"
 			message="Enter a valid value"
-			required
 		>
 			{({ field1Props, field2Props }) => (
 				<>
@@ -140,7 +139,6 @@ export const Field2Invalid: Story = {
 			field2Invalid
 			legend="Grouped fields"
 			message="Enter a valid value"
-			required
 		>
 			{({ field1Props, field2Props }) => (
 				<>
@@ -169,7 +167,6 @@ export const BothFieldsInvalid: Story = {
 			field2Invalid
 			legend="Grouped fields"
 			message="Enter a valid value"
-			required
 		>
 			{({ field1Props, field2Props }) => (
 				<>

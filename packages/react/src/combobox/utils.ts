@@ -2,7 +2,7 @@ import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
 	const autoId = useId();
-	return idProp || `combobox-input-${autoId}`;
+	return idProp ?? `combobox-input-${autoId}`;
 }
 
 const comboboxMaxWidthValues = ['md', 'lg', 'xl'] as const;

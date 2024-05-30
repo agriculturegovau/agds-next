@@ -10,12 +10,12 @@ const meta: Meta<typeof ComboboxAsyncMulti> = {
 	title: 'forms/Combobox/ComboboxAsyncMulti',
 	component: ComboboxAsyncMulti,
 	render: function ComboboxAsyncMultiStory(props) {
-		const [value, onChange] = useState<Option[]>([]);
+		const [value, setValue] = useState<Option[]>([]);
 		return (
 			<ComboboxAsyncMulti
 				{...props}
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -82,12 +82,12 @@ type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {
 	render: function Render() {
-		const [value, onChange] = useState<NameOption[]>([]);
+		const [value, setValue] = useState<NameOption[]>([]);
 		return (
 			<ComboboxAsyncMulti
 				label="Search users"
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
