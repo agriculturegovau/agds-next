@@ -6,7 +6,7 @@ exports[`Tags With links renders correctly 1`] = `
     class="css-1i7cdx8-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1jywj6f-boxStyles"
     >
       Tags:
     </h2>
@@ -66,7 +66,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
     class="css-1i7cdx8-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1jywj6f-boxStyles"
     >
       Tags:
     </h2>
@@ -92,7 +92,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1krnro2-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -137,7 +137,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1krnro2-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -182,7 +182,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1krnro2-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -219,7 +219,7 @@ exports[`Tags Without links renders correctly 1`] = `
     class="css-1i7cdx8-boxStyles"
   >
     <h2
-      class="css-433uqb-boxStyles-Text"
+      class="css-1jywj6f-boxStyles"
     >
       Tags:
     </h2>

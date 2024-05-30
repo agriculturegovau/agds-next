@@ -11,7 +11,7 @@ exports[`Details renders correctly 1`] = `
       Details
       <svg
         aria-hidden="true"
-        class="css-1eyzkac-Details"
+        class="css-1sc6bbo-Details"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -30,7 +30,7 @@ exports[`Details renders correctly 1`] = `
       class="css-725nwa-boxStyles"
     >
       <p
-        class="css-6j1v6l-boxStyles-Text"
+        class="css-dbscsh-boxStyles"
       >
         This is a small paragraph of text that is supplementary to the main page content.
       </p>

@@ -5,31 +5,32 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
+import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
+import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
-import { packs, boxPalette, tokens, mergeRefs } from '../core';
+import { boxPalette, mergeRefs, tokens } from '../core';
 import { Field } from '../field';
 import { UploadIcon } from '../icon';
+import { ListItem, UnorderedList } from '../list';
+import { SectionAlert } from '../section-alert';
+import { Stack } from '../stack';
 import { Text } from '../text';
-import { visuallyHiddenStyles } from '../a11y';
-import { FileUploadRejectedFileList } from './FileUploadRejectedFileList';
+import { Box } from '../box';
+import { FileUploadExistingFileList } from './FileUploadExistingFileList';
+import { FileUploadFileList } from './FileUploadFileList';
 import {
 	AcceptedFileMimeTypes,
+	convertFileToTooManyFilesRejection,
 	CustomFileMimeType,
 	ExistingFile,
 	fileTypeMapping,
 	FileWithStatus,
 	formatFileSize,
 	getAcceptedFilesSummary,
-	getFileListSummaryText,
 	getErrorSummary,
-	getFileRejectionErrorMessage,
-	RejectedFile,
+	getFileListSummaryText,
+	removeItemAtIndex,
 } from './utils';
-import { FileUploadFileList } from './FileUploadFileList';
-import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -79,21 +80,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		{
 			accept: acceptProp,
 			disabled,
-			label,
+			existingFiles = [],
 			hideOptionalLabel,
 			hideThumbnails = false,
+			hint,
+			id,
+			invalid,
+			label,
 			maxFiles,
 			maxSize,
-			multiple,
-			value = [],
-			onChange,
-			required,
-			hint,
 			message,
-			invalid,
-			id,
-			existingFiles,
+			multiple,
+			onChange,
 			onRemoveExistingFile,
+			required,
+			value = [],
 			...consumerProps
 		},
 		forwardedRef
@@ -102,27 +103,72 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
-		const [fileRejections, setFileRejections] = useState<RejectedFile[]>([]);
+		let validMaxFiles = maxFiles;
 
-		const handleRemoveFile = (file: FileWithStatus) => {
-			const indexOfFile = value.indexOf(file);
-			onChange(value.filter((_, index) => index !== indexOfFile));
-		};
+		if (maxFiles !== undefined && maxFiles < 1) {
+			validMaxFiles = undefined;
 
-		const handleRemoveRejection = (fileName: string) => {
-			setFileRejections(
-				fileRejections.filter((err) => err.file.name !== fileName)
+			console.warn(
+				'FileUpload: maxFiles cannot be less than 1. The property is being ignored.'
 			);
+		}
+
+		const [tooManyFilesRejections, setTooManyFilesRejections] = useState<
+			FileRejection[] | undefined
+		>(undefined);
+		const [invalidRejections, setInvalidRejections] = useState<
+			FileRejection[] | undefined
+		>(undefined);
+
+		const handleRemoveAcceptedFile = (index: number) => {
+			clearErrors();
+			onChange?.(removeItemAtIndex(value, index));
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
-			// replace file if multiple is false
+			clearErrors();
+			let validFiles;
+
 			if (multiple) {
-				onChange([...value, ...acceptedFiles]);
-			} else {
-				onChange(acceptedFiles);
+				// We don't accept duplicate files, so remove them
+				const acceptedFilesWithNoDuplicates = Object.values<FileWithStatus>(
+					[...value, ...acceptedFiles].reduce((acc, file) => {
+						return {
+							...acc,
+							[`${file.name}-${file.size}-${file.type}`]: file,
+						};
+					}, {})
+				);
+
+				if (
+					validMaxFiles &&
+					acceptedFilesWithNoDuplicates.length > validMaxFiles
+				) {
+					// When we have a max files limit, we'll merge the error list with any existing errors...
+					setTooManyFilesRejections(() =>
+						acceptedFilesWithNoDuplicates
+							.slice(validMaxFiles)
+							.map(convertFileToTooManyFilesRejection)
+					);
+
+					// ...And return the list of files up to the max file limit
+					validFiles = acceptedFilesWithNoDuplicates.slice(0, validMaxFiles);
+				} else {
+					validFiles = acceptedFilesWithNoDuplicates;
+				}
 			}
+			// If we're not multiple, we have only one file, so we'll use it
+			else {
+				validFiles = acceptedFiles;
+			}
+
+			onChange?.(validFiles);
 		};
+
+		function clearErrors() {
+			setTooManyFilesRejections(undefined);
+			setInvalidRejections(undefined);
+		}
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into a format accepted by react-dropzone
 		const accept = useMemo(() => {
@@ -147,9 +193,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			fileRejections: dropzoneFileRejections,
 		} = useDropzone({
 			accept,
-			maxFiles,
-			// converts kB to B
-			maxSize: maxSize && maxSize * 1000,
+			maxSize: maxSizeBytes || undefined,
 			multiple,
 			onDropAccepted: handleDropAccepted,
 			disabled,
@@ -157,35 +201,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			noKeyboard: true,
 		});
 
-		const errorSummary = getErrorSummary(
-			fileRejections,
-			formattedMaxFileSize,
-			maxFiles
-		);
+		useEffect(() => {
+			if (dropzoneFileRejections.length > 0) {
+				setInvalidRejections(dropzoneFileRejections);
+			}
+		}, [dropzoneFileRejections]);
 
 		const acceptedFilesSummary = getAcceptedFilesSummary(acceptProp);
 
-		const styles = fileInputStyles({
-			isDragActive,
+		const styles = dropzoneStyles({
 			disabled,
-			invalid: invalid || !!errorSummary,
+			invalid,
+			isDragActive,
 		});
-
-		useEffect(() => {
-			setFileRejections(
-				dropzoneFileRejections.map(({ file, errors }) => ({
-					file,
-					errors: errors.map((error) => ({
-						code: error.code,
-						message: getFileRejectionErrorMessage(
-							error,
-							formattedMaxFileSize,
-							acceptedFilesSummary
-						),
-					})),
-				}))
-			);
-		}, [dropzoneFileRejections, formattedMaxFileSize, acceptedFilesSummary]);
 
 		const {
 			// We are using an _actual_ button, so we don't need these props
@@ -197,20 +225,28 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		} = getRootProps();
 
 		const {
+			/**
+			 * Warning! This ref is required for the button click to work in Safari and Firefox.
+			 * Also, linting doesn't complain about this TS error, but VS Code does so can't @ts-ignore etc.
+			 */
 			ref: dropzoneInputRef,
 			// We don't want the input to be `display: none`, as we are using visuallyHiddenStyles instead.
 			style: _unusedStyleProps,
 			...dropzoneInputProps
 		} = getInputProps();
 
-		const showFileLists = Boolean(
-			value.length || fileRejections.length || existingFiles?.length
-		);
-
 		const fileSummaryText = getFileListSummaryText([
 			...value,
-			...(existingFiles || []),
+			...existingFiles,
 		]);
+
+		const showFileLists = Boolean(value.length || existingFiles?.length);
+		const hasRejections =
+			(invalidRejections && invalidRejections?.length > 0) ||
+			(tooManyFilesRejections && tooManyFilesRejections?.length > 0);
+		const pluralAllRejections =
+			(invalidRejections && invalidRejections?.length > 1) ||
+			(tooManyFilesRejections && tooManyFilesRejections?.length > 1);
 
 		return (
 			<Field
@@ -218,87 +254,137 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
 				hint={hint}
-				message={message || errorSummary}
-				invalid={invalid || !!errorSummary}
+				message={message}
+				invalid={invalid}
 				id={id}
 			>
 				{(a11yProps) => {
 					return (
-						<Stack gap={1.5} {...dropzoneProps}>
-							<Flex
-								gap={1}
-								padding={1.5}
-								alignItems="center"
-								flexDirection="column"
-								border
-								rounded
-								css={styles}
-							>
-								<UploadIcon size="lg" color="muted" />
-								<input
-									{...dropzoneInputProps}
-									{...a11yProps}
-									{...consumerProps}
-									/**
-									 * Dropzone needs to set a ref to the input, but we _also_
-									 * need to forward a ref to the input so consumers can use it.
-									 * The mergeRef utility allows us to do this.
-									 */
-									ref={mergeRefs([forwardedRef, dropzoneInputRef])}
-									css={visuallyHiddenStyles}
-								/>
-								<Flex
-									flexDirection="column"
+						<Stack gap={1.5}>
+							<Box {...dropzoneProps}>
+								<Stack
 									alignItems="center"
-									textAlign="center"
+									border
+									css={styles}
+									gap={1}
+									padding={1.5}
+									rounded
 								>
-									<Text
-										color={isDragActive ? 'action' : 'muted'}
-										fontWeight="bold"
+									<UploadIcon size="lg" color="muted" />
+									<input
+										{...dropzoneInputProps}
+										{...a11yProps}
+										{...consumerProps}
+										/**
+										 * Dropzone needs to set a ref to the input, but we _also_
+										 * need to forward a ref to the input so consumers can use it.
+										 * The mergeRef utility allows us to do this.
+										 */
+										css={visuallyHiddenStyles}
+										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
+									/>
+									<Stack alignItems="center" textAlign="center">
+										{/* This maintains the space created by the default text so when a user drags over the dropzone, its height doesn't change, which can ruin the drag. We then vertically centre the isDragActive text */}
+										<span css={{ position: 'relative' }}>
+											<Text
+												color="muted"
+												css={{
+													visibility: isDragActive ? 'hidden' : undefined,
+												}}
+												fontWeight="bold"
+											>
+												{multiple
+													? 'Drag and drop files here or select files to upload.'
+													: 'Drag and drop a file or select a file to upload.'}
+											</Text>
+											<Text
+												color="action"
+												css={{
+													display: isDragActive ? 'block' : 'none',
+													left: 0,
+													position: 'absolute',
+													right: 0,
+													top: '50%',
+													transform: 'translateY(-50%)',
+												}}
+												fontWeight="bold"
+											>
+												Drop {filesPlural} here…
+											</Text>
+										</span>
+										{maxSize ? (
+											<Text color="muted">
+												{multiple ? 'Each file' : 'File'} cannot exceed{' '}
+												{formattedMaxFileSize}.
+											</Text>
+										) : null}
+										{accept ? (
+											<Text color="muted">
+												Files accepted: {acceptedFilesSummary}.
+											</Text>
+										) : null}
+									</Stack>
+									<Button
+										disabled={disabled}
+										onClick={open}
+										type="button"
+										variant="secondary"
 									>
-										{isDragActive
-											? `Drop ${filesPlural} here`
-											: `Drag and drop ${filesPlural} here or select ${filesPlural} to upload.`}
-										{isDragActive ? <>&hellip;</> : null}
-									</Text>
-									{maxSize ? (
-										<Text color="muted">
-											{multiple ? 'Each file' : 'File'} cannot exceed{' '}
-											{formattedMaxFileSize}.
+										Select {filesPlural}
+									</Button>
+								</Stack>
+							</Box>
+							{hasRejections && (
+								<Box breakWords>
+									<SectionAlert
+										focusOnMount
+										onClose={clearErrors}
+										title={`The following ${
+											pluralAllRejections ? 'files' : 'file'
+										} could not be selected`}
+										tone="error"
+									>
+										<Text as="p">
+											{pluralAllRejections
+												? 'These files were unable to be accepted for the following reasons:'
+												: 'This file was unable to be accepted for the following reason:'}
 										</Text>
-									) : null}
-									{accept ? (
-										<Text color="muted">
-											Files accepted: {acceptedFilesSummary}
-										</Text>
-									) : null}
-								</Flex>
-								<Button
-									type="button"
-									variant="secondary"
-									onClick={open}
-									disabled={disabled}
-								>
-									Select {filesPlural}
-								</Button>
-							</Flex>
+										{
+											<UnorderedList>
+												{[
+													...(invalidRejections ?? []),
+													...(tooManyFilesRejections ?? []),
+												].map((rejection) => (
+													<ListItem key={rejection.file.name}>
+														<Text color="error" fontWeight="bold">
+															{rejection.file.name}
+														</Text>{' '}
+														<Text>
+															({formatFileSize(rejection.file.size)}){' - '}
+															{getErrorSummary(
+																rejection.errors,
+																formattedMaxFileSize
+															)}
+														</Text>
+													</ListItem>
+												))}
+											</UnorderedList>
+										}
+									</SectionAlert>
+								</Box>
+							)}
 							{showFileLists && (
 								<Stack gap={0.5}>
 									<Text color="muted">{fileSummaryText}</Text>
 									<FileUploadExistingFileList
 										files={existingFiles}
-										onRemove={onRemoveExistingFile}
 										hideThumbnails={hideThumbnails}
+										onRemove={onRemoveExistingFile}
 									/>
 									<FileUploadFileList
 										files={value}
-										onRemove={handleRemoveFile}
 										hideThumbnails={hideThumbnails}
-									/>
-									<FileUploadRejectedFileList
-										fileRejections={fileRejections}
-										handleRemoveRejection={handleRemoveRejection}
-										hideThumbnails={hideThumbnails}
+										onRemove={handleRemoveAcceptedFile}
 									/>
 								</Stack>
 							)}
@@ -310,16 +396,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	}
 );
 
-const fileInputStyles = ({
+function dropzoneStyles({
 	disabled,
 	invalid,
 	isDragActive,
 }: {
 	disabled?: boolean;
-	invalid: boolean;
+	invalid?: boolean;
 	isDragActive: boolean;
-}) =>
-	({
+}) {
+	return {
 		borderWidth: tokens.borderWidth.lg,
 		borderStyle: 'dashed',
 		borderColor: boxPalette.border,
@@ -341,6 +427,5 @@ const fileInputStyles = ({
 			borderColor: boxPalette.foregroundAction,
 			backgroundColor: boxPalette.backgroundShade,
 		}),
-
-		'&:focus': packs.outline,
-	}) as const;
+	} as const;
+}

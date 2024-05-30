@@ -10,12 +10,12 @@ exports[`SearchInput Basic renders correctly 1`] = `
       for="field-:r0:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Search
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -26,7 +26,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1237ufu-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -76,12 +76,12 @@ exports[`SearchInput Invalid renders correctly 1`] = `
       for="field-:r4:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Search
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
@@ -96,7 +96,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-1cvvs16-FieldMessage"
+          class="css-rg60c6-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -114,7 +114,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-tfsyf8-boxStyles-Text"
+        class="css-o7cidz-boxStyles"
         id="field-:r4:-message"
       >
         A search term is required to see results
@@ -125,7 +125,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1237ufu-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -176,19 +176,19 @@ exports[`SearchInput With hint renders correctly 1`] = `
       for="field-:r2:"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Search
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-1jndov8-boxStyles"
       id="field-:r2:-hint"
     >
       Hint text
@@ -198,7 +198,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1237ufu-SearchInputIcon"
+        class="css-17ql9jn-SearchInputIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

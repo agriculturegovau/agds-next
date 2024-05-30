@@ -1,6 +1,6 @@
 ---
 title: File upload
-description: The File upload component allows users to attach multiple files to a form via drag-and-drop or by browsing the device.
+description: The File upload component allows users to attach one or multiple files to a form via drag-and-drop or by browsing their device.
 group: Forms
 storybookPath: /story/forms-fileupload--basic
 figmaGalleryNodeId: 12444%3A100384
@@ -11,17 +11,12 @@ relatedComponents: ['file-input']
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<FileUpload
-			label="Upload documents"
-			multiple={true}
-			value={value}
-			onChange={setValue}
-		/>
+		<FileUpload label="Upload documents" value={value} onChange={setValue} />
 	);
 };
 ```
 
-File upload is used in forms to enable users to upload files they need. There are 2 ways to upload – via drag and drop or file selection via search.
+File upload is used in forms to enable users to upload files. Unlike [File input](/components/file-input) it can be used to upload multiple files, restrict the number, types and size of files, plus much more. There are 2 ways to upload – via drag and drop or by browsing the device.
 
 `FileUpload` is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
@@ -43,6 +38,70 @@ File upload is used in forms to enable users to upload files they need. There ar
 - use in modals or page alerts
 - change the default behaviour of the component by adding a standalone upload file button.
 
+## Multiple files
+
+Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<FileUpload
+			label="Upload files"
+			hint="Upload a maximum of three files"
+			value={value}
+			onChange={setValue}
+			multiple={true}
+			maxFiles={2}
+			maxSize={200}
+			accept={['image/jpeg', 'image/png']}
+		/>
+	);
+};
+```
+
+## Maximum file size
+
+Use the `maxSize` prop to set a maximum size for each file. This value is measured in kilobytes (kB).
+
+```jsx
+<FileUpload maxSize={200} /> // 200kB
+<FileUpload maxSize={20000} /> // 20MB
+```
+
+## Accepted files
+
+Use the `accept` prop to specify what file types are allowed to be selected.
+
+For a complete list allowed file formats, please refer to [the source code](https://github.com/agriculturegovau/agds-next/blob/main/packages/react/src/file-upload/utils.tsx).
+
+```jsx
+<FileUpload label="Upload image" accept={['image/jpeg', 'image/png']} />
+```
+
+### Custom accepted file types
+
+If the file type you need to support isn’t in the list of allowed file formats, you can pass in your own file type to the `accept` prop.
+
+This can be done by passing an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component. By default, the label will be generated using the file extension.
+
+```jsx
+<FileUpload
+	label="Upload JavaScript file"
+	accept={[{ mimeType: 'text/javascript', extensions: ['.js'] }]}
+/>
+```
+
+## Hiding thumbnails
+
+By default, the `FileUpload` component will render a preview of every selected file.
+
+To disable this behaviour, set the `hideThumbnails` prop to `true`.
+
+```jsx
+<FileUpload hideThumbnails={true} />
+```
+
 ## Indicating upload status
 
 When using FileUpload, you need to consider how to communicate to the user that the upload is in progress. Otherwise the page will appear ‘frozen’ as the operation happens in the background.
@@ -51,7 +110,7 @@ When using FileUpload, you need to consider how to communicate to the user that 
 
 In this example, we are submitting a file as part of a typical form submission to an API.
 
-We recommend wrapping the FileUpload in a [LoadingBlanket](/components/loading) component as the form submits, to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
+We recommend using a [LoadingBlanket](/components/loading) component as the form submits to indicate to the user that any delays are being caused by a potentially larger file being uploaded. If your backend system supports it, you can also use this UI to indicate upload status as a percentage.
 
 As normal, we indicate that the form is submitting by adding a `loading={true}` to the submit button. This will show animated dots to signify that the user has to wait for the operation to complete.
 
@@ -111,56 +170,6 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 };
 ```
 
-## Multiple files
-
-Selecting multiple files is also supported with FileUpload. Simply add `multiple={true}`, and you can select as many files as you want. You can also set `maxFiles` to limit how many files can be selected.
-
-```jsx
-<FileUpload multiple={true} maxFiles={3} />
-```
-
-## Maximum file size
-
-Use the `maxSize` prop to set a maximum size for each file. This value is measured in kilobytes (kB).
-
-```jsx
-<FileUpload maxSize={200} /> // 200kB
-<FileUpload maxSize={20000} /> // 20MB
-```
-
-## Hiding thumbnails
-
-By default, the `FileUpload` component will render a preview of every selected file.
-
-To disable this behaviour, set the `hideThumbnails` prop to `true`.
-
-```jsx
-<FileUpload hideThumbnails={true} />
-```
-
-## Accepted files
-
-Use the `accept` prop to specify what file types are allowed to be selected.
-
-For a complete list allowed file formats, please refer to [the source code](https://github.com/agriculturegovau/agds-next/blob/main/packages/react/src/file-upload/utils.tsx).
-
-```jsx
-<FileUpload label="Upload image" accept={['image/jpeg', 'image/png']} />
-```
-
-### Custom accepted file types
-
-If the file type you need to support isn’t in the list of allowed file formats, you can pass in your own file type to the `accept` prop.
-
-This can be done by passing an object instead of a string with `mimeType` and `extensions` as keys. Optionally, a `label` key can be used for the summary inside of the component. By default, the label will be generated using the file extension.
-
-```jsx
-<FileUpload
-	label="Upload JavaScript file"
-	accept={[{ mimeType: 'text/javascript', extensions: ['.js'] }]}
-/>
-```
-
 ## Existing files
 
 You can display a list of files that have already been uploaded by using the `existingFiles` and `onRemoveExistingFile` props.
@@ -177,11 +186,19 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 		{
 			name: 'example.png',
 			size: 123456,
-			thumbnailUrl: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://via.placeholder.com/150',
 			href: '#',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
 			meta: { uid: 'abc-def', bucketId: '123-456' },
+		},
+		{
+			name: 'example-no-thumbnail.doc',
+			size: 654321,
+			href: '#',
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'fed=cba', bucketId: '654-321' },
 		},
 	]);
 
@@ -201,6 +218,36 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 			onChange={setValue}
 			existingFiles={existingFiles}
 			onRemoveExistingFile={onRemoveExistingFile}
+		/>
+	);
+};
+```
+
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
+
+## Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indicate to screen reader users that a field is optional but don’t want to show the ‘(optional)’ label.
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	return (
+		<FileUpload
+			label="Upload a file"
+			value={value}
+			onChange={setValue}
+			invalid={value.length === 0}
+			required={true}
+			message="Select a file"
 		/>
 	);
 };

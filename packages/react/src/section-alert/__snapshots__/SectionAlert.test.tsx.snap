@@ -11,7 +11,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1esj8rc-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -31,7 +31,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -39,7 +39,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="css-1myr4hy-BaseButton-SectionAlertDismissButton"
+      class="css-1xr7ch-BaseButton-SectionAlertDismissButton"
       type="button"
     >
       <span>
@@ -54,7 +54,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="css-10mbdw9-Button"
+        class="css-sbsftc-Button"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -93,7 +93,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1esj8rc-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -113,12 +113,12 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Section alert description text
         </p>
@@ -139,7 +139,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Error"
-        class="css-1h89p7b-Icon"
+        class="css-1w78ld0-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -159,7 +159,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -180,7 +180,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-1esj8rc-Icon"
+        class="css-vvfklf-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -200,7 +200,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>
@@ -221,7 +221,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-qz15ef-Icon"
+        class="css-15hefj6-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -241,7 +241,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
         class="css-1i7cdx8-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Title of Section alert
         </span>

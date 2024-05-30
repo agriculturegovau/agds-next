@@ -35,7 +35,7 @@ exports[`HeroBanner renders correctly 1`] = `
                 Website hero banner title
               </h1>
               <p
-                class="css-kvrtyp-boxStyles-Text"
+                class="css-1d0efla-boxStyles"
               >
                 Short hero banner sentence
               </p>

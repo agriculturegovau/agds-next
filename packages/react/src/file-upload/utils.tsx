@@ -1,4 +1,4 @@
-import type { FileError, FileWithPath } from 'react-dropzone';
+import { ErrorCode, type FileError, type FileWithPath } from 'react-dropzone';
 import { filesize } from './filesize';
 
 export type FileStatus = 'none' | 'uploading' | 'success';
@@ -12,7 +12,7 @@ export type FileWithStatus = FileWithPath & {
 
 export type RejectedFile = {
 	file: FileWithPath;
-	errors: { message: string; code: string }[];
+	errors: FileError[];
 };
 
 export type ExistingFile = {
@@ -133,6 +133,11 @@ export function formatFileExtension(ext: string) {
 	return ext.replace(/^\./, '');
 }
 
+export const TOO_MANY_FILES_ERROR: FileError = {
+	code: ErrorCode.TooManyFiles,
+	message: 'Too many files',
+};
+
 export function getFileRejectionErrorMessage(
 	{ code, message }: FileError,
 	formattedMaxFileSize: string,
@@ -143,7 +148,7 @@ export function getFileRejectionErrorMessage(
 	}
 
 	if (code === 'file-invalid-type') {
-		if (!acceptedFilesSummary) return `File must be an acceptable format`;
+		if (!acceptedFilesSummary) return 'File must be an accepted format';
 		return `File must be one of the following types: ${acceptedFilesSummary}`;
 	}
 
@@ -151,37 +156,24 @@ export function getFileRejectionErrorMessage(
 }
 
 export function getErrorSummary(
-	rejections: RejectedFile[],
-	formattedMaxFileSize: string,
-	maxFiles = 1
+	rejections: FileError[],
+	formattedMaxFileSize: string
 ) {
 	if (!rejections?.length) return;
 
 	const uniqueErrorCodes = Array.from(
-		new Set(
-			rejections.map(({ errors }) => errors.map(({ code }) => code)).flat()
-		)
-	);
+		new Set(rejections.map(({ code }) => code))
+	) as Array<ErrorCode>;
 
-	const firstErrorCode = uniqueErrorCodes[0];
-
-	if (firstErrorCode === 'too-many-files') {
-		return `You can not select more than ${maxFiles} ${
-			maxFiles === 1 ? 'file' : 'files'
-		}`;
+	if (uniqueErrorCodes.includes(ErrorCode.FileInvalidType)) {
+		return 'Invalid file type';
 	}
 
-	if (uniqueErrorCodes.length === 1) {
-		if (firstErrorCode === 'file-too-large') {
-			return `Each file must be smaller than ${formattedMaxFileSize}`;
-		}
-
-		if (firstErrorCode === 'file-invalid-type') {
-			return `Some files are not of the correct format`;
-		}
+	if (uniqueErrorCodes.includes(ErrorCode.FileTooLarge)) {
+		return `File is over ${formattedMaxFileSize}`;
 	}
 
-	return 'There’s an issue with one or more of your files';
+	return TOO_MANY_FILES_ERROR.message;
 }
 
 /** Creates and returns a URL of the image thumbnail in browser memory.
@@ -190,4 +182,20 @@ export function getImageThumbnail(file: FileWithPath) {
 	const imageMimeTypes = /image\/(png|jpg|jpeg|webp|heic)/i;
 	const isImageType = file.type.match(imageMimeTypes);
 	return isImageType ? URL.createObjectURL(file) : undefined;
+}
+
+export function convertFileToTooManyFilesRejection(file: FileWithPath) {
+	return {
+		file,
+		errors: [TOO_MANY_FILES_ERROR],
+	};
+}
+
+export function removeItemAtIndex<ItemType>(
+	array: Array<ItemType>,
+	index: number
+) {
+	const cloneArray = [...array];
+	cloneArray.splice(index, 1);
+	return cloneArray;
 }
