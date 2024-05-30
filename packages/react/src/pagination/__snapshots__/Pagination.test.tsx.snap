@@ -21,7 +21,7 @@ exports[`Pagination renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="css-1krnro2-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -58,7 +58,7 @@ exports[`Pagination renders correctly 1`] = `
           class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             …
           </span>
@@ -95,7 +95,7 @@ exports[`Pagination renders correctly 1`] = `
           class="css-yxjemn-boxStyles"
         >
           <span
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             …
           </span>
@@ -124,7 +124,7 @@ exports[`Pagination renders correctly 1`] = `
             </span>
             <svg
               aria-hidden="true"
-              class="css-1krnro2-Icon"
+              class="css-ub2kzo-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

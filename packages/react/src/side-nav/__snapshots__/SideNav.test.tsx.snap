@@ -15,7 +15,7 @@ exports[`SideNav renders correctly 1`] = `
       In this section
       <svg
         aria-hidden="true"
-        class="css-1te2wbi-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

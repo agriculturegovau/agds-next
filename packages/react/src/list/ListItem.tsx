@@ -1,8 +1,9 @@
 import { PropsWithChildren } from 'react';
+import { BoxProps } from '../box';
 import { mapSpacing } from '../core';
 import { Text } from '../text';
 
-type ListItemProps = PropsWithChildren<{}>;
+type ListItemProps = PropsWithChildren<BoxProps>;
 
 export function ListItem({ children, ...props }: ListItemProps) {
 	return (

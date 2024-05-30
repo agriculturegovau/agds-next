@@ -52,7 +52,7 @@ exports[`LinkList renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-5y4dg8-TextLinkExternal"
+          class="css-1e3wj1s-TextLinkExternal"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

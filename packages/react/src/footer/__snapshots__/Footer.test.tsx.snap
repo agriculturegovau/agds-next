@@ -61,12 +61,12 @@ exports[`Footer renders correctly 1`] = `
         class="css-jcokw4-FooterDivider"
       />
       <span
-        class="css-1sbhbx-boxStyles-Text"
+        class="css-1oewark-boxStyles"
       >
         We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
       </span>
       <span
-        class="css-1sbhbx-boxStyles-Text"
+        class="css-1oewark-boxStyles"
       >
         © 2024 Department of Agriculture, Fisheries and Forestry
       </span>

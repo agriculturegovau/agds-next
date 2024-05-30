@@ -35,41 +35,41 @@ type Story = StoryObj<typeof FileUpload>;
 
 export const Basic: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 	},
 };
 
 export const Populated: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		value: [exampleFile],
 	},
 };
 
 export const Required: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		required: true,
 	},
 };
 
 export const HideOptionalLabel: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		hideOptionalLabel: true,
 	},
 };
 
 export const Disabled: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		disabled: true,
 	},
 };
 
 export const Invalid: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		message: 'Please choose a valid file',
 		invalid: true,
 	},
@@ -79,6 +79,7 @@ export const MultipleFiles: Story = {
 	args: {
 		label: 'Identity documents',
 		multiple: true,
+		maxFiles: 5,
 	},
 };
 
@@ -86,9 +87,10 @@ export const OnlyAcceptedFormats: Story = {
 	args: {
 		label: 'Identity documents',
 		required: true,
-		hint: 'May include images of your passport, drivers licence etc.',
-		maxSize: 200,
+		hint: 'May include images of your passport, driver’s licence etc.',
+		maxSize: 400,
 		accept: [
+			'image/gif',
 			'image/jpeg',
 			'image/png',
 			'application/pdf',
@@ -98,6 +100,7 @@ export const OnlyAcceptedFormats: Story = {
 			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 		],
 		multiple: true,
+		maxFiles: 3,
 	},
 };
 
@@ -125,8 +128,13 @@ export const MultipleImages: Story = {
 
 export const HiddenThumbnails: Story = {
 	args: {
-		label: 'Drivers licence',
+		label: 'Driver’s licence',
 		hideThumbnails: true,
+		value: [
+			createExampleImageFile(),
+			createExampleImageFile(),
+			createExampleImageFile(),
+		],
 	},
 };
 
@@ -264,10 +272,12 @@ export const ExistingFiles: Story = {
 				size: 100000,
 			},
 			{
-				name: 'another-document.pdf',
-				size: 100000,
-				// Use the `meta` key to keep track of any extra file information
-				// This can be useful when deleting the file
+				name: 'example.png',
+				size: 123456,
+				thumbnailSrc: 'https://via.placeholder.com/150',
+				href: '#',
+				// Use the meta key to keep track of any extra file info
+				// This can be useful info when deleting the file
 				meta: { uid: 'abc-def', bucketId: '123-456' },
 			},
 		]);
