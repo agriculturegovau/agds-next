@@ -6,6 +6,7 @@ export function createExampleFile(args?: {
 	type?: string;
 	href?: string;
 	lastModified?: number;
+	size?: number;
 }): FileWithStatus {
 	const {
 		status,
@@ -13,6 +14,7 @@ export function createExampleFile(args?: {
 		type = 'text/plain',
 		href,
 		lastModified = new Date().getMilliseconds(),
+		size = 100,
 	} = args || {};
 
 	const bits = ['examplefilecontent'];
@@ -25,7 +27,7 @@ export function createExampleFile(args?: {
 		name,
 		type,
 		lastModified,
-		size: 100,
+		size,
 	};
 	file.status = status;
 	file.href = href;
