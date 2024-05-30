@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps<
 
 	const navLinks = await getPkgNavLinks();
 	const breadcrumbs = await getPkgBreadcrumbs(slug, 'Code');
-	const toc = await generateToc(pkgContent.content);
+	const toc = generateToc(pkgContent.content);
 
 	return {
 		props: {

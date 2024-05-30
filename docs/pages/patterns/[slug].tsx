@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const breadcrumbs = await getPatternBreadcrumbs(slug);
-	const toc = await generateToc(pattern.content);
+	const toc = generateToc(pattern.content);
 
 	// Get related components
 	const relatedComponents = pattern.relatedComponents?.length
