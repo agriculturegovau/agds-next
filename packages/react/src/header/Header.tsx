@@ -7,6 +7,8 @@ import { HeaderContainer } from './HeaderContainer';
 export type HeaderProps = {
 	/** The logo to display. */
 	logo?: JSX.Element;
+	/** The second logo to display for co-branding. */
+	secondLogo?: JSX.Element;
 	/** The heading should be set to the website or service title. */
 	heading: string;
 	/** Used to provide additional information to describe your website or service. */
@@ -15,6 +17,8 @@ export type HeaderProps = {
 	badgeLabel?: string;
 	/** The href to link to, for example "/". */
 	href?: string;
+	/** The href to link to, for example "/". */
+	secondHref?: string;
 	/** Content to placed on the right side of the Header. */
 	rightContent?: ReactNode;
 	/** The size of the Header controls the vertical height. */
@@ -26,12 +30,14 @@ export type HeaderProps = {
 export function Header({
 	badgeLabel,
 	logo,
+	secondLogo,
 	heading,
 	rightContent,
 	subline,
 	size = 'md',
 	background = 'body',
 	href = '/',
+	secondHref,
 }: HeaderProps) {
 	const hasRightContent = !!rightContent;
 	return (
@@ -39,9 +45,11 @@ export function Header({
 			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
-					logo={logo}
-					size={size}
 					href={href}
+					logo={logo}
+					secondLogo={secondLogo}
+					secondHref={secondHref}
+					size={size}
 					heading={heading}
 					subline={subline}
 				/>

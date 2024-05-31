@@ -3,6 +3,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import { Logo } from '../ag-branding';
 import { MainNav } from '../main-nav';
 import { SearchBox, SearchBoxInput, SearchBoxButton } from '../search-box';
+import { AISLogo } from '../../../../.storybook/components/AISLogo';
 import { Header } from './Header';
 
 const meta: Meta<typeof Header> = {
@@ -13,6 +14,9 @@ const meta: Meta<typeof Header> = {
 		subline: 'Supporting Australian agricultural exports',
 		logo: <Logo />,
 		background: 'bodyAlt',
+	},
+	parameters: {
+		layout: 'fullscreen',
 	},
 };
 
@@ -97,4 +101,26 @@ export const WithMainNav: Story = {
 			/>
 		</Fragment>
 	),
+};
+
+export const CoBranding: Story = {
+	args: { secondLogo: <AISLogo />, badgeLabel: 'alpha' },
+	render: (args) => <Header {...args} />,
+};
+
+export const CoBrandingWithSearch: Story = {
+	args: {
+		badgeLabel: 'alpha',
+		rightContent: (
+			<SearchBox onSubmit={console.log}>
+				<SearchBoxInput label="Search this website" />
+				<SearchBoxButton iconOnly={{ xs: true, sm: false, lg: true }}>
+					Search
+				</SearchBoxButton>
+			</SearchBox>
+		),
+		secondLogo: <AISLogo />,
+		secondHref: '#',
+	},
+	render: (args) => <Header {...args} />,
 };

@@ -2,23 +2,27 @@ import { ReactNode } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { tokens } from '../core';
+import { mapSpacing, tokens } from '../core';
 import { Text } from '../text';
 import { useLinkComponent, boxPalette, packs } from '../core';
 
 type HeaderBrandProps = {
 	badgeLabel?: string;
-	href?: string;
 	heading: string;
-	subline?: string;
+	href?: string;
 	logo?: JSX.Element;
+	secondHref?: string;
+	secondLogo?: JSX.Element;
 	size: keyof typeof logoWidthMap;
+	subline?: string;
 };
 
 export function HeaderBrand({
 	badgeLabel,
 	href = '/',
 	logo,
+	secondLogo,
+	secondHref,
 	size,
 	heading,
 	subline,
@@ -27,50 +31,88 @@ export function HeaderBrand({
 
 	return (
 		<Flex
-			as={Link}
-			href={href}
-			inline
-			flexDirection={{ xs: 'column', md: 'row' }}
-			color="text"
-			gap={1}
-			focusRingFor="keyboard"
 			alignItems="stretch"
-			css={{
-				textDecoration: 'none',
-				':hover': packs.underline,
-			}}
+			flexDirection={{ xs: 'column', lg: 'row' }}
+			flexWrap={{ xs: 'wrap', xxl: 'nowrap' }}
+			focusRingFor="keyboard"
+			gap={1.5}
+			inline
 		>
-			{logo ? (
-				<Flex
-					alignItems="flex-start"
-					maxWidth={logoWidthMap[size]}
-					css={{
-						' img, svg': { width: '100%' },
-						...packs.print.hidden,
-					}}
-				>
-					{logo}
-				</Flex>
-			) : null}
-			{logo ? (
-				<Box
-					borderRight
-					display={{ xs: 'none', md: 'block' }}
-					css={packs.print.hidden}
-				/>
-			) : null}
-			<Stack justifyContent="center">
+			<Flex
+				alignItems="stretch"
+				color="text"
+				css={{ marginRight: mapSpacing(2) }}
+				flexDirection={{ xs: 'column', sm: 'row' }}
+				gap={1.5}
+			>
+				{logo && (
+					<>
+						<Flex
+							as={Link}
+							color="text"
+							css={{
+								' img, svg': { width: '100%' },
+								...packs.print.hidden,
+							}}
+							href={href}
+							maxWidth={logoWidthMap[size]}
+						>
+							{logo}
+						</Flex>
+
+						<Box
+							borderRight
+							css={packs.print.hidden}
+							display={{ xs: 'none', sm: 'block' }}
+						/>
+
+						<Box
+							borderBottom
+							css={packs.print.hidden}
+							display={{ xs: 'block', sm: 'none' }}
+						/>
+					</>
+				)}
+
+				{logo && secondLogo && (
+					<Flex
+						alignSelf={{ xs: 'start', sm: 'center' }}
+						as={Link}
+						css={{
+							' img, svg': { width: '100%' },
+							...packs.print.hidden,
+						}}
+						href={secondHref}
+						maxWidth={logoWidthMap[size]}
+					>
+						{secondLogo}
+					</Flex>
+				)}
+			</Flex>
+
+			<Stack
+				as={Link}
+				color="text"
+				css={{
+					textDecoration: 'none',
+					':hover': packs.underline,
+				}}
+				href={href}
+				justifyContent="center"
+			>
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text
-						lineHeight="default"
 						fontSize={headingSizeMap[size]}
 						fontWeight="bold"
+						lineHeight="default"
 						maxWidth={tokens.maxWidth.bodyText}
 					>
 						{heading}
 					</Text>
+
 					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
 				</Flex>
+
 				{subline && (
 					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
 						{subline}
@@ -86,11 +128,9 @@ type HeaderBadgeProps = { children: ReactNode };
 const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 	return (
 		<Box
-			fontWeight="bold"
-			paddingLeft={0.5}
-			paddingRight={0.5}
 			border
 			borderWidth="md"
+			color="text"
 			css={{
 				// These values don't exist in our tokens
 				fontSize: '0.75rem',
@@ -99,6 +139,9 @@ const HeaderBadge = ({ children }: HeaderBadgeProps) => {
 				borderColor: boxPalette.foregroundText,
 				borderRadius: '2em',
 			}}
+			fontWeight="bold"
+			paddingLeft={0.5}
+			paddingRight={0.5}
 		>
 			{children}
 		</Box>
