@@ -263,6 +263,12 @@ type LayoutProps = Partial<{
 		| 'space-around'
 		| 'space-evenly'
 	>;
+	/** Sets the CSS justify-self property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
+	 */
+	justifySelf: ResponsiveProp<
+		'stretch' | 'start' | 'end' | 'center' | 'baseline'
+	>;
 	/** Sets the CSS align-items property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 */

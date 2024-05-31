@@ -54,8 +54,13 @@ export function Header({
 					subline={subline}
 				/>
 			</Column>
+
 			{hasRightContent && (
-				<Column columnSpan={{ xs: 12, lg: 4 }} css={packs.print.hidden}>
+				<Column
+					alignSelf="start"
+					columnSpan={{ xs: 12, lg: 4 }}
+					css={packs.print.hidden}
+				>
 					{rightContent}
 				</Column>
 			)}
