@@ -35,13 +35,11 @@ export function HeaderBrand({
 			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap={{ xs: 'wrap', xxl: 'nowrap' }}
 			focusRingFor="keyboard"
-			gap={1.5}
+			gap={2}
 			inline
 		>
 			<Flex
 				alignItems="stretch"
-				color="text"
-				css={{ marginRight: mapSpacing(2) }}
 				flexDirection={{ xs: 'column', sm: 'row' }}
 				gap={1.5}
 			>
@@ -77,6 +75,7 @@ export function HeaderBrand({
 				{logo && secondLogo && (
 					<Flex
 						alignSelf={{ xs: 'start', sm: 'center' }}
+						color="text"
 						as={Link}
 						css={{
 							' img, svg': { width: '100%' },
