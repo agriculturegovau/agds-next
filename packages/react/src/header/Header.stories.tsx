@@ -104,13 +104,14 @@ export const WithMainNav: Story = {
 };
 
 export const CoBranding: Story = {
-	args: { secondLogo: <AISLogo />, badgeLabel: 'alpha' },
+	args: { badgeLabel: 'alpha', secondLogo: <AISLogo /> },
 	render: (args) => <Header {...args} />,
 };
 
 export const CoBrandingWithSearch: Story = {
 	args: {
 		badgeLabel: 'alpha',
+		heading: 'Short service title',
 		rightContent: (
 			<SearchBox onSubmit={console.log}>
 				<SearchBoxInput label="Search this website" />
@@ -119,8 +120,9 @@ export const CoBrandingWithSearch: Story = {
 				</SearchBoxButton>
 			</SearchBox>
 		),
-		secondLogo: <AISLogo />,
 		secondHref: '#',
+		secondLogo: <AISLogo />,
+		subline: 'Short service description',
 	},
 	render: (args) => <Header {...args} />,
 };
