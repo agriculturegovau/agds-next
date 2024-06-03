@@ -10,8 +10,8 @@ const meta: Meta<typeof ComboboxMulti> = {
 	title: 'forms/Combobox/ComboboxMulti',
 	component: ComboboxMulti,
 	render: function ComboboxMultiStory(props) {
-		const [value, onChange] = useState<Option[]>([]);
-		return <ComboboxMulti {...props} value={value} onChange={onChange} />;
+		const [value, setValue] = useState<Option[]>([]);
+		return <ComboboxMulti {...props} value={value} onChange={setValue} />;
 	},
 };
 
@@ -71,12 +71,12 @@ type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {
 	render: function Render() {
-		const [value, onChange] = useState<NameOption[]>([]);
+		const [value, setValue] = useState<NameOption[]>([]);
 		return (
 			<ComboboxMulti
 				label="Search users"
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				options={NAME_OPTIONS}
 				renderItem={(item, inputValue) => (
 					<ComboboxRenderItem

@@ -1,5 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
-import { MouseEventHandler } from 'react';
+import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
 import { LinkProps } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';

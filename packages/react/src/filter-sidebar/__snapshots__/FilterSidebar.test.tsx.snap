@@ -10,7 +10,7 @@ exports[`FilterSidebar renders correctly 1`] = `
       class="css-1w8myos-boxStyles"
     >
       <h2
-        class="css-kip0vn-boxStyles-Text"
+        class="css-pkkmd5-boxStyles"
       >
         Filter by
       </h2>
@@ -25,7 +25,7 @@ exports[`FilterSidebar renders correctly 1`] = `
       Filters (1)
       <svg
         aria-hidden="true"
-        class="css-1te2wbi-SideBarCollapseButton"
+        class="css-ix61td-SideBarCollapseButton"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

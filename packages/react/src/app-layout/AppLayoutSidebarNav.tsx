@@ -31,7 +31,6 @@ export type AppLayoutSidebarNavProps = {
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
-	className?: string;
 };
 
 export function AppLayoutSidebarNav({

@@ -53,7 +53,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-1qp4da6-boxStyles"
             >
               <span
-                class="css-1lv1g9v-boxStyles-Text"
+                class="css-ol79f5-boxStyles"
               >
                 Export Service
               </span>
@@ -64,7 +64,7 @@ exports[`AppLayout renders correctly 1`] = `
               </div>
             </div>
             <span
-              class="css-1lp7dl8-boxStyles-Text"
+              class="css-1ntyv7o-boxStyles"
             >
               Supporting Australian agricultural exports
             </span>
@@ -99,12 +99,12 @@ exports[`AppLayout renders correctly 1`] = `
                 class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 <span
-                  class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                  class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
                 >
                   Toto Wolff
                 </span>
                 <span
-                  class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                  class="css-wu5zwp-boxStyles-AppLayoutHeaderAccountDropdownButton"
                 >
                   My account
                 </span>
@@ -112,7 +112,7 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
             <svg
               aria-hidden="true"
-              class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+              class="css-1iepaxb-AppLayoutHeaderAccountDropdownButton"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -142,7 +142,7 @@ exports[`AppLayout renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-9s3cfn-Icon"
+            class="css-lq07bo-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -192,12 +192,12 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-tr7opw-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 Toto Wolff
               </span>
               <span
-                class="css-1mrgx2f-boxStyles-Text-AppLayoutHeaderAccountDropdownButton"
+                class="css-wu5zwp-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 My account
               </span>
@@ -205,7 +205,7 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-bza5ds-AppLayoutHeaderAccountDropdownButton"
+            class="css-1iepaxb-AppLayoutHeaderAccountDropdownButton"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -244,7 +244,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -281,12 +281,12 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-1i7cdx8-boxStyles"
             >
               <span
-                class="css-1yrx73q-boxStyles-Text"
+                class="css-1pigcx9-boxStyles"
               >
                 Malesuada lacus a tortor blandit fermentum phasellus
               </span>
               <span
-                class="css-1lp7dl8-boxStyles-Text"
+                class="css-1ntyv7o-boxStyles"
               >
                 ABN: 00 000 000 000
               </span>
@@ -308,7 +308,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -339,7 +339,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -366,7 +366,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -393,7 +393,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -431,7 +431,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -467,7 +467,7 @@ exports[`AppLayout renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="css-qhpjst-Icon"
+                class="css-fyxrud-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -542,12 +542,12 @@ exports[`AppLayout renders correctly 1`] = `
                 class="css-14u6sul-AppLayoutFooterDivider"
               />
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-1oewark-boxStyles"
               >
                 We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
               </span>
               <span
-                class="css-1sbhbx-boxStyles-Text"
+                class="css-1oewark-boxStyles"
               >
                 © 2024 Department of Agriculture, Fisheries and Forestry
               </span>

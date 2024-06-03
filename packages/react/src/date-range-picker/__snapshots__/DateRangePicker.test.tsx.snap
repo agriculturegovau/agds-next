@@ -13,12 +13,12 @@ exports[`DateRangePicker renders correctly 1`] = `
         class="css-1r0k8hi-boxStyles-DateRangePicker"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Date range
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-axuon-boxStyles"
         >
            
           (optional)
@@ -38,12 +38,12 @@ exports[`DateRangePicker renders correctly 1`] = `
               for="field-:r1:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 Start date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (e.g. 05/08/2015) (optional)
@@ -72,7 +72,7 @@ exports[`DateRangePicker renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="css-1aretzv-DateInput"
+                      class="css-13q7hln-DateInput"
                       clip-rule="evenodd"
                       fill-rule="evenodd"
                       focusable="false"
@@ -118,12 +118,12 @@ exports[`DateRangePicker renders correctly 1`] = `
               for="field-:r2:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 End date
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (e.g. 05/08/2015) (optional)
@@ -152,7 +152,7 @@ exports[`DateRangePicker renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="css-1aretzv-DateInput"
+                      class="css-13q7hln-DateInput"
                       clip-rule="evenodd"
                       fill-rule="evenodd"
                       focusable="false"

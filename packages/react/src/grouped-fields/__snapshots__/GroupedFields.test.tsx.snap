@@ -12,12 +12,12 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
         class="css-sq8uxm-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Grouped fields
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-axuon-boxStyles"
         >
            
           (optional)
@@ -35,7 +35,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-1cvvs16-FieldMessage"
+              class="css-rg60c6-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -53,7 +53,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             </svg>
           </div>
           <span
-            class="css-tfsyf8-boxStyles-Text"
+            class="css-o7cidz-boxStyles"
             id="grouped-fields-:r6:-message"
           >
             Enter a valid value
@@ -70,12 +70,12 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               for="field-:r7:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 TextInput
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (optional)
@@ -102,12 +102,12 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               for="field-:r8:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 Select
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (optional)
@@ -146,7 +146,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               </select>
               <svg
                 aria-hidden="true"
-                class="css-hjf33j-SelectIcon"
+                class="css-1d43ke6-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -185,12 +185,12 @@ exports[`GroupedFields renders correctly 1`] = `
         class="css-sq8uxm-boxStyles"
       >
         <span
-          class="css-433uqb-boxStyles-Text"
+          class="css-1jywj6f-boxStyles"
         >
           Grouped fields
         </span>
         <span
-          class="css-1rpt3h8-boxStyles-Text"
+          class="css-axuon-boxStyles"
         >
            
           (optional)
@@ -210,12 +210,12 @@ exports[`GroupedFields renders correctly 1`] = `
               for="field-:r1:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 TextInput
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (optional)
@@ -241,12 +241,12 @@ exports[`GroupedFields renders correctly 1`] = `
               for="field-:r2:"
             >
               <span
-                class="css-433uqb-boxStyles-Text"
+                class="css-1jywj6f-boxStyles"
               >
                 Select
               </span>
               <span
-                class="css-1rpt3h8-boxStyles-Text"
+                class="css-axuon-boxStyles"
               >
                  
                 (optional)
@@ -284,7 +284,7 @@ exports[`GroupedFields renders correctly 1`] = `
               </select>
               <svg
                 aria-hidden="true"
-                class="css-hjf33j-SelectIcon"
+                class="css-1d43ke6-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"

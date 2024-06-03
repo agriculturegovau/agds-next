@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps<
 
 	const navLinks = await getPkgNavLinks();
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
-	const toc = await generateToc(pkgContent.content);
+	const toc = generateToc(pkgContent.content);
 
 	// Get related patterns
 	const relatedPatterns = pkg.relatedPatterns?.length

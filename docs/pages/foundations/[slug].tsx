@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const breadcrumbs = await getFoundationBreadcrumbs(slug);
-	const toc = await generateToc(foundation.content);
+	const toc = generateToc(foundation.content);
 
 	return {
 		props: {

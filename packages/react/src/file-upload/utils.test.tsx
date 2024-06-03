@@ -1,59 +1,90 @@
-import {
-	getErrorSummary,
-	getAcceptedFilesSummary,
-	formatFileSize,
-	formatFileExtension,
-} from './utils';
+import { ErrorCode, FileError } from 'react-dropzone';
 import { createExampleFile } from './test-utils';
+import {
+	TOO_MANY_FILES_ERROR,
+	convertFileToTooManyFilesRejection,
+	formatFileExtension,
+	formatFileSize,
+	getAcceptedFilesSummary,
+	getErrorSummary,
+	removeItemAtIndex,
+} from './utils';
+
+const FILE_TOO_LARGE_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.FileTooLarge,
+	message: 'File size exceeds 1 MB',
+};
+
+const FILE_TYPE_INVALID_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.FileInvalidType,
+	message: 'File format is invalid',
+};
+
+const TOO_MANY_FILES_ERROR_EXAMPLE: FileError = {
+	code: ErrorCode.TooManyFiles,
+	message: 'Over the max files limit',
+};
+
+describe('createExampleFile', () => {
+	test('default file data', () => {
+		expect(
+			JSON.stringify(
+				createExampleFile({
+					lastModified: 100,
+				})
+			)
+		).toBe(
+			JSON.stringify({
+				name: 'example.txt',
+				type: 'text/plain',
+				lastModified: 100,
+				size: 100,
+			})
+		);
+	});
+	test('custom file data', () => {
+		expect(
+			JSON.stringify(
+				createExampleFile({
+					href: '/',
+					name: 'example',
+					status: 'success',
+					type: 'image/png',
+					lastModified: 100,
+				})
+			)
+		).toBe(
+			JSON.stringify({
+				name: 'example',
+				type: 'image/png',
+				lastModified: 100,
+				size: 100,
+				status: 'success',
+				href: '/',
+			})
+		);
+	});
+});
 
 describe('getErrorSummary', () => {
 	it('returns undefined if there are no rejections', () => {
-		expect(getErrorSummary([], '1MB', 1)).toBeUndefined();
+		expect(getErrorSummary([], '1MB')).toBeUndefined();
 	});
 
-	it('returns a message if there is a single rejection', () => {
-		const rejections = [
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
+	it('returns invalid file type as the highest priority error', () => {
+		const errors = [
+			FILE_TOO_LARGE_ERROR_EXAMPLE,
+			TOO_MANY_FILES_ERROR_EXAMPLE,
+			FILE_TYPE_INVALID_ERROR_EXAMPLE,
 		];
 
-		expect(getErrorSummary(rejections, '1MB', 1)).toEqual(
-			'Each file must be smaller than 1MB'
-		);
+		expect(getErrorSummary(errors, '1MB')).toEqual('Invalid file type');
 	});
 
-	it('returns a message if there are multiple files too large', () => {
-		const rejections = [
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
-			{
-				file: createExampleFile(),
-				errors: [
-					{
-						code: 'file-too-large',
-						message: 'File size exceeds 1MB',
-					},
-				],
-			},
-		];
+	it('returns a message if the file is too large as the 2nd highest priority error', () => {
+		const errors = [TOO_MANY_FILES_ERROR_EXAMPLE, FILE_TOO_LARGE_ERROR_EXAMPLE];
 
-		expect(getErrorSummary(rejections, '1MB', 2)).toEqual(
-			'Each file must be smaller than 1MB'
-		);
+		expect(getErrorSummary(errors, '1MB')).toEqual('File is over 1MB');
 	});
 });
 
@@ -167,4 +198,22 @@ describe('formatFileExtension', () => {
 		expect(formatFileExtension('.pdf')).toEqual('pdf');
 		expect(formatFileExtension('.docx')).toEqual('docx');
 	});
+});
+
+describe('convertFileToTooManyFilesRejection', () => {
+	test('converts the file into a too many files rejection error', () => {
+		const file = createExampleFile();
+		const rejection = convertFileToTooManyFilesRejection(file);
+		expect(JSON.stringify(rejection)).toBe(
+			JSON.stringify({
+				file,
+				errors: [TOO_MANY_FILES_ERROR],
+			})
+		);
+	});
+});
+
+test('removeItemAtIndex', () => {
+	const items = ['a', 'b', 'c'];
+	expect(removeItemAtIndex(items, 1)).toEqual(['a', 'c']);
 });

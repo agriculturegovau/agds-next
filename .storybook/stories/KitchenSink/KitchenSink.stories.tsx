@@ -464,7 +464,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									field1Invalid
 									legend="Grouped fields"
 									message="Enter a valid value"
-									required
 								>
 									{({ field1Props, field2Props }) => (
 										<>

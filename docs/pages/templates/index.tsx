@@ -1,11 +1,10 @@
 import { normalize } from 'path';
 import { Fragment } from 'react';
 import { Columns } from '@ag.ds-next/react/columns';
-import { boxPalette } from '@ag.ds-next/react/core';
+import { boxPalette, mq } from '@ag.ds-next/react/core';
 import { Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Card, CardLink, CardInner } from '@ag.ds-next/react/card';
-import { mq } from '@ag.ds-next/react/core';
 import { Text } from '@ag.ds-next/react/text';
 import { getTemplateList, TEMPLATES_PATH } from '../../lib/mdx/templates';
 import { DocumentTitle } from '../../components/DocumentTitle';

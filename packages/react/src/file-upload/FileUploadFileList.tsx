@@ -4,27 +4,27 @@ import { FileWithStatus } from './utils';
 
 type FileUploadFileListProps = {
 	files: FileWithStatus[];
-	onRemove: (file: FileWithStatus) => void;
 	hideThumbnails?: boolean;
+	onRemove: (index: number) => void;
 };
 
 export const FileUploadFileList = ({
 	files,
-	onRemove,
 	hideThumbnails,
+	onRemove,
 }: FileUploadFileListProps) => {
 	if (!files.length) {
 		return null;
 	}
 
 	return (
-		<Stack as="ul" aria-label="Selected files" gap={0.5}>
+		<Stack aria-label="Selected files" as="ul" gap={0.5}>
 			{files.map((file, index) => (
 				<FileUploadFile
-					key={index}
 					file={file}
-					onRemove={() => onRemove(file)}
 					hideThumbnails={hideThumbnails}
+					key={index}
+					onRemove={() => onRemove(index)}
 				/>
 			))}
 		</Stack>

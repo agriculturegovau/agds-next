@@ -23,7 +23,7 @@ exports[`Modal renders correctly 1`] = `
         role="dialog"
       >
         <h2
-          class="css-jhnu76-boxStyles-Text"
+          class="css-lltnmr-boxStyles"
           data-autofocus="true"
           id="modal-:r0:-title"
           tabindex="-1"
@@ -34,7 +34,7 @@ exports[`Modal renders correctly 1`] = `
           class="css-79i25n-boxStyles"
         >
           <p
-            class="css-6j1v6l-boxStyles-Text"
+            class="css-dbscsh-boxStyles"
           >
             This is the Modal Body paragraph.
           </p>
@@ -75,7 +75,7 @@ exports[`Modal renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-10mbdw9-Button"
+            class="css-sbsftc-Button"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
