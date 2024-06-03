@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<
 		return { notFound: true };
 	}
 
-	const toc = await generateToc(page.content);
+	const toc = generateToc(page.content);
 
 	const { label, pageTitle, description } = TOKEN_PAGES[slug];
 	const editPath = `/docs/content/foundations/tokens/${slug}.mdx`;

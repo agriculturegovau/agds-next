@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps<
 		return { notFound: true };
 	}
 
-	const toc = await generateToc(guide.content);
+	const toc = generateToc(guide.content);
 	const breadcrumbs = await getNestedGuidesBreadcrumbs(slug);
 	const navLinks = await getNestedGuidesNavLinks();
 

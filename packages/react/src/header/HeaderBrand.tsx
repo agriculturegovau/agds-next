@@ -2,9 +2,8 @@ import { ReactNode } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { tokens } from '../core';
 import { Text } from '../text';
-import { useLinkComponent, boxPalette, packs } from '../core';
+import { boxPalette, packs, tokens, useLinkComponent } from '../core';
 
 type HeaderBrandProps = {
 	badgeLabel?: string;

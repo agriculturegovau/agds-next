@@ -186,7 +186,7 @@ export const UploadSingleFileOnSubmit: Story = {
 };
 
 const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
-	const [isSubmitting, setSubmitting] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const formSchema = yup
 		.object({
@@ -204,10 +204,10 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = async (data) => {
-		setSubmitting(true);
+		setIsSubmitting(true);
 		console.log({ data });
 		setTimeout(() => {
-			setSubmitting(false);
+			setIsSubmitting(false);
 		}, 2000);
 	};
 

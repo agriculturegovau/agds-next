@@ -89,12 +89,12 @@ type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {
 	render: function Render() {
-		const [value, onChange] = useState<NameOption | null>(null);
+		const [value, setValue] = useState<NameOption | null>(null);
 		return (
 			<Autocomplete
 				label="Search users"
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
