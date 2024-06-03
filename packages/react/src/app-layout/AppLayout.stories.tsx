@@ -28,7 +28,9 @@ function AppLayoutTemplate({
 	internal = false,
 	namesLength = 'regular',
 }: AppLayoutProps & {
+	/** Whether to render in the light, internal app theme. */
 	internal?: boolean;
+	/** The length of names to use for businesses. */
 	namesLength?: 'regular' | 'short' | 'medium' | 'long';
 }) {
 	const year = useMemo(() => new Date().getFullYear(), []);
