@@ -64,7 +64,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 	}
 );
 
-function usePasswordInputId(idProp: string | undefined) {
+function usePasswordInputId(idProp?: string) {
 	const autoId = useId(idProp);
 	return idProp ?? `password-input-${autoId}`;
 }
