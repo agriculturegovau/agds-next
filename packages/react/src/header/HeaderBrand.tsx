@@ -8,6 +8,7 @@ import { useLinkComponent, boxPalette, packs } from '../core';
 
 type HeaderBrandProps = {
 	badgeLabel?: string;
+	dividerPosition?: 'after' | 'between';
 	heading: string;
 	href?: string;
 	logo?: JSX.Element;
@@ -19,28 +20,27 @@ type HeaderBrandProps = {
 
 export function HeaderBrand({
 	badgeLabel,
+	dividerPosition,
+	heading,
 	href = '/',
 	logo,
 	secondLogo,
 	secondHref,
 	size,
-	heading,
 	subline,
 }: HeaderBrandProps) {
 	const Link = useLinkComponent();
 
 	return (
 		<Flex
-			alignItems="stretch"
 			flexDirection={{ xs: 'column', lg: 'row' }}
-			flexWrap={{ xs: 'wrap', xxl: 'nowrap' }}
-			focusRingFor="keyboard"
-			gap={2}
+			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
+			gap={1.5}
 			inline
 		>
 			<Flex
-				alignItems="stretch"
 				flexDirection={{ xs: 'column', sm: 'row' }}
+				flexShrink={0}
 				gap={1.5}
 			>
 				{logo && (
@@ -52,40 +52,36 @@ export function HeaderBrand({
 								' img, svg': { width: '100%' },
 								...packs.print.hidden,
 							}}
+							focusRingFor="keyboard"
 							href={href}
 							maxWidth={logoWidthMap[size]}
 						>
 							{logo}
 						</Flex>
 
-						<Box
-							borderRight
-							css={packs.print.hidden}
-							display={{ xs: 'none', sm: 'block' }}
-						/>
-
-						<Box
-							borderBottom
-							css={packs.print.hidden}
-							display={{ xs: 'block', sm: 'none' }}
-						/>
+						{dividerPosition === 'between' && <DividingLine />}
 					</>
 				)}
 
 				{logo && secondLogo && (
-					<Flex
-						alignSelf={{ xs: 'start', sm: 'center' }}
-						color="text"
-						as={Link}
-						css={{
-							' img, svg': { width: '100%' },
-							...packs.print.hidden,
-						}}
-						href={secondHref}
-						maxWidth={logoWidthMap[size]}
-					>
-						{secondLogo}
-					</Flex>
+					<>
+						<Flex
+							alignSelf={{ xs: 'start', sm: 'center' }}
+							as={Link}
+							color="text"
+							css={{
+								' img, svg': { width: '100%' },
+								...packs.print.hidden,
+							}}
+							focusRingFor="keyboard"
+							href={secondHref}
+							maxWidth={logoWidthMap[size]}
+						>
+							{secondLogo}
+						</Flex>
+
+						{dividerPosition === 'after' && <DividingLine />}
+					</>
 				)}
 			</Flex>
 
@@ -96,6 +92,7 @@ export function HeaderBrand({
 					textDecoration: 'none',
 					':hover': packs.underline,
 				}}
+				focusRingFor="keyboard"
 				href={href}
 				justifyContent="center"
 			>
@@ -161,3 +158,11 @@ const subHeadingSizeMap = {
 	sm: 'sm',
 	md: { xs: 'sm', sm: 'md' },
 } as const;
+
+const DividingLine = () => (
+	<Box
+		borderRight
+		css={packs.print.hidden}
+		display={{ xs: 'none', xl: 'block' }}
+	/>
+);

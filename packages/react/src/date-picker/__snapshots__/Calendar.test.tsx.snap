@@ -482,7 +482,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   >
                     <button
                       aria-label="3rd June 2024 (Monday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_today rdp-day_range_middle"
                       name="day"
                       tabindex="-1"
                       type="button"
@@ -1443,7 +1443,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   >
                     <button
                       aria-label="3rd June 2024 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
+                      class="rdp-button_reset rdp-button rdp-day rdp-day_today"
                       name="day"
                       tabindex="-1"
                       type="button"

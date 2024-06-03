@@ -5,6 +5,8 @@ import { HeaderBrand } from './HeaderBrand';
 import { HeaderContainer } from './HeaderContainer';
 
 export type HeaderProps = {
+	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
+	dividerPosition?: 'after' | 'between';
 	/** The logo to display. */
 	logo?: JSX.Element;
 	/** The second logo to display for co-branding. */
@@ -29,6 +31,7 @@ export type HeaderProps = {
 
 export function Header({
 	badgeLabel,
+	dividerPosition = 'after',
 	logo,
 	secondLogo,
 	heading,
@@ -40,11 +43,13 @@ export function Header({
 	secondHref,
 }: HeaderProps) {
 	const hasRightContent = !!rightContent;
+
 	return (
 		<HeaderContainer background={background} size={size}>
 			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
+					dividerPosition={dividerPosition}
 					href={href}
 					logo={logo}
 					secondLogo={secondLogo}

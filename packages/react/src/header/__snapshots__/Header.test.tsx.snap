@@ -3,7 +3,7 @@
 exports[`Header renders correctly 1`] = `
 <div>
   <header
-    class="css-2kzyss-boxStyles"
+    class="css-19w0tmx-boxStyles"
   >
     <div
       class="css-164ldz1-boxStyles"
@@ -15,13 +15,13 @@ exports[`Header renders correctly 1`] = `
           class="css-bmsj3y-boxStyles-Column"
         >
           <div
-            class="css-acon87-boxStyles"
+            class="css-107gt6z-boxStyles"
           >
             <div
-              class="css-1dc6fs4-boxStyles"
+              class="css-1h5ycna-boxStyles"
             >
               <a
-                class="css-h9q5or-boxStyles-HeaderBrand"
+                class="css-176ihjd-boxStyles-HeaderBrand"
                 href="/"
               >
                 <svg
@@ -55,15 +55,9 @@ exports[`Header renders correctly 1`] = `
                   />
                 </svg>
               </a>
-              <div
-                class="css-oxiux3-boxStyles-HeaderBrand"
-              />
-              <div
-                class="css-1mpugt4-boxStyles-HeaderBrand"
-              />
             </div>
             <a
-              class="css-1w89uti-boxStyles-HeaderBrand"
+              class="css-12hsbnf-boxStyles-HeaderBrand"
               href="/"
             >
               <div
