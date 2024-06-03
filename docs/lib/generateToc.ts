@@ -57,13 +57,7 @@ export function generateToc(content: string): HeadingData[] {
 
 		if (level === 2) {
 			nestedHeadings.push({ id, ...heading, items: [] });
-		} else if (level === 3 && nestedHeadings.length > 0) {
-			nestedHeadings[nestedHeadings.length - 1].items.push({
-				id,
-				...heading,
-				items: [],
-			});
-		} else if (level === 4 && nestedHeadings.length > 0) {
+		} else if ((level === 3 || level === 4) && nestedHeadings.length > 0) {
 			nestedHeadings[nestedHeadings.length - 1].items.push({
 				id,
 				...heading,

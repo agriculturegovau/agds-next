@@ -31,8 +31,6 @@ export type GroupedFieldsProps = {
 	legend: string;
 	/** Message to show when either field is invalid. */
 	message?: string;
-	/** If false, "(optional)" will not be appended to the legend. */
-	required?: boolean;
 	/** If true, the legend is hidden for sighted users. */
 	visuallyHideLegend?: boolean;
 };

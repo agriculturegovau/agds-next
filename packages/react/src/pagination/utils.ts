@@ -1,5 +1,5 @@
-export const BUTTON_SIZE_XS = '2.75rem' as const; // 44px
-export const BUTTON_SIZE_SM = '3rem' as const; // 48px
+export const BUTTON_SIZE_XS = '2.75rem'; // 44px
+export const BUTTON_SIZE_SM = '3rem'; // 48px
 
 /** Generates some basic text for the item range in Pagination:
  * "1 - 10 of 458 items" */

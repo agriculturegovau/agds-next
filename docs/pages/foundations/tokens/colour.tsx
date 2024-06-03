@@ -15,7 +15,7 @@ import { withBasePath } from '../../../lib/img';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TokensColorPage() {
-	const [isDarkMode, setDarkMode] = useState(false);
+	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	const activePalette = isDarkMode ? 'dark' : 'light';
 
@@ -66,7 +66,7 @@ export default function TokensColorPage() {
 							<Switch
 								label="Enable dark palette"
 								checked={isDarkMode}
-								onChange={setDarkMode}
+								onChange={setIsDarkMode}
 							/>
 						</div>
 					</Box>

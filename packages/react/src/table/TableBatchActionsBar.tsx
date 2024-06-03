@@ -5,7 +5,7 @@ export type TableBatchActionsProps = PropsWithChildren<{}>;
 
 export function TableBatchActionsBar({ children }: TableBatchActionsProps) {
 	const ref = useRef<HTMLDivElement>(null);
-	const [isStuck, setIsSticky] = useState(false);
+	const [isSticky, setIsSticky] = useState(false);
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -30,7 +30,7 @@ export function TableBatchActionsBar({ children }: TableBatchActionsProps) {
 			css={{
 				position: 'sticky',
 				bottom: -1,
-				...(isStuck && {
+				...(isSticky && {
 					borderBottomLeftRadius: 0,
 					borderBottomRightRadius: 0,
 					borderBottomWidth: 0,
