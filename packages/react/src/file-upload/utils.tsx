@@ -109,15 +109,13 @@ export function getAcceptedFilesSummary(
 					allFileTypes.push(formatFileExtension(extension));
 				});
 			}
-		} else {
+		} else if (item?.label) {
 			// A "custom" MIME type has been passed
-			if (item?.label) {
-				allFileTypes.push(item.label);
-			} else {
-				item.extensions.forEach((extension) => {
-					allFileTypes.push(formatFileExtension(extension));
-				});
-			}
+			allFileTypes.push(item.label);
+		} else {
+			item.extensions.forEach((extension) => {
+				allFileTypes.push(formatFileExtension(extension));
+			});
 		}
 	});
 

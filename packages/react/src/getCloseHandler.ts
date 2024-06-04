@@ -8,7 +8,7 @@ export function getRequiredCloseHandler(
 	onClose: Fn | undefined,
 	onDismiss: Fn | undefined
 ): Fn {
-	const closeHandler = onClose ? onClose : onDismiss;
+	const closeHandler = onClose || onDismiss;
 
 	handleWarnings(onClose, onDismiss);
 
@@ -25,7 +25,7 @@ export function getOptionalCloseHandler(
 ): Fn | undefined {
 	handleWarnings(onClose, onDismiss);
 
-	return onClose ? onClose : onDismiss;
+	return onClose || onDismiss;
 }
 
 function handleWarnings(onClose: Fn | undefined, onDismiss: Fn | undefined) {

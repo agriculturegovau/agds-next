@@ -86,7 +86,7 @@ export const ControlGroup = ({
 
 export const useControlGroupIds = (idProp?: string) => {
 	const autoId = useId(idProp);
-	const groupId = idProp ? idProp : `control-group-${autoId}`;
+	const groupId = idProp || `control-group-${autoId}`;
 	const hintId = `control-group-${autoId}-hint`;
 	const messageId = `control-group-${autoId}-message`;
 	return { groupId, hintId, messageId };
