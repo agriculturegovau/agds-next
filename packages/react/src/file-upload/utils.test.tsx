@@ -90,7 +90,7 @@ describe('getErrorSummary', () => {
 
 describe('getAcceptedFilesSummary', () => {
 	it('returns undefined if the accept prop is undefined', () => {
-		expect(getAcceptedFilesSummary(undefined)).toBeUndefined();
+		expect(getAcceptedFilesSummary()).toBeUndefined();
 	});
 
 	it('removes MIME types with duplicate extensions correctly', () => {

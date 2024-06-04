@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Fragment } from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, screen } from '../../../../test-utils';
 import { TabButton } from './TabButton';
@@ -61,9 +60,7 @@ describe('Tabs', () => {
 					{[1, 2].map((i) => (
 						<TabButton key={i}>Tab {i}</TabButton>
 					))}
-					<Fragment>
-						<TabButton>Tab 3</TabButton>
-					</Fragment>
+					<TabButton>Tab 3</TabButton>
 				</TabList>
 				{false}
 				<TabPanels>
@@ -71,9 +68,7 @@ describe('Tabs', () => {
 					{[1, 2].map((i) => (
 						<TabPanel key={i}>Tab panel 1</TabPanel>
 					))}
-					<Fragment>
-						<TabPanel>Tab panel 3</TabPanel>
-					</Fragment>
+					<TabPanel>Tab panel 3</TabPanel>
 					{false}
 				</TabPanels>
 			</Tabs>
