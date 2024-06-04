@@ -4,18 +4,20 @@ import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { boxPalette, packs, tokens, useLinkComponent } from '../core';
+import { HeaderProps } from './Header';
 
-type HeaderBrandProps = {
-	badgeLabel?: string;
-	dividerPosition?: 'after' | 'between';
-	heading: string;
-	href?: string;
-	logo?: JSX.Element;
-	secondHref?: string;
-	secondLogo?: JSX.Element;
-	size: keyof typeof logoWidthMap;
-	subline?: string;
-};
+type HeaderBrandProps = Pick<
+	HeaderProps,
+	| 'badgeLabel'
+	| 'dividerPosition'
+	| 'heading'
+	| 'href'
+	| 'logo'
+	| 'secondHref'
+	| 'secondLogo'
+	| 'subline'
+> &
+	Required<Pick<HeaderProps, 'size'>>;
 
 export function HeaderBrand({
 	badgeLabel,

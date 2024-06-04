@@ -5,42 +5,42 @@ import { HeaderBrand } from './HeaderBrand';
 import { HeaderContainer } from './HeaderContainer';
 
 export type HeaderProps = {
-	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
-	dividerPosition?: 'after' | 'between';
-	/** The logo to display. */
-	logo?: JSX.Element;
-	/** The second logo to display for co-branding. */
-	secondLogo?: JSX.Element;
-	/** The heading should be set to the website or service title. */
-	heading: string;
-	/** Used to provide additional information to describe your website or service. */
-	subline?: string;
-	/** Used to indicate if an application is in a prerelease state. */
-	badgeLabel?: string;
-	/** The href to link to, for example "/". */
-	href?: string;
-	/** The href to link to, for example "/". */
-	secondHref?: string;
-	/** Content to placed on the right side of the Header. */
-	rightContent?: ReactNode;
-	/** The size of the Header controls the vertical height. */
-	size?: 'sm' | 'md';
 	/** The background color of the Header. */
 	background?: 'body' | 'bodyAlt';
+	/** Used to indicate if an application is in a prerelease state. */
+	badgeLabel?: string;
+	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
+	dividerPosition?: 'after' | 'between';
+	/** The heading should be set to the website or service title. */
+	heading: string;
+	/** The href to link to, for example "/". */
+	href?: string;
+	/** The logo to display. */
+	logo?: JSX.Element;
+	/** Content to placed on the right side of the Header. */
+	rightContent?: ReactNode;
+	/** The href to link to, for example "/". */
+	secondHref?: string;
+	/** The second logo to display for co-branding. */
+	secondLogo?: JSX.Element;
+	/** The size of the Header controls the vertical height. */
+	size?: 'sm' | 'md';
+	/** Used to provide additional information to describe your website or service. */
+	subline?: string;
 };
 
 export function Header({
+	background = 'body',
 	badgeLabel,
 	dividerPosition = 'after',
-	logo,
-	secondLogo,
 	heading,
-	rightContent,
-	subline,
-	size = 'md',
-	background = 'body',
 	href = '/',
+	logo,
+	rightContent,
 	secondHref,
+	secondLogo,
+	size = 'md',
+	subline,
 }: HeaderProps) {
 	const hasRightContent = !!rightContent;
 
@@ -50,12 +50,12 @@ export function Header({
 				<HeaderBrand
 					badgeLabel={badgeLabel}
 					dividerPosition={dividerPosition}
+					heading={heading}
 					href={href}
 					logo={logo}
 					secondLogo={secondLogo}
 					secondHref={secondHref}
 					size={size}
-					heading={heading}
 					subline={subline}
 				/>
 			</Column>

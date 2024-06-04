@@ -36,10 +36,13 @@ describe('Header', () => {
 	describe('when a second logo with href is defined', () => {
 		beforeEach(() => {
 			renderHeader({
-				secondHref: '#',
-				secondLogo: <div data-testid="mock-second-logo">Mock second logo</div>,
+				secondHref: '#mock-second-href',
+				secondLogo: (
+					<span data-testid="mock-second-logo">Mock second logo</span>
+				),
 			});
 		});
+
 		test('then the second logo should be visible', () => {
 			expect(screen.getByTestId('mock-second-logo')).toBeVisible();
 		});
@@ -47,7 +50,7 @@ describe('Header', () => {
 		test('then a link with the second href should be visible', () => {
 			expect(
 				screen.getByRole('link', { name: 'Mock second logo' })
-			).toHaveAttribute('href', '#');
+			).toHaveAttribute('href', '#mock-second-href');
 		});
 	});
 });
