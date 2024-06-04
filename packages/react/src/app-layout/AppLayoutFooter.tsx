@@ -1,16 +1,30 @@
 import { PropsWithChildren } from 'react';
-import { Stack } from '../stack';
+import { Box } from '../box';
 import { Content } from '../content';
-import { boxPalette } from '../core';
+import { boxPalette, type BoxPalette, type ResponsiveProp } from '../core';
+import { Stack } from '../stack';
 
 export type AppLayoutFooterProps = PropsWithChildren<{
+	background?: 'body' | 'bodyAlt';
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	palette?: ResponsiveProp<BoxPalette>;
 }>;
 
-export function AppLayoutFooter({ children, id }: AppLayoutFooterProps) {
+export function AppLayoutFooter({
+	background = 'body',
+	children,
+	id,
+	palette,
+}: AppLayoutFooterProps) {
 	return (
-		<footer css={{ marginTop: 'auto' }} id={id}>
+		<Box
+			as="footer"
+			background={background}
+			css={{ marginTop: 'auto' }}
+			id={id}
+			palette={palette}
+		>
 			<Content>
 				<Stack
 					paddingY={3}
@@ -23,7 +37,7 @@ export function AppLayoutFooter({ children, id }: AppLayoutFooterProps) {
 					{children}
 				</Stack>
 			</Content>
-		</footer>
+		</Box>
 	);
 }
 

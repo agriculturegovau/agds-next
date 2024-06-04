@@ -23,12 +23,13 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		layout: 'fullscreen',
 	},
 	args: {
-		href: '/',
-		heading: 'Export Service',
-		subLine: 'Supporting Australian agricultural exports',
-		logo: <Logo />,
-		badgeLabel: 'Beta',
 		accountDetails,
+		badgeLabel: 'Beta',
+		background: 'bodyAlt',
+		heading: 'Export Service',
+		href: '/',
+		logo: <Logo />,
+		subLine: 'Supporting Australian agricultural exports',
 	},
 	render: (props) => (
 		<AppLayout focusMode={false}>
@@ -42,6 +43,12 @@ export default meta;
 type Story = StoryObj<typeof AppLayoutHeader>;
 
 export const Basic: Story = {};
+
+export const BodyBackground: Story = {
+	args: {
+		background: 'body',
+	},
+};
 
 export const FocusMode: Story = {
 	render: (props) => (

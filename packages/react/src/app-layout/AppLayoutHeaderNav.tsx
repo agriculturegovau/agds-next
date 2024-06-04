@@ -18,18 +18,18 @@ export function AppLayoutHeaderNav({
 	const { focusMode, openMobileMenu } = useAppLayoutContext();
 	return (
 		<Flex
-			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
-			background="body"
 			alignItems="center"
-			justifyContent={focusMode ? 'flex-end' : 'space-between'}
-			paddingLeft={0.75}
-			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
-			minHeight="5.25rem"
+			background="body"
 			css={{
 				'& > a, button': {
 					height: '100%',
 				},
 			}}
+			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
+			justifyContent={focusMode ? 'flex-end' : 'space-between'}
+			minHeight="5.25rem"
+			paddingLeft={0.75}
+			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
 		>
 			{!focusMode ? (
 				<AppLayoutHeaderNavMenuButton onClick={openMobileMenu} />
@@ -46,22 +46,22 @@ function AppLayoutHeaderNavMenuButton({
 }) {
 	return (
 		<Flex
-			as={BaseButton}
-			onClick={onClick}
-			flexDirection="column"
-			justifyContent="center"
 			alignItems="center"
-			gap={0.5}
-			paddingX={1}
+			as={BaseButton}
 			color="action"
-			fontSize="xs"
-			focus
 			css={{
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,
 					textDecoration: 'underline',
 				},
 			}}
+			flexDirection="column"
+			focusRingFor="keyboard"
+			fontSize="xs"
+			gap={0.5}
+			justifyContent="center"
+			onClick={onClick}
+			paddingX={1}
 		>
 			<MenuIcon aria-hidden />
 			<span>Menu</span>
