@@ -1,13 +1,14 @@
 import { PropsWithChildren, ReactNode, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import {
+	mapResponsiveProp,
+	mq,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
 	useWindowSize,
 } from '@ag.ds-next/react/core';
 import { backgroundColorMap, Box } from '@ag.ds-next/react/box';
-import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Stack } from '@ag.ds-next/react/stack';

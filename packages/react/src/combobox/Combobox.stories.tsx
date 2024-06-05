@@ -10,8 +10,8 @@ const meta: Meta<typeof Combobox> = {
 	title: 'forms/Combobox/Combobox',
 	component: Combobox,
 	render: function ComboboxStory(props) {
-		const [value, onChange] = useState<Option | null>(null);
-		return <Combobox {...props} value={value} onChange={onChange} />;
+		const [value, setValue] = useState<Option | null>(null);
+		return <Combobox {...props} value={value} onChange={setValue} />;
 	},
 };
 
@@ -78,12 +78,12 @@ type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {
 	render: function Render() {
-		const [value, onChange] = useState<NameOption | null>(null);
+		const [value, setValue] = useState<NameOption | null>(null);
 		return (
 			<Combobox
 				label="Search users"
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				options={NAME_OPTIONS}
 				renderItem={(item, inputValue) => (
 					<ComboboxRenderItem

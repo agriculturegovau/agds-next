@@ -1,7 +1,6 @@
 import { Stack } from '@ag.ds-next/react/stack';
-import { PageContent } from '@ag.ds-next/react/content';
+import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
