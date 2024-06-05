@@ -105,7 +105,7 @@ export const DatePicker = ({
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
-	const popover = usePopover({ noVerticalScroll: true });
+	const popover = usePopover({ fixedHeight: true });
 
 	const onSelect = useCallback<SelectSingleEventHandler>(
 		(_, selectedDay, modifiers) => {

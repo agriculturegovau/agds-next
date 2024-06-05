@@ -142,7 +142,7 @@ export const DateRangePicker = ({
 		setHasCalendarOpened(true);
 	}
 
-	const popover = usePopover({ noVerticalScroll: true });
+	const popover = usePopover({ fixedHeight: true });
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({

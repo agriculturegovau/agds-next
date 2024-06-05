@@ -107,7 +107,8 @@ export const reactDayPickerStyles = {
 	// Table
 	'.rdp-months': {
 		display: 'flex',
-		height: '23.5rem',
+		height: '21.5rem',
+		'@media(min-width: 375px)': { height: '23.5rem' },
 	},
 	'.rdp-month': {
 		margin: `0 ${mapSpacing(1)}`,
@@ -115,11 +116,9 @@ export const reactDayPickerStyles = {
 		'&:last-of-type': { marginRight: 0 },
 	},
 	'.rdp-table': {
-		borderCollapse: 'collapse',
-		height: cellSizeSmall,
 		margin: 0,
-		width: cellSizeSmall,
-		'@media(min-width: 375px)': { maxWidth: `calc(${cellSizeLarge} * 7)` },
+		maxWidth: `calc(${cellSizeLarge} * 7)`,
+		borderCollapse: 'collapse',
 	},
 	'.rdp-tbody': {
 		border: 0,
