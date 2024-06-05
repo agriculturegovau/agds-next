@@ -11,8 +11,8 @@ const meta: Meta<typeof TimePicker> = {
 		hint: 'Start typing to see results',
 	},
 	render: function TimePickerStory(props) {
-		const [value, onChange] = useState<DefaultComboboxOption | null>(null);
-		return <TimePicker {...props} value={value} onChange={onChange} />;
+		const [value, setValue] = useState<DefaultComboboxOption | null>(null);
+		return <TimePicker {...props} value={value} onChange={setValue} />;
 	},
 };
 

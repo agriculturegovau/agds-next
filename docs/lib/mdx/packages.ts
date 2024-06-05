@@ -66,10 +66,7 @@ async function getPkgSubNavItems(slug: string) {
 	});
 }
 
-export async function getPkgDocsContent(
-	slug: string,
-	path: string | string = 'overview.mdx'
-) {
+export async function getPkgDocsContent(slug: string, path = 'overview.mdx') {
 	const filePath = `${pkgDocsPath(slug)}/${path}`;
 	if (!existsSync(filePath)) return;
 	const { data, content } = await getMarkdownData(filePath);

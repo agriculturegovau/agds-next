@@ -9,7 +9,7 @@ exports[`DirectionButton direction: down renders correctly 1`] = `
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -38,7 +38,7 @@ exports[`DirectionButton direction: left renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -69,7 +69,7 @@ exports[`DirectionButton direction: right renders correctly 1`] = `
     Next
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -99,7 +99,7 @@ exports[`DirectionButton direction: up renders correctly 1`] = `
     Top
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -128,7 +128,7 @@ exports[`DirectionLink direction: down renders correctly 1`] = `
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -156,7 +156,7 @@ exports[`DirectionLink direction: left renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -186,7 +186,7 @@ exports[`DirectionLink direction: right renders correctly 1`] = `
     Next
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -215,7 +215,7 @@ exports[`DirectionLink direction: up renders correctly 1`] = `
     Top
     <svg
       aria-hidden="true"
-      class="css-1krnro2-Icon"
+      class="css-ub2kzo-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

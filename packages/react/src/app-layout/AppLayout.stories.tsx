@@ -25,8 +25,14 @@ import {
 
 function AppLayoutTemplate({
 	focusMode = false,
+	internal = false,
 	namesLength = 'regular',
-}: AppLayoutProps & { namesLength?: 'regular' | 'short' | 'medium' | 'long' }) {
+}: AppLayoutProps & {
+	/** Whether to render in the light, internal app theme. */
+	internal?: boolean;
+	/** The length of names to use for businesses. */
+	namesLength?: 'regular' | 'short' | 'medium' | 'long';
+}) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	const businesses = exampleData.businessNames[namesLength];
 	const [businessName, setBusinessName] = useState(businesses[0]);
@@ -37,11 +43,6 @@ function AppLayoutTemplate({
 			/>
 			<AppLayout focusMode={focusMode}>
 				<AppLayoutHeader
-					href="/"
-					heading="Export Service"
-					subLine="Supporting Australian agricultural exports"
-					badgeLabel="Beta"
-					logo={<Logo />}
 					accountDetails={{
 						name: exampleData.userNames[namesLength],
 						secondaryText: 'My account',
@@ -53,16 +54,24 @@ function AppLayoutTemplate({
 							/>
 						),
 					}}
+					badgeLabel="Beta"
+					borderColor={internal ? 'selected' : undefined}
+					heading="Export Service"
+					href="/"
+					logo={<Logo />}
+					palette={internal ? 'light' : undefined}
+					subLine="Supporting Australian agricultural exports"
 				/>
 				<AppLayoutSidebar
 					activePath="/"
+					background={internal ? 'body' : undefined}
 					items={navigationItems(businessName)}
 				/>
 				<AppLayoutContent>
 					<main
+						css={{ '&:focus': { outline: 'none' } }}
 						id="main-content"
 						tabIndex={-1}
-						css={{ '&:focus': { outline: 'none' } }}
 					>
 						<PageContent>
 							<Prose>
@@ -88,6 +97,7 @@ function AppLayoutTemplate({
 					<AppLayoutFooter>
 						<nav aria-label="footer">
 							<LinkList
+								horizontal
 								links={[
 									{ label: 'Home', href: '/' },
 									{
@@ -103,7 +113,6 @@ function AppLayoutTemplate({
 										href: 'https://github.com/agriculturegovau/agds-starter-kit',
 									},
 								]}
-								horizontal
 							/>
 						</nav>
 						<AppLayoutFooterDivider />
@@ -166,4 +175,10 @@ export const WithMediumNames: StoryObj<typeof AppLayout> = {
 
 export const WithShortNames: StoryObj<typeof AppLayout> = {
 	render: (args) => <AppLayoutTemplate {...args} namesLength="short" />,
+};
+
+export const InternalLightTheme: StoryObj<typeof AppLayout> = {
+	render: (args) => (
+		<AppLayoutTemplate {...args} internal namesLength="short" />
+	),
 };

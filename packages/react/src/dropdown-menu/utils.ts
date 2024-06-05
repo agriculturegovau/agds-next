@@ -38,5 +38,5 @@ export function useDropdownMenuGroupId() {
 export function useDropdownMenuItemId(idProp: string | undefined) {
 	const { menuId } = useDropdownMenuContext();
 	const autoId = useId();
-	return idProp ?? `${menuId}-item-${autoId}`;
+	return idProp || `${menuId}-item-${autoId}`;
 }

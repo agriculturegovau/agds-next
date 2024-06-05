@@ -1,5 +1,10 @@
 import { Fragment } from 'react';
-import { findBestMatch, tokens } from '../core';
+import {
+	findBestMatch,
+	tokens,
+	type BoxPalette,
+	type ResponsiveProp,
+} from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
@@ -12,14 +17,21 @@ import {
 export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
 	activePath?: string;
+	background?: 'body' | 'bodyAlt';
 	/** Groups of navigation items to display. */
 	items: (
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
+	palette?: ResponsiveProp<BoxPalette>;
 };
 
-export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
+export function AppLayoutSidebar({
+	activePath,
+	background = 'bodyAlt',
+	items,
+	palette,
+}: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
 	const bestMatch = findBestMatch(
 		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
@@ -29,11 +41,9 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 		<Fragment>
 			{/* Desktop */}
 			<Stack
-				gap={1}
-				background="bodyAlt"
-				borderRight
+				background={background}
 				borderColor="muted"
-				flexGrow={1}
+				borderRight
 				css={{
 					display: 'none',
 					width: APP_LAYOUT_SIDEBAR_WIDTH,
@@ -41,12 +51,24 @@ export function AppLayoutSidebar({ activePath, items }: AppLayoutSidebarProps) {
 						display: focusMode ? 'none' : 'flex',
 					},
 				}}
+				flexGrow={1}
+				gap={1}
+				palette={palette}
 			>
-				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
+				<AppLayoutSidebarNav
+					activePath={bestMatch}
+					background={background}
+					items={items}
+				/>
 			</Stack>
 			{/* Mobile */}
-			<AppLayoutSidebarDialog>
-				<AppLayoutSidebarNav activePath={bestMatch} items={items} />
+			<AppLayoutSidebarDialog palette={palette}>
+				<AppLayoutSidebarNav
+					activePath={bestMatch}
+					// This is hardcoded as bodyAlt because the dialog is hardcoded as shade
+					background="bodyAlt"
+					items={items}
+				/>
 			</AppLayoutSidebarDialog>
 		</Fragment>
 	);

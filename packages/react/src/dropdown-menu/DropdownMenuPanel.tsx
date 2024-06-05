@@ -121,7 +121,7 @@ function useKeydownNavigation() {
 			default:
 				// If the key is a letter, update the search term
 				if (
-					/^[a-zA-Z]{1}$/.test(event.key) &&
+					/^[a-zA-Z]$/.test(event.key) &&
 					// Bail if the user is holding a modifier key so they can use keyboard shortcuts
 					!event.metaKey &&
 					!event.ctrlKey

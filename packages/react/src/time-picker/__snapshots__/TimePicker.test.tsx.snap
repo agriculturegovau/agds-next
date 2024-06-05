@@ -11,19 +11,19 @@ exports[`TimePicker renders correctly 1`] = `
       id="downshift-:r1:-label"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Select a time
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-1jndov8-boxStyles"
       id="field-combobox-input-:r0:-hint"
     >
       Start typing to see results
@@ -61,7 +61,7 @@ exports[`TimePicker renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-qhpjst-Icon"
+            class="css-fyxrud-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -104,19 +104,19 @@ exports[`TimePicker renders correctly when loading 1`] = `
       id="downshift-:r4:-label"
     >
       <span
-        class="css-433uqb-boxStyles-Text"
+        class="css-1jywj6f-boxStyles"
       >
         Select a time
       </span>
       <span
-        class="css-1rpt3h8-boxStyles-Text"
+        class="css-axuon-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-lw0v8u-boxStyles-Text"
+      class="css-1jndov8-boxStyles"
       id="field-combobox-input-:r3:-hint"
     >
       Start typing to see results
@@ -154,7 +154,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="css-qhpjst-Icon"
+            class="css-fyxrud-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -202,7 +202,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
               />
             </span>
             <span
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-dbscsh-boxStyles"
             >
               Loading
             </span>

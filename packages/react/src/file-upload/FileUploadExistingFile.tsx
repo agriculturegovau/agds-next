@@ -3,59 +3,53 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
-import { SuccessFilledIcon } from '../icon';
+import { CloseIcon, SuccessFilledIcon } from '../icon';
 import { TextLink } from '../text-link';
 import { FileUploadFileThumbnail } from './FileUploadFileThumbnail';
 import { ExistingFile, formatFileSize } from './utils';
 
 type FileUploadExistingFileProps = {
 	file: ExistingFile;
-	onRemove: MouseEventHandler<HTMLButtonElement>;
 	hideThumbnails?: boolean;
+	onRemove: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadExistingFile = ({
 	file,
-	onRemove,
 	hideThumbnails,
+	onRemove,
 }: FileUploadExistingFileProps) => {
 	const { name, size, href, thumbnailSrc } = file;
 	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
-			rounded
 			as="li"
-			aria-label={`Uploaded file. ${name}`}
+			background="success"
 			gap={0.5}
 			justifyContent="space-between"
-			background="success"
+			rounded
 		>
 			<Flex>
 				{showThumbnail && <FileUploadFileThumbnail src={thumbnailSrc} />}
-				<Flex alignItems="center" paddingLeft={1} gap={0.5}>
+				<Flex alignItems="center" gap={0.5} paddingLeft={1}>
 					<Box flexShrink={0}>
 						<SuccessFilledIcon
-							color="success"
-							size="md"
 							aria-hidden="false"
 							aria-label="Success"
+							color="success"
 							css={{ display: 'block' }}
+							size="md"
 						/>
 					</Box>
 					{href ? (
-						<Text paddingY={1.5}>
-							<TextLink
-								href={href}
-								target="_blank"
-								rel="noopener noreferrer"
-								css={{ wordBreak: 'break-all' }}
-							>
+						<Text breakWords paddingY={1.5}>
+							<TextLink href={href} rel="noopener noreferrer" target="_blank">
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
 						</Text>
 					) : (
-						<Text paddingY={1.5} css={{ wordBreak: 'break-all' }}>
+						<Text breakWords paddingY={1.5}>
 							{name}
 							{size ? (
 								<Text css={{ whiteSpace: 'nowrap' }}>
@@ -67,16 +61,16 @@ export const FileUploadExistingFile = ({
 					)}
 				</Flex>
 			</Flex>
-			<Flex flexShrink={0} alignItems="center" paddingRight={1}>
-				<Box>
-					<Button
-						variant="text"
-						onClick={onRemove}
-						aria-label={`Remove file, ${name}`}
-					>
-						Remove file
-					</Button>
-				</Box>
+			<Flex alignItems="center" flexShrink={0} paddingRight={1}>
+				<Button
+					aria-label={`Remove file: ${name}`}
+					iconBefore={CloseIcon}
+					onClick={onRemove}
+					size="sm"
+					variant="text"
+				>
+					Remove
+				</Button>
 			</Flex>
 		</Flex>
 	);

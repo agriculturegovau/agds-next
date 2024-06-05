@@ -13,7 +13,7 @@ exports[`SearchBox renders correctly 1`] = `
         class="css-12in0u0-boxStyles"
       >
         <label
-          class="css-1dixsb6-boxStyles-Text-SearchBoxLabel"
+          class="css-1wmhsmi-boxStyles-SearchBoxLabel"
           for="search-:r0:"
         >
           Search

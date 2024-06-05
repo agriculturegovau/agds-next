@@ -10,12 +10,12 @@ const meta: Meta<typeof ComboboxAsync> = {
 	title: 'forms/Combobox/ComboboxAsync',
 	component: ComboboxAsync,
 	render: function ComboboxAsyncStory(props) {
-		const [value, onChange] = useState<Option | null>(null);
+		const [value, setValue] = useState<Option | null>(null);
 		return (
 			<ComboboxAsync
 				{...props}
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -89,12 +89,12 @@ type NameOption = (typeof NAME_OPTIONS)[number];
 
 export const CustomRender: Story = {
 	render: function Render() {
-		const [value, onChange] = useState<NameOption | null>(null);
+		const [value, setValue] = useState<NameOption | null>(null);
 		return (
 			<ComboboxAsync
 				label="Search users"
 				value={value}
-				onChange={onChange}
+				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));

@@ -19,7 +19,7 @@ exports[`Radio renders correctly 1`] = `
       />
     </span>
     <span
-      class="css-812asu-boxStyles-Text-RadioLabel"
+      class="css-1vx6497-boxStyles-RadioLabel"
     >
       My Radio
     </span>

@@ -16,7 +16,7 @@ exports[`Checkbox renders correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="css-1xyaayo-Icon"
+        class="css-lewdp2-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -32,7 +32,7 @@ exports[`Checkbox renders correctly 1`] = `
       </svg>
     </span>
     <span
-      class="css-1929o1r-boxStyles-Text-CheckboxLabel"
+      class="css-1f6xqkn-boxStyles-CheckboxLabel"
     >
       My checkbox
     </span>

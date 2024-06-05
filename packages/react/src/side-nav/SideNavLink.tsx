@@ -1,7 +1,12 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Flex } from '../flex';
-import { useLinkComponent, LinkProps, tokens } from '../core';
-import { boxPalette, packs } from '../core';
+import {
+	boxPalette,
+	LinkProps,
+	packs,
+	tokens,
+	useLinkComponent,
+} from '../core';
 import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
 import { useLinkListDepth } from './context';
 

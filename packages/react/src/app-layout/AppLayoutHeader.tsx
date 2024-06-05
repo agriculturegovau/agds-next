@@ -1,25 +1,13 @@
 import { ReactNode } from 'react';
-import { Box } from '../box';
+import { Box, type BorderColor } from '../box';
 import { Flex } from '../flex';
-import { tokens } from '../core';
+import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
 
 export type AppLayoutHeaderProps = {
-	/** Defines an identifier (ID) which must be unique. */
-	id?: string;
-	/** The logo to display. */
-	logo: JSX.Element;
-	/**  The href to link to, for example "/". */
-	href: string;
-	/** The heading should be set to the website or service title. */
-	heading: string;
-	/** Used to provide additional information to describe your website or service. */
-	subLine?: string;
-	/** Used to indicate if an application is in a prerelease state. */
-	badgeLabel?: string;
 	/** Details for the authenticated account. */
 	accountDetails?: {
 		/** The name of the authenticated user. */
@@ -31,51 +19,69 @@ export type AppLayoutHeaderProps = {
 		/** Dropdown menu for account switching. */
 		dropdown?: ReactNode;
 	};
+	background?: 'body' | 'bodyAlt';
+	/** Used to indicate if an application is in a prerelease state. */
+	badgeLabel?: string;
+	borderColor?: ResponsiveProp<BorderColor>;
+	/** The heading should be set to the website or service title. */
+	heading: string;
+	/**  The href to link to, for example "/". */
+	href: string;
+	/** Defines an identifier (ID) which must be unique. */
+	id?: string;
+	/** The logo to display. */
+	logo: JSX.Element;
+	palette?: ResponsiveProp<BoxPalette>;
+	/** Used to provide additional information to describe your website or service. */
+	subLine?: string;
 };
 
 export function AppLayoutHeader({
-	id,
+	accountDetails,
+	background = 'bodyAlt',
+	badgeLabel,
+	borderColor = 'accent',
 	heading,
 	href,
+	id,
 	logo,
+	palette = 'dark',
 	subLine,
-	badgeLabel,
-	accountDetails,
 }: AppLayoutHeaderProps) {
 	return (
 		<Flex
 			as="header"
-			id={id}
-			palette="dark"
-			flexDirection="column"
 			borderBottom
 			borderBottomWidth="xxl"
-			borderColor="accent"
+			borderColor={borderColor}
 			css={{
 				[tokens.mediaQuery.min[APP_LAYOUT_DESKTOP_BREAKPOINT]]: {
 					gridColumnStart: 1,
 					gridColumnEnd: 3,
 				},
 			}}
+			flexDirection="column"
+			id={id}
+			palette={palette}
 		>
 			<Flex
-				gap={1}
-				paddingX={tokens.containerPadding}
-				justifyContent="space-between"
-				background="bodyAlt"
 				alignItems="center"
+				background={background}
+				gap={1}
+				justifyContent="space-between"
+				paddingX={tokens.containerPadding}
 				width="100%"
 			>
 				<AppLayoutHeaderBrand
+					badgeLabel={badgeLabel}
 					heading={heading}
 					href={href}
 					logo={logo}
 					subLine={subLine}
-					badgeLabel={badgeLabel}
 				/>
 				<Box
-					height="100%"
 					display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}
+					height="100%"
 				>
 					{accountDetails ? (
 						<AppLayoutHeaderAccount {...accountDetails} />

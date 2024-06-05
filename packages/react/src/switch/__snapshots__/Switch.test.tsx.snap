@@ -21,7 +21,7 @@ exports[`Switch renders correctly 1`] = `
       />
     </span>
     <span
-      class="css-6j1v6l-boxStyles-Text"
+      class="css-dbscsh-boxStyles"
     >
       Show establishments
     </span>
