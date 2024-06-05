@@ -32,7 +32,7 @@ export function HeaderBrand({
 }: HeaderBrandProps) {
 	const Link = useLinkComponent();
 
-	return (
+	return logo && secondLogo ? (
 		<Flex
 			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
@@ -44,46 +44,38 @@ export function HeaderBrand({
 				flexShrink={0}
 				gap={1.5}
 			>
-				{logo && (
-					<>
-						<Flex
-							as={Link}
-							color="text"
-							css={{
-								' img, svg': { width: '100%' },
-								...packs.print.hidden,
-							}}
-							focusRingFor="keyboard"
-							href={href}
-							maxWidth={logoWidthMap[size]}
-						>
-							{logo}
-						</Flex>
+				<Flex
+					as={Link}
+					color="text"
+					css={{
+						' img, svg': { width: '100%' },
+						...packs.print.hidden,
+					}}
+					focusRingFor="keyboard"
+					href={href}
+					maxWidth={logoWidthMap[size]}
+				>
+					{logo}
+				</Flex>
 
-						{dividerPosition === 'between' && <DividingLine />}
-					</>
-				)}
+				{dividerPosition === 'between' && <DividingLine />}
 
-				{logo && secondLogo && (
-					<>
-						<Flex
-							alignSelf={{ xs: 'start', sm: 'center' }}
-							as={Link}
-							color="text"
-							css={{
-								' img, svg': { width: '100%' },
-								...packs.print.hidden,
-							}}
-							focusRingFor="keyboard"
-							href={secondHref}
-							maxWidth={logoWidthMap[size]}
-						>
-							{secondLogo}
-						</Flex>
+				<Flex
+					alignSelf={{ xs: 'start', sm: 'center' }}
+					as={Link}
+					color="text"
+					css={{
+						' img, svg': { width: '100%' },
+						...packs.print.hidden,
+					}}
+					focusRingFor="keyboard"
+					href={secondHref}
+					maxWidth={logoWidthMap[size]}
+				>
+					{secondLogo}
+				</Flex>
 
-						{dividerPosition === 'after' && <DividingLine />}
-					</>
-				)}
+				{dividerPosition === 'after' && <DividingLine />}
 			</Flex>
 
 			<Stack
@@ -110,6 +102,59 @@ export function HeaderBrand({
 					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
 				</Flex>
 
+				{subline && (
+					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
+						{subline}
+					</Text>
+				)}
+			</Stack>
+		</Flex>
+	) : (
+		<Flex
+			as={Link}
+			href={href}
+			inline
+			flexDirection={{ xs: 'column', md: 'row' }}
+			color="text"
+			gap={1}
+			focusRingFor="keyboard"
+			alignItems="stretch"
+			css={{
+				textDecoration: 'none',
+				':hover': packs.underline,
+			}}
+		>
+			{logo ? (
+				<Flex
+					alignItems="flex-start"
+					maxWidth={logoWidthMap[size]}
+					css={{
+						' img, svg': { width: '100%' },
+						...packs.print.hidden,
+					}}
+				>
+					{logo}
+				</Flex>
+			) : null}
+			{logo ? (
+				<Box
+					borderRight
+					display={{ xs: 'none', md: 'block' }}
+					css={packs.print.hidden}
+				/>
+			) : null}
+			<Stack justifyContent="center">
+				<Flex alignItems="flex-start" gap={0.5}>
+					<Text
+						lineHeight="default"
+						fontSize={headingSizeMap[size]}
+						fontWeight="bold"
+						maxWidth={tokens.maxWidth.bodyText}
+					>
+						{heading}
+					</Text>
+					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
+				</Flex>
 				{subline && (
 					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
 						{subline}
@@ -164,6 +209,6 @@ const DividingLine = () => (
 	<Box
 		borderRight
 		css={packs.print.hidden}
-		display={{ xs: 'none', xl: 'block' }}
+		display={{ xs: 'none', lg: 'block' }}
 	/>
 );
