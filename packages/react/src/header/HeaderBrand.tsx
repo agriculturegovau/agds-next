@@ -50,7 +50,12 @@ export function HeaderBrand({
 			inline
 		>
 			<Flex
-				css={{ marginRight: hasRightContent ? mapSpacing(GAP_REM) : 0 }} // Create a gap when there is right content
+				css={{
+					marginRight:
+						hasRightContent && dividerPosition === 'after'
+							? mapSpacing(GAP_REM)
+							: 0,
+				}} // Create a gap when there is right content
 				flexDirection={{ xs: 'column', sm: 'row' }}
 				flexShrink={0}
 				gap={GAP_REM}
@@ -69,7 +74,9 @@ export function HeaderBrand({
 					{logo}
 				</Flex>
 
-				{dividerPosition === 'between' && <DividingLine />}
+				{dividerPosition === 'between' && (
+					<DividingLine dividerPosition={dividerPosition} />
+				)}
 
 				<Flex
 					alignSelf={{ xs: 'start', sm: 'center' }}
@@ -89,15 +96,21 @@ export function HeaderBrand({
 
 			<Flex
 				gap={GAP_REM}
-				css={{
-					[`${tokens.mediaQuery.min.lg}`]: {
-						marginLeft: `calc(-${
-							hasRightContent ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
-						} - 1px)`, // Hide the divider when the heading text flows to the second row
-					},
-				}}
+				css={
+					dividerPosition === 'after'
+						? {
+								[`${tokens.mediaQuery.min.lg}`]: {
+									marginLeft: `calc(-${
+										hasRightContent ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
+									} - 1px)`, // Hide the divider when the heading text flows to the second row
+								},
+						  }
+						: undefined
+				}
 			>
-				{dividerPosition === 'after' && <DividingLine />}
+				{dividerPosition === 'after' && (
+					<DividingLine dividerPosition={dividerPosition} />
+				)}
 
 				<Stack
 					as={Link}
@@ -227,10 +240,16 @@ const subHeadingSizeMap = {
 	md: { xs: 'sm', sm: 'md' },
 } as const;
 
-const DividingLine = () => (
+const DividingLine = ({
+	dividerPosition,
+}: Pick<HeaderBrandProps, 'dividerPosition'>) => (
 	<Box
 		borderRight
 		css={packs.print.hidden}
-		display={{ xs: 'none', lg: 'block' }}
+		display={{
+			xs: 'none',
+			sm: dividerPosition === 'between' ? 'block' : undefined,
+			lg: 'block',
+		}}
 	/>
 );
