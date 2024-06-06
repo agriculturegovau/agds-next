@@ -1,0 +1,94 @@
+---
+date: 6th June 2024
+title: AgDS Beta v1.22.0 release
+description: New File upload error UI and related fixes, accessible focus management support for various components, App layout theming, co-branded Header, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Add `background` and `palette` support to `AppLayoutFooter`, `AppLayoutHeader` & `AppLayoutSidebar`.
+- Fix `AppLayoutSidebar` not closing on item press.
+
+### [Box](/components/box)
+
+- Deprecate `focus` prop in favour of new `focusRingFor` prop to enable a focus ring when the element is keyboard focused (`focusRingFor="keyboard"`) and programmatically focused (`focusRingFor="all"`).
+- Add `breakWords` prop to let words break across multiple lines where necessary.
+- Add `alignSelf` CSS prop.
+- Add `justifySelf` CSS prop.
+- Add `'start'` and `'end'` as valid `alignItems` values.
+- Document all style props.
+
+### [Button](/components/button)
+
+- Add `alignSelf` CSS prop from `Box`.
+- Add `focusRingFor` prop to allow programmatic focus, e.g. via a link, to render the focus ring. This is available for `Button` and `ButtonLink`.
+
+### [Core](/components/core)
+
+- Add new `useFocus` hook to allow an element to be focused when it’s mounted and updated.
+
+### [Drawer](/components/drawer)
+
+- Add `elementToFocusOnClose` prop to allow custom element to be focused when the drawer closes.
+
+### [File upload](/components/file-upload)
+
+- New implementation of error handling: new UI and unaccepted files no longer trigger the invalid state.
+- When using `multiple`, duplicate files aren’t selected.
+- `maxFiles` now uses the total files being uploaded, not just current selection.
+
+### [Grouped fields](/components/grouped-fields)
+
+- Remove unused `required` prop.
+
+### [Header](/components/header)
+
+- Support second logo with link for co-branding.
+
+### [Icon](/components/icon)
+
+- Prevent icons from shrinking smaller than their intended size.
+
+### [List](/components/list)
+
+- Add `BoxProps` to allowed types for `ListItem`.
+
+### [Page alert](/components/page-alert)
+
+- Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page.
+- Add `focusOnUpdate` prop for to focus the alert when content updates.
+- Add `focusRingFor="all"` to improve accessibility for programmatically focused alerts.
+
+### [Section alert](/components/section-alert)
+
+- Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page.
+- Add `focusOnUpdate` prop for to focus the alert when content updates.
+- Add `focusRingFor="all"` to improve accessibility for programmatically focused alerts.
+- Ensure Close button is always aligned to the top.
+
+### [Summary list](/components/summary-list)
+
+- Increase gap between `SummaryListItemTerm` and `SummaryListItemDescription` to show a clearer separation.
+
+### [Table](/components/table)
+
+- Add `invalid` prop to `TableRow` component to visually indicate a row with error.
+- Docs: Fix example header alignment.
+
+### [Task list](/components/task-list)
+
+- Make `doneRecently` status count towards `stepsCompleted`.
+
+### [Text](/components/text)
+
+- Remove unnecessary margin reset CSS.
+
+```sh
+"@ag.ds-next/react": "1.22.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1668) for this release.
