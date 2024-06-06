@@ -1,5 +1,59 @@
 # @ag.ds-next/react
 
+## 1.22.0
+
+### Minor Changes
+
+- ce16f6a7577: table: Add `invalid` prop to table row component to visually indicate row with error.
+- 174a1382ca0: app-layout: Add `background` and `palette` support to `AppLayoutFooter`, `AppLayoutHeader` & `AppLayoutSidebar`
+- 359c74e357f: grouped-fields: Remove unused required prop
+- f1b9d2b69db: box: Add `breakWords` prop to let words break across multiple lines where necessary
+- 0ed83fe5448: header: Support second logo with link for cobranding.
+
+  box: Add `justifySelf` responsive prop.
+
+- 2a44de65cb9: file-upload: New implementation of error handling: new UI and unaccepted files no longer trigger the invalid state. With `multiple`, duplicate files aren’t selected. `maxFiles` uses the total files being uploaded, not just current selection.
+
+  icon: Prevent from shrinking smaller than their intended size.
+
+  list: Add `BoxProps` to allowed types for `ListItem`.
+
+  section-alert: Ensure Close button is always aligned to the top.
+
+  text: Remove unnecessary margin reset CSS.
+
+- 358c561f2f7: box: Deprecate `focus` prop in favour of new `focusRingFor` prop to enable a focus ring when the element is keyboard focused (`focusRingFor="keyboard"`) and programmatically focused (`focusRingFor="all"`).
+
+  core: Add new `useFocusOnMount` hook to allow an element to be focused when it’s mounted.
+
+  drawer: Add `elementToFocusOnClose` prop to allow custom element to be focused when the drawer closes.
+
+  page-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+
+  section-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+
+- 053eee29b67: core: move from `useFocusOnMount` to `useFocus` to allow for `focusOnUpdate`.
+
+  page-alert: enable `focusOnUpdate` prop for focusing on updated alert content.
+
+  section-alert: enable `focusOnUpdate` prop for focusing on updated alert content.
+
+  box: add `alignSelf` CSS prop. Add `'start'` and `'end'` as valid `alignItems` values.
+
+  button: add `alignSelf` CSS prop from `Box`.
+
+- 80dfd608cfb: button: Add `focusRingFor` prop to allow programmatic focus, e.g. via a link, to render the focus ring. This is available for `Button` and `ButtonLink`.
+
+### Patch Changes
+
+- 0ce7fbf96ea: task-list: Make `doneRecently` status count towards `stepsCompleted`
+- 29f393359da: summary-list: Increase gap between SummaryListItemTerm and SummaryListItemDescription to show a clearer separation
+- 898f7d2ca29: box: Document all style props
+- 94ad75b9931: avatar, control-group, drawer, icon, modal: Simplify some internals.
+- 21dd180d274: app-layout: Fix sidebar not closing on item press.
+- cf9055a1231: drawer: Fix docs for `elementToFocusOnClose` not returning focus to button when no alert is shown.
+- 15a7d327718: table: Fix example header alignment
+
 ## 1.21.0
 
 ### Minor Changes

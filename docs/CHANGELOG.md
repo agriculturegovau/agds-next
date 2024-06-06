@@ -1,5 +1,45 @@
 # @ag.ds-next/docs
 
+## 0.10.0
+
+### Minor Changes
+
+- 359c74e357f: grouped-fields: Remove unused required prop
+- 2a44de65cb9: file-upload: New implementation of error handling: new UI and unaccepted files no longer trigger the invalid state. With `multiple`, duplicate files aren’t selected. `maxFiles` uses the total files being uploaded, not just current selection.
+
+  icon: Prevent from shrinking smaller than their intended size.
+
+  list: Add `BoxProps` to allowed types for `ListItem`.
+
+  section-alert: Ensure Close button is always aligned to the top.
+
+  text: Remove unnecessary margin reset CSS.
+
+- 80dfd608cfb: button: Add `focusRingFor` prop to allow programmatic focus, e.g. via a link, to render the focus ring. This is available for `Button` and `ButtonLink`.
+
+### Patch Changes
+
+- 272d4fbd79f: release-notes: Fix CornerDownRightIcon typo
+- 898f7d2ca29: box: Document all style props
+- ac6f31ceda2: docs: Fix Playroom links not working and returning not found 404 error.
+- Updated dependencies [ce16f6a7577]
+- Updated dependencies [174a1382ca0]
+- Updated dependencies [359c74e357f]
+- Updated dependencies [0ce7fbf96ea]
+- Updated dependencies [29f393359da]
+- Updated dependencies [f1b9d2b69db]
+- Updated dependencies [898f7d2ca29]
+- Updated dependencies [94ad75b9931]
+- Updated dependencies [21dd180d274]
+- Updated dependencies [0ed83fe5448]
+- Updated dependencies [2a44de65cb9]
+- Updated dependencies [358c561f2f7]
+- Updated dependencies [cf9055a1231]
+- Updated dependencies [053eee29b67]
+- Updated dependencies [15a7d327718]
+- Updated dependencies [80dfd608cfb]
+  - @ag.ds-next/react@1.22.0
+
 ## 0.9.0
 
 ### Minor Changes
