@@ -4,21 +4,29 @@ import {
 	mapResponsiveProp,
 	mq,
 } from '../core';
-import { Box } from '../box';
+import { Box, BoxProps } from '../box';
 import { ColumnRange } from './utils';
 
-export type ColumnProps = {
+export type ColumnProps = Pick<BoxProps, 'alignSelf' | 'justifySelf'> & {
 	columnSpan?: ResponsiveProp<ColumnRange>;
 	columnStart?: ResponsiveProp<ColumnRange | 'first' | 'last'>;
 	columnEnd?: ResponsiveProp<ColumnRange | 'first' | 'last'>;
 };
 
 export const Column = forwardRefWithAs<'div', ColumnProps>(function Column(
-	{ columnSpan, columnStart, columnEnd, ...props },
+	{ alignSelf, columnSpan, columnStart, columnEnd, justifySelf, ...props },
 	ref
 ) {
 	const styles = columnStyles({ columnSpan, columnStart, columnEnd });
-	return <Box ref={ref} css={styles} {...props} />;
+	return (
+		<Box
+			alignSelf={alignSelf}
+			css={styles}
+			justifySelf={justifySelf}
+			ref={ref}
+			{...props}
+		/>
+	);
 });
 
 const columnStyles = ({

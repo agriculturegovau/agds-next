@@ -263,6 +263,12 @@ type LayoutProps = Partial<{
 		| 'space-around'
 		| 'space-evenly'
 	>;
+	/** Sets the CSS justify-self property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
+	 */
+	justifySelf: ResponsiveProp<
+		'stretch' | 'start' | 'end' | 'center' | 'baseline'
+	>;
 	/** Sets the CSS align-items property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 */
@@ -336,6 +342,7 @@ function layoutStyles({
 	gridColumnStart,
 	gridColumnEnd,
 	justifyContent,
+	justifySelf,
 	alignItems,
 	gap,
 	columnGap,
@@ -358,6 +365,7 @@ function layoutStyles({
 		gridColumnStart: mapResponsiveProp(gridColumnStart),
 		gridColumnEnd: mapResponsiveProp(gridColumnEnd),
 		justifyContent: mapResponsiveProp(justifyContent),
+		justifySelf: mapResponsiveProp(justifySelf),
 		alignItems: mapResponsiveProp(alignItems),
 		gap: mapResponsiveProp(gap, mapSpacing),
 		columnGap: mapResponsiveProp(columnGap, mapSpacing),
@@ -626,6 +634,7 @@ export function boxStyles({
 	height,
 	highContrastOutline,
 	justifyContent,
+	justifySelf,
 	light,
 	lineHeight,
 	link,
@@ -703,6 +712,7 @@ export function boxStyles({
 					gridColumnStart,
 					gridColumnEnd,
 					justifyContent,
+					justifySelf,
 					alignItems,
 					gap,
 					columnGap,
