@@ -3,8 +3,16 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { boxPalette, packs, tokens, useLinkComponent } from '../core';
+import {
+	boxPalette,
+	mapSpacing,
+	packs,
+	tokens,
+	useLinkComponent,
+} from '../core';
 import { HeaderProps } from './Header';
+
+const GAP_REM = 1.5;
 
 type HeaderBrandProps = Pick<
 	HeaderProps,
@@ -17,11 +25,12 @@ type HeaderBrandProps = Pick<
 	| 'secondLogo'
 	| 'subline'
 > &
-	Required<Pick<HeaderProps, 'size'>>;
+	Required<Pick<HeaderProps, 'size'>> & { hasRightContent: boolean };
 
 export function HeaderBrand({
 	badgeLabel,
 	dividerPosition,
+	hasRightContent,
 	heading,
 	href = '/',
 	logo,
@@ -34,15 +43,17 @@ export function HeaderBrand({
 
 	return logo && secondLogo ? (
 		<Flex
+			css={{ overflow: 'hidden' }}
 			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
-			gap={1.5}
+			gap={GAP_REM}
 			inline
 		>
 			<Flex
+				css={{ marginRight: hasRightContent ? mapSpacing(GAP_REM) : 0 }} // Create a gap when there is right content
 				flexDirection={{ xs: 'column', sm: 'row' }}
 				flexShrink={0}
-				gap={1.5}
+				gap={GAP_REM}
 			>
 				<Flex
 					as={Link}
@@ -74,40 +85,51 @@ export function HeaderBrand({
 				>
 					{secondLogo}
 				</Flex>
-
-				{dividerPosition === 'after' && <DividingLine />}
 			</Flex>
 
-			<Stack
-				as={Link}
-				color="text"
+			<Flex
+				gap={GAP_REM}
 				css={{
-					textDecoration: 'none',
-					':hover': packs.underline,
+					[`${tokens.mediaQuery.min.lg}`]: {
+						marginLeft: `calc(-${
+							hasRightContent ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
+						} - 1px)`, // Hide the divider when the heading text flows to the second row
+					},
 				}}
-				focusRingFor="keyboard"
-				href={href}
-				justifyContent="center"
 			>
-				<Flex alignItems="flex-start" gap={0.5}>
-					<Text
-						fontSize={headingSizeMap[size]}
-						fontWeight="bold"
-						lineHeight="default"
-						maxWidth={tokens.maxWidth.bodyText}
-					>
-						{heading}
-					</Text>
+				{dividerPosition === 'after' && <DividingLine />}
 
-					{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
-				</Flex>
+				<Stack
+					as={Link}
+					color="text"
+					css={{
+						textDecoration: 'none',
+						':hover': packs.underline,
+					}}
+					focusRingFor="keyboard"
+					href={href}
+					justifyContent="center"
+				>
+					<Flex alignItems="flex-start" gap={0.5}>
+						<Text
+							fontSize={headingSizeMap[size]}
+							fontWeight="bold"
+							lineHeight="default"
+							maxWidth={tokens.maxWidth.bodyText}
+						>
+							{heading}
+						</Text>
 
-				{subline && (
-					<Text color="muted" fontSize={subHeadingSizeMap[size]}>
-						{subline}
-					</Text>
-				)}
-			</Stack>
+						{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
+					</Flex>
+
+					{subline && (
+						<Text color="muted" fontSize={subHeadingSizeMap[size]}>
+							{subline}
+						</Text>
+					)}
+				</Stack>
+			</Flex>
 		</Flex>
 	) : (
 		<Flex

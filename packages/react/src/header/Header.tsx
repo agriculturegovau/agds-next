@@ -50,6 +50,7 @@ export function Header({
 				<HeaderBrand
 					badgeLabel={badgeLabel}
 					dividerPosition={dividerPosition}
+					hasRightContent={hasRightContent}
 					heading={heading}
 					href={href}
 					logo={logo}
