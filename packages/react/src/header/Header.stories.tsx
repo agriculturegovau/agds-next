@@ -108,6 +108,15 @@ export const CoBranding: Story = {
 	render: (args) => <Header {...args} />,
 };
 
+export const CoBrandingDividerPositionBetween: Story = {
+	args: {
+		badgeLabel: 'alpha',
+		dividerPosition: 'between',
+		secondLogo: <AISLogo />,
+	},
+	render: (args) => <Header {...args} />,
+};
+
 export const CoBrandingWithSearch: Story = {
 	args: {
 		badgeLabel: 'alpha',

@@ -80,15 +80,15 @@ export function HeaderBrand({
 
 				<Flex
 					alignSelf={{ xs: 'start', sm: 'center' }}
-					as={Link}
+					as={secondHref ? Link : 'span'}
 					color="text"
 					css={{
 						' img, svg': { width: '100%' },
 						...packs.print.hidden,
 					}}
 					focusRingFor="keyboard"
-					href={secondHref}
 					maxWidth={logoWidthMap[size]}
+					{...(secondHref && { href: secondHref })}
 				>
 					{secondLogo}
 				</Flex>
@@ -102,7 +102,7 @@ export function HeaderBrand({
 								[`${tokens.mediaQuery.min.lg}`]: {
 									marginLeft: `calc(-${
 										hasRightContent ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
-									} - 1px)`, // Hide the divider when the heading text flows to the second row
+									} -${tokens.borderWidth.sm}px)`, // Hide the divider when the heading text flows to the second row
 								},
 						  }
 						: undefined
