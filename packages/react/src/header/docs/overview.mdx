@@ -56,17 +56,17 @@ The `size` prop can be used to control the vertical height of the Header. Use th
 </Box>
 ```
 
-## Two Logos
+## Co-brand
 
-Header supports one, two, or no logos. Each logo can be a link when an `href` and `secondHref` are defined.
+The header component can be used with no log, one logo, or two logos when the [Australian Government Brand Guidelines](https://www.pmc.gov.au/publications/australian-government-branding-guildelines) for Program or International branding are met. Each logo can be a link when an `href` and `secondHref` are defined.
 
 _Note: The first logo’s `href` will be assigned to the `heading` and `subline` text as well._
 
 ```jsx live
 <Box palette="dark">
 	<Header
-		heading="Co-branded example"
-		subline="Partners on and off the field"
+		heading="Co-brand header"
+		subline="Co-brand subline"
 		logo={<Logo />}
 		background="bodyAlt"
 		size="sm"
