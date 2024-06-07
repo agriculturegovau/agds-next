@@ -209,7 +209,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 										},
 										ref: inputRefs,
 										type: 'text',
-										preventKeyAction: combobox.isOpen,
+										preventKeyAction: false,
 										onFocus: (event: FocusEvent<HTMLInputElement>) => {
 											onFocus?.(event);
 											setInputFocused();
