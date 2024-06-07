@@ -85,15 +85,15 @@ The `Pagination` component accepts props which are used to display and change th
 
 ```jsx live
 <Pagination
-	currentPage={5}
-	totalPages={10}
+	currentPage={4}
+	totalPages={4}
 	generateHref={(page) => `/example?page=${page}`}
 	itemsPerPage={25}
 	itemsPerPageOptions={[10, 25, 50, 100]}
 	onItemsPerPageChange={(itemsPerPage) => console.log(itemsPerPage)}
 	itemRangeText={generatePaginationRangeText({
 		totalItems: 100,
-		currentPage: 5,
+		currentPage: 4,
 		itemsPerPage: 25,
 	})}
 />
