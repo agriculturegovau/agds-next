@@ -268,3 +268,5 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
+
+export { Scrollbar } from '@ag.ds-next/react/scrollbar';
