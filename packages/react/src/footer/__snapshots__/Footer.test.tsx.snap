@@ -58,7 +58,7 @@ exports[`Footer renders correctly 1`] = `
       </nav>
       <hr
         aria-hidden="true"
-        class="css-jcokw4-FooterDivider"
+        class="css-vsn6gl-boxStyles-FooterDivider"
       />
       <span
         class="css-1oewark-boxStyles"
