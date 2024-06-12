@@ -5,8 +5,8 @@ import { tokens } from '../core';
 import { Columns } from '../columns';
 
 const paddingMap = {
-	sm: { xs: 1, md: 1 },
-	md: { xs: 1, md: 3 },
+	sm: { xs: 1.5, md: 1 },
+	md: { xs: 1.5, md: 3 },
 } as const;
 
 type HeaderContainerProps = PropsWithChildren<{
