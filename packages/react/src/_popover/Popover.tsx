@@ -5,6 +5,7 @@ import {
 	autoUpdate,
 	flip,
 	offset,
+	shift,
 	size,
 	useFloating,
 } from '@floating-ui/react-dom';
@@ -85,6 +86,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
+			// https://floating-ui.com/docs/flip#combining-with-shift
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Changes the placement of the floating element in order to keep it in view
 			// https://floating-ui.com/docs/flip
 			flip({ padding: DEFAULT_OFFSET }),
