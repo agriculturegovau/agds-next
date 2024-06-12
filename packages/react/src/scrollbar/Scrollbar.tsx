@@ -6,6 +6,7 @@ export type ScrollbarProps = {};
 export function Scrollbar(props: ScrollbarProps) {
 	const bottomTriggerRef = useRef(null);
 	const topTriggerRef = useRef(null);
+	const trackRef = useRef(null);
 	const thumbRef = useRef(null);
 	const scrollerRef = useRef(null);
 	return (
@@ -26,30 +27,49 @@ export function Scrollbar(props: ScrollbarProps) {
 				ref={bottomTriggerRef}
 			></Box>
 			<Box
-				as="button"
 				aria-hidden
-				className="custom-scrollbar__thumb"
+				className="custom-scrollbar__track"
 				css={{
 					appearance: 'none',
-					background: '#000',
+					background: 'yellow',
 					border: 'none',
-					borderRadius: 1000,
-					bottom: 3,
+					bottom: 1,
 					cursor: 'default',
-					height: 8,
-					left: '0',
-					padding: '0',
+					height: 10,
+					left: 0,
+					padding: 0,
 					position: 'absolute',
-					transition: 'opacity ease 0.15s',
-					zIndex: '1000',
+					zIndex: '999',
 				}}
-				ref={thumbRef}
+				ref={trackRef}
 				tabIndex={-1}
-				// v-bind:class="thumbClass"
-				// v-bind:style="thumbStyle"
-				// v-on:mousedown="handleThumbDown"
 				// v-on:wheel="handleThumbWheel"
-			></Box>
+			>
+				<Box
+					as="button"
+					aria-hidden
+					className="custom-scrollbar__thumb"
+					css={{
+						appearance: 'none',
+						background: '#000',
+						border: 'none',
+						borderRadius: 1000,
+						bottom: 1,
+						cursor: 'default',
+						height: 8,
+						left: '0',
+						padding: '0',
+						position: 'absolute',
+						transition: 'opacity ease 0.15s',
+						zIndex: '1000',
+					}}
+					ref={thumbRef}
+					tabIndex={-1}
+					// v-bind:class="thumbClass"
+					// v-bind:style="thumbStyle"
+					// v-on:mousedown="handleThumbDown"
+				></Box>
+			</Box>
 
 			<Box
 				className="custom-scrollbar__scroller"
