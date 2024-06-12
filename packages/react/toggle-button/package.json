@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-toggle-button.cjs.js"
+	"main": "dist/ag.ds-next-react-toggle-button.cjs.js",
+	"module": "dist/ag.ds-next-react-toggle-button.esm.js"
 }
