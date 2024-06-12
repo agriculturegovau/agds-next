@@ -75,6 +75,8 @@ export const TableHeaderSortable = ({
 								: undefined,
 						marginRight: textAlign === 'center' ? 'auto' : undefined,
 					}}
+					// Aligns text should it wrap
+					textAlign={textAlign}
 				>
 					{children}
 				</Box>

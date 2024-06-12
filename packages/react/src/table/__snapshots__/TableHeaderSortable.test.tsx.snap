@@ -21,7 +21,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
             type="button"
           >
             <span
-              class="css-tird59-boxStyles-TableHeaderSortable"
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
@@ -73,7 +73,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
             type="button"
           >
             <span
-              class="css-tird59-boxStyles-TableHeaderSortable"
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
@@ -124,7 +124,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
             type="button"
           >
             <span
-              class="css-tird59-boxStyles-TableHeaderSortable"
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
