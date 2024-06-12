@@ -1,30 +1,32 @@
 import { useRef } from 'react';
-import { Box } from '../box';
+import { Box, type BorderColor } from '../box';
+import { packs, tokens, type ResponsiveProp } from '../core';
 import { Flex } from '../flex';
-import { tokens, packs } from '../core';
 import { setLocalPaletteVars, MainNavBackground } from './localPalette';
 import { MainNavOpenButton } from './MainNavMenuButtons';
 import { MainNavBottomBar } from './MainNavBottomBar';
-import { MainNavList, MainNavListItemType } from './MainNavList';
+import { MainNavList, type MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
 import { mobileBreakpoint } from './utils';
 
 export type MainNavContainerProps = {
 	activePath: string;
 	background: MainNavBackground;
+	borderColor: ResponsiveProp<BorderColor>;
 	id?: string;
-	openMobileMenu: () => void;
 	items?: MainNavListItemType[];
+	openMobileMenu: () => void;
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };
 
 export function MainNavContainer({
-	id,
-	background,
-	openMobileMenu,
-	items,
-	secondaryItems,
 	activePath,
+	background,
+	borderColor,
+	id,
+	items,
+	openMobileMenu,
+	secondaryItems,
 }: MainNavContainerProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 	return (
@@ -59,7 +61,7 @@ export function MainNavContainer({
 					/>
 				) : null}
 			</Flex>
-			<MainNavBottomBar />
+			<MainNavBottomBar borderColor={borderColor} />
 		</Box>
 	);
 }

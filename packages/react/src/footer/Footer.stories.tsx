@@ -13,10 +13,10 @@ import { Footer, FooterDivider } from './';
 const meta: Meta<typeof Footer> = {
 	title: 'layout/Footer',
 	component: Footer,
-	render: function Render(props) {
+	render: function Render({ borderColor, ...props }) {
 		const year = useMemo(() => new Date().getFullYear(), []);
 		return (
-			<Footer {...props}>
+			<Footer borderColor={borderColor} {...props}>
 				<nav aria-label="footer">
 					<LinkList
 						horizontal
@@ -28,7 +28,7 @@ const meta: Meta<typeof Footer> = {
 						]}
 					/>
 				</nav>
-				<FooterDivider />
+				<FooterDivider color={borderColor} />
 				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
 					We acknowledge the traditional owners of country throughout Australia
 					and recognise their continuing connection to land, waters and culture.
