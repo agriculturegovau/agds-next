@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-details.cjs.js"
+	"main": "dist/ag.ds-next-react-details.cjs.js",
+	"module": "dist/ag.ds-next-react-details.esm.js"
 }

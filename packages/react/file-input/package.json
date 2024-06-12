@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-file-input.cjs.js"
+	"main": "dist/ag.ds-next-react-file-input.cjs.js",
+	"module": "dist/ag.ds-next-react-file-input.esm.js"
 }

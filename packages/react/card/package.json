@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-card.cjs.js"
+	"main": "dist/ag.ds-next-react-card.cjs.js",
+	"module": "dist/ag.ds-next-react-card.esm.js"
 }

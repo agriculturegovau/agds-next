@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-divider.cjs.js"
+	"main": "dist/ag.ds-next-react-divider.cjs.js",
+	"module": "dist/ag.ds-next-react-divider.esm.js"
 }

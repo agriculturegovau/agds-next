@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-flex.cjs.js"
+	"main": "dist/ag.ds-next-react-flex.cjs.js",
+	"module": "dist/ag.ds-next-react-flex.esm.js"
 }

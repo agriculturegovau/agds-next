@@ -260,11 +260,15 @@ export {
 export { TimePicker } from '@ag.ds-next/react/time-picker';
 
 // Used to populate options on documentation site and playroom
+// these have to be relative imports because these aren't properly
+// exported from the package and the package has an `exports` field
+// which restricts importing things not specified in the `exports` field
+// (though importing relatively like this isn't restricted)
 export {
 	COUNTRY_OPTIONS,
 	NAME_OPTIONS,
-} from '@ag.ds-next/react/src/combobox/test-utils';
+} from '../../packages/react/src/combobox/test-utils';
 export {
 	createExampleFile,
 	createExampleImageFile,
-} from '@ag.ds-next/react/src/file-upload/test-utils';
+} from '../../packages/react/src/file-upload/test-utils';

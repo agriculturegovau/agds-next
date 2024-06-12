@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-radio.cjs.js"
+	"main": "dist/ag.ds-next-react-radio.cjs.js",
+	"module": "dist/ag.ds-next-react-radio.esm.js"
 }

@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-main-nav.cjs.js"
+	"main": "dist/ag.ds-next-react-main-nav.cjs.js",
+	"module": "dist/ag.ds-next-react-main-nav.esm.js"
 }
