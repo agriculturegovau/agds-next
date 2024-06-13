@@ -4,7 +4,7 @@ description: The main nav is the primary way users navigate the user interface. 
 group: Navigation
 storybookPath: /story/navigation-mainnav--body
 figmaGalleryNodeId: 11978%3A107135
-relatedComponents: ['header']
+relatedComponents: ['app-layout', 'header']
 ---
 
 ```jsx live
@@ -131,4 +131,29 @@ Secondary items can also display a [Dropdown menu](/components/dropdown-menu) by
 		</Box>
 	);
 };
+```
+
+## Focus mode
+
+Focus mode refers to temporarily hiding the main navigation of a website or application to reduce distractions and cognitive load.
+
+```jsx live
+<Box palette="dark">
+	<MainNav
+		activePath="#home"
+		items={[
+			{ href: '#home', label: 'Home' },
+			{ href: '#about', label: 'About' },
+			{ href: '#contact', label: 'Contact' },
+		]}
+		secondaryItems={[
+			{
+				href: '#sign-in',
+				label: 'Sign in',
+				endElement: <AvatarIcon color="action" />,
+			},
+		]}
+		focusMode={true}
+	/>
+</Box>
 ```

@@ -17,7 +17,6 @@ import { AvatarIcon, EmailIcon, ExitIcon } from '../icon';
 import { NotificationBadge } from '../notification-badge';
 import { SearchInput } from '../search-input';
 import { MainNav } from './MainNav';
-import { MainNavBottomBar } from './MainNavBottomBar';
 
 const meta: Meta<typeof MainNav> = {
 	title: 'navigation/MainNav',
@@ -192,8 +191,6 @@ export const EndElement: Story = {
 		],
 	},
 };
-
-export const BottomBar = () => <MainNavBottomBar />;
 
 export const WithHeaderAndDropdown: Story = {
 	parameters: {
