@@ -9,7 +9,7 @@ import { Columns } from '@ag.ds-next/react/columns';
 import { Tag } from '@ag.ds-next/react/tags';
 import { Divider } from '@ag.ds-next/react/divider';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Avatar } from '@ag.ds-next/react/src/avatar';
+import { Avatar } from '@ag.ds-next/react/avatar';
 import { Flex } from '@ag.ds-next/react/flex';
 import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
 import { AppLayout } from '../../components/Layout/AppLayout';
