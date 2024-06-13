@@ -584,7 +584,7 @@ export const WithForm: Story = {
 					actions={
 						<ButtonGroup>
 							<Button type="submit" form="form-id" onClick={onSubmitForm}>
-								Submit form
+								Submit
 							</Button>
 
 							<Button variant="secondary" onClick={clearForm}>
