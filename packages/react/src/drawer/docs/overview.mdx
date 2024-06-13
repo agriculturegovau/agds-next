@@ -421,48 +421,51 @@ To create an accessible form within a drawer we need to do two things:
 
 This will allow keyboard users to submit the form by pressing "enter" on the form inputs.
 
-````jsx live
-	() => {
-		const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
-		const onSubmitForm = (event) => {
-			event.preventDefault();
+```jsx live
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const onSubmitForm = (event) => {
+		event.preventDefault();
 
-			console.log('Form submitted with values:', event.target.textInput.value, event.target.numberInput.value)
-		}
+		console.log(
+			'Form submitted with values:',
+			event.target.textInput.value,
+			event.target.numberInput.value
+		);
+	};
 
-			return (<React.Fragment>
-				<Button onClick={openDrawer}>Open Drawer</Button>
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Drawer</Button>
 
-				<Drawer
-					actions={
-						<ButtonGroup>
-							<Button type="submit" form="form-id" onClick={onSubmitForm}>
-								Submit form
-							</Button>
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button type="submit" form="form-id" onClick={onSubmitForm}>
+							Submit form
+						</Button>
 
-							<Button variant="tertiary" onClick={onCloseClick}>
-								Cancel
-							</Button>
-						</ButtonGroup>
-					}
-						isOpen={isDrawerOpen}
-						title="Example form"
-				>
-					<form aria-label="Example form in drawer" id="form-id">
-						<FormStack>
-							<TextInput
-								label="Example text input"
-								name="textInput"
-							/>
+						<Button variant="tertiary" onClick={onCloseClick}>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={isDrawerOpen}
+				title="Example form"
+			>
+				<form aria-label="Example form in drawer" id="form-id">
+					<FormStack>
+						<TextInput label="Example text input" name="textInput" />
 
-							<TextInput
-								label="Example text input"
-								name="numberInput"
-								type="number"
-							/>
-						</FormStack>
-					</form>
-				</Drawer>
-			</React.Fragment>)}
-			```
-````
+						<TextInput
+							label="Example text input"
+							name="numberInput"
+							type="number"
+						/>
+					</FormStack>
+				</form>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```
