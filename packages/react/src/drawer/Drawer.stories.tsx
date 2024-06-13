@@ -597,7 +597,7 @@ export const WithForm: Story = {
 						</ButtonGroup>
 					}
 				>
-					<form aria-label="Example form in drawer" id="form-id">
+					<form id="form-id">
 						<FormStack>
 							<TextInput
 								label="Example text input"
