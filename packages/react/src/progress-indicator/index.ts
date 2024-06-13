@@ -1,3 +1,4 @@
+'use client';
 export * from './ProgressIndicator';
 export * from './ProgressIndicatorItem';
 export * from './ProgressIndicatorItemButton';

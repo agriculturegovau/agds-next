@@ -1,3 +1,4 @@
+'use client';
 export * from './DropdownMenu';
 export * from './DropdownMenuButton';
 export * from './DropdownMenuContext';
