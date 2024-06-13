@@ -1,8 +1,5 @@
 ---
-'@ag.ds-next/react': patch
-'@ag.ds-next/example-site': patch
-'@ag.ds-next/yourgov': patch
-'@ag.ds-next/docs': patch
+'@ag.ds-next/react': minor
 ---
 
 main-nav: `Add focusMode` prop. Deprecate `MainNavBottomBar`.
