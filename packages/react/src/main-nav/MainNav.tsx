@@ -13,6 +13,8 @@ export type MainNavProps = PropsWithChildren<{
 	/** The background of the component. */
 	background?: MainNavBackground;
 	borderColor?: ResponsiveProp<BorderColor>;
+	/** When true, removes all navigation items to reduce distractions.  */
+	focusMode?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** List of navigation items to display. */
@@ -25,6 +27,7 @@ export function MainNav({
 	activePath,
 	background = 'body',
 	borderColor = 'accent',
+	focusMode = false,
 	id,
 	items,
 	secondaryItems,
@@ -43,6 +46,7 @@ export function MainNav({
 				activePath={bestMatch}
 				background={background}
 				borderColor={borderColor}
+				focusMode={focusMode}
 				id={id}
 				items={items}
 				openMobileMenu={openMobileMenu}

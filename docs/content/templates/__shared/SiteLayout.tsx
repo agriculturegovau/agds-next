@@ -6,7 +6,7 @@ import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Header } from '@ag.ds-next/react/header';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { Logo } from '@ag.ds-next/react/ag-branding';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
+import { MainNav } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { tokens } from '@ag.ds-next/react/core';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
@@ -43,19 +43,16 @@ export const SiteLayout = ({
 					logo={<Logo />}
 					href="#"
 				/>
-				{focusMode ? (
-					<MainNavBottomBar />
-				) : (
-					<MainNav
-						id="main-nav"
-						items={[
-							{ label: 'Menu', href: '#' },
-							{ label: 'Menu', href: '#' },
-							{ label: 'Menu', href: '#' },
-						]}
-						secondaryItems={[{ label: 'Menu', href: '#' }]}
-					/>
-				)}
+				<MainNav
+					focusMode={focusMode}
+					id="main-nav"
+					items={[
+						{ label: 'Menu', href: '#' },
+						{ label: 'Menu', href: '#' },
+						{ label: 'Menu', href: '#' },
+					]}
+					secondaryItems={[{ label: 'Menu', href: '#' }]}
+				/>
 			</Stack>
 			<Box
 				flexGrow={1}
