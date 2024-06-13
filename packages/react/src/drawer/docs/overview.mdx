@@ -423,15 +423,19 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 
 ```jsx live
 () => {
+	const formRef = React.useRef(null);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const onSubmitForm = (event) => {
 		event.preventDefault();
 
 		console.log(
 			'Form submitted with values:',
-			event.target.textInput.value,
-			event.target.numberInput.value
+			// event.target.textInput.value,
+			// event.target.numberInput.value
+			new FormData(formRef.current, event.target)
 		);
+
+		closeDrawer();
 	};
 
 	return (
@@ -445,15 +449,16 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 							Submit form
 						</Button>
 
-						<Button variant="tertiary" onClick={onCloseClick}>
+						<Button variant="tertiary" onClick={closeDrawer}>
 							Cancel
 						</Button>
 					</ButtonGroup>
 				}
 				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
 				title="Example form"
 			>
-				<form aria-label="Example form in drawer" id="form-id">
+				<form aria-label="Example form in drawer" id="form-id" ref={formRef}>
 					<FormStack>
 						<TextInput label="Example text input" name="textInput" />
 
