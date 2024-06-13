@@ -362,6 +362,7 @@ export const FiltersWithFieldsets: Story = {
 			comboboxMulti: [],
 		};
 
+		const [filters, setFilters] = useState(initialFilterState);
 		const [formState, setFormState] = useState(initialFilterState);
 
 		const updateFormState = (formState: Partial<FormState>) => {
@@ -372,14 +373,17 @@ export const FiltersWithFieldsets: Story = {
 		};
 
 		const onApplyFiltersClick = () => {
+			setFilters(formState);
 			closeDrawer();
 		};
 
 		const onClearFiltersClick = () => {
 			setFormState(initialFilterState);
+			setFilters(initialFilterState);
 		};
 
 		const onCloseClick = () => {
+			setFormState(filters);
 			closeDrawer();
 		};
 
@@ -551,7 +555,6 @@ export const WithForm: Story = {
 			text: '',
 		};
 
-		const [filters, setFilters] = useState(initialFilterState);
 		const [formState, setFormState] = useState(initialFilterState);
 
 		const updateFormState = (formState: Partial<FormState>) => {
@@ -563,18 +566,11 @@ export const WithForm: Story = {
 
 		const onSubmitForm = (event: FormEvent) => {
 			event.preventDefault();
-			setFilters(formState);
 			closeDrawer();
 		};
 
-		const onClearForm = () => {
+		const clearForm = () => {
 			setFormState(initialFilterState);
-			setFilters(initialFilterState);
-		};
-
-		const onCloseClick = () => {
-			setFormState(filters);
-			closeDrawer();
 		};
 
 		return (
@@ -583,7 +579,7 @@ export const WithForm: Story = {
 
 				<Drawer
 					isOpen={isDrawerOpen}
-					onClose={onCloseClick}
+					onClose={closeDrawer}
 					title={props.title}
 					actions={
 						<ButtonGroup>
@@ -591,17 +587,17 @@ export const WithForm: Story = {
 								Submit form
 							</Button>
 
-							<Button variant="secondary" onClick={onClearForm}>
+							<Button variant="secondary" onClick={clearForm}>
 								Clear form
 							</Button>
 
-							<Button variant="tertiary" onClick={onCloseClick}>
+							<Button variant="tertiary" onClick={closeDrawer}>
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
 				>
-					<form aria-label="Example form in drawer" id="form-id" noValidate>
+					<form aria-label="Example form in drawer" id="form-id">
 						<FormStack>
 							<TextInput
 								label="Example text input"
@@ -621,13 +617,13 @@ export const WithForm: Story = {
 							/>
 
 							<DatePicker
-								label="Example date input"
 								hideOptionalLabel
-								value={formState.datePicker}
+								label="Example date input"
 								onChange={(value) => updateFormState({ datePicker: value })}
 								onInputChange={(value) =>
 									updateFormState({ datePicker: value })
 								}
+								value={formState.datePicker}
 							/>
 						</FormStack>
 					</form>
