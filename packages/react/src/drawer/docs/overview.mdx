@@ -428,12 +428,8 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 	const onSubmitForm = (event) => {
 		event.preventDefault();
 
-		console.log(
-			'Form submitted with values:',
-			// event.target.textInput.value,
-			// event.target.numberInput.value
-			new FormData(formRef.current, event.target)
-		);
+		const formData = Object.fromEntries(new FormData(formRef.current));
+		console.log('Form submitted with values:', formData);
 
 		closeDrawer();
 	};
