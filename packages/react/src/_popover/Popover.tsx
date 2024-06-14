@@ -48,8 +48,6 @@ const DEFAULT_OFFSET = 8;
 const MIN_SIDE_GUTTER_WIDTH = 1;
 
 type UsePopoverOptions = {
-	/** Setting this to true fixes the popover height to match its content height. This uses the CSS value of `max-content` for `height`. */
-	fixedHeight?: boolean;
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
 	hiddenWithCSS?: boolean;
 	/** If true, the popover element is open. Required when using the `hiddenWithCSS` option. */
@@ -70,12 +68,11 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 	options?: UsePopoverOptions
 ) {
 	const {
-		fixedHeight,
 		hiddenWithCSS = false,
 		isOpen,
 		matchReferenceWidth = false,
-		minHeight,
-		maxHeight,
+		minHeight: minHeightOption,
+		maxHeight: maxHeightOption,
 		offset: offsetOption = DEFAULT_OFFSET,
 		placement = 'bottom-start',
 	} = options || {};
@@ -96,17 +93,20 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({ availableHeight, elements, rects }) {
+				apply({ availableHeight: _availableHeight, elements, rects }) {
+					// Popovers can have a predefined max-height if there is enough room on the screen
+					const maxHeight =
+						maxHeightOption && _availableHeight > maxHeightOption
+							? maxHeightOption
+							: _availableHeight;
+
+					// Minimum acceptable height before `flip` will take over
+					const availableHeight = minHeightOption
+						? Math.max(minHeightOption, maxHeight)
+						: maxHeight;
+
 					Object.assign(elements.floating.style, {
-						...(fixedHeight
-							? { height: 'max-content' }
-							: {
-									maxHeight: `${maxHeight || availableHeight}px`,
-							  }),
-						...(minHeight !== undefined && {
-							minHeight: `${minHeight}px`,
-						}),
-						// https://floating-ui.com/docs/size#match-reference-width
+						maxHeight: `${availableHeight}px`, // https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
 									width: `${rects.reference.width}px`,
