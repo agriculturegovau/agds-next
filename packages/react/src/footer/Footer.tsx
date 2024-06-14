@@ -1,26 +1,32 @@
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
+import { type BorderColor } from '../box';
+import { tokens, type ResponsiveProp } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { tokens } from '../core';
 
 export type FooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
+	borderColor?: ResponsiveProp<BorderColor>;
 }>;
 
-export const Footer = ({ background = 'body', children }: FooterProps) => {
+export const Footer = ({
+	background = 'body',
+	borderColor = 'accent',
+	children,
+}: FooterProps) => {
 	return (
 		<Flex
 			as="footer"
-			justifyContent="center"
 			background={background}
-			color="text"
-			paddingY={3}
+			borderColor={borderColor}
 			borderTop
 			borderTopWidth="xl"
-			borderColor="accent"
+			color="text"
 			css={{
 				li: { marginLeft: 0 },
 			}}
+			justifyContent="center"
+			paddingY={3}
 		>
 			<Stack
 				maxWidth={tokens.maxWidth.container}

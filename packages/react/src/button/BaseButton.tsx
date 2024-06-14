@@ -25,6 +25,8 @@ export type BaseButtonProps = PropsWithChildren<{
 	disabled?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	/** The id of the form to attach the button to. Use in conjunction with type="submit". */
+	form?: NativeButtonProps['form'];
 	/** Function to be fired following a keydown event of the button. */
 	onKeyDown?: NativeButtonProps['onKeyDown'];
 	/** Function to be fired following a blur event of the button. */

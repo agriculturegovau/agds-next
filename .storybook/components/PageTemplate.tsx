@@ -7,7 +7,7 @@ import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
 import { Header } from '@ag.ds-next/react/header';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { LinkList } from '@ag.ds-next/react/link-list';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
+import { MainNav } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 
 type PageTemplateProps = PropsWithChildren<{
@@ -32,25 +32,22 @@ export function PageTemplate({
 					heading="Export Service"
 					subline="Supporting Australian agricultural exports"
 				/>
-				{!focusMode ? (
-					<MainNav
-						id="main-nav"
-						activePath="#home"
-						items={[
-							{ label: 'Home', href: '#home' },
-							{ label: 'Category', href: '#category' },
-						]}
-						secondaryItems={[
-							{
-								label: 'Sign in',
-								href: '#sign-in',
-								endElement: <AvatarIcon color="action" />,
-							},
-						]}
-					/>
-				) : (
-					<MainNavBottomBar />
-				)}
+				<MainNav
+					focusMode={focusMode}
+					id="main-nav"
+					activePath="#home"
+					items={[
+						{ label: 'Home', href: '#home' },
+						{ label: 'Category', href: '#category' },
+					]}
+					secondaryItems={[
+						{
+							label: 'Sign in',
+							href: '#sign-in',
+							endElement: <AvatarIcon color="action" />,
+						},
+					]}
+				/>
 			</Stack>
 			<Box flexGrow={1} {...(applyMainElement && { as: 'main' })}>
 				{children}

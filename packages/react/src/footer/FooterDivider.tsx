@@ -1,18 +1,20 @@
-import { boxPalette } from '../core';
+import { Box, type BorderColor } from '../box';
+import { type ResponsiveProp } from '../core';
 
-export function FooterDivider() {
+export function FooterDivider({
+	color = 'accent',
+}: {
+	color?: ResponsiveProp<BorderColor>;
+}) {
 	return (
-		<hr
+		<Box
 			aria-hidden="true"
+			as="hr"
+			borderColor={color}
+			borderTop
+			borderTopWidth="sm"
 			css={{
-				boxSizing: 'content-box',
-				height: 0,
-				margin: 0,
 				overflow: 'visible',
-				border: 'none',
-				borderTopWidth: 1,
-				borderTopStyle: 'solid',
-				borderColor: boxPalette.accent,
 				width: '100%',
 			}}
 		/>

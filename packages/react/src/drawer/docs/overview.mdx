@@ -411,3 +411,62 @@ When a drawer closes, focus is returned to the element that opened it. You can o
 	);
 };
 ```
+
+## Using a form in the drawer
+
+To create a fully accessible form within a drawer, we must do two things:
+
+1. Add an `id` to the `<form>`.
+2. Pass that `id` to the primary Button's `form` prop along with `type="submit"`.
+
+This will allow keyboard users to submit the form by pressing "enter" on the form inputs.
+
+```jsx live
+() => {
+	const formRef = React.useRef(null);
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const onSubmitForm = (event) => {
+		event.preventDefault();
+
+		const formData = Object.fromEntries(new FormData(formRef.current));
+		console.log('Form submitted with values:', formData);
+
+		closeDrawer();
+	};
+
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Drawer</Button>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button type="submit" form="form-id" onClick={onSubmitForm}>
+							Submit
+						</Button>
+
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Example form"
+			>
+				<form id="form-id" ref={formRef}>
+					<FormStack>
+						<TextInput label="Example text input" name="textInput" />
+
+						<TextInput
+							label="Example text input"
+							name="numberInput"
+							type="number"
+						/>
+					</FormStack>
+				</form>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```
