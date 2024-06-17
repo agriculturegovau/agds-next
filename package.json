@@ -106,6 +106,7 @@
 	"preconstruct": {
 		"packages": [
 			"packages/*"
-		]
+		],
+		"exports": true
 	}
 }
