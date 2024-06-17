@@ -1,3 +1,4 @@
+'use client';
 export * from './Combobox';
 export * from './ComboboxMulti';
 export * from './ComboboxAsync';

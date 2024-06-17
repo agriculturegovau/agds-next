@@ -1,3 +1,4 @@
+'use client';
 import {
 	IndicatorDot as _IndicatorDot,
 	IndicatorDotProps as _IndicatorDotProps,
