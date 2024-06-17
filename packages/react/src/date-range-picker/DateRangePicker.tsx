@@ -354,7 +354,15 @@ export const DateRangePicker = ({
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
+					<Flex
+						{...popover.getReferenceProps()}
+						flexWrap="wrap"
+						inline
+						gap={1}
+						css={{
+							paddingRight: toInvalid || fromInvalid ? undefined : '1.25rem',
+						}}
+					>
 						<DateInput
 							aria-describedby={
 								fromDescribedByIds.length > 0 ? fromDescribedByIds : null
