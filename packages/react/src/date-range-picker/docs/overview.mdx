@@ -67,16 +67,16 @@ In this case, you can use the `onFromInputChange` and `onToInputChange` props to
 	}, []);
 
 	const fromInvalid = isInvalid(value.from);
-	const toInvalid = isInvalid(value.from);
+	const toInvalid = isInvalid(value.to);
 
 	const onFromInputChange = (from) => {
 		console.log(`onFromInputChange`, from);
-		setValue({ ...value, from });
+		setValue((prevValue) => ({ ...prevValue, from }));
 	};
 
 	const onToInputChange = (to) => {
 		console.log(`onToInputChange`, to);
-		setValue({ ...value, to });
+		setValue((prevValue) => ({ ...prevValue, to }));
 	};
 
 	const onChange = (e) => {
