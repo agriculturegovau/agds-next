@@ -34,19 +34,44 @@ export type RadioProps = BaseCheckboxProps & {
 };
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-	{ children, disabled, invalid: invalidProp, size = 'md', ...props },
+	{
+		children,
+		disabled,
+		invalid: invalidProp,
+		name: nameProp,
+		required: requiredProp,
+		size = 'md',
+		...props
+	},
 	ref
 ) {
 	const controlGroupContext = useControlGroupContext();
-	const invalid = invalidProp || controlGroupContext?.invalid;
+
+	// The invalid prop should override the context value
+	const invalid =
+		typeof invalidProp === 'boolean'
+			? invalidProp
+			: controlGroupContext?.invalid;
+
+	// The required prop should override the context value
+	const required =
+		typeof requiredProp === 'boolean'
+			? requiredProp
+			: controlGroupContext?.required;
+
+	// The name prop should override the context value
+	const name = nameProp || controlGroupContext?.name;
+
 	return (
 		<RadioContainer disabled={disabled}>
 			<RadioInput
+				aria-describedby={invalid ? controlGroupContext?.messageId : undefined}
+				aria-invalid={invalid || undefined}
+				aria-required={required}
+				disabled={disabled}
+				name={name}
 				ref={ref}
 				type="radio"
-				disabled={disabled}
-				aria-invalid={invalid ? 'true' : undefined}
-				aria-describedby={invalid ? controlGroupContext?.messageId : undefined}
 				{...props}
 			/>
 			<RadioIndicator disabled={disabled} invalid={invalid} size={size} />

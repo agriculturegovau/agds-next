@@ -17,8 +17,8 @@ type NativeCheckboxProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseCheckboxProps = PropsWithChildren<{
 	autoFocus?: NativeCheckboxProps['autoFocus'];
-	disabled?: NativeCheckboxProps['disabled'];
 	checked?: NativeCheckboxProps['checked'];
+	disabled?: NativeCheckboxProps['disabled'];
 	id?: NativeCheckboxProps['id'];
 	max?: NativeCheckboxProps['max'];
 	maxLength?: NativeCheckboxProps['maxLength'];
@@ -44,12 +44,14 @@ export type CheckboxProps = BaseCheckboxProps & {
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	function Checkbox(
 		{
+			checked: checkedProp,
 			children,
 			disabled,
-			invalid: invalidProp,
-			size = 'md',
 			indeterminate,
-			checked: checkedProp,
+			invalid: invalidProp,
+			name: nameProp,
+			required: requiredProp,
+			size = 'md',
 			...props
 		},
 		forwardedRef
@@ -63,7 +65,16 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 				? invalidProp
 				: controlGroupContext?.invalid;
 
-		//`indeterminate` is set using the HTMLInputElement object's indeterminate property via JavaScript (it cannot be set using an HTML attribute)
+		// The required prop should override the context value
+		const required =
+			typeof requiredProp === 'boolean'
+				? requiredProp
+				: controlGroupContext?.required;
+
+		// The name prop should override the context value
+		const name = nameProp || controlGroupContext?.name;
+
+		// `indeterminate` is set using the HTMLInputElement object's indeterminate property via JavaScript (it cannot be set using an HTML attribute)
 		// Read more about this here https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes
 		useEffect(() => {
 			if (!ref.current) return;
@@ -76,22 +87,24 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		return (
 			<CheckboxContainer disabled={disabled}>
 				<CheckboxInput
-					ref={mergeRefs([forwardedRef, ref])}
-					type="checkbox"
-					disabled={disabled}
-					aria-invalid={invalid ? 'true' : undefined}
+					aria-checked={indeterminate ? 'mixed' : undefined}
 					aria-describedby={
 						invalid ? controlGroupContext?.messageId : undefined
 					}
+					aria-invalid={invalid || undefined}
+					aria-required={required}
 					checked={checked}
-					aria-checked={indeterminate ? 'mixed' : undefined}
+					disabled={disabled}
+					name={name}
+					ref={mergeRefs([forwardedRef, ref])}
+					type="checkbox"
 					{...props}
 				/>
 				<CheckboxIndicator
 					disabled={disabled}
+					indeterminate={indeterminate}
 					invalid={invalid}
 					size={size}
-					indeterminate={indeterminate}
 				/>
 				<CheckboxLabel disabled={disabled} size={size}>
 					{children}
