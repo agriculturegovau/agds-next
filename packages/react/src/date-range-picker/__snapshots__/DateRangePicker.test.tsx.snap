@@ -28,7 +28,7 @@ exports[`DateRangePicker renders correctly 1`] = `
         class="css-1fqlpl4-boxStyles-DateRangePicker"
       >
         <div
-          class="css-72257o-boxStyles"
+          class="css-1h6myro-boxStyles-DateRangePicker"
         >
           <div
             class="css-1904cz9-boxStyles-FieldContainer"
