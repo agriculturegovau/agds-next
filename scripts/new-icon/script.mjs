@@ -17,11 +17,7 @@ export default function newIcon(
 			const actions = [];
 			if (!answers) return actions;
 
-			const { iconName: iconNameOriginal } = answers;
-
-			const iconName = iconNameOriginal.endsWith('Icon')
-				? iconNameOriginal
-				: `${iconNameOriginal}Icon`;
+			const { iconName } = answers;
 
 			actions.push({
 				type: 'addMany',

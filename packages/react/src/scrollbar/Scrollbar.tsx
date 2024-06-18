@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { Box } from '@ag.ds-next/react/box';
+import { Flex } from '@ag.ds-next/react/flex';
+import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 
 export type ScrollbarProps = {};
 
@@ -24,8 +26,8 @@ export function Scrollbar(props: ScrollbarProps) {
 	const calculateThumbWidth = useDebouncedCallback(
 		() => {
 			// console.log(`scrollerRef?.current`, scrollerRef?.current);
-			offsetDimensionValue = scrollerRef?.current.offsetWidth;
-			scrollDimensionValue = scrollerRef?.current.scrollWidth;
+			offsetDimensionValue = scrollerRef?.current.offsetWidth - 56;
+			scrollDimensionValue = scrollerRef?.current.scrollWidth - 56;
 			// console.log(`offsetDimensionValue`, offsetDimensionValue);
 			// console.log(`scrollDimensionValue`, scrollDimensionValue);
 
@@ -100,6 +102,14 @@ export function Scrollbar(props: ScrollbarProps) {
 		// setThumbPosition(e.target.scrollLeft);
 	};
 
+	const handleLeftClick = () => {
+		scrollerRef.current.scrollLeft = scrollerRef.current.scrollLeft - 40;
+	};
+
+	const handleRightClick = () => {
+		scrollerRef.current.scrollLeft = scrollerRef.current.scrollLeft + 40;
+	};
+
 	return (
 		<Box
 			css={{
@@ -138,69 +148,114 @@ export function Scrollbar(props: ScrollbarProps) {
 				{props.children}
 			</Box>
 
-			<Box
-				aria-hidden
-				className="custom-scrollbar__track"
+			<Flex
+				background="body"
+				alignItems="center"
 				css={{
-					appearance: 'none',
-					background: 'yellow',
-					border: 'none',
-					bottom: 1,
-					cursor: 'default',
-					display: thumbWidthRatio === 1 ? 'none' : 'block',
-					height: 10,
+					display: thumbWidthRatio === 1 ? 'none' : undefined,
+					bottom: 0,
 					left: 0,
-					padding: 0,
 					right: 0,
 					position: 'sticky',
 					zIndex: '999',
 				}}
-				ref={trackRef}
-				tabIndex={-1}
-				// v-on:wheel="handleThumbWheel"
+				flexWrap="nowrap"
+				gap={0.25}
 			>
 				<Box
 					as="button"
-					aria-hidden
-					className="custom-scrollbar__thumb"
 					css={{
+						background: 'none',
 						appearance: 'none',
-						background: '#000',
-						border: 'none',
-						borderRadius: 1000,
-						bottom: 1,
 						cursor: 'default',
-						height: 8,
-						// left: `${thumbPosition * thumbWidthRatio}px`,
-						left: thumbPosition,
-						padding: '0',
-						position: 'absolute',
-						transition: 'opacity ease 0.15s',
-						zIndex: '1000',
-						width: `${thumbWidthRatio * 100}%`,
-						// This overlays the entire page so that when dragging and the user's mouse moves outside of the the actual thumb, the dragging will still be registered since the hit target of the thumb is basically the entire screen at that point
-						'&::before': {
-							background: 'blue',
-							content: '""',
-							// content: isDraggingThumb ? '""' : undefined,
-							left: '0',
-							right: '0',
-							position: isDraggingThumb ? 'fixed' : 'absolute',
-							top: '0',
-							bottom: '0',
-							opacity: 0.25,
-						},
+						height: 24,
+						width: 24,
 					}}
-					ref={thumbRef}
+					onClick={handleLeftClick}
 					tabIndex={-1}
-					// v-bind:class="thumbClass"
-					// v-bind:style="thumbStyle"
-					// v-on:mousedown="handleThumbDown"
-					onMouseDown={handleThumbDown}
-					onMouseMove={handleThumbMove}
-					onMouseUp={handleThumbUp}
-				></Box>
-			</Box>
+				>
+					<ScrollbarArrowLeftIcon />
+				</Box>
+				<Box
+					aria-hidden
+					background="shade"
+					border
+					borderColor="muted"
+					className="custom-scrollbar__track"
+					css={{
+						borderRadius: 999,
+						height: 12,
+						padding: 0,
+						position: 'relative',
+						flexGrow: 1,
+					}}
+					ref={trackRef}
+					tabIndex={-1}
+					// v-on:wheel="handleThumbWheel"
+				>
+					<Box
+						as="button"
+						aria-hidden
+						className="custom-scrollbar__thumb"
+						css={{
+							appearance: 'none',
+							background: 'none',
+							border: 'none',
+							borderRadius: 999,
+							bottom: 0,
+							cursor: 'default',
+							left: thumbPosition,
+							padding: '0',
+							position: 'absolute',
+							top: 0,
+							zIndex: '1000',
+							width: `${thumbWidthRatio * 100}%`,
+							// This overlays the entire page so that when dragging and the user's mouse moves outside of the the actual thumb, the dragging will still be registered since the hit target of the thumb is basically the entire screen at that point
+							'&::before': {
+								// background: 'blue',
+								content: '""',
+								left: '0',
+								right: '0',
+								position: isDraggingThumb ? 'fixed' : 'absolute',
+								top: '0',
+								bottom: '0',
+								opacity: 0.25,
+							},
+						}}
+						ref={thumbRef}
+						tabIndex={-1}
+						// v-bind:class="thumbClass"
+						// v-bind:style="thumbStyle"
+						// v-on:mousedown="handleThumbDown"
+						onMouseDown={handleThumbDown}
+						onMouseMove={handleThumbMove}
+						onMouseUp={handleThumbUp}
+					>
+						<Box
+							css={{
+								background: '#808080',
+								borderRadius: 999,
+								height: 8,
+								margin: 1,
+							}}
+						></Box>
+					</Box>
+				</Box>
+				<Box
+					as="button"
+					css={{
+						background: 'none',
+						appearance: 'none',
+						cursor: 'default',
+						height: 24,
+						width: 24,
+					}}
+					onClick={handleRightClick}
+					tabIndex={-1}
+				>
+					<ScrollbarArrowRightIcon />
+				</Box>
+			</Flex>
 		</Box>
 	);
 }
