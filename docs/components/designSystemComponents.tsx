@@ -119,6 +119,8 @@ export {
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
 	ProgressTodoIcon,
+	ScrollbarArrowLeftIcon,
+	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
 	SuccessFilledIcon,

@@ -1,14 +1,105 @@
-import { useRef } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import { useEffect, useRef, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 import { Box } from '@ag.ds-next/react/box';
 
 export type ScrollbarProps = {};
 
 export function Scrollbar(props: ScrollbarProps) {
-	const bottomTriggerRef = useRef(null);
-	const topTriggerRef = useRef(null);
 	const trackRef = useRef(null);
 	const thumbRef = useRef(null);
 	const scrollerRef = useRef(null);
+
+	const mousePos = useRef(0);
+
+	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
+
+	const [thumbPosition, setThumbPosition] = useState(0);
+	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+
+	let offsetDimensionValue;
+	let scrollDimensionValue;
+
+	const calculateThumbWidth = useDebouncedCallback(
+		() => {
+			// console.log(`scrollerRef?.current`, scrollerRef?.current);
+			offsetDimensionValue = scrollerRef?.current.offsetWidth;
+			scrollDimensionValue = scrollerRef?.current.scrollWidth;
+			// console.log(`offsetDimensionValue`, offsetDimensionValue);
+			// console.log(`scrollDimensionValue`, scrollDimensionValue);
+
+			setThumbWidthRatio(offsetDimensionValue / scrollDimensionValue);
+		},
+		200,
+		[scrollerRef, setThumbWidthRatio]
+	);
+
+	useEffect(() => {
+		calculateThumbWidth();
+	}, [calculateThumbWidth]);
+
+	useEffect(() => {
+		if (typeof window === 'undefined' || !('ResizeObserver' in window)) {
+			return;
+		}
+
+		if (!scrollerRef.current) {
+			return;
+		}
+
+		const observer = new ResizeObserver(() => {
+			calculateThumbWidth();
+		});
+
+		observer.observe(scrollerRef.current);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [calculateThumbWidth, scrollerRef]);
+
+	// console.log(`thumbWidthRatio`, thumbWidthRatio);
+
+	const handleThumbDown = (e) => {
+		// console.log(`handleThumbDown, e`, e.pageX);
+		if (e.button === 0) {
+			setIsDraggingThumb(true);
+			mousePos.current = e.pageX;
+		}
+		// this.mouseCurrentPos = this.mousePos = e[this.pageAxis];
+	};
+
+	const handleThumbMove = (e) => {
+		if (isDraggingThumb) {
+			// console.log(`handleThumbMove, e`, e.pageX);
+			// console.log(`mousePos`, mousePos.current);
+			// console.log(`e.pageX - mousePos.current`, e.pageX - mousePos.current);
+			// console.log(
+			// 	`(e.pageX - mousePos.current) / thumbWidthRatio`,
+			// 	(e.pageX - mousePos.current) / thumbWidthRatio
+			// );
+			scrollerRef.current.scrollLeft =
+				scrollerRef.current.scrollLeft +
+				(e.pageX - mousePos.current) / thumbWidthRatio;
+			mousePos.current = e.pageX;
+		}
+	};
+
+	const handleThumbUp = (e) => {
+		// console.log(`handleThumbUp, e`, e.pageX);
+		// console.log(`e`, e);
+		if (isDraggingThumb) {
+			setIsDraggingThumb(false);
+		}
+	};
+
+	const handleScroll = (e) => {
+		// console.log(`e`, e.target.scrollLeft);
+		setThumbPosition(e.target.scrollLeft * thumbWidthRatio);
+		// setThumbPosition(e.target.scrollLeft);
+	};
+
 	return (
 		<Box
 			css={{
@@ -21,11 +112,32 @@ export function Scrollbar(props: ScrollbarProps) {
         'is-dragging': state.isDragging,
         'is-floating': showFloatingHorizontalScrollbar"
 		>
-			<Box ref={topTriggerRef}></Box>
 			<Box
-				css={{ bottom: 0, height: 1, position: 'absolute', width: 1 }}
-				ref={bottomTriggerRef}
-			></Box>
+				className="custom-scrollbar__scroller"
+				css={{
+					overflowX: 'auto',
+					paddingBottom: thumbWidthRatio === 1 ? 0 : 20, // Magic number? Height of visibly spaced scrollbar
+					width: '100%',
+					WebkitOverflowScrolling: 'touch',
+					// Hide the native WebKit scrollbar
+					'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
+						{
+							height: 0,
+							opacity: 0,
+							width: 0,
+						},
+				}}
+				ref={scrollerRef}
+				// v-bind:style="scrollerStyle"
+				// v-on:scroll="handleScroll"
+				// v-on:wheel="handleWheel"
+				tabIndex={0}
+				focusRingFor="keyboard"
+				onScroll={handleScroll}
+			>
+				{props.children}
+			</Box>
+
 			<Box
 				aria-hidden
 				className="custom-scrollbar__track"
@@ -35,10 +147,12 @@ export function Scrollbar(props: ScrollbarProps) {
 					border: 'none',
 					bottom: 1,
 					cursor: 'default',
+					display: thumbWidthRatio === 1 ? 'none' : 'block',
 					height: 10,
 					left: 0,
 					padding: 0,
-					position: 'absolute',
+					right: 0,
+					position: 'sticky',
 					zIndex: '999',
 				}}
 				ref={trackRef}
@@ -57,43 +171,35 @@ export function Scrollbar(props: ScrollbarProps) {
 						bottom: 1,
 						cursor: 'default',
 						height: 8,
-						left: '0',
+						// left: `${thumbPosition * thumbWidthRatio}px`,
+						left: thumbPosition,
 						padding: '0',
 						position: 'absolute',
 						transition: 'opacity ease 0.15s',
 						zIndex: '1000',
+						width: `${thumbWidthRatio * 100}%`,
+						// This overlays the entire page so that when dragging and the user's mouse moves outside of the the actual thumb, the dragging will still be registered since the hit target of the thumb is basically the entire screen at that point
+						'&::before': {
+							background: 'blue',
+							content: '""',
+							// content: isDraggingThumb ? '""' : undefined,
+							left: '0',
+							right: '0',
+							position: isDraggingThumb ? 'fixed' : 'absolute',
+							top: '0',
+							bottom: '0',
+							opacity: 0.25,
+						},
 					}}
 					ref={thumbRef}
 					tabIndex={-1}
 					// v-bind:class="thumbClass"
 					// v-bind:style="thumbStyle"
 					// v-on:mousedown="handleThumbDown"
+					onMouseDown={handleThumbDown}
+					onMouseMove={handleThumbMove}
+					onMouseUp={handleThumbUp}
 				></Box>
-			</Box>
-
-			<Box
-				className="custom-scrollbar__scroller"
-				css={{
-					overflowX: 'scroll',
-					paddingBottom: 50, // Magic number?
-					width: '100%',
-					WebkitOverflowScrolling: 'touch',
-					// Hide the native WebKit scrollbar, just in case
-					'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
-						{
-							height: 0,
-							opacity: 0,
-							width: 0,
-						},
-				}}
-				ref={scrollerRef}
-				// v-bind:style="scrollerStyle"
-				// v-on:scroll="handleScroll"
-				// v-on:wheel="handleWheel"
-				tabIndex={0}
-				focusRingFor="keyboard"
-			>
-				{props.children}
 			</Box>
 		</Box>
 	);

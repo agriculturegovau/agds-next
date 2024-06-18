@@ -57,6 +57,8 @@ export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 export { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+export { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';
+export { ScrollbarArrowRightIcon } from './icons/ScrollbarArrowRightIcon';
 export { SearchIcon } from './icons/SearchIcon';
 export { SettingsIcon } from './icons/SettingsIcon';
 export { SuccessIcon } from './icons/SuccessIcon';

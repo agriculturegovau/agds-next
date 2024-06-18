@@ -9,7 +9,7 @@ export default function newIcon(
 				type: 'input',
 				name: 'iconName',
 				message:
-					'Icon name, please use appropriate uppercase (e.g. ArrowDownIcon)',
+					'Icon name, please use appropriate PascalCase (e.g. ArrowDownIcon)',
 				validate: (answer) => answer.length > 0,
 			},
 		],
@@ -17,7 +17,11 @@ export default function newIcon(
 			const actions = [];
 			if (!answers) return actions;
 
-			const { iconName } = answers;
+			const { iconName: iconNameOriginal } = answers;
+
+			const iconName = iconNameOriginal.endsWith('Icon')
+				? iconNameOriginal
+				: `${iconNameOriginal}Icon`;
 
 			actions.push({
 				type: 'addMany',

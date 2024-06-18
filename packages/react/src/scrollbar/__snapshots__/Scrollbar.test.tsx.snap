@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scrollbar renders correctly 1`] = `
+<div>
+  <div
+    class="css-fsc6tc-boxStyles-Scrollbar"
+    data-foo="'custom-scrollbar--' + direction, 'custom-scrollbar--hidden-thumb': thumbRatio === 1, 'is-dragging': state.isDragging, 'is-floating': showFloatingHorizontalScrollbar"
+  >
+    <div
+      class="custom-scrollbar__scroller css-1buy0gz-boxStyles-Scrollbar"
+      tabindex="0"
+    />
+    <div
+      aria-hidden="true"
+      class="custom-scrollbar__track css-1wwilg3-boxStyles-Scrollbar"
+      tabindex="-1"
+    >
+      <button
+        aria-hidden="true"
+        class="custom-scrollbar__thumb css-tas0n6-boxStyles-Scrollbar"
+        tabindex="-1"
+      />
+    </div>
+  </div>
+</div>
+`;
