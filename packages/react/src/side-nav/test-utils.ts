@@ -54,7 +54,7 @@ export const defaultTestingProps: SideNavProps = {
 					label: 'Tax receipt',
 				},
 				{
-					href: '/pre-fill availability',
+					href: '/pre-fill-availability',
 					label: 'Pre-fill availability',
 				},
 			],

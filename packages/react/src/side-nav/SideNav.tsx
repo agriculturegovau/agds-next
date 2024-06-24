@@ -18,21 +18,24 @@ export type SideNavProps = {
 	activePath: string;
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseTitle: string;
-	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: CollapsingSideBarBackground;
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
 	title: string;
+	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
+	background?: CollapsingSideBarBackground;
+	/** The variant to use for nested navigation items. */
+	nestedItemsVariant?: 'always-open' | 'open-on-nav';
 	/** If provided, the title will be rendered as an anchor element. */
 	titleLink?: string;
 };
 
 export function SideNav({
 	activePath,
+	background = 'body',
 	collapseTitle,
 	items,
-	background = 'body',
+	nestedItemsVariant = 'open-on-nav',
 	title,
 	titleLink,
 }: SideNavProps) {
@@ -59,7 +62,11 @@ export function SideNav({
 				>
 					{title}
 				</SideNavTitle>
-				<SideNavLinkList activePath={bestMatch} items={items} />
+				<SideNavLinkList
+					activePath={bestMatch}
+					items={items}
+					nestedItemsVariant={nestedItemsVariant}
+				/>
 			</Box>
 		</CollapsingSideBar>
 	);

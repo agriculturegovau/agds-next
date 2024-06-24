@@ -3,23 +3,27 @@ import { Flex } from '../flex';
 import {
 	boxPalette,
 	LinkProps,
+	mapSpacing,
 	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
 import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
+import { ChevronDownIcon, ChevronRightIcon } from '../icon';
 import { useLinkListDepth } from './context';
 
 export type SideNavLinkType = LinkProps & {
 	isActive?: boolean;
 	isCurrentPage?: boolean;
+	isOpen: boolean;
 	label: ReactNode;
 };
 
 export function SideNavLink({
+	children,
 	isActive,
 	isCurrentPage,
-	children,
+	isOpen,
 	label,
 	...props
 }: SideNavLinkType) {
@@ -33,7 +37,8 @@ export function SideNavLink({
 				gap={0.75}
 				color="muted"
 				fontSize="xs"
-				paddingY={1}
+				paddingTop={1}
+				paddingBottom={depth > 1 ? 1 : 0.75}
 				paddingRight={1}
 				borderBottom
 				borderBottomWidth="sm"
@@ -70,7 +75,25 @@ export function SideNavLink({
 				}}
 			>
 				<SideNavLinkIndicator depth={depth} />
-				<span>{label}</span>
+
+				<span css={{ flex: 1 }}>{label}</span>
+
+				{Boolean(children) &&
+					(isOpen ? (
+						<ChevronDownIcon
+							aria-hidden={false}
+							aria-label="(related links below)"
+							css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
+							size={depth > 1 ? 'sm' : 'md'}
+						/>
+					) : (
+						<ChevronRightIcon
+							aria-hidden={false}
+							aria-label="(related links available after opening)"
+							css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
+							size={depth > 1 ? 'sm' : 'md'}
+						/>
+					))}
 			</Flex>
 			{children}
 		</SideNavListItem>
