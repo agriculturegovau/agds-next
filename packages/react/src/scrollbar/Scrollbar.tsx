@@ -83,7 +83,6 @@ export function Scrollbar(props: ScrollbarProps) {
 
 	const handleThumbMove = useCallback(
 		(event: Event | React.MouseEvent | React.TouchEvent) => {
-			// (event) => {
 			if (!scrollerRef?.current) {
 				return;
 			}
