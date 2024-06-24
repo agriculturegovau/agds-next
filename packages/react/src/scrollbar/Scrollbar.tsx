@@ -82,18 +82,21 @@ export function Scrollbar(props: ScrollbarProps) {
 	};
 
 	const handleThumbMove = useCallback(
-		(event: React.MouseEvent | React.TouchEvent) => {
+		(event: Event | React.MouseEvent | React.TouchEvent) => {
+			// (event) => {
 			if (!scrollerRef?.current) {
 				return;
 			}
 
+			const _pageX = 'pageX' in event ? event.pageX : null;
+			const _pageY = 'pageY' in event ? event.pageY : null;
+			const touches = 'touches' in event ? event.touches : null;
+
 			if (isDraggingThumb) {
-				const pageX = (
-					'pageX' in event ? event.pageX : event.touches[0].pageX
-				) as number;
-				const pageY = (
-					'pageY' in event ? event.pageY : event.touches[0].pageY
-				) as number;
+				const pageX = touches ? touches[0].pageX : _pageX;
+				const pageY = touches ? touches[0].pageY : _pageY;
+
+				if (pageX === null || pageY === null) return;
 
 				// Calculate the movement direction
 				const deltaX = pageX - mousePos.current.x;
@@ -162,16 +165,16 @@ export function Scrollbar(props: ScrollbarProps) {
 		scrollerRef.current.scrollLeft += 40;
 	};
 
-	const handleTrackClick = (e) => {
+	const handleTrackClick = (event: React.MouseEvent) => {
 		if (!scrollerRef?.current || !thumbRef?.current) {
 			return;
 		}
 
 		const thumbDimensions = thumbRef.current.getBoundingClientRect();
 
-		if (e.pageX > thumbDimensions.x + thumbDimensions.width) {
+		if (event.pageX > thumbDimensions.x + thumbDimensions.width) {
 			scrollerRef.current.scrollLeft += thumbDimensions.width * 0.95;
-		} else if (e.pageX < thumbDimensions.x) {
+		} else if (event.pageX < thumbDimensions.x) {
 			scrollerRef.current.scrollLeft -= thumbDimensions.width * 0.95;
 		}
 	};

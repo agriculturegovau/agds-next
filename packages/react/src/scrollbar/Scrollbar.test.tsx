@@ -1,16 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { cleanup, render } from '../../../../test-utils';
+import { render } from '../../../../test-utils';
 import { Scrollbar } from './Scrollbar';
 import type { ScrollbarProps } from './Scrollbar';
 
 expect.extend(toHaveNoViolations);
 
-afterEach(cleanup);
-
 function renderScrollbar(props?: Partial<ScrollbarProps>) {
-	return render(<Scrollbar {...props} />);
+	return render(<Scrollbar {...props}>{props?.children}</Scrollbar>);
 }
 
 describe('Scrollbar', () => {
