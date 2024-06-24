@@ -9,10 +9,11 @@ import { Box } from '../box';
 import { boxPalette } from '../core';
 import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
+import { Stack } from '../stack';
 
 export type ScrollbarProps = { children: ReactNode };
 
-export function Scrollbar(props: ScrollbarProps) {
+export function Scrollbar({ children }: ScrollbarProps) {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const thumbRef = useRef<HTMLButtonElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
@@ -179,7 +180,8 @@ export function Scrollbar(props: ScrollbarProps) {
 	};
 
 	return (
-		<Box
+		<Stack
+			gap={0.5}
 			css={{
 				position: 'relative',
 				width: '100%',
@@ -187,16 +189,14 @@ export function Scrollbar(props: ScrollbarProps) {
 		>
 			<Box
 				css={{
+					msOverflowStyle: 'none',
 					overflowX: 'auto',
-					paddingBottom: thumbWidthRatio === 1 ? 0 : 8,
+					scrollbarWidth: 'none',
 					WebkitOverflowScrolling: 'touch',
 					width: '100%',
-					// Hide the native WebKit scrollbar
 					'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
 						{
-							height: 0,
-							opacity: 0,
-							width: 0,
+							display: 'none',
 						},
 				}}
 				focusRingFor="keyboard"
@@ -204,7 +204,7 @@ export function Scrollbar(props: ScrollbarProps) {
 				ref={scrollerRef}
 				tabIndex={0}
 			>
-				{props.children}
+				{children}
 			</Box>
 			<Flex
 				background="body"
@@ -292,6 +292,6 @@ export function Scrollbar(props: ScrollbarProps) {
 					<ScrollbarArrowRightIcon color="border" />
 				</Box>
 			</Flex>
-		</Box>
+		</Stack>
 	);
 }
