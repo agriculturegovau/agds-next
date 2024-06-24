@@ -22,6 +22,7 @@ export function Scrollbar({ children }: ScrollbarProps) {
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
 
 	const repositionThumb = useCallback(() => {
 		if (!scrollerRef?.current) {
@@ -149,20 +150,38 @@ export function Scrollbar({ children }: ScrollbarProps) {
 		repositionThumb();
 	};
 
-	const handleLeftClick = () => {
-		if (!scrollerRef?.current) {
-			return;
-		}
+	const handleButtonClick = (direction: 'left' | 'right') => {
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
-		scrollerRef.current.scrollLeft -= 40;
+		const scrollAmount = direction === 'left' ? -40 : 40;
+
+		if (scrollerRef.current) {
+			scrollerRef.current.scrollLeft += scrollAmount;
+		}
+
+		if (buttonIntervalId) {
+			clearInterval(buttonIntervalId);
+			setButtonIntervalId(null);
+		}
 	};
 
-	const handleRightClick = () => {
-		if (!scrollerRef?.current) {
-			return;
-		}
+	const handleButtonPress = (direction: 'left' | 'right') => {
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
-		scrollerRef.current.scrollLeft += 40;
+		const scrollAmount = direction === 'left' ? -40 : 40;
+
+		const intervalId = window.setInterval(() => {
+			if (scrollerRef.current) {
+				scrollerRef.current.scrollLeft += scrollAmount;
+			}
+		}, 100);
+
+		setButtonIntervalId(intervalId);
+	};
+
+	const handleButtonRelease = () => {
+		if (buttonIntervalId) {
+			clearInterval(buttonIntervalId);
+			setButtonIntervalId(null);
+		}
 	};
 
 	const handleTrackClick = (event: React.MouseEvent) => {
@@ -224,13 +243,18 @@ export function Scrollbar({ children }: ScrollbarProps) {
 					aria-hidden
 					as="button"
 					css={{
-						background: 'none',
 						appearance: 'none',
+						background: 'none',
 						cursor: 'default',
 						height: 24,
 						width: 24,
 					}}
-					onClick={handleLeftClick}
+					onClick={() => handleButtonClick('left')}
+					onMouseDown={() => handleButtonPress('left')}
+					onMouseUp={handleButtonRelease}
+					onMouseLeave={handleButtonRelease}
+					onTouchStart={() => handleButtonPress('left')}
+					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 				>
 					<ScrollbarArrowLeftIcon color="border" />
@@ -280,13 +304,18 @@ export function Scrollbar({ children }: ScrollbarProps) {
 					aria-hidden
 					as="button"
 					css={{
-						background: 'none',
 						appearance: 'none',
+						background: 'none',
 						cursor: 'default',
 						height: 24,
 						width: 24,
 					}}
-					onClick={handleRightClick}
+					onClick={() => handleButtonClick('right')}
+					onMouseDown={() => handleButtonPress('right')}
+					onMouseUp={handleButtonRelease}
+					onMouseLeave={handleButtonRelease}
+					onTouchStart={() => handleButtonPress('right')}
+					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 				>
 					<ScrollbarArrowRightIcon color="border" />
