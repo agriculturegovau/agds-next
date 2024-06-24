@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { useEffect, useRef, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
@@ -12,30 +11,22 @@ export function Scrollbar(props: ScrollbarProps) {
 	const trackRef = useRef(null);
 	const thumbRef = useRef(null);
 	const scrollerRef = useRef(null);
-
 	const mousePos = useRef(0);
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
-
 	const [thumbPosition, setThumbPosition] = useState(0);
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
 
-	let offsetDimensionValue;
-	let scrollDimensionValue;
+	const repositionThumb = useCallback(() => {
+		setThumbPosition(scrollerRef.current.scrollLeft * thumbWidthRatio);
+	}, [scrollerRef, thumbWidthRatio]);
 
-	const calculateThumbWidth = useDebouncedCallback(
-		() => {
-			// console.log(`scrollerRef?.current`, scrollerRef?.current);
-			offsetDimensionValue = scrollerRef?.current.offsetWidth - 56;
-			scrollDimensionValue = scrollerRef?.current.scrollWidth - 56;
-			// console.log(`offsetDimensionValue`, offsetDimensionValue);
-			// console.log(`scrollDimensionValue`, scrollDimensionValue);
-
-			setThumbWidthRatio(offsetDimensionValue / scrollDimensionValue);
-		},
-		200,
-		[scrollerRef, setThumbWidthRatio]
-	);
+	const calculateThumbWidth = useCallback(() => {
+		setThumbWidthRatio(
+			(scrollerRef?.current.offsetWidth - 56) /
+				(scrollerRef?.current.scrollWidth - 56)
+		);
+	}, [scrollerRef, setThumbWidthRatio]);
 
 	useEffect(() => {
 		calculateThumbWidth();
@@ -52,6 +43,7 @@ export function Scrollbar(props: ScrollbarProps) {
 
 		const observer = new ResizeObserver(() => {
 			calculateThumbWidth();
+			repositionThumb();
 		});
 
 		observer.observe(scrollerRef.current);
@@ -59,28 +51,19 @@ export function Scrollbar(props: ScrollbarProps) {
 		return () => {
 			observer.disconnect();
 		};
-	}, [calculateThumbWidth, scrollerRef]);
-
-	// console.log(`thumbWidthRatio`, thumbWidthRatio);
+	}, [calculateThumbWidth, repositionThumb, scrollerRef]);
 
 	const handleThumbDown = (e) => {
-		// console.log(`handleThumbDown, e`, e.pageX);
+		e.preventDefault();
+
 		if (e.button === 0) {
 			setIsDraggingThumb(true);
 			mousePos.current = e.pageX;
 		}
-		// this.mouseCurrentPos = this.mousePos = e[this.pageAxis];
 	};
 
 	const handleThumbMove = (e) => {
 		if (isDraggingThumb) {
-			// console.log(`handleThumbMove, e`, e.pageX);
-			// console.log(`mousePos`, mousePos.current);
-			// console.log(`e.pageX - mousePos.current`, e.pageX - mousePos.current);
-			// console.log(
-			// 	`(e.pageX - mousePos.current) / thumbWidthRatio`,
-			// 	(e.pageX - mousePos.current) / thumbWidthRatio
-			// );
 			scrollerRef.current.scrollLeft =
 				scrollerRef.current.scrollLeft +
 				(e.pageX - mousePos.current) / thumbWidthRatio;
@@ -88,47 +71,48 @@ export function Scrollbar(props: ScrollbarProps) {
 		}
 	};
 
-	const handleThumbUp = (e) => {
-		// console.log(`handleThumbUp, e`, e.pageX);
-		// console.log(`e`, e);
+	const handleThumbUp = () => {
 		if (isDraggingThumb) {
 			setIsDraggingThumb(false);
 		}
 	};
 
-	const handleScroll = (e) => {
-		// console.log(`e`, e.target.scrollLeft);
-		setThumbPosition(e.target.scrollLeft * thumbWidthRatio);
-		// setThumbPosition(e.target.scrollLeft);
+	const handleScroll = () => {
+		repositionThumb();
 	};
 
 	const handleLeftClick = () => {
-		scrollerRef.current.scrollLeft = scrollerRef.current.scrollLeft - 40;
+		scrollerRef.current.scrollLeft -= 40;
 	};
 
 	const handleRightClick = () => {
-		scrollerRef.current.scrollLeft = scrollerRef.current.scrollLeft + 40;
+		scrollerRef.current.scrollLeft += 40;
+	};
+
+	const handleTrackClick = (e) => {
+		const thumbDimensions = thumbRef.current.getBoundingClientRect();
+
+		if (e.pageX > thumbDimensions.x + thumbDimensions.width) {
+			scrollerRef.current.scrollLeft += thumbDimensions.width * 0.9;
+		} else if (e.pageX < thumbDimensions.x) {
+			scrollerRef.current.scrollLeft -= thumbDimensions.width * 0.9;
+		}
 	};
 
 	return (
 		<Box
 			css={{
-				// overflowX: 'auto',
 				position: 'relative',
 				width: '100%',
 			}}
-			data-foo="'custom-scrollbar--' + direction,
-        'custom-scrollbar--hidden-thumb': thumbRatio === 1,
-        'is-dragging': state.isDragging,
-        'is-floating': showFloatingHorizontalScrollbar"
 		>
 			<Box
 				className="custom-scrollbar__scroller"
 				css={{
 					overflowX: 'auto',
 					paddingBottom: thumbWidthRatio === 1 ? 0 : 20, // Magic number? Height of visibly spaced scrollbar
-					width: '100%',
 					WebkitOverflowScrolling: 'touch',
+					width: '100%',
 					// Hide the native WebKit scrollbar
 					'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
 						{
@@ -138,25 +122,21 @@ export function Scrollbar(props: ScrollbarProps) {
 						},
 				}}
 				ref={scrollerRef}
-				// v-bind:style="scrollerStyle"
-				// v-on:scroll="handleScroll"
-				// v-on:wheel="handleWheel"
 				tabIndex={0}
 				focusRingFor="keyboard"
 				onScroll={handleScroll}
 			>
 				{props.children}
 			</Box>
-
 			<Flex
 				background="body"
 				alignItems="center"
 				css={{
-					display: thumbWidthRatio === 1 ? 'none' : undefined,
 					bottom: 0,
+					display: thumbWidthRatio === 1 ? 'none' : undefined,
 					left: 0,
-					right: 0,
 					position: 'sticky',
+					right: 0,
 					zIndex: '999',
 				}}
 				flexWrap="nowrap"
@@ -189,9 +169,9 @@ export function Scrollbar(props: ScrollbarProps) {
 						position: 'relative',
 						flexGrow: 1,
 					}}
+					onClick={handleTrackClick}
 					ref={trackRef}
 					tabIndex={-1}
-					// v-on:wheel="handleThumbWheel"
 				>
 					<Box
 						as="button"
@@ -204,32 +184,28 @@ export function Scrollbar(props: ScrollbarProps) {
 							borderRadius: 999,
 							bottom: 0,
 							cursor: 'default',
-							left: thumbPosition,
-							padding: '0',
+							left: Math.floor(thumbPosition),
+							padding: 0,
 							position: 'absolute',
 							top: 0,
-							zIndex: '1000',
 							width: `${thumbWidthRatio * 100}%`,
-							// This overlays the entire page so that when dragging and the user's mouse moves outside of the the actual thumb, the dragging will still be registered since the hit target of the thumb is basically the entire screen at that point
+							zIndex: 1000,
+							// This overlays the entire page so that when dragging and the user's mouse moves outside of the actual thumb, the dragging will still be registered since the hit target of the thumb is basically the entire screen at that point
 							'&::before': {
-								// background: 'blue',
+								bottom: 0,
 								content: '""',
-								left: '0',
-								right: '0',
-								position: isDraggingThumb ? 'fixed' : 'absolute',
-								top: '0',
-								bottom: '0',
+								left: 0,
 								opacity: 0.25,
+								position: isDraggingThumb ? 'fixed' : 'absolute',
+								right: 0,
+								top: 0,
 							},
 						}}
-						ref={thumbRef}
-						tabIndex={-1}
-						// v-bind:class="thumbClass"
-						// v-bind:style="thumbStyle"
-						// v-on:mousedown="handleThumbDown"
 						onMouseDown={handleThumbDown}
 						onMouseMove={handleThumbMove}
 						onMouseUp={handleThumbUp}
+						ref={thumbRef}
+						tabIndex={-1}
 					>
 						<Box
 							css={{
