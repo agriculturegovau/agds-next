@@ -1,17 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+	type ReactNode,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { Box } from '../box';
 import { boxPalette } from '../core';
 import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 
-export type ScrollbarProps = {};
+export type ScrollbarProps = { children: ReactNode };
 
 export function Scrollbar(props: ScrollbarProps) {
-	const trackRef = useRef(null);
-	const thumbRef = useRef(null);
-	const scrollerRef = useRef(null);
+	const trackRef = useRef<HTMLDivElement>(null);
+	const thumbRef = useRef<HTMLButtonElement>(null);
+	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
@@ -19,10 +23,18 @@ export function Scrollbar(props: ScrollbarProps) {
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
 
 	const repositionThumb = useCallback(() => {
+		if (!scrollerRef?.current) {
+			return;
+		}
+
 		setThumbPosition(scrollerRef.current.scrollLeft * thumbWidthRatio);
 	}, [scrollerRef, thumbWidthRatio]);
 
 	const calculateThumbWidth = useCallback(() => {
+		if (!scrollerRef?.current) {
+			return;
+		}
+
 		setThumbWidthRatio(
 			(scrollerRef?.current.offsetWidth - 56) /
 				(scrollerRef?.current.scrollWidth - 56)
@@ -54,23 +66,34 @@ export function Scrollbar(props: ScrollbarProps) {
 		};
 	}, [calculateThumbWidth, repositionThumb, scrollerRef]);
 
-	const handleThumbPress = (e) => {
-		e.preventDefault();
+	const handleThumbPress = (event: React.MouseEvent | React.TouchEvent) => {
+		event.preventDefault();
 
-		if (e.type === 'mousedown' && e.button === 0) {
+		if (event.type === 'mousedown' && 'button' in event && event.button === 0) {
 			setIsDraggingThumb(true);
-			mousePos.current = { x: e.pageX, y: e.pageY };
-		} else if (e.type === 'touchstart') {
+			mousePos.current = { x: event.pageX, y: event.pageY };
+		} else if (event.type === 'touchstart' && 'touches' in event) {
 			setIsDraggingThumb(true);
-			mousePos.current = { x: e.touches[0].pageX, y: e.touches[0].pageY };
+			mousePos.current = {
+				x: event.touches[0].pageX,
+				y: event.touches[0].pageY,
+			};
 		}
 	};
 
 	const handleThumbMove = useCallback(
-		(e) => {
+		(event: React.MouseEvent | React.TouchEvent) => {
+			if (!scrollerRef?.current) {
+				return;
+			}
+
 			if (isDraggingThumb) {
-				const pageX = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
-				const pageY = e.type === 'mousemove' ? e.pageY : e.touches[0].pageY;
+				const pageX = (
+					'pageX' in event ? event.pageX : event.touches[0].pageX
+				) as number;
+				const pageY = (
+					'pageY' in event ? event.pageY : event.touches[0].pageY
+				) as number;
 
 				// Calculate the movement direction
 				const deltaX = pageX - mousePos.current.x;
@@ -78,7 +101,7 @@ export function Scrollbar(props: ScrollbarProps) {
 
 				if (Math.abs(deltaX) > Math.abs(deltaY)) {
 					// If horizontal movement is greater than vertical, prevent vertical scrolling
-					e.preventDefault();
+					event.preventDefault();
 
 					scrollerRef.current.scrollLeft =
 						scrollerRef.current.scrollLeft + deltaX / thumbWidthRatio;
@@ -104,14 +127,19 @@ export function Scrollbar(props: ScrollbarProps) {
 			document.addEventListener('mouseup', handleThumbRelease);
 			document.addEventListener('touchmove', handleThumbMove);
 			document.addEventListener('touchend', handleThumbRelease);
-
-			return () => {
-				document.removeEventListener('mousemove', handleThumbMove);
-				document.removeEventListener('mouseup', handleThumbRelease);
-				document.removeEventListener('touchmove', handleThumbMove);
-				document.removeEventListener('touchend', handleThumbRelease);
-			};
+		} else {
+			document.removeEventListener('mousemove', handleThumbMove);
+			document.removeEventListener('mouseup', handleThumbRelease);
+			document.removeEventListener('touchmove', handleThumbMove);
+			document.removeEventListener('touchend', handleThumbRelease);
 		}
+
+		return () => {
+			document.removeEventListener('mousemove', handleThumbMove);
+			document.removeEventListener('mouseup', handleThumbRelease);
+			document.removeEventListener('touchmove', handleThumbMove);
+			document.removeEventListener('touchend', handleThumbRelease);
+		};
 	}, [handleThumbMove, handleThumbRelease, isDraggingThumb]);
 
 	const handleScroll = () => {
@@ -119,16 +147,26 @@ export function Scrollbar(props: ScrollbarProps) {
 	};
 
 	const handleLeftClick = () => {
+		if (!scrollerRef?.current) {
+			return;
+		}
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		scrollerRef.current.scrollLeft -= 40;
 	};
 
 	const handleRightClick = () => {
+		if (!scrollerRef?.current) {
+			return;
+		}
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		scrollerRef.current.scrollLeft += 40;
 	};
 
 	const handleTrackClick = (e) => {
+		if (!scrollerRef?.current || !thumbRef?.current) {
+			return;
+		}
+
 		const thumbDimensions = thumbRef.current.getBoundingClientRect();
 
 		if (e.pageX > thumbDimensions.x + thumbDimensions.width) {
