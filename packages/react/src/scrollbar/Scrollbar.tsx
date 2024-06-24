@@ -12,7 +12,7 @@ export function Scrollbar(props: ScrollbarProps) {
 	const trackRef = useRef(null);
 	const thumbRef = useRef(null);
 	const scrollerRef = useRef(null);
-	const mousePos = useRef(0);
+	const mousePos = useRef({ x: 0, y: 0 });
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
@@ -59,40 +59,72 @@ export function Scrollbar(props: ScrollbarProps) {
 
 		if (e.type === 'mousedown' && e.button === 0) {
 			setIsDraggingThumb(true);
-			mousePos.current = e.pageX;
+			mousePos.current = { x: e.pageX, y: e.pageY };
 		} else if (e.type === 'touchstart') {
 			setIsDraggingThumb(true);
-			mousePos.current = e.touches[0].pageX;
+			mousePos.current = { x: e.touches[0].pageX, y: e.touches[0].pageY };
 		}
 	};
 
-	const handleThumbMove = (e) => {
-		if (isDraggingThumb) {
-			const pageX = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
-			scrollerRef.current.scrollLeft =
-				scrollerRef.current.scrollLeft +
-				(pageX - mousePos.current) / thumbWidthRatio;
-			mousePos.current = pageX;
-		}
-	};
+	const handleThumbMove = useCallback(
+		(e) => {
+			if (isDraggingThumb) {
+				const pageX = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
+				const pageY = e.type === 'mousemove' ? e.pageY : e.touches[0].pageY;
 
-	const handleThumbRelease = () => {
+				// Calculate the movement direction
+				const deltaX = pageX - mousePos.current.x;
+				const deltaY = pageY - mousePos.current.y;
+
+				if (Math.abs(deltaX) > Math.abs(deltaY)) {
+					// If horizontal movement is greater than vertical, prevent vertical scrolling
+					e.preventDefault();
+
+					scrollerRef.current.scrollLeft =
+						scrollerRef.current.scrollLeft + deltaX / thumbWidthRatio;
+					mousePos.current.x = pageX;
+				}
+
+				// Update the current Y position to prevent unwanted vertical scrolling
+				mousePos.current.y = pageY;
+			}
+		},
+		[isDraggingThumb, thumbWidthRatio]
+	);
+
+	const handleThumbRelease = useCallback(() => {
 		if (isDraggingThumb) {
 			setIsDraggingThumb(false);
 		}
-	};
+	}, [isDraggingThumb]);
+
+	useEffect(() => {
+		if (isDraggingThumb) {
+			document.addEventListener('mousemove', handleThumbMove);
+			document.addEventListener('mouseup', handleThumbRelease);
+			document.addEventListener('touchmove', handleThumbMove);
+			document.addEventListener('touchend', handleThumbRelease);
+
+			return () => {
+				document.removeEventListener('mousemove', handleThumbMove);
+				document.removeEventListener('mouseup', handleThumbRelease);
+				document.removeEventListener('touchmove', handleThumbMove);
+				document.removeEventListener('touchend', handleThumbRelease);
+			};
+		}
+	}, [isDraggingThumb, handleThumbMove, handleThumbRelease]);
 
 	const handleScroll = () => {
 		repositionThumb();
 	};
 
 	const handleLeftClick = () => {
-		// Windows generally does 40px, but can change based on some ratio. Let's just keep it simple for now
+		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		scrollerRef.current.scrollLeft -= 40;
 	};
 
 	const handleRightClick = () => {
-		// Windows generally does 40px, but can change based on some ratio. Let's just keep it simple for now
+		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		scrollerRef.current.scrollLeft += 40;
 	};
 
@@ -114,7 +146,6 @@ export function Scrollbar(props: ScrollbarProps) {
 			}}
 		>
 			<Box
-				className="custom-scrollbar__scroller"
 				css={{
 					overflowX: 'auto',
 					paddingBottom: thumbWidthRatio === 1 ? 0 : 8,
@@ -168,7 +199,6 @@ export function Scrollbar(props: ScrollbarProps) {
 					background="shade"
 					border
 					borderColor="muted"
-					className="custom-scrollbar__track"
 					css={{
 						borderRadius: 999,
 						height: 12,
@@ -183,7 +213,6 @@ export function Scrollbar(props: ScrollbarProps) {
 					<Box
 						as="button"
 						aria-hidden
-						className="custom-scrollbar__thumb"
 						css={{
 							appearance: 'none',
 							background: boxPalette.border,
@@ -196,23 +225,11 @@ export function Scrollbar(props: ScrollbarProps) {
 							padding: 0,
 							position: 'absolute',
 							top: 0,
+							touchAction: 'none', // Prevent default touch actions
 							width: `${thumbWidthRatio * 100}%`,
 							zIndex: 1000,
-							// This overlays the entire page so that when dragging and the user's mouse moves outside of the actual thumb, the dragging will still be registered since the hit target of the thumb is actually the entire screen
-							'&::before': {
-								bottom: 0,
-								content: '""',
-								left: 0,
-								position: isDraggingThumb ? 'fixed' : 'absolute',
-								right: 0,
-								top: 0,
-							},
 						}}
 						onMouseDown={handleThumbPress}
-						onMouseMove={handleThumbMove}
-						onMouseUp={handleThumbRelease}
-						onTouchEnd={handleThumbRelease}
-						onTouchMove={handleThumbMove}
 						onTouchStart={handleThumbPress}
 						ref={thumbRef}
 						tabIndex={-1}
