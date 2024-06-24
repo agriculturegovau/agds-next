@@ -1226,6 +1226,52 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ScrollbarArrowLeftIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3.039 13.737c-1.344-.768-1.344-2.706 0-3.473l7.969-4.554C12.341 4.948 14 5.911 14 7.446v9.108c0 1.535-1.659 2.498-2.992 1.736l-7.969-4.553Z"
+      fill="currentColor"
+      stroke="none"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon ScrollbarArrowRightIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20.961 13.737c1.344-.768 1.344-2.706 0-3.473L12.992 5.71C11.659 4.948 10 5.911 10 7.446v9.108c0 1.535 1.659 2.498 2.992 1.736l7.969-4.553Z"
+      fill="currentColor"
+      stroke="none"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon SearchIcon renders correctly 1`] = `
 <div>
   <svg

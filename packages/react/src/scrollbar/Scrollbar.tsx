@@ -2,8 +2,8 @@
 // @ts-nocheck
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Box } from '../box';
-import { Flex } from '../flex';
 import { boxPalette } from '../core';
+import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 
 export type ScrollbarProps = {};
@@ -112,7 +112,7 @@ export function Scrollbar(props: ScrollbarProps) {
 				document.removeEventListener('touchend', handleThumbRelease);
 			};
 		}
-	}, [isDraggingThumb, handleThumbMove, handleThumbRelease]);
+	}, [handleThumbMove, handleThumbRelease, isDraggingThumb]);
 
 	const handleScroll = () => {
 		repositionThumb();
@@ -159,10 +159,10 @@ export function Scrollbar(props: ScrollbarProps) {
 							width: 0,
 						},
 				}}
-				ref={scrollerRef}
-				tabIndex={0}
 				focusRingFor="keyboard"
 				onScroll={handleScroll}
+				ref={scrollerRef}
+				tabIndex={0}
 			>
 				{props.children}
 			</Box>
@@ -181,6 +181,7 @@ export function Scrollbar(props: ScrollbarProps) {
 				gap={0.25}
 			>
 				<Box
+					aria-hidden
 					as="button"
 					css={{
 						background: 'none',
@@ -211,8 +212,8 @@ export function Scrollbar(props: ScrollbarProps) {
 					tabIndex={-1}
 				>
 					<Box
-						as="button"
 						aria-hidden
+						as="button"
 						css={{
 							appearance: 'none',
 							background: boxPalette.border,
@@ -236,6 +237,7 @@ export function Scrollbar(props: ScrollbarProps) {
 					/>
 				</Box>
 				<Box
+					aria-hidden
 					as="button"
 					css={{
 						background: 'none',
