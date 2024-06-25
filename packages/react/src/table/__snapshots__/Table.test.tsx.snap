@@ -3,10 +3,10 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-fsc6tc-boxStyles-Scrollbar"
+    class="css-h6dj2w-boxStyles-TableScroller"
   >
     <div
-      class="css-1ugntq0-boxStyles-Scrollbar"
+      class="css-x9kx5j-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
@@ -257,11 +257,11 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </table>
     </div>
     <div
-      class="css-7pcnw2-boxStyles-Scrollbar"
+      class="css-1bk2ogi-boxStyles-TableScroller"
     >
       <button
         aria-hidden="true"
-        class="css-kx157c-boxStyles-Scrollbar"
+        class="css-16kwu1t-boxStyles-TableScroller"
         tabindex="-1"
       >
         <svg
@@ -285,18 +285,18 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="css-dz9pi-boxStyles-Scrollbar"
+        class="css-kagy6b-boxStyles-TableScroller"
         tabindex="-1"
       >
         <button
           aria-hidden="true"
-          class="css-88wdz9-boxStyles-Scrollbar"
+          class="css-1kiuu0i-boxStyles-TableScroller"
           tabindex="-1"
         />
       </div>
       <button
         aria-hidden="true"
-        class="css-kx157c-boxStyles-Scrollbar"
+        class="css-16kwu1t-boxStyles-TableScroller"
         tabindex="-1"
       >
         <svg

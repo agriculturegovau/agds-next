@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { Scrollbar } from '@ag.ds-next/react/scrollbar';
+import { TableScroller } from './TableScroller';
 
 export const TableWrapper = ({ children }: { children: ReactNode }) => {
-	return <Scrollbar>{children}</Scrollbar>;
+	return <TableScroller>{children}</TableScroller>;
 };

@@ -11,9 +11,9 @@ import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 import { Stack } from '../stack';
 
-export type ScrollbarProps = { children: ReactNode };
+export type TableScrollerProps = { children: ReactNode };
 
-export function Scrollbar({ children }: ScrollbarProps) {
+export function TableScroller({ children }: TableScrollerProps) {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const thumbRef = useRef<HTMLButtonElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
