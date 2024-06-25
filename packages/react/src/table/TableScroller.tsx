@@ -255,6 +255,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					onTouchStart={() => handleButtonPress('left')}
 					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
+					type="button"
 				>
 					<ScrollbarArrowLeftIcon color="border" />
 				</Box>
@@ -296,6 +297,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						onTouchStart={handleThumbPress}
 						ref={thumbRef}
 						tabIndex={-1}
+						type="button"
 					/>
 				</Box>
 				<Box
@@ -315,6 +317,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					onTouchStart={() => handleButtonPress('right')}
 					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
+					type="button"
 				>
 					<ScrollbarArrowRightIcon color="border" />
 				</Box>

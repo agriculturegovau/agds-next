@@ -263,6 +263,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         aria-hidden="true"
         class="css-16kwu1t-boxStyles-TableScroller"
         tabindex="-1"
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -292,12 +293,14 @@ exports[`Table with TableCaption renders correctly 1`] = `
           aria-hidden="true"
           class="css-1kiuu0i-boxStyles-TableScroller"
           tabindex="-1"
+          type="button"
         />
       </div>
       <button
         aria-hidden="true"
         class="css-16kwu1t-boxStyles-TableScroller"
         tabindex="-1"
+        type="button"
       >
         <svg
           aria-hidden="true"
