@@ -143,10 +143,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 		};
 	}, [handleThumbMove, handleThumbRelease, isDraggingThumb]);
 
-	const handleScroll = () => {
-		repositionThumb();
-	};
-
 	const handleButtonClick = (direction: 'left' | 'right') => {
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		const scrollAmount = direction === 'left' ? -40 : 40;
@@ -225,7 +221,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						},
 				}}
 				focusRingFor="keyboard"
-				onScroll={handleScroll}
+				onScroll={repositionThumb}
 				ref={scrollerRef}
 				tabIndex={0}
 			>
