@@ -150,26 +150,26 @@ export function TableScroller({ children }: TableScrollerProps) {
 		repositionThumb();
 	};
 
-	const handleButtonClick = (direction: 'left' | 'right') => {
+	const handleButtonPress = (
+		event: React.MouseEvent | React.TouchEvent,
+		direction: 'left' | 'right'
+	) => {
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		const scrollAmount = direction === 'left' ? -40 : 40;
-
-		if (scrollerRef.current) {
-			scrollerRef.current.scrollLeft += scrollAmount;
-		}
 
 		if (buttonIntervalId) {
 			clearInterval(buttonIntervalId);
 			setButtonIntervalId(null);
 		}
-	};
-
-	const handleButtonPress = (direction: 'left' | 'right') => {
-		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
-		const scrollAmount = direction === 'left' ? -40 : 40;
 
 		const intervalId = window.setInterval(() => {
-			if (scrollerRef.current) {
+			if (
+				scrollerRef.current &&
+				(event.type === 'touchstart' ||
+					(event.type === 'mousedown' &&
+						'button' in event &&
+						event.button === 0))
+			) {
 				scrollerRef.current.scrollLeft += scrollAmount;
 			}
 		}, 100);
@@ -248,11 +248,14 @@ export function TableScroller({ children }: TableScrollerProps) {
 						height: 24,
 						width: 24,
 					}}
-					onClick={() => handleButtonClick('left')}
-					onMouseDown={() => handleButtonPress('left')}
+					onMouseDown={(event: React.MouseEvent) =>
+						handleButtonPress(event, 'left')
+					}
 					onMouseUp={handleButtonRelease}
 					onMouseLeave={handleButtonRelease}
-					onTouchStart={() => handleButtonPress('left')}
+					onTouchStart={(event: React.TouchEvent) =>
+						handleButtonPress(event, 'left')
+					}
 					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 					type="button"
@@ -310,11 +313,14 @@ export function TableScroller({ children }: TableScrollerProps) {
 						height: 24,
 						width: 24,
 					}}
-					onClick={() => handleButtonClick('right')}
-					onMouseDown={() => handleButtonPress('right')}
+					onMouseDown={(event: React.MouseEvent) =>
+						handleButtonPress(event, 'right')
+					}
 					onMouseUp={handleButtonRelease}
 					onMouseLeave={handleButtonRelease}
-					onTouchStart={() => handleButtonPress('right')}
+					onTouchStart={(event: React.TouchEvent) =>
+						handleButtonPress(event, 'right')
+					}
 					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 					type="button"
