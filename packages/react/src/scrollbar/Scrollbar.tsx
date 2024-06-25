@@ -234,7 +234,6 @@ export function Scrollbar({ children }: ScrollbarProps) {
 					left: 0,
 					position: 'sticky',
 					right: 0,
-					zIndex: '999',
 				}}
 				flexWrap="nowrap"
 				gap={0.25}
@@ -292,7 +291,6 @@ export function Scrollbar({ children }: ScrollbarProps) {
 							top: 0,
 							touchAction: 'none', // Prevent default touch actions
 							width: `${thumbWidthRatio * 100}%`,
-							zIndex: 1000,
 						}}
 						onMouseDown={handleThumbPress}
 						onTouchStart={handleThumbPress}
