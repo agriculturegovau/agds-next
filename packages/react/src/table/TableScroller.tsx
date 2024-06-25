@@ -30,7 +30,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 		}
 
 		setThumbPosition(scrollerRef.current.scrollLeft * thumbWidthRatio);
-	}, [scrollerRef, thumbWidthRatio]);
+	}, [thumbWidthRatio]);
 
 	const calculateThumbWidth = useCallback(() => {
 		if (!scrollerRef?.current) {
@@ -38,14 +38,11 @@ export function TableScroller({ children }: TableScrollerProps) {
 		}
 
 		setThumbWidthRatio(
-			(scrollerRef?.current.offsetWidth - 56) /
-				(scrollerRef?.current.scrollWidth - 56)
+			// 56 is the width of the 2 x 24px arrow buttons
+			(scrollerRef?.current.offsetWidth - 58) /
+				(scrollerRef?.current.scrollWidth - 58)
 		);
-	}, [scrollerRef, setThumbWidthRatio]);
-
-	useEffect(() => {
-		calculateThumbWidth();
-	}, [calculateThumbWidth]);
+	}, []);
 
 	useEffect(() => {
 		if (
@@ -66,16 +63,16 @@ export function TableScroller({ children }: TableScrollerProps) {
 		return () => {
 			observer.disconnect();
 		};
-	}, [calculateThumbWidth, repositionThumb, scrollerRef]);
+	}, [calculateThumbWidth, repositionThumb]);
 
 	const handleThumbPress = (event: React.MouseEvent | React.TouchEvent) => {
 		event.preventDefault();
 
+		setIsDraggingThumb(true);
+
 		if (event.type === 'mousedown' && 'button' in event && event.button === 0) {
-			setIsDraggingThumb(true);
 			mousePos.current = { x: event.pageX, y: event.pageY };
 		} else if (event.type === 'touchstart' && 'touches' in event) {
-			setIsDraggingThumb(true);
 			mousePos.current = {
 				x: event.touches[0].pageX,
 				y: event.touches[0].pageY,
@@ -89,13 +86,13 @@ export function TableScroller({ children }: TableScrollerProps) {
 				return;
 			}
 
-			const _pageX = 'pageX' in event ? event.pageX : null;
-			const _pageY = 'pageY' in event ? event.pageY : null;
+			let pageX = 'pageX' in event ? event.pageX : null;
+			let pageY = 'pageY' in event ? event.pageY : null;
 			const touches = 'touches' in event ? event.touches : null;
 
 			if (isDraggingThumb) {
-				const pageX = touches ? touches[0].pageX : _pageX;
-				const pageY = touches ? touches[0].pageY : _pageY;
+				pageX = touches ? touches[0].pageX : pageX;
+				pageY = touches ? touches[0].pageY : pageY;
 
 				if (pageX === null || pageY === null) return;
 
@@ -150,17 +147,26 @@ export function TableScroller({ children }: TableScrollerProps) {
 		repositionThumb();
 	};
 
+	const handleButtonClick = (direction: 'left' | 'right') => {
+		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
+		const scrollAmount = direction === 'left' ? -40 : 40;
+
+		if (scrollerRef.current) {
+			scrollerRef.current.scrollLeft += scrollAmount;
+		}
+
+		if (buttonIntervalId) {
+			clearInterval(buttonIntervalId);
+			setButtonIntervalId(null);
+		}
+	};
+
 	const handleButtonPress = (
 		event: React.MouseEvent | React.TouchEvent,
 		direction: 'left' | 'right'
 	) => {
 		// Windows and keyboard left/right generally moves 40px, but it can change based on some ratio. Let's just keep it simple for now
 		const scrollAmount = direction === 'left' ? -40 : 40;
-
-		if (buttonIntervalId) {
-			clearInterval(buttonIntervalId);
-			setButtonIntervalId(null);
-		}
 
 		const intervalId = window.setInterval(() => {
 			if (
@@ -248,6 +254,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						height: 24,
 						width: 24,
 					}}
+					onClick={() => handleButtonClick('left')}
 					onMouseDown={(event: React.MouseEvent) =>
 						handleButtonPress(event, 'left')
 					}
@@ -288,8 +295,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 							borderRadius: 999,
 							bottom: 0,
 							cursor: 'default',
-							// Miscalculations of floats means the scrollbar can overlap the right edge slightly if not floored
-							left: Math.floor(thumbPosition),
+							left: thumbPosition,
 							padding: 0,
 							position: 'absolute',
 							top: 0,
@@ -313,6 +319,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						height: 24,
 						width: 24,
 					}}
+					onClick={() => handleButtonClick('right')}
 					onMouseDown={(event: React.MouseEvent) =>
 						handleButtonPress(event, 'right')
 					}
