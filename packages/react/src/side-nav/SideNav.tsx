@@ -25,7 +25,7 @@ export type SideNavProps = {
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** The variant to use for nested navigation items. */
-	nestedItemsVariant?: 'always-open' | 'open-on-nav';
+	nestedItemsVariant?: 'alwaysOpen' | 'openOnNav';
 	/** If provided, the title will be rendered as an anchor element. */
 	titleLink?: string;
 };
@@ -35,7 +35,7 @@ export function SideNav({
 	background = 'body',
 	collapseTitle,
 	items,
-	nestedItemsVariant = 'open-on-nav',
+	nestedItemsVariant = 'alwaysOpen',
 	title,
 	titleLink,
 }: SideNavProps) {

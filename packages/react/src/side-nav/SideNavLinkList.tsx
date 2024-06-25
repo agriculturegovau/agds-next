@@ -41,7 +41,7 @@ type LinkListProps = {
 function LinkList({ activePath, items, nestedItemsVariant }: LinkListProps) {
 	const isOpen = useCallback(
 		(items?: LinkListProps['items']) =>
-			nestedItemsVariant === 'always-open' ||
+			nestedItemsVariant === 'alwaysOpen' ||
 			hasNestedActiveItem(items, activePath),
 		[activePath, nestedItemsVariant]
 	);

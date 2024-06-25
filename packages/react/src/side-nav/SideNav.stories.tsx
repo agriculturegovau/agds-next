@@ -71,6 +71,6 @@ export const AlwaysOpen: Story = {
 				],
 			},
 		],
-		nestedItemsVariant: 'always-open',
+		nestedItemsVariant: 'alwaysOpen',
 	},
 };

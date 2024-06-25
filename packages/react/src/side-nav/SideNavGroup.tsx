@@ -7,9 +7,9 @@ type SideNavGroupProps = { children: ReactNode; isOpen: boolean };
 export function SideNavGroup({ children, isOpen }: SideNavGroupProps) {
 	const depth = useLinkListDepth();
 	const value = depth + 1;
-	return (
+	return isOpen ? (
 		<LinkListContext.Provider value={value}>
-			{isOpen && <Box as="ul">{children}</Box>}
+			<Box as="ul">{children}</Box>
 		</LinkListContext.Provider>
-	);
+	) : null;
 }
