@@ -261,7 +261,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     >
       <button
         aria-hidden="true"
-        class="css-16kwu1t-boxStyles-TableScroller"
+        class="css-jwqotw-boxStyles-TableScroller"
         tabindex="-1"
         type="button"
       >
@@ -286,19 +286,20 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="css-kagy6b-boxStyles-TableScroller"
+        class="css-1ne0yec-boxStyles-TableScroller"
         tabindex="-1"
       >
         <button
           aria-hidden="true"
-          class="css-1au53fz-boxStyles-TableScroller"
+          class="css-np8p1e-boxStyles-TableScroller"
+          style="left: 0px; width: 0%;"
           tabindex="-1"
           type="button"
         />
       </div>
       <button
         aria-hidden="true"
-        class="css-16kwu1t-boxStyles-TableScroller"
+        class="css-jwqotw-boxStyles-TableScroller"
         tabindex="-1"
         type="button"
       >

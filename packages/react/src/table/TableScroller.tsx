@@ -33,15 +33,19 @@ export function TableScroller({ children }: TableScrollerProps) {
 	}, [thumbWidthRatio]);
 
 	const calculateThumbWidth = useCallback(() => {
-		if (!scrollerRef?.current) {
+		if (!scrollerRef?.current || !trackRef?.current) {
 			return;
 		}
 
-		setThumbWidthRatio(
-			// 56 is the width of the 2 x 24px arrow buttons
-			(scrollerRef?.current.offsetWidth - 58) /
-				(scrollerRef?.current.scrollWidth - 58)
-		);
+		if (scrollerRef.current.offsetWidth === scrollerRef.current.scrollWidth) {
+			setThumbWidthRatio(1);
+		} else {
+			setThumbWidthRatio(
+				trackRef.current.offsetWidth /
+					(scrollerRef.current.scrollWidth -
+						(scrollerRef.current.offsetWidth - trackRef.current.offsetWidth))
+			);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -247,8 +251,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 						appearance: 'none',
 						background: 'none',
 						cursor: 'default',
-						height: 24,
-						width: 24,
+						height: pxToRem(24),
+						width: pxToRem(24),
 					}}
 					onClick={() => handleButtonClick('left')}
 					onMouseDown={(event: React.MouseEvent) =>
@@ -272,7 +276,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					borderColor="muted"
 					css={{
 						borderRadius: 999,
-						height: 12,
+						height: pxToRem(12),
 						padding: 0,
 						position: 'relative',
 						flexGrow: 1,
@@ -291,11 +295,13 @@ export function TableScroller({ children }: TableScrollerProps) {
 							borderRadius: 999,
 							bottom: 0,
 							cursor: 'default',
-							left: thumbPosition,
 							padding: 0,
 							position: 'absolute',
 							top: 0,
 							touchAction: 'none', // Prevent default touch actions
+						}}
+						style={{
+							left: thumbPosition,
 							width: `${thumbWidthRatio * 100}%`,
 						}}
 						onMouseDown={handleThumbPress}
@@ -312,8 +318,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 						appearance: 'none',
 						background: 'none',
 						cursor: 'default',
-						height: 24,
-						width: 24,
+						height: pxToRem(24),
+						width: pxToRem(24),
 					}}
 					onClick={() => handleButtonClick('right')}
 					onMouseDown={(event: React.MouseEvent) =>
@@ -333,4 +339,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 			</Flex>
 		</Stack>
 	);
+}
+
+function pxToRem(px: number) {
+	return `${px / 16}rem`;
 }
