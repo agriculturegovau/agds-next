@@ -55,6 +55,7 @@ function LinkList({ activePath, items, nestedItemsVariant }: LinkListProps) {
 						isCurrentPage={item.href === activePath}
 						isOpen={isOpen(items)}
 						key={index}
+						nestedItemsVariant={nestedItemsVariant}
 						{...item}
 					>
 						{items?.length ? (

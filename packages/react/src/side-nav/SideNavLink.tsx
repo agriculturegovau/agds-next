@@ -11,12 +11,14 @@ import {
 import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
 import { ChevronDownIcon, ChevronRightIcon } from '../icon';
 import { useLinkListDepth } from './context';
+import { SideNavProps } from './SideNav';
 
 export type SideNavLinkType = LinkProps & {
 	isActive?: boolean;
 	isCurrentPage?: boolean;
 	isOpen: boolean;
 	label: ReactNode;
+	nestedItemsVariant: SideNavProps['nestedItemsVariant'];
 };
 
 export function SideNavLink({
@@ -25,6 +27,7 @@ export function SideNavLink({
 	isCurrentPage,
 	isOpen,
 	label,
+	nestedItemsVariant,
 	...props
 }: SideNavLinkType) {
 	const depth = useLinkListDepth();
@@ -79,6 +82,7 @@ export function SideNavLink({
 				<span css={{ flex: 1 }}>{label}</span>
 
 				{Boolean(children) &&
+					nestedItemsVariant === 'openOnNav' &&
 					(isOpen ? (
 						<ChevronDownIcon
 							aria-hidden={false}

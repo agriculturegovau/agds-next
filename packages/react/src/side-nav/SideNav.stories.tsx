@@ -8,6 +8,7 @@ const meta: Meta<typeof SideNav> = {
 	component: SideNav,
 	args: {
 		...defaultTestingProps,
+		nestedItemsVariant: 'openOnNav',
 	},
 };
 
