@@ -107,11 +107,6 @@ export const WithAccountLinkLongName: Story = {
 
 export const CoBranding: Story = {
 	args: {
-		accountDetails: {
-			name: exampleData.userNames.long,
-			secondaryText: exampleData.businessNames.regular[0],
-			href: '#',
-		},
 		secondHref: '/',
 		secondLogo: <AISLogo />,
 	},
