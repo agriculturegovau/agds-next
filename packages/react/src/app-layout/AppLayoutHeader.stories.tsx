@@ -31,8 +31,6 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		href: '/',
 		logo: <Logo />,
 		subLine: 'Supporting Australian agricultural exports',
-		secondHref: '/',
-		secondLogo: <AISLogo />,
 	},
 	render: (props) => (
 		<AppLayout focusMode={false}>
@@ -104,5 +102,37 @@ export const WithAccountLinkLongName: Story = {
 			secondaryText: exampleData.businessNames.regular[0],
 			href: '#',
 		},
+	},
+};
+
+export const CoBranding: Story = {
+	args: {
+		accountDetails: {
+			name: exampleData.userNames.long,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
+		},
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingDividerPositionBetween: Story = {
+	args: {
+		dividerPosition: 'between',
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingWithAccountDetails: Story = {
+	args: {
+		accountDetails: {
+			name: exampleData.userNames.long,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
+		},
+		secondHref: '/',
+		secondLogo: <AISLogo />,
 	},
 };
