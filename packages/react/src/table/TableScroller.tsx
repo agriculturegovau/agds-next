@@ -197,9 +197,9 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 		const thumbDimensions = thumbRef.current.getBoundingClientRect();
 
-		if (event.pageX > thumbDimensions.x + thumbDimensions.width) {
+		if (event.pageX > thumbDimensions.right) {
 			scrollerRef.current.scrollLeft += thumbDimensions.width * 0.95;
-		} else if (event.pageX < thumbDimensions.x) {
+		} else if (event.pageX < thumbDimensions.left) {
 			scrollerRef.current.scrollLeft -= thumbDimensions.width * 0.95;
 		}
 	};
