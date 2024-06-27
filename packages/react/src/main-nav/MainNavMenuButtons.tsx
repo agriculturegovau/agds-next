@@ -3,7 +3,7 @@ import { BaseButton } from '../button';
 import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
 import { CloseIcon, MenuIcon } from '../icon';
-import { ids, mobileBreakpoint } from './utils';
+import { mobileBreakpoint } from './utils';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{
@@ -24,9 +24,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 			gap={0.5}
 			focusRingFor="keyboard"
 			onClick={onClick}
-			aria-label="Open main menu"
-			aria-controls={ids.dialog}
-			aria-expanded="false"
+			aria-label="Menu (Open main menu)"
 			css={{
 				color: boxPalette.foregroundAction,
 				'&:hover': {
@@ -60,8 +58,6 @@ export function MainNavCloseButton({ onClick }: MainNavCloseButtonProps) {
 			focusRingFor="keyboard"
 			onClick={onClick}
 			aria-label="Close main menu"
-			aria-controls={ids.dialog}
-			aria-expanded="true"
 			css={{
 				alignSelf: 'flex-start',
 				color: boxPalette.foregroundAction,
