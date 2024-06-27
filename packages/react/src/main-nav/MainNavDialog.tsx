@@ -51,6 +51,7 @@ export function MainNavDialog({
 			<Overlay onClick={closeMobileMenu} />
 			<FocusLock returnFocus>
 				<Flex
+					aria-label="Main menu"
 					role="dialog"
 					aria-modal="true"
 					background="body"
@@ -69,7 +70,7 @@ export function MainNavDialog({
 				>
 					<MainNavCloseButton onClick={closeMobileMenu} />
 					<MainNavDialogNavList
-						aria-label="main"
+						aria-label="Main"
 						items={items}
 						activePath={activePath}
 					/>
