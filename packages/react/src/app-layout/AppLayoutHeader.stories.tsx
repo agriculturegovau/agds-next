@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
+import { AISLogo } from '../../../../.storybook/components/AISLogo';
 import { AppLayout } from './AppLayout';
 import { AppLayoutHeader } from './AppLayoutHeader';
 import { ExampleAccountDropdown, exampleData } from './test-utils';
@@ -30,6 +31,8 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		href: '/',
 		logo: <Logo />,
 		subLine: 'Supporting Australian agricultural exports',
+		secondHref: '/',
+		secondLogo: <AISLogo />,
 	},
 	render: (props) => (
 		<AppLayout focusMode={false}>
