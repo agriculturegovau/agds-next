@@ -70,9 +70,10 @@ export function MainNavDialog({
 				>
 					<MainNavCloseButton onClick={closeMobileMenu} />
 					<MainNavDialogNavList
-						aria-label="Main"
-						items={items}
 						activePath={activePath}
+						aria-label="Main"
+						closeMobileMenu={closeMobileMenu}
+						items={items}
 					/>
 				</Flex>
 			</FocusLock>

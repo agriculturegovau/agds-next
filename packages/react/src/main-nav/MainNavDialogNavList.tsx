@@ -9,12 +9,14 @@ import { isItemLink, MainNavListItemType } from './MainNavList';
 export type MainNavDialogNavListProps = {
 	'aria-label': string;
 	activePath: string;
+	closeMobileMenu: () => void;
 	items?: MainNavListItemType[];
 };
 
 export function MainNavDialogNavList({
 	'aria-label': ariaLabel,
 	activePath,
+	closeMobileMenu,
 	items,
 }: MainNavDialogNavListProps) {
 	const Link = useLinkComponent();
@@ -25,7 +27,11 @@ export function MainNavDialogNavList({
 					if (isItemLink(item)) {
 						const active = item.href === activePath;
 						return (
-							<MainNavDialogNavListItem key={index} active={active}>
+							<MainNavDialogNavListItem
+								active={active}
+								key={index}
+								onClick={active ? closeMobileMenu : undefined} // Let the click event bubble up and close the menu on press of interactive item
+							>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
 									<span>{label}</span>
 									{endElement}
@@ -49,17 +55,17 @@ export function MainNavDialogNavList({
 
 export type MainNavDialogNavListItemProps = PropsWithChildren<{
 	active: boolean;
+	onClick?: () => void;
 }>;
 
 export function MainNavDialogNavListItem({
 	active,
 	children,
+	onClick,
 }: MainNavDialogNavListItemProps) {
 	return (
 		<Flex
 			as="li"
-			height="100%"
-			fontSize="xs"
 			borderBottom
 			borderColor="muted"
 			css={{
@@ -89,6 +95,9 @@ export function MainNavDialogNavListItem({
 					...focusStyles,
 				},
 			}}
+			fontSize="xs"
+			height="100%"
+			onClick={onClick}
 		>
 			{children}
 		</Flex>
