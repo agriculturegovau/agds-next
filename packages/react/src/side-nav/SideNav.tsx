@@ -8,9 +8,9 @@ import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
 
-type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
+type SideNavMenuItem = Omit<LinkProps, 'children'> & {
 	label: string;
-	items?: SideNavMenuItemType[];
+	items?: SideNavMenuItem[];
 };
 
 export type SideNavProps = {
@@ -19,7 +19,7 @@ export type SideNavProps = {
 	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseTitle: string;
 	/** The list of links. */
-	items: SideNavMenuItemType[];
+	items: SideNavMenuItem[];
 	/** The title is placed at the top of the list of links. */
 	title: string;
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
@@ -62,6 +62,7 @@ export function SideNav({
 				>
 					{title}
 				</SideNavTitle>
+
 				<SideNavLinkList
 					activePath={bestMatch}
 					items={items}

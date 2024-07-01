@@ -16,7 +16,13 @@ export default meta;
 
 type Story = StoryObj<typeof SideNav>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+	args: {
+		activePath: '/welcome',
+	},
+};
+
+export const ParentActive: Story = {};
 
 export const ChildActive: Story = {
 	args: {

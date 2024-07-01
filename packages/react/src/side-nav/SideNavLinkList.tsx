@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react';
-import { SideNavGroup } from './SideNavGroup';
-import { SideNavLink } from './SideNavLink';
+import { SideNavUnorderedList } from './SideNavUnorderedList';
+import { SideNavListItem } from './SideNavListItem';
 import { SideNavProps } from './SideNav';
 import { hasNestedActiveItem } from './utils';
+import { SideNavLink } from './SideNavLink';
 
 export type SideNavLinkListProps = {
 	activePath: string | undefined;
@@ -10,64 +11,102 @@ export type SideNavLinkListProps = {
 	nestedItemsVariant: SideNavProps['nestedItemsVariant'];
 };
 
-export function SideNavLinkList({
+type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
+	isActive: boolean;
+	items?: ItemWithIsActive[];
+};
+
+const addIsActive =
+	(activePath: SideNavLinkListProps['activePath']) =>
+	(
+		item: SideNavProps['items'][number] | ItemWithIsActive
+	): ItemWithIsActive => ({
+		...item,
+		isActive:
+			item.href === activePath || hasNestedActiveItem(item.items, activePath),
+		items: item.items?.length
+			? item.items.map(addIsActive(activePath))
+			: undefined,
+	});
+
+export const SideNavLinkList = ({
 	activePath,
-	items: itemsProp,
+	items,
 	nestedItemsVariant,
-}: SideNavLinkListProps) {
-	const items = useMemo(() => {
-		return itemsProp.map((item) => ({
-			...item,
-			isActive:
-				item.href === activePath || hasNestedActiveItem(item.items, activePath),
-		}));
-	}, [activePath, itemsProp]);
+}: SideNavLinkListProps) => {
+	const itemsWithIsActive = useMemo(() => {
+		return items.map(addIsActive(activePath));
+	}, [activePath, items]);
+
+	const isTopLevelItemActive =
+		itemsWithIsActive.find((item) => item.isActive)?.href === activePath;
 
 	return (
 		<LinkList
 			activePath={activePath}
-			items={items}
+			isListOpen={isTopLevelItemActive}
+			items={itemsWithIsActive}
 			nestedItemsVariant={nestedItemsVariant}
 		/>
 	);
-}
+};
 
 type LinkListProps = {
 	activePath: string | undefined;
-	items: (SideNavProps['items'][number] & { isActive?: boolean })[];
+	isListOpen: boolean;
+	items: ItemWithIsActive[];
 	nestedItemsVariant: SideNavProps['nestedItemsVariant'];
 };
 
-function LinkList({ activePath, items, nestedItemsVariant }: LinkListProps) {
+const LinkList = ({
+	activePath,
+	isListOpen,
+	items,
+	nestedItemsVariant,
+}: LinkListProps) => {
 	const isOpen = useCallback(
-		(items?: LinkListProps['items']) =>
+		(
+			items?: SideNavLinkListProps['items'] | ItemWithIsActive[],
+			isActive?: boolean
+		) =>
+			isActive ||
 			nestedItemsVariant === 'alwaysOpen' ||
 			hasNestedActiveItem(items, activePath),
 		[activePath, nestedItemsVariant]
 	);
 
 	return (
-		<SideNavGroup isOpen={isOpen(items)}>
-			{items.map(({ isActive, items, ...item }, index) => {
+		<SideNavUnorderedList isOpen={isOpen(items, isListOpen)}>
+			{items.map(({ isActive, items, ...item }) => {
+				const hasNestedItemsIndicator =
+					Boolean(items?.length) && nestedItemsVariant === 'openOnNav';
+
 				return (
-					<SideNavLink
-						isActive={isActive}
-						isCurrentPage={item.href === activePath}
-						isOpen={isOpen(items)}
-						key={index}
-						nestedItemsVariant={nestedItemsVariant}
+					<SideNavListItem
+						isActive={isActive || hasNestedActiveItem(items, activePath)}
+						key={item.href}
 						{...item}
 					>
+						<SideNavLink
+							isActive={isActive || hasNestedActiveItem(items, activePath)}
+							isCurrentPage={item.href === activePath}
+							isOpen={isOpen(items, isActive)}
+							key={item.href}
+							hasNestedItemsIndicator={hasNestedItemsIndicator}
+							{...item}
+						/>
+
 						{items?.length ? (
 							<LinkList
 								activePath={activePath}
+								isListOpen={isOpen(items, item.href === activePath)}
 								items={items}
 								nestedItemsVariant={nestedItemsVariant}
 							/>
 						) : null}
-					</SideNavLink>
+					</SideNavListItem>
 				);
 			})}
-		</SideNavGroup>
+		</SideNavUnorderedList>
 	);
-}
+};
