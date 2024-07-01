@@ -85,10 +85,8 @@ const LinkList = ({
 					<SideNavListItem
 						isActive={isActive || hasNestedActiveItem(items, activePath)}
 						key={item.href}
-						{...item}
 					>
 						<SideNavLink
-							isActive={isActive || hasNestedActiveItem(items, activePath)}
 							isCurrentPage={item.href === activePath}
 							isOpen={isOpen(items, isActive)}
 							key={item.href}

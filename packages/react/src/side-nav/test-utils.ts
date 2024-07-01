@@ -62,3 +62,24 @@ export const defaultTestingProps: SideNavProps = {
 	],
 	activePath: '/in-detail',
 };
+
+export const alwaysOpenItems = [
+	{
+		href: '#page-1',
+		label: 'Landing page 1',
+	},
+	{
+		href: '#page-2',
+		label: 'Landing page 2',
+		items: [
+			{
+				href: '#next-page/page-2-1',
+				label: 'Page 2.1',
+			},
+			{
+				href: '#next-page/page-2-2',
+				label: 'Page 2.2',
+			},
+		],
+	},
+];

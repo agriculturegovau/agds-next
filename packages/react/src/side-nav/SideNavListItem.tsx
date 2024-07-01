@@ -1,8 +1,5 @@
-import { ReactNode } from 'react';
 import { boxPalette, LinkProps, tokens } from '../core';
 import { useLinkListDepth } from './context';
-import { SideNavProps } from './SideNav';
-import { SideNavLink } from './SideNavLink';
 
 export type SideNavLinkProps = LinkProps & {
 	isActive?: boolean;
