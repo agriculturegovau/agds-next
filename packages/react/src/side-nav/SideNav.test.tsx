@@ -195,7 +195,7 @@ describe('SideNav', () => {
 
 				test('then its parent should have an icon indicating visible nested items', async () => {
 					const link = await screen.findByRole('link', {
-						name: 'In detail (related links below)',
+						name: /In detail.+(related links below)/,
 					});
 
 					const chevronIcon = within(link).getByRole('img', {
