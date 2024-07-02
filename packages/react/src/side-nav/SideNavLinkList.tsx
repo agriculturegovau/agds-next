@@ -12,22 +12,27 @@ export type SideNavLinkListProps = {
 };
 
 type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
-	isActive: boolean;
+	isActive?: boolean;
 	items?: ItemWithIsActive[];
 };
 
+// Recursively add `isActive` to any sub-level items
 const addIsActive =
 	(activePath: SideNavLinkListProps['activePath']) =>
-	(
-		item: SideNavProps['items'][number] | ItemWithIsActive
-	): ItemWithIsActive => ({
-		...item,
-		isActive:
-			item.href === activePath || hasNestedActiveItem(item.items, activePath),
-		items: item.items?.length
-			? item.items.map(addIsActive(activePath))
-			: undefined,
-	});
+	(item: ItemWithIsActive): ItemWithIsActive => {
+		const withNestedActiveItems = hasNestedActiveItem(item.items, activePath);
+		const isCurrentPage = item.href === activePath;
+		const isActive = isCurrentPage || withNestedActiveItems;
+
+		return {
+			...item,
+			isActive,
+			items:
+				item.items?.length || isActive
+					? item?.items?.map(addIsActive(activePath))
+					: item.items,
+		};
+	};
 
 export const SideNavLinkList = ({
 	activePath,
@@ -99,6 +104,7 @@ const LinkList = ({
 							{...item}
 						/>
 
+						{/* Recursively add the `LinkList` for sub-level items */}
 						{items?.length ? (
 							<LinkList
 								activePath={activePath}
