@@ -4231,10 +4231,10 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@preconstruct/cli@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.5.0.tgz#f66ac50aa9a3f7801efacffc8040fdf9b6d7f483"
-  integrity sha512-EIpiKdSS2KD3hvSKMftJB8jY36YNYoe1+v2u3UcLY0kutqSpxfh/kBKaYmLvXmBQhBo21ccYARB8itwFLOVKjw==
+"@preconstruct/cli@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/@preconstruct/cli/-/cli-2.8.4.tgz#430ef74b84492c9fc1f05958cc2d5160d3879dcc"
+  integrity sha512-PeNDyPmrTeqRd2g2DrBzOvu0+J/KJ5iW5zqp6RNq7lk3ZHizRRc2E73G8aShuIbn3PONEtuQvm05cllTlX2/Qw==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.7"
@@ -4248,6 +4248,7 @@
     "@rollup/plugin-replace" "^2.4.1"
     builtin-modules "^3.1.0"
     chalk "^4.1.0"
+    ci-info "^3.8.0"
     dataloader "^2.0.0"
     detect-indent "^6.0.0"
     enquirer "^2.3.6"
@@ -4255,7 +4256,6 @@
     fast-deep-equal "^2.0.1"
     fast-glob "^3.2.4"
     fs-extra "^9.0.1"
-    is-ci "^2.0.0"
     is-reference "^1.2.1"
     jest-worker "^26.3.0"
     magic-string "^0.30.0"
@@ -4273,6 +4273,7 @@
     semver "^7.3.4"
     terser "^5.16.8"
     v8-compile-cache "^2.1.1"
+    zod "^3.21.4"
 
 "@preconstruct/hook@^0.4.0":
   version "0.4.0"
@@ -7535,15 +7536,15 @@ chromium-bidi@0.4.20:
   dependencies:
     mitt "3.0.1"
 
-ci-info@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
-  integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
-
 ci-info@^3.1.0, ci-info@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.3.0.tgz#b4ed1fb6818dea4803a55c623041f9165d2066b2"
   integrity sha512-riT/3vI5YpVH6/qomlDnJow6TBee2PBKSEpx3O32EGPYbWGIRsIlGRms3Sm74wYE1JMo8RnO04Hb12+v1J5ICw==
+
+ci-info@^3.8.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.9.0.tgz#4279a62028a7b1f262f3473fc9605f5e218c59b4"
+  integrity sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==
 
 cjs-module-lexer@^1.0.0:
   version "1.2.2"
@@ -10753,13 +10754,6 @@ is-callable@^1.1.4, is-callable@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.4.tgz#47301d58dd0259407865547853df6d61fe471945"
   integrity sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==
-
-is-ci@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
-  integrity sha512-YfJT7rkpQB0updsdHLGWrvhBJfcfzNNawYDNIyQXJz0IViGf75O8EBPKSdvw2rF+LGCsX4FZ8tcr3b19LcZq4w==
-  dependencies:
-    ci-info "^2.0.0"
 
 is-ci@^3.0.1:
   version "3.0.1"
@@ -17129,6 +17123,11 @@ yup@^0.32.11:
     nanoclone "^0.2.1"
     property-expr "^2.0.4"
     toposort "^2.0.2"
+
+zod@^3.21.4:
+  version "3.23.8"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.8.tgz#e37b957b5d52079769fb8097099b592f0ef4067d"
+  integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==
 
 zwitch@^2.0.0:
   version "2.0.2"

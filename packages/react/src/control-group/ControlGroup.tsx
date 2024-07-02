@@ -9,6 +9,8 @@ import { ControlGroupProvider } from './ControlGroupProvider';
 export type ControlGroupProps = PropsWithChildren<{
 	/** If true, children will be stacked vertically. */
 	block?: boolean;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
 	/** Defines an identifier (ID) which must be unique. */
@@ -17,8 +19,8 @@ export type ControlGroupProps = PropsWithChildren<{
 	invalid?: boolean;
 	/** Describes the purpose of the field. */
 	label?: string;
-	/** If true, "(optional)" will never be appended to the label. */
-	hideOptionalLabel?: boolean;
+	/** Sets a custom name attribute on the children Radios & Checkboxes. */
+	name?: string;
 	/** Message to show when the field is invalid. */
 	message?: string;
 	/** If false, "(optional)" will be appended to the label. */
@@ -34,6 +36,7 @@ export const ControlGroup = ({
 	label,
 	hideOptionalLabel,
 	message,
+	name,
 	required = false,
 }: ControlGroupProps) => {
 	const { groupId, hintId, messageId } = useControlGroupIds(id);
@@ -46,8 +49,10 @@ export const ControlGroup = ({
 		: undefined;
 	return (
 		<ControlGroupProvider
-			messageId={invalid && message ? messageId : undefined}
 			invalid={invalid}
+			messageId={invalid && message ? messageId : undefined}
+			name={name}
+			required={required}
 		>
 			<FieldContainer invalid={invalid} id={groupId}>
 				<Box as="fieldset" aria-describedby={describedBy}>

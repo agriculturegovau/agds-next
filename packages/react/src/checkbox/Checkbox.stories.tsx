@@ -5,8 +5,6 @@ const meta: Meta<typeof Checkbox> = {
 	title: 'forms/Checkbox',
 	component: Checkbox,
 	args: {
-		children: 'Example',
-		disabled: false,
 		size: 'md',
 	},
 };
@@ -16,11 +14,14 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Basic: Story = {
-	args: {},
+	args: {
+		children: 'Example',
+	},
 };
 
 export const Checked: Story = {
 	args: {
+		children: 'Checked',
 		checked: true,
 	},
 };
@@ -29,13 +30,6 @@ export const Indeterminate: Story = {
 	args: {
 		children: 'Example',
 		indeterminate: true,
-	},
-};
-
-export const Size: Story = {
-	args: {
-		size: 'sm',
-		children: 'Small example',
 	},
 };
 
@@ -48,6 +42,21 @@ export const Disabled: Story = {
 
 export const Invalid: Story = {
 	args: {
+		children: 'Invalid',
 		invalid: true,
+	},
+};
+
+export const Required: Story = {
+	args: {
+		children: 'Required',
+		required: true,
+	},
+};
+
+export const SizeSm: Story = {
+	args: {
+		children: 'Small',
+		size: 'sm',
 	},
 };

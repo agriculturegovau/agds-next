@@ -52,7 +52,7 @@
 		"@emotion/react": "^11.7.0",
 		"@faker-js/faker": "^7.6.0",
 		"@manypkg/cli": "^0.20.0",
-		"@preconstruct/cli": "^2.5.0",
+		"@preconstruct/cli": "^2.8.4",
 		"@preconstruct/next": "^4.0.0",
 		"@storybook/addon-a11y": "^7.6.7",
 		"@storybook/addon-actions": "^7.6.7",

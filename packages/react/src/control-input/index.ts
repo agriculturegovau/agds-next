@@ -1,3 +1,4 @@
+'use client';
 import {
 	ControlGroup as _ControlGroup,
 	ControlGroupProps as _ControlGroupProps,

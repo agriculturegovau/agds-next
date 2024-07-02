@@ -1,3 +1,4 @@
+'use client';
 export * from './SubNav';
 export * from './SubNavContainer';
 export * from './SubNavList';

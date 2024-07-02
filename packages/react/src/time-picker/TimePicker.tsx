@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { type ComboboxProps } from '../combobox/Combobox';
