@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { Box, type BorderColor } from '../box';
 import { Flex } from '../flex';
 import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
@@ -32,12 +32,12 @@ export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** The logo to display. */
-	logo: JSX.Element;
+	logo: ReactElement;
 	palette?: ResponsiveProp<BoxPalette>;
 	/** The href to link to, for example "/". */
 	secondHref?: string;
 	/** The second logo to display for co-branding. */
-	secondLogo?: JSX.Element;
+	secondLogo?: ReactElement;
 	/** Used to provide additional information to describe your website or service. */
 	subLine?: string;
 };

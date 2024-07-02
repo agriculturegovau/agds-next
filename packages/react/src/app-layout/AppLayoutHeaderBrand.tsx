@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 import { Flex } from '../flex';
 import {
 	boxPalette,
@@ -17,7 +17,7 @@ const LOGO_HEIGHT = '3.75rem';
 
 export type AppLayoutHeaderBrandProps = {
 	href: string;
-	logo: JSX.Element;
+	logo: ReactElement;
 	hasAccountDetails: boolean;
 	heading: string;
 	badgeLabel?: string;
@@ -160,21 +160,13 @@ export function AppLayoutHeaderBrand({
 		>
 			{logo}
 
+			<DividingLine singleLogo />
+
 			<Flex
 				flexDirection="column"
 				justifyContent="center"
 				alignItems="flex-start"
 				maxWidth={tokens.maxWidth.bodyText}
-				css={{
-					// Border between logo and heading/subLine
-					[tokens.mediaQuery.min.md]: {
-						paddingLeft: mapSpacing(1),
-						marginLeft: mapSpacing(1),
-						borderLeft: boxPalette.border,
-						borderLeftStyle: 'solid',
-						borderLeftColor: boxPalette.border,
-					},
-				}}
 			>
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text fontSize="lg" fontWeight="bold">
@@ -225,18 +217,27 @@ function AppLayoutHeaderBrandBadge({
 
 const DividingLine = ({
 	dividerPosition,
-}: Pick<AppLayoutHeaderBrandProps, 'dividerPosition'>) => (
+	singleLogo,
+}: Pick<AppLayoutHeaderBrandProps, 'dividerPosition'> & {
+	singleLogo?: boolean;
+}) => (
 	<Box
 		css={{
 			borderLeft: boxPalette.border,
 			borderLeftStyle: 'solid',
 			borderLeftColor: boxPalette.border,
+			margin: singleLogo ? '0 1rem' : undefined,
 			...packs.print.hidden,
 		}}
-		display={{
-			xs: 'none',
-			sm: dividerPosition === 'between' ? 'block' : undefined,
-			lg: 'block',
-		}}
+		display={
+			singleLogo
+				? { xs: 'none', md: 'block' }
+				: {
+						xs: 'none',
+						sm: dividerPosition === 'between' ? 'block' : undefined,
+						lg: 'block',
+				  }
+		}
+		height={singleLogo ? '3.5rem' : undefined}
 	/>
 );
