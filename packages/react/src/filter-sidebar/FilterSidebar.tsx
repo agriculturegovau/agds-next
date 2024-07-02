@@ -27,7 +27,7 @@ export function FilterSidebar({
 	'aria-label': ariaLabel = 'Filters',
 	onClearFilters,
 	children,
-	title = 'Filter by',
+	title = 'Filters',
 }: FilterSidebarProps) {
 	const collapseButtonLabel = `Filters${
 		activeFiltersCount ? ` (${activeFiltersCount})` : ''
@@ -38,6 +38,7 @@ export function FilterSidebar({
 			title={
 				<CollapsingSideBarTitle title={title} onClearFilters={onClearFilters} />
 			}
+			titlez={`${title}${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
 			collapseButtonLabel={collapseButtonLabel}
 			as="aside"
 			aria-label={ariaLabel}

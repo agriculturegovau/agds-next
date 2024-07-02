@@ -1,5 +1,5 @@
 import { Box } from '../box';
-import { LinkProps } from '../core';
+import { LinkProps, tokens } from '../core';
 import {
 	CollapsingSideBar,
 	CollapsingSideBarBackground,
@@ -7,6 +7,7 @@ import {
 import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
+import { visuallyHiddenStyles } from '../a11y';
 
 type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 	label: string;
@@ -16,7 +17,7 @@ type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 export type SideNavProps = {
 	/** Used for highlighting the active element. */
 	activePath: string;
-	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
+	/** @deprecated title is now always used even when collapsed. */
 	collapseTitle: string;
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
@@ -30,7 +31,6 @@ export type SideNavProps = {
 
 export function SideNav({
 	activePath,
-	collapseTitle,
 	items,
 	background = 'body',
 	title,
@@ -41,8 +41,20 @@ export function SideNav({
 
 	return (
 		<CollapsingSideBar
-			collapseButtonLabel={collapseTitle}
 			background={background}
+			gap={0}
+			titlez={title}
+			customTitle={
+				<SideNavTitle
+					as="h2"
+					id={titleId}
+					css={{
+						[tokens.mediaQuery.min.md]: visuallyHiddenStyles,
+					}}
+				>
+					{title}
+				</SideNavTitle>
+			}
 		>
 			<Box
 				as="nav"
@@ -53,7 +65,8 @@ export function SideNav({
 				lineHeight="default"
 			>
 				<SideNavTitle
-					id={titleId}
+					as="span"
+					display={{ xs: titleLink ? 'block' : 'none', md: 'block' }}
 					href={titleLink}
 					isCurrentPage={activePath === titleLink}
 				>

@@ -104,8 +104,10 @@ export const ProgressIndicator = ({
 		<CollapsingSideBar
 			as="section"
 			background={background}
-			collapseButtonLabel={subTitle || title} // When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
+			collapseButtonLabel={subTitle || title} // When `hideSubtitle` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
 			title={<CollapsingSideBarTitle title={title} subtitle={subTitle} />}
+			titlez={title}
+			subtitlez={subTitle}
 		>
 			<ProgressIndicatorList>
 				{itemsWithDefaultActive.map(({ label, ...props }) =>

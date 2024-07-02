@@ -8,7 +8,7 @@ export type SideBarTitleProps = {
 
 export function CollapsingSideBarTitle({ title, subtitle }: SideBarTitleProps) {
 	return (
-		<Flex display={{ xs: 'none', md: 'flex' }} flexDirection="column" gap={0.5}>
+		<Flex flexDirection="column" gap={0.5}>
 			<Text
 				as="h2"
 				color="text"
@@ -16,11 +16,11 @@ export function CollapsingSideBarTitle({ title, subtitle }: SideBarTitleProps) {
 				fontWeight="bold"
 				lineHeight="heading"
 			>
-				{title}
+				{title}csbt
 			</Text>
 			{subtitle && (
 				<Text color="muted" fontSize="xs">
-					{subtitle}
+					{subtitle}csbs
 				</Text>
 			)}
 		</Flex>

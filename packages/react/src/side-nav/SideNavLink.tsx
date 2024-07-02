@@ -7,7 +7,7 @@ import {
 	tokens,
 	useLinkComponent,
 } from '../core';
-import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
+import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
 import { useLinkListDepth } from './context';
 
 export type SideNavLinkType = LinkProps & {
@@ -46,14 +46,14 @@ export function SideNavLink({
 
 					'&:hover': {
 						color: boxPalette.foregroundText,
-						backgroundColor: collapsingSideBarLocalPalette.hover,
+						backgroundColor: collapsingSideBarHoverVar,
 						'& span:last-of-type': packs.underline,
 					},
 
 					...(isCurrentPage && {
 						position: 'relative',
 						color: boxPalette.foregroundText,
-						backgroundColor: collapsingSideBarLocalPalette.hover,
+						backgroundColor: collapsingSideBarHoverVar,
 						fontWeight: tokens.fontWeight.bold,
 						':before': {
 							content: '""',
