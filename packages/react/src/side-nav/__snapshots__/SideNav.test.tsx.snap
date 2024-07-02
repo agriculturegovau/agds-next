@@ -65,7 +65,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/welcome"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   Welcome
                 </span>
@@ -79,7 +79,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/do-you-need-to-lodge-a-tax-return"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   Do you need to lodge a tax return?
                 </span>
@@ -93,7 +93,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/lodge-online"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   Lodge online
                 </span>
@@ -114,7 +114,7 @@ exports[`SideNav renders correctly 1`] = `
                       –
                     </span>
                     <span
-                      class="css-6nztt1-SideNavLink"
+                      class="css-127d72z-SideNavLink"
                     >
                       Pre-filling your online tax return
                     </span>
@@ -130,7 +130,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/whats-new-for-individuals"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   What’s new for individuals
                 </span>
@@ -144,7 +144,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/why-you-may-receive-a-tax-bill"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   Why you may receive a tax bill
                 </span>
@@ -159,7 +159,7 @@ exports[`SideNav renders correctly 1`] = `
                 href="/in-detail"
               >
                 <span
-                  class="css-6nztt1-SideNavLink"
+                  class="css-127d72z-SideNavLink"
                 >
                   In detail
                 </span>
@@ -180,7 +180,7 @@ exports[`SideNav renders correctly 1`] = `
                       –
                     </span>
                     <span
-                      class="css-6nztt1-SideNavLink"
+                      class="css-127d72z-SideNavLink"
                     >
                       Record keeping
                     </span>
@@ -201,7 +201,7 @@ exports[`SideNav renders correctly 1`] = `
                           —
                         </span>
                         <span
-                          class="css-6nztt1-SideNavLink"
+                          class="css-127d72z-SideNavLink"
                         >
                           Keeping your tax records
                         </span>
@@ -220,7 +220,7 @@ exports[`SideNav renders correctly 1`] = `
                           —
                         </span>
                         <span
-                          class="css-6nztt1-SideNavLink"
+                          class="css-127d72z-SideNavLink"
                         >
                           Incorrect amounts
                         </span>
@@ -241,7 +241,7 @@ exports[`SideNav renders correctly 1`] = `
                       –
                     </span>
                     <span
-                      class="css-6nztt1-SideNavLink"
+                      class="css-127d72z-SideNavLink"
                     >
                       Tax receipt
                     </span>
@@ -260,7 +260,7 @@ exports[`SideNav renders correctly 1`] = `
                       –
                     </span>
                     <span
-                      class="css-6nztt1-SideNavLink"
+                      class="css-127d72z-SideNavLink"
                     >
                       Pre-fill availability
                     </span>

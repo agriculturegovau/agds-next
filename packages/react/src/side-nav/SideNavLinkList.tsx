@@ -8,7 +8,7 @@ import { SideNavLink } from './SideNavLink';
 export type SideNavLinkListProps = {
 	activePath: string | undefined;
 	items: SideNavProps['items'];
-	nestedItemsVariant: SideNavProps['nestedItemsVariant'];
+	showSubLevel: SideNavProps['showSubLevel'];
 };
 
 type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
@@ -32,7 +32,7 @@ const addIsActive =
 export const SideNavLinkList = ({
 	activePath,
 	items,
-	nestedItemsVariant,
+	showSubLevel,
 }: SideNavLinkListProps) => {
 	const itemsWithIsActive = useMemo(() => {
 		return items.map(addIsActive(activePath));
@@ -46,7 +46,7 @@ export const SideNavLinkList = ({
 			activePath={activePath}
 			isListOpen={isTopLevelItemActive}
 			items={itemsWithIsActive}
-			nestedItemsVariant={nestedItemsVariant}
+			showSubLevel={showSubLevel}
 		/>
 	);
 };
@@ -55,14 +55,14 @@ type LinkListProps = {
 	activePath: string | undefined;
 	isListOpen: boolean;
 	items: ItemWithIsActive[];
-	nestedItemsVariant: SideNavProps['nestedItemsVariant'];
+	showSubLevel: SideNavProps['showSubLevel'];
 };
 
 const LinkList = ({
 	activePath,
 	isListOpen,
 	items,
-	nestedItemsVariant,
+	showSubLevel,
 }: LinkListProps) => {
 	const isOpen = useCallback(
 		(
@@ -70,16 +70,16 @@ const LinkList = ({
 			isActive?: boolean
 		) =>
 			isActive ||
-			nestedItemsVariant === 'alwaysOpen' ||
+			showSubLevel === 'always' ||
 			hasNestedActiveItem(items, activePath),
-		[activePath, nestedItemsVariant]
+		[activePath, showSubLevel]
 	);
 
 	return (
 		<SideNavUnorderedList isOpen={isOpen(items, isListOpen)}>
 			{items.map(({ isActive, items, ...item }) => {
 				const hasNestedItemsIndicator =
-					Boolean(items?.length) && nestedItemsVariant === 'openOnNav';
+					items && 'length' in items && showSubLevel === 'whenActive';
 
 				return (
 					<SideNavListItem
@@ -87,10 +87,15 @@ const LinkList = ({
 						key={item.href}
 					>
 						<SideNavLink
+							hasNestedItemsIndicator={hasNestedItemsIndicator}
 							isCurrentPage={item.href === activePath}
 							isOpen={isOpen(items, isActive)}
 							key={item.href}
-							hasNestedItemsIndicator={hasNestedItemsIndicator}
+							nestedItemsIndicatorLabel={
+								hasNestedItemsIndicator
+									? `. Has ${items.length} sub-level links.`
+									: undefined
+							}
 							{...item}
 						/>
 
@@ -99,7 +104,7 @@ const LinkList = ({
 								activePath={activePath}
 								isListOpen={isOpen(items, item.href === activePath)}
 								items={items}
-								nestedItemsVariant={nestedItemsVariant}
+								showSubLevel={showSubLevel}
 							/>
 						) : null}
 					</SideNavListItem>

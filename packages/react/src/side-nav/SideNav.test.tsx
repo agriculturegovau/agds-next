@@ -55,15 +55,15 @@ describe('SideNav', () => {
 		});
 	});
 
-	describe('when nestedItemsVariant is "openOnNav"', () => {
-		describe('when there is a mix of zero and more nested items', () => {
-			describe('when the active item has no nested items', () => {
+	describe('when showSubLevel is "whenActive"', () => {
+		describe('when there is a mix of zero and more sub-level items', () => {
+			describe('when the active item has no sub-level items', () => {
 				beforeEach(() => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/welcome"
-							nestedItemsVariant="openOnNav"
+							showSubLevel="whenActive"
 						/>
 					);
 
@@ -72,7 +72,7 @@ describe('SideNav', () => {
 					user.click(screen.getByRole('button', { name: 'In this section' }));
 				});
 
-				test('then no nested items should be visible', async () => {
+				test('then no sub-level items should be visible', async () => {
 					const levelOneItemHrefs = defaultTestingProps.items.map(
 						({ href }) => href
 					);
@@ -87,22 +87,22 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(levelOneItemHrefs);
 				});
 
-				test('then icons indicating hidden nested items should be visible', async () => {
+				test('then icons indicating hidden sub-level items should be visible', async () => {
 					expect(
 						await screen.findAllByRole('img', {
-							name: '(related links available after opening)',
+							name: /. Has [0-9] sub-level links./,
 						})
 					).toHaveLength(2);
 				});
 			});
 
-			describe('when the active item is level one and has nested items', () => {
+			describe('when the active item is level one and has sub-level items', () => {
 				beforeEach(() => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail"
-							nestedItemsVariant="openOnNav"
+							showSubLevel="whenActive"
 						/>
 					);
 
@@ -111,7 +111,7 @@ describe('SideNav', () => {
 					user.click(screen.getByRole('button', { name: 'In this section' }));
 				});
 
-				test('then its nested items should be visible to one level and no other nested items', async () => {
+				test('then its sub-level items should be visible to one level and no other sub-level items', async () => {
 					const levelOneItems = defaultTestingProps.items;
 					const levelTwoInDetailItems =
 						defaultTestingProps.items.find(({ href }) => href === '/in-detail')
@@ -130,22 +130,22 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(itemHrefs);
 				});
 
-				test('then an icon indicating visible nested items should be visible', async () => {
+				test('then an icon indicating visible sub-level items should be visible', async () => {
 					expect(
 						await screen.findByRole('img', {
-							name: '(related links below)',
+							name: '. Sub-level links below.',
 						})
 					).toBeVisible();
 				});
 			});
 
-			describe('when the active item is level two and has nested items', () => {
+			describe('when the active item is level two and has sub-level items', () => {
 				beforeEach(() => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail/record-keeping"
-							nestedItemsVariant="openOnNav"
+							showSubLevel="whenActive"
 						/>
 					);
 
@@ -154,7 +154,7 @@ describe('SideNav', () => {
 					user.click(screen.getByRole('button', { name: 'In this section' }));
 				});
 
-				test('then its nested items should be visible to one level', async () => {
+				test('then its sub-level items should be visible to one level', async () => {
 					const levelOneItems = defaultTestingProps.items;
 					const levelTwoInDetailItems =
 						defaultTestingProps.items.find(({ href }) => href === '/in-detail')
@@ -182,39 +182,39 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then an icon indicating visible nested items should be visible', async () => {
+				test.skip('then an icon indicating visible sub-level items should be visible', async () => {
 					const link = await screen.findByRole('link', {
-						name: 'Record keeping (related links below)',
+						name: 'Record keeping. Sub-level links below.',
 					});
 
 					const chevronIcon = within(link).getByRole('img', {
-						name: '(related links below)',
+						name: '. Sub-level links below.',
 					});
 
 					expect(chevronIcon).toBeVisible();
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its parent should have an icon indicating visible nested items', async () => {
+				test.skip('then its parent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
-						name: 'In detail (related links below)',
+						name: 'In detail. Sub-level links below.',
 					});
 
 					const chevronIcon = within(link).getByRole('img', {
-						name: '(related links below)',
+						name: '. Sub-level links below.',
 					});
 
 					expect(chevronIcon).toBeVisible();
 				});
 			});
 
-			describe('when the active item is level three and has no nested items', () => {
+			describe('when the active item is level three and has no sub-level items', () => {
 				beforeEach(() => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail/record-keeping/tax"
-							nestedItemsVariant="openOnNav"
+							showSubLevel="whenActive"
 						/>
 					);
 
@@ -224,7 +224,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then no icon indicating visible nested items should be visible', async () => {
+				test.skip('then no icon indicating visible sub-level items should be visible', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'Keeping your tax records',
 					});
@@ -235,26 +235,26 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its parent should have an icon indicating visible nested items', async () => {
+				test.skip('then its parent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
-						name: 'Record keeping (related links below)',
+						name: 'Record keeping. Sub-level links below.',
 					});
 
 					const chevronIcon = within(link).getByRole('img', {
-						name: '(related links below)',
+						name: '. Sub-level links below.',
 					});
 
 					expect(chevronIcon).toBeVisible();
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its grandparent should have an icon indicating visible nested items', async () => {
+				test.skip('then its grandparent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
-						name: 'In detail (related links below)',
+						name: 'In detail. Sub-level links below.',
 					});
 
 					const chevronIcon = within(link).getByRole('img', {
-						name: '(related links below)',
+						name: '. Sub-level links below.',
 					});
 
 					expect(chevronIcon).toBeVisible();
@@ -262,14 +262,14 @@ describe('SideNav', () => {
 			});
 		});
 
-		describe('when nestedItemsVariant is "alwaysOpen"', () => {
-			describe('when the active item has no nested items', () => {
-				test('then all nested items should be visible', async () => {
+		describe('when showSubLevel is "always"', () => {
+			describe('when the active item has no sub-level items', () => {
+				test('then all sub-level items should be visible', async () => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-1"
-							nestedItemsVariant="alwaysOpen"
+							showSubLevel="always"
 							items={alwaysOpenItems}
 						/>
 					);
@@ -294,13 +294,13 @@ describe('SideNav', () => {
 				});
 			});
 
-			describe('when the active item is level one and has nested items', () => {
-				test('then all nested items should be visible', async () => {
+			describe('when the active item is level one and has sub-level items', () => {
+				test('then all sub-level items should be visible', async () => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-2"
-							nestedItemsVariant="alwaysOpen"
+							showSubLevel="always"
 							items={alwaysOpenItems}
 						/>
 					);

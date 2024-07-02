@@ -8,7 +8,7 @@ const meta: Meta<typeof SideNav> = {
 	component: SideNav,
 	args: {
 		...defaultTestingProps,
-		nestedItemsVariant: 'openOnNav',
+		showSubLevel: 'whenActive',
 	},
 };
 
@@ -55,10 +55,10 @@ export const OnBodyAlt: Story = {
 	),
 };
 
-export const AlwaysOpen: Story = {
+export const always: Story = {
 	args: {
 		activePath: '#page-1',
 		items: alwaysOpenItems,
-		nestedItemsVariant: 'alwaysOpen',
+		showSubLevel: 'always',
 	},
 };

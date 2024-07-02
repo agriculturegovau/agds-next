@@ -87,15 +87,15 @@ The background of the `SideNav` must match the background it is being placed on.
 
 - create more than 3 levels of nesting
 - place on the right-hand side of content
-- keep all nested lists open when there are many items.
+- keep all lists with sub-levels open when there are many items.
 
-## Nested items
+## Sub-level items
 
 To help users comprehend the side navigation, choose a variant that is appropriate for the number of items in the list.
 
 ### Always open
 
-When you have a small number of nested items, it’s easier for users to see all items at once. This is the default behaviour so either setting `nestedItemsVariant="alwaysOpen"` or omitting this prop will set this variant.
+When you have a small number of sub-level items, it’s easier for users to see all items at once. This is the default behaviour so either setting `showSubLevel="always"` or omitting this prop will set this variant.
 
 ```jsx live
 <SideNav
@@ -123,13 +123,13 @@ When you have a small number of nested items, it’s easier for users to see all
 			],
 		},
 	]}
-	nestedItemsVariant="alwaysOpen"
+	showSubLevel="always"
 />
 ```
 
 ### Open on navigation
 
-When the list of items is long, prefer opening the nested lists on navigation. Set `nestedItemsVariant="openOnNav"` to achieve this variant.
+When the list of items is long, prefer opening the nested lists on navigation. Set `showSubLevel="whenActive"` to achieve this variant.
 
 ```jsx live
 <SideNav
@@ -193,6 +193,6 @@ When the list of items is long, prefer opening the nested lists on navigation. S
 			],
 		},
 	]}
-	nestedItemsVariant="openOnNav"
+	showSubLevel="whenActive"
 />
 ```

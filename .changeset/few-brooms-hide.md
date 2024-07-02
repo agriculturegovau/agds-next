@@ -2,4 +2,4 @@
 '@ag.ds-next/react': minor
 ---
 
-side-nav: Add `alwaysOpen` and `openOnNav` variants for nested items.
+side-nav: Add `always` and `whenActive` variants for nested items.
