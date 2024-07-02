@@ -13,6 +13,7 @@ import { Stack } from '../stack';
 import { AppLayoutHeaderProps } from './AppLayoutHeader';
 
 const GAP_REM = 1.5;
+const LOGO_HEIGHT = '3.75rem';
 
 export type AppLayoutHeaderBrandProps = {
 	href: string;
@@ -44,7 +45,7 @@ export function AppLayoutHeaderBrand({
 			css={{ overflow: 'hidden' }}
 			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
-			gap={GAP_REM}
+			gap={{ xs: 1, md: GAP_REM }}
 			inline
 			paddingY={1}
 		>
@@ -63,7 +64,7 @@ export function AppLayoutHeaderBrand({
 					as={Link}
 					color="text"
 					css={{
-						' img, svg': { height: '3.75rem' },
+						' img, svg': { height: LOGO_HEIGHT },
 						...packs.print.hidden,
 					}}
 					focusRingFor="keyboard"
@@ -154,7 +155,7 @@ export function AppLayoutHeaderBrand({
 				textDecoration: 'none',
 				'&:hover': packs.underline,
 				// Logo styles
-				svg: { display: 'block', height: '3.75rem', flexShrink: 0 },
+				svg: { display: 'block', height: LOGO_HEIGHT, flexShrink: 0 },
 			}}
 		>
 			{logo}
