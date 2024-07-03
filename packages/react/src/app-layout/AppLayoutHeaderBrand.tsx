@@ -222,10 +222,8 @@ const DividingLine = ({
 	singleLogo?: boolean;
 }) => (
 	<Box
+		borderLeft
 		css={{
-			borderLeft: boxPalette.border,
-			borderLeftStyle: 'solid',
-			borderLeftColor: boxPalette.border,
 			margin: singleLogo ? '0 1rem' : undefined,
 			...packs.print.hidden,
 		}}
@@ -238,6 +236,6 @@ const DividingLine = ({
 						lg: 'block',
 				  }
 		}
-		height={singleLogo ? '3.5rem' : undefined}
+		height={singleLogo ? LOGO_HEIGHT : undefined}
 	/>
 );

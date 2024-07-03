@@ -29,7 +29,7 @@ type HeaderBrandProps = Pick<
 
 export function HeaderBrand({
 	badgeLabel,
-	dividerPosition = 'after',
+	dividerPosition,
 	hasRightContent,
 	heading,
 	href = '/',
