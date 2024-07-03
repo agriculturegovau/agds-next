@@ -98,7 +98,7 @@ const LinkList = ({
 							key={item.href}
 							nestedItemsIndicatorLabel={
 								hasNestedItemsIndicator
-									? `. Has ${items.length} sub-level links.`
+									? `. Has ${items.length} sub-level ${items.length === 1 : 'link' : 'links'}.`
 									: undefined
 							}
 							{...item}
