@@ -15,15 +15,15 @@ export function SideNavListItem({ children, isActive }: SideNavLinkProps) {
 					? {
 							position: 'relative',
 							':before': {
+								borderLeftColor: boxPalette.borderMuted,
+								borderLeftStyle: 'solid',
+								borderLeftWidth: tokens.borderWidth.xl,
+								bottom: 0,
 								content: '""',
+								left: 0,
+								pointerEvents: 'none',
 								position: 'absolute',
 								top: 0,
-								left: 0,
-								bottom: 0,
-								borderLeftWidth: tokens.borderWidth.xl,
-								borderLeftStyle: 'solid',
-								borderLeftColor: boxPalette.borderMuted,
-								pointerEvents: 'none',
 							},
 					  }
 					: undefined

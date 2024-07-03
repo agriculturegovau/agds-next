@@ -151,7 +151,7 @@ exports[`SideNav renders correctly 1`] = `
               </a>
             </li>
             <li
-              class="css-1aajr8x-SideNavListItem"
+              class="css-u3jbms-SideNavListItem"
             >
               <a
                 aria-current="page"

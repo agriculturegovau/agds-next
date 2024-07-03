@@ -90,7 +90,7 @@ describe('SideNav', () => {
 				test('then icons indicating hidden sub-level items should be visible', async () => {
 					expect(
 						await screen.findAllByRole('img', {
-							name: /. Has [0-9] sub-level links./,
+							name: /. Has [2-9] sub-level links.|. Has 1 sub-level link./,
 						})
 					).toHaveLength(2);
 				});

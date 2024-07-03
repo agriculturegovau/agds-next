@@ -17,14 +17,14 @@ export const SideNavLink = ({
 	isCurrentPage,
 	isOpen,
 	label,
-	nestedItemsIndicatorLabel,
+	numberOfItems,
 	...props
 }: Omit<SideNavLinkProps, 'showSubLevel'> & {
 	hasNestedItemsIndicator?: boolean;
 	isCurrentPage?: boolean;
 	isOpen: boolean;
 	label: ReactNode;
-	nestedItemsIndicatorLabel?: string;
+	numberOfItems: number;
 }) => {
 	const Link = useLinkComponent();
 	const depth = useLinkListDepth();
@@ -81,14 +81,18 @@ export const SideNavLink = ({
 				(isOpen ? (
 					<ChevronDownIcon
 						aria-hidden={false}
-						aria-label=". Sub-level links below."
+						aria-label={`. Sub-level ${
+							numberOfItems === 1 ? 'link' : 'links'
+						} below.`}
 						css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
 						size={depth > 1 ? 'sm' : 'md'}
 					/>
 				) : (
 					<ChevronRightIcon
 						aria-hidden={false}
-						aria-label={nestedItemsIndicatorLabel}
+						aria-label={`. Has ${numberOfItems} sub-level ${
+							numberOfItems === 1 ? 'link' : 'links'
+						}.`}
 						css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
 						size={depth > 1 ? 'sm' : 'md'}
 					/>

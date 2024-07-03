@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { SideNavUnorderedList } from './SideNavUnorderedList';
 import { SideNavListItem } from './SideNavListItem';
 import { SideNavProps } from './SideNav';
-import { hasNestedActiveItem } from './utils';
+import { hasSubLevelActiveItem } from './utils';
 import { SideNavLink } from './SideNavLink';
 
 export type SideNavLinkListProps = {
@@ -20,7 +20,7 @@ type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
 const addIsActive =
 	(activePath: SideNavLinkListProps['activePath']) =>
 	(item: ItemWithIsActive): ItemWithIsActive => {
-		const withNestedActiveItems = hasNestedActiveItem(item.items, activePath);
+		const withNestedActiveItems = hasSubLevelActiveItem(item.items, activePath);
 		const isCurrentPage = item.href === activePath;
 		const isActive = isCurrentPage || withNestedActiveItems;
 
@@ -76,19 +76,20 @@ const LinkList = ({
 		) =>
 			isActive ||
 			showSubLevel === 'always' ||
-			hasNestedActiveItem(items, activePath),
+			hasSubLevelActiveItem(items, activePath),
 		[activePath, showSubLevel]
 	);
 
 	return (
 		<SideNavUnorderedList isOpen={isOpen(items, isListOpen)}>
 			{items.map(({ isActive, items, ...item }) => {
+				const numberOfItems = items?.length || 0;
 				const hasNestedItemsIndicator =
-					showSubLevel === 'whenActive' && items && 'length' in items;
+					numberOfItems > 0 && showSubLevel === 'whenActive';
 
 				return (
 					<SideNavListItem
-						isActive={isActive || hasNestedActiveItem(items, activePath)}
+						isActive={isActive || hasSubLevelActiveItem(items, activePath)}
 						key={item.href}
 					>
 						<SideNavLink
@@ -96,11 +97,7 @@ const LinkList = ({
 							isCurrentPage={item.href === activePath}
 							isOpen={isOpen(items, isActive)}
 							key={item.href}
-							nestedItemsIndicatorLabel={
-								hasNestedItemsIndicator
-									? `. Has ${items.length} sub-level ${items.length === 1 : 'link' : 'links'}.`
-									: undefined
-							}
+							numberOfItems={numberOfItems}
 							{...item}
 						/>
 

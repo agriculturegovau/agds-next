@@ -1,4 +1,4 @@
-import { findBestMatch, flattenItems, hasNestedActiveItem } from './utils';
+import { findBestMatch, flattenItems, hasSubLevelActiveItem } from './utils';
 import { defaultTestingProps } from './test-utils';
 
 describe('findBestMatch', () => {
@@ -28,13 +28,13 @@ describe('flattenItems', () => {
 	});
 });
 
-describe('hasNestedActiveItem', () => {
+describe('hasSubLevelActiveItem', () => {
 	const activePath = '/in-detail/record-keeping';
 	test.each(
 		defaultTestingProps.items.map((item) => {
 			return { ...item, expected: item.label === 'In detail' };
 		})
 	)('$label', ({ items, expected }) => {
-		expect(hasNestedActiveItem(items, activePath)).toBe(expected);
+		expect(hasSubLevelActiveItem(items, activePath)).toBe(expected);
 	});
 });
