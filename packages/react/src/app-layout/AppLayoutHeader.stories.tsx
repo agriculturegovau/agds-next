@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
+import { AISLogo } from '../../../../.storybook/components/AISLogo';
 import { AppLayout } from './AppLayout';
 import { AppLayoutHeader } from './AppLayoutHeader';
 import { ExampleAccountDropdown, exampleData } from './test-utils';
@@ -101,5 +102,32 @@ export const WithAccountLinkLongName: Story = {
 			secondaryText: exampleData.businessNames.regular[0],
 			href: '#',
 		},
+	},
+};
+
+export const CoBranding: Story = {
+	args: {
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingDividerPositionBetween: Story = {
+	args: {
+		dividerPosition: 'between',
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingWithAccountDetails: Story = {
+	args: {
+		accountDetails: {
+			name: exampleData.userNames.long,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
+		},
+		secondHref: '/',
+		secondLogo: <AISLogo />,
 	},
 };
