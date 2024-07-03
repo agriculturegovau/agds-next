@@ -55,7 +55,7 @@ export const OnBodyAlt: Story = {
 	),
 };
 
-export const always: Story = {
+export const SubLevelsAlwaysOpen: Story = {
 	args: {
 		activePath: '#page-1',
 		items: alwaysOpenItems,
