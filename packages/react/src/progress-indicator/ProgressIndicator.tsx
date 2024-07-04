@@ -101,8 +101,8 @@ export const ProgressIndicator = ({
 		<CollapsingSideBar
 			as="section"
 			background={background}
-			title={title}
 			subTitle={subTitle}
+			title={title}
 		>
 			<ProgressIndicatorList>
 				{itemsWithDefaultActive.map(({ label, ...props }) =>

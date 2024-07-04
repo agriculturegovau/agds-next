@@ -1,21 +1,18 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@ag.ds-next/react/box';
 import { Button } from '@ag.ds-next/react/button';
-import { Flex } from '@ag.ds-next/react/flex';
-import { CloseIcon } from '@ag.ds-next/react/icon';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
 import { CollapsingSideBar } from '../_collapsing-side-bar';
 
 export type FilterSidebarProps = PropsWithChildren<{
-	/** The number of active filters. */
+	/** The number of active filters. Rendered after the title when > 0 */
 	activeFiltersCount?: number;
-	/** @deprecated: Unused. The aria-label for the Filter sidebar. */
+	/** @deprecated: Unused. Cannot be set. */
 	'aria-label'?: string;
-	/** Shown at the top of Filter sidebar. */
-	title?: string;
 	/** Called when the user clicks the "Clear filters" button. */
 	onClearFilters?: () => void;
+	/** @deprecated Unused. Title is now hardcoded to Filters. */
+	title?: string;
 }>;
 
 export type FilterSidebarTitleProps = {
@@ -25,16 +22,30 @@ export type FilterSidebarTitleProps = {
 
 export function FilterSidebar({
 	activeFiltersCount,
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	'aria-label': ariaLabel,
-	onClearFilters,
 	children,
-	title = 'Filters',
+	onClearFilters,
+	title,
 }: FilterSidebarProps) {
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production') {
+		if (ariaLabel) {
+			console.warn(
+				'FilterSidebar: The `aria-label` prop is now unused and cannot be set.'
+			);
+		}
+
+		if (title) {
+			console.warn(
+				'FilterSidebar: The `title` prop is now unused and cannot be set.'
+			);
+		}
+	}
+
 	return (
 		<CollapsingSideBar
-			title={`${title}${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
 			as="aside"
+			title={`Filters${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
 		>
 			<Box
 				background={{

@@ -6,7 +6,7 @@ import {
 	usePrefersReducedMotion,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { Box } from '@ag.ds-next/react/box';
+import { Box, type BoxProps } from '@ag.ds-next/react/box';
 import { BaseButton } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 import { ChevronDownIcon } from '@ag.ds-next/react/icon';
@@ -29,10 +29,12 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	background?: CollapsingSideBarBackground;
 	/** @deprecated Used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel?: string;
-	/** The title of the CollapsingSideBar. Place a CollapsingSideBarTitle here unless you implement something custom. */
+	gap?: BoxProps['gap'];
+	/** A custom element to use instead of title and subTitle. */
 	customTitle?: ReactNode;
+	/** The title of the CollapsingSideBar. */
 	title?: string;
-	/** The sub title of the CollapsingSideBar. */
+	/** The subtitle of the CollapsingSideBar. */
 	subTitle?: string;
 }>;
 
@@ -139,12 +141,13 @@ export function CollapsingSideBar({
 				>
 					<Flex
 						alignItems="center"
+						as="span"
 						gap={1}
 						justifyContent="space-between"
 						paddingX={0.75}
 						paddingY={1}
 					>
-						<Stack gap={0.5}>
+						<Stack as="span" gap={0.5}>
 							<Text
 								color="action"
 								css={packs.underline}

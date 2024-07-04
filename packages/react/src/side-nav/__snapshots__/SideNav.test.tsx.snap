@@ -3,37 +3,69 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <div
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
-    <button
-      aria-controls="collapsing-side-bar-:r1:-body"
-      aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r1:-button"
-      type="button"
-    >
-      In this section
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+    >
+      <div
+        class="css-lr9d04-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r1:-heading"
+      >
+        <h2
+          class="css-m2oixi-boxStyles-SideNav"
+          id="sideNav-:r0:-title"
+        >
+          <div
+            class="css-1jga52b-boxStyles"
+          >
+            Lodging your tax return
+          </div>
+        </h2>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r1:-body"
+        aria-describedby="collapsing-side-bar-:r1:-heading"
+        aria-expanded="false"
+        aria-label="Open Lodging your tax return"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
+      >
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Lodging your tax return
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r1:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -43,9 +75,8 @@ exports[`SideNav renders correctly 1`] = `
           class="css-zipzg2-boxStyles"
           id="sideNav-:r0:-nav"
         >
-          <h2
-            class="css-dueube-boxStyles"
-            id="sideNav-:r0:-title"
+          <span
+            class="css-dej9q4-boxStyles"
           >
             <a
               class="css-xmyg48-boxStyles-SideNavTitle"
@@ -53,7 +84,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               Lodging your tax return
             </a>
-          </h2>
+          </span>
           <ul
             class="css-79i25n-boxStyles"
           >

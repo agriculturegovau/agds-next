@@ -17,7 +17,7 @@ type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 export type SideNavProps = {
 	/** Used for highlighting the active element. */
 	activePath: string;
-	/** @deprecated title is now always used even when collapsed. */
+	/** @deprecated The title is now always used, even when collapsed. */
 	collapseTitle: string;
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
@@ -32,18 +32,24 @@ export type SideNavProps = {
 export function SideNav({
 	activePath,
 	background = 'body',
+	collapseTitle,
 	items,
 	title,
 	titleLink,
 }: SideNavProps) {
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production' && collapseTitle) {
+		console.warn(
+			'SideNav: The `collapseTitle` prop is now unused and cannot be set.'
+		);
+	}
+
 	const { navId, titleId } = useSideNavIds();
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
 		<CollapsingSideBar
 			background={background}
-			gap={0}
-			title={title}
 			customTitle={
 				<SideNavTitle
 					as="h2"
@@ -55,13 +61,15 @@ export function SideNav({
 					{title}
 				</SideNavTitle>
 			}
+			gap={0}
+			title={title}
 		>
 			<Box
-				as="nav"
 				aria-labelledby={titleId}
-				id={navId}
+				as="nav"
 				fontFamily="body"
 				fontSize="sm"
+				id={navId}
 				lineHeight="default"
 			>
 				<SideNavTitle

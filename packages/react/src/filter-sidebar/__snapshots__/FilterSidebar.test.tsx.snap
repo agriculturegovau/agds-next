@@ -3,54 +3,75 @@
 exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <aside
-    aria-label="Filters"
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1w8myos-boxStyles"
+      class="css-1oljvdf-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r0:-heading"
       >
-        Filter by
-      </h2>
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Filters (1)
+        </h2>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r0:-body"
+        aria-describedby="collapsing-side-bar-:r0:-heading"
+        aria-expanded="false"
+        aria-label="Open Filters (1)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
+      >
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Filters (1)
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r0:-body"
-      aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r0:-button"
-      type="button"
-    >
-      Filters (1)
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r0:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-16ved0q-boxStyles"
-        />
+          class="css-1kppral-boxStyles"
+        >
+          <div
+            class="css-h0krvw-boxStyles"
+          />
+        </div>
       </div>
     </div>
   </aside>

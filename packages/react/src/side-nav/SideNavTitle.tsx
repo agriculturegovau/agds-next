@@ -1,22 +1,26 @@
-import { PropsWithChildren } from 'react';
-import { Box } from '../box';
+import { type ElementType, type PropsWithChildren } from 'react';
+import { Box, type BoxProps } from '../box';
 import { packs, useLinkComponent } from '../core';
 import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
 
 export type SideNavTitleProps = PropsWithChildren<{
-	id: string;
-	isCurrentPage: boolean;
+	as?: ElementType;
+	/** The CSS class name generated from the `css` prop. */
+	className?: string;
+	display?: BoxProps['display'];
 	href?: string;
+	id?: string;
+	isCurrentPage?: boolean;
 }>;
 
 export function SideNavTitle({
 	as,
 	children,
+	className,
 	display,
 	href,
 	id,
 	isCurrentPage,
-	...props
 }: SideNavTitleProps) {
 	const Link = useLinkComponent();
 
@@ -40,9 +44,9 @@ export function SideNavTitle({
 			as={as}
 			borderBottom
 			borderBottomWidth="xl"
+			className={className}
 			display={display}
 			id={id}
-			{...props}
 		>
 			<Box
 				color="text"
