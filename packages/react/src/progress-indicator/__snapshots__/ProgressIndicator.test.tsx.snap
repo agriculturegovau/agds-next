@@ -6,7 +6,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -540,7 +540,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -1074,7 +1074,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -1608,7 +1608,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -2142,7 +2142,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -2676,7 +2676,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -3210,7 +3210,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
@@ -3744,7 +3744,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"

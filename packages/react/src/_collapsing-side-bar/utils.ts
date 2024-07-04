@@ -1,6 +1,6 @@
 import { boxPalette, useId } from '../core';
 
-// SideNav uses these vars since it supports 2 backgrounds
+// Note: SideNav uses these vars since it supports 2 backgrounds
 export const collapsingSideBarHoverProp = '--collapsing-side-bar-hover';
 export const collapsingSideBarHoverVar = `var(${collapsingSideBarHoverProp})`;
 

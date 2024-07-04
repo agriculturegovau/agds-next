@@ -5,9 +5,9 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { CollapsingSideBar } from '../_collapsing-side-bar';
 
 export type FilterSidebarProps = PropsWithChildren<{
-	/** The number of active filters. Rendered after the title when > 0 */
+	/** The number of active filters. Rendered after the title when > 0. */
 	activeFiltersCount?: number;
-	/** @deprecated: Unused. Cannot be set. */
+	/** @deprecated: Unused. */
 	'aria-label'?: string;
 	/** Called when the user clicks the "Clear filters" button. */
 	onClearFilters?: () => void;
@@ -30,15 +30,11 @@ export function FilterSidebar({
 	// deprecation warnings
 	if (process.env.NODE_ENV !== 'production') {
 		if (ariaLabel) {
-			console.warn(
-				'FilterSidebar: The `aria-label` prop is now unused and cannot be set.'
-			);
+			console.warn('FilterSidebar: The `aria-label` prop is now unused.');
 		}
 
 		if (title) {
-			console.warn(
-				'FilterSidebar: The `title` prop is now unused and cannot be set.'
-			);
+			console.warn('FilterSidebar: The `title` prop is now unused.');
 		}
 	}
 
@@ -71,8 +67,8 @@ export function FilterSidebar({
 							<Box borderTop />
 							<Button
 								alignSelf={{ xs: 'center', md: 'start' }}
-								variant="text"
 								onClick={onClearFilters}
+								variant="text"
 							>
 								Clear filters
 							</Button>

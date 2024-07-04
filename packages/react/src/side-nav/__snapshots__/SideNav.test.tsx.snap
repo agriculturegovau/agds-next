@@ -6,7 +6,7 @@ exports[`SideNav renders correctly 1`] = `
     class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-1oljvdf-boxStyles-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
         class="css-lr9d04-boxStyles-CollapsingSideBar"
@@ -73,7 +73,6 @@ exports[`SideNav renders correctly 1`] = `
         <nav
           aria-labelledby="sideNav-:r0:-title"
           class="css-zipzg2-boxStyles"
-          id="sideNav-:r0:-nav"
         >
           <span
             class="css-dej9q4-boxStyles"

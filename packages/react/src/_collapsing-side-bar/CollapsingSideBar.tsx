@@ -21,21 +21,22 @@ import {
 } from './utils';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
-	/** The HTML element to render the CollapsingSideBar as. */
-	as?: CollapsingSideBarContainerElementType;
 	/** The aria-label for the CollapsingSideBar. */
 	'aria-label'?: string;
+	/** The HTML element to render the CollapsingSideBar as. */
+	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
-	/** @deprecated Used as the title of the expand/collapse trigger on smaller screen sizes. */
+	/** @deprecated No longer used as the title of the expand/collapse trigger on smaller screen sizes. */
 	collapseButtonLabel?: string;
-	gap?: BoxProps['gap'];
-	/** A custom element to use instead of title and subTitle. */
+	/** A custom element to use instead of title and subTitle. It should render as an h2. */
 	customTitle?: ReactNode;
-	/** The title of the CollapsingSideBar. */
-	title?: string;
+	/** The gap between the small title/subTitle and children. */
+	gap?: BoxProps['gap'];
 	/** The subtitle of the CollapsingSideBar. */
 	subTitle?: string;
+	/** The title of the CollapsingSideBar. Still required even when using customTitle. */
+	title: string;
 }>;
 
 export function CollapsingSideBar({
@@ -83,9 +84,10 @@ export function CollapsingSideBar({
 			}}
 			gap={gap}
 		>
-			<Box css={{ zoverflow: 'hidden', position: 'relative' }}>
+			<Box css={{ position: 'relative' }}>
 				<Stack
 					css={{
+						// Make the accesible heading appear the same size as the button for a screen reader's virtual cursor
 						inset: 0,
 						position: 'absolute',
 						[tokens.mediaQuery.min.md]: {
@@ -164,11 +166,11 @@ export function CollapsingSideBar({
 							)}
 						</Stack>
 						<ChevronDownIcon
-							weight="bold"
 							css={{
 								transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 								transform: `rotate(${isOpen ? 180 : 0}deg)`,
 							}}
+							weight="bold"
 						/>
 					</Flex>
 				</Box>

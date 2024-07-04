@@ -17,10 +17,10 @@ type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 export type SideNavProps = {
 	/** Used for highlighting the active element. */
 	activePath: string;
-	/** @deprecated The title is now always used, even when collapsed. */
-	collapseTitle: string;
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
+	/** @deprecated Unused. The title is now always used, even when collapsed. */
+	collapseTitle: string;
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
@@ -39,12 +39,10 @@ export function SideNav({
 }: SideNavProps) {
 	// deprecation warnings
 	if (process.env.NODE_ENV !== 'production' && collapseTitle) {
-		console.warn(
-			'SideNav: The `collapseTitle` prop is now unused and cannot be set.'
-		);
+		console.warn('SideNav: The `collapseTitle` prop is now unused.');
 	}
 
-	const { navId, titleId } = useSideNavIds();
+	const { titleId } = useSideNavIds();
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
@@ -53,10 +51,10 @@ export function SideNav({
 			customTitle={
 				<SideNavTitle
 					as="h2"
-					id={titleId}
 					css={{
 						[tokens.mediaQuery.min.md]: visuallyHiddenStyles,
 					}}
+					id={titleId}
 				>
 					{title}
 				</SideNavTitle>
@@ -69,11 +67,11 @@ export function SideNav({
 				as="nav"
 				fontFamily="body"
 				fontSize="sm"
-				id={navId}
 				lineHeight="default"
 			>
 				<SideNavTitle
 					as="span"
+					// Don't render the title on small screen if there is no link so it's unnecessary double-up of headings
 					display={{ xs: titleLink ? 'block' : 'none', md: 'block' }}
 					href={titleLink}
 					isCurrentPage={activePath === titleLink}
