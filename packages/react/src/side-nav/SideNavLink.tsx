@@ -13,14 +13,14 @@ import { SideNavLinkProps } from './SideNavListItem';
 import { useLinkListDepth } from './context';
 
 export const SideNavLink = ({
-	hasNestedItemsIndicator,
+	hasSubLevelItemsIndicator,
 	isCurrentPage,
 	isOpen,
 	label,
 	numberOfItems,
 	...props
 }: Omit<SideNavLinkProps, 'subLevelVisible'> & {
-	hasNestedItemsIndicator?: boolean;
+	hasSubLevelItemsIndicator?: boolean;
 	isCurrentPage?: boolean;
 	isOpen: boolean;
 	label: ReactNode;
@@ -77,7 +77,7 @@ export const SideNavLink = ({
 
 			<span css={{ flexGrow: 1 }}>{label}</span>
 
-			{hasNestedItemsIndicator &&
+			{hasSubLevelItemsIndicator &&
 				(isOpen ? (
 					<ChevronDownIcon
 						aria-hidden={false}

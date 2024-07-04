@@ -84,7 +84,7 @@ const LinkList = ({
 		<SideNavUnorderedList isOpen={isOpen(items, isListOpen)}>
 			{items.map(({ isActive, items, ...item }) => {
 				const numberOfItems = items?.length || 0;
-				const hasNestedItemsIndicator =
+				const hasSubLevelItemsIndicator =
 					numberOfItems > 0 && subLevelVisible === 'whenActive';
 
 				return (
@@ -93,7 +93,7 @@ const LinkList = ({
 						key={item.href}
 					>
 						<SideNavLink
-							hasNestedItemsIndicator={hasNestedItemsIndicator}
+							hasSubLevelItemsIndicator={hasSubLevelItemsIndicator}
 							isCurrentPage={item.href === activePath}
 							isOpen={isOpen(items, isActive)}
 							key={item.href}
