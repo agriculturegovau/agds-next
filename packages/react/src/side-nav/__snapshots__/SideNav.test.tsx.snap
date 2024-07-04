@@ -97,30 +97,24 @@ exports[`SideNav renders correctly 1`] = `
                 >
                   Lodge online
                 </span>
-              </a>
-              <ul
-                class="css-79i25n-boxStyles"
-              >
-                <li
-                  class="css-0"
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Has 1 sub-level link."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
-                    href="/lodge-online/pre-filling"
-                  >
-                    <span
-                      aria-hidden="true"
-                    >
-                      –
-                    </span>
-                    <span
-                      class="css-127d72z-SideNavLink"
-                    >
-                      Pre-filling your online tax return
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                  <polyline
+                    points="9 18 15 12 9 6"
+                  />
+                </svg>
+              </a>
             </li>
             <li
               class="css-0"
@@ -163,6 +157,23 @@ exports[`SideNav renders correctly 1`] = `
                 >
                   In detail
                 </span>
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Sub-level links below."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
               </a>
               <ul
                 class="css-79i25n-boxStyles"
@@ -184,49 +195,24 @@ exports[`SideNav renders correctly 1`] = `
                     >
                       Record keeping
                     </span>
+                    <svg
+                      aria-hidden="false"
+                      aria-label=". Has 2 sub-level links."
+                      class="css-xzevu4-SideNavLink"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <polyline
+                        points="9 18 15 12 9 6"
+                      />
+                    </svg>
                   </a>
-                  <ul
-                    class="css-79i25n-boxStyles"
-                  >
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/tax"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span
-                          class="css-127d72z-SideNavLink"
-                        >
-                          Keeping your tax records
-                        </span>
-                      </a>
-                    </li>
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/incorrect-amounts"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span
-                          class="css-127d72z-SideNavLink"
-                        >
-                          Incorrect amounts
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li
                   class="css-0"

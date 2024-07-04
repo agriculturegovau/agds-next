@@ -8,7 +8,7 @@ import { SideNavLink } from './SideNavLink';
 export type SideNavLinkListProps = {
 	activePath: string | undefined;
 	items: SideNavProps['items'];
-	showSubLevel: SideNavProps['showSubLevel'];
+	subLevelVisible: SideNavProps['subLevelVisible'];
 };
 
 type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
@@ -20,16 +20,16 @@ type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
 const addIsActive =
 	(activePath: SideNavLinkListProps['activePath']) =>
 	(item: ItemWithIsActive): ItemWithIsActive => {
-		const withNestedActiveItems = hasSubLevelActiveItem(item.items, activePath);
 		const isCurrentPage = item.href === activePath;
-		const isActive = isCurrentPage || withNestedActiveItems;
+		const isActive =
+			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
 
 		return {
 			...item,
 			isActive,
 			items:
-				item.items?.length || isActive
-					? item?.items?.map(addIsActive(activePath))
+				isActive || item.items?.length
+					? item.items?.map(addIsActive(activePath))
 					: item.items,
 		};
 	};
@@ -37,7 +37,7 @@ const addIsActive =
 export const SideNavLinkList = ({
 	activePath,
 	items,
-	showSubLevel,
+	subLevelVisible,
 }: SideNavLinkListProps) => {
 	const itemsWithIsActive = useMemo(() => {
 		return items.map(addIsActive(activePath));
@@ -51,7 +51,7 @@ export const SideNavLinkList = ({
 			activePath={activePath}
 			isListOpen={isTopLevelItemActive}
 			items={itemsWithIsActive}
-			showSubLevel={showSubLevel}
+			subLevelVisible={subLevelVisible}
 		/>
 	);
 };
@@ -60,14 +60,14 @@ type LinkListProps = {
 	activePath: string | undefined;
 	isListOpen: boolean;
 	items: ItemWithIsActive[];
-	showSubLevel: SideNavProps['showSubLevel'];
+	subLevelVisible: SideNavProps['subLevelVisible'];
 };
 
 const LinkList = ({
 	activePath,
 	isListOpen,
 	items,
-	showSubLevel,
+	subLevelVisible,
 }: LinkListProps) => {
 	const isOpen = useCallback(
 		(
@@ -75,9 +75,9 @@ const LinkList = ({
 			isActive?: boolean
 		) =>
 			isActive ||
-			showSubLevel === 'always' ||
+			subLevelVisible === 'always' ||
 			hasSubLevelActiveItem(items, activePath),
-		[activePath, showSubLevel]
+		[activePath, subLevelVisible]
 	);
 
 	return (
@@ -85,7 +85,7 @@ const LinkList = ({
 			{items.map(({ isActive, items, ...item }) => {
 				const numberOfItems = items?.length || 0;
 				const hasNestedItemsIndicator =
-					numberOfItems > 0 && showSubLevel === 'whenActive';
+					numberOfItems > 0 && subLevelVisible === 'whenActive';
 
 				return (
 					<SideNavListItem
@@ -107,7 +107,7 @@ const LinkList = ({
 								activePath={activePath}
 								isListOpen={isOpen(items, item.href === activePath)}
 								items={items}
-								showSubLevel={showSubLevel}
+								subLevelVisible={subLevelVisible}
 							/>
 						) : null}
 					</SideNavListItem>

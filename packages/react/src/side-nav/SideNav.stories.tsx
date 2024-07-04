@@ -8,7 +8,7 @@ const meta: Meta<typeof SideNav> = {
 	component: SideNav,
 	args: {
 		...defaultTestingProps,
-		showSubLevel: 'whenActive',
+		subLevelVisible: 'whenActive',
 	},
 };
 
@@ -59,6 +59,6 @@ export const SubLevelsAlwaysOpen: Story = {
 	args: {
 		activePath: '#page-1',
 		items: alwaysOpenItems,
-		showSubLevel: 'always',
+		subLevelVisible: 'always',
 	},
 };

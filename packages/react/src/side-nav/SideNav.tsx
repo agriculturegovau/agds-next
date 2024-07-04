@@ -25,7 +25,7 @@ export type SideNavProps = {
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** When to show sub-level navigation items. */
-	showSubLevel?: 'always' | 'whenActive';
+	subLevelVisible?: 'always' | 'whenActive';
 	/** If provided, the title will be rendered as an anchor element. */
 	titleLink?: string;
 };
@@ -35,7 +35,7 @@ export function SideNav({
 	background = 'body',
 	collapseTitle,
 	items,
-	showSubLevel = 'always',
+	subLevelVisible = 'whenActive',
 	title,
 	titleLink,
 }: SideNavProps) {
@@ -66,7 +66,7 @@ export function SideNav({
 				<SideNavLinkList
 					activePath={bestMatch}
 					items={items}
-					showSubLevel={showSubLevel}
+					subLevelVisible={subLevelVisible}
 				/>
 			</Box>
 		</CollapsingSideBar>

@@ -30,9 +30,9 @@ Progress indicators can be applied to multi-step forms if the form has a known n
 
 Avoid adding or removing pages to a multi-step form where a progress indicator is used as this can confuse and mislead users. Consider another approach if the number of steps might change due to user input. <sup><a href="#cite-2">2</a></sup>
 
-By default, a Progress indicator contains links to each level 1 page of a multi-step form.
+By default, a Progress indicator contains links to each top-level page of a multi-step form.
 
-When a user navigates to a secondary action page from a level 1 page, a nested level 2 link is revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
+When a user navigates to a secondary action page from a top-level page, a nested sub-level link is revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
 
 <DoHeading />
 
@@ -133,7 +133,7 @@ The `status` prop can be used to indicate the status of each item. The following
 
 ## Currently active item
 
-To indicate the currently active level 1 or level 2 item, pass in a matching path to the `activePath` prop, e.g. `activePath="/organisations/change-name"`.
+To indicate the currently active top-level or sub-level item, pass in a matching path to the `activePath` prop, e.g. `activePath="/organisations/change-name"`.
 
 ## Hiding the sub title
 
@@ -157,11 +157,11 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 />
 ```
 
-## Adding level 2 steps
+## Adding sub-level steps
 
-If a level 1 page has a secondary step, such as editing its content, use a separate page for this secondary step.
+If a top-level page has a secondary step, such as editing its content, use a separate page for this secondary step.
 
-When users navigate to this secondary step, let them know where they are by adding a nested level 2 step `item`. Only one level 2 step may exist for each level 1 step.
+When users navigate to this secondary step, let them know where they are by adding a nested sub-level step `item`. Only one sub-level step may exist for each top-level step.
 
 ```jsx live
 <ProgressIndicator
@@ -185,17 +185,17 @@ When users navigate to this secondary step, let them know where they are by addi
 />
 ```
 
-### An example of a level 2 step
+### An example of a sub-level step
 
-By default, Progress indicators contain level 1 links to each page of a multi-step form. When additional pages are required for secondary actions nested under level 1 pages, level 2 links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
+By default, Progress indicators contain top-level links to each page of a multi-step form. When additional pages are required for secondary actions nested under top-level pages, sub-level links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--1.png" alt="" />
 
-The level 2 step is a separate page, so it is displayed under the main level 1 step in the progress indicator. This helps the user understand where they are in the process.
+The sub-level step is a separate page, so it is displayed under the main top-level step in the progress indicator. This helps the user understand where they are in the process.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--2.png" alt="" />
 
-Once the user saves their changes, they’re taken back to the main step page and a section alert is displayed to let them know that their changes were made successfully. The level 2 step is no longer displayed in the Progress indicator; it’s only displayed when the user is on the level 2 step page.
+Once the user saves their changes, they’re taken back to the main step page and a section alert is displayed to let them know that their changes were made successfully. The sub-level step is no longer displayed in the Progress indicator; it’s only displayed when the user is on the sub-level step page.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--3.png" alt="" />
 

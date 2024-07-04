@@ -55,7 +55,7 @@ describe('SideNav', () => {
 		});
 	});
 
-	describe('when showSubLevel is "whenActive"', () => {
+	describe('when subLevelVisible is "whenActive"', () => {
 		describe('when there is a mix of zero and more sub-level items', () => {
 			describe('when the active item has no sub-level items', () => {
 				beforeEach(() => {
@@ -63,7 +63,7 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/welcome"
-							showSubLevel="whenActive"
+							subLevelVisible="whenActive"
 						/>
 					);
 
@@ -102,7 +102,7 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail"
-							showSubLevel="whenActive"
+							subLevelVisible="whenActive"
 						/>
 					);
 
@@ -145,7 +145,7 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail/record-keeping"
-							showSubLevel="whenActive"
+							subLevelVisible="whenActive"
 						/>
 					);
 
@@ -214,7 +214,7 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="/in-detail/record-keeping/tax"
-							showSubLevel="whenActive"
+							subLevelVisible="whenActive"
 						/>
 					);
 
@@ -262,14 +262,14 @@ describe('SideNav', () => {
 			});
 		});
 
-		describe('when showSubLevel is "always"', () => {
+		describe('when subLevelVisible is "always"', () => {
 			describe('when the active item has no sub-level items', () => {
 				test('then all sub-level items should be visible', async () => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-1"
-							showSubLevel="always"
+							subLevelVisible="always"
 							items={alwaysOpenItems}
 						/>
 					);
@@ -300,7 +300,7 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-2"
-							showSubLevel="always"
+							subLevelVisible="always"
 							items={alwaysOpenItems}
 						/>
 					);

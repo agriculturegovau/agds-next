@@ -19,7 +19,7 @@ export const SideNavLink = ({
 	label,
 	numberOfItems,
 	...props
-}: Omit<SideNavLinkProps, 'showSubLevel'> & {
+}: Omit<SideNavLinkProps, 'subLevelVisible'> & {
 	hasNestedItemsIndicator?: boolean;
 	isCurrentPage?: boolean;
 	isOpen: boolean;
