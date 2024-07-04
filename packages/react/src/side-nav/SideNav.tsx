@@ -1,5 +1,6 @@
 import { Box } from '../box';
 import { LinkProps, tokens } from '../core';
+import { visuallyHiddenStyles } from '../a11y';
 import {
 	CollapsingSideBar,
 	CollapsingSideBarBackground,
@@ -7,7 +8,6 @@ import {
 import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
-import { visuallyHiddenStyles } from '../a11y';
 
 type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
 	label: string;
@@ -31,8 +31,8 @@ export type SideNavProps = {
 
 export function SideNav({
 	activePath,
-	items,
 	background = 'body',
+	items,
 	title,
 	titleLink,
 }: SideNavProps) {
@@ -43,7 +43,7 @@ export function SideNav({
 		<CollapsingSideBar
 			background={background}
 			gap={0}
-			titlez={title}
+			title={title}
 			customTitle={
 				<SideNavTitle
 					as="h2"

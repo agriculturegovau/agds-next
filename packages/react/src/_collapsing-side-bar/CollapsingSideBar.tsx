@@ -28,22 +28,23 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** @deprecated Used as the title of the expand/collapse trigger on smaller screen sizes. */
-	collapseButtonLabel: string;
+	collapseButtonLabel?: string;
 	/** The title of the CollapsingSideBar. Place a CollapsingSideBarTitle here unless you implement something custom. */
-	title?: ReactNode;
+	customTitle?: ReactNode;
+	title?: string;
 	/** The sub title of the CollapsingSideBar. */
 	subTitle?: string;
 }>;
 
 export function CollapsingSideBar({
-	as = 'div',
 	'aria-label': ariaLabel,
+	as = 'div',
 	background = 'body',
 	children,
 	customTitle,
 	gap = { xs: 0, md: 1 },
-	titlez,
-	subtitlez,
+	subTitle,
+	title,
 }: CollapsingSideBarProps) {
 	const { bodyId, headingId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
@@ -69,8 +70,6 @@ export function CollapsingSideBar({
 			);
 		},
 	});
-
-	// const CustomTitle = customTitle;
 
 	return (
 		<Stack
@@ -107,11 +106,11 @@ export function CollapsingSideBar({
 								fontWeight="bold"
 								lineHeight="heading"
 							>
-								{titlez}
+								{title}
 							</Text>
-							{subtitlez && (
+							{subTitle && (
 								<Text color="muted" fontSize="xs">
-									{subtitlez}
+									{subTitle}
 								</Text>
 							)}
 						</>
@@ -121,7 +120,7 @@ export function CollapsingSideBar({
 					aria-controls={bodyId}
 					aria-describedby={headingId}
 					aria-expanded={isOpen}
-					aria-label={`Open ${titlez}`}
+					aria-label={`Open ${title}`}
 					as={BaseButton}
 					background={background}
 					borderBottom
@@ -153,11 +152,11 @@ export function CollapsingSideBar({
 								fontWeight="bold"
 								lineHeight="heading"
 							>
-								{titlez}
+								{title}
 							</Text>
-							{subtitlez && (
+							{subTitle && (
 								<Text color="muted" fontSize="xs">
-									{subtitlez}
+									{subTitle}
 								</Text>
 							)}
 						</Stack>

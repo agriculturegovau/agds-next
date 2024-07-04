@@ -45,7 +45,7 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 	return (
 		<Columns gap={{ xs: 1, md: 3 }}>
 			<Column columnSpan={{ xs: 12, md: 4 }}>
-				<FilterSidebar activeFiltersCount={3}>
+				<FilterSidebar activeFiltersCount={3} onClearFilters={console.log}>
 					<FormStack>
 						<TextInput block label="Example input 1" />
 						<TextInput block label="Example input 2" />

@@ -1,8 +1,5 @@
 import { useId } from '../core';
-import {
-	CollapsingSideBar,
-	CollapsingSideBarTitle,
-} from '../_collapsing-side-bar';
+import { CollapsingSideBar } from '../_collapsing-side-bar';
 import {
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemLinkProps,
@@ -104,10 +101,8 @@ export const ProgressIndicator = ({
 		<CollapsingSideBar
 			as="section"
 			background={background}
-			collapseButtonLabel={subTitle || title} // When `hideSubtitle` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
-			title={<CollapsingSideBarTitle title={title} subtitle={subTitle} />}
-			titlez={title}
-			subtitlez={subTitle}
+			title={title}
+			subTitle={subTitle}
 		>
 			<ProgressIndicatorList>
 				{itemsWithDefaultActive.map(({ label, ...props }) =>
