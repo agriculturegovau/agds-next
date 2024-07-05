@@ -22,15 +22,15 @@ export const Basic: Story = {
 	},
 };
 
-export const TopLevelActive: Story = {};
+export const LevelOneActive: Story = {};
 
-export const SubLevelOneActive: Story = {
+export const LevelTwoActive: Story = {
 	args: {
 		activePath: '/in-detail/record-keeping',
 	},
 };
 
-export const SubLevelTwoActive: Story = {
+export const LevelThreeActive: Story = {
 	args: {
 		activePath: '/in-detail/record-keeping/incorrect-amounts',
 	},
