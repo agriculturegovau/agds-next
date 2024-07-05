@@ -84,6 +84,35 @@ describe('parseDate', () => {
 			});
 		});
 	});
+
+	describe('only parses allowed date formats', () => {
+		const testFormats = ['18 02 2023'];
+
+		const allowedDateFormats = [
+			'dd/MM/yyyy', // e.g. 18/02/2023
+			'dd-MM-yyyy', // e.g. 18-02-2023
+			'dd MM yyyy', // e.g. 18 02 2023
+		];
+
+		const disallowedDateFormats = [
+			'MMM do yyyy', // e.g. Feb 8th 2023
+			'd MMMM yyyy', // e.g. 8 February 2023
+			'd MMM yyyy', // e.g. 8 Feb 2023
+			'MMMM d yyyy', // e.g. February 8 2023
+			'MMM d yyyy', // e.g. Feb 8 2023
+			'dd MMMM yyyy', // e.g. 08 February 2023
+			'dd MMM yyyy', // e.g. 08 Feb 2023
+			'MMMM dd yyyy', // e.g. February 08 2023
+			'MMM dd yyyy', // e.g. Feb 08 2023
+		];
+
+		testFormats.forEach((example) => {
+			test(`Format "${example}"`, () => {
+				const formattedDate = parseDate(example, allowedDateFormats);
+				expect(formattedDate).toEqual(new Date(2023, 1, 18));
+			});
+		});
+	});
 });
 
 describe('constrainDate', () => {

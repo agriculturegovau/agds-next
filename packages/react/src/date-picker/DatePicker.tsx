@@ -23,6 +23,7 @@ import {
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
 	type AcceptedDateFormats,
+	acceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -68,6 +69,8 @@ type DatePickerCalendarProps = {
 };
 
 type DatePickerBaseProps = {
+	/** Specifies the date formats that can be parsed. */
+	allowedDateFormats: ReadonlyArray<AcceptedDateFormats>;
 	/** The value of the field. */
 	value: Date | string | undefined;
 	/** Function to be fired following a change event. */
@@ -85,20 +88,34 @@ export type DatePickerProps = DatePickerInputProps &
 	DatePickerBaseProps;
 
 export const DatePicker = ({
-	value,
+	allowedDateFormats: allowedDateFormatsProp = acceptedDateFormats,
+	dateFormat = 'dd/MM/yyyy',
+	initialMonth,
+	inputRef,
+	invalid = false,
+	maxDate,
+	maxWidth = 'md',
+	minDate,
 	onBlur: onBlurProp,
 	onChange,
 	onInputChange: onInputChangeProp,
-	minDate,
-	maxDate,
-	initialMonth,
+	value,
 	yearRange,
-	inputRef,
-	invalid = false,
-	maxWidth = 'md',
-	dateFormat = 'dd/MM/yyyy',
 	...props
 }: DatePickerProps) => {
+	const allowedDateFormats = useMemo(
+		() =>
+			Array.from(
+				new Set([
+					dateFormat,
+					...allowedDateFormatsProp.filter((dateFormat) =>
+						acceptedDateFormats.includes(dateFormat)
+					),
+				])
+			),
+		[dateFormat, allowedDateFormatsProp]
+	);
+
 	const triggerRef = useRef<HTMLButtonElement>(null);
 
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
@@ -129,7 +146,7 @@ export const DatePicker = ({
 		const inputValue = e.target.value;
 
 		// Attempt to parse the date using the text input value
-		const parsedDate = parseDate(inputValue);
+		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 		if (!inputValue || constrainedDate) {
@@ -150,7 +167,7 @@ export const DatePicker = ({
 	// Update the text input when the value updates
 	useEffect(() => {
 		setInputValue(transformValuePropToInputValue(value, dateFormat));
-	}, [value, dateFormat]);
+	}, [dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -220,7 +237,10 @@ export const DatePicker = ({
 					toggleCalendar();
 					setHasCalendarOpened(true);
 				}}
-				buttonAriaLabel={getDateInputButtonAriaLabel(inputValue)}
+				buttonAriaLabel={getDateInputButtonAriaLabel(
+					inputValue,
+					allowedDateFormats
+				)}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}

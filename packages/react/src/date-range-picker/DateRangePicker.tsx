@@ -24,21 +24,18 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
-	parseDate,
-	formatDate,
+	acceptedDateFormats,
 	constrainDate,
+	formatDate,
+	getDateInputButtonAriaLabel,
+	parseDate,
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
-import {
-	ensureValidDateRange,
-	getCalendarDefaultMonth,
-	getFromDateInputButtonAriaLabel,
-	getToDateInputButtonAriaLabel,
-} from './utils';
+import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -58,6 +55,8 @@ type DateRangePickerCalendarProps = {
 };
 
 export type DateRangePickerProps = DateRangePickerCalendarProps & {
+	/** Specifies the date formats that can be parsed. */
+	allowedDateFormats: ReadonlyArray<AcceptedDateFormats>;
 	/** Describes the purpose of the group of fields. */
 	legend?: string;
 	/** Provides extra information about the group of fields. */
@@ -99,6 +98,7 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 };
 
 export const DateRangePicker = ({
+	allowedDateFormats: allowedDateFormatsProp = acceptedDateFormats,
 	legend,
 	hint,
 	id,
@@ -121,6 +121,19 @@ export const DateRangePicker = ({
 	yearRange,
 	dateFormat = 'dd/MM/yyyy',
 }: DateRangePickerProps) => {
+	const allowedDateFormats = useMemo(
+		() =>
+			Array.from(
+				new Set([
+					dateFormat,
+					...allowedDateFormatsProp.filter((dateFormat) =>
+						acceptedDateFormats.includes(dateFormat)
+					),
+				])
+			),
+		[dateFormat, allowedDateFormatsProp]
+	);
+
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
@@ -194,7 +207,7 @@ export const DateRangePicker = ({
 		const inputValue = e.target.value;
 
 		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue);
+		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 		const nextValue = ensureValidDateRange({
@@ -224,7 +237,7 @@ export const DateRangePicker = ({
 		const inputValue = e.target.value;
 
 		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue);
+		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
 		const nextValue = ensureValidDateRange({
@@ -367,7 +380,11 @@ export const DateRangePicker = ({
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
 							buttonOnClick={onFromTriggerClick}
-							buttonAriaLabel={getFromDateInputButtonAriaLabel(fromInputValue)}
+							buttonAriaLabel={getDateInputButtonAriaLabel(
+								fromInputValue,
+								allowedDateFormats,
+								'start'
+							)}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
@@ -385,7 +402,11 @@ export const DateRangePicker = ({
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
 							buttonOnClick={onToTriggerClick}
-							buttonAriaLabel={getToDateInputButtonAriaLabel(toInputValue)}
+							buttonAriaLabel={getDateInputButtonAriaLabel(
+								toInputValue,
+								allowedDateFormats,
+								'end'
+							)}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: toInvalid }}

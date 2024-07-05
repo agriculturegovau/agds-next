@@ -38,10 +38,13 @@ export const formatDate = (date: Date, dateformat: AcceptedDateFormats) =>
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy (EEEE)');
 
-export const parseDate = (value: string) => {
+export const parseDate = (
+	value: string,
+	dateFormats: ReadonlyArray<AcceptedDateFormats> = acceptedDateFormats
+) => {
 	const now = new Date();
 
-	for (const displayDateFormat of acceptedDateFormats) {
+	for (const displayDateFormat of dateFormats) {
 		// Split input value by spaces, slashes and dashes
 		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
 		const splitValue = value.split(/ |\/|-/g);
@@ -117,9 +120,14 @@ export function getCalendarDefaultMonth(
 }
 
 // Gets the `aria-label` for the button that opens the calendar picker
-export function getDateInputButtonAriaLabel(value: string | undefined) {
-	if (typeof value !== 'string') return 'Choose date';
-	const parsed = parseDate(value);
-	if (!parsed) return 'Choose date';
-	return `Change date, ${formatHumanReadableDate(parsed)}`;
+export function getDateInputButtonAriaLabel(
+	value: string | undefined,
+	allowedDateFormats: ReadonlyArray<AcceptedDateFormats> | undefined,
+	rangeName: 'start' | 'end' | undefined
+) {
+	const dateStr = rangeName ? `${rangeName} date` : 'date';
+	if (typeof value !== 'string') return `Choose ${dateStr}`;
+	const parsed = parseDate(value, allowedDateFormats);
+	if (!parsed) return `Choose ${dateStr}`;
+	return `Change ${dateStr}, ${formatHumanReadableDate(parsed)}`;
 }
