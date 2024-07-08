@@ -37,6 +37,12 @@ type Story = StoryObj<typeof AppLayoutSidebar>;
 
 export const Basic: Story = {};
 
+export const LevelTwoActive: Story = {
+	args: {
+		activePath: '/establishments/canberra',
+	},
+};
+
 export const BodyBackground: Story = {
 	args: {
 		background: 'body',

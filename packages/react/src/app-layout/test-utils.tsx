@@ -13,6 +13,7 @@ import {
 	FactoryIcon,
 	AvatarIcon,
 	ChevronsLeftIcon,
+	MinusIcon,
 } from '../icon';
 import {
 	DropdownMenuDivider,
@@ -62,6 +63,18 @@ export const navigationItems = (businessName: string) => [
 			label: 'Establishments',
 			icon: FactoryIcon,
 			href: '/establishments',
+			items: [
+				{
+					label: 'Canberra',
+					icon: MinusIcon,
+					href: '/establishments/canberra',
+				},
+				{
+					label: 'Sydney',
+					icon: MinusIcon,
+					href: '/establishments/sydney',
+				},
+			],
 		},
 		{
 			label: 'Data and Insights',

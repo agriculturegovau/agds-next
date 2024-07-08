@@ -1,10 +1,5 @@
 import { Fragment } from 'react';
-import {
-	findBestMatch,
-	tokens,
-	type BoxPalette,
-	type ResponsiveProp,
-} from '../core';
+import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
@@ -12,6 +7,7 @@ import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
+	findBestMatch,
 } from './utils';
 
 export type AppLayoutSidebarProps = {
@@ -33,10 +29,8 @@ export function AppLayoutSidebar({
 	palette,
 }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
-	const bestMatch = findBestMatch(
-		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
-		activePath
-	);
+	const bestMatch = findBestMatch(items, activePath);
+
 	return (
 		<Fragment>
 			{/* Desktop */}

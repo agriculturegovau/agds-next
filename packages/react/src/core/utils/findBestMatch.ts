@@ -10,6 +10,8 @@ export function findBestMatch(
 		href: string;
 	}[];
 
+	console.log({ filteredLinks });
+
 	for (const link of filteredLinks) {
 		if (link.href === activePath) return link.href;
 		if (

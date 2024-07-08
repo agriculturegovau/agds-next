@@ -57,6 +57,18 @@ The app layout sidebar should be hidden while users are completing multi-page fo
 	src="/img/components/app-layout-focus-mode.png"
 />
 
+### Sub-level items
+
+To help users comprehend the side navigation, choose a strategy that is appropriate for the number of items in the list.
+
+#### Visible when active
+
+When the list of items is long, prefer showing any sub-level lists when either navigating to the parent item or one of the sub-level items. Since this is the default behaviour, either setting `subLevelVisible="whenActive"` or omitting this prop will use this strategy.
+
+#### Always visible
+
+When you have a small number of sub-level items, it’s easier for users to see all items at once. Set `subLevelVisible="always"` to achieve this.
+
 ## App layout footer
 
 The footer lives at the bottom of a page and generally contains copyright information and links to other sections of the website application.

@@ -22,6 +22,7 @@ export type NavItem = (NavLink | NavButton) & {
 	label: ReactNode;
 	icon?: ComponentType<IconProps>;
 	endElement?: ReactNode;
+	items?: NavItem[];
 };
 
 export type AppLayoutSidebarNavProps = {
@@ -31,25 +32,59 @@ export type AppLayoutSidebarNavProps = {
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
+	/** When to show sub-level navigation items. */
+	subLevelVisible?: 'always' | 'whenActive';
 };
 
-export function AppLayoutSidebarNav({
+type ItemWithIsActive = NavItem & {
+	isActive?: boolean;
+	items?: ItemWithIsActive[];
+	level?: number;
+};
+
+// Recursively add `isActive` to any sub-level items
+const addIsActive =
+	(activePath: AppLayoutSidebarNavProps['activePath'], level = 0) =>
+	(item: ItemWithIsActive): ItemWithIsActive => {
+		const isCurrentPage = 'href' in item && item.href === activePath;
+		const isActive =
+			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
+
+		return {
+			...item,
+			isActive,
+			items:
+				isActive || item.items?.length
+					? item?.items?.map(addIsActive(activePath, level + 1))
+					: undefined,
+			level: level + 1,
+		};
+	};
+
+export const AppLayoutSidebarNav = ({
 	activePath,
 	background,
 	items,
-}: AppLayoutSidebarNavProps) {
+	subLevelVisible = 'whenActive',
+}: AppLayoutSidebarNavProps) => {
 	return (
 		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
-				{items.map((group, idx) => {
-					const isFirstItem = idx === 0;
-					const groupItems = Array.isArray(group) ? group : group.items;
+				{items.map((group, index) => {
+					const isFirstItem = index === 0;
+					const groupItems = (Array.isArray(group) ? group : group.items).map(
+						addIsActive(activePath)
+					);
+
+					const isOpen =
+						subLevelVisible === 'always' ||
+						hasSubLevelActiveItem(groupItems, activePath);
 
 					const disableGroupPadding = Array.isArray(group)
 						? false
 						: Boolean(group.options?.disableGroupPadding);
 
-					const prevGroup = items[idx - 1];
+					const prevGroup = items[index - 1];
 					const prevGroupDisableGroupPadding = prevGroup
 						? Array.isArray(prevGroup)
 							? false
@@ -57,7 +92,7 @@ export function AppLayoutSidebarNav({
 						: false;
 
 					return (
-						<Fragment key={idx}>
+						<Fragment key={index}>
 							{!isFirstItem ? (
 								<AppLayoutSidebarNavDivider
 									// As the divider is placed at the start of each group, padding top is determined by the previous group
@@ -65,12 +100,13 @@ export function AppLayoutSidebarNav({
 									disablePaddingBottom={disableGroupPadding}
 								/>
 							) : null}
-							{groupItems.map((item, idx) => (
+							{groupItems.map((item, index) => (
 								<AppLayoutSidebarNavListItem
 									activePath={activePath}
 									background={background}
+									isOpen={isOpen}
 									item={item}
-									key={idx}
+									key={index}
 								/>
 							))}
 						</Fragment>
@@ -79,18 +115,20 @@ export function AppLayoutSidebarNav({
 			</Flex>
 		</Flex>
 	);
-}
+};
 
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
-	item: NavItem;
+	item: NavItem | ItemWithIsActive;
+	isOpen: boolean;
 };
 
 function AppLayoutSidebarNavListItem({
 	activePath,
 	background,
 	item,
+	isOpen,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
@@ -98,19 +136,37 @@ function AppLayoutSidebarNavListItem({
 
 	// Link list item
 	if ('href' in item) {
-		const active = item.href === activePath;
+		const isCurrentPage = item.href === activePath;
 		return (
 			<AppLayoutSidebarNavItemInner
 				background={background}
 				hasEndElement={Boolean(endElement)}
-				isActive={activePath === item.href}
+				isCurrentPage={isCurrentPage}
+				isActive={Boolean('isActive' in item && item.isActive)}
+				level={'level' in item ? item.level : undefined}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
-				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
+				<Link
+					aria-current={isCurrentPage ? 'page' : undefined}
+					{...restItemProps}
+				>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}
 				</Link>
+
+				{isOpen && (
+					<Flex as="ul" flexDirection="column">
+						{item.items?.map?.((item) => (
+							<AppLayoutSidebarNavListItem
+								activePath={activePath}
+								isOpen={isOpen}
+								item={item}
+								key={item.label?.toString()}
+							/>
+						))}
+					</Flex>
+				)}
 			</AppLayoutSidebarNavItemInner>
 		);
 	}
@@ -122,6 +178,7 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isActive={false}
+				isCurrentPage={false}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<BaseButton {...restItemProps}>
@@ -138,6 +195,7 @@ function AppLayoutSidebarNavListItem({
 		<AppLayoutSidebarNavItemInner
 			background={background}
 			isActive={false}
+			isCurrentPage={false}
 			hasEndElement={false}
 		>
 			<Stack as="span" gap={0.25}>
@@ -151,14 +209,18 @@ type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 	hasEndElement: boolean;
 	isActive: boolean;
+	isCurrentPage: boolean;
+	level?: number;
 	onClick?: () => void;
 }>;
 
 function AppLayoutSidebarNavItemInner({
 	background,
+	isCurrentPage,
 	children,
 	hasEndElement,
 	isActive,
+	level,
 	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
 	return (
@@ -171,7 +233,7 @@ function AppLayoutSidebarNavItemInner({
 					wordBreak: 'break-word', // Prevent long labels from causing overflow
 					paddingTop: mapSpacing(1),
 					paddingBottom: mapSpacing(1),
-					paddingLeft: mapSpacing(1.5),
+					paddingLeft: mapSpacing(level === 2 ? 3 : 1.5),
 					paddingRight: mapSpacing(1.5),
 
 					'& > svg': {
@@ -200,7 +262,9 @@ function AppLayoutSidebarNavItemInner({
 							left: 0,
 							bottom: 0,
 							borderLeftStyle: 'solid',
-							borderLeftColor: boxPalette.selected,
+							borderLeftColor: isCurrentPage
+								? boxPalette.selected
+								: boxPalette.border,
 							borderLeftWidth: tokens.borderWidth.xl,
 						},
 					}),
@@ -269,4 +333,23 @@ function AppLayoutSidebarNavDivider({
 			/>
 		</Box>
 	);
+}
+
+function hasSubLevelActiveItem(
+	items: ItemWithIsActive[] | undefined,
+	bestMatch: string | undefined
+): boolean {
+	if (!(items?.length && bestMatch)) return false;
+	return items.some((item) => {
+		if ('href' in item && item.href === bestMatch) {
+			return true;
+		}
+		if (
+			'items' in item &&
+			item.items?.length &&
+			hasSubLevelActiveItem(item.items, bestMatch)
+		) {
+			return true;
+		}
+	});
 }
