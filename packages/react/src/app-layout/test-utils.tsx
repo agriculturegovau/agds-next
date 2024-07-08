@@ -85,6 +85,18 @@ export const navigationItems = (businessName: string) => [
 			label: 'Compliance',
 			icon: SuccessIcon,
 			href: '/compliance',
+			items: [
+				{
+					label: 'Audit',
+					icon: MinusIcon,
+					href: '/compliance/audit',
+				},
+				{
+					label: 'Certificates',
+					icon: MinusIcon,
+					href: '/compliance/certificates',
+				},
+			],
 		},
 	],
 

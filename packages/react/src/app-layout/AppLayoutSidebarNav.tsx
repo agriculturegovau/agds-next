@@ -67,6 +67,7 @@ export const AppLayoutSidebarNav = ({
 	items,
 	subLevelVisible = 'whenActive',
 }: AppLayoutSidebarNavProps) => {
+	// console.log({ activePath });
 	return (
 		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
@@ -76,9 +77,13 @@ export const AppLayoutSidebarNav = ({
 						addIsActive(activePath)
 					);
 
-					const isOpen =
-						subLevelVisible === 'always' ||
-						hasSubLevelActiveItem(groupItems, activePath);
+					console.log({
+						groupItems,
+						hasSubLevelActiveItem: hasSubLevelActiveItem(
+							groupItems,
+							activePath
+						),
+					});
 
 					const disableGroupPadding = Array.isArray(group)
 						? false
@@ -100,15 +105,21 @@ export const AppLayoutSidebarNav = ({
 									disablePaddingBottom={disableGroupPadding}
 								/>
 							) : null}
-							{groupItems.map((item, index) => (
-								<AppLayoutSidebarNavListItem
-									activePath={activePath}
-									background={background}
-									isOpen={isOpen}
-									item={item}
-									key={index}
-								/>
-							))}
+							{groupItems.map((item, index) => {
+								const isOpen =
+									subLevelVisible === 'always' ||
+									hasSubLevelActiveItem(item.items, activePath);
+
+								return (
+									<AppLayoutSidebarNavListItem
+										activePath={activePath}
+										background={background}
+										isOpen={isOpen}
+										item={item}
+										key={index}
+									/>
+								);
+							})}
 						</Fragment>
 					);
 				})}
@@ -120,15 +131,15 @@ export const AppLayoutSidebarNav = ({
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
-	item: NavItem | ItemWithIsActive;
 	isOpen: boolean;
+	item: NavItem | ItemWithIsActive;
 };
 
 function AppLayoutSidebarNavListItem({
 	activePath,
 	background,
-	item,
 	isOpen,
+	item,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
 	const { endElement, icon: Icon, label, ...restItemProps } = item;
@@ -142,7 +153,8 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isCurrentPage={isCurrentPage}
-				isActive={Boolean('isActive' in item && item.isActive)}
+				// isActive={Boolean('isActive' in item && item.isActive)}
+				isActive={isOpen}
 				level={'level' in item ? item.level : undefined}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>

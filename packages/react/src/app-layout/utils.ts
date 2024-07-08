@@ -12,8 +12,10 @@ export const findBestMatch = (
 	if (!activePath) return '';
 
 	const allHrefs = items
-		.flatMap((group) => (Array.isArray(group) ? group : group.items))
-		.flatMap((group) => ('items' in group ? group.items : group))
+		.flatMap((item) => (Array.isArray(item) ? item : [item, ...item.items]))
+		.flatMap((item) =>
+			'items' in item && item.items !== undefined ? [item, ...item.items] : item
+		)
 		.map((item) =>
 			item && 'href' in item && item.href !== undefined ? item.href : ''
 		);
