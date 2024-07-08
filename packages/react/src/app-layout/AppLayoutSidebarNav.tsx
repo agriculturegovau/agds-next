@@ -67,7 +67,6 @@ export const AppLayoutSidebarNav = ({
 	items,
 	subLevelVisible = 'whenActive',
 }: AppLayoutSidebarNavProps) => {
-	// console.log({ activePath });
 	return (
 		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
 			<Flex as="ul" flexDirection="column">
@@ -76,14 +75,6 @@ export const AppLayoutSidebarNav = ({
 					const groupItems = (Array.isArray(group) ? group : group.items).map(
 						addIsActive(activePath)
 					);
-
-					console.log({
-						groupItems,
-						hasSubLevelActiveItem: hasSubLevelActiveItem(
-							groupItems,
-							activePath
-						),
-					});
 
 					const disableGroupPadding = Array.isArray(group)
 						? false

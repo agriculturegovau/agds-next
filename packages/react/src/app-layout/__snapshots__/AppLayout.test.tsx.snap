@@ -241,6 +241,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               href="/account"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -305,6 +306,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               href="/"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -331,11 +333,13 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-qmt8p8-AppLayoutSidebarNavItemInner"
+            class="css-11lpl70-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
               href="/establishments"
+              items="[object Object],[object Object]"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -363,6 +367,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               href="/intelligence"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -390,6 +395,8 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               href="/compliance"
+              items="[object Object],[object Object]"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -428,6 +435,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               href="/help"
+              level="1"
             >
               <svg
                 aria-hidden="true"
@@ -463,6 +471,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <button
               class="css-6e6ykx-BaseButton"
+              level="1"
               type="button"
             >
               <svg

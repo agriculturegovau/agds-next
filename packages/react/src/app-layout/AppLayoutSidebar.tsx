@@ -31,8 +31,6 @@ export function AppLayoutSidebar({
 	const { focusMode } = useAppLayoutContext();
 	const bestMatch = findBestMatch(items, activePath);
 
-	console.log({ activePath, bestMatch });
-
 	return (
 		<Fragment>
 			{/* Desktop */}
