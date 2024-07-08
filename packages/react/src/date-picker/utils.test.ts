@@ -99,7 +99,7 @@ describe('parseDate', () => {
 			expect(formattedDate).toEqual(new Date(2023, 9, 13));
 		});
 
-		test('Doesn’t format a valid AU format', () => {
+		test('Doesn’t format an invalid AU format', () => {
 			const formattedDate = parseDate('10/13/2023', allowedAUFormats);
 			expect(formattedDate).toEqual(undefined);
 		});
@@ -109,7 +109,7 @@ describe('parseDate', () => {
 			expect(formattedDate).toEqual(undefined);
 		});
 
-		test('Doesn’t format a valid US format', () => {
+		test('Doesn’t format an invalid US format', () => {
 			const formattedDate = parseDate('10/13/2023', allowedUSFormats);
 			expect(formattedDate).toEqual(new Date(2023, 9, 13));
 		});

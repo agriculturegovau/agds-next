@@ -1,12 +1,12 @@
 import {
-	isDate,
-	format,
-	parse,
-	isValid,
-	isBefore,
-	isAfter,
 	closestTo,
+	format,
+	isAfter,
+	isBefore,
+	isDate,
 	isMatch,
+	isValid,
+	parse,
 } from 'date-fns';
 
 export const acceptedDateFormats = [

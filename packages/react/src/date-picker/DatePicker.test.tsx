@@ -285,7 +285,7 @@ describe('DatePicker', () => {
 		const onChange = jest.fn();
 		const onInputChange = jest.fn();
 
-		it('formats when an allowed format is entered', async () => {
+		it('formats when a valid format is entered', async () => {
 			renderDatePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				label: 'Example',
@@ -304,7 +304,7 @@ describe('DatePicker', () => {
 			expect(onInputChange).not.toHaveBeenCalled();
 		});
 
-		it('doesn’t format when a disallowed format is entered', async () => {
+		it('doesn’t format when an invalid format is entered', async () => {
 			renderDatePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				label: 'Example',

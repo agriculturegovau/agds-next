@@ -16,14 +16,14 @@ import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
 import { DateInput } from './DatePickerInput';
 import {
-	parseDate,
-	formatDate,
+	acceptedDateFormats,
 	constrainDate,
-	transformValuePropToInputValue,
+	formatDate,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
+	parseDate,
+	transformValuePropToInputValue,
 	type AcceptedDateFormats,
-	acceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;

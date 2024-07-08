@@ -367,7 +367,7 @@ describe('DateRangePicker', () => {
 		const onChange = jest.fn();
 		const onFromInputChange = jest.fn();
 
-		it('formats when an allowed format is entered', async () => {
+		it('formats when a valid format is entered', async () => {
 			renderDateRangePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				onChange,
@@ -385,7 +385,7 @@ describe('DateRangePicker', () => {
 			expect(onFromInputChange).not.toHaveBeenCalled();
 		});
 
-		it('doesn’t format when a disallowed format is entered', async () => {
+		it('doesn’t format when an invalid format is entered', async () => {
 			renderDateRangePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				onChange,
