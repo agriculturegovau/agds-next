@@ -365,11 +365,13 @@ describe('DateRangePicker', () => {
 
 	describe('allowedDateFormats', () => {
 		const onChange = jest.fn();
+		const onFromInputChange = jest.fn();
 
 		it('formats when an allowed format is entered', async () => {
 			renderDateRangePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
-				onChange: onChange,
+				onChange,
+				onFromInputChange,
 			});
 
 			const dateString = '23-05-2023';
@@ -380,26 +382,32 @@ describe('DateRangePicker', () => {
 			await userEvent.keyboard('{Tab}');
 
 			expect(onChange).toHaveBeenLastCalledWith({ from: date, to: undefined });
+			expect(onFromInputChange).not.toHaveBeenCalled();
 		});
 
 		it('doesn’t format when a disallowed format is entered', async () => {
 			renderDateRangePicker({
 				allowedDateFormats: ['dd-MM-yyyy'],
-				onChange: onChange,
+				onChange,
+				onFromInputChange,
 			});
 
+			const dateString = '05-23-2023';
+
 			// Type a valid date in the input field that isn't in the allowed format
-			await userEvent.type(await getFromInput(), '05-23-2023');
+			await userEvent.type(await getFromInput(), dateString);
 			await userEvent.keyboard('{Tab}');
 
 			expect(onChange).not.toHaveBeenCalled();
+			expect(onFromInputChange).toHaveBeenLastCalledWith(dateString);
 		});
 
 		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
 			renderDateRangePicker({
 				allowedDateFormats: ['MM/dd/yyyy'],
 				dateFormat: 'dd MMMM yyyy',
-				onChange: onChange,
+				onChange,
+				onFromInputChange,
 			});
 
 			const dateString = '08 February 2023';
@@ -410,6 +418,7 @@ describe('DateRangePicker', () => {
 			await userEvent.keyboard('{Tab}');
 
 			expect(onChange).toHaveBeenLastCalledWith({ from: date, to: undefined });
+			expect(onFromInputChange).not.toHaveBeenCalled();
 		});
 	});
 
