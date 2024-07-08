@@ -363,6 +363,56 @@ describe('DateRangePicker', () => {
 		expect(await getToInput()).toHaveValue('10 Jun 2023');
 	});
 
+	describe('allowedDateFormats', () => {
+		const onChange = jest.fn();
+
+		it('formats when an allowed format is entered', async () => {
+			renderDateRangePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				onChange: onChange,
+			});
+
+			const dateString = '23-05-2023';
+			const date = parseDate(dateString) as Date;
+
+			// Type a valid date in the input field that is in the allowed format
+			await userEvent.type(await getFromInput(), dateString);
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).toHaveBeenLastCalledWith({ from: date, to: undefined });
+		});
+
+		it('doesn’t format when a disallowed format is entered', async () => {
+			renderDateRangePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				onChange: onChange,
+			});
+
+			// Type a valid date in the input field that isn't in the allowed format
+			await userEvent.type(await getFromInput(), '05-23-2023');
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
+			renderDateRangePicker({
+				allowedDateFormats: ['MM/dd/yyyy'],
+				dateFormat: 'dd MMMM yyyy',
+				onChange: onChange,
+			});
+
+			const dateString = '08 February 2023';
+			const date = parseDate(dateString) as Date;
+
+			// Type a valid date in the input field that isn't in the display format
+			await userEvent.type(await getFromInput(), dateString);
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).toHaveBeenLastCalledWith({ from: date, to: undefined });
+		});
+	});
+
 	it('legend: renders a hidden legend by default when optional', async () => {
 		const defaultLegend = 'Date range';
 

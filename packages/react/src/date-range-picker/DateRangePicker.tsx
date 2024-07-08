@@ -56,7 +56,7 @@ type DateRangePickerCalendarProps = {
 
 export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** Specifies the date formats that can be parsed. */
-	allowedDateFormats: ReadonlyArray<AcceptedDateFormats>;
+	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>;
 	/** Describes the purpose of the group of fields. */
 	legend?: string;
 	/** Provides extra information about the group of fields. */
@@ -125,6 +125,7 @@ export const DateRangePicker = ({
 		() =>
 			Array.from(
 				new Set([
+					// We need to ensure that the dateFormat to render is included in allowedDateFormats. It should also be the preferred format.
 					dateFormat,
 					...allowedDateFormatsProp.filter((dateFormat) =>
 						acceptedDateFormats.includes(dateFormat)
@@ -380,11 +381,11 @@ export const DateRangePicker = ({
 							onChange={onFromInputChange}
 							buttonRef={fromTriggerRef}
 							buttonOnClick={onFromTriggerClick}
-							buttonAriaLabel={getDateInputButtonAriaLabel(
-								fromInputValue,
+							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
-								'start'
-							)}
+								rangeName: 'start',
+								value: fromInputValue,
+							})}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
@@ -402,11 +403,11 @@ export const DateRangePicker = ({
 							onChange={onToInputChange}
 							buttonRef={toTriggerRef}
 							buttonOnClick={onToTriggerClick}
-							buttonAriaLabel={getDateInputButtonAriaLabel(
-								toInputValue,
+							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
-								'end'
-							)}
+								rangeName: 'end',
+								value: toInputValue,
+							})}
 							disabled={disabled}
 							required={required}
 							invalid={{ field: false, input: toInvalid }}

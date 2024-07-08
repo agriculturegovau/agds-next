@@ -120,11 +120,15 @@ export function getCalendarDefaultMonth(
 }
 
 // Gets the `aria-label` for the button that opens the calendar picker
-export function getDateInputButtonAriaLabel(
-	value: string | undefined,
-	allowedDateFormats: ReadonlyArray<AcceptedDateFormats> | undefined,
-	rangeName: 'start' | 'end' | undefined
-) {
+export function getDateInputButtonAriaLabel({
+	allowedDateFormats,
+	rangeName,
+	value,
+}: {
+	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>;
+	rangeName?: 'start' | 'end';
+	value?: string;
+}) {
 	const dateStr = rangeName ? `${rangeName} date` : 'date';
 	if (typeof value !== 'string') return `Choose ${dateStr}`;
 	const parsed = parseDate(value, allowedDateFormats);

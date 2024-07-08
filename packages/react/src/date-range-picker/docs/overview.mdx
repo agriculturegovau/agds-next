@@ -70,17 +70,17 @@ In this case, you can use the `onFromInputChange` and `onToInputChange` props to
 	const toInvalid = isInvalid(value.from);
 
 	const onFromInputChange = (from) => {
-		console.log(`onFromInputChange`, from);
+		console.log('onFromInputChange', from);
 		setValue({ ...value, from });
 	};
 
 	const onToInputChange = (to) => {
-		console.log(`onToInputChange`, to);
+		console.log('onToInputChange', to);
 		setValue({ ...value, to });
 	};
 
 	const onChange = (e) => {
-		console.log(`onChange`, e);
+		console.log('onChange', e);
 		setValue(e);
 	};
 
@@ -290,6 +290,61 @@ To modify the date format, you can change the `dateFormat` prop to one of these 
 			onFromInputChange={(from) => setValue({ ...value, from })}
 			onToInputChange={(to) => setValue({ ...value, to })}
 			dateFormat="d MMM yyyy"
+		/>
+	);
+};
+```
+
+## Changing the allowed date formats
+
+By default, all of the supported date formats are allowed, but should you need to restrict the formats that can be parsed and validated, you can pass in an array of date format strings to the `allowedDateFormats` prop.
+
+Some applications may find it useful to remove US formats, since an invalid AU date could become a valid US date and cause confusion for users.
+
+Date formats are parsed in order from first to last and stops when a valid date is found. The preferred `dateFormat` always becomes the first to check, even if omitted in `allowedDateFormats`.
+
+```jsx live
+() => {
+	// Set the value to a value that the user might think is valid
+	const [value, setValue] = React.useState({ from: '', to: '' });
+
+	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
+	// See Single-page form template
+	const isInvalid = React.useCallback((value) => {
+		if (typeof value === 'undefined' || value == '') return false;
+		if (value instanceof Date && !isNaN(value.getTime())) return false;
+		return true;
+	}, []);
+
+	const fromInvalid = isInvalid(value.from);
+	const toInvalid = isInvalid(value.from);
+
+	const onFromInputChange = (from) => {
+		console.log('onFromInputChange', from);
+		setValue({ ...value, from });
+	};
+
+	const onToInputChange = (to) => {
+		console.log('onToInputChange', to);
+		setValue({ ...value, to });
+	};
+
+	const onChange = (e) => {
+		console.log('onChange', e);
+		setValue(e);
+	};
+
+	return (
+		<DateRangePicker
+			value={value}
+			onChange={onChange}
+			onFromInputChange={onFromInputChange}
+			onToInputChange={onToInputChange}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
+			hint="Only short AU formats allowed"
+			allowedDateFormats={['dd MM yyyy', 'dd-MM-yyyy']}
 		/>
 	);
 };

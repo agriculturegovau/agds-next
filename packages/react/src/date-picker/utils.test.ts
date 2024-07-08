@@ -86,31 +86,32 @@ describe('parseDate', () => {
 	});
 
 	describe('only parses allowed date formats', () => {
-		const testFormats = ['18 02 2023'];
+		const allowedAUFormats = [
+			'dd/MM/yyyy', // e.g. 13/10/2023
+		] as const;
 
-		const allowedDateFormats = [
-			'dd/MM/yyyy', // e.g. 18/02/2023
-			'dd-MM-yyyy', // e.g. 18-02-2023
-			'dd MM yyyy', // e.g. 18 02 2023
-		];
+		const allowedUSFormats = [
+			'MM/dd/yyyy', // e.g. 10/13/2023
+		] as const;
 
-		const disallowedDateFormats = [
-			'MMM do yyyy', // e.g. Feb 8th 2023
-			'd MMMM yyyy', // e.g. 8 February 2023
-			'd MMM yyyy', // e.g. 8 Feb 2023
-			'MMMM d yyyy', // e.g. February 8 2023
-			'MMM d yyyy', // e.g. Feb 8 2023
-			'dd MMMM yyyy', // e.g. 08 February 2023
-			'dd MMM yyyy', // e.g. 08 Feb 2023
-			'MMMM dd yyyy', // e.g. February 08 2023
-			'MMM dd yyyy', // e.g. Feb 08 2023
-		];
+		test('Formats a valid AU format', () => {
+			const formattedDate = parseDate('13/10/2023', allowedAUFormats);
+			expect(formattedDate).toEqual(new Date(2023, 9, 13));
+		});
 
-		testFormats.forEach((example) => {
-			test(`Format "${example}"`, () => {
-				const formattedDate = parseDate(example, allowedDateFormats);
-				expect(formattedDate).toEqual(new Date(2023, 1, 18));
-			});
+		test('Doesn’t format a valid AU format', () => {
+			const formattedDate = parseDate('10/13/2023', allowedAUFormats);
+			expect(formattedDate).toEqual(undefined);
+		});
+
+		test('Formats a valid US format', () => {
+			const formattedDate = parseDate('13/10/2023', allowedUSFormats);
+			expect(formattedDate).toEqual(undefined);
+		});
+
+		test('Doesn’t format a valid US format', () => {
+			const formattedDate = parseDate('10/13/2023', allowedUSFormats);
+			expect(formattedDate).toEqual(new Date(2023, 9, 13));
 		});
 	});
 });
@@ -226,17 +227,45 @@ describe('getCalendarDefaultMonth', () => {
 });
 
 describe('getDateInputButtonAriaLabel', () => {
-	it('returns `Choose date` when no date is set', () => {
-		expect(getDateInputButtonAriaLabel(undefined)).toEqual('Choose date');
-		expect(getDateInputButtonAriaLabel('')).toEqual('Choose date');
+	it('returns "Choose date" when no date is set', () => {
+		expect(getDateInputButtonAriaLabel({ value: undefined })).toEqual(
+			'Choose date'
+		);
+
+		expect(getDateInputButtonAriaLabel({ value: '' })).toEqual('Choose date');
 	});
 
-	it('returns `Change date, x` when a date is set', () => {
-		expect(getDateInputButtonAriaLabel('14/02/1990')).toEqual(
-			'Change date, 14th February 1990 (Wednesday)'
-		);
-		expect(getDateInputButtonAriaLabel('05/06/2010')).toEqual(
+	it('returns "Change date, x" when a date is set', () => {
+		expect(getDateInputButtonAriaLabel({ value: '05/06/2010' })).toEqual(
 			'Change date, 5th June 2010 (Saturday)'
 		);
+	});
+
+	it('returns "Choose start date" when no date and "start" is set', () => {
+		expect(
+			getDateInputButtonAriaLabel({ value: undefined, rangeName: 'start' })
+		).toEqual('Choose start date');
+
+		expect(
+			getDateInputButtonAriaLabel({ value: '', rangeName: 'start' })
+		).toEqual('Choose start date');
+	});
+
+	it('returns "Change start date, x" when a date and "start" is set', () => {
+		expect(
+			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'start' })
+		).toEqual('Change start date, 5th June 2010 (Saturday)');
+	});
+
+	it('returns "Choose end date" when no date and "end" is set', () => {
+		expect(
+			getDateInputButtonAriaLabel({ value: '', rangeName: 'end' })
+		).toEqual('Choose end date');
+	});
+
+	it('returns "Change end date, x" when a date and "end" is set', () => {
+		expect(
+			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'end' })
+		).toEqual('Change end date, 5th June 2010 (Saturday)');
 	});
 });

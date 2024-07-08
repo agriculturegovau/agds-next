@@ -281,6 +281,59 @@ describe('DatePicker', () => {
 		expect(await getInput()).toHaveValue('5 Jun 2023');
 	});
 
+	describe('allowedDateFormats', () => {
+		const onChange = jest.fn();
+
+		it('formats when an allowed format is entered', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				label: 'Example',
+				onChange: onChange,
+			});
+
+			const dateString = '23-05-2023';
+			const date = parseDate(dateString) as Date;
+
+			// Type a valid date in the input field that is in the allowed format
+			await userEvent.type(await getInput(), dateString);
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).toHaveBeenLastCalledWith(date);
+		});
+
+		it('doesn’t format when a disallowed format is entered', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				label: 'Example',
+				onChange: onChange,
+			});
+
+			// Type a valid date in the input field that isn't in the allowed format
+			await userEvent.type(await getInput(), '05-23-2023');
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).not.toHaveBeenCalled();
+		});
+
+		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['MM/dd/yyyy'],
+				dateFormat: 'dd MMMM yyyy',
+				label: 'Example',
+				onChange: onChange,
+			});
+
+			const dateString = '08 February 2023';
+			const date = parseDate(dateString) as Date;
+
+			// Type a valid date in the input field that isn't in the display format
+			await userEvent.type(await getInput(), dateString);
+			await userEvent.keyboard('{Tab}');
+
+			expect(onChange).toHaveBeenLastCalledWith(date);
+		});
+	});
+
 	it('formSchema: yupDateField works when optional', () => {
 		const optionalFormSchema = formSchema(false);
 		expect(optionalFormSchema.isValidSync({ date: undefined })).toEqual(true);
