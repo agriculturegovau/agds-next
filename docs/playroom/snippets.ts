@@ -476,7 +476,6 @@ const snippets: Array<Snippet> = [
 		code: `<SideNav
 			activePath="#welcome"
 			title="SideNav"
-			collapseTitle="In this section"
 			titleLink="#"
 			items={[
 				{

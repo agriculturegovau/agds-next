@@ -20,7 +20,7 @@ export type SideNavProps = {
 	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** @deprecated Unused. The title is now always used, even when collapsed. */
-	collapseTitle: string;
+	collapseTitle?: string;
 	/** The list of links. */
 	items: SideNavMenuItemType[];
 	/** The title is placed at the top of the list of links. */
