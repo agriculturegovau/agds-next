@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { Box, type BorderColor } from '../box';
 import { Flex } from '../flex';
 import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
@@ -23,6 +23,8 @@ export type AppLayoutHeaderProps = {
 	/** Used to indicate if an application is in a prerelease state. */
 	badgeLabel?: string;
 	borderColor?: ResponsiveProp<BorderColor>;
+	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
+	dividerPosition?: 'after' | 'between';
 	/** The heading should be set to the website or service title. */
 	heading: string;
 	/**  The href to link to, for example "/". */
@@ -30,8 +32,12 @@ export type AppLayoutHeaderProps = {
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** The logo to display. */
-	logo: JSX.Element;
+	logo: ReactElement;
 	palette?: ResponsiveProp<BoxPalette>;
+	/** The href to link to, for example "/". */
+	secondHref?: string;
+	/** The second logo to display for co-branding. */
+	secondLogo?: ReactElement;
 	/** Used to provide additional information to describe your website or service. */
 	subLine?: string;
 };
@@ -41,11 +47,14 @@ export function AppLayoutHeader({
 	background = 'bodyAlt',
 	badgeLabel,
 	borderColor = 'accent',
+	dividerPosition = 'after',
 	heading,
 	href,
 	id,
 	logo,
 	palette = 'dark',
+	secondHref,
+	secondLogo,
 	subLine,
 }: AppLayoutHeaderProps) {
 	return (
@@ -74,9 +83,13 @@ export function AppLayoutHeader({
 			>
 				<AppLayoutHeaderBrand
 					badgeLabel={badgeLabel}
+					dividerPosition={dividerPosition}
+					hasAccountDetails={Boolean(accountDetails)}
 					heading={heading}
 					href={href}
 					logo={logo}
+					secondHref={secondHref}
+					secondLogo={secondLogo}
 					subLine={subLine}
 				/>
 				<Box

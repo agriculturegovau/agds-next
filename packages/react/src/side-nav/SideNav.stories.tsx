@@ -1,13 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../box';
 import { SideNav } from './SideNav';
-import { defaultTestingProps } from './test-utils';
+import { alwaysOpenItems, defaultTestingProps } from './test-utils';
 
 const meta: Meta<typeof SideNav> = {
 	title: 'navigation/SideNav',
 	component: SideNav,
 	args: {
 		...defaultTestingProps,
+		subLevelVisible: 'whenActive',
 	},
 };
 
@@ -15,15 +16,21 @@ export default meta;
 
 type Story = StoryObj<typeof SideNav>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+	args: {
+		activePath: '/welcome',
+	},
+};
 
-export const ChildActive: Story = {
+export const LevelOneActive: Story = {};
+
+export const LevelTwoActive: Story = {
 	args: {
 		activePath: '/in-detail/record-keeping',
 	},
 };
 
-export const GrandChildActive: Story = {
+export const LevelThreeActive: Story = {
 	args: {
 		activePath: '/in-detail/record-keeping/incorrect-amounts',
 	},
@@ -46,4 +53,12 @@ export const OnBodyAlt: Story = {
 			<SideNav {...args} />
 		</Box>
 	),
+};
+
+export const SubLevelsAlwaysOpen: Story = {
+	args: {
+		activePath: '#page-1',
+		items: alwaysOpenItems,
+		subLevelVisible: 'always',
+	},
 };

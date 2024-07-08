@@ -32,7 +32,7 @@ Avoid adding or removing pages to a multi-step form where a progress indicator i
 
 By default, a Progress indicator contains links to each level 1 page of a multi-step form.
 
-When a user navigates to a secondary action page from a level 1 page, a nested level 2 link is revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
+When a user navigates to a secondary action page from a level 1 page, a level 2 link is revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
 
 <DoHeading />
 
@@ -161,7 +161,7 @@ The Progress indicator component displays a subtitle "x of y steps completed" by
 
 If a level 1 page has a secondary step, such as editing its content, use a separate page for this secondary step.
 
-When users navigate to this secondary step, let them know where they are by adding a nested level 2 step `item`. Only one level 2 step may exist for each level 1 step.
+When users navigate to this secondary step, let them know where they are by adding a level 2 step `item`. Only one level 2 step may exist for each level 1 step.
 
 ```jsx live
 <ProgressIndicator
@@ -187,7 +187,7 @@ When users navigate to this secondary step, let them know where they are by addi
 
 ### An example of a level 2 step
 
-By default, Progress indicators contain level 1 links to each page of a multi-step form. When additional pages are required for secondary actions nested under level 1 pages, level 2 links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
+By default, Progress indicators contain level 1 links to each page of a multi-step form. When additional pages are required for secondary actions under level 1 pages, level 2 links are revealed in the Progress indicator to help a user understand where they have navigated to and how to return to the previous step.
 
 <ImageWithBorder src="/img/progress-indicator-level-two--1.png" alt="" />
 
