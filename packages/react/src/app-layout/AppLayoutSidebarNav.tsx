@@ -49,6 +49,9 @@ const addIsActive =
 		const isCurrentPage = 'href' in item && item.href === activePath;
 		const isActive =
 			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
+		if (isCurrentPage) {
+			console.log(item.href);
+		}
 
 		return {
 			...item,
@@ -151,7 +154,7 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isCurrentPage={isCurrentPage}
-				isActive={isOpen}
+				isActive={isOpen || isCurrentPage}
 				level={'level' in item ? item.level : undefined}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
@@ -232,6 +235,7 @@ function AppLayoutSidebarNavItemInner({
 	level,
 	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
+	console.log({ isCurrentPage, isActive, level });
 	return (
 		<li
 			css={{
@@ -355,16 +359,9 @@ function hasSubLevelActiveItem(
 	bestMatch: string | undefined
 ): boolean {
 	if (!(items?.length && bestMatch)) return false;
-	return items.some((item) => {
-		if ('href' in item && item.href === bestMatch) {
-			return true;
-		}
-		if (
-			'items' in item &&
-			item.items?.length &&
-			hasSubLevelActiveItem(item.items, bestMatch)
-		) {
-			return true;
-		}
-	});
+	return items.some(
+		(item) =>
+			('href' in item && item.href === bestMatch) ||
+			('items' in item && hasSubLevelActiveItem(item.items, bestMatch))
+	);
 }
