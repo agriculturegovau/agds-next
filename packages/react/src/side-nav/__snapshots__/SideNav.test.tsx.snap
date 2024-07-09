@@ -16,11 +16,11 @@ exports[`SideNav renders correctly 1`] = `
           class="css-m2oixi-boxStyles-SideNav"
           id="sideNav-:r0:-title"
         >
-          <div
+          <span
             class="css-1jga52b-boxStyles"
           >
             Lodging your tax return
-          </div>
+          </span>
         </h2>
       </div>
       <button

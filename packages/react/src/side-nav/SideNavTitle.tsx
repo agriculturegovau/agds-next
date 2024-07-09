@@ -49,6 +49,7 @@ export function SideNavTitle({
 			id={id}
 		>
 			<Box
+				as="span"
 				color="text"
 				display="block"
 				focusRingFor="keyboard"
