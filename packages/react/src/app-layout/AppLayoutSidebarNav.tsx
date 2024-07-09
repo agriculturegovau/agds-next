@@ -22,9 +22,9 @@ export type NavItem = (NavLink | NavButton) & {
 	label: ReactNode;
 	endElement?: ReactNode;
 	icon?: ComponentType<IconProps>;
+	isActive?: boolean;
 	items?: NavItem[];
 	level?: number;
-	isActive?: boolean;
 };
 
 export type AppLayoutSidebarNavProps = {
@@ -119,7 +119,7 @@ type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
 	isOpen: boolean;
-	item: NavItem | NavItem;
+	item: NavItem;
 };
 
 function AppLayoutSidebarNavListItem({
@@ -133,9 +133,9 @@ function AppLayoutSidebarNavListItem({
 		endElement,
 		icon: Icon,
 		isActive,
+		items,
 		label,
 		level,
-		items,
 		...restItemProps
 	} = item;
 	const { closeMobileMenu } = useAppLayoutContext();
@@ -148,8 +148,8 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isCurrentPage={isCurrentPage}
-				isActive={isOpen || isCurrentPage}
-				level={'level' in item ? item.level : undefined}
+				isActive={isCurrentPage || isOpen}
+				level={item.level}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<Link
@@ -223,9 +223,9 @@ type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
 
 function AppLayoutSidebarNavItemInner({
 	background,
-	isCurrentPage,
 	children,
 	hasEndElement,
+	isCurrentPage,
 	isActive,
 	level,
 	onClick,
