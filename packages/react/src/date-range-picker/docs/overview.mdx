@@ -69,19 +69,19 @@ In this case, you can use the `onFromInputChange` and `onToInputChange` props to
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.from);
 
-	const onFromInputChange = (from) => {
-		console.log('onFromInputChange', from);
-		setValue({ ...value, from });
+	const onFromInputChange = (fromValue) => {
+		console.log('onFromInputChange', fromValue);
+		setValue({ ...value, fromValue });
 	};
 
-	const onToInputChange = (to) => {
-		console.log('onToInputChange', to);
-		setValue({ ...value, to });
+	const onToInputChange = (toValue) => {
+		console.log('onToInputChange', toValue);
+		setValue({ ...value, toValue });
 	};
 
-	const onChange = (e) => {
-		console.log('onChange', e);
-		setValue(e);
+	const onChange = (dateRange) => {
+		console.log('onChange', dateRange);
+		setValue(dateRange);
 	};
 
 	return (
@@ -319,19 +319,19 @@ Date formats are parsed in order from first to last and stops when a valid date 
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.from);
 
-	const onFromInputChange = (from) => {
-		console.log('onFromInputChange', from);
-		setValue({ ...value, from });
+	const onFromInputChange = (fromValue) => {
+		console.log('onFromInputChange', fromValue);
+		setValue({ ...value, fromValue });
 	};
 
-	const onToInputChange = (to) => {
-		console.log('onToInputChange', to);
-		setValue({ ...value, to });
+	const onToInputChange = (toValue) => {
+		console.log('onToInputChange', toValue);
+		setValue({ ...value, toValue });
 	};
 
-	const onChange = (e) => {
-		console.log('onChange', e);
-		setValue(e);
+	const onChange = (dateRange) => {
+		console.log('onChange', dateRange);
+		setValue(dateRange);
 	};
 
 	return (
