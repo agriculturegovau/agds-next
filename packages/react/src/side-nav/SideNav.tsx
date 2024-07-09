@@ -74,7 +74,7 @@ export function SideNav({
 			>
 				<SideNavTitle
 					as="span"
-					// Don't render the title on small screen if there is no link so it's unnecessary double-up of headings
+					// Don't render the title on small screen if there is no link as it's unnecessary double-up of headings
 					display={{ xs: titleLink ? 'block' : 'none', md: 'block' }}
 					href={titleLink}
 					isCurrentPage={activePath === titleLink}

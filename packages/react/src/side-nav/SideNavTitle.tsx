@@ -24,7 +24,7 @@ export function SideNavTitle({
 }: SideNavTitleProps) {
 	const Link = useLinkComponent();
 
-	const conditionalProps = href
+	const linkProps = href
 		? {
 				'aria-current': isCurrentPage ? 'page' : undefined,
 				as: Link,
@@ -56,7 +56,7 @@ export function SideNavTitle({
 				fontWeight="bold"
 				lineHeight="heading"
 				padding={1}
-				{...conditionalProps}
+				{...linkProps}
 			>
 				{children}
 			</Box>

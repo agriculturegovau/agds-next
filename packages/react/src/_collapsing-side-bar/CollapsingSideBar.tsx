@@ -13,10 +13,10 @@ import { ChevronDownIcon } from '@ag.ds-next/react/icon';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import {
-	hoverColorMap,
 	CollapsingSideBarBackground,
 	collapsingSideBarHoverProp,
 	collapsingSideBarHoverVar,
+	hoverColorMap,
 	useCollapsingSideBarIds,
 } from './utils';
 
@@ -31,7 +31,7 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	customTitle?: ReactNode;
 	/** The gap between the small title/subTitle and children. */
 	gap?: BoxProps['gap'];
-	/** The subtitle of the CollapsingSideBar. */
+	/** The subTitle of the CollapsingSideBar. */
 	subTitle?: string;
 	/** The title of the CollapsingSideBar. Still required even when using customTitle. */
 	title: string;
