@@ -38,8 +38,8 @@ const ContextWrapper = ({ children }: { children: ReactNode }) => (
 );
 
 describe('Given AppLayoutSidebarNav is rendered', () => {
-	describe('when subLevelVisible is "whenActive"', () => {
-		describe('when there is a mix of zero and more sub-level items', () => {
+	describe('when there is a mix of zero and more sub-level items', () => {
+		describe('when subLevelVisible is "whenActive"', () => {
 			describe('when the active item has no sub-level items', () => {
 				test('then no sub-level items should be visible', async () => {
 					render(
