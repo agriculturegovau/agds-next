@@ -24,6 +24,7 @@ export type NavItem = (NavLink | NavButton) & {
 	icon?: ComponentType<IconProps>;
 	items?: NavItem[];
 	level?: number;
+	isActive?: boolean;
 };
 
 export type AppLayoutSidebarNavProps = {
@@ -37,15 +38,10 @@ export type AppLayoutSidebarNavProps = {
 	subLevelVisible?: 'always' | 'whenActive';
 };
 
-type ItemWithIsActive = NavItem & {
-	isActive?: boolean;
-	items?: ItemWithIsActive[];
-};
-
 // Recursively add `isActive` to any sub-level items
 const addIsActive =
 	(activePath: AppLayoutSidebarNavProps['activePath'], level = 0) =>
-	(item: ItemWithIsActive): ItemWithIsActive => {
+	(item: NavItem): NavItem => {
 		const isCurrentPage = 'href' in item && item.href === activePath;
 		const isActive =
 			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
@@ -123,7 +119,7 @@ type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
 	isOpen: boolean;
-	item: NavItem | ItemWithIsActive;
+	item: NavItem | NavItem;
 };
 
 function AppLayoutSidebarNavListItem({
@@ -136,6 +132,7 @@ function AppLayoutSidebarNavListItem({
 	const {
 		endElement,
 		icon: Icon,
+		isActive,
 		label,
 		level,
 		items,
@@ -352,7 +349,7 @@ function AppLayoutSidebarNavDivider({
 }
 
 function hasSubLevelActiveItem(
-	items: ItemWithIsActive[] | undefined,
+	items: NavItem[] | undefined,
 	bestMatch: string | undefined
 ): boolean {
 	if (!(items?.length && bestMatch)) return false;
