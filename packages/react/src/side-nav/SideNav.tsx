@@ -9,9 +9,9 @@ import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
 
-type SideNavMenuItemType = Omit<LinkProps, 'children'> & {
+type SideNavMenuItem = Omit<LinkProps, 'children'> & {
 	label: string;
-	items?: SideNavMenuItemType[];
+	items?: SideNavMenuItem[];
 };
 
 export type SideNavProps = {
@@ -22,9 +22,11 @@ export type SideNavProps = {
 	/** @deprecated Unused. The title is now always used, even when collapsed. */
 	collapseTitle?: string;
 	/** The list of links. */
-	items: SideNavMenuItemType[];
+	items: SideNavMenuItem[];
 	/** The title is placed at the top of the list of links. */
 	title: string;
+	/** When to show sub-level navigation items. */
+	subLevelVisible?: 'always' | 'whenActive';
 	/** If provided, the title will be rendered as an anchor element. */
 	titleLink?: string;
 };
@@ -34,6 +36,7 @@ export function SideNav({
 	background = 'body',
 	collapseTitle,
 	items,
+	subLevelVisible = 'whenActive',
 	title,
 	titleLink,
 }: SideNavProps) {
@@ -78,7 +81,12 @@ export function SideNav({
 				>
 					{title}
 				</SideNavTitle>
-				<SideNavLinkList activePath={bestMatch} items={items} />
+
+				<SideNavLinkList
+					activePath={bestMatch}
+					items={items}
+					subLevelVisible={subLevelVisible}
+				/>
 			</Box>
 		</CollapsingSideBar>
 	);

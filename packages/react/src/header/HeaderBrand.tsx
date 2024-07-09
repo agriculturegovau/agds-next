@@ -99,10 +99,10 @@ export function HeaderBrand({
 				css={
 					dividerPosition === 'after'
 						? {
-								[`${tokens.mediaQuery.min.lg}`]: {
+								[tokens.mediaQuery.min.lg]: {
 									marginLeft: `calc(-${
 										hasRightContent ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
-									} -${tokens.borderWidth.sm}px)`, // Hide the divider when the heading text flows to the second row
+									} - ${tokens.borderWidth.sm}px)`, // Hide the divider when the heading text flows to the second row
 								},
 						  }
 						: undefined

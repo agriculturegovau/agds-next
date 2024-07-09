@@ -71,7 +71,7 @@ relatedComponents: ['inpage-nav', 'link-list', 'sub-nav']
 />
 ```
 
-The side navigation allows users to find other pages which share a similar topic or section. By default, it supports three levels of nesting along with an accompanying heading.
+The side navigation allows users to find other pages which share a similar topic or section. By default, it supports three sub-levels along with an accompanying heading.
 
 On mobile and smaller viewports, the side navigation uses functionality from the accordion component to collapse down to an expandable element.
 
@@ -80,9 +80,116 @@ The background of the `SideNav` must match the background it is being placed on.
 <DoHeading />
 
 - include a concise label
-- indent each nesting level
+- indent each sub-level
 
 <DontHeading />
 
-- create more than 3 levels of nesting
-- place on the right-hand side of content.
+- create more than 2 sub-levels
+- place on the right-hand side of content
+- keep all lists with sub-levels open when there are many items.
+
+## Sub-level items
+
+To help users comprehend the side navigation, choose a strategy that is appropriate for the number of items in the list.
+
+### Visible when active
+
+When the list of items is long, prefer showing any sub-level lists when either navigating to the parent item or one of the sub-level items. Since this is the default behaviour, either setting `subLevelVisible="whenActive"` or omitting this prop will use this strategy.
+
+```jsx live
+<SideNav
+	activePath="#in-detail/record-keeping"
+	subLevelVisible="whenActive"
+	title="Lodging your tax return"
+	titleLink="#"
+	items={[
+		{
+			href: '#welcome',
+			label: 'Welcome',
+		},
+		{
+			href: '#do-you-need-to-lodge-a-tax-return',
+			label: 'Do you need to lodge a tax return?',
+		},
+		{
+			href: '#lodge-online',
+			label: 'Lodge online',
+			items: [
+				{
+					href: '#lodge-online/pre-filling',
+					label: 'Pre-filling your online tax return',
+				},
+			],
+		},
+		{
+			href: '#whats-new-for-individuals',
+			label: 'What’s new for individuals',
+		},
+		{
+			href: '#why-you-may-receive-a-tax-bill',
+			label: 'Why you may receive a tax bill',
+		},
+		{
+			href: '#in-detail',
+			label: 'In detail',
+			items: [
+				{
+					href: '#in-detail/record-keeping',
+					label: 'Record keeping',
+					items: [
+						{
+							href: '#in-detail/record-keeping/tax',
+							label: 'Keeping your tax records',
+						},
+						{
+							href: '#in-detail/record-keeping/incorrect-amounts',
+							label: 'Incorrect amounts',
+						},
+					],
+				},
+				{
+					href: '#tax-receipt',
+					label: 'Tax receipt',
+				},
+				{
+					href: '#pre-fill-availability',
+					label: 'Pre-fill availability',
+				},
+			],
+		},
+	]}
+/>
+```
+
+### Always visible
+
+When you have a small number of sub-level items, it’s easier for users to see all items at once. Set `subLevelVisible="always"` to achieve this.
+
+```jsx live
+<SideNav
+	activePath="#page-1"
+	subLevelVisible="always"
+	title="Navigation"
+	titleLink="#"
+	items={[
+		{
+			href: '#page-1',
+			label: 'Landing page 1',
+		},
+		{
+			href: '#page-2',
+			label: 'Landing page 2',
+			items: [
+				{
+					href: '#next-page/page-2-1',
+					label: 'Page 2.1',
+				},
+				{
+					href: '#next-page/page-2-2',
+					label: 'Page 2.2',
+				},
+			],
+		},
+	]}
+/>
+```

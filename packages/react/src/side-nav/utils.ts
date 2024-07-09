@@ -34,7 +34,7 @@ export function flattenItems(items: SideNavProps['items']) {
 	return allItems;
 }
 
-export function hasNestedActiveItem(
+export function hasSubLevelActiveItem(
 	items: SideNavProps['items'] | undefined,
 	bestMatch: string | undefined
 ): boolean {
@@ -43,7 +43,7 @@ export function hasNestedActiveItem(
 		if (item.href === bestMatch) {
 			return true;
 		}
-		if (item.items?.length && hasNestedActiveItem(item.items, bestMatch)) {
+		if (item.items?.length && hasSubLevelActiveItem(item.items, bestMatch)) {
 			return true;
 		}
 	});

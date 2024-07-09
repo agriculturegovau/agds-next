@@ -44,6 +44,11 @@ export const ProgressIndicatorItem = ({
 		);
 	}
 
+	const hasSubLevel = isActive && items?.some((item) => item.isActive);
+	const subLevelItem = hasSubLevel
+		? items?.find((item) => item.isActive)
+		: undefined;
+
 	return (
 		<Box
 			as="li"
@@ -114,14 +119,13 @@ export const ProgressIndicatorItem = ({
 					</Text>
 				</Stack>
 
-				{isActive && items?.some((item) => item.isActive) && (
+				{subLevelItem && (
 					<>
 						<ProgressIndicatorItemTimeline />
 
 						<Box as="ul">
 							<Box as="li" css={{ position: 'relative' }}>
 								<Flex
-									{...items.find((item) => item.isActive)}
 									alignItems="center"
 									aria-current={true}
 									as={as}
@@ -146,6 +150,7 @@ export const ProgressIndicatorItem = ({
 											},
 										},
 									}}
+									href={subLevelItem.href}
 									gap={0.5}
 									padding={0.5}
 									paddingBottom={1}
@@ -153,7 +158,7 @@ export const ProgressIndicatorItem = ({
 									<CornerDownRightIcon color="selected" />
 
 									<Text color="inherit" fontSize="xs" fontWeight="bold">
-										{items.find((item) => item.isActive)?.label}
+										{subLevelItem.label}
 									</Text>
 								</Flex>
 							</Box>

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { Column } from '../columns';
 import { packs } from '../core';
 import { HeaderBrand } from './HeaderBrand';
@@ -16,13 +16,13 @@ export type HeaderProps = {
 	/** The href to link to, for example "/". */
 	href?: string;
 	/** The logo to display. */
-	logo?: JSX.Element;
+	logo?: ReactElement;
 	/** Content to placed on the right side of the Header. */
 	rightContent?: ReactNode;
 	/** The href to link to, for example "/". */
 	secondHref?: string;
 	/** The second logo to display for co-branding. */
-	secondLogo?: JSX.Element;
+	secondLogo?: ReactElement;
 	/** The size of the Header controls the vertical height. */
 	size?: 'sm' | 'md';
 	/** Used to provide additional information to describe your website or service. */

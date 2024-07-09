@@ -91,10 +91,12 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/welcome"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Welcome
                 </span>
               </a>
@@ -103,10 +105,12 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/do-you-need-to-lodge-a-tax-return"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Do you need to lodge a tax return?
                 </span>
               </a>
@@ -115,43 +119,43 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/lodge-online"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Lodge online
                 </span>
-              </a>
-              <ul
-                class="css-79i25n-boxStyles"
-              >
-                <li
-                  class="css-0"
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Has 1 sub-level link."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
-                    href="/lodge-online/pre-filling"
-                  >
-                    <span
-                      aria-hidden="true"
-                    >
-                      –
-                    </span>
-                    <span>
-                      Pre-filling your online tax return
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                  <polyline
+                    points="9 18 15 12 9 6"
+                  />
+                </svg>
+              </a>
             </li>
             <li
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/whats-new-for-individuals"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   What’s new for individuals
                 </span>
               </a>
@@ -160,25 +164,46 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/why-you-may-receive-a-tax-bill"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Why you may receive a tax bill
                 </span>
               </a>
             </li>
             <li
-              class="css-1aajr8x-SideNavListItem"
+              class="css-u3jbms-SideNavListItem"
             >
               <a
                 aria-current="page"
-                class="css-10q8mzo-boxStyles-SideNavLink"
+                class="css-mqbg66-boxStyles-SideNavLink"
                 href="/in-detail"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   In detail
                 </span>
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Sub-level links below."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
               </a>
               <ul
                 class="css-79i25n-boxStyles"
@@ -195,48 +220,29 @@ exports[`SideNav renders correctly 1`] = `
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Record keeping
                     </span>
+                    <svg
+                      aria-hidden="false"
+                      aria-label=". Has 2 sub-level links."
+                      class="css-xzevu4-SideNavLink"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <polyline
+                        points="9 18 15 12 9 6"
+                      />
+                    </svg>
                   </a>
-                  <ul
-                    class="css-79i25n-boxStyles"
-                  >
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/tax"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span>
-                          Keeping your tax records
-                        </span>
-                      </a>
-                    </li>
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/incorrect-amounts"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span>
-                          Incorrect amounts
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li
                   class="css-0"
@@ -250,7 +256,9 @@ exports[`SideNav renders correctly 1`] = `
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Tax receipt
                     </span>
                   </a>
@@ -260,14 +268,16 @@ exports[`SideNav renders correctly 1`] = `
                 >
                   <a
                     class="css-esqyjf-boxStyles-SideNavLink"
-                    href="/pre-fill availability"
+                    href="/pre-fill-availability"
                   >
                     <span
                       aria-hidden="true"
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Pre-fill availability
                     </span>
                   </a>
