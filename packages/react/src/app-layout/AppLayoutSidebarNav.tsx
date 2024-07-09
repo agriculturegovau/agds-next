@@ -49,9 +49,6 @@ const addIsActive =
 		const isCurrentPage = 'href' in item && item.href === activePath;
 		const isActive =
 			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
-		if (isCurrentPage) {
-			console.log(item.href);
-		}
 
 		return {
 			...item,
@@ -235,7 +232,6 @@ function AppLayoutSidebarNavItemInner({
 	level,
 	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
-	console.log({ isCurrentPage, isActive, level });
 	return (
 		<li
 			css={{
