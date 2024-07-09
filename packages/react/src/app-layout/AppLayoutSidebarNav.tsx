@@ -159,7 +159,8 @@ function AppLayoutSidebarNavListItem({
 					aria-current={isCurrentPage ? 'page' : undefined}
 					{...restItemProps}
 				>
-					{Icon ? <Icon color="inherit" /> : null}
+					{Icon && level === 1 && <Icon color="inherit" />}
+					{level === 2 && <span aria-hidden>&ndash;</span>}
 					<span>{label}</span>
 					{endElement}
 				</Link>
