@@ -27,8 +27,6 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
-	/** @deprecated No longer used as the title of the expand/collapse trigger on smaller screen sizes. */
-	collapseButtonLabel?: string;
 	/** A custom element to use instead of title and subTitle. It should render as an h2. */
 	customTitle?: ReactNode;
 	/** The gap between the small title/subTitle and children. */
@@ -99,9 +97,7 @@ export function CollapsingSideBar({
 					paddingY={customTitle ? undefined : { xs: 1, md: 0 }}
 					id={headingId}
 				>
-					{customTitle ? (
-						customTitle
-					) : (
+					{customTitle || (
 						<>
 							<Text
 								as="h2"
