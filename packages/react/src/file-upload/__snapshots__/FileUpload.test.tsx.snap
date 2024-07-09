@@ -492,7 +492,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   class="css-ayz5ov-boxStyles"
                 >
                   <a
-                    class="css-ma0bjl-TextLink"
+                    class="css-koqz57-TextLink"
                     href="#"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -608,7 +608,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   class="css-ayz5ov-boxStyles"
                 >
                   <a
-                    class="css-ma0bjl-TextLink"
+                    class="css-koqz57-TextLink"
                     href="#"
                     rel="noopener noreferrer"
                     target="_blank"

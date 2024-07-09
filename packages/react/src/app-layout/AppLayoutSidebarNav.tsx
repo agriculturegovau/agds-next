@@ -193,7 +193,7 @@ function AppLayoutSidebarNavItemInner({
 							boxPalette[
 								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
 							],
-						'&:before': {
+						'&::before': {
 							content: "''",
 							position: 'absolute',
 							top: 0,

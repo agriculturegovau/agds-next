@@ -38,7 +38,7 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
             </p>
           </div>
           <div
-            class="css-uhwge9-boxStyles-HeroCategoryBannerImage"
+            class="css-r0htuo-boxStyles-HeroCategoryBannerImage"
           >
             <img
               alt=""

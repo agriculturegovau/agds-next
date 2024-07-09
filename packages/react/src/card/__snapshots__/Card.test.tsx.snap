@@ -49,7 +49,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-190821o-CardLink"
+          class="css-2leob8-CardLink"
           href="#"
         >
           Linking out

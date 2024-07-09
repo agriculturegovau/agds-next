@@ -14,7 +14,7 @@ export const CardLink = (props: CardLinkProps) => {
 					justifyContent: 'space-between',
 					// NOTE: no focus styles here because the parent Card does it.
 					'&:focus, &:focus-visible': { outline: 'none' },
-					'&:after': {
+					'&::after': {
 						content: '""',
 						position: 'absolute',
 						top: 0,
