@@ -2,7 +2,8 @@
 
 exports[`SideNav renders correctly 1`] = `
 <div>
-  <div
+  <section
+    aria-labelledby="collapsing-side-bar-:r1:-heading"
     class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
     <div
@@ -288,6 +289,6 @@ exports[`SideNav renders correctly 1`] = `
         </nav>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;

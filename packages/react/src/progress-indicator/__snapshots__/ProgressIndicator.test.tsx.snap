@@ -3,6 +3,7 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r0:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -537,6 +538,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r2:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -1071,6 +1073,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r5:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -1605,6 +1608,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r4:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -2139,6 +2143,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r7:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -2673,6 +2678,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r6:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -3207,6 +3213,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active button 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r9:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -3741,6 +3748,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active link 1`] = `
 <div>
   <section
+    aria-labelledby="collapsing-side-bar-:r8:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div

@@ -99,7 +99,6 @@ export const ProgressIndicator = ({
 
 	return (
 		<CollapsingSideBar
-			as="section"
 			background={background}
 			subTitle={subTitle}
 			title={title}

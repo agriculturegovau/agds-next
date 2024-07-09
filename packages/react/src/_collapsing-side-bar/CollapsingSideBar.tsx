@@ -21,8 +21,6 @@ import {
 } from './utils';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
-	/** The aria-label for the CollapsingSideBar. */
-	'aria-label'?: string;
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
@@ -38,8 +36,7 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 }>;
 
 export function CollapsingSideBar({
-	'aria-label': ariaLabel,
-	as = 'div',
+	as = 'section',
 	background = 'body',
 	children,
 	customTitle,
@@ -75,7 +72,7 @@ export function CollapsingSideBar({
 	return (
 		<Stack
 			as={as}
-			aria-label={ariaLabel}
+			aria-labelledby={headingId}
 			background={background}
 			css={{
 				[collapsingSideBarHoverProp]: hoverColorMap[background],
@@ -190,8 +187,4 @@ export function CollapsingSideBar({
 }
 
 /** The HTML element to render the CollapsingSideBar as. */
-type CollapsingSideBarContainerElementType =
-	| 'aside'
-	| 'nav'
-	| 'section'
-	| 'div';
+type CollapsingSideBarContainerElementType = 'aside' | 'nav' | 'section';

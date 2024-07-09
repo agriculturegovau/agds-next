@@ -2,7 +2,8 @@
 
 exports[`FilterSidebar renders correctly 1`] = `
 <div>
-  <aside
+  <section
+    aria-labelledby="collapsing-side-bar-:r0:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -74,6 +75,6 @@ exports[`FilterSidebar renders correctly 1`] = `
         </div>
       </div>
     </div>
-  </aside>
+  </section>
 </div>
 `;

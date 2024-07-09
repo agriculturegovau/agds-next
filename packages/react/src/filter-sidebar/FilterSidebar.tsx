@@ -40,7 +40,6 @@ export function FilterSidebar({
 
 	return (
 		<CollapsingSideBar
-			as="aside"
 			title={`Filters${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
 		>
 			<Box

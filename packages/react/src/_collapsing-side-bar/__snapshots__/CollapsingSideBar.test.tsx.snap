@@ -2,7 +2,8 @@
 
 exports[`CollapsingSideBar renders correctly 1`] = `
 <div>
-  <div
+  <section
+    aria-labelledby="collapsing-side-bar-:r0:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -78,13 +79,14 @@ exports[`CollapsingSideBar renders correctly 1`] = `
         Content
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;
 
 exports[`CollapsingSideBar renders customTitle correctly 1`] = `
 <div>
-  <div
+  <section
+    aria-labelledby="collapsing-side-bar-:r1:-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -153,6 +155,6 @@ exports[`CollapsingSideBar renders customTitle correctly 1`] = `
         Content
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;
