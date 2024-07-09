@@ -20,9 +20,10 @@ type NavButton = Omit<BaseButtonProps, 'children'>;
 
 export type NavItem = (NavLink | NavButton) & {
 	label: ReactNode;
-	icon?: ComponentType<IconProps>;
 	endElement?: ReactNode;
+	icon?: ComponentType<IconProps>;
 	items?: NavItem[];
+	level?: number;
 };
 
 export type AppLayoutSidebarNavProps = {
@@ -39,7 +40,6 @@ export type AppLayoutSidebarNavProps = {
 type ItemWithIsActive = NavItem & {
 	isActive?: boolean;
 	items?: ItemWithIsActive[];
-	level?: number;
 };
 
 // Recursively add `isActive` to any sub-level items
@@ -133,7 +133,14 @@ function AppLayoutSidebarNavListItem({
 	item,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
-	const { endElement, icon: Icon, label, ...restItemProps } = item;
+	const {
+		endElement,
+		icon: Icon,
+		label,
+		level,
+		items,
+		...restItemProps
+	} = item;
 	const { closeMobileMenu } = useAppLayoutContext();
 
 	// Link list item
@@ -144,7 +151,6 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isCurrentPage={isCurrentPage}
-				// isActive={Boolean('isActive' in item && item.isActive)}
 				isActive={isOpen}
 				level={'level' in item ? item.level : undefined}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
@@ -253,10 +259,16 @@ function AppLayoutSidebarNavItemInner({
 					gap: mapSpacing(0.75),
 					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
 					...(isActive && {
-						fontWeight: tokens.fontWeight.bold,
+						fontWeight: isCurrentPage
+							? tokens.fontWeight.bold
+							: tokens.fontWeight.normal,
 						background:
 							boxPalette[
-								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
+								isCurrentPage
+									? 'selectedMuted'
+									: background === 'body'
+									? 'backgroundBody'
+									: 'backgroundBodyAlt'
 							],
 						'&:before': {
 							content: "''",
@@ -267,7 +279,7 @@ function AppLayoutSidebarNavItemInner({
 							borderLeftStyle: 'solid',
 							borderLeftColor: isCurrentPage
 								? boxPalette.selected
-								: boxPalette.border,
+								: boxPalette.borderMuted,
 							borderLeftWidth: tokens.borderWidth.xl,
 						},
 					}),
