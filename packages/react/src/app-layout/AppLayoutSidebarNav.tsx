@@ -92,14 +92,17 @@ export const AppLayoutSidebarNav = ({
 								/>
 							) : null}
 							{groupItems.map((item, index) => {
-								const isOpen =
-									subLevelVisible === 'always' ||
-									hasSubLevelActiveItem(item.items, activePath);
+								const isActiveGroup = hasSubLevelActiveItem(
+									item.items,
+									activePath
+								);
+								const isOpen = subLevelVisible === 'always' || isActiveGroup;
 
 								return (
 									<AppLayoutSidebarNavListItem
 										activePath={activePath}
 										background={background}
+										isActiveGroup={isActiveGroup}
 										isOpen={isOpen}
 										item={item}
 										key={index}
@@ -117,6 +120,7 @@ export const AppLayoutSidebarNav = ({
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
+	isActiveGroup: boolean;
 	isOpen: boolean;
 	item: NavItem;
 };
@@ -124,6 +128,7 @@ type AppLayoutSidebarNavListItemProps = {
 function AppLayoutSidebarNavListItem({
 	activePath,
 	background,
+	isActiveGroup,
 	isOpen,
 	item,
 }: AppLayoutSidebarNavListItemProps) {
@@ -147,7 +152,8 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isCurrentPage={isCurrentPage}
-				isActive={isCurrentPage || isOpen}
+				isActive={isActiveGroup}
+				isOpen={isOpen}
 				level={item.level}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
@@ -161,11 +167,12 @@ function AppLayoutSidebarNavListItem({
 					{endElement}
 				</Link>
 
-				{(isOpen || isCurrentPage) && (
+				{Boolean(item.items?.length) && (isOpen || isCurrentPage) && (
 					<Stack as="ul">
 						{item.items?.map?.((item) => (
 							<AppLayoutSidebarNavListItem
 								activePath={activePath}
+								isActiveGroup={Boolean(isActive)}
 								isOpen={isOpen}
 								item={item}
 								key={item.label?.toString()}
@@ -185,6 +192,7 @@ function AppLayoutSidebarNavListItem({
 				hasEndElement={Boolean(endElement)}
 				isActive={false}
 				isCurrentPage={false}
+				isOpen={false}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<BaseButton {...restItemProps}>
@@ -202,6 +210,7 @@ function AppLayoutSidebarNavListItem({
 			background={background}
 			isActive={false}
 			isCurrentPage={false}
+			isOpen={false}
 			hasEndElement={false}
 		>
 			<Stack as="span" gap={0.25}>
@@ -216,6 +225,7 @@ type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
 	hasEndElement: boolean;
 	isActive: boolean;
 	isCurrentPage: boolean;
+	isOpen: boolean;
 	level?: number;
 	onClick?: () => void;
 }>;
@@ -226,6 +236,7 @@ function AppLayoutSidebarNavItemInner({
 	hasEndElement,
 	isCurrentPage,
 	isActive,
+	isOpen,
 	level,
 	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
@@ -254,8 +265,11 @@ function AppLayoutSidebarNavItemInner({
 					alignItems: 'center',
 
 					gap: mapSpacing(0.75),
-					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
-					...(isActive && {
+					color:
+						boxPalette[
+							isActive || isCurrentPage ? 'foregroundText' : 'foregroundAction'
+						],
+					...((isActive || isCurrentPage || isOpen) && {
 						fontWeight: isCurrentPage
 							? tokens.fontWeight.bold
 							: tokens.fontWeight.normal,
@@ -274,10 +288,13 @@ function AppLayoutSidebarNavItemInner({
 							left: 0,
 							bottom: 0,
 							borderLeftStyle: 'solid',
-							borderLeftColor: isCurrentPage
-								? boxPalette.selected
-								: boxPalette.borderMuted,
 							borderLeftWidth: tokens.borderWidth.xl,
+							...(isCurrentPage && { borderLeftColor: boxPalette.selected }),
+							...(!isCurrentPage &&
+								isActive && { borderLeftColor: boxPalette.borderMuted }),
+							...(!isCurrentPage &&
+								!isActive &&
+								isOpen && { borderLeft: 'none' }),
 						},
 					}),
 
