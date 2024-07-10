@@ -9,7 +9,7 @@ import {
 } from '../core';
 import { Box, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
-import { IconProps } from '../icon';
+import { ChevronDownIcon, ChevronRightIcon, IconProps } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarProps } from './AppLayoutSidebar';
@@ -106,6 +106,7 @@ export const AppLayoutSidebarNav = ({
 										isOpen={isOpen}
 										item={item}
 										key={index}
+										subLevelVisible={subLevelVisible}
 									/>
 								);
 							})}
@@ -123,6 +124,7 @@ type AppLayoutSidebarNavListItemProps = {
 	isActiveGroup: boolean;
 	isOpen: boolean;
 	item: NavItem;
+	subLevelVisible: AppLayoutSidebarNavProps['subLevelVisible'];
 };
 
 function AppLayoutSidebarNavListItem({
@@ -131,6 +133,7 @@ function AppLayoutSidebarNavListItem({
 	isActiveGroup,
 	isOpen,
 	item,
+	subLevelVisible,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
 	const {
@@ -143,6 +146,9 @@ function AppLayoutSidebarNavListItem({
 		...restItemProps
 	} = item;
 	const { closeMobileMenu } = useAppLayoutContext();
+	const numberOfItems = items?.length || 0;
+	const hasSubLevelItemsIndicator =
+		numberOfItems > 0 && subLevelVisible !== 'always';
 
 	// Link list item
 	if ('href' in item) {
@@ -162,9 +168,37 @@ function AppLayoutSidebarNavListItem({
 					{...restItemProps}
 				>
 					{Icon && level === 1 && <Icon color="inherit" />}
+
 					{level === 2 && <span aria-hidden>&ndash;</span>}
-					<span>{label}</span>
+
+					<span css={{ flexGrow: 1 }}>{label}</span>
+
 					{endElement}
+
+					{hasSubLevelItemsIndicator &&
+						(isActive ? (
+							<ChevronDownIcon
+								aria-hidden={false}
+								aria-label={`. Sub-level ${
+									numberOfItems === 1 ? 'link' : 'links'
+								} below.`}
+								css={
+									level === 1 ? { marginRight: mapSpacing(0.25) } : undefined
+								}
+								size={level === 1 ? 'sm' : 'md'}
+							/>
+						) : (
+							<ChevronRightIcon
+								aria-hidden={false}
+								aria-label={`. Has ${numberOfItems} sub-level ${
+									numberOfItems === 1 ? 'link' : 'links'
+								}.`}
+								css={
+									level === 1 ? { marginRight: mapSpacing(0.25) } : undefined
+								}
+								size={level === 1 ? 'sm' : 'md'}
+							/>
+						))}
 				</Link>
 
 				{Boolean(item.items?.length) && (isOpen || isCurrentPage) && (
@@ -176,6 +210,7 @@ function AppLayoutSidebarNavListItem({
 								isOpen={isOpen}
 								item={item}
 								key={item.label?.toString()}
+								subLevelVisible={subLevelVisible}
 							/>
 						))}
 					</Stack>

@@ -106,7 +106,10 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 
 			test('then it should be the current page', () => {
 				expect(
-					screen.getByRole('link', { name: 'Establishments', current: 'page' })
+					screen.getByRole('link', {
+						name: 'Establishments . Sub-level links below.',
+						current: 'page',
+					})
 				).toBeVisible();
 			});
 		});
