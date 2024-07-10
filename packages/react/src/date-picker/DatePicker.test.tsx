@@ -187,32 +187,24 @@ describe('DatePicker', () => {
 		const date = parseDate(dateString) as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
-		const { container } = render(<ClearableDatePicker initialValue={date} />);
-
-		async function getCalendarTrigger() {
-			return await container.querySelector('button[type="button"]');
-		}
+		render(<ClearableDatePicker initialValue={date} />);
 
 		// The input should be a formatted display value of `initialValue`
 		expect(await getInput()).toHaveValue(dateString);
 
 		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
-		expect(await getCalendarTrigger()).toHaveAttribute(
-			'aria-label',
-			`Change date, ${formattedDate}`
-		);
+		expect(
+			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
+		).toBeVisible();
 
 		// Click the `clear` button to clear the value
-		await userEvent.click(await screen.getByTestId('clear'));
+		await userEvent.click(screen.getByTestId('clear'));
 
 		// The input should be empty
 		expect(await getInput()).toHaveValue('');
 
 		// The calendar button triggers aria-label should be updated
-		expect(await getCalendarTrigger()).toHaveAttribute(
-			'aria-label',
-			'Choose date'
-		);
+		expect(screen.getByRole('button', { name: 'Choose date' })).toBeVisible();
 	});
 
 	it('can render an invalid state', async () => {
@@ -226,17 +218,13 @@ describe('DatePicker', () => {
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
-	it('responds to an `onChange` callback', async () => {
+	it('responds to an `onChange` callback when a date is valid', async () => {
 		const onChange = jest.fn();
 
-		const { container } = renderDatePicker({
+		renderDatePicker({
 			label: 'Example',
-			onChange: onChange,
+			onChange,
 		});
-
-		async function getCalendarTrigger() {
-			return await container.querySelector('button[type="button"]');
-		}
 
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
@@ -250,10 +238,30 @@ describe('DatePicker', () => {
 		expect(onChange).toHaveBeenLastCalledWith(date);
 
 		// The calendar button trigger should have an aria-label with the formatted display value
-		expect(await getCalendarTrigger()).toHaveAttribute(
-			'aria-label',
-			`Change date, ${formattedDate}`
-		);
+		expect(
+			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
+		).toBeVisible();
+	});
+
+	it('responds to an `onInputChange` callback when a date is invalid', async () => {
+		const onInputChange = jest.fn();
+
+		renderDatePicker({
+			label: 'Example',
+			onInputChange,
+		});
+
+		const dateString = '01.01.2000';
+
+		// Type in the input field
+		await userEvent.type(await getInput(), dateString);
+		expect(await getInput()).toHaveValue(dateString);
+		await userEvent.keyboard('{Tab}');
+
+		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
+
+		// The calendar button trigger should have the default aria-label
+		expect(screen.getByRole('button', { name: `Choose date` })).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
@@ -279,6 +287,65 @@ describe('DatePicker', () => {
 
 		// The input should be formatted to the dateFormat prop
 		expect(await getInput()).toHaveValue('5 Jun 2023');
+	});
+
+	it('doesn’t format when an invalid format is entered', async () => {
+		renderDatePicker({
+			dateFormat: 'd MMM yyyy',
+			label: 'Example',
+		});
+
+		// Type a valid date in the input field that isn't in the allowed format
+		await userEvent.type(await getInput(), '05.23.2023');
+		await userEvent.keyboard('{Tab}');
+
+		// The input should not be formatted to the dateFormat prop
+		expect(await getInput()).toHaveValue('05.23.2023');
+	});
+
+	describe('allowedDateFormats', () => {
+		it('formats when a valid format is entered', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				label: 'Example',
+			});
+
+			// Type a valid date in the input field that is in the allowed format
+			await userEvent.type(await getInput(), '23-05-2023');
+			await userEvent.keyboard('{Tab}');
+
+			// The input should be formatted to the dateFormat prop
+			expect(await getInput()).toHaveValue('23/05/2023');
+		});
+
+		it('doesn’t format when an invalid format is entered', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['dd-MM-yyyy'],
+				label: 'Example',
+			});
+
+			// Type a valid date in the input field that isn't in the allowed format
+			await userEvent.type(await getInput(), '05-23-2023');
+			await userEvent.keyboard('{Tab}');
+
+			// The input should not be formatted to the dateFormat prop
+			expect(await getInput()).toHaveValue('05-23-2023');
+		});
+
+		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
+			renderDatePicker({
+				allowedDateFormats: ['MM/dd/yyyy'],
+				dateFormat: 'dd MMMM yyyy',
+				label: 'Example',
+			});
+
+			// Type a valid date in the input field that isn't in the display format
+			await userEvent.type(await getInput(), '08 Feb 2023');
+			await userEvent.keyboard('{Tab}');
+
+			// The input should be formatted to the dateFormat prop
+			expect(await getInput()).toHaveValue('08 February 2023');
+		});
 	});
 
 	it('formSchema: yupDateField works when optional', () => {
