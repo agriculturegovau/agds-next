@@ -21,17 +21,24 @@ import {
 	AppLayoutContent,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
+	AppLayoutSidebarProps,
 } from './index';
 
 function AppLayoutTemplate({
+	activePath = '/',
 	focusMode = false,
 	internal = false,
 	namesLength = 'regular',
+	subLevelVisible,
 }: AppLayoutProps & {
+	/** Currently active path. */
+	activePath?: string;
 	/** Whether to render in the light, internal app theme. */
 	internal?: boolean;
 	/** The length of names to use for businesses. */
 	namesLength?: 'regular' | 'short' | 'medium' | 'long';
+	/** When to show sub-level items. */
+	subLevelVisible?: AppLayoutSidebarProps['subLevelVisible'];
 }) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	const businesses = exampleData.businessNames[namesLength];
@@ -63,9 +70,10 @@ function AppLayoutTemplate({
 					subLine="Supporting Australian agricultural exports"
 				/>
 				<AppLayoutSidebar
-					activePath="/"
+					activePath={activePath}
 					background={internal ? 'body' : undefined}
 					items={navigationItems(businessName)}
+					subLevelVisible={subLevelVisible}
 				/>
 				<AppLayoutContent>
 					<main
@@ -181,4 +189,18 @@ export const InternalLightTheme: StoryObj<typeof AppLayout> = {
 	render: (args) => (
 		<AppLayoutTemplate {...args} internal namesLength="short" />
 	),
+};
+
+export const LevelTwoOpenWhenActive: StoryObj<typeof AppLayout> = {
+	render: (args) => (
+		<AppLayoutTemplate
+			{...args}
+			activePath="/establishments/canberra"
+			subLevelVisible="whenActive"
+		/>
+	),
+};
+
+export const LevelTwoAlwaysOpen: StoryObj<typeof AppLayout> = {
+	render: (args) => <AppLayoutTemplate {...args} subLevelVisible="always" />,
 };

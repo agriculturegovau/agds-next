@@ -240,7 +240,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -264,7 +264,9 @@ exports[`AppLayout renders correctly 1`] = `
                   points="18 17 13 12 18 7"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Back to my account
               </span>
             </a>
@@ -278,7 +280,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-u8n2i4-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -304,7 +306,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -328,13 +330,15 @@ exports[`AppLayout renders correctly 1`] = `
                   d="M2 12C3.83629 10.0774 12 2 12 2C12 2 20.1637 10.0774 22 12"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Dashboard
               </span>
             </a>
           </li>
           <li
-            class="css-qmt8p8-AppLayoutSidebarNavItemInner"
+            class="css-rlnsjb-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -356,13 +360,72 @@ exports[`AppLayout renders correctly 1`] = `
                   d="M17.183 12.8457L20.3183 13.6296C20.7189 13.7297 21 14.0897 21 14.5027V20.1C21 20.5971 20.5971 21 20.1 21H3.9C3.40294 21 3 20.5971 3 20.1V10.4527C3 9.86718 3.55025 9.43756 4.11828 9.57957L15.3805 12.3951M17.183 12.8457C17.7506 12.9868 18.3 12.5574 18.3 11.9723V3.9C18.3 3.40294 17.8971 3 17.4 3H15.6C15.1029 3 14.7 3.40294 14.7 3.9V11.5223C14.7 11.9349 14.9805 12.2946 15.3805 12.3951M17.183 12.8457L15.3817 12.3954L15.3805 12.3951M7.5 17.4H6.6V16.5H7.5V17.4ZM11.1 16.5H12V17.4H11.1V16.5Z"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Establishments
               </span>
+              <svg
+                aria-hidden="false"
+                aria-label=". Sub-level links below."
+                class="css-lq07bo-Icon"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="6 9 12 15 18 9"
+                />
+              </svg>
             </a>
+            <ul
+              class="css-o80hmi-boxStyles"
+            >
+              <li
+                class="css-9jhkso-AppLayoutSidebarNavItemInner"
+              >
+                <a
+                  href="/establishments/canberra"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    –
+                  </span>
+                  <span
+                    class="css-yzd50u-AppLayoutSidebarNavListItem"
+                  >
+                    Canberra
+                  </span>
+                </a>
+              </li>
+              <li
+                class="css-9jhkso-AppLayoutSidebarNavItemInner"
+              >
+                <a
+                  href="/establishments/sydney"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    –
+                  </span>
+                  <span
+                    class="css-yzd50u-AppLayoutSidebarNavListItem"
+                  >
+                    Sydney
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -383,13 +446,15 @@ exports[`AppLayout renders correctly 1`] = `
                   d="M21 21H4.6C4.03995 21 3.75992 21 3.54601 20.891C3.35785 20.7951 3.20487 20.6422 3.10899 20.454C3 20.2401 3 19.9601 3 19.4V3M20 8L16.0811 12.1827C15.9326 12.3412 15.8584 12.4204 15.7688 12.4614C15.6897 12.4976 15.6026 12.5125 15.516 12.5047C15.4179 12.4958 15.3215 12.4458 15.1287 12.3457L11.8713 10.6543C11.6785 10.5542 11.5821 10.5042 11.484 10.4953C11.3974 10.4875 11.3103 10.5024 11.2312 10.5386C11.1416 10.5796 11.0674 10.6588 10.9189 10.8173L7 15"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Data and Insights
               </span>
             </a>
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -413,9 +478,28 @@ exports[`AppLayout renders correctly 1`] = `
                   d="m7 13 3 3 7-7"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Compliance
               </span>
+              <svg
+                aria-hidden="false"
+                aria-label=". Has 2 sub-level links."
+                class="css-lq07bo-Icon"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="9 18 15 12 9 6"
+                />
+              </svg>
             </a>
           </li>
           <li
@@ -427,7 +511,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -448,7 +532,9 @@ exports[`AppLayout renders correctly 1`] = `
                   d="M9.08984 8.99959C9.32495 8.33126 9.789 7.7677 10.3998 7.40873C11.0106 7.04975 11.7287 6.91853 12.427 7.0383C13.1253 7.15808 13.7587 7.52112 14.2149 8.06312C14.6712 8.60512 14.9209 9.29111 14.9198 9.99959C14.9198 11.9996 11.9198 12.9996 11.9198 12.9996M12 17H12.01M12 2C9.34784 2 6.8043 3.05357 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C6.8043 20.9464 9.34784 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 9.34784 20.9464 6.8043 19.0711 4.92893C17.1957 3.05357 14.6522 2 12 2Z"
                 />
               </svg>
-              <span>
+              <span
+                class="css-yzd50u-AppLayoutSidebarNavListItem"
+              >
                 Help
               </span>
             </a>
@@ -462,7 +548,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-11lpl70-AppLayoutSidebarNavItemInner"
+            class="css-u8n2i4-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
