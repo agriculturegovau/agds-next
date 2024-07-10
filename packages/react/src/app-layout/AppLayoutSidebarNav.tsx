@@ -64,8 +64,8 @@ export const AppLayoutSidebarNav = ({
 	subLevelVisible = 'whenActive',
 }: AppLayoutSidebarNavProps) => {
 	return (
-		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
-			<Flex as="ul" flexDirection="column">
+		<Stack as="nav" aria-label="main" paddingBottom={1.5}>
+			<Stack as="ul">
 				{items.map((group, index) => {
 					const isFirstItem = index === 0;
 					const groupItems = (Array.isArray(group) ? group : group.items).map(
@@ -110,8 +110,8 @@ export const AppLayoutSidebarNav = ({
 						</Fragment>
 					);
 				})}
-			</Flex>
-		</Flex>
+			</Stack>
+		</Stack>
 	);
 };
 
@@ -163,7 +163,7 @@ function AppLayoutSidebarNavListItem({
 				</Link>
 
 				{isOpen && (
-					<Flex as="ul" flexDirection="column">
+					<Stack as="ul">
 						{item.items?.map?.((item) => (
 							<AppLayoutSidebarNavListItem
 								activePath={activePath}
@@ -172,7 +172,7 @@ function AppLayoutSidebarNavListItem({
 								key={item.label?.toString()}
 							/>
 						))}
-					</Flex>
+					</Stack>
 				)}
 			</AppLayoutSidebarNavItemInner>
 		);
@@ -294,7 +294,7 @@ function AppLayoutSidebarNavItemInner({
 								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
 							],
 						color: boxPalette.foregroundText,
-						'& > span:first-of-type': packs.underline,
+						[`& > span:nth-of-type(${level})`]: packs.underline,
 					},
 
 					...focusStyles,
