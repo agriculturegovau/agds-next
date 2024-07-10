@@ -266,7 +266,7 @@ function AppLayoutSidebarNavItemInner({
 
 					gap: mapSpacing(0.75),
 					color:
-						isActive || isCurrentPage
+						(isActive && level !== 2) || isCurrentPage
 							? boxPalette.foregroundText
 							: boxPalette.foregroundAction,
 					...((isActive || isCurrentPage || isOpen) && {
