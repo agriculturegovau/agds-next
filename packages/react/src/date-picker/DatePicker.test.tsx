@@ -187,32 +187,24 @@ describe('DatePicker', () => {
 		const date = parseDate(dateString) as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
-		const { container } = render(<ClearableDatePicker initialValue={date} />);
-
-		async function getCalendarTrigger() {
-			return await container.querySelector('button[type="button"]');
-		}
+		render(<ClearableDatePicker initialValue={date} />);
 
 		// The input should be a formatted display value of `initialValue`
 		expect(await getInput()).toHaveValue(dateString);
 
 		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
-		expect(await getCalendarTrigger()).toHaveAttribute(
-			'aria-label',
-			`Change date, ${formattedDate}`
-		);
+		expect(
+			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
+		).toBeVisible();
 
 		// Click the `clear` button to clear the value
-		await userEvent.click(await screen.getByTestId('clear'));
+		await userEvent.click(screen.getByTestId('clear'));
 
 		// The input should be empty
 		expect(await getInput()).toHaveValue('');
 
 		// The calendar button triggers aria-label should be updated
-		expect(await getCalendarTrigger()).toHaveAttribute(
-			'aria-label',
-			'Choose date'
-		);
+		expect(screen.getByRole('button', { name: 'Choose date' })).toBeVisible();
 	});
 
 	it('can render an invalid state', async () => {
@@ -229,7 +221,7 @@ describe('DatePicker', () => {
 	it('responds to an `onChange` callback when a date is valid', async () => {
 		const onChange = jest.fn();
 
-		const { container } = renderDatePicker({
+		renderDatePicker({
 			label: 'Example',
 			onChange,
 		});
@@ -246,16 +238,15 @@ describe('DatePicker', () => {
 		expect(onChange).toHaveBeenLastCalledWith(date);
 
 		// The calendar button trigger should have an aria-label with the formatted display value
-		expect(container.querySelector('button[type="button"]')).toHaveAttribute(
-			'aria-label',
-			`Change date, ${formattedDate}`
-		);
+		expect(
+			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
+		).toBeVisible();
 	});
 
 	it('responds to an `onInputChange` callback when a date is invalid', async () => {
 		const onInputChange = jest.fn();
 
-		const { container } = renderDatePicker({
+		renderDatePicker({
 			label: 'Example',
 			onInputChange,
 		});
@@ -270,10 +261,7 @@ describe('DatePicker', () => {
 		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
 
 		// The calendar button trigger should have the default aria-label
-		expect(container.querySelector('button[type="button"]')).toHaveAttribute(
-			'aria-label',
-			`Choose date`
-		);
+		expect(screen.getByRole('button', { name: `Choose date` })).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {

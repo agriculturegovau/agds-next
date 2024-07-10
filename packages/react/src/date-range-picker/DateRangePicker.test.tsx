@@ -260,47 +260,45 @@ describe('DateRangePicker', () => {
 		);
 
 		let inputs = container.querySelectorAll('input');
-		let calendarTriggers = container.querySelectorAll('button');
 
 		// The inputs should be a formatted display value of `initialValue`
 		expect(inputs[0]).toHaveValue(fromDateString);
 		expect(inputs[1]).toHaveValue(toDateString);
 
 		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
-		expect(calendarTriggers[0]).toHaveAttribute(
-			'aria-label',
-			`Change start date, ${fromFormattedDate}`
-		);
-		expect(calendarTriggers[1]).toHaveAttribute(
-			'aria-label',
-			`Change end date, ${toFormattedDate}`
-		);
+		expect(
+			screen.getByRole('button', {
+				name: `Change start date, ${fromFormattedDate}`,
+			})
+		).toBeVisible();
+		expect(
+			screen.getByRole('button', {
+				name: `Change end date, ${toFormattedDate}`,
+			})
+		).toBeVisible();
 
 		// Click the `clear` button to clear the value
 		await userEvent.click(screen.getByTestId('clear'));
 
 		inputs = container.querySelectorAll('input');
-		calendarTriggers = container.querySelectorAll('button');
 
 		// The inputs should be empty
 		expect(inputs[0]).toHaveValue('');
 		expect(inputs[1]).toHaveValue('');
 
 		// The calendar button triggers aria-label should be updated
-		expect(calendarTriggers[0]).toHaveAttribute(
-			'aria-label',
-			'Choose start date'
-		);
-		expect(calendarTriggers[1]).toHaveAttribute(
-			'aria-label',
-			'Choose end date'
-		);
+		expect(
+			screen.getByRole('button', { name: 'Choose start date' })
+		).toBeVisible();
+		expect(
+			screen.getByRole('button', { name: 'Choose end date' })
+		).toBeVisible();
 	});
 
 	it('responds to an `onChange` callback when a date is valid', async () => {
 		const onChange = jest.fn();
 
-		const { container } = renderDateRangePicker({
+		renderDateRangePicker({
 			onChange,
 		});
 
@@ -322,23 +320,23 @@ describe('DateRangePicker', () => {
 
 		expect(onChange).toHaveBeenCalledTimes(2);
 
-		const calendarTriggers = container.querySelectorAll('button');
-
 		// The calendar button triggers should have an aria-label with the formatted display value
-		expect(calendarTriggers[0]).toHaveAttribute(
-			'aria-label',
-			`Change start date, ${fromFormattedDate}`
-		);
-		expect(calendarTriggers[1]).toHaveAttribute(
-			'aria-label',
-			`Change end date, ${toFormattedDate}`
-		);
+		expect(
+			screen.getByRole('button', {
+				name: `Change start date, ${fromFormattedDate}`,
+			})
+		).toBeVisible();
+		expect(
+			screen.getByRole('button', {
+				name: `Change end date, ${toFormattedDate}`,
+			})
+		).toBeVisible();
 	});
 
 	it('responds to an `onFromInputChange` callback when a date is invalid', async () => {
 		const onFromInputChange = jest.fn();
 
-		const { container } = renderDateRangePicker({
+		renderDateRangePicker({
 			onFromInputChange,
 		});
 
@@ -351,19 +349,16 @@ describe('DateRangePicker', () => {
 
 		expect(onFromInputChange).toHaveBeenCalledWith(fromDateString);
 
-		const calendarTriggers = container.querySelectorAll('button');
-
 		// The calendar button triggers should have an aria-label with the formatted display value
-		expect(calendarTriggers[0]).toHaveAttribute(
-			'aria-label',
-			`Choose start date`
-		);
+		expect(
+			screen.getByRole('button', { name: 'Choose start date' })
+		).toBeVisible();
 	});
 
 	it('responds to an `onToInputChange` callback when a date is invalid', async () => {
 		const onToInputChange = jest.fn();
 
-		const { container } = renderDateRangePicker({
+		renderDateRangePicker({
 			onToInputChange,
 		});
 
@@ -376,13 +371,10 @@ describe('DateRangePicker', () => {
 
 		expect(onToInputChange).toHaveBeenCalledWith(toDateString);
 
-		const calendarTriggers = container.querySelectorAll('button');
-
 		// The calendar button triggers should have an aria-label with the formatted display value
-		expect(calendarTriggers[1]).toHaveAttribute(
-			'aria-label',
-			`Choose end date`
-		);
+		expect(
+			screen.getByRole('button', { name: 'Choose end date' })
+		).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
