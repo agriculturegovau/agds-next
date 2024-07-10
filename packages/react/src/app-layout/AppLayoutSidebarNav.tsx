@@ -12,6 +12,7 @@ import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
+import { AppLayoutSidebarProps } from './AppLayoutSidebar';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -33,8 +34,7 @@ export type AppLayoutSidebarNavProps = {
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
-	/** When to show sub-level navigation items. */
-	subLevelVisible?: 'always' | 'whenActive';
+	subLevelVisible?: AppLayoutSidebarProps['subLevelVisible'];
 };
 
 // Recursively add `isActive` to any sub-level items
@@ -60,7 +60,7 @@ export const AppLayoutSidebarNav = ({
 	activePath,
 	background,
 	items,
-	subLevelVisible = 'whenActive',
+	subLevelVisible,
 }: AppLayoutSidebarNavProps) => {
 	return (
 		<Stack as="nav" aria-label="main" paddingBottom={1.5}>

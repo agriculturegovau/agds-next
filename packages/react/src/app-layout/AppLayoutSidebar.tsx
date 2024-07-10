@@ -20,6 +20,8 @@ export type AppLayoutSidebarProps = {
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
 	palette?: ResponsiveProp<BoxPalette>;
+	/** When to show sub-level navigation items. */
+	subLevelVisible?: 'always' | 'whenActive';
 };
 
 export function AppLayoutSidebar({
@@ -27,9 +29,16 @@ export function AppLayoutSidebar({
 	background = 'bodyAlt',
 	items,
 	palette,
+	subLevelVisible = 'whenActive',
 }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
 	const bestMatch = findBestMatch(items, activePath);
+
+	const commonMobileAndDesktopNavProps = {
+		activePath: bestMatch,
+		items,
+		subLevelVisible,
+	};
 
 	return (
 		<Fragment>
@@ -50,18 +59,16 @@ export function AppLayoutSidebar({
 				palette={palette}
 			>
 				<AppLayoutSidebarNav
-					activePath={bestMatch}
+					{...commonMobileAndDesktopNavProps}
 					background={background}
-					items={items}
 				/>
 			</Stack>
 			{/* Mobile */}
 			<AppLayoutSidebarDialog palette={palette}>
 				<AppLayoutSidebarNav
-					activePath={bestMatch}
+					{...commonMobileAndDesktopNavProps}
 					// This is hardcoded as bodyAlt because the dialog is hardcoded as shade
 					background="bodyAlt"
-					items={items}
 				/>
 			</AppLayoutSidebarDialog>
 		</Fragment>

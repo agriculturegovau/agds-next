@@ -77,3 +77,9 @@ export const LargeList: Story = {
 		}),
 	},
 };
+
+export const AlwaysOpen: Story = {
+	args: {
+		subLevelVisible: 'always',
+	},
+};
