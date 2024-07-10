@@ -182,10 +182,7 @@ function AppLayoutSidebarNavListItem({
 								aria-label={`. Sub-level ${
 									numberOfItems === 1 ? 'link' : 'links'
 								} below.`}
-								css={
-									level === 1 ? { marginRight: mapSpacing(0.25) } : undefined
-								}
-								size={level === 1 ? 'sm' : 'md'}
+								size="md"
 							/>
 						) : (
 							<ChevronRightIcon
@@ -193,10 +190,7 @@ function AppLayoutSidebarNavListItem({
 								aria-label={`. Has ${numberOfItems} sub-level ${
 									numberOfItems === 1 ? 'link' : 'links'
 								}.`}
-								css={
-									level === 1 ? { marginRight: mapSpacing(0.25) } : undefined
-								}
-								size={level === 1 ? 'sm' : 'md'}
+								size="md"
 							/>
 						))}
 				</Link>
@@ -286,7 +280,7 @@ function AppLayoutSidebarNavItemInner({
 					paddingTop: mapSpacing(1),
 					paddingBottom: mapSpacing(1),
 					paddingLeft: mapSpacing(level === 2 ? 3 : 1.5),
-					paddingRight: mapSpacing(1.5),
+					paddingRight: mapSpacing(1),
 
 					'& > svg': {
 						flexShrink: 0,

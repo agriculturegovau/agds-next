@@ -240,7 +240,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-knhlak-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -280,7 +280,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-8jq5ep-AppLayoutSidebarNavItemInner"
+            class="css-u8n2i4-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -306,7 +306,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-knhlak-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -338,7 +338,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-ex3kge-AppLayoutSidebarNavItemInner"
+            class="css-rlnsjb-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -368,7 +368,7 @@ exports[`AppLayout renders correctly 1`] = `
               <svg
                 aria-hidden="false"
                 aria-label=". Sub-level links below."
-                class="css-1p1er2r-AppLayoutSidebarNavListItem"
+                class="css-lq07bo-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -387,7 +387,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-o80hmi-boxStyles"
             >
               <li
-                class="css-r13nuq-AppLayoutSidebarNavItemInner"
+                class="css-9jhkso-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/canberra"
@@ -405,7 +405,7 @@ exports[`AppLayout renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-r13nuq-AppLayoutSidebarNavItemInner"
+                class="css-9jhkso-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/sydney"
@@ -425,7 +425,7 @@ exports[`AppLayout renders correctly 1`] = `
             </ul>
           </li>
           <li
-            class="css-knhlak-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -454,7 +454,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-knhlak-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -486,7 +486,7 @@ exports[`AppLayout renders correctly 1`] = `
               <svg
                 aria-hidden="false"
                 aria-label=". Has 2 sub-level links."
-                class="css-1p1er2r-AppLayoutSidebarNavListItem"
+                class="css-lq07bo-Icon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -511,7 +511,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-knhlak-AppLayoutSidebarNavItemInner"
+            class="css-19qo0lc-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -548,7 +548,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-8jq5ep-AppLayoutSidebarNavItemInner"
+            class="css-u8n2i4-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
