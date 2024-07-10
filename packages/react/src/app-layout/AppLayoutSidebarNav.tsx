@@ -162,7 +162,7 @@ function AppLayoutSidebarNavListItem({
 					{endElement}
 				</Link>
 
-				{isOpen && (
+				{(isOpen || isCurrentPage) && (
 					<Stack as="ul">
 						{item.items?.map?.((item) => (
 							<AppLayoutSidebarNavListItem
