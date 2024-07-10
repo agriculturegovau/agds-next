@@ -83,7 +83,7 @@ exports[`CollapsingSideBar renders correctly 1`] = `
 </div>
 `;
 
-exports[`CollapsingSideBar renders customTitle correctly 1`] = `
+exports[`CollapsingSideBar renders customTitleElement correctly 1`] = `
 <div>
   <section
     aria-labelledby="collapsing-side-bar-:r1:-heading"

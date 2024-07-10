@@ -26,12 +26,12 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
 	/** A custom element to use instead of title and subTitle. It should render as an h2. */
-	customTitle?: ReactNode;
+	customTitleElement?: ReactNode;
 	/** The gap between the small title/subTitle and children. */
 	gap?: BoxProps['gap'];
 	/** The subTitle of the CollapsingSideBar. */
 	subTitle?: string;
-	/** The title of the CollapsingSideBar. Still required even when using customTitle. */
+	/** The title of the CollapsingSideBar. Still required even when using customTitleElement. */
 	title: string;
 }>;
 
@@ -39,7 +39,7 @@ export function CollapsingSideBar({
 	as = 'section',
 	background = 'body',
 	children,
-	customTitle,
+	customTitleElement,
 	gap = { xs: 0, md: 1 },
 	subTitle,
 	title,
@@ -90,11 +90,11 @@ export function CollapsingSideBar({
 						},
 					}}
 					gap={0.5}
-					paddingX={customTitle ? undefined : { xs: 0.75, md: 0 }}
-					paddingY={customTitle ? undefined : { xs: 1, md: 0 }}
+					paddingX={customTitleElement ? undefined : { xs: 0.75, md: 0 }}
+					paddingY={customTitleElement ? undefined : { xs: 1, md: 0 }}
 					id={headingId}
 				>
-					{customTitle || (
+					{customTitleElement || (
 						<>
 							<Text
 								as="h2"

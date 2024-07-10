@@ -51,7 +51,7 @@ export function SideNav({
 	return (
 		<CollapsingSideBar
 			background={background}
-			customTitle={
+			customTitleElement={
 				<SideNavTitle
 					as="h2"
 					css={{

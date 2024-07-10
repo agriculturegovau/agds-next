@@ -22,10 +22,10 @@ describe('CollapsingSideBar', () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders customTitle correctly', () => {
+	it('renders customTitleElement correctly', () => {
 		const { container } = renderSideBar({
 			...defaultSideBarProps,
-			customTitle: <h2>Custom Title</h2>,
+			customTitleElement: <h2>Custom Title</h2>,
 		});
 		expect(container).toMatchSnapshot();
 	});
