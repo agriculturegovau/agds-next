@@ -8,7 +8,6 @@ import {
 	useLinkComponent,
 } from '../core';
 import { Box, focusStyles } from '../box';
-import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
 import { IconProps } from '../icon';
 import { Stack } from '../stack';

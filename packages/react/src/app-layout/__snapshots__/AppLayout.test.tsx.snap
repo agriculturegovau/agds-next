@@ -360,6 +360,42 @@ exports[`AppLayout renders correctly 1`] = `
                 Establishments
               </span>
             </a>
+            <ul
+              class="css-o80hmi-boxStyles"
+            >
+              <li
+                class="css-1dh39u6-AppLayoutSidebarNavItemInner"
+              >
+                <a
+                  href="/establishments/canberra"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    –
+                  </span>
+                  <span>
+                    Canberra
+                  </span>
+                </a>
+              </li>
+              <li
+                class="css-1dh39u6-AppLayoutSidebarNavItemInner"
+              >
+                <a
+                  href="/establishments/sydney"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    –
+                  </span>
+                  <span>
+                    Sydney
+                  </span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li
             class="css-knhlak-AppLayoutSidebarNavItemInner"
