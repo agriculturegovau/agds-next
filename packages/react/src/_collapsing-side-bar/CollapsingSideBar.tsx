@@ -25,7 +25,7 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
-	/** A custom element to use instead of title and subTitle. It should render as an h2. */
+	/** A custom element to use instead of title and subTitle. To make this accessible, it should render as an h2. */
 	customTitleElement?: ReactNode;
 	/** The gap between the small title/subTitle and children. */
 	gap?: BoxProps['gap'];
