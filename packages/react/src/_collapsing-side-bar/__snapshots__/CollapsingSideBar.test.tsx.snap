@@ -28,7 +28,7 @@ exports[`CollapsingSideBar renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r0:-body"
         aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
-        aria-label="Open Title"
+        aria-label="Title (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -104,7 +104,7 @@ exports[`CollapsingSideBar renders customTitleElement correctly 1`] = `
         aria-controls="collapsing-side-bar-:r1:-body"
         aria-describedby="collapsing-side-bar-:r1:-heading"
         aria-expanded="false"
-        aria-label="Open Title"
+        aria-label="Title (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >

@@ -23,7 +23,7 @@ exports[`FilterSidebar renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r0:-body"
         aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
-        aria-label="Open Filters (1)"
+        aria-label="Filters (1) (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >

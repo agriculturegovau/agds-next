@@ -117,7 +117,7 @@ export function CollapsingSideBar({
 					aria-controls={bodyId}
 					aria-describedby={headingId}
 					aria-expanded={isOpen}
-					aria-label={`Open ${title}`}
+					aria-label={`${title} (Expand/Collapse)`}
 					as={BaseButton}
 					background={background}
 					borderBottom

@@ -28,7 +28,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r0:-body"
         aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -563,7 +563,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r2:-body"
         aria-describedby="collapsing-side-bar-:r2:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -1098,7 +1098,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
         aria-controls="collapsing-side-bar-:r5:-body"
         aria-describedby="collapsing-side-bar-:r5:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -1633,7 +1633,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
         aria-controls="collapsing-side-bar-:r4:-body"
         aria-describedby="collapsing-side-bar-:r4:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -2168,7 +2168,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
         aria-controls="collapsing-side-bar-:r7:-body"
         aria-describedby="collapsing-side-bar-:r7:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -2703,7 +2703,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
         aria-controls="collapsing-side-bar-:r6:-body"
         aria-describedby="collapsing-side-bar-:r6:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -3238,7 +3238,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
         aria-controls="collapsing-side-bar-:r9:-body"
         aria-describedby="collapsing-side-bar-:r9:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -3773,7 +3773,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
         aria-controls="collapsing-side-bar-:r8:-body"
         aria-describedby="collapsing-side-bar-:r8:-heading"
         aria-expanded="false"
-        aria-label="Open Progress"
+        aria-label="Progress (Expand/Collapse)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >

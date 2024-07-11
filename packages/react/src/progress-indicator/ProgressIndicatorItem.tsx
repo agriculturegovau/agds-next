@@ -1,4 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
+import { type ElementType, type PropsWithChildren } from 'react';
 import { Box, backgroundColorMap } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -27,6 +27,11 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 	}>['items'];
 }>;
 
+const fallbackSubLevelItem = {
+	isActive: false,
+	label: '',
+};
+
 export const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
@@ -44,10 +49,14 @@ export const ProgressIndicatorItem = ({
 		);
 	}
 
-	const hasSubLevel = isActive && items?.some((item) => item.isActive);
-	const subLevelItem = hasSubLevel
-		? items?.find((item) => item.isActive)
-		: undefined;
+	const subLevelItem = isActive
+		? items?.find((item) => item.isActive) || fallbackSubLevelItem
+		: fallbackSubLevelItem;
+	const {
+		label: subLevelItemLabel,
+		isActive: _subLevelItemIsActive,
+		...subLevelItemRestProps
+	} = subLevelItem;
 
 	return (
 		<Box
@@ -119,13 +128,14 @@ export const ProgressIndicatorItem = ({
 					</Text>
 				</Stack>
 
-				{subLevelItem && (
+				{subLevelItemLabel && (
 					<>
 						<ProgressIndicatorItemTimeline />
 
 						<Box as="ul">
 							<Box as="li" css={{ position: 'relative' }}>
 								<Flex
+									{...subLevelItemRestProps}
 									alignItems="center"
 									aria-current={true}
 									as={as}
@@ -150,7 +160,6 @@ export const ProgressIndicatorItem = ({
 											},
 										},
 									}}
-									href={subLevelItem.href}
 									gap={0.5}
 									padding={0.5}
 									paddingBottom={1}
@@ -158,7 +167,7 @@ export const ProgressIndicatorItem = ({
 									<CornerDownRightIcon color="selected" />
 
 									<Text color="inherit" fontSize="xs" fontWeight="bold">
-										{subLevelItem.label}
+										{subLevelItemLabel}
 									</Text>
 								</Flex>
 							</Box>
