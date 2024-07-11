@@ -62,6 +62,16 @@ export const navigationItems = (businessName: string) => [
 			label: 'Establishments',
 			icon: FactoryIcon,
 			href: '/establishments',
+			items: [
+				{
+					label: 'Canberra',
+					href: '/establishments/canberra',
+				},
+				{
+					label: 'Sydney',
+					href: '/establishments/sydney',
+				},
+			],
 		},
 		{
 			label: 'Data and Insights',
@@ -72,6 +82,16 @@ export const navigationItems = (businessName: string) => [
 			label: 'Compliance',
 			icon: SuccessIcon,
 			href: '/compliance',
+			items: [
+				{
+					label: 'Audit',
+					href: '/compliance/audit',
+				},
+				{
+					label: 'Certificates',
+					href: '/compliance/certificates',
+				},
+			],
 		},
 	],
 

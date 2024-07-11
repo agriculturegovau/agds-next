@@ -1,5 +1,30 @@
 # @ag.ds-next/docs
 
+## 0.11.0
+
+### Minor Changes
+
+- 1872836fdfa: Use `MainNav`’s `focusMode` prop instead of conditional `MainNavBottom` bar logic.
+
+### Patch Changes
+
+- Updated dependencies [4d996b47c82]
+- Updated dependencies [8faad29ce55]
+- Updated dependencies [c0a035a9595]
+- Updated dependencies [1872836fdfa]
+- Updated dependencies [be10e7f7e45]
+- Updated dependencies [8aabedc08dd]
+- Updated dependencies [69178973bf5]
+- Updated dependencies [e174f63ae43]
+- Updated dependencies [d3b7ff92dde]
+- Updated dependencies [d69c1f773eb]
+- Updated dependencies [f2d348aae16]
+- Updated dependencies [4bfc1337601]
+- Updated dependencies [71bf5dfc384]
+- Updated dependencies [c320d8704ee]
+- Updated dependencies [4d31b029657]
+  - @ag.ds-next/react@1.23.0
+
 ## 0.10.0
 
 ### Minor Changes

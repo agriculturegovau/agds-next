@@ -1,10 +1,5 @@
 import { Fragment } from 'react';
-import {
-	findBestMatch,
-	tokens,
-	type BoxPalette,
-	type ResponsiveProp,
-} from '../core';
+import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
 import { Stack } from '../stack';
 import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
@@ -12,6 +7,7 @@ import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
 	APP_LAYOUT_SIDEBAR_WIDTH,
+	findBestMatch,
 } from './utils';
 
 export type AppLayoutSidebarProps = {
@@ -24,6 +20,8 @@ export type AppLayoutSidebarProps = {
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
 	palette?: ResponsiveProp<BoxPalette>;
+	/** When to show sub-level navigation items. */
+	subLevelVisible?: 'always' | 'whenActive';
 };
 
 export function AppLayoutSidebar({
@@ -31,12 +29,17 @@ export function AppLayoutSidebar({
 	background = 'bodyAlt',
 	items,
 	palette,
+	subLevelVisible = 'whenActive',
 }: AppLayoutSidebarProps) {
 	const { focusMode } = useAppLayoutContext();
-	const bestMatch = findBestMatch(
-		items.map((group) => (Array.isArray(group) ? group : group.items)).flat(),
-		activePath
-	);
+	const bestMatch = findBestMatch(items, activePath);
+
+	const commonMobileAndDesktopNavProps = {
+		activePath: bestMatch,
+		items,
+		subLevelVisible,
+	};
+
 	return (
 		<Fragment>
 			{/* Desktop */}
@@ -56,18 +59,16 @@ export function AppLayoutSidebar({
 				palette={palette}
 			>
 				<AppLayoutSidebarNav
-					activePath={bestMatch}
+					{...commonMobileAndDesktopNavProps}
 					background={background}
-					items={items}
 				/>
 			</Stack>
 			{/* Mobile */}
 			<AppLayoutSidebarDialog palette={palette}>
 				<AppLayoutSidebarNav
-					activePath={bestMatch}
+					{...commonMobileAndDesktopNavProps}
 					// This is hardcoded as bodyAlt because the dialog is hardcoded as shade
 					background="bodyAlt"
-					items={items}
 				/>
 			</AppLayoutSidebarDialog>
 		</Fragment>

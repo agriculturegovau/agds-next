@@ -1,5 +1,45 @@
 # @ag.ds-next/react
 
+## 1.23.0
+
+### Minor Changes
+
+- 4d996b47c82: footer: Add `borderColor` prop to `Footer` and `color` prop to `FooterDivider`.
+
+  main-nav: Add `borderColor` prop to `MainNav` and `MainNavBottomBar`.
+
+- 8faad29ce55: app-layout: Add co-branding to the `AppLayoutHeader` via `secondHref`, `secondLogo`, and `dividerPosition` props. Fix divider width.
+
+  header: Fix spacing on desktop and divider not being hidden when wrapping to a second line.
+
+- 1872836fdfa: main-nav: `Add focusMode` prop. Deprecate `MainNavBottomBar`.
+- be10e7f7e45: side-nav: Add `always` and `whenActive` strategies for making sub-level items visible. The new default will be `whenActive` as `always` should be used sparingly and when only a small number of navigation items exist.
+- e174f63ae43: date-picker: Reduce the size of and horizontally centre the calendar when the screen size is less than 375px.
+- d3b7ff92dde: checkbox: Add `name` support. Fix `required` to set `aria-required`.
+
+  control-group: Add automatic & custom `name` suppport. Fix passing `required` to `Checkbox` and `Radio` children.
+
+  radio: Add `name` support. Fix `required` to set `aria-required`.
+
+- 4bfc1337601: combobox-multi: Allow backspace to remove selected items when the popover is open.
+- 71bf5dfc384: button: Add `form` prop from native button props to allow submit buttons to be connected from outside a form.
+
+  drawer: Add docs and Storybook example of creating an accessible form within a drawer.
+
+- c320d8704ee: app-layout: `AppLayoutSidebar` - Add sub-level support for navigation items with accompanying `always` and `whenActive` strategies for making them visible.
+
+### Patch Changes
+
+- c0a035a9595: main-nav: Use correct ARIA labels for menu button & dialog. Remove other incorrect ARIA properties.
+
+  modal: Make the Close button’s visual and reading order identical.
+
+- 8aabedc08dd: pagination: Fix docs for "Items per page" section not showing correct page number.
+- 69178973bf5: table: Fix `textAlign` support in `TableHeaderSortable`.
+- d69c1f773eb: build: Add `'use client'` to entrypoints so they can be imported and used directly from server components
+- f2d348aae16: header: Update docs example for co-branding
+- 4d31b029657: main-nav: Fix mobile dialog menu not closing when you press the active link.
+
 ## 1.22.0
 
 ### Minor Changes

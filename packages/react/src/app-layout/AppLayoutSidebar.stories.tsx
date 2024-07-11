@@ -11,7 +11,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 		layout: 'fullscreen',
 	},
 	args: {
-		activePath: '/establishments',
+		activePath: '/',
 		background: 'bodyAlt',
 		items: navigationItems('Antfix'),
 	},
@@ -36,6 +36,18 @@ export default meta;
 type Story = StoryObj<typeof AppLayoutSidebar>;
 
 export const Basic: Story = {};
+
+export const LevelOneActive: Story = {
+	args: {
+		activePath: '/establishments',
+	},
+};
+
+export const LevelTwoActive: Story = {
+	args: {
+		activePath: '/establishments/canberra',
+	},
+};
 
 export const BodyBackground: Story = {
 	args: {
@@ -63,5 +75,11 @@ export const LargeList: Story = {
 				return { href: `#${groupIdx}-${itemIdx}`, label: 'Example item' };
 			});
 		}),
+	},
+};
+
+export const AlwaysOpen: Story = {
+	args: {
+		subLevelVisible: 'always',
 	},
 };

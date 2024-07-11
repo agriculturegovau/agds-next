@@ -128,6 +128,12 @@ export const AlternativeDateFormat: Story = {
 	},
 };
 
+export const CustomAllowedDateFormats: Story = {
+	args: {
+		allowedDateFormats: ['dd/MM/yyyy', 'dd-MM-yyyy', 'dd MM yyyy'],
+	},
+};
+
 export const ScrollExample: Story = {
 	render: (props) => (
 		<Box>
