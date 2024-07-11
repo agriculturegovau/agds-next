@@ -552,7 +552,7 @@ export const linkStyles = {
 
 	// Display link URLs
 	'@media print': {
-		'&[href]:after': {
+		'&[href]::after': {
 			content: '" (" attr(href) ")" !important',
 		},
 	},

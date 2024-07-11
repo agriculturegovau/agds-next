@@ -57,7 +57,7 @@ exports[`HeroBanner renders correctly 1`] = `
             </button>
           </div>
           <div
-            class="css-u86tm4-boxStyles-HeroBannerImage"
+            class="css-1w4w4c9-boxStyles-HeroBannerImage"
           >
             <img
               alt=""

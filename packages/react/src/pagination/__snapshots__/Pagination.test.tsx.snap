@@ -16,7 +16,7 @@ exports[`Pagination renders correctly 1`] = `
         >
           <a
             aria-label="Go to previous page"
-            class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
+            class="css-1g4vex8-TextLink-boxStyles-BaseDirectionLink"
             href="page-4"
           >
             <svg
@@ -48,7 +48,7 @@ exports[`Pagination renders correctly 1`] = `
         <li>
           <a
             aria-label="Go to page 1"
-            class="css-3n883g-boxStyles"
+            class="css-uwmdrc-boxStyles"
             href="page-1"
           >
             1
@@ -66,7 +66,7 @@ exports[`Pagination renders correctly 1`] = `
         <li>
           <a
             aria-label="Go to page 4"
-            class="css-3n883g-boxStyles"
+            class="css-uwmdrc-boxStyles"
             href="page-4"
           >
             4
@@ -76,7 +76,7 @@ exports[`Pagination renders correctly 1`] = `
           <a
             aria-current="page"
             aria-label="Go to page 5"
-            class="css-8bhquh-boxStyles-PaginationItemPage"
+            class="css-1m003dh-boxStyles-PaginationItemPage"
             href="page-5"
           >
             5
@@ -85,7 +85,7 @@ exports[`Pagination renders correctly 1`] = `
         <li>
           <a
             aria-label="Go to page 6"
-            class="css-3n883g-boxStyles"
+            class="css-uwmdrc-boxStyles"
             href="page-6"
           >
             6
@@ -103,7 +103,7 @@ exports[`Pagination renders correctly 1`] = `
         <li>
           <a
             aria-label="Go to page 10"
-            class="css-3n883g-boxStyles"
+            class="css-uwmdrc-boxStyles"
             href="page-10"
           >
             10
@@ -114,7 +114,7 @@ exports[`Pagination renders correctly 1`] = `
         >
           <a
             aria-label="Go to next page"
-            class="css-png6p8-TextLink-boxStyles-BaseDirectionLink"
+            class="css-1g4vex8-TextLink-boxStyles-BaseDirectionLink"
             href="page-6"
           >
             <span

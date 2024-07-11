@@ -176,11 +176,11 @@ exports[`SideNav renders correctly 1`] = `
               </a>
             </li>
             <li
-              class="css-u3jbms-SideNavListItem"
+              class="css-1bonpgi-SideNavListItem"
             >
               <a
                 aria-current="page"
-                class="css-mqbg66-boxStyles-SideNavLink"
+                class="css-johbbs-boxStyles-SideNavLink"
                 href="/in-detail"
               >
                 <span

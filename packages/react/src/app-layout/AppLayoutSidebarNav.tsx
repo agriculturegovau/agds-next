@@ -8,11 +8,11 @@ import {
 	useLinkComponent,
 } from '../core';
 import { Box, focusStyles } from '../box';
-import { Flex } from '../flex';
 import { BaseButton, BaseButtonProps } from '../button';
-import { IconProps } from '../icon';
+import { ChevronDownIcon, ChevronRightIcon, IconProps } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
+import { AppLayoutSidebarProps } from './AppLayoutSidebar';
 
 type NavLink = Omit<LinkProps, 'children'>;
 
@@ -20,8 +20,11 @@ type NavButton = Omit<BaseButtonProps, 'children'>;
 
 export type NavItem = (NavLink | NavButton) & {
 	label: ReactNode;
-	icon?: ComponentType<IconProps>;
 	endElement?: ReactNode;
+	icon?: ComponentType<IconProps>;
+	isActive?: boolean;
+	items?: NavItem[];
+	level?: number;
 };
 
 export type AppLayoutSidebarNavProps = {
@@ -31,25 +34,48 @@ export type AppLayoutSidebarNavProps = {
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
 	)[];
+	subLevelVisible?: AppLayoutSidebarProps['subLevelVisible'];
 };
 
-export function AppLayoutSidebarNav({
+// Recursively add `isActive` to any sub-level items
+const addIsActive =
+	(activePath: AppLayoutSidebarNavProps['activePath'], level = 0) =>
+	(item: NavItem): NavItem => {
+		const isCurrentPage = 'href' in item && item.href === activePath;
+		const isActive =
+			isCurrentPage || hasSubLevelActiveItem(item.items, activePath);
+
+		return {
+			...item,
+			isActive,
+			items:
+				isActive || item.items?.length
+					? item?.items?.map(addIsActive(activePath, level + 1))
+					: undefined,
+			level: level + 1,
+		};
+	};
+
+export const AppLayoutSidebarNav = ({
 	activePath,
 	background,
 	items,
-}: AppLayoutSidebarNavProps) {
+	subLevelVisible,
+}: AppLayoutSidebarNavProps) => {
 	return (
-		<Flex as="nav" flexDirection="column" aria-label="main" paddingBottom={1.5}>
-			<Flex as="ul" flexDirection="column">
-				{items.map((group, idx) => {
-					const isFirstItem = idx === 0;
-					const groupItems = Array.isArray(group) ? group : group.items;
+		<Stack as="nav" aria-label="main" paddingBottom={1.5}>
+			<Stack as="ul">
+				{items.map((group, index) => {
+					const isFirstItem = index === 0;
+					const groupItems = (Array.isArray(group) ? group : group.items).map(
+						addIsActive(activePath)
+					);
 
 					const disableGroupPadding = Array.isArray(group)
 						? false
 						: Boolean(group.options?.disableGroupPadding);
 
-					const prevGroup = items[idx - 1];
+					const prevGroup = items[index - 1];
 					const prevGroupDisableGroupPadding = prevGroup
 						? Array.isArray(prevGroup)
 							? false
@@ -57,7 +83,7 @@ export function AppLayoutSidebarNav({
 						: false;
 
 					return (
-						<Fragment key={idx}>
+						<Fragment key={index}>
 							{!isFirstItem ? (
 								<AppLayoutSidebarNavDivider
 									// As the divider is placed at the start of each group, padding top is determined by the previous group
@@ -65,52 +91,124 @@ export function AppLayoutSidebarNav({
 									disablePaddingBottom={disableGroupPadding}
 								/>
 							) : null}
-							{groupItems.map((item, idx) => (
-								<AppLayoutSidebarNavListItem
-									activePath={activePath}
-									background={background}
-									item={item}
-									key={idx}
-								/>
-							))}
+							{groupItems.map((item, index) => {
+								const isActiveGroup = hasSubLevelActiveItem(
+									item.items,
+									activePath
+								);
+								const isOpen = subLevelVisible === 'always' || isActiveGroup;
+
+								return (
+									<AppLayoutSidebarNavListItem
+										activePath={activePath}
+										background={background}
+										isActiveGroup={isActiveGroup}
+										isOpen={isOpen}
+										item={item}
+										key={index}
+										subLevelVisible={subLevelVisible}
+									/>
+								);
+							})}
 						</Fragment>
 					);
 				})}
-			</Flex>
-		</Flex>
+			</Stack>
+		</Stack>
 	);
-}
+};
 
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
+	isActiveGroup: boolean;
+	isOpen: boolean;
 	item: NavItem;
+	subLevelVisible: AppLayoutSidebarNavProps['subLevelVisible'];
 };
 
 function AppLayoutSidebarNavListItem({
 	activePath,
 	background,
+	isActiveGroup,
+	isOpen,
 	item,
+	subLevelVisible,
 }: AppLayoutSidebarNavListItemProps) {
 	const Link = useLinkComponent();
-	const { endElement, icon: Icon, label, ...restItemProps } = item;
+	const {
+		endElement,
+		icon: Icon,
+		isActive,
+		items,
+		label,
+		level,
+		...restItemProps
+	} = item;
 	const { closeMobileMenu } = useAppLayoutContext();
+	const numberOfItems = items?.length || 0;
+	const hasSubLevelItemsIndicator =
+		numberOfItems > 0 && subLevelVisible !== 'always';
 
 	// Link list item
 	if ('href' in item) {
-		const active = item.href === activePath;
+		const isCurrentPage = item.href === activePath;
 		return (
 			<AppLayoutSidebarNavItemInner
 				background={background}
 				hasEndElement={Boolean(endElement)}
-				isActive={activePath === item.href}
+				isCurrentPage={isCurrentPage}
+				isActive={isActiveGroup}
+				isOpen={isOpen}
+				level={item.level}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
-				<Link aria-current={active ? 'page' : undefined} {...restItemProps}>
-					{Icon ? <Icon color="inherit" /> : null}
-					<span>{label}</span>
+				<Link
+					aria-current={isCurrentPage ? 'page' : undefined}
+					{...restItemProps}
+				>
+					{Icon && level === 1 && <Icon color="inherit" />}
+
+					{level === 2 && <span aria-hidden>&ndash;</span>}
+
+					<span css={{ flexGrow: 1 }}>{label}</span>
+
 					{endElement}
+
+					{hasSubLevelItemsIndicator &&
+						(isActive ? (
+							<ChevronDownIcon
+								aria-hidden={false}
+								aria-label={`. Sub-level ${
+									numberOfItems === 1 ? 'link' : 'links'
+								} below.`}
+								size="md"
+							/>
+						) : (
+							<ChevronRightIcon
+								aria-hidden={false}
+								aria-label={`. Has ${numberOfItems} sub-level ${
+									numberOfItems === 1 ? 'link' : 'links'
+								}.`}
+								size="md"
+							/>
+						))}
 				</Link>
+
+				{Boolean(item.items?.length) && (isOpen || isCurrentPage) && (
+					<Stack as="ul">
+						{item.items?.map?.((item) => (
+							<AppLayoutSidebarNavListItem
+								activePath={activePath}
+								isActiveGroup={Boolean(isActive)}
+								isOpen={isOpen}
+								item={item}
+								key={item.label?.toString()}
+								subLevelVisible={subLevelVisible}
+							/>
+						))}
+					</Stack>
+				)}
 			</AppLayoutSidebarNavItemInner>
 		);
 	}
@@ -122,6 +220,8 @@ function AppLayoutSidebarNavListItem({
 				background={background}
 				hasEndElement={Boolean(endElement)}
 				isActive={false}
+				isCurrentPage={false}
+				isOpen={false}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
 				<BaseButton {...restItemProps}>
@@ -138,6 +238,8 @@ function AppLayoutSidebarNavListItem({
 		<AppLayoutSidebarNavItemInner
 			background={background}
 			isActive={false}
+			isCurrentPage={false}
+			isOpen={false}
 			hasEndElement={false}
 		>
 			<Stack as="span" gap={0.25}>
@@ -151,6 +253,9 @@ type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 	hasEndElement: boolean;
 	isActive: boolean;
+	isCurrentPage: boolean;
+	isOpen: boolean;
+	level?: number;
 	onClick?: () => void;
 }>;
 
@@ -158,7 +263,10 @@ function AppLayoutSidebarNavItemInner({
 	background,
 	children,
 	hasEndElement,
+	isCurrentPage,
 	isActive,
+	isOpen,
+	level,
 	onClick,
 }: AppLayoutSidebarNavItemInnerProps) {
 	return (
@@ -171,8 +279,8 @@ function AppLayoutSidebarNavItemInner({
 					wordBreak: 'break-word', // Prevent long labels from causing overflow
 					paddingTop: mapSpacing(1),
 					paddingBottom: mapSpacing(1),
-					paddingLeft: mapSpacing(1.5),
-					paddingRight: mapSpacing(1.5),
+					paddingLeft: mapSpacing(level === 2 ? 3 : 1.5),
+					paddingRight: mapSpacing(1),
 
 					'& > svg': {
 						flexShrink: 0,
@@ -186,22 +294,36 @@ function AppLayoutSidebarNavItemInner({
 					alignItems: 'center',
 
 					gap: mapSpacing(0.75),
-					color: boxPalette[isActive ? 'foregroundText' : 'foregroundAction'],
-					...(isActive && {
-						fontWeight: tokens.fontWeight.bold,
+					color:
+						(isActive && level !== 2) || isCurrentPage
+							? boxPalette.foregroundText
+							: boxPalette.foregroundAction,
+					...((isActive || isCurrentPage || isOpen) && {
+						fontWeight: isCurrentPage
+							? tokens.fontWeight.bold
+							: tokens.fontWeight.normal,
 						background:
 							boxPalette[
-								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
+								isCurrentPage
+									? 'selectedMuted'
+									: background === 'body'
+									? 'backgroundBody'
+									: 'backgroundBodyAlt'
 							],
-						'&:before': {
+						'&::before': {
 							content: "''",
 							position: 'absolute',
 							top: 0,
 							left: 0,
 							bottom: 0,
 							borderLeftStyle: 'solid',
-							borderLeftColor: boxPalette.selected,
 							borderLeftWidth: tokens.borderWidth.xl,
+							...(isCurrentPage && { borderLeftColor: boxPalette.selected }),
+							...(!isCurrentPage &&
+								isActive && { borderLeftColor: boxPalette.borderMuted }),
+							...(!isCurrentPage &&
+								!isActive &&
+								isOpen && { borderLeft: 'none' }),
 						},
 					}),
 
@@ -217,7 +339,7 @@ function AppLayoutSidebarNavItemInner({
 								background === 'body' ? 'backgroundShade' : 'backgroundShadeAlt'
 							],
 						color: boxPalette.foregroundText,
-						'& > span:first-of-type': packs.underline,
+						[`& > span:nth-of-type(${level})`]: packs.underline,
 					},
 
 					...focusStyles,
@@ -268,5 +390,17 @@ function AppLayoutSidebarNavDivider({
 				}}
 			/>
 		</Box>
+	);
+}
+
+function hasSubLevelActiveItem(
+	items: NavItem[] | undefined,
+	bestMatch: string | undefined
+): boolean {
+	if (!(items?.length && bestMatch)) return false;
+	return items.some(
+		(item) =>
+			('href' in item && item.href === bestMatch) ||
+			('items' in item && hasSubLevelActiveItem(item.items, bestMatch))
 	);
 }

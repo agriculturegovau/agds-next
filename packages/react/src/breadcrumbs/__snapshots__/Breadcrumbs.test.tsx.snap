@@ -28,7 +28,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
           />
         </svg>
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-koqz57-TextLink"
           href="#home"
         >
           Home
@@ -56,7 +56,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-label="Expand list"
-          class="css-1idhw1e-BaseButton-boxStyles"
+          class="css-eqfuua-BaseButton-boxStyles"
           type="button"
         >
           …
@@ -82,7 +82,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
           />
         </svg>
         <a
-          class="css-ma0bjl-TextLink"
+          class="css-koqz57-TextLink"
           href="#establishments"
         >
           Establishments

@@ -17,10 +17,10 @@ exports[`Tags With links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -31,10 +31,10 @@ exports[`Tags With links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -45,10 +45,10 @@ exports[`Tags With links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-k8ctd8-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -77,17 +77,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Foo
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-9t1jls-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -122,17 +122,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Bar
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-9t1jls-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -167,17 +167,17 @@ exports[`Tags With onRemove renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-198oft9-boxStyles"
+          class="css-12vpy0u-boxStyles-Tag"
         >
           <a
-            class="css-oplj7x-TextLink-boxStyles"
+            class="css-1qb2lpt-TextLink-boxStyles"
             href="#"
           >
             Baz
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-1mpot0i-BaseButton-boxStyles-TagRemoveButton"
+            class="css-9t1jls-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -230,7 +230,7 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-a8btkt-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"
@@ -243,7 +243,7 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-a8btkt-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"
@@ -256,7 +256,7 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-7ymoik-boxStyles"
+          class="css-a8btkt-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"

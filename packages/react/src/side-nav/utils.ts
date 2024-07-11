@@ -39,14 +39,11 @@ export function hasSubLevelActiveItem(
 	bestMatch: string | undefined
 ): boolean {
 	if (!(items?.length && bestMatch)) return false;
-	return items.some((item) => {
-		if (item.href === bestMatch) {
-			return true;
-		}
-		if (item.items?.length && hasSubLevelActiveItem(item.items, bestMatch)) {
-			return true;
-		}
-	});
+	return items.some(
+		(item) =>
+			item.href === bestMatch ||
+			(item.items?.length && hasSubLevelActiveItem(item.items, bestMatch))
+	);
 }
 
 export function useSideNavIds() {

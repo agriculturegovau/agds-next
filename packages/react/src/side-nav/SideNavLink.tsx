@@ -59,7 +59,7 @@ export const SideNavLink = ({
 					color: boxPalette.foregroundText,
 					backgroundColor: collapsingSideBarHoverVar,
 					fontWeight: tokens.fontWeight.bold,
-					':before': {
+					'::before': {
 						content: '""',
 						position: 'absolute',
 						top: 0,

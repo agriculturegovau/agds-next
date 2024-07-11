@@ -38,7 +38,7 @@ export const SkeletonBox = ({
 				animation: `${animateFadeOut} 1200ms ${tokens.transition.timingFunction} infinite alternate`,
 				backgroundColor: boxPalette.border,
 				cursor: 'progress',
-				'&:before': {
+				'&::before': {
 					content: '"\\00a0"',
 				},
 			}}

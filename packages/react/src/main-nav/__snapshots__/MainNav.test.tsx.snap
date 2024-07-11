@@ -46,7 +46,7 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-1e0n7jq-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/"
@@ -57,7 +57,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1e0n7jq-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/content"
@@ -68,7 +68,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1e0n7jq-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/form"
@@ -79,7 +79,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1nz3t6v-boxStyles-MainNavListItem"
+            class="css-1mfistu-boxStyles-MainNavListItem"
           >
             <a
               aria-current="page"
@@ -100,7 +100,7 @@ exports[`MainNav renders correctly 1`] = `
           class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-1cp7t2w-boxStyles-MainNavListItem"
+            class="css-r39s9d-boxStyles-MainNavListItem"
           >
             <a
               href="#sign-in"

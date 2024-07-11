@@ -16,7 +16,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         >
           <button
             aria-label="Go to previous page"
-            class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
+            class="css-1svh3o-BaseButton-boxStyles-BaseDirectionLink"
             type="button"
           >
             <svg
@@ -48,7 +48,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <li>
           <button
             aria-label="Go to page 1"
-            class="css-1yifu8x-BaseButton-boxStyles"
+            class="css-12wo8us-BaseButton-boxStyles"
             type="button"
           >
             1
@@ -66,7 +66,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <li>
           <button
             aria-label="Go to page 4"
-            class="css-1yifu8x-BaseButton-boxStyles"
+            class="css-12wo8us-BaseButton-boxStyles"
             type="button"
           >
             4
@@ -76,7 +76,7 @@ exports[`PaginationButtons renders correctly 1`] = `
           <button
             aria-current="page"
             aria-label="Go to page 5"
-            class="css-1gs1cx7-BaseButton-boxStyles-PaginationItemPageButton"
+            class="css-1rvez9h-BaseButton-boxStyles-PaginationItemPageButton"
             type="button"
           >
             5
@@ -85,7 +85,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <li>
           <button
             aria-label="Go to page 6"
-            class="css-1yifu8x-BaseButton-boxStyles"
+            class="css-12wo8us-BaseButton-boxStyles"
             type="button"
           >
             6
@@ -103,7 +103,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         <li>
           <button
             aria-label="Go to page 10"
-            class="css-1yifu8x-BaseButton-boxStyles"
+            class="css-12wo8us-BaseButton-boxStyles"
             type="button"
           >
             10
@@ -114,7 +114,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         >
           <button
             aria-label="Go to next page"
-            class="css-rs8ftg-BaseButton-boxStyles-BaseDirectionLink"
+            class="css-1svh3o-BaseButton-boxStyles-BaseDirectionLink"
             type="button"
           >
             <span
