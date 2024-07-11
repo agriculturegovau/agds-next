@@ -220,6 +220,9 @@ describe('Table', () => {
 			const { container } = renderTableWithCaption();
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					'no-inline-style': 'off',
+				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
 		});
@@ -239,6 +242,9 @@ describe('Table', () => {
 			const { container } = renderTableWithHeadings();
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					'no-inline-style': 'off',
+				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
 		});

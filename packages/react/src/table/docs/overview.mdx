@@ -445,6 +445,213 @@ A Table must have some form of caption or heading to describe the data it contai
 </Stack>
 ```
 
+## Wide tables
+
+When a table is too wide for its container, a custom scrollbar will be rendered. This scrollbar also sticks to the bottom of the screen when the bottom of the table is off-screen, so users can still easily scroll the table regardless of which rows they’re looking at.
+
+```jsx live
+<TableWrapper>
+	<Table tableLayout="fixed">
+		<TableHead>
+			<TableRow>
+				<TableHeader scope="col" width="20rem">
+					Business name
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Assignee
+				</TableHeader>
+				<TableHeader scope="col" width="16rem">
+					City
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Date registered
+				</TableHeader>
+				<TableHeader scope="col" width="11rem">
+					Status
+				</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Agriculture Victoria
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Melbourne, VIC</TableCell>
+				<TableCell>14/08/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Acres Produce
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>White Plains, NSW</TableCell>
+				<TableCell>17/03/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agribusiness
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Sydney, NSW</TableCell>
+				<TableCell>19/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agro Supplies
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Shanahanberg, TAS</TableCell>
+				<TableCell>16/07/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Australian Cattle Co.
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>North Margarettaborough, WA</TableCell>
+				<TableCell>01/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Baumbach, Williamson and Rosenbaum
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Oakland Park, VIC</TableCell>
+				<TableCell>02/09/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bergnaum Inc
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Tallahassee, SA</TableCell>
+				<TableCell>23/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown Group
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Elgin, VIC</TableCell>
+				<TableCell>28/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Cancelled"
+						tone="errorMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown, Mayert and Robel
+				</TableCell>
+				<TableCell>-</TableCell>
+				<TableCell>Ismaelshire, SA</TableCell>
+				<TableCell>21/04/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bushland Farms
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>New Oleta, TAS</TableCell>
+				<TableCell>22/05/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
 ## ‘colSpan’ and ‘rowSpan’
 
 Some tables require cells which represent multiple rows or columns. Instead of repeating the spanning data each time, you can use the `colSpan` and `rowSpan` props to specify how a specific cell spans multiple columns and rows, respectively.
@@ -782,7 +989,7 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 				</TableRow>
 			</TableHead>
 			<TableBody>
-				<TableRow aria-rowindex={2}>
+				<TableRow>
 					<TableCell as="th" scope="row">
 						RMS Vehicle registration
 					</TableCell>
@@ -800,13 +1007,14 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 						</Button>
 					</TableCell>
 				</TableRow>
-				<TableRow aria-rowindex={3} invalid={true}>
+				<TableRow invalid={true}>
 					<TableCell as="th" scope="row">
 						Operational Plan of Management
 					</TableCell>
 					<TableCell></TableCell>
 					<TableCell>
 						<StatusBadge
+							appearance="subtle"
 							label="File missing"
 							appearance="subtle"
 							tone="errorHigh"
@@ -822,7 +1030,7 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 						</Button>
 					</TableCell>
 				</TableRow>
-				<TableRow aria-rowindex={4}>
+				<TableRow>
 					<TableCell as="th" scope="row">
 						Vehicle build and layout plans
 					</TableCell>

@@ -1,14 +1,11 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { cleanup, render } from '../../../../test-utils';;
+import { render } from '../../../../test-utils';;
 import { {{componentName}} } from './{{componentName}}';
 import type { {{componentName}}Props } from './{{componentName}}';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
-
 
 function render{{componentName}}(props?: Partial<{{componentName}}Props>) {
   return render(<{{componentName}} {...props} />);
