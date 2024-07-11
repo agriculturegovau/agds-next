@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { type MouseEventHandler } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { TextLink } from '../text-link';
-import { boxPalette, LinkProps, mapSpacing } from '../core';
+import { boxPalette, type LinkProps } from '../core';
 import { CloseIcon } from '../icon';
 import { BaseButton } from '../button';
 
@@ -15,22 +15,25 @@ export const Tag = ({ children, onRemove, ...props }: TagProps) => {
 	const { href } = props;
 	return (
 		<Flex
-			as="span"
-			inline
 			alignItems="center"
+			as="span"
 			border
-			rounded
-			paddingLeft={0.5}
-			paddingRight={onRemove ? 0.25 : 0.5}
-			gap={0.25}
-			fontSize="sm"
 			color={href ? 'action' : 'text'}
+			css={{
+				borderRadius: 999,
+				paddingBottom: '0.0625rem',
+				paddingTop: '0.0625rem',
+			}}
+			fontSize="xs"
+			gap={0.25}
+			inline
+			paddingX={0.5}
 		>
 			<Box as={href ? TextLink : 'span'} {...props}>
 				{children}
 			</Box>
 			{onRemove && (
-				<TagRemoveButton onClick={onRemove} aria-label={`Remove ${children}`} />
+				<TagRemoveButton aria-label={`Remove ${children}`} onClick={onRemove} />
 			)}
 		</Flex>
 	);
@@ -45,18 +48,13 @@ const TagRemoveButton = ({
 }) => {
 	return (
 		<Flex
-			as={BaseButton}
-			height={mapSpacing(1.5)}
-			width={mapSpacing(1.5)}
 			alignItems="center"
-			justifyContent="center"
-			onClick={onClick}
 			aria-label={ariaLabel}
-			focusRingFor="keyboard"
+			as={BaseButton}
 			css={{
 				svg: {
-					display: 'block',
 					color: boxPalette.foregroundAction,
+					display: 'block',
 				},
 				'&:hover': {
 					svg: {
@@ -64,6 +62,11 @@ const TagRemoveButton = ({
 					},
 				},
 			}}
+			focusRingFor="keyboard"
+			height="1rem"
+			justifyContent="center"
+			onClick={onClick}
+			width="1rem"
 		>
 			<CloseIcon size="sm" />
 		</Flex>
