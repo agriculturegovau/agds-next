@@ -185,7 +185,7 @@ export const NoTitle: Story = {
 	},
 };
 
-export const customTitleSize: Story = {
+export const CustomTitleSize: Story = {
 	render: (args) => (
 		<Callout {...args}>
 			<CalloutTitle as="h3" variant={args.variant}>
