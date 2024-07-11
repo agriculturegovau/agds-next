@@ -310,7 +310,7 @@ function AppLayoutSidebarNavItemInner({
 									? 'backgroundBody'
 									: 'backgroundBodyAlt'
 							],
-						'&:before': {
+						'&::before': {
 							content: "''",
 							position: 'absolute',
 							top: 0,

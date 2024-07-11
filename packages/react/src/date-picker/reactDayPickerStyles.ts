@@ -93,7 +93,7 @@ export const reactDayPickerStyles = {
 		'&.rdp-day_today': {
 			position: 'relative',
 			fontWeight: tokens.fontWeight.bold,
-			'&:after': {
+			'&::after': {
 				content: '""',
 				position: 'absolute',
 				bottom: '0.3rem',

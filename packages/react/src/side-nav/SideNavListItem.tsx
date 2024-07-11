@@ -14,7 +14,7 @@ export function SideNavListItem({ children, isActive }: SideNavLinkProps) {
 				depth === 1 && isActive
 					? {
 							position: 'relative',
-							':before': {
+							'::before': {
 								borderLeftColor: boxPalette.borderMuted,
 								borderLeftStyle: 'solid',
 								borderLeftWidth: tokens.borderWidth.xl,

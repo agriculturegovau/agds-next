@@ -72,7 +72,7 @@ export const ProgressIndicatorItem = ({
 					gridTemplateColumns: 'min-content 1fr',
 					textDecoration: 'none',
 					width: '100%',
-					[`[${progressIndicatorItemRingDataAttr}]:before`]: {
+					[`[${progressIndicatorItemRingDataAttr}]::before`]: {
 						backgroundColor: backgroundColorMap[background],
 					},
 				}}
@@ -202,7 +202,7 @@ const ProgressIndicatorItemIcon = ({
 					paddingLeft: ringInset,
 					paddingRight: ringInset,
 					...(isActive && {
-						':before': {
+						'::before': {
 							position: 'absolute',
 							top: -ringInset,
 							bottom: -ringInset,

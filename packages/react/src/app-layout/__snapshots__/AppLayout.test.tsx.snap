@@ -338,7 +338,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-rlnsjb-AppLayoutSidebarNavItemInner"
+            class="css-m2xdl5-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -387,7 +387,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-o80hmi-boxStyles"
             >
               <li
-                class="css-9jhkso-AppLayoutSidebarNavItemInner"
+                class="css-1pfvc0v-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/canberra"
@@ -405,7 +405,7 @@ exports[`AppLayout renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-9jhkso-AppLayoutSidebarNavItemInner"
+                class="css-1pfvc0v-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/sydney"
@@ -618,7 +618,7 @@ exports[`AppLayout renders correctly 1`] = `
                     class="css-79i25n-boxStyles"
                   >
                     <a
-                      class="css-ma0bjl-TextLink"
+                      class="css-koqz57-TextLink"
                       href="/"
                     >
                       Home

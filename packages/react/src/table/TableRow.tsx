@@ -30,7 +30,7 @@ export function TableRow({
 						backgroundColor: boxPalette.selectedMuted,
 
 						// Add outline
-						'&:after': {
+						'&::after': {
 							content: '""',
 							pointerEvents: 'none',
 							position: 'absolute',
@@ -41,17 +41,17 @@ export function TableRow({
 						},
 
 						// Remove the border top (if next table row is selected)
-						":has(+ tr[aria-selected='true']):after": {
+						":has(+ tr[aria-selected='true'])::after": {
 							borderBottomWidth: 0,
 						},
 
 						// Remove the border top from the next table row (if next table row is selected)
-						'+ tr:after': {
+						'+ tr::after': {
 							borderTopWidth: 0,
 						},
 					}),
 
-					// Chrome and Firefox doesn't support :after elements in fixed table layouts
+					// Chrome and Firefox doesn't support ::after elements in fixed table layouts
 					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
 					...(tableLayout === 'fixed' && alternativeSelectedStyles),
 
@@ -71,12 +71,12 @@ export function TableRow({
 	);
 }
 
-// Use an outline instead of an :after element
+// Use an outline instead of an ::after element
 const alternativeSelectedStyles = {
 	backgroundColor: boxPalette.selectedMuted,
 	outlineWidth: '2px',
 	outlineStyle: 'solid',
 	outlineColor: boxPalette.selected,
 	outlineOffset: '-3px',
-	'&:after': { display: 'none' },
+	'&::after': { display: 'none' },
 };
