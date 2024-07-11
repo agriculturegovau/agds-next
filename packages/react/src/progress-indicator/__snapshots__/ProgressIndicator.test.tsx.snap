@@ -3,51 +3,75 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r0:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r0:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r0:-body"
+        aria-describedby="collapsing-side-bar-:r0:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r0:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r0:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r0:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -514,51 +538,75 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r2:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r2:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r2:-body"
+        aria-describedby="collapsing-side-bar-:r2:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r2:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r2:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r2:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1025,51 +1073,75 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r5:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r5:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r5:-body"
+        aria-describedby="collapsing-side-bar-:r5:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r5:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r5:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r5:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1536,51 +1608,75 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r4:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r4:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r4:-body"
+        aria-describedby="collapsing-side-bar-:r4:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r4:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r4:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r4:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2047,51 +2143,75 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r7:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r7:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r7:-body"
+        aria-describedby="collapsing-side-bar-:r7:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r7:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r7:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r7:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2558,51 +2678,75 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r6:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r6:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r6:-body"
+        aria-describedby="collapsing-side-bar-:r6:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r6:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r6:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r6:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3069,51 +3213,75 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active button 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r9:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r9:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r9:-body"
+        aria-describedby="collapsing-side-bar-:r9:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r9:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r9:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r9:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3580,51 +3748,75 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active link 1`] = `
 <div>
   <section
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+    aria-labelledby="collapsing-side-bar-:r8:-heading"
+    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-w0ukyp-boxStyles"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
-      <h2
-        class="css-pkkmd5-boxStyles"
+      <div
+        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r8:-heading"
       >
-        Progress
-      </h2>
-      <span
-        class="css-1ntyv7o-boxStyles"
+        <h2
+          class="css-pkkmd5-boxStyles"
+        >
+          Progress
+        </h2>
+        <span
+          class="css-1ntyv7o-boxStyles"
+        >
+          1 of 7 steps completed
+        </span>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r8:-body"
+        aria-describedby="collapsing-side-bar-:r8:-heading"
+        aria-expanded="false"
+        aria-label="Progress (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
       >
-        1 of 7 steps completed
-      </span>
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Progress
+            </span>
+            <span
+              class="css-1ntyv7o-boxStyles"
+            >
+              1 of 7 steps completed
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
-    <button
-      aria-controls="collapsing-side-bar-:r8:-body"
-      aria-expanded="false"
-      class="css-1eu6n4a-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r8:-button"
-      type="button"
-    >
-      1 of 7 steps completed
-      <svg
-        aria-hidden="true"
-        class="css-ix61td-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r8:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"

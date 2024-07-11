@@ -1,5 +1,6 @@
 import { Box } from '../box';
-import { LinkProps } from '../core';
+import { LinkProps, tokens } from '../core';
+import { visuallyHiddenStyles } from '../a11y';
 import {
 	CollapsingSideBar,
 	CollapsingSideBarBackground,
@@ -16,14 +17,14 @@ type SideNavMenuItem = Omit<LinkProps, 'children'> & {
 export type SideNavProps = {
 	/** Used for highlighting the active element. */
 	activePath: string;
-	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
-	collapseTitle: string;
+	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
+	background?: CollapsingSideBarBackground;
+	/** @deprecated Unused. The title is now always used, even when collapsed. */
+	collapseTitle?: string;
 	/** The list of links. */
 	items: SideNavMenuItem[];
 	/** The title is placed at the top of the list of links. */
 	title: string;
-	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: CollapsingSideBarBackground;
 	/** When to show sub-level navigation items. */
 	subLevelVisible?: 'always' | 'whenActive';
 	/** If provided, the title will be rendered as an anchor element. */
@@ -39,24 +40,42 @@ export function SideNav({
 	title,
 	titleLink,
 }: SideNavProps) {
-	const { navId, titleId } = useSideNavIds();
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production' && collapseTitle) {
+		console.warn('SideNav: The `collapseTitle` prop is now unused.');
+	}
+
+	const { titleId } = useSideNavIds();
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
 		<CollapsingSideBar
-			collapseButtonLabel={collapseTitle}
 			background={background}
+			customTitleElement={
+				<SideNavTitle
+					as="h2"
+					css={{
+						[tokens.mediaQuery.min.md]: visuallyHiddenStyles,
+					}}
+					id={titleId}
+				>
+					{title}
+				</SideNavTitle>
+			}
+			gap={0}
+			title={title}
 		>
 			<Box
-				as="nav"
 				aria-labelledby={titleId}
-				id={navId}
+				as="nav"
 				fontFamily="body"
 				fontSize="sm"
 				lineHeight="default"
 			>
 				<SideNavTitle
-					id={titleId}
+					as="span"
+					// Don't render the title on small screen if there is no link as it's unnecessary double-up of headings
+					display={{ xs: titleLink ? 'block' : 'none', md: 'block' }}
 					href={titleLink}
 					isCurrentPage={activePath === titleLink}
 				>

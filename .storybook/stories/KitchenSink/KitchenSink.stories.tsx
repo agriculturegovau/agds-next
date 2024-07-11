@@ -178,7 +178,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								background={page}
 								title="Lodging your tax return"
 								titleLink="#"
-								collapseTitle="In this section"
 								items={sideNavItems}
 								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>

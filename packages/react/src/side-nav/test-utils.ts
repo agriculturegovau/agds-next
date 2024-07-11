@@ -3,7 +3,6 @@ import { SideNavProps } from './SideNav';
 export const defaultTestingProps: SideNavProps = {
 	title: 'Lodging your tax return',
 	titleLink: '/',
-	collapseTitle: 'In this section',
 	items: [
 		{
 			href: '/welcome',

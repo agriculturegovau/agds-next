@@ -49,7 +49,6 @@ export function hasSubLevelActiveItem(
 export function useSideNavIds() {
 	const autoId = useId();
 	return {
-		navId: `sideNav-${autoId}-nav`,
 		titleId: `sideNav-${autoId}-title`,
 	};
 }

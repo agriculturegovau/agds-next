@@ -1,4 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
+import { type ElementType, type PropsWithChildren } from 'react';
 import { Box, backgroundColorMap } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -27,6 +27,11 @@ type ProgressIndicatorItemProps = PropsWithChildren<{
 	}>['items'];
 }>;
 
+const fallbackSubLevelItem = {
+	isActive: false,
+	label: '',
+};
+
 export const ProgressIndicatorItem = ({
 	as,
 	background = 'body',
@@ -43,6 +48,15 @@ export const ProgressIndicatorItem = ({
 			'ProgressIndicator: The "doing" status is deprecated. Use the "started" status with `activePath`.'
 		);
 	}
+
+	const subLevelItem = isActive
+		? items?.find((item) => item.isActive) || fallbackSubLevelItem
+		: fallbackSubLevelItem;
+	const {
+		label: subLevelItemLabel,
+		isActive: _subLevelItemIsActive,
+		...subLevelItemRestProps
+	} = subLevelItem;
 
 	return (
 		<Box
@@ -114,14 +128,14 @@ export const ProgressIndicatorItem = ({
 					</Text>
 				</Stack>
 
-				{isActive && items?.some((item) => item.isActive) && (
+				{subLevelItemLabel && (
 					<>
 						<ProgressIndicatorItemTimeline />
 
 						<Box as="ul">
 							<Box as="li" css={{ position: 'relative' }}>
 								<Flex
-									{...items.find((item) => item.isActive)}
+									{...subLevelItemRestProps}
 									alignItems="center"
 									aria-current={true}
 									as={as}
@@ -153,7 +167,7 @@ export const ProgressIndicatorItem = ({
 									<CornerDownRightIcon color="selected" />
 
 									<Text color="inherit" fontSize="xs" fontWeight="bold">
-										{items.find((item) => item.isActive)?.label}
+										{subLevelItemLabel}
 									</Text>
 								</Flex>
 							</Box>

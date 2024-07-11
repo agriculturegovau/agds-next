@@ -31,7 +31,6 @@ export default function Page() {
 						<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
-									collapseTitle="In this section"
 									activePath={router.asPath}
 									title="Services"
 									titleLink="/services"

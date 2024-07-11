@@ -21,7 +21,6 @@ export function ContentWithSideNav() {
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<SideNav
-							collapseTitle="In this section"
 							title="Category 1"
 							titleLink="#"
 							activePath="#activePath"

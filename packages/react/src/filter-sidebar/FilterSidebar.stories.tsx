@@ -34,6 +34,9 @@ export const Basic: Story = {
 };
 
 export const Layout: Story = {
+	args: {
+		activeFiltersCount: 2,
+	},
 	render: (args) => {
 		const listData: {
 			title: string;
@@ -70,10 +73,10 @@ export const Layout: Story = {
 								onClearFilters={console.log}
 							>
 								<FormStack>
-									<TextInput block label="Example input 2" value="Example" />
-									<TextInput block label="Example input 3" value="Example" />
-									<TextInput block label="Example input 1" value="Example" />
-									<TextInput block label="Example input 4" value="Example" />
+									<TextInput block label="Example input 1" value="Example 1" />
+									<TextInput block label="Example input 2" />
+									<TextInput block label="Example input 3" value="Example 3" />
+									<TextInput block label="Example input 4" />
 								</FormStack>
 							</FilterSidebar>
 						</Stack>

@@ -41,17 +41,35 @@ describe('SideNav', () => {
 	describe('renders the title correctly', () => {
 		test('with link', () => {
 			renderSideNav(defaultTestingProps);
-			const el = screen.getByText(defaultTestingProps.title);
-			expect(el.tagName).toBe('A');
+
+			const el = screen.getByRole('link', {
+				name: defaultTestingProps.title,
+				hidden: true,
+			});
+
+			expect(el).toBeInTheDocument();
 			expect(el).toHaveAttribute('href', defaultTestingProps.titleLink);
-			expect(el).toHaveAccessibleName(defaultTestingProps.title);
 		});
 
-		test('without link', () => {
-			renderSideNav({ ...defaultTestingProps, titleLink: undefined });
-			const el = screen.getByText(defaultTestingProps.title);
-			expect(el.tagName).toBe('H2');
-			expect(el).toHaveAccessibleName(defaultTestingProps.title);
+		test('without link', async () => {
+			const { container } = renderSideNav({
+				...defaultTestingProps,
+				titleLink: undefined,
+			});
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+				rules: {
+					'no-inline-style': 'off',
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
+			});
+
+			const nav = screen.getByRole('navigation', { hidden: true });
+			const el = within(nav).getByText(defaultTestingProps.title);
+			expect(el).toBeInTheDocument();
+
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 
@@ -69,7 +87,11 @@ describe('SideNav', () => {
 
 					const user = userEvent.setup();
 
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 				});
 
 				test('then no sub-level items should be visible', async () => {
@@ -108,7 +130,11 @@ describe('SideNav', () => {
 
 					const user = userEvent.setup();
 
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 				});
 
 				test('then its sub-level items should be visible to one level and no other sub-level items', async () => {
@@ -151,7 +177,11 @@ describe('SideNav', () => {
 
 					const user = userEvent.setup();
 
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 				});
 
 				test('then its sub-level items should be visible to one level', async () => {
@@ -220,7 +250,11 @@ describe('SideNav', () => {
 
 					const user = userEvent.setup();
 
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 				});
 
 				// Skipping because this is failing only in CI
@@ -274,7 +308,11 @@ describe('SideNav', () => {
 						/>
 					);
 					const user = userEvent.setup();
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 
 					const allItemHrefs = [
 						'#page-1',
@@ -305,7 +343,11 @@ describe('SideNav', () => {
 						/>
 					);
 					const user = userEvent.setup();
-					user.click(screen.getByRole('button', { name: 'In this section' }));
+					user.click(
+						screen.getByRole('button', {
+							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+						})
+					);
 
 					const allItemHrefs = [
 						'#page-1',

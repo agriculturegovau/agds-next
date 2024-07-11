@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
+import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
 import {
 	boxPalette,
 	mapSpacing,
@@ -50,14 +50,14 @@ export const SideNavLink = ({
 
 				'&:hover': {
 					color: boxPalette.foregroundText,
-					backgroundColor: collapsingSideBarLocalPalette.hover,
+					backgroundColor: collapsingSideBarHoverVar,
 					'& span:last-of-type': packs.underline,
 				},
 
 				...(isCurrentPage && {
 					position: 'relative',
 					color: boxPalette.foregroundText,
-					backgroundColor: collapsingSideBarLocalPalette.hover,
+					backgroundColor: collapsingSideBarHoverVar,
 					fontWeight: tokens.fontWeight.bold,
 					'::before': {
 						content: '""',
