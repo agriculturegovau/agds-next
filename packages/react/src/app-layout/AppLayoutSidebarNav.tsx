@@ -58,7 +58,7 @@ const addIsActive =
 
 export const AppLayoutSidebarNav = ({
 	activePath,
-	background,
+	background = 'bodyAlt',
 	items,
 	subLevelVisible,
 }: AppLayoutSidebarNavProps) => {
@@ -120,7 +120,7 @@ export const AppLayoutSidebarNav = ({
 
 type AppLayoutSidebarNavListItemProps = {
 	activePath?: string;
-	background?: 'body' | 'bodyAlt';
+	background: AppLayoutSidebarNavProps['background'];
 	isActiveGroup: boolean;
 	isOpen: boolean;
 	item: NavItem;
@@ -200,6 +200,7 @@ function AppLayoutSidebarNavListItem({
 						{item.items?.map?.((item) => (
 							<AppLayoutSidebarNavListItem
 								activePath={activePath}
+								background={background}
 								isActiveGroup={Boolean(isActive)}
 								isOpen={isOpen}
 								item={item}
@@ -250,7 +251,7 @@ function AppLayoutSidebarNavListItem({
 }
 
 type AppLayoutSidebarNavItemInnerProps = PropsWithChildren<{
-	background?: 'body' | 'bodyAlt';
+	background: AppLayoutSidebarNavProps['background'];
 	hasEndElement: boolean;
 	isActive: boolean;
 	isCurrentPage: boolean;
