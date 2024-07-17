@@ -16,7 +16,7 @@ module.exports = {
 					{
 						name: 'react',
 						importNames: ['useId'],
-						message: "Please import 'usId' from '/core' instead.",
+						message: "Please import 'useId' from '/core' instead.",
 					},
 				],
 			},
