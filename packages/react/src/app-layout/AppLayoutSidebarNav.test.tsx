@@ -46,6 +46,7 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 					<ContextWrapper>
 						<AppLayoutSidebarNav
 							activePath="/"
+							background="bodyAlt"
 							items={NAV_ITEMS}
 							subLevelVisible="whenActive"
 						/>
@@ -77,6 +78,7 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 					<ContextWrapper>
 						<AppLayoutSidebarNav
 							activePath="/establishments"
+							background="bodyAlt"
 							items={NAV_ITEMS}
 							subLevelVisible="whenActive"
 						/>
@@ -122,6 +124,7 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 					<ContextWrapper>
 						<AppLayoutSidebarNav
 							activePath="/establishments/sydney"
+							background="bodyAlt"
 							items={NAV_ITEMS}
 							subLevelVisible="whenActive"
 						/>
@@ -169,6 +172,7 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 					<ContextWrapper>
 						<AppLayoutSidebarNav
 							activePath="/"
+							background="bodyAlt"
 							items={NAV_ITEMS}
 							subLevelVisible="always"
 						/>
@@ -192,6 +196,7 @@ describe('Given AppLayoutSidebarNav is rendered', () => {
 					<ContextWrapper>
 						<AppLayoutSidebarNav
 							activePath="/establishments"
+							background="bodyAlt"
 							items={NAV_ITEMS}
 							subLevelVisible="always"
 						/>
