@@ -58,7 +58,7 @@ const addIsActive =
 
 export const AppLayoutSidebarNav = ({
 	activePath,
-	background = 'bodyAlt',
+	background,
 	items,
 	subLevelVisible,
 }: AppLayoutSidebarNavProps) => {
