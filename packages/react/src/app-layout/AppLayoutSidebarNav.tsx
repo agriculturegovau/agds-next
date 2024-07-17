@@ -29,7 +29,7 @@ export type NavItem = (NavLink | NavButton) & {
 
 export type AppLayoutSidebarNavProps = {
 	activePath?: string;
-	background?: 'body' | 'bodyAlt';
+	background: 'body' | 'bodyAlt';
 	items: (
 		| NavItem[]
 		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
