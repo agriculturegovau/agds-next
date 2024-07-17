@@ -1,5 +1,14 @@
 # @ag.ds-next/react
 
+## 1.23.1
+
+### Patch Changes
+
+- 52d218d8692: app-layout-sidebar: Fix level two items not inheriting `body` background.
+- 6d81b87a9c7: control-group: Use `useId` from core, rather than React for backwards compatibility.
+
+  pagination: Use `useId` from core, rather than React for backwards compatibility.
+
 ## 1.23.0
 
 ### Minor Changes
