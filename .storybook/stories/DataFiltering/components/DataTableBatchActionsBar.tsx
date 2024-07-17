@@ -1,8 +1,8 @@
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Button, ButtonGroup } from '../../../../packages/react/src/button';
 import {
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
-} from '@ag.ds-next/react/table';
+} from '../../../../packages/react/src/table';
 import { plural } from '../../SelectableTableBatchActions/utils';
 import { useSortAndFilterContext } from '../lib/contexts';
 

@@ -1,21 +1,21 @@
 import { Meta } from '@storybook/react';
-import { Autocomplete } from '@ag.ds-next/react/autocomplete';
-import { Box } from '@ag.ds-next/react/box';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Combobox, ComboboxMulti } from '@ag.ds-next/react/combobox';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Radio } from '@ag.ds-next/react/radio';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { FileInput } from '@ag.ds-next/react/file-input';
-import { FileUpload } from '@ag.ds-next/react/file-upload';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { Select } from '@ag.ds-next/react/select';
-import { Textarea } from '@ag.ds-next/react/textarea';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Autocomplete } from '../../../packages/react/src/autocomplete';
+import { Box } from '../../../packages/react/src/box';
+import { Button, ButtonGroup } from '../../../packages/react/src/button';
+import { Columns, Column } from '../../../packages/react/src/columns';
+import { Combobox, ComboboxMulti } from '../../../packages/react/src/combobox';
+import { Checkbox } from '../../../packages/react/src/checkbox';
+import { Radio } from '../../../packages/react/src/radio';
+import { ControlGroup } from '../../../packages/react/src/control-group';
+import { DatePicker } from '../../../packages/react/src/date-picker';
+import { DateRangePicker } from '../../../packages/react/src/date-range-picker';
+import { FileInput } from '../../../packages/react/src/file-input';
+import { FileUpload } from '../../../packages/react/src/file-upload';
+import { FormStack } from '../../../packages/react/src/form-stack';
+import { SearchInput } from '../../../packages/react/src/search-input';
+import { Select } from '../../../packages/react/src/select';
+import { Textarea } from '../../../packages/react/src/textarea';
+import { TextInput } from '../../../packages/react/src/text-input';
 
 const meta: Meta = {
 	title: 'Forms/All',

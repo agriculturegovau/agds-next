@@ -1,14 +1,14 @@
-import { Box } from '@ag.ds-next/react/box';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import { useToggleState } from '@ag.ds-next/react/core';
+import { Box } from '../../../packages/react/src/box';
+import { Stack } from '../../../packages/react/src/stack';
+import { Button, ButtonLink } from '../../../packages/react/src/button';
+import { useToggleState } from '../../../packages/react/src/core';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
 	FilterIcon,
 	PlusIcon,
-} from '@ag.ds-next/react/icon';
-import { H2 } from '@ag.ds-next/react/heading';
+} from '../../../packages/react/src/icon';
+import { H2 } from '../../../packages/react/src/heading';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { Text } from '@ag.ds-next/react/text';
+import { Text } from '../text';
 import { cleanup, render } from '../../../../test-utils';
 import { SectionAlert } from './SectionAlert';
 import type { SectionAlertProps } from './SectionAlert';

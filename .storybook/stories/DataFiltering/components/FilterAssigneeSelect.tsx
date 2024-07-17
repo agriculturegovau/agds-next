@@ -1,4 +1,4 @@
-import { Select } from '@ag.ds-next/react/select';
+import { Select } from '../../../../packages/react/src/select';
 import { assignees } from '../lib/generateBusinessData';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DataTable';

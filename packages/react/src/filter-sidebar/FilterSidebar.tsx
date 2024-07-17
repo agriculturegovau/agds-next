@@ -1,8 +1,8 @@
 import { PropsWithChildren } from 'react';
-import { Box } from '@ag.ds-next/react/box';
-import { Button } from '@ag.ds-next/react/button';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Box } from '../box';
+import { Button } from '../button';
 import { CollapsingSideBar } from '../_collapsing-side-bar';
+import { Stack } from '../stack';
 
 export type FilterSidebarProps = PropsWithChildren<{
 	/** The number of active filters. Rendered after the title when > 0. */

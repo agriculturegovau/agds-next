@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../../../packages/react/src/stack';
 import {
 	Table,
 	TableBody,
@@ -10,15 +10,15 @@ import {
 	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
-} from '@ag.ds-next/react/table';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { ButtonGroup, Button } from '@ag.ds-next/react/button';
-import { PageContent } from '@ag.ds-next/react/content';
-import { H2, Heading } from '@ag.ds-next/react/heading';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { Flex } from '@ag.ds-next/react/flex';
-import { PaginationButtons } from '@ag.ds-next/react/pagination';
-import { Box } from '@ag.ds-next/react/box';
+} from '../../../packages/react/src/table';
+import { Checkbox } from '../../../packages/react/src/checkbox';
+import { ButtonGroup, Button } from '../../../packages/react/src/button';
+import { PageContent } from '../../../packages/react/src/content';
+import { H2, Heading } from '../../../packages/react/src/heading';
+import { TextLink } from '../../../packages/react/src/text-link';
+import { Flex } from '../../../packages/react/src/flex';
+import { PaginationButtons } from '../../../packages/react/src/pagination';
+import { Box } from '../../../packages/react/src/box';
 import { ModalConfirmDelete } from './ModalConfirmDelete';
 import { ModalAddTrackingNumber } from './ModalAddTrackingNumber';
 import { EXAMPLE_DATA, plural, RowData } from './utils';
