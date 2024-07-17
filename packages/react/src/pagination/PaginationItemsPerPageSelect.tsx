@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId } from '../core';
 import { PaginationSelect } from './PaginationSelect';
 
 export const PaginationItemsPerPageSelect = ({
