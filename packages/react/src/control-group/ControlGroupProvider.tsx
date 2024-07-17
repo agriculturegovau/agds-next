@@ -1,4 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useId } from 'react';
+import { createContext, PropsWithChildren, useContext } from 'react';
+import { useId } from '../core';
 
 type ControlGroupContextType = {
 	/** The value of the `invalid` prop from the `ControlGroup` component. */

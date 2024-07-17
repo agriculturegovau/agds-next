@@ -9,6 +9,18 @@ module.exports = {
 		'prettier',
 	],
 	rules: {
+		'no-restricted-imports': [
+			'error',
+			{
+				paths: [
+					{
+						name: 'react',
+						importNames: ['useId'],
+						message: "Please import 'usId' from '/core' instead.",
+					},
+				],
+			},
+		],
 		'@typescript-eslint/ban-types': [
 			'error',
 			{
