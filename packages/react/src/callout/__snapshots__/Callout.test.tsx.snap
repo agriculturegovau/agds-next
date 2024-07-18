@@ -34,7 +34,7 @@ exports[`Callout with compact variant and info tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-1fy6eq9-Icon"
+        class="css-15wi67x"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -103,7 +103,7 @@ exports[`Callout with feature variant and info tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-xo7am3-Icon"
+        class="css-1674hw0"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -172,7 +172,7 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-1fy6eq9-Icon"
+        class="css-15wi67x"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
