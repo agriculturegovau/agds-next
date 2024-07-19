@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { boxPalette, tokens } from '../core';
 import { theme } from '../ag-branding';
 import { useTableContext } from './TableContext';
+import { minContainerBreakpointForFrozenColumns } from './TableScroller';
 
 export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
@@ -18,15 +19,38 @@ export function TableRow({
 	invalid,
 	selected,
 }: TableRowProps) {
-	const { tableLayout } = useTableContext();
+	const { frozenColumnsOffsets, striped, tableLayout } = useTableContext();
+
+	const frozenColumnStyles = frozenColumnsOffsets?.reduce(
+		(acc, { columnNumber, offsetValue, isLastColumn }) => {
+			return {
+				[minContainerBreakpointForFrozenColumns]: {
+					...acc[minContainerBreakpointForFrozenColumns],
+					[`& :nth-child(${columnNumber}):where(td, th)`]: {
+						background: 'inherit',
+						position: 'sticky',
+						...(isLastColumn
+							? {
+									right: offsetValue,
+							  }
+							: {
+									left: offsetValue,
+							  }),
+					},
+				},
+			};
+		},
+		{ [minContainerBreakpointForFrozenColumns]: {} }
+	);
+
 	return (
 		<tr
 			aria-selected={selected}
 			aria-rowindex={ariaRowindex}
 			css={{
+				position: 'relative',
 				...(selected && {
 					...(tableLayout === 'auto' && {
-						position: 'relative',
 						backgroundColor: boxPalette.selectedMuted,
 
 						// Add outline
@@ -61,10 +85,36 @@ export function TableRow({
 					'@supports (-webkit-appearance: -apple-pay-button)':
 						alternativeSelectedStyles,
 				}),
+
+				// Background colour logic
+				/**
+				 * Default to body's background for:
+				 * - disappearing text beneath frozen columns,
+				 * - easy overwriting for state based background (e.g. invalid) with 'inherit'.
+				 */
+				background: 'var(--agds-background-body)',
+
+				/**
+				 * Striped ignores:
+				 * - `tr` in `thead` as it's an `only-child`,
+				 * - `data-invalid` as it's more important.
+				 * */
+				...(striped && {
+					"&:not(:only-child):nth-last-of-type(odd):not([aria-selected='true']):not([data-invalid='true'])":
+						{
+							background: boxPalette.backgroundShade,
+						},
+				}),
+
+				// Individually applied styles to freeze selected columns
+				...frozenColumnStyles,
+
+				// Invalid background is the highest priority
 				...(invalid && {
-					background: theme.lightSystemErrorMuted,
+					'&': { background: theme.lightSystemErrorMuted },
 				}),
 			}}
+			data-invalid={invalid}
 		>
 			{children}
 		</tr>

@@ -3,18 +3,22 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-h6dj2w-boxStyles-TableScroller"
+    class="css-j44gbe-boxStyles-TableScroller"
   >
+    <div
+      class="css-zkh9hz-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
     <div
       class="css-x9kx5j-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
-        class="css-r11i27-boxStyles-Table"
+        class="css-13kilxg-boxStyles-Table"
         id="table"
       >
         <caption
-          class="css-ryzpmp-boxStyles"
+          class="css-1yx296z-boxStyles-TableCaption"
         >
           Population of Australian states and territories, December 2015
         </caption>
@@ -22,7 +26,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-11khhn7-boxStyles"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1gy3b36-boxStyles"
@@ -54,7 +58,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-8u32cd-boxStyles"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -79,7 +83,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -104,7 +108,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -129,7 +133,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -154,7 +158,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -179,7 +183,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -204,7 +208,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -229,7 +233,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-n2xyn5-TableRow"
           >
             <th
               class="css-1qlct29-boxStyles-TableCell"
@@ -256,6 +260,10 @@ exports[`Table with TableCaption renders correctly 1`] = `
         </tbody>
       </table>
     </div>
+    <div
+      class="css-lbwcoh-boxStyles-TableScroller"
+      data-table-right-overlay="true"
+    />
     <div
       class="css-67252i-boxStyles-TableScroller"
     >

@@ -1,6 +1,9 @@
 import { createContext, useContext } from 'react';
+import { ColumnOffset } from './Table';
 
 export type TableContextType = {
+	frozenColumnsOffsets?: ColumnOffset[];
+	striped?: boolean;
 	tableLayout: 'auto' | 'fixed';
 };
 

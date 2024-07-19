@@ -1,9 +1,34 @@
-import { PropsWithChildren, forwardRef } from 'react';
+import {
+	PropsWithChildren,
+	forwardRef,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from 'react';
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { mergeRefs } from '../core';
 import { TableContext } from './TableContext';
+import { useScrollerContext } from './ScrollerContext';
+
+const MAX_FIXED_COLUMNS_FROM_LEFT = 1;
+
+export type ColumnOffset = {
+	columnNumber: number;
+	offsetValue: 0 | `${number}rem`;
+	isLastColumn: boolean;
+};
+
+type FrozenColumnData = {
+	columnOffsets: ColumnOffset[];
+	overlayOffsets: {
+		left: 0 | `${number}rem`;
+		right: 0 | `${number}rem`;
+	};
+};
 
 export type TableProps = PropsWithChildren<{
+	/** Define which column numbers should be frozen. This is one-based, so `1` is the first column. */
+	frozenColumns?: number[];
 	/** If true, alternating rows will have a different background colour. */
 	striped?: boolean;
 	/** Setting this to -1 allows the table to be focusable. */
@@ -23,6 +48,7 @@ export type TableProps = PropsWithChildren<{
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 	{
 		children,
+		frozenColumns,
 		striped,
 		tabIndex,
 		tableLayout = 'auto',
@@ -33,30 +59,98 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 	},
 	ref
 ) {
+	const tableRef = useRef<HTMLTableElement>(null);
+	const [frozenColumnsOffsets, setFrozenColumnsOffsets] =
+		useState<ColumnOffset[]>();
+
+	const { setOverlayOffsets } = useScrollerContext();
+
+	useLayoutEffect(() => {
+		const cells = tableRef.current?.querySelectorAll('td, th');
+		if (!cells || frozenColumns === undefined) return;
+
+		const numberOfColumns = tableRef.current
+			?.querySelectorAll('tr')
+			?.item(1)
+			.querySelectorAll('td, th').length;
+
+		const frozenColumnsData = frozenColumns.reduce(
+			(acc, columnNumber, index) => {
+				const prevColumnNumber = frozenColumns[index - 1] || 0;
+				const isLastColumn = columnNumber === numberOfColumns;
+
+				const isNextValidColumnNumber =
+					(columnNumber - prevColumnNumber === 1 &&
+						columnNumber <= MAX_FIXED_COLUMNS_FROM_LEFT) ||
+					isLastColumn;
+
+				return isNextValidColumnNumber
+					? {
+							columnOffsets: [
+								...acc.columnOffsets,
+								{
+									columnNumber,
+									isLastColumn,
+									offsetValue:
+										index === 0 || isLastColumn
+											? (0 as const)
+											: (`${cells[index - 1].clientWidth / 16}rem` as const), // TODO: need to add all previous `columnOffset`s
+								},
+							],
+							overlayOffsets: {
+								left: isLastColumn
+									? acc.overlayOffsets.left
+									: (`${cells[index].clientWidth / 16}rem` as const),
+								right: isLastColumn
+									? (`${
+											cells.item(columnNumber - 1).clientWidth / 16
+									  }rem` as const)
+									: acc.overlayOffsets.right,
+							},
+					  }
+					: acc;
+			},
+			{
+				columnOffsets: [],
+				overlayOffsets: { left: 0, right: 0 },
+			} as FrozenColumnData
+		);
+
+		setOverlayOffsets?.(frozenColumnsData.overlayOffsets);
+
+		setFrozenColumnsOffsets(frozenColumnsData.columnOffsets);
+	}, [children, frozenColumns, setOverlayOffsets]);
+
+	const captionHeight =
+		tableRef.current?.querySelector('caption')?.clientHeight;
+
 	return (
-		<TableContext.Provider value={{ tableLayout }}>
+		<TableContext.Provider
+			value={{
+				frozenColumnsOffsets,
+				striped,
+				tableLayout,
+			}}
+		>
 			<Box
+				aria-describedby={ariaDescribedby}
+				aria-labelledby={ariaLabelledby}
+				aria-rowcount={ariaRowcount}
 				as="table"
-				ref={ref}
-				tabIndex={tabIndex}
-				fontSize="sm"
-				focusRingFor="keyboard"
-				width="100%"
-				display="table"
-				id={id}
 				css={{
 					borderCollapse: 'collapse',
 					borderSpacing: 0,
 					tableLayout,
-					...(striped && {
-						"tbody tr:nth-last-of-type(odd):not([aria-selected='true'])": {
-							backgroundColor: boxPalette.backgroundShade,
-						},
-					}),
+					position: 'relative',
+					...(captionHeight && { marginTop: `${captionHeight / 16}rem` }),
 				}}
-				aria-labelledby={ariaLabelledby}
-				aria-describedby={ariaDescribedby}
-				aria-rowcount={ariaRowcount}
+				display="table"
+				focusRingFor="keyboard"
+				fontSize="sm"
+				id={id}
+				tabIndex={tabIndex}
+				ref={mergeRefs([tableRef, ref])}
+				width="100%"
 			>
 				{children}
 			</Box>
