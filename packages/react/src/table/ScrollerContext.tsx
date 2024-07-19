@@ -20,7 +20,9 @@ export function useScrollerContext() {
 	const context = useContext(ScrollerContext);
 
 	if (typeof context === 'undefined') {
-		throw Error('ScrollerContext not found.');
+		throw Error(
+			'ScrollerContext not found. If using a Table, ensure it is wrapped with <TableWrapper>.'
+		);
 	}
 
 	return context;
