@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
-type OverlayOfsets = {
+type OverlayOffsets = {
 	bottom?: 0 | `${number}rem`;
 	left?: 0 | `${number}rem`;
 	right?: 0 | `${number}rem`;
@@ -8,8 +8,8 @@ type OverlayOfsets = {
 };
 
 export type ScrollerContextType = {
-	setOverlayOffsets?: Dispatch<SetStateAction<OverlayOfsets | undefined>>;
-	overlayOffsets?: OverlayOfsets;
+	setOverlayOffsets?: Dispatch<SetStateAction<OverlayOffsets | undefined>>;
+	overlayOffsets?: OverlayOffsets;
 };
 
 export const ScrollerContext = createContext<ScrollerContextType | undefined>(
