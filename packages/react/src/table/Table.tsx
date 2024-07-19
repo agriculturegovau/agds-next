@@ -94,7 +94,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 									offsetValue:
 										index === 0 || isLastColumn
 											? (0 as const)
-											: (`${cells[index - 1].clientWidth / 16}rem` as const), // TODO: need to add all previous `columnOffset`s
+											: (`${cells[index - 1].clientWidth / 16}rem` as const),
 								},
 							],
 							overlayOffsets: {
