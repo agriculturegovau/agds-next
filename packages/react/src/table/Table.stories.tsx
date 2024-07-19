@@ -548,7 +548,109 @@ export const FrozenColumns: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button>Action</Button>
+									<Button variant="tertiary">Action</Button>
+								</TableCell>
+							</TableRow>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
+export const FrozenColumnsFirstOnly: Story = {
+	args: {
+		tableLayout: 'fixed',
+		frozenColumns: [1],
+	},
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col" width="12rem">
+							Location
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Change over previous decade %
+						</TableHeader>
+						<TableHeader textAlign="center" scope="col" width="8rem">
+							Action
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<TableRow key={index}>
+								<TableCell as="th" scope="row">
+									<span>{location}</span>
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+								<TableCell textAlign="right">
+									<Button variant="tertiary">Action</Button>
+								</TableCell>
+							</TableRow>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
+};
+
+export const FrozenColumnsLastOnly: Story = {
+	args: {
+		tableLayout: 'fixed',
+		frozenColumns: [],
+	},
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col" width="12rem">
+							Location
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Population
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader textAlign="right" scope="col" width="20rem">
+							Change over previous decade %
+						</TableHeader>
+						<TableHeader textAlign="center" scope="col" width="8rem">
+							Action
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<TableRow key={index}>
+								<TableCell as="th" scope="row">
+									<span>{location}</span>
+								</TableCell>
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+								<TableCell textAlign="right">
+									<Button variant="tertiary">Action</Button>
 								</TableCell>
 							</TableRow>
 						)
@@ -602,7 +704,7 @@ export const FrozenColumnsWithCaption: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button>Action</Button>
+									<Button variant="tertiary">Action</Button>
 								</TableCell>
 							</TableRow>
 						)

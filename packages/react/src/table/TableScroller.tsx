@@ -259,7 +259,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 						[maxContainerBreakpointForFrozenColumns]: {
 							'[data-table-left-overlay="true"]': {
-								display: 'none',
+								left: 0,
 							},
 						},
 					}}
@@ -268,6 +268,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					css={{
 						msOverflowStyle: 'none',
 						overflowX: 'auto',
+						overscrollBehavior: 'none',
 						scrollbarWidth: 'none',
 						WebkitOverflowScrolling: 'touch',
 						width: '100%',
@@ -306,7 +307,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 						[maxContainerBreakpointForFrozenColumns]: {
 							'[data-table-right-overlay="true"]': {
-								display: 'none',
+								right: 0,
 							},
 						},
 					}}
@@ -320,6 +321,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						left: 0,
 						position: 'sticky',
 						right: 0,
+						zIndex: SCROLL_OVERLAY_Z_INDEX,
 					}}
 					flexWrap="nowrap"
 					gap={0.25}

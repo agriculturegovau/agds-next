@@ -4,17 +4,17 @@ exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <section
     aria-labelledby="collapsing-side-bar-:r0:-heading"
-    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
+    class="css-12rvz6t-boxStyles-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-bmr02n-boxStyles-CollapsingSideBar"
+      class="css-rbtfq5-boxStyles-boxStyles-CollapsingSideBar"
     >
       <div
-        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        class="css-wg1upn-boxStyles-boxStyles-CollapsingSideBar"
         id="collapsing-side-bar-:r0:-heading"
       >
         <h2
-          class="css-pkkmd5-boxStyles"
+          class="css-a3bu42-boxStyles-boxStyles"
         >
           Filters (1)
         </h2>
@@ -24,17 +24,17 @@ exports[`FilterSidebar renders correctly 1`] = `
         aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
         aria-label="Filters (1) (Expand/Collapse)"
-        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        class="css-116vn0r-BaseButton-boxStyles-boxStyles-CollapsingSideBar"
         type="button"
       >
         <span
-          class="css-1eiy0fa-boxStyles"
+          class="css-1iyeawx-boxStyles-boxStyles"
         >
           <span
-            class="css-1wcx0lf-boxStyles"
+            class="css-nl8gpu-boxStyles-boxStyles"
           >
             <span
-              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+              class="css-vzbp5o-boxStyles-boxStyles-CollapsingSideBar"
             >
               Filters (1)
             </span>
@@ -64,13 +64,13 @@ exports[`FilterSidebar renders correctly 1`] = `
       style="display: none; height: 0px;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-1b13c5y-boxStyles-boxStyles"
       >
         <div
-          class="css-1kppral-boxStyles"
+          class="css-j8a8x5-boxStyles-boxStyles"
         >
           <div
-            class="css-h0krvw-boxStyles"
+            class="css-7u0ld6-boxStyles-boxStyles"
           />
         </div>
       </div>

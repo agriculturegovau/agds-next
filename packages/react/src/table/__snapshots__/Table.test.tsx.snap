@@ -6,11 +6,11 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
-      class="css-zkh9hz-boxStyles-TableScroller"
+      class="css-1eeh7zf-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
-      class="css-x9kx5j-boxStyles-TableScroller"
+      class="css-1pgzax6-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
@@ -261,11 +261,11 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </table>
     </div>
     <div
-      class="css-lbwcoh-boxStyles-TableScroller"
+      class="css-1n1qbcg-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
-      class="css-67252i-boxStyles-TableScroller"
+      class="css-111v4lf-boxStyles-TableScroller"
     >
       <button
         aria-hidden="true"
