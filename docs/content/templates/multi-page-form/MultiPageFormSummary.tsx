@@ -25,10 +25,11 @@ export function MultiPageFormSummary() {
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<ProgressIndicator
+							activePath="#3"
 							items={[
-								{ label: 'Step 1', status: 'done', href: '#' },
-								{ label: 'Step 2', status: 'done', href: '#' },
-								{ label: 'Step 3', status: 'doing', href: '#' },
+								{ label: 'Step 1', status: 'done', href: '#1' },
+								{ label: 'Step 2', status: 'done', href: '#2' },
+								{ label: 'Step 3', status: 'started', href: '#3' },
 							]}
 						/>
 					</ContentBleed>

@@ -150,12 +150,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											);
 										}
 										return (
-											<TableHeader
-												key={sortKey}
-												scope="col"
-												textAlign={textAlign}
-												width={width}
-											>
+											<TableHeader key={sortKey} scope="col" width={width}>
 												{label}
 											</TableHeader>
 										);
@@ -274,7 +269,6 @@ const headers: {
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
-		textAlign: 'right',
 		width: '12rem',
 		isSortable: true,
 	},

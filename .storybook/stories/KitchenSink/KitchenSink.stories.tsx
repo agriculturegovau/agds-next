@@ -182,11 +182,12 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>
 							<ProgressIndicator
+								activePath="#1"
 								background={page}
 								items={[
-									{ href: '#', label: 'Introduction', status: 'doing' },
-									{ href: '#', label: 'Business Contacts', status: 'todo' },
-									{ href: '#', label: 'Case Studies', status: 'done' },
+									{ href: '#1', label: 'Introduction', status: 'started' },
+									{ href: '#2', label: 'Business Contacts', status: 'todo' },
+									{ href: '#3', label: 'Case Studies', status: 'done' },
 								]}
 							/>
 						</Stack>
@@ -437,11 +438,19 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								/>
 								<Textarea label="Message" />
 								<ControlGroup label="Device">
-									<Radio checked={false}>Phone</Radio>
-									<Radio checked={false}>Tablet</Radio>
-									<Radio checked={true}>Laptop</Radio>
+									<Radio checked={false} onChange={console.log}>
+										Phone
+									</Radio>
+									<Radio checked={false} onChange={console.log}>
+										Tablet
+									</Radio>
+									<Radio checked={true} onChange={console.log}>
+										Laptop
+									</Radio>
 								</ControlGroup>
-								<Checkbox checked={true}>Label</Checkbox>
+								<Checkbox checked={true} onChange={console.log}>
+									Label
+								</Checkbox>
 								<Autocomplete
 									label="Find your country"
 									hint="Start typing to see results"
@@ -518,19 +527,125 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							</div>
 
 							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge tone="info" label="In progress" />
-								<StatusBadge tone="success" label="Resolved" />
-								<StatusBadge tone="error" label="Rejected" />
-								<StatusBadge tone="warning" label="Attention" />
-								<StatusBadge tone="neutral" label="Draft" />
+								<StatusBadge tone="successHigh" label="Success" />
+								<StatusBadge tone="errorHigh" label="Error" />
+								<StatusBadge tone="warningHigh" label="Warning" />
+								<StatusBadge tone="infoHigh" label="Info" />
 							</Flex>
 
 							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge weight="subtle" tone="info" label="In progress" />
-								<StatusBadge weight="subtle" tone="success" label="Resolved" />
-								<StatusBadge weight="subtle" tone="error" label="Rejected" />
-								<StatusBadge weight="subtle" tone="warning" label="Attention" />
-								<StatusBadge weight="subtle" tone="neutral" label="Draft" />
+								<StatusBadge tone="successMedium" label="Success" />
+								<StatusBadge tone="errorMedium" label="Error" />
+								<StatusBadge tone="warningMedium" label="Warning" />
+								<StatusBadge tone="infoMedium" label="Info" />
+							</Flex>
+
+							<Flex gap={0.5} flexWrap="wrap">
+								<StatusBadge tone="successLow" label="Success" />
+								<StatusBadge tone="errorLow" label="Error" />
+								<StatusBadge tone="warningLow" label="Warning" />
+								<StatusBadge tone="infoLow" label="Info" />
+								<StatusBadge tone="cannotStartLow" label="Cannot start" />
+								<StatusBadge tone="inProgressLow" label="In progress" />
+								<StatusBadge tone="pausedLow" label="Paused" />
+								<StatusBadge tone="notStartedLow" label="Not started" />
+								<StatusBadge tone="unknownLow" label="Unknown" />
+							</Flex>
+
+							<Flex gap={0.5} flexWrap="wrap">
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successHigh"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorHigh"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningHigh"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoHigh"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successMedium"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorMedium"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningMedium"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoMedium"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successLow"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorLow"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningLow"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoLow"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="cannotStartLow"
+										label="Cannot start"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="inProgressLow"
+										label="In progress"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="pausedLow"
+										label="Paused"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="notStartedLow"
+										label="Not started"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="unknownLow"
+										label="Unknown"
+									/>
+								</Flex>
 							</Flex>
 
 							<Flex gap={0.5}>
