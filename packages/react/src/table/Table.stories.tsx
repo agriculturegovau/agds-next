@@ -530,7 +530,7 @@ export const FrozenColumns: Story = {
 						<TableHeader textAlign="right" scope="col" width="20rem">
 							Change over previous decade %
 						</TableHeader>
-						<TableHeader textAlign="center" scope="col" width="8rem">
+						<TableHeader textAlign="right" scope="col" width="6rem">
 							Action
 						</TableHeader>
 					</TableRow>
@@ -548,7 +548,7 @@ export const FrozenColumns: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button variant="tertiary">Action</Button>
+									<Button variant="text">Action</Button>
 								</TableCell>
 							</TableRow>
 						)
@@ -581,7 +581,7 @@ export const FrozenColumnsFirstOnly: Story = {
 						<TableHeader textAlign="right" scope="col" width="20rem">
 							Change over previous decade %
 						</TableHeader>
-						<TableHeader textAlign="center" scope="col" width="8rem">
+						<TableHeader textAlign="right" scope="col" width="6rem">
 							Action
 						</TableHeader>
 					</TableRow>
@@ -589,7 +589,7 @@ export const FrozenColumnsFirstOnly: Story = {
 				<TableBody>
 					{exampleData.map(
 						({ location, population, growthYear, growthDecade }, index) => (
-							<TableRow key={index}>
+							<TableRow key={`first-col-${index}`}>
 								<TableCell as="th" scope="row">
 									<span>{location}</span>
 								</TableCell>
@@ -599,7 +599,7 @@ export const FrozenColumnsFirstOnly: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button variant="tertiary">Action</Button>
+									<Button variant="text">Action</Button>
 								</TableCell>
 							</TableRow>
 						)
@@ -632,7 +632,7 @@ export const FrozenColumnsLastOnly: Story = {
 						<TableHeader textAlign="right" scope="col" width="20rem">
 							Change over previous decade %
 						</TableHeader>
-						<TableHeader textAlign="center" scope="col" width="8rem">
+						<TableHeader textAlign="right" scope="col" width="6rem">
 							Action
 						</TableHeader>
 					</TableRow>
@@ -640,7 +640,7 @@ export const FrozenColumnsLastOnly: Story = {
 				<TableBody>
 					{exampleData.map(
 						({ location, population, growthYear, growthDecade }, index) => (
-							<TableRow key={index}>
+							<TableRow key={`last-col-${index}`}>
 								<TableCell as="th" scope="row">
 									<span>{location}</span>
 								</TableCell>
@@ -650,7 +650,7 @@ export const FrozenColumnsLastOnly: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button variant="tertiary">Action</Button>
+									<Button variant="text">Action</Button>
 								</TableCell>
 							</TableRow>
 						)
@@ -686,7 +686,7 @@ export const FrozenColumnsWithCaption: Story = {
 						<TableHeader textAlign="right" scope="col" width="20rem">
 							Change over previous decade %
 						</TableHeader>
-						<TableHeader textAlign="center" scope="col" width="8rem">
+						<TableHeader textAlign="right" scope="col" width="6rem">
 							Action
 						</TableHeader>
 					</TableRow>
@@ -704,7 +704,7 @@ export const FrozenColumnsWithCaption: Story = {
 								<TableCell textAlign="right">{growthYear}%</TableCell>
 								<TableCell textAlign="right">{growthDecade}%</TableCell>
 								<TableCell textAlign="right">
-									<Button variant="tertiary">Action</Button>
+									<Button variant="text">Action</Button>
 								</TableCell>
 							</TableRow>
 						)

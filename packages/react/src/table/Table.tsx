@@ -67,7 +67,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 
 	const { setOverlayOffsets } = useScrollerContext();
 
-	const calculateColumnWidths = useCallback(() => {
+	const calculateOffsets = useCallback(() => {
 		const cells = tableRef.current?.querySelectorAll('td, th');
 		if (!cells || frozenColumns === undefined) return;
 
@@ -135,7 +135,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		}
 
 		const observer = new ResizeObserver(() => {
-			calculateColumnWidths();
+			calculateOffsets();
 		});
 
 		observer.observe(tableRef.current);
@@ -143,11 +143,11 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		return () => {
 			observer.disconnect();
 		};
-	}, [calculateColumnWidths]);
+	}, [calculateOffsets]);
 
 	useLayoutEffect(() => {
-		calculateColumnWidths();
-	}, [calculateColumnWidths]);
+		calculateOffsets();
+	}, [calculateOffsets]);
 
 	const captionHeight =
 		tableRef.current?.querySelector('caption')?.clientHeight;
