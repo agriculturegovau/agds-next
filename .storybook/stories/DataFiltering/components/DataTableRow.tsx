@@ -30,19 +30,19 @@ export const DataTableRowAssignee = ({
 const itemStatusMap = {
 	notBooked: {
 		label: 'Not booked',
-		tone: 'neutral',
+		tone: 'notStartedLow',
 	},
 	booked: {
 		label: 'Booked',
-		tone: 'info',
+		tone: 'infoMedium',
 	},
 	completed: {
 		label: 'Completed',
-		tone: 'success',
+		tone: 'successMedium',
 	},
 	cancelled: {
 		label: 'Cancelled',
-		tone: 'error',
+		tone: 'errorMedium',
 	},
 } as const;
 
@@ -53,7 +53,7 @@ export const DataTableRowStatus = ({
 }) => {
 	return (
 		<TableCell>
-			<StatusBadge weight="subtle" {...itemStatusMap[status]} />
+			<StatusBadge appearance="subtle" {...itemStatusMap[status]} />
 		</TableCell>
 	);
 };

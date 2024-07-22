@@ -5,6 +5,7 @@ const meta: Meta<typeof SectionAlert> = {
 	title: 'Content/SectionAlert',
 	component: SectionAlert,
 	args: {
+		onDismiss: undefined,
 		onClose: undefined,
 	},
 };
@@ -42,7 +43,7 @@ export const WithDescription: Story = {
 	},
 };
 
-export const onClose: Story = {
+export const WithClose: Story = {
 	args: {
 		title: 'Your changes have been saved',
 		tone: 'success',

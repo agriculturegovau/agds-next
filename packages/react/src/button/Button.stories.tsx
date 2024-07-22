@@ -19,7 +19,6 @@ const meta: Meta<typeof Button> = {
 		block: false,
 		children: 'Button',
 		disabled: false,
-		loading: false,
 		variant: 'primary',
 	},
 };

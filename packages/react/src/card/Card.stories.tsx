@@ -161,9 +161,9 @@ export const CardList: Story = {
 	name: 'List of Cards',
 	render: function Render() {
 		const toneMapper = {
-			Closed: 'success',
-			Open: 'warning',
-			Pending: 'info',
+			Closed: 'successMedium',
+			Open: 'warningMedium',
+			Pending: 'infoMedium',
 		} as const;
 		const listData = [
 			{

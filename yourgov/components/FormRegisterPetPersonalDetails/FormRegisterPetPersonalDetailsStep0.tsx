@@ -234,7 +234,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 				) : (
 					<>
 						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2 ref={headingRef} tabIndex={-1} focus>
+							<H2 ref={headingRef} tabIndex={-1} focusRingFor="keyboard">
 								Check personal details
 							</H2>
 							<SummaryList>

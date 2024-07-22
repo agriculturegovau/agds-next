@@ -6,6 +6,7 @@ const meta: Meta<typeof GlobalAlert> = {
 	title: 'content/GlobalAlert',
 	component: GlobalAlert,
 	args: {
+		onDismiss: undefined,
 		tone: 'warning',
 	},
 };
@@ -41,7 +42,7 @@ export const Information: Story = {
 	},
 };
 
-export const WithDismiss: Story = {
+export const WithClose: Story = {
 	args: {
 		onClose: console.log,
 		children: (
@@ -68,7 +69,7 @@ export const WithTitle: Story = {
 	},
 };
 
-export const WithTitleAndDismiss: Story = {
+export const WithTitleAndClose: Story = {
 	args: {
 		title: 'Alert title',
 		onClose: console.log,
