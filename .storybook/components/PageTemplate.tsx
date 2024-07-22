@@ -1,14 +1,14 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { Box } from '@ag.ds-next/react/box';
-import { Stack } from '@ag.ds-next/react/stack';
-import { tokens } from '@ag.ds-next/react/core';
-import { Footer, FooterDivider } from '@ag.ds-next/react/footer';
-import { Header } from '@ag.ds-next/react/header';
-import { AvatarIcon } from '@ag.ds-next/react/icon';
-import { LinkList } from '@ag.ds-next/react/link-list';
-import { MainNav } from '@ag.ds-next/react/main-nav';
-import { Text } from '@ag.ds-next/react/text';
+import { Logo } from '../../packages/react/src/ag-branding';
+import { Box } from '../../packages/react/src/box';
+import { Stack } from '../../packages/react/src/stack';
+import { tokens } from '../../packages/react/src/core';
+import { Footer, FooterDivider } from '../../packages/react/src/footer';
+import { Header } from '../../packages/react/src/header';
+import { AvatarIcon } from '../../packages/react/src/icon';
+import { LinkList } from '../../packages/react/src/link-list';
+import { MainNav } from '../../packages/react/src/main-nav';
+import { Text } from '../../packages/react/src/text';
 
 type PageTemplateProps = PropsWithChildren<{
 	applyMainElement?: boolean;

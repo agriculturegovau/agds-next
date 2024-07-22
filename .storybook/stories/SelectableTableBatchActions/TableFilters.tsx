@@ -1,6 +1,6 @@
-import { Flex } from '@ag.ds-next/react/flex';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { Select } from '@ag.ds-next/react/select';
+import { Flex } from '../../../packages/react/src/flex';
+import { SearchInput } from '../../../packages/react/src/search-input';
+import { Select } from '../../../packages/react/src/select';
 
 export function TableFilters() {
 	return (

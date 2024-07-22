@@ -1,17 +1,17 @@
 import { PropsWithChildren, ReactNode, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { BaseButton } from '../button';
+import { Box, type BoxProps } from '../box';
 import {
 	packs,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
-} from '@ag.ds-next/react/core';
-import { Box, type BoxProps } from '@ag.ds-next/react/box';
-import { BaseButton } from '@ag.ds-next/react/button';
-import { Flex } from '@ag.ds-next/react/flex';
-import { ChevronDownIcon } from '@ag.ds-next/react/icon';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
+} from '../core';
+import { ChevronDownIcon } from '../icon';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
+import { Text } from '../text';
 import {
 	CollapsingSideBarBackground,
 	collapsingSideBarHoverProp,

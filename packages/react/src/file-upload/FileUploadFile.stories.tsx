@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../stack';
 import { FileUploadFile } from './FileUploadFile';
 import { createExampleFile, createExampleImageFile } from './test-utils';
 

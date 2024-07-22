@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect, RefObject, createRef } from 'react';
-import { SectionAlert } from '@ag.ds-next/react/section-alert';
+import { SectionAlert } from '../../../packages/react/src/section-alert';
 
 export function useNotification() {
 	const [notification, setNotification] = useState<{

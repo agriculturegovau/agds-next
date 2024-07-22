@@ -4,10 +4,10 @@ import {
 	MouseEventHandler,
 	ReactNode,
 } from 'react';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Text } from '@ag.ds-next/react/text';
-import { getOptionalCloseHandler } from '../getCloseHandler';
 import { useFocus } from '../core/utils/useFocus';
+import { Flex } from '../flex';
+import { getOptionalCloseHandler } from '../getCloseHandler';
+import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
 

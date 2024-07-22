@@ -1,8 +1,8 @@
-import { Stack } from '@ag.ds-next/react/stack';
-import { ButtonLink } from '@ag.ds-next/react/button';
-import { PlusIcon } from '@ag.ds-next/react/icon';
-import { H2 } from '@ag.ds-next/react/heading';
-import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '../../../packages/react/src/stack';
+import { ButtonLink } from '../../../packages/react/src/button';
+import { PlusIcon } from '../../../packages/react/src/icon';
+import { H2 } from '../../../packages/react/src/heading';
+import { Box } from '../../../packages/react/src/box';
 import { FilterStatusSelect } from './components/FilterStatusSelect';
 import { DataTable } from './components/DataTable';
 import { SortBySelect } from './components/SortBySelect';

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { Checkbox } from '../../../../packages/react/src/checkbox';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
 
