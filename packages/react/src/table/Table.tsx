@@ -1,6 +1,8 @@
 import {
 	PropsWithChildren,
 	forwardRef,
+	useCallback,
+	useEffect,
 	useLayoutEffect,
 	useRef,
 	useState,
@@ -65,7 +67,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 
 	const { setOverlayOffsets } = useScrollerContext();
 
-	useLayoutEffect(() => {
+	const calculateColumnWidths = useCallback(() => {
 		const cells = tableRef.current?.querySelectorAll('td, th');
 		if (!cells || frozenColumns === undefined) return;
 
@@ -117,9 +119,35 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		);
 
 		setOverlayOffsets?.(frozenColumnsData.overlayOffsets);
-
 		setFrozenColumnsOffsets(frozenColumnsData.columnOffsets);
+
+		// We want to update column and overlay offsets when children change to ensure placement is accurate
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [children, frozenColumns, setOverlayOffsets]);
+
+	useEffect(() => {
+		if (
+			typeof window === 'undefined' ||
+			!('ResizeObserver' in window) ||
+			!tableRef.current
+		) {
+			return;
+		}
+
+		const observer = new ResizeObserver(() => {
+			calculateColumnWidths();
+		});
+
+		observer.observe(tableRef.current);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [calculateColumnWidths]);
+
+	useLayoutEffect(() => {
+		calculateColumnWidths();
+	}, [calculateColumnWidths]);
 
 	const captionHeight =
 		tableRef.current?.querySelector('caption')?.clientHeight;

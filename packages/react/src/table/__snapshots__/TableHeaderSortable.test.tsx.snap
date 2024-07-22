@@ -6,7 +6,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
     class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
-      class="css-1eeh7zf-boxStyles-TableScroller"
+      class="css-tlv2ay-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
@@ -62,7 +62,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
       </table>
     </div>
     <div
-      class="css-1n1qbcg-boxStyles-TableScroller"
+      class="css-1dvuwhl-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
@@ -138,7 +138,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
     class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
-      class="css-1eeh7zf-boxStyles-TableScroller"
+      class="css-tlv2ay-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
@@ -194,7 +194,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
       </table>
     </div>
     <div
-      class="css-1n1qbcg-boxStyles-TableScroller"
+      class="css-1dvuwhl-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
@@ -270,7 +270,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
     class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
-      class="css-1eeh7zf-boxStyles-TableScroller"
+      class="css-tlv2ay-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
@@ -322,7 +322,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
       </table>
     </div>
     <div
-      class="css-1n1qbcg-boxStyles-TableScroller"
+      class="css-1dvuwhl-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div

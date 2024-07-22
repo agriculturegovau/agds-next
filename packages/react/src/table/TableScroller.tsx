@@ -239,7 +239,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				<Box
 					data-table-left-overlay="true"
 					css={{
-						left: `${overlayOffsets?.left}`,
+						left: overlayOffsets?.left,
 						pointerEvents: 'none',
 						position: 'fixed',
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
@@ -289,7 +289,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					css={{
 						pointerEvents: 'none',
 						position: 'fixed',
-						right: `${overlayOffsets?.right}`,
+						right: overlayOffsets?.right,
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
 						...(scrollerHeight && { height: `${scrollerHeight / 16}rem` }),
 

@@ -613,7 +613,7 @@ export const FrozenColumnsFirstOnly: Story = {
 export const FrozenColumnsLastOnly: Story = {
 	args: {
 		tableLayout: 'fixed',
-		frozenColumns: [],
+		frozenColumns: [5],
 	},
 	render: (args) => (
 		<TableWrapper>
