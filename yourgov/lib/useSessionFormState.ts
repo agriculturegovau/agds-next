@@ -20,16 +20,19 @@ export function useSessionFormState<FormState>(
 	const localFormStateRef = useRef(localFormState);
 	localFormStateRef.current = localFormState;
 
+	// AUDIT: Temporary removal of setting form state
 	const setState = useCallback(
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		(value: SetStateValue<Partial<FormState>>) => {
-			function writeStorage(key: string, value: Partial<FormState>) {
-				sessionStorage.setItem(key, JSON.stringify(value));
-				setLocalFormState(value);
-			}
-			value instanceof Function
-				? writeStorage(key, value(localFormStateRef.current))
-				: writeStorage(key, value);
+			// function writeStorage(key: string, value: Partial<FormState>) {
+			// 	sessionStorage.setItem(key, JSON.stringify(value));
+			// 	setLocalFormState(value);
+			// }
+			// value instanceof Function
+			// 	? writeStorage(key, value(localFormStateRef.current))
+			// 	: writeStorage(key, value);
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[key]
 	);
 
