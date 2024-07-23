@@ -105,8 +105,18 @@ export const task1Step5FormSchema = yup
 					.min(yup.ref('from'), 'Start date must be before the end date'),
 			})
 			.required('Enter a valid date'),
-		openingTime: yup.string().required('Start time is required'),
-		closingTime: yup.string().required('End time is required'),
+		openingTime: yup
+			.object({
+				formattedValue: yup.string(),
+				value: yup.string(),
+			})
+			.required('Start time is required'),
+		closingTime: yup
+			.object({
+				formattedValue: yup.string(),
+				value: yup.string(),
+			})
+			.required('End time is required'),
 	})
 	.required();
 
