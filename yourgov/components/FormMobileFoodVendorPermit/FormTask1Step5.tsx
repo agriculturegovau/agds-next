@@ -153,7 +153,9 @@ export function FormTask1Step5() {
 						name="openingTime"
 						render={({ field: { ref, onChange, ...field } }) => {
 							const value = field.value as unknown as TimeValue;
-							const invalid = !!value && !isValidTime(value.value);
+							const invalid =
+								(!!value && !isValidTime(value.value)) ||
+								!!errors.openingTime?.message;
 
 							return (
 								<TimeInput
@@ -176,7 +178,9 @@ export function FormTask1Step5() {
 						name="closingTime"
 						render={({ field: { ref, onChange, ...field } }) => {
 							const value = field.value as unknown as TimeValue;
-							const invalid = !!value && !isValidTime(value.value);
+							const invalid =
+								(!!value && !isValidTime(value.value)) ||
+								!!errors.closingTime?.message;
 
 							return (
 								<TimeInput

@@ -106,17 +106,21 @@ export const task1Step5FormSchema = yup
 			})
 			.required('Enter a valid date'),
 		openingTime: yup
-			.object({
-				formattedValue: yup.string(),
-				value: yup.string(),
+			.object()
+			.shape({
+				formatted: yup.string().required(),
+				value: yup.string().required(),
 			})
-			.required('Start time is required'),
+			.typeError('Opening time is required.')
+			.default(null),
 		closingTime: yup
-			.object({
-				formattedValue: yup.string(),
-				value: yup.string(),
+			.object()
+			.shape({
+				formatted: yup.string().required(),
+				value: yup.string().required(),
 			})
-			.required('End time is required'),
+			.typeError('Closing time is required.')
+			.default(null),
 	})
 	.required();
 
