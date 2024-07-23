@@ -60,13 +60,13 @@ const Page: NextPageWithLayout = () => {
 											<ListItem>operational plan of management</ListItem>
 											<ListItem>food safety supervisor certificate</ListItem>
 											<ListItem>
-												names of any employees who will be handling food
-											</ListItem>
-											<ListItem>
-												once you have confirmed business and employee details we
-												will provide a checklist of required documents.
+												names of any employees who will be handling food.
 											</ListItem>
 										</UnorderedList>
+										<Text as="p">
+											Once you have confirmed business and employee details we
+											will provide a checklist of required documents.
+										</Text>
 										<TextLink
 											href="https://exports.agriculture.gov.au/help/page/example-reference-article"
 											onClick={(event) => {
@@ -109,13 +109,13 @@ const Page: NextPageWithLayout = () => {
 												food safety supervisor certificate
 											</ListItem>
 											<ListItem color="muted">
-												names of any employees who will be handling food
-											</ListItem>
-											<ListItem color="muted">
-												once you have confirmed business and employee details we
-												will provide a checklist of required documents.
+												names of any employees who will be handling food.
 											</ListItem>
 										</UnorderedList>
+										<Text as="p" color="muted">
+											Once you have confirmed business and employee details we
+											will provide a checklist of required documents.
+										</Text>
 										<H2>Vehicle registration details and vehicle plans</H2>
 										<Text as="p" color="muted">
 											You need to provide vehicle details so that we can ensure
