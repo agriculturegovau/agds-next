@@ -5,7 +5,6 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { useDraggable } from 'react-use-draggable-scroll';
 import { Box } from '../box';
 import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
@@ -28,8 +27,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const thumbRef = useRef<HTMLButtonElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
-
-	const { events } = useDraggable(scrollerRef);
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
@@ -271,7 +268,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					css={{
 						msOverflowStyle: 'none',
 						overflowX: 'auto',
-						overscrollBehavior: 'none',
+						overscrollBehaviorX: 'none',
 						scrollbarWidth: 'none',
 						WebkitOverflowScrolling: 'touch',
 						width: '100%',
@@ -283,7 +280,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 					focusRingFor="keyboard"
 					onScroll={repositionThumb}
 					tabIndex={0}
-					{...events}
 					ref={scrollerRef}
 				>
 					{children}
