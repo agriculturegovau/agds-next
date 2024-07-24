@@ -22,7 +22,7 @@ export function AuditPageLayout({
 		{ href: '/audit', label: 'Audit' },
 		...breadcrumbs,
 		{ label: title },
-	].filter(Boolean);
+	];
 
 	return (
 		<>
