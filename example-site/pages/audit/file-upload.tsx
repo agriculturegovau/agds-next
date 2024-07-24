@@ -6,7 +6,7 @@ export default function AuditFileUploadRedirect() {
 			<Head>
 				<meta
 					http-equiv="refresh"
-					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1722/yourgov/services/registrations/pet/task-2/form"
+					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1726/yourgov/services/registrations/pet/task-2/form"
 				/>
 			</Head>
 		</>

@@ -6,7 +6,7 @@ export default function AuditDateRangePickerRedirect() {
 			<Head>
 				<meta
 					http-equiv="refresh"
-					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1722/yourgov/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-5"
+					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1726/yourgov/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-5"
 				/>
 			</Head>
 		</>

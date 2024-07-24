@@ -6,7 +6,7 @@ export default function AuditAppLayoutRedirect() {
 			<Head>
 				<meta
 					http-equiv="refresh"
-					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1722/yourgov/app/licences-and-permits"
+					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1726/yourgov/app/licences-and-permits"
 				/>
 			</Head>
 		</>
