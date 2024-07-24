@@ -23,7 +23,9 @@ import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
 export const formSchema = yup
 	.object({
-		vaccinationCertificate: yup.mixed(),
+		vaccinationCertificate: yup
+			.mixed()
+			.required('Please upload both certificates of proof'),
 	})
 	.required();
 
@@ -68,8 +70,8 @@ export const FormRegisterPetDetailsStep2 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Proof of vaccination"
-			introduction="If you have a vaccination certificate provide it here."
+			title="Proof of registration and vaccination"
+			introduction="Please provide both certifcates."
 			callToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
@@ -110,8 +112,13 @@ export const FormRegisterPetDetailsStep2 = () => {
 							<div css={{ position: 'relative' }}>
 								<FileUpload
 									id="file"
-									label="Upload an image of vaccination certificate"
-									accept={['image/jpeg', 'image/jpg', 'image/png']}
+									label="Upload images of registration and vaccination certificates"
+									accept={[
+										'image/jpeg',
+										'image/jpg',
+										'image/png',
+										'application/pdf',
+									]}
 									maxSize={2000}
 									value={value}
 									onChange={onChange}
@@ -119,6 +126,9 @@ export const FormRegisterPetDetailsStep2 = () => {
 									name={name}
 									invalid={invalid}
 									message={error?.message}
+									required
+									multiple
+									maxFiles={2}
 								/>
 								{isSubmittingStep && hasFile && (
 									<LoadingBlanket label="Uploading file" />
