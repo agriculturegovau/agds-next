@@ -10,6 +10,7 @@ const NAV_ITEMS = {
 	primary: [
 		{ label: 'Home', href: '/' },
 		{ label: 'Category 1', href: '/category' },
+		{ label: 'Audit', href: '/audit' },
 	],
 	secondary: [
 		{
