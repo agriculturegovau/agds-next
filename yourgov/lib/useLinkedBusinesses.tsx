@@ -38,6 +38,8 @@ export function LinkedBusinessesProvider({ children }: PropsWithChildren<{}>) {
 		useState<Business | null>(null);
 
 	useEffect(() => {
+		// AUDIT: Temporary setting of default business
+		setSelectedBusiness(mockBusinesses[0]);
 		if (typeof sessionStorage === undefined) return;
 		const value = sessionStorage.getItem('selectedBusiness');
 		const parsedValue = value ? (JSON.parse(value) as Business) : null;

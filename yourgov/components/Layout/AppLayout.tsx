@@ -214,6 +214,16 @@ function AppLayoutSidebar() {
 					label: 'Licences and permits',
 					href: '/app/licences-and-permits',
 					icon: IconApproval,
+					items: [
+						{
+							label: 'Apply for a mobile food vendor permit',
+							href: '/app/licences-and-permits/apply/mobile-food-vendor-permit',
+						},
+						{
+							label: 'Who can apply?',
+							href: '/app/licences-and-permits/apply/who-can-apply',
+						},
+					],
 				},
 				{
 					label: 'Staff access',
