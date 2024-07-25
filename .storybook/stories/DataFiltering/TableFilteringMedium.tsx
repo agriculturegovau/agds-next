@@ -52,7 +52,6 @@ export const TableFilteringMedium = ({
 	const [currentItem, setCurrentItem] = useState<BusinessForAudit>();
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-	const formRef = useRef(null);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
@@ -98,6 +97,7 @@ export const TableFilteringMedium = ({
 						currentItem?.businessName ? 'to ' + currentItem.businessName : ''
 					} have been saved`}
 					tone="success"
+					onClose={() => setShowSuccessMessage(false)}
 				/>
 			</Box>
 
@@ -181,7 +181,7 @@ export const TableFilteringMedium = ({
 						currentItem?.businessName ? currentItem.businessName : 'Business'
 					}`}
 				>
-					<form id="form-id" ref={formRef}>
+					<form id="form-id">
 						<FormStack>
 							<ControlGroup label="Role" block required>
 								{assignees.map((assignee) => (

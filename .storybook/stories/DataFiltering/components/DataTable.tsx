@@ -279,14 +279,14 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 																			onOpenDrawer?.(newCurrentItem);
 																		}}
 																	>
-																		Pause access
+																		Mark completed
 																	</DropdownMenuItem>
 																	<DropdownMenuItem
 																		onClick={() => {
 																			onOpenDrawer?.(newCurrentItem);
 																		}}
 																	>
-																		Remove access
+																		Mark cancelled
 																	</DropdownMenuItem>
 																</DropdownMenuPanel>
 															</DropdownMenu>
