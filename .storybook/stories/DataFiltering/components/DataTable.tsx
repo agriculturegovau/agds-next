@@ -47,6 +47,7 @@ export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
 
 type DataTableProps = {
+	hasActionColumn?: boolean;
 	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
 	onClickMarkCompleted?: (newCurrentItem: BusinessForAudit) => void;
 	onClickDelete?: (newCurrentItem: BusinessForAudit) => void;
@@ -59,6 +60,7 @@ type DataTableProps = {
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	function DataTable(
 		{
+			hasActionColumn,
 			headingId,
 			onClickMarkCompleted,
 			onClickDelete,
@@ -181,9 +183,11 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 										);
 									}
 								)}
-								<TableHeader scope="col" width="8rem">
-									Action
-								</TableHeader>
+								{hasActionColumn && (
+									<TableHeader scope="col" width="8rem">
+										Action
+									</TableHeader>
+								)}
 							</TableRow>
 						</TableHead>
 						<TableBody>
@@ -213,10 +217,12 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
+											{hasActionColumn && (
+												<TableCell>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+											)}
 											<TableCell>
 												<SkeletonBox height={32} />
 												<VisuallyHidden>Loading</VisuallyHidden>
@@ -271,38 +277,40 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														{format(requestDate, 'dd/MM/yyyy')}
 													</TableCell>
 													<DataTableRowStatus status={status} />
-													<TableCell>
-														<Box css={{ position: 'relative' }}>
-															<DropdownMenu>
-																<DropdownMenuButton focusRingFor="all">
-																	Action
-																</DropdownMenuButton>
-																<DropdownMenuPanel>
-																	<DropdownMenuItem
-																		onClick={() => {
-																			onOpenDrawer?.(newCurrentItem);
-																		}}
-																	>
-																		Change assignee
-																	</DropdownMenuItem>
-																	<DropdownMenuItem
-																		onClick={() => {
-																			onClickMarkCompleted?.(newCurrentItem);
-																		}}
-																	>
-																		Mark as completed
-																	</DropdownMenuItem>
-																	<DropdownMenuItem
-																		onClick={() => {
-																			onClickDelete?.(newCurrentItem);
-																		}}
-																	>
-																		Delete audit
-																	</DropdownMenuItem>
-																</DropdownMenuPanel>
-															</DropdownMenu>
-														</Box>
-													</TableCell>
+													{hasActionColumn && (
+														<TableCell>
+															<Box css={{ position: 'relative' }}>
+																<DropdownMenu>
+																	<DropdownMenuButton focusRingFor="all">
+																		Action
+																	</DropdownMenuButton>
+																	<DropdownMenuPanel>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onOpenDrawer?.(newCurrentItem);
+																			}}
+																		>
+																			Change assignee
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickMarkCompleted?.(newCurrentItem);
+																			}}
+																		>
+																			Mark as completed
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickDelete?.(newCurrentItem);
+																			}}
+																		>
+																			Delete audit
+																		</DropdownMenuItem>
+																	</DropdownMenuPanel>
+																</DropdownMenu>
+															</Box>
+														</TableCell>
+													)}
 												</DataTableRow>
 											);
 										}

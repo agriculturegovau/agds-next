@@ -42,8 +42,10 @@ import { useDataContext } from './lib/contexts';
 const headingId = 'table-heading';
 
 export const TableFilteringMedium = ({
+	hasActionColumn,
 	selectable,
 }: {
+	hasActionColumn?: boolean;
 	selectable?: boolean;
 }) => {
 	const { updateData } = useDataContext();
@@ -189,6 +191,7 @@ export const TableFilteringMedium = ({
 				)}
 
 				<DataTable
+					hasActionColumn={hasActionColumn}
 					selectable={selectable}
 					headingId={headingId}
 					onOpenDrawer={onOpenDrawer}

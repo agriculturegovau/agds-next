@@ -114,7 +114,7 @@ export const TableMedium = {
 									button is pressed.
 								</Text>
 							</Callout>
-							<TableFilteringMedium />
+							<TableFilteringMedium hasActionColumn={true} />
 						</Stack>
 					</PageContent>
 				</DataProvider>
