@@ -31,6 +31,7 @@ export function useFetchData({
 }: GetDataParams): DashboardTableData {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<BusinessForAuditWithIndex[]>([]);
+	const [allData, setAllData] = useState<BusinessForAuditWithIndex[]>([]);
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalItems, setTotalItems] = useState(0);
 
@@ -41,6 +42,7 @@ export function useFetchData({
 	useEffect(() => {
 		setLoading(true);
 		getData({ sort, filters, pagination }, interimData).then((response) => {
+			setAllData(response.allData);
 			setData(response.data);
 			setTotalPages(response.totalPages);
 			setTotalItems(response.totalItems);
@@ -49,15 +51,17 @@ export function useFetchData({
 	}, [sort, filters, pagination, interimData]);
 
 	const updateData = (newItemData: BusinessForAudit, isDeleted?: boolean) => {
-		const itemToEdit = data.find(({ id }) => id === newItemData.id);
-		if (!itemToEdit) return;
-		const indexOfData = data.indexOf(itemToEdit);
+		if (Array.isArray(newItemData)) {
+			const itemToEdit = allData.find(({ id }) => id === newItemData.id);
+			if (!itemToEdit) return;
+			const indexOfData = allData.indexOf(itemToEdit);
 
-		setInterimData([
-			...data.slice(0, indexOfData),
-			...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
-			...data.slice(indexOfData + 1),
-		]);
+			setInterimData([
+				...allData.slice(0, indexOfData),
+				...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
+				...allData.slice(indexOfData + 1),
+			]);
+		}
 	};
 
 	if (throwError) {
