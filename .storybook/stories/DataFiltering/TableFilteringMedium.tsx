@@ -74,7 +74,6 @@ export const TableFilteringMedium = ({
 	};
 	const onOpenDrawer = (newCurrentItem?: BusinessForAudit) => {
 		openDrawer();
-		setShowSuccessMessage(false);
 		setCurrentItem(newCurrentItem);
 		setRadioAssigneeValue(newCurrentItem?.assignee);
 	};
@@ -91,7 +90,6 @@ export const TableFilteringMedium = ({
 	};
 
 	const onClickDelete = (newCurrentItem?: BusinessForAudit) => {
-		setShowSuccessMessage(false);
 		setDeleteAuditModalOpen(true);
 		setCurrentItem(newCurrentItem);
 	};
@@ -123,6 +121,7 @@ export const TableFilteringMedium = ({
 
 			<Box css={showSuccessMessage ? undefined : { display: 'none' }}>
 				<SectionAlert
+					role="alert"
 					id="section-alert"
 					ref={sectionAlertRef}
 					tabIndex={-1}
@@ -206,13 +205,22 @@ export const TableFilteringMedium = ({
 								Save changes
 							</Button>
 
-							<Button variant="tertiary" onClick={closeDrawer}>
+							<Button
+								variant="tertiary"
+								onClick={() => {
+									setShowSuccessMessage(false);
+									closeDrawer();
+								}}
+							>
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
 					isOpen={isDrawerOpen}
-					onClose={closeDrawer}
+					onClose={() => {
+						setShowSuccessMessage(false);
+						closeDrawer();
+					}}
 					title={`Edit ${
 						currentItem?.businessName ? currentItem.businessName : 'Business'
 					}`}
