@@ -34,10 +34,7 @@ import {
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
 import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
-import {
-	BusinessForAudit,
-	BusinessForAuditStatus,
-} from './lib/generateBusinessData';
+import { assignees, BusinessForAudit } from './lib/generateBusinessData';
 import { useDataContext } from './lib/contexts';
 
 const headingId = 'table-heading';
@@ -63,7 +60,7 @@ export const TableFilteringMedium = ({
 		if (!currentItem) return;
 		updateData?.({
 			...currentItem,
-			...(radioStatusValue && { status: radioStatusValue }),
+			...(radioAssigneeValue && { assignee: radioAssigneeValue }),
 		});
 
 		setShowSuccessMessage(true);
@@ -74,16 +71,15 @@ export const TableFilteringMedium = ({
 		openDrawer();
 		setShowSuccessMessage(false);
 		setCurrentItem(newCurrentItem);
-		setRadioStatusValue(newCurrentItem?.status);
+		setRadioAssigneeValue(newCurrentItem?.assignee);
 	};
 
-	const [radioStatusValue, setRadioStatusValue] =
-		useState<BusinessForAuditStatus>();
+	const [radioAssigneeValue, setRadioAssigneeValue] = useState<string>();
 	const handlerForKey = useCallback(
-		(key: BusinessForAuditStatus) => () => setRadioStatusValue(key),
+		(key: string) => () => setRadioAssigneeValue(key),
 		[]
 	);
-	const isChecked = (key: BusinessForAuditStatus) => key === radioStatusValue;
+	const isChecked = (key: string) => key === radioAssigneeValue;
 
 	// IDs for accordion to ensure accessibility
 	const buttonId = 'filter-button';
@@ -188,34 +184,16 @@ export const TableFilteringMedium = ({
 					<form id="form-id" ref={formRef}>
 						<FormStack>
 							<ControlGroup label="Role" block required>
-								<Radio
-									name="status"
-									checked={isChecked('notBooked')}
-									onChange={handlerForKey('notBooked')}
-								>
-									Not booked
-								</Radio>
-								<Radio
-									name="status"
-									checked={isChecked('booked')}
-									onChange={handlerForKey('booked')}
-								>
-									Booked
-								</Radio>
-								<Radio
-									name="status"
-									checked={isChecked('completed')}
-									onChange={handlerForKey('completed')}
-								>
-									Completed
-								</Radio>
-								<Radio
-									name="status"
-									checked={isChecked('cancelled')}
-									onChange={handlerForKey('cancelled')}
-								>
-									Cancelled
-								</Radio>
+								{assignees.map((assignee) => (
+									<Radio
+										key={assignee}
+										name="assignee"
+										checked={isChecked(assignee)}
+										onChange={handlerForKey(assignee)}
+									>
+										{assignee}
+									</Radio>
+								))}
 							</ControlGroup>
 						</FormStack>
 					</form>

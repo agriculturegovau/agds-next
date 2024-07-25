@@ -272,7 +272,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 																			onOpenDrawer?.(newCurrentItem);
 																		}}
 																	>
-																		Change status
+																		Change assignee
 																	</DropdownMenuItem>
 																	<DropdownMenuItem
 																		onClick={() => {
