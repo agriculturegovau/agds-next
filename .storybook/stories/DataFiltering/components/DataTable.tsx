@@ -48,6 +48,8 @@ const descriptionId = 'data-table-description';
 
 type DataTableProps = {
 	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
+	onClickMarkCompleted?: (newCurrentItem: BusinessForAudit) => void;
+	onClickDelete?: (newCurrentItem: BusinessForAudit) => void;
 	/** The id of the heading that describes the table */
 	headingId?: string;
 	/** Whether the table should be selectable */
@@ -55,7 +57,16 @@ type DataTableProps = {
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, onOpenDrawer, selectable }, ref) {
+	function DataTable(
+		{
+			headingId,
+			onClickMarkCompleted,
+			onClickDelete,
+			onOpenDrawer,
+			selectable,
+		},
+		ref
+	) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
@@ -276,17 +287,17 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 																	</DropdownMenuItem>
 																	<DropdownMenuItem
 																		onClick={() => {
-																			onOpenDrawer?.(newCurrentItem);
+																			onClickMarkCompleted?.(newCurrentItem);
 																		}}
 																	>
-																		Mark completed
+																		Mark as completed
 																	</DropdownMenuItem>
 																	<DropdownMenuItem
 																		onClick={() => {
-																			onOpenDrawer?.(newCurrentItem);
+																			onClickDelete?.(newCurrentItem);
 																		}}
 																	>
-																		Mark cancelled
+																		Delete audit
 																	</DropdownMenuItem>
 																</DropdownMenuPanel>
 															</DropdownMenu>

@@ -18,8 +18,10 @@ import {
 	ControlGroup,
 	Drawer,
 	FormStack,
+	Modal,
 	Radio,
 	SectionAlert,
+	Text,
 } from '../../../docs/components/designSystemComponents';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
@@ -52,6 +54,8 @@ export const TableFilteringMedium = ({
 	const [currentItem, setCurrentItem] = useState<BusinessForAudit>();
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+	const [cancelModalOpen, setDeleteAuditModalOpen] = useState(false);
+
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
@@ -71,6 +75,33 @@ export const TableFilteringMedium = ({
 		setShowSuccessMessage(false);
 		setCurrentItem(newCurrentItem);
 		setRadioAssigneeValue(newCurrentItem?.assignee);
+	};
+
+	const onClickMarkCompleted = (newCurrentItem?: BusinessForAudit) => {
+		setShowSuccessMessage(true);
+		setCurrentItem(newCurrentItem);
+
+		if (!newCurrentItem) return;
+		updateData?.({
+			...newCurrentItem,
+			status: 'completed',
+		});
+	};
+
+	const onClickDelete = (newCurrentItem?: BusinessForAudit) => {
+		setShowSuccessMessage(false);
+		setDeleteAuditModalOpen(true);
+		setCurrentItem(newCurrentItem);
+	};
+
+	const onConfirmCancel = () => {
+		setShowSuccessMessage(true);
+
+		if (!currentItem) return;
+		const isDeleted = true;
+		updateData?.(currentItem, isDeleted);
+
+		setDeleteAuditModalOpen(false);
 	};
 
 	const [radioAssigneeValue, setRadioAssigneeValue] = useState<string>();
@@ -161,6 +192,8 @@ export const TableFilteringMedium = ({
 					selectable={selectable}
 					headingId={headingId}
 					onOpenDrawer={onOpenDrawer}
+					onClickMarkCompleted={onClickMarkCompleted}
+					onClickDelete={onClickDelete}
 				/>
 
 				<Drawer
@@ -199,7 +232,64 @@ export const TableFilteringMedium = ({
 					</form>
 				</Drawer>
 			</Stack>
+
 			<DashboardPagination />
+
+			{currentItem && (
+				<ModalConfirmDelete
+					currentItem={currentItem}
+					isOpen={cancelModalOpen}
+					onClose={() => setDeleteAuditModalOpen(false)}
+					onConfirm={onConfirmCancel}
+				/>
+			)}
 		</Stack>
 	);
 };
+
+export type ModalConfirmDeleteProps = {
+	isOpen: boolean;
+	onConfirm: () => void;
+	onClose: () => void;
+	currentItem: BusinessForAudit;
+};
+
+export function ModalConfirmDelete({
+	isOpen,
+	onConfirm,
+	onClose,
+	currentItem,
+}: ModalConfirmDeleteProps) {
+	const [submitting, setSubmitting] = useState(false);
+
+	function onSubmit() {
+		setSubmitting(true);
+		setTimeout(() => {
+			setSubmitting(false);
+			onConfirm();
+		}, 200);
+	}
+
+	const title = `Are you sure you want to delete the audit for ${currentItem.businessName}?`;
+	const description = `Audit documents will be deleted immediately. You can not undo this action.`;
+
+	return (
+		<Modal
+			isOpen={isOpen}
+			onClose={onClose}
+			title={title}
+			actions={
+				<ButtonGroup>
+					<Button loading={submitting} onClick={onSubmit}>
+						Delete audit
+					</Button>
+					<Button variant="secondary" onClick={onClose}>
+						Cancel
+					</Button>
+				</ButtonGroup>
+			}
+		>
+			<Text as="p">{description}</Text>
+		</Modal>
+	);
+}

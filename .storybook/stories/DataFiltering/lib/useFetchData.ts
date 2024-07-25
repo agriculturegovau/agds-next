@@ -6,7 +6,10 @@ import {
 import { getData, GetDataParams } from './getData';
 
 export type DashboardTableData = {
-	updateData?: (businessToUpdate: BusinessForAudit) => void;
+	updateData?: (
+		businessToUpdate: BusinessForAudit,
+		isDeleted?: boolean
+	) => void;
 	/** Whether the data is loading */
 	loading: boolean;
 	/** The loaded data */
@@ -45,14 +48,14 @@ export function useFetchData({
 		});
 	}, [sort, filters, pagination, interimData]);
 
-	const updateData = (newItemData: BusinessForAudit) => {
+	const updateData = (newItemData: BusinessForAudit, isDeleted?: boolean) => {
 		const itemToEdit = data.find(({ id }) => id === newItemData.id);
 		if (!itemToEdit) return;
 		const indexOfData = data.indexOf(itemToEdit);
 
 		setInterimData([
 			...data.slice(0, indexOfData),
-			{ ...itemToEdit, ...newItemData },
+			...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
 			...data.slice(indexOfData + 1),
 		]);
 	};
