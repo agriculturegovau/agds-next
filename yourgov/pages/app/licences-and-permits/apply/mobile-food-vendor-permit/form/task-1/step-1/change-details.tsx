@@ -24,7 +24,7 @@ export default Page;
 
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
-		<AppLayout>
+		<AppLayout focusMode>
 			<GlobalFormProvider>
 				<FormTask1Provider>{page}</FormTask1Provider>
 			</GlobalFormProvider>
