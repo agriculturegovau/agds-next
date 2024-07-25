@@ -219,7 +219,7 @@ export const TableFilteringMedium = ({
 				>
 					<form id="form-id">
 						<FormStack>
-							<ControlGroup label="Role" block required>
+							<ControlGroup label="Assignee" block required>
 								{assignees.map((assignee) => (
 									<Radio
 										key={assignee}
