@@ -30,6 +30,12 @@ import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import {
+	DropdownMenu,
+	DropdownMenuButton,
+	DropdownMenuItem,
+	DropdownMenuPanel,
+} from '../../../../docs/components/designSystemComponents';
+import {
 	DataTableRow,
 	DataTableRowAssignee,
 	DataTableRowStatus,
@@ -40,6 +46,7 @@ export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
 
 type DataTableProps = {
+	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
 	/** The id of the heading that describes the table */
 	headingId?: string;
 	/** Whether the table should be selectable */
@@ -47,7 +54,7 @@ type DataTableProps = {
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, selectable }, ref) {
+	function DataTable({ headingId, onOpenDrawer, selectable }, ref) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
@@ -162,6 +169,9 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 										);
 									}
 								)}
+								<TableHeader scope="col" width="8rem">
+									Action
+								</TableHeader>
 							</TableRow>
 						</TableHead>
 						<TableBody>
@@ -175,6 +185,10 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
 											)}
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
@@ -210,9 +224,22 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											state,
 											requestDate,
 											status,
+											...businessData
 										}) => {
 											// Adding 2 because the table header row is the first row
 											const rowIndex = index + 2;
+
+											const newCurrentItem = {
+												id,
+												assignee,
+												businessName,
+												city,
+												state,
+												requestDate,
+												status,
+												...businessData,
+											};
+
 											return (
 												<DataTableRow
 													key={id}
@@ -232,6 +259,36 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														{format(requestDate, 'dd/MM/yyyy')}
 													</TableCell>
 													<DataTableRowStatus status={status} />
+													<TableCell>
+														<DropdownMenu>
+															<DropdownMenuButton focusRingFor="all">
+																Action
+															</DropdownMenuButton>
+															<DropdownMenuPanel>
+																<DropdownMenuItem
+																	onClick={() => {
+																		onOpenDrawer?.(newCurrentItem);
+																	}}
+																>
+																	Change status
+																</DropdownMenuItem>
+																<DropdownMenuItem
+																	onClick={() => {
+																		onOpenDrawer?.(newCurrentItem);
+																	}}
+																>
+																	Pause access
+																</DropdownMenuItem>
+																<DropdownMenuItem
+																	onClick={() => {
+																		onOpenDrawer?.(newCurrentItem);
+																	}}
+																>
+																	Remove access
+																</DropdownMenuItem>
+															</DropdownMenuPanel>
+														</DropdownMenu>
+													</TableCell>
 												</DataTableRow>
 											);
 										}

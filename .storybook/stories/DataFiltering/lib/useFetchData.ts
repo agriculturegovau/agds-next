@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
-import { BusinessForAuditWithIndex } from './generateBusinessData';
+import {
+	BusinessForAudit,
+	BusinessForAuditWithIndex,
+} from './generateBusinessData';
 import { getData, GetDataParams } from './getData';
 
 export type DashboardTableData = {
+	updateData?: (businessToUpdate: BusinessForAudit) => void;
 	/** Whether the data is loading */
 	loading: boolean;
 	/** The loaded data */
@@ -27,15 +31,31 @@ export function useFetchData({
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalItems, setTotalItems] = useState(0);
 
+	const [interimData, setInterimData] = useState<BusinessForAuditWithIndex[]>(
+		[]
+	);
+
 	useEffect(() => {
 		setLoading(true);
-		getData({ sort, filters, pagination }).then((response) => {
+		getData({ sort, filters, pagination }, interimData).then((response) => {
 			setData(response.data);
 			setTotalPages(response.totalPages);
 			setTotalItems(response.totalItems);
 			setLoading(false);
 		});
-	}, [sort, filters, pagination]);
+	}, [sort, filters, pagination, interimData]);
+
+	const updateData = (newItemData: BusinessForAudit) => {
+		const itemToEdit = data.find(({ id }) => id === newItemData.id);
+		if (!itemToEdit) return;
+		const indexOfData = data.indexOf(itemToEdit);
+
+		setInterimData([
+			...data.slice(0, indexOfData),
+			{ ...itemToEdit, ...newItemData },
+			...data.slice(indexOfData + 1),
+		]);
+	};
 
 	if (throwError) {
 		return {
@@ -44,8 +64,9 @@ export function useFetchData({
 			data: [],
 			totalPages: 0,
 			totalItems: 0,
+			updateData: () => undefined,
 		};
 	}
 
-	return { loading, data, totalPages, totalItems };
+	return { loading, data, totalPages, totalItems, updateData };
 }

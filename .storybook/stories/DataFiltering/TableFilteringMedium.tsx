@@ -1,7 +1,11 @@
+import { MouseEventHandler, useCallback, useRef, useState } from 'react';
 import { Box } from '../../../packages/react/src/box';
 import { Stack } from '../../../packages/react/src/stack';
 import { Button, ButtonLink } from '../../../packages/react/src/button';
-import { useToggleState } from '../../../packages/react/src/core';
+import {
+	useTernaryState,
+	useToggleState,
+} from '../../../packages/react/src/core';
 import {
 	ChevronDownIcon,
 	ChevronUpIcon,
@@ -9,6 +13,14 @@ import {
 	PlusIcon,
 } from '../../../packages/react/src/icon';
 import { H2 } from '../../../packages/react/src/heading';
+import {
+	ButtonGroup,
+	ControlGroup,
+	Drawer,
+	FormStack,
+	Radio,
+	SectionAlert,
+} from '../../../docs/components/designSystemComponents';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
@@ -22,6 +34,11 @@ import {
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
 import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
+import {
+	BusinessForAudit,
+	BusinessForAuditStatus,
+} from './lib/generateBusinessData';
+import { useDataContext } from './lib/contexts';
 
 const headingId = 'table-heading';
 
@@ -30,7 +47,43 @@ export const TableFilteringMedium = ({
 }: {
 	selectable?: boolean;
 }) => {
+	const { updateData } = useDataContext();
+
+	const sectionAlertRef = useRef(null);
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
+
+	const [currentItem, setCurrentItem] = useState<BusinessForAudit>();
+	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+	const formRef = useRef(null);
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
+		event.preventDefault();
+
+		if (!currentItem) return;
+		updateData?.({
+			...currentItem,
+			...(radioStatusValue && { status: radioStatusValue }),
+		});
+
+		setShowSuccessMessage(true);
+
+		closeDrawer();
+	};
+	const onOpenDrawer = (newCurrentItem?: BusinessForAudit) => {
+		openDrawer();
+		setShowSuccessMessage(false);
+		setCurrentItem(newCurrentItem);
+		setRadioStatusValue(newCurrentItem?.status);
+	};
+
+	const [radioStatusValue, setRadioStatusValue] =
+		useState<BusinessForAuditStatus>();
+	const handlerForKey = useCallback(
+		(key: BusinessForAuditStatus) => () => setRadioStatusValue(key),
+		[]
+	);
+	const isChecked = (key: BusinessForAuditStatus) => key === radioStatusValue;
 
 	// IDs for accordion to ensure accessibility
 	const buttonId = 'filter-button';
@@ -39,6 +92,19 @@ export const TableFilteringMedium = ({
 	return (
 		<Stack gap={1.5}>
 			<H2 id={headingId}>Audits</H2>
+
+			<Box css={showSuccessMessage ? undefined : { display: 'none' }}>
+				<SectionAlert
+					id="section-alert"
+					ref={sectionAlertRef}
+					tabIndex={-1}
+					title={`Your changes ${
+						currentItem?.businessName ? 'to ' + currentItem.businessName : ''
+					} have been saved`}
+					tone="success"
+				/>
+			</Box>
+
 			<div>
 				<ButtonLink href="#new" iconBefore={PlusIcon}>
 					Create request
@@ -64,8 +130,6 @@ export const TableFilteringMedium = ({
 								variant="secondary"
 								iconBefore={FilterIcon}
 								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
-								// accessibility
-								aria-label="more filters"
 								id={buttonId}
 								aria-controls={bodyId}
 								aria-expanded={isOpen}
@@ -96,7 +160,66 @@ export const TableFilteringMedium = ({
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}
-				<DataTable selectable={selectable} headingId={headingId} />
+
+				<DataTable
+					selectable={selectable}
+					headingId={headingId}
+					onOpenDrawer={onOpenDrawer}
+				/>
+
+				<Drawer
+					actions={
+						<ButtonGroup>
+							<Button type="submit" form="form-id" onClick={onSubmitForm}>
+								Save changes
+							</Button>
+
+							<Button variant="tertiary" onClick={closeDrawer}>
+								Cancel
+							</Button>
+						</ButtonGroup>
+					}
+					isOpen={isDrawerOpen}
+					onClose={closeDrawer}
+					title={`Edit ${
+						currentItem?.businessName ? currentItem.businessName : 'Business'
+					}`}
+				>
+					<form id="form-id" ref={formRef}>
+						<FormStack>
+							<ControlGroup label="Role" block required>
+								<Radio
+									name="status"
+									checked={isChecked('notBooked')}
+									onChange={handlerForKey('notBooked')}
+								>
+									Not booked
+								</Radio>
+								<Radio
+									name="status"
+									checked={isChecked('booked')}
+									onChange={handlerForKey('booked')}
+								>
+									Booked
+								</Radio>
+								<Radio
+									name="status"
+									checked={isChecked('completed')}
+									onChange={handlerForKey('completed')}
+								>
+									Completed
+								</Radio>
+								<Radio
+									name="status"
+									checked={isChecked('cancelled')}
+									onChange={handlerForKey('cancelled')}
+								>
+									Cancelled
+								</Radio>
+							</ControlGroup>
+						</FormStack>
+					</form>
+				</Drawer>
 			</Stack>
 			<DashboardPagination />
 		</Stack>

@@ -155,10 +155,15 @@ const sortData = (
 const allData = generateBusinessData();
 
 /** Simulates the retrieval of data from an API */
-export async function getData(params: GetDataParams): Promise<GetDataResponse> {
+export async function getData(
+	params: GetDataParams,
+	updatedData?: GetDataResponse['data']
+): Promise<GetDataResponse> {
 	const { page, perPage } = params.pagination;
 
-	const filteredData = allData.filter((business) =>
+	const currentData = updatedData?.length ? updatedData : allData;
+
+	const filteredData = currentData.filter((business) =>
 		doesBusinessMatchFilters(business, params.filters)
 	);
 
