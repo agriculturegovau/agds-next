@@ -51,17 +51,15 @@ export function useFetchData({
 	}, [sort, filters, pagination, interimData]);
 
 	const updateData = (newItemData: BusinessForAudit, isDeleted?: boolean) => {
-		if (Array.isArray(newItemData)) {
-			const itemToEdit = allData.find(({ id }) => id === newItemData.id);
-			if (!itemToEdit) return;
-			const indexOfData = allData.indexOf(itemToEdit);
+		const itemToEdit = allData.find(({ id }) => id === newItemData.id);
+		if (!itemToEdit) return;
+		const indexOfData = allData.indexOf(itemToEdit);
 
-			setInterimData([
-				...allData.slice(0, indexOfData),
-				...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
-				...allData.slice(indexOfData + 1),
-			]);
-		}
+		setInterimData([
+			...allData.slice(0, indexOfData),
+			...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
+			...allData.slice(indexOfData + 1),
+		]);
 	};
 
 	if (throwError) {
