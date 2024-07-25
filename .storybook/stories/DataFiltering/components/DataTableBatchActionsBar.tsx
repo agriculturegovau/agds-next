@@ -4,10 +4,12 @@ import {
 	TableBatchActionsTitle,
 } from '../../../../packages/react/src/table';
 import { plural } from '../../SelectableTableBatchActions/utils';
-import { useSortAndFilterContext } from '../lib/contexts';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 
 export const DataTableBatchActionsBar = () => {
 	const { selection, clearRowSelections } = useSortAndFilterContext();
+
+	const { updateData } = useDataContext();
 
 	if (selection.length) {
 		return (
@@ -21,17 +23,17 @@ export const DataTableBatchActionsBar = () => {
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							console.log('Add tracking number');
+							updateData?.({ batchItems: selection });
 							clearRowSelections();
 						}}
 					>
-						Add tracking number
+						Mark as completed
 					</Button>
 					<Button
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							console.log('Delete');
+							updateData?.({ batchItems: selection, isDeleted: true });
 							clearRowSelections();
 						}}
 					>

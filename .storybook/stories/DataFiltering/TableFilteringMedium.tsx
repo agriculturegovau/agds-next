@@ -64,8 +64,10 @@ export const TableFilteringMedium = ({
 
 		if (!currentItem) return;
 		updateData?.({
-			...currentItem,
-			...(radioAssigneeValue && { assignee: radioAssigneeValue }),
+			newItemData: {
+				...currentItem,
+				...(radioAssigneeValue && { assignee: radioAssigneeValue }),
+			},
 		});
 
 		setShowSuccessMessage(true);
@@ -84,8 +86,10 @@ export const TableFilteringMedium = ({
 
 		if (!newCurrentItem) return;
 		updateData?.({
-			...newCurrentItem,
-			status: 'completed',
+			newItemData: {
+				...newCurrentItem,
+				status: 'completed',
+			},
 		});
 	};
 
@@ -98,8 +102,7 @@ export const TableFilteringMedium = ({
 		setShowSuccessMessage(true);
 
 		if (!currentItem) return;
-		const isDeleted = true;
-		updateData?.(currentItem, isDeleted);
+		updateData?.({ newItemData: currentItem, isDeleted: true });
 
 		setDeleteAuditModalOpen(false);
 	};

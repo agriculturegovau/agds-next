@@ -7,8 +7,19 @@ import { getData, GetDataParams } from './getData';
 
 export type DashboardTableData = {
 	updateData?: (
-		businessToUpdate: BusinessForAudit,
-		isDeleted?: boolean
+		data:
+			| {
+					batchItems: string[];
+					isDeleted?: boolean;
+					isCompleted?: never;
+					newItemData?: never;
+			  }
+			| {
+					newItemData: BusinessForAudit;
+					isCompleted?: boolean;
+					isDeleted?: boolean;
+					batchItems?: never;
+			  }
 	) => void;
 	/** Whether the data is loading */
 	loading: boolean;
@@ -31,7 +42,9 @@ export function useFetchData({
 }: GetDataParams): DashboardTableData {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<BusinessForAuditWithIndex[]>([]);
-	const [allData, setAllData] = useState<BusinessForAuditWithIndex[]>([]);
+	const [currentData, setCurrentData] = useState<BusinessForAuditWithIndex[]>(
+		[]
+	);
 	const [totalPages, setTotalPages] = useState(0);
 	const [totalItems, setTotalItems] = useState(0);
 
@@ -42,7 +55,7 @@ export function useFetchData({
 	useEffect(() => {
 		setLoading(true);
 		getData({ sort, filters, pagination }, interimData).then((response) => {
-			setAllData(response.allData);
+			setCurrentData(response.currentData);
 			setData(response.data);
 			setTotalPages(response.totalPages);
 			setTotalItems(response.totalItems);
@@ -50,16 +63,44 @@ export function useFetchData({
 		});
 	}, [sort, filters, pagination, interimData]);
 
-	const updateData = (newItemData: BusinessForAudit, isDeleted?: boolean) => {
-		const itemToEdit = allData.find(({ id }) => id === newItemData.id);
-		if (!itemToEdit) return;
-		const indexOfData = allData.indexOf(itemToEdit);
+	const updateData = (
+		data:
+			| {
+					batchItems: string[];
+					isDeleted?: boolean;
+					isCompleted?: never;
+					newItemData?: never;
+			  }
+			| {
+					newItemData: BusinessForAudit;
+					isCompleted?: boolean;
+					isDeleted?: boolean;
+					batchItems?: never;
+			  }
+	) => {
+		const { batchItems, isDeleted, newItemData } = data;
 
-		setInterimData([
-			...allData.slice(0, indexOfData),
-			...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
-			...allData.slice(indexOfData + 1),
-		]);
+		if (batchItems) {
+			setInterimData(
+				isDeleted
+					? currentData.filter((item) => !batchItems.includes(item.id))
+					: currentData.map((item) =>
+							batchItems.includes(item.id)
+								? { ...item, status: 'completed' }
+								: item
+					  )
+			);
+		} else {
+			const itemToEdit = currentData.find(({ id }) => id === newItemData.id);
+			if (!itemToEdit) return;
+			const indexOfData = currentData.indexOf(itemToEdit);
+
+			setInterimData([
+				...currentData.slice(0, indexOfData),
+				...(isDeleted ? [] : [{ ...itemToEdit, ...newItemData }]),
+				...currentData.slice(indexOfData + 1),
+			]);
+		}
 	};
 
 	if (throwError) {

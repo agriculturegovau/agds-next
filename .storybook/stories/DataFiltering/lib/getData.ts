@@ -42,7 +42,7 @@ export type GetDataParams = {
 };
 
 type GetDataResponse = {
-	allData: BusinessForAuditWithIndex[];
+	currentData: BusinessForAuditWithIndex[];
 	data: BusinessForAuditWithIndex[];
 	total: number;
 	totalPages: number;
@@ -181,7 +181,7 @@ export async function getData(
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve({
-				allData: currentData as BusinessForAuditWithIndex[],
+				currentData: currentData as BusinessForAuditWithIndex[],
 				data: paginatedData,
 				total: sortedData.length,
 				totalPages: Math.ceil(sortedData.length / perPage),
