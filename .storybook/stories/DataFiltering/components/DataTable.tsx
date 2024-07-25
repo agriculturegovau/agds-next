@@ -30,6 +30,7 @@ import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import {
+	Box,
 	DropdownMenu,
 	DropdownMenuButton,
 	DropdownMenuItem,
@@ -260,34 +261,36 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													</TableCell>
 													<DataTableRowStatus status={status} />
 													<TableCell>
-														<DropdownMenu>
-															<DropdownMenuButton focusRingFor="all">
-																Action
-															</DropdownMenuButton>
-															<DropdownMenuPanel>
-																<DropdownMenuItem
-																	onClick={() => {
-																		onOpenDrawer?.(newCurrentItem);
-																	}}
-																>
-																	Change status
-																</DropdownMenuItem>
-																<DropdownMenuItem
-																	onClick={() => {
-																		onOpenDrawer?.(newCurrentItem);
-																	}}
-																>
-																	Pause access
-																</DropdownMenuItem>
-																<DropdownMenuItem
-																	onClick={() => {
-																		onOpenDrawer?.(newCurrentItem);
-																	}}
-																>
-																	Remove access
-																</DropdownMenuItem>
-															</DropdownMenuPanel>
-														</DropdownMenu>
+														<Box css={{ position: 'relative' }}>
+															<DropdownMenu>
+																<DropdownMenuButton focusRingFor="all">
+																	Action
+																</DropdownMenuButton>
+																<DropdownMenuPanel>
+																	<DropdownMenuItem
+																		onClick={() => {
+																			onOpenDrawer?.(newCurrentItem);
+																		}}
+																	>
+																		Change status
+																	</DropdownMenuItem>
+																	<DropdownMenuItem
+																		onClick={() => {
+																			onOpenDrawer?.(newCurrentItem);
+																		}}
+																	>
+																		Pause access
+																	</DropdownMenuItem>
+																	<DropdownMenuItem
+																		onClick={() => {
+																			onOpenDrawer?.(newCurrentItem);
+																		}}
+																	>
+																		Remove access
+																	</DropdownMenuItem>
+																</DropdownMenuPanel>
+															</DropdownMenu>
+														</Box>
 													</TableCell>
 												</DataTableRow>
 											);
