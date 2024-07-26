@@ -6,7 +6,7 @@ export default function AuditTableRedirect() {
 			<Head>
 				<meta
 					http-equiv="refresh"
-					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1726/storybook/iframe.html?args=&id=content-table--selectable-with-batch-actions&viewMode=story"
+					content="1;url=https://design-system.agriculture.gov.au/pr-preview/pr-1726/storybook/iframe.html?args=&id=patterns-search-filters--table-medium&viewMode=story"
 				/>
 			</Head>
 		</>
