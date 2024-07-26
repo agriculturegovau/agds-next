@@ -7,9 +7,13 @@ import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	isValidTime,
+	TimeInput,
+	TimeValue,
+} from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../lib/types';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { FormActions } from './FormActions';
@@ -43,7 +47,6 @@ export function FormTask1Step5() {
 
 	const {
 		control,
-		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Task1Step5FormSchema>({
@@ -144,25 +147,55 @@ export function FormTask1Step5() {
 							/>
 						)}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Opening time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="openingTime"
-						{...register('openingTime')}
-						invalid={Boolean(errors.openingTime?.message)}
-						message={errors.openingTime?.message}
-						required
+
+					<Controller
+						control={control}
+						name="openingTime"
+						render={({ field: { ref, onChange, ...field } }) => {
+							const value = field.value as unknown as TimeValue;
+							const invalid =
+								(!!value && !isValidTime(value.value)) ||
+								!!errors.openingTime?.message;
+
+							return (
+								<TimeInput
+									hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+									label="Opening time"
+									id="openingTime"
+									invalid={invalid}
+									message={errors.openingTime?.message}
+									required
+									{...field}
+									value={value}
+									onChange={(value) => onChange({ target: { value } })}
+								/>
+							);
+						}}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Closing time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="closingTime"
-						{...register('closingTime')}
-						invalid={Boolean(errors.closingTime?.message)}
-						message={errors.closingTime?.message}
-						required
+
+					<Controller
+						control={control}
+						name="closingTime"
+						render={({ field: { ref, onChange, ...field } }) => {
+							const value = field.value as unknown as TimeValue;
+							const invalid =
+								(!!value && !isValidTime(value.value)) ||
+								!!errors.closingTime?.message;
+
+							return (
+								<TimeInput
+									hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+									label="Closing time"
+									id="closingTime"
+									invalid={invalid}
+									message={errors.closingTime?.message}
+									required
+									{...field}
+									value={value}
+									onChange={(value) => onChange({ target: { value } })}
+								/>
+							);
+						}}
 					/>
 				</FormStack>
 				<FormActions />

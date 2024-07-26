@@ -105,8 +105,22 @@ export const task1Step5FormSchema = yup
 					.min(yup.ref('from'), 'Start date must be before the end date'),
 			})
 			.required('Enter a valid date'),
-		openingTime: yup.string().required('Start time is required'),
-		closingTime: yup.string().required('End time is required'),
+		openingTime: yup
+			.object()
+			.shape({
+				formatted: yup.string().required(),
+				value: yup.string().required(),
+			})
+			.typeError('Opening time is required.')
+			.default(null),
+		closingTime: yup
+			.object()
+			.shape({
+				formatted: yup.string().required(),
+				value: yup.string().required(),
+			})
+			.typeError('Closing time is required.')
+			.default(null),
 	})
 	.required();
 
@@ -140,9 +154,9 @@ export const task1DefaultFormState: DeepPartial<Task1FormState> = {
 	started: false,
 	completed: false,
 	step1: {
-		firstName: 'Barney',
-		lastName: 'Gumble',
-		email: 'gumble@email.com',
+		firstName: 'Charlie',
+		lastName: 'Walker',
+		email: 'c.walker@email.com',
 		completed: false,
 	},
 	step3: {

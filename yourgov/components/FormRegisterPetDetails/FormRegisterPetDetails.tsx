@@ -3,7 +3,7 @@ import {
 	useCallback,
 	useContext,
 	useEffect,
-	useMemo,
+	// useMemo,
 	useState,
 } from 'react';
 import { useRouter } from 'next/router';
@@ -37,6 +37,11 @@ import {
 import { FormRegisterPetDetailsStep4 } from './FormRegisterPetDetailsStep4';
 
 export const FORM_STEPS = [
+	// AUDIT: Temporary repositioning of steps
+	{
+		label: 'Proof of registration and vaccination',
+		component: FormRegisterPetDetailsStep2,
+	},
 	{
 		label: 'Type of pet',
 		component: FormRegisterPetDetailsStep0,
@@ -44,10 +49,6 @@ export const FORM_STEPS = [
 	{
 		label: 'Pet details',
 		component: FormRegisterPetDetailsStep1,
-	},
-	{
-		label: 'Proof of vaccination',
-		component: FormRegisterPetDetailsStep2,
 	},
 	{
 		label: 'Start date',
@@ -110,6 +111,7 @@ export const FormRegisterPetDetails = () => {
 
 	const router = useRouter();
 	const [currentStep, setCurrentStep] = useState(0);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [formState, setFormState] = useState<FormState>(task2FormState);
 
 	/** Call `startTask` when the user first visits this task */
@@ -129,19 +131,21 @@ export const FormRegisterPetDetails = () => {
 
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
+	// AUDIT: Temporary removal of saving form state
 	/** When called, the user will be taken forward to the the next step */
 	const next = useCallback(
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		(stepFormState?: StepFormState) => {
 			setIsSubmittingStep(true);
 
 			// Using a `setTimeout` to replicate a call to a back-end API
 			setTimeout(() => {
-				if (stepFormState) {
-					setFormState((current) => ({
-						...current,
-						[currentStep]: { ...stepFormState, completed: true },
-					}));
-				}
+				// if (stepFormState) {
+				// 	setFormState((current) => ({
+				// 		...current,
+				// 		[currentStep]: { ...stepFormState, completed: true },
+				// 	}));
+				// }
 				setIsSubmittingStep(false);
 				if (currentStep === TOTAL_STEPS) {
 					submitTask2(formState);
@@ -176,11 +180,12 @@ export const FormRegisterPetDetails = () => {
 	);
 
 	/** If true, the user has completed the previous step of the form */
-	const hasCompletedPreviousStep = useMemo(() => {
-		if (currentStep === 0) return true;
-		const previousStep = currentStep - 1;
-		return hasCompletedStep(previousStep);
-	}, [currentStep, hasCompletedStep]);
+	// AUDIT: Temporary removal of saving form state
+	// const hasCompletedPreviousStep = useMemo(() => {
+	// 	if (currentStep === 0) return true;
+	// 	const previousStep = currentStep - 1;
+	// 	return hasCompletedStep(previousStep);
+	// }, [currentStep, hasCompletedStep]);
 
 	const getStepStatus = useCallback(
 		(idx: number) => {
@@ -203,7 +208,8 @@ export const FormRegisterPetDetails = () => {
 		saveAndExit,
 		isSavingBeforeExiting,
 		cancel: backToHomePage,
-		hasCompletedPreviousStep,
+		// AUDIT: Temporary removal of saving form state
+		hasCompletedPreviousStep: true,
 		formState,
 		stepFormState:
 			(currentStep in formState &&
