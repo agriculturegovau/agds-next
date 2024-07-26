@@ -1,5 +1,46 @@
 # @ag.ds-next/react
 
+## 1.24.0
+
+### Minor Changes
+
+- b12ac2c2658: date-picker: Add `allowedDateFormats` prop. Make preferred `dateFormat` the first to parse.
+
+  date-range-picker: Add `allowedDateFormats` prop. Make preferred `dateFormat` the first to parse.
+
+- 97fe495929e: task-list: Change visual order of items to Title, Label and Message.
+
+  general: Use the correct CSS syntax for `::before` and `::after` pseudo-elements.
+
+- 4c4a3edcfd3: filter-sidebar: Standardise heading and wayfinding structure at all breakpoints.
+  filter-sidebar: Hardcode title to "Filters" at all breakpoints.
+  filter-sidebar: `activeFiltersCount` now renders at all breakpoints.
+  filter-sidebar: `onClearFilters` now renders a Clear filters button at all breakpoints.
+  filter-sidebar: Deprecate `aria-label` and `title` props. They’re now unused.
+
+  progress-indicator: Standardise heading and wayfinding structure at all breakpoints.
+  progress-indicator: `title` and `subTitle` renders identically at all breakpoints.
+  progress-indicator: Fix Level 2 items from incorrectly adding `isActive` and `label` attributes.
+
+  side-nav: Standardise heading and wayfinding structure at all breakpoints.
+  side-nav: The `title` is now used for the small-screen expandable variant.
+  side-nav: Deprecate `collapseTitle` prop. It is now unused.
+
+- 180169b4d8b: table: Update `TableWrapper` to use a custom scrollbar implementation.
+
+  icon: Created `ScrollbarArrowLeftIcon` and `ScrollbarArrowRightIcon`.
+
+### Patch Changes
+
+- cede8edea80: app-layout-sidebar: Fix level two items not inheriting `body` background.
+- c313d7a5500: tags: Update appearance of tags to be smaller and pill-shaped.
+- 39dfd397bab: control-group: Use `useId` from core, rather than React for backwards compatibility.
+
+  pagination: Use `useId` from core, rather than React for backwards compatibility.
+
+- d35dcc90ffb: Update deprecated component and prop uses through examples
+- 37757215c6b: build: Use relative imports within components.
+
 ## 1.23.1
 
 ### Patch Changes
