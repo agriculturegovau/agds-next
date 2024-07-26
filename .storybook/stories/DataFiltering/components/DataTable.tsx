@@ -4,10 +4,7 @@ import {
 	VisuallyHidden,
 	visuallyHiddenStyles,
 } from '../../../../packages/react/src/a11y';
-import {
-	SkeletonBox,
-	SkeletonText,
-} from '../../../../packages/react/src/skeleton';
+import { SkeletonText } from '../../../../packages/react/src/skeleton';
 import {
 	Table,
 	TableBody,
@@ -144,7 +141,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						<TableHead>
 							<TableRow aria-rowindex={1}>
 								{selectable && (
-									<TableHeader scope="col" width="5rem">
+									<TableHeader scope="col" width={73}>
 										Select
 									</TableHeader>
 								)}
@@ -188,7 +185,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 									}
 								)}
 								{hasActionColumn && (
-									<TableHeader scope="col" width="8rem">
+									<TableHeader scope="col" width={98}>
 										Action
 									</TableHeader>
 								)}
@@ -221,16 +218,16 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
+											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
 											{hasActionColumn && (
 												<TableCell>
 													<SkeletonText />
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
 											)}
-											<TableCell>
-												<SkeletonBox height={32} />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
 										</TableRow>
 									))}
 								</Fragment>
@@ -343,31 +340,31 @@ const headers: {
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
-		width: { xs: '20rem', lg: 'auto' },
+		width: 228,
 		isSortable: true,
 	},
 	{
 		label: 'Assignee',
 		sortKey: 'assignee',
-		width: '12rem',
+		width: 175,
 		isSortable: true,
 	},
 	{
 		label: 'City',
 		sortKey: 'city',
-		width: { xs: '16rem', lg: 'auto' },
+		width: 210,
 		isSortable: false,
 	},
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
-		width: '12rem',
+		width: 177,
 		isSortable: true,
 	},
 	{
 		label: 'Status',
 		sortKey: 'status',
-		width: '11rem',
+		width: 160,
 		isSortable: true,
 	},
 ];
