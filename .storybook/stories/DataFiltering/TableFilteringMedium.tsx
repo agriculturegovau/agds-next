@@ -56,6 +56,12 @@ export const TableFilteringMedium = ({
 	const [batchItems, setBatchItems] = useState<string[]>();
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+	const showAccessibleSuccessMessage = () => {
+		// Hide it then show it to ensure it's always announced even if the content was the same
+		setShowSuccessMessage(false);
+		setShowSuccessMessage(true);
+	};
+
 	const [cancelModalOpen, setDeleteAuditModalOpen] = useState(false);
 
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
@@ -70,7 +76,7 @@ export const TableFilteringMedium = ({
 			},
 		});
 
-		setShowSuccessMessage(true);
+		showAccessibleSuccessMessage();
 
 		closeDrawer();
 	};
@@ -81,7 +87,7 @@ export const TableFilteringMedium = ({
 	};
 
 	const onClickMarkCompleted = (newCurrentItem?: BusinessForAudit) => {
-		setShowSuccessMessage(true);
+		showAccessibleSuccessMessage();
 		setCurrentItem(newCurrentItem);
 		setBatchItems(undefined);
 
@@ -95,7 +101,7 @@ export const TableFilteringMedium = ({
 	};
 
 	const onClickMarkCompletedBatch = (batchItems: string[]) => {
-		setShowSuccessMessage(true);
+		showAccessibleSuccessMessage();
 		setBatchItems(batchItems);
 		setCurrentItem(undefined);
 		updateData?.({ batchItems });
@@ -114,7 +120,7 @@ export const TableFilteringMedium = ({
 	};
 
 	const onConfirmCancel = () => {
-		setShowSuccessMessage(true);
+		showAccessibleSuccessMessage();
 
 		if (currentItem) {
 			updateData?.({ newItemData: currentItem, isDeleted: true });
