@@ -39,6 +39,7 @@ import {
 	DataTableRowStatus,
 } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
+import { DataTableSelectAllCheckbox } from './DataTableSelectAllCheckbox';
 
 export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
@@ -112,143 +113,139 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 		}
 
 		return (
-			<Stack gap={0.5}>
-				{headingId ? (
-					<div css={visuallyHiddenStyles} id={descriptionId}>
-						Table column headers with buttons are sortable.
-					</div>
-				) : null}
-				<TableWrapper>
-					<Table
-						aria-rowcount={totalItems}
-						{...(headingId && {
-							'aria-labelledby': headingId,
-							'aria-describedby': descriptionId,
-						})}
-						id={tableId}
-						ref={ref}
-						tabIndex={-1}
-						tableLayout="fixed"
-					>
-						{!headingId && (
-							<TableCaption>
-								{caption}
-								<VisuallyHidden>
-									, column headers with buttons are sortable.
-								</VisuallyHidden>
-							</TableCaption>
-						)}
-						<TableHead>
-							<TableRow aria-rowindex={1}>
-								{selectable && (
-									<TableHeader scope="col" width={73}>
-										Select
-									</TableHeader>
-								)}
-								{headers.map(
-									({
-										label,
-										sortKey,
-										textAlign,
-										width,
-										isSortable: isFieldSortable,
-									}) => {
-										if (isTableSortable && isFieldSortable) {
-											const isFieldTheActiveSortField = sort?.field === sortKey;
-											const onClick = () =>
-												setSort?.({
-													field: sortKey,
-													order:
-														sort?.field === sortKey && sort?.order === 'ASC'
-															? 'DESC'
-															: 'ASC',
-												});
+			<>
+				{selectable && (
+					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+						<DataTableSelectAllCheckbox />
+					</Box>
+				)}
+				<Stack gap={0.5}>
+					{headingId ? (
+						<div css={visuallyHiddenStyles} id={descriptionId}>
+							Table column headers with buttons are sortable.
+						</div>
+					) : null}
+					<TableWrapper>
+						<Table
+							aria-rowcount={totalItems}
+							{...(headingId && {
+								'aria-labelledby': headingId,
+								'aria-describedby': descriptionId,
+							})}
+							id={tableId}
+							ref={ref}
+							tabIndex={-1}
+							tableLayout="fixed"
+						>
+							{!headingId && (
+								<TableCaption>
+									{caption}
+									<VisuallyHidden>
+										, column headers with buttons are sortable.
+									</VisuallyHidden>
+								</TableCaption>
+							)}
+							<TableHead>
+								<TableRow aria-rowindex={1}>
+									{selectable && (
+										<TableHeader scope="col" width={73}>
+											Select
+										</TableHeader>
+									)}
+									{headers.map(
+										({
+											label,
+											sortKey,
+											textAlign,
+											width,
+											isSortable: isFieldSortable,
+										}) => {
+											if (isTableSortable && isFieldSortable) {
+												const isFieldTheActiveSortField =
+													sort?.field === sortKey;
+												const onClick = () =>
+													setSort?.({
+														field: sortKey,
+														order:
+															sort?.field === sortKey && sort?.order === 'ASC'
+																? 'DESC'
+																: 'ASC',
+													});
+												return (
+													<TableHeaderSortable
+														key={sortKey}
+														textAlign={textAlign}
+														width={width}
+														sort={
+															isFieldTheActiveSortField
+																? sort?.order
+																: undefined
+														}
+														onClick={onClick}
+													>
+														{label}
+													</TableHeaderSortable>
+												);
+											}
 											return (
-												<TableHeaderSortable
-													key={sortKey}
-													textAlign={textAlign}
-													width={width}
-													sort={
-														isFieldTheActiveSortField ? sort?.order : undefined
-													}
-													onClick={onClick}
-												>
+												<TableHeader key={sortKey} scope="col" width={width}>
 													{label}
-												</TableHeaderSortable>
+												</TableHeader>
 											);
 										}
-										return (
-											<TableHeader key={sortKey} scope="col" width={width}>
-												{label}
-											</TableHeader>
-										);
-									}
-								)}
-								{hasActionColumn && (
-									<TableHeader scope="col" width={98}>
-										Action
-									</TableHeader>
-								)}
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{loading ? (
-								<Fragment>
-									{Array.from(Array(pagination.perPage).keys()).map((i) => (
-										<TableRow key={i}>
-											{selectable && (
+									)}
+									{hasActionColumn && (
+										<TableHeader scope="col" width={98}>
+											Action
+										</TableHeader>
+									)}
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{loading ? (
+									<Fragment>
+										{Array.from(Array(pagination.perPage).keys()).map((i) => (
+											<TableRow key={i}>
+												{selectable && (
+													<TableCell>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												)}
 												<TableCell>
 													<SkeletonText />
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
-											)}
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											{hasActionColumn && (
 												<TableCell>
 													<SkeletonText />
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
-											)}
-										</TableRow>
-									))}
-								</Fragment>
-							) : (
-								<Fragment>
-									{data.map(
-										({
-											index,
-											id,
-											assignee,
-											businessName,
-											city,
-											state,
-											requestDate,
-											status,
-											...businessData
-										}) => {
-											// Adding 2 because the table header row is the first row
-											const rowIndex = index + 2;
-
-											const newCurrentItem = {
+												<TableCell>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+												<TableCell>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+												<TableCell>
+													<SkeletonText />
+													<VisuallyHidden>Loading</VisuallyHidden>
+												</TableCell>
+												{hasActionColumn && (
+													<TableCell>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												)}
+											</TableRow>
+										))}
+									</Fragment>
+								) : (
+									<Fragment>
+										{data.map(
+											({
+												index,
 												id,
 												assignee,
 												businessName,
@@ -256,76 +253,94 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												state,
 												requestDate,
 												status,
-												...businessData,
-											};
+												...businessData
+											}) => {
+												// Adding 2 because the table header row is the first row
+												const rowIndex = index + 2;
 
-											return (
-												<DataTableRow
-													key={id}
-													selectable={selectable}
-													itemId={id}
-													businessName={businessName}
-													rowIndex={rowIndex}
-												>
-													<TableCell as="th" scope="row">
-														<TextLink href={`#${id}`}>{businessName}</TextLink>
-													</TableCell>
-													<DataTableRowAssignee assignee={assignee} />
-													<TableCell>
-														{city}, {state}
-													</TableCell>
-													<TableCell>
-														{format(requestDate, 'dd/MM/yyyy')}
-													</TableCell>
-													<DataTableRowStatus status={status} />
-													{hasActionColumn && (
-														<TableCell>
-															<Box css={{ position: 'relative' }}>
-																<DropdownMenu>
-																	<DropdownMenuButton focusRingFor="all">
-																		Action
-																	</DropdownMenuButton>
-																	<DropdownMenuPanel>
-																		<DropdownMenuItem
-																			onClick={() => {
-																				onOpenDrawer?.(newCurrentItem);
-																			}}
-																		>
-																			Change assignee
-																		</DropdownMenuItem>
-																		<DropdownMenuItem
-																			onClick={() => {
-																				onClickMarkCompleted?.(newCurrentItem);
-																			}}
-																		>
-																			Mark as completed
-																		</DropdownMenuItem>
-																		<DropdownMenuItem
-																			onClick={() => {
-																				onClickDelete?.(newCurrentItem);
-																			}}
-																		>
-																			Delete audit
-																		</DropdownMenuItem>
-																	</DropdownMenuPanel>
-																</DropdownMenu>
-															</Box>
+												const newCurrentItem = {
+													id,
+													assignee,
+													businessName,
+													city,
+													state,
+													requestDate,
+													status,
+													...businessData,
+												};
+
+												return (
+													<DataTableRow
+														key={id}
+														selectable={selectable}
+														itemId={id}
+														businessName={businessName}
+														rowIndex={rowIndex}
+													>
+														<TableCell as="th" scope="row">
+															<TextLink href={`#${id}`}>
+																{businessName}
+															</TextLink>
 														</TableCell>
-													)}
-												</DataTableRow>
-											);
-										}
-									)}
-								</Fragment>
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-				<DataTableBatchActionsBar
-					onClickDeleteBatch={onClickDeleteBatch}
-					onClickMarkCompletedBatch={onClickMarkCompletedBatch}
-				/>
-			</Stack>
+														<DataTableRowAssignee assignee={assignee} />
+														<TableCell>
+															{city}, {state}
+														</TableCell>
+														<TableCell>
+															{format(requestDate, 'dd/MM/yyyy')}
+														</TableCell>
+														<DataTableRowStatus status={status} />
+														{hasActionColumn && (
+															<TableCell>
+																<Box css={{ position: 'relative' }}>
+																	<DropdownMenu>
+																		<DropdownMenuButton focusRingFor="all">
+																			Action
+																		</DropdownMenuButton>
+																		<DropdownMenuPanel>
+																			<DropdownMenuItem
+																				onClick={() => {
+																					onOpenDrawer?.(newCurrentItem);
+																				}}
+																			>
+																				Change assignee
+																			</DropdownMenuItem>
+																			<DropdownMenuItem
+																				onClick={() => {
+																					onClickMarkCompleted?.(
+																						newCurrentItem
+																					);
+																				}}
+																			>
+																				Mark as completed
+																			</DropdownMenuItem>
+																			<DropdownMenuItem
+																				onClick={() => {
+																					onClickDelete?.(newCurrentItem);
+																				}}
+																			>
+																				Delete audit
+																			</DropdownMenuItem>
+																		</DropdownMenuPanel>
+																	</DropdownMenu>
+																</Box>
+															</TableCell>
+														)}
+													</DataTableRow>
+												);
+											}
+										)}
+									</Fragment>
+								)}
+							</TableBody>
+						</Table>
+					</TableWrapper>
+					<DataTableBatchActionsBar
+						onClickDeleteBatch={onClickDeleteBatch}
+						onClickMarkCompletedBatch={onClickMarkCompletedBatch}
+					/>
+				</Stack>
+			</>
 		);
 	}
 );

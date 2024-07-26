@@ -35,7 +35,6 @@ import {
 	FilterRegion,
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
-import { DataTableSelectAllCheckbox } from './components/DataTableSelectAllCheckbox';
 import { assignees, BusinessForAudit } from './lib/generateBusinessData';
 import { useDataContext } from './lib/contexts';
 
@@ -211,12 +210,6 @@ export const TableFilteringMedium = ({
 					/>
 					<ActiveFilters />
 				</FilterRegion>
-
-				{selectable && (
-					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
-						<DataTableSelectAllCheckbox />
-					</Box>
-				)}
 
 				<DataTable
 					hasActionColumn={hasActionColumn}
