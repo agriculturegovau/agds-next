@@ -50,7 +50,9 @@ type DataTableProps = {
 	hasActionColumn?: boolean;
 	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
 	onClickMarkCompleted?: (newCurrentItem: BusinessForAudit) => void;
+	onClickMarkCompletedBatch?: (batchItems: string[]) => void;
 	onClickDelete?: (newCurrentItem: BusinessForAudit) => void;
+	onClickDeleteBatch?: (batchItems: string[]) => void;
 	/** The id of the heading that describes the table */
 	headingId?: string;
 	/** Whether the table should be selectable */
@@ -63,7 +65,9 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 			hasActionColumn,
 			headingId,
 			onClickMarkCompleted,
+			onClickMarkCompletedBatch,
 			onClickDelete,
+			onClickDeleteBatch,
 			onOpenDrawer,
 			selectable,
 		},
@@ -320,7 +324,10 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						</TableBody>
 					</Table>
 				</TableWrapper>
-				<DataTableBatchActionsBar />
+				<DataTableBatchActionsBar
+					onClickDeleteBatch={onClickDeleteBatch}
+					onClickMarkCompletedBatch={onClickMarkCompletedBatch}
+				/>
 			</Stack>
 		);
 	}

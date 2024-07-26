@@ -54,6 +54,7 @@ export const TableFilteringMedium = ({
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
 
 	const [currentItem, setCurrentItem] = useState<BusinessForAudit>();
+	const [batchItems, setBatchItems] = useState<string[]>();
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
 	const [cancelModalOpen, setDeleteAuditModalOpen] = useState(false);
@@ -83,6 +84,7 @@ export const TableFilteringMedium = ({
 	const onClickMarkCompleted = (newCurrentItem?: BusinessForAudit) => {
 		setShowSuccessMessage(true);
 		setCurrentItem(newCurrentItem);
+		setBatchItems(undefined);
 
 		if (!newCurrentItem) return;
 		updateData?.({
@@ -93,16 +95,34 @@ export const TableFilteringMedium = ({
 		});
 	};
 
+	const onClickMarkCompletedBatch = (batchItems: string[]) => {
+		setShowSuccessMessage(true);
+		setBatchItems(batchItems);
+		setCurrentItem(undefined);
+		updateData?.({ batchItems });
+	};
+
 	const onClickDelete = (newCurrentItem?: BusinessForAudit) => {
 		setDeleteAuditModalOpen(true);
+		setBatchItems(undefined);
 		setCurrentItem(newCurrentItem);
+	};
+
+	const onClickDeleteBatch = (batchItems: string[]) => {
+		setDeleteAuditModalOpen(true);
+		setCurrentItem(undefined);
+		setBatchItems(batchItems);
 	};
 
 	const onConfirmCancel = () => {
 		setShowSuccessMessage(true);
 
-		if (!currentItem) return;
-		updateData?.({ newItemData: currentItem, isDeleted: true });
+		if (currentItem) {
+			updateData?.({ newItemData: currentItem, isDeleted: true });
+		}
+		if (batchItems) {
+			updateData?.({ batchItems, isDeleted: true });
+		}
 
 		setDeleteAuditModalOpen(false);
 	};
@@ -129,7 +149,13 @@ export const TableFilteringMedium = ({
 					ref={sectionAlertRef}
 					tabIndex={-1}
 					title={`Your changes ${
-						currentItem?.businessName ? 'to ' + currentItem.businessName : ''
+						currentItem?.businessName
+							? 'to ' + currentItem.businessName
+							: batchItems?.length
+							? batchItems.length === 1
+								? `to ${batchItems.length} item`
+								: `to ${batchItems.length} items`
+							: ''
 					} have been saved`}
 					tone="success"
 					onClose={() => setShowSuccessMessage(false)}
@@ -198,7 +224,9 @@ export const TableFilteringMedium = ({
 					headingId={headingId}
 					onOpenDrawer={onOpenDrawer}
 					onClickMarkCompleted={onClickMarkCompleted}
+					onClickMarkCompletedBatch={onClickMarkCompletedBatch}
 					onClickDelete={onClickDelete}
+					onClickDeleteBatch={onClickDeleteBatch}
 				/>
 
 				<Drawer
@@ -249,14 +277,13 @@ export const TableFilteringMedium = ({
 
 			<DashboardPagination />
 
-			{currentItem && (
-				<ModalConfirmDelete
-					currentItem={currentItem}
-					isOpen={cancelModalOpen}
-					onClose={() => setDeleteAuditModalOpen(false)}
-					onConfirm={onConfirmCancel}
-				/>
-			)}
+			<ModalConfirmDelete
+				isOpen={cancelModalOpen}
+				onClose={() => setDeleteAuditModalOpen(false)}
+				onConfirm={onConfirmCancel}
+				{...(batchItems && { batchItems })}
+				{...(currentItem && { currentItem })}
+			/>
 		</Stack>
 	);
 };
@@ -265,7 +292,8 @@ export type ModalConfirmDeleteProps = {
 	isOpen: boolean;
 	onConfirm: () => void;
 	onClose: () => void;
-	currentItem: BusinessForAudit;
+	currentItem?: BusinessForAudit | undefined;
+	batchItems?: string[] | undefined;
 };
 
 export function ModalConfirmDelete({
@@ -273,6 +301,7 @@ export function ModalConfirmDelete({
 	onConfirm,
 	onClose,
 	currentItem,
+	batchItems,
 }: ModalConfirmDeleteProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -284,7 +313,11 @@ export function ModalConfirmDelete({
 		}, 200);
 	}
 
-	const title = `Are you sure you want to delete the audit for ${currentItem.businessName}?`;
+	const title = currentItem
+		? `Are you sure you want to delete the audit for ${currentItem.businessName}?`
+		: `Are you sure you want to delete ${batchItems?.length} item${
+				batchItems?.length === 1 ? '' : 's'
+		  }?`;
 	const description = `Audit documents will be deleted immediately. You can not undo this action.`;
 
 	return (
@@ -296,6 +329,7 @@ export function ModalConfirmDelete({
 				<ButtonGroup>
 					<Button loading={submitting} onClick={onSubmit}>
 						Delete audit
+						{`${currentItem || batchItems?.length === 1 ? '' : 's'}`}
 					</Button>
 					<Button variant="secondary" onClick={onClose}>
 						Cancel

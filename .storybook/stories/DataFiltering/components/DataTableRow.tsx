@@ -1,5 +1,4 @@
 import { Flex } from '../../../../packages/react/src/flex';
-import { Avatar } from '../../../../packages/react/src/avatar';
 import { TableCell, TableRow } from '../../../../packages/react/src/table';
 import { Text } from '../../../../packages/react/src/text';
 import { Checkbox } from '../../../../packages/react/src/checkbox';
@@ -20,7 +19,6 @@ export const DataTableRowAssignee = ({
 	return (
 		<TableCell>
 			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" aria-hidden />
 				<Text>{assignee}</Text>
 			</Flex>
 		</TableCell>

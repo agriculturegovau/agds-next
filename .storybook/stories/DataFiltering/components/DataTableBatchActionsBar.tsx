@@ -4,12 +4,16 @@ import {
 	TableBatchActionsTitle,
 } from '../../../../packages/react/src/table';
 import { plural } from '../../SelectableTableBatchActions/utils';
-import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+import { useSortAndFilterContext } from '../lib/contexts';
 
-export const DataTableBatchActionsBar = () => {
+export const DataTableBatchActionsBar = ({
+	onClickDeleteBatch,
+	onClickMarkCompletedBatch,
+}: {
+	onClickDeleteBatch?: (batchItems: string[]) => void;
+	onClickMarkCompletedBatch?: (batchItems: string[]) => void;
+}) => {
 	const { selection, clearRowSelections } = useSortAndFilterContext();
-
-	const { updateData } = useDataContext();
 
 	if (selection.length) {
 		return (
@@ -23,7 +27,7 @@ export const DataTableBatchActionsBar = () => {
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							updateData?.({ batchItems: selection });
+							onClickMarkCompletedBatch?.(selection);
 							clearRowSelections();
 						}}
 					>
@@ -33,7 +37,7 @@ export const DataTableBatchActionsBar = () => {
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							updateData?.({ batchItems: selection, isDeleted: true });
+							onClickDeleteBatch?.(selection);
 							clearRowSelections();
 						}}
 					>
