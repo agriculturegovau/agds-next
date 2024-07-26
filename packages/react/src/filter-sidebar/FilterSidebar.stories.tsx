@@ -6,12 +6,13 @@ import {
 import { useSortAndFilter } from '../../../../.storybook/stories/DataFiltering/lib/useSortAndFilter';
 import { useFetchData } from '../../../../.storybook/stories/DataFiltering/lib/useFetchData';
 import { ListFiltering } from '../../../../.storybook/stories/DataFiltering/ListFiltering';
+import { SiteLayout } from '../../../../docs/components/SiteLayout';
 import { Card, CardInner, CardLink } from '../card';
 import { Column, Columns } from '../columns';
 import { PageContent } from '../content';
 import { Flex } from '../flex';
 import { FormStack } from '../form-stack';
-import { H3 } from '../heading';
+import { H1, H3 } from '../heading';
 import { SkipLinks } from '../skip-link';
 import { Stack } from '../stack';
 import { Text } from '../text';
@@ -138,17 +139,23 @@ const ListFilteringExample = () => {
 	const data = useFetchData({ filters, pagination, sort });
 
 	return (
-		<SortAndFilterProvider value={sortAndFilter}>
-			<DataProvider value={data}>
-				<PageContent>
-					<ListFiltering />
-				</PageContent>
-			</DataProvider>
-		</SortAndFilterProvider>
+		<SiteLayout>
+			<SortAndFilterProvider value={sortAndFilter}>
+				<DataProvider value={data}>
+					<PageContent>
+						<H1>Find audits</H1>
+						<ListFiltering applyMainElement={false} />
+					</PageContent>
+				</DataProvider>
+			</SortAndFilterProvider>
+		</SiteLayout>
 	);
 };
 
 export const Full: StoryObj<typeof FilterSidebar> = {
 	name: 'Full example',
 	render: ListFilteringExample,
+	parameters: {
+		layout: 'fullscreen',
+	},
 };

@@ -21,7 +21,11 @@ import { ActiveFilters } from './components/ActiveFilters';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 
 /** These patterns are draft designs and are not yet ready for production. */
-export const ListFiltering = () => {
+export const ListFiltering = ({
+	applyMainElement = true,
+}: {
+	applyMainElement?: boolean;
+}) => {
 	const { filters, resetFilters, setFilter, pagination } =
 		useSortAndFilterContext();
 	const { data, loading, totalItems } = useDataContext();
@@ -78,9 +82,13 @@ export const ListFiltering = () => {
 				</Stack>
 			</Column>
 			<Column
-				as="main"
-				aria-label="List of establishments"
-				id="main-content"
+				{...(applyMainElement
+					? {
+							ariaLabel: 'List of establishments',
+							as: 'main',
+							id: 'main-content',
+					  }
+					: undefined)}
 				tabIndex={-1}
 				css={{ '&:focus': { outline: 'none' } }}
 				columnSpan={{ xs: 12, md: 8 }}
