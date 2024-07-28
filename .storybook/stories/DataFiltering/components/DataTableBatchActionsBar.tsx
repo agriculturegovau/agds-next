@@ -38,7 +38,6 @@ export const DataTableBatchActionsBar = ({
 						size="sm"
 						onClick={() => {
 							onClickDeleteBatch?.(selection);
-							clearRowSelections();
 						}}
 					>
 						Delete
