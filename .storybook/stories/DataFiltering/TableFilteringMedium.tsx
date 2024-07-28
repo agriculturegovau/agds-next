@@ -36,7 +36,7 @@ import {
 } from './components/FilterBar';
 import { DashboardPagination } from './components/DashboardPagination';
 import { assignees, BusinessForAudit } from './lib/generateBusinessData';
-import { useDataContext } from './lib/contexts';
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 
 const headingId = 'table-heading';
 
@@ -65,6 +65,9 @@ export const TableFilteringMedium = ({
 	const [cancelModalOpen, setDeleteAuditModalOpen] = useState(false);
 
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+	const { clearRowSelections } = useSortAndFilterContext();
+
 	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
 
@@ -126,6 +129,7 @@ export const TableFilteringMedium = ({
 			updateData?.({ newItemData: currentItem, isDeleted: true });
 		}
 		if (batchItems) {
+			clearRowSelections();
 			updateData?.({ batchItems, isDeleted: true });
 		}
 
