@@ -195,6 +195,13 @@ export const DashboardPagination = ({
 				}
 				isOpen={isDrawerOpen}
 				onClose={() => {
+					if (!activeColumns) return;
+
+					setFormState({
+						activeColumns,
+						paginationPerPage: pagination.perPage,
+					});
+
 					closeDrawer();
 				}}
 				title="Table settings"
