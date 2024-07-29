@@ -4,7 +4,6 @@ import {
 	KeyboardEvent,
 	useCallback,
 } from 'react';
-import { visuallyHiddenStyles } from '../a11y';
 import { mergeRefs, useClickOutside } from '../core';
 import { Flex, FlexProps } from '../flex';
 import { Popover } from '../_popover';
@@ -51,7 +50,7 @@ export function DropdownMenuPanel({
 
 	// Ensures the `DropdownMenuButton` component has a valid `aria-controls` attribute
 	if (!isMenuOpen) {
-		return <div id={panelId} css={visuallyHiddenStyles} />;
+		return <div id={panelId} css={{ position: 'absolute' }} />;
 	}
 
 	return (
