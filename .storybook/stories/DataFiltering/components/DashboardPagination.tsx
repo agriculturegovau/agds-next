@@ -107,10 +107,10 @@ export const DashboardPagination = ({
 
 	if (!data.length) return null;
 
-	const hasChangedColumnSettings = !Object.values(activeColumns || {}).every(
-		Boolean
-	);
-	const hasChangedItemsPerPageSettings = pagination.perPage !== 10;
+	const hasChangedColumnSettings = !Object.values(
+		formState.activeColumns
+	).every(Boolean);
+	const hasChangedItemsPerPageSettings = formState.paginationPerPage !== 10;
 	const appliedSettingsCount =
 		Number(hasChangedColumnSettings) + Number(hasChangedItemsPerPageSettings);
 
