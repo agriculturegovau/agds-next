@@ -22,7 +22,6 @@ export const FilterAccordion = ({
 	isOpen: boolean;
 }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
-	console.log(`filters.requestDate`, filters.requestDate);
 
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);

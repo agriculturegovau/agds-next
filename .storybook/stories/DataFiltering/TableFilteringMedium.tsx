@@ -202,7 +202,11 @@ export const TableFilteringMedium = ({
 								css={{ textAlign: 'left' }}
 							>
 								{isOpen ? 'Hide filters' : 'Show filters'}
-								<Box aria-hidden css={{ height: 0, overflow: 'hidden' }}>
+								<Box
+									aria-hidden
+									as="span"
+									css={{ display: 'block', height: 0, overflow: 'hidden' }}
+								>
 									Show filters
 								</Box>
 							</Button>
