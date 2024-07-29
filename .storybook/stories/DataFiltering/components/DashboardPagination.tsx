@@ -107,9 +107,9 @@ export const DashboardPagination = ({
 
 	if (!data.length) return null;
 
-	const hasChangedColumnSettings = !Object.values(
-		formState.activeColumns
-	).every(Boolean);
+	const hasChangedColumnSettings = !Object.values(activeColumns || {}).every(
+		Boolean
+	);
 	const hasChangedItemsPerPageSettings = pagination.perPage !== 10;
 	const appliedSettingsCount =
 		Number(hasChangedColumnSettings) + Number(hasChangedItemsPerPageSettings);
@@ -136,9 +136,13 @@ export const DashboardPagination = ({
 				/>
 
 				<Button
-					aria-label={`Table settings. ${appliedSettingsCount} applied ${
-						appliedSettingsCount === 1 ? 'setting' : 'settings'
-					}`}
+					aria-label={
+						appliedSettingsCount
+							? `Table settings. ${appliedSettingsCount} applied ${
+									appliedSettingsCount === 1 ? 'setting' : 'settings'
+							  }`
+							: 'Table settings'
+					}
 					css={{
 						[tokens.mediaQuery.min.lg]: {
 							justifySelf: 'end',
@@ -148,7 +152,8 @@ export const DashboardPagination = ({
 					onClick={openDrawer}
 					variant="tertiary"
 				>
-					Table settings ({appliedSettingsCount})
+					Table settings{' '}
+					{Boolean(appliedSettingsCount) && `(${appliedSettingsCount})`}
 				</Button>
 			</Box>
 
@@ -173,6 +178,8 @@ export const DashboardPagination = ({
 									activeColumns: defaultActiveColumns,
 									paginationPerPage: 10,
 								});
+
+								closeDrawer();
 							}}
 							variant="secondary"
 						>
