@@ -49,23 +49,6 @@ export const DashboardPagination = ({
 		activeColumns: defaultActiveColumns,
 		paginationPerPage: pagination.perPage,
 	});
-	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
-		event.preventDefault();
-
-		setPagination({
-			page: getValidPage({
-				currentPage: pagination.page,
-				totalItems,
-				perPage: formState.paginationPerPage,
-				prevPerPage: pagination.perPage,
-			}),
-			perPage: formState.paginationPerPage,
-		});
-
-		setActiveColumns?.(formState.activeColumns);
-
-		closeDrawer();
-	};
 	const handlerForKey = useCallback(
 		(key: keyof typeof defaultActiveColumns) => () =>
 			setFormState((prevFormState: FormState) => ({
@@ -105,14 +88,20 @@ export const DashboardPagination = ({
 		// We only want to update update the display text once the table data has finished loading, all other deps are ignored here
 	}, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	if (!data.length) return null;
+	const [appliedSettingsCount, setAppliedSettingsCount] = useState(0);
 
-	const hasChangedColumnSettings = !Object.values(
-		formState.activeColumns
-	).every(Boolean);
-	const hasChangedItemsPerPageSettings = formState.paginationPerPage !== 10;
-	const appliedSettingsCount =
-		Number(hasChangedColumnSettings) + Number(hasChangedItemsPerPageSettings);
+	useEffect(() => {
+		const hasChangedColumnSettings = !Object.values(
+			formState.activeColumns
+		).every(Boolean);
+		const hasChangedItemsPerPageSettings = formState.paginationPerPage !== 10;
+
+		setAppliedSettingsCount(
+			Number(hasChangedColumnSettings) + Number(hasChangedItemsPerPageSettings)
+		);
+	}, [formState.activeColumns, formState.paginationPerPage]);
+
+	if (!data.length) return null;
 
 	return (
 		<>
@@ -163,7 +152,23 @@ export const DashboardPagination = ({
 						<Button
 							type="submit"
 							form="table-settings-form-id"
-							onClick={onSubmitForm}
+							onClick={(event) => {
+								event.preventDefault();
+
+								setPagination({
+									page: getValidPage({
+										currentPage: pagination.page,
+										totalItems,
+										perPage: formState.paginationPerPage,
+										prevPerPage: pagination.perPage,
+									}),
+									perPage: formState.paginationPerPage,
+								});
+
+								setActiveColumns?.(formState.activeColumns);
+
+								closeDrawer();
+							}}
 						>
 							Save settings
 						</Button>
@@ -177,6 +182,16 @@ export const DashboardPagination = ({
 								setFormState({
 									activeColumns: defaultActiveColumns,
 									paginationPerPage: 10,
+								});
+
+								setPagination({
+									page: getValidPage({
+										currentPage: pagination.page,
+										totalItems,
+										perPage: 10,
+										prevPerPage: pagination.perPage,
+									}),
+									perPage: 10,
 								});
 
 								closeDrawer();
