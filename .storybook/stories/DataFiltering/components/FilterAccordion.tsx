@@ -1,11 +1,16 @@
 import { useSpring, animated } from '@react-spring/web';
 import { useRef } from 'react';
+import { isDate, isEqual, isValid } from 'date-fns';
 import { Flex } from '../../../../packages/react/src/flex';
 import { DateRangePicker } from '../../../../packages/react/src/date-range-picker';
 import { usePrefersReducedMotion } from '../../../../packages/react/src/core';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
+
+function isValidDate(value?: string) {
+	return isDate(value) && isValid(value);
+}
 
 export const FilterAccordion = ({
 	ariaLabelledBy,
@@ -17,6 +22,7 @@ export const FilterAccordion = ({
 	isOpen: boolean;
 }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
+	console.log(`filters.requestDate`, filters.requestDate);
 
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
@@ -61,17 +67,38 @@ export const FilterAccordion = ({
 					fromLabel="Registered from"
 					toLabel="Registered to"
 					hideOptionalLabel
-					onChange={(requestDate) => setFilter({ requestDate })}
-					onFromInputChange={(from) =>
-						setFilter({
-							requestDate: { ...filters.requestDate, from },
-						})
-					}
-					onToInputChange={(to) =>
-						setFilter({
-							requestDate: { ...filters.requestDate, to },
-						})
-					}
+					onChange={(requestDate) => {
+						const tsHappyFilterDates = {
+							from:
+								typeof filters.requestDate.from === 'string'
+									? new Date(filters.requestDate.from)
+									: filters.requestDate.from || 0,
+							to:
+								typeof filters.requestDate.to === 'string'
+									? new Date(filters.requestDate.to)
+									: filters.requestDate.to || 0,
+						};
+						if (
+							!isEqual(requestDate.from || 0, tsHappyFilterDates.from) ||
+							!isEqual(requestDate.to || 0, tsHappyFilterDates.to)
+						) {
+							setFilter({ requestDate });
+						}
+					}}
+					onFromInputChange={(from) => {
+						if (isValidDate(from)) {
+							setFilter({
+								requestDate: { ...filters.requestDate, from },
+							});
+						}
+					}}
+					onToInputChange={(to) => {
+						if (isValidDate(to)) {
+							setFilter({
+								requestDate: { ...filters.requestDate, to },
+							});
+						}
+					}}
 					value={filters.requestDate}
 				/>
 			</Flex>
