@@ -225,7 +225,7 @@ export const DashboardPagination = ({
 
 						<ControlGroup
 							label="Visible columns"
-							hint="Select, Business name and actions will always be visible."
+							hint="Select, Business name and Actions will always be visible."
 							block
 							required
 						>
