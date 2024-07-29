@@ -292,7 +292,10 @@ export const TableFilteringMedium = ({
 				</Drawer>
 			</Stack>
 
-			<DashboardPagination setActiveColumns={setActiveColumns} />
+			<DashboardPagination
+				activeColumns={activeColumns}
+				setActiveColumns={setActiveColumns}
+			/>
 
 			<ModalConfirmDelete
 				isOpen={cancelModalOpen}
