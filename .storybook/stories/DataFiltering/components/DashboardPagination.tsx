@@ -248,7 +248,7 @@ export const DashboardPagination = ({
 							label="Visible columns"
 							hint="Select, Business name and Actions will always be visible."
 							block
-							required
+							hideOptionalLabel
 						>
 							{columnNames.map((columnName) => (
 								<Checkbox
