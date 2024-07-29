@@ -17,6 +17,7 @@ import {
 	TableWrapper,
 	TableRow,
 } from '../../../../packages/react/src/table';
+import { Box } from '../../../../packages/react/src/box';
 import { TextLink } from '../../../../packages/react/src/text-link';
 import { Text } from '../../../../packages/react/src/text';
 import { Stack } from '../../../../packages/react/src/stack';
@@ -27,12 +28,11 @@ import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import {
-	Box,
 	DropdownMenu,
 	DropdownMenuButton,
 	DropdownMenuItem,
 	DropdownMenuPanel,
-} from '../../../../docs/components/designSystemComponents';
+} from '../../../../packages/react/src/dropdown-menu';
 import {
 	DataTableRow,
 	DataTableRowAssignee,
@@ -292,38 +292,34 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														<DataTableRowStatus status={status} />
 														{hasActionColumn && (
 															<TableCell>
-																<Box css={{ position: 'relative' }}>
-																	<DropdownMenu>
-																		<DropdownMenuButton focusRingFor="all">
-																			Action
-																		</DropdownMenuButton>
-																		<DropdownMenuPanel>
-																			<DropdownMenuItem
-																				onClick={() => {
-																					onOpenDrawer?.(newCurrentItem);
-																				}}
-																			>
-																				Change assignee
-																			</DropdownMenuItem>
-																			<DropdownMenuItem
-																				onClick={() => {
-																					onClickMarkCompleted?.(
-																						newCurrentItem
-																					);
-																				}}
-																			>
-																				Mark as completed
-																			</DropdownMenuItem>
-																			<DropdownMenuItem
-																				onClick={() => {
-																					onClickDelete?.(newCurrentItem);
-																				}}
-																			>
-																				Delete audit
-																			</DropdownMenuItem>
-																		</DropdownMenuPanel>
-																	</DropdownMenu>
-																</Box>
+																<DropdownMenu>
+																	<DropdownMenuButton focusRingFor="all">
+																		Action
+																	</DropdownMenuButton>
+																	<DropdownMenuPanel>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onOpenDrawer?.(newCurrentItem);
+																			}}
+																		>
+																			Change assignee
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickMarkCompleted?.(newCurrentItem);
+																			}}
+																		>
+																			Mark as completed
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickDelete?.(newCurrentItem);
+																			}}
+																		>
+																			Delete audit
+																		</DropdownMenuItem>
+																	</DropdownMenuPanel>
+																</DropdownMenu>
 															</TableCell>
 														)}
 													</DataTableRow>

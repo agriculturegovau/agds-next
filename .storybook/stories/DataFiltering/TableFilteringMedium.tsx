@@ -1,7 +1,11 @@
 import { MouseEventHandler, useCallback, useRef, useState } from 'react';
 import { Box } from '../../../packages/react/src/box';
 import { Stack } from '../../../packages/react/src/stack';
-import { Button, ButtonLink } from '../../../packages/react/src/button';
+import {
+	Button,
+	ButtonGroup,
+	ButtonLink,
+} from '../../../packages/react/src/button';
 import {
 	useTernaryState,
 	useToggleState,
@@ -13,16 +17,13 @@ import {
 	PlusIcon,
 } from '../../../packages/react/src/icon';
 import { H2 } from '../../../packages/react/src/heading';
-import {
-	ButtonGroup,
-	ControlGroup,
-	Drawer,
-	FormStack,
-	Modal,
-	Radio,
-	SectionAlert,
-	Text,
-} from '../../../docs/components/designSystemComponents';
+import { ControlGroup } from '../../../packages/react/src/control-group';
+import { Drawer } from '../../../packages/react/src/drawer';
+import { FormStack } from '../../../packages/react/src/form-stack';
+import { Modal } from '../../../packages/react/src/modal';
+import { Radio } from '../../../packages/react/src/radio';
+import { SectionAlert } from '../../../packages/react/src/section-alert';
+import { Text } from '../../../packages/react/src/text';
 import { ActiveFilters } from './components/ActiveFilters';
 import { FilterAccordion } from './components/FilterAccordion';
 import { SortBySelect } from './components/SortBySelect';
