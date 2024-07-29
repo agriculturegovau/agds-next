@@ -199,8 +199,12 @@ export const TableFilteringMedium = ({
 								id={buttonId}
 								aria-controls={bodyId}
 								aria-expanded={isOpen}
+								css={{ textAlign: 'left' }}
 							>
 								{isOpen ? 'Hide filters' : 'Show filters'}
+								<Box aria-hidden css={{ height: 0, overflow: 'hidden' }}>
+									Show filters
+								</Box>
 							</Button>
 						</FilterBarGroup>
 
