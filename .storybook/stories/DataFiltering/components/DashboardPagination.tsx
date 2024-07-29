@@ -136,6 +136,9 @@ export const DashboardPagination = ({
 				/>
 
 				<Button
+					aria-label={`Table settings. ${appliedSettingsCount} applied ${
+						appliedSettingsCount === 1 ? 'setting' : 'settings'
+					}`}
 					css={{
 						[tokens.mediaQuery.min.lg]: {
 							justifySelf: 'end',
