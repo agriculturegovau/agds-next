@@ -62,10 +62,12 @@ const getTagsFromFilters = ({
 				value.to && typeof value.to !== 'string' ? value.to : undefined;
 			// Ensure that we have at least 1 valid date (from date OR to date)
 			if (!fromDate && !toDate) continue;
+
 			tags.push({
-				label: `${formattedKey}: ${[formatDate(fromDate), formatDate(toDate)]
-					.filter(Boolean)
-					.join(' - ')}`,
+				label: `${formattedKey}: ${[
+					fromDate ? formatDate(fromDate) : 'any',
+					toDate ? formatDate(toDate) : 'any',
+				].join(' - ')}`,
 				onRemove,
 			});
 			continue;
