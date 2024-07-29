@@ -6,7 +6,13 @@ import {
 import { plural } from '../../SelectableTableBatchActions/utils';
 import { useSortAndFilterContext } from '../lib/contexts';
 
-export const DataTableBatchActionsBar = () => {
+export const DataTableBatchActionsBar = ({
+	onClickDeleteBatch,
+	onClickMarkCompletedBatch,
+}: {
+	onClickDeleteBatch?: (batchItems: string[]) => void;
+	onClickMarkCompletedBatch?: (batchItems: string[]) => void;
+}) => {
 	const { selection, clearRowSelections } = useSortAndFilterContext();
 
 	if (selection.length) {
@@ -21,18 +27,17 @@ export const DataTableBatchActionsBar = () => {
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							console.log('Add tracking number');
+							onClickMarkCompletedBatch?.(selection);
 							clearRowSelections();
 						}}
 					>
-						Add tracking number
+						Mark as completed
 					</Button>
 					<Button
 						variant="secondary"
 						size="sm"
 						onClick={() => {
-							console.log('Delete');
-							clearRowSelections();
+							onClickDeleteBatch?.(selection);
 						}}
 					>
 						Delete

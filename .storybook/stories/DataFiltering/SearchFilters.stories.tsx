@@ -3,6 +3,21 @@ import { PageContent } from '../../../packages/react/src/content';
 import { Stack } from '../../../packages/react/src/stack';
 import { Text } from '../../../packages/react/src/text';
 import { Callout } from '../../../packages/react/src/callout';
+import { tokens } from '../../../packages/react/src/core';
+import { LinkList } from '../../../packages/react/src/link-list';
+import { Logo } from '../../../packages/react/src/ag-branding';
+import { SkipLinks } from '../../../packages/react/src/skip-link';
+import {
+	AppLayout,
+	AppLayoutContent,
+	AppLayoutFooter,
+	AppLayoutFooterDivider,
+	AppLayoutHeader,
+} from '../../../packages/react/src/app-layout';
+import {
+	ExampleAccountDropdown,
+	exampleData,
+} from '../../../packages/react/src/app-layout/test-utils';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
@@ -92,6 +107,80 @@ export const TableSmall = {
 
 export const TableMedium = {
 	name: 'Table (medium)',
+	params: {
+		layout: 'fullscreen',
+	},
+	decorators: [
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		(Story) => (
+			<>
+				<SkipLinks
+					links={[{ href: '#main-content', label: 'Skip to main content' }]}
+				/>
+				<AppLayout focusMode={true}>
+					<AppLayoutHeader
+						accountDetails={{
+							name: exampleData.userNames.regular,
+							secondaryText: 'My account',
+							dropdown: (
+								<ExampleAccountDropdown
+									selectedBusinessName={'Antfix'}
+									onBusinessChange={console.log}
+								/>
+							),
+						}}
+						badgeLabel="Beta"
+						heading="Export Service"
+						href="/"
+						logo={<Logo />}
+						subLine="Supporting Australian agricultural exports"
+					/>
+					<AppLayoutContent>
+						<main
+							css={{ '&:focus': { outline: 'none' } }}
+							id="main-content"
+							tabIndex={-1}
+						>
+							<Story />
+						</main>
+						<AppLayoutFooter>
+							<nav aria-label="footer">
+								<LinkList
+									horizontal
+									links={[
+										{ label: 'Home', href: '/' },
+										{
+											label: 'Storybook',
+											href: 'https://design-system.agriculture.gov.au/storybook/index.html',
+										},
+										{
+											label: 'Playroom',
+											href: 'https://design-system.agriculture.gov.au/playroom',
+										},
+										{
+											label: 'Starter kit',
+											href: 'https://github.com/agriculturegovau/agds-starter-kit',
+										},
+									]}
+								/>
+							</nav>
+							<AppLayoutFooterDivider />
+							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+								We acknowledge the traditional owners of country throughout
+								Australia and recognise their continuing connection to land,
+								waters and culture. We pay our respects to their Elders past,
+								present and emerging.
+							</Text>
+							<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+								&copy; 2024 Department of Agriculture, Fisheries and Forestry
+							</Text>
+						</AppLayoutFooter>
+					</AppLayoutContent>
+				</AppLayout>
+			</>
+		),
+	],
 	render: function Render({ throwError }: StoryArgs) {
 		const sortAndFilter = useSortAndFilter();
 		const { filters, pagination, sort } = sortAndFilter;
@@ -105,17 +194,7 @@ export const TableMedium = {
 			<SortAndFilterProvider value={sortAndFilter}>
 				<DataProvider value={data}>
 					<PageContent>
-						<Stack gap={2}>
-							<Callout title="Table Filtering (Medium)">
-								<Text as="p">
-									The medium filtering pattern is for cases where the number of
-									filterable fields is between 1 and 4 secondary filters. Our
-									FilterBar is used to reveal all filterable fields when the
-									button is pressed.
-								</Text>
-							</Callout>
-							<TableFilteringMedium />
-						</Stack>
+						<TableFilteringMedium hasActionColumn={true} selectable />
 					</PageContent>
 				</DataProvider>
 			</SortAndFilterProvider>
