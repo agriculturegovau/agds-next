@@ -23,7 +23,7 @@ import {
 import { SettingsIcon } from '../../../../packages/react/src/icon';
 import { headers } from './DataTable';
 
-const columnNames = [...headers].map((header) => header.label);
+const columnNames = [...headers].slice(1).map((header) => header.label);
 export const defaultActiveColumns = columnNames.reduce(
 	(acc, name) => ({ ...acc, [name]: true }),
 	{} as Record<(typeof columnNames)[number], boolean>
@@ -215,7 +215,7 @@ export const DashboardPagination = ({
 
 						<ControlGroup
 							label="Visible columns"
-							hint="Select and actions will always be visible."
+							hint="Select, Business name and actions will always be visible."
 							block
 							required
 						>
