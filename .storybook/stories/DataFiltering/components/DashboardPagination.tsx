@@ -35,8 +35,10 @@ type FormState = {
 };
 
 export const DashboardPagination = ({
+	activeColumns,
 	setActiveColumns,
 }: {
+	activeColumns?: typeof defaultActiveColumns;
 	setActiveColumns?: Dispatch<SetStateAction<Record<string, boolean>>>;
 }) => {
 	const { pagination, setPagination } = useSortAndFilterContext();
@@ -161,7 +163,14 @@ export const DashboardPagination = ({
 						<Button
 							type="reset"
 							form="table-settings-form-id"
-							onClick={() => console.log('Reset table settings form')}
+							onClick={(event) => {
+								event.preventDefault();
+
+								setFormState({
+									activeColumns: defaultActiveColumns,
+									paginationPerPage: 10,
+								});
+							}}
 							variant="secondary"
 						>
 							Reset settings
@@ -170,6 +179,13 @@ export const DashboardPagination = ({
 						<Button
 							variant="tertiary"
 							onClick={() => {
+								if (!activeColumns) return;
+
+								setFormState({
+									activeColumns,
+									paginationPerPage: pagination.perPage,
+								});
+
 								closeDrawer();
 							}}
 						>
