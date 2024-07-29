@@ -26,7 +26,7 @@ import { headers } from './DataTable';
 const columnNames = [...headers].slice(1).map((header) => header.label);
 export const defaultActiveColumns = columnNames.reduce(
 	(acc, name) => ({ ...acc, [name]: true }),
-	{} as Record<(typeof columnNames)[number], boolean>
+	{ 'Business name': true } as Record<(typeof columnNames)[number], boolean>
 );
 
 type FormState = {
