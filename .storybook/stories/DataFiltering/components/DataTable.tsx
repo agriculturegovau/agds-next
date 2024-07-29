@@ -40,11 +40,13 @@ import {
 } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 import { DataTableSelectAllCheckbox } from './DataTableSelectAllCheckbox';
+import { defaultActiveColumns } from './DashboardPagination';
 
 export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
 
 type DataTableProps = {
+	activeColumns?: typeof defaultActiveColumns;
 	hasActionColumn?: boolean;
 	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
 	onClickMarkCompleted?: (newCurrentItem: BusinessForAudit) => void;
@@ -60,6 +62,7 @@ type DataTableProps = {
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	function DataTable(
 		{
+			activeColumns,
 			hasActionColumn,
 			headingId,
 			onClickMarkCompleted,
@@ -152,48 +155,55 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											Select
 										</TableHeader>
 									)}
-									{headers.map(
-										({
-											label,
-											sortKey,
-											textAlign,
-											width,
-											isSortable: isFieldSortable,
-										}) => {
-											if (isTableSortable && isFieldSortable) {
-												const isFieldTheActiveSortField =
-													sort?.field === sortKey;
-												const onClick = () =>
-													setSort?.({
-														field: sortKey,
-														order:
-															sort?.field === sortKey && sort?.order === 'ASC'
-																? 'DESC'
-																: 'ASC',
-													});
+									{headers
+										.filter(
+											(header) =>
+												activeColumns === undefined ||
+												activeColumns[header.label]
+										)
+										.map(
+											({
+												label,
+												sortKey,
+												textAlign,
+												width,
+												isSortable: isFieldSortable,
+											}) => {
+												if (isTableSortable && isFieldSortable) {
+													const isFieldTheActiveSortField =
+														sort?.field === sortKey;
+													const onClick = () =>
+														setSort?.({
+															field: sortKey,
+															order:
+																sort?.field === sortKey && sort?.order === 'ASC'
+																	? 'DESC'
+																	: 'ASC',
+														});
+
+													return (
+														<TableHeaderSortable
+															key={sortKey}
+															textAlign={textAlign}
+															width={width}
+															sort={
+																isFieldTheActiveSortField
+																	? sort?.order
+																	: undefined
+															}
+															onClick={onClick}
+														>
+															{label}
+														</TableHeaderSortable>
+													);
+												}
 												return (
-													<TableHeaderSortable
-														key={sortKey}
-														textAlign={textAlign}
-														width={width}
-														sort={
-															isFieldTheActiveSortField
-																? sort?.order
-																: undefined
-														}
-														onClick={onClick}
-													>
+													<TableHeader key={sortKey} scope="col" width={width}>
 														{label}
-													</TableHeaderSortable>
+													</TableHeader>
 												);
 											}
-											return (
-												<TableHeader key={sortKey} scope="col" width={width}>
-													{label}
-												</TableHeader>
-											);
-										}
-									)}
+										)}
 									{hasActionColumn && (
 										<TableHeader scope="col" width={98}>
 											Action
@@ -212,26 +222,14 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														<VisuallyHidden>Loading</VisuallyHidden>
 													</TableCell>
 												)}
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
+												{Object.values(activeColumns || headers)
+													.filter(Boolean)
+													.map((_, index) => (
+														<TableCell key={index}>
+															<SkeletonText />
+															<VisuallyHidden>Loading</VisuallyHidden>
+														</TableCell>
+													))}
 												{hasActionColumn && (
 													<TableCell>
 														<SkeletonText />
@@ -277,19 +275,34 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														businessName={businessName}
 														rowIndex={rowIndex}
 													>
-														<TableCell as="th" scope="row">
-															<TextLink href={`#${id}`}>
-																{businessName}
-															</TextLink>
-														</TableCell>
-														<DataTableRowAssignee assignee={assignee} />
-														<TableCell>
-															{city}, {state}
-														</TableCell>
-														<TableCell>
-															{format(requestDate, 'dd/MM/yyyy')}
-														</TableCell>
-														<DataTableRowStatus status={status} />
+														{(activeColumns === undefined ||
+															activeColumns?.['Business name']) && (
+															<TableCell as="th" scope="row">
+																<TextLink href={`#${id}`}>
+																	{businessName}
+																</TextLink>
+															</TableCell>
+														)}
+														{(activeColumns === undefined ||
+															activeColumns?.['Assignee']) && (
+															<DataTableRowAssignee assignee={assignee} />
+														)}
+														{(activeColumns === undefined ||
+															activeColumns['City']) && (
+															<TableCell>
+																{city}, {state}
+															</TableCell>
+														)}
+														{(activeColumns === undefined ||
+															activeColumns['Date registered']) && (
+															<TableCell>
+																{format(requestDate, 'dd/MM/yyyy')}
+															</TableCell>
+														)}
+														{(activeColumns === undefined ||
+															activeColumns['Status']) && (
+															<DataTableRowStatus status={status} />
+														)}
 														{hasActionColumn && (
 															<TableCell>
 																<Box css={{ position: 'relative' }}>
@@ -345,7 +358,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	}
 );
 
-const headers: {
+export const headers: {
 	label: string;
 	sortKey: keyof BusinessForAudit;
 	isSortable: boolean;

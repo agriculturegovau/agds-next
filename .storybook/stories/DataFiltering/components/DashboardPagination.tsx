@@ -1,13 +1,80 @@
-import { useEffect, useState } from 'react';
+import {
+	Dispatch,
+	MouseEventHandler,
+	SetStateAction,
+	useCallback,
+	useEffect,
+	useState,
+} from 'react';
+import { PaginationItemsPerPageSelect } from '../../../../packages/react/src/pagination/PaginationItemsPerPageSelect';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+import { Box } from '../../../../packages/react/src/box';
+import { Button, ButtonGroup } from '../../../../packages/react/src/button';
+import { Checkbox } from '../../../../packages/react/src/checkbox';
+import { ControlGroup } from '../../../../packages/react/src/control-group';
+import { Divider } from '../../../../packages/react/src/divider';
+import { Drawer } from '../../../../packages/react/src/drawer';
+import { FormStack } from '../../../../packages/react/src/form-stack';
+import { tokens, useTernaryState } from '../../../../packages/react/src/core';
 import {
 	PaginationButtons,
 	generatePaginationRangeText,
-} from '@ag.ds-next/react/pagination';
-import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
+} from '../../../../packages/react/src/pagination';
+import { SettingsIcon } from '../../../../packages/react/src/icon';
+import { headers } from './DataTable';
 
-export const DashboardPagination = () => {
+const columnNames = [...headers].map((header) => header.label);
+export const defaultActiveColumns = columnNames.reduce(
+	(acc, name) => ({ ...acc, [name]: true }),
+	{} as Record<(typeof columnNames)[number], boolean>
+);
+
+type FormState = {
+	activeColumns: typeof defaultActiveColumns;
+	paginationPerPage: number;
+};
+
+export const DashboardPagination = ({
+	setActiveColumns,
+}: {
+	setActiveColumns?: Dispatch<SetStateAction<Record<string, boolean>>>;
+}) => {
 	const { pagination, setPagination } = useSortAndFilterContext();
 	const { data, totalItems, totalPages, loading } = useDataContext();
+
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const [formState, setFormState] = useState({
+		activeColumns: defaultActiveColumns,
+		paginationPerPage: pagination.perPage,
+	});
+	const onSubmitForm: MouseEventHandler<HTMLButtonElement> = (event) => {
+		event.preventDefault();
+
+		setPagination({
+			page: getValidPage({
+				currentPage: pagination.page,
+				totalItems,
+				perPage: formState.paginationPerPage,
+				prevPerPage: pagination.perPage,
+			}),
+			perPage: formState.paginationPerPage,
+		});
+
+		setActiveColumns?.(formState.activeColumns);
+
+		closeDrawer();
+	};
+	const handlerForKey = useCallback(
+		(key: keyof typeof defaultActiveColumns) => () =>
+			setFormState((prevFormState: FormState) => ({
+				...prevFormState,
+				activeColumns: {
+					...prevFormState.activeColumns,
+					[key]: !prevFormState.activeColumns[key],
+				},
+			})),
+		[]
+	);
 
 	const itemRangeText = generatePaginationRangeText({
 		totalItems: totalItems,
@@ -38,25 +105,119 @@ export const DashboardPagination = () => {
 
 	if (!data.length) return null;
 
+	const hasChangedColumnSettings = !Object.values(
+		formState.activeColumns
+	).every(Boolean);
+	const hasChangedItemsPerPageSettings = pagination.perPage !== 10;
+	const appliedSettingsCount =
+		Number(hasChangedColumnSettings) + Number(hasChangedItemsPerPageSettings);
+
 	return (
-		<PaginationButtons
-			currentPage={displayText.page}
-			onChange={(page) => setPagination({ perPage: displayText.perPage, page })}
-			totalPages={totalPages}
-			itemRangeText={displayText.itemRangeText}
-			itemsPerPage={displayText.perPage}
-			onItemsPerPageChange={(perPage) =>
-				setPagination({
-					page: getValidPage({
-						currentPage: pagination.page,
-						totalItems,
-						perPage,
-						prevPerPage: pagination.perPage,
-					}),
-					perPage,
-				})
-			}
-		/>
+		<>
+			<Box
+				display="grid"
+				gap={1}
+				css={{
+					gridTemplateColumns: '1fr',
+					[tokens.mediaQuery.min.lg]: {
+						gridTemplateColumns: '2fr 1fr',
+					},
+				}}
+			>
+				<PaginationButtons
+					currentPage={displayText.page}
+					onChange={(page) =>
+						setPagination({ perPage: displayText.perPage, page })
+					}
+					totalPages={totalPages}
+					itemRangeText={displayText.itemRangeText}
+				/>
+
+				<Button
+					css={{
+						[tokens.mediaQuery.min.lg]: {
+							justifySelf: 'end',
+						},
+					}}
+					iconBefore={SettingsIcon}
+					onClick={openDrawer}
+					variant="tertiary"
+				>
+					Table settings ({appliedSettingsCount})
+				</Button>
+			</Box>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button
+							type="submit"
+							form="table-settings-form-id"
+							onClick={onSubmitForm}
+						>
+							Save settings
+						</Button>
+
+						<Button
+							type="reset"
+							form="table-settings-form-id"
+							onClick={() => console.log('Reset table settings form')}
+							variant="secondary"
+						>
+							Reset settings
+						</Button>
+
+						<Button
+							variant="tertiary"
+							onClick={() => {
+								closeDrawer();
+							}}
+						>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={isDrawerOpen}
+				onClose={() => {
+					closeDrawer();
+				}}
+				title="Table settings"
+			>
+				<form id="table-settings-form-id">
+					<FormStack>
+						<PaginationItemsPerPageSelect
+							value={formState.paginationPerPage}
+							onChange={(perPage) =>
+								setFormState((prevFormState) => ({
+									...prevFormState,
+									paginationPerPage: perPage,
+								}))
+							}
+						/>
+
+						<Divider />
+
+						<ControlGroup
+							label="Visible columns"
+							hint="Select and actions will always be visible."
+							block
+							required
+						>
+							{columnNames.map((columnName) => (
+								<Checkbox
+									key={columnName}
+									name="columnName"
+									checked={formState.activeColumns[columnName]}
+									onChange={handlerForKey(columnName)}
+								>
+									{columnName}
+								</Checkbox>
+							))}
+						</ControlGroup>
+					</FormStack>
+				</form>
+			</Drawer>
+		</>
 	);
 };
 

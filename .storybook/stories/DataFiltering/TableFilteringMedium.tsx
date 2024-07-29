@@ -34,7 +34,10 @@ import {
 	FilterBarGroup,
 	FilterRegion,
 } from './components/FilterBar';
-import { DashboardPagination } from './components/DashboardPagination';
+import {
+	DashboardPagination,
+	defaultActiveColumns,
+} from './components/DashboardPagination';
 import { assignees, BusinessForAudit } from './lib/generateBusinessData';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 
@@ -51,6 +54,8 @@ export const TableFilteringMedium = ({
 
 	const sectionAlertRef = useRef(null);
 	const [isOpen, toggleIsOpen] = useToggleState(false, true);
+
+	const [activeColumns, setActiveColumns] = useState(defaultActiveColumns);
 
 	const [currentItem, setCurrentItem] = useState<BusinessForAudit>();
 	const [batchItems, setBatchItems] = useState<string[]>();
@@ -230,6 +235,7 @@ export const TableFilteringMedium = ({
 				</FilterRegion>
 
 				<DataTable
+					activeColumns={activeColumns}
 					hasActionColumn={hasActionColumn}
 					selectable={selectable}
 					headingId={headingId}
@@ -286,7 +292,7 @@ export const TableFilteringMedium = ({
 				</Drawer>
 			</Stack>
 
-			<DashboardPagination />
+			<DashboardPagination setActiveColumns={setActiveColumns} />
 
 			<ModalConfirmDelete
 				isOpen={cancelModalOpen}
