@@ -1,62 +1,65 @@
 import { Meta } from '@storybook/react';
 import { Fragment } from 'react';
-import { Autocomplete } from '@ag.ds-next/react/autocomplete';
-import { Avatar } from '@ag.ds-next/react/avatar';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { Callout } from '@ag.ds-next/react/callout';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Card, CardInner } from '@ag.ds-next/react/card';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Combobox } from '@ag.ds-next/react/combobox';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { Details } from '@ag.ds-next/react/details';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { Divider } from '@ag.ds-next/react/divider';
-import { FileInput } from '@ag.ds-next/react/file-input';
-import { FileUpload } from '@ag.ds-next/react/file-upload';
-import { Flex } from '@ag.ds-next/react/flex';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { GlobalAlert } from '@ag.ds-next/react/global-alert';
-import { Heading, H1, H2 } from '@ag.ds-next/react/heading';
-import { IndicatorDot } from '@ag.ds-next/react/indicator-dot';
-import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { PageContent } from '@ag.ds-next/react/content';
-import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
-import { Radio } from '@ag.ds-next/react/radio';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { Select } from '@ag.ds-next/react/select';
-import { SideNav } from '@ag.ds-next/react/side-nav';
-import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
-import { Stack } from '@ag.ds-next/react/stack';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
-import { SubNav } from '@ag.ds-next/react/sub-nav';
-import { Switch } from '@ag.ds-next/react/switch';
-import { Text } from '@ag.ds-next/react/text';
-import { Textarea } from '@ag.ds-next/react/textarea';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
+import { Autocomplete } from '../../../packages/react/src/autocomplete';
+import { Avatar } from '../../../packages/react/src/avatar';
+import { Breadcrumbs } from '../../../packages/react/src/breadcrumbs';
+import { Button, ButtonGroup } from '../../../packages/react/src/button';
+import { Callout } from '../../../packages/react/src/callout';
+import { CallToActionLink } from '../../../packages/react/src/call-to-action';
+import { Card, CardInner } from '../../../packages/react/src/card';
+import { Checkbox } from '../../../packages/react/src/checkbox';
+import { Columns, Column } from '../../../packages/react/src/columns';
+import { Combobox } from '../../../packages/react/src/combobox';
+import { ControlGroup } from '../../../packages/react/src/control-group';
+import { DatePicker } from '../../../packages/react/src/date-picker';
+import { Details } from '../../../packages/react/src/details';
+import { DirectionLink } from '../../../packages/react/src/direction-link';
+import { Divider } from '../../../packages/react/src/divider';
+import { FileInput } from '../../../packages/react/src/file-input';
+import { FileUpload } from '../../../packages/react/src/file-upload';
+import { Flex } from '../../../packages/react/src/flex';
+import { FormStack } from '../../../packages/react/src/form-stack';
+import { GlobalAlert } from '../../../packages/react/src/global-alert';
+import { Heading, H1, H2 } from '../../../packages/react/src/heading';
+import { IndicatorDot } from '../../../packages/react/src/indicator-dot';
+import { InpageNav } from '../../../packages/react/src/inpage-nav';
+import { NotificationBadge } from '../../../packages/react/src/notification-badge';
+import { PageAlert } from '../../../packages/react/src/page-alert';
+import { PageContent } from '../../../packages/react/src/content';
+import { ProgressIndicator } from '../../../packages/react/src/progress-indicator';
+import { Radio } from '../../../packages/react/src/radio';
+import { SearchInput } from '../../../packages/react/src/search-input';
+import { Select } from '../../../packages/react/src/select';
+import { SideNav } from '../../../packages/react/src/side-nav';
+import {
+	SkeletonHeading,
+	SkeletonText,
+} from '../../../packages/react/src/skeleton';
+import { Stack } from '../../../packages/react/src/stack';
+import { StatusBadge } from '../../../packages/react/src/status-badge';
+import { SubNav } from '../../../packages/react/src/sub-nav';
+import { Switch } from '../../../packages/react/src/switch';
+import { Text } from '../../../packages/react/src/text';
+import { Textarea } from '../../../packages/react/src/textarea';
+import { TextInput } from '../../../packages/react/src/text-input';
+import { TextLink } from '../../../packages/react/src/text-link';
+import { UnorderedList, ListItem } from '../../../packages/react/src/list';
 import {
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
-} from '@ag.ds-next/react/accordion';
+} from '../../../packages/react/src/accordion';
 import {
 	SearchBox,
 	SearchBoxButton,
 	SearchBoxInput,
-} from '@ag.ds-next/react/search-box';
+} from '../../../packages/react/src/search-box';
 import {
 	HeroBanner,
 	HeroBannerSubtitle,
 	HeroBannerTitle,
 	HeroBannerTitleContainer,
-} from '@ag.ds-next/react/hero-banner';
+} from '../../../packages/react/src/hero-banner';
 import {
 	Table,
 	TableCaption,
@@ -66,35 +69,35 @@ import {
 	TableHead,
 	TableBody,
 	TableWrapper,
-} from '@ag.ds-next/react/table';
+} from '../../../packages/react/src/table';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-} from '@ag.ds-next/react/summary-list';
+} from '../../../packages/react/src/summary-list';
 import {
 	TabButton,
 	TabList,
 	TabPanel,
 	TabPanels,
 	Tabs,
-} from '@ag.ds-next/react/tabs';
+} from '../../../packages/react/src/tabs';
 import {
 	DropdownMenu,
 	DropdownMenuButton,
 	DropdownMenuPanel,
 	DropdownMenuItem,
 	DropdownMenuDivider,
-} from '@ag.ds-next/react/dropdown-menu';
-import { Drawer } from '@ag.ds-next/react/drawer';
-import { SectionAlert } from '@ag.ds-next/react/section-alert';
-import { PasswordInput } from '@ag.ds-next/react/password-input';
-import { Modal } from '@ag.ds-next/react/modal';
-import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
-import { TimeInput } from '@ag.ds-next/react/time-input';
-import { TimePicker } from '@ag.ds-next/react/time-picker';
-import { useTernaryState } from '@ag.ds-next/react/core';
+} from '../../../packages/react/src/dropdown-menu';
+import { Drawer } from '../../../packages/react/src/drawer';
+import { SectionAlert } from '../../../packages/react/src/section-alert';
+import { PasswordInput } from '../../../packages/react/src/password-input';
+import { Modal } from '../../../packages/react/src/modal';
+import { GroupedFields } from '../../../packages/react/src/grouped-fields';
+import { TimeInput } from '../../../packages/react/src/time-input';
+import { TimePicker } from '../../../packages/react/src/time-picker';
+import { useTernaryState } from '../../../packages/react/src/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
 import { AppLayout } from '../../../docs/content/templates/__shared/AppLayout';
@@ -183,11 +186,12 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>
 							<ProgressIndicator
+								activePath="#1"
 								background={page}
 								items={[
-									{ href: '#', label: 'Introduction', status: 'doing' },
-									{ href: '#', label: 'Business Contacts', status: 'todo' },
-									{ href: '#', label: 'Case Studies', status: 'done' },
+									{ href: '#1', label: 'Introduction', status: 'started' },
+									{ href: '#2', label: 'Business Contacts', status: 'todo' },
+									{ href: '#3', label: 'Case Studies', status: 'done' },
 								]}
 							/>
 						</Stack>
@@ -438,11 +442,19 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								/>
 								<Textarea label="Message" />
 								<ControlGroup label="Device">
-									<Radio checked={false}>Phone</Radio>
-									<Radio checked={false}>Tablet</Radio>
-									<Radio checked={true}>Laptop</Radio>
+									<Radio checked={false} onChange={console.log}>
+										Phone
+									</Radio>
+									<Radio checked={false} onChange={console.log}>
+										Tablet
+									</Radio>
+									<Radio checked={true} onChange={console.log}>
+										Laptop
+									</Radio>
 								</ControlGroup>
-								<Checkbox checked={true}>Label</Checkbox>
+								<Checkbox checked={true} onChange={console.log}>
+									Label
+								</Checkbox>
 								<Autocomplete
 									label="Find your country"
 									hint="Start typing to see results"
@@ -519,19 +531,125 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							</div>
 
 							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge tone="info" label="In progress" />
-								<StatusBadge tone="success" label="Resolved" />
-								<StatusBadge tone="error" label="Rejected" />
-								<StatusBadge tone="warning" label="Attention" />
-								<StatusBadge tone="neutral" label="Draft" />
+								<StatusBadge tone="successHigh" label="Success" />
+								<StatusBadge tone="errorHigh" label="Error" />
+								<StatusBadge tone="warningHigh" label="Warning" />
+								<StatusBadge tone="infoHigh" label="Info" />
 							</Flex>
 
 							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge weight="subtle" tone="info" label="In progress" />
-								<StatusBadge weight="subtle" tone="success" label="Resolved" />
-								<StatusBadge weight="subtle" tone="error" label="Rejected" />
-								<StatusBadge weight="subtle" tone="warning" label="Attention" />
-								<StatusBadge weight="subtle" tone="neutral" label="Draft" />
+								<StatusBadge tone="successMedium" label="Success" />
+								<StatusBadge tone="errorMedium" label="Error" />
+								<StatusBadge tone="warningMedium" label="Warning" />
+								<StatusBadge tone="infoMedium" label="Info" />
+							</Flex>
+
+							<Flex gap={0.5} flexWrap="wrap">
+								<StatusBadge tone="successLow" label="Success" />
+								<StatusBadge tone="errorLow" label="Error" />
+								<StatusBadge tone="warningLow" label="Warning" />
+								<StatusBadge tone="infoLow" label="Info" />
+								<StatusBadge tone="cannotStartLow" label="Cannot start" />
+								<StatusBadge tone="inProgressLow" label="In progress" />
+								<StatusBadge tone="pausedLow" label="Paused" />
+								<StatusBadge tone="notStartedLow" label="Not started" />
+								<StatusBadge tone="unknownLow" label="Unknown" />
+							</Flex>
+
+							<Flex gap={0.5} flexWrap="wrap">
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successHigh"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorHigh"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningHigh"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoHigh"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successMedium"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorMedium"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningMedium"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoMedium"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="successLow"
+										label="Success"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="errorLow"
+										label="Error"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="warningLow"
+										label="Warning"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="infoLow"
+										label="Info"
+									/>
+								</Flex>
+								<Flex flexWrap="wrap" gap={2}>
+									<StatusBadge
+										appearance="subtle"
+										tone="cannotStartLow"
+										label="Cannot start"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="inProgressLow"
+										label="In progress"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="pausedLow"
+										label="Paused"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="notStartedLow"
+										label="Not started"
+									/>
+									<StatusBadge
+										appearance="subtle"
+										tone="unknownLow"
+										label="Unknown"
+									/>
+								</Flex>
 							</Flex>
 
 							<Flex gap={0.5}>

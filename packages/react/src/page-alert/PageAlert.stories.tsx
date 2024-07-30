@@ -9,6 +9,7 @@ const meta: Meta<typeof PageAlert> = {
 	title: 'content/PageAlert',
 	component: PageAlert,
 	args: {
+		onDismiss: undefined,
 		onClose: undefined,
 	},
 	render: (args) => (

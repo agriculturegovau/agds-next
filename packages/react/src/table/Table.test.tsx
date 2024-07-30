@@ -1,18 +1,18 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Stack } from '@ag.ds-next/react/stack';
-import { H1 } from '@ag.ds-next/react/heading';
-import { Text } from '@ag.ds-next/react/text';
 import { cleanup, screen, render } from '../../../../test-utils';
+import { H1 } from '../heading';
+import { Stack } from '../stack';
+import { Text } from '../text';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
 import { TableCell } from './TableCell';
 import { TableHead } from './TableHead';
 import { TableHeader } from './TableHeader';
-import { TableWrapper } from './TableWrapper';
 import { TableRow } from './TableRow';
+import { TableWrapper } from './TableWrapper';
 
 expect.extend(toHaveNoViolations);
 

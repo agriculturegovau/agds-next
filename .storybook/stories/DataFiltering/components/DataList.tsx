@@ -1,11 +1,14 @@
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { H3, Heading } from '@ag.ds-next/react/heading';
-import { SkeletonHeading, SkeletonText } from '@ag.ds-next/react/skeleton';
-import { Text } from '@ag.ds-next/react/text';
-import { HelpIcon } from '@ag.ds-next/react/icon';
-import { Button } from '@ag.ds-next/react/button';
+import { VisuallyHidden } from '../../../../packages/react/src/a11y';
+import { Stack } from '../../../../packages/react/src/stack';
+import { Card, CardInner, CardLink } from '../../../../packages/react/src/card';
+import { H3, Heading } from '../../../../packages/react/src/heading';
+import {
+	SkeletonHeading,
+	SkeletonText,
+} from '../../../../packages/react/src/skeleton';
+import { Text } from '../../../../packages/react/src/text';
+import { HelpIcon } from '../../../../packages/react/src/icon';
+import { Button } from '../../../../packages/react/src/button';
 import { BusinessForAuditWithIndex } from '../lib/generateBusinessData';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DataTable';

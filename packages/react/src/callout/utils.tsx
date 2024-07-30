@@ -1,4 +1,4 @@
-import { InfoFilledIcon } from '@ag.ds-next/react/icon';
+import { InfoFilledIcon } from '../icon';
 
 export const calloutToneMap = (variant: CalloutVariant) =>
 	({

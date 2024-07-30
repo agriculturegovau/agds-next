@@ -1,4 +1,4 @@
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../../../packages/react/src/stack';
 import {
 	TableWrapper,
 	Table,
@@ -7,13 +7,13 @@ import {
 	TableHeader,
 	TableHead,
 	TableBody,
-} from '@ag.ds-next/react/table';
-import { SkeletonText } from '@ag.ds-next/react/skeleton';
-import { Text } from '@ag.ds-next/react/text';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
-import { Heading } from '@ag.ds-next/react/heading';
-import { Button } from '@ag.ds-next/react/button';
+} from '../../../packages/react/src/table';
+import { SkeletonText } from '../../../packages/react/src/skeleton';
+import { Text } from '../../../packages/react/src/text';
+import { VisuallyHidden } from '../../../packages/react/src/a11y';
+import { AlertFilledIcon, HelpIcon } from '../../../packages/react/src/icon';
+import { Heading } from '../../../packages/react/src/heading';
+import { Button } from '../../../packages/react/src/button';
 import { ApiData, numberFormatter } from './utils';
 
 export function DataLoadingWithTable({

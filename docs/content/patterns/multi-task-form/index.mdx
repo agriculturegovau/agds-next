@@ -80,7 +80,7 @@ The task list supports sequential or non-sequential completion of a form.
 			</Flex>
 			<Modal
 				isOpen={isModalOpen}
-				onDismiss={closeModal}
+				onClose={closeModal}
 				title="Discard form?"
 				actions={
 					<ButtonGroup>
@@ -134,18 +134,17 @@ If a user presses on a task that’s ‘in progress’, return them to where the
 		{
 			label: 'Contact details',
 			status: 'done',
-			href: '#',
+			href: '#contact-details',
 		},
 		{
 			label: 'Address',
 			status: 'started',
-			href: '#',
-			isActive: true,
+			href: '#address',
 		},
 		{
 			label: 'Upload files',
 			status: 'todo',
-			href: '#',
+			href: '#upload-files',
 		},
 	];
 
@@ -153,7 +152,7 @@ If a user presses on a task that’s ‘in progress’, return them to where the
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ContentBleed visible={{ md: false }}>
-					<ProgressIndicator items={FORM_STEPS} />
+					<ProgressIndicator activePath="#address" items={FORM_STEPS} />
 				</ContentBleed>
 			</Column>
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
@@ -176,7 +175,11 @@ If a user presses on a task that’s ‘in progress’, return them to where the
 
 					<Stack as="form" gap={3} onSubmit={() => {}} noValidate>
 						<Stack gap={2}>
-							<H1 tabIndex={-1} focus aria-label="Application form, Address">
+							<H1
+								tabIndex={-1}
+								focusRingFor="keyboard"
+								aria-label="Application form, Address"
+							>
 								<Text
 									display="block"
 									fontSize="sm"

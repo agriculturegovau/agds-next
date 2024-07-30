@@ -34,22 +34,27 @@ import {
 
 export const FORM_STEPS = [
 	{
+		href: '#conditional-fork',
 		label: 'Conditional fork',
 		component: FormExampleMultiStep0,
 	},
 	{
+		href: '#submit-evidence',
 		label: 'Submit evidence',
 		component: FormExampleMultiStep1,
 	},
 	{
+		href: '#select-date',
 		label: 'Select date',
 		component: FormExampleMultiStep2,
 	},
 	{
+		href: '#conditional-reveal',
 		label: 'Conditional reveal',
 		component: FormExampleMultiStep3,
 	},
 	{
+		href: '#confirm-and-submit',
 		label: 'Confirm and submit',
 		component: FormExampleMultiStep4,
 	},
@@ -157,7 +162,7 @@ export const FormExampleMultiStep = () => {
 
 	const getStepStatus = useCallback(
 		(idx: number) => {
-			if (idx === currentStep) return 'doing';
+			if (idx === currentStep) return 'started';
 			if (hasCompletedStep(idx)) return 'done';
 			if (idx === 0 || hasCompletedStep(idx - 1)) return 'todo';
 			return 'blocked';
@@ -191,7 +196,9 @@ export const FormExampleMultiStep = () => {
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<ContentBleed visible={{ md: false }}>
 							<ProgressIndicator
-								items={FORM_STEPS.map(({ label }, idx) => ({
+								activePath={FORM_STEPS[currentStep].href}
+								items={FORM_STEPS.map(({ href, label }, idx) => ({
+									href,
 									label,
 									status: getStepStatus(idx),
 									onClick: () => setCurrentStep(idx),

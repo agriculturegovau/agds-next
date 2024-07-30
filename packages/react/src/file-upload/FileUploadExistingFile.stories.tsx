@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../../../../packages/react/src/stack';
 import { FileUploadExistingFile } from './FileUploadExistingFile';
 
 const meta: Meta = {

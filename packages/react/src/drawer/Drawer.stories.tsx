@@ -160,7 +160,7 @@ export const SmallPageContentLargeDrawerContent: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={
@@ -194,7 +194,7 @@ export const LargePageContentLargeDrawerContent: Story = {
 				<LargeProseContent />
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={

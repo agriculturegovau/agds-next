@@ -1,10 +1,10 @@
 import { RefObject } from 'react';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import { useTernaryState } from '@ag.ds-next/react/core';
-import { FilterIcon, PlusIcon } from '@ag.ds-next/react/icon';
-import { Box } from '@ag.ds-next/react/box';
-import { H2 } from '@ag.ds-next/react/heading';
+import { Stack } from '../../../packages/react/src/stack';
+import { Button, ButtonLink } from '../../../packages/react/src/button';
+import { useTernaryState } from '../../../packages/react/src/core';
+import { FilterIcon, PlusIcon } from '../../../packages/react/src/icon';
+import { Box } from '../../../packages/react/src/box';
+import { H2 } from '../../../packages/react/src/heading';
 import { ActiveFilters } from './components/ActiveFilters';
 import { SortBySelect } from './components/SortBySelect';
 import { DataTable } from './components/DataTable';

@@ -16,10 +16,11 @@ export function MultiPageFormStep() {
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<ProgressIndicator
+							activePath="#2"
 							items={[
-								{ label: 'Step 1', status: 'done', href: '#' },
-								{ label: 'Step 2', status: 'doing', href: '#' },
-								{ label: 'Step 3', status: 'blocked', href: '#' },
+								{ label: 'Step 1', status: 'done', href: '#1' },
+								{ label: 'Step 2', status: 'started', href: '#2' },
+								{ label: 'Step 3', status: 'blocked', href: '#3' },
 							]}
 						/>
 					</ContentBleed>

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { COUNTRY_OPTIONS } from '@ag.ds-next/react/src/combobox/test-utils';
+import { COUNTRY_OPTIONS } from '../../../../packages/react/src/combobox/test-utils';
 
 export type BusinessForAuditStatus =
 	| 'notBooked'

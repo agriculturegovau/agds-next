@@ -1,13 +1,13 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { Autocomplete } from '@ag.ds-next/react/autocomplete';
-import { Combobox, ComboboxMulti } from '@ag.ds-next/react/combobox';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PasswordInput } from '@ag.ds-next/react/password-input';
-import { SearchInput } from '@ag.ds-next/react/search-input';
-import { Select } from '@ag.ds-next/react/select';
-import { Textarea } from '@ag.ds-next/react/textarea';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Autocomplete } from '../autocomplete';
+import { Combobox, ComboboxMulti } from '../combobox';
+import { DatePicker } from '../date-picker';
+import { FormStack } from '../form-stack';
+import { PasswordInput } from '../password-input';
+import { SearchInput } from '../search-input';
+import { Select } from '../select';
+import { Textarea } from '../textarea';
+import { TextInput } from '../text-input';
 import { GroupedFields } from './GroupedFields';
 
 const meta: Meta<typeof GroupedFields> = {

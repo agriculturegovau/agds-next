@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
-import { Text } from '@ag.ds-next/react/text';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Button } from '@ag.ds-next/react/button';
-import { CloseIcon } from '@ag.ds-next/react/icon';
-import { Tags } from '@ag.ds-next/react/tags';
+import { Text } from '../../../../packages/react/src/text';
+import { Flex } from '../../../../packages/react/src/flex';
+import { Button } from '../../../../packages/react/src/button';
+import { CloseIcon } from '../../../../packages/react/src/icon';
+import { Tags } from '../../../../packages/react/src/tags';
 import { GetDataFilters } from '../lib/getData';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { STATUS_MAP } from '../lib/utils';

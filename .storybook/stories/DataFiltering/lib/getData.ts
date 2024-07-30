@@ -1,4 +1,4 @@
-import { DateRangeWithString } from '@ag.ds-next/react/date-range-picker';
+import { DateRangeWithString } from '../../../../packages/react/src/date-range-picker';
 import {
 	generateBusinessData,
 	BusinessForAudit,

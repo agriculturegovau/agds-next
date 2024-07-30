@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ButtonGroup, Button } from '@ag.ds-next/react/button';
-import { Select } from '@ag.ds-next/react/select';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { Drawer } from '@ag.ds-next/react/drawer';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { ButtonGroup, Button } from '../../../packages/react/src/button';
+import { Select } from '../../../packages/react/src/select';
+import { TextInput } from '../../../packages/react/src/text-input';
+import { FormStack } from '../../../packages/react/src/form-stack';
+import { Drawer } from '../../../packages/react/src/drawer';
+import { DatePicker } from '../../../packages/react/src/date-picker';
 
 export type ModalAddTrackingNumberProps = {
 	isOpen: boolean;

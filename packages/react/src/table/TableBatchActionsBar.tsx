@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../stack';
 
 export type TableBatchActionsProps = PropsWithChildren<{}>;
 

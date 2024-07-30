@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
-import { ButtonGroup, Button } from '@ag.ds-next/react/button';
-import { Text } from '@ag.ds-next/react/text';
-import { Modal } from '@ag.ds-next/react/modal';
+import { ButtonGroup, Button } from '../../../packages/react/src/button';
+import { Text } from '../../../packages/react/src/text';
+import { Modal } from '../../../packages/react/src/modal';
 import { plural, RowData } from './utils';
 
 export type ModalConfirmDeleteProps = {

@@ -1,7 +1,13 @@
 import { forwardRef, Fragment } from 'react';
 import { format } from 'date-fns';
-import { VisuallyHidden, visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
-import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
+import {
+	VisuallyHidden,
+	visuallyHiddenStyles,
+} from '../../../../packages/react/src/a11y';
+import {
+	SkeletonBox,
+	SkeletonText,
+} from '../../../../packages/react/src/skeleton';
 import {
 	Table,
 	TableBody,
@@ -13,13 +19,13 @@ import {
 	TableHeaderSortable,
 	TableWrapper,
 	TableRow,
-} from '@ag.ds-next/react/table';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { Text } from '@ag.ds-next/react/text';
-import { Stack } from '@ag.ds-next/react/stack';
-import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
-import { Heading } from '@ag.ds-next/react/heading';
-import { Button } from '@ag.ds-next/react/button';
+} from '../../../../packages/react/src/table';
+import { TextLink } from '../../../../packages/react/src/text-link';
+import { Text } from '../../../../packages/react/src/text';
+import { Stack } from '../../../../packages/react/src/stack';
+import { AlertFilledIcon, HelpIcon } from '../../../../packages/react/src/icon';
+import { Heading } from '../../../../packages/react/src/heading';
+import { Button } from '../../../../packages/react/src/button';
 import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
@@ -150,12 +156,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											);
 										}
 										return (
-											<TableHeader
-												key={sortKey}
-												scope="col"
-												textAlign={textAlign}
-												width={width}
-											>
+											<TableHeader key={sortKey} scope="col" width={width}>
 												{label}
 											</TableHeader>
 										);
@@ -274,7 +275,6 @@ const headers: {
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
-		textAlign: 'right',
 		width: '12rem',
 		isSortable: true,
 	},
