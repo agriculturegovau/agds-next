@@ -139,6 +139,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 							ref={ref}
 							tabIndex={-1}
 							tableLayout="fixed"
+							frozenColumns={[1, 2, 7]}
 						>
 							{!headingId && (
 								<TableCaption>

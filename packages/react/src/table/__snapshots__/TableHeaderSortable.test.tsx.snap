@@ -2,152 +2,392 @@
 
 exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 <div>
-  <table
-    class="css-r11i27-boxStyles-Table"
+  <div
+    class="css-j44gbe-boxStyles-TableScroller"
   >
-    <thead
-      class="css-11khhn7-boxStyles"
+    <div
+      class="css-tlv2ay-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
+    <div
+      class="css-13n67m1-boxStyles-TableScroller"
+      tabindex="0"
     >
-      <tr
-        class="css-1tx0oac-TableRow"
+      <table
+        class="css-13kilxg-boxStyles-Table"
       >
-        <th
-          aria-sort="ascending"
-          class="css-cgixy1-boxStyles"
-          scope="col"
+        <thead
+          class="css-11khhn7-boxStyles"
         >
-          <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
-            type="button"
+          <tr
+            class="css-n2xyn5-TableRow"
           >
-            <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            <th
+              aria-sort="ascending"
+              class="css-cgixy1-boxStyles"
+              scope="col"
             >
-              Example
-            </span>
-            <svg
-              aria-hidden="true"
-              class="css-fyxrud-Icon"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 21V4"
-              />
-              <path
-                d="M7 8L12 3L17 8"
-              />
-            </svg>
-          </button>
-        </th>
-      </tr>
-    </thead>
-  </table>
+              <button
+                class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+                type="button"
+              >
+                <span
+                  class="css-10iwr90-boxStyles-TableHeaderSortable"
+                >
+                  Example
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="css-fyxrud-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21V4"
+                  />
+                  <path
+                    d="M7 8L12 3L17 8"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      class="css-1dvuwhl-boxStyles-TableScroller"
+      data-table-right-overlay="true"
+    />
+    <div
+      class="css-ber6ni-boxStyles-TableScroller"
+    >
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.957 6.319a.299.299 0 0 1 .043.147v11.103a.31.31 0 0 1-.161.263.34.34 0 0 1-.327.002l-9.361-5.552a.327.327 0 0 1-.111-.114.299.299 0 0 1 0-.3.319.319 0 0 1 .111-.114l9.361-5.552a.34.34 0 0 1 .327.002.31.31 0 0 1 .118.115Z"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="css-1ne0yec-boxStyles-TableScroller"
+        tabindex="-1"
+      >
+        <button
+          aria-hidden="true"
+          class="css-np8p1e-boxStyles-TableScroller"
+          style="left: 0px; width: 100%;"
+          tabindex="-1"
+          type="button"
+        />
+      </div>
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.043 17.718A.305.305 0 0 1 7 17.57V6.467a.31.31 0 0 1 .161-.263h0a.34.34 0 0 1 .327-.001l9.361 5.551a.321.321 0 0 1 .111.115.296.296 0 0 1 0 .299.31.31 0 0 1-.111.114l-9.361 5.552a.332.332 0 0 1-.161.041.329.329 0 0 1-.284-.157Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 <div>
-  <table
-    class="css-r11i27-boxStyles-Table"
+  <div
+    class="css-j44gbe-boxStyles-TableScroller"
   >
-    <thead
-      class="css-11khhn7-boxStyles"
+    <div
+      class="css-tlv2ay-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
+    <div
+      class="css-13n67m1-boxStyles-TableScroller"
+      tabindex="0"
     >
-      <tr
-        class="css-1tx0oac-TableRow"
+      <table
+        class="css-13kilxg-boxStyles-Table"
       >
-        <th
-          aria-sort="descending"
-          class="css-cgixy1-boxStyles"
-          scope="col"
+        <thead
+          class="css-11khhn7-boxStyles"
         >
-          <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
-            type="button"
+          <tr
+            class="css-n2xyn5-TableRow"
           >
-            <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            <th
+              aria-sort="descending"
+              class="css-cgixy1-boxStyles"
+              scope="col"
             >
-              Example
-            </span>
-            <svg
-              aria-hidden="true"
-              class="css-fyxrud-Icon"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 3L12 20"
-              />
-              <path
-                d="M17 16L12 21L7 16"
-              />
-            </svg>
-          </button>
-        </th>
-      </tr>
-    </thead>
-  </table>
+              <button
+                class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+                type="button"
+              >
+                <span
+                  class="css-10iwr90-boxStyles-TableHeaderSortable"
+                >
+                  Example
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="css-fyxrud-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3L12 20"
+                  />
+                  <path
+                    d="M17 16L12 21L7 16"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      class="css-1dvuwhl-boxStyles-TableScroller"
+      data-table-right-overlay="true"
+    />
+    <div
+      class="css-ber6ni-boxStyles-TableScroller"
+    >
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.957 6.319a.299.299 0 0 1 .043.147v11.103a.31.31 0 0 1-.161.263.34.34 0 0 1-.327.002l-9.361-5.552a.327.327 0 0 1-.111-.114.299.299 0 0 1 0-.3.319.319 0 0 1 .111-.114l9.361-5.552a.34.34 0 0 1 .327.002.31.31 0 0 1 .118.115Z"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="css-1ne0yec-boxStyles-TableScroller"
+        tabindex="-1"
+      >
+        <button
+          aria-hidden="true"
+          class="css-np8p1e-boxStyles-TableScroller"
+          style="left: 0px; width: 100%;"
+          tabindex="-1"
+          type="button"
+        />
+      </div>
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.043 17.718A.305.305 0 0 1 7 17.57V6.467a.31.31 0 0 1 .161-.263h0a.34.34 0 0 1 .327-.001l9.361 5.551a.321.321 0 0 1 .111.115.296.296 0 0 1 0 .299.31.31 0 0 1-.111.114l-9.361 5.552a.332.332 0 0 1-.161.041.329.329 0 0 1-.284-.157Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`] = `
 <div>
-  <table
-    class="css-r11i27-boxStyles-Table"
+  <div
+    class="css-j44gbe-boxStyles-TableScroller"
   >
-    <thead
-      class="css-11khhn7-boxStyles"
+    <div
+      class="css-tlv2ay-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
+    <div
+      class="css-13n67m1-boxStyles-TableScroller"
+      tabindex="0"
     >
-      <tr
-        class="css-1tx0oac-TableRow"
+      <table
+        class="css-13kilxg-boxStyles-Table"
       >
-        <th
-          class="css-79i25n-boxStyles"
-          scope="col"
+        <thead
+          class="css-11khhn7-boxStyles"
         >
-          <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
-            type="button"
+          <tr
+            class="css-n2xyn5-TableRow"
           >
-            <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            <th
+              class="css-79i25n-boxStyles"
+              scope="col"
             >
-              Example
-            </span>
-            <svg
-              aria-hidden="true"
-              class="css-fyxrud-Icon"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m17 16-4.646 4.646a.5.5 0 0 1-.708 0L7 16M7 7.793l4.646-4.646a.5.5 0 0 1 .708 0L17 7.793"
-              />
-            </svg>
-          </button>
-        </th>
-      </tr>
-    </thead>
-  </table>
+              <button
+                class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+                type="button"
+              >
+                <span
+                  class="css-10iwr90-boxStyles-TableHeaderSortable"
+                >
+                  Example
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="css-fyxrud-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m17 16-4.646 4.646a.5.5 0 0 1-.708 0L7 16M7 7.793l4.646-4.646a.5.5 0 0 1 .708 0L17 7.793"
+                  />
+                </svg>
+              </button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      class="css-1dvuwhl-boxStyles-TableScroller"
+      data-table-right-overlay="true"
+    />
+    <div
+      class="css-ber6ni-boxStyles-TableScroller"
+    >
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.957 6.319a.299.299 0 0 1 .043.147v11.103a.31.31 0 0 1-.161.263.34.34 0 0 1-.327.002l-9.361-5.552a.327.327 0 0 1-.111-.114.299.299 0 0 1 0-.3.319.319 0 0 1 .111-.114l9.361-5.552a.34.34 0 0 1 .327.002.31.31 0 0 1 .118.115Z"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="css-1ne0yec-boxStyles-TableScroller"
+        tabindex="-1"
+      >
+        <button
+          aria-hidden="true"
+          class="css-np8p1e-boxStyles-TableScroller"
+          style="left: 0px; width: 100%;"
+          tabindex="-1"
+          type="button"
+        />
+      </div>
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.043 17.718A.305.305 0 0 1 7 17.57V6.467a.31.31 0 0 1 .161-.263h0a.34.34 0 0 1 .327-.001l9.361 5.551a.321.321 0 0 1 .111.115.296.296 0 0 1 0 .299.31.31 0 0 1-.111.114l-9.361 5.552a.332.332 0 0 1-.161.041.329.329 0 0 1-.284-.157Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
 </div>
 `;
