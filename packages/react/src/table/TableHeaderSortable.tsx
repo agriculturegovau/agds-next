@@ -2,12 +2,13 @@ import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { BaseButton } from '../button';
-import { boxPalette, packs, ResponsiveProp } from '../core';
+import { boxPalette, packs, type ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
 
 export type TableHeaderSortableProps = {
+	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** The active direction this column is being sorted by. */
 	sort?: TableSortDirection;
 	/** Callback function for when the column header is clicked. */
@@ -21,6 +22,7 @@ export type TableHeaderSortableProps = {
 /** Used in place of `TableHeader` when users can click a column header to
  * sort the table. */
 export const TableHeaderSortable = ({
+	display,
 	children,
 	sort,
 	onClick,
@@ -32,6 +34,7 @@ export const TableHeaderSortable = ({
 	return (
 		<Box
 			as="th"
+			display={display}
 			scope="col"
 			aria-sort={sortLabel}
 			width={width}

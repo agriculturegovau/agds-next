@@ -155,55 +155,64 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											Select
 										</TableHeader>
 									)}
-									{headers
-										.filter(
-											(header) =>
-												activeColumns === undefined ||
-												activeColumns[header.label]
-										)
-										.map(
-											({
-												label,
-												sortKey,
-												textAlign,
-												width,
-												isSortable: isFieldSortable,
-											}) => {
-												if (isTableSortable && isFieldSortable) {
-													const isFieldTheActiveSortField =
-														sort?.field === sortKey;
-													const onClick = () =>
-														setSort?.({
-															field: sortKey,
-															order:
-																sort?.field === sortKey && sort?.order === 'ASC'
-																	? 'DESC'
-																	: 'ASC',
-														});
+									{headers.map(
+										({
+											label,
+											sortKey,
+											textAlign,
+											width,
+											isSortable: isFieldSortable,
+										}) => {
+											if (isTableSortable && isFieldSortable) {
+												const isFieldTheActiveSortField =
+													sort?.field === sortKey;
+												const onClick = () =>
+													setSort?.({
+														field: sortKey,
+														order:
+															sort?.field === sortKey && sort?.order === 'ASC'
+																? 'DESC'
+																: 'ASC',
+													});
 
-													return (
-														<TableHeaderSortable
-															key={sortKey}
-															textAlign={textAlign}
-															width={width}
-															sort={
-																isFieldTheActiveSortField
-																	? sort?.order
-																	: undefined
-															}
-															onClick={onClick}
-														>
-															{label}
-														</TableHeaderSortable>
-													);
-												}
 												return (
-													<TableHeader key={sortKey} scope="col" width={width}>
+													<TableHeaderSortable
+														display={
+															activeColumns === undefined ||
+															activeColumns[label]
+																? undefined
+																: 'none'
+														}
+														key={sortKey}
+														textAlign={textAlign}
+														width={width}
+														sort={
+															isFieldTheActiveSortField
+																? sort?.order
+																: undefined
+														}
+														onClick={onClick}
+													>
 														{label}
-													</TableHeader>
+													</TableHeaderSortable>
 												);
 											}
-										)}
+											return (
+												<TableHeader
+													display={
+														activeColumns === undefined || activeColumns[label]
+															? undefined
+															: 'none'
+													}
+													key={sortKey}
+													scope="col"
+													width={width}
+												>
+													{label}
+												</TableHeader>
+											);
+										}
+									)}
 									{hasActionColumn && (
 										<TableHeader scope="col" width={98}>
 											Action
@@ -222,14 +231,20 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														<VisuallyHidden>Loading</VisuallyHidden>
 													</TableCell>
 												)}
-												{Object.values(activeColumns || headers)
-													.filter(Boolean)
-													.map((_, index) => (
-														<TableCell key={index}>
-															<SkeletonText />
-															<VisuallyHidden>Loading</VisuallyHidden>
-														</TableCell>
-													))}
+												{headers.map(({ label }) => (
+													<TableCell
+														display={
+															activeColumns === undefined ||
+															activeColumns[label]
+																? undefined
+																: 'none'
+														}
+														key={label}
+													>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												))}
 												{hasActionColumn && (
 													<TableCell>
 														<SkeletonText />
@@ -275,34 +290,58 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														businessName={businessName}
 														rowIndex={rowIndex}
 													>
-														{(activeColumns === undefined ||
-															activeColumns?.['Business name']) && (
-															<TableCell as="th" scope="row">
-																<TextLink href={`#${id}`}>
-																	{businessName}
-																</TextLink>
-															</TableCell>
-														)}
-														{(activeColumns === undefined ||
-															activeColumns?.['Assignee']) && (
-															<DataTableRowAssignee assignee={assignee} />
-														)}
-														{(activeColumns === undefined ||
-															activeColumns['City']) && (
-															<TableCell>
-																{city}, {state}
-															</TableCell>
-														)}
-														{(activeColumns === undefined ||
-															activeColumns['Date registered']) && (
-															<TableCell>
-																{format(requestDate, 'dd/MM/yyyy')}
-															</TableCell>
-														)}
-														{(activeColumns === undefined ||
-															activeColumns['Status']) && (
-															<DataTableRowStatus status={status} />
-														)}
+														<TableCell
+															as="th"
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Business name']
+																	? undefined
+																	: 'none'
+															}
+															scope="row"
+														>
+															<TextLink href={`#${id}`}>
+																{businessName}
+															</TextLink>
+														</TableCell>
+														<DataTableRowAssignee
+															assignee={assignee}
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Assignee']
+																	? undefined
+																	: 'none'
+															}
+														/>
+														<TableCell
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['City']
+																	? undefined
+																	: 'none'
+															}
+														>
+															{city}, {state}
+														</TableCell>
+														<TableCell
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Date registered']
+																	? undefined
+																	: 'none'
+															}
+														>
+															{format(requestDate, 'dd/MM/yyyy')}
+														</TableCell>
+														<DataTableRowStatus
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Status']
+																	? undefined
+																	: 'none'
+															}
+															status={status}
+														/>
 														{hasActionColumn && (
 															<TableCell>
 																<DropdownMenu>
