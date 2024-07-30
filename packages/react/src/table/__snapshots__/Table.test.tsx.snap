@@ -10,7 +10,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       data-table-left-overlay="true"
     />
     <div
-      class="css-1pgzax6-boxStyles-TableScroller"
+      class="css-13n67m1-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
