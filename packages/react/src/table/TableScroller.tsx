@@ -30,7 +30,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
-	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+	const [thumbWidthRatio, setThumbWidthRatio] = useState(1);
 	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
 	const [overlayOffsets, setOverlayOffsets] =
 		useState<ScrollerContextType['overlayOffsets']>();
@@ -243,17 +243,17 @@ export function TableScroller({ children }: TableScrollerProps) {
 						pointerEvents: 'none',
 						position: 'fixed',
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
-						...(scrollerHeight && { height: `${scrollerHeight / 16}rem` }),
+						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
 
 						// Switch between single line at full scroll and overlay shadow at partial scroll
 						...(scrollerRef.current?.scrollLeft === 0
 							? {
 									background: boxPalette.borderMuted,
-									width: '1px',
+									width: pxToRem(1),
 							  }
 							: {
 									background: `linear-gradient(to right, rgba(0, 0, 0, 0.20), transparent)`,
-									width: '1rem',
+									width: pxToRem(16),
 							  }),
 
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
@@ -291,17 +291,17 @@ export function TableScroller({ children }: TableScrollerProps) {
 						position: 'fixed',
 						right: overlayOffsets?.right,
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
-						...(scrollerHeight && { height: `${scrollerHeight / 16}rem` }),
+						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
 
 						// Switch between single line at full scroll and overlay shadow at partial scroll
 						...(isScrolledToEnd
 							? {
 									background: boxPalette.borderMuted,
-									width: '1px',
+									width: pxToRem(1),
 							  }
 							: {
 									background: `linear-gradient(to left, rgba(0, 0, 0, 0.20), transparent)`,
-									width: '1rem',
+									width: pxToRem(16),
 							  }),
 
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
