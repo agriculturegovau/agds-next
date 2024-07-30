@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
 	PaginationButtons,
 	generatePaginationRangeText,
-} from '@ag.ds-next/react/pagination';
+} from '../../../../packages/react/src/pagination';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 
 export const DashboardPagination = () => {

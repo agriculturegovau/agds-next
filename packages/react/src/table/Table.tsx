@@ -69,12 +69,10 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 
 	const calculateOffsets = useCallback(() => {
 		const cells = tableRef.current?.querySelectorAll('td, th');
-		if (!cells || frozenColumns === undefined) return;
+		if (frozenColumns === undefined || !cells) return;
 
-		const numberOfColumns = tableRef.current
-			?.querySelectorAll('tr')
-			?.item(1)
-			.querySelectorAll('td, th').length;
+		const numberOfColumns =
+			tableRef.current?.querySelector('tr')?.children?.length;
 
 		const frozenColumnsData = frozenColumns.reduce(
 			(acc, columnNumber, index) => {
