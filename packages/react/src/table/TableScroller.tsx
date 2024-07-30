@@ -21,7 +21,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
-	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+	const [thumbWidthRatio, setThumbWidthRatio] = useState(1);
 	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
 
 	const repositionThumb = useCallback(() => {
