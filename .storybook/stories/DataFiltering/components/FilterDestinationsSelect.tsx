@@ -1,7 +1,5 @@
-import {
-	ComboboxMulti,
-	COUNTRY_OPTIONS,
-} from '../../../../docs/components/designSystemComponents';
+import { ComboboxMulti } from '../../../../packages/react/src/combobox';
+import { COUNTRY_OPTIONS } from '../../../../docs/components/designSystemComponents';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { tableId } from './DataTable';
 
