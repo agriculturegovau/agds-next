@@ -216,6 +216,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				css={{
 					msOverflowStyle: 'none',
 					overflowX: 'auto',
+					overscrollBehaviorX: 'none',
 					scrollbarWidth: 'none',
 					WebkitOverflowScrolling: 'touch',
 					width: '100%',
