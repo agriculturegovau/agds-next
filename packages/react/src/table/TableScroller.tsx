@@ -225,10 +225,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						},
 					'&::before, &::after': {
 						content: '""',
-						height:
-							(scrollerRef?.current?.offsetHeight &&
-								scrollerRef?.current?.offsetHeight) ||
-							0,
+						height: scrollerRef?.current?.offsetHeight || 0,
 						pointerEvents: 'none',
 						position: 'absolute',
 						top: 0,
