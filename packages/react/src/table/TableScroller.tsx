@@ -231,6 +231,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 						top: 0,
 						transition: `opacity ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 						width: 28,
+						zIndex: 1,
 					},
 					// Left shadow
 					'&::before': {
