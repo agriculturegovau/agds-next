@@ -33,16 +33,14 @@ export const TableHeaderSortable = ({
 	const sortLabel = getSortLabel(sort);
 	return (
 		<Box
+			aria-sort={sortLabel}
 			as="th"
+			borderBottom
+			borderColor="selected"
+			borderBottomWidth={sort ? 'xl' : 'none'}
 			display={display}
 			scope="col"
-			aria-sort={sortLabel}
 			width={width}
-			{...(sort && {
-				borderColor: 'selected',
-				borderBottom: true,
-				borderBottomWidth: 'xl',
-			})}
 		>
 			<Flex
 				alignItems="center"
