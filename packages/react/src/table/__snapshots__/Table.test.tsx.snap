@@ -6,7 +6,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-h6dj2w-boxStyles-TableScroller"
   >
     <div
-      class="css-x9kx5j-boxStyles-TableScroller"
+      class="css-1lltofw-boxStyles-TableScroller"
       tabindex="0"
     >
       <table

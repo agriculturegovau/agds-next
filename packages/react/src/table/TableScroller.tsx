@@ -6,7 +6,7 @@ import {
 	useState,
 } from 'react';
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 import { Stack } from '../stack';
@@ -223,6 +223,45 @@ export function TableScroller({ children }: TableScrollerProps) {
 						{
 							display: 'none',
 						},
+					'&::before, &::after': {
+						content: '""',
+						height:
+							(scrollerRef?.current?.offsetHeight &&
+								scrollerRef?.current?.offsetHeight) ||
+							0,
+						pointerEvents: 'none',
+						position: 'absolute',
+						top: 0,
+						transition: `opacity ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+						width: 28,
+					},
+					// Left shadow
+					'&::before': {
+						background:
+							'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
+						left: 0,
+						opacity:
+							thumbWidthRatio < 1 &&
+							scrollerRef?.current?.scrollLeft &&
+							scrollerRef?.current?.scrollLeft > 0
+								? 1
+								: 0,
+					},
+					// Right shadow
+					'&::after': {
+						background:
+							'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+						opacity:
+							thumbWidthRatio === 1 ||
+							(thumbWidthRatio < 1 &&
+								scrollerRef?.current?.scrollLeft &&
+								scrollerRef.current.scrollLeft +
+									scrollerRef.current.offsetWidth ===
+									scrollerRef.current.scrollWidth)
+								? 0
+								: 1,
+						right: 0,
+					},
 				}}
 				focusRingFor="keyboard"
 				onScroll={repositionThumb}
