@@ -223,43 +223,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 						{
 							display: 'none',
 						},
-					'&::before, &::after': {
-						content: '""',
-						height: scrollerRef?.current?.offsetHeight || 0,
-						pointerEvents: 'none',
-						position: 'absolute',
-						top: 0,
-						transition: `opacity ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-						width: 28,
-						zIndex: 1,
-					},
-					// Left shadow
-					'&::before': {
-						background:
-							'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
-						left: 0,
-						opacity:
-							thumbWidthRatio < 1 &&
-							scrollerRef?.current?.scrollLeft &&
-							scrollerRef?.current?.scrollLeft > 0
-								? 1
-								: 0,
-					},
-					// Right shadow
-					'&::after': {
-						background:
-							'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
-						opacity:
-							thumbWidthRatio === 1 ||
-							(thumbWidthRatio < 1 &&
-								scrollerRef?.current?.scrollLeft &&
-								scrollerRef.current.scrollLeft +
-									scrollerRef.current.offsetWidth ===
-									scrollerRef.current.scrollWidth)
-								? 0
-								: 1,
-						right: 0,
-					},
 				}}
 				focusRingFor="keyboard"
 				onScroll={repositionThumb}
@@ -267,6 +230,26 @@ export function TableScroller({ children }: TableScrollerProps) {
 				tabIndex={0}
 			>
 				{children}
+				<Shadow
+					edge="left"
+					height={scrollerRef?.current?.offsetHeight || 0}
+					isVisible={Boolean(
+						thumbWidthRatio < 1 &&
+							scrollerRef?.current?.scrollLeft &&
+							scrollerRef?.current?.scrollLeft > 0
+					)}
+				/>
+				<Shadow
+					edge="right"
+					height={scrollerRef?.current?.offsetHeight || 0}
+					isVisible={Boolean(
+						thumbWidthRatio < 1 &&
+							scrollerRef?.current?.offsetWidth &&
+							Math.ceil(
+								scrollerRef.current.scrollLeft + scrollerRef.current.offsetWidth
+							) < scrollerRef.current.scrollWidth
+					)}
+				/>
 			</Box>
 			<Flex
 				background="body"
@@ -375,6 +358,41 @@ export function TableScroller({ children }: TableScrollerProps) {
 				</Box>
 			</Flex>
 		</Stack>
+	);
+}
+
+function Shadow({
+	edge,
+	height,
+	isVisible,
+}: {
+	edge: 'left' | 'right';
+	height: number;
+	isVisible: boolean;
+}) {
+	return (
+		<Box
+			css={{
+				height,
+				opacity: isVisible ? 1 : 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				top: 0,
+				transition: `opacity ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+				width: 28,
+				...(edge === 'left'
+					? {
+							background:
+								'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
+							left: 0,
+					  }
+					: {
+							background:
+								'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+							right: 0,
+					  }),
+			}}
+		/>
 	);
 }
 

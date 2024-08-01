@@ -6,7 +6,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-h6dj2w-boxStyles-TableScroller"
   >
     <div
-      class="css-1utumil-boxStyles-TableScroller"
+      class="css-x9kx5j-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
@@ -255,6 +255,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </tr>
         </tbody>
       </table>
+      <div
+        class="css-1sekwdr-boxStyles-Shadow"
+      />
+      <div
+        class="css-6rjxly-boxStyles-Shadow"
+      />
     </div>
     <div
       class="css-1bk2ogi-boxStyles-TableScroller"
