@@ -151,7 +151,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 							<TableHead>
 								<TableRow aria-rowindex={1}>
 									{selectable && (
-										<TableHeader scope="col" width={73}>
+										<TableHeader scope="col" width={`${73 / 16}rem`}>
 											Select
 										</TableHeader>
 									)}
@@ -214,7 +214,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 										}
 									)}
 									{hasActionColumn && (
-										<TableHeader scope="col" width={98}>
+										<TableHeader scope="col" width={`${98 / 16}rem`}>
 											Action
 										</TableHeader>
 									)}
@@ -403,31 +403,31 @@ export const headers: {
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
-		width: 228,
+		width: `${228 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'Assignee',
 		sortKey: 'assignee',
-		width: 175,
+		width: `${175 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'City',
 		sortKey: 'city',
-		width: 210,
+		width: `${210 / 16}rem`,
 		isSortable: false,
 	},
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
-		width: 177,
+		width: `${177 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'Status',
 		sortKey: 'status',
-		width: 160,
+		width: `${160 / 16}rem`,
 		isSortable: true,
 	},
 ];
