@@ -2,16 +2,17 @@ import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { BaseButton } from '../button';
-import { boxPalette, packs, ResponsiveProp } from '../core';
+import { boxPalette, packs, type ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
 
 export type TableHeaderSortableProps = {
-	/** The active direction this column is being sorted by. */
-	sort?: TableSortDirection;
+	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** Callback function for when the column header is clicked. */
 	onClick?: () => void;
+	/** The active direction this column is being sorted by. */
+	sort?: TableSortDirection;
 	/** Sets the horizontal alignment of the content. */
 	textAlign?: 'left' | 'center' | 'right';
 	/** Sets the width of the column. */
@@ -22,8 +23,9 @@ export type TableHeaderSortableProps = {
  * sort the table. */
 export const TableHeaderSortable = ({
 	children,
-	sort,
+	display,
 	onClick,
+	sort,
 	textAlign = 'left',
 	width,
 }: PropsWithChildren<TableHeaderSortableProps>) => {
@@ -32,6 +34,7 @@ export const TableHeaderSortable = ({
 	return (
 		<Box
 			as="th"
+			display={display}
 			scope="col"
 			aria-sort={sortLabel}
 			width={width}
