@@ -20,7 +20,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
           class="css-11khhn7-boxStyles"
         >
           <tr
-            class="css-n2xyn5-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
               aria-sort="ascending"
@@ -152,7 +152,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
           class="css-11khhn7-boxStyles"
         >
           <tr
-            class="css-n2xyn5-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
               aria-sort="descending"
@@ -284,7 +284,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
           class="css-11khhn7-boxStyles"
         >
           <tr
-            class="css-n2xyn5-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
               class="css-79i25n-boxStyles"
