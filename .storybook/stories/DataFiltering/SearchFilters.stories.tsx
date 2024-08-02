@@ -105,6 +105,14 @@ export const TableSmall = {
 	},
 };
 
+// Unless this is here, the initial render takes 15s. Memoising does nothing either
+const dropdown = (
+	<ExampleAccountDropdown
+		selectedBusinessName={'Antfix'}
+		onBusinessChange={console.log}
+	/>
+);
+
 export const TableMedium = {
 	name: 'Table (medium)',
 	params: {
@@ -123,12 +131,7 @@ export const TableMedium = {
 						accountDetails={{
 							name: exampleData.userNames.regular,
 							secondaryText: 'My account',
-							dropdown: (
-								<ExampleAccountDropdown
-									selectedBusinessName={'Antfix'}
-									onBusinessChange={console.log}
-								/>
-							),
+							dropdown,
 						}}
 						badgeLabel="Beta"
 						heading="Export Service"

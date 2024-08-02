@@ -76,8 +76,8 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 
 		const frozenColumnsData = frozenColumns.reduce(
 			(acc, columnNumber, index) => {
-				const prevColumnNumber = frozenColumns[index - 1] || 0;
-				console.log(`prevColumnNumber`, prevColumnNumber);
+				// const prevColumnNumber = frozenColumns[index - 1] || 0;
+				// console.log(`prevColumnNumber`, prevColumnNumber);
 				const isLastColumn = columnNumber === numberOfColumns;
 
 				// const isNextValidColumnNumber =
@@ -119,15 +119,15 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			} as FrozenColumnData
 		);
 
-		console.log(
-			`frozenColumnsData.overlayOffsets`,
-			frozenColumnsData.overlayOffsets
-		);
+		// console.log(
+		// 	`frozenColumnsData.overlayOffsets`,
+		// 	frozenColumnsData.overlayOffsets
+		// );
 
-		console.log(
-			`frozenColumnsData.columnOffsets`,
-			frozenColumnsData.columnOffsets
-		);
+		// console.log(
+		// 	`frozenColumnsData.columnOffsets`,
+		// 	frozenColumnsData.columnOffsets
+		// );
 
 		setOverlayOffsets?.(frozenColumnsData.overlayOffsets);
 		setFrozenColumnsOffsets(frozenColumnsData.columnOffsets);
