@@ -33,7 +33,7 @@ export function TableRow({
 					[`& :nth-child(${columnNumber}):where(td, th)`]: {
 						background: 'inherit',
 						position: 'sticky',
-						zIndex: 1,
+						zIndex: tokens.zIndex.elevated,
 						...(isLastColumn
 							? {
 									right: offsetValue,
@@ -41,6 +41,9 @@ export function TableRow({
 							: {
 									left: offsetValue,
 							  }),
+						'&:has([aria-expanded="true"])': {
+							zIndex: tokens.zIndex.popover,
+						},
 					},
 					// Better way of shadowing?
 					// [`& :nth-child(${columnNumber}):where(td, th)::after`]: {
