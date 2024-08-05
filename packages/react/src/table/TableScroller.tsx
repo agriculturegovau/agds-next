@@ -239,26 +239,24 @@ export function TableScroller({ children }: TableScrollerProps) {
 				<Box
 					data-table-left-overlay="true"
 					css={{
+						background:
+							scrollerRef.current?.scrollLeft === 0
+								? 'transparent'
+								: 'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
+						borderLeftColor: boxPalette.borderMuted,
+						borderLeftStyle: 'solid',
+						borderLeftWidth: tokens.borderWidth.sm,
 						left: overlayOffsets?.left,
 						pointerEvents: 'none',
 						position: 'fixed',
+						width: pxToRem(28),
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
 						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
-
-						// Switch between single line at full scroll and overlay shadow at partial scroll
-						...(scrollerRef.current?.scrollLeft === 0
-							? {
-									background: boxPalette.borderMuted,
-									width: pxToRem(1),
-							  }
-							: {
-									background: `linear-gradient(to right, rgba(0, 0, 0, 0.20), transparent)`,
-									width: pxToRem(16),
-							  }),
 
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 						[maxContainerBreakpointForFrozenColumns]: {
 							'[data-table-left-overlay="true"]': {
+								borderLeftWidth: tokens.borderWidth.none,
 								left: 0,
 							},
 						},
@@ -287,26 +285,23 @@ export function TableScroller({ children }: TableScrollerProps) {
 				<Box
 					data-table-right-overlay="true"
 					css={{
+						background: isScrolledToEnd
+							? 'transparent'
+							: 'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+						borderRightColor: boxPalette.borderMuted,
+						borderRightStyle: 'solid',
+						borderRightWidth: tokens.borderWidth.sm,
 						pointerEvents: 'none',
 						position: 'fixed',
 						right: overlayOffsets?.right,
+						width: pxToRem(28),
 						zIndex: SCROLL_OVERLAY_Z_INDEX,
 						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
-
-						// Switch between single line at full scroll and overlay shadow at partial scroll
-						...(isScrolledToEnd
-							? {
-									background: boxPalette.borderMuted,
-									width: pxToRem(1),
-							  }
-							: {
-									background: `linear-gradient(to left, rgba(0, 0, 0, 0.20), transparent)`,
-									width: pxToRem(16),
-							  }),
 
 						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 						[maxContainerBreakpointForFrozenColumns]: {
 							'[data-table-right-overlay="true"]': {
+								borderRightWidth: tokens.borderWidth.none,
 								right: 0,
 							},
 						},
