@@ -15,6 +15,7 @@ import { useScrollerContext } from './ScrollerContext';
 // const MAX_FIXED_COLUMNS_FROM_LEFT = 1;
 
 export type ColumnOffset = {
+	date: number;
 	columnNumber: number;
 	offsetValue: 0 | `${number}rem`;
 	isLastColumn: boolean;
@@ -23,6 +24,7 @@ export type ColumnOffset = {
 type FrozenColumnData = {
 	columnOffsets: ColumnOffset[];
 	overlayOffsets: {
+		date: number;
 		left: 0 | `${number}rem`;
 		right: 0 | `${number}rem`;
 	};
@@ -74,6 +76,8 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 		const numberOfColumns =
 			tableRef.current?.querySelector('tr')?.children?.length;
 
+		const date = Date.now();
+
 		const frozenColumnsData = frozenColumns.reduce(
 			(acc, columnNumber, index) => {
 				// const prevColumnNumber = frozenColumns[index - 1] || 0;
@@ -92,6 +96,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 							columnOffsets: [
 								...acc.columnOffsets,
 								{
+									date: date,
 									columnNumber,
 									isLastColumn,
 									offsetValue:
@@ -101,6 +106,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 								},
 							],
 							overlayOffsets: {
+								date,
 								left: isLastColumn
 									? acc.overlayOffsets.left
 									: (`${(cells[index].clientWidth + 73) / 16}rem` as const),
@@ -115,7 +121,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 			},
 			{
 				columnOffsets: [],
-				overlayOffsets: { left: 0, right: 0 },
+				overlayOffsets: { date, left: 0, right: 0 },
 			} as FrozenColumnData
 		);
 

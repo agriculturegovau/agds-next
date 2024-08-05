@@ -26,27 +26,28 @@ export function TableRow({
 	// 	tableLayout,
 	// });
 	const frozenColumnStyles = frozenColumnsOffsets?.reduce(
-		(acc, { columnNumber, offsetValue, isLastColumn }) => {
+		(acc, { columnNumber, date, offsetValue, isLastColumn }) => {
 			return {
 				[minContainerBreakpointForFrozenColumns]: {
 					...acc[minContainerBreakpointForFrozenColumns],
-					[`& :nth-child(${columnNumber}):where(td, th)`]: {
-						background: 'inherit',
-						position: 'sticky !important',
-						zIndex: tokens.zIndex.elevated,
-						...(isLastColumn
-							? {
-									right: offsetValue,
-							  }
-							: {
-									left: offsetValue,
-							  }),
-						'&:has([aria-expanded="true"])': {
-							zIndex: tokens.zIndex.popover,
+					[`& :nth-child(${columnNumber}):not([data-date="${date}"]):where(td, th)`]:
+						{
+							background: 'inherit',
+							position: 'sticky !important',
+							zIndex: tokens.zIndex.elevated,
+							...(isLastColumn
+								? {
+										right: offsetValue,
+								  }
+								: {
+										left: offsetValue,
+								  }),
+							'&:has([aria-expanded="true"])': {
+								zIndex: tokens.zIndex.popover,
+							},
 						},
-					},
 					// Better way of shadowing?
-					// [`& :nth-child(${columnNumber}):where(td, th)::after`]: {
+					// [`& :nth-child(${columnNumber}):where(td, th)::before`]: {
 					// 	content: "''",
 					// 	position: 'absolute',
 					// 	width: '1rem',
@@ -55,12 +56,12 @@ export function TableRow({
 					// 	...(isLastColumn
 					// 		? {
 					// 				background:
-					// 					'linear-gradient(to left, rgba(0, 0, 0, 0.20), transparent)',
+					// 					'linear-gradient(to left, rgba(255, 0, 0, 0.20), transparent)',
 					// 				right: '100%',
 					// 		  }
 					// 		: {
 					// 				background:
-					// 					'linear-gradient(to right, rgba(0, 0, 0, 0.20), transparent)',
+					// 					'linear-gradient(to right, rgba(0, 255, 0, 0.20), transparent)',
 					// 				left: '100%',
 					// 		  }),
 					// },

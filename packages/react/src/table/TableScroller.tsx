@@ -220,6 +220,9 @@ export function TableScroller({ children }: TableScrollerProps) {
 		scrollerRef.current &&
 		Math.ceil(scrollerRef.current.scrollLeft) >=
 			scrollerRef.current.scrollWidth - scrollerRef.current.clientWidth;
+	const hasScroll =
+		scrollerRef.current &&
+		scrollerRef.current.scrollWidth > scrollerRef.current.clientWidth;
 
 	return (
 		<ScrollerContext.Provider
@@ -236,32 +239,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 					width: '100%',
 				}}
 			>
-				<Box
-					data-table-left-overlay="true"
-					css={{
-						background:
-							scrollerRef.current?.scrollLeft === 0
-								? 'transparent'
-								: 'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
-						borderLeftColor: boxPalette.borderMuted,
-						borderLeftStyle: 'solid',
-						borderLeftWidth: tokens.borderWidth.sm,
-						left: overlayOffsets?.left,
-						pointerEvents: 'none',
-						position: 'fixed',
-						width: pxToRem(28),
-						zIndex: SCROLL_OVERLAY_Z_INDEX,
-						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
-
-						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
-						[maxContainerBreakpointForFrozenColumns]: {
-							'[data-table-left-overlay="true"]': {
-								borderLeftWidth: tokens.borderWidth.none,
-								left: 0,
-							},
-						},
-					}}
-				/>
 				<Box
 					css={{
 						msOverflowStyle: 'none',
@@ -283,26 +260,60 @@ export function TableScroller({ children }: TableScrollerProps) {
 					{children}
 				</Box>
 				<Box
+					data-table-left-overlay="true"
+					css={{
+						[`:not([data-date="${overlayOffsets?.date}"])`]: {
+							background:
+								scrollerRef.current?.scrollLeft === 0
+									? 'transparent'
+									: 'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
+							borderLeftColor: boxPalette.borderMuted,
+							borderLeftStyle: 'solid',
+							borderLeftWidth: hasScroll
+								? tokens.borderWidth.sm
+								: tokens.borderWidth.none,
+							left: overlayOffsets?.left,
+							pointerEvents: 'none',
+							position: 'fixed',
+							width: pxToRem(28),
+							zIndex: SCROLL_OVERLAY_Z_INDEX,
+							...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
+
+							// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
+							[maxContainerBreakpointForFrozenColumns]: {
+								[`[data-table-left-overlay="true"]`]: {
+									borderLeftWidth: tokens.borderWidth.none,
+									left: 0,
+								},
+							},
+						},
+					}}
+				/>
+				<Box
 					data-table-right-overlay="true"
 					css={{
-						background: isScrolledToEnd
-							? 'transparent'
-							: 'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
-						borderRightColor: boxPalette.borderMuted,
-						borderRightStyle: 'solid',
-						borderRightWidth: tokens.borderWidth.sm,
-						pointerEvents: 'none',
-						position: 'fixed',
-						right: overlayOffsets?.right,
-						width: pxToRem(28),
-						zIndex: SCROLL_OVERLAY_Z_INDEX,
-						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
+						[`:not([data-date="${overlayOffsets?.date}"])`]: {
+							background: isScrolledToEnd
+								? 'transparent'
+								: 'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+							borderRightColor: boxPalette.borderMuted,
+							borderRightStyle: 'solid',
+							borderRightWidth: hasScroll
+								? tokens.borderWidth.sm
+								: tokens.borderWidth.none,
+							pointerEvents: 'none',
+							position: 'fixed',
+							right: overlayOffsets?.right,
+							width: pxToRem(28),
+							zIndex: SCROLL_OVERLAY_Z_INDEX,
+							...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
 
-						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
-						[maxContainerBreakpointForFrozenColumns]: {
-							'[data-table-right-overlay="true"]': {
-								borderRightWidth: tokens.borderWidth.none,
-								right: 0,
+							// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
+							[maxContainerBreakpointForFrozenColumns]: {
+								[`[data-table-right-overlay="true"]`]: {
+									borderRightWidth: tokens.borderWidth.none,
+									right: 0,
+								},
 							},
 						},
 					}}

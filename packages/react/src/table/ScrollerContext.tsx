@@ -1,6 +1,7 @@
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
 
 type OverlayOffsets = {
+	date: number;
 	bottom?: 0 | `${number}rem`;
 	left?: 0 | `${number}rem`;
 	right?: 0 | `${number}rem`;

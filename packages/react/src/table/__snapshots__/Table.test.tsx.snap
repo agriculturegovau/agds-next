@@ -6,10 +6,6 @@ exports[`Table with TableCaption renders correctly 1`] = `
     class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
-      class="css-1lba3fo-boxStyles-TableScroller"
-      data-table-left-overlay="true"
-    />
-    <div
       class="css-13n67m1-boxStyles-TableScroller"
       tabindex="0"
     >
@@ -389,7 +385,11 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </table>
     </div>
     <div
-      class="css-e92tmt-boxStyles-TableScroller"
+      class="css-pg8osy-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
+    <div
+      class="css-1trjv6u-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
