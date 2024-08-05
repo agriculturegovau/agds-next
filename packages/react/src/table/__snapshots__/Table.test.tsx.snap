@@ -23,31 +23,31 @@ exports[`Table with TableCaption renders correctly 1`] = `
           Population of Australian states and territories, December 2015
         </caption>
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1k30sgi-boxStyles-TableHead"
         >
           <tr
             class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1gy3b36-boxStyles"
+              class="css-ueyohx-boxStyles-TableHeader"
               scope="col"
             >
               Location
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Population
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Change over previous year %
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Change over previous decade %

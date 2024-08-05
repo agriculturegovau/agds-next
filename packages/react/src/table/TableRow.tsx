@@ -32,7 +32,7 @@ export function TableRow({
 					...acc[minContainerBreakpointForFrozenColumns],
 					[`& :nth-child(${columnNumber}):where(td, th)`]: {
 						background: 'inherit',
-						position: 'sticky',
+						position: 'sticky !important',
 						zIndex: tokens.zIndex.elevated,
 						...(isLastColumn
 							? {

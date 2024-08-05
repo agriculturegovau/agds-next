@@ -17,14 +17,14 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
         class="css-13kilxg-boxStyles-Table"
       >
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1k30sgi-boxStyles-TableHead"
         >
           <tr
             class="css-cyv65r-TableRow"
           >
             <th
               aria-sort="ascending"
-              class="css-cgixy1-boxStyles"
+              class="css-62ptbb-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
@@ -149,14 +149,14 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
         class="css-13kilxg-boxStyles-Table"
       >
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1k30sgi-boxStyles-TableHead"
         >
           <tr
             class="css-cyv65r-TableRow"
           >
             <th
               aria-sort="descending"
-              class="css-cgixy1-boxStyles"
+              class="css-62ptbb-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
@@ -281,13 +281,13 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
         class="css-13kilxg-boxStyles-Table"
       >
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1k30sgi-boxStyles-TableHead"
         >
           <tr
             class="css-cyv65r-TableRow"
           >
             <th
-              class="css-79i25n-boxStyles"
+              class="css-1hekcr5-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
