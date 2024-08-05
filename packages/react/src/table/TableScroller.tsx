@@ -218,7 +218,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const scrollerHeight = scrollerRef.current?.scrollHeight;
 	const isScrolledToEnd =
 		scrollerRef.current &&
-		Math.floor(scrollerRef.current.scrollLeft) ===
+		Math.ceil(scrollerRef.current.scrollLeft) >=
 			scrollerRef.current.scrollWidth - scrollerRef.current.clientWidth;
 
 	return (
