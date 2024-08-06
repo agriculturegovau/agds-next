@@ -282,8 +282,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 							// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 							[maxContainerBreakpointForFrozenColumns]: {
 								[`[data-table-left-overlay="true"]`]: {
-									borderLeftWidth: tokens.borderWidth.none,
-									left: 0,
+									borderLeftWidth: `${tokens.borderWidth.none} !important`,
+									left: '0 !important',
 								},
 							},
 						},
@@ -311,8 +311,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 							// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
 							[maxContainerBreakpointForFrozenColumns]: {
 								[`[data-table-right-overlay="true"]`]: {
-									borderRightWidth: tokens.borderWidth.none,
-									right: 0,
+									borderRightWidth: `${tokens.borderWidth.none} !important`,
+									right: '0 !important',
 								},
 							},
 						},

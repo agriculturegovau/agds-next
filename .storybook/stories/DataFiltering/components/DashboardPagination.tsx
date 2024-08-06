@@ -193,6 +193,8 @@ export const DashboardPagination = ({
 									perPage: 10,
 								});
 
+								setActiveColumns?.(defaultActiveColumns);
+
 								closeDrawer();
 							}}
 							variant="secondary"

@@ -109,7 +109,9 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 								date,
 								left: isLastColumn
 									? acc.overlayOffsets.left
-									: (`${(cells[index].clientWidth + 73) / 16}rem` as const),
+									: (`${
+											(cells[index].clientWidth + cells[0].clientWidth) / 16
+									  }rem` as const),
 								right: isLastColumn
 									? (`${
 											cells.item(columnNumber - 1).clientWidth / 16
