@@ -63,7 +63,7 @@ export const task1Step3FormSchema = z
 		suburbTownCity: zodString('Enter your suburb, town or city'),
 		state: zodString('Enter your state'),
 		postcode: zodString('Enter your postcode').length(4, {
-			message: 'An australian postcode is 4 digits long',
+			message: 'An Australian postcode is 4 digits long',
 		}),
 		// postal address
 		isPostalAddressSameAsStreetAddress: z.boolean(),
@@ -102,7 +102,7 @@ export const task1Step3FormSchema = z
 				addIssue(
 					'postalPostcode',
 					'postcode',
-					'An australian postcode is 4 digits long'
+					'An Australian postcode is 4 digits long'
 				);
 			}
 		}

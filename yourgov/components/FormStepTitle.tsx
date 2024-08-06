@@ -10,7 +10,7 @@ export type FormStepTitleProps = {
 	stepTitle: string;
 	introduction?: ReactNode;
 	callToAction?: ReactNode;
-	hideRequiredFieldsMessage: boolean | undefined;
+	hideRequiredFieldsMessage?: boolean;
 };
 
 // Based on PageTitle, but with a different heading levels

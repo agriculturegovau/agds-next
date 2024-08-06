@@ -50,7 +50,8 @@ export function GlobalFormProvider({
 	);
 
 	const formTitle = `Apply for a ${formState.type} permit`;
-	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${formState.type}`;
+	const homePageUrl =
+		'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
 	const getTaskStatus = useCallback(
 		(taskKey: TaskKey): TaskListItemStatus => {

@@ -83,8 +83,9 @@ export function parseDateField(value: Date | string | undefined) {
 
 const phoneError = {
 	lettersOrSymbols: 'Phone number must not include letters or symbols',
-	start0402: `Mobile numbers must begin with '04', landline numbers must begin with '02'`,
-	digitCount: 'The Phone number is expected to be 10 digits long',
+	start0402:
+		'Mobile numbers must begin with ‘04’, landline numbers must begin with ‘02’',
+	digitCount: 'The Phone number should be 10 digits long',
 };
 
 export function zodPhoneField(message = 'Enter a phone number') {
