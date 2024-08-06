@@ -169,7 +169,7 @@ export const task1DefaultFormState: DeepPartial<Task1FormState> = {
 	step1: {
 		firstName: 'Charlie',
 		lastName: 'Walker',
-		email: 'cwalker@email.com',
+		email: 'c.walker@email.com',
 		completed: false,
 	},
 	step3: {
