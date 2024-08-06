@@ -25,7 +25,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1smg743-BreadcrumbsDivider"
+                  class="css-b69cs4-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -40,7 +40,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-ma0bjl-TextLink"
+                  class="css-koqz57-TextLink"
                   href="#"
                 >
                   Section 1
@@ -51,7 +51,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1smg743-BreadcrumbsDivider"
+                  class="css-b69cs4-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -68,7 +68,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 <button
                   aria-expanded="false"
                   aria-label="Expand list"
-                  class="css-1idhw1e-BaseButton-boxStyles"
+                  class="css-eqfuua-BaseButton-boxStyles"
                   type="button"
                 >
                   …
@@ -79,7 +79,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1smg743-BreadcrumbsDivider"
+                  class="css-b69cs4-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -94,7 +94,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-ma0bjl-TextLink"
+                  class="css-koqz57-TextLink"
                   href="#"
                 >
                   Category page
@@ -105,7 +105,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1smg743-BreadcrumbsDivider"
+                  class="css-b69cs4-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"

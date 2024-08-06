@@ -18,7 +18,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-ma0bjl-TextLink"
+              class="css-koqz57-TextLink"
               href="#"
             >
               Home
@@ -28,7 +28,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-ma0bjl-TextLink"
+              class="css-koqz57-TextLink"
               href="#"
             >
               Terms and conditions
@@ -38,7 +38,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-ma0bjl-TextLink"
+              class="css-koqz57-TextLink"
               href="#"
             >
               Privacy policy
@@ -48,7 +48,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-ma0bjl-TextLink"
+              class="css-koqz57-TextLink"
               href="#"
             >
               A really long link title
@@ -58,15 +58,15 @@ exports[`Footer renders correctly 1`] = `
       </nav>
       <hr
         aria-hidden="true"
-        class="css-jcokw4-FooterDivider"
+        class="css-vsn6gl-boxStyles-FooterDivider"
       />
       <span
-        class="css-1sbhbx-boxStyles-Text"
+        class="css-1oewark-boxStyles"
       >
         We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
       </span>
       <span
-        class="css-1sbhbx-boxStyles-Text"
+        class="css-1oewark-boxStyles"
       >
         © 2024 Department of Agriculture, Fisheries and Forestry
       </span>

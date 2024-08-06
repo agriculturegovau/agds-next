@@ -6,8 +6,8 @@ const meta: Meta<typeof Switch> = {
 	title: 'forms/Switch',
 	component: Switch,
 	render: function Render(props) {
-		const [isChecked, setChecked] = useState(false);
-		return <Switch {...props} checked={isChecked} onChange={setChecked} />;
+		const [isChecked, setIsChecked] = useState(false);
+		return <Switch {...props} checked={isChecked} onChange={setIsChecked} />;
 	},
 };
 

@@ -14,14 +14,14 @@ exports[`Accordion renders correctly 1`] = `
         <button
           aria-controls="accordion-:r0:-body"
           aria-expanded="false"
-          class="css-ira57b-BaseButton-boxStyles-AccordionTitle"
+          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r0:-title"
           type="button"
         >
           Accordion 1
           <svg
             aria-hidden="true"
-            class="css-19hlnw5-AccordionTitle"
+            class="css-wg7i63-AccordionTitle"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -49,7 +49,7 @@ exports[`Accordion renders correctly 1`] = `
             class="css-1u803sw-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-dbscsh-boxStyles"
             >
               Accordion 1 text content.
             </p>
@@ -66,14 +66,14 @@ exports[`Accordion renders correctly 1`] = `
         <button
           aria-controls="accordion-:r1:-body"
           aria-expanded="false"
-          class="css-ira57b-BaseButton-boxStyles-AccordionTitle"
+          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r1:-title"
           type="button"
         >
           Accordion 2
           <svg
             aria-hidden="true"
-            class="css-19hlnw5-AccordionTitle"
+            class="css-wg7i63-AccordionTitle"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -101,7 +101,7 @@ exports[`Accordion renders correctly 1`] = `
             class="css-1u803sw-boxStyles"
           >
             <p
-              class="css-6j1v6l-boxStyles-Text"
+              class="css-dbscsh-boxStyles"
             >
               Accordion 2 text content.
             </p>

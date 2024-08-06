@@ -8,10 +8,10 @@ import { AppLayoutFooter, AppLayoutFooterDivider } from './AppLayoutFooter';
 const meta: Meta<typeof AppLayoutFooter> = {
 	title: 'Layout/AppLayout/AppLayoutFooter',
 	component: AppLayoutFooter,
-	render: function Render() {
+	render: function Render(props) {
 		const year = useMemo(() => new Date().getFullYear(), []);
 		return (
-			<AppLayoutFooter>
+			<AppLayoutFooter {...props}>
 				<nav aria-label="footer">
 					<LinkList
 						links={[
@@ -22,7 +22,7 @@ const meta: Meta<typeof AppLayoutFooter> = {
 							},
 							{
 								label: 'Playroom',
-								href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+								href: 'https://design-system.agriculture.gov.au/playroom',
 							},
 							{
 								label: 'Starter kit',
@@ -51,3 +51,9 @@ export default meta;
 type Story = StoryObj<typeof AppLayoutFooter>;
 
 export const Basic: Story = {};
+
+export const BodyAltBackground: Story = {
+	args: {
+		background: 'bodyAlt',
+	},
+};

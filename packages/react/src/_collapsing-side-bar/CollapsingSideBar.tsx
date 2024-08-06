@@ -1,49 +1,50 @@
 import { PropsWithChildren, ReactNode, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { BaseButton } from '../button';
+import { Box, type BoxProps } from '../box';
 import {
+	packs,
 	tokens,
 	usePrefersReducedMotion,
 	useToggleState,
-	useWindowSize,
-} from '@ag.ds-next/react/core';
-import { backgroundColorMap, Box } from '@ag.ds-next/react/box';
-import { mapResponsiveProp, mq } from '@ag.ds-next/react/core';
-import { BaseButton } from '@ag.ds-next/react/button';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Stack } from '@ag.ds-next/react/stack';
-import { ChevronDownIcon } from '@ag.ds-next/react/icon';
+} from '../core';
+import { ChevronDownIcon } from '../icon';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
+import { Text } from '../text';
 import {
-	hoverColorMap,
 	CollapsingSideBarBackground,
-	collapsingSideBarLocalPalette,
-	collapsingSideBarLocalPaletteVars,
+	collapsingSideBarHoverProp,
+	collapsingSideBarHoverVar,
+	hoverColorMap,
 	useCollapsingSideBarIds,
 } from './utils';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
-	/** The aria-label for the CollapsingSideBar. */
-	'aria-label'?: string;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
 	background?: CollapsingSideBarBackground;
-	/** Used as the title of the expand/collapse trigger on smaller screen sizes. */
-	collapseButtonLabel: string;
-	/** The title of the CollapsingSideBar. Place a CollapsingSideBarTitle here unless you implement something custom. */
-	title?: ReactNode;
-	/** The sub title of the CollapsingSideBar. */
+	/** A custom element to use instead of title and subTitle. To make this accessible, it should render as an h2. */
+	customTitleElement?: ReactNode;
+	/** The gap between the small title/subTitle and children. */
+	gap?: BoxProps['gap'];
+	/** The subTitle of the CollapsingSideBar. */
 	subTitle?: string;
+	/** The title of the CollapsingSideBar. Still required even when using customTitleElement. */
+	title: string;
 }>;
 
 export function CollapsingSideBar({
-	as = 'div',
-	'aria-label': ariaLabel,
+	as = 'section',
 	background = 'body',
 	children,
-	collapseButtonLabel,
+	customTitleElement,
+	gap = { xs: 0, md: 1 },
+	subTitle,
 	title,
 }: CollapsingSideBarProps) {
-	const { bodyId, buttonId } = useCollapsingSideBarIds();
+	const { bodyId, headingId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
 
@@ -51,7 +52,7 @@ export function CollapsingSideBar({
 	const animatedHeight = useSpring({
 		from: { display: 'none', height: 0 },
 		to: async (next) => {
-			// Show the element so it's height can be animated
+			// Show the element so its height can be animated
 			if (isOpen) await next({ display: 'block', overflow: 'hidden' });
 			// Animate the elements height
 			await next({
@@ -68,136 +69,122 @@ export function CollapsingSideBar({
 		},
 	});
 
-	const { windowWidth } = useWindowSize();
-	const isMobile = (windowWidth || 0) <= tokens.breakpoint.lg - 1;
-
 	return (
-		<CollapsingSideBarContainer
+		<Stack
 			as={as}
+			aria-labelledby={headingId}
 			background={background}
-			ariaLabel={ariaLabel}
+			css={{
+				[collapsingSideBarHoverProp]: hoverColorMap[background],
+			}}
+			gap={gap}
 		>
-			{title}
-			<SideBarCollapseButton
-				isOpen={isOpen}
-				onClick={onToggle}
-				ariaControls={bodyId}
-				id={buttonId}
-			>
-				{collapseButtonLabel}
-			</SideBarCollapseButton>
+			<Box css={{ position: 'relative' }}>
+				<Stack
+					css={{
+						// Make the accesible heading appear the same size as the button for a screen reader's virtual cursor
+						inset: 0,
+						position: 'absolute',
+						[tokens.mediaQuery.min.md]: {
+							position: 'static',
+						},
+					}}
+					gap={0.5}
+					paddingX={customTitleElement ? undefined : { xs: 0.75, md: 0 }}
+					paddingY={customTitleElement ? undefined : { xs: 1, md: 0 }}
+					id={headingId}
+				>
+					{customTitleElement || (
+						<>
+							<Text
+								as="h2"
+								color="text"
+								fontSize="md"
+								fontWeight="bold"
+								lineHeight="heading"
+							>
+								{title}
+							</Text>
+							{subTitle && (
+								<Text color="muted" fontSize="xs">
+									{subTitle}
+								</Text>
+							)}
+						</>
+					)}
+				</Stack>
+				<Box
+					aria-controls={bodyId}
+					aria-describedby={headingId}
+					aria-expanded={isOpen}
+					aria-label={`${title} (Expand/Collapse)`}
+					as={BaseButton}
+					background={background}
+					borderBottom
+					css={{
+						position: 'relative',
+						':hover': {
+							background: collapsingSideBarHoverVar,
+						},
+						[tokens.mediaQuery.min.md]: {
+							display: 'none',
+						},
+					}}
+					focusRingFor="keyboard"
+					onClick={onToggle}
+					width="100%"
+				>
+					<Flex
+						alignItems="center"
+						as="span"
+						gap={1}
+						justifyContent="space-between"
+						paddingX={0.75}
+						paddingY={1}
+					>
+						<Stack as="span" gap={0.5}>
+							<Text
+								color="action"
+								css={packs.underline}
+								fontSize="md"
+								fontWeight="bold"
+								lineHeight="heading"
+							>
+								{title}
+							</Text>
+							{subTitle && (
+								<Text color="muted" fontSize="xs">
+									{subTitle}
+								</Text>
+							)}
+						</Stack>
+						<ChevronDownIcon
+							css={{
+								transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+								transform: `rotate(${isOpen ? 180 : 0}deg)`,
+							}}
+							weight="bold"
+						/>
+					</Flex>
+				</Box>
+			</Box>
 			<animated.div
 				id={bodyId}
-				// As this component looks similar to an accordion in smaller screen sizes, we need to conditionally add some aria attributes
-				{...(isMobile && { role: 'region', 'aria-labelledby': buttonId })}
-				style={animatedHeight}
 				css={{
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
-						overflow: 'unset',
 						display: 'block !important',
 						height: 'auto !important',
+						overflow: 'unset',
 					},
 				}}
+				style={animatedHeight}
 			>
 				<Box ref={ref}>{children}</Box>
 			</animated.div>
-		</CollapsingSideBarContainer>
+		</Stack>
 	);
 }
 
 /** The HTML element to render the CollapsingSideBar as. */
-type CollapsingSideBarContainerElementType =
-	| 'aside'
-	| 'nav'
-	| 'section'
-	| 'div';
-
-type CollapsingSideBarContainerProps = PropsWithChildren<{
-	as: CollapsingSideBarContainerElementType;
-	ariaLabel?: string;
-	background: CollapsingSideBarBackground;
-}>;
-
-const CollapsingSideBarContainer = ({
-	as,
-	ariaLabel,
-	background,
-	children,
-}: CollapsingSideBarContainerProps) => {
-	const hoverColor = hoverColorMap[background];
-	return (
-		<Stack
-			as={as}
-			aria-label={ariaLabel}
-			background={background}
-			gap={{ xs: 0, md: 1 }}
-			css={mq({
-				[collapsingSideBarLocalPaletteVars.hover]: mapResponsiveProp(
-					hoverColor,
-					(t) => backgroundColorMap[t]
-				),
-			})}
-		>
-			{children}
-		</Stack>
-	);
-};
-
-type SideBarCollapseButtonProps = PropsWithChildren<{
-	ariaControls: string;
-	id: string;
-	isOpen: boolean;
-	onClick: () => void;
-}>;
-
-/** Button that toggles the CollapsingSideBar. */
-export const SideBarCollapseButton = ({
-	ariaControls,
-	children,
-	id,
-	isOpen,
-	onClick,
-}: SideBarCollapseButtonProps) => {
-	return (
-		<Flex
-			as={BaseButton}
-			aria-controls={ariaControls}
-			aria-expanded={isOpen}
-			onClick={onClick}
-			id={id}
-			color="action"
-			fontSize="md"
-			lineHeight="heading"
-			fontWeight="bold"
-			paddingY={1}
-			paddingX={{
-				xs: 0.75,
-				md: 0,
-			}}
-			justifyContent="space-between"
-			alignItems="center"
-			width="100%"
-			link
-			focus
-			borderBottom
-			css={{
-				'&:hover': {
-					background: collapsingSideBarLocalPalette.hover,
-				},
-				[tokens.mediaQuery.min.md]: {
-					display: 'none',
-				},
-			}}
-		>
-			{children}
-			<ChevronDownIcon
-				weight="bold"
-				css={{
-					transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-					transform: `rotate(${isOpen ? 180 : 0}deg)`,
-				}}
-			/>
-		</Flex>
-	);
-};
+type CollapsingSideBarContainerElementType = 'aside' | 'nav' | 'section';

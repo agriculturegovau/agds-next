@@ -1,10 +1,6 @@
 import { ReactNode } from 'react';
-import { Box } from '@ag.ds-next/react/box';
+import { TableScroller } from './TableScroller';
 
 export const TableWrapper = ({ children }: { children: ReactNode }) => {
-	return (
-		<Box css={{ overflowX: 'auto' }} focus tabIndex={0}>
-			{children}
-		</Box>
-	);
+	return <TableScroller>{children}</TableScroller>;
 };

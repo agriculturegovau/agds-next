@@ -2,38 +2,71 @@
 
 exports[`SideNav renders correctly 1`] = `
 <div>
-  <div
-    class="css-109i52p-boxStyles-CollapsingSideBarContainer"
+  <section
+    aria-labelledby="collapsing-side-bar-:r1:-heading"
+    class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
-    <button
-      aria-controls="collapsing-side-bar-:r1:-body"
-      aria-expanded="false"
-      class="css-15g5ot9-BaseButton-boxStyles-SideBarCollapseButton"
-      id="collapsing-side-bar-:r1:-button"
-      type="button"
-    >
-      In this section
-      <svg
-        aria-hidden="true"
-        class="css-1te2wbi-SideBarCollapseButton"
-        clip-rule="evenodd"
-        fill-rule="evenodd"
-        focusable="false"
-        height="24"
-        role="img"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <polyline
-          points="6 9 12 15 18 9"
-        />
-      </svg>
-    </button>
     <div
-      class="css-1x3p89f-CollapsingSideBar"
+      class="css-bmr02n-boxStyles-CollapsingSideBar"
+    >
+      <div
+        class="css-lr9d04-boxStyles-CollapsingSideBar"
+        id="collapsing-side-bar-:r1:-heading"
+      >
+        <h2
+          class="css-m2oixi-boxStyles-SideNav"
+          id="sideNav-:r0:-title"
+        >
+          <span
+            class="css-1jga52b-boxStyles"
+          >
+            Lodging your tax return
+          </span>
+        </h2>
+      </div>
+      <button
+        aria-controls="collapsing-side-bar-:r1:-body"
+        aria-describedby="collapsing-side-bar-:r1:-heading"
+        aria-expanded="false"
+        aria-label="Lodging your tax return (Expand/Collapse)"
+        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        type="button"
+      >
+        <span
+          class="css-1eiy0fa-boxStyles"
+        >
+          <span
+            class="css-1wcx0lf-boxStyles"
+          >
+            <span
+              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+            >
+              Lodging your tax return
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            class="css-ln9yj9-CollapsingSideBar"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              points="6 9 12 15 18 9"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="css-3b4a55-CollapsingSideBar"
       id="collapsing-side-bar-:r1:-body"
-      style="display: none; height: 0px; overflow: hidden;"
+      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -41,11 +74,9 @@ exports[`SideNav renders correctly 1`] = `
         <nav
           aria-labelledby="sideNav-:r0:-title"
           class="css-zipzg2-boxStyles"
-          id="sideNav-:r0:-nav"
         >
-          <h2
-            class="css-dueube-boxStyles"
-            id="sideNav-:r0:-title"
+          <span
+            class="css-dej9q4-boxStyles"
           >
             <a
               class="css-xmyg48-boxStyles-SideNavTitle"
@@ -53,7 +84,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               Lodging your tax return
             </a>
-          </h2>
+          </span>
           <ul
             class="css-79i25n-boxStyles"
           >
@@ -61,10 +92,12 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/welcome"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Welcome
                 </span>
               </a>
@@ -73,10 +106,12 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/do-you-need-to-lodge-a-tax-return"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Do you need to lodge a tax return?
                 </span>
               </a>
@@ -85,43 +120,43 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/lodge-online"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Lodge online
                 </span>
-              </a>
-              <ul
-                class="css-79i25n-boxStyles"
-              >
-                <li
-                  class="css-0"
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Has 1 sub-level link."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <a
-                    class="css-esqyjf-boxStyles-SideNavLink"
-                    href="/lodge-online/pre-filling"
-                  >
-                    <span
-                      aria-hidden="true"
-                    >
-                      –
-                    </span>
-                    <span>
-                      Pre-filling your online tax return
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                  <polyline
+                    points="9 18 15 12 9 6"
+                  />
+                </svg>
+              </a>
             </li>
             <li
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/whats-new-for-individuals"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   What’s new for individuals
                 </span>
               </a>
@@ -130,25 +165,46 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-12injsc-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/why-you-may-receive-a-tax-bill"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   Why you may receive a tax bill
                 </span>
               </a>
             </li>
             <li
-              class="css-1aajr8x-SideNavListItem"
+              class="css-1bonpgi-SideNavListItem"
             >
               <a
                 aria-current="page"
-                class="css-10q8mzo-boxStyles-SideNavLink"
+                class="css-johbbs-boxStyles-SideNavLink"
                 href="/in-detail"
               >
-                <span>
+                <span
+                  class="css-127d72z-SideNavLink"
+                >
                   In detail
                 </span>
+                <svg
+                  aria-hidden="false"
+                  aria-label=". Sub-level links below."
+                  class="css-1xxw2aa-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
               </a>
               <ul
                 class="css-79i25n-boxStyles"
@@ -165,48 +221,29 @@ exports[`SideNav renders correctly 1`] = `
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Record keeping
                     </span>
+                    <svg
+                      aria-hidden="false"
+                      aria-label=". Has 2 sub-level links."
+                      class="css-xzevu4-SideNavLink"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <polyline
+                        points="9 18 15 12 9 6"
+                      />
+                    </svg>
                   </a>
-                  <ul
-                    class="css-79i25n-boxStyles"
-                  >
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/tax"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span>
-                          Keeping your tax records
-                        </span>
-                      </a>
-                    </li>
-                    <li
-                      class="css-0"
-                    >
-                      <a
-                        class="css-qh1skz-boxStyles-SideNavLink"
-                        href="/in-detail/record-keeping/incorrect-amounts"
-                      >
-                        <span
-                          aria-hidden="true"
-                        >
-                          —
-                        </span>
-                        <span>
-                          Incorrect amounts
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li
                   class="css-0"
@@ -220,7 +257,9 @@ exports[`SideNav renders correctly 1`] = `
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Tax receipt
                     </span>
                   </a>
@@ -230,14 +269,16 @@ exports[`SideNav renders correctly 1`] = `
                 >
                   <a
                     class="css-esqyjf-boxStyles-SideNavLink"
-                    href="/pre-fill availability"
+                    href="/pre-fill-availability"
                   >
                     <span
                       aria-hidden="true"
                     >
                       –
                     </span>
-                    <span>
+                    <span
+                      class="css-127d72z-SideNavLink"
+                    >
                       Pre-fill availability
                     </span>
                   </a>
@@ -248,6 +289,6 @@ exports[`SideNav renders correctly 1`] = `
         </nav>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;

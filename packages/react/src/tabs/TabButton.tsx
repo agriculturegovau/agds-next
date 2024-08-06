@@ -76,7 +76,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 			aria-controls={panelId}
 			paddingX={1.5}
 			paddingY={0.75}
-			focus
+			focusRingFor="keyboard"
 			css={{
 				position: 'relative',
 				display: 'flex',
@@ -129,7 +129,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 						borderBottomWidth: tokens.borderWidth.sm,
 					},
 
-					':before': {
+					'::before': {
 						content: "''",
 						position: 'absolute',
 						top: 0,
@@ -150,7 +150,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 					borderColor: boxPalette.border,
 					borderRadius: `${tokens.borderRadius}px ${tokens.borderRadius}px 0 0`,
 					...(isSelected && {
-						':before': {
+						'::before': {
 							content: "''",
 							position: 'absolute',
 							top: 0,
@@ -159,7 +159,7 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 							height: tokens.borderWidth.xl,
 							background: boxPalette.selected,
 						},
-						':after': {
+						'::after': {
 							content: "''",
 							position: 'absolute',
 							bottom: -1,

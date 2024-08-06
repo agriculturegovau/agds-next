@@ -65,6 +65,8 @@
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
+// It's safe to import `useId` here because this is our fallback generator
+// eslint-disable-next-line no-restricted-imports
 import * as React from 'react';
 import { useIsomorphicLayoutEffect as useLayoutEffect } from './useIsomorphicLayoutEffect';
 

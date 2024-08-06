@@ -50,6 +50,8 @@ import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+import { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';
+import { ScrollbarArrowRightIcon } from './icons/ScrollbarArrowRightIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SettingsIcon } from './icons/SettingsIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
@@ -116,6 +118,8 @@ export const allIcons = {
 	ProgressDoingIcon,
 	ProgressPausedIcon,
 	ProgressTodoIcon,
+	ScrollbarArrowLeftIcon,
+	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
 	SuccessFilledIcon,

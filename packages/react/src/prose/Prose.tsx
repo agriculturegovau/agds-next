@@ -359,11 +359,11 @@ export const proseClass = css({
 	 */
 	'@media print': {
 		// Display link URLs
-		'a[href]:after': {
+		'a[href]::after': {
 			content: '" (" attr(href) ")" !important',
 		},
 		// Expand abbreviations
-		'abbr[title]:after': {
+		'abbr[title]::after': {
 			content: '" (" attr(title) ")"',
 		},
 		// Page breaks

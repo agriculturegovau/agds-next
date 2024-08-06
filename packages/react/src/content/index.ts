@@ -1,3 +1,4 @@
+'use client';
 export * from './Content';
 export * from './PageContent';
 export * from './SectionContent';

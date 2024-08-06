@@ -9,21 +9,25 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
       class="css-11khhn7-boxStyles"
     >
       <tr
-        class="css-0"
+        class="css-1tx0oac-TableRow"
       >
         <th
           aria-sort="ascending"
-          class="css-vjwr8b-boxStyles"
+          class="css-cgixy1-boxStyles"
           scope="col"
         >
           <button
             class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
-            Example
+            <span
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            >
+              Example
+            </span>
             <svg
               aria-hidden="true"
-              class="css-qhpjst-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -57,21 +61,25 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
       class="css-11khhn7-boxStyles"
     >
       <tr
-        class="css-0"
+        class="css-1tx0oac-TableRow"
       >
         <th
           aria-sort="descending"
-          class="css-vjwr8b-boxStyles"
+          class="css-cgixy1-boxStyles"
           scope="col"
         >
           <button
             class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
-            Example
+            <span
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            >
+              Example
+            </span>
             <svg
               aria-hidden="true"
-              class="css-qhpjst-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -105,20 +113,24 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
       class="css-11khhn7-boxStyles"
     >
       <tr
-        class="css-0"
+        class="css-1tx0oac-TableRow"
       >
         <th
-          class="css-1m18mdw-boxStyles"
+          class="css-79i25n-boxStyles"
           scope="col"
         >
           <button
             class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
-            Example
+            <span
+              class="css-10iwr90-boxStyles-TableHeaderSortable"
+            >
+              Example
+            </span>
             <svg
               aria-hidden="true"
-              class="css-qhpjst-Icon"
+              class="css-fyxrud-Icon"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

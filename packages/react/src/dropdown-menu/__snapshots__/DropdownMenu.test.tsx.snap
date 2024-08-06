@@ -22,7 +22,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-sbsftc-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -42,11 +42,11 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:ru:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:rv:"
       role="menuitem"
       tabindex="-1"
@@ -56,7 +56,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-1g27iiq-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -76,7 +76,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Profile
         </span>
@@ -86,7 +86,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r10:"
       role="menuitem"
       tabindex="-1"
@@ -96,7 +96,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-1g27iiq-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -111,7 +111,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Messages
         </span>
@@ -121,7 +121,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <span
           aria-hidden="true"
-          class="css-uouzcn-boxStyles-Text-NotificationBadge"
+          class="css-16ju22e-boxStyles-NotificationBadge"
         >
           99+
         </span>
@@ -137,7 +137,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:ru:-item-:r11:"
       role="menuitem"
       tabindex="-1"
@@ -147,7 +147,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1qwfqs8-DropdownMenuItem"
+          class="css-1g27iiq-DropdownMenuItem"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -167,7 +167,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
           />
         </svg>
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Account settings
         </span>
@@ -202,7 +202,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-sbsftc-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -222,11 +222,11 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r16:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <a
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       href="/about"
       id="dropdown-menu-:r16:-item-:r17:"
       role="menuitem"
@@ -236,7 +236,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           About
         </span>
@@ -246,7 +246,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       />
     </a>
     <a
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       href="/contact"
       id="dropdown-menu-:r16:-item-:r18:"
       role="menuitem"
@@ -256,7 +256,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Contact
         </span>
@@ -291,7 +291,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-sbsftc-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -311,7 +311,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r1i:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
@@ -319,7 +319,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       role="group"
     >
       <span
-        class="css-1xlltnd-boxStyles-Text"
+        class="css-u1nrgg-boxStyles"
         id="dropdown-menu-:r1i:-group-:r1j:"
       >
         Businesses
@@ -334,12 +334,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-goz1ed-boxStyles-Text"
+            class="css-xf805a-boxStyles"
           >
             Antfix
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-1ntyv7o-boxStyles"
           >
             Sydney
           </span>
@@ -350,7 +350,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       </div>
       <div
         aria-checked="true"
-        class="css-1yrn77q-boxStyles-DropdownMenuItemRadio"
+        class="css-llmtoq-boxStyles-DropdownMenuItemRadio"
         id="item-2"
         role="menuitemradio"
       >
@@ -358,12 +358,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-433uqb-boxStyles-Text"
+            class="css-1jywj6f-boxStyles"
           >
             Produce Fresh
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-1ntyv7o-boxStyles"
           >
             Brisbane
           </span>
@@ -382,12 +382,12 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <span
-            class="css-goz1ed-boxStyles-Text"
+            class="css-xf805a-boxStyles"
           >
             Organic Co
           </span>
           <span
-            class="css-1lp7dl8-boxStyles-Text"
+            class="css-1ntyv7o-boxStyles"
           >
             Canberra
           </span>
@@ -423,7 +423,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-10mbdw9-Button"
+      class="css-sbsftc-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -443,11 +443,11 @@ exports[`DropdownMenu renders correctly 1`] = `
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
     id="dropdown-menu-:r0:-panel"
     role="menu"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -16px; max-width: -16px;"
+    style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r1:"
       role="menuitem"
       tabindex="-1"
@@ -456,7 +456,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Item 1
         </span>
@@ -466,7 +466,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r2:"
       role="menuitem"
       tabindex="-1"
@@ -475,7 +475,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Item 2
         </span>
@@ -485,7 +485,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-17dk25j-boxStyles-DropdownMenuItem"
+      class="css-1jn0u66-boxStyles-DropdownMenuItem"
       id="dropdown-menu-:r0:-item-:r3:"
       role="menuitem"
       tabindex="-1"
@@ -494,7 +494,7 @@ exports[`DropdownMenu renders correctly 1`] = `
         class="css-16gtkc6-boxStyles"
       >
         <span
-          class="css-1bvtrd1-boxStyles-Text"
+          class="css-1qsqsoz-boxStyles"
         >
           Item 3
         </span>

@@ -3,7 +3,7 @@ import { FileUploadExistingFile } from './FileUploadExistingFile';
 import { ExistingFile } from './utils';
 
 type FileUploadExistingFileListProps = {
-	files?: ExistingFile[];
+	files: ExistingFile[];
 	onRemove?: (file: ExistingFile) => void;
 	hideThumbnails?: boolean;
 };
@@ -13,17 +13,17 @@ export const FileUploadExistingFileList = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadExistingFileListProps) => {
-	if (!files?.length) {
+	if (!files.length) {
 		return null;
 	}
 
 	return (
-		<Stack as="ul" aria-label="Existing files" gap={0.5}>
+		<Stack aria-label="Existing files" as="ul" gap={0.5}>
 			{files.map((file, index) => (
 				<FileUploadExistingFile
-					key={index}
 					file={file}
 					hideThumbnails={hideThumbnails}
+					key={index}
 					onRemove={() => onRemove?.(file)}
 				/>
 			))}

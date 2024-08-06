@@ -4,20 +4,18 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { H2 } from '@ag.ds-next/react/heading';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import {
 	SummaryList,
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { PageContent } from '@ag.ds-next/react/content';
+import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { ContentBleed } from '@ag.ds-next/react/content';
 import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { PageTitle } from '../../../components/PageTitle';
 
 export function MultiPageFormSummary() {
@@ -27,10 +25,11 @@ export function MultiPageFormSummary() {
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<ProgressIndicator
+							activePath="#3"
 							items={[
-								{ label: 'Step 1', status: 'done', href: '#' },
-								{ label: 'Step 2', status: 'done', href: '#' },
-								{ label: 'Step 3', status: 'doing', href: '#' },
+								{ label: 'Step 1', status: 'done', href: '#1' },
+								{ label: 'Step 2', status: 'done', href: '#2' },
+								{ label: 'Step 3', status: 'started', href: '#3' },
 							]}
 						/>
 					</ContentBleed>

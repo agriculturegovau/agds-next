@@ -1,5 +1,108 @@
 # @ag.ds-next/react
 
+## 1.23.1
+
+### Patch Changes
+
+- 52d218d8692: app-layout-sidebar: Fix level two items not inheriting `body` background.
+- 6d81b87a9c7: control-group: Use `useId` from core, rather than React for backwards compatibility.
+
+  pagination: Use `useId` from core, rather than React for backwards compatibility.
+
+## 1.23.0
+
+### Minor Changes
+
+- 4d996b47c82: footer: Add `borderColor` prop to `Footer` and `color` prop to `FooterDivider`.
+
+  main-nav: Add `borderColor` prop to `MainNav` and `MainNavBottomBar`.
+
+- 8faad29ce55: app-layout: Add co-branding to the `AppLayoutHeader` via `secondHref`, `secondLogo`, and `dividerPosition` props. Fix divider width.
+
+  header: Fix spacing on desktop and divider not being hidden when wrapping to a second line.
+
+- 1872836fdfa: main-nav: `Add focusMode` prop. Deprecate `MainNavBottomBar`.
+- be10e7f7e45: side-nav: Add `always` and `whenActive` strategies for making sub-level items visible. The new default will be `whenActive` as `always` should be used sparingly and when only a small number of navigation items exist.
+- e174f63ae43: date-picker: Reduce the size of and horizontally centre the calendar when the screen size is less than 375px.
+- d3b7ff92dde: checkbox: Add `name` support. Fix `required` to set `aria-required`.
+
+  control-group: Add automatic & custom `name` suppport. Fix passing `required` to `Checkbox` and `Radio` children.
+
+  radio: Add `name` support. Fix `required` to set `aria-required`.
+
+- 4bfc1337601: combobox-multi: Allow backspace to remove selected items when the popover is open.
+- 71bf5dfc384: button: Add `form` prop from native button props to allow submit buttons to be connected from outside a form.
+
+  drawer: Add docs and Storybook example of creating an accessible form within a drawer.
+
+- c320d8704ee: app-layout: `AppLayoutSidebar` - Add sub-level support for navigation items with accompanying `always` and `whenActive` strategies for making them visible.
+
+### Patch Changes
+
+- c0a035a9595: main-nav: Use correct ARIA labels for menu button & dialog. Remove other incorrect ARIA properties.
+
+  modal: Make the Close button’s visual and reading order identical.
+
+- 8aabedc08dd: pagination: Fix docs for "Items per page" section not showing correct page number.
+- 69178973bf5: table: Fix `textAlign` support in `TableHeaderSortable`.
+- d69c1f773eb: build: Add `'use client'` to entrypoints so they can be imported and used directly from server components
+- f2d348aae16: header: Update docs example for co-branding
+- 4d31b029657: main-nav: Fix mobile dialog menu not closing when you press the active link.
+
+## 1.22.0
+
+### Minor Changes
+
+- ce16f6a7577: table: Add `invalid` prop to table row component to visually indicate row with error.
+- 174a1382ca0: app-layout: Add `background` and `palette` support to `AppLayoutFooter`, `AppLayoutHeader` & `AppLayoutSidebar`
+- 359c74e357f: grouped-fields: Remove unused required prop
+- f1b9d2b69db: box: Add `breakWords` prop to let words break across multiple lines where necessary
+- 0ed83fe5448: header: Support second logo with link for cobranding.
+
+  box: Add `justifySelf` responsive prop.
+
+- 2a44de65cb9: file-upload: New implementation of error handling: new UI and unaccepted files no longer trigger the invalid state. With `multiple`, duplicate files aren’t selected. `maxFiles` uses the total files being uploaded, not just current selection.
+
+  icon: Prevent from shrinking smaller than their intended size.
+
+  list: Add `BoxProps` to allowed types for `ListItem`.
+
+  section-alert: Ensure Close button is always aligned to the top.
+
+  text: Remove unnecessary margin reset CSS.
+
+- 358c561f2f7: box: Deprecate `focus` prop in favour of new `focusRingFor` prop to enable a focus ring when the element is keyboard focused (`focusRingFor="keyboard"`) and programmatically focused (`focusRingFor="all"`).
+
+  core: Add new `useFocusOnMount` hook to allow an element to be focused when it’s mounted.
+
+  drawer: Add `elementToFocusOnClose` prop to allow custom element to be focused when the drawer closes.
+
+  page-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+
+  section-alert: Add `focusOnMount` prop to focus the alert as soon as it’s rendered to the page. Also enable the newly added `focusRingFor` prop from `Box` to improve accessibility for programmatically focused alerts.
+
+- 053eee29b67: core: move from `useFocusOnMount` to `useFocus` to allow for `focusOnUpdate`.
+
+  page-alert: enable `focusOnUpdate` prop for focusing on updated alert content.
+
+  section-alert: enable `focusOnUpdate` prop for focusing on updated alert content.
+
+  box: add `alignSelf` CSS prop. Add `'start'` and `'end'` as valid `alignItems` values.
+
+  button: add `alignSelf` CSS prop from `Box`.
+
+- 80dfd608cfb: button: Add `focusRingFor` prop to allow programmatic focus, e.g. via a link, to render the focus ring. This is available for `Button` and `ButtonLink`.
+
+### Patch Changes
+
+- 0ce7fbf96ea: task-list: Make `doneRecently` status count towards `stepsCompleted`
+- 29f393359da: summary-list: Increase gap between SummaryListItemTerm and SummaryListItemDescription to show a clearer separation
+- 898f7d2ca29: box: Document all style props
+- 94ad75b9931: avatar, control-group, drawer, icon, modal: Simplify some internals.
+- 21dd180d274: app-layout: Fix sidebar not closing on item press.
+- cf9055a1231: drawer: Fix docs for `elementToFocusOnClose` not returning focus to button when no alert is shown.
+- 15a7d327718: table: Fix example header alignment
+
 ## 1.21.0
 
 ### Minor Changes

@@ -4,9 +4,10 @@ import {
 	MouseEventHandler,
 	ReactNode,
 } from 'react';
-import { Flex } from '@ag.ds-next/react/flex';
-import { Text } from '@ag.ds-next/react/text';
+import { useFocus } from '../core/utils/useFocus';
+import { Flex } from '../flex';
 import { getOptionalCloseHandler } from '../getCloseHandler';
+import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
 import { sectionAlertIconMap, SectionAlertTone } from './utils';
 
@@ -17,6 +18,10 @@ export type SectionAlertProps = {
 	title: string;
 	/** The content of the alert description. */
 	children?: ReactNode;
+	/** Whether the alert should be focused as soon as it's rendered. */
+	focusOnMount?: boolean;
+	/** Focus the alert when a value in this array updates. */
+	focusOnUpdate?: ReadonlyArray<unknown>;
 	/** The ID of the alert. */
 	id?: string;
 	/** The role of the alert. */
@@ -33,28 +38,47 @@ export type SectionAlertProps = {
 
 export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
-		{ id, role, tabIndex, tone, title, children, onClose, onDismiss, ...props },
-		ref
+		{
+			children,
+			id,
+			focusOnMount,
+			focusOnUpdate,
+			onClose,
+			onDismiss,
+			role,
+			tabIndex,
+			title,
+			tone,
+			...props
+		},
+		forwardedRef
 	) {
+		const ref = useFocus<HTMLDivElement>({
+			focusOnMount,
+			focusOnUpdate,
+			forwardedRef,
+		});
+
 		const Icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
+
 		return (
 			<Flex
-				ref={ref}
-				role={role}
-				id={id}
-				tabIndex={tabIndex}
-				rounded
-				focus
+				alignItems="center"
 				background={tone}
 				borderColor={tone}
 				borderLeft
 				borderLeftWidth="xl"
-				highContrastOutline
 				gap={0.5}
-				padding={1}
-				alignItems="center"
+				highContrastOutline
+				id={id}
+				focusRingFor="all"
 				justifyContent="space-between"
+				padding={1}
+				ref={ref}
+				role={role}
+				rounded
+				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 				{...props}
 			>
 				<Flex gap={0.5}>

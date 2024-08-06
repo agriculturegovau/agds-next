@@ -53,6 +53,21 @@ const config: StorybookConfig = {
 			},
 			build: {
 				...config.build,
+				rollupOptions: {
+					...config.build?.rollupOptions,
+					onwarn(warning, defaultHandler) {
+						if (
+							warning.message.startsWith(
+								'Module level directives cause errors when bundled, "use client"'
+							) ||
+							warning.message ===
+								"Error when using sourcemap for reporting an error: Can't resolve original location of error."
+						) {
+							return;
+						}
+						defaultHandler(warning);
+					},
+				},
 				commonjsOptions: {
 					...config.build?.commonjsOptions,
 					include: [

@@ -13,15 +13,13 @@ type Story = StoryObj<typeof Radio>;
 export const Basic: Story = {
 	args: {
 		children: 'Example',
-		disabled: false,
 	},
 };
 
-export const Size: Story = {
+export const Checked: Story = {
 	args: {
-		size: 'sm',
-		children: 'Small example',
-		disabled: false,
+		children: 'Checked',
+		checked: true,
 	},
 };
 
@@ -36,6 +34,19 @@ export const Invalid: Story = {
 	args: {
 		children: 'Invalid',
 		invalid: true,
-		disabled: false,
+	},
+};
+
+export const Required: Story = {
+	args: {
+		children: 'Required',
+		required: true,
+	},
+};
+
+export const SizeSm: Story = {
+	args: {
+		children: 'Small',
+		size: 'sm',
 	},
 };

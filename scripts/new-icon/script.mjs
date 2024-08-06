@@ -9,7 +9,7 @@ export default function newIcon(
 				type: 'input',
 				name: 'iconName',
 				message:
-					'Icon name, please use appropriate uppercase (e.g. ArrowDownIcon)',
+					'Icon name, please use appropriate PascalCase (e.g. ArrowDownIcon)',
 				validate: (answer) => answer.length > 0,
 			},
 		],

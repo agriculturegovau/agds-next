@@ -2,6 +2,7 @@ import { ComponentType, forwardRef } from 'react';
 import { LinkProps, useLinkComponent } from '../core';
 import { IconProps } from '../icon';
 import { LoadingDots } from '../loading';
+import { BoxProps } from '../box';
 import {
 	buttonStyles,
 	ButtonSize,
@@ -11,9 +12,11 @@ import {
 } from './styles';
 import { BaseButton, BaseButtonProps } from './BaseButton';
 
-type CommonButtonProps = {
+type CommonButtonProps = Pick<BoxProps, 'alignSelf'> & {
 	/** If true, the button will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** Display a focus indicator when the button receives focus. By default, this is set to 'keyboard'. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus. */
+	focusRingFor?: BoxProps['focusRingFor'];
 	/** The icon to display before the buttons children. */
 	iconBefore?: ComponentType<IconProps>;
 	/** The icon to display after the buttons children. */
@@ -38,20 +41,28 @@ export type ButtonProps = CommonButtonProps &
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	function Button(
 		{
-			type = 'button',
+			alignSelf,
 			block = false,
-			iconBefore: IconBefore,
-			iconAfter: IconAfter,
 			children,
-			size = 'md',
+			focusRingFor = 'keyboard',
+			iconAfter: IconAfter,
+			iconBefore: IconBefore,
 			loading = false,
 			loadingLabel = 'Busy',
+			size = 'md',
+			type = 'button',
 			variant = 'primary',
 			...props
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, size, variant });
+		const styles = buttonStyles({
+			alignSelf,
+			block,
+			focusRingFor,
+			size,
+			variant,
+		});
 		return (
 			<BaseButton ref={ref} css={styles} type={type} {...props}>
 				{IconBefore ? (
@@ -86,8 +97,10 @@ export type ButtonLinkProps = CommonButtonProps & LinkProps;
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 	function ButtonLink(
 		{
+			alignSelf,
 			children,
 			block = false,
+			focusRingFor = 'keyboard',
 			iconBefore: IconBefore,
 			iconAfter: IconAfter,
 			size = 'md',
@@ -96,7 +109,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 		},
 		ref
 	) {
-		const styles = buttonStyles({ block, size, variant });
+		const styles = buttonStyles({
+			alignSelf,
+			block,
+			focusRingFor,
+			size,
+			variant,
+		});
 		const Link = useLinkComponent();
 		return (
 			<Link ref={ref} css={styles} {...props}>

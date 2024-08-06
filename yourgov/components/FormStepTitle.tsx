@@ -27,7 +27,7 @@ export function FormStepTitle({
 			<H1
 				ref={titleRef}
 				tabIndex={-1}
-				focus
+				focusRingFor="keyboard"
 				aria-label={`${formTitle} form, ${stepTitle}`}
 			>
 				<Text

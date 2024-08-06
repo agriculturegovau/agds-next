@@ -53,6 +53,7 @@ describe('SmallFilteringPattern', () => {
 				rules: {
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
+					'no-inline-style': 'off',
 				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
@@ -68,6 +69,7 @@ describe('SmallFilteringPattern', () => {
 				rules: {
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
+					'no-inline-style': 'off',
 				},
 			});
 

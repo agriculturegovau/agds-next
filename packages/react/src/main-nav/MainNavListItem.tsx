@@ -42,7 +42,7 @@ export function MainNavListItem({
 					// Active styles
 					...(active && {
 						color: boxPalette.foregroundText,
-						'&:after': {
+						'&::after': {
 							content: '""',
 							height: mapSpacing(0.5),
 							position: 'absolute',
@@ -59,7 +59,7 @@ export function MainNavListItem({
 						...focusStyles[':focus-visible'],
 						// Make sure the outline is not cut off by the pseudo element
 						zIndex: 1,
-						'&:after': { zIndex: -1 },
+						'&::after': { zIndex: -1 },
 					},
 
 					// Hover styles

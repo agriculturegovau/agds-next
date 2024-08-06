@@ -35,9 +35,9 @@ Note: An appropriate heading level should be used to introduce the purpose of th
 		</Text>
 	}
 	items={[
-		{ href: '#', label: 'Foo' },
-		{ href: '#', label: 'Bar' },
-		{ href: '#', label: 'Baz' },
+		{ href: '#', label: 'Apple' },
+		{ href: '#', label: 'Orange' },
+		{ href: '#', label: 'Peach' },
 	]}
 />
 ```
@@ -53,7 +53,7 @@ A list of related tags without links.
 			Tags:
 		</Text>
 	}
-	items={[{ label: 'Foo' }, { label: 'Bar' }, { label: 'Baz' }]}
+	items={[{ label: 'Apple' }, { label: 'Orange' }, { label: 'Peach' }]}
 />
 ```
 
@@ -64,25 +64,31 @@ Tags can be removed from a list, if you add an `onRemove` function.
 Please avoid using Tags with links and remove buttons together, as it is confusing for users.
 
 ```jsx live
-<Tags
-	heading={
-		<Text as="h2" fontWeight="bold">
-			Tags:
-		</Text>
-	}
-	items={[
-		{
-			label: 'Foo',
-			onRemove: console.log,
-		},
-		{
-			label: 'Bar',
-			onRemove: console.log,
-		},
-		{
-			label: 'Baz',
-			onRemove: console.log,
-		},
-	]}
-/>
+() => {
+	const [items, setItems] = React.useState([
+		{ label: 'Apple' },
+		{ label: 'Orange' },
+		{ label: 'Peach' },
+	]);
+
+	const handleRemove = (label) => {
+		setItems((prevItems) => prevItems.filter((item) => item.label !== label));
+	};
+
+	const itemsWithHandlers = items.map((item) => ({
+		...item,
+		onRemove: () => handleRemove(item.label),
+	}));
+
+	return items.length > 0 ? (
+		<Tags
+			heading={
+				<Text as="h2" fontWeight="bold">
+					Tags:
+				</Text>
+			}
+			items={itemsWithHandlers}
+		/>
+	) : undefined;
+};
 ```

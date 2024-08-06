@@ -1,5 +1,5 @@
-import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { ControlGroup } from '../../../../packages/react/src/control-group';
+import { Checkbox } from '../../../../packages/react/src/checkbox';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { services } from '../lib/generateBusinessData';
 import { tableId } from './DataTable';

@@ -287,20 +287,23 @@ function YearMonthSelect({
 				value={value}
 				onChange={onChange}
 				rounded
-				focus
+				focusRingFor="keyboard"
 				paddingRight={1.5}
 				color="text"
-				fontSize="md"
 				fontWeight="bold"
 				css={{
-					height: '2rem',
-					borderWidth: tokens.borderWidth.sm,
-					borderStyle: 'solid',
-					borderColor: boxPalette.border,
 					appearance: 'none',
 					background: 'none',
+					borderColor: boxPalette.border,
+					borderStyle: 'solid',
+					borderWidth: tokens.borderWidth.sm,
+					fontSize: `${tokens.fontSize.xs.sm}rem`,
+					height: '2rem',
 					paddingLeft: mapSpacing(0.5),
 					paddingRight: mapSpacing(2),
+					'@media(min-width: 375px)': {
+						fontSize: `${tokens.fontSize.xs.md}rem`,
+					},
 				}}
 			>
 				{options.map((option) => (

@@ -266,7 +266,11 @@ export const Actions: Story = {
 						</TableCell>
 						<TableCell>20/06/2024</TableCell>
 						<TableCell>
-							<StatusBadge weight="subtle" tone="info" label="In progress" />
+							<StatusBadge
+								appearance="subtle"
+								tone="infoMedium"
+								label="In progress"
+							/>
 						</TableCell>
 						<TableCell>
 							<Flex gap={1}>
@@ -281,7 +285,11 @@ export const Actions: Story = {
 						</TableCell>
 						<TableCell>25/06/2024</TableCell>
 						<TableCell>
-							<StatusBadge weight="subtle" tone="info" label="In progress" />
+							<StatusBadge
+								appearance="subtle"
+								tone="infoMedium"
+								label="In progress"
+							/>
 						</TableCell>
 						<TableCell>
 							<Flex gap={1}>
@@ -296,7 +304,11 @@ export const Actions: Story = {
 						</TableCell>
 						<TableCell>02/07/2024</TableCell>
 						<TableCell>
-							<StatusBadge weight="subtle" tone="success" label="Completed" />
+							<StatusBadge
+								appearance="subtle"
+								tone="successMedium"
+								label="Completed"
+							/>
 						</TableCell>
 						<TableCell>
 							<Flex gap={1}>
@@ -311,7 +323,11 @@ export const Actions: Story = {
 						</TableCell>
 						<TableCell>05/08/2024</TableCell>
 						<TableCell>
-							<StatusBadge weight="subtle" tone="info" label="In progress" />
+							<StatusBadge
+								appearance="subtle"
+								tone="infoMedium"
+								label="In progress"
+							/>
 						</TableCell>
 						<TableCell>
 							<Flex gap={1}>
@@ -326,7 +342,11 @@ export const Actions: Story = {
 						</TableCell>
 						<TableCell>19/10/2024</TableCell>
 						<TableCell>
-							<StatusBadge weight="subtle" tone="success" label="Completed" />
+							<StatusBadge
+								appearance="subtle"
+								tone="successMedium"
+								label="Completed"
+							/>
 						</TableCell>
 						<TableCell>
 							<Flex gap={1}>

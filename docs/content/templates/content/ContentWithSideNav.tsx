@@ -21,7 +21,6 @@ export function ContentWithSideNav() {
 				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 					<ContentBleed visible={{ md: false }}>
 						<SideNav
-							collapseTitle="In this section"
 							title="Category 1"
 							titleLink="#"
 							activePath="#activePath"
@@ -143,7 +142,7 @@ export function ContentWithSideNav() {
 
 const sideNavItems = [
 	{
-		href: '#',
+		href: '#1',
 		label: 'Content page',
 	},
 	{
@@ -151,41 +150,41 @@ const sideNavItems = [
 		label: 'Content page',
 		items: [
 			{
-				href: '#',
-				label: 'Side nav item level 3',
+				href: '#21',
+				label: 'Side nav level 2 item 1',
 			},
 			{
-				href: '#',
-				label: 'Side nav item level 3',
+				href: '#22',
+				label: 'Side nav level 2 item 2',
 			},
 		],
 	},
 	{
-		href: '#',
+		href: '#3',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#4',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#5',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#6',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#7',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#8',
 		label: 'Content page',
 	},
 	{
-		href: '#',
+		href: '#9',
 		label: 'Content page',
 	},
 ];

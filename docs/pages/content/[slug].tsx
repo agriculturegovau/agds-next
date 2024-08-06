@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const breadcrumbs = await getContentBreadcrumbs(slug);
-	const toc = await generateToc(document.content);
+	const toc = generateToc(document.content);
 
 	return {
 		props: {

@@ -22,45 +22,9 @@ exports[`Modal renders correctly 1`] = `
         class="css-1zh0al-boxStyles-ModalDialog"
         role="dialog"
       >
-        <h2
-          class="css-jhnu76-boxStyles-Text"
-          data-autofocus="true"
-          id="modal-:r0:-title"
-          tabindex="-1"
-        >
-          Modal title
-        </h2>
-        <div
-          class="css-79i25n-boxStyles"
-        >
-          <p
-            class="css-6j1v6l-boxStyles-Text"
-          >
-            This is the Modal Body paragraph.
-          </p>
-        </div>
-        <div
-          class="css-1kzq3kl-boxStyles-ModalDialog"
-        >
-          <button
-            class="css-1xaxpdg-BaseButton-Button"
-            type="button"
-          >
-            <span>
-              <span
-                class="css-oobk4c-Button"
-              >
-                Close modal
-              </span>
-              <span
-                aria-live="assertive"
-              />
-            </span>
-          </button>
-        </div>
         <button
           aria-label="Close modal"
-          class="css-xzbqql-BaseButton-ModalDialog"
+          class="css-v8887w-BaseButton-ModalDialog"
           type="button"
         >
           <span>
@@ -75,7 +39,7 @@ exports[`Modal renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-10mbdw9-Button"
+            class="css-sbsftc-Button"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -99,6 +63,42 @@ exports[`Modal renders correctly 1`] = `
             />
           </svg>
         </button>
+        <h2
+          class="css-lltnmr-boxStyles"
+          data-autofocus="true"
+          id="modal-:r0:-title"
+          tabindex="-1"
+        >
+          Modal title
+        </h2>
+        <div
+          class="css-79i25n-boxStyles"
+        >
+          <p
+            class="css-dbscsh-boxStyles"
+          >
+            This is the Modal Body paragraph.
+          </p>
+        </div>
+        <div
+          class="css-1kzq3kl-boxStyles-ModalDialog"
+        >
+          <button
+            class="css-1xaxpdg-BaseButton-Button"
+            type="button"
+          >
+            <span>
+              <span
+                class="css-oobk4c-Button"
+              >
+                Close modal
+              </span>
+              <span
+                aria-live="assertive"
+              />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div

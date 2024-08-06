@@ -56,6 +56,15 @@ export const ModalDialog = ({
 					},
 				}}
 			>
+				<Button
+					variant="text"
+					aria-label="Close modal"
+					onClick={closeHandler}
+					iconAfter={CloseIcon}
+					css={{ alignSelf: 'flex-end' }}
+				>
+					Close
+				</Button>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<Box>{children}</Box>
 				{actions ? (
@@ -63,15 +72,6 @@ export const ModalDialog = ({
 						{actions}
 					</Box>
 				) : null}
-				<Button
-					variant="text"
-					aria-label="Close modal"
-					onClick={closeHandler}
-					iconAfter={CloseIcon}
-					css={{ order: -1, alignSelf: 'flex-end' }}
-				>
-					Close
-				</Button>
 			</Stack>
 		</FocusLock>
 	);

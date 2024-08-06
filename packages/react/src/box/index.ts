@@ -1,3 +1,4 @@
+'use client';
 import { Flex as _Flex, FlexProps as _FlexProps } from '../flex';
 import { Stack as _Stack, StackProps as _StackProps } from '../stack';
 

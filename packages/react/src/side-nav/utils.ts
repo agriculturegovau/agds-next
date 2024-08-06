@@ -34,25 +34,21 @@ export function flattenItems(items: SideNavProps['items']) {
 	return allItems;
 }
 
-export function hasNestedActiveItem(
+export function hasSubLevelActiveItem(
 	items: SideNavProps['items'] | undefined,
 	bestMatch: string | undefined
 ): boolean {
 	if (!(items?.length && bestMatch)) return false;
-	return items.some((item) => {
-		if (item.href === bestMatch) {
-			return true;
-		}
-		if (item.items?.length && hasNestedActiveItem(item.items, bestMatch)) {
-			return true;
-		}
-	});
+	return items.some(
+		(item) =>
+			item.href === bestMatch ||
+			(item.items?.length && hasSubLevelActiveItem(item.items, bestMatch))
+	);
 }
 
 export function useSideNavIds() {
 	const autoId = useId();
 	return {
-		navId: `sideNav-${autoId}-nav`,
 		titleId: `sideNav-${autoId}-title`,
 	};
 }

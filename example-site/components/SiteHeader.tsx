@@ -3,7 +3,7 @@ import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Header } from '@ag.ds-next/react/header';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
+import { MainNav } from '@ag.ds-next/react/main-nav';
 import { SiteHeaderSearch } from './SiteHeaderSearch';
 
 const NAV_ITEMS = {
@@ -32,16 +32,13 @@ export const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 				rightContent={<SiteHeaderSearch />}
 			/>
 
-			{!focusMode ? (
-				<MainNav
-					id="main-nav"
-					activePath={router.asPath}
-					items={NAV_ITEMS.primary}
-					secondaryItems={NAV_ITEMS.secondary}
-				/>
-			) : (
-				<MainNavBottomBar />
-			)}
+			<MainNav
+				activePath={router.asPath}
+				focusMode={focusMode}
+				id="main-nav"
+				items={NAV_ITEMS.primary}
+				secondaryItems={NAV_ITEMS.secondary}
+			/>
 		</Stack>
 	);
 };

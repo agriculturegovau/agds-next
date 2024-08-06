@@ -6,14 +6,14 @@ exports[`CallToActionButton renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <button
-      class="css-zekh05-BaseButton-boxStyles"
+      class="css-fp5x03-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-1xyaayo-Icon"
+        class="css-lewdp2-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -38,14 +38,14 @@ exports[`CallToActionLink renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <a
-      class="css-5s16cd-TextLink-boxStyles"
+      class="css-19iivh0-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-1xyaayo-Icon"
+        class="css-lewdp2-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

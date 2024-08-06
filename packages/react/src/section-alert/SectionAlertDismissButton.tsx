@@ -13,6 +13,7 @@ export const SectionAlertDismissButton = ({
 }: SectionAlertDismissButtonProps) => {
 	return (
 		<Button
+			alignSelf="start"
 			onClick={onClick}
 			iconAfter={CloseIcon}
 			variant="text"

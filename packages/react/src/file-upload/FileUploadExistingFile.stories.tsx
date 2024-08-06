@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '@ag.ds-next/react/stack';
+import { Stack } from '../../../../packages/react/src/stack';
 import { FileUploadExistingFile } from './FileUploadExistingFile';
 
 const meta: Meta = {
@@ -31,18 +31,8 @@ export const Basic: Story = {
 	},
 };
 
-export const Image: Story = {
-	name: '.jpg file',
-	args: {
-		file: {
-			name: 'example.jpg',
-			size: 123456,
-		},
-	},
-};
-
 export const WithThumbnail: Story = {
-	name: '.jpg file',
+	name: '.jpg file with thumbnail',
 	args: {
 		file: {
 			name: 'example.jpg',

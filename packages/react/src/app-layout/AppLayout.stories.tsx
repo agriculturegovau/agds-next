@@ -21,12 +21,25 @@ import {
 	AppLayoutContent,
 	AppLayoutFooter,
 	AppLayoutFooterDivider,
+	AppLayoutSidebarProps,
 } from './index';
 
 function AppLayoutTemplate({
+	activePath = '/',
 	focusMode = false,
+	internal = false,
 	namesLength = 'regular',
-}: AppLayoutProps & { namesLength?: 'regular' | 'short' | 'medium' | 'long' }) {
+	subLevelVisible,
+}: AppLayoutProps & {
+	/** Currently active path. */
+	activePath?: string;
+	/** Whether to render in the light, internal app theme. */
+	internal?: boolean;
+	/** The length of names to use for businesses. */
+	namesLength?: 'regular' | 'short' | 'medium' | 'long';
+	/** When to show sub-level items. */
+	subLevelVisible?: AppLayoutSidebarProps['subLevelVisible'];
+}) {
 	const year = useMemo(() => new Date().getFullYear(), []);
 	const businesses = exampleData.businessNames[namesLength];
 	const [businessName, setBusinessName] = useState(businesses[0]);
@@ -37,11 +50,6 @@ function AppLayoutTemplate({
 			/>
 			<AppLayout focusMode={focusMode}>
 				<AppLayoutHeader
-					href="/"
-					heading="Export Service"
-					subLine="Supporting Australian agricultural exports"
-					badgeLabel="Beta"
-					logo={<Logo />}
 					accountDetails={{
 						name: exampleData.userNames[namesLength],
 						secondaryText: 'My account',
@@ -53,16 +61,25 @@ function AppLayoutTemplate({
 							/>
 						),
 					}}
+					badgeLabel="Beta"
+					borderColor={internal ? 'selected' : undefined}
+					heading="Export Service"
+					href="/"
+					logo={<Logo />}
+					palette={internal ? 'light' : undefined}
+					subLine="Supporting Australian agricultural exports"
 				/>
 				<AppLayoutSidebar
-					activePath="/"
+					activePath={activePath}
+					background={internal ? 'body' : undefined}
 					items={navigationItems(businessName)}
+					subLevelVisible={subLevelVisible}
 				/>
 				<AppLayoutContent>
 					<main
+						css={{ '&:focus': { outline: 'none' } }}
 						id="main-content"
 						tabIndex={-1}
-						css={{ '&:focus': { outline: 'none' } }}
 					>
 						<PageContent>
 							<Prose>
@@ -88,6 +105,7 @@ function AppLayoutTemplate({
 					<AppLayoutFooter>
 						<nav aria-label="footer">
 							<LinkList
+								horizontal
 								links={[
 									{ label: 'Home', href: '/' },
 									{
@@ -96,14 +114,13 @@ function AppLayoutTemplate({
 									},
 									{
 										label: 'Playroom',
-										href: 'https://design-system.agriculture.gov.au/playroom/index.html',
+										href: 'https://design-system.agriculture.gov.au/playroom',
 									},
 									{
 										label: 'Starter kit',
 										href: 'https://github.com/agriculturegovau/agds-starter-kit',
 									},
 								]}
-								horizontal
 							/>
 						</nav>
 						<AppLayoutFooterDivider />
@@ -166,4 +183,24 @@ export const WithMediumNames: StoryObj<typeof AppLayout> = {
 
 export const WithShortNames: StoryObj<typeof AppLayout> = {
 	render: (args) => <AppLayoutTemplate {...args} namesLength="short" />,
+};
+
+export const InternalLightTheme: StoryObj<typeof AppLayout> = {
+	render: (args) => (
+		<AppLayoutTemplate {...args} internal namesLength="short" />
+	),
+};
+
+export const LevelTwoOpenWhenActive: StoryObj<typeof AppLayout> = {
+	render: (args) => (
+		<AppLayoutTemplate
+			{...args}
+			activePath="/establishments/canberra"
+			subLevelVisible="whenActive"
+		/>
+	),
+};
+
+export const LevelTwoAlwaysOpen: StoryObj<typeof AppLayout> = {
+	render: (args) => <AppLayoutTemplate {...args} subLevelVisible="always" />,
 };

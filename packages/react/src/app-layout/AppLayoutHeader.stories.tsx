@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from '../ag-branding';
+import { AISLogo } from '../../../../.storybook/components/AISLogo';
 import { AppLayout } from './AppLayout';
 import { AppLayoutHeader } from './AppLayoutHeader';
 import { ExampleAccountDropdown, exampleData } from './test-utils';
@@ -23,12 +24,13 @@ const meta: Meta<typeof AppLayoutHeader> = {
 		layout: 'fullscreen',
 	},
 	args: {
-		href: '/',
-		heading: 'Export Service',
-		subLine: 'Supporting Australian agricultural exports',
-		logo: <Logo />,
-		badgeLabel: 'Beta',
 		accountDetails,
+		badgeLabel: 'Beta',
+		background: 'bodyAlt',
+		heading: 'Export Service',
+		href: '/',
+		logo: <Logo />,
+		subLine: 'Supporting Australian agricultural exports',
 	},
 	render: (props) => (
 		<AppLayout focusMode={false}>
@@ -42,6 +44,12 @@ export default meta;
 type Story = StoryObj<typeof AppLayoutHeader>;
 
 export const Basic: Story = {};
+
+export const BodyBackground: Story = {
+	args: {
+		background: 'body',
+	},
+};
 
 export const FocusMode: Story = {
 	render: (props) => (
@@ -94,5 +102,32 @@ export const WithAccountLinkLongName: Story = {
 			secondaryText: exampleData.businessNames.regular[0],
 			href: '#',
 		},
+	},
+};
+
+export const CoBranding: Story = {
+	args: {
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingDividerPositionBetween: Story = {
+	args: {
+		dividerPosition: 'between',
+		secondHref: '/',
+		secondLogo: <AISLogo />,
+	},
+};
+
+export const CoBrandingWithAccountDetails: Story = {
+	args: {
+		accountDetails: {
+			name: exampleData.userNames.long,
+			secondaryText: exampleData.businessNames.regular[0],
+			href: '#',
+		},
+		secondHref: '/',
+		secondLogo: <AISLogo />,
 	},
 };

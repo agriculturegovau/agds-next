@@ -9,11 +9,13 @@ import { useTransition, animated, SpringValue } from '@react-spring/web';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
 import {
-	tokens,
-	usePrefersReducedMotion,
-	canUseDOM,
-	useAriaModalPolyfill,
 	boxPalette,
+	canUseDOM,
+	tokens,
+	type BoxPalette,
+	type ResponsiveProp,
+	useAriaModalPolyfill,
+	usePrefersReducedMotion,
 } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -26,10 +28,13 @@ import {
 	APP_LAYOUT_SIDEBAR_WIDTH,
 } from './utils';
 
-export type AppLayoutSidebarDialogProps = PropsWithChildren<{}>;
+export type AppLayoutSidebarDialogProps = PropsWithChildren<{
+	palette?: ResponsiveProp<BoxPalette>;
+}>;
 
 export function AppLayoutSidebarDialog({
 	children,
+	palette,
 }: AppLayoutSidebarDialogProps) {
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 
@@ -72,12 +77,9 @@ export function AppLayoutSidebarDialog({
 						<Overlay onClick={closeMobileMenu} style={{ opacity }} />
 						<FocusLock returnFocus>
 							<AnimatedBox
-								display={{ [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
-								role="dialog"
 								aria-label="Menu"
 								aria-modal="true"
 								background="shade"
-								width={APP_LAYOUT_SIDEBAR_WIDTH}
 								css={{
 									position: 'fixed',
 									zIndex: tokens.zIndex.dialog,
@@ -86,7 +88,11 @@ export function AppLayoutSidebarDialog({
 									bottom: 0,
 									overflowY: 'auto',
 								}}
+								display={{ [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
+								palette={palette}
+								role="dialog"
 								style={{ translateX }}
+								width={APP_LAYOUT_SIDEBAR_WIDTH}
 							>
 								<CloseMenuButton onClick={closeMobileMenu} />
 								{children}
@@ -154,19 +160,19 @@ function CloseMenuButton({
 			alignItems="center"
 			borderBottom
 			borderColor="muted"
-			paddingLeft={1}
 			flexShrink={0}
+			paddingLeft={1}
 		>
 			<Flex
-				as={BaseButton}
-				onClick={onClick}
-				flexDirection="column"
 				alignItems="center"
-				gap={0.5}
+				as={BaseButton}
 				color="action"
+				flexDirection="column"
+				focusRingFor="keyboard"
 				fontSize="xs"
+				gap={0.5}
+				onClick={onClick}
 				padding={1}
-				focus
 			>
 				<CloseIcon />
 				<span aria-hidden="true">Close</span>

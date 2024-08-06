@@ -1,9 +1,10 @@
-import { PropsWithChildren, Fragment } from 'react';
-import { findBestMatch, useTernaryState } from '../core';
+import { Fragment, type PropsWithChildren } from 'react';
+import { type BorderColor } from '../box';
+import { findBestMatch, type ResponsiveProp, useTernaryState } from '../core';
+import { MainNavBackground } from './localPalette';
 import { MainNavContainer } from './MainNavContainer';
 import { MainNavDialog } from './MainNavDialog';
-import { MainNavListItemType } from './MainNavList';
-import { MainNavBackground } from './localPalette';
+import { type MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
 
 export type MainNavProps = PropsWithChildren<{
@@ -11,6 +12,9 @@ export type MainNavProps = PropsWithChildren<{
 	activePath?: string;
 	/** The background of the component. */
 	background?: MainNavBackground;
+	borderColor?: ResponsiveProp<BorderColor>;
+	/** When true, removes all navigation items to reduce distractions.  */
+	focusMode?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** List of navigation items to display. */
@@ -20,11 +24,13 @@ export type MainNavProps = PropsWithChildren<{
 }>;
 
 export function MainNav({
-	background = 'body',
 	activePath,
+	background = 'body',
+	borderColor = 'accent',
+	focusMode = false,
+	id,
 	items,
 	secondaryItems,
-	id,
 }: MainNavProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
 		useTernaryState(false);
@@ -37,19 +43,21 @@ export function MainNav({
 	return (
 		<Fragment>
 			<MainNavContainer
-				background={background}
-				id={id}
-				openMobileMenu={openMobileMenu}
 				activePath={bestMatch}
+				background={background}
+				borderColor={borderColor}
+				focusMode={focusMode}
+				id={id}
 				items={items}
+				openMobileMenu={openMobileMenu}
 				secondaryItems={secondaryItems}
 			/>
 			{/* Mobile dialog menu */}
 			<MainNavDialog
-				isMobileMenuOpen={isMobileMenuOpen}
-				closeMobileMenu={closeMobileMenu}
-				items={items}
 				activePath={bestMatch}
+				closeMobileMenu={closeMobileMenu}
+				isMobileMenuOpen={isMobileMenuOpen}
+				items={items}
 			/>
 		</Fragment>
 	);

@@ -1,3 +1,4 @@
+'use client';
 export * from './LoadingBlanket';
 export * from './LoadingBlanketContainer';
 export * from './LoadingBlanketContent';

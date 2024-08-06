@@ -48,11 +48,22 @@ describe('ControlGroup ', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				rules: {
+					// identical name for checkboxes is valid https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#examples
+					'form-dup-name': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		it('renders correctly when required', () => {
+			const { container } = renderCheckboxGroup({
+				label: 'Control group label',
+				hint: 'Hint text',
+				required: true,
+			});
+			expect(container).toMatchSnapshot();
 		});
 
 		it('renders correctly when invalid', () => {
@@ -94,6 +105,8 @@ describe('ControlGroup ', () => {
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 				rules: {
+					// identical name for checkboxes is valid https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#examples
+					'form-dup-name': 'off',
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 				},
@@ -116,6 +129,15 @@ describe('ControlGroup ', () => {
 					'valid-id': 'off',
 				},
 			});
+		});
+
+		it('renders correctly when required', () => {
+			const { container } = renderRadioGroup({
+				label: 'Control group label',
+				hint: 'Hint text',
+				required: true,
+			});
+			expect(container).toMatchSnapshot();
 		});
 
 		it('renders correctly when invalid', () => {

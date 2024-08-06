@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Fragment, useState } from 'react';
+import { FormEvent, Fragment, useState } from 'react';
 import { Button, ButtonGroup } from '../button';
 import { Checkbox } from '../checkbox';
 import { ComboboxMulti, DefaultComboboxOption } from '../combobox';
@@ -16,6 +16,7 @@ import { Select } from '../select';
 import { Stack } from '../stack';
 import { Switch } from '../switch';
 import { Text } from '../text';
+import { TextInput } from '../text-input';
 import { Drawer } from './Drawer';
 
 const meta: Meta<typeof Drawer> = {
@@ -159,7 +160,7 @@ export const SmallPageContentLargeDrawerContent: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={
@@ -193,7 +194,7 @@ export const LargePageContentLargeDrawerContent: Story = {
 				<LargeProseContent />
 				<Drawer
 					isOpen={isOpen}
-					onDismiss={close}
+					onClose={close}
 					title={props.title}
 					width={props.width}
 					actions={
@@ -529,6 +530,103 @@ export const FiltersWithFieldsets: Story = {
 							</FormStack>
 						</Fieldset>
 					</Stack>
+				</Drawer>
+			</Fragment>
+		);
+	},
+};
+
+export const WithForm: Story = {
+	args: {
+		title: 'Drawer with form',
+	},
+	render: function Render(props) {
+		const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+		type FormState = {
+			datePicker: Date | string | undefined;
+			number: string | undefined;
+			text: string | undefined;
+		};
+
+		const initialFilterState: FormState = {
+			datePicker: undefined,
+			number: undefined,
+			text: '',
+		};
+
+		const [formState, setFormState] = useState(initialFilterState);
+
+		const updateFormState = (formState: Partial<FormState>) => {
+			setFormState((currentState) => ({
+				...currentState,
+				...formState,
+			}));
+		};
+
+		const onSubmitForm = (event: FormEvent) => {
+			event.preventDefault();
+			closeDrawer();
+		};
+
+		const clearForm = () => {
+			setFormState(initialFilterState);
+		};
+
+		return (
+			<Fragment>
+				<Button onClick={openDrawer}>Open Drawer</Button>
+
+				<Drawer
+					isOpen={isDrawerOpen}
+					onClose={closeDrawer}
+					title={props.title}
+					actions={
+						<ButtonGroup>
+							<Button type="submit" form="form-id" onClick={onSubmitForm}>
+								Submit
+							</Button>
+
+							<Button variant="secondary" onClick={clearForm}>
+								Clear form
+							</Button>
+
+							<Button variant="tertiary" onClick={closeDrawer}>
+								Cancel
+							</Button>
+						</ButtonGroup>
+					}
+				>
+					<form id="form-id">
+						<FormStack>
+							<TextInput
+								label="Example text input"
+								onChange={(event) =>
+									updateFormState({ text: event.target.value })
+								}
+								value={formState.text}
+							/>
+
+							<TextInput
+								label="Example number input"
+								onChange={(event) =>
+									updateFormState({ number: event.target.value })
+								}
+								type="number"
+								value={formState.number}
+							/>
+
+							<DatePicker
+								hideOptionalLabel
+								label="Example date input"
+								onChange={(value) => updateFormState({ datePicker: value })}
+								onInputChange={(value) =>
+									updateFormState({ datePicker: value })
+								}
+								value={formState.datePicker}
+							/>
+						</FormStack>
+					</form>
 				</Drawer>
 			</Fragment>
 		);

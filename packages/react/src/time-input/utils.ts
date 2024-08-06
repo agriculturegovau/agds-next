@@ -10,7 +10,7 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	const time = (
 		timeString.match(/\d+/) !== null
 			? timeString.replace(/\s/g, '').length === 3
-				? timeString.match(/(\w{1})(\w{1,2})/)?.slice(1) ?? []
+				? timeString.match(/(\w)(\w{1,2})/)?.slice(1) ?? []
 				: timeString.match(/\d{1,2}/gi) ?? []
 			: []
 	).map((digit) => Number(digit) | 0);

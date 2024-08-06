@@ -1,64 +1,66 @@
-import { PropsWithChildren } from 'react';
-import { Box } from '../box';
+import { type ElementType, type PropsWithChildren } from 'react';
+import { Box, type BoxProps } from '../box';
 import { packs, useLinkComponent } from '../core';
-import { collapsingSideBarLocalPalette } from '../_collapsing-side-bar';
+import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
 
 export type SideNavTitleProps = PropsWithChildren<{
-	id: string;
-	isCurrentPage: boolean;
+	as?: ElementType;
+	/** The CSS class name generated from the `css` prop. */
+	className?: string;
+	display?: BoxProps['display'];
 	href?: string;
+	id?: string;
+	isCurrentPage?: boolean;
 }>;
 
 export function SideNavTitle({
+	as,
 	children,
-	id,
+	className,
+	display,
 	href,
+	id,
 	isCurrentPage,
 }: SideNavTitleProps) {
 	const Link = useLinkComponent();
 
-	if (href) {
-		return (
-			<Box as="h2" id={id} borderBottom borderBottomWidth="xl">
-				<Box
-					as={Link}
-					padding={1}
-					color="text"
-					fontSize="sm"
-					fontWeight="bold"
-					lineHeight="heading"
-					display="block"
-					focus
-					href={href}
-					aria-current={isCurrentPage ? 'page' : undefined}
-					css={{
-						textDecoration: 'none',
-						'&:hover': {
-							...packs.underline,
-							backgroundColor: collapsingSideBarLocalPalette.hover,
-						},
-					}}
-				>
-					{children}
-				</Box>
-			</Box>
-		);
-	}
+	const linkProps = href
+		? {
+				'aria-current': isCurrentPage ? 'page' : undefined,
+				as: Link,
+				href,
+				css: {
+					textDecoration: 'none',
+					'&:hover': {
+						...packs.underline,
+						backgroundColor: collapsingSideBarHoverVar,
+					},
+				},
+		  }
+		: undefined;
 
 	return (
 		<Box
-			as="h2"
-			id={id}
+			as={as}
 			borderBottom
 			borderBottomWidth="xl"
-			display="block"
-			padding={1}
-			color="text"
-			fontSize="sm"
-			fontWeight="bold"
-			lineHeight="heading"
+			className={className}
+			display={display}
+			id={id}
 		>
-			{children}
+			<Box
+				as="span"
+				color="text"
+				display="block"
+				focusRingFor="keyboard"
+				fontSize="sm"
+				fontWeight="bold"
+				lineHeight="heading"
+				padding={1}
+				{...linkProps}
+			>
+				{children}
+			</Box>
 		</Box>
 	);
 }

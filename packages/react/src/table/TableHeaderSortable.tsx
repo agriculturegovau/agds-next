@@ -40,19 +40,11 @@ export const TableHeaderSortable = ({
 				borderBottom: true,
 				borderBottomWidth: 'xl',
 			})}
-			textAlign={textAlign}
 		>
 			<Flex
-				as={BaseButton}
-				gap={0.5}
-				onClick={onClick}
-				padding={0.75}
-				color="text"
-				fontWeight="bold"
-				width="100%"
-				justifyContent="space-between"
 				alignItems="center"
-				focus
+				as={BaseButton}
+				color="text"
 				css={{
 					...packs.underline,
 					svg: {
@@ -66,8 +58,28 @@ export const TableHeaderSortable = ({
 						},
 					},
 				}}
+				focusRingFor="keyboard"
+				fontWeight="bold"
+				gap={0.5}
+				justifyContent="space-between"
+				onClick={onClick}
+				padding={0.75}
+				width="100%"
 			>
-				{children}
+				<Box
+					as="span"
+					css={{
+						marginLeft:
+							textAlign === 'right' || textAlign === 'center'
+								? 'auto'
+								: undefined,
+						marginRight: textAlign === 'center' ? 'auto' : undefined,
+					}}
+					// Aligns text should it wrap
+					textAlign={textAlign}
+				>
+					{children}
+				</Box>
 				<Icon size="md" color="inherit" />
 			</Flex>
 		</Box>

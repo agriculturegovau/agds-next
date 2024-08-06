@@ -1,5 +1,4 @@
-import { ElementType, PropsWithChildren } from 'react';
-import { MouseEventHandler } from 'react';
+import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
 import { LinkProps } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -113,7 +112,7 @@ const BaseDirectionLink = ({
 			fontFamily="body"
 			fontWeight="normal"
 			link
-			focus
+			focusRingFor="keyboard"
 			width={{ xs: BUTTON_SIZE_XS, sm: 'auto' }}
 			height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 			css={{

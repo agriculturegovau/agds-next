@@ -1,8 +1,5 @@
 import { useId } from '../core';
-import {
-	CollapsingSideBar,
-	CollapsingSideBarTitle,
-} from '../_collapsing-side-bar';
+import { CollapsingSideBar } from '../_collapsing-side-bar';
 import {
 	ProgressIndicatorItemLink,
 	ProgressIndicatorItemLinkProps,
@@ -15,14 +12,14 @@ import {
 } from './utils';
 
 export type ProgressIndicatorProps = {
-	/** The list of items, including level 2 items, to display. Use in conjunction with `activePath`. Note level 2 items are only available when using links. */
-	items: (ProgressIndicatorItem | ProgressIndicatorItemWithLevelTwoItems)[];
 	/** Used for highlighting the active step. This should match the active item's `href` (or label if no href is supplied). */
 	activePath?: string;
 	/** If the ProgressIndicator is placed on a page with 'bodyAlt' background, please set this to "bodyAlt". */
 	background?: 'body' | 'bodyAlt';
 	/** If true, the `subTitle` above the list of items will not be rendered. */
 	hideSubtitle?: boolean;
+	/** The list of items, including level 2 items, to display. Use in conjunction with `activePath`. Note level 2 items are only available when using links. */
+	items: (ProgressIndicatorItem | ProgressIndicatorItemWithLevelTwoItems)[];
 };
 
 export const ProgressIndicator = ({
@@ -102,10 +99,9 @@ export const ProgressIndicator = ({
 
 	return (
 		<CollapsingSideBar
-			as="section"
 			background={background}
-			collapseButtonLabel={subTitle || title} // When `hideTitles` is true, the mobile button label should be "Progress" instead of "x of y steps completed"
-			title={<CollapsingSideBarTitle title={title} subtitle={subTitle} />}
+			subTitle={subTitle}
+			title={title}
 		>
 			<ProgressIndicatorList>
 				{itemsWithDefaultActive.map(({ label, ...props }) =>

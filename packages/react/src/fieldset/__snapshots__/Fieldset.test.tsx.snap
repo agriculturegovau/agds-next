@@ -8,12 +8,12 @@ exports[`Fieldset Basic renders correctly 1`] = `
     id="fieldset-:r0:"
   >
     <legend
-      class="css-5k6djv-boxStyles-Text"
+      class="css-e6rsgj-boxStyles"
     >
       What is your name?
     </legend>
     <span
-      class="css-1jadulg-boxStyles-Text-FieldsetHint"
+      class="css-12r1vmf-boxStyles-FieldsetHint"
       id="fieldset-:r0:-hint"
     >
       We will only use this to respond to your requests
@@ -32,7 +32,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
             for="field-:r1:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-1jywj6f-boxStyles"
             >
               First name
             </span>
@@ -57,7 +57,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
             for="field-:r2:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-1jywj6f-boxStyles"
             >
               Last name
             </span>
@@ -99,7 +99,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
       id="fieldset-:r9:-hint"
     >
       <span
-        class="css-1xaqzgm-boxStyles-Text"
+        class="css-d4xkeo-boxStyles"
       >
         We will only use this to respond to your requests
       </span>
@@ -118,7 +118,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             for="field-:ra:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-1jywj6f-boxStyles"
             >
               First name
             </span>
@@ -143,7 +143,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             for="field-:rb:"
           >
             <span
-              class="css-433uqb-boxStyles-Text"
+              class="css-1jywj6f-boxStyles"
             >
               Last name
             </span>

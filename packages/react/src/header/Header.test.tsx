@@ -2,12 +2,10 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Logo as AgLogo } from '../ag-branding';
-import { render, cleanup } from '../../../../test-utils';
+import { render, screen } from '../../../../test-utils';
 import { Header, HeaderProps } from './Header';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
 
 function renderHeader(props?: Partial<HeaderProps>) {
 	return render(
@@ -33,5 +31,26 @@ describe('Header', () => {
 			extends: ['html-validate:recommended'],
 		});
 		expect(await axe(container)).toHaveNoViolations();
+	});
+
+	describe('when a second logo with href is defined', () => {
+		beforeEach(() => {
+			renderHeader({
+				secondHref: '#mock-second-href',
+				secondLogo: (
+					<span data-testid="mock-second-logo">Mock second logo</span>
+				),
+			});
+		});
+
+		test('then the second logo should be visible', () => {
+			expect(screen.getByTestId('mock-second-logo')).toBeVisible();
+		});
+
+		test('then a link with the second href should be visible', () => {
+			expect(
+				screen.getByRole('link', { name: 'Mock second logo' })
+			).toHaveAttribute('href', '#mock-second-href');
+		});
 	});
 });

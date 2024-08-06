@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/react';
-import { PageContent } from '@ag.ds-next/react/content';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
-import { Callout } from '@ag.ds-next/react/callout';
+import { PageContent } from '../../../packages/react/src/content';
+import { Stack } from '../../../packages/react/src/stack';
+import { Text } from '../../../packages/react/src/text';
+import { Callout } from '../../../packages/react/src/callout';
 import { TableFilteringLarge } from './TableFilteringLarge';
 import { TableFilteringSmall } from './TableFilteringSmall';
 import { TableFilteringMedium } from './TableFilteringMedium';

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 import { Flex } from '../flex';
 import {
 	boxPalette,
@@ -9,24 +9,139 @@ import {
 } from '../core';
 import { Text } from '../text';
 import { Box } from '../box';
+import { Stack } from '../stack';
+import { AppLayoutHeaderProps } from './AppLayoutHeader';
+
+const GAP_REM = 1.5;
+const LOGO_HEIGHT = '3.75rem';
 
 export type AppLayoutHeaderBrandProps = {
 	href: string;
-	logo: JSX.Element;
+	logo: ReactElement;
+	hasAccountDetails: boolean;
 	heading: string;
-	subLine?: string;
 	badgeLabel?: string;
+	dividerPosition?: AppLayoutHeaderProps['dividerPosition'];
+	secondHref?: AppLayoutHeaderProps['secondHref'];
+	secondLogo?: AppLayoutHeaderProps['secondLogo'];
+	subLine?: string;
 };
 
 export function AppLayoutHeaderBrand({
-	heading,
-	subLine,
 	badgeLabel,
+	dividerPosition,
 	logo,
+	heading,
+	hasAccountDetails,
 	href,
+	secondHref,
+	secondLogo,
+	subLine,
 }: AppLayoutHeaderBrandProps) {
 	const Link = useLinkComponent();
-	return (
+
+	return logo && secondLogo ? (
+		<Flex
+			css={{ overflow: 'hidden' }}
+			flexDirection={{ xs: 'column', lg: 'row' }}
+			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
+			gap={{ xs: 1, md: GAP_REM }}
+			inline
+			paddingY={1}
+		>
+			<Flex
+				css={{
+					marginRight:
+						hasAccountDetails && dividerPosition === 'after'
+							? mapSpacing(GAP_REM)
+							: 0,
+				}} // Create a gap when there is right content
+				flexDirection={{ xs: 'column', sm: 'row' }}
+				flexShrink={0}
+				gap={GAP_REM}
+			>
+				<Flex
+					as={Link}
+					color="text"
+					css={{
+						' img, svg': { height: LOGO_HEIGHT },
+						...packs.print.hidden,
+					}}
+					focusRingFor="keyboard"
+					href={href}
+				>
+					{logo}
+				</Flex>
+
+				{dividerPosition === 'between' && (
+					<DividingLine dividerPosition={dividerPosition} />
+				)}
+
+				<Flex
+					alignSelf={{ xs: 'start', sm: 'center' }}
+					as={secondHref ? Link : 'span'}
+					color="text"
+					css={{
+						' img, svg': { width: '100%' },
+						...packs.print.hidden,
+					}}
+					focusRingFor="keyboard"
+					{...(secondHref && { href: secondHref })}
+				>
+					{secondLogo}
+				</Flex>
+			</Flex>
+
+			<Flex
+				css={
+					dividerPosition === 'after'
+						? {
+								[tokens.mediaQuery.min.lg]: {
+									marginLeft: `calc(-${
+										hasAccountDetails ? mapSpacing(GAP_REM) : 0 // Offset the gap when there is right content
+									} - ${tokens.borderWidth.sm}px)`, // Hide the divider when the heading text flows to the second row
+								},
+						  }
+						: undefined
+				}
+				gap={GAP_REM}
+			>
+				{dividerPosition === 'after' && (
+					<DividingLine dividerPosition={dividerPosition} />
+				)}
+
+				<Stack
+					as={Link}
+					color="text"
+					css={{
+						textDecoration: 'none',
+						':hover': packs.underline,
+					}}
+					focusRingFor="keyboard"
+					href={href}
+					justifyContent="center"
+				>
+					<Flex alignItems="flex-start" gap={0.5}>
+						<Text fontSize="lg" fontWeight="bold">
+							{heading}
+						</Text>
+
+						{badgeLabel && (
+							<AppLayoutHeaderBrandBadge>
+								{badgeLabel}
+							</AppLayoutHeaderBrandBadge>
+						)}
+					</Flex>
+
+					{subLine && (
+						<Text color="muted" fontSize="xs">
+							{subLine}
+						</Text>
+					)}
+				</Stack>
+			</Flex>
+		</Flex>
+	) : (
 		<Flex
 			as={Link}
 			href={href}
@@ -34,45 +149,40 @@ export function AppLayoutHeaderBrand({
 			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={{ xs: 'flex-start', md: 'center' }}
 			gap={{ xs: 1, md: 0 }}
-			focus
+			focusRingFor="keyboard"
 			color="text"
 			css={{
 				textDecoration: 'none',
 				'&:hover': packs.underline,
 				// Logo styles
-				svg: { display: 'block', height: '3.75rem', flexShrink: 0 },
+				svg: { display: 'block', height: LOGO_HEIGHT, flexShrink: 0 },
 			}}
 		>
 			{logo}
+
+			<DividingLine singleLogo />
+
 			<Flex
 				flexDirection="column"
 				justifyContent="center"
 				alignItems="flex-start"
 				maxWidth={tokens.maxWidth.bodyText}
-				css={{
-					// Border between logo and heading/subLine
-					[tokens.mediaQuery.min.md]: {
-						paddingLeft: mapSpacing(1),
-						marginLeft: mapSpacing(1),
-						borderLeft: boxPalette.border,
-						borderLeftStyle: 'solid',
-						borderLeftColor: boxPalette.border,
-					},
-				}}
 			>
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text fontSize="lg" fontWeight="bold">
 						{heading}
 					</Text>
+
 					{badgeLabel && (
 						<AppLayoutHeaderBrandBadge>{badgeLabel}</AppLayoutHeaderBrandBadge>
 					)}
 				</Flex>
-				{subLine ? (
+
+				{subLine && (
 					<Text color="muted" fontSize="xs">
 						{subLine}
 					</Text>
-				) : null}
+				)}
 			</Flex>
 		</Flex>
 	);
@@ -104,3 +214,28 @@ function AppLayoutHeaderBrandBadge({
 		</Box>
 	);
 }
+
+const DividingLine = ({
+	dividerPosition,
+	singleLogo,
+}: Pick<AppLayoutHeaderBrandProps, 'dividerPosition'> & {
+	singleLogo?: boolean;
+}) => (
+	<Box
+		borderLeft
+		css={{
+			margin: singleLogo ? '0 1rem' : undefined,
+			...packs.print.hidden,
+		}}
+		display={
+			singleLogo
+				? { xs: 'none', md: 'block' }
+				: {
+						xs: 'none',
+						sm: dividerPosition === 'between' ? 'block' : undefined,
+						lg: 'block',
+				  }
+		}
+		height={singleLogo ? LOGO_HEIGHT : undefined}
+	/>
+);

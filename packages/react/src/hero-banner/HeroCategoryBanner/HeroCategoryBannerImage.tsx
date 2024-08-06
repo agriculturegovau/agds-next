@@ -22,7 +22,7 @@ export const HeroCategoryBannerImage = ({
 				right: 0,
 				bottom: 0,
 
-				'&:after': {
+				'&::after': {
 					content: '""',
 					pointerEvents: 'none',
 					position: 'absolute',

@@ -112,22 +112,22 @@ export const NotContainedBodyAlt: StoryObj = {
 
 export const Controlled: StoryObj = {
 	render: function Render() {
-		const [activeTabIndex, setActiveIndex] = useState(0);
+		const [activeTabIndex, setActiveTabIndex] = useState(0);
 		return (
 			<Stack gap={2}>
 				<Text>Current tab index: {activeTabIndex}</Text>
 				<Flex gap={0.5}>
-					<Button variant="text" onClick={() => setActiveIndex(0)}>
+					<Button variant="text" onClick={() => setActiveTabIndex(0)}>
 						Go to first tab
 					</Button>
-					<Button variant="text" onClick={() => setActiveIndex(1)}>
+					<Button variant="text" onClick={() => setActiveTabIndex(1)}>
 						Go to second tab
 					</Button>
-					<Button variant="text" onClick={() => setActiveIndex(2)}>
+					<Button variant="text" onClick={() => setActiveTabIndex(2)}>
 						Go to third tab
 					</Button>
 				</Flex>
-				<Tabs activeIndex={activeTabIndex} onChange={setActiveIndex}>
+				<Tabs activeIndex={activeTabIndex} onChange={setActiveTabIndex}>
 					<TabList>
 						<TabButton>Tab 1</TabButton>
 						<TabButton>Tab 2</TabButton>

@@ -1,5 +1,12 @@
-import { focusStyles } from '../box';
-import { packs, boxPalette, tokens, mapSpacing } from '../core';
+import { BoxProps, focusStylesMap } from '../box';
+import {
+	packs,
+	boxPalette,
+	tokens,
+	mapSpacing,
+	mq,
+	mapResponsiveProp,
+} from '../core';
 
 const variants = {
 	primary: {
@@ -93,15 +100,27 @@ export const loadingSize = {
 	md: 'md',
 } as const;
 
-export function buttonStyles({
-	block,
-	variant,
-	size,
-}: {
+type BaseStylesArgs = {
 	block: boolean;
-	variant: ButtonVariant;
 	size: ButtonSize;
-}) {
+	variant: ButtonVariant;
+	focusRingFor?: BoxProps['focusRingFor'];
+};
+
+type ResponsiveStylesArgs = BaseStylesArgs & {
+	alignSelf?: BoxProps['alignSelf'];
+};
+
+type ButtonStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
+	? ReturnType<typeof getBaseStyles> // For backwards compatibility we return a single object of CSS properties, unless...
+	: ReturnType<typeof mq>; // ...we have a responsive property included as an arg, then we return the responsive array of CSS properties.
+
+function getBaseStyles({
+	block,
+	focusRingFor = 'keyboard',
+	size,
+	variant,
+}: BaseStylesArgs) {
 	return {
 		appearance: 'none',
 		boxSizing: 'border-box',
@@ -131,8 +150,27 @@ export function buttonStyles({
 			flexShrink: 0,
 		},
 
-		...focusStyles,
+		...focusStylesMap[focusRingFor],
 		...sizes[size],
 		...variants[variant],
 	} as const;
+}
+
+export function buttonStyles<T extends ResponsiveStylesArgs>({
+	alignSelf,
+	block,
+	focusRingFor = 'keyboard',
+	size,
+	variant,
+}: T): ButtonStyles<T> {
+	const styles = getBaseStyles({ block, focusRingFor, size, variant });
+
+	return (
+		alignSelf
+			? mq({
+					alignSelf: mapResponsiveProp(alignSelf),
+					...styles,
+			  })
+			: styles
+	) as ButtonStyles<T>;
 }

@@ -2,11 +2,12 @@ import { CSSProperties, PropsWithChildren, useEffect } from 'react';
 import {
 	type Placement,
 	type ReferenceType,
-	useFloating,
 	autoUpdate,
-	offset,
 	flip,
+	offset,
+	shift,
 	size,
+	useFloating,
 } from '@floating-ui/react-dom';
 import { Box } from '../box';
 import { forwardRefWithAs, tokens } from '../core';
@@ -44,6 +45,7 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 });
 
 const DEFAULT_OFFSET = 8;
+const MIN_SIDE_GUTTER_WIDTH = 1;
 
 type UsePopoverOptions = {
 	/** If true, the popover element is using `display: none` or `visibility: hidden` instead of conditional rendering. */
@@ -81,6 +83,9 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// Adds distance between the reference and floating element
 			// https://floating-ui.com/docs/offset
 			offset(offsetOption),
+			// Placing shift() before flip() in the array ensures it can do its work before flip() tries to change the placement.
+			// https://floating-ui.com/docs/flip#combining-with-shift
+			shift({ padding: MIN_SIDE_GUTTER_WIDTH }),
 			// Changes the placement of the floating element in order to keep it in view
 			// https://floating-ui.com/docs/flip
 			flip({ padding: DEFAULT_OFFSET }),
@@ -88,12 +93,7 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 			// https://floating-ui.com/docs/size
 			size({
 				padding: DEFAULT_OFFSET, // Prevents the floating element hit the edge of the screen
-				apply({
-					availableHeight: _availableHeight,
-					availableWidth,
-					elements,
-					rects,
-				}) {
+				apply({ availableHeight: _availableHeight, elements, rects }) {
 					// Popovers can have a predefined max-height if there is enough room on the screen
 					const maxHeight =
 						maxHeightOption && _availableHeight > maxHeightOption
@@ -106,14 +106,13 @@ export function usePopover<RT extends ReferenceType = ReferenceType>(
 						: maxHeight;
 
 					Object.assign(elements.floating.style, {
-						maxHeight: `${availableHeight}px`,
-						// https://floating-ui.com/docs/size#match-reference-width
+						maxHeight: `${availableHeight}px`, // https://floating-ui.com/docs/size#match-reference-width
 						...(matchReferenceWidth
 							? {
 									width: `${rects.reference.width}px`,
 							  }
 							: {
-									maxWidth: `${availableWidth}px`,
+									maxWidth: `calc(100vw - ${2 * MIN_SIDE_GUTTER_WIDTH}px)`,
 							  }),
 					});
 				},

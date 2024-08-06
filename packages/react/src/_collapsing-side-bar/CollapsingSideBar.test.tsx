@@ -7,8 +7,9 @@ import type { CollapsingSideBarProps } from './CollapsingSideBar';
 afterEach(cleanup);
 
 const defaultSideBarProps: CollapsingSideBarProps = {
-	children: 'CollapsingSideBar Content',
-	collapseButtonLabel: 'Collapse button label',
+	children: 'Content',
+	subTitle: 'Subtitle',
+	title: 'Title',
 };
 
 function renderSideBar(props: CollapsingSideBarProps) {
@@ -20,6 +21,15 @@ describe('CollapsingSideBar', () => {
 		const { container } = renderSideBar(defaultSideBarProps);
 		expect(container).toMatchSnapshot();
 	});
+
+	it('renders customTitleElement correctly', () => {
+		const { container } = renderSideBar({
+			...defaultSideBarProps,
+			customTitleElement: <h2>Custom Title</h2>,
+		});
+		expect(container).toMatchSnapshot();
+	});
+
 	it('renders a valid HTML structure', () => {
 		const { container } = renderSideBar(defaultSideBarProps);
 		expect(container).toHTMLValidate({

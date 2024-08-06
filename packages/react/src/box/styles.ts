@@ -145,6 +145,10 @@ type TypographyProps = Partial<{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
 	 */
 	textAlign: ResponsiveProp<'left' | 'center' | 'right'>;
+	/** If true, applies the CSS word-break: break-word property, or word-break: normal if false.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+	 */
+	breakWords: boolean;
 }>;
 
 function typographyStyles({
@@ -153,6 +157,7 @@ function typographyStyles({
 	fontSize: _fontSize,
 	lineHeight: _lineHeight = 'default',
 	textAlign,
+	breakWords,
 }: TypographyProps) {
 	const responsiveFontGrid = mapResponsiveProp(_fontSize, (t) =>
 		fontGrid(t, _lineHeight)
@@ -176,6 +181,11 @@ function typographyStyles({
 		fontSize,
 		lineHeight,
 		textAlign: mapResponsiveProp(textAlign),
+		wordBreak:
+			(breakWords === true && 'break-word') ||
+			(breakWords === false && 'normal') ||
+			// wordWrap will inherit by default
+			undefined,
 		'& ::selection': {
 			color: boxPalette.backgroundBody,
 			backgroundColor: boxPalette.foregroundAction,
@@ -253,11 +263,35 @@ type LayoutProps = Partial<{
 		| 'space-around'
 		| 'space-evenly'
 	>;
+	/** Sets the CSS justify-self property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
+	 */
+	justifySelf: ResponsiveProp<
+		'stretch' | 'start' | 'end' | 'center' | 'baseline'
+	>;
 	/** Sets the CSS align-items property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 */
 	alignItems: ResponsiveProp<
-		'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
+	>;
+	/** Sets the CSS align-self property.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
+	 */
+	alignSelf: ResponsiveProp<
+		| 'stretch'
+		| 'start'
+		| 'flex-start'
+		| 'end'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
 	>;
 	/** Maps tokens to the CSS gap property.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/gap
@@ -298,6 +332,7 @@ type LayoutProps = Partial<{
 }>;
 
 function layoutStyles({
+	alignSelf,
 	display,
 	flexDirection,
 	flexWrap,
@@ -307,6 +342,7 @@ function layoutStyles({
 	gridColumnStart,
 	gridColumnEnd,
 	justifyContent,
+	justifySelf,
 	alignItems,
 	gap,
 	columnGap,
@@ -319,6 +355,7 @@ function layoutStyles({
 	maxHeight,
 }: LayoutProps) {
 	return {
+		alignSelf: mapResponsiveProp(alignSelf),
 		display: mapResponsiveProp(display),
 		flexDirection: mapResponsiveProp(flexDirection),
 		flexWrap: mapResponsiveProp(flexWrap),
@@ -328,6 +365,7 @@ function layoutStyles({
 		gridColumnStart: mapResponsiveProp(gridColumnStart),
 		gridColumnEnd: mapResponsiveProp(gridColumnEnd),
 		justifyContent: mapResponsiveProp(justifyContent),
+		justifySelf: mapResponsiveProp(justifySelf),
 		alignItems: mapResponsiveProp(alignItems),
 		gap: mapResponsiveProp(gap, mapSpacing),
 		columnGap: mapResponsiveProp(columnGap, mapSpacing),
@@ -514,20 +552,30 @@ export const linkStyles = {
 
 	// Display link URLs
 	'@media print': {
-		'&[href]:after': {
+		'&[href]::after': {
 			content: '" (" attr(href) ")" !important',
 		},
 	},
 };
 
 type FocusProps = Partial<{
-	/** If true, the focus indicator will be shown when the element receives keyboard focus. */
+	/** @deprecated use focusRingFor="keyboard". */
 	focus: boolean;
+	/** Display a focus indicator when the element receives focus. 'all' shows for all users, includes programmatic focus, and 'keyboard' is for keyboard-only focus. */
+	focusRingFor: 'all' | 'keyboard';
 }>;
 export const focusStyles = {
 	':focus': packs.outline,
 	':focus:not(:focus-visible)': { outline: 'none' },
 	':focus-visible': packs.outline,
+};
+export const focusStylesAll = {
+	':focus': packs.outline,
+};
+
+export const focusStylesMap = {
+	all: focusStylesAll,
+	keyboard: focusStyles,
 };
 
 type HighContrastProps = Partial<{
@@ -549,13 +597,12 @@ export type BoxProps = PaletteProps &
 	PaddingProps;
 
 export function boxStyles({
-	palette,
-	dark,
-	light,
-	color,
+	alignItems,
+	alignSelf,
 	background,
 	border,
-	borderWidth,
+	borderBottom,
+	borderBottomWidth,
 	borderColor,
 	borderLeft,
 	borderLeftWidth,
@@ -563,47 +610,65 @@ export function boxStyles({
 	borderRightWidth,
 	borderTop,
 	borderTopWidth,
-	borderBottom,
-	borderBottomWidth,
+	borderWidth,
 	borderX,
 	borderY,
-	rounded,
+	breakWords,
+	color,
+	columnGap,
+	dark,
 	display,
 	flexDirection,
-	flexWrap,
 	flexGrow,
 	flexShrink,
-	gridColumnSpan,
-	gridColumnStart,
-	gridColumnEnd,
-	justifyContent,
-	alignItems,
-	gap,
-	columnGap,
-	rowGap,
-	width,
-	minWidth,
-	maxWidth,
-	height,
-	minHeight,
-	maxHeight,
-	paddingTop,
-	paddingBottom,
-	paddingRight,
-	paddingLeft,
-	paddingX,
-	paddingY,
-	padding,
-	fontWeight,
+	flexWrap,
+	focus,
+	focusRingFor,
 	fontFamily,
 	fontSize,
-	lineHeight,
-	textAlign,
-	focus,
-	link,
+	fontWeight,
+	gap,
+	gridColumnEnd,
+	gridColumnSpan,
+	gridColumnStart,
+	height,
 	highContrastOutline,
+	justifyContent,
+	justifySelf,
+	light,
+	lineHeight,
+	link,
+	maxHeight,
+	maxWidth,
+	minHeight,
+	minWidth,
+	padding,
+	paddingBottom,
+	paddingLeft,
+	paddingRight,
+	paddingTop,
+	paddingX,
+	paddingY,
+	palette,
+	rounded,
+	rowGap,
+	textAlign,
+	width,
 	...restProps
 }: BoxProps) {
+	/* **LEGACY HANDLER**
+	 * We've deprecated `focus` in favour of `focusRingFor?: 'all | 'keyboard'. This
+	 * displays the focus ring for elements that are programmatically focused.
+	 *
+	 * `focus` maps to `focusRingFor: 'keyboard' for backwards compatibility.
+	 */
+	focusRingFor = focusRingFor || (focus ? 'keyboard' : undefined);
+	if (focus && process.env.NODE_ENV !== 'production') {
+		console.warn(
+			'The `focus` prop is deprecated. Use `focusRingFor="keyboard"`.'
+		);
+	}
+
 	return [
 		css([
 			paletteStyles({ palette, dark, light }),
@@ -637,6 +702,7 @@ export function boxStyles({
 				}),
 
 				...layoutStyles({
+					alignSelf,
 					display,
 					flexDirection,
 					flexWrap,
@@ -646,6 +712,7 @@ export function boxStyles({
 					gridColumnStart,
 					gridColumnEnd,
 					justifyContent,
+					justifySelf,
 					alignItems,
 					gap,
 					columnGap,
@@ -674,10 +741,11 @@ export function boxStyles({
 					fontSize,
 					lineHeight,
 					textAlign,
+					breakWords,
 				}),
 
 				...(link ? linkStyles : undefined),
-				...(focus ? focusStyles : undefined),
+				...(focusRingFor ? focusStylesMap[focusRingFor] : undefined),
 				...(highContrastOutline ? highContrastOutlineStyles : undefined),
 			}),
 		]),

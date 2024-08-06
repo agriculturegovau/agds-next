@@ -347,3 +347,126 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 	);
 };
 ```
+
+## Focus custom element on close
+
+When a drawer closes, focus is returned to the element that opened it. You can override this behaviour by passing an element to the `elementToFocusOnClose` prop. This can be used in situations, for example, when an action performed in the drawer causes an error, setting the main page in an error state, and requiring the user’s focus to be returned to the alert instead.
+
+```jsx live
+() => {
+	const sectionAlertContainerRef = React.useRef(null);
+	const [error, setError] = React.useState('');
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+
+	const openDrawerAndClearError = () => {
+		openDrawer();
+		setError('');
+	};
+
+	const closeWithError = () => {
+		closeDrawer();
+		setError('We were unable to perform the action, please try again later.');
+	};
+
+	return (
+		<Stack gap={2}>
+			<Box css={error ? undefined : { display: 'none' }}>
+				<SectionAlert
+					focusRingFor="all"
+					ref={sectionAlertContainerRef}
+					tabIndex={-1}
+					title="Something went wrong"
+					tone="error"
+				>
+					<Text as="p">{error}</Text>
+				</SectionAlert>
+			</Box>
+
+			<Button alignSelf="start" onClick={openDrawerAndClearError}>
+				Open Drawer
+			</Button>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeWithError}>Close with error</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Close with no error
+						</Button>
+					</ButtonGroup>
+				}
+				elementToFocusOnClose={
+					error ? sectionAlertContainerRef.current : undefined
+				}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Drawer title"
+			>
+				<Text as="p">
+					When pressing 'Close with error', an error alert will be rendered and
+					focused.
+				</Text>
+			</Drawer>
+		</Stack>
+	);
+};
+```
+
+## Using a form in the drawer
+
+To create a fully accessible form within a drawer, we must do two things:
+
+1. Add an `id` to the `<form>`.
+2. Pass that `id` to the primary Button's `form` prop along with `type="submit"`.
+
+This will allow keyboard users to submit the form by pressing "enter" on the form inputs.
+
+```jsx live
+() => {
+	const formRef = React.useRef(null);
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const onSubmitForm = (event) => {
+		event.preventDefault();
+
+		const formData = Object.fromEntries(new FormData(formRef.current));
+		console.log('Form submitted with values:', formData);
+
+		closeDrawer();
+	};
+
+	return (
+		<React.Fragment>
+			<Button onClick={openDrawer}>Open Drawer</Button>
+
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button type="submit" form="form-id" onClick={onSubmitForm}>
+							Submit
+						</Button>
+
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Cancel
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Example form"
+			>
+				<form id="form-id" ref={formRef}>
+					<FormStack>
+						<TextInput label="Example text input" name="textInput" />
+
+						<TextInput
+							label="Example text input"
+							name="numberInput"
+							type="number"
+						/>
+					</FormStack>
+				</form>
+			</Drawer>
+		</React.Fragment>
+	);
+};
+```

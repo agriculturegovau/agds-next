@@ -3,7 +3,7 @@
 exports[`PageAlert tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-nrc1qj-boxStyles-PageAlert"
+    class="css-4co8rc-boxStyles-PageAlert"
   >
     <div
       class="css-1k8g9lc-boxStyles-PageAlert"
@@ -11,7 +11,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Error"
-        class="css-9s3cfn-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -35,7 +35,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           There is a problem
         </h3>
@@ -43,10 +43,10 @@ exports[`PageAlert tone: error renders correctly 1`] = `
           class="css-1qfj7jm-UnorderedList"
         >
           <li
-            class="css-tdgyc3-boxStyles-Text-ListItem"
+            class="css-1sudq1l-boxStyles-ListItem"
           >
             <a
-              class="css-ma0bjl-TextLink"
+              class="css-koqz57-TextLink"
               href="#"
             >
               Full name must not be empty
@@ -62,7 +62,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
 exports[`PageAlert tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-i0rwwd-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -70,7 +70,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-9s3cfn-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -94,12 +94,12 @@ exports[`PageAlert tone: info renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Notice
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           All vacancies close on the advertised closing date unless otherwise specified.
         </p>
@@ -112,7 +112,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
 exports[`PageAlert tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-12967ez-boxStyles-PageAlert"
+    class="css-1fz8glh-boxStyles-PageAlert"
   >
     <div
       class="css-pnbgw6-boxStyles-PageAlert"
@@ -120,7 +120,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Success"
-        class="css-9s3cfn-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -144,12 +144,12 @@ exports[`PageAlert tone: success renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Submission successful
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Your application has been successfully submitted.
         </p>
@@ -162,7 +162,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
 exports[`PageAlert tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-6yhwwh-boxStyles-PageAlert"
+    class="css-rl6354-boxStyles-PageAlert"
   >
     <div
       class="css-11ssqox-boxStyles-PageAlert"
@@ -170,7 +170,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-9s3cfn-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -194,12 +194,12 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-x96jxq-boxStyles-Text-PageAlertTitle"
+          class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Browser out of date
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           Your web browser is out of date.
         </p>
@@ -212,7 +212,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
 exports[`PageAlert with a close button renders correctly 1`] = `
 <div>
   <div
-    class="css-i0rwwd-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
       class="css-11095yd-boxStyles-PageAlert"
@@ -220,7 +220,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-9s3cfn-Icon"
+        class="css-lq07bo-Icon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -244,12 +244,12 @@ exports[`PageAlert with a close button renders correctly 1`] = `
         class="css-g6k1ma-boxStyles"
       >
         <h3
-          class="css-1a10dg0-boxStyles-Text-PageAlertTitle"
+          class="css-16u1tz7-boxStyles-PageAlertTitle"
         >
           PageAlert with close button
         </h3>
         <p
-          class="css-6j1v6l-boxStyles-Text"
+          class="css-dbscsh-boxStyles"
         >
           This is a Page alert component.
         </p>
@@ -271,7 +271,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-10mbdw9-Button"
+          class="css-sbsftc-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

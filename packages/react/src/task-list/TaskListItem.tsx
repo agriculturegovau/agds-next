@@ -90,7 +90,7 @@ const TaskListItem = ({
 				color="text"
 				borderBottom
 				width="100%"
-				focus
+				focusRingFor="keyboard"
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
@@ -100,7 +100,7 @@ const TaskListItem = ({
 					}),
 
 					...(status === 'doing' && {
-						'&:before': {
+						'&::before': {
 							content: '""',
 							background: boxPalette.foregroundAction,
 							position: 'absolute',
@@ -143,20 +143,21 @@ const TaskListItem = ({
 							lineHeight="heading"
 							fontWeight="bold"
 							color="action"
-							css={{
-								order: 2,
-								...(ordered && {
-									'&:before': {
-										content: 'counter(task-count)',
-									},
-								}),
-							}}
+							css={
+								ordered
+									? {
+											'&::before': {
+												content: 'counter(task-count)',
+											},
+									  }
+									: undefined
+							}
 						>
 							{ordered && <span aria-hidden="true">. </span>}
 							{children}
 							<VisuallyHidden>.</VisuallyHidden>
 						</Text>
-						<Flex as="span" gap={0.25} alignItems="center" css={{ order: 1 }}>
+						<Flex as="span" gap={0.25} alignItems="center">
 							<Icon
 								size="md"
 								color={iconColor}
@@ -169,7 +170,7 @@ const TaskListItem = ({
 								<VisuallyHidden>.</VisuallyHidden>
 							</Text>
 						</Flex>
-						<Text color="muted" fontSize="sm" css={{ order: 3 }}>
+						<Text color="muted" fontSize="sm">
 							{message}
 						</Text>
 					</Flex>

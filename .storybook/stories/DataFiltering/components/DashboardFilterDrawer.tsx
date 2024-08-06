@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Stack } from '@ag.ds-next/react/stack';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { Fieldset } from '@ag.ds-next/react/fieldset';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { Divider } from '@ag.ds-next/react/divider';
-import { Drawer } from '@ag.ds-next/react/drawer';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Stack } from '../../../../packages/react/src/stack';
+import { DateRangePicker } from '../../../../packages/react/src/date-range-picker';
+import { Fieldset } from '../../../../packages/react/src/fieldset';
+import { FormStack } from '../../../../packages/react/src/form-stack';
+import { Divider } from '../../../../packages/react/src/divider';
+import { Drawer } from '../../../../packages/react/src/drawer';
+import { Button, ButtonGroup } from '../../../../packages/react/src/button';
 import { GetDataFilters } from '../lib/getData';
 import {
 	SortAndFilterProvider,

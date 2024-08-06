@@ -1,3 +1,4 @@
+'use client';
 import { Drawer, DrawerProps } from '../drawer';
 
 /**

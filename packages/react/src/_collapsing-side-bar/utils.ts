@@ -1,16 +1,12 @@
-import { useId } from '../core';
+import { boxPalette, useId } from '../core';
 
-export const collapsingSideBarLocalPaletteVars = {
-	hover: '--collapsing-side-bar-hover',
-};
-
-export const collapsingSideBarLocalPalette = {
-	hover: `var(${collapsingSideBarLocalPaletteVars.hover})`,
-};
+// Note: SideNav uses these vars since it supports 2 backgrounds
+export const collapsingSideBarHoverProp = '--collapsing-side-bar-hover';
+export const collapsingSideBarHoverVar = `var(${collapsingSideBarHoverProp})`;
 
 export const hoverColorMap = {
-	body: 'shade',
-	bodyAlt: 'shadeAlt',
+	body: boxPalette.backgroundShade,
+	bodyAlt: boxPalette.backgroundShadeAlt,
 } as const;
 
 export type CollapsingSideBarBackground = keyof typeof hoverColorMap;
@@ -18,7 +14,7 @@ export type CollapsingSideBarBackground = keyof typeof hoverColorMap;
 export function useCollapsingSideBarIds() {
 	const autoId = useId();
 	return {
-		buttonId: `collapsing-side-bar-${autoId}-button`,
 		bodyId: `collapsing-side-bar-${autoId}-body`,
+		headingId: `collapsing-side-bar-${autoId}-heading`,
 	};
 }

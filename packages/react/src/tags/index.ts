@@ -1,3 +1,4 @@
+'use client';
 export * from './Tags';
 export * from './TagsContainer';
 export * from './TagsList';

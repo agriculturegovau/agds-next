@@ -1,3 +1,4 @@
+'use client';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './BaseButton';

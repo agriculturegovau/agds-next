@@ -9,7 +9,7 @@ import { Logo } from '@ag.ds-next/react/ag-branding';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Header } from '@ag.ds-next/react/header';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
-import { MainNav, MainNavBottomBar } from '@ag.ds-next/react/main-nav';
+import { MainNav } from '@ag.ds-next/react/main-nav';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { useAuth } from '../../lib/useAuth';
@@ -102,16 +102,13 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 				heading="yourGov"
 				subline="Access government services from one place"
 			/>
-			{!focusMode ? (
-				<MainNav
-					id="main-nav"
-					activePath={asPath}
-					items={navItems.primary}
-					secondaryItems={navItems.secondary}
-				/>
-			) : (
-				<MainNavBottomBar />
-			)}
+			<MainNav
+				activePath={asPath}
+				focusMode={focusMode}
+				id="main-nav"
+				items={navItems.primary}
+				secondaryItems={navItems.secondary}
+			/>
 		</Stack>
 	);
 };

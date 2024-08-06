@@ -32,13 +32,13 @@ exports[`HeroCategoryBanner renders correctly 1`] = `
               Website hero banner title
             </h1>
             <p
-              class="css-kvrtyp-boxStyles-Text"
+              class="css-1d0efla-boxStyles"
             >
               Hero banner sub title
             </p>
           </div>
           <div
-            class="css-uhwge9-boxStyles-HeroCategoryBannerImage"
+            class="css-r0htuo-boxStyles-HeroCategoryBannerImage"
           >
             <img
               alt=""

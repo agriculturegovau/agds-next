@@ -91,25 +91,30 @@ For data tables with a small amount of rows, use the default table. Align text c
 - use for datasets with more than 2 columns
 - use for tabular data - not layouts
 - provide a meaningful caption (heading), or use aria-labelledby to reference a heading
-- keep row heights small.
+- keep row heights small
 - use a simple table structure - complex tables are difficult to navigate.
 - use Pagination to break up tables with many rows
 - align text left and numeric data right
-- only include text, tags, links and status badges as content
-- use a human readable format for numeric data – for example, 1,234,000 instead of 12340000.
+- only include text, tags, links, actions and status badges as content
+- only use dropdown menu if you require three or more actions in a table cell
+- always use a label on the dropdown menu button
+- use a human readable format for numeric data – for example, 1,234,000 instead of 12340000
 - allow row sorting by using `TableHeaderSortable`.
 
 <DontHeading />
 
-- repeat information across cells. If each cell has the same content, add it as the column header – for example, Width (cm).
+- repeat information across cells. If each cell has the same content, add it as the column header – for example, Width (cm)
 - nest tables inside tables
 - use if a list, paragraph of text or diagram will work
 - use to summarise form collection data - use a [Summary list](/components/summary-list)
-- add lists, diagrams or images.
+- add lists, diagrams or images
+- use a combination of actions in table cells and actions in dropdown menus together in the same table row
+- put form inputs in table cells - use an action in a cell to open a drawer or navigate to another page instead
 - have too many rows. Use pagination or start another table where logical – for example, an alphabetical list, Table 1: A to D, Table 2: E to H and so on
 - use bespoke styling - follow consistent layouts and styles
 - nest tables inside tables
-- don’t use inside an accorion.
+- use inside an accorion
+- set a row as invalid without adding a section alert.
 
 ## Striped
 
@@ -297,7 +302,12 @@ You can see a working example of this component in the [Search filters patterns]
 				>
 					Location
 				</TableHeaderSortable>
-				<TableHeaderSortable scope="col" width="50%" onClick={console.log}>
+				<TableHeaderSortable
+					scope="col"
+					width="50%"
+					onClick={console.log}
+					textAlign="right"
+				>
 					Population
 				</TableHeaderSortable>
 			</TableRow>
@@ -435,6 +445,213 @@ A Table must have some form of caption or heading to describe the data it contai
 </Stack>
 ```
 
+## Wide tables
+
+When a table is too wide for its container, a custom scrollbar will be rendered. This scrollbar also sticks to the bottom of the screen when the bottom of the table is off-screen, so users can still easily scroll the table regardless of which rows they’re looking at.
+
+```jsx live
+<TableWrapper>
+	<Table tableLayout="fixed">
+		<TableHead>
+			<TableRow>
+				<TableHeader scope="col" width="20rem">
+					Business name
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Assignee
+				</TableHeader>
+				<TableHeader scope="col" width="16rem">
+					City
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Date registered
+				</TableHeader>
+				<TableHeader scope="col" width="11rem">
+					Status
+				</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Agriculture Victoria
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Melbourne, VIC</TableCell>
+				<TableCell>14/08/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Acres Produce
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>White Plains, NSW</TableCell>
+				<TableCell>17/03/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agribusiness
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Sydney, NSW</TableCell>
+				<TableCell>19/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agro Supplies
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Shanahanberg, TAS</TableCell>
+				<TableCell>16/07/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Australian Cattle Co.
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>North Margarettaborough, WA</TableCell>
+				<TableCell>01/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Baumbach, Williamson and Rosenbaum
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Oakland Park, VIC</TableCell>
+				<TableCell>02/09/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bergnaum Inc
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Tallahassee, SA</TableCell>
+				<TableCell>23/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown Group
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Elgin, VIC</TableCell>
+				<TableCell>28/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Cancelled"
+						tone="errorMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown, Mayert and Robel
+				</TableCell>
+				<TableCell>-</TableCell>
+				<TableCell>Ismaelshire, SA</TableCell>
+				<TableCell>21/04/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bushland Farms
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>New Oleta, TAS</TableCell>
+				<TableCell>22/05/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
 ## ‘colSpan’ and ‘rowSpan’
 
 Some tables require cells which represent multiple rows or columns. Instead of repeating the spanning data each time, you can use the `colSpan` and `rowSpan` props to specify how a specific cell spans multiple columns and rows, respectively.
@@ -521,7 +738,9 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 
 The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Download’) should always be positioned in the last column, beneath the table header labeled ‘Actions’.
 
-If each table row can open a page to view more information, the cells in the first column should be displayed as bold clickable links under the table header labeled with the unique identifier.
+If rows contain three or more actions, they can instead be replaced with a Dropdown menu containing these actions.
+
+Links that open a page to view a record or more information should be located in the first column, be labelled with a unique identifier, and display as bold text.
 
 ```jsx live
 <TableWrapper>
@@ -542,7 +761,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">20/06/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -557,7 +780,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">25/06/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -572,7 +799,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">02/07/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="success" label="Completed" />
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -587,7 +818,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">05/08/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="info" label="In progress" />
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -602,7 +837,11 @@ If each table row can open a page to view more information, the cells in the fir
 				</TableCell>
 				<TableCell textAlign="right">19/10/2024</TableCell>
 				<TableCell textAlign="right">
-					<StatusBadge weight="subtle" tone="success" label="Completed" />
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
@@ -672,7 +911,7 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 							{Array.from(new Array(3).keys()).map((idx) => {
 								const isRowSelected = selectedRows.includes(idx);
 								return (
-									<TableRow selected={isRowSelected}>
+									<TableRow selected={isRowSelected} key={idx}>
 										<TableCell>
 											<Checkbox
 												size="sm"
@@ -720,4 +959,97 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 		</Stack>
 	);
 };
+```
+
+## Indicating an invalid row
+
+To indicate an error in a row containing an action, set the `invalid` prop to `true`. This should be accompanied by a section alert.
+
+```jsx live
+<Stack gap={2}>
+	<SectionAlert title="There was an error" tone="error">
+		<UnorderedList>
+			<ListItem>
+				<TextLink href="#operational-plan-of-management-upload-button">
+					File is missing for Operational Plan of Management
+				</TextLink>
+			</ListItem>
+		</UnorderedList>
+	</SectionAlert>
+
+	<TableWrapper>
+		<Table>
+			<TableCaption>Assessment files</TableCaption>
+			<TableHead>
+				<TableRow>
+					<TableHeader scope="col">Document type</TableHeader>
+					<TableHeader scope="col">File</TableHeader>
+					<TableHeader scope="col">Size</TableHeader>
+					<TableHeader scope="col">Action</TableHeader>
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						RMS Vehicle registration
+					</TableCell>
+					<TableCell>
+						<Box>filename.pdf</Box>
+					</TableCell>
+					<TableCell>88kb</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="rms-vehicle-registration-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow invalid={true}>
+					<TableCell as="th" scope="row">
+						Operational Plan of Management
+					</TableCell>
+					<TableCell></TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="File missing"
+							appearance="subtle"
+							tone="errorHigh"
+						/>
+					</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="operational-plan-of-management-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Vehicle build and layout plans
+					</TableCell>
+					<TableCell>
+						<Box>filename.pdf</Box>
+					</TableCell>
+					<TableCell>88kb</TableCell>
+					<TableCell>
+						<Button
+							iconBefore={UploadIcon}
+							id="vehicle-build-and-layout-plans-upload-button"
+							variant="text"
+						>
+							Upload
+						</Button>
+					</TableCell>
+				</TableRow>
+			</TableBody>
+		</Table>
+	</TableWrapper>
+</Stack>
 ```

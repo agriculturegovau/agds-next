@@ -1,10 +1,10 @@
-import { Flex } from '@ag.ds-next/react/flex';
-import { Avatar } from '@ag.ds-next/react/avatar';
-import { TableCell, TableRow } from '@ag.ds-next/react/table';
-import { Text } from '@ag.ds-next/react/text';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import { Flex } from '../../../../packages/react/src/flex';
+import { Avatar } from '../../../../packages/react/src/avatar';
+import { TableCell, TableRow } from '../../../../packages/react/src/table';
+import { Text } from '../../../../packages/react/src/text';
+import { Checkbox } from '../../../../packages/react/src/checkbox';
+import { VisuallyHidden } from '../../../../packages/react/src/a11y';
+import { StatusBadge } from '../../../../packages/react/src/status-badge';
 import { useSortAndFilterContext } from '../lib/contexts';
 
 export const DataTableRowAssignee = ({
@@ -30,19 +30,19 @@ export const DataTableRowAssignee = ({
 const itemStatusMap = {
 	notBooked: {
 		label: 'Not booked',
-		tone: 'neutral',
+		tone: 'notStartedLow',
 	},
 	booked: {
 		label: 'Booked',
-		tone: 'info',
+		tone: 'infoMedium',
 	},
 	completed: {
 		label: 'Completed',
-		tone: 'success',
+		tone: 'successMedium',
 	},
 	cancelled: {
 		label: 'Cancelled',
-		tone: 'error',
+		tone: 'errorMedium',
 	},
 } as const;
 
@@ -53,7 +53,7 @@ export const DataTableRowStatus = ({
 }) => {
 	return (
 		<TableCell>
-			<StatusBadge weight="subtle" {...itemStatusMap[status]} />
+			<StatusBadge appearance="subtle" {...itemStatusMap[status]} />
 		</TableCell>
 	);
 };
