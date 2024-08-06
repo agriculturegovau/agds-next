@@ -18,6 +18,7 @@ type FormTask1ContainerProps = PropsWithChildren<{
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
 	hideRequiredFieldsMessage?: boolean;
+	shouldFocusTitle?: boolean;
 }>;
 
 export function FormTask1Container({
@@ -26,6 +27,7 @@ export function FormTask1Container({
 	formCallToAction,
 	children,
 	hideRequiredFieldsMessage,
+	shouldFocusTitle = true,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, startTask, getTaskStatus } = useGlobalForm();
@@ -78,6 +80,7 @@ export function FormTask1Container({
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
+						shouldFocusTitle={shouldFocusTitle}
 					>
 						{isTaskAvailable ? children : <NotAvailableAlert />}
 					</FormContainer>

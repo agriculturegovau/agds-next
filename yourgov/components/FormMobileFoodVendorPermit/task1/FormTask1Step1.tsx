@@ -41,6 +41,7 @@ export function FormTask1Step1() {
 		<FormTask1Container
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
+			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3} alignItems="flex-start" width="100%">
 				<Stack gap={1.5} width="100%">
@@ -65,6 +66,7 @@ export function FormTask1Step1() {
 					</Details>
 					{isSuccessMessageVisible && (
 						<SectionAlert
+							focusOnMount
 							title="Business owner details have been updated"
 							tone="success"
 							onClose={() => setIsSuccessMessageVisible(false)}

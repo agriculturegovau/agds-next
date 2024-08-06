@@ -76,12 +76,11 @@ const Page: NextPageWithLayout = () => {
 													<li>
 														names of any employees who will be handling food
 													</li>
-													<li>
-														once you have confirmed business and employee
-														details we will provide a checklist of required
-														documents
-													</li>
 												</ul>
+												<p>
+													once you have confirmed business and employee details
+													we will provide a checklist of required documents
+												</p>
 
 												<h2 id="what-you-will-need">What happens next</h2>
 												<p>
