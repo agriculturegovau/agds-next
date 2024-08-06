@@ -37,7 +37,7 @@ export function FormTask1Container({
 		const step = task1FormSteps[stepIndex];
 		const stateStep = formState.task1?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
-		if (step.href === pathname) return 'doing';
+		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (stateStep?.completed) return 'done';
 		// The user has save and existed
@@ -58,6 +58,7 @@ export function FormTask1Container({
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
+						activePath={pathname}
 						items={task1FormSteps.map(({ label, href }, index) => ({
 							label,
 							href,

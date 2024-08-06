@@ -96,7 +96,7 @@ export function FormTask1Step1ChangeDetails() {
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
 		// Current step is always in progress when the URL matches
-		if (step.href === pathname.replace('/change-details', '')) return 'doing';
+		if (step.href === pathname.replace('/change-details', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
