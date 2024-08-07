@@ -4,10 +4,7 @@ import {
 	VisuallyHidden,
 	visuallyHiddenStyles,
 } from '../../../../packages/react/src/a11y';
-import {
-	SkeletonBox,
-	SkeletonText,
-} from '../../../../packages/react/src/skeleton';
+import { SkeletonText } from '../../../../packages/react/src/skeleton';
 import {
 	Table,
 	TableBody,
@@ -20,6 +17,7 @@ import {
 	TableWrapper,
 	TableRow,
 } from '../../../../packages/react/src/table';
+import { Box } from '../../../../packages/react/src/box';
 import { TextLink } from '../../../../packages/react/src/text-link';
 import { Text } from '../../../../packages/react/src/text';
 import { Stack } from '../../../../packages/react/src/stack';
@@ -30,16 +28,31 @@ import { generateTableCaption } from '../lib/utils';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { BusinessForAudit } from '../lib/generateBusinessData';
 import {
+	DropdownMenu,
+	DropdownMenuButton,
+	DropdownMenuItem,
+	DropdownMenuPanel,
+} from '../../../../packages/react/src/dropdown-menu';
+import {
 	DataTableRow,
 	DataTableRowAssignee,
 	DataTableRowStatus,
 } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
+import { DataTableSelectAllCheckbox } from './DataTableSelectAllCheckbox';
+import { defaultActiveColumns } from './DashboardPagination';
 
 export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
 
 type DataTableProps = {
+	activeColumns?: typeof defaultActiveColumns;
+	hasActionColumn?: boolean;
+	onOpenDrawer?: (newCurrentItem: BusinessForAudit) => void;
+	onClickMarkCompleted?: (newCurrentItem: BusinessForAudit) => void;
+	onClickMarkCompletedBatch?: (batchItems: string[]) => void;
+	onClickDelete?: (newCurrentItem: BusinessForAudit) => void;
+	onClickDeleteBatch?: (batchItems: string[]) => void;
 	/** The id of the heading that describes the table */
 	headingId?: string;
 	/** Whether the table should be selectable */
@@ -47,7 +60,20 @@ type DataTableProps = {
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, selectable }, ref) {
+	function DataTable(
+		{
+			activeColumns,
+			hasActionColumn,
+			headingId,
+			onClickMarkCompleted,
+			onClickMarkCompletedBatch,
+			onClickDelete,
+			onClickDeleteBatch,
+			onOpenDrawer,
+			selectable,
+		},
+		ref
+	) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
@@ -90,164 +116,285 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 		}
 
 		return (
-			<Stack gap={0.5}>
-				{headingId ? (
-					<div css={visuallyHiddenStyles} id={descriptionId}>
-						Table column headers with buttons are sortable.
-					</div>
-				) : null}
-				<TableWrapper>
-					<Table
-						aria-rowcount={totalItems}
-						{...(headingId && {
-							'aria-labelledby': headingId,
-							'aria-describedby': descriptionId,
-						})}
-						id={tableId}
-						ref={ref}
-						tabIndex={-1}
-						tableLayout="fixed"
-					>
-						{!headingId && (
-							<TableCaption>
-								{caption}
-								<VisuallyHidden>
-									, column headers with buttons are sortable.
-								</VisuallyHidden>
-							</TableCaption>
-						)}
-						<TableHead>
-							<TableRow aria-rowindex={1}>
-								{selectable && (
-									<TableHeader scope="col" width="5rem">
-										Select
-									</TableHeader>
-								)}
-								{headers.map(
-									({
-										label,
-										sortKey,
-										textAlign,
-										width,
-										isSortable: isFieldSortable,
-									}) => {
-										if (isTableSortable && isFieldSortable) {
-											const isFieldTheActiveSortField = sort?.field === sortKey;
-											const onClick = () =>
-												setSort?.({
-													field: sortKey,
-													order:
-														sort?.field === sortKey && sort?.order === 'ASC'
-															? 'DESC'
-															: 'ASC',
-												});
+			<>
+				{selectable && (
+					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+						<DataTableSelectAllCheckbox />
+					</Box>
+				)}
+				<Stack gap={0.5}>
+					{headingId ? (
+						<div css={visuallyHiddenStyles} id={descriptionId}>
+							Table column headers with buttons are sortable.
+						</div>
+					) : null}
+					<TableWrapper>
+						<Table
+							aria-rowcount={totalItems}
+							{...(headingId && {
+								'aria-labelledby': headingId,
+								'aria-describedby': descriptionId,
+							})}
+							id={tableId}
+							ref={ref}
+							tabIndex={-1}
+							tableLayout="fixed"
+							frozenColumns={[1, 2, 7]}
+						>
+							{!headingId && (
+								<TableCaption>
+									{caption}
+									<VisuallyHidden>
+										, column headers with buttons are sortable.
+									</VisuallyHidden>
+								</TableCaption>
+							)}
+							<TableHead>
+								<TableRow aria-rowindex={1}>
+									{selectable && (
+										<TableHeader scope="col" width={`${73 / 16}rem`}>
+											Select
+										</TableHeader>
+									)}
+									{headers.map(
+										({
+											label,
+											sortKey,
+											textAlign,
+											width,
+											isSortable: isFieldSortable,
+										}) => {
+											if (isTableSortable && isFieldSortable) {
+												const isFieldTheActiveSortField =
+													sort?.field === sortKey;
+												const onClick = () =>
+													setSort?.({
+														field: sortKey,
+														order:
+															sort?.field === sortKey && sort?.order === 'ASC'
+																? 'DESC'
+																: 'ASC',
+													});
+
+												return (
+													<TableHeaderSortable
+														display={
+															activeColumns === undefined ||
+															activeColumns[label]
+																? undefined
+																: 'none'
+														}
+														key={sortKey}
+														textAlign={textAlign}
+														width={width}
+														sort={
+															isFieldTheActiveSortField
+																? sort?.order
+																: undefined
+														}
+														onClick={onClick}
+													>
+														{label}
+													</TableHeaderSortable>
+												);
+											}
 											return (
-												<TableHeaderSortable
-													key={sortKey}
-													textAlign={textAlign}
-													width={width}
-													sort={
-														isFieldTheActiveSortField ? sort?.order : undefined
+												<TableHeader
+													display={
+														activeColumns === undefined || activeColumns[label]
+															? undefined
+															: 'none'
 													}
-													onClick={onClick}
+													key={sortKey}
+													scope="col"
+													width={width}
 												>
 													{label}
-												</TableHeaderSortable>
-											);
-										}
-										return (
-											<TableHeader key={sortKey} scope="col" width={width}>
-												{label}
-											</TableHeader>
-										);
-									}
-								)}
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{loading ? (
-								<Fragment>
-									{Array.from(Array(pagination.perPage).keys()).map((i) => (
-										<TableRow key={i}>
-											{selectable && (
-												<TableCell>
-													<SkeletonText />
-													<VisuallyHidden>Loading</VisuallyHidden>
-												</TableCell>
-											)}
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonText />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-											<TableCell>
-												<SkeletonBox height={32} />
-												<VisuallyHidden>Loading</VisuallyHidden>
-											</TableCell>
-										</TableRow>
-									))}
-								</Fragment>
-							) : (
-								<Fragment>
-									{data.map(
-										({
-											index,
-											id,
-											assignee,
-											businessName,
-											city,
-											state,
-											requestDate,
-											status,
-										}) => {
-											// Adding 2 because the table header row is the first row
-											const rowIndex = index + 2;
-											return (
-												<DataTableRow
-													key={id}
-													selectable={selectable}
-													itemId={id}
-													businessName={businessName}
-													rowIndex={rowIndex}
-												>
-													<TableCell as="th" scope="row">
-														<TextLink href={`#${id}`}>{businessName}</TextLink>
-													</TableCell>
-													<DataTableRowAssignee assignee={assignee} />
-													<TableCell>
-														{city}, {state}
-													</TableCell>
-													<TableCell>
-														{format(requestDate, 'dd/MM/yyyy')}
-													</TableCell>
-													<DataTableRowStatus status={status} />
-												</DataTableRow>
+												</TableHeader>
 											);
 										}
 									)}
-								</Fragment>
-							)}
-						</TableBody>
-					</Table>
-				</TableWrapper>
-				<DataTableBatchActionsBar />
-			</Stack>
+									{hasActionColumn && (
+										<TableHeader scope="col" width={`${118 / 16}rem`}>
+											Action
+										</TableHeader>
+									)}
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{loading ? (
+									<Fragment>
+										{Array.from(Array(pagination.perPage).keys()).map((i) => (
+											<TableRow key={i}>
+												{selectable && (
+													<TableCell>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												)}
+												{headers.map(({ label }) => (
+													<TableCell
+														display={
+															activeColumns === undefined ||
+															activeColumns[label]
+																? undefined
+																: 'none'
+														}
+														key={label}
+													>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												))}
+												{hasActionColumn && (
+													<TableCell>
+														<SkeletonText />
+														<VisuallyHidden>Loading</VisuallyHidden>
+													</TableCell>
+												)}
+											</TableRow>
+										))}
+									</Fragment>
+								) : (
+									<Fragment>
+										{data.map(
+											({
+												index,
+												id,
+												assignee,
+												businessName,
+												city,
+												state,
+												requestDate,
+												status,
+												...businessData
+											}) => {
+												// Adding 2 because the table header row is the first row
+												const rowIndex = index + 2;
+
+												const newCurrentItem = {
+													id,
+													assignee,
+													businessName,
+													city,
+													state,
+													requestDate,
+													status,
+													...businessData,
+												};
+
+												return (
+													<DataTableRow
+														key={id}
+														selectable={selectable}
+														itemId={id}
+														businessName={businessName}
+														rowIndex={rowIndex}
+													>
+														<TableCell
+															as="th"
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Business name']
+																	? undefined
+																	: 'none'
+															}
+															scope="row"
+														>
+															<TextLink href={`#${id}`}>
+																{businessName}
+															</TextLink>
+														</TableCell>
+														<DataTableRowAssignee
+															assignee={assignee}
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Assignee']
+																	? undefined
+																	: 'none'
+															}
+														/>
+														<TableCell
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['City']
+																	? undefined
+																	: 'none'
+															}
+														>
+															{city}, {state}
+														</TableCell>
+														<TableCell
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Date registered']
+																	? undefined
+																	: 'none'
+															}
+														>
+															{format(requestDate, 'dd/MM/yyyy')}
+														</TableCell>
+														<DataTableRowStatus
+															display={
+																activeColumns === undefined ||
+																activeColumns?.['Status']
+																	? undefined
+																	: 'none'
+															}
+															status={status}
+														/>
+														{hasActionColumn && (
+															<TableCell>
+																<DropdownMenu>
+																	<DropdownMenuButton focusRingFor="all">
+																		Action
+																	</DropdownMenuButton>
+																	<DropdownMenuPanel>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onOpenDrawer?.(newCurrentItem);
+																			}}
+																		>
+																			Change assignee
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickMarkCompleted?.(newCurrentItem);
+																			}}
+																		>
+																			Mark as completed
+																		</DropdownMenuItem>
+																		<DropdownMenuItem
+																			onClick={() => {
+																				onClickDelete?.(newCurrentItem);
+																			}}
+																		>
+																			Delete audit
+																		</DropdownMenuItem>
+																	</DropdownMenuPanel>
+																</DropdownMenu>
+															</TableCell>
+														)}
+													</DataTableRow>
+												);
+											}
+										)}
+									</Fragment>
+								)}
+							</TableBody>
+						</Table>
+					</TableWrapper>
+					<DataTableBatchActionsBar
+						onClickDeleteBatch={onClickDeleteBatch}
+						onClickMarkCompletedBatch={onClickMarkCompletedBatch}
+					/>
+				</Stack>
+			</>
 		);
 	}
 );
 
-const headers: {
+export const headers: {
 	label: string;
 	sortKey: keyof BusinessForAudit;
 	isSortable: boolean;
@@ -257,31 +404,31 @@ const headers: {
 	{
 		label: 'Business name',
 		sortKey: 'businessName',
-		width: { xs: '20rem', lg: 'auto' },
+		width: `${268 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'Assignee',
 		sortKey: 'assignee',
-		width: '12rem',
+		width: `${195 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'City',
 		sortKey: 'city',
-		width: { xs: '16rem', lg: 'auto' },
+		width: `${240 / 16}rem`,
 		isSortable: false,
 	},
 	{
 		label: 'Date registered',
 		sortKey: 'requestDate',
-		width: '12rem',
+		width: `${197 / 16}rem`,
 		isSortable: true,
 	},
 	{
 		label: 'Status',
 		sortKey: 'status',
-		width: '11rem',
+		width: `${180 / 16}rem`,
 		isSortable: true,
 	},
 ];

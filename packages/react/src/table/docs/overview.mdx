@@ -1053,3 +1053,212 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 	</TableWrapper>
 </Stack>
 ```
+
+## Setting frozen columns
+
+Frozen columns remain in place as the table is horizontally scrolled. You can freeze the first column, the last, or both. On small screens, all columns will automatically revert to a non-fixed state to prevent users from encountering hidden content.
+
+_Note: see Storybook example for responsive behaviour._
+
+```jsx live
+<TableWrapper>
+	<Table frozenColumns={[1, 5]} tableLayout="fixed">
+		<TableHead>
+			<TableRow>
+				<TableHeader scope="col" width="20rem">
+					Business name
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Assignee
+				</TableHeader>
+				<TableHeader scope="col" width="16rem">
+					City
+				</TableHeader>
+				<TableHeader scope="col" width="12rem">
+					Date registered
+				</TableHeader>
+				<TableHeader scope="col" width="11rem">
+					Status
+				</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Agriculture Victoria
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Melbourne, VIC</TableCell>
+				<TableCell>14/08/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Acres Produce
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>White Plains, NSW</TableCell>
+				<TableCell>17/03/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agribusiness
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Sydney, NSW</TableCell>
+				<TableCell>19/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Aussie Agro Supplies
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Shanahanberg, TAS</TableCell>
+				<TableCell>16/07/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Australian Cattle Co.
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Lando Norris" size="sm" aria-hidden />
+						<Text>Lando Norris</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>North Margarettaborough, WA</TableCell>
+				<TableCell>01/11/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Baumbach, Williamson and Rosenbaum
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Oakland Park, VIC</TableCell>
+				<TableCell>02/09/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bergnaum Inc
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Tallahassee, SA</TableCell>
+				<TableCell>23/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown Group
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="George Russell" size="sm" aria-hidden />
+						<Text>George Russell</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>Elgin, VIC</TableCell>
+				<TableCell>28/12/2023</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Cancelled"
+						tone="errorMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Brown, Mayert and Robel
+				</TableCell>
+				<TableCell>-</TableCell>
+				<TableCell>Ismaelshire, SA</TableCell>
+				<TableCell>21/04/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Completed"
+						tone="successMedium"
+					/>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row">
+					Bushland Farms
+				</TableCell>
+				<TableCell>
+					<Flex alignItems="center" gap={0.25}>
+						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+						<Text>Oscar Piastri</Text>
+					</Flex>
+				</TableCell>
+				<TableCell>New Oleta, TAS</TableCell>
+				<TableCell>22/05/2024</TableCell>
+				<TableCell>
+					<StatusBadge
+						appearance="subtle"
+						label="Not booked"
+						tone="notStartedLow"
+					/>
+				</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
