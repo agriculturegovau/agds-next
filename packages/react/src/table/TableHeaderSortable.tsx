@@ -38,11 +38,14 @@ export const TableHeaderSortable = ({
 			scope="col"
 			aria-sort={sortLabel}
 			width={width}
-			{...(sort && {
-				borderColor: 'selected',
-				borderBottom: true,
-				borderBottomWidth: 'xl',
-			})}
+			css={{
+				position: 'relative',
+				'::after': {
+					borderBottomColor: sort
+						? `${boxPalette.selected} !important`
+						: undefined,
+				},
+			}}
 		>
 			<Flex
 				alignItems="center"

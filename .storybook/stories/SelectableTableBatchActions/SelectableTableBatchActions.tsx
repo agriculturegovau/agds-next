@@ -10,6 +10,7 @@ import {
 	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
+	type TableProps,
 } from '../../../packages/react/src/table';
 import { Checkbox } from '../../../packages/react/src/checkbox';
 import { ButtonGroup, Button } from '../../../packages/react/src/button';
@@ -29,7 +30,7 @@ import { TableFilters } from './TableFilters';
 
 const PER_PAGE = 20;
 
-export function SelectableTableBatchActions() {
+export function SelectableTableBatchActions(props: TableProps) {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [data, setData] = useState(EXAMPLE_DATA);
 
@@ -118,20 +119,49 @@ export function SelectableTableBatchActions() {
 								<Stack gap={1}>
 									<Stack gap={0.5}>
 										<TableWrapper>
-											<Table striped aria-labelledby="certificates-heading">
+											<Table
+												striped
+												aria-labelledby="certificates-heading2"
+												{...props}
+											>
 												<TableHead>
 													<TableRow>
-														<TableHeader scope="col" width="6rem">
+														<TableHeader width={75} scope="col">
 															Select
 														</TableHeader>
-														<TableHeader scope="col">
+														<TableHeader width={200} scope="col">
 															Certificate number
 														</TableHeader>
-														<TableHeader scope="col">Exporter</TableHeader>
-														<TableHeader scope="col">Date Issued</TableHeader>
-														<TableHeader scope="col">Status</TableHeader>
-														<TableHeader scope="col">Amount</TableHeader>
-														<TableHeader scope="col">Actions</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter1
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter2
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter3
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter4
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter5
+														</TableHeader>
+														<TableHeader width={150} scope="col">
+															Date Issued
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Status
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Amount
+														</TableHeader>
+														<TableHeader width={200} scope="col">
+															Actions
+														</TableHeader>
 													</TableRow>
 												</TableHead>
 												<TableBody>
@@ -267,6 +297,11 @@ function Row({
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
 				<TableCell>{exporter}</TableCell>
 				<TableCell>11/02/22 14:06</TableCell>
 				<TableCell>{status}</TableCell>

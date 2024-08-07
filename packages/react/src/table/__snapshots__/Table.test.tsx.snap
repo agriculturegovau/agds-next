@@ -3,47 +3,47 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-h6dj2w-boxStyles-TableScroller"
+    class="css-j44gbe-boxStyles-TableScroller"
   >
     <div
       class="css-13n67m1-boxStyles-TableScroller"
       tabindex="0"
     >
       <table
-        class="css-r11i27-boxStyles-Table"
+        class="css-13kilxg-boxStyles-Table"
         id="table"
       >
         <caption
-          class="css-ryzpmp-boxStyles"
+          class="css-1yx296z-boxStyles-TableCaption"
         >
           Population of Australian states and territories, December 2015
         </caption>
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1k30sgi-boxStyles-TableHead"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1gy3b36-boxStyles"
+              class="css-ueyohx-boxStyles-TableHeader"
               scope="col"
             >
               Location
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Population
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Change over previous year %
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-eufdcn-boxStyles-TableHeader"
               scope="col"
             >
               Change over previous decade %
@@ -54,216 +54,346 @@ exports[`Table with TableCaption renders correctly 1`] = `
           class="css-8u32cd-boxStyles"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               New South Wales
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               7,670,700
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               3.1%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               12.9%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Victoria
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               5,996,400
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               2.5%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               9.3%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Queensland
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               4,808,800
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               1.7%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               13.3%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Western Australia
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               2,603,900
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               2.3%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               11.6%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               South Australia
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               1,702,800
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               2.0%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               6.8%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Tasmania
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               517,400
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               4%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               5.3%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Northern Territory
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               244,400
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               1.2%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               4.5%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-1i5k810-boxStyles-TableCell"
               scope="row"
             >
               Australian Capital Territory
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               393,000
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               2.4%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-64xjh2-boxStyles-TableCell"
             >
               9.6%
+              <div
+                class="css-1lnf5jn-boxStyles-TableCell"
+                data-selected-outline="true"
+              />
             </td>
           </tr>
         </tbody>
       </table>
-      <div
-        class="css-1sekwdr-boxStyles-Shadow"
-      />
-      <div
-        class="css-6rjxly-boxStyles-Shadow"
-      />
     </div>
     <div
-      class="css-1bk2ogi-boxStyles-TableScroller"
+      class="css-kd3ymp-boxStyles-TableScroller"
+      data-table-left-overlay="true"
+    />
+    <div
+      class="css-1wc54ui-boxStyles-TableScroller"
+      data-table-right-overlay="true"
+    />
+    <div
+      class="css-ber6ni-boxStyles-TableScroller"
     >
       <button
         aria-hidden="true"
