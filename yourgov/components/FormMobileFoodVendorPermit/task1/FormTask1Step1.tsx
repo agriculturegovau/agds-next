@@ -122,6 +122,9 @@ function AdditionalDetailsForm() {
 	});
 
 	const onSubmit: SubmitHandler<Task1Step1Part2FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		await submitStep();
 		setFormState({
 			...formState,

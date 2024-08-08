@@ -7,11 +7,14 @@ import { useFormTask1Context } from './FormTask1Provider';
 import { FormTask1Review } from './FormTask1Review';
 
 export function FormTask1Step7() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, isSavingBeforeExiting, setFormState } = useGlobalForm();
 	const { submitStep, canConfirmAndSubmit } = useFormTask1Context();
 
 	async function onSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		await submitStep();
 		setFormState({
 			...formState,

@@ -85,19 +85,20 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
+
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
+		const taskCompletionUrl = getTaskCompletionUrl({
+			currentStepIndex,
+			steps: task1FormSteps,
+			taskHighlight: 1,
+		});
 
-		if (!isSavingBeforeExiting) {
-			const taskCompletionUrl = getTaskCompletionUrl({
-				currentStepIndex,
-				steps: task1FormSteps,
-				taskHighlight: 1,
-			});
-
-			push(taskCompletionUrl);
-		}
+		push(taskCompletionUrl);
 
 		setIsSubmittingStep(false);
 	}, [currentStepIndex, push, setIsSubmittingStep, isSavingBeforeExiting]);

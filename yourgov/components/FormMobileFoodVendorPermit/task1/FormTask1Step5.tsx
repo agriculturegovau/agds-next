@@ -62,8 +62,11 @@ export function FormTask1Step5() {
 	const typeCorrectedErrors = errors as ShallowErrors<Task1Step5FormSchema>;
 
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		setFocusedError(false);
-		!isSavingBeforeExiting && (await submitStep());
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: {

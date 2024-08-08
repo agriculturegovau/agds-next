@@ -46,8 +46,11 @@ export function FormTask1Step2() {
 	});
 
 	const onSubmit: SubmitHandler<Task1Step2FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		setFocusedError(false);
-		!isSavingBeforeExiting && (await submitStep());
+		await submitStep();
 		setFormState({
 			...formState,
 			task1: {
