@@ -15,8 +15,8 @@ import {
 	task1Step1FormSchema,
 	task1Step2FormSchema,
 	task1Step3FormSchema,
-	task1Step4FormSchema,
-	task1Step5FormSchema,
+	task1Step4ReviewSchema,
+	task1Step5ReviewSchema,
 	task1Step6FormSchema,
 } from './FormTask1FormState';
 
@@ -37,10 +37,8 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 		step1: task1Step1FormSchema.safeParse(formState.task1?.step1),
 		step2: task1Step2FormSchema.safeParse(formState.task1?.step2),
 		step3: task1Step3FormSchema.safeParse(formState.task1?.step3),
-		// FIXME: Why do I error if I view this when I haven't just saved it?
-		step4: task1Step4FormSchema.safeParse(formState.task1?.step4),
-		// FIXME: Why do I error if I view this when I haven't just saved it?
-		step5: task1Step5FormSchema.safeParse(formState.task1?.step5),
+		step4: task1Step4ReviewSchema.safeParse(formState.task1?.step4),
+		step5: task1Step5ReviewSchema.safeParse(formState.task1?.step5),
 		step6: task1Step6FormSchema.safeParse(formState.task1?.step6),
 	};
 

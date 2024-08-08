@@ -24,6 +24,9 @@ export function zodDateField(message = 'Enter a valid date') {
 		required_error: message,
 	});
 }
+export function zodReviewDateField() {
+	return z.coerce.date();
+}
 
 interface ZodTimeFieldProps {
 	label: string;
