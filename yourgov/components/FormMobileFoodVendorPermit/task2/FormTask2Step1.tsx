@@ -86,7 +86,11 @@ export function FormTask2Step1() {
 		>
 			<Stack as="form" gap={2} width="100%" onSubmit={onSubmit}>
 				{errors?.employeeList?._errors && (
-					<PageAlert tone="error" title={errors.employeeList?._errors[0]}>
+					<PageAlert
+						focusOnMount
+						tone="error"
+						title={errors.employeeList?._errors[0]}
+					>
 						<Text>
 							You need to add some staff. You’re amazing, but you can’t do this
 							alone. Life is better with friends and team mates.

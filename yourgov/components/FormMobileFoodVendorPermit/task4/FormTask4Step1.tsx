@@ -32,7 +32,7 @@ export function ValidationSectionAlert() {
 	);
 }
 
-export function NotAvailableAlert() {
+export function CannotStartAlert() {
 	return (
 		<PageAlert
 			tone="warning"

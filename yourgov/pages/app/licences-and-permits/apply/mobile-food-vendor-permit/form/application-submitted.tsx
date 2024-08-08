@@ -21,7 +21,7 @@ const Page: NextPageWithLayout = () => {
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={3}>
-							<H1 tabIndex={-1} focus>
+							<H1 tabIndex={-1} focusRingFor="keyboard">
 								<Text
 									display="block"
 									fontSize="sm"

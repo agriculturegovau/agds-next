@@ -9,7 +9,7 @@ import {
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from '../FormContainer';
-import { NotAvailableAlert } from '../task4/FormTask4Step1';
+import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
@@ -82,7 +82,7 @@ export function FormTask1Container({
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 						shouldFocusTitle={shouldFocusTitle}
 					>
-						{isTaskAvailable ? children : <NotAvailableAlert />}
+						{isTaskAvailable ? children : <CannotStartAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

@@ -1,7 +1,7 @@
 import { DeepPartial } from 'react-hook-form';
 import { z } from 'zod';
 import { zodArray, zodString } from '../utils';
-import { Completion } from '../FormState';
+import { type Completion } from '../FormState';
 
 export const task2Step1EmployeeSchema = z.object({
 	firstName: zodString('Enter your first name'),

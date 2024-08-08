@@ -4,7 +4,7 @@ import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from '../FormContainer';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { NotAvailableAlert } from './FormTask4Step1';
+import { CannotStartAlert } from '../CannotStartAlert';
 
 type FormTask1ContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -38,7 +38,7 @@ export function FormTask4Container({
 						callToAction={formCallToAction}
 						hideRequiredFieldsMessage
 					>
-						{isTaskAvailable ? children : <NotAvailableAlert />}
+						{isTaskAvailable ? children : <CannotStartAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

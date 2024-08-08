@@ -85,7 +85,7 @@ const phoneError = {
 	lettersOrSymbols: 'Phone number must not include letters or symbols',
 	start0402:
 		'Mobile numbers must begin with ‘04’, landline numbers must begin with ‘02’',
-	digitCount: 'The Phone number should be 10 digits long',
+	digitCount: 'The Phone number must be 10 digits long',
 };
 
 export function zodPhoneField(message = 'Enter a phone number') {
@@ -180,13 +180,9 @@ export function getTaskCompletionUrl({
 	taskHighlight,
 }: GetTaskNavigationUrlParams) {
 	const nextStepUrl = steps[currentStepIndex + 1]?.href;
-	return nextStepUrl
-		? nextStepUrl
-		: `${formHomePage}?taskHighlight=${taskHighlight}`;
+	return nextStepUrl || `${formHomePage}?taskHighlight=${taskHighlight}`;
 }
 
 export function getPrevTaskKey(currentTaskKey: TaskKey) {
-	const prevTaskNumber = parseInt(/(\d)$/.exec(currentTaskKey)?.[1] || '1') - 1;
-	const prevTaskKey = `task${prevTaskNumber}` as TaskKey;
-	return prevTaskKey;
+	return `task${Number(currentTaskKey.replace('task', '')) - 1}` as TaskKey;
 }

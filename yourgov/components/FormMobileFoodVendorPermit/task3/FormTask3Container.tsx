@@ -3,7 +3,7 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormContainer } from '../FormContainer';
-import { NotAvailableAlert } from '../task4/FormTask4Step1';
+import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { useFormTask3Context } from './FormTask3Provider';
 
@@ -46,7 +46,7 @@ export function FormTask3Container({
 						callToAction={formCallToAction}
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 					>
-						{isTaskAvailable ? children : <NotAvailableAlert />}
+						{isTaskAvailable ? children : <CannotStartAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>

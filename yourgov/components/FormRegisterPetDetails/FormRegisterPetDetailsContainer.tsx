@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
-import { NotAvailableAlert } from '../FormMobileFoodVendorPermit/task4/FormTask4Step1';
+import { CannotStartAlert } from '../FormMobileFoodVendorPermit/CannotStart';
 import { FormStepTitle } from '../FormStepTitle';
 import { useFormRegisterPetDetails } from './FormRegisterPetDetails';
 
@@ -35,7 +35,7 @@ export const FormRegisterPetDetailsContainer = ({
 				callToAction={hasCompletedPreviousStep ? callToAction : undefined}
 				hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 			/>
-			{hasCompletedPreviousStep ? children : <NotAvailableAlert />}
+			{hasCompletedPreviousStep ? children : <CannotStartAlert />}
 		</Stack>
 	);
 };

@@ -14,7 +14,7 @@ import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DirectionButton } from '@ag.ds-next/react/direction-link';
 import { useFormRegisterPet } from '../FormRegisterPetContext';
-import { Completion } from '../FormMobileFoodVendorPermit/FormState';
+import { type Completion } from '../FormMobileFoodVendorPermit/FormState';
 import {
 	FormRegisterPetDetailsStep0,
 	formSchema as formRegisterPetDetailsStep0Schema,

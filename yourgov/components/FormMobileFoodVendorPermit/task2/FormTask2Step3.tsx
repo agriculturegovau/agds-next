@@ -1,5 +1,5 @@
 import { FormEvent, Fragment } from 'react';
-import { NotAvailableAlert } from '../task4/FormTask4Step1';
+import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask2Container } from './FormTask2Container';
@@ -37,7 +37,7 @@ export function FormTask2Step3() {
 					</form>
 				</Fragment>
 			) : (
-				<NotAvailableAlert />
+				<CannotStartAlert />
 			)}
 		</FormTask2Container>
 	);

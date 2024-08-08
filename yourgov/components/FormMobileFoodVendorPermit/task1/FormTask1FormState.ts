@@ -8,7 +8,7 @@ import {
 	zodStringOptional,
 	zodTimeField,
 } from '../utils';
-import { Completion } from '../FormState';
+import { type Completion } from '../FormState';
 
 export const task1Step1FormSchema = z.object({
 	firstName: zodString('Enter your first name'),

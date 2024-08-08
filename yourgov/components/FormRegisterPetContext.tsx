@@ -15,7 +15,7 @@ import {
 	FormState as Task2FormState,
 	formSchema as task2FormSchema,
 } from './FormRegisterPetDetails/FormRegisterPetDetails';
-import { Completion } from './FormMobileFoodVendorPermit/FormState';
+import { type Completion } from './FormMobileFoodVendorPermit/FormState';
 
 type ContextType = {
 	/** The task form state. */

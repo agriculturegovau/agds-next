@@ -134,7 +134,7 @@ export function FormTask2Step1AddEmployee() {
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
-						<H1 ref={titleRef} tabIndex={-1} focus>
+						<H1 ref={titleRef} tabIndex={-1} focusRingFor="keyboard">
 							Add employee
 						</H1>
 						<Text as="p" fontSize="md" color="muted">

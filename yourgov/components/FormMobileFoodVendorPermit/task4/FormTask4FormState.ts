@@ -1,6 +1,6 @@
 import { DeepPartial } from 'react-hook-form';
 import { z } from 'zod';
-import { Completion } from '../FormState';
+import { type Completion } from '../FormState';
 import { zodString } from '../utils';
 
 const fileCodes = [
