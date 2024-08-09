@@ -31,3 +31,35 @@ export const yupPhoneField = yup
 			"Mobile numbers must begin with '04', landline numbers must begin with an area code",
 	})
 	.length(10, 'Phone number must be 10 digits');
+
+// Only show the page alert if there is more than 1 error
+export function checkHasMultipleErrors(errors: FieldValues) {
+	return Object.keys(errors).length > 1;
+}
+
+// If only 1 input on the page, check if that input has an error
+export function checkHasError(errors: FieldValues) {
+	return Object.keys(errors).length > 0;
+}
+
+export const formHomePage =
+	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+
+interface GetTaskNavigationUrlParams {
+	steps: Array<FormStep>;
+	currentStepIndex: number;
+	taskHighlight: number;
+}
+
+export function getTaskCompletionUrl({
+	currentStepIndex,
+	steps,
+	taskHighlight,
+}: GetTaskNavigationUrlParams) {
+	const nextStepUrl = steps[currentStepIndex + 1]?.href;
+	return nextStepUrl || `${formHomePage}?taskHighlight=${taskHighlight}`;
+}
+
+export function getPrevTaskKey(currentTaskKey: TaskKey) {
+	return `task${Number(currentTaskKey.replace('task', '')) - 1}` as TaskKey;
+}

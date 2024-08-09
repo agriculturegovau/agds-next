@@ -50,13 +50,16 @@ export function FormDefinitionListItemAddress({
 			<SummaryListItemDescription>
 				{address && suburb && state && postcode ? (
 					<Fragment>
-						{address}, {suburb} {state} {postcode}
+						{address},<br />
+						{suburb} {state} {postcode}
 					</Fragment>
 				) : null}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
 }
+
+const DATE_FORMAT = 'do MMMM yyyy';
 
 type FormDefinitionListItemDateProps = {
 	label: string;
@@ -75,7 +78,7 @@ export function FormDefinitionListItemDate({
 					<Fragment>
 						{format(
 							typeof value === 'string' ? parseISO(value) : (value as Date),
-							'dd/MM/yyyy'
+							DATE_FORMAT
 						)}
 					</Fragment>
 				) : null}

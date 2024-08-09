@@ -6,19 +6,23 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
 import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { FormState, defaultFormState, TaskKey } from './FormState';
+import { defaultFormState, FormState, TaskKey } from './FormState';
+import { getPrevTaskKey } from './utils';
+
+// It is a pain to have to go through the entire form flow to demo things on specific pages
+// Set this to true to allow skipping past steps and tasks
+const ENABLE_STEP_SKIPPING = false;
 
 type ContextType = {
 	formTitle: string;
-	typeSearchParm: string;
 	homePageUrl: string;
 	// Task status
 	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
 	startTask: (key: TaskKey) => void;
+	checkIsTaskAvailable: (key: TaskKey) => boolean;
 	// Form state
 	formState: DeepPartial<FormState>;
 	setFormState: (formState: DeepPartial<FormState>) => void;
@@ -45,21 +49,33 @@ export function GlobalFormProvider({
 		defaultFormState as DeepPartial<FormState>
 	);
 
-	const searchParams = useSearchParams();
-	const typeSearchParm = searchParams.get('type') ?? '';
-
-	const formTitle = `Apply for a ${typeSearchParm} permit`;
-	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${typeSearchParm}`;
+	const formTitle = `Apply for a ${formState.type} permit`;
+	const homePageUrl =
+		'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
 	const getTaskStatus = useCallback(
 		(taskKey: TaskKey): TaskListItemStatus => {
-			{
-				if (formState[taskKey]?.completed) return 'doneRecently';
-				if (formState[taskKey]?.started) return 'doing';
-				return 'todo';
-			}
+			const prevTaskKey = getPrevTaskKey(taskKey);
+			const isPrevTaskComplete =
+				taskKey === 'task1' || Boolean(formState[prevTaskKey]?.completed);
+			const isDoneRecently =
+				taskKey === `task${router.query.taskHighlight}` &&
+				formState[taskKey]?.completed;
+
+			if (!isPrevTaskComplete && taskKey !== 'task2') return 'blocked';
+			if (isDoneRecently) return 'doneRecently';
+			if (formState[taskKey]?.completed) return 'done';
+			if (formState[taskKey]?.started) return 'doing';
+			return 'todo';
 		},
-		[formState]
+		[formState, router.query.taskHighlight]
+	);
+
+	const checkIsTaskAvailable = useCallback(
+		(taskKey: TaskKey) => {
+			return getTaskStatus(taskKey) !== 'blocked' || ENABLE_STEP_SKIPPING;
+		},
+		[getTaskStatus]
 	);
 
 	const startTask = useCallback(
@@ -93,11 +109,11 @@ export function GlobalFormProvider({
 
 	const contextValue: ContextType = {
 		formTitle,
-		typeSearchParm,
 		homePageUrl,
 		// task status
 		getTaskStatus,
 		startTask,
+		checkIsTaskAvailable,
 		// form state
 		formState,
 		setFormState,
