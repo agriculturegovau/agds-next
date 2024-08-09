@@ -6,16 +6,32 @@ import {
 	useContext,
 	useMemo,
 } from 'react';
-import { useGlobalForm } from './GlobalFormProvider';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { type FormStep } from '../FormState';
 
 const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
-export const task1FormSteps = [
+export type Task1StepNumber =
+	| 'step1'
+	| 'step2'
+	| 'step3'
+	| 'step4'
+	| 'step5'
+	| 'step6'
+	| 'step7';
+
+export const task1FormSteps: Array<FormStep<Task1StepNumber>> = [
 	{
 		formStateKey: 'step1',
 		label: 'Owner details',
 		href: formHomePage + '/task-1/step-1',
+		items: [
+			{
+				label: 'Change business owner details',
+				href: formHomePage + '/task-1/step-1/change-details',
+			},
+		],
 	},
 	{
 		formStateKey: 'step2',
@@ -47,7 +63,7 @@ export const task1FormSteps = [
 		label: 'Confirm and submit',
 		href: formHomePage + '/task-1/step-7',
 	},
-] as const;
+];
 
 type ContextType = {
 	/** The href of the previous step. */
@@ -62,7 +78,7 @@ const context = createContext<ContextType | undefined>(undefined);
 
 export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
-	const { setIsSubmittingStep, typeSearchParm, formState } = useGlobalForm();
+	const { setIsSubmittingStep, formState } = useGlobalForm();
 
 	const currentStepIndex = task1FormSteps.findIndex(
 		({ href }) => href === pathname
@@ -73,18 +89,14 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
-		push(
-			`${
-				task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage
-			}?type=${typeSearchParm}`
-		);
+		push(`${task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage}`);
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep, typeSearchParm]);
+	}, [currentStepIndex, push, setIsSubmittingStep]);
 
 	// The href of the previous step
 	const backHref = `${
 		task1FormSteps[currentStepIndex - 1]?.href ?? formHomePage
-	}?type=${typeSearchParm}`;
+	}`;
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {

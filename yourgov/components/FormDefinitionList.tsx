@@ -50,13 +50,16 @@ export function FormDefinitionListItemAddress({
 			<SummaryListItemDescription>
 				{address && suburb && state && postcode ? (
 					<Fragment>
-						{address}, {suburb} {state} {postcode}
+						{address},<br />
+						{suburb} {state} {postcode}
 					</Fragment>
 				) : null}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
 }
+
+const DATE_FORMAT = 'do MMMM yyyy';
 
 type FormDefinitionListItemDateProps = {
 	label: string;
@@ -75,7 +78,7 @@ export function FormDefinitionListItemDate({
 					<Fragment>
 						{format(
 							typeof value === 'string' ? parseISO(value) : (value as Date),
-							'dd/MM/yyyy'
+							DATE_FORMAT
 						)}
 					</Fragment>
 				) : null}
@@ -85,34 +88,40 @@ export function FormDefinitionListItemDate({
 }
 
 type FormDefinitionListItemDateRangeProps = {
-	label: string;
-	from: unknown | undefined;
-	to: unknown | undefined;
+	fromLabel: string;
+	fromValue: unknown | undefined;
+	toLabel: string;
+	toValue: unknown | undefined;
 };
 
 export function FormDefinitionListItemDateRange({
-	label,
-	from,
-	to,
+	fromLabel,
+	fromValue,
+	toLabel,
+	toValue,
 }: FormDefinitionListItemDateRangeProps) {
 	return (
-		<SummaryListItem>
-			<SummaryListItemTerm>{label}</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				{from && to ? (
-					<Fragment>
-						{format(
-							typeof from === 'string' ? parseISO(from) : (from as Date),
-							'dd/MM/yyyy'
-						)}{' '}
-						–{' '}
-						{format(
-							typeof to === 'string' ? parseISO(to) : (to as Date),
-							'dd/MM/yyyy'
-						)}
-					</Fragment>
-				) : null}
-			</SummaryListItemDescription>
-		</SummaryListItem>
+		<>
+			<SummaryListItem>
+				<SummaryListItemTerm>{fromLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{format(
+						typeof fromValue === 'string'
+							? parseISO(fromValue)
+							: (fromValue as Date),
+						DATE_FORMAT
+					)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+			<SummaryListItem>
+				<SummaryListItemTerm>{toLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{format(
+						typeof toValue === 'string' ? parseISO(toValue) : (toValue as Date),
+						DATE_FORMAT
+					)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+		</>
 	);
 }

@@ -1,10 +1,10 @@
 import { FormEvent } from 'react';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
-import { globalFormTasks } from './globalFormTasks';
-import { FormActions } from './FormActions';
+import { globalFormTasks } from '../globalFormTasks';
+import { StepActions } from '../StepActions';
+import { FormTask1Review } from '../task1/FormTask1Review';
 import { FormTask4Container } from './FormTask4Container';
-import { FormTask1Review } from './FormTask1Review';
 
 export function FormTask4Step1() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -38,7 +38,7 @@ export function FormTask4Step1() {
 				<p>TODO</p>
 			</Stack>
 			<form onSubmit={onSubmit}>
-				<FormActions />
+				<StepActions />
 			</form>
 		</FormTask4Container>
 	);

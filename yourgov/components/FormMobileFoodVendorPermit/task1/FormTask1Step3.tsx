@@ -12,10 +12,10 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { StepActions } from '../StepActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { FormActions } from './FormActions';
-import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step3FormSchema,
@@ -225,7 +225,7 @@ export function FormTask1Step3() {
 						</FormStack>
 					</Fieldset>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);
