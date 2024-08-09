@@ -15,8 +15,8 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { useGlobalForm } from './GlobalFormProvider';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1FormSchema,
 	Task1Step1FormSchema,
@@ -24,7 +24,7 @@ import {
 
 export function FormTask1Step1ChangeDetails() {
 	const router = useRouter();
-	const { formState, setFormState, typeSearchParm } = useGlobalForm();
+	const { formState, setFormState } = useGlobalForm();
 
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -41,7 +41,8 @@ export function FormTask1Step1ChangeDetails() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1?type=${typeSearchParm}`;
+	const step1Path =
+		'/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1';
 
 	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
 		setFocusedError(false);

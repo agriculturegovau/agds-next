@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
+import { type FieldValues } from 'react-hook-form';
+import { FormStep, type TaskKey } from './FormState';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764

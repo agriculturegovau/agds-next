@@ -88,34 +88,40 @@ export function FormDefinitionListItemDate({
 }
 
 type FormDefinitionListItemDateRangeProps = {
-	label: string;
-	from: unknown | undefined;
-	to: unknown | undefined;
+	fromLabel: string;
+	fromValue: unknown | undefined;
+	toLabel: string;
+	toValue: unknown | undefined;
 };
 
 export function FormDefinitionListItemDateRange({
-	label,
-	from,
-	to,
+	fromLabel,
+	fromValue,
+	toLabel,
+	toValue,
 }: FormDefinitionListItemDateRangeProps) {
 	return (
-		<SummaryListItem>
-			<SummaryListItemTerm>{label}</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				{from && to ? (
-					<Fragment>
-						{format(
-							typeof from === 'string' ? parseISO(from) : (from as Date),
-							'dd/MM/yyyy'
-						)}{' '}
-						–{' '}
-						{format(
-							typeof to === 'string' ? parseISO(to) : (to as Date),
-							'dd/MM/yyyy'
-						)}
-					</Fragment>
-				) : null}
-			</SummaryListItemDescription>
-		</SummaryListItem>
+		<>
+			<SummaryListItem>
+				<SummaryListItemTerm>{fromLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{format(
+						typeof fromValue === 'string'
+							? parseISO(fromValue)
+							: (fromValue as Date),
+						DATE_FORMAT
+					)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+			<SummaryListItem>
+				<SummaryListItemTerm>{toLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{format(
+						typeof toValue === 'string' ? parseISO(toValue) : (toValue as Date),
+						DATE_FORMAT
+					)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+		</>
 	);
 }

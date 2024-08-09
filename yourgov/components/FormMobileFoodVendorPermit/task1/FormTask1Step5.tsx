@@ -6,37 +6,37 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
-import { DeepPartial } from '../../lib/types';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import { DeepPartial } from '../../../lib/types';
+import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { StepActions } from '../StepActions';
+import { parseDateField } from '../utils';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { FormActions } from './FormActions';
-import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
-import { parseDateField } from './utils';
 import {
-	Task1Step4FormSchema,
-	task1Step4FormSchema,
+	task1Step5FormSchema,
+	Task1Step5FormSchema,
 } from './FormTask1FormState';
 
-function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
-	const registrationExpiry = step?.registrationExpiry as
-		| string
-		| Date
-		| undefined;
+function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
+	const from = step?.tradingPeriod?.from as string | Date | undefined;
+	const to = step?.tradingPeriod?.from as string | Date | undefined;
 	return {
 		...step,
-		registrationExpiry: parseDateField(registrationExpiry),
+		tradingPeriod: {
+			from: parseDateField(from),
+			to: parseDateField(to),
+		},
 	};
 }
 
-export function FormTask1Step4() {
+export function FormTask1Step5() {
 	const { formState, setFormState } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
-
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
@@ -46,17 +46,17 @@ export function FormTask1Step4() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step4FormSchema>({
-		defaultValues: transformDefaultValues(formState.task1?.step4),
-		resolver: yupResolver(task1Step4FormSchema),
+	} = useForm<Task1Step5FormSchema>({
+		defaultValues: transformDefaultValues(formState.task1?.step5),
+		resolver: yupResolver(task1Step5FormSchema),
 	});
 
-	const onSubmit: SubmitHandler<Task1Step4FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
 		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step4: { ...data, completed: true } },
+			task1: { ...formState.task1, step5: { ...data, completed: true } },
 		});
 	};
 
@@ -68,6 +68,8 @@ export function FormTask1Step4() {
 	const flatErrors = Object.entries(errors)
 		.map(([key, value]) => {
 			if ('message' in value) return { key, message: value.message };
+			if ('from' in value) return { key, message: value.from?.message };
+			if ('to' in value) return { key, message: value.to?.message };
 		})
 		.filter((item): item is { key: string; message: string } =>
 			Boolean(item?.message)
@@ -85,7 +87,7 @@ export function FormTask1Step4() {
 
 	return (
 		<FormTask1Container
-			formTitle="Vehicle registration"
+			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
 			formCallToAction={<FormRequiredFieldsMessage />}
 		>
@@ -100,7 +102,9 @@ export function FormTask1Step4() {
 						<PageAlert
 							ref={errorRef}
 							tone="error"
-							title="There is a problem"
+							title={
+								<PageAlertTitle as="h2">There is a problem</PageAlertTitle>
+							}
 							tabIndex={-1}
 						>
 							<Text as="p">
@@ -117,33 +121,51 @@ export function FormTask1Step4() {
 							</UnorderedList>
 						</PageAlert>
 					)}
-					<TextInput
-						label="Vehicle registration number"
-						hint="Enter a plate number, maximum 6 characters. For example ABC123."
-						id="registrationNumber"
-						{...register('registrationNumber')}
-						invalid={Boolean(errors.registrationNumber?.message)}
-						message={errors.registrationNumber?.message}
-						required
-					/>
 					<Controller
 						control={control}
-						name="registrationExpiry"
-						render={({ field: { ref, ...field } }) => (
-							<DatePicker
-								inputRef={ref}
-								label="Vehicle registration expiry"
+						name="tradingPeriod"
+						render={({ field: { ref, value, onChange, ...field } }) => (
+							<DateRangePicker
+								legend="Period active"
+								fromInputRef={ref}
 								{...field}
-								id="registrationExpiry"
-								invalid={Boolean(errors.registrationExpiry?.message)}
-								message={errors.registrationExpiry?.message}
-								maxWidth="xl"
+								id="tradingPeriod"
+								value={value}
+								onChange={onChange}
+								onFromInputChange={(from) => onChange({ ...value, from })}
+								onToInputChange={(to) => onChange({ ...value, to })}
+								fromInvalid={Boolean(errors.tradingPeriod?.from?.message)}
+								toInvalid={Boolean(errors.tradingPeriod?.to?.message)}
+								message={
+									errors.tradingPeriod?.from?.message ||
+									errors.tradingPeriod?.to?.message
+								}
 								required
 							/>
 						)}
 					/>
+					{/** TODO Replace with an actual time input component (when available) */}
+					<TextInput
+						label="Opening time"
+						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+						id="openingTime"
+						{...register('openingTime')}
+						invalid={Boolean(errors.openingTime?.message)}
+						message={errors.openingTime?.message}
+						required
+					/>
+					{/** TODO Replace with an actual time input component (when available) */}
+					<TextInput
+						label="Closing time"
+						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+						id="closingTime"
+						{...register('closingTime')}
+						invalid={Boolean(errors.closingTime?.message)}
+						message={errors.closingTime?.message}
+						required
+					/>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);
