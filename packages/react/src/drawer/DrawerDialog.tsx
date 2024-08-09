@@ -1,6 +1,6 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import FocusLock from 'react-focus-lock';
-import { animated, SpringValue } from '@react-spring/web';
+import { animated } from '@react-spring/web';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
@@ -9,30 +9,7 @@ import { Button } from '../button';
 import { Text } from '../text';
 import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
-import { DrawerProps } from './Drawer';
-
-export type DrawerDialogProps = PropsWithChildren<{
-	/** Used to render buttons at the bottom of the draw. */
-	actions?: ReactNode;
-	/** On close of the drawer, this element will be focused, rather than the trigger element. */
-	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
-	/** @deprecated use `onClose` instead. */
-	onDismiss?: () => void;
-	/** Function to be called when the 'Close' button is pressed. */
-	onClose?: () => void;
-	style: { translateX: SpringValue<string> };
-	/** The title displayed at the top of the draw. */
-	title: string;
-	/** The width of the draw. */
-	width: DrawerDialogWidth;
-}>;
-
-const WIDTH_MAP = {
-	md: '32rem', // 512px
-	lg: '45rem', // 720px
-};
-
-export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
+import { type DrawerDialogProps } from './types';
 
 const AnimatedFlex = animated(Flex);
 

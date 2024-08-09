@@ -1,4 +1,4 @@
-import { LinkProps, boxPalette } from '../core';
+import { boxPalette } from '../core';
 import {
 	AlertIcon,
 	ProgressBlockedIcon,
@@ -7,8 +7,6 @@ import {
 	SuccessFilledIcon,
 	SuccessIcon,
 } from '../icon';
-import { ProgressIndicatorItemButtonProps } from './ProgressIndicatorItemButton';
-import { ProgressIndicatorItemLinkProps } from './ProgressIndicatorItemLink';
 
 // Colours
 
@@ -81,25 +79,3 @@ export const statusMap = {
 } as const;
 
 export type ProgressIndicatorItemStatus = keyof typeof statusMap;
-
-// Items
-
-export type ProgressIndicatorItem<
-	TLevelTwoItems extends { isActive?: boolean; items?: LevelTwoItem[] } = {},
-> = (ProgressIndicatorItemButtonProps | ProgressIndicatorItemLinkProps) & {
-	label: string;
-	/** @deprecated use `activePath` in the parent component, `<ProgressIndicator />`. */
-	isActive?: boolean;
-} & TLevelTwoItems;
-
-// Level two items
-
-type LevelTwoItem = {
-	label: string;
-} & LinkProps;
-
-export type ProgressIndicatorItemWithLevelTwoItems<
-	T extends { isActive?: boolean } = {},
-> = ProgressIndicatorItem<{
-	items?: (LevelTwoItem & T)[];
-}>;

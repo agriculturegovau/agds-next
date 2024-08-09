@@ -13,9 +13,9 @@ import {
 	progressIndicatorItemTextContainerDataAttr,
 	progressIndicatorItemTextDataAttr,
 	progressIndicatorItemTimelineDataAttr,
-	ProgressIndicatorItemWithLevelTwoItems,
 	statusMap,
 } from './utils';
+import { type ProgressIndicatorItemWithLevelTwoItems } from './types';
 
 type ProgressIndicatorItemProps = PropsWithChildren<{
 	as: ElementType;

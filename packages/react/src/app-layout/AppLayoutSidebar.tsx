@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
+import { tokens } from '../core';
 import { Stack } from '../stack';
-import { AppLayoutSidebarNav, NavItem } from './AppLayoutSidebarNav';
+import { AppLayoutSidebarNav } from './AppLayoutSidebarNav';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarDialog } from './AppLayoutSidebarDialog';
 import {
@@ -9,20 +9,7 @@ import {
 	APP_LAYOUT_SIDEBAR_WIDTH,
 	findBestMatch,
 } from './utils';
-
-export type AppLayoutSidebarProps = {
-	/** Used for highlighting the active element. */
-	activePath?: string;
-	background?: 'body' | 'bodyAlt';
-	/** Groups of navigation items to display. */
-	items: (
-		| NavItem[]
-		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
-	)[];
-	palette?: ResponsiveProp<BoxPalette>;
-	/** When to show sub-level navigation items. */
-	subLevelVisible?: 'always' | 'whenActive';
-};
+import { type AppLayoutSidebarProps } from './types';
 
 export function AppLayoutSidebar({
 	activePath,

@@ -1,5 +1,5 @@
 import { useId } from '../core';
-import { SideNavProps } from './SideNav';
+import { type SideNavProps } from './types';
 
 export function findBestMatch(
 	items: SideNavProps['items'],

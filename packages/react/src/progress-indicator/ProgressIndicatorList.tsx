@@ -1,8 +1,6 @@
-import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { tokens } from '../core';
-
-export type ProgressIndicatorListProps = PropsWithChildren<{}>;
+import { type ProgressIndicatorListProps } from './types';
 
 export function ProgressIndicatorList({
 	children,

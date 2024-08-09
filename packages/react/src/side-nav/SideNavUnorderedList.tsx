@@ -1,8 +1,6 @@
-import { ReactNode } from 'react';
 import { Box } from '../box';
 import { LinkListContext, useLinkListDepth } from './context';
-
-type SideNavUnorderedListProps = { children: ReactNode; isOpen: boolean };
+import { type SideNavUnorderedListProps } from './types';
 
 export function SideNavUnorderedList({
 	children,

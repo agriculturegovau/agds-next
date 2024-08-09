@@ -1,46 +1,11 @@
-import { ReactElement, ReactNode } from 'react';
-import { Box, type BorderColor } from '../box';
+import { Box } from '../box';
 import { Flex } from '../flex';
-import { tokens, type BoxPalette, type ResponsiveProp } from '../core';
+import { tokens } from '../core';
 import { AppLayoutHeaderBrand } from './AppLayoutHeaderBrand';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { AppLayoutHeaderNav } from './AppLayoutHeaderNav';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
-
-export type AppLayoutHeaderProps = {
-	/** Details for the authenticated account. */
-	accountDetails?: {
-		/** The name of the authenticated user. */
-		name: string;
-		/** Displayed under the users name if needed e.g. to show the business name. */
-		secondaryText?: string;
-		/** The href to link to, for example "/account". */
-		href?: string;
-		/** Dropdown menu for account switching. */
-		dropdown?: ReactNode;
-	};
-	background?: 'body' | 'bodyAlt';
-	/** Used to indicate if an application is in a prerelease state. */
-	badgeLabel?: string;
-	borderColor?: ResponsiveProp<BorderColor>;
-	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
-	dividerPosition?: 'after' | 'between';
-	/** The heading should be set to the website or service title. */
-	heading: string;
-	/**  The href to link to, for example "/". */
-	href: string;
-	/** Defines an identifier (ID) which must be unique. */
-	id?: string;
-	/** The logo to display. */
-	logo: ReactElement;
-	palette?: ResponsiveProp<BoxPalette>;
-	/** The href to link to, for example "/". */
-	secondHref?: string;
-	/** The second logo to display for co-branding. */
-	secondLogo?: ReactElement;
-	/** Used to provide additional information to describe your website or service. */
-	subLine?: string;
-};
+import { AppLayoutHeaderProps } from './types';
 
 export function AppLayoutHeader({
 	accountDetails,

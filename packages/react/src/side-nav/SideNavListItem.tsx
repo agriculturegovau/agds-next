@@ -1,9 +1,6 @@
-import { boxPalette, LinkProps, tokens } from '../core';
+import { boxPalette, tokens } from '../core';
 import { useLinkListDepth } from './context';
-
-export type SideNavLinkProps = LinkProps & {
-	isActive?: boolean;
-};
+import { type SideNavLinkProps } from './types';
 
 export function SideNavListItem({ children, isActive }: SideNavLinkProps) {
 	const depth = useLinkListDepth();

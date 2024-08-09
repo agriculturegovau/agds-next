@@ -10,7 +10,7 @@ import {
 import { Text } from '../text';
 import { Box } from '../box';
 import { Stack } from '../stack';
-import { AppLayoutHeaderProps } from './AppLayoutHeader';
+import { type AppLayoutHeaderProps } from './types';
 
 const GAP_REM = 1.5;
 const LOGO_HEIGHT = '3.75rem';

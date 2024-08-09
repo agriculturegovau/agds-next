@@ -10,7 +10,7 @@ import {
 	tokens,
 	useLinkComponent,
 } from '../core';
-import { HeaderProps } from './Header';
+import { HeaderProps } from './types';
 
 const GAP_REM = 1.5;
 

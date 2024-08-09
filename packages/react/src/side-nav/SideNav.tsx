@@ -1,35 +1,11 @@
 import { Box } from '../box';
-import { LinkProps, tokens } from '../core';
+import { tokens } from '../core';
 import { visuallyHiddenStyles } from '../a11y';
-import {
-	CollapsingSideBar,
-	CollapsingSideBarBackground,
-} from '../_collapsing-side-bar';
+import { CollapsingSideBar } from '../_collapsing-side-bar';
 import { SideNavTitle } from './SideNavTitle';
 import { findBestMatch, useSideNavIds } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
-
-type SideNavMenuItem = Omit<LinkProps, 'children'> & {
-	label: string;
-	items?: SideNavMenuItem[];
-};
-
-export type SideNavProps = {
-	/** Used for highlighting the active element. */
-	activePath: string;
-	/** If SideNav is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
-	background?: CollapsingSideBarBackground;
-	/** @deprecated Unused. The title is now always used, even when collapsed. */
-	collapseTitle?: string;
-	/** The list of links. */
-	items: SideNavMenuItem[];
-	/** The title is placed at the top of the list of links. */
-	title: string;
-	/** When to show sub-level navigation items. */
-	subLevelVisible?: 'always' | 'whenActive';
-	/** If provided, the title will be rendered as an anchor element. */
-	titleLink?: string;
-};
+import { type SideNavProps } from './types';
 
 export function SideNav({
 	activePath,

@@ -1,17 +1,6 @@
-import { ButtonHTMLAttributes } from 'react';
 import { BaseButton } from '../button';
-import {
-	ProgressIndicatorBackground,
-	ProgressIndicatorItemStatus,
-} from './utils';
 import { ProgressIndicatorItem } from './ProgressIndicatorItem';
-
-export type ProgressIndicatorItemButtonProps =
-	ButtonHTMLAttributes<HTMLButtonElement> & {
-		status: ProgressIndicatorItemStatus;
-		background?: ProgressIndicatorBackground;
-		isActive?: boolean;
-	};
+import { type ProgressIndicatorItemButtonProps } from './types';
 
 export const ProgressIndicatorItemButton = ({
 	children,

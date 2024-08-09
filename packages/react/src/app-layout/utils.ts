@@ -1,4 +1,4 @@
-import { AppLayoutSidebarNavProps } from './AppLayoutSidebarNav';
+import { type AppLayoutSidebarNavProps } from './types';
 
 // The breakpoint where we show the sidebar in a two column layout
 export const APP_LAYOUT_DESKTOP_BREAKPOINT = 'xl';
