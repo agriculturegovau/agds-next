@@ -19,7 +19,7 @@ import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1Part2FormSchema,
-	Task1Step1Part2FormSchema,
+	type Task1Step1Part2FormSchema,
 } from './FormTask1FormState';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';

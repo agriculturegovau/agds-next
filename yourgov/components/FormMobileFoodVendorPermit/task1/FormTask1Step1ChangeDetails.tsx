@@ -1,26 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Stack } from '@ag.ds-next/react/stack';
+import {
+	type SubmitHandler,
+	type SubmitErrorHandler,
+	useForm,
+} from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { TextInput } from '@ag.ds-next/react/text-input';
-import { H1 } from '@ag.ds-next/react/heading';
-import { Text } from '@ag.ds-next/react/text';
-import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { useScrollToField } from '@ag.ds-next/react/field';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { Divider } from '@ag.ds-next/react/divider';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { H1 } from '@ag.ds-next/react/heading';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import {
+	ProgressIndicator,
+	type ProgressIndicatorItemStatus,
+} from '@ag.ds-next/react/progress-indicator';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1FormSchema,
-	Task1Step1FormSchema,
+	type Task1Step1FormSchema,
 } from './FormTask1FormState';
+import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step1ChangeDetails() {
 	const router = useRouter();
@@ -36,7 +45,9 @@ export function FormTask1Step1ChangeDetails() {
 		formState: { errors },
 	} = useForm<Task1Step1FormSchema>({
 		defaultValues: formState.task1?.step1,
-		resolver: yupResolver(task1Step1FormSchema),
+		resolver: zodResolver(task1Step1FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const [isSaving, setIsSaving] = useState(false);
@@ -54,7 +65,7 @@ export function FormTask1Step1ChangeDetails() {
 				...formState,
 				task1: { ...formState.task1, step1: { ...data } },
 			});
-			router.push(step1Path);
+			router.push(`${step1Path}?success=true`);
 		}, 1500);
 	};
 
@@ -84,19 +95,47 @@ export function FormTask1Step1ChangeDetails() {
 		titleRef.current?.focus();
 	}, []);
 
+	const { pathname } = useRouter();
+	const { canConfirmAndSubmit } = useFormTask1Context();
+
+	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
+		const step = task1FormSteps[stepIndex];
+		// Current step is always in progress when the URL matches
+		if (step.href === pathname.replace('/change-details', '')) return 'started';
+		// After submitting each step, the `completed` key is set to `true`
+		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
+		// The final step (confirm and submit) can only be viewed when all previous steps are complete
+		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
+		// Otherwise, the step still needs to be done
+		return 'todo';
+	}
+
 	return (
 		<Columns>
-			<Column columnSpan={{ xs: 12, md: 8 }}>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ProgressIndicator
+					activePath={`${
+						task1FormSteps[0].items && task1FormSteps[0].items[0]?.href
+					}`}
+					items={task1FormSteps.map(({ label, href, items }, index) => ({
+						label,
+						href,
+						status: getStepStatus(index),
+						items: index === 0 ? items : undefined,
+					}))}
+				/>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionLink direction="left" href={step1Path}>
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
 						<H1 ref={titleRef} tabIndex={-1} focusRingFor="keyboard">
-							Provide business owner details
+							Change business owner details
 						</H1>
 						<Text as="p" fontSize="md" color="muted">
-							Confirm your name and contact details.
+							Change your name and contact details.
 						</Text>
 						<FormRequiredFieldsMessage />
 					</Stack>
@@ -132,27 +171,27 @@ export function FormTask1Step1ChangeDetails() {
 									</PageAlert>
 								)}
 								<TextInput
-									label="First name"
+									label="Given name/s"
 									autoComplete="given-name"
 									{...register('firstName')}
 									id="firstName"
 									invalid={Boolean(errors.firstName?.message)}
 									message={errors.firstName?.message}
-									maxWidth="xl"
+									maxWidth="lg"
 									required
 								/>
 								<TextInput
-									label="Last name"
+									label="Family name"
 									autoComplete="family-name"
 									{...register('lastName')}
 									id="lastName"
 									invalid={Boolean(errors.lastName?.message)}
 									message={errors.lastName?.message}
-									maxWidth="xl"
+									maxWidth="lg"
 									required
 								/>
 								<TextInput
-									label="Email"
+									label="Email address"
 									type="email"
 									autoComplete="email"
 									{...register('email')}

@@ -1,28 +1,24 @@
-import { DeepPartial } from 'react-hook-form';
+import { z } from 'zod';
+import { type DeepPartial } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupDateField, yupPhoneField } from '../utils';
+import { yupDateField } from '../utils';
+import { zodPhoneFieldOptional, zodString } from '../../../lib/zodUtils';
+import { type Completion } from '../FormState';
 
-export const task1Step1FormSchema = yup
-	.object({
-		firstName: yup.string().required('Enter your first name'),
-		lastName: yup.string().required('Enter your last name'),
-		email: yup
-			.string()
-			.email('Enter a valid email')
-			.required('Enter your email'),
-		contactPhoneNumber: yupPhoneField.optional(),
-	})
-	.required();
+export const task1Step1FormSchema = z.object({
+	firstName: zodString('Enter your first name'),
+	lastName: zodString('Enter your last name'),
+	email: zodString('Enter your email').email('Enter a valid email'),
+	contactPhoneNumber: zodPhoneFieldOptional(),
+});
 
-export type Task1Step1FormSchema = yup.InferType<typeof task1Step1FormSchema>;
+export type Task1Step1FormSchema = z.infer<typeof task1Step1FormSchema>;
 
-export const task1Step1Part2FormSchema = yup
-	.object({
-		contactPhoneNumber: yupPhoneField.optional(),
-	})
-	.required();
+export const task1Step1Part2FormSchema = z.object({
+	contactPhoneNumber: zodPhoneFieldOptional(),
+});
 
-export type Task1Step1Part2FormSchema = yup.InferType<
+export type Task1Step1Part2FormSchema = z.infer<
 	typeof task1Step1Part2FormSchema
 >;
 
@@ -124,25 +120,23 @@ export const task1Step6FormSchema = yup
 
 export type Task1Step6FormSchema = yup.InferType<typeof task1Step6FormSchema>;
 
-export type Task1FormState = {
-	started: boolean;
-	completed: boolean;
-	step1: Task1Step1FormSchema & { completed: boolean };
-	step2: Task1Step2FormSchema & { completed: boolean };
-	step3: Task1Step3FormSchema & { completed: boolean };
-	step4: Task1Step4FormSchema & { completed: boolean };
-	step5: Task1Step5FormSchema & { completed: boolean };
-	step6: Task1Step6FormSchema & { completed: boolean };
-	step7: { completed: boolean };
+export type Task1FormState = Completion & {
+	step1: Task1Step1FormSchema & Completion;
+	step2: Task1Step2FormSchema & Completion;
+	step3: Task1Step3FormSchema & Completion;
+	step4: Task1Step4FormSchema & Completion;
+	step5: Task1Step5FormSchema & Completion;
+	step6: Task1Step6FormSchema & Completion;
+	step7: Completion;
 };
 
 export const task1DefaultFormState: DeepPartial<Task1FormState> = {
 	started: false,
 	completed: false,
 	step1: {
-		firstName: 'Barney',
-		lastName: 'Gumble',
-		email: 'gumble@email.com',
+		firstName: 'Charlie',
+		lastName: 'Walker',
+		email: 'c.walker@email.com',
 		completed: false,
 	},
 	step3: {

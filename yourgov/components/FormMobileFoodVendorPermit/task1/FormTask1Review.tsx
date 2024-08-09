@@ -30,19 +30,19 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 				<HeadingComponent>{task1FormSteps[0].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
-						label="First name"
+						label="Given name/s"
 						value={formState.task1?.step1?.firstName}
 					/>
 					<FormDefinitionListItem
-						label="Last name"
+						label="Family name"
 						value={formState.task1?.step1?.lastName}
 					/>
 					<FormDefinitionListItem
-						label="Email"
+						label="Email address"
 						value={formState.task1?.step1?.email}
 					/>{' '}
 					<FormDefinitionListItem
-						label="Contact number"
+						label="Contact phone number"
 						value={formState.task1?.step1?.contactPhoneNumber}
 					/>
 				</FormDefinitionList>
@@ -55,7 +55,7 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 				<HeadingComponent>{task1FormSteps[1].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItem
-						label="Business or company name"
+						label="Business name"
 						value={formState.task1?.step2?.businessName}
 					/>
 					<FormDefinitionListItem
@@ -129,13 +129,10 @@ export function FormTask1Review({ headingsLevel }: FormTask1ReviewProps) {
 				<HeadingComponent>{task1FormSteps[4].label}</HeadingComponent>
 				<FormDefinitionList>
 					<FormDefinitionListItemDateRange
-						label="Period active"
-						from={formState.task1?.step5?.tradingPeriod?.from}
-						to={formState.task1?.step5?.tradingPeriod?.to}
-					/>
-					<FormDefinitionListItem
-						label="Opening time"
-						value={formState.task1?.step5?.openingTime}
+						fromLabel="Start date"
+						fromValue={formState.task1?.step5?.tradingPeriod?.from}
+						toLabel="End date"
+						toValue={formState.task1?.step5?.tradingPeriod?.to}
 					/>
 					<FormDefinitionListItem
 						label="Closing time"

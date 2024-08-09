@@ -5,6 +5,15 @@ import {
 } from './task1/FormTask1FormState';
 import { type Task1StepNumber } from './task1/FormTask1Provider';
 
+export type Completion = {
+	started?: boolean;
+	completed: boolean;
+};
+
+interface TaskCompletion extends Completion {
+	completedRecently: boolean;
+}
+
 // TODO Create task 2 of the form
 export type Task2FormState = {
 	started: boolean;
@@ -27,10 +36,11 @@ export type Task4FormState = {
 };
 
 export type FormState = {
-	task1: Partial<Task1FormState> & { completed: boolean };
-	task2: Partial<Task2FormState> & { completed: boolean };
-	task3: Partial<Task3FormState> & { completed: boolean };
-	task4: Partial<Task4FormState> & { completed: boolean };
+	task1: Partial<Task1FormState> & TaskCompletion;
+	task2: Partial<Task2FormState> & TaskCompletion;
+	task3: Partial<Task3FormState> & TaskCompletion;
+	task4: Partial<Task4FormState> & TaskCompletion;
+	type: string;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
