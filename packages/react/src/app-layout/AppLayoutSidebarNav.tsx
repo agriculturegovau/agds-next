@@ -1,41 +1,17 @@
-import { ComponentType, Fragment, PropsWithChildren, ReactNode } from 'react';
+import { Fragment, type PropsWithChildren } from 'react';
 import {
 	boxPalette,
-	LinkProps,
 	mapSpacing,
 	packs,
 	tokens,
 	useLinkComponent,
 } from '../core';
 import { Box, focusStyles } from '../box';
-import { BaseButton, BaseButtonProps } from '../button';
-import { ChevronDownIcon, ChevronRightIcon, IconProps } from '../icon';
+import { BaseButton } from '../button';
+import { ChevronDownIcon, ChevronRightIcon } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
-import { AppLayoutSidebarProps } from './AppLayoutSidebar';
-
-type NavLink = Omit<LinkProps, 'children'>;
-
-type NavButton = Omit<BaseButtonProps, 'children'>;
-
-export type NavItem = (NavLink | NavButton) & {
-	label: ReactNode;
-	endElement?: ReactNode;
-	icon?: ComponentType<IconProps>;
-	isActive?: boolean;
-	items?: NavItem[];
-	level?: number;
-};
-
-export type AppLayoutSidebarNavProps = {
-	activePath?: string;
-	background: 'body' | 'bodyAlt';
-	items: (
-		| NavItem[]
-		| { items: NavItem[]; options?: { disableGroupPadding: boolean } }
-	)[];
-	subLevelVisible?: AppLayoutSidebarProps['subLevelVisible'];
-};
+import { type AppLayoutSidebarNavProps, type NavItem } from './types';
 
 // Recursively add `isActive` to any sub-level items
 const addIsActive =

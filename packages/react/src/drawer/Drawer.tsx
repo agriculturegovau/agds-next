@@ -2,8 +2,6 @@ import {
 	Fragment,
 	FunctionComponent,
 	MouseEventHandler,
-	PropsWithChildren,
-	ReactNode,
 	useEffect,
 	useRef,
 } from 'react';
@@ -18,26 +16,8 @@ import {
 	usePrefersReducedMotion,
 } from '../core';
 import { getRequiredCloseHandler } from '../getCloseHandler';
-import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
-
-export type DrawerProps = PropsWithChildren<{
-	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
-	actions?: ReactNode;
-	/** On close of the drawer, this element will be focused, rather than the trigger element. */
-	elementToFocusOnClose?: HTMLElement | null;
-	/** If true, the drawer will be displayed. */
-	isOpen?: boolean;
-	/** Lighten the overlay so that the main content underneath is more visible while the draw is open. */
-	mutedOverlay?: boolean;
-	/** Function to be called when the 'Close' button is pressed. */
-	onClose?: () => void;
-	/** @deprecated use `onClose` instead */
-	onDismiss?: () => void;
-	/** The title of the drawer. It can span lines but should not be too long. */
-	title: string;
-	/** The width of the drawer. */
-	width?: DrawerDialogWidth;
-}>;
+import { DrawerDialog } from './DrawerDialog';
+import { type DrawerProps } from './types';
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
 	actions,

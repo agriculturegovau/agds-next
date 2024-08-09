@@ -3,10 +3,10 @@ import { Flex } from '../flex';
 import { boxPalette, tokens } from '../core';
 import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';
-import { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
+import { type AppLayoutHeaderProps } from './types';
 
 export type AppLayoutHeaderNavProps = {
 	accountDetails?: AppLayoutHeaderProps['accountDetails'];

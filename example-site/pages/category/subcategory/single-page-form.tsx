@@ -111,6 +111,8 @@ const SinglePageForm = () => {
 			periodActive: { from: undefined, to: undefined },
 		},
 		resolver: yupResolver(formSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

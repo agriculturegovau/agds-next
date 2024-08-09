@@ -1,21 +1,24 @@
-import { Fragment, ReactElement } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, Heading } from '@ag.ds-next/react/heading';
-import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
-import { Columns } from '@ag.ds-next/react/columns';
-import { Tag } from '@ag.ds-next/react/tags';
-import { Divider } from '@ag.ds-next/react/divider';
+import { Fragment, ReactElement } from 'react';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
-import { Avatar } from '@ag.ds-next/react/src/avatar';
+import { Callout } from '@ag.ds-next/react/callout';
+import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
+import { Columns } from '@ag.ds-next/react/columns';
+import { PageContent } from '@ag.ds-next/react/content';
+import { Divider } from '@ag.ds-next/react/divider';
 import { Flex } from '@ag.ds-next/react/flex';
+import { H1, H2, Heading } from '@ag.ds-next/react/heading';
 import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
-import { AppLayout } from '../../components/Layout/AppLayout';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { Avatar } from '@ag.ds-next/react/src/avatar';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Tag } from '@ag.ds-next/react/tags';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
+import { AppLayout } from '../../components/Layout/AppLayout';
 import { useAuth } from '../../lib/useAuth';
+import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import type { NextPageWithLayout } from '../_app';
 
 const Page: NextPageWithLayout = () => {
@@ -44,7 +47,7 @@ const Page: NextPageWithLayout = () => {
 							<Text fontSize="md" color="muted">
 								My account
 							</Text>
-							<H1>Hi, {user.displayName}</H1>
+							<H1>Hi, {user.firstName}</H1>
 						</Stack>
 					</Flex>
 
@@ -53,8 +56,17 @@ const Page: NextPageWithLayout = () => {
 							<CardInner>
 								<Stack gap={1}>
 									<EmailIcon color="action" size="lg" />
-									<Heading as="h2" type="h3">
+									<Heading
+										as="h2"
+										type="h3"
+										css={{
+											display: 'flex',
+											gap: '0.5em',
+											alignItems: 'center',
+										}}
+									>
 										<CardLink href="/not-found">Messages</CardLink>
+										<NotificationBadge tone="action" value={5} />
 									</Heading>
 									<Text as="p" color="muted">
 										View all messages
@@ -116,6 +128,17 @@ const Page: NextPageWithLayout = () => {
 							Link another business
 						</CallToActionLink>
 					</Stack>
+					<Callout title="Need help?">
+						<Text as="p">
+							Call <strong>000 000 000</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<TextLink href="mailto:emailaccount@yourgov.gov.au">
+								emailaccount@yourgov.gov.au
+							</TextLink>
+						</Text>
+					</Callout>
 				</Stack>
 			</PageContent>
 		</Fragment>
