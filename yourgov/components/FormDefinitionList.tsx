@@ -89,9 +89,9 @@ export function FormDefinitionListItemDate({
 
 type FormDefinitionListItemDateRangeProps = {
 	fromLabel: string;
-	fromValue: unknown | undefined;
+	fromValue?: unknown;
 	toLabel: string;
-	toValue: unknown | undefined;
+	toValue?: unknown;
 };
 
 export function FormDefinitionListItemDateRange({
