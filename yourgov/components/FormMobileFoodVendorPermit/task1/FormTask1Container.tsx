@@ -8,6 +8,7 @@ import {
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
+import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from '../FormContainer';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
@@ -29,15 +30,20 @@ export function FormTask1Container({
 	shouldFocusTitle = true,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, startTask } = useGlobalForm();
+	const { formState, startTask, getTaskStatus } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
+
+	const isTaskAvailable = getTaskStatus('task1') !== 'blocked';
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
+		const stateStep = formState.task1?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
+		if (stateStep?.completed) return 'done';
+		// The user has save and existed
+		if (stateStep?.started) return 'started';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
 		// Otherwise, the step still needs to be done
@@ -76,7 +82,7 @@ export function FormTask1Container({
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 						shouldFocusTitle={shouldFocusTitle}
 					>
-						{children}
+						{isTaskAvailable ? children : <CannotStartAlert />}
 					</FormContainer>
 				</Stack>
 			</Column>
