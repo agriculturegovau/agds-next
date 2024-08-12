@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import {
 	Controller,
 	SubmitHandler,
-	type DeepPartial,
 	type FieldError,
 	useForm,
 } from 'react-hook-form';
@@ -16,10 +15,11 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { StepActions } from '../StepActions';
-import { parseDateField } from '../utils';
-import { useGlobalForm } from '../GlobalFormProvider';
+import { DeepPartial } from '../../../lib/types';
+import { checkHasMultipleErrors, parseDateField } from '../utils';
 import { ShallowErrors } from '../FormState';
+import { StepActions } from '../StepActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
@@ -97,8 +97,7 @@ export function FormTask1Step5() {
 			Boolean(item?.message)
 		);
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = checkHasMultipleErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

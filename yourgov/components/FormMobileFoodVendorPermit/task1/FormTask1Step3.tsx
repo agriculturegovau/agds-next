@@ -12,6 +12,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
+import { checkHasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -76,8 +77,7 @@ export function FormTask1Step3() {
 			Boolean(item?.message)
 		);
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = checkHasMultipleErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

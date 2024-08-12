@@ -11,7 +11,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DeepPartial } from '../../../lib/types';
-import { parseDateField } from '../utils';
+import { checkHasMultipleErrors, parseDateField } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
@@ -87,8 +87,7 @@ export function FormTask1Step4() {
 			Boolean(item?.message)
 		);
 
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
+	const hasErrors = checkHasMultipleErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

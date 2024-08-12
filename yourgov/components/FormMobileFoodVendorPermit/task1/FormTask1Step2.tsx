@@ -12,9 +12,9 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
-import { useGlobalForm } from '../GlobalFormProvider';
-import { StepActions } from '../StepActions';
 import { checkHasMultipleErrors } from '../utils';
+import { StepActions } from '../StepActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
