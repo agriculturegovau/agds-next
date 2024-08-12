@@ -8,9 +8,7 @@ import {
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { type FormStep } from '../FormState';
-
-const formHomePage =
-	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+import { formHomePage, getTaskCompletionUrl } from '../utils';
 
 export type Task1StepNumber =
 	| 'step1'
@@ -78,7 +76,8 @@ const context = createContext<ContextType | undefined>(undefined);
 
 export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
-	const { setIsSubmittingStep, formState } = useGlobalForm();
+	const { setIsSubmittingStep, formState, isSavingBeforeExiting } =
+		useGlobalForm();
 
 	const currentStepIndex = task1FormSteps.findIndex(
 		({ href }) => href === pathname
@@ -86,12 +85,23 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
+
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
-		push(`${task1FormSteps[currentStepIndex + 1]?.href ?? formHomePage}`);
+		const taskCompletionUrl = getTaskCompletionUrl({
+			currentStepIndex,
+			steps: task1FormSteps,
+			taskHighlight: 1,
+		});
+
+		push(taskCompletionUrl);
+
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep]);
+	}, [currentStepIndex, push, setIsSubmittingStep, isSavingBeforeExiting]);
 
 	// The href of the previous step
 	const backHref = `${

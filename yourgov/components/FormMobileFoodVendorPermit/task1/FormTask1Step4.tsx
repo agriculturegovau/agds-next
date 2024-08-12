@@ -1,22 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { DeepPartial } from '../../../lib/types';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
+import { parseDateField } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { parseDateField } from '../utils';
-import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
+import { FormTask1Container } from './FormTask1Container';
 import {
 	Task1Step4FormSchema,
 	task1Step4FormSchema,
@@ -34,7 +33,7 @@ function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
 }
 
 export function FormTask1Step4() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const scrollToField = useScrollToField();
@@ -48,15 +47,30 @@ export function FormTask1Step4() {
 		formState: { errors },
 	} = useForm<Task1Step4FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step4),
-		resolver: yupResolver(task1Step4FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step4FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step4FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step4: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step4: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 
@@ -87,7 +101,6 @@ export function FormTask1Step4() {
 		<FormTask1Container
 			formTitle="Vehicle registration"
 			formIntroduction="What times would you like to operate?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
@@ -137,7 +150,6 @@ export function FormTask1Step4() {
 								id="registrationExpiry"
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								message={errors.registrationExpiry?.message}
-								maxWidth="xl"
 								required
 							/>
 						)}

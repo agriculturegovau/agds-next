@@ -1,5 +1,5 @@
 // import { type ZodIssueCode, type ZodTypeAny, z } from 'zod';
-import { z } from 'zod';
+import { z, ZodIssueCode } from 'zod';
 
 // Empty strings do not trigger Zod required field error validation
 export function zodString(message?: string) {
@@ -46,4 +46,55 @@ export function zodPhoneFieldOptional() {
 				message: phoneError.digitCount,
 			})
 	);
+}
+
+export function zodDateField(message = 'Enter a valid date') {
+	return z.date({
+		invalid_type_error: 'Enter a valid date',
+		required_error: message,
+	});
+}
+
+export function zodReviewDateField() {
+	return z.coerce.date();
+}
+
+interface ZodTimeFieldProps {
+	label: string;
+	requiredMessage?: string;
+	invalidMessage?: string;
+}
+
+export function zodTimeField({
+	label,
+	requiredMessage = `${label} is required`,
+	invalidMessage = `${label} is an invalid time`,
+}: ZodTimeFieldProps) {
+	return z
+		.object(
+			{
+				value: zodString(requiredMessage),
+				formatted: zodString(requiredMessage),
+			},
+			{
+				required_error: requiredMessage,
+				invalid_type_error: invalidMessage,
+			}
+		)
+		.superRefine((value, context) => {
+			if (!value.value) {
+				context.addIssue({
+					code: ZodIssueCode.invalid_string,
+					message: requiredMessage,
+					validation: { includes: '' },
+				});
+			}
+			if (!/^\d\d:\d\d$/.test(value.value)) {
+				context.addIssue({
+					code: ZodIssueCode.invalid_string,
+					message: invalidMessage,
+					validation: { includes: '' },
+				});
+			}
+		});
 }

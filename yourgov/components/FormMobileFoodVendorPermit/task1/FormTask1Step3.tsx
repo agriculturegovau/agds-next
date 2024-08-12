@@ -1,6 +1,6 @@
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -12,18 +12,17 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step3FormSchema,
-	Task1Step3FormSchema,
+	type Task1Step3FormSchema,
 } from './FormTask1FormState';
 
 export function FormTask1Step3() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const scrollToField = useScrollToField();
@@ -37,15 +36,30 @@ export function FormTask1Step3() {
 		formState: { errors },
 	} = useForm<Task1Step3FormSchema>({
 		defaultValues: formState.task1?.step3,
-		resolver: yupResolver(task1Step3FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step3FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step3FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step3: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step3: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 
@@ -80,7 +94,6 @@ export function FormTask1Step3() {
 		<FormTask1Container
 			formTitle="Business address"
 			formIntroduction="Add your business address."
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
@@ -147,7 +160,7 @@ export function FormTask1Step3() {
 								invalid={Boolean(errors.state?.message)}
 								message={errors.state?.message}
 								required
-								maxWidth="md"
+								maxWidth="sm"
 							/>
 							<TextInput
 								label="Postcode"
@@ -207,7 +220,7 @@ export function FormTask1Step3() {
 										invalid={Boolean(errors.postalState?.message)}
 										message={errors.postalState?.message}
 										required
-										maxWidth="md"
+										maxWidth="sm"
 									/>
 									<TextInput
 										label="Postcode"

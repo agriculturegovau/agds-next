@@ -1,25 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
+import {
+	Controller,
+	SubmitHandler,
+	type DeepPartial,
+	type FieldError,
+	useForm,
+} from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { TimeInput } from '@ag.ds-next/react/time-input';
+import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
-import { DeepPartial } from '../../../lib/types';
-import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { StepActions } from '../StepActions';
 import { parseDateField } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { ShallowErrors } from '../FormState';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step5FormSchema,
-	Task1Step5FormSchema,
+	type Task1Step5FormSchema,
 } from './FormTask1FormState';
 
 function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
@@ -35,7 +40,7 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 }
 
 export function FormTask1Step5() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
@@ -43,20 +48,36 @@ export function FormTask1Step5() {
 
 	const {
 		control,
-		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Task1Step5FormSchema>({
 		defaultValues: transformDefaultValues(formState.task1?.step5),
-		resolver: yupResolver(task1Step5FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step5FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
+	const typeCorrectedErrors = errors as ShallowErrors<Task1Step5FormSchema>;
+
 	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step5: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step5: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 
@@ -67,7 +88,8 @@ export function FormTask1Step5() {
 	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
 	const flatErrors = Object.entries(errors)
 		.map(([key, value]) => {
-			if ('message' in value) return { key, message: value.message };
+			if ('message' in value)
+				return { key, message: (value as FieldError).message };
 			if ('from' in value) return { key, message: value.from?.message };
 			if ('to' in value) return { key, message: value.to?.message };
 		})
@@ -89,7 +111,6 @@ export function FormTask1Step5() {
 		<FormTask1Container
 			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack
 				as="form"
@@ -126,7 +147,6 @@ export function FormTask1Step5() {
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
 							<DateRangePicker
-								legend="Period active"
 								fromInputRef={ref}
 								{...field}
 								id="tradingPeriod"
@@ -144,25 +164,35 @@ export function FormTask1Step5() {
 							/>
 						)}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Opening time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="openingTime"
-						{...register('openingTime')}
-						invalid={Boolean(errors.openingTime?.message)}
-						message={errors.openingTime?.message}
-						required
+					<Controller
+						control={control}
+						name="openingTime"
+						render={({ field: { ref, ...field } }) => (
+							<TimeInput
+								label="Opening time"
+								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
+								id="openingTime"
+								{...field}
+								invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
+								message={typeCorrectedErrors.openingTime?.message}
+								required
+							/>
+						)}
 					/>
-					{/** TODO Replace with an actual time input component (when available) */}
-					<TextInput
-						label="Closing time"
-						hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
-						id="closingTime"
-						{...register('closingTime')}
-						invalid={Boolean(errors.closingTime?.message)}
-						message={errors.closingTime?.message}
-						required
+					<Controller
+						control={control}
+						name="closingTime"
+						render={({ field: { ref, ...field } }) => (
+							<TimeInput
+								label="Closing time"
+								hint="For example, 5 pm or 10:30 pm - enter 12 am for midnight"
+								id="closingTime"
+								{...field}
+								invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+								message={typeCorrectedErrors.closingTime?.message}
+								required
+							/>
+						)}
 					/>
 				</FormStack>
 				<StepActions />
