@@ -1,18 +1,20 @@
 import { FormEvent, Fragment } from 'react';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { Text } from '@ag.ds-next/react/text';
+import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { FormTask1Container } from './FormTask1Container';
 import { useFormTask1Context } from './FormTask1Provider';
-import { FormTask1Review } from './FormTask1Review';
+import { FormTask1Step7Review } from './FormTask1Step7Review';
 
 export function FormTask1Step7() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, isSavingBeforeExiting, setFormState } = useGlobalForm();
 	const { submitStep, canConfirmAndSubmit } = useFormTask1Context();
 
 	async function onSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		await submitStep();
 		setFormState({
 			...formState,
@@ -28,24 +30,17 @@ export function FormTask1Step7() {
 		<FormTask1Container
 			formTitle="Confirm and submit"
 			formIntroduction="Check and confirm all details on this page."
+			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>
-					<FormTask1Review headingsLevel="h2" />
+					<FormTask1Step7Review headingsLevel="h2" />
 					<form onSubmit={onSubmit}>
 						<StepActions />
 					</form>
 				</Fragment>
 			) : (
-				<PageAlert
-					tone="warning"
-					title="This section of the form is not ready to be completed"
-				>
-					<Text as="p">
-						Before starting this part of the form, you will need to go back and
-						complete all of the previous sections.
-					</Text>
-				</PageAlert>
+				<CannotStartAlert />
 			)}
 		</FormTask1Container>
 	);

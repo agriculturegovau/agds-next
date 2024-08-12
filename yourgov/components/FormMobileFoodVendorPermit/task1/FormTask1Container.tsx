@@ -2,12 +2,12 @@ import { PropsWithChildren, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { ContentBleed } from '@ag.ds-next/react/content';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import {
 	ProgressIndicator,
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from '../FormContainer';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';

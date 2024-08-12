@@ -3,7 +3,7 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { globalFormTasks } from '../globalFormTasks';
 import { StepActions } from '../StepActions';
-import { FormTask1Review } from '../task1/FormTask1Review';
+import { FormTask1Step7Review } from '../task1/FormTask1Step7Review';
 import { FormTask4Container } from './FormTask4Container';
 
 export function FormTask4Step1() {
@@ -20,7 +20,7 @@ export function FormTask4Step1() {
 			{/** Provide business details */}
 			<Stack gap={1.5}>
 				<H2>{globalFormTasks[0].label}</H2>
-				<FormTask1Review headingsLevel="h3" />
+				<FormTask1Step7Review headingsLevel="h3" />
 			</Stack>
 			{/** Provide employee details */}
 			<Stack gap={1.5}>
