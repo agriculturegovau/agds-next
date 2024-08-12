@@ -1,7 +1,7 @@
 import { type DeepPartial } from 'react-hook-form';
 import { z, ZodIssueCode } from 'zod';
-import * as yup from 'yup';
 import {
+	zodArray,
 	zodDateField,
 	zodPhoneFieldOptional,
 	zodReviewDateField,
@@ -160,17 +160,14 @@ export const task1Step5ReviewSchema = z.object({
 
 export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
 
-export const task1Step6FormSchema = yup
-	.object({
-		cuisine: yup
-			.object()
-			.shape({ label: yup.string().required(), value: yup.string().required() })
-			.typeError('Cuisine is required')
-			.default(null),
-	})
-	.required();
+export const task1Step6FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Cuisine is required'
+	),
+});
 
-export type Task1Step6FormSchema = yup.InferType<typeof task1Step6FormSchema>;
+export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;
 
 export type Task1FormState = Completion & {
 	step1: Task1Step1FormSchema & Completion;
@@ -193,10 +190,6 @@ export const task1DefaultFormState: DeepPartial<Task1FormState> = {
 	},
 	step3: {
 		isPostalAddressSameAsStreetAddress: true,
-		completed: false,
-	},
-	step5: {
-		tradingPeriod: { from: undefined, to: undefined },
 		completed: false,
 	},
 };

@@ -17,7 +17,7 @@ import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DeepPartial } from '../../../lib/types';
 import { checkHasMultipleErrors, parseDateField } from '../utils';
-import { ShallowErrors } from '../FormState';
+import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';

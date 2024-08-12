@@ -1,5 +1,4 @@
-// import { type ZodIssueCode, type ZodTypeAny, z } from 'zod';
-import { z, ZodIssueCode } from 'zod';
+import { z, ZodIssueCode, type ZodTypeAny } from 'zod';
 
 // Empty strings do not trigger Zod required field error validation
 export function zodString(message?: string) {
@@ -97,4 +96,30 @@ export function zodTimeField({
 				});
 			}
 		});
+}
+
+export function zodArray<SchemaType extends ZodTypeAny>(
+	schema: SchemaType,
+	message: string
+) {
+	return z
+		.array(schema, { required_error: message })
+		.nonempty({ message: message });
+}
+
+export function zodFile(message: string) {
+	return z.object(
+		{
+			lastModified: z.number().optional(),
+			name: zodStringOptional(),
+			size: z.number().optional(),
+			type: zodStringOptional(),
+			// This is the only value that remains after JSON.stringify() is run when storing values in session storage
+			path: zodString(),
+		},
+		{
+			invalid_type_error: message,
+			required_error: message,
+		}
+	) as unknown as z.ZodType<File>;
 }
