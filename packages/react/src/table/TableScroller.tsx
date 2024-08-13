@@ -238,7 +238,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					isVisible={Boolean(
 						thumbWidthRatio < 1 &&
 							scrollerRef?.current?.scrollLeft &&
-							scrollerRef?.current?.scrollLeft > 0
+							scrollerRef.current.scrollLeft > 0
 					)}
 				/>
 				<Shadow
