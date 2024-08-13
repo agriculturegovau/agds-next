@@ -12,7 +12,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
-import { checkHasMultipleErrors } from '../utils';
+import { hasFormErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -59,7 +59,6 @@ export function FormTask1Step3() {
 					completed: !isSavingBeforeExiting,
 					started: true,
 				},
-				started: true,
 			},
 		});
 	};
@@ -77,7 +76,7 @@ export function FormTask1Step3() {
 			Boolean(item?.message)
 		);
 
-	const hasErrors = checkHasMultipleErrors(errors);
+	const hasErrors = hasFormErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

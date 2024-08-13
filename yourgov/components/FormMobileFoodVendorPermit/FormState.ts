@@ -7,8 +7,8 @@ import {
 import { type Task1StepNumber } from './task1/FormTask1Provider';
 
 export type Completion = {
-	started?: boolean;
 	completed: boolean;
+	started?: boolean;
 };
 
 interface TaskCompletion extends Completion {

@@ -22,12 +22,11 @@ import {
 	type Task1Step1Part2FormSchema,
 } from './FormTask1FormState';
 import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
+import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step1() {
 	const { formState } = useGlobalForm();
 	const stepFormState = formState.task1?.step1;
-	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1/change-details`;
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -93,7 +92,10 @@ export function FormTask1Step1() {
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
-						<ButtonLink href={step1ChangeDetailsPath} variant="text">
+						<ButtonLink
+							href={task1FormSteps[0].items && task1FormSteps[0].items[0].href}
+							variant="text"
+						>
 							Change business owner details
 						</ButtonLink>
 					</Stack>
@@ -136,7 +138,6 @@ function AdditionalDetailsForm() {
 					completed: !isSavingBeforeExiting,
 					started: true,
 				},
-				started: true,
 			},
 		});
 	};

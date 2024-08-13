@@ -24,7 +24,7 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { checkHasMultipleErrors } from '../utils';
+import { hasFormErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1FormSchema,
@@ -78,7 +78,7 @@ export function FormTask1Step1ChangeDetails() {
 		setFocusedError(false);
 	};
 
-	const hasErrors = checkHasMultipleErrors(errors);
+	const hasErrors = hasFormErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {

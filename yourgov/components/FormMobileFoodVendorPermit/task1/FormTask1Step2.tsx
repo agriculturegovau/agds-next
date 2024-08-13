@@ -12,7 +12,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
-import { checkHasMultipleErrors } from '../utils';
+import { hasFormErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -60,7 +60,6 @@ export function FormTask1Step2() {
 					completed: !isSavingBeforeExiting,
 					started: true,
 				},
-				started: true,
 			},
 		});
 	};
@@ -69,7 +68,7 @@ export function FormTask1Step2() {
 		setFocusedError(false);
 	};
 
-	const hasErrors = checkHasMultipleErrors(errors);
+	const hasErrors = hasFormErrors(errors);
 
 	useEffect(() => {
 		if (hasErrors && !focusedError) {
@@ -83,7 +82,7 @@ export function FormTask1Step2() {
 
 	useEffect(() => {
 		if (isSubmitted) trigger();
-	}, [trigger, isSubmitted, showAbn]);
+	}, [isSubmitted, trigger]);
 
 	return (
 		<FormTask1Container

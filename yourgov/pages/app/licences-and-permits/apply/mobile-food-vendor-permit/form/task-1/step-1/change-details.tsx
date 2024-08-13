@@ -14,11 +14,7 @@ const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
 			<DocumentTitle
-				title={
-					task1FormSteps[0] &&
-					task1FormSteps[0].items &&
-					task1FormSteps[0].items[0].label
-				}
+				title={task1FormSteps[0].items && task1FormSteps[0].items[0].label}
 			/>
 			<PageContent>
 				<FormTask1Step1ChangeDetails />

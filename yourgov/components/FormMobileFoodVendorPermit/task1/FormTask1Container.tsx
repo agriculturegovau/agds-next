@@ -8,7 +8,6 @@ import {
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
-import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from '../FormContainer';
 import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
@@ -30,10 +29,8 @@ export function FormTask1Container({
 	shouldFocusTitle = true,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, startTask, getTaskStatus } = useGlobalForm();
+	const { formState, startTask } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
-
-	const isTaskAvailable = getTaskStatus('task1') !== 'blocked';
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
@@ -82,7 +79,7 @@ export function FormTask1Container({
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 						shouldFocusTitle={shouldFocusTitle}
 					>
-						{isTaskAvailable ? children : <CannotStartAlert />}
+						{children}
 					</FormContainer>
 				</Stack>
 			</Column>

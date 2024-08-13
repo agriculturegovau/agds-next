@@ -7,7 +7,6 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
-// add onClick handler that can be used to call `submitStep` function
 export function StepActions({ submitText = 'Save and continue' }) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 

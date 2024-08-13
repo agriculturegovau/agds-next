@@ -35,13 +35,8 @@ export const yupPhoneField = yup
 	.length(10, 'Phone number must be 10 digits');
 
 // Only show the page alert if there is more than 1 error
-export function checkHasMultipleErrors(errors: FieldValues) {
+export function hasFormErrors(errors: FieldValues) {
 	return Object.keys(errors).length > 1;
-}
-
-// If only 1 input on the page, check if that input has an error
-export function checkHasError(errors: FieldValues) {
-	return Object.keys(errors).length > 0;
 }
 
 export const formHomePage =

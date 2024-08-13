@@ -67,7 +67,7 @@ interface ZodTimeFieldProps {
 export function zodTimeField({
 	label,
 	requiredMessage = `${label} is required`,
-	invalidMessage = `${label} is an invalid time`,
+	invalidMessage = `${label} is invalid`,
 }: ZodTimeFieldProps) {
 	return z
 		.object(

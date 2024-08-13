@@ -12,9 +12,11 @@ import {
 import { type Completion } from '../FormState';
 
 export const task1Step1FormSchema = z.object({
-	firstName: zodString('Enter your first name'),
-	lastName: zodString('Enter your last name'),
-	email: zodString('Enter your email').email('Enter a valid email'),
+	firstName: zodString('Enter your given name/s'),
+	lastName: zodString('Enter your family name'),
+	email: zodString('Enter your email address').email(
+		'Enter a valid email address'
+	),
 	contactPhoneNumber: zodPhoneFieldOptional(),
 });
 
@@ -127,7 +129,7 @@ export const task1Step4ReviewSchema = z.object({
 
 export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
 
-const periodActiveMessage = 'Period active start and end date is required';
+const periodActiveMessage = 'Trading start and end date is required';
 
 export const task1Step5FormSchema = z
 	.object({
@@ -163,7 +165,7 @@ export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
 export const task1Step6FormSchema = z.object({
 	cuisine: zodArray(
 		z.object({ label: zodString(), value: zodString() }),
-		'Cuisine is required'
+		'Food types is required'
 	),
 });
 

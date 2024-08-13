@@ -45,7 +45,6 @@ export function FormTask1Step6() {
 					completed: !isSavingBeforeExiting,
 					started: true,
 				},
-				started: true,
 			},
 		});
 	};
