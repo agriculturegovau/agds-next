@@ -5,22 +5,22 @@ import { globalFormTasks } from './globalFormTasks';
 import { useGlobalForm } from './GlobalFormProvider';
 
 export type FormContainerProps = PropsWithChildren<{
-	task: 1 | 2 | 3 | 4;
-	title: string;
-	introduction: string;
 	callToAction?: ReactNode;
 	hideRequiredFieldsMessage?: boolean;
+	introduction: string;
 	shouldFocusTitle?: boolean;
+	task: 1 | 2 | 3 | 4;
+	title: string;
 }>;
 
 export function FormContainer({
+	callToAction,
 	children,
+	hideRequiredFieldsMessage,
+	introduction,
+	shouldFocusTitle = true,
 	task,
 	title,
-	introduction,
-	callToAction,
-	hideRequiredFieldsMessage,
-	shouldFocusTitle = true,
 }: FormContainerProps) {
 	const { formTitle } = useGlobalForm();
 	const titleRef = useRef<HTMLHeadingElement>(null);
