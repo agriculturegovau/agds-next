@@ -99,7 +99,7 @@ export function FormTask1Step4() {
 	return (
 		<FormTask1Container
 			formTitle="Vehicle registration"
-			formIntroduction="What times would you like to operate?"
+			formIntroduction="Add your vehicle registration details."
 		>
 			<Stack
 				as="form"

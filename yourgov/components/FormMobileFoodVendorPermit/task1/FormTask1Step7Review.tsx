@@ -117,7 +117,7 @@ export function FormTask1Step7Review({ headingsLevel }: FormTask1ReviewProps) {
 							state={formState.task1?.step3?.state}
 							postcode={formState.task1?.step3?.postcode}
 						/>
-						{formState.task1?.step3?.isPostalAddressSameAsStreetAddress ? (
+						{formState.task1?.step3?.isPostalAddressSameAsBusinessAddress ? (
 							<FormDefinitionListItem
 								label="Postal address"
 								value="Same as street address"

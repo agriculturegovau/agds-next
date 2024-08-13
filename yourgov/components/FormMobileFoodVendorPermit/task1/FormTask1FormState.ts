@@ -59,7 +59,7 @@ export type Task1Step2FormSchema = z.infer<typeof task1Step2FormSchema>;
 
 export const task1Step3FormSchema = z
 	.object({
-		// street address
+		// business address
 		streetAddress: zodString('Enter your street address'),
 		suburbTownCity: zodString('Enter your suburb, town or city'),
 		state: zodString('Enter your state'),
@@ -67,7 +67,7 @@ export const task1Step3FormSchema = z
 			message: 'An Australian postcode is 4 digits long',
 		}),
 		// postal address
-		isPostalAddressSameAsStreetAddress: z.boolean(),
+		isPostalAddressSameAsBusinessAddress: z.boolean(),
 		postalAddress: zodStringOptional(),
 		postalSuburbTownCity: zodStringOptional(),
 		postalState: zodStringOptional(),
@@ -87,7 +87,7 @@ export const task1Step3FormSchema = z
 			});
 		}
 
-		if (!value.isPostalAddressSameAsStreetAddress) {
+		if (!value.isPostalAddressSameAsBusinessAddress) {
 			if (!value.postalAddress) {
 				addIssue('postalAddress', 'postal address');
 			}
@@ -189,7 +189,7 @@ export const task1DefaultFormState: DeepPartial<Task1FormState> = {
 		completed: false,
 	},
 	step3: {
-		isPostalAddressSameAsStreetAddress: true,
+		isPostalAddressSameAsBusinessAddress: true,
 		completed: false,
 	},
 };

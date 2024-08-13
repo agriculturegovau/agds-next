@@ -70,7 +70,7 @@ export function FormTask1Step1ChangeDetails() {
 		}, 1500);
 	};
 
-	function onDiscardChangesClick() {
+	function onCancelClick() {
 		router.push(step1Path);
 	}
 
@@ -91,6 +91,7 @@ export function FormTask1Step1ChangeDetails() {
 
 	// Focus the title when the user navigates to this page
 	// This usually happens in `FormContainer` component but we can't use that component here
+	// FIXME: Supposedly because of Progress Indicator? I think we can workaround that?
 	useEffect(() => {
 		titleRef.current?.focus();
 	}, []);
@@ -207,8 +208,8 @@ export function FormTask1Step1ChangeDetails() {
 								<Button type="submit" loading={isSaving}>
 									Save changes
 								</Button>
-								<Button variant="tertiary" onClick={onDiscardChangesClick}>
-									Discard changes
+								<Button variant="tertiary" onClick={onCancelClick}>
+									Cancel
 								</Button>
 							</ButtonGroup>
 						</Stack>

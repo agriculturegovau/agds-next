@@ -86,8 +86,8 @@ export function FormTask1Step3() {
 		}
 	}, [hasErrors, focusedError, errors]);
 
-	const isPostalAddressSameAsStreetAddress = watch(
-		'isPostalAddressSameAsStreetAddress'
+	const isPostalAddressSameAsBusinessAddress = watch(
+		'isPostalAddressSameAsBusinessAddress'
 	);
 
 	return (
@@ -123,7 +123,7 @@ export function FormTask1Step3() {
 					</PageAlert>
 				)}
 				<FormStack>
-					<Fieldset legend="Street address">
+					<Fieldset legend="Business address">
 						<FormStack>
 							<TextInput
 								label="Street address"
@@ -178,12 +178,12 @@ export function FormTask1Step3() {
 					<Fieldset legend="Postal address">
 						<FormStack>
 							<Checkbox
-								{...register('isPostalAddressSameAsStreetAddress')}
-								id="isPostalAddressSameAsStreetAddress"
+								{...register('isPostalAddressSameAsBusinessAddress')}
+								id="isPostalAddressSameAsBusinessAddress"
 							>
-								Same as street address
+								Same as business address
 							</Checkbox>
-							{!isPostalAddressSameAsStreetAddress && (
+							{!isPostalAddressSameAsBusinessAddress && (
 								<FormStack>
 									<TextInput
 										label="Postal address"

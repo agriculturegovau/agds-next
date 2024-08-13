@@ -60,7 +60,7 @@ const Page: NextPageWithLayout = () => {
 											<li>names of any employees who will be handling food.</li>
 										</ul>
 										<p>
-											Once you have confirmed business and employee details we
+											Once you have confirmed business and employee details, we
 											will provide a checklist of required documents.
 										</p>
 										<p>
@@ -83,7 +83,7 @@ const Page: NextPageWithLayout = () => {
 									onClose={() => {
 										setDrawIsOpen(false);
 									}}
-									title={'Help'}
+									title="Help"
 									actions={
 										<TextLinkExternal href="https://exports.agriculture.gov.au/help/page/example-reference-article">
 											Open in new window
@@ -111,7 +111,7 @@ const Page: NextPageWithLayout = () => {
 											</ListItem>
 										</UnorderedList>
 										<Text as="p" color="muted">
-											Once you have confirmed business and employee details we
+											Once you have confirmed business and employee details, we
 											will provide a checklist of required documents.
 										</Text>
 										<H2>Vehicle registration details and vehicle plans</H2>
@@ -150,7 +150,6 @@ const Page: NextPageWithLayout = () => {
 								</Drawer>
 							</Stack>
 							<TaskList
-								ordered={true}
 								items={globalFormTasks.map(
 									({ formStateKey, href, label, message }) => ({
 										label,

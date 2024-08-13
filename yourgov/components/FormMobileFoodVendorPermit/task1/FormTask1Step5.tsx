@@ -169,7 +169,6 @@ export function FormTask1Step5() {
 						render={({ field: { ref, ...field } }) => (
 							<TimeInput
 								label="Opening time"
-								hint="For example, 9 am or 2:30 pm - enter 12 pm for midday"
 								id="openingTime"
 								{...field}
 								invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
@@ -184,7 +183,6 @@ export function FormTask1Step5() {
 						render={({ field: { ref, ...field } }) => (
 							<TimeInput
 								label="Closing time"
-								hint="For example, 5 pm or 10:30 pm - enter 12 am for midnight"
 								id="closingTime"
 								{...field}
 								invalid={Boolean(typeCorrectedErrors.closingTime?.message)}

@@ -43,8 +43,8 @@ export function FormTask1Step1() {
 			formIntroduction="Confirm your name and contact details."
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
-			<Stack gap={3} alignItems="flex-start" width="100%">
-				<Stack gap={1.5} width="100%">
+			<Stack gap={3}>
+				<Stack gap={1.5}>
 					<H2>Confirm business owner details</H2>
 					<Details label="How were my details prefilled?" iconBefore>
 						<Prose>
@@ -75,19 +75,19 @@ export function FormTask1Step1() {
 					<Stack gap={1.5} alignItems="flex-start">
 						<SummaryList>
 							<SummaryListItem>
-								<SummaryListItemTerm>First name</SummaryListItemTerm>
+								<SummaryListItemTerm>Given name/s</SummaryListItemTerm>
 								<SummaryListItemDescription>
 									{stepFormState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
-								<SummaryListItemTerm>Last name</SummaryListItemTerm>
+								<SummaryListItemTerm>Family name</SummaryListItemTerm>
 								<SummaryListItemDescription>
 									{stepFormState?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
-								<SummaryListItemTerm>Email</SummaryListItemTerm>
+								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
 									{stepFormState?.email}
 								</SummaryListItemDescription>
@@ -147,7 +147,7 @@ function AdditionalDetailsForm() {
 				<H2>Additional details</H2>
 				<TextInput
 					label="Contact phone number"
-					hint="Any Australian mobile or landline. For example 0444111222 or 02 9988 7766"
+					hint="Any Australian mobile or landline. For example, 0444111222 or 02 9988 7766"
 					id="contactPhoneNumber"
 					{...register('contactPhoneNumber')}
 					message={errors.contactPhoneNumber?.message}
