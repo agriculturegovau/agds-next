@@ -1,4 +1,14 @@
-import { Stack } from '@ag.ds-next/react/box';
+import { useMemo } from 'react';
+import AsyncSelect from 'react-select/async';
+import {
+	List,
+	AutoSizer,
+	CellMeasurer,
+	CellMeasurerCache,
+} from 'react-virtualized';
+import type { MenuListProps, GroupBase } from 'react-select';
+import type { ListRowProps } from 'react-virtualized';
+import { Box, Stack } from '@ag.ds-next/react/box';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -12,6 +22,7 @@ import {
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
 import { Text } from '@ag.ds-next/react/text';
+import { Field } from '@ag.ds-next/react/field';
 // These have been extracted to be reusable across the site
 import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -48,6 +59,10 @@ export default function HomePage() {
 				</HeroBanner>
 
 				<SectionContent>
+					<VirtualisedListExample />
+				</SectionContent>
+
+				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Content heading (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
@@ -64,7 +79,6 @@ export default function HomePage() {
 						</Columns>
 					</Stack>
 				</SectionContent>
-
 				<SectionContent background="bodyAlt">
 					<Columns cols={{ xs: 1, md: 2 }}>
 						<Stack gap={2}>
@@ -88,7 +102,6 @@ export default function HomePage() {
 						/>
 					</Columns>
 				</SectionContent>
-
 				<SectionContent>
 					<Stack gap={1.5}>
 						<H2>Articles heading (H2)</H2>
@@ -126,3 +139,85 @@ export default function HomePage() {
 		</>
 	);
 }
+
+type ListOption = {
+	label: string;
+	value: string;
+};
+
+const VirtualisedList = ({
+	children,
+}: MenuListProps<ListOption, true, GroupBase<ListOption>>) => {
+	const rows = children;
+
+	const cellCache = useMemo(() => {
+		return new CellMeasurerCache({
+			fixedWidth: true,
+			defaultHeight: 30,
+		});
+	}, []);
+
+	if (!Array.isArray(rows)) {
+		// For children like: "Loading" or "No Options" provided by 'react-select'
+		return <>{children}</>;
+	}
+
+	const rowRenderer = ({ key, parent, index, style }: ListRowProps) => (
+		<CellMeasurer
+			cache={cellCache}
+			key={key}
+			columnIndex={0}
+			rowIndex={index}
+			parent={parent}
+		>
+			<Box key={key} style={style}>
+				{rows[index]}
+			</Box>
+		</CellMeasurer>
+	);
+
+	return (
+		<Box height="18.75rem">
+			<AutoSizer>
+				{({ width, height }) => (
+					<List
+						width={width}
+						height={height}
+						deferredMeasurementCache={cellCache}
+						rowHeight={cellCache.rowHeight}
+						rowCount={rows.length}
+						rowRenderer={rowRenderer}
+					/>
+				)}
+			</AutoSizer>
+		</Box>
+	);
+};
+
+const VirtualisedListExample = () => {
+	return (
+		<Box as="form" maxWidth="20rem">
+			<Field hint="" label="Virtualised example" message="" required={false}>
+				<AsyncSelect
+					id="test"
+					isMulti={true}
+					cacheOptions
+					components={{ MenuList: VirtualisedList }}
+					defaultOptions={options}
+					onChange={console.log}
+					styles={{
+						menu: ({ position, fontWeight, ...provided }) => ({
+							...provided,
+							position: 'static',
+						}),
+					}}
+				/>
+			</Field>
+		</Box>
+	);
+};
+
+const options = Array.from({ length: 3000 }).map((_, index) => ({
+	label: `Item ${index}`,
+	value: index.toString(),
+}));
