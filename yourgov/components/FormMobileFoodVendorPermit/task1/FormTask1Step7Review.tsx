@@ -50,11 +50,11 @@ export function FormTask1Step7Review({ headingsLevel }: FormTask1ReviewProps) {
 				{validation.step1.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
-							label="Given name/s"
+							label="First name"
 							value={formState.task1?.step1?.firstName}
 						/>
 						<FormDefinitionListItem
-							label="Family name"
+							label="Last name"
 							value={formState.task1?.step1?.lastName}
 						/>
 						<FormDefinitionListItem
@@ -149,7 +149,7 @@ export function FormTask1Step7Review({ headingsLevel }: FormTask1ReviewProps) {
 							value={formState.task1?.step4?.registrationNumber}
 						/>
 						<FormDefinitionListItemDate
-							label="Vehicle registration expiry"
+							label="Registration expiry date"
 							value={formState.task1?.step4?.registrationExpiry}
 						/>
 					</FormDefinitionList>

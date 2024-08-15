@@ -74,13 +74,13 @@ export function FormTask1Step1() {
 					<Stack gap={1.5} alignItems="flex-start">
 						<SummaryList>
 							<SummaryListItem>
-								<SummaryListItemTerm>Given name/s</SummaryListItemTerm>
+								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
 									{stepFormState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
-								<SummaryListItemTerm>Family name</SummaryListItemTerm>
+								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
 									{stepFormState?.lastName}
 								</SummaryListItemDescription>

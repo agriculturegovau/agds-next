@@ -88,7 +88,7 @@ export function FormTask1Step4() {
 						render={({ field: { ref, ...field } }) => (
 							<DatePicker
 								inputRef={ref}
-								label="Vehicle registration expiry"
+								label="Registration expiry date"
 								{...field}
 								id="registrationExpiry"
 								invalid={Boolean(errors.registrationExpiry?.message)}

@@ -72,10 +72,14 @@ export function GettingStartedForm() {
 				<h2 id="what-you-will-need">What you will need</h2>
 				<p>To complete this application you will need to provide:</p>
 				<ul>
+					<li>business owner details</li>
+					<li>business type</li>
+					<li>business address</li>
 					<li>vehicle registration details and vehicle plans</li>
-					<li>operational plan of management</li>
+					<li>trading times</li>
+					<li>food served</li>
+					<li>details of any employees who will be handling food</li>
 					<li>food safety supervisor certificate</li>
-					<li>names of any employees who will be handling food.</li>
 				</ul>
 				<p>
 					Once you have confirmed business and employee details, we will provide

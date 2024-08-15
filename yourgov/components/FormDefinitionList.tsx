@@ -59,7 +59,7 @@ export function FormDefinitionListItemAddress({
 	);
 }
 
-const DATE_FORMAT = 'do MMMM yyyy';
+const DATE_FORMAT = 'd MMMM yyyy';
 
 type FormDefinitionListItemDateProps = {
 	label: string;

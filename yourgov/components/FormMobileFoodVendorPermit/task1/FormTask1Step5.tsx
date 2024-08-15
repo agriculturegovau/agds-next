@@ -2,6 +2,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
@@ -99,34 +100,46 @@ export function FormTask1Step5() {
 							/>
 						)}
 					/>
-					<Controller
-						control={control}
-						name="openingTime"
-						render={({ field: { ref, ...field } }) => (
-							<TimeInput
-								label="Opening time"
-								id="openingTime"
-								{...field}
-								invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
-								message={typeCorrectedErrors.openingTime?.message}
-								required
-							/>
+					<GroupedFields
+						legend="Hours of operation"
+						hideOptionalLabel
+						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
+						field1Invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
+						field2Invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+					>
+						{({ field1Props, field2Props }) => (
+							<>
+								<Controller
+									control={control}
+									name="openingTime"
+									render={({ field: { ref, ...field } }) => (
+										<TimeInput
+											label="Opening time"
+											id="openingTime"
+											{...field}
+											{...field1Props}
+											message={typeCorrectedErrors.openingTime?.message}
+											required
+										/>
+									)}
+								/>
+								<Controller
+									control={control}
+									name="closingTime"
+									render={({ field: { ref, ...field } }) => (
+										<TimeInput
+											label="Closing time"
+											id="closingTime"
+											{...field}
+											{...field2Props}
+											message={typeCorrectedErrors.closingTime?.message}
+											required
+										/>
+									)}
+								/>
+							</>
 						)}
-					/>
-					<Controller
-						control={control}
-						name="closingTime"
-						render={({ field: { ref, ...field } }) => (
-							<TimeInput
-								label="Closing time"
-								id="closingTime"
-								{...field}
-								invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
-								message={typeCorrectedErrors.closingTime?.message}
-								required
-							/>
-						)}
-					/>
+					</GroupedFields>
 				</FormStack>
 				<StepActions />
 			</Stack>

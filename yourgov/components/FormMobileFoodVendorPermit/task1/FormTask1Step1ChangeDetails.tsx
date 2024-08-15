@@ -126,7 +126,7 @@ export function FormTask1Step1ChangeDetails() {
 							<FormStack>
 								{showErrorAlert && <FormPageAlert errors={errors} />}
 								<TextInput
-									label="Given name/s"
+									label="First name"
 									autoComplete="given-name"
 									{...register('firstName')}
 									id="firstName"
@@ -136,7 +136,7 @@ export function FormTask1Step1ChangeDetails() {
 									required
 								/>
 								<TextInput
-									label="Family name"
+									label="Last name"
 									autoComplete="family-name"
 									{...register('lastName')}
 									id="lastName"

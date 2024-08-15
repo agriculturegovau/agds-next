@@ -27,6 +27,7 @@ import { type NextPageWithLayout } from '../../../../../_app';
 const Page: NextPageWithLayout = () => {
 	const { formTitle, getTaskStatus } = useGlobalForm();
 	const [drawIsOpen, setDrawIsOpen] = useState(false);
+	const { formState } = useGlobalForm();
 
 	return (
 		<>
@@ -41,7 +42,7 @@ const Page: NextPageWithLayout = () => {
 							<Stack gap={2}>
 								<PageTitle
 									title={formTitle}
-									introduction="Seek approval for your food van or truck to operate in our area."
+									introduction={`Seek approval for your ${formState.type} to operate in our area.`}
 									callToAction={
 										<Text as="p" color="muted">
 											Takes around 20 minutes.
@@ -54,10 +55,16 @@ const Page: NextPageWithLayout = () => {
 											To complete this application you will need to provide:
 										</p>
 										<ul>
+											<li>business owner details</li>
+											<li>business type</li>
+											<li>business address</li>
 											<li>vehicle registration details and vehicle plans</li>
-											<li>operational plan of management</li>
+											<li>trading times</li>
+											<li>food served</li>
+											<li>
+												details of any employees who will be handling food
+											</li>
 											<li>food safety supervisor certificate</li>
-											<li>names of any employees who will be handling food.</li>
 										</ul>
 										<p>
 											Once you have confirmed business and employee details, we

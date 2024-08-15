@@ -29,7 +29,7 @@ export function FormTask1Step7() {
 	return (
 		<FormTask1Container
 			formTitle="Confirm and submit"
-			formIntroduction="Check and confirm all details on this page."
+			formIntroduction="Check and confirm all details on this page to complete this task."
 			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (

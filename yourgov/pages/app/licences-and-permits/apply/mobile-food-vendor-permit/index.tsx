@@ -3,7 +3,9 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Details } from '@ag.ds-next/react/details';
 import { PageContent } from '@ag.ds-next/react/content';
+import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import {
@@ -47,7 +49,21 @@ const Page: NextPageWithLayout = () => {
 								introduction="If you are preparing and or handling food for retail sale from a vehicle or stall, you must have approval to operate on public areas."
 								callToAction={
 									<Details label="More information about mobile food vending business types">
-										Need content.
+										<Prose>
+											<p>
+												Regulating a mobile food vending business is essential
+												to ensure public health, safety, and fairness in the
+												marketplace. Such regulations help maintain high
+												standards of food hygiene, preventing contamination and
+												ensuring that vendors adhere to safe food handling
+												practices.
+											</p>
+											<p>
+												<TextLink href="#learn-more">
+													Learn more about mobile food business types
+												</TextLink>
+											</p>
+										</Prose>
 									</Details>
 								}
 							/>

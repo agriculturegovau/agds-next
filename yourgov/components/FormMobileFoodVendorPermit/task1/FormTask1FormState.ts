@@ -12,8 +12,8 @@ import {
 import { type Completion } from '../FormState';
 
 export const task1Step1FormSchema = z.object({
-	firstName: zodString('Enter your given name/s'),
-	lastName: zodString('Enter your family name'),
+	firstName: zodString('Enter your first name'),
+	lastName: zodString('Enter your last name'),
 	email: zodString('Enter your email address').email(
 		'Enter a valid email address'
 	),
@@ -118,7 +118,7 @@ export const task1Step4FormSchema = z.object({
 		6,
 		'Registration number can not be longer than 6 characters'
 	),
-	registrationExpiry: zodDateField('Vehicle registration expiry is required'),
+	registrationExpiry: zodDateField('Registration expiry date is required'),
 });
 
 // FIXME: I don't like having to do this, but I can't get dates and error messages to work reliably across forms and reviews
