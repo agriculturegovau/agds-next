@@ -1,8 +1,4 @@
-import {
-	type SubmitHandler,
-	type SubmitErrorHandler,
-	useForm,
-} from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,8 +8,6 @@ import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H1 } from '@ag.ds-next/react/heading';
-import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
 import {
 	ProgressIndicator,
 	type ProgressIndicatorItemStatus,
@@ -21,10 +15,9 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
-import { hasFormErrors } from '../utils';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	task1Step1FormSchema,
@@ -35,10 +28,6 @@ import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
 export function FormTask1Step1ChangeDetails() {
 	const router = useRouter();
 	const { formState, setFormState } = useGlobalForm();
-
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		register,
@@ -56,7 +45,6 @@ export function FormTask1Step1ChangeDetails() {
 	const step1Path = task1FormSteps[0].href;
 
 	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
-		setFocusedError(false);
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
@@ -73,18 +61,7 @@ export function FormTask1Step1ChangeDetails() {
 		router.push(step1Path);
 	}
 
-	const onError: SubmitErrorHandler<Task1Step1FormSchema> = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = hasFormErrors(errors);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -143,33 +120,11 @@ export function FormTask1Step1ChangeDetails() {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit, onError)}
+							onSubmit={handleSubmit(onSubmit)}
 							noValidate
 						>
 							<FormStack>
-								{hasErrors && (
-									<PageAlert
-										ref={errorRef}
-										tone="error"
-										title="There is a problem"
-										tabIndex={-1}
-									>
-										<Text as="p">
-											Please correct the following fields and try again
-										</Text>
-										<UnorderedList>
-											{Object.entries(errors).map(([key, value]) => (
-												<ListItem key={key}>
-													<TextLink href={`#${key}`} onClick={scrollToField}>
-														{Array.isArray(value)
-															? value[0].message
-															: value.message}
-													</TextLink>
-												</ListItem>
-											))}
-										</UnorderedList>
-									</PageAlert>
-								)}
+								{showErrorAlert && <FormPageAlert errors={errors} />}
 								<TextInput
 									label="Given name/s"
 									autoComplete="given-name"

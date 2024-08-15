@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DatePicker } from '@ag.ds-next/react/date-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { useScrollToField } from '@ag.ds-next/react/field';
 import { DeepPartial } from '../../../lib/types';
-import { hasFormErrors, parseDateField } from '../utils';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors, parseDateField } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
@@ -36,10 +31,6 @@ export function FormTask1Step4() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
-
 	const {
 		control,
 		register,
@@ -58,7 +49,6 @@ export function FormTask1Step4() {
 		if (isSavingBeforeExiting) {
 			return;
 		}
-		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
@@ -73,61 +63,16 @@ export function FormTask1Step4() {
 		});
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
-	const flatErrors = Object.entries(errors)
-		.map(([key, value]) => {
-			if ('message' in value) return { key, message: value.message };
-		})
-		.filter((item): item is { key: string; message: string } =>
-			Boolean(item?.message)
-		);
-
-	const hasErrors = hasFormErrors(errors);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
 		<FormTask1Container
 			formTitle="Vehicle registration"
 			formIntroduction="Add your vehicle registration details."
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Text as="p">
-								Please correct the following fields and try again
-							</Text>
-							<UnorderedList>
-								{flatErrors.map((error) => (
-									<ListItem key={error.key}>
-										<TextLink href={`#${error.key}`} onClick={scrollToField}>
-											{error.message}
-										</TextLink>
-									</ListItem>
-								))}
-							</UnorderedList>
-						</PageAlert>
-					)}
+					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
 						label="Vehicle registration number"
 						hint="Enter a plate number, maximum 6 characters. For example ABC123."

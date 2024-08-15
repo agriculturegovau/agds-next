@@ -1,18 +1,14 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Radio } from '@ag.ds-next/react/radio';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { useScrollToField } from '@ag.ds-next/react/field';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
-import { hasFormErrors } from '../utils';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -25,10 +21,6 @@ import {
 export function FormTask1Step2() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
-
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		watch,
@@ -49,7 +41,6 @@ export function FormTask1Step2() {
 		if (isSavingBeforeExiting) {
 			return;
 		}
-		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
@@ -64,18 +55,7 @@ export function FormTask1Step2() {
 		});
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	const hasErrors = hasFormErrors(errors);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	const showAbn = watch('businessStructure') === 'Business';
 	const showAcn = watch('businessStructure') === 'Company';
@@ -89,34 +69,9 @@ export function FormTask1Step2() {
 			formTitle="Business details"
 			formIntroduction="Your business details must match your business registration."
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title="There is a problem"
-							tabIndex={-1}
-						>
-							<Text as="p">
-								Please correct the following fields and try again
-							</Text>
-							<UnorderedList>
-								{Object.entries(errors).map(([key, value]) => (
-									<ListItem key={key}>
-										<TextLink href={`#${key}`} onClick={scrollToField}>
-											{value.message}
-										</TextLink>
-									</ListItem>
-								))}
-							</UnorderedList>
-						</PageAlert>
-					)}
+					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
 						id="businessName"
 						label="Business or company name"

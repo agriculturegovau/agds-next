@@ -1,22 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-	Controller,
-	SubmitHandler,
-	type FieldError,
-	useForm,
-} from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
 import { TimeInput } from '@ag.ds-next/react/time-input';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { useScrollToField } from '@ag.ds-next/react/field';
 import { DeepPartial } from '../../../lib/types';
-import { hasFormErrors, parseDateField } from '../utils';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors, parseDateField } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -42,9 +32,6 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 export function FormTask1Step5() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		control,
@@ -65,7 +52,6 @@ export function FormTask1Step5() {
 		if (isSavingBeforeExiting) {
 			return;
 		}
-		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
@@ -80,66 +66,16 @@ export function FormTask1Step5() {
 		});
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
-	const flatErrors = Object.entries(errors)
-		.map(([key, value]) => {
-			if ('message' in value)
-				return { key, message: (value as FieldError).message };
-			if ('from' in value) return { key, message: value.from?.message };
-			if ('to' in value) return { key, message: value.to?.message };
-		})
-		.filter((item): item is { key: string; message: string } =>
-			Boolean(item?.message)
-		);
-
-	const hasErrors = hasFormErrors(errors);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
 		<FormTask1Container
 			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{hasErrors && (
-						<PageAlert
-							ref={errorRef}
-							tone="error"
-							title={
-								<PageAlertTitle as="h2">There is a problem</PageAlertTitle>
-							}
-							tabIndex={-1}
-						>
-							<Text as="p">
-								Please correct the following fields and try again
-							</Text>
-							<UnorderedList>
-								{flatErrors.map((error) => (
-									<ListItem key={error.key}>
-										<TextLink href={`#${error.key}`} onClick={scrollToField}>
-											{error.message}
-										</TextLink>
-									</ListItem>
-								))}
-							</UnorderedList>
-						</PageAlert>
-					)}
+					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<Controller
 						control={control}
 						name="tradingPeriod"

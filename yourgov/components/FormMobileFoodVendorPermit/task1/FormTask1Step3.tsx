@@ -1,18 +1,13 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useEffect, useRef, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { useScrollToField } from '@ag.ds-next/react/field';
-import { Text } from '@ag.ds-next/react/text';
-import { hasFormErrors } from '../utils';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
@@ -25,10 +20,6 @@ import {
 export function FormTask1Step3() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
-
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		watch,
@@ -48,7 +39,6 @@ export function FormTask1Step3() {
 		if (isSavingBeforeExiting) {
 			return;
 		}
-		setFocusedError(false);
 		await submitStep();
 		setFormState({
 			...formState,
@@ -63,27 +53,7 @@ export function FormTask1Step3() {
 		});
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
-
-	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
-	const flatErrors = Object.entries(errors)
-		.map(([key, value]) => {
-			if ('message' in value) return { key, message: value.message };
-		})
-		.filter((item): item is { key: string; message: string } =>
-			Boolean(item?.message)
-		);
-
-	const hasErrors = hasFormErrors(errors);
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	const isPostalAddressSameAsBusinessAddress = watch(
 		'isPostalAddressSameAsBusinessAddress'
@@ -94,33 +64,8 @@ export function FormTask1Step3() {
 			formTitle="Business address"
 			formIntroduction="Add your business address."
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
-				{hasErrors && (
-					<PageAlert
-						ref={errorRef}
-						tabIndex={-1}
-						tone="error"
-						title={<PageAlertTitle as="h2">There is a problem</PageAlertTitle>}
-					>
-						<Text as="p">
-							Please correct the following fields and try again
-						</Text>
-						<UnorderedList>
-							{flatErrors.map((error) => (
-								<ListItem key={error.key}>
-									<TextLink href={`#${error.key}`} onClick={scrollToField}>
-										{error.message}
-									</TextLink>
-								</ListItem>
-							))}
-						</UnorderedList>
-					</PageAlert>
-				)}
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+				{showErrorAlert && <FormPageAlert errors={errors} />}
 				<FormStack>
 					<Fieldset legend="Business address">
 						<FormStack>

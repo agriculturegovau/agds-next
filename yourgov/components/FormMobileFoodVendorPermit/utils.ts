@@ -34,8 +34,7 @@ export const yupPhoneField = yup
 	})
 	.length(10, 'Phone number must be 10 digits');
 
-// Only show the page alert if there is more than 1 error
-export function hasFormErrors(errors: FieldValues) {
+export function hasMultipleErrors(errors: FieldValues) {
 	return Object.keys(errors).length > 1;
 }
 
