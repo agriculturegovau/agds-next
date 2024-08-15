@@ -82,8 +82,8 @@ const boilerplateAppTemplate = (content: string) => `
 	/>
 	<AppLayoutSidebar
 		items={[
-			[{ label: 'Label', href: '#', icon: WebsiteIcon }, { label: 'Label', href: '#', icon: WebsiteIcon } ],
-			[{ label: 'Label', icon: ExitIcon }],
+			[{ label: 'Label', href: '#', icon: WebsiteIcon }, { label: 'Label', href: '#', icon: AvatarIcon } ],
+			[{ label: 'Label', href: '#', icon: ExitIcon }],
 		]}
 	/>
 	<AppLayoutContent>
