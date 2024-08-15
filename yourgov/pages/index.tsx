@@ -44,7 +44,7 @@ export default function Page() {
 						</HeroBannerSubtitle>
 						<ButtonGroup>
 							<ButtonLink href="/not-found" variant="primary">
-								Create account
+								Create an account
 							</ButtonLink>
 							<ButtonLink href="/sign-in" variant="secondary">
 								Sign in
@@ -94,7 +94,7 @@ export default function Page() {
 						<Stack
 							gap={1.5}
 							alignItems="flex-start"
-							paddingBottom={{ xs: 0, sm: 3, md: 4 }}
+							paddingBottom={{ xs: 0, md: 4 }}
 							paddingTop={{ xs: 3, md: 4 }}
 						>
 							<H2>Intending to make, serve or sell alcohol?</H2>
@@ -115,7 +115,7 @@ export default function Page() {
 							justifySelf="center"
 							maxWidth="100%"
 							paddingBottom={{ xs: 0, sm: 3, md: 4 }}
-							paddingTop={{ xs: 3, md: 4 }}
+							paddingTop={{ md: 4 }}
 							src={withBasePath('/farm-small.png')}
 						/>
 					</Columns>
