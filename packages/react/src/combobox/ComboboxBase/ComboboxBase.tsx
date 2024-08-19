@@ -1,4 +1,10 @@
-import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
+import {
+	Fragment,
+	type ReactNode,
+	type Ref,
+	type CSSProperties,
+	type FocusEventHandler,
+} from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
@@ -52,6 +58,39 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputRef?: Ref<HTMLInputElement>;
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	onFocus?: FocusEventHandler<HTMLInputElement>;
+};
+
+const generateHighlightStyles = (
+	inputValue: string
+): Record<string, CSSProperties> => {
+	const styles: Record<string, CSSProperties> = {};
+	if (!inputValue) return styles;
+
+	const characters = inputValue.toLowerCase().split('');
+
+	characters.forEach((_, index) => {
+		const baseSelector = characters
+			.slice(0, index + 1)
+			.map((char, i) =>
+				i === 0 ? `[data-char="${char}"]` : `+ [data-char="${char}"]`
+			)
+			.join(' ');
+
+		const hasSelector = characters
+			.slice(index + 1)
+			.map((char) => `+ [data-char="${char}"]`)
+			.join(' ');
+
+		const fullSelector = hasSelector
+			? `${baseSelector}:has(${hasSelector})`
+			: baseSelector;
+
+		styles[fullSelector] = {
+			fontWeight: 'bold',
+		};
+	});
+
+	return styles;
 };
 
 export function ComboboxBase<Option extends DefaultComboboxOption>({
@@ -123,7 +162,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			{(a11yProps) => (
 				<div
 					{...popover.getReferenceProps()}
-					css={{ position: 'relative', maxWidth }}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...generateHighlightStyles(combobox.inputValue),
+					}}
 				>
 					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input

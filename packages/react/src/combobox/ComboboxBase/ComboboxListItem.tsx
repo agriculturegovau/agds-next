@@ -1,6 +1,5 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { boxPalette, packs } from '../../core';
-import { Flex } from '../../flex';
+import { boxPalette, mapSpacing, packs, tokens } from '../../core';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;
@@ -21,16 +20,19 @@ export const ComboboxListItem = forwardRef<
 	ref
 ) {
 	return (
-		<Flex
+		<li
 			ref={ref}
-			as="li"
-			paddingX={1}
-			paddingY={0.75}
-			borderBottom
-			borderColor="muted"
-			alignItems="center"
-			gap={0.75}
 			css={{
+				alignItems: 'center',
+				borderBottomStyle: 'solid',
+				borderBottomWidth: tokens.borderWidth.sm,
+				borderColor: boxPalette.borderMuted,
+				display: 'flex',
+				gap: mapSpacing(0.75),
+				paddingBottom: mapSpacing(0.75),
+				paddingLeft: mapSpacing(1),
+				paddingRight: mapSpacing(1),
+				paddingTop: mapSpacing(0.75),
 				...(isInteractive
 					? {
 							cursor: 'pointer',
@@ -46,6 +48,6 @@ export const ComboboxListItem = forwardRef<
 			{...props}
 		>
 			{children}
-		</Flex>
+		</li>
 	);
 });
