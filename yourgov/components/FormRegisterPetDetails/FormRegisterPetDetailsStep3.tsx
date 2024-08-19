@@ -26,6 +26,8 @@ export const FormRegisterPetDetailsStep3 = () => {
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState,
 		resolver: yupResolver(formSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

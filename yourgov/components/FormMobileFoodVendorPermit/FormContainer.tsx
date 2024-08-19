@@ -9,6 +9,8 @@ export type FormContainerProps = PropsWithChildren<{
 	title: string;
 	introduction: string;
 	callToAction?: ReactNode;
+	hideRequiredFieldsMessage?: boolean;
+	shouldFocusTitle?: boolean;
 }>;
 
 export function FormContainer({
@@ -17,14 +19,18 @@ export function FormContainer({
 	title,
 	introduction,
 	callToAction,
+	hideRequiredFieldsMessage,
+	shouldFocusTitle = true,
 }: FormContainerProps) {
 	const { formTitle } = useGlobalForm();
 	const titleRef = useRef<HTMLHeadingElement>(null);
 
 	// Focus the title of the current step as the user navigates between form steps
 	useEffect(() => {
-		titleRef.current?.focus();
-	}, []);
+		if (shouldFocusTitle) {
+			titleRef.current?.focus();
+		}
+	}, [shouldFocusTitle]);
 
 	return (
 		<Stack gap={3} width="100%">
@@ -34,6 +40,7 @@ export function FormContainer({
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={callToAction}
+				hideRequiredFieldsMessage={hideRequiredFieldsMessage}
 			/>
 			{children}
 		</Stack>

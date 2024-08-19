@@ -48,9 +48,10 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<FormSchema>({
-		reValidateMode: 'onChange',
 		defaultValues: {},
 		resolver: yupResolver(formSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

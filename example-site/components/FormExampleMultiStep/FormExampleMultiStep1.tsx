@@ -45,6 +45,8 @@ export const FormExampleMultiStep1 = () => {
 	} = useForm<FormSchema>({
 		defaultValues: stepFormState ?? { files: [] },
 		resolver: yupResolver(formSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = (data) => {

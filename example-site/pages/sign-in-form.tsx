@@ -45,6 +45,8 @@ const SignInForm = () => {
 		formState: { errors },
 	} = useForm<FormSchema>({
 		resolver: yupResolver(formSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<FormSchema> = async (data) => {

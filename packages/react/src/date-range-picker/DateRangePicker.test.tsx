@@ -142,6 +142,8 @@ function DateRangePickerInsideForm({
 	} = useForm<FormSchema>({
 		defaultValues: { dateRange: { from: undefined, to: undefined } },
 		resolver: yupResolver(formSchema(required)),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 	return (
 		<form

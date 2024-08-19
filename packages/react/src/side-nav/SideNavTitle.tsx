@@ -1,17 +1,7 @@
-import { type ElementType, type PropsWithChildren } from 'react';
-import { Box, type BoxProps } from '../box';
+import { Box } from '../box';
 import { packs, useLinkComponent } from '../core';
 import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
-
-export type SideNavTitleProps = PropsWithChildren<{
-	as?: ElementType;
-	/** The CSS class name generated from the `css` prop. */
-	className?: string;
-	display?: BoxProps['display'];
-	href?: string;
-	id?: string;
-	isCurrentPage?: boolean;
-}>;
+import { type SideNavTitleProps } from './types';
 
 export function SideNavTitle({
 	as,

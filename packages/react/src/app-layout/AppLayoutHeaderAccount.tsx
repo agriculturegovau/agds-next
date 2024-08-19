@@ -2,8 +2,8 @@ import { Avatar } from '../avatar';
 import { Flex } from '../flex';
 import { mq, packs, useLinkComponent } from '../core';
 import { Text } from '../text';
-import type { AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccountDropdown } from './AppLayoutHeaderAccountDropdown';
+import { type AppLayoutHeaderProps } from './types';
 
 export type AppLayoutHeaderAccountProps = NonNullable<
 	AppLayoutHeaderProps['accountDetails']

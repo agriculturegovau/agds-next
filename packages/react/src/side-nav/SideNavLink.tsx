@@ -9,8 +9,8 @@ import {
 } from '../core';
 import { Flex } from '../flex';
 import { ChevronDownIcon, ChevronRightIcon } from '../icon';
-import { SideNavLinkProps } from './SideNavListItem';
 import { useLinkListDepth } from './context';
+import { type SideNavLinkProps } from './types';
 
 export const SideNavLink = ({
 	hasSubLevelItemsIndicator,

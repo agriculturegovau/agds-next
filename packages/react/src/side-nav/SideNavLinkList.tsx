@@ -1,15 +1,9 @@
 import { useCallback, useMemo } from 'react';
 import { SideNavUnorderedList } from './SideNavUnorderedList';
 import { SideNavListItem } from './SideNavListItem';
-import { SideNavProps } from './SideNav';
 import { hasSubLevelActiveItem } from './utils';
 import { SideNavLink } from './SideNavLink';
-
-export type SideNavLinkListProps = {
-	activePath: string | undefined;
-	items: SideNavProps['items'];
-	subLevelVisible: SideNavProps['subLevelVisible'];
-};
+import { type SideNavLinkListProps, type SideNavProps } from './types';
 
 type ItemWithIsActive = Omit<SideNavLinkListProps['items'][number], 'items'> & {
 	isActive?: boolean;

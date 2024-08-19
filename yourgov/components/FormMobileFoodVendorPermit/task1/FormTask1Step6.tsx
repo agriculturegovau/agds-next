@@ -1,19 +1,19 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Combobox } from '@ag.ds-next/react/combobox';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormActions } from './FormActions';
+import { useGlobalForm } from '../GlobalFormProvider';
+import { StepActions } from '../StepActions';
+import { ShallowErrors } from '../types';
 import { FormTask1Container } from './FormTask1Container';
-import { useGlobalForm } from './GlobalFormProvider';
-import { useFormTask1Context } from './FormTask1Provider';
 import {
-	task1Step6FormSchema,
 	Task1Step6FormSchema,
+	task1Step6FormSchema,
 } from './FormTask1FormState';
+import { useFormTask1Context } from './FormTask1Provider';
 
 export function FormTask1Step6() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
 
 	const {
@@ -22,14 +22,31 @@ export function FormTask1Step6() {
 		formState: { errors },
 	} = useForm<Task1Step6FormSchema>({
 		defaultValues: formState.task1?.step6,
-		resolver: yupResolver(task1Step6FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step6FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
+	const typeCorrectedErrors = errors as ShallowErrors<Task1Step6FormSchema>;
+
 	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step6: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step6: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+				started: true,
+			},
 		});
 	};
 
@@ -37,27 +54,28 @@ export function FormTask1Step6() {
 		<FormTask1Container
 			formTitle="Food served"
 			formIntroduction="What type of food will you be serving?"
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
 					control={control}
 					name="cuisine"
 					render={({ field: { ref, ...field } }) => (
-						<Combobox
-							label="Cuisine"
-							hint="Start typing to see results"
+						<ComboboxMulti
+							label="Select food types"
+							hint="Start typing to see results. You can add multiple selections."
 							inputRef={ref}
 							options={cuisineOptions}
 							required
 							{...field}
 							id="cuisine"
-							invalid={Boolean(errors.cuisine?.message)}
-							message={errors.cuisine?.message}
+							invalid={Boolean(typeCorrectedErrors.cuisine?.message)}
+							message={typeCorrectedErrors.cuisine?.message}
+							maxWidth="xl"
+							block={false}
 						/>
 					)}
 				/>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);
