@@ -41,11 +41,11 @@ export function hasMultipleErrors(errors: FieldValues) {
 export const formHomePage =
 	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
 
-interface GetTaskNavigationUrlParams {
+type GetTaskNavigationUrlParams = {
 	steps: Array<FormStep>;
 	currentStepIndex: number;
 	taskHighlight: number;
-}
+};
 
 export function getTaskCompletionUrl({
 	currentStepIndex,

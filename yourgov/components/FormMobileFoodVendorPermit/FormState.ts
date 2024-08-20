@@ -11,9 +11,9 @@ export type Completion = {
 	started?: boolean;
 };
 
-interface TaskCompletion extends Completion {
+type TaskCompletion = Completion & {
 	completedRecently: boolean;
-}
+};
 
 // TODO Create task 2 of the form
 export type Task2FormState = {
@@ -53,7 +53,7 @@ export const defaultFormState: DeepPartial<FormState> = {
 
 export type TaskKey = 'task1' | 'task2' | 'task3' | 'task4';
 
-export interface FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> {
+export type FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> = {
 	label: string;
 	href: string;
 	formStateKey: StepNumber;
@@ -61,7 +61,7 @@ export interface FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> {
 		href: string;
 		label: string;
 	}>;
-}
+};
 
 export type AnyStepNumber = Task1StepNumber; // | Task2StepNumber | Task3StepNumber;
 

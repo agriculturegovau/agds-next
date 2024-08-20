@@ -1,7 +1,7 @@
 import { type FieldError } from 'react-hook-form';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 
@@ -34,8 +34,7 @@ export function FormPageAlert({
 	return (
 		<PageAlert
 			focusOnMount
-			tabIndex={-1}
-			title="There is a problem"
+			title={<PageAlertTitle as="h2">There is a problem</PageAlertTitle>}
 			tone="error"
 		>
 			<Text as="p">Please correct the following fields and try again</Text>

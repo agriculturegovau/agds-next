@@ -92,7 +92,7 @@ export function FormTask1Step2() {
 					/>
 
 					<ControlGroup
-						id="checkbox"
+						id="businessStructure"
 						label="Business structure"
 						invalid={Boolean(errors.businessStructure)}
 						message={errors.businessStructure?.message}

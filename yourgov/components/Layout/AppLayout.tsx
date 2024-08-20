@@ -132,18 +132,18 @@ function AppLayoutHeader({ user }: { user: User }) {
 				dropdown: (
 					<DropdownMenuPanel palette="light">
 						<DropdownMenuGroup label="Businesses">
-							{linkedBusinesses.map((b) => (
+							{linkedBusinesses.map((linkedBusiness) => (
 								<DropdownMenuItemRadio
-									key={b.name}
+									key={linkedBusiness.name}
 									checked={
 										selectedBusiness?.name
-											? selectedBusiness.name === b.name
+											? selectedBusiness.name === linkedBusiness.name
 											: false
 									}
-									secondaryText={`ABN ${b.abn}`}
-									onClick={() => onBusinessClick(b)}
+									secondaryText={`ABN ${linkedBusiness.abn}`}
+									onClick={() => onBusinessClick(linkedBusiness)}
 								>
-									{b.name}
+									{linkedBusiness.name}
 								</DropdownMenuItemRadio>
 							))}
 						</DropdownMenuGroup>

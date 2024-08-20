@@ -39,7 +39,7 @@ export function FormTask1Container({
 		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (stateStep?.completed) return 'done';
-		// The user has save and existed
+		// The user has save and exited
 		if (stateStep?.started) return 'started';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
