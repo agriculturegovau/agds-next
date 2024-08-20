@@ -11,9 +11,9 @@ export const TaskListHeading = ({
 }) => {
 	return (
 		<Stack gap={1}>
-			<H2>Task list</H2>
+			<H2>Complete these tasks</H2>
 			<Text fontSize="sm" color="muted">
-				{stepsCompleted} of {totalSteps} steps completed
+				{stepsCompleted} of {totalSteps} tasks completed
 			</Text>
 		</Stack>
 	);
