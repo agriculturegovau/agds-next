@@ -19,7 +19,7 @@ You should only clone this repo if you are looking to contribute to it, such asâ
 ## Contributing
 
 > [!IMPORTANT]  
-> Do not use agency data when contributing to this open-source repository.
+> Do not use agency data when working in any Github repository.
 
 ### System dependencies
 
