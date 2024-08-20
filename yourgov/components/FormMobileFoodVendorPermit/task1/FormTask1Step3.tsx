@@ -4,6 +4,7 @@ import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { FormPageAlert } from '../FormPageAlert';
@@ -67,7 +68,7 @@ export function FormTask1Step3() {
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				{showErrorAlert && <FormPageAlert errors={errors} />}
 				<FormStack>
-					<Fieldset legend="Business address">
+					<Fieldset legend={<H2>Business address</H2>}>
 						<FormStack>
 							<TextInput
 								label="Street address"
@@ -85,6 +86,7 @@ export function FormTask1Step3() {
 								invalid={Boolean(errors.suburbTownCity?.message)}
 								message={errors.suburbTownCity?.message}
 								required
+								maxWidth="lg"
 							/>
 							<Select
 								label="State or territory"
@@ -119,7 +121,9 @@ export function FormTask1Step3() {
 							/>
 						</FormStack>
 					</Fieldset>
-					<Fieldset legend="Postal address">
+				</FormStack>
+				<FormStack>
+					<Fieldset legend={<H2>Postal address</H2>}>
 						<FormStack>
 							<Checkbox
 								{...register('isPostalAddressSameAsBusinessAddress')}
@@ -145,6 +149,7 @@ export function FormTask1Step3() {
 										invalid={Boolean(errors.postalSuburbTownCity?.message)}
 										message={errors.postalSuburbTownCity?.message}
 										required
+										maxWidth="lg"
 									/>
 									<Select
 										label="State or territory"

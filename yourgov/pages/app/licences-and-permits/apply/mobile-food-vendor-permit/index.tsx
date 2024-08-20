@@ -1,18 +1,20 @@
 import { Fragment, ReactElement } from 'react';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
+import { H1 } from '@ag.ds-next/react/heading';
+import { Text } from '@ag.ds-next/react/text';
 import { Details } from '@ag.ds-next/react/details';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
-import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
+import { HelpCallout } from '../../../../../components/HelpCallout';
+import { HelpReference } from '../../../../../components/FormMobileFoodVendorPermit/HelpReference';
 import {
 	GettingStartedForm,
 	GlobalFormProvider,
 } from '../../../../../components/FormMobileFoodVendorPermit';
-import { HelpCallout } from '../../../../../components/HelpCallout';
 import { PageTitle } from '../../../../../components/PageTitle';
 import type { NextPageWithLayout } from '../../../../_app';
 
@@ -59,9 +61,56 @@ const Page: NextPageWithLayout = () => {
 												practices.
 											</p>
 											<p>
-												<TextLink href="#learn-more">
-													Learn more about mobile food business types
-												</TextLink>
+												<HelpReference
+													drawerContent={
+														<Stack gap={2}>
+															<H1>What you need to apply for a permit</H1>
+															<Text as="p" fontSize="md" color="muted">
+																Regulating a mobile food vending business is
+																crucial for several reasons, primarily to
+																safeguard public health, ensure safety, and
+																maintain fairness within the marketplace. These
+																regulations play a pivotal role in upholding
+																high standards of food hygiene, which is vital
+																for preventing foodborne illnesses and
+																contamination. By enforcing strict guidelines
+																for food preparation, storage, and handling,
+																these regulations help ensure that vendors
+																follow best practices and adhere to sanitary
+																protocols.
+															</Text>
+															<Text as="p" fontSize="md" color="muted">
+																Moreover, regulations help create a level
+																playing field in the food vending industry. They
+																set clear standards and requirements that all
+																vendors must meet, which prevents unfair
+																competition and ensures that no one gains an
+																advantage by cutting corners on health and
+																safety measures. This promotes fairness and
+																transparency in the market, allowing consumers
+																to make informed choices and trust that the food
+																they purchase is safe and of high quality.
+															</Text>
+															<Text as="p" fontSize="md" color="muted">
+																In addition to these health and safety benefits,
+																regulations can also address operational aspects
+																such as permitting, zoning, and waste
+																management. This ensures that mobile food
+																vendors operate within designated areas, do not
+																cause disruptions, and manage waste responsibly,
+																contributing to the overall cleanliness and
+																orderliness of public spaces. Overall, effective
+																regulation is essential for protecting the
+																public, supporting fair competition, and
+																enhancing the overall experience for both
+																vendors and consumers.
+															</Text>
+															<HelpCallout />
+														</Stack>
+													}
+													linkContent="Learn more about mobile food business types"
+													linkHref="https://exports.agriculture.gov.au/help/page/example-reference-article"
+												/>
 											</p>
 										</Prose>
 									</Details>

@@ -106,6 +106,10 @@ export function FormTask1Step5() {
 						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
 						field1Invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
 						field2Invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+						message={
+							typeCorrectedErrors.openingTime?.message ||
+							typeCorrectedErrors.closingTime?.message
+						}
 					>
 						{({ field1Props, field2Props }) => (
 							<>
@@ -118,7 +122,6 @@ export function FormTask1Step5() {
 											id="openingTime"
 											{...field}
 											{...field1Props}
-											message={typeCorrectedErrors.openingTime?.message}
 											required
 										/>
 									)}
@@ -132,7 +135,6 @@ export function FormTask1Step5() {
 											id="closingTime"
 											{...field}
 											{...field2Props}
-											message={typeCorrectedErrors.closingTime?.message}
 											required
 										/>
 									)}

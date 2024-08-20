@@ -4,7 +4,7 @@ import { Avatar } from '@ag.ds-next/react/src/avatar';
 import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
-import { Columns } from '@ag.ds-next/react/columns';
+import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Flex } from '@ag.ds-next/react/flex';
 import { H1, H2, Heading } from '@ag.ds-next/react/heading';
@@ -15,10 +15,10 @@ import { Tag } from '@ag.ds-next/react/tags';
 import { Text } from '@ag.ds-next/react/text';
 import { AppLayout } from '../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
+import { HelpCallout } from '../../components/HelpCallout';
 import { useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { useAuth } from '../../lib/useAuth';
 import type { NextPageWithLayout } from '../_app';
-import { HelpCallout } from '../../components/HelpCallout';
 
 const Page: NextPageWithLayout = () => {
 	const searchParams = useSearchParams();
@@ -99,12 +99,12 @@ const Page: NextPageWithLayout = () => {
 							</Text>
 						</Stack>
 						<Columns as="ul" cols={[1, 2]}>
-							{linkedBusinesses.map((b, idx) => (
+							{linkedBusinesses.map((linkedBusinesses, idx) => (
 								<Card as="li" key={idx}>
 									<CardInner>
 										<Stack gap={1}>
 											<Flex gap={0.5}>
-												<Tag>{b.abn}</Tag>
+												<Tag>{linkedBusinesses.abn}</Tag>
 												<Text>ABN</Text>
 											</Flex>
 											<Heading as="h2" type="h3">
@@ -112,12 +112,12 @@ const Page: NextPageWithLayout = () => {
 													href={businessHref}
 													// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 													// @ts-ignore
-													onClick={() => setSelectedBusiness(b)}
+													onClick={() => setSelectedBusiness(linkedBusinesses)}
 												>
-													{b.name}
+													{linkedBusinesses.name}
 												</CardLink>
 											</Heading>
-											<Text>Role: {b.role}</Text>
+											<Text>Role: {linkedBusinesses.role}</Text>
 										</Stack>
 									</CardInner>
 								</Card>
@@ -127,7 +127,11 @@ const Page: NextPageWithLayout = () => {
 							Link another business
 						</CallToActionLink>
 					</Stack>
-					<HelpCallout />
+					<Columns cols={{ xs: 1, sm: 4 }}>
+						<Column columnSpan={{ xs: 1, sm: 3 }}>
+							<HelpCallout />
+						</Column>
+					</Columns>
 				</Stack>
 			</PageContent>
 		</>

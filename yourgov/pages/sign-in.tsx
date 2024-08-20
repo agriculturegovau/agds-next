@@ -8,7 +8,6 @@ import { Button } from '@ag.ds-next/react/button';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { FormStack } from '@ag.ds-next/react/form-stack';
-import { H1 } from '@ag.ds-next/react/heading';
 import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
@@ -21,6 +20,7 @@ import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { DocumentTitle } from '../components/DocumentTitle';
 import { mockUser } from '../data/mockUsers';
+import { PageTitle } from '../components/PageTitle';
 import { SiteLayout } from '../components/Layout/SiteLayout';
 import { useAuth } from '../lib/useAuth';
 import { zodString } from '../lib/zodUtils';
@@ -45,10 +45,10 @@ export default function Page() {
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
 								<Stack gap={0.5}>
-									<H1>Sign in to yourGov</H1>
-									<Text as="p" fontSize="md" color="muted">
-										Access government services, quickly and securely.
-									</Text>
+									<PageTitle
+										title="Sign in to yourGov"
+										introduction="Access government services, quickly and securely"
+									/>
 								</Stack>
 								<SignInForm onSubmit={onSubmit} />
 								<Divider />
