@@ -45,7 +45,7 @@ export function GlobalFormProvider({
 
 	const [hasSynced, formState, setFormState] = useSessionFormState(
 		'FormMobileFoodVendorPermit',
-		defaultFormState as DeepPartial<FormState>
+		defaultFormState
 	);
 
 	const formTitle = `Apply for a ${formState.type} permit`;

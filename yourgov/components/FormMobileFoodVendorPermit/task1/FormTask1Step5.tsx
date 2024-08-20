@@ -19,8 +19,8 @@ import {
 } from './FormTask1FormState';
 
 function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
-	const from = step?.tradingPeriod?.from as string | Date | undefined;
-	const to = step?.tradingPeriod?.from as string | Date | undefined;
+	const from = step?.tradingPeriod?.from;
+	const to = step?.tradingPeriod?.to;
 	return {
 		...step,
 		tradingPeriod: {

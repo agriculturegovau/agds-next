@@ -1,6 +1,5 @@
 import { Fragment, PropsWithChildren } from 'react';
 import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -63,7 +62,7 @@ const DATE_FORMAT = 'd MMMM yyyy';
 
 type FormDefinitionListItemDateProps = {
 	label: string;
-	value: unknown;
+	value?: Date;
 };
 
 export function FormDefinitionListItemDate({
@@ -74,14 +73,7 @@ export function FormDefinitionListItemDate({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{value ? (
-					<Fragment>
-						{format(
-							typeof value === 'string' ? parseISO(value) : (value as Date),
-							DATE_FORMAT
-						)}
-					</Fragment>
-				) : null}
+				{value && <Fragment>{format(value, DATE_FORMAT)}</Fragment>}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
@@ -89,9 +81,9 @@ export function FormDefinitionListItemDate({
 
 type FormDefinitionListItemDateRangeProps = {
 	fromLabel: string;
-	fromValue?: unknown;
+	fromValue?: Date;
 	toLabel: string;
-	toValue?: unknown;
+	toValue?: Date;
 };
 
 export function FormDefinitionListItemDateRange({
@@ -105,21 +97,13 @@ export function FormDefinitionListItemDateRange({
 			<SummaryListItem>
 				<SummaryListItemTerm>{fromLabel}</SummaryListItemTerm>
 				<SummaryListItemDescription>
-					{format(
-						typeof fromValue === 'string'
-							? parseISO(fromValue)
-							: (fromValue as Date),
-						DATE_FORMAT
-					)}
+					{fromValue && format(fromValue, DATE_FORMAT)}
 				</SummaryListItemDescription>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>{toLabel}</SummaryListItemTerm>
 				<SummaryListItemDescription>
-					{format(
-						typeof toValue === 'string' ? parseISO(toValue) : (toValue as Date),
-						DATE_FORMAT
-					)}
+					{toValue && format(toValue, DATE_FORMAT)}
 				</SummaryListItemDescription>
 			</SummaryListItem>
 		</>
