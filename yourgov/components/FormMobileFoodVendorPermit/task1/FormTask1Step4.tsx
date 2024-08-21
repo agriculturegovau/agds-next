@@ -17,10 +17,7 @@ import {
 } from './FormTask1FormState';
 
 function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
-	const registrationExpiry = step?.registrationExpiry as
-		| string
-		| Date
-		| undefined;
+	const registrationExpiry = step?.registrationExpiry;
 	return {
 		...step,
 		registrationExpiry: parseDateField(registrationExpiry),
