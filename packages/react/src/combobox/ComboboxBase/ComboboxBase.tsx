@@ -69,13 +69,16 @@ const generateHighlightStyles = (
 	const characters = inputValue.toLowerCase().split('');
 
 	characters.forEach((_, index) => {
+		// When typing "abc"
+		// This generates things like [data-char="a"]+[data-char="b"]+[data-char="c"]
+		// to ensure we select consecutive elements
 		const baseSelector = characters
 			.slice(0, index + 1)
-			.map((char, i) =>
-				i === 0 ? `[data-char="${char}"]` : `+ [data-char="${char}"]`
-			)
-			.join(' ');
+			.map((char) => `[data-char="${char}"]`)
+			.join(' + ');
 
+		// This generates things like [data-char="a"]:has(+[data-char="b"]+[data-char="c"])
+		// to ensure we select earlier elements whose later siblings match
 		const hasSelector = characters
 			.slice(index + 1)
 			.map((char) => `+ [data-char="${char}"]`)
