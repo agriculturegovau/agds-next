@@ -1,9 +1,8 @@
 import {
 	Fragment,
+	type FocusEventHandler,
 	type ReactNode,
 	type Ref,
-	type CSSProperties,
-	type FocusEventHandler,
 } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { packs } from '../../core';
@@ -11,6 +10,7 @@ import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import {
+	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
 	validateMaxWidth,
@@ -50,7 +50,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 	// input props
 	'aria-describedby'?: string;
@@ -58,42 +58,6 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputRef?: Ref<HTMLInputElement>;
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	onFocus?: FocusEventHandler<HTMLInputElement>;
-};
-
-const generateHighlightStyles = (
-	inputValue: string
-): Record<string, CSSProperties> => {
-	const styles: Record<string, CSSProperties> = {};
-	if (!inputValue) return styles;
-
-	const characters = inputValue.toLowerCase().split('');
-
-	characters.forEach((_, index) => {
-		// When typing "abc"
-		// This generates things like [data-char="a"]+[data-char="b"]+[data-char="c"]
-		// to ensure we select consecutive elements
-		const baseSelector = characters
-			.slice(0, index + 1)
-			.map((char) => `[data-char="${char}"]`)
-			.join(' + ');
-
-		// This generates things like [data-char="a"]:has(+[data-char="b"]+[data-char="c"])
-		// to ensure we select earlier elements whose later siblings match
-		const hasSelector = characters
-			.slice(index + 1)
-			.map((char) => `+ [data-char="${char}"]`)
-			.join(' ');
-
-		const fullSelector = hasSelector
-			? `${baseSelector}:has(${hasSelector})`
-			: baseSelector;
-
-		styles[fullSelector] = {
-			fontWeight: 'bold',
-		};
-	});
-
-	return styles;
 };
 
 export function ComboboxBase<Option extends DefaultComboboxOption>({
@@ -119,9 +83,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem = (item, inputValue) => (
-		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
-	),
+	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
@@ -234,7 +196,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item, combobox.inputValue)}
+													{renderItem(item)}
 												</ComboboxListItem>
 											))
 										) : (

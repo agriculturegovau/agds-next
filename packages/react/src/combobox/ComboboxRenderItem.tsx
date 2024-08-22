@@ -5,8 +5,7 @@ import { fontGrid } from '../core/utils/fontGrid';
 export type ComboboxRenderItemProps = {
 	/** The label of the item. */
 	itemLabel: string;
-	// TODO: Deprecate
-	/** The value of the Combobox/Autocomplete text input. */
+	/** @deprecated Unused. Individual items no longer need to know the value of the Combobox/Autocomplete text input. */
 	inputValue?: string;
 	/** Supporting text for the item. */
 	tertiaryText?: ReactNode;
@@ -22,11 +21,16 @@ const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
 
 export function ComboboxRenderItem({
 	itemLabel,
+	inputValue,
 	beforeElement,
 	endElement,
 	secondaryText,
 	tertiaryText,
 }: ComboboxRenderItemProps) {
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production' && inputValue) {
+		console.warn('Combobbox: The `inputValue` prop is now unused.');
+	}
 	return (
 		<Fragment>
 			{beforeElement ? (

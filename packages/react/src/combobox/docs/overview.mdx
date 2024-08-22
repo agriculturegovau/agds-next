@@ -270,10 +270,9 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 			value={value}
 			onChange={onChange}
 			options={NAME_OPTIONS}
-			renderItem={(item, inputValue) => (
+			renderItem={(item) => (
 				<ComboboxRenderItem
 					itemLabel={item.label}
-					inputValue={inputValue}
 					secondaryText={`Role: ${item.jobTitle}`}
 					tertiaryText={`Job: ${item.status}`}
 					beforeElement={
