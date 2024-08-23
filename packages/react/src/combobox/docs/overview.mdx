@@ -292,3 +292,51 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 	);
 };
 ```
+
+## Handling large datasets
+
+While we don’t recommend extremely large datasets, the Combobox components should comfortably handle many options and cater for most use-cases. However, you can test the performance of your dataset size using the example below.
+
+```jsx live
+() => {
+	const [numOfOptions, setNumOfOptions] = React.useState(
+		COUNTRY_OPTIONS.length
+	);
+	const [options, setOptions] = React.useState(COUNTRY_OPTIONS);
+	const [value, setValue] = React.useState(null);
+
+	const generateOptions = (number) => {
+		const result = [];
+		for (let i = 0; i < number; i++) {
+			const countryIndex = i % COUNTRY_OPTIONS.length;
+			const countryName = `${COUNTRY_OPTIONS[countryIndex].label} ${
+				Math.floor(i / COUNTRY_OPTIONS.length) + 1
+			}`;
+			result.push({ label: countryName, value: countryName });
+		}
+		return result;
+	};
+	return (
+		<FormStack>
+			<TextInput
+				label="Number of options"
+				type="number"
+				value={numOfOptions}
+				onChange={(event) => {
+					setNumOfOptions(event.target.valueAsNumber);
+				}}
+			/>
+			<Button onClick={() => setOptions(generateOptions(numOfOptions))}>
+				Set
+			</Button>
+			<Combobox
+				label="Select country"
+				hint="Start typing to see results"
+				value={value}
+				onChange={setValue}
+				options={options}
+			/>
+		</FormStack>
+	);
+};
+```
