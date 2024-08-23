@@ -53,34 +53,8 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 }
 
 /**
- * @param optionLabel The display label of the option (eg. "Australia", "New Zealand" etc)
  * @param inputValue The value of the text input (eg. "Aust")
  */
-export function splitLabel(optionLabel: string, inputValue: string) {
-	if (!inputValue) return [optionLabel];
-
-	const iinputValue = inputValue.toLowerCase();
-	const ilabel = optionLabel.toLowerCase();
-	const results = [];
-
-	let i = 0;
-
-	while (i < optionLabel.length) {
-		const part = optionLabel.slice(i);
-		const ipart = ilabel.slice(i);
-		const x = ipart.indexOf(iinputValue);
-		if (x === -1) {
-			results.push(part);
-			return results;
-		}
-		if (x !== 0) results.push(part.slice(0, x));
-		results.push(part.slice(x, x + iinputValue.length));
-		i += x + iinputValue.length;
-	}
-
-	return results;
-}
-
 export function generateHighlightStyles(
 	inputValue?: string
 ): Record<string, CSSProperties> {
@@ -91,14 +65,14 @@ export function generateHighlightStyles(
 
 	characters.forEach((_, index) => {
 		// When typing "abc"
-		// This generates things like [data-char="a"]+[data-char="b"]+[data-char="c"]
+		// This generates things like [data-char="a"] + [data-char="b"] + [data-char="c"]
 		// to ensure we select consecutive elements
 		const baseSelector = characters
 			.slice(0, index + 1)
 			.map((char) => `[data-char="${char}"]`)
 			.join(' + ');
 
-		// This generates things like [data-char="a"]:has(+[data-char="b"]+[data-char="c"])
+		// This generates things like [data-char="a"]:has(+ [data-char="b"] + [data-char="c"])
 		// to ensure we select earlier elements whose later siblings match
 		const hasSelector = characters
 			.slice(index + 1)
