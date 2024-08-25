@@ -295,16 +295,12 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 
 ## Handling large datasets
 
-While we don’t recommend extremely large datasets, the Combobox components should comfortably handle many options and cater for most use-cases. However, you can test the performance of your dataset size using the example below.
+While we don’t recommend putting extremely large datasets as Combobox options, all of the Combobox components should comfortably handle many options and cater for most, standard use-cases.
+
+If you would like to see how Combobox performs with various option lengths, you can use the example below.
 
 ```jsx live
 () => {
-	const [numOfOptions, setNumOfOptions] = React.useState(
-		COUNTRY_OPTIONS.length
-	);
-	const [options, setOptions] = React.useState(COUNTRY_OPTIONS);
-	const [value, setValue] = React.useState(null);
-
 	const generateOptions = (number) => {
 		const result = [];
 		for (let i = 0; i < number; i++) {
@@ -316,24 +312,33 @@ While we don’t recommend extremely large datasets, the Combobox components sho
 		}
 		return result;
 	};
+	const [numOfOptions, setNumOfOptions] = React.useState(
+		COUNTRY_OPTIONS.length
+	);
+	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
+	const [comboboxValue, setComboboxValue] = React.useState(null);
+
+	React.useEffect(() => {
+		setOptions(generateOptions(numOfOptions));
+	}, [numOfOptions]);
+
 	return (
 		<FormStack>
 			<TextInput
-				label="Number of options"
-				type="number"
-				value={numOfOptions}
+				label="Number of country options"
+				maxWidth="sm"
 				onChange={(event) => {
 					setNumOfOptions(event.target.valueAsNumber);
 				}}
+				required
+				type="number"
+				value={numOfOptions}
 			/>
-			<Button onClick={() => setOptions(generateOptions(numOfOptions))}>
-				Set
-			</Button>
 			<Combobox
 				label="Select country"
 				hint="Start typing to see results"
-				value={value}
-				onChange={setValue}
+				value={comboboxValue}
+				onChange={setComboboxValue}
 				options={options}
 			/>
 		</FormStack>
