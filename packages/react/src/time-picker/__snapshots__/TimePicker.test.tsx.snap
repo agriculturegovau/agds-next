@@ -187,6 +187,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
               aria-atomic="false"
               aria-label="Loading"
               class="css-1urm0li-boxStyles"
+              role="status"
             >
               <span
                 aria-hidden="true"
