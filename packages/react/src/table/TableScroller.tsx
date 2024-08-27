@@ -2,7 +2,6 @@ import {
 	type ReactNode,
 	useCallback,
 	useEffect,
-	useLayoutEffect,
 	useRef,
 	useState,
 } from 'react';
@@ -18,9 +17,9 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const thumbRef = useRef<HTMLButtonElement>(null);
 	const scrollerRef = useRef<HTMLDivElement>(null);
-	const scrollerAriaLabel = useRef('');
 	const mousePos = useRef({ x: 0, y: 0 });
 
+	const [scrollerLabel, setScrollerLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
@@ -208,10 +207,12 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 	const hasScroll = thumbWidthRatio !== 1;
 
-	useLayoutEffect(() => {
-		scrollerAriaLabel.current = `Table ${
-			scrollerRef.current?.querySelector('caption')?.textContent || ''
-		}`;
+	useEffect(() => {
+		setScrollerLabel(
+			`Table ${
+				scrollerRef.current?.querySelector('caption')?.textContent || ''
+			}`
+		);
 	}, [scrollerRef]);
 
 	return (
@@ -223,7 +224,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 			}}
 		>
 			<Box
-				aria-label={scrollerAriaLabel.current}
+				aria-label={scrollerLabel}
 				as="section"
 				css={{
 					msOverflowStyle: 'none',
