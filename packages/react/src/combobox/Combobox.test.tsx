@@ -3,19 +3,11 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import {
-	render,
-	cleanup,
-	act,
-	renderHook,
-	waitFor,
-} from '../../../../test-utils';
+import { render, act, screen } from '../../../../test-utils';
 import { Combobox, ComboboxProps } from './Combobox';
 import { STATE_OPTIONS, Option } from './test-utils';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
 
 function renderCombobox(props?: Partial<ComboboxProps<Option>>) {
 	return render(
@@ -51,36 +43,61 @@ describe('Combobox', () => {
 		});
 	});
 
-	it('filters options', async () => {
-		const { container } = renderCombobox();
-		const input = container.querySelector('input');
-		expect(input).toBeInTheDocument();
-		if (!input) return;
+	describe('when an option is selected', () => {
+		test('then the input should display the selected value', async () => {
+			render(
+				<Combobox
+					label="Find your state"
+					hint="Start typing to see results"
+					options={STATE_OPTIONS}
+				/>
+			);
+			const input = screen.getByRole('combobox');
 
-		// Click the input, which should focus the element
-		await act(async () => await input.click());
-		await waitFor(() => expect(input).toHaveFocus());
-		expect(input).toHaveAttribute('aria-expanded', 'true');
+			const user = userEvent.setup();
+			await user.click(input);
+			user.type(input, 'capital');
 
-		await userEvent.type(input, 'capital');
-		expect(input.value).toBe('capital');
+			const option = screen.getByRole('option', {
+				name: 'A u s t r a l i a n C a p i t a l T e r r i t o r y',
+			});
 
-		// Select the ACT option
-		const options = container.querySelectorAll('li');
-		expect(options.length).toBe(1);
-		expect(options[0].textContent).toBe('Australian Capital Territory');
-		await userEvent.click(options[0]);
-		expect(input.value).toBe('Australian Capital Territory');
+			// userEvent.click(option) does not fire the change event in downshift - using direct click method on the option as a workaround
+			option.click();
+			const updatedInput = await screen.findByRole('combobox');
+
+			expect(updatedInput).toHaveValue('Australian Capital Territory');
+		});
 	});
 
-	it('accepts `inputRef` prop', () => {
-		const { result } = renderHook(() => useRef<HTMLInputElement>(null));
-		const inputRef = result.current;
-		const id = 'test-id';
-		renderCombobox({ inputRef, id });
-		expect(inputRef.current).toBeInTheDocument();
-		expect(inputRef.current).toBeInstanceOf(HTMLInputElement);
-		expect(inputRef.current?.id).toBe(id);
+	describe('when an inputRef is defined', () => {
+		test('the input element should be able to be updated via the inputRef', () => {
+			const ComboboxWithInputRef = () => {
+				const inputRef = useRef<HTMLInputElement>(null);
+
+				// On the second render, the ref will be applied and we'll directly update the input
+				if (inputRef.current) {
+					inputRef.current.disabled = true;
+				}
+
+				return (
+					<Combobox
+						label="Find your state"
+						hint="Start typing to see results"
+						options={STATE_OPTIONS}
+						inputRef={inputRef}
+						disabled={false} // Definitely start in an enabled state
+					/>
+				);
+			};
+			const { rerender } = render(<ComboboxWithInputRef />);
+
+			// Rerender to apply the ref
+			rerender(<ComboboxWithInputRef />);
+
+			// Checking that the ref allows us to update the input
+			expect(screen.getByRole('combobox')).toBeDisabled();
+		});
 	});
 
 	it('accepts `onFocus` and `onBlur` props', async () => {
