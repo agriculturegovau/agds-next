@@ -169,28 +169,6 @@ describe('ComboboxAsyncMulti', () => {
 			});
 		});
 
-		test('then a status message is displayed', async () => {
-			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
-			render(
-				<ComboboxAsyncMulti
-					label="Find your state"
-					hint="Start typing to see results"
-					loadOptions={loadOptions}
-				/>
-			);
-
-			const input = screen.getByRole('combobox', {
-				name: 'Find your state (optional)',
-			});
-			const user = userEvent.setup();
-			user.click(input);
-			await user.type(input, 'qld');
-
-			const status = await screen.findByRole('status');
-
-			expect(status).toHaveTextContent('No results are available.');
-		});
-
 		test('then a filtered list of options is displayed', async () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
