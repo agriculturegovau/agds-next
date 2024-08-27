@@ -19,7 +19,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
 
-	const [scrollerLabel, setScrollerLabel] = useState('');
+	const [scrollerAriaLabel, setScrollerAriaLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
@@ -208,7 +208,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const hasScroll = thumbWidthRatio !== 1;
 
 	useEffect(() => {
-		setScrollerLabel(
+		setScrollerAriaLabel(
 			`Table ${
 				scrollerRef.current?.querySelector('caption')?.textContent || ''
 			}`
@@ -224,7 +224,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 			}}
 		>
 			<Box
-				aria-label={scrollerLabel}
+				aria-label={scrollerAriaLabel}
 				as="section"
 				css={{
 					msOverflowStyle: 'none',
