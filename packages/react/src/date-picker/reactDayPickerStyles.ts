@@ -106,7 +106,7 @@ export const reactDayPickerStyles = {
 				height: '0.5rem',
 				position: 'absolute',
 				width: '0.5rem',
-				...highContrastOutlineStyles
+				...highContrastOutlineStyles,
 			},
 		},
 	},
@@ -146,8 +146,8 @@ export const reactDayPickerStyles = {
 				inset: 0,
 				pointerEvents: 'none',
 				position: 'absolute',
-				...highContrastOutlineStyles
-			}
+				...highContrastOutlineStyles,
+			},
 		},
 } as const;
 
