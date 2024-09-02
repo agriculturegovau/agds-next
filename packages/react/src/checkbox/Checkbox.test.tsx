@@ -31,6 +31,10 @@ describe('Checkbox', () => {
 		const { container } = renderCheckbox();
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
@@ -66,6 +70,10 @@ describe('Checkbox', () => {
 			const { container } = renderCheckbox({ invalid: true });
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
 		});
@@ -86,6 +94,10 @@ describe('Checkbox', () => {
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
 		});
