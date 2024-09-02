@@ -5,7 +5,7 @@ import {
 	useEffect,
 	useRef,
 } from 'react';
-import { mergeRefs } from '../core';
+import { mergeRefs, useId } from '../core';
 import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { CheckboxInput } from './CheckboxInput';
@@ -56,6 +56,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		},
 		forwardedRef
 	) {
+		const id = useCheckboxId(props.id);
 		const ref = useRef<HTMLInputElement>(null);
 		const controlGroupContext = useControlGroupContext();
 
@@ -85,7 +86,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		const checked = indeterminate ? false : checkedProp;
 
 		return (
-			<CheckboxContainer disabled={disabled}>
+			<CheckboxContainer disabled={disabled} htmlFor={id}>
 				<CheckboxInput
 					aria-checked={indeterminate ? 'mixed' : undefined}
 					aria-describedby={
@@ -95,6 +96,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 					aria-required={required}
 					checked={checked}
 					disabled={disabled}
+					id={id}
 					name={name}
 					ref={mergeRefs([forwardedRef, ref])}
 					type="checkbox"
@@ -113,3 +115,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		);
 	}
 );
+
+function useCheckboxId(idProp?: string) {
+	const autoId = useId(idProp);
+	return `checkbox-${autoId}`;
+}
