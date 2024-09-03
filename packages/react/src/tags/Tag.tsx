@@ -52,6 +52,10 @@ const TagRemoveButton = ({
 			aria-label={ariaLabel}
 			as={BaseButton}
 			css={{
+				marginBottom: `-0.125rem`,
+				marginLeft: '-0.25rem',
+				marginRight: '-0.25rem',
+				marginTop: `-0.125rem`,
 				svg: {
 					color: boxPalette.foregroundAction,
 					display: 'block',
@@ -63,10 +67,10 @@ const TagRemoveButton = ({
 				},
 			}}
 			focusRingFor="keyboard"
-			height="1rem"
+			height="1.5rem"
 			justifyContent="center"
 			onClick={onClick}
-			width="1rem"
+			width="1.5rem"
 		>
 			<CloseIcon size="sm" />
 		</Flex>
