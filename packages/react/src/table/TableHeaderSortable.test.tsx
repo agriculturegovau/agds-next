@@ -10,6 +10,7 @@ import {
 	TableHeaderSortableProps,
 	TableSortDirection,
 } from './TableHeaderSortable';
+import { TableWrapper } from './TableWrapper';
 
 expect.extend(toHaveNoViolations);
 
@@ -17,13 +18,15 @@ afterEach(cleanup);
 
 function renderTableHeaderSortable(props: TableHeaderSortableProps) {
 	return render(
-		<Table>
-			<TableHead>
-				<TableRow>
-					<TableHeaderSortable {...props}>Example</TableHeaderSortable>
-				</TableRow>
-			</TableHead>
-		</Table>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeaderSortable {...props}>Example</TableHeaderSortable>
+					</TableRow>
+				</TableHead>
+			</Table>
+		</TableWrapper>
 	);
 }
 
@@ -41,6 +44,9 @@ describe('TableHeaderSortable', () => {
 				const { container } = renderTableHeaderSortable({ sort });
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
+					rules: {
+						'no-inline-style': 'off',
+					},
 				});
 				expect(await axe(container)).toHaveNoViolations();
 			});

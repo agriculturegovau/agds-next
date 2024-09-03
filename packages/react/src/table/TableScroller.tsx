@@ -6,12 +6,21 @@ import {
 	useState,
 } from 'react';
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 import { Stack } from '../stack';
+import { ScrollerContext, ScrollerContextType } from './ScrollerContext';
+
+export const SCROLL_OVERLAY_Z_INDEX = 1;
 
 export type TableScrollerProps = { children: ReactNode };
+
+// Frozen columns need a minimum container size to prevent unreacheable/difficult to read table data.
+export const maxContainerBreakpointForFrozenColumns = `@container (max-width: ${
+	tokens.breakpoint.md - 1
+}px)`;
+export const minContainerBreakpointForFrozenColumns = `@container (min-width: ${tokens.breakpoint.md}px)`;
 
 export function TableScroller({ children }: TableScrollerProps) {
 	const trackRef = useRef<HTMLDivElement>(null);
@@ -21,8 +30,10 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
-	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+	const [thumbWidthRatio, setThumbWidthRatio] = useState(1);
 	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
+	const [overlayOffsets, setOverlayOffsets] =
+		useState<ScrollerContextType['overlayOffsets']>();
 
 	const repositionThumb = useCallback(() => {
 		if (!scrollerRef?.current) {
@@ -204,140 +215,212 @@ export function TableScroller({ children }: TableScrollerProps) {
 		}
 	};
 
+	const scrollerHeight = scrollerRef.current?.scrollHeight;
+	const isScrolledToEnd =
+		scrollerRef.current &&
+		scrollerRef.current.scrollLeft ===
+			scrollerRef.current.scrollWidth - scrollerRef.current.clientWidth;
+
 	return (
-		<Stack
-			gap={0.5}
-			css={{
-				position: 'relative',
-				width: '100%',
+		<ScrollerContext.Provider
+			value={{
+				setOverlayOffsets,
 			}}
 		>
-			<Box
+			<Stack
+				maxWidth="xs"
+				gap={0.5}
 				css={{
-					msOverflowStyle: 'none',
-					overflowX: 'auto',
-					scrollbarWidth: 'none',
-					WebkitOverflowScrolling: 'touch',
+					containerType: 'inline-size',
+					position: 'relative',
 					width: '100%',
-					'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
-						{
-							display: 'none',
-						},
 				}}
-				focusRingFor="keyboard"
-				onScroll={repositionThumb}
-				ref={scrollerRef}
-				tabIndex={0}
-			>
-				{children}
-			</Box>
-			<Flex
-				background="body"
-				alignItems="center"
-				css={{
-					bottom: 0,
-					display: thumbWidthRatio === 1 ? 'none' : undefined,
-					left: 0,
-					position: 'sticky',
-					right: 0,
-				}}
-				flexWrap="nowrap"
-				gap={0.25}
 			>
 				<Box
-					aria-hidden
-					as="button"
+					data-table-left-overlay="true"
 					css={{
-						appearance: 'none',
-						background: 'none',
-						cursor: 'default',
-						height: pxToRem(24),
-						width: pxToRem(24),
+						left: overlayOffsets?.left,
+						pointerEvents: 'none',
+						position: 'fixed',
+						zIndex: SCROLL_OVERLAY_Z_INDEX,
+						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
+
+						// Switch between single line at full scroll and overlay shadow at partial scroll
+						...(scrollerRef.current?.scrollLeft === 0
+							? {
+									background: boxPalette.borderMuted,
+									width: pxToRem(1),
+							  }
+							: {
+									background: `linear-gradient(to right, rgba(0, 0, 0, 0.20), transparent)`,
+									width: pxToRem(16),
+							  }),
+
+						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
+						[maxContainerBreakpointForFrozenColumns]: {
+							'[data-table-left-overlay="true"]': {
+								left: 0,
+							},
+						},
 					}}
-					onClick={() => handleButtonClick('left')}
-					onMouseDown={(event: React.MouseEvent) =>
-						handleButtonPress(event, 'left')
-					}
-					onMouseUp={handleButtonRelease}
-					onMouseLeave={handleButtonRelease}
-					onTouchStart={(event: React.TouchEvent) =>
-						handleButtonPress(event, 'left')
-					}
-					onTouchEnd={handleButtonRelease}
-					tabIndex={-1}
-					type="button"
+				/>
+				<Box
+					css={{
+						msOverflowStyle: 'none',
+						overflowX: 'auto',
+						overscrollBehaviorX: 'none',
+						scrollbarWidth: 'none',
+						WebkitOverflowScrolling: 'touch',
+						width: '100%',
+						'&::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track':
+							{
+								display: 'none',
+							},
+					}}
+					focusRingFor="keyboard"
+					onScroll={repositionThumb}
+					tabIndex={0}
+					ref={scrollerRef}
 				>
-					<ScrollbarArrowLeftIcon color="border" />
+					{children}
 				</Box>
 				<Box
-					aria-hidden
-					background="shade"
-					border
-					borderColor="muted"
+					data-table-right-overlay="true"
 					css={{
-						borderRadius: 999,
-						height: pxToRem(12),
-						padding: 0,
-						position: 'relative',
-						flexGrow: 1,
+						pointerEvents: 'none',
+						position: 'fixed',
+						right: overlayOffsets?.right,
+						zIndex: SCROLL_OVERLAY_Z_INDEX,
+						...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
+
+						// Switch between single line at full scroll and overlay shadow at partial scroll
+						...(isScrolledToEnd
+							? {
+									background: boxPalette.borderMuted,
+									width: pxToRem(1),
+							  }
+							: {
+									background: `linear-gradient(to left, rgba(0, 0, 0, 0.20), transparent)`,
+									width: pxToRem(16),
+							  }),
+
+						// Container queries not working with dynamic styles, so we'll hide the overlay up until the breakpoint instead
+						[maxContainerBreakpointForFrozenColumns]: {
+							'[data-table-right-overlay="true"]': {
+								right: 0,
+							},
+						},
 					}}
-					onClick={handleTrackClick}
-					ref={trackRef}
-					tabIndex={-1}
+				/>
+				<Flex
+					background="body"
+					alignItems="center"
+					css={{
+						bottom: 0,
+						display: thumbWidthRatio === 1 ? 'none' : undefined,
+						left: 0,
+						position: 'sticky',
+						right: 0,
+						zIndex: SCROLL_OVERLAY_Z_INDEX,
+					}}
+					flexWrap="nowrap"
+					gap={0.25}
 				>
 					<Box
 						aria-hidden
 						as="button"
 						css={{
 							appearance: 'none',
-							background: boxPalette.border,
-							border: 'none',
-							borderRadius: 999,
-							bottom: 0,
+							background: 'none',
 							cursor: 'default',
-							padding: 0,
-							position: 'absolute',
-							top: 0,
-							touchAction: 'none', // Prevent default touch actions
+							height: pxToRem(24),
+							width: pxToRem(24),
 						}}
-						style={{
-							left: thumbPosition,
-							width: `${thumbWidthRatio * 100}%`,
-						}}
-						onMouseDown={handleThumbPress}
-						onTouchStart={handleThumbPress}
-						ref={thumbRef}
+						onClick={() => handleButtonClick('left')}
+						onMouseDown={(event: React.MouseEvent) =>
+							handleButtonPress(event, 'left')
+						}
+						onMouseUp={handleButtonRelease}
+						onMouseLeave={handleButtonRelease}
+						onTouchStart={(event: React.TouchEvent) =>
+							handleButtonPress(event, 'left')
+						}
+						onTouchEnd={handleButtonRelease}
 						tabIndex={-1}
 						type="button"
-					/>
-				</Box>
-				<Box
-					aria-hidden
-					as="button"
-					css={{
-						appearance: 'none',
-						background: 'none',
-						cursor: 'default',
-						height: pxToRem(24),
-						width: pxToRem(24),
-					}}
-					onClick={() => handleButtonClick('right')}
-					onMouseDown={(event: React.MouseEvent) =>
-						handleButtonPress(event, 'right')
-					}
-					onMouseUp={handleButtonRelease}
-					onMouseLeave={handleButtonRelease}
-					onTouchStart={(event: React.TouchEvent) =>
-						handleButtonPress(event, 'right')
-					}
-					onTouchEnd={handleButtonRelease}
-					tabIndex={-1}
-					type="button"
-				>
-					<ScrollbarArrowRightIcon color="border" />
-				</Box>
-			</Flex>
-		</Stack>
+					>
+						<ScrollbarArrowLeftIcon color="border" />
+					</Box>
+					<Box
+						aria-hidden
+						background="shade"
+						border
+						borderColor="muted"
+						css={{
+							borderRadius: 999,
+							height: pxToRem(12),
+							padding: 0,
+							position: 'relative',
+							flexGrow: 1,
+						}}
+						onClick={handleTrackClick}
+						ref={trackRef}
+						tabIndex={-1}
+					>
+						<Box
+							aria-hidden
+							as="button"
+							css={{
+								appearance: 'none',
+								background: boxPalette.border,
+								border: 'none',
+								borderRadius: 999,
+								bottom: 0,
+								cursor: 'default',
+								padding: 0,
+								position: 'absolute',
+								top: 0,
+								touchAction: 'none', // Prevent default touch actions
+							}}
+							style={{
+								left: thumbPosition,
+								width: `${thumbWidthRatio * 100}%`,
+							}}
+							onMouseDown={handleThumbPress}
+							onTouchStart={handleThumbPress}
+							ref={thumbRef}
+							tabIndex={-1}
+							type="button"
+						/>
+					</Box>
+					<Box
+						aria-hidden
+						as="button"
+						css={{
+							appearance: 'none',
+							background: 'none',
+							cursor: 'default',
+							height: pxToRem(24),
+							width: pxToRem(24),
+						}}
+						onClick={() => handleButtonClick('right')}
+						onMouseDown={(event: React.MouseEvent) =>
+							handleButtonPress(event, 'right')
+						}
+						onMouseUp={handleButtonRelease}
+						onMouseLeave={handleButtonRelease}
+						onTouchStart={(event: React.TouchEvent) =>
+							handleButtonPress(event, 'right')
+						}
+						onTouchEnd={handleButtonRelease}
+						tabIndex={-1}
+						type="button"
+					>
+						<ScrollbarArrowRightIcon color="border" />
+					</Box>
+				</Flex>
+			</Stack>
+		</ScrollerContext.Provider>
 	);
 }
 
