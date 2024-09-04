@@ -20,6 +20,7 @@ const description =
 	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';
 
 export default function Homepage() {
+	console.log('develop');
 	return (
 		<>
 			<DocumentTitle description={description} />
