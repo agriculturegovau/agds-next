@@ -96,3 +96,18 @@ export function getToDateInputButtonAriaLabel(
 	if (!parsed) return 'Choose end date';
 	return `Change end date, ${formatHumanReadableDate(parsed)}`;
 }
+
+/**
+ * Takes a date string and checks if it's an ISOString.
+ */
+const isISOString = (value: string) => {
+	return /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/.test(
+		value
+	);
+};
+
+/**
+ * Takes a string and converts ISO date strings to a Date object, otherwise converts the string to undefined.
+ */
+export const normaliseDateString = (date: string) =>
+	isISOString(date) ? new Date(date) : undefined;

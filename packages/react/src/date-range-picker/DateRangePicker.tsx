@@ -35,7 +35,11 @@ import {
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import {
+	ensureValidDateRange,
+	getCalendarDefaultMonth,
+	normaliseDateString,
+} from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -160,8 +164,12 @@ export const DateRangePicker = ({
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from: typeof value.from === 'string' ? undefined : value.from,
-			to: typeof value.to === 'string' ? undefined : value.to,
+			from:
+				typeof value.from === 'string'
+					? normaliseDateString(value.from)
+					: value.from,
+			to:
+				typeof value.to === 'string' ? normaliseDateString(value.to) : value.to,
 		}),
 		[value]
 	);
