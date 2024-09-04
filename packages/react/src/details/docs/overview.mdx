@@ -8,7 +8,7 @@ relatedComponents: ['accordion', 'tabs']
 ---
 
 ```jsx live
-<Details label="How does the 120-day processing time work?" iconBefore>
+<Details label="Details label?" iconBefore>
 	<Text as="p">
 		This is a small paragraph of text that is supplementary to the main page
 		content.
@@ -24,17 +24,17 @@ Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the la
 
 <DoHeading />
 
-- use in forms to help explain information only some users need
+- use sparingly, and only when users need additional information
+- position the component before a form and avoid using it between between from controls
 - position immediately after the related content
 - use instead of tooltips or Modal where possible
 - use short sentences
 - include a clear description
-- consider using an accordion if there are multiple paragraphs of content
-- use sparingly, and only when users need additional information.
+- consider using an accordion if there are multiple paragraphs of content.
 
 <DontHeading />
 
-- use for information all users need to read
+- hide crucial information
 - include other components inside a Details area
 - use a dark theme callout on a light theme.
 
@@ -43,7 +43,7 @@ Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the la
 Setting the `iconBefore` prop to `true` will render the `InfoIcon` before the label.
 
 ```jsx live
-<Details label="Details" iconBefore>
+<Details label="Details label" iconBefore>
 	<Text as="p">
 		This is a small paragraph of text that is supplementary to the main page
 		content.
@@ -57,7 +57,7 @@ If the Details component is placed on a page with `bodyAlt` background, set the 
 
 ```jsx live
 <Box background="bodyAlt" padding={1.5}>
-	<Details label="Details" iconBefore onBodyAlt>
+	<Details label="Details label" iconBefore onBodyAlt>
 		<Text as="p">
 			This is a small paragraph of text that is supplementary to the main page
 			content.
