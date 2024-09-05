@@ -56,10 +56,6 @@ export function zodDateField(message = 'Enter a valid date') {
 	);
 }
 
-export function zodReviewDateField() {
-	return z.union([z.string(), z.date()]).pipe(z.coerce.date());
-}
-
 type ZodTimeFieldProps = {
 	label: string;
 	requiredMessage?: string;

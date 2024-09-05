@@ -4,7 +4,6 @@ import {
 	zodArray,
 	zodDateField,
 	zodPhoneFieldOptional,
-	zodReviewDateField,
 	zodString,
 	zodStringOptional,
 	zodTimeField,
@@ -124,7 +123,7 @@ export const task1Step4FormSchema = z.object({
 // FIXME: I don't like having to do this, but I can't get dates and error messages to work reliably across forms and reviews
 export const task1Step4ReviewSchema = z.object({
 	registrationNumber: zodString().max(6),
-	registrationExpiry: zodReviewDateField(),
+	registrationExpiry: zodDateField(),
 });
 
 export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
@@ -153,8 +152,8 @@ export const task1Step5FormSchema = z
 
 export const task1Step5ReviewSchema = z.object({
 	tradingPeriod: z.object({
-		from: zodReviewDateField(),
-		to: zodReviewDateField(),
+		from: zodDateField(),
+		to: zodDateField(),
 	}),
 	openingTime: zodTimeField({ label: 'Opening time' }),
 	closingTime: zodTimeField({ label: 'Closing time' }),

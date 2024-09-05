@@ -7,6 +7,7 @@ import {
 	isMatch,
 	isValid,
 	parse,
+	parseISO,
 } from 'date-fns';
 
 export const acceptedDateFormats = [
@@ -82,13 +83,6 @@ export function constrainDate(
 	return date;
 }
 
-// Check if date is valid ISO string
-const isISOString = (value: string) => {
-	return /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/.test(
-		value
-	);
-};
-
 // Since the `value` prop can either be a date object, undefined or a string (which represents the text input value)
 // we need to be able to take that value and transform it into the display value of the text input
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
@@ -97,8 +91,7 @@ export function transformValuePropToInputValue(
 	valueProp: Date | string | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
-	if (typeof valueProp === 'string' && !isISOString(valueProp))
-		return valueProp;
+	if (typeof valueProp === 'string' && !parseISO(valueProp)) return valueProp;
 	if (typeof valueProp === 'undefined') return '';
 
 	const valueAsDate =
