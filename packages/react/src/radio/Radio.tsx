@@ -87,5 +87,5 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 
 function useRadioId(idProp?: string) {
 	const autoId = useId(idProp);
-	return `radio-${autoId}`;
+	return idProp || `radio-${autoId}`;
 }

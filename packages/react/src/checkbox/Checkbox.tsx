@@ -118,5 +118,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
 function useCheckboxId(idProp?: string) {
 	const autoId = useId(idProp);
-	return `checkbox-${autoId}`;
+	return idProp || `checkbox-${autoId}`;
 }
