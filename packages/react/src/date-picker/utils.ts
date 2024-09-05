@@ -91,7 +91,11 @@ export function transformValuePropToInputValue(
 	valueProp: Date | string | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
-	if (typeof valueProp === 'string' && !parseISO(valueProp)) return valueProp;
+	if (
+		typeof valueProp === 'string' &&
+		parseISO(valueProp).toString() === 'Invalid Date'
+	)
+		return valueProp;
 	if (typeof valueProp === 'undefined') return '';
 
 	const valueAsDate =

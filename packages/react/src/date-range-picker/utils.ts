@@ -102,4 +102,4 @@ export function getToDateInputButtonAriaLabel(
  * Takes a string and converts ISO date strings to a Date object, otherwise converts the string to undefined.
  */
 export const normaliseDateString = (date: string) =>
-	parseISO(date) ? new Date(date) : undefined;
+	parseISO(date).toString() === 'Invalid Date' ? undefined : parseISO(date);
