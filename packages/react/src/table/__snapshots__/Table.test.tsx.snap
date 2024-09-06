@@ -290,7 +290,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       >
         <button
           aria-hidden="true"
-          class="css-np8p1e-boxStyles-TableScroller"
+          class="css-k24nkr-boxStyles-TableScroller"
           style="left: 0px; width: 0%;"
           tabindex="-1"
           type="button"

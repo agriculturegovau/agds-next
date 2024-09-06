@@ -311,6 +311,10 @@ export function TableScroller({ children }: TableScrollerProps) {
 							position: 'absolute',
 							top: 0,
 							touchAction: 'none', // Prevent default touch actions
+							// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+							'@media (forced-colors: active)': {
+								backgroundColor: 'CaptionText',
+							},
 						}}
 						style={{
 							left: thumbPosition,
