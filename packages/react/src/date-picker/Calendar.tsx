@@ -161,9 +161,11 @@ const calendarComponents: CustomComponents = {
 					className={previousClassName}
 					disabled={!previousMonth}
 					onClick={handlePreviousClick}
+					type="button"
 				>
 					<ChevronLeftIcon color="inherit" weight="bold" />
 				</button>
+				{/* @ts-expect-error: JSX element type 'CaptionLabelComponent' does not have any construct or call signatures. */}
 				<CaptionLabelComponent
 					id={props.id}
 					displayMonth={props.displayMonth}
@@ -174,6 +176,7 @@ const calendarComponents: CustomComponents = {
 					className={nextClassName}
 					disabled={!nextMonth}
 					onClick={handleNextClick}
+					type="button"
 				>
 					<ChevronRightIcon color="inherit" weight="bold" />
 				</button>
@@ -293,35 +296,38 @@ const calendarComponents: CustomComponents = {
 	},
 	// Custom `HeadRow` component to abide by Date Picker Dialog ARIA pattern
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/HeadRow.tsx
-	HeadRow: function HeadRow() {
-		const {
-			classNames,
-			styles,
-			locale,
-			weekStartsOn,
-			ISOWeek,
-			formatters: { formatWeekdayName },
-			labels: { labelWeekday },
-		} = useDayPicker();
+	// HeadRow: function HeadRow() {
+	// 	const {
+	// 		classNames,
+	// 		styles,
+	// 		locale,
+	// 		weekStartsOn,
+	// 		ISOWeek,
+	// 		formatters: { formatWeekdayName },
+	// 		labels: { labelWeekday },
+	// 	} = useDayPicker();
 
-		const weekdays = getWeekdays(locale, weekStartsOn, ISOWeek);
+	// 	const weekdays = getWeekdays(locale, weekStartsOn, ISOWeek);
 
-		return (
-			<tr style={styles.head_row} className={classNames.head_row}>
-				{weekdays.map((weekday, i) => (
-					<th
-						key={i}
-						scope="col"
-						className={classNames.head_cell}
-						style={styles.head_cell}
-						abbr={labelWeekday(weekday, { locale })}
-					>
-						{formatWeekdayName(weekday, { locale })}
-					</th>
-				))}
-			</tr>
-		);
-	},
+	// 	return (
+	// 		<tr style={styles.head_row} className={classNames.head_row}>
+	// 			{weekdays.map((weekday, i) => (
+	// 				<th
+	// 					key={i}
+	// 					scope="col"
+	// 					className={classNames.head_cell}
+	// 					style={styles.head_cell}
+	// 					// I disagree with using abbr instead of aria-label as it's never announced
+	// 					// As per MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#abbr
+	// 					// A short, abbreviated description of the header cell's content provided as an alternative label to use for the header cell when referencing the cell in other contexts. Some user-agents, such as speech readers, may present this description before the content itself.
+	// 					abbr={labelWeekday(weekday, { locale })}
+	// 				>
+	// 					{formatWeekdayName(weekday, { locale })}
+	// 				</th>
+	// 			))}
+	// 		</tr>
+	// 	);
+	// },
 	// Custom `Row` component to abide by Date Picker Dialog ARIA pattern
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Row.tsx
 	Row: function Row(props: RowProps) {
@@ -343,115 +349,8 @@ const calendarComponents: CustomComponents = {
 			</tr>
 		);
 	},
-	// Custom `Day` component to abide by Date Picker Dialog ARIA pattern
+	// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
-	// Day: function Day(props: DayProps) {
-	// 	const buttonRef = useRef<HTMLButtonElement>(null);
-	// 	const { classNames, styles } = useDayPicker();
-	// 	const { activeModifiers, buttonProps, divProps, isButton, isHidden } =
-	// 		useDayRender(props.date, props.displayMonth, buttonRef);
-
-	// 	return (
-	// 		<td
-	// 			aria-selected={
-	// 				// React Day Picker incorrectly marks ranges as selected
-	// 				activeModifiers.range_middle ? undefined : activeModifiers.selected
-	// 			}
-	// 			className={classNames.cell}
-	// 			role="gridcell"
-	// 			style={styles.cell}
-	// 		>
-	// 			{isHidden ? (
-	// 				// Announce Blank so SR screen reader virtual cursor appears
-	// 				<VisuallyHidden>Blank</VisuallyHidden>
-	// 			) : !isButton ? (
-	// 				// This case should never happen, but catering for it as per the OOTB RDP
-	// 				<div
-	// 					{...divProps}
-	// 					// Remove `role` from `divProps`
-	// 					role={undefined}
-	// 				/>
-	// 			) : (
-	// 				<ReactDayPickerButton
-	// 					name="day"
-	// 					ref={buttonRef}
-	// 					{...buttonProps}
-	// 					// Improve the aria labels of each button.
-	// 					// Selected and dates within range are manually announced.
-	// 					aria-label={`${
-	// 						activeModifiers.selected && !activeModifiers.range_middle
-	// 							? 'Selected. '
-	// 							: ''
-	// 					}${formatHumanReadableDate(props.date)}${
-	// 						activeModifiers.range_middle ? '. Between selected dates' : ''
-	// 					}`}
-	// 					// Remove `aria-selected` from `buttonProps`. It's on the `<td>`
-	// 					aria-selected={undefined}
-	// 					// Remove `role` from `buttonProps`
-	// 					role={undefined}
-	// 				/>
-	// 			)}
-	// 		</td>
-	// 	);
-	// },
-	// Day: function Day(props: DayProps) {
-	// 	const buttonRef = useRef<HTMLButtonElement>(null);
-	// 	const { classNames, styles } = useDayPicker();
-	// 	const { activeModifiers, buttonProps, divProps, isButton, isHidden } =
-	// 		useDayRender(props.date, props.displayMonth, buttonRef);
-
-	// 	return (
-	// 		<td
-	// 			aria-selected={
-	// 				// React Day Picker incorrectly marks ranges as selected
-	// 				activeModifiers.range_middle ? undefined : activeModifiers.selected
-	// 			}
-	// 			className={classNames.cell}
-	// 			role="gridcell"
-	// 			style={styles.cell}
-	// 		>
-	// 			{isHidden ? (
-	// 				// Announce Blank so SR screen reader virtual cursor appears
-	// 				<VisuallyHidden>Blank</VisuallyHidden>
-	// 			) : !isButton ? (
-	// 				// This case should never happen, but catering for it as per the OOTB RDP
-	// 				<div
-	// 					{...divProps}
-	// 					// Remove `role` from `divProps`
-	// 					role={undefined}
-	// 				/>
-	// 			) : (
-	// 				<Button
-	// 					name="day"
-	// 					ref={buttonRef}
-	// 					{...buttonProps}
-	// 					onKeyDown={(e) => {
-	// 						if (e.key === 'Enter' || e.key === 'Space') {
-	// 							e.preventDefault();
-	// 							e.stopPropagation();
-	// 							buttonProps.onClick(e);
-	// 						} else {
-	// 							buttonProps.onKeyDown(e);
-	// 						}
-	// 					}}
-	// 					// Improve the aria labels of each button.
-	// 					// Selected and dates within range are manually announced.
-	// 					aria-label={`${
-	// 						activeModifiers.selected && !activeModifiers.range_middle
-	// 							? 'Selected. '
-	// 							: ''
-	// 					}${formatHumanReadableDate(props.date)}${
-	// 						activeModifiers.range_middle ? '. Between selected dates' : ''
-	// 					}`}
-	// 					// Remove `aria-selected` from `buttonProps`. It's on the `<td>`
-	// 					aria-selected={undefined}
-	// 					// Remove `role` from `buttonProps`
-	// 					role={undefined}
-	// 				/>
-	// 			)}
-	// 		</td>
-	// 	);
-	// },
 	Day: function Day(props: DayProps) {
 		const buttonRef = useRef<HTMLButtonElement>(null);
 		const { activeModifiers, buttonProps, isHidden } = useDayRender(
@@ -461,46 +360,50 @@ const calendarComponents: CustomComponents = {
 		);
 
 		// @ts-expect-error: role is unused
-		const { onClick, onKeyDown, role, ...restButtonProps } = buttonProps;
+		const { children, onClick, onKeyDown, role, ...restButtonProps } =
+			buttonProps;
+
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
+				event.preventDefault();
+				event.stopPropagation();
+				// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'MouseEvent<HTMLButtonElement, MouseEvent>'.
+				onClick?.(event);
+			} else {
+				// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'KeyboardEvent<HTMLButtonElement>'
+				onKeyDown?.(event);
+			}
+		};
+
+		const interactiveProps = {
+			'aria-current': activeModifiers.today ? 'date' : undefined,
+			// Improve the aria labels of each button.
+			// Selected and dates within range are manually announced.
+			'aria-label': `${
+				activeModifiers.selected && !activeModifiers.range_middle
+					? 'Selected. '
+					: ''
+			}${formatHumanReadableDate(props.date)}${
+				activeModifiers.range_middle ? '. Between selected dates' : ''
+			}`,
+			'aria-selected':
+				// React Day Picker incorrectly marks ranges as selected
+				activeModifiers.range_middle ? undefined : activeModifiers.selected,
+			onClick,
+			...restButtonProps,
+		};
 
 		return (
 			<td
-				aria-current={activeModifiers.today ? 'date' : undefined}
-				// Improve the aria labels of each button.
-				// Selected and dates within range are manually announced.
-				aria-label={`${
-					activeModifiers.selected && !activeModifiers.range_middle
-						? 'Selected. '
-						: ''
-				}${formatHumanReadableDate(props.date)}${
-					activeModifiers.range_middle ? '. Between selected dates' : ''
-				}`}
-				aria-selected={
-					// React Day Picker incorrectly marks ranges as selected
-					activeModifiers.range_middle ? undefined : activeModifiers.selected
-				}
-				// @ts-expect-error: Type 'MouseEventHandler<HTMLButtonElement> | undefined' is not assignable to type 'MouseEventHandler<HTMLTableDataCellElement> | undefined'
-				onClick={onClick}
-				onKeyDown={(event) => {
-					if (event.key === 'Enter' || event.key === 'Space') {
-						event.preventDefault();
-						event.stopPropagation();
-						// @ts-expect-error: Argument of type 'KeyboardEvent<HTMLTableDataCellElement>' is not assignable to parameter of type 'KeyboardEvent<HTMLButtonElement>'
-						onClick?.(event);
-					} else {
-						// @ts-expect-error: Argument of type 'KeyboardEvent<HTMLTableDataCellElement>' is not assignable to parameter of type 'KeyboardEvent<HTMLButtonElement>'
-						onKeyDown?.(event);
-					}
-				}}
+				{...(isHidden ? undefined : interactiveProps)}
+				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
+				onKeyDown={handleKeyDown}
 				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
 				ref={buttonRef}
 				tabIndex={-1}
-				{...(isHidden ? undefined : restButtonProps)}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span tabIndex={-1}>
-					{isHidden ? undefined : restButtonProps.children}
-				</span>
+				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
 			</td>
 		);
 	},

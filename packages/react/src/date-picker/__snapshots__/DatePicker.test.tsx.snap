@@ -35,7 +35,7 @@ exports[`DatePicker renders correctly 1`] = `
           value="01/01/2000"
         />
         <button
-          aria-label="Change date, 1st January 2000 (Saturday)"
+          aria-label="Change date, 1st January 2000 Saturday"
           class="css-1martsc-BaseButton-DateInput"
           type="button"
         >

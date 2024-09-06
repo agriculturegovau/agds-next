@@ -146,10 +146,10 @@ describe('formatDate', () => {
 
 describe('formatHumanReadableDate', () => {
 	expect(formatHumanReadableDate(new Date(2020, 0, 31))).toEqual(
-		'31st January 2020 (Friday)'
+		'31st January 2020 Friday'
 	);
 	expect(formatHumanReadableDate(new Date(2020, 11, 6))).toEqual(
-		'6th December 2020 (Sunday)'
+		'6th December 2020 Sunday'
 	);
 });
 
@@ -237,7 +237,7 @@ describe('getDateInputButtonAriaLabel', () => {
 
 	it('returns "Change date, x" when a date is set', () => {
 		expect(getDateInputButtonAriaLabel({ value: '05/06/2010' })).toEqual(
-			'Change date, 5th June 2010 (Saturday)'
+			'Change date, 5th June 2010 Saturday'
 		);
 	});
 
@@ -254,7 +254,7 @@ describe('getDateInputButtonAriaLabel', () => {
 	it('returns "Change start date, x" when a date and "start" is set', () => {
 		expect(
 			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'start' })
-		).toEqual('Change start date, 5th June 2010 (Saturday)');
+		).toEqual('Change start date, 5th June 2010 Saturday');
 	});
 
 	it('returns "Choose end date" when no date and "end" is set', () => {
@@ -266,6 +266,6 @@ describe('getDateInputButtonAriaLabel', () => {
 	it('returns "Change end date, x" when a date and "end" is set', () => {
 		expect(
 			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'end' })
-		).toEqual('Change end date, 5th June 2010 (Saturday)');
+		).toEqual('Change end date, 5th June 2010 Saturday');
 	});
 });
