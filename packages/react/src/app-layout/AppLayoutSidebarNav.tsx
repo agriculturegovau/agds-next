@@ -337,6 +337,20 @@ function AppLayoutSidebarNavItemInner({
 					},
 
 					...focusStyles,
+					':focus-visible': {
+						// Elevate focused item above next sibling
+						zIndex: tokens.zIndex.elevated,
+						// Bring the focus ring in against the element so that it remains on screen and sibling element borders don't show in the offset
+						outlineOffset: `-${packs.outline.outlineOffset}px`,
+
+						// Make the left border appear to sit below the constrained focus ring
+						'&::before': {
+							left: packs.outline.outlineOffset,
+							top: packs.outline.outlineOffset,
+							bottom: packs.outline.outlineOffset,
+							borderLeftWidth: tokens.borderWidth.md,
+						},
+					},
 				},
 
 				// Styles specific to text list items

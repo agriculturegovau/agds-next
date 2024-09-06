@@ -10,7 +10,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
       class="css-o80hmi-boxStyles"
     >
       <li
-        class="css-19qo0lc-AppLayoutSidebarNavItemInner"
+        class="css-nf0zhd-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/account"
@@ -50,7 +50,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         />
       </li>
       <li
-        class="css-u8n2i4-AppLayoutSidebarNavItemInner"
+        class="css-kytm5n-AppLayoutSidebarNavItemInner"
       >
         <span
           class="css-1i7cdx8-boxStyles"
@@ -76,7 +76,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         />
       </li>
       <li
-        class="css-19qo0lc-AppLayoutSidebarNavItemInner"
+        class="css-nf0zhd-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/"
@@ -108,7 +108,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </a>
       </li>
       <li
-        class="css-1dcb9ex-AppLayoutSidebarNavItemInner"
+        class="css-1ltg5iz-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/establishments"
@@ -156,7 +156,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1hnj2rd-AppLayoutSidebarNavItemInner"
+            class="css-s0azga-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/establishments/canberra"
@@ -174,7 +174,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
             </a>
           </li>
           <li
-            class="css-1ee7vcb-AppLayoutSidebarNavItemInner"
+            class="css-1phcwmo-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -195,7 +195,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </ul>
       </li>
       <li
-        class="css-19qo0lc-AppLayoutSidebarNavItemInner"
+        class="css-nf0zhd-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/intelligence"
@@ -224,7 +224,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </a>
       </li>
       <li
-        class="css-19qo0lc-AppLayoutSidebarNavItemInner"
+        class="css-nf0zhd-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/compliance"
@@ -281,7 +281,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         />
       </li>
       <li
-        class="css-19qo0lc-AppLayoutSidebarNavItemInner"
+        class="css-nf0zhd-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/help"
@@ -318,7 +318,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         />
       </li>
       <li
-        class="css-u8n2i4-AppLayoutSidebarNavItemInner"
+        class="css-kytm5n-AppLayoutSidebarNavItemInner"
       >
         <button
           class="css-6e6ykx-BaseButton"
