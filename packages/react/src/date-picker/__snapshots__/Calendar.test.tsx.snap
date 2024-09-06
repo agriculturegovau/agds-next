@@ -412,7 +412,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
                     class="rdp-day rdp-day_selected rdp-day_range_start"
-                    tabindex="-1"
+                    tabindex="0"
                   >
                     <span
                       tabindex="-1"
@@ -1196,7 +1196,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
                     class="rdp-day rdp-day_selected"
-                    tabindex="-1"
+                    tabindex="0"
                   >
                     <span
                       tabindex="-1"

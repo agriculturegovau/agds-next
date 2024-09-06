@@ -395,12 +395,12 @@ const calendarComponents: CustomComponents = {
 
 		return (
 			<td
-				{...(isHidden ? undefined : interactiveProps)}
 				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
 				onKeyDown={handleKeyDown}
 				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
 				ref={buttonRef}
 				tabIndex={-1}
+				{...(isHidden ? undefined : interactiveProps)}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
