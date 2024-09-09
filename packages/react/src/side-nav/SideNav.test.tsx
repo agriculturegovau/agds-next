@@ -39,37 +39,78 @@ describe('SideNav', () => {
 	});
 
 	describe('renders the title correctly', () => {
-		test('with link', () => {
-			renderSideNav(defaultTestingProps);
+		describe('when `titleLink` is defined', () => {
+			test('renders valid HTML with no a11y violations', async () => {
+				const { container } = renderSideNav(defaultTestingProps);
 
-			const el = screen.getByRole('link', {
-				name: defaultTestingProps.title,
-				hidden: true,
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+					rules: {
+						'no-inline-style': 'off',
+						// react 18s `useId` break this rule
+						'valid-id': 'off',
+					},
+				});
+				expect(await axe(container)).toHaveNoViolations();
 			});
 
-			expect(el).toBeInTheDocument();
-			expect(el).toHaveAttribute('href', defaultTestingProps.titleLink);
+			test('there is a link with that title text', async () => {
+				renderSideNav(defaultTestingProps);
+
+				const user = userEvent.setup();
+				const button = screen.getByRole('button', {
+					name: defaultTestingProps.title,
+				});
+				await user.click(button);
+
+				const titleAsLink = await screen.findByRole('link', {
+					name: defaultTestingProps.title,
+				});
+
+				expect(titleAsLink).toBeVisible();
+				expect(screen.getAllByText(defaultTestingProps.title).length).toEqual(
+					3
+				);
+			});
 		});
 
-		test('without link', async () => {
-			const { container } = renderSideNav({
-				...defaultTestingProps,
-				titleLink: undefined,
-			});
-			expect(container).toHTMLValidate({
-				extends: ['html-validate:recommended'],
-				rules: {
-					'no-inline-style': 'off',
-					// react 18s `useId` break this rule
-					'valid-id': 'off',
-				},
+		describe('when `titleLink` is undefined', () => {
+			test('renders valid HTML with no a11y violations', async () => {
+				const { container } = renderSideNav({
+					...defaultTestingProps,
+					titleLink: undefined,
+				});
+
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+					rules: {
+						'no-inline-style': 'off',
+						// react 18s `useId` break this rule
+						'valid-id': 'off',
+					},
+				});
+				expect(await axe(container)).toHaveNoViolations();
 			});
 
-			const nav = screen.getByRole('navigation', { hidden: true });
-			const els = within(nav).getAllByText(defaultTestingProps.title);
-			expect(els.length).toEqual(3);
+			test('there is no link with that title text', async () => {
+				renderSideNav({
+					...defaultTestingProps,
+					titleLink: undefined,
+				});
 
-			expect(await axe(container)).toHaveNoViolations();
+				const user = userEvent.setup();
+				const button = screen.getByRole('button', {
+					name: defaultTestingProps.title,
+				});
+				await user.click(button);
+
+				expect(
+					screen.queryByRole('link', { name: defaultTestingProps.title })
+				).toBeNull();
+				expect(screen.getAllByText(defaultTestingProps.title).length).toEqual(
+					3
+				);
+			});
 		});
 	});
 
@@ -94,7 +135,7 @@ describe('SideNav', () => {
 					);
 				});
 
-				test('then no sub-level items should be visible', async () => {
+				test('no sub-level items should be visible', async () => {
 					const levelOneItemHrefs = defaultTestingProps.items.map(
 						({ href }) => href
 					);
@@ -109,7 +150,7 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(levelOneItemHrefs);
 				});
 
-				test('then icons indicating hidden sub-level items should be visible', async () => {
+				test('icons indicating hidden sub-level items should be visible', async () => {
 					expect(
 						await screen.findAllByRole('img', {
 							name: /. Has [2-9] sub-level links.|. Has 1 sub-level link./,
@@ -137,7 +178,7 @@ describe('SideNav', () => {
 					);
 				});
 
-				test('then its sub-level items should be visible to one level and no other sub-level items', async () => {
+				test('its sub-level items should be visible to one level and no other sub-level items', async () => {
 					const levelOneItems = defaultTestingProps.items;
 					const levelTwoInDetailItems =
 						defaultTestingProps.items.find(({ href }) => href === '/in-detail')
@@ -156,7 +197,7 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(itemHrefs);
 				});
 
-				test('then an icon indicating visible sub-level items should be visible', async () => {
+				test('an icon indicating visible sub-level items should be visible', async () => {
 					expect(
 						await screen.findByRole('img', {
 							name: '. Sub-level links below.',
@@ -184,7 +225,7 @@ describe('SideNav', () => {
 					);
 				});
 
-				test('then its sub-level items should be visible to one level', async () => {
+				test('its sub-level items should be visible to one level', async () => {
 					const levelOneItems = defaultTestingProps.items;
 					const levelTwoInDetailItems =
 						defaultTestingProps.items.find(({ href }) => href === '/in-detail')
@@ -212,7 +253,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then an icon indicating visible sub-level items should be visible', async () => {
+				test.skip('an icon indicating visible sub-level items should be visible', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'Record keeping. Sub-level links below.',
 					});
@@ -225,7 +266,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its parent should have an icon indicating visible sub-level items', async () => {
+				test.skip('its parent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'In detail. Sub-level links below.',
 					});
@@ -258,7 +299,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then no icon indicating visible sub-level items should be visible', async () => {
+				test.skip('no icon indicating visible sub-level items should be visible', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'Keeping your tax records',
 					});
@@ -269,7 +310,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its parent should have an icon indicating visible sub-level items', async () => {
+				test.skip('its parent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'Record keeping. Sub-level links below.',
 					});
@@ -282,7 +323,7 @@ describe('SideNav', () => {
 				});
 
 				// Skipping because this is failing only in CI
-				test.skip('then its grandparent should have an icon indicating visible sub-level items', async () => {
+				test.skip('its grandparent should have an icon indicating visible sub-level items', async () => {
 					const link = await screen.findByRole('link', {
 						name: 'In detail. Sub-level links below.',
 					});
@@ -298,7 +339,7 @@ describe('SideNav', () => {
 
 		describe('when subLevelVisible is "always"', () => {
 			describe('when the active item has no sub-level items', () => {
-				test('then all sub-level items should be visible', async () => {
+				test('all sub-level items should be visible', async () => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
@@ -333,7 +374,7 @@ describe('SideNav', () => {
 			});
 
 			describe('when the active item is level one and has sub-level items', () => {
-				test('then all sub-level items should be visible', async () => {
+				test('all sub-level items should be visible', async () => {
 					render(
 						<SideNav
 							{...defaultTestingProps}
