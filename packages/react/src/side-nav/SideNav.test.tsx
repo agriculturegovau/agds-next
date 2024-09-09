@@ -89,7 +89,7 @@ describe('SideNav', () => {
 
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 				});
@@ -132,7 +132,7 @@ describe('SideNav', () => {
 
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 				});
@@ -179,7 +179,7 @@ describe('SideNav', () => {
 
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 				});
@@ -252,7 +252,7 @@ describe('SideNav', () => {
 
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 				});
@@ -310,7 +310,7 @@ describe('SideNav', () => {
 					const user = userEvent.setup();
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 
@@ -345,7 +345,7 @@ describe('SideNav', () => {
 					const user = userEvent.setup();
 					user.click(
 						screen.getByRole('button', {
-							name: `${defaultTestingProps.title} (Expand/Collapse)`,
+							name: `${defaultTestingProps.title}`,
 						})
 					);
 
