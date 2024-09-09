@@ -165,12 +165,13 @@ const calendarComponents: CustomComponents = {
 				>
 					<ChevronLeftIcon color="inherit" weight="bold" />
 				</button>
-				{/* @ts-expect-error: JSX element type 'CaptionLabelComponent' does not have any construct or call signatures. */}
-				<CaptionLabelComponent
-					id={props.id}
-					displayMonth={props.displayMonth}
-					displayIndex={props.displayIndex}
-				/>
+				{CaptionLabelComponent && (
+					<CaptionLabelComponent
+						id={props.id}
+						displayMonth={props.displayMonth}
+						displayIndex={props.displayIndex}
+					/>
+				)}
 				<button
 					aria-label={nextLabel}
 					className={nextClassName}
@@ -350,6 +351,7 @@ const calendarComponents: CustomComponents = {
 		);
 	},
 	// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
+	// Key change: we no longer render <button>s, everything happens on <td>s
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
 	Day: function Day(props: DayProps) {
 		const buttonRef = useRef<HTMLButtonElement>(null);
