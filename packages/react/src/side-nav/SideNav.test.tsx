@@ -66,8 +66,8 @@ describe('SideNav', () => {
 			});
 
 			const nav = screen.getByRole('navigation', { hidden: true });
-			const el = within(nav).getByText(defaultTestingProps.title);
-			expect(el).toBeInTheDocument();
+			const els = within(nav).getAllByText(defaultTestingProps.title);
+			expect(els.length).toEqual(3);
 
 			expect(await axe(container)).toHaveNoViolations();
 		});
