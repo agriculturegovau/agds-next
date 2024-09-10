@@ -20,7 +20,9 @@ const theme: Theme = {
 type ColorTokenGroup = {
 	[tokenName: string]: {
 		dark: string | undefined;
+		darkName: string;
 		light: string | undefined;
+		lightName: string;
 		desc: string;
 	};
 };
@@ -34,132 +36,178 @@ export const colourTokens: {
 } = {
 	foreground: {
 		text: {
-			light: theme.lightForegroundText,
 			dark: theme.darkForegroundText,
+			darkName: 'White',
+			light: theme.lightForegroundText,
+			lightName: 'Dark grey',
 			desc: 'Used for primary text like body text, headings, and labels to ensure they’re prominent and legible.',
 		},
 		muted: {
-			light: theme.lightForegroundMuted,
 			dark: theme.darkForegroundMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightForegroundMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used for secondary text to make it less prominent.',
 		},
 		action: {
-			light: theme.lightForegroundAction,
 			dark: theme.darkForegroundAction,
+			darkName: 'DARK TODO',
+			light: theme.lightForegroundAction,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues.',
 		},
 	},
 	background: {
 		body: {
-			light: theme.lightBackgroundBody,
 			dark: theme.darkBackgroundBody,
+			darkName: 'DARK TODO',
+			light: theme.lightBackgroundBody,
+			lightName: 'White',
 			desc: 'Used for the main background.',
 		},
 		bodyAlt: {
-			light: theme.lightBackgroundBodyAlt,
 			dark: theme.darkBackgroundBodyAlt,
+			darkName: 'DARK TODO',
+			light: theme.lightBackgroundBodyAlt,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as an alternative background.',
 		},
 		shade: {
-			light: theme.lightBackgroundShade,
 			dark: theme.darkBackgroundShade,
+			darkName: 'DARK TODO',
+			light: theme.lightBackgroundShade,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
 		},
 		shadeAlt: {
-			light: theme.lightBackgroundShadeAlt,
 			dark: theme.darkBackgroundShadeAlt,
+			darkName: 'DARK TODO',
+			light: theme.lightBackgroundShadeAlt,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to help differentiate or highlight interface components that sit on `bodyAlt` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
 		},
 	},
 	border: {
 		border: {
-			light: theme.lightBorder,
 			dark: theme.darkBorder,
+			darkName: 'DARK TODO',
+			light: theme.lightBorder,
+			lightName: 'LIGHT TODO',
 			desc: 'Used for borders of non-decorative interface components that require a 3:1 colour contrast ratio. For example, form input field borders are considered non-decorative because if they were removed, form input fields wouldn’t be recognisable.',
 		},
 		borderMuted: {
-			light: theme.lightBorderMuted,
 			dark: theme.darkBorderMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightBorderMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used for decorative interface components that don’t require a 3:1 colour contrast ratio.',
 		},
 	},
 	system: {
 		systemSuccess: {
-			light: theme.lightSystemSuccess,
 			dark: theme.darkSystemSuccess,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemSuccess,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to indicate that a task was completed as expected.',
 		},
 		systemSuccessMuted: {
-			light: theme.lightSystemSuccessMuted,
 			dark: theme.darkSystemSuccessMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemSuccessMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as a background for a Component with a `success` tone.',
 		},
 		systemError: {
-			light: theme.lightSystemError,
 			dark: theme.darkSystemError,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemError,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to indicate that something is wrong, or a task has failed and needs urgent attention. For example, a form validation error.',
 		},
 		systemErrorMuted: {
-			light: theme.lightSystemErrorMuted,
 			dark: theme.darkSystemErrorMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemErrorMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as a background for a Component with an `error` tone.',
 		},
 		systemInfo: {
-			light: theme.lightSystemInfo,
 			dark: theme.darkSystemInfo,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemInfo,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to provide addition information.',
 		},
 		systemInfoMuted: {
-			light: theme.lightSystemInfoMuted,
 			dark: theme.darkSystemInfoMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemInfoMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as a background for a Component with an `info` tone.',
 		},
 		systemWarning: {
-			light: theme.lightSystemWarning,
 			dark: theme.darkSystemWarning,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemWarning,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to indicate that taking an action could be risky and that a user should be cautious.',
 		},
 		systemWarningMuted: {
-			light: theme.lightSystemWarningMuted,
 			dark: theme.darkSystemWarningMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightSystemWarningMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as a background for a Component with a `warning` tone.',
 		},
 	},
 	miscellaneous: {
 		selected: {
-			light: theme.lightSelected,
 			dark: theme.darkSelected,
+			darkName: 'DARK TODO',
+			light: theme.lightSelected,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to indicate if an item is selected or active. For example, selected navigation items and tabs.',
 		},
 		selectedMuted: {
-			light: theme.lightSelectedMuted,
 			dark: theme.darkSelectedMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightSelectedMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as a background to communicate the selected state of input components. It is not intended to be used to convey the active item in navigational components.',
 		},
 		overlay: {
-			light: theme.lightOverlay,
 			dark: theme.darkOverlay,
+			darkName: 'DARK TODO',
+			light: theme.lightOverlay,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as an overlay for modals and other components that sit on top of the main background. The main content area beneath is considered disabled and not interactive.',
 		},
 		overlayMuted: {
-			light: theme.lightOverlayMuted,
 			dark: theme.darkOverlayMuted,
+			darkName: 'DARK TODO',
+			light: theme.lightOverlayMuted,
+			lightName: 'LIGHT TODO',
 			desc: 'Used as an overlay for drawers that sit on top of the main background, where maintaining some visibility of the main content area beneath may be beneficial. The main content area beneath is considered disabled and not interactive.',
 		},
 		focus: {
-			light: theme.lightForegroundFocus,
 			dark: theme.darkForegroundFocus,
+			darkName: 'DARK TODO',
+			light: theme.lightForegroundFocus,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to highlight interactive components for those navigating via keyboard.',
 		},
 		accent: {
-			light: theme.lightAccent,
 			dark: theme.darkAccent,
+			darkName: 'DARK TODO',
+			light: theme.lightAccent,
+			lightName: 'LIGHT TODO',
 			desc: 'Used to add a highlight of branding colours to navigation elements',
 		},
 	},
 };
 
-function ColorSquare({ color }: { color?: string }) {
+function ColorSquare({ color }: { color: string | undefined }) {
 	return (
 		<div
 			css={{
@@ -179,9 +227,10 @@ export const ColorTable = ({
 	'aria-labelledby': string;
 	'aria-describedby': string;
 	tokens: {
-		name: string;
-		desc: string;
 		color: string | undefined;
+		colorAsName: string;
+		desc: string;
+		name: string;
 	}[];
 }) => {
 	return (
@@ -205,7 +254,7 @@ export const ColorTable = ({
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{tokens.map(({ name, color, desc }) => {
+						{tokens.map(({ color, colorAsName, desc, name }) => {
 							return (
 								<TableRow key={name}>
 									<TableCell>
@@ -215,7 +264,9 @@ export const ColorTable = ({
 										</Flex>
 									</TableCell>
 									<TableCell>{color}</TableCell>
-									<TableCell>{desc}</TableCell>
+									<TableCell>
+										{colorAsName}. {desc}
+									</TableCell>
 								</TableRow>
 							);
 						})}
@@ -230,14 +281,19 @@ export const getTokensArrayFromObject = (
 	obj: {
 		[tokenName: string]: {
 			dark: string | undefined;
+			darkName: string;
 			light: string | undefined;
+			lightName: string;
 			desc: string;
 		};
 	},
 	activePalette: 'light' | 'dark'
 ) =>
-	Object.entries(obj).map(([tokenName, { [activePalette]: color, desc }]) => ({
-		name: tokenName,
-		desc,
-		color,
-	}));
+	Object.entries(obj).map(
+		([tokenName, { [activePalette]: color, desc, darkName, lightName }]) => ({
+			color,
+			colorAsName: activePalette === 'light' ? lightName : darkName,
+			desc,
+			name: tokenName,
+		})
+	);
