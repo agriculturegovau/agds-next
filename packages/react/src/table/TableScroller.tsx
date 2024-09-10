@@ -19,6 +19,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
 
+	const [scrollerAriaLabel, setScrollerAriaLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
 	// Assume tables don't need a scrollbar to begin with
@@ -205,6 +206,16 @@ export function TableScroller({ children }: TableScrollerProps) {
 		}
 	};
 
+	const hasScroll = thumbWidthRatio !== 1;
+
+	useEffect(() => {
+		setScrollerAriaLabel(
+			`Table ${
+				scrollerRef.current?.querySelector('caption')?.textContent || ''
+			}`
+		);
+	}, [scrollerRef]);
+
 	return (
 		<Stack
 			gap={0.5}
@@ -214,6 +225,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 			}}
 		>
 			<Box
+				aria-label={scrollerAriaLabel}
+				as="section"
 				css={{
 					msOverflowStyle: 'none',
 					overflowX: 'auto',
@@ -229,7 +242,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				focusRingFor="keyboard"
 				onScroll={repositionThumb}
 				ref={scrollerRef}
-				tabIndex={0}
+				tabIndex={hasScroll ? 0 : -1}
 			>
 				{children}
 				<Shadow
@@ -254,11 +267,11 @@ export function TableScroller({ children }: TableScrollerProps) {
 				/>
 			</Box>
 			<Flex
-				background="body"
 				alignItems="center"
+				background="body"
 				css={{
 					bottom: 0,
-					display: thumbWidthRatio === 1 ? 'none' : undefined,
+					display: hasScroll ? undefined : 'none',
 					left: 0,
 					position: 'sticky',
 					right: 0,
@@ -295,7 +308,6 @@ export function TableScroller({ children }: TableScrollerProps) {
 					aria-hidden
 					background="shade"
 					border
-					borderColor="muted"
 					css={{
 						borderRadius: 999,
 						height: pxToRem(12),
@@ -321,6 +333,10 @@ export function TableScroller({ children }: TableScrollerProps) {
 							position: 'absolute',
 							top: 0,
 							touchAction: 'none', // Prevent default touch actions
+							// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+							'@media (forced-colors: active)': {
+								backgroundColor: 'CaptionText',
+							},
 						}}
 						style={{
 							left: thumbPosition,

@@ -3,17 +3,17 @@ import { H2 } from '../heading';
 import { Text } from '../text';
 
 export const TaskListHeading = ({
-	stepsCompleted,
-	totalSteps,
+	tasksCompleted,
+	totalTasks,
 }: {
-	stepsCompleted: number;
-	totalSteps: number;
+	tasksCompleted: number;
+	totalTasks: number;
 }) => {
 	return (
 		<Stack gap={1}>
-			<H2>Task list</H2>
+			<H2>Complete these tasks</H2>
 			<Text fontSize="sm" color="muted">
-				{stepsCompleted} of {totalSteps} steps completed
+				{tasksCompleted} of {totalTasks} tasks completed
 			</Text>
 		</Stack>
 	);

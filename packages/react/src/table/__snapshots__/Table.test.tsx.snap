@@ -5,9 +5,10 @@ exports[`Table with TableCaption renders correctly 1`] = `
   <div
     class="css-h6dj2w-boxStyles-TableScroller"
   >
-    <div
+    <section
+      aria-label="Table Population of Australian states and territories, December 2015"
       class="css-13n67m1-boxStyles-TableScroller"
-      tabindex="0"
+      tabindex="-1"
     >
       <table
         class="css-r11i27-boxStyles-Table"
@@ -261,7 +262,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       <div
         class="css-6rjxly-boxStyles-Shadow"
       />
-    </div>
+    </section>
     <div
       class="css-1bk2ogi-boxStyles-TableScroller"
     >
@@ -290,12 +291,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="css-1ne0yec-boxStyles-TableScroller"
+        class="css-rr47rr-boxStyles-TableScroller"
         tabindex="-1"
       >
         <button
           aria-hidden="true"
-          class="css-np8p1e-boxStyles-TableScroller"
+          class="css-k24nkr-boxStyles-TableScroller"
           style="left: 0px; width: 100%;"
           tabindex="-1"
           type="button"

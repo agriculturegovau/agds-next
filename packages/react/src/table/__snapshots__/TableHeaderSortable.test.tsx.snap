@@ -116,7 +116,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
         class="css-1tx0oac-TableRow"
       >
         <th
-          class="css-79i25n-boxStyles"
+          class="css-m6eg6e-boxStyles"
           scope="col"
         >
           <button

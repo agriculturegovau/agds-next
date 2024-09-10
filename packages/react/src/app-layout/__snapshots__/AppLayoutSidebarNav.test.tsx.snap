@@ -108,7 +108,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </a>
       </li>
       <li
-        class="css-1o9fanl-AppLayoutSidebarNavItemInner"
+        class="css-1dcb9ex-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/establishments"
@@ -156,7 +156,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-1pfvc0v-AppLayoutSidebarNavItemInner"
+            class="css-1hnj2rd-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/establishments/canberra"
