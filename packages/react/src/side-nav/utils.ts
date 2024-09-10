@@ -1,4 +1,3 @@
-import { useId } from '../core';
 import { SideNavProps } from './SideNav';
 
 export function findBestMatch(
@@ -44,11 +43,4 @@ export function hasSubLevelActiveItem(
 			item.href === bestMatch ||
 			(item.items?.length && hasSubLevelActiveItem(item.items, bestMatch))
 	);
-}
-
-export function useSideNavIds() {
-	const autoId = useId();
-	return {
-		titleId: `sideNav-${autoId}-title`,
-	};
 }
