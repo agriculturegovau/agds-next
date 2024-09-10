@@ -384,10 +384,8 @@ export const SelectableBasic: Story = {
 		const isIndeterminate = allRowsSelected ? false : selectedRowIds.length > 0;
 
 		function toggleAllRows() {
-			// When no rows are selected, select every row
-			// When any row is selected, deselect every row
-			const noRowsSelected = selectedRowIds.length === 0;
-			setSelectedRowIds(noRowsSelected ? exampleData.map((i) => i.id) : []);
+			// When no rows selected or we're indeterminate we'll select all rows to match the screen reader announcement
+			setSelectedRowIds(allRowsSelected ? [] : exampleData.map((i) => i.id));
 		}
 
 		// The TableCaption` component can not be used with selectable tables due to a11y reasons

@@ -41,15 +41,8 @@ export function useRowSelection({
 	}
 
 	function toggleAllRows() {
-		// No rows are selected, so select all of them
-		if (paginatedSelectedIds.length === 0) {
-			setSelectedItems((selectedItems) => [...selectedItems, ...paginatedData]);
-		} else {
-			// Some rows are selected, so deselect all of them
-			setSelectedItems((selectedItems) =>
-				selectedItems.filter((i) => !paginatedSelectedIds.includes(i.id))
-			);
-		}
+		// When no rows selected or we're indeterminate we'll select all rows to match the screen reader announcement
+		setSelectedItems(isEveryRowSelected() ? [] : paginatedData);
 	}
 
 	useEffect(() => {
