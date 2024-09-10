@@ -6,7 +6,7 @@ import {
 	useState,
 } from 'react';
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, tokens } from '../core';
 import { Flex } from '../flex';
 import { ScrollbarArrowLeftIcon, ScrollbarArrowRightIcon } from '../icon';
 import { Stack } from '../stack';
@@ -22,7 +22,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const [scrollerAriaLabel, setScrollerAriaLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
-	const [thumbWidthRatio, setThumbWidthRatio] = useState(0);
+	// Assume tables don't need a scrollbar to begin with
+	const [thumbWidthRatio, setThumbWidthRatio] = useState(1);
 	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
 
 	const repositionThumb = useCallback(() => {
@@ -229,6 +230,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				css={{
 					msOverflowStyle: 'none',
 					overflowX: 'auto',
+					overscrollBehaviorX: 'none',
 					scrollbarWidth: 'none',
 					WebkitOverflowScrolling: 'touch',
 					width: '100%',
@@ -243,6 +245,26 @@ export function TableScroller({ children }: TableScrollerProps) {
 				tabIndex={hasScroll ? 0 : -1}
 			>
 				{children}
+				<Shadow
+					edge="left"
+					height={scrollerRef?.current?.offsetHeight || 0}
+					isVisible={Boolean(
+						thumbWidthRatio < 1 &&
+							scrollerRef?.current?.scrollLeft &&
+							scrollerRef.current.scrollLeft > 0
+					)}
+				/>
+				<Shadow
+					edge="right"
+					height={scrollerRef?.current?.offsetHeight || 0}
+					isVisible={Boolean(
+						thumbWidthRatio < 1 &&
+							scrollerRef?.current?.offsetWidth &&
+							Math.ceil(
+								scrollerRef.current.scrollLeft + scrollerRef.current.offsetWidth
+							) < scrollerRef.current.scrollWidth
+					)}
+				/>
 			</Box>
 			<Flex
 				alignItems="center"
@@ -354,6 +376,41 @@ export function TableScroller({ children }: TableScrollerProps) {
 				</Box>
 			</Flex>
 		</Stack>
+	);
+}
+
+function Shadow({
+	edge,
+	height,
+	isVisible,
+}: {
+	edge: 'left' | 'right';
+	height: number;
+	isVisible: boolean;
+}) {
+	return (
+		<Box
+			css={{
+				height,
+				opacity: isVisible ? 1 : 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				top: 0,
+				transition: `opacity ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+				width: 28,
+				...(edge === 'left'
+					? {
+							background:
+								'linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent)',
+							left: 0,
+					  }
+					: {
+							background:
+								'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+							right: 0,
+					  }),
+			}}
+		/>
 	);
 }
 
