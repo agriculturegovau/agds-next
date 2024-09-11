@@ -42,9 +42,11 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 				>
 					{iconBefore && (
 						<InfoIcon
-							weight="regular"
-							size="md"
+							aria-hidden={false}
+							aria-label="Information"
 							css={{ marginRight: mapSpacing(0.5) }}
+							size="md"
+							weight="regular"
 						/>
 					)}
 					{label}
