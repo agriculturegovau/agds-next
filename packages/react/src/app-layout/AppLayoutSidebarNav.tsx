@@ -340,15 +340,12 @@ function AppLayoutSidebarNavItemInner({
 					':focus-visible': {
 						// Elevate focused item above next sibling
 						zIndex: tokens.zIndex.elevated,
-						// Bring the focus ring in against the element so that it remains on screen and sibling element borders don't show in the offset
-						outlineOffset: `-${packs.outline.outlineOffset}px`,
+						// Bring the focus ring inside the element so that it remains on screen and sibling element borders don't show in the offset
+						outlineOffset: `-${packs.outline.outlineWidth}`,
 
-						// Make the left border appear to sit below the constrained focus ring
+						// Make the left border sit below the constrained focus ring
 						'&::before': {
-							left: packs.outline.outlineOffset,
-							top: packs.outline.outlineOffset,
-							bottom: packs.outline.outlineOffset,
-							borderLeftWidth: tokens.borderWidth.md,
+							zIndex: -1,
 						},
 					},
 				},

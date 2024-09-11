@@ -78,7 +78,7 @@ export function AppLayoutHeader({
 				background={background}
 				gap={1}
 				justifyContent="space-between"
-				paddingX={tokens.containerPadding}
+				paddingX={offsetContainerPadding}
 				paddingY={0.5}
 				width="100%"
 			>
@@ -106,3 +106,13 @@ export function AppLayoutHeader({
 		</Flex>
 	);
 }
+
+/**
+ * Offset the container padding against the AppLayoutHeaderBrand padding to allow for visible focus rings
+ */
+const offsetContainerPadding = Object.fromEntries(
+	Object.entries(tokens.containerPadding).map(([breakpoint, padding]) => [
+		breakpoint,
+		padding - 0.5,
+	])
+);
