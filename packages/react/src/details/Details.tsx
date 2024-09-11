@@ -43,7 +43,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					{iconBefore && (
 						<InfoIcon
 							aria-hidden={false}
-							aria-label="Information"
+							aria-label="Information."
 							css={{ marginRight: mapSpacing(0.5) }}
 							size="md"
 							weight="regular"
