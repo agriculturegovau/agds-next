@@ -37,7 +37,7 @@ export function useSelectAllRows(pageData: BusinessForAuditWithIndex[]) {
 	);
 
 	const toggleAllRowsSelected = () => {
-		// When no rows selected or we're indeterminate we'll select all rows to match the screen reader announcement
+		// When no rows are selected or we're indeterminate, on toggle we'll select all rows to match the screen reader announcement
 		isEveryRowSelected ? clearRowSelections() : selectRows(allPageItemIds);
 	};
 

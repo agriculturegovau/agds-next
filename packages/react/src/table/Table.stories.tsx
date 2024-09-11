@@ -384,7 +384,7 @@ export const SelectableBasic: Story = {
 		const isIndeterminate = allRowsSelected ? false : selectedRowIds.length > 0;
 
 		function toggleAllRows() {
-			// When no rows selected or we're indeterminate we'll select all rows to match the screen reader announcement
+			// When no rows are selected or we're indeterminate, on toggle we'll select all rows to match the screen reader announcement
 			setSelectedRowIds(allRowsSelected ? [] : exampleData.map((i) => i.id));
 		}
 

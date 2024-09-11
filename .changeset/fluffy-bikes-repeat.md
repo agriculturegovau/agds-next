@@ -2,4 +2,4 @@
 '@ag.ds-next/react': patch
 ---
 
-table: Change examples of indeterminate select-all checkbox totoggle to all-selected on press, rather than all-deselected
+table: Change all examples of the indeterminate select-all checkbox so that when pressed, all items will be selected rather than deselected.
