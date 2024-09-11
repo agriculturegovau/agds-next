@@ -32,7 +32,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 			>
 				<Flex
 					as="summary"
-					inline
+					css={{ width: 'min-content' }}
 					link
 					focusRingFor="keyboard"
 					alignItems="center"
