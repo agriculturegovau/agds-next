@@ -10,7 +10,7 @@ exports[`AppLayout renders correctly 1`] = `
       id="header"
     >
       <div
-        class="css-10kt2hp-boxStyles"
+        class="css-gpi2zt-boxStyles"
       >
         <a
           class="css-1ymvh48-boxStyles-AppLayoutHeaderBrand"
@@ -240,7 +240,7 @@ exports[`AppLayout renders correctly 1`] = `
           class="css-o80hmi-boxStyles"
         >
           <li
-            class="css-nf0zhd-AppLayoutSidebarNavItemInner"
+            class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/account"
@@ -280,7 +280,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-kytm5n-AppLayoutSidebarNavItemInner"
+            class="css-mjl15f-AppLayoutSidebarNavItemInner"
           >
             <span
               class="css-1i7cdx8-boxStyles"
@@ -306,7 +306,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-nf0zhd-AppLayoutSidebarNavItemInner"
+            class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/"
@@ -338,7 +338,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1ltfzc2-AppLayoutSidebarNavItemInner"
+            class="css-1uk2yku-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -387,7 +387,7 @@ exports[`AppLayout renders correctly 1`] = `
               class="css-o80hmi-boxStyles"
             >
               <li
-                class="css-s0azga-AppLayoutSidebarNavItemInner"
+                class="css-1aio4t5-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/canberra"
@@ -405,7 +405,7 @@ exports[`AppLayout renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-s0azga-AppLayoutSidebarNavItemInner"
+                class="css-1aio4t5-AppLayoutSidebarNavItemInner"
               >
                 <a
                   href="/establishments/sydney"
@@ -425,7 +425,7 @@ exports[`AppLayout renders correctly 1`] = `
             </ul>
           </li>
           <li
-            class="css-nf0zhd-AppLayoutSidebarNavItemInner"
+            class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/intelligence"
@@ -454,7 +454,7 @@ exports[`AppLayout renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-nf0zhd-AppLayoutSidebarNavItemInner"
+            class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/compliance"
@@ -511,7 +511,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-nf0zhd-AppLayoutSidebarNavItemInner"
+            class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/help"
@@ -548,7 +548,7 @@ exports[`AppLayout renders correctly 1`] = `
             />
           </li>
           <li
-            class="css-kytm5n-AppLayoutSidebarNavItemInner"
+            class="css-mjl15f-AppLayoutSidebarNavItemInner"
           >
             <button
               class="css-6e6ykx-BaseButton"
