@@ -142,7 +142,6 @@ function LiveCode({
 					onClick={toggleIsCodeVisible}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 					aria-expanded={isCodeVisible}
-					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
 					aria-controls={codeId}
 				>
 					{isCodeVisible ? 'Hide live code' : 'Show live code'}
@@ -152,16 +151,10 @@ function LiveCode({
 					variant="tertiary"
 					onClick={copyLiveCode}
 					iconAfter={CopyIcon}
-					aria-label="Copy code snippet to clipboard"
 				>
 					Copy code
 				</Button>
-				<ButtonLink
-					href={playroomUrl}
-					size="sm"
-					variant="tertiary"
-					aria-label="Open code snippet in Playroom"
-				>
+				<ButtonLink href={playroomUrl} size="sm" variant="tertiary">
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
