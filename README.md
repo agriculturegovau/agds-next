@@ -41,6 +41,15 @@ For development run one or more of the following commands:
 - `yarn example:dev` – start the example site
 - `yarn yourgov:dev` – start the example form site
 
+### Branches
+
+We use the `develop` branch as an integration branch for features and the `main` branch as the official release branch. When creating new branches, always branch from `develop`.
+
+```sh
+git checkout develop
+git checkout -b my-feature-branch
+```
+
 ### Website
 
 Deployment of the website is handled by [github actions](https://github.com/agriculturegovau/agds-next/actions/workflows/deploy-docs.yml). The site is deployed automatically anytime changes are merged to the `main` branch.
