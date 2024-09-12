@@ -32,7 +32,11 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 			>
 				<Flex
 					as="summary"
-					css={{ width: 'fit-content' }}
+					css={{
+						// iOS VoiceOver does not announce the expanded state of `summary` elements when they are inline.
+						// Here we're using `fit-content` to simulate the visual effect of an inline element while maintaining the correct announcement.
+						width: 'fit-content',
+					}}
 					link
 					focusRingFor="keyboard"
 					alignItems="center"
