@@ -68,7 +68,7 @@ export function GlobalAlert({
 								}),
 							}}
 						>
-							{title}
+							{title}2232
 						</Heading>
 					) : null}
 					<Box
