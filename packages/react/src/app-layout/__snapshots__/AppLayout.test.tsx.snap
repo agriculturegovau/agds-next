@@ -140,6 +140,8 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
+          aria-expanded="false"
+          aria-haspopup="dialog"
           class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >

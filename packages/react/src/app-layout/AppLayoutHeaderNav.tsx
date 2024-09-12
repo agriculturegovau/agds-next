@@ -47,6 +47,8 @@ function AppLayoutHeaderNavMenuButton({
 	return (
 		<Flex
 			alignItems="center"
+			aria-expanded="false"
+			aria-haspopup="dialog"
 			as={BaseButton}
 			color="action"
 			css={{
