@@ -73,6 +73,7 @@ export const reactDayPickerStyles = {
 		color: boxPalette.foregroundAction,
 		cursor: 'pointer',
 		height: cellSizeSmall,
+		position: 'relative',
 		textAlign: 'center',
 		verticalAlign: 'middle',
 		width: cellSizeSmall,
@@ -81,16 +82,20 @@ export const reactDayPickerStyles = {
 			opacity: 0.3,
 			cursor: 'not-allowed',
 		},
-		'&:not([disabled]):hover': {
+		'&:not([disabled], :focus):hover': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
+			zIndex: tokens.zIndex.elevated,
+			...highContrastOutlineStyles,
+		},
+		'&:focus': {
+			zIndex: tokens.zIndex.elevated,
 		},
 		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...focusStyles,
 		// Today's button
 		'&.rdp-day_today': {
-			position: 'relative',
 			fontWeight: tokens.fontWeight.bold,
 			'&::after': {
 				backgroundColor: 'currentColor',
@@ -102,6 +107,7 @@ export const reactDayPickerStyles = {
 				marginLeft: '-0.25rem',
 				position: 'absolute',
 				width: '0.5rem',
+				...highContrastOutlineStyles,
 			},
 		},
 	},
@@ -130,10 +136,16 @@ export const reactDayPickerStyles = {
 	},
 	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 		{
-			'&:not(:focus)': highContrastOutlineStyles,
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,
 			fontWeight: tokens.fontWeight.bold,
+			'&::before': {
+				content: '""',
+				inset: 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				...highContrastOutlineStyles,
+			},
 		},
 } as const;
 
@@ -162,8 +174,10 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		},
 		// Start day of date range
 		'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
+		'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
 		// End day of date range
 		'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
+		'.rdp-day_range_end:not(.rdp-day_range_start)::before': endStyles,
 		// Start and end days of date range
 		'.rdp-day_range_start.rdp-day_range_end': {
 			...(from && startStyles),

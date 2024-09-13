@@ -21,6 +21,8 @@ import {
 } from './utils';
 
 export type CollapsingSideBarProps = PropsWithChildren<{
+	/* The specific label of the root element, otherwise falls back to title + subtitle. */
+	ariaLabel?: string;
 	/** The HTML element to render the CollapsingSideBar as. */
 	as?: CollapsingSideBarContainerElementType;
 	/** If CollapsingSideBar is placed on 'bodyAlt' background, please set this to 'bodyAlt'. */
@@ -36,6 +38,7 @@ export type CollapsingSideBarProps = PropsWithChildren<{
 }>;
 
 export function CollapsingSideBar({
+	ariaLabel,
 	as = 'section',
 	background = 'body',
 	children,
@@ -72,7 +75,8 @@ export function CollapsingSideBar({
 	return (
 		<Stack
 			as={as}
-			aria-labelledby={headingId}
+			aria-label={ariaLabel}
+			aria-labelledby={ariaLabel ? undefined : headingId}
 			background={background}
 			css={{
 				[collapsingSideBarHoverProp]: hoverColorMap[background],
@@ -115,9 +119,8 @@ export function CollapsingSideBar({
 				</Stack>
 				<Box
 					aria-controls={bodyId}
-					aria-describedby={headingId}
 					aria-expanded={isOpen}
-					aria-label={`${title} (Expand/Collapse)`}
+					aria-label={title}
 					as={BaseButton}
 					background={background}
 					borderBottom

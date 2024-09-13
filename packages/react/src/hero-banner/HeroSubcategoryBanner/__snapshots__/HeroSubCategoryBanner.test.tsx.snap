@@ -67,7 +67,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </svg>
                 <button
                   aria-expanded="false"
-                  aria-label="Expand list"
+                  aria-label="Show all breadcrumbs"
                   class="css-eqfuua-BaseButton-boxStyles"
                   type="button"
                 >

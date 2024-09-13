@@ -3,7 +3,7 @@
 exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r0:-heading"
+    aria-label="Filters (1 active)"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -21,9 +21,8 @@ exports[`FilterSidebar renders correctly 1`] = `
       </div>
       <button
         aria-controls="collapsing-side-bar-:r0:-body"
-        aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
-        aria-label="Filters (1) (Expand/Collapse)"
+        aria-label="Filters (1)"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >

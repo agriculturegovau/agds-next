@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, CSSObject } from '@emotion/react';
 import {
 	tokens,
 	BoxPalette,
@@ -596,6 +596,13 @@ export type BoxProps = PaletteProps &
 	LinkProps &
 	PaddingProps;
 
+const commonReset: CSSObject = {
+	boxSizing: 'border-box',
+	listStyle: 'none',
+	margin: 0,
+	padding: 0,
+};
+
 export function boxStyles({
 	alignItems,
 	alignSelf,
@@ -654,7 +661,6 @@ export function boxStyles({
 	rowGap,
 	textAlign,
 	width,
-	...restProps
 }: BoxProps) {
 	/* **LEGACY HANDLER**
 	 * We've deprecated `focus` in favour of `focusRingFor?: 'all | 'keyboard'. This
@@ -669,86 +675,77 @@ export function boxStyles({
 		);
 	}
 
-	return [
-		css([
-			paletteStyles({ palette, dark, light }),
+	return css([
+		paletteStyles({ palette, dark, light }),
 
-			// common resets
-			{
-				boxSizing: 'border-box',
-				listStyle: 'none',
-				margin: 0,
-				padding: 0,
-			},
+		commonReset,
 
-			mq({
-				...colorStyles({ background, color }),
+		mq({
+			...colorStyles({ background, color }),
 
-				...borderStyles({
-					border,
-					borderWidth,
-					borderColor,
-					borderLeft,
-					borderLeftWidth,
-					borderRight,
-					borderRightWidth,
-					borderTop,
-					borderTopWidth,
-					borderBottom,
-					borderBottomWidth,
-					borderX,
-					borderY,
-					rounded,
-				}),
-
-				...layoutStyles({
-					alignSelf,
-					display,
-					flexDirection,
-					flexWrap,
-					flexGrow,
-					flexShrink,
-					gridColumnSpan,
-					gridColumnStart,
-					gridColumnEnd,
-					justifyContent,
-					justifySelf,
-					alignItems,
-					gap,
-					columnGap,
-					rowGap,
-					width,
-					minWidth,
-					maxWidth,
-					height,
-					minHeight,
-					maxHeight,
-				}),
-
-				...paddingStyles({
-					paddingTop,
-					paddingBottom,
-					paddingRight,
-					paddingLeft,
-					paddingX,
-					paddingY,
-					padding,
-				}),
-
-				...typographyStyles({
-					fontWeight,
-					fontFamily,
-					fontSize,
-					lineHeight,
-					textAlign,
-					breakWords,
-				}),
-
-				...(link ? linkStyles : undefined),
-				...(focusRingFor ? focusStylesMap[focusRingFor] : undefined),
-				...(highContrastOutline ? highContrastOutlineStyles : undefined),
+			...borderStyles({
+				border,
+				borderWidth,
+				borderColor,
+				borderLeft,
+				borderLeftWidth,
+				borderRight,
+				borderRightWidth,
+				borderTop,
+				borderTopWidth,
+				borderBottom,
+				borderBottomWidth,
+				borderX,
+				borderY,
+				rounded,
 			}),
-		]),
-		restProps,
-	];
+
+			...layoutStyles({
+				alignSelf,
+				display,
+				flexDirection,
+				flexWrap,
+				flexGrow,
+				flexShrink,
+				gridColumnSpan,
+				gridColumnStart,
+				gridColumnEnd,
+				justifyContent,
+				justifySelf,
+				alignItems,
+				gap,
+				columnGap,
+				rowGap,
+				width,
+				minWidth,
+				maxWidth,
+				height,
+				minHeight,
+				maxHeight,
+			}),
+
+			...paddingStyles({
+				paddingTop,
+				paddingBottom,
+				paddingRight,
+				paddingLeft,
+				paddingX,
+				paddingY,
+				padding,
+			}),
+
+			...typographyStyles({
+				fontWeight,
+				fontFamily,
+				fontSize,
+				lineHeight,
+				textAlign,
+				breakWords,
+			}),
+
+			...(link ? linkStyles : undefined),
+			...(focusRingFor ? focusStylesMap[focusRingFor] : undefined),
+			...(highContrastOutline ? highContrastOutlineStyles : undefined),
+		}),
+	]);
 }

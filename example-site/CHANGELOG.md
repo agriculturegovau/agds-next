@@ -1,5 +1,33 @@
 # @ag.ds-next/example-site
 
+## 0.5.0
+
+### Minor Changes
+
+- 706fd0e0c42: audit: Add redirect pages
+
+### Patch Changes
+
+- d35dcc90ffb: Update deprecated component and prop uses through examples
+- Updated dependencies [88303d920a2]
+- Updated dependencies [acc1da3735d]
+- Updated dependencies [cede8edea80]
+- Updated dependencies [fe8d4911d3b]
+- Updated dependencies [c313d7a5500]
+- Updated dependencies [b12ac2c2658]
+- Updated dependencies [2f53f886110]
+- Updated dependencies [39dfd397bab]
+- Updated dependencies [97fe495929e]
+- Updated dependencies [2d2ca761d3b]
+- Updated dependencies [4c4a3edcfd3]
+- Updated dependencies [d35dcc90ffb]
+- Updated dependencies [19df22e82fa]
+- Updated dependencies [751deb01c49]
+- Updated dependencies [37757215c6b]
+- Updated dependencies [9831208cd5c]
+- Updated dependencies [180169b4d8b]
+  - @ag.ds-next/react@1.24.0
+
 ## 0.4.0
 
 ### Minor Changes

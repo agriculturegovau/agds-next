@@ -35,7 +35,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-a"
               name=":r1:"
               type="checkbox"
@@ -71,7 +71,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-b"
               name=":r1:"
               type="checkbox"
@@ -107,7 +107,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-c"
               name=":r1:"
               type="checkbox"
@@ -143,7 +143,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-d"
               name=":r1:"
               type="checkbox"
@@ -258,7 +258,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r6:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-a"
               name=":r7:"
               type="checkbox"
@@ -296,7 +296,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r6:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-b"
               name=":r7:"
               type="checkbox"
@@ -334,7 +334,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r6:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-c"
               name=":r7:"
               type="checkbox"
@@ -372,7 +372,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               aria-describedby="control-group-:r6:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-d"
               name=":r7:"
               type="checkbox"
@@ -446,7 +446,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-a"
               name=":r5:"
               type="checkbox"
@@ -482,7 +482,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-b"
               name=":r5:"
               type="checkbox"
@@ -518,7 +518,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-c"
               name=":r5:"
               type="checkbox"
@@ -554,7 +554,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-rw5u1c-CheckboxInput"
+              class="css-142kh0r-CheckboxInput"
               data-testid="option-d"
               name=":r5:"
               type="checkbox"
@@ -627,7 +627,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-a"
               name=":rd:"
               type="radio"
@@ -650,7 +650,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-b"
               name=":rd:"
               type="radio"
@@ -673,7 +673,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-c"
               name=":rd:"
               type="radio"
@@ -696,7 +696,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
           >
             <input
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-d"
               name=":rd:"
               type="radio"
@@ -798,7 +798,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-a"
               name=":rj:"
               type="radio"
@@ -823,7 +823,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-b"
               name=":rj:"
               type="radio"
@@ -848,7 +848,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-c"
               name=":rj:"
               type="radio"
@@ -873,7 +873,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-d"
               name=":rj:"
               type="radio"
@@ -934,7 +934,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-a"
               name=":rh:"
               type="radio"
@@ -957,7 +957,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-b"
               name=":rh:"
               type="radio"
@@ -980,7 +980,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-c"
               name=":rh:"
               type="radio"
@@ -1003,7 +1003,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
           >
             <input
               aria-required="true"
-              class="css-yl6hsu-RadioInput"
+              class="css-o6md8t-RadioInput"
               data-testid="option-d"
               name=":rh:"
               type="radio"
