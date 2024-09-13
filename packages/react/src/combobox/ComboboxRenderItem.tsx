@@ -1,4 +1,4 @@
-import { Fragment, isValidElement, ReactNode } from 'react';
+import { Fragment, isValidElement, ReactNode, useMemo } from 'react';
 import { boxPalette, tokens } from '../core';
 import { fontGrid } from '../core/utils/fontGrid';
 
@@ -31,6 +31,9 @@ export function ComboboxRenderItem({
 	if (process.env.NODE_ENV !== 'production' && inputValue) {
 		console.warn('Combobox: The `inputValue` prop is now unused.');
 	}
+
+	const renderedLabel = useMemo(() => renderItemLabel(itemLabel), [itemLabel]);
+
 	return (
 		<Fragment>
 			{beforeElement ? (
@@ -43,7 +46,7 @@ export function ComboboxRenderItem({
 					flexDirection: 'column',
 				}}
 			>
-				<span>{renderItemLabel(itemLabel)}</span>
+				<span>{renderedLabel}</span>
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
