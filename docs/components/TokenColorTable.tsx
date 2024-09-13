@@ -77,14 +77,14 @@ export const colourTokens: {
 			darkName: 'DARK TODO',
 			light: theme.lightBackgroundShade,
 			lightName: 'LIGHT TODO',
-			desc: 'Used to help differentiate or highlight interface components that sit on `body` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
+			desc: 'Used to help decorate and highlight interface components that sit on `body` background. Used to fill interactive components like buttons to emphasise the hover state hen the label changes to another WCAG compliant colour and displays an underline. Also used in Callouts, and zebra striping on tables.',
 		},
 		shadeAlt: {
 			dark: theme.darkBackgroundShadeAlt,
 			darkName: 'DARK TODO',
 			light: theme.lightBackgroundShadeAlt,
 			lightName: 'LIGHT TODO',
-			desc: 'Used to help differentiate or highlight interface components that sit on `bodyAlt` background. For example, hover states for interactive components, callouts, and Zebra stripes on tables.',
+			desc: 'Used to help decorate and highlight interface components that sit on `bodyAlt` background. Used to fill interactive components like buttons to emphasise the hover state hen the label changes to another WCAG compliant colour and displays an underline. Also used in Callouts, and zebra striping on tables.',
 		},
 	},
 	border: {
@@ -202,7 +202,7 @@ export const colourTokens: {
 			darkName: 'DARK TODO',
 			light: theme.lightAccent,
 			lightName: 'LIGHT TODO',
-			desc: 'Used to add a highlight of branding colours to navigation elements',
+			desc: 'A decorative colour used to accent branding colours.',
 		},
 	},
 };
