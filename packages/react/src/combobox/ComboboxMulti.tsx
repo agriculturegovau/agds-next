@@ -48,8 +48,8 @@ export type ComboboxMultiProps<Option extends DefaultComboboxOption> = {
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** The list of options to show in the dropdown. */
 	options: Option[];
-	/** Used to override the default item rendering. */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Used to override the default item rendering. inputValue is now unused. */
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */

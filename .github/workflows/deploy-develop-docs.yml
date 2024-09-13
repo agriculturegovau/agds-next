@@ -1,9 +1,9 @@
-name: Deploy Docs Site
+name: Deploy Develop Docs Site
 
 on:
   push:
     branches:
-      - main
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -38,18 +38,18 @@ jobs:
       - name: Build
         run: yarn build-site
         env:
+          BASE_PATH: /develop
           # Github has a maximum RAM size of 7 GiB by default
           # Building storybook requires extra RAM, so we are bumping the `max-old-space-size` to 6 GiB
           # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
           NODE_OPTIONS: --max-old-space-size=6144
 
-      - name: Deploy 🚀
+      - name: Deploy develop
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/out # The folder the action should deploy.
           # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
-          clean-exclude: |
-            pr-preview/
-            develop/
+          clean-exclude: pr-preview/
           force: false # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
+          target-folder: develop
