@@ -62,21 +62,20 @@ export const reactDayPickerStyles = {
 		height: cellSizeSmall,
 		margin: 0,
 		padding: 0,
-		textAlign: 'center',
-		verticalAlign: 'middle',
 		width: cellSizeSmall,
 		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...fontGrid('sm', 'default'),
 	},
-	// Day button
+	// Day button which is actually applied to the cell
 	'.rdp-day': {
-		alignItems: 'center',
 		borderRadius: tokens.borderRadius,
+		boxSizing: 'border-box',
 		color: boxPalette.foregroundAction,
-		display: 'flex',
+		cursor: 'pointer',
 		height: cellSizeSmall,
-		justifyContent: 'center',
 		position: 'relative',
+		textAlign: 'center',
+		verticalAlign: 'middle',
 		width: cellSizeSmall,
 		'&[disabled]': {
 			color: boxPalette.foregroundText,
@@ -103,12 +102,17 @@ export const reactDayPickerStyles = {
 				borderRadius: '0.25rem',
 				bottom: '0.3rem',
 				content: '""',
+				left: '50%',
 				height: '0.5rem',
+				marginLeft: '-0.25rem',
 				position: 'absolute',
 				width: '0.5rem',
 				...highContrastOutlineStyles,
 			},
 		},
+	},
+	'.rdp-day_outside': {
+		cursor: 'default',
 	},
 	// Table
 	'.rdp-months': {
@@ -125,16 +129,10 @@ export const reactDayPickerStyles = {
 		margin: 0,
 		maxWidth: `calc(${cellSizeLarge} * 7)`,
 		borderCollapse: 'collapse',
+		tableLayout: 'fixed',
 	},
 	'.rdp-tbody': {
 		border: 0,
-	},
-	'.rdp-cell': {
-		height: cellSizeSmall,
-		padding: 0,
-		textAlign: 'center',
-		width: cellSizeSmall,
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 	},
 	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 		{
