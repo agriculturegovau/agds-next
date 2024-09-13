@@ -1,12 +1,12 @@
 import {
 	Fragment,
-	Ref,
+	type FocusEvent,
+	type FocusEventHandler,
+	type MouseEvent,
+	type ReactNode,
+	type Ref,
 	useCallback,
-	MouseEvent,
 	useRef,
-	ReactNode,
-	FocusEventHandler,
-	FocusEvent,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -25,6 +25,7 @@ import {
 import { Field } from '../../field';
 import { Flex } from '../../flex';
 import {
+	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
 	validateMaxWidth,
@@ -67,7 +68,7 @@ type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	// input props
 	'aria-describedby'?: string;
 	'aria-invalid'?: boolean;
@@ -88,9 +89,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem = (item, inputValue) => (
-		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
-	),
+	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
@@ -128,6 +127,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	const styles = comboboxMultiStyles({
 		block,
 		disabled,
+		inputValue: combobox.inputValue,
 		invalid: invalid || Boolean(props['aria-invalid']),
 		isInputFocused,
 		maxWidth: maxWidthProp,
@@ -259,7 +259,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item, combobox.inputValue)}
+													{renderItem(item)}
 												</ComboboxListItem>
 											))
 										) : (
@@ -279,6 +279,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 function comboboxMultiStyles({
 	block,
 	disabled,
+	inputValue,
 	invalid,
 	isInputFocused,
 	maxWidth,
@@ -286,6 +287,7 @@ function comboboxMultiStyles({
 }: {
 	block: boolean;
 	disabled: boolean;
+	inputValue?: string;
 	invalid: boolean;
 	isInputFocused: boolean;
 	maxWidth: ComboboxMaxWidthValues;
@@ -293,6 +295,7 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
+			...generateHighlightStyles(inputValue),
 			...(!block && {
 				maxWidth: tokens.maxWidth.field[maxWidth],
 			}),

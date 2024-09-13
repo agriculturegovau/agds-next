@@ -39,14 +39,12 @@ const nameOption = NAME_OPTIONS[0];
 
 export const Basic: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 	},
 };
 
 export const WithSecondaryText: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 		secondaryText: `Role: ${nameOption.jobTitle}`,
 	},
@@ -54,7 +52,6 @@ export const WithSecondaryText: Story = {
 
 export const WithTertiaryText: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 		secondaryText: `Role: ${nameOption.jobTitle}`,
 		tertiaryText: `Status: ${nameOption.status}`,
@@ -63,7 +60,6 @@ export const WithTertiaryText: Story = {
 
 export const WithBeforeElement: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 		secondaryText: `Role: ${nameOption.jobTitle}`,
 		tertiaryText: `Status: ${nameOption.status}`,
@@ -75,7 +71,6 @@ export const WithBeforeElement: Story = {
 
 export const WithEndElement: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 		secondaryText: `Role: ${nameOption.jobTitle}`,
 		tertiaryText: `Status: ${nameOption.status}`,
@@ -88,7 +83,6 @@ export const WithEndElement: Story = {
 
 export const WithFourLinesText: Story = {
 	args: {
-		inputValue: '',
 		itemLabel: nameOption.fullName,
 		secondaryText: (
 			<Fragment>

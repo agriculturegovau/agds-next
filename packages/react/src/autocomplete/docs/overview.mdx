@@ -177,10 +177,9 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 				await new Promise((resolve) => setTimeout(resolve, 1000));
 				return NAME_OPTIONS;
 			}}
-			renderItem={(item, inputValue) => (
+			renderItem={(item) => (
 				<AutocompleteRenderItem
 					itemLabel={item.label}
-					inputValue={inputValue}
 					secondaryText={`Role: ${item.jobTitle}`}
 					tertiaryText={`Job: ${item.status}`}
 					beforeElement={
