@@ -29,7 +29,7 @@ export function ComboboxRenderItem({
 }: ComboboxRenderItemProps) {
 	// deprecation warnings
 	if (process.env.NODE_ENV !== 'production' && inputValue) {
-		console.warn('Combobbox: The `inputValue` prop is now unused.');
+		console.warn('Combobox: The `inputValue` prop is now unused.');
 	}
 	return (
 		<Fragment>
