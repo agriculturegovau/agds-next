@@ -1,4 +1,4 @@
-import { type CSSProperties } from 'react';
+import { type CSSProperties, useEffect, useState } from 'react';
 import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
@@ -89,4 +89,16 @@ export function generateHighlightStyles(
 	});
 
 	return styles;
+}
+
+export function useIsIos() {
+	const [isIos, setIsIos] = useState(false);
+
+	useEffect(() => {
+		if (CSS.supports('-webkit-tap-highlight-color', 'black')) {
+			setIsIos(true);
+		}
+	}, []);
+
+	return isIos;
 }

@@ -46,7 +46,7 @@ export function ComboboxRenderItem({
 					flexDirection: 'column',
 				}}
 			>
-				<span>{renderedLabel}</span>
+				<span aria-label={itemLabel}>{renderedLabel}</span>
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText

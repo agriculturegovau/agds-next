@@ -59,7 +59,7 @@ describe('Combobox', () => {
 			user.type(input, 'capital');
 
 			const option = screen.getByRole('option', {
-				name: 'A u s t r a l i a n C a p i t a l T e r r i t o r y',
+				name: 'Australian Capital Territory',
 			});
 
 			// userEvent.click(option) does not fire the change event in downshift - using direct click method on the option as a workaround

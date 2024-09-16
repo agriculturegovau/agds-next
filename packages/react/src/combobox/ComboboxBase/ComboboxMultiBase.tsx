@@ -28,6 +28,7 @@ import {
 	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
+	useIsIos,
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
@@ -104,6 +105,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	...props
 }: ComboboxMultiBaseProps<Option>) {
 	const inputRef = useRef<HTMLInputElement>(null);
+	const isIos = useIsIos();
 
 	validateMaxWidth('ComboboxMulti', maxWidthProp);
 
@@ -155,6 +157,16 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		: inputRef;
 
 	const { id: labelId } = combobox.getLabelProps();
+
+	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
+		// If a user presses the Done button on the iOS keyboard, we shouldn't close the keyboard
+		if (isIos && !event.nativeEvent?.relatedTarget) {
+			// @ts-expect-error: Property 'preventDownshiftDefault' does not exist on type 'FocusEvent'
+			event.nativeEvent.preventDownshiftDefault = true;
+		}
+		onBlur?.(event);
+		setInputBlurred();
+	};
 
 	return (
 		<Field
@@ -214,10 +226,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 											onFocus?.(event);
 											setInputFocused();
 										},
-										onBlur: (event: FocusEvent<HTMLInputElement>) => {
-											onBlur?.(event);
-											setInputBlurred();
-										},
+										onBlur: handleOnBlur,
 									})
 								)}
 								css={styles.input}

@@ -213,7 +213,7 @@ describe('ComboboxAsyncMulti', () => {
 			await user.type(input, 'qld');
 
 			const option = await screen.findByRole('option', {
-				name: 'Q u e e n s l a n d',
+				name: 'Queensland',
 			});
 			option.click();
 
@@ -239,7 +239,7 @@ describe('ComboboxAsyncMulti', () => {
 			await user.type(input, 'qld');
 
 			const option = await screen.findByRole('option', {
-				name: 'Q u e e n s l a n d',
+				name: 'Queensland',
 			});
 			await user.click(option);
 
