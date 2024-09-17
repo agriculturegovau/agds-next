@@ -95,7 +95,8 @@ export function useIsIos() {
 	const [isIos, setIsIos] = useState(false);
 
 	useEffect(() => {
-		if (CSS.supports('-webkit-tap-highlight-color', 'black')) {
+		// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
+		if (CSS.supports('-webkit-overflow-scrolling', 'auto')) {
 			setIsIos(true);
 		}
 	}, []);
