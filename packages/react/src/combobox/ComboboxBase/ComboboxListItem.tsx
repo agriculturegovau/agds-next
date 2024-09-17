@@ -50,7 +50,7 @@ export const ComboboxListItem = forwardRef<
 			// Required for Android TalkBack to be able to access the list items
 			// See https://issues.chromium.org/issues/40260928
 			// But stops iOS from being able to access them ◔_◔
-			// tabIndex={isIos ? undefined : -1}
+			tabIndex={isIos ? undefined : -1}
 			{...props}
 		>
 			{children}
