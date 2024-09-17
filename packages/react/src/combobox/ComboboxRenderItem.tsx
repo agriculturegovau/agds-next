@@ -46,7 +46,7 @@ export function ComboboxRenderItem({
 					flexDirection: 'column',
 				}}
 			>
-				<span aria-label={itemLabel}>{renderedLabel}</span>
+				{renderedLabel}
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
@@ -90,6 +90,7 @@ export function ComboboxRenderItem({
 function renderItemLabel(itemLabel: string) {
 	return (
 		<span
+			aria-label={itemLabel}
 			css={{
 				color: 'inherit',
 				fontFamily: tokens.font.body,
@@ -98,7 +99,7 @@ function renderItemLabel(itemLabel: string) {
 			}}
 		>
 			{itemLabel.split('').map((character, index) => (
-				<span data-char={character.toLowerCase()} key={index}>
+				<span data-char={character} key={index}>
 					{character}
 				</span>
 			))}

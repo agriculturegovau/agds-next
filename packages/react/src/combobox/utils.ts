@@ -65,18 +65,18 @@ export function generateHighlightStyles(
 
 	characters.forEach((_, index) => {
 		// When typing "abc"
-		// This generates things like [data-char="a"] + [data-char="b"] + [data-char="c"]
+		// This generates things like [data-char="a" i] + [data-char="b" i] + [data-char="c" i]
 		// to ensure we select consecutive elements
 		const baseSelector = characters
 			.slice(0, index + 1)
-			.map((char) => `[data-char="${char}"]`)
+			.map((char) => `[data-char="${char}" i]`)
 			.join(' + ');
 
-		// This generates things like [data-char="a"]:has(+ [data-char="b"] + [data-char="c"])
+		// This generates things like [data-char="a" i]:has(+ [data-char="b" i] + [data-char="c" i])
 		// to ensure we select earlier elements whose later siblings match
 		const hasSelector = characters
 			.slice(index + 1)
-			.map((char) => `+ [data-char="${char}"]`)
+			.map((char) => `+ [data-char="${char}" i]`)
 			.join(' ');
 
 		const fullSelector = hasSelector
