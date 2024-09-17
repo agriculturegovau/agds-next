@@ -16,11 +16,8 @@ relatedComponents: ['text-input', 'time-picker']
 		setValue(timeValue);
 	};
 
-	const invalid = value && !isValidTime(value.value);
-
 	return (
 		<TimeInput
-			invalid={invalid}
 			label="Time"
 			message="Enter a valid time"
 			onChange={onChange}
@@ -49,16 +46,20 @@ The `onChange` handler provides an object with both a `value` and `formatted` ve
 
 Use the `invalid` prop to indicate if the user input is invalid. The `isValidTime()` function can be used to help identify whether the input is valid.
 
+Due to accessibility concerns with certain screen reader and browser combinations, do not mark the TimeInput as `invalid` `onChange()`.
+
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ value: '9:66' });
+	const [invalid, setInvalid] = React.useState(true);
 
 	const onChange = (timeValue) => {
 		console.log('onChange', timeValue);
+		if (invalid && isValidTime(timeValue.value)) {
+			setInvalid(false);
+		}
 		setValue(timeValue);
 	};
-
-	const invalid = value && !isValidTime(value.value);
 
 	return (
 		<TimeInput

@@ -43,10 +43,13 @@ As we do not have any sort of input masking due to accessibility and user experi
 
 In this case, you can use the `onInputChange` prop to keep track of the user’s input. The `value` prop can also be set to a string, which represents the value of the text input.
 
+Due to accessibility concerns with certain screen reader and browser combinations, do not mark the DatePicker as `invalid` `onInputChange()`.
+
 ```jsx live
 () => {
 	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState('31/1o/2020');
+	const [invalid, setInvalid] = React.useState(true);
 
 	const onInputChange = (value) => {
 		console.log('onInputChange', value);
@@ -55,15 +58,9 @@ In this case, you can use the `onInputChange` prop to keep track of the user’s
 
 	const onChange = (date) => {
 		console.log('onChange', date);
+		setInvalid(false);
 		setValue(date);
 	};
-
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	const invalid = React.useMemo(() => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, [value]);
 
 	return (
 		<DatePicker
@@ -263,13 +260,6 @@ Date formats are parsed in order from first to last and stops when a valid date 
 		setValue(date);
 	};
 
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	const invalid = React.useMemo(() => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, [value]);
-
 	return (
 		<DatePicker
 			label="Select date"
@@ -277,10 +267,6 @@ Date formats are parsed in order from first to last and stops when a valid date 
 			value={value}
 			onChange={onChange}
 			onInputChange={onInputChange}
-			{...(invalid && {
-				invalid: true,
-				message: 'Enter a valid date',
-			})}
 			allowedDateFormats={['dd MM yyyy', 'dd-MM-yyyy']}
 		/>
 	);
