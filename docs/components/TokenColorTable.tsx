@@ -53,7 +53,7 @@ export const colourTokens: {
 			dark: theme.darkForegroundAction,
 			darkName: 'Pale bright-blue',
 			light: theme.lightForegroundAction,
-			lightName: 'LIGHT TODO',
+			lightName: 'Medium dark-blue',
 			desc: 'Used to indicate interactive components like links and buttons. Don’t use the action colour for non-interactive components as it could confuse users. Also make sure you don’t rely on colour alone to indicate that a component is interactive, use additional visual cues.',
 		},
 	},
