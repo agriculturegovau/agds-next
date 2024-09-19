@@ -116,7 +116,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	const { id: labelId } = combobox.getLabelProps();
 
 	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
-		// If a user presses the Done button on the iOS keyboard, we shouldn't close the keyboard
+		// If a user presses the Done button on the iOS keyboard, we shouldn't close the dropdown
 		if (isIos && !event.nativeEvent?.relatedTarget) {
 			// @ts-expect-error: Property 'preventDownshiftDefault' does not exist on type 'FocusEvent'
 			event.nativeEvent.preventDownshiftDefault = true;
