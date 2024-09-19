@@ -15,7 +15,10 @@ describe('ensureValidDateRange', () => {
 		to: new Date(1999, 0, 0), // `to` is after `from`
 	};
 	test('fixes invalid date ranges', () => {
-		expect(ensureValidDateRange(invalidDateRange)).toEqual(validDateRange);
+		expect(ensureValidDateRange(invalidDateRange)).toEqual({
+			from: validDateRange.from,
+			to: undefined,
+		});
 	});
 });
 
