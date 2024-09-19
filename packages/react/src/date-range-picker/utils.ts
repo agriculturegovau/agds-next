@@ -10,8 +10,7 @@ import {
 	parseDate,
 } from '../date-picker/utils';
 
-// If the end date is before the start date, swap the end date with the start
-// This prevents the users from typing invalid date ranges
+// If the end date is before the start date, unset the end date and make the start date the end date provided
 export function ensureValidDateRange(dateRange: {
 	from: Date | undefined;
 	to: Date | undefined;
@@ -19,7 +18,7 @@ export function ensureValidDateRange(dateRange: {
 	const { to, from } = dateRange;
 
 	if (from && to && isBefore(to, from)) {
-		return { from: to, to: from };
+		return { from: to, to: undefined };
 	}
 
 	return dateRange;
