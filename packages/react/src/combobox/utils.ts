@@ -96,7 +96,10 @@ export function useIsIos() {
 
 	useEffect(() => {
 		// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
-		if (CSS.supports('-webkit-overflow-scrolling', 'auto')) {
+		if (
+			CSS.supports('-webkit-appearance', '-apple-pay-button') &&
+			CSS.supports('-webkit-overflow-scrolling', 'auto')
+		) {
 			setIsIos(true);
 		}
 	}, []);
