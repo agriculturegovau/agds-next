@@ -19,6 +19,7 @@ import {
 	useTernaryState,
 	useWindowSize,
 	useId,
+	packs,
 } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
@@ -36,6 +37,7 @@ import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import { isAfter, isBefore } from 'date-fns';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -145,8 +147,12 @@ export const DateRangePicker = ({
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
 	function onFromTriggerClick() {
+		if (!inputMode || inputMode === 'to' || !isCalendarOpen) {
+			openCalendar();
+		} else {
+			closeCalendar();
+		}
 		setInputMode('from');
-		toggleCalendar();
 		setHasCalendarOpened(true);
 	}
 
@@ -170,28 +176,35 @@ export const DateRangePicker = ({
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
 
-			const range = ensureValidDateRange(
-				inputMode === 'from'
-					? { from: selectedDay, to: valueAsDateOrUndefined.to }
-					: { from: valueAsDateOrUndefined.from, to: selectedDay }
-			);
+			const range = {
+				from: valueAsDateOrUndefined.from,
+				to: valueAsDateOrUndefined.to,
+			} as DateRange;
+
+			if (inputMode === 'from') {
+				range.from = selectedDay;
+
+				if (range.to && isAfter(range.from, range.to)) {
+					range.to = undefined;
+				}
+			} else {
+				range.to = selectedDay;
+
+				if (range.from && isBefore(range.to, range.from)) {
+					range.from = undefined;
+				}
+			}
 
 			onChange(range);
 			setFromInputValue(range.from ? formatDate(range.from, dateFormat) : '');
 			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
-
-			if (range.from && range.to) {
-				closeCalendar();
-				setInputMode(undefined);
-				return;
-			}
 
 			if (inputMode === 'from') {
 				setInputMode('to');
 				return;
 			}
 
-			if (inputMode === 'to' && !range.from) {
+			if (!range.from && range.to) {
 				setInputMode('from');
 				return;
 			}
@@ -211,13 +224,19 @@ export const DateRangePicker = ({
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-		const nextValue = ensureValidDateRange({
-			from: constrainedDate,
+		const range = {
+			from: valueAsDateOrUndefined.from,
 			to: valueAsDateOrUndefined.to,
-		});
+		} as DateRange;
+
+		range.from = constrainedDate;
+
+		if (range.from && range.to && isAfter(range.from, range.to)) {
+			range.from = undefined;
+		}
 
 		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
+			onChange(range);
 		} else {
 			onFromInputChangeProp?.(inputValue);
 		}
@@ -241,13 +260,19 @@ export const DateRangePicker = ({
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-		const nextValue = ensureValidDateRange({
+		const range = {
 			from: valueAsDateOrUndefined.from,
-			to: constrainedDate,
-		});
+			to: valueAsDateOrUndefined.to,
+		} as DateRange;
+
+		range.to = constrainedDate;
+
+		if (range.to && range.from && isBefore(range.to, range.from)) {
+			range.to = undefined;
+		}
 
 		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
+			onChange(range);
 		} else {
 			onToInputChangeProp?.(inputValue);
 		}
@@ -390,6 +415,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
 							dateFormat={dateFormat}
+							highlight={isCalendarOpen && inputMode === 'from'}
 						/>
 						<DateInput
 							aria-describedby={
@@ -412,6 +438,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
 							dateFormat={dateFormat}
+							highlight={isCalendarOpen && inputMode === 'to'}
 						/>
 					</Flex>
 				</Stack>
