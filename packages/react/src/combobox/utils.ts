@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useState } from 'react';
+import { type CSSProperties, useMemo } from 'react';
 import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
@@ -92,17 +92,13 @@ export function generateHighlightStyles(
 }
 
 export function useIsIos() {
-	const [isIos, setIsIos] = useState(false);
-
-	useEffect(() => {
-		// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
-		if (
+	const isIos = useMemo(
+		() =>
+			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
 			CSS.supports('-webkit-appearance', '-apple-pay-button') &&
-			CSS.supports('-webkit-overflow-scrolling', 'auto')
-		) {
-			setIsIos(true);
-		}
-	}, []);
+			CSS.supports('-webkit-overflow-scrolling', 'auto'),
+		[]
+	);
 
 	return isIos;
 }
