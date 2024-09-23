@@ -220,22 +220,30 @@ export const DateRangePicker = ({
 	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
 
-		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+		// Ensure the text entered in both fields are valid dates
+		const constrainedFromDate = constrainDate(
+			parseDate(inputValue, allowedDateFormats),
+			minDate,
+			maxDate
+		);
+		const constrainedToDate =
+			valueAsDateOrUndefined.to ||
+			constrainDate(
+				parseDate(toInputValue, allowedDateFormats),
+				minDate,
+				maxDate
+			);
 
 		const range = {
-			from: valueAsDateOrUndefined.from,
-			to: valueAsDateOrUndefined.to,
+			from: constrainedFromDate,
+			to: constrainedToDate,
 		} as DateRange;
-
-		range.from = constrainedDate;
 
 		if (range.from && range.to && isAfter(range.from, range.to)) {
 			range.from = undefined;
 		}
 
-		if (!inputValue || constrainedDate) {
+		if (!inputValue || constrainedFromDate) {
 			onChange(range);
 		} else {
 			onFromInputChangeProp?.(inputValue);
@@ -256,22 +264,30 @@ export const DateRangePicker = ({
 	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
 
-		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+		// Ensure the text entered in both fields are valid dates
+		const constrainedToDate = constrainDate(
+			parseDate(inputValue, allowedDateFormats),
+			minDate,
+			maxDate
+		);
+		const constrainedFromDate =
+			valueAsDateOrUndefined.from ||
+			constrainDate(
+				parseDate(fromInputValue, allowedDateFormats),
+				minDate,
+				maxDate
+			);
 
 		const range = {
-			from: valueAsDateOrUndefined.from,
-			to: valueAsDateOrUndefined.to,
+			from: constrainedFromDate,
+			to: constrainedToDate,
 		} as DateRange;
-
-		range.to = constrainedDate;
 
 		if (range.to && range.from && isBefore(range.to, range.from)) {
 			range.to = undefined;
 		}
 
-		if (!inputValue || constrainedDate) {
+		if (!inputValue || constrainedToDate) {
 			onChange(range);
 		} else {
 			onToInputChangeProp?.(inputValue);
