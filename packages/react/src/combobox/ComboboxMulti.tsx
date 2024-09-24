@@ -162,7 +162,6 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 			switch (type) {
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
 				case useCombobox.stateChangeTypes.ItemClick:
-				case useCombobox.stateChangeTypes.InputBlur:
 					if (newSelectedItem) {
 						setSelectedItems([...selectedItems, newSelectedItem]);
 						setInputValue('');
