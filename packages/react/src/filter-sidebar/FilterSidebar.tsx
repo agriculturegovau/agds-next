@@ -40,6 +40,9 @@ export function FilterSidebar({
 
 	return (
 		<CollapsingSideBar
+			ariaLabel={`Filters${
+				activeFiltersCount ? ` (${activeFiltersCount} active)` : ''
+			}`}
 			title={`Filters${activeFiltersCount ? ` (${activeFiltersCount})` : ''}`}
 		>
 			<Box

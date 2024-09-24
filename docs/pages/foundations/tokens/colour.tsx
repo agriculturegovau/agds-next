@@ -28,7 +28,7 @@ export default function TokensColorPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
-				editPath="/docs/pages/foundations/tokens/color.tsx"
+				editPath="/docs/pages/foundations/tokens/colour.tsx"
 			>
 				<InpageNav
 					title="On this page"

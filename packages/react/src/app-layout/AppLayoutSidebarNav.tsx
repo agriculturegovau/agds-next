@@ -303,14 +303,7 @@ function AppLayoutSidebarNavItemInner({
 						fontWeight: isCurrentPage
 							? tokens.fontWeight.bold
 							: tokens.fontWeight.normal,
-						background:
-							boxPalette[
-								isCurrentPage
-									? 'selectedMuted'
-									: background === 'body'
-									? 'backgroundBody'
-									: 'backgroundBodyAlt'
-							],
+						background: isCurrentPage ? boxPalette.selectedMuted : undefined,
 						'&::before': {
 							content: "''",
 							position: 'absolute',

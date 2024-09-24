@@ -1,13 +1,12 @@
-import { Fragment, isValidElement, ReactNode } from 'react';
-import { Text } from '../text';
-import { Stack } from '../stack';
-import { splitLabel } from './utils';
+import { Fragment, isValidElement, ReactNode, useMemo } from 'react';
+import { boxPalette, tokens } from '../core';
+import { fontGrid } from '../core/utils/fontGrid';
 
 export type ComboboxRenderItemProps = {
 	/** The label of the item. */
 	itemLabel: string;
-	/** The value of the Combobox/Autocomplete text input. */
-	inputValue: string;
+	/** @deprecated Unused. Individual items no longer need to know the value of the Combobox/Autocomplete text input. */
+	inputValue?: string;
 	/** Supporting text for the item. */
 	tertiaryText?: ReactNode;
 	/** Supporting text for the item. */
@@ -18,6 +17,8 @@ export type ComboboxRenderItemProps = {
 	endElement?: ReactNode;
 };
 
+const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
+
 export function ComboboxRenderItem({
 	itemLabel,
 	inputValue,
@@ -26,59 +27,81 @@ export function ComboboxRenderItem({
 	secondaryText,
 	tertiaryText,
 }: ComboboxRenderItemProps) {
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production' && inputValue) {
+		console.warn('Combobox: The `inputValue` prop is now unused.');
+	}
+
+	const renderedLabel = useMemo(() => renderItemLabel(itemLabel), [itemLabel]);
+
 	return (
 		<Fragment>
 			{beforeElement ? (
 				<div css={{ flexShrink: 0 }}>{beforeElement}</div>
 			) : null}
-			<Stack as="span">
-				<span>{renderItemLabel(itemLabel, inputValue)}</span>
+			<span
+				css={{
+					alignItems: 'stretch',
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
+				<span>{renderedLabel}</span>
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
 					) : (
-						<Text color="muted" fontSize="xs">
+						<span
+							css={{
+								color: boxPalette.foregroundMuted,
+								fontFamily: tokens.font.body,
+								fontWeight: tokens.fontWeight.normal,
+								...FONT_SIZE_LINE_HEIGHT,
+							}}
+						>
 							{secondaryText}
-						</Text>
+						</span>
 					)
 				) : null}
 				{tertiaryText ? (
 					isValidElement(tertiaryText) ? (
 						tertiaryText
 					) : (
-						<Text color="muted" fontSize="xs">
+						<span
+							css={{
+								color: boxPalette.foregroundMuted,
+								fontFamily: tokens.font.body,
+								fontWeight: tokens.fontWeight.normal,
+								...FONT_SIZE_LINE_HEIGHT,
+							}}
+						>
 							{tertiaryText}
-						</Text>
+						</span>
 					)
 				) : null}
-			</Stack>
+			</span>
 			{endElement ? (
-				<div css={{ marginLeft: 'auto', flexShrink: 0 }}>{endElement}</div>
+				<div css={{ flexShrink: 0, marginLeft: 'auto' }}>{endElement}</div>
 			) : null}
 		</Fragment>
 	);
 }
 
-function renderItemLabel(itemLabel: string, inputValue: string) {
-	return splitLabel(itemLabel, inputValue).map((part, index) => {
-		const isHighlighted = part.toLowerCase() === inputValue.toLowerCase();
-		if (isHighlighted) {
-			return (
-				<Text
-					key={index}
-					as="mark"
-					color="inherit"
-					fontWeight="bold"
-					css={{ background: 'none' }}
-				>
-					{part}
-				</Text>
-			);
-		}
-		return (
-			<Text key={index} as="span" color="inherit">
-				{part}
-			</Text>
-		);
-	});
+function renderItemLabel(itemLabel: string) {
+	return (
+		<span
+			css={{
+				color: 'inherit',
+				fontFamily: tokens.font.body,
+				fontWeight: tokens.fontWeight.normal,
+				...FONT_SIZE_LINE_HEIGHT,
+			}}
+		>
+			{itemLabel.split('').map((character, index) => (
+				<span data-char={character.toLowerCase()} key={index}>
+					{character}
+				</span>
+			))}
+		</span>
+	);
 }

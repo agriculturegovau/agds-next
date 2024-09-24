@@ -6,7 +6,7 @@ import {
 	CollapsingSideBarBackground,
 } from '../_collapsing-side-bar';
 import { SideNavTitle } from './SideNavTitle';
-import { findBestMatch, useSideNavIds } from './utils';
+import { findBestMatch } from './utils';
 import { SideNavLinkList } from './SideNavLinkList';
 
 type SideNavMenuItem = Omit<LinkProps, 'children'> & {
@@ -45,11 +45,11 @@ export function SideNav({
 		console.warn('SideNav: The `collapseTitle` prop is now unused.');
 	}
 
-	const { titleId } = useSideNavIds();
 	const bestMatch = findBestMatch(items, activePath);
 
 	return (
 		<CollapsingSideBar
+			as="nav"
 			background={background}
 			customTitleElement={
 				<SideNavTitle
@@ -57,7 +57,6 @@ export function SideNav({
 					css={{
 						[tokens.mediaQuery.min.md]: visuallyHiddenStyles,
 					}}
-					id={titleId}
 				>
 					{title}
 				</SideNavTitle>
@@ -65,13 +64,7 @@ export function SideNav({
 			gap={0}
 			title={title}
 		>
-			<Box
-				aria-labelledby={titleId}
-				as="nav"
-				fontFamily="body"
-				fontSize="sm"
-				lineHeight="default"
-			>
+			<Box fontFamily="body" fontSize="sm" lineHeight="default">
 				<SideNavTitle
 					as="span"
 					// Don't render the title on small screen if there is no link as it's unnecessary double-up of headings

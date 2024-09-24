@@ -41,22 +41,23 @@ export function AllIconsPlayground() {
 					]}
 				/>
 			</Columns>
-			<Columns cols={{ xs: 1, sm: 2, md: 3 }} gap={1}>
+			<Columns as="ol" cols={{ xs: 1, sm: 2, md: 3 }} gap={1}>
 				{Object.keys(allIcons)
 					.sort()
 					.map((iconName) => {
 						const Icon = allIcons[iconName as keyof typeof allIcons];
 						return (
 							<Flex
-								key={iconName}
-								flexDirection="column"
 								alignItems="center"
-								justifyContent="center"
-								flexShrink={0}
-								rounded
-								gap={1}
-								padding={2}
+								as="li"
 								background="shade"
+								flexDirection="column"
+								flexShrink={0}
+								gap={1}
+								justifyContent="center"
+								key={iconName}
+								padding={2}
+								rounded
 							>
 								<Icon size={size} weight={weight} />
 								<Text>{iconName}</Text>

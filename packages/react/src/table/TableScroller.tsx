@@ -28,8 +28,10 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
 
+	const [scrollerAriaLabel, setScrollerAriaLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
+	// Assume tables don't need a scrollbar to begin with
 	const [thumbWidthRatio, setThumbWidthRatio] = useState(1);
 	const [buttonIntervalId, setButtonIntervalId] = useState<number | null>(null);
 	const [overlayOffsets, setOverlayOffsets] =
@@ -220,9 +222,15 @@ export function TableScroller({ children }: TableScrollerProps) {
 		scrollerRef.current &&
 		Math.ceil(scrollerRef.current.scrollLeft) >=
 			scrollerRef.current.scrollWidth - scrollerRef.current.clientWidth;
-	const hasScroll =
-		scrollerRef.current &&
-		scrollerRef.current.scrollWidth > scrollerRef.current.clientWidth;
+	const hasScroll = thumbWidthRatio !== 1;
+
+	useEffect(() => {
+		setScrollerAriaLabel(
+			`Table ${
+				scrollerRef.current?.querySelector('caption')?.textContent || ''
+			}`
+		);
+	}, [scrollerRef]);
 
 	return (
 		<ScrollerContext.Provider
@@ -240,6 +248,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 				}}
 			>
 				<Box
+					aria-label={scrollerAriaLabel}
+					as="section"
 					css={{
 						msOverflowStyle: 'none',
 						overflowX: 'auto',
@@ -254,8 +264,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 					}}
 					focusRingFor="keyboard"
 					onScroll={repositionThumb}
-					tabIndex={0}
 					ref={scrollerRef}
+					tabIndex={hasScroll ? 0 : -1}
 				>
 					{children}
 				</Box>
@@ -323,7 +333,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 					alignItems="center"
 					css={{
 						bottom: 0,
-						display: thumbWidthRatio === 1 ? 'none' : undefined,
+						display: hasScroll ? undefined : 'none',
 						left: 0,
 						position: 'sticky',
 						right: 0,
@@ -387,6 +397,10 @@ export function TableScroller({ children }: TableScrollerProps) {
 								position: 'absolute',
 								top: 0,
 								touchAction: 'none', // Prevent default touch actions
+								// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+								'@media (forced-colors: active)': {
+									backgroundColor: 'CaptionText',
+								},
 							}}
 							style={{
 								left: thumbPosition,

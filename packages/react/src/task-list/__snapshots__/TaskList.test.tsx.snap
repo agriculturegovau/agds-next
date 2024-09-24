@@ -11,7 +11,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
       <h2
         class="css-s8h0nj-boxStyles"
       >
-        Task list
+        Complete these tasks
       </h2>
       <span
         class="css-axuon-boxStyles"
@@ -19,7 +19,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         2
          of 
         4
-         steps completed
+         tasks completed
       </span>
     </div>
     <ul
@@ -483,7 +483,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
       <h2
         class="css-s8h0nj-boxStyles"
       >
-        Task list
+        Complete these tasks
       </h2>
       <span
         class="css-axuon-boxStyles"
@@ -491,7 +491,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
         2
          of 
         4
-         steps completed
+         tasks completed
       </span>
     </div>
     <ul

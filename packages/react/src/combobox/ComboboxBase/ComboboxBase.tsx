@@ -1,10 +1,16 @@
-import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
+import {
+	Fragment,
+	type FocusEventHandler,
+	type ReactNode,
+	type Ref,
+} from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import {
+	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
 	validateMaxWidth,
@@ -44,7 +50,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 	// input props
 	'aria-describedby'?: string;
@@ -77,9 +83,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem = (item, inputValue) => (
-		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
-	),
+	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
@@ -123,7 +127,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			{(a11yProps) => (
 				<div
 					{...popover.getReferenceProps()}
-					css={{ position: 'relative', maxWidth }}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...generateHighlightStyles(combobox.inputValue),
+					}}
 				>
 					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input
@@ -188,7 +196,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item, combobox.inputValue)}
+													{renderItem(item)}
 												</ComboboxListItem>
 											))
 										) : (

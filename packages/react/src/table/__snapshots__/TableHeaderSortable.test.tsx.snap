@@ -5,9 +5,10 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
   <div
     class="css-j44gbe-boxStyles-TableScroller"
   >
-    <div
+    <section
+      aria-label="Table "
       class="css-13n67m1-boxStyles-TableScroller"
-      tabindex="0"
+      tabindex="-1"
     >
       <table
         class="css-13kilxg-boxStyles-Table"
@@ -20,7 +21,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
           >
             <th
               aria-sort="ascending"
-              class="css-62ptbb-boxStyles-TableHeaderSortable"
+              class="css-pmnm9r-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
@@ -56,13 +57,13 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
           </tr>
         </thead>
       </table>
-    </div>
+    </section>
     <div
-      class="css-kd3ymp-boxStyles-TableScroller"
+      class="css-1qn2nbn-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
-      class="css-1wc54ui-boxStyles-TableScroller"
+      class="css-us2h8d-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
@@ -98,7 +99,7 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
       >
         <button
           aria-hidden="true"
-          class="css-np8p1e-boxStyles-TableScroller"
+          class="css-k24nkr-boxStyles-TableScroller"
           style="left: 0px; width: 100%;"
           tabindex="-1"
           type="button"
@@ -137,9 +138,10 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
   <div
     class="css-j44gbe-boxStyles-TableScroller"
   >
-    <div
+    <section
+      aria-label="Table "
       class="css-13n67m1-boxStyles-TableScroller"
-      tabindex="0"
+      tabindex="-1"
     >
       <table
         class="css-13kilxg-boxStyles-Table"
@@ -152,7 +154,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
           >
             <th
               aria-sort="descending"
-              class="css-62ptbb-boxStyles-TableHeaderSortable"
+              class="css-pmnm9r-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
@@ -188,13 +190,13 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
           </tr>
         </thead>
       </table>
-    </div>
+    </section>
     <div
-      class="css-kd3ymp-boxStyles-TableScroller"
+      class="css-1qn2nbn-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
-      class="css-1wc54ui-boxStyles-TableScroller"
+      class="css-us2h8d-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
@@ -230,7 +232,7 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
       >
         <button
           aria-hidden="true"
-          class="css-np8p1e-boxStyles-TableScroller"
+          class="css-k24nkr-boxStyles-TableScroller"
           style="left: 0px; width: 100%;"
           tabindex="-1"
           type="button"
@@ -269,9 +271,10 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
   <div
     class="css-j44gbe-boxStyles-TableScroller"
   >
-    <div
+    <section
+      aria-label="Table "
       class="css-13n67m1-boxStyles-TableScroller"
-      tabindex="0"
+      tabindex="-1"
     >
       <table
         class="css-13kilxg-boxStyles-Table"
@@ -283,7 +286,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
             class="css-cyv65r-TableRow"
           >
             <th
-              class="css-1hekcr5-boxStyles-TableHeaderSortable"
+              class="css-kxm933-boxStyles-TableHeaderSortable"
               scope="col"
             >
               <button
@@ -316,13 +319,13 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
           </tr>
         </thead>
       </table>
-    </div>
+    </section>
     <div
-      class="css-kd3ymp-boxStyles-TableScroller"
+      class="css-1qn2nbn-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
-      class="css-1wc54ui-boxStyles-TableScroller"
+      class="css-us2h8d-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div
@@ -358,7 +361,7 @@ exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`
       >
         <button
           aria-hidden="true"
-          class="css-np8p1e-boxStyles-TableScroller"
+          class="css-k24nkr-boxStyles-TableScroller"
           style="left: 0px; width: 100%;"
           tabindex="-1"
           type="button"

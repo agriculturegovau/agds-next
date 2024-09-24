@@ -18,6 +18,9 @@ You should only clone this repo if you are looking to contribute to it, such as�
 
 ## Contributing
 
+> [!IMPORTANT]  
+> Do not use agency data when working in any Github repository.
+
 ### System dependencies
 
 To run the dev and builds in this repository you will need version `18.18.2` of Node.js installed
@@ -37,6 +40,15 @@ For development run one or more of the following commands:
 - `yarn playroom:dev` – start playroom
 - `yarn example:dev` – start the example site
 - `yarn yourgov:dev` – start the example form site
+
+### Branches
+
+We use the `develop` branch as an integration branch for features and the `main` branch as the official release branch. When creating new branches, always branch from `develop`.
+
+```sh
+git checkout develop
+git checkout -b my-feature-branch
+```
 
 ### Website
 

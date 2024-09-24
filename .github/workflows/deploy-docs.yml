@@ -48,5 +48,8 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/out # The folder the action should deploy.
-          clean-exclude: pr-preview/ # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
+          # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible
+          clean-exclude: |
+            pr-preview/
+            develop/
           force: false # https://github.com/rossjrw/pr-preview-action#ensure-your-main-deployment-is-compatible

@@ -9,10 +9,10 @@ export type TableSortDirection = 'ASC' | 'DESC';
 
 export type TableHeaderSortableProps = {
 	display?: ResponsiveProp<'none' | 'table-cell'>;
-	/** The active direction this column is being sorted by. */
-	sort?: TableSortDirection;
 	/** Callback function for when the column header is clicked. */
 	onClick?: () => void;
+	/** The active direction this column is being sorted by. */
+	sort?: TableSortDirection;
 	/** Sets the horizontal alignment of the content. */
 	textAlign?: 'left' | 'center' | 'right';
 	/** Sets the width of the column. */
@@ -22,10 +22,10 @@ export type TableHeaderSortableProps = {
 /** Used in place of `TableHeader` when users can click a column header to
  * sort the table. */
 export const TableHeaderSortable = ({
-	display,
 	children,
-	sort,
+	display,
 	onClick,
+	sort,
 	textAlign = 'left',
 	width,
 }: PropsWithChildren<TableHeaderSortableProps>) => {
@@ -33,10 +33,13 @@ export const TableHeaderSortable = ({
 	const sortLabel = getSortLabel(sort);
 	return (
 		<Box
+			aria-sort={sortLabel}
 			as="th"
+			borderBottom
+			borderColor="selected"
+			borderBottomWidth={sort ? 'xl' : 'none'}
 			display={display}
 			scope="col"
-			aria-sort={sortLabel}
 			width={width}
 			css={{
 				position: 'relative',
