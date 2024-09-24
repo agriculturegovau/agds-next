@@ -4,6 +4,7 @@ import {
 	Ref,
 	useCallback,
 	useMemo,
+	useRef,
 	useState,
 } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
@@ -84,8 +85,40 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		[options, inputValue, selectedItems]
 	);
 
+	const previousSelectedItemsRef = useRef<Option[]>([]);
+
 	const multiSelection = useMultipleSelection({
 		selectedItems,
+		getA11yStatusMessage: (state) => {
+			const { selectedItems } = state;
+
+			// No changes made or an item was added, nothing to announce
+			if (
+				selectedItems.length === previousSelectedItemsRef.current.length ||
+				selectedItems.length > previousSelectedItemsRef.current.length
+			) {
+				previousSelectedItemsRef.current = selectedItems;
+				return '';
+			}
+
+			// All items were removed
+			if (
+				selectedItems.length === 0 &&
+				previousSelectedItemsRef.current.length > 0
+			) {
+				previousSelectedItemsRef.current = selectedItems;
+				return 'All items have been removed.';
+			}
+
+			// A single item was removed, which we'll announce
+			const reomvedItem = previousSelectedItemsRef.current.find(
+				(selectedItem) =>
+					selectedItems.findIndex((item) => item.value === selectedItem.value) <
+					0
+			);
+			previousSelectedItemsRef.current = selectedItems;
+			return `${reomvedItem?.label || 'An item'} has been removed.`;
+		},
 		onStateChange({ selectedItems: newSelectedItems, type }) {
 			switch (type) {
 				case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:

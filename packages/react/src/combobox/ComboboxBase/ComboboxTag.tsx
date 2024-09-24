@@ -30,7 +30,7 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 				gap={0.25}
 				fontSize="sm"
 				color="text"
-				focusRingFor="keyboard"
+				focusRingFor="all"
 				css={{
 					cursor: 'pointer',
 					...(disabled && {
@@ -43,18 +43,11 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 			>
 				{children}
 				<Flex
-					as="span"
-					height={mapSpacing(1.5)}
-					width={mapSpacing(1.5)}
 					alignItems="center"
-					justifyContent="center"
-					onClick={(event: MouseEvent<HTMLSpanElement>) => {
-						if (disabled) return;
-						event.stopPropagation();
-						onRemove();
-					}}
-					focusRingFor="keyboard"
+					as="button"
+					aria-label={`Remove ${children}`}
 					css={{
+						background: 'transparent',
 						cursor: 'pointer',
 						svg: { display: 'block', color: boxPalette.foregroundAction },
 						'&:hover': { svg: { color: boxPalette.foregroundText } },
@@ -63,6 +56,16 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 							opacity: 0.3,
 						}),
 					}}
+					focusRingFor="keyboard"
+					height={mapSpacing(1.5)}
+					justifyContent="center"
+					onClick={(event: MouseEvent<HTMLSpanElement>) => {
+						if (disabled) return;
+						event.stopPropagation();
+						onRemove();
+					}}
+					tabIndex={-1}
+					width={mapSpacing(1.5)}
 				>
 					<CloseIcon size="sm" />
 				</Flex>
