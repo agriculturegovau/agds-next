@@ -45,7 +45,7 @@ describe('generateHighlightStyles', () => {
 
 	test('it returns one selector object for single character inputValue', () => {
 		expect(generateHighlightStyles('a')).toEqual({
-			'[data-char="a"]': {
+			'[data-char="a" i]': {
 				fontWeight: 'bold',
 			},
 		});
@@ -53,22 +53,22 @@ describe('generateHighlightStyles', () => {
 
 	test('it returns has and sibling selector objects for multi character inputValue', () => {
 		expect(generateHighlightStyles('ab')).toEqual({
-			'[data-char="a"] + [data-char="b"]': {
+			'[data-char="a" i] + [data-char="b" i]': {
 				fontWeight: 'bold',
 			},
-			'[data-char="a"]:has(+ [data-char="b"])': {
+			'[data-char="a" i]:has(+ [data-char="b" i])': {
 				fontWeight: 'bold',
 			},
 		});
 
 		expect(generateHighlightStyles('abc')).toEqual({
-			'[data-char="a"] + [data-char="b"] + [data-char="c"]': {
+			'[data-char="a" i] + [data-char="b" i] + [data-char="c" i]': {
 				fontWeight: 'bold',
 			},
-			'[data-char="a"] + [data-char="b"]:has(+ [data-char="c"])': {
+			'[data-char="a" i] + [data-char="b" i]:has(+ [data-char="c" i])': {
 				fontWeight: 'bold',
 			},
-			'[data-char="a"]:has(+ [data-char="b"] + [data-char="c"])': {
+			'[data-char="a" i]:has(+ [data-char="b" i] + [data-char="c" i])': {
 				fontWeight: 'bold',
 			},
 		});

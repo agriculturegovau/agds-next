@@ -1,5 +1,6 @@
 import {
 	Fragment,
+	type FocusEvent,
 	type FocusEventHandler,
 	type ReactNode,
 	type Ref,
@@ -13,6 +14,7 @@ import {
 	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
+	useIsIos,
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
@@ -89,6 +91,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
+	const isIos = useIsIos();
 
 	validateMaxWidth('ComboBox', maxWidthProp);
 
@@ -111,6 +114,15 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	});
 
 	const { id: labelId } = combobox.getLabelProps();
+
+	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
+		// If a user presses the Done button on the iOS keyboard, we shouldn't close the dropdown
+		if (isIos && !event.nativeEvent?.relatedTarget) {
+			// @ts-expect-error: Property 'preventDownshiftDefault' does not exist on type 'FocusEvent'
+			event.nativeEvent.preventDownshiftDefault = true;
+		}
+		onBlur?.(event);
+	};
 
 	return (
 		<Field
@@ -152,7 +164,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							ref: inputRefProp,
 							type: 'text',
 							name: inputName,
-							onBlur,
+							onBlur: handleOnBlur,
 							onFocus,
 						})}
 					/>
