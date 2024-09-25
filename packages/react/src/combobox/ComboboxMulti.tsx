@@ -108,7 +108,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 				);
 
 				previousSelectedItemsRef.current = selectedItems;
-				return `${addedItem?.label || 'An item'} has been removed.`;
+				return `${addedItem?.label || 'An item'} has been added.`;
 			}
 
 			// All items were removed
