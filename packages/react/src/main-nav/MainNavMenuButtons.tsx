@@ -13,6 +13,8 @@ export type MainNavOpenButtonProps = PropsWithChildren<{
 export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 	return (
 		<Flex
+			aria-expanded="false"
+			aria-haspopup="dialog"
 			as={BaseButton}
 			display={{ xs: 'flex', [mobileBreakpoint]: 'none' }}
 			flexDirection="column"
