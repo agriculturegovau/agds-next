@@ -92,13 +92,23 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		getA11yStatusMessage: (state) => {
 			const { selectedItems } = state;
 
-			// No changes made or an item was added, nothing to announce
-			if (
-				selectedItems.length === previousSelectedItemsRef.current.length ||
-				selectedItems.length > previousSelectedItemsRef.current.length
-			) {
+			// No changes made, nothing to announce
+			if (selectedItems.length === previousSelectedItemsRef.current.length) {
 				previousSelectedItemsRef.current = selectedItems;
 				return '';
+			}
+
+			// An item was added
+			if (selectedItems.length > previousSelectedItemsRef.current.length) {
+				const addedItem = selectedItems.find(
+					(selectedItem) =>
+						previousSelectedItemsRef.current.findIndex(
+							(item) => item.value === selectedItem.value
+						) < 0
+				);
+
+				previousSelectedItemsRef.current = selectedItems;
+				return `${addedItem?.label || 'An item'} has been removed.`;
 			}
 
 			// All items were removed
@@ -111,13 +121,13 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 			}
 
 			// A single item was removed, which we'll announce
-			const reomvedItem = previousSelectedItemsRef.current.find(
+			const removedItem = previousSelectedItemsRef.current.find(
 				(selectedItem) =>
 					selectedItems.findIndex((item) => item.value === selectedItem.value) <
 					0
 			);
 			previousSelectedItemsRef.current = selectedItems;
-			return `${reomvedItem?.label || 'An item'} has been removed.`;
+			return `${removedItem?.label || 'An item'} has been removed.`;
 		},
 		onStateChange({ selectedItems: newSelectedItems, type }) {
 			switch (type) {

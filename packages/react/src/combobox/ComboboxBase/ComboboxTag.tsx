@@ -19,6 +19,7 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
+				aria-label={`${children}. Press delete key to remove.`}
 				ref={ref}
 				as="span"
 				inline
