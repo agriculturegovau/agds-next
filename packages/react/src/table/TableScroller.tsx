@@ -209,25 +209,24 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const hasScroll = thumbWidthRatio !== 1;
 
 	useEffect(() => {
-		let ariaLabel = '';
+		let ariaLabel: string | null | undefined;
 		const captionEl = scrollerRef.current?.querySelector('caption');
 
 		if (captionEl) {
-			ariaLabel = captionEl?.textContent || '';
+			ariaLabel = captionEl?.textContent;
 		} else {
 			const ariaLabelledbyTableEl = scrollerRef.current?.querySelector(
 				'table[aria-labelledby]'
 			);
 
 			if (ariaLabelledbyTableEl) {
-				ariaLabel =
-					document.getElementById(
-						ariaLabelledbyTableEl.getAttribute('aria-labelledby') || ''
-					)?.textContent || '';
+				ariaLabel = document.getElementById(
+					ariaLabelledbyTableEl.getAttribute('aria-labelledby') || ''
+				)?.textContent;
 			}
 		}
 
-		setScrollerAriaLabel(`Table ${ariaLabel}`);
+		setScrollerAriaLabel(`Table ${ariaLabel || ''}`);
 	}, [scrollerRef]);
 
 	return (

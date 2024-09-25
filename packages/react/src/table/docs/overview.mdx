@@ -1053,11 +1053,11 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 () => {
 	const [selectedRows, setSelectedRows] = React.useState([]);
 
-	function toggleRowSelection(rowIdx) {
-		if (selectedRows.includes(rowIdx)) {
-			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+	function toggleRowSelection(rowIndex) {
+		if (selectedRows.includes(rowIndex)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIndex));
 		} else {
-			setSelectedRows((r) => [...r, rowIdx]);
+			setSelectedRows((r) => [...r, rowIndex]);
 		}
 	}
 
@@ -1096,35 +1096,35 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{Array.from(new Array(3).keys()).map((idx) => {
-								const isRowSelected = selectedRows.includes(idx);
+							{Array.from(new Array(3).keys()).map((index) => {
+								const isRowSelected = selectedRows.includes(index);
 								return (
-									<TableRow selected={isRowSelected} key={idx}>
+									<TableRow selected={isRowSelected} key={index}>
 										<TableCell>
 											<Checkbox
 												size="sm"
 												checked={isRowSelected}
-												onChange={() => toggleRowSelection(idx)}
+												onChange={() => toggleRowSelection(index)}
 											>
 												<VisuallyHidden>Select</VisuallyHidden>
 											</Checkbox>
 										</TableCell>
 										<TableCell as="th" scope="row" fontWeight="bold">
-											<TextLink href="#" id={`REF-AB${idx}CD4EF`}>
-												REF-AB{idx}CD4EF
+											<TextLink href="#" id={`REF-AB${index}CD4EF`}>
+												REF-AB{index}CD4EF
 											</TextLink>
 										</TableCell>
-										<TableCell>2{idx}/06/2024</TableCell>
+										<TableCell>2{index}/06/2024</TableCell>
 										<TableCell>
 											<Flex gap={1}>
 												<TextLink
-													aria-describedby={`REF-AB${idx}CD4EF`}
+													aria-describedby={`REF-AB${index}CD4EF`}
 													href="#"
 												>
 													Download
 												</TextLink>
 												<TextLink
-													aria-describedby={`REF-AB${idx}CD4EF`}
+													aria-describedby={`REF-AB${index}CD4EF`}
 													href="#"
 												>
 													Delete
