@@ -301,7 +301,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 															}
 															scope="row"
 														>
-															<TextLink href={`#${id}`}>
+															<TextLink href={`#${id}`} id={`business-${id}`}>
 																{businessName}
 															</TextLink>
 														</TableCell>
@@ -346,7 +346,10 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 														{hasActionColumn && (
 															<TableCell>
 																<DropdownMenu>
-																	<DropdownMenuButton focusRingFor="all">
+																	<DropdownMenuButton
+																		aria-describedby={`business-${id}`}
+																		focusRingFor="all"
+																	>
 																		Action
 																	</DropdownMenuButton>
 																	<DropdownMenuPanel>
