@@ -54,6 +54,11 @@ exports[`FileInput invalid renders correctly 1`] = `
         This file is not valid
       </span>
     </div>
+    <span
+      class="css-avudkd-VisuallyHidden"
+    >
+      Choose file
+    </span>
     <input
       aria-describedby="field-:r2:-message"
       aria-invalid="true"
@@ -87,6 +92,11 @@ exports[`FileInput renders correctly 1`] = `
         (optional)
       </span>
     </label>
+    <span
+      class="css-avudkd-VisuallyHidden"
+    >
+      Choose file
+    </span>
     <input
       aria-invalid="false"
       aria-required="false"

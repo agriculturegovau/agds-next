@@ -8,6 +8,7 @@ import {
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
+import { VisuallyHidden } from '../a11y';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -78,15 +79,18 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<input
-						ref={ref}
-						css={styles}
-						{...a11yProps}
-						type="file"
-						disabled={disabled}
-						onChange={onChange}
-						{...props}
-					/>
+					<>
+						<VisuallyHidden>Choose file</VisuallyHidden>
+						<input
+							ref={ref}
+							css={styles}
+							{...a11yProps}
+							type="file"
+							disabled={disabled}
+							onChange={onChange}
+							{...props}
+						/>
+					</>
 				)}
 			</Field>
 		);
