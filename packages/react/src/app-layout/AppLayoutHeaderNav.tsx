@@ -20,14 +20,9 @@ export function AppLayoutHeaderNav({
 		<Flex
 			alignItems="center"
 			background="body"
-			css={{
-				'& > a, button': {
-					height: '100%',
-				},
-			}}
+			flexWrap="wrap"
 			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
 			justifyContent={focusMode ? 'flex-end' : 'space-between'}
-			minHeight="5.25rem"
 			paddingLeft={0.75}
 			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}
 		>
@@ -62,6 +57,7 @@ function AppLayoutHeaderNavMenuButton({
 			fontSize="xs"
 			gap={0.5}
 			justifyContent="center"
+			minHeight="5.25rem"
 			onClick={onClick}
 			paddingX={1}
 		>

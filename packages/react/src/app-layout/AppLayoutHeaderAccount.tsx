@@ -39,10 +39,12 @@ export function AppLayoutHeaderAccount({
 			alignItems="center"
 			flexShrink={0}
 			gap={0.5}
+			minHeight="5.25rem"
 			textAlign="right"
 			css={mq({
+				marginLeft: 'auto',
+				maxWidth: '17.625rem',
 				textDecoration: 'none',
-				maxWidth: ['16rem', '18rem'],
 				...(hasLink && {
 					'&:hover': {
 						'& > span > span': {

@@ -7,13 +7,13 @@ exports[`MainNav renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-hcet0s-boxStyles-MainNavContainer"
+      class="css-1bbx8ql-boxStyles-MainNavContainer"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-label="Menu (Open main menu)"
-        class="css-jb434h-BaseButton-boxStyles-MainNavOpenButton"
+        class="css-93qcrg-BaseButton-boxStyles-MainNavOpenButton"
         type="button"
       >
         <svg
@@ -42,7 +42,7 @@ exports[`MainNav renders correctly 1`] = `
       </button>
       <nav
         aria-label="Main"
-        class="css-1a5bfv5-boxStyles"
+        class="css-jilr25-boxStyles"
       >
         <ul
           class="css-1jhrbpg-boxStyles"
@@ -96,7 +96,7 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
       <nav
         aria-label="Supplementary"
-        class="css-1jhrbpg-boxStyles"
+        class="css-fmh3pu-boxStyles-MainNavList"
       >
         <ul
           class="css-1jhrbpg-boxStyles"

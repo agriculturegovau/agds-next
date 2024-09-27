@@ -35,6 +35,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 					...packs.underline,
 				},
 			}}
+			minHeight={{ xs: '5rem', [mobileBreakpoint]: '3.5rem' }}
 		>
 			<MenuIcon />
 			Menu

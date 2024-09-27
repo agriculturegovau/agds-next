@@ -44,6 +44,8 @@ export function MainNavList({
 					? { xs: 'none', [mobileBreakpoint]: 'flex' }
 					: undefined
 			}
+			minHeight={{ xs: '5rem', [mobileBreakpoint]: '3.5rem' }}
+			{...(type === 'secondary' ? { css: { marginLeft: 'auto' } } : undefined)}
 		>
 			<Flex as="ul">
 				{items?.map(({ label, beforeElement, endElement, ...item }, index) => {

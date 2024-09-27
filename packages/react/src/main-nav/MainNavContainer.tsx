@@ -46,9 +46,9 @@ export function MainNavContainer({
 			{!focusMode && (
 				<Flex
 					css={{ margin: '0 auto' }}
+					flexWrap="wrap"
 					justifyContent="space-between"
 					maxWidth={tokens.maxWidth.container}
-					minHeight={{ xs: '5rem', [mobileBreakpoint]: '3.5rem' }}
 					paddingX={{ xs: 0.75, [mobileBreakpoint]: 2 }}
 					width="100%"
 				>

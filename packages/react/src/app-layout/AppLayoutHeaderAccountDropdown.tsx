@@ -58,9 +58,10 @@ function AppLayoutHeaderAccountDropdownButton({
 			gap={1}
 			color="action"
 			focusRingFor="keyboard"
+			minHeight="5.25rem"
 			css={mq({
-				height: '100%',
-				maxWidth: ['16rem', '18rem'],
+				marginLeft: 'auto',
+				maxWidth: '17.625rem',
 				overflow: 'hidden',
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,
