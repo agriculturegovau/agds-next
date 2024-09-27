@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Avatar } from '../avatar';
 import { Flex } from '../flex';
 import { mq, packs, useLinkComponent } from '../core';
@@ -16,6 +17,13 @@ export function AppLayoutHeaderAccount({
 	dropdown,
 }: AppLayoutHeaderAccountProps) {
 	const Link = useLinkComponent();
+	const scrollbarWidthRef = useRef(0);
+
+	useEffect(() => {
+		scrollbarWidthRef.current =
+			document?.documentElement?.clientWidth -
+			document?.documentElement?.offsetWidth;
+	}, []);
 
 	// Dropdown component
 	if (dropdown) {
@@ -43,7 +51,7 @@ export function AppLayoutHeaderAccount({
 			textAlign="right"
 			css={mq({
 				marginLeft: 'auto',
-				maxWidth: '17.625rem',
+				maxWidth: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
 				textDecoration: 'none',
 				...(hasLink && {
 					'&:hover': {

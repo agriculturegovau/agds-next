@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect, useRef } from 'react';
 import { Box, type BorderColor } from '../box';
 import { Flex } from '../flex';
 import { tokens, type BoxPalette, type ResponsiveProp } from '../core';

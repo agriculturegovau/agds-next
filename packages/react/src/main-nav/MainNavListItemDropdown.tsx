@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { BaseButton } from '../button';
 import { boxPalette, packs } from '../core';
 import {
@@ -36,6 +36,14 @@ function MainNavListItemDropdownButton({
 }: MainNavListDropdown) {
 	const { isMenuOpen } = useDropdownMenuContext();
 	const { ref, ...buttonProps } = useDropdownMenuButton();
+	const scrollbarWidthRef = useRef(0);
+
+	useEffect(() => {
+		scrollbarWidthRef.current =
+			document?.documentElement?.clientWidth -
+			document?.documentElement?.offsetWidth;
+	}, []);
+
 	return (
 		<Flex
 			as={BaseButton}
@@ -50,7 +58,7 @@ function MainNavListItemDropdownButton({
 			paddingRight={1}
 			color="action"
 			height="100%"
-			maxWidth="17.625rem"
+			maxWidth={`calc(17.625rem - ${scrollbarWidthRef.current}px)`}
 			focusRingFor="keyboard"
 			css={[
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
