@@ -40,8 +40,7 @@ function MainNavListItemDropdownButton({
 
 	useEffect(() => {
 		scrollbarWidthRef.current =
-			document?.documentElement?.clientWidth -
-			document?.documentElement?.offsetWidth;
+			window.innerWidth - document.documentElement.offsetWidth;
 	}, []);
 
 	return (
