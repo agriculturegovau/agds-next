@@ -10,7 +10,7 @@ exports[`AppLayout renders correctly 1`] = `
       id="header"
     >
       <div
-        class="css-gpi2zt-boxStyles"
+        class="css-10kt2hp-boxStyles"
       >
         <a
           class="css-1ymvh48-boxStyles-AppLayoutHeaderBrand"
