@@ -12,6 +12,7 @@ const config = {
 		'!**/dist/**',
 		'!**/{*.stories.tsx,index.ts,types.ts}',
 	],
+	setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
 
 module.exports = config;

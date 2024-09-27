@@ -1,5 +1,59 @@
 # @ag.ds-next/react
 
+## 1.24.0
+
+### Minor Changes
+
+- fe8d4911d3b: table: TableWrapper. Change to `section` with `aria-label`, and make it keyboard focusable only when it is scrollable. Change scrollbar border colour to `'border'`.
+- b12ac2c2658: date-picker: Add `allowedDateFormats` prop. Make preferred `dateFormat` the first to parse.
+
+  date-range-picker: Add `allowedDateFormats` prop. Make preferred `dateFormat` the first to parse.
+
+- 97fe495929e: task-list: Change visual order of items to Title, Label and Message.
+
+  general: Use the correct CSS syntax for `::before` and `::after` pseudo-elements.
+
+- 2d2ca761d3b: task-list: Update wording from steps to tasks.
+- 4c4a3edcfd3: filter-sidebar: Standardise heading and wayfinding structure at all breakpoints.
+  filter-sidebar: Hardcode title to "Filters" at all breakpoints.
+  filter-sidebar: `activeFiltersCount` now renders at all breakpoints.
+  filter-sidebar: `onClearFilters` now renders a Clear filters button at all breakpoints.
+  filter-sidebar: Deprecate `aria-label` and `title` props. They’re now unused.
+
+  progress-indicator: Standardise heading and wayfinding structure at all breakpoints.
+  progress-indicator: `title` and `subTitle` renders identically at all breakpoints.
+  progress-indicator: Fix Level 2 items from incorrectly adding `isActive` and `label` attributes.
+
+  side-nav: Standardise heading and wayfinding structure at all breakpoints.
+  side-nav: The `title` is now used for the small-screen expandable variant.
+  side-nav: Deprecate `collapseTitle` prop. It is now unused.
+
+- 19df22e82fa: table: Add `display` support to `TableHeaderSortable`.
+- 9831208cd5c: table: Add edge shadows to scrollable tables when appropriate.
+- 180169b4d8b: table: Update `TableWrapper` to use a custom scrollbar implementation.
+
+  icon: Created `ScrollbarArrowLeftIcon` and `ScrollbarArrowRightIcon`.
+
+### Patch Changes
+
+- 88303d920a2: app-layout-sidebar: fix background colour for items.
+- acc1da3735d: filter-sidebar: Reduce verbosity of collapsible announcements for screen readers.
+
+  progress-indicator: Reduce verbosity of collapsible announcements for screen readers.
+
+  side-nav: Reduce verbosity of collapsible announcements for screen readers.
+
+- cede8edea80: app-layout-sidebar: Fix level two items not inheriting `body` background.
+- c313d7a5500: tags: Update appearance of tags to be smaller and pill-shaped.
+- 2f53f886110: dropdown-menu: Fix closed dropdowns from creating horizontal scroll.
+- 39dfd397bab: control-group: Use `useId` from core, rather than React for backwards compatibility.
+
+  pagination: Use `useId` from core, rather than React for backwards compatibility.
+
+- d35dcc90ffb: Update deprecated component and prop uses through examples
+- 751deb01c49: tags: Make remove button hit target 24x24.
+- 37757215c6b: build: Use relative imports within components.
+
 ## 1.23.1
 
 ### Patch Changes

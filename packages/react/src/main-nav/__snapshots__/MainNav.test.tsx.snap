@@ -10,6 +10,8 @@ exports[`MainNav renders correctly 1`] = `
       class="css-hcet0s-boxStyles-MainNavContainer"
     >
       <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
         aria-label="Menu (Open main menu)"
         class="css-jb434h-BaseButton-boxStyles-MainNavOpenButton"
         type="button"

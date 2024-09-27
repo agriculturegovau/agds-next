@@ -37,13 +37,8 @@ export function useSelectAllRows(pageData: BusinessForAuditWithIndex[]) {
 	);
 
 	const toggleAllRowsSelected = () => {
-		if (selection.length == 0) {
-			// No rows are selected, so select all of them
-			selectRows(allPageItemIds);
-		} else {
-			// Some rows are selected, so deselect all of them
-			clearRowSelections();
-		}
+		// When no rows are selected or we're indeterminate, on toggle we'll select all rows to match the screen reader announcement
+		isEveryRowSelected ? clearRowSelections() : selectRows(allPageItemIds);
 	};
 
 	// DataTableSelectAllCheckbox state

@@ -29,7 +29,7 @@ exports[`Autocomplete renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-ep8qz0-ComboboxBase"
+      class="css-a1k7wg-ComboboxBase"
     >
       <svg
         aria-hidden="true"

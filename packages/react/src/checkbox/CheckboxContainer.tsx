@@ -3,10 +3,12 @@ import { Flex } from '../flex';
 
 export type CheckboxContainerProps = PropsWithChildren<{
 	disabled?: boolean;
+	htmlFor?: string;
 }>;
 
 export function CheckboxContainer({
 	children,
+	htmlFor,
 	disabled,
 }: CheckboxContainerProps) {
 	return (
@@ -15,6 +17,7 @@ export function CheckboxContainer({
 			alignItems="flex-start"
 			color="text"
 			gap={0.5}
+			htmlFor={htmlFor}
 			inline
 			css={{
 				cursor: disabled ? 'not-allowed' : 'pointer',

@@ -32,7 +32,7 @@ export const Fieldset = ({ children, hint, legend, id }: FieldsetProps) => {
 
 export const useFieldsetIds = (idProp?: string) => {
 	const autoId = useId(idProp);
-	const fieldsetId = idProp ? idProp : `fieldset-${autoId}`;
+	const fieldsetId = idProp || `fieldset-${autoId}`;
 	const hintId = `fieldset-${autoId}-hint`;
 	return { fieldsetId, hintId };
 };

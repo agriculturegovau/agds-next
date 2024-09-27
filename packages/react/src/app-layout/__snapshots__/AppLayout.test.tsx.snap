@@ -131,7 +131,7 @@ exports[`AppLayout renders correctly 1`] = `
             </svg>
           </button>
           <div
-            class="css-1388guz-DropdownMenuPanel"
+            class="css-oz9h9h-DropdownMenuPanel"
             id="dropdown-menu-:r0:-panel"
           />
         </div>
@@ -140,6 +140,8 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-o9emw-boxStyles-AppLayoutHeaderNav"
       >
         <button
+          aria-expanded="false"
+          aria-haspopup="dialog"
           class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
@@ -224,7 +226,7 @@ exports[`AppLayout renders correctly 1`] = `
           </svg>
         </button>
         <div
-          class="css-1388guz-DropdownMenuPanel"
+          class="css-oz9h9h-DropdownMenuPanel"
           id="dropdown-menu-:r1:-panel"
         />
       </div>
