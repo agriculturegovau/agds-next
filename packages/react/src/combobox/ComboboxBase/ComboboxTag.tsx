@@ -15,12 +15,11 @@ export type ComboboxTagProps = Omit<
 // This component is based off our 'Tag' component with slightly different markup
 // See https://www.downshift-js.com/use-multiple-selection#usage-with-combobox
 
-export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
+export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
-				aria-label={`${children}. Press delete key to remove.`}
-				ref={ref}
+				aria-label={children}
 				as="span"
 				inline
 				alignItems="center"
@@ -31,9 +30,8 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 				gap={0.25}
 				fontSize="sm"
 				color="text"
-				focusRingFor="all"
 				css={{
-					cursor: 'pointer',
+					cursor: 'default',
 					...(disabled && {
 						cursor: 'not-allowed',
 						borderColor: boxPalette.borderMuted,
@@ -52,12 +50,13 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 						cursor: 'pointer',
 						svg: { display: 'block', color: boxPalette.foregroundAction },
 						'&:hover': { svg: { color: boxPalette.foregroundText } },
+						'&&': { outlineOffset: 0 },
 						...(disabled && {
 							cursor: 'not-allowed',
 							opacity: 0.3,
 						}),
 					}}
-					focusRingFor="keyboard"
+					focusRingFor="all"
 					height={mapSpacing(1.5)}
 					justifyContent="center"
 					onClick={(event: MouseEvent<HTMLSpanElement>) => {
@@ -65,6 +64,8 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 						event.stopPropagation();
 						onRemove();
 					}}
+					ref={ref}
+					rounded
 					tabIndex={-1}
 					width={mapSpacing(1.5)}
 				>
