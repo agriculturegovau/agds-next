@@ -7,7 +7,7 @@ exports[`MainNav renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-1bbx8ql-boxStyles-MainNavContainer"
+      class="css-1s0s06z-boxStyles-MainNavContainer"
     >
       <button
         aria-expanded="false"
