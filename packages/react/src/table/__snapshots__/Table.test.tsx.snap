@@ -15,7 +15,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
         id="table"
       >
         <caption
-          class="css-1yx296z-boxStyles-TableCaption"
+          class="css-ryzpmp-boxStyles"
         >
           Population of Australian states and territories, December 2015
         </caption>
@@ -386,11 +386,11 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </table>
     </section>
     <div
-      class="css-1qn2nbn-boxStyles-TableScroller"
+      class="css-1ha175z-boxStyles-TableScroller"
       data-table-left-overlay="true"
     />
     <div
-      class="css-us2h8d-boxStyles-TableScroller"
+      class="css-w04l0u-boxStyles-TableScroller"
       data-table-right-overlay="true"
     />
     <div

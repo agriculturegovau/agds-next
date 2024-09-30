@@ -284,7 +284,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 								: tokens.borderWidth.none,
 							left: overlayOffsets?.left,
 							pointerEvents: 'none',
-							position: 'fixed',
+							position: 'absolute',
 							width: pxToRem(28),
 							zIndex: SCROLL_OVERLAY_Z_INDEX,
 							...(scrollerHeight && { height: pxToRem(scrollerHeight) }),
@@ -312,7 +312,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 								? tokens.borderWidth.sm
 								: tokens.borderWidth.none,
 							pointerEvents: 'none',
-							position: 'fixed',
+							position: 'absolute',
 							right: overlayOffsets?.right,
 							width: pxToRem(28),
 							zIndex: SCROLL_OVERLAY_Z_INDEX,
