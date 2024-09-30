@@ -42,6 +42,8 @@ Global alerts can be dismissed by a user if they have understood the message and
 
 Use the `onClose` prop to make the alert dismissable. Ensure Global alerts that are closed by the user are never seen again. You could do this through a feature flag in a database, or by setting a value in the browser.
 
+When a user dismisses an alert, it’s important to manage their focus appropriately to help them continue their task or journey. In some cases, there may not be an obvious (or any) element to send focus to, such as when the alert was triggered by an action on a previous page or from a drawer that is now closed. Always carefully consider the context and previous user actions before moving their focus to ensure a smooth and accessible experience.
+
 ```jsx live
 <GlobalAlert title="Alert title" onClose={console.log}>
 	<Text as="p">

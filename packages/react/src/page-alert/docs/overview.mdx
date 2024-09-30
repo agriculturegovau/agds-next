@@ -84,26 +84,13 @@ Use warning page alerts (orange) to tell the user how to avoid a problem. Only u
 </PageAlert>
 ```
 
-## Title
-
-By default, `PageAlert` renders `PageAlertTitle` as an `h3`. If you need to change the title’s semantic tag to an `h2`, for instance, you can use the `PageAlertTitle` component in the `title` prop to explicitly set it.
-
-```jsx
-import { PageAlertTitle } from '@ag.ds-next/react/page-alert';
-
-<PageAlert
-	tone="success"
-	title={<PageAlertTitle as="h2">Submission successful</PageAlertTitle>}
->
-	<Text as="p">Your application has been successfully submitted.</Text>
-</PageAlert>;
-```
-
 ## Dismissable
 
 Page alerts can be dismissed by a user if they have understood the message and no longer need to see it.
 
 Use the `onClose` prop to make the alert dismissable. Ensure Page alerts that are closed by the user are never seen again. You could do this through a feature flag in a database, or by setting a value in the browser.
+
+When a user dismisses an alert, it’s important to manage their focus appropriately to help them continue their task or journey. In some cases, there may not be an obvious (or any) element to send focus to, such as when the alert was triggered by an action on a previous page or from a drawer that is now closed. Always carefully consider the context and previous user actions before moving their focus to ensure a smooth and accessible experience.
 
 ```jsx live
 <PageAlert tone="info" title="New update" onClose={console.log}>
@@ -240,4 +227,19 @@ Press the "Focus the alert" button below to set focus on the alert. To achieve t
 		</Stack>
 	);
 };
+```
+
+## Customising the title
+
+By default, `PageAlert` renders its title as an `h2`. However, should the need arise, you can change the title’s semantic tag to an `h3`, for example, by passing the `PageAlertTitle` component to the `title` prop.
+
+```jsx
+import { PageAlertTitle } from '@ag.ds-next/react/page-alert';
+
+<PageAlert
+	tone="success"
+	title={<PageAlertTitle as="h3">Submission successful (H3)</PageAlertTitle>}
+>
+	<Text as="p">Your application has been successfully submitted.</Text>
+</PageAlert>;
 ```
