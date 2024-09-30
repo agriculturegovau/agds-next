@@ -19,7 +19,6 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
-				aria-label={children}
 				as="span"
 				inline
 				alignItems="center"
@@ -38,7 +37,6 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 						color: boxPalette.foregroundMuted,
 					}),
 				}}
-				{...props}
 			>
 				{children}
 				<Flex
@@ -59,14 +57,14 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 					focusRingFor="all"
 					height={mapSpacing(1.5)}
 					justifyContent="center"
-					onClick={(event: MouseEvent<HTMLSpanElement>) => {
+					onClick={(event: MouseEvent<HTMLButtonElement>) => {
 						if (disabled) return;
 						event.stopPropagation();
 						onRemove();
 					}}
+					onKeyDown={props.onKeyDown}
 					ref={ref}
 					rounded
-					tabIndex={-1}
 					width={mapSpacing(1.5)}
 				>
 					<CloseIcon size="sm" />
