@@ -92,7 +92,15 @@ In this case, you can use the `onFromInputChange` and `onToInputChange` props to
 			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
-			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
 		/>
 	);
 };
@@ -158,7 +166,7 @@ Use the `fromInvalid` and `toInvalid` props to indicate if the user input is inv
 				fromInvalid={true}
 				toInvalid={true}
 				legend="Date period"
-				message="Enter a valid date"
+				message="Enter valid start and end dates"
 			/>
 			<DateRangePicker
 				value={value}
@@ -168,7 +176,7 @@ Use the `fromInvalid` and `toInvalid` props to indicate if the user input is inv
 				fromInvalid={true}
 				toInvalid={false}
 				legend="Date period"
-				message="Enter a valid date"
+				message="Enter a valid start date"
 			/>
 			<DateRangePicker
 				value={value}
@@ -178,7 +186,7 @@ Use the `fromInvalid` and `toInvalid` props to indicate if the user input is inv
 				fromInvalid={false}
 				toInvalid={true}
 				legend="Date period"
-				message="Enter a valid date"
+				message="Enter a valid end date"
 			/>
 		</FormStack>
 	);
@@ -342,7 +350,15 @@ Date formats are parsed in order from first to last and stops when a valid date 
 			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
-			message={fromInvalid || toInvalid ? 'Enter a valid date' : undefined}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
 			hint="Only short AU formats allowed"
 			allowedDateFormats={['dd MM yyyy', 'dd-MM-yyyy']}
 		/>
