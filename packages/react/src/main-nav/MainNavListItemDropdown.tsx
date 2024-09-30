@@ -57,7 +57,10 @@ function MainNavListItemDropdownButton({
 			paddingRight={1}
 			color="action"
 			height="100%"
-			maxWidth={`calc(17.625rem - ${scrollbarWidthRef.current}px)`}
+			maxWidth={{
+				xs: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
+				lg: `calc(16rem - ${scrollbarWidthRef.current}px)`,
+			}}
 			focusRingFor="keyboard"
 			css={[
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
