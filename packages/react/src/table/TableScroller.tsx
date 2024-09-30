@@ -227,7 +227,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 		}
 
 		setScrollerAriaLabel(`Table ${ariaLabel || ''}`);
-	}, [scrollerRef]);
+	}, []);
 
 	return (
 		<Stack
