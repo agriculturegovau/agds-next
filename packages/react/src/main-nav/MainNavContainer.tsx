@@ -6,7 +6,6 @@ import { setLocalPaletteVars, MainNavBackground } from './localPalette';
 import { MainNavOpenButton } from './MainNavMenuButtons';
 import { MainNavList, type MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
-import { mobileBreakpoint } from './utils';
 
 export type MainNavContainerProps = {
 	activePath: string;
@@ -46,10 +45,10 @@ export function MainNavContainer({
 			{!focusMode && (
 				<Flex
 					css={{ margin: '0 auto' }}
-					flexWrap={{ xs: 'wrap', [mobileBreakpoint]: 'wrap-reverse' }}
+					flexWrap={{ xs: 'wrap', lg: 'wrap-reverse' }}
 					justifyContent="space-between"
 					maxWidth={tokens.maxWidth.container}
-					paddingX={{ xs: 0.75, [mobileBreakpoint]: 2 }}
+					paddingX={{ xs: 0.75, lg: 2 }}
 					width="100%"
 				>
 					{items?.length ? (

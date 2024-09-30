@@ -9,7 +9,6 @@ import {
 import { Flex } from '../flex';
 import { ChevronDownIcon, ChevronUpIcon } from '../icon';
 import { localPalette } from './localPalette';
-import { mobileBreakpoint } from './utils';
 
 export type MainNavListDropdown = {
 	label: ReactNode;
@@ -49,7 +48,7 @@ function MainNavListItemDropdownButton({
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			ref={ref}
-			fontSize={{ xs: 'xs', [mobileBreakpoint]: 'sm' }}
+			fontSize={{ xs: 'xs', lg: 'sm' }}
 			justifyContent="center"
 			alignItems="center"
 			gap={0.5}
