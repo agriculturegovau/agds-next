@@ -47,8 +47,7 @@ export function AppLayoutHeaderBrand({
 			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
 			gap={{ xs: 1, md: GAP_REM }}
 			inline
-			paddingX={0.5}
-			paddingY={0.5}
+			padding={0.5}
 		>
 			<Flex
 				css={{
