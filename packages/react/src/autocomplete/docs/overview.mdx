@@ -110,7 +110,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ## Invalid
 
-Use the `invalid` prop to indicate if the user input is invalid.
+Use the `invalid` prop to indicate if the user input is invalid. An example where this shoud be applied is when ‘All fields are required unless marked optional’.
 
 ```jsx live
 () => {
@@ -120,6 +120,7 @@ Use the `invalid` prop to indicate if the user input is invalid.
 		<Autocomplete
 			label="Find your country"
 			hint="Start typing to see results"
+			required
 			invalid={invalid}
 			message={invalid ? 'State is required' : undefined}
 			value={value}
