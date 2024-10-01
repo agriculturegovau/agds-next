@@ -4,6 +4,7 @@ import {
 	Ref,
 	useCallback,
 	useMemo,
+	useRef,
 	useState,
 } from 'react';
 import { useCombobox, useMultipleSelection } from 'downshift';
@@ -84,8 +85,50 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		[options, inputValue, selectedItems]
 	);
 
+	const previousSelectedItemsRef = useRef<Option[]>([]);
+
 	const multiSelection = useMultipleSelection({
 		selectedItems,
+		getA11yStatusMessage: (state) => {
+			const { selectedItems } = state;
+
+			// No changes made, nothing to announce
+			if (selectedItems.length === previousSelectedItemsRef.current.length) {
+				previousSelectedItemsRef.current = selectedItems;
+				return '';
+			}
+
+			// An item was added
+			if (selectedItems.length > previousSelectedItemsRef.current.length) {
+				const addedItem = selectedItems.find(
+					(selectedItem) =>
+						previousSelectedItemsRef.current.findIndex(
+							(item) => item.value === selectedItem.value
+						) < 0
+				);
+
+				previousSelectedItemsRef.current = selectedItems;
+				return `${addedItem?.label || 'An item'} has been added.`;
+			}
+
+			// All items were removed
+			if (
+				selectedItems.length === 0 &&
+				previousSelectedItemsRef.current.length > 0
+			) {
+				previousSelectedItemsRef.current = selectedItems;
+				return 'All items have been removed.';
+			}
+
+			// A single item was removed, which we'll announce
+			const removedItem = previousSelectedItemsRef.current.find(
+				(selectedItem) =>
+					selectedItems.findIndex((item) => item.value === selectedItem.value) <
+					0
+			);
+			previousSelectedItemsRef.current = selectedItems;
+			return `${removedItem?.label || 'An item'} has been removed.`;
+		},
 		onStateChange({ selectedItems: newSelectedItems, type }) {
 			switch (type) {
 				case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
@@ -129,7 +172,6 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 			switch (type) {
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
 				case useCombobox.stateChangeTypes.ItemClick:
-				case useCombobox.stateChangeTypes.InputBlur:
 					if (newSelectedItem) {
 						setSelectedItems([...selectedItems, newSelectedItem]);
 						setInputValue('');
