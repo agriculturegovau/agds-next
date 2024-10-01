@@ -57,7 +57,9 @@ function MainNavListItemDropdownButton({
 			color="action"
 			height="100%"
 			maxWidth={{
+				// 17.625rem is the available space beside the hamburger at 375px
 				xs: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
+				// It's then reduced slightly to give more room for the nav items
 				lg: `calc(16rem - ${scrollbarWidthRef.current}px)`,
 			}}
 			focusRingFor="keyboard"

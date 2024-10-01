@@ -45,6 +45,7 @@ export function MainNavContainer({
 			{!focusMode && (
 				<Flex
 					css={{ margin: '0 auto' }}
+					// When the nav and secondaryItems don't fit, wrap-reverse is used to ensure the nav items sit atop the border
 					flexWrap={{ xs: 'wrap', lg: 'wrap-reverse' }}
 					justifyContent="space-between"
 					maxWidth={tokens.maxWidth.container}

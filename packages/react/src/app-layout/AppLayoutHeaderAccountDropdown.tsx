@@ -67,6 +67,7 @@ function AppLayoutHeaderAccountDropdownButton({
 			minHeight="5.25rem"
 			css={mq({
 				marginLeft: 'auto',
+				// 17.625rem is the available space beside the hamburger at 375px
 				maxWidth: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
 				overflow: 'hidden',
 				'&:hover': {
