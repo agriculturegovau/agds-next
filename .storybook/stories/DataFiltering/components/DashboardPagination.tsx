@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
 	PaginationButtons,
 	generatePaginationRangeText,
-} from '@ag.ds-next/react/pagination';
+} from '../../../../packages/react/src/pagination';
 import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 
 export const DashboardPagination = () => {
@@ -33,7 +33,7 @@ export const DashboardPagination = () => {
 			itemRangeText,
 			perPage: pagination.perPage,
 		});
-		// We only want to update update the display text once the table data has finished loading, all other deps are ignored here
+		// We only want to update the display text once the table data has finished loading, all other deps are ignored here
 	}, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	if (!data.length) return null;

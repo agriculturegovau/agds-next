@@ -56,7 +56,7 @@ export function usePagination({
 		});
 	}
 
-	// If the current page is passed page 2, create the '1 ...' elements
+	// If the current page is past page 2, create the '1 ...' elements
 	if (minPage > 1) {
 		elements.push({
 			type: 'page',

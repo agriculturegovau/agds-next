@@ -49,7 +49,7 @@ export function Pagination({
 	return (
 		<PaginationContainer hasRightArea={hasRightArea}>
 			<PaginationItemContainer aria-label={ariaLabel}>
-				{pagination.map((item, idx) => {
+				{pagination.map((item, index) => {
 					switch (item.type) {
 						case 'direction':
 							return (
@@ -62,14 +62,14 @@ export function Pagination({
 						case 'page':
 							return (
 								<PaginationItemPage
-									key={idx}
+									key={item.pageNumber}
 									href={generateHref(item.pageNumber)}
 									pageNumber={item.pageNumber}
 									isActive={item.isActive}
 								/>
 							);
 						case 'separator':
-							return <PaginationItemSeparator key={idx} />;
+							return <PaginationItemSeparator key={`${index}-separator`} />;
 						default:
 							return null;
 					}

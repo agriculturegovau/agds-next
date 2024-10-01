@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import { Text } from '../text';
 import { usePagination } from './usePagination';
 import {
@@ -42,34 +43,52 @@ export function PaginationButtons({
 	itemsPerPageOptions,
 	onItemsPerPageChange,
 }: PaginationButtonsProps) {
+	const [isRemovingPreviousButton, setIsRemovingPreviousButton] =
+		useState(false);
+	const firstButtonRef = useRef<HTMLButtonElement>(null);
 	const pagination = usePagination({ currentPage, totalPages, windowLimit });
 	const hasRightArea = Boolean(
 		(itemsPerPage && onItemsPerPageChange) || itemRangeText
 	);
+
+	// When the "Previous" button is being removed, wait until the `currentPage` ticks over to `1`, then focus the page 1 button
+	if (isRemovingPreviousButton && currentPage === 1) {
+		firstButtonRef.current?.focus();
+		setIsRemovingPreviousButton(false);
+	}
+
 	return (
 		<PaginationContainer hasRightArea={hasRightArea}>
 			<PaginationItemContainer aria-label={ariaLabel}>
-				{pagination.map((item, idx) => {
+				{pagination.map((item, index) => {
 					switch (item.type) {
 						case 'direction':
 							return (
 								<PaginationItemDirectionButton
 									key={item.direction}
 									direction={item.direction}
-									onClick={() => onChange(item.pageNumber)}
+									onClick={() => {
+										onChange(item.pageNumber);
+
+										// When the "Previous" button is pointed at page 1, we'll trigger the process of focusing the `1` button
+										if (item.pageNumber === 1) {
+											setIsRemovingPreviousButton(true);
+										}
+									}}
 								/>
 							);
 						case 'page':
 							return (
 								<PaginationItemPageButton
-									key={idx}
+									key={item.pageNumber}
 									pageNumber={item.pageNumber}
 									onClick={() => onChange(item.pageNumber)}
 									isActive={item.isActive}
+									{...(item.pageNumber === 1 && { ref: firstButtonRef })}
 								/>
 							);
 						case 'separator':
-							return <PaginationItemSeparator key={idx} />;
+							return <PaginationItemSeparator key={`${index}-separator`} />;
 						default:
 							return null;
 					}
