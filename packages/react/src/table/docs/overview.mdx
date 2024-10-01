@@ -284,9 +284,9 @@ You can use custom widths based on the expected length of the data under each co
 
 ## Sortable columns
 
-You can use the `TableHeaderSortable` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
+You can use the `<TableHeaderSortable>` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
 
-It is important to add `VisuallyHidden` content to the table’s caption to inform blind screen reader users of the purpose of `TableHeaderSortable` buttons.
+It is important to add `<VisuallyHidden>` text in the table’s caption to explain the purpose of the `TableHeaderSortable` buttons. This reduces confusion for screen reader users who may not understand their significance when focusing them.
 
 You can see a working example of this component in the [Search filters patterns](/storybook/index.html?path=/story/patterns-search-filters--table-medium).
 
