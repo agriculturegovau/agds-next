@@ -52,7 +52,9 @@ Common uses for this component are to implement a glossary or to display metadat
 
 ## Actions
 
-You can add actions to the end of a SummaryList by nesting `SummaryListItemAction` components.
+You can add actions to the end of a SummaryList by nesting `<SummaryListItemAction>`s and interactive components such as `<TextLink>`.
+
+Ensure each action’s accessible label is unique for screen reader users by including `<VisuallyHidden>` text that matches the `<SummaryListItemTerm>`’s content.
 
 ```jsx live
 <SummaryList>
@@ -60,33 +62,40 @@ You can add actions to the end of a SummaryList by nesting `SummaryListItemActio
 		<SummaryListItemTerm>First name</SummaryListItemTerm>
 		<SummaryListItemDescription>Will</SummaryListItemDescription>
 		<SummaryListItemAction>
-			<TextLink href="#">Change</TextLink>
+			<TextLink href="#">
+				Change <VisuallyHidden>first name</VisuallyHidden>
+			</TextLink>
 		</SummaryListItemAction>
 	</SummaryListItem>
 	<SummaryListItem>
 		<SummaryListItemTerm>Last name</SummaryListItemTerm>
 		<SummaryListItemDescription>Power</SummaryListItemDescription>
 		<SummaryListItemAction>
-			<TextLink href="#">Change</TextLink>
+			<TextLink href="#">
+				Change <VisuallyHidden>last name</VisuallyHidden>
+			</TextLink>
 		</SummaryListItemAction>
 	</SummaryListItem>
 	<SummaryListItem>
 		<SummaryListItemTerm>Contact information</SummaryListItemTerm>
 		<SummaryListItemDescription>
-			<Stack>
-				<Text>+61 9912 3456</Text>
-				<Text>will.power@example.com</Text>
-			</Stack>
+			+61 9912 3456
+			<br />
+			will.power@example.com
 		</SummaryListItemDescription>
 		<SummaryListItemAction>
-			<TextLink href="#">Change</TextLink>
+			<TextLink href="#">
+				Change <VisuallyHidden>contact information</VisuallyHidden>
+			</TextLink>
 		</SummaryListItemAction>
 	</SummaryListItem>
 	<SummaryListItem>
 		<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
 		<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
 		<SummaryListItemAction>
-			<TextLink href="#">Change</TextLink>
+			<TextLink href="#">
+				Change <VisuallyHidden>date of birth</VisuallyHidden>
+			</TextLink>
 		</SummaryListItemAction>
 	</SummaryListItem>
 </SummaryList>

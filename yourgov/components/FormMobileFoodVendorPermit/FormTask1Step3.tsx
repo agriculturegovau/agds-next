@@ -9,7 +9,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { Text } from '@ag.ds-next/react/text';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
@@ -93,7 +93,7 @@ export function FormTask1Step3() {
 						ref={errorRef}
 						tabIndex={-1}
 						tone="error"
-						title={<PageAlertTitle as="h2">There is a problem</PageAlertTitle>}
+						title="There is a problem"
 					>
 						<Text as="p">
 							Please correct the following fields and try again

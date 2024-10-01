@@ -1184,14 +1184,14 @@ const snippets: Array<Snippet> = [
 				<SummaryListItemTerm>First name</SummaryListItemTerm>
 				<SummaryListItemDescription>Will</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">Change <VisuallyHidden>first name</VisuallyHidden></TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>Last name</SummaryListItemTerm>
 				<SummaryListItemDescription>Power</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">Change <VisuallyHidden>last name</VisuallyHidden></TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
@@ -1202,14 +1202,14 @@ const snippets: Array<Snippet> = [
 					will.power@example.com
 				</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">Change <VisuallyHidden>contact information name</VisuallyHidden></TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
 				<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">Change <VisuallyHidden>date of birth</VisuallyHidden></TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 		</SummaryList>`,
