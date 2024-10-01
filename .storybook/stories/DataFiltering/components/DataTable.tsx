@@ -99,10 +99,9 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 				<TableWrapper>
 					<Table
 						aria-rowcount={totalItems}
-						{...(headingId && {
-							'aria-labelledby': headingId,
-							'aria-describedby': descriptionId,
-						})}
+						aria-labelledby={
+							headingId ? `${headingId} ${descriptionId}` : undefined
+						}
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}

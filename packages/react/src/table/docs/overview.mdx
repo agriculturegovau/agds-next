@@ -286,6 +286,8 @@ You can use custom widths based on the expected length of the data under each co
 
 You can use the `TableHeaderSortable` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
 
+It is important to add `VisuallyHidden` content to the table’s caption to inform blind screen reader users of the purpose of `TableHeaderSortable` buttons.
+
 You can see a working example of this component in the [Search filters patterns](/storybook/index.html?path=/story/patterns-search-filters--table-medium).
 
 ```jsx live
@@ -293,6 +295,9 @@ You can see a working example of this component in the [Search filters patterns]
 	<Table striped>
 		<TableCaption>
 			Population of Australian states and territories, December 2018
+			<VisuallyHidden>
+				, column headers with buttons are sortable.
+			</VisuallyHidden>
 		</TableCaption>
 		<TableHead>
 			<TableRow>
@@ -361,7 +366,7 @@ A Table must have some form of caption or heading to describe the data it contai
 	<H3 id="table-heading">Applications</H3>
 	<Text id="table-description">Active establishment registrations</Text>
 	<TableWrapper>
-		<Table aria-labelledby="table-heading" aria-describedby="table-description">
+		<Table aria-labelledby="table-heading table-description">
 			<TableHead>
 				<TableRow>
 					<TableHeader scope="col">Location</TableHeader>
