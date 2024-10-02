@@ -96,6 +96,9 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						Table column headers with buttons are sortable.
 					</div>
 				) : null}
+				<div role="status" css={visuallyHiddenStyles}>
+					{loading ? 'Loading audits' : ''}
+				</div>
 				<TableWrapper>
 					<Table
 						aria-rowcount={totalItems}
