@@ -55,10 +55,12 @@ const PlaceholderImage = () => (
 function LiveCode({
 	showCode = false,
 	enableProse = false,
+	exampleContentHeading,
 	exampleContentHeadingType,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -111,7 +113,9 @@ function LiveCode({
 		<Box border borderColor="muted" rounded className={proseBlockClassname}>
 			{exampleContentHeadingType && (
 				<CardHeader>
-					<Heading type={exampleContentHeadingType}>Example</Heading>
+					<Heading type={exampleContentHeadingType}>
+						{exampleContentHeading}
+					</Heading>
 				</CardHeader>
 			)}
 			<LivePreview
@@ -283,6 +287,7 @@ type CodeProps = {
 	live?: boolean;
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 };
 
@@ -292,6 +297,7 @@ export function Code({
 	showCode,
 	enableProse,
 	className,
+	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
@@ -309,6 +315,7 @@ export function Code({
 				<LiveCode
 					showCode={showCode}
 					enableProse={enableProse}
+					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
 				/>
 			</LiveProvider>
