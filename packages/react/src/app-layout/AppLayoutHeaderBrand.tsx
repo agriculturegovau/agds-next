@@ -42,12 +42,16 @@ export function AppLayoutHeaderBrand({
 
 	return logo && secondLogo ? (
 		<Flex
-			css={{ overflow: 'hidden' }}
+			css={{
+				marginLeft: '-0.5rem',
+				marginRight: '-0.5rem',
+				overflow: 'hidden',
+			}}
 			flexDirection={{ xs: 'column', lg: 'row' }}
 			flexWrap={{ xs: 'wrap', xl: 'nowrap' }}
 			gap={{ xs: 1, md: GAP_REM }}
 			inline
-			paddingY={0.5}
+			padding={0.5}
 		>
 			<Flex
 				css={{
