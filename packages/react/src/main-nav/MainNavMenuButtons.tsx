@@ -3,7 +3,6 @@ import { BaseButton } from '../button';
 import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
 import { CloseIcon, MenuIcon } from '../icon';
-import { mobileBreakpoint } from './utils';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{
@@ -16,7 +15,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 			aria-expanded="false"
 			aria-haspopup="dialog"
 			as={BaseButton}
-			display={{ xs: 'flex', [mobileBreakpoint]: 'none' }}
+			display={{ xs: 'flex', lg: 'none' }}
 			flexDirection="column"
 			justifyContent="center"
 			alignItems="center"
@@ -35,6 +34,7 @@ export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
 					...packs.underline,
 				},
 			}}
+			minHeight={{ xs: '5rem', lg: '3.5rem' }}
 		>
 			<MenuIcon />
 			Menu

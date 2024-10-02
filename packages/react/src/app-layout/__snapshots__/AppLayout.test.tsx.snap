@@ -74,13 +74,13 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <div
-          class="css-10mrbgs-boxStyles"
+          class="css-xhs7no-boxStyles"
         >
           <button
             aria-controls="dropdown-menu-:r0:-panel"
             aria-expanded="false"
             aria-haspopup="true"
-            class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
             id="dropdown-menu-:r0:-button"
             type="button"
           >
@@ -137,12 +137,12 @@ exports[`AppLayout renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-o9emw-boxStyles-AppLayoutHeaderNav"
+        class="css-pmxhic-boxStyles"
       >
         <button
           aria-expanded="false"
           aria-haspopup="dialog"
-          class="css-zbjn2b-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-1gjhpau-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -175,7 +175,7 @@ exports[`AppLayout renders correctly 1`] = `
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
           aria-haspopup="true"
-          class="css-v49j9x-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+          class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
         >

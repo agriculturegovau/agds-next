@@ -8,7 +8,6 @@ import { Flex } from '../flex';
 import { MainNavCloseButton } from './MainNavMenuButtons';
 import { MainNavListItemType } from './MainNavList';
 import { MainNavDialogNavList } from './MainNavDialogNavList';
-import { mobileBreakpoint, mobileMaxWidth } from './utils';
 
 export type MainNavDialogProps = {
 	activePath: string;
@@ -46,7 +45,7 @@ export function MainNavDialog({
 	if (!isMobileMenuOpen) return null;
 
 	return createPortal(
-		<Box ref={modalContainerRef} display={{ [mobileBreakpoint]: 'none' }}>
+		<Box ref={modalContainerRef} display={{ lg: 'none' }}>
 			<LockScroll />
 			<Overlay onClick={closeMobileMenu} />
 			<FocusLock returnFocus>
@@ -58,7 +57,7 @@ export function MainNavDialog({
 					flexDirection="column"
 					padding={1}
 					gap={0.5}
-					width={mobileMaxWidth}
+					width="17.5rem"
 					css={{
 						position: 'fixed',
 						zIndex: tokens.zIndex.dialog,
