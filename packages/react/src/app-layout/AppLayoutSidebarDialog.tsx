@@ -16,6 +16,7 @@ import {
 	type ResponsiveProp,
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
+	packs,
 } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -167,6 +168,9 @@ function CloseMenuButton({
 				alignItems="center"
 				as={BaseButton}
 				color="action"
+				css={{
+					':focus': { outlineOffset: `-${packs.outline.outlineWidth}` },
+				}}
 				flexDirection="column"
 				focusRingFor="keyboard"
 				fontSize="xs"

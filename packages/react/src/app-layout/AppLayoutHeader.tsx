@@ -79,6 +79,7 @@ export function AppLayoutHeader({
 				gap={1}
 				justifyContent="space-between"
 				paddingX={tokens.containerPadding}
+				paddingY={0.5}
 				width="100%"
 			>
 				<AppLayoutHeaderBrand
