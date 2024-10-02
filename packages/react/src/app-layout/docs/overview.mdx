@@ -65,15 +65,27 @@ The app layout sidebar should be hidden while users are completing multi-page fo
 
 ### Sub-level items
 
-To help users comprehend the side navigation, choose a strategy that is appropriate for the number of items in the list.
+When choosing if sub-level items should be always visible or only visible when active you should consider:
+
+- How many sub-level items will each top-level item have?
+- Do users need to see sub-level items to understand the structure of your site?
+- Do users need to jump to sub-level items quickly to complete frequent tasks?
+- Will visible sub-level items cause excessive scrolling or tab stops for keyboard users?
 
 #### Visible when active
 
-When the list of items is long, prefer showing any sub-level lists when either navigating to the parent item or one of the sub-level items. Since this is the default behaviour, either setting `subLevelVisible="whenActive"` or omitting this prop will use this strategy.
+Sub-level items can be revealed when the parent item is active. This approach is best when the number of visible items in the list will increase cognitive load, for example by causing excessive scrolling and tab stops for keyboard users.
+Visible when active is the default behaviour. Setting `subLevelVisible="whenActive"` or omitting this prop will result in sub-level links that are only visible when active.
 
 #### Always visible
 
-When you have a small number of sub-level items, it’s easier for users to see all items at once. Set `subLevelVisible="always"` to achieve this.
+Making sub-level items always visible will help users if:
+
+- you have a small number of items and it’s easy for users to see all items at once without excessive scroll or tab stops,
+- it will help users understand the structure of your site,
+- you know users need to jump to sub-levels to quickly to complete frequent tasks.
+
+Setting `subLevelVisible="always"` will result in sub-links that are always visible.
 
 ## App layout footer
 

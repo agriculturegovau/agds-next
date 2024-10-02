@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { VisuallyHidden } from '../a11y';
 import { TextLink } from '../text-link';
 import { Stack } from '../stack';
 import {
@@ -84,14 +85,18 @@ export const WithItemChangeLink: Story = {
 				<SummaryListItemTerm>First name</SummaryListItemTerm>
 				<SummaryListItemDescription>Will</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">
+						Change <VisuallyHidden>first name</VisuallyHidden>
+					</TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>Last name</SummaryListItemTerm>
 				<SummaryListItemDescription>Power</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">
+						Change <VisuallyHidden>last name</VisuallyHidden>
+					</TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
@@ -102,14 +107,18 @@ export const WithItemChangeLink: Story = {
 					will.power@example.com
 				</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">
+						Change <VisuallyHidden>contact information</VisuallyHidden>
+					</TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
 				<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
 				<SummaryListItemAction>
-					<TextLink href="#">Change</TextLink>
+					<TextLink href="#">
+						Change <VisuallyHidden>date of birth</VisuallyHidden>
+					</TextLink>
 				</SummaryListItemAction>
 			</SummaryListItem>
 		</SummaryList>

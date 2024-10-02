@@ -1,12 +1,20 @@
-import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
+import {
+	Fragment,
+	type FocusEvent,
+	type FocusEventHandler,
+	type ReactNode,
+	type Ref,
+} from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import {
+	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
+	useIsIos,
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
@@ -44,7 +52,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 	// input props
 	'aria-describedby'?: string;
@@ -77,14 +85,13 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem = (item, inputValue) => (
-		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
-	),
+	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
+	const isIos = useIsIos();
 
 	validateMaxWidth('ComboBox', maxWidthProp);
 
@@ -108,6 +115,15 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 
 	const { id: labelId } = combobox.getLabelProps();
 
+	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
+		// If a user presses the Done button on the iOS keyboard, we shouldn't close the dropdown
+		if (isIos && !event.nativeEvent?.relatedTarget) {
+			// @ts-expect-error: Property 'preventDownshiftDefault' does not exist on type 'FocusEvent'
+			event.nativeEvent.preventDownshiftDefault = true;
+		}
+		onBlur?.(event);
+	};
+
 	return (
 		<Field
 			label={label}
@@ -123,7 +139,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			{(a11yProps) => (
 				<div
 					{...popover.getReferenceProps()}
-					css={{ position: 'relative', maxWidth }}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...generateHighlightStyles(combobox.inputValue),
+					}}
 				>
 					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input
@@ -144,7 +164,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							ref: inputRefProp,
 							type: 'text',
 							name: inputName,
-							onBlur,
+							onBlur: handleOnBlur,
 							onFocus,
 						})}
 					/>
@@ -188,7 +208,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item, combobox.inputValue)}
+													{renderItem(item)}
 												</ComboboxListItem>
 											))
 										) : (

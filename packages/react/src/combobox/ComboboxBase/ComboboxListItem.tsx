@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react';
-import { boxPalette, packs } from '../../core';
-import { Flex } from '../../flex';
+import { boxPalette, mapSpacing, packs, tokens } from '../../core';
+import { useIsIos } from '../utils';
 
 type ComboboxListItemProps = Omit<HTMLAttributes<HTMLLIElement>, 'color'> & {
 	isActiveItem: boolean;
@@ -20,17 +20,21 @@ export const ComboboxListItem = forwardRef<
 	{ children, isActiveItem, isInteractive = true, ...props },
 	ref
 ) {
+	const isIos = useIsIos();
 	return (
-		<Flex
+		<li
 			ref={ref}
-			as="li"
-			paddingX={1}
-			paddingY={0.75}
-			borderBottom
-			borderColor="muted"
-			alignItems="center"
-			gap={0.75}
 			css={{
+				alignItems: 'center',
+				borderBottomStyle: 'solid',
+				borderBottomWidth: tokens.borderWidth.sm,
+				borderColor: boxPalette.borderMuted,
+				display: 'flex',
+				gap: mapSpacing(0.75),
+				paddingBottom: mapSpacing(0.75),
+				paddingLeft: mapSpacing(1),
+				paddingRight: mapSpacing(1),
+				paddingTop: mapSpacing(0.75),
 				...(isInteractive
 					? {
 							cursor: 'pointer',
@@ -43,9 +47,13 @@ export const ComboboxListItem = forwardRef<
 
 				'&:last-of-type': { borderBottom: 'none' },
 			}}
+			// Required for Android TalkBack to be able to access the list items
+			// See https://issues.chromium.org/issues/40260928
+			// But stops iOS from being able to access them ◔_◔
+			tabIndex={isIos ? undefined : -1}
 			{...props}
 		>
 			{children}
-		</Flex>
+		</li>
 	);
 });

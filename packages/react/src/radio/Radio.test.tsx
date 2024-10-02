@@ -44,6 +44,10 @@ describe('Radio', () => {
 		const { container } = render(<RadioExample />);
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
