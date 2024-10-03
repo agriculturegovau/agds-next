@@ -1,5 +1,6 @@
-import { ReactNode, useRef } from 'react';
+import { forwardRef, ReactNode, useRef } from 'react';
 import { Box } from '../box';
+import { mergeRefs } from '../core';
 import { Tag, TagProps } from './Tag';
 import { TagsContainer } from './TagsContainer';
 import { TagsList } from './TagsList';
@@ -9,8 +10,12 @@ export type TagsProps = {
 	items: Omit<TagProps, 'children'> & { label: string }[];
 };
 
-export const Tags = ({ heading, items }: TagsProps) => {
-	const listRef = useRef<HTMLDivElement>(null);
+export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
+	{ heading, items },
+	forwardedRef
+) {
+	const ref = useRef<HTMLDivElement>(null);
+	const listRef = mergeRefs([ref, forwardedRef]);
 	const focusOnRemove = (index: number) => {
 		const nextButtonToFocus =
 			listRef?.current &&
@@ -31,4 +36,4 @@ export const Tags = ({ heading, items }: TagsProps) => {
 			</TagsList>
 		</TagsContainer>
 	);
-};
+});
