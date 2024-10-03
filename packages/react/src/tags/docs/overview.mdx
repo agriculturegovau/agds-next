@@ -63,6 +63,8 @@ Tags can be removed from a list, if you add an `onRemove` function.
 
 Please avoid using Tags with links and remove buttons together, as it is confusing for users.
 
+When a user removes a tag, their focus is automatically moved to the next tag in the list (where appropriate). However it’s important to manage their focus appropriately to help them continue their task or journey. In some cases, there may not be an obvious (or any) element to send focus to, such as when the alert was triggered by an action on a previous page or from a drawer that is now closed. Always carefully consider the context and previous user actions before moving their focus to ensure a smooth and accessible experience.
+
 ```jsx live
 () => {
 	const [items, setItems] = React.useState([
@@ -70,9 +72,12 @@ Please avoid using Tags with links and remove buttons together, as it is confusi
 		{ label: 'Orange' },
 		{ label: 'Peach' },
 	]);
+	const [announcement, setAnnouncement] = React.useState('');
 
 	const handleRemove = (label) => {
 		setItems((prevItems) => prevItems.filter((item) => item.label !== label));
+		setAnnouncement(`${label} removed`);
+		// document.getElementById(label).focus();
 	};
 
 	const itemsWithHandlers = items.map((item) => ({
@@ -80,15 +85,25 @@ Please avoid using Tags with links and remove buttons together, as it is confusi
 		onRemove: () => handleRemove(item.label),
 	}));
 
-	return items.length > 0 ? (
-		<Tags
-			heading={
-				<Text as="h2" fontWeight="bold">
-					Tags:
-				</Text>
-			}
-			items={itemsWithHandlers}
-		/>
-	) : undefined;
+	return (
+		<>
+			<button id="Apple">Apple</button>
+			<button id="Orange">Orange</button>
+			<button id="Peach">Peach</button>
+			<Box zcss={visuallyHiddenStyles} role="status">
+				{announcement}
+			</Box>
+			{items.length > 0 ? (
+				<Tags
+					heading={
+						<Text as="h2" fontWeight="bold">
+							Tags:
+						</Text>
+					}
+					items={itemsWithHandlers}
+				/>
+			) : undefined}
+		</>
+	);
 };
 ```

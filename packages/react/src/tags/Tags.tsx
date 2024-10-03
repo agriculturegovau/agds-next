@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import { Box } from '../box';
-import { TagsContainer } from './TagsContainer';
 import { Tag, TagProps } from './Tag';
+import { TagsContainer } from './TagsContainer';
 import { TagsList } from './TagsList';
 
 export type TagsProps = {
@@ -9,15 +9,26 @@ export type TagsProps = {
 	items: Omit<TagProps, 'children'> & { label: string }[];
 };
 
-export const Tags = ({ items, heading }: TagsProps) => (
-	<TagsContainer>
-		{heading}
-		<TagsList>
-			{items.map(({ label, ...props }, index) => (
-				<Box as="li" key={index}>
-					<Tag {...props}>{label}</Tag>
-				</Box>
-			))}
-		</TagsList>
-	</TagsContainer>
-);
+export const Tags = ({ heading, items }: TagsProps) => {
+	const listRef = useRef<HTMLDivElement>(null);
+	const focusOnRemove = (index: number) => {
+		const nextButtonToFocus =
+			listRef?.current &&
+			listRef.current.querySelectorAll('button')[Math.max(0, index - 1)];
+		nextButtonToFocus?.focus();
+	};
+	return (
+		<TagsContainer ref={listRef}>
+			{heading}
+			<TagsList>
+				{items.map(({ label, ...props }, index) => (
+					<Box as="li" key={index}>
+						<Tag {...props} focusOnRemove={focusOnRemove} index={index}>
+							{label}
+						</Tag>
+					</Box>
+				))}
+			</TagsList>
+		</TagsContainer>
+	);
+};
