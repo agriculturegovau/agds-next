@@ -6,9 +6,12 @@ import { TextLink } from '@ag.ds-next/react/text-link';
  * - Not on /pr-preview/...
  * - Not in development
  *
- * The main branch has no BASE_BRANCH env var.
+ * The main branch has no BASE_PATH env var.
  *
- * See .github/workflows/deploy-develop-docs.yml and .github/workflows/deploy-docs.yml
+ * See:
+ * - .github/workflows/deploy-develop-docs.yml (develop branch, has BASE_PATH)
+ * - .github/workflows/preview.yml (feature branches, has BASE_PATH)
+ * - .github/workflows/deploy-docs.yml (main branch, has no BASE_PATH)
  */
 const isDevelop =
 	!!process.env.NEXT_PUBLIC_BASE_PATH || process.env.NODE_ENV !== 'production';
