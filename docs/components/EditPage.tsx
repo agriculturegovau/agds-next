@@ -6,10 +6,12 @@ import { TextLink } from '@ag.ds-next/react/text-link';
  * - Not on /pr-preview/...
  * - Not in development
  *
- * See .github/workflows/deploy-develop-docs.yml
+ * The main branch has no BASE_BRANCH env var.
+ *
+ * See .github/workflows/deploy-develop-docs.yml and .github/workflows/deploy-docs.yml
  */
 const isDevelop =
-	!!process.env.BASE_PATH || process.env.NODE_ENV !== 'production';
+	!!process.env.NEXT_PUBLIC_BASE_PATH || process.env.NODE_ENV !== 'production';
 const branch = isDevelop ? 'develop' : 'main';
 
 const ORG = 'agriculturegovau';
