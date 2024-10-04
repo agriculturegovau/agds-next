@@ -99,6 +99,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		},
 		forwardedRef
 	) {
+		const [status, setStatus] = useState('');
 		const filesPlural = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
@@ -123,6 +124,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const handleRemoveAcceptedFile = (index: number) => {
 			clearErrors();
 			onChange?.(removeItemAtIndex(value, index));
+			setStatus(value[index].name + ' removed');
+		};
+
+		const handleRemove = (file: ExistingFile) => {
+			onRemoveExistingFile?.(file);
+			setStatus(file.name + ' removed');
 		};
 
 		const handleDropAccepted = (acceptedFiles: FileWithStatus[]) => {
@@ -161,6 +168,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			else {
 				validFiles = acceptedFiles;
 			}
+
+			setStatus(validFiles.map(({ name }) => name).join(', ') + ' added');
 
 			onChange?.(validFiles);
 		};
@@ -261,6 +270,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{(a11yProps) => {
 					return (
 						<Stack gap={1.5}>
+							<div css={visuallyHiddenStyles} role="status">
+								{status}
+							</div>
+
 							<Box {...dropzoneProps}>
 								<Stack
 									alignItems="center"
@@ -379,7 +392,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<FileUploadExistingFileList
 										files={existingFiles}
 										hideThumbnails={hideThumbnails}
-										onRemove={onRemoveExistingFile}
+										onRemove={handleRemove}
 									/>
 									<FileUploadFileList
 										files={value}
