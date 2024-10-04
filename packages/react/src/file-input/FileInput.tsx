@@ -43,6 +43,7 @@ export type FileInputProps = BaseFileInputProps & {
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	function FileInput(
 		{
+			accept,
 			label,
 			hideOptionalLabel,
 			required,
@@ -67,18 +68,22 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
+		const fallbackHint =
+			hint || (accept && `Accepted files include: ${accept}`);
+
 		return (
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
-				hint={hint}
+				hint={fallbackHint}
 				invalid={invalid}
 				message={message}
 				id={id}
 			>
 				{(a11yProps) => (
 					<input
+						accept={accept}
 						ref={ref}
 						css={styles}
 						{...a11yProps}
