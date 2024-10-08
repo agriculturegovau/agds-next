@@ -68,8 +68,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
-		const fallbackHint =
-			hint || (accept && `Files accepted: ${accept}`);
+		const fallbackHint = hint || (accept && `Files accepted: ${accept}`);
 
 		return (
 			<Field
