@@ -249,8 +249,17 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			(tooManyFilesRejections && tooManyFilesRejections?.length > 1);
 
 		const fallbackId = useId(id);
-		const fileSizeDescriptionId = `${fallbackId}-file-size-desc`;
-		const acceptedFilesDescriptionId = `${fallbackId}-accepted-files-desc`;
+		const fileSizeDescriptionId = maxSize ? `${fallbackId}-file-size-desc` : '';
+		const acceptedFilesDescriptionId = accept
+			? `${fallbackId}-accepted-files-desc`
+			: '';
+
+		const buttonAriaDescribedBy = [
+			fileSizeDescriptionId,
+			acceptedFilesDescriptionId,
+		]
+			.filter(Boolean)
+			.join(', ');
 
 		return (
 			<Field
@@ -329,7 +338,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										) : null}
 									</Stack>
 									<Button
-										aria-describedby={`${fileSizeDescriptionId} ${acceptedFilesDescriptionId}`}
+										aria-describedby={buttonAriaDescribedBy}
 										disabled={disabled}
 										onClick={open}
 										type="button"
