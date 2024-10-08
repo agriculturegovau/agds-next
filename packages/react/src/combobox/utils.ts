@@ -1,4 +1,4 @@
-import { type CSSProperties } from 'react';
+import { type CSSProperties, useMemo } from 'react';
 import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
@@ -65,18 +65,18 @@ export function generateHighlightStyles(
 
 	characters.forEach((_, index) => {
 		// When typing "abc"
-		// This generates things like [data-char="a"] + [data-char="b"] + [data-char="c"]
+		// This generates things like [data-char="a" i] + [data-char="b" i] + [data-char="c" i]
 		// to ensure we select consecutive elements
 		const baseSelector = characters
 			.slice(0, index + 1)
-			.map((char) => `[data-char="${char}"]`)
+			.map((char) => `[data-char="${char}" i]`)
 			.join(' + ');
 
-		// This generates things like [data-char="a"]:has(+ [data-char="b"] + [data-char="c"])
+		// This generates things like [data-char="a" i]:has(+ [data-char="b" i] + [data-char="c" i])
 		// to ensure we select earlier elements whose later siblings match
 		const hasSelector = characters
 			.slice(index + 1)
-			.map((char) => `+ [data-char="${char}"]`)
+			.map((char) => `+ [data-char="${char}" i]`)
 			.join(' ');
 
 		const fullSelector = hasSelector
@@ -89,4 +89,16 @@ export function generateHighlightStyles(
 	});
 
 	return styles;
+}
+
+export function useIsIos() {
+	const isIos = useMemo(
+		() =>
+			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
+			CSS.supports('-webkit-appearance', '-apple-pay-button') &&
+			CSS.supports('-webkit-overflow-scrolling', 'auto'),
+		[]
+	);
+
+	return isIos;
 }

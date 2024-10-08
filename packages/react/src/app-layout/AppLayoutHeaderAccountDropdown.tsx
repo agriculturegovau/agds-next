@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useRef } from 'react';
 import { VisuallyHidden } from '../a11y';
 import { Avatar } from '../avatar';
 import { BaseButton } from '../button';
@@ -44,6 +44,12 @@ function AppLayoutHeaderAccountDropdownButton({
 }: AppLayoutHeaderAccountDropdownButtonProps) {
 	const { isMenuOpen } = useDropdownMenuContext();
 	const { ref, ...buttonProps } = useDropdownMenuButton();
+	const scrollbarWidthRef = useRef(0);
+
+	useEffect(() => {
+		scrollbarWidthRef.current =
+			window.innerWidth - document.documentElement.offsetWidth;
+	}, []);
 	return (
 		<Flex
 			as={BaseButton}
@@ -58,9 +64,11 @@ function AppLayoutHeaderAccountDropdownButton({
 			gap={1}
 			color="action"
 			focusRingFor="keyboard"
+			minHeight="5.25rem"
 			css={mq({
-				height: '100%',
-				maxWidth: ['16rem', '18rem'],
+				marginLeft: 'auto',
+				// 17.625rem is the available space beside the hamburger at 375px
+				maxWidth: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
 				overflow: 'hidden',
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,

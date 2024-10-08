@@ -179,6 +179,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
       >
         <li
           class="css-13t89e4-ComboboxListItem"
+          tabindex="-1"
         >
           <div
             class="css-4cj67k-boxStyles"

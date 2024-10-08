@@ -59,7 +59,7 @@ export const WithTitleElement: Story = {
 	args: {
 		tone: 'success',
 		title: (
-			<PageAlertTitle as="h2">Descriptive success message (H2)</PageAlertTitle>
+			<PageAlertTitle as="h3">Descriptive success message (H3)</PageAlertTitle>
 		),
 	},
 };
@@ -115,7 +115,7 @@ export const WithCloseAndChildTitle: Story = {
 	),
 	args: {
 		tone: 'success',
-		title: <PageAlertTitle as="h2">Page Alert title as H2</PageAlertTitle>,
+		title: <PageAlertTitle as="h3">Page Alert title as H3</PageAlertTitle>,
 		onClose: () => console.log('Closed'),
 	},
 };

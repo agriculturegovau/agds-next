@@ -96,3 +96,19 @@ The feature variant of the callout can be used to draw even more emphasis to the
 	<Text as="p">Description of the callout.</Text>
 </Callout>
 ```
+
+## Customising the title
+
+By default, `Callout` renders its title as an `h2`. However, should the need arise, you can change the title’s semantic tag to an `h3`, for example, by passing the `CalloutTitle` component to the `title` prop. For information on maintaining proper heading levels, refer to [Structuring headings and labels](/content/content-structure#structuring-headings-and-labels).
+
+```jsx
+import { CalloutTitle } from '@ag.ds-next/react/callout';
+
+<Callout
+	tone="info"
+	variant="feature"
+	title={<CalloutTitle as="h3">Callout heading</CalloutTitle>}
+>
+	<Text as="p">Description of the callout.</Text>
+</Callout>;
+```

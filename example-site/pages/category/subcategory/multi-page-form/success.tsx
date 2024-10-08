@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
@@ -49,11 +49,7 @@ export default function FormMultiPageFormPage() {
 									ref={successPageAlertRef}
 									tabIndex={-1}
 									tone="success"
-									title={
-										<PageAlertTitle as="h2">
-											Descriptive success message (H2)
-										</PageAlertTitle>
-									}
+									title="Descriptive success message (H2)"
 								>
 									<Text as="p">
 										Supporting paragraph for the success message

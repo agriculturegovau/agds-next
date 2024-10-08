@@ -1,3 +1,4 @@
+import { visuallyHiddenStyles } from '../../../packages/react/src/a11y';
 import { Box } from '../../../packages/react/src/box';
 import { tokens } from '../../../packages/react/src/core';
 import { Column, Columns } from '../../../packages/react/src/columns';
@@ -115,6 +116,9 @@ export const ListFiltering = ({
 						>
 							{tableCaption}
 						</Text>
+						<div role="status" css={visuallyHiddenStyles}>
+							{loading ? 'Loading audits' : ''}
+						</div>
 						<SortBySelect />
 					</Flex>
 					<DataList data={data} loading={loading} />

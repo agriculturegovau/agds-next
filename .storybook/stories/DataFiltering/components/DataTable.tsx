@@ -128,13 +128,15 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 							Table column headers with buttons are sortable.
 						</div>
 					) : null}
+					<div role="status" css={visuallyHiddenStyles}>
+						{loading ? 'Loading audits' : ''}
+					</div>
 					<TableWrapper>
 						<Table
 							aria-rowcount={totalItems}
-							{...(headingId && {
-								'aria-labelledby': headingId,
-								'aria-describedby': descriptionId,
-							})}
+							aria-labelledby={
+								headingId ? `${headingId} ${descriptionId}` : undefined
+							}
 							id={tableId}
 							ref={ref}
 							tabIndex={-1}

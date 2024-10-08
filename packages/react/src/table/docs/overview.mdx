@@ -92,7 +92,9 @@ For data tables with a small amount of rows, use the default table. Align text c
 - use for tabular data - not layouts
 - provide a meaningful caption (heading), or use aria-labelledby to reference a heading
 - keep row heights small
-- use a simple table structure - complex tables are difficult to navigate.
+- use a simple table structure - complex tables are difficult to navigate
+- avoid complex tables by splitting the data into simple, seperate tables
+- avoid empty table headers
 - use Pagination to break up tables with many rows
 - align text left and numeric data right
 - only include text, tags, links, actions and status badges as content
@@ -130,7 +132,7 @@ You can enable zebra stripes by applying the `striped` prop.
 <TableWrapper>
 	<Table striped>
 		<TableCaption>
-			Population of Australian states and territories, December 2015
+			Population of Australian states and territories, December 2016
 		</TableCaption>
 		<TableHead>
 			<TableRow>
@@ -208,7 +210,7 @@ You can use custom widths based on the expected length of the data under each co
 <TableWrapper>
 	<Table striped>
 		<TableCaption>
-			Population of Australian states and territories, December 2015
+			Population of Australian states and territories, December 2017
 		</TableCaption>
 		<TableHead>
 			<TableRow>
@@ -282,7 +284,9 @@ You can use custom widths based on the expected length of the data under each co
 
 ## Sortable columns
 
-You can use the `TableHeaderSortable` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
+You can use the `<TableHeaderSortable>` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
+
+It is important to add `<VisuallyHidden>` text in the table’s caption to explain the purpose of the `TableHeaderSortable` buttons. This reduces confusion for screen reader users who may not understand their significance when focusing them.
 
 You can see a working example of this component in the [Search filters patterns](/storybook/index.html?path=/story/patterns-search-filters--table-medium).
 
@@ -290,7 +294,10 @@ You can see a working example of this component in the [Search filters patterns]
 <TableWrapper>
 	<Table striped>
 		<TableCaption>
-			Population of Australian states and territories, December 2015
+			Population of Australian states and territories, December 2018
+			<VisuallyHidden>
+				, column headers with buttons are sortable.
+			</VisuallyHidden>
 		</TableCaption>
 		<TableHead>
 			<TableRow>
@@ -359,7 +366,7 @@ A Table must have some form of caption or heading to describe the data it contai
 	<H3 id="table-heading">Applications</H3>
 	<Text id="table-description">Active establishment registrations</Text>
 	<TableWrapper>
-		<Table aria-labelledby="table-heading" aria-describedby="table-description">
+		<Table aria-labelledby="table-heading table-description">
 			<TableHead>
 				<TableRow>
 					<TableHeader scope="col">Location</TableHeader>
@@ -450,206 +457,209 @@ A Table must have some form of caption or heading to describe the data it contai
 When a table is too wide for its container, a custom scrollbar will be rendered. This scrollbar also sticks to the bottom of the screen when the bottom of the table is off-screen, so users can still easily scroll the table regardless of which rows they’re looking at.
 
 ```jsx live
-<TableWrapper>
-	<Table tableLayout="fixed">
-		<TableHead>
-			<TableRow>
-				<TableHeader scope="col" width="20rem">
-					Business name
-				</TableHeader>
-				<TableHeader scope="col" width="12rem">
-					Assignee
-				</TableHeader>
-				<TableHeader scope="col" width="16rem">
-					City
-				</TableHeader>
-				<TableHeader scope="col" width="12rem">
-					Date registered
-				</TableHeader>
-				<TableHeader scope="col" width="11rem">
-					Status
-				</TableHeader>
-			</TableRow>
-		</TableHead>
-		<TableBody>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Agriculture Victoria
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
-						<Text>Oscar Piastri</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Melbourne, VIC</TableCell>
-				<TableCell>14/08/2023</TableCell>
-				<TableCell>
-					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Aussie Acres Produce
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="George Russell" size="sm" aria-hidden />
-						<Text>George Russell</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>White Plains, NSW</TableCell>
-				<TableCell>17/03/2024</TableCell>
-				<TableCell>
-					<StatusBadge
-						appearance="subtle"
-						label="Completed"
-						tone="successMedium"
-					/>
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Aussie Agribusiness
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Lando Norris" size="sm" aria-hidden />
-						<Text>Lando Norris</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Sydney, NSW</TableCell>
-				<TableCell>19/11/2023</TableCell>
-				<TableCell>
-					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Aussie Agro Supplies
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Lando Norris" size="sm" aria-hidden />
-						<Text>Lando Norris</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Shanahanberg, TAS</TableCell>
-				<TableCell>16/07/2023</TableCell>
-				<TableCell>
-					<StatusBadge
-						appearance="subtle"
-						label="Not booked"
-						tone="notStartedLow"
-					/>
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Australian Cattle Co.
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Lando Norris" size="sm" aria-hidden />
-						<Text>Lando Norris</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>North Margarettaborough, WA</TableCell>
-				<TableCell>01/11/2023</TableCell>
-				<TableCell>
-					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Baumbach, Williamson and Rosenbaum
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
-						<Text>Oscar Piastri</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Oakland Park, VIC</TableCell>
-				<TableCell>02/09/2023</TableCell>
-				<TableCell>
-					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Bergnaum Inc
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
-						<Text>Oscar Piastri</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Tallahassee, SA</TableCell>
-				<TableCell>23/12/2023</TableCell>
-				<TableCell>
-					<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Brown Group
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="George Russell" size="sm" aria-hidden />
-						<Text>George Russell</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>Elgin, VIC</TableCell>
-				<TableCell>28/12/2023</TableCell>
-				<TableCell>
-					<StatusBadge
-						appearance="subtle"
-						label="Cancelled"
-						tone="errorMedium"
-					/>
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Brown, Mayert and Robel
-				</TableCell>
-				<TableCell>-</TableCell>
-				<TableCell>Ismaelshire, SA</TableCell>
-				<TableCell>21/04/2024</TableCell>
-				<TableCell>
-					<StatusBadge
-						appearance="subtle"
-						label="Completed"
-						tone="successMedium"
-					/>
-				</TableCell>
-			</TableRow>
-			<TableRow>
-				<TableCell as="th" scope="row">
-					Bushland Farms
-				</TableCell>
-				<TableCell>
-					<Flex alignItems="center" gap={0.25}>
-						<Avatar name="Oscar Piastri" size="sm" aria-hidden />
-						<Text>Oscar Piastri</Text>
-					</Flex>
-				</TableCell>
-				<TableCell>New Oleta, TAS</TableCell>
-				<TableCell>22/05/2024</TableCell>
-				<TableCell>
-					<StatusBadge
-						appearance="subtle"
-						label="Not booked"
-						tone="notStartedLow"
-					/>
-				</TableCell>
-			</TableRow>
-		</TableBody>
-	</Table>
-</TableWrapper>
+<Stack gap={1}>
+	<H3 id="wide-table-heading">Business registrations</H3>
+	<TableWrapper>
+		<Table aria-labelledby="wide-table-heading" tableLayout="fixed">
+			<TableHead>
+				<TableRow>
+					<TableHeader scope="col" width="20rem">
+						Business name
+					</TableHeader>
+					<TableHeader scope="col" width="12rem">
+						Assignee
+					</TableHeader>
+					<TableHeader scope="col" width="16rem">
+						City
+					</TableHeader>
+					<TableHeader scope="col" width="12rem">
+						Date registered
+					</TableHeader>
+					<TableHeader scope="col" width="11rem">
+						Status
+					</TableHeader>
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Agriculture Victoria
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Text>Oscar Piastri</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Melbourne, VIC</TableCell>
+					<TableCell>14/08/2023</TableCell>
+					<TableCell>
+						<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Aussie Acres Produce
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="George Russell" size="sm" aria-hidden />
+							<Text>George Russell</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>White Plains, NSW</TableCell>
+					<TableCell>17/03/2024</TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="Completed"
+							tone="successMedium"
+						/>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Aussie Agribusiness
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Text>Lando Norris</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Sydney, NSW</TableCell>
+					<TableCell>19/11/2023</TableCell>
+					<TableCell>
+						<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Aussie Agro Supplies
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Text>Lando Norris</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Shanahanberg, TAS</TableCell>
+					<TableCell>16/07/2023</TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="Not booked"
+							tone="notStartedLow"
+						/>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Australian Cattle Co.
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Text>Lando Norris</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>North Margarettaborough, WA</TableCell>
+					<TableCell>01/11/2023</TableCell>
+					<TableCell>
+						<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Baumbach, Williamson and Rosenbaum
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Text>Oscar Piastri</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Oakland Park, VIC</TableCell>
+					<TableCell>02/09/2023</TableCell>
+					<TableCell>
+						<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Bergnaum Inc
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Text>Oscar Piastri</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Tallahassee, SA</TableCell>
+					<TableCell>23/12/2023</TableCell>
+					<TableCell>
+						<StatusBadge appearance="subtle" label="Booked" tone="infoMedium" />
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Brown Group
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="George Russell" size="sm" aria-hidden />
+							<Text>George Russell</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>Elgin, VIC</TableCell>
+					<TableCell>28/12/2023</TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="Cancelled"
+							tone="errorMedium"
+						/>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Brown, Mayert and Robel
+					</TableCell>
+					<TableCell>-</TableCell>
+					<TableCell>Ismaelshire, SA</TableCell>
+					<TableCell>21/04/2024</TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="Completed"
+							tone="successMedium"
+						/>
+					</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell as="th" scope="row">
+						Bushland Farms
+					</TableCell>
+					<TableCell>
+						<Flex alignItems="center" gap={0.25}>
+							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Text>Oscar Piastri</Text>
+						</Flex>
+					</TableCell>
+					<TableCell>New Oleta, TAS</TableCell>
+					<TableCell>22/05/2024</TableCell>
+					<TableCell>
+						<StatusBadge
+							appearance="subtle"
+							label="Not booked"
+							tone="notStartedLow"
+						/>
+					</TableCell>
+				</TableRow>
+			</TableBody>
+		</Table>
+	</TableWrapper>
+</Stack>
 ```
 
 ## ‘colSpan’ and ‘rowSpan’
@@ -740,12 +750,14 @@ The actions associated with each table row (e.g. ‘Edit’, ‘Delete’, ‘Do
 
 If rows contain three or more actions, they can instead be replaced with a Dropdown menu containing these actions.
 
+To ensure the accessible name of each row’s actions is unique, associate them with an `aria-describedby` that points to the `id` of the primary, unique identifier for that row.
+
 Links that open a page to view a record or more information should be located in the first column, be labelled with a unique identifier, and display as bold text.
 
 ```jsx live
 <TableWrapper>
 	<Table>
-		<TableCaption>Applications</TableCaption>
+		<TableCaption>Applications (with actions)</TableCaption>
 		<TableHead>
 			<TableRow>
 				<TableHeader scope="col">Reference</TableHeader>
@@ -757,7 +769,9 @@ Links that open a page to view a record or more information should be located in
 		<TableBody>
 			<TableRow>
 				<TableCell as="th" scope="row" fontWeight="bold">
-					<TextLink href="#">REF-AB3CD4EF</TextLink>
+					<TextLink href="#" id="REF-AB3CD4EF">
+						REF-AB3CD4EF
+					</TextLink>
 				</TableCell>
 				<TableCell textAlign="right">20/06/2024</TableCell>
 				<TableCell textAlign="right">
@@ -769,14 +783,20 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
-						<TextLink href="#">Edit</TextLink>
-						<TextLink href="#">Download</TextLink>
+						<TextLink href="#" aria-describedby="REF-AB3CD4EF">
+							Edit
+						</TextLink>
+						<TextLink href="#" aria-describedby="REF-AB3CD4EF">
+							Download
+						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" scope="row" fontWeight="bold">
-					<TextLink href="#">REF-5GH6IJ7K</TextLink>
+					<TextLink href="#" id="REF-5GH6IJ7K">
+						REF-5GH6IJ7K
+					</TextLink>
 				</TableCell>
 				<TableCell textAlign="right">25/06/2024</TableCell>
 				<TableCell textAlign="right">
@@ -788,14 +808,20 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
-						<TextLink href="#">Edit</TextLink>
-						<TextLink href="#">Download</TextLink>
+						<TextLink href="#" aria-describedby="REF-5GH6IJ7K">
+							Edit
+						</TextLink>
+						<TextLink href="#" aria-describedby="REF-5GH6IJ7K">
+							Download
+						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" scope="row" fontWeight="bold">
-					<TextLink href="#">REF-M8NO9PQR</TextLink>
+					<TextLink href="#" id="REF-M8NO9PQR">
+						REF-M8NO9PQR
+					</TextLink>
 				</TableCell>
 				<TableCell textAlign="right">02/07/2024</TableCell>
 				<TableCell textAlign="right">
@@ -807,14 +833,20 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
-						<TextLink href="#">Edit</TextLink>
-						<TextLink href="#">Download</TextLink>
+						<TextLink href="#" aria-describedby="REF-M8NO9PQR">
+							Edit
+						</TextLink>
+						<TextLink href="#" aria-describedby="REF-M8NO9PQR">
+							Download
+						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" scope="row" fontWeight="bold">
-					<TextLink href="#">REF-S1TU2VWX</TextLink>
+					<TextLink href="#" id="REF-S1TU2VWX">
+						REF-S1TU2VWX
+					</TextLink>
 				</TableCell>
 				<TableCell textAlign="right">05/08/2024</TableCell>
 				<TableCell textAlign="right">
@@ -826,14 +858,20 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
-						<TextLink href="#">Edit</TextLink>
-						<TextLink href="#">Download</TextLink>
+						<TextLink href="#" aria-describedby="REF-S1TU2VWX">
+							Edit
+						</TextLink>
+						<TextLink href="#" aria-describedby="REF-S1TU2VWX">
+							Download
+						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell as="th" scope="row" fontWeight="bold">
-					<TextLink href="#">REF-Y3ZA4B5C</TextLink>
+					<TextLink href="#" id="REF-Y3ZA4B5C">
+						REF-Y3ZA4B5C
+					</TextLink>
 				</TableCell>
 				<TableCell textAlign="right">19/10/2024</TableCell>
 				<TableCell textAlign="right">
@@ -845,9 +883,166 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 				<TableCell textAlign="right">
 					<Flex gap={1}>
-						<TextLink href="#">Edit</TextLink>
-						<TextLink href="#">Download</TextLink>
+						<TextLink href="#" aria-describedby="REF-Y3ZA4B5C">
+							Edit
+						</TextLink>
+						<TextLink href="#" aria-describedby="REF-Y3ZA4B5C">
+							Download
+						</TextLink>
 					</Flex>
+				</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
+
+```jsx live
+<TableWrapper>
+	<Table>
+		<TableCaption>Applications (with actions dropdown)</TableCaption>
+		<TableHead>
+			<TableRow>
+				<TableHeader scope="col">Reference</TableHeader>
+				<TableHeader scope="col">Date submitted</TableHeader>
+				<TableHeader scope="col">Status</TableHeader>
+				<TableHeader scope="col">Actions</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow>
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#" id="REF-ABC3CD4EF">
+						REF-ABC3CD4EF
+					</TextLink>
+				</TableCell>
+				<TableCell textAlign="right">20/06/2024</TableCell>
+				<TableCell textAlign="right">
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
+				</TableCell>
+				<TableCell>
+					<DropdownMenu>
+						<DropdownMenuButton aria-describedby="REF-ABC3CD4EF">
+							Action
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Edit</DropdownMenuItem>
+							<DropdownMenuItem>Download</DropdownMenuItem>
+							<DropdownMenuItem>Delete</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</DropdownMenu>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#" id="REF-5GHC6IJ7K">
+						REF-5GHC6IJ7K
+					</TextLink>
+				</TableCell>
+				<TableCell textAlign="right">25/06/2024</TableCell>
+				<TableCell textAlign="right">
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
+				</TableCell>
+				<TableCell>
+					<DropdownMenu>
+						<DropdownMenuButton aria-describedby="REF-5GHC6IJ7K">
+							Action
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Edit</DropdownMenuItem>
+							<DropdownMenuItem>Download</DropdownMenuItem>
+							<DropdownMenuItem>Delete</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</DropdownMenu>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#" id="REF-M8NCO9PQR">
+						REF-M8NCO9PQR
+					</TextLink>
+				</TableCell>
+				<TableCell textAlign="right">02/07/2024</TableCell>
+				<TableCell textAlign="right">
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
+				</TableCell>
+				<TableCell>
+					<DropdownMenu>
+						<DropdownMenuButton aria-describedby="REF-M8NCO9PQR">
+							Action
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Edit</DropdownMenuItem>
+							<DropdownMenuItem>Download</DropdownMenuItem>
+							<DropdownMenuItem>Delete</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</DropdownMenu>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#" id="REF-S1TCU2VWX">
+						REF-S1TCU2VWX
+					</TextLink>
+				</TableCell>
+				<TableCell textAlign="right">05/08/2024</TableCell>
+				<TableCell textAlign="right">
+					<StatusBadge
+						appearance="subtle"
+						tone="infoMedium"
+						label="In progress"
+					/>
+				</TableCell>
+				<TableCell>
+					<DropdownMenu>
+						<DropdownMenuButton aria-describedby="REF-S1TCU2VWX">
+							Action
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Edit</DropdownMenuItem>
+							<DropdownMenuItem>Download</DropdownMenuItem>
+							<DropdownMenuItem>Delete</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</DropdownMenu>
+				</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell as="th" scope="row" fontWeight="bold">
+					<TextLink href="#" id="REF-Y3ZCA4B5C">
+						REF-Y3ZCA4B5C
+					</TextLink>
+				</TableCell>
+				<TableCell textAlign="right">19/10/2024</TableCell>
+				<TableCell textAlign="right">
+					<StatusBadge
+						appearance="subtle"
+						tone="successMedium"
+						label="Completed"
+					/>
+				</TableCell>
+				<TableCell>
+					<DropdownMenu>
+						<DropdownMenuButton aria-describedby="REF-Y3ZCA4B5C">
+							Action
+						</DropdownMenuButton>
+						<DropdownMenuPanel>
+							<DropdownMenuItem>Edit</DropdownMenuItem>
+							<DropdownMenuItem>Download</DropdownMenuItem>
+							<DropdownMenuItem>Delete</DropdownMenuItem>
+						</DropdownMenuPanel>
+					</DropdownMenu>
 				</TableCell>
 			</TableRow>
 		</TableBody>
@@ -865,11 +1060,11 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 () => {
 	const [selectedRows, setSelectedRows] = React.useState([]);
 
-	function toggleRowSelection(rowIdx) {
-		if (selectedRows.includes(rowIdx)) {
-			setSelectedRows((r) => r.filter((s) => s !== rowIdx));
+	function toggleRowSelection(rowIndex) {
+		if (selectedRows.includes(rowIndex)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIndex));
 		} else {
-			setSelectedRows((r) => [...r, rowIdx]);
+			setSelectedRows((r) => [...r, rowIndex]);
 		}
 	}
 
@@ -908,27 +1103,39 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{Array.from(new Array(3).keys()).map((idx) => {
-								const isRowSelected = selectedRows.includes(idx);
+							{Array.from(new Array(3).keys()).map((index) => {
+								const isRowSelected = selectedRows.includes(index);
 								return (
-									<TableRow selected={isRowSelected} key={idx}>
+									<TableRow selected={isRowSelected} key={index}>
 										<TableCell>
 											<Checkbox
 												size="sm"
 												checked={isRowSelected}
-												onChange={() => toggleRowSelection(idx)}
+												onChange={() => toggleRowSelection(index)}
 											>
 												<VisuallyHidden>Select</VisuallyHidden>
 											</Checkbox>
 										</TableCell>
 										<TableCell as="th" scope="row" fontWeight="bold">
-											<TextLink href="#">REF-AB3CD4EF</TextLink>
+											<TextLink href="#" id={`REF-AB${index}CD4EF`}>
+												REF-AB{index}CD4EF
+											</TextLink>
 										</TableCell>
-										<TableCell>20/06/2024</TableCell>
+										<TableCell>2{index}/06/2024</TableCell>
 										<TableCell>
 											<Flex gap={1}>
-												<TextLink href="#">Download</TextLink>
-												<TextLink href="#">Delete</TextLink>
+												<TextLink
+													aria-describedby={`REF-AB${index}CD4EF`}
+													href="#"
+												>
+													Download
+												</TextLink>
+												<TextLink
+													aria-describedby={`REF-AB${index}CD4EF`}
+													href="#"
+												>
+													Delete
+												</TextLink>
 											</Flex>
 										</TableCell>
 									</TableRow>

@@ -3,7 +3,6 @@ import { Flex } from '../flex';
 import { useLinkComponent, LinkProps } from '../core';
 import { BaseButton, BaseButtonProps } from '../button';
 import { MainNavListItem } from './MainNavListItem';
-import { mobileBreakpoint } from './utils';
 import {
 	MainNavListDropdown,
 	MainNavListItemDropdown,
@@ -39,11 +38,9 @@ export function MainNavList({
 			as="nav"
 			aria-label={ariaLabel}
 			// Primary links are hidden on desktop as they are visible in the sidebar
-			display={
-				type === 'primary'
-					? { xs: 'none', [mobileBreakpoint]: 'flex' }
-					: undefined
-			}
+			display={type === 'primary' ? { xs: 'none', lg: 'flex' } : undefined}
+			minHeight={{ xs: '5rem', lg: '3.5rem' }}
+			{...(type === 'secondary' ? { css: { marginLeft: 'auto' } } : undefined)}
 		>
 			<Flex as="ul">
 				{items?.map(({ label, beforeElement, endElement, ...item }, index) => {

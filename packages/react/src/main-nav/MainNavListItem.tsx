@@ -3,7 +3,6 @@ import { focusStyles } from '../box';
 import { boxPalette, mapSpacing, mapResponsiveProp, packs, mq } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
-import { mobileBreakpoint } from './utils';
 
 export type MainNavListItemProps = PropsWithChildren<{
 	active: boolean;
@@ -18,7 +17,7 @@ export function MainNavListItem({
 	return (
 		<Flex
 			as="li"
-			fontSize={{ xs: 'xs', [mobileBreakpoint]: 'sm' }}
+			fontSize={{ xs: 'xs', lg: 'sm' }}
 			css={mq({
 				' > a, > button': {
 					boxSizing: 'border-box',
@@ -29,7 +28,7 @@ export function MainNavListItem({
 							? 'row'
 							: mapResponsiveProp({
 									xs: 'column-reverse',
-									[mobileBreakpoint]: 'row',
+									lg: 'row',
 							  }),
 					alignItems: 'center',
 					justifyContent: 'center',

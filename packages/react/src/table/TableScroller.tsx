@@ -225,12 +225,25 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const hasScroll = thumbWidthRatio !== 1;
 
 	useEffect(() => {
-		setScrollerAriaLabel(
-			`Table ${
-				scrollerRef.current?.querySelector('caption')?.textContent || ''
-			}`
-		);
-	}, [scrollerRef]);
+		let ariaLabel: string | null | undefined;
+		const captionEl = scrollerRef.current?.querySelector('caption');
+
+		if (captionEl) {
+			ariaLabel = captionEl?.textContent;
+		} else {
+			const ariaLabelledbyTableEl = scrollerRef.current?.querySelector(
+				'table[aria-labelledby]'
+			);
+
+			if (ariaLabelledbyTableEl) {
+				ariaLabel = document.getElementById(
+					ariaLabelledbyTableEl.getAttribute('aria-labelledby') || ''
+				)?.textContent;
+			}
+		}
+
+		setScrollerAriaLabel(`Table ${ariaLabel || ''}`);
+	}, []);
 
 	return (
 		<ScrollerContext.Provider

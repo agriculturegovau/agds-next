@@ -6,7 +6,6 @@ import {
 	useState,
 } from 'react';
 import { PaginationItemsPerPageSelect } from '../../../../packages/react/src/pagination/PaginationItemsPerPageSelect';
-import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { Box } from '../../../../packages/react/src/box';
 import { Button, ButtonGroup } from '../../../../packages/react/src/button';
 import { Checkbox } from '../../../../packages/react/src/checkbox';
@@ -20,6 +19,7 @@ import {
 	generatePaginationRangeText,
 } from '../../../../packages/react/src/pagination';
 import { SettingsIcon } from '../../../../packages/react/src/icon';
+import { useDataContext, useSortAndFilterContext } from '../lib/contexts';
 import { headers } from './DataTable';
 
 const columnNames = [...headers].slice(1).map((header) => header.label);
@@ -84,7 +84,7 @@ export const DashboardPagination = ({
 			itemRangeText,
 			perPage: pagination.perPage,
 		});
-		// We only want to update update the display text once the table data has finished loading, all other deps are ignored here
+		// We only want to update the display text once the table data has finished loading, all other deps are ignored here
 	}, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const [appliedSettingsCount, setAppliedSettingsCount] = useState(0);
