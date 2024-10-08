@@ -8,8 +8,10 @@ import { BaseButton } from '../button';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
-	focusOnRemove: (index: number) => void;
-	index: number;
+	/* A private function to handle the focsusing of in Tags. */
+	focusOnRemove?: (index: number) => void;
+	/* A private number which is passed as arg to focusOnRemove. */
+	index?: number;
 	onRemove?: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -45,7 +47,9 @@ export const Tag = ({
 					aria-label={`Remove ${children}`}
 					onClick={(event) => {
 						// We call this first so consumers can manage focus separately in their onRemove
-						focusOnRemove(index);
+						if (index && focusOnRemove) {
+							focusOnRemove(index);
+						}
 						onRemove(event);
 					}}
 				/>

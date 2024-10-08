@@ -59,11 +59,13 @@ A list of related tags without links.
 
 ## Removable tags
 
-Tags can be removed from a list, if you add an `onRemove` function.
+Tags can be removed from a list when you pass a function to the `onRemove` prop.
 
-Please avoid using Tags with links and remove buttons together, as it is confusing for users.
+When a user removes a tag, their focus is automatically moved to the previous tag in the list. When the last tag is removed, focus is not moved, and, depending on the context, may need to be manually moved in `onRemove` to help the user continue their task.
 
-When a user removes a tag, their focus is automatically moved to the next tag in the list (where appropriate). However it’s important to manage their focus appropriately to help them continue their task or journey. In some cases, there may not be an obvious (or any) element to send focus to, such as when the alert was triggered by an action on a previous page or from a drawer that is now closed. Always carefully consider the context and previous user actions before moving their focus to ensure a smooth and accessible experience.
+Screen reader users need to be informed when a tag has been removed. Depending on the context, this may be done explicitly, like in the example below, or more commonly implicitly by announcing the resultant changes to the page (like in the [Search filter pattern](/patterns/search-filters)).
+
+Avoid using Tags with links and remove buttons together to not confuse users.
 
 ```jsx live
 () => {
@@ -77,7 +79,6 @@ When a user removes a tag, their focus is automatically moved to the next tag in
 	const handleRemove = (label) => {
 		setItems((prevItems) => prevItems.filter((item) => item.label !== label));
 		setAnnouncement(`${label} removed`);
-		// document.getElementById(label).focus();
 	};
 
 	const itemsWithHandlers = items.map((item) => ({
@@ -87,10 +88,7 @@ When a user removes a tag, their focus is automatically moved to the next tag in
 
 	return (
 		<>
-			<button id="Apple">Apple</button>
-			<button id="Orange">Orange</button>
-			<button id="Peach">Peach</button>
-			<Box zcss={visuallyHiddenStyles} role="status">
+			<Box css={visuallyHiddenStyles} role="status">
 				{announcement}
 			</Box>
 			{items.length > 0 ? (

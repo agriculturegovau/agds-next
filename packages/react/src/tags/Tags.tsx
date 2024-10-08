@@ -7,7 +7,7 @@ import { TagsList } from './TagsList';
 
 export type TagsProps = {
 	heading?: ReactNode;
-	items: Omit<TagProps, 'children'> & { label: string }[];
+	items: Omit<TagProps, 'children' | 'focusOnRemove'> & { label: string }[];
 };
 
 export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
@@ -15,15 +15,15 @@ export const Tags = forwardRef<HTMLDivElement, TagsProps>(function Tags(
 	forwardedRef
 ) {
 	const ref = useRef<HTMLDivElement>(null);
-	const listRef = mergeRefs([ref, forwardedRef]);
 	const focusOnRemove = (index: number) => {
 		const nextButtonToFocus =
-			listRef?.current &&
-			listRef.current.querySelectorAll('button')[Math.max(0, index - 1)];
+			ref?.current &&
+			ref.current.querySelectorAll('button')[Math.max(0, index - 1)];
 		nextButtonToFocus?.focus();
 	};
+
 	return (
-		<TagsContainer ref={listRef}>
+		<TagsContainer ref={mergeRefs([ref, forwardedRef])}>
 			{heading}
 			<TagsList>
 				{items.map(({ label, ...props }, index) => (
