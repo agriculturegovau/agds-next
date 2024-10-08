@@ -74,9 +74,9 @@ Use the `invalid` prop to indicate if the user input is invalid.
 
 ## Accept
 
-Use the `accept` prop to restrict the accepted file types. This will automatically add a hint to guide users, although you can override this by providing your own `hint`.
+Use the `accept` prop to guide the user toward the accepted file types. This will automatically add a hint to guide users, although you can override this by providing your own `hint`.
 
-_NOTE: for security reasons you must validate the file type in your backend and not rely on frontend validation._
+_NOTE: for security reasons you must validate the file type in your backend and not rely on frontend validation. The `accept` prop does not stop users uploading other file types._
 
 ### Accept with default hint
 
