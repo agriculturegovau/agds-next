@@ -32,7 +32,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
     >
       <div
         class="css-5ur8x"
-        role="status"
+        role="alert"
       />
       <div
         class="css-79i25n-boxStyles"
@@ -256,7 +256,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
     >
       <div
         class="css-5ur8x"
-        role="status"
+        role="alert"
       />
       <div
         class="css-79i25n-boxStyles"
@@ -373,7 +373,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
     >
       <div
         class="css-5ur8x"
-        role="status"
+        role="alert"
       />
       <div
         class="css-79i25n-boxStyles"
@@ -716,7 +716,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
     >
       <div
         class="css-5ur8x"
-        role="status"
+        role="alert"
       />
       <div
         class="css-79i25n-boxStyles"
