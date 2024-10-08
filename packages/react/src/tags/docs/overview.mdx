@@ -59,11 +59,11 @@ A list of related tags without links.
 
 ## Removable tags
 
-Tags can be removed from a list when you pass a function to the `onRemove` prop.
+Tags can be removed from a list by passing a function to the `onRemove` prop.
 
-When a user removes a tag, their focus is automatically moved to the previous tag in the list. When the last tag is removed, focus is not moved, and, depending on the context, may need to be manually moved in `onRemove` to help the user continue their task.
+When a user removes a tag, their focus automatically shifts to the previous tag in the list. If the last tag is removed, focus is lost, and depending on the context, you may need to manually set focus within `onRemove` to help the user continue their task.
 
-Screen reader users need to be informed when a tag has been removed. Depending on the context, this may be done explicitly, like in the example below, or more commonly implicitly by announcing the resultant changes to the page (like in the [Search filter pattern](/patterns/search-filters)).
+For screen reader users, it’s important to provide feedback when a tag is removed; the method of which depends on the context. In the example below, an explicit announcement is made. More commonly, however, the page that the tags affect would announce the resulting changes (e.g., “25 results found”), similar to the approach used in the [Search filter pattern](/patterns/search-filters).
 
 Avoid using Tags with links and Remove buttons together, as this will confuse users.
 
