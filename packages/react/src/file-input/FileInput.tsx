@@ -69,7 +69,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		);
 
 		const fallbackHint =
-			hint || (accept && `Accepted files include: ${accept}`);
+			hint || (accept && `Files accepted: ${accept}`);
 
 		return (
 			<Field
