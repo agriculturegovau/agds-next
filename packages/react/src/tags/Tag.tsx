@@ -8,9 +8,9 @@ import { BaseButton } from '../button';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
-	/* A private function to handle the focsusing of in Tags. */
+	/* A private function to handle the focusing of Tags when removed. */
 	focusOnRemove?: (index: number) => void;
-	/* A private number which is passed as arg to focusOnRemove. */
+	/* A private number which is passed as an arg to focusOnRemove. */
 	index?: number;
 	onRemove?: MouseEventHandler<HTMLButtonElement>;
 };
