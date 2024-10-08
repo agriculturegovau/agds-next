@@ -8,11 +8,15 @@ import {
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
+import { AcceptedFileMimeTypes } from '../file-upload';
+import { CustomFileMimeType } from '../file-upload/utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseFileInputProps = {
-	accept?: NativeInputProps['accept'];
+	accept?:
+		| NativeInputProps['accept']
+		| (AcceptedFileMimeTypes | CustomFileMimeType)[];
 	autoFocus?: NativeInputProps['autoFocus'];
 	capture?: NativeInputProps['capture'];
 	disabled?: NativeInputProps['disabled'];
@@ -68,7 +72,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
-		const fallbackHint = hint || (accept && `Files accepted: ${accept}`);
+		const fallbackHint =
+			hint ||
+			(accept &&
+				`Files accepted: ${
+					Array.isArray(accept) ? accept.join(', ') : accept
+				}`);
 
 		return (
 			<Field
@@ -82,7 +91,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			>
 				{(a11yProps) => (
 					<input
-						accept={accept}
+						accept={accept?.toString()}
 						ref={ref}
 						css={styles}
 						{...a11yProps}
