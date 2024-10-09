@@ -15,9 +15,7 @@ import { CustomFileMimeType, fileTypeMapping } from '../file-upload/utils';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseFileInputProps = {
-	accept?:
-		| NativeInputProps['accept']
-		| (AcceptedFileMimeTypes | CustomFileMimeType)[];
+	accept?: NativeInputProps['accept'] | AcceptedFileMimeTypes[];
 	autoFocus?: NativeInputProps['autoFocus'];
 	capture?: NativeInputProps['capture'];
 	disabled?: NativeInputProps['disabled'];
@@ -79,14 +77,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				? Array.from(
 						new Set(
 							accept.flatMap((item) => {
-								if (typeof item === 'string') {
+								if (fileTypeMapping[item]) {
 									if ('label' in fileTypeMapping[item]) {
 										return fileTypeMapping[item].label;
 									}
 									return fileTypeMapping[item].extensions;
-								} else {
-									return item.extensions;
-								}
+								} else return item;
 							})
 						)
 				  ).join(', ')
