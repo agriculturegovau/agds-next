@@ -74,22 +74,40 @@ Use the `invalid` prop to indicate if the user input is invalid.
 
 ## Accept
 
-Use the `accept` prop to guide the user toward the accepted file types. This will automatically add a hint to guide users, although you can override this by providing your own `hint`.
+Use the `accept` prop to guide the user toward the accepted file types. This will automatically render a hint, although you can override this by providing your own `hint`.
 
 _NOTE: for security reasons you must validate the file type in your backend and not rely on frontend validation. The `accept` prop does not stop users uploading other file types._
 
 ### Accept with default hint
 
 ```jsx live
-<FileInput accept={'image/jpg, image/jpeg, image/png'} label="Upload image" />
+<FileInput accept="image/jpg, image/jpeg, image/png" label="Upload image" />
 ```
 
 ### Accept with custom hint
 
 ```jsx live
 <FileInput
-	accept={'image/jpg, image/jpeg, image/png'}
+	accept="image/jpg, image/jpeg, image/png"
 	hint="Files accepted: .jpg, .jpeg, .png. Max files that can be uploaded is 1."
 	label="Upload image"
+/>
+```
+
+### Accept as array of file extensions
+
+```jsx live
+<FileInput
+	accept={['image/jpg', 'image/jpeg', 'image/png']}
+	label="Upload image"
+/>
+```
+
+### Accept as array of mime types
+
+```jsx live
+<FileInput
+	accept={['image/*', 'application/pdf']}
+	label="Upload image or document"
 />
 ```

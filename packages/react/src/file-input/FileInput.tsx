@@ -3,13 +3,14 @@ import {
 	forwardRef,
 	InputHTMLAttributes,
 	useCallback,
+	useMemo,
 	useState,
 } from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
 import { AcceptedFileMimeTypes } from '../file-upload';
-import { CustomFileMimeType } from '../file-upload/utils';
+import { CustomFileMimeType, fileTypeMapping } from '../file-upload/utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -72,12 +73,28 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
+		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into valid file extensions
+		const acceptedFileExtensions = useMemo(() => {
+			return Array.isArray(accept)
+				? Array.from(
+						new Set(
+							accept.flatMap((item) => {
+								if (typeof item === 'string') {
+									if ('label' in fileTypeMapping[item]) {
+										return fileTypeMapping[item].label;
+									}
+									return fileTypeMapping[item].extensions;
+								} else {
+									return item.extensions;
+								}
+							})
+						)
+				  ).join(', ')
+				: accept;
+		}, [accept]);
+
 		const fallbackHint =
-			hint ||
-			(accept &&
-				`Files accepted: ${
-					Array.isArray(accept) ? accept.join(', ') : accept
-				}`);
+			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
 		return (
 			<Field
