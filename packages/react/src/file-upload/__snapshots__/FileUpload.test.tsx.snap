@@ -91,7 +91,6 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby=""
             class="css-g9kgvi-BaseButton-Button"
             type="button"
           >
@@ -312,7 +311,6 @@ exports[`FileUpload Basic renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby=""
             class="css-g9kgvi-BaseButton-Button"
             type="button"
           >
@@ -426,7 +424,6 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby=""
             class="css-g9kgvi-BaseButton-Button"
             type="button"
           >

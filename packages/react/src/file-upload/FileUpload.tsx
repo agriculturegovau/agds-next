@@ -338,7 +338,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										) : null}
 									</Stack>
 									<Button
-										aria-describedby={buttonAriaDescribedBy}
+										aria-describedby={buttonAriaDescribedBy || undefined}
 										disabled={disabled}
 										onClick={open}
 										type="button"
