@@ -72,7 +72,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						css={{ flexShrink: 0 }}
 					/>
 				) : null}
-				<span aria-describedby="">
+				<span>
 					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
 					<ButtonLoadingDots
 						loading={loading}
