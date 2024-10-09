@@ -28,6 +28,7 @@ Use callout to draw a user’s attention to important snippets of static informa
 <DontHeading />
 
 - embed form inputs in Callouts
+- use in conditionally revealed checkbox or radio groups
 - make them the focus of content; they are a supporting tool
 - use for errors and alerts – use a Page alert or Section alert instead
 - use for primary content, as it may be missed
@@ -72,19 +73,39 @@ Use an `info` tone to highlight information which is important for users.
 
 ## Compact
 
-Compact version of the callout can be used when there is limited space, such as inside of a Control group to let the user know that, based on their response, they may need to provide additional information.
+Compact version of the callout can be used when there is limited space, such as inside of an Accordion.
 
 ```jsx live
-<ControlGroup label="Control group label" required block>
-	<Radio checked={false}>Radio option one</Radio>
-	<Radio checked={true}>Radio option two</Radio>
-	<ConditionalFieldContainer>
-		<Callout title="Callout heading" tone="info" variant="compact">
-			<Text as="p">Description of the callout.</Text>
-		</Callout>
-	</ConditionalFieldContainer>
-	<Radio checked={false}>Text message</Radio>
-</ControlGroup>
+<Accordion>
+	<AccordionItem title="Accordion 1">
+		<AccordionItemContent>
+			<Text as="p">Here is the accordion content.</Text>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem isInitiallyOpen title="Accordion 2">
+		<AccordionItemContent>
+			<Stack gap="1">
+				<Text as="p">
+					Here is the conditionally revealed content with callout.
+				</Text>
+				<TextLink href="#">Light link</TextLink>
+				<Callout title="Callout heading" tone="info" variant="compact">
+					<Text as="p">Description of the callout.</Text>
+				</Callout>
+			</Stack>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 3">
+		<AccordionItemContent>
+			<Text as="p">Here is the accordion content.</Text>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 4">
+		<AccordionItemContent>
+			<Text as="p">Here is the accordion content.</Text>
+		</AccordionItemContent>
+	</AccordionItem>
+</Accordion>
 ```
 
 ## Feature
@@ -95,6 +116,42 @@ The feature variant of the callout can be used to draw even more emphasis to the
 <Callout title="Feature Callout heading" tone="info" variant="feature">
 	<Text as="p">Description of the callout.</Text>
 </Callout>
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Fragment>
+	<Stack as="ul" css={{ listStyle: 'none' }} gap="1" paddingBottom="1">
+		<Box as="li">
+			<Callout title="Callout light 1">
+				<Text as="p">Description of the callout.</Text>
+			</Callout>
+		</Box>
+		<Box as="li">
+			<Callout title="Callout light 2" tone="info">
+				<Text as="p">Description of the callout.</Text>
+			</Callout>
+		</Box>
+	</Stack>
+
+	<Stack as="ul" css={{ listStyle: 'none' }} gap="1" palette="dark">
+		<Box as="li">
+			<Callout title="Callout dark 1">
+				<Text as="p">Description of the callout.</Text>
+			</Callout>
+		</Box>
+		<Box as="li">
+			<Callout title="Callout dark 2" tone="info">
+				<Text as="p">Description of the callout.</Text>
+			</Callout>
+		</Box>
+	</Stack>
+</Fragment>
 ```
 
 ## Customising the title

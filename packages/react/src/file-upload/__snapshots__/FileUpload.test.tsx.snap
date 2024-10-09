@@ -7,7 +7,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r4:"
+      for="field-:r9:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -23,13 +23,17 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r4:-hint"
+      id="field-:r9:-hint"
     >
       General hint information
     </span>
     <div
       class="css-1mxr31d-boxStyles"
     >
+      <div
+        class="css-5ur8x"
+        role="alert"
+      />
       <div
         class="css-79i25n-boxStyles"
       >
@@ -62,11 +66,11 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r4:-hint"
+            aria-describedby="field-:r9:-hint"
             aria-invalid="false"
             aria-required="false"
             class="css-5ur8x"
-            id="field-:r4:"
+            id="field-:r9:"
             tabindex="-1"
             type="file"
           />
@@ -227,7 +231,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for="field-:r1:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -243,13 +247,17 @@ exports[`FileUpload Basic renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r0:-hint"
+      id="field-:r1:-hint"
     >
       General hint information
     </span>
     <div
       class="css-1mxr31d-boxStyles"
     >
+      <div
+        class="css-5ur8x"
+        role="alert"
+      />
       <div
         class="css-79i25n-boxStyles"
       >
@@ -282,11 +290,11 @@ exports[`FileUpload Basic renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r0:-hint"
+            aria-describedby="field-:r1:-hint"
             aria-invalid="false"
             aria-required="false"
             class="css-5ur8x"
-            id="field-:r0:"
+            id="field-:r1:"
             tabindex="-1"
             type="file"
           />
@@ -340,7 +348,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r6:"
+      for="field-:rd:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -356,13 +364,17 @@ exports[`FileUpload Existing files renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r6:-hint"
+      id="field-:rd:-hint"
     >
       General hint information
     </span>
     <div
       class="css-1mxr31d-boxStyles"
     >
+      <div
+        class="css-5ur8x"
+        role="alert"
+      />
       <div
         class="css-79i25n-boxStyles"
       >
@@ -395,11 +407,11 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r6:-hint"
+            aria-describedby="field-:rd:-hint"
             aria-invalid="false"
             aria-required="false"
             class="css-5ur8x"
-            id="field-:r6:"
+            id="field-:rd:"
             tabindex="-1"
             type="file"
           />
@@ -679,7 +691,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for="field-:r5:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -695,13 +707,17 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r2:-hint"
+      id="field-:r5:-hint"
     >
       General hint information
     </span>
     <div
       class="css-1mxr31d-boxStyles"
     >
+      <div
+        class="css-5ur8x"
+        role="alert"
+      />
       <div
         class="css-79i25n-boxStyles"
       >
@@ -735,11 +751,11 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </svg>
           <input
             accept="image/jpeg,.jpeg,.jpg,image/png,.png"
-            aria-describedby="field-:r2:-hint"
+            aria-describedby="field-:r5:-hint"
             aria-invalid="false"
             aria-required="false"
             class="css-5ur8x"
-            id="field-:r2:"
+            id="field-:r5:"
             multiple=""
             tabindex="-1"
             type="file"
@@ -765,6 +781,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
             <span
               class="css-axuon-boxStyles"
+              id=":r4:-file-size-desc"
             >
               Each file
                cannot exceed
@@ -774,6 +791,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
             <span
               class="css-axuon-boxStyles"
+              id=":r4:-accepted-files-desc"
             >
               Files accepted: 
               jpeg, jpg, png
@@ -781,6 +799,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
           </div>
           <button
+            aria-describedby=":r4:-file-size-desc, :r4:-accepted-files-desc"
             class="css-g9kgvi-BaseButton-Button"
             type="button"
           >

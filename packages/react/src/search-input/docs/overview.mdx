@@ -8,7 +8,9 @@ relatedComponents: ['search-box']
 ---
 
 ```jsx live
-<SearchInput label="Search" />
+<div aria-label="Site" role="search">
+	<SearchInput label="Search" />
+</div>
 ```
 
 The `SearchInput` component can be used as a filter to aid the user in finding content that has already been loaded on the page.
@@ -21,6 +23,7 @@ By default, the `SearchInput` component does not expand to fill the available sp
 
 - use to filter results on a page
 - provide a meaningful label – for example, Search components
+- wrap in an appropriately labelled `role="search"` landmark
 - hide the ‘optional’ label.
 
 <DontHeading />
