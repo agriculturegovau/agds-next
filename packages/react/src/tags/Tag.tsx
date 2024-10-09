@@ -8,10 +8,20 @@ import { BaseButton } from '../button';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
+	/* A private function to handle the focusing of Tags when removed. */
+	focusOnRemove?: (index: number) => void;
+	/* A private number which is passed as an arg to focusOnRemove. */
+	index?: number;
 	onRemove?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const Tag = ({ children, onRemove, ...props }: TagProps) => {
+export const Tag = ({
+	children,
+	focusOnRemove,
+	index,
+	onRemove,
+	...props
+}: TagProps) => {
 	const { href } = props;
 	return (
 		<Flex
@@ -33,7 +43,16 @@ export const Tag = ({ children, onRemove, ...props }: TagProps) => {
 				{children}
 			</Box>
 			{onRemove && (
-				<TagRemoveButton aria-label={`Remove ${children}`} onClick={onRemove} />
+				<TagRemoveButton
+					aria-label={`Remove ${children}`}
+					onClick={(event) => {
+						// We call this first so consumers can manage focus separately in their onRemove
+						if (index && focusOnRemove) {
+							focusOnRemove(index);
+						}
+						onRemove(event);
+					}}
+				/>
 			)}
 		</Flex>
 	);

@@ -8,7 +8,7 @@ import {
 import { DropzoneOptions, FileRejection, useDropzone } from 'react-dropzone';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button } from '../button';
-import { boxPalette, mergeRefs, tokens } from '../core';
+import { boxPalette, mergeRefs, tokens, useId } from '../core';
 import { Field } from '../field';
 import { UploadIcon } from '../icon';
 import { ListItem, UnorderedList } from '../list';
@@ -248,6 +248,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			(invalidRejections && invalidRejections?.length > 1) ||
 			(tooManyFilesRejections && tooManyFilesRejections?.length > 1);
 
+		const fallbackId = useId(id);
+		const fileSizeDescriptionId = maxSize ? `${fallbackId}-file-size-desc` : '';
+		const acceptedFilesDescriptionId = accept
+			? `${fallbackId}-accepted-files-desc`
+			: '';
+
+		const buttonAriaDescribedBy = [
+			fileSizeDescriptionId,
+			acceptedFilesDescriptionId,
+		]
+			.filter(Boolean)
+			.join(', ');
+
 		return (
 			<Field
 				label={label}
@@ -313,18 +326,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 											</Text>
 										</span>
 										{maxSize ? (
-											<Text color="muted">
+											<Text color="muted" id={fileSizeDescriptionId}>
 												{multiple ? 'Each file' : 'File'} cannot exceed{' '}
 												{formattedMaxFileSize}.
 											</Text>
 										) : null}
 										{accept ? (
-											<Text color="muted">
+											<Text color="muted" id={acceptedFilesDescriptionId}>
 												Files accepted: {acceptedFilesSummary}.
 											</Text>
 										) : null}
 									</Stack>
 									<Button
+										aria-describedby={buttonAriaDescribedBy || undefined}
 										disabled={disabled}
 										onClick={open}
 										type="button"

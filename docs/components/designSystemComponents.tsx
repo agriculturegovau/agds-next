@@ -48,7 +48,11 @@ export { FileUpload } from '@ag.ds-next/react/file-upload';
 export { Header } from '@ag.ds-next/react/header';
 export { Heading, H1, H2, H3, H4, H5, H6 } from '@ag.ds-next/react/heading';
 export { Select } from '@ag.ds-next/react/select';
-export { ExternalLinkCallout, VisuallyHidden } from '@ag.ds-next/react/a11y';
+export {
+	ExternalLinkCallout,
+	VisuallyHidden,
+	visuallyHiddenStyles,
+} from '@ag.ds-next/react/a11y';
 export { UnorderedList, OrderedList, ListItem } from '@ag.ds-next/react/list';
 export { Text } from '@ag.ds-next/react/text';
 export { TextLink, TextLinkExternal } from '@ag.ds-next/react/text-link';
