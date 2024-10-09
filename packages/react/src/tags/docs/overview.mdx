@@ -59,9 +59,13 @@ A list of related tags without links.
 
 ## Removable tags
 
-Tags can be removed from a list, if you add an `onRemove` function.
+Tags can be removed from a list by passing a function to the `onRemove` prop.
 
-Please avoid using Tags with links and remove buttons together, as it is confusing for users.
+When a user removes a tag, their focus automatically shifts to the previous tag in the list. If the last tag is removed, focus is lost, and depending on the context, you may need to manually set focus within `onRemove` to help the user continue their task.
+
+For screen reader users, it’s important to provide feedback when a tag is removed; the method of which depends on the context. In the example below, an explicit announcement is made. More commonly, however, the page that the tags affect would announce the resulting changes (e.g., “25 results found”), similar to the approach used in the [Search filter pattern](/patterns/search-filters).
+
+Avoid using Tags with links and Remove buttons together, as this will confuse users.
 
 ```jsx live
 () => {
@@ -70,9 +74,11 @@ Please avoid using Tags with links and remove buttons together, as it is confusi
 		{ label: 'Orange' },
 		{ label: 'Peach' },
 	]);
+	const [announcement, setAnnouncement] = React.useState('');
 
 	const handleRemove = (label) => {
 		setItems((prevItems) => prevItems.filter((item) => item.label !== label));
+		setAnnouncement(`${label} removed`);
 	};
 
 	const itemsWithHandlers = items.map((item) => ({
@@ -80,15 +86,22 @@ Please avoid using Tags with links and remove buttons together, as it is confusi
 		onRemove: () => handleRemove(item.label),
 	}));
 
-	return items.length > 0 ? (
-		<Tags
-			heading={
-				<Text as="h2" fontWeight="bold">
-					Tags:
-				</Text>
-			}
-			items={itemsWithHandlers}
-		/>
-	) : undefined;
+	return (
+		<>
+			<Box css={visuallyHiddenStyles} role="status">
+				{announcement}
+			</Box>
+			{items.length > 0 ? (
+				<Tags
+					heading={
+						<Text as="h2" fontWeight="bold">
+							Tags:
+						</Text>
+					}
+					items={itemsWithHandlers}
+				/>
+			) : undefined}
+		</>
+	);
 };
 ```
