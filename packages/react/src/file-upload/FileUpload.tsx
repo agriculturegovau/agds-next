@@ -270,7 +270,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{(a11yProps) => {
 					return (
 						<Stack gap={1.5}>
-							<div css={visuallyHiddenStyles} role="alert">
+							<div css={visuallyHiddenStyles} role="status">
 								{status}
 							</div>
 
