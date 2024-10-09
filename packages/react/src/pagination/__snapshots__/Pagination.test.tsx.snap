@@ -55,6 +55,7 @@ exports[`Pagination renders correctly 1`] = `
           </a>
         </li>
         <li
+          aria-label="… Pages 2 to 3 are hidden. Use the Previous and Next links to navigate"
           class="css-yxjemn-boxStyles"
         >
           <span
@@ -92,6 +93,7 @@ exports[`Pagination renders correctly 1`] = `
           </a>
         </li>
         <li
+          aria-label="… Pages 7 to 9 are hidden. Use the Previous and Next links to navigate"
           class="css-yxjemn-boxStyles"
         >
           <span
