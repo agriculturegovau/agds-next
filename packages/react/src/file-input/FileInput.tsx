@@ -10,7 +10,7 @@ import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
 import { AcceptedFileMimeTypes } from '../file-upload';
-import { CustomFileMimeType, fileTypeMapping } from '../file-upload/utils';
+import { fileTypeMapping } from '../file-upload/utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
