@@ -11,7 +11,8 @@ type PaginationElements =
 	  }
 	| {
 			type: 'separator';
-			pageNumber: number;
+			// Hardcoded to 0 appease TypeScript for when we calculate the hidden pages when separators are rendered
+			pageNumber: 0;
 	  };
 
 export type UsePaginationProps = {
