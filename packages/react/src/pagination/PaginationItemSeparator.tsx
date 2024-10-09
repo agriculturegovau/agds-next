@@ -14,11 +14,12 @@ export function PaginationItemSeparator({
 	return (
 		<Flex
 			alignItems="center"
-			aria-label={`… Pages ${missingLeftPageNumber} to ${missingRightPageNumber} are hidden.
+			aria-label={`… Pages ${missingLeftPageNumber} to ${missingRightPageNumber} are hidden. Use the Previous and Next ${
+				isLinks ? 'links' : 'buttons'
+			} to navigate`}
 			as="li"
 			height={{ sm: BUTTON_SIZE_SM }}
 			justifyContent="center"
-			Use the Previous and Next ${isLinks ? 'links' : 'buttons'} to navigate`}
 			width={{ sm: BUTTON_SIZE_SM }}
 		>
 			<Text>…</Text>
