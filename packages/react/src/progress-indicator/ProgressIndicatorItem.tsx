@@ -186,6 +186,10 @@ const ProgressIndicatorItemTimeline = () => (
 			flex: 1,
 			justifySelf: 'center',
 			width: tokens.borderWidth.md,
+			// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+			'@media (forced-colors: active)': {
+				backgroundColor: 'GrayText',
+			},
 		}}
 		{...{ [progressIndicatorItemTimelineDataAttr]: '' }}
 	/>

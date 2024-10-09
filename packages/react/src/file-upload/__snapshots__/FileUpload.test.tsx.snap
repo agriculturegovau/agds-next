@@ -91,7 +91,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-g9kgvi-BaseButton-Button"
+            class="css-82tp6n-BaseButton-Button"
             type="button"
           >
             <span>
@@ -311,7 +311,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-g9kgvi-BaseButton-Button"
+            class="css-82tp6n-BaseButton-Button"
             type="button"
           >
             <span>
@@ -424,7 +424,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-g9kgvi-BaseButton-Button"
+            class="css-82tp6n-BaseButton-Button"
             type="button"
           >
             <span>
@@ -784,7 +784,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </div>
           <button
             aria-describedby=":r4:-file-size-desc, :r4:-accepted-files-desc"
-            class="css-g9kgvi-BaseButton-Button"
+            class="css-82tp6n-BaseButton-Button"
             type="button"
           >
             <span>
