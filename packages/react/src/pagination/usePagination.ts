@@ -11,6 +11,7 @@ type PaginationElements =
 	  }
 	| {
 			type: 'separator';
+			pageNumber: number;
 	  };
 
 export type UsePaginationProps = {
@@ -64,9 +65,9 @@ export function usePagination({
 			isActive: 1 === currentPage,
 		});
 
-		// Only show the separator if there is 2 or more numbers between 1 and the first number
+		// Only show the separator if there are 2 or more numbers between 1 and the first number
 		if (minPage > 3) {
-			elements.push({ type: 'separator' });
+			elements.push({ type: 'separator', pageNumber: 0 });
 		} else if (minPage !== 2) {
 			elements.push({
 				type: 'page',
@@ -83,10 +84,10 @@ export function usePagination({
 	}
 
 	// If the current page is not at the end of list, create the 'n ...' elements
-	// Only show the separator if there is 2 or more numbers between n and the last number
+	// Only show the separator if there are 2 or more numbers between n and the last number
 	if (maxPage + 1 < totalPages) {
 		if (maxPage + 1 !== totalPages - 1) {
-			elements.push({ type: 'separator' });
+			elements.push({ type: 'separator', pageNumber: 0 });
 		} else {
 			elements.push({
 				type: 'page',

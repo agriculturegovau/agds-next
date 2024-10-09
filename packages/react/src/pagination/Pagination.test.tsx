@@ -30,6 +30,10 @@ describe('Pagination', () => {
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
+			rules: {
+				// incorrectly warns about aria-label on li
+				'aria-label-misuse': 'off',
+			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});

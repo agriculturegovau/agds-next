@@ -55,6 +55,8 @@ exports[`PaginationButtons renders correctly 1`] = `
           </button>
         </li>
         <li
+          aria-label="… Pages 2 to 3 are hidden.
+					Use the Previous and Next buttons to navigate"
           class="css-yxjemn-boxStyles"
         >
           <span
@@ -92,6 +94,8 @@ exports[`PaginationButtons renders correctly 1`] = `
           </button>
         </li>
         <li
+          aria-label="… Pages 7 to 9 are hidden.
+					Use the Previous and Next buttons to navigate"
           class="css-yxjemn-boxStyles"
         >
           <span

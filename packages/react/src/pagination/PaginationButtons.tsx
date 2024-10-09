@@ -88,7 +88,14 @@ export function PaginationButtons({
 								/>
 							);
 						case 'separator':
-							return <PaginationItemSeparator key={`${index}-separator`} />;
+							return (
+								<PaginationItemSeparator
+									isLinks={false}
+									missingRightPageNumber={pagination[index + 1].pageNumber - 1}
+									missingLeftPageNumber={pagination[index - 1].pageNumber + 1}
+									key={`${index}-separator`}
+								/>
+							);
 						default:
 							return null;
 					}
