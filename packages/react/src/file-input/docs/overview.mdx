@@ -81,7 +81,7 @@ _NOTE: for security reasons you must validate the file type in your backend and 
 ### Accept with default hint
 
 ```jsx live
-<FileInput accept="image/jpg, image/jpeg, image/png" label="Upload image" />
+<FileInput accept="image/jpg, image/jpeg, .png" label="Upload image" />
 ```
 
 ### Accept with custom hint
@@ -101,6 +101,8 @@ _NOTE: for security reasons you must validate the file type in your backend and 
 ```
 
 ### Accept as array of mime types
+
+Using an array of mime types allows you to leverage TypeScript types and autocomplete. Additionally, you can use glob selectors to provide succinct hints. e.g. here we use `image/*` and the default hint includes “Any image file”.
 
 ```jsx live
 <FileInput

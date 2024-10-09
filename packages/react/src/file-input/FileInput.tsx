@@ -77,11 +77,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				? Array.from(
 						new Set(
 							accept.flatMap((item) => {
-								if (fileTypeMapping[item]) {
-									if ('label' in fileTypeMapping[item]) {
-										return fileTypeMapping[item].label;
+								const mimeTypeData = fileTypeMapping[item];
+								if (mimeTypeData) {
+									if (hasLabel(mimeTypeData)) {
+										return mimeTypeData.label;
 									}
-									return fileTypeMapping[item].extensions;
+									return mimeTypeData.extensions;
 								} else return item;
 							})
 						)
@@ -153,3 +154,9 @@ function useFileInputStyles({ hasFile }: { hasFile: boolean }) {
 		'&:focus': packs.outline,
 	};
 }
+
+const hasLabel = (
+	mimeTypeData: (typeof fileTypeMapping)[keyof typeof fileTypeMapping]
+): mimeTypeData is { extensions: string[]; label: string } => {
+	return 'label' in mimeTypeData;
+};
