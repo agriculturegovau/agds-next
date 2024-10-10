@@ -42,11 +42,7 @@ export function MultiPageFormSuccess() {
 							ref={successPageAlertRef}
 							tabIndex={-1}
 							tone="success"
-							title={
-								<PageAlertTitle as="h2">
-									Descriptive success message (H2)
-								</PageAlertTitle>
-							}
+							title="Descriptive success message (H2)"
 						>
 							<Text as="p">Supporting paragraph for the success message</Text>
 							<Text as="p" fontWeight="bold">

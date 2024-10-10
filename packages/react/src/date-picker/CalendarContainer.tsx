@@ -10,10 +10,13 @@ export type CalendarContainerProps = PropsWithChildren<{}>;
 export function CalendarContainer({ children }: CalendarContainerProps) {
 	return (
 		<Box
-			display="inline-block"
-			paddingY={1}
-			paddingX={[0.25, 1]}
+			aria-label="Choose date"
+			aria-modal="true"
 			css={reactDayPickerStyles}
+			display="inline-block"
+			paddingX={[0.25, 1]}
+			paddingY={1}
+			role="dialog"
 		>
 			{children}
 		</Box>
@@ -30,10 +33,13 @@ export function CalendarRangeContainer({
 }: CalendarRangeContainerProps) {
 	return (
 		<Box
-			display="inline-block"
-			paddingY={1}
-			paddingX={[0.25, 1]}
+			aria-label="Choose date range"
+			aria-modal="true"
 			css={[reactDayPickerStyles, reactDayRangePickerStyles(dateRange)]}
+			display="inline-block"
+			paddingX={[0.25, 1]}
+			paddingY={1}
+			role="dialog"
 		>
 			{children}
 		</Box>

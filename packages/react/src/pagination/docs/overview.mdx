@@ -84,17 +84,23 @@ The `Pagination` component accepts props which are used to display and change th
 - `onItemsPerPageChange` - a function that is called when the number of items per page is changed
 
 ```jsx live
-<Pagination
-	currentPage={4}
-	totalPages={4}
-	generateHref={(page) => `/example?page=${page}`}
-	itemsPerPage={25}
-	itemsPerPageOptions={[10, 25, 50, 100]}
-	onItemsPerPageChange={(itemsPerPage) => console.log(itemsPerPage)}
-	itemRangeText={generatePaginationRangeText({
-		totalItems: 100,
-		currentPage: 4,
-		itemsPerPage: 25,
-	})}
-/>
+() => {
+	const [itemsPerPage, setItemsPerPage] = React.useState(25);
+
+	return (
+		<Pagination
+			currentPage={1}
+			totalPages={100 / itemsPerPage}
+			generateHref={(page) => `/example?page=${page}`}
+			itemsPerPage={itemsPerPage}
+			itemsPerPageOptions={[10, 25, 50, 100]}
+			onItemsPerPageChange={setItemsPerPage}
+			itemRangeText={generatePaginationRangeText({
+				totalItems: 100,
+				currentPage: 1,
+				itemsPerPage,
+			})}
+		/>
+	);
+};
 ```

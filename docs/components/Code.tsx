@@ -55,10 +55,12 @@ const PlaceholderImage = () => (
 function LiveCode({
 	showCode = false,
 	enableProse = false,
+	exampleContentHeading,
 	exampleContentHeadingType,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -111,7 +113,9 @@ function LiveCode({
 		<Box border borderColor="muted" rounded className={proseBlockClassname}>
 			{exampleContentHeadingType && (
 				<CardHeader>
-					<Heading type={exampleContentHeadingType}>Example</Heading>
+					<Heading type={exampleContentHeadingType}>
+						{exampleContentHeading}
+					</Heading>
 				</CardHeader>
 			)}
 			<LivePreview
@@ -142,7 +146,6 @@ function LiveCode({
 					onClick={toggleIsCodeVisible}
 					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
 					aria-expanded={isCodeVisible}
-					aria-label={isCodeVisible ? 'Hide code snippet' : 'Show code snippet'}
 					aria-controls={codeId}
 				>
 					{isCodeVisible ? 'Hide live code' : 'Show live code'}
@@ -152,16 +155,10 @@ function LiveCode({
 					variant="tertiary"
 					onClick={copyLiveCode}
 					iconAfter={CopyIcon}
-					aria-label="Copy code snippet to clipboard"
 				>
 					Copy code
 				</Button>
-				<ButtonLink
-					href={playroomUrl}
-					size="sm"
-					variant="tertiary"
-					aria-label="Open code snippet in Playroom"
-				>
+				<ButtonLink href={playroomUrl} size="sm" variant="tertiary">
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
@@ -290,6 +287,7 @@ type CodeProps = {
 	live?: boolean;
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 };
 
@@ -299,6 +297,7 @@ export function Code({
 	showCode,
 	enableProse,
 	className,
+	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
@@ -316,6 +315,7 @@ export function Code({
 				<LiveCode
 					showCode={showCode}
 					enableProse={enableProse}
+					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
 				/>
 			</LiveProvider>

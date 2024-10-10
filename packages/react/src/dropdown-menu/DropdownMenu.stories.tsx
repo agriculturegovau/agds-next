@@ -161,7 +161,7 @@ export const IconsAndBadges: StoryObj = {
 									tone="action"
 									aria-hidden
 								/>
-								<VisuallyHidden>, 100 unread</VisuallyHidden>
+								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
 					>
@@ -199,7 +199,7 @@ export const Divider: StoryObj = {
 									tone="action"
 									aria-hidden
 								/>
-								<VisuallyHidden>, 100 unread</VisuallyHidden>
+								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
 					>
@@ -247,7 +247,7 @@ export const Groups: StoryObj = {
 										tone="action"
 										aria-hidden
 									/>
-									<VisuallyHidden>, 100 unread</VisuallyHidden>
+									<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 								</Fragment>
 							}
 						>
@@ -509,7 +509,7 @@ export const Complex: StoryObj = {
 									tone="action"
 									aria-hidden
 								/>
-								<VisuallyHidden>, 100 unread</VisuallyHidden>
+								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
 					>
@@ -564,7 +564,7 @@ export const LongLabels: StoryObj = {
 									tone="action"
 									aria-hidden
 								/>
-								<VisuallyHidden>, 100 unread</VisuallyHidden>
+								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
 					>

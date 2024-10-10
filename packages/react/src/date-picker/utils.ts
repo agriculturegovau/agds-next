@@ -37,7 +37,7 @@ export const formatDate = (date: Date, dateformat: AcceptedDateFormats) =>
 	format(date, dateformat);
 
 export const formatHumanReadableDate = (date: Date) =>
-	format(date, 'do MMMM yyyy (EEEE)');
+	format(date, 'do MMMM yyyy EEEE');
 
 export const parseDate = (
 	value: string,
