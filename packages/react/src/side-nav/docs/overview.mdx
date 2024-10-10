@@ -8,67 +8,71 @@ relatedComponents: ['inpage-nav', 'link-list', 'sub-nav']
 ---
 
 ```jsx live
-<SideNav
-	title="Lodging your tax return"
-	titleLink="#"
-	activePath="#in-detail"
-	items={[
-		{
-			href: '#welcome',
-			label: 'Welcome',
-		},
-		{
-			href: '#do-you-need-to-lodge-a-tax-return',
-			label: 'Do you need to lodge a tax return?',
-		},
-		{
-			href: '#lodge-online',
-			label: 'Lodge online',
-			items: [
+<Columns>
+	<Column columnSpan={{ xs: 12, md: 10, lg: 8, xl: 6 }}>
+		<SideNav
+			title="Lodging your tax return"
+			titleLink="#"
+			activePath="#in-detail"
+			items={[
 				{
-					href: '#lodge-online/pre-filling',
-					label: 'Pre-filling your online tax return',
+					href: '#welcome',
+					label: 'Welcome',
 				},
-			],
-		},
-		{
-			href: '#whats-new-for-individuals',
-			label: 'What’s new for individuals',
-		},
-		{
-			href: '#why-you-may-receive-a-tax-bill',
-			label: 'Why you may receive a tax bill',
-		},
-		{
-			href: '#in-detail',
-			label: 'In detail',
-			items: [
 				{
-					href: '#in-detail/record-keeping',
-					label: 'Record keeping',
+					href: '#do-you-need-to-lodge-a-tax-return',
+					label: 'Do you need to lodge a tax return?',
+				},
+				{
+					href: '#lodge-online',
+					label: 'Lodge online',
 					items: [
 						{
-							href: '#in-detail/record-keeping/tax',
-							label: 'Keeping your tax records',
-						},
-						{
-							href: '#in-detail/record-keeping/incorrect-amounts',
-							label: 'Incorrect amounts',
+							href: '#lodge-online/pre-filling',
+							label: 'Pre-filling your online tax return',
 						},
 					],
 				},
 				{
-					href: '#tax-receipt',
-					label: 'Tax receipt',
+					href: '#whats-new-for-individuals',
+					label: 'What’s new for individuals',
 				},
 				{
-					href: '#pre-fill availability',
-					label: 'Pre-fill availability',
+					href: '#why-you-may-receive-a-tax-bill',
+					label: 'Why you may receive a tax bill',
 				},
-			],
-		},
-	]}
-/>
+				{
+					href: '#in-detail',
+					label: 'In detail',
+					items: [
+						{
+							href: '#in-detail/record-keeping',
+							label: 'Record keeping',
+							items: [
+								{
+									href: '#in-detail/record-keeping/tax',
+									label: 'Keeping your tax records',
+								},
+								{
+									href: '#in-detail/record-keeping/incorrect-amounts',
+									label: 'Incorrect amounts',
+								},
+							],
+						},
+						{
+							href: '#tax-receipt',
+							label: 'Tax receipt',
+						},
+						{
+							href: '#pre-fill availability',
+							label: 'Pre-fill availability',
+						},
+					],
+				},
+			]}
+		/>
+	</Column>
+</Columns>
 ```
 
 The side navigation allows users to find other pages which share a similar topic or section. By default, it supports three sub-levels along with an accompanying heading.
