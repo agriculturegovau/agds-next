@@ -48,16 +48,11 @@ This logic ensures sufficient contrast between foreground and background element
 
 ```jsx live
 <Fragment>
-	<Flex padding="1.5">
+	<Flex padding={1.5}>
 		<Avatar name="William Mead" tone="action" />
 	</Flex>
 
-	<Flex
-		background="body"
-		css={{ listStyle: 'none' }}
-		padding="1.5"
-		palette="dark"
-	>
+	<Flex background="body" padding={1.5} palette="dark">
 		<Avatar name="William Mead" tone="action" />
 	</Flex>
 </Fragment>
