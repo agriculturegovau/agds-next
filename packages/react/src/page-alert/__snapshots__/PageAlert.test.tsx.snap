@@ -34,11 +34,11 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       <div
         class="css-g6k1ma-boxStyles"
       >
-        <h3
+        <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           There is a problem
-        </h3>
+        </h2>
         <ul
           class="css-1qfj7jm-UnorderedList"
         >
@@ -93,11 +93,11 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       <div
         class="css-g6k1ma-boxStyles"
       >
-        <h3
+        <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Notice
-        </h3>
+        </h2>
         <p
           class="css-dbscsh-boxStyles"
         >
@@ -143,11 +143,11 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       <div
         class="css-g6k1ma-boxStyles"
       >
-        <h3
+        <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Submission successful
-        </h3>
+        </h2>
         <p
           class="css-dbscsh-boxStyles"
         >
@@ -193,11 +193,11 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       <div
         class="css-g6k1ma-boxStyles"
       >
-        <h3
+        <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
         >
           Browser out of date
-        </h3>
+        </h2>
         <p
           class="css-dbscsh-boxStyles"
         >
@@ -243,11 +243,11 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       <div
         class="css-g6k1ma-boxStyles"
       >
-        <h3
+        <h2
           class="css-16u1tz7-boxStyles-PageAlertTitle"
         >
           PageAlert with close button
-        </h3>
+        </h2>
         <p
           class="css-dbscsh-boxStyles"
         >

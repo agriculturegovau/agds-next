@@ -2,8 +2,8 @@
 
 exports[`SideNav renders correctly 1`] = `
 <div>
-  <section
-    aria-labelledby="collapsing-side-bar-:r1:-heading"
+  <nav
+    aria-labelledby="collapsing-side-bar-:r0:-heading"
     class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
     <div
@@ -11,11 +11,10 @@ exports[`SideNav renders correctly 1`] = `
     >
       <div
         class="css-lr9d04-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r1:-heading"
+        id="collapsing-side-bar-:r0:-heading"
       >
         <h2
           class="css-m2oixi-boxStyles-SideNav"
-          id="sideNav-:r0:-title"
         >
           <span
             class="css-1jga52b-boxStyles"
@@ -25,10 +24,9 @@ exports[`SideNav renders correctly 1`] = `
         </h2>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r1:-body"
-        aria-describedby="collapsing-side-bar-:r1:-heading"
+        aria-controls="collapsing-side-bar-:r0:-body"
         aria-expanded="false"
-        aria-label="Lodging your tax return (Expand/Collapse)"
+        aria-label="Lodging your tax return"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -65,14 +63,13 @@ exports[`SideNav renders correctly 1`] = `
     </div>
     <div
       class="css-3b4a55-CollapsingSideBar"
-      id="collapsing-side-bar-:r1:-body"
+      id="collapsing-side-bar-:r0:-body"
       style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
       >
-        <nav
-          aria-labelledby="sideNav-:r0:-title"
+        <div
           class="css-zipzg2-boxStyles"
         >
           <span
@@ -286,9 +283,9 @@ exports[`SideNav renders correctly 1`] = `
               </ul>
             </li>
           </ul>
-        </nav>
+        </div>
       </div>
     </div>
-  </section>
+  </nav>
 </div>
 `;

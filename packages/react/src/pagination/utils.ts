@@ -31,5 +31,5 @@ export function generatePaginationRangeText({
 		totalItems
 	);
 
-	return `${firstItem} - ${lastItem} of ${totalItems} ${noun}`;
+	return `${firstItem} – ${lastItem} of ${totalItems} ${noun}`;
 }

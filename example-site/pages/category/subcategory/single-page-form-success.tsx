@@ -3,7 +3,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Columns, Column } from '@ag.ds-next/react/columns';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Text } from '@ag.ds-next/react/text';
 import { PageTitle } from '../../../components/PageTitle';
@@ -46,11 +46,7 @@ export default function SinglePageFormSuccessPage() {
 									ref={successPageAlertRef}
 									tabIndex={-1}
 									tone="success"
-									title={
-										<PageAlertTitle as="h2">
-											Descriptive success message (H2)
-										</PageAlertTitle>
-									}
+									title="Descriptive success message (H2)"
 								>
 									<Text as="p">
 										Supporting paragraph for the success message

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Prose, proseBlockClassname } from '@ag.ds-next/react/prose';
-import { Switch } from '@ag.ds-next/react/switch';
 import { Box } from '@ag.ds-next/react/box';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Column, Columns } from '@ag.ds-next/react/columns';
@@ -15,12 +13,8 @@ import { withBasePath } from '../../../lib/img';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 
 export default function TokensColorPage() {
-	const [isDarkMode, setIsDarkMode] = useState(false);
-
-	const activePalette = isDarkMode ? 'dark' : 'light';
-
 	return (
-		<Box palette={isDarkMode ? 'dark' : 'light'} background="body">
+		<Box background="body">
 			<DocumentTitle
 				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
@@ -28,7 +22,7 @@ export default function TokensColorPage() {
 			<TokenLayout
 				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
-				editPath="/docs/pages/foundations/tokens/color.tsx"
+				editPath="/docs/pages/foundations/tokens/colour.tsx"
 			>
 				<InpageNav
 					title="On this page"
@@ -49,40 +43,25 @@ export default function TokensColorPage() {
 						divided into foreground, background, border, and system colours
 						which all have a specific purpose.
 					</p>
-					<Box
-						borderTop
-						borderBottom
-						padding={1.5}
-						borderColor="muted"
-						background="shade"
-						className={proseBlockClassname}
-					>
-						<h3>Light vs dark palette</h3>
-						<p>
-							Toggle the dark palette colour tokens for the whole page via the
-							switch below. <a href="#palettes">Learn more about palettes</a>.
-						</p>
-						<div className={proseBlockClassname}>
-							<Switch
-								label="Enable dark palette"
-								checked={isDarkMode}
-								onChange={setIsDarkMode}
-							/>
-						</div>
-					</Box>
 					<h2 id="foreground-colours">Foreground colours</h2>
 					<p id="foreground-colours-description">
 						Designed to sit on top of background colours to ensure contrast
 						ratios meet WCAG 2.1 level AA accessibility requirements.
 					</p>
+					<h3 id="foreground-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="foreground-colours"
+						aria-labelledby="foreground-colours foreground-colours-light"
 						aria-describedby="foreground-colours-description"
-						tokens={getTokensArrayFromObject(
-							colourTokens.foreground,
-							activePalette
-						)}
+						tokens={getTokensArrayFromObject(colourTokens.foreground, 'light')}
 					/>
+					<h3 id="foreground-colours-dark">Dark palette</h3>
+					<Box background="body" className={proseBlockClassname} palette="dark">
+						<ColorTable
+							aria-labelledby="foreground-colours foreground-colours-dark"
+							aria-describedby="foreground-colours-description"
+							tokens={getTokensArrayFromObject(colourTokens.foreground, 'dark')}
+						/>
+					</Box>
 
 					<h2 id="background-colours">Background colours</h2>
 					<p id="background-colours-description">
@@ -93,27 +72,39 @@ export default function TokensColorPage() {
 						used to help differentiate or highlight content against the body
 						background colours.
 					</p>
+					<h3 id="background-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="background-colours"
+						aria-labelledby="background-colours background-colours-light"
 						aria-describedby="background-colours-description"
-						tokens={getTokensArrayFromObject(
-							colourTokens.background,
-							activePalette
-						)}
+						tokens={getTokensArrayFromObject(colourTokens.background, 'light')}
 					/>
+					<h3 id="background-colours-dark">Dark palette</h3>
+					<Box background="body" className={proseBlockClassname} palette="dark">
+						<ColorTable
+							aria-labelledby="background-colours background-colours-dark"
+							aria-describedby="background-colours-description"
+							tokens={getTokensArrayFromObject(colourTokens.background, 'dark')}
+						/>
+					</Box>
 
 					<h2 id="border-colours">Border colours</h2>
 					<p id="border-colours-description">
 						Each colour palette has 2 border colours.
 					</p>
+					<h3 id="border-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="border-colours"
+						aria-labelledby="border-colours border-colours-light"
 						aria-describedby="border-colours-description"
-						tokens={getTokensArrayFromObject(
-							colourTokens.border,
-							activePalette
-						)}
+						tokens={getTokensArrayFromObject(colourTokens.border, 'light')}
 					/>
+					<h3 id="border-colours-dark">Dark palette</h3>
+					<Box background="body" className={proseBlockClassname} palette="dark">
+						<ColorTable
+							aria-labelledby="border-colours border-colours-dark"
+							aria-describedby="border-colours-description"
+							tokens={getTokensArrayFromObject(colourTokens.border, 'dark')}
+						/>
+					</Box>
 
 					<h2 id="system-colours">System colours</h2>
 					<p id="system-colours-description">
@@ -121,27 +112,45 @@ export default function TokensColorPage() {
 						colours aimed at grabbing the user’s attention. Each system colour
 						has a muted version to be used as a background colour.
 					</p>
+					<h3 id="system-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="system-colours"
+						aria-labelledby="system-colours system-colours-light"
 						aria-describedby="system-colours-description"
-						tokens={getTokensArrayFromObject(
-							colourTokens.system,
-							activePalette
-						)}
+						tokens={getTokensArrayFromObject(colourTokens.system, 'light')}
 					/>
+					<h3 id="system-colours-dark">Dark palette</h3>
+					<Box background="body" className={proseBlockClassname} palette="dark">
+						<ColorTable
+							aria-labelledby="system-colours system-colours-dark"
+							aria-describedby="system-colours-description"
+							tokens={getTokensArrayFromObject(colourTokens.system, 'dark')}
+						/>
+					</Box>
 
 					<h2 id="miscellaneous-colours">Miscellaneous colours</h2>
 					<p id="miscellaneous-colours-description">
 						Miscellaneous colours which do not form part of the above groups.
 					</p>
+					<h3 id="miscellaneous-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="miscellaneous-colours"
+						aria-labelledby="miscellaneous-colours miscellaneous-colours-light"
 						aria-describedby="miscellaneous-colours-description"
 						tokens={getTokensArrayFromObject(
 							colourTokens.miscellaneous,
-							activePalette
+							'light'
 						)}
 					/>
+					<h3 id="miscellaneous-colours-dark">Dark palette</h3>
+					<Box background="body" className={proseBlockClassname} palette="dark">
+						<ColorTable
+							aria-labelledby="miscellaneous-colours miscellaneous-colours-dark"
+							aria-describedby="miscellaneous-colours-description"
+							tokens={getTokensArrayFromObject(
+								colourTokens.miscellaneous,
+								'dark'
+							)}
+						/>
+					</Box>
 
 					<h2 id="usage-guidelines">Usage guidelines</h2>
 					<Columns cols={[1, 3]} className={proseBlockClassname}>

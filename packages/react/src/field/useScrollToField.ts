@@ -6,12 +6,14 @@ export function useScrollToField() {
 			const targetId = getScrollTargetId(eventOrTargetId);
 			if (!targetId) return;
 
-			const targetEl = document.getElementById(targetId);
+			const targetEl =
+				document.getElementById(targetId) ||
+				document.getElementsByName(targetId)[0];
 			if (!targetEl) return;
 
 			scrollAndFocusTarget(targetId, targetEl);
 
-			// Prevent default browser behaviour if user clicked on a lin
+			// Prevent default browser behaviour if user clicked on a link
 			if (typeof eventOrTargetId !== 'string') {
 				eventOrTargetId.preventDefault();
 			}

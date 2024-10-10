@@ -3,16 +3,19 @@ import {
 	forwardRef,
 	InputHTMLAttributes,
 	useCallback,
+	useMemo,
 	useState,
 } from 'react';
 import { Field } from '../field';
 import { packs, boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { buttonStyles } from '../button';
+import { AcceptedFileMimeTypes } from '../file-upload';
+import { fileTypeMapping } from '../file-upload/utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseFileInputProps = {
-	accept?: NativeInputProps['accept'];
+	accept?: NativeInputProps['accept'] | AcceptedFileMimeTypes[];
 	autoFocus?: NativeInputProps['autoFocus'];
 	capture?: NativeInputProps['capture'];
 	disabled?: NativeInputProps['disabled'];
@@ -43,6 +46,7 @@ export type FileInputProps = BaseFileInputProps & {
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	function FileInput(
 		{
+			accept,
 			label,
 			hideOptionalLabel,
 			required,
@@ -67,18 +71,41 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
+		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into valid file extensions
+		const acceptedFileExtensions = useMemo(() => {
+			return Array.isArray(accept)
+				? Array.from(
+						new Set(
+							accept.flatMap((item) => {
+								const mimeTypeData = fileTypeMapping[item];
+								if (mimeTypeData) {
+									if (hasLabel(mimeTypeData)) {
+										return mimeTypeData.label;
+									}
+									return mimeTypeData.extensions;
+								} else return item;
+							})
+						)
+				  ).join(', ')
+				: accept;
+		}, [accept]);
+
+		const fallbackHint =
+			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
+
 		return (
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
 				required={Boolean(required)}
-				hint={hint}
+				hint={fallbackHint}
 				invalid={invalid}
 				message={message}
 				id={id}
 			>
 				{(a11yProps) => (
 					<input
+						accept={accept?.toString()}
 						ref={ref}
 						css={styles}
 						{...a11yProps}
@@ -127,3 +154,9 @@ function useFileInputStyles({ hasFile }: { hasFile: boolean }) {
 		'&:focus': packs.outline,
 	};
 }
+
+const hasLabel = (
+	mimeTypeData: (typeof fileTypeMapping)[keyof typeof fileTypeMapping]
+): mimeTypeData is { extensions: string[]; label: string } => {
+	return 'label' in mimeTypeData;
+};

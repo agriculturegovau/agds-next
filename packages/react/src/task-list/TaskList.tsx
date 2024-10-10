@@ -19,14 +19,14 @@ export type TaskListProps = {
 };
 
 export const TaskList = ({ items, ordered }: TaskListProps) => {
-	const stepsCompleted = items.filter(
+	const tasksCompleted = items.filter(
 		({ status }) => status === 'done' || status === 'doneRecently'
 	).length;
 	return (
 		<TaskListContainer>
 			<TaskListHeading
-				stepsCompleted={stepsCompleted}
-				totalSteps={items.length}
+				tasksCompleted={tasksCompleted}
+				totalTasks={items.length}
 			/>
 			<TaskListItemsContainer as={ordered ? 'ol' : 'ul'}>
 				{items.map(({ label, ...props }, index) => {

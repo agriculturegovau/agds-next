@@ -1,3 +1,4 @@
+import { type CSSProperties, useMemo } from 'react';
 import { useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
@@ -52,30 +53,52 @@ export function filterOptions<Option extends DefaultComboboxOption>(
 }
 
 /**
- * @param optionLabel The display label of the option (eg. "Australia", "New Zealand" etc)
  * @param inputValue The value of the text input (eg. "Aust")
  */
-export function splitLabel(optionLabel: string, inputValue: string) {
-	if (!inputValue) return [optionLabel];
+export function generateHighlightStyles(
+	inputValue?: string
+): Record<string, CSSProperties> {
+	const styles: Record<string, CSSProperties> = {};
+	if (!inputValue) return styles;
 
-	const iinputValue = inputValue.toLowerCase();
-	const ilabel = optionLabel.toLowerCase();
-	const results = [];
+	const characters = inputValue.toLowerCase().split('');
 
-	let i = 0;
+	characters.forEach((_, index) => {
+		// When typing "abc"
+		// This generates things like [data-char="a" i] + [data-char="b" i] + [data-char="c" i]
+		// to ensure we select consecutive elements
+		const baseSelector = characters
+			.slice(0, index + 1)
+			.map((char) => `[data-char="${char}" i]`)
+			.join(' + ');
 
-	while (i < optionLabel.length) {
-		const part = optionLabel.slice(i);
-		const ipart = ilabel.slice(i);
-		const x = ipart.indexOf(iinputValue);
-		if (x === -1) {
-			results.push(part);
-			return results;
-		}
-		if (x !== 0) results.push(part.slice(0, x));
-		results.push(part.slice(x, x + iinputValue.length));
-		i += x + iinputValue.length;
-	}
+		// This generates things like [data-char="a" i]:has(+ [data-char="b" i] + [data-char="c" i])
+		// to ensure we select earlier elements whose later siblings match
+		const hasSelector = characters
+			.slice(index + 1)
+			.map((char) => `+ [data-char="${char}" i]`)
+			.join(' ');
 
-	return results;
+		const fullSelector = hasSelector
+			? `${baseSelector}:has(${hasSelector})`
+			: baseSelector;
+
+		styles[fullSelector] = {
+			fontWeight: 'bold',
+		};
+	});
+
+	return styles;
+}
+
+export function useIsIos() {
+	const isIos = useMemo(
+		() =>
+			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
+			CSS.supports('-webkit-appearance', '-apple-pay-button') &&
+			CSS.supports('-webkit-overflow-scrolling', 'auto'),
+		[]
+	);
+
+	return isIos;
 }

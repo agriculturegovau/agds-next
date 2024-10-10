@@ -6,7 +6,6 @@ import { setLocalPaletteVars, MainNavBackground } from './localPalette';
 import { MainNavOpenButton } from './MainNavMenuButtons';
 import { MainNavList, type MainNavListItemType } from './MainNavList';
 import { MainNavListDropdown } from './MainNavListItemDropdown';
-import { mobileBreakpoint } from './utils';
 
 export type MainNavContainerProps = {
 	activePath: string;
@@ -46,10 +45,11 @@ export function MainNavContainer({
 			{!focusMode && (
 				<Flex
 					css={{ margin: '0 auto' }}
+					// When the nav and secondaryItems don't fit, wrap-reverse is used to ensure the nav items sit atop the border
+					flexWrap={{ xs: 'wrap', lg: 'wrap-reverse' }}
 					justifyContent="space-between"
 					maxWidth={tokens.maxWidth.container}
-					minHeight={{ xs: '5rem', [mobileBreakpoint]: '3.5rem' }}
-					paddingX={{ xs: 0.75, [mobileBreakpoint]: 2 }}
+					paddingX={{ xs: 0.75, lg: 2 }}
 					width="100%"
 				>
 					{items?.length ? (

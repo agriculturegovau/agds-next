@@ -1,4 +1,4 @@
-import { filterOptions, splitLabel } from './utils';
+import { filterOptions, generateHighlightStyles } from './utils';
 
 describe('filterOptions', () => {
 	test('should filter options correctly', () => {
@@ -37,42 +37,40 @@ describe('filterOptions', () => {
 	});
 });
 
-describe('splitLabel', () => {
-	test('it should split a label correctly', () => {
-		const option = 'Australia';
-		expect(splitLabel(option, '')).toEqual(['Australia']);
-		expect(splitLabel(option, ' ')).toEqual(['Australia']);
-		expect(splitLabel(option, 'Lorem')).toEqual(['Australia']);
-		expect(splitLabel(option, 'AUS')).toEqual(['Aus', 'tralia']);
-		expect(splitLabel(option, 'aus')).toEqual(['Aus', 'tralia']);
-		expect(splitLabel(option, 'stra')).toEqual(['Au', 'stra', 'lia']);
-		expect(splitLabel(option, 'STRA')).toEqual(['Au', 'stra', 'lia']);
-		expect(splitLabel(option, 'ia')).toEqual(['Austral', 'ia']);
+describe('generateHighlightStyles', () => {
+	test('it returns empty empty object with no inputValue', () => {
+		expect(generateHighlightStyles()).toEqual({});
+		expect(generateHighlightStyles('')).toEqual({});
 	});
 
-	test('it should split a multi word labels correctly', () => {
-		const option = 'New Zealand';
-		expect(splitLabel(option, '')).toEqual(['New Zealand']);
-		expect(splitLabel(option, 'New')).toEqual(['New', ' Zealand']);
-		expect(splitLabel(option, 'New ')).toEqual(['New ', 'Zealand']);
-		expect(splitLabel(option, 'New Z')).toEqual(['New Z', 'ealand']);
+	test('it returns one selector object for single character inputValue', () => {
+		expect(generateHighlightStyles('a')).toEqual({
+			'[data-char="a" i]': {
+				fontWeight: 'bold',
+			},
+		});
 	});
 
-	test('it should split a label with special characters correctly', () => {
-		const option = 'Hello / (World) \\ [bracket]';
-		expect(splitLabel(option, '')).toEqual(['Hello / (World) \\ [bracket]']);
-		expect(splitLabel(option, 'Hello')).toEqual([
-			'Hello',
-			' / (World) \\ [bracket]',
-		]);
-		expect(splitLabel(option, 'Hello / (W')).toEqual([
-			'Hello / (W',
-			'orld) \\ [bracket]',
-		]);
-		expect(splitLabel(option, '/')).toEqual([
-			'Hello ',
-			'/',
-			' (World) \\ [bracket]',
-		]);
+	test('it returns has and sibling selector objects for multi character inputValue', () => {
+		expect(generateHighlightStyles('ab')).toEqual({
+			'[data-char="a" i] + [data-char="b" i]': {
+				fontWeight: 'bold',
+			},
+			'[data-char="a" i]:has(+ [data-char="b" i])': {
+				fontWeight: 'bold',
+			},
+		});
+
+		expect(generateHighlightStyles('abc')).toEqual({
+			'[data-char="a" i] + [data-char="b" i] + [data-char="c" i]': {
+				fontWeight: 'bold',
+			},
+			'[data-char="a" i] + [data-char="b" i]:has(+ [data-char="c" i])': {
+				fontWeight: 'bold',
+			},
+			'[data-char="a" i]:has(+ [data-char="b" i] + [data-char="c" i])': {
+				fontWeight: 'bold',
+			},
+		});
 	});
 });

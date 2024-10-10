@@ -442,7 +442,7 @@ export const DateRangePicker = ({
 
 export function useDateRangePickerIds(idProp?: string) {
 	const autoId = useId(idProp);
-	const fieldsetId = idProp ? idProp : `date-range-picker-${autoId}`;
+	const fieldsetId = idProp || `date-range-picker-${autoId}`;
 	const hintId = `date-range-picker-${autoId}-hint`;
 	const messageId = `date-range-picker-${autoId}-message`;
 	return { fieldsetId, hintId, messageId };
