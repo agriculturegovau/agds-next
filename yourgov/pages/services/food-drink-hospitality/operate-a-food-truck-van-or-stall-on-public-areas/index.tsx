@@ -1,24 +1,24 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Prose } from '@ag.ds-next/react/prose';
-import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
-import { Columns, Column } from '@ag.ds-next/react/columns';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { Stack } from '@ag.ds-next/react/stack';
-import { H1 } from '@ag.ds-next/react/heading';
-import { InpageNav } from '@ag.ds-next/react/inpage-nav';
-import { Text } from '@ag.ds-next/react/text';
-import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
-import { SideNav } from '@ag.ds-next/react/side-nav';
-import { Divider } from '@ag.ds-next/react/divider';
 import {
 	Accordion,
 	AccordionItem,
 	AccordionItemContent,
 } from '@ag.ds-next/react/accordion';
-import { SiteLayout } from '../../../../components/Layout/SiteLayout';
+import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
+import { Columns, Column } from '@ag.ds-next/react/columns';
+import { ContentBleed, PageContent } from '@ag.ds-next/react/content';
+import { Divider } from '@ag.ds-next/react/divider';
+import { H1 } from '@ag.ds-next/react/heading';
+import { InpageNav } from '@ag.ds-next/react/inpage-nav';
+import { Prose } from '@ag.ds-next/react/prose';
+import { SideNav } from '@ag.ds-next/react/side-nav';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { HelpCallout } from '../../../../components/HelpCallout';
+import { SiteLayout } from '../../../../components/Layout/SiteLayout';
 
 export default function Page() {
 	const router = useRouter();
@@ -156,7 +156,7 @@ export default function Page() {
 										</p>
 									</Prose>
 									<Accordion>
-										<AccordionItem title="Food van permit">
+										<AccordionItem title="Food truck permit">
 											<AccordionItemContent>
 												<Prose>
 													<p>

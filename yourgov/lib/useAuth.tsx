@@ -5,6 +5,7 @@ import {
 	useContext,
 	PropsWithChildren,
 } from 'react';
+import { safeSessionStorage } from './useSessionFormState';
 
 export type User = {
 	firstName: string;
@@ -36,20 +37,22 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 	const [userState, setUserState] = useState<User | null>(null);
 
 	useEffect(() => {
-		if (typeof sessionStorage === undefined) return;
-		const value = sessionStorage.getItem('user');
+		if (!safeSessionStorage) return;
+		const value = safeSessionStorage.getItem('user');
 		const parsedValue = value ? (JSON.parse(value) as User) : null;
 		setUserState(parsedValue);
 		setHasLoadedUser(true);
 	}, []);
 
 	function signIn(user: User) {
-		sessionStorage.setItem('user', JSON.stringify(user));
+		if (!safeSessionStorage) return;
+		safeSessionStorage.setItem('user', JSON.stringify(user));
 		setUserState(user);
 	}
 
 	function signOut() {
-		sessionStorage.clear();
+		if (!safeSessionStorage) return;
+		safeSessionStorage.clear();
 		setUserState(null);
 	}
 

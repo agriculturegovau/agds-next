@@ -7,7 +7,7 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
-export function FormActions() {
+export function StepActions({ submitText = 'Save and continue' }) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
@@ -19,10 +19,10 @@ export function FormActions() {
 				<Divider />
 				<ButtonGroup>
 					<Button type="submit" variant="primary" loading={isSubmittingStep}>
-						Save and continue
+						{submitText}
 					</Button>
 					<Button
-						type="button"
+						type="submit"
 						variant="secondary"
 						loading={isSavingBeforeExiting}
 						onClick={saveAndExit}

@@ -2,6 +2,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 type SetStateValue<TValue> = TValue | ((prevState: TValue) => TValue);
 
+/**
+ * Node does not support sessionStorage.
+ * This provides an easy way to use sessionStorage without getting any errors in Node.
+ */
+export const safeSessionStorage =
+	'sessionStorage' in globalThis ? globalThis.sessionStorage : undefined;
+
 export function useSessionFormState<FormState>(
 	key: string,
 	initialValue: Partial<FormState>
@@ -10,8 +17,8 @@ export function useSessionFormState<FormState>(
 	const [localFormState, setLocalFormState] = useState(initialValue);
 
 	useEffect(() => {
-		if (typeof sessionStorage === undefined) return;
-		const value = sessionStorage.getItem(key);
+		if (!safeSessionStorage) return;
+		const value = safeSessionStorage.getItem(key);
 		const parsedValue = value ? (JSON.parse(value) as FormState) : null;
 		if (parsedValue) setLocalFormState(parsedValue);
 		setHasSynced(true);
@@ -23,7 +30,7 @@ export function useSessionFormState<FormState>(
 	const setState = useCallback(
 		(value: SetStateValue<Partial<FormState>>) => {
 			function writeStorage(key: string, value: Partial<FormState>) {
-				sessionStorage.setItem(key, JSON.stringify(value));
+				safeSessionStorage?.setItem(key, JSON.stringify(value));
 				setLocalFormState(value);
 			}
 			value instanceof Function
@@ -40,8 +47,8 @@ export function useHasStartedSessionForm(key: string) {
 	const [hasStartedForm, setHasStartedForm] = useState(false);
 
 	useEffect(() => {
-		if (typeof sessionStorage === undefined) return;
-		const value = sessionStorage.getItem(key);
+		if (!safeSessionStorage) return;
+		const value = safeSessionStorage.getItem(key);
 		setHasStartedForm(Boolean(value));
 	}, [key]);
 

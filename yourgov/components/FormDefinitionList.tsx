@@ -1,6 +1,5 @@
 import { Fragment, PropsWithChildren } from 'react';
 import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -50,7 +49,8 @@ export function FormDefinitionListItemAddress({
 			<SummaryListItemDescription>
 				{address && suburb && state && postcode ? (
 					<Fragment>
-						{address}, {suburb} {state} {postcode}
+						{address},<br />
+						{suburb} {state} {postcode}
 					</Fragment>
 				) : null}
 			</SummaryListItemDescription>
@@ -58,9 +58,11 @@ export function FormDefinitionListItemAddress({
 	);
 }
 
+const DATE_FORMAT = 'd MMMM yyyy';
+
 type FormDefinitionListItemDateProps = {
 	label: string;
-	value: unknown;
+	value?: Date;
 };
 
 export function FormDefinitionListItemDate({
@@ -71,48 +73,39 @@ export function FormDefinitionListItemDate({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{value ? (
-					<Fragment>
-						{format(
-							typeof value === 'string' ? parseISO(value) : (value as Date),
-							'dd/MM/yyyy'
-						)}
-					</Fragment>
-				) : null}
+				{value && <Fragment>{format(value, DATE_FORMAT)}</Fragment>}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
 }
 
 type FormDefinitionListItemDateRangeProps = {
-	label: string;
-	from: unknown | undefined;
-	to: unknown | undefined;
+	fromLabel: string;
+	fromValue?: Date;
+	toLabel: string;
+	toValue?: Date;
 };
 
 export function FormDefinitionListItemDateRange({
-	label,
-	from,
-	to,
+	fromLabel,
+	fromValue,
+	toLabel,
+	toValue,
 }: FormDefinitionListItemDateRangeProps) {
 	return (
-		<SummaryListItem>
-			<SummaryListItemTerm>{label}</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				{from && to ? (
-					<Fragment>
-						{format(
-							typeof from === 'string' ? parseISO(from) : (from as Date),
-							'dd/MM/yyyy'
-						)}{' '}
-						–{' '}
-						{format(
-							typeof to === 'string' ? parseISO(to) : (to as Date),
-							'dd/MM/yyyy'
-						)}
-					</Fragment>
-				) : null}
-			</SummaryListItemDescription>
-		</SummaryListItem>
+		<>
+			<SummaryListItem>
+				<SummaryListItemTerm>{fromLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{fromValue && format(fromValue, DATE_FORMAT)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+			<SummaryListItem>
+				<SummaryListItemTerm>{toLabel}</SummaryListItemTerm>
+				<SummaryListItemDescription>
+					{toValue && format(toValue, DATE_FORMAT)}
+				</SummaryListItemDescription>
+			</SummaryListItem>
+		</>
 	);
 }
