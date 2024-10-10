@@ -1,5 +1,5 @@
+import { type ResponsiveProp } from '../../../../packages/react/src/core';
 import { Flex } from '../../../../packages/react/src/flex';
-import { Avatar } from '../../../../packages/react/src/avatar';
 import { TableCell, TableRow } from '../../../../packages/react/src/table';
 import { Text } from '../../../../packages/react/src/text';
 import { Checkbox } from '../../../../packages/react/src/checkbox';
@@ -9,20 +9,21 @@ import { useSortAndFilterContext } from '../lib/contexts';
 
 export const DataTableRowAssignee = ({
 	assignee,
+	display,
 }: {
 	/** The name of the assignee, if set */
 	assignee: string | undefined;
+	display?: ResponsiveProp<'none' | 'table-cell'>;
 }) => {
-	if (!assignee) {
-		return <TableCell>-</TableCell>;
-	}
-
 	return (
-		<TableCell>
-			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" aria-hidden />
-				<Text>{assignee}</Text>
-			</Flex>
+		<TableCell display={display}>
+			{assignee ? (
+				<Flex alignItems="center" gap={0.25}>
+					<Text>{assignee}</Text>
+				</Flex>
+			) : (
+				'-'
+			)}
 		</TableCell>
 	);
 };
@@ -47,12 +48,14 @@ const itemStatusMap = {
 } as const;
 
 export const DataTableRowStatus = ({
+	display,
 	status,
 }: {
+	display?: ResponsiveProp<'none' | 'table-cell'>;
 	status: keyof typeof itemStatusMap;
 }) => {
 	return (
-		<TableCell>
+		<TableCell display={display}>
 			<StatusBadge appearance="subtle" {...itemStatusMap[status]} />
 		</TableCell>
 	);

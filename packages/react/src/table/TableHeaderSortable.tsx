@@ -41,6 +41,14 @@ export const TableHeaderSortable = ({
 			display={display}
 			scope="col"
 			width={width}
+			css={{
+				position: 'relative',
+				'::after': {
+					borderBottomColor: sort
+						? `${boxPalette.selected} !important`
+						: undefined,
+				},
+			}}
 		>
 			<Flex
 				alignItems="center"

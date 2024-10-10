@@ -33,6 +33,7 @@ export const TableHeader = ({
 		<Box
 			as={as}
 			color="text"
+			css={{ position: 'relative' }}
 			colSpan={colSpan}
 			focusRingFor="keyboard"
 			fontWeight="bold"
