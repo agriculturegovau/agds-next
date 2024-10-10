@@ -7,6 +7,7 @@ import {
 	isMatch,
 	isValid,
 	parse,
+	parseISO,
 } from 'date-fns';
 
 export const acceptedDateFormats = [
@@ -90,9 +91,16 @@ export function transformValuePropToInputValue(
 	valueProp: Date | string | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
-	if (typeof valueProp === 'string') return valueProp;
+	if (
+		typeof valueProp === 'string' &&
+		parseISO(valueProp).toString() === 'Invalid Date'
+	)
+		return valueProp;
 	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp, dateFormat);
+
+	const valueAsDate =
+		typeof valueProp === 'string' ? new Date(valueProp) : valueProp;
+	if (isValidDate(valueAsDate)) return formatDate(valueAsDate, dateFormat);
 	return '';
 }
 
