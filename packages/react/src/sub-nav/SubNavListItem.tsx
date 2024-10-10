@@ -30,10 +30,19 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					mapSpacing(0.5),
 				]),
 
+				// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+				'@media (forced-colors: active)': {
+					borderBottomColor: active ? 'Background' : 'MenuText',
+				},
+
 				'&:first-of-type': {
 					borderTopWidth: mapResponsiveProp([tokens.borderWidth.sm, 0]),
 					borderTopStyle: 'solid',
 					borderTopColor: boxPalette.borderMuted,
+
+					'@media (forced-colors: active)': {
+						borderBottomColor: 'GrayText',
+					},
 				},
 
 				'& a': {
@@ -51,6 +60,11 @@ export function SubNavListItem({ children, active }: SubNavListItemProps) {
 					borderLeftStyle: 'solid',
 					borderLeftWidth: mapResponsiveProp([tokens.borderWidth.xl, 0]),
 					borderLeftColor: active ? boxPalette.selected : 'transparent',
+
+					// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+					'@media (forced-colors: active)': {
+						borderLeftColor: active ? 'MenuText' : 'Background',
+					},
 
 					...focusStyles,
 

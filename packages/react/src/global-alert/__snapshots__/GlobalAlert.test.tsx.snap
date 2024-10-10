@@ -4,7 +4,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1nshtlu-boxStyles-GlobalAlert"
+    class="css-1v0vzf6-boxStyles-GlobalAlert"
   >
     <div
       class="css-10khfcq-boxStyles-GlobalAlert"
@@ -100,7 +100,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1wlrpz7-boxStyles-GlobalAlert"
+    class="css-h8illz-boxStyles-GlobalAlert"
   >
     <div
       class="css-vh758l-boxStyles-GlobalAlert"
@@ -155,7 +155,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1nshtlu-boxStyles-GlobalAlert"
+    class="css-1v0vzf6-boxStyles-GlobalAlert"
   >
     <div
       class="css-10khfcq-boxStyles-GlobalAlert"

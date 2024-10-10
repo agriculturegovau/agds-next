@@ -12,12 +12,13 @@ This package includes the components `<Columns />` and `<Column />`.
 The `Columns` component creates a 12 column grid by default. You can use the `cols` prop to specify how many columns are needed. As a general rule, we prefer layouts to have 1 column for mobile and 2 columns for tablet viewports.
 
 ```jsx live
+/* highContrastOutline outline added for demo purposes only */
 <Columns gap={1.5} cols={{ xs: 1, sm: 2, md: 3 }}>
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
-	<Box background="shadeAlt" padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
 </Columns>
 ```
 
@@ -28,10 +29,11 @@ The `gap` prop effects both the row and column gap. To set a different gap for r
 You can use `Column` to make an item span multiple columns.
 
 ```jsx live
+/* highContrastOutline outline added for demo purposes only */
 <Columns gap={1.5} cols={{ xs: 1, md: 3 }}>
-	<Box background="shadeAlt" padding={1} />
+	<Box background="shadeAlt" highContrastOutline padding={1} />
 	<Column columnSpan={{ xs: 1, md: 2 }}>
-		<Box background="shadeAlt" padding={1} />
+		<Box background="shadeAlt" highContrastOutline padding={1} />
 	</Column>
 </Columns>
 ```
@@ -41,9 +43,10 @@ You can use `Column` to make an item span multiple columns.
 The `columnStart` and `columnEnd` props can be used to determine the Column’s start and end location within the row.
 
 ```jsx live
+/* highContrastOutline outline added for demo purposes only */
 <Columns>
 	<Column columnStart={3} columnEnd={9}>
-		<Box background="shadeAlt" padding={1} />
+		<Box background="shadeAlt" highContrastOutline padding={1} />
 	</Column>
 </Columns>
 ```
