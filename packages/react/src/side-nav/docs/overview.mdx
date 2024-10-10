@@ -8,8 +8,10 @@ relatedComponents: ['inpage-nav', 'link-list', 'sub-nav']
 ---
 
 ```jsx live
-<Columns>
-	<Column columnSpan={{ xs: 12, md: 10, lg: 8, xl: 6 }}>
+// Note: we are only restricting this example to 6 cols for the docs,
+// 12 cols is the recommendation for best results in application code
+<Columns cols={6}>
+	<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 		<SideNav
 			title="Lodging your tax return"
 			titleLink="#"
