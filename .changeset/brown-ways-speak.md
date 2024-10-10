@@ -12,6 +12,8 @@ global-alert: Improve appearance and experience for high contrast users.
 
 modal: Improve appearance and experience for high contrast users.
 
+notification-badge: Improve appearance and experience for high contrast users.
+
 progress-indicator: Improve appearance and experience for high contrast users.
 
 radio: Improve appearance and experience for high contrast users.
