@@ -18,6 +18,7 @@ The File input component is a simple input for selecting and uploading files in 
 - use if only one file is being uploaded per form field
 - use to conserve vertical space
 - use when a drag and drop zone isn’t required
+- indicate size and type requirements in the hint
 
 <DontHeading />
 
@@ -31,7 +32,7 @@ The File input component is a simple input for selecting and uploading files in 
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
 
-Don’t use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+Don’t use long paragraphs in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
 
 Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
@@ -69,4 +70,43 @@ Use the `invalid` prop to indicate if the user input is invalid.
 
 ```jsx live
 <FileInput label="Invalid" invalid message="This input is invalid" />
+```
+
+## Accept
+
+Use the `accept` prop to guide the user toward the accepted file types. This will automatically render a hint, although you can override this by providing your own `hint`.
+
+_NOTE: for security reasons you must validate the file type in your backend and not rely on frontend validation. The `accept` prop does not stop users uploading other file types._
+
+### Accept with default hint
+
+```jsx live
+<FileInput accept="image/jpg, image/jpeg, .png" label="Upload image" />
+```
+
+### Accept with custom hint
+
+```jsx live
+<FileInput
+	accept="image/jpg, image/jpeg, image/png"
+	hint="Files accepted: .jpg, .jpeg, .png. Max files that can be uploaded is 1."
+	label="Upload image"
+/>
+```
+
+### Accept as array of file extensions
+
+```jsx live
+<FileInput accept={['.jpg', '.jpeg', '.png']} label="Upload image" />
+```
+
+### Accept as array of mime types
+
+Using an array of mime types allows you to leverage TypeScript types and autocomplete. Additionally, you can use glob selectors to provide succinct hints. e.g. here we use `image/*` and the default hint includes “Any image file”.
+
+```jsx live
+<FileInput
+	accept={['image/*', 'application/pdf']}
+	label="Upload image or document"
+/>
 ```
