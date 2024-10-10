@@ -1,5 +1,64 @@
 # @ag.ds-next/example-site
 
+## 0.6.0
+
+### Minor Changes
+
+- d6d8d66842e: page-alert: Make title default to H2 instead of H3.
+
+### Patch Changes
+
+- Updated dependencies [bfa1543b410]
+- Updated dependencies [38378085fee]
+- Updated dependencies [ef789cd698c]
+- Updated dependencies [066c1edd21c]
+- Updated dependencies [4b881310d02]
+- Updated dependencies [b23903198ac]
+- Updated dependencies [64c38569a98]
+- Updated dependencies [8aa2d81262f]
+- Updated dependencies [e66b2636531]
+- Updated dependencies [51665e9fa79]
+- Updated dependencies [fc02f936d0c]
+- Updated dependencies [0fc960623f0]
+- Updated dependencies [0e65c067718]
+- Updated dependencies [c640eaa0ca7]
+- Updated dependencies [198ec8efbba]
+- Updated dependencies [c33c23d4594]
+- Updated dependencies [fec2299a908]
+- Updated dependencies [ac04b0d1350]
+- Updated dependencies [8f70c8ba7fe]
+- Updated dependencies [7ec07ff2c65]
+- Updated dependencies [b577088b3e7]
+- Updated dependencies [093fe94bc81]
+- Updated dependencies [032b9ab94ce]
+- Updated dependencies [9cfb094f43f]
+- Updated dependencies [e6b7b617d9a]
+- Updated dependencies [38e4c01fd25]
+- Updated dependencies [b57fe083e3b]
+- Updated dependencies [d6d8d66842e]
+- Updated dependencies [6b6915dee9a]
+- Updated dependencies [a69a4ae612d]
+- Updated dependencies [060fde075b0]
+- Updated dependencies [73be3b9dd9e]
+- Updated dependencies [a47676b832f]
+- Updated dependencies [c7b42ee9331]
+- Updated dependencies [f350b70eb5b]
+- Updated dependencies [43fffc0fe97]
+- Updated dependencies [a8d0c5f09b1]
+- Updated dependencies [0f5331102e9]
+- Updated dependencies [a698c798152]
+- Updated dependencies [79e87db5003]
+- Updated dependencies [219f41aae95]
+- Updated dependencies [6d882af9f5b]
+- Updated dependencies [277af1554e9]
+- Updated dependencies [ffee5f3b6aa]
+- Updated dependencies [5fed76317d3]
+- Updated dependencies [20eac31f59c]
+- Updated dependencies [c5dad52b4c8]
+- Updated dependencies [c3fa7126d80]
+- Updated dependencies [6627301604a]
+  - @ag.ds-next/react@1.25.0
+
 ## 0.5.0
 
 ### Minor Changes
