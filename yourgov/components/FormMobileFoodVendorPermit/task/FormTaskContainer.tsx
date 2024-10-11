@@ -10,9 +10,9 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from '../FormContainer';
-import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
+import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
 
-type FormTask1ContainerProps = PropsWithChildren<{
+type FormTaskContainerProps = PropsWithChildren<{
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
@@ -20,21 +20,21 @@ type FormTask1ContainerProps = PropsWithChildren<{
 	shouldFocusTitle?: boolean;
 }>;
 
-export function FormTask1Container({
+export function FormTaskContainer({
 	formTitle,
 	formIntroduction,
 	formCallToAction,
 	children,
 	hideRequiredFieldsMessage,
 	shouldFocusTitle = true,
-}: FormTask1ContainerProps) {
+}: FormTaskContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, startTask } = useGlobalForm();
-	const { backHref, canConfirmAndSubmit } = useFormTask1Context();
+	const { backHref, canConfirmAndSubmit } = useFormTaskContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = task1FormSteps[stepIndex];
-		const stateStep = formState.task1?.[step.formStateKey];
+		const step = taskFormSteps[stepIndex];
+		const stateStep = formState.task?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
@@ -49,7 +49,7 @@ export function FormTask1Container({
 
 	// Ensure the task is marked as started when visiting any of the task 1 pages
 	useEffect(() => {
-		startTask('task1');
+		startTask('task');
 	}, [startTask]);
 
 	return (
@@ -58,7 +58,7 @@ export function FormTask1Container({
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
 						activePath={pathname}
-						items={task1FormSteps.map(({ label, href }, index) => ({
+						items={taskFormSteps.map(({ label, href }, index) => ({
 							label,
 							href,
 							status: getStepStatus(index),
@@ -72,7 +72,6 @@ export function FormTask1Container({
 						Back
 					</DirectionLink>
 					<FormContainer
-						task={1}
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}

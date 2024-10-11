@@ -1,10 +1,10 @@
 import { type FieldErrors, type FieldValues } from 'react-hook-form';
 import { DeepPartial } from '../../lib/types';
 import {
-	task1DefaultFormState,
-	type Task1FormState,
-} from './task1/FormTask1FormState';
-import { type Task1StepNumber } from './task1/FormTask1Provider';
+	taskDefaultFormState,
+	type TaskFormState,
+} from './task/FormTaskFormState';
+import { type TaskStepNumber } from './task/FormTaskProvider';
 
 export type Completion = {
 	completed: boolean;
@@ -16,15 +16,15 @@ type TaskCompletion = Completion & {
 };
 
 export type FormState = {
-	task1: Partial<Task1FormState> & TaskCompletion;
+	task: Partial<TaskFormState> & TaskCompletion;
 	type: string;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
-	task1: task1DefaultFormState,
+	task: taskDefaultFormState,
 };
 
-export type TaskKey = 'task1';
+export type TaskKey = 'task';
 
 export type FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> = {
 	label: string;
@@ -36,7 +36,7 @@ export type FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> = {
 	}>;
 };
 
-export type AnyStepNumber = Task1StepNumber; // | Task2StepNumber | Task3StepNumber;
+export type AnyStepNumber = TaskStepNumber;
 
 /**
  * React Form does not apply the errors types correctly to fields stored as objects.

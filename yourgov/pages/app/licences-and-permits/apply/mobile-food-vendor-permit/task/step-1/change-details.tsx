@@ -4,9 +4,9 @@ import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
-	FormTask1Provider,
-	FormTask1Step1ChangeDetails,
-	task1FormSteps,
+	FormTaskProvider,
+	FormTaskStep1ChangeDetails,
+	taskFormSteps,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
 
@@ -14,10 +14,10 @@ const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
 			<DocumentTitle
-				title={task1FormSteps[0].items && task1FormSteps[0].items[0].label}
+				title={taskFormSteps[0].items && taskFormSteps[0].items[0].label}
 			/>
 			<PageContent>
-				<FormTask1Step1ChangeDetails />
+				<FormTaskStep1ChangeDetails />
 			</PageContent>
 		</Fragment>
 	);
@@ -29,7 +29,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<AppLayout focusMode>
 			<GlobalFormProvider>
-				<FormTask1Provider>{page}</FormTask1Provider>
+				<FormTaskProvider>{page}</FormTaskProvider>
 			</GlobalFormProvider>
 		</AppLayout>
 	);

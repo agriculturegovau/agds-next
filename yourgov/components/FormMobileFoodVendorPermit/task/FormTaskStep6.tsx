@@ -5,41 +5,41 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
+import { FormTaskContainer } from './FormTaskContainer';
+import { useFormTaskContext } from './FormTaskProvider';
 import {
-	task1Step6FormSchema,
-	type Task1Step6FormSchema,
-} from './FormTask1FormState';
+	taskStep6FormSchema,
+	type TaskStep6FormSchema,
+} from './FormTaskFormState';
 
-export function FormTask1Step6() {
+export function FormTaskStep6() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step6FormSchema>({
-		defaultValues: formState.task1?.step6,
+	} = useForm<TaskStep6FormSchema>({
+		defaultValues: formState.task?.step6,
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(task1Step6FormSchema),
+			: zodResolver(taskStep6FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<Task1Step6FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<TaskStep6FormSchema>;
 
-	const onSubmit: SubmitHandler<Task1Step6FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep6FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: {
-				...formState.task1,
+			task: {
+				...formState.task,
 				step6: {
 					...data,
 					completed: !isSavingBeforeExiting,
@@ -50,7 +50,7 @@ export function FormTask1Step6() {
 	};
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Food served"
 			formIntroduction="What type of food will you be serving?"
 		>
@@ -76,7 +76,7 @@ export function FormTask1Step6() {
 				/>
 				<StepActions />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }
 

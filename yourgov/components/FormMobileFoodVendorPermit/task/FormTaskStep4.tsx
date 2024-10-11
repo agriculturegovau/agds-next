@@ -9,14 +9,11 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { useFormTask1Context } from './FormTask1Provider';
-import { FormTask1Container } from './FormTask1Container';
-import {
-	Task1Step4FormSchema,
-	task1Step4FormSchema,
-} from './FormTask1FormState';
+import { useFormTaskContext } from './FormTaskProvider';
+import { FormTaskContainer } from './FormTaskContainer';
+import { TaskStep4FormSchema, taskStep4FormSchema } from './FormTaskFormState';
 
-function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
+function transformDefaultValues(step?: DeepPartial<TaskStep4FormSchema>) {
 	const registrationExpiry = step?.registrationExpiry;
 	return {
 		...step,
@@ -24,33 +21,33 @@ function transformDefaultValues(step?: DeepPartial<Task1Step4FormSchema>) {
 	};
 }
 
-export function FormTask1Step4() {
+export function FormTaskStep4() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step4FormSchema>({
-		defaultValues: transformDefaultValues(formState.task1?.step4),
+	} = useForm<TaskStep4FormSchema>({
+		defaultValues: transformDefaultValues(formState.task?.step4),
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(task1Step4FormSchema),
+			: zodResolver(taskStep4FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Task1Step4FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep4FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: {
-				...formState.task1,
+			task: {
+				...formState.task,
 				step4: {
 					...data,
 					completed: !isSavingBeforeExiting,
@@ -63,7 +60,7 @@ export function FormTask1Step4() {
 	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Vehicle registration"
 			formIntroduction="Add your vehicle registration details."
 		>
@@ -97,6 +94,6 @@ export function FormTask1Step4() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }

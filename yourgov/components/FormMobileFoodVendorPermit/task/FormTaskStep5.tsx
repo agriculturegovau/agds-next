@@ -11,14 +11,14 @@ import { hasMultipleErrors, parseDateField } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
+import { FormTaskContainer } from './FormTaskContainer';
+import { useFormTaskContext } from './FormTaskProvider';
 import {
-	task1Step5FormSchema,
-	type Task1Step5FormSchema,
-} from './FormTask1FormState';
+	taskStep5FormSchema,
+	type TaskStep5FormSchema,
+} from './FormTaskFormState';
 
-function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
+function transformDefaultValues(step?: DeepPartial<TaskStep5FormSchema>) {
 	const from = step?.tradingPeriod?.from;
 	const to = step?.tradingPeriod?.to;
 	return {
@@ -30,34 +30,34 @@ function transformDefaultValues(step?: DeepPartial<Task1Step5FormSchema>) {
 	};
 }
 
-export function FormTask1Step5() {
+export function FormTaskStep5() {
 	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step5FormSchema>({
-		defaultValues: transformDefaultValues(formState.task1?.step5),
+	} = useForm<TaskStep5FormSchema>({
+		defaultValues: transformDefaultValues(formState.task?.step5),
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(task1Step5FormSchema),
+			: zodResolver(taskStep5FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<Task1Step5FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<TaskStep5FormSchema>;
 
-	const onSubmit: SubmitHandler<Task1Step5FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep5FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: {
-				...formState.task1,
+			task: {
+				...formState.task,
 				step5: {
 					...data,
 					completed: !isSavingBeforeExiting,
@@ -70,7 +70,7 @@ export function FormTask1Step5() {
 	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
 		>
@@ -145,6 +145,6 @@ export function FormTask1Step5() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }
