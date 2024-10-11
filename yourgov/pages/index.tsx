@@ -28,9 +28,10 @@ export default function Page() {
 					image={
 						<img
 							alt=""
-							fetchPriority="high"
+							// @ts-expect-error Property 'fetchpriority' does not exist on type, however, React does not recognize the `fetchPriority` prop on a DOM element… spell it as lowercase `fetchpriority` instead
+							fetchpriority="high"
+							src={withBasePath('/hero-banner.jpg')}
 							width="100%"
-							src={withBasePath('/farm-small.png')}
 						/>
 					}
 				>
@@ -116,7 +117,7 @@ export default function Page() {
 							maxWidth="100%"
 							paddingBottom={{ xs: 0, sm: 3, md: 4 }}
 							paddingTop={{ md: 4 }}
-							src={withBasePath('/farm-small.png')}
+							src={withBasePath('/home-section-image.jpg')}
 						/>
 					</Columns>
 				</Content>
