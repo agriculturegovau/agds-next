@@ -1,19 +1,23 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { SiteLayout } from '../../../../../../../components/Layout/SiteLayout';
+import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
-	FormTask4Step1,
+	FormTask1Provider,
+	FormTask1Step1ChangeDetails,
+	task1FormSteps,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Confirm and submit" />
+			<DocumentTitle
+				title={task1FormSteps[0].items && task1FormSteps[0].items[0].label}
+			/>
 			<PageContent>
-				<FormTask4Step1 />
+				<FormTask1Step1ChangeDetails />
 			</PageContent>
 		</Fragment>
 	);
@@ -23,8 +27,10 @@ export default Page;
 
 Page.getLayout = function getLayout(page: ReactElement) {
 	return (
-		<SiteLayout focusMode>
-			<GlobalFormProvider>{page}</GlobalFormProvider>
-		</SiteLayout>
+		<AppLayout focusMode>
+			<GlobalFormProvider>
+				<FormTask1Provider>{page}</FormTask1Provider>
+			</GlobalFormProvider>
+		</AppLayout>
 	);
 };

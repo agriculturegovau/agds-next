@@ -16,6 +16,3 @@ export { FormTask1Step5 } from './task1/FormTask1Step5';
 export { FormTask1Step6 } from './task1/FormTask1Step6';
 export { FormTask1Step7 } from './task1/FormTask1Step7';
 export { FormTask1Step7Review } from './task1/FormTask1Step7Review';
-
-// Task 4
-export { FormTask4Step1 } from './task4/FormTask4Step1';

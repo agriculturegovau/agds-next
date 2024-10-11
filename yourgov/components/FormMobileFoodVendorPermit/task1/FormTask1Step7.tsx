@@ -36,7 +36,7 @@ export function FormTask1Step7() {
 				<Fragment>
 					<FormTask1Step7Review headingsLevel="h2" />
 					<form onSubmit={onSubmit}>
-						<StepActions />
+						<StepActions submitText="Submit application" />
 					</form>
 				</Fragment>
 			) : (

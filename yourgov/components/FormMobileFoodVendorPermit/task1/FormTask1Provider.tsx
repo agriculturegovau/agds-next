@@ -95,7 +95,6 @@ export function FormTask1Provider({ children }: PropsWithChildren<{}>) {
 		const taskCompletionUrl = getTaskCompletionUrl({
 			currentStepIndex,
 			steps: task1FormSteps,
-			taskHighlight: 1,
 		});
 
 		push(taskCompletionUrl);
