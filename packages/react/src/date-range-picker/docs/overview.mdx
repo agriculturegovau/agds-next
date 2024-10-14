@@ -71,12 +71,12 @@ In this case, you can use the `onFromInputChange` and `onToInputChange` props to
 
 	const onFromInputChange = (fromValue) => {
 		console.log('onFromInputChange', fromValue);
-		setValue({ ...value, fromValue });
+		setValue({ ...value, from: fromValue });
 	};
 
 	const onToInputChange = (toValue) => {
 		console.log('onToInputChange', toValue);
-		setValue({ ...value, toValue });
+		setValue({ ...value, to: toValue });
 	};
 
 	const onChange = (dateRange) => {
@@ -329,12 +329,12 @@ Date formats are parsed in order from first to last and stops when a valid date 
 
 	const onFromInputChange = (fromValue) => {
 		console.log('onFromInputChange', fromValue);
-		setValue({ ...value, fromValue });
+		setValue({ ...value, from: fromValue });
 	};
 
 	const onToInputChange = (toValue) => {
 		console.log('onToInputChange', toValue);
-		setValue({ ...value, toValue });
+		setValue({ ...value, to: toValue });
 	};
 
 	const onChange = (dateRange) => {
