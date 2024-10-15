@@ -39,10 +39,11 @@ function AppLayoutHeaderNavMenuButton({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+	const { isMobileMenuOpen } = useAppLayoutContext();
 	return (
 		<Flex
 			alignItems="center"
-			aria-expanded="false"
+			aria-expanded={isMobileMenuOpen}
 			aria-haspopup="dialog"
 			as={BaseButton}
 			color="action"
