@@ -26,17 +26,15 @@ export const defaultFormState: DeepPartial<FormState> = {
 
 export type TaskKey = 'task';
 
-export type FormStep<StepNumber extends AnyStepNumber = AnyStepNumber> = {
+export type FormStep<StepNum extends StepNumber = StepNumber> = {
 	label: string;
 	href: string;
-	formStateKey: StepNumber;
+	formStateKey: StepNum;
 	items?: Array<{
 		href: string;
 		label: string;
 	}>;
 };
-
-export type AnyStepNumber = StepNumber;
 
 /**
  * React Form does not apply the errors types correctly to fields stored as objects.
