@@ -6,19 +6,17 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { defaultFormState, FormState, TaskKey } from './FormState';
+import { defaultFormState, TaskKey } from './FormState';
 import { managePermitsPage } from './utils';
 
-type ContextType = {
+type GlobalState = Omit<ReturnType<typeof useSessionFormState>, 'hasSynced'>;
+
+type ContextType = GlobalState & {
 	formTitle: string;
 	managePermitsPage: string;
 	// Task status
 	startTask: (key: TaskKey) => void;
-	// Form state
-	formState: DeepPartial<FormState>;
-	setFormState: (formState: DeepPartial<FormState>) => void;
 	// Is submitting step
 	isSubmittingStep: boolean;
 	setIsSubmittingStep: (value: boolean) => void;
@@ -37,10 +35,8 @@ export function GlobalFormProvider({
 }: FormMobileFoodVendorPermitProps) {
 	const router = useRouter();
 
-	const [hasSynced, formState, setFormState] = useSessionFormState(
-		'FormMobileFoodVendorPermit',
-		defaultFormState
-	);
+	const { hasSynced, formState, setFormState, ...stateSettersPerStep } =
+		useSessionFormState('FormMobileFoodVendorPermit', defaultFormState);
 
 	const formTitle = `Apply for a ${formState.type} permit`;
 
@@ -81,6 +77,7 @@ export function GlobalFormProvider({
 		// form state
 		formState,
 		setFormState,
+		...stateSettersPerStep,
 		// submitting step
 		isSubmittingStep,
 		setIsSubmittingStep,

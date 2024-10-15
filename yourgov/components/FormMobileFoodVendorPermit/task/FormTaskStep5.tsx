@@ -31,7 +31,7 @@ function transformDefaultValues(step?: DeepPartial<TaskStep5FormSchema>) {
 }
 
 export function FormTaskStep5() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
+	const { formState, step5SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTaskContext();
 
 	const {
@@ -54,16 +54,10 @@ export function FormTaskStep5() {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task: {
-				...formState.task,
-				step5: {
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step5SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 

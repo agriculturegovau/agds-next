@@ -107,7 +107,7 @@ export function FormTaskStep1() {
 }
 
 function AdditionalDetailsForm() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
+	const { formState, step1SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTaskContext();
 
 	const {
@@ -128,17 +128,10 @@ function AdditionalDetailsForm() {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task: {
-				...formState.task,
-				step1: {
-					...formState.task?.step1,
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step1SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 

@@ -27,7 +27,7 @@ import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
 
 export function FormTaskStep1ChangeDetails() {
 	const router = useRouter();
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, step1SetState } = useGlobalForm();
 
 	const {
 		register,
@@ -49,10 +49,7 @@ export function FormTaskStep1ChangeDetails() {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			setFormState({
-				...formState,
-				task: { ...formState.task, step1: { ...data } },
-			});
+			step1SetState(data);
 			router.push(`${step1Path}?success=true`);
 		}, 1500);
 	};

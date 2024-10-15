@@ -19,7 +19,7 @@ import {
 } from './FormTaskFormState';
 
 export function FormTaskStep2() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
+	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTaskContext();
 
 	const {
@@ -42,16 +42,10 @@ export function FormTaskStep2() {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task: {
-				...formState.task,
-				step2: {
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step2SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 
