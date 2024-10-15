@@ -208,7 +208,7 @@ export const DatePicker = ({
 	);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({

@@ -1,4 +1,5 @@
 import {
+	addMonths,
 	closestTo,
 	differenceInCalendarMonths,
 	isBefore,
@@ -35,12 +36,29 @@ export function getCalendarDefaultMonth(
 	const value = (() => {
 		// If the date picker has a value, open up the month of the date value
 		// Open up the 'from' date if the user has clicked the start date picker
-		if (inputMode === 'from' && valueAsDateOrUndefined.from) {
-			return valueAsDateOrUndefined.from;
+		console.log(`inputMode`, inputMode);
+		console.log(`valueAsDateOrUndefined`, valueAsDateOrUndefined);
+		if (inputMode === 'from') {
+			if (valueAsDateOrUndefined.from) return valueAsDateOrUndefined.from;
+			if (valueAsDateOrUndefined.to)
+				return subMonths(
+					valueAsDateOrUndefined.to,
+					numberOfMonths === 2 ? 1 : 0
+				);
+			return undefined;
 		}
 		// Open up the 'to' date if the user has clicked the end date picker
-		if (inputMode === 'to' && valueAsDateOrUndefined.to) {
-			return valueAsDateOrUndefined.to;
+		if (inputMode === 'to') {
+			if (valueAsDateOrUndefined.to)
+				// return subMonths(valueAsDateOrUndefined.to, 1);
+				return subMonths(
+					valueAsDateOrUndefined.to,
+					numberOfMonths === 2 ? 1 : 0
+				);
+			if (valueAsDateOrUndefined.from)
+				// return subMonths(valueAsDateOrUndefined.from, 1);
+				return addMonths(valueAsDateOrUndefined.from, 0);
+			return undefined;
 		}
 		// If a `yearRange` prop has been set, use the closest day to today's date
 		if (yearRange) {
@@ -56,6 +74,16 @@ export function getCalendarDefaultMonth(
 	})();
 
 	if (value && inputMode === 'to' && numberOfMonths === 2) {
+		console.log(
+			`differenceInCalendarMonths(
+			valueAsDateOrUndefined?.to,
+			valueAsDateOrUndefined?.from
+		);`,
+			differenceInCalendarMonths(
+				valueAsDateOrUndefined?.to,
+				valueAsDateOrUndefined?.from
+			)
+		);
 		const monthsRangeCount = (() => {
 			return valueAsDateOrUndefined?.from && valueAsDateOrUndefined?.to
 				? differenceInCalendarMonths(
@@ -66,10 +94,11 @@ export function getCalendarDefaultMonth(
 		})();
 
 		// If there is only 1 month between the "from" and "to" dates, show the "to" month on the left side so it matches the "from" date
-		if (monthsRangeCount === 0) return value;
+		if (monthsRangeCount === 0) return addMonths(value, 1);
 
 		// When there are 2 months being displayed (i.e. on desktop), show the "to" month on the right side
-		return subMonths(value, 1);
+		// return subMonths(value, 1);
+		return value;
 	}
 
 	return value;

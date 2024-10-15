@@ -90,6 +90,7 @@ export function CalendarRange({
 	returnFocusRef,
 	...props
 }: CalendarRangeProps) {
+	console.log(`props`, props);
 	return (
 		<FocusLock
 			autoFocus={false}
