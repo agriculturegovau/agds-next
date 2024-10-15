@@ -62,7 +62,7 @@ const DATE_FORMAT = 'd MMMM yyyy';
 
 type FormDefinitionListItemDateProps = {
 	label: string;
-	value?: Date;
+	value?: Date | string;
 };
 
 export function FormDefinitionListItemDate({
@@ -73,7 +73,7 @@ export function FormDefinitionListItemDate({
 		<SummaryListItem>
 			<SummaryListItemTerm>{label}</SummaryListItemTerm>
 			<SummaryListItemDescription>
-				{value && <Fragment>{format(value, DATE_FORMAT)}</Fragment>}
+				{value && <Fragment>{format(new Date(value), DATE_FORMAT)}</Fragment>}
 			</SummaryListItemDescription>
 		</SummaryListItem>
 	);
@@ -81,9 +81,9 @@ export function FormDefinitionListItemDate({
 
 type FormDefinitionListItemDateRangeProps = {
 	fromLabel: string;
-	fromValue?: Date;
+	fromValue?: Date | string;
 	toLabel: string;
-	toValue?: Date;
+	toValue?: Date | string;
 };
 
 export function FormDefinitionListItemDateRange({
@@ -97,13 +97,13 @@ export function FormDefinitionListItemDateRange({
 			<SummaryListItem>
 				<SummaryListItemTerm>{fromLabel}</SummaryListItemTerm>
 				<SummaryListItemDescription>
-					{fromValue && format(fromValue, DATE_FORMAT)}
+					{fromValue && format(new Date(fromValue), DATE_FORMAT)}
 				</SummaryListItemDescription>
 			</SummaryListItem>
 			<SummaryListItem>
 				<SummaryListItemTerm>{toLabel}</SummaryListItemTerm>
 				<SummaryListItemDescription>
-					{toValue && format(toValue, DATE_FORMAT)}
+					{toValue && format(new Date(toValue), DATE_FORMAT)}
 				</SummaryListItemDescription>
 			</SummaryListItem>
 		</>
