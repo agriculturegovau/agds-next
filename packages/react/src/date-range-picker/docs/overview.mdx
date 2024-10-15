@@ -13,15 +13,18 @@ relatedComponents: ['date-picker']
 	const [value, setValue] = React.useState({
 		// from: '25/10/2020',
 		from: undefined,
-		to: '25/10/2020',
+		to: undefined,
 	});
 
 	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
 	// See Single-page form template
 	const isInvalid = React.useCallback((value) => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
+		//console.log(`isInavlid value`, value);
+		//if (typeof value === 'undefined' || value == '') return false;
+		//if (value instanceof Date && !isNaN(value.getTime())) return false;
+		//return true;
+		console.log(`value, isValidDate(value)`, value, isValidDate(value));
+		return value ? !isValidDate(value) : false;
 	}, []);
 
 	const fromInvalid = isInvalid(value.from);

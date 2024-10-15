@@ -235,10 +235,14 @@ export const DateRangePicker = ({
 		const constrainedToDate =
 			valueAsDateOrUndefined.to ||
 			constrainDate(
+				// TODO: Use Chris' normalise function
 				parseDate(toInputValue, allowedDateFormats),
 				minDate,
 				maxDate
-			);
+			) ||
+			toInputValue;
+
+		console.log(`****** constrainedToDate`, constrainedToDate);
 
 		const range = {
 			from: constrainedFromDate,
@@ -290,10 +294,12 @@ export const DateRangePicker = ({
 		const constrainedFromDate =
 			valueAsDateOrUndefined.from ||
 			constrainDate(
+				// TODO: Use Chris' normalise function
 				parseDate(fromInputValue, allowedDateFormats),
 				minDate,
 				maxDate
-			);
+			) ||
+			fromInputValue;
 
 		console.log(`constrainedFromDate`, constrainedToDate);
 		const range = {

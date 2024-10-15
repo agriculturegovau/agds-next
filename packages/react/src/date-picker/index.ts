@@ -8,6 +8,8 @@ import {
 	DateRangeWithString as _DateRangeWithString,
 } from '../date-range-picker';
 
+export { isValidDate } from './utils';
+
 /**
  * @deprecated This component has been moved.
  * Use `DateRangePicker` from the `date-range-picker` entrypoint instead.
