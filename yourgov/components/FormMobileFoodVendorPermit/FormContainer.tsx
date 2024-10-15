@@ -1,7 +1,6 @@
 import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormStepTitle } from '../FormStepTitle';
-import { globalFormTasks } from './globalFormTasks';
 import { useGlobalForm } from './GlobalFormProvider';
 
 export type FormContainerProps = PropsWithChildren<{
@@ -34,7 +33,7 @@ export function FormContainer({
 		<Stack gap={3} width="100%">
 			<FormStepTitle
 				titleRef={titleRef}
-				formTitle={[formTitle, globalFormTasks[0].label].join(' - ')}
+				formTitle={formTitle}
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={callToAction}
