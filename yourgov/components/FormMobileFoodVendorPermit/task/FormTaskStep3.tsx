@@ -11,46 +11,40 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
+import { FormTaskContainer } from './FormTaskContainer';
+import { useFormTaskContext } from './FormTaskProvider';
 import {
-	task1Step3FormSchema,
-	type Task1Step3FormSchema,
-} from './FormTask1FormState';
+	taskStep3FormSchema,
+	type TaskStep3FormSchema,
+} from './FormTaskFormState';
 
-export function FormTask1Step3() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+export function FormTaskStep3() {
+	const { formState, step3SetState, isSavingBeforeExiting } = useGlobalForm();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		watch,
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step3FormSchema>({
-		defaultValues: formState.task1?.step3,
+	} = useForm<TaskStep3FormSchema>({
+		defaultValues: formState.task?.step3,
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(task1Step3FormSchema),
+			: zodResolver(taskStep3FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Task1Step3FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep3FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task1: {
-				...formState.task1,
-				step3: {
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step3SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 
@@ -61,7 +55,7 @@ export function FormTask1Step3() {
 	);
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Business address"
 			formIntroduction="Add your business address."
 		>
@@ -189,6 +183,6 @@ export function FormTask1Step3() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }

@@ -10,7 +10,7 @@ import {
 } from '../../../lib/zodUtils';
 import { type Completion } from '../FormState';
 
-export const task1Step1FormSchema = z.object({
+export const taskStep1FormSchema = z.object({
 	firstName: zodString('Enter your first name'),
 	lastName: zodString('Enter your last name'),
 	email: zodString('Enter your email address').email(
@@ -19,17 +19,15 @@ export const task1Step1FormSchema = z.object({
 	contactPhoneNumber: zodPhoneFieldOptional(),
 });
 
-export type Task1Step1FormSchema = z.infer<typeof task1Step1FormSchema>;
+export type TaskStep1FormSchema = z.infer<typeof taskStep1FormSchema>;
 
-export const task1Step1Part2FormSchema = z.object({
+export const taskStep1Part2FormSchema = z.object({
 	contactPhoneNumber: zodPhoneFieldOptional(),
 });
 
-export type Task1Step1Part2FormSchema = z.infer<
-	typeof task1Step1Part2FormSchema
->;
+export type TaskStep1Part2FormSchema = z.infer<typeof taskStep1Part2FormSchema>;
 
-export const task1Step2FormSchema = z
+export const taskStep2FormSchema = z
 	.object({
 		businessName: zodString('Business or company name is required'),
 		tradingName: zodStringOptional(),
@@ -56,9 +54,9 @@ export const task1Step2FormSchema = z
 		}
 	);
 
-export type Task1Step2FormSchema = z.infer<typeof task1Step2FormSchema>;
+export type TaskStep2FormSchema = z.infer<typeof taskStep2FormSchema>;
 
-export const task1Step3FormSchema = z
+export const taskStep3FormSchema = z
 	.object({
 		// business address
 		streetAddress: zodString('Enter your street address'),
@@ -110,9 +108,9 @@ export const task1Step3FormSchema = z
 		}
 	});
 
-export type Task1Step3FormSchema = z.infer<typeof task1Step3FormSchema>;
+export type TaskStep3FormSchema = z.infer<typeof taskStep3FormSchema>;
 
-export const task1Step4FormSchema = z.object({
+export const taskStep4FormSchema = z.object({
 	registrationNumber: zodString('Vehicle registration number is required').max(
 		6,
 		'Registration number can not be longer than 6 characters'
@@ -121,16 +119,16 @@ export const task1Step4FormSchema = z.object({
 });
 
 // FIXME: I don't like having to do this, but I can't get dates and error messages to work reliably across forms and reviews
-export const task1Step4ReviewSchema = z.object({
+export const taskStep4ReviewSchema = z.object({
 	registrationNumber: zodString().max(6),
 	registrationExpiry: zodDateField(),
 });
 
-export type Task1Step4FormSchema = z.infer<typeof task1Step4FormSchema>;
+export type TaskStep4FormSchema = z.infer<typeof taskStep4FormSchema>;
 
 const periodActiveMessage = 'Trading start and end date is required';
 
-export const task1Step5FormSchema = z
+export const taskStep5FormSchema = z
 	.object({
 		tradingPeriod: z.object({
 			from: zodDateField(periodActiveMessage),
@@ -150,7 +148,7 @@ export const task1Step5FormSchema = z
 		}
 	);
 
-export const task1Step5ReviewSchema = z.object({
+export const taskStep5ReviewSchema = z.object({
 	tradingPeriod: z.object({
 		from: zodDateField(),
 		to: zodDateField(),
@@ -159,28 +157,28 @@ export const task1Step5ReviewSchema = z.object({
 	closingTime: zodTimeField({ label: 'Closing time' }),
 });
 
-export type Task1Step5FormSchema = z.infer<typeof task1Step5FormSchema>;
+export type TaskStep5FormSchema = z.infer<typeof taskStep5FormSchema>;
 
-export const task1Step6FormSchema = z.object({
+export const taskStep6FormSchema = z.object({
 	cuisine: zodArray(
 		z.object({ label: zodString(), value: zodString() }),
 		'Food types is required'
 	),
 });
 
-export type Task1Step6FormSchema = z.infer<typeof task1Step6FormSchema>;
+export type TaskStep6FormSchema = z.infer<typeof taskStep6FormSchema>;
 
-export type Task1FormState = Completion & {
-	step1: Task1Step1FormSchema & Completion;
-	step2: Task1Step2FormSchema & Completion;
-	step3: Task1Step3FormSchema & Completion;
-	step4: Task1Step4FormSchema & Completion;
-	step5: Task1Step5FormSchema & Completion;
-	step6: Task1Step6FormSchema & Completion;
+export type TaskFormState = Completion & {
+	step1: TaskStep1FormSchema & Completion;
+	step2: TaskStep2FormSchema & Completion;
+	step3: TaskStep3FormSchema & Completion;
+	step4: TaskStep4FormSchema & Completion;
+	step5: TaskStep5FormSchema & Completion;
+	step6: TaskStep6FormSchema & Completion;
 	step7: Completion;
 };
 
-export const task1DefaultFormState: DeepPartial<Task1FormState> = {
+export const taskDefaultFormState: DeepPartial<TaskFormState> = {
 	started: false,
 	completed: false,
 	step1: {
