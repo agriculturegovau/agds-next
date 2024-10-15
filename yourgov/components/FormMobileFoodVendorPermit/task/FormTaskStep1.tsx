@@ -18,15 +18,15 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
-	task1Step1Part2FormSchema,
-	type Task1Step1Part2FormSchema,
-} from './FormTask1FormState';
-import { FormTask1Container } from './FormTask1Container';
-import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
+	taskStep1Part2FormSchema,
+	type TaskStep1Part2FormSchema,
+} from './FormTaskFormState';
+import { FormTaskContainer } from './FormTaskContainer';
+import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
 
-export function FormTask1Step1() {
+export function FormTaskStep1() {
 	const { formState } = useGlobalForm();
-	const stepFormState = formState.task1?.step1;
+	const stepFormState = formState.task?.step1;
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -37,7 +37,7 @@ export function FormTask1Step1() {
 	}, [isUpdated]);
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
 			shouldFocusTitle={!isSuccessMessageVisible}
@@ -93,7 +93,7 @@ export function FormTask1Step1() {
 							</SummaryListItem>
 						</SummaryList>
 						<ButtonLink
-							href={task1FormSteps[0].items && task1FormSteps[0].items[0].href}
+							href={taskFormSteps[0].items && taskFormSteps[0].items[0].href}
 							variant="text"
 						>
 							Change business owner details
@@ -102,43 +102,36 @@ export function FormTask1Step1() {
 				</Stack>
 				<AdditionalDetailsForm />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }
 
 function AdditionalDetailsForm() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+	const { formState, step1SetState, isSavingBeforeExiting } = useGlobalForm();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step1Part2FormSchema>({
+	} = useForm<TaskStep1Part2FormSchema>({
 		defaultValues: {
-			contactPhoneNumber: formState.task1?.step1?.contactPhoneNumber,
+			contactPhoneNumber: formState.task?.step1?.contactPhoneNumber,
 		},
-		resolver: zodResolver(task1Step1Part2FormSchema),
+		resolver: zodResolver(taskStep1Part2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Task1Step1Part2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep1Part2FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task1: {
-				...formState.task1,
-				step1: {
-					...formState.task1?.step1,
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step1SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 

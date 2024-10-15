@@ -11,16 +11,16 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTask1Container } from './FormTask1Container';
-import { useFormTask1Context } from './FormTask1Provider';
+import { FormTaskContainer } from './FormTaskContainer';
+import { useFormTaskContext } from './FormTaskProvider';
 import {
-	task1Step2FormSchema,
-	type Task1Step2FormSchema,
-} from './FormTask1FormState';
+	taskStep2FormSchema,
+	type TaskStep2FormSchema,
+} from './FormTaskFormState';
 
-export function FormTask1Step2() {
-	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTask1Context();
+export function FormTaskStep2() {
+	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
+	const { submitStep } = useFormTaskContext();
 
 	const {
 		watch,
@@ -28,30 +28,24 @@ export function FormTask1Step2() {
 		handleSubmit,
 		trigger,
 		formState: { errors, isSubmitted },
-	} = useForm<Task1Step2FormSchema>({
-		defaultValues: formState.task1?.step2,
+	} = useForm<TaskStep2FormSchema>({
+		defaultValues: formState.task?.step2,
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(task1Step2FormSchema),
+			: zodResolver(taskStep2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Task1Step2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep2FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		setFormState({
-			...formState,
-			task1: {
-				...formState.task1,
-				step2: {
-					...data,
-					completed: !isSavingBeforeExiting,
-					started: true,
-				},
-			},
+		step2SetState({
+			...data,
+			completed: !isSavingBeforeExiting,
+			started: true,
 		});
 	};
 
@@ -65,7 +59,7 @@ export function FormTask1Step2() {
 	}, [isSubmitted, trigger]);
 
 	return (
-		<FormTask1Container
+		<FormTaskContainer
 			formTitle="Business details"
 			formIntroduction="Your business details must match your business registration."
 		>
@@ -136,6 +130,6 @@ export function FormTask1Step2() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTask1Container>
+		</FormTaskContainer>
 	);
 }
