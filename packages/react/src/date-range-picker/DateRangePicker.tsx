@@ -28,6 +28,7 @@ import {
 	constrainDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
+	normaliseDateString,
 	parseDate,
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
@@ -35,11 +36,7 @@ import {
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
-import {
-	ensureValidDateRange,
-	getCalendarDefaultMonth,
-	normaliseDateString,
-} from './utils';
+import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;

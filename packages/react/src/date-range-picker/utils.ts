@@ -2,7 +2,6 @@ import {
 	closestTo,
 	differenceInCalendarMonths,
 	isBefore,
-	parseISO,
 	subMonths,
 } from 'date-fns';
 import {
@@ -97,13 +96,3 @@ export function getToDateInputButtonAriaLabel(
 	if (!parsed) return 'Choose end date';
 	return `Change end date, ${formatHumanReadableDate(parsed)}`;
 }
-
-/**
- * Takes a string and converts ISO date strings to a Date object, otherwise converts the string to undefined.
- */
-export const normaliseDateString = (date: string) => {
-	const parsedISODate = parseISO(date);
-	return parsedISODate.toString() === 'Invalid Date'
-		? undefined
-		: parsedISODate;
-};

@@ -99,8 +99,9 @@ export function transformValuePropToInputValue(
 	if (typeof valueProp === 'undefined') return '';
 
 	const valueAsDate =
-		typeof valueProp === 'string' ? new Date(valueProp) : valueProp;
-	if (isValidDate(valueAsDate)) return formatDate(valueAsDate, dateFormat);
+		typeof valueProp === 'string' ? normaliseDateString(valueProp) : valueProp;
+	if (valueAsDate && isValidDate(valueAsDate))
+		return formatDate(valueAsDate, dateFormat);
 	return '';
 }
 
@@ -143,3 +144,13 @@ export function getDateInputButtonAriaLabel({
 	if (!parsed) return `Choose ${dateStr}`;
 	return `Change ${dateStr}, ${formatHumanReadableDate(parsed)}`;
 }
+
+/**
+ * Takes a string and converts ISO date strings to a Date object, otherwise converts the string to undefined.
+ */
+export const normaliseDateString = (date: string) => {
+	const parsedISODate = parseISO(date);
+	return parsedISODate.toString() === 'Invalid Date'
+		? undefined
+		: parsedISODate;
+};
