@@ -10,17 +10,17 @@ import {
 } from '../../FormDefinitionList';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { ValidateSectionAlert } from '../ValidateSectionAlert';
-import { taskFormSteps } from './FormTaskProvider';
+import { taskFormSteps } from './FormProvider';
 import {
-	taskStep1FormSchema,
-	taskStep2FormSchema,
-	taskStep3FormSchema,
-	taskStep4ReviewSchema,
-	taskStep5ReviewSchema,
-	taskStep6FormSchema,
-} from './FormTaskFormState';
+	step1FormSchema,
+	step2FormSchema,
+	step3FormSchema,
+	step4ReviewSchema,
+	step5ReviewSchema,
+	step6FormSchema,
+} from './FormState';
 
-type FormTaskReviewProps = {
+type FormReviewProps = {
 	headingsLevel: 'h2' | 'h3';
 };
 
@@ -29,17 +29,17 @@ const HEADINGS_MAP = {
 	h3: H3,
 } as const;
 
-export function FormTaskStep7Review({ headingsLevel }: FormTaskReviewProps) {
+export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 	const { formState } = useGlobalForm();
 	const HeadingComponent = HEADINGS_MAP[headingsLevel];
 
 	const validation = {
-		step1: taskStep1FormSchema.safeParse(formState.task?.step1),
-		step2: taskStep2FormSchema.safeParse(formState.task?.step2),
-		step3: taskStep3FormSchema.safeParse(formState.task?.step3),
-		step4: taskStep4ReviewSchema.safeParse(formState.task?.step4),
-		step5: taskStep5ReviewSchema.safeParse(formState.task?.step5),
-		step6: taskStep6FormSchema.safeParse(formState.task?.step6),
+		step1: step1FormSchema.safeParse(formState.task?.step1),
+		step2: step2FormSchema.safeParse(formState.task?.step2),
+		step3: step3FormSchema.safeParse(formState.task?.step3),
+		step4: step4ReviewSchema.safeParse(formState.task?.step4),
+		step5: step5ReviewSchema.safeParse(formState.task?.step5),
+		step6: step6FormSchema.safeParse(formState.task?.step6),
 	};
 
 	return (

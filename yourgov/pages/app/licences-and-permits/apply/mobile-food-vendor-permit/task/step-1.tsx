@@ -4,8 +4,8 @@ import { AppLayout } from '../../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
-	FormTaskProvider,
-	FormTaskStep1,
+	FormProvider,
+	FormStep1,
 	taskFormSteps,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
@@ -15,7 +15,7 @@ const Page: NextPageWithLayout = () => {
 		<Fragment>
 			<DocumentTitle title={taskFormSteps[0].label} />
 			<PageContent>
-				<FormTaskStep1 />
+				<FormStep1 />
 			</PageContent>
 		</Fragment>
 	);
@@ -27,7 +27,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
 	return (
 		<AppLayout focusMode>
 			<GlobalFormProvider>
-				<FormTaskProvider>{page}</FormTaskProvider>
+				<FormProvider>{page}</FormProvider>
 			</GlobalFormProvider>
 		</AppLayout>
 	);

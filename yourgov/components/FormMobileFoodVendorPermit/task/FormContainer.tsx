@@ -9,10 +9,10 @@ import {
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormContainer } from '../FormContainer';
-import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
+import { FormContainer as GlobalFormConatiner } from '../FormContainer';
+import { taskFormSteps, useFormContext } from './FormProvider';
 
-type FormTaskContainerProps = PropsWithChildren<{
+type FormContainerProps = PropsWithChildren<{
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
@@ -20,17 +20,17 @@ type FormTaskContainerProps = PropsWithChildren<{
 	shouldFocusTitle?: boolean;
 }>;
 
-export function FormTaskContainer({
+export function FormContainer({
 	formTitle,
 	formIntroduction,
 	formCallToAction,
 	children,
 	hideRequiredFieldsMessage,
 	shouldFocusTitle = true,
-}: FormTaskContainerProps) {
+}: FormContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, startTask } = useGlobalForm();
-	const { backHref, canConfirmAndSubmit } = useFormTaskContext();
+	const { backHref, canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = taskFormSteps[stepIndex];
@@ -71,7 +71,7 @@ export function FormTaskContainer({
 					<DirectionLink direction="left" href={backHref}>
 						Back
 					</DirectionLink>
-					<FormContainer
+					<GlobalFormConatiner
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
@@ -79,7 +79,7 @@ export function FormTaskContainer({
 						shouldFocusTitle={shouldFocusTitle}
 					>
 						{children}
-					</FormContainer>
+					</GlobalFormConatiner>
 				</Stack>
 			</Column>
 		</Columns>

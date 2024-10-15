@@ -5,13 +5,13 @@ export { GlobalFormProvider, useGlobalForm } from './GlobalFormProvider';
 export { GettingStartedForm } from './GettingStartedForm';
 
 // Task 1
-export { FormTaskProvider, taskFormSteps } from './task/FormTaskProvider';
-export { FormTaskStep1 } from './task/FormTaskStep1';
-export { FormTaskStep1ChangeDetails } from './task/FormTaskStep1ChangeDetails';
-export { FormTaskStep2 } from './task/FormTaskStep2';
-export { FormTaskStep3 } from './task/FormTaskStep3';
-export { FormTaskStep4 } from './task/FormTaskStep4';
-export { FormTaskStep5 } from './task/FormTaskStep5';
-export { FormTaskStep6 } from './task/FormTaskStep6';
-export { FormTaskStep7 } from './task/FormTaskStep7';
-export { FormTaskStep7Review } from './task/FormTaskStep7Review';
+export { FormProvider, taskFormSteps } from './task/FormProvider';
+export { FormStep1 } from './task/FormStep1';
+export { FormStep1ChangeDetails } from './task/FormStep1ChangeDetails';
+export { FormStep2 } from './task/FormStep2';
+export { FormStep3 } from './task/FormStep3';
+export { FormStep4 } from './task/FormStep4';
+export { FormStep5 } from './task/FormStep5';
+export { FormStep6 } from './task/FormStep6';
+export { FormStep7 } from './task/FormStep7';
+export { FormStep7Review } from './task/FormStep7Review';

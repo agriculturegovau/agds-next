@@ -9,11 +9,11 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { useFormTaskContext } from './FormTaskProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { TaskStep4FormSchema, taskStep4FormSchema } from './FormTaskFormState';
+import { useFormContext } from './FormProvider';
+import { FormContainer } from './FormContainer';
+import { step4FormSchema, Step4FormSchema } from './FormState';
 
-function transformDefaultValues(step?: DeepPartial<TaskStep4FormSchema>) {
+function transformDefaultValues(step?: DeepPartial<Step4FormSchema>) {
 	const registrationExpiry = step?.registrationExpiry;
 	return {
 		...step,
@@ -21,25 +21,23 @@ function transformDefaultValues(step?: DeepPartial<TaskStep4FormSchema>) {
 	};
 }
 
-export function FormTaskStep4() {
+export function FormStep4() {
 	const { formState, step4SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep4FormSchema>({
+	} = useForm<Step4FormSchema>({
 		defaultValues: transformDefaultValues(formState.task?.step4),
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep4FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step4FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<TaskStep4FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step4FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -54,7 +52,7 @@ export function FormTaskStep4() {
 	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Vehicle registration"
 			formIntroduction="Add your vehicle registration details."
 		>
@@ -88,6 +86,6 @@ export function FormTaskStep4() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
