@@ -1,7 +1,6 @@
 import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { FormStepTitle } from '../FormStepTitle';
-import { globalFormTasks } from './globalFormTasks';
 import { useGlobalForm } from './GlobalFormProvider';
 
 export type FormContainerProps = PropsWithChildren<{
@@ -9,7 +8,6 @@ export type FormContainerProps = PropsWithChildren<{
 	hideRequiredFieldsMessage?: boolean;
 	introduction: string;
 	shouldFocusTitle?: boolean;
-	task: 1 | 2 | 3 | 4;
 	title: string;
 }>;
 
@@ -19,7 +17,6 @@ export function FormContainer({
 	hideRequiredFieldsMessage,
 	introduction,
 	shouldFocusTitle = true,
-	task,
 	title,
 }: FormContainerProps) {
 	const { formTitle } = useGlobalForm();
@@ -36,7 +33,7 @@ export function FormContainer({
 		<Stack gap={3} width="100%">
 			<FormStepTitle
 				titleRef={titleRef}
-				formTitle={[formTitle, FORM_TITLE_MAP[task]].join(' - ')}
+				formTitle={formTitle}
 				stepTitle={title}
 				introduction={introduction}
 				callToAction={callToAction}
@@ -46,10 +43,3 @@ export function FormContainer({
 		</Stack>
 	);
 }
-
-const FORM_TITLE_MAP = {
-	1: globalFormTasks[0].label,
-	2: globalFormTasks[1].label,
-	3: globalFormTasks[2].label,
-	4: globalFormTasks[3].label,
-};

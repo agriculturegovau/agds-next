@@ -20,39 +20,36 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
-	task1Step1FormSchema,
-	type Task1Step1FormSchema,
-} from './FormTask1FormState';
-import { task1FormSteps, useFormTask1Context } from './FormTask1Provider';
+	taskStep1FormSchema,
+	type TaskStep1FormSchema,
+} from './FormTaskFormState';
+import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
 
-export function FormTask1Step1ChangeDetails() {
+export function FormTaskStep1ChangeDetails() {
 	const router = useRouter();
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, step1SetState } = useGlobalForm();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Task1Step1FormSchema>({
-		defaultValues: formState.task1?.step1,
-		resolver: zodResolver(task1Step1FormSchema),
+	} = useForm<TaskStep1FormSchema>({
+		defaultValues: formState.task?.step1,
+		resolver: zodResolver(taskStep1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = task1FormSteps[0].href;
+	const step1Path = taskFormSteps[0].href;
 
-	const onSubmit: SubmitHandler<Task1Step1FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<TaskStep1FormSchema> = (data) => {
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			setFormState({
-				...formState,
-				task1: { ...formState.task1, step1: { ...data } },
-			});
+			step1SetState(data);
 			router.push(`${step1Path}?success=true`);
 		}, 1500);
 	};
@@ -73,14 +70,14 @@ export function FormTask1Step1ChangeDetails() {
 	}, []);
 
 	const { pathname } = useRouter();
-	const { canConfirmAndSubmit } = useFormTask1Context();
+	const { canConfirmAndSubmit } = useFormTaskContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = task1FormSteps[stepIndex];
+		const step = taskFormSteps[stepIndex];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname.replace('/change-details', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
+		if (formState.task?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
 		// Otherwise, the step still needs to be done
@@ -92,9 +89,9 @@ export function FormTask1Step1ChangeDetails() {
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ProgressIndicator
 					activePath={`${
-						task1FormSteps[0].items && task1FormSteps[0].items[0]?.href
+						taskFormSteps[0].items && taskFormSteps[0].items[0]?.href
 					}`}
-					items={task1FormSteps.map(({ label, href, items }, index) => ({
+					items={taskFormSteps.map(({ label, href, items }, index) => ({
 						label,
 						href,
 						status: getStepStatus(index),
