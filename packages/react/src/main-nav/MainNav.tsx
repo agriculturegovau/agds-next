@@ -48,6 +48,7 @@ export function MainNav({
 				borderColor={borderColor}
 				focusMode={focusMode}
 				id={id}
+				isMobileMenuOpen={isMobileMenuOpen}
 				items={items}
 				openMobileMenu={openMobileMenu}
 				secondaryItems={secondaryItems}

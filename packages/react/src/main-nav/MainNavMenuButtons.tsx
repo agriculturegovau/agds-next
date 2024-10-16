@@ -6,13 +6,17 @@ import { CloseIcon, MenuIcon } from '../icon';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{
+	isMobileMenuOpen: boolean;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }>;
 
-export function MainNavOpenButton({ onClick }: MainNavOpenButtonProps) {
+export function MainNavOpenButton({
+	isMobileMenuOpen,
+	onClick,
+}: MainNavOpenButtonProps) {
 	return (
 		<Flex
-			aria-expanded="false"
+			aria-expanded={isMobileMenuOpen}
 			aria-haspopup="dialog"
 			as={BaseButton}
 			display={{ xs: 'flex', lg: 'none' }}
