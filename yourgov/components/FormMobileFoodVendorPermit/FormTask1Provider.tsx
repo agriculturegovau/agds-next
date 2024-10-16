@@ -16,36 +16,48 @@ export const task1FormSteps = [
 		formStateKey: 'step1',
 		label: 'Owner details',
 		href: formHomePage + '/task-1/step-1',
+		items: [
+			{
+				label: 'Change business owner details',
+				href: formHomePage + '/task-1/step-1/change-details',
+			},
+		],
 	},
 	{
 		formStateKey: 'step2',
 		label: 'Business details',
 		href: formHomePage + '/task-1/step-2',
+		items: [],
 	},
 	{
 		formStateKey: 'step3',
 		label: 'Business address',
 		href: formHomePage + '/task-1/step-3',
+		items: [],
 	},
 	{
 		formStateKey: 'step4',
 		label: 'Vehicle registration',
 		href: formHomePage + '/task-1/step-4',
+		items: [],
 	},
 	{
 		formStateKey: 'step5',
 		label: 'Trading time',
 		href: formHomePage + '/task-1/step-5',
+		items: [],
 	},
 	{
 		formStateKey: 'step6',
 		label: 'Food served',
 		href: formHomePage + '/task-1/step-6',
+		items: [],
 	},
 	{
 		formStateKey: 'step7',
 		label: 'Confirm and submit',
 		href: formHomePage + '/task-1/step-7',
+		items: [],
 	},
 ] as const;
 

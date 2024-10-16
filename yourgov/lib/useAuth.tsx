@@ -5,6 +5,7 @@ import {
 	useContext,
 	PropsWithChildren,
 } from 'react';
+import { mockUser } from '../data/mockUsers';
 
 export type User = {
 	firstName: string;
@@ -36,6 +37,9 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 	const [userState, setUserState] = useState<User | null>(null);
 
 	useEffect(() => {
+		// AUDIT: Temporary way of bypassing the login
+		signIn(mockUser);
+
 		if (typeof sessionStorage === undefined) return;
 		const value = sessionStorage.getItem('user');
 		const parsedValue = value ? (JSON.parse(value) as User) : null;

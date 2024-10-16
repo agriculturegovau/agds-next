@@ -39,7 +39,7 @@ export const TableCell = ({
 			borderColor="muted"
 			color="text"
 			colSpan={colSpan}
-			css={{ verticalAlign }}
+			css={{ position: 'relative', verticalAlign }}
 			display={display}
 			focusRingFor="keyboard"
 			fontWeight={fontWeight}
@@ -49,6 +49,14 @@ export const TableCell = ({
 			textAlign={textAlign}
 		>
 			{children}
+			<Box
+				css={{
+					inset: 0,
+					pointerEvents: 'none',
+					position: 'absolute',
+				}}
+				data-selected-outline
+			/>
 		</Box>
 	);
 };

@@ -15,12 +15,14 @@ import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useGlobalForm } from './GlobalFormProvider';
 import {
 	task1Step1FormSchema,
 	Task1Step1FormSchema,
 } from './FormTask1FormState';
+import { task1FormSteps } from './FormTask1Provider';
 
 export function FormTask1Step1ChangeDetails() {
 	const router = useRouter();
@@ -53,7 +55,7 @@ export function FormTask1Step1ChangeDetails() {
 				...formState,
 				task1: { ...formState.task1, step1: { ...data } },
 			});
-			router.push(step1Path);
+			router.push(`${step1Path}&success=true`);
 		}, 1500);
 	};
 
@@ -85,17 +87,30 @@ export function FormTask1Step1ChangeDetails() {
 
 	return (
 		<Columns>
-			<Column columnSpan={{ xs: 12, md: 8 }}>
+			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+				<ProgressIndicator
+					activePath={`${
+						task1FormSteps[0].items && task1FormSteps[0].items[0]?.href
+					}`}
+					items={task1FormSteps.map(({ label, href, items }) => ({
+						label,
+						href,
+						items,
+						status: 'started',
+					}))}
+				/>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack gap={3} alignItems="flex-start">
 					<DirectionLink direction="left" href={step1Path}>
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
 						<H1 ref={titleRef} tabIndex={-1} focusRingFor="keyboard">
-							Provide business owner details
+							Change business owner details
 						</H1>
 						<Text as="p" fontSize="md" color="muted">
-							Confirm your name and contact details.
+							Change your name and contact details.
 						</Text>
 						<FormRequiredFieldsMessage />
 					</Stack>

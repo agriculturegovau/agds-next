@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { boxPalette, tokens } from '../core';
 import { theme } from '../ag-branding';
 import { useTableContext } from './TableContext';
+import { minContainerBreakpointForFrozenColumns } from './TableScroller';
 
 export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
@@ -18,65 +19,125 @@ export function TableRow({
 	invalid,
 	selected,
 }: TableRowProps) {
-	const { tableLayout } = useTableContext();
+	const { frozenColumnsOffsets, striped } = useTableContext();
+	// console.log(`{ frozenColumnsOffsets, striped, tableLayout }`, {
+	// 	frozenColumnsOffsets,
+	// 	striped,
+	// 	tableLayout,
+	// });
+	const frozenColumnStyles = frozenColumnsOffsets?.reduce(
+		(acc, { columnNumber, date, offsetValue, isLastColumn }) => {
+			return {
+				[minContainerBreakpointForFrozenColumns]: {
+					...acc[minContainerBreakpointForFrozenColumns],
+					[`& :nth-child(${columnNumber}):not([data-date="${date}"]):where(td, th)`]:
+						{
+							background: 'inherit',
+							position: 'sticky !important',
+							zIndex: tokens.zIndex.elevated,
+							...(isLastColumn
+								? {
+										right: offsetValue,
+								  }
+								: {
+										left: offsetValue,
+								  }),
+							'&:has([aria-expanded="true"])': {
+								zIndex: tokens.zIndex.popover,
+							},
+						},
+					// Better way of shadowing?
+					// [`& :nth-child(${columnNumber}):where(td, th)::before`]: {
+					// 	content: "''",
+					// 	position: 'absolute',
+					// 	width: '1rem',
+					// 	bottom: 0,
+					// 	top: 0,
+					// 	...(isLastColumn
+					// 		? {
+					// 				background:
+					// 					'linear-gradient(to left, rgba(255, 0, 0, 0.20), transparent)',
+					// 				right: '100%',
+					// 		  }
+					// 		: {
+					// 				background:
+					// 					'linear-gradient(to right, rgba(0, 255, 0, 0.20), transparent)',
+					// 				left: '100%',
+					// 		  }),
+					// },
+				},
+			};
+		},
+		{ [minContainerBreakpointForFrozenColumns]: {} }
+	);
+
 	return (
 		<tr
 			aria-selected={selected}
 			aria-rowindex={ariaRowindex}
 			css={{
+				// Background colour logic
+				/**
+				 * Default to body's background for:
+				 * - disappearing text beneath frozen columns,
+				 * - easy overwriting for state based background (e.g. invalid) with 'inherit'.
+				 */
+				background: selected
+					? boxPalette.selectedMuted
+					: boxPalette.backgroundBody,
+				position: 'relative',
+
 				...(selected && {
-					...(tableLayout === 'auto' && {
-						position: 'relative',
-						backgroundColor: boxPalette.selectedMuted,
+					'[data-selected-outline]': {
+						borderWidth: tokens.borderWidth.md,
+						borderLeftWidth: tokens.borderWidth.none,
+						borderRightWidth: tokens.borderWidth.none,
+						borderColor: boxPalette.selected,
+						borderStyle: 'solid',
+					},
 
-						// Add outline
-						'&::after': {
-							content: '""',
-							pointerEvents: 'none',
-							position: 'absolute',
-							inset: 0,
-							borderWidth: tokens.borderWidth.md,
-							borderColor: boxPalette.selected,
-							borderStyle: 'solid',
-						},
+					'> :first-child [data-selected-outline]': {
+						borderLeftWidth: tokens.borderWidth.md,
+					},
 
-						// Remove the border top (if next table row is selected)
-						":has(+ tr[aria-selected='true'])::after": {
-							borderBottomWidth: 0,
-						},
+					'> :last-child [data-selected-outline]': {
+						borderRightWidth: tokens.borderWidth.md,
+					},
 
-						// Remove the border top from the next table row (if next table row is selected)
-						'+ tr::after': {
-							borderTopWidth: 0,
-						},
-					}),
+					':has(+ tr[aria-selected="true"]) [data-selected-outline]': {
+						borderBottomWidth: tokens.borderWidth.md,
+						borderBottom: tokens.borderWidth.none,
+					},
 
-					// Chrome and Firefox doesn't support ::after elements in fixed table layouts
-					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
-					...(tableLayout === 'fixed' && alternativeSelectedStyles),
-
-					// Safari does not support relative positioning on `tr` elements
-					// FIXME Once safari fixes this issue, these alternative styles should be removed
-					// More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
-					'@supports (-webkit-appearance: -apple-pay-button)':
-						alternativeSelectedStyles,
+					'+ tr[aria-selected="true"] [data-selected-outline]': {
+						borderTop: tokens.borderWidth.none,
+						top: -1,
+					},
 				}),
+
+				/**
+				 * Striped ignores:
+				 * - `tr` in `thead` as it's an `only-child`,
+				 * - `data-invalid` as it's more important.
+				 * */
+				...(striped && {
+					"&:not(:only-child):nth-last-of-type(odd):not([aria-selected='true']):not([data-invalid='true'])":
+						{
+							background: boxPalette.backgroundShade,
+						},
+				}),
+
+				// Individually applied styles to freeze selected columns
+				...frozenColumnStyles,
+
+				// Invalid background is the highest priority
 				...(invalid && {
-					background: theme.lightSystemErrorMuted,
+					'&': { background: theme.lightSystemErrorMuted },
 				}),
 			}}
+			data-invalid={invalid}
 		>
 			{children}
 		</tr>
 	);
 }
-
-// Use an outline instead of an ::after element
-const alternativeSelectedStyles = {
-	backgroundColor: boxPalette.selectedMuted,
-	outlineWidth: '2px',
-	outlineStyle: 'solid',
-	outlineColor: boxPalette.selected,
-	outlineOffset: '-3px',
-	'&::after': { display: 'none' },
-};
