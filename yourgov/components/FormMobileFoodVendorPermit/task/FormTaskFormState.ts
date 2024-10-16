@@ -169,6 +169,33 @@ export const taskStep6FormSchema = z.object({
 
 export type TaskStep6FormSchema = z.infer<typeof taskStep6FormSchema>;
 
+export const taskStep7FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type TaskStep7FormSchema = z.infer<typeof taskStep7FormSchema>;
+
+export const taskStep8FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type TaskStep8FormSchema = z.infer<typeof taskStep8FormSchema>;
+
+export const taskStep9FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type TaskStep9FormSchema = z.infer<typeof taskStep9FormSchema>;
+
 export type TaskFormState = Completion & {
 	step1: TaskStep1FormSchema & Completion;
 	step2: TaskStep2FormSchema & Completion;
@@ -176,7 +203,10 @@ export type TaskFormState = Completion & {
 	step4: TaskStep4FormSchema & Completion;
 	step5: TaskStep5FormSchema & Completion;
 	step6: TaskStep6FormSchema & Completion;
-	step7: Completion;
+	step7: TaskStep7FormSchema & Completion;
+	step8: TaskStep8FormSchema & Completion;
+	step9: TaskStep9FormSchema & Completion;
+	step10: Completion;
 };
 
 export const taskDefaultFormState: DeepPartial<TaskFormState> = {

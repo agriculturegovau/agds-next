@@ -17,7 +17,10 @@ export type TaskStepNumber =
 	| 'step4'
 	| 'step5'
 	| 'step6'
-	| 'step7';
+	| 'step7'
+	| 'step8'
+	| 'step9'
+	| 'step10';
 
 export const taskFormSteps: Array<FormStep<TaskStepNumber>> = [
 	{
@@ -58,8 +61,23 @@ export const taskFormSteps: Array<FormStep<TaskStepNumber>> = [
 	},
 	{
 		formStateKey: 'step7',
-		label: 'Confirm and submit',
+		label: 'Employees',
 		href: formHomePage + '/task/step-7',
+	},
+	{
+		formStateKey: 'step8',
+		label: 'Food safety supervisor',
+		href: formHomePage + '/task/step-8',
+	},
+	{
+		formStateKey: 'step9',
+		label: 'Upload documents',
+		href: formHomePage + '/task/step-9',
+	},
+	{
+		formStateKey: 'step10',
+		label: 'Review and submit',
+		href: formHomePage + '/task/step-10',
 	},
 ];
 
@@ -115,7 +133,10 @@ export function FormTaskProvider({ children }: PropsWithChildren<{}>) {
 			!formState.task?.step3?.completed ||
 			!formState.task?.step4?.completed ||
 			!formState.task?.step5?.completed ||
-			!formState.task?.step6?.completed
+			!formState.task?.step6?.completed ||
+			!formState.task?.step7?.completed ||
+			!formState.task?.step8?.completed ||
+			!formState.task?.step9?.completed
 		) {
 			return false;
 		}

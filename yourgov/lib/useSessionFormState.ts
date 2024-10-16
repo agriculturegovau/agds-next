@@ -111,14 +111,41 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					},
 				}));
 			},
-			// This is the confirm and submit step
 			step7SetState: (newState: Partial<TaskFormState['step7']>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					task: {
+						...prevState.task,
+						step7: newState,
+					},
+				}));
+			},
+			step8SetState: (newState: Partial<TaskFormState['step8']>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					task: {
+						...prevState.task,
+						step8: newState,
+					},
+				}));
+			},
+			step9SetState: (newState: Partial<TaskFormState['step9']>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					task: {
+						...prevState.task,
+						step9: newState,
+					},
+				}));
+			},
+			// This is the review and submit step
+			step10SetState: (newState: Partial<TaskFormState['step10']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					completed: newState.completed, // When this step is complete, the whole process is complete
 					task: {
 						...prevState.task,
-						step7: newState,
+						step10: newState,
 					},
 				}));
 			},

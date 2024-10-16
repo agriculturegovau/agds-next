@@ -8,35 +8,35 @@ import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTaskContainer } from './FormTaskContainer';
 import { useFormTaskContext } from './FormTaskProvider';
 import {
-	taskStep7FormSchema,
-	type TaskStep7FormSchema,
+	taskStep8FormSchema,
+	type TaskStep8FormSchema,
 } from './FormTaskFormState';
 
-export function FormTaskStep7() {
-	const { formState, step7SetState, isSavingBeforeExiting } = useGlobalForm();
+export function FormTaskStep8() {
+	const { formState, step8SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTaskContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep7FormSchema>({
-		defaultValues: formState.task?.step7,
+	} = useForm<TaskStep8FormSchema>({
+		defaultValues: formState.task?.step8,
 		resolver: isSavingBeforeExiting
 			? undefined
-			: zodResolver(taskStep7FormSchema),
+			: zodResolver(taskStep8FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<TaskStep7FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<TaskStep8FormSchema>;
 
-	const onSubmit: SubmitHandler<TaskStep7FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<TaskStep8FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step7SetState({
+		step8SetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -45,8 +45,8 @@ export function FormTaskStep7() {
 
 	return (
 		<FormTaskContainer
-			formTitle="Employees"
-			formIntroduction="Add details of any employees who will be handling food."
+			formTitle="Food safety supervisor"
+			formIntroduction="Add your employee food safety supervisor."
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
