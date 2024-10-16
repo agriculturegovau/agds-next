@@ -63,12 +63,9 @@ export function DrawerDialog({
 			}
 		>
 			<AnimatedFlex
-				flexDirection="column"
-				role="dialog"
+				aria-labelledby={titleId}
 				aria-modal="true"
 				background="body"
-				aria-labelledby={titleId}
-				maxWidth={WIDTH_MAP[width]}
 				css={{
 					boxShadow: tokens.shadow.lg,
 					position: 'fixed',
@@ -79,6 +76,10 @@ export function DrawerDialog({
 						overflowY: 'auto',
 					},
 				}}
+				flexDirection="column"
+				highContrastOutline
+				maxWidth={WIDTH_MAP[width]}
+				role="dialog"
 				style={style}
 			>
 				<DrawerHeader>

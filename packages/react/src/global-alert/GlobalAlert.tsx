@@ -38,6 +38,7 @@ export function GlobalAlert({
 			as="section"
 			aria-label={title || ariaLabel}
 			css={{ backgroundColor: bg }}
+			highContrastOutline
 		>
 			<Flex
 				alignItems="center"

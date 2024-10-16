@@ -662,7 +662,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -687,7 +687,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -712,7 +712,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -737,7 +737,7 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -841,7 +841,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -868,7 +868,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -895,7 +895,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -922,7 +922,7 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
               class="css-ib2w54-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -985,7 +985,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -1010,7 +1010,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -1035,7 +1035,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span
@@ -1060,7 +1060,7 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
               class="css-osss6w-boxStyles-RadioIndicator"
             >
               <span
-                class="css-1sqol0e-boxStyles-RadioIndicator"
+                class="css-erbirp-boxStyles-RadioIndicator"
               />
             </span>
             <span

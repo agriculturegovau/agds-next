@@ -28,6 +28,11 @@ const variants = {
 		color: boxPalette.foregroundAction,
 		textDecoration: 'none',
 
+		// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+		'@media (forced-colors: active)': {
+			borderColor: 'Highlight',
+		},
+
 		'&:not(:disabled):hover': {
 			background: boxPalette.backgroundBody,
 			borderColor: boxPalette.foregroundText,
@@ -40,6 +45,11 @@ const variants = {
 		borderColor: 'transparent',
 		color: boxPalette.foregroundAction,
 		...packs.underline,
+
+		// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+		'@media (forced-colors: active)': {
+			borderColor: 'ButtonFace',
+		},
 
 		'&:not(:disabled):hover': {
 			background: 'transparent',
