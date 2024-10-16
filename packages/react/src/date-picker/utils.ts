@@ -65,7 +65,7 @@ export const parseDate = (
 	return undefined;
 };
 
-function isValidDate(value: Date) {
+export function isValidDate(value?: Date) {
 	return isDate(value) && isValid(value);
 }
 
