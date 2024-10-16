@@ -1,5 +1,85 @@
 # @ag.ds-next/docs
 
+## 0.13.0
+
+### Minor Changes
+
+- 0e65c067718: summary-list: Update docs & examples to have unique Action content.
+- b577088b3e7: tags: Automatically focus previous tag `onRemove`. Add `ref` support.
+
+  docs: Export `visuallyHiddenStyles` for use within live code examples.
+
+- debc3e4a615: docs: Set dynamic branch for edit-this-page link so that editors can primarily be sent to develop.
+- d6d8d66842e: page-alert: Make title default to H2 instead of H3.
+- 6a2e2837cea: tokens: List dark and light colour tokens separately and describe the colour as words.
+- 0f5331102e9: search-input: Improve guidance/examples to include a search landmark.
+
+### Patch Changes
+
+- 857e148138c: foundations: Improve icon usage clarity
+- ec51581df2f: patterns: Fix heading hierarchy in Search filters page.
+- 1b2dacb789d: docs: Fix typo in focus mode docs.
+- 6df4ccd995d: content: Make uncontrolled checkboxes & radio buttons function.
+- 5c12b1eba16: docs: Update example headings on content-styles page to be unique.
+- 2709db41215: icon docs: issue 68 - icon documentation edits
+- 9e04ae290df: focus-mode docs: issue 131 - focus mode content changes
+- 9e957ba2cb9: content-structure docs: issue 143 - add content about semantic heading structure
+- c390cab4895: content-principles: Improve accessibility of link to footnote.
+- 92d26ee520e: docs: Remove aria-labels from live code snippet buttons and let the visible label become the accessible name.
+- b574debe799: docs: content-styles - Add abbreviations, acronymns and initialisms content.
+- Updated dependencies [bfa1543b410]
+- Updated dependencies [38378085fee]
+- Updated dependencies [ef789cd698c]
+- Updated dependencies [066c1edd21c]
+- Updated dependencies [4b881310d02]
+- Updated dependencies [b23903198ac]
+- Updated dependencies [64c38569a98]
+- Updated dependencies [8aa2d81262f]
+- Updated dependencies [e66b2636531]
+- Updated dependencies [51665e9fa79]
+- Updated dependencies [fc02f936d0c]
+- Updated dependencies [0fc960623f0]
+- Updated dependencies [0e65c067718]
+- Updated dependencies [c640eaa0ca7]
+- Updated dependencies [198ec8efbba]
+- Updated dependencies [c33c23d4594]
+- Updated dependencies [0b9c49ebeb9]
+- Updated dependencies [fec2299a908]
+- Updated dependencies [ac04b0d1350]
+- Updated dependencies [8f70c8ba7fe]
+- Updated dependencies [7ec07ff2c65]
+- Updated dependencies [b577088b3e7]
+- Updated dependencies [093fe94bc81]
+- Updated dependencies [032b9ab94ce]
+- Updated dependencies [9cfb094f43f]
+- Updated dependencies [e6b7b617d9a]
+- Updated dependencies [38e4c01fd25]
+- Updated dependencies [b57fe083e3b]
+- Updated dependencies [d6d8d66842e]
+- Updated dependencies [6b6915dee9a]
+- Updated dependencies [a69a4ae612d]
+- Updated dependencies [060fde075b0]
+- Updated dependencies [73be3b9dd9e]
+- Updated dependencies [a47676b832f]
+- Updated dependencies [c7b42ee9331]
+- Updated dependencies [f350b70eb5b]
+- Updated dependencies [43fffc0fe97]
+- Updated dependencies [a8d0c5f09b1]
+- Updated dependencies [0f5331102e9]
+- Updated dependencies [a698c798152]
+- Updated dependencies [79e87db5003]
+- Updated dependencies [219f41aae95]
+- Updated dependencies [6d882af9f5b]
+- Updated dependencies [277af1554e9]
+- Updated dependencies [ffee5f3b6aa]
+- Updated dependencies [9b32c1d9ab4]
+- Updated dependencies [5fed76317d3]
+- Updated dependencies [20eac31f59c]
+- Updated dependencies [c5dad52b4c8]
+- Updated dependencies [c3fa7126d80]
+- Updated dependencies [6627301604a]
+  - @ag.ds-next/react@1.25.0
+
 ## 0.12.0
 
 ### Minor Changes
