@@ -2,13 +2,13 @@ import { FormEvent, Fragment } from 'react';
 import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import { FormTaskStep7Review } from './FormTaskStep7Review';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { FormStep7Review } from './FormStep7Review';
 
-export function FormTaskStep7() {
+export function FormStep7() {
 	const { isSavingBeforeExiting, step7SetState } = useGlobalForm();
-	const { submitStep, canConfirmAndSubmit } = useFormTaskContext();
+	const { submitStep, canConfirmAndSubmit } = useFormContext();
 
 	async function onSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -22,14 +22,14 @@ export function FormTaskStep7() {
 	}
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Confirm and submit"
 			formIntroduction="Check and confirm all details on this page to complete this task."
 			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>
-					<FormTaskStep7Review headingsLevel="h2" />
+					<FormStep7Review headingsLevel="h2" />
 					<form onSubmit={onSubmit}>
 						<StepActions submitText="Submit application" />
 					</form>
@@ -37,6 +37,6 @@ export function FormTaskStep7() {
 			) : (
 				<CannotStartAlert />
 			)}
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
