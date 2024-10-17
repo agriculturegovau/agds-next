@@ -17,14 +17,11 @@ import {
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import {
-	taskStep1Part2FormSchema,
-	type TaskStep1Part2FormSchema,
-} from './FormTaskFormState';
-import { FormTaskContainer } from './FormTaskContainer';
-import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
+import { step1Part2FormSchema, type Step1Part2FormSchema } from './FormState';
+import { FormContainer } from './FormContainer';
+import { taskFormSteps, useFormContext } from './FormProvider';
 
-export function FormTaskStep1() {
+export function FormStep1() {
 	const { formState } = useGlobalForm();
 	const stepFormState = formState.task?.step1;
 	const { query } = useRouter();
@@ -37,7 +34,7 @@ export function FormTaskStep1() {
 	}, [isUpdated]);
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
 			shouldFocusTitle={!isSuccessMessageVisible}
@@ -102,28 +99,28 @@ export function FormTaskStep1() {
 				</Stack>
 				<AdditionalDetailsForm />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
 
 function AdditionalDetailsForm() {
 	const { formState, step1SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep1Part2FormSchema>({
+	} = useForm<Step1Part2FormSchema>({
 		defaultValues: {
 			contactPhoneNumber: formState.task?.step1?.contactPhoneNumber,
 		},
-		resolver: zodResolver(taskStep1Part2FormSchema),
+		resolver: zodResolver(step1Part2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<TaskStep1Part2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step1Part2FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
