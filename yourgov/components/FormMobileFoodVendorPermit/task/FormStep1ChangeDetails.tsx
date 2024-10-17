@@ -19,13 +19,10 @@ import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
-import {
-	taskStep1FormSchema,
-	type TaskStep1FormSchema,
-} from './FormTaskFormState';
-import { taskFormSteps, useFormTaskContext } from './FormTaskProvider';
+import { step1FormSchema, type Step1FormSchema } from './FormState';
+import { taskFormSteps, useFormContext } from './FormProvider';
 
-export function FormTaskStep1ChangeDetails() {
+export function FormStep1ChangeDetails() {
 	const router = useRouter();
 	const { formState, step1SetState } = useGlobalForm();
 
@@ -33,9 +30,9 @@ export function FormTaskStep1ChangeDetails() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep1FormSchema>({
+	} = useForm<Step1FormSchema>({
 		defaultValues: formState.task?.step1,
-		resolver: zodResolver(taskStep1FormSchema),
+		resolver: zodResolver(step1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
@@ -44,7 +41,7 @@ export function FormTaskStep1ChangeDetails() {
 
 	const step1Path = taskFormSteps[0].href;
 
-	const onSubmit: SubmitHandler<TaskStep1FormSchema> = (data) => {
+	const onSubmit: SubmitHandler<Step1FormSchema> = (data) => {
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
@@ -70,7 +67,7 @@ export function FormTaskStep1ChangeDetails() {
 	}, []);
 
 	const { pathname } = useRouter();
-	const { canConfirmAndSubmit } = useFormTaskContext();
+	const { canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = taskFormSteps[stepIndex];

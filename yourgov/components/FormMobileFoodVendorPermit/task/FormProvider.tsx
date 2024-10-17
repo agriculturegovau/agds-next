@@ -10,7 +10,7 @@ import { useGlobalForm } from '../GlobalFormProvider';
 import { type FormStep } from '../FormState';
 import { formHomePage, getTaskCompletionUrl } from '../utils';
 
-export type TaskStepNumber =
+export type StepNumber =
 	| 'step1'
 	| 'step2'
 	| 'step3'
@@ -22,7 +22,7 @@ export type TaskStepNumber =
 	| 'step9'
 	| 'step10';
 
-export const taskFormSteps: Array<FormStep<TaskStepNumber>> = [
+export const taskFormSteps: Array<FormStep<StepNumber>> = [
 	{
 		formStateKey: 'step1',
 		label: 'Owner details',
@@ -92,7 +92,7 @@ type ContextType = {
 
 const context = createContext<ContextType | undefined>(undefined);
 
-export function FormTaskProvider({ children }: PropsWithChildren<{}>) {
+export function FormProvider({ children }: PropsWithChildren<{}>) {
 	const { pathname, push } = useRouter();
 	const { setIsSubmittingStep, formState, isSavingBeforeExiting } =
 		useGlobalForm();
@@ -152,7 +152,7 @@ export function FormTaskProvider({ children }: PropsWithChildren<{}>) {
 	return <context.Provider value={contextValue}>{children}</context.Provider>;
 }
 
-export function useFormTaskContext() {
+export function useFormContext() {
 	const value = useContext(context);
 
 	if (!value) {

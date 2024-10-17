@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { TaskFormState } from '../components/FormMobileFoodVendorPermit/task/FormTaskFormState';
+import { FormState as TaskFormState } from '../components/FormMobileFoodVendorPermit/task/FormState';
 import { FormState } from '../components/FormMobileFoodVendorPermit/FormState';
 import { DeepPartial } from './types';
 

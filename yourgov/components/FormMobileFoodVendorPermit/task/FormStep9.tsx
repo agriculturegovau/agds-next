@@ -5,38 +5,33 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep7FormSchema,
-	type TaskStep7FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step9FormSchema, type Step9FormSchema } from './FormState';
 
-export function FormTaskStep7() {
-	const { formState, step7SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+export function FormStep9() {
+	const { formState, step9SetState, isSavingBeforeExiting } = useGlobalForm();
+	const { submitStep } = useFormContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep7FormSchema>({
-		defaultValues: formState.task?.step7,
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep7FormSchema),
+	} = useForm<Step9FormSchema>({
+		defaultValues: formState.task?.step9,
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step9FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<TaskStep7FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<Step9FormSchema>;
 
-	const onSubmit: SubmitHandler<TaskStep7FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step9FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step7SetState({
+		step9SetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -44,9 +39,9 @@ export function FormTaskStep7() {
 	};
 
 	return (
-		<FormTaskContainer
-			formTitle="Employees"
-			formIntroduction="Add details of any employees who will be handling food."
+		<FormContainer
+			formTitle="Upload documents"
+			formIntroduction="Upload all documents listed in the table below."
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
@@ -70,7 +65,7 @@ export function FormTaskStep7() {
 				/>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
 

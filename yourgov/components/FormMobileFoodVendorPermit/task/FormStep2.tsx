@@ -11,16 +11,13 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep2FormSchema,
-	type TaskStep2FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step2FormSchema, type Step2FormSchema } from './FormState';
 
-export function FormTaskStep2() {
+export function FormStep2() {
 	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		watch,
@@ -28,16 +25,14 @@ export function FormTaskStep2() {
 		handleSubmit,
 		trigger,
 		formState: { errors, isSubmitted },
-	} = useForm<TaskStep2FormSchema>({
+	} = useForm<Step2FormSchema>({
 		defaultValues: formState.task?.step2,
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep2FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<TaskStep2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step2FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -59,7 +54,7 @@ export function FormTaskStep2() {
 	}, [isSubmitted, trigger]);
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Business details"
 			formIntroduction="Your business details must match your business registration."
 		>
@@ -130,6 +125,6 @@ export function FormTaskStep2() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }

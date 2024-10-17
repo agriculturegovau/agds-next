@@ -5,33 +5,28 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep8FormSchema,
-	type TaskStep8FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step8FormSchema, type Step8FormSchema } from './FormState';
 
-export function FormTaskStep8() {
+export function FormStep8() {
 	const { formState, step8SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep8FormSchema>({
+	} = useForm<Step8FormSchema>({
 		defaultValues: formState.task?.step8,
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep8FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step8FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<TaskStep8FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<Step8FormSchema>;
 
-	const onSubmit: SubmitHandler<TaskStep8FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step8FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -44,7 +39,7 @@ export function FormTaskStep8() {
 	};
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Food safety supervisor"
 			formIntroduction="Add your employee food safety supervisor."
 		>
@@ -70,7 +65,7 @@ export function FormTaskStep8() {
 				/>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
 
