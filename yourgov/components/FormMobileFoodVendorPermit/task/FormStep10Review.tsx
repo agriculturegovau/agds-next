@@ -18,6 +18,9 @@ import {
 	step4ReviewSchema,
 	step5ReviewSchema,
 	step6FormSchema,
+	step7FormSchema,
+	step8FormSchema,
+	step9FormSchema,
 } from './FormState';
 
 type FormReviewProps = {
@@ -29,7 +32,7 @@ const HEADINGS_MAP = {
 	h3: H3,
 } as const;
 
-export function FormStep7Review({ headingsLevel }: FormReviewProps) {
+export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 	const { formState } = useGlobalForm();
 	const HeadingComponent = HEADINGS_MAP[headingsLevel];
 
@@ -40,6 +43,9 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 		step4: step4ReviewSchema.safeParse(formState.task?.step4),
 		step5: step5ReviewSchema.safeParse(formState.task?.step5),
 		step6: step6FormSchema.safeParse(formState.task?.step6),
+		step7: step7FormSchema.safeParse(formState.task?.step7),
+		step8: step8FormSchema.safeParse(formState.task?.step8),
+		step9: step9FormSchema.safeParse(formState.task?.step9),
 	};
 
 	return (
@@ -74,6 +80,7 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 					Change owner details
 				</ButtonLink>
 			</Stack>
+
 			{/** Business details */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<HeadingComponent>{taskFormSteps[1].label}</HeadingComponent>
@@ -105,6 +112,7 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 					Change business details
 				</ButtonLink>
 			</Stack>
+
 			{/** Business address */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<HeadingComponent>{taskFormSteps[2].label}</HeadingComponent>
@@ -139,6 +147,7 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 					Change business address
 				</ButtonLink>
 			</Stack>
+
 			{/** Vehicle registration */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<HeadingComponent>{taskFormSteps[3].label}</HeadingComponent>
@@ -160,6 +169,7 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 					Change vehicle registration
 				</ButtonLink>
 			</Stack>
+
 			{/** Trading time */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<HeadingComponent>{taskFormSteps[4].label}</HeadingComponent>
@@ -183,6 +193,7 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 					Change trading time
 				</ButtonLink>
 			</Stack>
+
 			{/** Food served */}
 			<Stack gap={1.5} alignItems="flex-start">
 				<HeadingComponent>{taskFormSteps[5].label}</HeadingComponent>
@@ -200,6 +211,66 @@ export function FormStep7Review({ headingsLevel }: FormReviewProps) {
 				)}
 				<ButtonLink variant="text" href={taskFormSteps[5].href}>
 					Change food served
+				</ButtonLink>
+			</Stack>
+
+			{/** Employees */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<HeadingComponent>TODO - {taskFormSteps[6].label}</HeadingComponent>
+				{validation.step7.success ? (
+					<FormDefinitionList>
+						<FormDefinitionListItem
+							label="Employees"
+							value={formState.task?.step7?.cuisine
+								?.map((item) => item?.label)
+								.join(', ')}
+						/>
+					</FormDefinitionList>
+				) : (
+					<ValidateSectionAlert />
+				)}
+				<ButtonLink variant="text" href={taskFormSteps[6].href}>
+					Change employees
+				</ButtonLink>
+			</Stack>
+
+			{/** Food safety supervisor */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<HeadingComponent>TODO - {taskFormSteps[7].label}</HeadingComponent>
+				{validation.step8.success ? (
+					<FormDefinitionList>
+						<FormDefinitionListItem
+							label="Food safety supervisor"
+							value={formState.task?.step8?.cuisine
+								?.map((item) => item?.label)
+								.join(', ')}
+						/>
+					</FormDefinitionList>
+				) : (
+					<ValidateSectionAlert />
+				)}
+				<ButtonLink variant="text" href={taskFormSteps[7].href}>
+					Change food safety supervisor
+				</ButtonLink>
+			</Stack>
+
+			{/** Upload documents */}
+			<Stack gap={1.5} alignItems="flex-start">
+				<HeadingComponent>TODO - {taskFormSteps[8].label}</HeadingComponent>
+				{validation.step9.success ? (
+					<FormDefinitionList>
+						<FormDefinitionListItem
+							label="Documents"
+							value={formState.task?.step9?.cuisine
+								?.map((item) => item?.label)
+								.join(', ')}
+						/>
+					</FormDefinitionList>
+				) : (
+					<ValidateSectionAlert />
+				)}
+				<ButtonLink variant="text" href={taskFormSteps[8].href}>
+					Change documents
 				</ButtonLink>
 			</Stack>
 		</Stack>
