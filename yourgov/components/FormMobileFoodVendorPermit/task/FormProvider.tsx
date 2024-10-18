@@ -63,6 +63,12 @@ export const taskFormSteps: Array<FormStep<StepNumber>> = [
 		formStateKey: 'step7',
 		label: 'Employees',
 		href: formHomePage + '/task/step-7',
+		items: [
+			{
+				label: 'Add employee',
+				href: formHomePage + '/task/step-7/add-employee',
+			},
+		],
 	},
 	{
 		formStateKey: 'step8',

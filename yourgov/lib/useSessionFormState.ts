@@ -112,11 +112,18 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				}));
 			},
 			step7SetState: (newState: Partial<TaskFormState['step7']>) => {
+				const { employee, ...restNewState } = newState;
+				console.log(`employee`, employee);
+				console.log(`restNewState`, restNewState);
+				// console.log(`prevState`, prevState);
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					task: {
 						...prevState.task,
-						step7: newState,
+						step7: {
+							...restNewState,
+							employee: [...(prevState?.task?.step7?.employee || []), employee],
+						},
 					},
 				}));
 			},
