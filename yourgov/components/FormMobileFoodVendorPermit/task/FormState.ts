@@ -169,6 +169,33 @@ export const step6FormSchema = z.object({
 
 export type Step6FormSchema = z.infer<typeof step6FormSchema>;
 
+export const step7FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type Step7FormSchema = z.infer<typeof step7FormSchema>;
+
+export const step8FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type Step8FormSchema = z.infer<typeof step8FormSchema>;
+
+export const step9FormSchema = z.object({
+	cuisine: zodArray(
+		z.object({ label: zodString(), value: zodString() }),
+		'Food types is required'
+	),
+});
+
+export type Step9FormSchema = z.infer<typeof step9FormSchema>;
+
 export type FormState = Completion & {
 	step1: Step1FormSchema & Completion;
 	step2: Step2FormSchema & Completion;
@@ -176,7 +203,10 @@ export type FormState = Completion & {
 	step4: Step4FormSchema & Completion;
 	step5: Step5FormSchema & Completion;
 	step6: Step6FormSchema & Completion;
-	step7: Completion;
+	step7: Step7FormSchema & Completion;
+	step8: Step8FormSchema & Completion;
+	step9: Step9FormSchema & Completion;
+	step10: Completion;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {

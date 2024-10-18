@@ -76,7 +76,8 @@ export function FormStep1ChangeDetails() {
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.task?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
-		if (step.formStateKey === 'step7' && !canConfirmAndSubmit) return 'blocked';
+		if (step.formStateKey === 'step10' && !canConfirmAndSubmit)
+			return 'blocked';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
