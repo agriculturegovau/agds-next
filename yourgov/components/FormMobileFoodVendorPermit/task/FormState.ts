@@ -170,10 +170,14 @@ export const step6FormSchema = z.object({
 export type Step6FormSchema = z.infer<typeof step6FormSchema>;
 
 export const step7FormSchema = z.object({
-	cuisine: zodArray(
-		z.object({ label: zodString(), value: zodString() }),
-		'Food types is required'
-	),
+	employee: z.object({
+		id: zodString(),
+		firstName: zodString('Enter employee’s first name'),
+		lastName: zodString('Enter employee’s last name'),
+		email: zodString('Enter employee’s email address').email(
+			'Enter a valid email address'
+		),
+	}),
 });
 
 export type Step7FormSchema = z.infer<typeof step7FormSchema>;
