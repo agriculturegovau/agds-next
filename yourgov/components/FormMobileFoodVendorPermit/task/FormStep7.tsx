@@ -33,13 +33,14 @@ export function FormStep7() {
 		? step7State?.employee &&
 		  step7State.employee.find((employee) => employee.id === query.success)
 		: undefined;
-	const [isAddedEmployeeMessageVisible, setIsAddedEmployeeMessageVisible] =
+	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] =
 		useState(addedUser);
-	const [isRemovedEmployeeMessageVisible, setIsRemovedEmployeeMessageVisible] =
+	const [showRemovedEmployeeMessage, setShowRemovedEmployeeMessage] =
 		useState(false);
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 	useEffect(() => {
-		setIsAddedEmployeeMessageVisible(addedUser);
+		setShowAddedEmployeeMessage(addedUser);
 	}, [addedUser]);
 
 	const [employeeIdToRemove, setEmployeeIdToRemove] = useState('');
@@ -47,12 +48,15 @@ export function FormStep7() {
 	const [modalIsVisible, setModalIsVisible] = useState(false);
 
 	const closeModal = () => {
+		setShowAddedEmployeeMessage('');
 		setEmployeeIdToRemove('');
 	};
 
-	const removeEmployeeById = (id: string) => {
+	const removeEmployee = (id: string) => {
 		step7SetState({
 			...step7GetState,
+			// FIXME: Why do I have to set this here? Why does the state not include it?
+			started: true,
 			employee: step7State.employee.filter((employee) => employee.id !== id),
 		});
 		closeModal();
@@ -75,6 +79,12 @@ export function FormStep7() {
 		if (isSavingBeforeExiting) {
 			return;
 		}
+
+		if (step7State?.employee.length === 0) {
+			setShowErrorMessage(true);
+			return;
+		}
+
 		await submitStep();
 		step7SetState({
 			...step7State,
@@ -83,36 +93,36 @@ export function FormStep7() {
 		});
 	};
 
-	console.log(`step7GetState()`, step7GetState());
-
 	return (
 		<FormContainer
 			formTitle="Employees"
 			formIntroduction="Add your employee details."
-			shouldFocusTitle={!isAddedEmployeeMessageVisible}
+			shouldFocusTitle={!showAddedEmployeeMessage}
 		>
 			<Stack gap={3}>
 				<Stack gap={2}>
-					<PageAlert focusOnMount title="No employees added" tone="error">
-						<Text as="p">
-							You need to add some staff. You’re amazing, but you can’t do this
-							alone. Life is better with friends and team mates.
-						</Text>
-					</PageAlert>
+					{showErrorMessage && (
+						<PageAlert focusOnMount title="No employees added" tone="error">
+							<Text as="p">
+								You need to add some staff. You’re amazing, but you can’t do
+								this alone. Life is better with friends and team mates.
+							</Text>
+						</PageAlert>
+					)}
 					<H2 id="list-of-employees">List of employees</H2>
-					{isAddedEmployeeMessageVisible && (
+					{showAddedEmployeeMessage && (
 						<SectionAlert
 							focusOnMount
-							onClose={() => setIsAddedEmployeeMessageVisible(false)}
+							onClose={() => setShowAddedEmployeeMessage(false)}
 							title={`${addedUser.firstName} ${addedUser.lastName} has been added as an
 							employee`}
 							tone="success"
 						/>
 					)}
-					{isRemovedEmployeeMessageVisible && (
+					{showRemovedEmployeeMessage && (
 						<SectionAlert
 							focusOnMount
-							onClose={() => setIsRemovedEmployeeMessageVisible(false)}
+							onClose={() => setShowRemovedEmployeeMessage(false)}
 							title={`${removedUser.firstName} ${removedUser.lastName} has been removed as an
 							employee`}
 							tone="success"
@@ -155,7 +165,6 @@ export function FormStep7() {
 														variant="text"
 														onClick={() => {
 															setEmployeeIdToRemove(employee.id);
-															console.log(`employee.id`, employee.id);
 														}}
 													>
 														Remove
@@ -193,7 +202,7 @@ export function FormStep7() {
 					<ButtonGroup>
 						<Button
 							onClick={() => {
-								removeEmployeeById(employeeIdToRemove);
+								removeEmployee(employeeIdToRemove);
 							}}
 						>
 							Remove employee
