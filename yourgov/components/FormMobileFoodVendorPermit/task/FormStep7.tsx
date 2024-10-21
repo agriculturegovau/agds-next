@@ -28,8 +28,8 @@ export function FormStep7() {
 	const { submitStep } = useFormContext();
 	const { query } = useRouter();
 	const step7State = step7GetState();
-	const isUpdated = !!query.success;
-	const addedUser = isUpdated
+	const hasAddedUser = !!query.success;
+	const addedUser = hasAddedUser
 		? step7State?.employee &&
 		  step7State.employee.find((employee) => employee.id === query.success)
 		: undefined;
@@ -58,13 +58,19 @@ export function FormStep7() {
 			// FIXME: Why do I have to set this here? Why does the state not include it?
 			started: true,
 			completed: false,
-			employee: step7State.employee.filter((employee) => employee.id !== id),
+			employee:
+				step7State?.employee &&
+				step7State.employee.filter((employee) => employee.id !== id),
 		});
 		closeModal();
+		setTimeout(() => {
+			setShowRemovedEmployeeMessage(true);
+		}, 0);
 	};
 
 	useEffect(() => {
 		setModalIsVisible(!!employeeIdToRemove);
+		setShowRemovedEmployeeMessage(false);
 		if (employeeIdToRemove) {
 			setEmployeeToRemove(
 				step7State?.employee &&
@@ -81,7 +87,7 @@ export function FormStep7() {
 			return;
 		}
 
-		if (step7State?.employee.length === 0) {
+		if (step7State?.employee && step7State?.employee.length === 0) {
 			setShowErrorMessage(true);
 			return;
 		}
@@ -115,7 +121,7 @@ export function FormStep7() {
 						<SectionAlert
 							focusOnMount
 							onClose={() => setShowAddedEmployeeMessage(false)}
-							title={`${addedUser.firstName} ${addedUser.lastName} has been added as an
+							title={`${addedUser?.firstName} ${addedUser?.lastName} has been added as an
 							employee`}
 							tone="success"
 						/>
@@ -124,7 +130,7 @@ export function FormStep7() {
 						<SectionAlert
 							focusOnMount
 							onClose={() => setShowRemovedEmployeeMessage(false)}
-							title={`${removedUser.firstName} ${removedUser.lastName} has been removed as an
+							title={`${employeeToRemove?.firstName} ${employeeToRemove?.lastName} has been removed as an
 							employee`}
 							tone="success"
 						/>

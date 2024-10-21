@@ -32,7 +32,6 @@ export function FormStep7AddEmployee() {
 		handleSubmit,
 		formState: { errors = {} },
 	} = useForm<Step7FormSchema>({
-		// defaultValues: formState.task?.step1,
 		resolver: zodResolver(step7FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
