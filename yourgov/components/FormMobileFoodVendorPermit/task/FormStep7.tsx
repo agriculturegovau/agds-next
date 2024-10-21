@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
@@ -19,12 +17,10 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
-import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { taskFormSteps, useFormContext } from './FormProvider';
-import { step7FormSchema, type Step7FormSchema } from './FormState';
 
 export function FormStep7() {
 	const { step7GetState, step7SetState, isSavingBeforeExiting } =
@@ -37,11 +33,13 @@ export function FormStep7() {
 		? step7State?.employee &&
 		  step7State.employee.find((employee) => employee.id === query.success)
 		: undefined;
-	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
+	const [isAddedEmployeeMessageVisible, setIsAddedEmployeeMessageVisible] =
 		useState(addedUser);
+	const [isRemovedEmployeeMessageVisible, setIsRemovedEmployeeMessageVisible] =
+		useState(false);
 
 	useEffect(() => {
-		setIsSuccessMessageVisible(addedUser);
+		setIsAddedEmployeeMessageVisible(addedUser);
 	}, [addedUser]);
 
 	const [employeeIdToRemove, setEmployeeIdToRemove] = useState('');
@@ -72,26 +70,14 @@ export function FormStep7() {
 		}
 	}, [employeeIdToRemove, step7State?.employee]);
 
-	const {
-		control,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<Step7FormSchema>({
-		defaultValues: step7State,
-		resolver: isSavingBeforeExiting ? undefined : zodResolver(step7FormSchema),
-		mode: 'onSubmit',
-		reValidateMode: 'onBlur',
-	});
-
-	const typeCorrectedErrors = errors as ShallowErrors<Step7FormSchema>;
-
-	const onSubmit: SubmitHandler<Step7FormSchema> = async (data) => {
+	const onSubmit = async (event) => {
+		event.preventDefault();
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
 		step7SetState({
-			...data,
+			...step7State,
 			completed: !isSavingBeforeExiting,
 			started: true,
 		});
@@ -103,7 +89,7 @@ export function FormStep7() {
 		<FormContainer
 			formTitle="Employees"
 			formIntroduction="Add your employee details."
-			shouldFocusTitle={!isSuccessMessageVisible}
+			shouldFocusTitle={!isAddedEmployeeMessageVisible}
 		>
 			<Stack gap={3}>
 				<Stack gap={2}>
@@ -114,16 +100,23 @@ export function FormStep7() {
 						</Text>
 					</PageAlert>
 					<H2 id="list-of-employees">List of employees</H2>
-					{isSuccessMessageVisible && (
+					{isAddedEmployeeMessageVisible && (
 						<SectionAlert
 							focusOnMount
-							title="Employee added"
+							onClose={() => setIsAddedEmployeeMessageVisible(false)}
+							title={`${addedUser.firstName} ${addedUser.lastName} has been added as an
+							employee`}
 							tone="success"
-							onClose={() => setIsSuccessMessageVisible(false)}
-						>
-							{addedUser.firstName} {addedUser.lastName} has been added as an
-							employee.
-						</SectionAlert>
+						/>
+					)}
+					{isRemovedEmployeeMessageVisible && (
+						<SectionAlert
+							focusOnMount
+							onClose={() => setIsRemovedEmployeeMessageVisible(false)}
+							title={`${removedUser.firstName} ${removedUser.lastName} has been removed as an
+							employee`}
+							tone="success"
+						/>
 					)}
 					{step7State?.employee && step7State.employee.length > 0 ? (
 						<TableWrapper>
@@ -191,7 +184,9 @@ export function FormStep7() {
 					</ButtonLink>
 				</Stack>
 			</Stack>
-			<StepActions />
+			<form onSubmit={onSubmit} noValidate>
+				<StepActions />
+			</form>
 			<Modal
 				isOpen={modalIsVisible}
 				actions={
