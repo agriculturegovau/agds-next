@@ -21,6 +21,7 @@ import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { taskFormSteps, useFormContext } from './FormProvider';
+import { Step7FormSchema } from './FormState';
 
 export function FormStep7() {
 	const { step7GetState, step7SetState, isSavingBeforeExiting } =
@@ -31,7 +32,9 @@ export function FormStep7() {
 	const hasAddedUser = !!query.success;
 	const addedUser = hasAddedUser
 		? step7State?.employee &&
-		  step7State.employee.find((employee) => employee.id === query.success)
+		  step7State.employee.find(
+				(employee: Step7FormSchema['employee']) => employee.id === query.success
+		  )
 		: undefined;
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] =
 		useState(addedUser);
@@ -60,7 +63,9 @@ export function FormStep7() {
 			completed: false,
 			employee:
 				step7State?.employee &&
-				step7State.employee.filter((employee) => employee.id !== id),
+				step7State.employee.filter(
+					(employee: Step7FormSchema['employee']) => employee.id !== id
+				),
 		});
 		closeModal();
 		setTimeout(() => {
@@ -75,7 +80,8 @@ export function FormStep7() {
 			setEmployeeToRemove(
 				step7State?.employee &&
 					step7State.employee.find(
-						(employee) => employee.id === employeeIdToRemove
+						(employee: Step7FormSchema['employee']) =>
+							employee.id === employeeIdToRemove
 					)
 			);
 		}
