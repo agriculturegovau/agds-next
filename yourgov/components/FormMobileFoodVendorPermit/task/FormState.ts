@@ -209,6 +209,7 @@ export type FormState = Completion & {
 	step4: Step4FormSchema & Completion;
 	step5: Step5FormSchema & Completion;
 	step6: Step6FormSchema & Completion;
+	// FIXME: This should have an array of the keys within array
 	step7: Step7FormSchema & Completion;
 	step8: Step8FormSchema & Completion;
 	step9: Step9FormSchema & Completion;

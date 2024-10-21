@@ -87,8 +87,9 @@ export function FormStep7() {
 		}
 	}, [employeeIdToRemove, step7State?.employee]);
 
-	const onSubmit = async (event) => {
+	const onSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
+
 		if (isSavingBeforeExiting) {
 			return;
 		}
