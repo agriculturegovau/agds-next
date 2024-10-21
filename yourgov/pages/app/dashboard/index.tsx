@@ -52,7 +52,7 @@ const Page: NextPageWithLayout = () => {
 								<Stack gap={1}>
 									<IconUsers size="lg" color="action" />
 									<Heading as="h2" type="h3">
-										<CardLink href="/not-found">Manage staff access</CardLink>
+										<CardLink href="/app/staff">Manage staff access</CardLink>
 									</Heading>
 									<Text>
 										Manage people who can act on behalf of the business and
