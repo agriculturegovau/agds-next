@@ -153,39 +153,25 @@ export function FormStep7() {
 									</TableRow>
 								</TableHead>
 								<TableBody>
-									{step7State.employee
-										.sort((a, b) => {
-											if (a.firstName.toLowerCase() < b.firstName.toLowerCase())
-												return -1;
-											if (a.firstName.toLowerCase() > b.firstName.toLowerCase())
-												return 1;
-
-											if (a.lastName.toLowerCase() < b.lastName.toLowerCase())
-												return -1;
-											if (a.lastName.toLowerCase() > b.lastName.toLowerCase())
-												return 1;
-
-											return 0;
-										})
-										.map((employee) => (
-											<TableRow key={employee.id}>
-												<TableCell id={employee.id}>
-													{employee.firstName} {employee.lastName}
-												</TableCell>
-												<TableCell>{employee.email}</TableCell>
-												<TableCell>
-													<Button
-														aria-describedby={employee.id}
-														variant="text"
-														onClick={() => {
-															setEmployeeIdToRemove(employee.id);
-														}}
-													>
-														Remove
-													</Button>
-												</TableCell>
-											</TableRow>
-										))}
+									{step7State.employee.map((employee) => (
+										<TableRow key={employee.id}>
+											<TableCell id={employee.id}>
+												{employee.firstName} {employee.lastName}
+											</TableCell>
+											<TableCell>{employee.email}</TableCell>
+											<TableCell>
+												<Button
+													aria-describedby={employee.id}
+													variant="text"
+													onClick={() => {
+														setEmployeeIdToRemove(employee.id);
+													}}
+												>
+													Remove
+												</Button>
+											</TableCell>
+										</TableRow>
+									))}
 								</TableBody>
 							</Table>
 						</TableWrapper>

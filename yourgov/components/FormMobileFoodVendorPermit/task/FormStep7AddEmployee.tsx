@@ -47,7 +47,18 @@ export function FormStep7AddEmployee() {
 		setTimeout(() => {
 			setIsSaving(false);
 			step7SetState({
-				employee: [...(step7GetState()?.employee || []), data.employee],
+				employee: [...(step7GetState()?.employee || []), data.employee].sort(
+					(a, b) => {
+						if (a.firstName.toLowerCase() < b.firstName.toLowerCase())
+							return -1;
+						if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
+
+						if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+						if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
+
+						return 0;
+					}
+				),
 				completed: false,
 				started: true,
 			});

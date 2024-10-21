@@ -50,7 +50,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 		[key]
 	);
 
-	const stateGettersSettersAndPerStep = useMemo(
+	const stateGettersAndSettersPerStep = useMemo(
 		() => ({
 			step1SetState: (newState: Partial<TaskFormState['step1']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => {
@@ -160,7 +160,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 		hasSynced,
 		formState: globalState,
 		setFormState: setAndSyncGlobalStateAndSessionStorage,
-		...stateGettersSettersAndPerStep,
+		...stateGettersAndSettersPerStep,
 	} as const;
 }
 
