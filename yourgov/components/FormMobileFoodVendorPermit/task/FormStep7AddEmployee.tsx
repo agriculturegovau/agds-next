@@ -1,5 +1,5 @@
-import { Controller, type SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect, useRef, useState } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
@@ -24,13 +24,13 @@ import { taskFormSteps, useFormContext } from './FormProvider';
 
 export function FormStep7AddEmployee() {
 	const router = useRouter();
-	const { formState, step7SetState } = useGlobalForm();
+	const { formState, step7GetState, step7SetState } = useGlobalForm();
+	const uuid = useRef(crypto.randomUUID());
 
 	const {
 		register,
 		handleSubmit,
-		formState: { errors = {}, isDirty },
-		watch,
+		formState: { errors = {} },
 	} = useForm<Step7FormSchema>({
 		// defaultValues: formState.task?.step1,
 		resolver: zodResolver(step7FormSchema),
@@ -43,16 +43,15 @@ export function FormStep7AddEmployee() {
 	const step7Path = taskFormSteps[6].href;
 
 	const onSubmit: SubmitHandler<Step7FormSchema> = (data) => {
-		console.log(`data`, data);
 		setIsSaving(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
 			step7SetState({
-				...data,
+				employee: [...(step7GetState()?.employee || []), data.employee],
 				started: true,
 			});
-			router.push(`${step7Path}?success=true`);
+			router.push(`${step7Path}?success=${uuid.current}`);
 		}, 1500);
 	};
 
@@ -127,14 +126,12 @@ export function FormStep7AddEmployee() {
 								{showErrorAlert && errors?.employee && (
 									<FormPageAlert errors={errors?.employee} />
 								)}
-								<TextInput
-									label="ID"
+								<input
 									{...register('employee.id')}
 									id="employee.id"
-									invalid={Boolean(errors?.employee?.id?.message)}
-									message={errors?.employee?.id?.message}
-									maxWidth="lg"
-									value={Math.random().toString()}
+									type="hidden"
+									value={uuid.current}
+									required
 								/>
 								<TextInput
 									label="First name"
