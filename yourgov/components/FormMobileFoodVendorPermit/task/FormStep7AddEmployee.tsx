@@ -49,6 +49,7 @@ export function FormStep7AddEmployee() {
 			setIsSaving(false);
 			step7SetState({
 				employee: [...(step7GetState()?.employee || []), data.employee],
+				completed: false,
 				started: true,
 			});
 			router.push(`${step7Path}?success=${uuid.current}`);

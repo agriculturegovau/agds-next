@@ -57,6 +57,7 @@ export function FormStep7() {
 			...step7GetState,
 			// FIXME: Why do I have to set this here? Why does the state not include it?
 			started: true,
+			completed: false,
 			employee: step7State.employee.filter((employee) => employee.id !== id),
 		});
 		closeModal();
