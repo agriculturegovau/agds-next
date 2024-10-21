@@ -1,6 +1,6 @@
-import { Select } from '../../../../../packages/react/src/select';
-import { StaffMember } from '../_lib/types';
-import { useSortAndFilterContext } from '../_lib/contexts';
+import { Select } from '@ag.ds-next/react/src/select';
+import { StaffMember } from './lib/types';
+import { useSortAndFilterContext } from './lib/contexts';
 import { tableId } from './DataTable';
 
 export const SortBySelect = () => {

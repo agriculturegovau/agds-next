@@ -1,6 +1,6 @@
-import { Box } from '../../../../../packages/react/box';
-import { Switch } from '../../../../../packages/react/src/switch';
-import { useSortAndFilterContext } from '../_lib/contexts';
+import { Box } from '@ag.ds-next/react/box';
+import { Switch } from '@ag.ds-next/react/src/switch';
+import { useSortAndFilterContext } from './lib/contexts';
 import { tableId } from './DataTable';
 
 export const FilterSwitchInput = () => {

@@ -1,11 +1,11 @@
-import { Flex } from '../../../../../packages/react/src/flex';
-import { Avatar } from '../../../../../packages/react/src/avatar';
-import { TableCell, TableRow } from '../../../../../packages/react/src/table';
-import { Text } from '../../../../../packages/react/src/text';
-import { Checkbox } from '../../../../../packages/react/src/checkbox';
-import { VisuallyHidden } from '../../../../../packages/react/src/a11y';
-import { StatusBadge } from '../../../../../packages/react/src/status-badge';
-import { useSortAndFilterContext } from '../_lib/contexts';
+import { Flex } from '@ag.ds-next/react/src/flex';
+import { Avatar } from '@ag.ds-next/react/src/avatar';
+import { TableCell, TableRow } from '@ag.ds-next/react/src/table';
+import { Text } from '@ag.ds-next/react/src/text';
+import { Checkbox } from '@ag.ds-next/react/src/checkbox';
+import { VisuallyHidden } from '@ag.ds-next/react/src/a11y';
+import { StatusBadge } from '@ag.ds-next/react/src/status-badge';
+import { useSortAndFilterContext } from './lib/contexts';
 
 export const DataTableRowAssignee = ({
 	assignee,

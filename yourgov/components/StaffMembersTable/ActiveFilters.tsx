@@ -1,11 +1,11 @@
-import { Text } from '../../../../../packages/react/src/text';
-import { Flex } from '../../../../../packages/react/src/flex';
-import { Button } from '../../../../../packages/react/src/button';
-import { CloseIcon } from '../../../../../packages/react/src/icon';
-import { Tags } from '../../../../../packages/react/src/tags';
-import { GetDataFilters } from '../_lib/types';
-import { useSortAndFilterContext } from '../_lib/contexts';
-import { STATUS_MAP } from '../_lib/utils';
+import { Text } from '@ag.ds-next/react/src/text';
+import { Flex } from '@ag.ds-next/react/src/flex';
+import { Button } from '@ag.ds-next/react/src/button';
+import { CloseIcon } from '@ag.ds-next/react/src/icon';
+import { Tags } from '@ag.ds-next/react/src/tags';
+import { GetDataFilters } from './lib/types';
+import { useSortAndFilterContext } from './lib/contexts';
+import { STATUS_MAP } from './lib/utils';
 
 type Entries<T> = {
 	[K in keyof T]: [K, T[K]];

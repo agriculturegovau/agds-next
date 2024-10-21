@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { Checkbox } from '../../../../../packages/react/src/checkbox';
-import { useDataContext, useSortAndFilterContext } from '../_lib/contexts';
-import { StaffMemberWithIndex } from '../_lib/types';
+import { Checkbox } from '@ag.ds-next/react/src/checkbox';
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
+import { StaffMemberWithIndex } from './lib/types';
 
 export const DataTableSelectAllCheckbox = () => {
 	const { data } = useDataContext();

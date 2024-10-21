@@ -1,10 +1,10 @@
-import { Button, ButtonGroup } from '../../../../../packages/react/src/button';
+import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import {
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
-} from '../../../../../packages/react/src/table';
-import { plural } from '../_lib/utils';
-import { useSortAndFilterContext } from '../_lib/contexts';
+} from '@ag.ds-next/react/src/table';
+import { plural } from './lib/utils';
+import { useSortAndFilterContext } from './lib/contexts';
 
 export const DataTableBatchActionsBar = () => {
 	const { selection, clearRowSelections } = useSortAndFilterContext();

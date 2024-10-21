@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import {
 	PaginationButtons,
 	generatePaginationRangeText,
-} from '../../../../../packages/react/src/pagination';
-import { useDataContext, useSortAndFilterContext } from '../_lib/contexts';
+} from '@ag.ds-next/react/src/pagination';
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 
 export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();

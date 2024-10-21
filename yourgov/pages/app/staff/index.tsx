@@ -32,7 +32,7 @@ import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../_app';
 import { mockApplicationHistory } from '../../../data/mockLicencesAndPermits';
-import { StaffMembersTable } from './StaffMembersTable';
+import { StaffMembersTable } from '../../../components/StaffMembersTable/StaffMembersTable';
 
 const Page: NextPageWithLayout = () => {
 	const tableRef = useRef<HTMLTableElement>(null);

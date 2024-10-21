@@ -1,6 +1,6 @@
-import { Select } from '../../../../../packages/react/src/select';
-import { useSortAndFilterContext } from '../_lib/contexts';
-import { StaffMemberStatus } from '../_lib/types';
+import { Select } from '@ag.ds-next/react/src/select';
+import { useSortAndFilterContext } from './lib/contexts';
+import { StaffMemberStatus } from './lib/types';
 import { tableId } from './DataTable';
 
 export const FilterStatusSelect = ({ block }: { block?: boolean }) => {

@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { Stack } from '../../../../../packages/react/src/stack';
-import { Fieldset } from '../../../../../packages/react/src/fieldset';
-import { FormStack } from '../../../../../packages/react/src/form-stack';
-import { Divider } from '../../../../../packages/react/src/divider';
-import { Drawer } from '../../../../../packages/react/src/drawer';
-import { Button, ButtonGroup } from '../../../../../packages/react/src/button';
-import { GetDataFilters } from '../_lib/types';
-import {
-	SortAndFilterProvider,
-	useSortAndFilterContext,
-} from '../_lib/contexts';
+import { Stack } from '@ag.ds-next/react/src/stack';
+import { Fieldset } from '@ag.ds-next/react/src/fieldset';
+import { FormStack } from '@ag.ds-next/react/src/form-stack';
+import { Divider } from '@ag.ds-next/react/src/divider';
+import { Drawer } from '@ag.ds-next/react/src/drawer';
+import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
+import { GetDataFilters } from './lib/types';
+import { SortAndFilterProvider, useSortAndFilterContext } from './lib/contexts';
 import { FilterStatusSelect } from './FilterStatusSelect';
 
 type DashboardFilterDrawerProps = {

@@ -3,11 +3,8 @@ import { format, formatDistance } from 'date-fns';
 import {
 	VisuallyHidden,
 	visuallyHiddenStyles,
-} from '../../../../../packages/react/src/a11y';
-import {
-	SkeletonBox,
-	SkeletonText,
-} from '../../../../../packages/react/src/skeleton';
+} from '@ag.ds-next/react/src/a11y';
+import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/src/skeleton';
 import {
 	Table,
 	TableBody,
@@ -19,20 +16,17 @@ import {
 	TableHeaderSortable,
 	TableWrapper,
 	TableRow,
-} from '../../../../../packages/react/src/table';
-import { TextLink } from '../../../../../packages/react/src/text-link';
-import { Text } from '../../../../../packages/react/src/text';
-import { Stack } from '../../../../../packages/react/src/stack';
-import {
-	AlertFilledIcon,
-	HelpIcon,
-} from '../../../../../packages/react/src/icon';
-import { Heading } from '../../../../../packages/react/src/heading';
-import { Button } from '../../../../../packages/react/src/button';
-import { generateTableCaption } from '../_lib/utils';
-import { useDataContext, useSortAndFilterContext } from '../_lib/contexts';
-import { StaffMember } from '../_lib/types';
-import { LAST_ACTIVE_RELATIVE_TIME_MS } from '../_lib/staffMembers';
+} from '@ag.ds-next/react/src/table';
+import { TextLink } from '@ag.ds-next/react/src/text-link';
+import { Text } from '@ag.ds-next/react/src/text';
+import { Stack } from '@ag.ds-next/react/src/stack';
+import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/src/icon';
+import { Heading } from '@ag.ds-next/react/src/heading';
+import { Button } from '@ag.ds-next/react/src/button';
+import { generateTableCaption } from './lib/utils';
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
+import { StaffMember } from './lib/types';
+import { LAST_ACTIVE_RELATIVE_TIME_MS } from './lib/staffMembers';
 import { DataTableRow, DataTableRowStatus } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 

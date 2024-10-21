@@ -4,22 +4,18 @@ import { Button } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
 import { FilterIcon } from '@ag.ds-next/react/src/icon';
 import { Box } from '@ag.ds-next/react/src/box';
-import { ActiveFilters } from './_components/ActiveFilters';
-import { SortBySelect } from './_components/SortBySelect';
-import { DataTable } from './_components/DataTable';
-import { DashboardFilterDrawer } from './_components/DashboardFilterDrawer';
-import { FilterSearchInput } from './_components/FilterSearchInput';
-import {
-	FilterBar,
-	FilterBarGroup,
-	FilterRegion,
-} from './_components/FilterBar';
-import { DashboardPagination } from './_components/DashboardPagination';
-import { DataTableSelectAllCheckbox } from './_components/DataTableSelectAllCheckbox';
-import { DataProvider, SortAndFilterProvider } from './_lib/contexts';
-import { useSortAndFilter } from './_lib/useSortAndFilter';
-import { useFetchData } from './_lib/useFetchData';
-import { FilterSwitchInput } from './_components/FilterSwitchInput';
+import { DataProvider, SortAndFilterProvider } from './lib/contexts';
+import { useSortAndFilter } from './lib/useSortAndFilter';
+import { useFetchData } from './lib/useFetchData';
+import { ActiveFilters } from './ActiveFilters';
+import { SortBySelect } from './SortBySelect';
+import { DataTable } from './DataTable';
+import { DashboardFilterDrawer } from './DashboardFilterDrawer';
+import { FilterSearchInput } from './FilterSearchInput';
+import { FilterBar, FilterBarGroup, FilterRegion } from './FilterBar';
+import { DashboardPagination } from './DashboardPagination';
+import { DataTableSelectAllCheckbox } from './DataTableSelectAllCheckbox';
+import { FilterSwitchInput } from './FilterSwitchInput';
 
 type StaffMembersTableProps = {
 	selectable?: boolean;
