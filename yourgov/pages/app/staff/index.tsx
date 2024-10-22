@@ -51,7 +51,7 @@ const Page: NextPageWithLayout = () => {
 							<>
 								Manage who can act for{' '}
 								<Text fontSize="md" fontWeight="bold">
-									Walkers Frozen Food
+									Walker‘s Frozen Food
 								</Text>
 								.
 							</>
@@ -148,7 +148,7 @@ const Page: NextPageWithLayout = () => {
 
 														<TableCell>
 															<StatusBadge
-																weight="subtle"
+																appearance="subtle"
 																{...application.status}
 															/>
 														</TableCell>

@@ -68,7 +68,7 @@ export const StaffMembersTable = ({
 						<ActiveFilters />
 					</FilterRegion>
 
-					{selectable && (
+					{selectable && !!data.totalItems && (
 						<Box borderBottom padding={1}>
 							<DataTableSelectAllCheckbox />
 						</Box>

@@ -137,6 +137,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 															? 'DESC'
 															: 'ASC',
 												});
+
 											return (
 												<TableHeaderSortable
 													key={sortKey}
@@ -151,6 +152,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												</TableHeaderSortable>
 											);
 										}
+
 										return (
 											<TableHeader key={sortKey} scope="col" width={width}>
 												{label}
@@ -171,22 +173,27 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													<VisuallyHidden>Loading</VisuallyHidden>
 												</TableCell>
 											)}
+
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
+
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
+
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
+
 											<TableCell>
 												<SkeletonText />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
+
 											<TableCell>
 												<SkeletonBox height={32} />
 												<VisuallyHidden>Loading</VisuallyHidden>
@@ -269,7 +276,7 @@ const headers: {
 		label: 'Status',
 		sortKey: 'status',
 		width: { xs: '16rem', lg: 'auto' },
-		isSortable: false,
+		isSortable: true,
 	},
 	{
 		label: 'Last active',

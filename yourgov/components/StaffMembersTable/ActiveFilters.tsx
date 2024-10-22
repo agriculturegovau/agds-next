@@ -33,7 +33,7 @@ const getTagsFromFilters = ({
 		if (key === 'activeUsers') {
 			if (!value) continue;
 			tags.push({
-				label: `${formattedKey}: Active users`,
+				label: 'Active users',
 				onRemove,
 			});
 			continue;

@@ -92,7 +92,7 @@ const Page: NextPageWithLayout = () => {
 														<TableCell>{approval.type}</TableCell>
 														<TableCell>
 															<StatusBadge
-																weight="subtle"
+																appearance="subtle"
 																{...approval.status}
 															/>
 														</TableCell>
@@ -140,7 +140,7 @@ const Page: NextPageWithLayout = () => {
 														<TableCell>{application.type}</TableCell>
 														<TableCell>
 															<StatusBadge
-																weight="subtle"
+																appearance="subtle"
 																{...application.status}
 															/>
 														</TableCell>
