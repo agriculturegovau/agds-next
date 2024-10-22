@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
@@ -29,65 +29,62 @@ export function FormStep7() {
 	const { submitStep } = useFormContext();
 	const { query } = useRouter();
 	const step7State = step7GetState();
-	const hasAddedUser = !!query.success;
-	const addedUser = hasAddedUser
-		? step7State?.employee &&
-		  step7State.employee.find(
-				(employee: Step7FormSchema['employee']) => employee.id === query.success
-		  )
-		: undefined;
-	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] =
-		useState(addedUser);
+
+	const [employeeIdToRemove, setEmployeeIdToRemove] = useState('');
+	const [employeeToRemove, setEmployeeToRemove] =
+		useState<Partial<Step7FormSchema['employee']>>();
+
+	const [modalIsVisible, setModalIsVisible] = useState(false);
 	const [showRemovedEmployeeMessage, setShowRemovedEmployeeMessage] =
 		useState(false);
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+	const addedEmployee = query.success
+		? step7State?.employee &&
+		  step7State.employee.find((employee) => employee?.id === query.success)
+		: undefined;
+	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
+		!!addedEmployee
+	);
 	useEffect(() => {
-		setShowAddedEmployeeMessage(addedUser);
-	}, [addedUser]);
-
-	const [employeeIdToRemove, setEmployeeIdToRemove] = useState('');
-	const [employeeToRemove, setEmployeeToRemove] = useState({});
-	const [modalIsVisible, setModalIsVisible] = useState(false);
+		setShowAddedEmployeeMessage(!!addedEmployee);
+	}, [addedEmployee]);
 
 	const closeModal = () => {
-		setShowAddedEmployeeMessage('');
+		setShowAddedEmployeeMessage(false);
 		setEmployeeIdToRemove('');
 	};
+
+	useEffect(() => {
+		setModalIsVisible(!!employeeIdToRemove);
+		setShowRemovedEmployeeMessage(false);
+
+		if (employeeIdToRemove) {
+			setEmployeeToRemove(
+				step7State?.employee &&
+					step7State.employee.find(
+						(employee) => employee?.id === employeeIdToRemove
+					)
+			);
+		}
+	}, [employeeIdToRemove, step7State?.employee]);
 
 	const removeEmployee = (id: string) => {
 		step7SetState({
 			...step7GetState,
-			// FIXME: Why do I have to set this here? Why does the state not include it?
-			started: true,
 			completed: false,
 			employee:
 				step7State?.employee &&
-				step7State.employee.filter(
-					(employee: Step7FormSchema['employee']) => employee.id !== id
-				),
+				step7State.employee.filter((employee) => employee?.id !== id),
 		});
+
 		closeModal();
 		setTimeout(() => {
 			setShowRemovedEmployeeMessage(true);
 		}, 0);
 	};
 
-	useEffect(() => {
-		setModalIsVisible(!!employeeIdToRemove);
-		setShowRemovedEmployeeMessage(false);
-		if (employeeIdToRemove) {
-			setEmployeeToRemove(
-				step7State?.employee &&
-					step7State.employee.find(
-						(employee: Step7FormSchema['employee']) =>
-							employee.id === employeeIdToRemove
-					)
-			);
-		}
-	}, [employeeIdToRemove, step7State?.employee]);
-
-	const onSubmit = async (event: SubmitEvent) => {
+	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
 
 		if (isSavingBeforeExiting) {
@@ -128,7 +125,7 @@ export function FormStep7() {
 						<SectionAlert
 							focusOnMount
 							onClose={() => setShowAddedEmployeeMessage(false)}
-							title={`${addedUser?.firstName} ${addedUser?.lastName} has been added as an
+							title={`${addedEmployee?.firstName} ${addedEmployee?.lastName} has been added as an
 							employee`}
 							tone="success"
 						/>
@@ -153,25 +150,29 @@ export function FormStep7() {
 									</TableRow>
 								</TableHead>
 								<TableBody>
-									{step7State.employee.map((employee) => (
-										<TableRow key={employee.id}>
-											<TableCell id={employee.id}>
-												{employee.firstName} {employee.lastName}
-											</TableCell>
-											<TableCell>{employee.email}</TableCell>
-											<TableCell>
-												<Button
-													aria-describedby={employee.id}
-													variant="text"
-													onClick={() => {
-														setEmployeeIdToRemove(employee.id);
-													}}
-												>
-													Remove
-												</Button>
-											</TableCell>
-										</TableRow>
-									))}
+									{step7State.employee.map(
+										(employee) =>
+											employee?.id && (
+												<TableRow key={employee.id}>
+													<TableCell id={employee.id}>
+														{employee.firstName} {employee.lastName}
+													</TableCell>
+													<TableCell>{employee.email}</TableCell>
+													<TableCell>
+														<Button
+															aria-describedby={employee.id}
+															variant="text"
+															onClick={() => {
+																if (!employee?.id) return;
+																setEmployeeIdToRemove(employee.id);
+															}}
+														>
+															Remove
+														</Button>
+													</TableCell>
+												</TableRow>
+											)
+									)}
 								</TableBody>
 							</Table>
 						</TableWrapper>

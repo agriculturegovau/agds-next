@@ -114,12 +114,15 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 			step7GetState: () => {
 				return globalState.task?.step7;
 			},
-			step7SetState: (newState: Partial<TaskFormState['step7']>) => {
+			step7SetState: (newState: DeepPartial<TaskFormState['step7']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					task: {
 						...prevState.task,
-						step7: newState,
+						step7: {
+							started: true, // When the state is set, the task has been started
+							...newState,
+						},
 					},
 				}));
 			},

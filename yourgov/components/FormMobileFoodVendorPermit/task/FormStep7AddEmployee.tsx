@@ -49,6 +49,9 @@ export function FormStep7AddEmployee() {
 			step7SetState({
 				employee: [...(step7GetState()?.employee || []), data.employee].sort(
 					(a, b) => {
+						if (!a?.firstName || !b?.firstName || !a?.lastName || !b.lastName)
+							return -1;
+
 						if (a.firstName.toLowerCase() < b.firstName.toLowerCase())
 							return -1;
 						if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
@@ -60,7 +63,6 @@ export function FormStep7AddEmployee() {
 					}
 				),
 				completed: false,
-				started: true,
 			});
 			router.push(`${step7Path}?success=${uuid.current}`);
 		}, 1500);
@@ -179,7 +181,7 @@ export function FormStep7AddEmployee() {
 							<Divider />
 							<ButtonGroup>
 								<Button type="submit" loading={isSaving}>
-									Save changes
+									Add employee
 								</Button>
 								<Button variant="tertiary" onClick={onCancelClick}>
 									Cancel
