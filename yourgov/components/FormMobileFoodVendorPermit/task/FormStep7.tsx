@@ -89,6 +89,7 @@ export function FormStep7() {
 		}
 
 		if (step7State?.employee && step7State?.employee.length === 0) {
+			setShowRemovedEmployeeMessage(false);
 			setShowErrorMessage(true);
 			return;
 		}
