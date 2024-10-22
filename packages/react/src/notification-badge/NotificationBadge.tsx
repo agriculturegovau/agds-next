@@ -23,14 +23,7 @@ export const NotificationBadge = ({
 	const backgroundColor = badgeToneMap[tone];
 	return (
 		<Text
-			display="inline-flex"
 			alignItems="center"
-			justifyContent="center"
-			height={mapSpacing(1.5)}
-			paddingX={0.5}
-			rounded
-			fontSize="sm"
-			lineHeight="nospace"
 			aria-hidden={ariaHidden}
 			css={{
 				color: boxPalette.backgroundBody,
@@ -38,6 +31,14 @@ export const NotificationBadge = ({
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),
 			}}
+			display="inline-flex"
+			fontSize="sm"
+			height={mapSpacing(1.5)}
+			highContrastOutline
+			justifyContent="center"
+			lineHeight="nospace"
+			paddingX={0.5}
+			rounded
 		>
 			{max === undefined || value <= max ? value : `${max}+`}
 		</Text>
