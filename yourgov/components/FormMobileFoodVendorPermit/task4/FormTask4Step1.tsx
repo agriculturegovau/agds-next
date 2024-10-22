@@ -1,10 +1,10 @@
 import { FormEvent } from 'react';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
-import { globalFormTasks } from './globalFormTasks';
-import { FormActions } from './FormActions';
+import { globalFormTasks } from '../globalFormTasks';
+import { StepActions } from '../StepActions';
+import { FormTask1Step7Review } from '../task1/FormTask1Step7Review';
 import { FormTask4Container } from './FormTask4Container';
-import { FormTask1Review } from './FormTask1Review';
 
 export function FormTask4Step1() {
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -20,7 +20,7 @@ export function FormTask4Step1() {
 			{/** Provide business details */}
 			<Stack gap={1.5}>
 				<H2>{globalFormTasks[0].label}</H2>
-				<FormTask1Review headingsLevel="h3" />
+				<FormTask1Step7Review headingsLevel="h3" />
 			</Stack>
 			{/** Provide employee details */}
 			<Stack gap={1.5}>
@@ -38,7 +38,7 @@ export function FormTask4Step1() {
 				<p>TODO</p>
 			</Stack>
 			<form onSubmit={onSubmit}>
-				<FormActions />
+				<StepActions />
 			</form>
 		</FormTask4Container>
 	);

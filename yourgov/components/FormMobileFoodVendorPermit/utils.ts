@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
+import { type FieldValues } from 'react-hook-form';
+import { type FormStep, type TaskKey } from './FormState';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -31,3 +33,29 @@ export const yupPhoneField = yup
 			"Mobile numbers must begin with '04', landline numbers must begin with an area code",
 	})
 	.length(10, 'Phone number must be 10 digits');
+
+export function hasMultipleErrors(errors: FieldValues) {
+	return Object.keys(errors).length > 1;
+}
+
+export const formHomePage =
+	'/app/licences-and-permits/apply/mobile-food-vendor-permit/form';
+
+type GetTaskNavigationUrlParams = {
+	steps: Array<FormStep>;
+	currentStepIndex: number;
+	taskHighlight: number;
+};
+
+export function getTaskCompletionUrl({
+	currentStepIndex,
+	steps,
+	taskHighlight,
+}: GetTaskNavigationUrlParams) {
+	const nextStepUrl = steps[currentStepIndex + 1]?.href;
+	return nextStepUrl || `${formHomePage}?taskHighlight=${taskHighlight}`;
+}
+
+export function getPrevTaskKey(currentTaskKey: TaskKey) {
+	return `task${Number(currentTaskKey.replace('task', '')) - 1}` as TaskKey;
+}

@@ -6,16 +6,16 @@ export { globalFormTasks } from './globalFormTasks';
 export { GettingStartedForm } from './GettingStartedForm';
 
 // Task 1
-export { FormTask1Provider, task1FormSteps } from './FormTask1Provider';
-export { FormTask1Step1 } from './FormTask1Step1';
-export { FormTask1Step1ChangeDetails } from './FormTask1Step1ChangeDetails';
-export { FormTask1Step2 } from './FormTask1Step2';
-export { FormTask1Step3 } from './FormTask1Step3';
-export { FormTask1Step4 } from './FormTask1Step4';
-export { FormTask1Step5 } from './FormTask1Step5';
-export { FormTask1Step6 } from './FormTask1Step6';
-export { FormTask1Step7 } from './FormTask1Step7';
-export { FormTask1Review } from './FormTask1Review';
+export { FormTask1Provider, task1FormSteps } from './task1/FormTask1Provider';
+export { FormTask1Step1 } from './task1/FormTask1Step1';
+export { FormTask1Step1ChangeDetails } from './task1/FormTask1Step1ChangeDetails';
+export { FormTask1Step2 } from './task1/FormTask1Step2';
+export { FormTask1Step3 } from './task1/FormTask1Step3';
+export { FormTask1Step4 } from './task1/FormTask1Step4';
+export { FormTask1Step5 } from './task1/FormTask1Step5';
+export { FormTask1Step6 } from './task1/FormTask1Step6';
+export { FormTask1Step7 } from './task1/FormTask1Step7';
+export { FormTask1Step7Review } from './task1/FormTask1Step7Review';
 
 // Task 4
-export { FormTask4Step1 } from './FormTask4Step1';
+export { FormTask4Step1 } from './task4/FormTask4Step1';

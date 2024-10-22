@@ -1,34 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
-import { useScrollToField } from '@ag.ds-next/react/field';
-import { Text } from '@ag.ds-next/react/text';
-import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
+import { FormPageAlert } from '../FormPageAlert';
+import { hasMultipleErrors } from '../utils';
+import { StepActions } from '../StepActions';
+import { useGlobalForm } from '../GlobalFormProvider';
 import { FormTask1Container } from './FormTask1Container';
-import { FormActions } from './FormActions';
-import { useGlobalForm } from './GlobalFormProvider';
 import { useFormTask1Context } from './FormTask1Provider';
 import {
 	task1Step3FormSchema,
-	Task1Step3FormSchema,
+	type Task1Step3FormSchema,
 } from './FormTask1FormState';
 
 export function FormTask1Step3() {
-	const { formState, setFormState } = useGlobalForm();
+	const { formState, setFormState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormTask1Context();
-
-	const scrollToField = useScrollToField();
-	const errorRef = useRef<HTMLDivElement>(null);
-	const [focusedError, setFocusedError] = useState(false);
 
 	const {
 		watch,
@@ -37,80 +29,46 @@ export function FormTask1Step3() {
 		formState: { errors },
 	} = useForm<Task1Step3FormSchema>({
 		defaultValues: formState.task1?.step3,
-		resolver: yupResolver(task1Step3FormSchema),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(task1Step3FormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<Task1Step3FormSchema> = async (data) => {
-		setFocusedError(false);
+		if (isSavingBeforeExiting) {
+			return;
+		}
 		await submitStep();
 		setFormState({
 			...formState,
-			task1: { ...formState.task1, step3: { ...data, completed: true } },
+			task1: {
+				...formState.task1,
+				step3: {
+					...data,
+					completed: !isSavingBeforeExiting,
+					started: true,
+				},
+			},
 		});
 	};
 
-	const onError = () => {
-		setFocusedError(false);
-	};
+	const showErrorAlert = hasMultipleErrors(errors);
 
-	// As our form schema contains nested objects, we are converting the errors from a nested object to a simple flat array
-	const flatErrors = Object.entries(errors)
-		.map(([key, value]) => {
-			if ('message' in value) return { key, message: value.message };
-		})
-		.filter((item): item is { key: string; message: string } =>
-			Boolean(item?.message)
-		);
-
-	// Only show the page alert if there is more than 1 error
-	const hasErrors = Object.keys(errors).length > 1;
-
-	useEffect(() => {
-		if (hasErrors && !focusedError) {
-			errorRef.current?.focus();
-			setFocusedError(true);
-		}
-	}, [hasErrors, focusedError, errors]);
-
-	const isPostalAddressSameAsStreetAddress = watch(
-		'isPostalAddressSameAsStreetAddress'
+	const isPostalAddressSameAsBusinessAddress = watch(
+		'isPostalAddressSameAsBusinessAddress'
 	);
 
 	return (
 		<FormTask1Container
 			formTitle="Business address"
 			formIntroduction="Add your business address."
-			formCallToAction={<FormRequiredFieldsMessage />}
 		>
-			<Stack
-				as="form"
-				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
-				noValidate
-			>
-				{hasErrors && (
-					<PageAlert
-						ref={errorRef}
-						tabIndex={-1}
-						tone="error"
-						title={<PageAlertTitle as="h2">There is a problem</PageAlertTitle>}
-					>
-						<Text as="p">
-							Please correct the following fields and try again
-						</Text>
-						<UnorderedList>
-							{flatErrors.map((error) => (
-								<ListItem key={error.key}>
-									<TextLink href={`#${error.key}`} onClick={scrollToField}>
-										{error.message}
-									</TextLink>
-								</ListItem>
-							))}
-						</UnorderedList>
-					</PageAlert>
-				)}
+			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+				{showErrorAlert && <FormPageAlert errors={errors} />}
 				<FormStack>
-					<Fieldset legend="Street address">
+					<Fieldset legend={<H2>Business address</H2>}>
 						<FormStack>
 							<TextInput
 								label="Street address"
@@ -128,6 +86,7 @@ export function FormTask1Step3() {
 								invalid={Boolean(errors.suburbTownCity?.message)}
 								message={errors.suburbTownCity?.message}
 								required
+								maxWidth="lg"
 							/>
 							<Select
 								label="State or territory"
@@ -147,7 +106,7 @@ export function FormTask1Step3() {
 								invalid={Boolean(errors.state?.message)}
 								message={errors.state?.message}
 								required
-								maxWidth="md"
+								maxWidth="sm"
 							/>
 							<TextInput
 								label="Postcode"
@@ -162,15 +121,17 @@ export function FormTask1Step3() {
 							/>
 						</FormStack>
 					</Fieldset>
-					<Fieldset legend="Postal address">
+				</FormStack>
+				<FormStack>
+					<Fieldset legend={<H2>Postal address</H2>}>
 						<FormStack>
 							<Checkbox
-								{...register('isPostalAddressSameAsStreetAddress')}
-								id="isPostalAddressSameAsStreetAddress"
+								{...register('isPostalAddressSameAsBusinessAddress')}
+								id="isPostalAddressSameAsBusinessAddress"
 							>
-								Same as street address
+								Same as business address
 							</Checkbox>
-							{!isPostalAddressSameAsStreetAddress && (
+							{!isPostalAddressSameAsBusinessAddress && (
 								<FormStack>
 									<TextInput
 										label="Postal address"
@@ -188,6 +149,7 @@ export function FormTask1Step3() {
 										invalid={Boolean(errors.postalSuburbTownCity?.message)}
 										message={errors.postalSuburbTownCity?.message}
 										required
+										maxWidth="lg"
 									/>
 									<Select
 										label="State or territory"
@@ -207,7 +169,7 @@ export function FormTask1Step3() {
 										invalid={Boolean(errors.postalState?.message)}
 										message={errors.postalState?.message}
 										required
-										maxWidth="md"
+										maxWidth="sm"
 									/>
 									<TextInput
 										label="Postcode"
@@ -225,7 +187,7 @@ export function FormTask1Step3() {
 						</FormStack>
 					</Fieldset>
 				</FormStack>
-				<FormActions />
+				<StepActions />
 			</Stack>
 		</FormTask1Container>
 	);

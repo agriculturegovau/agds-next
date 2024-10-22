@@ -40,7 +40,7 @@ const Page: NextPageWithLayout = () => {
 									<IconApproval size="lg" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/licences-and-permits">
-											Manage licences and permits
+											Manage permits
 										</CardLink>
 									</Heading>
 									<Text>Apply for and manage your business approvals</Text>
@@ -88,13 +88,13 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<Heading as="h2" type="h3">
-											<CardLink href="/not-found">
-												Liquor licencing and information
+											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
+												Apply for a permit
 											</CardLink>
 										</Heading>
 										<Text>
-											Use the liquor licence tool to quickly find the right
-											licence for your specific situation.
+											Use the permit tool to quickly create a new permit
+											application.
 										</Text>
 									</Stack>
 								</CardInner>
