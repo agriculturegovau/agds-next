@@ -103,108 +103,106 @@ export function FormStep7() {
 
 	return (
 		<FormContainer
-			formTitle="Employees"
 			formIntroduction="Add your employee details."
+			formTitle="Employees"
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>
-			<Stack gap={3}>
-				<Stack gap={2}>
-					{showErrorMessage && (
-						<PageAlert focusOnMount title="No employees added" tone="error">
-							<Text as="p">
-								You need to add some staff. You’re amazing, but you can’t do
-								this alone. Life is better with friends and team mates.
-							</Text>
-						</PageAlert>
-					)}
-					<H2 id="list-of-employees">List of employees</H2>
-					{showAddedEmployeeMessage && (
-						<SectionAlert
-							focusOnMount
-							onClose={() => setShowAddedEmployeeMessage(false)}
-							title={`${addedEmployee?.firstName} ${addedEmployee?.lastName} has been added as an
+			<Stack gap={2}>
+				{showErrorMessage && (
+					<PageAlert focusOnMount title="No employees added" tone="error">
+						<Text as="p">
+							You need to add some staff. You’re amazing, but you can’t do this
+							alone. Life is better with friends and team mates.
+						</Text>
+					</PageAlert>
+				)}
+				<H2 id="list-of-employees">List of employees</H2>
+				{showAddedEmployeeMessage && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => setShowAddedEmployeeMessage(false)}
+						title={`${addedEmployee?.firstName} ${addedEmployee?.lastName} has been added as an
 							employee`}
-							tone="success"
-						/>
-					)}
-					{showRemovedEmployeeMessage && (
-						<SectionAlert
-							focusOnMount
-							onClose={() => setShowRemovedEmployeeMessage(false)}
-							title={`${removedEmployee} has been removed as an
+						tone="success"
+					/>
+				)}
+				{showRemovedEmployeeMessage && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => setShowRemovedEmployeeMessage(false)}
+						title={`${removedEmployee} has been removed as an
 							employee`}
-							tone="success"
-						/>
-					)}
-					{step7State?.employee && step7State.employee.length > 0 ? (
-						<TableWrapper>
-							<Table aria-labelledby="list-of-employees">
-								<TableHead>
-									<TableRow>
-										<TableHeader>Employee name</TableHeader>
-										<TableHeader>Email address</TableHeader>
-										<TableHeader>Action</TableHeader>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{step7State.employee.map(
-										(employee) =>
-											employee?.id && (
-												<TableRow key={employee.id}>
-													<TableCell id={employee.id}>
-														{employee.firstName} {employee.lastName}
-													</TableCell>
-													<TableCell>{employee.email}</TableCell>
-													<TableCell>
-														<Button
-															aria-describedby={employee.id}
-															variant="text"
-															onClick={() => {
-																setEmployeeToRemove(employee);
-															}}
-														>
-															Remove
-														</Button>
-													</TableCell>
-												</TableRow>
-											)
-									)}
-								</TableBody>
-							</Table>
-						</TableWrapper>
-					) : (
-						<Stack gap={1}>
-							<AvatarIcon size="lg" color="muted" />
-							<H3>No employees added</H3>
-							<Text as="p">You must add an employee to proceed.</Text>
-						</Stack>
-					)}
-					<ButtonLink
-						alignSelf="start"
-						href={taskFormSteps[6].items && taskFormSteps[6].items[0].href}
-						iconBefore={PlusIcon}
-						size="sm"
-						variant="secondary"
-					>
-						Add employee
-					</ButtonLink>
-				</Stack>
+						tone="success"
+					/>
+				)}
+				{step7State?.employee && step7State.employee.length > 0 ? (
+					<TableWrapper>
+						<Table aria-labelledby="list-of-employees">
+							<TableHead>
+								<TableRow>
+									<TableHeader>Employee name</TableHeader>
+									<TableHeader>Email address</TableHeader>
+									<TableHeader>Action</TableHeader>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{step7State.employee.map(
+									(employee) =>
+										employee?.id && (
+											<TableRow key={employee.id}>
+												<TableCell id={employee.id}>
+													{employee.firstName} {employee.lastName}
+												</TableCell>
+												<TableCell>{employee.email}</TableCell>
+												<TableCell>
+													<Button
+														aria-describedby={employee.id}
+														onClick={() => {
+															setEmployeeToRemove(employee);
+														}}
+														variant="text"
+													>
+														Remove
+													</Button>
+												</TableCell>
+											</TableRow>
+										)
+								)}
+							</TableBody>
+						</Table>
+					</TableWrapper>
+				) : (
+					<Stack gap={1}>
+						<AvatarIcon color="muted" size="lg" />
+						<H3>No employees added</H3>
+						<Text as="p">You must add an employee to proceed.</Text>
+					</Stack>
+				)}
+				<ButtonLink
+					alignSelf="start"
+					href={taskFormSteps[6].items && taskFormSteps[6].items[0].href}
+					iconBefore={PlusIcon}
+					size="sm"
+					variant="secondary"
+				>
+					Add employee
+				</ButtonLink>
 			</Stack>
 			<form onSubmit={onSubmit} noValidate>
 				<StepActions />
 			</form>
 			<Modal
-				isOpen={modalIsVisible}
 				actions={
 					<ButtonGroup>
 						<Button onClick={removeEmployee}>Remove employee</Button>
-						<Button variant="secondary" onClick={closeModal}>
+						<Button onClick={closeModal} variant="secondary">
 							Cancel
 						</Button>
 					</ButtonGroup>
 				}
-				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
+				isOpen={modalIsVisible}
 				onClose={closeModal}
+				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
 			></Modal>
 		</FormContainer>
 	);

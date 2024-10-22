@@ -115,15 +115,15 @@ export function FormStep7AddEmployee() {
 				/>
 			</Column>
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-				<Stack gap={3} alignItems="flex-start">
+				<Stack alignItems="flex-start" gap={3}>
 					<DirectionLink direction="left" href={step7Path}>
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
-						<H1 ref={titleRef} tabIndex={-1} focusRingFor="keyboard">
+						<H1 focusRingFor="keyboard" ref={titleRef} tabIndex={-1}>
 							Add employee
 						</H1>
-						<Text as="p" fontSize="md" color="muted">
+						<Text as="p" color="muted" fontSize="md">
 							Provide your employee’s name and email.
 						</Text>
 						<FormRequiredFieldsMessage />
@@ -132,8 +132,8 @@ export function FormStep7AddEmployee() {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit)}
 							noValidate
+							onSubmit={handleSubmit(onSubmit)}
 						>
 							<FormStack>
 								{showErrorAlert && errors?.employee && (
@@ -142,48 +142,48 @@ export function FormStep7AddEmployee() {
 								<input
 									{...register('employee.id')}
 									id="employee.id"
+									required
 									type="hidden"
 									value={uuid.current}
-									required
 								/>
 								<TextInput
-									label="First name"
 									autoComplete="given-name"
+									label="First name"
 									{...register('employee.firstName')}
 									id="employee.firstName"
 									invalid={Boolean(errors?.employee?.firstName?.message)}
-									message={errors?.employee?.firstName?.message}
 									maxWidth="lg"
+									message={errors?.employee?.firstName?.message}
 									required
 								/>
 								<TextInput
-									label="Last name"
 									autoComplete="family-name"
+									label="Last name"
 									{...register('employee.lastName')}
 									id="employee.lastName"
 									invalid={Boolean(errors?.employee?.lastName?.message)}
-									message={errors?.employee?.lastName?.message}
 									maxWidth="lg"
+									message={errors?.employee?.lastName?.message}
 									required
 								/>
 								<TextInput
+									autoComplete="email"
 									label="Email address"
 									type="email"
-									autoComplete="email"
 									{...register('employee.email')}
 									id="employee.email"
 									invalid={Boolean(errors?.employee?.email?.message)}
-									message={errors?.employee?.email?.message}
 									maxWidth="xl"
+									message={errors?.employee?.email?.message}
 									required
 								/>
 							</FormStack>
 							<Divider />
 							<ButtonGroup>
-								<Button type="submit" loading={isSaving}>
+								<Button loading={isSaving} type="submit">
 									Add employee
 								</Button>
-								<Button variant="tertiary" onClick={onCancelClick}>
+								<Button onClick={onCancelClick} variant="tertiary">
 									Cancel
 								</Button>
 							</ButtonGroup>
