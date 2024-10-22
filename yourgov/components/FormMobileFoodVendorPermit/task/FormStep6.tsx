@@ -5,33 +5,28 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep6FormSchema,
-	type TaskStep6FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step6FormSchema, type Step6FormSchema } from './FormState';
 
-export function FormTaskStep6() {
+export function FormStep6() {
 	const { formState, step6SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep6FormSchema>({
+	} = useForm<Step6FormSchema>({
 		defaultValues: formState.task?.step6,
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep6FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step6FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<TaskStep6FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<Step6FormSchema>;
 
-	const onSubmit: SubmitHandler<TaskStep6FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step6FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -44,7 +39,7 @@ export function FormTaskStep6() {
 	};
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Food served"
 			formIntroduction="What type of food will you be serving?"
 		>
@@ -70,7 +65,7 @@ export function FormTaskStep6() {
 				/>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
 

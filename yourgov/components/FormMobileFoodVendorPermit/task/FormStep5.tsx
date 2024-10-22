@@ -11,14 +11,11 @@ import { hasMultipleErrors } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep5FormSchema,
-	type TaskStep5FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step5FormSchema, type Step5FormSchema } from './FormState';
 
-function transformDefaultValues(step?: DeepPartial<TaskStep5FormSchema>) {
+function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	const from = step?.tradingPeriod?.from;
 	const to = step?.tradingPeriod?.to;
 	return {
@@ -30,26 +27,24 @@ function transformDefaultValues(step?: DeepPartial<TaskStep5FormSchema>) {
 	};
 }
 
-export function FormTaskStep5() {
+export function FormStep5() {
 	const { formState, step5SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep5FormSchema>({
+	} = useForm<Step5FormSchema>({
 		defaultValues: transformDefaultValues(formState.task?.step5),
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep5FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step5FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<TaskStep5FormSchema>;
+	const typeCorrectedErrors = errors as ShallowErrors<Step5FormSchema>;
 
-	const onSubmit: SubmitHandler<TaskStep5FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step5FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -64,7 +59,7 @@ export function FormTaskStep5() {
 	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
 		>
@@ -139,6 +134,6 @@ export function FormTaskStep5() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }

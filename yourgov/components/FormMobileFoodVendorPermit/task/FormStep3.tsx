@@ -11,32 +11,27 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormTaskContainer } from './FormTaskContainer';
-import { useFormTaskContext } from './FormTaskProvider';
-import {
-	taskStep3FormSchema,
-	type TaskStep3FormSchema,
-} from './FormTaskFormState';
+import { FormContainer } from './FormContainer';
+import { useFormContext } from './FormProvider';
+import { step3FormSchema, type Step3FormSchema } from './FormState';
 
-export function FormTaskStep3() {
+export function FormStep3() {
 	const { formState, step3SetState, isSavingBeforeExiting } = useGlobalForm();
-	const { submitStep } = useFormTaskContext();
+	const { submitStep } = useFormContext();
 
 	const {
 		watch,
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskStep3FormSchema>({
+	} = useForm<Step3FormSchema>({
 		defaultValues: formState.task?.step3,
-		resolver: isSavingBeforeExiting
-			? undefined
-			: zodResolver(taskStep3FormSchema),
+		resolver: isSavingBeforeExiting ? undefined : zodResolver(step3FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<TaskStep3FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<Step3FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -55,7 +50,7 @@ export function FormTaskStep3() {
 	);
 
 	return (
-		<FormTaskContainer
+		<FormContainer
 			formTitle="Business address"
 			formIntroduction="Add your business address."
 		>
@@ -183,6 +178,6 @@ export function FormTaskStep3() {
 				</FormStack>
 				<StepActions />
 			</Stack>
-		</FormTaskContainer>
+		</FormContainer>
 	);
 }
