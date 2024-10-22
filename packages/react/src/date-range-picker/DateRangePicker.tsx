@@ -19,6 +19,7 @@ import {
 	useTernaryState,
 	useWindowSize,
 	useId,
+	packs,
 } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
@@ -28,6 +29,7 @@ import {
 	constrainDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
+	isValidDate,
 	parseDate,
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
@@ -36,6 +38,7 @@ import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import { isAfter, isBefore, isValid } from 'date-fns';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -145,8 +148,12 @@ export const DateRangePicker = ({
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
 	function onFromTriggerClick() {
+		if (!inputMode || inputMode === 'to' || !isCalendarOpen) {
+			openCalendar();
+		} else {
+			closeCalendar();
+		}
 		setInputMode('from');
-		toggleCalendar();
 		setHasCalendarOpened(true);
 	}
 
@@ -170,28 +177,43 @@ export const DateRangePicker = ({
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
 
-			const range = ensureValidDateRange(
-				inputMode === 'from'
-					? { from: selectedDay, to: valueAsDateOrUndefined.to }
-					: { from: valueAsDateOrUndefined.from, to: selectedDay }
-			);
+			const range = {
+				from: valueAsDateOrUndefined.from || fromInputValue,
+				to: valueAsDateOrUndefined.to || toInputValue,
+			} as DateRange;
+
+			if (inputMode === 'from') {
+				range.from = selectedDay;
+
+				// if (range.to && isAfter(range.from, range.to)) {
+				// 	range.to = undefined;
+				// }
+			} else {
+				range.to = selectedDay;
+
+				// if (range.from && isBefore(range.to, range.from)) {
+				// 	range.from = undefined;
+				// }
+			}
 
 			onChange(range);
-			setFromInputValue(range.from ? formatDate(range.from, dateFormat) : '');
-			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
-
-			if (range.from && range.to) {
-				closeCalendar();
-				setInputMode(undefined);
-				return;
-			}
+			setFromInputValue(
+				valueAsDateOrUndefined.from
+					? formatDate(range.from, dateFormat)
+					: fromInputValue
+			);
+			setToInputValue(
+				valueAsDateOrUndefined.to
+					? formatDate(range.to, dateFormat)
+					: toInputValue
+			);
 
 			if (inputMode === 'from') {
 				setInputMode('to');
 				return;
 			}
 
-			if (inputMode === 'to' && !range.from) {
+			if (!range.from && range.to) {
 				setInputMode('from');
 				return;
 			}
@@ -206,20 +228,46 @@ export const DateRangePicker = ({
 
 	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
-
-		// Ensure the text entered is a valid date
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
 
-		const nextValue = ensureValidDateRange({
-			from: constrainedDate,
-			to: valueAsDateOrUndefined.to,
-		});
+		// Ensure the text entered in both fields are valid dates
+		const constrainedFromDate = constrainDate(parsedDate, minDate, maxDate);
+		const constrainedToDate =
+			valueAsDateOrUndefined.to ||
+			constrainDate(
+				// TODO: Use Chris' normalise function
+				parseDate(toInputValue, allowedDateFormats),
+				minDate,
+				maxDate
+			) ||
+			toInputValue;
 
-		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
-		} else {
+		console.log(`****** constrainedToDate`, constrainedToDate);
+
+		const range = {
+			from: constrainedFromDate,
+			to: constrainedToDate,
+		} as DateRange;
+
+		// if (range.from && range.to && isAfter(range.from, range.to)) {
+		// 	range.from = undefined;
+		// }
+
+		// if (!inputValue || constrainedFromDate) {
+		// 	onChange(range);
+		// } else {
+		// 	onFromInputChangeProp?.(inputValue);
+		// }
+
+		if (
+			inputValue &&
+			(!isValidDate(parsedDate) ||
+				(range.from && range.to && isAfter(range.from, range.to)))
+		) {
 			onFromInputChangeProp?.(inputValue);
+		} else if (!inputValue || constrainedFromDate) {
+			onChange(range);
+			// } else {
 		}
 	};
 
@@ -235,22 +283,45 @@ export const DateRangePicker = ({
 	);
 
 	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+		console.group('onToInputBlur');
 		const inputValue = e.target.value;
-
-		// Ensure the text entered is a valid date
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+		console.log(`parsedDate`, parsedDate);
 
-		const nextValue = ensureValidDateRange({
-			from: valueAsDateOrUndefined.from,
-			to: constrainedDate,
-		});
+		// Ensure the text entered in both fields are valid dates
+		const constrainedToDate = constrainDate(parsedDate, minDate, maxDate);
+		console.log(`constrainedToDate`, constrainedToDate);
+		const constrainedFromDate =
+			valueAsDateOrUndefined.from ||
+			constrainDate(
+				// TODO: Use Chris' normalise function
+				parseDate(fromInputValue, allowedDateFormats),
+				minDate,
+				maxDate
+			) ||
+			fromInputValue;
 
-		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
-		} else {
+		console.log(`constrainedFromDate`, constrainedToDate);
+		const range = {
+			from: constrainedFromDate,
+			to: constrainedToDate,
+		} as DateRange;
+
+		// if (range.to && range.from && isBefore(range.to, range.from)) {
+		// 	range.to = undefined;
+		// }
+
+		if (
+			inputValue &&
+			(!isValidDate(parsedDate) ||
+				(range.to && range.from && isBefore(range.to, range.from)))
+		) {
 			onToInputChangeProp?.(inputValue);
+		} else if (!inputValue || constrainedToDate) {
+			onChange(range);
+			// } else {
 		}
+		console.groupEnd('onToInputBlur');
 	};
 
 	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -261,6 +332,7 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
+		console.log(`value`, value);
 		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
 		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
 	}, [value, dateFormat]);
@@ -326,7 +398,7 @@ export const DateRangePicker = ({
 	);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
@@ -390,6 +462,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
 							dateFormat={dateFormat}
+							highlight={isCalendarOpen && inputMode === 'from'}
 						/>
 						<DateInput
 							aria-describedby={
@@ -412,6 +485,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
 							dateFormat={dateFormat}
+							highlight={isCalendarOpen && inputMode === 'to'}
 						/>
 					</Flex>
 				</Stack>

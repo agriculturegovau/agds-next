@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
-import { mapSpacing } from '../core';
+import { mapSpacing, packs, tokens } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
 import { acceptedDateFormats, type AcceptedDateFormats } from './utils';
@@ -19,6 +19,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	buttonRef: RefObject<HTMLButtonElement>;
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
+	highlight?: boolean;
 };
 
 export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
@@ -39,6 +40,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			disabled,
 			value,
 			dateFormat: dateFormatProp,
+			highlight,
 			...props
 		},
 		ref
@@ -77,7 +79,14 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				id={id}
 			>
 				{(a11yProps) => (
-					<Flex alignItems="flex-end" css={{ maxWidth }}>
+					<Flex
+						alignItems="flex-end"
+						css={{
+							borderRadius: tokens.borderRadius,
+							maxWidth,
+							...(highlight ? packs.outline : undefined),
+						}}
+					>
 						<input
 							ref={ref}
 							type="text"
