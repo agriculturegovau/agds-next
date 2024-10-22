@@ -1,8 +1,8 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ComboboxMulti } from '@ag.ds-next/react/combobox';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Radio } from '@ag.ds-next/react/radio';
 import { Stack } from '@ag.ds-next/react/stack';
-import { ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
@@ -10,11 +10,25 @@ import { useFormContext } from './FormProvider';
 import { step8FormSchema, type Step8FormSchema } from './FormState';
 
 export function FormStep8() {
-	const { formState, step8SetState, isSavingBeforeExiting } = useGlobalForm();
+	const {
+		formState,
+		step1GetState,
+		step7GetState,
+		step8SetState,
+		isSavingBeforeExiting,
+	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
+	const employees = [
+		`${step1GetState()?.firstName} ${step1GetState()
+			?.lastName} (Business owner)`,
+		...(step7GetState()?.employee?.map(
+			(employee) => `${employee?.firstName} ${employee?.lastName}`
+		) || []),
+	];
+
 	const {
-		control,
+		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step8FormSchema>({
@@ -23,8 +37,6 @@ export function FormStep8() {
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
-
-	const typeCorrectedErrors = errors as ShallowErrors<Step8FormSchema>;
 
 	const onSubmit: SubmitHandler<Step8FormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
@@ -40,33 +52,25 @@ export function FormStep8() {
 
 	return (
 		<FormContainer
-			formTitle="Food safety supervisor"
 			formIntroduction="Add your employee food safety supervisor."
+			formTitle="Food safety supervisor"
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
-				<Controller
-					control={control}
-					name="cuisine"
-					render={({ field: { ref, ...field } }) => (
-						<ComboboxMulti
-							label="TODO"
-							hint="TODO"
-							inputRef={ref}
-							options={cuisineOptions}
-							required
-							{...field}
-							id="cuisine"
-							invalid={Boolean(typeCorrectedErrors.cuisine?.message)}
-							message={typeCorrectedErrors.cuisine?.message}
-							maxWidth="xl"
-							block={false}
-						/>
-					)}
-				/>
+				<ControlGroup
+					block
+					invalid={Boolean(errors.supervisor)}
+					label="Who is the appointed food safety supervisor for this business?"
+					message={errors.supervisor?.message}
+					required
+				>
+					{employees.map((employee) => (
+						<Radio {...register('supervisor')} key={employee} value={employee}>
+							{employee}
+						</Radio>
+					))}
+				</ControlGroup>
 				<StepActions />
 			</Stack>
 		</FormContainer>
 	);
 }
-
-const cuisineOptions = [{ value: 'american', label: 'American' }];
