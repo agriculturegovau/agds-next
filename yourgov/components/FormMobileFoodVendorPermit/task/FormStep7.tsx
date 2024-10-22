@@ -30,9 +30,9 @@ export function FormStep7() {
 	const { query } = useRouter();
 	const step7State = step7GetState();
 
-	const [employeeIdToRemove, setEmployeeIdToRemove] = useState('');
 	const [employeeToRemove, setEmployeeToRemove] =
 		useState<Partial<Step7FormSchema['employee']>>();
+	const [removedEmployee, setRemovedEmployee] = useState('');
 
 	const [modalIsVisible, setModalIsVisible] = useState(false);
 	const [showRemovedEmployeeMessage, setShowRemovedEmployeeMessage] =
@@ -52,33 +52,30 @@ export function FormStep7() {
 
 	const closeModal = () => {
 		setShowAddedEmployeeMessage(false);
-		setEmployeeIdToRemove('');
+		setEmployeeToRemove(undefined);
 	};
 
 	useEffect(() => {
-		setModalIsVisible(!!employeeIdToRemove);
+		setModalIsVisible(!!employeeToRemove);
 		setShowRemovedEmployeeMessage(false);
+	}, [employeeToRemove]);
 
-		if (employeeIdToRemove) {
-			setEmployeeToRemove(
-				step7State?.employee &&
-					step7State.employee.find(
-						(employee) => employee?.id === employeeIdToRemove
-					)
-			);
-		}
-	}, [employeeIdToRemove, step7State?.employee]);
-
-	const removeEmployee = (id: string) => {
+	const removeEmployee = () => {
 		step7SetState({
 			...step7GetState,
 			completed: false,
 			employee:
 				step7State?.employee &&
-				step7State.employee.filter((employee) => employee?.id !== id),
+				step7State.employee.filter(
+					(employee) => employee?.id !== employeeToRemove?.id
+				),
 		});
 
+		setRemovedEmployee(
+			`${employeeToRemove?.firstName} ${employeeToRemove?.lastName}`
+		);
 		closeModal();
+
 		setTimeout(() => {
 			setShowRemovedEmployeeMessage(true);
 		}, 0);
@@ -134,7 +131,7 @@ export function FormStep7() {
 						<SectionAlert
 							focusOnMount
 							onClose={() => setShowRemovedEmployeeMessage(false)}
-							title={`${employeeToRemove?.firstName} ${employeeToRemove?.lastName} has been removed as an
+							title={`${removedEmployee} has been removed as an
 							employee`}
 							tone="success"
 						/>
@@ -163,8 +160,7 @@ export function FormStep7() {
 															aria-describedby={employee.id}
 															variant="text"
 															onClick={() => {
-																if (!employee?.id) return;
-																setEmployeeIdToRemove(employee.id);
+																setEmployeeToRemove(employee);
 															}}
 														>
 															Remove
@@ -201,13 +197,7 @@ export function FormStep7() {
 				isOpen={modalIsVisible}
 				actions={
 					<ButtonGroup>
-						<Button
-							onClick={() => {
-								removeEmployee(employeeIdToRemove);
-							}}
-						>
-							Remove employee
-						</Button>
+						<Button onClick={removeEmployee}>Remove employee</Button>
 						<Button variant="secondary" onClick={closeModal}>
 							Cancel
 						</Button>
