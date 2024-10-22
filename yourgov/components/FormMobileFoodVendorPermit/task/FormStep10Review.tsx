@@ -43,7 +43,11 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 		step4: step4ReviewSchema.safeParse(formState.task?.step4),
 		step5: step5ReviewSchema.safeParse(formState.task?.step5),
 		step6: step6FormSchema.safeParse(formState.task?.step6),
-		step7: step7FormSchema.safeParse(formState.task?.step7),
+		step7: {
+			success: formState.task?.step7?.employee?.every((employee) =>
+				step7FormSchema.safeParse(employee)
+			),
+		},
 		step8: step8FormSchema.safeParse(formState.task?.step8),
 		step9: step9FormSchema.safeParse(formState.task?.step9),
 	};
@@ -216,13 +220,15 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 
 			{/** Employees */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>TODO - {taskFormSteps[6].label}</HeadingComponent>
+				<HeadingComponent>{taskFormSteps[6].label}</HeadingComponent>
 				{validation.step7.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Employees"
-							value={formState.task?.step7?.cuisine
-								?.map((item) => item?.label)
+							value={formState.task?.step7?.employee
+								?.map(
+									(employee) => `${employee?.firstName} ${employee?.lastName}`
+								)
 								.join(', ')}
 						/>
 					</FormDefinitionList>
