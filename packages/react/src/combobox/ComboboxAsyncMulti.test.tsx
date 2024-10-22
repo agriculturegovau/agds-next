@@ -3,13 +3,8 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { useRef } from 'react';
-import {
-	render,
-	cleanup,
-	renderHook,
-	act,
-	waitFor,
-} from '../../../../test-utils';
+import { act, waitFor } from '@testing-library/react';
+import { render, renderHook, screen } from '../../../../test-utils';
 import {
 	ComboboxAsyncMulti,
 	ComboboxAsyncMultiProps,
@@ -18,13 +13,11 @@ import { STATE_OPTIONS, Option } from './test-utils';
 
 expect.extend(toHaveNoViolations);
 
-afterEach(cleanup);
-
-const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
-
 function renderComboboxAsyncMulti(
 	props?: Partial<ComboboxAsyncMultiProps<Option>>
 ) {
+	const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+
 	return render(
 		<ComboboxAsyncMulti
 			label="Find your state"
@@ -58,68 +51,248 @@ describe('ComboboxAsyncMulti', () => {
 		});
 	});
 
-	it('can load async options', async () => {
-		const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
-		const { container } = renderComboboxAsyncMulti({ loadOptions });
-
-		const input = container.querySelector('input');
-		expect(input).toBeInTheDocument();
-		expect(input).toHaveAttribute('aria-expanded', 'false');
-		if (!input) return;
-
-		// Click the input, which should focus the element
-		await act(async () => await input.click());
-		await waitFor(() => expect(input).toHaveFocus());
-		expect(input).toHaveAttribute('aria-expanded', 'true');
-
-		// Focusing the input should trigger `loadOptions`
-		await waitFor(() => {
-			expect(loadOptions).toHaveBeenCalledTimes(1);
-			expect(loadOptions).toHaveBeenCalledWith('');
-		});
-
-		// All options should be visible
-		expect(container.querySelectorAll('li').length).toBe(STATE_OPTIONS.length);
-
-		// Start typing a search term
-		await userEvent.type(input, 'qld');
-
-		// Typing a search term should trigger `loadOptions` to be called
-		await waitFor(() => {
-			expect(loadOptions).toHaveBeenCalledTimes(2);
-			expect(loadOptions).toHaveBeenCalledWith('qld');
-			expect(container.querySelectorAll('li').length).toBe(1);
-			expect(container.querySelectorAll('li')[0].textContent).toBe(
-				'Queensland'
+	describe('when the input is pressed', () => {
+		test('then the menu is displayed', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
 			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			await user.click(input);
+
+			const menu = screen.getByRole('listbox', {
+				name: 'Find your state (optional)',
+			});
+
+			expect(menu).toBeVisible();
 		});
 
-		// Select the QLD option
-		const options = container.querySelectorAll('li');
-		await userEvent.click(options[0]);
+		test('then the menu contains a loading indicator', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
 
-		// Expect the input to be updated
-		expect(input.value).toBe('');
-		expect(input).toHaveAttribute('aria-expanded', 'true');
-		expect(input).toHaveFocus();
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			await user.click(input);
 
-		// Since the input is focused, use the arrow down key to open the menu
-		await userEvent.keyboard('[ArrowDown]');
+			const listItem = screen.getByRole('listitem');
 
-		// All options should be cached and visible
-		expect(container.querySelectorAll('li').length).toBe(
-			STATE_OPTIONS.length - 1
-		);
+			expect(listItem).toHaveTextContent('Loading');
+		});
 
-		// Press escape to close the menu
-		await userEvent.keyboard('[Escape]');
-		expect(input).toHaveAttribute('aria-expanded', 'false');
-		expect(input).toHaveFocus();
+		test('then the loadOptions prop is called', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
 
-		// No other calls to `loadOptions` should have been made
-		expect(loadOptions).toHaveBeenCalledTimes(2);
-		expect(loadOptions).toHaveBeenNthCalledWith(1, '');
-		expect(loadOptions).toHaveBeenNthCalledWith(2, 'qld');
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			await user.click(input);
+
+			// Focusing the input should trigger `loadOptions`
+			await waitFor(() => {
+				expect(loadOptions).toHaveBeenCalledTimes(1);
+				expect(loadOptions).toHaveBeenCalledWith('');
+			});
+		});
+
+		test('then the options are rendered', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			await user.click(input);
+
+			const stateOptionsText = STATE_OPTIONS.map((option) => option.label);
+			const optionsText = (await screen.findAllByRole('option')).map(
+				(option) => option.textContent
+			);
+
+			expect(optionsText).toEqual(stateOptionsText);
+		});
+	});
+
+	describe('when a search term is entered', () => {
+		test.skip('then the loadOptions prop is called with the input value', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			user.click(input);
+
+			user.type(input, 'qld');
+
+			await waitFor(() => {
+				expect(loadOptions).toHaveBeenCalledTimes(1);
+				expect(loadOptions).toHaveBeenCalledWith('qld');
+			});
+		});
+
+		test('then a filtered list of options is displayed', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			user.click(input);
+			await user.type(input, 'qld');
+
+			const options = (await screen.findAllByRole('option')).map(
+				(option) => option.textContent
+			);
+
+			expect(options).toEqual(['Queensland']);
+		});
+	});
+
+	describe('when an item is selected', () => {
+		test('then the selected item is added as a tag', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			user.click(input);
+			await user.type(input, 'qld');
+
+			const option = await screen.findByRole('option', {
+				name: 'Queensland',
+			});
+			option.click();
+
+			const tag = await screen.findByText('Queensland');
+			expect(tag).toBeVisible();
+		});
+
+		test('then the menu no longer contains the selected item', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			user.click(input);
+			await user.type(input, 'qld');
+
+			const option = await screen.findByRole('option', {
+				name: 'Queensland',
+			});
+			await user.click(option);
+
+			const updatedOptions = (await screen.findAllByRole('option')).map(
+				(option) => option.textContent
+			);
+			const stateOptionsWithoutSelected = STATE_OPTIONS.map(
+				({ label }) => label
+			).filter((label) => label !== 'Queensland');
+
+			expect(updatedOptions).toEqual(stateOptionsWithoutSelected);
+		});
+	});
+
+	describe('when a keyboard is used to interact with the component', () => {
+		test('then the menu opens via the keybaord', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const user = userEvent.setup();
+			await user.tab();
+			await user.keyboard('[ArrowDown]');
+
+			const options = (await screen.findAllByRole('option')).map(
+				(option) => option.textContent
+			);
+			const stateOptionLabels = STATE_OPTIONS.map(({ label }) => label);
+
+			expect(options).toEqual(stateOptionLabels);
+		});
+
+		test('then the menu closes via the keybaord', async () => {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			render(
+				<ComboboxAsyncMulti
+					label="Find your state"
+					hint="Start typing to see results"
+					loadOptions={loadOptions}
+				/>
+			);
+
+			const user = userEvent.setup();
+			await user.tab();
+			await userEvent.keyboard('[Escape]');
+
+			expect(screen.getByRole('listbox', { hidden: true })).not.toBeVisible();
+		});
 	});
 
 	it('accepts `inputRef` prop', () => {

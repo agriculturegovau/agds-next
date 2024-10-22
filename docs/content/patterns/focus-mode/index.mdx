@@ -10,11 +10,12 @@ Focus mode refers to temporarily hiding the main navigation of a website or appl
 
 - use focus mode on multi-page forms
 - trigger a [Modal](/components/modal) dialog if users navigate away from the form flow to help prevent them from losing data
-- always ensure the user can escape focus mode via a ‘back’, ‘save and exit’ or ‘cancel’ button.
+- always ensure the user can escape focus mode and return to standard navigation patterns via a ‘back’, ‘save and exit’ or ‘cancel’ button.
 
 <DontHeading />
 
-- allow users to control whether focus mode is on or off, it should be controlled by the system.
+- allow users to control whether focus mode is on or off, it should be controlled by the system
+- use focus mode on information website content pages where a user needs to access navigation.
 
 ## Focus mode in App layout
 
@@ -31,7 +32,11 @@ Display the [App layout sidebar](/components/app-layout#app-layout-sidebar) with
 
 <DoHeading />
 
-Remove the [App layout sidebar](/components/app-layout#app-layout-sidebar) to simplify the screen and reduce distractions.
+Remove the [Main nav](/components/main-nav) on informational website multi-page forms to simplify the screen, reduce distractions and the risk of users accidently navigating away from the form flow.
+
+<DontHeading />
+
+Use focus mode on informational website content pages where a user needs to access navigation.
 
 <ImageWithBorder
 	alt="Screenshot of App layout components in focus mode, with an outlined box highlighting where the App layout sidebar would usually be placed"
@@ -43,6 +48,10 @@ Remove the [App layout sidebar](/components/app-layout#app-layout-sidebar) to si
 On informational websites, focus mode hides the main navigation and changes the header component to the small variant to save vertical space.
 
 To do this, please refer the code example in the [example site](https://github.com/agriculturegovau/agds-next/blob/main/example-site/components/SiteHeader.tsx).
+
+<DoHeading />
+
+Remove the [App layout sidebar](/components/app-layout#app-layout-sidebar) to simplify the screen, reduce distractions and the risk of users accidently navigating away from the form flow.
 
 <ImageWithBorder
 	alt="Example usage of the Header and Main nav components with an arrow pointing down to another example of these components in focus mode"

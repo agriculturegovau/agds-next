@@ -62,47 +62,57 @@ export const reactDayPickerStyles = {
 		height: cellSizeSmall,
 		margin: 0,
 		padding: 0,
-		textAlign: 'center',
-		verticalAlign: 'middle',
 		width: cellSizeSmall,
 		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...fontGrid('sm', 'default'),
 	},
-	// Day button
+	// Day button which is actually applied to the cell
 	'.rdp-day': {
-		alignItems: 'center',
 		borderRadius: tokens.borderRadius,
+		boxSizing: 'border-box',
 		color: boxPalette.foregroundAction,
-		display: 'flex',
+		cursor: 'pointer',
 		height: cellSizeSmall,
-		justifyContent: 'center',
+		position: 'relative',
+		textAlign: 'center',
+		verticalAlign: 'middle',
 		width: cellSizeSmall,
 		'&[disabled]': {
 			color: boxPalette.foregroundText,
 			opacity: 0.3,
 			cursor: 'not-allowed',
 		},
-		'&:not([disabled]):hover': {
+		'&:not([disabled], :focus):hover': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
+			zIndex: tokens.zIndex.elevated,
+			...highContrastOutlineStyles,
+		},
+		'&:focus': {
+			zIndex: tokens.zIndex.elevated,
 		},
 		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
 		...focusStyles,
 		// Today's button
 		'&.rdp-day_today': {
-			position: 'relative',
 			fontWeight: tokens.fontWeight.bold,
 			'&::after': {
-				content: '""',
-				position: 'absolute',
-				bottom: '0.3rem',
-				height: '0.5rem',
-				width: '0.5rem',
-				borderRadius: '0.25rem',
 				backgroundColor: 'currentColor',
+				borderRadius: '0.25rem',
+				bottom: '0.3rem',
+				content: '""',
+				left: '50%',
+				height: '0.5rem',
+				marginLeft: '-0.25rem',
+				position: 'absolute',
+				width: '0.5rem',
+				...highContrastOutlineStyles,
 			},
 		},
+	},
+	'.rdp-day_outside': {
+		cursor: 'default',
 	},
 	// Table
 	'.rdp-months': {
@@ -119,23 +129,23 @@ export const reactDayPickerStyles = {
 		margin: 0,
 		maxWidth: `calc(${cellSizeLarge} * 7)`,
 		borderCollapse: 'collapse',
+		tableLayout: 'fixed',
 	},
 	'.rdp-tbody': {
 		border: 0,
 	},
-	'.rdp-cell': {
-		height: cellSizeSmall,
-		padding: 0,
-		textAlign: 'center',
-		width: cellSizeSmall,
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
-	},
 	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 		{
-			'&:not(:focus)': highContrastOutlineStyles,
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,
 			fontWeight: tokens.fontWeight.bold,
+			'&::before': {
+				content: '""',
+				inset: 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				...highContrastOutlineStyles,
+			},
 		},
 } as const;
 
@@ -164,8 +174,10 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		},
 		// Start day of date range
 		'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
+		'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
 		// End day of date range
 		'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
+		'.rdp-day_range_end:not(.rdp-day_range_start)::before': endStyles,
 		// Start and end days of date range
 		'.rdp-day_range_start.rdp-day_range_end': {
 			...(from && startStyles),

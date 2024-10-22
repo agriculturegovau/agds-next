@@ -10,7 +10,7 @@ export type PageAlertTitleProps = PropsWithChildren<{
 }>;
 
 export const PageAlertTitle = ({
-	as = 'h3',
+	as = 'h2',
 	children,
 	hasDismissButton,
 	hasCloseButton,

@@ -267,7 +267,7 @@ function renderDecorativeDropdownMenu() {
 										tone="action"
 										aria-hidden
 									/>
-									<VisuallyHidden>, 100 unread</VisuallyHidden>
+									<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 								</Fragment>
 							}
 						>

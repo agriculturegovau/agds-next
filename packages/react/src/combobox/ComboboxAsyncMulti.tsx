@@ -49,8 +49,8 @@ export type ComboboxAsyncMultiProps<Option extends DefaultComboboxOption> = {
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	/** Function to be used when options need to be loaded over the network. */
 	loadOptions: (inputValue: string) => Promise<Option[]>;
-	/** Used to override the default item rendering. */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Used to override the default item rendering. inputValue is now unused. */
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	/** Message to display when no options match the users search term. */
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */

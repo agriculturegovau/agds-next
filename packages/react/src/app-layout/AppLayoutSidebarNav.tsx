@@ -303,14 +303,7 @@ function AppLayoutSidebarNavItemInner({
 						fontWeight: isCurrentPage
 							? tokens.fontWeight.bold
 							: tokens.fontWeight.normal,
-						background:
-							boxPalette[
-								isCurrentPage
-									? 'selectedMuted'
-									: background === 'body'
-									? 'backgroundBody'
-									: 'backgroundBodyAlt'
-							],
+						background: isCurrentPage ? boxPalette.selectedMuted : undefined,
 						'&::before': {
 							content: "''",
 							position: 'absolute',
@@ -344,6 +337,17 @@ function AppLayoutSidebarNavItemInner({
 					},
 
 					...focusStyles,
+					':focus-visible': {
+						// Elevate focused item above next sibling
+						zIndex: tokens.zIndex.elevated,
+						// Bring the focus ring inside the element so that it remains on screen and sibling element borders don't show in the offset
+						outlineOffset: `-${packs.outline.outlineWidth}`,
+
+						// Make the left border sit below the constrained focus ring
+						'&::before': {
+							zIndex: -1,
+						},
+					},
 				},
 
 				// Styles specific to text list items

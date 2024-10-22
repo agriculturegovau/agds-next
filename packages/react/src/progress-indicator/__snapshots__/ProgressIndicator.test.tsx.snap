@@ -26,9 +26,8 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </div>
       <button
         aria-controls="collapsing-side-bar-:r0:-body"
-        aria-describedby="collapsing-side-bar-:r0:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -89,7 +88,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -116,7 +115,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -149,7 +148,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -174,7 +173,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -207,7 +206,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -247,7 +246,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -281,7 +280,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -312,7 +311,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -345,7 +344,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -373,7 +372,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -406,7 +405,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -446,7 +445,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -479,7 +478,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -505,7 +504,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -561,9 +560,8 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </div>
       <button
         aria-controls="collapsing-side-bar-:r2:-body"
-        aria-describedby="collapsing-side-bar-:r2:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -624,7 +622,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -651,7 +649,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -684,7 +682,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -709,7 +707,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -742,7 +740,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -782,7 +780,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -816,7 +814,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -847,7 +845,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -880,7 +878,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -908,7 +906,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -941,7 +939,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -981,7 +979,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1014,7 +1012,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1040,7 +1038,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1096,9 +1094,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       </div>
       <button
         aria-controls="collapsing-side-bar-:r5:-body"
-        aria-describedby="collapsing-side-bar-:r5:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -1159,7 +1156,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1186,7 +1183,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1219,7 +1216,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1244,7 +1241,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1278,7 +1275,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1318,7 +1315,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1351,7 +1348,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1382,7 +1379,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1415,7 +1412,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1443,7 +1440,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1476,7 +1473,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1516,7 +1513,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1549,7 +1546,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1575,7 +1572,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1631,9 +1628,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       </div>
       <button
         aria-controls="collapsing-side-bar-:r4:-body"
-        aria-describedby="collapsing-side-bar-:r4:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -1694,7 +1690,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1721,7 +1717,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1754,7 +1750,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1779,7 +1775,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1813,7 +1809,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1853,7 +1849,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1886,7 +1882,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1917,7 +1913,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -1950,7 +1946,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -1978,7 +1974,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2011,7 +2007,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2051,7 +2047,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2084,7 +2080,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2110,7 +2106,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2166,9 +2162,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       </div>
       <button
         aria-controls="collapsing-side-bar-:r7:-body"
-        aria-describedby="collapsing-side-bar-:r7:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -2229,7 +2224,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2256,7 +2251,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2289,7 +2284,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2314,7 +2309,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2347,7 +2342,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2387,7 +2382,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2421,7 +2416,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2452,7 +2447,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2485,7 +2480,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2513,7 +2508,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2546,7 +2541,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2586,7 +2581,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2619,7 +2614,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2645,7 +2640,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2701,9 +2696,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       </div>
       <button
         aria-controls="collapsing-side-bar-:r6:-body"
-        aria-describedby="collapsing-side-bar-:r6:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -2764,7 +2758,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2791,7 +2785,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2824,7 +2818,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2849,7 +2843,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2882,7 +2876,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2922,7 +2916,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -2956,7 +2950,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -2987,7 +2981,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3020,7 +3014,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3048,7 +3042,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3081,7 +3075,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3121,7 +3115,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3154,7 +3148,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3180,7 +3174,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3236,9 +3230,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       </div>
       <button
         aria-controls="collapsing-side-bar-:r9:-body"
-        aria-describedby="collapsing-side-bar-:r9:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -3299,7 +3292,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3326,7 +3319,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3359,7 +3352,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3384,7 +3377,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3417,7 +3410,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3457,7 +3450,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3490,7 +3483,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3521,7 +3514,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3554,7 +3547,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3582,7 +3575,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3615,7 +3608,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3655,7 +3648,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3689,7 +3682,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3715,7 +3708,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3771,9 +3764,8 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       </div>
       <button
         aria-controls="collapsing-side-bar-:r8:-body"
-        aria-describedby="collapsing-side-bar-:r8:-heading"
         aria-expanded="false"
-        aria-label="Progress (Expand/Collapse)"
+        aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
@@ -3834,7 +3826,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3861,7 +3853,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3894,7 +3886,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3919,7 +3911,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -3952,7 +3944,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -3992,7 +3984,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -4025,7 +4017,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4056,7 +4048,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -4089,7 +4081,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4117,7 +4109,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -4150,7 +4142,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4190,7 +4182,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>
@@ -4224,7 +4216,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 class="css-11emnjx-boxStyles"
               >
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
                 <span
@@ -4250,7 +4242,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                   </svg>
                 </span>
                 <span
-                  class="css-1umyplw-ProgressIndicatorItemTimeline"
+                  class="css-1rmsy9y-ProgressIndicatorItemTimeline"
                   data-agds-progress-indicator-item-timeline-action=""
                 />
               </span>

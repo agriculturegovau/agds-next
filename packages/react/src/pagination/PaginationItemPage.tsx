@@ -1,5 +1,10 @@
 import { MouseEventHandler } from 'react';
-import { boxPalette, LinkProps, useLinkComponent } from '../core';
+import {
+	boxPalette,
+	forwardRefWithAs,
+	LinkProps,
+	useLinkComponent,
+} from '../core';
 import { Flex } from '../flex';
 import { BaseButton } from '../button';
 import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
@@ -47,11 +52,13 @@ export type PaginationItemPageButtonProps = Pick<LinkProps, 'href'> & {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export function PaginationItemPageButton({
-	pageNumber,
-	onClick,
-	isActive,
-}: PaginationItemPageButtonProps) {
+export const PaginationItemPageButton = forwardRefWithAs<
+	'button',
+	PaginationItemPageButtonProps
+>(function PaginationItemPageButton(
+	{ pageNumber, onClick, isActive },
+	forwardedRef
+) {
 	return (
 		<li>
 			<Flex
@@ -71,9 +78,10 @@ export function PaginationItemPageButton({
 						? { color: boxPalette.foregroundText, textDecoration: 'none' }
 						: undefined
 				}
+				ref={forwardedRef}
 			>
 				{pageNumber}
 			</Flex>
 		</li>
 	);
-}
+});

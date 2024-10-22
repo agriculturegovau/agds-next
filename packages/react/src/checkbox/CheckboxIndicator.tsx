@@ -36,6 +36,11 @@ export const CheckboxIndicator = ({
 					color: boxPalette.borderMuted,
 					borderColor: boxPalette.borderMuted,
 					backgroundColor: boxPalette.backgroundShade,
+					// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+					'@media (forced-colors: active)': {
+						borderColor: 'GrayText',
+						color: 'GrayText',
+					},
 				}),
 
 				...(invalid && {

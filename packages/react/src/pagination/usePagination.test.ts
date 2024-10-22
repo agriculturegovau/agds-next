@@ -11,7 +11,7 @@ describe('usePagination', () => {
 			{ type: 'page', pageNumber: 1, isActive: true },
 			{ type: 'page', pageNumber: 2, isActive: false },
 			{ type: 'page', pageNumber: 3, isActive: false },
-			{ type: 'separator' },
+			{ type: 'separator', pageNumber: 0 },
 			{ type: 'page', pageNumber: 10, isActive: false },
 			{ type: 'direction', pageNumber: 2, direction: 'right' },
 		]);
@@ -26,11 +26,11 @@ describe('usePagination', () => {
 		expect(result).toEqual([
 			{ type: 'direction', pageNumber: 4, direction: 'left' },
 			{ type: 'page', pageNumber: 1, isActive: false },
-			{ type: 'separator' },
+			{ type: 'separator', pageNumber: 0 },
 			{ type: 'page', pageNumber: 4, isActive: false },
 			{ type: 'page', pageNumber: 5, isActive: true },
 			{ type: 'page', pageNumber: 6, isActive: false },
-			{ type: 'separator' },
+			{ type: 'separator', pageNumber: 0 },
 			{ type: 'page', pageNumber: 10, isActive: false },
 			{ type: 'direction', pageNumber: 6, direction: 'right' },
 		]);
@@ -45,7 +45,7 @@ describe('usePagination', () => {
 		expect(result).toEqual([
 			{ type: 'direction', pageNumber: 9, direction: 'left' },
 			{ type: 'page', pageNumber: 1, isActive: false },
-			{ type: 'separator' },
+			{ type: 'separator', pageNumber: 0 },
 			{ type: 'page', pageNumber: 8, isActive: false },
 			{ type: 'page', pageNumber: 9, isActive: false },
 			{ type: 'page', pageNumber: 10, isActive: true },
@@ -66,7 +66,7 @@ describe('usePagination', () => {
 				{ type: 'page', pageNumber: 3, isActive: false },
 				{ type: 'page', pageNumber: 4, isActive: true },
 				{ type: 'page', pageNumber: 5, isActive: false },
-				{ type: 'separator' },
+				{ type: 'separator', pageNumber: 0 },
 				{ type: 'page', pageNumber: 10, isActive: false },
 				{ type: 'direction', pageNumber: 5, direction: 'right' },
 			]);
@@ -86,7 +86,7 @@ describe('usePagination', () => {
 				{ type: 'page', pageNumber: 4, isActive: true },
 				{ type: 'page', pageNumber: 5, isActive: false },
 				{ type: 'page', pageNumber: 6, isActive: false },
-				{ type: 'separator' },
+				{ type: 'separator', pageNumber: 0 },
 				{ type: 'page', pageNumber: 10, isActive: false },
 				{ type: 'direction', pageNumber: 5, direction: 'right' },
 			]);
@@ -101,7 +101,7 @@ describe('usePagination', () => {
 			expect(result).toEqual([
 				{ type: 'direction', pageNumber: 6, direction: 'left' },
 				{ type: 'page', pageNumber: 1, isActive: false },
-				{ type: 'separator' },
+				{ type: 'separator', pageNumber: 0 },
 				{ type: 'page', pageNumber: 6, isActive: false },
 				{ type: 'page', pageNumber: 7, isActive: true },
 				{ type: 'page', pageNumber: 8, isActive: false },
@@ -120,7 +120,7 @@ describe('usePagination', () => {
 			expect(result).toEqual([
 				{ type: 'direction', pageNumber: 6, direction: 'left' },
 				{ type: 'page', pageNumber: 1, isActive: false },
-				{ type: 'separator' },
+				{ type: 'separator', pageNumber: 0 },
 				{ type: 'page', pageNumber: 5, isActive: false },
 				{ type: 'page', pageNumber: 6, isActive: false },
 				{ type: 'page', pageNumber: 7, isActive: true },

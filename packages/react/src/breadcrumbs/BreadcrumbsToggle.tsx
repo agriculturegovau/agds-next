@@ -13,7 +13,7 @@ export function BreadcrumbsToggle({ onClick }: BreadcrumbsToggleProps) {
 			<Flex
 				as={BaseButton}
 				onClick={onClick}
-				aria-label="Expand list"
+				aria-label="Show all breadcrumbs"
 				aria-expanded="false"
 				alignItems="center"
 				justifyContent="center"

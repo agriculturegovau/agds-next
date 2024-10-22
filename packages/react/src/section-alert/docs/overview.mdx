@@ -65,14 +65,28 @@ Use warning section alerts (orange) to tell the user something urgent. Only use 
 <SectionAlert title="A warning message for this section" tone="warning" />
 ```
 
-## Composition
-
-Section alerts are composed of an icon, heading, description, action and close action.
-
-The icon and heading are mandatory and achieve a compact alert, but we encourage the use of description when more information might be helpful to the user.
+## Dismissable
 
 Section alerts can be dismissed by a user if they have understood the message and no longer need to see it. Only use the close action when the alert does not impact the user’s available actions.
 Avoid dismissing error messages which block the user from completing a task. Instead, provide a way for the user to fix the error, then dismiss the alert once the error has been resolved.
+
+Use the `onClose` prop to make the alert dismissable.
+
+When a user dismisses an alert, it’s important to manage their focus appropriately to help them continue their task or journey. In some cases, there may not be an obvious (or any) element to send focus to, such as when the alert was triggered by an action on a previous page or from a drawer that is now closed. Always carefully consider the context and previous user actions before moving their focus to ensure a smooth and accessible experience.
+
+```jsx live
+<SectionAlert
+	title="Section alert title"
+	tone="success"
+	onClose={console.log}
+/>
+```
+
+## Composition
+
+Section alerts are composed of an icon, title, description, action and close action.
+
+The icon and title are mandatory and achieve a compact alert, but we encourage the use of description when additional information might be helpful to the user.
 
 ```jsx live
 <Stack gap={1}>
@@ -90,8 +104,8 @@ Avoid dismissing error messages which block the user from completing a task. Ins
 		<Stack gap={0.5} alignItems="flex-start">
 			<Text as="p">Description</Text>
 			<ButtonGroup>
-				<Button variant="text">Action</Button>
-				<Button variant="text">Action</Button>
+				<Button variant="text">Action 1</Button>
+				<Button variant="text">Action 2</Button>
 			</ButtonGroup>
 		</Stack>
 	</SectionAlert>

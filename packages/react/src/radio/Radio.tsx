@@ -1,4 +1,5 @@
 import { forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
+import { useId } from '../core';
 import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { RadioIndicator } from './RadioIndicator';
 import { RadioInput } from './RadioInput';
@@ -45,6 +46,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	},
 	ref
 ) {
+	const id = useRadioId(props.id);
 	const controlGroupContext = useControlGroupContext();
 
 	// The invalid prop should override the context value
@@ -63,12 +65,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 	const name = nameProp || controlGroupContext?.name;
 
 	return (
-		<RadioContainer disabled={disabled}>
+		<RadioContainer disabled={disabled} htmlFor={id}>
 			<RadioInput
 				aria-describedby={invalid ? controlGroupContext?.messageId : undefined}
 				aria-invalid={invalid || undefined}
 				aria-required={required}
 				disabled={disabled}
+				id={id}
 				name={name}
 				ref={ref}
 				type="radio"
@@ -81,3 +84,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 		</RadioContainer>
 	);
 });
+
+function useRadioId(idProp?: string) {
+	const autoId = useId(idProp);
+	return idProp || `radio-${autoId}`;
+}
