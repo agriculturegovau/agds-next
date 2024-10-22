@@ -34,6 +34,11 @@ export function RadioIndicator({
 					color: boxPalette.borderMuted,
 					borderColor: boxPalette.borderMuted,
 					backgroundColor: boxPalette.backgroundShade,
+					// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+					'@media (forced-colors: active)': {
+						borderColor: 'GrayText',
+						color: 'GrayText',
+					},
 				}),
 
 				...(invalid && {
@@ -51,9 +56,15 @@ export function RadioIndicator({
 				css={{
 					borderRadius: '100%',
 					backgroundColor: boxPalette.foregroundText,
+					'@media (forced-colors: active)': {
+						backgroundColor: 'MenuText',
+					},
 
 					...(disabled && {
 						backgroundColor: boxPalette.borderMuted,
+						'@media (forced-colors: active)': {
+							backgroundColor: 'GrayText',
+						},
 					}),
 				}}
 			/>
