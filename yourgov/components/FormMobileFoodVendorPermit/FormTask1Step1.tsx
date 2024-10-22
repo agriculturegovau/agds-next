@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -12,6 +14,7 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
+import { SectionAlert } from '@ag.ds-next/react/src/section-alert';
 import { useGlobalForm } from './GlobalFormProvider';
 import { FormActions } from './FormActions';
 import { FormTask1Container } from './FormTask1Container';
@@ -25,10 +28,21 @@ export function FormTask1Step1() {
 	const { formState, typeSearchParm } = useGlobalForm();
 	const stepFormState = formState.task1?.step1;
 	const step1ChangeDetailsPath = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form/task-1/step-1/change-details?type=${typeSearchParm}`;
+
+	const { query } = useRouter();
+	const isUpdated = query.success === 'true';
+	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
+		useState(isUpdated);
+
+	useEffect(() => {
+		setIsSuccessMessageVisible(isUpdated);
+	}, [isUpdated]);
+
 	return (
 		<FormTask1Container
 			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
+			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3} alignItems="flex-start" width="100%">
 				<Stack gap={1.5} alignItems="flex-start" width="100%">
@@ -51,6 +65,19 @@ export function FormTask1Step1() {
 							</p>
 						</Prose>
 					</Details>
+
+					{isSuccessMessageVisible && (
+						<SectionAlert
+							// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+							// @ts-ignore
+							css={{ alignSelf: 'normal' }}
+							title="Business owner details have been updated"
+							focusOnMount
+							tone="success"
+							onClose={() => setIsSuccessMessageVisible(false)}
+						/>
+					)}
+
 					<SummaryList>
 						<SummaryListItem>
 							<SummaryListItemTerm>First name</SummaryListItemTerm>

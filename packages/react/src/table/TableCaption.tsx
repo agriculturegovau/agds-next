@@ -9,10 +9,10 @@ export const TableCaption = ({ children }: TableCaptionProps) => {
 	return (
 		<Text
 			as="caption"
+			display="table-caption"
 			fontSize="md"
 			fontWeight="bold"
 			paddingBottom={0.5}
-			display="table-caption"
 			textAlign="left"
 		>
 			{children}

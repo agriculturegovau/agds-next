@@ -16,6 +16,7 @@ type FormTask1ContainerProps = PropsWithChildren<{
 	formTitle: string;
 	formIntroduction: string;
 	formCallToAction?: ReactNode;
+	shouldFocusTitle?: boolean;
 }>;
 
 export function FormTask1Container({
@@ -23,6 +24,7 @@ export function FormTask1Container({
 	formIntroduction,
 	formCallToAction,
 	children,
+	shouldFocusTitle = true,
 }: FormTask1ContainerProps) {
 	const { pathname } = useRouter();
 	const { formState, typeSearchParm, startTask } = useGlobalForm();
@@ -31,7 +33,7 @@ export function FormTask1Container({
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = task1FormSteps[stepIndex];
 		// Current step is always in progress when the URL matches
-		if (step.href === pathname) return 'doing';
+		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.task1?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
@@ -50,9 +52,10 @@ export function FormTask1Container({
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
+						activePath={`${pathname}?type=${typeSearchParm}`}
 						items={task1FormSteps.map(({ label, href }, index) => ({
 							label,
-							href: href + `?type=${typeSearchParm}`,
+							href: `${href}?type=${typeSearchParm}`,
 							status: getStepStatus(index),
 						}))}
 					/>
@@ -64,6 +67,7 @@ export function FormTask1Container({
 						Back
 					</DirectionLink>
 					<FormContainer
+						shouldFocusTitle={shouldFocusTitle}
 						task={1}
 						title={formTitle}
 						introduction={formIntroduction}

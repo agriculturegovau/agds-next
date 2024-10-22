@@ -10,15 +10,17 @@ import {
 	TableWrapper,
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
+	type TableProps,
 } from '../../../packages/react/src/table';
 import { Checkbox } from '../../../packages/react/src/checkbox';
 import { ButtonGroup, Button } from '../../../packages/react/src/button';
 import { PageContent } from '../../../packages/react/src/content';
-import { H2, Heading } from '../../../packages/react/src/heading';
+import { H1, Heading } from '../../../packages/react/src/heading';
 import { TextLink } from '../../../packages/react/src/text-link';
 import { Flex } from '../../../packages/react/src/flex';
 import { PaginationButtons } from '../../../packages/react/src/pagination';
 import { Box } from '../../../packages/react/src/box';
+import { SiteLayout } from '../../../docs/components/SiteLayout';
 import { ModalConfirmDelete } from './ModalConfirmDelete';
 import { ModalAddTrackingNumber } from './ModalAddTrackingNumber';
 import { EXAMPLE_DATA, plural, RowData } from './utils';
@@ -28,7 +30,7 @@ import { TableFilters } from './TableFilters';
 
 const PER_PAGE = 20;
 
-export function SelectableTableBatchActions() {
+export function SelectableTableBatchActions(props: TableProps) {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [data, setData] = useState(EXAMPLE_DATA);
 
@@ -95,119 +97,150 @@ export function SelectableTableBatchActions() {
 	}
 
 	return (
-		<PageContent>
-			<Stack gap={1.5}>
-				<H2 id="certificates-heading">Certificates</H2>
-				<Stack gap={1}>
-					{renderNotification()}
-					<TableFilters />
-					<Stack gap={0}>
-						<Box paddingLeft={0.75} paddingBottom={1} borderBottom>
-							<Checkbox
-								size="sm"
-								checked={isTableHeaderChecked}
-								indeterminate={isTableHeaderIndeterminate}
-								onChange={toggleAllRows}
-							>
-								Select all rows
-							</Checkbox>
-						</Box>
-						{paginatedData.length ? (
-							<Stack gap={1}>
-								<Stack gap={0.5}>
-									<TableWrapper>
-										<Table striped aria-labelledby="certificates-heading">
-											<TableHead>
-												<TableRow>
-													<TableHeader scope="col" width="6rem">
-														Select
-													</TableHeader>
-													<TableHeader scope="col">
-														Certificate number
-													</TableHeader>
-													<TableHeader scope="col">Exporter</TableHeader>
-													<TableHeader scope="col">Date Issued</TableHeader>
-													<TableHeader scope="col">Status</TableHeader>
-													<TableHeader scope="col">Amount</TableHeader>
-													<TableHeader scope="col">Actions</TableHeader>
-												</TableRow>
-											</TableHead>
-											<TableBody>
-												{paginatedData.map((row) => (
-													<Row
-														key={row.id}
-														item={row}
-														isRowSelected={isRowSelected(row)}
-														onRowSelectToggle={() => toggleRowSelected(row)}
-														addTrackingNumber={() =>
-															addTrackingNumberToRow(row)
-														}
-														deleteRow={() => deleteRow(row)}
-													/>
-												))}
-											</TableBody>
-										</Table>
-									</TableWrapper>
-									{hasSelections && (
-										<TableBatchActionsBar>
-											<TableBatchActionsTitle>
-												Apply action to {selectedItems.length}{' '}
-												{plural(selectedItems.length, 'item', 'items')}
-											</TableBatchActionsTitle>
-											<ButtonGroup>
-												<Button
-													variant="secondary"
-													size="sm"
-													onClick={() => setModalAddTrackingOpen(true)}
-												>
-													Add tracking number
-												</Button>
-												<Button
-													variant="secondary"
-													size="sm"
-													onClick={() => setDeleteModalOpen(true)}
-												>
-													Delete
-												</Button>
-												<Button
-													variant="tertiary"
-													size="sm"
-													onClick={toggleAllRows}
-												>
-													Cancel
-												</Button>
-											</ButtonGroup>
-										</TableBatchActionsBar>
-									)}
+		<SiteLayout>
+			<PageContent>
+				<Stack gap={1.5}>
+					<H1 id="certificates-heading">Certificates</H1>
+					<Stack gap={1}>
+						{renderNotification()}
+						<TableFilters />
+						<Stack gap={0}>
+							<Box paddingLeft={0.75} paddingBottom={1} borderBottom>
+								<Checkbox
+									size="sm"
+									checked={isTableHeaderChecked}
+									indeterminate={isTableHeaderIndeterminate}
+									onChange={toggleAllRows}
+								>
+									Select all rows
+								</Checkbox>
+							</Box>
+							{paginatedData.length ? (
+								<Stack gap={1}>
+									<Stack gap={0.5}>
+										<TableWrapper>
+											<Table
+												striped
+												aria-labelledby="certificates-heading2"
+												{...props}
+											>
+												<TableHead>
+													<TableRow>
+														<TableHeader width={75} scope="col">
+															Select
+														</TableHeader>
+														<TableHeader width={200} scope="col">
+															Certificate number
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter1
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter2
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter3
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter4
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Exporter5
+														</TableHeader>
+														<TableHeader width={150} scope="col">
+															Date Issued
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Status
+														</TableHeader>
+														<TableHeader width={100} scope="col">
+															Amount
+														</TableHeader>
+														<TableHeader width={200} scope="col">
+															Actions
+														</TableHeader>
+													</TableRow>
+												</TableHead>
+												<TableBody>
+													{paginatedData.map((row) => (
+														<Row
+															key={row.id}
+															item={row}
+															isRowSelected={isRowSelected(row)}
+															onRowSelectToggle={() => toggleRowSelected(row)}
+															addTrackingNumber={() =>
+																addTrackingNumberToRow(row)
+															}
+															deleteRow={() => deleteRow(row)}
+														/>
+													))}
+												</TableBody>
+											</Table>
+										</TableWrapper>
+										{hasSelections && (
+											<TableBatchActionsBar>
+												<TableBatchActionsTitle>
+													Apply action to {selectedItems.length}{' '}
+													{plural(selectedItems.length, 'item', 'items')}
+												</TableBatchActionsTitle>
+												<ButtonGroup>
+													<Button
+														variant="secondary"
+														size="sm"
+														onClick={() => setModalAddTrackingOpen(true)}
+													>
+														Add tracking number
+													</Button>
+													<Button
+														variant="secondary"
+														size="sm"
+														onClick={() => setDeleteModalOpen(true)}
+													>
+														Delete
+													</Button>
+													<Button
+														variant="tertiary"
+														size="sm"
+														onClick={toggleAllRows}
+													>
+														Cancel
+													</Button>
+												</ButtonGroup>
+											</TableBatchActionsBar>
+										)}
+									</Stack>
+									<PaginationButtons
+										currentPage={currentPage}
+										onChange={setCurrentPage}
+										totalPages={totalPages}
+									/>
 								</Stack>
-								<PaginationButtons
-									currentPage={currentPage}
-									onChange={setCurrentPage}
-									totalPages={totalPages}
-								/>
-							</Stack>
-						) : (
-							<Stack paddingY={1}>
-								<Heading type="h3" fontSize="lg">
-									No certificates found
-								</Heading>
-							</Stack>
-						)}
+							) : (
+								<Stack paddingY={1}>
+									<Heading type="h3" fontSize="lg">
+										No certificates found
+									</Heading>
+								</Stack>
+							)}
+						</Stack>
 					</Stack>
 				</Stack>
-			</Stack>
-			<ModalConfirmDelete
-				itemsToDelete={selectedItems}
-				isOpen={deleteModalOpen}
-				onClose={() => setDeleteModalOpen(false)}
-				onConfirm={deleteSelectedItems}
-			/>
-			<ModalAddTrackingNumber
-				isOpen={ModalAddTrackingOpen}
-				onClose={() => setModalAddTrackingOpen(false)}
-				onConfirm={addTrackingNumber}
-			/>
-		</PageContent>
+				<ModalConfirmDelete
+					itemsToDelete={selectedItems}
+					isOpen={deleteModalOpen}
+					onClose={() => setDeleteModalOpen(false)}
+					onConfirm={deleteSelectedItems}
+				/>
+				<ModalAddTrackingNumber
+					isOpen={ModalAddTrackingOpen}
+					onClose={() => setModalAddTrackingOpen(false)}
+					onConfirm={addTrackingNumber}
+				/>
+			</PageContent>
+		</SiteLayout>
 	);
 }
 
@@ -264,6 +297,11 @@ function Row({
 				<TableCell as="th" scope="row" fontWeight="bold">
 					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
+				<TableCell>{exporter}</TableCell>
 				<TableCell>{exporter}</TableCell>
 				<TableCell>11/02/22 14:06</TableCell>
 				<TableCell>{status}</TableCell>

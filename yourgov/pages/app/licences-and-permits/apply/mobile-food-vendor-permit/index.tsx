@@ -64,12 +64,12 @@ const Page: NextPageWithLayout = () => {
 										<li>vehicle registration details and vehicle plans</li>
 										<li>operational plan of management</li>
 										<li>food safety supervisor certificate</li>
-										<li>names of any employees who will be handling food</li>
-										<li>
-											once you have confirmed business and employee details we
-											will provide a checklist of required documents
-										</li>
+										<li>names of any employees who will be handling food.</li>
 									</ul>
+									<p>
+										Once you have confirmed business and employee details we
+										will provide a checklist of required documents
+									</p>
 
 									<h2 id="what-you-will-need">What happens next</h2>
 									<p>To complete this application you will need to provide:</p>
