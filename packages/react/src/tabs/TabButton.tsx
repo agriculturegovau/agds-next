@@ -139,6 +139,10 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 						background: isSelected
 							? boxPalette.selected
 							: boxPalette.borderMuted,
+						// See https://www.w3.org/TR/CSS21/ui.html#system-colors
+						'@media (forced-colors: active)': {
+							backgroundColor: isSelected ? 'MenuText' : 'GrayText',
+						},
 					},
 				},
 
