@@ -1,5 +1,118 @@
 # @ag.ds-next/react
 
+## 1.25.0
+
+### Minor Changes
+
+- bfa1543b410: date-picker: Update calendar to satisfy ARIA pattern.
+
+  date-range-picker: Update calendar to satisfy ARIA pattern.
+
+- d8f5b35013f: button: Improve appearance and experience for high contrast users.
+
+  checkbox: Improve appearance and experience for high contrast users.
+
+  drawer: Improve appearance and experience for high contrast users.
+
+  global-alert: Improve appearance and experience for high contrast users.
+
+  modal: Improve appearance and experience for high contrast users.
+
+  notification-badge: Improve appearance and experience for high contrast users.
+
+  progress-indicator: Improve appearance and experience for high contrast users.
+
+  radio: Improve appearance and experience for high contrast users.
+
+  sub-nav: Improve appearance and experience for high contrast users.
+
+  tabs: Improve appearance and experience for high contrast users.
+
+- ef789cd698c: checkbox: Change focus ring to use `:focus` instead of `:focus-visible`.
+
+  field: Update `useScrollToField` hook to also find elements by name.
+
+  radio: Change focus ring to use `:focus` instead of `:focus-visible`.
+
+- b23903198ac: pagination: Announce the hidden pages represented by ellipses.
+- e66b2636531: side-nav: Use responsive column widths to contain example in docs.
+- 51665e9fa79: checkbox: Add explicit for/id association between input and label.
+
+  radio: Add explicit for/id association between input and label.
+
+- fc02f936d0c: table: Improve usage guidance.
+- 0e65c067718: summary-list: Update docs & examples to have unique Action content.
+- 198ec8efbba: callout: Add title section with link to semantic headings.
+- c33c23d4594: file-upload: Announce adding and removing files.
+- 8f70c8ba7fe: prose: Apply `bodyText` `maxWidth` token to lists.
+- b577088b3e7: tags: Automatically focus previous tag `onRemove`. Add `ref` support.
+
+  docs: Export `visuallyHiddenStyles` for use within live code examples.
+
+- 9cfb094f43f: avatar: Add colour section to docs, showcasing dark and light palette variants.
+- e6b7b617d9a: app-layout-header: Wrap `accountDetails` when space is limited.
+
+  main-nav: Wrap `secondaryItems` when space is limited.
+
+- 38e4c01fd25: pagination: Update Items per page to a working example.
+- d6d8d66842e: page-alert: Make title default to H2 instead of H3.
+- a69a4ae612d: file-input: Add accept example and enhance hint guidance
+- 73be3b9dd9e: pagination: Announce itemRangeText to screen readers.
+- 0f5331102e9: search-input: Improve guidance/examples to include a search landmark.
+- a698c798152: combobox: Improve performance of option rendering, filtering and string matching.
+- 277af1554e9: card: Update docs to include colour section, ensure lists are marked up semantically.
+- ffee5f3b6aa: date-range-picker: Update example error messages in docs to be specific to the invalid inputs.
+- 9b32c1d9ab4: app-layout: `AppLayoutHeader` - set `aria-expanded` to match mobile menu open state.
+
+  main-nav: Set `aria-expanded` to match mobile menu open state.
+
+- 5fed76317d3: callout: Change conditionally revealed guidance to within-accordion, rather than within-radio. Add Colour section to indicate palette options.
+
+### Patch Changes
+
+- 38378085fee: table docs: issue 111 - table content changes
+- 066c1edd21c: breadcrumbs: Update accessible name for `...` collapsed button to be more descriptive.
+- 4b881310d02: app-layout: Add aria attributes to mobile menu button to improve state announcement.
+
+  header: Add aria attributes to mobile menu button to improve state announcement.
+
+- 64c38569a98: table: Correctly label table wrappers when headings are used instead of captions.
+- 8aa2d81262f: combobox: Enable iOS screen reader users to delete individual selections in ComboboxMulti, correctly announce selection and removal of items, prevent users from being able to focus the chip to remove it - removal only available from the `x` button.
+- 0fc960623f0: table: Change all examples of the indeterminate select-all checkbox so that when pressed, all items will be selected rather than deselected.
+- c640eaa0ca7: Page-alert: headings link added to page
+- 0b9c49ebeb9: date-range-picker: Fix toInvalid checks and inputChange events in examples.
+- fec2299a908: pagination: Ensure focus is returned to the correct page number button when the Previous button is added and removed.
+- ac04b0d1350: box: Improve performance by separating style props and memoising.
+- 7ec07ff2c65: details docs: issue 42 - edit documentation
+- 093fe94bc81: combobox: Prevent iOS Done button from closing dropdown. Fix iOS VoiceOver’s announcement of options. Fix accessing options in Android TalkBack.
+
+  combobox-multi: Prevent iOS Done button from closing dropdown. Fix iOS VoiceOver’s announcement of options. Fix accessing options in Android TalkBack.
+
+- 032b9ab94ce: app-layout: Prevent focus ring from being cut off by screen edge and sibling links
+- b57fe083e3b: autocomplete docs: issue 25 autocomplete content edited
+- 6b6915dee9a: Side-vav docs: issue 98 - side-nav content edited
+- 060fde075b0: dropdown-menu: Update badge story to have announced text reflect visual text.
+- a47676b832f: combobox docs: issue 28 - edit docs and give example
+- c7b42ee9331: app-layout: In the AppLayout docs for sub-level items, explain the reasons for choosing each option in more detail.
+- f350b70eb5b: breadcrumbs: Improve guidance around correct usage of breadcrumbs.
+- 43fffc0fe97: date-picker: Make hover, selected and today cells visible in high contrast mode.
+
+  date-range-picker: Make hover, selected and today cells visible in high contrast mode.
+
+- a8d0c5f09b1: table: Update guidance and examples of sortable tables to match ARIA pattern.
+- 79e87db5003: autocomplete: Announce loading and error states to screen readers.
+
+  combobox: Announce loading and error states to screen readers.
+
+  time-picker: Announce loading and error states to screen readers.
+
+- 219f41aae95: details: Fix iOS VoiceOver not announcing the expanded state.
+- 6d882af9f5b: autocomplete docs: issue 10 - edit docs and add example
+- 20eac31f59c: password-input docs: issue 77 - Password input content edits
+- c5dad52b4c8: file-upload: Announce file size and accepted files descriptions when focusing Select files button.
+- c3fa7126d80: details: Make the (i) icon available to screen readers with the accessible name of: Information
+- 6627301604a: link-list docs: issue 70 - remove 'don't' and replace 'Do' point
+
 ## 1.24.0
 
 ### Minor Changes
