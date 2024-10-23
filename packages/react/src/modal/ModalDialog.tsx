@@ -35,15 +35,9 @@ export const ModalDialog = ({
 	return (
 		<FocusLock returnFocus>
 			<Stack
-				role="dialog"
+				aria-labelledby={titleId}
 				aria-modal="true"
 				background="body"
-				aria-labelledby={titleId}
-				rounded
-				paddingX={{ xs: 0.75, md: 1.5 }}
-				paddingY={{ xs: 1, md: 1.5 }}
-				gap={1}
-				maxWidth={MAX_WIDTH}
 				css={{
 					boxShadow: tokens.shadow.lg,
 					position: 'relative',
@@ -55,6 +49,13 @@ export const ModalDialog = ({
 						minHeight: 'auto',
 					},
 				}}
+				gap={1}
+				highContrastOutline
+				maxWidth={MAX_WIDTH}
+				paddingX={{ xs: 0.75, md: 1.5 }}
+				paddingY={{ xs: 1, md: 1.5 }}
+				role="dialog"
+				rounded
 			>
 				<Button
 					variant="text"
