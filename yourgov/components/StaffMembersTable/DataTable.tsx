@@ -1,4 +1,4 @@
-import { forwardRef, Fragment } from 'react';
+import { forwardRef, Fragment, useState } from 'react';
 import { format, formatDistance } from 'date-fns';
 import {
 	VisuallyHidden,
@@ -12,7 +12,6 @@ import {
 	TableCell,
 	TableHead,
 	TableHeader,
-	TableHeaderProps,
 	TableHeaderSortable,
 	TableWrapper,
 	TableRow,
@@ -23,12 +22,20 @@ import { Stack } from '@ag.ds-next/react/src/stack';
 import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/src/icon';
 import { Heading } from '@ag.ds-next/react/src/heading';
 import { Button } from '@ag.ds-next/react/src/button';
+import {
+	DropdownMenu,
+	DropdownMenuButton,
+	DropdownMenuItem,
+	DropdownMenuPanel,
+} from '@ag.ds-next/react/dropdown-menu';
 import { generateTableCaption } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
-import { StaffMember } from './lib/types';
 import { LAST_ACTIVE_RELATIVE_TIME_MS } from './lib/staffMembers';
 import { DataTableRow, DataTableRowStatus } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
+import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
+import { ModalConfirmRemoveAccess } from './ModalConfirmRemoveAccess';
+import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';
 
 export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
@@ -46,6 +53,36 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
+
+		const [removeModalOpen, setRemoveModalOpen] = useState(false);
+		const [pauseModalOpen, setPauseModalOpen] = useState(false);
+		const [modalChangeRoleOpen, setModalChangeRoleOpen] = useState(false);
+
+		const onClickRemoveAccess = () => {
+			setRemoveModalOpen(true);
+		};
+		const onClickPauseAccess = () => {
+			setPauseModalOpen(true);
+		};
+		const onClickChangeRoles = () => {
+			setModalChangeRoleOpen(true);
+		};
+
+		const onConfirmRemove = () => {
+			// deleteRow();
+			console.log('Delete row');
+			setRemoveModalOpen(false);
+		};
+		const onConfirmPause = () => {
+			// deleteRow();
+			console.log('Pause row');
+			setPauseModalOpen(false);
+		};
+		const onConfirmChangeRole = () => {
+			setModalChangeRoleOpen(false);
+			// addTrackingNumber();
+			console.log('Change role');
+		};
 
 		const caption = generateTableCaption({
 			loading,
@@ -120,13 +157,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 									</TableHeader>
 								)}
 								{headers.map(
-									({
-										label,
-										sortKey,
-										textAlign,
-										width,
-										isSortable: isFieldSortable,
-									}) => {
+									({ isSortable: isFieldSortable, label, sortKey, width }) => {
 										if (isTableSortable && isFieldSortable) {
 											const isFieldTheActiveSortField = sort?.field === sortKey;
 											const onClick = () =>
@@ -141,7 +172,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											return (
 												<TableHeaderSortable
 													key={sortKey}
-													textAlign={textAlign}
 													width={width}
 													sort={
 														isFieldTheActiveSortField ? sort?.order : undefined
@@ -195,6 +225,11 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											</TableCell>
 
 											<TableCell>
+												<SkeletonText />
+												<VisuallyHidden>Loading</VisuallyHidden>
+											</TableCell>
+
+											<TableCell>
 												<SkeletonBox height={32} />
 												<VisuallyHidden>Loading</VisuallyHidden>
 											</TableCell>
@@ -203,45 +238,108 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 								</Fragment>
 							) : (
 								<Fragment>
-									{data.map(
-										({ index, name, role, status, lastActive, dateJoined }) => {
-											// Adding 2 because the table header row is the first row
-											const rowIndex = index + 2;
-											const id = name.replace(' ', '-');
+									{data.map((item) => {
+										const {
+											index,
+											name,
+											role,
+											status,
+											lastActive,
+											dateJoined,
+										} = item;
 
-											return (
-												<DataTableRow
-													key={name}
-													selectable={selectable}
-													itemId={id}
-													name={name}
-													rowIndex={rowIndex}
-												>
-													<TableCell as="th" scope="row">
-														<TextLink href={`#${id}`}>{name}</TextLink>
-													</TableCell>
+										// Adding 2 because the table header row is the first row
+										const rowIndex = index + 2;
+										const id = name.replace(' ', '-');
 
-													{/* <DataTableRowAssignee assignee={assignee} /> */}
-													<TableCell>{role}</TableCell>
+										return (
+											<DataTableRow
+												key={name}
+												selectable={selectable}
+												itemId={id}
+												name={name}
+												rowIndex={rowIndex}
+											>
+												<TableCell as="th" scope="row">
+													<TextLink href={`#${id}`}>{name}</TextLink>
+												</TableCell>
 
-													<DataTableRowStatus status={status} />
+												{/* <DataTableRowAssignee assignee={assignee} /> */}
+												<TableCell>{role}</TableCell>
 
-													<TableCell>
-														{lastActive &&
-															`${formatDistance(
-																new Date(LAST_ACTIVE_RELATIVE_TIME_MS),
-																new Date(lastActive)
-															)} ago`}
-													</TableCell>
+												<DataTableRowStatus status={status} />
 
-													<TableCell>
-														{dateJoined &&
-															format(new Date(dateJoined), 'd MMMM yyyy')}
-													</TableCell>
-												</DataTableRow>
-											);
-										}
-									)}
+												<TableCell>
+													{lastActive &&
+														`${formatDistance(
+															new Date(LAST_ACTIVE_RELATIVE_TIME_MS),
+															new Date(lastActive)
+														)} ago`}
+												</TableCell>
+
+												<TableCell>
+													{dateJoined &&
+														format(new Date(dateJoined), 'd MMMM yyyy')}
+												</TableCell>
+
+												<TableCell>
+													<DropdownMenu>
+														<DropdownMenuButton>
+															Actions
+															<VisuallyHidden> for {name}</VisuallyHidden>
+														</DropdownMenuButton>
+
+														<DropdownMenuPanel>
+															<DropdownMenuItem onClick={onClickChangeRoles}>
+																Change roles
+																<Text css={visuallyHiddenStyles}>
+																	{' '}
+																	for {name}
+																</Text>
+															</DropdownMenuItem>
+
+															<DropdownMenuItem onClick={onClickPauseAccess}>
+																Pause access
+																<Text css={visuallyHiddenStyles}>
+																	{' '}
+																	for {name}
+																</Text>
+															</DropdownMenuItem>
+
+															<DropdownMenuItem onClick={onClickRemoveAccess}>
+																Remove access
+																<Text css={visuallyHiddenStyles}>
+																	{' '}
+																	for {name}
+																</Text>
+															</DropdownMenuItem>
+														</DropdownMenuPanel>
+													</DropdownMenu>
+												</TableCell>
+
+												<ModalConfirmChangeRole
+													currentRole={item.role}
+													isOpen={modalChangeRoleOpen}
+													onClose={() => setModalChangeRoleOpen(false)}
+													onConfirm={onConfirmChangeRole}
+												/>
+
+												<ModalConfirmPauseAccess
+													itemsToPause={item}
+													isOpen={pauseModalOpen}
+													onClose={() => setPauseModalOpen(false)}
+													onConfirm={onConfirmPause}
+												/>
+
+												<ModalConfirmRemoveAccess
+													itemsToDelete={item}
+													isOpen={removeModalOpen}
+													onClose={() => setRemoveModalOpen(false)}
+													onConfirm={onConfirmRemove}
+												/>
+											</DataTableRow>
+										);
+									})}
 								</Fragment>
 							)}
 						</TableBody>
@@ -253,13 +351,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	}
 );
 
-const headers: {
-	label: string;
-	sortKey: keyof StaffMember;
-	isSortable: boolean;
-	width?: TableHeaderProps['width'];
-	textAlign?: TableHeaderProps['textAlign'];
-}[] = [
+const headers = [
 	{
 		label: 'Name',
 		sortKey: 'name',
@@ -290,4 +382,10 @@ const headers: {
 		width: '11rem',
 		isSortable: true,
 	},
-];
+	{
+		label: 'Actions',
+		sortKey: 'actions',
+		width: '11rem',
+		isSortable: false,
+	},
+] as const;

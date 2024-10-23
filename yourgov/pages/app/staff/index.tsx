@@ -81,7 +81,7 @@ const Page: NextPageWithLayout = () => {
 							</Stack>
 						}
 					/>
-					<Tabs>
+					<Tabs contained={false}>
 						<TabList>
 							<TabButton>Staff members</TabButton>
 

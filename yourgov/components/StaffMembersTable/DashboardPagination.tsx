@@ -13,8 +13,8 @@ export const DashboardPagination = () => {
 		totalItems: totalItems,
 		currentPage: pagination.page,
 		itemsPerPage: pagination.perPage,
-		singularNoun: 'audit',
-		pluralNoun: 'audits',
+		singularNoun: 'item',
+		pluralNoun: 'items',
 	});
 
 	// Display text for pagination allows us to wait for loading to complete before updating
