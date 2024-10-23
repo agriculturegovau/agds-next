@@ -88,7 +88,11 @@ export const ActiveFilters = () => {
 	return (
 		<Flex flexWrap="wrap" gap={0.75} alignItems="flex-end">
 			<Tags
-				heading={<Text fontWeight="bold">Active filters</Text>}
+				heading={
+					<Text as="h3" fontWeight="bold">
+						Active filters
+					</Text>
+				}
 				items={tags}
 			/>
 			<Button

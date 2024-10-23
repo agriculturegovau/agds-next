@@ -69,18 +69,15 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 		};
 
 		const onConfirmRemove = () => {
-			// deleteRow();
-			console.log('Delete row');
+			console.log('Remove access');
 			setRemoveModalOpen(false);
 		};
 		const onConfirmPause = () => {
-			// deleteRow();
-			console.log('Pause row');
+			console.log('Pause access');
 			setPauseModalOpen(false);
 		};
 		const onConfirmChangeRole = () => {
 			setModalChangeRoleOpen(false);
-			// addTrackingNumber();
 			console.log('Change role');
 		};
 
