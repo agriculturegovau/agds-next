@@ -91,17 +91,16 @@ export function transformValuePropToInputValue(
 	valueProp: Date | string | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
-	if (
-		typeof valueProp === 'string' &&
-		parseISO(valueProp).toString() === 'Invalid Date'
-	)
-		return valueProp;
-	if (typeof valueProp === 'undefined') return '';
+	if (valueProp === undefined) return '';
 
-	const valueAsDate =
+	const valueAsDateOrUndefined =
 		typeof valueProp === 'string' ? normaliseDateString(valueProp) : valueProp;
-	if (valueAsDate && isValidDate(valueAsDate))
-		return formatDate(valueAsDate, dateFormat);
+
+	if (valueAsDateOrUndefined === undefined) return valueProp.toString();
+
+	if (isValidDate(valueAsDateOrUndefined))
+		return formatDate(valueAsDateOrUndefined, dateFormat);
+
 	return '';
 }
 
