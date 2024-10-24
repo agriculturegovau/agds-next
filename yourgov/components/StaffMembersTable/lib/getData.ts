@@ -21,7 +21,19 @@ export const doesStaffMemberMatchFilters = (
 ) => {
 	let isValid = true;
 
-	const { lastActiveFrom, lastActiveTo, status, role, name } = filters;
+	const {
+		activeUsers,
+		lastActiveFrom,
+		lastActiveTo,
+		name,
+		role,
+		status,
+		trainingCompleted,
+	} = filters;
+
+	if (activeUsers) {
+		isValid = staffMember.status === 'Active' ? isValid : false;
+	}
 
 	if (lastActiveFrom && lastActiveTo) {
 		const lastActiveFromMs = new Date(lastActiveFrom).getTime();
@@ -39,23 +51,25 @@ export const doesStaffMemberMatchFilters = (
 	}
 
 	if (status) {
-		const value = status.toLowerCase();
-		if (staffMember.status.toString().toLowerCase().indexOf(value) === -1) {
-			isValid = false;
-		}
+		isValid = staffMember.status === status ? isValid : false;
 	}
 
-	if (role) {
-		const value = role.toLowerCase();
-		if (!staffMember.role.toString().toLowerCase().includes(value)) {
-			isValid = false;
-		}
+	if (role && Object.values(role).some(Boolean)) {
+		isValid = role[staffMember.role] ? isValid : false;
+	}
+
+	if (trainingCompleted && Object.values(trainingCompleted).some(Boolean)) {
+		isValid = staffMember.trainingCompleted
+			.map((training) => trainingCompleted[training])
+			.some(Boolean)
+			? isValid
+			: false;
 	}
 
 	if (name) {
-		if (!staffMember.name || (staffMember.name && staffMember.name !== name)) {
-			isValid = false;
-		}
+		isValid = staffMember.name.toLowerCase().includes(name.toLowerCase())
+			? isValid
+			: false;
 	}
 
 	return isValid;

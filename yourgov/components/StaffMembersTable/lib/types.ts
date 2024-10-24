@@ -3,6 +3,8 @@ import { staffMembers } from './staffMembers';
 export type StaffMember = (typeof staffMembers)[number];
 export type StaffMemberStatus = StaffMember['status'];
 export type StaffMemberRole = StaffMember['role'];
+export type StaffMemberTrainingCompleted =
+	StaffMember['trainingCompleted'][number];
 
 export type StaffMemberWithIndex = StaffMember & {
 	index: number;
@@ -31,8 +33,9 @@ export type GetDataFilters = {
 	lastActiveFrom: string | undefined;
 	lastActiveTo: string | undefined;
 	name: string | undefined;
-	role: StaffMemberRole | undefined;
+	role: Record<StaffMemberRole, boolean>;
 	status: StaffMemberStatus | undefined;
+	trainingCompleted: Record<StaffMemberTrainingCompleted, boolean>;
 };
 
 export type GetDataParams = {

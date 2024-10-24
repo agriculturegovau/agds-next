@@ -3,7 +3,7 @@ import { GetDataFilters, GetDataPagination, GetDataSort } from './types';
 
 export type SortAndFilter = ReturnType<typeof useSortAndFilter>;
 
-const defaultFilters: GetDataFilters = {
+export const defaultFilters: GetDataFilters = {
 	activeUsers: false,
 	dateJoinedFrom: undefined,
 	dateJoinedTo: undefined,
@@ -11,8 +11,19 @@ const defaultFilters: GetDataFilters = {
 	lastActiveFrom: undefined,
 	lastActiveTo: undefined,
 	name: undefined,
-	role: undefined,
+	role: {
+		Manager: false,
+		Employee: false,
+		Trainee: false,
+		'Work experience': false,
+	},
 	status: undefined,
+	trainingCompleted: {
+		'Ice cream making': false,
+		Packaging: false,
+		Deliveries: false,
+		Distribution: false,
+	},
 };
 
 export const useSortAndFilter = (
@@ -182,10 +193,7 @@ export function sortFilterReducer(
 				...state,
 				filters: {
 					...state.filters,
-					[action.payload]:
-						action.payload === 'dateJoinedFrom'
-							? { from: undefined, to: undefined }
-							: undefined,
+					[action.payload]: defaultFilters[action.payload],
 				},
 			};
 		case 'RESET_FILTERS':

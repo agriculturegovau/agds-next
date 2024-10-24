@@ -39,6 +39,38 @@ const getTagsFromFilters = ({
 			continue;
 		}
 
+		if (key === 'role') {
+			const selectedRoles = Object.keys(value) as (keyof typeof value)[];
+			if (!selectedRoles.some((role) => value[role])) continue;
+
+			tags.push({
+				label: `${formattedKey}: ${selectedRoles
+					.reduce<(keyof typeof value)[]>(
+						(acc, role) => (value[role] ? [...acc, role] : acc),
+						[]
+					)
+					.join(', ')}`,
+				onRemove,
+			});
+			continue;
+		}
+
+		if (key === 'trainingCompleted') {
+			const selectedTrainings = Object.keys(value) as (keyof typeof value)[];
+			if (!selectedTrainings.some((training) => value[training])) continue;
+
+			tags.push({
+				label: `${formattedKey}: ${selectedTrainings
+					.reduce<(keyof typeof value)[]>(
+						(acc, role) => (value[role] ? [...acc, role] : acc),
+						[]
+					)
+					.join(', ')}`,
+				onRemove,
+			});
+			continue;
+		}
+
 		if (key === 'status') {
 			tags.push({
 				label: `${formattedKey}: ${STATUS_MAP[value].label}`,
@@ -74,6 +106,7 @@ function formatFilterKey(key: keyof GetDataFilters) {
 		name: 'Name',
 		role: 'Role',
 		status: 'Status',
+		trainingCompleted: 'Training completed',
 	}[key];
 }
 

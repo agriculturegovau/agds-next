@@ -1,13 +1,17 @@
-import { useState } from 'react';
-import { Stack } from '@ag.ds-next/react/src/stack';
-import { Fieldset } from '@ag.ds-next/react/src/fieldset';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { FormStack } from '@ag.ds-next/react/src/form-stack';
-import { Divider } from '@ag.ds-next/react/src/divider';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
-import { GetDataFilters } from './lib/types';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	GetDataFilters,
+	StaffMemberRole,
+	StaffMemberTrainingCompleted,
+} from './lib/types';
 import { SortAndFilterProvider, useSortAndFilterContext } from './lib/contexts';
-import { FilterStatusSelect } from './FilterStatusSelect';
+import { defaultFilters } from './lib/useSortAndFilter';
 
 type DashboardFilterDrawerProps = {
 	isDrawerOpen: boolean;
@@ -21,6 +25,10 @@ export const DashboardFilterDrawer = ({
 	const { filters, setFilters, resetFilters } = useSortAndFilterContext();
 	const [formState, setFormState] = useState<GetDataFilters>(filters);
 
+	useEffect(() => {
+		setFormState(filters);
+	}, [filters]);
+
 	const applyFilters = () => {
 		setFilters(formState);
 		closeDrawer();
@@ -32,17 +40,7 @@ export const DashboardFilterDrawer = ({
 
 	const clearFilters = () => {
 		resetFilters();
-		setFormState({
-			activeUsers: false,
-			dateJoinedFrom: undefined,
-			dateJoinedTo: undefined,
-			foodSafetyCertificate: false,
-			lastActiveFrom: undefined,
-			lastActiveTo: undefined,
-			name: undefined,
-			role: undefined,
-			status: undefined,
-		});
+		setFormState(defaultFilters);
 	};
 
 	const cancel = () => {
@@ -53,6 +51,27 @@ export const DashboardFilterDrawer = ({
 	const mockSortAndFilterFunc = () => {
 		throw new Error('Not implemented');
 	};
+
+	const getOnChangeRole =
+		(roleType: StaffMemberRole) => (event: ChangeEvent<HTMLInputElement>) =>
+			setFormState((prevFormState) => ({
+				...prevFormState,
+				role: {
+					...prevFormState.role,
+					[roleType]: event.target.checked,
+				},
+			}));
+
+	const getOnChangeTrainingCompleted =
+		(trainingCompletedType: StaffMemberTrainingCompleted) =>
+		(event: ChangeEvent<HTMLInputElement>) =>
+			setFormState((prevFormState) => ({
+				...prevFormState,
+				trainingCompleted: {
+					...prevFormState.trainingCompleted,
+					[trainingCompletedType]: event.target.checked,
+				},
+			}));
 
 	return (
 		<SortAndFilterProvider
@@ -81,24 +100,121 @@ export const DashboardFilterDrawer = ({
 				onClose={cancel}
 				actions={
 					<ButtonGroup>
-						<Button onClick={applyFilters}>Apply filters</Button>
+						<Button form="staff-filters-form" onClick={applyFilters}>
+							Apply filters
+						</Button>
+
 						<Button variant="secondary" onClick={clearFilters}>
 							Clear filters
 						</Button>
+
 						<Button variant="tertiary" onClick={cancel}>
 							Cancel
 						</Button>
 					</ButtonGroup>
 				}
 			>
-				<Stack gap={3}>
-					<Fieldset legend="Fieldset">
-						<FormStack>
-							<FilterStatusSelect block />
-						</FormStack>
-					</Fieldset>
-					<Divider />
-				</Stack>
+				<form id="staff-filters-form">
+					<FormStack>
+						<ControlGroup block label="Role" required>
+							<Checkbox
+								checked={formState.role.Manager}
+								onChange={getOnChangeRole('Manager')}
+								value="manager"
+							>
+								Manager
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.role.Employee}
+								onChange={getOnChangeRole('Employee')}
+								value="employee"
+							>
+								Employee
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.role.Trainee}
+								onChange={getOnChangeRole('Trainee')}
+								value="trainee"
+							>
+								Trainee
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.role['Work experience']}
+								onChange={getOnChangeRole('Work experience')}
+								value="work-experience"
+							>
+								Work experience
+							</Checkbox>
+						</ControlGroup>
+
+						<ControlGroup block label="Training completed" required>
+							<Checkbox
+								checked={formState.trainingCompleted['Ice cream making']}
+								onChange={getOnChangeTrainingCompleted('Ice cream making')}
+								value="ice-cream-making"
+							>
+								Ice cream making
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.trainingCompleted.Packaging}
+								onChange={getOnChangeTrainingCompleted('Packaging')}
+								value="packaging"
+							>
+								Packaging
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.trainingCompleted.Distribution}
+								onChange={getOnChangeTrainingCompleted('Distribution')}
+								value="distribution"
+							>
+								Distribution
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.trainingCompleted.Deliveries}
+								onChange={getOnChangeTrainingCompleted('Deliveries')}
+								value="deliveries"
+							>
+								Deliveries
+							</Checkbox>
+						</ControlGroup>
+
+						<DateRangePicker
+							fromLabel="From date"
+							legend="Last active"
+							onChange={({ from, to }) =>
+								setFormState((prevFormState) => ({
+									...prevFormState,
+									lastActiveFrom: from?.toISOString(),
+									lastActiveTo: to?.toISOString(),
+								}))
+							}
+							onFromInputChange={(from) =>
+								setFormState((prevFormState) => ({
+									...prevFormState,
+									lastActiveFrom: from,
+								}))
+							}
+							onToInputChange={(to) =>
+								setFormState((prevFormState) => ({
+									...prevFormState,
+									lastActiveTo: to,
+								}))
+							}
+							required
+							toLabel="To date"
+							value={{
+								from: formState.lastActiveFrom,
+								to: formState.lastActiveTo,
+							}}
+						/>
+					</FormStack>
+				</form>
 			</Drawer>
 		</SortAndFilterProvider>
 	);

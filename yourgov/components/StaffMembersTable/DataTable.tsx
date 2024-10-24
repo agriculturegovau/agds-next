@@ -258,7 +258,9 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												rowIndex={rowIndex}
 											>
 												<TableCell as="th" scope="row">
-													<TextLink href={`#${id}`}>{name}</TextLink>
+													<TextLink href={`#${id}`} id={`${id}-name`}>
+														{name}
+													</TextLink>
 												</TableCell>
 
 												{/* <DataTableRowAssignee assignee={assignee} /> */}
@@ -281,34 +283,21 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 												<TableCell>
 													<DropdownMenu>
-														<DropdownMenuButton>
+														<DropdownMenuButton aria-describedby={`${id}-name`}>
 															Actions
-															<VisuallyHidden> for {name}</VisuallyHidden>
 														</DropdownMenuButton>
 
 														<DropdownMenuPanel>
 															<DropdownMenuItem onClick={onClickChangeRoles}>
-																Change roles
-																<Text css={visuallyHiddenStyles}>
-																	{' '}
-																	for {name}
-																</Text>
+																Change role
 															</DropdownMenuItem>
 
 															<DropdownMenuItem onClick={onClickPauseAccess}>
 																Pause access
-																<Text css={visuallyHiddenStyles}>
-																	{' '}
-																	for {name}
-																</Text>
 															</DropdownMenuItem>
 
 															<DropdownMenuItem onClick={onClickRemoveAccess}>
 																Remove access
-																<Text css={visuallyHiddenStyles}>
-																	{' '}
-																	for {name}
-																</Text>
 															</DropdownMenuItem>
 														</DropdownMenuPanel>
 													</DropdownMenu>
@@ -382,7 +371,7 @@ const headers = [
 	{
 		label: 'Actions',
 		sortKey: 'actions',
-		width: '11rem',
+		width: '8rem',
 		isSortable: false,
 	},
 ] as const;

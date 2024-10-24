@@ -14,6 +14,7 @@ export const staffMembers = [
 		name: 'Riely Taylor',
 		role: 'Manager',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '31',
@@ -23,6 +24,7 @@ export const staffMembers = [
 		name: 'Fiona Chen',
 		role: 'Manager',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '29',
@@ -32,6 +34,7 @@ export const staffMembers = [
 		name: 'Tarun Khan',
 		role: 'Manager',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '28',
@@ -41,6 +44,7 @@ export const staffMembers = [
 		name: 'Ediz Balik',
 		role: 'Manager',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -50,6 +54,7 @@ export const staffMembers = [
 		name: 'Sam Miller',
 		role: 'Trainee',
 		status: 'Invited',
+		trainingCompleted: ['Ice cream making', 'Packaging'],
 	},
 	{
 		age: '17',
@@ -59,6 +64,7 @@ export const staffMembers = [
 		name: 'Summer Haugh',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -68,6 +74,7 @@ export const staffMembers = [
 		name: 'Ebony Crawford',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -77,6 +84,7 @@ export const staffMembers = [
 		name: 'Milla MacRory',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '17',
@@ -86,6 +94,7 @@ export const staffMembers = [
 		name: 'Gemma Bevington',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -95,6 +104,7 @@ export const staffMembers = [
 		name: 'Jasper Bainton',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -104,6 +114,7 @@ export const staffMembers = [
 		name: 'Lili Tsao',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -113,6 +124,7 @@ export const staffMembers = [
 		name: 'Marco Oksanen',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -122,6 +134,7 @@ export const staffMembers = [
 		name: 'Dino Fallaci',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '19',
@@ -131,6 +144,7 @@ export const staffMembers = [
 		name: 'Toby Hayden',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -140,6 +154,7 @@ export const staffMembers = [
 		name: 'Archie Edman',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -149,6 +164,7 @@ export const staffMembers = [
 		name: 'Cecilia Duarte',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -158,6 +174,7 @@ export const staffMembers = [
 		name: 'William Corey',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -167,6 +184,7 @@ export const staffMembers = [
 		name: 'Maude Baron',
 		role: 'Trainee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '19',
@@ -176,6 +194,7 @@ export const staffMembers = [
 		name: 'Elisabeth Becker',
 		role: 'Trainee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '18',
@@ -185,6 +204,7 @@ export const staffMembers = [
 		name: 'Han Tso',
 		role: 'Trainee',
 		status: 'Paused',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '16',
@@ -194,6 +214,7 @@ export const staffMembers = [
 		name: 'Cody Gipps',
 		role: 'Trainee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -203,6 +224,7 @@ export const staffMembers = [
 		name: 'Jordan Smith',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -212,6 +234,7 @@ export const staffMembers = [
 		name: 'Casey Johnson',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -221,6 +244,7 @@ export const staffMembers = [
 		name: 'Morgan Williams',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -230,6 +254,7 @@ export const staffMembers = [
 		name: 'Jamie Martinez',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -239,6 +264,7 @@ export const staffMembers = [
 		name: 'Alex Davis',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -248,6 +274,7 @@ export const staffMembers = [
 		name: 'Taylor Wilson',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -257,6 +284,7 @@ export const staffMembers = [
 		name: 'Harley Young',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -266,6 +294,7 @@ export const staffMembers = [
 		name: 'Blake Anderson',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -275,6 +304,7 @@ export const staffMembers = [
 		name: 'Abigail Hosking',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging'],
 	},
 	{
 		age: '23',
@@ -284,6 +314,7 @@ export const staffMembers = [
 		name: 'Tristan Topp',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -293,6 +324,7 @@ export const staffMembers = [
 		name: 'Madison Abrahams',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -302,6 +334,7 @@ export const staffMembers = [
 		name: 'Lola Hollis',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -311,6 +344,7 @@ export const staffMembers = [
 		name: 'Jasmine Gunther',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -320,6 +354,7 @@ export const staffMembers = [
 		name: 'John Stead',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -329,6 +364,7 @@ export const staffMembers = [
 		name: 'Jett Archdall',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -338,6 +374,7 @@ export const staffMembers = [
 		name: 'Lucas Tye',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -347,6 +384,7 @@ export const staffMembers = [
 		name: 'Madeline Felan',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -356,6 +394,7 @@ export const staffMembers = [
 		name: 'Marcus Gibbs',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -365,6 +404,7 @@ export const staffMembers = [
 		name: 'Jeremy Thorn',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -374,6 +414,7 @@ export const staffMembers = [
 		name: 'Taj Walkley',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -383,6 +424,7 @@ export const staffMembers = [
 		name: 'Gabriel Purcell',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -392,6 +434,7 @@ export const staffMembers = [
 		name: 'Brodie Frome',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -401,6 +444,7 @@ export const staffMembers = [
 		name: 'Isla Lyell',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -410,6 +454,7 @@ export const staffMembers = [
 		name: 'Bella Hawes',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -419,6 +464,7 @@ export const staffMembers = [
 		name: 'Victor Martins',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -428,6 +474,7 @@ export const staffMembers = [
 		name: 'Larissa Dias',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -437,6 +484,7 @@ export const staffMembers = [
 		name: 'Alice Monty',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -446,6 +494,7 @@ export const staffMembers = [
 		name: 'Rosa Blanc',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -455,6 +504,7 @@ export const staffMembers = [
 		name: 'Joni Eriksson',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -464,6 +514,7 @@ export const staffMembers = [
 		name: 'Daryl Ramos',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -473,6 +524,7 @@ export const staffMembers = [
 		name: 'Eugenia Gallo',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -482,6 +534,7 @@ export const staffMembers = [
 		name: 'Adelaide Capon',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -491,6 +544,7 @@ export const staffMembers = [
 		name: 'Elsa Pinto',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -500,6 +554,7 @@ export const staffMembers = [
 		name: 'Kaeda Asada',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -509,6 +564,7 @@ export const staffMembers = [
 		name: 'Johannes Thorud',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -518,6 +574,7 @@ export const staffMembers = [
 		name: 'Albin Vestad',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -527,6 +584,7 @@ export const staffMembers = [
 		name: 'Elvin Sundberg',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -536,6 +594,7 @@ export const staffMembers = [
 		name: 'Adele Pearson',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -545,6 +604,7 @@ export const staffMembers = [
 		name: 'Robert Green',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -554,6 +614,7 @@ export const staffMembers = [
 		name: 'Juan Webber',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -563,6 +624,7 @@ export const staffMembers = [
 		name: 'Molly Evans',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -572,6 +634,7 @@ export const staffMembers = [
 		name: 'Maxine Khatun',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -581,6 +644,7 @@ export const staffMembers = [
 		name: 'Amelie Amess',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -590,6 +654,7 @@ export const staffMembers = [
 		name: 'Bianca Sidaway',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -599,6 +664,7 @@ export const staffMembers = [
 		name: 'Isabel Ruthven',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -608,6 +674,7 @@ export const staffMembers = [
 		name: 'Irvan Yeo',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -617,6 +684,7 @@ export const staffMembers = [
 		name: 'Caleb Goold',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -626,6 +694,7 @@ export const staffMembers = [
 		name: 'Maddison Hides',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -635,6 +704,7 @@ export const staffMembers = [
 		name: 'Amelie Steinberg',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -644,6 +714,7 @@ export const staffMembers = [
 		name: 'Nuru Arendse',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -653,15 +724,17 @@ export const staffMembers = [
 		name: 'Gianna Papoutsis',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
-		age: '26',
+		age: '16',
 		dateJoined: '2024-07-09T14:00:00.000Z',
 		foodSafetyCertificate: false,
 		lastActive: '2024-10-14T23:26:37.056Z',
 		name: 'Saeeda Balab',
-		role: 'Employee',
+		role: 'Work experience',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -671,6 +744,7 @@ export const staffMembers = [
 		name: 'Dev Ibrahim',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -680,6 +754,7 @@ export const staffMembers = [
 		name: 'Hasan Wibawa',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -689,6 +764,7 @@ export const staffMembers = [
 		name: 'Inta Jansons',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -698,6 +774,7 @@ export const staffMembers = [
 		name: 'Taylah Neil',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -707,6 +784,7 @@ export const staffMembers = [
 		name: 'Musa Hassan',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -716,6 +794,7 @@ export const staffMembers = [
 		name: 'Lisa Nguyen',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '23',
@@ -725,6 +804,7 @@ export const staffMembers = [
 		name: 'Alex Kim',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -734,6 +814,7 @@ export const staffMembers = [
 		name: 'Leo Power',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -743,6 +824,7 @@ export const staffMembers = [
 		name: 'Joel Hogan',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -752,6 +834,7 @@ export const staffMembers = [
 		name: 'Ellie Sommerville',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -761,6 +844,7 @@ export const staffMembers = [
 		name: 'Gabriella Cardwell',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '27',
@@ -770,6 +854,7 @@ export const staffMembers = [
 		name: 'Sara Halford',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -779,6 +864,7 @@ export const staffMembers = [
 		name: 'Jett Spears',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -788,6 +874,7 @@ export const staffMembers = [
 		name: 'Sean Rees',
 		role: 'Employee',
 		status: 'Active',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -797,6 +884,7 @@ export const staffMembers = [
 		name: 'Ava Phan',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '26',
@@ -806,6 +894,7 @@ export const staffMembers = [
 		name: 'Laboni Muhammad',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -815,6 +904,7 @@ export const staffMembers = [
 		name: 'Natasha Zhuk',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '22',
@@ -824,6 +914,7 @@ export const staffMembers = [
 		name: 'Raid Mahmoud',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 	{
 		age: '21',
@@ -833,6 +924,7 @@ export const staffMembers = [
 		name: 'Felicia Farkas',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '20',
@@ -842,6 +934,7 @@ export const staffMembers = [
 		name: 'Asa Niklasson',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '25',
@@ -851,6 +944,7 @@ export const staffMembers = [
 		name: 'Eunice Santos',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Ice cream making', 'Packaging', 'Deliveries'],
 	},
 	{
 		age: '24',
@@ -860,5 +954,6 @@ export const staffMembers = [
 		name: 'Andrew Kim',
 		role: 'Employee',
 		status: 'Paused',
+		trainingCompleted: ['Distribution', 'Deliveries'],
 	},
 ] as const;
