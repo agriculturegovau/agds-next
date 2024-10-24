@@ -28,6 +28,7 @@ import {
 	constrainDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
+	normaliseDateString,
 	parseDate,
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
@@ -160,8 +161,12 @@ export const DateRangePicker = ({
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from: typeof value.from === 'string' ? undefined : value.from,
-			to: typeof value.to === 'string' ? undefined : value.to,
+			from:
+				typeof value.from === 'string'
+					? normaliseDateString(value.from)
+					: value.from,
+			to:
+				typeof value.to === 'string' ? normaliseDateString(value.to) : value.to,
 		}),
 		[value]
 	);
