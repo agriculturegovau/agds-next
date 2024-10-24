@@ -6,6 +6,7 @@ import {
 	PropsWithChildren,
 } from 'react';
 import { mockBusinesses } from '../data/mockBusinesses';
+import { safeSessionStorage } from './useSessionFormState';
 
 export type Business = {
 	name: string;
@@ -38,14 +39,15 @@ export function LinkedBusinessesProvider({ children }: PropsWithChildren<{}>) {
 		useState<Business | null>(null);
 
 	useEffect(() => {
-		if (typeof sessionStorage === undefined) return;
-		const value = sessionStorage.getItem('selectedBusiness');
+		if (!safeSessionStorage) return;
+		const value = safeSessionStorage.getItem('selectedBusiness');
 		const parsedValue = value ? (JSON.parse(value) as Business) : null;
 		setSelectedBusinessState(parsedValue);
 	}, []);
 
 	function setSelectedBusiness(business: Business) {
-		sessionStorage.setItem('selectedBusiness', JSON.stringify(business));
+		if (!safeSessionStorage) return;
+		safeSessionStorage.setItem('selectedBusiness', JSON.stringify(business));
 		setSelectedBusinessState(business);
 	}
 
