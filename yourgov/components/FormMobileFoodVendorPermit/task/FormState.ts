@@ -4,7 +4,6 @@ import {
 	zodArray,
 	zodDateField,
 	zodPhoneFieldOptional,
-	zodReviewDateField,
 	zodString,
 	zodStringOptional,
 	zodTimeField,
@@ -119,12 +118,6 @@ export const step4FormSchema = z.object({
 	registrationExpiry: zodDateField('Registration expiry date is required'),
 });
 
-// FIXME: I don't like having to do this, but I can't get dates and error messages to work reliably across forms and reviews
-export const step4ReviewSchema = z.object({
-	registrationNumber: zodString().max(6),
-	registrationExpiry: zodReviewDateField(),
-});
-
 export type Step4FormSchema = z.infer<typeof step4FormSchema>;
 
 const periodActiveMessage = 'Trading start and end date is required';
@@ -148,15 +141,6 @@ export const step5FormSchema = z
 			message: 'Start date must be before the end date',
 		}
 	);
-
-export const step5ReviewSchema = z.object({
-	tradingPeriod: z.object({
-		from: zodReviewDateField(),
-		to: zodReviewDateField(),
-	}),
-	openingTime: zodTimeField({ label: 'Opening time' }),
-	closingTime: zodTimeField({ label: 'Closing time' }),
-});
 
 export type Step5FormSchema = z.infer<typeof step5FormSchema>;
 

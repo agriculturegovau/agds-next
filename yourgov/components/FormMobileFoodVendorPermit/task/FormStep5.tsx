@@ -7,7 +7,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
-import { hasMultipleErrors, parseDateField } from '../utils';
+import { hasMultipleErrors } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -21,8 +21,8 @@ function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	return {
 		...step,
 		tradingPeriod: {
-			from: parseDateField(from),
-			to: parseDateField(to),
+			from,
+			to,
 		},
 	};
 }
