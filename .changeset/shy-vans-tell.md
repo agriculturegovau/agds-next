@@ -3,6 +3,6 @@
 '@ag.ds-next/yourgov': minor
 ---
 
-date-picker: Allow date ISO strings.
-date-range-picker: Allow date ISO strings.
-yourgov: Handle date ISO strings in state.
+date-picker: Internally support and transform ISO date strings when set as `value`.
+date-range-picker:  Internally support and transform ISO date strings when set as `value`.
+yourgov: Handle ISO date strings in state.
