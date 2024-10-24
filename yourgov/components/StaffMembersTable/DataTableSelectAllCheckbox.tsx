@@ -34,7 +34,7 @@ export function useSelectAllRows(pageData: StaffMemberWithIndex[]) {
 	const isAnyRowSelected = useMemo(() => selection.length > 0, [selection]);
 	const isEveryRowSelected = useMemo(
 		() =>
-			allPageItemIds.length < 0 &&
+			allPageItemIds.length > 0 &&
 			allPageItemIds.every((r) => selection.includes(r)),
 		[allPageItemIds, selection]
 	);
