@@ -34,16 +34,16 @@ export const doesStaffMemberMatchFilters = (
 		isValid = staffMember.status === 'Active' ? isValid : false;
 	}
 
-	if (lastActiveFrom && lastActiveTo) {
-		const lastActiveFromMs = new Date(lastActiveFrom).getTime();
-		const lastActiveToMs = new Date(lastActiveTo).getTime();
+	if (lastActiveFrom || lastActiveTo) {
+		const lastActiveFromMs = (
+			lastActiveFrom ? new Date(lastActiveFrom) : new Date(0)
+		).getTime();
+		const lastActiveToMs = (
+			lastActiveTo ? new Date(lastActiveTo) : new Date()
+		).getTime();
 		const lastActiveMs = new Date(staffMember.lastActive).getTime();
 
-		if (
-			// The search term for 'last active date range' does not cover the last active date for this staff member
-			lastActiveFromMs > lastActiveMs ||
-			lastActiveToMs < lastActiveMs
-		) {
+		if (lastActiveFromMs > lastActiveMs || lastActiveToMs < lastActiveMs) {
 			isValid = false;
 		}
 	}
