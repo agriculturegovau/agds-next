@@ -19,7 +19,7 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-1zh0al-boxStyles-ModalDialog"
+        class="css-1s6nlwb-boxStyles-ModalDialog"
         role="dialog"
       >
         <button

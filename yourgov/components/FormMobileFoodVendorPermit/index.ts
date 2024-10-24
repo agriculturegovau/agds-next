@@ -14,4 +14,7 @@ export { FormStep4 } from './task/FormStep4';
 export { FormStep5 } from './task/FormStep5';
 export { FormStep6 } from './task/FormStep6';
 export { FormStep7 } from './task/FormStep7';
-export { FormStep7Review } from './task/FormStep7Review';
+export { FormStep8 } from './task/FormStep8';
+export { FormStep9 } from './task/FormStep9';
+export { FormStep10 } from './task/FormStep10';
+export { FormStep10Review } from './task/FormStep10Review';
