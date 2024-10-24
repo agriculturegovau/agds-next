@@ -1,10 +1,3 @@
-/**
- * All last active ISO dates are relative to this time in MS.
- * Using this relative time creates a variety of x days ago,
- * x weeks ago, and x months ago.
- */
-export const LAST_ACTIVE_RELATIVE_TIME_MS = 1729466950113;
-
 export const staffMembers = [
 	{
 		age: '31',

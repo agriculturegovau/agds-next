@@ -1,3 +1,4 @@
+import format from 'date-fns/format';
 import { Text } from '@ag.ds-next/react/src/text';
 import { Flex } from '@ag.ds-next/react/src/flex';
 import { Button } from '@ag.ds-next/react/src/button';
@@ -74,6 +75,22 @@ const getTagsFromFilters = ({
 		if (key === 'status') {
 			tags.push({
 				label: `${formattedKey}: ${STATUS_MAP[value].label}`,
+				onRemove,
+			});
+			continue;
+		}
+
+		if (key === 'lastActiveFrom') {
+			tags.push({
+				label: `Last active from: ${format(new Date(value), 'dd/MM/yyyy')}`,
+				onRemove,
+			});
+			continue;
+		}
+
+		if (key === 'lastActiveTo') {
+			tags.push({
+				label: `Last active to: ${format(new Date(value), 'dd/MM/yyyy')}`,
 				onRemove,
 			});
 			continue;

@@ -1,5 +1,4 @@
 import { staffMembers } from './staffMembers';
-import { LAST_ACTIVE_RELATIVE_TIME_MS } from './staffMembers';
 import {
 	GetDataFilters,
 	GetDataParams,
@@ -38,8 +37,7 @@ export const doesStaffMemberMatchFilters = (
 	if (lastActiveFrom && lastActiveTo) {
 		const lastActiveFromMs = new Date(lastActiveFrom).getTime();
 		const lastActiveToMs = new Date(lastActiveTo).getTime();
-		const lastActiveMs =
-			LAST_ACTIVE_RELATIVE_TIME_MS - new Date(staffMember.lastActive).getTime();
+		const lastActiveMs = new Date(staffMember.lastActive).getTime();
 
 		if (
 			// The search term for 'last active date range' does not cover the last active date for this staff member

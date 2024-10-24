@@ -30,7 +30,6 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import { generateTableCaption } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
-import { LAST_ACTIVE_RELATIVE_TIME_MS } from './lib/staffMembers';
 import { DataTableRow, DataTableRowStatus } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
 import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
@@ -271,7 +270,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												<TableCell>
 													{lastActive &&
 														`${formatDistance(
-															new Date(LAST_ACTIVE_RELATIVE_TIME_MS),
+															new Date(),
 															new Date(lastActive)
 														)} ago`}
 												</TableCell>
