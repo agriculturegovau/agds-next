@@ -11,6 +11,7 @@ export type TableCellProps = PropsWithChildren<{
 	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** Sets the font weight of the cell. */
 	fontWeight?: FontWeight;
+	id?: string;
 	/** Specifies how many rows this cell spans */
 	rowSpan?: number;
 	/** Essential if you are using TableCell as a row header (as="th"). This defines the cells that the header (defined in the <th>) element relates to. */
@@ -27,6 +28,7 @@ export const TableCell = ({
 	colSpan,
 	display,
 	fontWeight = 'normal',
+	id,
 	rowSpan,
 	scope,
 	textAlign = 'left',
@@ -43,6 +45,7 @@ export const TableCell = ({
 			display={display}
 			focusRingFor="keyboard"
 			fontWeight={fontWeight}
+			id={id}
 			padding={0.75}
 			rowSpan={rowSpan}
 			scope={scope}
