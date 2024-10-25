@@ -32,7 +32,7 @@ export const ModalConfirmChangeRole = ({
 		setTimeout(() => {
 			setSubmitting(false);
 			onConfirm();
-		}, 2000);
+		}, 1500);
 	}
 
 	return (

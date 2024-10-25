@@ -7,7 +7,7 @@ export const FilterRegion = ({ children }: { children: ReactNode }) => {
 		<Stack
 			as="section"
 			gap={1}
-			aria-label="data filtering"
+			aria-label="Filters"
 			borderBottom
 			paddingBottom={1.5}
 		>

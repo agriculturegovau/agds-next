@@ -106,9 +106,9 @@ const Page: NextPageWithLayout = () => {
 							</TabPanel>
 							<TabPanel>
 								<Stack gap={1.5}>
-									<H2 id="application-history-heading">Application history</H2>
+									<H2 id="access-requests-heading">Application history</H2>
 									<TableWrapper>
-										<Table aria-labelledby="application-history-heading">
+										<Table aria-labelledby="access-requests-heading">
 											<TableHead>
 												<TableRow>
 													<TableHeader scope="col" width="25%">

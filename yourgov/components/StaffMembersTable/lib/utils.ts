@@ -9,7 +9,7 @@ export const generateTableCaption = ({
 	totalItems: number;
 	pagination: GetDataPagination;
 }) => {
-	if (loading) return 'Audits';
+	if (loading) return 'Staff members';
 
 	const totalItemsPlural = totalItems === 1 ? '1 item' : `${totalItems} items`;
 	const firstItem = (pagination.page - 1) * pagination.perPage + 1;
@@ -17,9 +17,9 @@ export const generateTableCaption = ({
 		(pagination.page - 1) * pagination.perPage + pagination.perPage;
 
 	const rangeExceedsTotalItems = lastItem > totalItems;
-	if (rangeExceedsTotalItems) return `Audits (${totalItemsPlural})`;
+	if (rangeExceedsTotalItems) return `Staff members (${totalItemsPlural})`;
 
-	return `Audits (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
+	return `Staff members (${firstItem} - ${lastItem} of ${totalItemsPlural})`;
 };
 
 export const STATUS_MAP = {

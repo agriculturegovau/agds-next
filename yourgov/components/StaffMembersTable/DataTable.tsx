@@ -52,7 +52,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (error) {
 			return (
-				<Stack gap={1}>
+				<Stack gap={1} role="status">
 					<AlertFilledIcon color="error" size="lg" />
 					<Heading type="h2" fontSize="lg">
 						Failed to load
@@ -67,7 +67,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (!loading && data.length === 0) {
 			return (
-				<Stack gap={2} alignItems="flex-start" paddingY={1}>
+				<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
 					<Stack gap={1}>
 						<HelpIcon size="lg" color="muted" />
 						<Heading type="h2" fontSize="lg">
@@ -88,7 +88,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 					</div>
 				) : null}
 				<div role="status" css={visuallyHiddenStyles}>
-					{loading ? 'Loading audits' : ''}
+					{loading ? 'Loading staff members' : ''}
 				</div>
 				<TableWrapper>
 					<Table
@@ -210,7 +210,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 										// Adding 2 because the table header row is the first row
 										const rowIndex = index + 2;
-										const id = name.replace(' ', '-');
+										const id = name.replaceAll(' ', '-');
 
 										return (
 											<DataTableRow

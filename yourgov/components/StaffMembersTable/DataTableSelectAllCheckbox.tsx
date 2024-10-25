@@ -28,14 +28,14 @@ export function useSelectAllRows(pageData: StaffMemberWithIndex[]) {
 
 	/** The IDs of all of the items in the current page */
 	const allPageItemIds = useMemo(
-		() => pageData.map((item) => item.name.replace(' ', '-')),
+		() => pageData.map((item) => item.name.replaceAll(' ', '-')),
 		[pageData]
 	);
 	const isAnyRowSelected = useMemo(() => selection.length > 0, [selection]);
 	const isEveryRowSelected = useMemo(
 		() =>
 			allPageItemIds.length > 0 &&
-			allPageItemIds.every((r) => selection.includes(r)),
+			allPageItemIds.every((itemId) => selection.includes(itemId)),
 		[allPageItemIds, selection]
 	);
 

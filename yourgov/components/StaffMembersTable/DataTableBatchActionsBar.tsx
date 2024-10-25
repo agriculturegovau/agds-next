@@ -31,7 +31,7 @@ export const DataTableBatchActionsBar = () => {
 	);
 
 	const items = selection.map((staffMemberId) => {
-		const staffName = staffMemberId.replace(
+		const staffName = staffMemberId.replaceAll(
 			'-',
 			' '
 		) as StaffMemberWithIndex['name'];

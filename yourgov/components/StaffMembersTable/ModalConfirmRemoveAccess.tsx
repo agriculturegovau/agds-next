@@ -27,7 +27,7 @@ export function ModalConfirmRemoveAccess({
 		setTimeout(() => {
 			setSubmitting(false);
 			onConfirm();
-		}, 2000);
+		}, 1500);
 	}
 
 	const { title, description } = useMemo(() => {
