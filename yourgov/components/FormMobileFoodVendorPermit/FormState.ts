@@ -3,28 +3,24 @@ import { DeepPartial } from '../../lib/types';
 import {
 	defaultFormState as defaultTaskFormState,
 	type FormState as TaskFormState,
-} from './task/FormState';
-import { type StepNumber } from './task/FormProvider';
+} from './steps/FormState';
+import { type StepNumber } from './steps/FormProvider';
 
 export type Completion = {
 	completed: boolean;
 	started?: boolean;
 };
 
-type TaskCompletion = Completion & {
-	completedRecently: boolean;
-};
-
 export type FormState = {
-	task: Partial<TaskFormState> & TaskCompletion;
+	id: string;
+	lastUpdated: number;
+	steps: Partial<TaskFormState>;
 	type: string;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
-	task: defaultTaskFormState,
+	steps: defaultTaskFormState,
 };
-
-export type TaskKey = 'task';
 
 export type FormStep<StepNum extends StepNumber = StepNumber> = {
 	label: string;

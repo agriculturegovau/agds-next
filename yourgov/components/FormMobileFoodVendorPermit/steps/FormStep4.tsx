@@ -31,7 +31,7 @@ export function FormStep4() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step4FormSchema>({
-		defaultValues: transformDefaultValues(formState.task?.step4),
+		defaultValues: transformDefaultValues(formState.steps?.step4),
 		resolver: isSavingBeforeExiting ? undefined : zodResolver(step4FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',

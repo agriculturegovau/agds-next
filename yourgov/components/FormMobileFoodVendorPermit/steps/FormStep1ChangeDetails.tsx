@@ -31,7 +31,7 @@ export function FormStep1ChangeDetails() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step1FormSchema>({
-		defaultValues: formState.task?.step1,
+		defaultValues: formState.steps?.step1,
 		resolver: zodResolver(step1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
@@ -74,7 +74,7 @@ export function FormStep1ChangeDetails() {
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname.replace('/change-details', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task?.[step.formStateKey]?.completed) return 'done';
+		if (formState.steps?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step10' && !canConfirmAndSubmit)
 			return 'blocked';

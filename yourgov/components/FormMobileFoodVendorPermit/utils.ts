@@ -44,14 +44,16 @@ export const formHomePage =
 export const managePermitsPage = '/app/licences-and-permits';
 
 type GetTaskNavigationUrlParams = {
+	id?: string;
 	steps: Array<FormStep>;
 	currentStepIndex: number;
 };
 
 export function getTaskCompletionUrl({
 	currentStepIndex,
+	id,
 	steps,
 }: GetTaskNavigationUrlParams) {
 	const nextStepUrl = steps[currentStepIndex + 1]?.href;
-	return nextStepUrl || `${managePermitsPage}?success=true`;
+	return nextStepUrl || `${managePermitsPage}?success=${id}`;
 }

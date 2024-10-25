@@ -26,7 +26,7 @@ export function FormStep2() {
 		trigger,
 		formState: { errors, isSubmitted },
 	} = useForm<Step2FormSchema>({
-		defaultValues: formState.task?.step2,
+		defaultValues: formState.steps?.step2,
 		resolver: isSavingBeforeExiting ? undefined : zodResolver(step2FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
