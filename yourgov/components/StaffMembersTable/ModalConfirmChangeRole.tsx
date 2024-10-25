@@ -56,12 +56,7 @@ export const ModalConfirmChangeRole = ({
 			}
 		>
 			<form id="change-role-drawer">
-				<ControlGroup
-					block
-					label="Export service role"
-					hint="Select a role to view what a person can do if assigned that role."
-					required
-				>
+				<ControlGroup block label="Export service role" required>
 					<Radio
 						checked={isChecked('Manager')}
 						onChange={handlerForKey('Manager')}

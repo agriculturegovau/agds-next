@@ -6,7 +6,7 @@ export const FilterSearchInput = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
-		<div aria-label="Active users" role="search">
+		<div role="search">
 			<SearchInput
 				label="Search name"
 				aria-controls={tableId}

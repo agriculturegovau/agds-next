@@ -7,7 +7,7 @@ export const FilterSwitchInput = () => {
 	const { filters, setFilter } = useSortAndFilterContext();
 
 	return (
-		<Box aria-label="Active users" role="search" paddingBottom={0.5}>
+		<Box paddingBottom={0.5}>
 			<Switch
 				aria-controls={tableId}
 				checked={filters.activeUsers}

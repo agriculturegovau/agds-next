@@ -99,7 +99,7 @@ const Page: NextPageWithLayout = () => {
 						<TabPanels>
 							<TabPanel>
 								<Stack gap={3}>
-									<H2 id="current-approvals-heading">Staff members</H2>
+									<H2 id="staff-members-heading">Staff members</H2>
 
 									<StaffMembersTable selectable tableRef={tableRef} />
 								</Stack>
@@ -107,7 +107,7 @@ const Page: NextPageWithLayout = () => {
 
 							<TabPanel>
 								<Stack gap={1.5}>
-									<H2 id="application-history-heading">Access requests</H2>
+									<H2 id="access-requests-heading">Access requests</H2>
 
 									<TableWrapper>
 										<Table aria-labelledby="application-history-heading">
