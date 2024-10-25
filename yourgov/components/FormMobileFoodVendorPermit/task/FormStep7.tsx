@@ -62,7 +62,7 @@ export function FormStep7() {
 
 	const removeEmployee = () => {
 		step7SetState({
-			...step7GetState,
+			...step7State,
 			completed: false,
 			employee:
 				step7State?.employee &&

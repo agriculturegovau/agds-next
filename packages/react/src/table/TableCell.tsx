@@ -11,6 +11,7 @@ export type TableCellProps = PropsWithChildren<{
 	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** Sets the font weight of the cell. */
 	fontWeight?: FontWeight;
+	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** Specifies how many rows this cell spans */
 	rowSpan?: number;
