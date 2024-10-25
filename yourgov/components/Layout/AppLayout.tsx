@@ -214,8 +214,8 @@ function AppLayoutSidebar() {
 					icon: IconApproval,
 				},
 				{
-					label: 'Staff access',
-					href: '/not-found',
+					label: 'Staff',
+					href: '/app/staff',
 					icon: IconUsers,
 				},
 			],
