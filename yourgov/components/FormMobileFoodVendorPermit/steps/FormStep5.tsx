@@ -36,7 +36,7 @@ export function FormStep5() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step5FormSchema>({
-		defaultValues: transformDefaultValues(formState.task?.step5),
+		defaultValues: transformDefaultValues(formState.steps?.step5),
 		resolver: isSavingBeforeExiting ? undefined : zodResolver(step5FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',

@@ -18,7 +18,7 @@ export function FormStep9() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step9FormSchema>({
-		defaultValues: formState.task?.step9,
+		defaultValues: formState.steps?.step9,
 		resolver: isSavingBeforeExiting ? undefined : zodResolver(step9FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',

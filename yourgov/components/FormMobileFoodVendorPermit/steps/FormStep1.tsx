@@ -23,7 +23,7 @@ import { taskFormSteps, useFormContext } from './FormProvider';
 
 export function FormStep1() {
 	const { formState } = useGlobalForm();
-	const stepFormState = formState.task?.step1;
+	const stepFormState = formState.steps?.step1;
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -113,7 +113,7 @@ function AdditionalDetailsForm() {
 		formState: { errors },
 	} = useForm<Step1Part2FormSchema>({
 		defaultValues: {
-			contactPhoneNumber: formState.task?.step1?.contactPhoneNumber,
+			contactPhoneNumber: formState.steps?.step1?.contactPhoneNumber,
 		},
 		resolver: zodResolver(step1Part2FormSchema),
 		mode: 'onSubmit',

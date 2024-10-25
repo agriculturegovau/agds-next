@@ -37,15 +37,15 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 	const HeadingComponent = HEADINGS_MAP[headingsLevel];
 
 	const validation = {
-		step1: step1FormSchema.safeParse(formState.task?.step1),
-		step2: step2FormSchema.safeParse(formState.task?.step2),
-		step3: step3FormSchema.safeParse(formState.task?.step3),
-		step4: step4FormSchema.safeParse(formState.task?.step4),
-		step5: step5FormSchema.safeParse(formState.task?.step5),
-		step6: step6FormSchema.safeParse(formState.task?.step6),
-		step7: step7FormSchema.safeParse(formState.task?.step7),
-		step8: step8FormSchema.safeParse(formState.task?.step8),
-		step9: step9FormSchema.safeParse(formState.task?.step9),
+		step1: step1FormSchema.safeParse(formState.steps?.step1),
+		step2: step2FormSchema.safeParse(formState.steps?.step2),
+		step3: step3FormSchema.safeParse(formState.steps?.step3),
+		step4: step4FormSchema.safeParse(formState.steps?.step4),
+		step5: step5FormSchema.safeParse(formState.steps?.step5),
+		step6: step6FormSchema.safeParse(formState.steps?.step6),
+		step7: step7FormSchema.safeParse(formState.steps?.step7),
+		step8: step8FormSchema.safeParse(formState.steps?.step8),
+		step9: step9FormSchema.safeParse(formState.steps?.step9),
 	};
 
 	return (
@@ -57,19 +57,19 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="First name"
-							value={formState.task?.step1?.firstName}
+							value={formState.steps?.step1?.firstName}
 						/>
 						<FormDefinitionListItem
 							label="Last name"
-							value={formState.task?.step1?.lastName}
+							value={formState.steps?.step1?.lastName}
 						/>
 						<FormDefinitionListItem
 							label="Email address"
-							value={formState.task?.step1?.email}
+							value={formState.steps?.step1?.email}
 						/>
 						<FormDefinitionListItem
 							label="Contact phone number"
-							value={formState.task?.step1?.contactPhoneNumber}
+							value={formState.steps?.step1?.contactPhoneNumber}
 						/>
 					</FormDefinitionList>
 				) : (
@@ -88,20 +88,20 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Business name"
-							value={formState.task?.step2?.businessName}
+							value={formState.steps?.step2?.businessName}
 						/>
 						<FormDefinitionListItem
 							label="Trading name"
-							value={formState.task?.step2?.tradingName}
+							value={formState.steps?.step2?.tradingName}
 						/>
 						<FormDefinitionListItem
 							label="Business structure"
-							value={formState.task?.step2?.businessStructure}
+							value={formState.steps?.step2?.businessStructure}
 						/>
-						{formState.task?.step2?.businessStructure === 'Business' && (
+						{formState.steps?.step2?.businessStructure === 'Business' && (
 							<FormDefinitionListItem
 								label="Australian Business Number (ABN)"
-								value={formState.task?.step2?.abn}
+								value={formState.steps?.step2?.abn}
 							/>
 						)}
 					</FormDefinitionList>
@@ -120,12 +120,12 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItemAddress
 							label="Street address"
-							address={formState.task?.step3?.streetAddress}
-							suburb={formState.task?.step3?.suburbTownCity}
-							state={formState.task?.step3?.state}
-							postcode={formState.task?.step3?.postcode}
+							address={formState.steps?.step3?.streetAddress}
+							suburb={formState.steps?.step3?.suburbTownCity}
+							state={formState.steps?.step3?.state}
+							postcode={formState.steps?.step3?.postcode}
 						/>
-						{formState.task?.step3?.isPostalAddressSameAsBusinessAddress ? (
+						{formState.steps?.step3?.isPostalAddressSameAsBusinessAddress ? (
 							<FormDefinitionListItem
 								label="Postal address"
 								value="Same as street address"
@@ -133,10 +133,10 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 						) : (
 							<FormDefinitionListItemAddress
 								label="Postal address"
-								address={formState.task?.step3?.postalAddress}
-								suburb={formState.task?.step3?.postalSuburbTownCity}
-								state={formState.task?.step3?.postalState}
-								postcode={formState.task?.step3?.postalPostcode}
+								address={formState.steps?.step3?.postalAddress}
+								suburb={formState.steps?.step3?.postalSuburbTownCity}
+								state={formState.steps?.step3?.postalState}
+								postcode={formState.steps?.step3?.postalPostcode}
 							/>
 						)}
 					</FormDefinitionList>
@@ -155,11 +155,11 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Vehicle registration number"
-							value={formState.task?.step4?.registrationNumber}
+							value={formState.steps?.step4?.registrationNumber}
 						/>
 						<FormDefinitionListItemDate
 							label="Registration expiry date"
-							value={formState.task?.step4?.registrationExpiry}
+							value={formState.steps?.step4?.registrationExpiry}
 						/>
 					</FormDefinitionList>
 				) : (
@@ -177,13 +177,13 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItemDateRange
 							fromLabel="Start date"
-							fromValue={formState.task?.step5?.tradingPeriod?.from}
+							fromValue={formState.steps?.step5?.tradingPeriod?.from}
 							toLabel="End date"
-							toValue={formState.task?.step5?.tradingPeriod?.to}
+							toValue={formState.steps?.step5?.tradingPeriod?.to}
 						/>
 						<FormDefinitionListItem
 							label="Trading hours"
-							value={`${formState.task?.step5?.openingTime?.formatted} - ${formState.task?.step5?.closingTime?.formatted}`}
+							value={`${formState.steps?.step5?.openingTime?.formatted} - ${formState.steps?.step5?.closingTime?.formatted}`}
 						/>
 					</FormDefinitionList>
 				) : (
@@ -201,7 +201,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Food served"
-							value={formState.task?.step6?.cuisine
+							value={formState.steps?.step6?.cuisine
 								?.map((item) => item?.label)
 								.join(', ')}
 						/>
@@ -221,7 +221,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Employees"
-							value={formState.task?.step7?.cuisine
+							value={formState.steps?.step7?.cuisine
 								?.map((item) => item?.label)
 								.join(', ')}
 						/>
@@ -241,7 +241,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Food safety supervisor"
-							value={formState.task?.step8?.cuisine
+							value={formState.steps?.step8?.cuisine
 								?.map((item) => item?.label)
 								.join(', ')}
 						/>
@@ -261,7 +261,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Documents"
-							value={formState.task?.step9?.cuisine
+							value={formState.steps?.step9?.cuisine
 								?.map((item) => item?.label)
 								.join(', ')}
 						/>

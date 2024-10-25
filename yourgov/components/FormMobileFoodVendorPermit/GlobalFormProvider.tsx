@@ -7,7 +7,7 @@ import {
 	useState,
 } from 'react';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { defaultFormState, TaskKey } from './FormState';
+import { defaultFormState } from './FormState';
 import { managePermitsPage } from './utils';
 
 type GlobalState = Omit<ReturnType<typeof useSessionFormState>, 'hasSynced'>;
@@ -15,8 +15,7 @@ type GlobalState = Omit<ReturnType<typeof useSessionFormState>, 'hasSynced'>;
 type ContextType = GlobalState & {
 	formTitle: string;
 	managePermitsPage: string;
-	// Task status
-	startTask: (key: TaskKey) => void;
+	startApplication: () => void;
 	// Is submitting step
 	isSubmittingStep: boolean;
 	setIsSubmittingStep: (value: boolean) => void;
@@ -40,15 +39,18 @@ export function GlobalFormProvider({
 
 	const formTitle = `Apply for a ${formState.type} permit`;
 
-	const startTask = useCallback(
-		(taskKey: TaskKey) => {
-			setFormState((formState) => ({
+	const startApplication = useCallback(() => {
+		setFormState((formState) => {
+			return {
 				...formState,
-				[taskKey]: { ...formState[taskKey], started: true },
-			}));
-		},
-		[setFormState]
-	);
+				id: formState?.id || Math.round(Math.random() * 1000000000).toString(),
+				started: true,
+				steps: {
+					...formState.steps,
+				},
+			};
+		});
+	}, [setFormState]);
 
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
@@ -72,8 +74,7 @@ export function GlobalFormProvider({
 	const contextValue: ContextType = {
 		formTitle,
 		managePermitsPage,
-		// task status
-		startTask,
+		startApplication,
 		// form state
 		formState,
 		setFormState,

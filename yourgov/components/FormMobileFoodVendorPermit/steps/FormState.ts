@@ -180,7 +180,7 @@ export const step9FormSchema = z.object({
 
 export type Step9FormSchema = z.infer<typeof step9FormSchema>;
 
-export type FormState = Completion & {
+export type FormState = {
 	step1: Step1FormSchema & Completion;
 	step2: Step2FormSchema & Completion;
 	step3: Step3FormSchema & Completion;
@@ -194,8 +194,6 @@ export type FormState = Completion & {
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
-	started: false,
-	completed: false,
 	step1: {
 		firstName: 'Charlie',
 		lastName: 'Walker',

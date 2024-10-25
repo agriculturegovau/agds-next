@@ -26,58 +26,58 @@ export const taskFormSteps: Array<FormStep<StepNumber>> = [
 	{
 		formStateKey: 'step1',
 		label: 'Owner details',
-		href: formHomePage + '/task/step-1',
+		href: formHomePage + '/steps/step-1',
 		items: [
 			{
 				label: 'Change business owner details',
-				href: formHomePage + '/task/step-1/change-details',
+				href: formHomePage + '/steps/step-1/change-details',
 			},
 		],
 	},
 	{
 		formStateKey: 'step2',
 		label: 'Business details',
-		href: formHomePage + '/task/step-2',
+		href: formHomePage + '/steps/step-2',
 	},
 	{
 		formStateKey: 'step3',
 		label: 'Business address',
-		href: formHomePage + '/task/step-3',
+		href: formHomePage + '/steps/step-3',
 	},
 	{
 		formStateKey: 'step4',
 		label: 'Vehicle registration',
-		href: formHomePage + '/task/step-4',
+		href: formHomePage + '/steps/step-4',
 	},
 	{
 		formStateKey: 'step5',
 		label: 'Trading time',
-		href: formHomePage + '/task/step-5',
+		href: formHomePage + '/steps/step-5',
 	},
 	{
 		formStateKey: 'step6',
 		label: 'Food served',
-		href: formHomePage + '/task/step-6',
+		href: formHomePage + '/steps/step-6',
 	},
 	{
 		formStateKey: 'step7',
 		label: 'Employees',
-		href: formHomePage + '/task/step-7',
+		href: formHomePage + '/steps/step-7',
 	},
 	{
 		formStateKey: 'step8',
 		label: 'Food safety supervisor',
-		href: formHomePage + '/task/step-8',
+		href: formHomePage + '/steps/step-8',
 	},
 	{
 		formStateKey: 'step9',
 		label: 'Upload documents',
-		href: formHomePage + '/task/step-9',
+		href: formHomePage + '/steps/step-9',
 	},
 	{
 		formStateKey: 'step10',
 		label: 'Review and submit',
-		href: formHomePage + '/task/step-10',
+		href: formHomePage + '/steps/step-10',
 	},
 ];
 
@@ -112,13 +112,20 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		await new Promise((resolve) => setTimeout(resolve, 1500));
 		const taskCompletionUrl = getTaskCompletionUrl({
 			currentStepIndex,
+			id: formState.id,
 			steps: taskFormSteps,
 		});
 
 		push(taskCompletionUrl);
 
 		setIsSubmittingStep(false);
-	}, [currentStepIndex, push, setIsSubmittingStep, isSavingBeforeExiting]);
+	}, [
+		currentStepIndex,
+		formState,
+		isSavingBeforeExiting,
+		push,
+		setIsSubmittingStep,
+	]);
 
 	// The href of the previous step
 	const backHref = `${
@@ -128,15 +135,15 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
 		if (
-			!formState.task?.step1?.completed ||
-			!formState.task?.step2?.completed ||
-			!formState.task?.step3?.completed ||
-			!formState.task?.step4?.completed ||
-			!formState.task?.step5?.completed ||
-			!formState.task?.step6?.completed ||
-			!formState.task?.step7?.completed ||
-			!formState.task?.step8?.completed ||
-			!formState.task?.step9?.completed
+			!formState.steps?.step1?.completed ||
+			!formState.steps?.step2?.completed ||
+			!formState.steps?.step3?.completed ||
+			!formState.steps?.step4?.completed ||
+			!formState.steps?.step5?.completed ||
+			!formState.steps?.step6?.completed ||
+			!formState.steps?.step7?.completed ||
+			!formState.steps?.step8?.completed ||
+			!formState.steps?.step9?.completed
 		) {
 			return false;
 		}
