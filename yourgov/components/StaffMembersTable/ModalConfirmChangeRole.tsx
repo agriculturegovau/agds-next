@@ -6,10 +6,10 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { StaffMemberRole } from './lib/types';
 
 export type ModalConfirmChangeRoleProps = {
-	currentRole: StaffMemberRole;
 	isOpen: boolean;
 	onConfirm: () => void;
 	onClose: () => void;
+	currentRole?: StaffMemberRole;
 };
 
 export const ModalConfirmChangeRole = ({
@@ -19,13 +19,13 @@ export const ModalConfirmChangeRole = ({
 	onClose,
 }: ModalConfirmChangeRoleProps) => {
 	const [submitting, setSubmitting] = useState(false);
-	const [value, setValue] = useState<StaffMemberRole>(currentRole);
+	const [role, setRole] = useState<StaffMemberRole | undefined>(currentRole);
 
 	const handlerForKey = useCallback(
-		(key: StaffMemberRole) => () => setValue(key),
+		(key: StaffMemberRole) => () => setRole(key),
 		[]
 	);
-	const isChecked = (key: StaffMemberRole) => key === value;
+	const isChecked = (key: StaffMemberRole) => key === role;
 
 	function onSubmit() {
 		setSubmitting(true);

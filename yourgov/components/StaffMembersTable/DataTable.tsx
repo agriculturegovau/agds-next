@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useState } from 'react';
+import { forwardRef, Fragment } from 'react';
 import { format, formatDistance } from 'date-fns';
 import {
 	VisuallyHidden,
@@ -22,19 +22,10 @@ import { Stack } from '@ag.ds-next/react/src/stack';
 import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/src/icon';
 import { Heading } from '@ag.ds-next/react/src/heading';
 import { Button } from '@ag.ds-next/react/src/button';
-import {
-	DropdownMenu,
-	DropdownMenuButton,
-	DropdownMenuItem,
-	DropdownMenuPanel,
-} from '@ag.ds-next/react/dropdown-menu';
 import { generateTableCaption } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { DataTableRow, DataTableRowStatus } from './DataTableRow';
 import { DataTableBatchActionsBar } from './DataTableBatchActionsBar';
-import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
-import { ModalConfirmRemoveAccess } from './ModalConfirmRemoveAccess';
-import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';
 
 export const tableId = 'data-table';
 const descriptionId = 'data-table-description';
@@ -52,33 +43,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 			useSortAndFilterContext();
 		const { data, loading, totalItems, error } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
-
-		const [removeModalOpen, setRemoveModalOpen] = useState(false);
-		const [pauseModalOpen, setPauseModalOpen] = useState(false);
-		const [modalChangeRoleOpen, setModalChangeRoleOpen] = useState(false);
-
-		const onClickRemoveAccess = () => {
-			setRemoveModalOpen(true);
-		};
-		const onClickPauseAccess = () => {
-			setPauseModalOpen(true);
-		};
-		const onClickChangeRoles = () => {
-			setModalChangeRoleOpen(true);
-		};
-
-		const onConfirmRemove = () => {
-			console.log('Remove access');
-			setRemoveModalOpen(false);
-		};
-		const onConfirmPause = () => {
-			console.log('Pause access');
-			setPauseModalOpen(false);
-		};
-		const onConfirmChangeRole = () => {
-			setModalChangeRoleOpen(false);
-			console.log('Change role');
-		};
 
 		const caption = generateTableCaption({
 			loading,
@@ -252,6 +216,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											<DataTableRow
 												key={name}
 												selectable={selectable}
+												item={item}
 												itemId={id}
 												name={name}
 												rowIndex={rowIndex}
@@ -262,7 +227,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													</TextLink>
 												</TableCell>
 
-												{/* <DataTableRowAssignee assignee={assignee} /> */}
 												<TableCell>{role}</TableCell>
 
 												<DataTableRowStatus status={status} />
@@ -279,49 +243,6 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 													{dateJoined &&
 														format(new Date(dateJoined), 'd MMMM yyyy')}
 												</TableCell>
-
-												<TableCell>
-													<DropdownMenu>
-														<DropdownMenuButton aria-describedby={`${id}-name`}>
-															Actions
-														</DropdownMenuButton>
-
-														<DropdownMenuPanel>
-															<DropdownMenuItem onClick={onClickChangeRoles}>
-																Change role
-															</DropdownMenuItem>
-
-															<DropdownMenuItem onClick={onClickPauseAccess}>
-																Pause access
-															</DropdownMenuItem>
-
-															<DropdownMenuItem onClick={onClickRemoveAccess}>
-																Remove access
-															</DropdownMenuItem>
-														</DropdownMenuPanel>
-													</DropdownMenu>
-												</TableCell>
-
-												<ModalConfirmChangeRole
-													currentRole={item.role}
-													isOpen={modalChangeRoleOpen}
-													onClose={() => setModalChangeRoleOpen(false)}
-													onConfirm={onConfirmChangeRole}
-												/>
-
-												<ModalConfirmPauseAccess
-													itemsToPause={item}
-													isOpen={pauseModalOpen}
-													onClose={() => setPauseModalOpen(false)}
-													onConfirm={onConfirmPause}
-												/>
-
-												<ModalConfirmRemoveAccess
-													itemsToDelete={item}
-													isOpen={removeModalOpen}
-													onClose={() => setRemoveModalOpen(false)}
-													onConfirm={onConfirmRemove}
-												/>
 											</DataTableRow>
 										);
 									})}
@@ -340,7 +261,7 @@ const headers = [
 	{
 		label: 'Name',
 		sortKey: 'name',
-		width: { xs: '20rem', lg: 'auto' },
+		width: '20rem',
 		isSortable: true,
 	},
 	{
@@ -352,7 +273,7 @@ const headers = [
 	{
 		label: 'Status',
 		sortKey: 'status',
-		width: { xs: '16rem', lg: 'auto' },
+		width: '12rem',
 		isSortable: true,
 	},
 	{
@@ -364,13 +285,13 @@ const headers = [
 	{
 		label: 'Date joined',
 		sortKey: 'dateJoined',
-		width: '11rem',
+		width: '14rem',
 		isSortable: true,
 	},
 	{
 		label: 'Actions',
 		sortKey: 'actions',
-		width: '8rem',
+		width: '9rem',
 		isSortable: false,
 	},
 ] as const;
