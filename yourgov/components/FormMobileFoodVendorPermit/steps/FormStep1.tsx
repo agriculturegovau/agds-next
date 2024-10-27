@@ -19,11 +19,11 @@ import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { step1Part2FormSchema, type Step1Part2FormSchema } from './FormState';
 import { FormContainer } from './FormContainer';
-import { taskFormSteps, useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 
 export function FormStep1() {
 	const { formState } = useGlobalForm();
-	const stepFormState = formState.task?.step1;
+	const stepFormState = formState.steps?.step1;
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -90,7 +90,7 @@ export function FormStep1() {
 							</SummaryListItem>
 						</SummaryList>
 						<ButtonLink
-							href={taskFormSteps[0].items && taskFormSteps[0].items[0].href}
+							href={formSteps[0].items && formSteps[0].items[0].href}
 							variant="text"
 						>
 							Change business owner details
@@ -113,7 +113,7 @@ function AdditionalDetailsForm() {
 		formState: { errors },
 	} = useForm<Step1Part2FormSchema>({
 		defaultValues: {
-			contactPhoneNumber: formState.task?.step1?.contactPhoneNumber,
+			contactPhoneNumber: formState.steps?.step1?.contactPhoneNumber,
 		},
 		resolver: zodResolver(step1Part2FormSchema),
 		mode: 'onSubmit',

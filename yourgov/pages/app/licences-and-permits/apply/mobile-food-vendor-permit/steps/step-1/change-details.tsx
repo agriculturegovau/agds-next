@@ -1,21 +1,23 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { DocumentTitle } from '../../../../../../components/DocumentTitle';
-import { AppLayout } from '../../../../../../components/Layout/AppLayout';
+import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
+import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep9,
-	taskFormSteps,
-} from '../../../../../../components/FormMobileFoodVendorPermit';
-import type { NextPageWithLayout } from '../../../../../_app';
+	FormStep1ChangeDetails,
+	formSteps,
+} from '../../../../../../../components/FormMobileFoodVendorPermit';
+import type { NextPageWithLayout } from '../../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title={taskFormSteps[8].label} />
+			<DocumentTitle
+				title={formSteps[0].items && formSteps[0].items[0].label}
+			/>
 			<PageContent>
-				<FormStep9 />
+				<FormStep1ChangeDetails />
 			</PageContent>
 		</Fragment>
 	);

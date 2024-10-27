@@ -18,7 +18,7 @@ export function FormStep6() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step6FormSchema>({
-		defaultValues: formState.task?.step6,
+		defaultValues: formState.steps?.step6,
 		resolver: isSavingBeforeExiting ? undefined : zodResolver(step6FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',

@@ -20,7 +20,7 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { step1FormSchema, type Step1FormSchema } from './FormState';
-import { taskFormSteps, useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 
 export function FormStep1ChangeDetails() {
 	const router = useRouter();
@@ -31,7 +31,7 @@ export function FormStep1ChangeDetails() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step1FormSchema>({
-		defaultValues: formState.task?.step1,
+		defaultValues: formState.steps?.step1,
 		resolver: zodResolver(step1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
@@ -39,7 +39,7 @@ export function FormStep1ChangeDetails() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const step1Path = taskFormSteps[0].href;
+	const step1Path = formSteps[0].href;
 
 	const onSubmit: SubmitHandler<Step1FormSchema> = (data) => {
 		setIsSaving(true);
@@ -70,11 +70,11 @@ export function FormStep1ChangeDetails() {
 	const { canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = taskFormSteps[stepIndex];
+		const step = formSteps[stepIndex];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname.replace('/change-details', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
-		if (formState.task?.[step.formStateKey]?.completed) return 'done';
+		if (formState.steps?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step10' && !canConfirmAndSubmit)
 			return 'blocked';
@@ -86,10 +86,8 @@ export function FormStep1ChangeDetails() {
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ProgressIndicator
-					activePath={`${
-						taskFormSteps[0].items && taskFormSteps[0].items[0]?.href
-					}`}
-					items={taskFormSteps.map(({ label, href, items }, index) => ({
+					activePath={`${formSteps[0].items && formSteps[0].items[0]?.href}`}
+					items={formSteps.map(({ label, href, items }, index) => ({
 						label,
 						href,
 						status: getStepStatus(index),

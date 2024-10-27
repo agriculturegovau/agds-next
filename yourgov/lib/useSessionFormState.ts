@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FormState as TaskFormState } from '../components/FormMobileFoodVendorPermit/task/FormState';
+import { FormState as StepsFormState } from '../components/FormMobileFoodVendorPermit/steps/FormState';
 import { FormState } from '../components/FormMobileFoodVendorPermit/FormState';
 import { DeepPartial } from './types';
 
@@ -52,99 +52,109 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 
 	const stateSettersPerStep = useMemo(
 		() => ({
-			step1SetState: (newState: Partial<TaskFormState['step1']>) => {
+			step1SetState: (newState: Partial<StepsFormState['step1']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => {
 					return {
 						...prevState,
-						task: {
-							...prevState.task,
+						lastUpdated: Date.now(),
+						steps: {
+							...prevState.steps,
 							step1: {
-								...prevState.task?.step1, // User details, e.g. name and email are saved against step 1 but not always included during form submisssions for step 1 - TODO: either migrate this data to hidden form fields in step 1 or include it separately in the confirm and submit page
+								...prevState.steps?.step1, // User details, e.g. name and email are saved against step 1 but not always included during form submisssions for step 1 - TODO: either migrate this data to hidden form fields in step 1 or include it separately in the confirm and submit page
 								...newState,
 							},
 						},
 					};
 				});
 			},
-			step2SetState: (newState: Partial<TaskFormState['step2']>) => {
+			step2SetState: (newState: Partial<StepsFormState['step2']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step2: newState,
 					},
 				}));
 			},
-			step3SetState: (newState: Partial<TaskFormState['step3']>) => {
+			step3SetState: (newState: Partial<StepsFormState['step3']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step3: newState,
 					},
 				}));
 			},
-			step4SetState: (newState: Partial<TaskFormState['step4']>) => {
+			step4SetState: (newState: Partial<StepsFormState['step4']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step4: newState,
 					},
 				}));
 			},
-			step5SetState: (newState: Partial<TaskFormState['step5']>) => {
+			step5SetState: (newState: Partial<StepsFormState['step5']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step5: newState,
 					},
 				}));
 			},
-			step6SetState: (newState: Partial<TaskFormState['step6']>) => {
+			step6SetState: (newState: Partial<StepsFormState['step6']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step6: newState,
 					},
 				}));
 			},
-			step7SetState: (newState: Partial<TaskFormState['step7']>) => {
+			step7SetState: (newState: Partial<StepsFormState['step7']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step7: newState,
 					},
 				}));
 			},
-			step8SetState: (newState: Partial<TaskFormState['step8']>) => {
+			step8SetState: (newState: Partial<StepsFormState['step8']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step8: newState,
 					},
 				}));
 			},
-			step9SetState: (newState: Partial<TaskFormState['step9']>) => {
+			step9SetState: (newState: Partial<StepsFormState['step9']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
-					task: {
-						...prevState.task,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
 						step9: newState,
 					},
 				}));
 			},
 			// This is the review and submit step
-			step10SetState: (newState: Partial<TaskFormState['step10']>) => {
+			step10SetState: (newState: Partial<StepsFormState['step10']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
+					lastUpdated: Date.now(),
 					completed: newState.completed, // When this step is complete, the whole process is complete
-					task: {
-						...prevState.task,
+					steps: {
+						...prevState.steps,
 						step10: newState,
 					},
 				}));

@@ -37,11 +37,12 @@ export function GettingStartedForm() {
 	function onSubmit(data: FormSchema) {
 		setFormState({
 			...formState,
+			lastUpdated: Date.now(),
 			type: data.businessType?.toLowerCase(),
 		});
 		router.push({
 			pathname:
-				'/app/licences-and-permits/apply/mobile-food-vendor-permit/task/step-1',
+				'/app/licences-and-permits/apply/mobile-food-vendor-permit/steps/step-1',
 		});
 	}
 

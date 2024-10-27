@@ -5,17 +5,17 @@ import { AppLayout } from '../../../../../../components/Layout/AppLayout';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep7,
-	taskFormSteps,
+	FormStep3,
+	formSteps,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title={taskFormSteps[6].label} />
+			<DocumentTitle title={formSteps[2].label} />
 			<PageContent>
-				<FormStep7 />
+				<FormStep3 />
 			</PageContent>
 		</Fragment>
 	);

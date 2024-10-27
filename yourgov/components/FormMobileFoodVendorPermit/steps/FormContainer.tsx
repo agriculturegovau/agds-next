@@ -10,7 +10,7 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer as GlobalFormConatiner } from '../FormContainer';
-import { taskFormSteps, useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 
 type FormContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -29,12 +29,12 @@ export function FormContainer({
 	shouldFocusTitle = true,
 }: FormContainerProps) {
 	const { pathname } = useRouter();
-	const { formState, startTask } = useGlobalForm();
+	const { formState, startApplication } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = taskFormSteps[stepIndex];
-		const stateStep = formState.task?.[step.formStateKey];
+		const step = formSteps[stepIndex];
+		const stateStep = formState.steps?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
@@ -48,10 +48,9 @@ export function FormContainer({
 		return 'todo';
 	}
 
-	// Ensure the task is marked as started when visiting any of the task 1 pages
 	useEffect(() => {
-		startTask('task');
-	}, [startTask]);
+		startApplication();
+	}, [startApplication]);
 
 	return (
 		<Columns>
@@ -59,7 +58,7 @@ export function FormContainer({
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
 						activePath={pathname}
-						items={taskFormSteps.map(({ label, href }, index) => ({
+						items={formSteps.map(({ label, href }, index) => ({
 							label,
 							href,
 							status: getStepStatus(index),
