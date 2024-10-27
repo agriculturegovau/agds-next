@@ -10,7 +10,7 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer as GlobalFormConatiner } from '../FormContainer';
-import { taskFormSteps, useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 
 type FormContainerProps = PropsWithChildren<{
 	formTitle: string;
@@ -33,7 +33,7 @@ export function FormContainer({
 	const { backHref, canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
-		const step = taskFormSteps[stepIndex];
+		const step = formSteps[stepIndex];
 		const stateStep = formState.steps?.[step.formStateKey];
 		// Current step is always in progress when the URL matches
 		if (step.href === pathname) return 'started';
@@ -58,7 +58,7 @@ export function FormContainer({
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
 						activePath={pathname}
-						items={taskFormSteps.map(({ label, href }, index) => ({
+						items={formSteps.map(({ label, href }, index) => ({
 							label,
 							href,
 							status: getStepStatus(index),

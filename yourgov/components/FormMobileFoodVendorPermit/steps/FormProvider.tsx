@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { type FormStep } from '../FormState';
-import { formHomePage, getTaskCompletionUrl } from '../utils';
+import { formHomePage, getStepCompletionUrl } from '../utils';
 
 export type StepNumber =
 	| 'step1'
@@ -22,7 +22,7 @@ export type StepNumber =
 	| 'step9'
 	| 'step10';
 
-export const taskFormSteps: Array<FormStep<StepNumber>> = [
+export const formSteps: Array<FormStep<StepNumber>> = [
 	{
 		formStateKey: 'step1',
 		label: 'Owner details',
@@ -97,9 +97,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	const { setIsSubmittingStep, formState, isSavingBeforeExiting } =
 		useGlobalForm();
 
-	const currentStepIndex = taskFormSteps.findIndex(
-		({ href }) => href === pathname
-	);
+	const currentStepIndex = formSteps.findIndex(({ href }) => href === pathname);
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
@@ -110,13 +108,13 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		setIsSubmittingStep(true);
 		// Fake API network call
 		await new Promise((resolve) => setTimeout(resolve, 1500));
-		const taskCompletionUrl = getTaskCompletionUrl({
+		const stepCompletionUrl = getStepCompletionUrl({
 			currentStepIndex,
 			id: formState.id,
-			steps: taskFormSteps,
+			steps: formSteps,
 		});
 
-		push(taskCompletionUrl);
+		push(stepCompletionUrl);
 
 		setIsSubmittingStep(false);
 	}, [
@@ -128,9 +126,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	]);
 
 	// The href of the previous step
-	const backHref = `${
-		taskFormSteps[currentStepIndex - 1]?.href ?? formHomePage
-	}`;
+	const backHref = `${formSteps[currentStepIndex - 1]?.href ?? formHomePage}`;
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {

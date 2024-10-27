@@ -1,8 +1,8 @@
 import { type FieldErrors, type FieldValues } from 'react-hook-form';
 import { DeepPartial } from '../../lib/types';
 import {
-	defaultFormState as defaultTaskFormState,
-	type FormState as TaskFormState,
+	defaultFormState as defaultStepsFormState,
+	type FormState as StepsFormState,
 } from './steps/FormState';
 import { type StepNumber } from './steps/FormProvider';
 
@@ -14,12 +14,12 @@ export type Completion = {
 export type FormState = {
 	id: string;
 	lastUpdated: number;
-	steps: Partial<TaskFormState>;
+	steps: Partial<StepsFormState>;
 	type: string;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
-	steps: defaultTaskFormState,
+	steps: defaultStepsFormState,
 };
 
 export type FormStep<StepNum extends StepNumber = StepNumber> = {

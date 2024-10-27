@@ -4,8 +4,7 @@ export { GlobalFormProvider, useGlobalForm } from './GlobalFormProvider';
 // Getting started forms
 export { GettingStartedForm } from './GettingStartedForm';
 
-// Task 1
-export { FormProvider, taskFormSteps } from './steps/FormProvider';
+export { FormProvider, formSteps } from './steps/FormProvider';
 export { FormStep1 } from './steps/FormStep1';
 export { FormStep1ChangeDetails } from './steps/FormStep1ChangeDetails';
 export { FormStep2 } from './steps/FormStep2';

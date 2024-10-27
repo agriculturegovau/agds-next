@@ -10,7 +10,7 @@ import {
 } from '../../FormDefinitionList';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { ValidateSectionAlert } from '../ValidateSectionAlert';
-import { taskFormSteps } from './FormProvider';
+import { formSteps } from './FormProvider';
 import {
 	step1FormSchema,
 	step2FormSchema,
@@ -52,7 +52,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 		<Stack gap={3}>
 			{/** Owner details */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[0].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[0].label}</HeadingComponent>
 				{validation.step1.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -76,14 +76,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<ValidateSectionAlert />
 				)}
 
-				<ButtonLink variant="text" href={taskFormSteps[0].href}>
+				<ButtonLink variant="text" href={formSteps[0].href}>
 					Change owner details
 				</ButtonLink>
 			</Stack>
 
 			{/** Business details */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[1].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[1].label}</HeadingComponent>
 				{validation.step2.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -108,14 +108,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[1].href}>
+				<ButtonLink variant="text" href={formSteps[1].href}>
 					Change business details
 				</ButtonLink>
 			</Stack>
 
 			{/** Business address */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[2].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[2].label}</HeadingComponent>
 				{validation.step3.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItemAddress
@@ -143,14 +143,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[2].href}>
+				<ButtonLink variant="text" href={formSteps[2].href}>
 					Change business address
 				</ButtonLink>
 			</Stack>
 
 			{/** Vehicle registration */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[3].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[3].label}</HeadingComponent>
 				{validation.step4.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -165,14 +165,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[3].href}>
+				<ButtonLink variant="text" href={formSteps[3].href}>
 					Change vehicle registration
 				</ButtonLink>
 			</Stack>
 
 			{/** Trading time */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[4].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[4].label}</HeadingComponent>
 				{validation.step5.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItemDateRange
@@ -189,14 +189,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[4].href}>
+				<ButtonLink variant="text" href={formSteps[4].href}>
 					Change trading time
 				</ButtonLink>
 			</Stack>
 
 			{/** Food served */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>{taskFormSteps[5].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[5].label}</HeadingComponent>
 				{validation.step6.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -209,14 +209,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[5].href}>
+				<ButtonLink variant="text" href={formSteps[5].href}>
 					Change food served
 				</ButtonLink>
 			</Stack>
 
 			{/** Employees */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>TODO - {taskFormSteps[6].label}</HeadingComponent>
+				<HeadingComponent>TODO - {formSteps[6].label}</HeadingComponent>
 				{validation.step7.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -229,14 +229,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[6].href}>
+				<ButtonLink variant="text" href={formSteps[6].href}>
 					Change employees
 				</ButtonLink>
 			</Stack>
 
 			{/** Food safety supervisor */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>TODO - {taskFormSteps[7].label}</HeadingComponent>
+				<HeadingComponent>TODO - {formSteps[7].label}</HeadingComponent>
 				{validation.step8.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -249,14 +249,14 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[7].href}>
+				<ButtonLink variant="text" href={formSteps[7].href}>
 					Change food safety supervisor
 				</ButtonLink>
 			</Stack>
 
 			{/** Upload documents */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>TODO - {taskFormSteps[8].label}</HeadingComponent>
+				<HeadingComponent>TODO - {formSteps[8].label}</HeadingComponent>
 				{validation.step9.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -269,7 +269,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink variant="text" href={taskFormSteps[8].href}>
+				<ButtonLink variant="text" href={formSteps[8].href}>
 					Change documents
 				</ButtonLink>
 			</Stack>

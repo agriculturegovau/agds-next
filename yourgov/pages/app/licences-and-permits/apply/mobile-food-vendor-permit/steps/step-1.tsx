@@ -6,14 +6,14 @@ import {
 	GlobalFormProvider,
 	FormProvider,
 	FormStep1,
-	taskFormSteps,
+	formSteps,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title={taskFormSteps[0].label} />
+			<DocumentTitle title={formSteps[0].label} />
 			<PageContent>
 				<FormStep1 />
 			</PageContent>

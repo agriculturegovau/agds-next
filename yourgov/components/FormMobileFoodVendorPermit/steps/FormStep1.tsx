@@ -19,7 +19,7 @@ import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { step1Part2FormSchema, type Step1Part2FormSchema } from './FormState';
 import { FormContainer } from './FormContainer';
-import { taskFormSteps, useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 
 export function FormStep1() {
 	const { formState } = useGlobalForm();
@@ -90,7 +90,7 @@ export function FormStep1() {
 							</SummaryListItem>
 						</SummaryList>
 						<ButtonLink
-							href={taskFormSteps[0].items && taskFormSteps[0].items[0].href}
+							href={formSteps[0].items && formSteps[0].items[0].href}
 							variant="text"
 						>
 							Change business owner details
