@@ -6,7 +6,7 @@ import { useGlobalForm } from './GlobalFormProvider';
 export type FormContainerProps = PropsWithChildren<{
 	callToAction?: ReactNode;
 	hideRequiredFieldsMessage?: boolean;
-	introduction: string;
+	introduction?: string;
 	shouldFocusTitle?: boolean;
 	title: string;
 }>;

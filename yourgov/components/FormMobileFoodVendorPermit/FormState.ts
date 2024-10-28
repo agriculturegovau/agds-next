@@ -16,7 +16,7 @@ export type FormState = {
 	lastUpdated: number;
 	steps: Partial<StepsFormState>;
 	type: string;
-};
+} & Completion;
 
 export const defaultFormState: DeepPartial<FormState> = {
 	steps: defaultStepsFormState,
