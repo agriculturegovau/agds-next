@@ -22,8 +22,8 @@ import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 
 export function FormStep1() {
-	const { formState } = useGlobalForm();
-	const stepFormState = formState.steps?.step1;
+	const { step1GetState } = useGlobalForm();
+	const step1State = step1GetState();
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -73,19 +73,19 @@ export function FormStep1() {
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepFormState?.firstName}
+									{step1State?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepFormState?.lastName}
+									{step1State?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepFormState?.email}
+									{step1State?.email}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
@@ -104,7 +104,8 @@ export function FormStep1() {
 }
 
 function AdditionalDetailsForm() {
-	const { formState, step1SetState, isSavingBeforeExiting } = useGlobalForm();
+	const { step1GetState, step1SetState, isSavingBeforeExiting } =
+		useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const {
@@ -113,7 +114,7 @@ function AdditionalDetailsForm() {
 		formState: { errors },
 	} = useForm<Step1Part2FormSchema>({
 		defaultValues: {
-			contactPhoneNumber: formState.steps?.step1?.contactPhoneNumber,
+			contactPhoneNumber: step1GetState()?.contactPhoneNumber,
 		},
 		resolver: zodResolver(step1Part2FormSchema),
 		mode: 'onSubmit',

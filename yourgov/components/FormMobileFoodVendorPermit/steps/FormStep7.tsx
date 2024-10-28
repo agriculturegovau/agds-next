@@ -24,8 +24,13 @@ import { formSteps, useFormContext } from './FormProvider';
 import { Step7FormSchema } from './FormState';
 
 export function FormStep7() {
-	const { step7GetState, step7SetState, isSavingBeforeExiting } =
-		useGlobalForm();
+	const {
+		step7GetState,
+		step7SetState,
+		step8GetState,
+		step8SetState,
+		isSavingBeforeExiting,
+	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 	const { query } = useRouter();
 	const step7State = step7GetState();
@@ -78,6 +83,13 @@ export function FormStep7() {
 
 		setTimeout(() => {
 			setShowRemovedEmployeeMessage(true);
+			// FIXME: Can't set this immediately after setting step7, otherwise step7 doesn't actually get set
+			if (
+				step8GetState()?.supervisor ===
+				`${employeeToRemove?.firstName} ${employeeToRemove?.lastName}`
+			) {
+				step8SetState({});
+			}
 		}, 0);
 	};
 
