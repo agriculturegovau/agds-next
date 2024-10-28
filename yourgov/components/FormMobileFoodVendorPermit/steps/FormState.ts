@@ -145,7 +145,7 @@ export const step5FormSchema = z
 export type Step5FormSchema = z.infer<typeof step5FormSchema>;
 
 export const step6FormSchema = z.object({
-	cuisine: zodArray(
+	foodServed: zodArray(
 		z.object({ label: zodString(), value: zodString() }),
 		'Food types is required'
 	),
