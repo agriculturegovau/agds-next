@@ -1,8 +1,6 @@
-import { Fragment, ReactElement } from 'react';
+import { Fragment, ReactElement, useRef } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import {
 	Tabs,
 	TabList,
@@ -23,103 +21,110 @@ import {
 } from '@ag.ds-next/react/table';
 import { H2 } from '@ag.ds-next/react/heading';
 import { TextLink } from '@ag.ds-next/react/text-link';
+import { Text } from '@ag.ds-next/react/text';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { Details } from '@ag.ds-next/react/details';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { Flex } from '@ag.ds-next/react/flex';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/Layout/AppLayout';
 import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../_app';
-import {
-	mockApplicationHistory,
-	mockCurrentApprovals,
-} from '../../../data/mockLicencesAndPermits';
+import { mockApplicationHistory } from '../../../data/mockLicencesAndPermits';
+import { StaffMembersTable } from '../../../components/StaffMembersTable/StaffMembersTable';
 
 const Page: NextPageWithLayout = () => {
+	const tableRef = useRef<HTMLTableElement>(null);
+
+	// TODO replace this with active requests based on the second tab when the page is built
+	const accessRequests = [{}, {}, {}, {}, {}];
+
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage permits" />
+			<DocumentTitle title="Staff" />
 			<PageContent>
 				<Stack gap={3}>
-					<Breadcrumbs
-						links={[
-							{ label: 'Home', href: '/app' },
-							{ label: 'Manage permits' },
-						]}
-					/>
 					<PageTitle
-						title="Manage permits"
-						introduction="Stay compliant by registering for business licences and permits."
+						title="Staff"
+						introduction={
+							<>
+								Manage who can act for{' '}
+								<Text fontSize="md" fontWeight="bold">
+									Walker‘s Frozen Food
+								</Text>
+								.
+							</>
+						}
 						callToAction={
-							<CallToActionLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
-								Apply for a permit
-							</CallToActionLink>
+							<Stack gap={2} maxWidth="42rem">
+								<Details label="Why should I invite a new staff member?">
+									<Stack gap={1}>
+										<Text as="p">
+											Inviting individuals to join your staff can bring numerous
+											benefits to your business and help streamline your
+											operations.
+										</Text>
+
+										<TextLink>
+											Learn more about inviting a staff member
+										</TextLink>
+									</Stack>
+								</Details>
+
+								<ButtonLink
+									alignSelf="start"
+									href="/app/staff/invite-staff-member"
+								>
+									Invite staff member
+								</ButtonLink>
+							</Stack>
 						}
 					/>
-					<Tabs>
+					<Tabs contained={false}>
 						<TabList>
-							<TabButton>Current approvals</TabButton>
-							<TabButton>Application history</TabButton>
+							<TabButton>Staff members</TabButton>
+
+							<TabButton>
+								<Flex gap={0.5}>
+									Access requests{' '}
+									<NotificationBadge
+										tone="action"
+										value={accessRequests.length}
+									/>
+								</Flex>
+							</TabButton>
 						</TabList>
+
 						<TabPanels>
 							<TabPanel>
-								<Stack gap={1.5}>
-									<H2 id="current-approvals-heading">Current approvals</H2>
-									<TableWrapper>
-										<Table aria-labelledby="current-approvals-heading">
-											<TableHead>
-												<TableRow>
-													<TableHeader scope="col" width="25%">
-														Approval number
-													</TableHeader>
-													<TableHeader scope="col" width="25%">
-														Approval type
-													</TableHeader>
-													<TableHeader scope="col" width="25%">
-														Approval status
-													</TableHeader>
-													<TableHeader scope="col" width="25%">
-														Approved date
-													</TableHeader>
-												</TableRow>
-											</TableHead>
-											<TableBody>
-												{mockCurrentApprovals.map((approval, index) => (
-													<TableRow key={index}>
-														<TableCell as="th" scope="row" fontWeight="bold">
-															<TextLink href="/not-found">
-																{approval.approvalNumber}
-															</TextLink>
-														</TableCell>
-														<TableCell>{approval.type}</TableCell>
-														<TableCell>
-															<StatusBadge
-																appearance="subtle"
-																{...approval.status}
-															/>
-														</TableCell>
-														<TableCell>{approval.approvedDate}</TableCell>
-													</TableRow>
-												))}
-											</TableBody>
-										</Table>
-									</TableWrapper>
+								<Stack gap={3}>
+									<H2 id="staff-members-heading">Staff members</H2>
+
+									<StaffMembersTable selectable tableRef={tableRef} />
 								</Stack>
 							</TabPanel>
+
 							<TabPanel>
 								<Stack gap={1.5}>
-									<H2 id="access-requests-heading">Application history</H2>
+									<H2 id="access-requests-heading">Access requests</H2>
+
 									<TableWrapper>
-										<Table aria-labelledby="access-requests-heading">
+										<Table aria-labelledby="application-history-heading">
 											<TableHead>
 												<TableRow>
 													<TableHeader scope="col" width="25%">
 														Reference number
 													</TableHeader>
+
 													<TableHeader scope="col" width="25%">
 														Application type
 													</TableHeader>
+
 													<TableHeader scope="col" width="25%">
 														Application status
 													</TableHeader>
+
 													<TableHeader
 														scope="col"
 														textAlign="right"
@@ -129,6 +134,7 @@ const Page: NextPageWithLayout = () => {
 													</TableHeader>
 												</TableRow>
 											</TableHead>
+
 											<TableBody>
 												{mockApplicationHistory.map((application, index) => (
 													<TableRow key={index}>
@@ -137,13 +143,16 @@ const Page: NextPageWithLayout = () => {
 																{application.referenceNumber}
 															</TextLink>
 														</TableCell>
+
 														<TableCell>{application.type}</TableCell>
+
 														<TableCell>
 															<StatusBadge
 																appearance="subtle"
 																{...application.status}
 															/>
 														</TableCell>
+
 														<TableCell textAlign="right">
 															<TextLink href="/not-found">View</TextLink>
 														</TableCell>
