@@ -123,10 +123,11 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 			step7SetState: (newState: DeepPartial<StepsFormState['step7']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
+					lastUpdated: Date.now(),
 					steps: {
 						...prevState.steps,
 						step7: {
-							started: true, // When the state is set, the step has been started
+							started: true,
 							...newState,
 						},
 					},
