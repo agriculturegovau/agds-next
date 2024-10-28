@@ -205,7 +205,7 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Food served"
-							value={formState.steps?.step6?.cuisine
+							value={formState.steps?.step6?.foodServed
 								?.map((item) => item?.label)
 								.join(', ')}
 						/>

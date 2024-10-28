@@ -46,18 +46,18 @@ export function FormStep6() {
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Controller
 					control={control}
-					name="cuisine"
+					name="foodServed"
 					render={({ field: { ref, ...field } }) => (
 						<ComboboxMulti
 							label="Select food types"
 							hint="Start typing to see results. You can add multiple selections."
 							inputRef={ref}
-							options={cuisineOptions}
+							options={foodOptions}
 							required
 							{...field}
-							id="cuisine"
-							invalid={Boolean(typeCorrectedErrors.cuisine?.message)}
-							message={typeCorrectedErrors.cuisine?.message}
+							id="foodServed"
+							invalid={Boolean(typeCorrectedErrors.foodServed?.message)}
+							message={typeCorrectedErrors.foodServed?.message}
 							maxWidth="xl"
 							block={false}
 						/>
@@ -69,28 +69,22 @@ export function FormStep6() {
 	);
 }
 
-const cuisineOptions = [
-	{ value: 'american', label: 'American' },
-	{ value: 'brazilian', label: 'Brazilian' },
-	{ value: 'caribbean', label: 'Caribbean' },
-	{ value: 'chinese', label: 'Chinese' },
-	{ value: 'dessert', label: 'Dessert' },
-	{ value: 'ethiopian', label: 'Ethiopian' },
-	{ value: 'filipino', label: 'Filipino' },
-	{ value: 'french', label: 'French' },
-	{ value: 'gelato', label: 'Gelato' },
-	{ value: 'greek', label: 'Greek' },
-	{ value: 'ice cream', label: 'Ice cream' },
-	{ value: 'indian', label: 'Indian' },
-	{ value: 'italian', label: 'Italian' },
-	{ value: 'japanese', label: 'Japanese' },
-	{ value: 'korean', label: 'Korean' },
-	{ value: 'mediterranean', label: 'Mediterranean' },
+const foodOptions = [
+	{ value: 'asian noodle bowls', label: 'Asian Noodle Bowls' },
+	{ value: 'bbq ribs', label: 'BBQ Ribs' },
+	{ value: 'banh mi sandwiches', label: 'Banh Mi Sandwiches' },
+	{ value: 'burgers', label: 'Burgers' },
+	{ value: 'cake', label: 'Cake' },
+	{ value: 'coffee', label: 'Coffee' },
+	{ value: 'cookies', label: 'Cookies' },
+	{ value: 'falafel pitas', label: 'Falafel Pitas' },
+	{ value: 'fish and chips', label: 'Fish and Chips' },
+	{ value: 'fried chicken', label: 'Fried Chicken' },
+	{ value: 'fries', label: 'Fries' },
+	{ value: 'grilled cheese sandwiches', label: 'Grilled Cheese Sandwiches' },
+	{ value: 'ice cream', label: 'Ice Cream' },
 	{ value: 'mexican', label: 'Mexican' },
-	{ value: 'moroccan', label: 'Moroccan' },
-	{ value: 'peruvian', label: 'Peruvian' },
-	{ value: 'spanish', label: 'Spanish' },
-	{ value: 'thai', label: 'Thai' },
-	{ value: 'turkish', label: 'Turkish' },
-	{ value: 'vietnamese', label: 'Vietnamese' },
+	{ value: 'pasta', label: 'Pasta' },
+	{ value: 'pulled pork', label: 'Pulled Pork' },
+	{ value: 'veggie wraps', label: 'Veggie Wraps' },
 ];
