@@ -167,7 +167,7 @@ export const step7FormSchema = z.object({
 export type Step7FormSchema = z.infer<typeof step7FormSchema>;
 
 export const step8FormSchema = z.object({
-	supervisor: zodString('Food Safety Supervisor is required'),
+	supervisor: zodString('Food safety supervisor is required'),
 });
 
 export type Step8FormSchema = z.infer<typeof step8FormSchema>;
