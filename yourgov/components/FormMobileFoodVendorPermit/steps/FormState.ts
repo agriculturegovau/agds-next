@@ -154,10 +154,14 @@ export const step6FormSchema = z.object({
 export type Step6FormSchema = z.infer<typeof step6FormSchema>;
 
 export const step7FormSchema = z.object({
-	cuisine: zodArray(
-		z.object({ label: zodString(), value: zodString() }),
-		'Food types is required'
-	),
+	employee: z.object({
+		id: zodString(),
+		firstName: zodString('Enter employee’s first name'),
+		lastName: zodString('Enter employee’s last name'),
+		email: zodString('Enter employee’s email address').email(
+			'Enter a valid email address'
+		),
+	}),
 });
 
 export type Step7FormSchema = z.infer<typeof step7FormSchema>;
@@ -187,7 +191,7 @@ export type FormState = {
 	step4: Step4FormSchema & Completion;
 	step5: Step5FormSchema & Completion;
 	step6: Step6FormSchema & Completion;
-	step7: Step7FormSchema & Completion;
+	step7: { employee: Step7FormSchema['employee'][] } & Completion;
 	step8: Step8FormSchema & Completion;
 	step9: Step9FormSchema & Completion;
 	step10: Completion;
@@ -203,5 +207,8 @@ export const defaultFormState: DeepPartial<FormState> = {
 	step3: {
 		isPostalAddressSameAsBusinessAddress: true,
 		completed: false,
+	},
+	step7: {
+		employee: [],
 	},
 };

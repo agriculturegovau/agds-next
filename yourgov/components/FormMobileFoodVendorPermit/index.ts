@@ -13,6 +13,7 @@ export { FormStep4 } from './steps/FormStep4';
 export { FormStep5 } from './steps/FormStep5';
 export { FormStep6 } from './steps/FormStep6';
 export { FormStep7 } from './steps/FormStep7';
+export { FormStep7AddEmployee } from './steps/FormStep7AddEmployee';
 export { FormStep8 } from './steps/FormStep8';
 export { FormStep9 } from './steps/FormStep9';
 export { FormStep10 } from './steps/FormStep10';
