@@ -22,7 +22,7 @@ type StaffMembersTableProps = {
 	tableRef?: RefObject<HTMLTableElement>;
 };
 
-const headingId = 'table-heading';
+const headingId = 'staff-members-heading';
 
 export const StaffMembersTable = ({
 	selectable,
