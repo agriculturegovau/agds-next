@@ -52,7 +52,7 @@ export function FormStep6() {
 							label="Select food types"
 							hint="Start typing to see results. You can add multiple selections."
 							inputRef={ref}
-							options={foods}
+							options={foodOptions}
 							required
 							{...field}
 							id="foodServed"
@@ -69,7 +69,7 @@ export function FormStep6() {
 	);
 }
 
-const foods = [
+const foodOptions = [
 	{ value: 'asian noodle bowls', label: 'Asian Noodle Bowls' },
 	{ value: 'bbq ribs', label: 'BBQ Ribs' },
 	{ value: 'banh mi sandwiches', label: 'Banh Mi Sandwiches' },
