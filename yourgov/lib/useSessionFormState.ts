@@ -52,6 +52,9 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 
 	const stateGettersAndSettersPerStep = useMemo(
 		() => ({
+			step1GetState: () => {
+				return globalState.steps?.step1;
+			},
 			step1SetState: (newState: Partial<StepsFormState['step1']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => {
 					return {
@@ -132,6 +135,9 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						},
 					},
 				}));
+			},
+			step8GetState: () => {
+				return globalState.steps?.step8;
 			},
 			step8SetState: (newState: Partial<StepsFormState['step8']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({

@@ -24,14 +24,14 @@ import { formSteps, useFormContext } from './FormProvider';
 
 export function FormStep1ChangeDetails() {
 	const router = useRouter();
-	const { formState, step1SetState } = useGlobalForm();
+	const { formState, step1GetState, step1SetState } = useGlobalForm();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<Step1FormSchema>({
-		defaultValues: formState.steps?.step1,
+		defaultValues: step1GetState(),
 		resolver: zodResolver(step1FormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',

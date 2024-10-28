@@ -242,14 +242,12 @@ export function FormStep10Review({ headingsLevel }: FormReviewProps) {
 
 			{/** Food safety supervisor */}
 			<Stack gap={1.5} alignItems="flex-start">
-				<HeadingComponent>TODO - {formSteps[7].label}</HeadingComponent>
+				<HeadingComponent>{formSteps[7].label}</HeadingComponent>
 				{validation.step8.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Food safety supervisor"
-							value={formState.steps?.step8?.cuisine
-								?.map((item) => item?.label)
-								.join(', ')}
+							value={formState.steps?.step8?.supervisor}
 						/>
 					</FormDefinitionList>
 				) : (
