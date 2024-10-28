@@ -68,7 +68,7 @@ export function GlobalFormProvider({
 		}, 1500);
 	}, [router]);
 
-	// Prevent the form rendering until the users progress has been loaded from session storage
+	// Prevent the form rendering until the user's progress has been loaded from session storage
 	if (!hasSynced) return null;
 
 	const contextValue: ContextType = {

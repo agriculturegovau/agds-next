@@ -55,5 +55,8 @@ export function getStepCompletionUrl({
 	steps,
 }: GetStepNavigationUrlParams) {
 	const nextStepUrl = steps[currentStepIndex + 1]?.href;
-	return nextStepUrl || `${managePermitsPage}?success=${id}`;
+	return (
+		nextStepUrl ||
+		`/app/licences-and-permits/apply/mobile-food-vendor-permit/success?id=${id}`
+	);
 }

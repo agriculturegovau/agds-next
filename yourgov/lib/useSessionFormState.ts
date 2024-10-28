@@ -158,7 +158,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					lastUpdated: Date.now(),
-					completed: newState.completed, // When this step is complete, the whole process is complete
+					completed: true,
 					steps: {
 						...prevState.steps,
 						step10: newState,
