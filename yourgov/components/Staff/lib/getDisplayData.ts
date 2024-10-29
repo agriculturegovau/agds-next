@@ -1,14 +1,13 @@
-import { staffMembers } from './staffMembers';
 import {
 	GetDataFilters,
-	GetDataParams,
+	GetDisplayDataParams,
 	GetDataSort,
 	StaffMember,
 	StaffMemberWithIndex,
 } from './types';
 
 type GetDataResponse = {
-	data: StaffMemberWithIndex[];
+	displayData: StaffMemberWithIndex[];
 	total: number;
 	totalPages: number;
 	totalItems: number;
@@ -91,7 +90,10 @@ const sortData = (a: StaffMember, b: StaffMember, sort: GetDataSort) => {
 };
 
 /** Simulates the retrieval of data from an API */
-export async function getData(params: GetDataParams): Promise<GetDataResponse> {
+export async function getDisplayData(
+	staffMembers: StaffMember[],
+	params: GetDisplayDataParams
+): Promise<GetDataResponse> {
 	const { page, perPage } = params.pagination;
 
 	const filteredData = staffMembers.filter((staffMember) =>
@@ -111,7 +113,7 @@ export async function getData(params: GetDataParams): Promise<GetDataResponse> {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve({
-				data: paginatedData,
+				displayData: paginatedData,
 				total: sortedData.length,
 				totalPages: Math.ceil(sortedData.length / perPage),
 				totalItems: sortedData.length,

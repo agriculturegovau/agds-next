@@ -4,12 +4,12 @@ import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { StaffMemberWithIndex } from './lib/types';
 
 export const DataTableSelectAllCheckbox = () => {
-	const { data } = useDataContext();
+	const { displayData } = useDataContext();
 	const {
 		toggleAllRowsSelected,
 		isSelectAllCheckboxChecked,
 		isSelectAllCheckboxIndeterminate,
-	} = useSelectAllRows(data);
+	} = useSelectAllRows(displayData);
 	return (
 		<Checkbox
 			size="sm"

@@ -9,7 +9,7 @@ import {
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { FormContainer as GlobalFormConatiner } from '../FormContainer';
+import { FormContainer as GlobalFormContainer } from '../FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 
 type FormContainerProps = PropsWithChildren<{
@@ -71,7 +71,7 @@ export function FormContainer({
 					<DirectionLink direction="left" href={backHref}>
 						Back
 					</DirectionLink>
-					<GlobalFormConatiner
+					<GlobalFormContainer
 						title={formTitle}
 						introduction={formIntroduction}
 						callToAction={formCallToAction}
@@ -79,7 +79,7 @@ export function FormContainer({
 						shouldFocusTitle={shouldFocusTitle}
 					>
 						{children}
-					</GlobalFormConatiner>
+					</GlobalFormContainer>
 				</Stack>
 			</Column>
 		</Columns>

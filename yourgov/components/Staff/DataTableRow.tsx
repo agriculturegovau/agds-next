@@ -14,6 +14,7 @@ import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
 import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';
 import { ModalConfirmRemoveAccess } from './ModalConfirmRemoveAccess';
 import { StaffMemberWithIndex } from './lib/types';
+import { useStaffGlobalState } from './StaffProvider';
 
 const itemStatusMap = {
 	Active: {
@@ -57,6 +58,7 @@ export const DataTableRow = ({
 	rowIndex: number;
 	selectable?: boolean;
 }) => {
+	const { staffMembersRemove } = useStaffGlobalState();
 	const { isRowSelected, toggleRowSelected } = useSortAndFilterContext();
 
 	const [removeModalOpen, setRemoveModalOpen] = useState(false);
@@ -74,11 +76,14 @@ export const DataTableRow = ({
 	};
 
 	const onConfirmRemove = () => {
+		// setUpdatedStaffMemberName?.(item.name)
+		staffMembersRemove(item);
 		console.log('Remove access');
 		setRemoveModalOpen(false);
 	};
 	const onConfirmPause = () => {
 		console.log('Pause access');
+
 		setPauseModalOpen(false);
 	};
 	const onConfirmChangeRole = () => {

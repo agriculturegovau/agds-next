@@ -7,7 +7,7 @@ import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 
 export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();
-	const { data, totalItems, totalPages, loading } = useDataContext();
+	const { displayData, totalItems, totalPages, loading } = useDataContext();
 
 	const itemRangeText = generatePaginationRangeText({
 		totalItems: totalItems,
@@ -33,10 +33,10 @@ export const DashboardPagination = () => {
 			itemRangeText,
 			perPage: pagination.perPage,
 		});
-		// We only want to update the display text once the table data has finished loading, all other deps are ignored here
+		// We only want to update the display text once the table displayData has finished loading, all other deps are ignored here
 	}, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	if (!data.length) return null;
+	if (!displayData.length) return null;
 
 	return (
 		<PaginationButtons

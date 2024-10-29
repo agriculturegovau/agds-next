@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FormState as StepsFormState } from '../components/FormMobileFoodVendorPermit/steps/FormState';
+import {
+	InviteStaffFormSchema,
+	FormState as StepsFormState,
+} from '../components/FormMobileFoodVendorPermit/steps/FormState';
 import { FormState } from '../components/FormMobileFoodVendorPermit/FormState';
+import {
+	StaffMember,
+	StaffMemberWithIndex,
+} from '../components/Staff/lib/types';
 import { DeepPartial } from './types';
 
 type SetStateValue<TValue> = TValue | ((prevState: TValue) => TValue);
@@ -175,11 +182,57 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 		[globalState, setAndSyncGlobalStateAndSessionStorage]
 	);
 
+	const stateGettersAndSettersForStaff = useMemo(
+		() => ({
+			accessRequestsGetState: () => globalState.staff?.accessRequests || [],
+			accessRequestsSetState: (newState: Partial<InviteStaffFormSchema>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					staff: {
+						...prevState.staff,
+						accessRequests: [
+							...(prevState?.staff?.accessRequests || []),
+							newState,
+						],
+					},
+				}));
+			},
+			staffMembersGetState: () => {
+				// TODO StaffMember can't be partial, maybe exclude from DeepPartial?
+				return (globalState.staff?.staffMembers as StaffMember[]) || [];
+			},
+			staffMembersRemove: (
+				staffMemberToRemove: StaffMember | StaffMemberWithIndex
+			) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					staff: {
+						...prevState.staff,
+						staffMembers: (prevState?.staff?.staffMembers || []).filter(
+							(staffMember) => staffMember?.id !== staffMemberToRemove.id
+						),
+					},
+				}));
+			},
+			staffMembersSetState: (newState: Partial<InviteStaffFormSchema>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					staff: {
+						...prevState.staff,
+						staffMembers: [...(prevState?.staff?.staffMembers || []), newState],
+					},
+				}));
+			},
+		}),
+		[globalState, setAndSyncGlobalStateAndSessionStorage]
+	);
+
 	return {
 		hasSynced,
 		formState: globalState,
 		setFormState: setAndSyncGlobalStateAndSessionStorage,
 		...stateGettersAndSettersPerStep,
+		...stateGettersAndSettersForStaff,
 	} as const;
 }
 

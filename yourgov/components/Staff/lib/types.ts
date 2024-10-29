@@ -38,7 +38,7 @@ export type GetDataFilters = {
 	trainingCompleted: Record<StaffMemberTrainingCompleted, boolean>;
 };
 
-export type GetDataParams = {
+export type GetDisplayDataParams = {
 	/** The sort to apply to the data */
 	sort: GetDataSort;
 	/** The pagination to apply to the data */

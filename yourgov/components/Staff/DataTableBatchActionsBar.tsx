@@ -13,11 +13,11 @@ import { StaffMemberWithIndex } from './lib/types';
 
 export const DataTableBatchActionsBar = () => {
 	const { selection, clearRowSelections } = useSortAndFilterContext();
-	const { data } = useDataContext();
+	const { displayData } = useDataContext();
 
 	const staffNameToStaffMemberMap = useMemo(
 		() =>
-			data.reduce(
+			displayData.reduce(
 				(acc, staffMember) =>
 					staffMember?.name
 						? {
@@ -27,7 +27,7 @@ export const DataTableBatchActionsBar = () => {
 						: acc,
 				{} as Record<StaffMemberWithIndex['name'], StaffMemberWithIndex>
 			),
-		[data]
+		[displayData]
 	);
 
 	const items = selection.map((staffMemberId) => {

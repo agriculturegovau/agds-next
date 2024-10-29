@@ -1,9 +1,12 @@
-import { RefObject } from 'react';
+import { RefObject, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/src/stack';
 import { Button } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
 import { FilterIcon } from '@ag.ds-next/react/src/icon';
 import { Box } from '@ag.ds-next/react/src/box';
+import { Text } from '@ag.ds-next/react/text';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
 import { useSortAndFilter } from './lib/useSortAndFilter';
 import { useFetchData } from './lib/useFetchData';
@@ -16,6 +19,7 @@ import { FilterBar, FilterBarGroup, FilterRegion } from './FilterBar';
 import { DashboardPagination } from './DashboardPagination';
 import { DataTableSelectAllCheckbox } from './DataTableSelectAllCheckbox';
 import { FilterSwitchInput } from './FilterSwitchInput';
+import { useStaffGlobalState } from './StaffProvider';
 
 type StaffMembersTableProps = {
 	selectable?: boolean;
@@ -28,6 +32,10 @@ export const StaffMembersTable = ({
 	selectable,
 	tableRef,
 }: StaffMembersTableProps) => {
+	const router = useRouter();
+
+	const { accessRequestsGetState } = useStaffGlobalState();
+
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const sortAndFilter = useSortAndFilter();
 	const { filters, pagination, sort } = sortAndFilter;
@@ -37,9 +45,40 @@ export const StaffMembersTable = ({
 		sort,
 	});
 
+	const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(
+		router.query.success === 'true'
+	);
+	const [updatedStaffMemberName, setUpdatedStaffMemberName] = useState(() => {
+		const updatedStaffMember = accessRequestsGetState().find(
+			(staffMemberWithAccessRequest) =>
+				router.query.accessRequestId === staffMemberWithAccessRequest?.id
+		);
+
+		return `${updatedStaffMember?.firstName} ${updatedStaffMember?.lastName}`;
+	});
+
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
-			<DataProvider value={data}>
+			<DataProvider
+				value={{ ...data, isSuccessMessageVisible, setUpdatedStaffMemberName }}
+			>
+				{isSuccessMessageVisible && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setIsSuccessMessageVisible(false);
+							router.replace(router.asPath, undefined, { shallow: true });
+						}}
+						title={`An email invitation has been sent to ${updatedStaffMemberName}`}
+						tone="success"
+					>
+						<Text as="p">
+							{updatedStaffMemberName} will receive an email asking them to
+							create a staff account.
+						</Text>
+					</SectionAlert>
+				)}
+
 				<Stack gap={0}>
 					<FilterRegion>
 						<FilterBar>

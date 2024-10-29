@@ -2,6 +2,7 @@ import { type FieldErrors, type FieldValues } from 'react-hook-form';
 import { DeepPartial } from '../../lib/types';
 import {
 	defaultFormState as defaultStepsFormState,
+	GlobalStaffState,
 	type FormState as StepsFormState,
 } from './steps/FormState';
 import { type StepNumber } from './steps/FormProvider';
@@ -14,6 +15,7 @@ export type Completion = {
 export type FormState = {
 	id: string;
 	lastUpdated: number;
+	staff: Partial<GlobalStaffState>;
 	steps: Partial<StepsFormState>;
 	type: string;
 } & Completion;

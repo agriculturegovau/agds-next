@@ -41,7 +41,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 	function DataTable({ headingId, selectable }, ref) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
-		const { data, loading, totalItems, error } = useDataContext();
+		const { displayData, loading, totalItems, error } = useDataContext();
 		const isTableSortable = !!sort || !!setSort;
 
 		const caption = generateTableCaption({
@@ -65,7 +65,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 			);
 		}
 
-		if (!loading && data.length === 0) {
+		if (!loading && displayData.length === 0) {
 			return (
 				<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
 					<Stack gap={1}>
@@ -198,7 +198,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 								</Fragment>
 							) : (
 								<Fragment>
-									{data.map((item) => {
+									{displayData.map((item) => {
 										const {
 											index,
 											name,
