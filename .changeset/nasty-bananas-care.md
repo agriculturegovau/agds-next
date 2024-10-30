@@ -4,6 +4,6 @@
 
 yourgov: Create a page for inviting a staff member.
 
-section-alert: Fix `focusOnUpdate` triggering focus when values weren't changed.
+section-alert: Allow strings to be passed to `focusOnUpdate`.
 
-page-alert: Fix `focusOnUpdate` triggering focus when values weren't changed.
+page-alert: Allow strings to be passed to `focusOnUpdate`.
