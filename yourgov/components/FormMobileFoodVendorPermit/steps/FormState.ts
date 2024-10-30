@@ -222,7 +222,9 @@ export const inviteStaffFormSchema = z.object({
 		'Enter a valid email address'
 	),
 	mobileNumber: zodPhoneFieldOptional(),
-	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience']),
+	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
+		errorMap: () => ({ message: 'Please choose a role' }),
+	}),
 	trainingCompleted: z.array(
 		z.enum(['Ice cream making', 'Packaging', 'Distribution', 'Deliveries'])
 	),

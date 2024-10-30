@@ -47,9 +47,9 @@ export const DataTableBatchActionsBar = () => {
 		clearRowSelections();
 
 		setUpdatedStaffMemberName?.(
-			items.map((staffMember) => staffMember.name).join(', ')
+			`${items.length} ${items.length > 1 ? 'people' : 'person'}`
 		);
-		setSuccessMessageType?.('remove');
+		setSuccessMessageType?.(items.length > 1 ? 'removeBatch' : 'remove');
 	};
 	const onConfirmPause = () => {
 		staffMembersUpdate({ staffToUpdate: items, updates: { status: 'Paused' } });
@@ -57,9 +57,9 @@ export const DataTableBatchActionsBar = () => {
 		clearRowSelections();
 
 		setUpdatedStaffMemberName?.(
-			items.map((staffMember) => staffMember.name).join(', ')
+			`${items.length} ${items.length > 1 ? 'people' : 'person'}`
 		);
-		setSuccessMessageType?.('pause');
+		setSuccessMessageType?.(items.length > 1 ? 'pauseBatch' : 'pause');
 	};
 	const onConfirmChangeRole = () => {
 		console.log('Change role');

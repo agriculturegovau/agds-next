@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/src/stack';
 import { Button } from '@ag.ds-next/react/src/button';
@@ -31,15 +31,28 @@ const headingId = 'staff-members-heading';
 const successTypeToMessageText = {
 	invite: {
 		description: 'will receive an email asking them to create a staff account.',
-		title: 'An email invitation has been sent to',
+		titlePrefix: 'An email invitation has been sent to',
+		titleSuffix: '',
 	},
 	pause: {
 		description: null,
-		title: 'The following staff have had their status paused:',
+		titlePrefix: '',
+		titleSuffix: 'has been paused as a staff member',
+	},
+	pauseBatch: {
+		description: null,
+		titlePrefix: '',
+		titleSuffix: 'have been paused as staff members',
 	},
 	remove: {
 		description: null,
-		title: 'The following staff have had their access removed:',
+		titlePrefix: '',
+		titleSuffix: 'has been removed as a staff member',
+	},
+	removeBatch: {
+		description: null,
+		titlePrefix: '',
+		titleSuffix: 'have been removed as a staff members',
 	},
 };
 
@@ -66,8 +79,7 @@ export const StaffMembersTable = ({
 		useState<null | successType>(router.query.successType as successType);
 	const [updatedStaffMemberName, setUpdatedStaffMemberName] = useState(() => {
 		const updatedStaffMember = staffMembersGetState().find(
-			(staffMemberWithAccessRequest) =>
-				router.query.staffId === staffMemberWithAccessRequest?.id
+			(staffMember) => router.query.staffId === staffMember?.id
 		);
 
 		return updatedStaffMember?.name || 'the staff member';
@@ -84,19 +96,18 @@ export const StaffMembersTable = ({
 			>
 				{successMessageType && (
 					<SectionAlert
-						focusOnMount
+						focusOnUpdate={[successMessageType, updatedStaffMemberName]}
 						onClose={() => {
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
-						title={`${successTypeToMessageText[successMessageType].title} ${updatedStaffMemberName}`}
+						title={`${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`}
 						tone="success"
 					>
 						{successTypeToMessageText[successMessageType].description && (
 							<Text as="p">
 								{updatedStaffMemberName}{' '}
-								{successTypeToMessageText[successMessageType].description} will
-								receive an email asking them to create a staff account.
+								{successTypeToMessageText[successMessageType].description}
 							</Text>
 						)}
 					</SectionAlert>

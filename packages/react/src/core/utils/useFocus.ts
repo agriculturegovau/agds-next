@@ -2,7 +2,7 @@ import { ForwardedRef, useEffect, useRef } from 'react';
 
 export type UseFocusParams<T> = {
 	focusOnMount?: boolean;
-	focusOnUpdate?: unknown;
+	focusOnUpdate?: unknown[];
 	forwardedRef?: ForwardedRef<T>;
 };
 
@@ -21,7 +21,7 @@ export type UseFocusParams<T> = {
 
 export function useFocus<T extends HTMLElement>({
 	focusOnMount,
-	focusOnUpdate,
+	focusOnUpdate = [],
 	forwardedRef,
 }: UseFocusParams<T> = {}) {
 	const fallbackRef = useRef<T>(null);
@@ -29,17 +29,14 @@ export function useFocus<T extends HTMLElement>({
 
 	useEffect(
 		() => {
-			if (
-				(focusOnUpdate === undefined && !focusOnMount) ||
-				!('current' in ref)
-			) {
+			if ((!focusOnUpdate.length && !focusOnMount) || !('current' in ref)) {
 				return;
 			}
 
 			ref?.current?.focus?.();
 		},
 		// We are allowing a non-literal array of dependencies to enable consumers to trigger focus updates based on a list of their own trigger-values.
-		[focusOnUpdate] // eslint-disable-line react-hooks/exhaustive-deps
+		focusOnUpdate // eslint-disable-line react-hooks/exhaustive-deps
 	);
 
 	return ref;

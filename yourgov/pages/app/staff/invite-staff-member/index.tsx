@@ -1,6 +1,6 @@
 import { Fragment, ReactElement, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { FieldError, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -43,6 +43,10 @@ const Page: NextPageWithLayout = () => {
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
+	const errorsWithoutTrainingCompleted = {
+		...errors,
+		trainingCompleted: {},
+	};
 
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -60,7 +64,7 @@ const Page: NextPageWithLayout = () => {
 		router.push('/app/staff');
 	};
 
-	const showErrorAlert = hasMultipleErrors(errors);
+	const showErrorAlert = hasMultipleErrors(errorsWithoutTrainingCompleted);
 
 	return (
 		<Fragment>
@@ -89,20 +93,7 @@ const Page: NextPageWithLayout = () => {
 					<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 						<FormStack>
 							{showErrorAlert && (
-								<FormPageAlert
-									errors={
-										// TODO fix this
-										errors as {
-											[key: string]: {
-												message?: string;
-												from?: FieldError;
-												to?: FieldError;
-												value?: FieldError;
-												formatted?: FieldError;
-											};
-										}
-									}
-								/>
+								<FormPageAlert errors={errorsWithoutTrainingCompleted} />
 							)}
 
 							<input
@@ -183,13 +174,7 @@ const Page: NextPageWithLayout = () => {
 							)}
 						</ControlGroup>
 
-						<ControlGroup
-							hideOptionalLabel
-							invalid={Boolean(errors.trainingCompleted?.[0]?.message)}
-							label="Training completed"
-							message={errors.trainingCompleted?.[0]?.message}
-							block
-						>
+						<ControlGroup hideOptionalLabel label="Training completed" block>
 							{[
 								'Ice cream making',
 								'Packaging',
