@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useStaffGlobalState } from '../StaffProvider';
+import { successType } from '../StaffMembersTable';
 import { GetDisplayDataParams, StaffMemberWithIndex } from './types';
 import { getDisplayData } from './getDisplayData';
 
@@ -17,7 +18,7 @@ export type DashboardTableData = {
 	/** Set the staff member name that was just updated. */
 	setUpdatedStaffMemberName?: Dispatch<SetStateAction<string>>;
 	/** Whether to show the success message above the table. */
-	isSuccessMessageVisible?: boolean;
+	setSuccessMessageType?: Dispatch<SetStateAction<null | successType>>;
 };
 
 /** In a real app, this function would fetch data from an API. */

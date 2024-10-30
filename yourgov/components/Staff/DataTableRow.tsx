@@ -9,7 +9,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
-import { useSortAndFilterContext } from './lib/contexts';
+import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
 import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';
 import { ModalConfirmRemoveAccess } from './ModalConfirmRemoveAccess';
@@ -58,7 +58,8 @@ export const DataTableRow = ({
 	rowIndex: number;
 	selectable?: boolean;
 }) => {
-	const { staffMembersRemove } = useStaffGlobalState();
+	const { setSuccessMessageType, setUpdatedStaffMemberName } = useDataContext();
+	const { staffMembersDelete, staffMembersUpdate } = useStaffGlobalState();
 	const { isRowSelected, toggleRowSelected } = useSortAndFilterContext();
 
 	const [removeModalOpen, setRemoveModalOpen] = useState(false);
@@ -71,20 +72,25 @@ export const DataTableRow = ({
 	const onClickPauseAccess = () => {
 		setPauseModalOpen(true);
 	};
-	const onClickChangeRoles = () => {
-		setModalChangeRoleOpen(true);
-	};
+
+	// TODO: bring back post-usability testing
+	// const onClickChangeRoles = () => {
+	// 	setModalChangeRoleOpen(true);
+	// };
 
 	const onConfirmRemove = () => {
-		// setUpdatedStaffMemberName?.(item.name)
-		staffMembersRemove(item);
-		console.log('Remove access');
+		staffMembersDelete(item);
 		setRemoveModalOpen(false);
+
+		setUpdatedStaffMemberName?.(item.name);
+		setSuccessMessageType?.('remove');
 	};
 	const onConfirmPause = () => {
-		console.log('Pause access');
-
+		staffMembersUpdate({ staffToUpdate: item, updates: { status: 'Paused' } });
 		setPauseModalOpen(false);
+
+		setUpdatedStaffMemberName?.(item.name);
+		setSuccessMessageType?.('pause');
 	};
 	const onConfirmChangeRole = () => {
 		console.log('Change role');
@@ -113,9 +119,10 @@ export const DataTableRow = ({
 						</DropdownMenuButton>
 
 						<DropdownMenuPanel>
-							<DropdownMenuItem onClick={onClickChangeRoles}>
+							{/* This is not needed in the usability testing but is needed post-usability testing */}
+							{/* <DropdownMenuItem onClick={onClickChangeRoles}>
 								Change role
-							</DropdownMenuItem>
+							</DropdownMenuItem> */}
 
 							<DropdownMenuItem onClick={onClickPauseAccess}>
 								Pause access

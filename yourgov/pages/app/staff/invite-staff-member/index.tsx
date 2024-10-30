@@ -30,7 +30,7 @@ import {
 
 const Page: NextPageWithLayout = () => {
 	const router = useRouter();
-	const { accessRequestsSetState } = useStaffGlobalState();
+	const { staffMembersCreate } = useStaffGlobalState();
 
 	const uuid = useRef(crypto.randomUUID());
 
@@ -51,8 +51,8 @@ const Page: NextPageWithLayout = () => {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			accessRequestsSetState(data);
-			router.push(`/app/staff?success=true&accessRequestId=${uuid.current}`);
+			staffMembersCreate(data);
+			router.push(`/app/staff?successType=invite&staffId=${uuid.current}`);
 		}, 1500);
 	};
 

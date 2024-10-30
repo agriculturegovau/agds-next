@@ -210,19 +210,23 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 										// Adding 2 because the table header row is the first row
 										const rowIndex = index + 2;
-										const id = name.replaceAll(' ', '-');
 
 										return (
 											<DataTableRow
 												key={name}
 												selectable={selectable}
 												item={item}
-												itemId={id}
+												itemId={item.id}
 												name={name}
 												rowIndex={rowIndex}
 											>
 												<TableCell as="th" scope="row">
-													<TextLink href={`#${id}`} id={`${id}-name`}>
+													<TextLink
+														href={`/app/staff/${item.name
+															.toLowerCase()
+															.replaceAll(' ', '-')}`}
+														id={`${item.id}-name`}
+													>
 														{name}
 													</TextLink>
 												</TableCell>

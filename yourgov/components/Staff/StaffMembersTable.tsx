@@ -28,13 +28,30 @@ type StaffMembersTableProps = {
 
 const headingId = 'staff-members-heading';
 
+const successTypeToMessageText = {
+	invite: {
+		description: 'will receive an email asking them to create a staff account.',
+		title: 'An email invitation has been sent to',
+	},
+	pause: {
+		description: null,
+		title: 'The following staff have had their status paused:',
+	},
+	remove: {
+		description: null,
+		title: 'The following staff have had their access removed:',
+	},
+};
+
+export type successType = keyof typeof successTypeToMessageText;
+
 export const StaffMembersTable = ({
 	selectable,
 	tableRef,
 }: StaffMembersTableProps) => {
 	const router = useRouter();
 
-	const { accessRequestsGetState } = useStaffGlobalState();
+	const { staffMembersGetState } = useStaffGlobalState();
 
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const sortAndFilter = useSortAndFilter();
@@ -45,37 +62,43 @@ export const StaffMembersTable = ({
 		sort,
 	});
 
-	const [isSuccessMessageVisible, setIsSuccessMessageVisible] = useState(
-		router.query.success === 'true'
-	);
+	const [successMessageType, setSuccessMessageType] =
+		useState<null | successType>(router.query.successType as successType);
 	const [updatedStaffMemberName, setUpdatedStaffMemberName] = useState(() => {
-		const updatedStaffMember = accessRequestsGetState().find(
+		const updatedStaffMember = staffMembersGetState().find(
 			(staffMemberWithAccessRequest) =>
-				router.query.accessRequestId === staffMemberWithAccessRequest?.id
+				router.query.staffId === staffMemberWithAccessRequest?.id
 		);
 
-		return `${updatedStaffMember?.firstName} ${updatedStaffMember?.lastName}`;
+		return updatedStaffMember?.name || 'the staff member';
 	});
 
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
 			<DataProvider
-				value={{ ...data, isSuccessMessageVisible, setUpdatedStaffMemberName }}
+				value={{
+					...data,
+					setSuccessMessageType,
+					setUpdatedStaffMemberName,
+				}}
 			>
-				{isSuccessMessageVisible && (
+				{successMessageType && (
 					<SectionAlert
 						focusOnMount
 						onClose={() => {
-							setIsSuccessMessageVisible(false);
-							router.replace(router.asPath, undefined, { shallow: true });
+							setSuccessMessageType(null);
+							router.replace(router.pathname, undefined, { shallow: true });
 						}}
-						title={`An email invitation has been sent to ${updatedStaffMemberName}`}
+						title={`${successTypeToMessageText[successMessageType].title} ${updatedStaffMemberName}`}
 						tone="success"
 					>
-						<Text as="p">
-							{updatedStaffMemberName} will receive an email asking them to
-							create a staff account.
-						</Text>
+						{successTypeToMessageText[successMessageType].description && (
+							<Text as="p">
+								{updatedStaffMemberName}{' '}
+								{successTypeToMessageText[successMessageType].description} will
+								receive an email asking them to create a staff account.
+							</Text>
+						)}
 					</SectionAlert>
 				)}
 

@@ -4,10 +4,7 @@ import {
 	FormState as StepsFormState,
 } from '../components/FormMobileFoodVendorPermit/steps/FormState';
 import { FormState } from '../components/FormMobileFoodVendorPermit/FormState';
-import {
-	StaffMember,
-	StaffMemberWithIndex,
-} from '../components/Staff/lib/types';
+import { StaffMember } from '../components/Staff/lib/types';
 import { DeepPartial } from './types';
 
 type SetStateValue<TValue> = TValue | ((prevState: TValue) => TValue);
@@ -201,27 +198,84 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				// TODO StaffMember can't be partial, maybe exclude from DeepPartial?
 				return (globalState.staff?.staffMembers as StaffMember[]) || [];
 			},
-			staffMembersRemove: (
-				staffMemberToRemove: StaffMember | StaffMemberWithIndex
-			) => {
+			staffMembersCreate: (newState: Partial<InviteStaffFormSchema>) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => {
+					const name = `${newState.firstName} ${newState.lastName}`;
+					const dateJoined = new Date().toISOString();
+					const newStaffMember = {
+						...newState,
+						age: '18',
+						dateJoined,
+						foodSafetyCertificate: false,
+						lastActive: dateJoined,
+						name,
+						status: 'Invited',
+					};
+
+					return {
+						...prevState,
+						staff: {
+							...prevState.staff,
+							staffMembers: [
+								...(prevState?.staff?.staffMembers || []),
+								newStaffMember,
+							],
+						},
+					};
+				});
+			},
+			staffMembersDelete: (staffToRemove: StaffMember | StaffMember[]) => {
+				// Make everything a list for simpler deleting
+				const staffToRemoveAsList = Array.isArray(staffToRemove)
+					? staffToRemove
+					: [staffToRemove];
+
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					staff: {
 						...prevState.staff,
 						staffMembers: (prevState?.staff?.staffMembers || []).filter(
-							(staffMember) => staffMember?.id !== staffMemberToRemove.id
+							(staffMember) =>
+								!staffToRemoveAsList.some(
+									(staffToRemove) => staffMember?.id === staffToRemove.id
+								)
 						),
 					},
 				}));
 			},
-			staffMembersSetState: (newState: Partial<InviteStaffFormSchema>) => {
-				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
-					...prevState,
-					staff: {
-						...prevState.staff,
-						staffMembers: [...(prevState?.staff?.staffMembers || []), newState],
-					},
-				}));
+			staffMembersUpdate: ({
+				staffToUpdate,
+				updates,
+			}: {
+				staffToUpdate: StaffMember | StaffMember[];
+				updates: Partial<Omit<StaffMember, 'id'>>;
+			}) => {
+				// Make everything a list for simpler updating
+				const staffToUpdateAsList = Array.isArray(staffToUpdate)
+					? staffToUpdate
+					: [staffToUpdate];
+
+				setAndSyncGlobalStateAndSessionStorage((prevState) => {
+					const currentStaffMembers = (prevState?.staff?.staffMembers ||
+						[]) as StaffMember[];
+
+					return {
+						...prevState,
+						staff: {
+							...prevState.staff,
+							staffMembers: currentStaffMembers.map((staffMember) => {
+								const shouldUpdate = staffToUpdateAsList.some(
+									(staffMemberToUpdate) =>
+										staffMember.id === staffMemberToUpdate.id
+								);
+
+								return shouldUpdate
+									? { ...staffMember, ...updates }
+									: staffMember;
+							}),
+						},
+					};
+				});
 			},
 		}),
 		[globalState, setAndSyncGlobalStateAndSessionStorage]

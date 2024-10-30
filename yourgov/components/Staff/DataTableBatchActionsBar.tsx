@@ -6,36 +6,35 @@ import {
 } from '@ag.ds-next/react/src/table';
 import { plural } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
-import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
 import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';
 import { ModalConfirmRemoveAccess } from './ModalConfirmRemoveAccess';
 import { StaffMemberWithIndex } from './lib/types';
+import { useStaffGlobalState } from './StaffProvider';
+import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
 
 export const DataTableBatchActionsBar = () => {
+	const { setSuccessMessageType, setUpdatedStaffMemberName } = useDataContext();
+	const { staffMembersDelete, staffMembersUpdate } = useStaffGlobalState();
 	const { selection, clearRowSelections } = useSortAndFilterContext();
 	const { displayData } = useDataContext();
 
-	const staffNameToStaffMemberMap = useMemo(
+	const staffIdToStaffMemberMap = useMemo(
 		() =>
 			displayData.reduce(
 				(acc, staffMember) =>
 					staffMember?.name
 						? {
 								...acc,
-								[staffMember.name]: staffMember,
+								[staffMember.id]: staffMember,
 						  }
 						: acc,
-				{} as Record<StaffMemberWithIndex['name'], StaffMemberWithIndex>
+				{} as Record<StaffMemberWithIndex['id'], StaffMemberWithIndex>
 			),
 		[displayData]
 	);
 
 	const items = selection.map((staffMemberId) => {
-		const staffName = staffMemberId.replaceAll(
-			'-',
-			' '
-		) as StaffMemberWithIndex['name'];
-		return staffNameToStaffMemberMap[staffName];
+		return staffIdToStaffMemberMap[staffMemberId];
 	});
 
 	const [removeModalOpen, setRemoveModalOpen] = useState(false);
@@ -43,12 +42,24 @@ export const DataTableBatchActionsBar = () => {
 	const [modalChangeRoleOpen, setModalChangeRoleOpen] = useState(false);
 
 	const onConfirmRemove = () => {
-		console.log('Remove access');
+		staffMembersDelete(items);
 		setRemoveModalOpen(false);
+		clearRowSelections();
+
+		setUpdatedStaffMemberName?.(
+			items.map((staffMember) => staffMember.name).join(', ')
+		);
+		setSuccessMessageType?.('remove');
 	};
 	const onConfirmPause = () => {
-		console.log('Pause access');
+		staffMembersUpdate({ staffToUpdate: items, updates: { status: 'Paused' } });
 		setPauseModalOpen(false);
+		clearRowSelections();
+
+		setUpdatedStaffMemberName?.(
+			items.map((staffMember) => staffMember.name).join(', ')
+		);
+		setSuccessMessageType?.('pause');
 	};
 	const onConfirmChangeRole = () => {
 		console.log('Change role');
@@ -64,7 +75,8 @@ export const DataTableBatchActionsBar = () => {
 				</TableBatchActionsTitle>
 
 				<ButtonGroup>
-					<Button
+					{/* TODO bring this back post-usability testing */}
+					{/* <Button
 						variant="secondary"
 						size="sm"
 						onClick={() => {
@@ -72,7 +84,7 @@ export const DataTableBatchActionsBar = () => {
 						}}
 					>
 						Change role
-					</Button>
+					</Button> */}
 
 					<Button
 						variant="secondary"
