@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, Heading } from '@ag.ds-next/react/heading';
+import { H1, H2, H3, Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -72,11 +72,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Industry-specific training courses
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Explore hundreds of training courses offered by TAFE and
 											other training providers.
@@ -87,14 +87,14 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
-												Apply for a permit
+												Apply for a mobile food vendor permit
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
-											Use the permit tool to quickly create a new permit
-											application.
+											Food businesses that sell food to the public need to be
+											registered before opening.
 										</Text>
 									</Stack>
 								</CardInner>
