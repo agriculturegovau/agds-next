@@ -32,17 +32,22 @@ import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../_app';
 import { mockApplicationHistory } from '../../../data/mockLicencesAndPermits';
-import { StaffMembersTable } from '../../../components/StaffMembersTable/StaffMembersTable';
+import { StaffMembersTable } from '../../../components/Staff/StaffMembersTable';
+import {
+	StaffProvider,
+	useStaffGlobalState,
+} from '../../../components/Staff/StaffProvider';
 
 const Page: NextPageWithLayout = () => {
-	const tableRef = useRef<HTMLTableElement>(null);
+	const { accessRequestsGetState } = useStaffGlobalState();
+	const accessRequests = accessRequestsGetState();
 
-	// TODO replace this with active requests based on the second tab when the page is built
-	const accessRequests = [{}, {}, {}, {}, {}];
+	const tableRef = useRef<HTMLTableElement>(null);
 
 	return (
 		<Fragment>
 			<DocumentTitle title="Staff" />
+
 			<PageContent>
 				<Stack gap={3}>
 					<PageTitle
@@ -88,10 +93,12 @@ const Page: NextPageWithLayout = () => {
 							<TabButton>
 								<Flex gap={0.5}>
 									Access requests{' '}
-									<NotificationBadge
-										tone="action"
-										value={accessRequests.length}
-									/>
+									{accessRequests.length > 0 && (
+										<NotificationBadge
+											tone="action"
+											value={accessRequests.length}
+										/>
+									)}
 								</Flex>
 							</TabButton>
 						</TabList>
@@ -180,5 +187,9 @@ const Page: NextPageWithLayout = () => {
 export default Page;
 
 Page.getLayout = function getLayout(page: ReactElement) {
-	return <AppLayout>{page}</AppLayout>;
+	return (
+		<AppLayout>
+			<StaffProvider>{page}</StaffProvider>
+		</AppLayout>
+	);
 };

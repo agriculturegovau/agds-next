@@ -4,12 +4,12 @@ import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { StaffMemberWithIndex } from './lib/types';
 
 export const DataTableSelectAllCheckbox = () => {
-	const { data } = useDataContext();
+	const { displayData } = useDataContext();
 	const {
 		toggleAllRowsSelected,
 		isSelectAllCheckboxChecked,
 		isSelectAllCheckboxIndeterminate,
-	} = useSelectAllRows(data);
+	} = useSelectAllRows(displayData);
 	return (
 		<Checkbox
 			size="sm"
@@ -28,7 +28,7 @@ export function useSelectAllRows(pageData: StaffMemberWithIndex[]) {
 
 	/** The IDs of all of the items in the current page */
 	const allPageItemIds = useMemo(
-		() => pageData.map((item) => item.name.replaceAll(' ', '-')),
+		() => pageData.map((item) => item.id),
 		[pageData]
 	);
 	const isAnyRowSelected = useMemo(() => selection.length > 0, [selection]);

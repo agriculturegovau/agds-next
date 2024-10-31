@@ -9,6 +9,7 @@ import {
 	zodTimeField,
 } from '../../../lib/zodUtils';
 import { type Completion } from '../FormState';
+import { StaffMember } from '../../Staff/lib/types';
 
 export const step1FormSchema = z.object({
 	firstName: zodString('Enter your first name'),
@@ -208,4 +209,30 @@ export const defaultFormState: DeepPartial<FormState> = {
 	step7: {
 		employee: [],
 	},
+};
+
+///////////
+// STAFF
+
+export const inviteStaffFormSchema = z.object({
+	id: zodString(),
+	firstName: zodString('Enter employee’s first name'),
+	lastName: zodString('Enter employee’s last name'),
+	email: zodString('Enter employee’s email address').email(
+		'Enter a valid email address'
+	),
+	mobileNumber: zodPhoneFieldOptional(),
+	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
+		errorMap: () => ({ message: 'Please choose a role' }),
+	}),
+	trainingCompleted: z.array(
+		z.enum(['Ice cream making', 'Packaging', 'Distribution', 'Deliveries'])
+	),
+});
+
+export type InviteStaffFormSchema = z.infer<typeof inviteStaffFormSchema>;
+
+export type GlobalStaffState = {
+	accessRequests: InviteStaffFormSchema[];
+	staffMembers: StaffMember[];
 };
