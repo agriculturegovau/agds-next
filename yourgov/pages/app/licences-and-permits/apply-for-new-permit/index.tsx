@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H2, Heading } from '@ag.ds-next/react/heading';
+import { H2, H3 } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
@@ -36,9 +36,9 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">Learners permit</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											A learner driver licence allows you to drive with a
 											supervisor who has a full Australian driving licence.
@@ -49,9 +49,9 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">Provisional licence</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Information on provisional licence applicatios, tests,
 											exemptions, changes and checks.
@@ -62,9 +62,9 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">Drivers licence</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Get a driver or rider licence, renew, upgrade or change
 											licence and licence details.
@@ -81,11 +81,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Starting your own business
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											When starting a business, we try to make it easy to
 											understand and provide everything you need to get started.
@@ -96,11 +96,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Selling food for a fundraiser
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Some non-profit organisations that sell food for
 											fundraising purposes using volunteer staff are exempt.
@@ -111,11 +111,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
 												Apply for a mobile food vendor permit
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Food businesses that sell food to the public need to be
 											registered before opening.
@@ -126,11 +126,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Renovating a food business
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											For business owners, designers and builders who are
 											creating a food business premises.
@@ -141,11 +141,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Change details of a food business
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											You need to tell the Health Protection Service within 7
 											days of any changes to your food business.
@@ -156,11 +156,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Changing business hours
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>Make changes to your trading hours or days.</Text>
 									</Stack>
 								</CardInner>
@@ -174,9 +174,9 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">Selling fertiliser</CardLink>
-										</Heading>
+										</H3>
 										<Text>Apply for and manage your business approvals.</Text>
 									</Stack>
 								</CardInner>
@@ -184,11 +184,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Disposal of dangerous materials{' '}
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Some non-profit organisations that sell food for
 											fundraising purposes using volunteer staff are exempt.
@@ -199,11 +199,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Register a swimming pool
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Public Swimming and Spa pools do not need a license to
 											operate under the Public Health Act 1997.
