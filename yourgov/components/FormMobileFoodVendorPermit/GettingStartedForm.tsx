@@ -38,7 +38,7 @@ export function GettingStartedForm() {
 		setFormState({
 			...formState,
 			lastUpdated: Date.now(),
-			type: data.businessType?.toLowerCase(),
+			type: data.businessType,
 		});
 		router.push({
 			pathname:

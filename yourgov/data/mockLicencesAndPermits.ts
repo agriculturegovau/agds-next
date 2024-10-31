@@ -1,42 +1,14 @@
 export const mockApplicationHistory = [
 	{
-		referenceNumber: 'REF-77437784',
-		type: 'Apply for an outdoor dining permit',
-		status: { tone: 'successLow', label: 'Approved' },
-	},
-	{
-		referenceNumber: 'REF-77437784',
-		type: 'Apply for an on-premises liquor licence',
-		status: { tone: 'successLow', label: 'Approved' },
-	},
-	{
-		referenceNumber: 'REF-77437784',
-		type: 'Apply for an on-premises liquor licence',
-		status: { tone: 'infoLow', label: 'Incomplete application' },
-	},
-	{
-		referenceNumber: 'REF-77437784',
-		type: 'Apply for an outdoor dining permit',
-		status: { tone: 'successLow', label: 'Approved' },
-	},
-	{
-		referenceNumber: 'REF-77437784',
-		type: 'Apply for an outdoor dining permit',
-		status: { tone: 'successLow', label: 'Approved' },
-	},
-] as const;
-
-export const mockCurrentApprovals = [
-	{
-		approvalNumber: 'ODP-772353784',
+		id: '772353784',
+		lastUpdated: new Date('15 Jan 2024').getTime(),
+		status: { tone: 'infoMedium', label: 'Pending approval' },
 		type: 'Outdoor dining permit',
-		status: { tone: 'infoLow', label: 'Pending approval' },
-		approvedDate: '-',
 	},
 	{
-		approvalNumber: 'ODP-224377842',
+		id: '224377842',
+		lastUpdated: new Date('01 July 2023').getTime(),
+		status: { tone: 'successMedium', label: 'Approved' },
 		type: 'On-premises liquor licence',
-		status: { tone: 'successLow', label: 'Approved' },
-		approvedDate: '1 Jul 2024',
 	},
 ] as const;
