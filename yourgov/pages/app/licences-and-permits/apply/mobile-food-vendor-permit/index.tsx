@@ -28,12 +28,9 @@ const Page: NextPageWithLayout = () => {
 						<Stack gap={3}>
 							<Breadcrumbs
 								links={[
+									{ label: 'Dashboard', href: '/app/dashboard' },
 									{
-										label: 'Home',
-										href: '/app',
-									},
-									{
-										label: 'Manage permits',
+										label: 'Permits',
 										href: '/app/licences-and-permits',
 									},
 									{

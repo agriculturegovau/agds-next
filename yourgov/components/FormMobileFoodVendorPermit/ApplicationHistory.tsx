@@ -4,6 +4,7 @@ import { Modal } from '@ag.ds-next/react/modal';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { useTernaryState } from '@ag.ds-next/react/core';
+import { DeleteIcon } from '@ag.ds-next/react/icon';
 import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import {
 	Table,
@@ -104,7 +105,9 @@ export function ApplicationHistory() {
 									<TableCell>
 										<Button
 											aria-describedby={`ref-${application.id}`}
+											iconBefore={DeleteIcon}
 											onClick={openModal}
+											size="sm"
 											variant="text"
 										>
 											Remove

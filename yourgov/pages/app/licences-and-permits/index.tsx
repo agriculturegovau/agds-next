@@ -2,11 +2,11 @@ import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
-import { H2, Heading } from '@ag.ds-next/react/heading';
+import { H2, H3 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/Layout/AppLayout';
@@ -32,12 +32,9 @@ const Page: NextPageWithLayout = () => {
 						title="Permits"
 						introduction="Stay compliant by registering for business permits."
 					/>
-					<ButtonLink
-						alignSelf="start"
-						href="/app/licences-and-permits/apply/mobile-food-vendor-permit"
-					>
+					<CallToActionLink href="/app/licences-and-permits/apply-for-new-permit">
 						Apply for a permit
-					</ButtonLink>
+					</CallToActionLink>
 					<ApplicationHistory />
 
 					<Divider />
@@ -48,11 +45,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Industry-specific training courses
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Explore hundreds of training courses offered by TAFE and
 											other training providers.
@@ -63,14 +60,14 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
-												Apply for a permit
+												Apply for a mobile food vendor permit
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
-											Use the permit tool to quickly create a new permit
-											application.
+											Food businesses that sell food to the public need to be
+											registered before opening.
 										</Text>
 									</Stack>
 								</CardInner>

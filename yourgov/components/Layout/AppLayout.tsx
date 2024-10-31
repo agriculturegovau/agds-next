@@ -215,7 +215,7 @@ function AppLayoutSidebar() {
 					items: [
 						{
 							label: 'Apply for a new permit',
-							href: '/app/licences-and-permits/apply/mobile-food-vendor-permit',
+							href: '/app/licences-and-permits/apply-for-new-permit',
 						},
 						{
 							label: 'Manage existing permits',
