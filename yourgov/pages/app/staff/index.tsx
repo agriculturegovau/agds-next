@@ -140,7 +140,7 @@ const Page: NextPageWithLayout = () => {
 													<TableRow key={index}>
 														<TableCell as="th" scope="row" fontWeight="bold">
 															<TextLink href="/not-found">
-																{application.referenceNumber}
+																{application.id}
 															</TextLink>
 														</TableCell>
 
