@@ -221,7 +221,7 @@ export const inviteStaffFormSchema = z.object({
 	email: zodString('Enter employee’s email address').email(
 		'Enter a valid email address'
 	),
-	mobileNumber: zodPhoneFieldOptional(),
+	mobile: zodPhoneFieldOptional(),
 	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
 		errorMap: () => ({ message: 'Please choose a role' }),
 	}),
@@ -232,7 +232,21 @@ export const inviteStaffFormSchema = z.object({
 
 export type InviteStaffFormSchema = z.infer<typeof inviteStaffFormSchema>;
 
+export const editStaffFormSchema = z.object({
+	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
+		errorMap: () => ({ message: 'Please choose a role' }),
+	}),
+	trainingCompleted: z.array(
+		z.enum(['Ice cream making', 'Packaging', 'Distribution', 'Deliveries'])
+	),
+});
+
+export type EditStaffFormSchema = {
+	role: StaffMember['role'];
+	trainingCompleted: StaffMember['trainingCompleted'];
+};
+
 export type GlobalStaffState = {
-	accessRequests: InviteStaffFormSchema[];
+	accessRequests: InviteStaffFormSchema[]; // TODO: update this to AccessRequests[]
 	staffMembers: StaffMember[];
 };

@@ -34,6 +34,11 @@ const successTypeToMessageText = {
 		titlePrefix: 'An email invitation has been sent to',
 		titleSuffix: '',
 	},
+	update: {
+		description: null,
+		titlePrefix: '',
+		titleSuffix: 'has been updated',
+	},
 	pause: {
 		description: null,
 		titlePrefix: '',
@@ -64,7 +69,7 @@ export const StaffMembersTable = ({
 }: StaffMembersTableProps) => {
 	const router = useRouter();
 
-	const { staffMembersGetState } = useStaffGlobalState();
+	const { staffMembersGetState, staffMembersDelete } = useStaffGlobalState();
 
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const sortAndFilter = useSortAndFilter();
@@ -82,7 +87,13 @@ export const StaffMembersTable = ({
 			(staffMember) => router.query.staffId === staffMember?.id
 		);
 
-		return updatedStaffMember?.name || 'the staff member';
+		// If removing a staff member from another page, wait until arriving back here as this
+		// will prevent a flash of the not-found page and ensure the name of the removed staff
+		// member is still available for the success message before deletion.
+		if (updatedStaffMember && router.query.successType === 'remove')
+			staffMembersDelete(updatedStaffMember);
+
+		return updatedStaffMember?.name || '';
 	});
 
 	return (
@@ -94,7 +105,7 @@ export const StaffMembersTable = ({
 					setUpdatedStaffMemberName,
 				}}
 			>
-				{successMessageType && (
+				{successMessageType && updatedStaffMemberName && (
 					<SectionAlert
 						focusOnUpdate={[successMessageType, updatedStaffMemberName].join(
 							''

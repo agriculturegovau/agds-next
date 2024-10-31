@@ -3,9 +3,9 @@ import { ButtonGroup, Button } from '@ag.ds-next/react/src/button';
 import { Text } from '@ag.ds-next/react/src/text';
 import { Modal } from '@ag.ds-next/react/src/modal';
 import { plural /* RowData */ } from './lib/utils';
-import { StaffMemberWithIndex } from './lib/types';
+import { StaffMember, StaffMemberWithIndex } from './lib/types';
 
-type RowData = StaffMemberWithIndex;
+type RowData = StaffMemberWithIndex | StaffMember;
 
 export type ModalConfirmRemoveAccessProps = {
 	isOpen: boolean;

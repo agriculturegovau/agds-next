@@ -142,11 +142,11 @@ const Page: NextPageWithLayout = () => {
 								autoComplete="mobile"
 								label="Mobile number"
 								type="phone"
-								{...register('mobileNumber')}
-								id="mobileNumber"
-								invalid={Boolean(errors?.mobileNumber?.message)}
+								{...register('mobile')}
+								id="mobile"
+								invalid={Boolean(errors?.mobile?.message)}
 								maxWidth="md"
-								message={errors?.mobileNumber?.message}
+								message={errors?.mobile?.message}
 								required
 							/>
 						</FormStack>
