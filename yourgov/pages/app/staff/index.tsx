@@ -19,7 +19,7 @@ import {
 	TableBody,
 	TableCell,
 } from '@ag.ds-next/react/table';
-import { H2 } from '@ag.ds-next/react/heading';
+import { H1, H2 } from '@ag.ds-next/react/heading';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { ButtonLink } from '@ag.ds-next/react/button';
@@ -32,6 +32,7 @@ import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../_app';
 import { mockApplicationHistory } from '../../../data/mockLicencesAndPermits';
+import { HelpReference } from '../../../components/HelpReference';
 import { StaffMembersTable } from '../../../components/Staff/StaffMembersTable';
 import {
 	StaffProvider,
@@ -70,10 +71,49 @@ const Page: NextPageWithLayout = () => {
 											benefits to your business and help streamline your
 											operations.
 										</Text>
-
-										<TextLink>
-											Learn more about inviting a staff member
-										</TextLink>
+										<HelpReference
+											drawerContent={
+												<Stack gap={2}>
+													<H1>Learn more about inviting a staff member</H1>
+													<Text as="p" fontSize="lg" color="muted">
+														Inviting individuals to join your staff can bring
+														numerous benefits to your business and help
+														streamline your operations.
+													</Text>
+													<Text as="p" fontSize="md">
+														As your business grows, you’ll need to scale your
+														team accordingly. Inviting new staff members allows
+														you to expand your workforce in line with your
+														evolving needs.
+													</Text>
+													<Text as="p" fontSize="md">
+														Below are a list of the types of roles available:
+													</Text>
+													<H2>Owner</H2>
+													<Text as="p" fontSize="md">
+														Owners have the highest level of access. They can
+														add, edit and remove managers and staff members.
+														They can set rosters, send an receive messages with
+														owners, employees and other managers.
+													</Text>
+													<H2>Manager</H2>
+													<Text as="p" fontSize="md">
+														Managers can add, edit and remove staff members.
+														They can set rosters, send an receive messages with
+														owners, employees and other managers.
+													</Text>
+													<H2>Employee</H2>
+													<Text as="p" fontSize="md">
+														Employees can see their shifts, send an receive
+														messages with managers and edit their personal and
+														contact information.
+													</Text>
+													<HelpCallout />
+												</Stack>
+											}
+											linkContent="Learn more about inviting a staff member"
+											linkHref="https://exports.agriculture.gov.au/help/page/example-reference-article"
+										/>
 									</Stack>
 								</Details>
 
