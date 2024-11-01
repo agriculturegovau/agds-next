@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@ag.ds-next/react/button';
 import { Column, Columns } from '@ag.ds-next/react/columns';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { LoadingBlanket } from '@ag.ds-next/react/loading';
@@ -44,6 +45,9 @@ export default function Page() {
 					<Columns>
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={3}>
+								<DirectionLink direction="left" href="/">
+									Back
+								</DirectionLink>
 								<Stack gap={0.5}>
 									<PageTitle
 										title="Sign in to yourGov"

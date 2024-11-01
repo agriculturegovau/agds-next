@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Details } from '@ag.ds-next/react/details';
+import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -40,7 +41,7 @@ export function FormStep1() {
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>
-				<Stack gap={1.5}>
+				<FormStack>
 					<H2>Confirm business owner details</H2>
 					<Details label="How were my details prefilled?" iconBefore>
 						<Prose>
@@ -68,7 +69,7 @@ export function FormStep1() {
 							onClose={() => setIsSuccessMessageVisible(false)}
 						/>
 					)}
-					<Stack gap={1.5} alignItems="flex-start">
+					<Stack gap={1.5}>
 						<SummaryList>
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
@@ -90,13 +91,14 @@ export function FormStep1() {
 							</SummaryListItem>
 						</SummaryList>
 						<ButtonLink
+							alignSelf="start"
 							href={formSteps[0].items && formSteps[0].items[0].href}
 							variant="text"
 						>
 							Change business owner details
 						</ButtonLink>
 					</Stack>
-				</Stack>
+				</FormStack>
 				<AdditionalDetailsForm />
 			</Stack>
 		</FormContainer>
@@ -135,7 +137,7 @@ function AdditionalDetailsForm() {
 
 	return (
 		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
-			<Stack gap={1.5}>
+			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
 					label="Contact phone number"
@@ -145,7 +147,7 @@ function AdditionalDetailsForm() {
 					message={errors.contactPhoneNumber?.message}
 					invalid={Boolean(errors.contactPhoneNumber)}
 				/>
-			</Stack>
+			</FormStack>
 			<StepActions />
 		</Stack>
 	);
