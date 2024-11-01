@@ -182,6 +182,20 @@ export const step9FormSchema = z.object({
 
 export type Step9FormSchema = z.infer<typeof step9FormSchema>;
 
+export const step10FormSchema = z.object({
+	declaration1: z
+		.boolean()
+		.refine((value) => value, 'Accept the first declaration to continue'),
+	declaration2: z
+		.boolean()
+		.refine((value) => value, 'Accept the second declaration to continue'),
+	declaration3: z
+		.boolean()
+		.refine((value) => value, 'Accept the third declaration to continue'),
+});
+
+export type Step10FormSchema = z.infer<typeof step10FormSchema>;
+
 export type FormState = {
 	step1: Step1FormSchema & Completion;
 	step2: Step2FormSchema & Completion;
@@ -192,7 +206,7 @@ export type FormState = {
 	step7: { employee: Step7FormSchema['employee'][] } & Completion;
 	step8: Step8FormSchema & Completion;
 	step9: Step9FormSchema & Completion;
-	step10: Completion;
+	step10: Step10FormSchema & Completion;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
