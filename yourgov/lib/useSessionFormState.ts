@@ -188,10 +188,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				}
 			>
 		) => {
-			const name =
-				'name' in newState
-					? newState.name
-					: `${newState.firstName} ${newState.lastName}`;
+			const name = `${newState.firstName} ${newState.lastName}`;
 			const dateJoined = new Date().toISOString();
 			const status = newState.status || 'Invited';
 
