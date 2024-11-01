@@ -44,7 +44,9 @@ const Page: NextPageWithLayout = () => {
 										<Text as="p">
 											Reference:{' '}
 											<Text fontWeight="bold">
-												<TextLink href={`/TODO?id=${formState.id}`}>
+												<TextLink
+													href={`/app/licences-and-permits/${formState.id}`}
+												>
 													{formState.id}
 												</TextLink>
 											</Text>

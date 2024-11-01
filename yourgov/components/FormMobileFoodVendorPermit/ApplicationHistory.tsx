@@ -72,7 +72,7 @@ export function ApplicationHistory() {
 								<TableRow key={application.id}>
 									<TableCell as="th" fontWeight="bold" scope="row">
 										<TextLink
-											href={`/TODO?id=${application.id}`}
+											href={`/app/licences-and-permits/${application.id}`}
 											id={`ref-${application.id}`}
 										>
 											{application.id}
