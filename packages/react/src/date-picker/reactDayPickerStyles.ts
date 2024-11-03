@@ -127,9 +127,10 @@ export const reactDayPickerStyles = {
 	},
 	'.rdp-table': {
 		margin: 0,
-		maxWidth: `calc(${cellSizeLarge} * 7)`,
+		width: `calc(${cellSizeSmall} * 7)`,
 		borderCollapse: 'collapse',
 		tableLayout: 'fixed',
+		'@media(min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
 	},
 	'.rdp-tbody': {
 		border: 0,
