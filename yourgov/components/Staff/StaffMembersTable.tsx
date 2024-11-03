@@ -107,9 +107,7 @@ export const StaffMembersTable = ({
 			>
 				{successMessageType && updatedStaffMemberName && (
 					<SectionAlert
-						focusOnUpdate={[successMessageType, updatedStaffMemberName].join(
-							''
-						)}
+						focusOnUpdate={[successMessageType, updatedStaffMemberName]}
 						onClose={() => {
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
