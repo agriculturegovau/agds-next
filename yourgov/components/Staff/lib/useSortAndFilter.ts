@@ -181,6 +181,7 @@ export function sortFilterReducer(
 				filters: action.payload,
 			};
 		case 'SET_FILTER':
+			console.log({ filters: state.filters });
 			return {
 				...state,
 				filters: {
