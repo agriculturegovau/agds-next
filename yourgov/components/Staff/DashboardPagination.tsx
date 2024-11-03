@@ -9,8 +9,6 @@ export const DashboardPagination = () => {
 	const { pagination, setPagination } = useSortAndFilterContext();
 	const { displayData, totalItems, totalPages, loading } = useDataContext();
 
-	console.log({ displayData, totalItems, totalPages });
-
 	const itemRangeText = generatePaginationRangeText({
 		totalItems: totalItems,
 		currentPage: pagination.page,
