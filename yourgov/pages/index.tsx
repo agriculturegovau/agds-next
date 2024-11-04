@@ -141,7 +141,7 @@ export default function Page() {
 							<CardInner>
 								<Stack gap={1}>
 									<H3>
-										<CardLink href="/help">Help</CardLink>
+										<CardLink href="/not-found">Help</CardLink>
 									</H3>
 									<Text as="p">
 										Information and support to help you use yourGov.

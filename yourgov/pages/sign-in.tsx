@@ -146,6 +146,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
 				<FormStack>
 					<TextInput
+						autoComplete="email"
 						label="Email"
 						type="email"
 						{...register('email')}
@@ -156,6 +157,7 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 						required
 					/>
 					<PasswordInput
+						autoComplete="current-password"
 						label="Password"
 						{...register('password')}
 						id="password"
