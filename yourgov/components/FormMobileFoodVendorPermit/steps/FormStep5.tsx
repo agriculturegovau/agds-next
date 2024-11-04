@@ -107,6 +107,7 @@ export function FormStep5() {
 									name="openingTime"
 									render={({ field: { ref, ...field } }) => (
 										<TimeInput
+											autoComplete="on"
 											label="Opening time"
 											id="openingTime"
 											{...field}
@@ -120,6 +121,7 @@ export function FormStep5() {
 									name="closingTime"
 									render={({ field: { ref, ...field } }) => (
 										<TimeInput
+											autoComplete="on"
 											label="Closing time"
 											id="closingTime"
 											{...field}

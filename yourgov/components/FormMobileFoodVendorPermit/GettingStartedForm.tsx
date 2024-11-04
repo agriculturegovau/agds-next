@@ -87,7 +87,7 @@ export function GettingStartedForm() {
 					a checklist of required documents.
 				</p>
 
-				<h2 id="what-you-will-need">What happens next</h2>
+				<h2 id="what-happens-next">What happens next</h2>
 				<p>
 					It will take 10 business days for your application to be reviewed by a
 					yourGov representative.

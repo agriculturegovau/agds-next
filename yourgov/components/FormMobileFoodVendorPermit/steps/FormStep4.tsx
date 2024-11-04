@@ -60,6 +60,7 @@ export function FormStep4() {
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
+						autoComplete="on"
 						label="Vehicle registration number"
 						hint="Enter a plate number, maximum 6 characters. For example ABC123."
 						id="registrationNumber"

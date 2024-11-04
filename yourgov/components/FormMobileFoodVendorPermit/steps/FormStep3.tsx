@@ -60,6 +60,7 @@ export function FormStep3() {
 					<Fieldset legend={<H2>Business address</H2>}>
 						<FormStack>
 							<TextInput
+								autoComplete="on"
 								label="Street address"
 								{...register('streetAddress')}
 								id="streetAddress"
@@ -69,6 +70,7 @@ export function FormStep3() {
 								maxWidth="xl"
 							/>
 							<TextInput
+								autoComplete="on"
 								label="Suburb, town or city"
 								{...register('suburbTownCity')}
 								id="suburbTownCity"
@@ -78,6 +80,7 @@ export function FormStep3() {
 								maxWidth="lg"
 							/>
 							<Select
+								autoComplete="on"
 								label="State or territory"
 								{...register('state')}
 								id="state"
@@ -98,6 +101,7 @@ export function FormStep3() {
 								maxWidth="sm"
 							/>
 							<TextInput
+								autoComplete="on"
 								label="Postcode"
 								{...register('postcode')}
 								id="postcode"
@@ -123,6 +127,7 @@ export function FormStep3() {
 							{!isPostalAddressSameAsBusinessAddress && (
 								<FormStack>
 									<TextInput
+										autoComplete="on"
 										label="Postal address"
 										{...register('postalAddress')}
 										id="postalAddress"
@@ -132,6 +137,7 @@ export function FormStep3() {
 										maxWidth="xl"
 									/>
 									<TextInput
+										autoComplete="on"
 										label="Suburb, town or city"
 										{...register('postalSuburbTownCity')}
 										id="postalSuburbTownCity"
@@ -141,6 +147,7 @@ export function FormStep3() {
 										maxWidth="lg"
 									/>
 									<Select
+										autoComplete="on"
 										label="State or territory"
 										{...register('postalState')}
 										id="postalState"
@@ -161,6 +168,7 @@ export function FormStep3() {
 										maxWidth="sm"
 									/>
 									<TextInput
+										autoComplete="on"
 										label="Postcode"
 										{...register('postalPostcode')}
 										id="postalPostcode"

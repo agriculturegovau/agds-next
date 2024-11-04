@@ -71,6 +71,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Month
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r4:-select"
                   >
@@ -162,6 +163,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Year
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r5:-select"
                   >
@@ -855,6 +857,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Month
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r0:-select"
                   >
@@ -946,6 +949,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Year
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r1:-select"
                   >
