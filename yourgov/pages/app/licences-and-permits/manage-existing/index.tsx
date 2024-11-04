@@ -2,6 +2,7 @@ import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
+import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { DocumentTitle } from '../../../../components/DocumentTitle';
 import { AppLayout } from '../../../../components/Layout/AppLayout';
@@ -28,6 +29,9 @@ const Page: NextPageWithLayout = () => {
 						title="Manage existing permits"
 						introduction="Stay compliant by registering for business permits."
 					/>
+					<CallToActionLink href="/app/licences-and-permits/apply-for-new-permit">
+						Apply for a permit
+					</CallToActionLink>
 					<ApplicationHistory />
 
 					<Columns cols={{ xs: 1, sm: 4 }}>

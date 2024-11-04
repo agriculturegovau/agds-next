@@ -6,17 +6,20 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { StaffMemberRole } from './lib/types';
 
 export type ModalConfirmChangeRoleProps = {
-	isOpen: boolean;
-	onConfirm: () => void;
-	onClose: () => void;
 	currentRole?: StaffMemberRole;
+	isOpen: boolean;
+	onClose: () => void;
+	onConfirm: () => void;
+	/** On close of the modal, this element will be focused, rather than the trigger element. */
+	pageAlertRef?: HTMLElement | null;
 };
 
 export const ModalConfirmChangeRole = ({
 	currentRole,
 	isOpen,
-	onConfirm,
 	onClose,
+	onConfirm,
+	pageAlertRef,
 }: ModalConfirmChangeRoleProps) => {
 	const [submitting, setSubmitting] = useState(false);
 	const [role, setRole] = useState<StaffMemberRole | undefined>(currentRole);
@@ -37,6 +40,7 @@ export const ModalConfirmChangeRole = ({
 
 	return (
 		<Drawer
+			elementToFocusOnClose={pageAlertRef}
 			isOpen={isOpen}
 			onClose={onClose}
 			title="Change role"
