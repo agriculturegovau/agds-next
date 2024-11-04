@@ -24,8 +24,8 @@ export const DashboardPagination = () => {
 		perPage: pagination.perPage,
 	});
 
-	// Wait for loading to complete before updating pagination displayText
 	useEffect(() => {
+		// Wait for loading to complete before updating pagination displayText
 		if (loading) return;
 
 		setDisplayText({
@@ -33,8 +33,7 @@ export const DashboardPagination = () => {
 			itemRangeText,
 			perPage: pagination.perPage,
 		});
-		// We only want to update the display text once the table displayData has finished loading, all other deps are ignored here
-	}, [loading]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [itemRangeText, loading, pagination.page, pagination.perPage]);
 
 	if (!displayData.length) return null;
 
