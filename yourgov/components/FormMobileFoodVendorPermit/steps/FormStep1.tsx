@@ -140,6 +140,7 @@ function AdditionalDetailsForm() {
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
+					autoComplete="tel"
 					label="Contact phone number"
 					hint="Any Australian mobile or landline. For example, 0444111222 or 02 9988 7766"
 					id="contactPhoneNumber"

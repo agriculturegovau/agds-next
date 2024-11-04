@@ -170,20 +170,6 @@ export default function Page() {
 												</Prose>
 											</AccordionItemContent>
 										</AccordionItem>
-										<AccordionItem title="Food truck permit">
-											<AccordionItemContent>
-												<Prose>
-													<p>
-														This is a standard paragraph - sm/default (P). This
-														is a standard paragraph - sm/default (P). This is a
-														standard paragraph - sm/default (P). This is a
-														standard paragraph - sm/default (P). This is a
-														standard paragraph - sm/default (P). This is a
-														standard paragraph - sm/default (P).
-													</p>
-												</Prose>
-											</AccordionItemContent>
-										</AccordionItem>
 										<AccordionItem title="Ice-cream van permit">
 											<AccordionItemContent>
 												<Prose>

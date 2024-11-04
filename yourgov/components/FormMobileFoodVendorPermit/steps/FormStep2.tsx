@@ -62,6 +62,7 @@ export function FormStep2() {
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
+						autoComplete="organization"
 						id="businessName"
 						label="Business or company name"
 						{...register('businessName')}
@@ -72,6 +73,7 @@ export function FormStep2() {
 					/>
 
 					<TextInput
+						autoComplete="on"
 						id="tradingName"
 						label="Trading name"
 						{...register('tradingName')}
@@ -94,6 +96,7 @@ export function FormStep2() {
 						{showAbn ? (
 							<ConditionalFieldContainer>
 								<TextInput
+									autoComplete="on"
 									id="abn"
 									label="Australian Business Number (ABN)"
 									{...register('abn')}
@@ -109,6 +112,7 @@ export function FormStep2() {
 						{showAcn ? (
 							<ConditionalFieldContainer>
 								<TextInput
+									autoComplete="on"
 									id="acn"
 									label="Australian Company Number (ACN)"
 									{...register('acn')}

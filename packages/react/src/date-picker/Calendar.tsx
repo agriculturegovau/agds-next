@@ -438,6 +438,7 @@ function YearMonthSelect({
 			</label>
 			<Box
 				as="select"
+				autoComplete="off"
 				id={selectId}
 				value={value}
 				onChange={onChange}
