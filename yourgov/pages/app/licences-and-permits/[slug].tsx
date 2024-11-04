@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
 import { PageContent } from '@ag.ds-next/react/content';
-import { useTernaryState } from '@ag.ds-next/react/core';
+import { mapSpacing, useTernaryState } from '@ag.ds-next/react/core';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { H2, H3 } from '@ag.ds-next/react/heading';
@@ -262,11 +262,25 @@ const Page: NextPageWithLayout = () => {
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="Documents"
-												value={Object.values(
-													formState.steps?.step9?.files || {}
-												)
-													?.map((item) => item?.file)
-													.join(', ')}
+												value={
+													<ul
+														css={{
+															display: 'flex',
+															flexDirection: 'column',
+															gap: mapSpacing(0.5),
+															margin: 0,
+															paddingLeft: mapSpacing(1),
+														}}
+													>
+														{Object.values(
+															formState.steps?.step9?.files || {}
+														)?.map((item, index) => (
+															<li key={index}>{`${item?.file || ''} (${
+																item.size
+															})`}</li>
+														))}
+													</ul>
+												}
 											/>
 										</FormDefinitionList>
 									</Stack>
