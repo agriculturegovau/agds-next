@@ -9,18 +9,7 @@ import {
 	TabPanel,
 } from '@ag.ds-next/react/tabs';
 import { Column, Columns } from '@ag.ds-next/react/columns';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
-import {
-	TableWrapper,
-	Table,
-	TableHead,
-	TableRow,
-	TableHeader,
-	TableBody,
-	TableCell,
-} from '@ag.ds-next/react/table';
 import { H1, H2 } from '@ag.ds-next/react/heading';
-import { TextLink } from '@ag.ds-next/react/text-link';
 import { Text } from '@ag.ds-next/react/text';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Details } from '@ag.ds-next/react/details';
@@ -31,13 +20,13 @@ import { AppLayout } from '../../../components/Layout/AppLayout';
 import { PageTitle } from '../../../components/PageTitle';
 import { HelpCallout } from '../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../_app';
-import { mockApplicationHistory } from '../../../data/mockLicencesAndPermits';
 import { HelpReference } from '../../../components/HelpReference';
 import { StaffMembersTable } from '../../../components/Staff/StaffMembersTable';
 import {
 	StaffProvider,
 	useStaffGlobalState,
 } from '../../../components/Staff/StaffProvider';
+import { AccessRequestsTable } from '../../../components/Staff/AccessRequestsTable/AccessRequestsTable';
 
 const Page: NextPageWithLayout = () => {
 	const { accessRequestsGetState } = useStaffGlobalState();
@@ -156,58 +145,7 @@ const Page: NextPageWithLayout = () => {
 								<Stack gap={1.5}>
 									<H2 id="access-requests-heading">Access requests</H2>
 
-									<TableWrapper>
-										<Table aria-labelledby="application-history-heading">
-											<TableHead>
-												<TableRow>
-													<TableHeader scope="col" width="25%">
-														Reference number
-													</TableHeader>
-
-													<TableHeader scope="col" width="25%">
-														Application type
-													</TableHeader>
-
-													<TableHeader scope="col" width="25%">
-														Application status
-													</TableHeader>
-
-													<TableHeader
-														scope="col"
-														textAlign="right"
-														width="25%"
-													>
-														Actions
-													</TableHeader>
-												</TableRow>
-											</TableHead>
-
-											<TableBody>
-												{mockApplicationHistory.map((application, index) => (
-													<TableRow key={index}>
-														<TableCell as="th" scope="row" fontWeight="bold">
-															<TextLink href="/not-found">
-																{application.id}
-															</TextLink>
-														</TableCell>
-
-														<TableCell>{application.type}</TableCell>
-
-														<TableCell>
-															<StatusBadge
-																appearance="subtle"
-																{...application.status}
-															/>
-														</TableCell>
-
-														<TableCell textAlign="right">
-															<TextLink href="/not-found">View</TextLink>
-														</TableCell>
-													</TableRow>
-												))}
-											</TableBody>
-										</Table>
-									</TableWrapper>
+									<AccessRequestsTable />
 								</Stack>
 							</TabPanel>
 						</TabPanels>

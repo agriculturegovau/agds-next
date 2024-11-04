@@ -5,6 +5,7 @@ import {
 } from '../components/FormMobileFoodVendorPermit/steps/FormState';
 import { FormState } from '../components/FormMobileFoodVendorPermit/FormState';
 import { StaffMember } from '../components/Staff/lib/types';
+import { StaffMemberAccessRequest } from '../components/Staff/lib/accessRequests';
 import { DeepPartial } from './types';
 
 type SetStateValue<TValue> = TValue | ((prevState: TValue) => TValue);
@@ -179,54 +180,154 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 		[globalState, setAndSyncGlobalStateAndSessionStorage]
 	);
 
+	const generateNewStaffMember = useCallback(
+		(
+			newState: Partial<
+				(InviteStaffFormSchema | Omit<StaffMemberAccessRequest, 'status'>) & {
+					status: 'Active' | StaffMemberAccessRequest['status'];
+				}
+			>
+		) => {
+			const name = `${newState.firstName} ${newState.lastName}`;
+			const dateJoined = new Date().toISOString();
+			const status = newState.status || 'Invited';
+
+			return {
+				...newState,
+				age: '18',
+				dateJoined,
+				foodSafetyCertificate: false,
+				lastActive: dateJoined,
+				name,
+				status,
+			};
+		},
+		[]
+	);
+
 	const stateGettersAndSettersForStaff = useMemo(
 		() => ({
-			accessRequestsGetState: () => globalState.staff?.accessRequests || [],
-			accessRequestsSetState: (newState: Partial<InviteStaffFormSchema>) => {
+			accessRequestsGetState: () => {
+				// TODO StaffMemberAccessRequest can't be partial, maybe exclude from DeepPartial?
+				return (
+					(globalState.staff?.accessRequests as StaffMemberAccessRequest[]) ||
+					[]
+				);
+			},
+			accessRequestsDelete: (
+				accessRequestsToRemove:
+					| StaffMemberAccessRequest
+					| StaffMemberAccessRequest[]
+			) => {
+				// Make everything an array for simpler deleting
+				const accessRequestsToRemoveAsArray = Array.isArray(
+					accessRequestsToRemove
+				)
+					? accessRequestsToRemove
+					: [accessRequestsToRemove];
+
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					staff: {
 						...prevState.staff,
-						accessRequests: [
-							...(prevState?.staff?.accessRequests || []),
-							newState,
-						],
+						accessRequests: (prevState?.staff?.accessRequests || []).filter(
+							(accessRequest) =>
+								!accessRequestsToRemoveAsArray.some(
+									(accessRequestToRemove) =>
+										accessRequest?.id === accessRequestToRemove.id
+								)
+						),
 					},
 				}));
+			},
+			accessRequestsUpdate: ({
+				accessRequestsToUpdate,
+				updates,
+			}: {
+				accessRequestsToUpdate:
+					| StaffMemberAccessRequest
+					| StaffMemberAccessRequest[];
+				updates: Partial<
+					Omit<StaffMemberAccessRequest, 'id' | 'status'> & {
+						status: StaffMemberAccessRequest['status'] | 'Active';
+					}
+				>;
+			}) => {
+				// Make everything an array for simpler updating
+				const accessRequestsToUpdateAsArray = Array.isArray(
+					accessRequestsToUpdate
+				)
+					? accessRequestsToUpdate
+					: [accessRequestsToUpdate];
+
+				setAndSyncGlobalStateAndSessionStorage((prevState) => {
+					const currentAccessRequests = (prevState?.staff?.accessRequests ||
+						[]) as StaffMemberAccessRequest[];
+
+					// When the status is updated to `Active`, then we create a staff member using the access request data
+					if (updates.status === 'Active') {
+						const newStaff = accessRequestsToUpdateAsArray
+							.map((staffMember) => ({ ...staffMember, ...updates }))
+							.map(generateNewStaffMember);
+
+						return {
+							...prevState,
+							staff: {
+								...prevState.staff,
+								accessRequests: (prevState?.staff?.accessRequests || []).filter(
+									(accessRequest) =>
+										!accessRequestsToUpdateAsArray.some(
+											// Approved requests are no longer needed here, so we remove them
+											(accessRequestToRemove) =>
+												accessRequest?.id === accessRequestToRemove.id
+										)
+								),
+								staffMembers: [
+									...(prevState?.staff?.staffMembers || []),
+									...newStaff,
+								],
+							},
+						};
+					}
+
+					// All other updates can be kept within the `accessRequests` list
+					return {
+						...prevState,
+						staff: {
+							...prevState.staff,
+							accessRequests: currentAccessRequests.map((accessRequest) => {
+								const shouldUpdate = accessRequestsToUpdateAsArray.some(
+									(accessRequestToUpdate) =>
+										accessRequest.id === accessRequestToUpdate.id
+								);
+
+								return shouldUpdate
+									? { ...accessRequest, ...updates }
+									: accessRequest;
+							}),
+						},
+					};
+				});
 			},
 			staffMembersGetState: () => {
 				// TODO StaffMember can't be partial, maybe exclude from DeepPartial?
 				return (globalState.staff?.staffMembers as StaffMember[]) || [];
 			},
 			staffMembersCreate: (newState: Partial<InviteStaffFormSchema>) => {
-				setAndSyncGlobalStateAndSessionStorage((prevState) => {
-					const name = `${newState.firstName} ${newState.lastName}`;
-					const dateJoined = new Date().toISOString();
-					const newStaffMember = {
-						...newState,
-						age: '18',
-						dateJoined,
-						foodSafetyCertificate: false,
-						lastActive: dateJoined,
-						name,
-						status: 'Invited',
-					};
-
-					return {
-						...prevState,
-						staff: {
-							...prevState.staff,
-							staffMembers: [
-								...(prevState?.staff?.staffMembers || []),
-								newStaffMember,
-							],
-						},
-					};
-				});
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					staff: {
+						...prevState.staff,
+						staffMembers: [
+							...(prevState?.staff?.staffMembers || []),
+							generateNewStaffMember(newState),
+						],
+					},
+				}));
 			},
 			staffMembersDelete: (staffToRemove: StaffMember | StaffMember[]) => {
-				// Make everything a list for simpler deleting
-				const staffToRemoveAsList = Array.isArray(staffToRemove)
+				// Make everything an array for simpler deleting
+				const staffToRemoveAsArray = Array.isArray(staffToRemove)
 					? staffToRemove
 					: [staffToRemove];
 
@@ -236,7 +337,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						...prevState.staff,
 						staffMembers: (prevState?.staff?.staffMembers || []).filter(
 							(staffMember) =>
-								!staffToRemoveAsList.some(
+								!staffToRemoveAsArray.some(
 									(staffToRemove) => staffMember?.id === staffToRemove.id
 								)
 						),
@@ -250,8 +351,8 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				staffToUpdate: StaffMember | StaffMember[];
 				updates: Partial<Omit<StaffMember, 'id'>>;
 			}) => {
-				// Make everything a list for simpler updating
-				const staffToUpdateAsList = Array.isArray(staffToUpdate)
+				// Make everything an array for simpler updating
+				const staffToUpdateAsArray = Array.isArray(staffToUpdate)
 					? staffToUpdate
 					: [staffToUpdate];
 
@@ -264,7 +365,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						staff: {
 							...prevState.staff,
 							staffMembers: currentStaffMembers.map((staffMember) => {
-								const shouldUpdate = staffToUpdateAsList.some(
+								const shouldUpdate = staffToUpdateAsArray.some(
 									(staffMemberToUpdate) =>
 										staffMember.id === staffMemberToUpdate.id
 								);
@@ -278,7 +379,11 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				});
 			},
 		}),
-		[globalState, setAndSyncGlobalStateAndSessionStorage]
+		[
+			generateNewStaffMember,
+			globalState,
+			setAndSyncGlobalStateAndSessionStorage,
+		]
 	);
 
 	return {
