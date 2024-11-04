@@ -219,8 +219,8 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					| StaffMemberAccessRequest
 					| StaffMemberAccessRequest[]
 			) => {
-				// Make everything a list for simpler deleting
-				const accessRequestsToRemoveAsList = Array.isArray(
+				// Make everything an array for simpler deleting
+				const accessRequestsToRemoveAsArray = Array.isArray(
 					accessRequestsToRemove
 				)
 					? accessRequestsToRemove
@@ -232,7 +232,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						...prevState.staff,
 						accessRequests: (prevState?.staff?.accessRequests || []).filter(
 							(accessRequest) =>
-								!accessRequestsToRemoveAsList.some(
+								!accessRequestsToRemoveAsArray.some(
 									(accessRequestToRemove) =>
 										accessRequest?.id === accessRequestToRemove.id
 								)
@@ -253,8 +253,8 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					}
 				>;
 			}) => {
-				// Make everything a list for simpler updating
-				const accessRequestsToUpdateAsList = Array.isArray(
+				// Make everything an array for simpler updating
+				const accessRequestsToUpdateAsArray = Array.isArray(
 					accessRequestsToUpdate
 				)
 					? accessRequestsToUpdate
@@ -266,7 +266,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 
 					// When the status is updated to `Active`, then we create a staff member using the access request data
 					if (updates.status === 'Active') {
-						const newStaff = accessRequestsToUpdateAsList
+						const newStaff = accessRequestsToUpdateAsArray
 							.map((staffMember) => ({ ...staffMember, ...updates }))
 							.map(generateNewStaffMember);
 
@@ -276,7 +276,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 								...prevState.staff,
 								accessRequests: (prevState?.staff?.accessRequests || []).filter(
 									(accessRequest) =>
-										!accessRequestsToUpdateAsList.some(
+										!accessRequestsToUpdateAsArray.some(
 											// Approved requests are no longer needed here, so we remove them
 											(accessRequestToRemove) =>
 												accessRequest?.id === accessRequestToRemove.id
@@ -296,7 +296,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						staff: {
 							...prevState.staff,
 							accessRequests: currentAccessRequests.map((accessRequest) => {
-								const shouldUpdate = accessRequestsToUpdateAsList.some(
+								const shouldUpdate = accessRequestsToUpdateAsArray.some(
 									(accessRequestToUpdate) =>
 										accessRequest.id === accessRequestToUpdate.id
 								);
@@ -326,8 +326,8 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				}));
 			},
 			staffMembersDelete: (staffToRemove: StaffMember | StaffMember[]) => {
-				// Make everything a list for simpler deleting
-				const staffToRemoveAsList = Array.isArray(staffToRemove)
+				// Make everything an array for simpler deleting
+				const staffToRemoveAsArray = Array.isArray(staffToRemove)
 					? staffToRemove
 					: [staffToRemove];
 
@@ -337,7 +337,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						...prevState.staff,
 						staffMembers: (prevState?.staff?.staffMembers || []).filter(
 							(staffMember) =>
-								!staffToRemoveAsList.some(
+								!staffToRemoveAsArray.some(
 									(staffToRemove) => staffMember?.id === staffToRemove.id
 								)
 						),
@@ -351,8 +351,8 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 				staffToUpdate: StaffMember | StaffMember[];
 				updates: Partial<Omit<StaffMember, 'id'>>;
 			}) => {
-				// Make everything a list for simpler updating
-				const staffToUpdateAsList = Array.isArray(staffToUpdate)
+				// Make everything an array for simpler updating
+				const staffToUpdateAsArray = Array.isArray(staffToUpdate)
 					? staffToUpdate
 					: [staffToUpdate];
 
@@ -365,7 +365,7 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						staff: {
 							...prevState.staff,
 							staffMembers: currentStaffMembers.map((staffMember) => {
-								const shouldUpdate = staffToUpdateAsList.some(
+								const shouldUpdate = staffToUpdateAsArray.some(
 									(staffMemberToUpdate) =>
 										staffMember.id === staffMemberToUpdate.id
 								);

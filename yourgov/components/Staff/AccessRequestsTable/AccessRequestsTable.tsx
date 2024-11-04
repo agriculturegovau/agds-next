@@ -18,7 +18,7 @@ import { Checkbox } from '@ag.ds-next/react/checkbox';
 import { VisuallyHidden } from '@ag.ds-next/react/src/a11y';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Box } from '@ag.ds-next/react/box';
-import { mapSpacing } from '@ag.ds-next/react/core';
+import { mapSpacing, useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { AvatarIcon } from '@ag.ds-next/react/icon';
 import { Heading } from '@ag.ds-next/react/heading';
@@ -40,9 +40,12 @@ export const AccessRequestsTable = () => {
 	const [itemWithActiveAction, setItemWithActiveAction] =
 		useState<StaffMemberAccessRequest>();
 
-	const [approveModalOpen, setApproveModalOpen] = useState(false);
-	const [rejectModalOpen, setRejectModalOpen] = useState(false);
-	const [unavailableModalOpen, setUnavailableModalOpen] = useState(false);
+	const [isApproveModalOpen, openApproveModal, closeApproveModal] =
+		useTernaryState(false);
+	const [isRejectModalOpen, openRejectModal, closeRejectModal] =
+		useTernaryState(false);
+	const [isUnavailableModalOpen, openUnavailableModal, closeUnavailableModal] =
+		useTernaryState(false);
 
 	const [successMessageContent, setSuccessMessageContent] = useState<
 		StaffMemberAccessRequest | StaffMemberAccessRequest[]
@@ -87,7 +90,7 @@ export const AccessRequestsTable = () => {
 			},
 		});
 		setItemWithActiveAction(undefined);
-		setApproveModalOpen(false);
+		closeApproveModal();
 	};
 
 	const onConfirmReject = () => {
@@ -96,7 +99,7 @@ export const AccessRequestsTable = () => {
 		clearRowSelections();
 		accessRequestsDelete(itemWithActiveAction || items);
 		setItemWithActiveAction(undefined);
-		setRejectModalOpen(false);
+		closeRejectModal();
 	};
 
 	const isSelectAllCheckboxChecked =
@@ -115,20 +118,20 @@ export const AccessRequestsTable = () => {
 		<>
 			{successMessageContent && successMessageType && (
 				<SectionAlert
-					focusOnUpdate={[itemWithActiveAction || items]}
+					focusOnUpdate={[itemWithActiveAction]}
 					onClose={() => {
 						setSuccessMessageContent(undefined);
 					}}
-					title={`${
+					title={`Access request for ${
 						Array.isArray(successMessageContent)
 							? successMessageContent.length
 							: `${successMessageContent.firstName} ${successMessageContent.lastName}`
-					} access ${plural(
+					} ${plural(
 						Array.isArray(successMessageContent)
 							? successMessageContent.length
 							: 1,
-						'request has',
-						'requests have'
+						'person has',
+						'people have'
 					)} been ${successMessageType}`}
 					tone="success"
 				>
@@ -223,7 +226,11 @@ export const AccessRequestsTable = () => {
 													scope="row"
 												>
 													<TextLink
-														onClick={() => setUnavailableModalOpen(true)}
+														href="/not-found"
+														onClick={(event) => {
+															event.preventDefault();
+															openUnavailableModal();
+														}}
 													>
 														{name}
 													</TextLink>
@@ -245,7 +252,7 @@ export const AccessRequestsTable = () => {
 															aria-describedby={`${staffMember.id}-name`}
 															onClick={() => {
 																setItemWithActiveAction(staffMember);
-																setApproveModalOpen(true);
+																openApproveModal();
 															}}
 															variant="text"
 														>
@@ -256,7 +263,7 @@ export const AccessRequestsTable = () => {
 															aria-describedby={`${staffMember.id}-name`}
 															onClick={() => {
 																setItemWithActiveAction(staffMember);
-																setRejectModalOpen(true);
+																openRejectModal();
 															}}
 															variant="text"
 														>
@@ -281,23 +288,11 @@ export const AccessRequestsTable = () => {
 						</TableBatchActionsTitle>
 
 						<ButtonGroup>
-							<Button
-								variant="secondary"
-								size="sm"
-								onClick={() => {
-									setApproveModalOpen(true);
-								}}
-							>
+							<Button variant="secondary" size="sm" onClick={closeApproveModal}>
 								Approve access
 							</Button>
 
-							<Button
-								variant="secondary"
-								size="sm"
-								onClick={() => {
-									setRejectModalOpen(true);
-								}}
-							>
+							<Button variant="secondary" size="sm" onClick={openRejectModal}>
 								Reject access
 							</Button>
 
@@ -310,9 +305,9 @@ export const AccessRequestsTable = () => {
 
 				<ModalConfirmApproveAccess
 					itemsToApprove={itemWithActiveAction || items}
-					isOpen={approveModalOpen}
+					isOpen={isApproveModalOpen}
 					onClose={() => {
-						setApproveModalOpen(false);
+						closeApproveModal();
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmApprove}
@@ -320,22 +315,18 @@ export const AccessRequestsTable = () => {
 
 				<ModalConfirmRejectAccess
 					itemsToReject={itemWithActiveAction || items}
-					isOpen={rejectModalOpen}
+					isOpen={isRejectModalOpen}
 					onClose={() => {
-						setRejectModalOpen(false);
+						closeRejectModal();
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmReject}
 				/>
 
 				<ModalUnavailableFeature
-					isOpen={unavailableModalOpen}
-					onClose={() => {
-						setUnavailableModalOpen(false);
-					}}
-					onConfirm={() => {
-						setUnavailableModalOpen(false);
-					}}
+					isOpen={isUnavailableModalOpen}
+					onClose={closeUnavailableModal}
+					onConfirm={openUnavailableModal}
 				/>
 			</Stack>
 		</>
