@@ -118,7 +118,7 @@ export const AccessRequestsTable = () => {
 		<>
 			{successMessageContent && successMessageType && (
 				<SectionAlert
-					focusOnUpdate={[itemWithActiveAction]}
+					focusOnUpdate={[itemWithActiveAction || items]}
 					onClose={() => {
 						setSuccessMessageContent(undefined);
 					}}
@@ -288,7 +288,7 @@ export const AccessRequestsTable = () => {
 						</TableBatchActionsTitle>
 
 						<ButtonGroup>
-							<Button variant="secondary" size="sm" onClick={closeApproveModal}>
+							<Button variant="secondary" size="sm" onClick={openApproveModal}>
 								Approve access
 							</Button>
 
