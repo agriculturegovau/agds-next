@@ -31,7 +31,9 @@ export function useFocus<T extends HTMLElement>({
 		() => {
 			if (
 				(focusOnUpdate === undefined && !focusOnMount) ||
-				!('current' in ref)
+				!('current' in ref) ||
+				(Array.isArray(focusOnUpdate) &&
+					focusOnUpdate.filter(Boolean).length === 0)
 			) {
 				return;
 			}

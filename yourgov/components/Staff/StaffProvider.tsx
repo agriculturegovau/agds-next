@@ -3,12 +3,12 @@ import { useSessionFormState } from '../../lib/useSessionFormState';
 import { DeepPartial } from '../../lib/types';
 import { FormState } from '../FormMobileFoodVendorPermit/FormState';
 import { staffMembers } from './lib/staffMembers';
-import { StaffMember } from './lib/types';
+import { defaultAccessRequests } from './lib/accessRequests';
 
 const defaultStaffState: DeepPartial<FormState> = {
 	staff: {
-		accessRequests: [],
-		staffMembers: staffMembers as unknown as StaffMember[],
+		accessRequests: [...defaultAccessRequests],
+		staffMembers: [...staffMembers],
 	},
 };
 
