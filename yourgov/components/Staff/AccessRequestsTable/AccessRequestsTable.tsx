@@ -32,6 +32,7 @@ import { ModalConfirmRejectAccess } from './ModalConfirmRejectAccess';
 import { ModalUnavailableFeature } from './ModalUnavailableFeature';
 
 export const AccessRequestsTable = () => {
+	const [focusUpdateTime, setFocusUpdateTime] = useState(0);
 	const { accessRequestsDelete, accessRequestsGetState, accessRequestsUpdate } =
 		useStaffGlobalState();
 	const [rowSelections, setRowSelections] = useState<
@@ -91,6 +92,7 @@ export const AccessRequestsTable = () => {
 		});
 		setItemWithActiveAction(undefined);
 		closeApproveModal();
+		setFocusUpdateTime(Date.now());
 	};
 
 	const onConfirmReject = () => {
@@ -100,6 +102,7 @@ export const AccessRequestsTable = () => {
 		accessRequestsDelete(itemWithActiveAction || items);
 		setItemWithActiveAction(undefined);
 		closeRejectModal();
+		setFocusUpdateTime(Date.now());
 	};
 
 	const isSelectAllCheckboxChecked =
@@ -118,7 +121,7 @@ export const AccessRequestsTable = () => {
 		<>
 			{successMessageContent && successMessageType && (
 				<SectionAlert
-					focusOnUpdate={[itemWithActiveAction || items]}
+					focusOnUpdate={focusUpdateTime}
 					onClose={() => {
 						setSuccessMessageContent(undefined);
 					}}
