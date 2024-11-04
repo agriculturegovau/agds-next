@@ -258,12 +258,14 @@ const Page: NextPageWithLayout = () => {
 
 									{/** Upload documents */}
 									<Stack gap={2} alignItems="flex-start">
-										<H3>TODO - {formSteps[8].label}</H3>
+										<H3>{formSteps[8].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="Documents"
-												value={formState.steps?.step9?.cuisine
-													?.map((item) => item?.label)
+												value={Object.values(
+													formState.steps?.step9?.files || {}
+												)
+													?.map((item) => item?.file)
 													.join(', ')}
 											/>
 										</FormDefinitionList>

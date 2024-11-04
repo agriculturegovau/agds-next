@@ -272,13 +272,13 @@ export function FormStep10Review() {
 
 			{/** Upload documents */}
 			<Stack gap={1.5}>
-				<H2>TODO - {formSteps[8].label}</H2>
+				<H2>{formSteps[8].label}</H2>
 				{validation.step9.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Documents"
-							value={formState.steps?.step9?.cuisine
-								?.map((item) => item?.label)
+							value={Object.values(formState.steps?.step9?.files || {})
+								?.map((item) => item?.file)
 								.join(', ')}
 						/>
 					</FormDefinitionList>
