@@ -2,7 +2,6 @@ import { type ReactElement } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Avatar } from '@ag.ds-next/react/src/avatar';
 import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
-import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
@@ -13,6 +12,7 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Tag } from '@ag.ds-next/react/tags';
 import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { AppLayout } from '../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { HelpCallout } from '../../components/HelpCallout';
@@ -39,22 +39,22 @@ const Page: NextPageWithLayout = () => {
 						<Avatar
 							aria-hidden
 							name={user.displayName}
-							size="xl"
+							size="xxxl"
 							tone="action"
 						/>
 						<Stack>
 							<Text fontSize="md" color="muted">
 								My account
 							</Text>
-							<H1>Hi, {user.firstName}</H1>
+							<H1 css={{ marginTop: '-0.5rem' }}>Hi, {user.firstName}</H1>
 						</Stack>
 					</Flex>
 
 					<Columns as="ul" cols={[1, 2]}>
-						<Card as="li">
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
-									<EmailIcon color="action" size="lg" />
+									<EmailIcon color="action" size="xl" />
 									<Heading
 										as="h2"
 										type="h3"
@@ -74,10 +74,10 @@ const Page: NextPageWithLayout = () => {
 							</CardInner>
 						</Card>
 
-						<Card as="li">
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
-									<AvatarIcon color="action" size="lg" />
+									<AvatarIcon color="action" size="xl" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/not-found">Profile</CardLink>
 									</Heading>
@@ -91,7 +91,7 @@ const Page: NextPageWithLayout = () => {
 
 					<Divider />
 
-					<Stack as="section" gap={1.5}>
+					<Stack as="section" gap={2}>
 						<Stack gap={0.5}>
 							<H2>Your linked businesses</H2>
 							<Text as="p" color="muted">
@@ -100,7 +100,7 @@ const Page: NextPageWithLayout = () => {
 						</Stack>
 						<Columns as="ul" cols={[1, 2]}>
 							{linkedBusinesses.map((linkedBusinesses, idx) => (
-								<Card as="li" key={idx}>
+								<Card as="li" clickable key={idx} shadow>
 									<CardInner>
 										<Stack gap={1}>
 											<Flex gap={0.5}>
@@ -123,10 +123,9 @@ const Page: NextPageWithLayout = () => {
 								</Card>
 							))}
 						</Columns>
-						<CallToActionLink href="/not-found">
-							Link another business
-						</CallToActionLink>
+						<TextLink href="/not-found">Link another business</TextLink>
 					</Stack>
+					<Divider />
 					<Columns cols={{ xs: 1, sm: 4 }}>
 						<Column columnSpan={{ xs: 1, sm: 3 }}>
 							<HelpCallout />

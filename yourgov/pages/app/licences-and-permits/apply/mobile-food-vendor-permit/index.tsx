@@ -10,7 +10,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { AppLayout } from '../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../components/DocumentTitle';
 import { HelpCallout } from '../../../../../components/HelpCallout';
-import { HelpReference } from '../../../../../components/FormMobileFoodVendorPermit/HelpReference';
+import { HelpReference } from '../../../../../components/HelpReference';
 import {
 	GettingStartedForm,
 	GlobalFormProvider,
@@ -62,21 +62,23 @@ const Page: NextPageWithLayout = () => {
 													drawerContent={
 														<Stack gap={2}>
 															<H1>What you need to apply for a permit</H1>
-															<Text as="p" fontSize="md" color="muted">
+															<Text as="p" fontSize="lg" color="muted">
 																Regulating a mobile food vending business is
 																crucial for several reasons, primarily to
 																safeguard public health, ensure safety, and
-																maintain fairness within the marketplace. These
-																regulations play a pivotal role in upholding
-																high standards of food hygiene, which is vital
-																for preventing foodborne illnesses and
+																maintain fairness within the marketplace.
+															</Text>
+															<Text as="p" fontSize="md">
+																These regulations play a pivotal role in
+																upholding high standards of food hygiene, which
+																is vital for preventing foodborne illnesses and
 																contamination. By enforcing strict guidelines
 																for food preparation, storage, and handling,
 																these regulations help ensure that vendors
 																follow best practices and adhere to sanitary
 																protocols.
 															</Text>
-															<Text as="p" fontSize="md" color="muted">
+															<Text as="p" fontSize="md">
 																Moreover, regulations help create a level
 																playing field in the food vending industry. They
 																set clear standards and requirements that all
@@ -88,7 +90,7 @@ const Page: NextPageWithLayout = () => {
 																to make informed choices and trust that the food
 																they purchase is safe and of high quality.
 															</Text>
-															<Text as="p" fontSize="md" color="muted">
+															<Text as="p" fontSize="md">
 																In addition to these health and safety benefits,
 																regulations can also address operational aspects
 																such as permitting, zoning, and waste

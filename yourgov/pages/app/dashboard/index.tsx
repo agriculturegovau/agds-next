@@ -24,7 +24,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle title="Dashboard" />
 			<PageContent>
 				<Stack gap={3}>
-					<Stack gap={0.5} alignItems="flex-start">
+					<Stack gap={1} alignItems="flex-start">
 						<Flex gap={0.5}>
 							<Tag>{selectedBusiness.abn}</Tag>
 							<Text>ABN</Text>
@@ -37,7 +37,7 @@ const Page: NextPageWithLayout = () => {
 						<Card as="li" shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<IconApproval size="lg" color="action" />
+									<IconApproval size="xl" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/licences-and-permits">
 											Manage permits
@@ -50,7 +50,7 @@ const Page: NextPageWithLayout = () => {
 						<Card as="li" shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<IconUsers size="lg" color="action" />
+									<IconUsers size="xl" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/staff">Manage staff access</CardLink>
 									</Heading>
@@ -101,6 +101,8 @@ const Page: NextPageWithLayout = () => {
 							</Card>
 						</Columns>
 					</Stack>
+
+					<Divider />
 
 					<Columns cols={{ xs: 1, sm: 4 }}>
 						<Column columnSpan={{ xs: 1, sm: 3 }}>

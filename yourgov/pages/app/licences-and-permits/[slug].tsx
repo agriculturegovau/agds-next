@@ -272,13 +272,15 @@ const Page: NextPageWithLayout = () => {
 									<Prose>
 										<p>
 											I have agreed to the{' '}
-											<TextLinkExternal href="#">Terms of Use</TextLinkExternal>
+											<TextLinkExternal href="/not-found">
+												Terms of Use
+											</TextLinkExternal>
 											, the{' '}
-											<TextLinkExternal href="#">
+											<TextLinkExternal href="/not-found">
 												Privacy Policy
 											</TextLinkExternal>{' '}
 											and the{' '}
-											<TextLinkExternal href="#">
+											<TextLinkExternal href="/not-found">
 												Privacy Notice
 											</TextLinkExternal>
 											.
