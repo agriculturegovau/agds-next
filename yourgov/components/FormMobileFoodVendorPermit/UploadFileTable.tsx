@@ -1,5 +1,5 @@
 import { forwardRef, Fragment } from 'react';
-import { VisuallyHidden, visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
+import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
@@ -66,11 +66,6 @@ export const UploadFileTable = forwardRef<
 
 	return (
 		<Stack gap={0.5}>
-			{headingId ? (
-				<div css={visuallyHiddenStyles} id={descriptionId}>
-					Table column headers with buttons are sortable.
-				</div>
-			) : null}
 			<TableWrapper>
 				<Table
 					aria-rowcount={10}
@@ -199,19 +194,19 @@ const headers: {
 }[] = [
 	{
 		label: 'Document type',
-		width: { xs: '20rem', lg: 'auto' },
+		width: '16rem',
 	},
 	{
 		label: 'File',
-		width: '12rem',
+		width: '16rem',
 	},
 	{
 		label: 'Size',
-		width: { xs: '16rem', lg: 'auto' },
+		width: '10rem',
 	},
 	{
-		label: 'Label',
+		label: 'Action',
 		textAlign: 'left',
-		width: '12rem',
+		width: '8rem',
 	},
 ];

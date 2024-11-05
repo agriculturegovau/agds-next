@@ -3,11 +3,14 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
-import { Box } from '@ag.ds-next/react/src/box';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { FileUpload, FileWithStatus } from '@ag.ds-next/react/file-upload';
+import { Text } from '@ag.ds-next/react/text';
+import { Box } from '@ag.ds-next/react/box';
+import { H2 } from '@ag.ds-next/react/heading';
+import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { UploadFileTable } from '../UploadFileTable';
@@ -62,7 +65,8 @@ export function FormStep9() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const tableSectionAlertRef = useRef<HTMLDivElement>(null);
+	const errorMessageRef = useRef<HTMLDivElement>(null);
+	const successMessageRef = useRef<HTMLDivElement>(null);
 
 	const { files = {} } = step9GetState() || {};
 
@@ -104,16 +108,12 @@ export function FormStep9() {
 		);
 		setDocuments(documentsWithNewFile);
 
-		setTableErrors(
-			tableErrors.filter(
-				(tableError) =>
-					tableError.documentType !== currentDocument?.documentType
-			)
-		);
+		setTableErrors([]);
 		closeDrawerAndClearForm();
 	};
 
 	const removeFile = (document: Document) => {
+		setTableErrors([]);
 		setDocuments((prevDocuments) =>
 			prevDocuments.map((prevDocument) =>
 				document?.documentType === prevDocument.documentType
@@ -125,6 +125,7 @@ export function FormStep9() {
 					: prevDocument
 			)
 		);
+		setCurrentDocument(document);
 		closeDrawerAndClearForm();
 	};
 
@@ -153,6 +154,7 @@ export function FormStep9() {
 			[]
 		);
 
+		setCurrentDocument(undefined);
 		setDocuments(documentsWithErrors);
 		setTableErrors(tableErrors);
 
@@ -179,6 +181,8 @@ export function FormStep9() {
 		});
 	};
 
+	const isSuccessMessageVisible = currentDocument && !isDrawerOpen;
+
 	return (
 		<FormContainer
 			formTitle="Upload documents"
@@ -189,7 +193,9 @@ export function FormStep9() {
 					<Box css={tableErrors.length ? undefined : { display: 'none' }}>
 						<SectionAlert
 							focusOnUpdate={tableErrors}
-							title="You must provide decisions for each change in the table below"
+							ref={errorMessageRef}
+							tabIndex={-1}
+							title="You must provide all documents in the table below"
 							tone="error"
 						>
 							<Stack gap={0.5} alignItems="flex-start">
@@ -203,6 +209,34 @@ export function FormStep9() {
 							</Stack>
 						</SectionAlert>
 					</Box>
+
+					<Box css={isSuccessMessageVisible ? undefined : { display: 'none' }}>
+						<SectionAlert
+							focusOnUpdate={documents}
+							onClose={() => setCurrentDocument(undefined)}
+							ref={successMessageRef}
+							tabIndex={-1}
+							title={`${currentDocument?.documentType} has been updated`}
+							tone="success"
+						>
+							<Text as="p">
+								{documents.find(
+									(document) => document.id === currentDocument?.id
+								)?.file || 'Your file'}{' '}
+								has been{' '}
+								{documents.find(
+									(document) => document.id === currentDocument?.id
+								)?.file
+									? 'added'
+									: 'removed'}
+								.
+							</Text>
+						</SectionAlert>
+					</Box>
+
+					<H2 css={visuallyHiddenStyles} id={tableHeadingId}>
+						Upload documents
+					</H2>
 
 					<UploadFileTable
 						documents={documents}
@@ -230,7 +264,11 @@ export function FormStep9() {
 						</ButtonGroup>
 					}
 					elementToFocusOnClose={
-						tableErrors.length ? tableSectionAlertRef.current : undefined
+						tableErrors.length
+							? errorMessageRef.current
+							: isSuccessMessageVisible
+							? successMessageRef.current
+							: undefined
 					}
 				>
 					<Stack as="form" id="upload-document-form">
