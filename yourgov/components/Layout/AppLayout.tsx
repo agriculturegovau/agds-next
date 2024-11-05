@@ -1,17 +1,5 @@
 import { PropsWithChildren, Fragment, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { tokens } from '@ag.ds-next/react/core';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import {
-	ExitIcon,
-	HomeIcon,
-	EmailIcon,
-	SettingsIcon,
-	HelpIcon,
-	AvatarIcon,
-	ChevronsLeftIcon,
-} from '@ag.ds-next/react/icon';
 import {
 	AppLayout as AgDsAppLayout,
 	AppLayoutHeader as AgDSAppLayoutHeader,
@@ -21,8 +9,8 @@ import {
 	AppLayoutContent,
 } from '@ag.ds-next/react/app-layout';
 import { Box } from '@ag.ds-next/react/box';
-import { Text } from '@ag.ds-next/react/text';
-import { LinkList } from '@ag.ds-next/react/link-list';
+import { tokens } from '@ag.ds-next/react/core';
+import { Logo } from '@ag.ds-next/react/ag-branding';
 import {
 	DropdownMenuDivider,
 	DropdownMenuGroup,
@@ -30,12 +18,24 @@ import {
 	DropdownMenuItemRadio,
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
+import {
+	ExitIcon,
+	HomeIcon,
+	EmailIcon,
+	SettingsIcon,
+	HelpIcon,
+	AvatarIcon,
+	ChevronsLeftIcon,
+} from '@ag.ds-next/react/icon';
+import { LinkList } from '@ag.ds-next/react/link-list';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
+import { Text } from '@ag.ds-next/react/text';
 import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
 import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
 import { IconApproval, IconUsers } from '../CustomIcons';
-import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
