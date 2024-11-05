@@ -11,7 +11,7 @@ export type ModalConfirmChangeRoleProps = {
 	onClose: () => void;
 	onConfirm: () => void;
 	/** On close of the modal, this element will be focused, rather than the trigger element. */
-	pageAlertRef?: HTMLElement | null;
+	pageAlertElement?: HTMLElement | null;
 };
 
 export const ModalConfirmChangeRole = ({
@@ -19,7 +19,7 @@ export const ModalConfirmChangeRole = ({
 	isOpen,
 	onClose,
 	onConfirm,
-	pageAlertRef,
+	pageAlertElement,
 }: ModalConfirmChangeRoleProps) => {
 	const [submitting, setSubmitting] = useState(false);
 	const [role, setRole] = useState<StaffMemberRole | undefined>(currentRole);
@@ -40,7 +40,7 @@ export const ModalConfirmChangeRole = ({
 
 	return (
 		<Drawer
-			elementToFocusOnClose={pageAlertRef}
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title="Change role"

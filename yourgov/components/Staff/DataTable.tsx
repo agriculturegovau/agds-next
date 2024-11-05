@@ -34,13 +34,13 @@ type DataTableProps = {
 	/** The id of the heading that describes the table */
 	headingId?: string;
 	/** On close of the action modals, this element will be focused, rather than the trigger element. */
-	pageAlertRef?: HTMLElement | null;
+	pageAlertElement?: HTMLElement | null;
 	/** Whether the table should be selectable */
 	selectable?: boolean;
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, pageAlertRef, selectable }, ref) {
+	function DataTable({ headingId, pageAlertElement, selectable }, ref) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { displayData, loading, totalItems, error } = useDataContext();
@@ -219,7 +219,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												itemId={item.id}
 												key={name}
 												name={name}
-												pageAlertRef={pageAlertRef}
+												pageAlertElement={pageAlertElement}
 												rowIndex={rowIndex}
 												selectable={selectable}
 											>
@@ -258,7 +258,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						</TableBody>
 					</Table>
 				</TableWrapper>
-				<DataTableBatchActionsBar pageAlertRef={pageAlertRef} />
+				<DataTableBatchActionsBar pageAlertElement={pageAlertElement} />
 			</Stack>
 		);
 	}

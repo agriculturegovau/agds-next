@@ -48,7 +48,7 @@ export const DataTableRow = ({
 	item,
 	itemId,
 	name,
-	pageAlertRef,
+	pageAlertElement,
 	rowIndex,
 	selectable,
 }: {
@@ -57,7 +57,7 @@ export const DataTableRow = ({
 	itemId: string;
 	name: string;
 	/** On close of the action modals, this element will be focused, rather than the trigger element. */
-	pageAlertRef?: HTMLElement | null;
+	pageAlertElement?: HTMLElement | null;
 	rowIndex: number;
 	selectable?: boolean;
 }) => {
@@ -143,7 +143,7 @@ export const DataTableRow = ({
 					isOpen={modalChangeRoleOpen}
 					onClose={() => setModalChangeRoleOpen(false)}
 					onConfirm={onConfirmChangeRole}
-					pageAlertRef={pageAlertRef}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmPauseAccess
@@ -151,7 +151,7 @@ export const DataTableRow = ({
 					itemsToPause={item}
 					onClose={() => setPauseModalOpen(false)}
 					onConfirm={onConfirmPause}
-					pageAlertRef={pageAlertRef}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmRemoveAccess
@@ -159,7 +159,7 @@ export const DataTableRow = ({
 					itemsToDelete={item}
 					onClose={() => setRemoveModalOpen(false)}
 					onConfirm={onConfirmRemove}
-					pageAlertRef={pageAlertRef}
+					pageAlertElement={pageAlertElement}
 				/>
 			</TableRow>
 		);

@@ -13,7 +13,7 @@ export type ModalConfirmPauseAccessProps = {
 	onClose: () => void;
 	onConfirm: () => void;
 	/** On close of the modal, this element will be focused, rather than the trigger element. */
-	pageAlertRef?: HTMLElement | null;
+	pageAlertElement?: HTMLElement | null;
 };
 
 export function ModalConfirmPauseAccess({
@@ -21,7 +21,7 @@ export function ModalConfirmPauseAccess({
 	itemsToPause,
 	onClose,
 	onConfirm,
-	pageAlertRef,
+	pageAlertElement,
 }: ModalConfirmPauseAccessProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -52,7 +52,7 @@ export function ModalConfirmPauseAccess({
 
 	return (
 		<Modal
-			elementToFocusOnClose={pageAlertRef}
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}

@@ -13,7 +13,7 @@ export type ModalConfirmRemoveAccessProps = {
 	onClose: () => void;
 	onConfirm: () => void;
 	/** On close of the modal, this element will be focused, rather than the trigger element. */
-	pageAlertRef?: HTMLElement | null;
+	pageAlertElement?: HTMLElement | null;
 };
 
 export function ModalConfirmRemoveAccess({
@@ -21,7 +21,7 @@ export function ModalConfirmRemoveAccess({
 	itemsToDelete,
 	onClose,
 	onConfirm,
-	pageAlertRef,
+	pageAlertElement,
 }: ModalConfirmRemoveAccessProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -52,7 +52,7 @@ export function ModalConfirmRemoveAccess({
 
 	return (
 		<Modal
-			elementToFocusOnClose={pageAlertRef}
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}

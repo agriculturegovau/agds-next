@@ -68,7 +68,7 @@ export const StaffMembersTable = ({
 	tableRef,
 }: StaffMembersTableProps) => {
 	const router = useRouter();
-	const pageAlertRef = useRef<HTMLDivElement>(null);
+	const pageAlertElement = useRef<HTMLDivElement>(null);
 
 	const { staffMembersGetState, staffMembersDelete } = useStaffGlobalState();
 
@@ -113,7 +113,7 @@ export const StaffMembersTable = ({
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
-						ref={pageAlertRef}
+						ref={pageAlertElement}
 						title={`${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`}
 						tone="success"
 					>
@@ -162,9 +162,9 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
-						pageAlertRef={
+						pageAlertElement={
 							successMessageType && updatedStaffMemberName
-								? pageAlertRef?.current
+								? pageAlertElement?.current
 								: undefined
 						}
 						ref={tableRef}
