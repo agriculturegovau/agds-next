@@ -106,7 +106,12 @@ export const StaffMembersTable = ({
 					setUpdatedStaffMemberName,
 				}}
 			>
-				{successMessageType && updatedStaffMemberName && (
+				<div
+					css={{
+						display:
+							successMessageType && updatedStaffMemberName ? 'block' : 'none',
+					}}
+				>
 					<SectionAlert
 						focusOnMount
 						onClose={() => {
@@ -114,18 +119,22 @@ export const StaffMembersTable = ({
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
 						ref={pageAlertElement}
-						title={`${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`}
+						title={
+							successMessageType
+								? `${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`
+								: ''
+						}
 						tone="success"
 					>
-						{successTypeToMessageText[successMessageType].description && (
-							<Text as="p">
-								{updatedStaffMemberName}{' '}
-								{successTypeToMessageText[successMessageType].description}
-							</Text>
-						)}
+						{successMessageType &&
+							successTypeToMessageText[successMessageType].description && (
+								<Text as="p">
+									{updatedStaffMemberName}{' '}
+									{successTypeToMessageText[successMessageType].description}
+								</Text>
+							)}
 					</SectionAlert>
-				)}
-
+				</div>
 				<Stack gap={0}>
 					<FilterRegion>
 						<FilterBar>
@@ -162,11 +171,7 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
-						pageAlertElement={
-							successMessageType && updatedStaffMemberName
-								? pageAlertElement?.current
-								: undefined
-						}
+						pageAlertElement={pageAlertElement?.current}
 						ref={tableRef}
 						selectable={selectable}
 					/>
