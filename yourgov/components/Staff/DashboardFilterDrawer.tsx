@@ -152,6 +152,22 @@ export const DashboardFilterDrawer = ({
 
 						<ControlGroup block label="Training completed" required>
 							<Checkbox
+								checked={formState.trainingCompleted.Deliveries}
+								onChange={getOnChangeTrainingCompleted('Deliveries')}
+								value="deliveries"
+							>
+								Deliveries
+							</Checkbox>
+
+							<Checkbox
+								checked={formState.trainingCompleted.Distribution}
+								onChange={getOnChangeTrainingCompleted('Distribution')}
+								value="distribution"
+							>
+								Distribution
+							</Checkbox>
+
+							<Checkbox
 								checked={formState.trainingCompleted['Ice cream making']}
 								onChange={getOnChangeTrainingCompleted('Ice cream making')}
 								value="ice-cream-making"
@@ -165,22 +181,6 @@ export const DashboardFilterDrawer = ({
 								value="packaging"
 							>
 								Packaging
-							</Checkbox>
-
-							<Checkbox
-								checked={formState.trainingCompleted.Distribution}
-								onChange={getOnChangeTrainingCompleted('Distribution')}
-								value="distribution"
-							>
-								Distribution
-							</Checkbox>
-
-							<Checkbox
-								checked={formState.trainingCompleted.Deliveries}
-								onChange={getOnChangeTrainingCompleted('Deliveries')}
-								value="deliveries"
-							>
-								Deliveries
 							</Checkbox>
 						</ControlGroup>
 

@@ -24,7 +24,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle title="Apply for a mobile food vendor permit" />
 			<PageContent>
 				<Columns>
-					<Column columnSpan={8}>
+					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={3}>
 							<Breadcrumbs
 								links={[

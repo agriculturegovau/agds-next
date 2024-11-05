@@ -65,7 +65,7 @@ const Page: NextPageWithLayout = () => {
 										}}
 									>
 										<CardLink href="/not-found">Messages</CardLink>
-										<NotificationBadge tone="action" value={5} />
+										<NotificationBadge tone="action" value={3} />
 									</Heading>
 									<Text as="p" color="muted">
 										View all messages

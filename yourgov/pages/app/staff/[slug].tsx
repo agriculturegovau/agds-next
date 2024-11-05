@@ -177,7 +177,8 @@ const Page: NextPageWithLayout = () => {
 							alignSelf="start"
 							aria-describedby="remove-access-description"
 							onClick={onClickRemoveAccess}
-							variant="text"
+							size="sm"
+							variant="secondary"
 						>
 							Remove {staffMember.name}
 						</Button>
@@ -207,10 +208,10 @@ const Page: NextPageWithLayout = () => {
 
 						<ControlGroup hideOptionalLabel label="Training completed" block>
 							{[
+								'Deliveries',
+								'Distribution',
 								'Ice cream making',
 								'Packaging',
-								'Distribution',
-								'Deliveries',
 							].map((option) => (
 								<Checkbox
 									key={option}

@@ -235,12 +235,12 @@ export const inviteStaffFormSchema = z.object({
 	email: zodString('Enter employee’s email address').email(
 		'Enter a valid email address'
 	),
-	mobile: zodPhoneFieldOptional(),
+	mobile: zodString('Enter employee’s mobile number'),
 	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
 		errorMap: () => ({ message: 'Please choose a role' }),
 	}),
 	trainingCompleted: z.array(
-		z.enum(['Ice cream making', 'Packaging', 'Distribution', 'Deliveries'])
+		z.enum(['Deliveries', 'Distribution', 'Ice cream making', 'Packaging'])
 	),
 });
 
@@ -251,7 +251,7 @@ export const editStaffFormSchema = z.object({
 		errorMap: () => ({ message: 'Please choose a role' }),
 	}),
 	trainingCompleted: z.array(
-		z.enum(['Ice cream making', 'Packaging', 'Distribution', 'Deliveries'])
+		z.enum(['Deliveries', 'Distribution', 'Ice cream making', 'Packaging'])
 	),
 });
 
