@@ -17,7 +17,7 @@ export const ModalUnavailableFeature = ({
 		<Modal
 			isOpen={isOpen}
 			onClose={onClose}
-			title="These feature is not yet available."
+			title="This feature is not yet available."
 			actions={
 				<ButtonGroup>
 					<Button onClick={onConfirm}>Okay</Button>

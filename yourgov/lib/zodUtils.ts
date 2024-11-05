@@ -11,7 +11,7 @@ export function zodString(message?: string) {
 		.min(1, { message });
 }
 
-export const zodStringOptional = () => z.string().optional();
+export const zodStringOptional = () => z.string().trim().optional();
 
 const phoneError = {
 	lettersOrSymbols: 'Phone number must not include letters or symbols',

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PageContent } from '@ag.ds-next/react/content';
+import { Details } from '@ag.ds-next/react/details';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
@@ -23,6 +24,7 @@ import {
 	inviteStaffFormSchema,
 	InviteStaffFormSchema,
 } from '../../../../components/FormMobileFoodVendorPermit/steps/FormState';
+import { CalloutDefinitionList } from '../../../../components/Staff/CalloutDefinitionList';
 import {
 	StaffProvider,
 	useStaffGlobalState,
@@ -139,7 +141,7 @@ const Page: NextPageWithLayout = () => {
 							/>
 
 							<TextInput
-								autoComplete="mobile"
+								autoComplete="tel"
 								label="Mobile number"
 								type="phone"
 								{...register('mobile')}
@@ -152,6 +154,13 @@ const Page: NextPageWithLayout = () => {
 						</FormStack>
 
 						<Divider />
+
+						<Details
+							iconBefore
+							label="Understanding the permissions for each role"
+						>
+							<CalloutDefinitionList />
+						</Details>
 
 						<ControlGroup
 							label="Role"
@@ -176,10 +185,10 @@ const Page: NextPageWithLayout = () => {
 
 						<ControlGroup hideOptionalLabel label="Training completed" block>
 							{[
+								'Deliveries',
+								'Distribution',
 								'Ice cream making',
 								'Packaging',
-								'Distribution',
-								'Deliveries',
 							].map((option) => (
 								<Checkbox
 									key={option}

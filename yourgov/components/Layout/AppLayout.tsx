@@ -35,6 +35,7 @@ import NotFoundPage from '../../pages/not-found';
 import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
 import { IconApproval, IconUsers } from '../CustomIcons';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
@@ -234,6 +235,7 @@ function AppLayoutSidebar() {
 					label: 'Messages',
 					href: '/app/messages',
 					icon: EmailIcon,
+					endElement: <NotificationBadge tone="action" value={3} />,
 				},
 				{
 					label: 'Account settings',

@@ -130,12 +130,18 @@ const Page: NextPageWithLayout = () => {
 												value={formState.steps?.step2?.businessStructure}
 											/>
 											{formState.steps?.step2?.businessStructure ===
-												'Business' && (
+											'Business' ? (
 												<FormDefinitionListItem
 													label="Australian Business Number (ABN)"
 													value={formState.steps?.step2?.abn}
 												/>
-											)}
+											) : formState.steps?.step2?.businessStructure ===
+											  'Company' ? (
+												<FormDefinitionListItem
+													label="Australian Company Number (ACN)"
+													value={formState.steps?.step2?.acn}
+												/>
+											) : null}
 										</FormDefinitionList>
 									</Stack>
 

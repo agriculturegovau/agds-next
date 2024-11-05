@@ -19,10 +19,10 @@ export const defaultFilters: GetDataFilters = {
 	},
 	status: undefined,
 	trainingCompleted: {
-		'Ice cream making': false,
-		Packaging: false,
 		Deliveries: false,
 		Distribution: false,
+		'Ice cream making': false,
+		Packaging: false,
 	},
 };
 

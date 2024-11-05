@@ -71,8 +71,8 @@ export function FormStep6() {
 
 const foodOptions = [
 	{ value: 'asian noodle bowls', label: 'Asian Noodle Bowls' },
-	{ value: 'bbq ribs', label: 'BBQ Ribs' },
 	{ value: 'banh mi sandwiches', label: 'Banh Mi Sandwiches' },
+	{ value: 'bbq ribs', label: 'BBQ Ribs' },
 	{ value: 'burgers', label: 'Burgers' },
 	{ value: 'cake', label: 'Cake' },
 	{ value: 'coffee', label: 'Coffee' },
@@ -86,5 +86,6 @@ const foodOptions = [
 	{ value: 'mexican', label: 'Mexican' },
 	{ value: 'pasta', label: 'Pasta' },
 	{ value: 'pulled pork', label: 'Pulled Pork' },
+	{ value: 'soft drinks', label: 'Soft Drinks' },
 	{ value: 'veggie wraps', label: 'Veggie Wraps' },
 ];
