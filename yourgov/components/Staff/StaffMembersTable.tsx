@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/src/stack';
 import { Button } from '@ag.ds-next/react/src/button';
@@ -68,6 +68,7 @@ export const StaffMembersTable = ({
 	tableRef,
 }: StaffMembersTableProps) => {
 	const router = useRouter();
+	const pageAlertElement = useRef<HTMLDivElement>(null);
 
 	const { staffMembersGetState, staffMembersDelete } = useStaffGlobalState();
 
@@ -105,27 +106,35 @@ export const StaffMembersTable = ({
 					setUpdatedStaffMemberName,
 				}}
 			>
-				{successMessageType && updatedStaffMemberName && (
+				<div
+					css={{
+						display:
+							successMessageType && updatedStaffMemberName ? 'block' : 'none',
+					}}
+				>
 					<SectionAlert
-						focusOnUpdate={[successMessageType, updatedStaffMemberName].join(
-							''
-						)}
+						focusOnMount
 						onClose={() => {
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
-						title={`${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`}
+						ref={pageAlertElement}
+						title={
+							successMessageType
+								? `${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`
+								: ''
+						}
 						tone="success"
 					>
-						{successTypeToMessageText[successMessageType].description && (
-							<Text as="p">
-								{updatedStaffMemberName}{' '}
-								{successTypeToMessageText[successMessageType].description}
-							</Text>
-						)}
+						{successMessageType &&
+							successTypeToMessageText[successMessageType].description && (
+								<Text as="p">
+									{updatedStaffMemberName}{' '}
+									{successTypeToMessageText[successMessageType].description}
+								</Text>
+							)}
 					</SectionAlert>
-				)}
-
+				</div>
 				<Stack gap={0}>
 					<FilterRegion>
 						<FilterBar>
@@ -162,6 +171,7 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
+						pageAlertElement={pageAlertElement?.current}
 						ref={tableRef}
 						selectable={selectable}
 					/>

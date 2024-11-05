@@ -44,17 +44,20 @@ export const DataTableRowStatus = ({
 };
 
 export const DataTableRow = ({
-	name,
 	children,
 	item,
 	itemId,
+	name,
+	pageAlertElement,
 	rowIndex,
 	selectable,
 }: {
-	name: string;
 	children: ReactNode;
 	item: StaffMemberWithIndex;
 	itemId: string;
+	name: string;
+	/** On close of the action modals, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
 	rowIndex: number;
 	selectable?: boolean;
 }) => {
@@ -140,20 +143,23 @@ export const DataTableRow = ({
 					isOpen={modalChangeRoleOpen}
 					onClose={() => setModalChangeRoleOpen(false)}
 					onConfirm={onConfirmChangeRole}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmPauseAccess
-					itemsToPause={item}
 					isOpen={pauseModalOpen}
+					itemsToPause={item}
 					onClose={() => setPauseModalOpen(false)}
 					onConfirm={onConfirmPause}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmRemoveAccess
-					itemsToDelete={item}
 					isOpen={removeModalOpen}
+					itemsToDelete={item}
 					onClose={() => setRemoveModalOpen(false)}
 					onConfirm={onConfirmRemove}
+					pageAlertElement={pageAlertElement}
 				/>
 			</TableRow>
 		);

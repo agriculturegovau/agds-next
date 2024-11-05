@@ -65,6 +65,7 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 					onKeyDown={props.onKeyDown}
 					ref={ref}
 					rounded
+					type="button"
 					width={mapSpacing(1.5)}
 				>
 					<CloseIcon size="sm" />

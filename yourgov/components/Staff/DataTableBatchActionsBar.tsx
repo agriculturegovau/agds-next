@@ -12,7 +12,12 @@ import { StaffMemberWithIndex } from './lib/types';
 import { useStaffGlobalState } from './StaffProvider';
 import { ModalConfirmChangeRole } from './ModalConfirmChangeRole';
 
-export const DataTableBatchActionsBar = () => {
+export const DataTableBatchActionsBar = ({
+	pageAlertElement,
+}: {
+	/** On close of the action modals, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
+}) => {
 	const { setSuccessMessageType, setUpdatedStaffMemberName } = useDataContext();
 	const { staffMembersDelete, staffMembersUpdate } = useStaffGlobalState();
 	const { selection, clearRowSelections } = useSortAndFilterContext();
@@ -115,20 +120,23 @@ export const DataTableBatchActionsBar = () => {
 					isOpen={modalChangeRoleOpen}
 					onClose={() => setModalChangeRoleOpen(false)}
 					onConfirm={onConfirmChangeRole}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmPauseAccess
-					itemsToPause={items}
 					isOpen={pauseModalOpen}
+					itemsToPause={items}
 					onClose={() => setPauseModalOpen(false)}
 					onConfirm={onConfirmPause}
+					pageAlertElement={pageAlertElement}
 				/>
 
 				<ModalConfirmRemoveAccess
-					itemsToDelete={items}
 					isOpen={removeModalOpen}
+					itemsToDelete={items}
 					onClose={() => setRemoveModalOpen(false)}
 					onConfirm={onConfirmRemove}
+					pageAlertElement={pageAlertElement}
 				/>
 			</TableBatchActionsBar>
 		);

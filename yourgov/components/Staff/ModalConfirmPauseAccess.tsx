@@ -9,16 +9,19 @@ type RowData = StaffMemberWithIndex;
 
 export type ModalConfirmPauseAccessProps = {
 	isOpen: boolean;
-	onConfirm: () => void;
-	onClose: () => void;
 	itemsToPause: RowData | RowData[];
+	onClose: () => void;
+	onConfirm: () => void;
+	/** On close of the modal, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
 };
 
 export function ModalConfirmPauseAccess({
 	isOpen,
-	onConfirm,
-	onClose,
 	itemsToPause,
+	onClose,
+	onConfirm,
+	pageAlertElement,
 }: ModalConfirmPauseAccessProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -49,6 +52,7 @@ export function ModalConfirmPauseAccess({
 
 	return (
 		<Modal
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}

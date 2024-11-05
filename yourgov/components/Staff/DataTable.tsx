@@ -33,12 +33,14 @@ const descriptionId = 'data-table-description';
 type DataTableProps = {
 	/** The id of the heading that describes the table */
 	headingId?: string;
+	/** On close of the action modals, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
 	/** Whether the table should be selectable */
 	selectable?: boolean;
 };
 
 export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
-	function DataTable({ headingId, selectable }, ref) {
+	function DataTable({ headingId, pageAlertElement, selectable }, ref) {
 		const { sort, setSort, pagination, resetFilters } =
 			useSortAndFilterContext();
 		const { displayData, loading, totalItems, error } = useDataContext();
@@ -52,7 +54,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (error) {
 			return (
-				<Stack gap={1} role="status">
+				<Stack gap={1} id={tableId} role="status">
 					<AlertFilledIcon color="error" size="lg" />
 					<Heading type="h2" fontSize="lg">
 						Failed to load
@@ -67,7 +69,13 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (!loading && displayData.length === 0) {
 			return (
-				<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
+				<Stack
+					alignItems="flex-start"
+					gap={2}
+					id={tableId}
+					paddingY={1}
+					role="status"
+				>
 					<Stack gap={1}>
 						<HelpIcon size="lg" color="muted" />
 						<Heading type="h2" fontSize="lg">
@@ -213,12 +221,13 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 										return (
 											<DataTableRow
-												key={name}
-												selectable={selectable}
 												item={item}
 												itemId={item.id}
+												key={name}
 												name={name}
+												pageAlertElement={pageAlertElement}
 												rowIndex={rowIndex}
+												selectable={selectable}
 											>
 												<TableCell as="th" scope="row">
 													<TextLink
@@ -255,7 +264,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						</TableBody>
 					</Table>
 				</TableWrapper>
-				<DataTableBatchActionsBar />
+				<DataTableBatchActionsBar pageAlertElement={pageAlertElement} />
 			</Stack>
 		);
 	}
