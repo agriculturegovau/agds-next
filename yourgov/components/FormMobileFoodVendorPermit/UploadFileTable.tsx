@@ -20,11 +20,8 @@ import {
 	UploadIcon,
 } from '@ag.ds-next/react/icon';
 import { Heading } from '@ag.ds-next/react/heading';
-import { Box } from '@ag.ds-next/react/box';
 import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { Document } from './steps/FormStep9';
-
-const descriptionId = 'data-table-description';
 
 type UploadFileTableProps = {
 	/** The id of the heading that describes the table. */
@@ -68,10 +65,8 @@ export const UploadFileTable = forwardRef<
 		<Stack gap={0.5}>
 			<TableWrapper>
 				<Table
-					aria-rowcount={10}
 					{...(headingId && {
 						'aria-labelledby': headingId,
-						'aria-describedby': descriptionId,
 					})}
 					id={tableId}
 					ref={ref}
@@ -138,7 +133,7 @@ export const UploadFileTable = forwardRef<
 												{documentType}
 											</TableCell>
 											<TableCell>
-												<Box>{file}</Box>
+												<Text breakWords>{file}</Text>
 											</TableCell>
 											<TableCell>
 												{error ? (

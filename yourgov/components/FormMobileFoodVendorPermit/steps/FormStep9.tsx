@@ -86,14 +86,23 @@ export function FormStep9() {
 	// Drawer state
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	const [uploadedFile, setUploadedFile] = useState<FileWithStatus[]>([]);
+	const [fileUploadInvalid, setFileUploadInvalid] = useState(false);
+	const fileUploadRef = useRef<HTMLButtonElement>(null);
 
 	// Action handlers
 	const closeDrawerAndClearForm = () => {
 		setUploadedFile([]);
 		closeDrawer();
+		setFileUploadInvalid(false);
 	};
 
 	const uploadFile = () => {
+		if (!uploadedFile.length) {
+			setFileUploadInvalid(true);
+			fileUploadRef.current?.focus();
+			return;
+		}
+
 		const documentsWithNewFile = documents.map((prevDocument) =>
 			currentDocument?.documentType === prevDocument.documentType
 				? {
@@ -108,7 +117,6 @@ export function FormStep9() {
 		);
 		setDocuments(documentsWithNewFile);
 
-		setTableErrors([]);
 		closeDrawerAndClearForm();
 	};
 
@@ -147,7 +155,7 @@ export function FormStep9() {
 							{
 								documentType: document.documentType,
 								href: `#${document.id}`,
-								message: `Upload a file for ${document.documentType}`,
+								message: `${document.documentType} is required`,
 								name: 'files',
 							},
 					  ],
@@ -193,6 +201,7 @@ export function FormStep9() {
 					<Box css={tableErrors.length ? undefined : { display: 'none' }}>
 						<SectionAlert
 							focusOnUpdate={tableErrors}
+							onClose={() => setTableErrors([])}
 							ref={errorMessageRef}
 							tabIndex={-1}
 							title="You must provide all documents in the table below"
@@ -216,10 +225,10 @@ export function FormStep9() {
 							onClose={() => setCurrentDocument(undefined)}
 							ref={successMessageRef}
 							tabIndex={-1}
-							title={`${currentDocument?.documentType} has been updated`}
+							title={`${currentDocument?.documentType} updated`}
 							tone="success"
 						>
-							<Text as="p">
+							<Text as="p" breakWords>
 								{documents.find(
 									(document) => document.id === currentDocument?.id
 								)?.file || 'Your file'}{' '}
@@ -242,6 +251,7 @@ export function FormStep9() {
 						documents={documents}
 						headingId={tableHeadingId}
 						openDrawer={(document: Document) => {
+							setTableErrors([]);
 							openDrawer();
 							setCurrentDocument(document);
 						}}
@@ -252,7 +262,10 @@ export function FormStep9() {
 
 				<Drawer
 					isOpen={isDrawerOpen}
-					onClose={closeDrawerAndClearForm}
+					onClose={() => {
+						setCurrentDocument(undefined);
+						closeDrawerAndClearForm();
+					}}
 					title="Upload documents"
 					actions={
 						<ButtonGroup>
@@ -260,7 +273,15 @@ export function FormStep9() {
 								Upload file
 							</Button>
 
-							<Button onClick={closeDrawerAndClearForm}>Cancel</Button>
+							<Button
+								onClick={() => {
+									setCurrentDocument(undefined);
+									closeDrawerAndClearForm();
+								}}
+								variant="secondary"
+							>
+								Cancel
+							</Button>
 						</ButtonGroup>
 					}
 					elementToFocusOnClose={
@@ -274,10 +295,13 @@ export function FormStep9() {
 					<Stack as="form" id="upload-document-form">
 						<FileUpload
 							accept={['image/jpeg', 'image/png']}
+							buttonRef={fileUploadRef}
 							hideOptionalLabel
+							invalid={fileUploadInvalid}
 							label={`Upload ${currentDocument?.documentType}`}
 							maxSize={2000}
 							onChange={(file) => setUploadedFile(file)}
+							required
 							value={uploadedFile}
 						/>
 					</Stack>
