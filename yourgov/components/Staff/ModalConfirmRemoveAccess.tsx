@@ -9,16 +9,19 @@ type RowData = StaffMemberWithIndex | StaffMember;
 
 export type ModalConfirmRemoveAccessProps = {
 	isOpen: boolean;
-	onConfirm: () => void;
-	onClose: () => void;
 	itemsToDelete: RowData | RowData[];
+	onClose: () => void;
+	onConfirm: () => void;
+	/** On close of the modal, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
 };
 
 export function ModalConfirmRemoveAccess({
 	isOpen,
-	onConfirm,
-	onClose,
 	itemsToDelete,
+	onClose,
+	onConfirm,
+	pageAlertElement,
 }: ModalConfirmRemoveAccessProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -49,6 +52,7 @@ export function ModalConfirmRemoveAccess({
 
 	return (
 		<Modal
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}

@@ -14,6 +14,7 @@ export type ModalProps = ModalDialogProps & {
 export const Modal: FunctionComponent<ModalProps> = ({
 	actions,
 	children,
+	elementToFocusOnClose,
 	isOpen = false,
 	onClose,
 	onDismiss,
@@ -47,7 +48,12 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={modalContainerRef}>
-				<ModalDialog onClose={closeHandler} title={title} actions={actions}>
+				<ModalDialog
+					actions={actions}
+					elementToFocusOnClose={elementToFocusOnClose}
+					onClose={closeHandler}
+					title={title}
+				>
 					{children}
 				</ModalDialog>
 			</ModalCover>

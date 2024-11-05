@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/src/stack';
 import { Button } from '@ag.ds-next/react/src/button';
@@ -68,6 +68,7 @@ export const StaffMembersTable = ({
 	tableRef,
 }: StaffMembersTableProps) => {
 	const router = useRouter();
+	const pageAlertElement = useRef<HTMLDivElement>(null);
 
 	const { staffMembersGetState, staffMembersDelete } = useStaffGlobalState();
 
@@ -107,13 +108,12 @@ export const StaffMembersTable = ({
 			>
 				{successMessageType && updatedStaffMemberName && (
 					<SectionAlert
-						focusOnUpdate={[successMessageType, updatedStaffMemberName].join(
-							''
-						)}
+						focusOnMount
 						onClose={() => {
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
+						ref={pageAlertElement}
 						title={`${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`}
 						tone="success"
 					>
@@ -162,6 +162,11 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
+						pageAlertElement={
+							successMessageType && updatedStaffMemberName
+								? pageAlertElement?.current
+								: undefined
+						}
 						ref={tableRef}
 						selectable={selectable}
 					/>
