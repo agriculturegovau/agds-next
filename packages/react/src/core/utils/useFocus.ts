@@ -38,7 +38,9 @@ export function useFocus<T extends HTMLElement>({
 				return;
 			}
 
-			ref?.current?.focus?.();
+			setTimeout(() => {
+				ref?.current?.focus?.();
+			}, 0);
 		},
 		// We are allowing a non-literal array of dependencies to enable consumers to trigger focus updates based on a list of their own trigger-values.
 		[focusOnUpdate] // eslint-disable-line react-hooks/exhaustive-deps

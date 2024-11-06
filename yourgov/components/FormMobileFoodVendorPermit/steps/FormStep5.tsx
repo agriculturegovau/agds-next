@@ -57,6 +57,30 @@ export function FormStep5() {
 	};
 
 	const showErrorAlert = hasMultipleErrors(errors);
+	const hasErrors = {
+		tradingPeriod: {
+			both:
+				Boolean(errors.tradingPeriod?.from?.message) &&
+				Boolean(errors.tradingPeriod?.to?.message),
+			from:
+				Boolean(errors.tradingPeriod?.from?.message) &&
+				!Boolean(errors.tradingPeriod?.to?.message),
+			to:
+				!Boolean(errors.tradingPeriod?.from?.message) &&
+				Boolean(errors.tradingPeriod?.to?.message),
+		},
+		hours: {
+			both:
+				Boolean(typeCorrectedErrors.openingTime?.message) &&
+				Boolean(typeCorrectedErrors.closingTime?.message),
+			from:
+				Boolean(typeCorrectedErrors.openingTime?.message) &&
+				!Boolean(typeCorrectedErrors.closingTime?.message),
+			to:
+				!Boolean(typeCorrectedErrors.openingTime?.message) &&
+				Boolean(typeCorrectedErrors.closingTime?.message),
+		},
+	};
 
 	return (
 		<FormContainer
@@ -79,11 +103,18 @@ export function FormStep5() {
 								onChange={onChange}
 								onFromInputChange={(from) => onChange({ ...value, from })}
 								onToInputChange={(to) => onChange({ ...value, to })}
-								fromInvalid={Boolean(errors.tradingPeriod?.from?.message)}
-								toInvalid={Boolean(errors.tradingPeriod?.to?.message)}
+								fromInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
+								}
+								toInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
+								}
 								message={
-									errors.tradingPeriod?.from?.message ||
-									errors.tradingPeriod?.to?.message
+									hasErrors.tradingPeriod.both
+										? errors.tradingPeriod?.from?.message
+										: hasErrors.tradingPeriod.from
+										? 'Start date is required'
+										: 'End date is required'
 								}
 								required
 							/>
@@ -93,11 +124,13 @@ export function FormStep5() {
 						legend="Hours of operation"
 						hideOptionalLabel
 						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
-						field1Invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
-						field2Invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+						field1Invalid={hasErrors.hours.both || hasErrors.hours.from}
+						field2Invalid={hasErrors.hours.both || hasErrors.hours.to}
 						message={
-							typeCorrectedErrors.openingTime?.message ||
-							typeCorrectedErrors.closingTime?.message
+							hasErrors.hours.both
+								? 'Opening time and Closing time is required'
+								: typeCorrectedErrors.openingTime?.message ||
+								  typeCorrectedErrors.closingTime?.message
 						}
 					>
 						{({ field1Props, field2Props }) => (
