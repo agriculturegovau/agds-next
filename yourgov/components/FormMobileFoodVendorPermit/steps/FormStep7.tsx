@@ -123,10 +123,7 @@ export function FormStep7() {
 			<Stack gap={2}>
 				{showErrorMessage && (
 					<PageAlert focusOnMount title="No employees added" tone="error">
-						<Text as="p">
-							You need to add some staff. You’re amazing, but you can’t do this
-							alone. Life is better with friends and team mates.
-						</Text>
+						<Text as="p">You need to add some staff.</Text>
 					</PageAlert>
 				)}
 				<H2 id="list-of-employees">List of employees</H2>
