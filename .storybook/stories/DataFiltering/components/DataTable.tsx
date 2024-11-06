@@ -76,7 +76,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (!loading && data.length === 0) {
 			return (
-				<Stack gap={2} alignItems="flex-start" paddingY={1}>
+				<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
 					<Stack gap={1}>
 						<HelpIcon size="lg" color="muted" />
 						<Heading type="h2" fontSize="lg">

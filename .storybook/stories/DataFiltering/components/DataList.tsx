@@ -34,7 +34,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 
 	if (!data.length)
 		return (
-			<Stack gap={2} alignItems="flex-start" id={tableId}>
+			<Stack gap={2} alignItems="flex-start" id={tableId} role="status">
 				<Stack gap={1}>
 					<HelpIcon size="lg" color="muted" />
 					<Heading type="h2" fontSize="lg">

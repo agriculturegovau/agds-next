@@ -48,6 +48,7 @@ export const ListFiltering = () => {
 						onClearFilters={resetFilters}
 					>
 						<FormStack>
+							<Text color="muted">Results update immediately</Text>
 							<FilterSearchInput block />
 							<FilterStatusSelect block />
 							<FilterStateSelect block />

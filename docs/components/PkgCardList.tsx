@@ -29,7 +29,7 @@ export const PkgCardListEmptyState = ({
 }: {
 	onClear?: () => void;
 }) => (
-	<Stack gap={2} alignItems="flex-start">
+	<Stack gap={2} alignItems="flex-start" role="status">
 		<Stack gap={1}>
 			<HelpIcon size="lg" color="muted" />
 			<Heading type="h2" fontSize="lg">

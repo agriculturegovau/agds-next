@@ -239,7 +239,6 @@ const StaticCode = ({
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
 							style={style}
-							tabIndex={0}
 						>
 							<code>
 								{tokens.map((line, lineKey) => (
