@@ -116,7 +116,7 @@ export function FormStep5() {
 							errors={{
 								'date-range-picker-tradingPeriod-from': {
 									message: hasErrors.tradingPeriod.both
-										? 'Start date and End date is required'
+										? 'Start date and End date are required'
 										: errors.tradingPeriod?.from?.message,
 								},
 								'date-range-picker-tradingPeriod-to': {
@@ -126,7 +126,7 @@ export function FormStep5() {
 								},
 								openingTime: {
 									message: hasErrors.hours.both
-										? 'Opening time and Closing time is required'
+										? 'Opening time and Closing time are required'
 										: typeCorrectedErrors.openingTime?.message,
 								},
 								closingTime: {
