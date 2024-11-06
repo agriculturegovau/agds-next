@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
@@ -7,7 +8,6 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
-import { hasMultipleErrors } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -30,6 +30,8 @@ function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 export function FormStep5() {
 	const { formState, step5SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
+	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
 
 	const {
 		control,
@@ -56,7 +58,51 @@ export function FormStep5() {
 		});
 	};
 
-	const showErrorAlert = hasMultipleErrors(errors);
+	const hasErrors = {
+		tradingPeriod: {
+			both:
+				Boolean(errors.tradingPeriod?.from?.message) &&
+				Boolean(errors.tradingPeriod?.to?.message),
+			from:
+				Boolean(errors.tradingPeriod?.from?.message) &&
+				!errors.tradingPeriod?.to?.message,
+			to:
+				!errors.tradingPeriod?.from?.message &&
+				Boolean(errors.tradingPeriod?.to?.message),
+		},
+		hours: {
+			both:
+				Boolean(typeCorrectedErrors.openingTime?.message) &&
+				Boolean(typeCorrectedErrors.closingTime?.message),
+			from:
+				Boolean(typeCorrectedErrors.openingTime?.message) &&
+				!typeCorrectedErrors.closingTime?.message,
+			to:
+				!typeCorrectedErrors.openingTime?.message &&
+				Boolean(typeCorrectedErrors.closingTime?.message),
+		},
+	};
+
+	const validErrors = [
+		hasErrors.tradingPeriod.both,
+		hasErrors.tradingPeriod.from,
+		hasErrors.tradingPeriod.to,
+		hasErrors.hours.both,
+		hasErrors.hours.from,
+		hasErrors.hours.to,
+	].filter(Boolean);
+
+	const showErrorAlert = validErrors.length > 1;
+
+	useEffect(() => {
+		if (hasErrors.tradingPeriod.both && validErrors.length === 1) {
+			tradingPeriodFromRef?.current?.focus();
+		} else if (hasErrors.tradingPeriod.from && validErrors.length === 1) {
+			tradingPeriodFromRef?.current?.focus();
+		} else if (hasErrors.tradingPeriod.to && validErrors.length === 1) {
+			tradingPeriodToRef?.current?.focus();
+		}
+	}, [hasErrors, validErrors]);
 
 	return (
 		<FormContainer
@@ -65,13 +111,39 @@ export function FormStep5() {
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{showErrorAlert && <FormPageAlert errors={errors} />}
+					{showErrorAlert && (
+						<FormPageAlert
+							errors={{
+								'date-range-picker-tradingPeriod-from': {
+									message: hasErrors.tradingPeriod.both
+										? 'Start date and End date are required'
+										: errors.tradingPeriod?.from?.message,
+								},
+								'date-range-picker-tradingPeriod-to': {
+									message: !hasErrors.tradingPeriod.both
+										? errors.tradingPeriod?.to?.message
+										: undefined,
+								},
+								openingTime: {
+									message: hasErrors.hours.both
+										? 'Opening time and Closing time are required'
+										: typeCorrectedErrors.openingTime?.message,
+								},
+								closingTime: {
+									message: hasErrors.hours.to
+										? typeCorrectedErrors.closingTime?.message
+										: undefined,
+								},
+							}}
+						/>
+					)}
 					<Controller
 						control={control}
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
 							<DateRangePicker
-								fromInputRef={ref}
+								fromInputRef={tradingPeriodFromRef}
+								toInputRef={tradingPeriodToRef}
 								{...field}
 								id="tradingPeriod"
 								legend="Trading period"
@@ -79,11 +151,17 @@ export function FormStep5() {
 								onChange={onChange}
 								onFromInputChange={(from) => onChange({ ...value, from })}
 								onToInputChange={(to) => onChange({ ...value, to })}
-								fromInvalid={Boolean(errors.tradingPeriod?.from?.message)}
-								toInvalid={Boolean(errors.tradingPeriod?.to?.message)}
+								fromInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
+								}
+								toInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
+								}
 								message={
-									errors.tradingPeriod?.from?.message ||
-									errors.tradingPeriod?.to?.message
+									hasErrors.tradingPeriod.both
+										? 'Start date and End date is required'
+										: errors.tradingPeriod?.from?.message ||
+										  errors.tradingPeriod?.to?.message
 								}
 								required
 							/>
@@ -93,11 +171,13 @@ export function FormStep5() {
 						legend="Hours of operation"
 						hideOptionalLabel
 						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
-						field1Invalid={Boolean(typeCorrectedErrors.openingTime?.message)}
-						field2Invalid={Boolean(typeCorrectedErrors.closingTime?.message)}
+						field1Invalid={hasErrors.hours.both || hasErrors.hours.from}
+						field2Invalid={hasErrors.hours.both || hasErrors.hours.to}
 						message={
-							typeCorrectedErrors.openingTime?.message ||
-							typeCorrectedErrors.closingTime?.message
+							hasErrors.hours.both
+								? 'Opening time and Closing time is required'
+								: typeCorrectedErrors.openingTime?.message ||
+								  typeCorrectedErrors.closingTime?.message
 						}
 					>
 						{({ field1Props, field2Props }) => (
@@ -110,6 +190,7 @@ export function FormStep5() {
 											autoComplete="on"
 											label="Opening time"
 											id="openingTime"
+											ref={ref}
 											{...field}
 											{...field1Props}
 											required
@@ -124,6 +205,7 @@ export function FormStep5() {
 											autoComplete="on"
 											label="Closing time"
 											id="closingTime"
+											ref={ref}
 											{...field}
 											{...field2Props}
 											required

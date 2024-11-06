@@ -50,7 +50,7 @@ export function ApplicationHistory() {
 					<TableHead>
 						<TableRow>
 							<TableHeader scope="col" width="18%">
-								Reference number
+								Reference&nbsp;number
 							</TableHeader>
 							<TableHeader scope="col" width="27%">
 								Type
@@ -59,7 +59,7 @@ export function ApplicationHistory() {
 								Status
 							</TableHeader>
 							<TableHeader scope="col" width="20%">
-								Last updated
+								Last&nbsp;updated
 							</TableHeader>
 							<TableHeader scope="col" width="10%">
 								Actions

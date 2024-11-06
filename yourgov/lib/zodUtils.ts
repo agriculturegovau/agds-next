@@ -48,12 +48,18 @@ export function zodPhoneFieldOptional() {
 }
 
 export function zodDateField(message = 'Enter a valid date') {
-	return z.union([z.string(), z.date()]).pipe(
-		z.coerce.date({
-			invalid_type_error: 'Enter a valid date',
-			required_error: message,
-		})
-	);
+	return z
+		.union([
+			z.string({
+				invalid_type_error: 'Enter a valid date',
+				required_error: message,
+			}),
+			z.date({
+				invalid_type_error: 'Enter a valid date',
+				required_error: message,
+			}),
+		])
+		.pipe(z.coerce.date());
 }
 
 type ZodTimeFieldProps = {
