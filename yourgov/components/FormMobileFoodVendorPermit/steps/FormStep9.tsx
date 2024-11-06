@@ -11,6 +11,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Box } from '@ag.ds-next/react/box';
 import { H2 } from '@ag.ds-next/react/heading';
 import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
+import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { StepActions } from '../StepActions';
 import { UploadFileTable } from '../UploadFileTable';
@@ -108,9 +109,7 @@ export function FormStep9() {
 				? {
 						...prevDocument,
 						file: uploadedFile[0]?.name || '',
-						size: uploadedFile[0]
-							? `${Math.round(uploadedFile[0].size / 1000)}kB`
-							: '',
+						size: uploadedFile[0] ? `${filesize(uploadedFile[0].size)}` : '',
 						error: false,
 				  }
 				: prevDocument
@@ -248,8 +247,8 @@ export function FormStep9() {
 					</H2>
 
 					<UploadFileTable
+						ariaLabelledby={tableHeadingId}
 						documents={documents}
-						headingId={tableHeadingId}
 						openDrawer={(document: Document) => {
 							setTableErrors([]);
 							openDrawer();
@@ -300,6 +299,7 @@ export function FormStep9() {
 							invalid={fileUploadInvalid}
 							label={`Upload ${currentDocument?.documentType}`}
 							maxSize={2000}
+							message="File is required."
 							onChange={(file) => setUploadedFile(file)}
 							required
 							value={uploadedFile}

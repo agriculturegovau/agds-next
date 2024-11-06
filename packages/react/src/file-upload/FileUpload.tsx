@@ -267,13 +267,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
-		const buttonAriaDescribedBy = [
-			fileSizeDescriptionId,
-			acceptedFilesDescriptionId,
-		]
-			.filter(Boolean)
-			.join(', ');
-
 		return (
 			<Field
 				label={label}
@@ -285,6 +278,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				id={id}
 			>
 				{(a11yProps) => {
+					const buttonAriaDescribedBy = [
+						a11yProps['aria-describedby'],
+						fileSizeDescriptionId,
+						acceptedFilesDescriptionId,
+					]
+						.filter(Boolean)
+						.join(' ');
+
 					return (
 						<Stack gap={1.5}>
 							<div css={visuallyHiddenStyles} role="status">

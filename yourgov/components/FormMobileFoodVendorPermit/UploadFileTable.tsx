@@ -24,6 +24,8 @@ import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { Document } from './steps/FormStep9';
 
 type UploadFileTableProps = {
+	/** The id of the element to assign the table an accessible name. */
+	ariaLabelledby?: string;
 	/** The id of the heading that describes the table. */
 	headingId?: string;
 	/** The id of the table. */
@@ -40,7 +42,7 @@ export const UploadFileTable = forwardRef<
 	HTMLTableElement,
 	UploadFileTableProps
 >(function UploadFileTable(
-	{ documents, headingId, openDrawer, removeFile, tableId },
+	{ ariaLabelledby, documents, openDrawer, removeFile, tableId },
 	ref
 ) {
 	const error = false;
@@ -65,9 +67,7 @@ export const UploadFileTable = forwardRef<
 		<Stack gap={0.5}>
 			<TableWrapper>
 				<Table
-					{...(headingId && {
-						'aria-labelledby': headingId,
-					})}
+					aria-labelledby={ariaLabelledby}
 					id={tableId}
 					ref={ref}
 					tabIndex={-1}
