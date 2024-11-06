@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
@@ -7,7 +8,6 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
-import { hasMultipleErrors } from '../utils';
 import { type ShallowErrors } from '../FormState';
 import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -30,6 +30,8 @@ function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 export function FormStep5() {
 	const { formState, step5SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
+	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
 
 	const {
 		control,
@@ -80,7 +82,27 @@ export function FormStep5() {
 				Boolean(typeCorrectedErrors.closingTime?.message),
 		},
 	};
-	const showErrorAlert = hasMultipleErrors(errors);
+
+	const validErrors = [
+		hasErrors.tradingPeriod.both,
+		hasErrors.tradingPeriod.from,
+		hasErrors.tradingPeriod.to,
+		hasErrors.hours.both,
+		hasErrors.hours.from,
+		hasErrors.hours.to,
+	].filter(Boolean);
+
+	const showErrorAlert = validErrors.length > 1;
+
+	useEffect(() => {
+		if (hasErrors.tradingPeriod.both && validErrors.length === 1) {
+			tradingPeriodFromRef?.current?.focus();
+		} else if (hasErrors.tradingPeriod.from && validErrors.length === 1) {
+			tradingPeriodFromRef?.current?.focus();
+		} else if (hasErrors.tradingPeriod.to && validErrors.length === 1) {
+			tradingPeriodToRef?.current?.focus();
+		}
+	}, [hasErrors, validErrors]);
 
 	return (
 		<FormContainer
@@ -120,7 +142,8 @@ export function FormStep5() {
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
 							<DateRangePicker
-								fromInputRef={ref}
+								fromInputRef={tradingPeriodFromRef}
+								toInputRef={tradingPeriodToRef}
 								{...field}
 								id="tradingPeriod"
 								legend="Trading period"
@@ -167,6 +190,7 @@ export function FormStep5() {
 											autoComplete="on"
 											label="Opening time"
 											id="openingTime"
+											ref={ref}
 											{...field}
 											{...field1Props}
 											required
@@ -181,6 +205,7 @@ export function FormStep5() {
 											autoComplete="on"
 											label="Closing time"
 											id="closingTime"
+											ref={ref}
 											{...field}
 											{...field2Props}
 											required
