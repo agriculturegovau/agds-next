@@ -64,9 +64,9 @@ export function FormStep5() {
 				Boolean(errors.tradingPeriod?.to?.message),
 			from:
 				Boolean(errors.tradingPeriod?.from?.message) &&
-				!Boolean(errors.tradingPeriod?.to?.message),
+				!errors.tradingPeriod?.to?.message,
 			to:
-				!Boolean(errors.tradingPeriod?.from?.message) &&
+				!errors.tradingPeriod?.from?.message &&
 				Boolean(errors.tradingPeriod?.to?.message),
 		},
 		hours: {
@@ -75,9 +75,9 @@ export function FormStep5() {
 				Boolean(typeCorrectedErrors.closingTime?.message),
 			from:
 				Boolean(typeCorrectedErrors.openingTime?.message) &&
-				!Boolean(typeCorrectedErrors.closingTime?.message),
+				!typeCorrectedErrors.closingTime?.message,
 			to:
-				!Boolean(typeCorrectedErrors.openingTime?.message) &&
+				!typeCorrectedErrors.openingTime?.message &&
 				Boolean(typeCorrectedErrors.closingTime?.message),
 		},
 	};
