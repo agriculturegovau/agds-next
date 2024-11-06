@@ -133,7 +133,6 @@ export function FormStep9() {
 			)
 		);
 		setCurrentDocument(document);
-		closeDrawerAndClearForm();
 	};
 
 	const onSaveAndContinue = () => {
@@ -300,7 +299,12 @@ export function FormStep9() {
 							label={`Upload ${currentDocument?.documentType}`}
 							maxSize={2000}
 							message="File is required."
-							onChange={(file) => setUploadedFile(file)}
+							onChange={(file) => {
+								setUploadedFile(file);
+								if (file.length) {
+									setFileUploadInvalid(false);
+								}
+							}}
 							required
 							value={uploadedFile}
 						/>

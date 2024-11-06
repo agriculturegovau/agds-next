@@ -1,6 +1,4 @@
-import { forwardRef, Fragment } from 'react';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
+import { forwardRef } from 'react';
 import {
 	Table,
 	TableBody,
@@ -13,20 +11,13 @@ import {
 import { Text } from '@ag.ds-next/react/text';
 import { Button } from '@ag.ds-next/react/button';
 import { Stack } from '@ag.ds-next/react/stack';
-import {
-	AlertFilledIcon,
-	DeleteIcon,
-	UploadIcon,
-} from '@ag.ds-next/react/icon';
-import { Heading } from '@ag.ds-next/react/heading';
+import { DeleteIcon, UploadIcon } from '@ag.ds-next/react/icon';
 import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { Document } from './steps/FormStep9';
 
 type UploadFileTableProps = {
 	/** The id of the element to assign the table an accessible name. */
 	ariaLabelledby?: string;
-	/** The id of the heading that describes the table. */
-	headingId?: string;
 	/** The id of the table. */
 	tableId?: string;
 	/** Open drawer. */
@@ -44,24 +35,6 @@ export const UploadFileTable = forwardRef<
 	{ ariaLabelledby, documents, openDrawer, removeFile, tableId },
 	ref
 ) {
-	const error = false;
-	const loading = false;
-
-	if (error) {
-		return (
-			<Stack gap={1}>
-				<AlertFilledIcon color="error" size="lg" />
-				<Heading type="h2" fontSize="lg">
-					Failed to load
-				</Heading>
-				<Text>
-					There was an error loading the data. Please try refreshing the page to
-					try again.
-				</Text>
-			</Stack>
-		);
-	}
-
 	return (
 		<Stack gap={0.5}>
 			<TableWrapper>
@@ -84,91 +57,68 @@ export const UploadFileTable = forwardRef<
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{loading ? (
-							<Fragment>
-								{documents.map((_, index) => (
-									<TableRow key={index}>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonText />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-										<TableCell>
-											<SkeletonBox height={32} />
-											<VisuallyHidden>Loading</VisuallyHidden>
-										</TableCell>
-									</TableRow>
-								))}
-							</Fragment>
-						) : (
-							<Fragment>
-								{documents.map((document, index) => {
-									const { id, documentType, error, file, size } = document;
-									// Adding 2 because the table header row is the first row
-									const rowIndex = index + 2;
-									return (
-										<TableRow
-											aria-rowindex={rowIndex}
-											invalid={error}
-											key={documentType}
-										>
-											<TableCell as="th" scope="row">
-												{documentType}
-											</TableCell>
-											<TableCell>
-												<Text breakWords>{file}</Text>
-											</TableCell>
-											<TableCell>
-												{error ? (
-													<StatusBadge
-														label="File missing"
-														appearance="subtle"
-														tone="errorHigh"
-													/>
-												) : (
-													size
-												)}
-											</TableCell>
-											<TableCell>
-												<Button
-													aria-label={`${
-														size ? 'Remove' : 'Upload'
-													}: ${documentType}`}
-													focusRingFor="all"
-													iconBefore={size ? DeleteIcon : UploadIcon}
-													id={id}
-													onClick={() =>
-														size
-															? removeFile(document)
-															: openDrawer({
-																	id,
-																	documentType,
-																	error,
-																	file,
-																	size,
-															  })
-													}
-													variant="text"
-												>
-													{size ? 'Remove' : 'Upload'}
-												</Button>
-											</TableCell>
-										</TableRow>
-									);
-								})}
-							</Fragment>
-						)}
+						{documents.map((document, index) => {
+							const { id, documentType, error, file, size } = document;
+							// Adding 2 because the table header row is the first row
+							const rowIndex = index + 2;
+							return (
+								<TableRow
+									aria-rowindex={rowIndex}
+									invalid={error}
+									key={documentType}
+								>
+									<TableCell as="th" id={`document-type-${id}`} scope="row">
+										{documentType}
+									</TableCell>
+									<TableCell>
+										<Text breakWords>{file}</Text>
+									</TableCell>
+									<TableCell>
+										{error ? (
+											<StatusBadge
+												label="File missing"
+												appearance="subtle"
+												tone="errorHigh"
+											/>
+										) : (
+											size
+										)}
+									</TableCell>
+									<TableCell>
+										{size ? (
+											<Button
+												aria-describedby={`document-type-${id}`}
+												focusRingFor="all"
+												iconBefore={DeleteIcon}
+												onClick={() => removeFile(document)}
+												variant="text"
+											>
+												Remove
+											</Button>
+										) : (
+											<Button
+												aria-describedby={`document-type-${id}`}
+												focusRingFor="all"
+												iconBefore={UploadIcon}
+												id={id}
+												onClick={() =>
+													openDrawer({
+														id,
+														documentType,
+														error,
+														file,
+														size,
+													})
+												}
+												variant="text"
+											>
+												Upload
+											</Button>
+										)}
+									</TableCell>
+								</TableRow>
+							);
+						})}
 					</TableBody>
 				</Table>
 			</TableWrapper>
@@ -183,7 +133,7 @@ const headers = [
 	},
 	{
 		label: 'File',
-		width: '16rem',
+		width: { xs: '10rem', xl: '16rem' },
 	},
 	{
 		label: 'Size',
