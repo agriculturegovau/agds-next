@@ -183,7 +183,7 @@ const Page: NextPageWithLayout = () => {
 							)}
 						</ControlGroup>
 
-						<ControlGroup hideOptionalLabel label="Training completed" block>
+						<ControlGroup label="Training completed" block>
 							{[
 								'Deliveries',
 								'Distribution',

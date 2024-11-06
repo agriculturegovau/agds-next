@@ -10,6 +10,7 @@ import {
 	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
+import { mapSpacing } from '@ag.ds-next/react/core';
 import {
 	FormDefinitionList,
 	FormDefinitionListItem,
@@ -277,14 +278,30 @@ export function FormStep10Review() {
 
 			{/** Upload documents */}
 			<Stack gap={1.5}>
-				<H2>TODO - {formSteps[8].label}</H2>
+				<H2>{formSteps[8].label}</H2>
 				{validation.step9.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
 							label="Documents"
-							value={formState.steps?.step9?.cuisine
-								?.map((item) => item?.label)
-								.join(', ')}
+							value={
+								<ul
+									css={{
+										display: 'flex',
+										flexDirection: 'column',
+										gap: mapSpacing(0.5),
+										margin: 0,
+										paddingLeft: mapSpacing(1),
+									}}
+								>
+									{Object.values(formState.steps?.step9?.files || {})?.map(
+										(item, index) => (
+											<li key={index}>{`${item?.file || ''} (${
+												item.size
+											})`}</li>
+										)
+									)}
+								</ul>
+							}
 						/>
 					</FormDefinitionList>
 				) : (

@@ -1,4 +1,4 @@
-import { Fragment, PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren, ReactNode } from 'react';
 import format from 'date-fns/format';
 import {
 	SummaryList,
@@ -13,7 +13,7 @@ export function FormDefinitionList(props: PropsWithChildren<{}>) {
 
 type FormDefinitionListItemProps = {
 	label: string;
-	value: string | undefined;
+	value: ReactNode | undefined;
 };
 
 export function FormDefinitionListItem({

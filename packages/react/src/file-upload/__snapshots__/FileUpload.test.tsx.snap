@@ -95,7 +95,8 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-82tp6n-BaseButton-Button"
+            aria-describedby="field-:r9:-hint"
+            class="css-1qjel8e-BaseButton-Button"
             type="button"
           >
             <span>
@@ -319,7 +320,8 @@ exports[`FileUpload Basic renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-82tp6n-BaseButton-Button"
+            aria-describedby="field-:r1:-hint"
+            class="css-1qjel8e-BaseButton-Button"
             type="button"
           >
             <span>
@@ -436,7 +438,8 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </span>
           </div>
           <button
-            class="css-82tp6n-BaseButton-Button"
+            aria-describedby="field-:rd:-hint"
+            class="css-1qjel8e-BaseButton-Button"
             type="button"
           >
             <span>
@@ -799,8 +802,8 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
           </div>
           <button
-            aria-describedby=":r4:-file-size-desc, :r4:-accepted-files-desc"
-            class="css-82tp6n-BaseButton-Button"
+            aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
+            class="css-1qjel8e-BaseButton-Button"
             type="button"
           >
             <span>

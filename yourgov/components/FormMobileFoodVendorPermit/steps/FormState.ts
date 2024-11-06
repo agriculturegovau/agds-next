@@ -174,10 +174,20 @@ export const step8FormSchema = z.object({
 export type Step8FormSchema = z.infer<typeof step8FormSchema>;
 
 export const step9FormSchema = z.object({
-	cuisine: zodArray(
-		z.object({ label: zodString(), value: zodString() }),
-		'Food types is required'
-	),
+	files: z.object({
+		'rms-vehicle-registration': z.object({
+			file: zodString(),
+			size: zodString(),
+		}),
+		'food-safety-certificate': z.object({
+			file: zodString(),
+			size: zodString(),
+		}),
+		'suggested-menu-or-list-of-foods-being-sold': z.object({
+			file: zodString(),
+			size: zodString(),
+		}),
+	}),
 });
 
 export type Step9FormSchema = z.infer<typeof step9FormSchema>;
@@ -222,6 +232,22 @@ export const defaultFormState: DeepPartial<FormState> = {
 	},
 	step7: {
 		employee: [],
+	},
+	step9: {
+		files: {
+			'rms-vehicle-registration': {
+				file: '',
+				size: '',
+			},
+			'food-safety-certificate': {
+				file: '',
+				size: '',
+			},
+			'suggested-menu-or-list-of-foods-being-sold': {
+				file: '',
+				size: '',
+			},
+		},
 	},
 };
 

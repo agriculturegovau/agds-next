@@ -154,13 +154,16 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					},
 				}));
 			},
+			step9GetState: () => {
+				return globalState.steps?.step9;
+			},
 			step9SetState: (newState: Partial<StepsFormState['step9']>) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					lastUpdated: Date.now(),
 					steps: {
 						...prevState.steps,
-						step9: newState,
+						step9: { ...newState, started: true },
 					},
 				}));
 			},
