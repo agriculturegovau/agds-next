@@ -34,7 +34,7 @@ export const yupPhoneField = yup
 	})
 	.length(10, 'Phone number must be 10 digits');
 
-export function hasMultipleErrors(errors: FieldValues) {
+export function hasMultipleErrors(errors: FieldValues = {}) {
 	return Object.keys(errors).length > 1;
 }
 

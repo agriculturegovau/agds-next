@@ -17,6 +17,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormPageAlert } from '../FormPageAlert';
+import { type ShallowErrors } from '../FormState';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { step7FormSchema, type Step7FormSchema } from './FormState';
@@ -72,7 +73,10 @@ export function FormStep7AddEmployee() {
 		router.push(step7Path);
 	}
 
-	const showErrorAlert = hasMultipleErrors(errors);
+	const typeCorrectedErrors =
+		errors?.employee as ShallowErrors<Step7FormSchema>;
+
+	const showErrorAlert = hasMultipleErrors(typeCorrectedErrors);
 
 	const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -134,12 +138,12 @@ export function FormStep7AddEmployee() {
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<FormStack>
-								{showErrorAlert && errors?.employee && (
-									<FormPageAlert errors={errors?.employee} />
+								{showErrorAlert && (
+									<FormPageAlert errors={typeCorrectedErrors} />
 								)}
 								<input
 									{...register('employee.id')}
-									id="employee.id"
+									id="id"
 									required
 									type="hidden"
 									value={uuid.current}
@@ -148,7 +152,7 @@ export function FormStep7AddEmployee() {
 									autoComplete="given-name"
 									label="First name"
 									{...register('employee.firstName')}
-									id="employee.firstName"
+									id="firstName"
 									invalid={Boolean(errors?.employee?.firstName?.message)}
 									maxWidth="lg"
 									message={errors?.employee?.firstName?.message}
@@ -158,7 +162,7 @@ export function FormStep7AddEmployee() {
 									autoComplete="family-name"
 									label="Last name"
 									{...register('employee.lastName')}
-									id="employee.lastName"
+									id="lastName"
 									invalid={Boolean(errors?.employee?.lastName?.message)}
 									maxWidth="lg"
 									message={errors?.employee?.lastName?.message}
@@ -169,7 +173,7 @@ export function FormStep7AddEmployee() {
 									label="Email address"
 									type="email"
 									{...register('employee.email')}
-									id="employee.email"
+									id="email"
 									invalid={Boolean(errors?.employee?.email?.message)}
 									maxWidth="xl"
 									message={errors?.employee?.email?.message}
