@@ -1,6 +1,7 @@
 import {
 	forwardRef,
 	InputHTMLAttributes,
+	Ref,
 	useEffect,
 	useMemo,
 	useState,
@@ -45,6 +46,8 @@ type BaseInputProps = {
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file MIME types, e.g. `image/jpeg`, `application/pdf`. */
 	accept?: (AcceptedFileMimeTypes | CustomFileMimeType)[];
+	/** The ref to be passed to the Select file(s) button. */
+	buttonRef?: Ref<HTMLButtonElement>;
 	/** If true, the thumbnails will be hidden. */
 	hideThumbnails?: boolean;
 	/** Describes the purpose of the field. */
@@ -79,6 +82,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
 			accept: acceptProp,
+			buttonRef,
 			disabled,
 			existingFiles = [],
 			hideOptionalLabel,
@@ -263,13 +267,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
-		const buttonAriaDescribedBy = [
-			fileSizeDescriptionId,
-			acceptedFilesDescriptionId,
-		]
-			.filter(Boolean)
-			.join(', ');
-
 		return (
 			<Field
 				label={label}
@@ -281,6 +278,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				id={id}
 			>
 				{(a11yProps) => {
+					const buttonAriaDescribedBy = [
+						a11yProps['aria-describedby'],
+						fileSizeDescriptionId,
+						acceptedFilesDescriptionId,
+					]
+						.filter(Boolean)
+						.join(' ');
+
 					return (
 						<Stack gap={1.5}>
 							<div css={visuallyHiddenStyles} role="status">
@@ -353,7 +358,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<Button
 										aria-describedby={buttonAriaDescribedBy || undefined}
 										disabled={disabled}
+										focusRingFor="all"
 										onClick={open}
+										ref={buttonRef}
 										type="button"
 										variant="secondary"
 									>

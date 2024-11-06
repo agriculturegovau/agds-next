@@ -6,22 +6,16 @@ import {
 	useContext,
 	useState,
 } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { TaskListItemStatus } from '@ag.ds-next/react/task-list';
-import { DeepPartial } from '../../lib/types';
 import { useSessionFormState } from '../../lib/useSessionFormState';
-import { FormState, defaultFormState, TaskKey } from './FormState';
+import { defaultFormState } from './FormState';
+import { managePermitsPage } from './utils';
 
-type ContextType = {
+type GlobalState = Omit<ReturnType<typeof useSessionFormState>, 'hasSynced'>;
+
+type ContextType = GlobalState & {
 	formTitle: string;
-	typeSearchParm: string;
-	homePageUrl: string;
-	// Task status
-	getTaskStatus: (key: TaskKey) => TaskListItemStatus;
-	startTask: (key: TaskKey) => void;
-	// Form state
-	formState: DeepPartial<FormState>;
-	setFormState: (formState: DeepPartial<FormState>) => void;
+	managePermitsPage: string;
+	startApplication: () => void;
 	// Is submitting step
 	isSubmittingStep: boolean;
 	setIsSubmittingStep: (value: boolean) => void;
@@ -40,43 +34,29 @@ export function GlobalFormProvider({
 }: FormMobileFoodVendorPermitProps) {
 	const router = useRouter();
 
-	const [hasSynced, formState, setFormState] = useSessionFormState(
-		'FormMobileFoodVendorPermit',
-		defaultFormState as DeepPartial<FormState>
-	);
+	const { hasSynced, formState, setFormState, ...stateSettersPerStep } =
+		useSessionFormState('FormMobileFoodVendorPermit', defaultFormState);
 
-	const searchParams = useSearchParams();
-	const typeSearchParm = searchParams.get('type') ?? '';
+	const formTitle = `Apply for a ${formState.type} permit`;
 
-	const formTitle = `Apply for a ${typeSearchParm} permit`;
-	const homePageUrl = `/app/licences-and-permits/apply/mobile-food-vendor-permit/form?type=${typeSearchParm}`;
-
-	const getTaskStatus = useCallback(
-		(taskKey: TaskKey): TaskListItemStatus => {
-			{
-				if (formState[taskKey]?.completed) return 'doneRecently';
-				if (formState[taskKey]?.started) return 'doing';
-				return 'todo';
-			}
-		},
-		[formState]
-	);
-
-	const startTask = useCallback(
-		(taskKey: TaskKey) => {
-			setFormState((formState) => ({
+	const startApplication = useCallback(() => {
+		setFormState((formState) => {
+			return {
 				...formState,
-				[taskKey]: { ...formState[taskKey], started: true },
-			}));
-		},
-		[setFormState]
-	);
+				id: formState?.id || Math.round(Math.random() * 1000000000).toString(),
+				started: true,
+				steps: {
+					...formState.steps,
+				},
+			};
+		});
+	}, [setFormState]);
 
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
 	const cancel = useCallback(() => {
-		router.push(homePageUrl);
-	}, [homePageUrl, router]);
+		router.push(managePermitsPage);
+	}, [router]);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
 
@@ -84,23 +64,21 @@ export function GlobalFormProvider({
 		setIsSavingBeforeExiting(true);
 		setTimeout(() => {
 			setIsSavingBeforeExiting(false);
-			router.push(homePageUrl);
+			router.push(managePermitsPage);
 		}, 1500);
-	}, [homePageUrl, router]);
+	}, [router]);
 
-	// Prevent the form rendering until the users progress has been loaded from session storage
+	// Prevent the form rendering until the user's progress has been loaded from session storage
 	if (!hasSynced) return null;
 
 	const contextValue: ContextType = {
 		formTitle,
-		typeSearchParm,
-		homePageUrl,
-		// task status
-		getTaskStatus,
-		startTask,
+		managePermitsPage,
+		startApplication,
 		// form state
 		formState,
 		setFormState,
+		...stateSettersPerStep,
 		// submitting step
 		isSubmittingStep,
 		setIsSubmittingStep,

@@ -124,7 +124,8 @@ const calendarComponents: CustomComponents = {
 			labels: { labelPrevious, labelNext },
 			locale,
 		} = useDayPicker();
-		const { previousMonth, nextMonth, goToMonth } = useNavigation();
+		const { displayMonths, previousMonth, nextMonth, goToMonth } =
+			useNavigation();
 
 		const handlePreviousClick: MouseEventHandler = () => {
 			if (!previousMonth) return;
@@ -154,33 +155,39 @@ const calendarComponents: CustomComponents = {
 			classNames.nav_button_next,
 		].join(' ');
 
+		const isFirst = props.displayIndex === 0;
+		const isLast = props.displayIndex === displayMonths.length - 1;
+
 		return (
 			<div className={classNames.caption} style={styles.caption}>
-				<button
-					aria-label={previousLabel}
-					className={previousClassName}
-					disabled={!previousMonth}
-					onClick={handlePreviousClick}
-					type="button"
-				>
-					<ChevronLeftIcon color="inherit" weight="bold" />
-				</button>
+				{isFirst && (
+					<button
+						aria-label={previousLabel}
+						className={previousClassName}
+						disabled={!previousMonth}
+						onClick={handlePreviousClick}
+						type="button"
+					>
+						<ChevronLeftIcon color="inherit" weight="bold" />
+					</button>
+				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
 						id={props.id}
 						displayMonth={props.displayMonth}
-						displayIndex={props.displayIndex}
 					/>
 				)}
-				<button
-					aria-label={nextLabel}
-					className={nextClassName}
-					disabled={!nextMonth}
-					onClick={handleNextClick}
-					type="button"
-				>
-					<ChevronRightIcon color="inherit" weight="bold" />
-				</button>
+				{isLast && (
+					<button
+						aria-label={nextLabel}
+						className={nextClassName}
+						disabled={!nextMonth}
+						onClick={handleNextClick}
+						type="button"
+					>
+						<ChevronRightIcon color="inherit" weight="bold" />
+					</button>
+				)}
 			</div>
 		);
 	},
@@ -431,6 +438,7 @@ function YearMonthSelect({
 			</label>
 			<Box
 				as="select"
+				autoComplete="off"
 				id={selectId}
 				value={value}
 				onChange={onChange}

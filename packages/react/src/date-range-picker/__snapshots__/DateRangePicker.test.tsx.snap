@@ -35,7 +35,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r1:"
+              for="date-range-picker-:r0:-from"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -57,7 +57,7 @@ exports[`DateRangePicker renders correctly 1`] = `
                 aria-required="false"
                 autocomplete="off"
                 class="css-vgeom5-DateInput"
-                id="field-:r1:"
+                id="date-range-picker-:r0:-from"
                 type="text"
                 value="01/01/2000"
               />
@@ -115,7 +115,7 @@ exports[`DateRangePicker renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r2:"
+              for="date-range-picker-:r0:-to"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -137,7 +137,7 @@ exports[`DateRangePicker renders correctly 1`] = `
                 aria-required="false"
                 autocomplete="off"
                 class="css-vgeom5-DateInput"
-                id="field-:r2:"
+                id="date-range-picker-:r0:-to"
                 type="text"
                 value="02/01/2000"
               />

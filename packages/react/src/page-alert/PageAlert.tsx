@@ -29,7 +29,7 @@ export type PageAlertProps = PropsWithChildren<{
 	/** Whether the alert should be focused as soon as it's rendered. */
 	focusOnMount?: boolean;
 	/** Focus the alert when a value in this array updates. */
-	focusOnUpdate?: ReadonlyArray<unknown>;
+	focusOnUpdate?: ReadonlyArray<unknown> | string;
 	/** The id of the alert. */
 	id?: string;
 	/** The WAI-ARIA role. */

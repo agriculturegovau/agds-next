@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, Heading } from '@ag.ds-next/react/heading';
+import { H1, H2, H3, Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -24,7 +24,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle title="Dashboard" />
 			<PageContent>
 				<Stack gap={3}>
-					<Stack gap={0.5} alignItems="flex-start">
+					<Stack gap={1} alignItems="flex-start">
 						<Flex gap={0.5}>
 							<Tag>{selectedBusiness.abn}</Tag>
 							<Text>ABN</Text>
@@ -37,10 +37,10 @@ const Page: NextPageWithLayout = () => {
 						<Card as="li" shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<IconApproval size="lg" color="action" />
+									<IconApproval size="xl" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/licences-and-permits">
-											Manage licences and permits
+											Manage permits
 										</CardLink>
 									</Heading>
 									<Text>Apply for and manage your business approvals</Text>
@@ -50,9 +50,9 @@ const Page: NextPageWithLayout = () => {
 						<Card as="li" shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<IconUsers size="lg" color="action" />
+									<IconUsers size="xl" color="action" />
 									<Heading as="h2" type="h3">
-										<CardLink href="/not-found">Manage staff access</CardLink>
+										<CardLink href="/app/staff">Manage staff access</CardLink>
 									</Heading>
 									<Text>
 										Manage people who can act on behalf of the business and
@@ -72,11 +72,11 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
+										<H3>
 											<CardLink href="/not-found">
 												Industry-specific training courses
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
 											Explore hundreds of training courses offered by TAFE and
 											other training providers.
@@ -87,20 +87,22 @@ const Page: NextPageWithLayout = () => {
 							<Card as="li" shadow clickable>
 								<CardInner>
 									<Stack gap={1}>
-										<Heading as="h2" type="h3">
-											<CardLink href="/not-found">
-												Liquor licencing and information
+										<H3>
+											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
+												Apply for a mobile food vendor permit
 											</CardLink>
-										</Heading>
+										</H3>
 										<Text>
-											Use the liquor licence tool to quickly find the right
-											licence for your specific situation.
+											Food businesses that sell food to the public need to be
+											registered before opening.
 										</Text>
 									</Stack>
 								</CardInner>
 							</Card>
 						</Columns>
 					</Stack>
+
+					<Divider />
 
 					<Columns cols={{ xs: 1, sm: 4 }}>
 						<Column columnSpan={{ xs: 1, sm: 3 }}>
