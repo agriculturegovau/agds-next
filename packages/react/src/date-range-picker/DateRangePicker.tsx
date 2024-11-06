@@ -309,7 +309,8 @@ export const DateRangePicker = ({
 
 	const invalid = fromInvalid || toInvalid;
 
-	const { fieldsetId, hintId, messageId } = useDateRangePickerIds(id);
+	const { fieldsetId, fromId, hintId, messageId, toId } =
+		useDateRangePickerIds(id);
 	const fromDescribedByIds = [
 		fromInvalid && message ? messageId : null,
 		hint ? hintId : null,
@@ -395,6 +396,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: fromInvalid }}
 							dateFormat={dateFormat}
+							id={fromId}
 						/>
 						<DateInput
 							aria-describedby={
@@ -417,6 +419,7 @@ export const DateRangePicker = ({
 							required={required}
 							invalid={{ field: false, input: toInvalid }}
 							dateFormat={dateFormat}
+							id={toId}
 						/>
 					</Flex>
 				</Stack>
@@ -450,5 +453,7 @@ export function useDateRangePickerIds(idProp?: string) {
 	const fieldsetId = idProp || `date-range-picker-${autoId}`;
 	const hintId = `date-range-picker-${autoId}-hint`;
 	const messageId = `date-range-picker-${autoId}-message`;
-	return { fieldsetId, hintId, messageId };
+	const fromId = `date-range-picker-${autoId}-from`;
+	const toId = `date-range-picker-${autoId}-to`;
+	return { fieldsetId, fromId, hintId, messageId, toId };
 }

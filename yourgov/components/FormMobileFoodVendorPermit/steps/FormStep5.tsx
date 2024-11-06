@@ -56,7 +56,6 @@ export function FormStep5() {
 		});
 	};
 
-	const showErrorAlert = hasMultipleErrors(errors);
 	const hasErrors = {
 		tradingPeriod: {
 			both:
@@ -81,6 +80,7 @@ export function FormStep5() {
 				Boolean(typeCorrectedErrors.closingTime?.message),
 		},
 	};
+	const showErrorAlert = hasMultipleErrors(errors);
 
 	return (
 		<FormContainer
@@ -89,7 +89,32 @@ export function FormStep5() {
 		>
 			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
 				<FormStack>
-					{showErrorAlert && <FormPageAlert errors={errors} />}
+					{showErrorAlert && (
+						<FormPageAlert
+							errors={{
+								'date-range-picker-tradingPeriod-from': {
+									message: hasErrors.tradingPeriod.both
+										? 'Start date and End date is required'
+										: errors.tradingPeriod?.from?.message,
+								},
+								'date-range-picker-tradingPeriod-to': {
+									message: !hasErrors.tradingPeriod.both
+										? errors.tradingPeriod?.to?.message
+										: undefined,
+								},
+								openingTime: {
+									message: hasErrors.hours.both
+										? 'Opening time and Closing time is required'
+										: typeCorrectedErrors.openingTime?.message,
+								},
+								closingTime: {
+									message: hasErrors.hours.to
+										? typeCorrectedErrors.closingTime?.message
+										: undefined,
+								},
+							}}
+						/>
+					)}
 					<Controller
 						control={control}
 						name="tradingPeriod"
@@ -111,10 +136,9 @@ export function FormStep5() {
 								}
 								message={
 									hasErrors.tradingPeriod.both
-										? errors.tradingPeriod?.from?.message
-										: hasErrors.tradingPeriod.from
-										? 'Start date is required'
-										: 'End date is required'
+										? 'Start date and End date is required'
+										: errors.tradingPeriod?.from?.message ||
+										  errors.tradingPeriod?.to?.message
 								}
 								required
 							/>

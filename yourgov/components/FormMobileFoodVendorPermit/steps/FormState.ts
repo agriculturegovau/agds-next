@@ -121,18 +121,11 @@ export const step4FormSchema = z.object({
 
 export type Step4FormSchema = z.infer<typeof step4FormSchema>;
 
-const periodActiveMessage = 'Start and end date is required';
-
 export const step5FormSchema = z.object({
-	tradingPeriod: z
-		.object({
-			from: zodDateField(periodActiveMessage),
-			to: zodDateField(periodActiveMessage),
-		})
-		.refine((value) => {
-			console.log(`value`, value);
-			return value;
-		}),
+	tradingPeriod: z.object({
+		from: zodDateField('Start date is required'),
+		to: zodDateField('End date is required'),
+	}),
 	openingTime: zodTimeField({ label: 'Opening time' }),
 	closingTime: zodTimeField({ label: 'Closing time' }),
 });
