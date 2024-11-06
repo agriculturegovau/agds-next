@@ -360,9 +360,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										disabled={disabled}
 										focusRingFor="all"
 										onClick={open}
+										ref={buttonRef}
 										type="button"
 										variant="secondary"
-										ref={buttonRef}
 									>
 										Select {filesPlural}
 									</Button>

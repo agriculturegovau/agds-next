@@ -7,7 +7,6 @@ import {
 	TableCell,
 	TableHead,
 	TableHeader,
-	TableHeaderProps,
 	TableWrapper,
 	TableRow,
 } from '@ag.ds-next/react/table';
@@ -75,14 +74,9 @@ export const UploadFileTable = forwardRef<
 				>
 					<TableHead>
 						<TableRow aria-rowindex={1}>
-							{headers.map(({ label, textAlign, width }) => {
+							{headers.map(({ label, width }) => {
 								return (
-									<TableHeader
-										key={label}
-										scope="col"
-										textAlign={textAlign}
-										width={width}
-									>
+									<TableHeader key={label} scope="col" width={width}>
 										{label}
 									</TableHeader>
 								);
@@ -92,8 +86,8 @@ export const UploadFileTable = forwardRef<
 					<TableBody>
 						{loading ? (
 							<Fragment>
-								{Array.from(Array(10).keys()).map((i) => (
-									<TableRow key={i}>
+								{documents.map((_, index) => (
+									<TableRow key={index}>
 										<TableCell>
 											<SkeletonText />
 											<VisuallyHidden>Loading</VisuallyHidden>
@@ -182,11 +176,7 @@ export const UploadFileTable = forwardRef<
 	);
 });
 
-const headers: {
-	label: string;
-	width?: TableHeaderProps['width'];
-	textAlign?: TableHeaderProps['textAlign'];
-}[] = [
+const headers = [
 	{
 		label: 'Document type',
 		width: '16rem',
@@ -201,7 +191,6 @@ const headers: {
 	},
 	{
 		label: 'Action',
-		textAlign: 'left',
 		width: '8rem',
 	},
 ];
