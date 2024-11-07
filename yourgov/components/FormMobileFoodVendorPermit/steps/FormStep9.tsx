@@ -45,6 +45,17 @@ const documentRows = [
 	},
 ] as const;
 
+export const idToDocumentTypeMap: Record<
+	Document['id'],
+	Document['documentType']
+> = {
+	'rms-vehicle-registration': 'RMS Vehicle registration',
+	'food-safety-certificate':
+		'Food Safety Supervisor Certificate for Charlie Walker',
+	'suggested-menu-or-list-of-foods-being-sold':
+		'Suggested menu or list of foods being sold',
+};
+
 export type Document = Pick<
 	(typeof documentRows)[number],
 	'documentType' | 'id'

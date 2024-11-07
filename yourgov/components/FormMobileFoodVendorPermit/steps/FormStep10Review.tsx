@@ -10,7 +10,6 @@ import {
 	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { mapSpacing } from '@ag.ds-next/react/core';
 import {
 	FormDefinitionList,
 	FormDefinitionListItem,
@@ -32,6 +31,7 @@ import {
 	step8FormSchema,
 	step9FormSchema,
 } from './FormState';
+import { Document, idToDocumentTypeMap } from './FormStep9';
 
 export function FormStep10Review() {
 	const { formState } = useGlobalForm();
@@ -278,32 +278,32 @@ export function FormStep10Review() {
 
 			{/** Upload documents */}
 			<Stack gap={1.5}>
-				<H2>{formSteps[8].label}</H2>
+				<H2 id="upload-documents-heading">{formSteps[8].label}</H2>
 				{validation.step9.success ? (
-					<FormDefinitionList>
-						<FormDefinitionListItem
-							label="Documents"
-							value={
-								<ul
-									css={{
-										display: 'flex',
-										flexDirection: 'column',
-										gap: mapSpacing(0.5),
-										margin: 0,
-										paddingLeft: mapSpacing(1),
-									}}
-								>
-									{Object.values(formState.steps?.step9?.files || {})?.map(
-										(item, index) => (
-											<li key={index}>{`${item?.file || ''} (${
-												item.size
-											})`}</li>
-										)
-									)}
-								</ul>
-							}
-						/>
-					</FormDefinitionList>
+					<TableWrapper>
+						<Table aria-labelledby="upload-documents-heading">
+							<TableHead>
+								<TableRow>
+									<TableHeader width="33%">Document type</TableHeader>
+									<TableHeader>File</TableHeader>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{formState.steps?.step9?.files !== undefined &&
+									(
+										Object.entries(formState.steps.step9.files) as [
+											Document['id'],
+											{ file: string; size: string },
+										][]
+									)?.map(([id, { file, size }]) => (
+										<TableRow key={id}>
+											<TableCell>{idToDocumentTypeMap[id]}</TableCell>
+											<TableCell>{`${file || ''} (${size})`}</TableCell>
+										</TableRow>
+									))}
+							</TableBody>
+						</Table>
+					</TableWrapper>
 				) : (
 					<ValidateSectionAlert />
 				)}
