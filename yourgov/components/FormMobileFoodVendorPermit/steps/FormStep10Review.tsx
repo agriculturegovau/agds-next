@@ -10,6 +10,7 @@ import {
 	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
+import { Text } from '@ag.ds-next/react/text';
 import {
 	FormDefinitionList,
 	FormDefinitionListItem,
@@ -289,7 +290,7 @@ export function FormStep10Review() {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{formState.steps?.step9?.files !== undefined &&
+								{formState.steps?.step9?.files &&
 									(
 										Object.entries(formState.steps.step9.files) as [
 											Document['id'],
@@ -298,7 +299,9 @@ export function FormStep10Review() {
 									)?.map(([id, { file, size }]) => (
 										<TableRow key={id}>
 											<TableCell>{idToDocumentTypeMap[id]}</TableCell>
-											<TableCell>{`${file || ''} (${size})`}</TableCell>
+											<TableCell>
+												<Text breakWords>{`${file || ''} (${size})`}</Text>
+											</TableCell>
 										</TableRow>
 									))}
 							</TableBody>

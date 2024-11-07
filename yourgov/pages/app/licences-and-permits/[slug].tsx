@@ -278,7 +278,7 @@ const Page: NextPageWithLayout = () => {
 													</TableRow>
 												</TableHead>
 												<TableBody>
-													{formState.steps?.step9?.files !== undefined &&
+													{formState.steps?.step9?.files &&
 														(
 															Object.entries(formState.steps.step9.files) as [
 																Document['id'],
@@ -287,9 +287,11 @@ const Page: NextPageWithLayout = () => {
 														)?.map(([id, { file, size }]) => (
 															<TableRow key={id}>
 																<TableCell>{idToDocumentTypeMap[id]}</TableCell>
-																<TableCell>{`${
-																	file || ''
-																} (${size})`}</TableCell>
+																<TableCell>
+																	<Text breakWords>{`${
+																		file || ''
+																	} (${size})`}</Text>
+																</TableCell>
 															</TableRow>
 														))}
 												</TableBody>
