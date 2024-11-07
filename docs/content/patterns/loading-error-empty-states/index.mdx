@@ -157,7 +157,7 @@ Below is an example of two different empty states at the section level.
 ```
 
 ```jsx live
-<Stack gap={2} alignItems="flex-start">
+<Stack gap={2} alignItems="flex-start" role="status">
 	<Stack gap={1}>
 		<HelpIcon size="lg" color="muted" />
 		<Heading type="h2" fontSize="lg">
@@ -174,7 +174,7 @@ Below is an example of two different empty states at the section level.
 Below is an example of an empty state at the component level.
 
 ```jsx live
-<Flex gap={0.75}>
+<Flex gap={0.75} role="status">
 	<HelpIcon color="muted" />
 	<Stack gap={1} alignItems="flex-start">
 		<Stack gap={0.5}>

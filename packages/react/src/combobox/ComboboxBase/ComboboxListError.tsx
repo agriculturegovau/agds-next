@@ -8,7 +8,7 @@ export function ComboboxListError() {
 		<ComboboxListItem isActiveItem={false} isInteractive={false}>
 			<Flex alignItems="center" gap={0.5}>
 				<AlertFilledIcon color="error" css={{ flexShrink: 0 }} />
-				<Text role="status">Something went wrong.</Text>
+				<Text role="alert">Something went wrong.</Text>
 			</Flex>
 		</ComboboxListItem>
 	);
