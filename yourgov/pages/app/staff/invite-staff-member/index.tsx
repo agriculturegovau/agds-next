@@ -29,12 +29,13 @@ import {
 	StaffProvider,
 	useStaffGlobalState,
 } from '../../../../components/Staff/StaffProvider';
+import { randomUUID } from '../../../../lib/randomUUID';
 
 const Page: NextPageWithLayout = () => {
 	const router = useRouter();
 	const { staffMembersCreate } = useStaffGlobalState();
 
-	const uuid = useRef(crypto.randomUUID());
+	const uuid = useRef(randomUUID());
 
 	const {
 		register,
