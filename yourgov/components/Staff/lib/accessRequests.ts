@@ -1,8 +1,10 @@
+import { randomUUID } from '../../../lib/randomUUID';
+
 export const defaultAccessRequests = [
 	{
 		email: 'Finley@test.com',
 		firstName: 'Finley',
-		id: crypto.randomUUID(),
+		id: randomUUID(),
 		lastName: 'Campbell',
 		mobile: '0411222333',
 		role: 'Employee',
@@ -11,7 +13,7 @@ export const defaultAccessRequests = [
 	{
 		email: 'Parker@test.com',
 		firstName: 'Parker',
-		id: crypto.randomUUID(),
+		id: randomUUID(),
 		lastName: 'Ellis',
 		mobile: '0411222333',
 		role: 'Employee',
@@ -20,7 +22,7 @@ export const defaultAccessRequests = [
 	{
 		email: 'Cameron@test.com',
 		firstName: 'Cameron',
-		id: crypto.randomUUID(),
+		id: randomUUID(),
 		lastName: 'Blake',
 		mobile: '0411222333',
 		role: 'Employee',
@@ -29,7 +31,7 @@ export const defaultAccessRequests = [
 	{
 		email: 'Quinn@test.com',
 		firstName: 'Quinn',
-		id: crypto.randomUUID(),
+		id: randomUUID(),
 		lastName: 'Sullivan',
 		mobile: '0411222333',
 		role: 'Employee',
@@ -38,7 +40,7 @@ export const defaultAccessRequests = [
 	{
 		email: 'Casey@test.com',
 		firstName: 'Casey',
-		id: crypto.randomUUID(),
+		id: randomUUID(),
 		lastName: 'Parker',
 		mobile: '0411222333',
 		role: 'Employee',

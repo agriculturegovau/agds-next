@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
@@ -58,30 +58,33 @@ export function FormStep5() {
 		});
 	};
 
-	const hasErrors = {
-		tradingPeriod: {
-			both:
-				Boolean(errors.tradingPeriod?.from?.message) &&
-				Boolean(errors.tradingPeriod?.to?.message),
-			from:
-				Boolean(errors.tradingPeriod?.from?.message) &&
-				!errors.tradingPeriod?.to?.message,
-			to:
-				!errors.tradingPeriod?.from?.message &&
-				Boolean(errors.tradingPeriod?.to?.message),
-		},
-		hours: {
-			both:
-				Boolean(typeCorrectedErrors.openingTime?.message) &&
-				Boolean(typeCorrectedErrors.closingTime?.message),
-			from:
-				Boolean(typeCorrectedErrors.openingTime?.message) &&
-				!typeCorrectedErrors.closingTime?.message,
-			to:
-				!typeCorrectedErrors.openingTime?.message &&
-				Boolean(typeCorrectedErrors.closingTime?.message),
-		},
-	};
+	const hasErrors = useMemo(
+		() => ({
+			tradingPeriod: {
+				both:
+					Boolean(errors.tradingPeriod?.from?.message) &&
+					Boolean(errors.tradingPeriod?.to?.message),
+				from:
+					Boolean(errors.tradingPeriod?.from?.message) &&
+					!errors.tradingPeriod?.to?.message,
+				to:
+					!errors.tradingPeriod?.from?.message &&
+					Boolean(errors.tradingPeriod?.to?.message),
+			},
+			hours: {
+				both:
+					Boolean(typeCorrectedErrors.openingTime?.message) &&
+					Boolean(typeCorrectedErrors.closingTime?.message),
+				from:
+					Boolean(typeCorrectedErrors.openingTime?.message) &&
+					!typeCorrectedErrors.closingTime?.message,
+				to:
+					!typeCorrectedErrors.openingTime?.message &&
+					Boolean(typeCorrectedErrors.closingTime?.message),
+			},
+		}),
+		[errors, typeCorrectedErrors]
+	);
 
 	const validErrors = [
 		hasErrors.tradingPeriod.both,

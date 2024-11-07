@@ -15,6 +15,7 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { randomUUID } from '../../../lib/randomUUID';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
@@ -26,7 +27,7 @@ import { formSteps, useFormContext } from './FormProvider';
 export function FormStep7AddEmployee() {
 	const router = useRouter();
 	const { formState, step7GetState, step7SetState } = useGlobalForm();
-	const uuid = useRef(crypto.randomUUID());
+	const uuid = useRef(randomUUID());
 
 	const {
 		register,
