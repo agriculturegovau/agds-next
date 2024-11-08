@@ -10,6 +10,8 @@ export type ModalConfirmApproveAccessProps = {
 	onConfirm: () => void;
 	onClose: () => void;
 	itemsToApprove: StaffMemberAccessRequest | StaffMemberAccessRequest[];
+	/** On close of the modal, this element will be focused, rather than the trigger element. */
+	pageAlertElement?: HTMLElement | null;
 };
 
 export function ModalConfirmApproveAccess({
@@ -17,6 +19,7 @@ export function ModalConfirmApproveAccess({
 	onConfirm,
 	onClose,
 	itemsToApprove,
+	pageAlertElement,
 }: ModalConfirmApproveAccessProps) {
 	const [submitting, setSubmitting] = useState(false);
 
@@ -45,6 +48,7 @@ export function ModalConfirmApproveAccess({
 
 	return (
 		<Modal
+			elementToFocusOnClose={pageAlertElement}
 			isOpen={isOpen}
 			onClose={onClose}
 			title={title}

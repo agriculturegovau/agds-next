@@ -103,7 +103,7 @@ export const StaffMembersTable = ({
 				pageAlertRef.current?.focus();
 			}, 500);
 		}
-	}, [pageAlertRef.current, successMessageType, updatedStaffMemberName]);
+	}, [successMessageType, updatedStaffMemberName]);
 
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
