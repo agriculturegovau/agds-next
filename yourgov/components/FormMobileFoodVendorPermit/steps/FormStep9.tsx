@@ -144,6 +144,11 @@ export function FormStep9() {
 			)
 		);
 		setCurrentDocument(document);
+
+		// Ensure the message is focused after all table updates
+		setTimeout(() => {
+			successMessageRef.current?.focus();
+		}, 500);
 	};
 
 	const onSaveAndContinue = () => {
