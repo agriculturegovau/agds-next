@@ -30,16 +30,19 @@ import { AccessRequestsTable } from '../../../components/Staff/AccessRequestsTab
 import { useLinkedBusinesses } from '../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
+	const { selectedBusiness } = useLinkedBusinesses();
 	const { accessRequestsGetState } = useStaffGlobalState();
 	const accessRequests = accessRequestsGetState();
-	const { selectedBusiness } = useLinkedBusinesses();
-	if (!selectedBusiness) return null;
 
 	const tableRef = useRef<HTMLTableElement>(null);
 
 	return (
 		<Fragment>
-			<DocumentTitle title={`Staff | ${selectedBusiness.name}`} />
+			<DocumentTitle
+				title={`Staff${
+					selectedBusiness?.name ? ` | ${selectedBusiness.name}` : ''
+				}}`}
+			/>
 
 			<PageContent>
 				<Stack gap={3}>
