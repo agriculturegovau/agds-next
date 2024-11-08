@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@ag.ds-next/react/breadcrumbs';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Callout } from '@ag.ds-next/react/callout';
 import { PageContent } from '@ag.ds-next/react/content';
-import { mapSpacing, useTernaryState } from '@ag.ds-next/react/core';
+import { useTernaryState } from '@ag.ds-next/react/core';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
 import { Divider } from '@ag.ds-next/react/divider';
 import { H2, H3 } from '@ag.ds-next/react/heading';
@@ -43,6 +43,10 @@ import { FormContainer } from '../../../components/FormMobileFoodVendorPermit/Fo
 import { PageTitle } from '../../../components/PageTitle';
 import { managePermitsPage } from '../../../components/FormMobileFoodVendorPermit/utils';
 import { NextPageWithLayout } from '../../_app';
+import {
+	Document,
+	idToDocumentTypeMap,
+} from '../../../components/FormMobileFoodVendorPermit/steps/FormStep9';
 
 const Page: NextPageWithLayout = () => {
 	const { query, isReady } = useRouter();
@@ -264,31 +268,35 @@ const Page: NextPageWithLayout = () => {
 
 									{/** Upload documents */}
 									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[8].label}</H3>
-										<FormDefinitionList>
-											<FormDefinitionListItem
-												label="Documents"
-												value={
-													<ul
-														css={{
-															display: 'flex',
-															flexDirection: 'column',
-															gap: mapSpacing(0.5),
-															margin: 0,
-															paddingLeft: mapSpacing(1),
-														}}
-													>
-														{Object.values(
-															formState.steps?.step9?.files || {}
-														)?.map((item, index) => (
-															<li key={index}>{`${item?.file || ''} (${
-																item.size
-															})`}</li>
+										<H3 id="upload-documents-heading">{formSteps[8].label}</H3>
+										<TableWrapper>
+											<Table aria-labelledby="upload-documents-heading">
+												<TableHead>
+													<TableRow>
+														<TableHeader width="33%">Document type</TableHeader>
+														<TableHeader>File</TableHeader>
+													</TableRow>
+												</TableHead>
+												<TableBody>
+													{formState.steps?.step9?.files &&
+														(
+															Object.entries(formState.steps.step9.files) as [
+																Document['id'],
+																{ file: string; size: string },
+															][]
+														)?.map(([id, { file, size }]) => (
+															<TableRow key={id}>
+																<TableCell>{idToDocumentTypeMap[id]}</TableCell>
+																<TableCell>
+																	<Text breakWords>{`${
+																		file || ''
+																	} (${size})`}</Text>
+																</TableCell>
+															</TableRow>
 														))}
-													</ul>
-												}
-											/>
-										</FormDefinitionList>
+												</TableBody>
+											</Table>
+										</TableWrapper>
 									</Stack>
 									<H2>Declaration</H2>
 									<Prose>
