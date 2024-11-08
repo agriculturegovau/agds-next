@@ -26,7 +26,7 @@ const Page: NextPageWithLayout = () => {
 					<Breadcrumbs
 						links={[
 							{ label: 'Dashboard', href: '/app/dashboard' },
-							{ label: 'Permits', href: '/app/licences-and-permits' },
+							{ label: 'Permits', href: '/app/permits' },
 							{ label: 'Manage existing permits' },
 						]}
 					/>
@@ -34,7 +34,7 @@ const Page: NextPageWithLayout = () => {
 						title="Manage existing permits"
 						introduction="Stay compliant by registering for business permits."
 					/>
-					<CallToActionLink href="/app/licences-and-permits/apply-for-new-permit">
+					<CallToActionLink href="/app/permits/apply-for-new-permit">
 						Apply for a permit
 					</CallToActionLink>
 					<ApplicationHistory />

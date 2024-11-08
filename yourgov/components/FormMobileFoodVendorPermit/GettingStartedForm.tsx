@@ -42,7 +42,7 @@ export function GettingStartedForm() {
 		});
 		router.push({
 			pathname:
-				'/app/licences-and-permits/apply/mobile-food-vendor-permit/steps/step-1',
+				'/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/step-1',
 		});
 	}
 

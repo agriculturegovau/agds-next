@@ -226,7 +226,7 @@ export default function Page() {
 									</Prose>
 									<ButtonGroup>
 										<ButtonLink
-											href="/sign-in?redirectTo=/app/licences-and-permits/apply/mobile-food-vendor-permit"
+											href="/sign-in?redirectTo=/app/permits/apply-for-new-permit/mobile-food-vendor-permit"
 											variant="primary"
 										>
 											Sign in to apply

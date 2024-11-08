@@ -211,16 +211,16 @@ function AppLayoutSidebar() {
 				},
 				{
 					label: 'Permits',
-					href: '/app/licences-and-permits',
+					href: '/app/permits',
 					icon: IconApproval,
 					items: [
 						{
 							label: 'Apply for a new permit',
-							href: '/app/licences-and-permits/apply-for-new-permit',
+							href: '/app/permits/apply-for-new-permit',
 						},
 						{
 							label: 'Manage existing permits',
-							href: '/app/licences-and-permits/manage-existing',
+							href: '/app/permits/manage-existing',
 						},
 					],
 				},

@@ -35,7 +35,7 @@ const Page: NextPageWithLayout = () => {
 						title="Permits"
 						introduction="Stay compliant by registering for business permits."
 					/>
-					<CallToActionLink href="/app/licences-and-permits/apply-for-new-permit">
+					<CallToActionLink href="/app/permits/apply-for-new-permit">
 						Apply for a permit
 					</CallToActionLink>
 					<ApplicationHistory />
@@ -64,7 +64,7 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
+											<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
 												Apply for a mobile food vendor permit
 											</CardLink>
 										</H3>
