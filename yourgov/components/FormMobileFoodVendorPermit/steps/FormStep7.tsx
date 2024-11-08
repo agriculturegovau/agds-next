@@ -1,5 +1,6 @@
-import { type FormEventHandler, useEffect, useState } from 'react';
+import { type FormEventHandler, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { H2, H3 } from '@ag.ds-next/react/heading';
 import { AvatarIcon, PlusIcon } from '@ag.ds-next/react/icon';
@@ -44,6 +45,9 @@ export function FormStep7() {
 		useState(false);
 	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+	const addedPageAlertRef = useRef<HTMLDivElement>(null);
+	const removedPageAlertRef = useRef<HTMLDivElement>(null);
+
 	const addedEmployee = query.success
 		? step7State?.employee &&
 		  step7State.employee.find((employee) => employee?.id === query.success)
@@ -53,6 +57,12 @@ export function FormStep7() {
 	);
 	useEffect(() => {
 		setShowAddedEmployeeMessage(!!addedEmployee);
+
+		if (addedEmployee) {
+			setTimeout(() => {
+				addedPageAlertRef.current?.focus();
+			}, 500);
+		}
 	}, [addedEmployee]);
 
 	const closeModal = () => {
@@ -127,24 +137,36 @@ export function FormStep7() {
 					</PageAlert>
 				)}
 				<H2 id="list-of-employees">List of employees</H2>
-				{showAddedEmployeeMessage && (
+				<Box
+					css={{
+						display: showAddedEmployeeMessage ? 'block' : 'none',
+					}}
+					focusRingFor="all"
+					ref={addedPageAlertRef}
+					tabIndex={-1}
+				>
 					<SectionAlert
-						focusOnMount
 						onClose={() => setShowAddedEmployeeMessage(false)}
 						title={`${addedEmployee?.firstName} ${addedEmployee?.lastName} has been added as an
 							employee`}
 						tone="success"
 					/>
-				)}
-				{showRemovedEmployeeMessage && (
+				</Box>
+				<Box
+					css={{
+						display: showRemovedEmployeeMessage ? 'block' : 'none',
+					}}
+					focusRingFor="all"
+					ref={removedPageAlertRef}
+					tabIndex={-1}
+				>
 					<SectionAlert
-						focusOnMount
 						onClose={() => setShowRemovedEmployeeMessage(false)}
 						title={`${removedEmployee} has been removed as an
 							employee`}
 						tone="success"
 					/>
-				)}
+				</Box>
 				{step7State?.employee && step7State.employee.length > 0 ? (
 					<TableWrapper>
 						<Table aria-labelledby="list-of-employees">
@@ -210,6 +232,7 @@ export function FormStep7() {
 						</Button>
 					</ButtonGroup>
 				}
+				elementToFocusOnClose={removedPageAlertRef?.current}
 				isOpen={modalIsVisible}
 				onClose={closeModal}
 				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
