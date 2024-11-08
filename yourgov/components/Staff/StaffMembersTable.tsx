@@ -180,7 +180,6 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
-						pageAlertElement={pageAlertRef?.current}
 						ref={tableRef}
 						selectable={selectable}
 					/>
