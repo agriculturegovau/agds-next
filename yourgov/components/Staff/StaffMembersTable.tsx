@@ -1,4 +1,4 @@
-import { RefObject, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Stack } from '@ag.ds-next/react/src/stack';
 import { Button } from '@ag.ds-next/react/src/button';
@@ -68,7 +68,7 @@ export const StaffMembersTable = ({
 	tableRef,
 }: StaffMembersTableProps) => {
 	const router = useRouter();
-	const pageAlertElement = useRef<HTMLDivElement>(null);
+	const pageAlertRef = useRef<HTMLDivElement>(null);
 
 	const { staffMembersGetState, staffMembersDelete } = useStaffGlobalState();
 
@@ -97,6 +97,14 @@ export const StaffMembersTable = ({
 		return updatedStaffMember?.name || '';
 	});
 
+	useEffect(() => {
+		if (successMessageType && updatedStaffMemberName) {
+			setTimeout(() => {
+				pageAlertRef.current?.focus();
+			}, 500);
+		}
+	}, [successMessageType, updatedStaffMemberName]);
+
 	return (
 		<SortAndFilterProvider value={sortAndFilter}>
 			<DataProvider
@@ -106,19 +114,20 @@ export const StaffMembersTable = ({
 					setUpdatedStaffMemberName,
 				}}
 			>
-				<div
+				<Box
 					css={{
 						display:
 							successMessageType && updatedStaffMemberName ? 'block' : 'none',
 					}}
+					focusRingFor="all"
+					ref={pageAlertRef}
+					tabIndex={-1}
 				>
 					<SectionAlert
-						focusOnMount
 						onClose={() => {
 							setSuccessMessageType(null);
 							router.replace(router.pathname, undefined, { shallow: true });
 						}}
-						ref={pageAlertElement}
 						title={
 							successMessageType
 								? `${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`
@@ -134,7 +143,7 @@ export const StaffMembersTable = ({
 								</Text>
 							)}
 					</SectionAlert>
-				</div>
+				</Box>
 				<Stack gap={0}>
 					<FilterRegion>
 						<FilterBar>
@@ -171,7 +180,7 @@ export const StaffMembersTable = ({
 
 					<DataTable
 						headingId={headingId}
-						pageAlertElement={pageAlertElement?.current}
+						pageAlertElement={pageAlertRef?.current}
 						ref={tableRef}
 						selectable={selectable}
 					/>

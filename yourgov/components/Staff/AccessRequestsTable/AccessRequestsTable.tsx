@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
 	Table,
 	TableBatchActionsBar,
@@ -32,7 +32,8 @@ import { ModalConfirmRejectAccess } from './ModalConfirmRejectAccess';
 import { ModalUnavailableFeature } from './ModalUnavailableFeature';
 
 export const AccessRequestsTable = () => {
-	const [focusUpdateTime, setFocusUpdateTime] = useState(0);
+	const pageAlertRef = useRef<HTMLDivElement>(null);
+
 	const { accessRequestsDelete, accessRequestsGetState, accessRequestsUpdate } =
 		useStaffGlobalState();
 	const [rowSelections, setRowSelections] = useState<
@@ -92,7 +93,6 @@ export const AccessRequestsTable = () => {
 		});
 		setItemWithActiveAction(undefined);
 		closeApproveModal();
-		setFocusUpdateTime(Date.now());
 	};
 
 	const onConfirmReject = () => {
@@ -102,7 +102,6 @@ export const AccessRequestsTable = () => {
 		accessRequestsDelete(itemWithActiveAction || items);
 		setItemWithActiveAction(undefined);
 		closeRejectModal();
-		setFocusUpdateTime(Date.now());
 	};
 
 	const isSelectAllCheckboxChecked =
@@ -119,16 +118,23 @@ export const AccessRequestsTable = () => {
 
 	return (
 		<>
-			{successMessageContent && successMessageType && (
+			<Box
+				css={{
+					display:
+						successMessageContent && successMessageType ? 'block' : 'none',
+				}}
+				focusRingFor="all"
+				ref={pageAlertRef}
+				tabIndex={-1}
+			>
 				<SectionAlert
-					focusOnUpdate={focusUpdateTime}
 					onClose={() => {
 						setSuccessMessageContent(undefined);
 					}}
 					title={`Access request for ${
 						Array.isArray(successMessageContent)
 							? successMessageContent.length
-							: `${successMessageContent.firstName} ${successMessageContent.lastName}`
+							: `${successMessageContent?.firstName} ${successMessageContent?.lastName}`
 					} ${plural(
 						Array.isArray(successMessageContent)
 							? successMessageContent.length
@@ -143,7 +149,7 @@ export const AccessRequestsTable = () => {
 						request has been {successMessageType}.
 					</Text>
 				</SectionAlert>
-			)}
+			</Box>
 			<Stack gap={0.5}>
 				{accessRequests.length === 0 ? (
 					<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
@@ -314,6 +320,7 @@ export const AccessRequestsTable = () => {
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmApprove}
+					pageAlertElement={pageAlertRef?.current}
 				/>
 
 				<ModalConfirmRejectAccess
@@ -324,6 +331,7 @@ export const AccessRequestsTable = () => {
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmReject}
+					pageAlertElement={pageAlertRef?.current}
 				/>
 
 				<ModalUnavailableFeature
