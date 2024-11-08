@@ -41,7 +41,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle
 				title={`Staff${
 					selectedBusiness?.name ? ` | ${selectedBusiness.name}` : ''
-				}}`}
+				}`}
 			/>
 
 			<PageContent>
