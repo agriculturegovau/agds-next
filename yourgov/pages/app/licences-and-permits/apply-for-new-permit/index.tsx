@@ -16,7 +16,7 @@ import { GlobalFormProvider } from '../../../../components/FormMobileFoodVendorP
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Apply for a new permit" />
+			<DocumentTitle title="Apply for a new permit | Permits" />
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs

@@ -57,7 +57,11 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<Fragment>
-			<DocumentTitle title={pageTitle} />
+			<DocumentTitle
+				title={`${
+					pageTitle.startsWith('View') ? pageTitle : `View ${pageTitle}`
+				} | Permits`}
+			/>
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs

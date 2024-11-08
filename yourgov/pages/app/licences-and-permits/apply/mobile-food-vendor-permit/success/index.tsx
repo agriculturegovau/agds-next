@@ -21,13 +21,13 @@ import { managePermitsPage } from '../../../../../../components/FormMobileFoodVe
 
 const Page: NextPageWithLayout = () => {
 	const { query, isReady } = useRouter();
-	const { formState } = useGlobalForm();
+	const { formState, formTitle } = useGlobalForm();
 
 	const isSuccess = query?.id === formState?.id && formState?.completed;
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Application submitted" />
+			<DocumentTitle title={`Application submitted | ${formTitle}`} />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={8}>

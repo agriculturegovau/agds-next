@@ -21,7 +21,7 @@ const Page: NextPageWithLayout = () => {
 	if (!selectedBusiness) return null;
 	return (
 		<Fragment>
-			<DocumentTitle title="Dashboard" />
+			<DocumentTitle title={`Dashboard | ${selectedBusiness.name}`} />
 			<PageContent>
 				<Stack gap={3}>
 					<Stack gap={1} alignItems="flex-start">

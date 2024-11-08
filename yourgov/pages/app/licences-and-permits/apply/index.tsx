@@ -20,7 +20,7 @@ import { PageTitle } from '../../../../components/PageTitle';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage permits" />
+			<DocumentTitle title="Apply for a new permit | Permits" />
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs

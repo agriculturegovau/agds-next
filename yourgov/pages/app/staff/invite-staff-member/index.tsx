@@ -71,7 +71,7 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Invite staff member" />
+			<DocumentTitle title="Invite staff member | Staff" />
 
 			<PageContent>
 				<Stack gap={3}>

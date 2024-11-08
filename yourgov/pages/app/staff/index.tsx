@@ -27,16 +27,19 @@ import {
 	useStaffGlobalState,
 } from '../../../components/Staff/StaffProvider';
 import { AccessRequestsTable } from '../../../components/Staff/AccessRequestsTable/AccessRequestsTable';
+import { useLinkedBusinesses } from '../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
 	const { accessRequestsGetState } = useStaffGlobalState();
 	const accessRequests = accessRequestsGetState();
+	const { selectedBusiness } = useLinkedBusinesses();
+	if (!selectedBusiness) return null;
 
 	const tableRef = useRef<HTMLTableElement>(null);
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Staff" />
+			<DocumentTitle title={`Staff | ${selectedBusiness.name}`} />
 
 			<PageContent>
 				<Stack gap={3}>

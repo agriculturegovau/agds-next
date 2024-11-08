@@ -7,13 +7,15 @@ import {
 	FormProvider,
 	FormStep2,
 	formSteps,
+	useGlobalForm,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
+	const { formTitle } = useGlobalForm();
 	return (
 		<Fragment>
-			<DocumentTitle title={formSteps[1].label} />
+			<DocumentTitle title={`${formSteps[1].label} | ${formTitle}`} />
 			<PageContent>
 				<FormStep2 />
 			</PageContent>

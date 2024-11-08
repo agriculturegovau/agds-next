@@ -11,11 +11,16 @@ import { HelpCallout } from '../../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../../_app';
 import { GlobalFormProvider } from '../../../../components/FormMobileFoodVendorPermit';
 import { ApplicationHistory } from '../../../../components/FormMobileFoodVendorPermit/ApplicationHistory';
+import { useLinkedBusinesses } from '../../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
+	const { selectedBusiness } = useLinkedBusinesses();
+	if (!selectedBusiness) return null;
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage existing permits" />
+			<DocumentTitle
+				title={`Manage existing permits | ${selectedBusiness.name} | Permits`}
+			/>
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs

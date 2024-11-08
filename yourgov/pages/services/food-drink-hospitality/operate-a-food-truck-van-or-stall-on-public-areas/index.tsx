@@ -24,7 +24,7 @@ export default function Page() {
 	const router = useRouter();
 	return (
 		<>
-			<DocumentTitle title="Content page example" />
+			<DocumentTitle title="Operate a food truck, van or stall on public areas | Services" />
 			<SiteLayout applyMainElement={false}>
 				<PageContent>
 					<Columns>

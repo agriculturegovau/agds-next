@@ -21,7 +21,7 @@ import type { NextPageWithLayout } from '../../../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Apply for a mobile food vendor permit" />
+			<DocumentTitle title="Apply for a mobile food vendor permit | Permits" />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
