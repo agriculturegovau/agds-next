@@ -100,7 +100,7 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Invite staff member" />
+			<DocumentTitle title={`View ${staffMember.name} | Staff`} />
 
 			<PageContent>
 				<Stack gap={3}>

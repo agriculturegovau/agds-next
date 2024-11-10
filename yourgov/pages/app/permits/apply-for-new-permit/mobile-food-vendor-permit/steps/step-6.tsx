@@ -1,21 +1,23 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { AppLayout } from '../../../../../../components/Layout/AppLayout';
 import { DocumentTitle } from '../../../../../../components/DocumentTitle';
+import { AppLayout } from '../../../../../../components/Layout/AppLayout';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep1,
+	FormStep6,
 	formSteps,
+	useGlobalForm,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
 
 const Page: NextPageWithLayout = () => {
+	const { formTitle } = useGlobalForm();
 	return (
 		<Fragment>
-			<DocumentTitle title={formSteps[0].label} />
+			<DocumentTitle title={`${formSteps[5].label} | ${formTitle}`} />
 			<PageContent>
-				<FormStep1 />
+				<FormStep6 />
 			</PageContent>
 		</Fragment>
 	);

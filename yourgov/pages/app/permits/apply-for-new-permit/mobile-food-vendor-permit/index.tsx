@@ -21,7 +21,7 @@ import type { NextPageWithLayout } from '../../../../_app';
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Apply for a mobile food vendor permit" />
+			<DocumentTitle title="Apply for a mobile food vendor permit | Permits" />
 			<PageContent>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 8 }}>
@@ -31,11 +31,11 @@ const Page: NextPageWithLayout = () => {
 									{ label: 'Dashboard', href: '/app/dashboard' },
 									{
 										label: 'Permits',
-										href: '/app/licences-and-permits',
+										href: '/app/permits',
 									},
 									{
 										label: 'Apply for a new permit',
-										href: '/app/licences-and-permits/apply',
+										href: '/app/permits/apply-for-new-permit',
 									},
 									{
 										label: 'Apply for a mobile food vendor permit',

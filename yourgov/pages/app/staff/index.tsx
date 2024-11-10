@@ -27,8 +27,10 @@ import {
 	useStaffGlobalState,
 } from '../../../components/Staff/StaffProvider';
 import { AccessRequestsTable } from '../../../components/Staff/AccessRequestsTable/AccessRequestsTable';
+import { useLinkedBusinesses } from '../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
+	const { selectedBusiness } = useLinkedBusinesses();
 	const { accessRequestsGetState } = useStaffGlobalState();
 	const accessRequests = accessRequestsGetState();
 
@@ -36,7 +38,11 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<Fragment>
-			<DocumentTitle title="Staff" />
+			<DocumentTitle
+				title={`Staff${
+					selectedBusiness?.name ? ` | ${selectedBusiness.name}` : ''
+				}`}
+			/>
 
 			<PageContent>
 				<Stack gap={3}>

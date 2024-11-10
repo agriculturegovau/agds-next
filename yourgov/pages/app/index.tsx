@@ -32,7 +32,7 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<>
-			<DocumentTitle title="Account" />
+			<DocumentTitle title="My account" />
 			<PageContent>
 				<Stack gap={3}>
 					<Flex gap={1} alignItems="center">

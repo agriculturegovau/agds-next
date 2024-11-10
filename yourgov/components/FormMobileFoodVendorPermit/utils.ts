@@ -39,9 +39,9 @@ export function hasMultipleErrors(errors: FieldValues = {}) {
 }
 
 export const formHomePage =
-	'/app/licences-and-permits/apply/mobile-food-vendor-permit';
+	'/app/permits/apply-for-new-permit/mobile-food-vendor-permit';
 
-export const managePermitsPage = '/app/licences-and-permits';
+export const managePermitsPage = '/app/permits';
 
 type GetStepNavigationUrlParams = {
 	id?: string;
@@ -57,6 +57,6 @@ export function getStepCompletionUrl({
 	const nextStepUrl = steps[currentStepIndex + 1]?.href;
 	return (
 		nextStepUrl ||
-		`/app/licences-and-permits/apply/mobile-food-vendor-permit/success?id=${id}`
+		`/app/permits/apply-for-new-permit/mobile-food-vendor-permit/success?id=${id}`
 	);
 }

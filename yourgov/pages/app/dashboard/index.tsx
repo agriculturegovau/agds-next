@@ -21,7 +21,7 @@ const Page: NextPageWithLayout = () => {
 	if (!selectedBusiness) return null;
 	return (
 		<Fragment>
-			<DocumentTitle title="Dashboard" />
+			<DocumentTitle title={`Dashboard | ${selectedBusiness.name}`} />
 			<PageContent>
 				<Stack gap={3}>
 					<Stack gap={1} alignItems="flex-start">
@@ -39,9 +39,7 @@ const Page: NextPageWithLayout = () => {
 								<Stack gap={1}>
 									<IconApproval size="xl" color="action" />
 									<Heading as="h2" type="h3">
-										<CardLink href="/app/licences-and-permits">
-											Manage permits
-										</CardLink>
+										<CardLink href="/app/permits">Manage permits</CardLink>
 									</Heading>
 									<Text>Apply for and manage your business approvals</Text>
 								</Stack>
@@ -88,7 +86,7 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
+											<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
 												Apply for a mobile food vendor permit
 											</CardLink>
 										</H3>

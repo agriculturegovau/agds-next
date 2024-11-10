@@ -11,17 +11,22 @@ import { HelpCallout } from '../../../../components/HelpCallout';
 import type { NextPageWithLayout } from '../../../_app';
 import { GlobalFormProvider } from '../../../../components/FormMobileFoodVendorPermit';
 import { ApplicationHistory } from '../../../../components/FormMobileFoodVendorPermit/ApplicationHistory';
+import { useLinkedBusinesses } from '../../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
+	const { selectedBusiness } = useLinkedBusinesses();
+	if (!selectedBusiness) return null;
 	return (
 		<Fragment>
-			<DocumentTitle title="Manage existing permits" />
+			<DocumentTitle
+				title={`Manage existing permits | ${selectedBusiness.name} | Permits`}
+			/>
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs
 						links={[
 							{ label: 'Dashboard', href: '/app/dashboard' },
-							{ label: 'Permits', href: '/app/licences-and-permits' },
+							{ label: 'Permits', href: '/app/permits' },
 							{ label: 'Manage existing permits' },
 						]}
 					/>
@@ -29,7 +34,7 @@ const Page: NextPageWithLayout = () => {
 						title="Manage existing permits"
 						introduction="Stay compliant by registering for business permits."
 					/>
-					<CallToActionLink href="/app/licences-and-permits/apply-for-new-permit">
+					<CallToActionLink href="/app/permits/apply-for-new-permit">
 						Apply for a permit
 					</CallToActionLink>
 					<ApplicationHistory />

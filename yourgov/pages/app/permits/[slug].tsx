@@ -57,13 +57,17 @@ const Page: NextPageWithLayout = () => {
 
 	return (
 		<Fragment>
-			<DocumentTitle title={pageTitle} />
+			<DocumentTitle
+				title={`${
+					pageTitle.startsWith('View') ? pageTitle : `View ${pageTitle}`
+				} | Permits`}
+			/>
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs
 						links={[
 							{ label: 'Dashboard', href: '/app/dashboard' },
-							{ label: 'Permits', href: '/app/licences-and-permits' },
+							{ label: 'Permits', href: '/app/permits' },
 							{ label: pageTitle },
 						]}
 					/>
@@ -341,7 +345,7 @@ const Page: NextPageWithLayout = () => {
 								<Callout title="This application is in progress" tone="info">
 									<DirectionLink
 										direction="right"
-										href="/app/licences-and-permits/apply/mobile-food-vendor-permit"
+										href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit"
 									>
 										Continue application
 									</DirectionLink>

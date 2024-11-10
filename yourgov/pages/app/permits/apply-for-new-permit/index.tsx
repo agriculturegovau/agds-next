@@ -16,13 +16,13 @@ import { GlobalFormProvider } from '../../../../components/FormMobileFoodVendorP
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
-			<DocumentTitle title="Apply for a new permit" />
+			<DocumentTitle title="Apply for a new permit | Permits" />
 			<PageContent>
 				<Stack gap={3}>
 					<Breadcrumbs
 						links={[
 							{ label: 'Dashboard', href: '/app/dashboard' },
-							{ label: 'Permits', href: '/app/licences-and-permits' },
+							{ label: 'Permits', href: '/app/permits' },
 							{ label: 'Apply for a new permit' },
 						]}
 					/>
@@ -112,7 +112,7 @@ const Page: NextPageWithLayout = () => {
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
-											<CardLink href="/app/licences-and-permits/apply/mobile-food-vendor-permit">
+											<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
 												Apply for a mobile food vendor permit
 											</CardLink>
 										</H3>
