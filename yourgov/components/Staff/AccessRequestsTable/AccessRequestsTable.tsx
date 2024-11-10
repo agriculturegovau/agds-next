@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
 	Table,
 	TableBatchActionsBar,
@@ -115,6 +115,14 @@ export const AccessRequestsTable = () => {
 			setRowSelections(accessRequests.map(({ id }) => id));
 		}
 	};
+
+	useEffect(() => {
+		if (successMessageContent && successMessageType) {
+			setTimeout(() => {
+				pageAlertRef.current?.focus();
+			}, 500);
+		}
+	}, [successMessageContent, successMessageType]);
 
 	return (
 		<>
@@ -320,7 +328,6 @@ export const AccessRequestsTable = () => {
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmApprove}
-					pageAlertElement={pageAlertRef?.current}
 				/>
 
 				<ModalConfirmRejectAccess
@@ -331,7 +338,6 @@ export const AccessRequestsTable = () => {
 						setItemWithActiveAction(undefined);
 					}}
 					onConfirm={onConfirmReject}
-					pageAlertElement={pageAlertRef?.current}
 				/>
 
 				<ModalUnavailableFeature
