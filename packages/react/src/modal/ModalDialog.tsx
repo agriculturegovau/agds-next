@@ -58,7 +58,11 @@ export const ModalDialog = ({
 					margin: '0 auto',
 					minHeight: '100vh',
 					animation: `${animateSlideInUp} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+					'@supports (min-height: 100dvh)': {
+						minHeight: '100dvh',
+					},
 					[tokens.mediaQuery.min.sm]: {
+						borderRadius: tokens.borderRadius,
 						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
 						minHeight: 'auto',
 					},
@@ -69,7 +73,6 @@ export const ModalDialog = ({
 				paddingX={{ xs: 0.75, md: 1.5 }}
 				paddingY={{ xs: 1, md: 1.5 }}
 				role="dialog"
-				rounded
 			>
 				<Button
 					variant="text"
