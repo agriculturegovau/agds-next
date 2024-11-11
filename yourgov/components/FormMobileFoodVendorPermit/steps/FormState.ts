@@ -3,6 +3,7 @@ import { z, ZodIssueCode } from 'zod';
 import {
 	zodArray,
 	zodDateField,
+	zodPhoneField,
 	zodPhoneFieldOptional,
 	zodString,
 	zodStringOptional,
@@ -248,7 +249,7 @@ export const inviteStaffFormSchema = z.object({
 	email: zodString('Enter employee’s email address').email(
 		'Enter a valid email address'
 	),
-	mobile: zodString('Enter employee’s mobile number'),
+	mobile: zodPhoneField('Enter employee’s mobile number'),
 	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
 		errorMap: () => ({ message: 'Please choose a role' }),
 	}),
