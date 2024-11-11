@@ -206,7 +206,7 @@ const Page: NextPageWithLayout = () => {
 
 						<ButtonGroup>
 							<Button type="submit" loading={isSaving}>
-								Send Invite
+								Send invite
 							</Button>
 
 							<Button variant="tertiary" onClick={onCancelClick}>
