@@ -49,6 +49,7 @@ export { LinkedInIcon } from './icons/LinkedInIcon';
 export { MenuIcon } from './icons/MenuIcon';
 export { MinusIcon } from './icons/MinusIcon';
 export { PauseIcon } from './icons/PauseIcon';
+export { PermitIcon } from './icons/PermitIcon';
 export { PieChartIcon } from './icons/PieChartIcon';
 export { PlayIcon } from './icons/PlayIcon';
 export { PlusIcon } from './icons/PlusIcon';
