@@ -1,4 +1,4 @@
-import { FormEventHandler, useRef, useState } from 'react';
+import { FormEventHandler, useEffect, useRef, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { useTernaryState } from '@ag.ds-next/react/src/core';
@@ -107,6 +107,16 @@ export function FormStep9() {
 		closeDrawer();
 		setFileUploadInvalid(false);
 	};
+
+	// Focus management
+	useEffect(() => {
+		if (!uploadedFile.length && !currentDocument) return;
+
+		// Ensure the message is focused after all table updates
+		setTimeout(() => {
+			successMessageRef.current?.focus();
+		}, 500);
+	}, [uploadedFile, currentDocument]);
 
 	const uploadFile = () => {
 		if (!uploadedFile.length) {
@@ -230,7 +240,6 @@ export function FormStep9() {
 
 					<Box css={isSuccessMessageVisible ? undefined : { display: 'none' }}>
 						<SectionAlert
-							focusOnUpdate={documents}
 							onClose={() => setCurrentDocument(undefined)}
 							ref={successMessageRef}
 							tabIndex={-1}
