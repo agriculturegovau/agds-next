@@ -1036,6 +1036,27 @@ exports[`Icon PauseIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon PermitIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3m10-5v4a2 2 0 0 0 2 2h4M7 16.5 8 22l-3-1-3 1 1-5.5m2 .5a3 3 0 1 0 0-5.999A3 3 0 0 0 5 17Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon PieChartIcon renders correctly 1`] = `
 <div>
   <svg
