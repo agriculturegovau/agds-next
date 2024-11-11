@@ -55,15 +55,6 @@ export function FormStep7() {
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
 		!!addedEmployee
 	);
-	useEffect(() => {
-		setShowAddedEmployeeMessage(!!addedEmployee);
-
-		if (addedEmployee) {
-			setTimeout(() => {
-				addedPageAlertRef.current?.focus();
-			}, 500);
-		}
-	}, [addedEmployee]);
 
 	const closeModal = () => {
 		setShowAddedEmployeeMessage(false);
@@ -123,6 +114,24 @@ export function FormStep7() {
 			started: true,
 		});
 	};
+
+	useEffect(() => {
+		setShowAddedEmployeeMessage(!!addedEmployee);
+
+		if (addedEmployee) {
+			setTimeout(() => {
+				addedPageAlertRef.current?.focus();
+			}, 500);
+		}
+	}, [addedEmployee]);
+
+	useEffect(() => {
+		if (removedEmployee) {
+			setTimeout(() => {
+				removedPageAlertRef.current?.focus();
+			}, 500);
+		}
+	}, [removedEmployee]);
 
 	return (
 		<FormContainer
@@ -232,7 +241,6 @@ export function FormStep7() {
 						</Button>
 					</ButtonGroup>
 				}
-				elementToFocusOnClose={removedPageAlertRef?.current}
 				isOpen={modalIsVisible}
 				onClose={closeModal}
 				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
