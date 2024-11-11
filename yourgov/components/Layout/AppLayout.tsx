@@ -19,13 +19,14 @@ import {
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
 import {
-	ExitIcon,
-	HomeIcon,
-	EmailIcon,
-	SettingsIcon,
-	HelpIcon,
 	AvatarIcon,
 	ChevronsLeftIcon,
+	EmailIcon,
+	ExitIcon,
+	HelpIcon,
+	HomeIcon,
+	PermitIcon,
+	SettingsIcon,
 } from '@ag.ds-next/react/icon';
 import { LinkList } from '@ag.ds-next/react/link-list';
 import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
@@ -35,7 +36,7 @@ import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
 import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
-import { IconApproval, IconUsers } from '../CustomIcons';
+import { IconUsers } from '../CustomIcons';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
@@ -212,7 +213,7 @@ function AppLayoutSidebar() {
 				{
 					label: 'Permits',
 					href: '/app/permits',
-					icon: IconApproval,
+					icon: PermitIcon,
 					items: [
 						{
 							label: 'Apply for a new permit',

@@ -28,6 +28,7 @@ export default function Page() {
 					image={
 						<img
 							alt=""
+							css={{ objectPosition: 'right !important' }}
 							// @ts-expect-error Property 'fetchpriority' does not exist on type, however, React does not recognize the `fetchPriority` prop on a DOM element… spell it as lowercase `fetchpriority` instead
 							fetchpriority="high"
 							src={withBasePath('/hero-banner.jpg')}

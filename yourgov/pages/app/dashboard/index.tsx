@@ -6,6 +6,7 @@ import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Text } from '@ag.ds-next/react/text';
 import { Divider } from '@ag.ds-next/react/divider';
+import { PermitIcon } from '@ag.ds-next/react/icon';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Tag } from '@ag.ds-next/react/tags';
 import { Flex } from '@ag.ds-next/react/flex';
@@ -13,7 +14,7 @@ import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/Layout/AppLayout';
 import type { NextPageWithLayout } from '../../_app';
 import { HelpCallout } from '../../../components/HelpCallout';
-import { IconUsers, IconApproval } from '../../../components/CustomIcons';
+import { IconUsers } from '../../../components/CustomIcons';
 import { useLinkedBusinesses } from '../../../lib/useLinkedBusinesses';
 
 const Page: NextPageWithLayout = () => {
@@ -37,7 +38,7 @@ const Page: NextPageWithLayout = () => {
 						<Card as="li" shadow clickable>
 							<CardInner>
 								<Stack gap={1}>
-									<IconApproval size="xl" color="action" />
+									<PermitIcon size="xl" color="action" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/permits">Manage permits</CardLink>
 									</Heading>

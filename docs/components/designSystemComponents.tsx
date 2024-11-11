@@ -117,6 +117,7 @@ export {
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
+	PermitIcon,
 	PlayIcon,
 	PlusIcon,
 	PrintIcon,
