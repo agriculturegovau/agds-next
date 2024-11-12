@@ -87,11 +87,7 @@ export const ProgressIndicator = ({
 					!!activePathMatcher &&
 					(activePath === activePathMatcher || hasActiveSubStep);
 
-				const isActive =
-					isActiveFromLegacyDoingStatus ||
-					hasActiveSubStep ||
-					isActivePath ||
-					false;
+				const isActive = isActiveFromLegacyDoingStatus || isActivePath || false;
 
 				const levelTwoItemsWithIsActive =
 					'items' in item
