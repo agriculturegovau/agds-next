@@ -76,10 +76,22 @@ export const ProgressIndicator = ({
 				const isActiveFromLegacyDoingStatus = item.status === 'doing';
 
 				const activePathMatcher = 'href' in item ? item.href : item.label;
-				const isActivePath =
-					!!activePathMatcher && activePath?.startsWith(activePathMatcher);
+				const activePathMatcherWithTrailingSlash = `${activePathMatcher}${
+					activePathMatcher?.endsWith('/') ? '' : '/'
+				}`;
+				const hasActiveSubStep = !!activePath?.split(
+					activePathMatcherWithTrailingSlash
+				)[1]?.length;
 
-				const isActive = isActiveFromLegacyDoingStatus || isActivePath || false;
+				const isActivePath =
+					!!activePathMatcher &&
+					(activePath === activePathMatcher || hasActiveSubStep);
+
+				const isActive =
+					isActiveFromLegacyDoingStatus ||
+					hasActiveSubStep ||
+					isActivePath ||
+					false;
 
 				const levelTwoItemsWithIsActive =
 					'items' in item
