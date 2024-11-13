@@ -1,4 +1,7 @@
-import { VisuallyHidden } from '../../../../packages/react/src/a11y';
+import {
+	VisuallyHidden,
+	visuallyHiddenStyles,
+} from '../../../../packages/react/src/a11y';
 import { Stack } from '../../../../packages/react/src/stack';
 import { Card, CardInner, CardLink } from '../../../../packages/react/src/card';
 import { H3, Heading } from '../../../../packages/react/src/heading';
@@ -22,36 +25,43 @@ type DataListProps = {
 export const DataList = ({ loading, data }: DataListProps) => {
 	const { resetFilters } = useSortAndFilterContext();
 
-	if (loading) {
-		return (
-			<Stack as="ul" gap={1} id={tableId}>
-				{Array.from({ length: 10 }, (_, i) => i).map((i) => (
-					<DataListItemSkeleton key={i} />
-				))}
-			</Stack>
-		);
-	}
-
-	if (!data.length)
-		return (
-			<Stack gap={2} alignItems="flex-start" id={tableId} role="status">
-				<Stack gap={1}>
-					<HelpIcon size="lg" color="muted" />
-					<Heading type="h2" fontSize="lg">
-						No results found
-					</Heading>
-					<Text>Try adjusting your filter options.</Text>
-				</Stack>
-				<Button onClick={resetFilters}>Clear filters</Button>
-			</Stack>
-		);
-
 	return (
-		<Stack as="ul" gap={1} id={tableId}>
-			{data.map((item) => (
-				<DataListItem key={item.id} data={item} />
-			))}
-		</Stack>
+		<>
+			<Stack
+				css={data.length ? visuallyHiddenStyles : undefined}
+				gap={2}
+				alignItems="flex-start"
+				id={data.length ? tableId : undefined}
+				role="status"
+			>
+				{!data.length && (
+					<>
+						<Stack gap={1}>
+							<HelpIcon size="lg" color="muted" />
+							<Heading type="h2" fontSize="lg">
+								No results found
+							</Heading>
+							<Text>Try adjusting your filter options.</Text>
+						</Stack>
+						<Button onClick={resetFilters}>Clear filters</Button>
+					</>
+				)}
+			</Stack>
+
+			{loading ? (
+				<Stack as="ul" gap={1} id={tableId}>
+					{Array.from({ length: 10 }, (_, i) => i).map((i) => (
+						<DataListItemSkeleton key={i} />
+					))}
+				</Stack>
+			) : (
+				<Stack as="ul" gap={1} id={tableId}>
+					{data.map((item) => (
+						<DataListItem key={item.id} data={item} />
+					))}
+				</Stack>
+			)}
+		</>
 	);
 };
 
