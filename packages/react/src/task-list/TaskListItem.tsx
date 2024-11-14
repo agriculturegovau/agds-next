@@ -1,8 +1,9 @@
-import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren, ReactElement } from 'react';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import {
+	AlertCircleIcon,
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
@@ -17,7 +18,7 @@ export type TaskListItemStatus = keyof typeof statusMap;
 
 export type TaskListItemLinkProps = LinkProps & {
 	status: TaskListItemStatus;
-	message?: string;
+	message?: string | ReactElement;
 	ordered?: boolean;
 };
 
@@ -42,7 +43,7 @@ export const TaskListItemLink = ({
 export type TaskListItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
 		status: TaskListItemStatus;
-		message?: string;
+		message?: string | ReactElement;
 		ordered?: boolean;
 	};
 
@@ -59,22 +60,24 @@ type TaskListItemProps = PropsWithChildren<{
 	as: ElementType;
 	className?: string;
 	status: TaskListItemStatus;
-	message?: string;
+	message?: string | ReactElement;
 	ordered?: boolean;
 }>;
 
 const taskListItemTextDataAttr = 'data-agds-task-list-item-text';
 
 const TaskListItem = ({
-	as,
-	children,
-	status,
-	message,
-	ordered,
-	className,
-	...props
-}: TaskListItemProps) => {
+												as,
+												children,
+												status,
+												message,
+												ordered,
+												className,
+												...props
+											}: TaskListItemProps) => {
 	const { icon: Icon, iconColor, label } = statusMap[status];
+	const isDisabled = status === 'notRequired';
+
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
@@ -94,6 +97,8 @@ const TaskListItem = ({
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
+					cursor: isDisabled ? 'not-allowed' : 'pointer',
+					opacity: isDisabled ? 0.5 : 1,
 
 					...(status === 'doneRecently' && {
 						backgroundColor: boxPalette.systemSuccessMuted,
@@ -113,14 +118,14 @@ const TaskListItem = ({
 
 					[`[${taskListItemTextDataAttr}]`]: {
 						...packs.underline,
-						color: boxPalette.foregroundAction,
+						color: isDisabled ? 'textDisabled' : boxPalette.foregroundAction,
 					},
 
 					'&:hover': {
-						backgroundColor: boxPalette.backgroundShade,
+						backgroundColor: isDisabled ? 'transparent' : boxPalette.backgroundShade,
 						[`[${taskListItemTextDataAttr}]`]: {
-							textDecoration: 'none',
-							color: boxPalette.foregroundText,
+							textDecoration: isDisabled ? 'underline':'none',
+							color: isDisabled ? 'textDisabled' : boxPalette.foregroundText,
 						},
 					},
 				}}
@@ -142,14 +147,14 @@ const TaskListItem = ({
 							fontSize={['md', 'lg']}
 							lineHeight="heading"
 							fontWeight="bold"
-							color="action"
+							color={isDisabled ? 'muted':'action'}
 							css={
 								ordered
 									? {
-											'&::before': {
-												content: 'counter(task-count)',
-											},
-									  }
+										'&::before': {
+											content: 'counter(task-count)',
+										},
+									}
 									: undefined
 							}
 						>
@@ -175,13 +180,18 @@ const TaskListItem = ({
 						</Text>
 					</Flex>
 				</Flex>
-				<ArrowRightIcon color="action" size={['sm', 'lg']} />
+				{!isDisabled && <ArrowRightIcon color="action" size={['sm', 'lg']} />}
 			</Flex>
 		</li>
 	);
 };
 
 const statusMap = {
+	notRequired: {
+		label: 'Not required',
+		icon: AlertCircleIcon,
+		iconColor: 'border',
+	},
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,
