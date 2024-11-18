@@ -67,14 +67,14 @@ type TaskListItemProps = PropsWithChildren<{
 const taskListItemTextDataAttr = 'data-agds-task-list-item-text';
 
 const TaskListItem = ({
-												as,
-												children,
-												status,
-												message,
-												ordered,
-												className,
-												...props
-											}: TaskListItemProps) => {
+	as,
+	children,
+	status,
+	message,
+	ordered,
+	className,
+	...props
+}: TaskListItemProps) => {
 	const { icon: Icon, iconColor, label } = statusMap[status];
 	const isDisabled = status === 'notRequired';
 
