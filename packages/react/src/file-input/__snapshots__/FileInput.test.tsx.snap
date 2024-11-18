@@ -7,7 +7,7 @@ exports[`FileInput invalid renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for=":r4:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -49,19 +49,19 @@ exports[`FileInput invalid renders correctly 1`] = `
       </div>
       <span
         class="css-o7cidz-boxStyles"
-        id="field-:r2:-message"
+        id="field-:r4:-message"
       >
         This file is not valid
       </span>
     </div>
     <div
-      class="css-4cj67k-boxStyles"
+      class="css-g3ofr5-boxStyles"
     >
       <button
-        aria-describedby="field-:r2:-message"
-        aria-label="Example. Invalid. Select file"
-        class="css-1yfpg52-BaseButton-FileInput"
-        id="field-:r2:"
+        aria-describedby="field-:r4:-message :r4:-selected-files"
+        aria-label="Select file, Example, invalid"
+        class="css-1tavrif-BaseButton-FileInput"
+        id=":r4:"
         type="button"
       >
         <span>
@@ -75,9 +75,6 @@ exports[`FileInput invalid renders correctly 1`] = `
           />
         </span>
       </button>
-      <div
-        role="status"
-      />
     </div>
     <input
       aria-hidden="true"
@@ -96,7 +93,7 @@ exports[`FileInput renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for=":r0:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -111,12 +108,13 @@ exports[`FileInput renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-4cj67k-boxStyles"
+      class="css-g3ofr5-boxStyles"
     >
       <button
-        aria-label="Example. Select file"
-        class="css-1yfpg52-BaseButton-FileInput"
-        id="field-:r0:"
+        aria-describedby=":r0:-selected-files"
+        aria-label="Select file, Example"
+        class="css-1tavrif-BaseButton-FileInput"
+        id=":r0:"
         type="button"
       >
         <span>
@@ -130,9 +128,6 @@ exports[`FileInput renders correctly 1`] = `
           />
         </span>
       </button>
-      <div
-        role="status"
-      />
     </div>
     <input
       aria-hidden="true"
