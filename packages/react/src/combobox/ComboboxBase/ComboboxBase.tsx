@@ -94,7 +94,8 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
+	renderItem,
+	// renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
@@ -278,7 +279,11 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													tabIndex={isIos ? undefined : -1}
 													{...combobox.getItemProps({ item, index })}
 												>
-													{renderItem(item)}
+													{renderItem ? (
+														renderItem(item)
+													) : (
+														<ComboboxRenderItem itemLabel={item.label} />
+													)}
 												</li>
 											))
 										) : (
