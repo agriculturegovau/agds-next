@@ -14,6 +14,10 @@ import { fileTypeMapping } from '../file-upload/utils';
 import { Flex } from '../flex';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
+import { Stack } from '../stack';
+import { Box } from '../box';
+import { SuccessFilledIcon } from '../icon';
+import { useId } from '../core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -65,6 +69,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	) {
 		const fallbackRef = useRef(null);
 		const hiddenInputRef = ref || fallbackRef;
+		const inputId = useId(id);
 
 		const [fileNames, setFileNames] = useState<string[]>([]);
 
@@ -105,62 +110,80 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
+		const selectedFilesMessageId = `${inputId}-selected-files`;
+
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
 				hint={fallbackHint}
+				id={inputId}
 				invalid={invalid}
+				label={label}
 				message={message}
-				id={id}
+				required={Boolean(required)}
 			>
-				{(a11yProps) => (
-					<>
-						<Flex gap={1} alignItems="center">
-							<Button
-								{...a11yProps}
-								aria-invalid={undefined} // Buttons not announced as invalid when `aria-invalid`, add announcement to label instead
-								aria-label={`${label}. ${
-									a11yProps['aria-invalid'] ? 'Invalid. ' : ''
-								}${a11yProps['aria-required'] ? 'Required. ' : ''}Select file`}
-								aria-required={undefined} // Buttons can't be `aria-required`, add announcement to label instead
-								css={{ minWidth: 'max-content' }}
-								disabled={disabled}
-								onClick={onVisualButtonClick}
-								variant="secondary"
-							>
-								Select file
-							</Button>
+				{(a11yProps) => {
+					const visibleButtonLabel = 'Select file';
+					const ariaDescribedby = [
+						a11yProps['aria-describedby'],
+						selectedFilesMessageId,
+					]
+						.filter(Boolean)
+						.join(' ');
+					const ariaLabel = [
+						visibleButtonLabel,
+						label,
+						a11yProps['aria-required'] && 'required',
+						a11yProps['aria-invalid'] && 'invalid',
+					]
+						.filter(Boolean)
+						.join(', ');
 
-							<div role="status">
+					return (
+						<>
+							<Stack gap={1} justifyContent="flex-start" alignItems="start">
+								<Button
+									{...a11yProps}
+									aria-describedby={ariaDescribedby}
+									aria-invalid={undefined} // Buttons not announced as invalid when `aria-invalid`, add announcement to label instead
+									aria-label={ariaLabel}
+									aria-required={undefined} // Buttons can't be `aria-required`, add announcement to label instead
+									css={{ minWidth: 'max-content' }}
+									disabled={disabled}
+									onClick={onVisualButtonClick}
+									size="sm"
+									variant="secondary"
+								>
+									{visibleButtonLabel}
+								</Button>
+
 								{!!fileNames.length && (
-									<Text breakWords>
-										{fileNames.join(', ')}
-										<VisuallyHidden>, selected.</VisuallyHidden>
-									</Text>
+									<SelectedFilesMessage
+										selectedFiles={fileNames}
+										id={selectedFilesMessageId}
+									/>
 								)}
-							</div>
-						</Flex>
+							</Stack>
 
-						<input
-							accept={accept?.toString()}
-							type="file"
-							disabled={disabled}
-							onChange={onChange}
-							{...props}
-							aria-hidden={true}
-							css={{
-								position: 'absolute',
-								height: 1,
-								width: 1,
-								pointerEvents: 'none',
-							}}
-							ref={hiddenInputRef}
-							tabIndex={-1}
-						/>
-					</>
-				)}
+							<input
+								accept={accept?.toString()}
+								disabled={disabled}
+								onChange={onChange}
+								type="file"
+								{...props}
+								aria-hidden={true}
+								css={{
+									position: 'absolute',
+									height: 1,
+									width: 1,
+									pointerEvents: 'none',
+								}}
+								ref={hiddenInputRef}
+								tabIndex={-1}
+							/>
+						</>
+					);
+				}}
 			</Field>
 		);
 	}
@@ -171,3 +194,29 @@ const hasLabel = (
 ): mimeTypeData is { extensions: string[]; label: string } => {
 	return 'label' in mimeTypeData;
 };
+
+const SelectedFilesMessage = ({
+	selectedFiles,
+	id,
+}: {
+	selectedFiles: string[];
+	id: string;
+}) => (
+	<Flex gap={0.5} alignItems="center">
+		<Box flexShrink={0}>
+			<SuccessFilledIcon
+				color="success"
+				size="md"
+				aria-label="Success"
+				aria-hidden="false"
+				css={{ display: 'block' }}
+			/>
+		</Box>
+		<Text breakWords display="block" fontWeight="bold" color="success" id={id}>
+			{selectedFiles.length > 1
+				? `${selectedFiles.length} files`
+				: `${selectedFiles[0]}`}
+			<VisuallyHidden>, selected.</VisuallyHidden>
+		</Text>
+	</Flex>
+);
