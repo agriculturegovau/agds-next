@@ -1,6 +1,6 @@
 import { Fragment, isValidElement, ReactNode, useMemo } from 'react';
-import { boxPalette, tokens } from '../core';
-import { fontGrid } from '../core/utils/fontGrid';
+// import { boxPalette, tokens } from '../core';
+// import { fontGrid } from '../core/utils/fontGrid';
 
 export type ComboboxRenderItemProps = {
 	/** The label of the item. */
@@ -17,7 +17,7 @@ export type ComboboxRenderItemProps = {
 	endElement?: ReactNode;
 };
 
-const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
+// const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
 
 export function ComboboxRenderItem({
 	itemLabel,
@@ -37,28 +37,15 @@ export function ComboboxRenderItem({
 	return (
 		<Fragment>
 			{beforeElement ? (
-				<div css={{ flexShrink: 0 }}>{beforeElement}</div>
+				<div data-combobox-render-item="beforeElement">{beforeElement}</div>
 			) : null}
-			<span
-				css={{
-					alignItems: 'stretch',
-					display: 'flex',
-					flexDirection: 'column',
-				}}
-			>
+			<span data-combobox-render-item="itemLabel">
 				{renderedLabel}
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
 					) : (
-						<span
-							css={{
-								color: boxPalette.foregroundMuted,
-								fontFamily: tokens.font.body,
-								fontWeight: tokens.fontWeight.normal,
-								...FONT_SIZE_LINE_HEIGHT,
-							}}
-						>
+						<span data-combobox-render-item="secondaryText">
 							{secondaryText}
 						</span>
 					)
@@ -67,21 +54,12 @@ export function ComboboxRenderItem({
 					isValidElement(tertiaryText) ? (
 						tertiaryText
 					) : (
-						<span
-							css={{
-								color: boxPalette.foregroundMuted,
-								fontFamily: tokens.font.body,
-								fontWeight: tokens.fontWeight.normal,
-								...FONT_SIZE_LINE_HEIGHT,
-							}}
-						>
-							{tertiaryText}
-						</span>
+						<span data-combobox-render-item="tertiaryText">{tertiaryText}</span>
 					)
 				) : null}
 			</span>
 			{endElement ? (
-				<div css={{ flexShrink: 0, marginLeft: 'auto' }}>{endElement}</div>
+				<div data-combobox-render-item="endElement">{endElement}</div>
 			) : null}
 		</Fragment>
 	);
@@ -89,15 +67,7 @@ export function ComboboxRenderItem({
 
 function renderItemLabel(itemLabel: string) {
 	return (
-		<span
-			aria-label={itemLabel}
-			css={{
-				color: 'inherit',
-				fontFamily: tokens.font.body,
-				fontWeight: tokens.fontWeight.normal,
-				...FONT_SIZE_LINE_HEIGHT,
-			}}
-		>
+		<span aria-label={itemLabel} data-combobox-render-item="renderedLabel">
 			{itemLabel.split('').map((character, index) => (
 				<span data-char={character} key={index}>
 					{character}

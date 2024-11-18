@@ -1,12 +1,13 @@
 import {
 	Fragment,
+	// Profiler,
 	type FocusEvent,
 	type FocusEventHandler,
 	type ReactNode,
 	type Ref,
 } from 'react';
 import { UseComboboxReturnValue } from 'downshift';
-import { packs } from '../../core';
+import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
@@ -18,7 +19,7 @@ import {
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
-import { ComboboxListItem } from './ComboboxListItem';
+// import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -61,6 +62,14 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	onBlur?: FocusEventHandler<HTMLInputElement>;
 	onFocus?: FocusEventHandler<HTMLInputElement>;
 };
+
+const hoverStyles = {
+	color: boxPalette.foregroundText,
+	backgroundColor: boxPalette.backgroundShade,
+	'> span': packs.underline,
+};
+
+const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
 
 export function ComboboxBase<Option extends DefaultComboboxOption>({
 	label,
@@ -125,6 +134,12 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	};
 
 	return (
+		// <Profiler
+		// 	id="combobox"
+		// 	onRender={(a, b, c, d) => {
+		// 		console.log(a, b, c, d);
+		// 	}}
+		// >
 		<Field
 			label={label}
 			labelId={labelId}
@@ -143,6 +158,51 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 						maxWidth,
 						position: 'relative',
 						...generateHighlightStyles(combobox.inputValue),
+						li: {
+							alignItems: 'center',
+							borderBottomStyle: 'solid',
+							borderBottomWidth: tokens.borderWidth.sm,
+							borderColor: boxPalette.borderMuted,
+							display: 'flex',
+							gap: mapSpacing(0.75),
+							paddingBottom: mapSpacing(0.75),
+							paddingLeft: mapSpacing(1),
+							paddingRight: mapSpacing(1),
+							paddingTop: mapSpacing(0.75),
+							cursor: 'pointer',
+							color: boxPalette.foregroundAction,
+							'&:hover': hoverStyles,
+							'&[aria-selected="true"]': hoverStyles,
+							'&:last-of-type': { borderBottom: 'none' },
+						},
+						'[data-combobox-render-item="beforeElement"]': { flexShrink: 0 },
+						'[data-combobox-render-item="itemLabel"]': {
+							alignItems: 'stretch',
+							display: 'flex',
+							flexDirection: 'column',
+						},
+						'[data-combobox-render-item="secondaryText"]': {
+							color: boxPalette.foregroundMuted,
+							fontFamily: tokens.font.body,
+							fontWeight: tokens.fontWeight.normal,
+							...FONT_SIZE_LINE_HEIGHT,
+						},
+						'[data-combobox-render-item="tertiaryText"]': {
+							color: boxPalette.foregroundMuted,
+							fontFamily: tokens.font.body,
+							fontWeight: tokens.fontWeight.normal,
+							...FONT_SIZE_LINE_HEIGHT,
+						},
+						'[data-combobox-render-item="endElement"]': {
+							flexShrink: 0,
+							marginLeft: 'auto',
+						},
+						'[data-combobox-render-item="renderedLabel"]': {
+							color: 'inherit',
+							fontFamily: tokens.font.body,
+							fontWeight: tokens.fontWeight.normal,
+							...FONT_SIZE_LINE_HEIGHT,
+						},
 					}}
 				>
 					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
@@ -202,14 +262,24 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 									<Fragment>
 										{inputItems?.length ? (
 											inputItems.map((item, index) => (
-												<ComboboxListItem
+												// <ComboboxListItem
+												// 	key={`${item.value}-${index}`}
+												// 	isActiveItem={combobox.highlightedIndex === index}
+												// 	isInteractive={true}
+												// 	{...combobox.getItemProps({ item, index })}
+												// >
+												// 	{renderItem(item)}
+												// </ComboboxListItem>
+												<li
+													// Required for Android TalkBack to be able to access the list items
+													// See https://issues.chromium.org/issues/40260928
+													// But stops iOS from being able to access them ◔_◔
 													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
+													tabIndex={isIos ? undefined : -1}
 													{...combobox.getItemProps({ item, index })}
 												>
 													{renderItem(item)}
-												</ComboboxListItem>
+												</li>
 											))
 										) : (
 											<ComboboxListEmptyResults message={emptyResultsMessage} />
@@ -222,5 +292,6 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 				</div>
 			)}
 		</Field>
+		// </Profiler>
 	);
 }
