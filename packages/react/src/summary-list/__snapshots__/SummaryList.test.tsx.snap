@@ -19,7 +19,7 @@ exports[`SummaryList renders correctly 1`] = `
         Will
       </dd>
       <dd
-        class="css-1jhrbpg-boxStyles"
+        class="css-vspen0-boxStyles"
       >
         <a
           class="css-koqz57-TextLink"
@@ -43,7 +43,7 @@ exports[`SummaryList renders correctly 1`] = `
         Power
       </dd>
       <dd
-        class="css-1jhrbpg-boxStyles"
+        class="css-vspen0-boxStyles"
       >
         <a
           class="css-koqz57-TextLink"
@@ -69,7 +69,7 @@ exports[`SummaryList renders correctly 1`] = `
         will.power@example.com
       </dd>
       <dd
-        class="css-1jhrbpg-boxStyles"
+        class="css-vspen0-boxStyles"
       >
         <a
           class="css-koqz57-TextLink"
@@ -93,7 +93,7 @@ exports[`SummaryList renders correctly 1`] = `
         09/06/1995
       </dd>
       <dd
-        class="css-1jhrbpg-boxStyles"
+        class="css-vspen0-boxStyles"
       >
         <a
           class="css-koqz57-TextLink"
