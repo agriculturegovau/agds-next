@@ -1,13 +1,4 @@
-// @ts-nocheck
-import {
-	FocusEventHandler,
-	ReactNode,
-	Ref,
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
+import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { ComboboxBase } from './ComboboxBase';
 import {
@@ -111,129 +102,10 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	const getInputProps = useCallback(combobox.getInputProps, [
-		combobox.getInputProps,
-	]);
-	const getItemProps = useCallback(combobox.getItemProps, [
-		combobox.getItemProps,
-	]);
-	const getLabelProps = useCallback(combobox.getLabelProps, [
-		combobox.getLabelProps,
-	]);
-	const getMenuProps = useCallback(combobox.getMenuProps, [
-		combobox.getMenuProps,
-	]);
-	const getToggleButtonProps = useCallback(combobox.getToggleButtonProps, [
-		combobox.getToggleButtonProps,
-	]);
-	const reset = useCallback(combobox.reset, [combobox.reset]);
-	const highlightedIndex = useMemo(
-		() => combobox.highlightedIndex,
-		[combobox.highlightedIndex]
-	);
-	const inputItemsCached = useMemo(() => inputItems, [inputItems]);
-	const inputValue = useMemo(() => combobox.inputValue, [combobox.inputValue]);
-	const isOpen = useMemo(() => combobox.isOpen, [combobox.isOpen]);
-	const selectedItem = useMemo(
-		() => combobox.selectedItem,
-		[combobox.selectedItem]
-	);
-
-	// console.log(`combobox`, combobox);
-	// console.log(`combobox.highlightedIndex`, combobox.highlightedIndex);
-
-	// console.log(
-	// 	`*****0 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[0],
-	// 		index: 0,
-	// 	})
-	// );
-	// console.log(
-	// 	`*****1 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[1],
-	// 		index: 1,
-	// 	})
-	// );
-	// console.log(
-	// 	`*****2 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[2],
-	// 		index: 2,
-	// 	})
-	// );
-	// console.log(
-	// 	`*****3 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[3],
-	// 		index: 3,
-	// 	})
-	// );
-	// console.log(
-	// 	`*****4 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[4],
-	// 		index: 4,
-	// 	})
-	// );
-	// console.log(
-	// 	`0 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[0],
-	// 		index: 0,
-	// 	})?.onMouseMove.toString()
-	// );
-	// console.log(
-	// 	`1 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[1],
-	// 		index: 1,
-	// 	})?.onMouseMove.toString()
-	// );
-	// console.log(
-	// 	`2 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[2],
-	// 		index: 2,
-	// 	})?.onMouseMove.toString()
-	// );
-	// console.log(
-	// 	`3 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[3],
-	// 		index: 3,
-	// 	})?.onMouseMove.toString()
-	// );
-	// console.log(
-	// 	`4 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[4],
-	// 		index: 4,
-	// 	})?.onMouseMove.toString()
-	// );
-	// console.log(
-	// 	`5 getItemProps()`,
-	// 	getItemProps({
-	// 		item: inputItemsCached[5],
-	// 		index: 5,
-	// 	})?.onMouseMove.toString()
-	// );
-
 	return (
 		<ComboboxBase
-			// combobox={combobox}
-			getInputProps={getInputProps}
-			getItemProps={getItemProps}
-			getLabelProps={getLabelProps}
-			getMenuProps={getMenuProps}
-			getToggleButtonProps={getToggleButtonProps}
-			reset={reset}
-			highlightedIndex={highlightedIndex}
-			inputValue={inputValue}
-			isOpen={isOpen}
-			selectedItem={selectedItem}
-			inputItems={inputItemsCached}
+			combobox={combobox}
+			inputItems={inputItems}
 			inputId={inputId}
 			inputRef={inputRefProp}
 			isAutocomplete={false}

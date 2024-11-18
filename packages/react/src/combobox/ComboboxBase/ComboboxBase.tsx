@@ -1,8 +1,5 @@
-// @ts-nocheck
 import {
 	Fragment,
-	Profiler,
-	useCallback,
 	type FocusEvent,
 	type FocusEventHandler,
 	type ReactNode,
@@ -83,28 +80,15 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
-	// combobox,
-	getInputProps,
-	getItemProps,
-	getLabelProps,
-	getMenuProps,
-	getToggleButtonProps,
-	reset,
-	highlightedIndex,
-	inputValue,
-	isOpen,
-	selectedItem,
+	combobox,
 	inputItems,
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem: renderItemProp = (item) => (
-		<ComboboxRenderItem itemLabel={item.label} />
-	),
+	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
 	...props
 }: ComboboxBaseProps<Option>) {
-	const renderItem = useCallback(renderItemProp, [renderItemProp]);
-	const showClearButton = clearable && selectedItem;
+	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
 	const isIos = useIsIos();
@@ -126,10 +110,10 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		minHeight: 195,
 		// For a11y reasons, the popover element is hidden with CSS and not conditionally rendered
 		hiddenWithCSS: true,
-		isOpen: isOpen,
+		isOpen: combobox.isOpen,
 	});
 
-	const { id: labelId } = getLabelProps();
+	const { id: labelId } = combobox.getLabelProps();
 
 	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
 		// If a user presses the Done button on the iOS keyboard, we shouldn't close the dropdown
@@ -141,108 +125,102 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	};
 
 	return (
-		<Profiler
-			id="combobox"
-			onRender={(a, b, c, d) => {
-				console.log(a, b, c, d);
-			}}
+		<Field
+			label={label}
+			labelId={labelId}
+			hideOptionalLabel={hideOptionalLabel}
+			required={Boolean(required)}
+			hint={hint}
+			maxWidth={maxWidthProp}
+			message={message}
+			invalid={invalid}
+			id={inputId}
 		>
-			<Field
-				label={label}
-				labelId={labelId}
-				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
-				hint={hint}
-				maxWidth={maxWidthProp}
-				message={message}
-				invalid={invalid}
-				id={inputId}
-			>
-				{(a11yProps) => (
-					<div
-						{...popover.getReferenceProps()}
+			{(a11yProps) => (
+				<div
+					{...popover.getReferenceProps()}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...generateHighlightStyles(combobox.inputValue),
+					}}
+				>
+					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
+					<input
 						css={{
-							maxWidth,
-							position: 'relative',
-							...generateHighlightStyles(inputValue),
+							...inputStyles,
+							width: '100%',
+							...(isAutocomplete && { paddingLeft: '3rem' }),
 						}}
+						disabled={disabled}
+						{...combobox.getInputProps({
+							...a11yProps,
+							...{
+								'aria-describedby':
+									props['aria-describedby'] || a11yProps['aria-describedby'],
+								'aria-invalid':
+									props['aria-invalid'] || a11yProps['aria-invalid'],
+							},
+							ref: inputRefProp,
+							type: 'text',
+							name: inputName,
+							onBlur: handleOnBlur,
+							onFocus,
+						})}
+					/>
+					{hasButtons && (
+						<ComboboxButtonContainer>
+							{showClearButton && (
+								<ComboboxClearButton
+									disabled={disabled}
+									onClick={combobox.reset}
+								/>
+							)}
+							{hasBothButtons && <ComboboxButtonDivider />}
+							{showDropdownTrigger && (
+								<ComboboxDropdownTrigger
+									{...combobox.getToggleButtonProps({
+										isOpen: combobox.isOpen,
+										disabled,
+									})}
+								/>
+							)}
+						</ComboboxButtonContainer>
+					)}
+					<Popover
+						as="ul"
+						{...combobox.getMenuProps(popover.getPopoverProps())}
+						visibility={combobox.isOpen ? 'visible' : 'hidden'}
 					>
-						{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
-						<input
-							css={{
-								...inputStyles,
-								width: '100%',
-								...(isAutocomplete && { paddingLeft: '3rem' }),
-							}}
-							disabled={disabled}
-							{...getInputProps({
-								...a11yProps,
-								...{
-									'aria-describedby':
-										props['aria-describedby'] || a11yProps['aria-describedby'],
-									'aria-invalid':
-										props['aria-invalid'] || a11yProps['aria-invalid'],
-								},
-								ref: inputRefProp,
-								type: 'text',
-								name: inputName,
-								onBlur: handleOnBlur,
-								onFocus,
-							})}
-						/>
-						{hasButtons && (
-							<ComboboxButtonContainer>
-								{showClearButton && (
-									<ComboboxClearButton disabled={disabled} onClick={reset} />
+						{combobox.isOpen ? (
+							<Fragment>
+								{loading ? (
+									<ComboboxListLoading />
+								) : networkError ? (
+									<ComboboxListError />
+								) : (
+									<Fragment>
+										{inputItems?.length ? (
+											inputItems.map((item, index) => (
+												<ComboboxListItem
+													key={`${item.value}-${index}`}
+													isActiveItem={combobox.highlightedIndex === index}
+													isInteractive={true}
+													{...combobox.getItemProps({ item, index })}
+												>
+													{renderItem(item)}
+												</ComboboxListItem>
+											))
+										) : (
+											<ComboboxListEmptyResults message={emptyResultsMessage} />
+										)}
+									</Fragment>
 								)}
-								{hasBothButtons && <ComboboxButtonDivider />}
-								{showDropdownTrigger && (
-									<ComboboxDropdownTrigger
-										{...getToggleButtonProps({
-											isOpen: isOpen,
-											disabled,
-										})}
-									/>
-								)}
-							</ComboboxButtonContainer>
-						)}
-						<Popover
-							as="ul"
-							{...getMenuProps(popover.getPopoverProps())}
-							visibility={isOpen ? 'visible' : 'hidden'}
-						>
-							{isOpen ? (
-								<Fragment>
-									{loading ? (
-										<ComboboxListLoading />
-									) : networkError ? (
-										<ComboboxListError />
-									) : (
-										<Fragment>
-											{inputItems?.length ? (
-												inputItems.map((item, index) => (
-													<ComboboxListItem
-														key={`${item.value}-${index}`}
-														isActiveItem={highlightedIndex === index}
-														isInteractive={true}
-														{...getItemProps({ item, index })}
-													>
-														{renderItem(item)}
-													</ComboboxListItem>
-												))
-											) : (
-												<ComboboxListEmptyResults
-													message={emptyResultsMessage}
-												/>
-											)}
-										</Fragment>
-									)}
-								</Fragment>
-							) : null}
-						</Popover>
-					</div>
-				)}
-			</Field>
-		</Profiler>
+							</Fragment>
+						) : null}
+					</Popover>
+				</div>
+			)}
+		</Field>
 	);
 }
