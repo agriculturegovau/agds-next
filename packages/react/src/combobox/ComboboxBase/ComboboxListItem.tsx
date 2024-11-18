@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes } from 'react';
+// @ts-nocheck
+import { forwardRef, HTMLAttributes, memo } from 'react';
 import { boxPalette, mapSpacing, packs, tokens } from '../../core';
 import { useIsIos } from '../utils';
 
@@ -13,47 +14,51 @@ const hoverStyles = {
 	'> span': packs.underline,
 };
 
-export const ComboboxListItem = forwardRef<
-	HTMLLIElement,
-	ComboboxListItemProps
->(function ComboboxListItem(
-	{ children, isActiveItem, isInteractive = true, ...props },
-	ref
-) {
-	const isIos = useIsIos();
-	return (
-		<li
-			ref={ref}
-			css={{
-				alignItems: 'center',
-				borderBottomStyle: 'solid',
-				borderBottomWidth: tokens.borderWidth.sm,
-				borderColor: boxPalette.borderMuted,
-				display: 'flex',
-				gap: mapSpacing(0.75),
-				paddingBottom: mapSpacing(0.75),
-				paddingLeft: mapSpacing(1),
-				paddingRight: mapSpacing(1),
-				paddingTop: mapSpacing(0.75),
-				...(isInteractive
-					? {
-							cursor: 'pointer',
-							color: boxPalette.foregroundAction,
-							'&:hover': hoverStyles,
-					  }
-					: undefined),
+export const ComboboxListItem = memo(
+	forwardRef<HTMLLIElement, ComboboxListItemProps>(function ComboboxListItem(
+		{ children, isActiveItem, isInteractive = true, ...props },
+		ref
+	) {
+		const isIos = useIsIos();
+		return (
+			<li
+				ref={ref}
+				css={{
+					alignItems: 'center',
+					borderBottomStyle: 'solid',
+					borderBottomWidth: tokens.borderWidth.sm,
+					borderColor: boxPalette.borderMuted,
+					display: 'flex',
+					gap: mapSpacing(0.75),
+					paddingBottom: mapSpacing(0.75),
+					paddingLeft: mapSpacing(1),
+					paddingRight: mapSpacing(1),
+					paddingTop: mapSpacing(0.75),
+					...(isInteractive
+						? {
+								cursor: 'pointer',
+								color: boxPalette.foregroundAction,
+								'&:hover': hoverStyles,
+						  }
+						: undefined),
 
-				...(isActiveItem ? hoverStyles : undefined),
+					...(isActiveItem ? hoverStyles : undefined),
 
-				'&:last-of-type': { borderBottom: 'none' },
-			}}
-			// Required for Android TalkBack to be able to access the list items
-			// See https://issues.chromium.org/issues/40260928
-			// But stops iOS from being able to access them ◔_◔
-			tabIndex={isIos ? undefined : -1}
-			{...props}
-		>
-			{children}
-		</li>
-	);
-});
+					'&:last-of-type': { borderBottom: 'none' },
+				}}
+				// Required for Android TalkBack to be able to access the list items
+				// See https://issues.chromium.org/issues/40260928
+				// But stops iOS from being able to access them ◔_◔
+				tabIndex={isIos ? undefined : -1}
+				{...props}
+			>
+				{children}
+			</li>
+		);
+	}),
+	(prevProps, nextProps) => {
+		// console.log(`prevProps, nextProps`, prevProps, nextProps);
+		// Custom comparison: Only re-render if `isActiveItem` changes
+		return prevProps.isActiveItem === nextProps.isActiveItem;
+	}
+);
