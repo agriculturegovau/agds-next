@@ -54,12 +54,35 @@ exports[`FileInput invalid renders correctly 1`] = `
         This file is not valid
       </span>
     </div>
+    <div
+      class="css-4cj67k-boxStyles"
+    >
+      <button
+        aria-describedby="field-:r2:-message"
+        aria-label="Example. Invalid. Select file"
+        class="css-1yfpg52-BaseButton-FileInput"
+        id="field-:r2:"
+        type="button"
+      >
+        <span>
+          <span
+            class="css-oobk4c-Button"
+          >
+            Select file
+          </span>
+          <span
+            aria-live="assertive"
+          />
+        </span>
+      </button>
+      <div
+        role="status"
+      />
+    </div>
     <input
-      aria-describedby="field-:r2:-message"
-      aria-invalid="true"
-      aria-required="false"
-      class="css-3lh49h"
-      id="field-:r2:"
+      aria-hidden="true"
+      class="css-eoeymn-FileInput"
+      tabindex="-1"
       type="file"
     />
   </div>
@@ -87,11 +110,34 @@ exports[`FileInput renders correctly 1`] = `
         (optional)
       </span>
     </label>
+    <div
+      class="css-4cj67k-boxStyles"
+    >
+      <button
+        aria-label="Example. Select file"
+        class="css-1yfpg52-BaseButton-FileInput"
+        id="field-:r0:"
+        type="button"
+      >
+        <span>
+          <span
+            class="css-oobk4c-Button"
+          >
+            Select file
+          </span>
+          <span
+            aria-live="assertive"
+          />
+        </span>
+      </button>
+      <div
+        role="status"
+      />
+    </div>
     <input
-      aria-invalid="false"
-      aria-required="false"
-      class="css-3lh49h"
-      id="field-:r0:"
+      aria-hidden="true"
+      class="css-eoeymn-FileInput"
+      tabindex="-1"
       type="file"
     />
   </div>
