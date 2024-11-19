@@ -100,7 +100,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		useEffect(() => {
 			if (!autoFocus) return;
 			visibleButtonRef.current?.focus();
-		}, []);
+			// autoFocus should only be run once on load
+		}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into valid file extensions
 		const acceptedFileExtensions = useMemo(() => {
@@ -172,7 +173,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 									{visibleButtonLabel}
 								</Button>
 
-								{!!fileNames.length ? (
+								{fileNames.length ? (
 									<SelectedFilesMessage
 										selectedFiles={fileNames}
 										id={selectedFilesMessageId}
