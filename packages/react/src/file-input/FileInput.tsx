@@ -3,20 +3,18 @@ import {
 	forwardRef,
 	InputHTMLAttributes,
 	useCallback,
+	useEffect,
 	useMemo,
 	useRef,
 	useState,
 } from 'react';
 import { Field } from '../field';
-import { Button } from '../button';
+import { Button, ButtonProps } from '../button';
 import { AcceptedFileMimeTypes } from '../file-upload';
 import { fileTypeMapping } from '../file-upload/utils';
-import { Flex } from '../flex';
 import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
 import { Stack } from '../stack';
-import { Box } from '../box';
-import { SuccessFilledIcon } from '../icon';
 import { useId } from '../core';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -36,29 +34,34 @@ type BaseFileInputProps = {
 };
 
 export type FileInputProps = BaseFileInputProps & {
-	/** Describes the purpose of the field. */
-	label: string;
+	/** The size of the button. */
+	buttonSize?: ButtonProps['size'];
 	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
-	/** If false, "(optional)" will be appended to the label. */
-	required?: boolean;
 	/** Provides extra information about the field. */
 	hint?: string;
-	/** Message to show when the field is invalid. */
-	message?: string;
 	/** If true, the invalid state will be rendered. */
 	invalid?: boolean;
+	/** Describes the purpose of the field. */
+	label: string;
+	/** Message to show when the field is invalid. */
+	message?: string;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
 };
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	function FileInput(
 		{
 			accept,
+			autoFocus,
+			buttonSize = 'sm',
 			label,
 			hideOptionalLabel,
 			required,
 			hint,
 			message,
+			multiple,
 			invalid,
 			id,
 			disabled,
@@ -69,11 +72,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 	) {
 		const fallbackRef = useRef(null);
 		const hiddenInputRef = ref || fallbackRef;
+		const visibleButtonRef = useRef<HTMLButtonElement>(null);
 		const inputId = useId(id);
 
 		const [fileNames, setFileNames] = useState<string[]>([]);
 
-		// Called on the hidden input
+		// Called on the hidden input to manage the selected file(s)
 		const onChange = useCallback(
 			(event: ChangeEvent<HTMLInputElement>) => {
 				onChangeProp?.(event);
@@ -87,6 +91,16 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const onVisualButtonClick = () => {
 			if ('current' in hiddenInputRef) hiddenInputRef.current?.click();
 		};
+		const onVisualButtonBlur = () => {
+			if ('current' in hiddenInputRef) hiddenInputRef.current?.focus();
+			if ('current' in hiddenInputRef) hiddenInputRef.current?.blur();
+		};
+
+		// Button doesn't allow `autoFocus`, so manually focus once on initial render if `autoFocus` is `true`
+		useEffect(() => {
+			if (!autoFocus) return;
+			visibleButtonRef.current?.focus();
+		}, []);
 
 		// Converts an array of mime types, e.g. `image/jpeg`, `application/pdf` into valid file extensions
 		const acceptedFileExtensions = useMemo(() => {
@@ -123,7 +137,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 				required={Boolean(required)}
 			>
 				{(a11yProps) => {
-					const visibleButtonLabel = 'Select file';
+					const visibleButtonLabel = `Select file${multiple ? 's' : ''}`;
 					const ariaDescribedby = [
 						a11yProps['aria-describedby'],
 						selectedFilesMessageId,
@@ -148,26 +162,30 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 									aria-invalid={undefined} // Buttons not announced as invalid when `aria-invalid`, add announcement to label instead
 									aria-label={ariaLabel}
 									aria-required={undefined} // Buttons can't be `aria-required`, add announcement to label instead
-									css={{ minWidth: 'max-content' }}
 									disabled={disabled}
+									onBlur={onVisualButtonBlur}
 									onClick={onVisualButtonClick}
-									size="sm"
+									ref={visibleButtonRef}
+									size={buttonSize}
 									variant="secondary"
 								>
 									{visibleButtonLabel}
 								</Button>
 
-								{!!fileNames.length && (
+								{!!fileNames.length ? (
 									<SelectedFilesMessage
 										selectedFiles={fileNames}
 										id={selectedFilesMessageId}
 									/>
+								) : (
+									<Text color="muted">No files selected</Text>
 								)}
 							</Stack>
 
 							<input
 								accept={accept?.toString()}
 								disabled={disabled}
+								multiple={multiple}
 								onChange={onChange}
 								type="file"
 								{...props}
@@ -202,21 +220,14 @@ const SelectedFilesMessage = ({
 	selectedFiles: string[];
 	id: string;
 }) => (
-	<Flex gap={0.5} alignItems="center">
-		<Box flexShrink={0}>
-			<SuccessFilledIcon
-				color="success"
-				size="md"
-				aria-label="Success"
-				aria-hidden="false"
-				css={{ display: 'block' }}
-			/>
-		</Box>
-		<Text breakWords display="block" fontWeight="bold" color="success" id={id}>
-			{selectedFiles.length > 1
-				? `${selectedFiles.length} files`
-				: `${selectedFiles[0]}`}
-			<VisuallyHidden>, selected.</VisuallyHidden>
-		</Text>
-	</Flex>
+	<Text breakWords display="block" fontWeight="bold" id={id}>
+		{selectedFiles.length > 1 ? (
+			<>{selectedFiles.length} files selected</>
+		) : (
+			<>
+				{selectedFiles[0]}
+				<VisuallyHidden>, selected.</VisuallyHidden>
+			</>
+		)}
+	</Text>
 );
