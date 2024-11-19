@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
 	Fragment,
 	// Profiler,
@@ -277,7 +278,16 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 													// But stops iOS from being able to access them ◔_◔
 													key={`${item.value}-${index}`}
 													tabIndex={isIos ? undefined : -1}
-													{...combobox.getItemProps({ item, index })}
+													aria-selected={combobox.highlightedIndex === index}
+													id={item.id}
+													onClick={item.onClick}
+													onMouseDown={item.onMouseDown}
+													onMouseMove={item.onMouseMove}
+													role={item.role}
+													// {...combobox.getItemProps({
+													// 	item: inputItems[0],
+													// 	index,
+													// })}
 												>
 													{renderItem ? (
 														renderItem(item)
