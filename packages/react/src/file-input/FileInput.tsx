@@ -1,5 +1,6 @@
 import {
 	ChangeEvent,
+	FocusEvent,
 	forwardRef,
 	InputHTMLAttributes,
 	useCallback,
@@ -12,7 +13,6 @@ import { Field } from '../field';
 import { Button, ButtonProps } from '../button';
 import { AcceptedFileMimeTypes } from '../file-upload';
 import { fileTypeMapping } from '../file-upload/utils';
-import { VisuallyHidden } from '../a11y';
 import { Text } from '../text';
 import { Stack } from '../stack';
 import { useId } from '../core';
@@ -91,9 +91,23 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const onVisualButtonClick = () => {
 			if ('current' in hiddenInputRef) hiddenInputRef.current?.click();
 		};
-		const onVisualButtonBlur = () => {
-			if ('current' in hiddenInputRef) hiddenInputRef.current?.focus();
-			if ('current' in hiddenInputRef) hiddenInputRef.current?.blur();
+		const onVisualButtonBlur = (event: FocusEvent<HTMLButtonElement>) => {
+			if (!props.onBlur) return;
+
+			if ('current' in hiddenInputRef) {
+				// We're passing the button's event rather than the input's event as the primary use case is not value reading
+				// TODO: in a future breaking change we will update the types
+				props.onBlur(event as FocusEvent<HTMLInputElement>);
+			}
+		};
+		const onVisualButtonFocus = (event: FocusEvent<HTMLButtonElement>) => {
+			if (!props.onFocus) return;
+
+			if ('current' in hiddenInputRef) {
+				// We're passing the button's event rather than the input's event as the primary use case is not value reading
+				// TODO: in a future breaking change we will update the types
+				props.onFocus(event as FocusEvent<HTMLInputElement>);
+			}
 		};
 
 		// Button doesn't allow `autoFocus`, so manually focus once on initial render if `autoFocus` is `true`
@@ -125,8 +139,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
-		const selectedFilesMessageId = `${inputId}-selected-files`;
-
 		return (
 			<Field
 				hideOptionalLabel={hideOptionalLabel}
@@ -139,17 +151,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			>
 				{(a11yProps) => {
 					const visibleButtonLabel = `Select file${multiple ? 's' : ''}`;
-					const ariaDescribedby = [
-						a11yProps['aria-describedby'],
-						selectedFilesMessageId,
-					]
-						.filter(Boolean)
-						.join(' ');
 					const ariaLabel = [
 						visibleButtonLabel,
 						label,
 						a11yProps['aria-required'] && 'required',
 						a11yProps['aria-invalid'] && 'invalid',
+						getSelectedFilesMessage({ fileNames, multiple }),
 					]
 						.filter(Boolean)
 						.join(', ');
@@ -159,13 +166,13 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 							<Stack gap={1} justifyContent="flex-start" alignItems="start">
 								<Button
 									{...a11yProps}
-									aria-describedby={ariaDescribedby}
 									aria-invalid={undefined} // Buttons not announced as invalid when `aria-invalid`, add announcement to label instead
 									aria-label={ariaLabel}
 									aria-required={undefined} // Buttons can't be `aria-required`, add announcement to label instead
 									disabled={disabled}
 									onBlur={onVisualButtonBlur}
 									onClick={onVisualButtonClick}
+									onFocus={onVisualButtonFocus}
 									ref={visibleButtonRef}
 									size={buttonSize}
 									variant="secondary"
@@ -173,14 +180,20 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 									{visibleButtonLabel}
 								</Button>
 
-								{fileNames.length ? (
-									<SelectedFilesMessage
-										selectedFiles={fileNames}
-										id={selectedFilesMessageId}
-									/>
-								) : (
-									<Text color="muted">No files selected</Text>
-								)}
+								<Text
+									breakWords
+									color="muted"
+									{...(fileNames.length && {
+										color: undefined,
+										fontWeight: 'bold',
+									})}
+								>
+									{getSelectedFilesMessage({
+										fileNames,
+										isDisplayed: true,
+										multiple,
+									})}
+								</Text>
 							</Stack>
 
 							<input
@@ -214,21 +227,19 @@ const hasLabel = (
 	return 'label' in mimeTypeData;
 };
 
-const SelectedFilesMessage = ({
-	selectedFiles,
-	id,
+const getSelectedFilesMessage = ({
+	fileNames,
+	isDisplayed,
+	multiple,
 }: {
-	selectedFiles: string[];
-	id: string;
-}) => (
-	<Text breakWords display="block" fontWeight="bold" id={id}>
-		{selectedFiles.length > 1 ? (
-			<>{selectedFiles.length} files selected</>
-		) : (
-			<>
-				{selectedFiles[0]}
-				<VisuallyHidden>, selected.</VisuallyHidden>
-			</>
-		)}
-	</Text>
-);
+	fileNames: string[];
+	isDisplayed?: boolean;
+	multiple?: boolean;
+}) => {
+	const fileOrFiles = multiple ? 'files' : 'file';
+	return fileNames.length === 0
+		? `No ${fileOrFiles} selected` // When no files selected, show the empty state
+		: fileNames.length === 1
+		? `${fileNames[0]}${isDisplayed ? '' : ' selected'}` // When one file selected show that file (and announce "selected")
+		: `${fileNames.length} files selected`; // When multiple files are selected, show how many
+};

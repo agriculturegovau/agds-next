@@ -58,8 +58,8 @@ exports[`FileInput invalid renders correctly 1`] = `
       class="css-g3ofr5-boxStyles"
     >
       <button
-        aria-describedby="field-:r4:-message :r4:-selected-files"
-        aria-label="Select file, Example, invalid"
+        aria-describedby="field-:r4:-message"
+        aria-label="Select file, Example, invalid, No file selected"
         class="css-18q2kyp-BaseButton-Button"
         id=":r4:"
         type="button"
@@ -76,9 +76,9 @@ exports[`FileInput invalid renders correctly 1`] = `
         </span>
       </button>
       <span
-        class="css-axuon-boxStyles"
+        class="css-pqovr3-boxStyles"
       >
-        No files selected
+        No file selected
       </span>
     </div>
     <input
@@ -116,8 +116,7 @@ exports[`FileInput renders correctly 1`] = `
       class="css-g3ofr5-boxStyles"
     >
       <button
-        aria-describedby=":r0:-selected-files"
-        aria-label="Select file, Example"
+        aria-label="Select file, Example, No file selected"
         class="css-18q2kyp-BaseButton-Button"
         id=":r0:"
         type="button"
@@ -134,9 +133,9 @@ exports[`FileInput renders correctly 1`] = `
         </span>
       </button>
       <span
-        class="css-axuon-boxStyles"
+        class="css-pqovr3-boxStyles"
       >
-        No files selected
+        No file selected
       </span>
     </div>
     <input
