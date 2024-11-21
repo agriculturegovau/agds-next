@@ -312,6 +312,22 @@ const snippets: Array<Snippet> = [
 		]} />`,
 	},
 	{
+		group: 'FeatureLinkList',
+		name: 'Basic',
+		code: `<FeatureLinkList links={[
+			{
+				label: 'Add a business with RAM',
+				description: 'Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).',
+				href: '#',
+			},
+			{
+				label: 'Accept an invite',
+				description: 'Use an invite code from an email to act on behalf of a business.',
+				href: '#',
+			},
+		]}/>`,
+	},
+	{
 		group: 'Breadcrumbs',
 		name: 'Basic',
 		code: `<Breadcrumbs links={[

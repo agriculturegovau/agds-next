@@ -1,0 +1,76 @@
+import { ReactNode } from 'react';
+import { LinkProps, packs } from '../core';
+import { TextLink, TextLinkExternal } from '../text-link';
+import { Box } from '../box';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
+import { Text } from '../text';
+import { ArrowRightIcon } from '../icon';
+import { FeatureLinkListBackground, hoverColorMap } from './utils';
+
+export type FeatureLinkListItemProps = LinkProps & {
+	label: ReactNode;
+	description?: ReactNode;
+	background?: FeatureLinkListBackground;
+};
+
+export const FeatureLinkListItem = ({
+	label,
+	description,
+	background = 'body',
+	...props
+}: FeatureLinkListItemProps) => {
+	const TextComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
+
+	return (
+		<Box
+			as="li"
+			borderBottom
+			paddingY={0.25}
+			background={background}
+			css={{
+				'&:hover': {
+					backgroundColor: hoverColorMap[background],
+				},
+			}}
+		>
+			<Flex
+				gap={1.5}
+				paddingY={1}
+				css={{
+					position: 'relative',
+					':has(:focus-visible)': packs.outline,
+					// If the browser does not support :has, use `:focus-within`
+					'@supports not selector(:has(*))': {
+						':focus-within': packs.outline,
+					},
+				}}
+				justifyContent="space-between"
+				alignItems="flex-start"
+			>
+				<Stack gap={0.5}>
+					<Text fontSize="md" fontWeight="bold">
+						<TextComponent
+							{...props}
+							css={{
+								'&:focus, &:focus-visible': { outline: 'none' },
+								'&::after': {
+									content: '""',
+									position: 'absolute',
+									top: 0,
+									right: 0,
+									bottom: 0,
+									left: 0,
+								},
+							}}
+						>
+							{label}
+						</TextComponent>
+					</Text>
+					{description && <Text as="p">{description}</Text>}
+				</Stack>
+				<ArrowRightIcon size="md" weight="regular" color="action" />
+			</Flex>
+		</Box>
+	);
+};
