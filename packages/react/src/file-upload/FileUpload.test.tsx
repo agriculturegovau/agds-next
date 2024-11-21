@@ -495,7 +495,13 @@ describe('FileUpload', () => {
 			describe('when errors exist and new files with errors are uploaded', () => {
 				// Skipping as this isn't rendering correctly in tests. This has a known issue in the component where some error messages aren't removed on interaction. - need to fix this test, likely by mocking `react-dropzone`
 				test.skip('then the error message should display a new list of errors, wiping previous errors', async () => {
-					const fileInput = screen.getAllByRole('generic', { hidden: true });
+					const { container } = render(
+						<FileUploadExample setCurrentValue={setCurrentValue} />
+					);
+
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
