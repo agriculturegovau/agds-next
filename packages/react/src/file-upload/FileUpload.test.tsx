@@ -181,11 +181,12 @@ describe('FileUpload', () => {
 					<FileUploadExample multiple setCurrentValue={setCurrentValue} />
 				);
 
-				const fileInput = container.querySelector('input[type="file"]');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
-				// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 				await user.upload(fileInput, [
 					createExampleFile({ name: 'example-1.txt' }),
 					createExampleFile({ name: 'example-2.txt' }),
@@ -236,11 +237,12 @@ describe('FileUpload', () => {
 						<FileUploadExample multiple maxFiles={2} />
 					);
 
-					const fileInput = container.querySelector('input[type="file"]');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
-					// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 					await user.upload(fileInput, [
 						createExampleFile({ name: 'example-1.txt' }),
 					]);
@@ -261,11 +263,12 @@ describe('FileUpload', () => {
 						/>
 					);
 
-					const fileInput = container.querySelector('input[type="file"]');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
-					// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 					await user.upload(fileInput, [
 						createExampleFile({ name: 'example-1.txt' }),
 						createExampleFile({ name: 'example-2.txt' }),
@@ -314,11 +317,12 @@ describe('FileUpload', () => {
 						/>
 					);
 
-					const fileInput = container.querySelector('input[type="file"]');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
-					// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 					await user.upload(fileInput, [
 						createExampleFile({
 							name: 'example-xml.xml',
@@ -375,11 +379,12 @@ describe('FileUpload', () => {
 					/>
 				);
 
-				const fileInput = container.querySelector('input[type="file"]');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
-				// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 				await user.upload(fileInput, [
 					createExampleFile({ name: 'example-1.txt' }),
 					createExampleFile({ name: 'example-2.txt' }),
@@ -432,11 +437,12 @@ describe('FileUpload', () => {
 					/>
 				);
 
-				const fileInput = container.querySelector('input[type="file"]');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
-				// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 				await user.upload(fileInput, [
 					createExampleFile({ name: 'example-1.txt' }), // Valid file
 					createExampleFile({ name: 'example-2.txt', size: maxSize + 1 }), // Too large but valid file extension
@@ -493,7 +499,6 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					// @ts-expect-error Argument of type 'Element | null' is not assignable to parameter of type 'HTMLElement'. Type 'null' is not assignable to type 'HTMLElement'.
 					await user.upload(fileInput, [
 						createExampleFile({ name: 'example-6.txt' }), // Valid file but is above the `maxFiles` limit
 						createExampleFile({ name: 'example-7.xml' }), // Invalid file extension
