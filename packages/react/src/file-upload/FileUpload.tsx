@@ -267,6 +267,17 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
+		const buttonLabel = `Select ${filesPlural}`;
+		const ariaLabel = [
+			buttonLabel,
+			label,
+			required && 'required',
+			invalid && 'invalid',
+			fileSummaryText,
+		]
+			.filter(Boolean)
+			.join(', ');
+
 		return (
 			<Field
 				label={label}
@@ -304,13 +315,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<UploadIcon size="lg" color="muted" />
 									<input
 										{...dropzoneInputProps}
-										{...a11yProps}
 										{...consumerProps}
 										/**
 										 * Dropzone needs to set a ref to the input, but we _also_
 										 * need to forward a ref to the input so consumers can use it.
 										 * The mergeRef utility allows us to do this.
 										 */
+										aria-hidden
 										css={visuallyHiddenStyles}
 										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 									/>
@@ -357,14 +368,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Stack>
 									<Button
 										aria-describedby={buttonAriaDescribedBy || undefined}
+										aria-label={ariaLabel}
 										disabled={disabled}
 										focusRingFor="all"
+										id={a11yProps.id}
 										onClick={open}
 										ref={buttonRef}
 										type="button"
 										variant="secondary"
 									>
-										Select {filesPlural}
+										{buttonLabel}
 									</Button>
 								</Stack>
 							</Box>
