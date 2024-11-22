@@ -8,6 +8,12 @@ import { Text } from '../text';
 import { ArrowRightIcon } from '../icon';
 import { FeatureLinkListBackground, hoverColorMap } from './utils';
 
+export function useLinkDescriptionId(idProp?: string) {
+	const autoId = useId(idProp);
+	const sanitizeId = autoId?.replace(/[^a-zA-Z0-9-_]/g, '_'); //sanitize id to have valid html test pass
+	return `link-desc-${sanitizeId}`;
+}
+
 export type FeatureLinkListItemProps = LinkProps & {
 	label: ReactNode;
 	description?: ReactNode;
@@ -21,7 +27,7 @@ export const FeatureLinkListItem = ({
 	...props
 }: FeatureLinkListItemProps) => {
 	const TextComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
-	const descriptionId = useId();
+	const descriptionId = useLinkDescriptionId(props.id);
 
 	const linkProps = {
 		...(description && { 'aria-describedby': descriptionId }),

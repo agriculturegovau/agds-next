@@ -18,7 +18,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
             class="css-1esljmy-boxStyles"
           >
             <a
-              aria-describedby=":r0:"
+              aria-describedby="link-desc-_r0_"
               class="css-1ovmco1-TextLink-FeatureLinkListItem"
               href="#"
             >
@@ -27,7 +27,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
           </span>
           <p
             class="css-dbscsh-boxStyles"
-            id=":r0:"
+            id="link-desc-_r0_"
           >
             Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).
           </p>
