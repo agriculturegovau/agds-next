@@ -12,7 +12,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
         class="css-18jic7b-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-1wcx0lf-boxStyles"
+          class="css-mkg4n1-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
@@ -69,7 +69,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
         class="css-18jic7b-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-1wcx0lf-boxStyles"
+          class="css-mkg4n1-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
@@ -110,7 +110,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
         class="css-18jic7b-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-1wcx0lf-boxStyles"
+          class="css-mkg4n1-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
