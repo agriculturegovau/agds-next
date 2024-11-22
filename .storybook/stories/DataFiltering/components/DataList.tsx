@@ -1,7 +1,4 @@
-import {
-	VisuallyHidden,
-	visuallyHiddenStyles,
-} from '../../../../packages/react/src/a11y';
+import { VisuallyHidden } from '../../../../packages/react/src/a11y';
 import { Stack } from '../../../../packages/react/src/stack';
 import { Card, CardInner, CardLink } from '../../../../packages/react/src/card';
 import { H3, Heading } from '../../../../packages/react/src/heading';
@@ -26,15 +23,25 @@ export const DataList = ({ loading, data }: DataListProps) => {
 	const { resetFilters } = useSortAndFilterContext();
 
 	return (
-		<>
-			<Stack
-				css={data.length ? visuallyHiddenStyles : undefined}
-				gap={2}
-				alignItems="flex-start"
-				id={data.length ? tableId : undefined}
-				role="status"
-			>
-				{!data.length && (
+		<div id={tableId}>
+			{loading ? (
+				<Stack as="ul" gap={1}>
+					{Array.from({ length: 10 }, (_, i) => i).map((i) => (
+						<DataListItemSkeleton key={i} />
+					))}
+				</Stack>
+			) : (
+				data.length > 0 && (
+					<Stack as="ul" gap={1}>
+						{data.map((item) => (
+							<DataListItem key={item.id} data={item} />
+						))}
+					</Stack>
+				)
+			)}
+
+			<Stack alignItems="flex-start" gap={2} role="alert">
+				{!loading && data.length === 0 && (
 					<>
 						<Stack gap={1}>
 							<HelpIcon size="lg" color="muted" />
@@ -47,21 +54,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 					</>
 				)}
 			</Stack>
-
-			{loading ? (
-				<Stack as="ul" gap={1} id={tableId}>
-					{Array.from({ length: 10 }, (_, i) => i).map((i) => (
-						<DataListItemSkeleton key={i} />
-					))}
-				</Stack>
-			) : (
-				<Stack as="ul" gap={1} id={tableId}>
-					{data.map((item) => (
-						<DataListItem key={item.id} data={item} />
-					))}
-				</Stack>
-			)}
-		</>
+		</div>
 	);
 };
 
