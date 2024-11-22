@@ -117,7 +117,7 @@ function LiveCode({
 			pre.ariaLabel = `Live code editor ${id}`;
 			pre.role = 'region';
 		}
-	}, []);
+	}, [id]);
 
 	// Using `Box` here instead of Code snippets with popovers (date picker, combobox, dropdown menu etc) need overflow
 	return (
