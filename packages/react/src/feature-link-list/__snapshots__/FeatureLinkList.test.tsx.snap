@@ -6,13 +6,13 @@ exports[`FeatureLinkList renders correctly 1`] = `
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-vtop7u-boxStyles-FeatureLinkListItem"
+      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
     >
       <div
-        class="css-18jic7b-boxStyles-FeatureLinkListItem"
+        class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-mkg4n1-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
@@ -34,7 +34,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          class="css-1ovc7ig-Icon"
+          class="css-lq07bo-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -63,13 +63,13 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-vtop7u-boxStyles-FeatureLinkListItem"
+      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
     >
       <div
-        class="css-18jic7b-boxStyles-FeatureLinkListItem"
+        class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-mkg4n1-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
@@ -84,7 +84,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
         </div>
         <svg
           aria-hidden="true"
-          class="css-1ovc7ig-Icon"
+          class="css-lq07bo-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -104,13 +104,13 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
       </div>
     </li>
     <li
-      class="css-vtop7u-boxStyles-FeatureLinkListItem"
+      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
     >
       <div
-        class="css-18jic7b-boxStyles-FeatureLinkListItem"
+        class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
       >
         <div
-          class="css-mkg4n1-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <span
             class="css-1esljmy-boxStyles"
@@ -125,7 +125,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
         </div>
         <svg
           aria-hidden="true"
-          class="css-1ovc7ig-Icon"
+          class="css-lq07bo-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
