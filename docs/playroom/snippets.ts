@@ -322,7 +322,6 @@ const snippets: Array<Snippet> = [
 			},
 			{
 				label: 'Accept an invite',
-				description: 'Use an invite code from an email to act on behalf of a business.',
 				href: '#',
 			},
 		]}/>`,

@@ -4,6 +4,14 @@ import { FeatureLinkList } from './FeatureLinkList';
 const meta: Meta<typeof FeatureLinkList> = {
 	title: 'navigation/FeatureLinkList',
 	component: FeatureLinkList,
+	args: {},
+};
+
+export default meta;
+
+type Story = StoryObj<typeof FeatureLinkList>;
+
+export const Basic: Story = {
 	args: {
 		links: [
 			{
@@ -26,14 +34,6 @@ const meta: Meta<typeof FeatureLinkList> = {
 			},
 		],
 	},
-};
-
-export default meta;
-
-type Story = StoryObj<typeof FeatureLinkList>;
-
-export const Basic: Story = {
-	args: {},
 };
 
 export const WithNoDescription: Story = {
