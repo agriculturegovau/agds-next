@@ -115,6 +115,7 @@ function LiveCode({
 		const pre = liveEditorRef.current?.querySelector('pre');
 		if (pre) {
 			pre.ariaLabel = `Live code editor ${id}`;
+			pre.role = 'region';
 		}
 	}, []);
 
