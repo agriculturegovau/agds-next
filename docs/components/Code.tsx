@@ -115,6 +115,8 @@ function LiveCode({
 		const pre = liveEditorRef.current?.querySelector('pre');
 		if (pre) {
 			pre.ariaLabel = `Live code editor ${id}`;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore Property 'role' does not exist on type 'HTMLPreElement'
 			pre.role = 'region';
 		}
 	}, [id]);
