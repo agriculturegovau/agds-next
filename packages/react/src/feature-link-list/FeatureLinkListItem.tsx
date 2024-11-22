@@ -55,7 +55,7 @@ export const FeatureLinkListItem = ({
 				justifyContent="space-between"
 				alignItems="flex-start"
 			>
-				<Stack gap={0.5}>
+				<Stack gap={0.5} paddingY={0.25}>
 					<Text fontSize="md" fontWeight="bold">
 						<TextComponent
 							{...props}
