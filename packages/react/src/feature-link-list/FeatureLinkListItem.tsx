@@ -29,10 +29,6 @@ export const FeatureLinkListItem = ({
 	const TextComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
 	const descriptionId = useLinkDescriptionId(props.id);
 
-	const linkProps = {
-		...(description && { 'aria-describedby': descriptionId }),
-	};
-
 	return (
 		<Box
 			as="li"
@@ -74,7 +70,7 @@ export const FeatureLinkListItem = ({
 									left: 0,
 								},
 							}}
-							{...linkProps}
+							aria-describedby={description ? descriptionId : undefined}
 						>
 							{label}
 						</TextComponent>
