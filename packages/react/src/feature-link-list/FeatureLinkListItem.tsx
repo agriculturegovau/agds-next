@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import { LinkProps, packs } from '../core';
 import { TextLink, TextLinkExternal } from '../text-link';
 import { Box } from '../box';
@@ -21,6 +21,11 @@ export const FeatureLinkListItem = ({
 	...props
 }: FeatureLinkListItemProps) => {
 	const TextComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
+	const descriptionId = useId();
+
+	const linkProps = {
+		...(description && { 'aria-describedby': descriptionId }),
+	};
 
 	return (
 		<Box
@@ -63,11 +68,16 @@ export const FeatureLinkListItem = ({
 									left: 0,
 								},
 							}}
+							{...linkProps}
 						>
 							{label}
 						</TextComponent>
 					</Text>
-					{description && <Text as="p">{description}</Text>}
+					{description && (
+						<Text as="p" id={descriptionId}>
+							{description}
+						</Text>
+					)}
 				</Stack>
 				<ArrowRightIcon size="md" weight="regular" color="action" />
 			</Flex>
