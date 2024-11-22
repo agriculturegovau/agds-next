@@ -52,7 +52,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (error) {
 			return (
-				<Stack gap={1} id={tableId} role="status">
+				<Stack gap={1} id={tableId} role="alert">
 					<AlertFilledIcon color="error" size="lg" />
 					<Heading type="h2" fontSize="lg">
 						Failed to load
