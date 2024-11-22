@@ -33,7 +33,6 @@ export const FeatureLinkListItem = ({
 		<Box
 			as="li"
 			borderBottom
-			paddingY={0.25}
 			background={background}
 			css={[
 				{ ...linkStyles, textDecoration: 'none' },
@@ -46,7 +45,7 @@ export const FeatureLinkListItem = ({
 		>
 			<Flex
 				gap={1.5}
-				paddingY={1}
+				paddingY={1.5}
 				css={{
 					position: 'relative',
 					':has(:focus-visible)': packs.outline,
@@ -58,7 +57,7 @@ export const FeatureLinkListItem = ({
 				justifyContent="space-between"
 				alignItems="flex-start"
 			>
-				<Stack gap={0.5} paddingY={0.25}>
+				<Stack gap={0.5}>
 					<Text fontSize="md" fontWeight="bold">
 						<TextComponent
 							{...props}
