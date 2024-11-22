@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { LinkProps, packs, useId } from '../core';
 import { TextLink, TextLinkExternal } from '../text-link';
-import { Box } from '../box';
+import { Box, linkStyles } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { Text } from '../text';
@@ -35,11 +35,14 @@ export const FeatureLinkListItem = ({
 			borderBottom
 			paddingY={0.25}
 			background={background}
-			css={{
-				'&:hover': {
-					backgroundColor: hoverColorMap[background],
+			css={[
+				{ ...linkStyles, textDecoration: 'none' },
+				{
+					'&:hover': {
+						backgroundColor: hoverColorMap[background],
+					},
 				},
-			}}
+			]}
 		>
 			<Flex
 				gap={1.5}
@@ -81,7 +84,7 @@ export const FeatureLinkListItem = ({
 						</Text>
 					)}
 				</Stack>
-				<ArrowRightIcon size="md" weight="regular" color="action" />
+				<ArrowRightIcon size="md" weight="regular" />
 			</Flex>
 		</Box>
 	);
