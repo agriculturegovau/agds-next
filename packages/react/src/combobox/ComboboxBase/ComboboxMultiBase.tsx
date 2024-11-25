@@ -7,6 +7,8 @@ import {
 	type Ref,
 	useCallback,
 	useRef,
+	useMemo,
+	Profiler,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -25,6 +27,10 @@ import {
 import { Field } from '../../field';
 import { Flex } from '../../flex';
 import {
+	ComboboxRenderItemDefault,
+	renderItemLabel,
+} from '../ComboboxRenderItemDefault';
+import {
 	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
@@ -32,7 +38,6 @@ import {
 	validateMaxWidth,
 } from '../utils';
 import { ComboboxRenderItem } from '../ComboboxRenderItem';
-import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -42,6 +47,7 @@ import {
 	ComboboxButtonContainer,
 	ComboboxButtonDivider,
 } from './ComboboxButtons';
+import { listItemStyles } from './ComboboxListItem';
 import { ComboboxTag } from './ComboboxTag';
 
 type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
@@ -136,6 +142,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		showClearButton,
 	});
 
+	const itemLabels = useMemo(
+		() =>
+			inputItems?.length
+				? inputItems.map((item) => renderItemLabel(item.label))
+				: [],
+		[inputItems]
+	);
+
 	// Focus the input element if the user clicks inside the container
 	// This should be prevented if a user clicks on any other element (e.g. a Tag)
 	const fieldContainerRef = useRef<HTMLDivElement>(null);
@@ -169,119 +183,143 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	};
 
 	return (
-		<Field
-			label={label}
-			labelId={labelId}
-			hideOptionalLabel={hideOptionalLabel}
-			required={Boolean(required)}
-			hint={hint}
-			maxWidth={maxWidthProp}
-			message={message}
-			invalid={invalid}
-			id={inputId}
+		<Profiler
+			id="comboboxmulti"
+			onRender={(a, b, c, d) => {
+				console.log(a, b, c, d);
+			}}
 		>
-			{(a11yProps) => (
-				<div
-					{...popover.getReferenceProps()}
-					css={styles.fieldContainer}
-					onClick={handleFieldContainerClick}
-				>
-					<Flex
-						ref={fieldContainerRef}
-						gap={0.5}
-						flexWrap="wrap"
-						alignItems="center"
-						css={styles.container}
+			<Field
+				label={label}
+				labelId={labelId}
+				hideOptionalLabel={hideOptionalLabel}
+				required={Boolean(required)}
+				hint={hint}
+				maxWidth={maxWidthProp}
+				message={message}
+				invalid={invalid}
+				id={inputId}
+			>
+				{(a11yProps) => (
+					<div
+						{...popover.getReferenceProps()}
+						css={styles.fieldContainer}
+						onClick={handleFieldContainerClick}
 					>
-						{selectedItems.map((item, idx) => (
-							<ComboboxTag
-								key={`selected-item-${idx}`}
-								onRemove={() => multiSelection.removeSelectedItem(item)}
-								disabled={disabled}
-								{...multiSelection.getSelectedItemProps({
-									selectedItem: item,
-									index: idx,
-								})}
-							>
-								{item.label}
-							</ComboboxTag>
-						))}
-						<div css={styles.inputContainer}>
-							<input
-								disabled={disabled}
-								{...combobox.getInputProps(
-									multiSelection.getDropdownProps({
-										...a11yProps,
-										...{
-											'aria-describedby':
-												props['aria-describedby'] ||
-												a11yProps['aria-describedby'],
-											'aria-invalid':
-												props['aria-invalid'] || a11yProps['aria-invalid'],
-										},
-										ref: inputRefs,
-										type: 'text',
-										preventKeyAction: false,
-										onFocus: (event: FocusEvent<HTMLInputElement>) => {
-											onFocus?.(event);
-											setInputFocused();
-										},
-										onBlur: handleOnBlur,
-									})
-								)}
-								css={styles.input}
-							/>
-						</div>
-						<ComboboxButtonContainer>
-							{showClearButton && (
-								<Fragment>
-									<ComboboxClearButton disabled={disabled} onClick={onClear} />
-									<ComboboxButtonDivider />
-								</Fragment>
-							)}
-							<ComboboxDropdownTrigger
-								{...combobox.getToggleButtonProps({
-									isOpen: combobox.isOpen,
-									disabled,
-								})}
-							/>
-						</ComboboxButtonContainer>
-					</Flex>
-					<Popover
-						as="ul"
-						{...combobox.getMenuProps(popover.getPopoverProps())}
-						visibility={combobox.isOpen ? 'visible' : 'hidden'}
-					>
-						{combobox.isOpen ? (
-							<Fragment>
-								{loading ? (
-									<ComboboxListLoading />
-								) : networkError ? (
-									<ComboboxListError />
-								) : (
+						<Flex
+							ref={fieldContainerRef}
+							gap={0.5}
+							flexWrap="wrap"
+							alignItems="center"
+							css={styles.container}
+						>
+							{selectedItems.map((item, idx) => (
+								<ComboboxTag
+									key={`selected-item-${idx}`}
+									onRemove={() => multiSelection.removeSelectedItem(item)}
+									disabled={disabled}
+									{...multiSelection.getSelectedItemProps({
+										selectedItem: item,
+										index: idx,
+									})}
+								>
+									{item.label}
+								</ComboboxTag>
+							))}
+							<div css={styles.inputContainer}>
+								<input
+									disabled={disabled}
+									{...combobox.getInputProps(
+										multiSelection.getDropdownProps({
+											...a11yProps,
+											...{
+												'aria-describedby':
+													props['aria-describedby'] ||
+													a11yProps['aria-describedby'],
+												'aria-invalid':
+													props['aria-invalid'] || a11yProps['aria-invalid'],
+											},
+											ref: inputRefs,
+											type: 'text',
+											preventKeyAction: false,
+											onFocus: (event: FocusEvent<HTMLInputElement>) => {
+												onFocus?.(event);
+												setInputFocused();
+											},
+											onBlur: handleOnBlur,
+										})
+									)}
+									css={styles.input}
+								/>
+							</div>
+							<ComboboxButtonContainer>
+								{showClearButton && (
 									<Fragment>
-										{inputItems?.length ? (
-											inputItems.map((item, index) => (
-												<ComboboxListItem
-													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
-													{...combobox.getItemProps({ item, index })}
-												>
-													{renderItem(item)}
-												</ComboboxListItem>
-											))
-										) : (
-											<ComboboxListEmptyResults message={emptyResultsMessage} />
-										)}
+										<ComboboxClearButton
+											disabled={disabled}
+											onClick={onClear}
+										/>
+										<ComboboxButtonDivider />
 									</Fragment>
 								)}
-							</Fragment>
-						) : null}
-					</Popover>
-				</div>
-			)}
-		</Field>
+								<ComboboxDropdownTrigger
+									{...combobox.getToggleButtonProps({
+										isOpen: combobox.isOpen,
+										disabled,
+									})}
+								/>
+							</ComboboxButtonContainer>
+						</Flex>
+						<Popover
+							as="ul"
+							{...combobox.getMenuProps(popover.getPopoverProps())}
+							visibility={combobox.isOpen ? 'visible' : 'hidden'}
+						>
+							{combobox.isOpen ? (
+								<Fragment>
+									{loading ? (
+										<ComboboxListLoading />
+									) : networkError ? (
+										<ComboboxListError />
+									) : (
+										<Fragment>
+											{inputItems?.length ? (
+												inputItems.map((item, index) => (
+													<li
+														data-combobox-list-item="interactive"
+														key={`${item.value}-${index}`}
+														{...combobox.getItemProps({ item, index })}
+														// Required for Android TalkBack to be able to access the list items
+														// See https://issues.chromium.org/issues/40260928
+														// But stops iOS from being able to access them ◔_◔
+														tabIndex={isIos ? undefined : -1}
+													>
+														{renderItem ? (
+															renderItem({
+																...item,
+																label: itemLabels[index],
+															})
+														) : (
+															<ComboboxRenderItemDefault>
+																{itemLabels[index]}
+															</ComboboxRenderItemDefault>
+														)}
+													</li>
+												))
+											) : (
+												<ComboboxListEmptyResults
+													message={emptyResultsMessage}
+												/>
+											)}
+										</Fragment>
+									)}
+								</Fragment>
+							) : null}
+						</Popover>
+					</div>
+				)}
+			</Field>
+		</Profiler>
 	);
 }
 
@@ -304,6 +342,7 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
+			...listItemStyles,
 			...generateHighlightStyles(inputValue),
 			...(!block && {
 				maxWidth: tokens.maxWidth.field[maxWidth],

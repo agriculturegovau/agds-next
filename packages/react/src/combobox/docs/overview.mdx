@@ -8,6 +8,292 @@ relatedComponents: ['autocomplete', 'select', 'text-input', 'dropdown-menu']
 relatedPatterns: ['selecting-multiple-options']
 ---
 
+As the user enters text into the field, autocomplete offers suggestions, highlighting the one that best matches the text that has been entered. The list closes when an option is selected.
+
+All Combobox components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of these components need to manage the state of these components by using the `value` and `onChange` props.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+<DoHeading />
+
+- use to help users select from a large list
+- provide concise options
+- create hint text to let the user know they can search or select
+- use a pre-filled list so users can search or scroll
+- consider whether the list of selections is complex enough to merit searching and filtering
+- indicate whether input is optional.
+
+<DontHeading />
+
+- use if the list of possible results is small – use [Select](/components/select) instead
+- leave the list open once an option is selected.
+
+## Combobox
+
+Use the `Combobox` component when users can choose a single item from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## ComboboxAsync
+
+Use the `ComboboxAsync` component when users can choose a single item from a list of options that needs to be fetched over the network.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<ComboboxAsync
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+};
+```
+
+## ComboboxMulti
+
+Use the `ComboboxMulti` component when users can choose multiple items from a predefined list of options.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	return (
+		<ComboboxMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+Should you wish to apply `maxWidth` to a `ComboboxMulti`, ensure the `block` prop is set to `false`.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	return (
+		<ComboboxMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+			maxWidth="lg"
+			block={false}
+		/>
+	);
+};
+```
+
+## ComboboxAsyncMulti
+
+Use the `ComboboxAsyncMulti` component when users can choose multiple items from a list of options that needs to be fetched over the network.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	return (
+		<ComboboxAsyncMulti
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+};
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			block
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## Required
+
+The `required` prop can be used to indicate that user input is required on the field before a form can be submitted.
+
+Required fields do not append ‘(optional)’ to the label and also use [aria-required](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required) to indicate to screen readers that the field is required.
+
+### Hide optional label
+
+The `hideOptionalLabel` prop can be used in situations where you want to indicate to screen reader users that a field is optional but don’t want to show the ‘(optional)’ label.
+
+The usage of `hideOptionalLabel` should be reserved for inputs that filter data in a table or chart, and should never be used in standard forms for submitting information.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			hideOptionalLabel
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid. An example where this shoud be applied is when ‘All fields are required unless marked optional’.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const invalid = !value;
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			required
+			invalid={invalid}
+			message={invalid ? 'Country is required' : undefined}
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			disabled
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+		/>
+	);
+};
+```
+
+## Clearable
+
+Use the `clearable` prop to render a clear ("x") button when there is a selected option.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Combobox
+			label="Select country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			options={COUNTRY_OPTIONS}
+			clearable
+		/>
+	);
+};
+```
+
+## Custom rendering
+
+Use the `renderItem` prop to customise how each option in the dropdown list is rendered. Inside this function, you can make use of the `ComboboxRenderItem` component to style extra information.
+
+Note: When you are using this prop, you still need to assign a `label` and `value` to every option.
+
+```jsx live
+() => {
+	const [value, onChange] = React.useState(null);
+	return (
+		<Combobox
+			label="Search users"
+			hint="Start typing to see results"
+			value={value}
+			onChange={onChange}
+			options={NAME_OPTIONS}
+			renderItem={(item) => (
+				<ComboboxRenderItem
+					itemLabel={item.label}
+					secondaryText={`Role: ${item.jobTitle}`}
+					tertiaryText={`Job: ${item.status}`}
+					beforeElement={
+						<Avatar name={item.fullName} size="sm" tone="action" />
+					}
+					endElement={
+						item.unreadMessageCount > 0 ? (
+							<NotificationBadge
+								value={item.unreadMessageCount}
+								tone="action"
+							/>
+						) : null
+					}
+				/>
+			)}
+		/>
+	);
+};
+```
+
 ## Handling large datasets
 
 While we don’t recommend putting extremely large datasets as Combobox options, all of the Combobox components should comfortably handle many options and cater for most, standard use-cases.
@@ -48,6 +334,127 @@ If you would like to see how Combobox performs with various option lengths, you 
 				value={numOfOptions}
 			/>
 			<Combobox
+				label="Select country"
+				hint="Start typing to see results"
+				value={comboboxValue}
+				onChange={setComboboxValue}
+				options={options}
+			/>
+		</FormStack>
+	);
+};
+```
+
+```jsx live
+() => {
+	const generateOptions = (number) => {
+		const result = [];
+		for (let i = 0; i < number; i++) {
+			const countryIndex = i % NAME_OPTIONS.length;
+			const fullName = `${NAME_OPTIONS[countryIndex].fullName} ${
+				Math.floor(i / NAME_OPTIONS.length) + 1
+			}`;
+			const jobTitle = `${NAME_OPTIONS[countryIndex].jobTitle} ${
+				Math.floor(i / NAME_OPTIONS.length) + 1
+			}`;
+			const status = `${NAME_OPTIONS[countryIndex].status} ${
+				Math.floor(i / NAME_OPTIONS.length) + 1
+			}`;
+			result.push({
+				label: fullName,
+				fullName: fullName,
+				value: fullName,
+				jobTitle,
+				status,
+				unreadMessageCount: NAME_OPTIONS[countryIndex].unreadMessageCount,
+			});
+		}
+		return result;
+	};
+	const [numOfOptions, setNumOfOptions] = React.useState(2000);
+	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
+	const [comboboxValue, setComboboxValue] = React.useState(null);
+
+	React.useEffect(() => {
+		setOptions(generateOptions(numOfOptions));
+	}, [numOfOptions]);
+
+	return (
+		<FormStack>
+			<TextInput
+				label="Custom rendering"
+				maxWidth="sm"
+				onChange={(event) => {
+					setNumOfOptions(event.target.valueAsNumber);
+				}}
+				required
+				type="number"
+				value={numOfOptions}
+			/>
+			<Combobox
+				label="Select country"
+				hint="Start typing to see results"
+				value={comboboxValue}
+				onChange={setComboboxValue}
+				options={options}
+				renderItem={(item) => (
+					<ComboboxRenderItem
+						itemLabel={item.label}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
+						beforeElement={
+							<Avatar name={item.fullName} size="sm" tone="action" />
+						}
+						endElement={
+							item.unreadMessageCount > 0 ? (
+								<NotificationBadge
+									value={item.unreadMessageCount}
+									tone="action"
+								/>
+							) : null
+						}
+					/>
+				)}
+			/>
+		</FormStack>
+	);
+};
+```
+
+```jsx live
+() => {
+	const generateOptions = (number) => {
+		const result = [];
+		for (let i = 0; i < number; i++) {
+			const countryIndex = i % COUNTRY_OPTIONS.length;
+			const countryName = `${COUNTRY_OPTIONS[countryIndex].label} ${
+				Math.floor(i / COUNTRY_OPTIONS.length) + 1
+			}`;
+			result.push({ label: countryName, value: countryName });
+		}
+		return result;
+	};
+	const [numOfOptions, setNumOfOptions] = React.useState(2000);
+	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
+	const [comboboxValue, setComboboxValue] = React.useState([]);
+
+	React.useEffect(() => {
+		setOptions(generateOptions(numOfOptions));
+	}, [numOfOptions]);
+
+	return (
+		<FormStack>
+			<TextInput
+				label="Combo multi"
+				maxWidth="sm"
+				onChange={(event) => {
+					setNumOfOptions(event.target.valueAsNumber);
+				}}
+				required
+				type="number"
+				value={numOfOptions}
+			/>
+			<ComboboxMulti
 				label="Select country"
 				hint="Start typing to see results"
 				value={comboboxValue}

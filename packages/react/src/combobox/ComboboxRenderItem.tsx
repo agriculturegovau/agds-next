@@ -1,10 +1,8 @@
-import { Fragment, isValidElement, ReactNode, useMemo } from 'react';
-// import { boxPalette, tokens } from '../core';
-// import { fontGrid } from '../core/utils/fontGrid';
+import { Fragment, isValidElement, ReactNode } from 'react';
 
 export type ComboboxRenderItemProps = {
-	/** The label of the item. */
-	itemLabel: string;
+	/** The label of the item. ReactNode is a private, character-separated label and for internal use only. */
+	itemLabel: string | ReactNode;
 	/** @deprecated Unused. Individual items no longer need to know the value of the Combobox/Autocomplete text input. */
 	inputValue?: string;
 	/** Supporting text for the item. */
@@ -16,8 +14,6 @@ export type ComboboxRenderItemProps = {
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
 	endElement?: ReactNode;
 };
-
-// const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
 
 export function ComboboxRenderItem({
 	itemLabel,
@@ -32,15 +28,13 @@ export function ComboboxRenderItem({
 		console.warn('Combobox: The `inputValue` prop is now unused.');
 	}
 
-	const renderedLabel = useMemo(() => renderItemLabel(itemLabel), [itemLabel]);
-
 	return (
 		<Fragment>
 			{beforeElement ? (
 				<div data-combobox-render-item="beforeElement">{beforeElement}</div>
 			) : null}
 			<span data-combobox-render-item="itemLabel">
-				{renderedLabel}
+				{itemLabel}
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
@@ -62,17 +56,5 @@ export function ComboboxRenderItem({
 				<div data-combobox-render-item="endElement">{endElement}</div>
 			) : null}
 		</Fragment>
-	);
-}
-
-function renderItemLabel(itemLabel: string) {
-	return (
-		<span aria-label={itemLabel} data-combobox-render-item="renderedLabel">
-			{itemLabel.split('').map((character, index) => (
-				<span data-char={character} key={index}>
-					{character}
-				</span>
-			))}
-		</span>
 	);
 }

@@ -1,12 +1,4 @@
-// @ts-nocheck
-import {
-	FocusEventHandler,
-	ReactNode,
-	Ref,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
+import { FocusEventHandler, ReactNode, Ref, useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import { ComboboxBase } from './ComboboxBase';
 import {
@@ -96,7 +88,6 @@ export function Combobox<Option extends DefaultComboboxOption>({
 			}
 		},
 		stateReducer: (state, actionAndChanges) => {
-			// console.log(`state, actionAndChanges`, state, actionAndChanges);
 			const { type: actionAndChangesType, changes } = actionAndChanges;
 			switch (actionAndChangesType) {
 				// Reset the input value when the menu is closed
@@ -111,38 +102,11 @@ export function Combobox<Option extends DefaultComboboxOption>({
 		},
 	});
 
-	// console.log(`inputId`, inputId);
-
-	// console.log(`combobox`, combobox);
-
-	// console.log(
-	// 	`combobox.getItemProps({ item: inputItems[0], index: 0 })`,
-	// 	combobox.getItemProps({ item: inputItems[0], index: 0 })
-	// );
-	// console.log(
-	// 	`combobox.getItemProps({ item: inputItems[0], index: 0 }).onMouseMove?.toString()`,
-	// 	combobox
-	// 		.getItemProps({ item: inputItems[0], index: 0 })
-	// 		.onMouseMove?.toString()
-	// );
-
-	const itemsWithProps = useMemo(() => {
-		return inputItems.map((item, index) => {
-			const props = combobox.getItemProps({ item, index });
-			item.id = props.id;
-			item.onClick = props.onClick;
-			item.onMouseDown = props.onMouseDown;
-			item.onMouseMove = props.onMouseMove;
-			item.role = props.role;
-			return item;
-		});
-	}, [inputItems]);
-
 	return (
 		<ComboboxBase
 			combobox={combobox}
-			inputItems={itemsWithProps}
 			inputId={inputId}
+			inputItems={inputItems}
 			inputRef={inputRefProp}
 			isAutocomplete={false}
 			{...props}
