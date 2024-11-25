@@ -36,7 +36,6 @@ import {
 	useIsIos,
 	validateMaxWidth,
 } from '../utils';
-import { ComboboxRenderItem } from '../ComboboxRenderItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -95,7 +94,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
+	renderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
