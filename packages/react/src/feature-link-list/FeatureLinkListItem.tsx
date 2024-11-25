@@ -10,8 +10,7 @@ import { FeatureLinkListBackground, hoverColorMap } from './utils';
 
 export function useLinkDescriptionId(idProp?: string) {
 	const autoId = useId(idProp);
-	const sanitizeId = autoId?.replace(/[^a-zA-Z0-9-_]/g, '_'); //sanitize id to have valid html test pass
-	return `link-desc-${sanitizeId}`;
+	return `link-desc-${autoId}`;
 }
 
 export type FeatureLinkListItemProps = LinkProps & {

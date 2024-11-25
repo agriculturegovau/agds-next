@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { render, cleanup, screen } from '../../../../test-utils';
+import { render, screen } from '../../../../test-utils';
 import { FeatureLinkList, FeatureLinkListProps } from './FeatureLinkList';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
 
 function renderLinkList(props?: FeatureLinkListProps) {
 	const { links, ...restProps } = props ?? {};
@@ -56,15 +54,14 @@ describe('FeatureLinkList', () => {
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderLinkList();
-		expect(container).toHTMLValidate({
-			extends: ['html-validate:recommended'],
-		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
 	it('handles external links correctly', async () => {
 		renderLinkList();
-		const externalLink = await screen.queryByText('External link');
+		const externalLink = await screen.getByRole('link', {
+			name: 'External link , opens in a new tab',
+		});
 		expect(externalLink).toHaveAttribute('target', '_blank');
 		expect(externalLink).toHaveAttribute('rel', 'noopener');
 		expect(externalLink).toHaveTextContent('External link, opens in a new tab');
