@@ -1,6 +1,5 @@
 import {
 	Fragment,
-	Profiler,
 	useMemo,
 	type FocusEvent,
 	type FocusEventHandler,
@@ -138,124 +137,115 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	};
 
 	return (
-		<Profiler
-			id="combobox"
-			onRender={(a, b, c, d) => {
-				console.log(a, b, c, d);
-			}}
+		<Field
+			label={label}
+			labelId={labelId}
+			hideOptionalLabel={hideOptionalLabel}
+			required={Boolean(required)}
+			hint={hint}
+			maxWidth={maxWidthProp}
+			message={message}
+			invalid={invalid}
+			id={inputId}
 		>
-			<Field
-				label={label}
-				labelId={labelId}
-				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
-				hint={hint}
-				maxWidth={maxWidthProp}
-				message={message}
-				invalid={invalid}
-				id={inputId}
-			>
-				{(a11yProps) => (
-					<div
-						{...popover.getReferenceProps()}
+			{(a11yProps) => (
+				<div
+					{...popover.getReferenceProps()}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...listItemStyles,
+						...generateHighlightStyles(combobox.inputValue),
+					}}
+				>
+					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
+					<input
 						css={{
-							maxWidth,
-							position: 'relative',
-							...listItemStyles,
-							...generateHighlightStyles(combobox.inputValue),
+							...inputStyles,
+							width: '100%',
+							...(isAutocomplete && { paddingLeft: '3rem' }),
 						}}
+						disabled={disabled}
+						{...combobox.getInputProps({
+							...a11yProps,
+							...{
+								'aria-describedby':
+									props['aria-describedby'] || a11yProps['aria-describedby'],
+								'aria-invalid':
+									props['aria-invalid'] || a11yProps['aria-invalid'],
+							},
+							ref: inputRefProp,
+							type: 'text',
+							name: inputName,
+							onBlur: handleOnBlur,
+							onFocus,
+						})}
+					/>
+					{hasButtons && (
+						<ComboboxButtonContainer>
+							{showClearButton && (
+								<ComboboxClearButton
+									disabled={disabled}
+									onClick={combobox.reset}
+								/>
+							)}
+							{hasBothButtons && <ComboboxButtonDivider />}
+							{showDropdownTrigger && (
+								<ComboboxDropdownTrigger
+									{...combobox.getToggleButtonProps({
+										isOpen: combobox.isOpen,
+										disabled,
+									})}
+								/>
+							)}
+						</ComboboxButtonContainer>
+					)}
+					<Popover
+						as="ul"
+						{...combobox.getMenuProps(popover.getPopoverProps())}
+						visibility={combobox.isOpen ? 'visible' : 'hidden'}
 					>
-						{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
-						<input
-							css={{
-								...inputStyles,
-								width: '100%',
-								...(isAutocomplete && { paddingLeft: '3rem' }),
-							}}
-							disabled={disabled}
-							{...combobox.getInputProps({
-								...a11yProps,
-								...{
-									'aria-describedby':
-										props['aria-describedby'] || a11yProps['aria-describedby'],
-									'aria-invalid':
-										props['aria-invalid'] || a11yProps['aria-invalid'],
-								},
-								ref: inputRefProp,
-								type: 'text',
-								name: inputName,
-								onBlur: handleOnBlur,
-								onFocus,
-							})}
-						/>
-						{hasButtons && (
-							<ComboboxButtonContainer>
-								{showClearButton && (
-									<ComboboxClearButton
-										disabled={disabled}
-										onClick={combobox.reset}
-									/>
+						{combobox.isOpen ? (
+							<Fragment>
+								{loading ? (
+									<ComboboxListLoading />
+								) : networkError ? (
+									<ComboboxListError />
+								) : (
+									<Fragment>
+										{inputItems?.length ? (
+											inputItems.map((item, index) => (
+												<li
+													data-combobox-list-item="interactive"
+													key={`${item.value}-${index}`}
+													{...combobox.getItemProps({ item, index })}
+													// Required for Android TalkBack to be able to access the list items
+													// See https://issues.chromium.org/issues/40260928
+													// But stops iOS from being able to access them ◔_◔
+													tabIndex={isIos ? undefined : -1}
+												>
+													{renderItem ? (
+														renderItem({
+															...item,
+															label: itemLabels[index],
+														})
+													) : (
+														<ComboboxRenderItemDefault>
+															{itemLabels[index]}
+														</ComboboxRenderItemDefault>
+													)}
+												</li>
+											))
+										) : (
+											<ComboboxListEmptyResults message={emptyResultsMessage} />
+										)}
+									</Fragment>
 								)}
-								{hasBothButtons && <ComboboxButtonDivider />}
-								{showDropdownTrigger && (
-									<ComboboxDropdownTrigger
-										{...combobox.getToggleButtonProps({
-											isOpen: combobox.isOpen,
-											disabled,
-										})}
-									/>
-								)}
-							</ComboboxButtonContainer>
-						)}
-						<Popover
-							as="ul"
-							{...combobox.getMenuProps(popover.getPopoverProps())}
-							visibility={combobox.isOpen ? 'visible' : 'hidden'}
-						>
-							{combobox.isOpen ? (
-								<Fragment>
-									{loading ? (
-										<ComboboxListLoading />
-									) : networkError ? (
-										<ComboboxListError />
-									) : (
-										<Fragment>
-											{inputItems?.length ? (
-												inputItems.map((item, index) => (
-													<li
-														data-combobox-list-item="interactive"
-														key={`${item.value}-${index}`}
-														{...combobox.getItemProps({ item, index })}
-														// Required for Android TalkBack to be able to access the list items
-														// See https://issues.chromium.org/issues/40260928
-														// But stops iOS from being able to access them ◔_◔
-														tabIndex={isIos ? undefined : -1}
-													>
-														{renderItem ? (
-															renderItem({
-																...item,
-																label: itemLabels[index],
-															})
-														) : (
-															<ComboboxRenderItemDefault>
-																{itemLabels[index]}
-															</ComboboxRenderItemDefault>
-														)}
-													</li>
-												))
-											) : (
-												<ComboboxListEmptyResults
-													message={emptyResultsMessage}
-												/>
-											)}
-										</Fragment>
-									)}
-								</Fragment>
-							) : null}
-						</Popover>
-					</div>
-				)}
-			</Field>
-		</Profiler>
+							</Fragment>
+						) : null}
+					</Popover>
+				</div>
+			)}
+		</Field>
 	);
 }
