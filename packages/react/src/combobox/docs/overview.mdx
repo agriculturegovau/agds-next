@@ -313,7 +313,7 @@ If you would like to see how Combobox performs with various option lengths, you 
 		}
 		return result;
 	};
-	const [numOfOptions, setNumOfOptions] = React.useState(2000);
+	const [numOfOptions, setNumOfOptions] = React.useState(1000);
 	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
 	const [comboboxValue, setComboboxValue] = React.useState(null);
 
@@ -334,127 +334,6 @@ If you would like to see how Combobox performs with various option lengths, you 
 				value={numOfOptions}
 			/>
 			<Combobox
-				label="Select country"
-				hint="Start typing to see results"
-				value={comboboxValue}
-				onChange={setComboboxValue}
-				options={options}
-			/>
-		</FormStack>
-	);
-};
-```
-
-```jsx live
-() => {
-	const generateOptions = (number) => {
-		const result = [];
-		for (let i = 0; i < number; i++) {
-			const countryIndex = i % NAME_OPTIONS.length;
-			const fullName = `${NAME_OPTIONS[countryIndex].fullName} ${
-				Math.floor(i / NAME_OPTIONS.length) + 1
-			}`;
-			const jobTitle = `${NAME_OPTIONS[countryIndex].jobTitle} ${
-				Math.floor(i / NAME_OPTIONS.length) + 1
-			}`;
-			const status = `${NAME_OPTIONS[countryIndex].status} ${
-				Math.floor(i / NAME_OPTIONS.length) + 1
-			}`;
-			result.push({
-				label: fullName,
-				fullName: fullName,
-				value: fullName,
-				jobTitle,
-				status,
-				unreadMessageCount: NAME_OPTIONS[countryIndex].unreadMessageCount,
-			});
-		}
-		return result;
-	};
-	const [numOfOptions, setNumOfOptions] = React.useState(2000);
-	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
-	const [comboboxValue, setComboboxValue] = React.useState(null);
-
-	React.useEffect(() => {
-		setOptions(generateOptions(numOfOptions));
-	}, [numOfOptions]);
-
-	return (
-		<FormStack>
-			<TextInput
-				label="Custom rendering"
-				maxWidth="sm"
-				onChange={(event) => {
-					setNumOfOptions(event.target.valueAsNumber);
-				}}
-				required
-				type="number"
-				value={numOfOptions}
-			/>
-			<Combobox
-				label="Select country"
-				hint="Start typing to see results"
-				value={comboboxValue}
-				onChange={setComboboxValue}
-				options={options}
-				renderItem={(item) => (
-					<ComboboxRenderItem
-						itemLabel={item.label}
-						secondaryText={`Role: ${item.jobTitle}`}
-						tertiaryText={`Job: ${item.status}`}
-						beforeElement={
-							<Avatar name={item.fullName} size="sm" tone="action" />
-						}
-						endElement={
-							item.unreadMessageCount > 0 ? (
-								<NotificationBadge
-									value={item.unreadMessageCount}
-									tone="action"
-								/>
-							) : null
-						}
-					/>
-				)}
-			/>
-		</FormStack>
-	);
-};
-```
-
-```jsx live
-() => {
-	const generateOptions = (number) => {
-		const result = [];
-		for (let i = 0; i < number; i++) {
-			const countryIndex = i % COUNTRY_OPTIONS.length;
-			const countryName = `${COUNTRY_OPTIONS[countryIndex].label} ${
-				Math.floor(i / COUNTRY_OPTIONS.length) + 1
-			}`;
-			result.push({ label: countryName, value: countryName });
-		}
-		return result;
-	};
-	const [numOfOptions, setNumOfOptions] = React.useState(2000);
-	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
-	const [comboboxValue, setComboboxValue] = React.useState([]);
-
-	React.useEffect(() => {
-		setOptions(generateOptions(numOfOptions));
-	}, [numOfOptions]);
-
-	return (
-		<FormStack>
-			<TextInput
-				label="Combo multi"
-				maxWidth="sm"
-				onChange={(event) => {
-					setNumOfOptions(event.target.valueAsNumber);
-				}}
-				required
-				type="number"
-				value={numOfOptions}
-			/>
-			<ComboboxMulti
 				label="Select country"
 				hint="Start typing to see results"
 				value={comboboxValue}
