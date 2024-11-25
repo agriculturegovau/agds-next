@@ -54,6 +54,13 @@ describe('FeatureLinkList', () => {
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderLinkList();
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+			rules: {
+				// react 18s `useId` break this rule
+				'valid-id': 'off',
+			},
+		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
