@@ -29,7 +29,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-a1k7wg-ComboboxBase"
+      class="css-j6j22x-ComboboxBase"
     >
       <input
         aria-activedescendant=""

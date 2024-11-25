@@ -29,7 +29,7 @@ exports[`TimePicker renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-1bet7dx-ComboboxBase"
+      class="css-191yhy0-ComboboxBase"
     >
       <input
         aria-activedescendant=""
@@ -122,7 +122,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-1bet7dx-ComboboxBase"
+      class="css-191yhy0-ComboboxBase"
     >
       <input
         aria-activedescendant=""
@@ -178,7 +178,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
         style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: 195px; width: 0px;"
       >
         <li
-          class="css-13t89e4-ComboboxListItem"
+          data-combobox-list-item="static"
           tabindex="-1"
         >
           <div

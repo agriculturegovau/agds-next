@@ -14,7 +14,7 @@ const hoverStyles = {
 const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
 
 export const listItemStyles: CSSObject = {
-	li: {
+	'[data-combobox-list-item]': {
 		alignItems: 'center',
 		borderBottomStyle: 'solid',
 		borderBottomWidth: tokens.borderWidth.sm,
