@@ -33,13 +33,14 @@ export const FeatureLinkListItem = ({
 			as="li"
 			borderBottom
 			background={background}
-			css={{
-				...linkStyles,
-				textDecoration: 'none',
-				'&:hover': {
-					backgroundColor: hoverColorMap[background],
+			css={[
+				{ ...linkStyles, textDecoration: 'none' },
+				{
+					'&:hover': {
+						backgroundColor: hoverColorMap[background],
+					},
 				},
-			}}
+			]}
 		>
 			<Flex
 				gap={1.5}
