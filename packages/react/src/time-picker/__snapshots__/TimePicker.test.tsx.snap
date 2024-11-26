@@ -18,7 +18,7 @@ exports[`TimePicker renders correctly 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -29,7 +29,7 @@ exports[`TimePicker renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-8tabia-ComboboxBase"
+      class="css-1rrsub-ComboboxBase"
     >
       <input
         aria-activedescendant=""
@@ -111,7 +111,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -122,7 +122,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-8tabia-ComboboxBase"
+      class="css-1rrsub-ComboboxBase"
     >
       <input
         aria-activedescendant=""
@@ -178,7 +178,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
         style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: 195px; width: 0px;"
       >
         <li
-          class="css-g0k1ob-ComboboxListItem"
+          data-combobox-list-item="static"
           tabindex="-1"
         >
           <div

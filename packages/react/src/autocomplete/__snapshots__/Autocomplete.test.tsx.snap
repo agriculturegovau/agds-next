@@ -18,7 +18,7 @@ exports[`Autocomplete renders correctly 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -29,7 +29,7 @@ exports[`Autocomplete renders correctly 1`] = `
       Start typing to see results
     </span>
     <div
-      class="css-zmsbjo-ComboboxBase"
+      class="css-6zq5y7-ComboboxBase"
     >
       <svg
         aria-hidden="true"
