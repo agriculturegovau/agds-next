@@ -46,7 +46,7 @@ export type FileInputProps = BaseFileInputProps & {
 	label: string;
 	/** Message to show when the field is invalid. */
 	message?: string;
-	/** If false, "(optional)" will be appended to the label. */
+	/** If `false` or `undefined`, "(optional)" will be appended to the label. */
 	required?: boolean;
 };
 
