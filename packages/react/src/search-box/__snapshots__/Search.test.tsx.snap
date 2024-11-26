@@ -7,35 +7,35 @@ exports[`SearchBox renders correctly 1`] = `
     role="search"
   >
     <div
-      class="css-vfcxlf-boxStyles"
+      class="css-xhfmxa-boxStyles"
     >
       <div
-        class="css-12in0u0-boxStyles"
+        class="css-8g0wct-boxStyles"
       >
         <label
-          class="css-1wmhsmi-boxStyles-SearchBoxLabel"
+          class="css-2ns6gd-boxStyles"
           for="search-:r0:"
         >
           Search
         </label>
         <input
           autocomplete="off"
-          class="css-w5d386-SearchBoxInput"
+          class="css-1wdee7d"
           id="search-:r0:"
           type="search"
         />
       </div>
       <div
-        class="css-7ymq3t-boxStyles-SearchBoxButton"
+        class="css-nucayr-boxStyles-SearchBoxButton"
       >
         <button
           aria-label="Search"
-          class="css-ta2vha-BaseButton-SearchBoxButton"
+          class="css-guwq8c-BaseButton"
           type="submit"
         >
           <span>
             <span
-              class="css-oobk4c-Button"
+              class="css-ws37v0-Button"
             >
               <span>
                 Search

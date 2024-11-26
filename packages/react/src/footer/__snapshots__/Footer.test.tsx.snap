@@ -3,52 +3,52 @@
 exports[`Footer renders correctly 1`] = `
 <div>
   <footer
-    class="css-1qjnm0n-boxStyles-Footer"
+    class="css-14j0vd5-boxStyles-Footer"
   >
     <div
-      class="css-1qpkcxh-boxStyles"
+      class="css-d4d393-boxStyles"
     >
       <nav
         aria-label="footer"
       >
         <ul
-          class="css-u0m30q-boxStyles"
+          class="css-ql0nki-boxStyles"
         >
           <li
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-iuqbpq-TextLink"
               href="#"
             >
               Home
             </a>
           </li>
           <li
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-iuqbpq-TextLink"
               href="#"
             >
               Terms and conditions
             </a>
           </li>
           <li
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-iuqbpq-TextLink"
               href="#"
             >
               Privacy policy
             </a>
           </li>
           <li
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-iuqbpq-TextLink"
               href="#"
             >
               A really long link title
@@ -58,15 +58,15 @@ exports[`Footer renders correctly 1`] = `
       </nav>
       <hr
         aria-hidden="true"
-        class="css-vsn6gl-boxStyles-FooterDivider"
+        class="css-st5ugt-boxStyles-FooterDivider"
       />
       <span
-        class="css-1oewark-boxStyles"
+        class="css-17z05ba-boxStyles"
       >
         We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
       </span>
       <span
-        class="css-1oewark-boxStyles"
+        class="css-17z05ba-boxStyles"
       >
         © 2024 Department of Agriculture, Fisheries and Forestry
       </span>

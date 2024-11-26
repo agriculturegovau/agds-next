@@ -3,20 +3,20 @@
 exports[`OrderedList renders correctly 1`] = `
 <div>
   <ol
-    class="css-1ubtfrw-OrderedList"
+    class="css-1r5a8sf-OrderedList"
   >
     <li
-      class="css-1sudq1l-boxStyles-ListItem"
+      class="css-ge0w-boxStyles-ListItem"
     >
       Item 1
     </li>
     <li
-      class="css-1sudq1l-boxStyles-ListItem"
+      class="css-ge0w-boxStyles-ListItem"
     >
       Item 2
     </li>
     <li
-      class="css-1sudq1l-boxStyles-ListItem"
+      class="css-ge0w-boxStyles-ListItem"
     >
       Item 3
     </li>

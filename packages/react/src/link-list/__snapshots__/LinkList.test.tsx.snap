@@ -3,56 +3,56 @@
 exports[`LinkList renders correctly 1`] = `
 <div>
   <ul
-    class="css-pa8edo-boxStyles"
+    class="css-1ggb42k-boxStyles"
   >
     <li
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <a
-        class="css-koqz57-TextLink"
+        class="css-iuqbpq-TextLink"
         href="#"
       >
         Home
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <a
-        class="css-koqz57-TextLink"
+        class="css-iuqbpq-TextLink"
         href="#"
       >
         Establishments
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <a
-        class="css-koqz57-TextLink"
+        class="css-iuqbpq-TextLink"
         href="#"
       >
         Applications
       </a>
     </li>
     <li
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <a
-        class="css-koqz57-TextLink"
+        class="css-iuqbpq-TextLink"
         href="https://design-system.agriculture.gov.au"
         rel="noopener"
         target="_blank"
       >
         External link
         <span
-          class="css-avudkd-VisuallyHidden"
+          class="css-5ur8x"
         >
           , opens in a new tab
         </span>
         <svg
           aria-hidden="true"
-          class="css-1e3wj1s-TextLinkExternal"
+          class="css-vfme68-TextLinkExternal"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

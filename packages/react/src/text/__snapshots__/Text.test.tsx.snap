@@ -3,7 +3,7 @@
 exports[`Text renders correctly 1`] = `
 <div>
   <span
-    class="css-dbscsh-boxStyles"
+    class="css-1e881ou-boxStyles"
   >
     Text element
   </span>

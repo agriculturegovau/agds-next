@@ -3,46 +3,46 @@
 exports[`FileUpload 1 selected file renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r9:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Upload file
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-:r9:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-1mxr31d-boxStyles"
+      class="css-ac5n69-boxStyles"
     >
       <div
         class="css-5ur8x"
         role="status"
       />
       <div
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <div
-          class="css-1qmc73y-boxStyles"
+          class="css-1e3cn2q-boxStyles"
         >
           <svg
             aria-hidden="true"
-            class="css-1iylkid-Icon"
+            class="css-o1igvs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -75,18 +75,18 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-iij6ui-boxStyles"
+            class="css-4gbxxq-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
             >
               <span
-                class="css-vffudx-boxStyles-FileUpload"
+                class="css-hzk7j7-boxStyles-FileUpload"
               >
                 Drag and drop a file or select a file to upload.
               </span>
               <span
-                class="css-110dnkz-boxStyles-FileUpload"
+                class="css-1uj8l03-boxStyles-FileUpload"
               >
                 Drop 
                 file
@@ -96,12 +96,12 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r9:-hint"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-12q9hib-BaseButton"
             type="button"
           >
             <span>
               <span
-                class="css-oobk4c-Button"
+                class="css-ws37v0-Button"
               >
                 Select 
                 file
@@ -114,29 +114,29 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-1wcx0lf-boxStyles"
+        class="css-1hxx2pv-boxStyles"
       >
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
           1 file selected
         </span>
         <ul
           aria-label="Selected files"
-          class="css-1wcx0lf-boxStyles"
+          class="css-1hxx2pv-boxStyles"
         >
           <li
-            class="css-1ydwyx-boxStyles"
+            class="css-1bzre0v-boxStyles"
           >
             <div
-              class="css-1jhrbpg-boxStyles"
+              class="css-cp5bql-boxStyles"
             >
               <div
-                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
+                class="css-1v15sry-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-16t9tz1-Icon"
+                  class="css-1dim7kp"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -155,14 +155,14 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-w79ye0-boxStyles"
+                class="css-9a9bsh-boxStyles"
               >
                 <span
-                  class="css-ayz5ov-boxStyles"
+                  class="css-1ogxkaw-boxStyles"
                 >
                   example.txt
                   <span
-                    class="css-1ehfodt-boxStyles-FileUploadFile"
+                    class="css-tbdjx9-boxStyles-FileUploadFile"
                   >
                      
                     (
@@ -173,16 +173,16 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-jd5yi9-boxStyles"
+              class="css-1bc0fgx-boxStyles"
             >
               <button
                 aria-label="Remove file: example.txt"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-14917ak-BaseButton"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-x8ddx7-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -207,7 +207,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
                 </svg>
                 <span>
                   <span
-                    class="css-oobk4c-Button"
+                    class="css-ws37v0-Button"
                   >
                     Remove
                   </span>
@@ -228,46 +228,46 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
 exports[`FileUpload Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r1:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Upload file
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-:r1:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-1mxr31d-boxStyles"
+      class="css-ac5n69-boxStyles"
     >
       <div
         class="css-5ur8x"
         role="status"
       />
       <div
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <div
-          class="css-1qmc73y-boxStyles"
+          class="css-1e3cn2q-boxStyles"
         >
           <svg
             aria-hidden="true"
-            class="css-1iylkid-Icon"
+            class="css-o1igvs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -300,18 +300,18 @@ exports[`FileUpload Basic renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-iij6ui-boxStyles"
+            class="css-4gbxxq-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
             >
               <span
-                class="css-vffudx-boxStyles-FileUpload"
+                class="css-hzk7j7-boxStyles-FileUpload"
               >
                 Drag and drop a file or select a file to upload.
               </span>
               <span
-                class="css-110dnkz-boxStyles-FileUpload"
+                class="css-1uj8l03-boxStyles-FileUpload"
               >
                 Drop 
                 file
@@ -321,12 +321,12 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r1:-hint"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-12q9hib-BaseButton"
             type="button"
           >
             <span>
               <span
-                class="css-oobk4c-Button"
+                class="css-ws37v0-Button"
               >
                 Select 
                 file
@@ -346,46 +346,46 @@ exports[`FileUpload Basic renders correctly 1`] = `
 exports[`FileUpload Existing files renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:rd:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Upload file
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-:rd:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-1mxr31d-boxStyles"
+      class="css-ac5n69-boxStyles"
     >
       <div
         class="css-5ur8x"
         role="status"
       />
       <div
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <div
-          class="css-1qmc73y-boxStyles"
+          class="css-1e3cn2q-boxStyles"
         >
           <svg
             aria-hidden="true"
-            class="css-1iylkid-Icon"
+            class="css-o1igvs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -418,18 +418,18 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-iij6ui-boxStyles"
+            class="css-4gbxxq-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
             >
               <span
-                class="css-vffudx-boxStyles-FileUpload"
+                class="css-hzk7j7-boxStyles-FileUpload"
               >
                 Drag and drop a file or select a file to upload.
               </span>
               <span
-                class="css-110dnkz-boxStyles-FileUpload"
+                class="css-1uj8l03-boxStyles-FileUpload"
               >
                 Drop 
                 file
@@ -439,12 +439,12 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:rd:-hint"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-12q9hib-BaseButton"
             type="button"
           >
             <span>
               <span
-                class="css-oobk4c-Button"
+                class="css-ws37v0-Button"
               >
                 Select 
                 file
@@ -457,36 +457,36 @@ exports[`FileUpload Existing files renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-1wcx0lf-boxStyles"
+        class="css-1hxx2pv-boxStyles"
       >
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
           2 files selected
         </span>
         <ul
           aria-label="Existing files"
-          class="css-1wcx0lf-boxStyles"
+          class="css-1hxx2pv-boxStyles"
         >
           <li
-            class="css-8coe2o-boxStyles"
+            class="css-1mxggsl-boxStyles"
           >
             <div
-              class="css-1jhrbpg-boxStyles"
+              class="css-cp5bql-boxStyles"
             >
               <div
-                class="css-v42gao-boxStyles-FileUploadFileThumbnail"
+                class="css-1tpue3v-boxStyles-FileUploadFileThumbnail"
               />
               <div
-                class="css-w79ye0-boxStyles"
+                class="css-9a9bsh-boxStyles"
               >
                 <div
-                  class="css-1ldvxqr-boxStyles"
+                  class="css-1ubp51x-boxStyles"
                 >
                   <svg
                     aria-hidden="false"
                     aria-label="Success"
-                    class="css-1qd7isr-FileUploadExistingFile"
+                    class="css-7r593y-FileUploadExistingFile"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -504,10 +504,10 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   </svg>
                 </div>
                 <span
-                  class="css-ayz5ov-boxStyles"
+                  class="css-1ogxkaw-boxStyles"
                 >
                   <a
-                    class="css-koqz57-TextLink"
+                    class="css-iuqbpq-TextLink"
                     href="#"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -519,16 +519,16 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-jd5yi9-boxStyles"
+              class="css-1bc0fgx-boxStyles"
             >
               <button
                 aria-label="Remove file: example.png"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-14917ak-BaseButton"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-x8ddx7-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -553,7 +553,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                 </svg>
                 <span>
                   <span
-                    class="css-oobk4c-Button"
+                    class="css-ws37v0-Button"
                   >
                     Remove
                   </span>
@@ -565,17 +565,17 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </div>
           </li>
           <li
-            class="css-8coe2o-boxStyles"
+            class="css-1mxggsl-boxStyles"
           >
             <div
-              class="css-1jhrbpg-boxStyles"
+              class="css-cp5bql-boxStyles"
             >
               <div
-                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
+                class="css-1v15sry-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-16t9tz1-Icon"
+                  class="css-1dim7kp"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -594,15 +594,15 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-w79ye0-boxStyles"
+                class="css-9a9bsh-boxStyles"
               >
                 <div
-                  class="css-1ldvxqr-boxStyles"
+                  class="css-1ubp51x-boxStyles"
                 >
                   <svg
                     aria-hidden="false"
                     aria-label="Success"
-                    class="css-1qd7isr-FileUploadExistingFile"
+                    class="css-7r593y-FileUploadExistingFile"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -620,10 +620,10 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                   </svg>
                 </div>
                 <span
-                  class="css-ayz5ov-boxStyles"
+                  class="css-1ogxkaw-boxStyles"
                 >
                   <a
-                    class="css-koqz57-TextLink"
+                    class="css-iuqbpq-TextLink"
                     href="#"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -635,16 +635,16 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-jd5yi9-boxStyles"
+              class="css-1bc0fgx-boxStyles"
             >
               <button
                 aria-label="Remove file: example-no-thumbnail.doc"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-14917ak-BaseButton"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-x8ddx7-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -669,7 +669,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                 </svg>
                 <span>
                   <span
-                    class="css-oobk4c-Button"
+                    class="css-ws37v0-Button"
                   >
                     Remove
                   </span>
@@ -690,46 +690,46 @@ exports[`FileUpload Existing files renders correctly 1`] = `
 exports[`FileUpload Multiple, maxSize and accepted file extensions renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r5:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Upload file
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-:r5:-hint"
     >
       General hint information
     </span>
     <div
-      class="css-1mxr31d-boxStyles"
+      class="css-ac5n69-boxStyles"
     >
       <div
         class="css-5ur8x"
         role="status"
       />
       <div
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <div
-          class="css-1qmc73y-boxStyles"
+          class="css-1e3cn2q-boxStyles"
         >
           <svg
             aria-hidden="true"
-            class="css-1iylkid-Icon"
+            class="css-o1igvs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -764,18 +764,18 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             type="file"
           />
           <div
-            class="css-iij6ui-boxStyles"
+            class="css-4gbxxq-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
             >
               <span
-                class="css-vffudx-boxStyles-FileUpload"
+                class="css-hzk7j7-boxStyles-FileUpload"
               >
                 Drag and drop files here or select files to upload.
               </span>
               <span
-                class="css-110dnkz-boxStyles-FileUpload"
+                class="css-1uj8l03-boxStyles-FileUpload"
               >
                 Drop 
                 files
@@ -783,7 +783,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
               </span>
             </span>
             <span
-              class="css-axuon-boxStyles"
+              class="css-1ru6lht-boxStyles"
               id=":r4:-file-size-desc"
             >
               Each file
@@ -793,7 +793,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
               .
             </span>
             <span
-              class="css-axuon-boxStyles"
+              class="css-1ru6lht-boxStyles"
               id=":r4:-accepted-files-desc"
             >
               Files accepted: 
@@ -803,12 +803,12 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </div>
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-12q9hib-BaseButton"
             type="button"
           >
             <span>
               <span
-                class="css-oobk4c-Button"
+                class="css-ws37v0-Button"
               >
                 Select 
                 files

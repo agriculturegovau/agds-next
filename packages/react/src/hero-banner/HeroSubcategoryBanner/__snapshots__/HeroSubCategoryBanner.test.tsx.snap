@@ -3,29 +3,29 @@
 exports[`HeroSubcategoryBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-d9obf2-boxStyles"
+    class="css-1yg4yzk-boxStyles"
   >
     <div
-      class="css-ou39vu-boxStyles"
+      class="css-uq5mes-boxStyles"
     >
       <div
-        class="css-1rhmzip-boxStyles"
+        class="css-1dasgjt-boxStyles"
       >
         <div
-          class="css-eg651i-boxStyles"
+          class="css-uvibcs-boxStyles"
         >
           <nav
             aria-label="Breadcrumbs"
           >
             <ol
-              class="css-njrw75-boxStyles-BreadcrumbsContainer"
+              class="css-1klpc3g-boxStyles-BreadcrumbsContainer"
             >
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1s21qr-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-b69cs4-BreadcrumbsDivider"
+                  class="css-6n0j1b-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -40,18 +40,18 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-koqz57-TextLink"
+                  class="css-iuqbpq-TextLink"
                   href="#"
                 >
                   Section 1
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1s21qr-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-b69cs4-BreadcrumbsDivider"
+                  class="css-6n0j1b-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -68,18 +68,18 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 <button
                   aria-expanded="false"
                   aria-label="Show all breadcrumbs"
-                  class="css-eqfuua-BaseButton-boxStyles"
+                  class="css-1pa4jzb-BaseButton-boxStyles"
                   type="button"
                 >
                   …
                 </button>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1s21qr-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-b69cs4-BreadcrumbsDivider"
+                  class="css-6n0j1b-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -94,18 +94,18 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-koqz57-TextLink"
+                  class="css-iuqbpq-TextLink"
                   href="#"
                 >
                   Category page
                 </a>
               </li>
               <li
-                class="css-v6k7t1-boxStyles"
+                class="css-1s21qr-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-b69cs4-BreadcrumbsDivider"
+                  class="css-6n0j1b-BreadcrumbsDivider"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -121,7 +121,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </svg>
                 Subcategory page
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                    (current page)
                 </span>
@@ -129,7 +129,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
             </ol>
           </nav>
           <h1
-            class="css-18pa81a-boxStyles"
+            class="css-1jdu126-boxStyles"
           >
             Subcategory banner title - xxl/display (H1)
           </h1>

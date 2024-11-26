@@ -3,25 +3,25 @@
 exports[`Accordion renders correctly 1`] = `
 <div>
   <div
-    class="css-xgo9nn-boxStyles"
+    class="css-o3xfri-boxStyles"
   >
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-1lajbxo-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <button
           aria-controls="accordion-:r0:-body"
           aria-expanded="false"
-          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
+          class="css-o043e7-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r0:-title"
           type="button"
         >
           Accordion 1
           <svg
             aria-hidden="true"
-            class="css-wg7i63-AccordionTitle"
+            class="css-1hr4bny-AccordionTitle"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -39,17 +39,17 @@ exports[`Accordion renders correctly 1`] = `
       </h3>
       <div
         aria-labelledby="accordion-:r0:-title"
-        class="css-1g0zzsa-AccordionBody"
+        class="css-l7z3lg-AccordionBody"
         id="accordion-:r0:-body"
         role="region"
         style="display: none; height: 0px;"
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-dh2z99-boxStyles"
           >
             <p
-              class="css-dbscsh-boxStyles"
+              class="css-1e881ou-boxStyles"
             >
               Accordion 1 text content.
             </p>
@@ -58,22 +58,22 @@ exports[`Accordion renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-td3mpi-boxStyles"
+      class="css-1lajbxo-boxStyles"
     >
       <h3
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <button
           aria-controls="accordion-:r1:-body"
           aria-expanded="false"
-          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
+          class="css-o043e7-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r1:-title"
           type="button"
         >
           Accordion 2
           <svg
             aria-hidden="true"
-            class="css-wg7i63-AccordionTitle"
+            class="css-1hr4bny-AccordionTitle"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -91,17 +91,17 @@ exports[`Accordion renders correctly 1`] = `
       </h3>
       <div
         aria-labelledby="accordion-:r1:-title"
-        class="css-1g0zzsa-AccordionBody"
+        class="css-l7z3lg-AccordionBody"
         id="accordion-:r1:-body"
         role="region"
         style="display: none; height: 0px;"
       >
         <div>
           <div
-            class="css-1u803sw-boxStyles"
+            class="css-dh2z99-boxStyles"
           >
             <p
-              class="css-dbscsh-boxStyles"
+              class="css-1e881ou-boxStyles"
             >
               Accordion 2 text content.
             </p>

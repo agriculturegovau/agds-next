@@ -3,19 +3,19 @@
 exports[`Textarea Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Message
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
@@ -29,7 +29,7 @@ exports[`Textarea Basic renders correctly 1`] = `
     />
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -38,34 +38,34 @@ exports[`Textarea Basic renders correctly 1`] = `
 exports[`Textarea Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1w2w8hl-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r4:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Message
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1xkbxzi-boxStyles"
+      class="css-1f6i6yx-boxStyles"
     >
       <div
-        class="css-1ldvxqr-boxStyles"
+        class="css-1ubp51x-boxStyles"
       >
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-rg60c6-FieldMessage"
+          class="css-jlrijh-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -83,7 +83,7 @@ exports[`Textarea Invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-o7cidz-boxStyles"
+        class="css-1id9gi5-boxStyles"
         id="field-:r4:-message"
       >
         This field is required
@@ -98,7 +98,7 @@ exports[`Textarea Invalid renders correctly 1`] = `
     />
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -107,26 +107,26 @@ exports[`Textarea Invalid renders correctly 1`] = `
 exports[`Textarea With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Message
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-:r2:-hint"
     >
       Hint text
@@ -140,7 +140,7 @@ exports[`Textarea With hint renders correctly 1`] = `
     />
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>

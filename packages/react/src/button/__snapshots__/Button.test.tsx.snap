@@ -3,13 +3,13 @@
 exports[`Button Loading renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-1pxav7h-BaseButton"
     data-testid="example"
     type="button"
   >
     <span>
       <span
-        class="css-17k4jap-Button"
+        class="css-3z2f8l-Button"
       >
         My button
       </span>
@@ -18,24 +18,24 @@ exports[`Button Loading renders correctly 1`] = `
       >
         <span
           aria-atomic="false"
-          class="css-zovuvr-boxStyles-ButtonLoadingDots"
+          class="css-1baog38-boxStyles-ButtonLoadingDots"
         >
           <span
-            class="css-avudkd-VisuallyHidden"
+            class="css-5ur8x"
           >
             Busy
           </span>
           <span
             aria-hidden="true"
-            class="css-1b171kd-boxStyles-LoadingDots"
+            class="css-sv3f71-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-1c8uen7-boxStyles-LoadingDots"
+            class="css-1e8xxc-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-1udhakn-boxStyles-LoadingDots"
+            class="css-1op0vld-boxStyles-LoadingDots"
           />
         </span>
       </span>
@@ -47,13 +47,13 @@ exports[`Button Loading renders correctly 1`] = `
 exports[`Button Small Button renders correctly 1`] = `
 <div>
   <button
-    class="css-uwq2hm-BaseButton-Button"
+    class="css-1iwq41e-BaseButton"
     data-testid="example"
     type="button"
   >
     <span>
       <span
-        class="css-oobk4c-Button"
+        class="css-ws37v0-Button"
       >
         My button
       </span>
@@ -68,13 +68,13 @@ exports[`Button Small Button renders correctly 1`] = `
 exports[`Button With Icon renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-1pxav7h-BaseButton"
     data-testid="example"
     type="button"
   >
     <span>
       <span
-        class="css-oobk4c-Button"
+        class="css-ws37v0-Button"
       >
         My button
       </span>
@@ -84,7 +84,7 @@ exports[`Button With Icon renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-1yuy9mh-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -110,13 +110,13 @@ exports[`Button With Icon renders correctly 1`] = `
 exports[`Button renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-1pxav7h-BaseButton"
     data-testid="example"
     type="button"
   >
     <span>
       <span
-        class="css-oobk4c-Button"
+        class="css-ws37v0-Button"
       >
         My button
       </span>
@@ -131,7 +131,7 @@ exports[`Button renders correctly 1`] = `
 exports[`ButtonLink renders correctly 1`] = `
 <div>
   <a
-    class="css-pvrlzo-ButtonLink"
+    class="css-19ymjdp"
     data-testid="example"
     href="#"
   >

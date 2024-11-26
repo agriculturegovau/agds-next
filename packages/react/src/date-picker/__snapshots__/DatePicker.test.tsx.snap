@@ -4,48 +4,48 @@ exports[`DatePicker renders correctly 1`] = `
 <div>
   <div>
     <div
-      class="css-1904cz9-boxStyles-FieldContainer"
+      class="css-2ohkpz-boxStyles-FieldContainer"
     >
       <label
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
         for="field-:r0:"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Example
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (e.g. 05/08/2015) (optional)
         </span>
       </label>
       <div
-        class="css-7swrfr-boxStyles-DateInput"
+        class="css-1kksa10-boxStyles-DateInput"
       >
         <input
           aria-invalid="false"
           aria-required="false"
           autocomplete="off"
-          class="css-vgeom5-DateInput"
+          class="css-uepv5-DateInput"
           id="field-:r0:"
           type="text"
           value="01/01/2000"
         />
         <button
           aria-label="Change date, 1st January 2000 Saturday"
-          class="css-1bg0u8-BaseButton-DateInput"
+          class="css-uu838g-BaseButton-DateInput"
           type="button"
         >
           <span>
             <span
-              class="css-oobk4c-Button"
+              class="css-ws37v0-Button"
             >
               <svg
                 aria-hidden="true"
-                class="css-13q7hln-DateInput"
+                class="css-pvsfz7-DateInput"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -80,11 +80,11 @@ exports[`DatePicker renders correctly 1`] = `
       </div>
       <div
         aria-hidden="true"
-        class="css-9l8g4f-Field"
+        class="css-1r6wwux-Field"
       />
     </div>
     <div
-      class="css-7k6877-boxStyles-Popover-DatePicker"
+      class="css-fdy367-boxStyles-Popover-DatePicker"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     />
   </div>

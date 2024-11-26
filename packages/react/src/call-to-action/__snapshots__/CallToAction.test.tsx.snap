@@ -3,17 +3,17 @@
 exports[`CallToActionButton renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-s3zvdq-boxStyles-CallToAction"
   >
     <button
-      class="css-fp5x03-BaseButton-boxStyles"
+      class="css-1e6nydf-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-lewdp2-Icon"
+        class="css-aw3b4u"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -35,17 +35,17 @@ exports[`CallToActionButton renders correctly 1`] = `
 exports[`CallToActionLink renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-s3zvdq-boxStyles-CallToAction"
   >
     <a
-      class="css-19iivh0-TextLink-boxStyles"
+      class="css-1t3x1lj-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >
       Sign up
       <svg
         aria-hidden="true"
-        class="css-lewdp2-Icon"
+        class="css-aw3b4u"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"

@@ -3,24 +3,24 @@
 exports[`Tags With links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-5d1elh-boxStyles"
   >
     <h2
-      class="css-1jywj6f-boxStyles"
+      class="css-1sf8c0k-boxStyles"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-bps6g8-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -28,13 +28,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -42,13 +42,13 @@ exports[`Tags With links renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -63,36 +63,36 @@ exports[`Tags With links renders correctly 1`] = `
 exports[`Tags With onRemove renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-5d1elh-boxStyles"
   >
     <h2
-      class="css-1jywj6f-boxStyles"
+      class="css-1sf8c0k-boxStyles"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-bps6g8-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Foo
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1k0n9kg-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="css-ub2kzo-Icon"
+              class="css-1bxcfjp"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -119,25 +119,25 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Bar
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1k0n9kg-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="css-ub2kzo-Icon"
+              class="css-1bxcfjp"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -164,25 +164,25 @@ exports[`Tags With onRemove renders correctly 1`] = `
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-1iydc84-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-154ed0u-TextLink-boxStyles"
             href="#"
           >
             Baz
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1k0n9kg-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="css-ub2kzo-Icon"
+              class="css-1bxcfjp"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -216,50 +216,50 @@ exports[`Tags With onRemove renders correctly 1`] = `
 exports[`Tags Without links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-5d1elh-boxStyles"
   >
     <h2
-      class="css-1jywj6f-boxStyles"
+      class="css-1sf8c0k-boxStyles"
     >
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-bps6g8-boxStyles"
     >
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-vbiega-boxStyles-Tag"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             Foo
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-vbiega-boxStyles-Tag"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             Bar
           </span>
         </span>
       </li>
       <li
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-vbiega-boxStyles-Tag"
         >
           <span
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
           >
             Baz
           </span>

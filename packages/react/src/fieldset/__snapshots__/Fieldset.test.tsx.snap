@@ -4,35 +4,35 @@ exports[`Fieldset Basic renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r0:-hint"
-    class="css-79i25n-boxStyles"
+    class="css-12ek51e-boxStyles"
     id="fieldset-:r0:"
   >
     <legend
-      class="css-e6rsgj-boxStyles"
+      class="css-a5mrla-boxStyles"
     >
       What is your name?
     </legend>
     <span
-      class="css-12r1vmf-boxStyles-FieldsetHint"
+      class="css-u3w7wc-boxStyles-FieldsetHint"
       id="fieldset-:r0:-hint"
     >
       We will only use this to respond to your requests
     </span>
     <div
-      class="css-1dnalsd-FieldsetContent"
+      class="css-lsncxx-FieldsetContent"
     >
       <div
-        class="css-h0krvw-boxStyles"
+        class="css-fnma7k-boxStyles"
       >
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-2ohkpz-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
             for="field-:r1:"
           >
             <span
-              class="css-1jywj6f-boxStyles"
+              class="css-1sf8c0k-boxStyles"
             >
               First name
             </span>
@@ -46,18 +46,18 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-9l8g4f-Field"
+            class="css-1r6wwux-Field"
           />
         </div>
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-2ohkpz-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
             for="field-:r2:"
           >
             <span
-              class="css-1jywj6f-boxStyles"
+              class="css-1sf8c0k-boxStyles"
             >
               Last name
             </span>
@@ -71,7 +71,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-9l8g4f-Field"
+            class="css-1r6wwux-Field"
           />
         </div>
       </div>
@@ -84,41 +84,41 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
 <div>
   <fieldset
     aria-describedby="fieldset-:r9:-hint"
-    class="css-79i25n-boxStyles"
+    class="css-12ek51e-boxStyles"
     id="fieldset-:r9:"
   >
     <legend>
       <h1
-        class="css-18pa81a-boxStyles"
+        class="css-1jdu126-boxStyles"
       >
         What is your name?
       </h1>
     </legend>
     <div
-      class="css-uw4i6o-FieldsetHint"
+      class="css-1rjbrib-FieldsetHint"
       id="fieldset-:r9:-hint"
     >
       <span
-        class="css-d4xkeo-boxStyles"
+        class="css-bqo8ru-boxStyles"
       >
         We will only use this to respond to your requests
       </span>
     </div>
     <div
-      class="css-1dnalsd-FieldsetContent"
+      class="css-lsncxx-FieldsetContent"
     >
       <div
-        class="css-h0krvw-boxStyles"
+        class="css-fnma7k-boxStyles"
       >
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-2ohkpz-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
             for="field-:ra:"
           >
             <span
-              class="css-1jywj6f-boxStyles"
+              class="css-1sf8c0k-boxStyles"
             >
               First name
             </span>
@@ -132,18 +132,18 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-9l8g4f-Field"
+            class="css-1r6wwux-Field"
           />
         </div>
         <div
-          class="css-1904cz9-boxStyles-FieldContainer"
+          class="css-2ohkpz-boxStyles-FieldContainer"
         >
           <label
-            class="css-79i25n-boxStyles"
+            class="css-12ek51e-boxStyles"
             for="field-:rb:"
           >
             <span
-              class="css-1jywj6f-boxStyles"
+              class="css-1sf8c0k-boxStyles"
             >
               Last name
             </span>
@@ -157,7 +157,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-9l8g4f-Field"
+            class="css-1r6wwux-Field"
           />
         </div>
       </div>

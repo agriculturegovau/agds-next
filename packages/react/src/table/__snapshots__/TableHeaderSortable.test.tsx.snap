@@ -3,31 +3,31 @@
 exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 <div>
   <table
-    class="css-r11i27-boxStyles-Table"
+    class="css-ubs12e-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-1bko8hv-boxStyles"
     >
       <tr
-        class="css-1tx0oac-TableRow"
+        class="css-1dytbgo-TableRow"
       >
         <th
           aria-sort="ascending"
-          class="css-cgixy1-boxStyles"
+          class="css-4mgwtz-boxStyles"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-sromgf-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+              class="css-1of92ge-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
             <svg
               aria-hidden="true"
-              class="css-fyxrud-Icon"
+              class="css-1z0c8dw"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -55,31 +55,31 @@ exports[`TableHeaderSortable with sort direction: ASC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 <div>
   <table
-    class="css-r11i27-boxStyles-Table"
+    class="css-ubs12e-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-1bko8hv-boxStyles"
     >
       <tr
-        class="css-1tx0oac-TableRow"
+        class="css-1dytbgo-TableRow"
       >
         <th
           aria-sort="descending"
-          class="css-cgixy1-boxStyles"
+          class="css-4mgwtz-boxStyles"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-sromgf-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+              class="css-1of92ge-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
             <svg
               aria-hidden="true"
-              class="css-fyxrud-Icon"
+              class="css-1z0c8dw"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -107,30 +107,30 @@ exports[`TableHeaderSortable with sort direction: DESC renders correctly 1`] = `
 exports[`TableHeaderSortable with sort direction: undefined renders correctly 1`] = `
 <div>
   <table
-    class="css-r11i27-boxStyles-Table"
+    class="css-ubs12e-boxStyles-Table"
   >
     <thead
-      class="css-11khhn7-boxStyles"
+      class="css-1bko8hv-boxStyles"
     >
       <tr
-        class="css-1tx0oac-TableRow"
+        class="css-1dytbgo-TableRow"
       >
         <th
-          class="css-m6eg6e-boxStyles"
+          class="css-3bz67i-boxStyles"
           scope="col"
         >
           <button
-            class="css-1gm7gt9-BaseButton-boxStyles-TableHeaderSortable"
+            class="css-sromgf-BaseButton-boxStyles-TableHeaderSortable"
             type="button"
           >
             <span
-              class="css-10iwr90-boxStyles-TableHeaderSortable"
+              class="css-1of92ge-boxStyles-TableHeaderSortable"
             >
               Example
             </span>
             <svg
               aria-hidden="true"
-              class="css-fyxrud-Icon"
+              class="css-1z0c8dw"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"

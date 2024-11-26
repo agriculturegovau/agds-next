@@ -4,7 +4,7 @@ exports[`Icon AlertCircleIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -25,7 +25,7 @@ exports[`Icon AlertFilledIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -48,7 +48,7 @@ exports[`Icon AlertIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -75,7 +75,7 @@ exports[`Icon ArrowDownIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -99,7 +99,7 @@ exports[`Icon ArrowLeftIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -123,7 +123,7 @@ exports[`Icon ArrowRightIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -147,7 +147,7 @@ exports[`Icon ArrowUpDownIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -168,7 +168,7 @@ exports[`Icon ArrowUpIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -192,7 +192,7 @@ exports[`Icon AttachmentIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -213,7 +213,7 @@ exports[`Icon AvatarIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -239,7 +239,7 @@ exports[`Icon CalendarIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -272,7 +272,7 @@ exports[`Icon ChartBarIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -293,7 +293,7 @@ exports[`Icon ChartLineIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -314,7 +314,7 @@ exports[`Icon CheckIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -335,7 +335,7 @@ exports[`Icon ChevronDownIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -356,7 +356,7 @@ exports[`Icon ChevronLeftIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -377,7 +377,7 @@ exports[`Icon ChevronRightIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -398,7 +398,7 @@ exports[`Icon ChevronUpIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -419,7 +419,7 @@ exports[`Icon ChevronsLeftIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -443,7 +443,7 @@ exports[`Icon ChevronsRightIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -467,7 +467,7 @@ exports[`Icon ChevronsUpDownIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -491,7 +491,7 @@ exports[`Icon CloseIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -521,7 +521,7 @@ exports[`Icon CopyIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -549,7 +549,7 @@ exports[`Icon CornerDownRightIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -570,7 +570,7 @@ exports[`Icon DeleteIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -591,7 +591,7 @@ exports[`Icon DownloadIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -612,7 +612,7 @@ exports[`Icon EditIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -633,7 +633,7 @@ exports[`Icon EmailIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -654,7 +654,7 @@ exports[`Icon ExitIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -681,7 +681,7 @@ exports[`Icon ExternalLinkIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -711,7 +711,7 @@ exports[`Icon FacebookIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -732,7 +732,7 @@ exports[`Icon FactoryIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -753,7 +753,7 @@ exports[`Icon FileIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -777,7 +777,7 @@ exports[`Icon FilterIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -798,7 +798,7 @@ exports[`Icon HelpIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -819,7 +819,7 @@ exports[`Icon HomeIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -843,7 +843,7 @@ exports[`Icon InboxIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -867,7 +867,7 @@ exports[`Icon InfoFilledIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -890,7 +890,7 @@ exports[`Icon InfoIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -911,7 +911,7 @@ exports[`Icon InstagramIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -932,7 +932,7 @@ exports[`Icon LinkedInIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -959,7 +959,7 @@ exports[`Icon MenuIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -986,7 +986,7 @@ exports[`Icon MinusIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1010,7 +1010,7 @@ exports[`Icon PauseIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1040,7 +1040,7 @@ exports[`Icon PermitIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1061,7 +1061,7 @@ exports[`Icon PieChartIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1085,7 +1085,7 @@ exports[`Icon PlayIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1106,7 +1106,7 @@ exports[`Icon PlusIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1130,7 +1130,7 @@ exports[`Icon PrintIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1151,7 +1151,7 @@ exports[`Icon ProgressBlockedIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1172,7 +1172,7 @@ exports[`Icon ProgressDoingIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1208,7 +1208,7 @@ exports[`Icon ProgressPausedIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1229,7 +1229,7 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1251,7 +1251,7 @@ exports[`Icon ScrollbarArrowLeftIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1272,7 +1272,7 @@ exports[`Icon ScrollbarArrowRightIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1293,7 +1293,7 @@ exports[`Icon SearchIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1322,7 +1322,7 @@ exports[`Icon SettingsIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1348,7 +1348,7 @@ exports[`Icon SuccessFilledIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1371,7 +1371,7 @@ exports[`Icon SuccessIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1395,7 +1395,7 @@ exports[`Icon ThumbsDownIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1416,7 +1416,7 @@ exports[`Icon ThumbsUpIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1437,7 +1437,7 @@ exports[`Icon TwitterIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1458,7 +1458,7 @@ exports[`Icon UploadIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1488,7 +1488,7 @@ exports[`Icon WarningCircleIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1509,7 +1509,7 @@ exports[`Icon WarningFilledIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1532,7 +1532,7 @@ exports[`Icon WarningIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"
@@ -1553,7 +1553,7 @@ exports[`Icon WebsiteIcon renders correctly 1`] = `
 <div>
   <svg
     aria-hidden="true"
-    class="css-lq07bo-Icon"
+    class="css-1yxmhzb"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"

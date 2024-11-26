@@ -4,17 +4,17 @@ exports[`FilterSidebar renders correctly 1`] = `
 <div>
   <section
     aria-label="Filters (1 active)"
-    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
+    class="css-1k8o0kc-boxStyles-CollapsingSideBar"
   >
     <div
-      class="css-bmr02n-boxStyles-CollapsingSideBar"
+      class="css-1j5n7k8-boxStyles-CollapsingSideBar"
     >
       <div
-        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        class="css-ltihre-boxStyles-CollapsingSideBar"
         id="collapsing-side-bar-:r0:-heading"
       >
         <h2
-          class="css-pkkmd5-boxStyles"
+          class="css-1noh5kt-boxStyles"
         >
           Filters (1)
         </h2>
@@ -23,24 +23,24 @@ exports[`FilterSidebar renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r0:-body"
         aria-expanded="false"
         aria-label="Filters (1)"
-        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        class="css-uzkkkh-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
         <span
-          class="css-1eiy0fa-boxStyles"
+          class="css-m1fbv5-boxStyles"
         >
           <span
-            class="css-1wcx0lf-boxStyles"
+            class="css-1hxx2pv-boxStyles"
           >
             <span
-              class="css-1rvfmyi-boxStyles-CollapsingSideBar"
+              class="css-4zmpre-boxStyles"
             >
               Filters (1)
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-ln9yj9-CollapsingSideBar"
+            class="css-1wyeviv-CollapsingSideBar"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -58,18 +58,18 @@ exports[`FilterSidebar renders correctly 1`] = `
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-1j7zknw-CollapsingSideBar"
       id="collapsing-side-bar-:r0:-body"
       style="display: none; height: 0px;"
     >
       <div
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <div
-          class="css-1kppral-boxStyles"
+          class="css-10q433q-boxStyles"
         >
           <div
-            class="css-h0krvw-boxStyles"
+            class="css-fnma7k-boxStyles"
           />
         </div>
       </div>

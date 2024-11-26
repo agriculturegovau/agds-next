@@ -3,21 +3,21 @@
 exports[`Card Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1yrx9yp-boxStyles-Card"
+    class="css-1ymk5a9-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-tlv6k9-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-1y18cda-boxStyles"
       >
         <h2
-          class="css-e6rsgj-boxStyles"
+          class="css-a5mrla-boxStyles"
         >
           Card heading
         </h2>
         <p
-          class="css-dbscsh-boxStyles"
+          class="css-1e881ou-boxStyles"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
@@ -30,32 +30,32 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-e7y0n5-boxStyles-Card"
+    class="css-l3x99g-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-tlv6k9-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-1y18cda-boxStyles"
       >
         <h2
-          class="css-e6rsgj-boxStyles"
+          class="css-a5mrla-boxStyles"
         >
           Card heading
         </h2>
         <p
-          class="css-dbscsh-boxStyles"
+          class="css-1e881ou-boxStyles"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-2leob8-CardLink"
+          class="css-1yk2y1m-CardLink"
           href="#"
         >
           Linking out
           <svg
             aria-hidden="true"
-            class="css-lq07bo-Icon"
+            class="css-1yxmhzb"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

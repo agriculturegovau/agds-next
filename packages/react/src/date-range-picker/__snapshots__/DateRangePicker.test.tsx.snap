@@ -3,76 +3,76 @@
 exports[`DateRangePicker renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
     id="date-range-picker-:r0:"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-1r0k8hi-boxStyles-DateRangePicker"
+        class="css-94o0f-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Date range
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1fqlpl4-boxStyles-DateRangePicker"
+        class="css-190gnwn-boxStyles-DateRangePicker"
       >
         <div
-          class="css-72257o-boxStyles"
+          class="css-ktq773-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="date-range-picker-:r0:-from"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 Start date
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (e.g. 05/08/2015) (optional)
               </span>
             </label>
             <div
-              class="css-7swrfr-boxStyles-DateInput"
+              class="css-1kksa10-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
                 autocomplete="off"
-                class="css-vgeom5-DateInput"
+                class="css-uepv5-DateInput"
                 id="date-range-picker-:r0:-from"
                 type="text"
                 value="01/01/2000"
               />
               <button
                 aria-label="Change start date, 1st January 2000 Saturday"
-                class="css-1bg0u8-BaseButton-DateInput"
+                class="css-uu838g-BaseButton-DateInput"
                 type="button"
               >
                 <span>
                   <span
-                    class="css-oobk4c-Button"
+                    class="css-ws37v0-Button"
                   >
                     <svg
                       aria-hidden="true"
-                      class="css-13q7hln-DateInput"
+                      class="css-pvsfz7-DateInput"
                       clip-rule="evenodd"
                       fill-rule="evenodd"
                       focusable="false"
@@ -107,52 +107,52 @@ exports[`DateRangePicker renders correctly 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="date-range-picker-:r0:-to"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 End date
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (e.g. 05/08/2015) (optional)
               </span>
             </label>
             <div
-              class="css-7swrfr-boxStyles-DateInput"
+              class="css-1kksa10-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
                 autocomplete="off"
-                class="css-vgeom5-DateInput"
+                class="css-uepv5-DateInput"
                 id="date-range-picker-:r0:-to"
                 type="text"
                 value="02/01/2000"
               />
               <button
                 aria-label="Change end date, 2nd January 2000 Sunday"
-                class="css-1bg0u8-BaseButton-DateInput"
+                class="css-uu838g-BaseButton-DateInput"
                 type="button"
               >
                 <span>
                   <span
-                    class="css-oobk4c-Button"
+                    class="css-ws37v0-Button"
                   >
                     <svg
                       aria-hidden="true"
-                      class="css-13q7hln-DateInput"
+                      class="css-pvsfz7-DateInput"
                       clip-rule="evenodd"
                       fill-rule="evenodd"
                       focusable="false"
@@ -187,13 +187,13 @@ exports[`DateRangePicker renders correctly 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
         </div>
       </div>
       <div
-        class="css-1nvymef-boxStyles-Popover"
+        class="css-1t3y5yj-boxStyles-Popover"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
       />
     </fieldset>

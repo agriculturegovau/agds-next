@@ -4,20 +4,20 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
 <div>
   <nav
     aria-label="main"
-    class="css-wutooc-boxStyles"
+    class="css-11malvd-boxStyles"
   >
     <ul
-      class="css-o80hmi-boxStyles"
+      class="css-1tlb1w1-boxStyles"
     >
       <li
-        class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
+        class="css-11zdtm7-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/account"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -43,25 +43,25 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
       </li>
       <li
         aria-hidden="true"
-        class="css-1dz6j0b-boxStyles"
+        class="css-u0gdma-boxStyles"
       >
         <hr
-          class="css-166wurb-AppLayoutSidebarNavDivider"
+          class="css-1iex8gh-AppLayoutSidebarNavDivider"
         />
       </li>
       <li
-        class="css-mjl15f-AppLayoutSidebarNavItemInner"
+        class="css-16mkspy-AppLayoutSidebarNavItemInner"
       >
         <span
-          class="css-1i7cdx8-boxStyles"
+          class="css-5d1elh-boxStyles"
         >
           <span
-            class="css-1pigcx9-boxStyles"
+            class="css-2m4f35-boxStyles"
           >
             Antfix
           </span>
           <span
-            class="css-1ntyv7o-boxStyles"
+            class="css-grkhe3-boxStyles"
           >
             ABN: 00 000 000 000
           </span>
@@ -69,21 +69,21 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
       </li>
       <li
         aria-hidden="true"
-        class="css-wizjf8-boxStyles"
+        class="css-18pfn14-boxStyles"
       >
         <hr
-          class="css-166wurb-AppLayoutSidebarNavDivider"
+          class="css-1iex8gh-AppLayoutSidebarNavDivider"
         />
       </li>
       <li
-        class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
+        class="css-11zdtm7-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -108,14 +108,14 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </a>
       </li>
       <li
-        class="css-1u5pc1o-AppLayoutSidebarNavItemInner"
+        class="css-1ns7fwl-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/establishments"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -137,7 +137,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           <svg
             aria-hidden="false"
             aria-label=". Sub-level links below."
-            class="css-lq07bo-Icon"
+            class="css-1yxmhzb"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -153,10 +153,10 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           </svg>
         </a>
         <ul
-          class="css-o80hmi-boxStyles"
+          class="css-1tlb1w1-boxStyles"
         >
           <li
-            class="css-1aio4t5-AppLayoutSidebarNavItemInner"
+            class="css-zgfjhx-AppLayoutSidebarNavItemInner"
           >
             <a
               href="/establishments/canberra"
@@ -174,7 +174,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
             </a>
           </li>
           <li
-            class="css-kqf297-AppLayoutSidebarNavItemInner"
+            class="css-ln6nh2-AppLayoutSidebarNavItemInner"
           >
             <a
               aria-current="page"
@@ -195,14 +195,14 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </ul>
       </li>
       <li
-        class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
+        class="css-11zdtm7-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/intelligence"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -224,14 +224,14 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         </a>
       </li>
       <li
-        class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
+        class="css-11zdtm7-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/compliance"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -256,7 +256,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           <svg
             aria-hidden="false"
             aria-label=". Has 2 sub-level links."
-            class="css-lq07bo-Icon"
+            class="css-1yxmhzb"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -274,21 +274,21 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
       </li>
       <li
         aria-hidden="true"
-        class="css-boytaj-boxStyles"
+        class="css-1kgzgzp-boxStyles"
       >
         <hr
-          class="css-166wurb-AppLayoutSidebarNavDivider"
+          class="css-1iex8gh-AppLayoutSidebarNavDivider"
         />
       </li>
       <li
-        class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
+        class="css-11zdtm7-AppLayoutSidebarNavItemInner"
       >
         <a
           href="/help"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -311,22 +311,22 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
       </li>
       <li
         aria-hidden="true"
-        class="css-boytaj-boxStyles"
+        class="css-1kgzgzp-boxStyles"
       >
         <hr
-          class="css-166wurb-AppLayoutSidebarNavDivider"
+          class="css-1iex8gh-AppLayoutSidebarNavDivider"
         />
       </li>
       <li
-        class="css-mjl15f-AppLayoutSidebarNavItemInner"
+        class="css-16mkspy-AppLayoutSidebarNavItemInner"
       >
         <button
-          class="css-6e6ykx-BaseButton"
+          class="css-1dmwe4t-BaseButton"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="css-fyxrud-Icon"
+            class="css-1z0c8dw"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

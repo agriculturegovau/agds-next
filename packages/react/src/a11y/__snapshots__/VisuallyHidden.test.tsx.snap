@@ -3,13 +3,13 @@
 exports[`VisuallyHidden renders correctly 1`] = `
 <div>
   <a
-    class="css-koqz57-TextLink"
+    class="css-iuqbpq-TextLink"
     data-testid="example"
     href="#"
   >
     Read more
     <span
-      class="css-avudkd-VisuallyHidden"
+      class="css-5ur8x"
     >
        about how to visually hide content
     </span>

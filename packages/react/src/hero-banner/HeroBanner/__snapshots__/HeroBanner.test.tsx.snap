@@ -3,10 +3,10 @@
 exports[`HeroBanner renders correctly 1`] = `
 <div>
   <section
-    class="css-um3mzy-boxStyles-HeroBannerContainer"
+    class="css-1vc1hrh-boxStyles-HeroBannerContainer"
   >
     <div
-      class="css-1l77tz3-boxStyles-HeroBannerMobileImage"
+      class="css-1mdxvca-boxStyles-HeroBannerMobileImage"
     >
       <img
         alt=""
@@ -15,38 +15,38 @@ exports[`HeroBanner renders correctly 1`] = `
       />
     </div>
     <div
-      class="css-ou39vu-boxStyles"
+      class="css-uq5mes-boxStyles"
     >
       <div
-        class="css-1rhmzip-boxStyles"
+        class="css-1dasgjt-boxStyles"
       >
         <div
-          class="css-1jhrbpg-boxStyles"
+          class="css-cp5bql-boxStyles"
         >
           <div
-            class="css-1uuwobt-boxStyles-HeroBannerContent"
+            class="css-1yw1hcy-boxStyles-HeroBannerContent"
           >
             <div
-              class="css-1mxr31d-boxStyles"
+              class="css-ac5n69-boxStyles"
             >
               <h1
-                class="css-1wl1hqt-boxStyles"
+                class="css-1tjkfb9-boxStyles"
               >
                 Website hero banner title
               </h1>
               <p
-                class="css-1d0efla-boxStyles"
+                class="css-1lxxmh3-boxStyles"
               >
                 Short hero banner sentence
               </p>
             </div>
             <button
-              class="css-1xaxpdg-BaseButton-Button"
+              class="css-1pxav7h-BaseButton"
               type="button"
             >
               <span>
                 <span
-                  class="css-oobk4c-Button"
+                  class="css-ws37v0-Button"
                 >
                   Primary action
                 </span>
@@ -57,7 +57,7 @@ exports[`HeroBanner renders correctly 1`] = `
             </button>
           </div>
           <div
-            class="css-1w4w4c9-boxStyles-HeroBannerImage"
+            class="css-ky7ujp-boxStyles-HeroBannerImage"
           >
             <img
               alt=""

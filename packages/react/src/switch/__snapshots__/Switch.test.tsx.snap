@@ -3,26 +3,26 @@
 exports[`Switch renders correctly 1`] = `
 <div>
   <label
-    class="css-131fe2s-boxStyles-Switch"
+    class="css-1sf5zhj-boxStyles-Switch"
   >
     <span
-      class="css-o9fx7j-boxStyles-SwitchContainer"
+      class="css-f0hyei-boxStyles-SwitchContainer"
     >
       <input
         aria-checked="false"
-        class="css-1pfc16v-Switch"
+        class="css-1a5z7tn-Switch"
         role="switch"
         type="checkbox"
       />
       <span
-        class="css-k2d2eq-boxStyles-SwitchTrack"
+        class="css-1o6paxa-boxStyles-SwitchTrack"
       />
       <span
-        class="css-oj5g50-boxStyles-SwitchThumb"
+        class="css-6ds77n-boxStyles-SwitchThumb"
       />
     </span>
     <span
-      class="css-dbscsh-boxStyles"
+      class="css-1e881ou-boxStyles"
     >
       Show establishments
     </span>

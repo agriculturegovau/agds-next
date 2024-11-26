@@ -3,25 +3,25 @@
 exports[`Radio renders correctly 1`] = `
 <div>
   <label
-    class="css-6pplfb-boxStyles-RadioContainer"
+    class="css-1nu74li-boxStyles-RadioContainer"
     for="radio-:r2:"
   >
     <input
-      class="css-o6md8t-RadioInput"
+      class="css-kvffeu-RadioInput"
       data-testid="example"
       id="radio-:r2:"
       name="my-radio"
       type="radio"
     />
     <span
-      class="css-osss6w-boxStyles-RadioIndicator"
+      class="css-1lk90y6-boxStyles-RadioIndicator"
     >
       <span
-        class="css-erbirp-boxStyles-RadioIndicator"
+        class="css-fp31el-boxStyles-RadioIndicator"
       />
     </span>
     <span
-      class="css-1vx6497-boxStyles-RadioLabel"
+      class="css-e2jbxo-boxStyles-RadioLabel"
     >
       My Radio
     </span>

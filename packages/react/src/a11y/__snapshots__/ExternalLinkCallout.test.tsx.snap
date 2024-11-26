@@ -3,13 +3,13 @@
 exports[`ExternalLinkCallout renders correctly 1`] = `
 <div>
   <a
-    class="css-koqz57-TextLink"
+    class="css-iuqbpq-TextLink"
     data-testid="example"
     href="#"
   >
     Visit the Design System
     <span
-      class="css-avudkd-VisuallyHidden"
+      class="css-5ur8x"
     >
       , opens in a new tab
     </span>

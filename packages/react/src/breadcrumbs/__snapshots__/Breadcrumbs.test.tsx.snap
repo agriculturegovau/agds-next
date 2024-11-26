@@ -6,14 +6,14 @@ exports[`Breadcrumbs renders correctly 1`] = `
     aria-label="Breadcrumbs"
   >
     <ol
-      class="css-njrw75-boxStyles-BreadcrumbsContainer"
+      class="css-1klpc3g-boxStyles-BreadcrumbsContainer"
     >
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1s21qr-boxStyles"
       >
         <svg
           aria-hidden="true"
-          class="css-b69cs4-BreadcrumbsDivider"
+          class="css-6n0j1b-BreadcrumbsDivider"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -28,18 +28,18 @@ exports[`Breadcrumbs renders correctly 1`] = `
           />
         </svg>
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#home"
         >
           Home
         </a>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1s21qr-boxStyles"
       >
         <svg
           aria-hidden="true"
-          class="css-b69cs4-BreadcrumbsDivider"
+          class="css-6n0j1b-BreadcrumbsDivider"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -56,18 +56,18 @@ exports[`Breadcrumbs renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-label="Show all breadcrumbs"
-          class="css-eqfuua-BaseButton-boxStyles"
+          class="css-1pa4jzb-BaseButton-boxStyles"
           type="button"
         >
           …
         </button>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1s21qr-boxStyles"
       >
         <svg
           aria-hidden="true"
-          class="css-b69cs4-BreadcrumbsDivider"
+          class="css-6n0j1b-BreadcrumbsDivider"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -82,18 +82,18 @@ exports[`Breadcrumbs renders correctly 1`] = `
           />
         </svg>
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#establishments"
         >
           Establishments
         </a>
       </li>
       <li
-        class="css-v6k7t1-boxStyles"
+        class="css-1s21qr-boxStyles"
       >
         <svg
           aria-hidden="true"
-          class="css-b69cs4-BreadcrumbsDivider"
+          class="css-6n0j1b-BreadcrumbsDivider"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -109,7 +109,7 @@ exports[`Breadcrumbs renders correctly 1`] = `
         </svg>
         Applications
         <span
-          class="css-avudkd-VisuallyHidden"
+          class="css-5ur8x"
         >
            (current page)
         </span>

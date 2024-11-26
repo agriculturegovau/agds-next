@@ -3,48 +3,48 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-h6dj2w-boxStyles-TableScroller"
+    class="css-1k91kd6-boxStyles-TableScroller"
   >
     <section
       aria-label="Table Population of Australian states and territories, December 2015"
-      class="css-13n67m1-boxStyles-TableScroller"
+      class="css-93h8sf-boxStyles-TableScroller"
       tabindex="-1"
     >
       <table
-        class="css-r11i27-boxStyles-Table"
+        class="css-ubs12e-boxStyles-Table"
         id="table"
       >
         <caption
-          class="css-ryzpmp-boxStyles"
+          class="css-qex7g4-boxStyles"
         >
           Population of Australian states and territories, December 2015
         </caption>
         <thead
-          class="css-11khhn7-boxStyles"
+          class="css-1bko8hv-boxStyles"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1gy3b36-boxStyles"
+              class="css-u9t5z7-boxStyles"
               scope="col"
             >
               Location
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-d6u1ol-boxStyles"
               scope="col"
             >
               Population
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-d6u1ol-boxStyles"
               scope="col"
             >
               Change over previous year %
             </th>
             <th
-              class="css-gt3plj-boxStyles"
+              class="css-d6u1ol-boxStyles"
               scope="col"
             >
               Change over previous decade %
@@ -52,204 +52,204 @@ exports[`Table with TableCaption renders correctly 1`] = `
           </tr>
         </thead>
         <tbody
-          class="css-8u32cd-boxStyles"
+          class="css-2ufd0s-boxStyles"
         >
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               New South Wales
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               7,670,700
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               3.1%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               12.9%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Victoria
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               5,996,400
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               2.5%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               9.3%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Queensland
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               4,808,800
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               1.7%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               13.3%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Western Australia
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               2,603,900
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               2.3%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               11.6%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               South Australia
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               1,702,800
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               2.0%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               6.8%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Tasmania
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               517,400
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               4%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               5.3%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Northern Territory
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               244,400
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               1.2%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               4.5%
             </td>
           </tr>
           <tr
-            class="css-1tx0oac-TableRow"
+            class="css-1dytbgo-TableRow"
           >
             <th
-              class="css-1qlct29-boxStyles-TableCell"
+              class="css-10odo2b-boxStyles-TableCell"
               scope="row"
             >
               Australian Capital Territory
             </th>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               393,000
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               2.4%
             </td>
             <td
-              class="css-18s06pf-boxStyles-TableCell"
+              class="css-by6qje-boxStyles-TableCell"
             >
               9.6%
             </td>
@@ -257,24 +257,24 @@ exports[`Table with TableCaption renders correctly 1`] = `
         </tbody>
       </table>
       <div
-        class="css-1sekwdr-boxStyles-Shadow"
+        class="css-1mypnb8-boxStyles-Shadow"
       />
       <div
-        class="css-6rjxly-boxStyles-Shadow"
+        class="css-1nyx56p-boxStyles-Shadow"
       />
     </section>
     <div
-      class="css-1bk2ogi-boxStyles-TableScroller"
+      class="css-1cyp40n-boxStyles-TableScroller"
     >
       <button
         aria-hidden="true"
-        class="css-jwqotw-boxStyles-TableScroller"
+        class="css-1hxqm24-boxStyles-TableScroller"
         tabindex="-1"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="css-i17igh-Icon"
+          class="css-y3fm1m"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -291,12 +291,12 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="css-rr47rr-boxStyles-TableScroller"
+        class="css-57gow7-boxStyles-TableScroller"
         tabindex="-1"
       >
         <button
           aria-hidden="true"
-          class="css-k24nkr-boxStyles-TableScroller"
+          class="css-hptjcm-boxStyles-TableScroller"
           style="left: 0px; width: 100%;"
           tabindex="-1"
           type="button"
@@ -304,13 +304,13 @@ exports[`Table with TableCaption renders correctly 1`] = `
       </div>
       <button
         aria-hidden="true"
-        class="css-jwqotw-boxStyles-TableScroller"
+        class="css-yvyr18-boxStyles-TableScroller"
         tabindex="-1"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="css-i17igh-Icon"
+          class="css-y3fm1m"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

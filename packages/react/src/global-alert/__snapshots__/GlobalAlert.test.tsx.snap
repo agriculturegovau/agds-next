@@ -4,15 +4,15 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1v0vzf6-boxStyles-GlobalAlert"
+    class="css-19xrst2-boxStyles-GlobalAlert"
   >
     <div
-      class="css-10khfcq-boxStyles-GlobalAlert"
+      class="css-1ci2a8a-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-fyxrud-Icon"
+        class="css-1z0c8dw"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -30,21 +30,21 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-13n9wj6-boxStyles-GlobalAlert"
+      class="css-1tr1dl8-boxStyles-GlobalAlert"
     >
       <div
-        class="css-1k241lf-boxStyles"
+        class="css-urlgfw-boxStyles"
       >
         <h2
-          class="css-1qnzlr7-boxStyles-GlobalAlert"
+          class="css-1jbqq2-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-aogfm6-boxStyles-GlobalAlert"
         >
           <p
-            class="css-dbscsh-boxStyles"
+            class="css-1e881ou-boxStyles"
           >
             Alert description.
           </p>
@@ -52,12 +52,12 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
       </div>
       <button
         aria-label="Close"
-        class="css-12jvszj-BaseButton-GlobalAlertCloseButton"
+        class="css-1whj3q2-BaseButton"
         type="button"
       >
         <span>
           <span
-            class="css-oobk4c-Button"
+            class="css-ws37v0-Button"
           >
             Close
           </span>
@@ -67,7 +67,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-sbsftc-Button"
+          class="css-1yuy9mh-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -100,15 +100,15 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-h8illz-boxStyles-GlobalAlert"
+    class="css-15vkil-boxStyles-GlobalAlert"
   >
     <div
-      class="css-vh758l-boxStyles-GlobalAlert"
+      class="css-rz9bqs-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
         aria-label="Information"
-        class="css-fyxrud-Icon"
+        class="css-1z0c8dw"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -126,21 +126,21 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-13n9wj6-boxStyles-GlobalAlert"
+      class="css-1tr1dl8-boxStyles-GlobalAlert"
     >
       <div
-        class="css-1k241lf-boxStyles"
+        class="css-urlgfw-boxStyles"
       >
         <h2
-          class="css-1drfnkh-boxStyles-GlobalAlert"
+          class="css-zt9ipa-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-aogfm6-boxStyles-GlobalAlert"
         >
           <p
-            class="css-dbscsh-boxStyles"
+            class="css-1e881ou-boxStyles"
           >
             Alert description.
           </p>
@@ -155,15 +155,15 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
 <div>
   <section
     aria-label="Alert title"
-    class="css-1v0vzf6-boxStyles-GlobalAlert"
+    class="css-19xrst2-boxStyles-GlobalAlert"
   >
     <div
-      class="css-10khfcq-boxStyles-GlobalAlert"
+      class="css-1ci2a8a-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
         aria-label="Warning"
-        class="css-fyxrud-Icon"
+        class="css-1z0c8dw"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -181,21 +181,21 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-13n9wj6-boxStyles-GlobalAlert"
+      class="css-1tr1dl8-boxStyles-GlobalAlert"
     >
       <div
-        class="css-1k241lf-boxStyles"
+        class="css-urlgfw-boxStyles"
       >
         <h2
-          class="css-1drfnkh-boxStyles-GlobalAlert"
+          class="css-zt9ipa-boxStyles-GlobalAlert"
         >
           Alert title
         </h2>
         <div
-          class="css-1inkcod-boxStyles-GlobalAlert"
+          class="css-aogfm6-boxStyles-GlobalAlert"
         >
           <p
-            class="css-dbscsh-boxStyles"
+            class="css-1e881ou-boxStyles"
           >
             Alert description.
           </p>

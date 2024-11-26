@@ -3,51 +3,51 @@
 exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
     id="control-group-:r0:"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:r2:"
           >
             <input
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-a"
               id="checkbox-:r2:"
               name=":r1:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -63,29 +63,29 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:r3:"
           >
             <input
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-b"
               id="checkbox-:r3:"
               name=":r1:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -101,29 +101,29 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:r4:"
           >
             <input
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-c"
               id="checkbox-:r4:"
               name=":r1:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -139,29 +139,29 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:r5:"
           >
             <input
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-d"
               id="checkbox-:r5:"
               name=":r1:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -177,7 +177,7 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option D
             </span>
@@ -192,47 +192,47 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1w2w8hl-boxStyles-FieldContainer"
     id="control-group-:ri:"
   >
     <fieldset
       aria-describedby="control-group-:ri:-message control-group-:ri:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <span
-          class="css-1jndov8-boxStyles"
+          class="css-16uykm5-boxStyles"
           id="control-group-:ri:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1f6i6yx-boxStyles"
         >
           <div
-            class="css-1ldvxqr-boxStyles"
+            class="css-1ubp51x-boxStyles"
           >
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-rg60c6-FieldMessage"
+              class="css-jlrijh-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -250,35 +250,35 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-o7cidz-boxStyles"
+            class="css-1id9gi5-boxStyles"
             id="control-group-:ri:-message"
           >
             Error message
           </span>
         </div>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rk:"
           >
             <input
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-a"
               id="checkbox-:rk:"
               name=":rj:"
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-yjim6s-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -294,31 +294,31 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rl:"
           >
             <input
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-b"
               id="checkbox-:rl:"
               name=":rj:"
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-yjim6s-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -334,31 +334,31 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rm:"
           >
             <input
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-c"
               id="checkbox-:rm:"
               name=":rj:"
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-yjim6s-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -374,31 +374,31 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rn:"
           >
             <input
               aria-describedby="control-group-:ri:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-d"
               id="checkbox-:rn:"
               name=":rj:"
               type="checkbox"
             />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-yjim6s-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -414,7 +414,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option D
             </span>
@@ -429,52 +429,52 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
     id="control-group-:rc:"
   >
     <fieldset
       aria-describedby="control-group-:rc:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <span
-          class="css-1jndov8-boxStyles"
+          class="css-16uykm5-boxStyles"
           id="control-group-:rc:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:re:"
           >
             <input
               aria-required="true"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-a"
               id="checkbox-:re:"
               name=":rd:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -490,29 +490,29 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rf:"
           >
             <input
               aria-required="true"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-b"
               id="checkbox-:rf:"
               name=":rd:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -528,29 +528,29 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rg:"
           >
             <input
               aria-required="true"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-c"
               id="checkbox-:rg:"
               name=":rd:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -566,29 +566,29 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-hp3wbe-boxStyles-CheckboxContainer"
+            class="css-72c78u-boxStyles-CheckboxContainer"
             for="checkbox-:rh:"
           >
             <input
               aria-required="true"
-              class="css-142kh0r-CheckboxInput"
+              class="css-1ivkch4-CheckboxInput"
               data-testid="option-d"
               id="checkbox-:rh:"
               name=":rd:"
               type="checkbox"
             />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-unmcxw-boxStyles-CheckboxIndicator"
             >
               <svg
                 aria-hidden="true"
-                class="css-lewdp2-Icon"
+                class="css-aw3b4u"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -604,7 +604,7 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
               </svg>
             </span>
             <span
-              class="css-1f6xqkn-boxStyles-CheckboxLabel"
+              class="css-2ewith-boxStyles-CheckboxLabel"
             >
               Option D
             </span>
@@ -619,129 +619,129 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
 exports[`ControlGroup  With Radios renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
     id="control-group-:r14:"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r16:"
           >
             <input
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-a"
               id="radio-:r16:"
               name=":r15:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r17:"
           >
             <input
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-b"
               id="radio-:r17:"
               name=":r15:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r18:"
           >
             <input
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-c"
               id="radio-:r18:"
               name=":r15:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r19:"
           >
             <input
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-d"
               id="radio-:r19:"
               name=":r15:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option D
             </span>
@@ -756,47 +756,47 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
 exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1w2w8hl-boxStyles-FieldContainer"
     id="control-group-:r1m:"
   >
     <fieldset
       aria-describedby="control-group-:r1m:-message control-group-:r1m:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <span
-          class="css-1jndov8-boxStyles"
+          class="css-16uykm5-boxStyles"
           id="control-group-:r1m:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1f6i6yx-boxStyles"
         >
           <div
-            class="css-1ldvxqr-boxStyles"
+            class="css-1ubp51x-boxStyles"
           >
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-rg60c6-FieldMessage"
+              class="css-jlrijh-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -814,119 +814,119 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             </svg>
           </div>
           <span
-            class="css-o7cidz-boxStyles"
+            class="css-1id9gi5-boxStyles"
             id="control-group-:r1m:-message"
           >
             Error message
           </span>
         </div>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1o:"
           >
             <input
               aria-describedby="control-group-:r1m:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-a"
               id="radio-:r1o:"
               name=":r1n:"
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1aaj9bu-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1p:"
           >
             <input
               aria-describedby="control-group-:r1m:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-b"
               id="radio-:r1p:"
               name=":r1n:"
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1aaj9bu-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1q:"
           >
             <input
               aria-describedby="control-group-:r1m:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-c"
               id="radio-:r1q:"
               name=":r1n:"
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1aaj9bu-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1r:"
           >
             <input
               aria-describedby="control-group-:r1m:-message"
               aria-invalid="true"
               aria-required="false"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-d"
               id="radio-:r1r:"
               name=":r1n:"
               type="radio"
             />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1aaj9bu-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option D
             </span>
@@ -941,130 +941,130 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 exports[`ControlGroup  With Radios renders correctly when required 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
     id="control-group-:r1g:"
   >
     <fieldset
       aria-describedby="control-group-:r1g:-hint"
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-79i25n-boxStyles"
+        class="css-12ek51e-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Control group label
         </span>
       </legend>
       <div
-        class="css-1ypnbyi-boxStyles-ControlGroup"
+        class="css-112w6sq-boxStyles-ControlGroup"
       >
         <span
-          class="css-1jndov8-boxStyles"
+          class="css-16uykm5-boxStyles"
           id="control-group-:r1g:-hint"
         >
           Hint text
         </span>
         <div
-          class="css-1lk80kr-boxStyles"
+          class="css-wd0pv0-boxStyles"
         >
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1i:"
           >
             <input
               aria-required="true"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-a"
               id="radio-:r1i:"
               name=":r1h:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option A
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1j:"
           >
             <input
               aria-required="true"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-b"
               id="radio-:r1j:"
               name=":r1h:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option B
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1k:"
           >
             <input
               aria-required="true"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-c"
               id="radio-:r1k:"
               name=":r1h:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option C
             </span>
           </label>
           <label
-            class="css-6pplfb-boxStyles-RadioContainer"
+            class="css-1nu74li-boxStyles-RadioContainer"
             for="radio-:r1l:"
           >
             <input
               aria-required="true"
-              class="css-o6md8t-RadioInput"
+              class="css-kvffeu-RadioInput"
               data-testid="option-d"
               id="radio-:r1l:"
               name=":r1h:"
               type="radio"
             />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1lk90y6-boxStyles-RadioIndicator"
             >
               <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+                class="css-fp31el-boxStyles-RadioIndicator"
               />
             </span>
             <span
-              class="css-1vx6497-boxStyles-RadioLabel"
+              class="css-e2jbxo-boxStyles-RadioLabel"
             >
               Option D
             </span>

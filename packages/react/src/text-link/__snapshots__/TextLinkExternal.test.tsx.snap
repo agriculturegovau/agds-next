@@ -3,7 +3,7 @@
 exports[`TextLinkExternal renders correctly 1`] = `
 <div>
   <a
-    class="css-koqz57-TextLink"
+    class="css-iuqbpq-TextLink"
     data-testid="example"
     href="https://design-system.agriculture.gov.au"
     rel="noopener"
@@ -11,13 +11,13 @@ exports[`TextLinkExternal renders correctly 1`] = `
   >
     External link
     <span
-      class="css-avudkd-VisuallyHidden"
+      class="css-5ur8x"
     >
       , opens in a new tab
     </span>
     <svg
       aria-hidden="true"
-      class="css-1e3wj1s-TextLinkExternal"
+      class="css-vfme68-TextLinkExternal"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

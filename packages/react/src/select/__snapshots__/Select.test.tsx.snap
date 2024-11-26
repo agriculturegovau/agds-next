@@ -3,26 +3,26 @@
 exports[`Select Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1bg5d3h-SelectContainer"
+      class="css-5wz2rp-SelectContainer"
     >
       <select
         aria-invalid="false"
@@ -48,7 +48,7 @@ exports[`Select Basic renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1d43ke6-SelectIcon"
+        class="css-x2hign-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -65,7 +65,7 @@ exports[`Select Basic renders correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -74,26 +74,26 @@ exports[`Select Basic renders correctly 1`] = `
 exports[`Select Grouped options renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1bg5d3h-SelectContainer"
+      class="css-5wz2rp-SelectContainer"
     >
       <select
         aria-invalid="false"
@@ -142,7 +142,7 @@ exports[`Select Grouped options renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1d43ke6-SelectIcon"
+        class="css-x2hign-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -159,7 +159,7 @@ exports[`Select Grouped options renders correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -168,34 +168,34 @@ exports[`Select Grouped options renders correctly 1`] = `
 exports[`Select Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1w2w8hl-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r6:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1xkbxzi-boxStyles"
+      class="css-1f6i6yx-boxStyles"
     >
       <div
-        class="css-1ldvxqr-boxStyles"
+        class="css-1ubp51x-boxStyles"
       >
         <svg
           aria-hidden="false"
           aria-label="Error"
-          class="css-rg60c6-FieldMessage"
+          class="css-jlrijh-FieldMessage"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -213,14 +213,14 @@ exports[`Select Invalid renders correctly 1`] = `
         </svg>
       </div>
       <span
-        class="css-o7cidz-boxStyles"
+        class="css-1id9gi5-boxStyles"
         id="field-:r6:-message"
       >
         This field is required
       </span>
     </div>
     <div
-      class="css-1bg5d3h-SelectContainer"
+      class="css-5wz2rp-SelectContainer"
     >
       <select
         aria-describedby="field-:r6:-message"
@@ -247,7 +247,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1d43ke6-SelectIcon"
+        class="css-x2hign-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -264,7 +264,7 @@ exports[`Select Invalid renders correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -273,26 +273,26 @@ exports[`Select Invalid renders correctly 1`] = `
 exports[`Select With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r4:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Example
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <div
-      class="css-1bg5d3h-SelectContainer"
+      class="css-5wz2rp-SelectContainer"
     >
       <select
         aria-invalid="false"
@@ -318,7 +318,7 @@ exports[`Select With hint renders correctly 1`] = `
       </select>
       <svg
         aria-hidden="true"
-        class="css-1d43ke6-SelectIcon"
+        class="css-x2hign-SelectIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -335,7 +335,7 @@ exports[`Select With hint renders correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>

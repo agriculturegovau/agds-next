@@ -3,39 +3,39 @@
 exports[`GroupedFields invalid: can render an invalid state when both fields are invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-1w2w8hl-boxStyles-FieldContainer"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-sq8uxm-boxStyles"
+        class="css-42aezd-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Grouped fields
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1imrrw5-boxStyles-GroupedFields"
+        class="css-fpkjy-boxStyles-GroupedFields"
       >
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1f6i6yx-boxStyles"
         >
           <div
-            class="css-1ldvxqr-boxStyles"
+            class="css-1ubp51x-boxStyles"
           >
             <svg
               aria-hidden="false"
               aria-label="Error"
-              class="css-rg60c6-FieldMessage"
+              class="css-jlrijh-FieldMessage"
               clip-rule="evenodd"
               fill-rule="evenodd"
               focusable="false"
@@ -53,29 +53,29 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             </svg>
           </div>
           <span
-            class="css-o7cidz-boxStyles"
+            class="css-1id9gi5-boxStyles"
             id="grouped-fields-:r6:-message"
           >
             Enter a valid value
           </span>
         </div>
         <div
-          class="css-72257o-boxStyles"
+          class="css-ktq773-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="field-:r7:"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 TextInput
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (optional)
@@ -91,30 +91,30 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             />
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="field-:r8:"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 Select
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (optional)
               </span>
             </label>
             <div
-              class="css-1bg5d3h-SelectContainer"
+              class="css-5wz2rp-SelectContainer"
             >
               <select
                 aria-describedby="grouped-fields-:r6:-message"
@@ -146,7 +146,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               </select>
               <svg
                 aria-hidden="true"
-                class="css-1d43ke6-SelectIcon"
+                class="css-x2hign-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -163,7 +163,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             </div>
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
         </div>
@@ -176,46 +176,46 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
 exports[`GroupedFields renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <fieldset
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
     >
       <legend
-        class="css-sq8uxm-boxStyles"
+        class="css-42aezd-boxStyles"
       >
         <span
-          class="css-1jywj6f-boxStyles"
+          class="css-1sf8c0k-boxStyles"
         >
           Grouped fields
         </span>
         <span
-          class="css-axuon-boxStyles"
+          class="css-1ru6lht-boxStyles"
         >
            
           (optional)
         </span>
       </legend>
       <div
-        class="css-1imrrw5-boxStyles-GroupedFields"
+        class="css-fpkjy-boxStyles-GroupedFields"
       >
         <div
-          class="css-72257o-boxStyles"
+          class="css-ktq773-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="field-:r1:"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 TextInput
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (optional)
@@ -230,30 +230,30 @@ exports[`GroupedFields renders correctly 1`] = `
             />
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-2ohkpz-boxStyles-FieldContainer"
           >
             <label
-              class="css-79i25n-boxStyles"
+              class="css-12ek51e-boxStyles"
               for="field-:r2:"
             >
               <span
-                class="css-1jywj6f-boxStyles"
+                class="css-1sf8c0k-boxStyles"
               >
                 Select
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                  
                 (optional)
               </span>
             </label>
             <div
-              class="css-1bg5d3h-SelectContainer"
+              class="css-5wz2rp-SelectContainer"
             >
               <select
                 aria-invalid="false"
@@ -284,7 +284,7 @@ exports[`GroupedFields renders correctly 1`] = `
               </select>
               <svg
                 aria-hidden="true"
-                class="css-1d43ke6-SelectIcon"
+                class="css-x2hign-SelectIcon"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -301,7 +301,7 @@ exports[`GroupedFields renders correctly 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="css-9l8g4f-Field"
+              class="css-1r6wwux-Field"
             />
           </div>
         </div>

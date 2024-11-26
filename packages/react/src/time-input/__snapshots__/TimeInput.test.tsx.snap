@@ -3,19 +3,19 @@
 exports[`TimeInput renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r0:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Time
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (e.g. 9:30 pm) (optional)
@@ -31,7 +31,7 @@ exports[`TimeInput renders correctly 1`] = `
     />
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>
@@ -40,19 +40,19 @@ exports[`TimeInput renders correctly 1`] = `
 exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="field-:r2:"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Time
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (e.g. 9:30 pm) (optional)
@@ -68,7 +68,7 @@ exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
     />
     <div
       aria-hidden="true"
-      class="css-9l8g4f-Field"
+      class="css-1r6wwux-Field"
     />
   </div>
 </div>

@@ -13,7 +13,7 @@ exports[`Calendar Range renders correctly 1`] = `
     <div
       aria-label="Choose date range"
       aria-modal="true"
-      class="css-5x5w6f-boxStyles-CalendarRangeContainer"
+      class="css-icsjkn-boxStyles-CalendarRangeContainer"
       role="dialog"
     >
       <div
@@ -35,7 +35,7 @@ exports[`Calendar Range renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1g6fn8w-Icon"
+                  class="css-dxj3vv"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -53,26 +53,26 @@ exports[`Calendar Range renders correctly 1`] = `
               <h2
                 aria-atomic="true"
                 aria-live="polite"
-                class="css-3ucdhc-CaptionLabel"
+                class="css-5ur8x"
                 id="react-day-picker-4"
               >
                 June 2023
               </h2>
               <div
-                class="css-v0gr9g-boxStyles"
+                class="css-1nb2n0p-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"
                 >
                   <label
-                    class="css-g8kyc5-YearMonthSelect"
+                    class="css-5ur8x"
                     for="calendar-:r4:-select"
                   >
                     Month
                   </label>
                   <select
                     autocomplete="off"
-                    class="css-lbmsza-boxStyles-YearMonthSelect"
+                    class="css-a0n2vt-boxStyles-YearMonthSelect"
                     id="calendar-:r4:-select"
                   >
                     <option
@@ -138,7 +138,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   </select>
                   <svg
                     aria-hidden="true"
-                    class="css-j57zs3-YearMonthSelect"
+                    class="css-1ospa9o-YearMonthSelect"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -157,14 +157,14 @@ exports[`Calendar Range renders correctly 1`] = `
                   class="css-8a7wrr-YearMonthSelect"
                 >
                   <label
-                    class="css-g8kyc5-YearMonthSelect"
+                    class="css-5ur8x"
                     for="calendar-:r5:-select"
                   >
                     Year
                   </label>
                   <select
                     autocomplete="off"
-                    class="css-lbmsza-boxStyles-YearMonthSelect"
+                    class="css-a0n2vt-boxStyles-YearMonthSelect"
                     id="calendar-:r5:-select"
                   >
                     <option
@@ -275,7 +275,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   </select>
                   <svg
                     aria-hidden="true"
-                    class="css-j57zs3-YearMonthSelect"
+                    class="css-1ospa9o-YearMonthSelect"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -298,7 +298,7 @@ exports[`Calendar Range renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1g6fn8w-Icon"
+                  class="css-dxj3vv"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -799,7 +799,7 @@ exports[`Calendar Single renders correctly 1`] = `
     <div
       aria-label="Choose date"
       aria-modal="true"
-      class="css-bq5e3r-boxStyles-CalendarContainer"
+      class="css-1a9ezze-boxStyles"
       role="dialog"
     >
       <div
@@ -821,7 +821,7 @@ exports[`Calendar Single renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1g6fn8w-Icon"
+                  class="css-dxj3vv"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -839,26 +839,26 @@ exports[`Calendar Single renders correctly 1`] = `
               <h2
                 aria-atomic="true"
                 aria-live="polite"
-                class="css-3ucdhc-CaptionLabel"
+                class="css-5ur8x"
                 id="react-day-picker-1"
               >
                 June 2023
               </h2>
               <div
-                class="css-v0gr9g-boxStyles"
+                class="css-1nb2n0p-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"
                 >
                   <label
-                    class="css-g8kyc5-YearMonthSelect"
+                    class="css-5ur8x"
                     for="calendar-:r0:-select"
                   >
                     Month
                   </label>
                   <select
                     autocomplete="off"
-                    class="css-lbmsza-boxStyles-YearMonthSelect"
+                    class="css-a0n2vt-boxStyles-YearMonthSelect"
                     id="calendar-:r0:-select"
                   >
                     <option
@@ -924,7 +924,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   </select>
                   <svg
                     aria-hidden="true"
-                    class="css-j57zs3-YearMonthSelect"
+                    class="css-1ospa9o-YearMonthSelect"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -943,14 +943,14 @@ exports[`Calendar Single renders correctly 1`] = `
                   class="css-8a7wrr-YearMonthSelect"
                 >
                   <label
-                    class="css-g8kyc5-YearMonthSelect"
+                    class="css-5ur8x"
                     for="calendar-:r1:-select"
                   >
                     Year
                   </label>
                   <select
                     autocomplete="off"
-                    class="css-lbmsza-boxStyles-YearMonthSelect"
+                    class="css-a0n2vt-boxStyles-YearMonthSelect"
                     id="calendar-:r1:-select"
                   >
                     <option
@@ -1061,7 +1061,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   </select>
                   <svg
                     aria-hidden="true"
-                    class="css-j57zs3-YearMonthSelect"
+                    class="css-1ospa9o-YearMonthSelect"
                     clip-rule="evenodd"
                     fill-rule="evenodd"
                     focusable="false"
@@ -1084,7 +1084,7 @@ exports[`Calendar Single renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="css-1g6fn8w-Icon"
+                  class="css-dxj3vv"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"

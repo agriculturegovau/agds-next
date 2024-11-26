@@ -3,13 +3,13 @@
 exports[`ContentBleed renders correctly 1`] = `
 <div>
   <div
-    class="css-ou39vu-boxStyles"
+    class="css-uq5mes-boxStyles"
   >
     <div
-      class="css-1rhmzip-boxStyles"
+      class="css-1dasgjt-boxStyles"
     >
       <div
-        class="css-z8uqwp-ContentBleed"
+        class="css-85tf4a-ContentBleed"
       >
         <p>
           Content bleed content

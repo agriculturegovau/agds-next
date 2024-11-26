@@ -3,23 +3,23 @@
 exports[`Header renders correctly 1`] = `
 <div>
   <header
-    class="css-19w0tmx-boxStyles"
+    class="css-1we53fg-boxStyles"
   >
     <div
-      class="css-164ldz1-boxStyles"
+      class="css-5ptf1o-boxStyles"
     >
       <div
-        class="css-og54d0-boxStyles-Columns"
+        class="css-1c3gs3o-boxStyles"
       >
         <div
-          class="css-bmsj3y-boxStyles-Column"
+          class="css-u66p0y-boxStyles"
         >
           <a
-            class="css-e5wxhr-boxStyles-HeaderBrand"
+            class="css-1m2bh3n-boxStyles-HeaderBrand"
             href="/"
           >
             <div
-              class="css-1hjsdve-boxStyles-HeaderBrand"
+              class="css-94skek-boxStyles-HeaderBrand"
             >
               <svg
                 aria-label="Australian Government, Department of Agriculture, Fisheries and Forestry"
@@ -53,22 +53,22 @@ exports[`Header renders correctly 1`] = `
               </svg>
             </div>
             <div
-              class="css-1gcrp4-boxStyles-HeaderBrand"
+              class="css-12hrrnx-boxStyles"
             />
             <div
-              class="css-1auunfi-boxStyles"
+              class="css-539w7l-boxStyles"
             >
               <div
-                class="css-1qp4da6-boxStyles"
+                class="css-1y8fq08-boxStyles"
               >
                 <span
-                  class="css-g6sycc-boxStyles"
+                  class="css-1jxceds-boxStyles"
                 >
                   Export Service
                 </span>
               </div>
               <span
-                class="css-1dsy63g-boxStyles"
+                class="css-gj7inm-boxStyles"
               >
                 Supporting Australian agricultural exports
               </span>

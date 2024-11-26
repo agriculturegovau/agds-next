@@ -3,26 +3,26 @@
 exports[`SummaryList renders correctly 1`] = `
 <div>
   <dl
-    class="css-11haoc9-boxStyles"
+    class="css-1ucmwa8-boxStyles"
   >
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1ei1uv2-boxStyles"
     >
       <dt
-        class="css-1w3kdnx-boxStyles"
+        class="css-flri9z-boxStyles"
       >
         First name
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-5zqfvn-boxStyles"
       >
         Will
       </dd>
       <dd
-        class="css-vspen0-boxStyles"
+        class="css-2zjl02-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#"
         >
           Change
@@ -30,23 +30,23 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1ei1uv2-boxStyles"
     >
       <dt
-        class="css-1w3kdnx-boxStyles"
+        class="css-flri9z-boxStyles"
       >
         Last name
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-5zqfvn-boxStyles"
       >
         Power
       </dd>
       <dd
-        class="css-vspen0-boxStyles"
+        class="css-2zjl02-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#"
         >
           Change
@@ -54,25 +54,25 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1ei1uv2-boxStyles"
     >
       <dt
-        class="css-1w3kdnx-boxStyles"
+        class="css-flri9z-boxStyles"
       >
         Contact information
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-5zqfvn-boxStyles"
       >
         +61 9912 3456
         <br />
         will.power@example.com
       </dd>
       <dd
-        class="css-vspen0-boxStyles"
+        class="css-2zjl02-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#"
         >
           Change
@@ -80,23 +80,23 @@ exports[`SummaryList renders correctly 1`] = `
       </dd>
     </div>
     <div
-      class="css-balq7b-boxStyles"
+      class="css-1ei1uv2-boxStyles"
     >
       <dt
-        class="css-1w3kdnx-boxStyles"
+        class="css-flri9z-boxStyles"
       >
         Date of birth
       </dt>
       <dd
-        class="css-6wwdos-boxStyles"
+        class="css-5zqfvn-boxStyles"
       >
         09/06/1995
       </dd>
       <dd
-        class="css-vspen0-boxStyles"
+        class="css-2zjl02-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-iuqbpq-TextLink"
           href="#"
         >
           Change

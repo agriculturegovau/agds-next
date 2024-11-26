@@ -3,12 +3,12 @@
 exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-1l9z7rn-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Error"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -29,7 +29,7 @@ exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -40,12 +40,12 @@ exports[`StatusBadge Legacy weight: regular tone: error renders correctly 1`] = 
 exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-eej1vb-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Information"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -60,7 +60,7 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -71,13 +71,13 @@ exports[`StatusBadge Legacy weight: regular tone: info renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: regular tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-1o2lw3g-boxStyles-StatusBadge"
   >
     <div
-      class="css-1fa9oau-boxStyles-icon"
+      class="css-1970s7q-boxStyles-icon"
     />
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -88,12 +88,12 @@ exports[`StatusBadge Legacy weight: regular tone: neutral renders correctly 1`] 
 exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-pkw6ir-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Success"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -111,7 +111,7 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -122,12 +122,12 @@ exports[`StatusBadge Legacy weight: regular tone: success renders correctly 1`] 
 exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-n2vt3-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Warning"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -142,7 +142,7 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -153,12 +153,12 @@ exports[`StatusBadge Legacy weight: regular tone: warning renders correctly 1`] 
 exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-1aij81n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Error"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -179,7 +179,7 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -190,12 +190,12 @@ exports[`StatusBadge Legacy weight: subtle tone: error renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-1aij81n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Information"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -210,7 +210,7 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -221,13 +221,13 @@ exports[`StatusBadge Legacy weight: subtle tone: info renders correctly 1`] = `
 exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-1aij81n-boxStyles-StatusBadge"
   >
     <div
-      class="css-1fa9oau-boxStyles-icon"
+      class="css-1970s7q-boxStyles-icon"
     />
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -238,12 +238,12 @@ exports[`StatusBadge Legacy weight: subtle tone: neutral renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-1aij81n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Success"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -261,7 +261,7 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -272,12 +272,12 @@ exports[`StatusBadge Legacy weight: subtle tone: success renders correctly 1`] =
 exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-1aij81n-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Warning"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -292,7 +292,7 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -303,12 +303,12 @@ exports[`StatusBadge Legacy weight: subtle tone: warning renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: cannot start, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -323,7 +323,7 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -334,12 +334,12 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
 exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-wxwqtc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, high emphasis"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -356,7 +356,7 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -367,12 +367,12 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -387,7 +387,7 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -398,12 +398,12 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
 exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1kwau38-boxStyles-StatusBadge"
+    class="css-wxwqtc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, medium emphasis"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -424,7 +424,7 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -435,12 +435,12 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: in progress, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -470,7 +470,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -481,12 +481,12 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
 exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-1d88t7v-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, high emphasis"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -503,7 +503,7 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -514,12 +514,12 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
 exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -534,7 +534,7 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -545,12 +545,12 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
 exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-d0fvsj-boxStyles-StatusBadge"
+    class="css-1d88t7v-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, medium emphasis"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -565,7 +565,7 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -576,12 +576,12 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: not started, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -597,7 +597,7 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -608,12 +608,12 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
 exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: paused, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -628,7 +628,7 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -639,12 +639,12 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
 exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-pmgwwn-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, high emphasis"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -661,7 +661,7 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -672,12 +672,12 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -695,7 +695,7 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -706,12 +706,12 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1yao3c9-boxStyles-StatusBadge"
+    class="css-pmgwwn-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, medium emphasis"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -729,7 +729,7 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -740,12 +740,12 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
 exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: help, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -760,7 +760,7 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -771,12 +771,12 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-1qelfgz-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, high emphasis"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -793,7 +793,7 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -804,12 +804,12 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
 exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1o4iv6m-boxStyles-StatusBadge"
+    class="css-10ismoc-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -824,7 +824,7 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -835,12 +835,12 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
 exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1t5js0n-boxStyles-StatusBadge"
+    class="css-1qelfgz-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, medium emphasis"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -855,7 +855,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -866,12 +866,12 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
 exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: cannot start, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -886,7 +886,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -897,12 +897,12 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
 exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, high emphasis"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -919,7 +919,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -930,12 +930,12 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -950,7 +950,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -961,12 +961,12 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: error, medium emphasis"
-      class="css-1w78ld0-Icon"
+      class="css-1tf303h"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -987,7 +987,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -998,12 +998,12 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: in progress, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1033,7 +1033,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1044,12 +1044,12 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, high emphasis"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1066,7 +1066,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1077,12 +1077,12 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1097,7 +1097,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1108,12 +1108,12 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
 exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: information, medium emphasis"
-      class="css-1fy6eq9-Icon"
+      class="css-15wi67x"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1128,7 +1128,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1139,12 +1139,12 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: not started, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1160,7 +1160,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1171,12 +1171,12 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: paused, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1191,7 +1191,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1202,12 +1202,12 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
 exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, high emphasis"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1224,7 +1224,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1235,12 +1235,12 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1258,7 +1258,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1269,12 +1269,12 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: success, medium emphasis"
-      class="css-vvfklf-Icon"
+      class="css-12t0psr"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1292,7 +1292,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1303,12 +1303,12 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
 exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: help, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1323,7 +1323,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1334,12 +1334,12 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, high emphasis"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1356,7 +1356,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1367,12 +1367,12 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
 exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, low emphasis"
-      class="css-16t9tz1-Icon"
+      class="css-1dim7kp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1387,7 +1387,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>
@@ -1398,12 +1398,12 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
 exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`] = `
 <div>
   <div
-    class="css-1ncy008-boxStyles-StatusBadge"
+    class="css-126p061-boxStyles-StatusBadge"
   >
     <svg
       aria-hidden="false"
       aria-label="Status: warning, medium emphasis"
-      class="css-15hefj6-Icon"
+      class="css-1gw1uzm"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -1418,7 +1418,7 @@ exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`
       />
     </svg>
     <span
-      class="css-165srpg-boxStyles-StatusBadge"
+      class="css-18rxx6y-boxStyles-StatusBadge"
     >
       Example
     </span>

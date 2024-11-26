@@ -6,7 +6,7 @@ exports[`Modal renders correctly 1`] = `
     aria-hidden="true"
   />
   <div
-    class="css-cikjj0-ModalCover"
+    class="css-1f83kkf-ModalCover"
   >
     <div
       data-focus-guard="true"
@@ -19,17 +19,17 @@ exports[`Modal renders correctly 1`] = `
       <div
         aria-labelledby="modal-:r0:-title"
         aria-modal="true"
-        class="css-1y0y207-boxStyles-ModalDialog"
+        class="css-1036dv8-boxStyles-ModalDialog"
         role="dialog"
       >
         <button
           aria-label="Close modal"
-          class="css-v8887w-BaseButton-ModalDialog"
+          class="css-dqga8w-BaseButton-ModalDialog"
           type="button"
         >
           <span>
             <span
-              class="css-oobk4c-Button"
+              class="css-ws37v0-Button"
             >
               Close
             </span>
@@ -39,7 +39,7 @@ exports[`Modal renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-sbsftc-Button"
+            class="css-1yuy9mh-Button"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -64,7 +64,7 @@ exports[`Modal renders correctly 1`] = `
           </svg>
         </button>
         <h2
-          class="css-lltnmr-boxStyles"
+          class="css-1060gee-boxStyles"
           data-autofocus="true"
           id="modal-:r0:-title"
           tabindex="-1"
@@ -72,24 +72,24 @@ exports[`Modal renders correctly 1`] = `
           Modal title
         </h2>
         <div
-          class="css-79i25n-boxStyles"
+          class="css-12ek51e-boxStyles"
         >
           <p
-            class="css-dbscsh-boxStyles"
+            class="css-1e881ou-boxStyles"
           >
             This is the Modal Body paragraph.
           </p>
         </div>
         <div
-          class="css-1kzq3kl-boxStyles-ModalDialog"
+          class="css-xd021b-boxStyles-ModalDialog"
         >
           <button
-            class="css-1xaxpdg-BaseButton-Button"
+            class="css-1pxav7h-BaseButton"
             type="button"
           >
             <span>
               <span
-                class="css-oobk4c-Button"
+                class="css-ws37v0-Button"
               >
                 Close modal
               </span>

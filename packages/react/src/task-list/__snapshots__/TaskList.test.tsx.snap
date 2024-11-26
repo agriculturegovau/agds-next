@@ -3,18 +3,18 @@
 exports[`TaskList With anchors renders correctly 1`] = `
 <div>
   <div
-    class="css-1mxr31d-boxStyles"
+    class="css-ac5n69-boxStyles"
   >
     <div
-      class="css-1lvzxao-boxStyles"
+      class="css-1y18cda-boxStyles"
     >
       <h2
-        class="css-s8h0nj-boxStyles"
+        class="css-zsqb9f-boxStyles"
       >
         Complete these tasks
       </h2>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
         2
          of 
@@ -23,24 +23,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
       </span>
     </div>
     <ul
-      class="css-1r8gefe-boxStyles-TaskListItemsContainer"
+      class="css-19jbk2p-boxStyles-TaskListItemsContainer"
     >
       <li
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1alfaay-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1wpwzfj-TaskListItem"
+                class="css-r6ql4f"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -58,25 +58,25 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-6t7fnj-TaskListItem"
+                  class="css-133v19w"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -93,24 +93,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Completed
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -133,18 +133,18 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1alfaay-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1wpwzfj-TaskListItem"
+                class="css-r6ql4f"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -162,25 +162,25 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-6t7fnj-TaskListItem"
+                  class="css-133v19w"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -197,24 +197,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Completed
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -237,18 +237,18 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1992mal-TextLink-boxStyles-TaskListItem"
+          class="css-11nr0gw-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1d9b4dj-TaskListItem"
+                class="css-1p0ud4q"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -279,25 +279,25 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-y64xti-TaskListItem"
+                  class="css-10w5khs"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -327,24 +327,24 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   In progress
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -367,18 +367,18 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1alfaay-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1d9b4dj-TaskListItem"
+                class="css-1p0ud4q"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -395,25 +395,25 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-y64xti-TaskListItem"
+                  class="css-10w5khs"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -429,18 +429,18 @@ exports[`TaskList With anchors renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Not started
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                 Not available until previous tasks are done
               </span>
@@ -448,7 +448,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -475,18 +475,18 @@ exports[`TaskList With anchors renders correctly 1`] = `
 exports[`TaskList With buttons renders correctly 1`] = `
 <div>
   <div
-    class="css-1mxr31d-boxStyles"
+    class="css-ac5n69-boxStyles"
   >
     <div
-      class="css-1lvzxao-boxStyles"
+      class="css-1y18cda-boxStyles"
     >
       <h2
-        class="css-s8h0nj-boxStyles"
+        class="css-zsqb9f-boxStyles"
       >
         Complete these tasks
       </h2>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
         2
          of 
@@ -495,24 +495,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
       </span>
     </div>
     <ul
-      class="css-1r8gefe-boxStyles-TaskListItemsContainer"
+      class="css-19jbk2p-boxStyles-TaskListItemsContainer"
     >
       <li
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-hdcxt5-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1wpwzfj-TaskListItem"
+                class="css-r6ql4f"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -530,25 +530,25 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Check eligibility
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-6t7fnj-TaskListItem"
+                  class="css-133v19w"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -565,24 +565,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Completed
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -605,18 +605,18 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-hdcxt5-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1wpwzfj-TaskListItem"
+                class="css-r6ql4f"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -634,25 +634,25 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Lorem ipsum dolor sit amet
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-6t7fnj-TaskListItem"
+                  class="css-133v19w"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -669,24 +669,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Completed
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -709,18 +709,18 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-uy7mdj-BaseButton-boxStyles-TaskListItem"
+          class="css-14oav7n-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1d9b4dj-TaskListItem"
+                class="css-1p0ud4q"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -751,25 +751,25 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Case Studies
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-y64xti-TaskListItem"
+                  class="css-10w5khs"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -799,24 +799,24 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   In progress
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               />
             </span>
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"
@@ -839,18 +839,18 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-hdcxt5-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-1ot6d19-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-3uedlj-boxStyles"
             >
               <svg
                 aria-hidden="true"
-                class="css-1d9b4dj-TaskListItem"
+                class="css-1p0ud4q"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -867,25 +867,25 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1hxx2pv-boxStyles"
             >
               <span
-                class="css-84frxs-boxStyles"
+                class="css-lkynoh-boxStyles"
                 data-agds-task-list-item-text=""
               >
                 Review and submit
                 <span
-                  class="css-avudkd-VisuallyHidden"
+                  class="css-5ur8x"
                 >
                   .
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-soq415-boxStyles"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-y64xti-TaskListItem"
+                  class="css-10w5khs"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -901,18 +901,18 @@ exports[`TaskList With buttons renders correctly 1`] = `
                   />
                 </svg>
                 <span
-                  class="css-nqv792-boxStyles"
+                  class="css-a8uwhx-boxStyles"
                 >
                   Not started
                   <span
-                    class="css-avudkd-VisuallyHidden"
+                    class="css-5ur8x"
                   >
                     .
                   </span>
                 </span>
               </span>
               <span
-                class="css-axuon-boxStyles"
+                class="css-1ru6lht-boxStyles"
               >
                 Not available until previous tasks are done
               </span>
@@ -920,7 +920,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-1pw6exk-Icon"
+            class="css-a4ggzs"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

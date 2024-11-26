@@ -3,22 +3,22 @@
 exports[`MainNav renders correctly 1`] = `
 <div>
   <div
-    class="css-t2550t-boxStyles-MainNavContainer"
+    class="css-chp9qv-boxStyles-MainNavContainer"
     tabindex="-1"
   >
     <div
-      class="css-1s0s06z-boxStyles-MainNavContainer"
+      class="css-19jlm7p-boxStyles-MainNavContainer"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-label="Menu (Open main menu)"
-        class="css-93qcrg-BaseButton-boxStyles-MainNavOpenButton"
+        class="css-j75v86-BaseButton-boxStyles-MainNavOpenButton"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="css-lq07bo-Icon"
+          class="css-1yxmhzb"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -42,13 +42,13 @@ exports[`MainNav renders correctly 1`] = `
       </button>
       <nav
         aria-label="Main"
-        class="css-jilr25-boxStyles"
+        class="css-kkompu-boxStyles"
       >
         <ul
-          class="css-1jhrbpg-boxStyles"
+          class="css-cp5bql-boxStyles"
         >
           <li
-            class="css-1fvix7x-boxStyles-MainNavListItem"
+            class="css-1xkuq3e-boxStyles"
           >
             <a
               href="/"
@@ -59,7 +59,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fvix7x-boxStyles-MainNavListItem"
+            class="css-1xkuq3e-boxStyles"
           >
             <a
               href="/content"
@@ -70,7 +70,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1fvix7x-boxStyles-MainNavListItem"
+            class="css-1xkuq3e-boxStyles"
           >
             <a
               href="/form"
@@ -81,7 +81,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1mfistu-boxStyles-MainNavListItem"
+            class="css-10392iu-boxStyles"
           >
             <a
               aria-current="page"
@@ -96,13 +96,13 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
       <nav
         aria-label="Supplementary"
-        class="css-fmh3pu-boxStyles-MainNavList"
+        class="css-1vm2zht-boxStyles"
       >
         <ul
-          class="css-1jhrbpg-boxStyles"
+          class="css-cp5bql-boxStyles"
         >
           <li
-            class="css-r39s9d-boxStyles-MainNavListItem"
+            class="css-13b7djo-boxStyles"
           >
             <a
               href="#sign-in"
@@ -112,7 +112,7 @@ exports[`MainNav renders correctly 1`] = `
               </span>
               <svg
                 aria-hidden="true"
-                class="css-1ovc7ig-Icon"
+                class="css-1owl06b"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -137,7 +137,7 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
     </div>
     <div
-      class="css-1hkgiol-boxStyles"
+      class="css-12vohpx-boxStyles"
     />
   </div>
 </div>

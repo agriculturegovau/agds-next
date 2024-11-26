@@ -3,37 +3,37 @@
 exports[`Autocomplete renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-2ohkpz-boxStyles-FieldContainer"
   >
     <label
-      class="css-79i25n-boxStyles"
+      class="css-12ek51e-boxStyles"
       for="combobox-input-:r0:"
       id="downshift-:r1:-label"
     >
       <span
-        class="css-1jywj6f-boxStyles"
+        class="css-1sf8c0k-boxStyles"
       >
         Find your state
       </span>
       <span
-        class="css-axuon-boxStyles"
+        class="css-1ru6lht-boxStyles"
       >
          
         (optional)
       </span>
     </label>
     <span
-      class="css-1jndov8-boxStyles"
+      class="css-16uykm5-boxStyles"
       id="field-combobox-input-:r0:-hint"
     >
       Start typing to see results
     </span>
     <div
-      class="css-a1k7wg-ComboboxBase"
+      class="css-zmsbjo-ComboboxBase"
     >
       <svg
         aria-hidden="true"
-        class="css-9vws37-ComboboxSearchIcon"
+        class="css-s02sbp-ComboboxSearchIcon"
         clip-rule="evenodd"
         fill-rule="evenodd"
         focusable="false"
@@ -65,7 +65,7 @@ exports[`Autocomplete renders correctly 1`] = `
         aria-labelledby="downshift-:r1:-label"
         aria-required="false"
         autocomplete="off"
-        class="css-mvp56b-ComboboxBase"
+        class="css-1x8n18z-ComboboxBase"
         id="combobox-input-:r0:"
         role="combobox"
         type="text"
@@ -73,7 +73,7 @@ exports[`Autocomplete renders correctly 1`] = `
       />
       <ul
         aria-labelledby="downshift-:r1:-label"
-        class="css-x1k9i4-boxStyles-Popover"
+        class="css-udl9lu-boxStyles-Popover"
         id="downshift-:r1:-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
@@ -81,7 +81,7 @@ exports[`Autocomplete renders correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="css-137y9c6-Field"
+      class="css-19dxa70-Field"
     />
   </div>
 </div>

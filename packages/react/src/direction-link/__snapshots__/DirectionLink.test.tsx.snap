@@ -3,13 +3,13 @@
 exports[`DirectionButton direction: down renders correctly 1`] = `
 <div>
   <button
-    class="css-hcufce-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-1m8fs7t-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -33,12 +33,12 @@ exports[`DirectionButton direction: down renders correctly 1`] = `
 exports[`DirectionButton direction: left renders correctly 1`] = `
 <div>
   <button
-    class="css-hcufce-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-1m8fs7t-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -63,13 +63,13 @@ exports[`DirectionButton direction: left renders correctly 1`] = `
 exports[`DirectionButton direction: right renders correctly 1`] = `
 <div>
   <button
-    class="css-hcufce-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-1m8fs7t-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Next
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -93,13 +93,13 @@ exports[`DirectionButton direction: right renders correctly 1`] = `
 exports[`DirectionButton direction: up renders correctly 1`] = `
 <div>
   <button
-    class="css-hcufce-BaseButton-boxStyles-BaseDirectionLink"
+    class="css-1m8fs7t-BaseButton-boxStyles-BaseDirectionLink"
     type="button"
   >
     Top
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -123,12 +123,12 @@ exports[`DirectionButton direction: up renders correctly 1`] = `
 exports[`DirectionLink direction: down renders correctly 1`] = `
 <div>
   <a
-    class="css-162twio-TextLink-boxStyles-BaseDirectionLink"
+    class="css-gm1gg-TextLink-boxStyles-BaseDirectionLink"
   >
     Skip to footer
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -152,11 +152,11 @@ exports[`DirectionLink direction: down renders correctly 1`] = `
 exports[`DirectionLink direction: left renders correctly 1`] = `
 <div>
   <a
-    class="css-162twio-TextLink-boxStyles-BaseDirectionLink"
+    class="css-gm1gg-TextLink-boxStyles-BaseDirectionLink"
   >
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -181,12 +181,12 @@ exports[`DirectionLink direction: left renders correctly 1`] = `
 exports[`DirectionLink direction: right renders correctly 1`] = `
 <div>
   <a
-    class="css-162twio-TextLink-boxStyles-BaseDirectionLink"
+    class="css-gm1gg-TextLink-boxStyles-BaseDirectionLink"
   >
     Next
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -210,12 +210,12 @@ exports[`DirectionLink direction: right renders correctly 1`] = `
 exports[`DirectionLink direction: up renders correctly 1`] = `
 <div>
   <a
-    class="css-162twio-TextLink-boxStyles-BaseDirectionLink"
+    class="css-gm1gg-TextLink-boxStyles-BaseDirectionLink"
   >
     Top
     <svg
       aria-hidden="true"
-      class="css-ub2kzo-Icon"
+      class="css-1bxcfjp"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
