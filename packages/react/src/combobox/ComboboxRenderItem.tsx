@@ -1,8 +1,8 @@
 import { Fragment, isValidElement, ReactNode } from 'react';
 
 export type ComboboxRenderItemProps = {
-	/** The label of the item. ReactNode is a private, character-separated label and for internal use only. */
-	itemLabel: string | ReactNode;
+	/** The label of the item. */
+	itemLabel: string;
 	/** @deprecated Unused. Individual items no longer need to know the value of the Combobox/Autocomplete text input. */
 	inputValue?: string;
 	/** Supporting text for the item. */
