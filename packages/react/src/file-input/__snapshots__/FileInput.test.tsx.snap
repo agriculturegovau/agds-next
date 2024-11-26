@@ -7,7 +7,7 @@ exports[`FileInput invalid renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for=":r4:"
+      for="field-:r2:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -49,19 +49,19 @@ exports[`FileInput invalid renders correctly 1`] = `
       </div>
       <span
         class="css-o7cidz-boxStyles"
-        id="field-:r4:-message"
+        id="field-:r2:-message"
       >
         This file is not valid
       </span>
     </div>
     <div
-      class="css-g3ofr5-boxStyles"
+      class="css-5mk7dj-boxStyles"
     >
       <button
-        aria-describedby="field-:r4:-message"
+        aria-describedby="field-:r2:-message"
         aria-label="Select file, Example, invalid, No file selected"
         class="css-18q2kyp-BaseButton-Button"
-        id=":r4:"
+        id="field-:r2:"
         type="button"
       >
         <span>
@@ -83,7 +83,7 @@ exports[`FileInput invalid renders correctly 1`] = `
     </div>
     <input
       aria-hidden="true"
-      class="css-eoeymn-FileInput"
+      class="css-5ur8x"
       tabindex="-1"
       type="file"
     />
@@ -98,7 +98,7 @@ exports[`FileInput renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for=":r0:"
+      for="field-:r0:"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -113,12 +113,12 @@ exports[`FileInput renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-g3ofr5-boxStyles"
+      class="css-5mk7dj-boxStyles"
     >
       <button
         aria-label="Select file, Example, No file selected"
         class="css-18q2kyp-BaseButton-Button"
-        id=":r0:"
+        id="field-:r0:"
         type="button"
       >
         <span>
@@ -140,7 +140,7 @@ exports[`FileInput renders correctly 1`] = `
     </div>
     <input
       aria-hidden="true"
-      class="css-eoeymn-FileInput"
+      class="css-5ur8x"
       tabindex="-1"
       type="file"
     />

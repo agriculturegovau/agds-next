@@ -129,7 +129,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			label={label}
 			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
-			required={Boolean(required)}
+			required={required}
 			hint={hint}
 			maxWidth={maxWidthProp}
 			message={message}

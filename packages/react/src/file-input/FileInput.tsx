@@ -9,13 +9,13 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { Field } from '../field';
+import { visuallyHiddenStyles } from '../a11y';
 import { Button, ButtonProps } from '../button';
+import { Field } from '../field';
 import { AcceptedFileMimeTypes } from '../file-upload';
 import { fileTypeMapping } from '../file-upload/utils';
-import { Text } from '../text';
 import { Stack } from '../stack';
-import { useId } from '../core';
+import { Text } from '../text';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -73,7 +73,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackRef = useRef(null);
 		const hiddenInputRef = ref || fallbackRef;
 		const visibleButtonRef = useRef<HTMLButtonElement>(null);
-		const inputId = useId(id);
 
 		const [fileNames, setFileNames] = useState<string[]>([]);
 
@@ -139,83 +138,76 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
+		const buttonLabel = `Select ${multiple ? 'files' : 'file'}`;
+		const ariaLabel = [
+			buttonLabel,
+			label,
+			required && 'required',
+			invalid && 'invalid',
+			getSelectedFilesMessage({ fileNames, multiple }),
+		]
+			.filter(Boolean)
+			.join(', ');
+
 		return (
 			<Field
 				hideOptionalLabel={hideOptionalLabel}
 				hint={fallbackHint}
-				id={inputId}
+				id={id}
 				invalid={invalid}
 				label={label}
 				message={message}
-				required={Boolean(required)}
+				required={required}
 			>
-				{(a11yProps) => {
-					const visibleButtonLabel = `Select file${multiple ? 's' : ''}`;
-					const ariaLabel = [
-						visibleButtonLabel,
-						label,
-						a11yProps['aria-required'] && 'required',
-						a11yProps['aria-invalid'] && 'invalid',
-						getSelectedFilesMessage({ fileNames, multiple }),
-					]
-						.filter(Boolean)
-						.join(', ');
-
-					return (
-						<>
-							<Stack gap={1} justifyContent="flex-start" alignItems="start">
-								<Button
-									{...a11yProps}
-									aria-invalid={undefined} // Buttons not announced as invalid when `aria-invalid`, add announcement to label instead
-									aria-label={ariaLabel}
-									aria-required={undefined} // Buttons can't be `aria-required`, add announcement to label instead
-									disabled={disabled}
-									onBlur={onVisualButtonBlur}
-									onClick={onVisualButtonClick}
-									onFocus={onVisualButtonFocus}
-									ref={visibleButtonRef}
-									size={buttonSize}
-									variant="secondary"
-								>
-									{visibleButtonLabel}
-								</Button>
-
-								<Text
-									breakWords
-									color="muted"
-									{...(fileNames.length && {
-										color: undefined,
-										fontWeight: 'bold',
-									})}
-								>
-									{getSelectedFilesMessage({
-										fileNames,
-										isDisplayed: true,
-										multiple,
-									})}
-								</Text>
-							</Stack>
-
-							<input
-								accept={accept?.toString()}
+				{(a11yProps) => (
+					<>
+						<Stack alignItems="start" gap={0.5} justifyContent="flex-start">
+							<Button
+								// Only applying specific a11yprops as some aren't appropriate for a button
+								aria-describedby={a11yProps['aria-describedby']}
+								aria-label={ariaLabel}
 								disabled={disabled}
-								multiple={multiple}
-								onChange={onChange}
-								type="file"
-								{...props}
-								aria-hidden={true}
-								css={{
-									position: 'absolute',
-									height: 1,
-									width: 1,
-									pointerEvents: 'none',
-								}}
-								ref={hiddenInputRef}
-								tabIndex={-1}
-							/>
-						</>
-					);
-				}}
+								id={a11yProps.id}
+								onBlur={onVisualButtonBlur}
+								onClick={onVisualButtonClick}
+								onFocus={onVisualButtonFocus}
+								ref={visibleButtonRef}
+								size={buttonSize}
+								variant="secondary"
+							>
+								{buttonLabel}
+							</Button>
+
+							<Text
+								breakWords
+								color="muted"
+								{...(fileNames.length && {
+									color: undefined,
+									fontWeight: 'bold',
+								})}
+							>
+								{getSelectedFilesMessage({
+									fileNames,
+									isDisplayed: true,
+									multiple,
+								})}
+							</Text>
+						</Stack>
+
+						<input
+							{...props}
+							accept={accept?.toString()}
+							aria-hidden={true}
+							css={visuallyHiddenStyles}
+							disabled={disabled}
+							multiple={multiple}
+							onChange={onChange}
+							ref={hiddenInputRef}
+							tabIndex={-1}
+							type="file"
+						/>
+					</>
+				)}
 			</Field>
 		);
 	}

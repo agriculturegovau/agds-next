@@ -10,9 +10,9 @@ export type FieldLabelProps = PropsWithChildren<{
 	htmlFor?: string;
 	/** The CSS class name, typically generated from the `css` prop. */
 	className?: string;
-	/** If false, "(optional)" will be appended to the label. */
-	required: boolean;
-	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
+	/** If `false` or `undefined`, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** If `true`, "(optional)" will never be appended to the label even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
