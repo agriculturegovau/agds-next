@@ -20,13 +20,13 @@ type DataListProps = {
 };
 
 export const DataList = ({ loading, data }: DataListProps) => {
-	const { resetFilters } = useSortAndFilterContext();
+	const { pagination, resetFilters } = useSortAndFilterContext();
 
 	return (
 		<div id={tableId}>
 			{loading ? (
 				<Stack as="ul" gap={1}>
-					{Array.from({ length: 10 }, (_, i) => i).map((i) => (
+					{Array.from(Array(pagination.perPage).keys()).map((i) => (
 						<DataListItemSkeleton key={i} />
 					))}
 				</Stack>
