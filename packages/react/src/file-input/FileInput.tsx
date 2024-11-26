@@ -138,13 +138,14 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
-		const buttonLabel = `Select ${multiple ? 'files' : 'file'}`;
+		const fileOrFiles = multiple ? 'files' : 'file';
+		const buttonLabel = `Select ${fileOrFiles}`;
 		const ariaLabel = [
 			buttonLabel,
 			label,
 			required && 'required',
 			invalid && 'invalid',
-			getSelectedFilesMessage({ fileNames, multiple }),
+			getSelectedFilesMessage({ fileNames, fileOrFiles }),
 		]
 			.filter(Boolean)
 			.join(', ');
@@ -188,8 +189,8 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 							>
 								{getSelectedFilesMessage({
 									fileNames,
+									fileOrFiles,
 									isDisplayed: true,
-									multiple,
 								})}
 							</Text>
 						</Stack>
@@ -221,14 +222,13 @@ const hasLabel = (
 
 const getSelectedFilesMessage = ({
 	fileNames,
+	fileOrFiles,
 	isDisplayed,
-	multiple,
 }: {
 	fileNames: string[];
+	fileOrFiles: 'file' | 'files';
 	isDisplayed?: boolean;
-	multiple?: boolean;
 }) => {
-	const fileOrFiles = multiple ? 'files' : 'file';
 	return fileNames.length === 0
 		? `No ${fileOrFiles} selected` // When no files selected, show the empty state
 		: fileNames.length === 1
