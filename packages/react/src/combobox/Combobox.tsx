@@ -105,8 +105,8 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	return (
 		<ComboboxBase
 			combobox={combobox}
-			inputItems={inputItems}
 			inputId={inputId}
+			inputItems={inputItems}
 			inputRef={inputRefProp}
 			isAutocomplete={false}
 			{...props}

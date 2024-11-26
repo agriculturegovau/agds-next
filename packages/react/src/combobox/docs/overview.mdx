@@ -313,9 +313,7 @@ If you would like to see how Combobox performs with various option lengths, you 
 		}
 		return result;
 	};
-	const [numOfOptions, setNumOfOptions] = React.useState(
-		COUNTRY_OPTIONS.length
-	);
+	const [numOfOptions, setNumOfOptions] = React.useState(1000);
 	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
 	const [comboboxValue, setComboboxValue] = React.useState(null);
 

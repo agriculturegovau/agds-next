@@ -5,7 +5,7 @@ import { ComboboxListItem } from './ComboboxListItem';
 
 export function ComboboxListLoading() {
 	return (
-		<ComboboxListItem isActiveItem={false} isInteractive={false}>
+		<ComboboxListItem>
 			<Flex alignItems="center" gap={1}>
 				<LoadingDots aria-label="Loading options" role="alert" size="sm" />
 				<Text>Loading</Text>

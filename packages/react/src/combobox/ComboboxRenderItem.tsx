@@ -1,6 +1,4 @@
-import { Fragment, isValidElement, ReactNode, useMemo } from 'react';
-import { boxPalette, tokens } from '../core';
-import { fontGrid } from '../core/utils/fontGrid';
+import { Fragment, isValidElement, ReactNode } from 'react';
 
 export type ComboboxRenderItemProps = {
 	/** The label of the item. */
@@ -17,8 +15,6 @@ export type ComboboxRenderItemProps = {
 	endElement?: ReactNode;
 };
 
-const FONT_SIZE_LINE_HEIGHT = fontGrid('sm', 'default');
-
 export function ComboboxRenderItem({
 	itemLabel,
 	inputValue,
@@ -32,33 +28,18 @@ export function ComboboxRenderItem({
 		console.warn('Combobox: The `inputValue` prop is now unused.');
 	}
 
-	const renderedLabel = useMemo(() => renderItemLabel(itemLabel), [itemLabel]);
-
 	return (
 		<Fragment>
 			{beforeElement ? (
-				<div css={{ flexShrink: 0 }}>{beforeElement}</div>
+				<div data-combobox-render-item="beforeElement">{beforeElement}</div>
 			) : null}
-			<span
-				css={{
-					alignItems: 'stretch',
-					display: 'flex',
-					flexDirection: 'column',
-				}}
-			>
-				{renderedLabel}
+			<span data-combobox-render-item="itemLabel">
+				{itemLabel}
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
 					) : (
-						<span
-							css={{
-								color: boxPalette.foregroundMuted,
-								fontFamily: tokens.font.body,
-								fontWeight: tokens.fontWeight.normal,
-								...FONT_SIZE_LINE_HEIGHT,
-							}}
-						>
+						<span data-combobox-render-item="secondaryText">
 							{secondaryText}
 						</span>
 					)
@@ -67,42 +48,13 @@ export function ComboboxRenderItem({
 					isValidElement(tertiaryText) ? (
 						tertiaryText
 					) : (
-						<span
-							css={{
-								color: boxPalette.foregroundMuted,
-								fontFamily: tokens.font.body,
-								fontWeight: tokens.fontWeight.normal,
-								...FONT_SIZE_LINE_HEIGHT,
-							}}
-						>
-							{tertiaryText}
-						</span>
+						<span data-combobox-render-item="tertiaryText">{tertiaryText}</span>
 					)
 				) : null}
 			</span>
 			{endElement ? (
-				<div css={{ flexShrink: 0, marginLeft: 'auto' }}>{endElement}</div>
+				<div data-combobox-render-item="endElement">{endElement}</div>
 			) : null}
 		</Fragment>
-	);
-}
-
-function renderItemLabel(itemLabel: string) {
-	return (
-		<span
-			aria-label={itemLabel}
-			css={{
-				color: 'inherit',
-				fontFamily: tokens.font.body,
-				fontWeight: tokens.fontWeight.normal,
-				...FONT_SIZE_LINE_HEIGHT,
-			}}
-		>
-			{itemLabel.split('').map((character, index) => (
-				<span data-char={character} key={index}>
-					{character}
-				</span>
-			))}
-		</span>
 	);
 }
