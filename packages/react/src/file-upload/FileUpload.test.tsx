@@ -177,11 +177,13 @@ describe('FileUpload', () => {
 
 		describe('when multiple files are selected', () => {
 			beforeEach(async () => {
-				render(
+				const { container } = render(
 					<FileUploadExample multiple setCurrentValue={setCurrentValue} />
 				);
 
-				const fileInput = screen.getByLabelText('Upload file (optional)');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
@@ -231,9 +233,13 @@ describe('FileUpload', () => {
 		describe('when `maxFiles` is defined', () => {
 			describe('when a single file is selected', () => {
 				test('then it should be accepted', async () => {
-					render(<FileUploadExample multiple maxFiles={2} />);
+					const { container } = render(
+						<FileUploadExample multiple maxFiles={2} />
+					);
 
-					const fileInput = screen.getByLabelText('Upload file (optional)');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
@@ -249,7 +255,7 @@ describe('FileUpload', () => {
 
 			describe('when more files than the maxFiles limit are selected', () => {
 				beforeEach(async () => {
-					render(
+					const { container } = render(
 						<FileUploadExample
 							multiple
 							maxFiles={2}
@@ -257,7 +263,9 @@ describe('FileUpload', () => {
 						/>
 					);
 
-					const fileInput = screen.getByLabelText('Upload file (optional)');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
@@ -301,7 +309,7 @@ describe('FileUpload', () => {
 
 			describe('when `accept` is defined and a mix of accepted/unaccepted file extensions are selected', () => {
 				beforeEach(async () => {
-					render(
+					const { container } = render(
 						<FileUploadExample
 							accept={['application/xml']}
 							multiple
@@ -309,7 +317,9 @@ describe('FileUpload', () => {
 						/>
 					);
 
-					const fileInput = screen.getByLabelText('Upload file (optional)');
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 
@@ -361,7 +371,7 @@ describe('FileUpload', () => {
 		describe('when `maxSize` is defined and a mix of sizes above/below the limit are selected', () => {
 			beforeEach(async () => {
 				const maxSize = 150;
-				render(
+				const { container } = render(
 					<FileUploadExample
 						maxSize={maxSize}
 						multiple
@@ -369,7 +379,9 @@ describe('FileUpload', () => {
 					/>
 				);
 
-				const fileInput = screen.getByLabelText('Upload file (optional)');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
@@ -415,7 +427,7 @@ describe('FileUpload', () => {
 		describe('when `maxFiles`, `maxSize`, and `accept` are defined', () => {
 			beforeEach(async () => {
 				const maxSize = 150;
-				render(
+				const { container } = render(
 					<FileUploadExample
 						accept={['text/plain']}
 						maxFiles={2}
@@ -425,7 +437,9 @@ describe('FileUpload', () => {
 					/>
 				);
 
-				const fileInput = screen.getByLabelText('Upload file (optional)');
+				const fileInput = container.querySelector(
+					'input[type="file"]'
+				) as HTMLInputElement;
 
 				const user = userEvent.setup();
 
@@ -481,7 +495,13 @@ describe('FileUpload', () => {
 			describe('when errors exist and new files with errors are uploaded', () => {
 				// Skipping as this isn't rendering correctly in tests. This has a known issue in the component where some error messages aren't removed on interaction. - need to fix this test, likely by mocking `react-dropzone`
 				test.skip('then the error message should display a new list of errors, wiping previous errors', async () => {
-					const fileInput = screen.getByLabelText('Upload file (optional)');
+					const { container } = render(
+						<FileUploadExample setCurrentValue={setCurrentValue} />
+					);
+
+					const fileInput = container.querySelector(
+						'input[type="file"]'
+					) as HTMLInputElement;
 
 					const user = userEvent.setup();
 

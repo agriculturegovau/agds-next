@@ -88,7 +88,7 @@ export const TimeInput = forwardRef<HTMLInputElement, TimeInputProps>(
 				label={label}
 				maxWidth={maxWidth}
 				message={message}
-				required={Boolean(required)}
+				required={required}
 				secondaryLabel={secondaryLabel}
 			>
 				{(a11yProps) => (

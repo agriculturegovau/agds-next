@@ -104,7 +104,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
+				required={required}
 				hint={hint}
 				maxWidth={maxWidthProp}
 				message={message}
