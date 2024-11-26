@@ -58,7 +58,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			buttonSize = 'sm',
 			label,
 			hideOptionalLabel,
-			required: requiredProp,
+			required,
 			hint,
 			message,
 			multiple,
@@ -138,7 +138,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
-		const required = Boolean(requiredProp);
 		const buttonLabel = `Select ${multiple ? 'files' : 'file'}`;
 		const ariaLabel = [
 			buttonLabel,
@@ -164,6 +163,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 					<>
 						<Stack alignItems="start" gap={0.5} justifyContent="flex-start">
 							<Button
+								// Only applying specific a11yprops as some aren't appropriate for a button
 								aria-describedby={a11yProps['aria-describedby']}
 								aria-label={ariaLabel}
 								disabled={disabled}
@@ -195,6 +195,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 						</Stack>
 
 						<input
+							{...props}
 							accept={accept?.toString()}
 							aria-hidden={true}
 							css={visuallyHiddenStyles}
@@ -204,7 +205,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 							ref={hiddenInputRef}
 							tabIndex={-1}
 							type="file"
-							{...props}
 						/>
 					</>
 				)}

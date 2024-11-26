@@ -63,7 +63,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
+				required={required}
 				hint={hint}
 				maxWidth={maxWidth}
 				message={message}

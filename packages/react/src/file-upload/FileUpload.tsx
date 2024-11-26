@@ -104,7 +104,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		forwardedRef
 	) {
 		const [status, setStatus] = useState('');
-		const filesPlural = multiple ? 'files' : 'file';
+		const fileOrFiles = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
@@ -267,7 +267,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
-		const buttonLabel = `Select ${filesPlural}`;
+		const buttonLabel = `Select ${fileOrFiles}`;
 		const ariaLabel = [
 			buttonLabel,
 			label,
@@ -282,7 +282,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
+				required={required}
 				hint={hint}
 				message={message}
 				invalid={invalid}
@@ -351,7 +351,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												}}
 												fontWeight="bold"
 											>
-												Drop {filesPlural} here…
+												Drop {fileOrFiles} here…
 											</Text>
 										</span>
 										{maxSize ? (
