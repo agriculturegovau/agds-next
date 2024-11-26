@@ -17,7 +17,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -66,11 +66,8 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r9:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r9:"
             tabindex="-1"
             type="file"
           />
@@ -88,7 +85,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
               <span
                 class="css-1uj8l03-boxStyles-FileUpload"
               >
-                Drop 
+                Drop
                 file
                  here…
               </span>
@@ -96,15 +93,16 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r9:-hint"
-            class="css-12q9hib-BaseButton"
+            aria-label="Select file, Upload file, 1 file selected"
+            class="css-1qjel8e-BaseButton-Button"
+            id="field-:r9:"
             type="button"
           >
             <span>
               <span
                 class="css-ws37v0-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -164,7 +162,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
                   <span
                     class="css-tbdjx9-boxStyles-FileUploadFile"
                   >
-                     
+
                     (
                     100 B
                     )
@@ -242,7 +240,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -291,11 +289,8 @@ exports[`FileUpload Basic renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r1:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r1:"
             tabindex="-1"
             type="file"
           />
@@ -313,7 +308,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
               <span
                 class="css-1uj8l03-boxStyles-FileUpload"
               >
-                Drop 
+                Drop
                 file
                  here…
               </span>
@@ -321,15 +316,16 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r1:-hint"
-            class="css-12q9hib-BaseButton"
+            aria-label="Select file, Upload file"
+            class="css-1qjel8e-BaseButton-Button"
+            id="field-:r1:"
             type="button"
           >
             <span>
               <span
                 class="css-ws37v0-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -360,7 +356,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -409,11 +405,8 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:rd:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:rd:"
             tabindex="-1"
             type="file"
           />
@@ -431,7 +424,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               <span
                 class="css-1uj8l03-boxStyles-FileUpload"
               >
-                Drop 
+                Drop
                 file
                  here…
               </span>
@@ -439,15 +432,16 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:rd:-hint"
-            class="css-12q9hib-BaseButton"
+            aria-label="Select file, Upload file, 2 files selected"
+            class="css-1qjel8e-BaseButton-Button"
+            id="field-:rd:"
             type="button"
           >
             <span>
               <span
                 class="css-ws37v0-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -704,7 +698,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
       <span
         class="css-1ru6lht-boxStyles"
       >
-         
+
         (optional)
       </span>
     </label>
@@ -754,11 +748,8 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </svg>
           <input
             accept="image/jpeg,.jpeg,.jpg,image/png,.png"
-            aria-describedby="field-:r5:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r5:"
             multiple=""
             tabindex="-1"
             type="file"
@@ -777,7 +768,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
               <span
                 class="css-1uj8l03-boxStyles-FileUpload"
               >
-                Drop 
+                Drop
                 files
                  here…
               </span>
@@ -788,7 +779,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             >
               Each file
                cannot exceed
-               
+
               3 MB
               .
             </span>
@@ -796,22 +787,23 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
               class="css-1ru6lht-boxStyles"
               id=":r4:-accepted-files-desc"
             >
-              Files accepted: 
+              Files accepted:
               jpeg, jpg, png
               .
             </span>
           </div>
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
-            class="css-12q9hib-BaseButton"
+            aria-label="Select files, Upload file"
+            class="css-1qjel8e-BaseButton-Button"
+            id="field-:r5:"
             type="button"
           >
             <span>
               <span
                 class="css-ws37v0-Button"
               >
-                Select 
-                files
+                Select files
               </span>
               <span
                 aria-live="assertive"
