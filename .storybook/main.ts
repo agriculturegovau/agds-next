@@ -1,23 +1,23 @@
-import path from 'path';
+import path, { dirname, join } from 'path';
 import { existsSync } from 'fs';
 import { readdir } from 'fs/promises';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
 	framework: {
-		name: '@storybook/react-vite',
+		name: getAbsolutePath('@storybook/react-vite'),
 		options: {},
 	},
+
 	core: {
-		builder: '@storybook/builder-vite',
+		builder: getAbsolutePath('@storybook/builder-vite'),
 	},
-	features: {
-		storyStoreV7: false,
-		buildStoriesJson: true,
-	},
+
+	features: {},
+
 	addons: [
-		'@storybook/addon-links',
-		'@storybook/addon-a11y',
+		getAbsolutePath('@storybook/addon-links'),
+		getAbsolutePath('@storybook/addon-a11y'),
 		{ name: '@storybook/addon-essentials', options: { background: false } },
 	],
 	stories: [
@@ -94,4 +94,8 @@ async function getEntryPoints() {
 	return folderContents
 		.filter(({ name }) => existsSync(path.join(basePath, name, 'package.json')))
 		.map(({ name }) => name);
+}
+
+function getAbsolutePath(value: string): string {
+	return dirname(require.resolve(join(value, 'package.json')));
 }
