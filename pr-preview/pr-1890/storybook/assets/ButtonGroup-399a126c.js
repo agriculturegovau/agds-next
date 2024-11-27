@@ -1,0 +1,1 @@
+import{j as o}from"./responsive-123a9343.js";import{F as r}from"./Stack-938d29d6.js";const t=({children:e})=>o(r,{gap:1,flexDirection:["column","row"],alignItems:["stretch","center"],children:e});t.__docgenInfo={description:"",methods:[],displayName:"ButtonGroup",props:{children:{required:!0,tsType:{name:"ReactNode"},description:""}}};export{t as B};

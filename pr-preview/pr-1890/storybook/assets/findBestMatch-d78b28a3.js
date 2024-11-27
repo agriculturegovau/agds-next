@@ -1,0 +1,1 @@
+function h(n,f){if(!f)return"";let e="";const s=n.filter(r=>"href"in r&&r.href);for(const r of s){if(r.href===f)return r.href;f!=null&&f.startsWith(r.href)&&r.href!=="/"&&r.href.length>e.length&&(e=r.href)}return e}export{h as f};

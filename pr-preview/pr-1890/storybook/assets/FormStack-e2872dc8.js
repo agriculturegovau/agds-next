@@ -1,0 +1,1 @@
+import{j as o}from"./responsive-123a9343.js";import{F as r}from"./Stack-938d29d6.js";function t({children:e}){return o(r,{flexDirection:"column",gap:2,children:e})}t.__docgenInfo={description:"",methods:[],displayName:"FormStack",props:{children:{required:!0,tsType:{name:"ReactNode"},description:""}}};export{t as F};

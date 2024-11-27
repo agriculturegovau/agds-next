@@ -1,0 +1,1 @@
+import{j as r,c as o}from"./responsive-123a9343.js";import"./index-3b9dd0eb.js";import{u as s,a as n}from"./ListItem-f0e45878.js";function i({children:e}){const t=s()+1;return r(n.Provider,{value:t,children:r("ul",{css:{marginTop:t>1?o(.5):0,marginBottom:0},children:e})})}i.__docgenInfo={description:"",methods:[],displayName:"UnorderedList"};export{i as U};

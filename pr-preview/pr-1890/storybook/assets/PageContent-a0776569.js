@@ -1,0 +1,1 @@
+import{j as t}from"./responsive-123a9343.js";import{B as n}from"./BaseContent-45e1bca4.js";function s({children:e,as:a="div",...o}){return t(n,{as:a,...o,paddingY:"page",children:e})}s.__docgenInfo={description:"",methods:[],displayName:"PageContent",props:{as:{defaultValue:{value:"'div'",computed:!1},required:!1}}};export{s as P};

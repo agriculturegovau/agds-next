@@ -1,0 +1,1 @@
+import{r as u}from"./index-3b9dd0eb.js";function f({focusOnMount:o,focusOnUpdate:e,forwardedRef:s}={}){const c=u.useRef(null),r=s||c;return u.useEffect(()=>{var t,n;!e&&!o||!("current"in r)||Array.isArray(e)&&e.filter(Boolean).length===0||(n=(t=r==null?void 0:r.current)==null?void 0:t.focus)==null||n.call(t)},[e]),r}export{f as u};
