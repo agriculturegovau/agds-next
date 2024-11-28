@@ -79,7 +79,9 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		// Called on the hidden input to manage the selected file(s)
 		const onChange = useCallback(
 			(event: ChangeEvent<HTMLInputElement>) => {
-				visibleButtonRef.current?.focus();
+				setTimeout(() => {
+					visibleButtonRef.current?.focus();
+				}, 0);
 				onChangeProp?.(event);
 				if (!event.target.files) return;
 				setFileNames(Array.from(event.target.files).map((file) => file.name));
