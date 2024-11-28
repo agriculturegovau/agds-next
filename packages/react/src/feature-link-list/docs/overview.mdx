@@ -1,0 +1,58 @@
+---
+title: Feature link list
+description: Feature link list is a simple set of vertical links used for site navigation and to order information for users.
+group: Navigation
+storybookPath: /story/navigation-featurelinklist--basic
+figmaGalleryNodeId: 31557%3A174348
+relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
+---
+
+```jsx live
+<FeatureLinkList
+	links={[
+		{
+			label: 'Add a business with RAM',
+			description:
+				'Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).',
+			href: '#',
+		},
+		{
+			label: 'Accept an invite',
+			description:
+				'Use an invite code from an email to act on behalf of a business.',
+			href: '#',
+		},
+	]}
+/>
+```
+
+The default feature link list component removes the normal bullets and spacing associated with a list.
+
+<DoHeading />
+
+- use to navigate to other pages
+- avoid opening links in new tabs
+- use to list a group of links.
+
+<DontHeading />
+
+- confuse with Inpage nav, which links to content on the current page.
+
+## No Description
+
+The feature link list component can be used without a description.
+
+```jsx live
+<FeatureLinkList
+	links={[
+		{
+			label: 'Add a business with RAM',
+			href: '#',
+		},
+		{
+			label: 'Accept an invite',
+			href: '#',
+		},
+	]}
+/>
+```

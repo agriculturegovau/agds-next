@@ -65,6 +65,7 @@ export {
 	LinkListContainer,
 	LinkListItem,
 } from '@ag.ds-next/react/link-list';
+export { FeatureLinkList } from '@ag.ds-next/react/feature-link-list';
 export {
 	Breadcrumbs,
 	BreadcrumbsContainer,
