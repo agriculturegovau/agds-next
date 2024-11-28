@@ -17,7 +17,7 @@ export const FeatureLinkList = ({
 	return (
 		<Stack as="ul" borderTop>
 			{links.map((props, index) => (
-				<FeatureLinkListItem key={index} background={background} {...props} />
+				<FeatureLinkListItem background={background} key={index} {...props} />
 			))}
 		</Stack>
 	);

@@ -1,9 +1,9 @@
 ---
 title: Feature link list
-description: Feature link list is a simple set of vertical links used for site navigation and to order information for users.
+description: Feature link list is a vertical list of important links. It adds prominence and additional information to help users find and understand important navigation items.
 group: Navigation
 storybookPath: /story/navigation-featurelinklist--basic
-figmaGalleryNodeId: 31557%3A174348
+figmaGalleryNodeId: 11978%3A107111
 relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
 ---
 
@@ -26,21 +26,21 @@ relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
 />
 ```
 
-The default feature link list component removes the normal bullets and spacing associated with a list.
-
 <DoHeading />
 
-- use to navigate to other pages
-- avoid opening links in new tabs
-- use to list a group of links.
+- use to emphasise important links to other pages and sites
+- use to list a group of links
+- avoid opening links in new tabs.
 
 <DontHeading />
 
-- confuse with Inpage nav, which links to content on the current page.
+- unnecessarily repeat the label in the description
+- confuse with Inpage nav, which links to content on the current page
+- use outside of the Main region. Link list may be more suitable in this instance.
 
-## No Description
+## No description
 
-The feature link list component can be used without a description.
+Links can also be used without a description should additional information provides little value or negatively increase cognitive load.
 
 ```jsx live
 <FeatureLinkList

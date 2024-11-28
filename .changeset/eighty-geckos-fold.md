@@ -3,4 +3,4 @@
 '@ag.ds-next/docs': minor
 ---
 
-feature link list: new component
+feature-link-list: Initial release of component.
