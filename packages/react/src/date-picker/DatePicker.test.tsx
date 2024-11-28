@@ -187,6 +187,8 @@ describe('DatePicker', () => {
 		const date = parseDate(dateString) as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
+		const user = userEvent.setup();
+
 		render(<ClearableDatePicker initialValue={date} />);
 
 		// The input should be a formatted display value of `initialValue`
@@ -198,10 +200,14 @@ describe('DatePicker', () => {
 		).toBeVisible();
 
 		// Click the `clear` button to clear the value
-		await userEvent.click(screen.getByTestId('clear'));
+		await user.click(screen.getByRole('button', { name: 'Clear' }));
 
 		// The input should be empty
-		expect(await getInput()).toHaveValue('');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Clearable (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue('');
 
 		// The calendar button triggers aria-label should be updated
 		expect(screen.getByRole('button', { name: 'Choose date' })).toBeVisible();
