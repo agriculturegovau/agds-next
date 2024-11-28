@@ -2,4 +2,6 @@
 '@ag.ds-next/react': patch
 ---
 
-file-input: Focus button after change event to workaround IOS VoiceOver bug.
+file-input: Include secondary label in button announcement, e.g. (optional).
+
+file-upload: Include secondary label in button announcement, e.g. (optional).

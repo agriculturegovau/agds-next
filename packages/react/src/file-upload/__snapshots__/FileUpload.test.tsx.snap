@@ -93,7 +93,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r9:-hint"
-            aria-label="Select file, Upload file, 1 file selected"
+            aria-label="Select file, Upload file, (optional), 1 file selected"
             class="css-1qjel8e-BaseButton-Button"
             id="field-:r9:"
             type="button"
@@ -316,7 +316,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r1:-hint"
-            aria-label="Select file, Upload file"
+            aria-label="Select file, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
             id="field-:r1:"
             type="button"
@@ -432,7 +432,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:rd:-hint"
-            aria-label="Select file, Upload file, 2 files selected"
+            aria-label="Select file, Upload file, (optional), 2 files selected"
             class="css-1qjel8e-BaseButton-Button"
             id="field-:rd:"
             type="button"
@@ -794,7 +794,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </div>
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
-            aria-label="Select files, Upload file"
+            aria-label="Select files, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
             id="field-:r5:"
             type="button"

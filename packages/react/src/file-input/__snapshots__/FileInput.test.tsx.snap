@@ -59,7 +59,7 @@ exports[`FileInput invalid renders correctly 1`] = `
     >
       <button
         aria-describedby="field-:r2:-message"
-        aria-label="Select file, Example, invalid, No file selected"
+        aria-label="Select file, Example, (optional), invalid, No file selected"
         class="css-18q2kyp-BaseButton-Button"
         id="field-:r2:"
         type="button"
@@ -116,7 +116,7 @@ exports[`FileInput renders correctly 1`] = `
       class="css-5mk7dj-boxStyles"
     >
       <button
-        aria-label="Select file, Example, No file selected"
+        aria-label="Select file, Example, (optional), No file selected"
         class="css-18q2kyp-BaseButton-Button"
         id="field-:r0:"
         type="button"
