@@ -17,6 +17,7 @@ import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { Box } from '../box';
+import { useSecondaryLabel } from '../field/useSecondaryLabel';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import {
@@ -267,10 +268,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
+		const secondaryLabelWithOptional = useSecondaryLabel({
+			hideOptionalLabel,
+			required,
+		});
+
 		const buttonLabel = `Select ${fileOrFiles}`;
 		const ariaLabel = [
 			buttonLabel,
 			label,
+			secondaryLabelWithOptional,
 			required && 'required',
 			invalid && 'invalid',
 			fileSummaryText,

@@ -16,6 +16,7 @@ import { AcceptedFileMimeTypes } from '../file-upload';
 import { fileTypeMapping } from '../file-upload/utils';
 import { Stack } from '../stack';
 import { Text } from '../text';
+import { useSecondaryLabel } from '../field/useSecondaryLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -138,11 +139,17 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 		const fallbackHint =
 			hint || (accept && `Files accepted: ${acceptedFileExtensions}`);
 
+		const secondaryLabelWithOptional = useSecondaryLabel({
+			hideOptionalLabel,
+			required,
+		});
+
 		const fileOrFiles = multiple ? 'files' : 'file';
 		const buttonLabel = `Select ${fileOrFiles}`;
 		const ariaLabel = [
 			buttonLabel,
 			label,
+			secondaryLabelWithOptional,
 			required && 'required',
 			invalid && 'invalid',
 			getSelectedFilesMessage({ fileNames, fileOrFiles }),
