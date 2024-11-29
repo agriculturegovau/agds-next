@@ -1,1 +1,0 @@
-import{n as e}from"./noop-eb890146.js";import{C as t,a as o}from"./Callout-24df773d.js";import{a}from"./_commonjsHelpers-de833af9.js";const r=Object.freeze(Object.defineProperty({__proto__:null,Callout:t,CalloutTitle:o},Symbol.toStringTag,{value:"Module"})),n=a(r);let l=e.___internalHook(typeof __dirname>"u"?void 0:__dirname,"../../../..","../..");var m=n;l();export{m as a};

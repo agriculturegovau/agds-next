@@ -1,1 +1,0 @@
-import{j as r,c as o}from"./responsive-123a9343.js";import"./index-3b9dd0eb.js";import{u as s,a as i}from"./ListItem-f0e45878.js";function n({children:e}){const t=s()+1;return r(i.Provider,{value:t,children:r("ol",{css:{marginTop:t>1?o(.5):0,marginBottom:0},children:e})})}n.__docgenInfo={description:"",methods:[],displayName:"OrderedList"};export{n as O};
