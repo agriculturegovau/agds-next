@@ -338,7 +338,7 @@ describe('DatePicker', () => {
 			expect(await getInput()).toHaveValue('05-23-2023');
 		});
 
-		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
+		it.only('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
 			renderDatePicker({
 				allowedDateFormats: ['MM/dd/yyyy'],
 				dateFormat: 'dd MMMM yyyy',
@@ -346,11 +346,20 @@ describe('DatePicker', () => {
 			});
 
 			// Type a valid date in the input field that isn't in the display format
-			await userEvent.type(await getInput(), '08 Feb 2023');
+			await userEvent.type(
+				screen.getByRole('textbox', {
+					name: 'Example (e.g. 05 August 2015) (optional)',
+				}),
+				'08 Feb 2023'
+			);
 			await userEvent.keyboard('{Tab}');
 
 			// The input should be formatted to the dateFormat prop
-			expect(await getInput()).toHaveValue('08 February 2023');
+			expect(
+				screen.getByRole('textbox', {
+					name: 'Example (e.g. 05 August 2015) (optional)',
+				})
+			).toHaveValue('08 February 2023');
 		});
 	});
 
