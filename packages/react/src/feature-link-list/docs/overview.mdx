@@ -1,11 +1,13 @@
 ---
 title: Feature link list
-description: Feature link list is a vertical list of important links. It adds prominence and additional information to help users find and understand navigation items.
+description: Feature link list is a vertical list of important links. It adds prominence and additional information to help users find and understand the navigation items.
 group: Navigation
 storybookPath: /story/navigation-featurelinklist--basic
 figmaGalleryNodeId: 11978%3A107111
-relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
+relatedComponents: ['card', 'link-list', 'list', 'inpage-nav']
 ---
+
+Feature link list provides emphasis and hierarchy to an important list of links. It provides support for description content that will help a user read, understand, assess and select the appropriate link. To enhance usability, a feature link list should always be accompanied by a clear heading.
 
 ```jsx live
 <FeatureLinkList
@@ -22,25 +24,32 @@ relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
 				'Use an invite code from an email to act on behalf of a business.',
 			href: '#',
 		},
+		{
+			label: 'About the department',
+			description: 'A suitable description for an external link.',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
+		},
 	]}
 />
 ```
 
 <DoHeading />
 
-- use to emphasise important links to other pages and sites
-- use to list a group of links
-- avoid opening links in new tabs.
+- use to to provide an emphasis and hierarchy to link lists
+- avoid opening links in new tabs, but provide an external link icon when it is not possible to open the link in the same browser tab
+- aim for consistent use of descriptions for all links in a list.
 
 <DontHeading />
 
 - unnecessarily repeat the label in the description
+- include more than 3 lines of copy in the description
 - confuse with Inpage nav, which links to content on the current page
 - use outside of the Main region. Link list may be more suitable in this instance.
 
-## No description
+## Using without a description
 
-Links can also be used without a description should additional information provide little value or negatively increase cognitive load.
+Links can also be used without a description, should the label alone provide enough information.
 
 ```jsx live
 <FeatureLinkList
@@ -53,6 +62,87 @@ Links can also be used without a description should additional information provi
 			label: 'Accept an invite',
 			href: '#',
 		},
+		{
+			label: 'About the department',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
+		},
 	]}
 />
+```
+
+## Hierarchy
+
+Cards and feature link lists can be used together to add information hierarchy to a page. When used together, cards should have a higher priority and be located above the feature link list.
+
+Lists of cards and links should should have headings.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H2 as="h3" id="card-heading">
+			Card heading
+		</H2>
+		<Flex aria-labelledby="card-heading" as="ul" gap={1.5}>
+			<Box as="li">
+				<Card shadow clickable>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h3" type="h4">
+								<CardLink href="#">Card link 1</CardLink>
+							</Heading>
+							<Text>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+								non finibus leo.
+							</Text>
+						</Stack>
+					</CardInner>
+				</Card>
+			</Box>
+			<Box as="li">
+				<Card shadow clickable>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h3" type="h4">
+								<CardLink href="#">Card link 2</CardLink>
+							</Heading>
+							<Text>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+								non finibus leo.
+							</Text>
+						</Stack>
+					</CardInner>
+				</Card>
+			</Box>
+		</Flex>
+	</Stack>
+	<Stack gap={1.5}>
+		<H2 as="h3" id="feature-link-list-heading">
+			Feature link list heading
+		</H2>
+		<FeatureLinkList
+			aria-labelledby="feature-link-list-heading"
+			links={[
+				{
+					label: 'Add a business with RAM',
+					description:
+						'Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).',
+					href: '#',
+				},
+				{
+					label: 'Accept an invite',
+					description:
+						'Use an invite code from an email to act on behalf of a business.',
+					href: '#',
+				},
+				{
+					label: 'About the department',
+					description: 'A suitable description for an external link.',
+					href: 'https://www.agriculture.gov.au/',
+					target: '_blank',
+				},
+			]}
+		/>
+	</Stack>
+</Stack>
 ```
