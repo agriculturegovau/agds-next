@@ -4,22 +4,31 @@ import {
 	WarningFilledIcon,
 } from '@ag.ds-next/react/icon';
 
+type SectionAlertIconProps = { id: string };
+
 export const sectionAlertIconMap = {
-	success: (
-		<SuccessFilledIcon
-			color="success"
+	error: ({ id }: SectionAlertIconProps) => (
+		<AlertFilledIcon
 			aria-hidden="false"
-			aria-label="Success"
+			aria-label="Error, "
+			color="error"
+			id={id}
 		/>
 	),
-	error: (
-		<AlertFilledIcon color="error" aria-hidden="false" aria-label="Error" />
-	),
-	warning: (
-		<WarningFilledIcon
-			color="warning"
+	success: ({ id }: SectionAlertIconProps) => (
+		<SuccessFilledIcon
 			aria-hidden="false"
-			aria-label="Warning"
+			aria-label="Success, "
+			color="success"
+			id={id}
+		/>
+	),
+	warning: ({ id }: SectionAlertIconProps) => (
+		<WarningFilledIcon
+			aria-hidden="false"
+			aria-label="Warning, "
+			color="warning"
+			id={id}
 		/>
 	),
 };

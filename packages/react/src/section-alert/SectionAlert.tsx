@@ -4,12 +4,13 @@ import {
 	MouseEventHandler,
 	ReactNode,
 } from 'react';
+import { useId } from '../core';
 import { useFocus } from '../core/utils/useFocus';
 import { Flex } from '../flex';
 import { getOptionalCloseHandler } from '../getCloseHandler';
 import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
-import { sectionAlertIconMap, SectionAlertTone } from './utils';
+import { sectionAlertIconMap, type SectionAlertTone } from './utils';
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
@@ -40,9 +41,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
 		{
 			children,
-			id,
 			focusOnMount,
 			focusOnUpdate,
+			id,
 			onClose,
 			onDismiss,
 			role,
@@ -58,34 +59,40 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 			focusOnUpdate,
 			forwardedRef,
 		});
+		const { childrenId, iconId, titleId } = useSectionAlertIds(id);
 
 		const Icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
 		return (
 			<Flex
+				{...props}
 				alignItems="center"
+				aria-labelledby={`${iconId} ${titleId} ${children ? childrenId : ''}`}
 				background={tone}
 				borderColor={tone}
 				borderLeft
 				borderLeftWidth="xl"
+				focusRingFor="all"
 				gap={0.5}
 				highContrastOutline
 				id={id}
-				focusRingFor="all"
 				justifyContent="space-between"
 				padding={1}
 				ref={ref}
-				role={role}
+				role={role || 'region'}
 				rounded
 				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
-				{...props}
 			>
 				<Flex gap={0.5}>
-					{Icon}
-					<Flex gap={0.25} flexDirection={'column'}>
-						{title && <Text fontWeight="bold">{title}</Text>}
-						{children}
+					<Icon id={iconId} />
+					<Flex flexDirection="column" gap={0.25}>
+						{title && (
+							<Text fontWeight="bold" id={titleId}>
+								{title}
+							</Text>
+						)}
+						{children && <div id={childrenId}>{children}</div>}
 					</Flex>
 				</Flex>
 				{closeHandler ? (
@@ -95,3 +102,11 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		);
 	}
 );
+
+function useSectionAlertIds(idProp?: string) {
+	const autoId = useId(idProp);
+	const childrenId = `section-alert-children-${autoId}`;
+	const iconId = `section-alert-icon-${autoId}`;
+	const titleId = `section-alert-title-${autoId}`;
+	return { childrenId, iconId, titleId };
+}
