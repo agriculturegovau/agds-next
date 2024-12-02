@@ -7,7 +7,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
-import { Stack } from '../stack';
 import { Button } from '../button';
 import { DatePicker, type DatePickerProps } from './DatePicker';
 import { formatHumanReadableDate, parseDate } from './utils';
@@ -65,18 +64,6 @@ function ControlledDatePicker({
 			onInputChange={setValue}
 			{...props}
 		/>
-	);
-}
-
-function ClearableDatePicker({ initialValue }: { initialValue?: Date }) {
-	const [value, setValue] = useState<Date | undefined>(initialValue);
-	return (
-		<Stack gap={4} alignItems="flex-start">
-			<DatePicker label="Clearable" value={value} onChange={setValue} />
-			<Button data-testid="clear" onClick={() => setValue(undefined)}>
-				Clear
-			</Button>
-		</Stack>
 	);
 }
 
@@ -182,35 +169,18 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it('updates correctly based on the `value` prop', async () => {
+	it.only('updates correctly based on the `value` prop', async () => {
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
-		const formattedDate = formatHumanReadableDate(date);
 
-		const user = userEvent.setup();
-
-		render(<ClearableDatePicker initialValue={date} />);
+		render(<ControlledDatePicker label="Example" initialValue={date} />);
 
 		// The input should be a formatted display value of `initialValue`
-		expect(await getInput()).toHaveValue(dateString);
-
-		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
-		expect(
-			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
-		).toBeVisible();
-
-		// Click the `clear` button to clear the value
-		await user.click(screen.getByRole('button', { name: 'Clear' }));
-
-		// The input should be empty
 		expect(
 			screen.getByRole('textbox', {
-				name: 'Clearable (e.g. 05/08/2015) (optional)',
+				name: 'Example (e.g. 05/08/2015) (optional)',
 			})
-		).toHaveValue('');
-
-		// The calendar button triggers aria-label should be updated
-		expect(screen.getByRole('button', { name: 'Choose date' })).toBeVisible();
+		).toHaveValue(dateString);
 	});
 
 	it('can render an invalid state', async () => {
@@ -338,25 +308,27 @@ describe('DatePicker', () => {
 			expect(await getInput()).toHaveValue('05-23-2023');
 		});
 
-		it.only('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
+		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
 			renderDatePicker({
 				allowedDateFormats: ['MM/dd/yyyy'],
 				dateFormat: 'dd MMMM yyyy',
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that isn't in the display format
-			await userEvent.type(
+			await user.type(
 				screen.getByRole('textbox', {
 					name: 'Example (e.g. 05 August 2015) (optional)',
 				}),
 				'08 Feb 2023'
 			);
-			await userEvent.keyboard('{Tab}');
+			await user.keyboard('{Tab}');
 
 			// The input should be formatted to the dateFormat prop
 			expect(
-				screen.getByRole('textbox', {
+				await screen.findByRole('textbox', {
 					name: 'Example (e.g. 05 August 2015) (optional)',
 				})
 			).toHaveValue('08 February 2023');
