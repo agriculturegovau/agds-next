@@ -4,6 +4,7 @@ import {
 	MouseEventHandler,
 	ReactNode,
 } from 'react';
+import { visuallyHiddenStyles } from '../a11y';
 import { useId } from '../core';
 import { useFocus } from '../core/utils/useFocus';
 import { Flex } from '../flex';
@@ -59,16 +60,16 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 			focusOnUpdate,
 			forwardedRef,
 		});
-		const { childrenId, iconId, titleId } = useSectionAlertIds(id);
+		const { childrenId, titleId, toneId } = useSectionAlertIds(id);
 
-		const Icon = sectionAlertIconMap[tone];
+		const icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
 		return (
 			<Flex
 				{...props}
 				alignItems="center"
-				aria-labelledby={`${iconId} ${titleId} ${children ? childrenId : ''}`}
+				aria-labelledby={`${toneId} ${titleId} ${children ? childrenId : ''}`}
 				background={tone}
 				borderColor={tone}
 				borderLeft
@@ -80,12 +81,22 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				justifyContent="space-between"
 				padding={1}
 				ref={ref}
+				// Not using default arg because is if someone accidentally passes a falsey value, we still need the role to be set.
 				role={role || 'region'}
 				rounded
 				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 			>
 				<Flex gap={0.5}>
-					<Icon id={iconId} />
+					<span
+						css={{
+							display: 'inline-flex',
+						}}
+					>
+						{icon}
+						<span css={visuallyHiddenStyles} id={toneId}>
+							{tone}
+						</span>
+					</span>
 					<Flex flexDirection="column" gap={0.25}>
 						{title && (
 							<Text fontWeight="bold" id={titleId}>
@@ -106,7 +117,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 function useSectionAlertIds(idProp?: string) {
 	const autoId = useId(idProp);
 	const childrenId = `section-alert-children-${autoId}`;
-	const iconId = `section-alert-icon-${autoId}`;
 	const titleId = `section-alert-title-${autoId}`;
-	return { childrenId, iconId, titleId };
+	const toneId = `section-alert-icon-${autoId}`;
+	return { childrenId, titleId, toneId };
 }
