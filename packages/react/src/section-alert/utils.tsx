@@ -5,23 +5,9 @@ import {
 } from '@ag.ds-next/react/icon';
 
 export const sectionAlertIconMap = {
-	success: (
-		<SuccessFilledIcon
-			color="success"
-			aria-hidden="false"
-			aria-label="Success"
-		/>
-	),
-	error: (
-		<AlertFilledIcon color="error" aria-hidden="false" aria-label="Error" />
-	),
-	warning: (
-		<WarningFilledIcon
-			color="warning"
-			aria-hidden="false"
-			aria-label="Warning"
-		/>
-	),
+	error: <AlertFilledIcon color="error" />,
+	success: <SuccessFilledIcon color="success" />,
+	warning: <WarningFilledIcon color="warning" />,
 };
 
 export type SectionAlertTone = keyof typeof sectionAlertIconMap;

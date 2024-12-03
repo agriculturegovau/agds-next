@@ -44,6 +44,7 @@ export type IconProps = {
 	'aria-label'?: NativeSvgProps['aria-label'];
 	className?: string;
 	color?: IconColor;
+	id?: NativeSvgProps['id'];
 	size?: ResponsiveProp<IconSize>;
 	style?: NativeSvgProps['style'];
 	weight?: IconWeight;
@@ -55,6 +56,7 @@ export const createIcon = (children: ReactNode, name: string) => {
 		'aria-label': ariaLabel,
 		className,
 		color,
+		id,
 		size = 'md',
 		style,
 		weight = 'regular',
@@ -66,14 +68,10 @@ export const createIcon = (children: ReactNode, name: string) => {
 		);
 		return (
 			<svg
-				// Note the width and height attribute is a fallback for older browsers.
-				// This may not be required and could potentially be removed.
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
+				aria-hidden={ariaHidden}
+				aria-label={ariaLabel}
+				className={className}
 				clipRule="evenodd"
-				fillRule="evenodd"
-				xmlns="http://www.w3.org/2000/svg"
 				css={mq({
 					color: color ? iconColors[color] : 'currentcolor',
 					fill: 'none',
@@ -85,12 +83,17 @@ export const createIcon = (children: ReactNode, name: string) => {
 					strokeWidth: resolvedWeight,
 					width: resolvedSize,
 				})}
+				fillRule="evenodd"
+				focusable="false"
+				// Note the width and height attribute is a fallback for older browsers.
+				// This may not be required and could potentially be removed.
+				height="24"
+				id={id}
 				role="img"
 				style={style}
-				className={className}
-				focusable="false"
-				aria-hidden={ariaHidden}
-				aria-label={ariaLabel}
+				viewBox="0 0 24 24"
+				width="24"
+				xmlns="http://www.w3.org/2000/svg"
 			>
 				{children}
 			</svg>
