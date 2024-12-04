@@ -107,6 +107,7 @@ export {
 	FacebookIcon,
 	FactoryIcon,
 	FileIcon,
+	FileTextIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
@@ -132,7 +133,6 @@ export {
 	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
-	SocialXIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
@@ -145,6 +145,7 @@ export {
 	WarningFilledIcon,
 	WarningIcon,
 	WebsiteIcon,
+	XIcon,
 } from '@ag.ds-next/react/icon';
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';

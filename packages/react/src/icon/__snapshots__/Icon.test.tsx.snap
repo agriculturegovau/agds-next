@@ -773,6 +773,27 @@ exports[`Icon FileIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon FileTextIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8m-6-6 6 6m-6-6v6h6m-4 5H8m8 4H8m2-8H8"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon FilterIcon renders correctly 1`] = `
 <div>
   <svg
@@ -1407,27 +1428,6 @@ exports[`Icon SettingsIcon renders correctly 1`] = `
 </div>
 `;
 
-exports[`Icon SocialXIcon renders correctly 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="css-lq07bo-Icon"
-    clip-rule="evenodd"
-    fill-rule="evenodd"
-    focusable="false"
-    height="24"
-    role="img"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M19.555 4 5.333 20m11.395-.206L5.113 4.861A.533.533 0 0 1 5.534 4H7.74c.164 0 .32.076.42.206l11.615 14.933c.273.35.023.861-.42.861h-2.205a.534.534 0 0 1-.42-.206Z"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icon SuccessFilledIcon renders correctly 1`] = `
 <div>
   <svg
@@ -1712,6 +1712,27 @@ exports[`Icon WebsiteIcon renders correctly 1`] = `
   >
     <path
       d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12H2M12 22C6.47715 22 2 17.5228 2 12M12 22C14.5013 19.2616 15.9228 15.708 16 12C15.9228 8.29203 14.5013 4.73835 12 2M12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2M2 12C2 6.47715 6.47715 2 12 2"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon XIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19.555 4 5.333 20m11.395-.206L5.113 4.861A.533.533 0 0 1 5.534 4H7.74c.164 0 .32.076.42.206l11.615 14.933c.273.35.023.861-.42.861h-2.205a.534.534 0 0 1-.42-.206Z"
     />
   </svg>
 </div>

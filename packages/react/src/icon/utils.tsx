@@ -31,6 +31,7 @@ import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
 import { FileIcon } from './icons/FileIcon';
+import { FileTextIcon } from './icons/FileTextIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
@@ -58,7 +59,6 @@ import { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';
 import { ScrollbarArrowRightIcon } from './icons/ScrollbarArrowRightIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SettingsIcon } from './icons/SettingsIcon';
-import { SocialXIcon } from './icons/SocialXIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
 import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
@@ -72,6 +72,7 @@ import { WarningCircleIcon } from './icons/WarningCircleIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
+import { XIcon } from './icons/XIcon';
 
 export const allIcons = {
 	AlertCircleIcon,
@@ -107,6 +108,7 @@ export const allIcons = {
 	FacebookIcon,
 	FactoryIcon,
 	FileIcon,
+	FileTextIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
@@ -134,7 +136,6 @@ export const allIcons = {
 	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
-	SocialXIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
@@ -148,4 +149,5 @@ export const allIcons = {
 	WarningFilledIcon,
 	WarningIcon,
 	WebsiteIcon,
+	XIcon,
 };
