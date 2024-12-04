@@ -20,7 +20,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".storybook/**/*.tsx",
-		".storybook/vite.config.ts"
+		".storybook/preview.tsx"
 	],
 	"exclude": ["node_modules", "packages/react/**/dist/*"]
 }

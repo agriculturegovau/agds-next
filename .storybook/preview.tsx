@@ -1,7 +1,7 @@
 import { Preview } from '@storybook/react';
-import { Box } from '../packages/react/src/box';
-import { Core } from '../packages/react/src/core';
-import { theme as agriculture } from '../packages/react/src/ag-branding';
+import { Box } from '@ag.ds-next/react/src/box';
+import { Core } from '@ag.ds-next/react/src/core';
+import { theme as agriculture } from '@ag.ds-next/react/src/ag-branding';
 import { LinkComponent } from './components/LinkComponent';
 
 const storybookThemes = {
