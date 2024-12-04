@@ -1,1 +1,0 @@
-import{j as o}from"./responsive-22d1c539.js";import{T as t}from"./Text-03708b2d.js";import{C as e}from"./ComboboxListItem-78231edd.js";function r({message:s}){return o(e,{children:o(t,{children:s})})}r.__docgenInfo={description:"",methods:[],displayName:"ComboboxListEmptyResults",props:{message:{required:!0,tsType:{name:"string"},description:""}}};export{r as C};

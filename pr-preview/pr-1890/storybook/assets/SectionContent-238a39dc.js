@@ -1,1 +1,0 @@
-import{j as n}from"./responsive-22d1c539.js";import{B as s}from"./BaseContent-b4d619b8.js";function a({children:e,as:o="section",...t}){return n(s,{as:o,...t,paddingY:"section",children:e})}a.__docgenInfo={description:"",methods:[],displayName:"SectionContent",props:{as:{defaultValue:{value:"'section'",computed:!1},required:!1}}};export{a as S};

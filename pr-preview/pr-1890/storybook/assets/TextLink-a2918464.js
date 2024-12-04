@@ -1,1 +1,0 @@
-import{u as n,j as r}from"./responsive-22d1c539.js";import{r as e}from"./index-f0f3a68d.js";import"./Stack-e6a92433.js";import{l as i,c as a}from"./Box-cc8e6f8e.js";const m=e.forwardRef(function(o,s){const t=n();return r(t,{ref:s,css:[i,a],...o})});m.__docgenInfo={description:"",methods:[],displayName:"TextLink"};export{m as T};

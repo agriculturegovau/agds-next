@@ -1,1 +1,0 @@
-import{r as i}from"./index-f0f3a68d.js";function w(){const[n,t]=i.useState({windowWidth:void 0,windowHeight:void 0});return i.useEffect(()=>{const e=()=>t({windowWidth:window.innerWidth,windowHeight:window.innerHeight});return e(),window.addEventListener("resize",e),()=>window.removeEventListener("resize",e)},[]),n}export{w as u};
