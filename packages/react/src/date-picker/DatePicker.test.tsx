@@ -335,7 +335,7 @@ describe('DatePicker', () => {
 				}),
 				'08 Feb 2023'
 			);
-			await user.keyboard('{Tab}');
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should be formatted to the dateFormat prop
 			expect(
