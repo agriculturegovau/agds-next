@@ -227,12 +227,14 @@ describe('DatePicker', () => {
 			onInputChange,
 		});
 
+		const user = userEvent.setup();
+
 		const dateString = '01.01.2000';
 
 		// Type in the input field
-		await userEvent.type(await getInput(), dateString);
+		await user.type(await getInput(), dateString);
 		expect(await getInput()).toHaveValue(dateString);
-		await userEvent.keyboard('{Tab}');
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
 
@@ -243,9 +245,11 @@ describe('DatePicker', () => {
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
 		renderDatePicker({ label: 'Example' });
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the display format
-		await userEvent.type(await getInput(), 'June 5th 2023');
-		await userEvent.keyboard('{Tab}');
+		await user.type(await getInput(), 'June 5th 2023');
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should be formatted to dd/MM/yyyy
 		expect(await getInput()).toHaveValue('05/06/2023');
@@ -297,9 +301,11 @@ describe('DatePicker', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that is in the allowed format
-			await userEvent.type(await getInput(), '23-05-2023');
-			await userEvent.keyboard('{Tab}');
+			await user.type(await getInput(), '23-05-2023');
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should be formatted to the dateFormat prop
 			expect(await getInput()).toHaveValue('23/05/2023');
