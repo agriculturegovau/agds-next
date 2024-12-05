@@ -8,34 +8,30 @@ import { Text } from '../text';
 import { ArrowRightIcon } from '../icon';
 import { FeatureLinkListBackground, hoverColorMap } from './utils';
 
-export function useLinkDescriptionId(idProp?: string) {
-	const autoId = useId(idProp);
-	return `link-desc-${autoId}`;
-}
-
 export type FeatureLinkListItemProps = LinkProps & {
-	label: ReactNode;
-	description?: ReactNode;
 	background?: FeatureLinkListBackground;
+	description?: ReactNode;
+	label: ReactNode;
 };
 
 export const FeatureLinkListItem = ({
-	label,
-	description,
 	background = 'body',
+	description,
+	label,
 	...props
 }: FeatureLinkListItemProps) => {
-	const TextComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
-	const descriptionId = useLinkDescriptionId(props.id);
+	const LinkComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
+	const descriptionId = useDescriptionId(props.id);
 
 	return (
 		<Box
 			as="li"
-			borderBottom
 			background={background}
+			borderBottom
 			css={[
-				{ ...linkStyles, textDecoration: 'none' },
+				linkStyles,
 				{
+					textDecoration: 'none',
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
 					},
@@ -43,8 +39,7 @@ export const FeatureLinkListItem = ({
 			]}
 		>
 			<Flex
-				gap={1.5}
-				paddingY={1.5}
+				alignItems="flex-start"
 				css={{
 					position: 'relative',
 					':has(:focus-visible)': packs.outline,
@@ -53,28 +48,29 @@ export const FeatureLinkListItem = ({
 						':focus-within': packs.outline,
 					},
 				}}
+				gap={1.5}
 				justifyContent="space-between"
-				alignItems="flex-start"
+				paddingY={1.5}
 			>
 				<Stack gap={0.5}>
 					<Text fontSize="md" fontWeight="bold">
-						<TextComponent
+						<LinkComponent
 							{...props}
+							aria-describedby={description ? descriptionId : undefined}
 							css={{
 								'&:focus, &:focus-visible': { outline: 'none' },
 								'&::after': {
-									content: '""',
-									position: 'absolute',
-									top: 0,
-									right: 0,
 									bottom: 0,
+									content: '""',
 									left: 0,
+									position: 'absolute',
+									right: 0,
+									top: 0,
 								},
 							}}
-							aria-describedby={description ? descriptionId : undefined}
 						>
 							{label}
-						</TextComponent>
+						</LinkComponent>
 					</Text>
 					{description && (
 						<Text as="p" id={descriptionId}>
@@ -87,3 +83,8 @@ export const FeatureLinkListItem = ({
 		</Box>
 	);
 };
+
+function useDescriptionId(idProp?: string) {
+	const autoId = useId(idProp);
+	return `feature-link-list-description-${autoId}`;
+}

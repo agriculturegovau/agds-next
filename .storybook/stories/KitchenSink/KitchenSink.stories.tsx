@@ -761,7 +761,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									},
 									{
 										label: 'External link',
-										description: 'This is External link.',
+										description: 'This is an external link.',
 										href: 'https://www.google.com',
 										target: '_blank',
 									},

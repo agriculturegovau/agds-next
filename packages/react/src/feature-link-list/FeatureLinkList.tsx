@@ -13,11 +13,12 @@ export type FeatureLinkListProps = {
 export const FeatureLinkList = ({
 	links,
 	background,
+	...props
 }: FeatureLinkListProps) => {
 	return (
-		<Stack as="ul" borderTop>
+		<Stack {...props} as="ul" borderTop>
 			{links.map((props, index) => (
-				<FeatureLinkListItem key={index} background={background} {...props} />
+				<FeatureLinkListItem background={background} key={index} {...props} />
 			))}
 		</Stack>
 	);

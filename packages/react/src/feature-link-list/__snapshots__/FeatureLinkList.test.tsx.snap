@@ -6,7 +6,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
+      class="css-1m8049u-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
@@ -18,8 +18,8 @@ exports[`FeatureLinkList renders correctly 1`] = `
             class="css-1esljmy-boxStyles"
           >
             <a
-              aria-describedby="link-desc-:r0:"
-              class="css-1ovmco1-TextLink-FeatureLinkListItem"
+              aria-describedby="feature-link-list-description-:r0:"
+              class="css-3oy6gb-TextLink-FeatureLinkListItem"
               href="#"
             >
               Add a business with RAM
@@ -27,7 +27,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
           </span>
           <p
             class="css-dbscsh-boxStyles"
-            id="link-desc-:r0:"
+            id="feature-link-list-description-:r0:"
           >
             Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).
           </p>
@@ -63,7 +63,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
+      class="css-1m8049u-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
@@ -75,7 +75,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
             class="css-1esljmy-boxStyles"
           >
             <a
-              class="css-1ovmco1-TextLink-FeatureLinkListItem"
+              class="css-3oy6gb-TextLink-FeatureLinkListItem"
               href="#"
             >
               Add a business with RAM
@@ -104,7 +104,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
       </div>
     </li>
     <li
-      class="css-1cm8iam-boxStyles-FeatureLinkListItem"
+      class="css-1m8049u-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
@@ -116,7 +116,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
             class="css-1esljmy-boxStyles"
           >
             <a
-              class="css-1ovmco1-TextLink-FeatureLinkListItem"
+              class="css-3oy6gb-TextLink-FeatureLinkListItem"
               href="#"
             >
               Accept an invite

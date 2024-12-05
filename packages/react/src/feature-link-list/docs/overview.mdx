@@ -1,11 +1,13 @@
 ---
 title: Feature link list
-description: Feature link list is a simple set of vertical links used for site navigation and to order information for users.
+description: Feature link list is a vertical list of important links. It adds prominence and additional information to help users find and understand the navigation items.
 group: Navigation
 storybookPath: /story/navigation-featurelinklist--basic
-figmaGalleryNodeId: 31557%3A174348
-relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
+figmaGalleryNodeId: 11978%3A107111
+relatedComponents: ['card', 'link-list', 'list', 'inpage-nav']
 ---
+
+Feature link list provides emphasis and hierarchy to an important list of links. It provides support for description content that will help a user read, understand, assess and select the appropriate link. To enhance usability, a feature link list should always be accompanied by a clear heading.
 
 ```jsx live
 <FeatureLinkList
@@ -22,25 +24,32 @@ relatedComponents: ['link-list', 'list', 'inpage-nav', 'side-nav', 'sub-nav']
 				'Use an invite code from an email to act on behalf of a business.',
 			href: '#',
 		},
+		{
+			label: 'About the department',
+			description: 'A suitable description for an external link.',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
+		},
 	]}
 />
 ```
 
-The default feature link list component removes the normal bullets and spacing associated with a list.
-
 <DoHeading />
 
-- use to navigate to other pages
-- avoid opening links in new tabs
-- use to list a group of links.
+- use to provide emphasis and hierarchy to link lists
+- avoid opening links in new tabs; provide an external link icon when it is not possible to open the link in the same browser tab
+- aim for consistent use of descriptions for all links in a list.
 
 <DontHeading />
 
-- confuse with Inpage nav, which links to content on the current page.
+- unnecessarily repeat the label in the description
+- include more than 3 lines of copy in the description
+- confuse with [Inpage nav](/components/inpage-nav), which links to content on the current page
+- use outside of the Main region. Link list may be more suitable in this instance.
 
-## No Description
+## Using without a description
 
-The feature link list component can be used without a description.
+Links can also be used without a description, if the label alone provides enough information.
 
 ```jsx live
 <FeatureLinkList
@@ -52,6 +61,11 @@ The feature link list component can be used without a description.
 		{
 			label: 'Accept an invite',
 			href: '#',
+		},
+		{
+			label: 'About the department',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
 		},
 	]}
 />
