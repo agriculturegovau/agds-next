@@ -169,7 +169,7 @@ describe('DatePicker', () => {
 		});
 	});
 
-	it.only('updates correctly based on the `value` prop', async () => {
+	it('updates correctly based on the `value` prop', async () => {
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
 
@@ -257,12 +257,23 @@ describe('DatePicker', () => {
 			dateFormat: 'd MMM yyyy',
 		});
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the display format
-		await userEvent.type(await getInput(), '05 06 2023');
-		await userEvent.keyboard('{Tab}');
+		await user.type(
+			screen.getByRole('textbox', {
+				name: 'Example (e.g. 5 Aug 2015) (optional)',
+			}),
+			'05 06 2023'
+		);
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should be formatted to the dateFormat prop
-		expect(await getInput()).toHaveValue('5 Jun 2023');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Example (e.g. 5 Aug 2015) (optional)',
+			})
+		).toHaveValue('5 Jun 2023');
 	});
 
 	it('doesn’t format when an invalid format is entered', async () => {
