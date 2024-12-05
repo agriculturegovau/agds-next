@@ -19,17 +19,12 @@ const config: StorybookConfig = {
 	core: {
 		builder: {
 			name: '@storybook/builder-webpack5',
-			options: {
-				fsCache: true,
-				lazyCompilation: true,
-			},
+			options: {},
 		},
 	},
 	staticDirs: ['../example-site/public'],
 	typescript: {
-		check: false,
-		checkOptions: {},
-		skipCompiler: false,
+		reactDocgen: false,
 	},
 };
 
