@@ -31,6 +31,7 @@ import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
 import { FileIcon } from './icons/FileIcon';
+import { FileTextIcon } from './icons/FileTextIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
@@ -38,7 +39,10 @@ import { InboxIcon } from './icons/InboxIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
+import { LicenceBusinessIcon } from './icons/LicenceBusinessIcon';
+import { LicenceIcon } from './icons/LicenceIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
+import { LockIcon } from './icons/LockIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
 import { PauseIcon } from './icons/PauseIcon';
@@ -60,11 +64,15 @@ import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
+import { UnlockIcon } from './icons/UnlockIcon';
 import { UploadIcon } from './icons/UploadIcon';
+import { UsersIcon } from './icons/UsersIcon';
+import { WalletIcon } from './icons/WalletIcon';
 import { WarningCircleIcon } from './icons/WarningCircleIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
+import { XIcon } from './icons/XIcon';
 
 export const allIcons = {
 	AlertCircleIcon,
@@ -100,6 +108,7 @@ export const allIcons = {
 	FacebookIcon,
 	FactoryIcon,
 	FileIcon,
+	FileTextIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
@@ -107,7 +116,10 @@ export const allIcons = {
 	InfoFilledIcon,
 	InfoIcon,
 	InstagramIcon,
+	LicenceBusinessIcon,
+	LicenceIcon,
 	LinkedInIcon,
+	LockIcon,
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
@@ -129,9 +141,13 @@ export const allIcons = {
 	ThumbsDownIcon,
 	ThumbsUpIcon,
 	TwitterIcon,
+	UnlockIcon,
 	UploadIcon,
+	UsersIcon,
+	WalletIcon,
 	WarningCircleIcon,
 	WarningFilledIcon,
 	WarningIcon,
 	WebsiteIcon,
+	XIcon,
 };
