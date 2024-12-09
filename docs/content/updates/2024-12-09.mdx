@@ -1,0 +1,287 @@
+---
+date: 9th December 2024
+title: AgDS Beta v1.25.0 release
+description: Improves the accessibility and documentation for many components, improves the performance of Box and Combobox, initial release of yourgov app, plus various other bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Prevent focus ring from being cut off by screen edge and sibling links.
+- Add aria attributes to mobile menu button to improve state announcement.
+- `AppLayoutHeader`: Wrap `accountDetails` when space is limited.
+- docs: Explain in more detail the reasons for choosing each sub-level items option.
+
+### [Autocomplete](/components/autocomplete)
+
+- Announce loading and error states to screen readers.
+- docs: Improve Do and Don’t guidance.
+- docs: Improve Invalid guidance and example.
+
+### [Avatar](/components/avatar)
+
+- Add colour section to docs, showcasing dark and light palette variants.
+
+### [Box](/components/box)
+
+- Improve performance by separating style props and memoising.
+
+### [Breadcrumbs](/components/breadcrumbs)
+
+- Update accessible name for collapsible (…) button to be more descriptive.
+- docs: Improve guidance around correct usage of breadcrumbs.
+
+### [Button](/components/button)
+
+- Improve appearance and experience for high contrast users.
+
+### [Callout](/components/callout)
+
+- docs: Add title section with link to semantic headings.
+- docs: Change conditionally revealed guidance to within-accordion, rather than within-radio. Add Colour section to indicate palette options.
+
+### [Card](/components/card)
+
+- docs: Add Do item relating to wrapping cards in a list.
+- docs: Include colour section, and ensure lists are marked up semantically.
+
+### [Checkbox](/components/checkbox)
+
+- Add explicit `for`/`id` association between input and label to improve accessibility.
+- Change focus ring to use `:focus` instead of `:focus-visible`.
+- Improve appearance and experience for high contrast users.
+
+### [Combobox](/components/combobox)
+
+- Improve performance of option rendering, filtering and string matching.
+- Announce loading and error states to screen readers.
+- Prevent iOS Done button from closing dropdown.
+- Fix iOS VoiceOver’s announcement of options.
+- Fix accessing options in Android TalkBack.
+- Simplify `required` now its `Field` allows `undefined`.
+- `ComboboxMulti`: Enable iOS screen reader users to delete individual selections.
+- `ComboboxMulti`: Correctly announce selection and removal of items.
+- `ComboboxMulti`: Prevent users from being able to focus the chip to remove it - removal only available from the (x) button.
+- docs: Improve Invalid guidance and example.
+
+### [Date picker](/components/date-picker)
+
+- Update calendar to satisfy ARIA pattern.
+- Make hover, selected and today cells visible in high contrast mode.
+- Internally support and transform ISO date strings when set as `value`.
+- Disable `autocomplete` on calendar navigation dropdown.
+- Simplify `required` now its `Field` allows `undefined`.
+
+### [Date range picker](/components/date-range-picker)
+
+- Update calendar to satisfy ARIA pattern.
+- Make hover, selected and today cells visible in high contrast mode.
+- Add stable `id`s to the from and to inputs.
+- Disable `autocomplete` on calendar navigation dropdown.
+- Internally support and transform ISO date strings when set as `value`.
+- docs: Update example error messages to be specific to the invalid inputs.
+- docs: Fix `toInvalid` checks and `inputChange` events in examples.
+
+### [Details](/components/details)
+
+- Fix iOS VoiceOver not announcing the expanded state.
+- Make the (i) icon announced to screen readers.
+- docs: Improve Do and Don’t guidance.
+
+### [Drawer](/components/drawer)
+
+- Improve appearance and experience for high contrast users.
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- docs: Update badge examples to have announced text reflect visual text.
+
+### [Feature link list](/components/feature-link-list)
+
+- Initial release of component.
+
+### [Field](/components/field)
+
+- Allow `required` to be `undefined`.
+- Update `useScrollToField` hook to also find elements by name.
+
+### [File input](/components/file-input)
+
+- Change to hybrid, custom implementation for consistent visual and screen reader announcement.
+- Simplify `required` now its `Field` allows `undefined`.
+- docs: Add `accept` example and enhance hint guidance.
+
+### [File upload](/components/file-upload)
+
+- Announce adding and removing files.
+- Announce file size, accepted files, invalid message and optional state when focusing Select file(s) button.
+- Add focus ring to Select file(s) button.
+- Add `buttonRef` prop and attach it to Select file(s) button.
+- Simplify `required` now its `Field` allows `undefined`.
+
+### [Global alert](/components/global-alert)
+
+- Improve appearance and experience for high contrast users.
+
+### [Header](/components/header)
+
+- Add aria attributes to mobile menu button to improve state announcement.
+
+### [Icon](/components/icon)
+
+- Create `LicenceBusinessIcon`, `LicenceIcon`, `LockIcon`, `PermitIcon`, `UnlockIcon`, `UsersIcon`, `WalletIcon` and `XIcon`.
+- Add `id` as allowed prop.
+- docs: Improve usage guidance.
+
+### [Link list](/components/link-list)
+
+- docs: Improve Do and Don’t guidance.
+
+### [Main nav](/components/main-nav)
+
+- Set `aria-expanded` to match mobile menu open state.
+- Wrap `secondaryItems` when space is limited.
+
+### [Modal](/components/modal)
+
+- Fix appearance on small screens.
+- Improve appearance and experience for high contrast users.
+
+### [Notification badge](/components/notification-badge)
+
+- Improve appearance and experience for high contrast users.
+
+### [Page alert](/components/page-alert)
+
+- Make title default to `H2` instead of `H3`.
+- Update `focusOnUpdate` to not focus on any falsey value.
+- docs: Improve customising the title guidance.
+
+### [Pagination](/components/pagination)
+
+- Announce `itemRangeText` to screen readers.
+- Announce the hidden pages represented by ellipses.
+- Ensure focus is returned to the correct page number button when the Previous button is added and removed.
+- docs: Update Items per page to a working example.
+
+### [Password input](/components/password-input)
+
+- docs: Improve Do and Don’t guidance.
+
+### [Progress indicator](/components/progress-indicator)
+
+- Improve appearance and experience for high contrast users.
+- Only set active step when path matches exactly or has a sub-step.
+
+### [Prose](/components/prose)
+
+- Apply `bodyText` `maxWidth` token to lists.
+
+### [Radio](/components/radio)
+
+- Add explicit `for`/`id` association between input and label to improve accessibility.
+- Change focus ring to use `:focus` instead of `:focus-visible`.
+- Improve appearance and experience for high contrast users.
+
+### [Search input](/components/search-input)
+
+- Simplify `required` now its `Field` allows `undefined`.
+- docs: Improve guidance/examples to include a search landmark.
+
+### [Section alert](/components/section-alert)
+
+- Add `role` and `aria-label` to improve announcements across screen readers.
+- Update `focusOnUpdate` to not focus on any falsey value.
+
+### [Select](/components/select)
+
+- Simplify `required` now its `Field` allows `undefined`.
+- Add TypeScript support for `autocomplete`.
+
+### [Side nav](/components/side-nav)
+
+- Use responsive column widths to contain example.
+- docs: Improve Don’t guidance.
+
+### [Sub nav](/components/sub-nav)
+
+- Improve appearance and experience for high contrast users.
+
+### [Summary list](/components/summary-list)
+
+- Prevent action column from shrinking.
+- docs: Update examples to have unique Action content.
+
+### [Switch](/components/switch)
+
+- Add required `aria-checked` attribute and add support for `aria-controls`.
+
+### [Table](/components/table)
+
+- Correctly label table wrappers when headings are used instead of captions.
+- Fix scrolling shadows not responding to changes in table heights.
+- `TableCell`: Add support for `id` prop.
+- docs: Update guidance and examples of sortable tables to match ARIA pattern.
+- docs/storybook: Change indeterminate select-all checkbox to always select all items rather than deselect when some are selected.
+- docs: Fix alignment of cells.
+- docs: Improve Do guidance.
+
+### [Tabs](/components/tabs)
+
+- Improve appearance and experience for high contrast users.
+
+### [Tags](/components/tags)
+
+- Automatically focus previous tag `onRemove`.
+- Add `ref` support.
+- Set background to `'body'`.
+
+### [Text input](/components/text-input)
+
+- Simplify `required` now its `Field` allows `undefined`.
+
+### [Textarea](/components/textarea)
+
+- Simplify `required` now its `Field` allows `undefined`.
+
+### [Time input](/components/time-input)
+
+- Correctly handle ‘am’ and ‘pm’ when separated from times with a space.
+- Simplify `required` now its `Field` allows `undefined`.
+
+### [Time picker](/components/time-picker)
+
+- Announce loading and error states to screen readers.
+
+### Other docs
+
+- content: Make uncontrolled checkboxes & radio buttons function.
+- content-principles: Improve accessibility of link to footnote.
+- content-structure: Add section regarding semantic headings and page structure.
+- content-styles: Add abbreviations, acronymns and initialisms content.
+- content-styles: Update example headings to be unique.
+- foundations: Improve icon usage clarity.
+- general: Add a unique `aria-label` to live code editors.
+- general: Remove tab stop from static code snippets.
+- general: Remove `aria-label`s from live code snippet buttons so the visible label become the accessible name.
+- general: Export `visuallyHiddenStyles` for use within live code examples.
+- general: Set dynamic branch for edit-this-page link so that editors can primarily be sent to develop.
+- patterns: Add announcement of empty states.
+- patterns: Fix heading hierarchy in Search filters page.
+- patterns: Improve Focus mode Do and Don’t guidance.
+- tokens: List dark and light colour tokens separately and describe the colour as words.
+
+### [yourgov](/yourgov)
+
+- Initial release of example application.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.25.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1781) for this release.
