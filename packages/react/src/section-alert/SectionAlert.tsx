@@ -4,12 +4,14 @@ import {
 	MouseEventHandler,
 	ReactNode,
 } from 'react';
+import { visuallyHiddenStyles } from '../a11y';
+import { useId } from '../core';
 import { useFocus } from '../core/utils/useFocus';
 import { Flex } from '../flex';
 import { getOptionalCloseHandler } from '../getCloseHandler';
 import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
-import { sectionAlertIconMap, SectionAlertTone } from './utils';
+import { sectionAlertIconMap, type SectionAlertTone } from './utils';
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
@@ -21,7 +23,7 @@ export type SectionAlertProps = {
 	/** Whether the alert should be focused as soon as it's rendered. */
 	focusOnMount?: boolean;
 	/** Focus the alert when a value in this array updates. */
-	focusOnUpdate?: ReadonlyArray<unknown>;
+	focusOnUpdate?: ReadonlyArray<unknown> | string | number;
 	/** The ID of the alert. */
 	id?: string;
 	/** The role of the alert. */
@@ -40,9 +42,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 	function SectionAlert(
 		{
 			children,
-			id,
 			focusOnMount,
 			focusOnUpdate,
+			id,
 			onClose,
 			onDismiss,
 			role,
@@ -58,34 +60,50 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 			focusOnUpdate,
 			forwardedRef,
 		});
+		const { childrenId, titleId, toneId } = useSectionAlertIds(id);
 
-		const Icon = sectionAlertIconMap[tone];
+		const icon = sectionAlertIconMap[tone];
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
 		return (
 			<Flex
+				{...props}
 				alignItems="center"
+				aria-labelledby={`${toneId} ${titleId} ${children ? childrenId : ''}`}
 				background={tone}
 				borderColor={tone}
 				borderLeft
 				borderLeftWidth="xl"
+				focusRingFor="all"
 				gap={0.5}
 				highContrastOutline
 				id={id}
-				focusRingFor="all"
 				justifyContent="space-between"
 				padding={1}
 				ref={ref}
-				role={role}
+				// Not using default arg because is if someone accidentally passes a falsey value, we still need the role to be set.
+				role={role || 'region'}
 				rounded
 				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
-				{...props}
 			>
 				<Flex gap={0.5}>
-					{Icon}
-					<Flex gap={0.25} flexDirection={'column'}>
-						{title && <Text fontWeight="bold">{title}</Text>}
-						{children}
+					<span
+						css={{
+							display: 'inline-flex',
+						}}
+					>
+						{icon}
+						<span css={visuallyHiddenStyles} id={toneId}>
+							{tone}
+						</span>
+					</span>
+					<Flex flexDirection="column" gap={0.25}>
+						{title && (
+							<Text fontWeight="bold" id={titleId}>
+								{title}
+							</Text>
+						)}
+						{children && <div id={childrenId}>{children}</div>}
 					</Flex>
 				</Flex>
 				{closeHandler ? (
@@ -95,3 +113,11 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		);
 	}
 );
+
+function useSectionAlertIds(idProp?: string) {
+	const autoId = useId(idProp);
+	const childrenId = `section-alert-children-${autoId}`;
+	const titleId = `section-alert-title-${autoId}`;
+	const toneId = `section-alert-icon-${autoId}`;
+	return { childrenId, titleId, toneId };
+}

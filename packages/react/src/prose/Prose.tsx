@@ -95,6 +95,7 @@ export const proseClass = css({
 	[`ul${notSelector}, ol${notSelector}`]: {
 		'> li': {
 			marginTop: mapSpacing(0.5),
+			maxWidth: tokens.maxWidth.bodyText,
 
 			[`> ul${notSelector}, > ol${notSelector}`]: {
 				marginTop: mapSpacing(0.5),
@@ -107,6 +108,8 @@ export const proseClass = css({
 	},
 
 	[`dl${notSelector}`]: {
+		maxWidth: tokens.maxWidth.bodyText,
+
 		'> dd': {
 			marginTop: mapSpacing(0.5),
 			paddingLeft: mapSpacing(0.5),

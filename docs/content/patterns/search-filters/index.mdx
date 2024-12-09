@@ -26,7 +26,9 @@ The dataset should be displayed in a [Table](/components/table) or a list of [Ca
 				gap={1}
 				alignItems={['flex-start', 'flex-end']}
 			>
-				<SearchInput label="Search" hideOptionalLabel />
+				<div aria-label="Site" role="search">
+					<SearchInput label="Search" hideOptionalLabel />
+				</div>
 				<Button variant="secondary" iconAfter={FilterIcon}>
 					Show filters
 				</Button>
@@ -61,7 +63,9 @@ The dataset should be displayed in a [Table](/components/table) or a list of [Ca
 		<Divider />
 	</Stack>
 	<Stack gap={1}>
-		<H3>25 results</H3>
+		<H2>
+			<span role="status">25 results</span>
+		</H2>
 		{Array.from(Array(5).keys()).map((idx) => (
 			<Card key={idx} shadow clickable>
 				<CardInner>
@@ -269,7 +273,7 @@ When a search filter doesn’t match any data, use an [empty state](/patterns/lo
 		</Flex>
 		<Divider />
 	</Stack>
-	<Stack gap={2} alignItems="flex-start">
+	<Stack gap={2} alignItems="flex-start" role="alert">
 		<Stack gap={1}>
 			<HelpIcon size="lg" color="muted" />
 			<Heading type="h2" fontSize="lg">

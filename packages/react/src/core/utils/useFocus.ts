@@ -30,8 +30,10 @@ export function useFocus<T extends HTMLElement>({
 	useEffect(
 		() => {
 			if (
-				(focusOnUpdate === undefined && !focusOnMount) ||
-				!('current' in ref)
+				(!focusOnUpdate && !focusOnMount) ||
+				!('current' in ref) ||
+				(Array.isArray(focusOnUpdate) &&
+					focusOnUpdate.filter(Boolean).length === 0)
 			) {
 				return;
 			}

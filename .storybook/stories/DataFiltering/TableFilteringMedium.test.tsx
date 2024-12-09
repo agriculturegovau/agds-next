@@ -70,6 +70,8 @@ describe('MediumFilteringPattern', () => {
 					// react 18s `useId` break this rule
 					'valid-id': 'off',
 					'no-inline-style': 'off',
+					// incorrectly warns about aria-label on li
+					'aria-label-misuse': 'off',
 				},
 			});
 

@@ -16,50 +16,19 @@ Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should
 Consider using other formats such as tables, if more than 12 cards are required.
 
 ```jsx live
-<Flex gap={1} flexDirection="row">
-	<Flex
-		flexDirection="column"
-		flexGrow={1}
-		palette="light"
-		padding={1}
-		background="body"
-	>
-		<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card link</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Flex>
-	<Flex
-		flexDirection="column"
-		flexGrow={1}
-		palette="dark"
-		padding={1}
-		background="body"
-	>
-		<Card clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card link</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Flex>
-</Flex>
+<Card>
+	<CardInner>
+		<Stack gap={1}>
+			<Heading as="h3" type="h4">
+				Card title
+			</Heading>
+			<Text>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+				finibus leo.
+			</Text>
+		</Stack>
+	</CardInner>
+</Card>
 ```
 
 <DoHeading />
@@ -68,7 +37,8 @@ Consider using other formats such as tables, if more than 12 cards are required.
 - limit links to one per card
 - avoid images for the most part, unless they add relevant information
 - use a pictogram (64 pixels) if it provides meaningful context
-- use appropriate alt text for images.
+- use appropriate alt text for images
+- wrap related cards in a list to make navigation easier.
 
 <DontHeading />
 
@@ -183,4 +153,80 @@ Use feature footers to give the card footer more visual prominence. This can be 
 		</Card>
 	</Column>
 </Columns>
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Fragment>
+	<Flex as="ul" gap={1.5} padding={1.5}>
+		<Box as="li">
+			<Card shadow clickable>
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card light 1</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Box>
+		<Box as="li">
+			<Card shadow clickable>
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card light 2</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Box>
+	</Flex>
+
+	<Flex as="ul" background="body" gap={1.5} padding={1.5} palette="dark">
+		<Box as="li">
+			<Card clickable>
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card dark 1</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Box>
+		<Box as="li">
+			<Card clickable>
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card dark 2</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Box>
+	</Flex>
+</Fragment>
 ```

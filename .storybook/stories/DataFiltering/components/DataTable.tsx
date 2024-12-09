@@ -61,7 +61,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (error) {
 			return (
-				<Stack gap={1}>
+				<Stack gap={1} role="alert">
 					<AlertFilledIcon color="error" size="lg" />
 					<Heading type="h2" fontSize="lg">
 						Failed to load
@@ -76,7 +76,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (!loading && data.length === 0) {
 			return (
-				<Stack gap={2} alignItems="flex-start" paddingY={1}>
+				<Stack gap={2} alignItems="flex-start" paddingY={1} role="alert">
 					<Stack gap={1}>
 						<HelpIcon size="lg" color="muted" />
 						<Heading type="h2" fontSize="lg">
@@ -96,13 +96,15 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						Table column headers with buttons are sortable.
 					</div>
 				) : null}
+				<div role="status" css={visuallyHiddenStyles}>
+					{loading ? 'Loading audits' : ''}
+				</div>
 				<TableWrapper>
 					<Table
 						aria-rowcount={totalItems}
-						{...(headingId && {
-							'aria-labelledby': headingId,
-							'aria-describedby': descriptionId,
-						})}
+						aria-labelledby={
+							headingId ? `${headingId} ${descriptionId}` : undefined
+						}
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}

@@ -47,8 +47,8 @@ export type ComboboxProps<
 	emptyResultsMessage?: string;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
-	/** Used to override the default item rendering. */
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	/** Used to override the default item rendering. inputValue is now unused. */
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	/** If true, the clear button will be rendered when there is a selected option. */
 	clearable?: boolean;
 };
@@ -105,8 +105,8 @@ export function Combobox<Option extends DefaultComboboxOption>({
 	return (
 		<ComboboxBase
 			combobox={combobox}
-			inputItems={inputItems}
 			inputId={inputId}
+			inputItems={inputItems}
 			inputRef={inputRefProp}
 			isAutocomplete={false}
 			{...props}

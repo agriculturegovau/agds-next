@@ -7,6 +7,7 @@ import {
 	isMatch,
 	isValid,
 	parse,
+	parseISO,
 } from 'date-fns';
 
 export const acceptedDateFormats = [
@@ -36,7 +37,7 @@ export const formatDate = (date: Date, dateformat: AcceptedDateFormats) =>
 	format(date, dateformat);
 
 export const formatHumanReadableDate = (date: Date) =>
-	format(date, 'do MMMM yyyy (EEEE)');
+	format(date, 'do MMMM yyyy EEEE');
 
 export const parseDate = (
 	value: string,
@@ -90,9 +91,16 @@ export function transformValuePropToInputValue(
 	valueProp: Date | string | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
-	if (typeof valueProp === 'string') return valueProp;
-	if (typeof valueProp === 'undefined') return '';
-	if (isValidDate(valueProp)) return formatDate(valueProp, dateFormat);
+	if (valueProp === undefined) return '';
+
+	const valueAsDateOrUndefined =
+		typeof valueProp === 'string' ? normaliseDateString(valueProp) : valueProp;
+
+	if (valueAsDateOrUndefined === undefined) return valueProp.toString();
+
+	if (isValidDate(valueAsDateOrUndefined))
+		return formatDate(valueAsDateOrUndefined, dateFormat);
+
 	return '';
 }
 
@@ -135,3 +143,13 @@ export function getDateInputButtonAriaLabel({
 	if (!parsed) return `Choose ${dateStr}`;
 	return `Change ${dateStr}, ${formatHumanReadableDate(parsed)}`;
 }
+
+/**
+ * Takes a string and converts ISO date strings to a Date object, otherwise converts the string to undefined.
+ */
+export const normaliseDateString = (date: string) => {
+	const parsedISODate = parseISO(date);
+	return parsedISODate.toString() === 'Invalid Date'
+		? undefined
+		: parsedISODate;
+};

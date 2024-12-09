@@ -96,6 +96,7 @@ import { Modal } from '../../../packages/react/src/modal';
 import { GroupedFields } from '../../../packages/react/src/grouped-fields';
 import { TimeInput } from '../../../packages/react/src/time-input';
 import { TimePicker } from '../../../packages/react/src/time-picker';
+import { FeatureLinkList } from '../../../packages/react/src/feature-link-list';
 import { useTernaryState } from '../../../packages/react/src/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -744,6 +745,28 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									</TableRow>
 								</TableBody>
 							</Table>
+							<FeatureLinkList
+								links={[
+									{
+										label: 'Add a business with RAM',
+										description:
+											'Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).',
+										href: '#',
+									},
+									{
+										label: 'Accept an invite',
+										description:
+											'Use an invite code from an email to act on behalf of a business.',
+										href: '#',
+									},
+									{
+										label: 'External link',
+										description: 'This is an external link.',
+										href: 'https://www.google.com',
+										target: '_blank',
+									},
+								]}
+							/>
 						</Stack>
 					</Column>
 				</Columns>

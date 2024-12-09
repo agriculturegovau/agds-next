@@ -21,12 +21,12 @@ export type FieldProps = {
 	maxWidth?: FieldMaxWidth;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
-	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
+	/** If `true`, "(optional)" will never be appended to the label even when `required` is `false` or `undefined`. */
 	hideOptionalLabel?: boolean;
 	/** Message to show when the field is invalid. */
 	message: string | undefined;
-	/** If false, "(optional)" will be appended to the label. */
-	required: boolean;
+	/** If `false` or `undefined`, "(optional)" will be appended to the label. */
+	required?: boolean;
 };
 
 export const Field = ({

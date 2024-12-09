@@ -33,8 +33,8 @@ export function formatFileSize(bytes: number) {
 }
 
 export function getFileListSummaryText(files: {}[]) {
-	const label = files.length === 1 ? 'file' : 'files';
-	return `${files.length} ${label} selected`;
+	if (files.length === 0) return '';
+	return `${files.length} ${files.length === 1 ? 'file' : 'files'} selected`;
 }
 
 export const fileTypeMapping = {

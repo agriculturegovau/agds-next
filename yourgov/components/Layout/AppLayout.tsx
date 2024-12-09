@@ -1,17 +1,5 @@
 import { PropsWithChildren, Fragment, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { tokens } from '@ag.ds-next/react/core';
-import { Logo } from '@ag.ds-next/react/ag-branding';
-import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import {
-	ExitIcon,
-	HomeIcon,
-	EmailIcon,
-	SettingsIcon,
-	HelpIcon,
-	AvatarIcon,
-	ChevronsLeftIcon,
-} from '@ag.ds-next/react/icon';
 import {
 	AppLayout as AgDsAppLayout,
 	AppLayoutHeader as AgDSAppLayoutHeader,
@@ -21,8 +9,8 @@ import {
 	AppLayoutContent,
 } from '@ag.ds-next/react/app-layout';
 import { Box } from '@ag.ds-next/react/box';
-import { Text } from '@ag.ds-next/react/text';
-import { LinkList } from '@ag.ds-next/react/link-list';
+import { tokens } from '@ag.ds-next/react/core';
+import { Logo } from '@ag.ds-next/react/ag-branding';
 import {
 	DropdownMenuDivider,
 	DropdownMenuGroup,
@@ -30,11 +18,25 @@ import {
 	DropdownMenuItemRadio,
 	DropdownMenuPanel,
 } from '@ag.ds-next/react/dropdown-menu';
+import {
+	AvatarIcon,
+	ChevronsLeftIcon,
+	EmailIcon,
+	ExitIcon,
+	HelpIcon,
+	HomeIcon,
+	PermitIcon,
+	SettingsIcon,
+} from '@ag.ds-next/react/icon';
+import { LinkList } from '@ag.ds-next/react/link-list';
+import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
+import { SkipLinks } from '@ag.ds-next/react/skip-link';
+import { Text } from '@ag.ds-next/react/text';
 import { useAuth, User } from '../../lib/useAuth';
 import NotFoundPage from '../../pages/not-found';
 import { Business, useLinkedBusinesses } from '../../lib/useLinkedBusinesses';
 import { ErrorBoundary, ErrorBoundaryPageFallback } from '../ErrorBoundary';
-import { IconApproval, IconUsers } from '../CustomIcons';
+import { IconUsers } from '../CustomIcons';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
@@ -131,24 +133,22 @@ function AppLayoutHeader({ user }: { user: User }) {
 				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
 				dropdown: (
 					<DropdownMenuPanel palette="light">
-						{isAppHomePage ? null : (
-							<DropdownMenuGroup label="Businesses">
-								{linkedBusinesses.map((b) => (
-									<DropdownMenuItemRadio
-										key={b.name}
-										checked={
-											selectedBusiness?.name
-												? selectedBusiness.name === b.name
-												: false
-										}
-										secondaryText={`ABN ${b.abn}`}
-										onClick={() => onBusinessClick(b)}
-									>
-										{b.name}
-									</DropdownMenuItemRadio>
-								))}
-							</DropdownMenuGroup>
-						)}
+						<DropdownMenuGroup label="Businesses">
+							{linkedBusinesses.map((linkedBusiness) => (
+								<DropdownMenuItemRadio
+									key={linkedBusiness.name}
+									checked={
+										selectedBusiness?.name
+											? selectedBusiness.name === linkedBusiness.name
+											: false
+									}
+									secondaryText={`ABN ${linkedBusiness.abn}`}
+									onClick={() => onBusinessClick(linkedBusiness)}
+								>
+									{linkedBusiness.name}
+								</DropdownMenuItemRadio>
+							))}
+						</DropdownMenuGroup>
 						<DropdownMenuGroup label="My account">
 							<DropdownMenuItemLink href="/not-found" icon={AvatarIcon}>
 								Profile
@@ -211,13 +211,23 @@ function AppLayoutSidebar() {
 					icon: HomeIcon,
 				},
 				{
-					label: 'Licences and permits',
-					href: '/app/licences-and-permits',
-					icon: IconApproval,
+					label: 'Permits',
+					href: '/app/permits',
+					icon: PermitIcon,
+					items: [
+						{
+							label: 'Apply for a new permit',
+							href: '/app/permits/apply-for-new-permit',
+						},
+						{
+							label: 'Manage existing permits',
+							href: '/app/permits/manage-existing',
+						},
+					],
 				},
 				{
-					label: 'Staff access',
-					href: '/not-found',
+					label: 'Staff',
+					href: '/app/staff',
 					icon: IconUsers,
 				},
 			],
@@ -226,6 +236,7 @@ function AppLayoutSidebar() {
 					label: 'Messages',
 					href: '/app/messages',
 					icon: EmailIcon,
+					endElement: <NotificationBadge tone="action" value={3} />,
 				},
 				{
 					label: 'Account settings',

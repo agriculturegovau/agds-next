@@ -20,38 +20,41 @@ type DataListProps = {
 };
 
 export const DataList = ({ loading, data }: DataListProps) => {
-	const { resetFilters } = useSortAndFilterContext();
-
-	if (loading) {
-		return (
-			<Stack as="ul" gap={1} id={tableId}>
-				{Array.from({ length: 10 }, (_, i) => i).map((i) => (
-					<DataListItemSkeleton key={i} />
-				))}
-			</Stack>
-		);
-	}
-
-	if (!data.length)
-		return (
-			<Stack gap={2} alignItems="flex-start" id={tableId}>
-				<Stack gap={1}>
-					<HelpIcon size="lg" color="muted" />
-					<Heading type="h2" fontSize="lg">
-						No results found
-					</Heading>
-					<Text>Try adjusting your filter options.</Text>
-				</Stack>
-				<Button onClick={resetFilters}>Clear filters</Button>
-			</Stack>
-		);
+	const { pagination, resetFilters } = useSortAndFilterContext();
 
 	return (
-		<Stack as="ul" gap={1} id={tableId}>
-			{data.map((item) => (
-				<DataListItem key={item.id} data={item} />
-			))}
-		</Stack>
+		<div id={tableId}>
+			{loading ? (
+				<Stack as="ul" gap={1}>
+					{Array.from(Array(pagination.perPage).keys()).map((i) => (
+						<DataListItemSkeleton key={i} />
+					))}
+				</Stack>
+			) : (
+				data.length > 0 && (
+					<Stack as="ul" gap={1}>
+						{data.map((item) => (
+							<DataListItem key={item.id} data={item} />
+						))}
+					</Stack>
+				)
+			)}
+
+			<Stack alignItems="flex-start" gap={2} role="alert">
+				{!loading && data.length === 0 && (
+					<>
+						<Stack gap={1}>
+							<HelpIcon size="lg" color="muted" />
+							<Heading type="h2" fontSize="lg">
+								No results found
+							</Heading>
+							<Text>Try adjusting your filter options.</Text>
+						</Stack>
+						<Button onClick={resetFilters}>Clear filters</Button>
+					</>
+				)}
+			</Stack>
+		</div>
 	);
 };
 

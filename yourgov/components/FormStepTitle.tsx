@@ -2,6 +2,7 @@ import { ReactNode, Ref } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
+import { FormRequiredFieldsMessage } from './FormRequiredFieldsMessage';
 
 export type FormStepTitleProps = {
 	titleRef: Ref<HTMLHeadingElement>;
@@ -9,6 +10,7 @@ export type FormStepTitleProps = {
 	stepTitle: string;
 	introduction?: ReactNode;
 	callToAction?: ReactNode;
+	hideRequiredFieldsMessage?: boolean;
 };
 
 // Based on PageTitle, but with a different heading levels
@@ -18,6 +20,7 @@ export function FormStepTitle({
 	stepTitle,
 	introduction,
 	callToAction,
+	hideRequiredFieldsMessage,
 }: FormStepTitleProps) {
 	return (
 		<Stack gap={1.5}>
@@ -43,6 +46,8 @@ export function FormStepTitle({
 					{introduction}
 				</Text>
 			) : null}
+			{!hideRequiredFieldsMessage && <FormRequiredFieldsMessage />}
+
 			{callToAction}
 		</Stack>
 	);

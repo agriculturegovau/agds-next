@@ -6,6 +6,7 @@ import React, {
 	useRef,
 	KeyboardEvent,
 	useContext,
+	useEffect,
 } from 'react';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
 import { createUrl } from 'playroom/utils';
@@ -55,12 +56,15 @@ const PlaceholderImage = () => (
 function LiveCode({
 	showCode = false,
 	enableProse = false,
+	exampleContentHeading,
 	exampleContentHeadingType,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
+	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const live = useContext(LiveContext);
 
@@ -106,12 +110,25 @@ function LiveCode({
 		[toggleIsCodeVisible]
 	);
 
+	// LiveEditor doesn't support aria-label, so we have to do it the DOM way
+	useEffect(() => {
+		const pre = liveEditorRef.current?.querySelector('pre');
+		if (pre) {
+			pre.ariaLabel = `Live code editor ${id}`;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore Property 'role' does not exist on type 'HTMLPreElement'
+			pre.role = 'region';
+		}
+	}, [id]);
+
 	// Using `Box` here instead of Code snippets with popovers (date picker, combobox, dropdown menu etc) need overflow
 	return (
 		<Box border borderColor="muted" rounded className={proseBlockClassname}>
 			{exampleContentHeadingType && (
 				<CardHeader>
-					<Heading type={exampleContentHeadingType}>Example</Heading>
+					<Heading type={exampleContentHeadingType}>
+						{exampleContentHeading}
+					</Heading>
 				</CardHeader>
 			)}
 			<LivePreview
@@ -165,10 +182,10 @@ function LiveCode({
 				css={packs.print.visible}
 				palette="dark"
 				onKeyDown={onLiveEditorContainerKeyDown}
+				ref={liveEditorRef}
 			>
 				<LiveEditor
 					tabMode="focus"
-					aria-label="Live code editor, press the escape key to leave the editor"
 					theme={prismTheme}
 					code={live.code}
 					language={live.language}
@@ -235,7 +252,6 @@ const StaticCode = ({
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
 							style={style}
-							tabIndex={0}
 						>
 							<code>
 								{tokens.map((line, lineKey) => (
@@ -283,6 +299,7 @@ type CodeProps = {
 	live?: boolean;
 	showCode?: boolean;
 	enableProse?: boolean;
+	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 };
 
@@ -292,6 +309,7 @@ export function Code({
 	showCode,
 	enableProse,
 	className,
+	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
@@ -309,6 +327,7 @@ export function Code({
 				<LiveCode
 					showCode={showCode}
 					enableProse={enableProse}
+					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
 				/>
 			</LiveProvider>

@@ -1,13 +1,10 @@
 import { Fragment, isValidElement, ReactNode } from 'react';
-import { Text } from '../text';
-import { Stack } from '../stack';
-import { splitLabel } from './utils';
 
 export type ComboboxRenderItemProps = {
 	/** The label of the item. */
 	itemLabel: string;
-	/** The value of the Combobox/Autocomplete text input. */
-	inputValue: string;
+	/** @deprecated Unused. Individual items no longer need to know the value of the Combobox/Autocomplete text input. */
+	inputValue?: string;
 	/** Supporting text for the item. */
 	tertiaryText?: ReactNode;
 	/** Supporting text for the item. */
@@ -26,59 +23,38 @@ export function ComboboxRenderItem({
 	secondaryText,
 	tertiaryText,
 }: ComboboxRenderItemProps) {
+	// deprecation warnings
+	if (process.env.NODE_ENV !== 'production' && inputValue) {
+		console.warn('Combobox: The `inputValue` prop is now unused.');
+	}
+
 	return (
 		<Fragment>
 			{beforeElement ? (
-				<div css={{ flexShrink: 0 }}>{beforeElement}</div>
+				<div data-combobox-render-item="beforeElement">{beforeElement}</div>
 			) : null}
-			<Stack as="span">
-				<span>{renderItemLabel(itemLabel, inputValue)}</span>
+			<span data-combobox-render-item="itemLabel">
+				{itemLabel}
 				{secondaryText ? (
 					isValidElement(secondaryText) ? (
 						secondaryText
 					) : (
-						<Text color="muted" fontSize="xs">
+						<span data-combobox-render-item="secondaryText">
 							{secondaryText}
-						</Text>
+						</span>
 					)
 				) : null}
 				{tertiaryText ? (
 					isValidElement(tertiaryText) ? (
 						tertiaryText
 					) : (
-						<Text color="muted" fontSize="xs">
-							{tertiaryText}
-						</Text>
+						<span data-combobox-render-item="tertiaryText">{tertiaryText}</span>
 					)
 				) : null}
-			</Stack>
+			</span>
 			{endElement ? (
-				<div css={{ marginLeft: 'auto', flexShrink: 0 }}>{endElement}</div>
+				<div data-combobox-render-item="endElement">{endElement}</div>
 			) : null}
 		</Fragment>
 	);
-}
-
-function renderItemLabel(itemLabel: string, inputValue: string) {
-	return splitLabel(itemLabel, inputValue).map((part, index) => {
-		const isHighlighted = part.toLowerCase() === inputValue.toLowerCase();
-		if (isHighlighted) {
-			return (
-				<Text
-					key={index}
-					as="mark"
-					color="inherit"
-					fontWeight="bold"
-					css={{ background: 'none' }}
-				>
-					{part}
-				</Text>
-			);
-		}
-		return (
-			<Text key={index} as="span" color="inherit">
-				{part}
-			</Text>
-		);
-	});
 }

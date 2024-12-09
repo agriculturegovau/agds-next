@@ -13,10 +13,10 @@ import { useModalId } from './utils';
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** @deprecated use `onClose` instead */
-	onDismiss?: () => void;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
 	/** The title of the modal dialog. It can span lines but should not be too long. */
 	title: string;
 }>;
@@ -26,35 +26,39 @@ const MAX_WIDTH = '45rem'; // 720 px
 export const ModalDialog = ({
 	actions,
 	children,
-	title,
 	onClose,
 	onDismiss,
+	title,
 }: ModalDialogProps) => {
 	const closeHandler = getRequiredCloseHandler(onClose, onDismiss);
 	const { titleId } = useModalId();
 	return (
 		<FocusLock returnFocus>
 			<Stack
-				role="dialog"
+				aria-labelledby={titleId}
 				aria-modal="true"
 				background="body"
-				aria-labelledby={titleId}
-				rounded
-				paddingX={{ xs: 0.75, md: 1.5 }}
-				paddingY={{ xs: 1, md: 1.5 }}
-				gap={1}
-				maxWidth={MAX_WIDTH}
 				css={{
 					boxShadow: tokens.shadow.lg,
 					position: 'relative',
 					margin: '0 auto',
 					minHeight: '100vh',
 					animation: `${animateSlideInUp} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+					'@supports (min-height: 100dvh)': {
+						minHeight: '100dvh',
+					},
 					[tokens.mediaQuery.min.sm]: {
+						borderRadius: tokens.borderRadius,
 						margin: `${mapSpacing(6)} auto ${mapSpacing(1)}`,
 						minHeight: 'auto',
 					},
 				}}
+				gap={1}
+				highContrastOutline
+				maxWidth={MAX_WIDTH}
+				paddingX={{ xs: 0.75, md: 1.5 }}
+				paddingY={{ xs: 1, md: 1.5 }}
+				role="dialog"
 			>
 				<Button
 					variant="text"

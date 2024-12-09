@@ -194,7 +194,7 @@ The usage of `hideOptionalLabel` should be reserved for inputs that filter data 
 
 ## Invalid
 
-Use the `invalid` prop to indicate if the user input is invalid.
+Use the `invalid` prop to indicate if the user input is invalid. An example where this shoud be applied is when ‘All fields are required unless marked optional’.
 
 ```jsx live
 () => {
@@ -204,6 +204,7 @@ Use the `invalid` prop to indicate if the user input is invalid.
 		<Combobox
 			label="Select country"
 			hint="Start typing to see results"
+			required
 			invalid={invalid}
 			message={invalid ? 'Country is required' : undefined}
 			value={value}
@@ -270,10 +271,9 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 			value={value}
 			onChange={onChange}
 			options={NAME_OPTIONS}
-			renderItem={(item, inputValue) => (
+			renderItem={(item) => (
 				<ComboboxRenderItem
 					itemLabel={item.label}
-					inputValue={inputValue}
 					secondaryText={`Role: ${item.jobTitle}`}
 					tertiaryText={`Job: ${item.status}`}
 					beforeElement={
@@ -290,6 +290,57 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 				/>
 			)}
 		/>
+	);
+};
+```
+
+## Handling large datasets
+
+While we don’t recommend putting extremely large datasets as Combobox options, all of the Combobox components should comfortably handle many options and cater for most, standard use-cases.
+
+If you would like to see how Combobox performs with various option lengths, you can use the example below.
+
+```jsx live
+() => {
+	const generateOptions = (number) => {
+		const result = [];
+		for (let i = 0; i < number; i++) {
+			const countryIndex = i % COUNTRY_OPTIONS.length;
+			const countryName = `${COUNTRY_OPTIONS[countryIndex].label} ${
+				Math.floor(i / COUNTRY_OPTIONS.length) + 1
+			}`;
+			result.push({ label: countryName, value: countryName });
+		}
+		return result;
+	};
+	const [numOfOptions, setNumOfOptions] = React.useState(1000);
+	const [options, setOptions] = React.useState(generateOptions(numOfOptions));
+	const [comboboxValue, setComboboxValue] = React.useState(null);
+
+	React.useEffect(() => {
+		setOptions(generateOptions(numOfOptions));
+	}, [numOfOptions]);
+
+	return (
+		<FormStack>
+			<TextInput
+				label="Number of country options"
+				maxWidth="sm"
+				onChange={(event) => {
+					setNumOfOptions(event.target.valueAsNumber);
+				}}
+				required
+				type="number"
+				value={numOfOptions}
+			/>
+			<Combobox
+				label="Select country"
+				hint="Start typing to see results"
+				value={comboboxValue}
+				onChange={setComboboxValue}
+				options={options}
+			/>
+		</FormStack>
 	);
 };
 ```

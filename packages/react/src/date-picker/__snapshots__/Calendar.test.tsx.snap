@@ -11,7 +11,10 @@ exports[`Calendar Range renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-x2ztpa-boxStyles-CalendarRangeContainer"
+      aria-label="Choose date range"
+      aria-modal="true"
+      class="css-5x5w6f-boxStyles-CalendarRangeContainer"
+      role="dialog"
     >
       <div
         class="rdp "
@@ -25,6 +28,28 @@ exports[`Calendar Range renders correctly 1`] = `
             <div
               class="rdp-caption"
             >
+              <button
+                aria-label="Go to previous month"
+                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1g6fn8w-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="15 18 9 12 15 6"
+                  />
+                </svg>
+              </button>
               <h2
                 aria-atomic="true"
                 aria-live="polite"
@@ -46,6 +71,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Month
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r4:-select"
                   >
@@ -137,6 +163,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     Year
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r5:-select"
                   >
@@ -264,56 +291,28 @@ exports[`Calendar Range renders correctly 1`] = `
                   </svg>
                 </div>
               </div>
-              <div
-                class="rdp-nav"
+              <button
+                aria-label="Go to next month"
+                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                type="button"
               >
-                <button
-                  aria-label="Go to previous month"
-                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
-                  name="previous-month"
-                  type="button"
+                <svg
+                  aria-hidden="true"
+                  class="css-1g6fn8w-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="css-1g6fn8w-Icon"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polyline
-                      points="15 18 9 12 15 6"
-                    />
-                  </svg>
-                </button>
-                <button
-                  aria-label="Go to next month"
-                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
-                  name="next-month"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="css-1g6fn8w-Icon"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polyline
-                      points="9 18 15 12 9 6"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <polyline
+                    points="9 18 15 12 9 6"
+                  />
+                </svg>
+              </button>
             </div>
             <table
               aria-labelledby="react-day-picker-4"
@@ -384,492 +383,392 @@ exports[`Calendar Range renders correctly 1`] = `
                   class="rdp-row"
                 >
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
+                    aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
-                    class="rdp-cell"
-                    role="gridcell"
+                    class="rdp-day rdp-day_selected rdp-day_range_start"
+                    tabindex="0"
                   >
-                    <button
-                      aria-label="Selected. 1st June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_start"
-                      name="day"
-                      tabindex="0"
-                      type="button"
+                    <span
+                      tabindex="-1"
                     >
                       1
-                    </button>
+                    </span>
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="2nd June 2023 (Friday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      2
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="3rd June 2023 (Saturday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      3
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="4th June 2023 (Sunday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      4
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="5th June 2023 (Monday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      5
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="6th June 2023 (Tuesday). Between selected dates"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_middle"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      6
-                    </button>
-                  </td>
-                  <td
+                    aria-label="2nd June 2023 Friday. Between selected dates"
                     aria-selected="true"
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="Selected. 7th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected rdp-day_range_end"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      7
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="8th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      8
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="9th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      9
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="10th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      10
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="11th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      11
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="12th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      12
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="13th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      13
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="14th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      14
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="15th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      15
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="16th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      16
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="17th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      17
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="18th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      18
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="19th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      19
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="20th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      20
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="21st June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      21
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="22nd June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      22
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="23rd June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      23
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="24th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      24
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="25th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      25
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="26th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      26
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="27th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      27
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="28th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      28
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="29th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      29
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="30th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      30
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
+                      tabindex="-1"
                     >
-                      Blank
+                      2
                     </span>
+                  </td>
+                  <td
+                    aria-label="3rd June 2023 Saturday. Between selected dates"
+                    aria-selected="true"
+                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      3
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="4th June 2023 Sunday. Between selected dates"
+                    aria-selected="true"
+                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      4
+                    </span>
+                  </td>
+                  <td
+                    aria-label="5th June 2023 Monday. Between selected dates"
+                    aria-selected="true"
+                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      5
+                    </span>
+                  </td>
+                  <td
+                    aria-label="6th June 2023 Tuesday. Between selected dates"
+                    aria-selected="true"
+                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      6
+                    </span>
+                  </td>
+                  <td
+                    aria-label="Selected. 7th June 2023 Wednesday"
+                    aria-selected="true"
+                    class="rdp-day rdp-day_selected rdp-day_range_end"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      7
+                    </span>
+                  </td>
+                  <td
+                    aria-label="8th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      8
+                    </span>
+                  </td>
+                  <td
+                    aria-label="9th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      9
+                    </span>
+                  </td>
+                  <td
+                    aria-label="10th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      10
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="11th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      11
+                    </span>
+                  </td>
+                  <td
+                    aria-label="12th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      12
+                    </span>
+                  </td>
+                  <td
+                    aria-label="13th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      13
+                    </span>
+                  </td>
+                  <td
+                    aria-label="14th June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      14
+                    </span>
+                  </td>
+                  <td
+                    aria-label="15th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      15
+                    </span>
+                  </td>
+                  <td
+                    aria-label="16th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      16
+                    </span>
+                  </td>
+                  <td
+                    aria-label="17th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      17
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="18th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    aria-label="19th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      19
+                    </span>
+                  </td>
+                  <td
+                    aria-label="20th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    aria-label="21st June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      21
+                    </span>
+                  </td>
+                  <td
+                    aria-label="22nd June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      22
+                    </span>
+                  </td>
+                  <td
+                    aria-label="23rd June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      23
+                    </span>
+                  </td>
+                  <td
+                    aria-label="24th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      24
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="25th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      25
+                    </span>
+                  </td>
+                  <td
+                    aria-label="26th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      26
+                    </span>
+                  </td>
+                  <td
+                    aria-label="27th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      27
+                    </span>
+                  </td>
+                  <td
+                    aria-label="28th June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      28
+                    </span>
+                  </td>
+                  <td
+                    aria-label="29th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      29
+                    </span>
+                  </td>
+                  <td
+                    aria-label="30th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      30
+                    </span>
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
                   </td>
                 </tr>
               </tbody>
@@ -898,7 +797,10 @@ exports[`Calendar Single renders correctly 1`] = `
     data-focus-lock-disabled="false"
   >
     <div
-      class="css-1exdz5y-boxStyles-CalendarContainer"
+      aria-label="Choose date"
+      aria-modal="true"
+      class="css-bq5e3r-boxStyles-CalendarContainer"
+      role="dialog"
     >
       <div
         class="rdp "
@@ -912,6 +814,28 @@ exports[`Calendar Single renders correctly 1`] = `
             <div
               class="rdp-caption"
             >
+              <button
+                aria-label="Go to previous month"
+                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-1g6fn8w-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="15 18 9 12 15 6"
+                  />
+                </svg>
+              </button>
               <h2
                 aria-atomic="true"
                 aria-live="polite"
@@ -933,6 +857,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Month
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r0:-select"
                   >
@@ -1024,6 +949,7 @@ exports[`Calendar Single renders correctly 1`] = `
                     Year
                   </label>
                   <select
+                    autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
                     id="calendar-:r1:-select"
                   >
@@ -1151,56 +1077,28 @@ exports[`Calendar Single renders correctly 1`] = `
                   </svg>
                 </div>
               </div>
-              <div
-                class="rdp-nav"
+              <button
+                aria-label="Go to next month"
+                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                type="button"
               >
-                <button
-                  aria-label="Go to previous month"
-                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
-                  name="previous-month"
-                  type="button"
+                <svg
+                  aria-hidden="true"
+                  class="css-1g6fn8w-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="css-1g6fn8w-Icon"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polyline
-                      points="15 18 9 12 15 6"
-                    />
-                  </svg>
-                </button>
-                <button
-                  aria-label="Go to next month"
-                  class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
-                  name="next-month"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="css-1g6fn8w-Icon"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    focusable="false"
-                    height="24"
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polyline
-                      points="9 18 15 12 9 6"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <polyline
+                    points="9 18 15 12 9 6"
+                  />
+                </svg>
+              </button>
             </div>
             <table
               aria-labelledby="react-day-picker-1"
@@ -1271,491 +1169,386 @@ exports[`Calendar Single renders correctly 1`] = `
                   class="rdp-row"
                 >
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
-                    >
-                      Blank
-                    </span>
+                      tabindex="-1"
+                    />
                   </td>
                   <td
+                    aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
-                    class="rdp-cell"
-                    role="gridcell"
+                    class="rdp-day rdp-day_selected"
+                    tabindex="0"
                   >
-                    <button
-                      aria-label="Selected. 1st June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day rdp-day_selected"
-                      name="day"
-                      tabindex="0"
-                      type="button"
+                    <span
+                      tabindex="-1"
                     >
                       1
-                    </button>
+                    </span>
                   </td>
                   <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="2nd June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      2
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="3rd June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      3
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="4th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      4
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="5th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      5
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="6th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      6
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="7th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      7
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="8th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      8
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="9th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      9
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="10th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      10
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="11th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      11
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="12th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      12
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="13th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      13
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="14th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      14
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="15th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      15
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="16th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      16
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="17th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      17
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="18th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      18
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="19th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      19
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="20th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      20
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="21st June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      21
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="22nd June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      22
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="23rd June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      23
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="24th June 2023 (Saturday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      24
-                    </button>
-                  </td>
-                </tr>
-                <tr
-                  class="rdp-row"
-                >
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="25th June 2023 (Sunday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      25
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="26th June 2023 (Monday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      26
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="27th June 2023 (Tuesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      27
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="28th June 2023 (Wednesday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      28
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="29th June 2023 (Thursday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      29
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
-                  >
-                    <button
-                      aria-label="30th June 2023 (Friday)"
-                      class="rdp-button_reset rdp-button rdp-day"
-                      name="day"
-                      tabindex="-1"
-                      type="button"
-                    >
-                      30
-                    </button>
-                  </td>
-                  <td
-                    class="rdp-cell"
-                    role="gridcell"
+                    aria-label="2nd June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
                   >
                     <span
-                      class="css-avudkd-VisuallyHidden"
+                      tabindex="-1"
                     >
-                      Blank
+                      2
                     </span>
+                  </td>
+                  <td
+                    aria-label="3rd June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      3
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="4th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      4
+                    </span>
+                  </td>
+                  <td
+                    aria-label="5th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      5
+                    </span>
+                  </td>
+                  <td
+                    aria-label="6th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      6
+                    </span>
+                  </td>
+                  <td
+                    aria-label="7th June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      7
+                    </span>
+                  </td>
+                  <td
+                    aria-label="8th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      8
+                    </span>
+                  </td>
+                  <td
+                    aria-label="9th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      9
+                    </span>
+                  </td>
+                  <td
+                    aria-label="10th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      10
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="11th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      11
+                    </span>
+                  </td>
+                  <td
+                    aria-label="12th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      12
+                    </span>
+                  </td>
+                  <td
+                    aria-label="13th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      13
+                    </span>
+                  </td>
+                  <td
+                    aria-label="14th June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      14
+                    </span>
+                  </td>
+                  <td
+                    aria-label="15th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      15
+                    </span>
+                  </td>
+                  <td
+                    aria-label="16th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      16
+                    </span>
+                  </td>
+                  <td
+                    aria-label="17th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      17
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="18th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      18
+                    </span>
+                  </td>
+                  <td
+                    aria-label="19th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      19
+                    </span>
+                  </td>
+                  <td
+                    aria-label="20th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      20
+                    </span>
+                  </td>
+                  <td
+                    aria-label="21st June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      21
+                    </span>
+                  </td>
+                  <td
+                    aria-label="22nd June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      22
+                    </span>
+                  </td>
+                  <td
+                    aria-label="23rd June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      23
+                    </span>
+                  </td>
+                  <td
+                    aria-label="24th June 2023 Saturday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      24
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="rdp-row"
+                >
+                  <td
+                    aria-label="25th June 2023 Sunday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      25
+                    </span>
+                  </td>
+                  <td
+                    aria-label="26th June 2023 Monday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      26
+                    </span>
+                  </td>
+                  <td
+                    aria-label="27th June 2023 Tuesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      27
+                    </span>
+                  </td>
+                  <td
+                    aria-label="28th June 2023 Wednesday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      28
+                    </span>
+                  </td>
+                  <td
+                    aria-label="29th June 2023 Thursday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      29
+                    </span>
+                  </td>
+                  <td
+                    aria-label="30th June 2023 Friday"
+                    class="rdp-day"
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    >
+                      30
+                    </span>
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
                   </td>
                 </tr>
               </tbody>

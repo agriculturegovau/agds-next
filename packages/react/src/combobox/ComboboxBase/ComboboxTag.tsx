@@ -15,11 +15,10 @@ export type ComboboxTagProps = Omit<
 // This component is based off our 'Tag' component with slightly different markup
 // See https://www.downshift-js.com/use-multiple-selection#usage-with-combobox
 
-export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
+export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
-				ref={ref}
 				as="span"
 				inline
 				alignItems="center"
@@ -30,39 +29,44 @@ export const ComboboxTag = forwardRef<HTMLSpanElement, ComboboxTagProps>(
 				gap={0.25}
 				fontSize="sm"
 				color="text"
-				focusRingFor="keyboard"
 				css={{
-					cursor: 'pointer',
+					cursor: 'default',
 					...(disabled && {
 						cursor: 'not-allowed',
 						borderColor: boxPalette.borderMuted,
 						color: boxPalette.foregroundMuted,
 					}),
 				}}
-				{...props}
 			>
 				{children}
 				<Flex
-					as="span"
-					height={mapSpacing(1.5)}
-					width={mapSpacing(1.5)}
 					alignItems="center"
-					justifyContent="center"
-					onClick={(event: MouseEvent<HTMLSpanElement>) => {
-						if (disabled) return;
-						event.stopPropagation();
-						onRemove();
-					}}
-					focusRingFor="keyboard"
+					as="button"
+					aria-label={`Remove ${children}`}
 					css={{
+						background: 'transparent',
 						cursor: 'pointer',
 						svg: { display: 'block', color: boxPalette.foregroundAction },
 						'&:hover': { svg: { color: boxPalette.foregroundText } },
+						'&&': { outlineOffset: 0 },
 						...(disabled && {
 							cursor: 'not-allowed',
 							opacity: 0.3,
 						}),
 					}}
+					focusRingFor="all"
+					height={mapSpacing(1.5)}
+					justifyContent="center"
+					onClick={(event: MouseEvent<HTMLButtonElement>) => {
+						if (disabled) return;
+						event.stopPropagation();
+						onRemove();
+					}}
+					onKeyDown={props.onKeyDown}
+					ref={ref}
+					rounded
+					type="button"
+					width={mapSpacing(1.5)}
 				>
 					<CloseIcon size="sm" />
 				</Flex>

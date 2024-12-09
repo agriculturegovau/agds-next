@@ -7,7 +7,7 @@ export function ComboboxListEmptyResults({
 	message,
 }: ComboboxListEmptyResultsProps) {
 	return (
-		<ComboboxListItem isActiveItem={false} isInteractive={false}>
+		<ComboboxListItem>
 			<Text>{message}</Text>
 		</ComboboxListItem>
 	);

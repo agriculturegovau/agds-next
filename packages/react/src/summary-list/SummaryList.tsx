@@ -43,7 +43,11 @@ export type SummaryListItemActionProps = PropsWithOnlyChildren;
 export function SummaryListItemAction({
 	children,
 }: SummaryListItemActionProps) {
-	return <Flex as="dd">{children}</Flex>;
+	return (
+		<Flex as="dd" flexShrink={0}>
+			{children}
+		</Flex>
+	);
 }
 
 export type SummaryListProps = PropsWithOnlyChildren;

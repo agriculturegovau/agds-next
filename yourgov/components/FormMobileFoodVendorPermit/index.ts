@@ -1,21 +1,20 @@
 // Global form context
 export { GlobalFormProvider, useGlobalForm } from './GlobalFormProvider';
-export { globalFormTasks } from './globalFormTasks';
 
 // Getting started forms
 export { GettingStartedForm } from './GettingStartedForm';
 
-// Task 1
-export { FormTask1Provider, task1FormSteps } from './FormTask1Provider';
-export { FormTask1Step1 } from './FormTask1Step1';
-export { FormTask1Step1ChangeDetails } from './FormTask1Step1ChangeDetails';
-export { FormTask1Step2 } from './FormTask1Step2';
-export { FormTask1Step3 } from './FormTask1Step3';
-export { FormTask1Step4 } from './FormTask1Step4';
-export { FormTask1Step5 } from './FormTask1Step5';
-export { FormTask1Step6 } from './FormTask1Step6';
-export { FormTask1Step7 } from './FormTask1Step7';
-export { FormTask1Review } from './FormTask1Review';
-
-// Task 4
-export { FormTask4Step1 } from './FormTask4Step1';
+export { FormProvider, formSteps } from './steps/FormProvider';
+export { FormStep1 } from './steps/FormStep1';
+export { FormStep1ChangeDetails } from './steps/FormStep1ChangeDetails';
+export { FormStep2 } from './steps/FormStep2';
+export { FormStep3 } from './steps/FormStep3';
+export { FormStep4 } from './steps/FormStep4';
+export { FormStep5 } from './steps/FormStep5';
+export { FormStep6 } from './steps/FormStep6';
+export { FormStep7 } from './steps/FormStep7';
+export { FormStep7AddEmployee } from './steps/FormStep7AddEmployee';
+export { FormStep8 } from './steps/FormStep8';
+export { FormStep9 } from './steps/FormStep9';
+export { FormStep10 } from './steps/FormStep10';
+export { FormStep10Review } from './steps/FormStep10Review';

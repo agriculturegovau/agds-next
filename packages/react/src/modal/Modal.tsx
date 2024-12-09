@@ -47,7 +47,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		<Fragment>
 			<LockScroll />
 			<ModalCover ref={modalContainerRef}>
-				<ModalDialog onClose={closeHandler} title={title} actions={actions}>
+				<ModalDialog actions={actions} onClose={closeHandler} title={title}>
 					{children}
 				</ModalDialog>
 			</ModalCover>

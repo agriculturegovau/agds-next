@@ -1,16 +1,27 @@
-import { FocusEventHandler, Fragment, ReactNode, Ref } from 'react';
+import {
+	Fragment,
+	useMemo,
+	type FocusEvent,
+	type FocusEventHandler,
+	type ReactNode,
+	type Ref,
+} from 'react';
 import { UseComboboxReturnValue } from 'downshift';
 import { packs } from '../../core';
 import { Popover, usePopover } from '../../_popover';
 import { textInputStyles } from '../../text-input';
 import { Field } from '../../field';
 import {
+	ComboboxRenderItemDefault,
+	renderItemLabel,
+} from '../ComboboxRenderItemDefault';
+import {
+	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
+	useIsIos,
 	validateMaxWidth,
 } from '../utils';
-import { ComboboxRenderItem } from '../ComboboxRenderItem';
-import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -20,6 +31,7 @@ import {
 	ComboboxClearButton,
 	ComboboxButtonDivider,
 } from './ComboboxButtons';
+import { listItemStyles } from './ComboboxListItem';
 import { ComboboxSearchIcon } from './ComboboxSearchIcon';
 
 type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
@@ -44,7 +56,7 @@ type ComboboxBaseProps<Option extends DefaultComboboxOption> = {
 	inputItems?: Option[];
 	networkError?: boolean;
 	emptyResultsMessage?: string;
-	renderItem?: (item: Option, inputValue: string) => ReactNode;
+	renderItem?: (item: Option, inputValue?: string) => ReactNode;
 	combobox: UseComboboxReturnValue<Option>;
 	// input props
 	'aria-describedby'?: string;
@@ -77,14 +89,13 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 	inputRef: inputRefProp,
 	onBlur,
 	onFocus,
-	renderItem = (item, inputValue) => (
-		<ComboboxRenderItem itemLabel={item.label} inputValue={inputValue} />
-	),
+	renderItem,
 	...props
 }: ComboboxBaseProps<Option>) {
 	const showClearButton = clearable && combobox.selectedItem;
 	const hasButtons = showDropdownTrigger || showClearButton;
 	const hasBothButtons = showDropdownTrigger && showClearButton;
+	const isIos = useIsIos();
 
 	validateMaxWidth('ComboBox', maxWidthProp);
 
@@ -93,6 +104,14 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 		...packs.truncate,
 		paddingRight: hasBothButtons ? '5rem' : '3rem',
 	};
+
+	const itemLabels = useMemo(
+		() =>
+			inputItems?.length
+				? inputItems.map((item) => renderItemLabel(item.label))
+				: [],
+		[inputItems]
+	);
 
 	const popover = usePopover({
 		// Popovers should always match the width of the related input
@@ -108,12 +127,21 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 
 	const { id: labelId } = combobox.getLabelProps();
 
+	const handleOnBlur = (event: FocusEvent<HTMLInputElement>) => {
+		// If a user presses the Done button on the iOS keyboard, we shouldn't close the dropdown
+		if (isIos && !event.nativeEvent?.relatedTarget) {
+			// @ts-expect-error: Property 'preventDownshiftDefault' does not exist on type 'FocusEvent'
+			event.nativeEvent.preventDownshiftDefault = true;
+		}
+		onBlur?.(event);
+	};
+
 	return (
 		<Field
 			label={label}
 			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
-			required={Boolean(required)}
+			required={required}
 			hint={hint}
 			maxWidth={maxWidthProp}
 			message={message}
@@ -123,7 +151,12 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 			{(a11yProps) => (
 				<div
 					{...popover.getReferenceProps()}
-					css={{ position: 'relative', maxWidth }}
+					css={{
+						maxWidth,
+						position: 'relative',
+						...listItemStyles,
+						...generateHighlightStyles(combobox.inputValue),
+					}}
 				>
 					{isAutocomplete && <ComboboxSearchIcon disabled={disabled} />}
 					<input
@@ -144,7 +177,7 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 							ref: inputRefProp,
 							type: 'text',
 							name: inputName,
-							onBlur,
+							onBlur: handleOnBlur,
 							onFocus,
 						})}
 					/>
@@ -182,14 +215,26 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 									<Fragment>
 										{inputItems?.length ? (
 											inputItems.map((item, index) => (
-												<ComboboxListItem
+												<li
+													data-combobox-list-item="interactive"
 													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
+													// Required for Android TalkBack to be able to access the list items
+													// See https://issues.chromium.org/issues/40260928
+													// But stops iOS from being able to access them ◔_◔
+													tabIndex={isIos ? undefined : -1}
 												>
-													{renderItem(item, combobox.inputValue)}
-												</ComboboxListItem>
+													{renderItem ? (
+														renderItem({
+															...item,
+															label: itemLabels[index],
+														})
+													) : (
+														<ComboboxRenderItemDefault>
+															{itemLabels[index]}
+														</ComboboxRenderItemDefault>
+													)}
+												</li>
 											))
 										) : (
 											<ComboboxListEmptyResults message={emptyResultsMessage} />

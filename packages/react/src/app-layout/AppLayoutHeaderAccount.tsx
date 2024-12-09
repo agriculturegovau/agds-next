@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Avatar } from '../avatar';
 import { Flex } from '../flex';
 import { mq, packs, useLinkComponent } from '../core';
@@ -16,6 +17,12 @@ export function AppLayoutHeaderAccount({
 	dropdown,
 }: AppLayoutHeaderAccountProps) {
 	const Link = useLinkComponent();
+	const scrollbarWidthRef = useRef(0);
+
+	useEffect(() => {
+		scrollbarWidthRef.current =
+			window.innerWidth - document.documentElement.offsetWidth;
+	}, []);
 
 	// Dropdown component
 	if (dropdown) {
@@ -39,10 +46,13 @@ export function AppLayoutHeaderAccount({
 			alignItems="center"
 			flexShrink={0}
 			gap={0.5}
+			minHeight="5.25rem"
 			textAlign="right"
 			css={mq({
+				marginLeft: 'auto',
+				// 17.625rem is the available space beside the hamburger at 375px
+				maxWidth: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
 				textDecoration: 'none',
-				maxWidth: ['16rem', '18rem'],
 				...(hasLink && {
 					'&:hover': {
 						'& > span > span': {

@@ -1,6 +1,7 @@
-import { ElementType, PropsWithChildren, useMemo } from 'react';
+import { ElementType, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Text } from '../text';
+import { useSecondaryLabel } from './useSecondaryLabel';
 
 export type FieldLabelProps = PropsWithChildren<{
 	as?: ElementType;
@@ -10,9 +11,9 @@ export type FieldLabelProps = PropsWithChildren<{
 	htmlFor?: string;
 	/** The CSS class name, typically generated from the `css` prop. */
 	className?: string;
-	/** If false, "(optional)" will be appended to the label. */
-	required: boolean;
-	/** If true, "(optional)" will never be appended to the label even when `required` is `false`. */
+	/** If `false` or `undefined`, "(optional)" will be appended to the label. */
+	required?: boolean;
+	/** If `true`, "(optional)" will never be appended to the label even when `required` is `false`. */
 	hideOptionalLabel?: boolean;
 	/** Text to prepend to the default secondary label. */
 	secondaryLabel?: string;
@@ -25,26 +26,24 @@ export const FieldLabel = ({
 	id,
 	htmlFor,
 	required,
-	secondaryLabel: secondaryLabelProp,
+	secondaryLabel,
 	hideOptionalLabel,
 }: FieldLabelProps) => {
-	const secondaryLabel = useMemo(() => {
-		return [
-			secondaryLabelProp,
-			hideOptionalLabel || required ? null : '(optional)',
-		]
-			.filter(Boolean)
-			.join(' ');
-	}, [required, secondaryLabelProp, hideOptionalLabel]);
+	const secondaryLabelWithOptional = useSecondaryLabel({
+		hideOptionalLabel,
+		required,
+		secondaryLabel,
+	});
+
 	return (
 		<Box as={as} id={id} htmlFor={htmlFor} className={className}>
 			<Text as="span" fontWeight="bold">
 				{children}
 			</Text>
-			{secondaryLabel ? (
+			{secondaryLabelWithOptional ? (
 				<Text as="span" color="muted">
 					{' '}
-					{secondaryLabel}
+					{secondaryLabelWithOptional}
 				</Text>
 			) : null}
 		</Box>

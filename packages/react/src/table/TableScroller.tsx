@@ -19,6 +19,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const scrollerRef = useRef<HTMLDivElement>(null);
 	const mousePos = useRef({ x: 0, y: 0 });
 
+	const [shadowHeight, setShadowHeight] = useState(0);
 	const [scrollerAriaLabel, setScrollerAriaLabel] = useState('');
 	const [isDraggingThumb, setIsDraggingThumb] = useState(false);
 	const [thumbPosition, setThumbPosition] = useState(0);
@@ -59,7 +60,8 @@ export function TableScroller({ children }: TableScrollerProps) {
 			return;
 		}
 
-		const observer = new ResizeObserver(() => {
+		const observer = new ResizeObserver((entry) => {
+			setShadowHeight(entry[0].contentRect.height);
 			calculateThumbWidth();
 			repositionThumb();
 		});
@@ -209,12 +211,25 @@ export function TableScroller({ children }: TableScrollerProps) {
 	const hasScroll = thumbWidthRatio !== 1;
 
 	useEffect(() => {
-		setScrollerAriaLabel(
-			`Table ${
-				scrollerRef.current?.querySelector('caption')?.textContent || ''
-			}`
-		);
-	}, [scrollerRef]);
+		let ariaLabel: string | null | undefined;
+		const captionEl = scrollerRef.current?.querySelector('caption');
+
+		if (captionEl) {
+			ariaLabel = captionEl?.textContent;
+		} else {
+			const ariaLabelledbyTableEl = scrollerRef.current?.querySelector(
+				'table[aria-labelledby]'
+			);
+
+			if (ariaLabelledbyTableEl) {
+				ariaLabel = document.getElementById(
+					ariaLabelledbyTableEl.getAttribute('aria-labelledby') || ''
+				)?.textContent;
+			}
+		}
+
+		setScrollerAriaLabel(`Table ${ariaLabel || ''}`);
+	}, []);
 
 	return (
 		<Stack
@@ -247,7 +262,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				{children}
 				<Shadow
 					edge="left"
-					height={scrollerRef?.current?.offsetHeight || 0}
+					height={shadowHeight}
 					isVisible={Boolean(
 						thumbWidthRatio < 1 &&
 							scrollerRef?.current?.scrollLeft &&
@@ -256,7 +271,7 @@ export function TableScroller({ children }: TableScrollerProps) {
 				/>
 				<Shadow
 					edge="right"
-					height={scrollerRef?.current?.offsetHeight || 0}
+					height={shadowHeight}
 					isVisible={Boolean(
 						thumbWidthRatio < 1 &&
 							scrollerRef?.current?.offsetWidth &&
