@@ -84,6 +84,11 @@ const parameters = {
 			date: /Date$/,
 		},
 	},
+	options: {
+		storySort: {
+			method: 'alphabetical',
+		},
+	},
 	viewport: {
 		viewports: makeViewports(),
 	},
