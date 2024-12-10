@@ -6,7 +6,7 @@ import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Divider } from '@ag.ds-next/react/divider';
 import { Flex } from '@ag.ds-next/react/flex';
-import { H1, H2, Heading } from '@ag.ds-next/react/heading';
+import { H1, H2, H3, Heading } from '@ag.ds-next/react/heading';
 import { NotificationBadge } from '@ag.ds-next/react/notification-badge';
 import { PageContent } from '@ag.ds-next/react/content';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -107,7 +107,7 @@ const Page: NextPageWithLayout = () => {
 												<Tag>{linkedBusinesses.abn}</Tag>
 												<Text>ABN</Text>
 											</Flex>
-											<Heading as="h2" type="h3">
+											<H3>
 												<CardLink
 													href={businessHref}
 													// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -116,7 +116,7 @@ const Page: NextPageWithLayout = () => {
 												>
 													{linkedBusinesses.name}
 												</CardLink>
-											</Heading>
+											</H3>
 											<Text>Role: {linkedBusinesses.role}</Text>
 										</Stack>
 									</CardInner>

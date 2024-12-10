@@ -214,6 +214,7 @@ export function FormStep9() {
 		<FormContainer
 			formTitle="Upload documents"
 			formIntroduction="Upload all documents listed in the table below."
+			hideRequiredFieldsMessage
 		>
 			<Stack gap={2}>
 				<Stack gap={1}>
