@@ -107,7 +107,7 @@ const Page: NextPageWithLayout = () => {
 												<Tag>{linkedBusinesses.abn}</Tag>
 												<Text>ABN</Text>
 											</Flex>
-											<Heading as="h2" type="h3">
+											<Heading type="h3">
 												<CardLink
 													href={businessHref}
 													// eslint-disable-next-line @typescript-eslint/ban-ts-comment
