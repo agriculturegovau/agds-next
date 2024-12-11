@@ -30,13 +30,18 @@ describe('SectionAlert', () => {
 					const { container } = renderSectionAlert({ tone });
 					expect(container).toHTMLValidate({
 						extends: ['html-validate:recommended'],
+						rules: {
+							'prefer-native-element': 'off',
+							// react 18s `useId` break this rule
+							'valid-id': 'off',
+						},
 					});
 				});
 			});
 		});
 	}
 
-	describe(`with a description`, () => {
+	describe('with a description', () => {
 		it('renders correctly', () => {
 			const { container } = renderSectionAlert({
 				children: <Text as="p">Section alert description text</Text>,
@@ -49,11 +54,16 @@ describe('SectionAlert', () => {
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					'prefer-native-element': 'off',
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
 			});
 		});
 	});
 
-	describe(`which is closable`, () => {
+	describe('which is closable', () => {
 		const onClose = jest.fn();
 		const onDismiss = jest.fn();
 
@@ -69,6 +79,11 @@ describe('SectionAlert', () => {
 			});
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
+				rules: {
+					'prefer-native-element': 'off',
+					// react 18s `useId` break this rule
+					'valid-id': 'off',
+				},
 			});
 		});
 		it('calls the onClose function when clicked', () => {

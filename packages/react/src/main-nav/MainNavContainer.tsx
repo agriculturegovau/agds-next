@@ -13,6 +13,7 @@ export type MainNavContainerProps = {
 	borderColor: ResponsiveProp<BorderColor>;
 	focusMode?: boolean;
 	id?: string;
+	isMobileMenuOpen: boolean;
 	items?: MainNavListItemType[];
 	openMobileMenu: () => void;
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
@@ -24,6 +25,7 @@ export function MainNavContainer({
 	borderColor,
 	focusMode = false,
 	id,
+	isMobileMenuOpen,
 	items,
 	openMobileMenu,
 	secondaryItems,
@@ -53,7 +55,10 @@ export function MainNavContainer({
 					width="100%"
 				>
 					{items?.length ? (
-						<MainNavOpenButton onClick={openMobileMenu} />
+						<MainNavOpenButton
+							isMobileMenuOpen={isMobileMenuOpen}
+							onClick={openMobileMenu}
+						/>
 					) : null}
 					<MainNavList activePath={activePath} items={items} type="primary" />
 					{secondaryItems?.length ? (

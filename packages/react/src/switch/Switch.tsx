@@ -1,3 +1,4 @@
+import { type AriaAttributes } from 'react';
 import { visuallyHiddenStyles } from '../a11y';
 import { Text } from '../text';
 import { Flex } from '../flex';
@@ -10,6 +11,7 @@ import {
 } from './SwitchTrack';
 
 export type SwitchProps = {
+	'aria-controls'?: AriaAttributes['aria-controls'];
 	/** The current checked state. */
 	checked: boolean;
 	/** Handle change events. */
@@ -25,12 +27,12 @@ export const Switch = ({
 	label,
 	onChange,
 	checked,
+	...props
 }: SwitchProps) => {
 	return (
 		<Flex
-			as="label"
-			gap={0.75}
 			alignItems="center"
+			as="label"
 			css={{
 				width: 'fit-content',
 				cursor: 'pointer',
@@ -51,21 +53,24 @@ export const Switch = ({
 					},
 				},
 			}}
+			gap={0.75}
 		>
 			<SwitchContainer size={size}>
 				<input
-					type="checkbox"
-					role="switch"
+					aria-checked={checked}
+					aria-controls={props['aria-controls']}
 					checked={checked}
-					onChange={() => onChange(!checked)}
 					css={{
 						...visuallyHiddenStyles,
 						// When this component is focused, outline the track
 						'&:focus-visible ~ span:first-of-type': packs.outline,
 					}}
+					onChange={() => onChange(!checked)}
+					role="switch"
+					type="checkbox"
 				/>
-				<SwitchTrack size={size} checked={checked} />
-				<SwitchThumb size={size} checked={checked} />
+				<SwitchTrack checked={checked} size={size} />
+				<SwitchThumb checked={checked} size={size} />
 			</SwitchContainer>
 			<Text>{label}</Text>
 		</Flex>

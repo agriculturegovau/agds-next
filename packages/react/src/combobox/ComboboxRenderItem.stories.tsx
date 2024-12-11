@@ -4,19 +4,20 @@ import { Avatar } from '../avatar';
 import { NotificationBadge } from '../notification-badge';
 import { Text } from '../text';
 import { Popover } from '../_popover';
-import { ComboboxListItem } from './ComboboxBase/ComboboxListItem';
+import {
+	ComboboxListItem,
+	listItemStyles,
+} from './ComboboxBase/ComboboxListItem';
 import {
 	ComboboxRenderItem,
 	ComboboxRenderItemProps,
 } from './ComboboxRenderItem';
 import { NAME_OPTIONS } from './test-utils';
 
-function ComboboxRenderItemTemplate(
-	props: ComboboxRenderItemProps & { isActiveItem: boolean }
-) {
+function ComboboxRenderItemTemplate(props: ComboboxRenderItemProps) {
 	return (
-		<Popover as="ul" style={{}}>
-			<ComboboxListItem isActiveItem={false} isInteractive={true}>
+		<Popover as="ul" css={listItemStyles} style={{}}>
+			<ComboboxListItem data-combobox-list-item="interactive">
 				<ComboboxRenderItem {...props} />
 			</ComboboxListItem>
 		</Popover>
@@ -26,9 +27,7 @@ function ComboboxRenderItemTemplate(
 const meta: Meta<typeof ComboboxRenderItem> = {
 	title: 'forms/Combobox/Primitives/ComboboxRenderItem',
 	component: ComboboxRenderItem,
-	render: (props) => (
-		<ComboboxRenderItemTemplate {...props} isActiveItem={false} />
-	),
+	render: (props) => <ComboboxRenderItemTemplate {...props} />,
 };
 
 export default meta;

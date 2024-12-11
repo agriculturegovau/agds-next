@@ -1,6 +1,7 @@
 import {
 	forwardRef,
 	InputHTMLAttributes,
+	Ref,
 	useEffect,
 	useMemo,
 	useState,
@@ -16,6 +17,7 @@ import { SectionAlert } from '../section-alert';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { Box } from '../box';
+import { useSecondaryLabel } from '../field/useSecondaryLabel';
 import { FileUploadExistingFileList } from './FileUploadExistingFileList';
 import { FileUploadFileList } from './FileUploadFileList';
 import {
@@ -45,6 +47,8 @@ type BaseInputProps = {
 export type FileUploadProps = BaseInputProps & {
 	/** List of acceptable file MIME types, e.g. `image/jpeg`, `application/pdf`. */
 	accept?: (AcceptedFileMimeTypes | CustomFileMimeType)[];
+	/** The ref to be passed to the Select file(s) button. */
+	buttonRef?: Ref<HTMLButtonElement>;
 	/** If true, the thumbnails will be hidden. */
 	hideThumbnails?: boolean;
 	/** Describes the purpose of the field. */
@@ -79,6 +83,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	function FileUpload(
 		{
 			accept: acceptProp,
+			buttonRef,
 			disabled,
 			existingFiles = [],
 			hideOptionalLabel,
@@ -100,7 +105,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		forwardedRef
 	) {
 		const [status, setStatus] = useState('');
-		const filesPlural = multiple ? 'files' : 'file';
+		const fileOrFiles = multiple ? 'files' : 'file';
 		const maxSizeBytes = maxSize && !isNaN(maxSize) ? maxSize * 1000 : 0;
 		const formattedMaxFileSize = formatFileSize(maxSizeBytes);
 
@@ -263,9 +268,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			? `${fallbackId}-accepted-files-desc`
 			: '';
 
-		const buttonAriaDescribedBy = [
-			fileSizeDescriptionId,
-			acceptedFilesDescriptionId,
+		const secondaryLabelWithOptional = useSecondaryLabel({
+			hideOptionalLabel,
+			required,
+		});
+
+		const buttonLabel = `Select ${fileOrFiles}`;
+		const ariaLabel = [
+			buttonLabel,
+			label,
+			secondaryLabelWithOptional,
+			required && 'required',
+			invalid && 'invalid',
+			fileSummaryText,
 		]
 			.filter(Boolean)
 			.join(', ');
@@ -274,13 +289,21 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
+				required={required}
 				hint={hint}
 				message={message}
 				invalid={invalid}
 				id={id}
 			>
 				{(a11yProps) => {
+					const buttonAriaDescribedBy = [
+						a11yProps['aria-describedby'],
+						fileSizeDescriptionId,
+						acceptedFilesDescriptionId,
+					]
+						.filter(Boolean)
+						.join(' ');
+
 					return (
 						<Stack gap={1.5}>
 							<div css={visuallyHiddenStyles} role="status">
@@ -299,13 +322,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									<UploadIcon size="lg" color="muted" />
 									<input
 										{...dropzoneInputProps}
-										{...a11yProps}
 										{...consumerProps}
 										/**
 										 * Dropzone needs to set a ref to the input, but we _also_
 										 * need to forward a ref to the input so consumers can use it.
 										 * The mergeRef utility allows us to do this.
 										 */
+										aria-hidden
 										css={visuallyHiddenStyles}
 										ref={mergeRefs([forwardedRef, dropzoneInputRef])}
 									/>
@@ -335,7 +358,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 												}}
 												fontWeight="bold"
 											>
-												Drop {filesPlural} here…
+												Drop {fileOrFiles} here…
 											</Text>
 										</span>
 										{maxSize ? (
@@ -352,12 +375,16 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									</Stack>
 									<Button
 										aria-describedby={buttonAriaDescribedBy || undefined}
+										aria-label={ariaLabel}
 										disabled={disabled}
+										focusRingFor="all"
+										id={a11yProps.id}
 										onClick={open}
+										ref={buttonRef}
 										type="button"
 										variant="secondary"
 									>
-										Select {filesPlural}
+										{buttonLabel}
 									</Button>
 								</Stack>
 							</Box>

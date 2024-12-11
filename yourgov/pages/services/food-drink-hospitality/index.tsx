@@ -15,7 +15,7 @@ import { DocumentTitle } from '../../../components/DocumentTitle';
 export default function Page() {
 	return (
 		<>
-			<DocumentTitle title="Services" />
+			<DocumentTitle title="Food, drink and hospitality | Services" />
 			<SiteLayout>
 				<HeroSubcategoryBanner>
 					<Breadcrumbs

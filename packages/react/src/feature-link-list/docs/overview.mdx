@@ -1,0 +1,72 @@
+---
+title: Feature link list
+description: Feature link list is a vertical list of important links. It adds prominence and additional information to help users find and understand the navigation items.
+group: Navigation
+storybookPath: /story/navigation-featurelinklist--basic
+figmaGalleryNodeId: 11978%3A107111
+relatedComponents: ['card', 'link-list', 'list', 'inpage-nav']
+---
+
+Feature link list provides emphasis and hierarchy to an important list of links. It provides support for description content that will help a user read, understand, assess and select the appropriate link. To enhance usability, a feature link list should always be accompanied by a clear heading.
+
+```jsx live
+<FeatureLinkList
+	links={[
+		{
+			label: 'Add a business with RAM',
+			description:
+				'Set up a business to act on behalf of it or invite others to. You can do this if you are responsible for this business in Relationship Authorisation Manager (RAM).',
+			href: '#',
+		},
+		{
+			label: 'Accept an invite',
+			description:
+				'Use an invite code from an email to act on behalf of a business.',
+			href: '#',
+		},
+		{
+			label: 'About the department',
+			description: 'A suitable description for an external link.',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
+		},
+	]}
+/>
+```
+
+<DoHeading />
+
+- use to provide emphasis and hierarchy to link lists
+- avoid opening links in new tabs; provide an external link icon when it is not possible to open the link in the same browser tab
+- aim for consistent use of descriptions for all links in a list.
+
+<DontHeading />
+
+- unnecessarily repeat the label in the description
+- include more than 3 lines of copy in the description
+- confuse with [Inpage nav](/components/inpage-nav), which links to content on the current page
+- use outside of the Main region. Link list may be more suitable in this instance.
+
+## Using without a description
+
+Links can also be used without a description, if the label alone provides enough information.
+
+```jsx live
+<FeatureLinkList
+	links={[
+		{
+			label: 'Add a business with RAM',
+			href: '#',
+		},
+		{
+			label: 'Accept an invite',
+			href: '#',
+		},
+		{
+			label: 'About the department',
+			href: 'https://www.agriculture.gov.au/',
+			target: '_blank',
+		},
+	]}
+/>
+```

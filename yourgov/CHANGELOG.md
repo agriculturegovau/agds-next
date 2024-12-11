@@ -1,5 +1,160 @@
 # @ag.ds-next/yourgov
 
+## 0.6.0
+
+### Minor Changes
+
+- 30239bc81ec: yourgov: Complete the core of task 1
+- 2f793fdf31a: yourgov: Improve/fix all page titles.
+- 1dfd5eca78d: yourgov: Use a table for Upload documents on review steps.
+- c0ed4642315: yourgov: Use phone validation for inviting a staff member.
+- aa0786fbe21: table: `TableCell` - Add support for `id` prop.
+
+  yourgov: Add Employees steps.
+
+- 046b55a2cbb: yourgov: Rename task to steps. Add top-level id, lastUpdated, started and completed.
+- 285d4aab289: yourgov: Add random uuid fallback for non secure contexts.
+- 65f7f9b4fa3: yourgov: Connect Access requests table to state
+- 537336eaaff: yourgov: Add application success page.
+- fd62d08313c: yourgov: Add application detail page.
+- ad6f5e48a38: yourgov: Create a page for inviting a staff member.
+
+  section-alert: Allow strings to be passed to `focusOnUpdate`.
+
+  page-alert: Allow strings to be passed to `focusOnUpdate`.
+
+- d47efb6a3cf: combobox: `ComboboxMulti` - fix tag remove buttons so they don't submit forms.
+
+  yourgov: Fix staff member focus (again) and first page mobile layout.
+
+- 1fce89bcf5a: yourgov: Remove references to task throughout.
+- d47efb6a3cf: switch: Add required `aria-checked` attribute and add support for `aria-controls`.
+
+  table: Fix scrolling shadows not responding to changes in table heights.
+
+  yourgov: Various bug fixes and enhancements based on our testing.
+
+- fd62d08313c: yourgov: Add declaration to review step.
+- 302021c43cb: yourgov: Add correct help references
+- ff2bf2264bf: yourgov: Add edit staff page.
+- d6d8d66842e: page-alert: Make title default to H2 instead of H3.
+- 391566752f4: yourgov: Support focus management when cancelling staff & access modals.
+- c9a7f689db3: modal: Add `elementToFocusOnClose` prop to allow for manual focus management.
+  page-alert: Update `focusOnUpdate` to not focus on any falsey value.
+  section-alert: Update `focusOnUpdate` to not focus on any falsey value.
+
+  yourgov: Fix focus issues with Staff table.
+
+- 240749838c2: yourgov: Add food safety supervisor step.
+- 9c5e672d5d0: date-picker: Internally support and transform ISO date strings when set as `value`.
+  date-range-picker: Internally support and transform ISO date strings when set as `value`.
+  yourgov: Handle ISO date strings in state.
+- 2f793fdf31a: yourgov: Update all paths to apply and permits. Remove redundant page.
+- 9768bea51e2: yourgov: Update food served types.
+- 789f13a5145: yourgov: Update home page with new design.
+- f1a83a15717: yourgov: Update default staff members
+- 5f09ef15160: yourgov: Fix Add/Remove employee focus management… again.
+- 1fa56b947bc: icon: Create `PermitIcon`.
+
+  yourgov: Implement `PermitIcon` and new hero banner image.
+
+- 5b010984ad8: yourgov: Focus the success alert after table updates on remove of file in upload documents step.
+- 0d594bacd24: yourgov: Add working application history and related pages.
+
+### Patch Changes
+
+- 2207de5cb27: yourgov: Fix mobile rendering by adding correct viewport meta tag.
+- 1f3df2f8abd: yourgov: Various UI tweaks and fixes.
+- 1f2e68d0632: yourgov: Fix date and time validation.
+- 2d031800c74: yourgov: Fix alert focus management in add and remove employees.
+- 525d6179c35: date-picker: Disable `autocomplete` on calendar navigation dropdown.
+  date-range-picker: Disable `autocomplete` on calendar navigation dropdown.
+  select: Add TypeScript support for `autocomplete`.
+
+  yourgov: Fix markup validation issues. Add necessary autocomplete attributes.
+
+- 241e809e3ab: yourgov: Fix alert focus management in staff and access requests.
+- Updated dependencies [bfa1543b410]
+- Updated dependencies [38378085fee]
+- Updated dependencies [d8f5b35013f]
+- Updated dependencies [ef789cd698c]
+- Updated dependencies [aa0786fbe21]
+- Updated dependencies [066c1edd21c]
+- Updated dependencies [4b881310d02]
+- Updated dependencies [b23903198ac]
+- Updated dependencies [0d594bacd24]
+- Updated dependencies [64c38569a98]
+- Updated dependencies [aca18a7ee9d]
+- Updated dependencies [b16fd60bc1e]
+- Updated dependencies [8aa2d81262f]
+- Updated dependencies [e66b2636531]
+- Updated dependencies [1e29ca1063c]
+- Updated dependencies [f2159bc5a00]
+- Updated dependencies [51665e9fa79]
+- Updated dependencies [fc02f936d0c]
+- Updated dependencies [0fc960623f0]
+- Updated dependencies [0e65c067718]
+- Updated dependencies [9b79bbdc9f7]
+- Updated dependencies [aca18a7ee9d]
+- Updated dependencies [c640eaa0ca7]
+- Updated dependencies [198ec8efbba]
+- Updated dependencies [42b4ccbc147]
+- Updated dependencies [c33c23d4594]
+- Updated dependencies [0b9c49ebeb9]
+- Updated dependencies [fec2299a908]
+- Updated dependencies [ac04b0d1350]
+- Updated dependencies [8f70c8ba7fe]
+- Updated dependencies [2af5f5a3b1d]
+- Updated dependencies [7ec07ff2c65]
+- Updated dependencies [b577088b3e7]
+- Updated dependencies [36e54a9e17e]
+- Updated dependencies [093fe94bc81]
+- Updated dependencies [032b9ab94ce]
+- Updated dependencies [3874c18dd31]
+- Updated dependencies [d47efb6a3cf]
+- Updated dependencies [d47efb6a3cf]
+- Updated dependencies [9cfb094f43f]
+- Updated dependencies [e6b7b617d9a]
+- Updated dependencies [fbe54ef078e]
+- Updated dependencies [c70b4452f71]
+- Updated dependencies [38e4c01fd25]
+- Updated dependencies [b57fe083e3b]
+- Updated dependencies [d6d8d66842e]
+- Updated dependencies [6b6915dee9a]
+- Updated dependencies [a69a4ae612d]
+- Updated dependencies [060fde075b0]
+- Updated dependencies [73be3b9dd9e]
+- Updated dependencies [a47676b832f]
+- Updated dependencies [c9a7f689db3]
+- Updated dependencies [c7b42ee9331]
+- Updated dependencies [f350b70eb5b]
+- Updated dependencies [9c5e672d5d0]
+- Updated dependencies [7e81f38b56f]
+- Updated dependencies [7fb6b2e510b]
+- Updated dependencies [1f2e68d0632]
+- Updated dependencies [43fffc0fe97]
+- Updated dependencies [a8d0c5f09b1]
+- Updated dependencies [f919c144b39]
+- Updated dependencies [ebedd6a546d]
+- Updated dependencies [0f5331102e9]
+- Updated dependencies [525d6179c35]
+- Updated dependencies [a698c798152]
+- Updated dependencies [79e87db5003]
+- Updated dependencies [219f41aae95]
+- Updated dependencies [1fa56b947bc]
+- Updated dependencies [6d882af9f5b]
+- Updated dependencies [af191fc7829]
+- Updated dependencies [277af1554e9]
+- Updated dependencies [ffee5f3b6aa]
+- Updated dependencies [9b32c1d9ab4]
+- Updated dependencies [5fed76317d3]
+- Updated dependencies [20eac31f59c]
+- Updated dependencies [c5dad52b4c8]
+- Updated dependencies [c3fa7126d80]
+- Updated dependencies [6627301604a]
+- Updated dependencies [5b0bff3079a]
+  - @ag.ds-next/react@1.25.0
+
 ## 0.5.0
 
 ### Minor Changes

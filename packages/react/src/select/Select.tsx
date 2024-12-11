@@ -23,6 +23,7 @@ export type Options = (Option | OptionGroup)[];
 type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
 type BaseSelectProps = {
+	autoComplete?: NativeSelectProps['autoComplete'];
 	autoFocus?: NativeSelectProps['autoFocus'];
 	disabled?: NativeSelectProps['disabled'];
 	id?: NativeSelectProps['id'];
@@ -80,7 +81,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 			<Field
 				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={Boolean(required)}
+				required={required}
 				hint={hint}
 				maxWidth={maxWidth}
 				message={message}

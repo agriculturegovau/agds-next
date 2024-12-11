@@ -65,6 +65,7 @@ export {
 	LinkListContainer,
 	LinkListItem,
 } from '@ag.ds-next/react/link-list';
+export { FeatureLinkList } from '@ag.ds-next/react/feature-link-list';
 export {
 	Breadcrumbs,
 	BreadcrumbsContainer,
@@ -106,6 +107,7 @@ export {
 	FacebookIcon,
 	FactoryIcon,
 	FileIcon,
+	FileTextIcon,
 	FilterIcon,
 	HelpIcon,
 	HomeIcon,
@@ -113,10 +115,14 @@ export {
 	InfoFilledIcon,
 	InfoIcon,
 	InstagramIcon,
+	LicenceBusinessIcon,
+	LicenceIcon,
 	LinkedInIcon,
+	LockIcon,
 	MenuIcon,
 	MinusIcon,
 	PauseIcon,
+	PermitIcon,
 	PlayIcon,
 	PlusIcon,
 	PrintIcon,
@@ -132,10 +138,14 @@ export {
 	ThumbsDownIcon,
 	ThumbsUpIcon,
 	TwitterIcon,
+	UnlockIcon,
 	UploadIcon,
+	UsersIcon,
+	WalletIcon,
 	WarningFilledIcon,
 	WarningIcon,
 	WebsiteIcon,
+	XIcon,
 } from '@ag.ds-next/react/icon';
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';

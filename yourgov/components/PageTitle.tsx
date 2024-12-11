@@ -2,12 +2,14 @@ import { isValidElement, ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { H1 } from '@ag.ds-next/react/heading';
 import { Text } from '@ag.ds-next/react/text';
+import { FormRequiredFieldsMessage } from './FormRequiredFieldsMessage';
 
 export type PageTitleProps = {
 	pretext?: ReactNode;
 	title: ReactNode;
 	introduction?: ReactNode;
 	callToAction?: ReactNode;
+	hasAllFieldsRequiredMessage?: boolean;
 };
 
 export const PageTitle = ({
@@ -15,6 +17,7 @@ export const PageTitle = ({
 	title,
 	introduction,
 	callToAction,
+	hasAllFieldsRequiredMessage,
 }: PageTitleProps) => (
 	<Stack gap={1.5}>
 		<Stack>
@@ -36,5 +39,6 @@ export const PageTitle = ({
 			</Text>
 		) : null}
 		{callToAction}
+		{hasAllFieldsRequiredMessage && <FormRequiredFieldsMessage />}
 	</Stack>
 );

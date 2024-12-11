@@ -37,7 +37,8 @@ Consider using other formats such as tables, if more than 12 cards are required.
 - limit links to one per card
 - avoid images for the most part, unless they add relevant information
 - use a pictogram (64 pixels) if it provides meaningful context
-- use appropriate alt text for images.
+- use appropriate alt text for images
+- wrap related cards in a list to make navigation easier.
 
 <DontHeading />
 
@@ -162,7 +163,7 @@ This logic ensures sufficient contrast between foreground and background element
 
 ```jsx live
 <Fragment>
-	<Flex as="ul" gap="1" padding="1.5">
+	<Flex as="ul" gap={1.5} padding={1.5}>
 		<Box as="li">
 			<Card shadow clickable>
 				<CardInner>
@@ -195,14 +196,7 @@ This logic ensures sufficient contrast between foreground and background element
 		</Box>
 	</Flex>
 
-	<Flex
-		as="ul"
-		background="body"
-		css={{ listStyle: 'none' }}
-		gap="1"
-		padding="1.5"
-		palette="dark"
-	>
+	<Flex as="ul" background="body" gap={1.5} padding={1.5} palette="dark">
 		<Box as="li">
 			<Card clickable>
 				<CardInner>

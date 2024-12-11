@@ -30,10 +30,11 @@ Provide an overview of your changes here. Include screenshots, photos or links i
 
 **Creating new component**
 
-- [ ] Document the component for the website (`docs/overview.mdx` and `docs/code.mdx` at a minimum)
+- [ ] Add documentation for the component (`docs/overview.mdx` and `docs/code.mdx` at a minimum)
 - [ ] Preconstruct entrypoint has been created (run `yarn` in the root of the repo to do this)
 - [ ] Changeset file includes a minor
 - [ ] Export components for docs site and Playroom (`docs/components/designSystemComponents.tsx`)
 - [ ] Add component to Kitchen Sink (`.storybook/stories/KitchenSink.tsx`)
 - [ ] Add snippets to Playroom (`docs/playroom/snippets.ts`)
+- [ ] Add `figmaGalleryNodeId` to Docs (`docs/components/pictograms/index.tsx`)
 - [ ] Add pictogram to Docs (`docs/components/pictograms/index.tsx`)

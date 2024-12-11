@@ -61,7 +61,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (error) {
 			return (
-				<Stack gap={1}>
+				<Stack gap={1} role="alert">
 					<AlertFilledIcon color="error" size="lg" />
 					<Heading type="h2" fontSize="lg">
 						Failed to load
@@ -76,7 +76,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 
 		if (!loading && data.length === 0) {
 			return (
-				<Stack gap={2} alignItems="flex-start" paddingY={1}>
+				<Stack gap={2} alignItems="flex-start" paddingY={1} role="alert">
 					<Stack gap={1}>
 						<HelpIcon size="lg" color="muted" />
 						<Heading type="h2" fontSize="lg">

@@ -27,6 +27,7 @@ export const Tag = ({
 		<Flex
 			alignItems="center"
 			as="span"
+			background="body"
 			border
 			color={href ? 'action' : 'text'}
 			css={{

@@ -7,11 +7,12 @@ export const formatTime = (timeString = '', timeFormat: TimeFormat) => {
 	}
 
 	const date = new Date();
+	const trimmedTimeString = timeString.replace(/\s/g, '');
 	const time = (
-		timeString.match(/\d+/) !== null
-			? timeString.replace(/\s/g, '').length === 3
-				? timeString.match(/(\w)(\w{1,2})/)?.slice(1) ?? []
-				: timeString.match(/\d{1,2}/gi) ?? []
+		trimmedTimeString.match(/\d+/) !== null
+			? trimmedTimeString.length === 3
+				? trimmedTimeString.match(/(\w)(\w{1,2})/)?.slice(1) ?? []
+				: trimmedTimeString.match(/\d{1,2}/gi) ?? []
 			: []
 	).map((digit) => Number(digit) | 0);
 

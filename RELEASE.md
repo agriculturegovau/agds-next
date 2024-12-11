@@ -1,55 +1,37 @@
 # Release Process
 
-These instructions capture the internal process for making releases of the `@ag.ds-next` packages.
-
-## npm release
-
-Merge the PR named `Version Packages` into `main` on GitHub once tests are passing.
-
-In the command line, on the `main` branch, run `git pull` to fetch latest changes.
-
-Run `yarn fresh` to rebuild `node_modules` and clean-up any build output.
-
-Finally, run `yarn publish-changed` to find packages where the version listed in the `package.json` is ahead of the version published on npm, and publish just those packages.
-
-The above command requires publish privileges on npm and a one time password (OTP).
-
-Then publish all new tags to GitHub with `git push --tags`.
-
-Copy the successful output of the published packages from the above npm release, example output:
-
-```sh
-@ag.ds-next/react@1.18.0
-```
-
-Translate to a `package.json` style syntax for ease of copying, example:
-
-```json
-"@ag.ds-next/react": "1.18.0"
-```
-
-Use this output in the next step.
+These instructions capture the internal process for making a release of the `@ag.ds-next/react` package.
 
 ## Docs website release notes
 
-Create a new branch using the format: `release-notes-[version-number]`.
+1. Copy the `@ag.ds-next/react@` version number from the current Version Packages PR and create a new branch using the format: `release-notes-v[version-number]`.
+2. Search the repository for any `unreleased: true` components and remove this frontmatter as these components will be released.
+3. Create a new `.mdx` file in `docs/content/updates` with today’s date as the file name.
+4. Use the previous release as the template for the release notes. It should include:
 
-Search the repository for any components that have been marked as unreleased. You can do this by searching for `unreleased: true`. If there any components marked as unreleased, they would have been released in the previous step so this piece of frontmatter needs to be removed.
+   - Release description of what is new.
+   - Detailed and consistent notes of what is in the release. Use the Version Packages content as a starter, but in some cases it may be better to write something new.
+   - The new package release version from above.
+   - A link to the Version Packages PR.
 
-Create a new `.mdx` file in `docs/content/updates` with today’s date as the file name.
+5. Add a minor docs changeset of ‘docs: AgDS Beta v[version-number] release notes.‘
+6. Commit these changes with a description ‘Release notes v[version number]’, create a PR and merge it to `develop` when approved.
 
-Use the previous release as the template for the release notes. It should include:
+## npm release
 
-- Summary headline of what’s in the release
-- Release description of what is new. This may be taken from the changelogs but should remove the noise. In some cases it may be better to write something new.
-- Verbose release notes link (link to the PR)
+1. Merge the PR named `Version Packages` into `develop` on GitHub once all checks pass.
+2. Create and merge a new PR titled ‘Release v[version-number]’ which merges `develop` into `main`.
+3. After `main` finishes building and deploying, on the command line, run `git pull` on the `main` branch to fetch latest changes.
+4. Run `yarn fresh` to rebuild `node_modules` and clean-up any build output.
+5. Run `yarn publish-changed` to find packages where the version listed in the `package.json` is ahead of the version published on npm, and publish just those packages.
 
-Commit this with a description 'Release notes [version number]" and merge it to main.
+   - The above command requires publish privileges on npm and a one time password (OTP).
+
+6. Publish all new tags to GitHub with `git push --tags`.
 
 ## Github release notes
 
-Create a draft release on GitHub based on the new release’s tag (such as @ag.ds-next/react@1.18.0).
-
-Give the release a title using the version number of the release, such as 'AgDS Beta v1.18.0 release'.
-
-It should use the same content as the docs website’s release notes (with full urls to updated components).
+1. Create a draft release on GitHub based on the new release’s tag (such as @ag.ds-next/react@[version-number]).
+2. Title the release with the version number, for example, ‘AgDS Beta v[version-number] release’.
+3. Copy the latest docs release notes content without the frontmatter and with all urls updated to include the protocol and domain.
+4. Publish the release.

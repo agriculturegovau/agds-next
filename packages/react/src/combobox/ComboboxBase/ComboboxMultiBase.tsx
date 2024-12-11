@@ -7,6 +7,7 @@ import {
 	type Ref,
 	useCallback,
 	useRef,
+	useMemo,
 } from 'react';
 import {
 	UseComboboxReturnValue,
@@ -25,14 +26,16 @@ import {
 import { Field } from '../../field';
 import { Flex } from '../../flex';
 import {
+	ComboboxRenderItemDefault,
+	renderItemLabel,
+} from '../ComboboxRenderItemDefault';
+import {
 	generateHighlightStyles,
 	type ComboboxMaxWidthValues,
 	type DefaultComboboxOption,
 	useIsIos,
 	validateMaxWidth,
 } from '../utils';
-import { ComboboxRenderItem } from '../ComboboxRenderItem';
-import { ComboboxListItem } from './ComboboxListItem';
 import { ComboboxListLoading } from './ComboboxListLoading';
 import { ComboboxListError } from './ComboboxListError';
 import { ComboboxListEmptyResults } from './ComboboxListEmptyResults';
@@ -42,6 +45,7 @@ import {
 	ComboboxButtonContainer,
 	ComboboxButtonDivider,
 } from './ComboboxButtons';
+import { listItemStyles } from './ComboboxListItem';
 import { ComboboxTag } from './ComboboxTag';
 
 type ComboboxMultiBaseProps<Option extends DefaultComboboxOption> = {
@@ -90,7 +94,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 	block,
 	maxWidth: maxWidthProp = 'xl',
 	// clearable = false,
-	renderItem = (item) => <ComboboxRenderItem itemLabel={item.label} />,
+	renderItem,
 	emptyResultsMessage = 'No options found.',
 	loading,
 	networkError,
@@ -136,6 +140,14 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 		showClearButton,
 	});
 
+	const itemLabels = useMemo(
+		() =>
+			inputItems?.length
+				? inputItems.map((item) => renderItemLabel(item.label))
+				: [],
+		[inputItems]
+	);
+
 	// Focus the input element if the user clicks inside the container
 	// This should be prevented if a user clicks on any other element (e.g. a Tag)
 	const fieldContainerRef = useRef<HTMLDivElement>(null);
@@ -173,7 +185,7 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 			label={label}
 			labelId={labelId}
 			hideOptionalLabel={hideOptionalLabel}
-			required={Boolean(required)}
+			required={required}
 			hint={hint}
 			maxWidth={maxWidthProp}
 			message={message}
@@ -262,14 +274,26 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 									<Fragment>
 										{inputItems?.length ? (
 											inputItems.map((item, index) => (
-												<ComboboxListItem
+												<li
+													data-combobox-list-item="interactive"
 													key={`${item.value}-${index}`}
-													isActiveItem={combobox.highlightedIndex === index}
-													isInteractive={true}
 													{...combobox.getItemProps({ item, index })}
+													// Required for Android TalkBack to be able to access the list items
+													// See https://issues.chromium.org/issues/40260928
+													// But stops iOS from being able to access them ◔_◔
+													tabIndex={isIos ? undefined : -1}
 												>
-													{renderItem(item)}
-												</ComboboxListItem>
+													{renderItem ? (
+														renderItem({
+															...item,
+															label: itemLabels[index],
+														})
+													) : (
+														<ComboboxRenderItemDefault>
+															{itemLabels[index]}
+														</ComboboxRenderItemDefault>
+													)}
+												</li>
 											))
 										) : (
 											<ComboboxListEmptyResults message={emptyResultsMessage} />
@@ -304,6 +328,7 @@ function comboboxMultiStyles({
 }) {
 	return {
 		fieldContainer: {
+			...listItemStyles,
 			...generateHighlightStyles(inputValue),
 			...(!block && {
 				maxWidth: tokens.maxWidth.field[maxWidth],
