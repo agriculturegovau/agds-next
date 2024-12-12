@@ -1,5 +1,11 @@
 # @ag.ds-next/yourgov
 
+## 0.6.1
+
+### Patch Changes
+
+- d77af495409: yourgov: Simple markup and UI fixes.
+
 ## 0.6.0
 
 ### Minor Changes
