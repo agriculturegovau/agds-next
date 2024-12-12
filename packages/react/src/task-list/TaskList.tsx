@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { TaskListContainer } from './TaskListContainer';
 import { TaskListHeading } from './TaskListHeading';
 import { TaskListItemsContainer } from './TaskListItemsContainer';
@@ -10,7 +11,7 @@ import {
 
 type TaskListItem = (TaskListItemButtonProps | TaskListItemLinkProps) & {
 	label: string;
-	message?: string;
+	message?: string | ReactElement;
 };
 
 export type TaskListProps = {
