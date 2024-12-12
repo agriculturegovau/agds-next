@@ -1,5 +1,17 @@
 # @ag.ds-next/docs
 
+## 0.14.0
+
+### Minor Changes
+
+- 74937595b1c: docs: Update Storybook to version 8, update NextJS and Playroom to latest minor version.
+
+  react: Dependency updates.
+
+  yourgov: Dependency updates.
+
+  example-site: Dependency updates.
+
 ## 0.13.0
 
 ### Minor Changes
