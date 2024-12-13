@@ -1,11 +1,8 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { ConditionalFieldContainer } from '../../../../docs/components/ConditionalFieldContainer';
 import { VisuallyHidden } from '../a11y';
 import { Box } from '../box';
-import { ControlGroup } from '../control-group';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
-import { Radio } from '../radio';
 import { Text } from '../text';
 import { Callout } from './Callout';
 import { CalloutTitle } from './CalloutTitle';
@@ -156,25 +153,6 @@ export const CalendarExample: Story = {
 			</Flex>
 		</Callout>
 	),
-};
-
-export const InControlGroup: Story = {
-	render: (args) => (
-		<ControlGroup label="Control group label" required block>
-			<Radio checked={false}>Radio option one</Radio>
-			<Radio checked={true}>Radio option two</Radio>
-			<ConditionalFieldContainer>
-				<Callout {...args} />
-			</ConditionalFieldContainer>
-			<Radio checked={false}>Text message</Radio>
-		</ControlGroup>
-	),
-	args: {
-		title: 'Callout heading',
-		children: <Text as="p">Description of the callout.</Text>,
-		tone: 'info',
-		variant: 'compact',
-	},
 };
 
 export const NoTitle: Story = {
