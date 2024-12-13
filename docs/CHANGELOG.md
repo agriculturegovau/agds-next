@@ -1,5 +1,23 @@
 # @ag.ds-next/docs
 
+## 0.14.0
+
+### Minor Changes
+
+- 74937595b1c: docs: Update Storybook to version 8, update NextJS and Playroom to latest minor version.
+
+  react: Dependency updates.
+
+  yourgov: Dependency updates.
+
+  example-site: Dependency updates.
+
+### Patch Changes
+
+- a2ddf9aa951: docs: Remove unused react-simple-code-editor.
+- Updated dependencies [598725a5f8d]
+  - @ag.ds-next/react@1.25.1
+
 ## 0.13.0
 
 ### Minor Changes
