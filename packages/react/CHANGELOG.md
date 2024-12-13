@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.25.1
+
+### Patch Changes
+
+- 598725a5f8d: callout: Remove callout in control group story as we no longer support this pattern.
+
 ## 1.25.0
 
 ### Minor Changes

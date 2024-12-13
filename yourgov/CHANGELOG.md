@@ -1,5 +1,13 @@
 # @ag.ds-next/yourgov
 
+## 0.6.1
+
+### Patch Changes
+
+- d77af495409: yourgov: Simple markup and UI fixes.
+- Updated dependencies [598725a5f8d]
+  - @ag.ds-next/react@1.25.1
+
 ## 0.6.0
 
 ### Minor Changes
