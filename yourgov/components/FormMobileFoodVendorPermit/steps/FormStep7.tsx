@@ -137,6 +137,7 @@ export function FormStep7() {
 		<FormContainer
 			formIntroduction="Add your employee details."
 			formTitle="Employees"
+			hideRequiredFieldsMessage
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>
 			<Stack gap={2}>
