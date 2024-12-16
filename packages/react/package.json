@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@emotion/react": "^11.7.0",
-		"@types/facepaint": "^1.2.2",
+		"@types/facepaint": "^1.2.5",
 		"facepaint": "^1.2.1",
 		"react": "18.1.0",
 		"react-dom": "18.1.0"
