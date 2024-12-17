@@ -18,7 +18,9 @@ export const LoadingBlanket = ({
 	<LoadingBlanketContainer fullScreen={fullScreen}>
 		<LoadingBlanketContent>
 			<LoadingDots size={fullScreen ? 'lg' : 'md'} />
-			<LoadingBlanketLabel>{label}</LoadingBlanketLabel>
+			<LoadingBlanketLabel role={fullScreen ? 'alert' : 'status'}>
+				{label}
+			</LoadingBlanketLabel>
 		</LoadingBlanketContent>
 	</LoadingBlanketContainer>
 );
