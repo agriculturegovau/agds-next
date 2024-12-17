@@ -9,6 +9,7 @@ import {
 	useMemo,
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
+import { addDays, isAfter, isBefore } from 'date-fns';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -19,7 +20,7 @@ import {
 	useTernaryState,
 	useWindowSize,
 	useId,
-	packs,
+	// packs,
 } from '../core';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
@@ -38,8 +39,8 @@ import {
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import { DateInput } from './../date-picker/DatePickerInput';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
-import { isAfter, isBefore, isValid } from 'date-fns';
+import { getCalendarDefaultMonth } from './utils';
+// import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
 	from: Date | undefined;
@@ -141,7 +142,7 @@ export const DateRangePicker = ({
 
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
-	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
+	// const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
@@ -149,19 +150,24 @@ export const DateRangePicker = ({
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
 	function onFromTriggerClick() {
-		if (!inputMode || inputMode === 'to' || !isCalendarOpen) {
-			openCalendar();
-		} else {
-			closeCalendar();
-		}
 		setInputMode('from');
+		// if (!inputMode || inputMode === 'to') {
+		openCalendar();
+		// } else {
+		// closeCalendar();
+		// }
 		setHasCalendarOpened(true);
 	}
 
 	function onToTriggerClick() {
+		// if (inputMode === 'to') {
+		// 	closeCalendar();
+		// }
+		// else {
 		setInputMode('to');
-		toggleCalendar();
+		openCalendar();
 		setHasCalendarOpened(true);
+		// }
 	}
 
 	const popover = usePopover();
@@ -178,8 +184,31 @@ export const DateRangePicker = ({
 		[value]
 	);
 
+	const [hoveredDay, setHoveredDay] = useState<Date>();
+
+	const onHover = useCallback(
+		(date: Date) => {
+			// console.log(`onHover`, date);
+			setHoveredDay(date);
+		},
+		[setHoveredDay]
+	);
+
+	// From input state
+	const [fromInputValue, setFromInputValue] = useState(
+		transformValuePropToInputValue(value.from, dateFormat)
+	);
+
+	// To input state
+	const [toInputValue, setToInputValue] = useState(
+		transformValuePropToInputValue(value.to, dateFormat)
+	);
+
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
+			// console.log(`_`, _);
+			// console.log(`selectedDay`, selectedDay);
+			// console.log(`activeModifiers`, activeModifiers);
 			if (!inputMode || activeModifiers.disabled) return;
 
 			const range = {
@@ -213,6 +242,11 @@ export const DateRangePicker = ({
 					: toInputValue
 			);
 
+			if ((range.from || fromInputValue) && (range.to || toInputValue)) {
+				closeCalendar();
+				return;
+			}
+
 			if (inputMode === 'from') {
 				setInputMode('to');
 				return;
@@ -223,12 +257,15 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
-	);
-
-	// From input state
-	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from, dateFormat)
+		[
+			closeCalendar,
+			inputMode,
+			onChange,
+			valueAsDateOrUndefined,
+			dateFormat,
+			fromInputValue,
+			toInputValue,
+		]
 	);
 
 	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -282,13 +319,8 @@ export const DateRangePicker = ({
 		setFromInputValue(inputValue);
 	};
 
-	// To input state
-	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to, dateFormat)
-	);
-
 	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
-		console.group('onToInputBlur');
+		// console.group('onToInputBlur');
 		const inputValue = e.target.value;
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		console.log(`parsedDate`, parsedDate);
@@ -306,7 +338,7 @@ export const DateRangePicker = ({
 			) ||
 			fromInputValue;
 
-		console.log(`constrainedFromDate`, constrainedToDate);
+		// console.log(`constrainedFromDate`, constrainedToDate);
 		const range = {
 			from: constrainedFromDate,
 			to: constrainedToDate,
@@ -326,7 +358,7 @@ export const DateRangePicker = ({
 			onChange(range);
 			// } else {
 		}
-		console.groupEnd('onToInputBlur');
+		// console.groupEnd('onToInputBlur');
 	};
 
 	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -337,7 +369,7 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		console.log(`value`, value);
+		// console.log(`value`, value);
 		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
 		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
 	}, [value, dateFormat]);
@@ -403,6 +435,19 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
+	// console.log(`valueAsDateOrUndefined.from`, valueAsDateOrUndefined.from);
+	// console.log(`hoveredDay`, hoveredDay);
+	const fromRange = useCallback(
+		() =>
+			inputMode === 'to'
+				? getRange(valueAsDateOrUndefined.from, hoveredDay)
+				: inputMode === 'from'
+				? getRange(hoveredDay, valueAsDateOrUndefined.from)
+				: [],
+		[hoveredDay, inputMode, valueAsDateOrUndefined]
+	);
+	// console.log(`range()`, range());
+
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
 	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
@@ -411,18 +456,38 @@ export const DateRangePicker = ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
 			initialFocus: true,
+			inputMode,
 			numberOfMonths,
 			onSelect,
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
 			selected: valueAsDateOrUndefined,
+			modifiers: {
+				fromRange: (day: Date) => {
+					// console.log(`day`, day);
+					return fromRange().some(
+						(r) => r.toDateString() === day.toDateString()
+					);
+					// return range().includes(day);
+				},
+				// qux: range(),
+				// 	foo: hoveredDay,
+			},
+			modifiersClassNames: {
+				fromRange: 'range',
+				// 	foo: 'baz',
+			},
+			onHover,
 		}),
 		[
 			defaultMonth,
 			disabledCalendarDays,
+			// hoveredDay,
 			inputMode,
 			numberOfMonths,
 			onSelect,
 			valueAsDateOrUndefined,
+			onHover,
+			fromRange,
 		]
 	);
 
@@ -531,3 +596,17 @@ export function useDateRangePickerIds(idProp?: string) {
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
 }
+
+const getRange = (startDate?: Date, endDate?: Date) => {
+	if (startDate && endDate) {
+		const range = [];
+		let current = addDays(startDate, 1);
+		while (current < endDate) {
+			// console.log(`current, hoverDate`, current, hoverDate);
+			range.push(current);
+			current = addDays(current, 1);
+		}
+		return range;
+	}
+	return [];
+};
