@@ -46,16 +46,6 @@ export default function PackagesCode({
 					]}
 				/>
 				<Prose id="pkg-content">
-					<h2 id="usage">Usage</h2>
-					<p>
-						{pkg.title} components can be imported via the{' '}
-						<code>{pkg.name}</code> entrypoint in the{' '}
-						<code>@ag.ds-next/react</code> package.
-					</p>
-					<p>For example:</p>
-					<pre>
-						<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
-					</pre>
 					<MDXRemote {...source} components={mdxComponents} />
 					<h2 id="source">Source</h2>
 					<p>
