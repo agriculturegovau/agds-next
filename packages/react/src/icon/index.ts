@@ -60,6 +60,7 @@ export { PlusIcon } from './icons/PlusIcon';
 export { PrintIcon } from './icons/PrintIcon';
 export { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 export { ProgressDoingIcon } from './icons/ProgressDoingIcon';
+export { ProgressNotRequiredIcon } from './icons/ProgressNotRequiredIcon';
 export { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 export { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 export { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';

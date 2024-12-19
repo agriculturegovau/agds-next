@@ -128,6 +128,7 @@ export {
 	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
+	ProgressNotRequiredIcon,
 	ProgressTodoIcon,
 	ScrollbarArrowLeftIcon,
 	ScrollbarArrowRightIcon,
