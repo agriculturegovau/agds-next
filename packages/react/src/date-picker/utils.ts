@@ -33,8 +33,8 @@ export const acceptedDateFormats = [
 
 export type AcceptedDateFormats = (typeof acceptedDateFormats)[number];
 
-export const formatDate = (date: Date, dateformat: AcceptedDateFormats) =>
-	format(date, dateformat);
+export const formatDate = (date?: Date, dateformat?: AcceptedDateFormats) =>
+	date && dateformat ? format(date, dateformat) : '';
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy EEEE');
@@ -66,7 +66,7 @@ export const parseDate = (
 	return undefined;
 };
 
-function isValidDate(value: Date) {
+export function isValidDate(value?: Date) {
 	return isDate(value) && isValid(value);
 }
 

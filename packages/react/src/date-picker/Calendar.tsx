@@ -3,10 +3,11 @@ import {
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
-	type RefObject,
+	// type RefObject,
 	useCallback,
 	useMemo,
 	useRef,
+	// Profiler,
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
@@ -32,6 +33,7 @@ import {
 	startOfWeek,
 	type Locale,
 } from 'date-fns';
+import { DebouncedState } from 'use-debounce';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
@@ -83,26 +85,145 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	returnFocusRef?: RefObject<HTMLButtonElement>;
+	// returnFocusRef?: RefObject<HTMLButtonElement>;
+	inputMode?: 'from' | 'to';
+	onHover?: (date: Date) => void;
+	clearHoveredDay?: DebouncedState<() => void>;
 };
 
 export function CalendarRange({
-	returnFocusRef,
+	// returnFocusRef,
+	inputMode,
+	onHover,
+	clearHoveredDay,
 	...props
 }: CalendarRangeProps) {
+	// console.log(`props`, props);
+	// const { onHover } = props;
+	const combinedDayPickerProps = {
+		// ...defaultDayPickerProps,
+		components: {
+			...defaultDayPickerProps.components,
+			// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
+			// Key change: we no longer render <button>s, everything happens on <td>s
+			// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
+			Day: function Day(props: DayProps) {
+				const buttonRef = useRef<HTMLButtonElement>(null);
+				const { activeModifiers, buttonProps, isHidden } = useDayRender(
+					props.date,
+					props.displayMonth,
+					buttonRef
+				);
+
+				// console.log(`activeModifiers.qux`, activeModifiers.qux);
+				// console.log(`props.date`, props.date);
+				// console.log(`selectedDays`, selectedDays);
+
+				// @ts-expect-error: role is unused
+				const { children, onClick, onKeyDown, role, ...restButtonProps } =
+					buttonProps;
+
+				const handleKeyDown = (event: KeyboardEvent) => {
+					if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
+						event.preventDefault();
+						event.stopPropagation();
+						// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'MouseEvent<HTMLButtonElement, MouseEvent>'.
+						onClick?.(event);
+					} else {
+						// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'KeyboardEvent<HTMLButtonElement>'
+						onKeyDown?.(event);
+					}
+				};
+
+				const interactiveProps = {
+					'aria-current': activeModifiers.today ? 'date' : undefined,
+					// Improve the aria labels of each button.
+					// Selected and dates within range are manually announced.
+					'aria-label': `${
+						activeModifiers.selected && !activeModifiers.range_middle
+							? 'Selected. '
+							: ''
+					}${formatHumanReadableDate(props.date)}${
+						activeModifiers.range_middle ? '. Between selected dates' : ''
+					}`,
+					'aria-selected':
+						// React Day Picker incorrectly marks ranges as selected
+						activeModifiers.range_middle ? undefined : activeModifiers.selected,
+					onClick,
+					...restButtonProps,
+				};
+
+				return (
+					<td
+						// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
+						onKeyDown={handleKeyDown}
+						// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
+						ref={buttonRef}
+						tabIndex={-1}
+						{...(isHidden ? undefined : interactiveProps)}
+						// data-in-range={activeModifiers.qux}
+						// data-day-after-from={props.date > selectedDays?.from}
+						// data-day-before-to={props.date < selectedDays?.to}
+					>
+						{/* Without this focusable span, left and right do not work in screen readers */}
+						<span
+							tabIndex={-1}
+							onMouseLeave={() => {
+								// console.log(`props.date`, props.date);
+								// console.log(`e`, e);
+								!isHidden && clearHoveredDay?.();
+							}}
+							onMouseEnter={
+								onHover && !isHidden
+									? () => {
+											clearHoveredDay?.cancel();
+											onHover(props.date);
+									  }
+									: undefined
+							}
+							css={{
+								position: 'relative',
+								display: 'flex',
+								height: '3rem',
+								width: '3rem',
+								justifyContent: 'center',
+								alignItems: 'center',
+								'::before': {
+									content: '""',
+									position: 'absolute',
+									inset: 0,
+									// background: 'rgba(255,0,0,0.2)',
+								},
+							}}
+						>
+							{isHidden ? undefined : children}
+						</span>
+					</td>
+				);
+			},
+		},
+	};
+
 	return (
+		// <Profiler
+		// 	id="cal"
+		// 	onRender={(id, phase, duration) => {
+		// 		console.log(id, phase, duration);
+		// 	}}
+		// >
 		<FocusLock
 			autoFocus={false}
-			onDeactivation={() => {
-				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-				if (!returnFocusRef) return;
-				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
-			}}
+			// onDeactivation={() => {
+			// 	// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+			// 	if (!returnFocusRef) return;
+			// 	window.setTimeout(() => returnFocusRef.current?.focus(), 0);
+			// }}
 		>
-			<CalendarRangeContainer dateRange={props.selected}>
-				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
+			<CalendarRangeContainer dateRange={props.selected} inputMode={inputMode}>
+				<DayPicker mode="range" {...combinedDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
+		// {/* </Profiler> */}
 	);
 }
 
@@ -368,6 +489,10 @@ const calendarComponents: CustomComponents = {
 			buttonRef
 		);
 
+		// console.log(`activeModifiers`, activeModifiers);
+		// console.log(`props.date`, props.date);
+		// console.log(`selectedDays`, selectedDays);
+
 		// @ts-expect-error: role is unused
 		const { children, onClick, onKeyDown, role, ...restButtonProps } =
 			buttonProps;
@@ -410,6 +535,8 @@ const calendarComponents: CustomComponents = {
 				ref={buttonRef}
 				tabIndex={-1}
 				{...(isHidden ? undefined : interactiveProps)}
+				// data-day-after-from={props.date > selectedDays?.from}
+				// data-day-before-to={props.date < selectedDays?.to}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{isHidden ? undefined : children}</span>

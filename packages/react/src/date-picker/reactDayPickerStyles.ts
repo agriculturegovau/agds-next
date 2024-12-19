@@ -85,6 +85,7 @@ export const reactDayPickerStyles = {
 		'&:not([disabled], :focus):hover': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
+			fontWeight: 'bold',
 			textDecoration: 'underline',
 			zIndex: tokens.zIndex.elevated,
 			...highContrastOutlineStyles,
@@ -150,10 +151,33 @@ export const reactDayPickerStyles = {
 		},
 } as const;
 
-export const reactDayRangePickerStyles = (dateRange?: {
-	from?: Date;
-	to?: Date;
-}) => {
+// Start date only picked
+// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
+// rdp-day rdp-day_selected rdp-day_range_start
+
+// Middle date
+// rdp-day rdp-day_selected rdp-day_range_middle
+
+// End date picked
+// rdp-day rdp-day_selected rdp-day_range_end
+
+// Start date is end date
+// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
+
+// type ReactDayRangePickerStyles = {
+// ?: {
+// 	from?: Date;
+// 	to?: Date;
+// }
+
+// }
+export const reactDayRangePickerStyles = (
+	dateRange?: {
+		from?: Date;
+		to?: Date;
+	},
+	inputMode?: 'from' | 'to'
+) => {
 	const { from, to } = dateRange ?? {};
 	const startStyles = {
 		borderRadius: 0,
@@ -165,6 +189,9 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		borderBottomRightRadius: '50%',
 		borderTopRightRadius: '50%',
 	};
+
+	// console.log(`from`, from);
+	// console.log(`to`, to);
 
 	return {
 		// Middle of the date range
@@ -183,6 +210,32 @@ export const reactDayRangePickerStyles = (dateRange?: {
 		'.rdp-day_range_start.rdp-day_range_end': {
 			...(from && startStyles),
 			...(to && endStyles),
+		},
+		// '.rdp-day_range_start ~ .rdp-day': {
+		// 	...(from &&
+		// 		!to && {
+		// 			backgroundColor: 'red',
+		// 		}),
+		// },
+		// '[data-in-range]': {
+
+		...(inputMode && {
+			'.rdp-day': {
+				...(inputMode === 'from' && startStyles),
+				...(inputMode === 'to' && endStyles),
+				'&:hover': {
+					backgroundColor: boxPalette.selected,
+					// 	border: '3px solid red',
+				},
+			},
+		}),
+
+		'.range': {
+			backgroundColor: boxPalette.selectedMuted,
+			borderRadius: 0,
+			color: boxPalette.foregroundText,
+			fontWeight: 'bold',
+			// fontSize: 30,
 		},
 	};
 };
