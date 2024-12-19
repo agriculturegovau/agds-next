@@ -7,9 +7,11 @@ import {
 	useState,
 	useEffect,
 	useMemo,
+	// Profiler,
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
 import { addDays, isAfter, isBefore } from 'date-fns';
+import { useDebouncedCallback } from 'use-debounce';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -243,6 +245,7 @@ export const DateRangePicker = ({
 			);
 
 			if ((range.from || fromInputValue) && (range.to || toInputValue)) {
+				setHoveredDay(undefined);
 				closeCalendar();
 				return;
 			}
@@ -443,10 +446,13 @@ export const DateRangePicker = ({
 				? getRange(valueAsDateOrUndefined.from, hoveredDay)
 				: inputMode === 'from'
 				? getRange(hoveredDay, valueAsDateOrUndefined.from)
-				: [],
+				: {},
 		[hoveredDay, inputMode, valueAsDateOrUndefined]
 	);
-	// console.log(`range()`, range());
+
+	const clearHoveredDay = useDebouncedCallback(() => {
+		setHoveredDay(undefined);
+	}, 200);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
 	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
@@ -462,13 +468,25 @@ export const DateRangePicker = ({
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
 			selected: valueAsDateOrUndefined,
 			modifiers: {
+				// fromRange: (day: Date) => {
+				// 	// console.log(`day`, day);
+				// 	return fromRange().some(
+				// 		(r) => r.toDateString() === day.toDateString()
+				// 	);
+				// 	// return range().includes(day);
+				// },
 				fromRange: (day: Date) => {
 					// console.log(`day`, day);
-					return fromRange().some(
-						(r) => r.toDateString() === day.toDateString()
-					);
+					// console.log(`fromRange()`, fromRange());
+					return fromRange()[day.toDateString()];
 					// return range().includes(day);
 				},
+				// fromRange: (day: Date) => {
+				// 	// console.log(`day`, day);
+				// 	// console.log(`fromRange()`, fromRange());
+				// 	return fromRange().has(day.toDateString());
+				// 	// return range().includes(day);
+				// },
 				// qux: range(),
 				// 	foo: hoveredDay,
 			},
@@ -477,10 +495,12 @@ export const DateRangePicker = ({
 				// 	foo: 'baz',
 			},
 			onHover,
+			clearHoveredDay,
 		}),
 		[
 			defaultMonth,
 			disabledCalendarDays,
+			clearHoveredDay,
 			// hoveredDay,
 			inputMode,
 			numberOfMonths,
@@ -492,6 +512,12 @@ export const DateRangePicker = ({
 	);
 
 	return (
+		// <Profiler
+		// 	id="drp"
+		// 	onRender={(id, phase, duration) => {
+		// 		console.log(id, phase, duration);
+		// 	}}
+		// >
 		<FieldContainer invalid={invalid} id={fieldsetId}>
 			<Box as="fieldset">
 				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
@@ -584,6 +610,7 @@ export const DateRangePicker = ({
 				</CalendarProvider>
 			</Box>
 		</FieldContainer>
+		// </Profiler>
 	);
 };
 
@@ -598,15 +625,37 @@ export function useDateRangePickerIds(idProp?: string) {
 }
 
 const getRange = (startDate?: Date, endDate?: Date) => {
+	// if (startDate && endDate) {
+	// 	const range = [];
+	// 	let current = addDays(startDate, 1);
+	// 	while (current < endDate) {
+	// 		// console.log(`current, hoverDate`, current, hoverDate);
+	// 		range.push(current);
+	// 		current = addDays(current, 1);
+	// 	}
+	// 	return range;
+	// }
+	// return [];
+	// const range = new Set();
+	// if (startDate && endDate) {
+	// 	// const range = [];
+	// 	let current = addDays(startDate, 1);
+	// 	while (current < endDate) {
+	// 		// console.log(`current, hoverDate`, current, hoverDate);
+	// 		range.add(current.toDateString());
+	// 		current = addDays(current, 1);
+	// 	}
+	// }
+	// return range;
+	const range: Record<string, boolean> = {};
 	if (startDate && endDate) {
-		const range = [];
 		let current = addDays(startDate, 1);
 		while (current < endDate) {
 			// console.log(`current, hoverDate`, current, hoverDate);
-			range.push(current);
+			range[current.toDateString()] = true;
 			current = addDays(current, 1);
 		}
-		return range;
 	}
-	return [];
+	return range;
+	// return {};
 };

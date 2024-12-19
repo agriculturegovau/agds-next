@@ -7,6 +7,7 @@ import {
 	useCallback,
 	useMemo,
 	useRef,
+	// Profiler,
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
@@ -32,6 +33,7 @@ import {
 	startOfWeek,
 	type Locale,
 } from 'date-fns';
+import { DebouncedState } from 'use-debounce';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
@@ -86,12 +88,14 @@ export type CalendarRangeProps = Omit<
 	// returnFocusRef?: RefObject<HTMLButtonElement>;
 	inputMode?: 'from' | 'to';
 	onHover?: (date: Date) => void;
+	clearHoveredDay?: DebouncedState<() => void>;
 };
 
 export function CalendarRange({
 	// returnFocusRef,
 	inputMode,
 	onHover,
+	clearHoveredDay,
 	...props
 }: CalendarRangeProps) {
 	// console.log(`props`, props);
@@ -160,10 +164,40 @@ export function CalendarRange({
 						// data-in-range={activeModifiers.qux}
 						// data-day-after-from={props.date > selectedDays?.from}
 						// data-day-before-to={props.date < selectedDays?.to}
-						onMouseEnter={onHover ? () => onHover(props.date) : undefined}
 					>
 						{/* Without this focusable span, left and right do not work in screen readers */}
-						<span tabIndex={-1}>{isHidden ? undefined : children}</span>
+						<span
+							tabIndex={-1}
+							onMouseLeave={() => {
+								// console.log(`props.date`, props.date);
+								// console.log(`e`, e);
+								!isHidden && clearHoveredDay?.();
+							}}
+							onMouseEnter={
+								onHover && !isHidden
+									? () => {
+											clearHoveredDay?.cancel();
+											onHover(props.date);
+									  }
+									: undefined
+							}
+							css={{
+								position: 'relative',
+								display: 'flex',
+								height: '3rem',
+								width: '3rem',
+								justifyContent: 'center',
+								alignItems: 'center',
+								'::before': {
+									content: '""',
+									position: 'absolute',
+									inset: 0,
+									// background: 'rgba(255,0,0,0.2)',
+								},
+							}}
+						>
+							{isHidden ? undefined : children}
+						</span>
 					</td>
 				);
 			},
@@ -171,6 +205,12 @@ export function CalendarRange({
 	};
 
 	return (
+		// <Profiler
+		// 	id="cal"
+		// 	onRender={(id, phase, duration) => {
+		// 		console.log(id, phase, duration);
+		// 	}}
+		// >
 		<FocusLock
 			autoFocus={false}
 			// onDeactivation={() => {
@@ -183,6 +223,7 @@ export function CalendarRange({
 				<DayPicker mode="range" {...combinedDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
+		// {/* </Profiler> */}
 	);
 }
 
