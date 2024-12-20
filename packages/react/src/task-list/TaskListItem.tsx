@@ -3,7 +3,7 @@ import { Flex } from '../flex';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import {
-	AlertCircleIcon,
+	ProgressNotRequiredIcon,
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
@@ -76,7 +76,6 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const { icon: Icon, iconColor, label } = statusMap[status];
-	const isDisabled = status === 'notRequired';
 
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
@@ -97,8 +96,7 @@ const TaskListItem = ({
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
-					cursor: isDisabled ? 'not-allowed' : 'pointer',
-					opacity: isDisabled ? 0.5 : 1,
+					opacity: 1,
 
 					...(status === 'doneRecently' && {
 						backgroundColor: boxPalette.systemSuccessMuted,
@@ -118,14 +116,14 @@ const TaskListItem = ({
 
 					[`[${taskListItemTextDataAttr}]`]: {
 						...packs.underline,
-						color: isDisabled ? 'textDisabled' : boxPalette.foregroundAction,
+						color: boxPalette.foregroundAction,
 					},
 
 					'&:hover': {
-						backgroundColor: isDisabled ? 'transparent' : boxPalette.backgroundShade,
+						backgroundColor: boxPalette.backgroundShade,
 						[`[${taskListItemTextDataAttr}]`]: {
-							textDecoration: isDisabled ? 'underline':'none',
-							color: isDisabled ? 'textDisabled' : boxPalette.foregroundText,
+							textDecoration: 'none',
+							color: boxPalette.foregroundText,
 						},
 					},
 				}}
@@ -147,7 +145,7 @@ const TaskListItem = ({
 							fontSize={['md', 'lg']}
 							lineHeight="heading"
 							fontWeight="bold"
-							color={isDisabled ? 'muted':'action'}
+							color="action"
 							css={
 								ordered
 									? {
@@ -180,7 +178,7 @@ const TaskListItem = ({
 						</Text>
 					</Flex>
 				</Flex>
-				{!isDisabled && <ArrowRightIcon color="action" size={['sm', 'lg']} />}
+				<ArrowRightIcon color="action" size={['sm', 'lg']} />
 			</Flex>
 		</li>
 	);
@@ -188,8 +186,8 @@ const TaskListItem = ({
 
 const statusMap = {
 	notRequired: {
-		label: 'Not required',
-		icon: AlertCircleIcon,
+		label: 'No longer required',
+		icon: ProgressNotRequiredIcon,
 		iconColor: 'border',
 	},
 	blocked: {

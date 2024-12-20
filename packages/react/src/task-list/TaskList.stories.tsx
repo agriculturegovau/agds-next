@@ -33,7 +33,7 @@ const exampleLinkItems: TaskListProps['items'] = [
 	{
 		href: '#',
 		label: 'Export',
-		message: <em>This step is not required based on your selection criteria</em>,
+		message: <em>This step is no longer required based on your selection criteria</em>,
 		status: 'notRequired',
 	},
 	{
