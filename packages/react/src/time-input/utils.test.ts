@@ -18,6 +18,7 @@ describe('isValidTime', () => {
 		expect(isValidTime('24')).toEqual(true);
 		expect(isValidTime('9')).toEqual(true);
 		expect(isValidTime('9:00')).toEqual(true);
+		expect(isValidTime('9.00')).toEqual(true);
 		expect(isValidTime('9am')).toEqual(true);
 		expect(isValidTime('9pm')).toEqual(true);
 		expect(isValidTime('9p')).toEqual(true);
@@ -60,14 +61,84 @@ describe('formatTime', () => {
 		expect(formatTime('0', 'HH:mm')).toEqual('00:00');
 	});
 
-	test('Single or double-digits greater than 12 return time in pm', () => {
+	test('Double-digits greater than 12 return time in pm', () => {
 		for (let i = 13; i < 24; i += 1) {
 			expect(formatTime(`${i}`, 'h:mm aaa')).toEqual(`${i - 12}:00 pm`);
 			expect(formatTime(`${i}`, 'hh:mm aaa')).toEqual(
 				`${i - 12}:00 pm`.padStart(8, '0')
 			);
-
 			expect(formatTime(`${i}`, 'HH:mm')).toEqual(`${i}:00`.padStart(5, '0'));
+		}
+	});
+
+	test('Single or double-digits less than 12 with am suffix return time in am', () => {
+		for (let i = 1; i < 12; i += 1) {
+			expect(formatTime(`${i} am`, 'h:mm aaa')).toEqual(`${i}:00 am`);
+			expect(formatTime(`${i}am`, 'h:mm aaa')).toEqual(`${i}:00 am`);
+			expect(formatTime(`${i} am`, 'hh:mm aaa')).toEqual(
+				`${i}:00 am`.padStart(8, '0')
+			);
+			expect(formatTime(`${i}am`, 'hh:mm aaa')).toEqual(
+				`${i}:00 am`.padStart(8, '0')
+			);
+			expect(formatTime(`${i} am`, 'HH:mm')).toEqual(
+				`${i}:00`.padStart(5, '0')
+			);
+			expect(formatTime(`${i}am`, 'HH:mm')).toEqual(`${i}:00`.padStart(5, '0'));
+		}
+	});
+
+	test('0 with am suffix returns 12:00 am', () => {
+		expect(formatTime('0 am', 'h:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('0am', 'h:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('0 am', 'hh:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('0am', 'hh:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('0 am', 'HH:mm')).toEqual('00:00');
+		expect(formatTime('0am', 'HH:mm')).toEqual('00:00');
+	});
+
+	test('12 with am suffix returns 12:00 am', () => {
+		expect(formatTime('12 am', 'h:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('12am', 'h:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('12 am', 'hh:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('12am', 'hh:mm aaa')).toEqual('12:00 am');
+		expect(formatTime('12 am', 'HH:mm')).toEqual('00:00');
+		expect(formatTime('12am', 'HH:mm')).toEqual('00:00');
+	});
+
+	test('Single or double-digits less than 12 with pm suffix return time in pm', () => {
+		for (let i = 1; i < 12; i += 1) {
+			expect(formatTime(`${i} pm`, 'h:mm aaa')).toEqual(`${i}:00 pm`);
+			expect(formatTime(`${i}pm`, 'h:mm aaa')).toEqual(`${i}:00 pm`);
+			expect(formatTime(`${i} pm`, 'hh:mm aaa')).toEqual(
+				`${i}:00 pm`.padStart(8, '0')
+			);
+			expect(formatTime(`${i}pm`, 'hh:mm aaa')).toEqual(
+				`${i}:00 pm`.padStart(8, '0')
+			);
+			expect(formatTime(`${i} pm`, 'HH:mm')).toEqual(
+				`${i + 12}:00`.padStart(5, '0')
+			);
+			expect(formatTime(`${i}pm`, 'HH:mm')).toEqual(
+				`${i + 12}:00`.padStart(5, '0')
+			);
+		}
+	});
+
+	test('Double-digits greater than 12 with pm suffix return time in pm', () => {
+		for (let i = 13; i < 24; i += 1) {
+			expect(formatTime(`${i} pm`, 'h:mm aaa')).toEqual(`${i - 12}:00 pm`);
+			expect(formatTime(`${i}pm`, 'h:mm aaa')).toEqual(`${i - 12}:00 pm`);
+			expect(formatTime(`${i} pm`, 'hh:mm aaa')).toEqual(
+				`${i - 12}:00 pm`.padStart(8, '0')
+			);
+			expect(formatTime(`${i}pm`, 'hh:mm aaa')).toEqual(
+				`${i - 12}:00 pm`.padStart(8, '0')
+			);
+			expect(formatTime(`${i} pm`, 'HH:mm')).toEqual(
+				`${i}:00`.padStart(5, '0')
+			);
+			expect(formatTime(`${i}pm`, 'HH:mm')).toEqual(`${i}:00`.padStart(5, '0'));
 		}
 	});
 
@@ -75,6 +146,15 @@ describe('formatTime', () => {
 		expect(formatTime('12', 'h:mm aaa')).toEqual('12:00 pm');
 		expect(formatTime('12', 'hh:mm aaa')).toEqual('12:00 pm');
 		expect(formatTime('12', 'HH:mm')).toEqual('12:00');
+	});
+
+	test('12 with pm suffix returns 12:00 pm', () => {
+		expect(formatTime('12 pm', 'h:mm aaa')).toEqual('12:00 pm');
+		expect(formatTime('12pm', 'h:mm aaa')).toEqual('12:00 pm');
+		expect(formatTime('12 pm', 'hh:mm aaa')).toEqual('12:00 pm');
+		expect(formatTime('12pm', 'hh:mm aaa')).toEqual('12:00 pm');
+		expect(formatTime('12 pm', 'HH:mm')).toEqual('12:00');
+		expect(formatTime('12pm', 'HH:mm')).toEqual('12:00');
 	});
 
 	test('24 returns 12:00 am', () => {
@@ -126,23 +206,6 @@ describe('formatTime', () => {
 		expect(formatTime('131500999', 'h:mm aaa')).toEqual('1:15 pm');
 		expect(formatTime('143015999', 'h:mm aaa')).toEqual('2:30 pm');
 		expect(formatTime('154530999', 'h:mm aaa')).toEqual('3:45 pm');
-	});
-
-	test('3am returns 3:00 am', () => {
-		expect(formatTime('3am', 'h:mm aaa')).toEqual('3:00 am');
-	});
-
-	test('3pm returns 3:00 pm', () => {
-		expect(formatTime('3pm', 'h:mm aaa')).toEqual('3:00 pm');
-		expect(formatTime('3p', 'h:mm aaa')).toEqual('3:00 pm');
-	});
-
-	test('12am returns 12:00 am', () => {
-		expect(formatTime('12am', 'h:mm aaa')).toEqual('12:00 am');
-	});
-
-	test('12pm returns 12:00 pm', () => {
-		expect(formatTime('12pm', 'h:mm aaa')).toEqual('12:00 pm');
 	});
 
 	test('Colon-separators work', () => {

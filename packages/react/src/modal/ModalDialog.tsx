@@ -13,8 +13,6 @@ import { useModalId } from './utils';
 export type ModalDialogProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the modal panel. Typically a `ButtonGroup`. */
 	actions?: ReactNode;
-	/** On close of the modal, this element will be focused, rather than the trigger element. */
-	elementToFocusOnClose?: HTMLElement | null;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
 	/** @deprecated use `onClose` instead */
@@ -28,7 +26,6 @@ const MAX_WIDTH = '45rem'; // 720 px
 export const ModalDialog = ({
 	actions,
 	children,
-	elementToFocusOnClose,
 	onClose,
 	onDismiss,
 	title,
@@ -36,18 +33,7 @@ export const ModalDialog = ({
 	const closeHandler = getRequiredCloseHandler(onClose, onDismiss);
 	const { titleId } = useModalId();
 	return (
-		<FocusLock
-			returnFocus={
-				elementToFocusOnClose
-					? () => {
-							// Running focus after focus-lock-react does its cleanup, more info here: https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-							window.setTimeout(() => elementToFocusOnClose.focus(), 0);
-
-							return false;
-					  }
-					: true // Return focus to trigger on close
-			}
-		>
+		<FocusLock returnFocus>
 			<Stack
 				aria-labelledby={titleId}
 				aria-modal="true"

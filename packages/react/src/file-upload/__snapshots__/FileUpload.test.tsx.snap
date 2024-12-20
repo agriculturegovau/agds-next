@@ -66,11 +66,8 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r9:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r9:"
             tabindex="-1"
             type="file"
           />
@@ -96,15 +93,16 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r9:-hint"
+            aria-label="Select file, Upload file, (optional), 1 file selected"
             class="css-1qjel8e-BaseButton-Button"
+            id="field-:r9:"
             type="button"
           >
             <span>
               <span
                 class="css-oobk4c-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -291,11 +289,8 @@ exports[`FileUpload Basic renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:r1:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r1:"
             tabindex="-1"
             type="file"
           />
@@ -321,15 +316,16 @@ exports[`FileUpload Basic renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:r1:-hint"
+            aria-label="Select file, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
+            id="field-:r1:"
             type="button"
           >
             <span>
               <span
                 class="css-oobk4c-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -409,11 +405,8 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             />
           </svg>
           <input
-            aria-describedby="field-:rd:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:rd:"
             tabindex="-1"
             type="file"
           />
@@ -439,15 +432,16 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:rd:-hint"
+            aria-label="Select file, Upload file, (optional), 2 files selected"
             class="css-1qjel8e-BaseButton-Button"
+            id="field-:rd:"
             type="button"
           >
             <span>
               <span
                 class="css-oobk4c-Button"
               >
-                Select 
-                file
+                Select file
               </span>
               <span
                 aria-live="assertive"
@@ -754,11 +748,8 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </svg>
           <input
             accept="image/jpeg,.jpeg,.jpg,image/png,.png"
-            aria-describedby="field-:r5:-hint"
-            aria-invalid="false"
-            aria-required="false"
+            aria-hidden="true"
             class="css-5ur8x"
-            id="field-:r5:"
             multiple=""
             tabindex="-1"
             type="file"
@@ -803,15 +794,16 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           </div>
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
+            aria-label="Select files, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
+            id="field-:r5:"
             type="button"
           >
             <span>
               <span
                 class="css-oobk4c-Button"
               >
-                Select 
-                files
+                Select files
               </span>
               <span
                 aria-live="assertive"

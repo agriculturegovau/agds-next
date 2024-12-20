@@ -5,7 +5,7 @@ import { ComboboxListItem } from './ComboboxListItem';
 
 export function ComboboxListError() {
 	return (
-		<ComboboxListItem isActiveItem={false} isInteractive={false}>
+		<ComboboxListItem>
 			<Flex alignItems="center" gap={0.5}>
 				<AlertFilledIcon color="error" css={{ flexShrink: 0 }} />
 				<Text role="alert">Something went wrong.</Text>

@@ -1,5 +1,126 @@
 # @ag.ds-next/docs
 
+## 0.13.0
+
+### Minor Changes
+
+- 8e6fb024b8a: docs: Filter Sidebar announces when no results are found
+- b16fd60bc1e: feature-link-list: Initial release of component.
+- 0e65c067718: summary-list: Update docs & examples to have unique Action content.
+- d3d5b304d0c: docs: Add a unique `aria-label` to live code editors.
+- b577088b3e7: tags: Automatically focus previous tag `onRemove`. Add `ref` support.
+
+  docs: Export `visuallyHiddenStyles` for use within live code examples.
+
+- debc3e4a615: docs: Set dynamic branch for edit-this-page link so that editors can primarily be sent to develop.
+- d6d8d66842e: page-alert: Make title default to H2 instead of H3.
+- 6a2e2837cea: tokens: List dark and light colour tokens separately and describe the colour as words.
+- 7fb6b2e510b: autocomplete: Update announcement of loading and error states to `alert` level.
+
+  combobox: Update announcement of loading and error states to `alert` level.
+
+  docs: Add announcement of empty states to various patterns. Remove tab stop from static code snippets.
+
+- 486206385d4: docs: AgDS Beta v1.25.0 release notes.
+- 0f5331102e9: search-input: Improve guidance/examples to include a search landmark.
+- 1fa56b947bc: icon: Create `PermitIcon`.
+
+  yourgov: Implement `PermitIcon` and new hero banner image.
+
+### Patch Changes
+
+- 857e148138c: foundations: Improve icon usage clarity
+- ec51581df2f: patterns: Fix heading hierarchy in Search filters page.
+- 1b2dacb789d: docs: Fix typo in focus mode docs.
+- 6df4ccd995d: content: Make uncontrolled checkboxes & radio buttons function.
+- 5c12b1eba16: docs: Update example headings on content-styles page to be unique.
+- 2709db41215: icon docs: issue 68 - icon documentation edits
+- 9e04ae290df: focus-mode docs: issue 131 - focus mode content changes
+- 9e957ba2cb9: content-structure docs: issue 143 - add content about semantic heading structure
+- c390cab4895: content-principles: Improve accessibility of link to footnote.
+- 92d26ee520e: docs: Remove aria-labels from live code snippet buttons and let the visible label become the accessible name.
+- b574debe799: docs: content-styles - Add abbreviations, acronymns and initialisms content.
+- Updated dependencies [bfa1543b410]
+- Updated dependencies [38378085fee]
+- Updated dependencies [d8f5b35013f]
+- Updated dependencies [ef789cd698c]
+- Updated dependencies [aa0786fbe21]
+- Updated dependencies [066c1edd21c]
+- Updated dependencies [4b881310d02]
+- Updated dependencies [b23903198ac]
+- Updated dependencies [0d594bacd24]
+- Updated dependencies [64c38569a98]
+- Updated dependencies [aca18a7ee9d]
+- Updated dependencies [b16fd60bc1e]
+- Updated dependencies [8aa2d81262f]
+- Updated dependencies [e66b2636531]
+- Updated dependencies [1e29ca1063c]
+- Updated dependencies [f2159bc5a00]
+- Updated dependencies [51665e9fa79]
+- Updated dependencies [fc02f936d0c]
+- Updated dependencies [0fc960623f0]
+- Updated dependencies [0e65c067718]
+- Updated dependencies [9b79bbdc9f7]
+- Updated dependencies [aca18a7ee9d]
+- Updated dependencies [c640eaa0ca7]
+- Updated dependencies [198ec8efbba]
+- Updated dependencies [42b4ccbc147]
+- Updated dependencies [c33c23d4594]
+- Updated dependencies [0b9c49ebeb9]
+- Updated dependencies [fec2299a908]
+- Updated dependencies [ac04b0d1350]
+- Updated dependencies [8f70c8ba7fe]
+- Updated dependencies [2af5f5a3b1d]
+- Updated dependencies [7ec07ff2c65]
+- Updated dependencies [b577088b3e7]
+- Updated dependencies [36e54a9e17e]
+- Updated dependencies [093fe94bc81]
+- Updated dependencies [032b9ab94ce]
+- Updated dependencies [3874c18dd31]
+- Updated dependencies [d47efb6a3cf]
+- Updated dependencies [d47efb6a3cf]
+- Updated dependencies [9cfb094f43f]
+- Updated dependencies [e6b7b617d9a]
+- Updated dependencies [fbe54ef078e]
+- Updated dependencies [c70b4452f71]
+- Updated dependencies [38e4c01fd25]
+- Updated dependencies [b57fe083e3b]
+- Updated dependencies [d6d8d66842e]
+- Updated dependencies [6b6915dee9a]
+- Updated dependencies [a69a4ae612d]
+- Updated dependencies [060fde075b0]
+- Updated dependencies [73be3b9dd9e]
+- Updated dependencies [a47676b832f]
+- Updated dependencies [c9a7f689db3]
+- Updated dependencies [c7b42ee9331]
+- Updated dependencies [f350b70eb5b]
+- Updated dependencies [9c5e672d5d0]
+- Updated dependencies [7e81f38b56f]
+- Updated dependencies [7fb6b2e510b]
+- Updated dependencies [1f2e68d0632]
+- Updated dependencies [43fffc0fe97]
+- Updated dependencies [a8d0c5f09b1]
+- Updated dependencies [f919c144b39]
+- Updated dependencies [ebedd6a546d]
+- Updated dependencies [0f5331102e9]
+- Updated dependencies [525d6179c35]
+- Updated dependencies [a698c798152]
+- Updated dependencies [79e87db5003]
+- Updated dependencies [219f41aae95]
+- Updated dependencies [1fa56b947bc]
+- Updated dependencies [6d882af9f5b]
+- Updated dependencies [af191fc7829]
+- Updated dependencies [277af1554e9]
+- Updated dependencies [ffee5f3b6aa]
+- Updated dependencies [9b32c1d9ab4]
+- Updated dependencies [5fed76317d3]
+- Updated dependencies [20eac31f59c]
+- Updated dependencies [c5dad52b4c8]
+- Updated dependencies [c3fa7126d80]
+- Updated dependencies [6627301604a]
+- Updated dependencies [5b0bff3079a]
+  - @ag.ds-next/react@1.25.0
+
 ## 0.12.0
 
 ### Minor Changes

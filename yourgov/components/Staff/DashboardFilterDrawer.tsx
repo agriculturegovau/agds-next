@@ -116,7 +116,7 @@ export const DashboardFilterDrawer = ({
 			>
 				<form id="staff-filters-form">
 					<FormStack>
-						<ControlGroup block label="Role" required>
+						<ControlGroup block hideOptionalLabel label="Role">
 							<Checkbox
 								checked={formState.role.Manager}
 								onChange={getOnChangeRole('Manager')}
@@ -150,7 +150,7 @@ export const DashboardFilterDrawer = ({
 							</Checkbox>
 						</ControlGroup>
 
-						<ControlGroup block label="Training completed" required>
+						<ControlGroup block hideOptionalLabel label="Training completed">
 							<Checkbox
 								checked={formState.trainingCompleted.Deliveries}
 								onChange={getOnChangeTrainingCompleted('Deliveries')}
