@@ -144,32 +144,30 @@ export const DateRangePicker = ({
 
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
-	// const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
+	function closeCalendarAndFocusTrigger() {
+		closeCalendar();
+		setTimeout(() => {
+			if (inputMode === 'from') fromTriggerRef.current?.focus();
+			else toTriggerRef.current?.focus();
+		}, 0);
+	}
+
 	function onFromTriggerClick() {
 		setInputMode('from');
-		// if (!inputMode || inputMode === 'to') {
-		openCalendar();
-		// } else {
-		// closeCalendar();
-		// }
 		setHasCalendarOpened(true);
+		openCalendar();
 	}
 
 	function onToTriggerClick() {
-		// if (inputMode === 'to') {
-		// 	closeCalendar();
-		// }
-		// else {
 		setInputMode('to');
-		openCalendar();
 		setHasCalendarOpened(true);
-		// }
+		openCalendar();
 	}
 
 	const popover = usePopover();
@@ -246,7 +244,7 @@ export const DateRangePicker = ({
 
 			if ((range.from || fromInputValue) && (range.to || toInputValue)) {
 				setHoveredDay(undefined);
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 				return;
 			}
 
@@ -261,13 +259,14 @@ export const DateRangePicker = ({
 			}
 		},
 		[
-			closeCalendar,
+			closeCalendarAndFocusTrigger,
 			inputMode,
 			onChange,
 			valueAsDateOrUndefined,
 			dateFormat,
 			fromInputValue,
 			toInputValue,
+			setInputMode,
 		]
 	);
 
@@ -393,14 +392,12 @@ export const DateRangePicker = ({
 			if (isCalendarOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				// Close the calendar and focus the calendar icon
-				closeCalendar();
-				setInputMode(undefined);
+				closeCalendarAndFocusTrigger();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
