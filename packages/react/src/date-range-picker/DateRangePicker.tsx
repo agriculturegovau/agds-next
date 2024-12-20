@@ -150,13 +150,13 @@ export const DateRangePicker = ({
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
-	function closeCalendarAndFocusTrigger() {
+	const closeCalendarAndFocusTrigger = useCallback(() => {
 		closeCalendar();
 		setTimeout(() => {
 			if (inputMode === 'from') fromTriggerRef.current?.focus();
 			else toTriggerRef.current?.focus();
 		}, 0);
-	}
+	}, [closeCalendar, fromTriggerRef, inputMode, toTriggerRef]);
 
 	function onFromTriggerClick() {
 		setInputMode('from');
@@ -442,7 +442,10 @@ export const DateRangePicker = ({
 			inputMode === 'to'
 				? getRange(valueAsDateOrUndefined.from, hoveredDay)
 				: inputMode === 'from'
-				? getRange(hoveredDay, valueAsDateOrUndefined.from)
+				? getRange(
+						hoveredDay,
+						valueAsDateOrUndefined.from || valueAsDateOrUndefined.to
+				  )
 				: {},
 		[hoveredDay, inputMode, valueAsDateOrUndefined]
 	);
