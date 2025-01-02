@@ -18,7 +18,7 @@ export type TaskListItemStatus = keyof typeof statusMap;
 
 export type TaskListItemLinkProps = LinkProps & {
 	status: TaskListItemStatus;
-	message?: string | ReactElement;
+	message?: string;
 	ordered?: boolean;
 };
 
@@ -43,7 +43,7 @@ export const TaskListItemLink = ({
 export type TaskListItemButtonProps =
 	ButtonHTMLAttributes<HTMLButtonElement> & {
 		status: TaskListItemStatus;
-		message?: string | ReactElement;
+		message?: string;
 		ordered?: boolean;
 	};
 
@@ -60,7 +60,7 @@ type TaskListItemProps = PropsWithChildren<{
 	as: ElementType;
 	className?: string;
 	status: TaskListItemStatus;
-	message?: string | ReactElement;
+	message?: string;
 	ordered?: boolean;
 }>;
 
@@ -96,7 +96,6 @@ const TaskListItem = ({
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
-					opacity: 1,
 
 					...(status === 'doneRecently' && {
 						backgroundColor: boxPalette.systemSuccessMuted,
