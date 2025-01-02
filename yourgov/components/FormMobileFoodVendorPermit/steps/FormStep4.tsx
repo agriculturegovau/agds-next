@@ -53,19 +53,19 @@ export function FormStep4() {
 
 	return (
 		<FormContainer
-			formTitle="Vehicle registration"
 			formIntroduction="Add your vehicle registration details."
+			formTitle="Vehicle registration"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
+						{...register('registrationNumber')}
 						autoComplete="on"
-						label="Vehicle registration number"
 						hint="Enter a plate number, maximum 6 characters. For example ABC123."
 						id="registrationNumber"
-						{...register('registrationNumber')}
 						invalid={Boolean(errors.registrationNumber?.message)}
+						label="Vehicle registration number"
 						message={errors.registrationNumber?.message}
 						required
 					/>
@@ -74,11 +74,11 @@ export function FormStep4() {
 						name="registrationExpiry"
 						render={({ field: { ref, ...field } }) => (
 							<DatePicker
-								inputRef={ref}
-								label="Registration expiry date"
 								{...field}
 								id="registrationExpiry"
+								inputRef={ref}
 								invalid={Boolean(errors.registrationExpiry?.message)}
+								label="Registration expiry date"
 								message={errors.registrationExpiry?.message}
 								required
 							/>

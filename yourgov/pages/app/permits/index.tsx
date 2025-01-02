@@ -32,8 +32,8 @@ const Page: NextPageWithLayout = () => {
 						]}
 					/>
 					<PageTitle
-						title="Permits"
 						introduction="Stay compliant by registering for business permits."
+						title="Permits"
 					/>
 					<CallToActionLink href="/app/permits/apply-for-new-permit">
 						Apply for a permit
@@ -45,7 +45,7 @@ const Page: NextPageWithLayout = () => {
 					<Stack gap={1.5}>
 						<H2>Popular links</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -60,7 +60,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>

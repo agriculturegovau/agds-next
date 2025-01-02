@@ -95,24 +95,24 @@ export const DashboardFilterDrawer = ({
 			}}
 		>
 			<Drawer
-				title="Filter by"
-				isOpen={isDrawerOpen}
-				onClose={cancel}
 				actions={
 					<ButtonGroup>
 						<Button form="staff-filters-form" onClick={applyFilters}>
 							Apply filters
 						</Button>
 
-						<Button variant="secondary" onClick={clearFilters}>
+						<Button onClick={clearFilters} variant="secondary">
 							Clear filters
 						</Button>
 
-						<Button variant="tertiary" onClick={cancel}>
+						<Button onClick={cancel} variant="tertiary">
 							Cancel
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isDrawerOpen}
+				onClose={cancel}
+				title="Filter by"
 			>
 				<form id="staff-filters-form">
 					<FormStack>

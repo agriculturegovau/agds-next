@@ -87,26 +87,26 @@ export const DataTableBatchActionsBar = () => {
 					</Button> */}
 
 					<Button
-						variant="secondary"
-						size="sm"
 						onClick={() => {
 							setPauseModalOpen(true);
 						}}
+						size="sm"
+						variant="secondary"
 					>
 						Pause access
 					</Button>
 
 					<Button
-						variant="secondary"
-						size="sm"
 						onClick={() => {
 							setRemoveModalOpen(true);
 						}}
+						size="sm"
+						variant="secondary"
 					>
 						Remove access
 					</Button>
 
-					<Button variant="tertiary" size="sm" onClick={clearRowSelections}>
+					<Button onClick={clearRowSelections} size="sm" variant="tertiary">
 						Cancel
 					</Button>
 				</ButtonGroup>

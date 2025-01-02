@@ -36,14 +36,14 @@ export function FormStep1() {
 
 	return (
 		<FormContainer
-			formTitle="Owner details"
 			formIntroduction="Confirm your name and contact details."
+			formTitle="Owner details"
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>
 				<FormStack>
 					<H2>Confirm business owner details</H2>
-					<Details label="How were my details prefilled?" iconBefore>
+					<Details iconBefore label="How were my details prefilled?">
 						<Prose>
 							<p>
 								We’re working hard to improve the way we do business with you.
@@ -64,9 +64,9 @@ export function FormStep1() {
 					{isSuccessMessageVisible && (
 						<SectionAlert
 							focusOnMount
+							onClose={() => setIsSuccessMessageVisible(false)}
 							title="Business owner details have been updated"
 							tone="success"
-							onClose={() => setIsSuccessMessageVisible(false)}
 						/>
 					)}
 					<Stack gap={1.5}>
@@ -140,13 +140,13 @@ function AdditionalDetailsForm() {
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
+					{...register('contactPhoneNumber')}
 					autoComplete="tel"
-					label="Contact phone number"
 					hint="Any Australian mobile or landline. For example, 0444111222 or 02 9988 7766"
 					id="contactPhoneNumber"
-					{...register('contactPhoneNumber')}
-					message={errors.contactPhoneNumber?.message}
 					invalid={Boolean(errors.contactPhoneNumber)}
+					label="Contact phone number"
+					message={errors.contactPhoneNumber?.message}
 				/>
 			</FormStack>
 			<StepActions />

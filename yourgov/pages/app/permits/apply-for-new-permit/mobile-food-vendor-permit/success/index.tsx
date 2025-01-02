@@ -32,14 +32,14 @@ const Page: NextPageWithLayout = () => {
 				<Columns>
 					<Column columnSpan={8}>
 						<FormContainer
-							title="Application submitted"
 							hideRequiredFieldsMessage
+							title="Application submitted"
 						>
 							{!isReady ? null : isSuccess ? (
 								<>
 									<PageAlert
-										tone="success"
 										title="Your application for a food truck permit has been submitted"
+										tone="success"
 									>
 										<Text as="p">
 											Reference:{' '}
@@ -62,7 +62,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</>
 							) : (
-								<PageAlert tone="error" title="No matching application found">
+								<PageAlert title="No matching application found" tone="error">
 									<DirectionLink direction="right" href={managePermitsPage}>
 										Manage existing permits
 									</DirectionLink>

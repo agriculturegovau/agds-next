@@ -47,20 +47,20 @@ export function ModalConfirmRejectAccess({
 
 	return (
 		<Modal
-			isOpen={isOpen}
-			onClose={onClose}
-			title={title}
 			actions={
 				<ButtonGroup>
 					<Button loading={submitting} onClick={onSubmit}>
 						Reject access
 					</Button>
 
-					<Button variant="secondary" onClick={onClose}>
+					<Button onClick={onClose} variant="secondary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			}
+			isOpen={isOpen}
+			onClose={onClose}
+			title={title}
 		>
 			<Text as="p">{description}</Text>
 		</Modal>

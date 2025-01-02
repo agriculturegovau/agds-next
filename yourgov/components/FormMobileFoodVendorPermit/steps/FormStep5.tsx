@@ -109,10 +109,10 @@ export function FormStep5() {
 
 	return (
 		<FormContainer
-			formTitle="Trading time"
 			formIntroduction="What times would you like to operate?"
+			formTitle="Trading time"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && (
 						<FormPageAlert
@@ -145,37 +145,37 @@ export function FormStep5() {
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
 							<DateRangePicker
-								fromInputRef={tradingPeriodFromRef}
-								toInputRef={tradingPeriodToRef}
 								{...field}
-								id="tradingPeriod"
-								legend="Trading period"
-								value={value}
-								onChange={onChange}
-								onFromInputChange={(from) => onChange({ ...value, from })}
-								onToInputChange={(to) => onChange({ ...value, to })}
+								fromInputRef={tradingPeriodFromRef}
 								fromInvalid={
 									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
 								}
-								toInvalid={
-									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
-								}
+								id="tradingPeriod"
+								legend="Trading period"
 								message={
 									hasErrors.tradingPeriod.both
 										? 'Start date and End date is required'
 										: errors.tradingPeriod?.from?.message ||
 										  errors.tradingPeriod?.to?.message
 								}
+								onChange={onChange}
+								onFromInputChange={(from) => onChange({ ...value, from })}
+								onToInputChange={(to) => onChange({ ...value, to })}
 								required
+								toInputRef={tradingPeriodToRef}
+								toInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
+								}
+								value={value}
 							/>
 						)}
 					/>
 					<GroupedFields
-						legend="Hours of operation"
-						hideOptionalLabel
-						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
 						field1Invalid={hasErrors.hours.both || hasErrors.hours.from}
 						field2Invalid={hasErrors.hours.both || hasErrors.hours.to}
+						hideOptionalLabel
+						hint="Provide the time you will open and close. For example, 3:00 pm - enter 12 am for midnight"
+						legend="Hours of operation"
 						message={
 							hasErrors.hours.both
 								? 'Opening time and Closing time is required'
@@ -190,12 +190,12 @@ export function FormStep5() {
 									name="openingTime"
 									render={({ field: { ref, ...field } }) => (
 										<TimeInput
-											autoComplete="on"
-											label="Opening time"
-											id="openingTime"
-											ref={ref}
 											{...field}
 											{...field1Props}
+											autoComplete="on"
+											id="openingTime"
+											label="Opening time"
+											ref={ref}
 											required
 										/>
 									)}
@@ -205,12 +205,12 @@ export function FormStep5() {
 									name="closingTime"
 									render={({ field: { ref, ...field } }) => (
 										<TimeInput
-											autoComplete="on"
-											label="Closing time"
-											id="closingTime"
-											ref={ref}
 											{...field}
 											{...field2Props}
+											autoComplete="on"
+											id="closingTime"
+											label="Closing time"
+											ref={ref}
 											required
 										/>
 									)}

@@ -25,7 +25,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle title={`Dashboard | ${selectedBusiness.name}`} />
 			<PageContent>
 				<Stack gap={3}>
-					<Stack gap={1} alignItems="flex-start">
+					<Stack alignItems="flex-start" gap={1}>
 						<Flex gap={0.5}>
 							<Tag>{selectedBusiness.abn}</Tag>
 							<Text>ABN</Text>
@@ -35,10 +35,10 @@ const Page: NextPageWithLayout = () => {
 					</Stack>
 
 					<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-						<Card as="li" shadow clickable>
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
-									<PermitIcon size="xl" color="action" />
+									<PermitIcon color="action" size="xl" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/permits">Manage permits</CardLink>
 									</Heading>
@@ -46,10 +46,10 @@ const Page: NextPageWithLayout = () => {
 								</Stack>
 							</CardInner>
 						</Card>
-						<Card as="li" shadow clickable>
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
-									<IconUsers size="xl" color="action" />
+									<IconUsers color="action" size="xl" />
 									<Heading as="h2" type="h3">
 										<CardLink href="/app/staff">Manage staff access</CardLink>
 									</Heading>
@@ -68,7 +68,7 @@ const Page: NextPageWithLayout = () => {
 					<Stack gap={1.5}>
 						<H2>Popular links</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -83,7 +83,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>

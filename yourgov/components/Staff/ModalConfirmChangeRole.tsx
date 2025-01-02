@@ -37,9 +37,6 @@ export const ModalConfirmChangeRole = ({
 
 	return (
 		<Drawer
-			isOpen={isOpen}
-			onClose={onClose}
-			title="Change role"
 			actions={
 				<ButtonGroup>
 					<Button
@@ -49,11 +46,14 @@ export const ModalConfirmChangeRole = ({
 					>
 						Change role
 					</Button>
-					<Button variant="secondary" onClick={onClose}>
+					<Button onClick={onClose} variant="secondary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			}
+			isOpen={isOpen}
+			onClose={onClose}
+			title="Change role"
 		>
 			<form id="change-role-drawer">
 				<ControlGroup block label="Export service role" required>
