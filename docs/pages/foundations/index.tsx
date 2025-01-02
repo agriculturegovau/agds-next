@@ -18,18 +18,18 @@ export default function FoundationsPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={title} description={description} />
+			<DocumentTitle description={description} title={title} />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="/docs/pages/foundations/index.tsx"
+				title={title}
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
 					{list.map(({ slug, title, description }) => (
-						<Card key={slug} as="li" clickable shadow>
+						<Card as="li" clickable key={slug} shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
-									<Stack gap={1} flexGrow={1}>
+									<Stack flexGrow={1} gap={1}>
 										<Heading as="h2" type="h4">
 											<CardLink href={`/foundations/${slug}`}>{title}</CardLink>
 										</Heading>

@@ -19,11 +19,11 @@ export default function AboutPage({
 			<DocumentTitle title={title} />
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
-					applyMainElement={true}
+					applyMainElement
 					breadcrumbs={[{ href: '/', label: 'Home' }, { label: title }]}
 					editPath="/docs/content/about.mdx"
 				>
-					<PageTitle title={title} introduction={description} />
+					<PageTitle introduction={description} title={title} />
 					<Prose>
 						<MDXRemote {...source} components={mdxComponents} />
 					</Prose>

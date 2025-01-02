@@ -23,22 +23,22 @@ export default function FoundationsPage({
 	return (
 		<>
 			<DocumentTitle
-				title={foundation.title}
 				description={foundation.description}
+				title={foundation.title}
 			/>
 			<SiteLayout>
 				<PageLayout
-					editPath={`/docs/content/foundations/${foundation.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
+					editPath={`/docs/content/foundations/${foundation.slug}.mdx`}
 				>
 					<PageTitle
-						title={foundation.title}
 						introduction={foundation.description}
+						title={foundation.title}
 					/>
 					{toc?.length > 1 ? (
 						<InpageNav
-							title="On this page"
 							links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+							title="On this page"
 						/>
 					) : null}
 					<Prose>

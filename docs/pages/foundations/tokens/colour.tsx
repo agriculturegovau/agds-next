@@ -16,16 +16,15 @@ export default function TokensColorPage() {
 	return (
 		<Box background="body">
 			<DocumentTitle
-				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
+				title={TOKEN_PAGES.colour.pageTitle}
 			/>
 			<TokenLayout
-				title={TOKEN_PAGES.colour.pageTitle}
 				description={TOKEN_PAGES.colour.description}
 				editPath="/docs/pages/foundations/tokens/colour.tsx"
+				title={TOKEN_PAGES.colour.pageTitle}
 			>
 				<InpageNav
-					title="On this page"
 					links={[
 						{ href: '#colour-palettes', label: 'Colour palettes' },
 						{ href: '#foreground-colours', label: 'Foreground colours' },
@@ -35,6 +34,7 @@ export default function TokensColorPage() {
 						{ href: '#miscellaneous-colours', label: 'Miscellaneous colours' },
 						{ href: '#usage-guidelines', label: 'Usage guidelines' },
 					]}
+					title="On this page"
 				/>
 				<Prose>
 					<h2 id="colour-palettes">Colour palettes</h2>
@@ -50,15 +50,15 @@ export default function TokensColorPage() {
 					</p>
 					<h3 id="foreground-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="foreground-colours foreground-colours-light"
 						aria-describedby="foreground-colours-description"
+						aria-labelledby="foreground-colours foreground-colours-light"
 						tokens={getTokensArrayFromObject(colourTokens.foreground, 'light')}
 					/>
 					<h3 id="foreground-colours-dark">Dark palette</h3>
 					<Box background="body" className={proseBlockClassname} palette="dark">
 						<ColorTable
-							aria-labelledby="foreground-colours foreground-colours-dark"
 							aria-describedby="foreground-colours-description"
+							aria-labelledby="foreground-colours foreground-colours-dark"
 							tokens={getTokensArrayFromObject(colourTokens.foreground, 'dark')}
 						/>
 					</Box>
@@ -74,15 +74,15 @@ export default function TokensColorPage() {
 					</p>
 					<h3 id="background-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="background-colours background-colours-light"
 						aria-describedby="background-colours-description"
+						aria-labelledby="background-colours background-colours-light"
 						tokens={getTokensArrayFromObject(colourTokens.background, 'light')}
 					/>
 					<h3 id="background-colours-dark">Dark palette</h3>
 					<Box background="body" className={proseBlockClassname} palette="dark">
 						<ColorTable
-							aria-labelledby="background-colours background-colours-dark"
 							aria-describedby="background-colours-description"
+							aria-labelledby="background-colours background-colours-dark"
 							tokens={getTokensArrayFromObject(colourTokens.background, 'dark')}
 						/>
 					</Box>
@@ -93,15 +93,15 @@ export default function TokensColorPage() {
 					</p>
 					<h3 id="border-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="border-colours border-colours-light"
 						aria-describedby="border-colours-description"
+						aria-labelledby="border-colours border-colours-light"
 						tokens={getTokensArrayFromObject(colourTokens.border, 'light')}
 					/>
 					<h3 id="border-colours-dark">Dark palette</h3>
 					<Box background="body" className={proseBlockClassname} palette="dark">
 						<ColorTable
-							aria-labelledby="border-colours border-colours-dark"
 							aria-describedby="border-colours-description"
+							aria-labelledby="border-colours border-colours-dark"
 							tokens={getTokensArrayFromObject(colourTokens.border, 'dark')}
 						/>
 					</Box>
@@ -114,15 +114,15 @@ export default function TokensColorPage() {
 					</p>
 					<h3 id="system-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="system-colours system-colours-light"
 						aria-describedby="system-colours-description"
+						aria-labelledby="system-colours system-colours-light"
 						tokens={getTokensArrayFromObject(colourTokens.system, 'light')}
 					/>
 					<h3 id="system-colours-dark">Dark palette</h3>
 					<Box background="body" className={proseBlockClassname} palette="dark">
 						<ColorTable
-							aria-labelledby="system-colours system-colours-dark"
 							aria-describedby="system-colours-description"
+							aria-labelledby="system-colours system-colours-dark"
 							tokens={getTokensArrayFromObject(colourTokens.system, 'dark')}
 						/>
 					</Box>
@@ -133,8 +133,8 @@ export default function TokensColorPage() {
 					</p>
 					<h3 id="miscellaneous-colours-light">Light palette</h3>
 					<ColorTable
-						aria-labelledby="miscellaneous-colours miscellaneous-colours-light"
 						aria-describedby="miscellaneous-colours-description"
+						aria-labelledby="miscellaneous-colours miscellaneous-colours-light"
 						tokens={getTokensArrayFromObject(
 							colourTokens.miscellaneous,
 							'light'
@@ -143,8 +143,8 @@ export default function TokensColorPage() {
 					<h3 id="miscellaneous-colours-dark">Dark palette</h3>
 					<Box background="body" className={proseBlockClassname} palette="dark">
 						<ColorTable
-							aria-labelledby="miscellaneous-colours miscellaneous-colours-dark"
 							aria-describedby="miscellaneous-colours-description"
+							aria-labelledby="miscellaneous-colours miscellaneous-colours-dark"
 							tokens={getTokensArrayFromObject(
 								colourTokens.miscellaneous,
 								'dark'
@@ -153,7 +153,7 @@ export default function TokensColorPage() {
 					</Box>
 
 					<h2 id="usage-guidelines">Usage guidelines</h2>
-					<Columns cols={[1, 3]} className={proseBlockClassname}>
+					<Columns className={proseBlockClassname} cols={[1, 3]}>
 						<Column columnSpan={[1, 2]}>
 							<h3 id="palettes">Use palettes to divide sections</h3>
 							<p>
@@ -181,8 +181,8 @@ export default function TokensColorPage() {
 
 						<Box paddingTop={[1, 0]}>
 							<img
-								src={withBasePath('/img/guides/home.webp')}
 								alt="Screenshot of a successful usage of palettes"
+								src={withBasePath('/img/guides/home.webp')}
 							/>
 						</Box>
 					</Columns>

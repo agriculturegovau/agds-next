@@ -1,13 +1,13 @@
 export const FigmaLogo = () => {
 	return (
 		<svg
-			width="24"
+			aria-hidden
+			fill="none"
+			focusable="false"
 			height="24"
 			viewBox="0 0 24 24"
-			fill="none"
+			width="24"
 			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			focusable="false"
 		>
 			<path
 				d="M11.5 12C11.5 9.81338 13.3834 8.04071 15.7067 8.04071C18.03 8.04071 19.9135 9.81338 19.9135 12C19.9135 14.1867 18.03 15.9593 15.7067 15.9593C13.3834 15.9593 11.5 14.1867 11.5 12Z"

@@ -23,11 +23,11 @@ export default function TemplatesPage({
 		<Fragment>
 			<DocumentTitle title={title} />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="docs/content/templates/index.mdx"
+				title={title}
 			>
-				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }} gap={1.5}>
 					{templateList.map((template) => (
 						<TemplateCard key={template.slug} {...template} />
 					))}
@@ -49,18 +49,18 @@ function TemplateCard({
 	return (
 		<Card as="li" clickable shadow>
 			<img
-				src={withBasePath(`/img/templates/${slug}.webp`)}
-				role="presentation"
 				alt=""
-				height="auto"
-				width="100%"
 				css={mq({
 					borderBottom: `1px solid ${boxPalette.borderMuted}`,
 					objectFit: 'cover',
 				})}
+				height="auto"
+				role="presentation"
+				src={withBasePath(`/img/templates/${slug}.webp`)}
+				width="100%"
 			/>
 			<CardInner>
-				<Stack gap={1} flexGrow={1}>
+				<Stack flexGrow={1} gap={1}>
 					<Heading as="h2" type="h4">
 						<CardLink href={`/templates/${slug}`}>{title}</CardLink>
 					</Heading>

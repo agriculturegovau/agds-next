@@ -18,17 +18,17 @@ export default function UpdatesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Updates" description={description} />
+			<DocumentTitle description={description} title="Updates" />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="/docs/content/updates/index.mdx"
+				title={title}
 			>
 				<Columns cols={{ xs: 1, lg: 3 }}>
 					<Column columnSpan={{ xs: 1, lg: 2 }}>
 						<Stack as="ul" gap={1.5}>
 							{updateLinks.map(({ href, label, description }) => (
-								<Card as="li" key={label} clickable shadow>
+								<Card as="li" clickable key={label} shadow>
 									<CardInner>
 										<Stack gap={1}>
 											<Heading as="h2" type="h3">

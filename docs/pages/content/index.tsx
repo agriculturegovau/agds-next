@@ -20,20 +20,20 @@ export default function ContentPage({
 	return (
 		<>
 			<DocumentTitle
-				title={document.title}
 				description={document.description}
+				title={document.title}
 			/>
 			<CategoryPageTemplate
-				title={document.title}
 				description={document.description as string}
 				editPath="/docs/pages/content/index.tsx"
+				title={document.title}
 			>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
 					{pageList.map(({ slug, title, description }) => (
-						<Card key={slug} as="li" clickable shadow>
+						<Card as="li" clickable key={slug} shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
-									<Stack gap={1} flexGrow={1}>
+									<Stack flexGrow={1} gap={1}>
 										<Heading as="h2" type="h4">
 											<CardLink href={`/content/${slug}`}>{title}</CardLink>
 										</Heading>

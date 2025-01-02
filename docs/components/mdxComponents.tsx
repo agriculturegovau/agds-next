@@ -82,12 +82,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 					if (!isValidElement(element)) return null;
 					return (
 						<Code
-							key={element.key}
-							live={live}
-							showCode={showCode}
 							enableProse={enableProse}
 							exampleContentHeading={exampleContentHeading}
 							exampleContentHeadingType={exampleContentHeadingType}
+							key={element.key}
+							live={live}
+							showCode={showCode}
 							{...element.props}
 						/>
 					);
@@ -108,14 +108,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			borderColor="muted"
 			css={{ marginTop: mapSpacing(1.5), img: { display: 'block' } }}
 		>
-			<img src={withBasePath(src)} alt={alt} {...props} />
+			<img alt={alt} src={withBasePath(src)} {...props} />
 		</Box>
 	),
 	ButtonLink,
 	FigmaEmbed: ({ src, title }: { src: string; title: string }) => (
 		<Box
-			width="100%"
-			height="0"
 			border
 			borderColor="muted"
 			css={{
@@ -123,15 +121,12 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 				paddingBottom: '56.25%',
 				overflow: 'hidden',
 			}}
+			height="0"
+			width="100%"
 		>
 			<Box
-				as="iframe"
-				frameBorder="0"
-				src={src}
 				allowFullScreen
-				height="100%"
-				width="100%"
-				title={title}
+				as="iframe"
 				css={{
 					position: 'absolute',
 					top: 0,
@@ -139,6 +134,11 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 					width: '100%',
 					height: '100%',
 				}}
+				frameBorder="0"
+				height="100%"
+				src={src}
+				title={title}
+				width="100%"
 			/>
 		</Box>
 	),
@@ -208,9 +208,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	AllIconsPlayground,
 	BackToTop: () => (
 		<DirectionLink
+			className={proseBlockClassname}
 			direction="up"
 			href="#main-content"
-			className={proseBlockClassname}
 		>
 			Back to top
 		</DirectionLink>

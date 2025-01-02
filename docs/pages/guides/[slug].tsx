@@ -22,18 +22,18 @@ export default function Guides({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={guide.title} description={guide.opener} />
+			<DocumentTitle description={guide.opener} title={guide.title} />
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
-					applyMainElement={true}
-					editPath={`/docs/content/guides/${guide.slug}.mdx`}
+					applyMainElement
 					breadcrumbs={breadcrumbs}
+					editPath={`/docs/content/guides/${guide.slug}.mdx`}
 				>
-					<PageTitle title={guide.title} introduction={guide.opener} />
+					<PageTitle introduction={guide.opener} title={guide.title} />
 					{toc?.length > 1 ? (
 						<InpageNav
-							title="On this page"
 							links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+							title="On this page"
 						/>
 					) : null}
 					<Prose>

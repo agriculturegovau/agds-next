@@ -21,11 +21,11 @@ export default function PatternsPage({
 		<Fragment>
 			<DocumentTitle title={title} />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="/docs/content/patterns/index.mdx"
+				title={title}
 			>
-				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }} gap={1.5}>
 					{patternList.map((pattern) => (
 						<PatternCard key={pattern.slug} {...pattern} />
 					))}
@@ -45,9 +45,9 @@ function PatternCard({
 	description: string;
 }) {
 	return (
-		<Card key={slug} as="li" clickable shadow>
+		<Card as="li" clickable key={slug} shadow>
 			<CardInner>
-				<Stack gap={1} flexGrow={1}>
+				<Stack flexGrow={1} gap={1}>
 					<Heading as="h2" type="h4">
 						<CardLink href={`/patterns/${slug}`}>{title}</CardLink>
 					</Heading>
