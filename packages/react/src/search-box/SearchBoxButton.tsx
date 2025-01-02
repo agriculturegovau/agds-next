@@ -16,12 +16,12 @@ export const SearchBoxButton = forwardRef<
 	const buttonStyles = getButtonStyles({ iconOnly });
 	return (
 		<Box
-			flexShrink={0}
-			css={{ position: 'relative' }}
 			borderLeft
 			borderWidth="lg"
+			css={{ position: 'relative' }}
+			flexShrink={0}
 		>
-			<Button ref={ref} type="submit" aria-label={children} css={buttonStyles}>
+			<Button aria-label={children} css={buttonStyles} ref={ref} type="submit">
 				<span>{children}</span>
 				{iconOnly ? <SearchIcon size="md" /> : null}
 			</Button>

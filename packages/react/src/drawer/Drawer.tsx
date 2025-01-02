@@ -95,9 +95,9 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 				item ? (
 					<div ref={modalContainerRef}>
 						<Overlay
+							mutedOverlay={mutedOverlay}
 							onClick={handleClose}
 							style={{ opacity }}
-							mutedOverlay={mutedOverlay}
 						/>
 						<DrawerDialog
 							actions={actions}
@@ -128,7 +128,6 @@ function Overlay({
 }) {
 	return (
 		<animated.div
-			onClick={onClick}
 			css={{
 				position: 'fixed',
 				inset: 0,
@@ -137,6 +136,7 @@ function Overlay({
 					: boxPalette.overlay,
 				zIndex: tokens.zIndex.overlay,
 			}}
+			onClick={onClick}
 			style={style}
 		/>
 	);

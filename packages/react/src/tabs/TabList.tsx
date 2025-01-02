@@ -10,11 +10,11 @@ export function TabList({ children }: TabListProps) {
 	const orientation = useTabsOrientation();
 	return (
 		<Flex
+			aria-orientation={orientation}
 			flexDirection={{ xs: 'column', sm: 'row' }}
 			flexWrap="wrap"
-			role="tablist"
-			aria-orientation={orientation}
 			gap={{ xs: 0, sm: 0.5 }}
+			role="tablist"
 		>
 			{flattenChildren(children).map((child, index) => (
 				<TabListContext.Provider key={index} value={{ tabIndex: index }}>

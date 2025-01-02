@@ -190,9 +190,9 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		<ComboboxMultiBase
 			block={block}
 			combobox={combobox}
-			multiSelection={multiSelection}
-			inputItems={items}
 			inputId={inputId}
+			inputItems={items}
+			multiSelection={multiSelection}
 			selectedItems={selectedItems}
 			setSelectedItems={setSelectedItems}
 			{...props}

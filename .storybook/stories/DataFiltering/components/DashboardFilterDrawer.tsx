@@ -82,20 +82,20 @@ export const DashboardFilterDrawer = ({
 			}}
 		>
 			<Drawer
-				title="Filter by"
-				isOpen={isDrawerOpen}
-				onClose={cancel}
 				actions={
 					<ButtonGroup>
 						<Button onClick={applyFilters}>Apply filters</Button>
-						<Button variant="secondary" onClick={clearFilters}>
+						<Button onClick={clearFilters} variant="secondary">
 							Clear filters
 						</Button>
-						<Button variant="tertiary" onClick={cancel}>
+						<Button onClick={cancel} variant="tertiary">
 							Cancel
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isDrawerOpen}
+				onClose={cancel}
+				title="Filter by"
 			>
 				<Stack gap={3}>
 					<Fieldset legend="Fieldset">
@@ -112,10 +112,10 @@ export const DashboardFilterDrawer = ({
 							<FilterAssigneeSelect block />
 							<DateRangePicker
 								fromLabel="Registered from"
-								toLabel="Registered to"
 								onChange={(requestDate) =>
 									setFormState({ ...formState, requestDate })
 								}
+								toLabel="Registered to"
 								value={formState.requestDate}
 							/>
 						</FormStack>

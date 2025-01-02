@@ -22,12 +22,12 @@ function renderField({
 }: Partial<FieldProps>) {
 	return render(
 		<Field
-			label={label}
+			hideOptionalLabel={hideOptionalLabel}
 			hint={hint}
+			invalid={invalid}
+			label={label}
 			message={message}
 			required={required}
-			invalid={invalid}
-			hideOptionalLabel={hideOptionalLabel}
 			{...props}
 		>
 			{children}

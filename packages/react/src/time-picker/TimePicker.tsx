@@ -66,8 +66,8 @@ export function TimePicker({
 	return (
 		<ComboboxBase
 			combobox={combobox}
-			inputItems={inputItems}
 			inputId={inputId}
+			inputItems={inputItems}
 			inputRef={inputRefProp}
 			isAutocomplete={false}
 			loading={loading}

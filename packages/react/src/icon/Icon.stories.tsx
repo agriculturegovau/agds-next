@@ -29,23 +29,23 @@ export const Basic: Story = {};
 
 export const AllIcons: Story = {
 	render: (args) => (
-		<Flex gap={0.5} flexWrap="wrap">
+		<Flex flexWrap="wrap" gap={0.5}>
 			{Object.keys(allIcons)
 				.sort()
 				.map((iconName) => {
 					const Icon = allIcons[iconName as keyof typeof allIcons];
 					return (
 						<Flex
-							key={iconName}
-							flexDirection="column"
 							alignItems="center"
-							justifyContent="center"
-							flexShrink={0}
-							rounded
-							gap={1}
-							padding={2}
 							background="shade"
 							css={{ width: 180 }}
+							flexDirection="column"
+							flexShrink={0}
+							gap={1}
+							justifyContent="center"
+							key={iconName}
+							padding={2}
+							rounded
 						>
 							<Icon {...args} />
 							<Text>{iconName}</Text>

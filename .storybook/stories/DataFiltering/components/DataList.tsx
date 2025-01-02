@@ -34,7 +34,7 @@ export const DataList = ({ loading, data }: DataListProps) => {
 				data.length > 0 && (
 					<Stack as="ul" gap={1}>
 						{data.map((item) => (
-							<DataListItem key={item.id} data={item} />
+							<DataListItem data={item} key={item.id} />
 						))}
 					</Stack>
 				)
@@ -44,8 +44,8 @@ export const DataList = ({ loading, data }: DataListProps) => {
 				{!loading && data.length === 0 && (
 					<>
 						<Stack gap={1}>
-							<HelpIcon size="lg" color="muted" />
-							<Heading type="h2" fontSize="lg">
+							<HelpIcon color="muted" size="lg" />
+							<Heading fontSize="lg" type="h2">
 								No results found
 							</Heading>
 							<Text>Try adjusting your filter options.</Text>
@@ -64,9 +64,9 @@ type DataListItemProps = {
 
 const DataListItem = ({ data }: DataListItemProps) => {
 	return (
-		<Card as="li" shadow clickable>
+		<Card as="li" clickable shadow>
 			<CardInner>
-				<Stack gap={1} width="100%" flexWrap="wrap">
+				<Stack flexWrap="wrap" gap={1} width="100%">
 					<H3>
 						<CardLink href={`#${data.id}`}>{data.businessName}</CardLink>
 					</H3>

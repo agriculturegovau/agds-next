@@ -41,7 +41,7 @@ export const navigationItems = (businessName: string) => [
 			{
 				label: (
 					<Fragment>
-						<Text fontWeight="bold" fontSize="xs">
+						<Text fontSize="xs" fontWeight="bold">
 							{businessName}
 						</Text>
 						<Text color="muted" fontSize="xs">
@@ -148,10 +148,10 @@ export function ExampleAccountDropdown({
 			<DropdownMenuGroup label="Businesses">
 				{businesses.map((businessName) => (
 					<DropdownMenuItemRadio
-						key={businessName}
 						checked={businessName === selectedBusinessName}
-						secondaryText="ABN 00 000 000 000"
+						key={businessName}
 						onClick={() => onBusinessChange?.(businessName)}
+						secondaryText="ABN 00 000 000 000"
 					>
 						{businessName}
 					</DropdownMenuItemRadio>
@@ -164,14 +164,14 @@ export function ExampleAccountDropdown({
 					Profile
 				</DropdownMenuItemLink>
 				<DropdownMenuItemLink
-					href="/messages"
-					icon={EmailIcon}
 					endElement={
 						<span>
-							<NotificationBadge tone="action" value={6} max={99} aria-hidden />
+							<NotificationBadge aria-hidden max={99} tone="action" value={6} />
 							<VisuallyHidden>, 6 unread</VisuallyHidden>
 						</span>
 					}
+					href="/messages"
+					icon={EmailIcon}
 				>
 					Messages
 				</DropdownMenuItemLink>
@@ -180,7 +180,7 @@ export function ExampleAccountDropdown({
 				</DropdownMenuItemLink>
 			</DropdownMenuGroup>
 			<DropdownMenuDivider />
-			<DropdownMenuItem onClick={() => console.log('sign out')} icon={ExitIcon}>
+			<DropdownMenuItem icon={ExitIcon} onClick={() => console.log('sign out')}>
 				Sign out
 			</DropdownMenuItem>
 		</DropdownMenuPanel>

@@ -10,8 +10,8 @@ expect.extend(toHaveNoViolations);
 function renderTimePicker(props?: Pick<TimePickerProps, 'loading'>) {
 	return render(
 		<TimePicker
-			label="Select a time"
 			hint="Start typing to see results"
+			label="Select a time"
 			{...props}
 		/>
 	);

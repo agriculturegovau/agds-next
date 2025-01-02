@@ -15,8 +15,8 @@ afterEach(cleanup);
 function FieldsetBasic() {
 	return (
 		<Fieldset
-			legend="What is your name?"
 			hint="We will only use this to respond to your requests"
+			legend="What is your name?"
 		>
 			<FormStack>
 				<TextInput label="First name" required />
@@ -29,12 +29,12 @@ function FieldsetBasic() {
 function FieldsetLegendAsPageHeading() {
 	return (
 		<Fieldset
-			legend={<H1>What is your name?</H1>}
 			hint={
-				<Text fontSize="md" color="muted">
+				<Text color="muted" fontSize="md">
 					We will only use this to respond to your requests
 				</Text>
 			}
+			legend={<H1>What is your name?</H1>}
 		>
 			<FormStack>
 				<TextInput label="First name" required />

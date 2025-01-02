@@ -10,10 +10,10 @@ expect.extend(toHaveNoViolations);
 function renderHeader(props?: Partial<HeaderProps>) {
 	return render(
 		<Header
-			heading={'Export Service'}
-			subline={'Supporting Australian agricultural exports'}
-			logo={<AgLogo />}
 			background={'bodyAlt'}
+			heading={'Export Service'}
+			logo={<AgLogo />}
+			subline={'Supporting Australian agricultural exports'}
 			{...props}
 		/>
 	);

@@ -34,11 +34,11 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 					{label}
 				</SearchBoxLabel>
 				<input
-					ref={ref}
-					type="search"
 					autoComplete="off"
 					css={styles}
 					id={inputId}
+					ref={ref}
+					type="search"
 					{...props}
 				/>
 			</Stack>

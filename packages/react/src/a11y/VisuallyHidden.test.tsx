@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 function VisuallyHiddenExample() {
 	return (
-		<TextLink href="#" data-testid="example">
+		<TextLink data-testid="example" href="#">
 			Read more
 			<VisuallyHidden> about how to visually hide content</VisuallyHidden>
 		</TextLink>

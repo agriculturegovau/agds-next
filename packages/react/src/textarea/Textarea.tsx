@@ -61,17 +61,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 		});
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={required}
 				hint={hint}
+				id={id}
+				invalid={invalid}
+				label={label}
 				maxWidth={maxWidth}
 				message={message}
-				invalid={invalid}
-				id={id}
+				required={required}
 			>
 				{(a11yProps) => (
-					<textarea ref={ref} css={styles} {...a11yProps} {...props} />
+					<textarea css={styles} ref={ref} {...a11yProps} {...props} />
 				)}
 			</Field>
 		);

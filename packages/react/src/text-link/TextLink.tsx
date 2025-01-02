@@ -10,6 +10,6 @@ export type TextLinkProps = LinkProps & {
 export const TextLink = forwardRef<HTMLAnchorElement, TextLinkProps>(
 	function TextLink(props, ref) {
 		const Link = useLinkComponent();
-		return <Link ref={ref} css={[linkStyles, focusStyles]} {...props} />;
+		return <Link css={[linkStyles, focusStyles]} ref={ref} {...props} />;
 	}
 );

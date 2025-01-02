@@ -19,14 +19,10 @@ export function TableBatchActionsBar({ children }: TableBatchActionsProps) {
 
 	return (
 		<Stack
-			ref={ref}
 			background="bodyAlt"
-			padding={1}
-			gap={1}
 			border
 			borderColor="muted"
 			borderWidth="sm"
-			rounded
 			css={{
 				position: 'sticky',
 				bottom: -1,
@@ -37,6 +33,10 @@ export function TableBatchActionsBar({ children }: TableBatchActionsProps) {
 					boxShadow: `0 -2px 4px rgba(0, 0, 0, 0.3)`,
 				}),
 			}}
+			gap={1}
+			padding={1}
+			ref={ref}
+			rounded
 		>
 			{children}
 		</Stack>

@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 function ExternalLinkCalloutExample() {
 	return (
-		<TextLink href="#" data-testid="example">
+		<TextLink data-testid="example" href="#">
 			Visit the Design System
 			<ExternalLinkCallout />
 		</TextLink>

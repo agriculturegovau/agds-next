@@ -36,7 +36,7 @@ export const ModalDialog = ({
 		<FocusLock returnFocus>
 			<Stack
 				aria-labelledby={titleId}
-				aria-modal="true"
+				aria-modal
 				background="body"
 				css={{
 					boxShadow: tokens.shadow.lg,
@@ -61,18 +61,18 @@ export const ModalDialog = ({
 				role="dialog"
 			>
 				<Button
-					variant="text"
 					aria-label="Close modal"
-					onClick={closeHandler}
-					iconAfter={CloseIcon}
 					css={{ alignSelf: 'flex-end' }}
+					iconAfter={CloseIcon}
+					onClick={closeHandler}
+					variant="text"
 				>
 					Close
 				</Button>
 				<ModalTitle id={titleId}>{title}</ModalTitle>
 				<Box>{children}</Box>
 				{actions ? (
-					<Box paddingTop={1} css={{ marginTop: 'auto' }}>
+					<Box css={{ marginTop: 'auto' }} paddingTop={1}>
 						{actions}
 					</Box>
 				) : null}

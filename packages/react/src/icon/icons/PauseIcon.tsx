@@ -3,8 +3,8 @@ import { createIcon } from '../Icon';
 
 export const PauseIcon = createIcon(
 	<Fragment>
-		<rect x="6" y="4" width="4" height="16"></rect>
-		<rect x="14" y="4" width="4" height="16"></rect>
+		<rect height="16" width="4" x="6" y="4"></rect>
+		<rect height="16" width="4" x="14" y="4"></rect>
 	</Fragment>,
 	'PauseIcon'
 );

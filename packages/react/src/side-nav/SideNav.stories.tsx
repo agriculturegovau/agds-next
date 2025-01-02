@@ -49,7 +49,7 @@ export const OnBodyAlt: Story = {
 	},
 	name: 'On bodyAlt background',
 	render: (args) => (
-		<Box padding={2} background="bodyAlt">
+		<Box background="bodyAlt" padding={2}>
 			<SideNav {...args} />
 		</Box>
 	),

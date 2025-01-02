@@ -25,11 +25,11 @@ export const Basic: Story = {
 	render: (args) => (
 		<Box
 			background="body"
-			height="300px"
-			width="100%"
-			padding={1}
 			border
 			css={{ position: 'relative' }}
+			height="300px"
+			padding={1}
+			width="100%"
 		>
 			<LoadingBlanket {...args} />
 		</Box>
@@ -55,7 +55,7 @@ export const FullScreen: Story = {
 const FullScreenContent = () => (
 	<Fragment>
 		<Stack palette="dark">
-			<Header logo={<Logo />} heading="Export Service" />
+			<Header heading="Export Service" logo={<Logo />} />
 			<MainNav items={[{ label: 'Hello', href: '#' }]} />
 		</Stack>
 		<PageContent>

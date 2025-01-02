@@ -24,10 +24,10 @@ function FileUploadExample(
 
 	return (
 		<FileUpload
-			label="Upload file"
 			hint="General hint information"
-			value={value}
+			label="Upload file"
 			onChange={setValue}
+			value={value}
 			{...fileUploadProps}
 		/>
 	);
@@ -236,7 +236,7 @@ describe('FileUpload', () => {
 			describe('when a single file is selected', () => {
 				test('then it should be accepted', async () => {
 					const { container } = render(
-						<FileUploadExample multiple maxFiles={2} />
+						<FileUploadExample maxFiles={2} multiple />
 					);
 
 					const fileInput = container.querySelector(
@@ -261,8 +261,8 @@ describe('FileUpload', () => {
 				beforeEach(async () => {
 					const { container } = render(
 						<FileUploadExample
-							multiple
 							maxFiles={2}
+							multiple
 							setCurrentValue={setCurrentValue}
 						/>
 					);

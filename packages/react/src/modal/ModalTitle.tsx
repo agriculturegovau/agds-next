@@ -7,12 +7,12 @@ export const ModalTitle = ({ children, id }: ModalTitleProps) => {
 	return (
 		<Text
 			as="h2"
-			fontSize="lg"
-			fontWeight="bold"
-			lineHeight="heading"
-			id={id}
 			data-autofocus
 			focusRingFor="keyboard"
+			fontSize="lg"
+			fontWeight="bold"
+			id={id}
+			lineHeight="heading"
 			tabIndex={-1}
 		>
 			{children}

@@ -88,9 +88,9 @@ export const MaxWidths: Story = {
 		return (
 			<Stack gap={1}>
 				<Select
-					maxWidth="sm"
+					hideOptionalLabel
 					label="Items per page (sm)"
-					hideOptionalLabel={true}
+					maxWidth="sm"
 					options={[
 						{ value: '10', label: '10' },
 						{ value: '25', label: '25' },
@@ -121,8 +121,8 @@ export const Controlled: Story = {
 			<Select
 				{...args}
 				label="Controlled"
-				value={value}
 				onChange={(event) => setValue(event.target.value)}
+				value={value}
 			/>
 		);
 	},

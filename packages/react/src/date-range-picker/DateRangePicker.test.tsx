@@ -66,10 +66,10 @@ function ControlledDateRangePicker({
 
 	return (
 		<DateRangePicker
-			value={value}
 			onChange={onChange}
 			onFromInputChange={(from) => setValue({ ...value, from })}
 			onToInputChange={(to) => setValue({ ...value, to })}
+			value={value}
 			{...props}
 		/>
 	);
@@ -120,27 +120,27 @@ function DateRangePickerInsideForm({
 	});
 	return (
 		<form
-			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 			noValidate
+			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 		>
 			<Controller
 				control={control}
 				name="dateRange"
 				render={({ field: { ref, value, onChange, ...field } }) => (
 					<DateRangePicker
-						legend="Date range"
 						fromInputRef={ref}
+						legend="Date range"
 						{...field}
-						value={value}
-						onChange={onChange}
-						onFromInputChange={(from) => onChange({ ...value, from })}
-						onToInputChange={(to) => onChange({ ...value, to })}
 						fromInvalid={Boolean(errors.dateRange?.from?.message)}
-						toInvalid={Boolean(errors.dateRange?.to?.message)}
 						message={
 							errors.dateRange?.from?.message || errors.dateRange?.to?.message
 						}
+						onChange={onChange}
+						onFromInputChange={(from) => onChange({ ...value, from })}
+						onToInputChange={(to) => onChange({ ...value, to })}
 						required
+						toInvalid={Boolean(errors.dateRange?.to?.message)}
+						value={value}
 					/>
 				)}
 			/>
@@ -760,9 +760,9 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -802,9 +802,9 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -824,9 +824,9 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -892,9 +892,9 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -944,9 +944,9 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={true}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required
 			/>
 		);
 

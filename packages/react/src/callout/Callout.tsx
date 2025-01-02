@@ -46,18 +46,18 @@ export const Callout = ({
 	return (
 		<Flex
 			as={as}
-			flexDirection={flexDirection}
-			rounded
-			gap={iconGap}
 			background={onBodyAlt ? 'shadeAlt' : background}
 			borderColor={border}
-			padding={padding}
 			borderLeft
 			borderLeftWidth="xl"
+			flexDirection={flexDirection}
+			gap={iconGap}
 			highContrastOutline
+			padding={padding}
+			rounded
 		>
 			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
-			<Stack gap={textGap} css={{ paddingTop: titlePaddingTop }}>
+			<Stack css={{ paddingTop: titlePaddingTop }} gap={textGap}>
 				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
 				{children}
 			</Stack>

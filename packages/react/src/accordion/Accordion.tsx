@@ -4,7 +4,7 @@ import { Box } from '../box';
 export type AccordionProps = { children: ReactNode };
 
 export const Accordion = ({ children }: AccordionProps) => (
-	<Box width="100%" borderTop>
+	<Box borderTop width="100%">
 		{children}
 	</Box>
 );

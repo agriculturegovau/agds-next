@@ -12,10 +12,10 @@ export const DataTableSelectAllCheckbox = () => {
 	} = useSelectAllRows(data);
 	return (
 		<Checkbox
-			size="sm"
 			checked={isSelectAllCheckboxChecked}
 			indeterminate={isSelectAllCheckboxIndeterminate}
 			onChange={toggleAllRowsSelected}
+			size="sm"
 		>
 			Select all rows
 		</Checkbox>

@@ -13,7 +13,7 @@ export const SearchBox = ({
 	children,
 	onSubmit,
 }: SearchBoxProps) => (
-	<form role="search" aria-label={ariaLabel} onSubmit={onSubmit}>
+	<form aria-label={ariaLabel} onSubmit={onSubmit} role="search">
 		<Flex alignItems="flex-end">{children}</Flex>
 	</form>
 );

@@ -187,5 +187,5 @@ export const Box = forwardRefWithAs<'div', BoxProps>(function Box(
 			width,
 		]
 	);
-	return <Tag ref={ref} css={styles} {...props} />;
+	return <Tag css={styles} ref={ref} {...props} />;
 });

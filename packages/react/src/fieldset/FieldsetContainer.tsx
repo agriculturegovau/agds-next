@@ -11,7 +11,7 @@ export const FieldsetContainer = ({
 	children,
 	id,
 }: FieldsetContainerProps) => (
-	<Box as="fieldset" aria-describedby={ariaDescribedby} id={id}>
+	<Box aria-describedby={ariaDescribedby} as="fieldset" id={id}>
 		{children}
 	</Box>
 );

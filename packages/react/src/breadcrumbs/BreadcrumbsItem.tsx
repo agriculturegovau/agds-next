@@ -12,7 +12,7 @@ export const BreadcrumbsItem = forwardRef<
 >(function BreadcrumbsItem(props, ref) {
 	const { children, href } = props;
 	return (
-		<Flex as="li" alignItems="center" gap={0.5} fontSize="sm" color="text">
+		<Flex alignItems="center" as="li" color="text" fontSize="sm" gap={0.5}>
 			<BreadcrumbsDivider />
 			{href ? <TextLink ref={ref} {...props} /> : children}
 		</Flex>

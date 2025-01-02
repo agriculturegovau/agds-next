@@ -17,13 +17,13 @@ export const Text = forwardRefWithAs<'span', BoxProps>(function Text(
 ) {
 	return (
 		<Box
-			ref={ref}
 			as={as}
 			color={color}
 			fontFamily={fontFamily}
 			fontSize={fontSize}
 			fontWeight={fontWeight}
 			lineHeight={lineHeight}
+			ref={ref}
 			{...props}
 		/>
 	);

@@ -69,7 +69,7 @@ export const Controlled = () => {
 
 	return (
 		<SearchBox onSubmit={onSubmit}>
-			<SearchBoxInput value={searchTerm} onChange={onChange} />
+			<SearchBoxInput onChange={onChange} value={searchTerm} />
 			<SearchBoxButton>Search</SearchBoxButton>
 		</SearchBox>
 	);

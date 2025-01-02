@@ -191,11 +191,11 @@ export const CardList: Story = {
 				<Stack gap={1.5}>
 					<H2>Active CARs</H2>
 					<Text as="p">You may now manage your CARs online.</Text>
-					<Columns as="ul" gap={1} cols={{ xs: 1, sm: 2, lg: 3 }}>
+					<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }} gap={1}>
 						{listData.map((item) => (
-							<Card as="li" shadow clickable key={item.id}>
+							<Card as="li" clickable key={item.id} shadow>
 								<CardInner>
-									<Stack gap={0.5} width="100%" flexWrap="wrap">
+									<Stack flexWrap="wrap" gap={0.5} width="100%">
 										<H3>
 											<CardLink href={`#${item.id}`}>
 												{item.businessName}
@@ -208,23 +208,23 @@ export const CardList: Story = {
 										</Text>
 
 										<Flex
-											gap={0.5}
-											flexWrap="wrap"
-											justifyContent="space-between"
 											alignItems="center"
+											flexWrap="wrap"
+											gap={0.5}
+											justifyContent="space-between"
 										>
 											<Text color="muted" fontSize="xs">
 												<VisuallyHidden>{'CAR ID: '}</VisuallyHidden>
 												{item.id}
 											</Text>
 											<StatusBadge
-												tone={toneMapper[item.status]}
 												label={
 													<Fragment>
 														<VisuallyHidden>{'Status: '}</VisuallyHidden>
 														{item.status}
 													</Fragment>
 												}
+												tone={toneMapper[item.status]}
 											/>
 										</Flex>
 									</Stack>
@@ -259,7 +259,7 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Box as="h3">
@@ -273,7 +273,7 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Pictogram />
@@ -293,7 +293,7 @@ export const Compositions = () => {
 
 				<Column>
 					<Stack gap={2} width="100%">
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<CardInner>
 								<Stack gap={0.5}>
 									<Pictogram />
@@ -305,7 +305,7 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Flex gap={0.5}>
@@ -320,7 +320,7 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<img
 								alt="Placeholder image"
 								src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
@@ -339,15 +339,15 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card shadow clickable>
+						<Card clickable shadow>
 							<Flex>
 								<img
 									alt="Placeholder image"
-									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 									css={{
 										width: '50%',
 										objectFit: 'cover',
 									}}
+									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 								/>
 								<CardInner>
 									<Stack gap={1}>
@@ -372,15 +372,15 @@ export const Compositions = () => {
 const Pictogram = () => {
 	return (
 		<svg
-			width="64"
-			height="64"
-			viewBox="0 0 64 64"
 			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
+			height="64"
 			stroke="#00558B"
-			strokeWidth="2"
 			strokeLinecap="round"
 			strokeLinejoin="round"
+			strokeWidth="2"
+			viewBox="0 0 64 64"
+			width="64"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path d="M31 36H17" />
 			<path d="M47 59C53.6274 59 59 53.6274 59 47C59 40.3726 53.6274 35 47 35C40.3726 35 35 40.3726 35 47C35 53.6274 40.3726 59 47 59Z" />

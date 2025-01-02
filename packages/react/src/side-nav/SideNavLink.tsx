@@ -31,19 +31,12 @@ export const SideNavLink = ({
 
 	return (
 		<Flex
-			as={Link}
 			aria-current={isCurrentPage ? 'page' : undefined}
-			gap={0.75}
-			color="muted"
-			fontSize="xs"
-			paddingTop={1}
-			paddingBottom={depth > 1 ? 1 : 0.75}
-			paddingRight={1}
+			as={Link}
 			borderBottom
 			borderBottomWidth="sm"
 			borderColor="muted"
-			focusRingFor="keyboard"
-			{...props}
+			color="muted"
 			css={{
 				textDecoration: 'none',
 				paddingLeft: `${depth}rem`,
@@ -72,6 +65,13 @@ export const SideNavLink = ({
 					},
 				}),
 			}}
+			focusRingFor="keyboard"
+			fontSize="xs"
+			gap={0.75}
+			paddingBottom={depth > 1 ? 1 : 0.75}
+			paddingRight={1}
+			paddingTop={1}
+			{...props}
 		>
 			<SideNavActiveAncestorIndicator depth={depth} />
 

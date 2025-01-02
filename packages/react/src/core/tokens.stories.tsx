@@ -27,21 +27,21 @@ export const Color = () => {
 		<Stack gap={1.5}>
 			{palettes.map((palette) => (
 				<Stack
-					key={palette}
+					background="body"
 					gap={2}
+					key={palette}
 					padding={1.5}
 					palette={palette}
-					background="body"
 				>
 					<H2>{palette}</H2>
 					<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
 						{boxPaletteTokens.map((token) => (
-							<Card key={token} as="li" shadow>
+							<Card as="li" key={token} shadow>
 								<Box
-									width="100%"
-									height="6rem"
 									background="body"
 									css={{ backgroundColor: boxPalette[token] }}
+									height="6rem"
+									width="100%"
 								/>
 								<Box borderColor="muted" borderTop>
 									<CardInner>
@@ -59,30 +59,30 @@ export const Color = () => {
 
 const BackgroundRow = ({ palette }: { palette: 'light' | 'dark' }) => (
 	<Flex palette={palette} width="100%">
-		<Flex padding={2} background="body" flexGrow={1}>
-			<Box flexGrow={1} color="text" paddingY={2} paddingX={1}>
+		<Flex background="body" flexGrow={1} padding={2}>
+			<Box color="text" flexGrow={1} paddingX={1} paddingY={2}>
 				backgroundBody
 			</Box>
 			<Box
-				flexGrow={1}
-				color="text"
-				paddingY={2}
-				paddingX={1}
 				background="shade"
+				color="text"
+				flexGrow={1}
+				paddingX={1}
+				paddingY={2}
 			>
 				backgroundShade
 			</Box>
 		</Flex>
-		<Flex padding={2} background="bodyAlt" flexGrow={1}>
-			<Box flexGrow={1} color="text" paddingY={2} paddingX={1}>
+		<Flex background="bodyAlt" flexGrow={1} padding={2}>
+			<Box color="text" flexGrow={1} paddingX={1} paddingY={2}>
 				backgroundBodyAlt
 			</Box>
 			<Box
-				flexGrow={1}
-				color="text"
-				paddingY={2}
-				paddingX={1}
 				background="shadeAlt"
+				color="text"
+				flexGrow={1}
+				paddingX={1}
+				paddingY={2}
 			>
 				backgroundShadeAlt
 			</Box>
@@ -106,10 +106,10 @@ export const Backgrounds = () => {
 export const Space = () => {
 	const tokens: Spacing[] = [0, 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 5, 6];
 	return (
-		<Stack as="ul" gap={1} fontSize="xs">
+		<Stack as="ul" fontSize="xs" gap={1}>
 			{tokens.map((token) => (
-				<Flex key={token} as="li" gap={1} alignItems="center">
-					<Box height="1rem" background="bodyAlt" width={mapSpacing(token)} />
+				<Flex alignItems="center" as="li" gap={1} key={token}>
+					<Box background="bodyAlt" height="1rem" width={mapSpacing(token)} />
 					<Text fontSize="xs">
 						{token} ({mapSpacing(token)})
 					</Text>

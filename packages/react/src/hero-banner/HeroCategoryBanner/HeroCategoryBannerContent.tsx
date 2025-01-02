@@ -20,11 +20,11 @@ export const HeroCategoryBannerContent = ({
 		<Content>
 			<Flex>
 				<Stack
-					gap={1.5}
-					width={['100%', '100%', image ? '60%' : '100%']}
-					paddingTop={{ xs: 2, md: 4 }}
-					paddingBottom={{ xs: 3, md: 4 }}
 					css={{ zIndex: tokens.zIndex.elevated }}
+					gap={1.5}
+					paddingBottom={{ xs: 3, md: 4 }}
+					paddingTop={{ xs: 2, md: 4 }}
+					width={['100%', '100%', image ? '60%' : '100%']}
 				>
 					{children}
 				</Stack>

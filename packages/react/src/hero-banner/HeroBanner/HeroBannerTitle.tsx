@@ -13,7 +13,7 @@ export const HeroBannerTitleContainer = ({
 export type HeroBannerTitleProps = { children: ReactNode };
 
 export const HeroBannerTitle = ({ children }: HeroBannerTitleProps) => (
-	<Heading type="h1" fontSize="xxxl">
+	<Heading fontSize="xxxl" type="h1">
 		{children}
 	</Heading>
 );

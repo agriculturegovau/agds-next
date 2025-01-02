@@ -92,7 +92,7 @@ export const ProgressIndicatorItem = ({
 				}}
 				focusRingFor="keyboard"
 			>
-				<ProgressIndicatorItemIcon status={status} isActive={isActive} />
+				<ProgressIndicatorItemIcon isActive={isActive} status={status} />
 
 				<Stack
 					{...{ [progressIndicatorItemTextContainerDataAttr]: '' }}
@@ -137,7 +137,7 @@ export const ProgressIndicatorItem = ({
 								<Flex
 									{...subLevelItemRestProps}
 									alignItems="center"
-									aria-current={true}
+									aria-current
 									as={as}
 									borderBottom
 									borderColor="muted"
@@ -234,13 +234,13 @@ const ProgressIndicatorItemIcon = ({
 				}}
 			>
 				<Icon
-					size="md"
 					color={processedIconColor}
 					css={{
 						position: 'relative',
 						display: 'block',
 						margin: -1,
 					}}
+					size="md"
 				/>
 			</span>
 

@@ -205,7 +205,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 						<input
 							{...props}
 							accept={accept?.toString()}
-							aria-hidden={true}
+							aria-hidden
 							css={visuallyHiddenStyles}
 							disabled={disabled}
 							multiple={multiple}

@@ -10,17 +10,17 @@ export type FieldMessageProps = PropsWithChildren<{
 }>;
 
 export const FieldMessage = ({ children, id }: FieldMessageProps) => (
-	<Flex gap={0.5} alignItems="center">
+	<Flex alignItems="center" gap={0.5}>
 		<Box flexShrink={0}>
 			<AlertFilledIcon
-				color="error"
-				size="md"
-				aria-label="Error"
 				aria-hidden="false"
+				aria-label="Error"
+				color="error"
 				css={{ display: 'block' }}
+				size="md"
 			/>
 		</Box>
-		<Text display="block" fontWeight="bold" color="error" id={id}>
+		<Text color="error" display="block" fontWeight="bold" id={id}>
 			{children}
 		</Text>
 	</Flex>

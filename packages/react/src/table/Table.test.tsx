@@ -28,13 +28,13 @@ function renderTableWithCaption() {
 				<TableHead>
 					<TableRow>
 						<TableHeader scope="col">Location</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Population
 						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Change over previous year %
 						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Change over previous decade %
 						</TableHeader>
 					</TableRow>
@@ -119,20 +119,20 @@ function renderTableWithHeadings() {
 			</Text>
 			<TableWrapper>
 				<Table
-					id="table"
-					aria-labelledby="table-heading"
 					aria-describedby="table-description"
+					aria-labelledby="table-heading"
+					id="table"
 				>
 					<TableHead>
 						<TableRow>
 							<TableHeader scope="col">Location</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Population
 							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Change over previous year %
 							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Change over previous decade %
 							</TableHeader>
 						</TableRow>

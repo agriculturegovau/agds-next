@@ -17,11 +17,11 @@ export const Flex = forwardRefWithAs<'div', FlexProps>(function Flex(
 ) {
 	return (
 		<Box
-			ref={ref}
+			alignItems={alignItems}
 			display={display ?? (inline ? 'inline-flex' : 'flex')}
 			flexDirection={flexDirection}
 			justifyContent={justifyContent}
-			alignItems={alignItems}
+			ref={ref}
 			{...props}
 		/>
 	);

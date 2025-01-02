@@ -44,10 +44,6 @@ export function AppLayoutHeaderAccount({
 				focusRingFor: 'keyboard',
 			})}
 			alignItems="center"
-			flexShrink={0}
-			gap={0.5}
-			minHeight="5.25rem"
-			textAlign="right"
 			css={mq({
 				marginLeft: 'auto',
 				// 17.625rem is the available space beside the hamburger at 375px
@@ -61,23 +57,27 @@ export function AppLayoutHeaderAccount({
 					},
 				}),
 			})}
+			flexShrink={0}
+			gap={0.5}
+			minHeight="5.25rem"
+			textAlign="right"
 		>
-			<Flex as="span" flexDirection="column" css={{ overflow: 'hidden' }}>
+			<Flex as="span" css={{ overflow: 'hidden' }} flexDirection="column">
 				<Text
 					color="action"
-					fontWeight="bold"
-					fontSize="xs"
 					css={packs.truncate}
+					fontSize="xs"
+					fontWeight="bold"
 				>
 					{name}
 				</Text>
 				{secondaryText ? (
-					<Text color="muted" fontSize="xs" css={packs.truncate}>
+					<Text color="muted" css={packs.truncate} fontSize="xs">
 						{secondaryText}
 					</Text>
 				) : null}
 			</Flex>
-			<Avatar name={name} tone="action" aria-hidden size="md" />
+			<Avatar aria-hidden name={name} size="md" tone="action" />
 		</Flex>
 	);
 }

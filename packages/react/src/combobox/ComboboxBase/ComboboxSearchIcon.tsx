@@ -6,8 +6,6 @@ export type ComboboxSearchIconProps = { disabled?: boolean };
 export function ComboboxSearchIcon({ disabled }: ComboboxSearchIconProps) {
 	return (
 		<SearchIcon
-			size="md"
-			weight="regular"
 			color="muted"
 			css={{
 				position: 'absolute',
@@ -17,6 +15,8 @@ export function ComboboxSearchIcon({ disabled }: ComboboxSearchIconProps) {
 				pointerEvents: 'none',
 				opacity: disabled ? 0.3 : undefined,
 			}}
+			size="md"
+			weight="regular"
 		/>
 	);
 }

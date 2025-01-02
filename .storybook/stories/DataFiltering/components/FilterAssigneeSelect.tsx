@@ -8,22 +8,22 @@ export const FilterAssigneeSelect = ({ block }: { block?: boolean }) => {
 
 	return (
 		<Select
-			label="Assignee"
-			placeholder="All"
-			hideOptionalLabel
-			block={block}
 			aria-controls={tableId}
-			options={assignees.map((option) => ({
-				label: option,
-				value: option,
-			}))}
-			value={filters.assignee || ''}
+			block={block}
+			hideOptionalLabel
+			label="Assignee"
 			onChange={(e) => {
 				const value = e.target.value;
 				setFilter({
 					assignee: value === '' ? undefined : value,
 				});
 			}}
+			options={assignees.map((option) => ({
+				label: option,
+				value: option,
+			}))}
+			placeholder="All"
+			value={filters.assignee || ''}
 		/>
 	);
 };

@@ -8,7 +8,6 @@ export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
 	function CheckboxInput(props, ref) {
 		return (
 			<input
-				ref={ref}
 				css={{
 					...visuallyHiddenStyles,
 					// When this component is focused, outline the `CheckboxIndicator`
@@ -19,6 +18,7 @@ export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
 						opacity: 1,
 					},
 				}}
+				ref={ref}
 				{...props}
 			/>
 		);

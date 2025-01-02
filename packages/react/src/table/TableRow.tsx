@@ -21,8 +21,8 @@ export function TableRow({
 	const { tableLayout } = useTableContext();
 	return (
 		<tr
-			aria-selected={selected}
 			aria-rowindex={ariaRowindex}
+			aria-selected={selected}
 			css={{
 				...(selected && {
 					...(tableLayout === 'auto' && {

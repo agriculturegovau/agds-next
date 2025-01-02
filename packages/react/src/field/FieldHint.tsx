@@ -7,7 +7,7 @@ export type FieldHintProps = PropsWithChildren<{
 }>;
 
 export const FieldHint = ({ children, id }: FieldHintProps) => (
-	<Text display="block" color="muted" id={id}>
+	<Text color="muted" display="block" id={id}>
 		{children}
 	</Text>
 );

@@ -12,13 +12,13 @@ export const IndicatorDot = ({
 	return (
 		<Box
 			aria-label={ariaLabel}
-			highContrastOutline
 			css={{
 				width: 8,
 				height: 8,
 				borderRadius: 4,
 				backgroundColor: boxPalette.foregroundAction,
 			}}
+			highContrastOutline
 		/>
 	);
 };
