@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ElementType, PropsWithChildren, ReactElement } from 'react';
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
