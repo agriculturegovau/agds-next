@@ -3,6 +3,7 @@ import { Flex } from '../flex';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import {
+	ProgressNotRequiredIcon,
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
@@ -75,6 +76,7 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const { icon: Icon, iconColor, label } = statusMap[status];
+
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
@@ -182,6 +184,11 @@ const TaskListItem = ({
 };
 
 const statusMap = {
+	notRequired: {
+		label: 'No longer required',
+		icon: ProgressNotRequiredIcon,
+		iconColor: 'border',
+	},
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,
