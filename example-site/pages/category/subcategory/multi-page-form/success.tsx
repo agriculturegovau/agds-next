@@ -48,8 +48,8 @@ export default function FormMultiPageFormPage() {
 								<PageAlert
 									ref={successPageAlertRef}
 									tabIndex={-1}
-									tone="success"
 									title="Descriptive success message (H2)"
+									tone="success"
 								>
 									<Text as="p">
 										Supporting paragraph for the success message

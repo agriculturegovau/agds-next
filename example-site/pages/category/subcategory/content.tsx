@@ -21,17 +21,17 @@ export default function ContentPage() {
 		<>
 			<DocumentTitle title="Content page example" />
 			<SiteLayout
-				template={{ name: 'Content', slug: 'content' }}
 				applyMainElement={false}
+				template={{ name: 'Content', slug: 'content' }}
 			>
 				<PageContent>
 					<Columns>
 						<Column
 							as="main"
+							columnSpan={{ xs: 12, md: 8 }}
+							css={{ '&:focus': { outline: 'none' } }}
 							id="main-content"
 							tabIndex={-1}
-							css={{ '&:focus': { outline: 'none' } }}
-							columnSpan={{ xs: 12, md: 8 }}
 						>
 							<Stack gap={3}>
 								<Breadcrumbs
@@ -47,26 +47,26 @@ export default function ContentPage() {
 								/>
 								<Stack gap={1.5}>
 									<H1>Content page heading - xxl/display (H1)</H1>
-									<Text as="p" fontSize="md" color="muted">
+									<Text as="p" color="muted" fontSize="md">
 										Introductory paragraph providing context for this content
 										page - md/default (P).
 									</Text>
 								</Stack>
 								<InpageNav
-									title="On this page"
 									links={[
 										{ href: '#section-1', label: 'Section 1' },
 										{ href: '#section-2', label: 'Section 2' },
 										{ href: '#section-3', label: 'Section 3' },
 										{ href: '#section-4', label: 'Section 4' },
 									]}
+									title="On this page"
 								/>
 								{Array.from(Array(4).keys()).map((idx) => (
 									<Stack
-										key={idx}
-										id={`section-${idx + 1}`}
 										alignItems="flex-start"
 										gap={1.5}
+										id={`section-${idx + 1}`}
+										key={idx}
 									>
 										<Prose>
 											<h2>Content page section heading - xl/display (H2)</h2>

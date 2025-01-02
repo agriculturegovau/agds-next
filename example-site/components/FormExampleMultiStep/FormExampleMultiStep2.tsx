@@ -34,28 +34,28 @@ export const FormExampleMultiStep2 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Select date (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Select date (H1)"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, console.log)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, console.log)}
 			>
 				<Controller
 					control={control}
 					name="date"
 					render={({ field: { ref, ...field } }) => (
 						<DatePicker
-							inputRef={ref}
-							label="Select a date"
 							{...field}
 							id="date"
+							inputRef={ref}
 							invalid={Boolean(errors.date?.message)}
-							message={errors.date?.message}
+							label="Select a date"
 							maxWidth="xl"
+							message={errors.date?.message}
 							required
 						/>
 					)}

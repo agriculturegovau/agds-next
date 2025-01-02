@@ -68,23 +68,23 @@ export const FormExampleMultiStep1 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Submit evidence (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Submit evidence (H1)"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
 							ref={errorRef}
-							tone="error"
-							title="There is a problem"
 							tabIndex={-1}
+							title="There is a problem"
+							tone="error"
 						>
 							<Text as="p">
 								Please correct the following fields and try again
@@ -101,14 +101,14 @@ export const FormExampleMultiStep1 = () => {
 						</PageAlert>
 					)}
 					<Textarea
-						label="Describe actions taken"
+						{...register('description')}
+						block
 						hint="Hint text"
 						id="description"
-						{...register('description')}
 						invalid={Boolean(errors.description?.message)}
+						label="Describe actions taken"
 						message={errors.description?.message}
 						required
-						block
 					/>
 					<Controller
 						control={control}
@@ -119,20 +119,20 @@ export const FormExampleMultiStep1 = () => {
 						}) => (
 							<div css={{ position: 'relative' }}>
 								<FileUpload
-									id="files"
-									label="Select file to upload"
-									hint="General hint information"
 									accept={['image/jpeg', 'image/jpg', 'image/png']}
-									maxSize={2000}
-									maxFiles={3}
-									multiple
-									value={value}
-									onChange={onChange}
-									onBlur={onBlur}
-									name={name}
+									hint="General hint information"
+									id="files"
 									invalid={invalid}
+									label="Select file to upload"
+									maxFiles={3}
+									maxSize={2000}
 									message={error?.message}
+									multiple
+									name={name}
+									onBlur={onBlur}
+									onChange={onChange}
 									required
+									value={value}
 								/>
 								{isSubmittingStep && <LoadingBlanket label="Uploading file" />}
 							</div>

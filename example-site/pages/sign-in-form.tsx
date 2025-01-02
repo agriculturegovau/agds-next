@@ -88,8 +88,8 @@ const SignInForm = () => {
 				<PageAlert
 					ref={clientErrorPageAlertRef}
 					tabIndex={-1}
-					tone="error"
 					title="There is a problem"
+					tone="error"
 				>
 					<Text as="p">Please correct the following fields and try again</Text>
 					<UnorderedList>
@@ -103,32 +103,32 @@ const SignInForm = () => {
 					</UnorderedList>
 				</PageAlert>
 			)}
-			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+			<form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					<TextInput
-						label="Email"
-						type="email"
 						{...register('email')}
 						id="email"
 						invalid={Boolean(errors.email?.message)}
-						message={errors.email?.message}
+						label="Email"
 						maxWidth="xl"
+						message={errors.email?.message}
 						required
+						type="email"
 					/>
 					<PasswordInput
-						label="Password"
 						{...register('password')}
 						id="password"
 						invalid={Boolean(errors.password?.message)}
-						message={errors.password?.message}
+						label="Password"
 						maxWidth="xl"
+						message={errors.password?.message}
 						required
 					/>
-					<TextLink href="#" css={{ alignSelf: 'flex-start' }}>
+					<TextLink css={{ alignSelf: 'flex-start' }} href="#">
 						Forgot password?
 					</TextLink>
 					<div>
-						<Button type="submit" loading={isSubmitting}>
+						<Button loading={isSubmitting} type="submit">
 							Sign in
 						</Button>
 					</div>
@@ -149,7 +149,7 @@ export default function SignInFormPage() {
 							<Stack gap={3}>
 								<Stack gap={0.5}>
 									<H1>Sign in form - xxl/display (H1)</H1>
-									<Text as="p" fontSize="md" color="muted">
+									<Text as="p" color="muted" fontSize="md">
 										Introductory paragraph providing context for this sign in
 										form. All questions on page must be related - md/default
 										(P).

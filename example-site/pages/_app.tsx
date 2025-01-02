@@ -21,33 +21,31 @@ export default function App({ Component, pageProps }: AppProps) {
 	}, [router.events]);
 
 	return (
-		<Core theme={theme} linkComponent={LinkComponent}>
+		<Core linkComponent={LinkComponent} theme={theme}>
 			<Head>
 				<meta
-					name="viewport"
 					content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
+					name="viewport"
 				/>
 				{/* Open graph image  */}
-				<meta property="og:image" content="/img/ogimage.png" />
+				<meta content="/img/ogimage.png" property="og:image" />
 				{/* Favicons  */}
 				<link
+					href="/favicon/favicon.png"
 					rel="alternate icon"
 					type="image/png"
-					href="/favicon/favicon.png"
 				/>
-				<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-				<link rel="manifest" href="/favicon/manifest.webmanifest" />
+				<link href="/favicon/favicon.svg" rel="icon" type="image/svg+xml" />
+				<link href="/favicon/manifest.webmanifest" rel="manifest" />
 			</Head>
 			{/* Global Site Tag (gtag.js) - Google Analytics */}
 			{GA_MEASUREMENT_ID ? (
 				<Fragment>
 					<Script
-						strategy="afterInteractive"
 						src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+						strategy="afterInteractive"
 					/>
 					<Script
-						id="gtag-init"
-						strategy="afterInteractive"
 						dangerouslySetInnerHTML={{
 							__html: `
             window.dataLayer = window.dataLayer || [];
@@ -58,6 +56,8 @@ export default function App({ Component, pageProps }: AppProps) {
             });
           `,
 						}}
+						id="gtag-init"
+						strategy="afterInteractive"
 					/>
 				</Fragment>
 			) : null}
