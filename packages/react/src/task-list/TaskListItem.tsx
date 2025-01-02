@@ -148,10 +148,10 @@ const TaskListItem = ({
 							css={
 								ordered
 									? {
-										'&::before': {
-											content: 'counter(task-count)',
-										},
-									}
+											'&::before': {
+												content: 'counter(task-count)',
+											},
+									  }
 									: undefined
 							}
 						>
