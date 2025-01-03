@@ -66,8 +66,15 @@ export const parseDate = (
 	return undefined;
 };
 
-export function isValidDate(value?: Date) {
-	return isDate(value) && isValid(value);
+export function isValidDate(
+	value?: Date,
+	range: { maxDate?: Date; minDate?: Date } = {}
+) {
+	const valid = isDate(value) && isValid(value);
+	if (!valid) return false;
+	if (range.maxDate && value && isAfter(value, range.maxDate)) return false;
+	if (range.minDate && value && isBefore(value, range.minDate)) return false;
+	return true;
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#min

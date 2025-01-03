@@ -275,22 +275,29 @@ export const DateRangePicker = ({
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
 
 		// Ensure the text entered in both fields are valid dates
-		const constrainedFromDate = constrainDate(parsedDate, minDate, maxDate);
-		const constrainedToDate =
-			valueAsDateOrUndefined.to ||
-			constrainDate(
-				// TODO: Use Chris' normalise function
-				parseDate(toInputValue, allowedDateFormats),
-				minDate,
-				maxDate
-			) ||
-			toInputValue;
+		// const constrainedFromDate = constrainDate(parsedDate, minDate, maxDate);
+		// const constrainedToDate =
+		// 	valueAsDateOrUndefined.to ||
+		// 	constrainDate(
+		// 		// TODO: Use Chris' normalise function
+		// 		parseDate(toInputValue, allowedDateFormats),
+		// 		minDate,
+		// 		maxDate
+		// 	) ||
+		// 	toInputValue;
 
-		console.log(`****** constrainedToDate`, constrainedToDate);
+		// console.log(`****** constrainedToDate`, constrainedToDate);
 
+		// const range = {
+		// 	from: constrainedFromDate,
+		// 	to: constrainedToDate,
+		// } as DateRange;
 		const range = {
-			from: constrainedFromDate,
-			to: constrainedToDate,
+			from: parsedDate,
+			to:
+				valueAsDateOrUndefined.to ||
+				parseDate(toInputValue, allowedDateFormats) ||
+				toInputValue,
 		} as DateRange;
 
 		// if (range.from && range.to && isAfter(range.from, range.to)) {
@@ -304,13 +311,18 @@ export const DateRangePicker = ({
 		// }
 
 		if (
-			inputValue &&
-			(!isValidDate(parsedDate) ||
-				(range.from && range.to && isAfter(range.from, range.to)))
+			(inputValue &&
+				(!isValidDate(range.from) ||
+					(range.from && range.to && isAfter(range.from, range.to)))) ||
+			(minDate && range.from && isBefore(range.from, minDate)) ||
+			(maxDate && range.from && isAfter(range.from, maxDate))
 		) {
 			onFromInputChangeProp?.(inputValue);
-		} else if (!inputValue || constrainedFromDate) {
+		} else if (!inputValue || range.from) {
 			onChange(range);
+			// if (maxDate && range.to && isAfter(range.to, maxDate)) {
+			// 	onToInputChangeProp?.(toInputValue);
+			// }
 			// } else {
 		}
 	};
@@ -327,23 +339,26 @@ export const DateRangePicker = ({
 		const parsedDate = parseDate(inputValue, allowedDateFormats);
 		console.log(`parsedDate`, parsedDate);
 
-		// Ensure the text entered in both fields are valid dates
-		const constrainedToDate = constrainDate(parsedDate, minDate, maxDate);
-		console.log(`constrainedToDate`, constrainedToDate);
-		const constrainedFromDate =
-			valueAsDateOrUndefined.from ||
-			constrainDate(
-				// TODO: Use Chris' normalise function
-				parseDate(fromInputValue, allowedDateFormats),
-				minDate,
-				maxDate
-			) ||
-			fromInputValue;
+		// // Ensure the text entered in both fields are valid dates
+		// const constrainedToDate = constrainDate(parsedDate, minDate, maxDate);
+		// console.log(`constrainedToDate`, constrainedToDate);
+		// const constrainedFromDate =
+		// 	valueAsDateOrUndefined.from ||
+		// 	constrainDate(
+		// 		// TODO: Use Chris' normalise function
+		// 		parseDate(fromInputValue, allowedDateFormats),
+		// 		minDate,
+		// 		maxDate
+		// 	) ||
+		// 	fromInputValue;
 
 		// console.log(`constrainedFromDate`, constrainedToDate);
 		const range = {
-			from: constrainedFromDate,
-			to: constrainedToDate,
+			from:
+				valueAsDateOrUndefined.from ||
+				parseDate(fromInputValue, allowedDateFormats) ||
+				fromInputValue,
+			to: parsedDate,
 		} as DateRange;
 
 		// if (range.to && range.from && isBefore(range.to, range.from)) {
@@ -351,13 +366,18 @@ export const DateRangePicker = ({
 		// }
 
 		if (
-			inputValue &&
-			(!isValidDate(parsedDate) ||
-				(range.to && range.from && isBefore(range.to, range.from)))
+			(inputValue &&
+				(!isValidDate(parsedDate) ||
+					(range.to && range.from && isBefore(range.to, range.from)))) ||
+			(minDate && range.to && isBefore(range.to, minDate)) ||
+			(maxDate && range.to && isAfter(range.to, maxDate))
 		) {
 			onToInputChangeProp?.(inputValue);
-		} else if (!inputValue || constrainedToDate) {
+		} else if (!inputValue || range.to) {
 			onChange(range);
+			// if (minDate && range.from && isBefore(range.from, minDate)) {
+			// 	onFromInputChangeProp?.(fromInputValue);
+			// }
 			// } else {
 		}
 		// console.groupEnd('onToInputBlur');
