@@ -6,6 +6,8 @@ import { Stack } from '../stack';
 
 export type AppLayoutFooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
+	/** The maximum width of the container. */
+	containerWidth?: 'container' | 'containerXL';
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	palette?: ResponsiveProp<BoxPalette>;
@@ -14,6 +16,7 @@ export type AppLayoutFooterProps = PropsWithChildren<{
 export function AppLayoutFooter({
 	background = 'body',
 	children,
+	containerWidth,
 	id,
 	palette,
 }: AppLayoutFooterProps) {
@@ -25,7 +28,7 @@ export function AppLayoutFooter({
 			id={id}
 			palette={palette}
 		>
-			<Content>
+			<Content containerWidth={containerWidth}>
 				<Stack
 					paddingY={3}
 					width="100%"

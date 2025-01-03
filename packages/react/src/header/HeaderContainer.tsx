@@ -11,13 +11,15 @@ const paddingMap = {
 
 type HeaderContainerProps = PropsWithChildren<{
 	background: 'body' | 'bodyAlt';
+	containerWidth: 'container' | 'containerXL';
 	size: keyof typeof paddingMap;
 }>;
 
 export function HeaderContainer({
 	background,
-	size,
 	children,
+	containerWidth,
+	size,
 }: HeaderContainerProps) {
 	return (
 		<Flex
@@ -28,7 +30,7 @@ export function HeaderContainer({
 			justifyContent="center"
 		>
 			<Box
-				maxWidth={tokens.maxWidth.container}
+				maxWidth={tokens.maxWidth[containerWidth] || tokens.maxWidth.container}
 				paddingX={tokens.containerPadding}
 				width="100%"
 			>

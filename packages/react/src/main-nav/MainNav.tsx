@@ -13,6 +13,8 @@ export type MainNavProps = PropsWithChildren<{
 	/** The background of the component. */
 	background?: MainNavBackground;
 	borderColor?: ResponsiveProp<BorderColor>;
+	/** The maximum width of the container. */
+	containerWidth?: 'container' | 'containerXL';
 	/** When true, removes all navigation items to reduce distractions.  */
 	focusMode?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
@@ -27,6 +29,7 @@ export function MainNav({
 	activePath,
 	background = 'body',
 	borderColor = 'accent',
+	containerWidth = 'container',
 	focusMode = false,
 	id,
 	items,
@@ -46,6 +49,7 @@ export function MainNav({
 				activePath={bestMatch}
 				background={background}
 				borderColor={borderColor}
+				containerWidth={containerWidth}
 				focusMode={focusMode}
 				id={id}
 				isMobileMenuOpen={isMobileMenuOpen}

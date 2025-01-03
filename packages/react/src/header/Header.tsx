@@ -9,6 +9,8 @@ export type HeaderProps = {
 	background?: 'body' | 'bodyAlt';
 	/** Used to indicate if an application is in a prerelease state. */
 	badgeLabel?: string;
+	/** The maximum width of the container. */
+	containerWidth?: 'container' | 'containerXL';
 	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
 	dividerPosition?: 'after' | 'between';
 	/** The heading should be set to the website or service title. */
@@ -32,6 +34,7 @@ export type HeaderProps = {
 export function Header({
 	background = 'body',
 	badgeLabel,
+	containerWidth = 'container',
 	dividerPosition = 'after',
 	heading,
 	href = '/',
@@ -45,7 +48,11 @@ export function Header({
 	const hasRightContent = !!rightContent;
 
 	return (
-		<HeaderContainer background={background} size={size}>
+		<HeaderContainer
+			background={background}
+			size={size}
+			containerWidth={containerWidth}
+		>
 			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
@@ -65,7 +72,12 @@ export function Header({
 				<Column
 					alignSelf="start"
 					columnSpan={{ xs: 12, lg: 4 }}
-					css={packs.print.hidden}
+					css={[
+						{
+							height: '100%',
+						},
+						packs.print.hidden,
+					]}
 				>
 					{rightContent}
 				</Column>

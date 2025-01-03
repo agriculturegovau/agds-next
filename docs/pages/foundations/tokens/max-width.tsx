@@ -28,6 +28,11 @@ const tokenDescriptions: Record<
 		value: tokens.maxWidth.container,
 		description: 'Used for setting the max-width of the page container.',
 	},
+	containerXL: {
+		value: tokens.maxWidth.containerXL,
+		description:
+			'Used for setting the max-width of the page container to support 1920px.',
+	},
 };
 
 export default function TokensMaxWidthsPage() {
