@@ -29,7 +29,7 @@ import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
 	acceptedDateFormats,
-	constrainDate,
+	// constrainDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
 	isValidDate,
