@@ -211,31 +211,23 @@ export const reactDayRangePickerStyles = (
 			...(from && startStyles),
 			...(to && endStyles),
 		},
-		// '.rdp-day_range_start ~ .rdp-day': {
-		// 	...(from &&
-		// 		!to && {
-		// 			backgroundColor: 'red',
-		// 		}),
-		// },
-		// '[data-in-range]': {
 
 		...(inputMode && {
 			'.rdp-day': {
 				...(inputMode === 'from' && startStyles),
 				...(inputMode === 'to' && endStyles),
-				'&:hover': {
+				'&:hover:not([disabled])': {
 					backgroundColor: boxPalette.selected,
-					// 	border: '3px solid red',
+					color: boxPalette.backgroundBody,
 				},
 			},
 		}),
 
-		'.range': {
+		'.range:not([disabled])': {
 			backgroundColor: boxPalette.selectedMuted,
 			borderRadius: 0,
 			color: boxPalette.foregroundText,
 			fontWeight: 'bold',
-			// fontSize: 30,
 		},
 	};
 };

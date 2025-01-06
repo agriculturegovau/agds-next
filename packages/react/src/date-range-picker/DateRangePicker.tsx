@@ -507,12 +507,9 @@ export const DateRangePicker = ({
 				// 	return fromRange().has(day.toDateString());
 				// 	// return range().includes(day);
 				// },
-				// qux: range(),
-				// 	foo: hoveredDay,
 			},
 			modifiersClassNames: {
 				fromRange: 'range',
-				// 	foo: 'baz',
 			},
 			onHover,
 			clearHoveredDay,
