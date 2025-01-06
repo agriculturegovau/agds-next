@@ -20,8 +20,8 @@ export function AppLayoutHeaderNav({
 		<Flex
 			alignItems="center"
 			background="body"
-			flexWrap="wrap"
 			display={{ xs: 'flex', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'none' }}
+			flexWrap="wrap"
 			justifyContent={focusMode ? 'flex-end' : 'space-between'}
 			paddingLeft={0.75}
 			paddingRight={accountDetails?.dropdown ? 0.75 : tokens.containerPadding}

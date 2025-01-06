@@ -24,11 +24,11 @@ export function useNotification() {
 		if (notification && !notification.dismissed) {
 			return (
 				<SectionAlert
+					onClose={() => dismissNotification()}
 					ref={notification.ref}
 					tabIndex={-1}
-					tone="success"
-					onClose={() => dismissNotification()}
 					title={notification.message}
+					tone="success"
 				/>
 			);
 		}

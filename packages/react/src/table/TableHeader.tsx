@@ -32,8 +32,8 @@ export const TableHeader = ({
 	return (
 		<Box
 			as={as}
-			color="text"
 			colSpan={colSpan}
+			color="text"
 			focusRingFor="keyboard"
 			fontWeight="bold"
 			padding={0.75}

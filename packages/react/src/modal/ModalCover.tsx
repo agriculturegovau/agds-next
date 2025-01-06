@@ -8,7 +8,6 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 	function ModalCover({ children }, ref) {
 		return (
 			<div
-				ref={ref}
 				css={{
 					position: 'fixed',
 					top: 0,
@@ -20,6 +19,7 @@ export const ModalCover = forwardRef<HTMLDivElement, ModalCoverProps>(
 					overflowY: 'auto',
 					animation: `${animateFadeInOut} ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				}}
+				ref={ref}
 			>
 				{children}
 			</div>

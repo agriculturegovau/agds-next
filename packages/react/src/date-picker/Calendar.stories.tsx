@@ -12,7 +12,7 @@ const meta: Meta<CalendarSingleProps & CalendarProviderProps> = {
 		const [value, setValue] = useState<Date>();
 		return (
 			<CalendarProvider yearRange={yearRange}>
-				<CalendarSingle selected={value} onSelect={setValue} {...props} />
+				<CalendarSingle onSelect={setValue} selected={value} {...props} />
 			</CalendarProvider>
 		);
 	},
@@ -60,7 +60,7 @@ export const Range = () => {
 	const [range, setRange] = useState<DateRange>();
 	return (
 		<CalendarProvider yearRange={undefined}>
-			<CalendarRange selected={range} numberOfMonths={2} onSelect={setRange} />
+			<CalendarRange numberOfMonths={2} onSelect={setRange} selected={range} />
 		</CalendarProvider>
 	);
 };

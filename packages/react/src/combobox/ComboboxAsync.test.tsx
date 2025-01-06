@@ -22,8 +22,8 @@ const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 function renderComboboxAsync(props?: Partial<ComboboxAsyncProps<Option>>) {
 	return render(
 		<ComboboxAsync
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			loadOptions={mockLoadOptions}
 			{...props}
 		/>

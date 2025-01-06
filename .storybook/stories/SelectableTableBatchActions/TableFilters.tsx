@@ -5,24 +5,24 @@ import { Select } from '../../../packages/react/src/select';
 export function TableFilters() {
 	return (
 		<Flex
-			flexDirection={['column', 'row']}
-			justifyContent="space-between"
-			gap={1}
-			paddingBottom={1}
 			borderBottom
+			flexDirection={['column', 'row']}
+			gap={1}
+			justifyContent="space-between"
+			paddingBottom={1}
 		>
 			<Flex gap={1}>
-				<SearchInput label="Search certificates" hideOptionalLabel />
+				<SearchInput hideOptionalLabel label="Search certificates" />
 				<Select
+					hideOptionalLabel
 					label="Status"
 					options={[{ label: 'All', value: 'all' }]}
-					hideOptionalLabel
 				/>
 			</Flex>
 			<Select
+				hideOptionalLabel
 				label="Sort by"
 				options={[{ label: 'Last modified', value: 'last modified' }]}
-				hideOptionalLabel
 			/>
 		</Flex>
 	);

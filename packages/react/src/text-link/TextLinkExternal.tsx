@@ -14,17 +14,17 @@ export const TextLinkExternal = ({
 	...props
 }: TextLinkExternalProps) => {
 	return (
-		<TextLink target="_blank" rel="noopener" {...props}>
+		<TextLink rel="noopener" target="_blank" {...props}>
 			{children}
 			<ExternalLinkCallout />
 			<ExternalLinkIcon
-				weight="regular"
-				size="sm"
 				css={{
 					position: 'relative',
 					top: 3,
 					marginLeft: mapSpacing(0.25),
 				}}
+				size="sm"
+				weight="regular"
 			/>
 		</TextLink>
 	);

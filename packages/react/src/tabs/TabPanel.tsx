@@ -15,15 +15,8 @@ export function TabPanel({ children }: TabPanelProps) {
 	const isSelected = activeIndex === panelIndex;
 	return (
 		<Box
-			id={panelId}
-			role="tabpanel"
 			aria-labelledby={tabButtonId}
-			display={isSelected ? undefined : 'none'}
-			tabIndex={isSelected ? 0 : -1}
-			focusRingFor="keyboard"
 			border
-			paddingX={{ xs: 0.75, md: 1.5 }}
-			paddingY={1.5}
 			css={{
 				background: localPalette.panelBg,
 				color: localPalette.panelFg,
@@ -45,6 +38,13 @@ export function TabPanel({ children }: TabPanelProps) {
 						  }),
 				},
 			}}
+			display={isSelected ? undefined : 'none'}
+			focusRingFor="keyboard"
+			id={panelId}
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={1.5}
+			role="tabpanel"
+			tabIndex={isSelected ? 0 : -1}
 		>
 			{children}
 		</Box>

@@ -62,10 +62,10 @@ export const ItemsPerPage: Story = {
 			<PaginationButtons
 				{...args}
 				currentPage={currentPage}
-				onChange={setCurrentPage}
-				itemsPerPage={itemsPerPage}
-				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 				itemRangeText={itemRangeText}
+				itemsPerPage={itemsPerPage}
+				onChange={setCurrentPage}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 			/>
 		);
 	},

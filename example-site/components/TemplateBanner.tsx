@@ -12,11 +12,11 @@ export type TemplateBannerProps = {
 export const TemplateBanner = ({ name, slug }: TemplateBannerProps) => {
 	return (
 		<Flex
-			gap={[2, 1]}
-			palette="dark"
 			background="body"
-			padding={1}
 			flexDirection={['column', 'row']}
+			gap={[2, 1]}
+			padding={1}
+			palette="dark"
 		>
 			<DirectionLink
 				direction="left"

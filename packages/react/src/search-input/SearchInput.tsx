@@ -102,27 +102,27 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={required}
 				hint={hint}
+				id={id}
+				invalid={invalid}
+				label={label}
 				maxWidth={maxWidthProp}
 				message={message}
-				invalid={invalid}
-				id={id}
+				required={required}
 			>
 				{(a11yProps) => (
 					<SearchInputContainer maxWidth={maxWidth}>
 						<SearchInputIcon disabled={disabled} />
 						<input
-							ref={mergeRefs([internalRef, forwardedRef])}
-							type="search"
+							autoComplete="off"
+							css={styles}
 							disabled={disabled}
-							value={value}
 							onChange={(e) => onChange(e.target.value)}
 							onKeyDown={onKeyDown}
-							css={styles}
-							autoComplete="off"
+							ref={mergeRefs([internalRef, forwardedRef])}
+							type="search"
+							value={value}
 							{...a11yProps}
 							{...props}
 						/>

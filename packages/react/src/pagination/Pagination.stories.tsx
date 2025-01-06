@@ -57,8 +57,6 @@ export const ItemsPerPage: Story = {
 		return (
 			<Pagination
 				{...args}
-				itemsPerPage={itemsPerPage}
-				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 				itemRangeText={generatePaginationRangeText({
 					totalItems: 100,
 					currentPage: args.currentPage ?? 1,
@@ -66,6 +64,8 @@ export const ItemsPerPage: Story = {
 					singularNoun: 'certificate',
 					pluralNoun: 'certificates',
 				})}
+				itemsPerPage={itemsPerPage}
+				onItemsPerPageChange={(val) => setItemsPerPage(val)}
 			/>
 		);
 	},

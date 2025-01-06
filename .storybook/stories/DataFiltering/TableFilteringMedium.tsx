@@ -60,15 +60,14 @@ export const TableFilteringMedium = ({
 							<FilterSearchInput />
 							<FilterStatusSelect />
 							<Button
-								onClick={toggleIsOpen}
-								variant="secondary"
-								iconBefore={FilterIcon}
-								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
-								// accessibility
-								aria-label="more filters"
-								id={buttonId}
 								aria-controls={bodyId}
 								aria-expanded={isOpen}
+								aria-label="more filters"
+								iconAfter={isOpen ? ChevronUpIcon : ChevronDownIcon}
+								iconBefore={FilterIcon}
+								id={buttonId}
+								onClick={toggleIsOpen}
+								variant="secondary"
 							>
 								{isOpen ? 'Hide filters' : 'Show filters'}
 							</Button>
@@ -84,19 +83,19 @@ export const TableFilteringMedium = ({
 						</Box>
 					</FilterBar>
 					<FilterAccordion
-						id={bodyId}
 						ariaLabelledBy={buttonId}
+						id={bodyId}
 						isOpen={isOpen}
 					/>
 					<ActiveFilters />
 				</FilterRegion>
 
 				{selectable && (
-					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+					<Box borderBottom paddingLeft={0.75} paddingY={0.75}>
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}
-				<DataTable selectable={selectable} headingId={headingId} />
+				<DataTable headingId={headingId} selectable={selectable} />
 			</Stack>
 			<DashboardPagination />
 		</Stack>

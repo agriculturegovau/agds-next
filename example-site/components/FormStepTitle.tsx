@@ -22,15 +22,15 @@ export function FormStepTitle({
 	return (
 		<Stack gap={1.5}>
 			<H1
+				aria-label={`${formTitle} form, ${stepTitle}`}
+				focusRingFor="keyboard"
 				ref={titleRef}
 				tabIndex={-1}
-				focusRingFor="keyboard"
-				aria-label={`${formTitle} form, ${stepTitle}`}
 			>
 				<Text
+					color="muted"
 					display="block"
 					fontSize="sm"
-					color="muted"
 					fontWeight="bold"
 					lineHeight="heading"
 				>
@@ -39,7 +39,7 @@ export function FormStepTitle({
 				{stepTitle}
 			</H1>
 			{introduction ? (
-				<Text as="p" fontSize="md" color="muted">
+				<Text as="p" color="muted" fontSize="md">
 					{introduction}
 				</Text>
 			) : null}

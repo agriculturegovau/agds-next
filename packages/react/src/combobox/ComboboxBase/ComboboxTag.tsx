@@ -19,15 +19,9 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 	function ComboboxTag({ disabled, children, onRemove, ...props }, ref) {
 		return (
 			<Flex
-				as="span"
-				inline
 				alignItems="center"
+				as="span"
 				border
-				rounded
-				paddingLeft={0.5}
-				paddingRight={0.25}
-				gap={0.25}
-				fontSize="sm"
 				color="text"
 				css={{
 					cursor: 'default',
@@ -37,12 +31,18 @@ export const ComboboxTag = forwardRef<HTMLButtonElement, ComboboxTagProps>(
 						color: boxPalette.foregroundMuted,
 					}),
 				}}
+				fontSize="sm"
+				gap={0.25}
+				inline
+				paddingLeft={0.5}
+				paddingRight={0.25}
+				rounded
 			>
 				{children}
 				<Flex
 					alignItems="center"
-					as="button"
 					aria-label={`Remove ${children}`}
+					as="button"
 					css={{
 						background: 'transparent',
 						cursor: 'pointer',

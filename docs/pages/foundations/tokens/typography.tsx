@@ -21,22 +21,22 @@ export default function TokensTypographyPage() {
 	return (
 		<>
 			<DocumentTitle
-				title={TOKEN_PAGES.typography.pageTitle}
 				description={TOKEN_PAGES.typography.description}
+				title={TOKEN_PAGES.typography.pageTitle}
 			/>
 			<TokenLayout
-				title={TOKEN_PAGES.typography.pageTitle}
 				description={TOKEN_PAGES.typography.description}
 				editPath="/docs/pages/foundations/tokens/typography.tsx"
+				title={TOKEN_PAGES.typography.pageTitle}
 			>
 				<InpageNav
-					title="On this page"
 					links={[
 						{ href: '#font-size', label: 'Font size' },
 						{ href: '#line-height', label: 'Line height' },
 						{ href: '#font-family', label: 'Font family' },
 						{ href: '#font-weight', label: 'Font weight' },
 					]}
+					title="On this page"
 				/>
 				<Prose>
 					<p>

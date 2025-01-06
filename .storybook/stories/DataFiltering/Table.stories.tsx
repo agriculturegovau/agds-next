@@ -86,7 +86,7 @@ export const FilterAndSelectSmall = {
 									table.
 								</Text>
 							</Callout>
-							<TableFilteringSmall selectable={true} />
+							<TableFilteringSmall selectable />
 						</Stack>
 					</PageContent>
 				</DataProvider>
@@ -153,7 +153,7 @@ export const FilterAndSelectMedium = {
 									button is pressed.
 								</Text>
 							</Callout>
-							<TableFilteringMedium selectable={true} />
+							<TableFilteringMedium selectable />
 						</Stack>
 					</PageContent>
 				</DataProvider>
@@ -221,7 +221,7 @@ export const FilterAndSelectLarge = {
 									area next to the button which opens the drawer.
 								</Text>
 							</Callout>
-							<TableFilteringLarge selectable={true} />
+							<TableFilteringLarge selectable />
 						</Stack>
 					</PageContent>
 				</DataProvider>

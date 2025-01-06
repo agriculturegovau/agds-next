@@ -60,17 +60,17 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 		const styles = textInputStyles({ block, maxWidth });
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={required}
 				hint={hint}
+				id={id}
+				invalid={invalid}
+				label={label}
 				maxWidth={maxWidth}
 				message={message}
-				invalid={invalid}
-				id={id}
+				required={required}
 			>
 				{(a11yProps) => (
-					<input ref={ref} css={styles} {...a11yProps} type={type} {...props} />
+					<input css={styles} ref={ref} {...a11yProps} type={type} {...props} />
 				)}
 			</Field>
 		);

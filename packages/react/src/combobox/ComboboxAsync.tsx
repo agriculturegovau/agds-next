@@ -117,15 +117,15 @@ export function ComboboxAsync<Option extends DefaultComboboxOption>({
 
 	return (
 		<ComboboxBase
+			clearable={clearable}
 			combobox={combobox}
 			inputId={inputId}
-			loading={loading}
-			networkError={networkError}
 			inputItems={inputItems}
-			showDropdownTrigger={showDropdownTrigger}
-			clearable={clearable}
 			inputRef={inputRefProp}
 			isAutocomplete={isAutocomplete}
+			loading={loading}
+			networkError={networkError}
+			showDropdownTrigger={showDropdownTrigger}
 			{...props}
 		/>
 	);

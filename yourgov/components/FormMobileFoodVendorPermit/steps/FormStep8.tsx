@@ -55,7 +55,7 @@ export function FormStep8() {
 			formIntroduction="Add your employee food safety supervisor."
 			formTitle="Food safety supervisor"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup
 					block
 					invalid={Boolean(errors.supervisor)}

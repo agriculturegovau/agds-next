@@ -30,10 +30,10 @@ export function Avatar({
 	const { size, fontSize } = SIZE_MAP[sizeProp];
 	return (
 		<Flex
-			as="span"
 			alignItems="center"
-			justifyContent="center"
-			flexShrink={0}
+			aria-hidden={ariaHidden}
+			aria-label={ariaLabel}
+			as="span"
 			css={{
 				textDecoration: 'none',
 				height: `${size}rem`,
@@ -44,10 +44,10 @@ export function Avatar({
 				borderColor: color,
 				color: color,
 			}}
+			flexShrink={0}
 			fontSize={fontSize}
 			fontWeight="bold"
-			aria-hidden={ariaHidden}
-			aria-label={ariaLabel}
+			justifyContent="center"
 		>
 			{initials}
 		</Flex>

@@ -34,23 +34,23 @@ export const FormRegisterPetDetailsStep3 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="When do you want the registration to start?"
-			introduction="Select the date you would like this registration to start. The registration will be valid for a period of 12 months from the selected date."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="Select the date you would like this registration to start. The registration will be valid for a period of 12 months from the selected date."
+			title="When do you want the registration to start?"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					control={control}
 					name="date"
 					render={({ field: { ref, ...field } }) => (
 						<DatePicker
-							inputRef={ref}
-							label="Select a date"
 							{...field}
 							id="date"
+							inputRef={ref}
 							invalid={Boolean(errors.date?.message)}
-							message={errors.date?.message}
+							label="Select a date"
 							maxWidth="xl"
+							message={errors.date?.message}
 							required
 						/>
 					)}

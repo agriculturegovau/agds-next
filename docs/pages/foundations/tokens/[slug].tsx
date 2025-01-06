@@ -21,16 +21,16 @@ export default function TokensPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={pageTitle} description={description} />
+			<DocumentTitle description={description} title={pageTitle} />
 			<TokenLayout
-				title={pageTitle}
 				description={description}
 				editPath={editPath}
+				title={pageTitle}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
-						title="On this page"
 						links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+						title="On this page"
 					/>
 				) : null}
 				<Prose>

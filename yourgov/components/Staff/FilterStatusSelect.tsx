@@ -8,17 +8,10 @@ export const FilterStatusSelect = ({ block }: { block?: boolean }) => {
 
 	return (
 		<Select
-			label="Status"
-			placeholder="All"
 			aria-controls={tableId}
-			hideOptionalLabel
 			block={block}
-			options={[
-				{ value: 'Active', label: 'Active' },
-				{ value: 'Invited', label: 'Invited' },
-				{ value: 'Paused', label: 'Paused' },
-			]}
-			value={filters.status || ''}
+			hideOptionalLabel
+			label="Status"
 			onChange={(event) => {
 				const value = event.target.value as '' | StaffMemberStatus;
 
@@ -26,6 +19,13 @@ export const FilterStatusSelect = ({ block }: { block?: boolean }) => {
 					status: value === '' ? undefined : value,
 				});
 			}}
+			options={[
+				{ value: 'Active', label: 'Active' },
+				{ value: 'Invited', label: 'Invited' },
+				{ value: 'Paused', label: 'Paused' },
+			]}
+			placeholder="All"
+			value={filters.status || ''}
 		/>
 	);
 };

@@ -29,15 +29,15 @@ export function SubNavContainer({
 	const { hover } = backgroundMap[background];
 	return (
 		<Box
+			aria-label={ariaLabel}
 			as="nav"
 			background={background}
-			id={id}
-			aria-label={ariaLabel}
 			css={{
 				position: 'relative',
 				[localPaletteVars.linkHoverBg]: backgroundColorMap[hover],
 				...packs.print.hidden,
 			}}
+			id={id}
 		>
 			{children}
 			<BottomBar />
@@ -48,8 +48,6 @@ export function SubNavContainer({
 function BottomBar() {
 	return (
 		<Box
-			display={['none', 'block']}
-			paddingTop={0.5}
 			css={{
 				position: 'absolute',
 				bottom: 0,
@@ -58,6 +56,8 @@ function BottomBar() {
 				width: '100%',
 				backgroundColor: boxPalette.borderMuted,
 			}}
+			display={['none', 'block']}
+			paddingTop={0.5}
 		/>
 	);
 }

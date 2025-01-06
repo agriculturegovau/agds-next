@@ -48,11 +48,11 @@ export const FormExampleMultiStep4 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Confirm and submit (H1)"
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Confirm and submit (H1)"
 		>
 			{/** Summary: Step 0 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[0].label}</H2>
 				<SummaryList>
 					<SummaryListItem>
@@ -62,12 +62,12 @@ export const FormExampleMultiStep4 = () => {
 						</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
-				<Button variant="text" onClick={() => goToStep(0)}>
+				<Button onClick={() => goToStep(0)} variant="text">
 					Change
 				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[1].label}</H2>
 				<SummaryList>
 					<SummaryListItem>
@@ -83,12 +83,12 @@ export const FormExampleMultiStep4 = () => {
 						</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
-				<Button variant="text" onClick={() => goToStep(1)}>
+				<Button onClick={() => goToStep(1)} variant="text">
 					Change
 				</Button>
 			</Stack>
 			{/** Summary: Step 2 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[2].label}</H2>
 				<SummaryList>
 					<SummaryListItem>
@@ -100,12 +100,12 @@ export const FormExampleMultiStep4 = () => {
 						</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
-				<Button variant="text" onClick={() => goToStep(2)}>
+				<Button onClick={() => goToStep(2)} variant="text">
 					Change
 				</Button>
 			</Stack>
 			{/** Summary: Step 3 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[3].label}</H2>
 				<SummaryList>
 					<SummaryListItem>
@@ -125,12 +125,12 @@ export const FormExampleMultiStep4 = () => {
 						</SummaryListItem>
 					)}
 				</SummaryList>
-				<Button variant="text" onClick={() => goToStep(3)}>
+				<Button onClick={() => goToStep(3)} variant="text">
 					Change
 				</Button>
 			</Stack>
 			{/** Declaration form */}
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					<Prose>
 						<h2>Declaration</h2>
@@ -144,10 +144,10 @@ export const FormExampleMultiStep4 = () => {
 						</ul>
 					</Prose>
 					<ControlGroup
-						label="Declaration agreement"
-						invalid={Boolean(errors.declaration?.message)}
-						message={errors.declaration?.message}
 						block
+						invalid={Boolean(errors.declaration?.message)}
+						label="Declaration agreement"
+						message={errors.declaration?.message}
 						required
 					>
 						<Checkbox

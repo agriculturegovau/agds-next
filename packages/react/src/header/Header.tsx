@@ -57,8 +57,8 @@ export function Header({
 					heading={heading}
 					href={href}
 					logo={logo}
-					secondLogo={secondLogo}
 					secondHref={secondHref}
+					secondLogo={secondLogo}
 					size={size}
 					subline={subline}
 				/>

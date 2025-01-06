@@ -19,12 +19,8 @@ export const CheckboxIndicator = ({
 	const { width, height, borderWidth } = packs.control[size];
 	return (
 		<Flex
-			as="span"
-			justifyContent="center"
 			alignItems="center"
-			width={width}
-			height={height}
-			flexShrink={0}
+			as="span"
 			css={{
 				borderWidth,
 				borderStyle: 'solid',
@@ -48,7 +44,11 @@ export const CheckboxIndicator = ({
 					backgroundColor: boxPalette.systemErrorMuted,
 				}),
 			}}
+			flexShrink={0}
+			height={height}
+			justifyContent="center"
 			rounded
+			width={width}
 		>
 			{indeterminate ? (
 				<MinusIcon size={size} weight="bold" />

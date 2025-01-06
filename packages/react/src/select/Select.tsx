@@ -79,18 +79,18 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 		const styles = selectStyles({ block });
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={required}
 				hint={hint}
+				id={id}
+				invalid={invalid}
+				label={label}
 				maxWidth={maxWidth}
 				message={message}
-				invalid={invalid}
-				id={id}
+				required={required}
 			>
 				{(a11yProps) => (
 					<SelectContainer block={block} maxWidth={maxWidth}>
-						<select ref={ref} css={styles} {...a11yProps} {...props}>
+						<select css={styles} ref={ref} {...a11yProps} {...props}>
 							<SelectOptions options={options} placeholder={placeholder} />
 						</select>
 						<SelectIcon disabled={props.disabled} />
@@ -134,9 +134,9 @@ const SelectOptions = ({
 			{options.map((opt) => {
 				if ('options' in opt) {
 					return (
-						<optgroup key={opt.label} label={opt.label} disabled={opt.disabled}>
+						<optgroup disabled={opt.disabled} key={opt.label} label={opt.label}>
 							{opt.options.map(({ value, label, disabled }) => (
-								<option key={value} value={value} disabled={disabled}>
+								<option disabled={disabled} key={value} value={value}>
 									{label}
 								</option>
 							))}
@@ -144,7 +144,7 @@ const SelectOptions = ({
 					);
 				}
 				return (
-					<option key={opt.value} value={opt.value} disabled={opt.disabled}>
+					<option disabled={opt.disabled} key={opt.value} value={opt.value}>
 						{opt.label}
 					</option>
 				);

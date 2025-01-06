@@ -38,37 +38,37 @@ export const FormExampleMultiStep0 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Conditional fork title (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Conditional fork title (H1)"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup
-					label="Fieldset question?"
+					block
 					hint="Hint text"
 					invalid={Boolean(errors.example?.message)}
+					label="Fieldset question?"
 					message={errors.example?.message}
 					required
-					block
 				>
 					<Radio
 						{...register('example')}
-						value="A"
 						invalid={Boolean(errors.example?.message)}
+						value="A"
 					>
 						Radio label A
 					</Radio>
 					<Radio
 						{...register('example')}
-						value="B"
 						invalid={Boolean(errors.example?.message)}
+						value="B"
 					>
 						Radio label B
 					</Radio>
 					<Radio
 						{...register('example')}
-						value="C"
 						invalid={Boolean(errors.example?.message)}
+						value="C"
 					>
 						Radio label C
 					</Radio>

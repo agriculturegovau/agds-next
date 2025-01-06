@@ -1,4 +1,3 @@
-import { Stack } from '@ag.ds-next/react/box';
 import { ButtonGroup, ButtonLink } from '@ag.ds-next/react/button';
 import { CallToActionLink } from '@ag.ds-next/react/call-to-action';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
@@ -12,6 +11,7 @@ import {
 	HeroBannerTitleContainer,
 } from '@ag.ds-next/react/hero-banner';
 import { Text } from '@ag.ds-next/react/text';
+import { Stack } from '@ag.ds-next/react/stack';
 // These have been extracted to be reusable across the site
 import { SiteLayout } from '../components/SiteLayout';
 import { DocumentTitle } from '../components/DocumentTitle';
@@ -24,9 +24,9 @@ export default function HomePage() {
 				<HeroBanner
 					image={
 						<img
-							src="/example-site/placeholder/hero-banner.jpeg"
-							role="presentation"
 							alt=""
+							role="presentation"
+							src="/example-site/placeholder/hero-banner.jpeg"
 						/>
 					}
 				>
@@ -52,7 +52,7 @@ export default function HomePage() {
 						<H2>Content heading (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 4 }}>
 							{Array.from(Array(4).keys()).map((idx) => (
-								<Stack key={idx} as="li" gap={1.5}>
+								<Stack as="li" gap={1.5} key={idx}>
 									<H3>Content heading (H3)</H3>
 									<Text as="p">
 										Short descriptive paragraph designed to fit in this space -
@@ -81,10 +81,10 @@ export default function HomePage() {
 							</CallToActionLink>
 						</Stack>
 						<img
-							src="/example-site/placeholder/hero-banner.jpeg"
-							role="presentation"
 							alt=""
 							css={{ display: 'block', maxWidth: '100%' }}
+							role="presentation"
+							src="/example-site/placeholder/hero-banner.jpeg"
 						/>
 					</Columns>
 				</SectionContent>
@@ -94,12 +94,12 @@ export default function HomePage() {
 						<H2>Articles heading (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Card as="li" key={idx} clickable shadow>
+								<Card as="li" clickable key={idx} shadow>
 									<img
-										src="/example-site/placeholder/hero-banner.jpeg"
-										role="presentation"
 										alt=""
 										css={{ width: '100%' }}
+										role="presentation"
+										src="/example-site/placeholder/hero-banner.jpeg"
 									/>
 									<CardInner>
 										<Stack gap={1}>

@@ -13,9 +13,6 @@ export function GlobalAlertCloseButton({
 	return (
 		<Button
 			aria-label="Close"
-			onClick={onClick}
-			iconAfter={CloseIcon}
-			variant="text"
 			css={mq({
 				flexShrink: 0,
 
@@ -37,6 +34,9 @@ export function GlobalAlertCloseButton({
 					},
 				},
 			})}
+			iconAfter={CloseIcon}
+			onClick={onClick}
+			variant="text"
 		>
 			Close
 		</Button>

@@ -25,11 +25,9 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 ) {
 	return (
 		<Box
-			ref={ref}
 			background="body"
 			border
 			borderColor="muted"
-			rounded
 			css={{
 				boxShadow: tokens.shadow.lg,
 				overflow: 'auto',
@@ -37,6 +35,8 @@ export const Popover = forwardRefWithAs<'div', PopoverProps>(function Popover(
 				visibility,
 				zIndex: tokens.zIndex.popover,
 			}}
+			ref={ref}
+			rounded
 			{...props}
 		>
 			{children}

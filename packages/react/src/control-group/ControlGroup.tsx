@@ -54,31 +54,31 @@ export const ControlGroup = ({
 			name={name}
 			required={required}
 		>
-			<FieldContainer invalid={invalid} id={groupId}>
-				<Box as="fieldset" aria-describedby={describedBy}>
+			<FieldContainer id={groupId} invalid={invalid}>
+				<Box aria-describedby={describedBy} as="fieldset">
 					{label ? (
 						<FieldLabel
 							as="legend"
-							required={required}
 							hideOptionalLabel={hideOptionalLabel}
+							required={required}
 						>
 							{label}
 						</FieldLabel>
 					) : null}
 					<Stack
-						gap={0.5}
 						css={{ marginTop: label ? mapSpacing(0.5) : undefined }}
+						gap={0.5}
 					>
 						{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 						{message && invalid ? (
 							<FieldMessage id={messageId}>{message}</FieldMessage>
 						) : null}
 						<Flex
-							gap={1}
 							flexDirection={block ? 'column' : 'row'}
 							flexWrap={block ? undefined : 'wrap'}
-							width="100%"
+							gap={1}
 							paddingTop={0.5}
+							width="100%"
 						>
 							{children}
 						</Flex>

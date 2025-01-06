@@ -59,9 +59,9 @@ function ControlledDatePicker({
 
 	return (
 		<DatePicker
-			value={value}
 			onChange={onChange}
 			onInputChange={setValue}
+			value={value}
 			{...props}
 		/>
 	);
@@ -96,8 +96,8 @@ function DatePickerInsideForm({
 	});
 	return (
 		<form
-			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 			noValidate
+			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 		>
 			<Controller
 				control={control}
@@ -107,10 +107,10 @@ function DatePickerInsideForm({
 						inputRef={ref}
 						label="Date"
 						{...field}
-						onInputChange={field.onChange}
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}
+						onInputChange={field.onChange}
 						required={required}
 					/>
 				)}
@@ -173,7 +173,7 @@ describe('DatePicker', () => {
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
 
-		render(<ControlledDatePicker label="Example" initialValue={date} />);
+		render(<ControlledDatePicker initialValue={date} label="Example" />);
 
 		// The input should be a formatted display value of `initialValue`
 		expect(
@@ -387,9 +387,9 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -410,9 +410,9 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -430,9 +430,9 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -467,9 +467,9 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
@@ -503,11 +503,7 @@ describe('DatePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DatePickerInsideForm
-				required={true}
-				onSubmit={onSubmit}
-				onError={onError}
-			/>
+			<DatePickerInsideForm onError={onError} onSubmit={onSubmit} required />
 		);
 
 		// Type in an invalid value

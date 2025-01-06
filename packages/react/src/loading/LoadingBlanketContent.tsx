@@ -10,7 +10,7 @@ export const LoadingBlanketContent = ({
 	children,
 }: LoadingBlanketContentProps) => (
 	<Content as="div">
-		<Stack gap={1} alignItems="center" textAlign="center">
+		<Stack alignItems="center" gap={1} textAlign="center">
 			{children}
 		</Stack>
 	</Content>

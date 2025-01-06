@@ -21,15 +21,15 @@ export const PageAlertTitle = ({
 	return (
 		<Text
 			as={as}
-			fontSize="lg"
-			lineHeight="heading"
-			fontWeight="bold"
 			css={mq({
 				marginRight: hasCloseButton || hasDismissButton ? '2.5rem' : undefined,
 				[tokens.mediaQuery.min.sm]: {
 					marginRight: '0',
 				},
 			})}
+			fontSize="lg"
+			fontWeight="bold"
+			lineHeight="heading"
 		>
 			{children}
 		</Text>

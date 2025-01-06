@@ -15,11 +15,11 @@ export const PictogramCard = ({
 	<Card as="li" clickable shadow>
 		<Flex
 			alignItems="center"
+			background="shade"
 			justifyContent="center"
 			padding={1}
-			background="shade"
 		>
-			<img src={getPictogram(pictogram).src} alt="" aria-hidden="true" />
+			<img alt="" aria-hidden src={getPictogram(pictogram).src} />
 		</Flex>
 		<CardInner>
 			<CardLink {...props}>

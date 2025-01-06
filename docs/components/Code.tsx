@@ -47,9 +47,9 @@ require('prismjs/components/prism-diff');
 
 const PlaceholderImage = () => (
 	<img
-		src={withBasePath('/img/placeholder/600X260.png')}
 		alt="Grey placeholder image"
 		css={{ width: '100%' }}
+		src={withBasePath('/img/placeholder/600X260.png')}
 	/>
 );
 
@@ -123,7 +123,7 @@ function LiveCode({
 
 	// Using `Box` here instead of Code snippets with popovers (date picker, combobox, dropdown menu etc) need overflow
 	return (
-		<Box border borderColor="muted" rounded className={proseBlockClassname}>
+		<Box border borderColor="muted" className={proseBlockClassname} rounded>
 			{exampleContentHeadingType && (
 				<CardHeader>
 					<Heading type={exampleContentHeadingType}>
@@ -145,29 +145,29 @@ function LiveCode({
 				role="region"
 			/>
 			<Flex
-				flexWrap="wrap"
-				padding={0.5}
-				gap={0.5}
-				borderTop
 				borderColor="muted"
+				borderTop
 				css={packs.print.hidden}
+				flexWrap="wrap"
+				gap={0.5}
+				padding={0.5}
 			>
 				<Button
+					aria-controls={codeId}
+					aria-expanded={isCodeVisible}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+					onClick={toggleIsCodeVisible}
 					ref={liveCodeToggleButton}
 					size="sm"
 					variant="tertiary"
-					onClick={toggleIsCodeVisible}
-					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
-					aria-expanded={isCodeVisible}
-					aria-controls={codeId}
 				>
 					{isCodeVisible ? 'Hide live code' : 'Show live code'}
 				</Button>
 				<Button
+					iconAfter={CopyIcon}
+					onClick={copyLiveCode}
 					size="sm"
 					variant="tertiary"
-					onClick={copyLiveCode}
-					iconAfter={CopyIcon}
 				>
 					Copy code
 				</Button>
@@ -177,20 +177,15 @@ function LiveCode({
 				</ButtonLink>
 			</Flex>
 			<Box
-				id={codeId}
-				display={isCodeVisible ? 'block' : 'none'}
 				css={packs.print.visible}
-				palette="dark"
+				display={isCodeVisible ? 'block' : 'none'}
+				id={codeId}
 				onKeyDown={onLiveEditorContainerKeyDown}
+				palette="dark"
 				ref={liveEditorRef}
 			>
 				<LiveEditor
-					tabMode="focus"
-					theme={prismTheme}
 					code={live.code}
-					language={live.language}
-					disabled={live.disabled}
-					onChange={handleChange}
 					css={{
 						'&:focus-within': packs.outline,
 						'textarea, pre': {
@@ -202,15 +197,20 @@ function LiveCode({
 							backgroundColor: globalPalette.darkForegroundAction,
 						},
 					}}
+					disabled={live.disabled}
+					language={live.language}
+					onChange={handleChange}
+					tabMode="focus"
+					theme={prismTheme}
 				/>
 			</Box>
 			{live.error ? (
 				<Box
+					background="shade"
+					color="error"
 					fontFamily="monospace"
 					fontSize="xs"
 					padding={1}
-					color="error"
-					background="shade"
 				>
 					{live.error}
 				</Box>
@@ -229,7 +229,6 @@ const StaticCode = ({
 	return (
 		<Box
 			border
-			rounded
 			borderColor="muted"
 			css={{
 				marginTop: mapSpacing(1.5),
@@ -245,9 +244,10 @@ const StaticCode = ({
 					backgroundColor: globalPalette.darkForegroundAction,
 				},
 			}}
+			rounded
 		>
 			<Box dark>
-				<Highlight code={code} theme={prismTheme} language={language}>
+				<Highlight code={code} language={language} theme={prismTheme}>
 					{({ className, style, tokens, getLineProps, getTokenProps }) => (
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
@@ -271,11 +271,11 @@ const StaticCode = ({
 			</Box>
 			<Flex padding={0.5}>
 				<Button
+					aria-label="Copy code snippet to clipboard"
+					iconAfter={CopyIcon}
+					onClick={() => copy(code)}
 					size="sm"
 					variant="tertiary"
-					onClick={() => copy(code)}
-					iconAfter={CopyIcon}
-					aria-label="Copy code snippet to clipboard"
 				>
 					Copy code
 				</Button>
@@ -321,18 +321,18 @@ export function Code({
 		return (
 			<LiveProvider
 				code={childrenAsString}
-				scope={LIVE_SCOPE}
 				language={language}
+				scope={LIVE_SCOPE}
 			>
 				<LiveCode
-					showCode={showCode}
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					showCode={showCode}
 				/>
 			</LiveProvider>
 		);
 	}
 
-	return <StaticCode language={language} code={childrenAsString} />;
+	return <StaticCode code={childrenAsString} language={language} />;
 }

@@ -45,19 +45,14 @@ export function MainNavDialog({
 	if (!isMobileMenuOpen) return null;
 
 	return createPortal(
-		<Box ref={modalContainerRef} display={{ lg: 'none' }}>
+		<Box display={{ lg: 'none' }} ref={modalContainerRef}>
 			<LockScroll />
 			<Overlay onClick={closeMobileMenu} />
 			<FocusLock returnFocus>
 				<Flex
 					aria-label="Main menu"
-					role="dialog"
-					aria-modal="true"
+					aria-modal
 					background="body"
-					flexDirection="column"
-					padding={1}
-					gap={0.5}
-					width="17.5rem"
 					css={{
 						position: 'fixed',
 						zIndex: tokens.zIndex.dialog,
@@ -66,6 +61,11 @@ export function MainNavDialog({
 						bottom: 0,
 						overflowY: 'auto',
 					}}
+					flexDirection="column"
+					gap={0.5}
+					padding={1}
+					role="dialog"
+					width="17.5rem"
 				>
 					<MainNavCloseButton onClick={closeMobileMenu} />
 					<MainNavDialogNavList

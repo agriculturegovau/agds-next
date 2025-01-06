@@ -38,30 +38,30 @@ export const Basic: Story = {
 			<Fragment>
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
-					isOpen={isOpen}
-					onClose={close}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={close}>Primary</Button>
-							<Button variant="secondary" onClick={close}>
+							<Button onClick={close} variant="secondary">
 								Secondary
 							</Button>
-							<Button variant="tertiary" onClick={close}>
+							<Button onClick={close} variant="tertiary">
 								Tertiary
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isOpen}
+					onClose={close}
+					title={props.title}
 				>
 					<Select
-						label="Example filter"
 						hideOptionalLabel
-						placeholder="Please select"
+						label="Example filter"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 					/>
 				</Drawer>
 			</Fragment>
@@ -80,9 +80,9 @@ export const MutedOverlay: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
 					isOpen={isOpen}
+					mutedOverlay
 					onClose={close}
 					title={props.title}
-					mutedOverlay
 				>
 					<Text>Draw content</Text>
 				</Drawer>
@@ -102,21 +102,21 @@ export const LargeWidth: Story = {
 			<Fragment>
 				<Button onClick={open}>Open Large Drawer</Button>
 				<Drawer
-					isOpen={isOpen}
-					onClose={close}
-					title={props.title}
-					width={props.width}
 					actions={
 						<ButtonGroup>
 							<Button onClick={close}>Primary</Button>
-							<Button variant="secondary" onClick={close}>
+							<Button onClick={close} variant="secondary">
 								Secondary
 							</Button>
-							<Button variant="tertiary" onClick={close}>
+							<Button onClick={close} variant="tertiary">
 								Tertiary
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isOpen}
+					onClose={close}
+					title={props.title}
+					width={props.width}
 				>
 					<Prose>
 						<p>
@@ -159,21 +159,21 @@ export const SmallPageContentLargeDrawerContent: Story = {
 			<Fragment>
 				<Button onClick={open}>Open Drawer</Button>
 				<Drawer
-					isOpen={isOpen}
-					onClose={close}
-					title={props.title}
-					width={props.width}
 					actions={
 						<ButtonGroup>
 							<Button onClick={close}>Primary</Button>
-							<Button variant="secondary" onClick={close}>
+							<Button onClick={close} variant="secondary">
 								Secondary
 							</Button>
-							<Button variant="tertiary" onClick={close}>
+							<Button onClick={close} variant="tertiary">
 								Tertiary
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isOpen}
+					onClose={close}
+					title={props.title}
+					width={props.width}
 				>
 					<LargeProseContent />
 				</Drawer>
@@ -193,21 +193,21 @@ export const LargePageContentLargeDrawerContent: Story = {
 				<Button onClick={open}>Open Drawer</Button>
 				<LargeProseContent />
 				<Drawer
-					isOpen={isOpen}
-					onClose={close}
-					title={props.title}
-					width={props.width}
 					actions={
 						<ButtonGroup>
 							<Button onClick={close}>Primary</Button>
-							<Button variant="secondary" onClick={close}>
+							<Button onClick={close} variant="secondary">
 								Secondary
 							</Button>
-							<Button variant="tertiary" onClick={close}>
+							<Button onClick={close} variant="tertiary">
 								Tertiary
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isOpen}
+					onClose={close}
+					title={props.title}
+					width={props.width}
 				>
 					<LargeProseContent />
 				</Drawer>
@@ -262,26 +262,26 @@ export const FiltersBasic: Story = {
 			<Fragment>
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
-					isOpen={isDrawerOpen}
-					onClose={onCloseClick}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
-							<Button variant="secondary" onClick={onClearFiltersClick}>
+							<Button onClick={onClearFiltersClick} variant="secondary">
 								Clear filters
 							</Button>
-							<Button variant="tertiary" onClick={onCloseClick}>
+							<Button onClick={onCloseClick} variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isDrawerOpen}
+					onClose={onCloseClick}
+					title={props.title}
 				>
 					<FormStack>
 						<Select
-							label="Example filter"
 							hideOptionalLabel
-							placeholder="Please select"
+							label="Example filter"
+							onChange={(e) => updateFormState({ select: e.target.value })}
 							options={[
 								{ value: 'a', label: 'Option A' },
 								{ value: 'b', label: 'Option B' },
@@ -290,40 +290,40 @@ export const FiltersBasic: Story = {
 								{ value: 'e', label: 'Option E' },
 								{ value: 'f', label: 'Option F' },
 							]}
+							placeholder="Please select"
 							value={formState.select}
-							onChange={(e) => updateFormState({ select: e.target.value })}
 						/>
-						<ControlGroup label="Example filter" hideOptionalLabel block>
+						<ControlGroup block hideOptionalLabel label="Example filter">
 							<Radio
-								value="a"
 								checked={formState.radio === 'a'}
 								onChange={(e) =>
 									updateFormState({
 										radio: e.target.value,
 									})
 								}
+								value="a"
 							>
 								Option A
 							</Radio>
 							<Radio
-								value="b"
 								checked={formState.radio === 'b'}
 								onChange={(e) =>
 									updateFormState({
 										radio: e.target.value,
 									})
 								}
+								value="b"
 							>
 								Option B
 							</Radio>
 							<Radio
-								value="c"
 								checked={formState.radio === 'c'}
 								onChange={(e) =>
 									updateFormState({
 										radio: e.target.value,
 									})
 								}
+								value="c"
 							>
 								Option C
 							</Radio>
@@ -391,33 +391,33 @@ export const FiltersWithFieldsets: Story = {
 			<Fragment>
 				<Button onClick={openDrawer}>Open Drawer</Button>
 				<Drawer
-					isOpen={isDrawerOpen}
-					onClose={onCloseClick}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={onApplyFiltersClick}>Apply filters</Button>
-							<Button variant="secondary" onClick={onClearFiltersClick}>
+							<Button onClick={onClearFiltersClick} variant="secondary">
 								Clear filters
 							</Button>
-							<Button variant="tertiary" onClick={onCloseClick}>
+							<Button onClick={onCloseClick} variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isDrawerOpen}
+					onClose={onCloseClick}
+					title={props.title}
 				>
 					<Stack gap={3}>
 						<Fieldset legend="Example fieldset">
 							<FormStack>
 								<Switch
-									label="Example filter"
 									checked={formState.switch}
+									label="Example filter"
 									onChange={(checked) => updateFormState({ switch: checked })}
 								/>
 								<Select
-									label="Example filter"
 									hideOptionalLabel
-									placeholder="Please select"
+									label="Example filter"
+									onChange={(e) => updateFormState({ select: e.target.value })}
 									options={[
 										{ value: 'a', label: 'Option A' },
 										{ value: 'b', label: 'Option B' },
@@ -426,40 +426,40 @@ export const FiltersWithFieldsets: Story = {
 										{ value: 'e', label: 'Option E' },
 										{ value: 'f', label: 'Option F' },
 									]}
+									placeholder="Please select"
 									value={formState.select}
-									onChange={(e) => updateFormState({ select: e.target.value })}
 								/>
-								<ControlGroup label="Example filter" hideOptionalLabel block>
+								<ControlGroup block hideOptionalLabel label="Example filter">
 									<Radio
-										value="a"
 										checked={formState.radio === 'a'}
 										onChange={(e) =>
 											updateFormState({
 												radio: e.target.value,
 											})
 										}
+										value="a"
 									>
 										Option A
 									</Radio>
 									<Radio
-										value="b"
 										checked={formState.radio === 'b'}
 										onChange={(e) =>
 											updateFormState({
 												radio: e.target.value,
 											})
 										}
+										value="b"
 									>
 										Option B
 									</Radio>
 									<Radio
-										value="c"
 										checked={formState.radio === 'c'}
 										onChange={(e) =>
 											updateFormState({
 												radio: e.target.value,
 											})
 										}
+										value="c"
 									>
 										Option C
 									</Radio>
@@ -478,10 +478,9 @@ export const FiltersWithFieldsets: Story = {
 									Example filter
 								</Checkbox>
 								<ComboboxMulti
-									label="Example filter"
 									hideOptionalLabel
 									hint="Start typing to see results"
-									value={formState.comboboxMulti}
+									label="Example filter"
 									onChange={(value) =>
 										updateFormState({ comboboxMulti: value })
 									}
@@ -493,20 +492,20 @@ export const FiltersWithFieldsets: Story = {
 										{ value: 'e', label: 'Option E' },
 										{ value: 'f', label: 'Option F' },
 									]}
+									value={formState.comboboxMulti}
 								/>
 								<DatePicker
-									label="Example filter"
 									hideOptionalLabel
-									value={formState.datePicker}
+									label="Example filter"
 									onChange={(value) => updateFormState({ datePicker: value })}
 									onInputChange={(value) =>
 										updateFormState({ datePicker: value })
 									}
+									value={formState.datePicker}
 								/>
 								<DateRangePicker
-									legend="Example filter"
 									hideOptionalLabel
-									value={formState.dateRangePicker}
+									legend="Example filter"
 									onChange={(value) =>
 										updateFormState({ dateRangePicker: value })
 									}
@@ -526,6 +525,7 @@ export const FiltersWithFieldsets: Story = {
 											},
 										})
 									}
+									value={formState.dateRangePicker}
 								/>
 							</FormStack>
 						</Fieldset>
@@ -578,24 +578,24 @@ export const WithForm: Story = {
 				<Button onClick={openDrawer}>Open Drawer</Button>
 
 				<Drawer
-					isOpen={isDrawerOpen}
-					onClose={closeDrawer}
-					title={props.title}
 					actions={
 						<ButtonGroup>
-							<Button type="submit" form="form-id" onClick={onSubmitForm}>
+							<Button form="form-id" onClick={onSubmitForm} type="submit">
 								Submit
 							</Button>
 
-							<Button variant="secondary" onClick={clearForm}>
+							<Button onClick={clearForm} variant="secondary">
 								Clear form
 							</Button>
 
-							<Button variant="tertiary" onClick={closeDrawer}>
+							<Button onClick={closeDrawer} variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isDrawerOpen}
+					onClose={closeDrawer}
+					title={props.title}
 				>
 					<form id="form-id">
 						<FormStack>

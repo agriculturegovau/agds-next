@@ -58,7 +58,7 @@ export const Block: Story = {
 export const MaxWidths: Story = {
 	args: {},
 	render: (args) => (
-		<Stack background="body" palette="light" gap={1}>
+		<Stack background="body" gap={1} palette="light">
 			{(['md', 'lg', 'xl'] as const).map((size) => (
 				<Textarea key={size} {...args} label={size} maxWidth={size} />
 			))}

@@ -45,14 +45,14 @@ export function FormStep10() {
 
 	return (
 		<FormContainer
-			formTitle="Review and submit"
 			formIntroduction="Check and confirm all details on this page."
+			formTitle="Review and submit"
 			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>
 					<FormStep10Review />
-					<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+					<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 						<FormStack>
 							<H2>Declaration</H2>
 							<Text as="p">
@@ -71,6 +71,7 @@ export function FormStep10() {
 								to continue.
 							</Text>
 							<ControlGroup
+								block
 								id="checkbox"
 								invalid={
 									hasMultipleErrors ||
@@ -88,7 +89,6 @@ export function FormStep10() {
 										  errors.declaration3?.message
 								}
 								required
-								block
 							>
 								<Checkbox {...register('declaration1')}>
 									I have read, understood and agree to be bound by the Terms of

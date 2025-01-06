@@ -18,15 +18,15 @@ export default function GuidesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title="Guides" description={description} />
+			<DocumentTitle description={description} title="Guides" />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="/docs/content/guides/index.mdx"
+				title={title}
 			>
-				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }} gap={1.5}>
 					{guideList.map(({ slug, title, overview }) => (
-						<Card as="li" key={title} clickable shadow>
+						<Card as="li" clickable key={title} shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading as="h2" type="h4">

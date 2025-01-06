@@ -38,7 +38,7 @@ const AllFormFields = ({
 		message: invalid ? 'Error message' : undefined,
 	};
 	return (
-		<Box padding={1} background={background}>
+		<Box background={background} padding={1}>
 			<Columns>
 				<Column columnSpan={{ xs: 12, md: 8 }}>
 					<form onSubmit={(e) => e.preventDefault}>
@@ -53,13 +53,13 @@ const AllFormFields = ({
 
 							<Select
 								label="Example"
-								placeholder="Please select"
-								value="b"
 								options={[
 									{ value: 'a', label: 'Option A' },
 									{ value: 'b', label: 'Option B' },
 									{ value: 'c', label: 'Option C' },
 								]}
+								placeholder="Please select"
+								value="b"
 								{...commonProps}
 							/>
 
@@ -67,7 +67,7 @@ const AllFormFields = ({
 								<Radio checked={false} {...commonProps}>
 									Option A
 								</Radio>
-								<Radio checked={true} {...commonProps}>
+								<Radio checked {...commonProps}>
 									Option B
 								</Radio>
 								<Radio checked={false} {...commonProps}>
@@ -79,19 +79,19 @@ const AllFormFields = ({
 
 							<DatePicker
 								label="Birth date"
-								value={new Date()}
 								onChange={() => undefined}
+								value={new Date()}
 								{...commonProps}
 							/>
 
 							<DateRangePicker
-								legend="Date range"
-								value={{ from: undefined, to: undefined }}
-								onChange={() => undefined}
 								disabled={commonProps.disabled}
 								fromInvalid={commonProps.invalid}
-								toInvalid={commonProps.invalid}
+								legend="Date range"
 								message={commonProps.message}
+								onChange={() => undefined}
+								toInvalid={commonProps.invalid}
+								value={{ from: undefined, to: undefined }}
 							/>
 
 							<FileInput label="Drivers licence" {...commonProps} />
@@ -110,9 +110,8 @@ const AllFormFields = ({
 							</ControlGroup>
 
 							<Autocomplete
-								label="Find your state"
 								hint="Start typing to see results"
-								value={{ label: 'Tasmania', value: 'tas' }}
+								label="Find your state"
 								loadOptions={async function loadOptions() {
 									return [
 										{ label: 'Australian Capital Territory', value: 'act' },
@@ -125,12 +124,13 @@ const AllFormFields = ({
 										{ label: 'Western Australia', value: 'wa' },
 									];
 								}}
+								value={{ label: 'Tasmania', value: 'tas' }}
 								{...commonProps}
 							/>
 
 							<Combobox
-								label="Select state"
 								hint="Start typing to see results"
+								label="Select state"
 								options={[
 									{ label: 'Australian Capital Territory', value: 'act' },
 									{ label: 'New South Wales', value: 'nsw' },
@@ -146,8 +146,8 @@ const AllFormFields = ({
 							/>
 
 							<ComboboxMulti
-								label="Select state"
 								hint="Start typing to see results"
+								label="Select state"
 								options={[
 									{ label: 'Australian Capital Territory', value: 'act' },
 									{ label: 'New South Wales', value: 'nsw' },
@@ -166,10 +166,10 @@ const AllFormFields = ({
 							/>
 
 							<ButtonGroup>
-								<Button size="md" disabled={disabled}>
+								<Button disabled={disabled} size="md">
 									Submit
 								</Button>
-								<Button size="md" variant="secondary" disabled={disabled}>
+								<Button disabled={disabled} size="md" variant="secondary">
 									Cancel
 								</Button>
 							</ButtonGroup>
@@ -190,9 +190,9 @@ export const BodyAltBackground = () => {
 };
 
 export const InvalidFields = () => {
-	return <AllFormFields background="body" invalid={true} />;
+	return <AllFormFields background="body" invalid />;
 };
 
 export const DisabledFields = () => {
-	return <AllFormFields background="body" disabled={true} />;
+	return <AllFormFields background="body" disabled />;
 };

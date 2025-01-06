@@ -12,18 +12,18 @@ export const LoadingBlanketContainer = ({
 	fullScreen,
 }: LoadingBlanketContainerProps) => (
 	<Flex
-		palette="light"
-		color="text"
-		flexDirection="column"
-		justifyContent="center"
 		alignItems="center"
 		aria-live="assertive"
+		color="text"
 		css={{
 			position: fullScreen ? 'fixed' : 'absolute',
 			inset: 0,
 			zIndex: tokens.zIndex.overlay,
 			backgroundColor: `rgba(255, 255, 255, 0.9)`,
 		}}
+		flexDirection="column"
+		justifyContent="center"
+		palette="light"
 	>
 		{children}
 	</Flex>

@@ -19,19 +19,19 @@ export default function ContentGuidesHome({
 }: StaticProps) {
 	return (
 		<>
-			<DocumentTitle title={title} description={description} />
+			<DocumentTitle description={description} title={title} />
 			<SubcategoryPageTemplate
-				title={title}
 				breadcrumbs={[
 					{ href: '/', label: 'Home' },
 					{ href: '/guides', label: 'Guides' },
 					{ label: title },
 				]}
 				editPath="/docs/content/guides/how-to-write-guidance.mdx"
+				title={title}
 			>
-				<Columns as="ul" gap={1.5} cols={{ xs: 1, sm: 2, lg: 3 }}>
+				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }} gap={1.5}>
 					{contentGuideList.map(({ slug, title, overview }) => (
-						<Card as="li" key={title} clickable shadow>
+						<Card as="li" clickable key={title} shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading as="h2" type="h4">

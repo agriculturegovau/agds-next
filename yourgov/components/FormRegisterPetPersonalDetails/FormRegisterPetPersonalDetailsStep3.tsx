@@ -24,11 +24,11 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
-			title="Confirm and submit"
 			introduction="Check and confirm all details on this page."
+			title="Confirm and submit"
 		>
 			{/** Summary: Step 0 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[0].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem
@@ -45,12 +45,12 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 						value={formState[0]?.dob}
 					/>
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(0)}>
+				<Button onClick={() => goToStep(0)} variant="text">
 					Change personal details
 				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[1].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem
@@ -67,11 +67,11 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 						value={formState[1]?.postcode}
 					/>
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(1)}>
+				<Button onClick={() => goToStep(1)} variant="text">
 					Change address details
 				</Button>
 			</Stack>
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[2].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem
@@ -86,7 +86,7 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 					)}
 				</FormDefinitionList>
 
-				<Button variant="text" onClick={() => goToStep(2)}>
+				<Button onClick={() => goToStep(2)} variant="text">
 					Change contact method
 				</Button>
 			</Stack>

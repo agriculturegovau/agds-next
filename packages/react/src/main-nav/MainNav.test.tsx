@@ -75,7 +75,7 @@ describe('MainNav', () => {
 			secondaryItems: [
 				{
 					label: 'Moe Syzlack',
-					beforeElement: <Avatar name="Moe Syzlack" tone="action" size="md" />,
+					beforeElement: <Avatar name="Moe Syzlack" size="md" tone="action" />,
 					dropdown: (
 						<DropdownMenuPanel>
 							<DropdownMenuItem>Item 1</DropdownMenuItem>

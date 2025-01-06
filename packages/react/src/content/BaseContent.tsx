@@ -34,11 +34,11 @@ export function BaseContent({
 		<ContentSpacingContext.Provider value={paddingY}>
 			<Flex
 				as={as}
+				background={background}
+				className={className}
+				id={id}
 				justifyContent="center"
 				palette={palette}
-				background={background}
-				id={id}
-				className={className}
 				tabIndex={tabIndex}
 			>
 				<Box

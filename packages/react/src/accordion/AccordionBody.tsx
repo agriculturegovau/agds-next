@@ -31,14 +31,14 @@ export const AccordionBody = ({
 
 	return (
 		<animated.div
-			id={id}
 			aria-labelledby={ariaLabelledBy}
-			role="region"
-			style={animatedHeight}
 			css={{
 				overflow: 'hidden',
 				...packs.print.visible,
 			}}
+			id={id}
+			role="region"
+			style={animatedHeight}
 		>
 			<div ref={ref}>{children}</div>
 		</animated.div>

@@ -19,13 +19,13 @@ export function ComboboxButtonContainer({ children }: PropsWithChildren<{}>) {
 	return (
 		<Flex
 			alignItems="center"
-			gap={0.25}
 			css={{
 				position: 'absolute',
 				top: '50%',
 				right: `calc(${mapSpacing(0.5)} + ${tokens.borderWidth.lg}px)`, // Align from the inner border
 				transform: 'translateY(-50%)',
 			}}
+			gap={0.25}
 		>
 			{children}
 		</Flex>
@@ -36,10 +36,10 @@ export function ComboboxButtonDivider() {
 	return (
 		<Box
 			aria-hidden
-			height="1.5rem"
+			borderColor="muted"
 			borderLeft
 			borderLeftWidth="md"
-			borderColor="muted"
+			height="1.5rem"
 		/>
 	);
 }
@@ -50,9 +50,9 @@ export const ComboboxClearButton = forwardRef<
 >(function ComboboxClearButton(props, ref) {
 	return (
 		<ComboboxIconButton
-			ref={ref}
 			aria-label="Clear input"
 			icon={CloseIcon}
+			ref={ref}
 			{...props}
 		/>
 	);
@@ -64,9 +64,9 @@ export const ComboboxDropdownTrigger = forwardRef<
 >(function ComboboxDropdownTrigger({ isOpen, ...props }, ref) {
 	return (
 		<ComboboxIconButton
-			ref={ref}
 			aria-label="Toggle menu"
 			icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+			ref={ref}
 			{...props}
 		/>
 	);
@@ -80,8 +80,6 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 	function ComboboxIconButton({ disabled, icon: Icon, ...props }, ref) {
 		return (
 			<BaseButton
-				ref={ref}
-				disabled={disabled}
 				css={{
 					display: 'flex',
 					alignItems: 'center',
@@ -98,6 +96,8 @@ const ComboboxIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 					'&:hover': { color: boxPalette.foregroundText },
 					...focusStyles,
 				}}
+				disabled={disabled}
+				ref={ref}
 				{...props}
 			>
 				<Icon color="inherit" size="md" />

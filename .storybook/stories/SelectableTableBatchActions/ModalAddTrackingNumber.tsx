@@ -30,38 +30,38 @@ export function ModalAddTrackingNumber({
 
 	return (
 		<Drawer
-			isOpen={isOpen}
-			onClose={onClose}
-			title="Add tracking number"
 			actions={
 				<ButtonGroup>
 					<Button loading={submitting} onClick={onSubmit}>
 						Add tracking number
 					</Button>
-					<Button variant="secondary" onClick={onClose}>
+					<Button onClick={onClose} variant="secondary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			}
+			isOpen={isOpen}
+			onClose={onClose}
+			title="Add tracking number"
 		>
 			<FormStack>
 				<Select
+					block
 					label="How was it sent?"
-					placeholder="Select option"
-					required
 					options={[
 						{ value: 'aus-post', label: 'Express post' },
 						{ value: 'fed-ex', label: 'Regular post' },
 					]}
-					block
+					placeholder="Select option"
+					required
 				/>
-				<TextInput label="Tracking number" required block />
+				<TextInput block label="Tracking number" required />
 				<DatePicker
+					block
 					label="Date sent"
-					value={date}
 					onChange={setDate}
 					required
-					block
+					value={date}
 				/>
 			</FormStack>
 		</Drawer>

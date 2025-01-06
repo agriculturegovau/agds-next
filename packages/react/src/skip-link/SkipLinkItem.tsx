@@ -9,8 +9,6 @@ export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
 	function SkipLinkItem({ children, href }, ref) {
 		return (
 			<a
-				ref={ref}
-				href={href}
 				css={[
 					visuallyHiddenStyles,
 					buttonStyles({ block: false, size: 'md', variant: 'primary' }),
@@ -28,6 +26,8 @@ export const SkipLinkItem = forwardRef<HTMLAnchorElement, SkipLinkItemProps>(
 						},
 					},
 				]}
+				href={href}
+				ref={ref}
 			>
 				{children}
 			</a>

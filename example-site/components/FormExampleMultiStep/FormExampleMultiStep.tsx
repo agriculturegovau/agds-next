@@ -207,7 +207,7 @@ export const FormExampleMultiStep = () => {
 						</ContentBleed>
 					</Column>
 					<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-						<Stack gap={3} alignItems="flex-start">
+						<Stack alignItems="flex-start" gap={3}>
 							<DirectionButton direction="left" onClick={back}>
 								Back
 							</DirectionButton>

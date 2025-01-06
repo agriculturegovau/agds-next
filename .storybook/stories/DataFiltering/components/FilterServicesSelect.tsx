@@ -8,16 +8,15 @@ export const FilterServicesSelect = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
 	return (
 		<ControlGroup
-			label="Services"
+			aria-controls={tableId}
 			block={block}
 			hideOptionalLabel
-			aria-controls={tableId}
+			label="Services"
 		>
 			{services.map((service) => (
 				<Checkbox
-					key={service}
-					value={service}
 					checked={(filters.services || []).includes(service)}
+					key={service}
 					onChange={(e) => {
 						const checked = e.target.checked;
 						setFilter({
@@ -26,6 +25,7 @@ export const FilterServicesSelect = ({ block }: { block?: boolean }) => {
 								: filters.services?.filter((s) => s !== service),
 						});
 					}}
+					value={service}
 				>
 					{service}
 				</Checkbox>

@@ -35,35 +35,35 @@ export default function Page() {
 							<H2>Licences and permits </H2>
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
+									description="Businesses that service food and drink must appoint a certified food safety supervisor (FSS)."
 									href="/not-found"
 									title="Food safety certificates"
-									description="Businesses that service food and drink must appoint a certified food safety supervisor (FSS)."
 								/>
 								<ServiceCard
+									description="Food trucks, vans and stalls must be registered to operate on public areas."
 									href="/services/food-drink-hospitality/operate-a-food-truck-van-or-stall-on-public-areas"
 									title="Operate a food truck, van or stall on public areas"
-									description="Food trucks, vans and stalls must be registered to operate on public areas."
 								/>
 								<ServiceCard
+									description="Businesses must have a current liquor licence to serve liquor on premises."
 									href="/not-found"
 									title="Serve alcohol on premises"
-									description="Businesses must have a current liquor licence to serve liquor on premises."
 								/>
 
 								<ServiceCard
+									description="Register to serve food in a streetside setting outdoor."
 									href="/not-found"
 									title="Outdoor dining approval"
-									description="Register to serve food in a streetside setting outdoor."
 								/>
 								<ServiceCard
+									description="Get approval for a range of construction developments."
 									href="/not-found"
 									title="Development applications"
-									description="Get approval for a range of construction developments."
 								/>
 								<ServiceCard
+									description="Venues that sell ticketed admission to music performances are required to have an appropriate licence."
 									href="/not-found"
 									title="Approval to host musical performances"
-									description="Venues that sell ticketed admission to music performances are required to have an appropriate licence."
 								/>
 							</Columns>
 						</Stack>
@@ -71,24 +71,24 @@ export default function Page() {
 							<H2>Other services</H2>
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
+									description="Link a business to access services online. You will need to use Relationship Authorisation Manager (RAM)."
 									href="/not-found"
 									title="Link a business"
-									description="Link a business to access services online. You will need to use Relationship Authorisation Manager (RAM)."
 								/>
 								<ServiceCard
+									description="Make a complaint if you have experienced food poisoning."
 									href="/not-found"
 									title="Report a case of food borne illness"
-									description="Make a complaint if you have experienced food poisoning."
 								/>
 								<ServiceCard
+									description="Search for business licences, permits and certificates online."
 									href="/not-found"
 									title="Check a business licence"
-									description="Search for business licences, permits and certificates online."
 								/>
 								<ServiceCard
+									description="Confirm a change in business ownership and notify government agencies."
 									href="/not-found"
 									title="Declare an ownership change"
-									description="Confirm a change in business ownership and notify government agencies."
 								/>
 							</Columns>
 						</Stack>
@@ -96,19 +96,19 @@ export default function Page() {
 							<H2>Guides</H2>
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
+									description="Learn about your obligations as a food handler and a food handling business."
 									href="/not-found"
 									title="Understand food safety requirements"
-									description="Learn about your obligations as a food handler and a food handling business."
 								/>
 								<ServiceCard
+									description="Get an overview of what’s required to open a small bar in NSW."
 									href="/not-found"
 									title="Opening a small bar in NSW"
-									description="Get an overview of what’s required to open a small bar in NSW."
 								/>
 								<ServiceCard
+									description="Understand how food safety is assessed and how you can be prepared."
 									href="/not-found"
 									title="Prepare for a food safety inspection"
-									description="Understand how food safety is assessed and how you can be prepared."
 								/>
 							</Columns>
 						</Stack>
@@ -129,7 +129,7 @@ function ServiceCard({
 	description?: string;
 }) {
 	return (
-		<Card as="li" shadow clickable>
+		<Card as="li" clickable shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<H3>

@@ -25,14 +25,14 @@ export default function ContentPage({
 	return (
 		<>
 			<DocumentTitle
-				title={document.title}
 				description={document.description}
+				title={document.title}
 			/>
 			<SiteLayout applyMainElement={false}>
 				<PageLayout
-					editPath={`/docs/content/content/${document.slug}.mdx`}
+					applyMainElement
 					breadcrumbs={breadcrumbs}
-					applyMainElement={true}
+					editPath={`/docs/content/content/${document.slug}.mdx`}
 					sideNav={{
 						title: 'Content',
 						titleLink: '/content',
@@ -40,13 +40,13 @@ export default function ContentPage({
 					}}
 				>
 					<PageTitle
-						title={document.title}
 						introduction={document.description}
+						title={document.title}
 					/>
 					{toc?.length > 1 ? (
 						<InpageNav
-							title="On this page"
 							links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+							title="On this page"
 						/>
 					) : null}
 					<Prose>

@@ -74,12 +74,12 @@ const Page: NextPageWithLayout = () => {
 					{!isReady ? null : isValidSlug ? (
 						<>
 							<Stack gap={1.5}>
-								<FormContainer title={pageTitle} hideRequiredFieldsMessage />
+								<FormContainer hideRequiredFieldsMessage title={pageTitle} />
 								<div>
 									{formState?.completed ? (
-										<StatusBadge tone="successMedium" label="Submitted" />
+										<StatusBadge label="Submitted" tone="successMedium" />
 									) : (
-										<StatusBadge tone="inProgressLow" label="In progress" />
+										<StatusBadge label="In progress" tone="inProgressLow" />
 									)}
 								</div>
 							</Stack>
@@ -122,7 +122,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 
 									{/** Business details */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[1].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
@@ -154,15 +154,15 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 
 									{/** Business address */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[2].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItemAddress
-												label="Street address"
 												address={formState.steps?.step3?.streetAddress}
-												suburb={formState.steps?.step3?.suburbTownCity}
-												state={formState.steps?.step3?.state}
+												label="Street address"
 												postcode={formState.steps?.step3?.postcode}
+												state={formState.steps?.step3?.state}
+												suburb={formState.steps?.step3?.suburbTownCity}
 											/>
 											{formState.steps?.step3
 												?.isPostalAddressSameAsBusinessAddress ? (
@@ -172,18 +172,18 @@ const Page: NextPageWithLayout = () => {
 												/>
 											) : (
 												<FormDefinitionListItemAddress
-													label="Postal address"
 													address={formState.steps?.step3?.postalAddress}
-													suburb={formState.steps?.step3?.postalSuburbTownCity}
-													state={formState.steps?.step3?.postalState}
+													label="Postal address"
 													postcode={formState.steps?.step3?.postalPostcode}
+													state={formState.steps?.step3?.postalState}
+													suburb={formState.steps?.step3?.postalSuburbTownCity}
 												/>
 											)}
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Vehicle registration */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[3].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
@@ -198,7 +198,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 
 									{/** Trading time */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[4].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItemDateRange
@@ -215,7 +215,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 
 									{/** Food served */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[5].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
@@ -230,7 +230,7 @@ const Page: NextPageWithLayout = () => {
 									<H2>Employee details</H2>
 
 									{/** Employees */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3 id="employees-heading">{formSteps[6].label}</H3>
 										<TableWrapper>
 											<Table aria-labelledby="employees-heading">
@@ -258,7 +258,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 
 									{/** Food safety supervisor */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3>{formSteps[7].label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
@@ -271,7 +271,7 @@ const Page: NextPageWithLayout = () => {
 									<H2>Upload documents</H2>
 
 									{/** Upload documents */}
-									<Stack gap={2} alignItems="flex-start">
+									<Stack alignItems="flex-start" gap={2}>
 										<H3 id="upload-documents-heading">{formSteps[8].label}</H3>
 										<TableWrapper>
 											<Table aria-labelledby="upload-documents-heading">
@@ -364,7 +364,7 @@ const Page: NextPageWithLayout = () => {
 					) : (
 						<>
 							<PageTitle title={pageTitle} />
-							<PageAlert tone="error" title="No matching permit found">
+							<PageAlert title="No matching permit found" tone="error">
 								<DirectionLink direction="right" href={managePermitsPage}>
 									Manage existing permits
 								</DirectionLink>
@@ -373,17 +373,17 @@ const Page: NextPageWithLayout = () => {
 					)}
 				</Stack>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title="Are you sure you want to remove this application?"
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Yes, remove</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								No
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title="Are you sure you want to remove this application?"
 				>
 					<Text as="p">
 						Note: this is for demonstration purposes only and does not function.

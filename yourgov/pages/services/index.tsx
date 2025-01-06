@@ -30,19 +30,19 @@ export default function Page() {
 							<H2>Popular for businesses</H2>
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
+									description="Link a business to access services online. You will need to use Relationship Authorisation Manager (RAM)."
 									href="/not-found"
 									title="Link a business"
-									description="Link a business to access services online. You will need to use Relationship Authorisation Manager (RAM)."
 								/>
 								<ServiceCard
+									description="Food trucks, vans and stalls must be registered to operate on public areas."
 									href="/services/food-drink-hospitality/operate-a-food-truck-van-or-stall-on-public-areas"
 									title="Operate a food truck, van or stall on public areas"
-									description="Food trucks, vans and stalls must be registered to operate on public areas."
 								/>
 								<ServiceCard
+									description="Your business may be eligible for a business parking permit if it requires a vehicle for carrying goods or equipment"
 									href="/not-found"
 									title="Business parking permits"
-									description="Your business may be eligible for a business parking permit if it requires a vehicle for carrying goods or equipment"
 								/>
 							</Columns>
 							<CallToActionLink href="/not-found">
@@ -53,19 +53,19 @@ export default function Page() {
 							<H2>Popular for individuals</H2>
 							<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 								<ServiceCard
+									description="You can update your rates mailing address by using our online form."
 									href="/not-found"
 									title="Change my address"
-									description="You can update your rates mailing address by using our online form."
 								/>
 								<ServiceCard
+									description="You can pay rates online by cheque, money order or BPAY, or set up a direct debit."
 									href="/not-found"
 									title="Pay my rates"
-									description="You can pay rates online by cheque, money order or BPAY, or set up a direct debit."
 								/>
 								<ServiceCard
+									description="Parking permits are issued to eligible residents for the parking area where they live."
 									href="/not-found"
 									title="Apply for a parking permit"
-									description="Parking permits are issued to eligible residents for the parking area where they live."
 								/>
 							</Columns>
 							<CallToActionLink href="/not-found">
@@ -121,7 +121,7 @@ function ServiceCard({
 	description?: string;
 }) {
 	return (
-		<Card as="li" shadow clickable>
+		<Card as="li" clickable shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<H3>

@@ -55,7 +55,7 @@ export const PaginationSelect = ({
 					maxWidth: tokens.maxWidth.field[maxWidth],
 				}}
 			>
-				<select id={id} css={selectStyles} {...props}>
+				<select css={selectStyles} id={id} {...props}>
 					<SelectOptions options={options} placeholder={placeholder} />
 				</select>
 				<SelectIcon />
@@ -77,9 +77,9 @@ const SelectOptions = ({
 			{options.map((opt) => {
 				if ('options' in opt) {
 					return (
-						<optgroup key={opt.label} label={opt.label} disabled={opt.disabled}>
+						<optgroup disabled={opt.disabled} key={opt.label} label={opt.label}>
 							{opt.options.map(({ value, label, disabled }) => (
-								<option key={value} value={value} disabled={disabled}>
+								<option disabled={disabled} key={value} value={value}>
 									{label}
 								</option>
 							))}
@@ -87,7 +87,7 @@ const SelectOptions = ({
 					);
 				}
 				return (
-					<option key={opt.value} value={opt.value} disabled={opt.disabled}>
+					<option disabled={opt.disabled} key={opt.value} value={opt.value}>
 						{opt.label}
 					</option>
 				);

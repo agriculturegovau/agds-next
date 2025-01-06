@@ -85,7 +85,7 @@ export const Triggers: StoryObj = {
 					<ButtonGroup key={size}>
 						{variants.map((variant) => (
 							<DropdownMenu key={variant}>
-								<DropdownMenuButton variant={variant} size={size}>
+								<DropdownMenuButton size={size} variant={variant}>
 									Actions
 								</DropdownMenuButton>
 								<DropdownMenuPanel>
@@ -126,7 +126,7 @@ export const Placement: StoryObj = {
 	render: function Render() {
 		const placements = ['bottom-start', 'bottom-end', 'bottom'] as const;
 		return (
-			<Stack gap={2} alignItems="center">
+			<Stack alignItems="center" gap={2}>
 				{placements.map((placement) => (
 					<DropdownMenu key={placement} popoverPlacement={placement}>
 						<DropdownMenuButton variant="primary">
@@ -152,18 +152,18 @@ export const IconsAndBadges: StoryObj = {
 				<DropdownMenuPanel>
 					<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 					<DropdownMenuItem
-						icon={EmailIcon}
 						endElement={
 							<Fragment>
 								<NotificationBadge
-									value={100}
+									aria-hidden
 									max={99}
 									tone="action"
-									aria-hidden
+									value={100}
 								/>
 								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
+						icon={EmailIcon}
 					>
 						Messages
 					</DropdownMenuItem>
@@ -183,38 +183,38 @@ export const Divider: StoryObj = {
 				<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
 					<DropdownMenuItem
-						onClick={() => console.log('Profile')}
 						icon={AvatarIcon}
+						onClick={() => console.log('Profile')}
 					>
 						Profile
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onClick={() => console.log('Messages')}
-						icon={EmailIcon}
 						endElement={
 							<Fragment>
 								<NotificationBadge
-									value={100}
+									aria-hidden
 									max={99}
 									tone="action"
-									aria-hidden
+									value={100}
 								/>
 								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
+						icon={EmailIcon}
+						onClick={() => console.log('Messages')}
 					>
 						Messages
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onClick={() => console.log('Account settings')}
 						icon={SettingsIcon}
+						onClick={() => console.log('Account settings')}
 					>
 						Account settings
 					</DropdownMenuItem>
 					<DropdownMenuDivider />
 					<DropdownMenuItem
-						onClick={() => console.log('Account settings')}
 						icon={ExitIcon}
+						onClick={() => console.log('Account settings')}
 					>
 						Sign out
 					</DropdownMenuItem>
@@ -238,18 +238,18 @@ export const Groups: StoryObj = {
 					<DropdownMenuGroup label="Account">
 						<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 						<DropdownMenuItem
-							icon={EmailIcon}
 							endElement={
 								<Fragment>
 									<NotificationBadge
-										value={100}
+										aria-hidden
 										max={99}
 										tone="action"
-										aria-hidden
+										value={100}
 									/>
 									<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 								</Fragment>
 							}
+							icon={EmailIcon}
 						>
 							Messages
 						</DropdownMenuItem>
@@ -275,8 +275,8 @@ export const Links: StoryObj = {
 					<DropdownMenuItemLink href="#link-2">Link 2</DropdownMenuItemLink>
 					<DropdownMenuItemLink
 						href="https://www.agriculture.gov.au"
-						target="_blank"
 						icon={ExternalLinkIcon}
+						target="_blank"
 					>
 						External link
 					</DropdownMenuItemLink>
@@ -329,23 +329,23 @@ export const RadioGroupsSecondary: StoryObj = {
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
-							secondaryText="Sydney"
 							checked={selectedItem === 'Antfix'}
 							onClick={() => setSelectedItem('Antfix')}
+							secondaryText="Sydney"
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							secondaryText="Brisbane"
 							checked={selectedItem === 'Produce Fresh'}
 							onClick={() => setSelectedItem('Produce Fresh')}
+							secondaryText="Brisbane"
 						>
 							Produce Fresh
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							secondaryText="Canberra"
 							checked={selectedItem === 'Organic Co'}
 							onClick={() => setSelectedItem('Organic Co')}
+							secondaryText="Canberra"
 						>
 							Organic Co
 						</DropdownMenuItemRadio>
@@ -366,35 +366,35 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
-							secondaryText="Sydney"
 							checked={selectedItem === 'Antfix'}
-							onClick={() => setSelectedItem('Antfix')}
 							endElement={<IndicatorDot />}
+							onClick={() => setSelectedItem('Antfix')}
+							secondaryText="Sydney"
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							secondaryText="Brisbane"
 							checked={selectedItem === 'Produce Fresh'}
-							onClick={() => setSelectedItem('Produce Fresh')}
 							endElement={
 								<Fragment>
 									<NotificationBadge
-										value={100}
+										aria-hidden
 										max={99}
 										tone="action"
-										aria-hidden
+										value={100}
 									/>
 									<VisuallyHidden>, 100 notifications</VisuallyHidden>
 								</Fragment>
 							}
+							onClick={() => setSelectedItem('Produce Fresh')}
+							secondaryText="Brisbane"
 						>
 							Produce Fresh
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							secondaryText="Canberra"
 							checked={selectedItem === 'Organic Co'}
 							onClick={() => setSelectedItem('Organic Co')}
+							secondaryText="Canberra"
 						>
 							Organic Co
 						</DropdownMenuItemRadio>
@@ -409,7 +409,7 @@ export const RadioGroupsSecondaryBadges: StoryObj = {
 export const Overflow: StoryObj = {
 	render: function Render() {
 		return (
-			<Stack gap={2} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={2}>
 				<DropdownMenu>
 					<DropdownMenuButton>
 						Toggle dropdown menu (without max height)
@@ -466,26 +466,26 @@ export const Complex: StoryObj = {
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
-							checked={true}
-							secondaryText="ABN 00 000 000 000"
+							checked
 							endElement={<IndicatorDot />}
+							secondaryText="ABN 00 000 000 000"
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
 							checked={false}
-							secondaryText="ABN 00 000 000 000"
 							endElement={
 								<Fragment>
 									<NotificationBadge
-										value={100}
+										aria-hidden
 										max={99}
 										tone="action"
-										aria-hidden
+										value={100}
 									/>
 									<VisuallyHidden>, 100 notifications</VisuallyHidden>
 								</Fragment>
 							}
+							secondaryText="ABN 00 000 000 000"
 						>
 							Ashfield
 						</DropdownMenuItemRadio>
@@ -500,18 +500,18 @@ export const Complex: StoryObj = {
 					<DropdownMenuDivider />
 					<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 					<DropdownMenuItem
-						icon={EmailIcon}
 						endElement={
 							<Fragment>
 								<NotificationBadge
-									value={100}
+									aria-hidden
 									max={99}
 									tone="action"
-									aria-hidden
+									value={100}
 								/>
 								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
+						icon={EmailIcon}
 					>
 						Messages
 					</DropdownMenuItem>
@@ -540,10 +540,10 @@ export const LongLabels: StoryObj = {
 					<DropdownMenuGroup label="Businesses">
 						{businessNames.map((name) => (
 							<DropdownMenuItemRadio
-								key={name}
-								checked={true}
-								secondaryText="ABN 00 000 000 000"
+								checked
 								endElement={<IndicatorDot />}
+								key={name}
+								secondaryText="ABN 00 000 000 000"
 							>
 								{name}
 							</DropdownMenuItemRadio>
@@ -555,18 +555,18 @@ export const LongLabels: StoryObj = {
 						Phasellus ipsum ex duis libero ante
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						icon={EmailIcon}
 						endElement={
 							<Fragment>
 								<NotificationBadge
-									value={100}
+									aria-hidden
 									max={99}
 									tone="action"
-									aria-hidden
+									value={100}
 								/>
 								<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 							</Fragment>
 						}
+						icon={EmailIcon}
 					>
 						APurus tortor lacus malesuada phasellus ipsum ex duis libero ante
 					</DropdownMenuItem>

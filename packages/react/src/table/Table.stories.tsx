@@ -31,13 +31,13 @@ const meta: Meta<typeof Table> = {
 				<TableHead>
 					<TableRow>
 						<TableHeader scope="col">Location</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Population
 						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Change over previous year %
 						</TableHeader>
-						<TableHeader textAlign="right" scope="col">
+						<TableHeader scope="col" textAlign="right">
 							Change over previous decade %
 						</TableHeader>
 					</TableRow>
@@ -175,7 +175,7 @@ export const AriaRowcount: Story = {
 				<TableBody>
 					{exampleData.map(
 						({ location, population, growthYear, growthDecade }, index) => (
-							<TableRow key={index} aria-rowindex={index + 2}>
+							<TableRow aria-rowindex={index + 2} key={index}>
 								<TableCell as="th" scope="row">
 									{location}
 								</TableCell>
@@ -204,20 +204,20 @@ export const WithHeading: Story = {
 			</Text>
 			<TableWrapper>
 				<Table
-					aria-labelledby="table-heading"
 					aria-describedby="table-description"
+					aria-labelledby="table-heading"
 					{...args}
 				>
 					<TableHead>
 						<TableRow>
 							<TableHeader scope="col">Location</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Population
 							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Change over previous year %
 							</TableHeader>
-							<TableHeader textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right">
 								Change over previous decade %
 							</TableHeader>
 						</TableRow>
@@ -261,15 +261,15 @@ export const Actions: Story = {
 				</TableHead>
 				<TableBody>
 					<TableRow>
-						<TableCell as="th" scope="row" fontWeight="bold">
+						<TableCell as="th" fontWeight="bold" scope="row">
 							<TextLink href="#">REF-AB3CD4EF</TextLink>
 						</TableCell>
 						<TableCell>20/06/2024</TableCell>
 						<TableCell>
 							<StatusBadge
 								appearance="subtle"
-								tone="infoMedium"
 								label="In progress"
+								tone="infoMedium"
 							/>
 						</TableCell>
 						<TableCell>
@@ -280,15 +280,15 @@ export const Actions: Story = {
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell as="th" scope="row" fontWeight="bold">
+						<TableCell as="th" fontWeight="bold" scope="row">
 							<TextLink href="#">REF-5GH6IJ7K</TextLink>
 						</TableCell>
 						<TableCell>25/06/2024</TableCell>
 						<TableCell>
 							<StatusBadge
 								appearance="subtle"
-								tone="infoMedium"
 								label="In progress"
+								tone="infoMedium"
 							/>
 						</TableCell>
 						<TableCell>
@@ -299,15 +299,15 @@ export const Actions: Story = {
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell as="th" scope="row" fontWeight="bold">
+						<TableCell as="th" fontWeight="bold" scope="row">
 							<TextLink href="#">REF-M8NO9PQR</TextLink>
 						</TableCell>
 						<TableCell>02/07/2024</TableCell>
 						<TableCell>
 							<StatusBadge
 								appearance="subtle"
-								tone="successMedium"
 								label="Completed"
+								tone="successMedium"
 							/>
 						</TableCell>
 						<TableCell>
@@ -318,15 +318,15 @@ export const Actions: Story = {
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell as="th" scope="row" fontWeight="bold">
+						<TableCell as="th" fontWeight="bold" scope="row">
 							<TextLink href="#">REF-S1TU2VWX</TextLink>
 						</TableCell>
 						<TableCell>05/08/2024</TableCell>
 						<TableCell>
 							<StatusBadge
 								appearance="subtle"
-								tone="infoMedium"
 								label="In progress"
+								tone="infoMedium"
 							/>
 						</TableCell>
 						<TableCell>
@@ -337,15 +337,15 @@ export const Actions: Story = {
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell as="th" scope="row" fontWeight="bold">
+						<TableCell as="th" fontWeight="bold" scope="row">
 							<TextLink href="#">REF-Y3ZA4B5C</TextLink>
 						</TableCell>
 						<TableCell>19/10/2024</TableCell>
 						<TableCell>
 							<StatusBadge
 								appearance="subtle"
-								tone="successMedium"
 								label="Completed"
+								tone="successMedium"
 							/>
 						</TableCell>
 						<TableCell>
@@ -396,12 +396,12 @@ export const SelectableBasic: Story = {
 			<Stack gap={1.5}>
 				<H2 id={headingId}>Basic selectable table</H2>
 				<Stack gap={0}>
-					<Box paddingLeft={0.75} paddingBottom={0.75} borderBottom>
+					<Box borderBottom paddingBottom={0.75} paddingLeft={0.75}>
 						<Checkbox
-							size="sm"
 							checked={allRowsSelected}
 							indeterminate={isIndeterminate}
 							onChange={toggleAllRows}
+							size="sm"
 						>
 							Select all rows
 						</Checkbox>
@@ -412,13 +412,13 @@ export const SelectableBasic: Story = {
 								<TableRow>
 									<TableHeader scope="col">Select</TableHeader>
 									<TableHeader scope="col">Location</TableHeader>
-									<TableHeader textAlign="right" scope="col">
+									<TableHeader scope="col" textAlign="right">
 										Population
 									</TableHeader>
-									<TableHeader textAlign="right" scope="col">
+									<TableHeader scope="col" textAlign="right">
 										Change over previous year %
 									</TableHeader>
-									<TableHeader textAlign="right" scope="col">
+									<TableHeader scope="col" textAlign="right">
 										Change over previous decade %
 									</TableHeader>
 								</TableRow>
@@ -431,9 +431,9 @@ export const SelectableBasic: Story = {
 											<TableRow key={id} selected={isSelected}>
 												<TableCell>
 													<Checkbox
-														size="sm"
 														checked={isSelected}
 														onChange={() => toggleRow(id)}
+														size="sm"
 													>
 														<VisuallyHidden>Select {location}</VisuallyHidden>
 													</Checkbox>

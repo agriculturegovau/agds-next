@@ -75,23 +75,23 @@ export const FormRegisterPetDetailsStep1 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Pet details"
-			introduction="Domestic pets living in urban environments need to be registered."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="Domestic pets living in urban environments need to be registered."
+			title="Pet details"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
 							ref={errorRef}
-							tone="error"
-							title="There is a problem"
 							tabIndex={-1}
+							title="There is a problem"
+							tone="error"
 						>
 							<Text as="p">
 								Please correct the following fields and try again
@@ -108,48 +108,48 @@ export const FormRegisterPetDetailsStep1 = () => {
 						</PageAlert>
 					)}
 					<TextInput
-						label="Pet name"
 						{...register('name')}
 						id="petName"
 						invalid={Boolean(errors.name?.message)}
-						message={errors.name?.message}
+						label="Pet name"
 						maxWidth="xl"
+						message={errors.name?.message}
 						required
 					/>
 					<Select
-						label="Breed"
 						{...register('breed')}
 						id="breed"
 						invalid={Boolean(errors.breed?.message)}
-						message={errors.breed?.message}
-						required
-						placeholder="Please select"
-						options={DOG_BREED_OPTIONS}
+						label="Breed"
 						maxWidth="xl"
+						message={errors.breed?.message}
+						options={DOG_BREED_OPTIONS}
+						placeholder="Please select"
+						required
 					/>
 					<Controller
 						control={control}
 						name="dob"
 						render={({ field: { ref, ...field } }) => (
 							<DatePicker
-								inputRef={ref}
-								label="Date of birth"
 								{...field}
 								id="dob"
+								inputRef={ref}
 								invalid={Boolean(errors.dob?.message)}
-								message={errors.dob?.message}
+								label="Date of birth"
 								maxWidth="xl"
+								message={errors.dob?.message}
 								required
 							/>
 						)}
 					/>
 					<ControlGroup
+						block
 						id="sex"
-						label="Sex"
 						invalid={Boolean(errors.sex)}
+						label="Sex"
 						message={errors.sex?.message}
 						required
-						block
 					>
 						<Radio {...register('sex')} value="Male">
 							Male

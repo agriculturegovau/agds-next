@@ -15,10 +15,10 @@ afterEach(cleanup);
 function renderBaseDrawer() {
 	return render(
 		<Drawer
+			actions={<Button>Example action</Button>}
 			isOpen
 			onClose={() => undefined}
 			title="Drawer title"
-			actions={<Button>Example action</Button>}
 		>
 			<Text as="p">Example content.</Text>
 		</Drawer>
@@ -29,18 +29,18 @@ function DrawerExample() {
 	const [isOpen, open, close] = useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={open} data-testid="open-button">
+			<Button data-testid="open-button" onClick={open}>
 				Open
 			</Button>
 			<Drawer
-				isOpen={isOpen}
-				onClose={close}
-				title="Drawer title"
 				actions={
-					<Button onClick={close} data-testid="close-button">
+					<Button data-testid="close-button" onClick={close}>
 						Close
 					</Button>
 				}
+				isOpen={isOpen}
+				onClose={close}
+				title="Drawer title"
 			>
 				<Text as="p">This is the Drawer content.</Text>
 			</Drawer>
@@ -51,18 +51,18 @@ function OnDismissDrawerExample() {
 	const [isOpen, open, close] = useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={open} data-testid="open-button">
+			<Button data-testid="open-button" onClick={open}>
 				Open
 			</Button>
 			<Drawer
-				isOpen={isOpen}
-				onDismiss={close}
-				title="Drawer title"
 				actions={
-					<Button onClick={close} data-testid="close-button">
+					<Button data-testid="close-button" onClick={close}>
 						Close modal
 					</Button>
 				}
+				isOpen={isOpen}
+				onDismiss={close}
+				title="Drawer title"
 			>
 				<Text as="p">This is the Drawer content.</Text>
 			</Drawer>

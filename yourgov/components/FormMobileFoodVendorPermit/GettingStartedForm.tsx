@@ -49,18 +49,18 @@ export function GettingStartedForm() {
 	return (
 		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
 			<ControlGroup
-				label="What type of business do you operate?"
+				block
 				invalid={Boolean(errors.businessType?.message)}
+				label="What type of business do you operate?"
 				message={errors.businessType?.message}
 				required
-				block
 			>
 				{['Food truck', 'Market stall', 'Coffee van'].map((option) => (
 					<Radio
-						key={option}
 						{...register('businessType')}
-						value={option}
 						invalid={Boolean(errors.businessType?.message)}
+						key={option}
+						value={option}
 					>
 						{option}
 					</Radio>

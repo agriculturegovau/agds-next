@@ -15,10 +15,10 @@ export const PkgCardList = ({ items }: { items: Pkg[] }) => (
 	<Columns as="ul" cols={{ xs: 1, sm: 2, md: 1, lg: 2 }}>
 		{items.map(({ title, slug }) => (
 			<PictogramCard
-				title={title}
-				pictogram={slug}
 				href={`/components/${slug}`}
 				key={slug}
+				pictogram={slug}
+				title={title}
 			/>
 		))}
 	</Columns>
@@ -29,10 +29,10 @@ export const PkgCardListEmptyState = ({
 }: {
 	onClear?: () => void;
 }) => (
-	<Stack gap={2} alignItems="flex-start" role="status">
+	<Stack alignItems="flex-start" gap={2} role="status">
 		<Stack gap={1}>
-			<HelpIcon size="lg" color="muted" />
-			<Heading type="h2" fontSize="lg">
+			<HelpIcon color="muted" size="lg" />
+			<Heading fontSize="lg" type="h2">
 				No components found
 			</Heading>
 			<Text>Try adjusting your filter options.</Text>

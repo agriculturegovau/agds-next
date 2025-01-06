@@ -102,9 +102,9 @@ export const DataTableRow = ({
 			<TableRow aria-rowindex={rowIndex} selected={isRowSelected(itemId)}>
 				<TableCell>
 					<Checkbox
-						size="sm"
 						checked={isRowSelected(itemId)}
 						onChange={() => toggleRowSelected(itemId)}
+						size="sm"
 					>
 						<VisuallyHidden>{`Select ${name}`}</VisuallyHidden>
 					</Checkbox>

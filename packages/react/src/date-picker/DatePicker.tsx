@@ -228,22 +228,22 @@ export const DatePicker = ({
 		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
-				dateFormat={dateFormat}
-				maxWidth={maxWidth}
-				invalid={{ field: invalid, input: invalid }}
-				ref={inputRef}
-				value={inputValue}
-				onBlur={onInputBlur}
-				onChange={onInputChange}
-				buttonRef={triggerRef}
-				buttonOnClick={() => {
-					toggleCalendar();
-					setHasCalendarOpened(true);
-				}}
 				buttonAriaLabel={getDateInputButtonAriaLabel({
 					allowedDateFormats,
 					value: inputValue,
 				})}
+				buttonOnClick={() => {
+					toggleCalendar();
+					setHasCalendarOpened(true);
+				}}
+				buttonRef={triggerRef}
+				dateFormat={dateFormat}
+				invalid={{ field: invalid, input: invalid }}
+				maxWidth={maxWidth}
+				onBlur={onInputBlur}
+				onChange={onInputChange}
+				ref={inputRef}
+				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
@@ -257,8 +257,8 @@ export const DatePicker = ({
 					// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
 					<Popover
 						{...popoverProps}
-						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 					>
 						{isCalendarOpen && <CalendarSingle {...calendarProps} />}
 					</Popover>

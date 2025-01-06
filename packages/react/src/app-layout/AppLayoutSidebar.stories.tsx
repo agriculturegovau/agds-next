@@ -24,7 +24,7 @@ const meta: Meta<typeof AppLayoutSidebar> = {
 				closeMobileMenu: console.log,
 			}}
 		>
-			<Flex flexDirection="column" css={{ minHeight: '100vh' }}>
+			<Flex css={{ minHeight: '100vh' }} flexDirection="column">
 				<AppLayoutSidebar {...props} />
 			</Flex>
 		</AppLayoutContext.Provider>

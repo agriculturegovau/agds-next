@@ -19,9 +19,9 @@ function renderHeroBanner() {
 		<HeroBanner
 			image={
 				<img
-					src="/img/placeholder/hero-banner.jpeg"
-					role="presentation"
 					alt=""
+					role="presentation"
+					src="/img/placeholder/hero-banner.jpeg"
 				/>
 			}
 		>

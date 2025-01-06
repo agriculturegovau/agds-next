@@ -258,18 +258,18 @@ function renderDecorativeDropdownMenu() {
 					<DropdownMenuPanel>
 						<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 						<DropdownMenuItem
-							icon={EmailIcon}
 							endElement={
 								<Fragment>
 									<NotificationBadge
-										value={100}
+										aria-hidden
 										max={99}
 										tone="action"
-										aria-hidden
+										value={100}
 									/>
 									<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 								</Fragment>
 							}
+							icon={EmailIcon}
 						>
 							Messages
 						</DropdownMenuItem>
@@ -361,10 +361,10 @@ describe('DropdownMenu Links', () => {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
-					<DropdownMenuItemLink href="/about" target="_blank" rel="noopener">
+					<DropdownMenuItemLink href="/about" rel="noopener" target="_blank">
 						About
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="/contact" target="_blank" rel="noopener">
+					<DropdownMenuItemLink href="/contact" rel="noopener" target="_blank">
 						Contact
 					</DropdownMenuItemLink>
 				</DropdownMenuPanel>
@@ -400,22 +400,18 @@ function renderDropdownMenuRadio() {
 			<DropdownMenuPanel>
 				<DropdownMenuGroup label="Businesses">
 					<DropdownMenuItemRadio
-						id="item-1"
 						checked={false}
+						id="item-1"
 						secondaryText="Sydney"
 					>
 						Antfix
 					</DropdownMenuItemRadio>
-					<DropdownMenuItemRadio
-						id="item-2"
-						checked={true}
-						secondaryText="Brisbane"
-					>
+					<DropdownMenuItemRadio checked id="item-2" secondaryText="Brisbane">
 						Produce Fresh
 					</DropdownMenuItemRadio>
 					<DropdownMenuItemRadio
-						id="item-3"
 						checked={false}
+						id="item-3"
 						secondaryText="Canberra"
 					>
 						Organic Co
@@ -477,26 +473,26 @@ describe('DropdownMenu Radio Group', () => {
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
-							id="item-1"
 							checked={false}
-							secondaryText="Sydney"
+							id="item-1"
 							onClick={onClick1}
+							secondaryText="Sydney"
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
+							checked
 							id="item-2"
-							checked={true}
-							secondaryText="Brisbane"
 							onClick={onClick2}
+							secondaryText="Brisbane"
 						>
 							Produce Fresh
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							id="item-3"
 							checked={false}
-							secondaryText="Canberra"
+							id="item-3"
 							onClick={onClick3}
+							secondaryText="Canberra"
 						>
 							Organic Co
 						</DropdownMenuItemRadio>

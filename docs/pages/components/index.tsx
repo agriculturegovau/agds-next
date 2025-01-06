@@ -62,38 +62,37 @@ export default function PackagesHome({
 
 	return (
 		<>
-			<DocumentTitle title="Components" description={description} />
+			<DocumentTitle description={description} title="Components" />
 			<CategoryPageTemplate
-				title={title}
 				description={description}
 				editPath="/docs/content/components/index.mdx"
+				title={title}
 			>
 				<Columns>
 					<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 						<Stack gap={1}>
 							<FilterSidebar onClearFilters={resetFilters}>
 								<FormStack>
-									<div role="search" aria-label="components">
+									<div aria-label="Components" role="search">
 										<SearchInput
-											label="Find a component"
-											hint="Filter by name or category"
-											value={searchTerm}
-											onChange={setSearchTerm}
-											maxWidth="xl"
 											hideOptionalLabel
+											hint="Filter by name or category"
+											label="Find a component"
+											maxWidth="xl"
+											onChange={setSearchTerm}
+											value={searchTerm}
 										/>
 									</div>
 									<ControlGroup
-										label="Category"
-										block={true}
-										hideOptionalLabel
 										aria-controls={listId}
+										block
+										hideOptionalLabel
+										label="Category"
 									>
 										{groupList.map(({ title }) => (
 											<Checkbox
-												key={title}
-												value={title}
 												checked={activeCategories.includes(title)}
+												key={title}
 												onChange={(e) => {
 													const checked = e.target.checked;
 													setActiveCategories(
@@ -102,6 +101,7 @@ export default function PackagesHome({
 															: activeCategories?.filter((s) => s !== title)
 													);
 												}}
+												value={title}
 											>
 												{title}
 											</Checkbox>
@@ -112,9 +112,9 @@ export default function PackagesHome({
 						</Stack>
 					</Column>
 					<Column
-						id={listId}
 						columnSpan={{ xs: 12, md: 8 }}
 						columnStart={{ lg: 5 }}
+						id={listId}
 					>
 						{filteredPkgs?.length ? (
 							<Stack gap={2}>

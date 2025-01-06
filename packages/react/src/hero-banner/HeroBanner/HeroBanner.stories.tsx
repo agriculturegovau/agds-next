@@ -42,9 +42,9 @@ const meta: Meta<HeroBannerStoryProps> = {
 		subtitle: 'Short hero banner sentence - md/default (P)',
 		image: (
 			<img
-				src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
-				role="presentation"
 				alt=""
+				role="presentation"
+				src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
 			/>
 		),
 		children: (
@@ -73,7 +73,7 @@ export const OnBodyAlt: Story = {
 		background: 'body',
 	},
 	render: (args) => (
-		<Box paddingY={3} background="bodyAlt">
+		<Box background="bodyAlt" paddingY={3}>
 			<Template {...args} />
 		</Box>
 	),

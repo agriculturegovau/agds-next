@@ -27,9 +27,9 @@ export default function Homepage() {
 				<HeroBanner
 					image={
 						<img
-							src={withBasePath('/img/agds-hero.webp')}
-							role="presentation"
 							alt=""
+							role="presentation"
+							src={withBasePath('/img/agds-hero.webp')}
 						/>
 					}
 				>
@@ -56,24 +56,24 @@ export default function Homepage() {
 								}}
 							>
 								<PictogramCard
-									title="Foundations"
-									pictogram="text"
 									href="/foundations"
+									pictogram="text"
+									title="Foundations"
 								/>
 								<PictogramCard
-									title="Components"
-									pictogram="components"
 									href="/components"
+									pictogram="components"
+									title="Components"
 								/>
 								<PictogramCard
-									title="Guides"
-									pictogram="guides"
 									href="/guides"
+									pictogram="guides"
+									title="Guides"
 								/>
 								<PictogramCard
-									title="Starter kit"
-									pictogram="starter"
 									href="https://github.com/agriculturegovau/agds-starter-kit"
+									pictogram="starter"
+									title="Starter kit"
 								/>
 							</Columns>
 						</Stack>

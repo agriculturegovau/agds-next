@@ -35,7 +35,7 @@ const Page: NextPageWithLayout = () => {
 			<DocumentTitle title="My account" />
 			<PageContent>
 				<Stack gap={3}>
-					<Flex gap={1} alignItems="center">
+					<Flex alignItems="center" gap={1}>
 						<Avatar
 							aria-hidden
 							name={user.displayName}
@@ -43,7 +43,7 @@ const Page: NextPageWithLayout = () => {
 							tone="action"
 						/>
 						<Stack>
-							<Text fontSize="md" color="muted">
+							<Text color="muted" fontSize="md">
 								My account
 							</Text>
 							<H1 css={{ marginTop: '-0.5rem' }}>Hi, {user.firstName}</H1>
@@ -57,12 +57,12 @@ const Page: NextPageWithLayout = () => {
 									<EmailIcon color="action" size="xl" />
 									<Heading
 										as="h2"
-										type="h3"
 										css={{
 											display: 'flex',
 											gap: '0.5em',
 											alignItems: 'center',
 										}}
+										type="h3"
 									>
 										<CardLink href="/not-found">Messages</CardLink>
 										<NotificationBadge tone="action" value={3} />

@@ -28,18 +28,16 @@ export function TemplateLayout({
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
-				applyMainElement={true}
+				applyMainElement
+				breadcrumbs={breadcrumbs}
+				editPath={editPath}
 				sideNav={{
 					title: 'Templates',
 					titleLink: '/templates',
 					items: navLinks,
 				}}
-				editPath={editPath}
-				breadcrumbs={breadcrumbs}
 			>
 				<PageTitle
-					title={template.title}
-					introduction={template.description}
 					callToAction={
 						template.previewPath && (
 							<CallToActionLink href={`/example-site${template.previewPath}`}>
@@ -47,39 +45,41 @@ export function TemplateLayout({
 							</CallToActionLink>
 						)
 					}
+					introduction={template.description}
+					title={template.title}
 				/>
 				{(template.figmaTemplateNodeId ||
 					template.githubTemplatePath ||
 					template.storybookPath) && (
 					<Flex
-						gap={1.5}
-						flexWrap="wrap"
-						flexDirection={['column', 'row']}
 						alignItems="flex-start"
+						flexDirection={['column', 'row']}
+						flexWrap="wrap"
+						gap={1.5}
 					>
 						{template.figmaTemplateNodeId && (
 							<ButtonLink
-								variant="text"
 								href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${template.figmaTemplateNodeId}`}
 								iconBefore={FigmaLogo}
+								variant="text"
 							>
 								View in Figma
 							</ButtonLink>
 						)}
 						{template.storybookPath && (
 							<ButtonLink
-								variant="text"
 								href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${template.storybookPath}`}
 								iconBefore={StorybookLogo}
+								variant="text"
 							>
 								View in Storybook
 							</ButtonLink>
 						)}
 						{template.githubTemplatePath && (
 							<ButtonLink
-								variant="text"
 								href={`https://github.com/agriculturegovau/agds-next/blob/main${template.githubTemplatePath}`}
 								iconBefore={GithubLogo}
+								variant="text"
 							>
 								View in Github
 							</ButtonLink>
