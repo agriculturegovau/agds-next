@@ -559,49 +559,51 @@ export const DateRangePicker = ({
 							aria-describedby={
 								fromDescribedByIds.length > 0 ? fromDescribedByIds : null
 							}
-							ref={fromInputRef}
-							label={fromLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={fromInputValue}
-							onBlur={onFromInputBlur}
-							onChange={onFromInputChange}
-							buttonRef={fromTriggerRef}
-							buttonOnClick={onFromTriggerClick}
 							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
 								rangeName: 'start',
 								value: fromInputValue,
 							})}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: fromInvalid }}
+							buttonOnClick={onFromTriggerClick}
+							buttonRef={fromTriggerRef}
 							dateFormat={dateFormat}
+							disabled={disabled}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							highlight={isCalendarOpen && inputMode === 'from'}
 							id={fromId}
+							invalid={{ field: false, input: fromInvalid }}
+							label={fromLabel}
+							onBlur={onFromInputBlur}
+							onChange={onFromInputChange}
+							ref={fromInputRef}
+							required={required}
+							secondaryLabelDate={minDate}
+							value={fromInputValue}
 						/>
 						<DateInput
 							aria-describedby={
 								toDescribedByIds.length > 0 ? toDescribedByIds : null
 							}
-							ref={toInputRef}
-							label={toLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={toInputValue}
-							onBlur={onToInputBlur}
-							onChange={onToInputChange}
-							buttonRef={toTriggerRef}
-							buttonOnClick={onToTriggerClick}
 							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
 								rangeName: 'end',
 								value: toInputValue,
 							})}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: toInvalid }}
+							buttonOnClick={onToTriggerClick}
+							buttonRef={toTriggerRef}
 							dateFormat={dateFormat}
+							disabled={disabled}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							highlight={isCalendarOpen && inputMode === 'to'}
 							id={toId}
+							invalid={{ field: false, input: toInvalid }}
+							label={toLabel}
+							onBlur={onToInputBlur}
+							onChange={onToInputChange}
+							ref={toInputRef}
+							required={required}
+							secondaryLabelDate={maxDate || addDays(new Date(), 1)}
+							value={toInputValue}
 						/>
 					</Flex>
 				</Stack>

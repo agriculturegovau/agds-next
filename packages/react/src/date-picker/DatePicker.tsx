@@ -228,22 +228,23 @@ export const DatePicker = ({
 		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
-				dateFormat={dateFormat}
-				maxWidth={maxWidth}
-				invalid={{ field: invalid, input: invalid }}
-				ref={inputRef}
-				value={inputValue}
-				onBlur={onInputBlur}
-				onChange={onInputChange}
-				buttonRef={triggerRef}
-				buttonOnClick={() => {
-					toggleCalendar();
-					setHasCalendarOpened(true);
-				}}
 				buttonAriaLabel={getDateInputButtonAriaLabel({
 					allowedDateFormats,
 					value: inputValue,
 				})}
+				buttonOnClick={() => {
+					toggleCalendar();
+					setHasCalendarOpened(true);
+				}}
+				buttonRef={triggerRef}
+				dateFormat={dateFormat}
+				invalid={{ field: invalid, input: invalid }}
+				maxWidth={maxWidth}
+				onBlur={onInputBlur}
+				onChange={onInputChange}
+				secondaryLabelDate={minDate || maxDate}
+				ref={inputRef}
+				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
