@@ -200,6 +200,14 @@ export const reactDayRangePickerStyles = (
 			color: boxPalette.foregroundText,
 			borderRadius: 0,
 		},
+
+		'.range:not([disabled]):not(.rdp-day_range_start):not(.rdp-day_range_end)':
+			{
+				backgroundColor: boxPalette.selectedMuted,
+				borderRadius: 0,
+				color: boxPalette.foregroundText,
+				fontWeight: 'bold',
+			},
 		// Start day of date range
 		'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
 		'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
@@ -216,18 +224,30 @@ export const reactDayRangePickerStyles = (
 			'.rdp-day': {
 				...(inputMode === 'from' && startStyles),
 				...(inputMode === 'to' && endStyles),
+				'&:hover:not([disabled])::before': {
+					...(inputMode === 'from' && startStyles),
+					...(inputMode === 'to' && endStyles),
+					...highContrastOutlineStyles,
+					backgroundColor: boxPalette.backgroundShade,
+					border: '3px solid',
+					borderColor: boxPalette.selected,
+					content: '""',
+					inset: 0,
+					pointerEvents: 'none',
+					position: 'absolute',
+				},
 				'&:hover:not([disabled])': {
-					backgroundColor: boxPalette.selected,
-					color: boxPalette.backgroundBody,
+					color: boxPalette.foregroundText,
 				},
 			},
+			'.rdp-day_range_start, .rdp-day_range_end': {
+				'&:hover:not([disabled])::before': {
+					borderRadius: '50%',
+				},
+			},
+			'.rdp-day_range_start.rdp-day_range_end:hover': {
+				backgroundColor: boxPalette.backgroundBody,
+			},
 		}),
-
-		'.range:not([disabled])': {
-			backgroundColor: boxPalette.selectedMuted,
-			borderRadius: 0,
-			color: boxPalette.foregroundText,
-			fontWeight: 'bold',
-		},
 	};
 };
