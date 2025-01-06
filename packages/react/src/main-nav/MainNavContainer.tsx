@@ -12,7 +12,7 @@ export type MainNavContainerProps = {
 	background: MainNavBackground;
 	borderColor: ResponsiveProp<BorderColor>;
 	/** The maximum width of the container. */
-	containerWidth: 'container' | 'containerXL';
+	maxWidth: 'container' | 'containerXL';
 	focusMode?: boolean;
 	id?: string;
 	isMobileMenuOpen: boolean;
@@ -25,7 +25,7 @@ export function MainNavContainer({
 	activePath,
 	background,
 	borderColor,
-	containerWidth,
+	maxWidth,
 	focusMode = false,
 	id,
 	isMobileMenuOpen,
@@ -53,9 +53,7 @@ export function MainNavContainer({
 					// When the nav and secondaryItems don't fit, wrap-reverse is used to ensure the nav items sit atop the border
 					flexWrap={{ xs: 'wrap', lg: 'wrap-reverse' }}
 					justifyContent="space-between"
-					maxWidth={
-						tokens.maxWidth[containerWidth] || tokens.maxWidth.container
-					}
+					maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 					paddingX={{ xs: 0.75, lg: 2 }}
 					width="100%"
 				>

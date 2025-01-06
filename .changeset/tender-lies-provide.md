@@ -5,14 +5,14 @@
 
 docs: Add `packs` as available for use in code snippets and playroom.
 
-app-layout: `AppLayoutFooter` - Add `containerWidth` prop.
+app-layout: `AppLayoutFooter` - Add `maxWidth` prop.
 
-content: Add `containerWidth` prop to all content components.
+content: Add `maxWidth` prop to all content components.
 
-core: Add new `'containerXL'` `maxWidth` token.
+core: Add new `'containerXL'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
 
-footer: Add `containerWidth` prop.
+footer: Add `maxWidth` prop.
 
-header: Add `containerWidth` prop.
+header: Add `maxWidth` prop.
 
-main-nav: Add `containerWidth` prop.
+main-nav: Add `maxWidth` prop.

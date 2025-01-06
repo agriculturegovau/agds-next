@@ -8,14 +8,14 @@ export type FooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 	borderColor?: ResponsiveProp<BorderColor>;
 	/** The maximum width of the container. */
-	containerWidth?: 'container' | 'containerXL';
+	maxWidth?: 'container' | 'containerXL';
 }>;
 
 export const Footer = ({
 	background = 'body',
 	borderColor = 'accent',
 	children,
-	containerWidth = 'container',
+	maxWidth = 'container',
 }: FooterProps) => {
 	return (
 		<Flex
@@ -32,7 +32,7 @@ export const Footer = ({
 			paddingY={3}
 		>
 			<Stack
-				maxWidth={tokens.maxWidth[containerWidth] || tokens.maxWidth.container}
+				maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 				width="100%"
 				gap={1.5}
 				paddingX={tokens.containerPadding}

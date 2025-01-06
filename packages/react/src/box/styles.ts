@@ -17,6 +17,7 @@ import {
 	LineHeight,
 	Font,
 	breakpointNames,
+	MaxWidth,
 } from '../core';
 
 type PaletteProps = Partial<{
@@ -331,51 +332,68 @@ type LayoutProps = Partial<{
 	maxHeight: ResponsiveProp<number | string>;
 }>;
 
+function mapMaxWidth(
+	maxWidth:
+		| ResponsiveProp<MaxWidth>
+		| ResponsiveProp<number>
+		| ResponsiveProp<string>
+		| ResponsiveProp<undefined>
+) {
+	return mapResponsiveProp(
+		maxWidth,
+		// @ts-expect-error stowey
+		(value) => tokens.maxWidth[value] || value
+	);
+}
+
 function layoutStyles({
+	alignItems,
 	alignSelf,
+	columnGap,
 	display,
 	flexDirection,
-	flexWrap,
 	flexGrow,
 	flexShrink,
+	flexWrap,
+	gap,
+	gridColumnEnd,
 	gridColumnSpan,
 	gridColumnStart,
-	gridColumnEnd,
+	height,
 	justifyContent,
 	justifySelf,
-	alignItems,
-	gap,
-	columnGap,
+	maxHeight,
+	maxWidth,
+	minHeight,
+	minWidth,
 	rowGap,
 	width,
-	minWidth,
-	maxWidth,
-	height,
-	minHeight,
-	maxHeight,
 }: LayoutProps) {
 	return {
+		alignItems: mapResponsiveProp(alignItems),
 		alignSelf: mapResponsiveProp(alignSelf),
+		columnGap: mapResponsiveProp(columnGap, mapSpacing),
 		display: mapResponsiveProp(display),
 		flexDirection: mapResponsiveProp(flexDirection),
-		flexWrap: mapResponsiveProp(flexWrap),
 		flexGrow: mapResponsiveProp(flexGrow),
 		flexShrink: mapResponsiveProp(flexShrink),
-		gridColumn: mapResponsiveProp(gridColumnSpan, (v) => `span ${v}/span ${v}`),
-		gridColumnStart: mapResponsiveProp(gridColumnStart),
+		flexWrap: mapResponsiveProp(flexWrap),
+		gap: mapResponsiveProp(gap, mapSpacing),
+		gridColumn: mapResponsiveProp(
+			gridColumnSpan,
+			(value) => `span ${value}/span ${value}`
+		),
 		gridColumnEnd: mapResponsiveProp(gridColumnEnd),
+		gridColumnStart: mapResponsiveProp(gridColumnStart),
+		height: mapResponsiveProp(height),
 		justifyContent: mapResponsiveProp(justifyContent),
 		justifySelf: mapResponsiveProp(justifySelf),
-		alignItems: mapResponsiveProp(alignItems),
-		gap: mapResponsiveProp(gap, mapSpacing),
-		columnGap: mapResponsiveProp(columnGap, mapSpacing),
+		maxHeight: mapResponsiveProp(maxHeight),
+		maxWidth: mapResponsiveProp(maxWidth, (value) => mapMaxWidth(value)),
+		minHeight: mapResponsiveProp(minHeight),
+		minWidth: mapResponsiveProp(minWidth),
 		rowGap: mapResponsiveProp(rowGap, mapSpacing),
 		width: mapResponsiveProp(width),
-		minWidth: mapResponsiveProp(minWidth),
-		maxWidth: mapResponsiveProp(maxWidth),
-		height: mapResponsiveProp(height),
-		minHeight: mapResponsiveProp(minHeight),
-		maxHeight: mapResponsiveProp(maxHeight),
 	};
 }
 
