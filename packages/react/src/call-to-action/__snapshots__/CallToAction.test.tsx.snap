@@ -3,10 +3,10 @@
 exports[`CallToActionButton renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-8apytq-boxStyles-CallToAction"
   >
     <button
-      class="css-fp5x03-BaseButton-boxStyles"
+      class="css-1njpyuk-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
@@ -35,10 +35,10 @@ exports[`CallToActionButton renders correctly 1`] = `
 exports[`CallToActionLink renders correctly 1`] = `
 <div>
   <div
-    class="css-zce95a-boxStyles-CallToAction"
+    class="css-8apytq-boxStyles-CallToAction"
   >
     <a
-      class="css-19iivh0-TextLink-boxStyles"
+      class="css-1mx4ouw-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >

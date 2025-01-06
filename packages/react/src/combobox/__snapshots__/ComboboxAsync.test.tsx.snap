@@ -3,7 +3,7 @@
 exports[`ComboboxAsync renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-17xn84x-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -48,7 +48,7 @@ exports[`ComboboxAsync renders correctly 1`] = `
         value=""
       />
       <div
-        class="css-1733k8b-boxStyles-ComboboxButtonContainer"
+        class="css-iyti9i-boxStyles-ComboboxButtonContainer"
       >
         <button
           aria-controls="downshift-:r1:-menu"

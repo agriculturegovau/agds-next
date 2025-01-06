@@ -4,11 +4,11 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r8: section-alert-title-:r8: "
-    class="css-1td0tl7-boxStyles"
+    class="css-cyxq5n-boxStyles"
     role="region"
   >
     <div
-      class="css-1urm0li-boxStyles"
+      class="css-15nta8p-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
@@ -39,7 +39,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-1i7cdx8-boxStyles"
+        class="css-17tna2x-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -98,11 +98,11 @@ exports[`SectionAlert with a description renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r6: section-alert-title-:r6: section-alert-children-:r6:"
-    class="css-1td0tl7-boxStyles"
+    class="css-cyxq5n-boxStyles"
     role="region"
   >
     <div
-      class="css-1urm0li-boxStyles"
+      class="css-15nta8p-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
@@ -133,7 +133,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-1i7cdx8-boxStyles"
+        class="css-17tna2x-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -160,11 +160,11 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r0: section-alert-title-:r0: "
-    class="css-3ieit4-boxStyles"
+    class="css-1o3kv7y-boxStyles"
     role="region"
   >
     <div
-      class="css-1urm0li-boxStyles"
+      class="css-15nta8p-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
@@ -195,7 +195,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-1i7cdx8-boxStyles"
+        class="css-17tna2x-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -213,11 +213,11 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r2: section-alert-title-:r2: "
-    class="css-1td0tl7-boxStyles"
+    class="css-cyxq5n-boxStyles"
     role="region"
   >
     <div
-      class="css-1urm0li-boxStyles"
+      class="css-15nta8p-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
@@ -248,7 +248,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-1i7cdx8-boxStyles"
+        class="css-17tna2x-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -266,11 +266,11 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r4: section-alert-title-:r4: "
-    class="css-9xmjo1-boxStyles"
+    class="css-1qkq04r-boxStyles"
     role="region"
   >
     <div
-      class="css-1urm0li-boxStyles"
+      class="css-15nta8p-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
@@ -301,7 +301,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-1i7cdx8-boxStyles"
+        class="css-17tna2x-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"

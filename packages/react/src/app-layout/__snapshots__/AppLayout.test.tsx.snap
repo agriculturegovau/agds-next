@@ -6,14 +6,14 @@ exports[`AppLayout renders correctly 1`] = `
     class="css-jlzmfo-AppLayoutGrid"
   >
     <header
-      class="css-42lvlx-dark-boxStyles-AppLayoutHeader"
+      class="css-1494kx0-dark-boxStyles-AppLayoutHeader"
       id="header"
     >
       <div
-        class="css-10kt2hp-boxStyles"
+        class="css-83katg-boxStyles"
       >
         <a
-          class="css-1ymvh48-boxStyles-AppLayoutHeaderBrand"
+          class="css-ucza2u-boxStyles-AppLayoutHeaderBrand"
           href="#"
         >
           <svg
@@ -50,10 +50,10 @@ exports[`AppLayout renders correctly 1`] = `
             class="css-u8206f-boxStyles-DividingLine"
           />
           <div
-            class="css-udlvh9-boxStyles"
+            class="css-19vkw8k-boxStyles"
           >
             <div
-              class="css-1qp4da6-boxStyles"
+              class="css-48johj-boxStyles"
             >
               <span
                 class="css-ol79f5-boxStyles"
@@ -80,7 +80,7 @@ exports[`AppLayout renders correctly 1`] = `
             aria-controls="dropdown-menu-:r0:-panel"
             aria-expanded="false"
             aria-haspopup="true"
-            class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-2ireh-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
             id="dropdown-menu-:r0:-button"
             type="button"
           >
@@ -91,15 +91,15 @@ exports[`AppLayout renders correctly 1`] = `
             </span>
             <span
               aria-hidden="true"
-              class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              class="css-uryhm2-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
-                class="css-1cow25h-boxStyles-Avatar"
+                class="css-1vl0hpt-boxStyles-Avatar"
               >
                 TW
               </span>
               <span
-                class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+                class="css-bakbvq-boxStyles-AppLayoutHeaderAccountDropdownButton"
               >
                 <span
                   class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
@@ -137,12 +137,12 @@ exports[`AppLayout renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-pmxhic-boxStyles"
+        class="css-19mak1p-boxStyles"
       >
         <button
           aria-expanded="false"
           aria-haspopup="dialog"
-          class="css-1gjhpau-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-13esj24-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -175,7 +175,7 @@ exports[`AppLayout renders correctly 1`] = `
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
           aria-haspopup="true"
-          class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+          class="css-2ireh-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
         >
@@ -186,15 +186,15 @@ exports[`AppLayout renders correctly 1`] = `
           </span>
           <span
             aria-hidden="true"
-            class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-uryhm2-boxStyles-AppLayoutHeaderAccountDropdownButton"
           >
             <span
-              class="css-1cow25h-boxStyles-Avatar"
+              class="css-1vl0hpt-boxStyles-Avatar"
             >
               TW
             </span>
             <span
-              class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              class="css-bakbvq-boxStyles-AppLayoutHeaderAccountDropdownButton"
             >
               <span
                 class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
@@ -232,14 +232,14 @@ exports[`AppLayout renders correctly 1`] = `
       </div>
     </header>
     <div
-      class="css-4plgz3-boxStyles-AppLayoutSidebar"
+      class="css-tg0hgq-boxStyles-AppLayoutSidebar"
     >
       <nav
         aria-label="main"
-        class="css-wutooc-boxStyles"
+        class="css-1oz53nk-boxStyles"
       >
         <ul
-          class="css-o80hmi-boxStyles"
+          class="css-4i4i04-boxStyles"
         >
           <li
             class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
@@ -285,7 +285,7 @@ exports[`AppLayout renders correctly 1`] = `
             class="css-mjl15f-AppLayoutSidebarNavItemInner"
           >
             <span
-              class="css-1i7cdx8-boxStyles"
+              class="css-17tna2x-boxStyles"
             >
               <span
                 class="css-1pigcx9-boxStyles"
@@ -386,7 +386,7 @@ exports[`AppLayout renders correctly 1`] = `
               </svg>
             </a>
             <ul
-              class="css-o80hmi-boxStyles"
+              class="css-4i4i04-boxStyles"
             >
               <li
                 class="css-1aio4t5-AppLayoutSidebarNavItemInner"
@@ -587,7 +587,7 @@ exports[`AppLayout renders correctly 1`] = `
       </nav>
     </div>
     <div
-      class="css-hc5c4j-boxStyles-AppLayoutContent"
+      class="css-2lg3bl-boxStyles-AppLayoutContent"
     >
       <main
         class="css-z5n8zt-renderAppLayout"
@@ -602,19 +602,19 @@ exports[`AppLayout renders correctly 1`] = `
         class="css-3xb8kb-boxStyles-AppLayoutFooter"
       >
         <div
-          class="css-ou39vu-boxStyles"
+          class="css-x3v7mx-boxStyles"
         >
           <div
-            class="css-1rhmzip-boxStyles"
+            class="css-1m4kre0-boxStyles"
           >
             <div
-              class="css-1yys21m-boxStyles"
+              class="css-15fd363-boxStyles"
             >
               <nav
                 aria-label="footer"
               >
                 <ul
-                  class="css-u0m30q-boxStyles"
+                  class="css-912ynh-boxStyles"
                 >
                   <li
                     class="css-79i25n-boxStyles"

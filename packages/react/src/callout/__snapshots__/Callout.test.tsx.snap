@@ -3,10 +3,10 @@
 exports[`Callout renders correctly 1`] = `
 <div>
   <div
-    class="css-1gkhklp-boxStyles"
+    class="css-j2ztjq-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-1tp6iny-boxStyles-Callout"
     >
       <h2
         class="css-pkkmd5-boxStyles"
@@ -26,10 +26,10 @@ exports[`Callout renders correctly 1`] = `
 exports[`Callout with compact variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-tgtnb7-boxStyles"
+    class="css-1l647li-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-1qtk6th-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -52,7 +52,7 @@ exports[`Callout with compact variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1be1aj7-boxStyles-Callout"
+      class="css-yae6jk-boxStyles-Callout"
     >
       <h2
         class="css-1atkru2-boxStyles"
@@ -72,10 +72,10 @@ exports[`Callout with compact variant and info tone renders correctly 1`] = `
 exports[`Callout with compact variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-1qwxuo7-boxStyles"
+    class="css-bh13os-boxStyles"
   >
     <div
-      class="css-1be1aj7-boxStyles-Callout"
+      class="css-yae6jk-boxStyles-Callout"
     >
       <h2
         class="css-1atkru2-boxStyles"
@@ -95,10 +95,10 @@ exports[`Callout with compact variant and neutral tone renders correctly 1`] = `
 exports[`Callout with feature variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-10b68go-boxStyles"
+    class="css-18c5427-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-1qtk6th-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -121,7 +121,7 @@ exports[`Callout with feature variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-1tp6iny-boxStyles-Callout"
     >
       <h2
         class="css-s8h0nj-boxStyles"
@@ -141,10 +141,10 @@ exports[`Callout with feature variant and info tone renders correctly 1`] = `
 exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-12qxj53-boxStyles"
+    class="css-nrxypg-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-1tp6iny-boxStyles-Callout"
     >
       <h2
         class="css-s8h0nj-boxStyles"
@@ -164,10 +164,10 @@ exports[`Callout with feature variant and neutral tone renders correctly 1`] = `
 exports[`Callout with regular variant and info tone renders correctly 1`] = `
 <div>
   <div
-    class="css-15cw9y2-boxStyles"
+    class="css-1mfv9k0-boxStyles"
   >
     <div
-      class="css-vspen0-boxStyles"
+      class="css-1qtk6th-boxStyles"
     >
       <svg
         aria-hidden="false"
@@ -190,7 +190,7 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-1tp6iny-boxStyles-Callout"
     >
       <h2
         class="css-pkkmd5-boxStyles"
@@ -210,10 +210,10 @@ exports[`Callout with regular variant and info tone renders correctly 1`] = `
 exports[`Callout with regular variant and neutral tone renders correctly 1`] = `
 <div>
   <div
-    class="css-1gkhklp-boxStyles"
+    class="css-j2ztjq-boxStyles"
   >
     <div
-      class="css-1iiypnu-boxStyles-Callout"
+      class="css-1tp6iny-boxStyles-Callout"
     >
       <h2
         class="css-pkkmd5-boxStyles"

@@ -3,10 +3,10 @@
 exports[`SectionContent renders correctly 1`] = `
 <div>
   <section
-    class="css-ou39vu-boxStyles"
+    class="css-x3v7mx-boxStyles"
   >
     <div
-      class="css-23dohf-boxStyles"
+      class="css-5rx91s-boxStyles"
     >
       <p>
         Section content

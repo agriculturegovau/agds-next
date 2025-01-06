@@ -4,13 +4,13 @@ exports[`CollapsingSideBar renders correctly 1`] = `
 <div>
   <section
     aria-labelledby="collapsing-side-bar-:r0:-heading"
-    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
+    class="css-1gfkuk4-boxStyles-CollapsingSideBar"
   >
     <div
       class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
-        class="css-1ynq4lf-boxStyles-CollapsingSideBar"
+        class="css-zypker-boxStyles-CollapsingSideBar"
         id="collapsing-side-bar-:r0:-heading"
       >
         <h2
@@ -32,10 +32,10 @@ exports[`CollapsingSideBar renders correctly 1`] = `
         type="button"
       >
         <span
-          class="css-1eiy0fa-boxStyles"
+          class="css-1o9vf2o-boxStyles"
         >
           <span
-            class="css-1wcx0lf-boxStyles"
+            class="css-1ddvhpp-boxStyles"
           >
             <span
               class="css-1rvfmyi-boxStyles-CollapsingSideBar"
@@ -86,13 +86,13 @@ exports[`CollapsingSideBar renders customTitleElement correctly 1`] = `
 <div>
   <section
     aria-labelledby="collapsing-side-bar-:r1:-heading"
-    class="css-1dkbvi7-boxStyles-CollapsingSideBar"
+    class="css-1gfkuk4-boxStyles-CollapsingSideBar"
   >
     <div
       class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
-        class="css-lr9d04-boxStyles-CollapsingSideBar"
+        class="css-1vssla3-boxStyles-CollapsingSideBar"
         id="collapsing-side-bar-:r1:-heading"
       >
         <h2>
@@ -107,10 +107,10 @@ exports[`CollapsingSideBar renders customTitleElement correctly 1`] = `
         type="button"
       >
         <span
-          class="css-1eiy0fa-boxStyles"
+          class="css-1o9vf2o-boxStyles"
         >
           <span
-            class="css-1wcx0lf-boxStyles"
+            class="css-1ddvhpp-boxStyles"
           >
             <span
               class="css-1rvfmyi-boxStyles-CollapsingSideBar"

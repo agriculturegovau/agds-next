@@ -49,11 +49,11 @@ export function MainNav({
 				activePath={bestMatch}
 				background={background}
 				borderColor={borderColor}
-				maxWidth={maxWidth}
 				focusMode={focusMode}
 				id={id}
 				isMobileMenuOpen={isMobileMenuOpen}
 				items={items}
+				maxWidth={maxWidth}
 				openMobileMenu={openMobileMenu}
 				secondaryItems={secondaryItems}
 			/>

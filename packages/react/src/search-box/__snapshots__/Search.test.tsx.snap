@@ -7,10 +7,10 @@ exports[`SearchBox renders correctly 1`] = `
     role="search"
   >
     <div
-      class="css-vfcxlf-boxStyles"
+      class="css-1xdbq40-boxStyles"
     >
       <div
-        class="css-12in0u0-boxStyles"
+        class="css-ahitb0-boxStyles"
       >
         <label
           class="css-1wmhsmi-boxStyles-SearchBoxLabel"

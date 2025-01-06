@@ -3,7 +3,7 @@
 exports[`GroupedFields invalid: can render an invalid state when both fields are invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-11krmg5-boxStyles-FieldContainer"
   >
     <fieldset
       class="css-79i25n-boxStyles"
@@ -24,10 +24,10 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
         </span>
       </legend>
       <div
-        class="css-1imrrw5-boxStyles-GroupedFields"
+        class="css-vshi4d-boxStyles-GroupedFields"
       >
         <div
-          class="css-1xkbxzi-boxStyles"
+          class="css-1n6a4q-boxStyles"
         >
           <div
             class="css-1ldvxqr-boxStyles"
@@ -60,10 +60,10 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
           </span>
         </div>
         <div
-          class="css-72257o-boxStyles"
+          class="css-1feorke-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-17xn84x-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -95,7 +95,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-17xn84x-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -176,7 +176,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
 exports[`GroupedFields renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-17xn84x-boxStyles-FieldContainer"
   >
     <fieldset
       class="css-79i25n-boxStyles"
@@ -197,13 +197,13 @@ exports[`GroupedFields renders correctly 1`] = `
         </span>
       </legend>
       <div
-        class="css-1imrrw5-boxStyles-GroupedFields"
+        class="css-vshi4d-boxStyles-GroupedFields"
       >
         <div
-          class="css-72257o-boxStyles"
+          class="css-1feorke-boxStyles"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-17xn84x-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -234,7 +234,7 @@ exports[`GroupedFields renders correctly 1`] = `
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-17xn84x-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"

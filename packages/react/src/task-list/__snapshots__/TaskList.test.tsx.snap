@@ -3,10 +3,10 @@
 exports[`TaskList With anchors renders correctly 1`] = `
 <div>
   <div
-    class="css-1mxr31d-boxStyles"
+    class="css-wwob6m-boxStyles"
   >
     <div
-      class="css-1lvzxao-boxStyles"
+      class="css-adcyeq-boxStyles"
     >
       <h2
         class="css-s8h0nj-boxStyles"
@@ -23,20 +23,20 @@ exports[`TaskList With anchors renders correctly 1`] = `
       </span>
     </div>
     <ul
-      class="css-1r8gefe-boxStyles-TaskListItemsContainer"
+      class="css-16522ck-boxStyles-TaskListItemsContainer"
     >
       <li
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1xuaf0b-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -58,7 +58,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -72,7 +72,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -133,14 +133,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1xuaf0b-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -162,7 +162,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -176,7 +176,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -237,14 +237,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1992mal-TextLink-boxStyles-TaskListItem"
+          class="css-wxpt89-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -279,7 +279,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -293,7 +293,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -367,14 +367,14 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-1htue7x-TextLink-boxStyles-TaskListItem"
+          class="css-1xuaf0b-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -395,7 +395,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -409,7 +409,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -475,10 +475,10 @@ exports[`TaskList With anchors renders correctly 1`] = `
 exports[`TaskList With buttons renders correctly 1`] = `
 <div>
   <div
-    class="css-1mxr31d-boxStyles"
+    class="css-wwob6m-boxStyles"
   >
     <div
-      class="css-1lvzxao-boxStyles"
+      class="css-adcyeq-boxStyles"
     >
       <h2
         class="css-s8h0nj-boxStyles"
@@ -495,20 +495,20 @@ exports[`TaskList With buttons renders correctly 1`] = `
       </span>
     </div>
     <ul
-      class="css-1r8gefe-boxStyles-TaskListItemsContainer"
+      class="css-16522ck-boxStyles-TaskListItemsContainer"
     >
       <li
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-5f587k-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -530,7 +530,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -544,7 +544,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -605,14 +605,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-5f587k-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -634,7 +634,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -648,7 +648,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -709,14 +709,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-uy7mdj-BaseButton-boxStyles-TaskListItem"
+          class="css-cae2od-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -751,7 +751,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -765,7 +765,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -839,14 +839,14 @@ exports[`TaskList With buttons renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <button
-          class="css-1vhalje-BaseButton-boxStyles-TaskListItem"
+          class="css-5f587k-BaseButton-boxStyles-TaskListItem"
           type="button"
         >
           <span
-            class="css-dddyaj-boxStyles"
+            class="css-12kjcpy-boxStyles"
           >
             <span
-              class="css-1hgwk69-boxStyles"
+              class="css-2o2ofd-boxStyles"
             >
               <svg
                 aria-hidden="true"
@@ -867,7 +867,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
               </svg>
             </span>
             <span
-              class="css-1wcx0lf-boxStyles"
+              class="css-1ddvhpp-boxStyles"
             >
               <span
                 class="css-84frxs-boxStyles"
@@ -881,7 +881,7 @@ exports[`TaskList With buttons renders correctly 1`] = `
                 </span>
               </span>
               <span
-                class="css-q6tqn6-boxStyles"
+                class="css-1x17pha-boxStyles"
               >
                 <svg
                   aria-hidden="true"

@@ -3,7 +3,7 @@
 exports[`TimePicker renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-17xn84x-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -48,7 +48,7 @@ exports[`TimePicker renders correctly 1`] = `
         value=""
       />
       <div
-        class="css-1733k8b-boxStyles-ComboboxButtonContainer"
+        class="css-iyti9i-boxStyles-ComboboxButtonContainer"
       >
         <button
           aria-controls="downshift-:r1:-menu"
@@ -96,7 +96,7 @@ exports[`TimePicker renders correctly 1`] = `
 exports[`TimePicker renders correctly when loading 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-17xn84x-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -141,7 +141,7 @@ exports[`TimePicker renders correctly when loading 1`] = `
         value=""
       />
       <div
-        class="css-1733k8b-boxStyles-ComboboxButtonContainer"
+        class="css-iyti9i-boxStyles-ComboboxButtonContainer"
       >
         <button
           aria-controls="downshift-:r4:-menu"
@@ -182,25 +182,25 @@ exports[`TimePicker renders correctly when loading 1`] = `
           tabindex="-1"
         >
           <div
-            class="css-4cj67k-boxStyles"
+            class="css-5ac4y5-boxStyles"
           >
             <span
               aria-atomic="false"
               aria-label="Loading options"
-              class="css-1urm0li-boxStyles"
+              class="css-15nta8p-boxStyles"
               role="alert"
             >
               <span
                 aria-hidden="true"
-                class="css-d3esv4-boxStyles-LoadingDots"
+                class="css-1lnep6v-boxStyles-LoadingDots"
               />
               <span
                 aria-hidden="true"
-                class="css-1itw7uj-boxStyles-LoadingDots"
+                class="css-g48f7u-boxStyles-LoadingDots"
               />
               <span
                 aria-hidden="true"
-                class="css-rfoku0-boxStyles-LoadingDots"
+                class="css-1rdsypz-boxStyles-LoadingDots"
               />
             </span>
             <span

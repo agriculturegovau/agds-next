@@ -3,7 +3,7 @@
 exports[`Tags With links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-17tna2x-boxStyles"
   >
     <h2
       class="css-1jywj6f-boxStyles"
@@ -11,13 +11,13 @@ exports[`Tags With links renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-5aivrz-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -31,7 +31,7 @@ exports[`Tags With links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -45,7 +45,7 @@ exports[`Tags With links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -63,7 +63,7 @@ exports[`Tags With links renders correctly 1`] = `
 exports[`Tags With onRemove renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-17tna2x-boxStyles"
   >
     <h2
       class="css-1jywj6f-boxStyles"
@@ -71,13 +71,13 @@ exports[`Tags With onRemove renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-5aivrz-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -87,7 +87,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1nl656d-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -122,7 +122,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -132,7 +132,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1nl656d-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -167,7 +167,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-1l8g3ew-boxStyles-Tag"
+          class="css-12e80t3-boxStyles-Tag"
         >
           <a
             class="css-1qb2lpt-TextLink-boxStyles"
@@ -177,7 +177,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-1nl656d-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -216,7 +216,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
 exports[`Tags Without links renders correctly 1`] = `
 <div>
   <div
-    class="css-1i7cdx8-boxStyles"
+    class="css-17tna2x-boxStyles"
   >
     <h2
       class="css-1jywj6f-boxStyles"
@@ -224,13 +224,13 @@ exports[`Tags Without links renders correctly 1`] = `
       Tags:
     </h2>
     <ul
-      class="css-15pioji-boxStyles"
+      class="css-5aivrz-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-1w6djwc-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"
@@ -243,7 +243,7 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-1w6djwc-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"
@@ -256,7 +256,7 @@ exports[`Tags Without links renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <span
-          class="css-impmck-boxStyles-Tag"
+          class="css-1w6djwc-boxStyles-Tag"
         >
           <span
             class="css-79i25n-boxStyles"

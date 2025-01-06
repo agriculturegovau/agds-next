@@ -3,7 +3,7 @@
 exports[`Table with TableCaption renders correctly 1`] = `
 <div>
   <div
-    class="css-h6dj2w-boxStyles-TableScroller"
+    class="css-fge22d-boxStyles-TableScroller"
   >
     <section
       aria-label="Table Population of Australian states and territories, December 2015"
@@ -264,7 +264,7 @@ exports[`Table with TableCaption renders correctly 1`] = `
       />
     </section>
     <div
-      class="css-1bk2ogi-boxStyles-TableScroller"
+      class="css-1nhmeyh-boxStyles-TableScroller"
     >
       <button
         aria-hidden="true"

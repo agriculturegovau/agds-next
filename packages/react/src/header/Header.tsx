@@ -48,7 +48,7 @@ export function Header({
 	const hasRightContent = !!rightContent;
 
 	return (
-		<HeaderContainer background={background} size={size} maxWidth={maxWidth}>
+		<HeaderContainer background={background} maxWidth={maxWidth} size={size}>
 			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}

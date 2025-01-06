@@ -9,7 +9,7 @@ exports[`Card Basic renders correctly 1`] = `
       class="css-z5u98n-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-adcyeq-boxStyles"
       >
         <h2
           class="css-e6rsgj-boxStyles"
@@ -36,7 +36,7 @@ exports[`Card With link renders correctly 1`] = `
       class="css-z5u98n-boxStyles"
     >
       <div
-        class="css-1lvzxao-boxStyles"
+        class="css-adcyeq-boxStyles"
       >
         <h2
           class="css-e6rsgj-boxStyles"

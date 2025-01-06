@@ -3,10 +3,10 @@
 exports[`Switch renders correctly 1`] = `
 <div>
   <label
-    class="css-131fe2s-boxStyles-Switch"
+    class="css-ij0a6x-boxStyles-Switch"
   >
     <span
-      class="css-o9fx7j-boxStyles-SwitchContainer"
+      class="css-yfdlgm-boxStyles-SwitchContainer"
     >
       <input
         aria-checked="false"
@@ -18,7 +18,7 @@ exports[`Switch renders correctly 1`] = `
         class="css-k2d2eq-boxStyles-SwitchTrack"
       />
       <span
-        class="css-oj5g50-boxStyles-SwitchThumb"
+        class="css-1rmjgmu-boxStyles-SwitchThumb"
       />
     </span>
     <span

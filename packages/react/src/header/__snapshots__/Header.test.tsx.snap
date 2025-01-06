@@ -3,10 +3,10 @@
 exports[`Header renders correctly 1`] = `
 <div>
   <header
-    class="css-19w0tmx-boxStyles"
+    class="css-3f9mdf-boxStyles"
   >
     <div
-      class="css-164ldz1-boxStyles"
+      class="css-mtjz4v-boxStyles"
     >
       <div
         class="css-og54d0-boxStyles-Columns"
@@ -15,11 +15,11 @@ exports[`Header renders correctly 1`] = `
           class="css-bmsj3y-boxStyles-Column"
         >
           <a
-            class="css-e5wxhr-boxStyles-HeaderBrand"
+            class="css-wq5mq8-boxStyles-HeaderBrand"
             href="/"
           >
             <div
-              class="css-1hjsdve-boxStyles-HeaderBrand"
+              class="css-nx5a4o-boxStyles-HeaderBrand"
             >
               <svg
                 aria-label="Australian Government, Department of Agriculture, Fisheries and Forestry"
@@ -56,10 +56,10 @@ exports[`Header renders correctly 1`] = `
               class="css-1gcrp4-boxStyles-HeaderBrand"
             />
             <div
-              class="css-1auunfi-boxStyles"
+              class="css-12ukkmv-boxStyles"
             >
               <div
-                class="css-1qp4da6-boxStyles"
+                class="css-48johj-boxStyles"
               >
                 <span
                   class="css-g6sycc-boxStyles"
