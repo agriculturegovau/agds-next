@@ -23,34 +23,34 @@ export const FormRegisterPetDetailsActions = () => {
 			<Stack gap={3}>
 				<Divider />
 				<ButtonGroup>
-					<Button type="submit" variant="primary" loading={isSubmittingStep}>
+					<Button loading={isSubmittingStep} type="submit" variant="primary">
 						{currentStep === 4 ? 'Submit task' : 'Save and continue'}
 					</Button>
 					<Button
-						type="button"
-						variant="secondary"
 						loading={isSavingBeforeExiting}
 						onClick={saveAndExit}
+						type="button"
+						variant="secondary"
 					>
 						Save and exit
 					</Button>
-					<Button type="button" variant="tertiary" onClick={openModal}>
+					<Button onClick={openModal} type="button" variant="tertiary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			</Stack>
 			<Modal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				title="Are you sure you want to cancel?"
 				actions={
 					<ButtonGroup>
 						<Button onClick={cancel}>Yes, cancel</Button>
-						<Button variant="secondary" onClick={closeModal}>
+						<Button onClick={closeModal} variant="secondary">
 							No, take me back
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title="Are you sure you want to cancel?"
 			>
 				<Text as="p">
 					If you cancel, you will lose all information entered.

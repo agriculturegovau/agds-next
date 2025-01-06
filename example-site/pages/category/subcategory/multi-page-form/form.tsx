@@ -7,8 +7,8 @@ export default function FormMultiPageFormPage() {
 		<>
 			<DocumentTitle title="Multi-page form example" />
 			<SiteLayout
-				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
 				focusMode
+				template={{ name: 'Multi-page form', slug: 'multi-page-form' }}
 			>
 				<FormExampleMultiStep />
 			</SiteLayout>

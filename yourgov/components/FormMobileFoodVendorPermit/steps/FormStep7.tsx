@@ -230,7 +230,7 @@ export function FormStep7() {
 					Add employee
 				</ButtonLink>
 			</Stack>
-			<form onSubmit={onSubmit} noValidate>
+			<form noValidate onSubmit={onSubmit}>
 				<StepActions />
 			</form>
 			<Modal

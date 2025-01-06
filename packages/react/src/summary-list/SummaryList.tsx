@@ -12,12 +12,12 @@ export function SummaryListItemTerm({ children }: SummaryListItemTermProps) {
 	return (
 		<Flex
 			as="dt"
-			fontWeight="bold"
-			width={['100%', '30%']}
-			flexShrink={0}
-			minWidth="200px"
-			fontSize="sm"
 			color="text"
+			flexShrink={0}
+			fontSize="sm"
+			fontWeight="bold"
+			minWidth="200px"
+			width={['100%', '30%']}
 		>
 			{children}
 		</Flex>
@@ -31,7 +31,7 @@ export function SummaryListItemDescription({
 	children,
 }: SummaryListItemDescriptionProps) {
 	return (
-		<Flex as="dd" flexGrow={1} fontSize="sm" color="text">
+		<Flex as="dd" color="text" flexGrow={1} fontSize="sm">
 			{children}
 		</Flex>
 	);
@@ -60,10 +60,10 @@ export function SummaryList({ children }: SummaryListProps) {
 	return (
 		<Flex
 			as="dl"
-			width="100%"
-			borderTop
 			borderColor="muted"
+			borderTop
 			flexDirection="column"
+			width="100%"
 		>
 			{children}
 		</Flex>

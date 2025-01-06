@@ -40,8 +40,8 @@ export const SiteLayout = ({
 			<Flex
 				flexDirection="column"
 				fontFamily="body"
-				palette="light"
 				minHeight="100vh"
+				palette="light"
 			>
 				<SiteHeader focusMode={focusMode} />
 				<Box
@@ -98,8 +98,8 @@ const SiteHeader = ({ focusMode }: { focusMode: boolean }) => {
 		<Stack palette="dark">
 			<Header
 				background="bodyAlt"
-				logo={<Logo />}
 				heading="yourGov"
+				logo={<Logo />}
 				subline="Access government services from one place"
 			/>
 			<MainNav
@@ -128,7 +128,7 @@ const SiteFooter = () => {
 		<Box palette="dark">
 			<Footer background="bodyAlt">
 				<nav aria-label="footer">
-					<LinkList links={footerLinks} horizontal />
+					<LinkList horizontal links={footerLinks} />
 				</nav>
 				<FooterDivider />
 				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>

@@ -18,10 +18,10 @@ function ControlledDateRangePicker(props: DateRangePickerProps) {
 	return (
 		<DateRangePicker
 			{...props}
-			value={range}
 			onChange={setRange}
 			onFromInputChange={(from) => setRange((range) => ({ ...range, from }))}
 			onToInputChange={(to) => setRange((range) => ({ ...range, to }))}
+			value={range}
 		/>
 	);
 }
@@ -151,13 +151,13 @@ export const ClearableExample: Story = {
 			to: undefined,
 		});
 		return (
-			<Stack gap={4} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={4}>
 				<DateRangePicker
 					{...props}
-					value={range}
 					onChange={setRange}
 					onFromInputChange={(from) => setRange({ ...range, from })}
 					onToInputChange={(to) => setRange({ ...range, to })}
+					value={range}
 				/>
 				<ButtonGroup>
 					<Button
@@ -171,8 +171,8 @@ export const ClearableExample: Story = {
 						Set pre-defined range
 					</Button>
 					<Button
-						variant="secondary"
 						onClick={() => setRange({ from: undefined, to: undefined })}
+						variant="secondary"
 					>
 						Clear range
 					</Button>

@@ -7,7 +7,6 @@ export const HeroBannerMobileImage = ({
 	children,
 }: HeroBannerMobileImageProps) => (
 	<Box
-		display={{ xs: 'block', md: 'none' }}
 		css={{
 			position: 'relative',
 			overflow: 'hidden',
@@ -21,6 +20,7 @@ export const HeroBannerMobileImage = ({
 				maxWidth: '100%',
 			},
 		}}
+		display={{ xs: 'block', md: 'none' }}
 	>
 		{children}
 	</Box>

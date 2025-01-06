@@ -233,11 +233,11 @@ export function TableScroller({ children }: TableScrollerProps) {
 
 	return (
 		<Stack
-			gap={0.5}
 			css={{
 				position: 'relative',
 				width: '100%',
 			}}
+			gap={0.5}
 		>
 			<Box
 				aria-label={scrollerAriaLabel}
@@ -308,12 +308,12 @@ export function TableScroller({ children }: TableScrollerProps) {
 					onMouseDown={(event: React.MouseEvent) =>
 						handleButtonPress(event, 'left')
 					}
-					onMouseUp={handleButtonRelease}
 					onMouseLeave={handleButtonRelease}
+					onMouseUp={handleButtonRelease}
+					onTouchEnd={handleButtonRelease}
 					onTouchStart={(event: React.TouchEvent) =>
 						handleButtonPress(event, 'left')
 					}
-					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 					type="button"
 				>
@@ -353,13 +353,13 @@ export function TableScroller({ children }: TableScrollerProps) {
 								backgroundColor: 'CaptionText',
 							},
 						}}
+						onMouseDown={handleThumbPress}
+						onTouchStart={handleThumbPress}
+						ref={thumbRef}
 						style={{
 							left: thumbPosition,
 							width: `${thumbWidthRatio * 100}%`,
 						}}
-						onMouseDown={handleThumbPress}
-						onTouchStart={handleThumbPress}
-						ref={thumbRef}
 						tabIndex={-1}
 						type="button"
 					/>
@@ -378,12 +378,12 @@ export function TableScroller({ children }: TableScrollerProps) {
 					onMouseDown={(event: React.MouseEvent) =>
 						handleButtonPress(event, 'right')
 					}
-					onMouseUp={handleButtonRelease}
 					onMouseLeave={handleButtonRelease}
+					onMouseUp={handleButtonRelease}
+					onTouchEnd={handleButtonRelease}
 					onTouchStart={(event: React.TouchEvent) =>
 						handleButtonPress(event, 'right')
 					}
-					onTouchEnd={handleButtonRelease}
 					tabIndex={-1}
 					type="button"
 				>

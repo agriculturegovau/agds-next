@@ -15,10 +15,10 @@ afterEach(cleanup);
 function renderBaseModal() {
 	return render(
 		<Modal
+			actions={<Button>Close modal</Button>}
 			isOpen
 			onClose={() => undefined}
 			title="Modal title"
-			actions={<Button>Close modal</Button>}
 		>
 			<Text as="p">This is the Modal Body paragraph.</Text>
 		</Modal>
@@ -29,18 +29,18 @@ function ModalExample() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={openModal} data-testid="open-modal-button">
+			<Button data-testid="open-modal-button" onClick={openModal}>
 				Open modal
 			</Button>
 			<Modal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				title="Modal title"
 				actions={
-					<Button onClick={closeModal} data-testid="close-modal-button">
+					<Button data-testid="close-modal-button" onClick={closeModal}>
 						Close modal
 					</Button>
 				}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title="Modal title"
 			>
 				<Text as="p">This is the Modal Body paragraph.</Text>
 			</Modal>
@@ -52,18 +52,18 @@ function OnDismissExample() {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	return (
 		<div>
-			<Button onClick={openModal} data-testid="open-modal-button">
+			<Button data-testid="open-modal-button" onClick={openModal}>
 				Open modal
 			</Button>
 			<Modal
-				isOpen={isModalOpen}
-				onDismiss={closeModal}
-				title="Modal title"
 				actions={
-					<Button onClick={closeModal} data-testid="close-modal-button">
+					<Button data-testid="close-modal-button" onClick={closeModal}>
 						Close modal
 					</Button>
 				}
+				isOpen={isModalOpen}
+				onDismiss={closeModal}
+				title="Modal title"
 			/>
 		</div>
 	);

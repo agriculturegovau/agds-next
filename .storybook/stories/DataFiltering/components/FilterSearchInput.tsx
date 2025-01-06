@@ -8,18 +8,18 @@ export const FilterSearchInput = ({ block }: { block?: boolean }) => {
 	return (
 		<div aria-label="Audits" role="search">
 			<SearchInput
-				label="Search Business name"
 				aria-controls={tableId}
-				maxWidth="lg"
-				hideOptionalLabel
 				block={block}
-				value={filters.businessName || ''}
+				hideOptionalLabel
+				label="Search Business name"
+				maxWidth="lg"
 				onChange={(searchString) => {
 					// TODO debounce
 					setFilter({
 						businessName: searchString,
 					});
 				}}
+				value={filters.businessName || ''}
 			/>
 		</div>
 	);

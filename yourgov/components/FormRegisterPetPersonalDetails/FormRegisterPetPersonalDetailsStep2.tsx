@@ -80,23 +80,23 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
-			title="Preferred contact method"
-			introduction="We may need to contact you to check details of your application."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="We may need to contact you to check details of your application."
+			title="Preferred contact method"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
 							ref={errorRef}
-							tone="error"
-							title="There is a problem"
 							tabIndex={-1}
+							title="There is a problem"
+							tone="error"
 						>
 							<Text as="p">
 								Please correct the following fields and try again
@@ -113,12 +113,12 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 						</PageAlert>
 					)}
 					<ControlGroup
+						block
 						id="checkbox"
-						label="Preferred contact method"
 						invalid={Boolean(errors.contactMethod)}
+						label="Preferred contact method"
 						message={errors.contactMethod?.message}
 						required
-						block
 					>
 						<Radio {...register('contactMethod')} value="Mail">
 							Mail
@@ -129,14 +129,14 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 						{showConditionalField ? (
 							<ConditionalFieldContainer>
 								<TextInput
-									id="mobilePhone"
-									type="tel"
-									autoComplete="tel"
-									label="Provide mobile phone number"
 									{...register('mobileNumber')}
+									autoComplete="tel"
+									id="mobilePhone"
 									invalid={Boolean(errors.mobileNumber?.message)}
+									label="Provide mobile phone number"
 									message={errors.mobileNumber?.message}
 									required
+									type="tel"
 								/>
 							</ConditionalFieldContainer>
 						) : null}

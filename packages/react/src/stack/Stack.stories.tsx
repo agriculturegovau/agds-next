@@ -20,70 +20,70 @@ export const Basic: Story = {
 	},
 	render: (props) => (
 		<Stack {...props}>
-			<Box display="block" height={40} background="shadeAlt" />
-			<Box display="block" height={80} background="shadeAlt" />
-			<Box display="block" height={30} background="shadeAlt" />
-			<Box display="block" height={60} background="shadeAlt" />
+			<Box background="shadeAlt" display="block" height={40} />
+			<Box background="shadeAlt" display="block" height={80} />
+			<Box background="shadeAlt" display="block" height={30} />
+			<Box background="shadeAlt" display="block" height={60} />
 		</Stack>
 	),
 };
 
 export const Alignment = () => (
 	<Flex gap={6} justifyContent="space-between">
-		<Stack gap={2} alignItems="center">
+		<Stack alignItems="center" gap={2}>
 			<Box fontFamily="monospace">center</Box>
-			<Stack gap={6} alignItems="center" border>
-				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
-				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
+			<Stack alignItems="center" border gap={6}>
+				<Box background="shadeAlt" display="block" height={100} minWidth={40} />
+				<Box background="shadeAlt" display="block" height={100} minWidth={60} />
 				<Box
+					background="shadeAlt"
 					display="block"
 					height={100}
 					minWidth={100}
-					background="shadeAlt"
 				/>
-				<Box display="block" height={100} minWidth={80} background="shadeAlt" />
+				<Box background="shadeAlt" display="block" height={100} minWidth={80} />
 			</Stack>
 		</Stack>
-		<Stack gap={2} alignItems="center">
+		<Stack alignItems="center" gap={2}>
 			<Box fontFamily="monospace">flex-start</Box>
-			<Stack gap={6} alignItems="flex-start" border>
-				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
-				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
+			<Stack alignItems="flex-start" border gap={6}>
+				<Box background="shadeAlt" display="block" height={100} minWidth={40} />
+				<Box background="shadeAlt" display="block" height={100} minWidth={60} />
 				<Box
+					background="shadeAlt"
 					display="block"
 					height={100}
 					minWidth={100}
-					background="shadeAlt"
 				/>
-				<Box display="block" height={100} minWidth={80} background="shadeAlt" />
+				<Box background="shadeAlt" display="block" height={100} minWidth={80} />
 			</Stack>
 		</Stack>
-		<Stack gap={2} alignItems="center">
+		<Stack alignItems="center" gap={2}>
 			<Box fontFamily="monospace">flex-end</Box>
-			<Stack gap={6} alignItems="flex-end" border>
-				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
-				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
+			<Stack alignItems="flex-end" border gap={6}>
+				<Box background="shadeAlt" display="block" height={100} minWidth={40} />
+				<Box background="shadeAlt" display="block" height={100} minWidth={60} />
 				<Box
+					background="shadeAlt"
 					display="block"
 					height={100}
 					minWidth={100}
-					background="shadeAlt"
 				/>
-				<Box display="block" height={100} minWidth={80} background="shadeAlt" />
+				<Box background="shadeAlt" display="block" height={100} minWidth={80} />
 			</Stack>
 		</Stack>
-		<Stack gap={2} alignItems="center">
+		<Stack alignItems="center" gap={2}>
 			<Box fontFamily="monospace">stretch</Box>
-			<Stack gap={6} alignItems="stretch" border>
-				<Box display="block" height={100} minWidth={40} background="shadeAlt" />
-				<Box display="block" height={100} minWidth={60} background="shadeAlt" />
+			<Stack alignItems="stretch" border gap={6}>
+				<Box background="shadeAlt" display="block" height={100} minWidth={40} />
+				<Box background="shadeAlt" display="block" height={100} minWidth={60} />
 				<Box
+					background="shadeAlt"
 					display="block"
 					height={100}
 					minWidth={100}
-					background="shadeAlt"
 				/>
-				<Box display="block" height={100} minWidth={80} background="shadeAlt" />
+				<Box background="shadeAlt" display="block" height={100} minWidth={80} />
 			</Stack>
 		</Stack>
 	</Flex>

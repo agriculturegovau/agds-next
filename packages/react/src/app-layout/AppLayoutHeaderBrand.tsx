@@ -148,13 +148,8 @@ export function AppLayoutHeaderBrand({
 		</Flex>
 	) : (
 		<Flex
-			as={Link}
-			href={href}
-			paddingY={0.5}
-			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={{ xs: 'flex-start', md: 'center' }}
-			gap={{ xs: 1, md: 0 }}
-			focusRingFor="keyboard"
+			as={Link}
 			color="text"
 			css={{
 				textDecoration: 'none',
@@ -162,15 +157,20 @@ export function AppLayoutHeaderBrand({
 				// Logo styles
 				svg: { display: 'block', height: LOGO_HEIGHT, flexShrink: 0 },
 			}}
+			flexDirection={{ xs: 'column', md: 'row' }}
+			focusRingFor="keyboard"
+			gap={{ xs: 1, md: 0 }}
+			href={href}
+			paddingY={0.5}
 		>
 			{logo}
 
 			<DividingLine singleLogo />
 
 			<Flex
+				alignItems="flex-start"
 				flexDirection="column"
 				justifyContent="center"
-				alignItems="flex-start"
 				maxWidth={tokens.maxWidth.bodyText}
 			>
 				<Flex alignItems="flex-start" gap={0.5}>
@@ -201,9 +201,6 @@ function AppLayoutHeaderBrandBadge({
 }: AppLayoutHeaderBrandBadgeProps) {
 	return (
 		<Box
-			fontWeight="bold"
-			paddingLeft={0.5}
-			paddingRight={0.5}
 			border
 			borderWidth="md"
 			css={{
@@ -214,6 +211,9 @@ function AppLayoutHeaderBrandBadge({
 				borderColor: boxPalette.foregroundText,
 				borderRadius: '2em',
 			}}
+			fontWeight="bold"
+			paddingLeft={0.5}
+			paddingRight={0.5}
 		>
 			{children}
 		</Box>

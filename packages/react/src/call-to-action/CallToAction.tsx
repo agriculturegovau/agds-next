@@ -29,16 +29,16 @@ const CallToAction = ({
 	...props
 }: CallToActionProps) => {
 	return (
-		<Flex inline css={{ alignSelf: 'flex-start' }}>
+		<Flex css={{ alignSelf: 'flex-start' }} inline>
 			<Flex
+				alignItems="center"
 				as={as}
 				className={className}
-				gap={0.25}
-				alignItems="center"
-				fontWeight="bold"
-				fontSize="md"
-				link
 				focusRingFor="keyboard"
+				fontSize="md"
+				fontWeight="bold"
+				gap={0.25}
+				link
 				{...props}
 			>
 				{children}

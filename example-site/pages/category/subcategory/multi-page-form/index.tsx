@@ -35,13 +35,13 @@ export default function FormMultiPageHomePage() {
 									]}
 								/>
 								<PageTitle
-									title="Multi-page form title (H1)"
-									introduction="The introductory paragraph provides context about the entire multi-page form. Use a short paragraph to reduce cognitive load."
 									callToAction={
 										<Text as="p" color="muted">
 											Takes around 10 minutes.
 										</Text>
 									}
+									introduction="The introductory paragraph provides context about the entire multi-page form. Use a short paragraph to reduce cognitive load."
+									title="Multi-page form title (H1)"
 								/>
 								<Stack gap={1.5}>
 									<H2>Form requirements section heading (H2)</H2>

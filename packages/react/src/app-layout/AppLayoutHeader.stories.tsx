@@ -11,8 +11,8 @@ const accountDetails = {
 	dropdown: (
 		<ExampleAccountDropdown
 			businesses={exampleData.businessNames.regular}
-			selectedBusinessName={exampleData.businessNames.regular[0]}
 			onBusinessChange={console.log}
+			selectedBusinessName={exampleData.businessNames.regular[0]}
 		/>
 	),
 };
@@ -53,7 +53,7 @@ export const BodyBackground: Story = {
 
 export const FocusMode: Story = {
 	render: (props) => (
-		<AppLayout focusMode={true}>
+		<AppLayout focusMode>
 			<AppLayoutHeader {...props} />
 		</AppLayout>
 	),

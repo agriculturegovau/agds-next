@@ -20,7 +20,6 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 	) {
 		return (
 			<details
-				ref={ref}
 				css={{
 					'&[open] summary svg:last-of-type': {
 						transform: 'rotate(180deg)',
@@ -29,18 +28,19 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 						display: 'none',
 					},
 				}}
+				ref={ref}
 			>
 				<Flex
+					alignItems="center"
 					as="summary"
 					css={{
 						// iOS VoiceOver does not announce the expanded state of `summary` elements when they are inline.
 						// Here we're using `fit-content` to simulate the visual effect of an inline element while maintaining the correct announcement.
 						width: 'fit-content',
 					}}
-					link
 					focusRingFor="keyboard"
-					alignItems="center"
 					fontWeight="bold"
+					link
 					paddingY={0.5}
 					rounded
 				>
@@ -55,16 +55,16 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 					)}
 					{label}
 					<ChevronDownIcon
-						weight="bold"
 						css={{ marginLeft: mapSpacing(0.25) }}
+						weight="bold"
 					/>
 				</Flex>
 				<Box
 					background={onBodyAlt ? 'shadeAlt' : 'shade'}
-					padding={1.5}
 					borderLeft
 					borderLeftWidth="xl"
 					highContrastOutline
+					padding={1.5}
 				>
 					{children}
 				</Box>

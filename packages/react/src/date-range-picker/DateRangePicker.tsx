@@ -355,71 +355,71 @@ export const DateRangePicker = ({
 	);
 
 	return (
-		<FieldContainer invalid={invalid} id={fieldsetId}>
+		<FieldContainer id={fieldsetId} invalid={invalid}>
 			<Box as="fieldset">
 				{/* Legend needs to be the first element, so if none is supplied render a visually hidden element. */}
 				<FieldLabel
 					as="legend"
-					required={required}
-					hideOptionalLabel={hideOptionalLabel}
 					css={legend ? undefined : visuallyHiddenStyles}
+					hideOptionalLabel={hideOptionalLabel}
+					required={required}
 				>
 					{legend ?? 'Date range'}
 				</FieldLabel>
 				<Stack
-					gap={0.5}
 					css={{ marginTop: legend ? mapSpacing(0.5) : undefined }}
+					gap={0.5}
 				>
 					{hint ? <FieldHint id={hintId}>{hint}</FieldHint> : null}
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex {...popover.getReferenceProps()} flexWrap="wrap" inline gap={1}>
+					<Flex {...popover.getReferenceProps()} flexWrap="wrap" gap={1} inline>
 						<DateInput
 							aria-describedby={
 								fromDescribedByIds.length > 0 ? fromDescribedByIds : null
 							}
-							ref={fromInputRef}
-							label={fromLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={fromInputValue}
-							onBlur={onFromInputBlur}
-							onChange={onFromInputChange}
-							buttonRef={fromTriggerRef}
-							buttonOnClick={onFromTriggerClick}
 							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
 								rangeName: 'start',
 								value: fromInputValue,
 							})}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: fromInvalid }}
+							buttonOnClick={onFromTriggerClick}
+							buttonRef={fromTriggerRef}
 							dateFormat={dateFormat}
+							disabled={disabled}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							id={fromId}
+							invalid={{ field: false, input: fromInvalid }}
+							label={fromLabel}
+							onBlur={onFromInputBlur}
+							onChange={onFromInputChange}
+							ref={fromInputRef}
+							required={required}
+							value={fromInputValue}
 						/>
 						<DateInput
 							aria-describedby={
 								toDescribedByIds.length > 0 ? toDescribedByIds : null
 							}
-							ref={toInputRef}
-							label={toLabel}
-							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
-							value={toInputValue}
-							onBlur={onToInputBlur}
-							onChange={onToInputChange}
-							buttonRef={toTriggerRef}
-							buttonOnClick={onToTriggerClick}
 							buttonAriaLabel={getDateInputButtonAriaLabel({
 								allowedDateFormats,
 								rangeName: 'end',
 								value: toInputValue,
 							})}
-							disabled={disabled}
-							required={required}
-							invalid={{ field: false, input: toInvalid }}
+							buttonOnClick={onToTriggerClick}
+							buttonRef={toTriggerRef}
 							dateFormat={dateFormat}
+							disabled={disabled}
+							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							id={toId}
+							invalid={{ field: false, input: toInvalid }}
+							label={toLabel}
+							onBlur={onToInputBlur}
+							onChange={onToInputChange}
+							ref={toInputRef}
+							required={required}
+							value={toInputValue}
 						/>
 					</Flex>
 				</Stack>

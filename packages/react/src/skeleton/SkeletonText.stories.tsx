@@ -30,17 +30,17 @@ export const Sizes: Story = {
 					<Columns gap={[0.5, 1.5]} key={size}>
 						<Column columnSpan={[12, 6]}>
 							<SkeletonText
-								key={size}
 								fontSize={size}
+								key={size}
 								lineHeight={lineHeight}
 							/>
 						</Column>
 						<Column columnSpan={[12, 6]}>
 							<Text
+								border
 								display="block"
 								fontSize={size}
 								lineHeight={lineHeight}
-								border
 							>
 								Text {size}
 							</Text>

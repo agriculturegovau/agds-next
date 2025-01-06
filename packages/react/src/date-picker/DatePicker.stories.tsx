@@ -8,7 +8,7 @@ import { DatePicker, DatePickerProps } from './DatePicker';
 
 function ControlledDatePicker(props: DatePickerProps) {
 	const [value, setValue] = useState<Date>();
-	return <DatePicker {...props} value={value} onChange={setValue} />;
+	return <DatePicker {...props} onChange={setValue} value={value} />;
 }
 
 const meta: Meta<typeof DatePicker> = {
@@ -99,13 +99,13 @@ export const ClearableExample: Story = {
 	render: function Render(props) {
 		const [value, setValue] = useState<Date>();
 		return (
-			<Stack gap={4} alignItems="flex-start">
-				<DatePicker {...props} value={value} onChange={setValue} />
+			<Stack alignItems="flex-start" gap={4}>
+				<DatePicker {...props} onChange={setValue} value={value} />
 				<ButtonGroup>
 					<Button onClick={() => setValue(new Date(1999, 11, 25))}>
 						Set pre-defined date
 					</Button>
-					<Button variant="secondary" onClick={() => setValue(undefined)}>
+					<Button onClick={() => setValue(undefined)} variant="secondary">
 						Clear
 					</Button>
 				</ButtonGroup>

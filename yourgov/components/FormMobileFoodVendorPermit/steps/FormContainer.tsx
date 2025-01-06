@@ -67,16 +67,16 @@ export function FormContainer({
 				</ContentBleed>
 			</Column>
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-				<Stack gap={3} alignItems="flex-start">
+				<Stack alignItems="flex-start" gap={3}>
 					<DirectionLink direction="left" href={backHref}>
 						Back
 					</DirectionLink>
 					<GlobalFormContainer
-						title={formTitle}
-						introduction={formIntroduction}
 						callToAction={formCallToAction}
 						hideRequiredFieldsMessage={hideRequiredFieldsMessage}
+						introduction={formIntroduction}
 						shouldFocusTitle={shouldFocusTitle}
+						title={formTitle}
 					>
 						{children}
 					</GlobalFormContainer>

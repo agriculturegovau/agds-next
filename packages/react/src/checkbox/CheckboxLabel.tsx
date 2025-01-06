@@ -20,12 +20,12 @@ export function CheckboxLabel({
 	const paddingTop = paddingTopMap[size];
 	return (
 		<Text
-			flexGrow={1}
 			color={disabled ? 'muted' : 'text'}
 			css={{
 				// Ensures the label is vertically aligned with the indicator across multiple lines.
 				paddingTop,
 			}}
+			flexGrow={1}
 		>
 			{children}
 		</Text>

@@ -62,7 +62,7 @@ function ErrorState() {
 			<Stack gap={2}>
 				<Stack gap={1}>
 					<AlertFilledIcon color="error" size="lg" />
-					<Heading type="h2" fontSize="lg">
+					<Heading fontSize="lg" type="h2">
 						Failed to load
 					</Heading>
 					<Text>
@@ -83,8 +83,8 @@ function EmptyState() {
 			<Heading type="h1">Star wars planets</Heading>
 			<Stack gap={2}>
 				<Stack gap={1}>
-					<HelpIcon size="lg" color="muted" />
-					<Heading type="h2" fontSize="lg">
+					<HelpIcon color="muted" size="lg" />
+					<Heading fontSize="lg" type="h2">
 						No planets found
 					</Heading>
 				</Stack>
@@ -103,7 +103,7 @@ function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 			<Columns as="ul" cols={[1, 2, 3, 3]}>
 				{items.map((item) => {
 					return (
-						<Card as="li" key={item.id} shadow clickable>
+						<Card as="li" clickable key={item.id} shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading as="h2" type="h3">

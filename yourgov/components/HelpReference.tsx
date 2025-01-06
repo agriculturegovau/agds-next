@@ -27,16 +27,16 @@ export function HelpReference({
 				{linkContent}
 			</TextLink>
 			<Drawer
-				isOpen={drawIsOpen}
-				onClose={() => {
-					setDrawIsOpen(false);
-				}}
-				title="Help"
 				actions={
 					<TextLinkExternal href={linkHref}>
 						Open in new window
 					</TextLinkExternal>
 				}
+				isOpen={drawIsOpen}
+				onClose={() => {
+					setDrawIsOpen(false);
+				}}
+				title="Help"
 				width="lg"
 			>
 				{drawerContent}

@@ -20,7 +20,7 @@ export type MainNavListDropdown = {
 export function MainNavListItemDropdown(props: MainNavListDropdown) {
 	return (
 		<li>
-			<DropdownMenu popoverPlacement="bottom-end" popoverOffset={-8}>
+			<DropdownMenu popoverOffset={-8} popoverPlacement="bottom-end">
 				<MainNavListItemDropdownButton {...props} />
 				{props.dropdown}
 			</DropdownMenu>
@@ -44,25 +44,9 @@ function MainNavListItemDropdownButton({
 
 	return (
 		<Flex
-			as={BaseButton}
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			ref={ref}
-			fontSize={{ xs: 'xs', lg: 'sm' }}
-			justifyContent="center"
 			alignItems="center"
-			gap={0.5}
-			paddingLeft={1}
-			paddingRight={1}
+			as={BaseButton}
 			color="action"
-			height="100%"
-			maxWidth={{
-				// 17.625rem is the available space beside the hamburger at 375px
-				xs: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
-				// It's then reduced slightly to give more room for the nav items
-				lg: `calc(16rem - ${scrollbarWidthRef.current}px)`,
-			}}
-			focusRingFor="keyboard"
 			css={[
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
 				{
@@ -74,17 +58,33 @@ function MainNavListItemDropdownButton({
 					},
 				},
 			]}
+			focusRingFor="keyboard"
+			fontSize={{ xs: 'xs', lg: 'sm' }}
+			gap={0.5}
+			height="100%"
+			justifyContent="center"
+			maxWidth={{
+				// 17.625rem is the available space beside the hamburger at 375px
+				xs: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
+				// It's then reduced slightly to give more room for the nav items
+				lg: `calc(16rem - ${scrollbarWidthRef.current}px)`,
+			}}
+			paddingLeft={1}
+			paddingRight={1}
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			ref={ref}
 			{...buttonProps}
 		>
 			{beforeElement}
-			<span data-main-nav-list-item-label css={packs.truncate}>
+			<span css={packs.truncate} data-main-nav-list-item-label>
 				{label}
 			</span>
 			{endElement}
 			{isMenuOpen ? (
-				<ChevronUpIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />
+				<ChevronUpIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 			) : (
-				<ChevronDownIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />
+				<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 			)}
 		</Flex>
 	);

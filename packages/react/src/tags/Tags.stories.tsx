@@ -56,7 +56,7 @@ export const Modular = () => (
 		</Text>
 		<TagsList>
 			{exampleLinks.map(({ href, label }, idx) => (
-				<Box key={idx} as="li">
+				<Box as="li" key={idx}>
 					<Tag href={href}>{label}</Tag>
 				</Box>
 			))}

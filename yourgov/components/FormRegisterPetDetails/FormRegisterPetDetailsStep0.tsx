@@ -40,19 +40,19 @@ export const FormRegisterPetDetailsStep0 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Type of pet"
-			introduction="Domestic pets living in urban environments need to be registered."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="Domestic pets living in urban environments need to be registered."
+			title="Type of pet"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					<ControlGroup
+						block
 						id="checkbox"
-						label="What type of animal are you registering?"
 						invalid={Boolean(errors.typeOfPet)}
+						label="What type of animal are you registering?"
 						message={errors.typeOfPet?.message}
 						required
-						block
 					>
 						<Radio {...register('typeOfPet')} value="Dog">
 							Dog

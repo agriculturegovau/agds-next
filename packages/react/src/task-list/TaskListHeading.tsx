@@ -12,7 +12,7 @@ export const TaskListHeading = ({
 	return (
 		<Stack gap={1}>
 			<H2>Complete these tasks</H2>
-			<Text fontSize="sm" color="muted">
+			<Text color="muted" fontSize="sm">
 				{tasksCompleted} of {totalTasks} tasks completed
 			</Text>
 		</Stack>

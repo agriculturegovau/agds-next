@@ -46,9 +46,9 @@ export default function Page() {
 						{registrationId && (
 							<PageAlert
 								ref={pageAlertRef}
+								tabIndex={-1}
 								title="Your pet registration has been submitted"
 								tone="success"
-								tabIndex={-1}
 							>
 								<Text as="p">
 									Registration application number {registrationId}

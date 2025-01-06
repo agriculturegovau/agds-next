@@ -95,7 +95,6 @@ export function HeaderBrand({
 			</Flex>
 
 			<Flex
-				gap={GAP_REM}
 				css={
 					dividerPosition === 'after'
 						? {
@@ -107,6 +106,7 @@ export function HeaderBrand({
 						  }
 						: undefined
 				}
+				gap={GAP_REM}
 			>
 				{dividerPosition === 'after' && (
 					<DividingLine dividerPosition={dividerPosition} />
@@ -146,27 +146,27 @@ export function HeaderBrand({
 		</Flex>
 	) : (
 		<Flex
-			as={Link}
-			href={href}
-			inline
-			flexDirection={{ xs: 'column', md: 'row' }}
-			color="text"
-			gap={1}
-			focusRingFor="keyboard"
 			alignItems="stretch"
+			as={Link}
+			color="text"
 			css={{
 				textDecoration: 'none',
 				':hover': packs.underline,
 			}}
+			flexDirection={{ xs: 'column', md: 'row' }}
+			focusRingFor="keyboard"
+			gap={1}
+			href={href}
+			inline
 		>
 			{logo ? (
 				<Flex
 					alignItems="flex-start"
-					maxWidth={logoWidthMap[size]}
 					css={{
 						' img, svg': { width: '100%' },
 						...packs.print.hidden,
 					}}
+					maxWidth={logoWidthMap[size]}
 				>
 					{logo}
 				</Flex>
@@ -174,16 +174,16 @@ export function HeaderBrand({
 			{logo ? (
 				<Box
 					borderRight
-					display={{ xs: 'none', md: 'block' }}
 					css={packs.print.hidden}
+					display={{ xs: 'none', md: 'block' }}
 				/>
 			) : null}
 			<Stack justifyContent="center">
 				<Flex alignItems="flex-start" gap={0.5}>
 					<Text
-						lineHeight="default"
 						fontSize={headingSizeMap[size]}
 						fontWeight="bold"
+						lineHeight="default"
 						maxWidth={tokens.maxWidth.bodyText}
 					>
 						{heading}

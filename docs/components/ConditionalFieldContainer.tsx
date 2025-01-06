@@ -11,10 +11,10 @@ export function ConditionalFieldContainer({
 		<Box
 			borderLeft
 			borderLeftWidth="xl"
-			paddingLeft={1.5}
 			css={{
 				marginLeft: `calc(${mapSpacing(1)} - ${tokens.borderWidth.xl / 2}px)`,
 			}}
+			paddingLeft={1.5}
 		>
 			{children}
 		</Box>

@@ -5,10 +5,10 @@ import { Stack } from '../../../../packages/react/src/stack';
 export const FilterRegion = ({ children }: { children: ReactNode }) => {
 	return (
 		<Stack
-			as="section"
-			gap={1}
 			aria-label="data filtering"
+			as="section"
 			borderBottom
+			gap={1}
 			paddingBottom={1.5}
 		>
 			{children}
@@ -19,14 +19,14 @@ export const FilterRegion = ({ children }: { children: ReactNode }) => {
 export const FilterBar = ({ children }: { children: ReactNode }) => {
 	return (
 		<Flex
-			columnGap={1}
-			rowGap={1.5}
 			alignItems={{ xs: 'stretch', lg: 'flex-end' }}
-			justifyContent={{ xs: 'flex-start', md: 'space-between' }}
+			columnGap={1}
 			flexDirection={{
 				xs: 'column',
 				lg: 'row',
 			}}
+			justifyContent={{ xs: 'flex-start', md: 'space-between' }}
+			rowGap={1.5}
 		>
 			{children}
 		</Flex>
@@ -36,11 +36,11 @@ export const FilterBar = ({ children }: { children: ReactNode }) => {
 export const FilterBarGroup = ({ children }: { children: ReactNode }) => {
 	return (
 		<Flex
-			flexWrap="wrap"
-			columnGap={1}
-			rowGap={1.5}
-			flexDirection={{ xs: 'column', md: 'row' }}
 			alignItems={{ xs: 'stretch', md: 'flex-end' }}
+			columnGap={1}
+			flexDirection={{ xs: 'column', md: 'row' }}
+			flexWrap="wrap"
+			rowGap={1.5}
 		>
 			{children}
 		</Flex>

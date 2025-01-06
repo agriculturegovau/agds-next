@@ -22,11 +22,9 @@ export const Card = ({
 	return (
 		<Box
 			as={as} // Note: this should be an li when used in a card list
-			display="block"
+			background={background}
 			border
 			borderColor="muted"
-			background={background}
-			rounded
 			className={className}
 			css={{
 				position: 'relative',
@@ -46,6 +44,8 @@ export const Card = ({
 					'&:hover': clickable ? { boxShadow: tokens.shadow.md } : undefined,
 				}),
 			}}
+			display="block"
+			rounded
 		>
 			{children}
 		</Box>

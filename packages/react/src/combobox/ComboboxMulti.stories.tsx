@@ -11,7 +11,7 @@ const meta: Meta<typeof ComboboxMulti> = {
 	component: ComboboxMulti,
 	render: function ComboboxMultiStory(props) {
 		const [value, setValue] = useState<Option[]>([]);
-		return <ComboboxMulti {...props} value={value} onChange={setValue} />;
+		return <ComboboxMulti {...props} onChange={setValue} value={value} />;
 	},
 };
 
@@ -75,28 +75,28 @@ export const CustomRender: Story = {
 		return (
 			<ComboboxMulti
 				label="Search users"
-				value={value}
 				onChange={setValue}
 				options={NAME_OPTIONS}
 				renderItem={(item, inputValue) => (
 					<ComboboxRenderItem
-						itemLabel={item.label}
-						inputValue={inputValue}
-						secondaryText={`Role: ${item.jobTitle}`}
-						tertiaryText={`Job: ${item.status}`}
 						beforeElement={
 							<Avatar name={item.fullName} size="sm" tone="action" />
 						}
 						endElement={
 							item.unreadMessageCount > 0 ? (
 								<NotificationBadge
-									value={item.unreadMessageCount}
 									tone="action"
+									value={item.unreadMessageCount}
 								/>
 							) : null
 						}
+						inputValue={inputValue}
+						itemLabel={item.label}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
 					/>
 				)}
+				value={value}
 			/>
 		);
 	},

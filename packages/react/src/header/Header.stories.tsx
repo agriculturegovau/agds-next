@@ -91,13 +91,13 @@ export const WithMainNav: Story = {
 			<Header {...args} />
 			<MainNav
 				activePath="#account"
+				background="body"
 				items={[
 					{ href: '#account', label: 'Home' },
 					{ href: '#establishments', label: 'Establishments' },
 					{ href: '#intelligence', label: 'Data and insights' },
 					{ href: '#compliance', label: 'Compliance' },
 				]}
-				background="body"
 			/>
 		</Fragment>
 	),

@@ -8,8 +8,16 @@ export const SortBySelect = () => {
 
 	return (
 		<Select
-			label="Sort by"
+			aria-controls={tableId}
 			hideOptionalLabel
+			label="Sort by"
+			onChange={(e) => {
+				const [field, order] = e.target.value.split('-');
+				setSort({
+					field: field as keyof StaffMember,
+					order: order as 'ASC' | 'DESC',
+				});
+			}}
 			options={[
 				{
 					value: 'name-ASC',
@@ -53,14 +61,6 @@ export const SortBySelect = () => {
 				},
 			]}
 			value={`${sort.field}-${sort.order}`}
-			aria-controls={tableId}
-			onChange={(e) => {
-				const [field, order] = e.target.value.split('-');
-				setSort({
-					field: field as keyof StaffMember,
-					order: order as 'ASC' | 'DESC',
-				});
-			}}
 		/>
 	);
 };

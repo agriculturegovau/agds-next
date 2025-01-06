@@ -59,7 +59,7 @@ export const SecondaryLinks: Story = {
 				label: 'Messages',
 				endElement: (
 					<Fragment>
-						<NotificationBadge tone="action" value={5} aria-hidden />
+						<NotificationBadge aria-hidden tone="action" value={5} />
 						<VisuallyHidden>, 5 unread</VisuallyHidden>
 					</Fragment>
 				),
@@ -90,7 +90,7 @@ export const SecondaryDropdown: Story = {
 		secondaryItems: [
 			{
 				label: 'Moe Syzlack',
-				beforeElement: <Avatar name="Moe Syzlack" tone="action" size="md" />,
+				beforeElement: <Avatar name="Moe Syzlack" size="md" tone="action" />,
 				dropdown: (
 					<DropdownMenuPanel palette="light">
 						<DropdownMenuItemLink href="#profile">Profile</DropdownMenuItemLink>
@@ -136,8 +136,8 @@ export const SecondaryDropdownLongName: Story = {
 				beforeElement: (
 					<Avatar
 						name="Benjamin Alexander Harrington-Smythe"
-						tone="action"
 						size="md"
+						tone="action"
 					/>
 				),
 				dropdown: (
@@ -180,7 +180,7 @@ export const EndElement: Story = {
 				label: 'Issues',
 				endElement: (
 					<Fragment>
-						<NotificationBadge tone="action" value={5} aria-hidden />
+						<NotificationBadge aria-hidden tone="action" value={5} />
 						<VisuallyHidden>, 5 notifications</VisuallyHidden>
 					</Fragment>
 				),
@@ -201,11 +201,11 @@ export const WithHeaderAndDropdown: Story = {
 		return (
 			<Box dark>
 				<Header
-					heading="Export Service"
-					subline="Supporting Australian agricultural exports"
-					logo={<Logo />}
 					background="bodyAlt"
-					rightContent={<SearchInput label="Search" hideOptionalLabel block />}
+					heading="Export Service"
+					logo={<Logo />}
+					rightContent={<SearchInput block hideOptionalLabel label="Search" />}
+					subline="Supporting Australian agricultural exports"
 				/>
 				<MainNav
 					activePath="#home"
@@ -218,7 +218,7 @@ export const WithHeaderAndDropdown: Story = {
 						{
 							label: 'Moe Syzlack',
 							beforeElement: (
-								<Avatar name="Moe Syzlack" tone="action" size="md" />
+								<Avatar name="Moe Syzlack" size="md" tone="action" />
 							),
 							dropdown: (
 								<DropdownMenuPanel palette="light">
@@ -252,7 +252,7 @@ export const WithHeaderAndDropdown: Story = {
 										<DropdownMenuItemLink href="#messages" icon={EmailIcon}>
 											Messages
 										</DropdownMenuItemLink>
-										<DropdownMenuItem onClick={console.log} icon={ExitIcon}>
+										<DropdownMenuItem icon={ExitIcon} onClick={console.log}>
 											Sign out
 										</DropdownMenuItem>
 									</DropdownMenuGroup>

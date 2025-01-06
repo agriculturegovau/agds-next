@@ -287,13 +287,13 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		return (
 			<Field
-				label={label}
 				hideOptionalLabel={hideOptionalLabel}
-				required={required}
 				hint={hint}
-				message={message}
-				invalid={invalid}
 				id={id}
+				invalid={invalid}
+				label={label}
+				message={message}
+				required={required}
 			>
 				{(a11yProps) => {
 					const buttonAriaDescribedBy = [
@@ -319,7 +319,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 									padding={1.5}
 									rounded
 								>
-									<UploadIcon size="lg" color="muted" />
+									<UploadIcon color="muted" size="lg" />
 									<input
 										{...dropzoneInputProps}
 										{...consumerProps}

@@ -54,27 +54,27 @@ export function Pagination({
 						case 'direction':
 							return (
 								<PaginationItemDirection
-									key={item.direction}
 									direction={item.direction}
 									href={generateHref(item.pageNumber)}
+									key={item.direction}
 								/>
 							);
 						case 'page':
 							return (
 								<PaginationItemPage
-									key={item.pageNumber}
 									href={generateHref(item.pageNumber)}
-									pageNumber={item.pageNumber}
 									isActive={item.isActive}
+									key={item.pageNumber}
+									pageNumber={item.pageNumber}
 								/>
 							);
 						case 'separator':
 							return (
 								<PaginationItemSeparator
 									isLinks
-									missingRightPageNumber={pagination[index + 1].pageNumber - 1}
-									missingLeftPageNumber={pagination[index - 1].pageNumber + 1}
 									key={`${index}-separator`}
+									missingLeftPageNumber={pagination[index - 1].pageNumber + 1}
+									missingRightPageNumber={pagination[index + 1].pageNumber - 1}
 								/>
 							);
 						default:
@@ -87,9 +87,9 @@ export function Pagination({
 					{itemRangeText && <Text role="status">{itemRangeText}</Text>}
 					{itemsPerPage && onItemsPerPageChange && (
 						<PaginationItemsPerPageSelect
-							value={itemsPerPage}
-							options={itemsPerPageOptions}
 							onChange={onItemsPerPageChange}
+							options={itemsPerPageOptions}
+							value={itemsPerPage}
 						/>
 					)}
 				</PaginationSecondaryControlContainer>

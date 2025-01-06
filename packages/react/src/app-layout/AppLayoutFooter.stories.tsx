@@ -14,6 +14,7 @@ const meta: Meta<typeof AppLayoutFooter> = {
 			<AppLayoutFooter {...props}>
 				<nav aria-label="footer">
 					<LinkList
+						horizontal
 						links={[
 							{ label: 'Home', href: '/' },
 							{
@@ -29,7 +30,6 @@ const meta: Meta<typeof AppLayoutFooter> = {
 								href: 'https://github.com/agriculturegovau/agds-starter-kit',
 							},
 						]}
-						horizontal
 					/>
 				</nav>
 				<AppLayoutFooterDivider />

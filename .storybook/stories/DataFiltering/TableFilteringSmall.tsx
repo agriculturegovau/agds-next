@@ -42,7 +42,7 @@ export const TableFilteringSmall = ({
 					</FilterBar>
 				</FilterRegion>
 				{selectable && (
-					<Box paddingLeft={0.75} paddingY={0.75} borderBottom>
+					<Box borderBottom paddingLeft={0.75} paddingY={0.75}>
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}

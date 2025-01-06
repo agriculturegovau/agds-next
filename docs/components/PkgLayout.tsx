@@ -31,55 +31,55 @@ export function PkgLayout({
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
-				applyMainElement={true}
+				applyMainElement
+				breadcrumbs={breadcrumbs}
+				editPath={editPath}
 				sideNav={{
 					title: 'Components',
 					titleLink: '/components',
 					items: navLinks,
 				}}
-				editPath={editPath}
-				breadcrumbs={breadcrumbs}
 			>
 				<PageTitle
-					title={pkg.title}
-					introduction={pkg.description}
 					callToAction={
 						(pkg.storybookPath || pkg.figmaGalleryNodeId) && (
 							<Flex
-								gap={1.5}
-								flexWrap="wrap"
-								flexDirection={['column', 'row']}
 								alignItems="flex-start"
+								flexDirection={['column', 'row']}
+								flexWrap="wrap"
+								gap={1.5}
 							>
 								{pkg.figmaGalleryNodeId && (
 									<ButtonLink
-										variant="text"
 										href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pkg.figmaGalleryNodeId}`}
 										iconBefore={FigmaLogo}
+										variant="text"
 									>
 										View in Figma
 									</ButtonLink>
 								)}
 								{pkg.storybookPath && (
 									<ButtonLink
-										variant="text"
 										href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pkg.storybookPath}`}
 										iconBefore={StorybookLogo}
+										variant="text"
 									>
 										View in Storybook
 									</ButtonLink>
 								)}
 
 								<ButtonLink
-									variant="text"
 									href={`https://github.com/agriculturegovau/agds-next/tree/main/packages/react/src/${pkg.slug}`}
 									iconBefore={GithubLogo}
+									variant="text"
 								>
 									View in Github
 								</ButtonLink>
 							</Flex>
 						)
 					}
+					introduction={pkg.description}
+					title={pkg.title}
 				/>
 				{!pkg.deprecated && (
 					<Fragment>

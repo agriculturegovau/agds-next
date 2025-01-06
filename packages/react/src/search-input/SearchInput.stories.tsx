@@ -62,7 +62,7 @@ export const Controlled: Story = {
 	args: {},
 	render: function Render(args) {
 		const [value, setValue] = useState('');
-		return <SearchInput {...args} value={value} onChange={setValue} />;
+		return <SearchInput {...args} onChange={setValue} value={value} />;
 	},
 };
 

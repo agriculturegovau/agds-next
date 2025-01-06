@@ -143,9 +143,9 @@ export const CalendarExample: Story = {
 				<Text as="p">The next public holiday is:</Text>
 				<Text
 					as="time"
+					dateTime="2017-01-01T00:00:00+00:00"
 					fontSize="xl"
 					fontWeight="bold"
-					dateTime="2017-01-01T00:00:00+00:00"
 				>
 					Sunday 1 January
 				</Text>

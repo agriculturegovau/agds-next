@@ -191,7 +191,7 @@ export const SubtleAppearanceInTable: Story = {
 								<TableCell>{businessName}</TableCell>
 								<TableCell>{type}</TableCell>
 								<TableCell>
-									<StatusBadge appearance="subtle" tone={tone} label={status} />
+									<StatusBadge appearance="subtle" label={status} tone={tone} />
 								</TableCell>
 							</TableRow>
 						))}

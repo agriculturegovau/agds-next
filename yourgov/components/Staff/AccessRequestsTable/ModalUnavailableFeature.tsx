@@ -15,14 +15,14 @@ export const ModalUnavailableFeature = ({
 }: ModalUnavailableFeatureProps) => {
 	return (
 		<Modal
-			isOpen={isOpen}
-			onClose={onClose}
-			title="This feature is not yet available."
 			actions={
 				<ButtonGroup>
 					<Button onClick={onConfirm}>Okay</Button>
 				</ButtonGroup>
 			}
+			isOpen={isOpen}
+			onClose={onClose}
+			title="This feature is not yet available."
 		>
 			<Text as="p">Note: this is for demonstration purposes only.</Text>
 		</Modal>

@@ -24,8 +24,8 @@ export function HeaderContainer({
 			as="header"
 			background={background}
 			color="text"
-			paddingY={paddingMap[size]}
 			justifyContent="center"
+			paddingY={paddingMap[size]}
 		>
 			<Box
 				maxWidth={tokens.maxWidth.container}

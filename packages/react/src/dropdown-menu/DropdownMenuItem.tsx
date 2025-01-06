@@ -56,20 +56,9 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 
 		return (
 			<Flex
-				as={as}
-				ref={mergeRefs([forwardedRef, ref])}
-				role="menuitem"
-				tabIndex={-1}
-				id={id}
-				onClick={onClick}
 				alignItems="center"
-				justifyContent="space-between"
+				as={as}
 				background="body"
-				gap={1}
-				padding={1}
-				width="18rem"
-				link
-				focusRingFor="keyboard"
 				css={{
 					textDecoration: 'none',
 
@@ -83,11 +72,22 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 						'& > div:first-of-type > span': packs.underline,
 					},
 				}}
+				focusRingFor="keyboard"
+				gap={1}
+				id={id}
+				justifyContent="space-between"
+				link
+				onClick={onClick}
+				padding={1}
+				ref={mergeRefs([forwardedRef, ref])}
+				role="menuitem"
+				tabIndex={-1}
+				width="18rem"
 				{...props}
 			>
 				<Flex alignItems="center" gap={0.75}>
 					{Icon ? (
-						<Icon color="inherit" size="md" css={{ flexShrink: 0 }} />
+						<Icon color="inherit" css={{ flexShrink: 0 }} size="md" />
 					) : null}
 					<Text color="inherit">{children}</Text>
 				</Flex>

@@ -81,7 +81,7 @@ export function FormStep10Review() {
 					<ValidateSectionAlert />
 				)}
 
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[0].href}>
+				<ButtonLink alignSelf="start" href={formSteps[0].href} variant="text">
 					Change owner details
 				</ButtonLink>
 			</Stack>
@@ -118,7 +118,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[1].href}>
+				<ButtonLink alignSelf="start" href={formSteps[1].href} variant="text">
 					Change business details
 				</ButtonLink>
 			</Stack>
@@ -129,11 +129,11 @@ export function FormStep10Review() {
 				{validation.step3.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItemAddress
-							label="Street address"
 							address={formState.steps?.step3?.streetAddress}
-							suburb={formState.steps?.step3?.suburbTownCity}
-							state={formState.steps?.step3?.state}
+							label="Street address"
 							postcode={formState.steps?.step3?.postcode}
+							state={formState.steps?.step3?.state}
+							suburb={formState.steps?.step3?.suburbTownCity}
 						/>
 						{formState.steps?.step3?.isPostalAddressSameAsBusinessAddress ? (
 							<FormDefinitionListItem
@@ -142,18 +142,18 @@ export function FormStep10Review() {
 							/>
 						) : (
 							<FormDefinitionListItemAddress
-								label="Postal address"
 								address={formState.steps?.step3?.postalAddress}
-								suburb={formState.steps?.step3?.postalSuburbTownCity}
-								state={formState.steps?.step3?.postalState}
+								label="Postal address"
 								postcode={formState.steps?.step3?.postalPostcode}
+								state={formState.steps?.step3?.postalState}
+								suburb={formState.steps?.step3?.postalSuburbTownCity}
 							/>
 						)}
 					</FormDefinitionList>
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[2].href}>
+				<ButtonLink alignSelf="start" href={formSteps[2].href} variant="text">
 					Change business address
 				</ButtonLink>
 			</Stack>
@@ -175,7 +175,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[3].href}>
+				<ButtonLink alignSelf="start" href={formSteps[3].href} variant="text">
 					Change vehicle registration
 				</ButtonLink>
 			</Stack>
@@ -199,7 +199,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[4].href}>
+				<ButtonLink alignSelf="start" href={formSteps[4].href} variant="text">
 					Change trading time
 				</ButtonLink>
 			</Stack>
@@ -219,7 +219,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[5].href}>
+				<ButtonLink alignSelf="start" href={formSteps[5].href} variant="text">
 					Change food served
 				</ButtonLink>
 			</Stack>
@@ -254,7 +254,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[6].href}>
+				<ButtonLink alignSelf="start" href={formSteps[6].href} variant="text">
 					Change employees
 				</ButtonLink>
 			</Stack>
@@ -272,7 +272,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[7].href}>
+				<ButtonLink alignSelf="start" href={formSteps[7].href} variant="text">
 					Change food safety supervisor
 				</ButtonLink>
 			</Stack>
@@ -310,7 +310,7 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" variant="text" href={formSteps[8].href}>
+				<ButtonLink alignSelf="start" href={formSteps[8].href} variant="text">
 					Change documents
 				</ButtonLink>
 			</Stack>

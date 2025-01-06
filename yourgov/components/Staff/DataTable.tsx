@@ -54,7 +54,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 			return (
 				<Stack gap={1} id={tableId} role="alert">
 					<AlertFilledIcon color="error" size="lg" />
-					<Heading type="h2" fontSize="lg">
+					<Heading fontSize="lg" type="h2">
 						Failed to load
 					</Heading>
 					<Text>
@@ -75,8 +75,8 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 					role="status"
 				>
 					<Stack gap={1}>
-						<HelpIcon size="lg" color="muted" />
-						<Heading type="h2" fontSize="lg">
+						<HelpIcon color="muted" size="lg" />
+						<Heading fontSize="lg" type="h2">
 							No results found
 						</Heading>
 						<Text>Try adjusting your filter options.</Text>
@@ -93,15 +93,15 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 						Table column headers with buttons are sortable.
 					</div>
 				) : null}
-				<div role="status" css={visuallyHiddenStyles}>
+				<div css={visuallyHiddenStyles} role="status">
 					{loading ? 'Loading staff members' : ''}
 				</div>
 				<TableWrapper>
 					<Table
-						aria-rowcount={totalItems}
 						aria-labelledby={
 							headingId ? `${headingId} ${descriptionId}` : undefined
 						}
+						aria-rowcount={totalItems}
 						id={tableId}
 						ref={ref}
 						tabIndex={-1}
@@ -138,11 +138,11 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 											return (
 												<TableHeaderSortable
 													key={sortKey}
-													width={width}
+													onClick={onClick}
 													sort={
 														isFieldTheActiveSortField ? sort?.order : undefined
 													}
-													onClick={onClick}
+													width={width}
 												>
 													{label}
 												</TableHeaderSortable>

@@ -155,15 +155,15 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	return (
 		<ComboboxMultiBase
 			block={block}
+			clearable
 			combobox={combobox}
-			multiSelection={multiSelection}
 			inputId={inputId}
 			inputItems={items}
 			loading={loading}
+			multiSelection={multiSelection}
 			networkError={networkError}
 			selectedItems={selectedItems}
 			setSelectedItems={setSelectedItems}
-			clearable
 			{...props}
 		/>
 	);

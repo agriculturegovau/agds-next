@@ -50,25 +50,25 @@ export function DropdownMenuPanel({
 
 	// Ensures the `DropdownMenuButton` component has a valid `aria-controls` attribute
 	if (!isMenuOpen) {
-		return <div id={panelId} css={{ position: 'absolute' }} />;
+		return <div css={{ position: 'absolute' }} id={panelId} />;
 	}
 
 	return (
 		<Popover
+			aria-activedescendant={activeDescendantId}
+			aria-labelledby={buttonId}
 			as={Flex}
+			flexDirection="column"
+			focusRingFor="keyboard"
+			id={panelId}
+			onKeyDown={onKeyDown}
+			palette={palette}
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			ref={mergeRefs([popoverRef, panelRef])}
 			role="menu"
-			tabIndex={-1}
-			id={panelId}
-			aria-labelledby={buttonId}
-			aria-activedescendant={activeDescendantId}
-			onKeyDown={onKeyDown}
-			palette={palette}
-			flexDirection="column"
-			focusRingFor="keyboard"
 			style={style}
+			tabIndex={-1}
 		>
 			{children}
 		</Popover>

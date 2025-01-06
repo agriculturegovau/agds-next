@@ -32,7 +32,7 @@ export const OnBodyAlt: Story = {
 		background: 'bodyAlt',
 	},
 	render: (args) => (
-		<Box padding={1.5} background={args.background}>
+		<Box background={args.background} padding={1.5}>
 			<SubNav {...args} />
 		</Box>
 	),
@@ -47,7 +47,7 @@ export const WithEndElements: Story = {
 				label: 'Code',
 				endElement: (
 					<Fragment>
-						<NotificationBadge value={5} tone="action" aria-hidden />
+						<NotificationBadge aria-hidden tone="action" value={5} />
 						<VisuallyHidden>, 5 notifications</VisuallyHidden>
 					</Fragment>
 				),

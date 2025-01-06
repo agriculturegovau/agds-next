@@ -44,7 +44,7 @@ const ExampleContent = () => (
 	<Prose>
 		<Stack gap={4}>
 			<p>This example space contains a visually hidden feature.</p>
-			<nav id="main-nav" tabIndex={-1} css={{ '&:focus': { outline: 'none' } }}>
+			<nav css={{ '&:focus': { outline: 'none' } }} id="main-nav" tabIndex={-1}>
 				<ul>
 					<li>
 						<a href="#">Some navigation</a>
@@ -52,9 +52,9 @@ const ExampleContent = () => (
 				</ul>
 			</nav>
 			<main
+				css={{ '&:focus': { outline: 'none' } }}
 				id="main-content"
 				tabIndex={-1}
-				css={{ '&:focus': { outline: 'none' } }}
 			>
 				Some content here with <a href="#">an example link</a>
 			</main>

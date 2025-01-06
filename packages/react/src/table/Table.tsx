@@ -36,14 +36,10 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 	return (
 		<TableContext.Provider value={{ tableLayout }}>
 			<Box
+				aria-describedby={ariaDescribedby}
+				aria-labelledby={ariaLabelledby}
+				aria-rowcount={ariaRowcount}
 				as="table"
-				ref={ref}
-				tabIndex={tabIndex}
-				fontSize="sm"
-				focusRingFor="keyboard"
-				width="100%"
-				display="table"
-				id={id}
 				css={{
 					borderCollapse: 'collapse',
 					borderSpacing: 0,
@@ -54,9 +50,13 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 						},
 					}),
 				}}
-				aria-labelledby={ariaLabelledby}
-				aria-describedby={ariaDescribedby}
-				aria-rowcount={ariaRowcount}
+				display="table"
+				focusRingFor="keyboard"
+				fontSize="sm"
+				id={id}
+				ref={ref}
+				tabIndex={tabIndex}
+				width="100%"
 			>
 				{children}
 			</Box>

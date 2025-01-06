@@ -8,17 +8,17 @@ export const FilterSearchInput = ({ block }: { block?: boolean }) => {
 	return (
 		<div aria-label="Staff members" role="search">
 			<SearchInput
-				label="Search name"
 				aria-controls={tableId}
-				maxWidth="lg"
-				hideOptionalLabel
 				block={block}
-				value={filters.name || ''}
+				hideOptionalLabel
+				label="Search name"
+				maxWidth="lg"
 				onChange={(searchString) => {
 					setFilter({
 						name: searchString,
 					});
 				}}
+				value={filters.name || ''}
 			/>
 		</div>
 	);

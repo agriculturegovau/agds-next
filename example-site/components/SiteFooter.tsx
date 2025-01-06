@@ -31,7 +31,7 @@ export const SiteFooter = () => {
 		<Box palette="dark">
 			<Footer background="bodyAlt">
 				<nav aria-label="footer">
-					<LinkList links={footerLinks} horizontal />
+					<LinkList horizontal links={footerLinks} />
 				</nav>
 				<FooterDivider />
 				<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>

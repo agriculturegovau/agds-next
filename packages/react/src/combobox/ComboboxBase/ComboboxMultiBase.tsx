@@ -182,15 +182,15 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 
 	return (
 		<Field
+			hideOptionalLabel={hideOptionalLabel}
+			hint={hint}
+			id={inputId}
+			invalid={invalid}
 			label={label}
 			labelId={labelId}
-			hideOptionalLabel={hideOptionalLabel}
-			required={required}
-			hint={hint}
 			maxWidth={maxWidthProp}
 			message={message}
-			invalid={invalid}
-			id={inputId}
+			required={required}
 		>
 			{(a11yProps) => (
 				<div
@@ -199,17 +199,17 @@ export function ComboboxMultiBase<Option extends DefaultComboboxOption>({
 					onClick={handleFieldContainerClick}
 				>
 					<Flex
-						ref={fieldContainerRef}
-						gap={0.5}
-						flexWrap="wrap"
 						alignItems="center"
 						css={styles.container}
+						flexWrap="wrap"
+						gap={0.5}
+						ref={fieldContainerRef}
 					>
 						{selectedItems.map((item, idx) => (
 							<ComboboxTag
+								disabled={disabled}
 								key={`selected-item-${idx}`}
 								onRemove={() => multiSelection.removeSelectedItem(item)}
-								disabled={disabled}
 								{...multiSelection.getSelectedItemProps({
 									selectedItem: item,
 									index: idx,

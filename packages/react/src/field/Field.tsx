@@ -57,11 +57,11 @@ export const Field = ({
 	return (
 		<FieldContainer invalid={invalid}>
 			<FieldLabel
-				id={labelId}
-				htmlFor={fieldId}
-				secondaryLabel={secondaryLabel}
 				hideOptionalLabel={hideOptionalLabel}
+				htmlFor={fieldId}
+				id={labelId}
 				required={required}
+				secondaryLabel={secondaryLabel}
 			>
 				{label}
 			</FieldLabel>

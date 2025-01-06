@@ -21,21 +21,21 @@ export default function TokensPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={title} description={description} />
+			<DocumentTitle description={description} title={title} />
 			<SubcategoryPageTemplate
-				title={title}
 				breadcrumbs={breadcrumbs}
 				editPath="/docs/pages/foundations/tokens/index.tsx"
+				title={title}
 			>
 				<Text as="p" fontSize="md" maxWidth={tokens.maxWidth.bodyText}>
 					{description}
 				</Text>
 				<Columns as="ul" cols={{ xs: 1, sm: 2, lg: 3 }}>
 					{TOKEN_NAV_LINKS.map(({ href, label, description }) => (
-						<Card key={href} as="li" clickable shadow>
+						<Card as="li" clickable key={href} shadow>
 							<Flex flexDirection="column-reverse">
 								<CardInner>
-									<Stack gap={1} flexGrow={1}>
+									<Stack flexGrow={1} gap={1}>
 										<Heading as="h2" type="h4">
 											<CardLink href={href}>{label}</CardLink>
 										</Heading>

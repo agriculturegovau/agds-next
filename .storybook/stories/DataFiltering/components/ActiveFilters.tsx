@@ -108,16 +108,16 @@ export const ActiveFilters = () => {
 	}
 
 	return (
-		<Flex flexWrap="wrap" gap={0.75} alignItems="flex-end">
+		<Flex alignItems="flex-end" flexWrap="wrap" gap={0.75}>
 			<Tags
 				heading={<Text fontWeight="bold">Active filters</Text>}
 				items={tags}
 			/>
 			<Button
+				iconAfter={CloseIcon}
+				onClick={resetFilters}
 				size="sm"
 				variant="text"
-				onClick={resetFilters}
-				iconAfter={CloseIcon}
 			>
 				Clear filters
 			</Button>

@@ -14,8 +14,6 @@ export const HeroCategoryBannerImage = ({
 	const backgroundVar = backgroundMap[background];
 	return (
 		<Box
-			display={['none', 'none', 'block']}
-			width="40%"
 			css={{
 				position: 'absolute',
 				top: 0,
@@ -37,6 +35,8 @@ export const HeroCategoryBannerImage = ({
 					objectPosition: 'center',
 				},
 			}}
+			display={['none', 'none', 'block']}
+			width="40%"
 		>
 			{children}
 		</Box>

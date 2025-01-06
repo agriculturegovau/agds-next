@@ -26,15 +26,15 @@ export default function PackagesAccessibility({
 		<>
 			<DocumentTitle title={`${pkg.title} Accessibility`} />
 			<PkgLayout
-				pkg={pkg}
-				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
 				editPath={`/packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
+				navLinks={navLinks}
+				pkg={pkg}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
-						title="On this page"
 						links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+						title="On this page"
 					/>
 				) : null}
 				<Prose id="pkg-content">

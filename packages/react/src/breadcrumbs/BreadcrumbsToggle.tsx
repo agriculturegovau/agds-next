@@ -11,15 +11,15 @@ export function BreadcrumbsToggle({ onClick }: BreadcrumbsToggleProps) {
 	return (
 		<BreadcrumbsItem>
 			<Flex
-				as={BaseButton}
-				onClick={onClick}
-				aria-label="Show all breadcrumbs"
-				aria-expanded="false"
 				alignItems="center"
-				justifyContent="center"
-				fontSize="sm"
+				aria-expanded="false"
+				aria-label="Show all breadcrumbs"
+				as={BaseButton}
 				focusRingFor="keyboard"
+				fontSize="sm"
+				justifyContent="center"
 				link
+				onClick={onClick}
 			>
 				&hellip;
 			</Flex>

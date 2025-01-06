@@ -40,8 +40,8 @@ export const TableCell = ({
 			as={as}
 			borderBottom
 			borderColor="muted"
-			color="text"
 			colSpan={colSpan}
+			color="text"
 			css={{ verticalAlign }}
 			display={display}
 			focusRingFor="keyboard"

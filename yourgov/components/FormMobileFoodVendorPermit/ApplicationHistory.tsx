@@ -88,14 +88,14 @@ export function ApplicationHistory() {
 										) : application?.completed ? (
 											<StatusBadge
 												appearance="subtle"
-												tone="successMedium"
 												label="Submitted"
+												tone="successMedium"
 											/>
 										) : (
 											<StatusBadge
 												appearance="subtle"
-												tone="inProgressLow"
 												label="In progress"
+												tone="inProgressLow"
 											/>
 										)}
 									</TableCell>
@@ -120,17 +120,17 @@ export function ApplicationHistory() {
 				</Table>
 			</TableWrapper>
 			<Modal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				title="Are you sure you want to remove this application?"
 				actions={
 					<ButtonGroup>
 						<Button onClick={closeModal}>Yes, remove</Button>
-						<Button variant="secondary" onClick={closeModal}>
+						<Button onClick={closeModal} variant="secondary">
 							No
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title="Are you sure you want to remove this application?"
 			>
 				<Text as="p">
 					Note: this is for demonstration purposes only and does not function.

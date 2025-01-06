@@ -115,16 +115,16 @@ export const ProgressIndicator = ({
 				{itemsWithDefaultActive.map(({ label, ...props }) =>
 					isItemLink(props) ? (
 						<ProgressIndicatorItemLink
-							key={label}
 							background={background}
+							key={label}
 							{...props}
 						>
 							{label}
 						</ProgressIndicatorItemLink>
 					) : (
 						<ProgressIndicatorItemButton
-							key={label}
 							background={background}
+							key={label}
 							{...props}
 						>
 							{label}

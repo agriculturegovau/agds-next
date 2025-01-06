@@ -56,8 +56,8 @@ function AppLayoutTemplate({
 						dropdown: (
 							<ExampleAccountDropdown
 								businesses={businesses}
-								selectedBusinessName={businessName}
 								onBusinessChange={setBusinessName}
+								selectedBusinessName={businessName}
 							/>
 						),
 					}}

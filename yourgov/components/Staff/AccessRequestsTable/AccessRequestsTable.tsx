@@ -160,11 +160,11 @@ export const AccessRequestsTable = () => {
 			</Box>
 			<Stack gap={0.5}>
 				{accessRequests.length === 0 ? (
-					<Stack gap={2} alignItems="flex-start" paddingY={1} role="status">
+					<Stack alignItems="flex-start" gap={2} paddingY={1} role="status">
 						<Stack gap={1}>
-							<AvatarIcon size="lg" color="muted" />
+							<AvatarIcon color="muted" size="lg" />
 
-							<Heading type="h3" fontSize="lg">
+							<Heading fontSize="lg" type="h3">
 								There are no access requests
 							</Heading>
 
@@ -175,10 +175,10 @@ export const AccessRequestsTable = () => {
 					<>
 						<Box css={{ marginLeft: mapSpacing(0.75) }}>
 							<Checkbox
-								size="sm"
 								checked={isSelectAllCheckboxChecked}
 								indeterminate={isSelectAllCheckboxIndeterminate}
 								onChange={onChangeSelectAllRows}
+								size="sm"
 							>
 								Select all rows
 							</Checkbox>
@@ -216,7 +216,6 @@ export const AccessRequestsTable = () => {
 											>
 												<TableCell>
 													<Checkbox
-														size="sm"
 														checked={rowSelections.includes(staffMember.id)}
 														onChange={() =>
 															setRowSelections((prevrowSelections) => {
@@ -231,6 +230,7 @@ export const AccessRequestsTable = () => {
 																	: [...prevrowSelections, staffMember.id];
 															})
 														}
+														size="sm"
 													>
 														<VisuallyHidden>{`Select ${name}`}</VisuallyHidden>
 													</Checkbox>
@@ -258,8 +258,8 @@ export const AccessRequestsTable = () => {
 												<TableCell>
 													<StatusBadge
 														appearance="subtle"
-														tone="infoMedium"
 														label={staffMember.status}
+														tone="infoMedium"
 													/>
 												</TableCell>
 
@@ -305,15 +305,15 @@ export const AccessRequestsTable = () => {
 						</TableBatchActionsTitle>
 
 						<ButtonGroup>
-							<Button variant="secondary" size="sm" onClick={openApproveModal}>
+							<Button onClick={openApproveModal} size="sm" variant="secondary">
 								Approve access
 							</Button>
 
-							<Button variant="secondary" size="sm" onClick={openRejectModal}>
+							<Button onClick={openRejectModal} size="sm" variant="secondary">
 								Reject access
 							</Button>
 
-							<Button variant="tertiary" size="sm" onClick={clearRowSelections}>
+							<Button onClick={clearRowSelections} size="sm" variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>
@@ -321,8 +321,8 @@ export const AccessRequestsTable = () => {
 				)}
 
 				<ModalConfirmApproveAccess
-					itemsToApprove={itemWithActiveAction || items}
 					isOpen={isApproveModalOpen}
+					itemsToApprove={itemWithActiveAction || items}
 					onClose={() => {
 						closeApproveModal();
 						setItemWithActiveAction(undefined);
@@ -331,8 +331,8 @@ export const AccessRequestsTable = () => {
 				/>
 
 				<ModalConfirmRejectAccess
-					itemsToReject={itemWithActiveAction || items}
 					isOpen={isRejectModalOpen}
+					itemsToReject={itemWithActiveAction || items}
 					onClose={() => {
 						closeRejectModal();
 						setItemWithActiveAction(undefined);

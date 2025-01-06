@@ -6,7 +6,7 @@ export type CardFooterProps = PropsWithChildren<{
 }>;
 
 export const CardFooter = ({ background, children }: CardFooterProps) => (
-	<Box borderTop borderColor="muted" background={background} padding={1.5}>
+	<Box background={background} borderColor="muted" borderTop padding={1.5}>
 		{children}
 	</Box>
 );

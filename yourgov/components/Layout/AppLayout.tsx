@@ -91,7 +91,7 @@ export function AppLayout({
 					</Box>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
-							<LinkList links={footerLinks} horizontal />
+							<LinkList horizontal links={footerLinks} />
 						</nav>
 						<AppLayoutFooterDivider />
 						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
@@ -124,10 +124,6 @@ function AppLayoutHeader({ user }: { user: User }) {
 
 	return (
 		<AgDSAppLayoutHeader
-			heading="yourGov"
-			subLine="Access government services from one place"
-			logo={<Logo />}
-			href="/app"
 			accountDetails={{
 				name: user.displayName,
 				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
@@ -136,14 +132,14 @@ function AppLayoutHeader({ user }: { user: User }) {
 						<DropdownMenuGroup label="Businesses">
 							{linkedBusinesses.map((linkedBusiness) => (
 								<DropdownMenuItemRadio
-									key={linkedBusiness.name}
 									checked={
 										selectedBusiness?.name
 											? selectedBusiness.name === linkedBusiness.name
 											: false
 									}
-									secondaryText={`ABN ${linkedBusiness.abn}`}
+									key={linkedBusiness.name}
 									onClick={() => onBusinessClick(linkedBusiness)}
+									secondaryText={`ABN ${linkedBusiness.abn}`}
 								>
 									{linkedBusiness.name}
 								</DropdownMenuItemRadio>
@@ -167,6 +163,10 @@ function AppLayoutHeader({ user }: { user: User }) {
 					</DropdownMenuPanel>
 				),
 			}}
+			heading="yourGov"
+			href="/app"
+			logo={<Logo />}
+			subLine="Access government services from one place"
 		/>
 	);
 }
@@ -193,7 +193,7 @@ function AppLayoutSidebar() {
 					{
 						label: (
 							<Fragment>
-								<Text fontWeight="bold" fontSize="xs">
+								<Text fontSize="xs" fontWeight="bold">
 									{selectedBusiness?.name}
 								</Text>
 								<Text color="muted" fontSize="xs">
@@ -260,5 +260,5 @@ function AppLayoutSidebar() {
 		[selectedBusiness?.abn, selectedBusiness?.name]
 	);
 
-	return <AgDSAppLayoutSidebar items={links} activePath={pathname} />;
+	return <AgDSAppLayoutSidebar activePath={pathname} items={links} />;
 }

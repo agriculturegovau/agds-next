@@ -19,9 +19,9 @@ export default function CategoryPage() {
 				<HeroCategoryBanner
 					image={
 						<img
-							src="/example-site/placeholder/hero-banner.jpeg"
-							role="presentation"
 							alt=""
+							role="presentation"
+							src="/example-site/placeholder/hero-banner.jpeg"
 						/>
 					}
 				>
@@ -34,7 +34,7 @@ export default function CategoryPage() {
 						<H2>Subcategory pages (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
 							{Array.from(Array(6).keys()).map((idx) => (
-								<Card as="li" key={idx} shadow clickable>
+								<Card as="li" clickable key={idx} shadow>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>

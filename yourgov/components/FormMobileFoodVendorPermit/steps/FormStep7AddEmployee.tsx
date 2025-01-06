@@ -150,35 +150,35 @@ export function FormStep7AddEmployee() {
 									value={uuid.current}
 								/>
 								<TextInput
-									autoComplete="given-name"
-									label="First name"
 									{...register('employee.firstName')}
+									autoComplete="given-name"
 									id="firstName"
 									invalid={Boolean(errors?.employee?.firstName?.message)}
+									label="First name"
 									maxWidth="lg"
 									message={errors?.employee?.firstName?.message}
 									required
 								/>
 								<TextInput
-									autoComplete="family-name"
-									label="Last name"
 									{...register('employee.lastName')}
+									autoComplete="family-name"
 									id="lastName"
 									invalid={Boolean(errors?.employee?.lastName?.message)}
+									label="Last name"
 									maxWidth="lg"
 									message={errors?.employee?.lastName?.message}
 									required
 								/>
 								<TextInput
-									autoComplete="email"
-									label="Email address"
-									type="email"
 									{...register('employee.email')}
+									autoComplete="email"
 									id="email"
 									invalid={Boolean(errors?.employee?.email?.message)}
+									label="Email address"
 									maxWidth="xl"
 									message={errors?.employee?.email?.message}
 									required
+									type="email"
 								/>
 							</FormStack>
 							<Divider />

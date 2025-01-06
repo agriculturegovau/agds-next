@@ -19,8 +19,8 @@ export function DropdownMenuButton({
 	const defaultIconAfter = isMenuOpen ? ChevronUpIcon : ChevronDownIcon;
 	return (
 		<Button
-			variant={variant}
 			iconAfter={iconAfter ? iconAfter : defaultIconAfter}
+			variant={variant}
 			{...buttonProps}
 			{...props}
 		/>

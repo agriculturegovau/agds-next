@@ -344,8 +344,8 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-1"
-							subLevelVisible="always"
 							items={alwaysOpenItems}
+							subLevelVisible="always"
 						/>
 					);
 					const user = userEvent.setup();
@@ -379,8 +379,8 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-2"
-							subLevelVisible="always"
 							items={alwaysOpenItems}
+							subLevelVisible="always"
 						/>
 					);
 					const user = userEvent.setup();

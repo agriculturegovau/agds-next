@@ -84,23 +84,23 @@ export const FormExampleMultiStep3 = () => {
 
 	return (
 		<FormExampleMultiStepContainer
-			title="Conditional reveal title (H1)"
-			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
+			title="Conditional reveal title (H1)"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
 							ref={errorRef}
-							tone="error"
-							title="There is a problem"
 							tabIndex={-1}
+							title="There is a problem"
+							tone="error"
 						>
 							<Text as="p">
 								Please correct the following fields and try again
@@ -117,15 +117,15 @@ export const FormExampleMultiStep3 = () => {
 						</PageAlert>
 					)}
 					<ControlGroup
-						id="checkbox"
-						label="Checkbox fieldset question?"
+						block
 						hint="Provide a hint here"
+						id="checkbox"
 						invalid={Boolean(errors.checkbox)}
+						label="Checkbox fieldset question?"
 						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 						// @ts-ignore
 						message={errors?.checkbox?.message}
 						required
-						block
 					>
 						<Checkbox {...register('checkbox')} value="A">
 							Checkbox label A
@@ -136,11 +136,11 @@ export const FormExampleMultiStep3 = () => {
 						{showConditionalField ? (
 							<ConditionalFieldContainer>
 								<TextInput
-									id="conditionalField"
-									label="Nested field"
-									hint="Hint text"
 									{...register('conditionalField')}
+									hint="Hint text"
+									id="conditionalField"
 									invalid={Boolean(errors.conditionalField?.message)}
+									label="Nested field"
 									message={errors.conditionalField?.message}
 									required
 								/>

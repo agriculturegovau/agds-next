@@ -36,7 +36,7 @@ export const FieldLabel = ({
 	});
 
 	return (
-		<Box as={as} id={id} htmlFor={htmlFor} className={className}>
+		<Box as={as} className={className} htmlFor={htmlFor} id={id}>
 			<Text as="span" fontWeight="bold">
 				{children}
 			</Text>

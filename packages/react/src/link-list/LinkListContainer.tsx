@@ -12,9 +12,9 @@ export const LinkListContainer = ({
 	return (
 		<Stack
 			as="ul"
-			gap={horizontal ? 1 : 0.5}
 			flexDirection={horizontal ? 'row' : 'column'}
 			flexWrap="wrap"
+			gap={horizontal ? 1 : 0.5}
 		>
 			{children}
 		</Stack>

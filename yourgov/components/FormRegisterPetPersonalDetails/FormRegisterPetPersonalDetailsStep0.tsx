@@ -115,10 +115,8 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
-			title="Personal details"
-			introduction="Confirm if these prefilled details from your account are still correct."
 			callToAction={
-				<Details label="How were my details prefilled?" iconBefore>
+				<Details iconBefore label="How were my details prefilled?">
 					<Prose>
 						<p>
 							We’re working hard to improve the way we do business with you.
@@ -136,8 +134,10 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 					</Prose>
 				</Details>
 			}
+			introduction="Confirm if these prefilled details from your account are still correct."
+			title="Personal details"
 		>
-			<Stack gap={3} alignItems="flex-start" width="100%">
+			<Stack alignItems="flex-start" gap={3} width="100%">
 				{isFormVisibile ? (
 					<Stack gap={1.5} width="100%">
 						<H2>Update personal details</H2>
@@ -145,16 +145,16 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSave, onError)}
 							noValidate
+							onSubmit={handleSubmit(onSave, onError)}
 						>
 							<FormStack>
 								{hasErrors && (
 									<PageAlert
 										ref={errorRef}
-										tone="error"
-										title="There is a problem"
 										tabIndex={-1}
+										title="There is a problem"
+										tone="error"
 									>
 										<Text as="p">
 											Please correct the following fields and try again
@@ -173,59 +173,59 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									</PageAlert>
 								)}
 								<TextInput
-									label="First name"
-									autoComplete="given-name"
 									{...register('firstName')}
+									autoComplete="given-name"
+									autoFocus
 									id="firstName"
 									invalid={Boolean(errors.firstName?.message)}
-									message={errors.firstName?.message}
+									label="First name"
 									maxWidth="xl"
-									autoFocus
+									message={errors.firstName?.message}
 									required
 								/>
 								<TextInput
-									label="Last name"
-									autoComplete="family-name"
 									{...register('lastName')}
+									autoComplete="family-name"
 									id="lastName"
 									invalid={Boolean(errors.lastName?.message)}
-									message={errors.lastName?.message}
+									label="Last name"
 									maxWidth="xl"
+									message={errors.lastName?.message}
 									required
 								/>
 								<TextInput
-									label="Email"
-									type="email"
-									autoComplete="email"
 									{...register('email')}
+									autoComplete="email"
 									id="email"
 									invalid={Boolean(errors.email?.message)}
-									message={errors.email?.message}
+									label="Email"
 									maxWidth="xl"
+									message={errors.email?.message}
 									required
+									type="email"
 								/>
 								<Controller
 									control={control}
 									name="dob"
 									render={({ field: { ref, ...field } }) => (
 										<DatePicker
-											inputRef={ref}
-											label="Date of birth"
 											{...field}
 											id="dob"
+											inputRef={ref}
 											invalid={Boolean(errors.dob?.message)}
-											message={errors.dob?.message}
+											label="Date of birth"
 											maxWidth="xl"
+											message={errors.dob?.message}
 											required
 										/>
 									)}
 								/>
 							</FormStack>
 							<ButtonGroup>
-								<Button type="submit" loading={isSaving}>
+								<Button loading={isSaving} type="submit">
 									Save changes
 								</Button>
-								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+								<Button onClick={onDiscardChangesClick} variant="tertiary">
 									Discard changes
 								</Button>
 							</ButtonGroup>
@@ -233,8 +233,8 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 					</Stack>
 				) : (
 					<>
-						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2 ref={headingRef} tabIndex={-1} focusRingFor="keyboard">
+						<Stack alignItems="flex-start" gap={1.5} width="100%">
+							<H2 focusRingFor="keyboard" ref={headingRef} tabIndex={-1}>
 								Check personal details
 							</H2>
 							<SummaryList>
@@ -263,11 +263,11 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>
-							<Button variant="text" onClick={() => toggleFormVisibilty()}>
+							<Button onClick={() => toggleFormVisibilty()} variant="text">
 								Change personal details
 							</Button>
 						</Stack>
-						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
+						<Box as="form" onSubmit={handleSubmit(onSubmit)} width="100%">
 							<FormRegisterPetPersonalDetailsActions />
 						</Box>
 					</>

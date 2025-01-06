@@ -30,14 +30,14 @@ export const SiteHeader = () => {
 		<Stack palette="dark">
 			<Header
 				background="bodyAlt"
-				logo={<Logo />}
-				heading="Agriculture Design System"
-				subline="Design System for the Export Service"
 				badgeLabel="Beta"
+				heading="Agriculture Design System"
+				logo={<Logo />}
+				subline="Design System for the Export Service"
 			/>
 			<MainNav
-				id="main-nav"
 				activePath={router.asPath}
+				id="main-nav"
 				items={NAV_ITEMS.primary}
 				secondaryItems={NAV_ITEMS.secondary}
 			/>

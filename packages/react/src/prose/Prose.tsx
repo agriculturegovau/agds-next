@@ -11,7 +11,7 @@ import { Box, BoxProps, linkStyles, focusStyles } from '../box';
 
 export const Prose = forwardRefWithAs<'div', BoxProps>(
 	function Prose(props, ref) {
-		return <Box ref={ref} css={proseClass} {...props} />;
+		return <Box css={proseClass} ref={ref} {...props} />;
 	}
 );
 

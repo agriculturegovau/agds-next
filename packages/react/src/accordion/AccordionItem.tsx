@@ -54,16 +54,16 @@ export const AccordionItem = ({
 	return (
 		<Box borderBottom>
 			<AccordionTitle
-				background={background}
-				tag={titleHeadingTag}
-				id={titleId}
 				ariaControls={bodyId}
+				background={background}
+				id={titleId}
 				isOpen={isOpen}
 				onClick={onToggle}
+				tag={titleHeadingTag}
 			>
 				{title}
 			</AccordionTitle>
-			<AccordionBody isOpen={isOpen} id={bodyId} ariaLabelledBy={titleId}>
+			<AccordionBody ariaLabelledBy={titleId} id={bodyId} isOpen={isOpen}>
 				{children}
 			</AccordionBody>
 		</Box>

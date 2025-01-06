@@ -53,8 +53,6 @@ export const StatusBadge = ({
 			<Flex
 				alignItems="center"
 				borderColor={legacyTone}
-				display="inline-flex"
-				gap={0.5}
 				css={{
 					borderRadius,
 					'& svg': {
@@ -62,14 +60,16 @@ export const StatusBadge = ({
 						width: iconWidth,
 					},
 				}}
+				display="inline-flex"
+				gap={0.5}
 				{...appearanceStyleProps}
 			>
 				<LegacyIcon />
 				<Text
 					as="span"
+					css={{ whiteSpace: 'nowrap' }}
 					fontSize="sm"
 					lineHeight="nospace"
-					css={{ whiteSpace: 'nowrap' }}
 				>
 					{label}
 				</Text>
@@ -90,8 +90,6 @@ export const StatusBadge = ({
 		<Flex
 			alignItems="center"
 			borderColor={borderColor}
-			display="inline-flex"
-			gap={0.5}
 			css={{
 				borderRadius,
 				'& svg': {
@@ -99,6 +97,8 @@ export const StatusBadge = ({
 					width: iconWidth,
 				},
 			}}
+			display="inline-flex"
+			gap={0.5}
 			{...appearanceStyleProps}
 		>
 			<Icon
@@ -108,9 +108,9 @@ export const StatusBadge = ({
 			/>
 			<Text
 				as="span"
+				css={{ whiteSpace: 'nowrap' }}
 				fontSize="sm"
 				lineHeight="nospace"
-				css={{ whiteSpace: 'nowrap' }}
 			>
 				{label}
 			</Text>
@@ -245,38 +245,38 @@ const legacyToneMap = {
 	neutral: {
 		icon: () => (
 			<Box
-				highContrastOutline
 				css={{
 					width: 8,
 					height: 8,
 					borderRadius: 4,
 					backgroundColor: boxPalette.foregroundMuted,
 				}}
+				highContrastOutline
 			/>
 		),
 		tone: 'border',
 	},
 	success: {
 		icon: () => (
-			<SuccessIcon color="success" aria-hidden="false" aria-label="Success" />
+			<SuccessIcon aria-hidden="false" aria-label="Success" color="success" />
 		),
 		tone: 'success',
 	},
 	error: {
 		icon: () => (
-			<AlertIcon color="error" aria-hidden="false" aria-label="Error" />
+			<AlertIcon aria-hidden="false" aria-label="Error" color="error" />
 		),
 		tone: 'error',
 	},
 	info: {
 		icon: () => (
-			<InfoIcon color="info" aria-hidden="false" aria-label="Information" />
+			<InfoIcon aria-hidden="false" aria-label="Information" color="info" />
 		),
 		tone: 'info',
 	},
 	warning: {
 		icon: () => (
-			<WarningIcon color="warning" aria-hidden="false" aria-label="Warning" />
+			<WarningIcon aria-hidden="false" aria-label="Warning" color="warning" />
 		),
 		tone: 'warning',
 	},

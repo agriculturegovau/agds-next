@@ -48,13 +48,13 @@ const Page: NextPageWithLayout = () => {
 								]}
 							/>
 							<PageTitle
-								title="Register a pet"
-								introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register a pet."
 								callToAction={
 									<Text as="p" color="muted">
 										Takes around 10 minutes.
 									</Text>
 								}
+								introduction="Registering domestic animals is a requirement of pet ownership. Complete the following 2 tasks to register a pet."
+								title="Register a pet"
 							/>
 							<Stack gap={1.5}>
 								<H2>Registration requirements</H2>

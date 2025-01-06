@@ -63,7 +63,7 @@ export const AppLayoutSidebarNav = ({
 	subLevelVisible,
 }: AppLayoutSidebarNavProps) => {
 	return (
-		<Stack as="nav" aria-label="main" paddingBottom={1.5}>
+		<Stack aria-label="main" as="nav" paddingBottom={1.5}>
 			<Stack as="ul">
 				{items.map((group, index) => {
 					const isFirstItem = index === 0;
@@ -87,8 +87,8 @@ export const AppLayoutSidebarNav = ({
 							{!isFirstItem ? (
 								<AppLayoutSidebarNavDivider
 									// As the divider is placed at the start of each group, padding top is determined by the previous group
-									disablePaddingTop={prevGroupDisableGroupPadding}
 									disablePaddingBottom={disableGroupPadding}
+									disablePaddingTop={prevGroupDisableGroupPadding}
 								/>
 							) : null}
 							{groupItems.map((item, index) => {
@@ -157,8 +157,8 @@ function AppLayoutSidebarNavListItem({
 			<AppLayoutSidebarNavItemInner
 				background={background}
 				hasEndElement={Boolean(endElement)}
-				isCurrentPage={isCurrentPage}
 				isActive={isActiveGroup}
+				isCurrentPage={isCurrentPage}
 				isOpen={isOpen}
 				level={item.level}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
@@ -238,10 +238,10 @@ function AppLayoutSidebarNavListItem({
 	return (
 		<AppLayoutSidebarNavItemInner
 			background={background}
+			hasEndElement={false}
 			isActive={false}
 			isCurrentPage={false}
 			isOpen={false}
-			hasEndElement={false}
 		>
 			<Stack as="span" gap={0.25}>
 				{label}
@@ -376,10 +376,10 @@ function AppLayoutSidebarNavDivider({
 }) {
 	return (
 		<Box
+			aria-hidden
 			as="li"
-			paddingTop={disablePaddingTop ? 0 : 1}
 			paddingBottom={disablePaddingBottom ? 0 : 1}
-			aria-hidden="true"
+			paddingTop={disablePaddingTop ? 0 : 1}
 		>
 			<hr
 				css={{

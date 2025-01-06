@@ -27,12 +27,12 @@ export function AppLayoutFooter({
 		>
 			<Content>
 				<Stack
-					paddingY={3}
-					width="100%"
-					gap={1.5}
+					borderColor="muted"
 					borderTop
 					borderTopWidth="xl"
-					borderColor="muted"
+					gap={1.5}
+					paddingY={3}
+					width="100%"
 				>
 					{children}
 				</Stack>
@@ -44,7 +44,7 @@ export function AppLayoutFooter({
 export function AppLayoutFooterDivider() {
 	return (
 		<hr
-			aria-hidden="true"
+			aria-hidden
 			css={{
 				boxSizing: 'content-box',
 				height: 0,

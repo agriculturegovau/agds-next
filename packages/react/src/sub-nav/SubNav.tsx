@@ -22,8 +22,8 @@ export function SubNav({
 }: SubNavProps) {
 	const bestMatch = findBestMatch(links, activePath);
 	return (
-		<SubNavContainer id={id} aria-label={ariaLabel} background={background}>
-			<SubNavList links={links} activePath={bestMatch} />
+		<SubNavContainer aria-label={ariaLabel} background={background} id={id}>
+			<SubNavList activePath={bestMatch} links={links} />
 		</SubNavContainer>
 	);
 }
