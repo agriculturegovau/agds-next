@@ -11,12 +11,12 @@ export type MainNavContainerProps = {
 	activePath: string;
 	background: MainNavBackground;
 	borderColor: ResponsiveProp<BorderColor>;
-	/** The maximum width of the container. */
-	maxWidth: 'container' | 'containerXL';
 	focusMode?: boolean;
 	id?: string;
 	isMobileMenuOpen: boolean;
 	items?: MainNavListItemType[];
+	/** The maximum width of the container. */
+	maxWidth: 'container' | 'containerXL';
 	openMobileMenu: () => void;
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };
@@ -25,11 +25,11 @@ export function MainNavContainer({
 	activePath,
 	background,
 	borderColor,
-	maxWidth,
 	focusMode = false,
 	id,
 	isMobileMenuOpen,
 	items,
+	maxWidth,
 	openMobileMenu,
 	secondaryItems,
 }: MainNavContainerProps) {

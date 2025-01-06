@@ -32,10 +32,10 @@ export const Footer = ({
 			paddingY={3}
 		>
 			<Stack
-				maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
-				width="100%"
 				gap={1.5}
+				maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 				paddingX={tokens.containerPadding}
+				width="100%"
 			>
 				{children}
 			</Stack>

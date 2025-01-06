@@ -13,14 +13,14 @@ export type MainNavProps = PropsWithChildren<{
 	/** The background of the component. */
 	background?: MainNavBackground;
 	borderColor?: ResponsiveProp<BorderColor>;
-	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
 	/** When true, removes all navigation items to reduce distractions.  */
 	focusMode?: boolean;
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** List of navigation items to display. */
 	items?: MainNavListItemType[];
+	/** The maximum width of the container. */
+	maxWidth?: 'container' | 'containerXL';
 	/** Optional list of navigation items to display on the right of the component. */
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 }>;
@@ -29,10 +29,10 @@ export function MainNav({
 	activePath,
 	background = 'body',
 	borderColor = 'accent',
-	maxWidth = 'container',
 	focusMode = false,
 	id,
 	items,
+	maxWidth = 'container',
 	secondaryItems,
 }: MainNavProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =

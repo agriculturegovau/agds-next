@@ -9,8 +9,6 @@ export type HeaderProps = {
 	background?: 'body' | 'bodyAlt';
 	/** Used to indicate if an application is in a prerelease state. */
 	badgeLabel?: string;
-	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
 	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
 	dividerPosition?: 'after' | 'between';
 	/** The heading should be set to the website or service title. */
@@ -19,6 +17,8 @@ export type HeaderProps = {
 	href?: string;
 	/** The logo to display. */
 	logo?: ReactElement;
+	/** The maximum width of the container. */
+	maxWidth?: 'container' | 'containerXL';
 	/** Content to placed on the right side of the Header. */
 	rightContent?: ReactNode;
 	/** The href to link to, for example "/". */
@@ -34,11 +34,11 @@ export type HeaderProps = {
 export function Header({
 	background = 'body',
 	badgeLabel,
-	maxWidth = 'container',
 	dividerPosition = 'after',
 	heading,
 	href = '/',
 	logo,
+	maxWidth = 'container',
 	rightContent,
 	secondHref,
 	secondLogo,

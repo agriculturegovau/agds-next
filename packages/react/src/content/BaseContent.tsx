@@ -8,9 +8,9 @@ export type BaseContentProps = PropsWithChildren<
 	{
 		as?: ElementType;
 		className?: string;
+		id?: string;
 		/** The maximum width of the container. */
 		maxWidth?: 'container' | 'containerXL';
-		id?: string;
 		tabIndex?: number;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
@@ -24,8 +24,8 @@ export function BaseContent({
 	background,
 	children,
 	className,
-	maxWidth = 'container',
 	id,
+	maxWidth = 'container',
 	paddingY,
 	palette,
 	tabIndex,
@@ -42,11 +42,11 @@ export function BaseContent({
 				tabIndex={tabIndex}
 			>
 				<Box
-					width="100%"
 					maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
-					paddingTop={paddingYMap[paddingY].top}
 					paddingBottom={paddingYMap[paddingY].bottom}
+					paddingTop={paddingYMap[paddingY].top}
 					paddingX={tokens.containerPadding}
+					width="100%"
 				>
 					{children}
 				</Box>
