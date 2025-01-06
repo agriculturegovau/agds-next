@@ -68,12 +68,14 @@ export const parseDate = (
 
 export function isValidDate(
 	value?: Date,
-	range: { maxDate?: Date; minDate?: Date } = {}
+	range: { maxDate?: Date; minDate?: Date; fromDate?: Date; toDate?: Date } = {}
 ) {
 	const valid = isDate(value) && isValid(value);
 	if (!valid) return false;
-	if (range.maxDate && value && isAfter(value, range.maxDate)) return false;
+	if (range.fromDate && value && isBefore(value, range.fromDate)) return false;
+	if (range.toDate && value && isAfter(value, range.toDate)) return false;
 	if (range.minDate && value && isBefore(value, range.minDate)) return false;
+	if (range.maxDate && value && isAfter(value, range.maxDate)) return false;
 	return true;
 }
 
