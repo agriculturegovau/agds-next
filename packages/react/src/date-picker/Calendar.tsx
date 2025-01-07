@@ -3,11 +3,9 @@ import {
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
-	// type RefObject,
 	useCallback,
 	useMemo,
 	useRef,
-	// Profiler,
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
@@ -85,23 +83,18 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	// returnFocusRef?: RefObject<HTMLButtonElement>;
 	inputMode?: 'from' | 'to';
 	onHover?: (date: Date) => void;
 	clearHoveredDay?: DebouncedState<() => void>;
 };
 
 export function CalendarRange({
-	// returnFocusRef,
 	inputMode,
 	onHover,
 	clearHoveredDay,
 	...props
 }: CalendarRangeProps) {
-	// console.log(`props`, props);
-	// const { onHover } = props;
 	const combinedDayPickerProps = {
-		// ...defaultDayPickerProps,
 		components: {
 			...defaultDayPickerProps.components,
 			// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
@@ -114,10 +107,6 @@ export function CalendarRange({
 					props.displayMonth,
 					buttonRef
 				);
-
-				// console.log(`activeModifiers.qux`, activeModifiers.qux);
-				// console.log(`props.date`, props.date);
-				// console.log(`selectedDays`, selectedDays);
 
 				// @ts-expect-error: role is unused
 				const { children, onClick, onKeyDown, role, ...restButtonProps } =
@@ -161,16 +150,11 @@ export function CalendarRange({
 						ref={buttonRef}
 						tabIndex={-1}
 						{...(isHidden ? undefined : interactiveProps)}
-						// data-in-range={activeModifiers.qux}
-						// data-day-after-from={props.date > selectedDays?.from}
-						// data-day-before-to={props.date < selectedDays?.to}
 					>
 						{/* Without this focusable span, left and right do not work in screen readers */}
 						<span
 							tabIndex={-1}
 							onMouseLeave={() => {
-								// console.log(`props.date`, props.date);
-								// console.log(`e`, e);
 								!isHidden && clearHoveredDay?.();
 							}}
 							onMouseEnter={
@@ -191,25 +175,11 @@ export function CalendarRange({
 	};
 
 	return (
-		// <Profiler
-		// 	id="cal"
-		// 	onRender={(id, phase, duration) => {
-		// 		console.log(id, phase, duration);
-		// 	}}
-		// >
-		<FocusLock
-			autoFocus={false}
-			// onDeactivation={() => {
-			// 	// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-			// 	if (!returnFocusRef) return;
-			// 	window.setTimeout(() => returnFocusRef.current?.focus(), 0);
-			// }}
-		>
+		<FocusLock autoFocus={false}>
 			<CalendarRangeContainer dateRange={props.selected} inputMode={inputMode}>
 				<DayPicker mode="range" {...combinedDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
-		// {/* </Profiler> */}
 	);
 }
 
@@ -474,10 +444,6 @@ const calendarComponents: CustomComponents = {
 			props.displayMonth,
 			buttonRef
 		);
-
-		// console.log(`activeModifiers`, activeModifiers);
-		// console.log(`props.date`, props.date);
-		// console.log(`selectedDays`, selectedDays);
 
 		// @ts-expect-error: role is unused
 		const { children, onClick, onKeyDown, role, ...restButtonProps } =

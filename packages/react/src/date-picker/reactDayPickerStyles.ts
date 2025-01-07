@@ -176,13 +176,6 @@ export const reactDayPickerStyles = {
 // Start date is end date
 // rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
 
-// type ReactDayRangePickerStyles = {
-// ?: {
-// 	from?: Date;
-// 	to?: Date;
-// }
-
-// }
 export const reactDayRangePickerStyles = (
 	dateRange?: {
 		from?: Date;
@@ -201,9 +194,6 @@ export const reactDayRangePickerStyles = (
 		borderBottomRightRadius: '50%',
 		borderTopRightRadius: '50%',
 	};
-
-	// console.log(`from`, from);
-	// console.log(`to`, to);
 
 	return {
 		// Middle of the date range

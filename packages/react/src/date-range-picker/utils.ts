@@ -36,8 +36,6 @@ export function getCalendarDefaultMonth(
 	const value = (() => {
 		// If the date picker has a value, open up the month of the date value
 		// Open up the 'from' date if the user has clicked the start date picker
-		// console.log(`inputMode`, inputMode);
-		// console.log(`valueAsDateOrUndefined`, valueAsDateOrUndefined);
 		if (inputMode === 'from') {
 			if (valueAsDateOrUndefined.from) return valueAsDateOrUndefined.from;
 			if (valueAsDateOrUndefined.to)
@@ -74,16 +72,6 @@ export function getCalendarDefaultMonth(
 	})();
 
 	if (value && inputMode === 'to' && numberOfMonths === 2) {
-		// console.log(
-		// 	`differenceInCalendarMonths(
-		// 	valueAsDateOrUndefined?.to,
-		// 	valueAsDateOrUndefined?.from
-		// );`,
-		// 	differenceInCalendarMonths(
-		// 		valueAsDateOrUndefined?.to,
-		// 		valueAsDateOrUndefined?.from
-		// 	)
-		// );
 		const monthsRangeCount = (() => {
 			return valueAsDateOrUndefined?.from && valueAsDateOrUndefined?.to
 				? differenceInCalendarMonths(
