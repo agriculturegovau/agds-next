@@ -181,20 +181,6 @@ export function CalendarRange({
 									  }
 									: undefined
 							}
-							css={{
-								position: 'relative',
-								display: 'flex',
-								height: '3rem',
-								width: '3rem',
-								justifyContent: 'center',
-								alignItems: 'center',
-								'::before': {
-									content: '""',
-									position: 'absolute',
-									inset: 0,
-									// background: 'rgba(255,0,0,0.2)',
-								},
-							}}
 						>
 							{isHidden ? undefined : children}
 						</span>

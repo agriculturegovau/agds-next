@@ -39,6 +39,7 @@ export function CalendarRangeContainer({
 			aria-modal="true"
 			css={[
 				reactDayPickerStyles,
+				// @ts-expect-error stowey
 				reactDayRangePickerStyles(dateRange, inputMode),
 			]}
 			display="inline-block"

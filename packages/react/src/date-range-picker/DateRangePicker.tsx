@@ -472,7 +472,7 @@ export const DateRangePicker = ({
 
 	const clearHoveredDay = useDebouncedCallback(() => {
 		setHoveredDay(undefined);
-	}, 200);
+	}, 100);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
 	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
@@ -486,7 +486,22 @@ export const DateRangePicker = ({
 			numberOfMonths,
 			onSelect,
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
-			selected: valueAsDateOrUndefined,
+			selected: {
+				from:
+					inputMode === 'from' &&
+					valueAsDateOrUndefined.from &&
+					valueAsDateOrUndefined.to &&
+					isAfter(valueAsDateOrUndefined.from, valueAsDateOrUndefined.to)
+						? undefined
+						: valueAsDateOrUndefined.from,
+				to:
+					inputMode === 'to' &&
+					valueAsDateOrUndefined.from &&
+					valueAsDateOrUndefined.to &&
+					isBefore(valueAsDateOrUndefined.to, valueAsDateOrUndefined.from)
+						? undefined
+						: valueAsDateOrUndefined.to,
+			},
 			modifiers: {
 				// fromRange: (day: Date) => {
 				// 	// console.log(`day`, day);
