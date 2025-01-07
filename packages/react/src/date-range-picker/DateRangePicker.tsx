@@ -436,15 +436,15 @@ export const DateRangePicker = ({
 			clearHoveredDay,
 		}),
 		[
+			clearHoveredDay,
 			defaultMonth,
 			disabledCalendarDays,
-			clearHoveredDay,
+			fromRange,
 			inputMode,
 			numberOfMonths,
+			onHover,
 			onSelect,
 			valueAsDateOrUndefined,
-			onHover,
-			fromRange,
 		]
 	);
 

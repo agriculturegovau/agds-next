@@ -482,8 +482,6 @@ const calendarComponents: CustomComponents = {
 				ref={buttonRef}
 				tabIndex={-1}
 				{...(isHidden ? undefined : interactiveProps)}
-				// data-day-after-from={props.date > selectedDays?.from}
-				// data-day-before-to={props.date < selectedDays?.to}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{isHidden ? undefined : children}</span>

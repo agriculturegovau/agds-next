@@ -69,7 +69,6 @@ relatedComponents: ['date-picker']
 () => {
 	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState({
-		// from: '25/10/2020',
 		from: undefined,
 		to: undefined,
 	});
@@ -89,9 +88,6 @@ relatedComponents: ['date-picker']
 
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.to);
-
-	console.log(`fromInvalid`, fromInvalid);
-	console.log(`toInvalid`, toInvalid);
 
 	const onFromInputChange = (fromValue) => {
 		console.log('onFromInputChange', fromValue);
