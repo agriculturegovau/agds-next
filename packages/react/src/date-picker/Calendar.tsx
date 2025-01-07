@@ -263,6 +263,7 @@ const calendarComponents: CustomComponents = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
+						displayIndex={props.displayIndex}
 						displayMonth={props.displayMonth}
 						id={props.id}
 					/>
@@ -284,7 +285,11 @@ const calendarComponents: CustomComponents = {
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	CaptionLabel: function CaptionLabel({ displayMonth, id }: CaptionLabelProps) {
+	CaptionLabel: function CaptionLabel({
+		displayIndex,
+		displayMonth,
+		id,
+	}: CaptionLabelProps) {
 		const { goToMonth } = useNavigation();
 
 		const month = getMonth(displayMonth);
@@ -294,18 +299,20 @@ const calendarComponents: CustomComponents = {
 			(event: ChangeEvent<HTMLSelectElement>) => {
 				const year = parseInt(event.target.value);
 				// Go to the first day of the month
-				goToMonth(new Date(year, getMonth(displayMonth), 1));
+				goToMonth(
+					new Date(year, getMonth(displayMonth) - (displayIndex || 0), 1)
+				);
 			},
-			[goToMonth, displayMonth]
+			[displayIndex, displayMonth, goToMonth]
 		);
 
 		const onMonthChange = useCallback(
 			(event: ChangeEvent<HTMLSelectElement>) => {
 				const monthIndex = parseInt(event.target.value);
 				// Go to the first day of the month
-				goToMonth(new Date(year, monthIndex, 1));
+				goToMonth(new Date(year, monthIndex - (displayIndex || 0), 1));
 			},
-			[goToMonth, year]
+			[displayIndex, goToMonth, year]
 		);
 
 		const { yearRange, yearsVisitedRef } = useCalendar();
