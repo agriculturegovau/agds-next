@@ -149,19 +149,21 @@ export const DateRangePicker = ({
 	const closeCalendarAndFocusTrigger = useCallback(() => {
 		closeCalendar();
 		setTimeout(() => {
-			if (inputMode === 'from') fromTriggerRef.current?.focus();
-			else toTriggerRef.current?.focus();
+			toTriggerRef.current?.focus();
 		}, 0);
-	}, [closeCalendar, fromTriggerRef, inputMode, toTriggerRef]);
+	}, [closeCalendar, toTriggerRef]);
 
-	function onFromTriggerClick() {
-		setInputMode('from');
-		setHasCalendarOpened(true);
-		openCalendar();
-	}
+	function onTriggerClick() {
+		if (isCalendarOpen) {
+			closeCalendar();
+			return;
+		}
 
-	function onToTriggerClick() {
-		setInputMode('to');
+		if (valueAsDateOrUndefined.from && !valueAsDateOrUndefined.to) {
+			setInputMode('to');
+		} else {
+			setInputMode('from');
+		}
 		setHasCalendarOpened(true);
 		openCalendar();
 	}
@@ -228,7 +230,11 @@ export const DateRangePicker = ({
 
 			if ((range.from || fromInputValue) && (range.to || toInputValue)) {
 				setHoveredDay(undefined);
-				closeCalendarAndFocusTrigger();
+				if (inputMode === 'from') {
+					setInputMode('to');
+				} else {
+					closeCalendarAndFocusTrigger();
+				}
 				return;
 			}
 
@@ -444,7 +450,8 @@ export const DateRangePicker = ({
 			numberOfMonths,
 			onHover,
 			onSelect,
-			valueAsDateOrUndefined,
+			valueAsDateOrUndefined.from,
+			valueAsDateOrUndefined.to,
 		]
 	);
 
@@ -478,10 +485,11 @@ export const DateRangePicker = ({
 								rangeName: 'start',
 								value: fromInputValue,
 							})}
-							buttonOnClick={onFromTriggerClick}
+							buttonOnClick={onTriggerClick}
 							buttonRef={fromTriggerRef}
 							dateFormat={dateFormat}
 							disabled={disabled}
+							hideButton
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							highlight={isCalendarOpen && inputMode === 'from'}
 							id={fromId}
@@ -503,7 +511,7 @@ export const DateRangePicker = ({
 								rangeName: 'end',
 								value: toInputValue,
 							})}
-							buttonOnClick={onToTriggerClick}
+							buttonOnClick={onTriggerClick}
 							buttonRef={toTriggerRef}
 							dateFormat={dateFormat}
 							disabled={disabled}

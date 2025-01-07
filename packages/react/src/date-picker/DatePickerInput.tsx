@@ -13,6 +13,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
 	dateFormat: AcceptedDateFormats;
+	hideButton?: boolean;
 	highlight?: boolean;
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
@@ -32,6 +33,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			buttonRef,
 			dateFormat: dateFormatProp,
 			disabled,
+			hideButton,
 			hideOptionalLabel,
 			highlight,
 			hint,
@@ -53,9 +55,9 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				maxWidth: maxWidthProp,
 			}),
 			width: '100%',
-			borderRight: 'none',
-			borderTopRightRadius: 0,
-			borderBottomRightRadius: 0,
+			borderRight: hideButton ? undefined : 'none',
+			borderTopRightRadius: hideButton ? undefined : 0,
+			borderBottomRightRadius: hideButton ? undefined : 0,
 		};
 
 		// The secondary label should show today's date in the supplied date format (via the `dateFormat` prop)
@@ -100,22 +102,24 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							disabled={disabled}
 							value={value}
 						/>
-						<Button
-							aria-label={buttonAriaLabel}
-							css={{
-								borderTopLeftRadius: 0,
-								borderBottomLeftRadius: 0,
-								paddingLeft: mapSpacing(1),
-								paddingRight: mapSpacing(1),
-							}}
-							disabled={disabled}
-							onClick={buttonOnClick}
-							ref={buttonRef}
-							type="button"
-							variant="secondary"
-						>
-							<CalendarIcon css={{ display: 'block' }} size="md" />
-						</Button>
+						{!hideButton && (
+							<Button
+								aria-label={buttonAriaLabel}
+								css={{
+									borderTopLeftRadius: 0,
+									borderBottomLeftRadius: 0,
+									paddingLeft: mapSpacing(1),
+									paddingRight: mapSpacing(1),
+								}}
+								disabled={disabled}
+								onClick={buttonOnClick}
+								ref={buttonRef}
+								type="button"
+								variant="secondary"
+							>
+								<CalendarIcon css={{ display: 'block' }} size="md" />
+							</Button>
+						)}
 					</Flex>
 				)}
 			</Field>
