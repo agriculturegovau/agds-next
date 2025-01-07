@@ -242,8 +242,8 @@ export const DatePicker = ({
 				maxWidth={maxWidth}
 				onBlur={onInputBlur}
 				onChange={onInputChange}
-				secondaryLabelDate={minDate || maxDate}
 				ref={inputRef}
+				secondaryLabelDate={minDate || maxDate}
 				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
@@ -258,8 +258,8 @@ export const DatePicker = ({
 					// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
 					<Popover
 						{...popoverProps}
-						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 					>
 						{isCalendarOpen && <CalendarSingle {...calendarProps} />}
 					</Popover>

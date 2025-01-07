@@ -7,18 +7,10 @@ export const FilterStatusSelect = ({ block }: { block?: boolean }) => {
 
 	return (
 		<Select
-			label="Status"
-			placeholder="All"
 			aria-controls={tableId}
-			hideOptionalLabel
 			block={block}
-			options={[
-				{ value: 'booked', label: 'Booked' },
-				{ value: 'notBooked', label: 'Not booked' },
-				{ value: 'completed', label: 'Completed' },
-				{ value: 'cancelled', label: 'Cancelled' },
-			]}
-			value={filters.status || ''}
+			hideOptionalLabel
+			label="Status"
 			onChange={(e) => {
 				const value = e.target.value as
 					| ''
@@ -31,6 +23,14 @@ export const FilterStatusSelect = ({ block }: { block?: boolean }) => {
 					status: value === '' ? undefined : value,
 				});
 			}}
+			options={[
+				{ value: 'booked', label: 'Booked' },
+				{ value: 'notBooked', label: 'Not booked' },
+				{ value: 'completed', label: 'Completed' },
+				{ value: 'cancelled', label: 'Cancelled' },
+			]}
+			placeholder="All"
+			value={filters.status || ''}
 		/>
 	);
 };

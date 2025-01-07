@@ -41,10 +41,9 @@ export const DashboardPagination = () => {
 	return (
 		<PaginationButtons
 			currentPage={displayText.page}
-			onChange={(page) => setPagination({ perPage: displayText.perPage, page })}
-			totalPages={totalPages}
 			itemRangeText={displayText.itemRangeText}
 			itemsPerPage={displayText.perPage}
+			onChange={(page) => setPagination({ perPage: displayText.perPage, page })}
 			onItemsPerPageChange={(perPage) =>
 				setPagination({
 					page: getValidPage({
@@ -56,6 +55,7 @@ export const DashboardPagination = () => {
 					perPage,
 				})
 			}
+			totalPages={totalPages}
 		/>
 	);
 };

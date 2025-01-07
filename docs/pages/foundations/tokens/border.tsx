@@ -10,20 +10,20 @@ export default function TokensBorderWidthPage() {
 	return (
 		<>
 			<DocumentTitle
-				title={TOKEN_PAGES.border.pageTitle}
 				description={TOKEN_PAGES.border.description}
+				title={TOKEN_PAGES.border.pageTitle}
 			/>
 			<TokenLayout
-				title={TOKEN_PAGES.border.pageTitle}
 				description={TOKEN_PAGES.border.description}
 				editPath="/docs/pages/foundations/tokens/border.tsx"
+				title={TOKEN_PAGES.border.pageTitle}
 			>
 				<InpageNav
-					title="On this page"
 					links={[
 						{ href: '#border-width', label: 'Border width' },
 						{ href: '#border-radius-tokens', label: 'Border radius tokens' },
 					]}
+					title="On this page"
 				/>
 				<Prose>
 					<h2 id="border-width">Border width</h2>
@@ -44,7 +44,7 @@ export default function TokensBorderWidthPage() {
 						Use it by setting <code>rounded</code> on the Box component as seen
 						in the following example.
 					</p>
-					<Box border rounded padding={0.5} className={proseBlockClassname}>
+					<Box border className={proseBlockClassname} padding={0.5} rounded>
 						A Box with rounded corners
 					</Box>
 				</Prose>

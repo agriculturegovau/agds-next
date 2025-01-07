@@ -54,16 +54,16 @@ const BaseDirectionLink = ({
 	const iconLeft = direction === 'left';
 	return (
 		<Flex
+			alignItems="center"
 			as={as}
 			className={className}
-			inline
-			gap={0.5}
-			alignItems="center"
+			css={{ alignSelf: 'flex-start' }}
+			focusRingFor="keyboard"
 			fontFamily="body"
 			fontWeight="normal"
+			gap={0.5}
+			inline
 			link
-			focusRingFor="keyboard"
-			css={{ alignSelf: 'flex-start' }}
 			{...props}
 		>
 			{iconLeft ? <Icon size="sm" /> : null}

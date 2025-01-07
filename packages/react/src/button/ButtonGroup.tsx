@@ -6,9 +6,9 @@ export type ButtonGroupProps = { children: ReactNode };
 export const ButtonGroup = ({ children }: ButtonGroupProps) => {
 	return (
 		<Flex
-			gap={1}
-			flexDirection={['column', 'row']}
 			alignItems={['stretch', 'center']}
+			flexDirection={['column', 'row']}
+			gap={1}
 		>
 			{children}
 		</Flex>

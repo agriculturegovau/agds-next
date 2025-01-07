@@ -51,40 +51,42 @@ export function FormStep3() {
 
 	return (
 		<FormContainer
-			formTitle="Business address"
 			formIntroduction="Add your business address."
+			formTitle="Business address"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				{showErrorAlert && <FormPageAlert errors={errors} />}
 				<FormStack>
 					<Fieldset legend={<H2>Business address</H2>}>
 						<FormStack>
 							<TextInput
-								autoComplete="on"
-								label="Street address"
 								{...register('streetAddress')}
+								autoComplete="on"
 								id="streetAddress"
 								invalid={Boolean(errors.streetAddress?.message)}
+								label="Street address"
+								maxWidth="xl"
 								message={errors.streetAddress?.message}
 								required
-								maxWidth="xl"
 							/>
 							<TextInput
-								autoComplete="on"
-								label="Suburb, town or city"
 								{...register('suburbTownCity')}
+								autoComplete="on"
 								id="suburbTownCity"
 								invalid={Boolean(errors.suburbTownCity?.message)}
+								label="Suburb, town or city"
+								maxWidth="lg"
 								message={errors.suburbTownCity?.message}
 								required
-								maxWidth="lg"
 							/>
 							<Select
-								autoComplete="on"
-								label="State or territory"
 								{...register('state')}
+								autoComplete="on"
 								id="state"
-								placeholder="Select"
+								invalid={Boolean(errors.state?.message)}
+								label="State or territory"
+								maxWidth="sm"
+								message={errors.state?.message}
 								options={[
 									{ label: 'NSW', value: 'nsw' },
 									{ label: 'QLD', value: 'qld' },
@@ -95,20 +97,18 @@ export function FormStep3() {
 									{ label: 'SA', value: 'sa' },
 									{ label: 'WA', value: 'wa' },
 								]}
-								invalid={Boolean(errors.state?.message)}
-								message={errors.state?.message}
+								placeholder="Select"
 								required
-								maxWidth="sm"
 							/>
 							<TextInput
-								autoComplete="on"
-								label="Postcode"
 								{...register('postcode')}
+								autoComplete="on"
 								id="postcode"
-								invalid={Boolean(errors.postcode?.message)}
-								message={errors.postcode?.message}
-								maxWidth="sm"
 								inputMode="numeric"
+								invalid={Boolean(errors.postcode?.message)}
+								label="Postcode"
+								maxWidth="sm"
+								message={errors.postcode?.message}
 								pattern="[0-9]*"
 								required
 							/>
@@ -127,31 +127,33 @@ export function FormStep3() {
 							{!isPostalAddressSameAsBusinessAddress && (
 								<FormStack>
 									<TextInput
-										autoComplete="on"
-										label="Postal address"
 										{...register('postalAddress')}
+										autoComplete="on"
 										id="postalAddress"
 										invalid={Boolean(errors.postalAddress?.message)}
+										label="Postal address"
+										maxWidth="xl"
 										message={errors.postalAddress?.message}
 										required
-										maxWidth="xl"
 									/>
 									<TextInput
-										autoComplete="on"
-										label="Suburb, town or city"
 										{...register('postalSuburbTownCity')}
+										autoComplete="on"
 										id="postalSuburbTownCity"
 										invalid={Boolean(errors.postalSuburbTownCity?.message)}
+										label="Suburb, town or city"
+										maxWidth="lg"
 										message={errors.postalSuburbTownCity?.message}
 										required
-										maxWidth="lg"
 									/>
 									<Select
-										autoComplete="on"
-										label="State or territory"
 										{...register('postalState')}
+										autoComplete="on"
 										id="postalState"
-										placeholder="Select"
+										invalid={Boolean(errors.postalState?.message)}
+										label="State or territory"
+										maxWidth="sm"
+										message={errors.postalState?.message}
 										options={[
 											{ label: 'NSW', value: 'nsw' },
 											{ label: 'QLD', value: 'qld' },
@@ -162,22 +164,20 @@ export function FormStep3() {
 											{ label: 'SA', value: 'sa' },
 											{ label: 'WA', value: 'wa' },
 										]}
-										invalid={Boolean(errors.postalState?.message)}
-										message={errors.postalState?.message}
+										placeholder="Select"
 										required
-										maxWidth="sm"
 									/>
 									<TextInput
-										autoComplete="on"
-										label="Postcode"
 										{...register('postalPostcode')}
+										autoComplete="on"
 										id="postalPostcode"
-										invalid={Boolean(errors.postalPostcode?.message)}
-										message={errors.postalPostcode?.message}
-										maxWidth="sm"
-										required
 										inputMode="numeric"
+										invalid={Boolean(errors.postalPostcode?.message)}
+										label="Postcode"
+										maxWidth="sm"
+										message={errors.postalPostcode?.message}
 										pattern="[0-9]*"
+										required
 									/>
 								</FormStack>
 							)}

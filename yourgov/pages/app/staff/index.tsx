@@ -47,16 +47,6 @@ const Page: NextPageWithLayout = () => {
 			<PageContent>
 				<Stack gap={3}>
 					<PageTitle
-						title="Staff"
-						introduction={
-							<>
-								Manage who can act for{' '}
-								<Text fontSize="md" fontWeight="bold">
-									Walker‘s Frozen Food
-								</Text>
-								.
-							</>
-						}
 						callToAction={
 							<Stack gap={2} maxWidth="42rem">
 								<Details label="Why should I invite a new staff member?">
@@ -70,7 +60,7 @@ const Page: NextPageWithLayout = () => {
 											drawerContent={
 												<Stack gap={2}>
 													<H1>Learn more about inviting a staff member</H1>
-													<Text as="p" fontSize="lg" color="muted">
+													<Text as="p" color="muted" fontSize="lg">
 														Inviting individuals to join your staff can bring
 														numerous benefits to your business and help
 														streamline your operations.
@@ -120,6 +110,16 @@ const Page: NextPageWithLayout = () => {
 								</ButtonLink>
 							</Stack>
 						}
+						introduction={
+							<>
+								Manage who can act for{' '}
+								<Text fontSize="md" fontWeight="bold">
+									Walker‘s Frozen Food
+								</Text>
+								.
+							</>
+						}
+						title="Staff"
 					/>
 					<Tabs contained={false}>
 						<TabList>

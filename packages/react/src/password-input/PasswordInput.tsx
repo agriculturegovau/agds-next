@@ -51,11 +51,11 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 					type={checked ? 'text' : 'password'}
 				/>
 				<Checkbox
-					disabled={props.disabled}
 					aria-controls={inputId}
-					size="sm"
 					checked={checked}
+					disabled={props.disabled}
 					onChange={toggleChecked}
+					size="sm"
 				>
 					Show password
 				</Checkbox>

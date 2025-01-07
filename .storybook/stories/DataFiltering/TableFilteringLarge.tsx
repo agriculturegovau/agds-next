@@ -44,9 +44,9 @@ export const TableFilteringLarge = ({
 						<FilterBarGroup>
 							<FilterSearchInput />
 							<Button
+								iconBefore={FilterIcon}
 								onClick={openDrawer}
 								variant="secondary"
-								iconBefore={FilterIcon}
 							>
 								Show filters
 							</Button>
@@ -54,19 +54,19 @@ export const TableFilteringLarge = ({
 						<SortBySelect />
 					</FilterBar>
 					<DashboardFilterDrawer
-						isDrawerOpen={isDrawerOpen}
 						closeDrawer={closeDrawer}
+						isDrawerOpen={isDrawerOpen}
 					/>
 					<ActiveFilters />
 				</FilterRegion>
 				{selectable && (
-					<Box padding={1} borderBottom>
+					<Box borderBottom padding={1}>
 						<DataTableSelectAllCheckbox />
 					</Box>
 				)}
 				<DataTable
-					ref={tableRef}
 					headingId={headingId}
+					ref={tableRef}
 					selectable={selectable}
 				/>
 			</Stack>

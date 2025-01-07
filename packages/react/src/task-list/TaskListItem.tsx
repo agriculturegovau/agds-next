@@ -3,6 +3,7 @@ import { Flex } from '../flex';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
 import {
+	ProgressNotRequiredIcon,
 	ProgressDoingIcon,
 	SuccessFilledIcon,
 	ProgressTodoIcon,
@@ -30,9 +31,9 @@ export const TaskListItemLink = ({
 }: TaskListItemLinkProps) => (
 	<TaskListItem
 		as={TextLink}
-		status={status}
 		message={message}
 		ordered={ordered}
+		status={status}
 		{...props}
 	>
 		{children}
@@ -75,22 +76,15 @@ const TaskListItem = ({
 	...props
 }: TaskListItemProps) => {
 	const { icon: Icon, iconColor, label } = statusMap[status];
+
 	return (
 		<li css={{ counterIncrement: 'task-count' }}>
 			<Flex
-				as={as}
-				flexDirection={['column', 'row']}
-				justifyContent="space-between"
 				alignItems={['flex-start', 'center']}
-				className={className}
-				gap={1}
-				paddingY={1}
-				paddingX={[0.75, 1]}
-				fontFamily="body"
-				color="text"
+				as={as}
 				borderBottom
-				width="100%"
-				focusRingFor="keyboard"
+				className={className}
+				color="text"
 				css={{
 					position: 'relative',
 					textDecoration: 'none',
@@ -124,24 +118,29 @@ const TaskListItem = ({
 						},
 					},
 				}}
+				flexDirection={['column', 'row']}
+				focusRingFor="keyboard"
+				fontFamily="body"
+				gap={1}
+				justifyContent="space-between"
+				paddingX={[0.75, 1]}
+				paddingY={1}
+				width="100%"
 				{...props}
 			>
 				<Flex as="span" gap={[0, 1]}>
-					<Flex as="span" alignItems="center">
+					<Flex alignItems="center" as="span">
 						<Icon
-							size="xl"
 							color={iconColor}
 							css={mq({
 								display: ['none', 'block'],
 							})}
+							size="xl"
 						/>
 					</Flex>
 					<Flex as="span" flexDirection="column" gap={0.5}>
 						<Text
 							{...{ [taskListItemTextDataAttr]: '' }}
-							fontSize={['md', 'lg']}
-							lineHeight="heading"
-							fontWeight="bold"
 							color="action"
 							css={
 								ordered
@@ -152,18 +151,21 @@ const TaskListItem = ({
 									  }
 									: undefined
 							}
+							fontSize={['md', 'lg']}
+							fontWeight="bold"
+							lineHeight="heading"
 						>
-							{ordered && <span aria-hidden="true">. </span>}
+							{ordered && <span aria-hidden>. </span>}
 							{children}
 							<VisuallyHidden>.</VisuallyHidden>
 						</Text>
-						<Flex as="span" gap={0.25} alignItems="center">
+						<Flex alignItems="center" as="span" gap={0.25}>
 							<Icon
-								size="md"
 								color={iconColor}
 								css={mq({
 									display: ['block', 'none'],
 								})}
+								size="md"
 							/>
 							<Text as="span" fontSize={['xs', 'sm']} lineHeight="nospace">
 								{label}
@@ -182,6 +184,11 @@ const TaskListItem = ({
 };
 
 const statusMap = {
+	notRequired: {
+		label: 'No longer required',
+		icon: ProgressNotRequiredIcon,
+		iconColor: 'border',
+	},
 	blocked: {
 		label: 'Cannot start yet',
 		icon: ProgressBlockedIcon,

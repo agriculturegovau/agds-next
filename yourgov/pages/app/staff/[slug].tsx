@@ -110,7 +110,6 @@ const Page: NextPageWithLayout = () => {
 
 					<Stack alignItems="start" gap={1.5}>
 						<PageTitle
-							title={staffMember.name}
 							introduction={
 								<Text>
 									Change role or remove access for{' '}
@@ -120,9 +119,10 @@ const Page: NextPageWithLayout = () => {
 									.
 								</Text>
 							}
+							title={staffMember.name}
 						/>
 
-						<StatusBadge tone="infoMedium" label="Invited" />
+						<StatusBadge label="Invited" tone="infoMedium" />
 					</Stack>
 
 					<Stack gap={2}>
@@ -184,7 +184,7 @@ const Page: NextPageWithLayout = () => {
 						</Button>
 					</Stack>
 
-					<Stack as="form" gap={2} onSubmit={handleSubmit(onSubmit)} noValidate>
+					<Stack as="form" gap={2} noValidate onSubmit={handleSubmit(onSubmit)}>
 						<H2>Change role</H2>
 
 						<Details
@@ -194,7 +194,7 @@ const Page: NextPageWithLayout = () => {
 							<CalloutDefinitionList />
 						</Details>
 
-						<ControlGroup label="Export service role" required block>
+						<ControlGroup block label="Export service role" required>
 							{['Manager', 'Employee', 'Trainee', 'Work experience'].map(
 								(option) => (
 									<Radio key={option} {...register('role')} value={option}>
@@ -206,7 +206,7 @@ const Page: NextPageWithLayout = () => {
 
 						<H2>Training completed</H2>
 
-						<ControlGroup label="Training completed" block>
+						<ControlGroup block label="Training completed">
 							{[
 								'Deliveries',
 								'Distribution',
@@ -228,11 +228,11 @@ const Page: NextPageWithLayout = () => {
 						</Box>
 
 						<ButtonGroup>
-							<Button type="submit" loading={isSaving}>
+							<Button loading={isSaving} type="submit">
 								Save changes
 							</Button>
 
-							<Button variant="tertiary" onClick={onCancelClick}>
+							<Button onClick={onCancelClick} variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>
@@ -240,8 +240,8 @@ const Page: NextPageWithLayout = () => {
 				</Stack>
 
 				<ModalConfirmRemoveAccess
-					itemsToDelete={staffMember}
 					isOpen={removeModalOpen}
+					itemsToDelete={staffMember}
 					onClose={() => setRemoveModalOpen(false)}
 					onConfirm={onConfirmRemove}
 				/>

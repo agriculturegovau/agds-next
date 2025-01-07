@@ -7,21 +7,21 @@ export const FilterDestinationsSelect = ({ block }: { block?: boolean }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
 	return (
 		<ComboboxMulti
-			label="Destinations"
-			hint="Start typing to see results"
-			options={COUNTRY_OPTIONS}
-			hideOptionalLabel
-			block={block}
 			aria-controls={tableId}
-			value={(filters.destinations ?? []).map((country) => ({
-				label: country,
-				value: country,
-			}))}
+			block={block}
+			hideOptionalLabel
+			hint="Start typing to see results"
+			label="Destinations"
 			onChange={(selectedCountries) => {
 				setFilter({
 					destinations: selectedCountries.map(({ label }) => label),
 				});
 			}}
+			options={COUNTRY_OPTIONS}
+			value={(filters.destinations ?? []).map((country) => ({
+				label: country,
+				value: country,
+			}))}
 		/>
 	);
 };

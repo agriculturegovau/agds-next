@@ -8,7 +8,6 @@ export const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
 	function RadioInput(props, ref) {
 		return (
 			<input
-				ref={ref}
 				css={{
 					...visuallyHiddenStyles,
 					// When this component is focused, outline the `RadioIndicator`
@@ -17,6 +16,7 @@ export const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
 					'~ span > span': { opacity: 0 },
 					'&:checked ~ span > span': { opacity: 1 },
 				}}
+				ref={ref}
 				{...props}
 			/>
 		);

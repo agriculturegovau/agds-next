@@ -153,9 +153,9 @@ export const StaffMembersTable = ({
 								<FilterSwitchInput />
 
 								<Button
+									iconBefore={FilterIcon}
 									onClick={openDrawer}
 									variant="secondary"
-									iconBefore={FilterIcon}
 								>
 									Show filters
 								</Button>
@@ -165,8 +165,8 @@ export const StaffMembersTable = ({
 						</FilterBar>
 
 						<DashboardFilterDrawer
-							isDrawerOpen={isDrawerOpen}
 							closeDrawer={closeDrawer}
+							isDrawerOpen={isDrawerOpen}
 						/>
 
 						<ActiveFilters />

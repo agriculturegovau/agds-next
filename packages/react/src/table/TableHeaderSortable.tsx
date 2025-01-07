@@ -36,8 +36,8 @@ export const TableHeaderSortable = ({
 			aria-sort={sortLabel}
 			as="th"
 			borderBottom
-			borderColor="selected"
 			borderBottomWidth={sort ? 'xl' : 'none'}
+			borderColor="selected"
 			display={display}
 			scope="col"
 			width={width}
@@ -81,7 +81,7 @@ export const TableHeaderSortable = ({
 				>
 					{children}
 				</Box>
-				<Icon size="md" color="inherit" />
+				<Icon color="inherit" size="md" />
 			</Flex>
 		</Box>
 	);

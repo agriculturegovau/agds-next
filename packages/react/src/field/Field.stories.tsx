@@ -81,10 +81,10 @@ export const Modular: Story = {
 		return (
 			<FieldContainer invalid={invalid}>
 				<FieldLabel
+					hideOptionalLabel={hideOptionalLabel}
 					htmlFor={fieldId}
 					required={required}
 					secondaryLabel={secondaryLabel}
-					hideOptionalLabel={hideOptionalLabel}
 				>
 					{label}
 				</FieldLabel>

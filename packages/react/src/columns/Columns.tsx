@@ -26,7 +26,7 @@ export const Columns = forwardRefWithAs<'div', ColumnsProps>(function Columns(
 	ref
 ) {
 	const styles = columnsStyles({ cols });
-	return <Box ref={ref} gap={gap} css={styles} {...props} />;
+	return <Box css={styles} gap={gap} ref={ref} {...props} />;
 });
 
 const columnsStyles = ({ cols }: { cols: ResponsiveProp<ColumnRange> }) => {

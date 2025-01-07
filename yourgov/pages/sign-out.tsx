@@ -25,7 +25,7 @@ export default function Page() {
 						<Column columnSpan={{ xs: 12, md: 8 }}>
 							<Stack gap={1.5}>
 								<H1>Sign out</H1>
-								<PageAlert tone="success" title="Sign out successful">
+								<PageAlert title="Sign out successful" tone="success">
 									<Text>You have been successfully signed out.</Text>
 								</PageAlert>
 							</Stack>

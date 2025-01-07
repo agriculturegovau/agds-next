@@ -39,7 +39,7 @@ export function ErrorBoundaryPageFallback() {
 	const { reload } = useRouter();
 	return (
 		<PageContent>
-			<Stack gap={2} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={2}>
 				<Stack gap={1.5}>
 					<H1>An error occurred</H1>
 					<Text as="p">Something went wrong.</Text>

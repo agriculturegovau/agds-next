@@ -34,7 +34,7 @@ function CardExample() {
 
 function CardLinkExample() {
 	return (
-		<Card shadow clickable>
+		<Card clickable shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">

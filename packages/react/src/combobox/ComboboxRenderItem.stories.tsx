@@ -76,7 +76,7 @@ export const WithEndElement: Story = {
 		beforeElement: (
 			<Avatar name={nameOption.fullName} size="sm" tone="action" />
 		),
-		endElement: <NotificationBadge value={2} tone="action" />,
+		endElement: <NotificationBadge tone="action" value={2} />,
 	},
 };
 

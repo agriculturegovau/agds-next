@@ -74,9 +74,9 @@ export function CollapsingSideBar({
 
 	return (
 		<Stack
-			as={as}
 			aria-label={ariaLabel}
 			aria-labelledby={ariaLabel ? undefined : headingId}
+			as={as}
 			background={background}
 			css={{
 				[collapsingSideBarHoverProp]: hoverColorMap[background],
@@ -94,9 +94,9 @@ export function CollapsingSideBar({
 						},
 					}}
 					gap={0.5}
+					id={headingId}
 					paddingX={customTitleElement ? undefined : { xs: 0.75, md: 0 }}
 					paddingY={customTitleElement ? undefined : { xs: 1, md: 0 }}
-					id={headingId}
 				>
 					{customTitleElement || (
 						<>
@@ -172,7 +172,6 @@ export function CollapsingSideBar({
 				</Box>
 			</Box>
 			<animated.div
-				id={bodyId}
 				css={{
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
@@ -181,6 +180,7 @@ export function CollapsingSideBar({
 						overflow: 'unset',
 					},
 				}}
+				id={bodyId}
 				style={animatedHeight}
 			>
 				<Box ref={ref}>{children}</Box>

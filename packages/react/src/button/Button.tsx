@@ -64,27 +64,27 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			variant,
 		});
 		return (
-			<BaseButton ref={ref} css={styles} type={type} {...props}>
+			<BaseButton css={styles} ref={ref} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore
+						css={{ flexShrink: 0 }}
 						size={iconSize[size]}
 						weight="regular"
-						css={{ flexShrink: 0 }}
 					/>
 				) : null}
 				<span>
 					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
 					<ButtonLoadingDots
-						loading={loading}
 						label={loadingLabel}
+						loading={loading}
 						size={size}
 					/>
 				</span>
 				{IconAfter ? (
 					<IconAfter
+						css={{ flexShrink: 0 }}
 						size={iconSize[size]}
 						weight="regular"
-						css={{ flexShrink: 0 }}
 					/>
 				) : null}
 			</BaseButton>
@@ -118,7 +118,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 		});
 		const Link = useLinkComponent();
 		return (
-			<Link ref={ref} css={styles} {...props}>
+			<Link css={styles} ref={ref} {...props}>
 				{IconBefore ? (
 					<IconBefore size={iconSize[size]} weight="regular" />
 				) : null}
@@ -145,14 +145,14 @@ const ButtonLoadingDots = ({
 		<span aria-live="assertive">
 			{loading ? (
 				<LoadingDots
-					label={label}
-					size={loadingSize[size]}
 					css={{
 						position: 'absolute',
 						left: '50%',
 						top: '50%',
 						transform: 'translate(-50%, -50%)',
 					}}
+					label={label}
+					size={loadingSize[size]}
 				/>
 			) : null}
 		</span>

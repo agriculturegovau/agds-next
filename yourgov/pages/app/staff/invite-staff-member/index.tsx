@@ -80,7 +80,6 @@ const Page: NextPageWithLayout = () => {
 					</DirectionLink>
 
 					<PageTitle
-						title="Invite staff member"
 						hasAllFieldsRequiredMessage
 						introduction={
 							<>
@@ -91,9 +90,10 @@ const Page: NextPageWithLayout = () => {
 								.
 							</>
 						}
+						title="Invite staff member"
 					/>
 
-					<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+					<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 						<FormStack>
 							{showErrorAlert && (
 								<FormPageAlert errors={errorsWithoutTrainingCompleted} />
@@ -108,49 +108,49 @@ const Page: NextPageWithLayout = () => {
 							/>
 
 							<TextInput
-								autoComplete="given-name"
-								label="First name"
 								{...register('firstName')}
+								autoComplete="given-name"
 								id="firstName"
 								invalid={Boolean(errors?.firstName?.message)}
+								label="First name"
 								maxWidth="lg"
 								message={errors?.firstName?.message}
 								required
 							/>
 
 							<TextInput
-								autoComplete="family-name"
-								label="Last name"
 								{...register('lastName')}
+								autoComplete="family-name"
 								id="lastName"
 								invalid={Boolean(errors?.lastName?.message)}
+								label="Last name"
 								maxWidth="lg"
 								message={errors?.lastName?.message}
 								required
 							/>
 
 							<TextInput
-								autoComplete="email"
-								label="Email address"
-								type="email"
 								{...register('email')}
+								autoComplete="email"
 								id="email"
 								invalid={Boolean(errors?.email?.message)}
+								label="Email address"
 								maxWidth="lg"
 								message={errors?.email?.message}
 								required
+								type="email"
 							/>
 
 							<TextInput
-								autoComplete="tel"
-								label="Mobile number"
-								type="phone"
 								{...register('mobile')}
+								autoComplete="tel"
 								id="mobile"
 								invalid={Boolean(errors?.mobile?.message)}
+								label="Mobile number"
 								maxWidth="md"
 								message={errors?.mobile?.message}
 								required
+								type="phone"
 							/>
 						</FormStack>
 
@@ -164,19 +164,19 @@ const Page: NextPageWithLayout = () => {
 						</Details>
 
 						<ControlGroup
-							label="Role"
+							block
 							invalid={Boolean(errors.role?.message)}
+							label="Role"
 							message={errors.role?.message}
 							required
-							block
 						>
 							{['Manager', 'Employee', 'Trainee', 'Work experience'].map(
 								(option) => (
 									<Radio
-										key={option}
 										{...register('role')}
-										value={option}
 										invalid={Boolean(errors.role?.message)}
+										key={option}
+										value={option}
 									>
 										{option}
 									</Radio>
@@ -184,7 +184,7 @@ const Page: NextPageWithLayout = () => {
 							)}
 						</ControlGroup>
 
-						<ControlGroup label="Training completed" block>
+						<ControlGroup block label="Training completed">
 							{[
 								'Deliveries',
 								'Distribution',
@@ -192,10 +192,10 @@ const Page: NextPageWithLayout = () => {
 								'Packaging',
 							].map((option) => (
 								<Checkbox
-									key={option}
 									{...register('trainingCompleted')}
-									value={option}
 									invalid={Boolean(errors.trainingCompleted?.[0]?.message)}
+									key={option}
+									value={option}
 								>
 									{option}
 								</Checkbox>
@@ -205,11 +205,11 @@ const Page: NextPageWithLayout = () => {
 						<Divider />
 
 						<ButtonGroup>
-							<Button type="submit" loading={isSaving}>
+							<Button loading={isSaving} type="submit">
 								Send invite
 							</Button>
 
-							<Button variant="tertiary" onClick={onCancelClick}>
+							<Button onClick={onCancelClick} variant="tertiary">
 								Cancel
 							</Button>
 						</ButtonGroup>

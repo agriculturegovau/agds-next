@@ -31,7 +31,7 @@ export const Sizes: Story = {
 							<SkeletonHeading key={type} type={type} />
 						</Column>
 						<Column columnSpan={[12, 6]}>
-							<Heading key={type} type={type} border>
+							<Heading border key={type} type={type}>
 								Heading {type.toLocaleUpperCase()}
 							</Heading>
 						</Column>

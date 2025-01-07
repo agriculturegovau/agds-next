@@ -22,8 +22,8 @@ const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 function renderAutocomplete(props?: Partial<AutocompleteProps<Option>>) {
 	return render(
 		<Autocomplete
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			loadOptions={mockLoadOptions}
 			{...props}
 		/>

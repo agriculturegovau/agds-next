@@ -7,19 +7,19 @@ export const FilterStateSelect = ({ block }: { block?: boolean }) => {
 
 	return (
 		<Select
-			label="State"
-			placeholder="All"
-			hideOptionalLabel
-			block={block}
-			options={STATE_OPTIONS}
-			value={filters.state || ''}
 			aria-controls={tableId}
+			block={block}
+			hideOptionalLabel
+			label="State"
 			onChange={(e) => {
 				const value = e.target.value;
 				setFilter({
 					state: value === '' ? undefined : value,
 				});
 			}}
+			options={STATE_OPTIONS}
+			placeholder="All"
+			value={filters.state || ''}
 		/>
 	);
 };

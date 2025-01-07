@@ -23,7 +23,7 @@ export function AppLayoutHeaderAccountDropdown({
 	secondaryText,
 }: AppLayoutHeaderAccountDropdownProps) {
 	return (
-		<DropdownMenu popoverPlacement="bottom-end" popoverOffset={-8}>
+		<DropdownMenu popoverOffset={-8} popoverPlacement="bottom-end">
 			<AppLayoutHeaderAccountDropdownButton
 				name={name}
 				secondaryText={secondaryText}
@@ -57,14 +57,9 @@ function AppLayoutHeaderAccountDropdownButton({
 			// @ts-ignore
 			ref={ref}
 			{...buttonProps}
-			background={isMenuOpen ? 'shade' : undefined}
 			alignItems="center"
-			justifyContent="space-between"
-			padding={1}
-			gap={1}
+			background={isMenuOpen ? 'shade' : undefined}
 			color="action"
-			focusRingFor="keyboard"
-			minHeight="5.25rem"
 			css={mq({
 				marginLeft: 'auto',
 				// 17.625rem is the available space beside the hamburger at 375px
@@ -76,42 +71,47 @@ function AppLayoutHeaderAccountDropdownButton({
 					'& > span:last-of-type > span:last-of-type': packs.underline,
 				},
 			})}
+			focusRingFor="keyboard"
+			gap={1}
+			justifyContent="space-between"
+			minHeight="5.25rem"
+			padding={1}
 		>
 			<VisuallyHidden>Account menu</VisuallyHidden>
 			<Flex
-				as="span"
-				gap={0.5}
 				alignItems="center"
-				width="100%"
 				aria-hidden
+				as="span"
 				css={{ overflow: 'hidden' }}
+				gap={0.5}
+				width="100%"
 			>
-				<Avatar name={name} tone="action" size="md" />
+				<Avatar name={name} size="md" tone="action" />
 				<Flex
 					as="span"
+					css={{ overflow: 'hidden' }}
 					flexDirection="column"
 					width="100%"
-					css={{ overflow: 'hidden' }}
 				>
 					<Text
 						color="action"
-						fontWeight="bold"
-						fontSize="xs"
 						css={packs.truncate}
+						fontSize="xs"
+						fontWeight="bold"
 					>
 						{name}
 					</Text>
 					{secondaryText ? (
-						<Text color="muted" fontSize="xs" css={packs.truncate}>
+						<Text color="muted" css={packs.truncate} fontSize="xs">
 							{secondaryText}
 						</Text>
 					) : null}
 				</Flex>
 			</Flex>
 			{isMenuOpen ? (
-				<ChevronUpIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />
+				<ChevronUpIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 			) : (
-				<ChevronDownIcon size="sm" weight="bold" css={{ flexShrink: 0 }} />
+				<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 			)}
 		</Flex>
 	);

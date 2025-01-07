@@ -65,8 +65,8 @@ export function PaginationButtons({
 						case 'direction':
 							return (
 								<PaginationItemDirectionButton
-									key={item.direction}
 									direction={item.direction}
+									key={item.direction}
 									onClick={() => {
 										onChange(item.pageNumber);
 
@@ -80,10 +80,10 @@ export function PaginationButtons({
 						case 'page':
 							return (
 								<PaginationItemPageButton
-									key={item.pageNumber}
-									pageNumber={item.pageNumber}
-									onClick={() => onChange(item.pageNumber)}
 									isActive={item.isActive}
+									key={item.pageNumber}
+									onClick={() => onChange(item.pageNumber)}
+									pageNumber={item.pageNumber}
 									{...(item.pageNumber === 1 && { ref: firstButtonRef })}
 								/>
 							);
@@ -91,9 +91,9 @@ export function PaginationButtons({
 							return (
 								<PaginationItemSeparator
 									isLinks={false}
-									missingRightPageNumber={pagination[index + 1].pageNumber - 1}
-									missingLeftPageNumber={pagination[index - 1].pageNumber + 1}
 									key={`${index}-separator`}
+									missingLeftPageNumber={pagination[index - 1].pageNumber + 1}
+									missingRightPageNumber={pagination[index + 1].pageNumber - 1}
 								/>
 							);
 						default:
@@ -106,9 +106,9 @@ export function PaginationButtons({
 					{itemRangeText && <Text role="status">{itemRangeText}</Text>}
 					{itemsPerPage && onItemsPerPageChange && (
 						<PaginationItemsPerPageSelect
-							value={itemsPerPage}
-							options={itemsPerPageOptions}
 							onChange={onItemsPerPageChange}
+							options={itemsPerPageOptions}
+							value={itemsPerPage}
 						/>
 					)}
 				</PaginationSecondaryControlContainer>

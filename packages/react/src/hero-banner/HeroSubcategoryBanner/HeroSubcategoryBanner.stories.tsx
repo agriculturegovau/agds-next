@@ -53,7 +53,7 @@ export const OnBodyAlt: Story = {
 		background: 'body',
 	},
 	render: (args) => (
-		<Box paddingY={3} background="bodyAlt">
+		<Box background="bodyAlt" paddingY={3}>
 			<Template {...args} />
 		</Box>
 	),

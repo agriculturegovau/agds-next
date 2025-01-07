@@ -12,8 +12,8 @@ expect.extend(toHaveNoViolations);
 function renderCombobox(props?: Partial<ComboboxProps<Option>>) {
 	return render(
 		<Combobox
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			options={STATE_OPTIONS}
 			{...props}
 		/>
@@ -47,8 +47,8 @@ describe('Combobox', () => {
 		test('then the input should display the selected value', async () => {
 			render(
 				<Combobox
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					options={STATE_OPTIONS}
 				/>
 			);
@@ -82,11 +82,11 @@ describe('Combobox', () => {
 
 				return (
 					<Combobox
-						label="Find your state"
-						hint="Start typing to see results"
-						options={STATE_OPTIONS}
-						inputRef={inputRef}
 						disabled={false} // Definitely start in an enabled state
+						hint="Start typing to see results"
+						inputRef={inputRef}
+						label="Find your state"
+						options={STATE_OPTIONS}
 					/>
 				);
 			};

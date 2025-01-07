@@ -28,7 +28,7 @@ function CheckboxTemplate({
 	);
 	const isChecked = (key: string) => value.includes(key);
 	return (
-		<ControlGroup label={label} block={block} {...props}>
+		<ControlGroup block={block} label={label} {...props}>
 			<Checkbox checked={isChecked('email')} onChange={handlerForKey('email')}>
 				Email
 			</Checkbox>
@@ -96,7 +96,7 @@ function RadioTemplate({
 	const handlerForKey = useCallback((key: string) => () => setValue(key), []);
 	const isChecked = (key: string) => key === value;
 	return (
-		<ControlGroup label={label} block={block} {...props}>
+		<ControlGroup block={block} label={label} {...props}>
 			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
 				Email
 			</Radio>

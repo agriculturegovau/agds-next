@@ -55,40 +55,40 @@ export function FormStep2() {
 
 	return (
 		<FormContainer
-			formTitle="Business details"
 			formIntroduction="Your business details must match your business registration."
+			formTitle="Business details"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
+						{...register('businessName')}
 						autoComplete="organization"
 						id="businessName"
-						label="Business or company name"
-						{...register('businessName')}
 						invalid={Boolean(errors.businessName?.message)}
+						label="Business or company name"
+						maxWidth="xl"
 						message={errors.businessName?.message}
 						required
-						maxWidth="xl"
 					/>
 
 					<TextInput
+						{...register('tradingName')}
 						autoComplete="on"
 						id="tradingName"
-						label="Trading name"
-						{...register('tradingName')}
 						invalid={Boolean(errors.tradingName?.message)}
-						message={errors.tradingName?.message}
+						label="Trading name"
 						maxWidth="xl"
+						message={errors.tradingName?.message}
 					/>
 
 					<ControlGroup
+						block
 						id="businessStructure"
-						label="Business structure"
 						invalid={Boolean(errors.businessStructure)}
+						label="Business structure"
 						message={errors.businessStructure?.message}
 						required
-						block
 					>
 						<Radio {...register('businessStructure')} value="Business">
 							Business
@@ -96,11 +96,11 @@ export function FormStep2() {
 						{showAbn ? (
 							<ConditionalFieldContainer>
 								<TextInput
+									{...register('abn')}
 									autoComplete="on"
 									id="abn"
-									label="Australian Business Number (ABN)"
-									{...register('abn')}
 									invalid={Boolean(errors.abn?.message)}
+									label="Australian Business Number (ABN)"
 									message={errors.abn?.message}
 									required
 								/>
@@ -112,11 +112,11 @@ export function FormStep2() {
 						{showAcn ? (
 							<ConditionalFieldContainer>
 								<TextInput
+									{...register('acn')}
 									autoComplete="on"
 									id="acn"
-									label="Australian Company Number (ACN)"
-									{...register('acn')}
 									invalid={Boolean(errors.acn?.message)}
+									label="Australian Company Number (ACN)"
 									message={errors.acn?.message}
 									required
 								/>

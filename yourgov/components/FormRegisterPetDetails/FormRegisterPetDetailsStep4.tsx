@@ -24,11 +24,11 @@ export const FormRegisterPetDetailsStep4 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Confirm and submit"
 			introduction="Check and confirm all details on this page."
+			title="Confirm and submit"
 		>
 			{/** Summary: Step 0 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[0].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem
@@ -36,12 +36,12 @@ export const FormRegisterPetDetailsStep4 = () => {
 						value={formState[0]?.typeOfPet}
 					/>
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(0)}>
+				<Button onClick={() => goToStep(0)} variant="text">
 					Change type of pet
 				</Button>
 			</Stack>
 			{/** Summary: Step 1 */}
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[1].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem label="Pet name" value={formState[1]?.name} />
@@ -52,11 +52,11 @@ export const FormRegisterPetDetailsStep4 = () => {
 					/>
 					<FormDefinitionListItem label="Sex" value={formState[1]?.sex} />
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(1)}>
+				<Button onClick={() => goToStep(1)} variant="text">
 					Change pet details
 				</Button>
 			</Stack>
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[2].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItem
@@ -66,11 +66,11 @@ export const FormRegisterPetDetailsStep4 = () => {
 						}
 					/>
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(2)}>
+				<Button onClick={() => goToStep(2)} variant="text">
 					Change proof of vaccination
 				</Button>
 			</Stack>
-			<Stack gap={1.5} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={1.5}>
 				<H2>{FORM_STEPS[3].label}</H2>
 				<FormDefinitionList>
 					<FormDefinitionListItemDate
@@ -78,7 +78,7 @@ export const FormRegisterPetDetailsStep4 = () => {
 						value={formState[3]?.date}
 					/>
 				</FormDefinitionList>
-				<Button variant="text" onClick={() => goToStep(3)}>
+				<Button onClick={() => goToStep(3)} variant="text">
 					Change registration start date
 				</Button>
 			</Stack>

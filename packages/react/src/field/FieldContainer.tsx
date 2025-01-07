@@ -15,14 +15,14 @@ export const FieldContainer = ({
 	id,
 }: FieldContainerProps) => (
 	<Stack
-		gap={0.5}
-		paddingLeft={invalid ? 1 : undefined}
 		borderLeft={invalid}
 		borderLeftWidth="xl"
-		id={id}
 		css={{
 			borderLeftColor: invalid ? boxPalette.systemError : undefined,
 		}}
+		gap={0.5}
+		id={id}
+		paddingLeft={invalid ? 1 : undefined}
 	>
 		{children}
 	</Stack>

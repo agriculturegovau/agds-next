@@ -212,8 +212,8 @@ export function FormStep9() {
 
 	return (
 		<FormContainer
-			formTitle="Upload documents"
 			formIntroduction="Upload all documents listed in the table below."
+			formTitle="Upload documents"
 			hideRequiredFieldsMessage
 		>
 			<Stack gap={2}>
@@ -227,7 +227,7 @@ export function FormStep9() {
 							title="You must provide all documents in the table below"
 							tone="error"
 						>
-							<Stack gap={0.5} alignItems="flex-start">
+							<Stack alignItems="flex-start" gap={0.5}>
 								<UnorderedList>
 									{tableErrors.map(({ href, message }) => (
 										<ListItem key={href}>
@@ -280,12 +280,6 @@ export function FormStep9() {
 				</Stack>
 
 				<Drawer
-					isOpen={isDrawerOpen}
-					onClose={() => {
-						setCurrentDocument(undefined);
-						closeDrawerAndClearForm();
-					}}
-					title="Upload documents"
 					actions={
 						<ButtonGroup>
 							<Button form="upload-document-form" onClick={uploadFile}>
@@ -310,6 +304,12 @@ export function FormStep9() {
 							? successMessageRef.current
 							: undefined
 					}
+					isOpen={isDrawerOpen}
+					onClose={() => {
+						setCurrentDocument(undefined);
+						closeDrawerAndClearForm();
+					}}
+					title="Upload documents"
 				>
 					<Stack as="form" id="upload-document-form">
 						<FileUpload
@@ -333,7 +333,7 @@ export function FormStep9() {
 				</Drawer>
 			</Stack>
 
-			<Stack as="form" gap={3} onSubmit={onSubmit} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={onSubmit}>
 				<StepActions />
 			</Stack>
 		</FormContainer>

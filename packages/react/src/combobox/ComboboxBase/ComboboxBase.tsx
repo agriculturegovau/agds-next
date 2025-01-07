@@ -138,15 +138,15 @@ export function ComboboxBase<Option extends DefaultComboboxOption>({
 
 	return (
 		<Field
+			hideOptionalLabel={hideOptionalLabel}
+			hint={hint}
+			id={inputId}
+			invalid={invalid}
 			label={label}
 			labelId={labelId}
-			hideOptionalLabel={hideOptionalLabel}
-			required={required}
-			hint={hint}
 			maxWidth={maxWidthProp}
 			message={message}
-			invalid={invalid}
-			id={inputId}
+			required={required}
 		>
 			{(a11yProps) => (
 				<div

@@ -14,13 +14,12 @@ export function AllIconsPlayground() {
 	const [size, setSize] = useState<IconSize>('md');
 	const [weight, setWeight] = useState<IconWeight>('regular');
 	return (
-		<Stack gap={1.5} className={proseBlockClassname}>
+		<Stack className={proseBlockClassname} gap={1.5}>
 			<Columns cols={{ xs: 1, sm: 2, md: 3 }} gap={1}>
 				<Select
-					label="Size"
 					hideOptionalLabel
+					label="Size"
 					maxWidth="xl"
-					value={size}
 					onChange={(e) => setSize(e.target.value as IconSize)}
 					options={[
 						{ label: 'Small (sm)', value: 'sm' },
@@ -28,17 +27,18 @@ export function AllIconsPlayground() {
 						{ label: 'Large (lg)', value: 'lg' },
 						{ label: 'X-Large (xl)', value: 'xl' },
 					]}
+					value={size}
 				/>
 				<Select
-					label="Weight"
 					hideOptionalLabel
+					label="Weight"
 					maxWidth="xl"
-					value={weight}
 					onChange={(e) => setWeight(e.target.value as IconWeight)}
 					options={[
 						{ label: 'Regular', value: 'regular' },
 						{ label: 'Bold', value: 'bold' },
 					]}
+					value={weight}
 				/>
 			</Columns>
 			<Columns as="ol" cols={{ xs: 1, sm: 2, md: 3 }} gap={1}>

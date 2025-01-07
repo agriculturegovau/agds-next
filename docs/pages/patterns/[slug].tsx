@@ -27,19 +27,19 @@ export default function PatternPage({
 	return (
 		<>
 			<DocumentTitle
-				title={`${pattern.title} pattern`}
 				description={pattern.description}
+				title={`${pattern.title} pattern`}
 			/>
 			<PatternLayout
-				pattern={pattern}
 				breadcrumbs={breadcrumbs}
 				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
 				navLinks={navLinks}
+				pattern={pattern}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
-						title="On this page"
 						links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+						title="On this page"
 					/>
 				) : null}
 				<Prose id="page-content">

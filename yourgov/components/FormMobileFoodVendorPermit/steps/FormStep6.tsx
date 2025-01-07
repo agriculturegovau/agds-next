@@ -40,26 +40,26 @@ export function FormStep6() {
 
 	return (
 		<FormContainer
-			formTitle="Food served"
 			formIntroduction="What type of food will you be serving?"
+			formTitle="Food served"
 		>
-			<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)} noValidate>
+			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					control={control}
 					name="foodServed"
 					render={({ field: { ref, ...field } }) => (
 						<ComboboxMulti
-							label="Select food types"
+							{...field}
+							block={false}
 							hint="Start typing to see results. You can add multiple selections."
+							id="foodServed"
 							inputRef={ref}
+							invalid={Boolean(typeCorrectedErrors.foodServed?.message)}
+							label="Select food types"
+							maxWidth="xl"
+							message={typeCorrectedErrors.foodServed?.message}
 							options={foodOptions}
 							required
-							{...field}
-							id="foodServed"
-							invalid={Boolean(typeCorrectedErrors.foodServed?.message)}
-							message={typeCorrectedErrors.foodServed?.message}
-							maxWidth="xl"
-							block={false}
 						/>
 					)}
 				/>

@@ -89,16 +89,16 @@ export const TokenLayout = ({
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
-				applyMainElement={true}
+				applyMainElement
+				breadcrumbs={getBreadcrumbs(title)}
+				editPath={editPath}
 				sideNav={{
 					title: 'Tokens',
 					titleLink: '/foundations/tokens',
 					items: TOKEN_NAV_LINKS.map(({ href, label }) => ({ href, label })),
 				}}
-				editPath={editPath}
-				breadcrumbs={getBreadcrumbs(title)}
 			>
-				<PageTitle title={title} introduction={description} />
+				<PageTitle introduction={description} title={title} />
 				{children}
 			</PageLayout>
 		</SiteLayout>

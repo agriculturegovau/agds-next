@@ -20,43 +20,43 @@ export const Basic: Story = {
 	},
 	render: (props) => (
 		<Flex {...props}>
-			<Box display="block" width={100} height={100} background="shadeAlt" />
-			<Box display="block" width={100} height={100} background="shadeAlt" />
-			<Box display="block" width={100} height={100} background="shadeAlt" />
-			<Box display="block" width={100} height={100} background="shadeAlt" />
+			<Box background="shadeAlt" display="block" height={100} width={100} />
+			<Box background="shadeAlt" display="block" height={100} width={100} />
+			<Box background="shadeAlt" display="block" height={100} width={100} />
+			<Box background="shadeAlt" display="block" height={100} width={100} />
 		</Flex>
 	),
 };
 
 export const Alignment = () => (
-	<Stack gap={6} alignItems="flex-start">
+	<Stack alignItems="flex-start" gap={6}>
 		<Box fontFamily="monospace">center</Box>
-		<Flex gap={6} alignItems="center" border>
-			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
+		<Flex alignItems="center" border gap={6}>
+			<Box background="shadeAlt" display="block" minHeight={40} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={60} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={100} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={80} width={100} />
 		</Flex>
 		<Box fontFamily="monospace">flex-start</Box>
-		<Flex gap={6} alignItems="flex-start" border>
-			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
+		<Flex alignItems="flex-start" border gap={6}>
+			<Box background="shadeAlt" display="block" minHeight={40} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={60} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={100} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={80} width={100} />
 		</Flex>
 		<Box fontFamily="monospace">flex-end</Box>
-		<Flex gap={6} alignItems="flex-end" border>
-			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
+		<Flex alignItems="flex-end" border gap={6}>
+			<Box background="shadeAlt" display="block" minHeight={40} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={60} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={100} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={80} width={100} />
 		</Flex>
 		<Box fontFamily="monospace">stretch</Box>
-		<Flex gap={6} alignItems="stretch" border>
-			<Box display="block" width={100} minHeight={40} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={60} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={100} background="shadeAlt" />
-			<Box display="block" width={100} minHeight={80} background="shadeAlt" />
+		<Flex alignItems="stretch" border gap={6}>
+			<Box background="shadeAlt" display="block" minHeight={40} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={60} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={100} width={100} />
+			<Box background="shadeAlt" display="block" minHeight={80} width={100} />
 		</Flex>
 	</Stack>
 );

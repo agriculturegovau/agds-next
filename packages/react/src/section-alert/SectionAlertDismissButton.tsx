@@ -14,9 +14,6 @@ export const SectionAlertDismissButton = ({
 	return (
 		<Button
 			alignSelf="start"
-			onClick={onClick}
-			iconAfter={CloseIcon}
-			variant="text"
 			aria-label="Close"
 			css={{
 				flexShrink: 0,
@@ -28,6 +25,9 @@ export const SectionAlertDismissButton = ({
 					},
 				},
 			}}
+			iconAfter={CloseIcon}
+			onClick={onClick}
+			variant="text"
 		>
 			Close
 		</Button>

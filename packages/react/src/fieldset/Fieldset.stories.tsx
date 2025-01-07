@@ -25,28 +25,28 @@ export const Basic: Story = {
 		<Fieldset {...args}>
 			<FormStack>
 				<TextInput
-					label="Street and number"
-					required
 					autoComplete="street-address"
+					label="Street and number"
 					maxWidth="xl"
+					required
 				/>
 				<TextInput
-					label="Suburb"
-					required
 					autoComplete="address-level2"
+					label="Suburb"
 					maxWidth="xl"
+					required
 				/>
 				<TextInput
-					label="Country"
-					required
 					autoComplete="country"
+					label="Country"
 					maxWidth="xl"
+					required
 				/>
 				<TextInput
-					label="Postcode"
-					required
 					autoComplete="postal-code"
+					label="Postcode"
 					maxWidth="sm"
+					required
 				/>
 			</FormStack>
 		</Fieldset>
@@ -57,7 +57,7 @@ export const LegendAsPageHeading: Story = {
 	args: {
 		legend: <H1>What is your date of birth?</H1>,
 		hint: (
-			<Text fontSize="md" color="muted">
+			<Text color="muted" fontSize="md">
 				We will only use this to respond to your requests
 			</Text>
 		),
@@ -66,25 +66,25 @@ export const LegendAsPageHeading: Story = {
 		<Fieldset {...args}>
 			<FormStack>
 				<TextInput
-					label="Day"
-					inputMode="numeric"
-					maxWidth="md"
-					required
 					autoComplete="bday-day"
-				/>
-				<TextInput
-					label="Month"
 					inputMode="numeric"
+					label="Day"
 					maxWidth="md"
 					required
+				/>
+				<TextInput
 					autoComplete="bday-month"
-				/>
-				<TextInput
-					label="Year"
 					inputMode="numeric"
+					label="Month"
 					maxWidth="md"
 					required
+				/>
+				<TextInput
 					autoComplete="bday-year"
+					inputMode="numeric"
+					label="Year"
+					maxWidth="md"
+					required
 				/>
 			</FormStack>
 		</Fieldset>
@@ -101,28 +101,28 @@ export const Modular = () => (
 		</Stack>
 		<FormStack>
 			<TextInput
-				label="Street and number"
-				required
 				autoComplete="street-address"
+				label="Street and number"
 				maxWidth="xl"
+				required
 			/>
 			<TextInput
-				label="Suburb"
-				required
 				autoComplete="address-level2"
+				label="Suburb"
 				maxWidth="xl"
+				required
 			/>
 			<TextInput
-				label="Country"
-				required
 				autoComplete="country"
+				label="Country"
 				maxWidth="xl"
+				required
 			/>
 			<TextInput
-				label="Postcode"
-				required
 				autoComplete="postal-code"
+				label="Postcode"
 				maxWidth="sm"
+				required
 			/>
 		</FormStack>
 	</FieldsetContainer>

@@ -96,15 +96,15 @@ export function FormStep1ChangeDetails() {
 				/>
 			</Column>
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
-				<Stack gap={3} alignItems="flex-start">
+				<Stack alignItems="flex-start" gap={3}>
 					<DirectionLink direction="left" href={step1Path}>
 						Back
 					</DirectionLink>
 					<Stack gap={1.5}>
-						<H1 ref={titleRef} tabIndex={-1} focusRingFor="keyboard">
+						<H1 focusRingFor="keyboard" ref={titleRef} tabIndex={-1}>
 							Change business owner details
 						</H1>
-						<Text as="p" fontSize="md" color="muted">
+						<Text as="p" color="muted" fontSize="md">
 							Change your name and contact details.
 						</Text>
 						<FormRequiredFieldsMessage />
@@ -113,49 +113,49 @@ export function FormStep1ChangeDetails() {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSubmit)}
 							noValidate
+							onSubmit={handleSubmit(onSubmit)}
 						>
 							<FormStack>
 								{showErrorAlert && <FormPageAlert errors={errors} />}
 								<TextInput
-									label="First name"
-									autoComplete="given-name"
 									{...register('firstName')}
+									autoComplete="given-name"
 									id="firstName"
 									invalid={Boolean(errors.firstName?.message)}
-									message={errors.firstName?.message}
+									label="First name"
 									maxWidth="lg"
+									message={errors.firstName?.message}
 									required
 								/>
 								<TextInput
-									label="Last name"
-									autoComplete="family-name"
 									{...register('lastName')}
+									autoComplete="family-name"
 									id="lastName"
 									invalid={Boolean(errors.lastName?.message)}
-									message={errors.lastName?.message}
+									label="Last name"
 									maxWidth="lg"
+									message={errors.lastName?.message}
 									required
 								/>
 								<TextInput
-									label="Email address"
-									type="email"
-									autoComplete="email"
 									{...register('email')}
+									autoComplete="email"
 									id="email"
 									invalid={Boolean(errors.email?.message)}
-									message={errors.email?.message}
+									label="Email address"
 									maxWidth="xl"
+									message={errors.email?.message}
 									required
+									type="email"
 								/>
 							</FormStack>
 							<Divider />
 							<ButtonGroup>
-								<Button type="submit" loading={isSaving}>
+								<Button loading={isSaving} type="submit">
 									Save changes
 								</Button>
-								<Button variant="tertiary" onClick={onCancelClick}>
+								<Button onClick={onCancelClick} variant="tertiary">
 									Cancel
 								</Button>
 							</ButtonGroup>

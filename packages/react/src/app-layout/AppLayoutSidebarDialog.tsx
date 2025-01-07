@@ -79,7 +79,7 @@ export function AppLayoutSidebarDialog({
 						<FocusLock returnFocus>
 							<AnimatedBox
 								aria-label="Menu"
-								aria-modal="true"
+								aria-modal
 								background="shade"
 								css={{
 									position: 'fixed',
@@ -179,7 +179,7 @@ function CloseMenuButton({
 				padding={1}
 			>
 				<CloseIcon />
-				<span aria-hidden="true">Close</span>
+				<span aria-hidden>Close</span>
 				<VisuallyHidden>Close menu</VisuallyHidden>
 			</Flex>
 		</Flex>

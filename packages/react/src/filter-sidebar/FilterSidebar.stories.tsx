@@ -83,26 +83,26 @@ export const Layout: Story = {
 					</Column>
 					<Column
 						as="main"
-						id="main-content"
-						tabIndex={-1}
-						css={{ '&:focus': { outline: 'none' } }}
 						columnSpan={{ xs: 12, md: 8 }}
 						columnStart={{ lg: 5 }}
+						css={{ '&:focus': { outline: 'none' } }}
+						id="main-content"
+						tabIndex={-1}
 					>
 						<Stack gap={2}>
 							<Text
 								as="h2"
 								fontSize="md"
-								lineHeight="heading"
 								fontWeight={{ xs: 'normal', md: 'bold' }}
+								lineHeight="heading"
 							>
 								Search results (3)
 							</Text>
 							<Stack as="ul" gap={1}>
 								{listData.map((item) => (
-									<Card as="li" shadow clickable key={item.title}>
+									<Card as="li" clickable key={item.title} shadow>
 										<CardInner>
-											<Stack gap={0.5} width="100%" flexWrap="wrap">
+											<Stack flexWrap="wrap" gap={0.5} width="100%">
 												<H3>
 													<CardLink href="#">{item.title}</CardLink>
 												</H3>
@@ -110,10 +110,10 @@ export const Layout: Story = {
 												<Text as="p">{item.desc}</Text>
 
 												<Flex
-													gap={0.5}
-													flexWrap="wrap"
-													justifyContent="space-between"
 													alignItems="center"
+													flexWrap="wrap"
+													gap={0.5}
+													justifyContent="space-between"
 												>
 													<Text color="muted" fontSize="xs">
 														{item.author}

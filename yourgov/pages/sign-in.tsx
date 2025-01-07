@@ -50,8 +50,8 @@ export default function Page() {
 								</DirectionLink>
 								<Stack gap={0.5}>
 									<PageTitle
-										title="Sign in to yourGov"
 										introduction="Access government services, quickly and securely"
+										title="Sign in to yourGov"
 									/>
 								</Stack>
 								<SignInForm onSubmit={onSubmit} />
@@ -127,8 +127,8 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 				<PageAlert
 					ref={clientErrorPageAlertRef}
 					tabIndex={-1}
-					tone="error"
 					title="There is a problem"
+					tone="error"
 				>
 					<Text as="p">Please correct the following fields and try again</Text>
 					<UnorderedList>
@@ -143,34 +143,34 @@ function SignInForm(props: { onSubmit: (data: FormSchema) => void }) {
 				</PageAlert>
 			)}
 			{isSubmitting && <LoadingBlanket fullScreen label="Signing in" />}
-			<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+			<form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					<TextInput
-						autoComplete="email"
-						label="Email"
-						type="email"
 						{...register('email')}
+						autoComplete="email"
 						id="email"
 						invalid={Boolean(errors.email?.message)}
-						message={errors.email?.message}
+						label="Email"
 						maxWidth="xl"
+						message={errors.email?.message}
 						required
+						type="email"
 					/>
 					<PasswordInput
-						autoComplete="current-password"
-						label="Password"
 						{...register('password')}
+						autoComplete="current-password"
 						id="password"
 						invalid={Boolean(errors.password?.message)}
-						message={errors.password?.message}
+						label="Password"
 						maxWidth="xl"
+						message={errors.password?.message}
 						required
 					/>
 					<div>
 						<TextLink href="/not-found">Forgot password?</TextLink>
 					</div>
 					<div>
-						<Button type="submit" loading={isSubmitting}>
+						<Button loading={isSubmitting} type="submit">
 							Sign in
 						</Button>
 					</div>

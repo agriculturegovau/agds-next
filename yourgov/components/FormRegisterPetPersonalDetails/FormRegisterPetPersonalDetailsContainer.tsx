@@ -28,18 +28,18 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 	return (
 		<Stack gap={3} width="100%">
 			<FormStepTitle
-				titleRef={titleRef}
-				formTitle="Your personal details"
-				stepTitle={title}
-				introduction={introduction}
 				callToAction={callToAction}
+				formTitle="Your personal details"
+				introduction={introduction}
+				stepTitle={title}
+				titleRef={titleRef}
 			/>
 			{hasCompletedPreviousStep ? (
 				children
 			) : (
 				<PageAlert
-					tone="warning"
 					title="This section of the form is not ready to be completed"
+					tone="warning"
 				>
 					<Text as="p">
 						Before starting this part of the form, you will need to go back and

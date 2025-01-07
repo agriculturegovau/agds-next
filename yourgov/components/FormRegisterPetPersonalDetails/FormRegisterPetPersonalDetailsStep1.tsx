@@ -106,10 +106,10 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 
 	return (
 		<FormRegisterPetPersonalDetailsContainer
-			title="Address details"
 			introduction="Provide the address details for where pet will be housed."
+			title="Address details"
 		>
-			<Stack gap={3} alignItems="flex-start">
+			<Stack alignItems="flex-start" gap={3}>
 				{isFormVisibile ? (
 					<Stack gap={1.5}>
 						<H2>Update address details</H2>
@@ -117,16 +117,16 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 						<Stack
 							as="form"
 							gap={3}
-							onSubmit={handleSubmit(onSave, onError)}
 							noValidate
+							onSubmit={handleSubmit(onSave, onError)}
 						>
 							<FormStack>
 								{hasErrors && (
 									<PageAlert
 										ref={errorRef}
-										tone="error"
-										title="There is a problem"
 										tabIndex={-1}
+										title="There is a problem"
+										tone="error"
 									>
 										<Text as="p">
 											Please correct the following fields and try again
@@ -145,31 +145,33 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									</PageAlert>
 								)}
 								<TextInput
-									label="Street address"
-									autoComplete="street-address"
 									{...register('streetAddress')}
+									autoComplete="street-address"
+									autoFocus
 									id="streetAddress"
 									invalid={Boolean(errors.streetAddress?.message)}
-									message={errors.streetAddress?.message}
+									label="Street address"
 									maxWidth="xl"
-									autoFocus
+									message={errors.streetAddress?.message}
 									required
 								/>
 								<TextInput
-									label="Suburb, town or city"
-									autoComplete="address-level2"
 									{...register('suburbTownCity')}
+									autoComplete="address-level2"
 									id="suburbTownCity"
 									invalid={Boolean(errors.suburbTownCity?.message)}
-									message={errors.suburbTownCity?.message}
+									label="Suburb, town or city"
 									maxWidth="xl"
+									message={errors.suburbTownCity?.message}
 									required
 								/>
 								<Select
-									label="State or territory"
 									{...register('state')}
 									id="state"
-									placeholder="Select"
+									invalid={Boolean(errors.state?.message)}
+									label="State or territory"
+									maxWidth="md"
+									message={errors.state?.message}
 									options={[
 										{ label: 'NSW', value: 'nsw' },
 										{ label: 'QLD', value: 'qld' },
@@ -180,29 +182,27 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 										{ label: 'SA', value: 'sa' },
 										{ label: 'WA', value: 'wa' },
 									]}
-									invalid={Boolean(errors.state?.message)}
-									message={errors.state?.message}
-									maxWidth="md"
+									placeholder="Select"
 									required
 								/>
 								<TextInput
-									label="Postcode"
-									inputMode="numeric"
-									pattern="[0-9]*"
-									autoComplete="postal-code"
 									{...register('postcode')}
+									autoComplete="postal-code"
 									id="postcode"
+									inputMode="numeric"
 									invalid={Boolean(errors.postcode?.message)}
-									message={errors.postcode?.message}
+									label="Postcode"
 									maxWidth="sm"
+									message={errors.postcode?.message}
+									pattern="[0-9]*"
 									required
 								/>
 							</FormStack>
 							<ButtonGroup>
-								<Button type="submit" loading={isSaving}>
+								<Button loading={isSaving} type="submit">
 									Save changes
 								</Button>
-								<Button variant="tertiary" onClick={onDiscardChangesClick}>
+								<Button onClick={onDiscardChangesClick} variant="tertiary">
 									Discard changes
 								</Button>
 							</ButtonGroup>
@@ -210,8 +210,8 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 					</Stack>
 				) : (
 					<>
-						<Stack gap={1.5} alignItems="flex-start" width="100%">
-							<H2 ref={headingRef} tabIndex={-1} focusRingFor="keyboard">
+						<Stack alignItems="flex-start" gap={1.5} width="100%">
+							<H2 focusRingFor="keyboard" ref={headingRef} tabIndex={-1}>
 								Check address details
 							</H2>
 							<SummaryList>
@@ -242,11 +242,11 @@ export const FormRegisterPetPersonalDetailsStep1 = () => {
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>
-							<Button variant="text" onClick={() => toggleFormVisibilty()}>
+							<Button onClick={toggleFormVisibilty} variant="text">
 								Change address
 							</Button>
 						</Stack>
-						<Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
+						<Box as="form" onSubmit={handleSubmit(onSubmit)} width="100%">
 							<FormRegisterPetPersonalDetailsActions />
 						</Box>
 					</>

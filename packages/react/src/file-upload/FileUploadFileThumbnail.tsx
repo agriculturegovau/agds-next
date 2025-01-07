@@ -8,8 +8,6 @@ export const width = '4.5rem';
 export const FileUploadFileThumbnail = ({ src }: { src?: string }) => {
 	return src ? (
 		<Box
-			flexShrink={0}
-			display={{ xs: 'none', md: 'block' }}
 			css={{
 				borderTopLeftRadius: tokens.borderRadius,
 				borderBottomLeftRadius: tokens.borderRadius,
@@ -18,20 +16,22 @@ export const FileUploadFileThumbnail = ({ src }: { src?: string }) => {
 				backgroundPosition: 'center',
 				width: width,
 			}}
+			display={{ xs: 'none', md: 'block' }}
+			flexShrink={0}
 		/>
 	) : (
 		<Flex
-			flexShrink={0}
 			alignItems="center"
-			justifyContent="center"
-			display={{ xs: 'none', md: 'flex' }}
 			css={{
 				borderTopLeftRadius: tokens.borderRadius,
 				borderBottomLeftRadius: tokens.borderRadius,
 				width: width,
 			}}
+			display={{ xs: 'none', md: 'flex' }}
+			flexShrink={0}
+			justifyContent="center"
 		>
-			<FileIcon size="md" color="muted" />
+			<FileIcon color="muted" size="md" />
 		</Flex>
 	);
 };

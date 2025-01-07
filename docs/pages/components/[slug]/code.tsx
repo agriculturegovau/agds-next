@@ -26,13 +26,12 @@ export default function PackagesCode({
 		<>
 			<DocumentTitle title={`${pkg.title} Code`} />
 			<PkgLayout
-				pkg={pkg}
-				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
 				editPath={`/packages/react/src/${pkg.slug}/docs/code.mdx`}
+				navLinks={navLinks}
+				pkg={pkg}
 			>
 				<InpageNav
-					title="On this page"
 					links={[
 						{
 							label: 'Usage',
@@ -44,6 +43,7 @@ export default function PackagesCode({
 							href: '#source',
 						},
 					]}
+					title="On this page"
 				/>
 				<Prose id="pkg-content">
 					<h2 id="usage">Usage</h2>

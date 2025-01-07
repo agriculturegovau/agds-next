@@ -17,7 +17,6 @@ export function MainNavListItem({
 	return (
 		<Flex
 			as="li"
-			fontSize={{ xs: 'xs', lg: 'sm' }}
 			css={mq({
 				' > a, > button': {
 					boxSizing: 'border-box',
@@ -74,6 +73,7 @@ export function MainNavListItem({
 					},
 				},
 			})}
+			fontSize={{ xs: 'xs', lg: 'sm' }}
 		>
 			{children}
 		</Flex>

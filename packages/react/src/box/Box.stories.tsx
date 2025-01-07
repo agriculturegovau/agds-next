@@ -47,20 +47,17 @@ export const ResponsivePadding: Story = {
 function ResponsiveSizeIndicator() {
 	return (
 		<Box
-			palette="dark"
 			color="text"
 			display="flex"
 			flexDirection="row"
 			gap={2}
 			paddingTop={1}
+			palette="dark"
 		>
 			{['xs', 'sm', 'md', 'lg', 'xl'].map((s, index, arr) => (
 				// TODO: replace with a pill / tag when it exists
 				<Box
-					key={s}
 					background="body"
-					padding={0.5}
-					rounded
 					display={Object.fromEntries(
 						[
 							['xs', 'none'],
@@ -69,6 +66,9 @@ function ResponsiveSizeIndicator() {
 							[arr[index + 1], 'none'],
 						].filter(([a]) => !!a)
 					)}
+					key={s}
+					padding={0.5}
+					rounded
 				>
 					{s}
 				</Box>

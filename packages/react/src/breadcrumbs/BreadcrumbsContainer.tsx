@@ -16,10 +16,8 @@ export const BreadcrumbsContainer = ({
 }: BreadcrumbsContainerProps) => (
 	<nav aria-label={ariaLabel}>
 		<Flex
-			as="ol"
-			gap={0.5}
 			alignItems="center"
-			flexWrap="wrap"
+			as="ol"
 			css={{
 				// Hide the divider in the first list item
 				'li:first-of-type > svg': {
@@ -41,6 +39,8 @@ export const BreadcrumbsContainer = ({
 						},
 					}),
 			}}
+			flexWrap="wrap"
+			gap={0.5}
 		>
 			{children}
 		</Flex>

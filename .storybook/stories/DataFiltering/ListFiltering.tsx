@@ -37,11 +37,11 @@ export const ListFiltering = () => {
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<Stack
-					gap={1}
 					css={{
 						// This margin ensures that the left and column align nicely on desktop
 						[tokens.mediaQuery.min.md]: { marginTop: '3.5rem' },
 					}}
+					gap={1}
 				>
 					<FilterSidebar
 						activeFiltersCount={activeFiltersCount}
@@ -57,7 +57,6 @@ export const ListFiltering = () => {
 							<FilterServicesSelect block />
 							<DateRangePicker
 								fromLabel="Registered from"
-								toLabel="Registered to"
 								hideOptionalLabel
 								onChange={(requestDate) => setFilter({ requestDate })}
 								onFromInputChange={(from) =>
@@ -70,6 +69,7 @@ export const ListFiltering = () => {
 										requestDate: { ...filters.requestDate, to },
 									})
 								}
+								toLabel="Registered to"
 								value={filters.requestDate}
 							/>
 						</FormStack>
@@ -80,36 +80,36 @@ export const ListFiltering = () => {
 				</Stack>
 			</Column>
 			<Column
-				as="main"
 				aria-label="List of establishments"
-				id="main-content"
-				tabIndex={-1}
-				css={{ '&:focus': { outline: 'none' } }}
+				as="main"
 				columnSpan={{ xs: 12, md: 8 }}
 				columnStart={{ lg: 5 }}
+				css={{ '&:focus': { outline: 'none' } }}
+				id="main-content"
+				tabIndex={-1}
 			>
 				<Stack gap={2}>
 					<Flex
-						flexDirection={{ xs: 'column', md: 'row' }}
-						justifyContent={{ xs: 'flex-start', md: 'space-between' }}
 						alignItems={{ xs: 'flex-start', md: 'flex-end' }}
-						gap={1}
-						paddingBottom={{ md: 1 }}
 						borderBottom
 						borderBottomWidth={{ xs: 'none', md: 'sm' }}
+						flexDirection={{ xs: 'column', md: 'row' }}
+						gap={1}
+						justifyContent={{ xs: 'flex-start', md: 'space-between' }}
+						paddingBottom={{ md: 1 }}
 					>
 						<Text
 							as="h2"
-							lineHeight="heading"
 							fontSize="md"
 							fontWeight={{
 								xs: 'normal',
 								md: 'bold',
 							}}
+							lineHeight="heading"
 						>
 							{tableCaption}
 						</Text>
-						<div role="status" css={visuallyHiddenStyles}>
+						<div css={visuallyHiddenStyles} role="status">
 							{loading ? 'Loading audits' : ''}
 						</div>
 						<SortBySelect />

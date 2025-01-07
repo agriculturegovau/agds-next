@@ -20,8 +20,8 @@ function renderComboboxAsyncMulti(
 
 	return render(
 		<ComboboxAsyncMulti
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			loadOptions={mockLoadOptions}
 			{...props}
 		/>
@@ -56,8 +56,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -79,8 +79,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -100,8 +100,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -123,8 +123,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -149,8 +149,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -173,8 +173,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -199,8 +199,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -225,8 +225,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -259,8 +259,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);
@@ -281,8 +281,8 @@ describe('ComboboxAsyncMulti', () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
 				<ComboboxAsyncMulti
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					loadOptions={loadOptions}
 				/>
 			);

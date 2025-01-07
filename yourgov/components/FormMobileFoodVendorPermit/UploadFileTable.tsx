@@ -76,8 +76,8 @@ export const UploadFileTable = forwardRef<
 									<TableCell>
 										{error ? (
 											<StatusBadge
-												label="File missing"
 												appearance="subtle"
+												label="File missing"
 												tone="errorHigh"
 											/>
 										) : (

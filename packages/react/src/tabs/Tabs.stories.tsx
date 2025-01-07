@@ -28,8 +28,8 @@ const meta: Meta = {
 	render: function Render(args) {
 		return (
 			<Box
-				padding={args.background === 'bodyAlt' ? 1.5 : 0}
 				background={args.background}
+				padding={args.background === 'bodyAlt' ? 1.5 : 0}
 			>
 				<Tabs {...args}>
 					<TabList>
@@ -117,13 +117,13 @@ export const Controlled: StoryObj = {
 			<Stack gap={2}>
 				<Text>Current tab index: {activeTabIndex}</Text>
 				<Flex gap={0.5}>
-					<Button variant="text" onClick={() => setActiveTabIndex(0)}>
+					<Button onClick={() => setActiveTabIndex(0)} variant="text">
 						Go to first tab
 					</Button>
-					<Button variant="text" onClick={() => setActiveTabIndex(1)}>
+					<Button onClick={() => setActiveTabIndex(1)} variant="text">
 						Go to second tab
 					</Button>
-					<Button variant="text" onClick={() => setActiveTabIndex(2)}>
+					<Button onClick={() => setActiveTabIndex(2)} variant="text">
 						Go to third tab
 					</Button>
 				</Flex>
@@ -222,10 +222,10 @@ export const WithEndElements: StoryObj = {
 						endElement={
 							<Fragment>
 								<NotificationBadge
-									value={100}
+									aria-hidden
 									max={99}
 									tone="action"
-									aria-hidden
+									value={100}
 								/>
 								<VisuallyHidden>, 100 notifications</VisuallyHidden>
 							</Fragment>
@@ -304,7 +304,7 @@ export const ExampleComposition: StoryObj = {
 								/>
 								<Stack gap={1.5}>
 									<H1>Population trends</H1>
-									<Text as="p" fontSize="md" color="muted">
+									<Text as="p" color="muted" fontSize="md">
 										Introductory paragraph providing context for this single
 										page of the multipage form. All questions on page must be
 										related - md/default (P).

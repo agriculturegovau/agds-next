@@ -31,8 +31,8 @@ const Page: NextPageWithLayout = () => {
 						]}
 					/>
 					<PageTitle
-						title="Manage existing permits"
 						introduction="Stay compliant by registering for business permits."
+						title="Manage existing permits"
 					/>
 					<CallToActionLink href="/app/permits/apply-for-new-permit">
 						Apply for a permit

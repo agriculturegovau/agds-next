@@ -53,6 +53,7 @@ import { PlusIcon } from './icons/PlusIcon';
 import { PrintIcon } from './icons/PrintIcon';
 import { ProgressBlockedIcon } from './icons/ProgressBlockedIcon';
 import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
+import { ProgressNotRequiredIcon } from './icons/ProgressNotRequiredIcon';
 import { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
 import { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';
@@ -130,6 +131,7 @@ export const allIcons = {
 	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
+	ProgressNotRequiredIcon,
 	ProgressPausedIcon,
 	ProgressTodoIcon,
 	ScrollbarArrowLeftIcon,

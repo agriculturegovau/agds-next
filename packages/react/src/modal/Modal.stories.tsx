@@ -24,20 +24,20 @@ export const Basic: Story = {
 			<div>
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Primary button</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								Secondary button
 							</Button>
-							<Button variant="tertiary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="tertiary">
 								Tertiary button
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title={props.title}
 				>
 					<Text as="p">
 						This is the Modal Body paragraph, it provides detailed instruction
@@ -60,17 +60,17 @@ export const ConfirmingDestructiveAction: Story = {
 			<div>
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Delete certificate</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								Cancel
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title={props.title}
 				>
 					<Text as="p">
 						Certificate <Text fontWeight="bold">CER-36476487</Text> will be
@@ -92,17 +92,17 @@ export const ConfirmingFormCancellation: Story = {
 			<div>
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Yes, cancel</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								No, take me back
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title={props.title}
 				>
 					<Text as="p">
 						If you cancel, you will lose all information entered.
@@ -123,17 +123,17 @@ export const LeavingFormPage: Story = {
 			<div>
 				<Button onClick={openModal}>Open modal</Button>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title={props.title}
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Leave this page</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								Stay on this page
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title={props.title}
 				>
 					<Text as="p">
 						You will lose all changes made since your last save.

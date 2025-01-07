@@ -10,7 +10,7 @@ export const PaginationItemContainer = ({
 	'aria-label': ariaLabel,
 }: PaginationItemContainerProps) => (
 	<nav aria-label={ariaLabel}>
-		<Flex as="ol" alignItems="center" justifyContent="center" flexWrap="wrap">
+		<Flex alignItems="center" as="ol" flexWrap="wrap" justifyContent="center">
 			{children}
 		</Flex>
 	</nav>
@@ -28,14 +28,14 @@ export const PaginationContainer = ({
 }: PaginationContainerProps) => {
 	return (
 		<Flex
-			gap={1}
 			alignItems="center"
-			justifyContent={hasRightArea ? 'space-between' : 'center'}
 			flexDirection={{
 				xs: 'column',
 				lg: 'row',
 			}}
 			flexWrap="wrap"
+			gap={1}
+			justifyContent={hasRightArea ? 'space-between' : 'center'}
 		>
 			{children}
 		</Flex>
@@ -49,13 +49,13 @@ export const PaginationSecondaryControlContainer = ({
 }: PaginationSecondaryControlContainerProps) => {
 	return (
 		<Flex
-			columnGap={2}
-			rowGap={1}
 			alignItems="center"
+			columnGap={2}
 			flexDirection={{
 				xs: 'column',
 				lg: 'row',
 			}}
+			rowGap={1}
 		>
 			{children}
 		</Flex>

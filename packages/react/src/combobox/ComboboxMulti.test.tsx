@@ -22,8 +22,8 @@ type Option = (typeof STATE_OPTIONS)[number];
 function renderComboboxMulti(props?: Partial<ComboboxMultiProps<Option>>) {
 	return render(
 		<ComboboxMulti
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			options={STATE_OPTIONS}
 			{...props}
 		/>

@@ -26,14 +26,7 @@ export const SkeletonBox = ({
 }: SkeletonBoxProps) => {
 	return (
 		<Box
-			aria-hidden="true"
-			display="block"
-			fontSize={fontSize}
-			lineHeight={lineHeight}
-			height={height}
-			width={width}
-			highContrastOutline
-			rounded
+			aria-hidden
 			css={{
 				animation: `${animateFadeOut} 1200ms ${tokens.transition.timingFunction} infinite alternate`,
 				backgroundColor: boxPalette.border,
@@ -42,6 +35,13 @@ export const SkeletonBox = ({
 					content: '"\\00a0"',
 				},
 			}}
+			display="block"
+			fontSize={fontSize}
+			height={height}
+			highContrastOutline
+			lineHeight={lineHeight}
+			rounded
+			width={width}
 		/>
 	);
 };

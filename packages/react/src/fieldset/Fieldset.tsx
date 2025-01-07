@@ -20,8 +20,8 @@ export const Fieldset = ({ children, hint, legend, id }: FieldsetProps) => {
 	const { fieldsetId, hintId } = useFieldsetIds(id);
 	return (
 		<FieldsetContainer
-			id={fieldsetId}
 			aria-describedby={hint ? hintId : undefined}
+			id={fieldsetId}
 		>
 			<FieldsetLegend>{legend}</FieldsetLegend>
 			{hint ? <FieldsetHint id={hintId}>{hint}</FieldsetHint> : null}

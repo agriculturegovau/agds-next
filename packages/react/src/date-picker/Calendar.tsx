@@ -153,10 +153,6 @@ export function CalendarRange({
 					>
 						{/* Without this focusable span, left and right do not work in screen readers */}
 						<span
-							tabIndex={-1}
-							onMouseLeave={() => {
-								!isHidden && clearHoveredDay?.();
-							}}
 							onMouseEnter={
 								onHover && !isHidden
 									? () => {
@@ -165,6 +161,10 @@ export function CalendarRange({
 									  }
 									: undefined
 							}
+							onMouseLeave={() => {
+								!isHidden && clearHoveredDay?.();
+							}}
+							tabIndex={-1}
 						>
 							{isHidden ? undefined : children}
 						</span>
@@ -250,8 +250,8 @@ const calendarComponents: CustomComponents = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
-						id={props.id}
 						displayMonth={props.displayMonth}
+						id={props.id}
 					/>
 				)}
 				{isLast && (
@@ -342,37 +342,32 @@ const calendarComponents: CustomComponents = {
 
 		return yearOptions.length > 1 ? (
 			<Fragment>
-				<h2
-					id={id}
-					aria-live="polite"
-					aria-atomic="true"
-					css={visuallyHiddenStyles}
-				>
+				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles} id={id}>
 					{formattedMonthYear}
 				</h2>
-				<Flex justifyContent="center" gap={0.5} width="100%">
+				<Flex gap={0.5} justifyContent="center" width="100%">
 					<YearMonthSelect
 						label="Month"
+						onChange={onMonthChange}
 						options={monthOptions}
 						value={month}
-						onChange={onMonthChange}
 					/>
 					<YearMonthSelect
 						label="Year"
+						onChange={onYearChange}
 						options={yearOptions}
 						value={year}
-						onChange={onYearChange}
 					/>
 				</Flex>
 			</Fragment>
 		) : (
 			<Box
-				as="h2"
-				id={id}
+				aria-atomic
 				aria-live="polite"
-				aria-atomic="true"
-				fontWeight="bold"
+				as="h2"
 				fontSize="lg"
+				fontWeight="bold"
+				id={id}
 				lineHeight="heading"
 			>
 				{formattedMonthYear}
@@ -426,9 +421,9 @@ const calendarComponents: CustomComponents = {
 			<tr className={classNames.row} style={styles.row}>
 				{props.dates.map((date) => (
 					<DayComponent
-						key={getUnixTime(date)}
-						displayMonth={props.displayMonth}
 						date={date}
+						displayMonth={props.displayMonth}
+						key={getUnixTime(date)}
 					/>
 				))}
 			</tr>
@@ -512,20 +507,13 @@ function YearMonthSelect({
 	const selectId = `calendar-${autoId}-select`;
 	return (
 		<div css={{ position: 'relative' }}>
-			<label htmlFor={selectId} css={visuallyHiddenStyles}>
+			<label css={visuallyHiddenStyles} htmlFor={selectId}>
 				{label}
 			</label>
 			<Box
 				as="select"
 				autoComplete="off"
-				id={selectId}
-				value={value}
-				onChange={onChange}
-				rounded
-				focusRingFor="keyboard"
-				paddingRight={1.5}
 				color="text"
-				fontWeight="bold"
 				css={{
 					appearance: 'none',
 					background: 'none',
@@ -540,6 +528,13 @@ function YearMonthSelect({
 						fontSize: `${tokens.fontSize.xs.md}rem`,
 					},
 				}}
+				focusRingFor="keyboard"
+				fontWeight="bold"
+				id={selectId}
+				onChange={onChange}
+				paddingRight={1.5}
+				rounded
+				value={value}
 			>
 				{options.map((option) => (
 					<option key={option.value} value={option.value}>
@@ -548,7 +543,6 @@ function YearMonthSelect({
 				))}
 			</Box>
 			<ChevronDownIcon
-				weight="bold"
 				css={{
 					position: 'absolute',
 					top: '50%',
@@ -557,6 +551,7 @@ function YearMonthSelect({
 					pointerEvents: 'none',
 					color: boxPalette.foregroundAction,
 				}}
+				weight="bold"
 			/>
 		</div>
 	);

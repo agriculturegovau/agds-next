@@ -8,7 +8,7 @@ export type HeroCategoryBannerTitleProps = { children: ReactNode };
 export const HeroCategoryBannerTitle = ({
 	children,
 }: HeroCategoryBannerTitleProps) => (
-	<Heading type="h1" fontSize="xxl">
+	<Heading fontSize="xxl" type="h1">
 		{children}
 	</Heading>
 );

@@ -17,12 +17,8 @@ export function RadioIndicator({
 	const { width, height, borderWidth } = packs.control[size];
 	return (
 		<Flex
-			as="span"
-			justifyContent="center"
 			alignItems="center"
-			width={width}
-			height={height}
-			flexShrink={0}
+			as="span"
 			css={{
 				borderWidth,
 				borderRadius: '100%',
@@ -46,13 +42,14 @@ export function RadioIndicator({
 					backgroundColor: boxPalette.systemErrorMuted,
 				}),
 			}}
+			flexShrink={0}
+			height={height}
+			justifyContent="center"
 			rounded
+			width={width}
 		>
 			<Box
 				as="span"
-				width="calc(100% - 0.5rem)"
-				height="calc(100% - 0.5rem)"
-				highContrastOutline
 				css={{
 					borderRadius: '100%',
 					backgroundColor: boxPalette.foregroundText,
@@ -67,6 +64,9 @@ export function RadioIndicator({
 						},
 					}),
 				}}
+				height="calc(100% - 0.5rem)"
+				highContrastOutline
+				width="calc(100% - 0.5rem)"
 			/>
 		</Flex>
 	);

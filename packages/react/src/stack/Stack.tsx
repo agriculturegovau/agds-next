@@ -15,11 +15,11 @@ export const Stack = forwardRefWithAs<'div', StackProps>(function Stack(
 ) {
 	return (
 		<Box
-			ref={ref}
+			alignItems={alignItems}
 			display="flex"
 			flexDirection={flexDirection}
 			justifyContent={justifyContent}
-			alignItems={alignItems}
+			ref={ref}
 			{...props}
 		/>
 	);

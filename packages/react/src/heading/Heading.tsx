@@ -36,32 +36,32 @@ export const Heading = forwardRefWithAs<'h2', HeadingProps>(function Heading(
 	return (
 		<Box
 			as={Tag}
-			ref={ref}
 			color={color}
-			fontSize={fontSize}
 			fontFamily={fontFamily}
+			fontSize={fontSize}
 			fontWeight={fontWeight}
 			lineHeight={lineHeight}
+			ref={ref}
 			{...props}
 		/>
 	);
 });
 
 export const H1 = forwardRefWithAs<'h1', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h1" type="h1" {...props} />
+	<Heading as="h1" ref={ref} type="h1" {...props} />
 ));
 export const H2 = forwardRefWithAs<'h2', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h2" type="h2" {...props} />
+	<Heading as="h2" ref={ref} type="h2" {...props} />
 ));
 export const H3 = forwardRefWithAs<'h3', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h3" type="h3" {...props} />
+	<Heading as="h3" ref={ref} type="h3" {...props} />
 ));
 export const H4 = forwardRefWithAs<'h4', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h4" type="h4" {...props} />
+	<Heading as="h4" ref={ref} type="h4" {...props} />
 ));
 export const H5 = forwardRefWithAs<'h5', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h5" type="h5" {...props} />
+	<Heading as="h5" ref={ref} type="h5" {...props} />
 ));
 export const H6 = forwardRefWithAs<'h6', BoxProps>((props, ref) => (
-	<Heading ref={ref} as="h6" type="h6" {...props} />
+	<Heading as="h6" ref={ref} type="h6" {...props} />
 ));

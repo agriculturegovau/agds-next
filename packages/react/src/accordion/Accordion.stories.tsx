@@ -23,9 +23,9 @@ type AccordionTemplateProps = {
 };
 
 const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
-	<Box padding={1.5} background={background}>
+	<Box background={background} padding={1.5}>
 		<Accordion>
-			<AccordionItem title="Accordion title" background={background}>
+			<AccordionItem background={background} title="Accordion title">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -44,14 +44,14 @@ export const onBodyAlt: Story = {
 };
 
 const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
-	<Box padding={1.5} background={background}>
+	<Box background={background} padding={1.5}>
 		<Accordion>
-			<AccordionItem title="Accordion 1" background={background}>
+			<AccordionItem background={background} title="Accordion 1">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 2" background={background}>
+			<AccordionItem background={background} title="Accordion 2">
 				<AccordionItemContent>
 					<Prose>
 						<p>
@@ -85,7 +85,7 @@ const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
 					</Prose>
 				</AccordionItemContent>
 			</AccordionItem>
-			<AccordionItem title="Accordion 3" background={background}>
+			<AccordionItem background={background} title="Accordion 3">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
@@ -106,8 +106,8 @@ export const GroupOnBodyAlt: Story = {
 export const Controlled = () => {
 	const [isOpen, onToggle] = useToggleState(false, true);
 	return (
-		<Stack gap={1} alignItems="flex-start">
-			<Button variant="tertiary" onClick={onToggle} aria-expanded={isOpen}>
+		<Stack alignItems="flex-start" gap={1}>
+			<Button aria-expanded={isOpen} onClick={onToggle} variant="tertiary">
 				{isOpen ? 'Close section' : 'Open section'}
 			</Button>
 			<Accordion>
@@ -154,18 +154,18 @@ const AccordionControlledGroupTemplate = ({
 	return (
 		<Accordion>
 			<AccordionItem
-				title="Accordion 1"
 				isOpen={openAccordions.includes(1)}
 				onToggle={() => toggle(1)}
+				title="Accordion 1"
 			>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 			<AccordionItem
-				title="Accordion 2"
 				isOpen={openAccordions.includes(2)}
 				onToggle={() => toggle(2)}
+				title="Accordion 2"
 			>
 				<AccordionItemContent>
 					<Prose>
@@ -201,9 +201,9 @@ const AccordionControlledGroupTemplate = ({
 				</AccordionItemContent>
 			</AccordionItem>
 			<AccordionItem
-				title="Accordion 3"
 				isOpen={openAccordions.includes(3)}
 				onToggle={() => toggle(3)}
+				title="Accordion 3"
 			>
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
@@ -234,12 +234,12 @@ export const ControlledGroup = () => {
 	const isAllOpen = openAccordions.length === controlledGroupAccordionLength;
 
 	return (
-		<Stack gap={1} alignItems="flex-start">
+		<Stack alignItems="flex-start" gap={1}>
 			<Button
+				aria-expanded={isAllOpen}
+				onClick={isAllOpen ? closeAll : openAll}
 				size="sm"
 				variant="tertiary"
-				onClick={isAllOpen ? closeAll : openAll}
-				aria-expanded={isAllOpen}
 			>
 				{isAllOpen ? 'Hide all sections' : 'Show all sections'}
 			</Button>
@@ -254,7 +254,7 @@ export const ControlledGroup = () => {
 export const InitiallyOpened: Story = {
 	render: () => (
 		<Accordion>
-			<AccordionItem title="Initially opened" isInitiallyOpen>
+			<AccordionItem isInitiallyOpen title="Initially opened">
 				<AccordionItemContent>
 					<Text as="p">
 						This is some text inside an Accordion, which is opened at time of

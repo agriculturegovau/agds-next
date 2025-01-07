@@ -18,13 +18,8 @@ export function SearchInputClearButton({
 }: SearchInputClearButtonProps) {
 	return (
 		<Flex
-			role="button"
 			alignItems="center"
-			justifyContent="center"
 			aria-label="Clear search"
-			width="2rem"
-			height="2rem"
-			onClick={onClick}
 			css={{
 				position: 'absolute',
 				top: '50%',
@@ -35,6 +30,11 @@ export function SearchInputClearButton({
 				color: boxPalette.foregroundAction,
 				'&:hover': { color: boxPalette.foregroundText },
 			}}
+			height="2rem"
+			justifyContent="center"
+			onClick={onClick}
+			role="button"
+			width="2rem"
 		>
 			<CloseIcon color="inherit" />
 		</Flex>

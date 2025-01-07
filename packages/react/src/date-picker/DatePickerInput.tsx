@@ -70,15 +70,15 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 
 		return (
 			<Field
+				hideOptionalLabel={hideOptionalLabel}
+				hint={hint}
+				id={id}
+				invalid={invalid.field}
 				label={label}
 				maxWidth={maxWidthProp}
-				secondaryLabel={secondaryLabel}
-				hideOptionalLabel={hideOptionalLabel}
-				required={required}
-				hint={hint}
 				message={message}
-				invalid={invalid.field}
-				id={id}
+				required={required}
+				secondaryLabel={secondaryLabel}
 			>
 				{(a11yProps) => (
 					<Flex
@@ -90,22 +90,17 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 						}}
 					>
 						<input
+							autoComplete="off"
+							css={{ ...styles, maxWidth: 'unset' }}
 							ref={ref}
 							type="text"
-							css={{ ...styles, maxWidth: 'unset' }}
-							autoComplete="off"
 							{...a11yProps}
 							aria-invalid={Boolean(invalid.field || invalid.input)}
 							{...props}
-							value={value}
 							disabled={disabled}
+							value={value}
 						/>
 						<Button
-							type="button"
-							ref={buttonRef}
-							onClick={buttonOnClick}
-							disabled={disabled}
-							variant="secondary"
 							aria-label={buttonAriaLabel}
 							css={{
 								borderTopLeftRadius: 0,
@@ -113,8 +108,13 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 								paddingLeft: mapSpacing(1),
 								paddingRight: mapSpacing(1),
 							}}
+							disabled={disabled}
+							onClick={buttonOnClick}
+							ref={buttonRef}
+							type="button"
+							variant="secondary"
 						>
-							<CalendarIcon size="md" css={{ display: 'block' }} />
+							<CalendarIcon css={{ display: 'block' }} size="md" />
 						</Button>
 					</Flex>
 				)}
