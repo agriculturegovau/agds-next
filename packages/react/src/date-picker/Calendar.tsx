@@ -153,6 +153,19 @@ export function CalendarRange({
 					>
 						{/* Without this focusable span, left and right do not work in screen readers */}
 						<span
+							css={{
+								alignItems: 'center',
+								display: 'flex',
+								height: '3rem',
+								justifyContent: 'center',
+								position: 'relative',
+								width: '3rem',
+								'::before': {
+									content: '""',
+									inset: 0,
+									position: 'absolute',
+								},
+							}}
 							onMouseEnter={
 								onHover && !isHidden
 									? () => {
@@ -484,7 +497,24 @@ const calendarComponents: CustomComponents = {
 				{...(isHidden ? undefined : interactiveProps)}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
+				<span
+					css={{
+						alignItems: 'center',
+						display: 'flex',
+						height: '3rem',
+						justifyContent: 'center',
+						position: 'relative',
+						width: '3rem',
+						'::before': {
+							content: '""',
+							inset: 0,
+							position: 'absolute',
+						},
+					}}
+					tabIndex={-1}
+				>
+					{isHidden ? undefined : children}
+				</span>
 			</td>
 		);
 	},
