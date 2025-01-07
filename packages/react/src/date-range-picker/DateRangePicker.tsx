@@ -444,7 +444,8 @@ export const DateRangePicker = ({
 			numberOfMonths,
 			onHover,
 			onSelect,
-			valueAsDateOrUndefined,
+			valueAsDateOrUndefined.from,
+			valueAsDateOrUndefined.to,
 		]
 	);
 
