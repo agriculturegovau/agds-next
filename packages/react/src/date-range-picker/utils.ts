@@ -2,6 +2,7 @@ import {
 	addMonths,
 	closestTo,
 	differenceInCalendarMonths,
+	isAfter,
 	isBefore,
 	subMonths,
 } from 'date-fns';
@@ -37,6 +38,16 @@ export function getCalendarDefaultMonth(
 		// If the date picker has a value, open up the month of the date value
 		// Open up the 'from' date if the user has clicked the start date picker
 		if (inputMode === 'from') {
+			if (
+				valueAsDateOrUndefined.from &&
+				valueAsDateOrUndefined.to &&
+				isAfter(valueAsDateOrUndefined.from, valueAsDateOrUndefined.to)
+			) {
+				return subMonths(
+					valueAsDateOrUndefined.to,
+					numberOfMonths === 2 ? 1 : 0
+				);
+			}
 			if (valueAsDateOrUndefined.from) return valueAsDateOrUndefined.from;
 			if (valueAsDateOrUndefined.to)
 				return subMonths(
@@ -47,6 +58,13 @@ export function getCalendarDefaultMonth(
 		}
 		// Open up the 'to' date if the user has clicked the end date picker
 		if (inputMode === 'to') {
+			if (
+				valueAsDateOrUndefined.from &&
+				valueAsDateOrUndefined.to &&
+				isBefore(valueAsDateOrUndefined.to, valueAsDateOrUndefined.from)
+			) {
+				return addMonths(valueAsDateOrUndefined.from, 0);
+			}
 			if (valueAsDateOrUndefined.to)
 				return subMonths(
 					valueAsDateOrUndefined.to,
