@@ -182,14 +182,11 @@ export const DateRangePicker = ({
 		[value]
 	);
 
-	const [hoveredDay, setHoveredDay] = useState<Date>();
+	const [hoveredDay, setHoveredDay] = useState<string>();
 
-	const onHover = useCallback(
-		(date: Date) => {
-			setHoveredDay(date);
-		},
-		[setHoveredDay]
-	);
+	const onHover = useCallback((date: Date) => {
+		setHoveredDay(date.toISOString());
+	}, []);
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
@@ -433,7 +430,7 @@ export const DateRangePicker = ({
 						: valueAsDateOrUndefined.to,
 			},
 			modifiers: {
-				fromRange: (day: Date) => fromRange()[day.toDateString()],
+				fromRange: (day: Date) => fromRange()[day.toISOString()],
 			},
 			modifiersClassNames: {
 				fromRange: 'range',
@@ -564,12 +561,13 @@ export function useDateRangePickerIds(idProp?: string) {
 	return { fieldsetId, fromId, hintId, messageId, toId };
 }
 
-const getRange = (startDate?: Date, endDate?: Date) => {
+const getRange = (startDate?: Date | string, endDate?: Date | string) => {
 	const range: Record<string, boolean> = {};
 	if (startDate && endDate) {
-		let current = addDays(startDate, 1);
-		while (current < endDate) {
-			range[current.toDateString()] = true;
+		let current = addDays(new Date(startDate), 1);
+		const endDateAsDate = new Date(endDate);
+		while (current < endDateAsDate) {
+			range[current.toISOString()] = true;
 			current = addDays(current, 1);
 		}
 	}

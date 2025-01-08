@@ -226,12 +226,8 @@ export const reactDayRangePickerStyles = (
 			'.rdp-day': {
 				...(inputMode === 'from' && startStyles),
 				...(inputMode === 'to' && endStyles),
-				'&:hover:not([disabled])::before': {
-					...(inputMode === 'from' && startStyles),
-					...(inputMode === 'to' && endStyles),
-					...highContrastOutlineStyles,
-					backgroundColor: boxPalette.backgroundShade,
-					borderColor: boxPalette.selected,
+				'&::before': {
+					borderColor: 'transparent',
 					borderStyle: 'solid',
 					borderWidth: tokens.borderWidth.lg,
 					content: '""',
@@ -239,6 +235,13 @@ export const reactDayRangePickerStyles = (
 					pointerEvents: 'none',
 					position: 'absolute',
 					zIndex: -1,
+				},
+				'&:hover:not([disabled])::before': {
+					...(inputMode === 'from' && startStyles),
+					...(inputMode === 'to' && endStyles),
+					...highContrastOutlineStyles,
+					backgroundColor: boxPalette.backgroundShade,
+					borderColor: boxPalette.selected,
 				},
 				'&:hover:not([disabled])': {
 					color: boxPalette.foregroundText,
