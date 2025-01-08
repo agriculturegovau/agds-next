@@ -150,6 +150,15 @@ export function CalendarRange({
 						ref={buttonRef}
 						tabIndex={-1}
 						{...(isHidden ? undefined : interactiveProps)}
+						onMouseEnter={
+							onHover && !isHidden
+								? () => {
+										clearHoveredDay?.cancel();
+										onHover(props.date);
+								  }
+								: undefined
+						}
+						onMouseLeave={onHover && !isHidden ? clearHoveredDay : undefined}
 					>
 						{/* Without this focusable span, left and right do not work in screen readers */}
 						<span
@@ -165,17 +174,6 @@ export function CalendarRange({
 									inset: 0,
 									position: 'absolute',
 								},
-							}}
-							onMouseEnter={
-								onHover && !isHidden
-									? () => {
-											clearHoveredDay?.cancel();
-											onHover(props.date);
-									  }
-									: undefined
-							}
-							onMouseLeave={() => {
-								!isHidden && clearHoveredDay?.();
 							}}
 							tabIndex={-1}
 						>

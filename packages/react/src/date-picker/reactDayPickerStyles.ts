@@ -242,6 +242,7 @@ export const reactDayRangePickerStyles = (
 				},
 				'&:hover:not([disabled])': {
 					color: boxPalette.foregroundText,
+					textDecoration: 'underline',
 				},
 			},
 			'.rdp-day_range_start, .rdp-day_range_end': {
