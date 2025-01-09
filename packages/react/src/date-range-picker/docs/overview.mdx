@@ -62,8 +62,16 @@ relatedComponents: ['date-picker']
 	});
 
 	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+	const lastWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() - 7
+	);
+	const nextWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() + 7
+	);
 
 	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
 	// See Single-page form template
