@@ -111,8 +111,6 @@ export const DateRangePicker = ({
 	hideOptionalLabel,
 	value,
 	onChange,
-	onFromInputChange: onFromInputChangeProp,
-	onToInputChange: onToInputChangeProp,
 	disabled,
 	fromLabel = 'Start date',
 	toLabel = 'End date',
@@ -253,27 +251,12 @@ export const DateRangePicker = ({
 
 	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
+		const parsedDate = parseDate(inputValue, allowedDateFormats) || inputValue;
 
-		const range = {
+		onChange({
 			from: parsedDate,
-			to:
-				valueAsDateOrUndefined.to ||
-				parseDate(toInputValue, allowedDateFormats) ||
-				toInputValue,
-		} as DateRange;
-
-		if (
-			(inputValue &&
-				(!isValidDate(range.from) ||
-					(range.from && range.to && isAfter(range.from, range.to)))) ||
-			(minDate && range.from && isBefore(range.from, minDate)) ||
-			(maxDate && range.from && isAfter(range.from, maxDate))
-		) {
-			onFromInputChangeProp?.(inputValue);
-		} else if (!inputValue || range.from) {
-			onChange(range);
-		}
+			to: valueAsDateOrUndefined.to || toInputValue,
+		} as DateRange);
 	};
 
 	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -284,27 +267,12 @@ export const DateRangePicker = ({
 
 	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
+		const parsedDate = parseDate(inputValue, allowedDateFormats) || inputValue;
 
-		const range = {
-			from:
-				valueAsDateOrUndefined.from ||
-				parseDate(fromInputValue, allowedDateFormats) ||
-				fromInputValue,
+		onChange({
+			from: valueAsDateOrUndefined.from || fromInputValue,
 			to: parsedDate,
-		} as DateRange;
-
-		if (
-			(inputValue &&
-				(!isValidDate(parsedDate) ||
-					(range.to && range.from && isBefore(range.to, range.from)))) ||
-			(minDate && range.to && isBefore(range.to, minDate)) ||
-			(maxDate && range.to && isAfter(range.to, maxDate))
-		) {
-			onToInputChangeProp?.(inputValue);
-		} else if (!inputValue || range.to) {
-			onChange(range);
-		}
+		} as DateRange);
 	};
 
 	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -28,16 +28,6 @@ relatedComponents: ['date-picker']
 	const fromInvalid = isFromInvalid(value.from, value.to);
 	const toInvalid = isToInvalid(value.to, value.from);
 
-	const onFromInputChange = (fromValue) => {
-		console.log('onFromInputChange', fromValue);
-		setValue({ ...value, from: fromValue });
-	};
-
-	const onToInputChange = (toValue) => {
-		console.log('onToInputChange', toValue);
-		setValue({ ...value, to: toValue });
-	};
-
 	const onChange = (dateRange) => {
 		console.log('onChange', dateRange);
 		setValue(dateRange);
@@ -47,8 +37,6 @@ relatedComponents: ['date-picker']
 		<DateRangePicker
 			value={value}
 			onChange={onChange}
-			onFromInputChange={onFromInputChange}
-			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			message={
@@ -89,16 +77,6 @@ relatedComponents: ['date-picker']
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.to);
 
-	const onFromInputChange = (fromValue) => {
-		console.log('onFromInputChange', fromValue);
-		setValue({ ...value, from: fromValue });
-	};
-
-	const onToInputChange = (toValue) => {
-		console.log('onToInputChange', toValue);
-		setValue({ ...value, to: toValue });
-	};
-
 	const onChange = (dateRange) => {
 		console.log('onChange', dateRange);
 		setValue(dateRange);
@@ -108,8 +86,6 @@ relatedComponents: ['date-picker']
 		<DateRangePicker
 			value={value}
 			onChange={onChange}
-			onFromInputChange={onFromInputChange}
-			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			minDate={lastWeek}
