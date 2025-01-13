@@ -56,7 +56,8 @@ export function FormContainer({
 	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const substepNumberFromReviewStep =
-		(isEditingFromReviewStep && asPath.match(/\d+$/)?.[0]) || undefined;
+		(isEditingFromReviewStep && asPath.slice(asPath.lastIndexOf('-') + 1)) ||
+		undefined;
 	const substepData = formSteps.find(
 		({ href }) =>
 			substepNumberFromReviewStep && href.endsWith(substepNumberFromReviewStep)
