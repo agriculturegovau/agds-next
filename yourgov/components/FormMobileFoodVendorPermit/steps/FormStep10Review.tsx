@@ -81,8 +81,12 @@ export function FormStep10Review() {
 					<ValidateSectionAlert />
 				)}
 
-				<ButtonLink alignSelf="start" href={formSteps[0].href} variant="text">
-					Change owner details
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-1`}
+					variant="text"
+				>
+					{formSteps[0].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -118,8 +122,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[1].href} variant="text">
-					Change business details
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-2`}
+					variant="text"
+				>
+					{formSteps[1].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -153,8 +161,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[2].href} variant="text">
-					Change business address
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-3`}
+					variant="text"
+				>
+					{formSteps[2].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -175,8 +187,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[3].href} variant="text">
-					Change vehicle registration
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-4`}
+					variant="text"
+				>
+					{formSteps[3].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -199,8 +215,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[4].href} variant="text">
-					Change trading time
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-5`}
+					variant="text"
+				>
+					{formSteps[4].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -219,8 +239,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[5].href} variant="text">
-					Change food served
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-6`}
+					variant="text"
+				>
+					{formSteps[5].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -254,8 +278,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[6].href} variant="text">
-					Change employees
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-7`}
+					variant="text"
+				>
+					{formSteps[6].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -272,8 +300,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[7].href} variant="text">
-					Change food safety supervisor
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-8`}
+					variant="text"
+				>
+					{formSteps[7].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -310,8 +342,12 @@ export function FormStep10Review() {
 				) : (
 					<ValidateSectionAlert />
 				)}
-				<ButtonLink alignSelf="start" href={formSteps[8].href} variant="text">
-					Change documents
+				<ButtonLink
+					alignSelf="start"
+					href={`${formSteps[9].href}/substep-9`}
+					variant="text"
+				>
+					{formSteps[8].editLinkLabel}
 				</ButtonLink>
 			</Stack>
 		</Stack>

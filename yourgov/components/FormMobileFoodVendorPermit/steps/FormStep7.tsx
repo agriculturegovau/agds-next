@@ -18,11 +18,14 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
-import { StepActions } from '../StepActions';
+import { useTernaryState } from '@ag.ds-next/react/core';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { ModalUnavailableFeature } from '../../Staff/AccessRequestsTable/ModalUnavailableFeature';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 import { Step7FormSchema } from './FormState';
+import { Form } from './Form';
 
 export function FormStep7() {
 	const {
@@ -55,6 +58,10 @@ export function FormStep7() {
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
 		!!addedEmployee
 	);
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const [isUnavailableModalOpen, openUnavailableModal, closeUnavailableModal] =
+		useTernaryState(false);
 
 	const closeModal = () => {
 		setShowAddedEmployeeMessage(false);
@@ -220,19 +227,32 @@ export function FormStep7() {
 						<Text as="p">You must add an employee to proceed.</Text>
 					</Stack>
 				)}
-				<ButtonLink
-					alignSelf="start"
-					href={formSteps[6].items && formSteps[6].items[0].href}
-					iconBefore={PlusIcon}
-					size="sm"
-					variant="secondary"
-				>
-					Add employee
-				</ButtonLink>
+
+				{isEditingFromReviewStep ? (
+					<Button
+						alignSelf="start"
+						iconBefore={PlusIcon}
+						onClick={openUnavailableModal}
+						size="sm"
+						variant="secondary"
+					>
+						Add employee
+					</Button>
+				) : (
+					<ButtonLink
+						alignSelf="start"
+						href={formSteps[6].items && formSteps[6].items[0].href}
+						iconBefore={PlusIcon}
+						size="sm"
+						variant="secondary"
+					>
+						Add employee
+					</ButtonLink>
+				)}
 			</Stack>
-			<form noValidate onSubmit={onSubmit}>
-				<StepActions />
-			</form>
+
+			<Form onSubmit={onSubmit} />
+
 			<Modal
 				actions={
 					<ButtonGroup>
@@ -245,7 +265,13 @@ export function FormStep7() {
 				isOpen={modalIsVisible}
 				onClose={closeModal}
 				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
-			></Modal>
+			/>
+
+			<ModalUnavailableFeature
+				isOpen={isUnavailableModalOpen}
+				onClose={closeUnavailableModal}
+				onConfirm={closeUnavailableModal}
+			/>
 		</FormContainer>
 	);
 }

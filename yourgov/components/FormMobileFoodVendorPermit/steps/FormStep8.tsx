@@ -2,12 +2,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
-import { Stack } from '@ag.ds-next/react/stack';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
 import { step8FormSchema, type Step8FormSchema } from './FormState';
+import { Form } from './Form';
 
 export function FormStep8() {
 	const {
@@ -55,7 +54,7 @@ export function FormStep8() {
 			formIntroduction="Add your employee food safety supervisor."
 			formTitle="Food safety supervisor"
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup
 					block
 					invalid={Boolean(errors.supervisor)}
@@ -69,8 +68,7 @@ export function FormStep8() {
 						</Radio>
 					))}
 				</ControlGroup>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

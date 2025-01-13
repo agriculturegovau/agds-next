@@ -44,17 +44,21 @@ export const formHomePage =
 export const managePermitsPage = '/app/permits';
 
 type GetStepNavigationUrlParams = {
-	id?: string;
-	steps: Array<FormStep>;
 	currentStepIndex: number;
+	id?: string;
+	isEditingFromReviewStep: boolean;
+	steps: Array<FormStep>;
 };
 
 export function getStepCompletionUrl({
 	currentStepIndex,
 	id,
+	isEditingFromReviewStep,
 	steps,
 }: GetStepNavigationUrlParams) {
-	const nextStepUrl = steps[currentStepIndex + 1]?.href;
+	const nextStepUrl = (
+		isEditingFromReviewStep ? steps.at(-1) : steps[currentStepIndex + 1]
+	)?.href;
 	return (
 		nextStepUrl ||
 		`/app/permits/apply-for-new-permit/mobile-food-vendor-permit/success?id=${id}`

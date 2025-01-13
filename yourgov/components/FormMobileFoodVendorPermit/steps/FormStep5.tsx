@@ -4,16 +4,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
-import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
 import { step5FormSchema, type Step5FormSchema } from './FormState';
+import { Form } from './Form';
 
 function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	const from = step?.tradingPeriod?.from;
@@ -112,7 +111,7 @@ export function FormStep5() {
 			formIntroduction="What times would you like to operate?"
 			formTitle="Trading time"
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && (
 						<FormPageAlert
@@ -219,8 +218,7 @@ export function FormStep5() {
 						)}
 					</GroupedFields>
 				</FormStack>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

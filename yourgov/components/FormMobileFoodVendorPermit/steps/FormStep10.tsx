@@ -6,15 +6,14 @@ import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { H2 } from '@ag.ds-next/react/heading';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { StepActions } from '../StepActions';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
 import { FormStep10Review } from './FormStep10Review';
 import { step10FormSchema, Step10FormSchema } from './FormState';
+import { Form } from './Form';
 
 export function FormStep10() {
 	const { isSavingBeforeExiting, step10SetState } = useGlobalForm();
@@ -52,7 +51,10 @@ export function FormStep10() {
 			{canConfirmAndSubmit ? (
 				<Fragment>
 					<FormStep10Review />
-					<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+					<Form
+						onSubmit={handleSubmit(onSubmit)}
+						submitText="Submit application"
+					>
 						<FormStack>
 							<H2>Declaration</H2>
 							<Text as="p">
@@ -109,8 +111,7 @@ export function FormStep10() {
 								</Checkbox>
 							</ControlGroup>
 						</FormStack>
-						<StepActions submitText="Submit application" />
-					</Stack>
+					</Form>
 				</Fragment>
 			) : (
 				<CannotStartAlert />

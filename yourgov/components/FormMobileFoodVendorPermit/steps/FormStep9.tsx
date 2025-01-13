@@ -13,10 +13,10 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { StepActions } from '../StepActions';
 import { UploadFileTable } from '../UploadFileTable';
 import { useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
+import { Form } from './Form';
 
 const tableHeadingId = 'upload-documents-heading';
 const tableId = 'upload-file-table';
@@ -333,9 +333,7 @@ export function FormStep9() {
 				</Drawer>
 			</Stack>
 
-			<Stack as="form" gap={3} noValidate onSubmit={onSubmit}>
-				<StepActions />
-			</Stack>
+			<Form onSubmit={onSubmit} />
 		</FormContainer>
 	);
 }

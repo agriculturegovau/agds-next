@@ -10,6 +10,7 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer as GlobalFormContainer } from '../FormContainer';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { formSteps, useFormContext } from './FormProvider';
 
 type FormContainerProps = PropsWithChildren<{
@@ -28,7 +29,7 @@ export function FormContainer({
 	hideRequiredFieldsMessage,
 	shouldFocusTitle = true,
 }: FormContainerProps) {
-	const { pathname } = useRouter();
+	const { asPath, pathname } = useRouter();
 	const { formState, startApplication } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormContext();
 
@@ -52,16 +53,34 @@ export function FormContainer({
 		startApplication();
 	}, [startApplication]);
 
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+
+	const substepNumberFromReviewStep =
+		(isEditingFromReviewStep && asPath.match(/\d+$/)?.[0]) || undefined;
+	const substepData = formSteps.find(
+		({ href }) =>
+			substepNumberFromReviewStep && href.endsWith(substepNumberFromReviewStep)
+	);
+
 	return (
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 				<ContentBleed visible={{ md: false }}>
 					<ProgressIndicator
-						activePath={pathname}
+						activePath={asPath}
 						items={formSteps.map(({ label, href }, index) => ({
 							label,
 							href,
 							status: getStepStatus(index),
+							items: isEditingFromReviewStep
+								? [
+										{
+											label: substepData?.editLinkLabel,
+											href: `${formSteps.at(-1)
+												?.href}/substep-${substepNumberFromReviewStep}`,
+										},
+								  ]
+								: undefined,
 						}))}
 					/>
 				</ContentBleed>

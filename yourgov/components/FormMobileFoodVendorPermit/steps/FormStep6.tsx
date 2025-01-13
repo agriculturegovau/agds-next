@@ -1,13 +1,12 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ComboboxMulti } from '@ag.ds-next/react/combobox';
-import { Stack } from '@ag.ds-next/react/stack';
 import { ShallowErrors } from '../FormState';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
 import { step6FormSchema, type Step6FormSchema } from './FormState';
+import { Form } from './Form';
 
 export function FormStep6() {
 	const { formState, step6SetState, isSavingBeforeExiting } = useGlobalForm();
@@ -43,7 +42,7 @@ export function FormStep6() {
 			formIntroduction="What type of food will you be serving?"
 			formTitle="Food served"
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					control={control}
 					name="foodServed"
@@ -63,8 +62,7 @@ export function FormStep6() {
 						/>
 					)}
 				/>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

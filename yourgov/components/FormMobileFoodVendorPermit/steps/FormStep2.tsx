@@ -4,16 +4,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Radio } from '@ag.ds-next/react/radio';
-import { Stack } from '@ag.ds-next/react/stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
 import { step2FormSchema, type Step2FormSchema } from './FormState';
+import { Form } from './Form';
 
 export function FormStep2() {
 	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
@@ -58,7 +57,7 @@ export function FormStep2() {
 			formIntroduction="Your business details must match your business registration."
 			formTitle="Business details"
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
@@ -127,8 +126,7 @@ export function FormStep2() {
 						</Radio>
 					</ControlGroup>
 				</FormStack>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

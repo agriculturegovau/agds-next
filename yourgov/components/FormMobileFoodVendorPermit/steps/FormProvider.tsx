@@ -9,6 +9,7 @@ import {
 import { useGlobalForm } from '../GlobalFormProvider';
 import { type FormStep } from '../FormState';
 import { formHomePage, getStepCompletionUrl } from '../utils';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export type StepNumber =
 	| 'step1'
@@ -24,6 +25,7 @@ export type StepNumber =
 
 export const formSteps: Array<FormStep<StepNumber>> = [
 	{
+		editLinkLabel: 'Change owner details',
 		formStateKey: 'step1',
 		label: 'Owner details',
 		href: formHomePage + '/steps/step-1',
@@ -35,31 +37,37 @@ export const formSteps: Array<FormStep<StepNumber>> = [
 		],
 	},
 	{
+		editLinkLabel: 'Change business details',
 		formStateKey: 'step2',
 		label: 'Business details',
 		href: formHomePage + '/steps/step-2',
 	},
 	{
+		editLinkLabel: 'Change business address',
 		formStateKey: 'step3',
 		label: 'Business address',
 		href: formHomePage + '/steps/step-3',
 	},
 	{
+		editLinkLabel: 'Change vehicle registration',
 		formStateKey: 'step4',
 		label: 'Vehicle registration',
 		href: formHomePage + '/steps/step-4',
 	},
 	{
+		editLinkLabel: 'Change trading time',
 		formStateKey: 'step5',
 		label: 'Trading time',
 		href: formHomePage + '/steps/step-5',
 	},
 	{
+		editLinkLabel: 'Change food served',
 		formStateKey: 'step6',
 		label: 'Food served',
 		href: formHomePage + '/steps/step-6',
 	},
 	{
+		editLinkLabel: 'Change employees',
 		formStateKey: 'step7',
 		label: 'Employees',
 		href: formHomePage + '/steps/step-7',
@@ -71,16 +79,19 @@ export const formSteps: Array<FormStep<StepNumber>> = [
 		],
 	},
 	{
+		editLinkLabel: 'Change food safety supervisor',
 		formStateKey: 'step8',
 		label: 'Food safety supervisor',
 		href: formHomePage + '/steps/step-8',
 	},
 	{
+		editLinkLabel: 'Change documents',
 		formStateKey: 'step9',
 		label: 'Upload documents',
 		href: formHomePage + '/steps/step-9',
 	},
 	{
+		editLinkLabel: 'Change review and submit', // Not used but it simplifies the type and makes the submit pages more robust
 		formStateKey: 'step10',
 		label: 'Review and submit',
 		href: formHomePage + '/steps/step-10',
@@ -104,6 +115,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		useGlobalForm();
 
 	const currentStepIndex = formSteps.findIndex(({ href }) => href === pathname);
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
@@ -117,6 +129,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		const stepCompletionUrl = getStepCompletionUrl({
 			currentStepIndex,
 			id: formState.id,
+			isEditingFromReviewStep,
 			steps: formSteps,
 		});
 
@@ -126,13 +139,19 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	}, [
 		currentStepIndex,
 		formState,
+		isEditingFromReviewStep,
 		isSavingBeforeExiting,
 		push,
 		setIsSubmittingStep,
 	]);
 
 	// The href of the previous step
-	const backHref = `${formSteps[currentStepIndex - 1]?.href ?? formHomePage}`;
+	const backHref = `${
+		(isEditingFromReviewStep
+			? formSteps.at(-1)
+			: formSteps[currentStepIndex - 1]
+		)?.href ?? formHomePage
+	}`;
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {

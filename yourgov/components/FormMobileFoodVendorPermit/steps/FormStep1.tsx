@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { Details } from '@ag.ds-next/react/details';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
@@ -16,11 +16,14 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { StepActions } from '../StepActions';
+import { useTernaryState } from '@ag.ds-next/react/core';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
+import { ModalUnavailableFeature } from '../../Staff/AccessRequestsTable/ModalUnavailableFeature';
 import { step1Part2FormSchema, type Step1Part2FormSchema } from './FormState';
 import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
+import { Form } from './Form';
 
 export function FormStep1() {
 	const { step1GetState } = useGlobalForm();
@@ -29,6 +32,10 @@ export function FormStep1() {
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const [isUnavailableModalOpen, openUnavailableModal, closeUnavailableModal] =
+		useTernaryState(false);
 
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
@@ -90,17 +97,34 @@ export function FormStep1() {
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
-						<ButtonLink
-							alignSelf="start"
-							href={formSteps[0].items && formSteps[0].items[0].href}
-							variant="text"
-						>
-							Change business owner details
-						</ButtonLink>
+
+						{isEditingFromReviewStep ? (
+							<Button
+								alignSelf="start"
+								onClick={openUnavailableModal}
+								variant="text"
+							>
+								Change business owner details
+							</Button>
+						) : (
+							<ButtonLink
+								alignSelf="start"
+								href={formSteps[0].items && formSteps[0].items[0].href}
+								variant="text"
+							>
+								Change business owner details
+							</ButtonLink>
+						)}
 					</Stack>
 				</FormStack>
 				<AdditionalDetailsForm />
 			</Stack>
+
+			<ModalUnavailableFeature
+				isOpen={isUnavailableModalOpen}
+				onClose={closeUnavailableModal}
+				onConfirm={closeUnavailableModal}
+			/>
 		</FormContainer>
 	);
 }
@@ -136,7 +160,7 @@ function AdditionalDetailsForm() {
 	};
 
 	return (
-		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
+		<Form noValidate={false} onSubmit={handleSubmit(onSubmit)}>
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
@@ -149,7 +173,6 @@ function AdditionalDetailsForm() {
 					message={errors.contactPhoneNumber?.message}
 				/>
 			</FormStack>
-			<StepActions />
-		</Stack>
+		</Form>
 	);
 }
