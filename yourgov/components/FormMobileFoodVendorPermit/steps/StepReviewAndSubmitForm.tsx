@@ -6,36 +6,42 @@ import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { H2 } from '@ag.ds-next/react/heading';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { StepActions } from '../StepActions';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
-import { FormStep10Review } from './FormStep10Review';
-import { step10FormSchema, Step10FormSchema } from './FormState';
+import { ReviewAndSubmitStepsSummary } from './ReviewAndSubmitStepsSummary';
+import {
+	stepReviewAndSubmitFormSchema,
+	StepReviewAndSubmitFormSchema,
+} from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep10() {
-	const { isSavingBeforeExiting, step10SetState } = useGlobalForm();
+export function StepReviewAndSubmitForm() {
+	const { isSavingBeforeExiting, stepReviewAndSubmitSetState } =
+		useGlobalForm();
 	const { submitStep, canConfirmAndSubmit } = useFormContext();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Step10FormSchema>({
-		resolver: zodResolver(step10FormSchema),
+	} = useForm<StepReviewAndSubmitFormSchema>({
+		resolver: zodResolver(stepReviewAndSubmitFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Step10FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<StepReviewAndSubmitFormSchema> = async (
+		data
+	) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step10SetState({
+		stepReviewAndSubmitSetState({
 			...data,
 			completed: true,
 		});
@@ -46,13 +52,16 @@ export function FormStep10() {
 	return (
 		<FormContainer
 			formIntroduction="Check and confirm all details on this page."
-			formTitle="Review and submit"
+			formTitle={stepKeyToStepDataMap.stepReviewAndSubmit.label}
 			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>
-					<FormStep10Review />
-					<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+					<ReviewAndSubmitStepsSummary />
+					<Form
+						onSubmit={handleSubmit(onSubmit)}
+						submitText="Submit application"
+					>
 						<FormStack>
 							<H2>Declaration</H2>
 							<Text as="p">
@@ -109,8 +118,7 @@ export function FormStep10() {
 								</Checkbox>
 							</ControlGroup>
 						</FormStack>
-						<StepActions submitText="Submit application" />
-					</Stack>
+					</Form>
 				</Fragment>
 			) : (
 				<CannotStartAlert />
