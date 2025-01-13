@@ -5,7 +5,6 @@ import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewS
 
 type FormProps = {
 	children?: ReactNode;
-	id?: string;
 	noValidate?: boolean;
 	onSubmit: FormEventHandler<HTMLFormElement>;
 	submitText?: string;
