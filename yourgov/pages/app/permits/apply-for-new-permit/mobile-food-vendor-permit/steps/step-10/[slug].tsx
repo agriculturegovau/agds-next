@@ -1,6 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Fragment, ReactElement } from 'react';
-import { notFound } from 'next/navigation';
 import { PageContent } from '@ag.ds-next/react/content';
 import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
@@ -36,8 +35,6 @@ export default function EditStepFromReview({
 	substep,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const { formTitle } = useGlobalForm();
-	if (!substep) return notFound();
-
 	const substepIndex = Number(substep.split('-').at(-1)) - 1;
 
 	const Form = substepToFormMap[substep];
@@ -65,15 +62,18 @@ EditStepFromReview.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps<
-	{ substep?: keyof typeof substepToFormMap },
+	{ substep: keyof typeof substepToFormMap },
 	{ slug: string }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
-	const substep = isKeyofSubsteps(slug) ? slug : undefined;
+
+	if (!isKeyofSubsteps(slug)) {
+		return { notFound: true };
+	}
 
 	return {
 		props: {
-			substep,
+			substep: slug,
 		},
 	};
 };
