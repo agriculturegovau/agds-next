@@ -44,7 +44,11 @@ export function FormStep1() {
 	return (
 		<FormContainer
 			formIntroduction="Confirm your name and contact details."
-			formTitle="Owner details"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[0].labelWhenChanging
+					: formSteps[0].label
+			}
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>

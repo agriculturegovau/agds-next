@@ -4,11 +4,14 @@ import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { step8FormSchema, type Step8FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep8() {
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+
 	const {
 		formState,
 		step1GetState,
@@ -52,7 +55,11 @@ export function FormStep8() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee food safety supervisor."
-			formTitle="Food safety supervisor"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[7].labelWhenChanging
+					: formSteps[7].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup

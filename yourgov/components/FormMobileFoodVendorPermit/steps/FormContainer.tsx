@@ -32,6 +32,7 @@ export function FormContainer({
 	const { asPath, pathname } = useRouter();
 	const { formState, startApplication } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormContext();
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = formSteps[stepIndex];
@@ -42,9 +43,11 @@ export function FormContainer({
 		if (stateStep?.completed) return 'done';
 		// The user has save and exited
 		if (stateStep?.started) return 'started';
-		// The final step (confirm and submit) can only be viewed when all previous steps are complete
+		// The final step (review and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'step10' && !canConfirmAndSubmit)
 			return 'blocked';
+		// Review and submit is started when editing a step from that page
+		if (isEditingFromReviewStep) return 'started';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
@@ -52,8 +55,6 @@ export function FormContainer({
 	useEffect(() => {
 		startApplication();
 	}, [startApplication]);
-
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const substepNumberFromReviewStep =
 		(isEditingFromReviewStep && asPath.slice(asPath.lastIndexOf('-') + 1)) ||
@@ -76,7 +77,7 @@ export function FormContainer({
 							items: isEditingFromReviewStep
 								? [
 										{
-											label: substepData?.editLinkLabel,
+											label: substepData?.labelWhenChanging,
 											href: `${formSteps.at(-1)
 												?.href}/substep-${substepNumberFromReviewStep}`,
 										},

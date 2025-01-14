@@ -10,9 +10,10 @@ import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { step5FormSchema, type Step5FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	const from = step?.tradingPeriod?.from;
@@ -31,6 +32,8 @@ export function FormStep5() {
 	const { submitStep } = useFormContext();
 	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
 	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -109,7 +112,11 @@ export function FormStep5() {
 	return (
 		<FormContainer
 			formIntroduction="What times would you like to operate?"
-			formTitle="Trading time"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[4].labelWhenChanging
+					: formSteps[4].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

@@ -7,10 +7,11 @@ import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
 import { step4FormSchema, Step4FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 function transformDefaultValues(step?: DeepPartial<Step4FormSchema>) {
 	const registrationExpiry = step?.registrationExpiry;
@@ -23,6 +24,8 @@ function transformDefaultValues(step?: DeepPartial<Step4FormSchema>) {
 export function FormStep4() {
 	const { formState, step4SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -53,7 +56,11 @@ export function FormStep4() {
 	return (
 		<FormContainer
 			formIntroduction="Add your vehicle registration details."
-			formTitle="Vehicle registration"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[3].labelWhenChanging
+					: formSteps[3].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

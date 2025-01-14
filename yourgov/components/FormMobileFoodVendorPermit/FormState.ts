@@ -25,8 +25,8 @@ export const defaultFormState: DeepPartial<FormState> = {
 };
 
 export type FormStep<StepNum extends StepNumber = StepNumber> = {
-	editLinkLabel: string;
 	label: string;
+	labelWhenChanging: string;
 	href: string;
 	formStateKey: StepNum;
 	items?: Array<{

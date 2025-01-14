@@ -143,7 +143,11 @@ export function FormStep7() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee details."
-			formTitle="Employees"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[6].labelWhenChanging
+					: formSteps[6].label
+			}
 			hideRequiredFieldsMessage
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>

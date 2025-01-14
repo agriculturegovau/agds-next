@@ -25,9 +25,9 @@ export type StepNumber =
 
 export const formSteps: Array<FormStep<StepNumber>> = [
 	{
-		editLinkLabel: 'Change owner details',
 		formStateKey: 'step1',
 		label: 'Owner details',
+		labelWhenChanging: 'Change owner details',
 		href: formHomePage + '/steps/step-1',
 		items: [
 			{
@@ -37,39 +37,39 @@ export const formSteps: Array<FormStep<StepNumber>> = [
 		],
 	},
 	{
-		editLinkLabel: 'Change business details',
 		formStateKey: 'step2',
 		label: 'Business details',
+		labelWhenChanging: 'Change business details',
 		href: formHomePage + '/steps/step-2',
 	},
 	{
-		editLinkLabel: 'Change business address',
 		formStateKey: 'step3',
 		label: 'Business address',
+		labelWhenChanging: 'Change business address',
 		href: formHomePage + '/steps/step-3',
 	},
 	{
-		editLinkLabel: 'Change vehicle registration',
 		formStateKey: 'step4',
 		label: 'Vehicle registration',
+		labelWhenChanging: 'Change vehicle registration',
 		href: formHomePage + '/steps/step-4',
 	},
 	{
-		editLinkLabel: 'Change trading time',
 		formStateKey: 'step5',
 		label: 'Trading time',
+		labelWhenChanging: 'Change trading time',
 		href: formHomePage + '/steps/step-5',
 	},
 	{
-		editLinkLabel: 'Change food served',
 		formStateKey: 'step6',
 		label: 'Food served',
+		labelWhenChanging: 'Change food served',
 		href: formHomePage + '/steps/step-6',
 	},
 	{
-		editLinkLabel: 'Change employees',
 		formStateKey: 'step7',
 		label: 'Employees',
+		labelWhenChanging: 'Change employees',
 		href: formHomePage + '/steps/step-7',
 		items: [
 			{
@@ -79,21 +79,21 @@ export const formSteps: Array<FormStep<StepNumber>> = [
 		],
 	},
 	{
-		editLinkLabel: 'Change food safety supervisor',
 		formStateKey: 'step8',
 		label: 'Food safety supervisor',
+		labelWhenChanging: 'Change food safety supervisor',
 		href: formHomePage + '/steps/step-8',
 	},
 	{
-		editLinkLabel: 'Change documents',
 		formStateKey: 'step9',
 		label: 'Upload documents',
+		labelWhenChanging: 'Change documents',
 		href: formHomePage + '/steps/step-9',
 	},
 	{
-		editLinkLabel: 'Change review and submit', // Not used but it simplifies the type and makes the submit pages more robust
 		formStateKey: 'step10',
 		label: 'Review and submit',
+		labelWhenChanging: 'Change review and submit', // Not used but it simplifies the type and makes the submit pages more robust
 		href: formHomePage + '/steps/step-10',
 	},
 ];

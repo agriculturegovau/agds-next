@@ -14,9 +14,10 @@ import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { UploadFileTable } from '../UploadFileTable';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 const tableHeadingId = 'upload-documents-heading';
 const tableId = 'upload-file-table';
@@ -76,6 +77,8 @@ export function FormStep9() {
 	const { step9GetState, step9SetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const errorMessageRef = useRef<HTMLDivElement>(null);
 	const successMessageRef = useRef<HTMLDivElement>(null);
@@ -213,7 +216,11 @@ export function FormStep9() {
 	return (
 		<FormContainer
 			formIntroduction="Upload all documents listed in the table below."
-			formTitle="Upload documents"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[8].labelWhenChanging
+					: formSteps[8].label
+			}
 			hideRequiredFieldsMessage
 		>
 			<Stack gap={2}>

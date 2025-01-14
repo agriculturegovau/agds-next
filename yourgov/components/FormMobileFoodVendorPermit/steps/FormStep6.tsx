@@ -4,13 +4,16 @@ import { ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { step6FormSchema, type Step6FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep6() {
 	const { formState, step6SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -40,7 +43,11 @@ export function FormStep6() {
 	return (
 		<FormContainer
 			formIntroduction="What type of food will you be serving?"
-			formTitle="Food served"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[5].labelWhenChanging
+					: formSteps[5].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<Controller

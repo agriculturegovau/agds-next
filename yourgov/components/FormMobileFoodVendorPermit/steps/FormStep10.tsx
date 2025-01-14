@@ -10,7 +10,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { CannotStartAlert } from '../CannotStartAlert';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { FormStep10Review } from './FormStep10Review';
 import { step10FormSchema, Step10FormSchema } from './FormState';
 import { Form } from './Form';
@@ -45,7 +45,7 @@ export function FormStep10() {
 	return (
 		<FormContainer
 			formIntroduction="Check and confirm all details on this page."
-			formTitle="Review and submit"
+			formTitle={formSteps[9].label}
 			hideRequiredFieldsMessage
 		>
 			{canConfirmAndSubmit ? (

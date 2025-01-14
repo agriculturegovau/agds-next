@@ -42,7 +42,7 @@ export default function EditStepFromReview({
 	return (
 		<Fragment>
 			<DocumentTitle
-				title={`${formSteps[substepIndex].editLinkLabel} | ${formTitle}`}
+				title={`${formSteps[substepIndex].labelWhenChanging} | ${formTitle}`}
 			/>
 			<PageContent>
 				<Form />

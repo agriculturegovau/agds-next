@@ -86,7 +86,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-1`}
 					variant="text"
 				>
-					{formSteps[0].editLinkLabel}
+					{formSteps[0].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -127,7 +127,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-2`}
 					variant="text"
 				>
-					{formSteps[1].editLinkLabel}
+					{formSteps[1].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -166,7 +166,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-3`}
 					variant="text"
 				>
-					{formSteps[2].editLinkLabel}
+					{formSteps[2].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -192,7 +192,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-4`}
 					variant="text"
 				>
-					{formSteps[3].editLinkLabel}
+					{formSteps[3].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -220,7 +220,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-5`}
 					variant="text"
 				>
-					{formSteps[4].editLinkLabel}
+					{formSteps[4].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -244,7 +244,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-6`}
 					variant="text"
 				>
-					{formSteps[5].editLinkLabel}
+					{formSteps[5].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -283,7 +283,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-7`}
 					variant="text"
 				>
-					{formSteps[6].editLinkLabel}
+					{formSteps[6].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -305,7 +305,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-8`}
 					variant="text"
 				>
-					{formSteps[7].editLinkLabel}
+					{formSteps[7].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 
@@ -347,7 +347,7 @@ export function FormStep10Review() {
 					href={`${formSteps[9].href}/substep-9`}
 					variant="text"
 				>
-					{formSteps[8].editLinkLabel}
+					{formSteps[8].labelWhenChanging}
 				</ButtonLink>
 			</Stack>
 		</Stack>

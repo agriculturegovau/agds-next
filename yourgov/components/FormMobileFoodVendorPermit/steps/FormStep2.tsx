@@ -10,13 +10,16 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { step2FormSchema, type Step2FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep2() {
 	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -55,7 +58,11 @@ export function FormStep2() {
 	return (
 		<FormContainer
 			formIntroduction="Your business details must match your business registration."
-			formTitle="Business details"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[1].labelWhenChanging
+					: formSteps[1].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

@@ -10,13 +10,16 @@ import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { useFormContext } from './FormProvider';
+import { formSteps, useFormContext } from './FormProvider';
 import { step3FormSchema, type Step3FormSchema } from './FormState';
 import { Form } from './Form';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep3() {
 	const { formState, step3SetState, isSavingBeforeExiting } = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -51,7 +54,11 @@ export function FormStep3() {
 	return (
 		<FormContainer
 			formIntroduction="Add your business address."
-			formTitle="Business address"
+			formTitle={
+				isEditingFromReviewStep
+					? formSteps[2].labelWhenChanging
+					: formSteps[2].label
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				{showErrorAlert && <FormPageAlert errors={errors} />}
