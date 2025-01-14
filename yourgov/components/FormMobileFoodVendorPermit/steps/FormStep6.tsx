@@ -3,11 +3,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ComboboxMulti } from '@ag.ds-next/react/combobox';
 import { ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 import { step6FormSchema, type Step6FormSchema } from './FormState';
 import { Form } from './Form';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep6() {
 	const { formState, step6SetState, isSavingBeforeExiting } = useGlobalForm();

@@ -9,11 +9,11 @@ import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 import { step5FormSchema, type Step5FormSchema } from './FormState';
 import { Form } from './Form';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	const from = step?.tradingPeriod?.from;

@@ -7,11 +7,11 @@ import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { formSteps, useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
 import { step4FormSchema, Step4FormSchema } from './FormState';
 import { Form } from './Form';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 function transformDefaultValues(step?: DeepPartial<Step4FormSchema>) {
 	const registrationExpiry = step?.registrationExpiry;

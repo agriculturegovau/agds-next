@@ -14,10 +14,10 @@ import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { UploadFileTable } from '../UploadFileTable';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { formSteps, useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
 import { Form } from './Form';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 const tableHeadingId = 'upload-documents-heading';
 const tableId = 'upload-file-table';

@@ -9,11 +9,11 @@ import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer } from './FormContainer';
 import { formSteps, useFormContext } from './FormProvider';
 import { step2FormSchema, type Step2FormSchema } from './FormState';
 import { Form } from './Form';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 export function FormStep2() {
 	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
