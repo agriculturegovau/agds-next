@@ -29,7 +29,6 @@ import {
 	acceptedDateFormats,
 	formatDate,
 	getDateInputButtonAriaLabel,
-	isValidDate,
 	normaliseDateString,
 	parseDate,
 	transformValuePropToInputValue,

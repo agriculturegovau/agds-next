@@ -235,7 +235,7 @@ export const reactDayRangePickerStyles = (
 					pointerEvents: 'none',
 					position: 'absolute',
 					zIndex: -1,
-				},
+				} as const,
 				'&:hover:not([disabled])::before': {
 					...(inputMode === 'from' && startStyles),
 					...(inputMode === 'to' && endStyles),

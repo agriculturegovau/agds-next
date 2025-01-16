@@ -66,40 +66,51 @@ export const parseDate = (
 	return undefined;
 };
 
+type DateOrString = Date | string;
+
+function asDate(value?: DateOrString) {
+	return typeof value === 'string' ? parseDate(value) : value;
+}
+
 export function isValidDate(
-	value?: Date | string,
-	range: { maxDate?: Date; minDate?: Date; fromDate?: Date; toDate?: Date } = {}
+	value?: DateOrString,
+	range: {
+		maxDate?: DateOrString;
+		minDate?: DateOrString;
+		fromDate?: DateOrString;
+		toDate?: DateOrString;
+	} = {}
 ) {
-	const valueAsDate =
-		typeof value === 'string' ? normaliseDateString(value) : value;
+	const valueAsDate = asDate(value);
 	if (!valueAsDate) return false;
 
 	const validValue = isDate(valueAsDate) && isValid(valueAsDate);
 	if (!validValue) return false;
 
-	if (
-		range.fromDate &&
-		(!isValidDate(range.fromDate) || isBefore(valueAsDate, range.fromDate))
-	) {
-		return false;
+	let rangeDate;
+
+	if (range.fromDate || range.minDate) {
+		rangeDate = asDate(range.fromDate || range.minDate);
+
+		if (
+			!isValidDate(rangeDate) ||
+			(rangeDate && isBefore(valueAsDate, rangeDate))
+		) {
+			return false;
+		}
 	}
 
-	if (
-		range.toDate &&
-		(!isValidDate(range.toDate) || isAfter(valueAsDate, range.toDate))
-	) {
-		return false;
+	if (range.toDate || range.maxDate) {
+		rangeDate = asDate(range.toDate || range.maxDate);
+
+		if (
+			!isValidDate(rangeDate) ||
+			(rangeDate && isAfter(valueAsDate, rangeDate))
+		) {
+			return false;
+		}
 	}
-	if (
-		range.minDate &&
-		(!isValid(range.minDate) || isBefore(valueAsDate, range.minDate))
-	)
-		return false;
-	if (
-		range.maxDate &&
-		(!isValid(range.maxDate) || isAfter(valueAsDate, range.maxDate))
-	)
-		return false;
+
 	return true;
 }
 
@@ -121,7 +132,7 @@ export function constrainDate(
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
-	valueProp: Date | string | undefined,
+	valueProp: DateOrString | undefined,
 	dateFormat: AcceptedDateFormats
 ): string {
 	if (valueProp === undefined) return '';
