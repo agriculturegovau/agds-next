@@ -45,6 +45,9 @@ export const parseDate = (
 ) => {
 	const now = new Date();
 
+	const parsedISODate = normaliseDateString(value);
+	if (parsedISODate) return parsedISODate;
+
 	for (const displayDateFormat of dateFormats) {
 		// Split input value by spaces, slashes and dashes
 		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
@@ -68,7 +71,7 @@ export const parseDate = (
 
 type DateOrString = Date | string;
 
-function asDate(value?: DateOrString) {
+export function asDate(value?: DateOrString) {
 	return typeof value === 'string' ? parseDate(value) : value;
 }
 
@@ -84,8 +87,8 @@ export function isValidDate(
 	const valueAsDate = asDate(value);
 	if (!valueAsDate) return false;
 
-	const validValue = isDate(valueAsDate) && isValid(valueAsDate);
-	if (!validValue) return false;
+	const validDateValue = isDate(valueAsDate) && isValid(valueAsDate);
+	if (!validDateValue) return false;
 
 	let rangeDate;
 
@@ -137,8 +140,7 @@ export function transformValuePropToInputValue(
 ): string {
 	if (valueProp === undefined) return '';
 
-	const valueAsDateOrUndefined =
-		typeof valueProp === 'string' ? normaliseDateString(valueProp) : valueProp;
+	const valueAsDateOrUndefined = asDate(valueProp);
 
 	if (valueAsDateOrUndefined === undefined) return valueProp.toString();
 

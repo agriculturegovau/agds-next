@@ -27,6 +27,7 @@ import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
 	acceptedDateFormats,
+	asDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
 	normaliseDateString,
@@ -167,12 +168,8 @@ export const DateRangePicker = ({
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from:
-				typeof value.from === 'string'
-					? normaliseDateString(value.from)
-					: value.from,
-			to:
-				typeof value.to === 'string' ? normaliseDateString(value.to) : value.to,
+			from: asDate(value.from),
+			to: asDate(value.to),
 		}),
 		[value]
 	);
