@@ -307,7 +307,7 @@ exports[`StatusBadge appearance: regular tone: cannotStartLow renders correctly 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: cannot start, low emphasis"
+      aria-label="Status: cannot start."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -338,7 +338,7 @@ exports[`StatusBadge appearance: regular tone: errorHigh renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, high emphasis"
+      aria-label="Status: error."
       class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -371,7 +371,7 @@ exports[`StatusBadge appearance: regular tone: errorLow renders correctly 1`] = 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, low emphasis"
+      aria-label="Status: error."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -402,7 +402,7 @@ exports[`StatusBadge appearance: regular tone: errorMedium renders correctly 1`]
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, medium emphasis"
+      aria-label="Status: error."
       class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -439,7 +439,7 @@ exports[`StatusBadge appearance: regular tone: inProgressLow renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: in progress, low emphasis"
+      aria-label="Status: in progress."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -485,7 +485,7 @@ exports[`StatusBadge appearance: regular tone: infoHigh renders correctly 1`] = 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, high emphasis"
+      aria-label="Status: information."
       class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -518,7 +518,7 @@ exports[`StatusBadge appearance: regular tone: infoLow renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, low emphasis"
+      aria-label="Status: information."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -549,7 +549,7 @@ exports[`StatusBadge appearance: regular tone: infoMedium renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, medium emphasis"
+      aria-label="Status: information."
       class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -580,7 +580,7 @@ exports[`StatusBadge appearance: regular tone: notStartedLow renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: not started, low emphasis"
+      aria-label="Status: not started."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -612,7 +612,7 @@ exports[`StatusBadge appearance: regular tone: pausedLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: paused, low emphasis"
+      aria-label="Status: paused."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -643,7 +643,7 @@ exports[`StatusBadge appearance: regular tone: successHigh renders correctly 1`]
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, high emphasis"
+      aria-label="Status: success."
       class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -676,7 +676,7 @@ exports[`StatusBadge appearance: regular tone: successLow renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, low emphasis"
+      aria-label="Status: success."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -710,7 +710,7 @@ exports[`StatusBadge appearance: regular tone: successMedium renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, medium emphasis"
+      aria-label="Status: success."
       class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -744,7 +744,7 @@ exports[`StatusBadge appearance: regular tone: unknownLow renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: help, low emphasis"
+      aria-label="Status: help."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -775,7 +775,7 @@ exports[`StatusBadge appearance: regular tone: warningHigh renders correctly 1`]
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, high emphasis"
+      aria-label="Status: warning."
       class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -808,7 +808,7 @@ exports[`StatusBadge appearance: regular tone: warningLow renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, low emphasis"
+      aria-label="Status: warning."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -839,7 +839,7 @@ exports[`StatusBadge appearance: regular tone: warningMedium renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, medium emphasis"
+      aria-label="Status: warning."
       class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -870,7 +870,7 @@ exports[`StatusBadge appearance: subtle tone: cannotStartLow renders correctly 1
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: cannot start, low emphasis"
+      aria-label="Status: cannot start."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -901,7 +901,7 @@ exports[`StatusBadge appearance: subtle tone: errorHigh renders correctly 1`] = 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, high emphasis"
+      aria-label="Status: error."
       class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -934,7 +934,7 @@ exports[`StatusBadge appearance: subtle tone: errorLow renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, low emphasis"
+      aria-label="Status: error."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -965,7 +965,7 @@ exports[`StatusBadge appearance: subtle tone: errorMedium renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: error, medium emphasis"
+      aria-label="Status: error."
       class="css-1w78ld0-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1002,7 +1002,7 @@ exports[`StatusBadge appearance: subtle tone: inProgressLow renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: in progress, low emphasis"
+      aria-label="Status: in progress."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1048,7 +1048,7 @@ exports[`StatusBadge appearance: subtle tone: infoHigh renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, high emphasis"
+      aria-label="Status: information."
       class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1081,7 +1081,7 @@ exports[`StatusBadge appearance: subtle tone: infoLow renders correctly 1`] = `
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, low emphasis"
+      aria-label="Status: information."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1112,7 +1112,7 @@ exports[`StatusBadge appearance: subtle tone: infoMedium renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: information, medium emphasis"
+      aria-label="Status: information."
       class="css-1fy6eq9-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1143,7 +1143,7 @@ exports[`StatusBadge appearance: subtle tone: notStartedLow renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: not started, low emphasis"
+      aria-label="Status: not started."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1175,7 +1175,7 @@ exports[`StatusBadge appearance: subtle tone: pausedLow renders correctly 1`] = 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: paused, low emphasis"
+      aria-label="Status: paused."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1206,7 +1206,7 @@ exports[`StatusBadge appearance: subtle tone: successHigh renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, high emphasis"
+      aria-label="Status: success."
       class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1239,7 +1239,7 @@ exports[`StatusBadge appearance: subtle tone: successLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, low emphasis"
+      aria-label="Status: success."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1273,7 +1273,7 @@ exports[`StatusBadge appearance: subtle tone: successMedium renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: success, medium emphasis"
+      aria-label="Status: success."
       class="css-vvfklf-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1307,7 +1307,7 @@ exports[`StatusBadge appearance: subtle tone: unknownLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: help, low emphasis"
+      aria-label="Status: help."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1338,7 +1338,7 @@ exports[`StatusBadge appearance: subtle tone: warningHigh renders correctly 1`] 
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, high emphasis"
+      aria-label="Status: warning."
       class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1371,7 +1371,7 @@ exports[`StatusBadge appearance: subtle tone: warningLow renders correctly 1`] =
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, low emphasis"
+      aria-label="Status: warning."
       class="css-16t9tz1-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
@@ -1402,7 +1402,7 @@ exports[`StatusBadge appearance: subtle tone: warningMedium renders correctly 1`
   >
     <svg
       aria-hidden="false"
-      aria-label="Status: warning, medium emphasis"
+      aria-label="Status: warning."
       class="css-15hefj6-Icon"
       clip-rule="evenodd"
       fill-rule="evenodd"
