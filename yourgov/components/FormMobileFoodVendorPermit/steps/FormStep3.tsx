@@ -7,6 +7,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { Divider } from '@ag.ds-next/react/divider';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { StepActions } from '../StepActions';
@@ -124,8 +125,11 @@ export function FormStep3() {
 							>
 								Same as business address
 							</Checkbox>
+
 							{!isPostalAddressSameAsBusinessAddress && (
 								<FormStack>
+									<Divider />
+
 									<TextInput
 										{...register('postalAddress')}
 										autoComplete="on"
@@ -136,6 +140,7 @@ export function FormStep3() {
 										message={errors.postalAddress?.message}
 										required
 									/>
+
 									<TextInput
 										{...register('postalSuburbTownCity')}
 										autoComplete="on"
@@ -146,6 +151,7 @@ export function FormStep3() {
 										message={errors.postalSuburbTownCity?.message}
 										required
 									/>
+
 									<Select
 										{...register('postalState')}
 										autoComplete="on"
@@ -167,6 +173,7 @@ export function FormStep3() {
 										placeholder="Select"
 										required
 									/>
+
 									<TextInput
 										{...register('postalPostcode')}
 										autoComplete="on"
