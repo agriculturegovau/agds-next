@@ -30,7 +30,6 @@ import {
 	asDate,
 	formatDate,
 	getDateInputButtonAriaLabel,
-	normaliseDateString,
 	parseDate,
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
@@ -349,7 +348,7 @@ export const DateRangePicker = ({
 				: inputMode === 'from'
 				? getRange(
 						hoveredDay,
-						valueAsDateOrUndefined.from || valueAsDateOrUndefined.to
+						valueAsDateOrUndefined.to || valueAsDateOrUndefined.from
 				  )
 				: {},
 		[hoveredDay, inputMode, valueAsDateOrUndefined]
