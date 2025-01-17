@@ -392,17 +392,13 @@ export const DateRangePicker = ({
 			modifiersClassNames: {
 				hoverRange: 'hover-range',
 			},
-			onHover,
-			clearHoveredDay,
 		}),
 		[
-			clearHoveredDay,
 			defaultMonth,
 			disabledCalendarDays,
 			hoverRange,
 			inputMode,
 			numberOfMonths,
-			onHover,
 			onSelect,
 			valueAsDateOrUndefined.from,
 			valueAsDateOrUndefined.to,
@@ -484,7 +480,11 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				<CalendarProvider yearRange={yearRange}>
+				<CalendarProvider
+					clearHoveredDay={clearHoveredDay}
+					onHover={onHover}
+					yearRange={yearRange}
+				>
 					{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
 					{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
 						isCalendarOpen && (

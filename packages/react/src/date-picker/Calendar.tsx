@@ -31,7 +31,6 @@ import {
 	startOfWeek,
 	type Locale,
 } from 'date-fns';
-import { DebouncedState } from 'use-debounce';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
@@ -40,7 +39,6 @@ import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 import { formatHumanReadableDate } from './utils';
-import { cellSizeLarge, cellSizeSmall } from './reactDayPickerStyles';
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -84,118 +82,14 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	clearHoveredDay?: DebouncedState<() => void>;
 	inputMode?: 'from' | 'to';
-	onHover?: (date: Date) => void;
 };
 
-export function CalendarRange({
-	clearHoveredDay,
-	inputMode,
-	onHover,
-	...props
-}: CalendarRangeProps) {
-	const combinedDayPickerProps = {
-		components: {
-			...defaultDayPickerProps.components,
-			// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
-			// Key change: we no longer render <button>s, everything happens on <td>s
-			// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
-			Day: function Day(props: DayProps) {
-				const buttonRef = useRef<HTMLButtonElement>(null);
-				const { activeModifiers, buttonProps, isHidden } = useDayRender(
-					props.date,
-					props.displayMonth,
-					buttonRef
-				);
-
-				// @ts-expect-error: role is unused
-				const { children, onClick, onKeyDown, role, ...restButtonProps } =
-					buttonProps;
-
-				const handleKeyDown = (event: KeyboardEvent) => {
-					if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
-						event.preventDefault();
-						event.stopPropagation();
-						// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'MouseEvent<HTMLButtonElement, MouseEvent>'.
-						onClick?.(event);
-					} else {
-						// @ts-expect-error: Argument of type 'KeyboardEvent' is not assignable to parameter of type 'KeyboardEvent<HTMLButtonElement>'
-						onKeyDown?.(event);
-					}
-				};
-
-				const interactiveProps = {
-					'aria-current': activeModifiers.today ? 'date' : undefined,
-					// Improve the aria labels of each button.
-					// Selected and dates within range are manually announced.
-					'aria-label': `${
-						activeModifiers.selected && !activeModifiers.range_middle
-							? 'Selected. '
-							: ''
-					}${formatHumanReadableDate(props.date)}${
-						activeModifiers.range_middle ? '. Between selected dates' : ''
-					}`,
-					'aria-selected':
-						// React Day Picker incorrectly marks ranges as selected
-						activeModifiers.range_middle ? undefined : activeModifiers.selected,
-					onClick,
-					...restButtonProps,
-				};
-
-				return (
-					<td
-						// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
-						ref={buttonRef}
-						tabIndex={-1}
-						{...(isHidden ? undefined : interactiveProps)}
-						// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
-						onKeyDown={handleKeyDown}
-					>
-						{/* Without this focusable span, left and right do not work in screen readers */}
-						<span
-							css={{
-								alignItems: 'center',
-								display: 'flex',
-								height: cellSizeSmall,
-								justifyContent: 'center',
-								position: 'relative',
-								width: cellSizeSmall,
-								'@media (min-width: 375px)': {
-									height: cellSizeLarge,
-									width: cellSizeLarge,
-								},
-								'::before': {
-									content: '""',
-									inset: 0,
-									position: 'absolute',
-								},
-							}}
-							onMouseEnter={() => {
-								if (onHover && !isHidden) {
-									clearHoveredDay?.cancel();
-									onHover(props.date);
-								}
-							}}
-							onMouseLeave={() => {
-								if (onHover && !isHidden) {
-									clearHoveredDay?.();
-								}
-							}}
-							tabIndex={-1}
-						>
-							{isHidden ? undefined : children}
-						</span>
-					</td>
-				);
-			},
-		},
-	};
-
+export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
 	return (
 		<FocusLock autoFocus={false}>
 			<CalendarRangeContainer dateRange={props.selected} inputMode={inputMode}>
-				<DayPicker mode="range" {...combinedDayPickerProps} {...props} />
+				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
 	);
@@ -464,6 +358,7 @@ const calendarComponents: CustomComponents = {
 			props.displayMonth,
 			buttonRef
 		);
+		const { onHover, clearHoveredDay } = useCalendar();
 
 		// @ts-expect-error: role is unused
 		const { children, onClick, onKeyDown, role, ...restButtonProps } =
@@ -501,36 +396,26 @@ const calendarComponents: CustomComponents = {
 
 		return (
 			<td
-				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
-				onKeyDown={handleKeyDown}
 				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
 				ref={buttonRef}
 				tabIndex={-1}
 				{...(isHidden ? undefined : interactiveProps)}
+				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
+				onKeyDown={handleKeyDown}
+				onMouseEnter={() => {
+					if (onHover && !isHidden) {
+						clearHoveredDay?.cancel();
+						onHover(props.date);
+					}
+				}}
+				onMouseLeave={() => {
+					if (onHover && !isHidden) {
+						clearHoveredDay?.();
+					}
+				}}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span
-					css={{
-						alignItems: 'center',
-						display: 'flex',
-						height: cellSizeSmall,
-						justifyContent: 'center',
-						position: 'relative',
-						width: cellSizeSmall,
-						'@media (min-width: 375px)': {
-							height: cellSizeLarge,
-							width: cellSizeLarge,
-						},
-						'::before': {
-							content: '""',
-							inset: 0,
-							position: 'absolute',
-						},
-					}}
-					tabIndex={-1}
-				>
-					{isHidden ? undefined : children}
-				</span>
+				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
 			</td>
 		);
 	},

@@ -2,8 +2,8 @@ import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
-export const cellSizeLarge = '3rem';
-export const cellSizeSmall = '2.75rem';
+const cellSizeLarge = '3rem';
+const cellSizeSmall = '2.75rem';
 
 export const reactDayPickerStyles = {
 	// Visually hidden
@@ -107,6 +107,23 @@ export const reactDayPickerStyles = {
 		},
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
+		},
+		'& span': {
+			alignItems: 'center',
+			display: 'flex',
+			height: cellSizeSmall,
+			justifyContent: 'center',
+			position: 'relative',
+			width: cellSizeSmall,
+			'@media (min-width: 375px)': {
+				height: cellSizeLarge,
+				width: cellSizeLarge,
+			},
+			'::before': {
+				content: '""',
+				inset: 0,
+				position: 'absolute',
+			},
 		},
 		'@media (min-width: 375px)': {
 			height: cellSizeLarge,
