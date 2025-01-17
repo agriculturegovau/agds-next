@@ -239,6 +239,7 @@ export const DatePicker = ({
 				buttonRef={triggerRef}
 				dateFormat={dateFormat}
 				invalid={{ field: invalid, input: invalid }}
+				isCalendarOpen={isCalendarOpen}
 				maxWidth={maxWidth}
 				onBlur={onInputBlur}
 				onChange={onInputChange}

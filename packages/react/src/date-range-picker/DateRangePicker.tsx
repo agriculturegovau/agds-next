@@ -154,13 +154,17 @@ export const DateRangePicker = ({
 	function onFromTriggerClick() {
 		setInputMode('from');
 		setHasCalendarOpened(true);
-		openCalendar();
+		isCalendarOpen && inputMode === 'from'
+			? closeCalendarAndFocusTrigger()
+			: openCalendar();
 	}
 
 	function onToTriggerClick() {
 		setInputMode('to');
 		setHasCalendarOpened(true);
-		openCalendar();
+		isCalendarOpen && inputMode === 'to'
+			? closeCalendarAndFocusTrigger()
+			: openCalendar();
 	}
 
 	const popover = usePopover();
@@ -447,6 +451,7 @@ export const DateRangePicker = ({
 							highlight={isCalendarOpen && inputMode === 'from'}
 							id={fromId}
 							invalid={{ field: false, input: fromInvalid }}
+							isCalendarOpen={isCalendarOpen}
 							label={fromLabel}
 							onBlur={onFromInputBlur}
 							onChange={onFromInputChange}
@@ -472,6 +477,7 @@ export const DateRangePicker = ({
 							highlight={isCalendarOpen && inputMode === 'to'}
 							id={toId}
 							invalid={{ field: false, input: toInvalid }}
+							isCalendarOpen={isCalendarOpen}
 							label={toLabel}
 							onBlur={onToInputBlur}
 							onChange={onToInputChange}

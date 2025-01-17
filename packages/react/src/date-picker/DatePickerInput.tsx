@@ -20,6 +20,7 @@ export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
 		/** If true, only the input element will be rendered in an invalid state. */
 		input: boolean;
 	};
+	isCalendarOpen: boolean;
 	secondaryLabelDate?: Date;
 };
 
@@ -37,6 +38,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			hint,
 			id,
 			invalid,
+			isCalendarOpen,
 			label,
 			maxWidth: maxWidthProp = 'md',
 			message,
@@ -101,6 +103,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							value={value}
 						/>
 						<Button
+							aria-expanded={isCalendarOpen}
 							aria-label={buttonAriaLabel}
 							css={{
 								borderTopLeftRadius: 0,
