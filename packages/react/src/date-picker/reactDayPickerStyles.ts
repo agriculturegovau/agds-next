@@ -2,8 +2,8 @@ import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
-const cellSizeLarge = '3rem';
-const cellSizeSmall = '2.75rem';
+export const cellSizeLarge = '3rem';
+export const cellSizeSmall = '2.75rem';
 
 export const reactDayPickerStyles = {
 	// Visually hidden
@@ -63,7 +63,10 @@ export const reactDayPickerStyles = {
 		margin: 0,
 		padding: 0,
 		width: cellSizeSmall,
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
+		'@media (min-width: 375px)': {
+			height: cellSizeLarge,
+			width: cellSizeLarge,
+		},
 		...fontGrid('sm', 'default'),
 	},
 	// Day button which is actually applied to the cell
@@ -105,7 +108,10 @@ export const reactDayPickerStyles = {
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
 		},
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
+		'@media (min-width: 375px)': {
+			height: cellSizeLarge,
+			width: cellSizeLarge,
+		},
 		...focusStyles,
 		// Today's button
 		'&.rdp-day_today': {
@@ -131,7 +137,7 @@ export const reactDayPickerStyles = {
 	'.rdp-months': {
 		display: 'flex',
 		height: '21.5rem',
-		'@media(min-width: 375px)': { height: '23.5rem' },
+		'@media (min-width: 375px)': { height: '23.5rem' },
 	},
 	'.rdp-month': {
 		margin: `0 ${mapSpacing(1)}`,
@@ -143,7 +149,7 @@ export const reactDayPickerStyles = {
 		width: `calc(${cellSizeSmall} * 7)`,
 		borderCollapse: 'collapse',
 		tableLayout: 'fixed',
-		'@media(min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
+		'@media (min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
 	},
 	'.rdp-tbody': {
 		border: 0,
@@ -248,10 +254,11 @@ export const reactDayRangePickerStyles = (
 					textDecoration: 'underline',
 				},
 			},
-			'.rdp-day_range_start, .rdp-day_range_end': {
-				'&:hover:not([disabled])::before': {
-					borderRadius: '50%',
-				},
+			'.rdp-day_range_start:hover:not([disabled])::before': {
+				borderRadius: inputMode === 'to' ? '50%' : undefined,
+			},
+			'.rdp-day_range_end:hover:not([disabled])::before': {
+				borderRadius: inputMode === 'from' ? '50%' : undefined,
 			},
 			'.rdp-day_range_start.rdp-day_range_end:hover': {
 				backgroundColor: boxPalette.backgroundBody,

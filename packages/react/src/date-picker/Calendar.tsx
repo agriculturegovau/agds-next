@@ -40,6 +40,7 @@ import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 import { formatHumanReadableDate } from './utils';
+import { cellSizeLarge, cellSizeSmall } from './reactDayPickerStyles';
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -156,10 +157,14 @@ export function CalendarRange({
 							css={{
 								alignItems: 'center',
 								display: 'flex',
-								height: '3rem',
 								justifyContent: 'center',
 								position: 'relative',
-								width: '3rem',
+								height: cellSizeSmall,
+								width: cellSizeSmall,
+								'@media (min-width: 375px)': {
+									height: cellSizeLarge,
+									width: cellSizeLarge,
+								},
 								'::before': {
 									content: '""',
 									inset: 0,
@@ -508,10 +513,14 @@ const calendarComponents: CustomComponents = {
 					css={{
 						alignItems: 'center',
 						display: 'flex',
-						height: '3rem',
 						justifyContent: 'center',
 						position: 'relative',
-						width: '3rem',
+						height: cellSizeSmall,
+						width: cellSizeSmall,
+						'@media (min-width: 375px)': {
+							height: cellSizeLarge,
+							width: cellSizeLarge,
+						},
 						'::before': {
 							content: '""',
 							inset: 0,
