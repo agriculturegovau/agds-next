@@ -202,11 +202,7 @@ export const DateRangePicker = ({
 				to: valueAsDateOrUndefined.to || toInputValue,
 			} as DateRange;
 
-			if (inputMode === 'from') {
-				range.from = selectedDay;
-			} else {
-				range.to = selectedDay;
-			}
+			range[inputMode] = selectedDay;
 
 			onChange(range);
 			setFromInputValue(
@@ -238,13 +234,13 @@ export const DateRangePicker = ({
 		},
 		[
 			closeCalendarAndFocusTrigger,
-			inputMode,
-			onChange,
-			valueAsDateOrUndefined,
 			dateFormat,
 			fromInputValue,
-			toInputValue,
+			inputMode,
+			onChange,
 			setInputMode,
+			toInputValue,
+			valueAsDateOrUndefined,
 		]
 	);
 
@@ -345,7 +341,7 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
-	const fromRange = useCallback(
+	const hoverRange = useCallback(
 		() =>
 			inputMode === 'to'
 				? getRange(valueAsDateOrUndefined.from, hoveredDay)
@@ -391,10 +387,10 @@ export const DateRangePicker = ({
 						: valueAsDateOrUndefined.to,
 			},
 			modifiers: {
-				fromRange: (day: Date) => fromRange()[day.toISOString()],
+				hoverRange: (day: Date) => hoverRange()[day.toISOString()],
 			},
 			modifiersClassNames: {
-				fromRange: 'range',
+				hoverRange: 'hover-range',
 			},
 			onHover,
 			clearHoveredDay,
@@ -403,7 +399,7 @@ export const DateRangePicker = ({
 			clearHoveredDay,
 			defaultMonth,
 			disabledCalendarDays,
-			fromRange,
+			hoverRange,
 			inputMode,
 			numberOfMonths,
 			onHover,

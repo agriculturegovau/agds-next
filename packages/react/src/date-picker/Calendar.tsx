@@ -84,15 +84,15 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
+	clearHoveredDay?: DebouncedState<() => void>;
 	inputMode?: 'from' | 'to';
 	onHover?: (date: Date) => void;
-	clearHoveredDay?: DebouncedState<() => void>;
 };
 
 export function CalendarRange({
+	clearHoveredDay,
 	inputMode,
 	onHover,
-	clearHoveredDay,
 	...props
 }: CalendarRangeProps) {
 	const combinedDayPickerProps = {

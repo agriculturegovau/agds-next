@@ -209,7 +209,7 @@ export const reactDayRangePickerStyles = (
 			borderRadius: 0,
 		},
 
-		'.range:not([disabled]):not(.rdp-day_range_start):not(.rdp-day_range_end)':
+		'.hover-range:not([disabled]):not(.rdp-day_range_start):not(.rdp-day_range_end)':
 			{
 				backgroundColor: boxPalette.selectedMuted,
 				borderRadius: 0,
