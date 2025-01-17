@@ -1,11 +1,4 @@
-import {
-	addMonths,
-	closestTo,
-	differenceInCalendarMonths,
-	isAfter,
-	isBefore,
-	subMonths,
-} from 'date-fns';
+import { addMonths, closestTo, isAfter, isBefore, subMonths } from 'date-fns';
 import {
 	type AcceptedDateFormats,
 	formatHumanReadableDate,
