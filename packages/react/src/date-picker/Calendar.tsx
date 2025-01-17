@@ -157,9 +157,9 @@ export function CalendarRange({
 							css={{
 								alignItems: 'center',
 								display: 'flex',
+								height: cellSizeSmall,
 								justifyContent: 'center',
 								position: 'relative',
-								height: cellSizeSmall,
 								width: cellSizeSmall,
 								'@media (min-width: 375px)': {
 									height: cellSizeLarge,
@@ -513,9 +513,9 @@ const calendarComponents: CustomComponents = {
 					css={{
 						alignItems: 'center',
 						display: 'flex',
+						height: cellSizeSmall,
 						justifyContent: 'center',
 						position: 'relative',
-						height: cellSizeSmall,
 						width: cellSizeSmall,
 						'@media (min-width: 375px)': {
 							height: cellSizeLarge,

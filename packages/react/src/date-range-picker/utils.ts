@@ -87,23 +87,6 @@ export function getCalendarDefaultMonth(
 		return undefined;
 	})();
 
-	if (value && inputMode === 'to' && numberOfMonths === 2) {
-		const monthsRangeCount = (() => {
-			return valueAsDateOrUndefined?.from && valueAsDateOrUndefined?.to
-				? differenceInCalendarMonths(
-						valueAsDateOrUndefined.to,
-						valueAsDateOrUndefined.from
-				  )
-				: -1;
-		})();
-
-		// If there is only 1 month between the "from" and "to" dates, show the "to" month on the left side so it matches the "from" date
-		if (monthsRangeCount === 0) return addMonths(value, 1);
-
-		// When there are 2 months being displayed (i.e. on desktop), show the "to" month on the right side
-		return value;
-	}
-
 	return value;
 }
 
