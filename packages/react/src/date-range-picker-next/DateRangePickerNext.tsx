@@ -162,10 +162,10 @@ export const DateRangePickerNext = ({
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from: asDate(value.from),
-			to: asDate(value.to),
+			from: asDate(value.from, allowedDateFormats),
+			to: asDate(value.to, allowedDateFormats),
 		}),
-		[value]
+		[allowedDateFormats, value]
 	);
 
 	const [hoveredDay, setHoveredDay] = useState<string>();
@@ -176,12 +176,12 @@ export const DateRangePickerNext = ({
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from, dateFormat)
+		transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
 	);
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to, dateFormat)
+		transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
 	);
 
 	const onSelect = useCallback<SelectRangeEventHandler>(
@@ -269,9 +269,13 @@ export const DateRangePickerNext = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
-		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
-	}, [value, dateFormat]);
+		setFromInputValue(
+			transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
+		);
+		setToInputValue(
+			transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
+		);
+	}, [allowedDateFormats, dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {

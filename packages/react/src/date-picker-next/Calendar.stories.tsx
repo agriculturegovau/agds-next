@@ -6,7 +6,7 @@ import { CalendarRange, CalendarSingle, CalendarSingleProps } from './Calendar';
 import { CalendarProvider, CalendarProviderProps } from './CalendarContext';
 
 const meta: Meta<CalendarSingleProps & CalendarProviderProps> = {
-	title: 'forms/DatePicker/Calendar',
+	title: 'forms/DatePickerNext/Calendar',
 	component: CalendarSingle,
 	render: function Render({ yearRange, ...props }) {
 		const [value, setValue] = useState<Date>();
