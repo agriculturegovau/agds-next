@@ -1,42 +1,18 @@
 ---
-title: Date range picker
+title: Date range picker (Next)
 description: The Date range picker component allows users to select a range of dates via a calendar or text input.
 group: Forms
-storybookPath: /story/forms-daterangepicker--basic
+storybookPath: /story/forms-daterangepickerNext--basic
 figmaGalleryNodeId: 18834%3A97298
-relatedComponents: ['date-picker-next', 'date-range-picker-next', 'date-picker']
+relatedComponents: ['date-picker-next']
 ---
-
-<PageAlert tone="info" title="This component has been superseded">
-	<Text as="p">
-		{
-			'A newer, backwards-incompatible version of Date range picker is available as: '
-		}
-		<TextLink href="/components/date-range-picker-next">
-			{'Date range picker (Next)'}
-		</TextLink>
-		{'.'}
-	</Text>
-	<Text as="p">
-		{'Date range picker will be removed in the next major release.'}
-	</Text>
-</PageAlert>
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-		/>
-	);
+	return <DateRangePickerNext value={value} onChange={setValue} />;
 };
 ```
-
-Date range picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange`, `onFromInputChange` and `onToInputChange` props.
 
 For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
 
@@ -54,73 +30,6 @@ For an example of using this component in a form built with [react-hook-form](ht
 - use international date formats such as USA mm/dd/yyyy
 - hijack built-in keyboard navigation behaviour.
 
-## Tracking the input value
-
-The Date range picker component has two methods of input:
-
-1. Typing in a date string (dd/mm/yyyy) via the text inputs
-2. Selecting a date via the calendar widgets
-
-Since we do not have any sort of input masking due to accessibility and user experience concerns, it is possible for the user to enter invalid values via the text inputs.
-
-In this case, you can use the `onFromInputChange` and `onToInputChange` props to keep track of the user’s input. The `value.from` and `value.to` props can also be set to a string, which represents the value of the text inputs.
-
-```jsx live
-() => {
-	// Set the value to a value that the user might think is valid
-	const [value, setValue] = React.useState({
-		from: '30/1o/2020',
-		to: '31/1o/2020',
-	});
-
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	// See Single-page form template
-	const isInvalid = React.useCallback((value) => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, []);
-
-	const fromInvalid = isInvalid(value.from);
-	const toInvalid = isInvalid(value.to);
-
-	const onFromInputChange = (fromValue) => {
-		console.log('onFromInputChange', fromValue);
-		setValue({ ...value, from: fromValue });
-	};
-
-	const onToInputChange = (toValue) => {
-		console.log('onToInputChange', toValue);
-		setValue({ ...value, to: toValue });
-	};
-
-	const onChange = (dateRange) => {
-		console.log('onChange', dateRange);
-		setValue(dateRange);
-	};
-
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={onChange}
-			onFromInputChange={onFromInputChange}
-			onToInputChange={onToInputChange}
-			fromInvalid={fromInvalid}
-			toInvalid={toInvalid}
-			message={
-				fromInvalid && toInvalid
-					? 'Enter valid start and end dates'
-					: fromInvalid
-					? 'Enter a valid start date'
-					: toInvalid
-					? 'Enter a valid end date'
-					: undefined
-			}
-		/>
-	);
-};
-```
-
 ## Legend
 
 Use the `legend` prop to describe the purpose of the group of fields.
@@ -129,11 +38,9 @@ Use the `legend` prop to describe the purpose of the group of fields.
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
 			legend="Date period"
 		/>
 	);
@@ -152,11 +59,9 @@ Don’t include links within hint text. While screen readers will read out the l
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
 			legend="Date period"
 			hint="Example hint text"
 		/>
@@ -173,37 +78,70 @@ Use the `fromInvalid` and `toInvalid` props to indicate if the user input is inv
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
 		<FormStack>
-			<DateRangePicker
+			<DateRangePickerNext
 				value={value}
 				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
 				fromInvalid={true}
 				toInvalid={true}
 				legend="Date period"
 				message="Enter valid start and end dates"
 			/>
-			<DateRangePicker
+			<DateRangePickerNext
 				value={value}
 				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
 				fromInvalid={true}
 				toInvalid={false}
 				legend="Date period"
 				message="Enter a valid start date"
 			/>
-			<DateRangePicker
+			<DateRangePickerNext
 				value={value}
 				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
 				fromInvalid={false}
 				toInvalid={true}
 				legend="Date period"
 				message="Enter a valid end date"
 			/>
 		</FormStack>
+	);
+};
+```
+
+Use the `isValidDate` function to check if the user has inputted/picked invalid dates, including dates that are out of order or dates outside of allowed ranges.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
+	// See Single-page form template
+	const isFromInvalid = React.useCallback((value, otherDate) => {
+		return value ? !isValidDate(value, { toDate: otherDate }) : false;
+	}, []);
+
+	const isToInvalid = React.useCallback((value, otherDate) => {
+		return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+	}, []);
+
+	const fromInvalid = isFromInvalid(value.from, value.to);
+	const toInvalid = isToInvalid(value.to, value.from);
+
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			legend="Date period"
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
+		/>
 	);
 };
 ```
@@ -216,11 +154,9 @@ Use the `fromLabel` and `toLabel` props to change the field labels.
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
 			fromLabel="From"
 			toLabel="To"
 		/>
@@ -235,15 +171,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return (
-		<DateRangePicker
-			value={value}
-			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			disabled
-		/>
-	);
+	return <DateRangePickerNext value={value} onChange={setValue} disabled />;
 };
 ```
 
@@ -271,14 +199,38 @@ If a valid date is entered using the text input but it falls outside the constra
 		today.getDate() + 7
 	);
 
+	const isFromInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, { toDate: otherDate, minDate: lastWeek })
+			: false;
+	}, []);
+
+	const isToInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, { fromDate: otherDate, maxDate: nextWeek })
+			: false;
+	}, []);
+
+	const fromInvalid = isFromInvalid(value.from, value.to);
+	const toInvalid = isToInvalid(value.to, value.from);
+
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
 			minDate={lastWeek}
 			maxDate={nextWeek}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
 		/>
 	);
 };
@@ -315,11 +267,9 @@ To modify the date format, you can change the `dateFormat` prop to one of these 
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={setValue}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
 			dateFormat="d MMM yyyy"
 		/>
 	);
@@ -350,13 +300,9 @@ Date formats are parsed in order from first to last and stops when a valid date 
 	const fromInvalid = isInvalid(value.from);
 	const toInvalid = isInvalid(value.to);
 
-	const onFromInputChange = (fromValue) => {
-		console.log('onFromInputChange', fromValue);
 		setValue({ ...value, from: fromValue });
 	};
 
-	const onToInputChange = (toValue) => {
-		console.log('onToInputChange', toValue);
 		setValue({ ...value, to: toValue });
 	};
 
@@ -366,11 +312,9 @@ Date formats are parsed in order from first to last and stops when a valid date 
 	};
 
 	return (
-		<DateRangePicker
+		<DateRangePickerNext
 			value={value}
 			onChange={onChange}
-			onFromInputChange={onFromInputChange}
-			onToInputChange={onToInputChange}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			message={

@@ -3,7 +3,6 @@ import {
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
-	type RefObject,
 	useCallback,
 	useMemo,
 	useRef,
@@ -33,13 +32,13 @@ import {
 	type Locale,
 } from 'date-fns';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
-import { formatHumanReadableDate } from '../date-picker-next/utils';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
+import { formatHumanReadableDate } from './utils';
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -83,23 +82,13 @@ export type CalendarRangeProps = Omit<
 	DayPickerRangeProps,
 	'mode' | 'components'
 > & {
-	returnFocusRef?: RefObject<HTMLButtonElement>;
+	inputMode?: 'from' | 'to';
 };
 
-export function CalendarRange({
-	returnFocusRef,
-	...props
-}: CalendarRangeProps) {
+export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
 	return (
-		<FocusLock
-			autoFocus={false}
-			onDeactivation={() => {
-				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-				if (!returnFocusRef) return;
-				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
-			}}
-		>
-			<CalendarRangeContainer dateRange={props.selected}>
+		<FocusLock autoFocus={false}>
+			<CalendarRangeContainer dateRange={props.selected} inputMode={inputMode}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
@@ -369,6 +358,7 @@ const calendarComponents: CustomComponents = {
 			props.displayMonth,
 			buttonRef
 		);
+		const { onHover, clearHoveredDay } = useCalendar();
 
 		// @ts-expect-error: role is unused
 		const { children, onClick, onKeyDown, role, ...restButtonProps } =
@@ -406,12 +396,23 @@ const calendarComponents: CustomComponents = {
 
 		return (
 			<td
-				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
-				onKeyDown={handleKeyDown}
 				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
 				ref={buttonRef}
 				tabIndex={-1}
 				{...(isHidden ? undefined : interactiveProps)}
+				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
+				onKeyDown={handleKeyDown}
+				onMouseEnter={() => {
+					if (onHover && !isHidden) {
+						clearHoveredDay?.cancel();
+						onHover(props.date);
+					}
+				}}
+				onMouseLeave={() => {
+					if (onHover && clearHoveredDay && !isHidden) {
+						clearHoveredDay();
+					}
+				}}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{isHidden ? undefined : children}</span>

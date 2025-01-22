@@ -1,28 +1,18 @@
 ---
-title: Date picker
+title: Date picker (Next)
 description: The Date picker component allows users to select a single date via a calendar or text input.
 group: Forms
-storybookPath: /story/forms-datepicker-datepicker--basic
+storybookPath: /story/forms-datepickerNext-datepickerNext--basic
 figmaGalleryNodeId: 12444%3A100327
-relatedComponents:
-  ['date-picker-next', 'date-range-picker-next', 'date-range-picker']
+relatedComponents: ['date-range-picker-next']
 ---
-
-<PageAlert tone="info" title="This component has been superseded">
-	<Text as="p">
-		{'A newer, backwards-incompatible version of Date picker is available as: '}
-		<TextLink href="/components/date-picker-next">
-			{'Date picker (Next)'}
-		</TextLink>
-		{'.'}
-	</Text>
-	<Text as="p">{'Date picker will be removed in the next major release.'}</Text>
-</PageAlert>
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
-	return <DatePicker label="Select date" value={value} onChange={setValue} />;
+	return (
+		<DatePickerNext label="Select date" value={value} onChange={setValue} />
+	);
 };
 ```
 
@@ -44,54 +34,6 @@ For an example of using this component in a form built with [react-hook-form](ht
 - use international date formats such as USA mm/dd/yyyy
 - hijack built-in keyboard navigation behaviour.
 
-## Tracking the input value
-
-The Date picker component has two methods of input:
-
-1. Typing in a date string (dd/mm/yyyy) via the text input
-2. Selecting a date via the calendar widget
-
-As we do not have any sort of input masking due to accessibility and user experience concerns, it is possible for the user to enter an invalid value via the text input.
-
-In this case, you can use the `onInputChange` prop to keep track of the user’s input. The `value` prop can also be set to a string, which represents the value of the text input.
-
-```jsx live
-() => {
-	// Set the value to a value that the user might think is valid
-	const [value, setValue] = React.useState('31/1o/2020');
-
-	const onInputChange = (value) => {
-		console.log('onInputChange', value);
-		setValue(value);
-	};
-
-	const onChange = (date) => {
-		console.log('onChange', date);
-		setValue(date);
-	};
-
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	const invalid = React.useMemo(() => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, [value]);
-
-	return (
-		<DatePicker
-			label="Select date"
-			value={value}
-			onChange={onChange}
-			onInputChange={onInputChange}
-			{...(invalid && {
-				invalid: true,
-				message: 'Enter a valid date',
-			})}
-		/>
-	);
-};
-```
-
 ## Hint
 
 Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
@@ -104,7 +46,7 @@ Don’t include links within hint text. While screen readers will read out the l
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			hint="Hint text"
 			value={value}
@@ -122,7 +64,12 @@ Use the `block` prop to expand the component to fill the available space.
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePicker label="Select date" value={value} onChange={setValue} block />
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			block
+		/>
 	);
 };
 ```
@@ -135,7 +82,7 @@ Use the `invalid` prop to indicate if the user input is invalid.
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Invalid"
 			invalid
 			message="Enter a valid date"
@@ -154,7 +101,7 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			value={value}
 			onChange={setValue}
@@ -181,7 +128,7 @@ If a valid date is entered using the text input but it falls outside the constra
 	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			minDate={lastWeek}
 			maxDate={nextWeek}
@@ -202,7 +149,7 @@ The `yearRange` prop can be used to change the range of options to display in ca
 	const thisYear = new Date().getFullYear();
 	const yearRange = { from: thisYear - 2, to: thisYear + 2 };
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			yearRange={yearRange}
 			value={value}
@@ -243,7 +190,7 @@ To modify the date format, you can change the `dateFormat` prop to one of these 
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			value={value}
 			onChange={setValue}
@@ -283,7 +230,7 @@ Date formats are parsed in order from first to last and stops when a valid date 
 	}, [value]);
 
 	return (
-		<DatePicker
+		<DatePickerNext
 			label="Select date"
 			hint="Only short AU formats allowed"
 			value={value}

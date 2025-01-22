@@ -3,42 +3,48 @@ import { format } from 'date-fns';
 import { Flex } from '../flex';
 import { CalendarIcon } from '../icon';
 import { TextInputProps, textInputStyles } from '../text-input';
-import { mapSpacing } from '../core';
+import { mapSpacing, packs, tokens } from '../core';
 import { Button } from '../button';
 import { Field } from '../field';
 import { acceptedDateFormats, type AcceptedDateFormats } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
+	buttonAriaLabel: string;
+	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
+	buttonRef: RefObject<HTMLButtonElement>;
+	dateFormat: AcceptedDateFormats;
+	highlight?: boolean;
 	invalid: {
 		/** If true, the entire field will be rendered in an invalid state.  */
 		field: boolean;
 		/** If true, only the input element will be rendered in an invalid state. */
 		input: boolean;
 	};
-	dateFormat: AcceptedDateFormats;
-	buttonRef: RefObject<HTMLButtonElement>;
-	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
-	buttonAriaLabel: string;
+	isCalendarOpen: boolean;
+	secondaryLabelDate?: Date;
 };
 
 export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 	function DateInput(
 		{
-			label,
-			hideOptionalLabel,
-			required,
-			hint,
-			message,
-			invalid,
 			block,
-			id,
-			buttonRef,
-			maxWidth: maxWidthProp = 'md',
-			buttonOnClick,
 			buttonAriaLabel,
-			disabled,
-			value,
+			buttonOnClick,
+			buttonRef,
 			dateFormat: dateFormatProp,
+			disabled,
+			hideOptionalLabel,
+			highlight,
+			hint,
+			id,
+			invalid,
+			isCalendarOpen,
+			label,
+			maxWidth: maxWidthProp = 'md',
+			message,
+			required,
+			secondaryLabelDate = new Date(),
+			value,
 			...props
 		},
 		ref
@@ -61,8 +67,8 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 			const dateFormat = acceptedDateFormats.includes(dateFormatProp)
 				? dateFormatProp
 				: 'dd/MM/yyyy';
-			return '(e.g. ' + format(new Date(), dateFormat) + ')';
-		}, [dateFormatProp]);
+			return '(e.g. ' + format(secondaryLabelDate, dateFormat) + ')';
+		}, [dateFormatProp, secondaryLabelDate]);
 
 		return (
 			<Field
@@ -77,7 +83,14 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 				secondaryLabel={secondaryLabel}
 			>
 				{(a11yProps) => (
-					<Flex alignItems="flex-end" css={{ maxWidth }}>
+					<Flex
+						alignItems="flex-end"
+						css={{
+							borderRadius: tokens.borderRadius,
+							maxWidth,
+							...(highlight ? packs.outline : undefined),
+						}}
+					>
 						<input
 							autoComplete="off"
 							css={{ ...styles, maxWidth: 'unset' }}
@@ -90,6 +103,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 							value={value}
 						/>
 						<Button
+							aria-expanded={isCalendarOpen}
 							aria-label={buttonAriaLabel}
 							css={{
 								borderTopLeftRadius: 0,

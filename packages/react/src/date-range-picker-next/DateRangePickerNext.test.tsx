@@ -14,10 +14,9 @@ import { formatHumanReadableDate } from '../date-picker-next/utils';
 import { yupDateField, errorMessage } from '../date-picker/test-utils';
 import {
 	type DateRange,
-	type DateRangeWithString,
-	type DateRangePickerProps,
-	DateRangePicker,
-} from './DateRangePicker';
+	type DateRangePickerNextProps,
+	DateRangePickerNext,
+} from './DateRangePickerNext';
 
 expect.extend(toHaveNoViolations);
 
@@ -41,39 +40,31 @@ afterAll(() => {
 	jest.useRealTimers();
 });
 
-function renderDateRangePicker(props: ControlledDatePickerProps) {
-	return render(<ControlledDateRangePicker {...props} />);
+function renderDateRangePickerNext(props: ControlledDatePickerProps) {
+	return render(<ControlledDateRangePickerNext {...props} />);
 }
 
 type ControlledDatePickerProps = Omit<
-	DateRangePickerProps,
+	DateRangePickerNextProps,
 	'value' | 'onChange'
 > & {
-	initialValue?: DateRangePickerProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
-	onChange?: DateRangePickerProps['onChange']; // onChange is optional
+	initialValue?: DateRangePickerNextProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
+	onChange?: DateRangePickerNextProps['onChange']; // onChange is optional
 };
 
-function ControlledDateRangePicker({
+function ControlledDateRangePickerNext({
 	initialValue = { from: undefined, to: undefined },
 	onChange: onChangeProp,
 	...props
 }: ControlledDatePickerProps) {
-	const [value, setValue] = useState<DateRangeWithString>(initialValue);
+	const [value, setValue] = useState<DateRange>(initialValue);
 
 	function onChange(value: DateRange) {
 		setValue(value);
 		onChangeProp?.(value);
 	}
 
-	return (
-		<DateRangePicker
-			onChange={onChange}
-			onFromInputChange={(from) => setValue({ ...value, from })}
-			onToInputChange={(to) => setValue({ ...value, to })}
-			value={value}
-			{...props}
-		/>
-	);
+	return <DateRangePickerNext onChange={onChange} value={value} {...props} />;
 }
 
 const fromDateFieldBase = yupDateField
@@ -102,7 +93,7 @@ const formSchema = (required: boolean) =>
 
 export type FormSchema = yup.InferType<ReturnType<typeof formSchema>>;
 
-function DateRangePickerInsideForm({
+function DateRangePickerNextInsideForm({
 	required,
 	onSubmit,
 	onError,
@@ -128,7 +119,7 @@ function DateRangePickerInsideForm({
 				control={control}
 				name="dateRange"
 				render={({ field: { ref, value, onChange, ...field } }) => (
-					<DateRangePicker
+					<DateRangePickerNext
 						fromInputRef={ref}
 						legend="Date range"
 						{...field}
@@ -137,8 +128,6 @@ function DateRangePickerInsideForm({
 							errors.dateRange?.from?.message || errors.dateRange?.to?.message
 						}
 						onChange={onChange}
-						onFromInputChange={(from) => onChange({ ...value, from })}
-						onToInputChange={(to) => onChange({ ...value, to })}
 						required
 						toInvalid={Boolean(errors.dateRange?.to?.message)}
 						value={value}
@@ -161,16 +150,16 @@ function getLegend(text = 'Date format') {
 	return screen.getByText(text).closest('legend') as HTMLLegendElement;
 }
 
-describe('DateRangePicker', () => {
+describe('DateRangePickerNext', () => {
 	it('renders correctly', () => {
-		const { container } = renderDateRangePicker({
+		const { container } = renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = renderDateRangePicker({
+		const { container } = renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
 		expect(container).toHTMLValidate({
@@ -195,7 +184,7 @@ describe('DateRangePicker', () => {
 		const toDate = parseDate(toDateString) as Date;
 
 		render(
-			<ControlledDateRangePicker
+			<ControlledDateRangePickerNext
 				initialValue={{
 					from: fromDate,
 					to: toDate,
@@ -218,7 +207,7 @@ describe('DateRangePicker', () => {
 	it('responds to an `onChange` callback when a date is valid', async () => {
 		const onChange = jest.fn();
 
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			onChange,
 		});
 
@@ -273,76 +262,8 @@ describe('DateRangePicker', () => {
 		).toBeVisible();
 	});
 
-	it('responds to an `onFromInputChange` callback when a date is invalid', async () => {
-		const onFromInputChange = jest.fn();
-
-		renderDateRangePicker({
-			onFromInputChange,
-		});
-
-		const fromDateString = '01.01.2000';
-
-		const user = userEvent.setup();
-
-		// Type in the input fields
-		await user.type(
-			screen.getByRole('textbox', {
-				name: 'Start date (e.g. 05/08/2015) (optional)',
-			}),
-			fromDateString
-		);
-		await user.keyboard('{Tab}');
-		expect(
-			screen.getByRole('textbox', {
-				name: 'Start date (e.g. 05/08/2015) (optional)',
-			})
-		).toHaveValue(fromDateString);
-
-		expect(onFromInputChange).toHaveBeenCalledWith(fromDateString);
-
-		// The calendar button triggers should have an aria-label with the formatted display value
-		expect(
-			screen.getByRole('button', { name: 'Choose start date' })
-		).toBeVisible();
-	});
-
-	it('responds to an `onToInputChange` callback when a date is invalid', async () => {
-		const onToInputChange = jest.fn();
-
-		renderDateRangePicker({
-			onToInputChange,
-		});
-
-		const toDateString = '01.01.2000';
-
-		const user = userEvent.setup();
-
-		// Type in the input fields
-		await user.type(
-			screen.getByRole('textbox', {
-				name: 'End date (e.g. 06/08/2015) (optional)',
-			}),
-			toDateString
-		);
-		await user.keyboard('{Tab}');
-		expect(
-			screen.getByRole('textbox', {
-				name: 'End date (e.g. 06/08/2015) (optional)',
-			})
-		).toHaveValue(toDateString);
-
-		expect(onToInputChange).toHaveBeenCalledWith(toDateString);
-
-		// The calendar button triggers should have an aria-label with the formatted display value
-		expect(
-			screen.getByRole('button', {
-				name: 'Choose end date',
-			})
-		).toBeVisible();
-	});
-
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
-		renderDateRangePicker({});
+		renderDateRangePickerNext({});
 
 		const user = userEvent.setup();
 
@@ -376,7 +297,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('formats valid dates to the `dateFormat` prop', async () => {
-		renderDateRangePicker({ dateFormat: 'd MMM yyyy' });
+		renderDateRangePickerNext({ dateFormat: 'd MMM yyyy' });
 
 		const user = userEvent.setup();
 
@@ -411,7 +332,7 @@ describe('DateRangePicker', () => {
 
 	describe('allowedDateFormats', () => {
 		it('formats when a valid format is entered', async () => {
-			renderDateRangePicker({
+			renderDateRangePickerNext({
 				allowedDateFormats: ['dd-MM-yyyy'],
 			});
 
@@ -447,7 +368,7 @@ describe('DateRangePicker', () => {
 		});
 
 		it('doesn’t format when an invalid format is entered', async () => {
-			renderDateRangePicker({
+			renderDateRangePickerNext({
 				allowedDateFormats: ['dd-MM-yyyy'],
 			});
 
@@ -484,7 +405,7 @@ describe('DateRangePicker', () => {
 		});
 
 		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
-			renderDateRangePicker({
+			renderDateRangePickerNext({
 				allowedDateFormats: ['MM/dd/yyyy'],
 				dateFormat: 'dd MMMM yyyy',
 			});
@@ -523,7 +444,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('legend: renders a hidden legend by default when optional', async () => {
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: false,
 		});
@@ -537,7 +458,7 @@ describe('DateRangePicker', () => {
 	it('legend: renders a hidden legend by default when required', async () => {
 		const defaultLegend = 'Date range';
 
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: true,
 		});
@@ -547,7 +468,7 @@ describe('DateRangePicker', () => {
 	it('legend: can render a different legend when optional', async () => {
 		const legend = 'Date period';
 
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			legend,
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
@@ -557,7 +478,7 @@ describe('DateRangePicker', () => {
 	it('legend: can render a different legend when required', async () => {
 		const legend = 'Date period';
 
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			legend,
 			required: true,
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
@@ -566,7 +487,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('shows date format when legend is supplied', async () => {
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			legend: 'Date range',
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
@@ -583,7 +504,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('shows date format when no legend is supplied', async () => {
-		const { container } = renderDateRangePicker({
+		const { container } = renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
 		const inputFromId = screen.getByRole('textbox', {
@@ -608,7 +529,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('invalid: can render an invalid state when both fields are invalid', async () => {
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: true,
 			toInvalid: true,
@@ -628,7 +549,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('invalid: can render an invalid state when only from is invalid', async () => {
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: true,
 			toInvalid: false,
@@ -648,7 +569,7 @@ describe('DateRangePicker', () => {
 	});
 
 	it('invalid: can render an invalid state when only to is invalid', async () => {
-		renderDateRangePicker({
+		renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			fromInvalid: false,
 			toInvalid: true,
@@ -763,7 +684,7 @@ describe('DateRangePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DateRangePickerInsideForm
+			<DateRangePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -805,7 +726,7 @@ describe('DateRangePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DateRangePickerInsideForm
+			<DateRangePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -827,7 +748,7 @@ describe('DateRangePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DateRangePickerInsideForm
+			<DateRangePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -895,7 +816,7 @@ describe('DateRangePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DateRangePickerInsideForm
+			<DateRangePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -947,7 +868,7 @@ describe('DateRangePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DateRangePickerInsideForm
+			<DateRangePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required
