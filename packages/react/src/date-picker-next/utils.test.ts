@@ -1,5 +1,4 @@
 import {
-	constrainDate,
 	formatDate,
 	formatHumanReadableDate,
 	parseDate,
@@ -113,29 +112,6 @@ describe('parseDate', () => {
 			const formattedDate = parseDate('10/13/2023', allowedUSFormats);
 			expect(formattedDate).toEqual(new Date(2023, 9, 13));
 		});
-	});
-});
-
-describe('constrainDate', () => {
-	test('works with dates inside of range', () => {
-		const date = new Date(1999, 12, 15);
-		const min = new Date(1999, 12, 10);
-		const max = new Date(1999, 12, 20);
-		expect(constrainDate(date, undefined, undefined)).toEqual(date);
-		expect(constrainDate(date, min, undefined)).toEqual(date);
-		expect(constrainDate(date, undefined, max)).toEqual(date);
-	});
-	test('works with dates before range', () => {
-		const min = new Date(1999, 12, 10);
-		const max = new Date(1999, 12, 20);
-		expect(constrainDate(new Date(1990, 12, 10), min, max)).toEqual(min);
-		expect(constrainDate(min, min, max)).toEqual(min);
-	});
-	test('works with dates after range', () => {
-		const min = new Date(1999, 12, 10);
-		const max = new Date(1999, 12, 20);
-		expect(constrainDate(new Date(2000, 12, 10), min, max)).toEqual(max);
-		expect(constrainDate(max, min, max)).toEqual(max);
 	});
 });
 

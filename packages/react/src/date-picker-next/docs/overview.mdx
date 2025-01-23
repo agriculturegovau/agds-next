@@ -16,7 +16,7 @@ relatedComponents: ['date-range-picker-next']
 };
 ```
 
-Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value`, `onChange` and `onInputChange` props.
+Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
 
 For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
 
@@ -83,11 +83,36 @@ Use the `invalid` prop to indicate if the user input is invalid.
 	const [value, setValue] = React.useState();
 	return (
 		<DatePickerNext
-			label="Invalid"
+			label="Select date"
 			invalid
 			message="Enter a valid date"
 			value={value}
 			onChange={setValue}
+		/>
+	);
+};
+```
+
+Use the `isValidDate` function to check if the user has inputted/picked an invalid date.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const isInvalid = React.useCallback((value) => {
+		return value ? !isValidDate(value) : false;
+	}, []);
+
+	const invalid = isInvalid(value);
+
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			invalid={invalid}
+			legend="Date period"
+			message={invalid ? 'Enter a valid date' : undefined}
 		/>
 	);
 };
@@ -113,27 +138,46 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ## Minimum and maximum dates
 
-The `minDate` property can be used to disable any days before a specific date.
+The `minDate` property can be used to disable any days in the calendar before a specific date.
 
-The `maxDate` property can be used to disable any days after a specific date.
+The `maxDate` property can be used to disable any days in the calendar after a specific date.
 
-If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
+A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
 
 	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+	const lastWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() - 7
+	);
+	const nextWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() + 7
+	);
+
+	const isInvalid = React.useCallback((value) => {
+		return value
+			? !isValidDate(value, { minDate: lastWeek, maxDate: nextWeek })
+			: false;
+	}, []);
+
+	const invalid = isInvalid(value);
 
 	return (
 		<DatePickerNext
 			label="Select date"
-			minDate={lastWeek}
-			maxDate={nextWeek}
 			value={value}
 			onChange={setValue}
+			invalid={invalid}
+			legend="Date period"
+			message={invalid ? 'Enter a valid date' : undefined}
+			minDate={lastWeek}
+			maxDate={nextWeek}
 		/>
 	);
 };
@@ -208,39 +252,32 @@ Some applications may find it useful to remove US formats, since an invalid AU d
 
 Date formats are parsed in order from first to last and stops when a valid date is found. The preferred `dateFormat` always becomes the first to check, even if omitted in `allowedDateFormats`.
 
+The array of `allowedDateFormats` will also need to be passed to the `isValidDate` function to correctly validate the user’s input.
+
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
+	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];
 
-	const onInputChange = (value) => {
-		console.log('onInputChange', value);
-		setValue(value);
-	};
+	const isInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, {
+					allowedDateFormats,
+			  })
+			: false;
+	}, []);
 
-	const onChange = (date) => {
-		console.log('onChange', date);
-		setValue(date);
-	};
-
-	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
-	const invalid = React.useMemo(() => {
-		if (typeof value === 'undefined' || value == '') return false;
-		if (value instanceof Date && !isNaN(value.getTime())) return false;
-		return true;
-	}, [value]);
+	const invalid = isInvalid(value);
 
 	return (
 		<DatePickerNext
 			label="Select date"
-			hint="Only short AU formats allowed"
 			value={value}
-			onChange={onChange}
-			onInputChange={onInputChange}
-			{...(invalid && {
-				invalid: true,
-				message: 'Enter a valid date',
-			})}
-			allowedDateFormats={['dd MM yyyy', 'dd-MM-yyyy']}
+			onChange={setValue}
+			invalid={invalid}
+			message={invalid ? 'Enter a valid date' : undefined}
+			hint="Only short AU formats allowed"
+			allowedDateFormats={allowedDateFormats}
 		/>
 	);
 };

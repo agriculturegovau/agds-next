@@ -14,6 +14,8 @@ relatedComponents: ['date-picker-next']
 };
 ```
 
+Daterange picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+
 For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
 
 <DoHeading />
@@ -177,11 +179,11 @@ Disabled input elements are unusable and can not be clicked. This prevents a use
 
 ## Minimum and maximum dates
 
-The `minDate` property can be used to disable any days before a specific date.
+The `minDate` property can be used to disable any days in the calendar before a specific date.
 
-The `maxDate` property can be used to disable any days after a specific date.
+The `maxDate` property can be used to disable any days in the calendar after a specific date.
 
-If a valid date is entered using the text input but it falls outside the constrained range, the closest valid date will be used.
+A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
 
 ```jsx live
 () => {
@@ -288,7 +290,6 @@ The array of `allowedDateFormats` will also need to be passed to the `isValidDat
 
 ```jsx live
 () => {
-	// Set the value to a value that the user might think is valid
 	const [value, setValue] = React.useState({ from: '', to: '' });
 	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];
 
@@ -313,15 +314,10 @@ The array of `allowedDateFormats` will also need to be passed to the `isValidDat
 	const fromInvalid = isFromInvalid(value.from, value.to);
 	const toInvalid = isToInvalid(value.to, value.from);
 
-	const onChange = (dateRange) => {
-		console.log('onChange', dateRange);
-		setValue(dateRange);
-	};
-
 	return (
 		<DateRangePickerNext
 			value={value}
-			onChange={onChange}
+			onChange={setValue}
 			fromInvalid={fromInvalid}
 			toInvalid={toInvalid}
 			message={

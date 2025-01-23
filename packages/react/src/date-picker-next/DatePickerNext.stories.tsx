@@ -7,7 +7,7 @@ import { Button, ButtonGroup } from '../button';
 import { DatePickerNext, DatePickerNextProps } from './DatePickerNext';
 
 function ControlledDatePickerNext(props: DatePickerNextProps) {
-	const [value, setValue] = useState<Date>();
+	const [value, setValue] = useState<Date | string | undefined>();
 	return <DatePickerNext {...props} onChange={setValue} value={value} />;
 }
 
@@ -97,7 +97,7 @@ export const ScrollExample: Story = {
 
 export const ClearableExample: Story = {
 	render: function Render(props) {
-		const [value, setValue] = useState<Date>();
+		const [value, setValue] = useState<Date | string | undefined>();
 		return (
 			<Stack alignItems="flex-start" gap={4}>
 				<DatePickerNext {...props} onChange={setValue} value={value} />

@@ -131,19 +131,6 @@ export function isValidDate(
 	return true;
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#min
-// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#max
-export function constrainDate(
-	date: Date | undefined,
-	minDate: Date | undefined,
-	maxDate: Date | undefined
-) {
-	if (!date) return date;
-	if (minDate && isBefore(date, minDate)) return minDate;
-	if (maxDate && isAfter(date, maxDate)) return maxDate;
-	return date;
-}
-
 // Since the `value` prop can either be a date object, undefined or a string (which represents the text input value)
 // we need to be able to take that value and transform it into the display value of the text input
 // For example, if a `Date` object is passed we need to convert to to formatted date string (dd/mm/yyyy)
