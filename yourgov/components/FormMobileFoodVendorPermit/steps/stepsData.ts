@@ -1,14 +1,4 @@
 import { applyForFoodPermitPage } from '../utils';
-import { StepOwnerDetailsForm } from './StepOwnerDetailsForm';
-import { StepReviewAndSubmitForm } from './StepReviewAndSubmitForm';
-import { StepBusinessDetailsForm } from './StepBusinessDetailsForm';
-import { StepBusinessAddressForm } from './StepBusinessAddressForm';
-import { StepVehicleRegistrationForm } from './StepVehicleRegistrationForm';
-import { StepTradingTimeForm } from './StepTradingTimeForm';
-import { StepFoodServedForm } from './StepFoodServedForm';
-import { StepEmployeesForm } from './StepEmployeesForm';
-import { StepFoodSafetySupervisorForm } from './StepFoodSafetySupervisorForm';
-import { StepUploadDocumentsForm } from './StepUploadDocumentsForm';
 
 export type StepsData = typeof stepsData;
 
@@ -107,30 +97,4 @@ export const stepKeyToStepDataMap = stepsData.reduce(
 		};
 	},
 	{} as Record<StepKey, FormStep>
-);
-
-const substepForms: Record<FormStep['formStateKey'], () => JSX.Element> = {
-	stepOwnerDetails: StepOwnerDetailsForm,
-	stepBusinessDetails: StepBusinessDetailsForm,
-	stepBusinessAddress: StepBusinessAddressForm,
-	stepVehicleRegistration: StepVehicleRegistrationForm,
-	stepTradingTime: StepTradingTimeForm,
-	stepFoodServed: StepFoodServedForm,
-	stepEmployees: StepEmployeesForm,
-	stepFoodSafetySupervisor: StepFoodSafetySupervisorForm,
-	stepUploadDocuments: StepUploadDocumentsForm,
-	stepReviewAndSubmit: StepReviewAndSubmitForm,
-};
-
-export const substepSlugToFormMap = stepsData.reduce(
-	(acc, step) => {
-		const substepSlug =
-			'change-' + step.href.slice(step.href.lastIndexOf('/') + 1);
-
-		return {
-			...acc,
-			[substepSlug]: substepForms[step.formStateKey],
-		};
-	},
-	{} as Record<string, () => JSX.Element>
 );
