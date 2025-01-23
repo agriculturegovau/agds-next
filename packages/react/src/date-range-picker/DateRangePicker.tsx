@@ -40,11 +40,6 @@ import { DateInput } from './../date-picker/DatePickerInput';
 import { getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
-	from: Date | undefined;
-	to: Date | undefined;
-};
-
-export type DateRangeWithString = {
 	from: Date | string | undefined;
 	to: Date | string | undefined;
 };
@@ -78,13 +73,9 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
 	/** The value of the field. */
-	value: DateRangeWithString;
+	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	/** Function to be fired when the input value is updated. */
-	onFromInputChange?: (inputValue: string | undefined) => void;
-	/** Function to be fired when the input value is updated. */
-	onToInputChange?: (inputValue: string | undefined) => void;
 	/** The label above the start date. */
 	fromLabel?: string;
 	/** The label above the end date. */
@@ -171,10 +162,10 @@ export const DateRangePicker = ({
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from: asDate(value.from),
-			to: asDate(value.to),
+			from: asDate(value.from, allowedDateFormats),
+			to: asDate(value.to, allowedDateFormats),
 		}),
-		[value]
+		[allowedDateFormats, value]
 	);
 
 	const [hoveredDay, setHoveredDay] = useState<string>();
@@ -185,12 +176,12 @@ export const DateRangePicker = ({
 
 	// From input state
 	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from, dateFormat)
+		transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
 	);
 
 	// To input state
 	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to, dateFormat)
+		transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
 	);
 
 	const onSelect = useCallback<SelectRangeEventHandler>(
@@ -200,7 +191,7 @@ export const DateRangePicker = ({
 			const range = {
 				from: valueAsDateOrUndefined.from || fromInputValue,
 				to: valueAsDateOrUndefined.to || toInputValue,
-			} as DateRange;
+			};
 
 			range[inputMode] = selectedDay;
 
@@ -251,7 +242,7 @@ export const DateRangePicker = ({
 		onChange({
 			from: parsedDate,
 			to: valueAsDateOrUndefined.to || toInputValue,
-		} as DateRange);
+		});
 	};
 
 	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -267,7 +258,7 @@ export const DateRangePicker = ({
 		onChange({
 			from: valueAsDateOrUndefined.from || fromInputValue,
 			to: parsedDate,
-		} as DateRange);
+		});
 	};
 
 	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -278,9 +269,13 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
-		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
-	}, [value, dateFormat]);
+		setFromInputValue(
+			transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
+		);
+		setToInputValue(
+			transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
+		);
+	}, [allowedDateFormats, dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -400,8 +395,7 @@ export const DateRangePicker = ({
 			inputMode,
 			numberOfMonths,
 			onSelect,
-			valueAsDateOrUndefined.from,
-			valueAsDateOrUndefined.to,
+			valueAsDateOrUndefined,
 		]
 	);
 

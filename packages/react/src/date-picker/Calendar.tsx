@@ -409,8 +409,8 @@ const calendarComponents: CustomComponents = {
 					}
 				}}
 				onMouseLeave={() => {
-					if (onHover && !isHidden) {
-						clearHoveredDay?.();
+					if (onHover && clearHoveredDay && !isHidden) {
+						clearHoveredDay();
 					}
 				}}
 			>

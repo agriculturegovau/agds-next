@@ -1,23 +1,5 @@
 import { subMonths } from 'date-fns';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
-
-describe('ensureValidDateRange', () => {
-	const validDateRange = {
-		from: new Date(1999, 0, 0),
-		to: new Date(2000, 0, 0),
-	};
-	test('allows valid date ranges', () => {
-		expect(ensureValidDateRange(validDateRange)).toEqual(validDateRange);
-	});
-
-	const invalidDateRange = {
-		from: new Date(2000, 0, 0),
-		to: new Date(1999, 0, 0), // `to` is after `from`
-	};
-	test('fixes invalid date ranges', () => {
-		expect(ensureValidDateRange(invalidDateRange)).toEqual(validDateRange);
-	});
-});
+import { getCalendarDefaultMonth } from './utils';
 
 describe('getCalendarDefaultMonth', () => {
 	test('returns undefined when no props are set', () => {

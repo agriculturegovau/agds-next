@@ -33,22 +33,29 @@ export const acceptedDateFormats = [
 
 export type AcceptedDateFormats = (typeof acceptedDateFormats)[number];
 
-export const formatDate = (date?: Date, dateformat?: AcceptedDateFormats) =>
-	date && dateformat ? format(date, dateformat) : '';
+export const formatDate = (
+	date?: DateOrString,
+	dateformat?: AcceptedDateFormats
+) => {
+	const valueAsDate = asDate(date);
+	if (!valueAsDate || !dateformat) return '';
+
+	return format(valueAsDate, dateformat);
+};
 
 export const formatHumanReadableDate = (date: Date) =>
 	format(date, 'do MMMM yyyy EEEE');
 
 export const parseDate = (
 	value: string,
-	dateFormats: ReadonlyArray<AcceptedDateFormats> = acceptedDateFormats
+	allowedDateFormats: ReadonlyArray<AcceptedDateFormats> = acceptedDateFormats
 ) => {
 	const now = new Date();
 
 	const parsedISODate = normaliseDateString(value);
 	if (parsedISODate) return parsedISODate;
 
-	for (const displayDateFormat of dateFormats) {
+	for (const displayDateFormat of allowedDateFormats) {
 		// Split input value by spaces, slashes and dashes
 		// e.g. '18/02/2023' => ['18', '02', '2023'], 18th February 2023 => ['18th', 'February', '2023'], 18-02-2023 => ['18', '02', '2023']
 		const splitValue = value.split(/ |\/|-/g);
@@ -71,20 +78,27 @@ export const parseDate = (
 
 type DateOrString = Date | string;
 
-export function asDate(value?: DateOrString) {
-	return typeof value === 'string' ? parseDate(value) : value;
+export function asDate(
+	value?: DateOrString,
+	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>
+) {
+	return typeof value === 'string'
+		? parseDate(value, allowedDateFormats)
+		: value;
 }
 
 export function isValidDate(
 	value?: DateOrString,
-	range: {
+	options: {
+		allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>;
 		maxDate?: DateOrString;
 		minDate?: DateOrString;
 		fromDate?: DateOrString;
 		toDate?: DateOrString;
 	} = {}
 ) {
-	const valueAsDate = asDate(value);
+	const allowedDateFormats = options.allowedDateFormats || acceptedDateFormats;
+	const valueAsDate = asDate(value, allowedDateFormats);
 	if (!valueAsDate) return false;
 
 	const validDateValue = isDate(valueAsDate) && isValid(valueAsDate);
@@ -92,22 +106,22 @@ export function isValidDate(
 
 	let rangeDate;
 
-	if (range.fromDate || range.minDate) {
-		rangeDate = asDate(range.fromDate || range.minDate);
+	if (options.fromDate || options.minDate) {
+		rangeDate = asDate(options.fromDate || options.minDate);
 
 		if (
-			!isValidDate(rangeDate) ||
+			!isValidDate(rangeDate, { allowedDateFormats }) ||
 			(rangeDate && isBefore(valueAsDate, rangeDate))
 		) {
 			return false;
 		}
 	}
 
-	if (range.toDate || range.maxDate) {
-		rangeDate = asDate(range.toDate || range.maxDate);
+	if (options.toDate || options.maxDate) {
+		rangeDate = asDate(options.toDate || options.maxDate);
 
 		if (
-			!isValidDate(rangeDate) ||
+			!isValidDate(rangeDate, { allowedDateFormats }) ||
 			(rangeDate && isAfter(valueAsDate, rangeDate))
 		) {
 			return false;
@@ -136,11 +150,12 @@ export function constrainDate(
 // If `undefined` if passed, we need to convert to an empty string
 export function transformValuePropToInputValue(
 	valueProp: DateOrString | undefined,
-	dateFormat: AcceptedDateFormats
+	dateFormat: AcceptedDateFormats,
+	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>
 ): string {
 	if (valueProp === undefined) return '';
 
-	const valueAsDateOrUndefined = asDate(valueProp);
+	const valueAsDateOrUndefined = asDate(valueProp, allowedDateFormats);
 
 	if (valueAsDateOrUndefined === undefined) return valueProp.toString();
 

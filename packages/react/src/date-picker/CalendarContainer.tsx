@@ -36,7 +36,7 @@ export function CalendarRangeContainer({
 	return (
 		<Box
 			aria-label="Choose date range"
-			aria-modal="true"
+			aria-modal
 			css={[
 				reactDayPickerStyles,
 				reactDayRangePickerStyles(dateRange, inputMode),

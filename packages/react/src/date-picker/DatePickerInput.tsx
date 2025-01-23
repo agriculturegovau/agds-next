@@ -9,9 +9,9 @@ import { Field } from '../field';
 import { acceptedDateFormats, type AcceptedDateFormats } from './utils';
 
 export type DateInputProps = Omit<TextInputProps, 'invalid'> & {
-	buttonRef: RefObject<HTMLButtonElement>;
-	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
 	buttonAriaLabel: string;
+	buttonOnClick: MouseEventHandler<HTMLButtonElement>;
+	buttonRef: RefObject<HTMLButtonElement>;
 	dateFormat: AcceptedDateFormats;
 	highlight?: boolean;
 	invalid: {
