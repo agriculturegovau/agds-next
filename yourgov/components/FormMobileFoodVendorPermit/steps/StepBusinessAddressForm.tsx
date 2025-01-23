@@ -1,7 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Fieldset } from '@ag.ds-next/react/fieldset';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
@@ -10,14 +9,19 @@ import { TextInput } from '@ag.ds-next/react/text-input';
 import { Divider } from '@ag.ds-next/react/divider';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
-import { step3FormSchema, type Step3FormSchema } from './FormState';
+import {
+	stepBusinessAddressFormSchema,
+	type StepBusinessAddressFormSchema,
+} from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep3() {
-	const { formState, step3SetState, isSavingBeforeExiting } = useGlobalForm();
+export function StepBusinessAddressForm() {
+	const { formState, stepBusinessAddressSetState, isSavingBeforeExiting } =
+		useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const {
@@ -25,19 +29,23 @@ export function FormStep3() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Step3FormSchema>({
-		defaultValues: formState.steps?.step3,
-		resolver: isSavingBeforeExiting ? undefined : zodResolver(step3FormSchema),
+	} = useForm<StepBusinessAddressFormSchema>({
+		defaultValues: formState.steps?.stepBusinessAddress,
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(stepBusinessAddressFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Step3FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<StepBusinessAddressFormSchema> = async (
+		data
+	) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step3SetState({
+		stepBusinessAddressSetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -53,9 +61,9 @@ export function FormStep3() {
 	return (
 		<FormContainer
 			formIntroduction="Add your business address."
-			formTitle="Business address"
+			formTitle={stepKeyToStepDataMap.stepBusinessAddress.label}
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				{showErrorAlert && <FormPageAlert errors={errors} />}
 				<FormStack>
 					<Fieldset legend={<H2>Business address</H2>}>
@@ -191,8 +199,7 @@ export function FormStep3() {
 						</FormStack>
 					</Fieldset>
 				</FormStack>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

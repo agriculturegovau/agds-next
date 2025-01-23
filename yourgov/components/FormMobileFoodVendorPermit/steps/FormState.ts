@@ -12,7 +12,7 @@ import {
 import { type Completion } from '../FormState';
 import { StaffMember } from '../../Staff/lib/types';
 
-export const step1FormSchema = z.object({
+export const stepOwnerDetailsFormSchema = z.object({
 	firstName: zodString('Enter your first name'),
 	lastName: zodString('Enter your last name'),
 	email: zodString('Enter your email address').email(
@@ -21,15 +21,19 @@ export const step1FormSchema = z.object({
 	contactPhoneNumber: zodPhoneFieldOptional(),
 });
 
-export type Step1FormSchema = z.infer<typeof step1FormSchema>;
+export type StepOwnerDetailsFormSchema = z.infer<
+	typeof stepOwnerDetailsFormSchema
+>;
 
-export const step1Part2FormSchema = z.object({
+export const stepOwnerDetailsChangeDetailsFormSchema = z.object({
 	contactPhoneNumber: zodPhoneFieldOptional(),
 });
 
-export type Step1Part2FormSchema = z.infer<typeof step1Part2FormSchema>;
+export type StepOwnerDetailsChangeDetailsFormSchema = z.infer<
+	typeof stepOwnerDetailsChangeDetailsFormSchema
+>;
 
-export const step2FormSchema = z
+export const stepBusinessDetailsFormSchema = z
 	.object({
 		businessName: zodString('Business or company name is required'),
 		tradingName: zodStringOptional(),
@@ -56,9 +60,11 @@ export const step2FormSchema = z
 		}
 	);
 
-export type Step2FormSchema = z.infer<typeof step2FormSchema>;
+export type StepBusinessDetailsFormSchema = z.infer<
+	typeof stepBusinessDetailsFormSchema
+>;
 
-export const step3FormSchema = z
+export const stepBusinessAddressFormSchema = z
 	.object({
 		// business address
 		streetAddress: zodString('Enter your street address'),
@@ -110,9 +116,11 @@ export const step3FormSchema = z
 		}
 	});
 
-export type Step3FormSchema = z.infer<typeof step3FormSchema>;
+export type StepBusinessAddressFormSchema = z.infer<
+	typeof stepBusinessAddressFormSchema
+>;
 
-export const step4FormSchema = z.object({
+export const stepVehicleRegistrationFormSchema = z.object({
 	registrationNumber: zodString('Vehicle registration number is required').max(
 		6,
 		'Registration number can not be longer than 6 characters'
@@ -120,9 +128,11 @@ export const step4FormSchema = z.object({
 	registrationExpiry: zodDateField('Registration expiry date is required'),
 });
 
-export type Step4FormSchema = z.infer<typeof step4FormSchema>;
+export type StepVehicleRegistrationFormSchema = z.infer<
+	typeof stepVehicleRegistrationFormSchema
+>;
 
-export const step5FormSchema = z.object({
+export const stepTradingTimeFormSchema = z.object({
 	tradingPeriod: z.object({
 		from: zodDateField('Start date is required'),
 		to: zodDateField('End date is required'),
@@ -131,18 +141,20 @@ export const step5FormSchema = z.object({
 	closingTime: zodTimeField({ label: 'Closing time' }),
 });
 
-export type Step5FormSchema = z.infer<typeof step5FormSchema>;
+export type StepTradingTimeFormSchema = z.infer<
+	typeof stepTradingTimeFormSchema
+>;
 
-export const step6FormSchema = z.object({
+export const stepFoodServedFormSchema = z.object({
 	foodServed: zodArray(
 		z.object({ label: zodString(), value: zodString() }),
 		'Food types is required'
 	),
 });
 
-export type Step6FormSchema = z.infer<typeof step6FormSchema>;
+export type StepFoodServedFormSchema = z.infer<typeof stepFoodServedFormSchema>;
 
-export const step7FormSchema = z.object({
+export const stepEmployeesFormSchema = z.object({
 	employee: z.object({
 		id: zodString(),
 		firstName: zodString('Enter employee’s first name'),
@@ -153,15 +165,17 @@ export const step7FormSchema = z.object({
 	}),
 });
 
-export type Step7FormSchema = z.infer<typeof step7FormSchema>;
+export type StepEmployeesFormSchema = z.infer<typeof stepEmployeesFormSchema>;
 
-export const step8FormSchema = z.object({
+export const stepFoodSafetySupervisorFormSchema = z.object({
 	supervisor: zodString('Food safety supervisor is required'),
 });
 
-export type Step8FormSchema = z.infer<typeof step8FormSchema>;
+export type StepFoodSafetySupervisorFormSchema = z.infer<
+	typeof stepFoodSafetySupervisorFormSchema
+>;
 
-export const step9FormSchema = z.object({
+export const stepUploadDocumentsFormSchema = z.object({
 	files: z.object({
 		'rms-vehicle-registration': z.object({
 			file: zodString(),
@@ -178,9 +192,11 @@ export const step9FormSchema = z.object({
 	}),
 });
 
-export type Step9FormSchema = z.infer<typeof step9FormSchema>;
+export type StepUploadDocumentsFormSchema = z.infer<
+	typeof stepUploadDocumentsFormSchema
+>;
 
-export const step10FormSchema = z.object({
+export const stepReviewAndSubmitFormSchema = z.object({
 	declaration1: z
 		.boolean()
 		.refine((value) => value, 'Accept the first declaration to continue'),
@@ -192,36 +208,40 @@ export const step10FormSchema = z.object({
 		.refine((value) => value, 'Accept the third declaration to continue'),
 });
 
-export type Step10FormSchema = z.infer<typeof step10FormSchema>;
+export type StepReviewAndSubmitFormSchema = z.infer<
+	typeof stepReviewAndSubmitFormSchema
+>;
 
 export type FormState = {
-	step1: Step1FormSchema & Completion;
-	step2: Step2FormSchema & Completion;
-	step3: Step3FormSchema & Completion;
-	step4: Step4FormSchema & Completion;
-	step5: Step5FormSchema & Completion;
-	step6: Step6FormSchema & Completion;
-	step7: { employee: Step7FormSchema['employee'][] } & Completion;
-	step8: Step8FormSchema & Completion;
-	step9: Step9FormSchema & Completion;
-	step10: Step10FormSchema & Completion;
+	stepOwnerDetails: StepOwnerDetailsFormSchema & Completion;
+	stepBusinessDetails: StepBusinessDetailsFormSchema & Completion;
+	stepBusinessAddress: StepBusinessAddressFormSchema & Completion;
+	stepVehicleRegistration: StepVehicleRegistrationFormSchema & Completion;
+	stepTradingTime: StepTradingTimeFormSchema & Completion;
+	stepFoodServed: StepFoodServedFormSchema & Completion;
+	stepEmployees: {
+		employee: StepEmployeesFormSchema['employee'][];
+	} & Completion;
+	stepFoodSafetySupervisor: StepFoodSafetySupervisorFormSchema & Completion;
+	stepUploadDocuments: StepUploadDocumentsFormSchema & Completion;
+	stepReviewAndSubmit: StepReviewAndSubmitFormSchema & Completion;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {
-	step1: {
+	stepOwnerDetails: {
 		firstName: 'Charlie',
 		lastName: 'Walker',
 		email: 'c.walker@email.com',
 		completed: false,
 	},
-	step3: {
+	stepBusinessAddress: {
 		isPostalAddressSameAsBusinessAddress: true,
 		completed: false,
 	},
-	step7: {
+	stepEmployees: {
 		employee: [],
 	},
-	step9: {
+	stepUploadDocuments: {
 		files: {
 			'rms-vehicle-registration': {
 				file: '',

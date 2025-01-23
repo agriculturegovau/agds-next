@@ -16,15 +16,19 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { step1Part2FormSchema, type Step1Part2FormSchema } from './FormState';
+import {
+	stepOwnerDetailsChangeDetailsFormSchema,
+	type StepOwnerDetailsChangeDetailsFormSchema,
+} from './FormState';
 import { FormContainer } from './FormContainer';
-import { formSteps, useFormContext } from './FormProvider';
+import { useFormContext } from './FormProvider';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep1() {
-	const { step1GetState } = useGlobalForm();
-	const step1State = step1GetState();
+export function StepOwnerDetailsForm() {
+	const { stepOwnerDetailsGetState } = useGlobalForm();
+	const stepOwnerDetailsState = stepOwnerDetailsGetState();
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
@@ -37,7 +41,7 @@ export function FormStep1() {
 	return (
 		<FormContainer
 			formIntroduction="Confirm your name and contact details."
-			formTitle="Owner details"
+			formTitle={stepKeyToStepDataMap.stepOwnerDetails.label}
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>
@@ -74,25 +78,30 @@ export function FormStep1() {
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{step1State?.firstName}
+									{stepOwnerDetailsState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{step1State?.lastName}
+									{stepOwnerDetailsState?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{step1State?.email}
+									{stepOwnerDetailsState?.email}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
+
 						<ButtonLink
 							alignSelf="start"
-							href={formSteps[0].items && formSteps[0].items[0].href}
+							href={
+								'items' in stepKeyToStepDataMap.stepOwnerDetails
+									? stepKeyToStepDataMap.stepOwnerDetails.items[0].href
+									: undefined
+							}
 							variant="text"
 						>
 							Change business owner details
@@ -106,29 +115,34 @@ export function FormStep1() {
 }
 
 function AdditionalDetailsForm() {
-	const { step1GetState, step1SetState, isSavingBeforeExiting } =
-		useGlobalForm();
+	const {
+		stepOwnerDetailsGetState,
+		stepOwnerDetailsSetState,
+		isSavingBeforeExiting,
+	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Step1Part2FormSchema>({
+	} = useForm<StepOwnerDetailsChangeDetailsFormSchema>({
 		defaultValues: {
-			contactPhoneNumber: step1GetState()?.contactPhoneNumber,
+			contactPhoneNumber: stepOwnerDetailsGetState()?.contactPhoneNumber,
 		},
-		resolver: zodResolver(step1Part2FormSchema),
+		resolver: zodResolver(stepOwnerDetailsChangeDetailsFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Step1Part2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<
+		StepOwnerDetailsChangeDetailsFormSchema
+	> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step1SetState({
+		stepOwnerDetailsSetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -136,7 +150,7 @@ function AdditionalDetailsForm() {
 	};
 
 	return (
-		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
+		<Form noValidate={false} onSubmit={handleSubmit(onSubmit)}>
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
@@ -149,7 +163,6 @@ function AdditionalDetailsForm() {
 					message={errors.contactPhoneNumber?.message}
 				/>
 			</FormStack>
-			<StepActions />
-		</Stack>
+		</Form>
 	);
 }

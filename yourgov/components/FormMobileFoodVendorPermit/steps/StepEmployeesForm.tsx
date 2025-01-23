@@ -18,26 +18,27 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
-import { formSteps, useFormContext } from './FormProvider';
-import { Step7FormSchema } from './FormState';
+import { useFormContext } from './FormProvider';
+import { StepEmployeesFormSchema } from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep7() {
+export function StepEmployeesForm() {
 	const {
-		step7GetState,
-		step7SetState,
-		step8GetState,
-		step8SetState,
+		stepEmployeesGetState,
+		stepEmployeesSetState,
+		stepFoodSafetySupervisorGetState,
+		stepFoodSafetySupervisorSetState,
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 	const { query } = useRouter();
-	const step7State = step7GetState();
+	const stepEmployeesState = stepEmployeesGetState();
 
 	const [employeeToRemove, setEmployeeToRemove] =
-		useState<Partial<Step7FormSchema['employee']>>();
+		useState<Partial<StepEmployeesFormSchema['employee']>>();
 	const [removedEmployee, setRemovedEmployee] = useState('');
 
 	const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -49,8 +50,10 @@ export function FormStep7() {
 	const removedPageAlertRef = useRef<HTMLDivElement>(null);
 
 	const addedEmployee = query.success
-		? step7State?.employee &&
-		  step7State.employee.find((employee) => employee?.id === query.success)
+		? stepEmployeesState?.employee &&
+		  stepEmployeesState.employee.find(
+				(employee) => employee?.id === query.success
+		  )
 		: undefined;
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
 		!!addedEmployee
@@ -67,12 +70,12 @@ export function FormStep7() {
 	}, [employeeToRemove]);
 
 	const removeEmployee = () => {
-		step7SetState({
-			...step7State,
+		stepEmployeesSetState({
+			...stepEmployeesState,
 			completed: false,
 			employee:
-				step7State?.employee &&
-				step7State.employee.filter(
+				stepEmployeesState?.employee &&
+				stepEmployeesState.employee.filter(
 					(employee) => employee?.id !== employeeToRemove?.id
 				),
 		});
@@ -84,12 +87,12 @@ export function FormStep7() {
 
 		setTimeout(() => {
 			setShowRemovedEmployeeMessage(true);
-			// FIXME: Can't set this immediately after setting step7, otherwise step7 doesn't actually get set
+			// FIXME: Can't set this immediately after setting stepEmployees, otherwise stepEmployees doesn't actually get set
 			if (
-				step8GetState()?.supervisor ===
+				stepFoodSafetySupervisorGetState()?.supervisor ===
 				`${employeeToRemove?.firstName} ${employeeToRemove?.lastName}`
 			) {
-				step8SetState({});
+				stepFoodSafetySupervisorSetState({});
 			}
 		}, 0);
 	};
@@ -101,15 +104,18 @@ export function FormStep7() {
 			return;
 		}
 
-		if (step7State?.employee && step7State?.employee.length === 0) {
+		if (
+			stepEmployeesState?.employee &&
+			stepEmployeesState?.employee.length === 0
+		) {
 			setShowRemovedEmployeeMessage(false);
 			setShowErrorMessage(true);
 			return;
 		}
 
 		await submitStep();
-		step7SetState({
-			...step7State,
+		stepEmployeesSetState({
+			...stepEmployeesState,
 			completed: !isSavingBeforeExiting,
 			started: true,
 		});
@@ -136,7 +142,7 @@ export function FormStep7() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee details."
-			formTitle="Employees"
+			formTitle={stepKeyToStepDataMap.stepEmployees.label}
 			hideRequiredFieldsMessage
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>
@@ -177,7 +183,8 @@ export function FormStep7() {
 						tone="success"
 					/>
 				</Box>
-				{step7State?.employee && step7State.employee.length > 0 ? (
+				{stepEmployeesState?.employee &&
+				stepEmployeesState.employee.length > 0 ? (
 					<TableWrapper>
 						<Table aria-labelledby="list-of-employees">
 							<TableHead>
@@ -188,7 +195,7 @@ export function FormStep7() {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{step7State.employee.map(
+								{stepEmployeesState.employee.map(
 									(employee) =>
 										employee?.id && (
 											<TableRow key={employee.id}>
@@ -220,9 +227,14 @@ export function FormStep7() {
 						<Text as="p">You must add an employee to proceed.</Text>
 					</Stack>
 				)}
+
 				<ButtonLink
 					alignSelf="start"
-					href={formSteps[6].items && formSteps[6].items[0].href}
+					href={
+						'items' in stepKeyToStepDataMap.stepEmployees
+							? stepKeyToStepDataMap.stepEmployees.items[0].href
+							: undefined
+					}
 					iconBefore={PlusIcon}
 					size="sm"
 					variant="secondary"
@@ -230,9 +242,9 @@ export function FormStep7() {
 					Add employee
 				</ButtonLink>
 			</Stack>
-			<form noValidate onSubmit={onSubmit}>
-				<StepActions />
-			</form>
+
+			<Form onSubmit={onSubmit} />
+
 			<Modal
 				actions={
 					<ButtonGroup>
@@ -245,7 +257,7 @@ export function FormStep7() {
 				isOpen={modalIsVisible}
 				onClose={closeModal}
 				title={`Are you sure you want to remove ${employeeToRemove?.firstName} ${employeeToRemove?.lastName} as an employee?`}
-			></Modal>
+			/>
 		</FormContainer>
 	);
 }

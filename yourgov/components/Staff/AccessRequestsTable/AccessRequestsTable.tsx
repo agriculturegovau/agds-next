@@ -343,7 +343,7 @@ export const AccessRequestsTable = () => {
 				<ModalUnavailableFeature
 					isOpen={isUnavailableModalOpen}
 					onClose={closeUnavailableModal}
-					onConfirm={openUnavailableModal}
+					onConfirm={closeUnavailableModal}
 				/>
 			</Stack>
 		</>

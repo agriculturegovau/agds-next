@@ -2,27 +2,30 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
-import { Stack } from '@ag.ds-next/react/stack';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
-import { step8FormSchema, type Step8FormSchema } from './FormState';
+import {
+	stepFoodSafetySupervisorFormSchema,
+	type StepFoodSafetySupervisorFormSchema,
+} from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep8() {
+export function StepFoodSafetySupervisorForm() {
 	const {
 		formState,
-		step1GetState,
-		step7GetState,
-		step8SetState,
+		stepOwnerDetailsGetState,
+		stepEmployeesGetState,
+		stepFoodSafetySupervisorSetState,
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const employees = [
-		`${step1GetState()?.firstName} ${step1GetState()
+		`${stepOwnerDetailsGetState()?.firstName} ${stepOwnerDetailsGetState()
 			?.lastName} (Business owner)`,
-		...(step7GetState()?.employee?.map(
+		...(stepEmployeesGetState()?.employee?.map(
 			(employee) => `${employee?.firstName} ${employee?.lastName}`
 		) || []),
 	];
@@ -31,19 +34,23 @@ export function FormStep8() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Step8FormSchema>({
-		defaultValues: formState.steps?.step8,
-		resolver: isSavingBeforeExiting ? undefined : zodResolver(step8FormSchema),
+	} = useForm<StepFoodSafetySupervisorFormSchema>({
+		defaultValues: formState.steps?.stepFoodSafetySupervisor,
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(stepFoodSafetySupervisorFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Step8FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<StepFoodSafetySupervisorFormSchema> = async (
+		data
+	) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step8SetState({
+		stepFoodSafetySupervisorSetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -53,9 +60,9 @@ export function FormStep8() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee food safety supervisor."
-			formTitle="Food safety supervisor"
+			formTitle={stepKeyToStepDataMap.stepFoodSafetySupervisor.label}
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup
 					block
 					invalid={Boolean(errors.supervisor)}
@@ -69,8 +76,7 @@ export function FormStep8() {
 						</Radio>
 					))}
 				</ControlGroup>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

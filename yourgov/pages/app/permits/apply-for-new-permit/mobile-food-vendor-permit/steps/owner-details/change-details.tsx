@@ -5,11 +5,11 @@ import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep1ChangeDetails,
-	formSteps,
+	StepOwnerDetailsChangeDetailsForm,
 	useGlobalForm,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
+import { stepKeyToStepDataMap } from '../../../../../../../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 const Page: NextPageWithLayout = () => {
 	const { formTitle } = useGlobalForm();
@@ -17,11 +17,13 @@ const Page: NextPageWithLayout = () => {
 		<Fragment>
 			<DocumentTitle
 				title={`${
-					formSteps[0].items && formSteps[0].items[0].label
+					'items' in stepKeyToStepDataMap.stepOwnerDetails
+						? stepKeyToStepDataMap.stepOwnerDetails.items[0].label
+						: undefined
 				} | ${formTitle}`}
 			/>
 			<PageContent>
-				<FormStep1ChangeDetails />
+				<StepOwnerDetailsChangeDetailsForm />
 			</PageContent>
 		</Fragment>
 	);
