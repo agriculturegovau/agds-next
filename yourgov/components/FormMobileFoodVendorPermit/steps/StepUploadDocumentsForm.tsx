@@ -13,10 +13,11 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { StepActions } from '../StepActions';
 import { UploadFileTable } from '../UploadFileTable';
 import { useFormContext } from './FormProvider';
 import { FormContainer } from './FormContainer';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
 const tableHeadingId = 'upload-documents-heading';
 const tableId = 'upload-file-table';
@@ -72,15 +73,18 @@ type SampleTableError = {
 	name: string;
 };
 
-export function FormStep9() {
-	const { step9GetState, step9SetState, isSavingBeforeExiting } =
-		useGlobalForm();
+export function StepUploadDocumentsForm() {
+	const {
+		stepUploadDocumentsGetState,
+		stepUploadDocumentsSetState,
+		isSavingBeforeExiting,
+	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const errorMessageRef = useRef<HTMLDivElement>(null);
 	const successMessageRef = useRef<HTMLDivElement>(null);
 
-	const { files = {} } = step9GetState() || {};
+	const { files = {} } = stepUploadDocumentsGetState() || {};
 
 	// Table data
 	const [documents, setDocuments] = useState<Document[]>(
@@ -200,7 +204,7 @@ export function FormStep9() {
 
 		await submitStep();
 
-		step9SetState({
+		stepUploadDocumentsSetState({
 			files: Object.fromEntries(
 				documents.map(({ file, id, size }) => [id, { file, size }])
 			) as Record<Document['id'], { file: string; size: string }>,
@@ -213,7 +217,7 @@ export function FormStep9() {
 	return (
 		<FormContainer
 			formIntroduction="Upload all documents listed in the table below."
-			formTitle="Upload documents"
+			formTitle={stepKeyToStepDataMap.stepUploadDocuments.label}
 			hideRequiredFieldsMessage
 		>
 			<Stack gap={2}>
@@ -333,9 +337,7 @@ export function FormStep9() {
 				</Drawer>
 			</Stack>
 
-			<Stack as="form" gap={3} noValidate onSubmit={onSubmit}>
-				<StepActions />
-			</Stack>
+			<Form onSubmit={onSubmit} />
 		</FormContainer>
 	);
 }

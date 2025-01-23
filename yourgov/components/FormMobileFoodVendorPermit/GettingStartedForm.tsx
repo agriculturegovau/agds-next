@@ -12,6 +12,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
 import { zodString } from '../../lib/zodUtils';
 import { useGlobalForm } from './GlobalFormProvider';
+import { stepsData } from './steps/stepsData';
 
 const formSchema = z.object({
 	businessType: zodString('Business type is required'),
@@ -41,8 +42,7 @@ export function GettingStartedForm() {
 			type: data.businessType,
 		});
 		router.push({
-			pathname:
-				'/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/step-1',
+			pathname: stepsData[0].href, // Always start a new application on the first step
 		});
 	}
 

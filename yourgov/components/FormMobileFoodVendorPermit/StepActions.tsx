@@ -17,10 +17,12 @@ export function StepActions({ submitText = 'Save and continue' }) {
 		<Fragment>
 			<Stack gap={3}>
 				<Divider />
+
 				<ButtonGroup>
 					<Button loading={isSubmittingStep} type="submit" variant="primary">
 						{submitText}
 					</Button>
+
 					<Button
 						loading={isSavingBeforeExiting}
 						onClick={saveAndExit}
@@ -29,15 +31,18 @@ export function StepActions({ submitText = 'Save and continue' }) {
 					>
 						Save and exit
 					</Button>
+
 					<Button onClick={openModal} type="button" variant="tertiary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			</Stack>
+
 			<Modal
 				actions={
 					<ButtonGroup>
 						<Button onClick={cancel}>Yes, cancel</Button>
+
 						<Button onClick={closeModal} variant="secondary">
 							No, take me back
 						</Button>

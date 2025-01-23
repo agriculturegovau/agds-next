@@ -4,18 +4,21 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
-import { Stack } from '@ag.ds-next/react/stack';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
 import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
-import { step5FormSchema, type Step5FormSchema } from './FormState';
+import {
+	stepTradingTimeFormSchema,
+	type StepTradingTimeFormSchema,
+} from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
+function transformDefaultValues(step?: DeepPartial<StepTradingTimeFormSchema>) {
 	const from = step?.tradingPeriod?.from;
 	const to = step?.tradingPeriod?.to;
 	return {
@@ -27,8 +30,9 @@ function transformDefaultValues(step?: DeepPartial<Step5FormSchema>) {
 	};
 }
 
-export function FormStep5() {
-	const { formState, step5SetState, isSavingBeforeExiting } = useGlobalForm();
+export function StepTradingTimeForm() {
+	const { formState, stepTradingTimeSetState, isSavingBeforeExiting } =
+		useGlobalForm();
 	const { submitStep } = useFormContext();
 	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
 	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
@@ -37,21 +41,24 @@ export function FormStep5() {
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<Step5FormSchema>({
-		defaultValues: transformDefaultValues(formState.steps?.step5),
-		resolver: isSavingBeforeExiting ? undefined : zodResolver(step5FormSchema),
+	} = useForm<StepTradingTimeFormSchema>({
+		defaultValues: transformDefaultValues(formState.steps?.stepTradingTime),
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(stepTradingTimeFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const typeCorrectedErrors = errors as ShallowErrors<Step5FormSchema>;
+	const typeCorrectedErrors =
+		errors as ShallowErrors<StepTradingTimeFormSchema>;
 
-	const onSubmit: SubmitHandler<Step5FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<StepTradingTimeFormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step5SetState({
+		stepTradingTimeSetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -110,9 +117,9 @@ export function FormStep5() {
 	return (
 		<FormContainer
 			formIntroduction="What times would you like to operate?"
-			formTitle="Trading time"
+			formTitle={stepKeyToStepDataMap.stepTradingTime.label}
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && (
 						<FormPageAlert
@@ -219,8 +226,7 @@ export function FormStep5() {
 						)}
 					</GroupedFields>
 				</FormStack>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }
