@@ -5,7 +5,7 @@ import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Radio } from '@ag.ds-next/react/radio';
 import { TextInput } from '@ag.ds-next/react/text-input';
-import { ConditionalFieldContainer } from '../../ConditionalFieldContainer';
+import { Divider } from '@ag.ds-next/react/divider';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -101,39 +101,45 @@ export function StepBusinessDetailsForm() {
 						<Radio {...register('businessStructure')} value="Business">
 							Business
 						</Radio>
-						{showAbn ? (
-							<ConditionalFieldContainer>
-								<TextInput
-									{...register('abn')}
-									autoComplete="on"
-									id="abn"
-									invalid={Boolean(errors.abn?.message)}
-									label="Australian Business Number (ABN)"
-									message={errors.abn?.message}
-									required
-								/>
-							</ConditionalFieldContainer>
-						) : null}
 						<Radio {...register('businessStructure')} value="Company">
 							Company
 						</Radio>
-						{showAcn ? (
-							<ConditionalFieldContainer>
-								<TextInput
-									{...register('acn')}
-									autoComplete="on"
-									id="acn"
-									invalid={Boolean(errors.acn?.message)}
-									label="Australian Company Number (ACN)"
-									message={errors.acn?.message}
-									required
-								/>
-							</ConditionalFieldContainer>
-						) : null}
 						<Radio {...register('businessStructure')} value="Sole trader">
 							Sole trader
 						</Radio>
 					</ControlGroup>
+
+					{showAbn && (
+						<>
+							<Divider />
+
+							<TextInput
+								{...register('abn')}
+								autoComplete="on"
+								id="abn"
+								invalid={Boolean(errors.abn?.message)}
+								label="Australian Business Number (ABN)"
+								message={errors.abn?.message}
+								required
+							/>
+						</>
+					)}
+
+					{showAcn && (
+						<>
+							<Divider />
+
+							<TextInput
+								{...register('acn')}
+								autoComplete="on"
+								id="acn"
+								invalid={Boolean(errors.acn?.message)}
+								label="Australian Company Number (ACN)"
+								message={errors.acn?.message}
+								required
+							/>
+						</>
+					)}
 				</FormStack>
 			</Form>
 		</FormContainer>

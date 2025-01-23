@@ -103,7 +103,7 @@ export const StatusBadge = ({
 		>
 			<Icon
 				aria-hidden="false"
-				aria-label={`Status: ${iconLabel}`}
+				aria-label={`Status: ${iconLabel}.`}
 				color={iconColor}
 			/>
 			<Text
@@ -135,103 +135,103 @@ const toneMap = {
 		borderColor: 'border',
 		icon: ProgressBlockedIcon,
 		iconColor: 'muted',
-		iconLabel: 'cannot start, low emphasis',
+		iconLabel: 'cannot start',
 	},
 	errorHigh: {
 		borderColor: 'error',
 		icon: AlertFilledIcon,
 		iconColor: 'error',
-		iconLabel: 'error, high emphasis',
+		iconLabel: 'error',
 	},
 	errorLow: {
 		borderColor: 'border',
 		icon: AlertCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'error, low emphasis',
+		iconLabel: 'error',
 	},
 	errorMedium: {
 		borderColor: 'error',
 		icon: AlertIcon,
 		iconColor: 'error',
-		iconLabel: 'error, medium emphasis',
+		iconLabel: 'error',
 	},
 	infoHigh: {
 		borderColor: 'info',
 		icon: InfoFilledIcon,
 		iconColor: 'info',
-		iconLabel: 'information, high emphasis',
+		iconLabel: 'information',
 	},
 	infoLow: {
 		borderColor: 'border',
 		icon: InfoIcon,
 		iconColor: 'muted',
-		iconLabel: 'information, low emphasis',
+		iconLabel: 'information',
 	},
 	infoMedium: {
 		borderColor: 'info',
 		icon: InfoIcon,
 		iconColor: 'info',
-		iconLabel: 'information, medium emphasis',
+		iconLabel: 'information',
 	},
 	inProgressLow: {
 		borderColor: 'border',
 		icon: ProgressDoingIcon,
 		iconColor: 'muted',
-		iconLabel: 'in progress, low emphasis',
+		iconLabel: 'in progress',
 	},
 	notStartedLow: {
 		borderColor: 'border',
 		icon: ProgressTodoIcon,
 		iconColor: 'muted',
-		iconLabel: 'not started, low emphasis',
+		iconLabel: 'not started',
 	},
 	pausedLow: {
 		borderColor: 'border',
 		icon: ProgressPausedIcon,
 		iconColor: 'muted',
-		iconLabel: 'paused, low emphasis',
+		iconLabel: 'paused',
 	},
 	successHigh: {
 		borderColor: 'success',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
-		iconLabel: 'success, high emphasis',
+		iconLabel: 'success',
 	},
 	successLow: {
 		borderColor: 'border',
 		icon: SuccessIcon,
 		iconColor: 'muted',
-		iconLabel: 'success, low emphasis',
+		iconLabel: 'success',
 	},
 	successMedium: {
 		borderColor: 'success',
 		icon: SuccessIcon,
 		iconColor: 'success',
-		iconLabel: 'success, medium emphasis',
+		iconLabel: 'success',
 	},
 	unknownLow: {
 		borderColor: 'border',
 		icon: HelpIcon,
 		iconColor: 'muted',
-		iconLabel: 'help, low emphasis',
+		iconLabel: 'help',
 	},
 	warningHigh: {
 		borderColor: 'warning',
 		icon: WarningFilledIcon,
 		iconColor: 'warning',
-		iconLabel: 'warning, high emphasis',
+		iconLabel: 'warning',
 	},
 	warningLow: {
 		borderColor: 'border',
 		icon: WarningCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'warning, low emphasis',
+		iconLabel: 'warning',
 	},
 	warningMedium: {
 		borderColor: 'warning',
 		icon: WarningIcon,
 		iconColor: 'warning',
-		iconLabel: 'warning, medium emphasis',
+		iconLabel: 'warning',
 	},
 } as const;
 
