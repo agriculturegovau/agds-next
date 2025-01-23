@@ -52,7 +52,7 @@ function ControlledDatePicker({
 		initialValueProp
 	);
 
-	function onChange(value: Date | undefined) {
+	function onChange(value: Date | string | undefined) {
 		setValue(value);
 		onChangeProp?.(value);
 	}
@@ -110,7 +110,6 @@ function DatePickerInsideForm({
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}
-						onInputChange={field.onChange}
 						required={required}
 					/>
 				)}
@@ -217,29 +216,6 @@ describe('DatePicker', () => {
 		expect(
 			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
 		).toBeVisible();
-	});
-
-	it('responds to an `onInputChange` callback when a date is invalid', async () => {
-		const onInputChange = jest.fn();
-
-		renderDatePicker({
-			label: 'Example',
-			onInputChange,
-		});
-
-		const user = userEvent.setup();
-
-		const dateString = '01.01.2000';
-
-		// Type in the input field
-		await user.type(await getInput(), dateString);
-		expect(await getInput()).toHaveValue(dateString);
-		await act(() => user.keyboard('{Tab}'));
-
-		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
-
-		// The calendar button trigger should have the default aria-label
-		expect(screen.getByRole('button', { name: `Choose date` })).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
