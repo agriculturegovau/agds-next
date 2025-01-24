@@ -121,10 +121,15 @@ export type StepBusinessAddressFormSchema = z.infer<
 >;
 
 export const stepVehicleRegistrationFormSchema = z.object({
-	registrationNumber: zodString('Vehicle registration number is required').max(
-		6,
-		'Registration number can not be longer than 6 characters'
-	),
+	registrationNumber: z
+		.string()
+		.transform((value) => value.replace(/\s+/g, ''))
+		.pipe(
+			z
+				.string()
+				.min(1, { message: 'Vehicle registration number is required' })
+				.max(6, 'Registration number can not be longer than 6 characters')
+		),
 	registrationExpiry: zodDateField('Registration expiry date is required'),
 });
 
