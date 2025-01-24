@@ -169,7 +169,7 @@ describe('isValidDate', () => {
 	});
 
 	test('returns false for invalid dates', () => {
-		expect(isValidDate(undefined)).toEqual(false);
+		expect(isValidDate()).toEqual(false);
 		expect(isValidDate('')).toEqual(false);
 		expect(isValidDate('50/50/2019')).toEqual(false);
 		expect(isValidDate('50/50/19')).toEqual(false);
