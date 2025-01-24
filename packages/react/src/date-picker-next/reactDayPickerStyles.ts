@@ -76,6 +76,7 @@ export const reactDayPickerStyles = {
 		color: boxPalette.foregroundAction,
 		cursor: 'pointer',
 		height: cellSizeSmall,
+		padding: 0,
 		position: 'relative',
 		textAlign: 'center',
 		verticalAlign: 'middle',
