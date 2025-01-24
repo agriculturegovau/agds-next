@@ -1,10 +1,12 @@
 import {
 	formatDate,
 	formatHumanReadableDate,
-	parseDate,
-	transformValuePropToInputValue,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
+	isValidDate,
+	normaliseDateString,
+	parseDate,
+	transformValuePropToInputValue,
 } from './utils';
 
 describe('parseDate', () => {
@@ -12,6 +14,9 @@ describe('parseDate', () => {
 		expect(parseDate('31/01/1950')).toEqual(new Date(1950, 0, 31));
 		expect(parseDate('9/12/1999')).toEqual(new Date(1999, 11, 9));
 		expect(parseDate('01/01/2000')).toEqual(new Date(2000, 0, 1));
+		expect(parseDate('2025-01-23T23:30:23.954Z')).toEqual(
+			new Date('2025-01-23T23:30:23.954Z')
+		);
 	});
 
 	test('works on partially valid dates', () => {
@@ -32,6 +37,7 @@ describe('parseDate', () => {
 		expect(parseDate('31/01/199')).toEqual(undefined);
 		expect(parseDate('31-01-19')).toEqual(undefined);
 		expect(parseDate('1-2-3')).toEqual(undefined);
+		expect(parseDate('2025-01-23T23:30:23.954AAA')).toEqual(undefined);
 	});
 
 	describe('prefers `dd/mm/yyyy` over `mm/dd/yyyy`', () => {
@@ -150,6 +156,266 @@ describe('transformValuePropToInputValue', () => {
 	});
 });
 
+describe('isValidDate', () => {
+	test('returns true for valid dates', () => {
+		expect(isValidDate(new Date())).toEqual(true);
+		expect(isValidDate('31/01/1950')).toEqual(true);
+		expect(isValidDate('9/12/1999')).toEqual(true);
+		expect(isValidDate('01/01/2000')).toEqual(true);
+		expect(isValidDate('5/2/2000')).toEqual(true);
+		expect(isValidDate('5/10/2000')).toEqual(true);
+		expect(isValidDate('05/4/2000')).toEqual(true);
+		expect(isValidDate('2025-01-23T23:30:23.954Z')).toEqual(true);
+	});
+
+	test('returns false for invalid dates', () => {
+		expect(isValidDate()).toEqual(false);
+		expect(isValidDate('')).toEqual(false);
+		expect(isValidDate('50/50/2019')).toEqual(false);
+		expect(isValidDate('50/50/19')).toEqual(false);
+		expect(isValidDate('31/01/199')).toEqual(false);
+		expect(isValidDate('31-01-19')).toEqual(false);
+		expect(isValidDate('05/4/24')).toEqual(false);
+		expect(isValidDate('5/04/19')).toEqual(false);
+		expect(isValidDate('1-2-3')).toEqual(false);
+		expect(isValidDate('30th of March 2025')).toEqual(false);
+		expect(isValidDate('2025-01-23T23:30:23.954AAA')).toEqual(false);
+	});
+
+	describe('allowedDateFormats', () => {
+		test('returns true for dates in allowed format', () => {
+			expect(
+				isValidDate(new Date(), { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('31-01-1950', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('9-12-1999', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('01-01-2000', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('5-2-2000', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('5-10-2000', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+			expect(
+				isValidDate('05-4-2000', { allowedDateFormats: ['dd-MM-yyyy'] })
+			).toEqual(true);
+		});
+
+		test('returns false for dates in disallowed format', () => {
+			expect(
+				isValidDate('31-01-1950', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+			expect(
+				isValidDate('9-12-1999', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+			expect(
+				isValidDate('01-01-2000', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+			expect(
+				isValidDate('5-2-2000', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+			expect(
+				isValidDate('5-10-2000', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+			expect(
+				isValidDate('05-4-2000', { allowedDateFormats: ['dd MM yyyy'] })
+			).toEqual(false);
+		});
+	});
+
+	describe('fromDate', () => {
+		test('returns true when it’s a valid date', () => {
+			expect(isValidDate(new Date(), { fromDate: new Date() })).toEqual(true);
+			expect(isValidDate('31/01/1950', { fromDate: '31/01/1950' })).toEqual(
+				true
+			);
+			expect(isValidDate('9/12/1999', { fromDate: '9/12/1999' })).toEqual(true);
+			expect(isValidDate('01/01/2000', { fromDate: '01/01/2000' })).toEqual(
+				true
+			);
+			expect(isValidDate('5/2/2000', { fromDate: '5/2/2000' })).toEqual(true);
+			expect(isValidDate('5/10/2000', { fromDate: '5/10/2000' })).toEqual(true);
+			expect(isValidDate('05/4/2000', { fromDate: '05/4/2000' })).toEqual(true);
+			expect(
+				isValidDate('2025-01-23T23:30:23.954Z', {
+					fromDate: '2025-01-23T23:30:23.954Z',
+				})
+			).toEqual(true);
+		});
+
+		test('returns false when it’s an invalid date', () => {
+			expect(isValidDate('01/01/2000', { fromDate: '50/50/2019' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { fromDate: '50/50/19' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { fromDate: '31/01/199' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { fromDate: '31-01-19' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { fromDate: '05/4/24' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { fromDate: '5/04/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { fromDate: '1-2-3' })).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { fromDate: '30th of March 2025' })
+			).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { fromDate: '2025-01-23T23:30:23.954AAA' })
+			).toEqual(false);
+		});
+
+		test('returns false when it’s after the `value`', () => {
+			expect(isValidDate('01/01/2000', { fromDate: '01/01/2001' })).toEqual(
+				false
+			);
+		});
+	});
+
+	describe('toDate', () => {
+		test('returns true when it’s a valid date', () => {
+			expect(isValidDate(new Date(), { toDate: new Date() })).toEqual(true);
+			expect(isValidDate('31/01/1950', { toDate: '31/01/1950' })).toEqual(true);
+			expect(isValidDate('9/12/1999', { toDate: '9/12/1999' })).toEqual(true);
+			expect(isValidDate('01/01/2000', { toDate: '01/01/2000' })).toEqual(true);
+			expect(isValidDate('5/2/2000', { toDate: '5/2/2000' })).toEqual(true);
+			expect(isValidDate('5/10/2000', { toDate: '5/10/2000' })).toEqual(true);
+			expect(isValidDate('05/4/2000', { toDate: '05/4/2000' })).toEqual(true);
+			expect(
+				isValidDate('2025-01-23T23:30:23.954Z', {
+					toDate: '2025-01-23T23:30:23.954Z',
+				})
+			).toEqual(true);
+		});
+
+		test('returns false when it’s an invalid date', () => {
+			expect(isValidDate('01/01/2000', { toDate: '50/50/2019' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { toDate: '50/50/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { toDate: '31/01/199' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { toDate: '31-01-19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { toDate: '05/4/24' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { toDate: '5/04/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { toDate: '1-2-3' })).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { toDate: '30th of March 2025' })
+			).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { toDate: '2025-01-23T23:30:23.954AAA' })
+			).toEqual(false);
+		});
+
+		test('returns false when it’s before the `value`', () => {
+			expect(isValidDate('01/01/2000', { toDate: '01/01/1999' })).toEqual(
+				false
+			);
+		});
+	});
+
+	describe('minDate', () => {
+		test('returns true when it’s a valid date', () => {
+			expect(isValidDate(new Date(), { minDate: new Date() })).toEqual(true);
+			expect(isValidDate('31/01/1950', { minDate: '31/01/1950' })).toEqual(
+				true
+			);
+			expect(isValidDate('9/12/1999', { minDate: '9/12/1999' })).toEqual(true);
+			expect(isValidDate('01/01/2000', { minDate: '01/01/2000' })).toEqual(
+				true
+			);
+			expect(isValidDate('5/2/2000', { minDate: '5/2/2000' })).toEqual(true);
+			expect(isValidDate('5/10/2000', { minDate: '5/10/2000' })).toEqual(true);
+			expect(isValidDate('05/4/2000', { minDate: '05/4/2000' })).toEqual(true);
+			expect(
+				isValidDate('2025-01-23T23:30:23.954Z', {
+					minDate: '2025-01-23T23:30:23.954Z',
+				})
+			).toEqual(true);
+		});
+
+		test('returns false when it’s an invalid date', () => {
+			expect(isValidDate('01/01/2000', { minDate: '50/50/2019' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { minDate: '50/50/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { minDate: '31/01/199' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { minDate: '31-01-19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { minDate: '05/4/24' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { minDate: '5/04/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { minDate: '1-2-3' })).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { minDate: '30th of March 2025' })
+			).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { minDate: '2025-01-23T23:30:23.954AAA' })
+			).toEqual(false);
+		});
+
+		test('returns false when it’s after the `value`', () => {
+			expect(isValidDate('01/01/2000', { minDate: '01/01/2001' })).toEqual(
+				false
+			);
+		});
+	});
+
+	describe('maxDate', () => {
+		test('returns true when it’s a valid date', () => {
+			expect(isValidDate(new Date(), { maxDate: new Date() })).toEqual(true);
+			expect(isValidDate('31/01/1950', { maxDate: '31/01/1950' })).toEqual(
+				true
+			);
+			expect(isValidDate('9/12/1999', { maxDate: '9/12/1999' })).toEqual(true);
+			expect(isValidDate('01/01/2000', { maxDate: '01/01/2000' })).toEqual(
+				true
+			);
+			expect(isValidDate('5/2/2000', { maxDate: '5/2/2000' })).toEqual(true);
+			expect(isValidDate('5/10/2000', { maxDate: '5/10/2000' })).toEqual(true);
+			expect(isValidDate('05/4/2000', { maxDate: '05/4/2000' })).toEqual(true);
+			expect(
+				isValidDate('2025-01-23T23:30:23.954Z', {
+					maxDate: '2025-01-23T23:30:23.954Z',
+				})
+			).toEqual(true);
+		});
+
+		test('returns false when it’s an invalid date', () => {
+			expect(isValidDate('01/01/2000', { maxDate: '50/50/2019' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { maxDate: '50/50/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { maxDate: '31/01/199' })).toEqual(
+				false
+			);
+			expect(isValidDate('01/01/2000', { maxDate: '31-01-19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { maxDate: '05/4/24' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { maxDate: '5/04/19' })).toEqual(false);
+			expect(isValidDate('01/01/2000', { maxDate: '1-2-3' })).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { maxDate: '30th of March 2025' })
+			).toEqual(false);
+			expect(
+				isValidDate('01/01/2000', { maxDate: '2025-01-23T23:30:23.954AAA' })
+			).toEqual(false);
+		});
+
+		test('returns false when it’s before the `value`', () => {
+			expect(isValidDate('01/01/2000', { maxDate: '01/01/1999' })).toEqual(
+				false
+			);
+		});
+	});
+});
+
 describe('getCalendarDefaultMonth', () => {
 	test('returns undefined when no props are set', () => {
 		const valueProp = undefined;
@@ -243,5 +509,24 @@ describe('getDateInputButtonAriaLabel', () => {
 		expect(
 			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'end' })
 		).toEqual('Change end date, 5th June 2010 Saturday');
+	});
+});
+
+describe('normaliseDateString', () => {
+	test('works on valid dates', () => {
+		expect(normaliseDateString('2025-01-23T23:30:23.954Z')).toEqual(
+			new Date('2025-01-23T23:30:23.954Z')
+		);
+	});
+
+	test('works on invalid dates and invalid formats', () => {
+		expect(normaliseDateString('50/50/2019')).toEqual(undefined);
+		expect(normaliseDateString('50/50/19')).toEqual(undefined);
+		expect(normaliseDateString('31/01/199')).toEqual(undefined);
+		expect(normaliseDateString('31-01-19')).toEqual(undefined);
+		expect(normaliseDateString('1-2-3')).toEqual(undefined);
+		expect(normaliseDateString('2025-01-23T23:30:23.954AAA')).toEqual(
+			undefined
+		);
 	});
 });

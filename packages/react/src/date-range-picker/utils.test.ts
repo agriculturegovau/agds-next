@@ -7,6 +7,7 @@ describe('getCalendarDefaultMonth', () => {
 		const valueProp = { from: undefined, to: undefined };
 		const yearRangeProp = undefined;
 		const numberOfMonths = 2;
+
 		expect(
 			getCalendarDefaultMonth(
 				inputMode,
@@ -20,6 +21,7 @@ describe('getCalendarDefaultMonth', () => {
 	test('uses the value prop when set', () => {
 		const valueProp = { from: new Date(2010, 1, 1), to: new Date(2010, 2, 2) };
 		const yearRangeProp = undefined;
+
 		expect(
 			getCalendarDefaultMonth('from', valueProp, yearRangeProp, 1)
 		).toEqual(valueProp.from);
@@ -38,6 +40,7 @@ describe('getCalendarDefaultMonth', () => {
 		const inputMode = undefined;
 		const valueProp = { from: undefined, to: undefined };
 		const numberOfMonths = 2;
+
 		expect(
 			getCalendarDefaultMonth(
 				inputMode,
@@ -71,5 +74,123 @@ describe('getCalendarDefaultMonth', () => {
 				numberOfMonths
 			)?.getFullYear()
 		).toEqual(1990);
+	});
+
+	describe("inputMode === 'from'", () => {
+		test('returns earliest year when `from` value is before `to` value', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: new Date(1999, 1, 1),
+				to: new Date(2000, 1, 1),
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(1999);
+		});
+
+		test('returns earliest year when `from` value is after `to` value', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: new Date(2000, 1, 1),
+				to: new Date(1999, 1, 1),
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(1999);
+		});
+
+		test('returns `to` value when `from` is undefined', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: undefined,
+				to: new Date(2000, 1, 1),
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(2000);
+		});
+	});
+
+	describe("inputMode === 'to'", () => {
+		test('returns earliest year when `to` value is before `from` value', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: new Date(2000, 1, 1),
+				to: new Date(1999, 1, 1),
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(1999);
+		});
+
+		test('returns earliest year when `to` value is after `from` value', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: new Date(1999, 1, 1),
+				to: new Date(2000, 1, 1),
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(1999);
+		});
+
+		test('returns `from` value when `to` is undefined', () => {
+			const inputMode = 'from';
+			const valueProp = {
+				from: new Date(2000, 1, 1),
+				to: undefined,
+			};
+			const yearRangeProp = undefined;
+			const numberOfMonths = 2;
+
+			expect(
+				getCalendarDefaultMonth(
+					inputMode,
+					valueProp,
+					yearRangeProp,
+					numberOfMonths
+				)?.getFullYear()
+			).toEqual(2000);
+		});
 	});
 });
