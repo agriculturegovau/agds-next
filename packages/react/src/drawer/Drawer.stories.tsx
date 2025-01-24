@@ -6,7 +6,7 @@ import { ComboboxMulti, DefaultComboboxOption } from '../combobox';
 import { ControlGroup } from '../control-group';
 import { useTernaryState } from '../core';
 import { DatePicker } from '../date-picker';
-import { DateRangePicker, DateRangeWithString } from '../date-range-picker';
+import { DateRangePicker, DateRange } from '../date-range-picker';
 import { Divider } from '../divider';
 import { Fieldset } from '../fieldset';
 import { FormStack } from '../form-stack';
@@ -348,7 +348,7 @@ export const FiltersWithFieldsets: Story = {
 			radio: string;
 			select: string;
 			datePicker: Date | string | undefined;
-			dateRangePicker: DateRangeWithString;
+			dateRangePicker: DateRange;
 			comboboxMulti: DefaultComboboxOption[];
 		};
 
@@ -498,9 +498,6 @@ export const FiltersWithFieldsets: Story = {
 									hideOptionalLabel
 									label="Example filter"
 									onChange={(value) => updateFormState({ datePicker: value })}
-									onInputChange={(value) =>
-										updateFormState({ datePicker: value })
-									}
 									value={formState.datePicker}
 								/>
 								<DateRangePicker
@@ -508,22 +505,6 @@ export const FiltersWithFieldsets: Story = {
 									legend="Example filter"
 									onChange={(value) =>
 										updateFormState({ dateRangePicker: value })
-									}
-									onFromInputChange={(from) =>
-										updateFormState({
-											dateRangePicker: {
-												from,
-												to: formState.dateRangePicker.to,
-											},
-										})
-									}
-									onToInputChange={(to) =>
-										updateFormState({
-											dateRangePicker: {
-												from: formState.dateRangePicker.from,
-												to,
-											},
-										})
 									}
 									value={formState.dateRangePicker}
 								/>
@@ -620,9 +601,6 @@ export const WithForm: Story = {
 								hideOptionalLabel
 								label="Example date input"
 								onChange={(value) => updateFormState({ datePicker: value })}
-								onInputChange={(value) =>
-									updateFormState({ datePicker: value })
-								}
 								value={formState.datePicker}
 							/>
 						</FormStack>

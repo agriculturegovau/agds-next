@@ -59,16 +59,6 @@ export const ListFiltering = () => {
 								fromLabel="Registered from"
 								hideOptionalLabel
 								onChange={(requestDate) => setFilter({ requestDate })}
-								onFromInputChange={(from) =>
-									setFilter({
-										requestDate: { ...filters.requestDate, from },
-									})
-								}
-								onToInputChange={(to) =>
-									setFilter({
-										requestDate: { ...filters.requestDate, to },
-									})
-								}
 								toLabel="Registered to"
 								value={filters.requestDate}
 							/>

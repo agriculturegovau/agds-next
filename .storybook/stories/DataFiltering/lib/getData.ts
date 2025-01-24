@@ -1,4 +1,4 @@
-import { DateRangeWithString } from '../../../../packages/react/src/date-range-picker';
+import { DateRange } from '../../../../packages/react/src/date-range-picker';
 import {
 	generateBusinessData,
 	BusinessForAudit,
@@ -24,7 +24,7 @@ export type GetDataFilters = {
 	assignee: string | undefined;
 	businessName: string | undefined;
 	state: string | undefined;
-	requestDate: DateRangeWithString;
+	requestDate: DateRange;
 	status: BusinessForAuditStatus | undefined;
 	services: string[] | undefined;
 	destinations: string[] | undefined;

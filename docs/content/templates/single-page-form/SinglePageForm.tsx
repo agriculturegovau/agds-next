@@ -178,38 +178,38 @@ const SinglePageForm = () => {
 					</PageAlert>
 				)}
 				<Fieldset
-					legend={<H2>Business details (H2)</H2>}
 					hint="Supporting information for provide details subheading - sm/default"
+					legend={<H2>Business details (H2)</H2>}
 				>
 					<FormStack>
 						<TextInput
 							label="Australian Business Number (ABN)"
 							{...register('abn')}
 							id="abn"
+							inputMode="numeric"
 							invalid={Boolean(errors.abn?.message)}
 							message={errors.abn?.message}
-							required
-							inputMode="numeric"
 							pattern="[0-9]*"
+							required
 						/>
 						<TextInput
 							label="Australian Company Number (ACN)"
 							{...register('acn')}
 							id="acn"
+							inputMode="numeric"
 							invalid={Boolean(errors.acn?.message)}
 							message={errors.acn?.message}
-							required
-							inputMode="numeric"
 							pattern="[0-9]*"
+							required
 						/>
 						<TextInput
 							label="Business name"
 							{...register('businessName')}
 							id="businessName"
 							invalid={Boolean(errors.businessName?.message)}
+							maxWidth="xl"
 							message={errors.businessName?.message}
 							required
-							maxWidth="xl"
 						/>
 						<Controller
 							control={control}
@@ -219,7 +219,6 @@ const SinglePageForm = () => {
 									inputRef={ref}
 									label="Registration date"
 									{...field}
-									onInputChange={field.onChange}
 									id="registrationDate"
 									invalid={Boolean(errors.registrationDate?.message)}
 									message={errors.registrationDate?.message}
@@ -230,8 +229,8 @@ const SinglePageForm = () => {
 				</Fieldset>
 				<Divider />
 				<Fieldset
-					legend={<H2>Provide entity details (H2)</H2>}
 					hint="Supporting information for provide details subheading - sm/default"
+					legend={<H2>Provide entity details (H2)</H2>}
 				>
 					<FormStack>
 						<TextInput
@@ -246,32 +245,28 @@ const SinglePageForm = () => {
 							label="Entity number"
 							{...register('entityNumber')}
 							id="entityNumber"
+							inputMode="numeric"
 							invalid={Boolean(errors.entityNumber?.message)}
 							message={errors.entityNumber?.message}
-							required
-							inputMode="numeric"
 							pattern="[0-9]*"
+							required
 						/>
 						<Controller
 							control={control}
 							name="periodActive"
 							render={({ field: { ref, value, onChange, ...field } }) => (
 								<DateRangePicker
-									legend="Period active"
 									fromInputRef={ref}
+									legend="Period active"
 									{...field}
 									id="periodActive"
-									value={value}
-									onChange={onChange}
-									onFromInputChange={(from) => onChange({ ...value, from })}
-									onToInputChange={(to) => onChange({ ...value, to })}
-									fromInvalid={Boolean(errors.periodActive?.from?.message)}
-									toInvalid={Boolean(errors.periodActive?.to?.message)}
 									message={
 										errors.periodActive?.from?.message ||
 										errors.periodActive?.to?.message
 									}
+									onChange={onChange}
 									required
+									value={value}
 								/>
 							)}
 						/>
@@ -345,9 +340,9 @@ const SinglePageForm = () => {
 									{...register('postalAddress')}
 									id="postalAddress"
 									invalid={Boolean(errors.postalAddress?.message)}
+									maxWidth="xl"
 									message={errors.postalAddress?.message}
 									required
-									maxWidth="xl"
 								/>
 								<TextInput
 									label="Suburb, town or city"
@@ -361,7 +356,9 @@ const SinglePageForm = () => {
 									label="State or territory"
 									{...register('postalState')}
 									id="postalState"
-									placeholder="Select"
+									invalid={Boolean(errors.postalState?.message)}
+									maxWidth="md"
+									message={errors.postalState?.message}
 									options={[
 										{ label: 'NSW', value: 'nsw' },
 										{ label: 'QLD', value: 'qld' },
@@ -372,21 +369,19 @@ const SinglePageForm = () => {
 										{ label: 'SA', value: 'sa' },
 										{ label: 'WA', value: 'wa' },
 									]}
-									invalid={Boolean(errors.postalState?.message)}
-									message={errors.postalState?.message}
+									placeholder="Select"
 									required
-									maxWidth="md"
 								/>
 								<TextInput
 									label="Postcode"
 									{...register('postalPostcode')}
 									id="postalPostcode"
-									invalid={Boolean(errors.postalPostcode?.message)}
-									message={errors.postalPostcode?.message}
-									maxWidth="sm"
-									required
 									inputMode="numeric"
+									invalid={Boolean(errors.postalPostcode?.message)}
+									maxWidth="sm"
+									message={errors.postalPostcode?.message}
 									pattern="[0-9]*"
+									required
 								/>
 							</FormStack>
 						)}
@@ -394,7 +389,7 @@ const SinglePageForm = () => {
 				</Fieldset>
 				<Divider />
 				<ButtonGroup>
-					<Button type="submit" loading={isSubmitting}>
+					<Button loading={isSubmitting} type="submit">
 						Submit form
 					</Button>
 					<Button type="button" variant="secondary">
@@ -422,13 +417,13 @@ export const SinglePageFormPage = () => {
 						/>
 						<Stack gap={1.5}>
 							<H1>Single-page form (multi-question) xxl/display (H1)</H1>
-							<Text as="p" fontSize="md" color="muted">
+							<Text as="p" color="muted" fontSize="md">
 								Introductory paragraph providing context for this single page of
 								the multi-step form. All questions on page must be related -
 								md/default (P)
 							</Text>
 						</Stack>
-						<Text fontSize="xs" color="muted">
+						<Text color="muted" fontSize="xs">
 							All fields are required unless marked optional.
 						</Text>
 						<SinglePageForm />

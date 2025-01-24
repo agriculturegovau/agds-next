@@ -159,8 +159,6 @@ export function FormStep5() {
 										  errors.tradingPeriod?.to?.message
 								}
 								onChange={onChange}
-								onFromInputChange={(from) => onChange({ ...value, from })}
-								onToInputChange={(to) => onChange({ ...value, to })}
 								required
 								toInputRef={tradingPeriodToRef}
 								toInvalid={

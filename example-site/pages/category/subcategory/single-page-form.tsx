@@ -225,7 +225,6 @@ const SinglePageForm = () => {
 									invalid={Boolean(errors.registrationDate?.message)}
 									label="Registration date"
 									message={errors.registrationDate?.message}
-									onInputChange={field.onChange}
 								/>
 							)}
 						/>
@@ -270,8 +269,6 @@ const SinglePageForm = () => {
 										errors.periodActive?.to?.message
 									}
 									onChange={onChange}
-									onFromInputChange={(from) => onChange({ ...value, from })}
-									onToInputChange={(to) => onChange({ ...value, to })}
 									required
 									toInvalid={Boolean(errors.periodActive?.to?.message)}
 									value={value}

@@ -5,7 +5,6 @@ import {
 	DateRangePicker as _DateRangePicker,
 	DateRangePickerProps as _DateRangePickerProps,
 	DateRange as _DateRange,
-	DateRangeWithString as _DateRangeWithString,
 } from '../date-range-picker';
 
 export { isValidDate } from './utils';
@@ -33,11 +32,3 @@ export type DateRangePickerProps = _DateRangePickerProps;
  * This will be removed in the next major version.
  */
 export type DateRange = _DateRange;
-
-/**
- * @deprecated This type has been moved.
- * Use `DateRangeWithString` from the `date-range-picker` entrypoint instead.
- * Example: `import { DateRangeWithString } from '@ag.ds-next/react/date-range-picker'`".
- * This will be removed in the next major version.
- */
-export type DateRangeWithString = _DateRangeWithString;

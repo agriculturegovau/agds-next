@@ -190,20 +190,10 @@ export const DashboardFilterDrawer = ({
 							onChange={({ from, to }) =>
 								setFormState((prevFormState) => ({
 									...prevFormState,
+									// @ts-expect-error Property 'toISOString' does not exist on type 'string | Date'
 									lastActiveFrom: from?.toISOString(),
+									// @ts-expect-error Property 'toISOString' does not exist on type 'string | Date'
 									lastActiveTo: to?.toISOString(),
-								}))
-							}
-							onFromInputChange={(from) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveFrom: from,
-								}))
-							}
-							onToInputChange={(to) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveTo: to,
 								}))
 							}
 							required

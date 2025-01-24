@@ -5,25 +5,17 @@ import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
 import {
+	DateRange,
 	DateRangePicker,
 	DateRangePickerProps,
-	DateRangeWithString,
 } from './DateRangePicker';
 
 function ControlledDateRangePicker(props: DateRangePickerProps) {
-	const [range, setRange] = useState<DateRangeWithString>({
+	const [range, setRange] = useState<DateRange>({
 		from: undefined,
 		to: undefined,
 	});
-	return (
-		<DateRangePicker
-			{...props}
-			onChange={setRange}
-			onFromInputChange={(from) => setRange((range) => ({ ...range, from }))}
-			onToInputChange={(to) => setRange((range) => ({ ...range, to }))}
-			value={range}
-		/>
-	);
+	return <DateRangePicker {...props} onChange={setRange} value={range} />;
 }
 
 const meta: Meta<typeof DateRangePicker> = {
@@ -146,19 +138,13 @@ export const ScrollExample: Story = {
 
 export const ClearableExample: Story = {
 	render: function Render(props) {
-		const [range, setRange] = useState<DateRangeWithString>({
+		const [range, setRange] = useState<DateRange>({
 			from: undefined,
 			to: undefined,
 		});
 		return (
 			<Stack alignItems="flex-start" gap={4}>
-				<DateRangePicker
-					{...props}
-					onChange={setRange}
-					onFromInputChange={(from) => setRange({ ...range, from })}
-					onToInputChange={(to) => setRange({ ...range, to })}
-					value={range}
-				/>
+				<DateRangePicker {...props} onChange={setRange} value={range} />
 				<ButtonGroup>
 					<Button
 						onClick={() =>

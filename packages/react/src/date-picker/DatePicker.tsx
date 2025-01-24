@@ -96,7 +96,6 @@ export const DatePicker = ({
 	minDate,
 	onBlur: onBlurProp,
 	onChange,
-	onInputChange: onInputChangeProp,
 	value,
 	yearRange,
 	...props
