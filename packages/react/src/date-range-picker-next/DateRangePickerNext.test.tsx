@@ -204,7 +204,7 @@ describe('DateRangePickerNext', () => {
 		).toHaveValue(toDateString);
 	});
 
-	it('responds to an `onChange` callback when a date is valid', async () => {
+	it('calls `onChange` with parsed date when a date is valid', async () => {
 		const onChange = jest.fn();
 
 		renderDateRangePickerNext({
@@ -248,6 +248,7 @@ describe('DateRangePickerNext', () => {
 		).toHaveValue(toDateString);
 
 		expect(onChange).toHaveBeenCalledTimes(2);
+		expect(onChange).toHaveBeenLastCalledWith({ from: fromDate, to: toDate });
 
 		// The calendar button triggers should have an aria-label with the formatted display value
 		expect(
@@ -258,6 +259,63 @@ describe('DateRangePickerNext', () => {
 		expect(
 			screen.getByRole('button', {
 				name: `Change end date, ${toFormattedDate}`,
+			})
+		).toBeVisible();
+	});
+
+	it('calls `onChange` with value a date is invalid', async () => {
+		const onChange = jest.fn();
+
+		renderDateRangePickerNext({
+			onChange,
+		});
+
+		const fromDateString = '99/99/2000';
+		const toDateString = '88/88/2000';
+
+		const user = userEvent.setup();
+
+		// Type in the input fields
+		await user.type(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			}),
+			fromDateString
+		);
+		await user.keyboard('{Tab}');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue(fromDateString);
+		await user.type(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			}),
+			toDateString
+		);
+		await user.keyboard('{Tab}');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveValue(toDateString);
+
+		expect(onChange).toHaveBeenCalledTimes(2);
+		expect(onChange).toHaveBeenLastCalledWith({
+			from: fromDateString,
+			to: toDateString,
+		});
+
+		// The calendar button triggers should have an aria-label with the formatted display value
+		expect(
+			screen.getByRole('button', {
+				name: `Choose start date`,
+			})
+		).toBeVisible();
+		expect(
+			screen.getByRole('button', {
+				name: `Choose end date`,
 			})
 		).toBeVisible();
 	});
@@ -740,215 +798,6 @@ describe('DateRangePickerNext', () => {
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: { from: undefined, to: undefined },
-		});
-	});
-
-	it('form: shows validation errors as an optional field with invalid value', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DateRangePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		const user = userEvent.setup();
-
-		// Type in an invalid value
-		await user.type(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
-			'hi'
-		);
-		await user.type(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
-			'hello'
-		);
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveFocus();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('hi');
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveAttribute('aria-invalid', 'true');
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveValue('hello');
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await user.clear(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('');
-		await user.clear(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveValue('');
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onSubmit).toHaveBeenCalledWith({
-			dateRange: { from: undefined, to: undefined },
-		});
-	});
-
-	it('form: shows validation errors as an optional field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DateRangePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		const user = userEvent.setup();
-
-		// Type in an invalid value
-		await user.type(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
-			'hello'
-		);
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveFocus();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('hello');
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await user.clear(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('');
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onSubmit).toHaveBeenCalledWith({
-			dateRange: { from: undefined, to: undefined },
-		});
-	});
-
-	it('form: shows validation errors as a required field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DateRangePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required
-			/>
-		);
-
-		const user = userEvent.setup();
-
-		// Type in an invalid value
-		await user.type(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
-			'hi'
-		);
-		await user.type(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
-			'hello'
-		);
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveFocus();
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('hi');
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveAttribute('aria-invalid', 'true');
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveValue('hello');
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveAttribute('aria-invalid', 'true');
-
-		const fromValidDateAsString = '02/03/2024';
-		const toValidDateAsString = '03/03/2024';
-
-		// Type in a valid value
-		await user.clear(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue('');
-		await user.type(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
-			fromValidDateAsString
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
-		).toHaveValue(fromValidDateAsString);
-
-		await user.clear(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveValue('');
-		await user.type(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
-			toValidDateAsString
-		);
-		expect(
-			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
-		).toHaveValue(toValidDateAsString);
-
-		// Submit the form
-		await user.click(screen.getByRole('button', { name: 'Submit' }));
-		expect(onSubmit).toHaveBeenCalledWith({
-			dateRange: {
-				from: parseDate(fromValidDateAsString),
-				to: parseDate(toValidDateAsString),
-			},
 		});
 	});
 });

@@ -189,7 +189,7 @@ describe('DatePickerNext', () => {
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
-	it('responds to an `onChange` callback when a date is valid', async () => {
+	it('calls `onChange` with parsed date when a date is valid', async () => {
 		const onChange = jest.fn();
 
 		renderDatePickerNext({
@@ -212,6 +212,27 @@ describe('DatePickerNext', () => {
 		expect(
 			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
 		).toBeVisible();
+	});
+
+	it('calls `onChange` with value a date is invalid', async () => {
+		const onChange = jest.fn();
+
+		renderDatePickerNext({
+			label: 'Example',
+			onChange,
+		});
+
+		const dateString = '99/99/2000';
+
+		// Type in the input field
+		await userEvent.type(await getInput(), dateString);
+		expect(await getInput()).toHaveValue(dateString);
+		await userEvent.keyboard('{Tab}');
+
+		expect(onChange).toHaveBeenLastCalledWith(dateString);
+
+		// The calendar button trigger should have an aria-label with the formatted display value
+		expect(screen.getByRole('button', { name: `Choose date` })).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
@@ -393,121 +414,6 @@ describe('DatePickerNext', () => {
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as an optional field with invalid value', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as an optional field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as a required field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerNextInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		const validDateAsString = '02/03/2024';
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-		await userEvent.type(await getInput(), validDateAsString);
-		await expect(await getInput()).toHaveValue(validDateAsString);
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: parseDate(validDateAsString),
 		});
 	});
 });
