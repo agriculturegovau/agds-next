@@ -74,7 +74,7 @@ export function getCalendarDefaultMonth(
 
 export const getHoverRange = (
 	inputMode?: 'from' | 'to',
-	hoveredDay?: string, // ISOString
+	hoveredDayISO?: string,
 	fromDate?: Date,
 	toDate?: Date
 ) => {
@@ -82,22 +82,22 @@ export const getHoverRange = (
 
 	let startRangeDate;
 	let endRangeDate;
-	const hoveredDayAsDate = hoveredDay && new Date(hoveredDay);
+	const hoveredDayISOAsDate = hoveredDayISO && new Date(hoveredDayISO);
 
 	if (inputMode === 'from') {
 		startRangeDate =
-			hoveredDayAsDate && fromDate && hoveredDayAsDate < fromDate
-				? hoveredDayAsDate
-				: fromDate || hoveredDayAsDate;
+			hoveredDayISOAsDate && fromDate && hoveredDayISOAsDate < fromDate
+				? hoveredDayISOAsDate
+				: fromDate || hoveredDayISOAsDate;
 		endRangeDate = toDate;
 	}
 
 	if (inputMode === 'to') {
 		startRangeDate = fromDate;
 		endRangeDate =
-			hoveredDayAsDate && toDate && hoveredDayAsDate > toDate
-				? hoveredDayAsDate
-				: hoveredDayAsDate || toDate;
+			hoveredDayISOAsDate && toDate && hoveredDayISOAsDate > toDate
+				? hoveredDayISOAsDate
+				: hoveredDayISOAsDate || toDate;
 	}
 
 	if (!startRangeDate || !endRangeDate) return range;
