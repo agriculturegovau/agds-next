@@ -1,4 +1,13 @@
-import { addMonths, closestTo, isAfter, isBefore, subMonths } from 'date-fns';
+import {
+	addDays,
+	addMonths,
+	closestTo,
+	differenceInDays,
+	isAfter,
+	isBefore,
+	subDays,
+	subMonths,
+} from 'date-fns';
 
 // The default calendar month is the first month to display when the date picker is opened
 export function getCalendarDefaultMonth(
@@ -62,3 +71,53 @@ export function getCalendarDefaultMonth(
 
 	return value;
 }
+
+export const getHoverRange = (
+	inputMode?: 'from' | 'to',
+	hoveredDay?: string, // ISOString
+	fromDate?: Date,
+	toDate?: Date
+) => {
+	const range: Record<string, boolean> = {};
+
+	let startRangeDate;
+	let endRangeDate;
+	const hoveredDayAsDate = hoveredDay && new Date(hoveredDay);
+
+	if (inputMode === 'from') {
+		startRangeDate =
+			hoveredDayAsDate && fromDate && hoveredDayAsDate < fromDate
+				? hoveredDayAsDate
+				: fromDate || hoveredDayAsDate;
+		endRangeDate = toDate;
+	}
+
+	if (inputMode === 'to') {
+		startRangeDate = fromDate;
+		endRangeDate =
+			hoveredDayAsDate && toDate && hoveredDayAsDate > toDate
+				? hoveredDayAsDate
+				: hoveredDayAsDate || toDate;
+	}
+
+	if (!startRangeDate || !endRangeDate) return range;
+
+	const diffCount = differenceInDays(endRangeDate, startRangeDate);
+
+	if (diffCount < 1) return range;
+
+	if (diffCount > 60) {
+		if (inputMode === 'from') {
+			endRangeDate = addDays(startRangeDate, 60);
+		} else {
+			startRangeDate = subDays(endRangeDate, 60);
+		}
+	}
+
+	while (startRangeDate < endRangeDate) {
+		range[startRangeDate.toISOString()] = true;
+		startRangeDate = addDays(startRangeDate, 1);
+	}
+
+	return range;
+};

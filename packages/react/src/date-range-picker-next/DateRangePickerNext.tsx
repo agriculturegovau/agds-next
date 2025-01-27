@@ -37,7 +37,7 @@ import {
 import { CalendarRange } from '../date-picker-next/Calendar';
 import { CalendarProvider } from '../date-picker-next/CalendarContext';
 import { DateInput } from '../date-picker-next/DatePickerInput';
-import { getCalendarDefaultMonth } from './utils';
+import { getCalendarDefaultMonth, getHoverRange } from './utils';
 
 export type DateRange = {
 	from: Date | string | undefined;
@@ -338,14 +338,12 @@ export const DateRangePickerNext = ({
 
 	const hoverRange = useCallback(
 		() =>
-			inputMode === 'to'
-				? getRange(valueAsDateOrUndefined.from, hoveredDay)
-				: inputMode === 'from'
-				? getRange(
-						hoveredDay,
-						valueAsDateOrUndefined.to || valueAsDateOrUndefined.from
-				  )
-				: {},
+			getHoverRange(
+				inputMode,
+				hoveredDay,
+				valueAsDateOrUndefined.from,
+				valueAsDateOrUndefined.to
+			),
 		[hoveredDay, inputMode, valueAsDateOrUndefined]
 	);
 
@@ -512,16 +510,3 @@ export function useDateRangePickerNextIds(idProp?: string) {
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
 }
-
-const getRange = (startDate?: Date | string, endDate?: Date | string) => {
-	const range: Record<string, boolean> = {};
-	if (startDate && endDate) {
-		let current = addDays(new Date(startDate), 1);
-		const endDateAsDate = new Date(endDate);
-		while (current < endDateAsDate) {
-			range[current.toISOString()] = true;
-			current = addDays(current, 1);
-		}
-	}
-	return range;
-};
