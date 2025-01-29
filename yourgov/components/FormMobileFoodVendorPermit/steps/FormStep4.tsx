@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DatePickerNext } from '@ag.ds-next/react/date-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Stack } from '@ag.ds-next/react/stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
@@ -73,7 +73,7 @@ export function FormStep4() {
 						control={control}
 						name="registrationExpiry"
 						render={({ field: { ref, ...field } }) => (
-							<DatePicker
+							<DatePickerNext
 								{...field}
 								id="registrationExpiry"
 								inputRef={ref}

@@ -1,10 +1,13 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { FormStack } from '@ag.ds-next/react/src/form-stack';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	DateRangePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-range-picker-next';
 import {
 	GetDataFilters,
 	StaffMemberRole,
@@ -72,6 +75,29 @@ export const DashboardFilterDrawer = ({
 					[trainingCompletedType]: event.target.checked,
 				},
 			}));
+
+	const isFromInvalid = useCallback((value: Date, otherDate: Date) => {
+		return value ? !isValidDate(value, { toDate: otherDate }) : false;
+	}, []);
+
+	const isToInvalid = useCallback((value: Date, otherDate: Date) => {
+		return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+	}, []);
+
+	const fromInvalid =
+		formState.lastActiveFrom && formState.lastActiveTo
+			? isFromInvalid(
+					new Date(formState.lastActiveFrom),
+					new Date(formState.lastActiveTo)
+			  )
+			: false;
+	const toInvalid =
+		formState.lastActiveFrom && formState.lastActiveTo
+			? isToInvalid(
+					new Date(formState.lastActiveTo),
+					new Date(formState.lastActiveFrom)
+			  )
+			: false;
 
 	return (
 		<SortAndFilterProvider
@@ -184,29 +210,30 @@ export const DashboardFilterDrawer = ({
 							</Checkbox>
 						</ControlGroup>
 
-						<DateRangePicker
+						<DateRangePickerNext
+							fromInvalid={fromInvalid}
 							fromLabel="From date"
 							legend="Last active"
-							onChange={({ from, to }) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveFrom: from?.toISOString(),
-									lastActiveTo: to?.toISOString(),
-								}))
+							message={
+								fromInvalid && toInvalid
+									? 'Enter valid start and end dates'
+									: fromInvalid
+									? 'Enter a valid start date'
+									: toInvalid
+									? 'Enter a valid end date'
+									: undefined
 							}
-							onFromInputChange={(from) =>
+							onChange={(dateRange) =>
 								setFormState((prevFormState) => ({
 									...prevFormState,
-									lastActiveFrom: from,
-								}))
-							}
-							onToInputChange={(to) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveTo: to,
+									lastActiveFrom:
+										dateRange.from && new Date(dateRange.from).toISOString(),
+									lastActiveTo:
+										dateRange.to && new Date(dateRange.to).toISOString(),
 								}))
 							}
 							required
+							toInvalid={toInvalid}
 							toLabel="To date"
 							value={{
 								from: formState.lastActiveFrom,

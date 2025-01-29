@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	DateRangePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-range-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -143,32 +146,46 @@ export function FormStep5() {
 					<Controller
 						control={control}
 						name="tradingPeriod"
-						render={({ field: { ref, value, onChange, ...field } }) => (
-							<DateRangePicker
-								{...field}
-								fromInputRef={tradingPeriodFromRef}
-								fromInvalid={
-									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
-								}
-								id="tradingPeriod"
-								legend="Trading period"
-								message={
-									hasErrors.tradingPeriod.both
-										? 'Start date and End date is required'
-										: errors.tradingPeriod?.from?.message ||
-										  errors.tradingPeriod?.to?.message
-								}
-								onChange={onChange}
-								onFromInputChange={(from) => onChange({ ...value, from })}
-								onToInputChange={(to) => onChange({ ...value, to })}
-								required
-								toInputRef={tradingPeriodToRef}
-								toInvalid={
-									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
-								}
-								value={value}
-							/>
-						)}
+						render={({ field: { ref, value, onChange, ...field } }) => {
+							const isFromInvalid = (value: Date, otherDate: Date) => {
+								return value
+									? !isValidDate(value, { toDate: otherDate })
+									: false;
+							};
+
+							const isToInvalid = (value: Date, otherDate: Date) => {
+								return value
+									? !isValidDate(value, { fromDate: otherDate })
+									: false;
+							};
+
+							const fromInvalid = isFromInvalid(value.from, value.to);
+							const toInvalid = isToInvalid(value.to, value.from);
+
+							return (
+								<DateRangePickerNext
+									{...field}
+									fromInputRef={tradingPeriodFromRef}
+									fromInvalid={fromInvalid}
+									id="tradingPeriod"
+									legend="Trading period"
+									message={
+										fromInvalid && toInvalid
+											? 'Enter valid start and end dates'
+											: fromInvalid
+											? 'Enter a valid start date'
+											: toInvalid
+											? 'Enter a valid end date'
+											: undefined
+									}
+									onChange={onChange}
+									required
+									toInputRef={tradingPeriodToRef}
+									toInvalid={toInvalid}
+									value={value}
+								/>
+							);
+						}}
 					/>
 					<GroupedFields
 						field1Invalid={hasErrors.hours.both || hasErrors.hours.from}
