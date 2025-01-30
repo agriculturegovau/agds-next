@@ -103,10 +103,6 @@ const Page: NextPageWithLayout = () => {
 								<Card as="li" clickable key={idx} shadow>
 									<CardInner>
 										<Stack gap={1}>
-											<Flex gap={0.5}>
-												<Tag>{linkedBusinesses.abn}</Tag>
-												<Text>ABN</Text>
-											</Flex>
 											<H3>
 												<CardLink
 													href={businessHref}
@@ -117,6 +113,10 @@ const Page: NextPageWithLayout = () => {
 													{linkedBusinesses.name}
 												</CardLink>
 											</H3>
+											<Flex gap={0.5}>
+												<Text>ABN</Text>
+												<Tag>{linkedBusinesses.abn}</Tag>
+											</Flex>
 											<Text>Role: {linkedBusinesses.role}</Text>
 										</Stack>
 									</CardInner>
