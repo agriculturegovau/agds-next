@@ -12,21 +12,18 @@ import {
 import { SelectSingleEventHandler } from 'react-day-picker';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
-import {
-	acceptedDateFormats,
-	getCalendarDefaultMonth,
-	getDateInputButtonAriaLabel,
-	normaliseDateString,
-	type AcceptedDateFormats,
-} from '../date-picker-next/utils';
-import { DateInput } from '../date-picker-next/DatePickerInput';
+import { asDate } from './utils';
 import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
+import { DateInput } from './DatePickerInput';
 import {
-	constrainDate,
+	acceptedDateFormats,
 	formatDate,
+	getCalendarDefaultMonth,
+	getDateInputButtonAriaLabel,
 	parseDate,
 	transformValuePropToInputValue,
+	type AcceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -41,7 +38,7 @@ type BaseTextInputProps = {
 	onFocus?: NativeInputProps['onFocus'];
 };
 
-export type DatePickerInputProps = BaseTextInputProps & {
+export type DatePickerNextInputProps = BaseTextInputProps & {
 	/** Describes the purpose of the field. */
 	label: string;
 	/** If true, "(optional)" will never be appended to the label. */
@@ -60,7 +57,7 @@ export type DatePickerInputProps = BaseTextInputProps & {
 	maxWidth?: Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 };
 
-type DatePickerCalendarProps = {
+type DatePickerNextCalendarProps = {
 	/** If set, any days before this date will not be selectable. */
 	minDate?: Date;
 	/** If set, any days after this date will not be selectable. */
@@ -71,26 +68,24 @@ type DatePickerCalendarProps = {
 	yearRange?: { from: number; to: number };
 };
 
-type DatePickerBaseProps = {
+type DatePickerNextBaseProps = {
 	/** Specifies the date formats that can be parsed. */
 	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>;
 	/** The value of the field. */
 	value: Date | string | undefined;
 	/** Function to be fired following a change event. */
-	onChange: (day: Date | undefined) => void;
-	/** Function to be fired when the input value is updated. */
-	onInputChange?: (inputValue: string) => void;
+	onChange: (day: Date | string | undefined) => void;
 	/** Ref to the input element. */
 	inputRef?: Ref<HTMLInputElement>;
 	/** Used to adjust the date format displayed in the text input and secondary label. */
 	dateFormat?: AcceptedDateFormats;
 };
 
-export type DatePickerProps = DatePickerInputProps &
-	DatePickerCalendarProps &
-	DatePickerBaseProps;
+export type DatePickerNextProps = DatePickerNextInputProps &
+	DatePickerNextCalendarProps &
+	DatePickerNextBaseProps;
 
-export const DatePicker = ({
+export const DatePickerNext = ({
 	allowedDateFormats: allowedDateFormatsProp = acceptedDateFormats,
 	dateFormat = 'dd/MM/yyyy',
 	initialMonth,
@@ -101,11 +96,10 @@ export const DatePicker = ({
 	minDate,
 	onBlur: onBlurProp,
 	onChange,
-	onInputChange: onInputChangeProp,
 	value,
 	yearRange,
 	...props
-}: DatePickerProps) => {
+}: DatePickerNextProps) => {
 	const allowedDateFormats = useMemo(
 		() =>
 			Array.from(
@@ -120,11 +114,11 @@ export const DatePicker = ({
 		[dateFormat, allowedDateFormatsProp]
 	);
 
-	const triggerRef = useRef<HTMLButtonElement>(null);
-
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
+
+	const triggerRef = useRef<HTMLButtonElement>(null);
 
 	const popover = usePopover();
 
@@ -150,14 +144,9 @@ export const DatePicker = ({
 		const inputValue = e.target.value;
 
 		// Attempt to parse the date using the text input value
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
+		const parsedDate = parseDate(inputValue, allowedDateFormats) || inputValue;
 
-		if (!inputValue || constrainedDate) {
-			onChange(constrainedDate);
-		} else {
-			onInputChangeProp?.(inputValue);
-		}
+		onChange(parsedDate);
 
 		onBlurProp?.(e);
 	};
@@ -170,8 +159,10 @@ export const DatePicker = ({
 
 	// Update the text input when the value updates
 	useEffect(() => {
-		setInputValue(transformValuePropToInputValue(value, dateFormat));
-	}, [dateFormat, value]);
+		setInputValue(
+			transformValuePropToInputValue(value, dateFormat, allowedDateFormats)
+		);
+	}, [allowedDateFormats, dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -202,8 +193,7 @@ export const DatePicker = ({
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
 	}, [minDate, maxDate]);
 
-	const valueAsDateOrUndefined =
-		typeof value === 'string' ? normaliseDateString(value) : value;
+	const valueAsDateOrUndefined = asDate(value, allowedDateFormats);
 
 	const defaultMonth = getCalendarDefaultMonth(
 		valueAsDateOrUndefined,

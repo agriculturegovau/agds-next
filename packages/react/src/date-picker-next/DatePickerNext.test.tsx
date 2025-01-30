@@ -8,9 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
 import { Button } from '../button';
-import { formatHumanReadableDate } from '../date-picker-next/utils';
-import { DatePicker, type DatePickerProps } from './DatePicker';
-import { parseDate } from './utils';
+import { DatePickerNext, type DatePickerNextProps } from './DatePickerNext';
+import { formatHumanReadableDate, parseDate } from './utils';
 import { yupDateField, errorMessage } from './test-utils';
 
 expect.extend(toHaveNoViolations);
@@ -35,37 +34,33 @@ afterAll(() => {
 	jest.useRealTimers();
 });
 
-type ControlledDatePickerProps = Omit<DatePickerProps, 'value' | 'onChange'> & {
-	initialValue?: DatePickerProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
-	onChange?: DatePickerProps['onChange']; // onChange is optional
+type ControlledDatePickerNextProps = Omit<
+	DatePickerNextProps,
+	'value' | 'onChange'
+> & {
+	initialValue?: DatePickerNextProps['value']; // value is not allowed as it is controlled, but an `initialValue` can be passed in
+	onChange?: DatePickerNextProps['onChange']; // onChange is optional
 };
 
-function renderDatePicker(props: ControlledDatePickerProps) {
-	return render(<ControlledDatePicker {...props} />);
+function renderDatePickerNext(props: ControlledDatePickerNextProps) {
+	return render(<ControlledDatePickerNext {...props} />);
 }
 
-function ControlledDatePicker({
+function ControlledDatePickerNext({
 	initialValue: initialValueProp,
 	onChange: onChangeProp,
 	...props
-}: ControlledDatePickerProps) {
+}: ControlledDatePickerNextProps) {
 	const [value, setValue] = useState<Date | string | undefined>(
 		initialValueProp
 	);
 
-	function onChange(value: Date | undefined) {
+	function onChange(value: Date | string | undefined) {
 		setValue(value);
 		onChangeProp?.(value);
 	}
 
-	return (
-		<DatePicker
-			onChange={onChange}
-			onInputChange={setValue}
-			value={value}
-			{...props}
-		/>
-	);
+	return <DatePickerNext onChange={onChange} value={value} {...props} />;
 }
 
 const formSchema = (required: boolean) =>
@@ -79,7 +74,7 @@ const formSchema = (required: boolean) =>
 
 type FormSchema = yup.InferType<ReturnType<typeof formSchema>>;
 
-function DatePickerInsideForm({
+function DatePickerNextInsideForm({
 	required,
 	onSubmit,
 	onError,
@@ -104,14 +99,13 @@ function DatePickerInsideForm({
 				control={control}
 				name="date"
 				render={({ field: { ref, ...field } }) => (
-					<DatePicker
+					<DatePickerNext
 						inputRef={ref}
 						label="Date"
 						{...field}
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}
-						onInputChange={field.onChange}
 						required={required}
 					/>
 				)}
@@ -142,9 +136,9 @@ async function getSubmitButton() {
 	return el as HTMLButtonElement;
 }
 
-describe('DatePicker', () => {
+describe('DatePickerNext', () => {
 	it('renders correctly', () => {
-		const { container } = renderDatePicker({
+		const { container } = renderDatePickerNext({
 			label: 'Example',
 			initialValue: new Date(2000, 0, 1),
 		});
@@ -152,7 +146,7 @@ describe('DatePicker', () => {
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = renderDatePicker({
+		const { container } = renderDatePickerNext({
 			label: 'Example',
 			initialValue: new Date(2000, 1, 1),
 		});
@@ -174,7 +168,7 @@ describe('DatePicker', () => {
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
 
-		render(<ControlledDatePicker initialValue={date} label="Example" />);
+		render(<ControlledDatePickerNext initialValue={date} label="Example" />);
 
 		// The input should be a formatted display value of `initialValue`
 		expect(
@@ -185,7 +179,7 @@ describe('DatePicker', () => {
 	});
 
 	it('can render an invalid state', async () => {
-		renderDatePicker({
+		renderDatePickerNext({
 			label: 'Example',
 			initialValue: new Date(2000, 1, 1),
 			invalid: true,
@@ -195,10 +189,10 @@ describe('DatePicker', () => {
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
-	it('responds to an `onChange` callback when a date is valid', async () => {
+	it('calls `onChange` with parsed date when a date is valid', async () => {
 		const onChange = jest.fn();
 
-		renderDatePicker({
+		renderDatePickerNext({
 			label: 'Example',
 			onChange,
 		});
@@ -220,31 +214,29 @@ describe('DatePicker', () => {
 		).toBeVisible();
 	});
 
-	it('responds to an `onInputChange` callback when a date is invalid', async () => {
-		const onInputChange = jest.fn();
+	it('calls `onChange` with value a date is invalid', async () => {
+		const onChange = jest.fn();
 
-		renderDatePicker({
+		renderDatePickerNext({
 			label: 'Example',
-			onInputChange,
+			onChange,
 		});
 
-		const user = userEvent.setup();
-
-		const dateString = '01.01.2000';
+		const dateString = '99/99/2000';
 
 		// Type in the input field
-		await user.type(await getInput(), dateString);
+		await userEvent.type(await getInput(), dateString);
 		expect(await getInput()).toHaveValue(dateString);
-		await act(() => user.keyboard('{Tab}'));
+		await userEvent.keyboard('{Tab}');
 
-		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
+		expect(onChange).toHaveBeenLastCalledWith(dateString);
 
-		// The calendar button trigger should have the default aria-label
+		// The calendar button trigger should have an aria-label with the formatted display value
 		expect(screen.getByRole('button', { name: `Choose date` })).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
-		renderDatePicker({ label: 'Example' });
+		renderDatePickerNext({ label: 'Example' });
 
 		const user = userEvent.setup();
 
@@ -257,7 +249,7 @@ describe('DatePicker', () => {
 	});
 
 	it('formats valid dates to the `dateFormat` prop', async () => {
-		renderDatePicker({
+		renderDatePickerNext({
 			label: 'Example',
 			dateFormat: 'd MMM yyyy',
 		});
@@ -282,7 +274,7 @@ describe('DatePicker', () => {
 	});
 
 	it('doesn’t format when an invalid format is entered', async () => {
-		renderDatePicker({
+		renderDatePickerNext({
 			dateFormat: 'd MMM yyyy',
 			label: 'Example',
 		});
@@ -297,7 +289,7 @@ describe('DatePicker', () => {
 
 	describe('allowedDateFormats', () => {
 		it('formats when a valid format is entered', async () => {
-			renderDatePicker({
+			renderDatePickerNext({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				label: 'Example',
 			});
@@ -313,7 +305,7 @@ describe('DatePicker', () => {
 		});
 
 		it('doesn’t format when an invalid format is entered', async () => {
-			renderDatePicker({
+			renderDatePickerNext({
 				allowedDateFormats: ['dd-MM-yyyy'],
 				label: 'Example',
 			});
@@ -327,7 +319,7 @@ describe('DatePicker', () => {
 		});
 
 		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
-			renderDatePicker({
+			renderDatePickerNext({
 				allowedDateFormats: ['MM/dd/yyyy'],
 				dateFormat: 'dd MMMM yyyy',
 				label: 'Example',
@@ -387,7 +379,7 @@ describe('DatePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DatePickerInsideForm
+			<DatePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -410,7 +402,7 @@ describe('DatePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DatePickerInsideForm
+			<DatePickerNextInsideForm
 				onError={onError}
 				onSubmit={onSubmit}
 				required={false}
@@ -422,117 +414,6 @@ describe('DatePicker', () => {
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as an optional field with invalid value', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as an optional field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerInsideForm
-				onError={onError}
-				onSubmit={onSubmit}
-				required={false}
-			/>
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: undefined,
-		});
-	});
-
-	it('form: shows validation errors as a required field', async () => {
-		const onSubmit = jest.fn();
-		const onError = jest.fn();
-
-		render(
-			<DatePickerInsideForm onError={onError} onSubmit={onSubmit} required />
-		);
-
-		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onError).toHaveBeenCalledTimes(1);
-
-		// Expect an error
-		const errorMessage = await getErrorMessage();
-		expect(errorMessage).toBeInTheDocument();
-		expect(await getInput()).toHaveFocus();
-		expect(await getInput()).toHaveValue('hello');
-		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
-
-		const validDateAsString = '02/03/2024';
-
-		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-		await userEvent.type(await getInput(), validDateAsString);
-		await expect(await getInput()).toHaveValue(validDateAsString);
-
-		// Submit the form
-		await userEvent.click(await getSubmitButton());
-		expect(onSubmit).toHaveBeenCalledWith({
-			date: parseDate(validDateAsString),
 		});
 	});
 });

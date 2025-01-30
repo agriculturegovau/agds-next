@@ -4,25 +4,25 @@ import { subDays, addDays } from 'date-fns';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
-import { DatePicker, type DatePickerProps } from './DatePicker';
+import { DatePickerNext, DatePickerNextProps } from './DatePickerNext';
 
-function ControlledDatePicker(props: DatePickerProps) {
-	const [value, setValue] = useState<Date>();
-	return <DatePicker {...props} onChange={setValue} value={value} />;
+function ControlledDatePickerNext(props: DatePickerNextProps) {
+	const [value, setValue] = useState<Date | string | undefined>();
+	return <DatePickerNext {...props} onChange={setValue} value={value} />;
 }
 
-const meta: Meta<typeof DatePicker> = {
-	title: 'forms/DatePicker/DatePicker',
-	component: DatePicker,
+const meta: Meta<typeof DatePickerNext> = {
+	title: 'forms/DatePickerNext/DatePickerNext',
+	component: DatePickerNext,
 	args: {
 		label: 'Example',
 	},
-	render: ControlledDatePicker,
+	render: ControlledDatePickerNext,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DatePicker>;
+type Story = StoryObj<typeof DatePickerNext>;
 
 export const Basic: Story = {};
 
@@ -89,7 +89,7 @@ export const ScrollExample: Story = {
 	render: (props) => (
 		<Box>
 			<Box height="1000px"></Box>
-			<ControlledDatePicker {...props} />
+			<ControlledDatePickerNext {...props} />
 			<Box height="1000px"></Box>
 		</Box>
 	),
@@ -97,10 +97,10 @@ export const ScrollExample: Story = {
 
 export const ClearableExample: Story = {
 	render: function Render(props) {
-		const [value, setValue] = useState<Date>();
+		const [value, setValue] = useState<Date | string | undefined>();
 		return (
 			<Stack alignItems="flex-start" gap={4}>
-				<DatePicker {...props} onChange={setValue} value={value} />
+				<DatePickerNext {...props} onChange={setValue} value={value} />
 				<ButtonGroup>
 					<Button onClick={() => setValue(new Date(1999, 11, 25))}>
 						Set pre-defined date

@@ -965,6 +965,16 @@ const snippets: Array<Snippet> = [
 		code: `<DateRangePicker value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}} />`,
 	},
 	{
+		group: 'DatePickerNext',
+		name: 'Basic',
+		code: `<DatePickerNext label="Select date" value={new Date()} onChange={() => {}} />`,
+	},
+	{
+		group: 'DateRangePickerNext',
+		name: 'Basic',
+		code: `<DateRangePickerNext value={{ from: new Date('2000-01-03'), to: new Date('2000-01-07') }} onChange={() => {}} />`,
+	},
+	{
 		group: 'LoadingDots',
 		name: 'Basic',
 		code: `<LoadingDots />`,

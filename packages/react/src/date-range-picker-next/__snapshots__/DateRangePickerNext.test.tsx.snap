@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateRangePicker renders correctly 1`] = `
+exports[`DateRangePickerNext renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
@@ -10,7 +10,7 @@ exports[`DateRangePicker renders correctly 1`] = `
       class="css-79i25n-boxStyles"
     >
       <legend
-        class="css-1r0k8hi-boxStyles-DateRangePicker"
+        class="css-ltg556-boxStyles-DateRangePickerNext"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -25,7 +25,7 @@ exports[`DateRangePicker renders correctly 1`] = `
         </span>
       </legend>
       <div
-        class="css-1fqlpl4-boxStyles-DateRangePicker"
+        class="css-jnblk0-boxStyles-DateRangePickerNext"
       >
         <div
           class="css-72257o-boxStyles"

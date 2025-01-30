@@ -194,7 +194,12 @@ export {
 	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
 export { DatePicker } from '@ag.ds-next/react/date-picker';
+export {
+	DatePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-picker-next';
 export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+export { DateRangePickerNext } from '@ag.ds-next/react/date-range-picker-next';
 export {
 	HeroBanner,
 	HeroBannerTitleContainer,

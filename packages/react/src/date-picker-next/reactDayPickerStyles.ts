@@ -76,6 +76,7 @@ export const reactDayPickerStyles = {
 		color: boxPalette.foregroundAction,
 		cursor: 'pointer',
 		height: cellSizeSmall,
+		padding: 0,
 		position: 'relative',
 		textAlign: 'center',
 		verticalAlign: 'middle',
@@ -88,12 +89,42 @@ export const reactDayPickerStyles = {
 		'&:not([disabled], :focus):hover': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
+			fontWeight: 'bold',
 			textDecoration: 'underline',
 			zIndex: tokens.zIndex.elevated,
 			...highContrastOutlineStyles,
+			'&::before': {
+				backgroundColor: boxPalette.backgroundShade,
+				borderColor: boxPalette.selected,
+				borderRadius: '0.25rem',
+				borderStyle: 'solid',
+				borderWidth: tokens.borderWidth.lg,
+				content: '""',
+				inset: 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				zIndex: -1,
+			},
 		},
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
+		},
+		'& span': {
+			alignItems: 'center',
+			display: 'flex',
+			height: cellSizeSmall,
+			justifyContent: 'center',
+			position: 'relative',
+			width: cellSizeSmall,
+			'@media (min-width: 375px)': {
+				height: cellSizeLarge,
+				width: cellSizeLarge,
+			},
+			'::before': {
+				content: '""',
+				inset: 0,
+				position: 'absolute',
+			},
 		},
 		'@media (min-width: 375px)': {
 			height: cellSizeLarge,
@@ -156,10 +187,26 @@ export const reactDayPickerStyles = {
 		},
 } as const;
 
-export const reactDayRangePickerStyles = (dateRange?: {
-	from?: Date;
-	to?: Date;
-}) => {
+// Start date only picked
+// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
+// rdp-day rdp-day_selected rdp-day_range_start
+
+// Middle date
+// rdp-day rdp-day_selected rdp-day_range_middle
+
+// End date picked
+// rdp-day rdp-day_selected rdp-day_range_end
+
+// Start date is end date
+// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
+
+export const reactDayRangePickerStyles = (
+	dateRange?: {
+		from?: Date;
+		to?: Date;
+	},
+	inputMode?: 'from' | 'to'
+) => {
 	const { from, to } = dateRange ?? {};
 	const startStyles = {
 		borderRadius: 0,
@@ -179,6 +226,14 @@ export const reactDayRangePickerStyles = (dateRange?: {
 			color: boxPalette.foregroundText,
 			borderRadius: 0,
 		},
+
+		'.hover-range:not([disabled]):not(.rdp-day_range_start):not(.rdp-day_range_end)':
+			{
+				backgroundColor: boxPalette.selectedMuted,
+				borderRadius: 0,
+				color: boxPalette.foregroundText,
+				fontWeight: 'bold',
+			},
 		// Start day of date range
 		'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
 		'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
@@ -190,5 +245,42 @@ export const reactDayRangePickerStyles = (dateRange?: {
 			...(from && startStyles),
 			...(to && endStyles),
 		},
+
+		...(inputMode && {
+			'.rdp-day': {
+				...(inputMode === 'from' && startStyles),
+				...(inputMode === 'to' && endStyles),
+				'&::before': {
+					borderColor: 'transparent',
+					borderStyle: 'solid',
+					borderWidth: tokens.borderWidth.lg,
+					content: '""',
+					inset: 0,
+					pointerEvents: 'none',
+					position: 'absolute',
+					zIndex: -1,
+				} as const,
+				'&:hover:not([disabled])::before': {
+					...(inputMode === 'from' && startStyles),
+					...(inputMode === 'to' && endStyles),
+					...highContrastOutlineStyles,
+					backgroundColor: boxPalette.backgroundShade,
+					borderColor: boxPalette.selected,
+				},
+				'&:hover:not([disabled])': {
+					color: boxPalette.foregroundText,
+					textDecoration: 'underline',
+				},
+			},
+			'.rdp-day_range_start:hover:not([disabled])::before': {
+				borderRadius: inputMode === 'to' ? '50%' : undefined,
+			},
+			'.rdp-day_range_end:hover:not([disabled])::before': {
+				borderRadius: inputMode === 'from' ? '50%' : undefined,
+			},
+			'.rdp-day_range_start.rdp-day_range_end:hover': {
+				backgroundColor: boxPalette.backgroundBody,
+			},
+		}),
 	};
 };

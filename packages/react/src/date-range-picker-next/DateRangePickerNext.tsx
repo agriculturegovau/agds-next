@@ -9,7 +9,8 @@ import {
 	useMemo,
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
-import { addDays } from 'date-fns';
+import { addDays, isAfter, isBefore } from 'date-fns';
+import { useDebouncedCallback } from 'use-debounce';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -25,40 +26,32 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
-	constrainDate,
+	acceptedDateFormats,
+	asDate,
 	formatDate,
+	getDateInputButtonAriaLabel,
 	parseDate,
 	transformValuePropToInputValue,
-} from '../date-picker/utils';
-import { CalendarRange } from '../date-picker/Calendar';
-import { CalendarProvider } from '../date-picker/CalendarContext';
-import {
-	acceptedDateFormats,
-	getDateInputButtonAriaLabel,
-	normaliseDateString,
 	type AcceptedDateFormats,
 } from '../date-picker-next/utils';
-import { DateInput } from './../date-picker-next/DatePickerInput';
-import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
+import { CalendarRange } from '../date-picker-next/Calendar';
+import { CalendarProvider } from '../date-picker-next/CalendarContext';
+import { DateInput } from '../date-picker-next/DatePickerInput';
+import { getCalendarDefaultMonth, getHoverRange } from './utils';
 
 export type DateRange = {
-	from: Date | undefined;
-	to: Date | undefined;
-};
-
-export type DateRangeWithString = {
 	from: Date | string | undefined;
 	to: Date | string | undefined;
 };
 
-type DateRangePickerCalendarProps = {
+type DateRangePickerNextCalendarProps = {
 	/** If set, any days before this date will not be selectable. */
 	minDate?: Date;
 	/** If set, any days after this date will not be selectable. */
 	maxDate?: Date;
 };
 
-export type DateRangePickerProps = DateRangePickerCalendarProps & {
+export type DateRangePickerNextProps = DateRangePickerNextCalendarProps & {
 	/** Specifies the date formats that can be parsed. */
 	allowedDateFormats?: ReadonlyArray<AcceptedDateFormats>;
 	/** Describes the purpose of the group of fields. */
@@ -80,13 +73,9 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	/** If false, "(optional)" will not be appended to the legend. */
 	required?: boolean;
 	/** The value of the field. */
-	value: DateRangeWithString;
+	value: DateRange;
 	/** Function to be fired following a change event. */
 	onChange: (day: DateRange) => void;
-	/** Function to be fired when the input value is updated. */
-	onFromInputChange?: (inputValue: string | undefined) => void;
-	/** Function to be fired when the input value is updated. */
-	onToInputChange?: (inputValue: string | undefined) => void;
 	/** The label above the start date. */
 	fromLabel?: string;
 	/** The label above the end date. */
@@ -101,7 +90,7 @@ export type DateRangePickerProps = DateRangePickerCalendarProps & {
 	dateFormat?: AcceptedDateFormats;
 };
 
-export const DateRangePicker = ({
+export const DateRangePickerNext = ({
 	allowedDateFormats: allowedDateFormatsProp = acceptedDateFormats,
 	legend,
 	hint,
@@ -112,8 +101,6 @@ export const DateRangePicker = ({
 	hideOptionalLabel,
 	value,
 	onChange,
-	onFromInputChange: onFromInputChangeProp,
-	onToInputChange: onToInputChangeProp,
 	disabled,
 	fromLabel = 'Start date',
 	toLabel = 'End date',
@@ -124,7 +111,7 @@ export const DateRangePicker = ({
 	toInputRef,
 	yearRange,
 	dateFormat = 'dd/MM/yyyy',
-}: DateRangePickerProps) => {
+}: DateRangePickerNextProps) => {
 	const allowedDateFormats = useMemo(
 		() =>
 			Array.from(
@@ -141,56 +128,88 @@ export const DateRangePicker = ({
 
 	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
-	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
 
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
+	const closeCalendarAndFocusTrigger = useCallback(() => {
+		closeCalendar();
+		setTimeout(() => {
+			if (inputMode === 'from') fromTriggerRef.current?.focus();
+			else toTriggerRef.current?.focus();
+		}, 0);
+	}, [closeCalendar, fromTriggerRef, inputMode, toTriggerRef]);
+
 	function onFromTriggerClick() {
 		setInputMode('from');
-		toggleCalendar();
 		setHasCalendarOpened(true);
+		isCalendarOpen && inputMode === 'from'
+			? closeCalendarAndFocusTrigger()
+			: openCalendar();
 	}
 
 	function onToTriggerClick() {
 		setInputMode('to');
-		toggleCalendar();
 		setHasCalendarOpened(true);
+		isCalendarOpen && inputMode === 'to'
+			? closeCalendarAndFocusTrigger()
+			: openCalendar();
 	}
 
 	const popover = usePopover();
 
 	const valueAsDateOrUndefined = useMemo(
 		() => ({
-			from:
-				typeof value.from === 'string'
-					? normaliseDateString(value.from)
-					: value.from,
-			to:
-				typeof value.to === 'string' ? normaliseDateString(value.to) : value.to,
+			from: asDate(value.from, allowedDateFormats),
+			to: asDate(value.to, allowedDateFormats),
 		}),
-		[value]
+		[allowedDateFormats, value]
+	);
+
+	const [hoveredDay, setHoveredDay] = useState<string>();
+
+	const onHover = useCallback((date: Date) => {
+		setHoveredDay(date.toISOString());
+	}, []);
+
+	// From input state
+	const [fromInputValue, setFromInputValue] = useState(
+		transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
+	);
+
+	// To input state
+	const [toInputValue, setToInputValue] = useState(
+		transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
 	);
 
 	const onSelect = useCallback<SelectRangeEventHandler>(
 		(_, selectedDay, activeModifiers) => {
 			if (!inputMode || activeModifiers.disabled) return;
 
-			const range = ensureValidDateRange(
-				inputMode === 'from'
-					? { from: selectedDay, to: valueAsDateOrUndefined.to }
-					: { from: valueAsDateOrUndefined.from, to: selectedDay }
-			);
+			const range = {
+				from: valueAsDateOrUndefined.from || fromInputValue,
+				to: valueAsDateOrUndefined.to || toInputValue,
+			};
+
+			range[inputMode] = selectedDay;
 
 			onChange(range);
-			setFromInputValue(range.from ? formatDate(range.from, dateFormat) : '');
-			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
+			setFromInputValue(
+				valueAsDateOrUndefined.from
+					? formatDate(range.from, dateFormat)
+					: fromInputValue
+			);
+			setToInputValue(
+				valueAsDateOrUndefined.to
+					? formatDate(range.to, dateFormat)
+					: toInputValue
+			);
 
-			if (range.from && range.to) {
-				closeCalendar();
-				setInputMode(undefined);
+			if ((range.from || fromInputValue) && (range.to || toInputValue)) {
+				setHoveredDay(undefined);
+				closeCalendarAndFocusTrigger();
 				return;
 			}
 
@@ -199,36 +218,31 @@ export const DateRangePicker = ({
 				return;
 			}
 
-			if (inputMode === 'to' && !range.from) {
+			if (!range.from && range.to) {
 				setInputMode('from');
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
-	);
-
-	// From input state
-	const [fromInputValue, setFromInputValue] = useState(
-		transformValuePropToInputValue(value.from, dateFormat)
+		[
+			closeCalendarAndFocusTrigger,
+			dateFormat,
+			fromInputValue,
+			inputMode,
+			onChange,
+			setInputMode,
+			toInputValue,
+			valueAsDateOrUndefined,
+		]
 	);
 
 	const onFromInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
+		const parsedDate = parseDate(inputValue, allowedDateFormats) || inputValue;
 
-		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
-
-		const nextValue = ensureValidDateRange({
-			from: constrainedDate,
-			to: valueAsDateOrUndefined.to,
+		onChange({
+			from: parsedDate,
+			to: valueAsDateOrUndefined.to || toInputValue,
 		});
-
-		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
-		} else {
-			onFromInputChangeProp?.(inputValue);
-		}
 	};
 
 	const onFromInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -237,28 +251,14 @@ export const DateRangePicker = ({
 		setFromInputValue(inputValue);
 	};
 
-	// To input state
-	const [toInputValue, setToInputValue] = useState(
-		transformValuePropToInputValue(value.to, dateFormat)
-	);
-
 	const onToInputBlur = (e: FocusEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value;
+		const parsedDate = parseDate(inputValue, allowedDateFormats) || inputValue;
 
-		// Ensure the text entered is a valid date
-		const parsedDate = parseDate(inputValue, allowedDateFormats);
-		const constrainedDate = constrainDate(parsedDate, minDate, maxDate);
-
-		const nextValue = ensureValidDateRange({
-			from: valueAsDateOrUndefined.from,
-			to: constrainedDate,
+		onChange({
+			from: valueAsDateOrUndefined.from || fromInputValue,
+			to: parsedDate,
 		});
-
-		if (!inputValue || constrainedDate) {
-			onChange(nextValue);
-		} else {
-			onToInputChangeProp?.(inputValue);
-		}
 	};
 
 	const onToInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -269,9 +269,13 @@ export const DateRangePicker = ({
 
 	// Update the text inputs when the value updates
 	useEffect(() => {
-		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
-		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
-	}, [value, dateFormat]);
+		setFromInputValue(
+			transformValuePropToInputValue(value.from, dateFormat, allowedDateFormats)
+		);
+		setToInputValue(
+			transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
+		);
+	}, [allowedDateFormats, dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
@@ -289,14 +293,12 @@ export const DateRangePicker = ({
 			if (isCalendarOpen && e.code === 'Escape') {
 				e.preventDefault();
 				e.stopPropagation();
-				// Close the calendar and focus the calendar icon
-				closeCalendar();
-				setInputMode(undefined);
+				closeCalendarAndFocusTrigger();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -313,7 +315,7 @@ export const DateRangePicker = ({
 	const invalid = fromInvalid || toInvalid;
 
 	const { fieldsetId, fromId, hintId, messageId, toId } =
-		useDateRangePickerIds(id);
+		useDateRangePickerNextIds(id);
 	const fromDescribedByIds = [
 		fromInvalid && message ? messageId : null,
 		hint ? hintId : null,
@@ -334,22 +336,60 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
+	const hoverRange = useCallback(
+		() =>
+			getHoverRange(
+				inputMode,
+				hoveredDay,
+				valueAsDateOrUndefined.from,
+				valueAsDateOrUndefined.to
+			),
+		[hoveredDay, inputMode, valueAsDateOrUndefined]
+	);
+
+	const clearHoveredDay = useDebouncedCallback(() => {
+		setHoveredDay(undefined);
+	}, 100);
+
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
 			initialFocus: true,
+			inputMode,
 			numberOfMonths,
 			onSelect,
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
-			selected: valueAsDateOrUndefined,
+			selected: {
+				from:
+					inputMode === 'from' &&
+					valueAsDateOrUndefined.from &&
+					valueAsDateOrUndefined.to &&
+					isAfter(valueAsDateOrUndefined.from, valueAsDateOrUndefined.to)
+						? undefined
+						: valueAsDateOrUndefined.from,
+				to:
+					inputMode === 'to' &&
+					valueAsDateOrUndefined.from &&
+					valueAsDateOrUndefined.to &&
+					isBefore(valueAsDateOrUndefined.to, valueAsDateOrUndefined.from)
+						? undefined
+						: valueAsDateOrUndefined.to,
+			},
+			modifiers: {
+				hoverRange: (day: Date) => hoverRange()[day.toISOString()],
+			},
+			modifiersClassNames: {
+				hoverRange: 'hover-range',
+			},
 		}),
 		[
 			defaultMonth,
 			disabledCalendarDays,
+			hoverRange,
 			inputMode,
 			numberOfMonths,
 			onSelect,
@@ -392,6 +432,7 @@ export const DateRangePicker = ({
 							dateFormat={dateFormat}
 							disabled={disabled}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
+							highlight={isCalendarOpen && inputMode === 'from'}
 							id={fromId}
 							invalid={{ field: false, input: fromInvalid }}
 							isCalendarOpen={isCalendarOpen}
@@ -417,6 +458,7 @@ export const DateRangePicker = ({
 							dateFormat={dateFormat}
 							disabled={disabled}
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
+							highlight={isCalendarOpen && inputMode === 'to'}
 							id={toId}
 							invalid={{ field: false, input: toInvalid }}
 							isCalendarOpen={isCalendarOpen}
@@ -430,7 +472,11 @@ export const DateRangePicker = ({
 						/>
 					</Flex>
 				</Stack>
-				<CalendarProvider yearRange={yearRange}>
+				<CalendarProvider
+					clearHoveredDay={clearHoveredDay}
+					onHover={onHover}
+					yearRange={yearRange}
+				>
 					{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
 					{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
 						isCalendarOpen && (
@@ -455,7 +501,7 @@ export const DateRangePicker = ({
 	);
 };
 
-export function useDateRangePickerIds(idProp?: string) {
+export function useDateRangePickerNextIds(idProp?: string) {
 	const autoId = useId(idProp);
 	const fieldsetId = idProp || `date-range-picker-${autoId}`;
 	const hintId = `date-range-picker-${autoId}-hint`;
