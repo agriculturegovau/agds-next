@@ -5,6 +5,7 @@ import {
 	useContext,
 	PropsWithChildren,
 } from 'react';
+import { mockUser } from '../data/mockUsers';
 import { safeSessionStorage } from './useSessionFormState';
 
 export type User = {
@@ -34,32 +35,32 @@ export function useAuth() {
 
 export function AuthProvider({ children }: PropsWithChildren<{}>) {
 	const [hasLoadedUser, setHasLoadedUser] = useState(false);
-	const [userState, setUserState] = useState<User | null>(null);
+	// const [userState, setUserState] = useState<User | null>(null);
 
 	useEffect(() => {
 		if (!safeSessionStorage) return;
-		const value = safeSessionStorage.getItem('user');
-		const parsedValue = value ? (JSON.parse(value) as User) : null;
-		setUserState(parsedValue);
+		// const value = safeSessionStorage.getItem('user');
+		// const parsedValue = value ? (JSON.parse(value) as User) : null;
+		// setUserState(parsedValue);
 		setHasLoadedUser(true);
 	}, []);
 
 	function signIn(user: User) {
 		if (!safeSessionStorage) return;
 		safeSessionStorage.setItem('user', JSON.stringify(user));
-		setUserState(user);
+		// setUserState(user);
 	}
 
 	function signOut() {
 		if (!safeSessionStorage) return;
 		safeSessionStorage.clear();
-		setUserState(null);
+		// setUserState(null);
 	}
 
 	return (
 		<AuthContext.Provider
 			value={{
-				user: userState,
+				user: mockUser,
 				hasLoadedUser,
 				signIn,
 				signOut,
