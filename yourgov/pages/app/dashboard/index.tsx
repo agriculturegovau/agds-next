@@ -1,11 +1,12 @@
 import { Fragment, ReactElement } from 'react';
 import { PageContent } from '@ag.ds-next/react/content';
-import { H1, H2, H3, Heading } from '@ag.ds-next/react/heading';
+import { H1, H2, Heading } from '@ag.ds-next/react/heading';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Column, Columns } from '@ag.ds-next/react/columns';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Text } from '@ag.ds-next/react/text';
 import { Divider } from '@ag.ds-next/react/divider';
+import { FeatureLinkList } from '@ag.ds-next/react/feature-link-list';
 import { PermitIcon } from '@ag.ds-next/react/icon';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { Tag } from '@ag.ds-next/react/tags';
@@ -67,37 +68,25 @@ const Page: NextPageWithLayout = () => {
 
 					<Stack gap={1.5}>
 						<H2>Popular links</H2>
-						<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-							<Card as="li" clickable shadow>
-								<CardInner>
-									<Stack gap={1}>
-										<H3>
-											<CardLink href="/not-found">
-												Industry-specific training courses
-											</CardLink>
-										</H3>
-										<Text>
-											Explore hundreds of training courses offered by TAFE and
-											other training providers.
-										</Text>
-									</Stack>
-								</CardInner>
-							</Card>
-							<Card as="li" clickable shadow>
-								<CardInner>
-									<Stack gap={1}>
-										<H3>
-											<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
-												Apply for a mobile food vendor permit
-											</CardLink>
-										</H3>
-										<Text>
-											Food businesses that sell food to the public need to be
-											registered before opening.
-										</Text>
-									</Stack>
-								</CardInner>
-							</Card>
+						<Columns cols={{ xs: 1, md: 4 }}>
+							<Column columnSpan={{ xs: 1, md: 3 }}>
+								<FeatureLinkList
+									links={[
+										{
+											description:
+												'Explore hundreds of training courses offered by TAFE and other training providers.',
+											href: '/not-found',
+											label: 'Industry-specific training courses',
+										},
+										{
+											description:
+												'Businesses that sell food to the public need to be registered before opening.',
+											href: '/app/permits/apply-for-new-permit/mobile-food-vendor-permit',
+											label: 'Apply for a mobile food vendor permit',
+										},
+									]}
+								/>
+							</Column>
 						</Columns>
 					</Stack>
 
