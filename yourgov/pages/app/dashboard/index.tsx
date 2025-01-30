@@ -27,11 +27,11 @@ const Page: NextPageWithLayout = () => {
 			<PageContent>
 				<Stack gap={3}>
 					<Stack alignItems="flex-start" gap={1}>
-						<Flex gap={0.5}>
-							<Tag>{selectedBusiness.abn}</Tag>
-							<Text>ABN</Text>
-						</Flex>
 						<H1>{selectedBusiness.name}</H1>
+						<Flex gap={0.5}>
+							<Text>ABN</Text>
+							<Tag>{selectedBusiness.abn}</Tag>
+						</Flex>
 						<TextLink href="/not-found">View business details</TextLink>
 					</Stack>
 
