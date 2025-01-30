@@ -1,9 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { subDays, addDays } from 'date-fns';
+import sub from 'date-fns/sub';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
+import { isValidDate } from '../date-picker-next';
 import {
 	DateRangePickerNext,
 	type DateRange,
@@ -15,7 +17,52 @@ function ControlledDateRangePickerNext(props: DateRangePickerNextProps) {
 		from: undefined,
 		to: undefined,
 	});
-	return <DateRangePickerNext {...props} onChange={setRange} value={range} />;
+
+	const isFromInvalid = useCallback(
+		(value: DateRange['from'], otherDate: DateRange['to']) => {
+			return value
+				? !isValidDate(value, {
+						toDate: otherDate,
+						...(props.minDate && { minDate: sub(props.minDate, { days: 1 }) }),
+				  })
+				: false;
+		},
+		[props.minDate]
+	);
+
+	const isToInvalid = useCallback(
+		(value: DateRange['to'], otherDate: DateRange['from']) => {
+			return value
+				? !isValidDate(value, {
+						fromDate: otherDate,
+						...(props.maxDate && { maxDate: props.maxDate }),
+				  })
+				: false;
+		},
+		[props.maxDate]
+	);
+
+	const fromInvalid = props.fromInvalid || isFromInvalid(range.from, range.to);
+	const toInvalid = props.toInvalid || isToInvalid(range.to, range.from);
+
+	return (
+		<DateRangePickerNext
+			{...props}
+			fromInvalid={fromInvalid}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
+			onChange={setRange}
+			toInvalid={toInvalid}
+			value={range}
+		/>
+	);
 }
 
 const meta: Meta<typeof DateRangePickerNext> = {
