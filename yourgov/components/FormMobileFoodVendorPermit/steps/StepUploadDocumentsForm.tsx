@@ -319,6 +319,40 @@ export function StepUploadDocumentsForm() {
 						<FileUpload
 							accept={['image/jpeg', 'image/png']}
 							buttonRef={fileUploadRef}
+							existingFiles={[
+								{
+									name: 'docx.docx',
+									href: '/docx.docx',
+								},
+								{
+									name: 'gif.gif',
+									href: '/gif.gif',
+								},
+								{
+									name: 'jpg.jpg',
+									href: '/jpg.jpg',
+								},
+								{
+									name: 'pdf.pdf',
+									href: '/pdf.pdf',
+								},
+								{
+									name: 'png.png',
+									href: '/png.png',
+								},
+								{
+									name: 'svg.svg',
+									href: '/svg.svg',
+								},
+								{
+									name: 'tsx.tsx',
+									href: '/tsx.tsx',
+								},
+								{
+									name: 'xml.xml',
+									href: '/xml.xml',
+								},
+							]}
 							hideOptionalLabel
 							invalid={fileUploadInvalid}
 							label={`Upload ${currentDocument?.documentType}`}
