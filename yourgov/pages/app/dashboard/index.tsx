@@ -80,7 +80,7 @@ const Page: NextPageWithLayout = () => {
 										},
 										{
 											description:
-												'Food businesses that sell food to the public need to be registered before opening.',
+												'Businesses that sell food to the public need to be registered before opening.',
 											href: '/app/permits/apply-for-new-permit/mobile-food-vendor-permit',
 											label: 'Apply for a mobile food vendor permit',
 										},
