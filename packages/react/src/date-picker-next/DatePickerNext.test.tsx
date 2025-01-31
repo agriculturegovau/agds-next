@@ -318,9 +318,11 @@ describe('DatePickerNext', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that isn't in the allowed format
-			await act(async () => userEvent.type(await getInput(), '05-23-2023'));
-			await act(() => userEvent.keyboard('{Tab}'));
+			await act(async () => user.type(await getInput(), '05-23-2023'));
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should not be formatted to the dateFormat prop
 			expect(await getInput()).toHaveValue('05-23-2023');
