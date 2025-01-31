@@ -244,7 +244,14 @@ export const defaultFormState: DeepPartial<FormState> = {
 		completed: false,
 	},
 	stepEmployees: {
-		employee: [],
+		employee: [
+			{
+				firstName: 'Taj',
+				lastName: 'Walkley',
+				email: 'Taj@test.com',
+				id: 'taj-walkley-employee',
+			},
+		],
 	},
 	stepUploadDocuments: {
 		files: {
