@@ -5,19 +5,23 @@ import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep7AddEmployee,
-	formSteps,
+	StepEmployeesAddEmployeeForm,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../../_app';
+import { stepKeyToStepDataMap } from '../../../../../../../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 const Page: NextPageWithLayout = () => {
 	return (
 		<Fragment>
 			<DocumentTitle
-				title={formSteps[0].items && formSteps[0].items[0].label}
+				title={
+					'items' in stepKeyToStepDataMap.stepOwnerDetails
+						? stepKeyToStepDataMap.stepOwnerDetails.items[0].label
+						: undefined
+				}
 			/>
 			<PageContent>
-				<FormStep7AddEmployee />
+				<StepEmployeesAddEmployeeForm />
 			</PageContent>
 		</Fragment>
 	);

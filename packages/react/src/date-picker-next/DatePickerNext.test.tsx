@@ -201,10 +201,12 @@ describe('DatePickerNext', () => {
 		const date = parseDate(dateString) as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
+		const user = userEvent.setup();
+
 		// Type in the input field
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => user.type(await getInput(), dateString));
 		expect(await getInput()).toHaveValue(dateString);
-		await userEvent.keyboard('{Tab}');
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onChange).toHaveBeenLastCalledWith(date);
 
@@ -224,10 +226,12 @@ describe('DatePickerNext', () => {
 
 		const dateString = '99/99/2000';
 
+		const user = userEvent.setup();
+
 		// Type in the input field
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => user.type(await getInput(), dateString));
 		expect(await getInput()).toHaveValue(dateString);
-		await userEvent.keyboard('{Tab}');
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onChange).toHaveBeenLastCalledWith(dateString);
 
@@ -241,7 +245,7 @@ describe('DatePickerNext', () => {
 		const user = userEvent.setup();
 
 		// Type a valid date in the input field that isn't in the display format
-		await user.type(await getInput(), 'June 5th 2023');
+		await act(async () => user.type(await getInput(), 'June 5th 2023'));
 		await act(() => user.keyboard('{Tab}'));
 
 		// The input should be formatted to dd/MM/yyyy
@@ -257,11 +261,13 @@ describe('DatePickerNext', () => {
 		const user = userEvent.setup();
 
 		// Type a valid date in the input field that isn't in the display format
-		await user.type(
-			screen.getByRole('textbox', {
-				name: 'Example (e.g. 5 Aug 2015) (optional)',
-			}),
-			'05 06 2023'
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Example (e.g. 5 Aug 2015) (optional)',
+				}),
+				'05 06 2023'
+			)
 		);
 		await act(() => user.keyboard('{Tab}'));
 
@@ -279,9 +285,11 @@ describe('DatePickerNext', () => {
 			label: 'Example',
 		});
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the allowed format
-		await userEvent.type(await getInput(), '05.23.2023');
-		await userEvent.keyboard('{Tab}');
+		await act(async () => user.type(await getInput(), '05.23.2023'));
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should not be formatted to the dateFormat prop
 		expect(await getInput()).toHaveValue('05.23.2023');
@@ -297,7 +305,7 @@ describe('DatePickerNext', () => {
 			const user = userEvent.setup();
 
 			// Type a valid date in the input field that is in the allowed format
-			await user.type(await getInput(), '23-05-2023');
+			await act(async () => user.type(await getInput(), '23-05-2023'));
 			await act(() => user.keyboard('{Tab}'));
 
 			// The input should be formatted to the dateFormat prop
@@ -310,9 +318,11 @@ describe('DatePickerNext', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that isn't in the allowed format
-			await userEvent.type(await getInput(), '05-23-2023');
-			await userEvent.keyboard('{Tab}');
+			await act(async () => user.type(await getInput(), '05-23-2023'));
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should not be formatted to the dateFormat prop
 			expect(await getInput()).toHaveValue('05-23-2023');
@@ -328,11 +338,13 @@ describe('DatePickerNext', () => {
 			const user = userEvent.setup();
 
 			// Type a valid date in the input field that isn't in the display format
-			await user.type(
-				screen.getByRole('textbox', {
-					name: 'Example (e.g. 05 August 2015) (optional)',
-				}),
-				'08 Feb 2023'
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'Example (e.g. 05 August 2015) (optional)',
+					}),
+					'08 Feb 2023'
+				)
 			);
 			await act(() => user.keyboard('{Tab}'));
 
@@ -387,10 +399,10 @@ describe('DatePickerNext', () => {
 		);
 
 		// Type in an invalid value
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => userEvent.type(await getInput(), dateString));
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => userEvent.click(await getSubmitButton()));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date,
@@ -410,7 +422,7 @@ describe('DatePickerNext', () => {
 		);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => userEvent.click(await getSubmitButton()));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,

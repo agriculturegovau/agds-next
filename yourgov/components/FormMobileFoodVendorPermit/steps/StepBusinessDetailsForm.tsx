@@ -4,19 +4,23 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Radio } from '@ag.ds-next/react/radio';
-import { Stack } from '@ag.ds-next/react/stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { Divider } from '@ag.ds-next/react/divider';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
-import { StepActions } from '../StepActions';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
-import { step2FormSchema, type Step2FormSchema } from './FormState';
+import {
+	stepBusinessDetailsFormSchema,
+	type StepBusinessDetailsFormSchema,
+} from './FormState';
+import { Form } from './Form';
+import { stepKeyToStepDataMap } from './stepsData';
 
-export function FormStep2() {
-	const { formState, step2SetState, isSavingBeforeExiting } = useGlobalForm();
+export function StepBusinessDetailsForm() {
+	const { formState, stepBusinessDetailsSetState, isSavingBeforeExiting } =
+		useGlobalForm();
 	const { submitStep } = useFormContext();
 
 	const {
@@ -25,19 +29,23 @@ export function FormStep2() {
 		handleSubmit,
 		trigger,
 		formState: { errors, isSubmitted },
-	} = useForm<Step2FormSchema>({
-		defaultValues: formState.steps?.step2,
-		resolver: isSavingBeforeExiting ? undefined : zodResolver(step2FormSchema),
+	} = useForm<StepBusinessDetailsFormSchema>({
+		defaultValues: formState.steps?.stepBusinessDetails,
+		resolver: isSavingBeforeExiting
+			? undefined
+			: zodResolver(stepBusinessDetailsFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
-	const onSubmit: SubmitHandler<Step2FormSchema> = async (data) => {
+	const onSubmit: SubmitHandler<StepBusinessDetailsFormSchema> = async (
+		data
+	) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
-		step2SetState({
+		stepBusinessDetailsSetState({
 			...data,
 			completed: !isSavingBeforeExiting,
 			started: true,
@@ -56,9 +64,9 @@ export function FormStep2() {
 	return (
 		<FormContainer
 			formIntroduction="Your business details must match your business registration."
-			formTitle="Business details"
+			formTitle={stepKeyToStepDataMap.stepBusinessDetails.label}
 		>
-			<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput
@@ -133,8 +141,7 @@ export function FormStep2() {
 						</>
 					)}
 				</FormStack>
-				<StepActions />
-			</Stack>
+			</Form>
 		</FormContainer>
 	);
 }

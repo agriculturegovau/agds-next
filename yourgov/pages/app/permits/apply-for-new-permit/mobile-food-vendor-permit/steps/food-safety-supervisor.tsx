@@ -5,19 +5,21 @@ import { AppLayout } from '../../../../../../components/Layout/AppLayout';
 import {
 	GlobalFormProvider,
 	FormProvider,
-	FormStep9,
-	formSteps,
+	StepFoodSafetySupervisorForm,
 	useGlobalForm,
 } from '../../../../../../components/FormMobileFoodVendorPermit';
 import type { NextPageWithLayout } from '../../../../../_app';
+import { stepKeyToStepDataMap } from '../../../../../../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 const Page: NextPageWithLayout = () => {
 	const { formTitle } = useGlobalForm();
 	return (
 		<Fragment>
-			<DocumentTitle title={`${formSteps[8].label} | ${formTitle}`} />
+			<DocumentTitle
+				title={`${stepKeyToStepDataMap.stepFoodSafetySupervisor.label} | ${formTitle}`}
+			/>
 			<PageContent>
-				<FormStep9 />
+				<StepFoodSafetySupervisorForm />
 			</PageContent>
 		</Fragment>
 	);

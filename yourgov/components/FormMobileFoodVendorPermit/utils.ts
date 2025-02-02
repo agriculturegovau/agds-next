@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { parseISO, isValid } from 'date-fns';
 import { type FieldValues } from 'react-hook-form';
-import { type FormStep } from './FormState';
+import { StepsData } from './steps/stepsData';
 
 // `yup.date()` can sometimes give false positives with certain string values
 // Fixes https://github.com/jquense/yup/issues/764
@@ -38,15 +38,15 @@ export function hasMultipleErrors(errors: FieldValues = {}) {
 	return Object.keys(errors).length > 1;
 }
 
-export const formHomePage =
+export const applyForFoodPermitPage =
 	'/app/permits/apply-for-new-permit/mobile-food-vendor-permit';
 
 export const managePermitsPage = '/app/permits';
 
 type GetStepNavigationUrlParams = {
-	id?: string;
-	steps: Array<FormStep>;
 	currentStepIndex: number;
+	id?: string;
+	steps: StepsData;
 };
 
 export function getStepCompletionUrl({

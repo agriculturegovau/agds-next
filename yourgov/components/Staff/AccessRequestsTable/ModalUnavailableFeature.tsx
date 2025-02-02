@@ -24,7 +24,9 @@ export const ModalUnavailableFeature = ({
 			onClose={onClose}
 			title="This feature is not yet available."
 		>
-			<Text as="p">Note: this is for demonstration purposes only.</Text>
+			<Text as="p">
+				Note: the yourGov app is for demonstration purposes only.
+			</Text>
 		</Modal>
 	);
 };
