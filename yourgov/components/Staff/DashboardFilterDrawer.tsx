@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { FormStack } from '@ag.ds-next/react/src/form-stack';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
@@ -27,12 +27,45 @@ export const DashboardFilterDrawer = ({
 }: DashboardFilterDrawerProps) => {
 	const { filters, setFilters, resetFilters } = useSortAndFilterContext();
 	const [formState, setFormState] = useState<GetDataFilters>(filters);
+	const [fromInvalid, setFromInvalid] = useState(false);
+	const [toInvalid, setToInvalid] = useState(false);
+
+	const fromInputRef = useRef<HTMLInputElement>(null);
+	const toInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		setFormState(filters);
 	}, [filters]);
 
+	const isFromInvalid = useCallback(
+		(
+			value: Date | string | undefined,
+			otherDate: Date | string | undefined
+		) => {
+			return value ? !isValidDate(value, { toDate: otherDate }) : false;
+		},
+		[]
+	);
+
+	const isToInvalid = useCallback(
+		(
+			value: Date | string | undefined,
+			otherDate: Date | string | undefined
+		) => {
+			return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+		},
+		[]
+	);
+
 	const applyFilters = () => {
+		if (toInvalid && !fromInvalid) {
+			toInputRef.current?.focus();
+			return;
+		}
+		if (fromInvalid) {
+			fromInputRef.current?.focus();
+			return;
+		}
 		setFilters(formState);
 		closeDrawer();
 	};
@@ -42,12 +75,16 @@ export const DashboardFilterDrawer = ({
 	};
 
 	const clearFilters = () => {
+		setFromInvalid(false);
+		setToInvalid(false);
 		resetFilters();
 		setFormState(defaultFilters);
 	};
 
 	const cancel = () => {
 		closeDrawer();
+		setFromInvalid(false);
+		setToInvalid(false);
 		setFormState(filters);
 	};
 
@@ -75,29 +112,6 @@ export const DashboardFilterDrawer = ({
 					[trainingCompletedType]: event.target.checked,
 				},
 			}));
-
-	const isFromInvalid = useCallback((value: Date, otherDate: Date) => {
-		return value ? !isValidDate(value, { toDate: otherDate }) : false;
-	}, []);
-
-	const isToInvalid = useCallback((value: Date, otherDate: Date) => {
-		return value ? !isValidDate(value, { fromDate: otherDate }) : false;
-	}, []);
-
-	const fromInvalid =
-		formState.lastActiveFrom && formState.lastActiveTo
-			? isFromInvalid(
-					new Date(formState.lastActiveFrom),
-					new Date(formState.lastActiveTo)
-			  )
-			: false;
-	const toInvalid =
-		formState.lastActiveFrom && formState.lastActiveTo
-			? isToInvalid(
-					new Date(formState.lastActiveTo),
-					new Date(formState.lastActiveFrom)
-			  )
-			: false;
 
 	return (
 		<SortAndFilterProvider
@@ -211,28 +225,39 @@ export const DashboardFilterDrawer = ({
 						</ControlGroup>
 
 						<DateRangePickerNext
+							fromInputRef={fromInputRef}
 							fromInvalid={fromInvalid}
 							fromLabel="From date"
 							legend="Last active"
 							message={
 								fromInvalid && toInvalid
-									? 'Enter valid start and end dates'
+									? 'Enter valid from and to dates'
 									: fromInvalid
-									? 'Enter a valid start date'
+									? 'Enter a valid from date'
 									: toInvalid
-									? 'Enter a valid end date'
+									? 'Enter a valid to date'
 									: undefined
 							}
-							onChange={(dateRange) =>
+							onChange={(dateRange) => {
+								const fromInvalid = isFromInvalid(dateRange.from, dateRange.to);
+								const toInvalid = isToInvalid(dateRange.to, dateRange.from);
+								setFromInvalid(fromInvalid);
+								setToInvalid(toInvalid);
+
 								setFormState((prevFormState) => ({
 									...prevFormState,
 									lastActiveFrom:
-										dateRange.from && new Date(dateRange.from).toISOString(),
+										!dateRange.from || fromInvalid
+											? dateRange.from
+											: new Date(dateRange.from).toISOString(),
 									lastActiveTo:
-										dateRange.to && new Date(dateRange.to).toISOString(),
-								}))
-							}
+										!dateRange.to || toInvalid
+											? dateRange.to
+											: new Date(dateRange.to).toISOString(),
+								}));
+							}}
 							required
+							toInputRef={toInputRef}
 							toInvalid={toInvalid}
 							toLabel="To date"
 							value={{

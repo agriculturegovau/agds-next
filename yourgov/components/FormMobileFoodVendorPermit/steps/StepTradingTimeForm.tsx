@@ -33,6 +33,14 @@ function transformDefaultValues(step?: DeepPartial<StepTradingTimeFormSchema>) {
 	};
 }
 
+const isFromInvalid = (value: Date, otherDate: Date) => {
+	return value ? !isValidDate(value, { toDate: otherDate }) : false;
+};
+
+const isToInvalid = (value: Date, otherDate: Date) => {
+	return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+};
+
 export function StepTradingTimeForm() {
 	const { formState, stepTradingTimeSetState, isSavingBeforeExiting } =
 		useGlobalForm();
@@ -44,6 +52,7 @@ export function StepTradingTimeForm() {
 		control,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm<StepTradingTimeFormSchema>({
 		defaultValues: transformDefaultValues(formState.steps?.stepTradingTime),
 		resolver: isSavingBeforeExiting
@@ -68,18 +77,25 @@ export function StepTradingTimeForm() {
 		});
 	};
 
+	const tradingPeriod = watch('tradingPeriod');
+	const fromInvalid = isFromInvalid(tradingPeriod.from, tradingPeriod.to);
+	const toInvalid = isToInvalid(tradingPeriod.to, tradingPeriod.from);
+
 	const hasErrors = useMemo(
 		() => ({
 			tradingPeriod: {
 				both:
-					Boolean(errors.tradingPeriod?.from?.message) &&
-					Boolean(errors.tradingPeriod?.to?.message),
+					(fromInvalid && toInvalid) ||
+					(Boolean(errors.tradingPeriod?.from?.message) &&
+						Boolean(errors.tradingPeriod?.to?.message)),
 				from:
-					Boolean(errors.tradingPeriod?.from?.message) &&
-					!errors.tradingPeriod?.to?.message,
+					(fromInvalid && !toInvalid) ||
+					(!errors.tradingPeriod?.to?.message &&
+						Boolean(errors.tradingPeriod?.from?.message)),
 				to:
-					!errors.tradingPeriod?.from?.message &&
-					Boolean(errors.tradingPeriod?.to?.message),
+					(toInvalid && !toInvalid) ||
+					(!errors.tradingPeriod?.from?.message &&
+						Boolean(errors.tradingPeriod?.to?.message)),
 			},
 			hours: {
 				both:
@@ -93,8 +109,17 @@ export function StepTradingTimeForm() {
 					Boolean(typeCorrectedErrors.closingTime?.message),
 			},
 		}),
-		[errors, typeCorrectedErrors]
+		[errors, fromInvalid, toInvalid, typeCorrectedErrors]
 	);
+
+	// FIXME: This should ideally be handled in zod
+	const tradingPeriodError = hasErrors.tradingPeriod.both
+		? 'Start date and End date are required'
+		: hasErrors.tradingPeriod.from
+		? 'Start date is required'
+		: hasErrors.tradingPeriod.to
+		? 'End date is required'
+		: undefined;
 
 	const validErrors = [
 		hasErrors.tradingPeriod.both,
@@ -128,14 +153,16 @@ export function StepTradingTimeForm() {
 						<FormPageAlert
 							errors={{
 								'date-range-picker-tradingPeriod-from': {
-									message: hasErrors.tradingPeriod.both
-										? 'Start date and End date are required'
-										: errors.tradingPeriod?.from?.message,
+									message:
+										hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
+											? tradingPeriodError
+											: undefined,
 								},
 								'date-range-picker-tradingPeriod-to': {
-									message: !hasErrors.tradingPeriod.both
-										? errors.tradingPeriod?.to?.message
-										: undefined,
+									message:
+										!hasErrors.tradingPeriod.both && hasErrors.tradingPeriod.to
+											? tradingPeriodError
+											: undefined,
 								},
 								openingTime: {
 									message: hasErrors.hours.both
@@ -153,46 +180,25 @@ export function StepTradingTimeForm() {
 					<Controller
 						control={control}
 						name="tradingPeriod"
-						render={({ field: { ref, value, onChange, ...field } }) => {
-							const isFromInvalid = (value: Date, otherDate: Date) => {
-								return value
-									? !isValidDate(value, { toDate: otherDate })
-									: false;
-							};
-
-							const isToInvalid = (value: Date, otherDate: Date) => {
-								return value
-									? !isValidDate(value, { fromDate: otherDate })
-									: false;
-							};
-
-							const fromInvalid = isFromInvalid(value.from, value.to);
-							const toInvalid = isToInvalid(value.to, value.from);
-
-							return (
-								<DateRangePickerNext
-									{...field}
-									fromInputRef={tradingPeriodFromRef}
-									fromInvalid={fromInvalid}
-									id="tradingPeriod"
-									legend="Trading period"
-									message={
-										fromInvalid && toInvalid
-											? 'Enter valid start and end dates'
-											: fromInvalid
-											? 'Enter a valid start date'
-											: toInvalid
-											? 'Enter a valid end date'
-											: undefined
-									}
-									onChange={onChange}
-									required
-									toInputRef={tradingPeriodToRef}
-									toInvalid={toInvalid}
-									value={value}
-								/>
-							);
-						}}
+						render={({ field: { ref, value, onChange, ...field } }) => (
+							<DateRangePickerNext
+								{...field}
+								fromInputRef={tradingPeriodFromRef}
+								fromInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
+								}
+								id="tradingPeriod"
+								legend="Trading period"
+								message={tradingPeriodError}
+								onChange={onChange}
+								required
+								toInputRef={tradingPeriodToRef}
+								toInvalid={
+									hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.to
+								}
+								value={value}
+							/>
+						)}
 					/>
 					<GroupedFields
 						field1Invalid={hasErrors.hours.both || hasErrors.hours.from}

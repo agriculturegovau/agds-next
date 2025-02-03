@@ -91,7 +91,11 @@ export function StepVehicleRegistrationForm() {
 								inputRef={ref}
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								label="Registration expiry date"
-								message={errors.registrationExpiry?.message}
+								message={
+									// FIXME: This should be handled in zod
+									errors.registrationExpiry?.message &&
+									'Registration expiry date is required'
+								}
 								required
 							/>
 						)}
