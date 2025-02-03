@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DatePickerNext } from '@ag.ds-next/react/date-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { DeepPartial } from '../../../lib/types';
@@ -85,13 +85,17 @@ export function StepVehicleRegistrationForm() {
 						control={control}
 						name="registrationExpiry"
 						render={({ field: { ref, ...field } }) => (
-							<DatePicker
+							<DatePickerNext
 								{...field}
 								id="registrationExpiry"
 								inputRef={ref}
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								label="Registration expiry date"
-								message={errors.registrationExpiry?.message}
+								message={
+									// FIXME: This should be handled in zod
+									errors.registrationExpiry?.message &&
+									'Registration expiry date is required'
+								}
 								required
 							/>
 						)}

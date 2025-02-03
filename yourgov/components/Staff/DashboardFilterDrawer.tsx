@@ -1,10 +1,13 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { FormStack } from '@ag.ds-next/react/src/form-stack';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	DateRangePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-range-picker-next';
 import {
 	GetDataFilters,
 	StaffMemberRole,
@@ -18,18 +21,47 @@ type DashboardFilterDrawerProps = {
 	closeDrawer: () => void;
 };
 
+type DateOrStringOrUndefined = Date | string | undefined;
+
+const isFromInvalid = (
+	value: DateOrStringOrUndefined,
+	otherDate: DateOrStringOrUndefined
+) => {
+	return value ? !isValidDate(value, { toDate: otherDate }) : false;
+};
+
+const isToInvalid = (
+	value: DateOrStringOrUndefined,
+	otherDate: DateOrStringOrUndefined
+) => {
+	return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+};
+
 export const DashboardFilterDrawer = ({
 	isDrawerOpen,
 	closeDrawer,
 }: DashboardFilterDrawerProps) => {
 	const { filters, setFilters, resetFilters } = useSortAndFilterContext();
 	const [formState, setFormState] = useState<GetDataFilters>(filters);
+	const [fromInvalid, setFromInvalid] = useState(false);
+	const [toInvalid, setToInvalid] = useState(false);
+
+	const fromInputRef = useRef<HTMLInputElement>(null);
+	const toInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		setFormState(filters);
 	}, [filters]);
 
 	const applyFilters = () => {
+		if (toInvalid && !fromInvalid) {
+			toInputRef.current?.focus();
+			return;
+		}
+		if (fromInvalid) {
+			fromInputRef.current?.focus();
+			return;
+		}
 		setFilters(formState);
 		closeDrawer();
 	};
@@ -39,12 +71,16 @@ export const DashboardFilterDrawer = ({
 	};
 
 	const clearFilters = () => {
+		setFromInvalid(false);
+		setToInvalid(false);
 		resetFilters();
 		setFormState(defaultFilters);
 	};
 
 	const cancel = () => {
 		closeDrawer();
+		setFromInvalid(false);
+		setToInvalid(false);
 		setFormState(filters);
 	};
 
@@ -184,29 +220,41 @@ export const DashboardFilterDrawer = ({
 							</Checkbox>
 						</ControlGroup>
 
-						<DateRangePicker
+						<DateRangePickerNext
+							fromInputRef={fromInputRef}
+							fromInvalid={fromInvalid}
 							fromLabel="From date"
 							legend="Last active"
-							onChange={({ from, to }) =>
+							message={
+								fromInvalid && toInvalid
+									? 'Enter valid From and To dates'
+									: fromInvalid
+									? 'Enter a valid From date'
+									: toInvalid
+									? 'Enter a valid To date'
+									: undefined
+							}
+							onChange={(dateRange) => {
+								const fromInvalid = isFromInvalid(dateRange.from, dateRange.to);
+								const toInvalid = isToInvalid(dateRange.to, dateRange.from);
+								setFromInvalid(fromInvalid);
+								setToInvalid(toInvalid);
+
 								setFormState((prevFormState) => ({
 									...prevFormState,
-									lastActiveFrom: from?.toISOString(),
-									lastActiveTo: to?.toISOString(),
-								}))
-							}
-							onFromInputChange={(from) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveFrom: from,
-								}))
-							}
-							onToInputChange={(to) =>
-								setFormState((prevFormState) => ({
-									...prevFormState,
-									lastActiveTo: to,
-								}))
-							}
+									lastActiveFrom:
+										!dateRange.from || fromInvalid
+											? dateRange.from
+											: new Date(dateRange.from).toISOString(),
+									lastActiveTo:
+										!dateRange.to || toInvalid
+											? dateRange.to
+											: new Date(dateRange.to).toISOString(),
+								}));
+							}}
 							required
+							toInputRef={toInputRef}
+							toInvalid={toInvalid}
 							toLabel="To date"
 							value={{
 								from: formState.lastActiveFrom,

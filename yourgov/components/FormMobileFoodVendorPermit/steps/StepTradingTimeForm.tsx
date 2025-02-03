@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+import {
+	DateRangePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-range-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { TimeInput } from '@ag.ds-next/react/time-input';
@@ -30,6 +33,14 @@ function transformDefaultValues(step?: DeepPartial<StepTradingTimeFormSchema>) {
 	};
 }
 
+const isFromInvalid = (value: Date, otherDate: Date) => {
+	return value ? !isValidDate(value, { toDate: otherDate }) : false;
+};
+
+const isToInvalid = (value: Date, otherDate: Date) => {
+	return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+};
+
 export function StepTradingTimeForm() {
 	const { formState, stepTradingTimeSetState, isSavingBeforeExiting } =
 		useGlobalForm();
@@ -41,6 +52,7 @@ export function StepTradingTimeForm() {
 		control,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm<StepTradingTimeFormSchema>({
 		defaultValues: transformDefaultValues(formState.steps?.stepTradingTime),
 		resolver: isSavingBeforeExiting
@@ -65,18 +77,25 @@ export function StepTradingTimeForm() {
 		});
 	};
 
+	const tradingPeriod = watch('tradingPeriod');
+	const fromInvalid = isFromInvalid(tradingPeriod.from, tradingPeriod.to);
+	const toInvalid = isToInvalid(tradingPeriod.to, tradingPeriod.from);
+
 	const hasErrors = useMemo(
 		() => ({
 			tradingPeriod: {
 				both:
-					Boolean(errors.tradingPeriod?.from?.message) &&
-					Boolean(errors.tradingPeriod?.to?.message),
+					(fromInvalid && toInvalid) ||
+					(Boolean(errors.tradingPeriod?.from?.message) &&
+						Boolean(errors.tradingPeriod?.to?.message)),
 				from:
-					Boolean(errors.tradingPeriod?.from?.message) &&
-					!errors.tradingPeriod?.to?.message,
+					(fromInvalid && !toInvalid) ||
+					(!errors.tradingPeriod?.to?.message &&
+						Boolean(errors.tradingPeriod?.from?.message)),
 				to:
-					!errors.tradingPeriod?.from?.message &&
-					Boolean(errors.tradingPeriod?.to?.message),
+					(toInvalid && !toInvalid) ||
+					(!errors.tradingPeriod?.from?.message &&
+						Boolean(errors.tradingPeriod?.to?.message)),
 			},
 			hours: {
 				both:
@@ -90,8 +109,17 @@ export function StepTradingTimeForm() {
 					Boolean(typeCorrectedErrors.closingTime?.message),
 			},
 		}),
-		[errors, typeCorrectedErrors]
+		[errors, fromInvalid, toInvalid, typeCorrectedErrors]
 	);
+
+	// FIXME: This should ideally be handled in zod
+	const tradingPeriodError = hasErrors.tradingPeriod.both
+		? 'Start date and End date are required'
+		: hasErrors.tradingPeriod.from
+		? 'Start date is required'
+		: hasErrors.tradingPeriod.to
+		? 'End date is required'
+		: undefined;
 
 	const validErrors = [
 		hasErrors.tradingPeriod.both,
@@ -125,14 +153,16 @@ export function StepTradingTimeForm() {
 						<FormPageAlert
 							errors={{
 								'date-range-picker-tradingPeriod-from': {
-									message: hasErrors.tradingPeriod.both
-										? 'Start date and End date are required'
-										: errors.tradingPeriod?.from?.message,
+									message:
+										hasErrors.tradingPeriod.both || hasErrors.tradingPeriod.from
+											? tradingPeriodError
+											: undefined,
 								},
 								'date-range-picker-tradingPeriod-to': {
-									message: !hasErrors.tradingPeriod.both
-										? errors.tradingPeriod?.to?.message
-										: undefined,
+									message:
+										!hasErrors.tradingPeriod.both && hasErrors.tradingPeriod.to
+											? tradingPeriodError
+											: undefined,
 								},
 								openingTime: {
 									message: hasErrors.hours.both
@@ -151,7 +181,7 @@ export function StepTradingTimeForm() {
 						control={control}
 						name="tradingPeriod"
 						render={({ field: { ref, value, onChange, ...field } }) => (
-							<DateRangePicker
+							<DateRangePickerNext
 								{...field}
 								fromInputRef={tradingPeriodFromRef}
 								fromInvalid={
@@ -159,15 +189,8 @@ export function StepTradingTimeForm() {
 								}
 								id="tradingPeriod"
 								legend="Trading period"
-								message={
-									hasErrors.tradingPeriod.both
-										? 'Start date and End date is required'
-										: errors.tradingPeriod?.from?.message ||
-										  errors.tradingPeriod?.to?.message
-								}
+								message={tradingPeriodError}
 								onChange={onChange}
-								onFromInputChange={(from) => onChange({ ...value, from })}
-								onToInputChange={(to) => onChange({ ...value, to })}
 								required
 								toInputRef={tradingPeriodToRef}
 								toInvalid={

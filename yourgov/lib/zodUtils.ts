@@ -51,11 +51,11 @@ export function zodDateField(message = 'Enter a valid date') {
 	return z
 		.union([
 			z.string({
-				invalid_type_error: 'Enter a valid date',
+				invalid_type_error: message,
 				required_error: message,
 			}),
 			z.date({
-				invalid_type_error: 'Enter a valid date',
+				invalid_type_error: message,
 				required_error: message,
 			}),
 		])
