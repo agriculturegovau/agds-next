@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { useCallback, useState } from 'react';
-import { subDays, addDays } from 'date-fns';
-import sub from 'date-fns/sub';
+import { sub, subDays, addDays } from 'date-fns';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
