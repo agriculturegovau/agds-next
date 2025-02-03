@@ -7,11 +7,13 @@ import { Button, ButtonGroup } from '../button';
 import { DatePickerNext, DatePickerNextProps } from './DatePickerNext';
 import { isValidDate } from './utils';
 
+type DateOrStringOrUndefined = Date | string | undefined;
+
 function ControlledDatePickerNext(props: DatePickerNextProps) {
-	const [value, setValue] = useState<Date | string | undefined>();
+	const [value, setValue] = useState<DateOrStringOrUndefined>();
 
 	const isInvalid = useCallback(
-		(value: Date | string | undefined) => {
+		(value: DateOrStringOrUndefined) => {
 			return value
 				? !isValidDate(
 						value,

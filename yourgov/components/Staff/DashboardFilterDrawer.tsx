@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { FormStack } from '@ag.ds-next/react/src/form-stack';
 import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
@@ -21,6 +21,22 @@ type DashboardFilterDrawerProps = {
 	closeDrawer: () => void;
 };
 
+type DateOrStringOrUndefined = Date | string | undefined;
+
+const isFromInvalid = (
+	value: DateOrStringOrUndefined,
+	otherDate: DateOrStringOrUndefined
+) => {
+	return value ? !isValidDate(value, { toDate: otherDate }) : false;
+};
+
+const isToInvalid = (
+	value: DateOrStringOrUndefined,
+	otherDate: DateOrStringOrUndefined
+) => {
+	return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+};
+
 export const DashboardFilterDrawer = ({
 	isDrawerOpen,
 	closeDrawer,
@@ -36,26 +52,6 @@ export const DashboardFilterDrawer = ({
 	useEffect(() => {
 		setFormState(filters);
 	}, [filters]);
-
-	const isFromInvalid = useCallback(
-		(
-			value: Date | string | undefined,
-			otherDate: Date | string | undefined
-		) => {
-			return value ? !isValidDate(value, { toDate: otherDate }) : false;
-		},
-		[]
-	);
-
-	const isToInvalid = useCallback(
-		(
-			value: Date | string | undefined,
-			otherDate: Date | string | undefined
-		) => {
-			return value ? !isValidDate(value, { fromDate: otherDate }) : false;
-		},
-		[]
-	);
 
 	const applyFilters = () => {
 		if (toInvalid && !fromInvalid) {
@@ -231,11 +227,11 @@ export const DashboardFilterDrawer = ({
 							legend="Last active"
 							message={
 								fromInvalid && toInvalid
-									? 'Enter valid from and to dates'
+									? 'Enter valid From and To dates'
 									: fromInvalid
-									? 'Enter a valid from date'
+									? 'Enter a valid From date'
 									: toInvalid
-									? 'Enter a valid to date'
+									? 'Enter a valid To date'
 									: undefined
 							}
 							onChange={(dateRange) => {
