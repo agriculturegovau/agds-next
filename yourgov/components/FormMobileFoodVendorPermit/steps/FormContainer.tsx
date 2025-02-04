@@ -9,6 +9,7 @@ import {
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
 import { useGlobalForm } from '../GlobalFormProvider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer as GlobalFormContainer } from '../FormContainer';
 import { useFormContext } from './FormProvider';
 import { stepsData } from './stepsData';
@@ -32,6 +33,7 @@ export function FormContainer({
 	const { asPath, pathname } = useRouter();
 	const { formState, startApplication } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormContext();
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = stepsData[stepIndex];
@@ -45,6 +47,8 @@ export function FormContainer({
 		// The final step (review and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'stepReviewAndSubmit' && !canConfirmAndSubmit)
 			return 'blocked';
+		// Review and submit is started when editing a step from that page
+		if (isEditingFromReviewStep) return 'started';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
@@ -52,6 +56,14 @@ export function FormContainer({
 	useEffect(() => {
 		startApplication();
 	}, [startApplication]);
+
+	const substepNumberFromReviewStep =
+		(isEditingFromReviewStep && asPath.slice(asPath.lastIndexOf('-') + 1)) ||
+		undefined;
+	const substepData = stepsData.find(
+		({ href }) =>
+			substepNumberFromReviewStep && href.endsWith(substepNumberFromReviewStep)
+	);
 
 	return (
 		<Columns>
@@ -63,6 +75,15 @@ export function FormContainer({
 							label,
 							href,
 							status: getStepStatus(index),
+							items: isEditingFromReviewStep
+								? [
+										{
+											label: substepData?.changeLabel,
+											href: `${stepsData.at(-1)
+												?.href}/substep-${substepNumberFromReviewStep}`,
+										},
+								  ]
+								: undefined,
 						}))}
 					/>
 				</ContentBleed>

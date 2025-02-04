@@ -37,6 +37,8 @@ import { stepKeyToStepDataMap } from './stepsData';
 export function ReviewAndSubmitStepsSummary() {
 	const { formState } = useGlobalForm();
 
+	console.log(`stepKeyToStepDataMap`, stepKeyToStepDataMap);
+
 	const validation = {
 		stepOwnerDetails: stepOwnerDetailsFormSchema.safeParse(
 			formState.steps?.stepOwnerDetails
@@ -99,10 +101,10 @@ export function ReviewAndSubmitStepsSummary() {
 
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepOwnerDetails.href}
+					href={stepKeyToStepDataMap.stepOwnerDetails.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepOwnerDetails.labelWhenChanging}
+					{stepKeyToStepDataMap.stepOwnerDetails.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -142,10 +144,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepBusinessDetails.href}
+					href={stepKeyToStepDataMap.stepBusinessDetails.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepBusinessDetails.labelWhenChanging}
+					{stepKeyToStepDataMap.stepBusinessDetails.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -184,10 +186,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepBusinessAddress.href}
+					href={stepKeyToStepDataMap.stepBusinessAddress.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepBusinessAddress.labelWhenChanging}
+					{stepKeyToStepDataMap.stepBusinessAddress.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -214,10 +216,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepVehicleRegistration.href}
+					href={stepKeyToStepDataMap.stepVehicleRegistration.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepVehicleRegistration.labelWhenChanging}
+					{stepKeyToStepDataMap.stepVehicleRegistration.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -242,10 +244,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepTradingTime.href}
+					href={stepKeyToStepDataMap.stepTradingTime.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepTradingTime.labelWhenChanging}
+					{stepKeyToStepDataMap.stepTradingTime.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -266,10 +268,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepFoodServed.href}
+					href={stepKeyToStepDataMap.stepFoodServed.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepFoodServed.labelWhenChanging}
+					{stepKeyToStepDataMap.stepFoodServed.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -307,10 +309,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepEmployees.href}
+					href={stepKeyToStepDataMap.stepEmployees.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepEmployees.labelWhenChanging}
+					{stepKeyToStepDataMap.stepEmployees.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -329,10 +331,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepFoodSafetySupervisor.href}
+					href={stepKeyToStepDataMap.stepFoodSafetySupervisor.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepFoodSafetySupervisor.labelWhenChanging}
+					{stepKeyToStepDataMap.stepFoodSafetySupervisor.changeLabel}
 				</ButtonLink>
 			</Stack>
 
@@ -372,10 +374,10 @@ export function ReviewAndSubmitStepsSummary() {
 				)}
 				<ButtonLink
 					alignSelf="start"
-					href={stepKeyToStepDataMap.stepUploadDocuments.href}
+					href={stepKeyToStepDataMap.stepUploadDocuments.changeHref}
 					variant="text"
 				>
-					{stepKeyToStepDataMap.stepUploadDocuments.labelWhenChanging}
+					{stepKeyToStepDataMap.stepUploadDocuments.changeLabel}
 				</ButtonLink>
 			</Stack>
 		</Stack>

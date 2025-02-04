@@ -16,6 +16,7 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	stepOwnerDetailsChangeDetailsFormSchema,
@@ -34,6 +35,8 @@ export function StepOwnerDetailsForm() {
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
 
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
 	}, [isUpdated]);
@@ -41,7 +44,11 @@ export function StepOwnerDetailsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Confirm your name and contact details."
-			formTitle={stepKeyToStepDataMap.stepOwnerDetails.label}
+			formTitle={
+				stepKeyToStepDataMap.stepOwnerDetails[
+					isEditingFromReviewStep ? 'changeLabel' : 'label'
+				]
+			}
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>

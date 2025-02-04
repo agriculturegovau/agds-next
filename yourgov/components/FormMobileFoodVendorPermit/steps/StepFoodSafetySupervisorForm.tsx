@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
@@ -21,6 +22,8 @@ export function StepFoodSafetySupervisorForm() {
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const employees = [
 		`${stepOwnerDetailsGetState()?.firstName} ${stepOwnerDetailsGetState()
@@ -60,7 +63,11 @@ export function StepFoodSafetySupervisorForm() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee food safety supervisor."
-			formTitle={stepKeyToStepDataMap.stepFoodSafetySupervisor.label}
+			formTitle={
+				stepKeyToStepDataMap.stepFoodSafetySupervisor[
+					isEditingFromReviewStep ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<ControlGroup

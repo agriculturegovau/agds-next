@@ -7,6 +7,7 @@ import { H2 } from '@ag.ds-next/react/heading';
 import { Select } from '@ag.ds-next/react/select';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { Divider } from '@ag.ds-next/react/divider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -23,6 +24,8 @@ export function StepBusinessAddressForm() {
 	const { formState, stepBusinessAddressSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -61,7 +64,11 @@ export function StepBusinessAddressForm() {
 	return (
 		<FormContainer
 			formIntroduction="Add your business address."
-			formTitle={stepKeyToStepDataMap.stepBusinessAddress.label}
+			formTitle={
+				stepKeyToStepDataMap.stepBusinessAddress[
+					isEditingFromReviewStep ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				{showErrorAlert && <FormPageAlert errors={errors} />}

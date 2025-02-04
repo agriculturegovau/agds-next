@@ -1,6 +1,7 @@
 import { FormEventHandler, ReactNode } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { StepActions } from '../StepActions';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 
 type FormProps = {
 	children?: ReactNode;
@@ -15,11 +16,17 @@ export const Form = ({
 	onSubmit,
 	submitText,
 }: FormProps) => {
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+
 	return (
 		<Stack as="form" gap={3} noValidate={noValidate} onSubmit={onSubmit}>
 			{children}
 
-			<StepActions submitText={submitText} />
+			{isEditingFromReviewStep ? (
+				<StepActions hasSaveAndExit={false} submitText="Save changes" />
+			) : (
+				<StepActions submitText={submitText} />
+			)}
 		</Stack>
 	);
 };

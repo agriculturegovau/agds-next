@@ -18,6 +18,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
@@ -34,6 +35,9 @@ export function StepEmployeesForm() {
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+
 	const { query } = useRouter();
 	const stepEmployeesState = stepEmployeesGetState();
 
@@ -142,7 +146,11 @@ export function StepEmployeesForm() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee details."
-			formTitle={stepKeyToStepDataMap.stepEmployees.label}
+			formTitle={
+				stepKeyToStepDataMap.stepEmployees[
+					isEditingFromReviewStep ? 'changeLabel' : 'label'
+				]
+			}
 			hideRequiredFieldsMessage
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>

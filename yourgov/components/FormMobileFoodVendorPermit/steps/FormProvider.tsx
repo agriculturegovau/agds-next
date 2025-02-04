@@ -6,6 +6,7 @@ import {
 	useContext,
 	useMemo,
 } from 'react';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { applyForFoodPermitPage, getStepCompletionUrl } from '../utils';
 import { stepsData } from './stepsData';
@@ -27,6 +28,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		useGlobalForm();
 
 	const currentStepIndex = stepsData.findIndex(({ href }) => href === pathname);
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
@@ -40,6 +42,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		const stepCompletionUrl = getStepCompletionUrl({
 			currentStepIndex,
 			id: formState.id,
+			isEditingFromReviewStep,
 			steps: stepsData,
 		});
 
@@ -49,6 +52,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	}, [
 		currentStepIndex,
 		formState,
+		isEditingFromReviewStep,
 		isSavingBeforeExiting,
 		push,
 		setIsSubmittingStep,
@@ -56,7 +60,10 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 
 	// The href of the previous step
 	const backHref = `${
-		stepsData[currentStepIndex - 1]?.href ?? applyForFoodPermitPage
+		(isEditingFromReviewStep
+			? stepsData.at(-1)
+			: stepsData[currentStepIndex - 1]
+		)?.href ?? applyForFoodPermitPage
 	}`;
 
 	// If true, the user can access the "confirm and submit step"

@@ -6,6 +6,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Radio } from '@ag.ds-next/react/radio';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { Divider } from '@ag.ds-next/react/divider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -22,6 +23,8 @@ export function StepBusinessDetailsForm() {
 	const { formState, stepBusinessDetailsSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const isEditingFromReviewStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -64,7 +67,11 @@ export function StepBusinessDetailsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Your business details must match your business registration."
-			formTitle={stepKeyToStepDataMap.stepBusinessDetails.label}
+			formTitle={
+				stepKeyToStepDataMap.stepBusinessDetails[
+					isEditingFromReviewStep ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
