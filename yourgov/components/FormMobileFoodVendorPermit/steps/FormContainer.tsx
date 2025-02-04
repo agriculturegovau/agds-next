@@ -8,8 +8,8 @@ import {
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
+import { useIsEditingFromReviewStep2 } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
-import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormContainer as GlobalFormContainer } from '../FormContainer';
 import { useFormContext } from './FormProvider';
 import { stepsData } from './stepsData';
@@ -33,7 +33,7 @@ export function FormContainer({
 	const { asPath, pathname } = useRouter();
 	const { formState, startApplication } = useGlobalForm();
 	const { backHref, canConfirmAndSubmit } = useFormContext();
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const [isEditingStep, editingStep] = useIsEditingFromReviewStep2();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = stepsData[stepIndex];
@@ -48,7 +48,7 @@ export function FormContainer({
 		if (step.formStateKey === 'stepReviewAndSubmit' && !canConfirmAndSubmit)
 			return 'blocked';
 		// Review and submit is started when editing a step from that page
-		if (isEditingFromReviewStep) return 'started';
+		if (isEditingStep) return 'started';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
@@ -57,14 +57,6 @@ export function FormContainer({
 		startApplication();
 	}, [startApplication]);
 
-	const substepNumberFromReviewStep =
-		(isEditingFromReviewStep && asPath.slice(asPath.lastIndexOf('-') + 1)) ||
-		undefined;
-	const substepData = stepsData.find(
-		({ href }) =>
-			substepNumberFromReviewStep && href.endsWith(substepNumberFromReviewStep)
-	);
-
 	return (
 		<Columns>
 			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
@@ -72,18 +64,18 @@ export function FormContainer({
 					<ProgressIndicator
 						activePath={asPath}
 						items={stepsData.map(({ label, href }, index) => ({
-							label,
 							href,
+							label,
 							status: getStepStatus(index),
-							items: isEditingFromReviewStep
-								? [
-										{
-											label: substepData?.changeLabel,
-											href: `${stepsData.at(-1)
-												?.href}/substep-${substepNumberFromReviewStep}`,
-										},
-								  ]
-								: undefined,
+							items:
+								isEditingStep && editingStep?.changeHref.startsWith(href)
+									? [
+											{
+												href: editingStep?.changeHref,
+												label: editingStep?.changeLabel,
+											},
+									  ]
+									: undefined,
 						}))}
 					/>
 				</ContentBleed>
