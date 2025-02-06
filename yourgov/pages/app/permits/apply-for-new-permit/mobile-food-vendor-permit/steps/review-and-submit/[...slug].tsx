@@ -4,29 +4,34 @@ import { PageContent } from '@ag.ds-next/react/content';
 import { DocumentTitle } from '../../../../../../../components/DocumentTitle';
 import { AppLayout } from '../../../../../../../components/Layout/AppLayout';
 import {
-	GlobalFormProvider,
 	FormProvider,
-	StepOwnerDetailsForm,
-	StepBusinessDetailsForm,
+	GlobalFormProvider,
 	StepBusinessAddressForm,
-	StepVehicleRegistrationForm,
-	StepTradingTimeForm,
-	StepFoodServedForm,
+	StepBusinessDetailsForm,
+	StepEmployeesAddEmployeeForm,
 	StepEmployeesForm,
 	StepFoodSafetySupervisorForm,
-	StepUploadDocumentsForm,
+	StepFoodServedForm,
+	StepOwnerDetailsChangeDetailsForm,
+	StepOwnerDetailsForm,
 	stepsData,
+	StepTradingTimeForm,
+	StepUploadDocumentsForm,
+	StepVehicleRegistrationForm,
 	useGlobalForm,
 } from '../../../../../../../components/FormMobileFoodVendorPermit';
+import { StepsData } from '../../../../../../../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 const substepToFormMap = {
 	'owner-details': StepOwnerDetailsForm,
+	'owner-details/change-details': StepOwnerDetailsChangeDetailsForm,
 	'business-details': StepBusinessDetailsForm,
 	'business-address': StepBusinessAddressForm,
 	'vehicle-registration': StepVehicleRegistrationForm,
 	'trading-time': StepTradingTimeForm,
 	'food-served': StepFoodServedForm,
 	employees: StepEmployeesForm,
+	'employees/add-employee': StepEmployeesAddEmployeeForm,
 	'food-safety-supervisor': StepFoodSafetySupervisorForm,
 	documents: StepUploadDocumentsForm,
 };
@@ -35,8 +40,6 @@ export default function EditStepFromReview({
 	substep,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const { formTitle } = useGlobalForm();
-	// const substepIndex = Number(substep.split('-').at(-1)) - 1;
-
 	const Form = substepToFormMap[substep];
 
 	return (
@@ -61,38 +64,52 @@ EditStepFromReview.getLayout = function getLayout(page: ReactElement) {
 
 export const getStaticProps: GetStaticProps<
 	{ substep: keyof typeof substepToFormMap },
-	{ slug: string }
+	{ slug: string[] }
 > = async ({ params }) => {
 	const { slug } = params ?? {};
 
-	console.log(`slug`, slug);
+	const slugAsString = slug?.join('/');
 
-	if (!isKeyofSubsteps(slug)) {
+	if (!(slugAsString && slugAsString in substepToFormMap)) {
 		return { notFound: true };
 	}
 
 	return {
 		props: {
-			substep: slug,
+			substep: slugAsString as keyof typeof substepToFormMap,
 		},
 	};
 };
 
-export const getStaticPaths = async () => {
-	const steps = stepsData.map(
-		({ href }) => `${href.slice(href.lastIndexOf('/') + 1)}`
-	);
+const getStepSlugs = (steps: StepsData, parentSlugs: string[] = []) => {
+	let slugs: string[][] = [];
 
+	for (const step of steps) {
+		const stepSegment = step.href.split('/').pop() ?? '';
+		const fullSegment = [...parentSlugs, stepSegment];
+
+		slugs.push(fullSegment);
+
+		if (step.items) {
+			slugs = [...slugs, ...getStepSlugs(step.items, fullSegment)];
+		}
+	}
+
+	return slugs;
+};
+
+export const getStaticPaths = async () => {
+	const steps = getStepSlugs(stepsData);
 	console.log(`steps`, steps);
+
+	const paths = steps.map((slugArray) => ({
+		params: { slug: slugArray },
+	}));
+
+	console.log(`paths`, paths);
+
 	return {
-		paths: steps.map((slug) => ({
-			params: { slug },
-		})),
+		paths,
 		fallback: false,
 	};
 };
-
-const isKeyofSubsteps = (
-	substep: string | undefined
-): substep is keyof typeof substepToFormMap =>
-	!!substep && substep in substepToFormMap;

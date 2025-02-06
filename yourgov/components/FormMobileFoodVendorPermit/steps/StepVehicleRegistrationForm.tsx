@@ -32,7 +32,7 @@ export function StepVehicleRegistrationForm() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -71,7 +71,7 @@ export function StepVehicleRegistrationForm() {
 			formIntroduction="Add your vehicle registration details."
 			formTitle={
 				stepKeyToStepDataMap.stepVehicleRegistration[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

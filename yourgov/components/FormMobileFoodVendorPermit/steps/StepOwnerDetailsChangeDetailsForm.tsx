@@ -15,6 +15,7 @@ import {
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormRequiredFieldsMessage } from '../../FormRequiredFieldsMessage';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
@@ -44,7 +45,12 @@ export function StepOwnerDetailsChangeDetailsForm() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const stepOwnerDetailsPath = stepKeyToStepDataMap.stepOwnerDetails.href;
+	const editingStep = useIsEditingFromReviewStep();
+
+	const stepOwnerDetailsPath =
+		stepKeyToStepDataMap.stepOwnerDetails[
+			editingStep?.match ? 'changeHref' : 'href'
+		];
 
 	const onSubmit: SubmitHandler<StepOwnerDetailsFormSchema> = (data) => {
 		setIsSaving(true);
@@ -71,7 +77,7 @@ export function StepOwnerDetailsChangeDetailsForm() {
 		titleRef.current?.focus();
 	}, []);
 
-	const { pathname } = useRouter();
+	const { asPath, pathname } = useRouter();
 	const { canConfirmAndSubmit } = useFormContext();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
@@ -83,31 +89,49 @@ export function StepOwnerDetailsChangeDetailsForm() {
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'stepReviewAndSubmit' && !canConfirmAndSubmit)
 			return 'blocked';
+		// Review and submit is started when editing a step from that page
+		if (editingStep) return 'started';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
 
 	return (
 		<Columns>
-			<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
-				<ProgressIndicator
-					activePath={`${
-						'items' in stepKeyToStepDataMap.stepOwnerDetails &&
-						stepKeyToStepDataMap.stepOwnerDetails.items[0]?.href
-					}`}
-					items={stepsData.map(({ label, href, ...rest }, index) => {
-						const items = 'items' in rest ? rest.items : undefined;
-
-						return {
-							label,
-							href,
-							status: getStepStatus(index),
-							items,
-						};
-					})}
-				/>
-			</Column>
-			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
+			{!editingStep?.match && (
+				<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
+					<ProgressIndicator
+						activePath={asPath}
+						items={stepsData.map(({ label, href, ...rest }, index) => {
+							return {
+								label,
+								href,
+								status: getStepStatus(index),
+								items:
+									index === stepsData.length - 1 &&
+									editingStep?.match.changeHref === asPath
+										? [
+												{
+													href: editingStep.match.changeHref,
+													label: editingStep.match.changeLabel,
+												},
+										  ]
+										: rest?.items && asPath === rest.items[0].href
+										? [
+												{
+													href: rest.items[0].href,
+													label: rest.items[0].label,
+												},
+										  ]
+										: undefined,
+							};
+						})}
+					/>
+				</Column>
+			)}
+			<Column
+				columnSpan={{ xs: 12, md: 8 }}
+				columnStart={editingStep?.match ? undefined : { lg: 5 }}
+			>
 				<Stack alignItems="flex-start" gap={3}>
 					<DirectionLink direction="left" href={stepOwnerDetailsPath}>
 						Back

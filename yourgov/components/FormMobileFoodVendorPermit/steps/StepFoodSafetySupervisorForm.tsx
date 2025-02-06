@@ -23,7 +23,7 @@ export function StepFoodSafetySupervisorForm() {
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const employees = [
 		`${stepOwnerDetailsGetState()?.firstName} ${stepOwnerDetailsGetState()
@@ -65,7 +65,7 @@ export function StepFoodSafetySupervisorForm() {
 			formIntroduction="Add your employee food safety supervisor."
 			formTitle={
 				stepKeyToStepDataMap.stepFoodSafetySupervisor[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

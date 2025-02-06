@@ -47,7 +47,7 @@ export function StepTradingTimeForm() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
 	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
@@ -151,7 +151,7 @@ export function StepTradingTimeForm() {
 			formIntroduction="What times would you like to operate?"
 			formTitle={
 				stepKeyToStepDataMap.stepTradingTime[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

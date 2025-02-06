@@ -37,8 +37,6 @@ import { stepKeyToStepDataMap } from './stepsData';
 export function ReviewAndSubmitStepsSummary() {
 	const { formState } = useGlobalForm();
 
-	console.log(`stepKeyToStepDataMap`, stepKeyToStepDataMap);
-
 	const validation = {
 		stepOwnerDetails: stepOwnerDetailsFormSchema.safeParse(
 			formState.steps?.stepOwnerDetails

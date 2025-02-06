@@ -14,6 +14,8 @@ import { stepsData } from './stepsData';
 type ContextType = {
 	/** The href of the previous step. */
 	backHref: string;
+	/** The label of the previous step. */
+	backLabel: string;
 	/** Callback function to submit the current step. */
 	submitStep: () => Promise<void>;
 	/** If true, the user can access the "confirm and submit step".  */
@@ -28,7 +30,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		useGlobalForm();
 
 	const currentStepIndex = stepsData.findIndex(({ href }) => href === pathname);
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
@@ -42,7 +44,10 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		const stepCompletionUrl = getStepCompletionUrl({
 			currentStepIndex,
 			id: formState.id,
-			isEditingFromReviewStep,
+			editingStep: {
+				depth: editingStep?.depth,
+				match: editingStep?.match,
+			},
 			steps: stepsData,
 		});
 
@@ -52,7 +57,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	}, [
 		currentStepIndex,
 		formState,
-		isEditingFromReviewStep,
+		editingStep,
 		isSavingBeforeExiting,
 		push,
 		setIsSubmittingStep,
@@ -60,11 +65,10 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 
 	// The href of the previous step
 	const backHref = `${
-		(isEditingFromReviewStep
-			? stepsData.at(-1)
-			: stepsData[currentStepIndex - 1]
-		)?.href ?? applyForFoodPermitPage
+		(editingStep?.match ? stepsData.at(-1) : stepsData[currentStepIndex - 1])
+			?.href ?? applyForFoodPermitPage
 	}`;
+	const backLabel = editingStep?.match ? 'Back to review and submit' : 'Back';
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
@@ -86,6 +90,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 
 	const contextValue = {
 		backHref,
+		backLabel,
 		submitStep,
 		canConfirmAndSubmit,
 	};

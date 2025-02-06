@@ -24,7 +24,7 @@ export function StepBusinessDetailsForm() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -69,7 +69,7 @@ export function StepBusinessDetailsForm() {
 			formIntroduction="Your business details must match your business registration."
 			formTitle={
 				stepKeyToStepDataMap.stepBusinessDetails[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

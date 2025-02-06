@@ -36,7 +36,13 @@ export function StepEmployeesForm() {
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
+
+	const addEmployeeHref = stepKeyToStepDataMap.stepEmployees?.items
+		? stepKeyToStepDataMap.stepEmployees.items[0][
+				editingStep?.match ? 'changeHref' : 'href'
+		  ]
+		: undefined;
 
 	const { query } = useRouter();
 	const stepEmployeesState = stepEmployeesGetState();
@@ -148,7 +154,7 @@ export function StepEmployeesForm() {
 			formIntroduction="Add your employee details."
 			formTitle={
 				stepKeyToStepDataMap.stepEmployees[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 			hideRequiredFieldsMessage
@@ -238,11 +244,7 @@ export function StepEmployeesForm() {
 
 				<ButtonLink
 					alignSelf="start"
-					href={
-						'items' in stepKeyToStepDataMap.stepEmployees
-							? stepKeyToStepDataMap.stepEmployees.items[0].href
-							: undefined
-					}
+					href={addEmployeeHref}
 					iconBefore={PlusIcon}
 					size="sm"
 					variant="secondary"

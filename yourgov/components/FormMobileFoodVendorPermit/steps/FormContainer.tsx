@@ -8,7 +8,7 @@ import {
 	ProgressIndicatorItemStatus,
 } from '@ag.ds-next/react/progress-indicator';
 import { Stack } from '@ag.ds-next/react/stack';
-import { useIsEditingFromReviewStep2 } from '../../../lib/useIsEditingFromReviewStep';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer as GlobalFormContainer } from '../FormContainer';
 import { useFormContext } from './FormProvider';
@@ -32,8 +32,8 @@ export function FormContainer({
 }: FormContainerProps) {
 	const { asPath, pathname } = useRouter();
 	const { formState, startApplication } = useGlobalForm();
-	const { backHref, canConfirmAndSubmit } = useFormContext();
-	const [isEditingStep, editingStep] = useIsEditingFromReviewStep2();
+	const { backHref, backLabel, canConfirmAndSubmit } = useFormContext();
+	const editingStep = useIsEditingFromReviewStep();
 
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = stepsData[stepIndex];
@@ -48,7 +48,7 @@ export function FormContainer({
 		if (step.formStateKey === 'stepReviewAndSubmit' && !canConfirmAndSubmit)
 			return 'blocked';
 		// Review and submit is started when editing a step from that page
-		if (isEditingStep) return 'started';
+		if (editingStep) return 'started';
 		// Otherwise, the step still needs to be done
 		return 'todo';
 	}
@@ -67,15 +67,14 @@ export function FormContainer({
 							href,
 							label,
 							status: getStepStatus(index),
-							items:
-								isEditingStep && editingStep?.changeHref.startsWith(href)
-									? [
-											{
-												href: editingStep?.changeHref,
-												label: editingStep?.changeLabel,
-											},
-									  ]
-									: undefined,
+							items: editingStep?.match?.changeHref.startsWith(href)
+								? [
+										{
+											href: editingStep?.match?.changeHref,
+											label: editingStep?.match?.changeLabel,
+										},
+								  ]
+								: undefined,
 						}))}
 					/>
 				</ContentBleed>
@@ -83,7 +82,7 @@ export function FormContainer({
 			<Column columnSpan={{ xs: 12, md: 8 }} columnStart={{ lg: 5 }}>
 				<Stack alignItems="flex-start" gap={3}>
 					<DirectionLink direction="left" href={backHref}>
-						Back
+						{backLabel}
 					</DirectionLink>
 					<GlobalFormContainer
 						callToAction={formCallToAction}

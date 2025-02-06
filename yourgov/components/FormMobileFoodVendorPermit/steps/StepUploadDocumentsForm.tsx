@@ -82,7 +82,7 @@ export function StepUploadDocumentsForm() {
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const errorMessageRef = useRef<HTMLDivElement>(null);
 	const successMessageRef = useRef<HTMLDivElement>(null);
@@ -222,7 +222,7 @@ export function StepUploadDocumentsForm() {
 			formIntroduction="Upload all documents listed in the table below."
 			formTitle={
 				stepKeyToStepDataMap.stepUploadDocuments[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 			hideRequiredFieldsMessage

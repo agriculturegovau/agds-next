@@ -9,7 +9,7 @@ import {
 	zodStringOptional,
 	zodTimeField,
 } from '../../../lib/zodUtils';
-import { type Completion } from '../FormState';
+import { type Status } from '../FormState';
 import { StaffMember } from '../../Staff/lib/types';
 
 export const stepOwnerDetailsFormSchema = z.object({
@@ -218,18 +218,24 @@ export type StepReviewAndSubmitFormSchema = z.infer<
 >;
 
 export type FormState = {
-	stepOwnerDetails: StepOwnerDetailsFormSchema & Completion;
-	stepBusinessDetails: StepBusinessDetailsFormSchema & Completion;
-	stepBusinessAddress: StepBusinessAddressFormSchema & Completion;
-	stepVehicleRegistration: StepVehicleRegistrationFormSchema & Completion;
-	stepTradingTime: StepTradingTimeFormSchema & Completion;
-	stepFoodServed: StepFoodServedFormSchema & Completion;
+	stepOwnerDetails: StepOwnerDetailsFormSchema & Status;
+	// FIXME: This is here to satisfy TS but is not correct
+	stepChangeOwnerDetails: StepOwnerDetailsFormSchema & Status;
+	stepBusinessDetails: StepBusinessDetailsFormSchema & Status;
+	stepBusinessAddress: StepBusinessAddressFormSchema & Status;
+	stepVehicleRegistration: StepVehicleRegistrationFormSchema & Status;
+	stepTradingTime: StepTradingTimeFormSchema & Status;
+	stepFoodServed: StepFoodServedFormSchema & Status;
 	stepEmployees: {
 		employee: StepEmployeesFormSchema['employee'][];
-	} & Completion;
-	stepFoodSafetySupervisor: StepFoodSafetySupervisorFormSchema & Completion;
-	stepUploadDocuments: StepUploadDocumentsFormSchema & Completion;
-	stepReviewAndSubmit: StepReviewAndSubmitFormSchema & Completion;
+	} & Status;
+	// FIXME: This is here to satisfy TS but is not correct
+	stepAddEmployee: {
+		employee: StepEmployeesFormSchema['employee'][];
+	} & Status;
+	stepFoodSafetySupervisor: StepFoodSafetySupervisorFormSchema & Status;
+	stepUploadDocuments: StepUploadDocumentsFormSchema & Status;
+	stepReviewAndSubmit: StepReviewAndSubmitFormSchema & Status;
 };
 
 export const defaultFormState: DeepPartial<FormState> = {

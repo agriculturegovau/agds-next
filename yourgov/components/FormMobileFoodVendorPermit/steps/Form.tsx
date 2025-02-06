@@ -16,13 +16,13 @@ export const Form = ({
 	onSubmit,
 	submitText,
 }: FormProps) => {
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	return (
 		<Stack as="form" gap={3} noValidate={noValidate} onSubmit={onSubmit}>
 			{children}
 
-			{isEditingFromReviewStep ? (
+			{editingStep?.match ? (
 				<StepActions hasSaveAndExit={false} submitText="Save changes" />
 			) : (
 				<StepActions submitText={submitText} />

@@ -1,18 +1,26 @@
 import { useRouter } from 'next/router';
 import { stepsData } from '../components/FormMobileFoodVendorPermit';
-import { StepsData } from '../components/FormMobileFoodVendorPermit/steps/stepsData';
+import { type FormStep } from '../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 export const useIsEditingFromReviewStep = () => {
 	const { asPath } = useRouter();
-	console.log(`asPath`, asPath);
-	const isChangeHrefMatch = (steps, asPath) => {
+
+	const isChangeHrefMatch = (
+		steps: FormStep[],
+		asPath: string,
+		// depth currently is not used because of the way sub steps are structured
+		depth = 0
+	): { match: FormStep; depth: number } | undefined => {
 		for (const step of steps) {
 			if (step.changeHref === asPath) {
-				return step;
+				return { depth, match: step };
 			}
 
-			if (step.items && isChangeHrefMatch(step.items, asPath)) {
-				return step.items;
+			if (step.items) {
+				const result = isChangeHrefMatch(step.items, asPath, depth + 1);
+				if (result) {
+					return result;
+				}
 			}
 		}
 
@@ -20,33 +28,4 @@ export const useIsEditingFromReviewStep = () => {
 	};
 
 	return isChangeHrefMatch(stepsData, asPath);
-	// const lastStepHref = stepsData.at(-1)?.href;
-	// console.log(`lastStepHref`, lastStepHref);
-	// const isEditingFromReviewStep = new RegExp(
-	// 	lastStepHref + '\\/substep-\\d+'
-	// ).test(asPath);
-
-	// return isEditingFromReviewStep;
-};
-
-export const useIsEditingFromReviewStep2 = (): [boolean, StepsData] => {
-	const { asPath } = useRouter();
-	let matchedStep = {};
-
-	const isChangeHrefMatch = (steps: StepsData, asPath: string) => {
-		for (const step of steps) {
-			if (step.changeHref === asPath) {
-				matchedStep = step;
-				return true;
-			}
-
-			if (step.items && isChangeHrefMatch(step.items, asPath)) {
-				return true;
-			}
-		}
-
-		return false;
-	};
-
-	return [isChangeHrefMatch(stepsData, asPath), matchedStep];
 };

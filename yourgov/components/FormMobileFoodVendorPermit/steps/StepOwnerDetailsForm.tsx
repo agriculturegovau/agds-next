@@ -35,7 +35,14 @@ export function StepOwnerDetailsForm() {
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
+
+	const changeBusinessOwnerDetailsHref = stepKeyToStepDataMap.stepOwnerDetails
+		?.items
+		? stepKeyToStepDataMap.stepOwnerDetails.items[0][
+				editingStep?.match ? 'changeHref' : 'href'
+		  ]
+		: undefined;
 
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
@@ -46,7 +53,7 @@ export function StepOwnerDetailsForm() {
 			formIntroduction="Confirm your name and contact details."
 			formTitle={
 				stepKeyToStepDataMap.stepOwnerDetails[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 			shouldFocusTitle={!isSuccessMessageVisible}
@@ -104,11 +111,7 @@ export function StepOwnerDetailsForm() {
 
 						<ButtonLink
 							alignSelf="start"
-							href={
-								'items' in stepKeyToStepDataMap.stepOwnerDetails
-									? stepKeyToStepDataMap.stepOwnerDetails.items[0].href
-									: undefined
-							}
+							href={changeBusinessOwnerDetailsHref}
 							variant="text"
 						>
 							Change business owner details

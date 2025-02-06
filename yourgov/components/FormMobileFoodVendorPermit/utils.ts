@@ -1,6 +1,6 @@
 import { parseISO, isValid } from 'date-fns';
 import { type FieldValues } from 'react-hook-form';
-import { StepsData } from './steps/stepsData';
+import { type FormStep, type StepsData } from './steps/stepsData';
 
 // Session storage converts dates to ISO strings, so we need to convert these values back to dates
 export function parseDateField(value: Date | string | undefined) {
@@ -23,18 +23,18 @@ export const managePermitsPage = '/app/permits';
 type GetStepNavigationUrlParams = {
 	currentStepIndex: number;
 	id?: string;
-	isEditingFromReviewStep: boolean;
+	editingStep: { match?: FormStep; depth?: number } | undefined;
 	steps: StepsData;
 };
 
 export function getStepCompletionUrl({
 	currentStepIndex,
 	id,
-	isEditingFromReviewStep,
+	editingStep,
 	steps,
 }: GetStepNavigationUrlParams) {
 	const nextStepUrl = (
-		isEditingFromReviewStep ? steps.at(-1) : steps[currentStepIndex + 1]
+		editingStep?.match ? steps.at(-1) : steps[currentStepIndex + 1]
 	)?.href;
 	return (
 		nextStepUrl ||

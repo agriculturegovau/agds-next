@@ -25,7 +25,7 @@ export function StepBusinessAddressForm() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -66,7 +66,7 @@ export function StepBusinessAddressForm() {
 			formIntroduction="Add your business address."
 			formTitle={
 				stepKeyToStepDataMap.stepBusinessAddress[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

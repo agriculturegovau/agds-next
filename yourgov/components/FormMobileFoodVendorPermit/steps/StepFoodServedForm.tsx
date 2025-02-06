@@ -18,7 +18,7 @@ export function StepFoodServedForm() {
 		useGlobalForm();
 	const { submitStep } = useFormContext();
 
-	const isEditingFromReviewStep = useIsEditingFromReviewStep();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -52,7 +52,7 @@ export function StepFoodServedForm() {
 			formIntroduction="What type of food will you be serving?"
 			formTitle={
 				stepKeyToStepDataMap.stepFoodServed[
-					isEditingFromReviewStep ? 'changeLabel' : 'label'
+					editingStep?.match ? 'changeLabel' : 'label'
 				]
 			}
 		>

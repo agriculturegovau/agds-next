@@ -1,16 +1,34 @@
 import { applyForFoodPermitPage } from '../utils';
 
-export type StepsData = typeof stepsData;
+export type FormStep = {
+	formStateKey:
+		| 'stepOwnerDetails'
+		| 'stepChangeOwnerDetails'
+		| 'stepBusinessDetails'
+		| 'stepBusinessAddress'
+		| 'stepVehicleRegistration'
+		| 'stepTradingTime'
+		| 'stepFoodServed'
+		| 'stepEmployees'
+		| 'stepAddEmployee'
+		| 'stepFoodSafetySupervisor'
+		| 'stepUploadDocuments'
+		| 'stepReviewAndSubmit';
+	label: string;
+	changeLabel: string;
+	href: string;
+	changeHref: string;
+	items?: FormStep[];
+};
 
-export type FormStep = StepsData[number];
-
+export type StepsData = FormStep[];
 export type StepKey = FormStep['formStateKey'];
 
 /**
  * The order of the steps in this array determines the order
  * of steps in the application.
  */
-export const stepsData = [
+export const stepsData: FormStep[] = [
 	{
 		formStateKey: 'stepOwnerDetails',
 		label: 'Owner details',
@@ -20,6 +38,8 @@ export const stepsData = [
 			applyForFoodPermitPage + '/steps/review-and-submit/owner-details',
 		items: [
 			{
+				formStateKey: 'stepChangeOwnerDetails',
+				changeLabel: 'Change business owner details',
 				label: 'Change business owner details',
 				href: applyForFoodPermitPage + '/steps/owner-details/change-details',
 				changeHref:
@@ -75,6 +95,8 @@ export const stepsData = [
 		changeHref: applyForFoodPermitPage + '/steps/review-and-submit/employees',
 		items: [
 			{
+				formStateKey: 'stepAddEmployee',
+				changeLabel: 'Add employee',
 				label: 'Add employee',
 				href: applyForFoodPermitPage + '/steps/employees/add-employee',
 				changeHref:
@@ -107,7 +129,7 @@ export const stepsData = [
 		changeHref:
 			applyForFoodPermitPage + '/steps/review-and-submit/review-and-submit',
 	},
-] as const;
+];
 
 /**
  * This is a convenience lookup for step data that references the key,
