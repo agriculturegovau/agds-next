@@ -100,16 +100,13 @@ const getStepSlugs = (steps: StepsData, parentSlugs: string[] = []) => {
 
 export const getStaticPaths = async () => {
 	const steps = getStepSlugs(stepsData);
-	console.log(`steps`, steps);
 
 	const paths = steps.map((slugArray) => ({
 		params: { slug: slugArray },
 	}));
 
-	console.log(`paths`, paths);
-
 	return {
-		paths,
 		fallback: false,
+		paths,
 	};
 };
