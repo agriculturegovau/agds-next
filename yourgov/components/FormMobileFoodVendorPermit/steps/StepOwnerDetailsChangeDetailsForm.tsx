@@ -29,23 +29,38 @@ import { stepKeyToStepDataMap, stepsData } from './stepsData';
 
 export function StepOwnerDetailsChangeDetailsForm() {
 	const router = useRouter();
-	const { formState, stepOwnerDetailsGetState, stepOwnerDetailsSetState } =
-		useGlobalForm();
+	const {
+		formState,
+		stepOwnerDetailsGetState,
+		stepOwnerDetailsReviewEditGetState,
+		stepOwnerDetailsSetState,
+		stepOwnerDetailsReviewEditSetState,
+	} = useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
+	const stateSetter = editingStep?.match
+		? stepOwnerDetailsReviewEditSetState
+		: stepOwnerDetailsSetState;
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<StepOwnerDetailsFormSchema>({
-		defaultValues: stepOwnerDetailsGetState(),
+		defaultValues: stepState,
 		resolver: zodResolver(stepOwnerDetailsFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const [isSaving, setIsSaving] = useState(false);
-
-	const editingStep = useIsEditingFromReviewStep();
 
 	const stepOwnerDetailsPath =
 		stepKeyToStepDataMap.stepOwnerDetails[
@@ -57,7 +72,10 @@ export function StepOwnerDetailsChangeDetailsForm() {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			stepOwnerDetailsSetState(data);
+			stateSetter({
+				...data,
+				edited: editingStep?.match ? true : undefined,
+			});
 			router.push(`${stepOwnerDetailsPath}?success=true`);
 		}, 1500);
 	};

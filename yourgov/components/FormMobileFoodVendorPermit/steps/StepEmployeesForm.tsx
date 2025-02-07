@@ -40,10 +40,7 @@ export function StepEmployeesForm() {
 
 	const editingStep = useIsEditingFromReviewStep();
 	const reviewEditState = stepEmployeesReviewEditGetState();
-
-	let stepState = stepEmployeesGetState();
-
-	stepState =
+	const stepState =
 		editingStep?.match && reviewEditState?.edited
 			? stepEmployeesReviewEditGetState()
 			: stepEmployeesGetState();
@@ -138,9 +135,6 @@ export function StepEmployeesForm() {
 			completed: !isSavingBeforeExiting,
 			started: true,
 		});
-		setTimeout(() => {
-			stepEmployeesReviewEditSetState({});
-		}, 0);
 	};
 
 	useEffect(() => {

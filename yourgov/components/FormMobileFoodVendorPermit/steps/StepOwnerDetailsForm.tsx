@@ -28,14 +28,20 @@ import { Form } from './Form';
 import { stepKeyToStepDataMap } from './stepsData';
 
 export function StepOwnerDetailsForm() {
-	const { stepOwnerDetailsGetState } = useGlobalForm();
-	const stepOwnerDetailsState = stepOwnerDetailsGetState();
+	const { stepOwnerDetailsGetState, stepOwnerDetailsReviewEditGetState } =
+		useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
-
-	const editingStep = useIsEditingFromReviewStep();
 
 	const changeBusinessOwnerDetailsHref = stepKeyToStepDataMap.stepOwnerDetails
 		?.items
@@ -92,19 +98,19 @@ export function StepOwnerDetailsForm() {
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.firstName}
+									{stepState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.lastName}
+									{stepState?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.email}
+									{stepState?.email}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
@@ -126,10 +132,19 @@ export function StepOwnerDetailsForm() {
 
 function AdditionalDetailsForm() {
 	const {
+		isSavingBeforeExiting,
 		stepOwnerDetailsGetState,
 		stepOwnerDetailsSetState,
-		isSavingBeforeExiting,
+		stepOwnerDetailsReviewEditGetState,
 	} = useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { submitStep } = useFormContext();
 
 	const {
@@ -153,14 +168,26 @@ function AdditionalDetailsForm() {
 		}
 		await submitStep();
 		stepOwnerDetailsSetState({
+			...stepState,
 			...data,
 			completed: !isSavingBeforeExiting,
+			edited: editingStep?.match ? true : undefined,
 			started: true,
 		});
 	};
 
 	return (
-		<Form noValidate={false} onSubmit={handleSubmit(onSubmit)}>
+		<Form
+			editingCancel={
+				editingStep?.match
+					? () => {
+							stepOwnerDetailsGetState();
+					  }
+					: undefined
+			}
+			noValidate={false}
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput

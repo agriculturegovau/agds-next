@@ -2,12 +2,15 @@ import { useRouter } from 'next/router';
 import { stepsData } from '../components/FormMobileFoodVendorPermit';
 import { type FormStep } from '../components/FormMobileFoodVendorPermit/steps/stepsData';
 
-export const useIsEditingFromReviewStep = () => {
+export const useGetRawPath = () => {
 	const { query, route } = useRouter();
-	const path = `${route.replace('/[...slug]', '')}${
+	return `${route.replace('/[...slug]', '')}${
 		Array.isArray(query?.slug) ? `/${query.slug.join('/')}` : ''
 	}`;
+};
 
+export const useIsEditingFromReviewStep = () => {
+	const path = useGetRawPath();
 	const isChangeHrefMatch = (
 		steps: FormStep[],
 		// depth currently is not used because of the way sub steps are structured

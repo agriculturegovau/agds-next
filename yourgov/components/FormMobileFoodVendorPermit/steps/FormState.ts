@@ -219,6 +219,7 @@ export type StepReviewAndSubmitFormSchema = z.infer<
 
 export type FormState = {
 	stepOwnerDetails: StepOwnerDetailsFormSchema & Status;
+	stepOwnerDetailsReviewEdit: StepOwnerDetailsFormSchema & Status;
 	// FIXME: This is here to satisfy TS but is not correct
 	stepChangeOwnerDetails: StepOwnerDetailsFormSchema & Status;
 	stepBusinessDetails: StepBusinessDetailsFormSchema & Status;
