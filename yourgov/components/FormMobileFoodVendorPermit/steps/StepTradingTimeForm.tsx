@@ -1,5 +1,10 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useMemo, useRef } from 'react';
+import {
+	Controller,
+	SubmitHandler,
+	type FieldErrors,
+	useForm,
+} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
 	DateRangePickerNext,
@@ -65,10 +70,44 @@ export function StepTradingTimeForm() {
 	const typeCorrectedErrors =
 		errors as ShallowErrors<StepTradingTimeFormSchema>;
 
+	const onError = (errors: FieldErrors) => {
+		if (validErrors.length > 0) {
+			setTimeout(() => {
+				if (hasErrors.tradingPeriod.both) {
+					tradingPeriodFromRef?.current?.focus();
+				} else if (hasErrors.tradingPeriod.from) {
+					tradingPeriodFromRef?.current?.focus();
+				} else if (hasErrors.tradingPeriod.to) {
+					tradingPeriodToRef?.current?.focus();
+				} else if (errors?.openingTime?.ref?.focus) {
+					errors.openingTime.ref?.focus();
+				} else if (errors?.closingTime?.ref?.focus) {
+					errors.closingTime.ref?.focus();
+				}
+			}, 0);
+			return;
+		}
+	};
+
 	const onSubmit: SubmitHandler<StepTradingTimeFormSchema> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
+		if (validErrors.length > 0) {
+			if (validErrors.length === 1) {
+				setTimeout(() => {
+					if (hasErrors.tradingPeriod.both) {
+						tradingPeriodFromRef?.current?.focus();
+					} else if (hasErrors.tradingPeriod.from) {
+						tradingPeriodFromRef?.current?.focus();
+					} else if (hasErrors.tradingPeriod.to) {
+						tradingPeriodToRef?.current?.focus();
+					}
+				}, 0);
+			}
+			return;
+		}
+
 		await submitStep();
 		stepTradingTimeSetState({
 			...data,
@@ -132,22 +171,12 @@ export function StepTradingTimeForm() {
 
 	const showErrorAlert = validErrors.length > 1;
 
-	useEffect(() => {
-		if (hasErrors.tradingPeriod.both && validErrors.length === 1) {
-			tradingPeriodFromRef?.current?.focus();
-		} else if (hasErrors.tradingPeriod.from && validErrors.length === 1) {
-			tradingPeriodFromRef?.current?.focus();
-		} else if (hasErrors.tradingPeriod.to && validErrors.length === 1) {
-			tradingPeriodToRef?.current?.focus();
-		}
-	}, [hasErrors, validErrors]);
-
 	return (
 		<FormContainer
 			formIntroduction="What times would you like to operate?"
 			formTitle={stepKeyToStepDataMap.stepTradingTime.label}
 		>
-			<Form onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>
 					{showErrorAlert && (
 						<FormPageAlert
