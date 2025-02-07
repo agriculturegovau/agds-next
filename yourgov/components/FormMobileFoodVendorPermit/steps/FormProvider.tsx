@@ -25,7 +25,7 @@ type ContextType = {
 const context = createContext<ContextType | undefined>(undefined);
 
 export function FormProvider({ children }: PropsWithChildren<{}>) {
-	const { pathname, push } = useRouter();
+	const { pathname, ...router } = useRouter();
 	const { setIsSubmittingStep, formState, isSavingBeforeExiting } =
 		useGlobalForm();
 
@@ -51,7 +51,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 			steps: stepsData,
 		});
 
-		push(stepCompletionUrl);
+		router.push(stepCompletionUrl);
 
 		setIsSubmittingStep(false);
 	}, [
@@ -59,7 +59,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		formState,
 		editingStep,
 		isSavingBeforeExiting,
-		push,
+		router,
 		setIsSubmittingStep,
 	]);
 

@@ -8,6 +8,8 @@ import {
 
 export type Status = {
 	completed: boolean;
+	// Used by review and edit states only
+	edited?: boolean;
 	started?: boolean;
 };
 

@@ -140,6 +140,9 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 			stepEmployeesGetState: () => {
 				return globalState.steps?.stepEmployees;
 			},
+			stepEmployeesReviewEditGetState: () => {
+				return globalState.steps?.stepEmployeesReviewEdit;
+			},
 			stepEmployeesSetState: (
 				newState: DeepPartial<StepsFormState['stepEmployees']>
 			) => {
@@ -149,6 +152,23 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					steps: {
 						...prevState.steps,
 						stepEmployees: {
+							started: true,
+							...newState,
+						},
+					},
+				}));
+			},
+			stepEmployeesReviewEditSetState: (
+				newState: DeepPartial<
+					StepsFormState['stepEmployees' | 'stepEmployeesReviewEdit']
+				>
+			) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
+					...prevState,
+					lastUpdated: Date.now(),
+					steps: {
+						...prevState.steps,
+						stepEmployeesReviewEdit: {
 							started: true,
 							...newState,
 						},

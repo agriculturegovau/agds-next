@@ -30,10 +30,29 @@ import { useFormContext } from './FormProvider';
 import { stepKeyToStepDataMap, stepsData } from './stepsData';
 
 export function StepEmployeesAddEmployeeForm() {
-	const { asPath, pathname, push } = useRouter();
-	const { formState, stepEmployeesGetState, stepEmployeesSetState } =
-		useGlobalForm();
+	const { asPath, pathname, ...router } = useRouter();
+	const {
+		formState,
+		stepEmployeesGetState,
+		stepEmployeesReviewEditGetState,
+		stepEmployeesSetState,
+		stepEmployeesReviewEditSetState,
+	} = useGlobalForm();
 	const uuid = useRef(randomUUID());
+
+	const editingStep = useIsEditingFromReviewStep();
+
+	const reviewEditState = stepEmployeesReviewEditGetState();
+	let stepState = stepEmployeesGetState();
+
+	stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepEmployeesReviewEditGetState()
+			: stepEmployeesGetState();
+
+	const stateSetter = editingStep?.match
+		? stepEmployeesReviewEditSetState
+		: stepEmployeesSetState;
 
 	const {
 		register,
@@ -47,8 +66,6 @@ export function StepEmployeesAddEmployeeForm() {
 
 	const [isSaving, setIsSaving] = useState(false);
 
-	const editingStep = useIsEditingFromReviewStep();
-
 	const stepEmployeesPath =
 		stepKeyToStepDataMap.stepEmployees[
 			editingStep?.match ? 'changeHref' : 'href'
@@ -59,30 +76,31 @@ export function StepEmployeesAddEmployeeForm() {
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
 			setIsSaving(false);
-			stepEmployeesSetState({
-				employee: [
-					...(stepEmployeesGetState()?.employee || []),
-					data.employee,
-				].sort((a, b) => {
-					if (!a?.firstName || !b?.firstName || !a?.lastName || !b.lastName)
-						return -1;
+			stateSetter({
+				employee: [...(stepState?.employee || []), data.employee].sort(
+					(a, b) => {
+						if (!a?.firstName || !b?.firstName || !a?.lastName || !b.lastName)
+							return -1;
 
-					if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) return -1;
-					if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
+						if (a.firstName.toLowerCase() < b.firstName.toLowerCase())
+							return -1;
+						if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
 
-					if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
-					if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
+						if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+						if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
 
-					return 0;
-				}),
+						return 0;
+					}
+				),
 				completed: false,
+				edited: editingStep?.match ? true : undefined,
 			});
-			push(`${stepEmployeesPath}?success=${uuid.current}`);
+			router.push(`${stepEmployeesPath}?success=${uuid.current}`);
 		}, 1500);
 	};
 
 	function onCancelClick() {
-		push(stepEmployeesPath);
+		router.push(stepEmployeesPath);
 	}
 
 	const typeCorrectedErrors =

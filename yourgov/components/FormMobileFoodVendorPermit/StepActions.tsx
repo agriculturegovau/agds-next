@@ -8,13 +8,25 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
 export function StepActions({
+	editingCancel,
 	hasSaveAndExit = true,
 	submitText = 'Save and continue',
+}: {
+	editingCancel?: () => void;
+	hasSaveAndExit?: boolean;
+	submitText?: string;
 }) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
 		useGlobalForm();
+
+	const onCancel = () => {
+		if (editingCancel) {
+			editingCancel();
+		}
+		cancel();
+	};
 
 	return (
 		<Fragment>
@@ -46,7 +58,7 @@ export function StepActions({
 			<Modal
 				actions={
 					<ButtonGroup>
-						<Button onClick={cancel}>Yes, cancel</Button>
+						<Button onClick={onCancel}>Yes, cancel</Button>
 
 						<Button onClick={closeModal} variant="secondary">
 							No, take me back

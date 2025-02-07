@@ -111,13 +111,13 @@ export function AppLayout({
 }
 
 function AppLayoutHeader({ user }: { user: User }) {
-	const { pathname, push } = useRouter();
+	const { pathname, ...router } = useRouter();
 	const { linkedBusinesses, selectedBusiness, setSelectedBusiness } =
 		useLinkedBusinesses();
 
 	function onBusinessClick(business: Business) {
 		setSelectedBusiness(business);
-		push('/app/dashboard');
+		router.push('/app/dashboard');
 	}
 
 	const isAppHomePage = pathname === '/app';
