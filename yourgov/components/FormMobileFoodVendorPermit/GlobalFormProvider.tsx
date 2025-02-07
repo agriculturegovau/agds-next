@@ -7,8 +7,10 @@ import {
 	useState,
 } from 'react';
 import { useSessionFormState } from '../../lib/useSessionFormState';
+import { useIsEditingFromReviewStep } from '../../lib/useIsEditingFromReviewStep';
 import { defaultFormState } from './FormState';
 import { managePermitsPage } from './utils';
+import { stepsData } from './steps/stepsData';
 
 type GlobalState = Omit<ReturnType<typeof useSessionFormState>, 'hasSynced'>;
 
@@ -33,6 +35,7 @@ export function GlobalFormProvider({
 	children,
 }: FormMobileFoodVendorPermitProps) {
 	const router = useRouter();
+	const editingStep = useIsEditingFromReviewStep();
 
 	const { hasSynced, formState, setFormState, ...stateSettersPerStep } =
 		useSessionFormState('FormMobileFoodVendorPermit', defaultFormState);
@@ -55,8 +58,12 @@ export function GlobalFormProvider({
 	const [isSubmittingStep, setIsSubmittingStep] = useState(false);
 
 	const cancel = useCallback(() => {
-		router.push(managePermitsPage);
-	}, [router]);
+		router.push(
+			editingStep?.match
+				? stepsData.at(-1)?.href || managePermitsPage
+				: managePermitsPage
+		);
+	}, [editingStep, router]);
 
 	const [isSavingBeforeExiting, setIsSavingBeforeExiting] = useState(false);
 

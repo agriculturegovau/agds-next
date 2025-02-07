@@ -18,6 +18,7 @@ import {
 } from '@ag.ds-next/react/table';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
@@ -28,14 +29,33 @@ import { stepKeyToStepDataMap } from './stepsData';
 export function StepEmployeesForm() {
 	const {
 		stepEmployeesGetState,
+		stepEmployeesReviewEditGetState,
 		stepEmployeesSetState,
+		stepEmployeesReviewEditSetState,
 		stepFoodSafetySupervisorGetState,
 		stepFoodSafetySupervisorSetState,
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepEmployeesReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepEmployeesReviewEditGetState()
+			: stepEmployeesGetState();
+
+	const conditionalStateSetter = editingStep?.match
+		? stepEmployeesReviewEditSetState
+		: stepEmployeesSetState;
+
+	const addEmployeeHref = stepKeyToStepDataMap.stepEmployees?.items
+		? stepKeyToStepDataMap.stepEmployees.items[0][
+				editingStep?.match ? 'changeHref' : 'href'
+		  ]
+		: undefined;
+
 	const { query } = useRouter();
-	const stepEmployeesState = stepEmployeesGetState();
 
 	const [employeeToRemove, setEmployeeToRemove] =
 		useState<Partial<StepEmployeesFormSchema['employee']>>();
@@ -50,10 +70,8 @@ export function StepEmployeesForm() {
 	const removedPageAlertRef = useRef<HTMLDivElement>(null);
 
 	const addedEmployee = query.success
-		? stepEmployeesState?.employee &&
-		  stepEmployeesState.employee.find(
-				(employee) => employee?.id === query.success
-		  )
+		? stepState?.employee &&
+		  stepState.employee.find((employee) => employee?.id === query.success)
 		: undefined;
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
 		!!addedEmployee
@@ -70,12 +88,13 @@ export function StepEmployeesForm() {
 	}, [employeeToRemove]);
 
 	const removeEmployee = () => {
-		stepEmployeesSetState({
-			...stepEmployeesState,
+		conditionalStateSetter({
+			...stepState,
 			completed: false,
+			edited: editingStep?.match ? true : undefined,
 			employee:
-				stepEmployeesState?.employee &&
-				stepEmployeesState.employee.filter(
+				stepState?.employee &&
+				stepState.employee.filter(
 					(employee) => employee?.id !== employeeToRemove?.id
 				),
 		});
@@ -104,10 +123,7 @@ export function StepEmployeesForm() {
 			return;
 		}
 
-		if (
-			stepEmployeesState?.employee &&
-			stepEmployeesState?.employee.length === 0
-		) {
+		if (stepState?.employee && stepState?.employee.length === 0) {
 			setShowRemovedEmployeeMessage(false);
 			setShowErrorMessage(true);
 			return;
@@ -115,7 +131,7 @@ export function StepEmployeesForm() {
 
 		await submitStep();
 		stepEmployeesSetState({
-			...stepEmployeesState,
+			...stepState,
 			completed: !isSavingBeforeExiting,
 			started: true,
 		});
@@ -142,7 +158,11 @@ export function StepEmployeesForm() {
 	return (
 		<FormContainer
 			formIntroduction="Add your employee details."
-			formTitle={stepKeyToStepDataMap.stepEmployees.label}
+			formTitle={
+				stepKeyToStepDataMap.stepEmployees[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 			hideRequiredFieldsMessage
 			shouldFocusTitle={!showAddedEmployeeMessage}
 		>
@@ -183,8 +203,7 @@ export function StepEmployeesForm() {
 						tone="success"
 					/>
 				</Box>
-				{stepEmployeesState?.employee &&
-				stepEmployeesState.employee.length > 0 ? (
+				{stepState?.employee && stepState.employee.length > 0 ? (
 					<TableWrapper>
 						<Table aria-labelledby="list-of-employees">
 							<TableHead>
@@ -195,7 +214,7 @@ export function StepEmployeesForm() {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{stepEmployeesState.employee.map(
+								{stepState.employee.map(
 									(employee) =>
 										employee?.id && (
 											<TableRow key={employee.id}>
@@ -230,11 +249,7 @@ export function StepEmployeesForm() {
 
 				<ButtonLink
 					alignSelf="start"
-					href={
-						'items' in stepKeyToStepDataMap.stepEmployees
-							? stepKeyToStepDataMap.stepEmployees.items[0].href
-							: undefined
-					}
+					href={addEmployeeHref}
 					iconBefore={PlusIcon}
 					size="sm"
 					variant="secondary"
@@ -243,7 +258,16 @@ export function StepEmployeesForm() {
 				</ButtonLink>
 			</Stack>
 
-			<Form onSubmit={onSubmit} />
+			<Form
+				editingCancel={
+					editingStep?.match
+						? () => {
+								stepEmployeesReviewEditSetState({});
+						  }
+						: undefined
+				}
+				onSubmit={onSubmit}
+			/>
 
 			<Modal
 				actions={

@@ -4,6 +4,7 @@ import { DatePickerNext } from '@ag.ds-next/react/date-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { DeepPartial } from '../../../lib/types';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -30,6 +31,8 @@ export function StepVehicleRegistrationForm() {
 	const { formState, stepVehicleRegistrationSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -66,7 +69,11 @@ export function StepVehicleRegistrationForm() {
 	return (
 		<FormContainer
 			formIntroduction="Add your vehicle registration details."
-			formTitle={stepKeyToStepDataMap.stepVehicleRegistration.label}
+			formTitle={
+				stepKeyToStepDataMap.stepVehicleRegistration[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>

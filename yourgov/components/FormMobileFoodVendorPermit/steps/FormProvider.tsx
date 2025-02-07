@@ -6,6 +6,7 @@ import {
 	useContext,
 	useMemo,
 } from 'react';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { applyForFoodPermitPage, getStepCompletionUrl } from '../utils';
 import { stepsData } from './stepsData';
@@ -13,6 +14,8 @@ import { stepsData } from './stepsData';
 type ContextType = {
 	/** The href of the previous step. */
 	backHref: string;
+	/** The label of the previous step. */
+	backLabel: string;
 	/** Callback function to submit the current step. */
 	submitStep: () => Promise<void>;
 	/** If true, the user can access the "confirm and submit step".  */
@@ -22,11 +25,12 @@ type ContextType = {
 const context = createContext<ContextType | undefined>(undefined);
 
 export function FormProvider({ children }: PropsWithChildren<{}>) {
-	const { pathname, push } = useRouter();
+	const { pathname, ...router } = useRouter();
 	const { setIsSubmittingStep, formState, isSavingBeforeExiting } =
 		useGlobalForm();
 
 	const currentStepIndex = stepsData.findIndex(({ href }) => href === pathname);
+	const editingStep = useIsEditingFromReviewStep();
 
 	// Callback function to submit the current step
 	const submitStep = useCallback(async () => {
@@ -40,24 +44,31 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 		const stepCompletionUrl = getStepCompletionUrl({
 			currentStepIndex,
 			id: formState.id,
+			editingStep: {
+				depth: editingStep?.depth,
+				match: editingStep?.match,
+			},
 			steps: stepsData,
 		});
 
-		push(stepCompletionUrl);
+		router.push(stepCompletionUrl);
 
 		setIsSubmittingStep(false);
 	}, [
 		currentStepIndex,
 		formState,
+		editingStep,
 		isSavingBeforeExiting,
-		push,
+		router,
 		setIsSubmittingStep,
 	]);
 
 	// The href of the previous step
 	const backHref = `${
-		stepsData[currentStepIndex - 1]?.href ?? applyForFoodPermitPage
+		(editingStep?.match ? stepsData.at(-1) : stepsData[currentStepIndex - 1])
+			?.href ?? applyForFoodPermitPage
 	}`;
+	const backLabel = editingStep?.match ? 'Back to review and submit' : 'Back';
 
 	// If true, the user can access the "confirm and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
@@ -79,6 +90,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 
 	const contextValue = {
 		backHref,
+		backLabel,
 		submitStep,
 		canConfirmAndSubmit,
 	};

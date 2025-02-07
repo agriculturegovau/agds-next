@@ -14,6 +14,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { GroupedFields } from '@ag.ds-next/react/grouped-fields';
 import { TimeInput } from '@ag.ds-next/react/time-input';
 import { DeepPartial } from '../../../lib/types';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { type ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -50,6 +51,9 @@ export function StepTradingTimeForm() {
 	const { formState, stepTradingTimeSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
+
 	const tradingPeriodFromRef = useRef<HTMLInputElement>(null);
 	const tradingPeriodToRef = useRef<HTMLInputElement>(null);
 
@@ -174,7 +178,11 @@ export function StepTradingTimeForm() {
 	return (
 		<FormContainer
 			formIntroduction="What times would you like to operate?"
-			formTitle={stepKeyToStepDataMap.stepTradingTime.label}
+			formTitle={
+				stepKeyToStepDataMap.stepTradingTime[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit, onError)}>
 				<FormStack>

@@ -16,6 +16,7 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import { TextInput } from '@ag.ds-next/react/text-input';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
 	stepOwnerDetailsChangeDetailsFormSchema,
@@ -27,12 +28,27 @@ import { Form } from './Form';
 import { stepKeyToStepDataMap } from './stepsData';
 
 export function StepOwnerDetailsForm() {
-	const { stepOwnerDetailsGetState } = useGlobalForm();
-	const stepOwnerDetailsState = stepOwnerDetailsGetState();
+	const { stepOwnerDetailsGetState, stepOwnerDetailsReviewEditGetState } =
+		useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
+
+	const changeBusinessOwnerDetailsHref = stepKeyToStepDataMap.stepOwnerDetails
+		?.items
+		? stepKeyToStepDataMap.stepOwnerDetails.items[0][
+				editingStep?.match ? 'changeHref' : 'href'
+		  ]
+		: undefined;
 
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
@@ -41,7 +57,11 @@ export function StepOwnerDetailsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Confirm your name and contact details."
-			formTitle={stepKeyToStepDataMap.stepOwnerDetails.label}
+			formTitle={
+				stepKeyToStepDataMap.stepOwnerDetails[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>
@@ -78,30 +98,26 @@ export function StepOwnerDetailsForm() {
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.firstName}
+									{stepState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.lastName}
+									{stepState?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.email}
+									{stepState?.email}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
 
 						<ButtonLink
 							alignSelf="start"
-							href={
-								'items' in stepKeyToStepDataMap.stepOwnerDetails
-									? stepKeyToStepDataMap.stepOwnerDetails.items[0].href
-									: undefined
-							}
+							href={changeBusinessOwnerDetailsHref}
 							variant="text"
 						>
 							Change business owner details
@@ -116,10 +132,19 @@ export function StepOwnerDetailsForm() {
 
 function AdditionalDetailsForm() {
 	const {
+		isSavingBeforeExiting,
 		stepOwnerDetailsGetState,
 		stepOwnerDetailsSetState,
-		isSavingBeforeExiting,
+		stepOwnerDetailsReviewEditGetState,
 	} = useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { submitStep } = useFormContext();
 
 	const {
@@ -143,14 +168,26 @@ function AdditionalDetailsForm() {
 		}
 		await submitStep();
 		stepOwnerDetailsSetState({
+			...stepState,
 			...data,
 			completed: !isSavingBeforeExiting,
+			edited: editingStep?.match ? true : undefined,
 			started: true,
 		});
 	};
 
 	return (
-		<Form noValidate={false} onSubmit={handleSubmit(onSubmit)}>
+		<Form
+			editingCancel={
+				editingStep?.match
+					? () => {
+							stepOwnerDetailsGetState();
+					  }
+					: undefined
+			}
+			noValidate={false}
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<FormStack>
 				<H2>Additional details</H2>
 				<TextInput
