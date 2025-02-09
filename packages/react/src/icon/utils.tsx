@@ -4,10 +4,11 @@ import { AlertIcon } from './icons/AlertIcon';
 import { ArrowDownIcon } from './icons/ArrowDownIcon';
 import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
-import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
+import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { AttachmentIcon } from './icons/AttachmentIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
+import { BusinessIcon } from './icons/BusinessIcon';
 import { CalendarIcon } from './icons/CalendarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
@@ -15,15 +16,16 @@ import { CheckIcon } from './icons/CheckIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import { ChevronRightIcon } from './icons/ChevronRightIcon';
-import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { ChevronsLeftIcon } from './icons/ChevronsLeftIcon';
 import { ChevronsRightIcon } from './icons/ChevronsRightIcon';
 import { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
+import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { CopyIcon } from './icons/CopyIcon';
 import { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { DownloadIcon } from './icons/DownloadIcon';
+import { DrawerIcon } from './icons/DrawerIcon';
 import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExitIcon } from './icons/ExitIcon';
@@ -33,6 +35,7 @@ import { FactoryIcon } from './icons/FactoryIcon';
 import { FileIcon } from './icons/FileIcon';
 import { FileTextIcon } from './icons/FileTextIcon';
 import { FilterIcon } from './icons/FilterIcon';
+import { GripIcon } from './icons/GripIcon';
 import { HelpIcon } from './icons/HelpIcon';
 import { HomeIcon } from './icons/HomeIcon';
 import { InboxIcon } from './icons/InboxIcon';
@@ -82,10 +85,11 @@ export const allIcons = {
 	ArrowDownIcon,
 	ArrowLeftIcon,
 	ArrowRightIcon,
-	ArrowUpIcon,
 	ArrowUpDownIcon,
+	ArrowUpIcon,
 	AttachmentIcon,
 	AvatarIcon,
+	BusinessIcon,
 	CalendarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
@@ -93,15 +97,16 @@ export const allIcons = {
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
-	ChevronUpIcon,
 	ChevronsLeftIcon,
 	ChevronsRightIcon,
 	ChevronsUpDownIcon,
+	ChevronUpIcon,
 	CloseIcon,
 	CopyIcon,
 	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
+	DrawerIcon,
 	EditIcon,
 	EmailIcon,
 	ExitIcon,
@@ -111,6 +116,7 @@ export const allIcons = {
 	FileIcon,
 	FileTextIcon,
 	FilterIcon,
+	GripIcon,
 	HelpIcon,
 	HomeIcon,
 	InboxIcon,

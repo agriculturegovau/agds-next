@@ -235,6 +235,27 @@ exports[`Icon AvatarIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon BusinessIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M15 21V3H3v18h12Zm0 0h6V7.5h-6V21ZM7 6v2m0 2v2m4-6v2m0 2v2m7 2v2m0-6v2M7 15h4v6H7v-6Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon CalendarIcon renders correctly 1`] = `
 <div>
   <svg
@@ -608,6 +629,27 @@ exports[`Icon DownloadIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon DrawerIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14.5 3H19a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4.5m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9.5m0-18v18"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon EditIcon renders correctly 1`] = `
 <div>
   <svg
@@ -810,6 +852,27 @@ exports[`Icon FilterIcon renders correctly 1`] = `
   >
     <path
       d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon GripIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM8.5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM8.5 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
     />
   </svg>
 </div>

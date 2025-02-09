@@ -20,11 +20,11 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import {
 	AvatarIcon,
+	BusinessIcon,
 	ChevronsLeftIcon,
 	EmailIcon,
 	ExitIcon,
 	HelpIcon,
-	HomeIcon,
 	PermitIcon,
 	SettingsIcon,
 } from '@ag.ds-next/react/icon';
@@ -181,7 +181,7 @@ function AppLayoutSidebar() {
 				options: { disableGroupPadding: true },
 				items: [
 					{
-						label: 'Back to my account',
+						label: 'Back to account dashboard',
 						icon: ChevronsLeftIcon,
 						href: '/app',
 					},
@@ -206,9 +206,9 @@ function AppLayoutSidebar() {
 			},
 			[
 				{
-					label: 'Dashboard',
+					label: 'Business Dashboard',
 					href: '/app/dashboard',
-					icon: HomeIcon,
+					icon: BusinessIcon,
 				},
 				{
 					label: 'Permits',

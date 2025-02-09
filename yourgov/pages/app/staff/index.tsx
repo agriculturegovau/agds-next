@@ -49,7 +49,10 @@ const Page: NextPageWithLayout = () => {
 					<PageTitle
 						callToAction={
 							<Stack gap={2} maxWidth="42rem">
-								<Details label="Why should I invite a new staff member?">
+								<Details
+									iconBefore
+									label="Why should I invite a new staff member?"
+								>
 									<Stack gap={1}>
 										<Text as="p">
 											Inviting individuals to join your staff can bring numerous
