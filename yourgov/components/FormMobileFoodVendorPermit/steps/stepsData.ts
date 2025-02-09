@@ -11,7 +11,6 @@ export type FormStep = {
 		| 'stepFoodServed'
 		| 'stepEmployees'
 		| 'stepAddEmployee'
-		| 'stepFoodSafetySupervisor'
 		| 'stepUploadDocuments'
 		| 'stepReviewAndSubmit';
 	label: string;
@@ -104,15 +103,6 @@ export const stepsData: FormStep[] = [
 					'/steps/review-and-submit/employees/add-employee',
 			},
 		],
-	},
-	{
-		formStateKey: 'stepFoodSafetySupervisor',
-		label: 'Food safety supervisor',
-		changeLabel: 'Change food safety supervisor',
-		href: applyForFoodPermitPage + '/steps/food-safety-supervisor',
-		changeHref:
-			applyForFoodPermitPage +
-			'/steps/review-and-submit/food-safety-supervisor',
 	},
 	{
 		formStateKey: 'stepUploadDocuments',

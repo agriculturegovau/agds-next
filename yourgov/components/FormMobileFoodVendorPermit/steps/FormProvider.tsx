@@ -80,7 +80,6 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 			!formState.steps?.stepTradingTime?.completed ||
 			!formState.steps?.stepFoodServed?.completed ||
 			!formState.steps?.stepEmployees?.completed ||
-			!formState.steps?.stepFoodSafetySupervisor?.completed ||
 			!formState.steps?.stepUploadDocuments?.completed
 		) {
 			return false;

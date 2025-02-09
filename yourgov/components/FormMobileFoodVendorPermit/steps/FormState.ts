@@ -172,21 +172,9 @@ export const stepEmployeesFormSchema = z.object({
 
 export type StepEmployeesFormSchema = z.infer<typeof stepEmployeesFormSchema>;
 
-export const stepFoodSafetySupervisorFormSchema = z.object({
-	supervisor: zodString('Food safety supervisor is required'),
-});
-
-export type StepFoodSafetySupervisorFormSchema = z.infer<
-	typeof stepFoodSafetySupervisorFormSchema
->;
-
 export const stepUploadDocumentsFormSchema = z.object({
 	files: z.object({
 		'rms-vehicle-registration': z.object({
-			file: zodString(),
-			size: zodString(),
-		}),
-		'food-safety-certificate': z.object({
 			file: zodString(),
 			size: zodString(),
 		}),
@@ -237,7 +225,6 @@ export type FormState = {
 	stepAddEmployee: {
 		employee: StepEmployeesFormSchema['employee'][];
 	} & Status;
-	stepFoodSafetySupervisor: StepFoodSafetySupervisorFormSchema & Status;
 	stepUploadDocuments: StepUploadDocumentsFormSchema & Status;
 	stepReviewAndSubmit: StepReviewAndSubmitFormSchema & Status;
 };
@@ -259,10 +246,6 @@ export const defaultFormState: DeepPartial<FormState> = {
 	stepUploadDocuments: {
 		files: {
 			'rms-vehicle-registration': {
-				file: '',
-				size: '',
-			},
-			'food-safety-certificate': {
 				file: '',
 				size: '',
 			},

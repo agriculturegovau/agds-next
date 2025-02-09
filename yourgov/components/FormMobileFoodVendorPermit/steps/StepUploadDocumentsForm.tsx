@@ -32,13 +32,6 @@ const documentRows = [
 		error: false,
 	},
 	{
-		documentType: 'Food Safety Supervisor Certificate for Charlie Walker',
-		file: '',
-		size: '',
-		id: 'food-safety-certificate',
-		error: false,
-	},
-	{
 		documentType: 'Suggested menu or list of foods being sold',
 		file: '',
 		size: '',
@@ -52,8 +45,6 @@ export const idToDocumentTypeMap: Record<
 	Document['documentType']
 > = {
 	'rms-vehicle-registration': 'RMS Vehicle registration',
-	'food-safety-certificate':
-		'Food Safety Supervisor Certificate for Charlie Walker',
 	'suggested-menu-or-list-of-foods-being-sold':
 		'Suggested menu or list of foods being sold',
 };

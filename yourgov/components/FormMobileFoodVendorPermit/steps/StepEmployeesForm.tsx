@@ -32,8 +32,6 @@ export function StepEmployeesForm() {
 		stepEmployeesReviewEditGetState,
 		stepEmployeesSetState,
 		stepEmployeesReviewEditSetState,
-		stepFoodSafetySupervisorGetState,
-		stepFoodSafetySupervisorSetState,
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
@@ -106,13 +104,6 @@ export function StepEmployeesForm() {
 
 		setTimeout(() => {
 			setShowRemovedEmployeeMessage(true);
-			// FIXME: Can't set this immediately after setting stepEmployees, otherwise stepEmployees doesn't actually get set
-			if (
-				stepFoodSafetySupervisorGetState()?.supervisor ===
-				`${employeeToRemove?.firstName} ${employeeToRemove?.lastName}`
-			) {
-				stepFoodSafetySupervisorSetState({});
-			}
 		}, 0);
 	};
 

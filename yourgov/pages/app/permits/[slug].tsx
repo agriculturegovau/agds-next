@@ -295,20 +295,6 @@ const Page: NextPageWithLayout = () => {
 										</TableWrapper>
 									</Stack>
 
-									{/** Food safety supervisor */}
-									<Stack alignItems="flex-start" gap={2}>
-										<H3>
-											{stepKeyToStepDataMap.stepFoodSafetySupervisor.label}
-										</H3>
-										<FormDefinitionList>
-											<FormDefinitionListItem
-												label="Food safety supervisor"
-												value={
-													formState.steps?.stepFoodSafetySupervisor?.supervisor
-												}
-											/>
-										</FormDefinitionList>
-									</Stack>
 									<Divider />
 									<H2>Upload documents</H2>
 

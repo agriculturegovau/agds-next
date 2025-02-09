@@ -10,7 +10,6 @@ import {
 	StepBusinessDetailsForm,
 	StepEmployeesAddEmployeeForm,
 	StepEmployeesForm,
-	StepFoodSafetySupervisorForm,
 	StepFoodServedForm,
 	StepOwnerDetailsChangeDetailsForm,
 	StepOwnerDetailsForm,
@@ -32,7 +31,6 @@ const substepToFormMap = {
 	'food-served': StepFoodServedForm,
 	employees: StepEmployeesForm,
 	'employees/add-employee': StepEmployeesAddEmployeeForm,
-	'food-safety-supervisor': StepFoodSafetySupervisorForm,
 	documents: StepUploadDocumentsForm,
 };
 
