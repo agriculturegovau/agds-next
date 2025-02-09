@@ -28,7 +28,6 @@ import {
 	stepTradingTimeFormSchema,
 	stepFoodServedFormSchema,
 	stepEmployeesFormSchema,
-	stepFoodSafetySupervisorFormSchema,
 	stepUploadDocumentsFormSchema,
 } from './FormState';
 import { Document, idToDocumentTypeMap } from './StepUploadDocumentsForm';
@@ -61,9 +60,6 @@ export function ReviewAndSubmitStepsSummary() {
 				stepEmployeesFormSchema.safeParse(employee)
 			),
 		},
-		stepFoodSafetySupervisor: stepFoodSafetySupervisorFormSchema.safeParse(
-			formState.steps?.stepFoodSafetySupervisor
-		),
 		stepUploadDocuments: stepUploadDocumentsFormSchema.safeParse(
 			formState.steps?.stepUploadDocuments
 		),
@@ -311,28 +307,6 @@ export function ReviewAndSubmitStepsSummary() {
 					variant="text"
 				>
 					{stepKeyToStepDataMap.stepEmployees.changeLabel}
-				</ButtonLink>
-			</Stack>
-
-			{/** Food safety supervisor */}
-			<Stack gap={1.5}>
-				<H2>{stepKeyToStepDataMap.stepFoodSafetySupervisor.label}</H2>
-				{validation.stepFoodSafetySupervisor.success ? (
-					<FormDefinitionList>
-						<FormDefinitionListItem
-							label="Food safety supervisor"
-							value={formState.steps?.stepFoodSafetySupervisor?.supervisor}
-						/>
-					</FormDefinitionList>
-				) : (
-					<ValidateSectionAlert />
-				)}
-				<ButtonLink
-					alignSelf="start"
-					href={stepKeyToStepDataMap.stepFoodSafetySupervisor.changeHref}
-					variant="text"
-				>
-					{stepKeyToStepDataMap.stepFoodSafetySupervisor.changeLabel}
 				</ButtonLink>
 			</Stack>
 

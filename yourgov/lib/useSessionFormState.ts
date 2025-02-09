@@ -196,21 +196,6 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 					},
 				}));
 			},
-			stepFoodSafetySupervisorGetState: () => {
-				return globalState.steps?.stepFoodSafetySupervisor;
-			},
-			stepFoodSafetySupervisorSetState: (
-				newState: Partial<StepsFormState['stepFoodSafetySupervisor']>
-			) => {
-				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
-					...prevState,
-					lastUpdated: Date.now(),
-					steps: {
-						...prevState.steps,
-						stepFoodSafetySupervisor: newState,
-					},
-				}));
-			},
 			stepUploadDocumentsGetState: () => {
 				return globalState.steps?.stepUploadDocuments;
 			},
