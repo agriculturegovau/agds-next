@@ -18,19 +18,19 @@ export const stepOwnerDetailsFormSchema = z.object({
 		'Enter a valid email address'
 	),
 	mobileNumber: zodPhoneField(),
-	contactMethod: zodString('Preferred contact method is required'),
+	contactMethod: zodStringOptional(),
 });
 
 export type StepOwnerDetailsFormSchema = z.infer<
 	typeof stepOwnerDetailsFormSchema
 >;
 
-export const stepOwnerDetailsChangeDetailsFormSchema = z.object({
+export const stepOwnerDetailsOtherDetailsFormSchema = z.object({
 	contactMethod: zodString('Preferred contact method is required'),
 });
 
-export type StepOwnerDetailsChangeDetailsFormSchema = z.infer<
-	typeof stepOwnerDetailsChangeDetailsFormSchema
+export type StepOwnerDetailsOtherDetailsFormSchema = z.infer<
+	typeof stepOwnerDetailsOtherDetailsFormSchema
 >;
 
 export const stepBusinessDetailsFormSchema = z

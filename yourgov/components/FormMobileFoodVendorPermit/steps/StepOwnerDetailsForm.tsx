@@ -20,8 +20,8 @@ import {
 import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
-	stepOwnerDetailsChangeDetailsFormSchema,
-	type StepOwnerDetailsChangeDetailsFormSchema,
+	stepOwnerDetailsOtherDetailsFormSchema,
+	type StepOwnerDetailsOtherDetailsFormSchema,
 } from './FormState';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
@@ -131,13 +131,13 @@ export function StepOwnerDetailsForm() {
 						</ButtonLink>
 					</Stack>
 				</FormStack>
-				<ChangeDetailsForm />
+				<OtherDetailsForm />
 			</Stack>
 		</FormContainer>
 	);
 }
 
-function ChangeDetailsForm() {
+function OtherDetailsForm() {
 	const {
 		isSavingBeforeExiting,
 		stepOwnerDetailsGetState,
@@ -158,17 +158,17 @@ function ChangeDetailsForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<StepOwnerDetailsChangeDetailsFormSchema>({
+	} = useForm<StepOwnerDetailsOtherDetailsFormSchema>({
 		defaultValues: {
 			contactMethod: stepOwnerDetailsGetState()?.contactMethod,
 		},
-		resolver: zodResolver(stepOwnerDetailsChangeDetailsFormSchema),
+		resolver: zodResolver(stepOwnerDetailsOtherDetailsFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<
-		StepOwnerDetailsChangeDetailsFormSchema
+		StepOwnerDetailsOtherDetailsFormSchema
 	> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
