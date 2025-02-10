@@ -33,9 +33,12 @@ export function getStepCompletionUrl({
 	editingStep,
 	steps,
 }: GetStepNavigationUrlParams) {
-	const nextStepUrl = (
-		editingStep?.match ? steps.at(-1) : steps[currentStepIndex + 1]
-	)?.href;
+	const nextStepUrl = `${(editingStep?.match
+		? steps.at(-1)
+		: steps[currentStepIndex + 1]
+	)?.href}${
+		editingStep?.match ? `?success=${editingStep.match.formStateKey}` : ''
+	}`;
 	return (
 		nextStepUrl ||
 		`/app/permits/apply-for-new-permit/mobile-food-vendor-permit/success?id=${id}`

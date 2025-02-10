@@ -1,5 +1,8 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { H2 } from '@ag.ds-next/react/heading';
+import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { Stack } from '@ag.ds-next/react/stack';
 import {
 	Table,
@@ -35,6 +38,8 @@ import { stepKeyToStepDataMap } from './stepsData';
 
 export function ReviewAndSubmitStepsSummary() {
 	const { formState } = useGlobalForm();
+	const { query } = useRouter();
+	const [hideEditSectionAlert, setHideEditSectionAlert] = useState(false);
 
 	const validation = {
 		stepOwnerDetails: stepOwnerDetailsFormSchema.safeParse(
@@ -70,6 +75,16 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Owner details */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepOwnerDetails.label}</H2>
+				{query?.success === 'stepOwnerDetails' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Owner details has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepOwnerDetails.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -109,6 +124,16 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Business details */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepBusinessDetails.label}</H2>
+				{query?.success === 'stepBusinessDetails' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Business details has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepBusinessDetails.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -153,6 +178,17 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Business address */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepBusinessAddress.label}</H2>
+				{query?.success === 'stepBusinessstepBusinessAddressDetails' &&
+					!hideEditSectionAlert && (
+						<SectionAlert
+							focusOnMount
+							onClose={() => {
+								setHideEditSectionAlert(true);
+							}}
+							title="Business address has been updated"
+							tone="success"
+						/>
+					)}
 				{validation.stepBusinessAddress.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItemAddress
@@ -195,6 +231,17 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Vehicle registration */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepVehicleRegistration.label}</H2>
+				{query?.success === 'stepVehicleRegistration' &&
+					!hideEditSectionAlert && (
+						<SectionAlert
+							focusOnMount
+							onClose={() => {
+								setHideEditSectionAlert(true);
+							}}
+							title="Vehicle registration has been updated"
+							tone="success"
+						/>
+					)}
 				{validation.stepVehicleRegistration.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -225,6 +272,16 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Trading time */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepTradingTime.label}</H2>
+				{query?.success === 'stepTradingTime' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Trading time has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepTradingTime.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItemDateRange
@@ -253,6 +310,16 @@ export function ReviewAndSubmitStepsSummary() {
 			{/** Food served */}
 			<Stack gap={1.5}>
 				<H2>{stepKeyToStepDataMap.stepFoodServed.label}</H2>
+				{query?.success === 'stepFoodServed' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Food served has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepFoodServed.success ? (
 					<FormDefinitionList>
 						<FormDefinitionListItem
@@ -279,6 +346,16 @@ export function ReviewAndSubmitStepsSummary() {
 				<H2 id="employees-heading">
 					{stepKeyToStepDataMap.stepEmployees.label}
 				</H2>
+				{query?.success === 'stepEmployees' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Employees has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepEmployees.success ? (
 					<TableWrapper>
 						<Table aria-labelledby="employees-heading">
@@ -320,6 +397,16 @@ export function ReviewAndSubmitStepsSummary() {
 				<H2 id="upload-documents-heading">
 					{stepKeyToStepDataMap.stepUploadDocuments.label}
 				</H2>
+				{query?.success === 'stepUploadDocuments' && !hideEditSectionAlert && (
+					<SectionAlert
+						focusOnMount
+						onClose={() => {
+							setHideEditSectionAlert(true);
+						}}
+						title="Uploaded documents has been updated"
+						tone="success"
+					/>
+				)}
 				{validation.stepUploadDocuments.success ? (
 					<TableWrapper>
 						<Table aria-labelledby="upload-documents-heading">
