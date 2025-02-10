@@ -203,6 +203,17 @@ export function StepOwnerDetailsChangeDetailsForm() {
 									required
 									type="email"
 								/>
+								<TextInput
+									{...register('mobileNumber')}
+									autoComplete="tel"
+									id="mobileNumber"
+									invalid={Boolean(errors.mobileNumber?.message)}
+									label="Mobile number"
+									maxWidth="xl"
+									message={errors.mobileNumber?.message}
+									required
+									type="tel"
+								/>
 							</FormStack>
 							<Divider />
 							<ButtonGroup>
