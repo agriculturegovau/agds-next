@@ -4,7 +4,6 @@ import {
 	zodArray,
 	zodDateField,
 	zodPhoneField,
-	zodPhoneFieldOptional,
 	zodString,
 	zodStringOptional,
 	zodTimeField,
@@ -18,7 +17,8 @@ export const stepOwnerDetailsFormSchema = z.object({
 	email: zodString('Enter your email address').email(
 		'Enter a valid email address'
 	),
-	contactPhoneNumber: zodPhoneFieldOptional(),
+	mobileNumber: zodPhoneField(),
+	contactMethod: zodString('Preferred contact method is required'),
 });
 
 export type StepOwnerDetailsFormSchema = z.infer<
@@ -26,7 +26,7 @@ export type StepOwnerDetailsFormSchema = z.infer<
 >;
 
 export const stepOwnerDetailsChangeDetailsFormSchema = z.object({
-	contactPhoneNumber: zodPhoneFieldOptional(),
+	contactMethod: zodString('Preferred contact method is required'),
 });
 
 export type StepOwnerDetailsChangeDetailsFormSchema = z.infer<
@@ -234,6 +234,7 @@ export const defaultFormState: DeepPartial<FormState> = {
 		firstName: 'Charlie',
 		lastName: 'Walker',
 		email: 'c.walker@email.com',
+		mobileNumber: '0494 811 111',
 		completed: false,
 	},
 	stepBusinessAddress: {

@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ButtonLink } from '@ag.ds-next/react/button';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Details } from '@ag.ds-next/react/details';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
+import { Radio } from '@ag.ds-next/react/radio';
 import { Stack } from '@ag.ds-next/react/stack';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import {
@@ -15,7 +17,6 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { TextInput } from '@ag.ds-next/react/text-input';
 import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
@@ -113,6 +114,12 @@ export function StepOwnerDetailsForm() {
 									{stepState?.email}
 								</SummaryListItemDescription>
 							</SummaryListItem>
+							<SummaryListItem>
+								<SummaryListItemTerm>Mobile number</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									{stepState?.mobileNumber}
+								</SummaryListItemDescription>
+							</SummaryListItem>
 						</SummaryList>
 
 						<ButtonLink
@@ -124,13 +131,13 @@ export function StepOwnerDetailsForm() {
 						</ButtonLink>
 					</Stack>
 				</FormStack>
-				<AdditionalDetailsForm />
+				<ChangeDetailsForm />
 			</Stack>
 		</FormContainer>
 	);
 }
 
-function AdditionalDetailsForm() {
+function ChangeDetailsForm() {
 	const {
 		isSavingBeforeExiting,
 		stepOwnerDetailsGetState,
@@ -153,7 +160,7 @@ function AdditionalDetailsForm() {
 		formState: { errors },
 	} = useForm<StepOwnerDetailsChangeDetailsFormSchema>({
 		defaultValues: {
-			contactPhoneNumber: stepOwnerDetailsGetState()?.contactPhoneNumber,
+			contactMethod: stepOwnerDetailsGetState()?.contactMethod,
 		},
 		resolver: zodResolver(stepOwnerDetailsChangeDetailsFormSchema),
 		mode: 'onSubmit',
@@ -189,16 +196,21 @@ function AdditionalDetailsForm() {
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<FormStack>
-				<H2>Additional details</H2>
-				<TextInput
-					{...register('contactPhoneNumber')}
-					autoComplete="tel"
-					hint="Any Australian mobile or landline. For example, 0444111222 or 02 9988 7766"
-					id="contactPhoneNumber"
-					invalid={Boolean(errors.contactPhoneNumber)}
-					label="Contact phone number"
-					message={errors.contactPhoneNumber?.message}
-				/>
+				<ControlGroup
+					block
+					id="contactMethod"
+					invalid={Boolean(errors.contactMethod)}
+					label="Preferred contact method"
+					message={errors.contactMethod?.message}
+					required
+				>
+					<Radio {...register('contactMethod')} value="SMS">
+						SMS
+					</Radio>
+					<Radio {...register('contactMethod')} value="Email">
+						Email
+					</Radio>
+				</ControlGroup>
 			</FormStack>
 		</Form>
 	);

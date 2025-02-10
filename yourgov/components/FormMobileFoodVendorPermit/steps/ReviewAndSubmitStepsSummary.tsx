@@ -85,8 +85,12 @@ export function ReviewAndSubmitStepsSummary() {
 							value={formState.steps?.stepOwnerDetails?.email}
 						/>
 						<FormDefinitionListItem
-							label="Contact phone number"
-							value={formState.steps?.stepOwnerDetails?.contactPhoneNumber}
+							label="Mobile number"
+							value={formState.steps?.stepOwnerDetails?.mobileNumber}
+						/>
+						<FormDefinitionListItem
+							label="Preferred contact method"
+							value={formState.steps?.stepOwnerDetails?.contactMethod}
 						/>
 					</FormDefinitionList>
 				) : (
