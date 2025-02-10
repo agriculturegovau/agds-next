@@ -148,8 +148,10 @@ const Page: NextPageWithLayout = () => {
 														?.businessStructure
 												}
 											/>
-											{formState.steps?.stepBusinessDetails
-												?.businessStructure === 'Business' ? (
+											{['Business', 'Sole trader'].includes(
+												formState.steps?.stepBusinessDetails
+													?.businessStructure || ''
+											) ? (
 												<FormDefinitionListItem
 													label="Australian Business Number (ABN)"
 													value={formState.steps?.stepBusinessDetails?.abn}

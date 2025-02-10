@@ -43,7 +43,9 @@ export const stepBusinessDetailsFormSchema = z
 	})
 	.refine(
 		(value) => {
-			return value.businessStructure === 'Business' ? Boolean(value.abn) : true;
+			return ['Business', 'Sole trader'].includes(value.businessStructure)
+				? Boolean(value.abn)
+				: true;
 		},
 		{
 			path: ['abn'],
