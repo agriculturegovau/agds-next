@@ -227,11 +227,11 @@ export const DashboardFilterDrawer = ({
 							legend="Last active"
 							message={
 								fromInvalid && toInvalid
-									? 'Enter valid From and To dates'
+									? 'From date and To date is invalid'
 									: fromInvalid
-									? 'Enter a valid From date'
+									? 'From date is invalid'
 									: toInvalid
-									? 'Enter a valid To date'
+									? 'To date is invalid'
 									: undefined
 							}
 							onChange={(dateRange) => {

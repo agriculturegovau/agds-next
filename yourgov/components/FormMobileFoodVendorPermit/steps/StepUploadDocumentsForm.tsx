@@ -321,7 +321,7 @@ export function StepUploadDocumentsForm() {
 							invalid={fileUploadInvalid}
 							label={`Upload ${currentDocument?.documentType}`}
 							maxSize={2000}
-							message="File is required."
+							message={`${currentDocument?.documentType} is required`}
 							onChange={(file) => {
 								setUploadedFile(file);
 								if (file.length) {

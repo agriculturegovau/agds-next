@@ -12,10 +12,10 @@ import { type Status } from '../FormState';
 import { StaffMember } from '../../Staff/lib/types';
 
 export const stepOwnerDetailsFormSchema = z.object({
-	firstName: zodString('Enter your first name'),
-	lastName: zodString('Enter your last name'),
-	email: zodString('Enter your email address').email(
-		'Enter a valid email address'
+	firstName: zodString('First name is required'),
+	lastName: zodString('Last name is required'),
+	email: zodString('Email address is required').email(
+		'Email address is invalid'
 	),
 	mobileNumber: zodPhoneField(),
 	contactMethod: zodStringOptional(),
@@ -69,11 +69,11 @@ export type StepBusinessDetailsFormSchema = z.infer<
 export const stepBusinessAddressFormSchema = z
 	.object({
 		// business address
-		streetAddress: zodString('Enter your street address'),
-		suburbTownCity: zodString('Enter your suburb, town or city'),
-		state: zodString('Enter your state'),
-		postcode: zodString('Enter your postcode').length(4, {
-			message: 'An Australian postcode is 4 digits long',
+		streetAddress: zodString('Street address is required'),
+		suburbTownCity: zodString('Suburb, town or city is required'),
+		state: zodString('State or territory is required'),
+		postcode: zodString('Postcode is required').length(4, {
+			message: 'Postcode must be 4 digits',
 		}),
 		// postal address
 		isPostalAddressSameAsBusinessAddress: z.boolean(),
@@ -90,7 +90,7 @@ export const stepBusinessAddressFormSchema = z
 		) {
 			context.addIssue({
 				code: ZodIssueCode.invalid_string,
-				message: message || `Enter your ${label}`,
+				message: message || `${label} is required`,
 				validation: { includes: '' },
 				path: [key],
 			});
@@ -98,22 +98,18 @@ export const stepBusinessAddressFormSchema = z
 
 		if (!value.isPostalAddressSameAsBusinessAddress) {
 			if (!value.postalAddress) {
-				addIssue('postalAddress', 'postal address');
+				addIssue('postalAddress', 'Postal address');
 			}
 			if (!value.postalSuburbTownCity) {
-				addIssue('postalSuburbTownCity', 'suburb, town or city');
+				addIssue('postalSuburbTownCity', 'Suburb, town or city');
 			}
 			if (!value.postalState) {
-				addIssue('postalState', 'state');
+				addIssue('postalState', 'State or territory');
 			}
 			if (!value.postalPostcode) {
-				addIssue('postalPostcode', 'postcode');
+				addIssue('postalPostcode', 'Postcode');
 			} else if (value.postalPostcode.length !== 4) {
-				addIssue(
-					'postalPostcode',
-					'postcode',
-					'An Australian postcode is 4 digits long'
-				);
+				addIssue('postalPostcode', 'Postcode', 'Postcode must be 4 digits');
 			}
 		}
 	});
@@ -164,10 +160,10 @@ export type StepFoodServedFormSchema = z.infer<typeof stepFoodServedFormSchema>;
 export const stepEmployeesFormSchema = z.object({
 	employee: z.object({
 		id: zodString(),
-		firstName: zodString('Enter employee’s first name'),
-		lastName: zodString('Enter employee’s last name'),
-		email: zodString('Enter employee’s email address').email(
-			'Enter a valid email address'
+		firstName: zodString('First name is required'),
+		lastName: zodString('Last name is required'),
+		email: zodString('Email address is required').email(
+			'Email address is invalid'
 		),
 	}),
 });
@@ -265,14 +261,14 @@ export const defaultFormState: DeepPartial<FormState> = {
 
 export const inviteStaffFormSchema = z.object({
 	id: zodString(),
-	firstName: zodString('Enter employee’s first name'),
-	lastName: zodString('Enter employee’s last name'),
-	email: zodString('Enter employee’s email address').email(
-		'Enter a valid email address'
+	firstName: zodString('First name is required'),
+	lastName: zodString('Last name is required'),
+	email: zodString('Email address is required').email(
+		'Email address is invalid'
 	),
-	mobile: zodPhoneField('Enter employee’s mobile number'),
+	mobile: zodPhoneField('Mobile number'),
 	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
-		errorMap: () => ({ message: 'Please choose a role' }),
+		errorMap: () => ({ message: 'Role is required' }),
 	}),
 	trainingCompleted: z.array(
 		z.enum(['Deliveries', 'Distribution', 'Ice cream making', 'Packaging'])
@@ -283,7 +279,7 @@ export type InviteStaffFormSchema = z.infer<typeof inviteStaffFormSchema>;
 
 export const editStaffFormSchema = z.object({
 	role: z.enum(['Manager', 'Employee', 'Trainee', 'Work experience'], {
-		errorMap: () => ({ message: 'Please choose a role' }),
+		errorMap: () => ({ message: 'Role is required' }),
 	}),
 	trainingCompleted: z.array(
 		z.enum(['Deliveries', 'Distribution', 'Ice cream making', 'Packaging'])
