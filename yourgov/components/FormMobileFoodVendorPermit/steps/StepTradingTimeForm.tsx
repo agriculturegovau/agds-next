@@ -157,7 +157,7 @@ export function StepTradingTimeForm() {
 
 	// FIXME: This should ideally be handled in zod
 	const tradingPeriodError = hasErrors.tradingPeriod.both
-		? 'Start date and End date are required'
+		? 'Start date and End date is required'
 		: hasErrors.tradingPeriod.from
 		? 'Start date is required'
 		: hasErrors.tradingPeriod.to

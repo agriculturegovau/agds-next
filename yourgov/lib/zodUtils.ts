@@ -14,40 +14,42 @@ export function zodString(message?: string) {
 export const zodStringOptional = () => z.string().trim().optional();
 
 const phoneError = {
-	lettersOrSymbols: 'Phone number must not include letters or symbols',
+	digitCount: 'must be 10 digits long',
+	lettersOrSymbols: 'must not include letters or symbols',
 	start0402:
 		'Mobile numbers must begin with ‘04’, landline numbers must begin with ‘02’',
-	digitCount: 'The Phone number must be 10 digits long',
 };
 
-export function zodPhoneField(message = 'Enter a phone number') {
+export function zodPhoneField(label = 'Mobile number') {
 	return (
-		zodString(message)
-			.regex(/^[\d\s]+$/, { message: phoneError.lettersOrSymbols })
+		zodString(`${label} is required`)
+			.regex(/^[\d\s]+$/, {
+				message: `${label} ${phoneError.lettersOrSymbols}`,
+			})
 			.regex(/^0[42][\d\s]+$/, { message: phoneError.start0402 })
 			// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
 			.refine((val) => val.replace(/\s/g, '').length === 10, {
-				message: phoneError.digitCount,
+				message: `${label} ${phoneError.digitCount}`,
 			})
 	);
 }
-export function zodPhoneFieldOptional() {
+export function zodPhoneFieldOptional(label = 'Mobile number') {
 	return (
 		zodStringOptional()
 			.refine((value) => !value || /^[\d\s]+$/.test(value), {
-				message: phoneError.lettersOrSymbols,
+				message: `${label} ${phoneError.lettersOrSymbols}`,
 			})
 			.refine((value) => !value || /^0[42][\d\s]+$/.test(value), {
 				message: phoneError.start0402,
 			})
 			// Refine returns with the wrong type information https://github.com/colinhacks/zod/issues/2474
 			.refine((value) => !value || value?.replace(/\s/g, '').length === 10, {
-				message: phoneError.digitCount,
+				message: `${label} ${phoneError.digitCount}`,
 			})
 	);
 }
 
-export function zodDateField(message = 'Enter a valid date') {
+export function zodDateField(message = 'Date is invalid') {
 	return z
 		.union([
 			z.string({
