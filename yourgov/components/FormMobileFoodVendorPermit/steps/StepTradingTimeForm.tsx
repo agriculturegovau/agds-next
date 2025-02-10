@@ -155,7 +155,7 @@ export function StepTradingTimeForm() {
 		[errors, fromInvalid, toInvalid, typeCorrectedErrors]
 	);
 
-	// FIXME: This should ideally be handled in zod
+	// FIXME: This should be handled in zod
 	const tradingPeriodError = hasErrors.tradingPeriod.both
 		? 'Start date and End date is required'
 		: hasErrors.tradingPeriod.from
@@ -203,7 +203,7 @@ export function StepTradingTimeForm() {
 								},
 								openingTime: {
 									message: hasErrors.hours.both
-										? 'Opening time and Closing time are required'
+										? 'Opening time and Closing time is required'
 										: typeCorrectedErrors.openingTime?.message,
 								},
 								closingTime: {

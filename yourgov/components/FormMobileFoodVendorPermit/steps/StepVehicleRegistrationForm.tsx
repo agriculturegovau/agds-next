@@ -64,7 +64,18 @@ export function StepVehicleRegistrationForm() {
 		});
 	};
 
-	const showErrorAlert = hasMultipleErrors(errors);
+	const adjustedErrors = {
+		...errors,
+		registrationExpiry: {
+			...errors.registrationExpiry,
+			// FIXME: This should be handled in zod
+			message: errors.registrationExpiry?.message
+				? 'Registration expiry date is required'
+				: undefined,
+		},
+	};
+
+	const showErrorAlert = hasMultipleErrors(adjustedErrors);
 
 	return (
 		<FormContainer
@@ -77,7 +88,7 @@ export function StepVehicleRegistrationForm() {
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
-					{showErrorAlert && <FormPageAlert errors={errors} />}
+					{showErrorAlert && <FormPageAlert errors={adjustedErrors} />}
 					<TextInput
 						{...register('registrationNumber')}
 						autoComplete="on"
@@ -98,11 +109,7 @@ export function StepVehicleRegistrationForm() {
 								inputRef={ref}
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								label="Registration expiry date"
-								message={
-									// FIXME: This should be handled in zod
-									errors.registrationExpiry?.message &&
-									'Registration expiry date is required'
-								}
+								message={adjustedErrors.registrationExpiry?.message}
 								required
 							/>
 						)}
