@@ -143,7 +143,7 @@ const Page: NextPageWithLayout = () => {
 
 						<TabPanels>
 							<TabPanel>
-								<Stack gap={3}>
+								<Stack gap={1.5}>
 									<H2 id="staff-members-heading">Staff members</H2>
 
 									<StaffMembersTable selectable tableRef={tableRef} />
