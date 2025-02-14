@@ -89,12 +89,15 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						lastUpdated: Date.now(),
 						steps: {
 							...prevState.steps,
-							stepOwnerDetailsReviewEdit: {
-								...prevState.steps?.stepOwnerDetails,
-								...prevState.steps?.stepOwnerDetailsReviewEdit,
-								started: true,
-								...newState,
-							},
+							stepOwnerDetailsReviewEdit:
+								Object.keys(newState).length === 0
+									? {}
+									: {
+											...prevState.steps?.stepOwnerDetails,
+											...prevState.steps?.stepOwnerDetailsReviewEdit,
+											started: true,
+											...newState,
+									  },
 						},
 					};
 				});

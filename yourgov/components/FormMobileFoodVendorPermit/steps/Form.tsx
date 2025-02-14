@@ -5,16 +5,16 @@ import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewS
 
 type FormProps = {
 	children?: ReactNode;
-	editingCancel?: () => void;
 	noValidate?: boolean;
+	onEditCancel?: () => void;
 	onSubmit: FormEventHandler<HTMLFormElement>;
 	submitText?: string;
 };
 
 export const Form = ({
 	children,
-	editingCancel,
 	noValidate = true,
+	onEditCancel,
 	onSubmit,
 	submitText,
 }: FormProps) => {
@@ -26,8 +26,8 @@ export const Form = ({
 
 			{editingStep?.match ? (
 				<StepActions
-					editingCancel={editingCancel}
 					hasSaveAndExit={false}
+					onCancel={onEditCancel}
 					submitText="Save changes"
 				/>
 			) : (

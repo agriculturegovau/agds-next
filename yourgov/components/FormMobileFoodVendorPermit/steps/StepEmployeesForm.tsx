@@ -250,13 +250,9 @@ export function StepEmployeesForm() {
 			</Stack>
 
 			<Form
-				editingCancel={
-					editingStep?.match
-						? () => {
-								stepEmployeesReviewEditSetState({});
-						  }
-						: undefined
-				}
+				onEditCancel={() => {
+					stepEmployeesReviewEditSetState({});
+				}}
 				onSubmit={onSubmit}
 			/>
 

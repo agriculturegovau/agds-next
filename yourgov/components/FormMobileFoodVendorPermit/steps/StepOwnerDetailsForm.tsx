@@ -143,6 +143,7 @@ function OtherDetailsForm() {
 		stepOwnerDetailsGetState,
 		stepOwnerDetailsSetState,
 		stepOwnerDetailsReviewEditGetState,
+		stepOwnerDetailsReviewEditSetState,
 	} = useGlobalForm();
 
 	const editingStep = useIsEditingFromReviewStep();
@@ -185,14 +186,10 @@ function OtherDetailsForm() {
 
 	return (
 		<Form
-			editingCancel={
-				editingStep?.match
-					? () => {
-							stepOwnerDetailsGetState();
-					  }
-					: undefined
-			}
 			noValidate={false}
+			onEditCancel={() => {
+				stepOwnerDetailsReviewEditSetState({});
+			}}
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<FormStack>
