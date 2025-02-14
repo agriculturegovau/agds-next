@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -23,6 +23,7 @@ export function StepBusinessDetailsForm() {
 	const { formState, stepBusinessDetailsSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+	const [isSaving, setIsSaving] = useState(false);
 
 	const editingStep = useIsEditingFromReviewStep();
 
@@ -31,7 +32,7 @@ export function StepBusinessDetailsForm() {
 		register,
 		handleSubmit,
 		trigger,
-		formState: { errors, isSubmitted },
+		formState: { errors, isDirty, isSubmitted },
 	} = useForm<StepBusinessDetailsFormSchema>({
 		defaultValues: formState.steps?.stepBusinessDetails,
 		resolver: isSavingBeforeExiting
@@ -40,10 +41,12 @@ export function StepBusinessDetailsForm() {
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
+	console.log(`isDirty`, isDirty);
 
 	const onSubmit: SubmitHandler<StepBusinessDetailsFormSchema> = async (
 		data
 	) => {
+		setIsSaving(true);
 		if (isSavingBeforeExiting) {
 			return;
 		}
@@ -75,7 +78,11 @@ export function StepBusinessDetailsForm() {
 				]
 			}
 		>
-			<Form onSubmit={handleSubmit(onSubmit)}>
+			<Form
+				onSubmit={handleSubmit(onSubmit)}
+				hasUnsavedChanges={isDirty}
+				isSaving={isSaving}
+			>
 				<FormStack>
 					{showErrorAlert && <FormPageAlert errors={errors} />}
 					<TextInput

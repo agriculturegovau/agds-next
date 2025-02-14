@@ -26,6 +26,9 @@ import {
 } from './FormState';
 import { useFormContext } from './FormProvider';
 import { stepKeyToStepDataMap, stepsData } from './stepsData';
+import { useWarnOnUnsavedChanges } from '../../../lib/useWarnOnUnsavedChanges';
+import { Form } from './Form';
+import { SubStepActions } from '../SubStepActions';
 
 export function StepOwnerDetailsChangeDetailsForm() {
 	const router = useRouter();
@@ -36,6 +39,7 @@ export function StepOwnerDetailsChangeDetailsForm() {
 		stepOwnerDetailsSetState,
 		stepOwnerDetailsReviewEditSetState,
 	} = useGlobalForm();
+	const [fooSubmit, setFooSubmit] = useState(false);
 
 	const editingStep = useIsEditingFromReviewStep();
 
@@ -52,7 +56,7 @@ export function StepOwnerDetailsChangeDetailsForm() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isDirty },
 	} = useForm<StepOwnerDetailsFormSchema>({
 		defaultValues: stepState,
 		resolver: zodResolver(stepOwnerDetailsFormSchema),
@@ -69,9 +73,9 @@ export function StepOwnerDetailsChangeDetailsForm() {
 
 	const onSubmit: SubmitHandler<StepOwnerDetailsFormSchema> = (data) => {
 		setIsSaving(true);
+		setFooSubmit(true);
 		// Using a `setTimeout` to replicate a call to a back-end API
 		setTimeout(() => {
-			setIsSaving(false);
 			stateSetter({
 				...data,
 				edited: editingStep?.match ? true : undefined,
@@ -163,68 +167,65 @@ export function StepOwnerDetailsChangeDetailsForm() {
 						</Text>
 						<FormRequiredFieldsMessage />
 					</Stack>
-					<Stack gap={1.5} width="100%">
-						<Stack
-							as="form"
-							gap={3}
-							noValidate
-							onSubmit={handleSubmit(onSubmit)}
-						>
-							<FormStack>
-								{showErrorAlert && <FormPageAlert errors={errors} />}
-								<TextInput
-									{...register('firstName')}
-									autoComplete="given-name"
-									id="firstName"
-									invalid={Boolean(errors.firstName?.message)}
-									label="First name"
-									maxWidth="lg"
-									message={errors.firstName?.message}
-									required
-								/>
-								<TextInput
-									{...register('lastName')}
-									autoComplete="family-name"
-									id="lastName"
-									invalid={Boolean(errors.lastName?.message)}
-									label="Last name"
-									maxWidth="lg"
-									message={errors.lastName?.message}
-									required
-								/>
-								<TextInput
-									{...register('email')}
-									autoComplete="email"
-									id="email"
-									invalid={Boolean(errors.email?.message)}
-									label="Email address"
-									maxWidth="xl"
-									message={errors.email?.message}
-									required
-									type="email"
-								/>
-								<TextInput
-									{...register('mobileNumber')}
-									autoComplete="tel"
-									id="mobileNumber"
-									invalid={Boolean(errors.mobileNumber?.message)}
-									label="Mobile number"
-									maxWidth="xl"
-									message={errors.mobileNumber?.message}
-									required
-									type="tel"
-								/>
-							</FormStack>
-							<Divider />
-							<ButtonGroup>
+					<Stack as="form" gap={3} noValidate onSubmit={handleSubmit(onSubmit)}>
+						<FormStack>
+							{showErrorAlert && <FormPageAlert errors={errors} />}
+							<TextInput
+								{...register('firstName')}
+								autoComplete="given-name"
+								id="firstName"
+								invalid={Boolean(errors.firstName?.message)}
+								label="First name"
+								maxWidth="lg"
+								message={errors.firstName?.message}
+								required
+							/>
+							<TextInput
+								{...register('lastName')}
+								autoComplete="family-name"
+								id="lastName"
+								invalid={Boolean(errors.lastName?.message)}
+								label="Last name"
+								maxWidth="lg"
+								message={errors.lastName?.message}
+								required
+							/>
+							<TextInput
+								{...register('email')}
+								autoComplete="email"
+								id="email"
+								invalid={Boolean(errors.email?.message)}
+								label="Email address"
+								maxWidth="xl"
+								message={errors.email?.message}
+								required
+								type="email"
+							/>
+							<TextInput
+								{...register('mobileNumber')}
+								autoComplete="tel"
+								id="mobileNumber"
+								invalid={Boolean(errors.mobileNumber?.message)}
+								label="Mobile number"
+								maxWidth="xl"
+								message={errors.mobileNumber?.message}
+								required
+								type="tel"
+							/>
+							<SubStepActions
+								cancelHref={stepOwnerDetailsPath}
+								bypassWarnOnUnsavedChanges={isSaving}
+								warnOnUnsavedChanges={isDirty}
+							/>
+							{/* <ButtonGroup>
 								<Button loading={isSaving} type="submit">
 									Save changes
 								</Button>
 								<Button onClick={onCancelClick} variant="tertiary">
 									Cancel
 								</Button>
-							</ButtonGroup>
-						</Stack>
+							</ButtonGroup> */}
+						</FormStack>
 					</Stack>
 				</Stack>
 			</Column>

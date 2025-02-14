@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { useRouter } from 'next/router';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Modal } from '@ag.ds-next/react/modal';
 import { Stack } from '@ag.ds-next/react/stack';
@@ -8,31 +9,25 @@ import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 import { useWarnOnUnsavedChanges } from '../../lib/useWarnOnUnsavedChanges';
 
-export function StepActions({
+export function SubStepActions({
 	bypassWarnOnUnsavedChanges,
-	editingCancel,
-	functionToCallWhenLeaving,
-	hasSaveAndExit = true,
-	// hasUnsavedChanges,
-	// isSaving,
-	submitText = 'Save and continue',
+	cancelHref,
+	submitText = 'Save changes',
 	warnOnUnsavedChanges,
 }: {
 	bypassWarnOnUnsavedChanges?: boolean;
-	editingCancel?: () => void;
-	functionToCallWhenLeaving?: () => void;
-	hasSaveAndExit?: boolean;
+	cancelHref: string;
+	isSaving?: boolean;
 	submitText?: string;
 	warnOnUnsavedChanges?: boolean;
 }) {
 	const [isCancelModalOpen, openCancelModal, closeCancelModal] =
 		useTernaryState(false);
+	const router = useRouter();
 
-	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
-		useGlobalForm();
+	const { isSubmittingStep } = useGlobalForm();
 
 	const warnModal = useWarnOnUnsavedChanges({
-		functionToCallWhenLeaving,
 		shouldWarn: warnOnUnsavedChanges,
 		shouldBypass: bypassWarnOnUnsavedChanges || isCancelModalOpen,
 		WarnModal: ({ onCancel, onConfirm, showModal }) => (
@@ -48,7 +43,7 @@ export function StepActions({
 				}
 				isOpen={showModal}
 				onClose={onCancel}
-				title="You have unsaved changes2"
+				title="You have unsaved changes3"
 			>
 				<Text as="p">
 					If you cancel, you will lose all information entered.
@@ -57,13 +52,8 @@ export function StepActions({
 		),
 	});
 
-	console.log(`warnModal`, warnModal);
-
 	const handleCancel = () => {
-		if (editingCancel) {
-			editingCancel();
-		}
-		cancel();
+		router.push(cancelHref);
 	};
 
 	return (
@@ -76,17 +66,6 @@ export function StepActions({
 					<Button loading={isSubmittingStep} type="submit" variant="primary">
 						{submitText}
 					</Button>
-
-					{hasSaveAndExit && (
-						<Button
-							loading={isSavingBeforeExiting}
-							onClick={saveAndExit}
-							type="submit"
-							variant="secondary"
-						>
-							Save and exit
-						</Button>
-					)}
 
 					<Button
 						onClick={warnOnUnsavedChanges ? openCancelModal : handleCancel}

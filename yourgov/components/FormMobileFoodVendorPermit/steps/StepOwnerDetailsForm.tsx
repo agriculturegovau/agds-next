@@ -29,8 +29,13 @@ import { Form } from './Form';
 import { stepKeyToStepDataMap } from './stepsData';
 
 export function StepOwnerDetailsForm() {
-	const { stepOwnerDetailsGetState, stepOwnerDetailsReviewEditGetState } =
-		useGlobalForm();
+	const {
+		isSavingBeforeExiting,
+		stepOwnerDetailsGetState,
+		stepOwnerDetailsSetState,
+		stepOwnerDetailsReviewEditGetState,
+		stepOwnerDetailsReviewEditSetState,
+	} = useGlobalForm();
 
 	const editingStep = useIsEditingFromReviewStep();
 	const reviewEditState = stepOwnerDetailsReviewEditGetState();
@@ -43,6 +48,7 @@ export function StepOwnerDetailsForm() {
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
+	const [isNavigatingToSubStep, setIsNavigatingToSubStep] = useState(false);
 
 	const changeBusinessOwnerDetailsHref = stepKeyToStepDataMap.stepOwnerDetails
 		?.items
@@ -54,6 +60,53 @@ export function StepOwnerDetailsForm() {
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
 	}, [isUpdated]);
+
+	const [isSaving, setIsSaving] = useState(false);
+
+	const { submitStep } = useFormContext();
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isDirty },
+	} = useForm<StepOwnerDetailsOtherDetailsFormSchema>({
+		defaultValues: {
+			contactMethod: stepOwnerDetailsGetState()?.contactMethod,
+		},
+		resolver: zodResolver(stepOwnerDetailsOtherDetailsFormSchema),
+		mode: 'onSubmit',
+		reValidateMode: 'onBlur',
+	});
+
+	const onSubmit: SubmitHandler<
+		StepOwnerDetailsOtherDetailsFormSchema
+	> = async (data) => {
+		setIsSaving(true);
+		if (isSavingBeforeExiting) {
+			return;
+		}
+		await submitStep();
+		stepOwnerDetailsSetState({
+			...stepState,
+			...data,
+			completed: !isSavingBeforeExiting,
+			edited: editingStep?.match ? true : undefined,
+			started: true,
+		});
+	};
+
+	console.log(`reviewEditState?.edited`, reviewEditState?.edited);
+	console.log(`isDirty`, isDirty);
+	console.log(
+		`isSaving || (isNavigatingToSubStep && reviewEditState?.edited)`,
+		isSaving || (isNavigatingToSubStep && reviewEditState?.edited)
+	);
+	console.log('***************');
+
+	console.log(
+		`isSaving || (!isDirty && isNavigatingToSubStep && reviewEditState?.edited)`,
+		isSaving || (!isDirty && isNavigatingToSubStep && reviewEditState?.edited)
+	);
 
 	return (
 		<FormContainer
@@ -125,93 +178,48 @@ export function StepOwnerDetailsForm() {
 						<ButtonLink
 							alignSelf="start"
 							href={changeBusinessOwnerDetailsHref}
+							// @ts-ignore
+							onClick={() => setIsNavigatingToSubStep(true)}
 							variant="text"
 						>
 							Change business owner details
 						</ButtonLink>
 					</Stack>
 				</FormStack>
-				<OtherDetailsForm />
+				<Form
+					functionToCallWhenLeaving={() => {
+						stepOwnerDetailsReviewEditSetState({});
+					}}
+					editingCancel={() => {
+						stepOwnerDetailsSetState({});
+					}}
+					noValidate={false}
+					onSubmit={handleSubmit(onSubmit)}
+					warnOnUnsavedChanges={isDirty || reviewEditState?.edited}
+					bypassWarnOnUnsavedChanges={
+						isSaving ||
+						(!isDirty && isNavigatingToSubStep && reviewEditState?.edited)
+					}
+				>
+					<FormStack>
+						<ControlGroup
+							block
+							id="contactMethod"
+							invalid={Boolean(errors.contactMethod)}
+							label="Preferred contact method"
+							message={errors.contactMethod?.message}
+							required
+						>
+							<Radio {...register('contactMethod')} value="SMS">
+								SMS
+							</Radio>
+							<Radio {...register('contactMethod')} value="Email">
+								Email
+							</Radio>
+						</ControlGroup>
+					</FormStack>
+				</Form>
 			</Stack>
 		</FormContainer>
-	);
-}
-
-function OtherDetailsForm() {
-	const {
-		isSavingBeforeExiting,
-		stepOwnerDetailsGetState,
-		stepOwnerDetailsSetState,
-		stepOwnerDetailsReviewEditGetState,
-	} = useGlobalForm();
-
-	const editingStep = useIsEditingFromReviewStep();
-	const reviewEditState = stepOwnerDetailsReviewEditGetState();
-	const stepState =
-		editingStep?.match && reviewEditState?.edited
-			? stepOwnerDetailsReviewEditGetState()
-			: stepOwnerDetailsGetState();
-
-	const { submitStep } = useFormContext();
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<StepOwnerDetailsOtherDetailsFormSchema>({
-		defaultValues: {
-			contactMethod: stepOwnerDetailsGetState()?.contactMethod,
-		},
-		resolver: zodResolver(stepOwnerDetailsOtherDetailsFormSchema),
-		mode: 'onSubmit',
-		reValidateMode: 'onBlur',
-	});
-
-	const onSubmit: SubmitHandler<
-		StepOwnerDetailsOtherDetailsFormSchema
-	> = async (data) => {
-		if (isSavingBeforeExiting) {
-			return;
-		}
-		await submitStep();
-		stepOwnerDetailsSetState({
-			...stepState,
-			...data,
-			completed: !isSavingBeforeExiting,
-			edited: editingStep?.match ? true : undefined,
-			started: true,
-		});
-	};
-
-	return (
-		<Form
-			editingCancel={
-				editingStep?.match
-					? () => {
-							stepOwnerDetailsGetState();
-					  }
-					: undefined
-			}
-			noValidate={false}
-			onSubmit={handleSubmit(onSubmit)}
-		>
-			<FormStack>
-				<ControlGroup
-					block
-					id="contactMethod"
-					invalid={Boolean(errors.contactMethod)}
-					label="Preferred contact method"
-					message={errors.contactMethod?.message}
-					required
-				>
-					<Radio {...register('contactMethod')} value="SMS">
-						SMS
-					</Radio>
-					<Radio {...register('contactMethod')} value="Email">
-						Email
-					</Radio>
-				</ControlGroup>
-			</FormStack>
-		</Form>
 	);
 }
