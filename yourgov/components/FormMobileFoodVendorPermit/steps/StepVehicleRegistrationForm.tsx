@@ -1,9 +1,10 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DatePicker } from '@ag.ds-next/react/date-picker';
+import { DatePickerNext } from '@ag.ds-next/react/date-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { DeepPartial } from '../../../lib/types';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors, parseDateField } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -30,6 +31,8 @@ export function StepVehicleRegistrationForm() {
 	const { formState, stepVehicleRegistrationSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -61,16 +64,31 @@ export function StepVehicleRegistrationForm() {
 		});
 	};
 
-	const showErrorAlert = hasMultipleErrors(errors);
+	const adjustedErrors = {
+		...errors,
+		registrationExpiry: {
+			...errors.registrationExpiry,
+			// FIXME: This should be handled in zod
+			message: errors.registrationExpiry?.message
+				? 'Registration expiry date is required'
+				: undefined,
+		},
+	};
+
+	const showErrorAlert = hasMultipleErrors(adjustedErrors);
 
 	return (
 		<FormContainer
 			formIntroduction="Add your vehicle registration details."
-			formTitle={stepKeyToStepDataMap.stepVehicleRegistration.label}
+			formTitle={
+				stepKeyToStepDataMap.stepVehicleRegistration[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
-					{showErrorAlert && <FormPageAlert errors={errors} />}
+					{showErrorAlert && <FormPageAlert errors={adjustedErrors} />}
 					<TextInput
 						{...register('registrationNumber')}
 						autoComplete="on"
@@ -85,13 +103,13 @@ export function StepVehicleRegistrationForm() {
 						control={control}
 						name="registrationExpiry"
 						render={({ field: { ref, ...field } }) => (
-							<DatePicker
+							<DatePickerNext
 								{...field}
 								id="registrationExpiry"
 								inputRef={ref}
 								invalid={Boolean(errors.registrationExpiry?.message)}
 								label="Registration expiry date"
-								message={errors.registrationExpiry?.message}
+								message={adjustedErrors.registrationExpiry?.message}
 								required
 							/>
 						)}

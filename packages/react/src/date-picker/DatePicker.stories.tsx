@@ -4,7 +4,7 @@ import { subDays, addDays } from 'date-fns';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
-import { DatePicker, DatePickerProps } from './DatePicker';
+import { DatePicker, type DatePickerProps } from './DatePicker';
 
 function ControlledDatePicker(props: DatePickerProps) {
 	const [value, setValue] = useState<Date>();

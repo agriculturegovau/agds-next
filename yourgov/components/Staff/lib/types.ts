@@ -30,8 +30,8 @@ export type GetDataFilters = {
 	dateJoinedFrom: string | undefined;
 	dateJoinedTo: string | undefined;
 	foodSafetyCertificate: boolean;
-	lastActiveFrom: string | undefined;
-	lastActiveTo: string | undefined;
+	lastActiveFrom: string | Date | undefined;
+	lastActiveTo: string | Date | undefined;
 	name: string | undefined;
 	role: Record<StaffMemberRole, boolean>;
 	status: StaffMemberStatus | undefined;

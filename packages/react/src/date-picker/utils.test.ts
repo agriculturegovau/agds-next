@@ -1,11 +1,8 @@
 import {
 	constrainDate,
 	formatDate,
-	formatHumanReadableDate,
 	parseDate,
 	transformValuePropToInputValue,
-	getCalendarDefaultMonth,
-	getDateInputButtonAriaLabel,
 } from './utils';
 
 describe('parseDate', () => {
@@ -144,15 +141,6 @@ describe('formatDate', () => {
 	expect(formatDate(new Date(2020, 11, 6), 'dd/MM/yyyy')).toEqual('06/12/2020');
 });
 
-describe('formatHumanReadableDate', () => {
-	expect(formatHumanReadableDate(new Date(2020, 0, 31))).toEqual(
-		'31st January 2020 Friday'
-	);
-	expect(formatHumanReadableDate(new Date(2020, 11, 6))).toEqual(
-		'6th December 2020 Sunday'
-	);
-});
-
 describe('transformValuePropToInputValue', () => {
 	test('works with undefined', () => {
 		expect(transformValuePropToInputValue(undefined, 'dd/MM/yyyy')).toEqual('');
@@ -171,101 +159,5 @@ describe('transformValuePropToInputValue', () => {
 		expect(transformValuePropToInputValue(exampleDate, 'dd/MM/yyyy')).toEqual(
 			formatDate(exampleDate, 'dd/MM/yyyy')
 		);
-	});
-});
-
-describe('getCalendarDefaultMonth', () => {
-	test('returns undefined when no props are set', () => {
-		const valueProp = undefined;
-		const initialMonthProp = undefined;
-		const yearRangeProp = undefined;
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
-		).toEqual(undefined);
-	});
-
-	test('uses the value prop when set', () => {
-		const valueProp = new Date(2024, 0, 0);
-		const initialMonthProp = undefined;
-		const yearRangeProp = undefined;
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
-		).toEqual(valueProp);
-	});
-
-	test('uses the initialMonth prop when set', () => {
-		const valueProp = undefined;
-		const initialMonthProp = new Date(2024, 0, 0);
-		const yearRangeProp = undefined;
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, yearRangeProp)
-		).toEqual(initialMonthProp);
-	});
-
-	test('uses the closest date from the yearRange prop when set', () => {
-		const valueProp = undefined;
-		const initialMonthProp = undefined;
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, {
-				from: 2010,
-				to: 2020,
-			})?.getFullYear()
-		).toEqual(2020);
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, {
-				from: 2030,
-				to: 2050,
-			})?.getFullYear()
-		).toEqual(2030);
-		expect(
-			getCalendarDefaultMonth(valueProp, initialMonthProp, {
-				from: 1990,
-				to: 2100,
-			})?.getFullYear()
-		).toEqual(1990);
-	});
-});
-
-describe('getDateInputButtonAriaLabel', () => {
-	it('returns "Choose date" when no date is set', () => {
-		expect(getDateInputButtonAriaLabel({ value: undefined })).toEqual(
-			'Choose date'
-		);
-
-		expect(getDateInputButtonAriaLabel({ value: '' })).toEqual('Choose date');
-	});
-
-	it('returns "Change date, x" when a date is set', () => {
-		expect(getDateInputButtonAriaLabel({ value: '05/06/2010' })).toEqual(
-			'Change date, 5th June 2010 Saturday'
-		);
-	});
-
-	it('returns "Choose start date" when no date and "start" is set', () => {
-		expect(
-			getDateInputButtonAriaLabel({ value: undefined, rangeName: 'start' })
-		).toEqual('Choose start date');
-
-		expect(
-			getDateInputButtonAriaLabel({ value: '', rangeName: 'start' })
-		).toEqual('Choose start date');
-	});
-
-	it('returns "Change start date, x" when a date and "start" is set', () => {
-		expect(
-			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'start' })
-		).toEqual('Change start date, 5th June 2010 Saturday');
-	});
-
-	it('returns "Choose end date" when no date and "end" is set', () => {
-		expect(
-			getDateInputButtonAriaLabel({ value: '', rangeName: 'end' })
-		).toEqual('Choose end date');
-	});
-
-	it('returns "Change end date, x" when a date and "end" is set', () => {
-		expect(
-			getDateInputButtonAriaLabel({ value: '05/06/2010', rangeName: 'end' })
-		).toEqual('Change end date, 5th June 2010 Saturday');
 	});
 });

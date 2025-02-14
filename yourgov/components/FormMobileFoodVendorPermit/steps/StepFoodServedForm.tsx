@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ComboboxMulti } from '@ag.ds-next/react/combobox';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { ShallowErrors } from '../FormState';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { FormContainer } from './FormContainer';
@@ -16,6 +17,8 @@ export function StepFoodServedForm() {
 	const { formState, stepFoodServedSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		control,
@@ -47,7 +50,11 @@ export function StepFoodServedForm() {
 	return (
 		<FormContainer
 			formIntroduction="What type of food will you be serving?"
-			formTitle={stepKeyToStepDataMap.stepFoodServed.label}
+			formTitle={
+				stepKeyToStepDataMap.stepFoodServed[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<Controller

@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateRangePickerNext renders correctly 1`] = `
+<div>
+  <div
+    class="css-1904cz9-boxStyles-FieldContainer"
+    id="date-range-picker-:r0:"
+  >
+    <fieldset
+      class="css-79i25n-boxStyles"
+    >
+      <legend
+        class="css-ltg556-boxStyles-DateRangePickerNext"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+        >
+          Date range
+        </span>
+        <span
+          class="css-axuon-boxStyles"
+        >
+           
+          (optional)
+        </span>
+      </legend>
+      <div
+        class="css-jnblk0-boxStyles-DateRangePickerNext"
+      >
+        <div
+          class="css-72257o-boxStyles"
+        >
+          <div
+            class="css-1904cz9-boxStyles-FieldContainer"
+          >
+            <label
+              class="css-79i25n-boxStyles"
+              for="date-range-picker-:r0:-from"
+            >
+              <span
+                class="css-1jywj6f-boxStyles"
+              >
+                Start date
+              </span>
+              <span
+                class="css-axuon-boxStyles"
+              >
+                 
+                (e.g. 05/08/2015) (optional)
+              </span>
+            </label>
+            <div
+              class="css-13lwm2a-boxStyles-DateInput"
+            >
+              <input
+                aria-invalid="false"
+                aria-required="false"
+                autocomplete="off"
+                class="css-vgeom5-DateInput"
+                id="date-range-picker-:r0:-from"
+                type="text"
+                value="01/01/2000"
+              />
+              <button
+                aria-expanded="false"
+                aria-label="Change start date, 1st January 2000 Saturday"
+                class="css-1bg0u8-BaseButton-DateInput"
+                type="button"
+              >
+                <span>
+                  <span
+                    class="css-oobk4c-Button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="css-13q7hln-DateInput"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 3C8 4.5621 8 5.4379 8 7"
+                      />
+                      <path
+                        d="M16 3C16 4.5621 16 5.4379 16 7"
+                      />
+                      <path
+                        d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                      />
+                      <line
+                        x1="3"
+                        x2="21"
+                        y1="12"
+                        y2="12"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    aria-live="assertive"
+                  />
+                </span>
+              </button>
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-9l8g4f-Field"
+            />
+          </div>
+          <div
+            class="css-1904cz9-boxStyles-FieldContainer"
+          >
+            <label
+              class="css-79i25n-boxStyles"
+              for="date-range-picker-:r0:-to"
+            >
+              <span
+                class="css-1jywj6f-boxStyles"
+              >
+                End date
+              </span>
+              <span
+                class="css-axuon-boxStyles"
+              >
+                 
+                (e.g. 06/08/2015) (optional)
+              </span>
+            </label>
+            <div
+              class="css-13lwm2a-boxStyles-DateInput"
+            >
+              <input
+                aria-invalid="false"
+                aria-required="false"
+                autocomplete="off"
+                class="css-vgeom5-DateInput"
+                id="date-range-picker-:r0:-to"
+                type="text"
+                value="02/01/2000"
+              />
+              <button
+                aria-expanded="false"
+                aria-label="Change end date, 2nd January 2000 Sunday"
+                class="css-1bg0u8-BaseButton-DateInput"
+                type="button"
+              >
+                <span>
+                  <span
+                    class="css-oobk4c-Button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="css-13q7hln-DateInput"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      focusable="false"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 3C8 4.5621 8 5.4379 8 7"
+                      />
+                      <path
+                        d="M16 3C16 4.5621 16 5.4379 16 7"
+                      />
+                      <path
+                        d="M21 20V6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20Z"
+                      />
+                      <line
+                        x1="3"
+                        x2="21"
+                        y1="12"
+                        y2="12"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    aria-live="assertive"
+                  />
+                </span>
+              </button>
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-9l8g4f-Field"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-1nvymef-boxStyles-Popover"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      />
+    </fieldset>
+  </div>
+</div>
+`;

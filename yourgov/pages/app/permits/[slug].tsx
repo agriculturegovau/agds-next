@@ -115,10 +115,12 @@ const Page: NextPageWithLayout = () => {
 												value={formState.steps?.stepOwnerDetails?.email}
 											/>
 											<FormDefinitionListItem
-												label="Contact phone number"
-												value={
-													formState.steps?.stepOwnerDetails?.contactPhoneNumber
-												}
+												label="Mobile number"
+												value={formState.steps?.stepOwnerDetails?.mobileNumber}
+											/>
+											<FormDefinitionListItem
+												label="Preferred contact method"
+												value={formState.steps?.stepOwnerDetails?.contactMethod}
 											/>
 										</FormDefinitionList>
 									</Stack>
@@ -146,8 +148,10 @@ const Page: NextPageWithLayout = () => {
 														?.businessStructure
 												}
 											/>
-											{formState.steps?.stepBusinessDetails
-												?.businessStructure === 'Business' ? (
+											{['Business', 'Sole trader'].includes(
+												formState.steps?.stepBusinessDetails
+													?.businessStructure || ''
+											) ? (
 												<FormDefinitionListItem
 													label="Australian Business Number (ABN)"
 													value={formState.steps?.stepBusinessDetails?.abn}
@@ -295,20 +299,6 @@ const Page: NextPageWithLayout = () => {
 										</TableWrapper>
 									</Stack>
 
-									{/** Food safety supervisor */}
-									<Stack alignItems="flex-start" gap={2}>
-										<H3>
-											{stepKeyToStepDataMap.stepFoodSafetySupervisor.label}
-										</H3>
-										<FormDefinitionList>
-											<FormDefinitionListItem
-												label="Food safety supervisor"
-												value={
-													formState.steps?.stepFoodSafetySupervisor?.supervisor
-												}
-											/>
-										</FormDefinitionList>
-									</Stack>
 									<Divider />
 									<H2>Upload documents</H2>
 

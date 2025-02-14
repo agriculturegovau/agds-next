@@ -84,6 +84,7 @@ export {
 	ArrowRightIcon,
 	ArrowUpIcon,
 	AvatarIcon,
+	BusinessIcon,
 	CalendarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
@@ -100,6 +101,7 @@ export {
 	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
+	DrawerIcon,
 	EditIcon,
 	EmailIcon,
 	ExitIcon,
@@ -109,6 +111,7 @@ export {
 	FileIcon,
 	FileTextIcon,
 	FilterIcon,
+	GripIcon,
 	HelpIcon,
 	HomeIcon,
 	InboxIcon,
@@ -194,7 +197,12 @@ export {
 	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
 export { DatePicker } from '@ag.ds-next/react/date-picker';
+export {
+	DatePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-picker-next';
 export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+export { DateRangePickerNext } from '@ag.ds-next/react/date-range-picker-next';
 export {
 	HeroBanner,
 	HeroBannerTitleContainer,

@@ -12,6 +12,9 @@ import { Columns, Column } from '../../../packages/react/src/columns';
 import { Combobox } from '../../../packages/react/src/combobox';
 import { ControlGroup } from '../../../packages/react/src/control-group';
 import { DatePicker } from '../../../packages/react/src/date-picker';
+import { DatePickerNext } from '../../../packages/react/src/date-picker-next';
+import { DateRangePicker } from '../../../packages/react/src/date-range-picker';
+import { DateRangePickerNext } from '../../../packages/react/src/date-range-picker-next';
 import { Details } from '../../../packages/react/src/details';
 import { DirectionLink } from '../../../packages/react/src/direction-link';
 import { Divider } from '../../../packages/react/src/divider';
@@ -424,6 +427,19 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									label="Birth date"
 									onChange={() => undefined}
 									value={new Date()}
+								/>
+								<DatePickerNext
+									label="Birth date (Next)"
+									onChange={() => undefined}
+									value={new Date()}
+								/>
+								<DateRangePicker
+									onChange={() => undefined}
+									value={{ from: new Date(), to: undefined }}
+								/>
+								<DateRangePickerNext
+									onChange={() => undefined}
+									value={{ from: new Date(), to: undefined }}
 								/>
 								<Select
 									label="Example"

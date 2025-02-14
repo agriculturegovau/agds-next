@@ -1,0 +1,285 @@
+---
+title: Date picker (Next)
+description: The Date picker component allows users to select a single date via a calendar or text input.
+group: Forms
+storybookPath: /story/forms-datepickerNext-datepickerNext--basic
+unreleased: true
+figmaGalleryNodeId: 12444%3A100327
+relatedComponents: ['date-range-picker-next']
+---
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext label="Select date" value={value} onChange={setValue} />
+	);
+};
+```
+
+Date picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+
+For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
+
+<DoHeading />
+
+- always display the date format above the text input
+- prefer Australian date format 'dd/mm/yyyy'
+- allow users to navigate dates via the calendar
+- ensure users can enter dates via the calendar or text input
+- Make sure error messages are specific about what input is required.
+
+<DontHeading />
+
+- hide the date format
+- use international date formats such as USA mm/dd/yyyy
+- hijack built-in keyboard navigation behaviour.
+
+## Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don’t use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Select date"
+			hint="Hint text"
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Block
+
+Use the `block` prop to expand the component to fill the available space.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			block
+		/>
+	);
+};
+```
+
+## Invalid
+
+Use the `invalid` prop to indicate if the user input is invalid.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Select date"
+			invalid
+			message="Enter a valid date"
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+Use the `isValidDate` function to check if the user has inputted/picked an invalid date.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const isInvalid = React.useCallback((value) => {
+		return value ? !isValidDate(value) : false;
+	}, []);
+
+	const invalid = isInvalid(value);
+
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			invalid={invalid}
+			legend="Date period"
+			message={invalid ? 'Enter a valid date' : undefined}
+		/>
+	);
+};
+```
+
+## Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			disabled
+		/>
+	);
+};
+```
+
+## Minimum and maximum dates
+
+The `minDate` property can be used to disable any days in the calendar before a specific date.
+
+The `maxDate` property can be used to disable any days in the calendar after a specific date.
+
+A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const today = new Date();
+	const lastWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() - 7
+	);
+	const nextWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() + 7
+	);
+
+	const isInvalid = React.useCallback((value) => {
+		return value
+			? !isValidDate(value, { minDate: lastWeek, maxDate: nextWeek })
+			: false;
+	}, []);
+
+	const invalid = isInvalid(value);
+
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			invalid={invalid}
+			legend="Date period"
+			message={invalid ? 'Enter a valid date' : undefined}
+			minDate={lastWeek}
+			maxDate={nextWeek}
+		/>
+	);
+};
+```
+
+## Custom year range
+
+The `yearRange` prop can be used to change the range of options to display in calendar year select.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const thisYear = new Date().getFullYear();
+	const yearRange = { from: thisYear - 2, to: thisYear + 2 };
+	return (
+		<DatePickerNext
+			label="Select date"
+			yearRange={yearRange}
+			value={value}
+			onChange={setValue}
+		/>
+	);
+};
+```
+
+## Changing the date format
+
+The Date picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
+
+When a valid date is typed, on blur, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
+
+To modify the date format, you can change the `dateFormat` prop to one of these supported date formats:
+
+- `'dd/MM/yyyy'` (e.g. 18/02/2023)
+- `'dd-MM-yyyy'` (e.g. 18-02-2023)
+- `'dd MM yyyy'` (e.g. 18 02 2023)
+- `'MM/dd/yyyy'` (e.g. 02/18/2023)
+- `'MM-dd-yyyy'` (e.g. 02-18-2023)
+- `'MM dd yyyy'` (e.g. 02 18 2023)
+- `'do MMMM yyyy'` (e.g. 8th February 2023)
+- `'do MMM yyyy'` (e.g. 8th Feb 2023)
+- `'MMMM do yyyy'` (e.g. February 8th 2023)
+- `'MMM do yyyy'` (e.g. Feb 8th 2023)
+- `'d MMMM yyyy'` (e.g. 8 February 2023)
+- `'d MMM yyyy'` (e.g. 8 Feb 2023)
+- `'MMMM d yyyy'` (e.g. February 8 2023)
+- `'MMM d yyyy'` (e.g. Feb 8 2023)
+- `'dd MMMM yyyy'` (e.g. 08 February 2023)
+- `'dd MMM yyyy'` (e.g. 08 Feb 2023)
+- `'MMMM dd yyyy'` (e.g. February 08 2023)
+- `'MMM dd yyyy'` (e.g. Feb 08 2023)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			dateFormat="d MMM yyyy"
+		/>
+	);
+};
+```
+
+## Changing the allowed date formats
+
+By default, all of the supported date formats are allowed, but should you need to restrict the formats that can be parsed and validated, you can pass in an array of date format strings to the `allowedDateFormats` prop.
+
+Some applications may find it useful to remove US formats, since an invalid AU date could become a valid US date and cause confusion for users.
+
+Date formats are parsed in order from first to last and stops when a valid date is found. The preferred `dateFormat` always becomes the first to check, even if omitted in `allowedDateFormats`.
+
+The array of `allowedDateFormats` will also need to be passed to the `isValidDate` function to correctly validate the user’s input.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];
+
+	const isInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, {
+					allowedDateFormats,
+			  })
+			: false;
+	}, []);
+
+	const invalid = isInvalid(value);
+
+	return (
+		<DatePickerNext
+			label="Select date"
+			value={value}
+			onChange={setValue}
+			invalid={invalid}
+			message={invalid ? 'Enter a valid date' : undefined}
+			hint="Only short AU formats allowed"
+			allowedDateFormats={allowedDateFormats}
+		/>
+	);
+};
+```

@@ -6,6 +6,7 @@ import { FormStack } from '@ag.ds-next/react/form-stack';
 import { Radio } from '@ag.ds-next/react/radio';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { Divider } from '@ag.ds-next/react/divider';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { FormPageAlert } from '../FormPageAlert';
 import { hasMultipleErrors } from '../utils';
 import { useGlobalForm } from '../GlobalFormProvider';
@@ -22,6 +23,8 @@ export function StepBusinessDetailsForm() {
 	const { formState, stepBusinessDetailsSetState, isSavingBeforeExiting } =
 		useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
 
 	const {
 		watch,
@@ -54,7 +57,9 @@ export function StepBusinessDetailsForm() {
 
 	const showErrorAlert = hasMultipleErrors(errors);
 
-	const showAbn = watch('businessStructure') === 'Business';
+	const showAbn = ['Business', 'Sole trader'].includes(
+		watch('businessStructure')
+	);
 	const showAcn = watch('businessStructure') === 'Company';
 
 	useEffect(() => {
@@ -64,7 +69,11 @@ export function StepBusinessDetailsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Your business details must match your business registration."
-			formTitle={stepKeyToStepDataMap.stepBusinessDetails.label}
+			formTitle={
+				stepKeyToStepDataMap.stepBusinessDetails[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 		>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<FormStack>
@@ -92,52 +101,49 @@ export function StepBusinessDetailsForm() {
 
 					<ControlGroup
 						block
+						hint="When you make a selection, you will be asked for your Australian Business Number (ABN) or Australian Company Number (ACN)."
 						id="businessStructure"
 						invalid={Boolean(errors.businessStructure)}
 						label="Business structure"
 						message={errors.businessStructure?.message}
 						required
 					>
+						<Radio {...register('businessStructure')} value="Sole trader">
+							Sole trader
+						</Radio>
 						<Radio {...register('businessStructure')} value="Business">
 							Business
 						</Radio>
 						<Radio {...register('businessStructure')} value="Company">
 							Company
 						</Radio>
-						<Radio {...register('businessStructure')} value="Sole trader">
-							Sole trader
-						</Radio>
 					</ControlGroup>
 
-					{showAbn && (
+					{(showAbn || showAcn) && (
 						<>
 							<Divider />
 
-							<TextInput
-								{...register('abn')}
-								autoComplete="on"
-								id="abn"
-								invalid={Boolean(errors.abn?.message)}
-								label="Australian Business Number (ABN)"
-								message={errors.abn?.message}
-								required
-							/>
-						</>
-					)}
-
-					{showAcn && (
-						<>
-							<Divider />
-
-							<TextInput
-								{...register('acn')}
-								autoComplete="on"
-								id="acn"
-								invalid={Boolean(errors.acn?.message)}
-								label="Australian Company Number (ACN)"
-								message={errors.acn?.message}
-								required
-							/>
+							{showAbn ? (
+								<TextInput
+									{...register('abn')}
+									autoComplete="on"
+									id="abn"
+									invalid={Boolean(errors.abn?.message)}
+									label="Australian Business Number (ABN)"
+									message={errors.abn?.message}
+									required
+								/>
+							) : (
+								<TextInput
+									{...register('acn')}
+									autoComplete="on"
+									id="acn"
+									invalid={Boolean(errors.acn?.message)}
+									label="Australian Company Number (ACN)"
+									message={errors.acn?.message}
+									required
+								/>
+							)}
 						</>
 					)}
 				</FormStack>

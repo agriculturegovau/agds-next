@@ -10,7 +10,7 @@ export default function newIcon(
 				name: 'iconName',
 				message:
 					'Icon name, please use appropriate PascalCase (e.g. ArrowDownIcon)',
-				validate: (answer) => answer.length > 0,
+				validate: (answer) => answer.length > 0 && answer.endsWith('Icon'),
 			},
 		],
 		actions: (answers) => {

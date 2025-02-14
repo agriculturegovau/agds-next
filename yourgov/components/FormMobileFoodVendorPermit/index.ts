@@ -15,7 +15,6 @@ export { StepTradingTimeForm } from './steps/StepTradingTimeForm';
 export { StepFoodServedForm } from './steps/StepFoodServedForm';
 export { StepEmployeesForm } from './steps/StepEmployeesForm';
 export { StepEmployeesAddEmployeeForm } from './steps/StepEmployeesAddEmployeeForm';
-export { StepFoodSafetySupervisorForm } from './steps/StepFoodSafetySupervisorForm';
 export { StepUploadDocumentsForm } from './steps/StepUploadDocumentsForm';
 export { StepReviewAndSubmitForm } from './steps/StepReviewAndSubmitForm';
 export { ReviewAndSubmitStepsSummary } from './steps/ReviewAndSubmitStepsSummary';

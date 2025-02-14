@@ -23,7 +23,7 @@ exports[`DatePicker renders correctly 1`] = `
         </span>
       </label>
       <div
-        class="css-7swrfr-boxStyles-DateInput"
+        class="css-13lwm2a-boxStyles-DateInput"
       >
         <input
           aria-invalid="false"
@@ -35,6 +35,7 @@ exports[`DatePicker renders correctly 1`] = `
           value="01/01/2000"
         />
         <button
+          aria-expanded="false"
           aria-label="Change date, 1st January 2000 Saturday"
           class="css-1bg0u8-BaseButton-DateInput"
           type="button"
