@@ -209,11 +209,8 @@ export function StepUploadDocumentsForm() {
 	const isSuccessMessageVisible = currentDocument && !isDrawerOpen;
 
 	useEffect(() => {
-		openDrawer({
-			id: 'rms-vehicle-registration',
-			documentType: 'RMS Vehicle registration',
-		});
-	}, []);
+		openDrawer();
+	}, [openDrawer]);
 
 	return (
 		<FormContainer
