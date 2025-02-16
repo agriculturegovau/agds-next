@@ -122,7 +122,7 @@ export function StepEmployeesAddEmployeeForm() {
 	function getStepStatus(stepIndex: number): ProgressIndicatorItemStatus {
 		const step = stepsData[stepIndex];
 		// Current step is always in progress when the URL matches
-		if (step.href === pathname.replace('/change-details', '')) return 'started';
+		if (step.href === pathname.replace('/add-employee', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.steps?.[step.formStateKey]?.completed) return 'done';
 		// The final step (confirm and submit) can only be viewed when all previous steps are complete
