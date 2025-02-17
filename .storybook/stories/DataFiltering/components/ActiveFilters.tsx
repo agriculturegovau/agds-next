@@ -89,6 +89,7 @@ const getTagsFromFilters = ({
 
 function formatFilterKey(key: keyof GetDataFilters) {
 	return {
+		search: 'Search',
 		requestDate: 'Request date',
 		assignee: 'Assignee',
 		businessName: 'Business name',
