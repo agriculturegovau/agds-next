@@ -1,20 +1,22 @@
 import { FileStatus, FileWithStatus } from './utils';
 
 export function createExampleFile(args?: {
-	status?: FileStatus;
-	name?: string;
-	type?: string;
+	download?: boolean;
 	href?: string;
 	lastModified?: number;
+	name?: string;
 	size?: number;
+	status?: FileStatus;
+	type?: string;
 }): FileWithStatus {
 	const {
-		status,
-		name = 'example.txt',
-		type = 'text/plain',
+		download,
 		href,
 		lastModified = new Date().getMilliseconds(),
+		name = 'example.txt',
 		size = 100,
+		status,
+		type = 'text/plain',
 	} = args || {};
 
 	const bits = ['examplefilecontent'];
@@ -24,21 +26,24 @@ export function createExampleFile(args?: {
 
 	const file: Omit<FileWithStatus, 'prototype'> = {
 		...baseFile,
-		name,
-		type,
 		lastModified,
+		name,
 		size,
+		type,
 	};
-	file.status = status;
+	file.download = download;
 	file.href = href;
+	file.status = status;
 	return file as FileWithStatus;
 }
 
 export function createExampleImageFile(args?: {
+	download?: boolean;
+	href?: string;
 	name?: string;
 	status?: FileStatus;
 }): FileWithStatus {
-	const { name = 'example.jpg', status } = args || {};
+	const { download, href, name = 'example.jpg', status } = args || {};
 
 	// Created by passing a 72x72 jpg to onlinejpgtools.com/convert-jpg-to-base64
 	const imageBase64 =
@@ -49,6 +54,8 @@ export function createExampleImageFile(args?: {
 	const file: FileWithStatus = new File(blob, name, {
 		type: 'image/jpg',
 	});
+	file.download = download;
+	file.href = href;
 	file.status = status;
 	return file;
 }

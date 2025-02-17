@@ -274,7 +274,7 @@ export const ExistingFiles: Story = {
 			{
 				name: 'example.png',
 				size: 123456,
-				thumbnailSrc: 'https://via.placeholder.com/150',
+				thumbnailSrc: 'https://placehold.co/144',
 				href: '#',
 				// Use the meta key to keep track of any extra file info
 				// This can be useful info when deleting the file
