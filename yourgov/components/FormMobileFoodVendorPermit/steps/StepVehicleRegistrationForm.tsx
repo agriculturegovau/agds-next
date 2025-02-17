@@ -1,6 +1,9 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DatePickerNext } from '@ag.ds-next/react/date-picker-next';
+import {
+	DatePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-picker-next';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { TextInput } from '@ag.ds-next/react/text-input';
 import { DeepPartial } from '../../../lib/types';
@@ -27,6 +30,10 @@ function transformDefaultValues(
 	};
 }
 
+const isInvalid = (value: Date) => {
+	return value ? !isValidDate(value) : false;
+};
+
 export function StepVehicleRegistrationForm() {
 	const { formState, stepVehicleRegistrationSetState, isSavingBeforeExiting } =
 		useGlobalForm();
@@ -39,6 +46,7 @@ export function StepVehicleRegistrationForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm<StepVehicleRegistrationFormSchema>({
 		defaultValues: transformDefaultValues(
 			formState.steps?.stepVehicleRegistration
@@ -64,14 +72,18 @@ export function StepVehicleRegistrationForm() {
 		});
 	};
 
+	const registrationExpiry = watch('registrationExpiry');
+	const isExpiryInvalid = isInvalid(registrationExpiry);
+
 	const adjustedErrors = {
 		...errors,
 		registrationExpiry: {
 			...errors.registrationExpiry,
 			// FIXME: This should be handled in zod
-			message: errors.registrationExpiry?.message
-				? 'Registration expiry date is required'
-				: undefined,
+			message:
+				errors.registrationExpiry?.message || isExpiryInvalid
+					? 'Registration expiry date is required'
+					: undefined,
 		},
 	};
 
@@ -107,7 +119,7 @@ export function StepVehicleRegistrationForm() {
 								{...field}
 								id="registrationExpiry"
 								inputRef={ref}
-								invalid={Boolean(errors.registrationExpiry?.message)}
+								invalid={Boolean(adjustedErrors.registrationExpiry?.message)}
 								label="Registration expiry date"
 								message={adjustedErrors.registrationExpiry?.message}
 								required
