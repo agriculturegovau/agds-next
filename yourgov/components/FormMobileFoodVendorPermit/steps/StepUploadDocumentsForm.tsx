@@ -315,7 +315,7 @@ export function StepUploadDocumentsForm() {
 				>
 					<Stack as="form" id="upload-document-form">
 						<FileUpload
-							accept={['image/jpeg', 'image/png']}
+							accept={['image/jpeg', 'application/pdf', 'image/png']}
 							buttonRef={fileUploadRef}
 							hideOptionalLabel
 							invalid={fileUploadInvalid}
