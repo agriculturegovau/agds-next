@@ -5554,10 +5554,10 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/facepaint@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@types/facepaint/-/facepaint-1.2.2.tgz#1432acb1b09696216861a457a037186afeb95346"
-  integrity sha512-Xl9tAINsQL1s0TdXG5IiG75kZrxem5esbnKJF5gQgFel92OdS5zLtFYnbBw6fBruCMPYJQ9mK5pVmSsMl3Puug==
+"@types/facepaint@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@types/facepaint/-/facepaint-1.2.5.tgz#dbb8b1d04579ebcb59d73b3791770407540122dd"
+  integrity sha512-fi9kvwtC3IQ6Y3QVDkYEZsqEcetAdWD0zqqk8pEHlDXWkgS2WzolWN8Z5PGPT7YJ7ga71CCI0fVKVnVKqV+P6Q==
 
 "@types/fined@*":
   version "1.1.3"
