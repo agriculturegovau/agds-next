@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, act, screen } from '../../../../test-utils';
+import { act, render, screen } from '../../../../test-utils';
 import { Combobox, ComboboxProps } from './Combobox';
 import { STATE_OPTIONS, Option } from './test-utils';
 
@@ -55,16 +55,19 @@ describe('Combobox', () => {
 			const input = screen.getByRole('combobox');
 
 			const user = userEvent.setup();
-			await user.click(input);
-			user.type(input, 'capital');
+			await act(() => user.click(input));
+			await act(() => user.type(input, 'capital'));
 
 			const option = screen.getByRole('option', {
 				name: 'Australian Capital Territory',
 			});
 
 			// userEvent.click(option) does not fire the change event in downshift - using direct click method on the option as a workaround
-			option.click();
-			const updatedInput = await screen.findByRole('combobox');
+			let updatedInput;
+			await act(async () => {
+				option.click();
+				updatedInput = await screen.findByRole('combobox');
+			});
 
 			expect(updatedInput).toHaveValue('Australian Capital Territory');
 		});

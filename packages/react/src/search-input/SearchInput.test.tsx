@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { cleanup, render } from '../../../../test-utils';
+import { act, cleanup, render } from '../../../../test-utils';
 import { SearchInput, SearchInputProps } from './SearchInput';
 
 expect.extend(toHaveNoViolations);
@@ -84,14 +84,15 @@ describe('SearchInput', () => {
 		const onClear = jest.fn();
 		renderSearchInput({ label: 'Search', onClear });
 
+		const user = userEvent.setup();
 		const input = document.querySelector('input');
 		let clearButton = document.querySelector('[role="button"]');
 
 		expect(input).toHaveValue('');
 		expect(clearButton).not.toBeInTheDocument();
 
-		await input?.focus();
-		await userEvent.keyboard('Hello world');
+		input?.focus();
+		await act(() => user.keyboard('Hello world'));
 
 		clearButton = document.querySelector('[role="button"]');
 
@@ -99,7 +100,7 @@ describe('SearchInput', () => {
 		expect(clearButton).toBeInTheDocument();
 		expect(clearButton).toHaveAccessibleName('Clear search');
 
-		if (clearButton) await userEvent.click(clearButton);
+		if (clearButton) await act(() => user.click(clearButton));
 
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('');
@@ -109,14 +110,15 @@ describe('SearchInput', () => {
 	it('Clears input when escape is pressed', async () => {
 		const onClear = jest.fn();
 		renderSearchInput({ label: 'Search', onClear });
+		const user = userEvent.setup();
 		const input = document.querySelector('input');
 
-		await input?.focus();
-		await userEvent.keyboard('Hello world');
+		input?.focus();
+		await act(() => user.keyboard('Hello world'));
 		expect(input).toHaveValue('Hello world');
 
-		await input?.focus();
-		await userEvent.keyboard('{Escape}');
+		input?.focus();
+		await act(() => user.keyboard('{Escape}'));
 
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('');

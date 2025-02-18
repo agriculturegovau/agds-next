@@ -29,7 +29,7 @@ describe('TimePicker', () => {
 			name: 'Select a time (optional)',
 		});
 		const user = userEvent.setup();
-		await user.click(input);
+		await act(() => user.click(input));
 		expect(container).toMatchSnapshot();
 	});
 
@@ -60,14 +60,14 @@ describe('TimePicker', () => {
 		await waitFor(() => expect(input).toHaveFocus());
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
-		await userEvent.type(input, '1245');
+		await act(() => userEvent.type(input, '1245'));
 		expect(input.value).toBe('1245');
 
 		const options = container.querySelectorAll('li');
 		expect(options.length).toBe(2);
 		expect(options[0].textContent).toBe('12:45 am');
 		expect(options[1].textContent).toBe('12:45 pm');
-		await userEvent.click(options[0]);
+		await act(() => userEvent.click(options[0]));
 		expect(input.value).toBe('12:45 am');
 	});
 });

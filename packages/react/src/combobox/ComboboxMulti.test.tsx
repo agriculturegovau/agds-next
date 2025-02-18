@@ -72,7 +72,7 @@ describe('ComboboxMulti', () => {
 		if (!input) return;
 
 		// Click the input, which should focus the element
-		await act(async () => await input.click());
+		act(() => input.click());
 		await waitFor(() => expect(input).toHaveFocus());
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
@@ -88,7 +88,7 @@ describe('ComboboxMulti', () => {
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
-		await userEvent.click(options[0]);
+		await act(() => userEvent.click(options[0]));
 
 		// After selecting an item, input should have focus
 		expect(input).toHaveFocus();

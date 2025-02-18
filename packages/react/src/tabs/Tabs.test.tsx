@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, screen } from '../../../../test-utils';
+import { render, cleanup, screen, act } from '../../../../test-utils';
 import { TabButton } from './TabButton';
 import { TabList } from './TabList';
 import { TabPanel } from './TabPanel';
@@ -30,8 +30,8 @@ function renderTabs() {
 	);
 }
 
-async function getTabByText(text: string) {
-	return (await screen.getByText(text).parentNode) as HTMLButtonElement;
+function getTabByText(text: string) {
+	return screen.getByText(text).parentNode as HTMLButtonElement;
 }
 
 describe('Tabs', () => {
@@ -92,8 +92,8 @@ describe('Tabs', () => {
 	it('renders the correct ARIA tags', async () => {
 		renderTabs();
 
-		const firstTab = await getTabByText('Tab 1');
-		const firstPanel = await screen.getByText('Tab panel 1');
+		const firstTab = getTabByText('Tab 1');
+		const firstPanel = screen.getByText('Tab panel 1');
 
 		expect(firstTab).toBeInTheDocument();
 		expect(firstTab).toHaveAttribute('role', 'tab');
@@ -106,8 +106,8 @@ describe('Tabs', () => {
 		expect(firstPanel).toHaveAttribute('tabIndex', '0');
 		expect(firstPanel).toHaveAttribute('aria-labelledby', firstTab.id);
 
-		const secondTab = await getTabByText('Tab 2');
-		const secondPanel = await screen.getByText('Tab panel 2');
+		const secondTab = getTabByText('Tab 2');
+		const secondPanel = screen.getByText('Tab panel 2');
 
 		expect(secondTab).toBeInTheDocument();
 		expect(secondTab).toHaveAttribute('role', 'tab');
@@ -120,8 +120,8 @@ describe('Tabs', () => {
 		expect(secondPanel).toHaveAttribute('tabIndex', '-1');
 		expect(secondPanel).toHaveAttribute('aria-labelledby', secondTab.id);
 
-		const thirdTab = await getTabByText('Tab 3');
-		const thirdPanel = await screen.getByText('Tab panel 3');
+		const thirdTab = getTabByText('Tab 3');
+		const thirdPanel = screen.getByText('Tab panel 3');
 
 		expect(thirdTab).toBeInTheDocument();
 		expect(thirdTab).toHaveAttribute('role', 'tab');
@@ -137,51 +137,52 @@ describe('Tabs', () => {
 
 	it('responds to arrow keys keyboard events', async () => {
 		renderTabs();
+		const user = userEvent.setup();
 
-		const tab1 = await getTabByText('Tab 1');
-		const tab2 = await getTabByText('Tab 2');
-		const tab3 = await getTabByText('Tab 3');
+		const tab1 = getTabByText('Tab 1');
+		const tab2 = getTabByText('Tab 2');
+		const tab3 = getTabByText('Tab 3');
 
 		// Focus the first tab to activate keyboard navigation
-		await tab1.focus();
+		tab1.focus();
 		expect(tab1).toHaveAttribute('aria-selected', 'true');
 		expect(tab1).toHaveFocus();
 		expect(tab2).toHaveAttribute('aria-selected', 'false');
 		expect(tab3).toHaveAttribute('aria-selected', 'false');
 
 		// After pressing the "Right" arrow key, the second tab should be selected
-		await userEvent.keyboard('[ArrowRight]');
+		await act(() => user.keyboard('[ArrowRight]'));
 		expect(tab1).toHaveAttribute('aria-selected', 'false');
 		expect(tab2).toHaveAttribute('aria-selected', 'true');
 		expect(tab2).toHaveFocus();
 		expect(tab3).toHaveAttribute('aria-selected', 'false');
 
 		// After pressing the "Left" arrow key, the first tab should be selected
-		await userEvent.keyboard('[ArrowLeft]');
+		await act(() => user.keyboard('[ArrowLeft]'));
 		expect(tab1).toHaveAttribute('aria-selected', 'true');
 		expect(tab1).toHaveFocus();
 		expect(tab2).toHaveAttribute('aria-selected', 'false');
 		expect(tab3).toHaveAttribute('aria-selected', 'false');
 
 		// After pressing the "Right" arrow key twice, the third tab should be selected
-		await userEvent.keyboard('[ArrowRight]');
+		await act(() => user.keyboard('[ArrowRight]'));
 		expect(tab2).toHaveFocus();
 
-		await userEvent.keyboard('[ArrowRight]');
+		await act(() => user.keyboard('[ArrowRight]'));
 		expect(tab1).toHaveAttribute('aria-selected', 'false');
 		expect(tab2).toHaveAttribute('aria-selected', 'false');
 		expect(tab3).toHaveAttribute('aria-selected', 'true');
 		expect(tab3).toHaveFocus();
 
 		// When you are on the last tab and press the "Right" arrow key, the first tab should be selected
-		await userEvent.keyboard('[ArrowRight]');
+		await act(() => user.keyboard('[ArrowRight]'));
 		expect(tab1).toHaveAttribute('aria-selected', 'true');
 		expect(tab1).toHaveFocus();
 		expect(tab2).toHaveAttribute('aria-selected', 'false');
 		expect(tab3).toHaveAttribute('aria-selected', 'false');
 
 		// When you are on the first tab and press the "Left" arrow key, the last tab should be selected
-		await userEvent.keyboard('[ArrowLeft]');
+		await act(() => user.keyboard('[ArrowLeft]'));
 		expect(tab1).toHaveAttribute('aria-selected', 'false');
 		expect(tab2).toHaveAttribute('aria-selected', 'false');
 		expect(tab3).toHaveAttribute('aria-selected', 'true');
@@ -190,21 +191,23 @@ describe('Tabs', () => {
 
 	it('responds to home/end keys keyboard events', async () => {
 		renderTabs();
-		const firstTab = await getTabByText('Tab 1');
-		const lastTab = await getTabByText('Tab 3');
+		const user = userEvent.setup();
+
+		const firstTab = getTabByText('Tab 1');
+		const lastTab = getTabByText('Tab 3');
 
 		// Focus the first tab to activate keyboard navigation
-		await firstTab.focus();
+		firstTab.focus();
 		expect(firstTab).toHaveAttribute('aria-selected', 'true');
 
 		// Pressing the "End" key should select the last tab
-		await userEvent.keyboard('[END]');
+		await act(() => user.keyboard('[END]'));
 		expect(lastTab).toHaveAttribute('aria-selected', 'true');
 		expect(lastTab).toHaveFocus();
 		expect(firstTab).toHaveAttribute('aria-selected', 'false');
 
 		// Pressing the "Home" key should select the first tab
-		await userEvent.keyboard('[HOME]');
+		await act(() => user.keyboard('[HOME]'));
 		expect(firstTab).toHaveAttribute('aria-selected', 'true');
 		expect(firstTab).toHaveFocus();
 		expect(lastTab).toHaveAttribute('aria-selected', 'false');
