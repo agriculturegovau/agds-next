@@ -25,4 +25,3 @@ tabs: Fix all `act`/state warnings in tests.
 time-input: Fix all `act`/state warnings in tests.
 
 time-picker: Fix all `act`/state warnings in tests.
-

@@ -94,13 +94,14 @@ describe('SearchInput', () => {
 		input?.focus();
 		await act(() => user.keyboard('Hello world'));
 
+		expect(input).toHaveValue('Hello world');
+
 		clearButton = document.querySelector('[role="button"]');
 
-		expect(input).toHaveValue('Hello world');
 		expect(clearButton).toBeInTheDocument();
 		expect(clearButton).toHaveAccessibleName('Clear search');
 
-		if (clearButton) await act(() => user.click(clearButton));
+		await act(() => user.click(clearButton as Element));
 
 		expect(input).toHaveFocus();
 		expect(input).toHaveValue('');
