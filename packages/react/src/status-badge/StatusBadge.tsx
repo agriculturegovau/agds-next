@@ -93,12 +93,13 @@ export const StatusBadge = ({
 			borderColor={borderColor}
 			css={{
 				borderRadius,
-				// This used to be inline-flex, but it was creating addtional vertical space under the SVG so we changed it to flex & fit-content
-				width: 'fit-content',
+				// Ensures the status badge doesn't create descender whitespace
+				verticalAlign: 'bottom',
 				'& svg': {
 					flexShrink: 0,
 				},
 			}}
+			display="inline-flex"
 			gap={0.5}
 			{...appearanceStyleProps}
 		>
