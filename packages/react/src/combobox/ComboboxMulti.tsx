@@ -150,7 +150,7 @@ export function ComboboxMulti<Option extends DefaultComboboxOption>({
 		itemToString: (item) => item?.label ?? '',
 		defaultHighlightedIndex: 0, // after selection, highlight the first item.
 		selectedItem: null,
-		stateReducer(state, actionAndChanges) {
+		stateReducer(_state, actionAndChanges) {
 			const { changes, type } = actionAndChanges;
 			switch (type) {
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
