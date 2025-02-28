@@ -1153,6 +1153,48 @@ exports[`Icon MinusIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon MoveLeftIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m9 7-5 5m0 0 5 5m-5-5h11m5-7v14"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon MoveRightIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m15 17 5-5m0 0-5-5m5 5H9M4 5v14"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon PauseIcon renders correctly 1`] = `
 <div>
   <svg

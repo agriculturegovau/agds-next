@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from 'react';
 import { Drawer } from '@ag.ds-next/react/drawer';
 import { TextLink, TextLinkExternal } from '@ag.ds-next/react/text-link';
-import { DrawerIcon } from '@ag.ds-next/react/icon';
+import { MoveRightIcon } from '@ag.ds-next/react/icon';
 import { mapSpacing } from '@ag.ds-next/react/core';
 
 type HelpReferenceProps = {
@@ -27,7 +27,7 @@ export function HelpReference({
 				}}
 			>
 				{linkContent}
-				<DrawerIcon
+				<MoveRightIcon
 					css={{
 						position: 'relative',
 						top: 3,

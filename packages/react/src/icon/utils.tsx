@@ -48,6 +48,8 @@ import { LinkedInIcon } from './icons/LinkedInIcon';
 import { LockIcon } from './icons/LockIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
+import { MoveLeftIcon } from './icons/MoveLeftIcon';
+import { MoveRightIcon } from './icons/MoveRightIcon';
 import { PauseIcon } from './icons/PauseIcon';
 import { PermitIcon } from './icons/PermitIcon';
 import { PieChartIcon } from './icons/PieChartIcon';
@@ -129,6 +131,8 @@ export const allIcons = {
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
+	MoveLeftIcon,
+	MoveRightIcon,
 	PauseIcon,
 	PermitIcon,
 	PieChartIcon,

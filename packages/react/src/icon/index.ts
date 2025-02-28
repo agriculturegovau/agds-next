@@ -55,6 +55,8 @@ export { LinkedInIcon } from './icons/LinkedInIcon';
 export { LockIcon } from './icons/LockIcon';
 export { MenuIcon } from './icons/MenuIcon';
 export { MinusIcon } from './icons/MinusIcon';
+export { MoveLeftIcon } from './icons/MoveLeftIcon';
+export { MoveRightIcon } from './icons/MoveRightIcon';
 export { PauseIcon } from './icons/PauseIcon';
 export { PermitIcon } from './icons/PermitIcon';
 export { PieChartIcon } from './icons/PieChartIcon';

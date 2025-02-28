@@ -124,6 +124,8 @@ export {
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
+	MoveLeftIcon,
+	MoveRightIcon,
 	PauseIcon,
 	PermitIcon,
 	PlayIcon,
