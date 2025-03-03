@@ -12,7 +12,12 @@ export function parseDateField(value: Date | string | undefined) {
 }
 
 export function hasMultipleErrors(errors: FieldValues = {}) {
-	return Object.keys(errors).length > 1;
+	return (
+		Object.values(errors).filter(
+			(value) =>
+				!(value && typeof value === 'object' && Object.keys(value).length === 0)
+		).length > 1
+	);
 }
 
 export const applyForFoodPermitPage =

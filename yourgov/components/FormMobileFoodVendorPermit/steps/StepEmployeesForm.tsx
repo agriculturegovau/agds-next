@@ -68,8 +68,7 @@ export function StepEmployeesForm() {
 	const removedPageAlertRef = useRef<HTMLDivElement>(null);
 
 	const addedEmployee = query.success
-		? stepState?.employee &&
-		  stepState.employee.find((employee) => employee?.id === query.success)
+		? stepState?.employee?.find((employee) => employee?.id === query.success)
 		: undefined;
 	const [showAddedEmployeeMessage, setShowAddedEmployeeMessage] = useState(
 		!!addedEmployee
@@ -90,11 +89,9 @@ export function StepEmployeesForm() {
 			...stepState,
 			completed: false,
 			edited: editingStep?.match ? true : undefined,
-			employee:
-				stepState?.employee &&
-				stepState.employee.filter(
-					(employee) => employee?.id !== employeeToRemove?.id
-				),
+			employee: stepState?.employee?.filter(
+				(employee) => employee?.id !== employeeToRemove?.id
+			),
 		});
 
 		setRemovedEmployee(
