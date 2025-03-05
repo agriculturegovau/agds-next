@@ -13,10 +13,11 @@ export function parseDateField(value: Date | string | undefined) {
 
 export function hasMultipleErrors(errors: FieldValues = {}) {
 	return (
-		Object.values(errors).filter(
-			(value) =>
-				!(value && typeof value === 'object' && Object.keys(value).length === 0)
-		).length > 1
+		Object.values(errors)
+			.filter(Boolean)
+			.filter(
+				(value) => typeof value === 'object' && Object.keys(value).length > 0
+			).length > 1
 	);
 }
 
