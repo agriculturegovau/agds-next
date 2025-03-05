@@ -20,7 +20,7 @@ export const FileUploadFile = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadFileProps) => {
-	const { name, size, status = 'none', href } = file;
+	const { download, href, name, size, status = 'none' } = file;
 	const showThumbnail = !hideThumbnails;
 	const imagePreview = useMemo(() => getImageThumbnail(file), [file]);
 	return (
@@ -47,7 +47,12 @@ export const FileUploadFile = ({
 					)}
 					{href ? (
 						<Text breakWords paddingY={1.5}>
-							<TextLink href={href} rel="noopener noreferrer" target="_blank">
+							<TextLink
+								download={download}
+								href={href}
+								rel="noopener noreferrer"
+								target="_blank"
+							>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>

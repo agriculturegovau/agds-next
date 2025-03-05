@@ -36,7 +36,7 @@ export const WithThumbnail: Story = {
 	args: {
 		file: {
 			name: 'example.jpg',
-			thumbnailSrc: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://placehold.co/144',
 			size: 123456,
 		},
 	},
@@ -48,7 +48,7 @@ export const WithHref: Story = {
 		file: {
 			name: 'example.jpg',
 			href: '#',
-			thumbnailSrc: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://placehold.co/144',
 			size: 123456,
 		},
 	},
