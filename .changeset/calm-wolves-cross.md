@@ -6,4 +6,4 @@
 
 icon: Created `MoveLeftIcon` and `MoveRightIcon`.
 
-yourgov: Use `MoveRightIcon` in `HelpReference`.
+yourgov: Use `MoveLeftIcon` in `HelpReference`.
