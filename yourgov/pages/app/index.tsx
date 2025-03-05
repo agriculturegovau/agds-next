@@ -110,8 +110,6 @@ const Page: NextPageWithLayout = () => {
 											<H3>
 												<CardLink
 													href={businessHref}
-													// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-													// @ts-ignore
 													onClick={() => setSelectedBusiness(linkedBusinesses)}
 												>
 													{linkedBusinesses.name}

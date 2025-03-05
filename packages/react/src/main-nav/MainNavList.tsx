@@ -12,7 +12,9 @@ type MainNavListLink = Omit<LinkProps, 'children'>;
 
 type MainNavListButton = Omit<BaseButtonProps, 'children'>;
 
-export type MainNavListItemType = (MainNavListLink | MainNavListButton) & {
+export type MainNavListItemType<
+	T extends HTMLElement = HTMLAnchorElement | HTMLButtonElement,
+> = (T extends HTMLAnchorElement ? MainNavListLink : MainNavListButton) & {
 	label: ReactNode;
 	beforeElement?: ReactNode;
 	endElement?: ReactNode;
@@ -71,7 +73,7 @@ export function MainNavList({
 
 					return (
 						<MainNavListItem active={false} key={index} type={type}>
-							<BaseButton {...item}>
+							<BaseButton {...(item as MainNavListButton)}>
 								{beforeElement}
 								<span>{label}</span>
 								{endElement}

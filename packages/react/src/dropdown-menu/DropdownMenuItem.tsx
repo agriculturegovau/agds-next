@@ -1,11 +1,18 @@
 import {
-	ComponentType,
-	PropsWithChildren,
-	ReactNode,
+	type ComponentType,
+	type MouseEvent,
+	type PropsWithChildren,
+	type ReactNode,
 	useEffect,
 	useRef,
 } from 'react';
-import { boxPalette, forwardRefWithAs, mergeRefs, packs } from '../core';
+import {
+	boxPalette,
+	forwardRefWithAs,
+	mergeRefs,
+	packs,
+	type NativeLinkProps,
+} from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { Text } from '../text';
@@ -16,7 +23,7 @@ export type DropdownMenuItemProps = PropsWithChildren<{
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** Function to be fired following a click event of the item. */
-	onClick?: () => void;
+	onClick?: NativeLinkProps['onClick'];
 	/** Used to add an icon to the start of the item. */
 	icon?: ComponentType<IconProps>;
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
@@ -49,8 +56,8 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 			ref.current?.scrollIntoView({ block: 'nearest' });
 		}, [isActiveDescendant]);
 
-		function onClick() {
-			onClickProp?.();
+		function onClick(event: MouseEvent<HTMLAnchorElement>) {
+			onClickProp?.(event);
 			closeMenu();
 		}
 

@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { BaseButton } from '../button';
+import { BaseButton, BaseButtonProps } from '../button';
 import { boxPalette, packs, type ResponsiveProp } from '../core';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
 
@@ -10,7 +10,11 @@ export type TableSortDirection = 'ASC' | 'DESC';
 export type TableHeaderSortableProps = {
 	display?: ResponsiveProp<'none' | 'table-cell'>;
 	/** Callback function for when the column header is clicked. */
-	onClick?: () => void;
+	onClick?: BaseButtonProps['onClick'];
+	onMouseEnter?: BaseButtonProps['onMouseEnter'];
+	onMouseLeave?: BaseButtonProps['onMouseLeave'];
+	onMouseOut?: BaseButtonProps['onMouseOut'];
+	onMouseOver?: BaseButtonProps['onMouseOver'];
 	/** The active direction this column is being sorted by. */
 	sort?: TableSortDirection;
 	/** Sets the horizontal alignment of the content. */
@@ -25,6 +29,10 @@ export const TableHeaderSortable = ({
 	children,
 	display,
 	onClick,
+	onMouseEnter,
+	onMouseLeave,
+	onMouseOut,
+	onMouseOver,
 	sort,
 	textAlign = 'left',
 	width,
@@ -64,6 +72,10 @@ export const TableHeaderSortable = ({
 				gap={0.5}
 				justifyContent="space-between"
 				onClick={onClick}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				onMouseOut={onMouseOut}
+				onMouseOver={onMouseOver}
 				padding={0.75}
 				width="100%"
 			>

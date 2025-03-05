@@ -18,7 +18,9 @@ type NavLink = Omit<LinkProps, 'children'>;
 
 type NavButton = Omit<BaseButtonProps, 'children'>;
 
-export type NavItem = (NavLink | NavButton) & {
+export type NavItem<
+	T extends HTMLElement = HTMLAnchorElement | HTMLButtonElement,
+> = (T extends HTMLAnchorElement ? NavLink : NavButton) & {
 	label: ReactNode;
 	endElement?: ReactNode;
 	icon?: ComponentType<IconProps>;
@@ -165,7 +167,7 @@ function AppLayoutSidebarNavListItem({
 			>
 				<Link
 					aria-current={isCurrentPage ? 'page' : undefined}
-					{...restItemProps}
+					{...(restItemProps as NavLink)}
 				>
 					{Icon && level === 1 && <Icon color="inherit" />}
 
@@ -225,7 +227,7 @@ function AppLayoutSidebarNavListItem({
 				isOpen={false}
 				onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 			>
-				<BaseButton {...restItemProps}>
+				<BaseButton {...(restItemProps as NavButton)}>
 					{Icon ? <Icon color="inherit" /> : null}
 					<span>{label}</span>
 					{endElement}

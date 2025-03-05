@@ -27,14 +27,22 @@ export type BaseButtonProps = PropsWithChildren<{
 	id?: string;
 	/** The id of the form to attach the button to. Use in conjunction with type="submit". */
 	form?: NativeButtonProps['form'];
-	/** Function to be fired following a keydown event of the button. */
-	onKeyDown?: NativeButtonProps['onKeyDown'];
 	/** Function to be fired following a blur event of the button. */
 	onBlur?: NativeButtonProps['onBlur'];
 	/** Function to be fired following a click event of the button. */
 	onClick?: NativeButtonProps['onClick'];
 	/** Function to be fired following a focus event of the button. */
 	onFocus?: NativeButtonProps['onFocus'];
+	/** Function to be fired following a keydown event of the button. */
+	onKeyDown?: NativeButtonProps['onKeyDown'];
+	/** Function to be fired following a mouseenter event of the button. */
+	onMouseEnter?: NativeButtonProps['onMouseEnter'];
+	/** Function to be fired following a mouseleave event of the button. */
+	onMouseLeave?: NativeButtonProps['onMouseLeave'];
+	/** Function to be fired following a mouseout event of the button. */
+	onMouseOut?: NativeButtonProps['onMouseOut'];
+	/** Function to be fired following a mouseover event of the button. */
+	onMouseOver?: NativeButtonProps['onMouseOver'];
 	/** WAI-ARIA role. */
 	role?: NativeButtonProps['role'];
 	/** The `tabIndex` attribute of the button. */
