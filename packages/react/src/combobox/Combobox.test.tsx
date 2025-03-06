@@ -63,11 +63,10 @@ describe('Combobox', () => {
 			});
 
 			// userEvent.click(option) does not fire the change event in downshift - using direct click method on the option as a workaround
-			let updatedInput;
-			await act(async () => {
+			act(() => {
 				option.click();
-				updatedInput = await screen.findByRole('combobox');
 			});
+			const updatedInput = await screen.findByRole('combobox');
 
 			expect(updatedInput).toHaveValue('Australian Capital Territory');
 		});
