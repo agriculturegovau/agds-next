@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { cleanup, render } from '../../../../test-utils';
+import { act, cleanup, render } from '../../../../test-utils';
 import { PasswordInput, PasswordInputProps } from './PasswordInput';
 
 expect.extend(toHaveNoViolations);
@@ -34,25 +34,23 @@ describe('PasswordInput', () => {
 			label: 'Password',
 		});
 
-		const inputElement = await container.querySelector('input');
+		const inputElement = container.querySelector('input');
 		expect(inputElement).toBeInTheDocument();
 		expect(inputElement).toHaveAttribute('type', 'password');
 
 		if (!inputElement) return;
 
-		const checkboxElement = await container.querySelector(
-			'input[type="checkbox"]'
-		);
+		const checkboxElement = container.querySelector('input[type="checkbox"]');
 		expect(checkboxElement).toBeInTheDocument();
 		expect(checkboxElement).toHaveAttribute('aria-controls', inputElement.id);
 		if (!checkboxElement) return;
 
 		// Clicking the Checkbox once should change the input type to "text"
-		await userEvent.click(checkboxElement);
+		await act(() => userEvent.click(checkboxElement));
 		expect(inputElement).toHaveAttribute('type', 'text');
 
 		// Clicking the Checkbox again should change the input type back to "password"
-		await userEvent.click(checkboxElement);
+		await act(() => userEvent.click(checkboxElement));
 		expect(inputElement).toHaveAttribute('type', 'password');
 	});
 });

@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 import { Text } from '../text';
-import { cleanup, render, screen } from '../../../../test-utils';
+import { act, cleanup, render, screen } from '../../../../test-utils';
 import { Accordion } from './Accordion';
 import { AccordionItem, AccordionItemContent } from './AccordionItem';
 
@@ -60,7 +60,7 @@ describe('Accordion', () => {
 		expect(titleEl.tagName).toBe('BUTTON');
 		expect(titleEl).toHaveAccessibleName('Accordion 1');
 		expect(titleEl).toHaveAttribute('aria-expanded', 'false');
-		await userEvent.click(titleEl);
+		await act(() => userEvent.click(titleEl));
 		expect(titleEl).toHaveAttribute('aria-expanded', 'true');
 	});
 });

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import 'html-validate/jest';
 import { useState } from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { cleanup, render, screen } from '../../../../test-utils';
+import { act, cleanup, render, screen } from '../../../../test-utils';
 import { TimeInput, type TimeInputProps, type TimeValue } from './TimeInput';
 
 expect.extend(toHaveNoViolations);
@@ -92,8 +92,8 @@ describe('TimeInput', () => {
 		});
 		const input = getInput();
 
-		await user.type(input, '930');
-		await user.keyboard('{Tab}');
+		await act(() => user.type(input, '930'));
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onChange).toHaveBeenCalledWith({
 			formatted: '9:30 am',
@@ -107,8 +107,8 @@ describe('TimeInput', () => {
 		renderTimeInput();
 		const input = getInput();
 
-		await user.type(input, '09:30');
-		await user.keyboard('{Tab}');
+		await act(() => user.type(input, '09:30'));
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(input).toHaveValue('9:30 am');
 	});
@@ -121,8 +121,8 @@ describe('TimeInput', () => {
 		});
 		const input = getInput();
 
-		await user.type(input, '9:30 pm');
-		await user.keyboard('{Tab}');
+		await act(() => user.type(input, '9:30 pm'));
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(input).toHaveValue('21:30');
 	});
