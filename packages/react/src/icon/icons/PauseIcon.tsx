@@ -1,10 +1,6 @@
-import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const PauseIcon = createIcon(
-	<Fragment>
-		<rect height="16" width="4" x="6" y="4"></rect>
-		<rect height="16" width="4" x="14" y="4"></rect>
-	</Fragment>,
+	<path d="M6 4h4v16H6zM14 4h4v16h-4z" />,
 	'PauseIcon'
 );

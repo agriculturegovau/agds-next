@@ -31,8 +31,8 @@ exports[`Accordion renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polyline
-              points="6 9 12 15 18 9"
+            <path
+              d="m6 9 6 6 6-6"
             />
           </svg>
         </button>
@@ -83,8 +83,8 @@ exports[`Accordion renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polyline
-              points="6 9 12 15 18 9"
+            <path
+              d="m6 9 6 6 6-6"
             />
           </svg>
         </button>

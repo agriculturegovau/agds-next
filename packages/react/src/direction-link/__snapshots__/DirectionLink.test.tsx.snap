@@ -20,10 +20,7 @@ exports[`DirectionButton direction: down renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 3L12 20"
-      />
-      <path
-        d="M17 16L12 21L7 16"
+        d="M12 3v17M17 16l-5 5-5-5"
       />
     </svg>
   </button>
@@ -49,10 +46,7 @@ exports[`DirectionButton direction: left renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M21 12L4 12"
-      />
-      <path
-        d="M8 17L3 12L8 7"
+        d="M21 12H4M8 17l-5-5 5-5"
       />
     </svg>
     Back
@@ -80,10 +74,7 @@ exports[`DirectionButton direction: right renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M3 12L20 12"
-      />
-      <path
-        d="M16 7L21 12L16 17"
+        d="M3 12h17M16 7l5 5-5 5"
       />
     </svg>
   </button>
@@ -110,10 +101,7 @@ exports[`DirectionButton direction: up renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 21V4"
-      />
-      <path
-        d="M7 8L12 3L17 8"
+        d="M12 21V4M7 8l5-5 5 5"
       />
     </svg>
   </button>
@@ -139,10 +127,7 @@ exports[`DirectionLink direction: down renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 3L12 20"
-      />
-      <path
-        d="M17 16L12 21L7 16"
+        d="M12 3v17M17 16l-5 5-5-5"
       />
     </svg>
   </a>
@@ -167,10 +152,7 @@ exports[`DirectionLink direction: left renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M21 12L4 12"
-      />
-      <path
-        d="M8 17L3 12L8 7"
+        d="M21 12H4M8 17l-5-5 5-5"
       />
     </svg>
     Back
@@ -197,10 +179,7 @@ exports[`DirectionLink direction: right renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M3 12L20 12"
-      />
-      <path
-        d="M16 7L21 12L16 17"
+        d="M3 12h17M16 7l5 5-5 5"
       />
     </svg>
   </a>
@@ -226,10 +205,7 @@ exports[`DirectionLink direction: up renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12 21V4"
-      />
-      <path
-        d="M7 8L12 3L17 8"
+        d="M12 21V4M7 8l5-5 5 5"
       />
     </svg>
   </a>
