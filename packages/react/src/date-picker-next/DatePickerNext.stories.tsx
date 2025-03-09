@@ -13,23 +13,15 @@ function ControlledDatePickerNext(props: DatePickerNextProps) {
 	const [value, setValue] = useState<DateOrStringOrUndefined>();
 
 	const isInvalid = useCallback(
-		(value: DateOrStringOrUndefined) => {
-			return value
-				? !isValidDate(
-						value,
-						props.maxDate && props.minDate
-							? {
-									minDate: sub(props.minDate, { days: 1 }),
-									maxDate: props.maxDate,
-							  }
-							: undefined
-				  )
-				: false;
-		},
+		(value: DateOrStringOrUndefined) =>
+			!isValidDate(value, {
+				minDate: props.minDate ? sub(props.minDate, { days: 1 }) : undefined,
+				maxDate: props.maxDate,
+			}),
 		[props.maxDate, props.minDate]
 	);
 
-	const invalid = props.invalid || isInvalid(value);
+	const invalid = props.invalid || value ? isInvalid(value) : false;
 
 	return (
 		<DatePickerNext

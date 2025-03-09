@@ -18,31 +18,29 @@ function ControlledDateRangePickerNext(props: DateRangePickerNextProps) {
 	});
 
 	const isFromInvalid = useCallback(
-		(value: DateRange['from'], otherDate: DateRange['to']) => {
-			return value
-				? !isValidDate(value, {
-						toDate: otherDate,
-						...(props.minDate && { minDate: sub(props.minDate, { days: 1 }) }),
-				  })
-				: false;
-		},
+		(value: DateRange['from'], otherDate: DateRange['to']) =>
+			!isValidDate(value, {
+				toDate: otherDate,
+				minDate: props.minDate ? sub(props.minDate, { days: 1 }) : undefined,
+			}),
 		[props.minDate]
 	);
 
 	const isToInvalid = useCallback(
-		(value: DateRange['to'], otherDate: DateRange['from']) => {
-			return value
-				? !isValidDate(value, {
-						fromDate: otherDate,
-						...(props.maxDate && { maxDate: props.maxDate }),
-				  })
-				: false;
-		},
+		(value: DateRange['to'], otherDate: DateRange['from']) =>
+			!isValidDate(value, {
+				fromDate: otherDate,
+				maxDate: props.maxDate,
+			}),
 		[props.maxDate]
 	);
 
-	const fromInvalid = props.fromInvalid || isFromInvalid(range.from, range.to);
-	const toInvalid = props.toInvalid || isToInvalid(range.to, range.from);
+	const fromInvalid =
+		props.fromInvalid || range.from
+			? isFromInvalid(range.from, range.to)
+			: false;
+	const toInvalid =
+		props.toInvalid || range.to ? isToInvalid(range.to, range.from) : false;
 
 	return (
 		<DateRangePickerNext
