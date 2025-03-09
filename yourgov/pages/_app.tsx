@@ -47,7 +47,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 									safeSessionStorage?.setItem('isGlobalAlertVisible', 'false');
 									setIsAlertVisible(false);
 								}}
-								title="We are planning a maintenance outage to upgrade the service on 10 March 2025 from 12pm to 5pm AEDT"
+								title="We are planning a maintenance outage to upgrade the service on 17 March 2025 from 12pm to 5pm AEDT"
 								tone="info"
 							>
 								<Text as="p">
