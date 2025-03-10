@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { mapSpacing, boxPalette, print } from '../core';
+import { print, boxPalette, mapSpacing } from '../core';
 import { Text } from '../text';
 import { BadgeTone, badgeToneMap } from './utils';
 

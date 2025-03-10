@@ -192,15 +192,15 @@ exports[`TimePicker renders correctly when loading 1`] = `
             >
               <span
                 aria-hidden="true"
-                class="css-d3esv4-boxStyles-LoadingDots"
+                class="css-1dw337p-boxStyles-LoadingDots"
               />
               <span
                 aria-hidden="true"
-                class="css-1itw7uj-boxStyles-LoadingDots"
+                class="css-x6ql7b-boxStyles-LoadingDots"
               />
               <span
                 aria-hidden="true"
-                class="css-rfoku0-boxStyles-LoadingDots"
+                class="css-ahgwae-boxStyles-LoadingDots"
               />
             </span>
             <span

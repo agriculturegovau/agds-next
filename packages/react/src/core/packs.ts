@@ -61,7 +61,7 @@ export const print = {
 	// for context that requires background on print (eg. white text on dark background)
 	exactColor: {
 		'@media print': {
-			'-webkitPrintColorAdjust': 'exact',
+			'-webkit-print-color-adjust': 'exact',
 			printColorAdjust: 'exact',
 		},
 	},

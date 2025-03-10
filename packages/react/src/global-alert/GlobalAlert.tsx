@@ -2,7 +2,7 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { boxPalette, tokens, print } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
 import { getOptionalCloseHandler } from '../getCloseHandler';

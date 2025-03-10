@@ -1,12 +1,12 @@
 import { BoxProps, focusStylesMap } from '../box';
 import {
-	packs,
 	boxPalette,
-	tokens,
+	mapResponsiveProp,
 	mapSpacing,
 	mq,
-	mapResponsiveProp,
+	packs,
 	print,
+	tokens,
 } from '../core';
 
 const variants = {
