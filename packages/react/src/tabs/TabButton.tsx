@@ -1,7 +1,14 @@
 import { KeyboardEvent, PropsWithChildren, ReactNode } from 'react';
 import { BaseButton } from '../button';
 import { Box } from '../box';
-import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
+import {
+	boxPalette,
+	fontGrid,
+	mapSpacing,
+	packs,
+	print,
+	tokens,
+} from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
 import { useTabIds, useTabsOrientation } from './utils';
@@ -166,6 +173,8 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 						},
 					}),
 				},
+
+				...print.exactColor,
 			}}
 			focusRingFor="keyboard"
 			id={tabButtonId}

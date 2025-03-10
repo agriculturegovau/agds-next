@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { keyframes } from '@emotion/react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { mapSpacing } from '../core';
+import { mapSpacing, print } from '../core';
 import { VisuallyHidden } from '../a11y';
 
 const loadingDotsSizes = {
@@ -61,6 +61,7 @@ export const LoadingDots = ({
 						animationDuration: '1250ms',
 						animationIterationCount: 'infinite',
 						animationDelay: `${idx * 100}ms`,
+						...print.exactColor,
 					}}
 					height={dotSize}
 					highContrastOutline

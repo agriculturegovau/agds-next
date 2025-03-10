@@ -58,6 +58,13 @@ export const print = {
 			height: 'auto !important',
 		},
 	},
+	// for context that requires background on print (eg. white text on dark background)
+	exactColor: {
+		'@media print': {
+			'-webkitPrintColorAdjust': 'exact',
+			printColorAdjust: 'exact',
+		},
+	},
 };
 
 export const packs = {

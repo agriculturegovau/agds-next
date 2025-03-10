@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { mapSpacing, boxPalette } from '../core';
+import { mapSpacing, boxPalette, print } from '../core';
 import { Text } from '../text';
 import { BadgeTone, badgeToneMap } from './utils';
 
@@ -30,6 +30,7 @@ export const NotificationBadge = ({
 				backgroundColor,
 				minWidth: mapSpacing(1.5),
 				borderRadius: mapSpacing(0.75),
+				...print.exactColor,
 			}}
 			display="inline-flex"
 			fontSize="sm"

@@ -6,6 +6,7 @@ import {
 	mapSpacing,
 	mq,
 	mapResponsiveProp,
+	print,
 } from '../core';
 
 const variants = {
@@ -21,6 +22,8 @@ const variants = {
 			color: boxPalette.backgroundBody,
 			...packs.underline,
 		},
+
+		...print.exactColor,
 	},
 	secondary: {
 		background: boxPalette.backgroundBody,

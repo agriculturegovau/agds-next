@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { CheckIcon } from '../icon';
@@ -38,6 +38,7 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 				borderRadius: height,
 				position: 'absolute',
 				inset: 0,
+				...print.exactColor,
 				...(checked
 					? {
 							backgroundColor: boxPalette.selected,
