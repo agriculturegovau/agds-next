@@ -13,11 +13,16 @@ import { visuallyHiddenStyles } from '../a11y';
 import { Button, ButtonProps } from '../button';
 import { mergeRefs } from '../core';
 import { Field } from '../field';
+import { useSecondaryLabel } from '../field/useSecondaryLabel';
 import { AcceptedFileMimeTypes } from '../file-upload';
-import { fileTypeMapping } from '../file-upload/utils';
+import { FileUploadExistingFileList } from '../file-upload/FileUploadExistingFileList';
+import {
+	fileTypeMapping,
+	getFileListSummaryText,
+	type ExistingFile,
+} from '../file-upload/utils';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { useSecondaryLabel } from '../field/useSecondaryLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
@@ -38,6 +43,8 @@ type BaseFileInputProps = {
 export type FileInputProps = BaseFileInputProps & {
 	/** The size of the button. */
 	buttonSize?: ButtonProps['size'];
+	/** Used to display a list of files that have already been uploaded. */
+	existingFiles?: ExistingFile[];
 	/** If true, "(optional)" will never be appended to the label. */
 	hideOptionalLabel?: boolean;
 	/** Provides extra information about the field. */
@@ -59,6 +66,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			autoFocus,
 			buttonSize = 'sm',
 			disabled,
+			existingFiles,
 			hideOptionalLabel,
 			hint,
 			id,
@@ -154,8 +162,11 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			required,
 		});
 
+		const hasExistingFiles = existingFiles?.length;
 		const fileOrFiles = multiple ? 'files' : 'file';
-		const buttonLabel = `Select ${fileOrFiles}`;
+		const buttonLabel = hasExistingFiles
+			? `Replace ${hasExistingFiles === 1 ? 'file' : 'files'}`
+			: `Select ${fileOrFiles}`;
 		const ariaLabel = [
 			buttonLabel,
 			label,
@@ -196,20 +207,22 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 								{buttonLabel}
 							</Button>
 
-							<Text
-								breakWords
-								color="muted"
-								{...(fileNames.length && {
-									color: undefined,
-									fontWeight: 'bold',
-								})}
-							>
-								{getSelectedFilesMessage({
-									fileNames,
-									fileOrFiles,
-									isDisplayed: true,
-								})}
-							</Text>
+							{!hasExistingFiles && (
+								<Text
+									breakWords
+									color="muted"
+									{...(fileNames.length && {
+										color: undefined,
+										fontWeight: 'bold',
+									})}
+								>
+									{getSelectedFilesMessage({
+										fileNames,
+										fileOrFiles,
+										isDisplayed: true,
+									})}
+								</Text>
+							)}
 						</Stack>
 
 						<input
@@ -225,6 +238,14 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 							tabIndex={-1}
 							type="file"
 						/>
+						{hasExistingFiles ? (
+							<Stack gap={0.5}>
+								<Text color="muted">
+									{getFileListSummaryText(existingFiles)}
+								</Text>
+								<FileUploadExistingFileList files={existingFiles} />
+							</Stack>
+						) : null}
 					</>
 				)}
 			</Field>

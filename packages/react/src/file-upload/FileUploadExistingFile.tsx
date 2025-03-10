@@ -11,7 +11,7 @@ import { ExistingFile, formatFileSize } from './utils';
 type FileUploadExistingFileProps = {
 	file: ExistingFile;
 	hideThumbnails?: boolean;
-	onRemove: MouseEventHandler<HTMLButtonElement>;
+	onRemove?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadExistingFile = ({
@@ -66,17 +66,19 @@ export const FileUploadExistingFile = ({
 					)}
 				</Flex>
 			</Flex>
-			<Flex alignItems="center" flexShrink={0} paddingRight={1}>
-				<Button
-					aria-label={`Remove file: ${name}`}
-					iconBefore={CloseIcon}
-					onClick={onRemove}
-					size="sm"
-					variant="text"
-				>
-					Remove
-				</Button>
-			</Flex>
+			{onRemove && (
+				<Flex alignItems="center" flexShrink={0} paddingRight={1}>
+					<Button
+						aria-label={`Remove file: ${name}`}
+						iconBefore={CloseIcon}
+						onClick={onRemove}
+						size="sm"
+						variant="text"
+					>
+						Remove
+					</Button>
+				</Flex>
+			)}
 		</Flex>
 	);
 };

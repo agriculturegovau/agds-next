@@ -24,7 +24,7 @@ export const FileUploadExistingFileList = ({
 					file={file}
 					hideThumbnails={hideThumbnails}
 					key={index}
-					onRemove={() => onRemove?.(file)}
+					onRemove={onRemove ? () => onRemove?.(file) : undefined}
 				/>
 			))}
 		</Stack>
