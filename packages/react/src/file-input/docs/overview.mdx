@@ -111,9 +111,9 @@ Using an array of mime types allows you to leverage TypeScript types and autocom
 />
 ```
 
-## Existing files
+## Selected files
 
-You can display a list of files that have already been uploaded by using the `existingFiles` prop.
+You can display a list of files that have been selected using the `selectedFiles` prop.
 
 It expects an array of objects with a name, size and optional thumbnail url and other properties.
 
@@ -129,7 +129,70 @@ Image files should be displayed with thumbnails which are 144px by 144px. Passin
 			onChange={(event) => {
 				setSelectedFiles(Array.from(event.target.files));
 			}}
-			existingFiles={selectedFiles}
+			selectedFiles={selectedFiles}
+		/>
+	);
+};
+```
+
+## Existing files
+
+You can display a list of files that have already been uploaded by using the `existingFiles` prop.
+
+It expects an array of objects with a name, size and optional thumbnail url and other properties.
+
+Image files should be displayed with thumbnails which are 144px by 144px. Passing full-size images to `thumbnailSrc` prop will result in unnecessarily longer load times.
+
+```jsx live
+() => {
+	const [existingFiles, setExistingFiles] = useState([
+		{
+			name: 'example.png',
+			size: 123456,
+			thumbnailSrc: 'https://placehold.co/144',
+			href: '#',
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'abc-def', bucketId: '123-456' },
+		},
+		{
+			name: 'example-no-thumbnail.doc',
+			size: 654321,
+			href: '#',
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'fed-cba', bucketId: '654-321' },
+		},
+		{
+			name: 'example-download-this-page.html',
+			size: 999,
+			href: '/components/file-upload',
+			// Instructs the browser to treat the link as a download
+			download: true,
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+		},
+	]);
+
+	function onRemoveExistingFile(fileToRemove) {
+		setExistingFiles((existingFiles) =>
+			existingFiles.filter((file) => file.meta.uid !== fileToRemove.meta.uid)
+		);
+	}
+
+	const [selectedFiles, setSelectedFiles] = React.useState();
+
+	return (
+		<FileInput
+			label="Passport"
+			onChange={(event) => {
+				setSelectedFiles(Array.from(event.target.files));
+			}}
+			multiple
+			selectedFiles={selectedFiles}
+			existingFiles={existingFiles}
+			onRemoveExistingFile={onRemoveExistingFile}
 		/>
 	);
 };

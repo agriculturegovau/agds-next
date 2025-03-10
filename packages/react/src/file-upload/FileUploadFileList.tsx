@@ -5,7 +5,7 @@ import { FileWithStatus } from './utils';
 type FileUploadFileListProps = {
 	files: FileWithStatus[];
 	hideThumbnails?: boolean;
-	onRemove: (index: number) => void;
+	onRemove?: (index: number) => void;
 };
 
 export const FileUploadFileList = ({
@@ -24,7 +24,7 @@ export const FileUploadFileList = ({
 					file={file}
 					hideThumbnails={hideThumbnails}
 					key={index}
-					onRemove={() => onRemove(index)}
+					onRemove={onRemove ? () => onRemove(index) : undefined}
 				/>
 			))}
 		</Stack>
