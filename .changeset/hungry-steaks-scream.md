@@ -2,13 +2,22 @@
 '@ag.ds-next/react': patch
 ---
 
-core: cleaned tokens colours to use lowercase, 6 character hex codes and no words.
-core: added print theme for `print-color-adjust: exact`.
-button: added print colour override for printing without background.
-global-alert: added print colour override for printing without background.
-indicator-dot: added print colour override for printing without background.
-loading: added print colour override for printing without background.
-notification-badge: added print colour override for printing without background.
-page-alert: added print colour override for printing without background.
-switch: added print colour override for printing without background.
-tabs: added print colour override for printing without background.
+core: Update all theme colours to be consistent, 6 character hex codes.
+
+core: Add `exactColor` print pack.
+
+button: Use `exactColor` to improve visuals when printing.
+
+global-alert: Use `exactColor` to improve visuals when printing.
+
+indicator-dot: Use `exactColor` to improve visuals when printing.
+
+loading: Use `exactColor` to improve visuals when printing.
+
+notification-badge: Use `exactColor` to improve visuals when printing.
+
+page-alert: Use `exactColor` to improve visuals when printing.
+
+switch: Use `exactColor` to improve visuals when printing.
+
+tabs: Use `exactColor` to improve visuals when printing.
