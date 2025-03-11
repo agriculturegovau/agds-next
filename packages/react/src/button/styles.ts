@@ -1,11 +1,12 @@
 import { BoxProps, focusStylesMap } from '../box';
 import {
-	packs,
 	boxPalette,
-	tokens,
+	mapResponsiveProp,
 	mapSpacing,
 	mq,
-	mapResponsiveProp,
+	packs,
+	print,
+	tokens,
 } from '../core';
 
 const variants = {
@@ -21,6 +22,8 @@ const variants = {
 			color: boxPalette.backgroundBody,
 			...packs.underline,
 		},
+
+		...print.exactColor,
 	},
 	secondary: {
 		background: boxPalette.backgroundBody,

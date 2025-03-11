@@ -121,7 +121,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       >
         <span
           aria-hidden="true"
-          class="css-1w074qx-boxStyles-NotificationBadge"
+          class="css-14c2gvn-boxStyles-NotificationBadge"
         >
           99+
         </span>
