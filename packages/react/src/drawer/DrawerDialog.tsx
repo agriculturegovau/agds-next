@@ -7,7 +7,6 @@ import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
-import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
 import { DrawerProps } from './Drawer';
 
@@ -16,8 +15,6 @@ export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	/** On close of the drawer, this element will be focused, rather than the trigger element. */
 	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
-	/** @deprecated use `onClose` instead. */
-	onDismiss?: () => void;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
 	style: { translateX: SpringValue<string> };
@@ -41,13 +38,11 @@ export function DrawerDialog({
 	children,
 	elementToFocusOnClose,
 	onClose,
-	onDismiss,
 	style,
 	title,
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
-	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 
 	return (
 		<FocusLock
@@ -98,7 +93,7 @@ export function DrawerDialog({
 						}),
 					})}
 					iconAfter={CloseIcon}
-					onClick={handleClose}
+					onClick={onClose}
 					variant="text"
 				>
 					Close
