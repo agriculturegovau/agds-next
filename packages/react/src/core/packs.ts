@@ -65,7 +65,7 @@ export const print = {
 			printColorAdjust: 'exact',
 		},
 	},
-	// hide URL for link in print media type
+	// Hide URL rendered for links in print
 	hideLinkURL: {
 		'@media print': {
 			'&[href]:after': {

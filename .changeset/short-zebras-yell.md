@@ -2,10 +2,10 @@
 '@ag.ds-next/react': patch
 ---
 
-box: applied link styling to hide URL on print media for internal hash anchors.
+box: Applied link styling to hide URL on print media for internal hash anchors.
 
-core: added styling to hide print URL on link elements.
+core: Added new style option to hide print URL on link elements.
 
-file-upload: applied link styling to hide URL on print media for existing file uploads.
+file-upload: Applied link styling to hide URL on print media for existing file uploads. Existing file URLs should not be displayed and are not required.
 
-pagination: applied link styling to hide URL for directions and pagination link elements.
+pagination: Applied link styling to hide URL for directions and pagination link elements. Pagination links are not functional on print
