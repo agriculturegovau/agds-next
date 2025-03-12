@@ -556,7 +556,7 @@ export const linkStyles = {
 			content: '" (" attr(href) ")" !important',
 		},
 
-		// Hide local anchors links
+		// Hide local anchor links
 		'&[href^="#"]:after': {
 			display: 'none',
 		},

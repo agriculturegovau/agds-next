@@ -22,7 +22,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-vspen0-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-1geyz1r-TextLink"
           href="#"
         >
           Change
@@ -46,7 +46,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-vspen0-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-1geyz1r-TextLink"
           href="#"
         >
           Change
@@ -72,7 +72,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-vspen0-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-1geyz1r-TextLink"
           href="#"
         >
           Change
@@ -96,7 +96,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-vspen0-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-1geyz1r-TextLink"
           href="#"
         >
           Change

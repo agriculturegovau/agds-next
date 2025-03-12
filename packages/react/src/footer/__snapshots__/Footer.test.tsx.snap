@@ -18,7 +18,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-1geyz1r-TextLink"
               href="#"
             >
               Home
@@ -28,7 +28,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-1geyz1r-TextLink"
               href="#"
             >
               Terms and conditions
@@ -38,7 +38,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-1geyz1r-TextLink"
               href="#"
             >
               Privacy policy
@@ -48,7 +48,7 @@ exports[`Footer renders correctly 1`] = `
             class="css-79i25n-boxStyles"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-1geyz1r-TextLink"
               href="#"
             >
               A really long link title

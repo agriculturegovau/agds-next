@@ -45,11 +45,11 @@ export const FileUploadExistingFile = ({
 					{href ? (
 						<Text breakWords paddingY={1.5}>
 							<TextLink
+								css={{ ...print.hideLinkURL }}
 								download={download}
 								href={href}
 								rel="noopener noreferrer"
 								target="_blank"
-								css={{ ...print.hideLinkURL }}
 							>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}

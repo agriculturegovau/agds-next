@@ -3,7 +3,7 @@
 exports[`ExternalLinkCallout renders correctly 1`] = `
 <div>
   <a
-    class="css-koqz57-TextLink"
+    class="css-1geyz1r-TextLink"
     data-testid="example"
     href="#"
   >
