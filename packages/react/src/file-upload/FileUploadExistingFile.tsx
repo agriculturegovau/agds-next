@@ -1,5 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { Box } from '../box';
+import { print } from '../core';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
@@ -48,6 +49,7 @@ export const FileUploadExistingFile = ({
 								href={href}
 								rel="noopener noreferrer"
 								target="_blank"
+								css={{ ...print.hideLinkURL }}
 							>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
