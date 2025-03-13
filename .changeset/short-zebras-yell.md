@@ -4,7 +4,7 @@
 
 box: Apply link style to hide URL on print media for internal hash anchors.
 
-core: Add new style option to hide print URL on link elements.
+core: Add new `hideHref` `print` pack to prevent a link’s `href` from being appended when printed.
 
 file-upload: Apply link style to hide URL on print media for existing file uploads. Existing file URLs should not be displayed and are not required.
 
