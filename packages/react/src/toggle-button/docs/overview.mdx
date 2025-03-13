@@ -1,0 +1,103 @@
+---
+title: Toggle Button
+description: Toggle button is a button that uses the ‘aria-pressed’ attribute to an element with a role of button to represent and on/off state.
+group: Forms
+storybookPath: /story/Forms-ToggleButton--basic
+unreleased: true
+figmaGalleryNodeId: 17042%3A40508
+relatedComponents: ['switch']
+---
+
+## Behavior
+
+The button has and ‘Off’ and ‘On’ state that uses the aria-pressed attribute.
+
+- ‘Not pressed’. The button will display a stroked icon.
+- ‘Pressed’. The icon will be filled.
+
+Where space permits, the button should use a label that describes the state of the button.
+
+```jsx live
+() => {
+	const [isPressed, setPressed] = React.useState(false);
+	const [isPressed2, setPressed2] = React.useState(true);
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<ToggleButton
+				label="Unflag message"
+				pressed={isPressed}
+				onChange={setPressed}
+			/>
+			<ToggleButton
+				label="Flag message"
+				pressed={isPressed2}
+				onChange={setPressed2}
+			/>
+		</Stack>
+	);
+};
+```
+
+## Default selection
+
+The button should be ‘Off’ by default.
+
+## Icons available
+
+We limit the icons that can be used until we know there is a real user need for them. Limiting the icons available helps to ensure consistent application and user experience for the toggle button.
+
+If you have a valid need to add an icon contact the AgDS team.
+
+```jsx live
+() => {
+	const [flagPressed, setFlagPressed] = React.useState(false);
+	const [starPressed, setStarPressed] = React.useState(false);
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<ToggleButton
+				label="Unflag message"
+				pressed={flagPressed}
+				onChange={setFlagPressed}
+				iconType="flag"
+			/>
+			<ToggleButton
+				label="Add to dashboard"
+				pressed={starPressed}
+				onChange={setStarPressed}
+				iconType="star"
+			/>
+		</Stack>
+	);
+};
+```
+
+## Size
+
+Size is a property that allows you to adjust the visual weight of a button.
+
+The medium button should be used in most cases to provide a larger icon.
+
+```jsx live
+() => {
+	const [pressedMD, setPressedMD] = React.useState(false);
+	const [pressedSM, setPressedSM] = React.useState(false);
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<ToggleButton
+				label="Unflag message"
+				pressed={pressedMD}
+				onChange={setPressedMD}
+				iconType="flag"
+				size="md"
+			/>
+			<ToggleButton
+				label="Flag message"
+				pressed={pressedSM}
+				onChange={setPressedSM}
+				iconType="flag"
+				size="sm"
+			/>
+		</Stack>
+	);
+};
+```
