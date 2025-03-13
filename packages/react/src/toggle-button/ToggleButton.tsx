@@ -4,7 +4,7 @@ import { AlertFilledIcon, AlertIcon, InfoFilledIcon, InfoIcon } from '../icon';
 
 export type ToggleButtonProps = Omit<
 	BaseButtonProps,
-	'aria-haspopup' | 'aria-controls' | 'aria-expanded' | 'onClick' | 'type'
+	'aria-haspopup' | 'aria-controls' | 'aria-expanded' | 'type'
 > & {
 	/** The current pressed state for the ToggleButton. */
 	pressed: boolean;
