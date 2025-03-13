@@ -29,7 +29,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-15ywwdc-TextLink-boxStyles-TaskListItem"
+          class="css-x293iw-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -133,7 +133,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-15ywwdc-TextLink-boxStyles-TaskListItem"
+          class="css-x293iw-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -237,7 +237,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-aoyeso-TextLink-boxStyles-TaskListItem"
+          class="css-2iy1vr-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span
@@ -367,7 +367,7 @@ exports[`TaskList With anchors renders correctly 1`] = `
         class="css-16jufl0-TaskListItem"
       >
         <a
-          class="css-15ywwdc-TextLink-boxStyles-TaskListItem"
+          class="css-x293iw-TextLink-boxStyles-TaskListItem"
           href="#"
         >
           <span

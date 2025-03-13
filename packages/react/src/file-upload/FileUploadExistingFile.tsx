@@ -45,7 +45,7 @@ export const FileUploadExistingFile = ({
 					{href ? (
 						<Text breakWords paddingY={1.5}>
 							<TextLink
-								css={{ ...print.hideLinkURL }}
+								css={{ ...print.hideHref }}
 								download={download}
 								href={href}
 								rel="noopener noreferrer"

@@ -557,7 +557,7 @@ export const linkStyles = {
 		},
 
 		// Hide internal hash link URLs
-		'&[href^="#"]:after': {
+		'&[href^="#"]::after': {
 			display: 'none',
 		},
 	},

@@ -20,7 +20,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -34,7 +34,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -48,7 +48,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -80,7 +80,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -125,7 +125,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -170,7 +170,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-nnw7y0-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Baz

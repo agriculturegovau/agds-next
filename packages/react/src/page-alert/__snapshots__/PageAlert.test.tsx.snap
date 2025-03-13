@@ -46,7 +46,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
             class="css-1sudq1l-boxStyles-ListItem"
           >
             <a
-              class="css-1geyz1r-TextLink"
+              class="css-july2n-TextLink"
               href="#"
             >
               Full name must not be empty

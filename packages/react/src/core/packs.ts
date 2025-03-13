@@ -66,9 +66,9 @@ export const print = {
 		},
 	},
 	// Hide URL rendered for links in print
-	hideLinkURL: {
+	hideHref: {
 		'@media print': {
-			'&[href]:after': {
+			'&[href]::after': {
 				display: 'none',
 			},
 		},

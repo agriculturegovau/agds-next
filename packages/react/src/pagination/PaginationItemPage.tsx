@@ -32,7 +32,7 @@ export function PaginationItemPage({
 					...(isActive
 						? { color: boxPalette.foregroundText, textDecoration: 'none' }
 						: undefined),
-					...print.hideLinkURL,
+					...print.hideHref,
 				}}
 				focusRingFor="keyboard"
 				fontWeight={isActive ? 'bold' : 'normal'}

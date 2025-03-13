@@ -108,7 +108,7 @@ const BaseDirectionLink = ({
 			as={as}
 			css={{
 				alignSelf: 'flex-start',
-				...print.hideLinkURL,
+				...print.hideHref,
 			}}
 			focusRingFor="keyboard"
 			fontFamily="body"
