@@ -65,6 +65,14 @@ export const print = {
 			printColorAdjust: 'exact',
 		},
 	},
+	// Hide URL rendered for links in print
+	hideHref: {
+		'@media print': {
+			'&[href]::after': {
+				display: 'none',
+			},
+		},
+	},
 } as const;
 
 export const packs = {

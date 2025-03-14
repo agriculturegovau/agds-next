@@ -14,7 +14,7 @@ exports[`Accordion renders correctly 1`] = `
         <button
           aria-controls="accordion-:r0:-body"
           aria-expanded="false"
-          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
+          class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r0:-title"
           type="button"
         >
@@ -66,7 +66,7 @@ exports[`Accordion renders correctly 1`] = `
         <button
           aria-controls="accordion-:r1:-body"
           aria-expanded="false"
-          class="css-1om6ji7-BaseButton-boxStyles-AccordionTitle"
+          class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
           id="accordion-:r1:-title"
           type="button"
         >

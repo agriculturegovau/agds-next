@@ -555,6 +555,11 @@ export const linkStyles = {
 		'&[href]::after': {
 			content: '" (" attr(href) ")" !important',
 		},
+
+		// Hide internal hash link URLs
+		'&[href^="#"]::after': {
+			display: 'none',
+		},
 	},
 };
 

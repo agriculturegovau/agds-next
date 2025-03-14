@@ -120,7 +120,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -178,7 +178,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -252,7 +252,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
               </span>
               <a
                 aria-current="true"
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -316,7 +316,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -377,7 +377,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -450,7 +450,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -509,7 +509,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -1722,7 +1722,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -1781,7 +1781,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
               </span>
               <a
                 aria-current="true"
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -1854,7 +1854,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -1918,7 +1918,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -1979,7 +1979,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2052,7 +2052,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2111,7 +2111,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2790,7 +2790,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2848,7 +2848,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2922,7 +2922,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
               </span>
               <a
                 aria-current="true"
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -2986,7 +2986,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3047,7 +3047,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3120,7 +3120,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3179,7 +3179,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3858,7 +3858,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3916,7 +3916,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -3989,7 +3989,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -4053,7 +4053,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -4114,7 +4114,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -4188,7 +4188,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
               </span>
               <a
                 aria-current="true"
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
@@ -4247,7 +4247,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
                 />
               </span>
               <a
-                class="css-15x7w6m-TextLink-boxStyles-ProgressIndicatorItem"
+                class="css-j7i2l9-TextLink-boxStyles-ProgressIndicatorItem"
                 data-agds-progress-indicator-item-text-container=""
                 href="#"
               >
