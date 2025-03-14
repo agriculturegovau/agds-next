@@ -15,7 +15,7 @@ export const PageAlertTitle = ({
 	hasDismissButton,
 	hasCloseButton,
 }: PageAlertTitleProps) => {
-	if (hasDismissButton !== undefined) {
+	if (process.env.NODE_ENV !== 'production' && hasDismissButton !== undefined) {
 		console.warn('hasDismissButton is deprecated. Use hasCloseButton instead.');
 	}
 	return (
