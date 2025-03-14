@@ -31,4 +31,16 @@ describe('ToggleButton', () => {
 		});
 		expect(await axe(container)).toHaveNoViolations();
 	});
+	it('renders with no label', async () => {
+		const { container } = renderToggleButton({
+			pressed: false,
+			onChange: () => undefined,
+			'aria-label': 'Flag message',
+		});
+		expect(container).toHTMLValidate({
+			extends: ['html-validate:recommended'],
+		});
+		expect(await axe(container)).toHaveNoViolations();
+		expect(container).toMatchSnapshot();
+	});
 });

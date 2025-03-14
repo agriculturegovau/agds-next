@@ -12,7 +12,7 @@ export type ToggleButtonProps = Omit<
 	onChange: (newValue: boolean) => void;
 	size?: ButtonSize;
 	/** The associated label for the ToggleButton. */
-	label: string;
+	label?: string;
 	/** The icon type to display. */
 	iconType?: 'flag' | 'star';
 };
