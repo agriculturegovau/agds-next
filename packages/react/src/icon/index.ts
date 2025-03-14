@@ -32,7 +32,6 @@ export { CopyIcon } from './icons/CopyIcon';
 export { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 export { DeleteIcon } from './icons/DeleteIcon';
 export { DownloadIcon } from './icons/DownloadIcon';
-export { DrawerIcon } from './icons/DrawerIcon';
 export { EditIcon } from './icons/EditIcon';
 export { EmailIcon } from './icons/EmailIcon';
 export { ExitIcon } from './icons/ExitIcon';

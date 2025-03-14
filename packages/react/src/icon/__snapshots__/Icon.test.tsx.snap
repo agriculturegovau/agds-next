@@ -629,27 +629,6 @@ exports[`Icon DownloadIcon renders correctly 1`] = `
 </div>
 `;
 
-exports[`Icon DrawerIcon renders correctly 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="css-lq07bo-Icon"
-    clip-rule="evenodd"
-    fill-rule="evenodd"
-    focusable="false"
-    height="24"
-    role="img"
-    viewBox="0 0 24 24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M14.5 3H19a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4.5m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9.5m0-18v18"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icon EditIcon renders correctly 1`] = `
 <div>
   <svg

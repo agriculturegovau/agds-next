@@ -101,7 +101,6 @@ export {
 	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
-	DrawerIcon,
 	EditIcon,
 	EmailIcon,
 	ExitIcon,
