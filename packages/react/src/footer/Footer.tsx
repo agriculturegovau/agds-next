@@ -8,7 +8,7 @@ export type FooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 	borderColor?: ResponsiveProp<BorderColor>;
 	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
+	maxWidth?: 'container' | 'containerLg';
 }>;
 
 export const Footer = ({

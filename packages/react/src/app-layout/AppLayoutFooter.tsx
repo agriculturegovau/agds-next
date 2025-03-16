@@ -9,7 +9,7 @@ export type AppLayoutFooterProps = PropsWithChildren<{
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
+	maxWidth?: 'container' | 'containerLg';
 	palette?: ResponsiveProp<BoxPalette>;
 }>;
 

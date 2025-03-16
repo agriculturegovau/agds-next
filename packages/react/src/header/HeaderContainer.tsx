@@ -11,7 +11,7 @@ const paddingMap = {
 
 type HeaderContainerProps = PropsWithChildren<{
 	background: 'body' | 'bodyAlt';
-	maxWidth: 'container' | 'containerXL';
+	maxWidth: 'container' | 'containerLg';
 	size: keyof typeof paddingMap;
 }>;
 

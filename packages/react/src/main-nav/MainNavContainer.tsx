@@ -16,7 +16,7 @@ export type MainNavContainerProps = {
 	isMobileMenuOpen: boolean;
 	items?: MainNavListItemType[];
 	/** The maximum width of the container. */
-	maxWidth: 'container' | 'containerXL';
+	maxWidth: 'container' | 'containerLg';
 	openMobileMenu: () => void;
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };

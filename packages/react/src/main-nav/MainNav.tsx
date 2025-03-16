@@ -20,7 +20,7 @@ export type MainNavProps = PropsWithChildren<{
 	/** List of navigation items to display. */
 	items?: MainNavListItemType[];
 	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
+	maxWidth?: 'container' | 'containerLg';
 	/** Optional list of navigation items to display on the right of the component. */
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 }>;

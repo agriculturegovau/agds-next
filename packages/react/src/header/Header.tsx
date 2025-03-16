@@ -18,7 +18,7 @@ export type HeaderProps = {
 	/** The logo to display. */
 	logo?: ReactElement;
 	/** The maximum width of the container. */
-	maxWidth?: 'container' | 'containerXL';
+	maxWidth?: 'container' | 'containerLg';
 	/** Content to placed on the right side of the Header. */
 	rightContent?: ReactNode;
 	/** The href to link to, for example "/". */

@@ -9,7 +9,7 @@ app-layout: `AppLayoutFooter` - Add `maxWidth` prop.
 
 content: Add `maxWidth` prop to all content components.
 
-core: Add new `'containerXL'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
+core: Add new `'containerLg'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
 
 footer: Add `maxWidth` prop.
 

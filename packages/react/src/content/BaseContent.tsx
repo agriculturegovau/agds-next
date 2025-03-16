@@ -10,7 +10,7 @@ export type BaseContentProps = PropsWithChildren<
 		className?: string;
 		id?: string;
 		/** The maximum width of the container. */
-		maxWidth?: 'container' | 'containerXL';
+		maxWidth?: 'container' | 'containerLg';
 		tabIndex?: number;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
