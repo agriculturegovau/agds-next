@@ -15,7 +15,7 @@ exports[`Switch renders correctly 1`] = `
         type="checkbox"
       />
       <span
-        class="css-k2d2eq-boxStyles-SwitchTrack"
+        class="css-muuxht-boxStyles-SwitchTrack"
       />
       <span
         class="css-1rmjgmu-boxStyles-SwitchThumb"

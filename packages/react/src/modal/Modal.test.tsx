@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
-import { render, screen, cleanup } from '../../../../test-utils';
+import { act, cleanup, render, screen } from '../../../../test-utils';
 import { Modal } from './Modal';
 
 expect.extend(toHaveNoViolations);
@@ -98,25 +98,25 @@ describe('Modal', () => {
 	it('focuses the correct elements when opening and closing', async () => {
 		renderModal();
 		// Open the modal by clicking the "Open modal" button
-		await userEvent.click(await screen.getByTestId('open-modal-button'));
+		await act(() => userEvent.click(screen.getByTestId('open-modal-button')));
 		expect(await screen.findByRole('dialog')).toBeInTheDocument();
 		// Title should have focus
-		expect(await screen.getByText('Modal title')).toHaveFocus();
+		expect(screen.getByText('Modal title')).toHaveFocus();
 		// Close the modal
-		await userEvent.click(await screen.getByTestId('close-modal-button'));
+		await act(() => userEvent.click(screen.getByTestId('close-modal-button')));
 		// After closing the modal, the "Open modal" button should be focused
-		expect(await screen.getByTestId('open-modal-button')).toHaveFocus();
+		expect(screen.getByTestId('open-modal-button')).toHaveFocus();
 	});
 	it('onDismiss modal focuses the correct elements when opening and closing', async () => {
 		renderDismissModal();
 		// Open the modal by clicking the "Open modal" button
-		await userEvent.click(await screen.getByTestId('open-modal-button'));
+		await act(() => userEvent.click(screen.getByTestId('open-modal-button')));
 		expect(await screen.findByRole('dialog')).toBeInTheDocument();
 		// Title should have focus
-		expect(await screen.getByText('Modal title')).toHaveFocus();
+		expect(screen.getByText('Modal title')).toHaveFocus();
 		// Close the modal
-		await userEvent.click(await screen.getByTestId('close-modal-button'));
+		await act(() => userEvent.click(screen.getByTestId('close-modal-button')));
 		// After closing the modal, the "Open modal" button should be focused
-		expect(await screen.getByTestId('open-modal-button')).toHaveFocus();
+		expect(screen.getByTestId('open-modal-button')).toHaveFocus();
 	});
 });

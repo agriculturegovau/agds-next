@@ -2,7 +2,7 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
 import { getOptionalCloseHandler } from '../getCloseHandler';
@@ -42,7 +42,11 @@ export function GlobalAlert({
 		>
 			<Flex
 				alignItems="center"
-				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
+				css={{
+					backgroundColor: fg,
+					color: boxPalette.backgroundBody,
+					...print.exactColor,
+				}}
 				flexShrink={0}
 				justifyContent="center"
 				padding={0.75}

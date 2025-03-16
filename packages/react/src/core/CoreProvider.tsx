@@ -15,7 +15,7 @@ const DefaultLinkComponent = forwardRef<
 	return <a ref={ref} {...props} />;
 });
 
-type NativeLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+export type NativeLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type LinkProps = PropsWithChildren<{
 	/** Describes the anchor element to assistive technologies. */
@@ -28,6 +28,11 @@ export type LinkProps = PropsWithChildren<{
 	href?: string;
 	/** The ID of the hyperlink. */
 	id?: string;
+	onClick?: NativeLinkProps['onClick'];
+	onMouseEnter?: NativeLinkProps['onMouseEnter'];
+	onMouseLeave?: NativeLinkProps['onMouseLeave'];
+	onMouseOut?: NativeLinkProps['onMouseOut'];
+	onMouseOver?: NativeLinkProps['onMouseOver'];
 	/** How much of the referrer to send when following the link. */
 	referrerPolicy?: NativeLinkProps['referrerPolicy'];
 	/** The relationship of the linked URL as space-separated link types. */

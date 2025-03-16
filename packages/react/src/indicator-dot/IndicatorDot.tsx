@@ -1,5 +1,5 @@
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, print } from '../core';
 
 export type IndicatorDotProps = {
 	/** The accessible label to read out in screen readers. */
@@ -17,6 +17,7 @@ export const IndicatorDot = ({
 				height: 8,
 				borderRadius: 4,
 				backgroundColor: boxPalette.foregroundAction,
+				...print.exactColor,
 			}}
 			highContrastOutline
 		/>

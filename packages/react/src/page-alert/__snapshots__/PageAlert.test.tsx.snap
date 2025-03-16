@@ -6,7 +6,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
     class="css-cplja2-boxStyles-PageAlert"
   >
     <div
-      class="css-lrh4g4-boxStyles-PageAlert"
+      class="css-19n40vu-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -46,7 +46,7 @@ exports[`PageAlert tone: error renders correctly 1`] = `
             class="css-1sudq1l-boxStyles-ListItem"
           >
             <a
-              class="css-koqz57-TextLink"
+              class="css-july2n-TextLink"
               href="#"
             >
               Full name must not be empty
@@ -65,7 +65,7 @@ exports[`PageAlert tone: info renders correctly 1`] = `
     class="css-118gscv-boxStyles-PageAlert"
   >
     <div
-      class="css-1xvzm6x-boxStyles-PageAlert"
+      class="css-bmjrul-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -115,7 +115,7 @@ exports[`PageAlert tone: success renders correctly 1`] = `
     class="css-1e1nz0n-boxStyles-PageAlert"
   >
     <div
-      class="css-x2n2dd-boxStyles-PageAlert"
+      class="css-1ycg458-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -165,7 +165,7 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
     class="css-16todet-boxStyles-PageAlert"
   >
     <div
-      class="css-8gqro-boxStyles-PageAlert"
+      class="css-woch2e-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -215,7 +215,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
     class="css-118gscv-boxStyles-PageAlert"
   >
     <div
-      class="css-1xvzm6x-boxStyles-PageAlert"
+      class="css-bmjrul-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"

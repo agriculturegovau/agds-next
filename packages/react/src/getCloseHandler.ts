@@ -29,9 +29,11 @@ export function getOptionalCloseHandler(
 }
 
 function handleWarnings(onClose: Fn | undefined, onDismiss: Fn | undefined) {
-	if (onClose && onDismiss) {
-		console.warn(closeHandlerWarningMessage);
-	} else if (onDismiss) {
-		console.warn('onDismiss is deprecated. Use onClose instead.');
+	if (process.env.NODE_ENV !== 'production') {
+		if (onClose && onDismiss) {
+			console.warn(closeHandlerWarningMessage);
+		} else if (onDismiss) {
+			console.warn('onDismiss is deprecated. Use onClose instead.');
+		}
 	}
 }

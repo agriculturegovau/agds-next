@@ -66,7 +66,7 @@ describe('ComboboxAsyncMulti', () => {
 				name: 'Find your state (optional)',
 			});
 			const user = userEvent.setup();
-			await user.click(input);
+			await act(() => user.click(input));
 
 			const menu = screen.getByRole('listbox', {
 				name: 'Find your state (optional)',
@@ -89,7 +89,7 @@ describe('ComboboxAsyncMulti', () => {
 				name: 'Find your state (optional)',
 			});
 			const user = userEvent.setup();
-			await user.click(input);
+			await act(() => user.click(input));
 
 			const listItem = screen.getByRole('listitem');
 
@@ -110,7 +110,7 @@ describe('ComboboxAsyncMulti', () => {
 				name: 'Find your state (optional)',
 			});
 			const user = userEvent.setup();
-			await user.click(input);
+			await act(() => user.click(input));
 
 			// Focusing the input should trigger `loadOptions`
 			await waitFor(() => {
@@ -133,7 +133,7 @@ describe('ComboboxAsyncMulti', () => {
 				name: 'Find your state (optional)',
 			});
 			const user = userEvent.setup();
-			await user.click(input);
+			await act(() => user.click(input));
 
 			const stateOptionsText = STATE_OPTIONS.map((option) => option.label);
 			const optionsText = (await screen.findAllByRole('option')).map(
@@ -145,6 +145,7 @@ describe('ComboboxAsyncMulti', () => {
 	});
 
 	describe('when a search term is entered', () => {
+		// FIXME: This test fails in CI
 		test.skip('then the loadOptions prop is called with the input value', async () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 			render(
@@ -158,10 +159,12 @@ describe('ComboboxAsyncMulti', () => {
 			const input = screen.getByRole('combobox', {
 				name: 'Find your state (optional)',
 			});
-			const user = userEvent.setup();
-			user.click(input);
 
-			user.type(input, 'qld');
+			const user = userEvent.setup();
+			act(() => {
+				user.click(input);
+				user.type(input, 'qld');
+			});
 
 			await waitFor(() => {
 				expect(loadOptions).toHaveBeenCalledTimes(1);
@@ -184,7 +187,7 @@ describe('ComboboxAsyncMulti', () => {
 			});
 			const user = userEvent.setup();
 			user.click(input);
-			await user.type(input, 'qld');
+			await act(() => user.type(input, 'qld'));
 
 			const options = (await screen.findAllByRole('option')).map(
 				(option) => option.textContent
@@ -210,13 +213,13 @@ describe('ComboboxAsyncMulti', () => {
 			});
 			const user = userEvent.setup();
 			user.click(input);
-			await user.type(input, 'qld');
+			await act(() => user.type(input, 'qld'));
 
 			const option = await screen.findByRole('option', {
 				name: 'Queensland',
 			});
-			option.click();
 
+			act(() => option.click());
 			const tag = await screen.findByText('Queensland');
 			expect(tag).toBeVisible();
 		});
@@ -236,12 +239,12 @@ describe('ComboboxAsyncMulti', () => {
 			});
 			const user = userEvent.setup();
 			user.click(input);
-			await user.type(input, 'qld');
+			await act(() => user.type(input, 'qld'));
 
 			const option = await screen.findByRole('option', {
 				name: 'Queensland',
 			});
-			await user.click(option);
+			await act(() => user.click(option));
 
 			const updatedOptions = (await screen.findAllByRole('option')).map(
 				(option) => option.textContent
@@ -266,8 +269,8 @@ describe('ComboboxAsyncMulti', () => {
 			);
 
 			const user = userEvent.setup();
-			await user.tab();
-			await user.keyboard('[ArrowDown]');
+			await act(() => user.tab());
+			await act(() => user.keyboard('[ArrowDown]'));
 
 			const options = (await screen.findAllByRole('option')).map(
 				(option) => option.textContent
@@ -288,8 +291,8 @@ describe('ComboboxAsyncMulti', () => {
 			);
 
 			const user = userEvent.setup();
-			await user.tab();
-			await userEvent.keyboard('[Escape]');
+			await act(() => user.tab());
+			await act(() => user.keyboard('[Escape]'));
 
 			expect(screen.getByRole('listbox', { hidden: true })).not.toBeVisible();
 		});

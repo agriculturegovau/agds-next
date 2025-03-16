@@ -7,7 +7,7 @@ import {
 	ReactNode,
 } from 'react';
 import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import {
 	AlertFilledIcon,
 	InfoFilledIcon,
@@ -90,6 +90,7 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 						borderBottomLeftRadius: tokens.borderRadius,
 						backgroundColor: fg,
 						color: boxPalette.backgroundBody,
+						...print.exactColor,
 					}}
 					padding={0.5}
 				>

@@ -22,7 +22,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-1qtk6th-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#"
         >
           Change
@@ -46,7 +46,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-1qtk6th-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#"
         >
           Change
@@ -72,7 +72,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-1qtk6th-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#"
         >
           Change
@@ -96,7 +96,7 @@ exports[`SummaryList renders correctly 1`] = `
         class="css-1qtk6th-boxStyles"
       >
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#"
         >
           Change

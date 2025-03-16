@@ -5,7 +5,6 @@ import {
 	GlobalStaffState,
 	type FormState as StepsFormState,
 } from './steps/FormState';
-import { type StepNumber } from './steps/FormProvider';
 
 export type Completion = {
 	completed: boolean;
@@ -22,16 +21,6 @@ export type FormState = {
 
 export const defaultFormState: DeepPartial<FormState> = {
 	steps: defaultStepsFormState,
-};
-
-export type FormStep<StepNum extends StepNumber = StepNumber> = {
-	label: string;
-	href: string;
-	formStateKey: StepNum;
-	items?: Array<{
-		href: string;
-		label: string;
-	}>;
 };
 
 /**

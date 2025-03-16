@@ -63,7 +63,10 @@ export const reactDayPickerStyles = {
 		margin: 0,
 		padding: 0,
 		width: cellSizeSmall,
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
+		'@media (min-width: 375px)': {
+			height: cellSizeLarge,
+			width: cellSizeLarge,
+		},
 		...fontGrid('sm', 'default'),
 	},
 	// Day button which is actually applied to the cell
@@ -92,7 +95,10 @@ export const reactDayPickerStyles = {
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
 		},
-		'@media(min-width: 375px)': { height: cellSizeLarge, width: cellSizeLarge },
+		'@media (min-width: 375px)': {
+			height: cellSizeLarge,
+			width: cellSizeLarge,
+		},
 		...focusStyles,
 		// Today's button
 		'&.rdp-day_today': {
@@ -118,7 +124,7 @@ export const reactDayPickerStyles = {
 	'.rdp-months': {
 		display: 'flex',
 		height: '21.5rem',
-		'@media(min-width: 375px)': { height: '23.5rem' },
+		'@media (min-width: 375px)': { height: '23.5rem' },
 	},
 	'.rdp-month': {
 		margin: `0 ${mapSpacing(1)}`,
@@ -130,7 +136,7 @@ export const reactDayPickerStyles = {
 		width: `calc(${cellSizeSmall} * 7)`,
 		borderCollapse: 'collapse',
 		tableLayout: 'fixed',
-		'@media(min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
+		'@media (min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
 	},
 	'.rdp-tbody': {
 		border: 0,

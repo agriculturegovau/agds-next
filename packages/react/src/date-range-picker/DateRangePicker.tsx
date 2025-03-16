@@ -9,6 +9,7 @@ import {
 	useMemo,
 } from 'react';
 import { SelectRangeEventHandler } from 'react-day-picker';
+import { addDays } from 'date-fns';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -24,18 +25,20 @@ import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { visuallyHiddenStyles } from '../a11y';
 import { Popover, usePopover } from '../_popover';
 import {
-	acceptedDateFormats,
 	constrainDate,
 	formatDate,
-	getDateInputButtonAriaLabel,
-	normaliseDateString,
 	parseDate,
 	transformValuePropToInputValue,
-	type AcceptedDateFormats,
 } from '../date-picker/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
-import { DateInput } from './../date-picker/DatePickerInput';
+import {
+	acceptedDateFormats,
+	getDateInputButtonAriaLabel,
+	normaliseDateString,
+	type AcceptedDateFormats,
+} from '../date-picker-next/utils';
+import { DateInput } from './../date-picker-next/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
 export type DateRange = {
@@ -391,11 +394,13 @@ export const DateRangePicker = ({
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							id={fromId}
 							invalid={{ field: false, input: fromInvalid }}
+							isCalendarOpen={isCalendarOpen}
 							label={fromLabel}
 							onBlur={onFromInputBlur}
 							onChange={onFromInputChange}
 							ref={fromInputRef}
 							required={required}
+							secondaryLabelDate={minDate}
 							value={fromInputValue}
 						/>
 						<DateInput
@@ -414,11 +419,13 @@ export const DateRangePicker = ({
 							hideOptionalLabel={hideOptionalLabel || Boolean(legend)}
 							id={toId}
 							invalid={{ field: false, input: toInvalid }}
+							isCalendarOpen={isCalendarOpen}
 							label={toLabel}
 							onBlur={onToInputBlur}
 							onChange={onToInputChange}
 							ref={toInputRef}
 							required={required}
+							secondaryLabelDate={maxDate || addDays(new Date(), 1)}
 							value={toInputValue}
 						/>
 					</Flex>

@@ -12,19 +12,21 @@ import {
 import { SelectSingleEventHandler } from 'react-day-picker';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
-import { normaliseDateString } from '../date-picker/utils';
-import { CalendarSingle } from './Calendar';
-import { CalendarProvider } from './CalendarContext';
-import { DateInput } from './DatePickerInput';
 import {
 	acceptedDateFormats,
-	constrainDate,
-	formatDate,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
+	normaliseDateString,
+	type AcceptedDateFormats,
+} from '../date-picker-next/utils';
+import { DateInput } from '../date-picker-next/DatePickerInput';
+import { CalendarSingle } from './Calendar';
+import { CalendarProvider } from './CalendarContext';
+import {
+	constrainDate,
+	formatDate,
 	parseDate,
 	transformValuePropToInputValue,
-	type AcceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -210,7 +212,7 @@ export const DatePicker = ({
 	);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
@@ -239,10 +241,12 @@ export const DatePicker = ({
 				buttonRef={triggerRef}
 				dateFormat={dateFormat}
 				invalid={{ field: invalid, input: invalid }}
+				isCalendarOpen={isCalendarOpen}
 				maxWidth={maxWidth}
 				onBlur={onInputBlur}
 				onChange={onInputChange}
 				ref={inputRef}
+				secondaryLabelDate={minDate || maxDate}
 				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>

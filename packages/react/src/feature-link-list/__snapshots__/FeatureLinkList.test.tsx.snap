@@ -6,7 +6,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
     class="css-12ua59a-boxStyles"
   >
     <li
-      class="css-1m8049u-boxStyles-FeatureLinkListItem"
+      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-a9ctl8-boxStyles-FeatureLinkListItem"
@@ -19,7 +19,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
           >
             <a
               aria-describedby="feature-link-list-description-:r0:"
-              class="css-3oy6gb-TextLink-FeatureLinkListItem"
+              class="css-1utb7kq-TextLink-FeatureLinkListItem"
               href="#"
             >
               Add a business with RAM
@@ -63,7 +63,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
     class="css-12ua59a-boxStyles"
   >
     <li
-      class="css-1m8049u-boxStyles-FeatureLinkListItem"
+      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-a9ctl8-boxStyles-FeatureLinkListItem"
@@ -75,7 +75,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
             class="css-1esljmy-boxStyles"
           >
             <a
-              class="css-3oy6gb-TextLink-FeatureLinkListItem"
+              class="css-1utb7kq-TextLink-FeatureLinkListItem"
               href="#"
             >
               Add a business with RAM
@@ -104,7 +104,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
       </div>
     </li>
     <li
-      class="css-1m8049u-boxStyles-FeatureLinkListItem"
+      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-a9ctl8-boxStyles-FeatureLinkListItem"
@@ -116,7 +116,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
             class="css-1esljmy-boxStyles"
           >
             <a
-              class="css-3oy6gb-TextLink-FeatureLinkListItem"
+              class="css-1utb7kq-TextLink-FeatureLinkListItem"
               href="#"
             >
               Accept an invite

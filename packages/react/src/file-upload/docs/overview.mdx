@@ -176,7 +176,7 @@ Unlike the `value` prop, which expects an array of `File` objects, `existingFile
 
 If a user attempts to delete an existing file, a destructive confirmation modal should be displayed. If confirmed, the file should be deleted on the server.
 
-Image files should be displayed with thumbnails which are 72px by 72px. Passing full-size images to `thumbnailSrc` prop will result with long load times.
+Image files should be displayed with thumbnails which are 144px by 144px. Passing full-size images to `thumbnailSrc` prop will result in unnecessarily longer load times.
 
 ```jsx live
 () => {
@@ -184,7 +184,7 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 		{
 			name: 'example.png',
 			size: 123456,
-			thumbnailSrc: 'https://via.placeholder.com/150',
+			thumbnailSrc: 'https://placehold.co/144',
 			href: '#',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
@@ -196,7 +196,17 @@ Image files should be displayed with thumbnails which are 72px by 72px. Passing 
 			href: '#',
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
-			meta: { uid: 'fed=cba', bucketId: '654-321' },
+			meta: { uid: 'fed-cba', bucketId: '654-321' },
+		},
+		{
+			name: 'example-download-this-page.html',
+			size: 999,
+			href: '/components/file-upload',
+			// Instructs the browser to treat the link as a download
+			download: true,
+			// Use the meta key to keep track of any extra file info
+			// This can be useful info when deleting the file
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 		},
 	]);
 

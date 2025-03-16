@@ -40,7 +40,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-koqz57-TextLink"
+                  class="css-july2n-TextLink"
                   href="#"
                 >
                   Section 1
@@ -68,7 +68,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 <button
                   aria-expanded="false"
                   aria-label="Show all breadcrumbs"
-                  class="css-1ig7juv-BaseButton-boxStyles"
+                  class="css-s3exxs-BaseButton-boxStyles"
                   type="button"
                 >
                   …
@@ -94,7 +94,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                   />
                 </svg>
                 <a
-                  class="css-koqz57-TextLink"
+                  class="css-july2n-TextLink"
                   href="#"
                 >
                   Category page

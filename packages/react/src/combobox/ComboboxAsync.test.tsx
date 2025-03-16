@@ -56,6 +56,7 @@ describe('ComboboxAsync', () => {
 	it('can load async options', async () => {
 		const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 		const { container } = renderComboboxAsync({ loadOptions });
+		const user = userEvent.setup();
 
 		const input = container.querySelector('input');
 		expect(input).toBeInTheDocument();
@@ -63,7 +64,7 @@ describe('ComboboxAsync', () => {
 		if (!input) return;
 
 		// Click the input, which should focus the element
-		await act(async () => await input.click());
+		act(() => input.click());
 		await waitFor(() => expect(input).toHaveFocus());
 		expect(input).toHaveAttribute('aria-expanded', 'true');
 
@@ -77,7 +78,7 @@ describe('ComboboxAsync', () => {
 		expect(container.querySelectorAll('li').length).toBe(STATE_OPTIONS.length);
 
 		// Start typing a search term
-		await userEvent.type(input, 'qld');
+		await act(() => user.type(input, 'qld'));
 
 		// Typing a search term should trigger `loadOptions` to be called and 1 option to appear
 		await waitFor(() => {
@@ -91,7 +92,7 @@ describe('ComboboxAsync', () => {
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
-		await userEvent.click(options[0]);
+		await act(() => user.click(options[0]));
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
@@ -99,7 +100,7 @@ describe('ComboboxAsync', () => {
 		expect(input).toHaveFocus();
 
 		// Since the input is focused, use the arrow down key to open the menu
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
 
 		// Loading state should be visible
 		expect(container.querySelectorAll('li').length).toBe(1);
@@ -116,7 +117,7 @@ describe('ComboboxAsync', () => {
 		});
 
 		// Press escape to close the menu
-		await userEvent.keyboard('[Escape]');
+		await act(() => user.keyboard('[Escape]'));
 		expect(input).toHaveAttribute('aria-expanded', 'false');
 		expect(input).toHaveFocus();
 
@@ -147,12 +148,12 @@ describe('ComboboxAsync', () => {
 		if (!input) return;
 
 		// After focus of the input, check the events have been called correctly
-		await act(async () => await input.focus());
+		act(() => input.focus());
 		expect(onFocus).toHaveBeenCalledTimes(1);
 		expect(onBlur).toHaveBeenCalledTimes(0);
 
 		// After blur of the input, // check the events have been called correctly
-		await act(async () => await input.blur());
+		act(() => input.blur());
 		expect(input).not.toHaveAttribute('aria-expanded', 'true');
 		expect(onFocus).toHaveBeenCalledTimes(1);
 		expect(onBlur).toHaveBeenCalledTimes(1);

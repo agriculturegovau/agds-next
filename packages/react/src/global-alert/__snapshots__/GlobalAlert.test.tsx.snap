@@ -7,7 +7,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
     class="css-1m47coh-boxStyles-GlobalAlert"
   >
     <div
-      class="css-kzljbg-boxStyles-GlobalAlert"
+      class="css-1k0ecql-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
@@ -103,7 +103,7 @@ exports[`GlobalAlert with tone info renders correctly 1`] = `
     class="css-12rxrx6-boxStyles-GlobalAlert"
   >
     <div
-      class="css-1ml1e3c-boxStyles-GlobalAlert"
+      class="css-ceqckc-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
@@ -158,7 +158,7 @@ exports[`GlobalAlert with tone warning renders correctly 1`] = `
     class="css-1m47coh-boxStyles-GlobalAlert"
   >
     <div
-      class="css-kzljbg-boxStyles-GlobalAlert"
+      class="css-1k0ecql-boxStyles-GlobalAlert"
     >
       <svg
         aria-hidden="false"
