@@ -25,7 +25,6 @@ import { CopyIcon } from './icons/CopyIcon';
 import { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { DownloadIcon } from './icons/DownloadIcon';
-import { DrawerIcon } from './icons/DrawerIcon';
 import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { ExitIcon } from './icons/ExitIcon';
@@ -108,7 +107,6 @@ export const allIcons = {
 	CornerDownRightIcon,
 	DeleteIcon,
 	DownloadIcon,
-	DrawerIcon,
 	EditIcon,
 	EmailIcon,
 	ExitIcon,

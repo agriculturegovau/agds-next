@@ -4,6 +4,6 @@
 '@ag.ds-next/docs': minor
 ---
 
-icon: Created `BusinessIcon`, `DrawerIcon` and `GripIcon`.
+icon: Add new `BusinessIcon` and `GripIcon`.
 
-yourgov: Update/add various icons and change dashboard labels.
+yourgov: Change dashboard labels.
