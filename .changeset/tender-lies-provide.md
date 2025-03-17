@@ -3,16 +3,16 @@
 '@ag.ds-next/docs': minor
 ---
 
-docs: Add `packs` as available for use in code snippets and playroom.
+docs: Make `packs` available for use in code snippets and playroom.
 
-app-layout: `AppLayoutFooter` - Add `maxWidth` prop.
+app-layout: `AppLayoutFooter` - Add `maxWidth='container|containerLg'` prop.
 
-content: Add `maxWidth` prop to all content components.
+content: Add `maxWidth='container|containerLg'` prop to all content components.
 
 core: Add new `'containerLg'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
 
-footer: Add `maxWidth` prop.
+footer: Add `maxWidth='container|containerLg'` prop.
 
-header: Add `maxWidth` prop.
+header: Add `maxWidth='container|containerLg'` prop.
 
-main-nav: Add `maxWidth` prop.
+main-nav: Add `maxWidth='container|containerLg'` prop.
