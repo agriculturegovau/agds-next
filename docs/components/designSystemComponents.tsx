@@ -280,6 +280,7 @@ export {
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
 export { TimePicker } from '@ag.ds-next/react/time-picker';
+export { ToggleButton } from '@ag.ds-next/react/toggle-button';
 
 // Used to populate options on documentation site and playroom
 export {
@@ -290,5 +291,3 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
-
-export { ToggleButton } from '@ag.ds-next/react/toggle-button';

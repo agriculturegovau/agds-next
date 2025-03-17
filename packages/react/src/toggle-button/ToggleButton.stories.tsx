@@ -8,7 +8,7 @@ const meta: Meta<typeof ToggleButton> = {
 	render: function Render(props) {
 		const [isPressed, setIsPressed] = useState(false);
 		return (
-			<ToggleButton {...props} onChange={setIsPressed} pressed={isPressed} />
+			<ToggleButton {...props} onClick={setIsPressed} pressed={isPressed} />
 		);
 	},
 };
@@ -19,18 +19,14 @@ type Story = StoryObj<typeof ToggleButton>;
 
 export const Flag: Story = {
 	args: {
-		size: 'md',
 		label: 'Flag message',
-		disabled: false,
 		iconType: 'flag',
 	},
 };
 
 export const Star: Story = {
 	args: {
-		size: 'md',
 		label: 'Star message',
-		disabled: false,
 		iconType: 'star',
 	},
 };

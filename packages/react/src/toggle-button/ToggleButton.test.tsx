@@ -16,30 +16,38 @@ describe('ToggleButton', () => {
 		const { container } = renderToggleButton({
 			label: 'Flag message',
 			pressed: false,
-			onChange: () => undefined,
+			onClick: () => undefined,
 		});
+
 		expect(container).toMatchSnapshot();
 	});
+
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderToggleButton({
 			label: 'Flag message',
 			pressed: false,
-			onChange: () => undefined,
+			onClick: () => undefined,
 		});
+
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+
 		expect(await axe(container)).toHaveNoViolations();
 	});
-	it('renders with no label', async () => {
+
+	it('renders aria-label when hiddenLabel = true', async () => {
 		const { container } = renderToggleButton({
+			label: 'Flag message',
+			hiddenLabel: true,
 			pressed: false,
-			onChange: () => undefined,
-			'aria-label': 'Flag message',
+			onClick: () => undefined,
 		});
+
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
+
 		expect(await axe(container)).toHaveNoViolations();
 		expect(container).toMatchSnapshot();
 	});

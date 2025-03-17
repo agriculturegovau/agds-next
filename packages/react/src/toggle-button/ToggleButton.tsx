@@ -1,58 +1,77 @@
 import { forwardRef } from 'react';
-import { BaseButtonProps, Button, ButtonSize } from '../button';
+import {
+	Button,
+	type BaseButtonProps,
+	type ButtonSize,
+	type ButtonVariant,
+} from '../button';
 import { AlertFilledIcon, AlertIcon, InfoFilledIcon, InfoIcon } from '../icon';
 
 export type ToggleButtonProps = Omit<
 	BaseButtonProps,
-	'aria-haspopup' | 'aria-controls' | 'aria-expanded' | 'type'
+	| 'aria-controls'
+	| 'aria-expanded'
+	| 'aria-haspopup'
+	| 'aria-label'
+	| 'aria-pressed'
+	| 'onClick'
+	| 'role'
+	| 'type'
 > & {
-	/** The current pressed state for the ToggleButton. */
-	pressed: boolean;
-	/** Handle change events. */
-	onChange: (newValue: boolean) => void;
-	size?: ButtonSize;
-	/** The associated label for the ToggleButton. */
-	label?: string;
+	label: string;
+	/** When true, visually hides the label.  */
+	hiddenLabel?: boolean;
 	/** The icon type to display. */
 	iconType?: 'flag' | 'star';
+	/** Function to be called when the button is clicked. */
+	onClick: (pressedState: boolean) => void;
+	/** The current pressed state of the ToggleButton. */
+	pressed: boolean;
+	size?: ButtonSize;
+	variant?: ButtonVariant;
 };
 
-const iconTypeToIcon = {
+const iconTypeMap = {
 	flag: {
-		true: AlertFilledIcon,
 		false: AlertIcon,
+		true: AlertFilledIcon,
 	},
 	star: {
-		true: InfoFilledIcon,
 		false: InfoIcon,
+		true: InfoFilledIcon,
 	},
 };
 
 export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 	function ToggleButton(
 		{
+			hiddenLabel = false,
+			iconType = 'flag',
 			label,
-			onChange,
+			onClick,
 			pressed = false,
 			size = 'md',
-			iconType = 'flag',
+			variant = 'text',
 			...props
 		},
 		ref
 	) {
-		const Icon = iconTypeToIcon[iconType][pressed ? 'true' : 'false'];
+		const Icon =
+			iconTypeMap[iconType]?.[pressed ? 'true' : 'false'] ||
+			iconTypeMap.flag.false;
 
 		return (
 			<Button
-				variant="text"
 				{...props}
+				aria-label={hiddenLabel ? label : undefined}
 				aria-pressed={pressed}
 				iconBefore={Icon}
-				onClick={() => onChange(!pressed)}
+				onClick={() => onClick(!pressed)}
 				ref={ref}
 				size={size}
+				variant={variant}
 			>
-				{label}
+				{hiddenLabel ? undefined : label}
 			</Button>
 		);
 	}

@@ -5,66 +5,92 @@ group: Forms
 storybookPath: /story/Forms-ToggleButton--basic
 unreleased: true
 figmaGalleryNodeId: 17042%3A40508
-relatedComponents: ['switch']
 ---
 
-## Behavior
+Toggle buttons should be used to allow a user to alternate an interaction between “on” and “off” states.
 
-The button has and ‘Off’ and ‘On’ state that uses the aria-pressed attribute.
-
-- ‘Not pressed’. The button will display a stroked icon.
-- ‘Pressed’. The icon will be filled.
-
-Where space permits, the button should use a label that describes the state of the button.
+Its label should update and describe what will happen after it is pressed in its current state.
 
 ```jsx live
 () => {
 	const [isPressed, setPressed] = React.useState(false);
-	const [isPressed2, setPressed2] = React.useState(true);
+
+	return (
+		<ToggleButton
+			label={isPressed ? 'Unflag message' : 'Flag message'}
+			onClick={setPressed}
+			pressed={isPressed}
+		/>
+	);
+};
+```
+
+## Available icons
+
+To prevent inconsistent implementations, we limit the icons that can be used to current, known use-cases.
+
+```jsx live
+() => {
 	return (
 		<Stack alignItems="flex-start" gap={1}>
-			<ToggleButton
-				label="Unflag message"
-				pressed={isPressed}
-				onChange={setPressed}
-			/>
-			<ToggleButton
-				label="Flag message"
-				pressed={isPressed2}
-				onChange={setPressed2}
-			/>
+			<Flex gap={1}>
+				<ToggleButton
+					iconType="flag"
+					onClick={console.log}
+					label="flag (default)"
+					pressed={false}
+				/>
+				<ToggleButton
+					iconType="flag"
+					onClick={console.log}
+					label="flag (pressed)"
+					pressed={true}
+				/>
+			</Flex>
+
+			<Flex gap={1}>
+				<ToggleButton
+					iconType="star"
+					onClick={console.log}
+					label="star (default)"
+					pressed={false}
+				/>
+				<ToggleButton
+					iconType="star"
+					onClick={console.log}
+					label="star (pressed)"
+					pressed={true}
+				/>
+			</Flex>
 		</Stack>
 	);
 };
 ```
 
-## Default selection
+## Icon only
 
-The button should be ‘Off’ by default.
-
-## Icons available
-
-We limit the icons that can be used until we know there is a real user need for them. Limiting the icons available helps to ensure consistent application and user experience for the toggle button.
-
-If you have a valid need to add an icon contact the AgDS team.
+Some space-limited implementations may require an icon-only Toggle button. While the `label` is required for accessibility purposes, it can be visually hidden with the `hiddenLabel` prop.
 
 ```jsx live
 () => {
-	const [flagPressed, setFlagPressed] = React.useState(false);
-	const [starPressed, setStarPressed] = React.useState(false);
+	const [flagIsPressed, setFlagIsPressed] = React.useState(false);
+	const [starIsPressed, setStarIsPressed] = React.useState(false);
+
 	return (
 		<Stack alignItems="flex-start" gap={1}>
 			<ToggleButton
-				label="Unflag message"
-				pressed={flagPressed}
-				onChange={setFlagPressed}
 				iconType="flag"
+				label={flagIsPressed ? 'Unflag message' : 'Flag message'}
+				onClick={setFlagIsPressed}
+				pressed={flagIsPressed}
+				hiddenLabel
 			/>
 			<ToggleButton
-				label="Add to dashboard"
-				pressed={starPressed}
-				onChange={setStarPressed}
 				iconType="star"
+				label={starIsPressed ? 'Remove from dashboard' : 'Add to dashboard'}
+				onClick={setStarIsPressed}
+				pressed={starIsPressed}
+				hiddenLabel
 			/>
 		</Stack>
 	);
@@ -79,21 +105,22 @@ The medium button should be used in most cases to provide a larger icon.
 
 ```jsx live
 () => {
-	const [pressedMD, setPressedMD] = React.useState(false);
-	const [pressedSM, setPressedSM] = React.useState(false);
+	const [mediumIsPressed, setMediumIsPressed] = React.useState(false);
+	const [smallIsPressed, setSmallIsPressed] = React.useState(false);
+
 	return (
 		<Stack alignItems="flex-start" gap={1}>
 			<ToggleButton
 				label="Unflag message"
-				pressed={pressedMD}
-				onChange={setPressedMD}
+				pressed={mediumIsPressed}
+				onClick={setMediumIsPressed}
 				iconType="flag"
 				size="md"
 			/>
 			<ToggleButton
 				label="Flag message"
-				pressed={pressedSM}
-				onChange={setPressedSM}
+				pressed={smallIsPressed}
+				onClick={setSmallIsPressed}
 				iconType="flag"
 				size="sm"
 			/>
