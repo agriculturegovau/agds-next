@@ -1,10 +1,6 @@
-import { Fragment } from 'react';
 import { createIcon } from '../Icon';
 
 export const ChevronsRightIcon = createIcon(
-	<Fragment>
-		<polyline points="13 17 18 12 13 7" />
-		<polyline points="6 17 11 12 6 7" />
-	</Fragment>,
+	<path d="m13 17 5-5-5-5M6 17l5-5-5-5" />,
 	'ChevronsRightIcon'
 );

@@ -58,14 +58,22 @@ export const print = {
 			height: 'auto !important',
 		},
 	},
-	// for context that requires background on print (eg. white text on dark background)
+	// For context that requires background on print (eg. white text on dark background)
 	exactColor: {
 		'@media print': {
-			'-webkit-print-color-adjust': 'exact',
+			WebkitPrintColorAdjust: 'exact',
 			printColorAdjust: 'exact',
 		},
 	},
-};
+	// Hide URL rendered for links in print
+	hideHref: {
+		'@media print': {
+			'&[href]::after': {
+				display: 'none',
+			},
+		},
+	},
+} as const;
 
 export const packs = {
 	control,

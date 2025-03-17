@@ -3,7 +3,7 @@
 exports[`VisuallyHidden renders correctly 1`] = `
 <div>
   <a
-    class="css-koqz57-TextLink"
+    class="css-july2n-TextLink"
     data-testid="example"
     href="#"
   >

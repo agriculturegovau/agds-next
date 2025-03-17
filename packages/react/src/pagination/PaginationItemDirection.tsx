@@ -1,5 +1,5 @@
 import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
-import { LinkProps } from '../core';
+import { LinkProps, print } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { TextLink } from '../text-link';
@@ -108,6 +108,7 @@ const BaseDirectionLink = ({
 			as={as}
 			css={{
 				alignSelf: 'flex-start',
+				...print.hideHref,
 			}}
 			focusRingFor="keyboard"
 			fontFamily="body"

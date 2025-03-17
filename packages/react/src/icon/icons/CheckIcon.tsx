@@ -1,6 +1,3 @@
 import { createIcon } from '../Icon';
 
-export const CheckIcon = createIcon(
-	<polyline points="20 6 9 17 4 12" />,
-	'CheckIcon'
-);
+export const CheckIcon = createIcon(<path d="M20 6 9 17l-5-5" />, 'CheckIcon');

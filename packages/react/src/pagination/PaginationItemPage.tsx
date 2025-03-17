@@ -3,6 +3,7 @@ import {
 	boxPalette,
 	forwardRefWithAs,
 	LinkProps,
+	print,
 	useLinkComponent,
 } from '../core';
 import { Flex } from '../flex';
@@ -27,11 +28,12 @@ export function PaginationItemPage({
 				aria-current={isActive ? 'page' : undefined}
 				aria-label={`Go to page ${pageNumber}`}
 				as={Link}
-				css={
-					isActive
+				css={{
+					...(isActive
 						? { color: boxPalette.foregroundText, textDecoration: 'none' }
-						: undefined
-				}
+						: undefined),
+					...print.hideHref,
+				}}
 				focusRingFor="keyboard"
 				fontWeight={isActive ? 'bold' : 'normal'}
 				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}

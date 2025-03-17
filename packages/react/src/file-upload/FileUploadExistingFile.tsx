@@ -1,5 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { Box } from '../box';
+import { print } from '../core';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
@@ -44,6 +45,7 @@ export const FileUploadExistingFile = ({
 					{href ? (
 						<Text breakWords paddingY={1.5}>
 							<TextLink
+								css={{ ...print.hideHref }}
 								download={download}
 								href={href}
 								rel="noopener noreferrer"

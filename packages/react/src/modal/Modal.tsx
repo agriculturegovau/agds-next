@@ -9,6 +9,8 @@ import { ModalDialog, ModalDialogProps } from './ModalDialog';
 export type ModalProps = ModalDialogProps & {
 	/** If true, the modal will be rendered.  */
 	isOpen?: boolean;
+	/** @deprecated use `onClose` instead */
+	onDismiss?: () => void;
 };
 
 export const Modal: FunctionComponent<ModalProps> = ({

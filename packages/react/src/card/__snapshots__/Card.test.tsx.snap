@@ -49,7 +49,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-2leob8-CardLink"
+          class="css-1x2pup-CardLink"
           href="#"
         >
           Linking out
@@ -65,8 +65,8 @@ exports[`Card With link renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <polyline
-              points="9 18 15 12 9 6"
+            <path
+              d="m9 18 6-6-6-6"
             />
           </svg>
         </a>
