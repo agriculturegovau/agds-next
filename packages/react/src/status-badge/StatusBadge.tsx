@@ -57,7 +57,8 @@ export const StatusBadge = ({
 					borderRadius,
 					'& svg': {
 						flexShrink: 0,
-						width: iconWidth,
+						height: iconSize,
+						width: iconSize,
 					},
 				}}
 				display="inline-flex"
@@ -92,9 +93,10 @@ export const StatusBadge = ({
 			borderColor={borderColor}
 			css={{
 				borderRadius,
+				// Ensures the status badge doesn't create descender whitespace
+				verticalAlign: 'bottom',
 				'& svg': {
 					flexShrink: 0,
-					width: iconWidth,
 				},
 			}}
 			display="inline-flex"
@@ -120,14 +122,14 @@ export const StatusBadge = ({
 
 const borderRadius = mapSpacing(1); // 16px
 const height = mapSpacing(2); // 32px
-const iconWidth = '1.375rem'; // 22px
+const iconSize = '1.375rem'; // 22px
 
 const regularAppearanceStyleProps = {
 	background: 'body',
 	border: true,
 	borderWidth: 'sm',
 	height,
-	paddingX: 1,
+	paddingX: 0.75,
 } as const;
 
 const toneMap = {

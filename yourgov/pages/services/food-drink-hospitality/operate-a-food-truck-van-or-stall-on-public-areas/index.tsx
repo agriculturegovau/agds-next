@@ -210,7 +210,6 @@ export default function Page() {
 										<ul>
 											<li>vehicle registration details and vehicle plans</li>
 											<li>operational plan of management</li>
-											<li>food safety supervisor certificate</li>
 											<li>names of any employees who will be handling food.</li>
 										</ul>
 									</Prose>

@@ -1,14 +1,37 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { subDays, addDays } from 'date-fns';
+import { useCallback, useState } from 'react';
+import { sub, subDays, addDays } from 'date-fns';
 import { Box } from '../box';
 import { Stack } from '../stack';
 import { Button, ButtonGroup } from '../button';
 import { DatePickerNext, DatePickerNextProps } from './DatePickerNext';
+import { isValidDate } from './utils';
+
+type DateOrStringOrUndefined = Date | string | undefined;
 
 function ControlledDatePickerNext(props: DatePickerNextProps) {
-	const [value, setValue] = useState<Date | string | undefined>();
-	return <DatePickerNext {...props} onChange={setValue} value={value} />;
+	const [value, setValue] = useState<DateOrStringOrUndefined>();
+
+	const isInvalid = useCallback(
+		(value: DateOrStringOrUndefined) =>
+			!isValidDate(value, {
+				minDate: props.minDate ? sub(props.minDate, { days: 1 }) : undefined,
+				maxDate: props.maxDate,
+			}),
+		[props.maxDate, props.minDate]
+	);
+
+	const invalid = props.invalid || value ? isInvalid(value) : false;
+
+	return (
+		<DatePickerNext
+			{...props}
+			invalid={invalid}
+			message={props.message || (invalid ? 'Enter a valid date' : undefined)}
+			onChange={setValue}
+			value={value}
+		/>
+	);
 }
 
 const meta: Meta<typeof DatePickerNext> = {

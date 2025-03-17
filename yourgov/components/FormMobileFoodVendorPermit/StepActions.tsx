@@ -7,11 +7,26 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
-export function StepActions({ submitText = 'Save and continue' }) {
+export function StepActions({
+	hasSaveAndExit = true,
+	onCancel,
+	submitText = 'Save and continue',
+}: {
+	hasSaveAndExit?: boolean;
+	onCancel?: () => void;
+	submitText?: string;
+}) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
 		useGlobalForm();
+
+	const handleCancel = () => {
+		if (onCancel) {
+			onCancel();
+		}
+		cancel();
+	};
 
 	return (
 		<Fragment>
@@ -23,14 +38,16 @@ export function StepActions({ submitText = 'Save and continue' }) {
 						{submitText}
 					</Button>
 
-					<Button
-						loading={isSavingBeforeExiting}
-						onClick={saveAndExit}
-						type="submit"
-						variant="secondary"
-					>
-						Save and exit
-					</Button>
+					{hasSaveAndExit && (
+						<Button
+							loading={isSavingBeforeExiting}
+							onClick={saveAndExit}
+							type="submit"
+							variant="secondary"
+						>
+							Save and exit
+						</Button>
+					)}
 
 					<Button onClick={openModal} type="button" variant="tertiary">
 						Cancel
@@ -41,7 +58,7 @@ export function StepActions({ submitText = 'Save and continue' }) {
 			<Modal
 				actions={
 					<ButtonGroup>
-						<Button onClick={cancel}>Yes, cancel</Button>
+						<Button onClick={handleCancel}>Yes, cancel</Button>
 
 						<Button onClick={closeModal} variant="secondary">
 							No, take me back

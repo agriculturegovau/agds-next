@@ -55,7 +55,7 @@ export default function newPackage(
 				type: 'add',
 				path: '../.changeset/plop-create-{{packageName}}.md',
 				template:
-					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\n{{componentName}}: Initial release of component\n",
+					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\n{{packageName}}: Initial release of component\n",
 			});
 
 			return actions;

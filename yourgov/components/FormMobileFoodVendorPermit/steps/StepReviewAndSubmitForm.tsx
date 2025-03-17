@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
@@ -23,6 +24,7 @@ export function StepReviewAndSubmitForm() {
 	const { isSavingBeforeExiting, stepReviewAndSubmitSetState } =
 		useGlobalForm();
 	const { submitStep, canConfirmAndSubmit } = useFormContext();
+	const { query } = useRouter();
 
 	const {
 		register,
@@ -49,11 +51,23 @@ export function StepReviewAndSubmitForm() {
 
 	const hasMultipleErrors = Object.keys(errors).length > 1;
 
+	const shouldFocusTitle = ![
+		'stepOwnerDetails',
+		'stepBusinessDetails',
+		'stepBusinessAddress',
+		'stepVehicleRegistration',
+		'stepTradingTime',
+		'stepFoodServed',
+		'stepEmployees',
+		'stepUploadDocuments',
+	].includes(typeof query.success === 'string' ? query.success : '');
+
 	return (
 		<FormContainer
 			formIntroduction="Check and confirm all details on this page."
 			formTitle={stepKeyToStepDataMap.stepReviewAndSubmit.label}
 			hideRequiredFieldsMessage
+			shouldFocusTitle={shouldFocusTitle}
 		>
 			{canConfirmAndSubmit ? (
 				<Fragment>

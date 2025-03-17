@@ -20,11 +20,11 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import {
 	AvatarIcon,
+	BusinessIcon,
 	ChevronsLeftIcon,
 	EmailIcon,
 	ExitIcon,
 	HelpIcon,
-	HomeIcon,
 	PermitIcon,
 	SettingsIcon,
 } from '@ag.ds-next/react/icon';
@@ -111,13 +111,13 @@ export function AppLayout({
 }
 
 function AppLayoutHeader({ user }: { user: User }) {
-	const { pathname, push } = useRouter();
+	const { pathname, ...router } = useRouter();
 	const { linkedBusinesses, selectedBusiness, setSelectedBusiness } =
 		useLinkedBusinesses();
 
 	function onBusinessClick(business: Business) {
 		setSelectedBusiness(business);
-		push('/app/dashboard');
+		router.push('/app/dashboard');
 	}
 
 	const isAppHomePage = pathname === '/app';
@@ -181,7 +181,7 @@ function AppLayoutSidebar() {
 				options: { disableGroupPadding: true },
 				items: [
 					{
-						label: 'Back to my account',
+						label: 'Back to account dashboard',
 						icon: ChevronsLeftIcon,
 						href: '/app',
 					},
@@ -206,9 +206,9 @@ function AppLayoutSidebar() {
 			},
 			[
 				{
-					label: 'Dashboard',
+					label: 'Business Dashboard',
 					href: '/app/dashboard',
-					icon: HomeIcon,
+					icon: BusinessIcon,
 				},
 				{
 					label: 'Permits',

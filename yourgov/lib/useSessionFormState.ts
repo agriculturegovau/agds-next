@@ -60,6 +60,9 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 			stepOwnerDetailsGetState: () => {
 				return globalState.steps?.stepOwnerDetails;
 			},
+			stepOwnerDetailsReviewEditGetState: () => {
+				return globalState.steps?.stepOwnerDetailsReviewEdit;
+			},
 			stepOwnerDetailsSetState: (
 				newState: Partial<StepsFormState['stepOwnerDetails']>
 			) => {
@@ -70,9 +73,31 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 						steps: {
 							...prevState.steps,
 							stepOwnerDetails: {
-								...prevState.steps?.stepOwnerDetails, // User details, e.g. name and email are saved against step 1 but not always included during form submisssions for step 1 - TODO: either migrate this data to hidden form fields in step 1 or include it separately in the confirm and submit page
 								...newState,
 							},
+							stepOwnerDetailsReviewEdit: {},
+						},
+					};
+				});
+			},
+			stepOwnerDetailsReviewEditSetState: (
+				newState: Partial<StepsFormState['stepOwnerDetailsReviewEdit']>
+			) => {
+				setAndSyncGlobalStateAndSessionStorage((prevState) => {
+					return {
+						...prevState,
+						lastUpdated: Date.now(),
+						steps: {
+							...prevState.steps,
+							stepOwnerDetailsReviewEdit:
+								Object.keys(newState).length === 0
+									? {}
+									: {
+											...prevState.steps?.stepOwnerDetails,
+											...prevState.steps?.stepOwnerDetailsReviewEdit,
+											started: true,
+											...newState,
+									  },
 						},
 					};
 				});
@@ -140,6 +165,9 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 			stepEmployeesGetState: () => {
 				return globalState.steps?.stepEmployees;
 			},
+			stepEmployeesReviewEditGetState: () => {
+				return globalState.steps?.stepEmployeesReviewEdit;
+			},
 			stepEmployeesSetState: (
 				newState: DeepPartial<StepsFormState['stepEmployees']>
 			) => {
@@ -152,21 +180,22 @@ export function useSessionFormState<GlobalState extends DeepPartial<FormState>>(
 							started: true,
 							...newState,
 						},
+						stepEmployeesReviewEdit: {},
 					},
 				}));
 			},
-			stepFoodSafetySupervisorGetState: () => {
-				return globalState.steps?.stepFoodSafetySupervisor;
-			},
-			stepFoodSafetySupervisorSetState: (
-				newState: Partial<StepsFormState['stepFoodSafetySupervisor']>
+			stepEmployeesReviewEditSetState: (
+				newState: DeepPartial<StepsFormState['stepEmployeesReviewEdit']>
 			) => {
 				setAndSyncGlobalStateAndSessionStorage((prevState) => ({
 					...prevState,
 					lastUpdated: Date.now(),
 					steps: {
 						...prevState.steps,
-						stepFoodSafetySupervisor: newState,
+						stepEmployeesReviewEdit: {
+							started: true,
+							...newState,
+						},
 					},
 				}));
 			},

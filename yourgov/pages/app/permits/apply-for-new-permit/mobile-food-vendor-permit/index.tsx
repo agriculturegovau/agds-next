@@ -45,7 +45,10 @@ const Page: NextPageWithLayout = () => {
 
 							<PageTitle
 								callToAction={
-									<Details label="More information about mobile food vending business types">
+									<Details
+										iconBefore
+										label="More information about mobile food vending business types"
+									>
 										<Prose>
 											<p>
 												Regulating a mobile food vending business is essential

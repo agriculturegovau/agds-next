@@ -80,7 +80,6 @@ export function GettingStartedForm() {
 					<li>trading times</li>
 					<li>food served</li>
 					<li>details of any employees who will be handling food</li>
-					<li>food safety supervisor certificate</li>
 				</ul>
 				<p>
 					Once you have confirmed business and employee details, we will provide
