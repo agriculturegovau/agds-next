@@ -1,23 +1,23 @@
-import { css, CSSObject } from '@emotion/react';
+import { css, type CSSObject } from '@emotion/react';
 import {
-	tokens,
+	boxPalette,
 	BoxPalette,
 	boxPalettes,
-	boxPalette,
-	ResponsiveProp,
+	breakpointNames,
+	fontGrid,
 	mapResponsiveProp,
 	mapSpacing,
 	mq,
-	fontGrid,
-	Spacing,
 	packs,
-	BorderWidth,
-	FontWeight,
-	FontSize,
-	LineHeight,
-	Font,
-	breakpointNames,
-	MaxWidth,
+	tokens,
+	type BorderWidth,
+	type Font,
+	type FontSize,
+	type FontWeight,
+	type LineHeight,
+	type MaxWidth,
+	type ResponsiveProp,
+	type Spacing,
 } from '../core';
 
 type PaletteProps = Partial<{
@@ -332,19 +332,9 @@ type LayoutProps = Partial<{
 	maxHeight: ResponsiveProp<number | string>;
 }>;
 
-function mapMaxWidth(
-	maxWidth:
-		| ResponsiveProp<MaxWidth>
-		| ResponsiveProp<number>
-		| ResponsiveProp<string>
-		| ResponsiveProp<undefined>
-) {
-	return mapResponsiveProp(
-		maxWidth,
-		// @ts-expect-error stowey
-		(value) => tokens.maxWidth[value] || value
-	);
-}
+const isKeyOfMaxWidth = (
+	value: string | number | undefined
+): value is MaxWidth => !!value && value in tokens.maxWidth;
 
 function layoutStyles({
 	alignItems,
@@ -389,7 +379,9 @@ function layoutStyles({
 		justifyContent: mapResponsiveProp(justifyContent),
 		justifySelf: mapResponsiveProp(justifySelf),
 		maxHeight: mapResponsiveProp(maxHeight),
-		maxWidth: mapResponsiveProp(maxWidth, (value) => mapMaxWidth(value)),
+		maxWidth: mapResponsiveProp(maxWidth, (value) =>
+			isKeyOfMaxWidth(value) ? tokens.maxWidth[value] : value
+		),
 		minHeight: mapResponsiveProp(minHeight),
 		minWidth: mapResponsiveProp(minWidth),
 		rowGap: mapResponsiveProp(rowGap, mapSpacing),
