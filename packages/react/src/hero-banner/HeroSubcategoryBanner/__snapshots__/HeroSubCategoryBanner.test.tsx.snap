@@ -6,22 +6,22 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
     class="css-d9obf2-boxStyles"
   >
     <div
-      class="css-x3v7mx-boxStyles"
+      class="css-ou39vu-boxStyles"
     >
       <div
-        class="css-1m4kre0-boxStyles"
+        class="css-1rhmzip-boxStyles"
       >
         <div
-          class="css-1ajhjid-boxStyles"
+          class="css-eg651i-boxStyles"
         >
           <nav
             aria-label="Breadcrumbs"
           >
             <ol
-              class="css-4fe4yt-boxStyles-BreadcrumbsContainer"
+              class="css-njrw75-boxStyles-BreadcrumbsContainer"
             >
               <li
-                class="css-dxq36q-boxStyles"
+                class="css-v6k7t1-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -47,7 +47,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-dxq36q-boxStyles"
+                class="css-v6k7t1-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -68,14 +68,14 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 <button
                   aria-expanded="false"
                   aria-label="Show all breadcrumbs"
-                  class="css-s3exxs-BaseButton-boxStyles"
+                  class="css-1dlzu3n-BaseButton-boxStyles"
                   type="button"
                 >
                   …
                 </button>
               </li>
               <li
-                class="css-dxq36q-boxStyles"
+                class="css-v6k7t1-boxStyles"
               >
                 <svg
                   aria-hidden="true"
@@ -101,7 +101,7 @@ exports[`HeroSubcategoryBanner renders correctly 1`] = `
                 </a>
               </li>
               <li
-                class="css-dxq36q-boxStyles"
+                class="css-v6k7t1-boxStyles"
               >
                 <svg
                   aria-hidden="true"

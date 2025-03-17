@@ -3,7 +3,7 @@
 exports[`FileUpload 1 selected file renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -28,7 +28,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-wwob6m-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
         class="css-5ur8x"
@@ -38,7 +38,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-14xxofk-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
           <svg
             aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-1jtowwk-boxStyles"
+            class="css-iij6ui-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
@@ -112,7 +112,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-1ddvhpp-boxStyles"
+        class="css-1wcx0lf-boxStyles"
       >
         <span
           class="css-axuon-boxStyles"
@@ -121,16 +121,16 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
         </span>
         <ul
           aria-label="Selected files"
-          class="css-1ddvhpp-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <li
-            class="css-1pcrh8g-boxStyles"
+            class="css-1ydwyx-boxStyles"
           >
             <div
-              class="css-1y1s0lo-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-h3fkyh-boxStyles-FileUploadFileThumbnail"
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
@@ -153,7 +153,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-5vw2lv-boxStyles"
+                class="css-w79ye0-boxStyles"
               >
                 <span
                   class="css-ayz5ov-boxStyles"
@@ -171,7 +171,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-1gb3rxv-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <button
                 aria-label="Remove file: example.txt"
@@ -226,7 +226,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
 exports[`FileUpload Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -251,7 +251,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-wwob6m-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
         class="css-5ur8x"
@@ -261,7 +261,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-14xxofk-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
           <svg
             aria-hidden="true"
@@ -295,7 +295,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-1jtowwk-boxStyles"
+            class="css-iij6ui-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
@@ -342,7 +342,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
 exports[`FileUpload Existing files renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -367,7 +367,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
       General hint information
     </span>
     <div
-      class="css-wwob6m-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
         class="css-5ur8x"
@@ -377,7 +377,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-14xxofk-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
           <svg
             aria-hidden="true"
@@ -411,7 +411,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             type="file"
           />
           <div
-            class="css-1jtowwk-boxStyles"
+            class="css-iij6ui-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"
@@ -451,7 +451,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-1ddvhpp-boxStyles"
+        class="css-1wcx0lf-boxStyles"
       >
         <span
           class="css-axuon-boxStyles"
@@ -460,19 +460,19 @@ exports[`FileUpload Existing files renders correctly 1`] = `
         </span>
         <ul
           aria-label="Existing files"
-          class="css-1ddvhpp-boxStyles"
+          class="css-1wcx0lf-boxStyles"
         >
           <li
-            class="css-18ih4ej-boxStyles"
+            class="css-8coe2o-boxStyles"
           >
             <div
-              class="css-1y1s0lo-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
                 class="css-v9fqu3-boxStyles-FileUploadFileThumbnail"
               />
               <div
-                class="css-5vw2lv-boxStyles"
+                class="css-w79ye0-boxStyles"
               >
                 <div
                   class="css-1ldvxqr-boxStyles"
@@ -513,7 +513,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-1gb3rxv-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <button
                 aria-label="Remove file: example.png"
@@ -559,13 +559,13 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </div>
           </li>
           <li
-            class="css-18ih4ej-boxStyles"
+            class="css-8coe2o-boxStyles"
           >
             <div
-              class="css-1y1s0lo-boxStyles"
+              class="css-1jhrbpg-boxStyles"
             >
               <div
-                class="css-h3fkyh-boxStyles-FileUploadFileThumbnail"
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
               >
                 <svg
                   aria-hidden="true"
@@ -588,7 +588,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
                 </svg>
               </div>
               <div
-                class="css-5vw2lv-boxStyles"
+                class="css-w79ye0-boxStyles"
               >
                 <div
                   class="css-1ldvxqr-boxStyles"
@@ -629,7 +629,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
               </div>
             </div>
             <div
-              class="css-1gb3rxv-boxStyles"
+              class="css-jd5yi9-boxStyles"
             >
               <button
                 aria-label="Remove file: example-no-thumbnail.doc"
@@ -684,7 +684,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
 exports[`FileUpload Multiple, maxSize and accepted file extensions renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -709,7 +709,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
       General hint information
     </span>
     <div
-      class="css-wwob6m-boxStyles"
+      class="css-1mxr31d-boxStyles"
     >
       <div
         class="css-5ur8x"
@@ -719,7 +719,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
         class="css-79i25n-boxStyles"
       >
         <div
-          class="css-14xxofk-boxStyles"
+          class="css-1qmc73y-boxStyles"
         >
           <svg
             aria-hidden="true"
@@ -755,7 +755,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             type="file"
           />
           <div
-            class="css-1jtowwk-boxStyles"
+            class="css-iij6ui-boxStyles"
           >
             <span
               class="css-1ay4t5v-FileUpload"

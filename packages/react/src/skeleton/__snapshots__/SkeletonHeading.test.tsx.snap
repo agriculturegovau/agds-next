@@ -4,7 +4,7 @@ exports[`SkeletonHeading renders correctly 1`] = `
 <div>
   <div
     aria-hidden="true"
-    class="css-183gcpu-boxStyles-SkeletonBox"
+    class="css-y1hpjl-boxStyles-SkeletonBox"
   />
 </div>
 `;

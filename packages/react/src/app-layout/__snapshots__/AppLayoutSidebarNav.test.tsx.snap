@@ -4,10 +4,10 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
 <div>
   <nav
     aria-label="main"
-    class="css-1oz53nk-boxStyles"
+    class="css-wutooc-boxStyles"
   >
     <ul
-      class="css-4i4i04-boxStyles"
+      class="css-o80hmi-boxStyles"
     >
       <li
         class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
@@ -53,7 +53,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
         class="css-mjl15f-AppLayoutSidebarNavItemInner"
       >
         <span
-          class="css-17tna2x-boxStyles"
+          class="css-1i7cdx8-boxStyles"
         >
           <span
             class="css-1pigcx9-boxStyles"
@@ -153,7 +153,7 @@ exports[`Given AppLayoutSidebarNav is rendered when subLevelVisible is "whenActi
           </svg>
         </a>
         <ul
-          class="css-4i4i04-boxStyles"
+          class="css-o80hmi-boxStyles"
         >
           <li
             class="css-1aio4t5-AppLayoutSidebarNavItemInner"

@@ -3,7 +3,7 @@
 exports[`Select Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -74,7 +74,7 @@ exports[`Select Basic renders correctly 1`] = `
 exports[`Select Grouped options renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -168,7 +168,7 @@ exports[`Select Grouped options renders correctly 1`] = `
 exports[`Select Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-11krmg5-boxStyles-FieldContainer"
+    class="css-1n67ua0-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -187,7 +187,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </span>
     </label>
     <div
-      class="css-1n6a4q-boxStyles"
+      class="css-1xkbxzi-boxStyles"
     >
       <div
         class="css-1ldvxqr-boxStyles"
@@ -273,7 +273,7 @@ exports[`Select Invalid renders correctly 1`] = `
 exports[`Select With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"

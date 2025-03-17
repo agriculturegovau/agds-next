@@ -4,10 +4,10 @@ exports[`InpageNav renders correctly 1`] = `
 <div>
   <nav
     aria-label="In page"
-    class="css-14y2tmj-boxStyles-InpageNavContainer"
+    class="css-1hxu0qr-boxStyles-InpageNavContainer"
   >
     <ul
-      class="css-1ddvhpp-boxStyles"
+      class="css-1wcx0lf-boxStyles"
     >
       <li
         class="css-79i25n-boxStyles"

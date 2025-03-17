@@ -4,13 +4,13 @@ exports[`SideNav renders correctly 1`] = `
 <div>
   <nav
     aria-labelledby="collapsing-side-bar-:r0:-heading"
-    class="css-ncrcvp-boxStyles-CollapsingSideBar"
+    class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
     <div
       class="css-bmr02n-boxStyles-CollapsingSideBar"
     >
       <div
-        class="css-1vssla3-boxStyles-CollapsingSideBar"
+        class="css-lr9d04-boxStyles-CollapsingSideBar"
         id="collapsing-side-bar-:r0:-heading"
       >
         <h2
@@ -31,10 +31,10 @@ exports[`SideNav renders correctly 1`] = `
         type="button"
       >
         <span
-          class="css-1o9vf2o-boxStyles"
+          class="css-1eiy0fa-boxStyles"
         >
           <span
-            class="css-1ddvhpp-boxStyles"
+            class="css-1wcx0lf-boxStyles"
           >
             <span
               class="css-1rvfmyi-boxStyles-CollapsingSideBar"
@@ -89,7 +89,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-dyyc2v-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/welcome"
               >
                 <span
@@ -103,7 +103,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-dyyc2v-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/do-you-need-to-lodge-a-tax-return"
               >
                 <span
@@ -117,7 +117,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-dyyc2v-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/lodge-online"
               >
                 <span
@@ -148,7 +148,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-dyyc2v-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/whats-new-for-individuals"
               >
                 <span
@@ -162,7 +162,7 @@ exports[`SideNav renders correctly 1`] = `
               class="css-0"
             >
               <a
-                class="css-dyyc2v-boxStyles-SideNavLink"
+                class="css-1xapbrs-boxStyles-SideNavLink"
                 href="/why-you-may-receive-a-tax-bill"
               >
                 <span
@@ -177,7 +177,7 @@ exports[`SideNav renders correctly 1`] = `
             >
               <a
                 aria-current="page"
-                class="css-1kjewl8-boxStyles-SideNavLink"
+                class="css-johbbs-boxStyles-SideNavLink"
                 href="/in-detail"
               >
                 <span
@@ -210,7 +210,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1e9h1yl-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/in-detail/record-keeping"
                   >
                     <span
@@ -246,7 +246,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1e9h1yl-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/tax-receipt"
                   >
                     <span
@@ -265,7 +265,7 @@ exports[`SideNav renders correctly 1`] = `
                   class="css-0"
                 >
                   <a
-                    class="css-1e9h1yl-boxStyles-SideNavLink"
+                    class="css-esqyjf-boxStyles-SideNavLink"
                     href="/pre-fill-availability"
                   >
                     <span

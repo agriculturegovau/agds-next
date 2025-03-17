@@ -3,7 +3,7 @@
 exports[`ComboboxMulti renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -32,7 +32,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
       class="css-110h4z6"
     >
       <div
-        class="css-1ntjqlm-boxStyles"
+        class="css-8mqth-boxStyles"
       >
         <div
           class="css-1e6s4pi"
@@ -55,7 +55,7 @@ exports[`ComboboxMulti renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-iyti9i-boxStyles-ComboboxButtonContainer"
+          class="css-1733k8b-boxStyles-ComboboxButtonContainer"
         >
           <button
             aria-controls="downshift-:r1:-menu"

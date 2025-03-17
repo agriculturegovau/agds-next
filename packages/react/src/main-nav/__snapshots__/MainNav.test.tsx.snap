@@ -7,13 +7,13 @@ exports[`MainNav renders correctly 1`] = `
     tabindex="-1"
   >
     <div
-      class="css-1dp5ewz-boxStyles-MainNavContainer"
+      class="css-1s0s06z-boxStyles-MainNavContainer"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-label="Menu (Open main menu)"
-        class="css-1jdy7sk-BaseButton-boxStyles-MainNavOpenButton"
+        class="css-93qcrg-BaseButton-boxStyles-MainNavOpenButton"
         type="button"
       >
         <svg
@@ -42,13 +42,13 @@ exports[`MainNav renders correctly 1`] = `
       </button>
       <nav
         aria-label="Main"
-        class="css-1i16gjn-boxStyles"
+        class="css-jilr25-boxStyles"
       >
         <ul
-          class="css-1y1s0lo-boxStyles"
+          class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-1ek7xsb-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/"
@@ -59,7 +59,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1ek7xsb-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/content"
@@ -70,7 +70,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-1ek7xsb-boxStyles-MainNavListItem"
+            class="css-1fvix7x-boxStyles-MainNavListItem"
           >
             <a
               href="/form"
@@ -81,7 +81,7 @@ exports[`MainNav renders correctly 1`] = `
             </a>
           </li>
           <li
-            class="css-15iutlx-boxStyles-MainNavListItem"
+            class="css-1mfistu-boxStyles-MainNavListItem"
           >
             <a
               aria-current="page"
@@ -96,13 +96,13 @@ exports[`MainNav renders correctly 1`] = `
       </nav>
       <nav
         aria-label="Supplementary"
-        class="css-ay97ae-boxStyles-MainNavList"
+        class="css-fmh3pu-boxStyles-MainNavList"
       >
         <ul
-          class="css-1y1s0lo-boxStyles"
+          class="css-1jhrbpg-boxStyles"
         >
           <li
-            class="css-1x31q50-boxStyles-MainNavListItem"
+            class="css-r39s9d-boxStyles-MainNavListItem"
           >
             <a
               href="#sign-in"

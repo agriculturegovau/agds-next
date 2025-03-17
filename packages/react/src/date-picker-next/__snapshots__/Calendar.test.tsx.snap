@@ -59,7 +59,7 @@ exports[`Calendar Range renders correctly 1`] = `
                 June 2023
               </h2>
               <div
-                class="css-1q569qq-boxStyles"
+                class="css-v0gr9g-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"
@@ -845,7 +845,7 @@ exports[`Calendar Single renders correctly 1`] = `
                 June 2023
               </h2>
               <div
-                class="css-1q569qq-boxStyles"
+                class="css-v0gr9g-boxStyles"
               >
                 <div
                   class="css-8a7wrr-YearMonthSelect"

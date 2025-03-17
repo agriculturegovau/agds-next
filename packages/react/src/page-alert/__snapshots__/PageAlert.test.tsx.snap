@@ -3,10 +3,10 @@
 exports[`PageAlert tone: error renders correctly 1`] = `
 <div>
   <div
-    class="css-cplja2-boxStyles-PageAlert"
+    class="css-4co8rc-boxStyles-PageAlert"
   >
     <div
-      class="css-19n40vu-boxStyles-PageAlert"
+      class="css-18vqq3k-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -29,10 +29,10 @@ exports[`PageAlert tone: error renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-8juj1l-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
-        class="css-1qaerpt-boxStyles"
+        class="css-g6k1ma-boxStyles"
       >
         <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
@@ -62,10 +62,10 @@ exports[`PageAlert tone: error renders correctly 1`] = `
 exports[`PageAlert tone: info renders correctly 1`] = `
 <div>
   <div
-    class="css-118gscv-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
-      class="css-bmjrul-boxStyles-PageAlert"
+      class="css-10lvnwv-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -88,10 +88,10 @@ exports[`PageAlert tone: info renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-8juj1l-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
-        class="css-1qaerpt-boxStyles"
+        class="css-g6k1ma-boxStyles"
       >
         <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
@@ -112,10 +112,10 @@ exports[`PageAlert tone: info renders correctly 1`] = `
 exports[`PageAlert tone: success renders correctly 1`] = `
 <div>
   <div
-    class="css-1e1nz0n-boxStyles-PageAlert"
+    class="css-1fz8glh-boxStyles-PageAlert"
   >
     <div
-      class="css-1ycg458-boxStyles-PageAlert"
+      class="css-iwdduc-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -138,10 +138,10 @@ exports[`PageAlert tone: success renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-8juj1l-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
-        class="css-1qaerpt-boxStyles"
+        class="css-g6k1ma-boxStyles"
       >
         <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
@@ -162,10 +162,10 @@ exports[`PageAlert tone: success renders correctly 1`] = `
 exports[`PageAlert tone: warning renders correctly 1`] = `
 <div>
   <div
-    class="css-16todet-boxStyles-PageAlert"
+    class="css-rl6354-boxStyles-PageAlert"
   >
     <div
-      class="css-woch2e-boxStyles-PageAlert"
+      class="css-ddla0z-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -188,10 +188,10 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-8juj1l-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
-        class="css-1qaerpt-boxStyles"
+        class="css-g6k1ma-boxStyles"
       >
         <h2
           class="css-1at50fi-boxStyles-PageAlertTitle"
@@ -212,10 +212,10 @@ exports[`PageAlert tone: warning renders correctly 1`] = `
 exports[`PageAlert with a close button renders correctly 1`] = `
 <div>
   <div
-    class="css-118gscv-boxStyles-PageAlert"
+    class="css-4eblwe-boxStyles-PageAlert"
   >
     <div
-      class="css-bmjrul-boxStyles-PageAlert"
+      class="css-10lvnwv-boxStyles-PageAlert"
     >
       <svg
         aria-hidden="false"
@@ -238,10 +238,10 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-8juj1l-boxStyles-PageAlert"
+      class="css-ic9f31-boxStyles-PageAlert"
     >
       <div
-        class="css-1qaerpt-boxStyles"
+        class="css-g6k1ma-boxStyles"
       >
         <h2
           class="css-16u1tz7-boxStyles-PageAlertTitle"

@@ -22,10 +22,10 @@ exports[`Fieldset Basic renders correctly 1`] = `
       class="css-1dnalsd-FieldsetContent"
     >
       <div
-        class="css-1qb0j4h-boxStyles"
+        class="css-h0krvw-boxStyles"
       >
         <div
-          class="css-17xn84x-boxStyles-FieldContainer"
+          class="css-1904cz9-boxStyles-FieldContainer"
         >
           <label
             class="css-79i25n-boxStyles"
@@ -50,7 +50,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-17xn84x-boxStyles-FieldContainer"
+          class="css-1904cz9-boxStyles-FieldContainer"
         >
           <label
             class="css-79i25n-boxStyles"
@@ -108,10 +108,10 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
       class="css-1dnalsd-FieldsetContent"
     >
       <div
-        class="css-1qb0j4h-boxStyles"
+        class="css-h0krvw-boxStyles"
       >
         <div
-          class="css-17xn84x-boxStyles-FieldContainer"
+          class="css-1904cz9-boxStyles-FieldContainer"
         >
           <label
             class="css-79i25n-boxStyles"
@@ -136,7 +136,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
           />
         </div>
         <div
-          class="css-17xn84x-boxStyles-FieldContainer"
+          class="css-1904cz9-boxStyles-FieldContainer"
         >
           <label
             class="css-79i25n-boxStyles"

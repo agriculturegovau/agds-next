@@ -3,7 +3,7 @@
 exports[`DateRangePicker renders correctly 1`] = `
 <div>
   <div
-    class="css-17xn84x-boxStyles-FieldContainer"
+    class="css-1904cz9-boxStyles-FieldContainer"
     id="date-range-picker-:r0:"
   >
     <fieldset
@@ -25,13 +25,13 @@ exports[`DateRangePicker renders correctly 1`] = `
         </span>
       </legend>
       <div
-        class="css-1ou3uxe-boxStyles-DateRangePicker"
+        class="css-1fqlpl4-boxStyles-DateRangePicker"
       >
         <div
-          class="css-1feorke-boxStyles"
+          class="css-72257o-boxStyles"
         >
           <div
-            class="css-17xn84x-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -50,7 +50,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               </span>
             </label>
             <div
-              class="css-1yxrshf-boxStyles-DateInput"
+              class="css-13lwm2a-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"
@@ -112,7 +112,7 @@ exports[`DateRangePicker renders correctly 1`] = `
             />
           </div>
           <div
-            class="css-17xn84x-boxStyles-FieldContainer"
+            class="css-1904cz9-boxStyles-FieldContainer"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -131,7 +131,7 @@ exports[`DateRangePicker renders correctly 1`] = `
               </span>
             </label>
             <div
-              class="css-1yxrshf-boxStyles-DateInput"
+              class="css-13lwm2a-boxStyles-DateInput"
             >
               <input
                 aria-invalid="false"

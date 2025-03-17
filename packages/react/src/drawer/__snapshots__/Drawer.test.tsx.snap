@@ -21,7 +21,7 @@ exports[`Drawer renders correctly 1`] = `
       <div
         aria-labelledby="drawer-:r0:-title"
         aria-modal="true"
-        class="css-1cue5d7-boxStyles-DrawerDialog"
+        class="css-1sh13sj-boxStyles-DrawerDialog"
         role="dialog"
         style="transform: translateX(100%);"
       >

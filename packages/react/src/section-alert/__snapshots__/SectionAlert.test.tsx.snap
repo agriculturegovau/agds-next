@@ -4,18 +4,18 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r8: section-alert-title-:r8: "
-    class="css-cyxq5n-boxStyles"
+    class="css-1td0tl7-boxStyles"
     role="region"
   >
     <div
-      class="css-15nta8p-boxStyles"
+      class="css-1urm0li-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
       >
         <svg
           aria-hidden="true"
-          class="css-vvfklf-Icon"
+          class="css-12t0psr"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -39,7 +39,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-17tna2x-boxStyles"
+        class="css-1i7cdx8-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -98,18 +98,18 @@ exports[`SectionAlert with a description renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r6: section-alert-title-:r6: section-alert-children-:r6:"
-    class="css-cyxq5n-boxStyles"
+    class="css-1td0tl7-boxStyles"
     role="region"
   >
     <div
-      class="css-15nta8p-boxStyles"
+      class="css-1urm0li-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
       >
         <svg
           aria-hidden="true"
-          class="css-vvfklf-Icon"
+          class="css-12t0psr"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -133,7 +133,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-17tna2x-boxStyles"
+        class="css-1i7cdx8-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -160,18 +160,18 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r0: section-alert-title-:r0: "
-    class="css-1o3kv7y-boxStyles"
+    class="css-3ieit4-boxStyles"
     role="region"
   >
     <div
-      class="css-15nta8p-boxStyles"
+      class="css-1urm0li-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
       >
         <svg
           aria-hidden="true"
-          class="css-1w78ld0-Icon"
+          class="css-1tf303h"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -195,7 +195,7 @@ exports[`SectionAlert with error tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-17tna2x-boxStyles"
+        class="css-1i7cdx8-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -213,18 +213,18 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r2: section-alert-title-:r2: "
-    class="css-cyxq5n-boxStyles"
+    class="css-1td0tl7-boxStyles"
     role="region"
   >
     <div
-      class="css-15nta8p-boxStyles"
+      class="css-1urm0li-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
       >
         <svg
           aria-hidden="true"
-          class="css-vvfklf-Icon"
+          class="css-12t0psr"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -248,7 +248,7 @@ exports[`SectionAlert with success tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-17tna2x-boxStyles"
+        class="css-1i7cdx8-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -266,18 +266,18 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r4: section-alert-title-:r4: "
-    class="css-1qkq04r-boxStyles"
+    class="css-9xmjo1-boxStyles"
     role="region"
   >
     <div
-      class="css-15nta8p-boxStyles"
+      class="css-1urm0li-boxStyles"
     >
       <span
         class="css-1lb5yh3-SectionAlert"
       >
         <svg
           aria-hidden="true"
-          class="css-15hefj6-Icon"
+          class="css-1gw1uzm"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -301,7 +301,7 @@ exports[`SectionAlert with warning tone renders correctly 1`] = `
         </span>
       </span>
       <div
-        class="css-17tna2x-boxStyles"
+        class="css-1i7cdx8-boxStyles"
       >
         <span
           class="css-1jywj6f-boxStyles"
