@@ -32,10 +32,7 @@ exports[`Pagination renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M21 12L4 12"
-              />
-              <path
-                d="M8 17L3 12L8 7"
+                d="M21 12H4M8 17l-5-5 5-5"
               />
             </svg>
             <span
@@ -137,10 +134,7 @@ exports[`Pagination renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M3 12L20 12"
-              />
-              <path
-                d="M16 7L21 12L16 17"
+                d="M3 12h17M16 7l5 5-5 5"
               />
             </svg>
           </a>

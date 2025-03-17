@@ -3,8 +3,8 @@ import { createIcon } from '../Icon';
 
 export const SearchIcon = createIcon(
 	<Fragment>
-		<line x1="15.5568" x2="21.9208" y1="15.5562" y2="21.9201" />
-		<circle cx="9.8995" cy="9.89941" r="7" />
+		<path d="m15.557 15.556 6.364 6.364" />
+		<circle cx="9.899" cy="9.899" r="7" />
 	</Fragment>,
 	'SearchIcon'
 );

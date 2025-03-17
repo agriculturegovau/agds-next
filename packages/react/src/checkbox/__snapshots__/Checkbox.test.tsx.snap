@@ -28,8 +28,8 @@ exports[`Checkbox renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <polyline
-          points="20 6 9 17 4 12"
+        <path
+          d="M20 6 9 17l-5-5"
         />
       </svg>
     </span>

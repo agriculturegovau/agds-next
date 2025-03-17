@@ -1,6 +1,6 @@
 import { createIcon } from '../Icon';
 
 export const FilterIcon = createIcon(
-	<path d="M3 6H21M3 12H21M3 18H21M7 4V8M15 10V14M7 16V20" />,
+	<path d="M3 6h18M3 12h18M3 18h18M7 4v4m8 2v4m-8 2v4" />,
 	'FilterIcon'
 );

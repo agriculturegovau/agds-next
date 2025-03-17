@@ -1,6 +1,6 @@
 import { createIcon } from '../Icon';
 
 export const ChartBarIcon = createIcon(
-	<path d="M21 21H6.2C5.07989 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4802 3 18.9201 3 17.8V3M8 8V17M18 13V17M13 5V17" />,
+	<path d="M21 21H6.2c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C3 19.48 3 18.92 3 17.8V3m5 5v9m10-4v4M13 5v12" />,
 	'ChartBarIcon'
 );
