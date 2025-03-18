@@ -1,6 +1,8 @@
 import { type ReactNode, useState } from 'react';
 import { Drawer } from '@ag.ds-next/react/drawer';
 import { TextLink, TextLinkExternal } from '@ag.ds-next/react/text-link';
+import { MoveLeftIcon } from '@ag.ds-next/react/icon';
+import { mapSpacing } from '@ag.ds-next/react/core';
 
 type HelpReferenceProps = {
 	drawerContent: ReactNode;
@@ -25,6 +27,15 @@ export function HelpReference({
 				}}
 			>
 				{linkContent}
+				<MoveLeftIcon
+					css={{
+						position: 'relative',
+						top: 3,
+						marginLeft: mapSpacing(0.25),
+					}}
+					size="sm"
+					weight="regular"
+				/>
 			</TextLink>
 			<Drawer
 				actions={

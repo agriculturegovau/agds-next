@@ -65,6 +65,27 @@ exports[`Icon AlertIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ArchiveIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20 8.444V20H4V8.444M10.182 12h3.636M2 4h20v4.444H2V4Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ArrowDownIcon renders correctly 1`] = `
 <div>
   <svg
@@ -212,6 +233,27 @@ exports[`Icon AvatarIcon renders correctly 1`] = `
       cx="12"
       cy="12"
       r="10.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon BusinessIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M15 21V3H3v18h12Zm0 0h6V7.5h-6V21ZM7 6v2m0 2v2m4-6v2m0 2v2m7 2v2m0-6v2M7 15h4v6H7v-6Z"
     />
   </svg>
 </div>
@@ -448,6 +490,27 @@ exports[`Icon ChevronsUpDownIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon ClockIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 6.6V12l3.6 1.8M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon CloseIcon renders correctly 1`] = `
 <div>
   <svg
@@ -597,6 +660,27 @@ exports[`Icon EmailIcon renders correctly 1`] = `
   >
     <path
       d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2m20 0v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6m20 0-10 7L2 6"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon EmailOpenIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M22 10c0-.63-.3-1.22-.8-1.6l-8-6a2 2 0 0 0-2.4 0l-8 6A2 2 0 0 0 2 10m20 0v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10m20 0-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"
     />
   </svg>
 </div>
@@ -752,6 +836,70 @@ exports[`Icon FilterIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon FlagFilledIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12Zm0 0v7"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon FlagIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12Zm0 0v7"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon GripIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM8.5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM8.5 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM15.5 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon HelpIcon renders correctly 1`] = `
 <div>
   <svg
@@ -768,6 +916,27 @@ exports[`Icon HelpIcon renders correctly 1`] = `
   >
     <path
       d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon HistoryIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3.592 15.663c1.772 4.051 6.197 6.306 10.626 5.121 4.879-1.306 7.78-6.294 6.48-11.14-1.3-4.847-6.31-7.717-11.189-6.411a9.144 9.144 0 0 0-6.687 7.433M6.58 9.661l-3.866 1.034a.546.546 0 0 1-.668-.385L1.009 6.449m10.906.095v5.451l3.638 1.817"
     />
   </svg>
 </div>
@@ -1007,6 +1176,48 @@ exports[`Icon MinusIcon renders correctly 1`] = `
   >
     <path
       d="M5 12h14"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon MoveLeftIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m9 7-5 5m0 0 5 5m-5-5h11m5-7v14"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon MoveRightIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m15 17 5-5m0 0-5-5m5 5H9M4 5v14"
     />
   </svg>
 </div>
@@ -1252,6 +1463,48 @@ exports[`Icon ProgressTodoIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon RotateLeftIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.583 15.745c1.772 4.052 6.197 6.307 10.626 5.122 4.88-1.306 7.78-6.294 6.48-11.14-1.3-4.847-6.309-7.718-11.188-6.412a9.144 9.144 0 0 0-6.688 7.434M7.57 9.742l-3.866 1.035a.546.546 0 0 1-.668-.386L2 6.531"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon RotateRightIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19.417 15.745c-1.772 4.052-6.197 6.307-10.626 5.122-4.88-1.306-7.78-6.294-6.48-11.14C3.61 4.88 8.62 2.008 13.499 3.314a9.144 9.144 0 0 1 6.687 7.434M16.43 9.742l3.866 1.035a.546.546 0 0 0 .668-.386L22 6.531"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ScrollbarArrowLeftIcon renders correctly 1`] = `
 <div>
   <svg
@@ -1346,6 +1599,49 @@ exports[`Icon SettingsIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon StarFilledIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon StarIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon SuccessFilledIcon renders correctly 1`] = `
 <div>
   <svg
@@ -1430,6 +1726,27 @@ exports[`Icon ThumbsUpIcon renders correctly 1`] = `
   >
     <path
       d="M6 21H3a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V4a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H13Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon TimerIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9.5 2h5M12 6a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 0V2m3 9-3 3m7-7-1 1"
     />
   </svg>
 </div>
@@ -1642,6 +1959,48 @@ exports[`Icon XIcon renders correctly 1`] = `
   >
     <path
       d="M19.555 4 5.333 20m11.395-.206L5.113 4.861A.533.533 0 0 1 5.534 4H7.74a.53.53 0 0 1 .42.206l11.615 14.933a.533.533 0 0 1-.42.861H17.15a.534.534 0 0 1-.42-.206Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon ZoomInIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m14.95 14.95 7.071 7.07m-7.071-7.07a7 7 0 1 0-9.9-9.9 7 7 0 0 0 9.9 9.9ZM10 7v6m-3-3h6"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon ZoomOutIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m14.95 14.95 7.071 7.07m-7.071-7.07a7 7 0 1 0-9.9-9.9 7 7 0 0 0 9.9 9.9ZM7 10h6"
     />
   </svg>
 </div>

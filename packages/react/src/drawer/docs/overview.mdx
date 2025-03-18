@@ -425,11 +425,17 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 () => {
 	const formRef = React.useRef(null);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	const [dateValue, setDateValue] = React.useState();
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+
 	const onSubmitForm = (event) => {
 		event.preventDefault();
 
 		const formData = Object.fromEntries(new FormData(formRef.current));
-		console.log('Form submitted with values:', formData);
+		console.log('Form submitted with values:', {
+			...formData,
+			dateInput: dateValue,
+		});
 
 		closeDrawer();
 	};
@@ -459,9 +465,15 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 						<TextInput label="Example text input" name="textInput" />
 
 						<TextInput
-							label="Example text input"
+							label="Example number input"
 							name="numberInput"
 							type="number"
+						/>
+
+						<DatePickerNext
+							label="Select date"
+							value={dateValue}
+							onChange={setDateValue}
 						/>
 					</FormStack>
 				</form>

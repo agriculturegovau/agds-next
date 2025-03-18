@@ -17,7 +17,7 @@ const Page: NextPageWithLayout = () => {
 		<Fragment>
 			<DocumentTitle
 				title={`${
-					'items' in stepKeyToStepDataMap.stepOwnerDetails
+					stepKeyToStepDataMap.stepOwnerDetails?.items
 						? stepKeyToStepDataMap.stepOwnerDetails.items[0].label
 						: undefined
 				} | ${formTitle}`}

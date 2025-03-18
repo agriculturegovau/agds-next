@@ -12,6 +12,7 @@ import { Box } from '@ag.ds-next/react/box';
 import { H2 } from '@ag.ds-next/react/heading';
 import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
 import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { UploadFileTable } from '../UploadFileTable';
 import { useFormContext } from './FormProvider';
@@ -31,13 +32,6 @@ const documentRows = [
 		error: false,
 	},
 	{
-		documentType: 'Food Safety Supervisor Certificate for Charlie Walker',
-		file: '',
-		size: '',
-		id: 'food-safety-certificate',
-		error: false,
-	},
-	{
 		documentType: 'Suggested menu or list of foods being sold',
 		file: '',
 		size: '',
@@ -51,8 +45,6 @@ export const idToDocumentTypeMap: Record<
 	Document['documentType']
 > = {
 	'rms-vehicle-registration': 'RMS Vehicle registration',
-	'food-safety-certificate':
-		'Food Safety Supervisor Certificate for Charlie Walker',
 	'suggested-menu-or-list-of-foods-being-sold':
 		'Suggested menu or list of foods being sold',
 };
@@ -80,6 +72,8 @@ export function StepUploadDocumentsForm() {
 		isSavingBeforeExiting,
 	} = useGlobalForm();
 	const { submitStep } = useFormContext();
+
+	const editingStep = useIsEditingFromReviewStep();
 
 	const errorMessageRef = useRef<HTMLDivElement>(null);
 	const successMessageRef = useRef<HTMLDivElement>(null);
@@ -217,7 +211,11 @@ export function StepUploadDocumentsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Upload all documents listed in the table below."
-			formTitle={stepKeyToStepDataMap.stepUploadDocuments.label}
+			formTitle={
+				stepKeyToStepDataMap.stepUploadDocuments[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 			hideRequiredFieldsMessage
 		>
 			<Stack gap={2}>
@@ -317,13 +315,13 @@ export function StepUploadDocumentsForm() {
 				>
 					<Stack as="form" id="upload-document-form">
 						<FileUpload
-							accept={['image/jpeg', 'image/png']}
+							accept={['image/jpeg', 'application/pdf', 'image/png']}
 							buttonRef={fileUploadRef}
 							hideOptionalLabel
 							invalid={fileUploadInvalid}
 							label={`Upload ${currentDocument?.documentType}`}
 							maxSize={2000}
-							message="File is required."
+							message={`${currentDocument?.documentType} is required`}
 							onChange={(file) => {
 								setUploadedFile(file);
 								if (file.length) {

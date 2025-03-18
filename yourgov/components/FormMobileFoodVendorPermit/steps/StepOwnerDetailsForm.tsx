@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ButtonLink } from '@ag.ds-next/react/button';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Details } from '@ag.ds-next/react/details';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { H2 } from '@ag.ds-next/react/heading';
 import { Prose } from '@ag.ds-next/react/prose';
+import { Radio } from '@ag.ds-next/react/radio';
 import { Stack } from '@ag.ds-next/react/stack';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import {
@@ -15,11 +17,11 @@ import {
 	SummaryListItemDescription,
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import {
-	stepOwnerDetailsChangeDetailsFormSchema,
-	type StepOwnerDetailsChangeDetailsFormSchema,
+	stepOwnerDetailsOtherDetailsFormSchema,
+	type StepOwnerDetailsOtherDetailsFormSchema,
 } from './FormState';
 import { FormContainer } from './FormContainer';
 import { useFormContext } from './FormProvider';
@@ -27,12 +29,27 @@ import { Form } from './Form';
 import { stepKeyToStepDataMap } from './stepsData';
 
 export function StepOwnerDetailsForm() {
-	const { stepOwnerDetailsGetState } = useGlobalForm();
-	const stepOwnerDetailsState = stepOwnerDetailsGetState();
+	const { stepOwnerDetailsGetState, stepOwnerDetailsReviewEditGetState } =
+		useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { query } = useRouter();
 	const isUpdated = query.success === 'true';
 	const [isSuccessMessageVisible, setIsSuccessMessageVisible] =
 		useState(isUpdated);
+
+	const changeBusinessOwnerDetailsHref = stepKeyToStepDataMap.stepOwnerDetails
+		?.items
+		? stepKeyToStepDataMap.stepOwnerDetails.items[0][
+				editingStep?.match ? 'changeHref' : 'href'
+		  ]
+		: undefined;
 
 	useEffect(() => {
 		setIsSuccessMessageVisible(isUpdated);
@@ -41,7 +58,11 @@ export function StepOwnerDetailsForm() {
 	return (
 		<FormContainer
 			formIntroduction="Confirm your name and contact details."
-			formTitle={stepKeyToStepDataMap.stepOwnerDetails.label}
+			formTitle={
+				stepKeyToStepDataMap.stepOwnerDetails[
+					editingStep?.match ? 'changeLabel' : 'label'
+				]
+			}
 			shouldFocusTitle={!isSuccessMessageVisible}
 		>
 			<Stack gap={3}>
@@ -78,90 +99,115 @@ export function StepOwnerDetailsForm() {
 							<SummaryListItem>
 								<SummaryListItemTerm>First name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.firstName}
+									{stepState?.firstName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Last name</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.lastName}
+									{stepState?.lastName}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 							<SummaryListItem>
 								<SummaryListItemTerm>Email address</SummaryListItemTerm>
 								<SummaryListItemDescription>
-									{stepOwnerDetailsState?.email}
+									{stepState?.email}
+								</SummaryListItemDescription>
+							</SummaryListItem>
+							<SummaryListItem>
+								<SummaryListItemTerm>Mobile number</SummaryListItemTerm>
+								<SummaryListItemDescription>
+									{stepState?.mobileNumber}
 								</SummaryListItemDescription>
 							</SummaryListItem>
 						</SummaryList>
 
 						<ButtonLink
 							alignSelf="start"
-							href={
-								'items' in stepKeyToStepDataMap.stepOwnerDetails
-									? stepKeyToStepDataMap.stepOwnerDetails.items[0].href
-									: undefined
-							}
+							href={changeBusinessOwnerDetailsHref}
 							variant="text"
 						>
 							Change business owner details
 						</ButtonLink>
 					</Stack>
 				</FormStack>
-				<AdditionalDetailsForm />
+				<OtherDetailsForm />
 			</Stack>
 		</FormContainer>
 	);
 }
 
-function AdditionalDetailsForm() {
+function OtherDetailsForm() {
 	const {
+		isSavingBeforeExiting,
 		stepOwnerDetailsGetState,
 		stepOwnerDetailsSetState,
-		isSavingBeforeExiting,
+		stepOwnerDetailsReviewEditGetState,
+		stepOwnerDetailsReviewEditSetState,
 	} = useGlobalForm();
+
+	const editingStep = useIsEditingFromReviewStep();
+	const reviewEditState = stepOwnerDetailsReviewEditGetState();
+	const stepState =
+		editingStep?.match && reviewEditState?.edited
+			? stepOwnerDetailsReviewEditGetState()
+			: stepOwnerDetailsGetState();
+
 	const { submitStep } = useFormContext();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<StepOwnerDetailsChangeDetailsFormSchema>({
+	} = useForm<StepOwnerDetailsOtherDetailsFormSchema>({
 		defaultValues: {
-			contactPhoneNumber: stepOwnerDetailsGetState()?.contactPhoneNumber,
+			contactMethod: stepOwnerDetailsGetState()?.contactMethod,
 		},
-		resolver: zodResolver(stepOwnerDetailsChangeDetailsFormSchema),
+		resolver: zodResolver(stepOwnerDetailsOtherDetailsFormSchema),
 		mode: 'onSubmit',
 		reValidateMode: 'onBlur',
 	});
 
 	const onSubmit: SubmitHandler<
-		StepOwnerDetailsChangeDetailsFormSchema
+		StepOwnerDetailsOtherDetailsFormSchema
 	> = async (data) => {
 		if (isSavingBeforeExiting) {
 			return;
 		}
 		await submitStep();
 		stepOwnerDetailsSetState({
+			...stepState,
 			...data,
 			completed: !isSavingBeforeExiting,
+			edited: editingStep?.match ? true : undefined,
 			started: true,
 		});
 	};
 
 	return (
-		<Form noValidate={false} onSubmit={handleSubmit(onSubmit)}>
+		<Form
+			noValidate={false}
+			onEditCancel={() => {
+				stepOwnerDetailsReviewEditSetState({});
+			}}
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<FormStack>
-				<H2>Additional details</H2>
-				<TextInput
-					{...register('contactPhoneNumber')}
-					autoComplete="tel"
-					hint="Any Australian mobile or landline. For example, 0444111222 or 02 9988 7766"
-					id="contactPhoneNumber"
-					invalid={Boolean(errors.contactPhoneNumber)}
-					label="Contact phone number"
-					message={errors.contactPhoneNumber?.message}
-				/>
+				<ControlGroup
+					block
+					id="contactMethod"
+					invalid={Boolean(errors.contactMethod)}
+					label="Preferred contact method"
+					message={errors.contactMethod?.message}
+					required
+				>
+					<Radio {...register('contactMethod')} value="SMS">
+						SMS
+					</Radio>
+					<Radio {...register('contactMethod')} value="Email">
+						Email
+					</Radio>
+				</ControlGroup>
 			</FormStack>
 		</Form>
 	);

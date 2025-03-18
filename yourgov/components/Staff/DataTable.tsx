@@ -226,7 +226,7 @@ export const DataTable = forwardRef<HTMLTableElement, DataTableProps>(
 												rowIndex={rowIndex}
 												selectable={selectable}
 											>
-												<TableCell as="th" scope="row">
+												<TableCell as="th" fontWeight="bold" scope="row">
 													<TextLink
 														href={`/app/staff/${item.name
 															.toLowerCase()

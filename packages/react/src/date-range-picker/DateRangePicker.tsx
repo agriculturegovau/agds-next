@@ -294,8 +294,9 @@ export const DateRangePicker = ({
 				setInputMode(undefined);
 			}
 		};
-		window.addEventListener('keydown', handleKeyDown);
-		return () => window.removeEventListener('keydown', handleKeyDown);
+		window.addEventListener('keydown', handleKeyDown, { capture: true });
+		return () =>
+			window.removeEventListener('keydown', handleKeyDown, { capture: true });
 	}, [isCalendarOpen, closeCalendar]);
 
 	const disabledCalendarDays = useMemo(() => {
