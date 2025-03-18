@@ -1,5 +1,5 @@
 ---
-title: Toggle Button
+title: Toggle button
 description: Toggle button is a button that uses the ‘aria-pressed’ attribute to an element with a role of button to represent and on/off state.
 group: Forms
 storybookPath: /story/Forms-ToggleButton--basic
@@ -17,7 +17,8 @@ Its label should update and describe what will happen after it is pressed in its
 
 	return (
 		<ToggleButton
-			label={isPressed ? 'Unflag message' : 'Flag message'}
+			label="Flag message"
+			pressedLabel="Unflag message"
 			onClick={setPressed}
 			pressed={isPressed}
 		/>
@@ -37,14 +38,16 @@ To prevent inconsistent implementations, we limit the icons that can be used to 
 				<ToggleButton
 					iconType="flag"
 					onClick={console.log}
-					label="flag (default)"
 					pressed={false}
+					label="flag (default)"
+					pressedLabel="flag (pressed)"
 				/>
 				<ToggleButton
 					iconType="flag"
 					onClick={console.log}
-					label="flag (pressed)"
 					pressed={true}
+					label="flag (default)"
+					pressedLabel="flag (pressed)"
 				/>
 			</Flex>
 
@@ -52,14 +55,16 @@ To prevent inconsistent implementations, we limit the icons that can be used to 
 				<ToggleButton
 					iconType="star"
 					onClick={console.log}
-					label="star (default)"
 					pressed={false}
+					label="star (default)"
+					pressedLabel="star (pressed)"
 				/>
 				<ToggleButton
 					iconType="star"
 					onClick={console.log}
-					label="star (pressed)"
 					pressed={true}
+					label="star (default)"
+					pressedLabel="star (pressed)"
 				/>
 			</Flex>
 		</Stack>
@@ -80,14 +85,16 @@ Some space-limited implementations may require an icon-only Toggle button. While
 		<Stack alignItems="flex-start" gap={1}>
 			<ToggleButton
 				iconType="flag"
-				label={flagIsPressed ? 'Unflag message' : 'Flag message'}
+				label="Flag message"
+				pressedLabel="Unflag message"
 				onClick={setFlagIsPressed}
 				pressed={flagIsPressed}
 				hiddenLabel
 			/>
 			<ToggleButton
 				iconType="star"
-				label={starIsPressed ? 'Remove from dashboard' : 'Add to dashboard'}
+				label="Add to dashboard"
+				pressedLabel="Remove from dashboard"
 				onClick={setStarIsPressed}
 				pressed={starIsPressed}
 				hiddenLabel
@@ -111,7 +118,8 @@ The medium button should be used in most cases to provide a larger icon.
 	return (
 		<Stack alignItems="flex-start" gap={1}>
 			<ToggleButton
-				label="Unflag message"
+				label="Flag message"
+				pressedLabel="Unflag message"
 				pressed={mediumIsPressed}
 				onClick={setMediumIsPressed}
 				iconType="flag"
@@ -119,6 +127,7 @@ The medium button should be used in most cases to provide a larger icon.
 			/>
 			<ToggleButton
 				label="Flag message"
+				pressedLabel="Unflag message"
 				pressed={smallIsPressed}
 				onClick={setSmallIsPressed}
 				iconType="flag"
