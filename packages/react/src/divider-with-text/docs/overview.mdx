@@ -1,0 +1,104 @@
+---
+title: Divider With Text
+description: A horizontal rule that separates blocks of content with label.
+group: Content
+storybookPath: /story/Content-DividerWithText--basic
+unreleased: true
+figmaGalleryNodeId: REPLACE_ME
+relatedComponents: ['divider']
+---
+
+```jsx live
+<DividerWithText label="Or" />
+```
+
+The [Divider] component with label support.
+
+<DoHeading />
+
+- use to create visual space and seperation between blocks of content,
+- provide a short text label with one or few words,
+
+<DontHeading />
+
+- use this component for a H1 element,
+- change the colour of divider or text.
+
+## Name of variant or feature
+
+```jsx live
+<Stack gap={2}>
+	<ControlGroup
+		label="Business structure"
+		hint="When you make a selection, you will be asked for your Australian Business Number (ABN) or Australian Company Number (ACN)."
+		block
+		required
+	>
+		<Radio checked={true}>Sol trader</Radio>
+		<Radio checked={false}>Business</Radio>
+		<Radio checked={false}>Company</Radio>
+	</ControlGroup>
+	<DividerWithText label="Business" labelAlign="left" />
+	<TextInput label="Australian Business Number (ABN)" required />
+</Stack>
+```
+
+```jsx live
+<Stack gap={3}>
+	<DividerWithText label="Center" as="h2" fontWeight="bold" />
+	<DividerWithText label="Left Align" labelAlign="left" as="h3" />
+	<Box dark background="muted">
+		<DividerWithText
+			label="overflow overflow overflow overflow overflow overflow overflow"
+			labelAlign="left"
+			as="p"
+		/>
+	</Box>
+</Stack>
+```
+
+## Label alignment
+
+Text can be aligned to `center` or `left`. Center text alignment is center.
+
+```jsx live
+<Stack gap={2}>
+	<DividerWithText label="center" />
+	<DividerWithText label="left" labelAlign="left" />
+</Stack>
+```
+
+## Font sizes
+
+The label size is determined by the element used in the `as` props as the default.
+
+```jsx live
+<Stack gap={2}>
+	<DividerWithText label="H2" as="h2" />
+	<DividerWithText label="H3" as="h3" />
+	<DividerWithText label="H4" as="h4" />
+	<DividerWithText label="H5" as="h5" />
+	<DividerWithText label="H6" as="h6" />
+	<DividerWithText label="p" as="p" />
+	<DividerWithText label="span" as="span" />
+</Stack>
+```
+
+The `fontSize` prop can be used in combination with the `as` prop to control the heading element and size.
+
+```jsx live
+<Stack gap={2}>
+	<DividerWithText
+		label="Paragraph with XL font size"
+		as="p"
+		fontSize="xl"
+		labelAlign="left"
+	/>
+	<DividerWithText
+		label="H2 with SM font size"
+		as="h2"
+		fontSize="sm"
+		labelAlign="left"
+	/>
+</Stack>
+```

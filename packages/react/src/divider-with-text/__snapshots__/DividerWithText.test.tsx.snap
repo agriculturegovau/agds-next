@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DividerWithText renders correctly 1`] = `
+<div>
+  <div
+    class="css-za2mpx-boxStyles-DividerWithText"
+  >
+    <hr
+      aria-hidden="true"
+      class="css-1th2zfi-Divider"
+    />
+    <p
+      class="css-zbt5yu-boxStyles-DividerWithText"
+    >
+      Or
+    </p>
+    <hr
+      aria-hidden="true"
+      class="css-1th2zfi-Divider"
+    />
+  </div>
+</div>
+`;
