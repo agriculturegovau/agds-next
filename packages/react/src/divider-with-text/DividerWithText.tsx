@@ -9,13 +9,13 @@ export type DividerWithTextProps = {
 	/** Element type for the label. */
 	as?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
 	/** Sets the font-size of the label. */
-	fontSize?: FontSize; // multiple font sizes? `xs` and `sm`
+	fontSize?: FontSize;
 	/** Sets the font-weight of the label. */
 	fontWeight?: FontWeight;
 	/** Text label placed between dividers. */
 	label: string;
 	/** Sets the horizontal alignment of the label on the divider. */
-	labelAlign: 'left' | 'center';
+	labelAlign?: 'left' | 'center';
 };
 
 const minimumDividerWidth = '1.5rem';
@@ -29,7 +29,7 @@ export function DividerWithText(props: DividerWithTextProps) {
 		fontWeight = 'normal',
 		fontSize,
 		label,
-		labelAlign,
+		labelAlign = 'center',
 	} = props;
 
 	const leftDividerWidth =

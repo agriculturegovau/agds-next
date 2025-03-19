@@ -1,6 +1,6 @@
 ---
 title: Divider With Text
-description: A horizontal rule that separates blocks of content with label.
+description: A horizontal rule with text that separates blocks of content.
 group: Content
 storybookPath: /story/Content-DividerWithText--basic
 unreleased: true
@@ -16,15 +16,17 @@ The [Divider] component with label support.
 
 <DoHeading />
 
-- use to create visual space and seperation between blocks of content,
+- use to create visual space and separation between blocks of content,
 - provide a short text label with one or few words,
+- to denote sections between optional inputs.
 
 <DontHeading />
 
-- use this component for a H1 element,
+- use this component in substitution for a H1 element,
+- use this component without a text, please refer to the [Divider component](components/divider)
 - change the colour of divider or text.
 
-## Name of variant or feature
+## Example
 
 ```jsx live
 <Stack gap={2}>
@@ -43,23 +45,9 @@ The [Divider] component with label support.
 </Stack>
 ```
 
-```jsx live
-<Stack gap={3}>
-	<DividerWithText label="Center" as="h2" fontWeight="bold" />
-	<DividerWithText label="Left Align" labelAlign="left" as="h3" />
-	<Box dark background="muted">
-		<DividerWithText
-			label="overflow overflow overflow overflow overflow overflow overflow"
-			labelAlign="left"
-			as="p"
-		/>
-	</Box>
-</Stack>
-```
-
 ## Label alignment
 
-Text can be aligned to `center` or `left`. Center text alignment is center.
+The label location and text wrap alignment can be assigned by using the `labelAlignment` prop. The values `center` or `left` will align the label towards the respective locations.
 
 ```jsx live
 <Stack gap={2}>

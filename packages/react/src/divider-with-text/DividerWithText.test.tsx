@@ -1,13 +1,15 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { render, screen } from '../../../../test-utils';
+import { cleanup, render, screen } from '../../../../test-utils';
 import { DividerWithText } from './DividerWithText';
 import type { DividerWithTextProps } from './DividerWithText';
 
 expect.extend(toHaveNoViolations);
 
-function renderDividerWithText(props?: Partial<DividerWithTextProps>) {
+afterEach(cleanup);
+
+function renderDividerWithText(props: DividerWithTextProps) {
 	return render(<DividerWithText {...props} />);
 }
 
@@ -20,7 +22,9 @@ describe('DividerWithText', () => {
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = renderDividerWithText();
+		const { container } = renderDividerWithText({
+			label: 'Or',
+		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
