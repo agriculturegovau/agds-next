@@ -7,8 +7,10 @@ import { paddingYMap, ContentSpacing } from './utils';
 export type BaseContentProps = PropsWithChildren<
 	{
 		as?: ElementType;
-		id?: string;
 		className?: string;
+		id?: string;
+		/** The maximum width of the container. */
+		maxWidth?: 'container' | 'containerLg';
 		tabIndex?: number;
 	} & Pick<BoxProps, 'background' | 'palette'>
 >;
@@ -19,13 +21,14 @@ type BaseContentComponentProps = BaseContentProps & {
 
 export function BaseContent({
 	as = 'section',
-	id,
-	className,
-	tabIndex,
-	palette,
 	background,
 	children,
+	className,
+	id,
+	maxWidth = 'container',
 	paddingY,
+	palette,
+	tabIndex,
 }: BaseContentComponentProps) {
 	return (
 		<ContentSpacingContext.Provider value={paddingY}>
@@ -39,7 +42,7 @@ export function BaseContent({
 				tabIndex={tabIndex}
 			>
 				<Box
-					maxWidth={tokens.maxWidth.container}
+					maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 					paddingBottom={paddingYMap[paddingY].bottom}
 					paddingTop={paddingYMap[paddingY].top}
 					paddingX={tokens.containerPadding}
