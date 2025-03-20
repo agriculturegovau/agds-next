@@ -16,14 +16,14 @@ function renderDividerWithText(props: DividerWithTextProps) {
 describe('DividerWithText', () => {
 	it('renders correctly', () => {
 		const { container } = renderDividerWithText({
-			label: 'Or',
+			children: <p>Divider text</p>,
 		});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderDividerWithText({
-			label: 'Or',
+			children: <p>Divider text</p>,
 		});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
@@ -31,15 +31,13 @@ describe('DividerWithText', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('renders the label heading using the `as` prop', async () => {
-		const labelText = 'Business';
+	it('renders provided children element', async () => {
+		const childTestId = 'test-id';
 		renderDividerWithText({
-			label: labelText,
-			as: 'h2',
+			children: <p data-testid={childTestId}>Divider text</p>,
 		});
 
-		const labelElement = screen.getByText(labelText);
-		expect(labelElement).toBeInTheDocument();
-		expect(labelElement.nodeName).toBe('H2');
+		const childElement = screen.getByTestId(childTestId);
+		expect(childElement).toBeInTheDocument();
 	});
 });

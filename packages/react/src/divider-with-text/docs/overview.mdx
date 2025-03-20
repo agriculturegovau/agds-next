@@ -9,22 +9,24 @@ relatedComponents: ['divider']
 ---
 
 ```jsx live
-<DividerWithText label="Or" />
+<DividerWithText>
+	<p>Divider label</p>
+</DividerWithText>
 ```
 
-The [Divider] component with label support.
+The divider with label should be used sparingly and used only where appropriate to give context on the content split by the divider. For example, this variant can be used for general sign in divider use.
 
 <DoHeading />
 
-- use to create visual space and separation between blocks of content,
-- provide a short text label with one or few words,
-- to denote sections between optional inputs.
+- use to create visual space and separation between blocks of content like form field sets in the main content area
+- divide and logically group content sections to enhance clarity and organisation
+- position above buttons groups at the bottom of a form to give prominence to the action area
+- include a concise label where appropriate
 
 <DontHeading />
 
-- use this component in substitution for a H1 element,
-- use this component without a text, please refer to the [Divider component](components/divider)
-- change the colour of divider or text.
+- change the colour of divider or text
+- include a long label
 
 ## Example
 
@@ -40,53 +42,57 @@ The [Divider] component with label support.
 		<Radio checked={false}>Business</Radio>
 		<Radio checked={false}>Company</Radio>
 	</ControlGroup>
-	<DividerWithText label="Business" labelAlign="left" />
+	<DividerWithText textAlign="left">
+		<p>Business</p>
+	</DividerWithText>
 	<TextInput label="Australian Business Number (ABN)" required />
 </Stack>
 ```
 
 ## Label alignment
 
-The label location and text wrap alignment can be assigned by using the `labelAlignment` prop. The values `center` or `left` will align the label towards the respective locations.
+By default, the label alignment is set to centre.
 
 ```jsx live
-<Stack gap={2}>
-	<DividerWithText label="center" />
-	<DividerWithText label="left" labelAlign="left" />
-</Stack>
+<DividerWithText label="center">
+	<p>Divider label</p>
+</DividerWithText>
 ```
 
-## Font sizes
-
-The label size is determined by the element used in the `as` props as the default.
+You can also align the label to left.
 
 ```jsx live
-<Stack gap={2}>
-	<DividerWithText label="H2" as="h2" />
-	<DividerWithText label="H3" as="h3" />
-	<DividerWithText label="H4" as="h4" />
-	<DividerWithText label="H5" as="h5" />
-	<DividerWithText label="H6" as="h6" />
-	<DividerWithText label="p" as="p" />
-	<DividerWithText label="span" as="span" />
-</Stack>
+<DividerWithText textAlign="left">
+	<p>Divider label</p>
+</DividerWithText>
 ```
 
-The `fontSize` prop can be used in combination with the `as` prop to control the heading element and size.
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
 
 ```jsx live
-<Stack gap={2}>
-	<DividerWithText
-		label="Paragraph with XL font size"
-		as="p"
-		fontSize="xl"
-		labelAlign="left"
-	/>
-	<DividerWithText
-		label="H2 with SM font size"
-		as="h2"
-		fontSize="sm"
-		labelAlign="left"
-	/>
-</Stack>
+<Box>
+	<Stack gap={1} padding={1}>
+		<Divider />
+		<DividerWithText>
+			<Box as="p">Divider label</Box>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Box as="p">Divider label</Box>
+		</DividerWithText>
+	</Stack>
+
+	<Stack background="shade" dark gap={1} padding={1}>
+		<Divider />
+		<DividerWithText>
+			<Box as="p">Divider label</Box>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Box as="p">Divider label</Box>
+		</DividerWithText>
+	</Stack>
+</Box>
 ```

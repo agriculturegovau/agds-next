@@ -255,6 +255,7 @@ export {
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
 export { Divider } from '@ag.ds-next/react/divider';
+export { DividerWithText } from '@ag.ds-next/react/divider-with-text';
 export { Drawer } from '@ag.ds-next/react/drawer';
 export {
 	Tabs,
@@ -294,5 +295,3 @@ export {
 	createExampleFile,
 	createExampleImageFile,
 } from '@ag.ds-next/react/src/file-upload/test-utils';
-
-export { DividerWithText } from '@ag.ds-next/react/divider-with-text';

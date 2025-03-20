@@ -1,56 +1,45 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { boxPalette, type FontSize, type FontWeight } from '../core';
+import { boxPalette, mapSpacing } from '../core';
 import { Divider } from '../divider';
 
-export type DividerWithTextProps = {
-	/** If false, the first divider element will not be hidden from assistive technologies. */
+export type DividerWithTextProps = PropsWithChildren<{
+	// /** If false, the first divider element will not be hidden from assistive technologies. */
 	'aria-hidden'?: HTMLAttributes<HTMLHRElement>['aria-hidden'];
-	/** Element type for the label. */
-	as?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p';
-	/** Sets the font-size of the label. */
-	fontSize?: FontSize;
-	/** Sets the font-weight of the label. */
-	fontWeight?: FontWeight;
-	/** Text label placed between dividers. */
-	label: string;
 	/** Sets the horizontal alignment of the label on the divider. */
-	labelAlign?: 'left' | 'center';
-};
+	textAlign?: 'left' | 'center';
+}>;
 
-const minimumDividerWidth = '1.5rem';
+const minimumDividerWidth = mapSpacing(1.5);
 const defaultDividerWidth = `minmax(${minimumDividerWidth}, 1fr)`;
-const maxWidthText = '40rem'; // 640 px
+const maxTextWidth = '40rem'; // 640 px
 
 export function DividerWithText(props: DividerWithTextProps) {
 	const {
 		'aria-hidden': ariaHidden = true,
-		as = 'p',
-		fontWeight = 'normal',
-		fontSize,
-		label,
-		labelAlign = 'center',
+		children,
+		textAlign = 'center',
 	} = props;
 
 	const leftDividerWidth =
-		labelAlign === 'left' ? minimumDividerWidth : defaultDividerWidth;
+		textAlign === 'left' ? minimumDividerWidth : defaultDividerWidth;
 	return (
 		<Box
 			css={{
 				alignItems: 'center',
 				display: 'grid',
-				gap: '1rem',
-				gridTemplateColumns: `${leftDividerWidth} fit-content(${maxWidthText}) ${defaultDividerWidth}`,
+				gap: mapSpacing(1),
+				gridTemplateColumns: `${leftDividerWidth} fit-content(${maxTextWidth}) ${defaultDividerWidth}`,
 			}}
 		>
 			<Divider aria-hidden={ariaHidden} />
 			<Box
-				as={as}
-				css={{ textAlign: labelAlign, color: boxPalette.foregroundMuted }}
-				fontSize={fontSize}
-				fontWeight={fontWeight}
+				css={{
+					color: boxPalette.foregroundMuted,
+					textAlign: textAlign,
+				}}
 			>
-				{label}
+				{children}
 			</Box>
 			<Divider />
 		</Box>

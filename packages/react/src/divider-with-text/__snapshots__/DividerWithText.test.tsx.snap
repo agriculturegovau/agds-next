@@ -9,11 +9,13 @@ exports[`DividerWithText renders correctly 1`] = `
       aria-hidden="true"
       class="css-1th2zfi-Divider"
     />
-    <p
-      class="css-zbt5yu-boxStyles-DividerWithText"
+    <div
+      class="css-eausjp-boxStyles-DividerWithText"
     >
-      Or
-    </p>
+      <p>
+        Divider text
+      </p>
+    </div>
     <hr
       aria-hidden="true"
       class="css-1th2zfi-Divider"
