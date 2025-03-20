@@ -1,5 +1,42 @@
 # @ag.ds-next/example-site
 
+## 0.6.1
+
+### Patch Changes
+
+- 6c7351c58db: chore: Added `react/jsx-sort-props` eslint rule and sorted all props.
+- Updated dependencies [dd0cc48ff64]
+- Updated dependencies [4397a3dd033]
+- Updated dependencies [d895c373e1f]
+- Updated dependencies [0fc55e2d892]
+- Updated dependencies [e0d3c17b9a1]
+- Updated dependencies [cc95ec6e0ef]
+- Updated dependencies [ab125437b79]
+- Updated dependencies [491c503608b]
+- Updated dependencies [94d88ed87d9]
+- Updated dependencies [55637c98759]
+- Updated dependencies [8adc0940fd0]
+- Updated dependencies [21f7862ef6b]
+- Updated dependencies [6c7351c58db]
+- Updated dependencies [ddbcf4aa6de]
+- Updated dependencies [3ff2cdb9b35]
+- Updated dependencies [26d7b847dfe]
+- Updated dependencies [31c0fd29c64]
+- Updated dependencies [598725a5f8d]
+- Updated dependencies [7ea33913c23]
+- Updated dependencies [749f7c7a3c4]
+- Updated dependencies [455685ad599]
+- Updated dependencies [4caacfd77ca]
+- Updated dependencies [2167443219d]
+- Updated dependencies [95f2d9effe2]
+- Updated dependencies [34e1163a486]
+- Updated dependencies [a2473939320]
+- Updated dependencies [ec0d717949d]
+- Updated dependencies [6d12fecc92a]
+- Updated dependencies [4679cb597c5]
+- Updated dependencies [8b9a45a9f4d]
+  - @ag.ds-next/react@1.26.0
+
 ## 0.6.0
 
 ### Minor Changes

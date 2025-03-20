@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/docs",
-	"version": "0.13.0",
+	"version": "0.14.0",
 	"private": true,
 	"repository": "https://github.com/agriculturegovau/agds-next/tree/main/docs",
 	"license": "MIT",
@@ -17,7 +17,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@ag.ds-next/react": "^1.25.0",
+		"@ag.ds-next/react": "^1.26.0",
 		"@preconstruct/next": "^4.0.0",
 		"@types/gtag.js": "^0.0.12",
 		"clipboard-copy": "^4.0.1",

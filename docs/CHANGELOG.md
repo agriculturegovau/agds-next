@@ -1,5 +1,100 @@
 # @ag.ds-next/docs
 
+## 0.14.0
+
+### Minor Changes
+
+- 4397a3dd033: icon: Created `MoveLeftIcon` and `MoveRightIcon`.
+
+  yourgov: Use `MoveLeftIcon` in `HelpReference`.
+
+- d895c373e1f: icon: Add new `ArchiveIcon`, `ClockIcon`, `EmailOpenIcon`, `FlagFilledIcon`, `FlagIcon`, `HistoryIcon`, `RotateLeftIcon`, `RotateRightIcon`, `StarFilledIcon`, `StarIcon`, `TimerIcon`, `ZoomInIcon` and `ZoomOutIcon`.
+- 0fc55e2d892: icon: Add new `BusinessIcon` and `GripIcon`.
+
+  yourgov: Change dashboard labels.
+
+- ddbcf4aa6de: task-list: Add new `'notRequired'` status.
+- 31c0fd29c64: docs: AgDS Beta v1.26.0 release notes.
+- 74937595b1c: docs: Update Storybook to version 8, update NextJS and Playroom to latest minor version.
+
+  react: Dependency updates.
+
+  yourgov: Dependency updates.
+
+  example-site: Dependency updates.
+
+- 749f7c7a3c4: toggle-button: Initial release of component.
+- ec0d717949d: date-picker: Add `aria-expanded` attribute to button. Make the example date more relevant. Add superseded announcement to docs.
+
+  date-picker-next: Initial release of component.
+
+  date-range-picker: Add `aria-expanded` attribute to button. Make the example date more relevant. Fix 2nd calendar dropdown updating to the wrong calendar. Add superseded announcement to docs.
+
+  date-range-picker-next: Initial release of component.
+
+- 4679cb597c5: docs: Make `packs` available for use in code snippets and playroom.
+
+  app-layout: `AppLayoutFooter` - Add `maxWidth='container|containerLg'` prop.
+
+  content: Add `maxWidth='container|containerLg'` prop to all content components.
+
+  core: Add new `'containerLg'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
+
+  footer: Add `maxWidth='container|containerLg'` prop.
+
+  header: Add `maxWidth='container|containerLg'` prop.
+
+  main-nav: Add `maxWidth='container|containerLg'` prop.
+
+### Patch Changes
+
+- e0d3c17b9a1: date-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  drawer: Add `DatePickerNext` to form example.
+
+  yourgov: Allow pdf files in Upload documents.
+
+- 6c7351c58db: chore: Added `react/jsx-sort-props` eslint rule and sorted all props.
+- a2ddf9aa951: docs: Remove unused react-simple-code-editor.
+- fa28fe42bc2: docs: Fixed Card link on the page patterns > search-filters.
+- Updated dependencies [dd0cc48ff64]
+- Updated dependencies [4397a3dd033]
+- Updated dependencies [d895c373e1f]
+- Updated dependencies [0fc55e2d892]
+- Updated dependencies [e0d3c17b9a1]
+- Updated dependencies [cc95ec6e0ef]
+- Updated dependencies [ab125437b79]
+- Updated dependencies [491c503608b]
+- Updated dependencies [94d88ed87d9]
+- Updated dependencies [55637c98759]
+- Updated dependencies [8adc0940fd0]
+- Updated dependencies [21f7862ef6b]
+- Updated dependencies [6c7351c58db]
+- Updated dependencies [ddbcf4aa6de]
+- Updated dependencies [3ff2cdb9b35]
+- Updated dependencies [26d7b847dfe]
+- Updated dependencies [31c0fd29c64]
+- Updated dependencies [598725a5f8d]
+- Updated dependencies [7ea33913c23]
+- Updated dependencies [749f7c7a3c4]
+- Updated dependencies [455685ad599]
+- Updated dependencies [4caacfd77ca]
+- Updated dependencies [2167443219d]
+- Updated dependencies [95f2d9effe2]
+- Updated dependencies [34e1163a486]
+- Updated dependencies [a2473939320]
+- Updated dependencies [ec0d717949d]
+- Updated dependencies [6d12fecc92a]
+- Updated dependencies [4679cb597c5]
+- Updated dependencies [8b9a45a9f4d]
+  - @ag.ds-next/react@1.26.0
+
 ## 0.13.0
 
 ### Minor Changes
