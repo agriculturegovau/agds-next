@@ -49,8 +49,8 @@ const iconTypeMap = {
 };
 
 const iconHoverSizeMap = {
-	sm: (iconSizes.sm * 16 + 2) / 16,
-	md: (iconSizes.md * 16 + 2) / 16,
+	sm: iconSizes.sm + 2 / 16,
+	md: iconSizes.md + 2 / 16,
 };
 
 export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
