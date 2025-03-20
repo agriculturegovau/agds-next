@@ -1,15 +1,12 @@
 ---
 title: Toggle button
-description: Toggle button is a button that uses the ‘aria-pressed’ attribute to an element with a role of button to represent and on/off state.
+description: Toggle button is a two-state button that represents and performs an on/off state.
 group: Forms
 storybookPath: /story/Forms-ToggleButton--basic
 unreleased: true
-figmaGalleryNodeId: 17042%3A40508
+figmaGalleryNodeId: 24997%3A25139
+relatedComponents: ['button', 'switch']
 ---
-
-Toggle buttons should be used to allow a user to alternate an interaction between “on” and “off” states.
-
-Its label should update and describe what will happen after it is pressed in its current state.
 
 ```jsx live
 () => {
@@ -26,9 +23,22 @@ Its label should update and describe what will happen after it is pressed in its
 };
 ```
 
+Toggle buttons should be used to allow a user to alternate an interaction between “on” and “off” states.
+
+Its label should update and describe what will happen after it is pressed in its current state.
+
+<DoHeading />
+
+- use to toggle with immediate effect
+- visually show its label when space permits.
+
+<DontHeading />
+
+- use as a replacement for a form input like a Checkbox.
+
 ## Available icons
 
-To prevent inconsistent implementations, we limit the icons that can be used to current, known use-cases.
+To prevent inconsistent implementations and user experience, we limit the icons that can be used to current, known use-cases.
 
 ```jsx live
 () => {
@@ -75,6 +85,8 @@ To prevent inconsistent implementations, we limit the icons that can be used to 
 ## Icon only
 
 Some space-limited implementations may require an icon-only Toggle button. While the `label` is required for accessibility purposes, it can be visually hidden with the `hiddenLabel` prop.
+
+The interactions for an icon-only version differ to meet WCAG 1.4.1. On hover, the icon size and stroke width increases slightly to indicate that the button is interactive.
 
 ```jsx live
 () => {
@@ -131,6 +143,24 @@ The medium button should be used in most cases to provide a larger icon.
 				pressed={smallIsPressed}
 				onClick={setSmallIsPressed}
 				iconType="flag"
+				size="sm"
+			/>
+			<ToggleButton
+				iconType="flag"
+				label="Flag message"
+				pressedLabel="Unflag message"
+				onClick={setMediumIsPressed}
+				pressed={mediumIsPressed}
+				hiddenLabel
+				size="md"
+			/>
+			<ToggleButton
+				iconType="star"
+				label="Add to dashboard"
+				pressedLabel="Remove from dashboard"
+				onClick={setSmallIsPressed}
+				pressed={smallIsPressed}
+				hiddenLabel
 				size="sm"
 			/>
 		</Stack>

@@ -1,11 +1,13 @@
-import { forwardRef, type MouseEvent, useState, useCallback } from 'react';
+import { forwardRef } from 'react';
 import {
 	Button,
 	type BaseButtonProps,
 	type ButtonSize,
 	type ButtonVariant,
 } from '../button';
+import { tokens } from '../core';
 import { FlagFilledIcon, FlagIcon, StarFilledIcon, StarIcon } from '../icon';
+import { iconSizes } from '../icon/Icon';
 
 export type ToggleButtonProps = Omit<
 	BaseButtonProps,
@@ -46,6 +48,11 @@ const iconTypeMap = {
 	},
 };
 
+const iconHoverSizeMap = {
+	sm: (iconSizes.sm * 16 + 2) / 16,
+	md: (iconSizes.md * 16 + 2) / 16,
+};
+
 export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 	function ToggleButton(
 		{
@@ -53,8 +60,6 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 			iconType = 'flag',
 			label,
 			onClick,
-			onMouseEnter,
-			onMouseLeave,
 			pressed = false,
 			pressedLabel,
 			size = 'md',
@@ -63,47 +68,34 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 		},
 		ref
 	) {
-		const [isHover, setIsHover] = useState(false);
 		const resolvedLabel = pressed ? pressedLabel : label;
 		const DefaultIcon = iconTypeMap[iconType]?.false || iconTypeMap.flag.false;
 		const PressedIcon = iconTypeMap[iconType]?.true || iconTypeMap.flag.true;
-
-		const handleOnMouseEnter = useCallback(
-			(event: MouseEvent<HTMLButtonElement>) => {
-				setIsHover(true);
-				onMouseEnter?.(event);
-			},
-			[onMouseEnter]
-		);
-
-		const handleOnMouseLeave = useCallback(
-			(event: MouseEvent<HTMLButtonElement>) => {
-				setIsHover(false);
-				onMouseLeave?.(event);
-			},
-			[onMouseLeave]
-		);
 
 		return (
 			<Button
 				{...props}
 				aria-label={hiddenLabel ? resolvedLabel : undefined}
 				aria-pressed={pressed}
-				iconBefore={
-					isHover
-						? pressed
-							? DefaultIcon
-							: PressedIcon
-						: pressed
-						? PressedIcon
-						: DefaultIcon
+				css={
+					hiddenLabel
+						? {
+								svg: {
+									transition: `all ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+								},
+								'&:hover svg': {
+									strokeWidth: 3,
+									transform: `scale(${
+										iconHoverSizeMap[size] / iconSizes[size]
+									})`,
+								},
+						  }
+						: undefined
 				}
+				iconBefore={pressed ? PressedIcon : DefaultIcon}
 				onClick={() => {
 					onClick(!pressed);
-					setIsHover(false);
 				}}
-				onMouseEnter={handleOnMouseEnter}
-				onMouseLeave={handleOnMouseLeave}
 				ref={ref}
 				size={size}
 				variant={variant}
