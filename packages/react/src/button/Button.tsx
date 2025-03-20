@@ -72,14 +72,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						weight="regular"
 					/>
 				) : null}
-				<span>
-					<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
-					<ButtonLoadingDots
-						label={loadingLabel}
-						loading={loading}
-						size={size}
-					/>
-				</span>
+				{children ? (
+					<span>
+						<span css={{ opacity: loading ? 0 : 1 }}>{children}</span>
+						<ButtonLoadingDots
+							label={loadingLabel}
+							loading={loading}
+							size={size}
+						/>
+					</span>
+				) : null}
 				{IconAfter ? (
 					<IconAfter
 						css={{ flexShrink: 0 }}

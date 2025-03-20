@@ -298,6 +298,7 @@ export {
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
 export { TimePicker } from '@ag.ds-next/react/time-picker';
+export { ToggleButton } from '@ag.ds-next/react/toggle-button';
 
 // Used to populate options on documentation site and playroom
 export {

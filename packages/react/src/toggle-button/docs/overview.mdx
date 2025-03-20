@@ -1,0 +1,169 @@
+---
+title: Toggle button
+description: Toggle button is a two-state button that represents and performs an on/off state.
+group: Forms
+storybookPath: /story/Forms-ToggleButton--basic
+unreleased: true
+figmaGalleryNodeId: 24997%3A25139
+relatedComponents: ['button', 'switch']
+---
+
+```jsx live
+() => {
+	const [isPressed, setPressed] = React.useState(false);
+
+	return (
+		<ToggleButton
+			label="Flag message"
+			pressedLabel="Unflag message"
+			onClick={setPressed}
+			pressed={isPressed}
+		/>
+	);
+};
+```
+
+Toggle buttons should be used to allow a user to alternate an interaction between “on” and “off” states.
+
+Its label should update and describe what will happen after it is pressed in its current state.
+
+<DoHeading />
+
+- use to toggle with immediate effect
+- visually show its label when space permits.
+
+<DontHeading />
+
+- use as a replacement for a form input like a Checkbox.
+
+## Available icons
+
+To prevent inconsistent implementations and user experience, we limit the icons that can be used to current, known use-cases.
+
+```jsx live
+() => {
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<Flex gap={1}>
+				<ToggleButton
+					iconType="flag"
+					onClick={console.log}
+					pressed={false}
+					label="flag (default)"
+					pressedLabel="flag (pressed)"
+				/>
+				<ToggleButton
+					iconType="flag"
+					onClick={console.log}
+					pressed={true}
+					label="flag (default)"
+					pressedLabel="flag (pressed)"
+				/>
+			</Flex>
+
+			<Flex gap={1}>
+				<ToggleButton
+					iconType="star"
+					onClick={console.log}
+					pressed={false}
+					label="star (default)"
+					pressedLabel="star (pressed)"
+				/>
+				<ToggleButton
+					iconType="star"
+					onClick={console.log}
+					pressed={true}
+					label="star (default)"
+					pressedLabel="star (pressed)"
+				/>
+			</Flex>
+		</Stack>
+	);
+};
+```
+
+> Do you have a user need for a new or missing icon? [Get in touch](/about) to discuss contribution.
+
+## Icon only
+
+We encourage the use of visible labels for all actions with icons. However, some space-limited implementations may require an icon-only Toggle button. While the `label` is required for accessibility purposes, it can be visually hidden with the `hiddenLabel` prop.
+
+```jsx live
+() => {
+	const [flagIsPressed, setFlagIsPressed] = React.useState(false);
+	const [starIsPressed, setStarIsPressed] = React.useState(false);
+
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<ToggleButton
+				iconType="flag"
+				label="Flag message"
+				pressedLabel="Unflag message"
+				onClick={setFlagIsPressed}
+				pressed={flagIsPressed}
+				hiddenLabel
+			/>
+			<ToggleButton
+				iconType="star"
+				label="Add to dashboard"
+				pressedLabel="Remove from dashboard"
+				onClick={setStarIsPressed}
+				pressed={starIsPressed}
+				hiddenLabel
+			/>
+		</Stack>
+	);
+};
+```
+
+## Size
+
+Size is a property that allows you to adjust the visual weight of a button.
+
+The medium button should be used in most cases to provide a larger icon.
+
+```jsx live
+() => {
+	const [mediumIsPressed, setMediumIsPressed] = React.useState(false);
+	const [smallIsPressed, setSmallIsPressed] = React.useState(false);
+
+	return (
+		<Stack alignItems="flex-start" gap={1}>
+			<ToggleButton
+				label="Flag message"
+				pressedLabel="Unflag message"
+				pressed={mediumIsPressed}
+				onClick={setMediumIsPressed}
+				iconType="flag"
+				size="md"
+			/>
+			<ToggleButton
+				label="Flag message"
+				pressedLabel="Unflag message"
+				pressed={smallIsPressed}
+				onClick={setSmallIsPressed}
+				iconType="flag"
+				size="sm"
+			/>
+			<ToggleButton
+				iconType="flag"
+				label="Flag message"
+				pressedLabel="Unflag message"
+				onClick={setMediumIsPressed}
+				pressed={mediumIsPressed}
+				hiddenLabel
+				size="md"
+			/>
+			<ToggleButton
+				iconType="star"
+				label="Add to dashboard"
+				pressedLabel="Remove from dashboard"
+				onClick={setSmallIsPressed}
+				pressed={smallIsPressed}
+				hiddenLabel
+				size="sm"
+			/>
+		</Stack>
+	);
+};
+```
