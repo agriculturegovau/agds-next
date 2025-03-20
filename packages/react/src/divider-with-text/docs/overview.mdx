@@ -4,13 +4,13 @@ description: A horizontal rule with text that separates blocks of content.
 group: Content
 storybookPath: /story/Content-DividerWithText--basic
 unreleased: true
-figmaGalleryNodeId: REPLACE_ME
+figmaGalleryNodeId: 18634%3A85108
 relatedComponents: ['divider']
 ---
 
 ```jsx live
 <DividerWithText>
-	<p>Divider label</p>
+	<Box as="p">Divider label</Box>
 </DividerWithText>
 ```
 
@@ -25,7 +25,7 @@ The divider with label should be used sparingly and used only where appropriate 
 
 <DontHeading />
 
-- change the colour of divider or text
+- change the colour of the divider
 - include a long label
 
 ## Example
@@ -43,7 +43,7 @@ The divider with label should be used sparingly and used only where appropriate 
 		<Radio checked={false}>Company</Radio>
 	</ControlGroup>
 	<DividerWithText textAlign="left">
-		<p>Business</p>
+		<Box as="p">Business</Box>
 	</DividerWithText>
 	<TextInput label="Australian Business Number (ABN)" required />
 </Stack>
@@ -59,7 +59,7 @@ By default, the label alignment is set to centre.
 </DividerWithText>
 ```
 
-You can also align the label to left.
+You can also align the label to the left.
 
 ```jsx live
 <DividerWithText textAlign="left">

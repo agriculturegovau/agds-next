@@ -31,7 +31,7 @@ describe('DividerWithText', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('renders provided children element', async () => {
+	it('renders the provided children element', async () => {
 		const childTestId = 'test-id';
 		renderDividerWithText({
 			children: <p data-testid={childTestId}>Divider text</p>,
