@@ -27,48 +27,48 @@ export function PatternLayout({
 	return (
 		<SiteLayout applyMainElement={false}>
 			<PageLayout
-				applyMainElement={true}
+				applyMainElement
+				breadcrumbs={breadcrumbs}
+				editPath={editPath}
 				sideNav={{
 					title: 'Patterns',
 					titleLink: '/patterns',
 					items: navLinks,
 				}}
-				editPath={editPath}
-				breadcrumbs={breadcrumbs}
 			>
-				<PageTitle title={pattern.title} introduction={pattern.description} />
+				<PageTitle introduction={pattern.description} title={pattern.title} />
 				{(pattern.figmaTemplateNodeId ||
 					pattern.githubTemplatePath ||
 					pattern.storybookPath) && (
 					<Flex
-						gap={1.5}
-						flexWrap="wrap"
-						flexDirection={['column', 'row']}
 						alignItems="flex-start"
+						flexDirection={['column', 'row']}
+						flexWrap="wrap"
+						gap={1.5}
 					>
 						{pattern.figmaTemplateNodeId && (
 							<ButtonLink
-								variant="text"
 								href={`${process.env.NEXT_PUBLIC_FIGMA_URL}?node-id=${pattern.figmaTemplateNodeId}`}
 								iconBefore={FigmaLogo}
+								variant="text"
 							>
 								View in Figma
 							</ButtonLink>
 						)}
 						{pattern.storybookPath && (
 							<ButtonLink
-								variant="text"
 								href={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}?path=${pattern.storybookPath}`}
 								iconBefore={StorybookLogo}
+								variant="text"
 							>
 								View in Storybook
 							</ButtonLink>
 						)}
 						{pattern.githubTemplatePath && (
 							<ButtonLink
-								variant="text"
 								href={`https://github.com/agriculturegovau/agds-next/blob/main${pattern.githubTemplatePath}`}
 								iconBefore={GithubLogo}
+								variant="text"
 							>
 								View in Github
 							</ButtonLink>

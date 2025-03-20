@@ -6,7 +6,7 @@ exports[`CallToActionButton renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <button
-      class="css-fp5x03-BaseButton-boxStyles"
+      class="css-1h1daqg-BaseButton-boxStyles"
       data-testid="example"
       type="button"
     >
@@ -23,8 +23,8 @@ exports[`CallToActionButton renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <polyline
-          points="9 18 15 12 9 6"
+        <path
+          d="m9 18 6-6-6-6"
         />
       </svg>
     </button>
@@ -38,7 +38,7 @@ exports[`CallToActionLink renders correctly 1`] = `
     class="css-zce95a-boxStyles-CallToAction"
   >
     <a
-      class="css-19iivh0-TextLink-boxStyles"
+      class="css-40ijub-TextLink-boxStyles"
       data-testid="example"
       href="#"
     >
@@ -55,8 +55,8 @@ exports[`CallToActionLink renders correctly 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <polyline
-          points="9 18 15 12 9 6"
+        <path
+          d="m9 18 6-6-6-6"
         />
       </svg>
     </a>

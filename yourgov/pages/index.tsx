@@ -94,8 +94,8 @@ export default function Page() {
 				<Content as="section" background="bodyAlt">
 					<Columns cols={{ xs: 1, md: 2 }} gap={3}>
 						<Stack
-							gap={1.5}
 							alignItems="flex-start"
+							gap={1.5}
 							paddingBottom={{ xs: 0, md: 4 }}
 							paddingTop={{ xs: 3, md: 4 }}
 						>
@@ -125,7 +125,7 @@ export default function Page() {
 
 				<SectionContent>
 					<Columns as="ul" cols={{ xs: 1, sm: 2 }}>
-						<Card as="li" shadow clickable>
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<H3>
@@ -138,7 +138,7 @@ export default function Page() {
 								</Stack>
 							</CardInner>
 						</Card>
-						<Card as="li" shadow clickable>
+						<Card as="li" clickable shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<H3>

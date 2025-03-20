@@ -5,10 +5,11 @@ import {
 	GlobalStaffState,
 	type FormState as StepsFormState,
 } from './steps/FormState';
-import { type StepNumber } from './steps/FormProvider';
 
-export type Completion = {
+export type Status = {
 	completed: boolean;
+	// Used by review and edit states only
+	edited?: boolean;
 	started?: boolean;
 };
 
@@ -18,20 +19,10 @@ export type FormState = {
 	staff: Partial<GlobalStaffState>;
 	steps: Partial<StepsFormState>;
 	type: string;
-} & Completion;
+} & Status;
 
 export const defaultFormState: DeepPartial<FormState> = {
 	steps: defaultStepsFormState,
-};
-
-export type FormStep<StepNum extends StepNumber = StepNumber> = {
-	label: string;
-	href: string;
-	formStateKey: StepNum;
-	items?: Array<{
-		href: string;
-		label: string;
-	}>;
 };
 
 /**

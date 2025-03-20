@@ -68,23 +68,23 @@ export const FormRegisterPetDetailsStep2 = () => {
 
 	return (
 		<FormRegisterPetDetailsContainer
-			title="Proof of vaccination"
-			introduction="If you have a vaccination certificate provide it here."
 			callToAction={<FormRequiredFieldsMessage />}
+			introduction="If you have a vaccination certificate provide it here."
+			title="Proof of vaccination"
 		>
 			<Stack
 				as="form"
 				gap={3}
-				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
+				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<FormStack>
 					{hasErrors && (
 						<PageAlert
 							ref={errorRef}
-							tone="error"
-							title="There is a problem"
 							tabIndex={-1}
+							title="There is a problem"
+							tone="error"
 						>
 							<Text as="p">
 								Please correct the following fields and try again
@@ -109,16 +109,16 @@ export const FormRegisterPetDetailsStep2 = () => {
 						}) => (
 							<div css={{ position: 'relative' }}>
 								<FileUpload
-									id="file"
-									label="Upload an image of vaccination certificate"
 									accept={['image/jpeg', 'image/jpg', 'image/png']}
-									maxSize={2000}
-									value={value}
-									onChange={onChange}
-									onBlur={onBlur}
-									name={name}
+									id="file"
 									invalid={invalid}
+									label="Upload an image of vaccination certificate"
+									maxSize={2000}
 									message={error?.message}
+									name={name}
+									onBlur={onBlur}
+									onChange={onChange}
+									value={value}
 								/>
 								{isSubmittingStep && hasFile && (
 									<LoadingBlanket label="Uploading file" />

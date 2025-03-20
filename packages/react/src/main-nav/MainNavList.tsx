@@ -12,7 +12,9 @@ type MainNavListLink = Omit<LinkProps, 'children'>;
 
 type MainNavListButton = Omit<BaseButtonProps, 'children'>;
 
-export type MainNavListItemType = (MainNavListLink | MainNavListButton) & {
+export type MainNavListItemType<
+	T extends HTMLElement = HTMLAnchorElement | HTMLButtonElement,
+> = (T extends HTMLAnchorElement ? MainNavListLink : MainNavListButton) & {
 	label: ReactNode;
 	beforeElement?: ReactNode;
 	endElement?: ReactNode;
@@ -35,8 +37,8 @@ export function MainNavList({
 	const Link = useLinkComponent();
 	return (
 		<Flex
-			as="nav"
 			aria-label={ariaLabel}
+			as="nav"
 			// Primary links are hidden on desktop as they are visible in the sidebar
 			display={type === 'primary' ? { xs: 'none', lg: 'flex' } : undefined}
 			minHeight={{ xs: '5rem', lg: '3.5rem' }}
@@ -47,7 +49,7 @@ export function MainNavList({
 					if ('href' in item) {
 						const active = item.href === activePath;
 						return (
-							<MainNavListItem key={index} active={active} type={type}>
+							<MainNavListItem active={active} key={index} type={type}>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
 									{beforeElement}
 									<span>{label}</span>
@@ -60,18 +62,18 @@ export function MainNavList({
 					if ('dropdown' in item) {
 						return (
 							<MainNavListItemDropdown
-								key={index}
-								label={label}
 								beforeElement={beforeElement}
 								endElement={endElement}
+								key={index}
+								label={label}
 								{...item}
 							/>
 						);
 					}
 
 					return (
-						<MainNavListItem key={index} active={false} type={type}>
-							<BaseButton {...item}>
+						<MainNavListItem active={false} key={index} type={type}>
+							<BaseButton {...(item as MainNavListButton)}>
 								{beforeElement}
 								<span>{label}</span>
 								{endElement}

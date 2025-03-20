@@ -35,10 +35,10 @@ describe('createExampleFile', () => {
 			)
 		).toBe(
 			JSON.stringify({
-				name: 'example.txt',
-				type: 'text/plain',
 				lastModified: 100,
+				name: 'example.txt',
 				size: 100,
+				type: 'text/plain',
 			})
 		);
 	});
@@ -46,21 +46,23 @@ describe('createExampleFile', () => {
 		expect(
 			JSON.stringify(
 				createExampleFile({
+					download: true,
 					href: '/',
+					lastModified: 100,
 					name: 'example',
 					status: 'success',
 					type: 'image/png',
-					lastModified: 100,
 				})
 			)
 		).toBe(
 			JSON.stringify({
-				name: 'example',
-				type: 'image/png',
 				lastModified: 100,
+				name: 'example',
 				size: 100,
-				status: 'success',
+				type: 'image/png',
+				download: true,
 				href: '/',
+				status: 'success',
 			})
 		);
 	});

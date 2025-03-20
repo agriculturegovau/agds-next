@@ -33,13 +33,13 @@ import {
 	type Locale,
 } from 'date-fns';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
+import { formatHumanReadableDate } from '../date-picker-next/utils';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { visuallyHiddenStyles } from '../a11y';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
-import { formatHumanReadableDate } from './utils';
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -173,8 +173,9 @@ const calendarComponents: CustomComponents = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
-						id={props.id}
+						displayIndex={props.displayIndex}
 						displayMonth={props.displayMonth}
+						id={props.id}
 					/>
 				)}
 				{isLast && (
@@ -194,7 +195,11 @@ const calendarComponents: CustomComponents = {
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	CaptionLabel: function CaptionLabel({ displayMonth, id }: CaptionLabelProps) {
+	CaptionLabel: function CaptionLabel({
+		displayIndex,
+		displayMonth,
+		id,
+	}: CaptionLabelProps) {
 		const { goToMonth } = useNavigation();
 
 		const month = getMonth(displayMonth);
@@ -204,18 +209,20 @@ const calendarComponents: CustomComponents = {
 			(event: ChangeEvent<HTMLSelectElement>) => {
 				const year = parseInt(event.target.value);
 				// Go to the first day of the month
-				goToMonth(new Date(year, getMonth(displayMonth), 1));
+				goToMonth(
+					new Date(year, getMonth(displayMonth) - (displayIndex || 0), 1)
+				);
 			},
-			[goToMonth, displayMonth]
+			[displayIndex, displayMonth, goToMonth]
 		);
 
 		const onMonthChange = useCallback(
 			(event: ChangeEvent<HTMLSelectElement>) => {
 				const monthIndex = parseInt(event.target.value);
 				// Go to the first day of the month
-				goToMonth(new Date(year, monthIndex, 1));
+				goToMonth(new Date(year, monthIndex - (displayIndex || 0), 1));
 			},
-			[goToMonth, year]
+			[displayIndex, goToMonth, year]
 		);
 
 		const { yearRange, yearsVisitedRef } = useCalendar();
@@ -265,37 +272,32 @@ const calendarComponents: CustomComponents = {
 
 		return yearOptions.length > 1 ? (
 			<Fragment>
-				<h2
-					id={id}
-					aria-live="polite"
-					aria-atomic="true"
-					css={visuallyHiddenStyles}
-				>
+				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles} id={id}>
 					{formattedMonthYear}
 				</h2>
-				<Flex justifyContent="center" gap={0.5} width="100%">
+				<Flex gap={0.5} justifyContent="center" width="100%">
 					<YearMonthSelect
 						label="Month"
+						onChange={onMonthChange}
 						options={monthOptions}
 						value={month}
-						onChange={onMonthChange}
 					/>
 					<YearMonthSelect
 						label="Year"
+						onChange={onYearChange}
 						options={yearOptions}
 						value={year}
-						onChange={onYearChange}
 					/>
 				</Flex>
 			</Fragment>
 		) : (
 			<Box
-				as="h2"
-				id={id}
+				aria-atomic
 				aria-live="polite"
-				aria-atomic="true"
-				fontWeight="bold"
+				as="h2"
 				fontSize="lg"
+				fontWeight="bold"
+				id={id}
 				lineHeight="heading"
 			>
 				{formattedMonthYear}
@@ -349,9 +351,9 @@ const calendarComponents: CustomComponents = {
 			<tr className={classNames.row} style={styles.row}>
 				{props.dates.map((date) => (
 					<DayComponent
-						key={getUnixTime(date)}
-						displayMonth={props.displayMonth}
 						date={date}
+						displayMonth={props.displayMonth}
+						key={getUnixTime(date)}
 					/>
 				))}
 			</tr>
@@ -433,20 +435,13 @@ function YearMonthSelect({
 	const selectId = `calendar-${autoId}-select`;
 	return (
 		<div css={{ position: 'relative' }}>
-			<label htmlFor={selectId} css={visuallyHiddenStyles}>
+			<label css={visuallyHiddenStyles} htmlFor={selectId}>
 				{label}
 			</label>
 			<Box
 				as="select"
 				autoComplete="off"
-				id={selectId}
-				value={value}
-				onChange={onChange}
-				rounded
-				focusRingFor="keyboard"
-				paddingRight={1.5}
 				color="text"
-				fontWeight="bold"
 				css={{
 					appearance: 'none',
 					background: 'none',
@@ -461,6 +456,13 @@ function YearMonthSelect({
 						fontSize: `${tokens.fontSize.xs.md}rem`,
 					},
 				}}
+				focusRingFor="keyboard"
+				fontWeight="bold"
+				id={selectId}
+				onChange={onChange}
+				paddingRight={1.5}
+				rounded
+				value={value}
 			>
 				{options.map((option) => (
 					<option key={option.value} value={option.value}>
@@ -469,7 +471,6 @@ function YearMonthSelect({
 				))}
 			</Box>
 			<ChevronDownIcon
-				weight="bold"
 				css={{
 					position: 'absolute',
 					top: '50%',
@@ -478,6 +479,7 @@ function YearMonthSelect({
 					pointerEvents: 'none',
 					color: boxPalette.foregroundAction,
 				}}
+				weight="bold"
 			/>
 		</div>
 	);

@@ -26,7 +26,11 @@ const tokenDescriptions: Record<
 	},
 	container: {
 		value: tokens.maxWidth.container,
-		description: 'Used for setting the max-width of the page container.',
+		description: 'Used for setting the max-width of page containers.',
+	},
+	containerLg: {
+		value: tokens.maxWidth.containerLg,
+		description: 'Used for setting the max-width of page containers to 1920px.',
 	},
 };
 
@@ -34,13 +38,13 @@ export default function TokensMaxWidthsPage() {
 	return (
 		<>
 			<DocumentTitle
-				title={TOKEN_PAGES['max-width'].pageTitle}
 				description={TOKEN_PAGES['max-width'].description}
+				title={TOKEN_PAGES['max-width'].pageTitle}
 			/>
 			<TokenLayout
-				title={TOKEN_PAGES['max-width'].pageTitle}
 				description={TOKEN_PAGES['max-width'].description}
 				editPath="/docs/pages/foundations/tokens/max-width.tsx"
+				title={TOKEN_PAGES['max-width'].pageTitle}
 			>
 				<Prose>
 					<div className={proseBlockClassname}>
@@ -106,12 +110,12 @@ export default function TokensMaxWidthsPage() {
 													<TableCell>{token}</TableCell>
 													<TableCell>
 														<Box
-															padding={0.5}
 															css={{
 																backgroundColor: boxPalette.systemInfoMuted,
 																width: '100%',
 																maxWidth: value,
 															}}
+															padding={0.5}
 														>
 															<Text>{value}</Text>
 														</Box>

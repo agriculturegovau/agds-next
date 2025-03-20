@@ -11,15 +11,15 @@ export const InpageNavContainer = ({
 	'aria-label': ariaLabel,
 }: InpageNavContainerProps) => (
 	<Stack
+		aria-label={ariaLabel}
 		as="nav"
-		gap={1}
 		borderLeft
 		borderLeftWidth="xl"
-		paddingLeft={1.5}
 		css={{
 			borderLeftColor: boxPalette.foregroundAction,
 		}}
-		aria-label={ariaLabel}
+		gap={1}
+		paddingLeft={1.5}
 	>
 		{children}
 	</Stack>

@@ -20,8 +20,8 @@ export const PageTitle = ({
 		<Stack>
 			{pretext ? (
 				<Text
-					fontSize="sm"
 					color="muted"
+					fontSize="sm"
 					fontWeight="bold"
 					lineHeight="heading"
 				>
@@ -31,7 +31,7 @@ export const PageTitle = ({
 			{isValidElement(title) ? title : <H1>{title}</H1>}
 		</Stack>
 		{introduction ? (
-			<Text as="p" fontSize="md" color="muted">
+			<Text as="p" color="muted" fontSize="md">
 				{introduction}
 			</Text>
 		) : null}

@@ -53,23 +53,24 @@ export const StatusBadge = ({
 			<Flex
 				alignItems="center"
 				borderColor={legacyTone}
-				display="inline-flex"
-				gap={0.5}
 				css={{
 					borderRadius,
 					'& svg': {
 						flexShrink: 0,
-						width: iconWidth,
+						height: iconSize,
+						width: iconSize,
 					},
 				}}
+				display="inline-flex"
+				gap={0.5}
 				{...appearanceStyleProps}
 			>
 				<LegacyIcon />
 				<Text
 					as="span"
+					css={{ whiteSpace: 'nowrap' }}
 					fontSize="sm"
 					lineHeight="nospace"
-					css={{ whiteSpace: 'nowrap' }}
 				>
 					{label}
 				</Text>
@@ -90,27 +91,28 @@ export const StatusBadge = ({
 		<Flex
 			alignItems="center"
 			borderColor={borderColor}
-			display="inline-flex"
-			gap={0.5}
 			css={{
 				borderRadius,
+				// Ensures the status badge doesn't create descender whitespace
+				verticalAlign: 'bottom',
 				'& svg': {
 					flexShrink: 0,
-					width: iconWidth,
 				},
 			}}
+			display="inline-flex"
+			gap={0.5}
 			{...appearanceStyleProps}
 		>
 			<Icon
 				aria-hidden="false"
-				aria-label={`Status: ${iconLabel}`}
+				aria-label={`Status: ${iconLabel}.`}
 				color={iconColor}
 			/>
 			<Text
 				as="span"
+				css={{ whiteSpace: 'nowrap' }}
 				fontSize="sm"
 				lineHeight="nospace"
-				css={{ whiteSpace: 'nowrap' }}
 			>
 				{label}
 			</Text>
@@ -120,14 +122,14 @@ export const StatusBadge = ({
 
 const borderRadius = mapSpacing(1); // 16px
 const height = mapSpacing(2); // 32px
-const iconWidth = '1.375rem'; // 22px
+const iconSize = '1.375rem'; // 22px
 
 const regularAppearanceStyleProps = {
 	background: 'body',
 	border: true,
 	borderWidth: 'sm',
 	height,
-	paddingX: 1,
+	paddingX: 0.75,
 } as const;
 
 const toneMap = {
@@ -135,103 +137,103 @@ const toneMap = {
 		borderColor: 'border',
 		icon: ProgressBlockedIcon,
 		iconColor: 'muted',
-		iconLabel: 'cannot start, low emphasis',
+		iconLabel: 'cannot start',
 	},
 	errorHigh: {
 		borderColor: 'error',
 		icon: AlertFilledIcon,
 		iconColor: 'error',
-		iconLabel: 'error, high emphasis',
+		iconLabel: 'error',
 	},
 	errorLow: {
 		borderColor: 'border',
 		icon: AlertCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'error, low emphasis',
+		iconLabel: 'error',
 	},
 	errorMedium: {
 		borderColor: 'error',
 		icon: AlertIcon,
 		iconColor: 'error',
-		iconLabel: 'error, medium emphasis',
+		iconLabel: 'error',
 	},
 	infoHigh: {
 		borderColor: 'info',
 		icon: InfoFilledIcon,
 		iconColor: 'info',
-		iconLabel: 'information, high emphasis',
+		iconLabel: 'information',
 	},
 	infoLow: {
 		borderColor: 'border',
 		icon: InfoIcon,
 		iconColor: 'muted',
-		iconLabel: 'information, low emphasis',
+		iconLabel: 'information',
 	},
 	infoMedium: {
 		borderColor: 'info',
 		icon: InfoIcon,
 		iconColor: 'info',
-		iconLabel: 'information, medium emphasis',
+		iconLabel: 'information',
 	},
 	inProgressLow: {
 		borderColor: 'border',
 		icon: ProgressDoingIcon,
 		iconColor: 'muted',
-		iconLabel: 'in progress, low emphasis',
+		iconLabel: 'in progress',
 	},
 	notStartedLow: {
 		borderColor: 'border',
 		icon: ProgressTodoIcon,
 		iconColor: 'muted',
-		iconLabel: 'not started, low emphasis',
+		iconLabel: 'not started',
 	},
 	pausedLow: {
 		borderColor: 'border',
 		icon: ProgressPausedIcon,
 		iconColor: 'muted',
-		iconLabel: 'paused, low emphasis',
+		iconLabel: 'paused',
 	},
 	successHigh: {
 		borderColor: 'success',
 		icon: SuccessFilledIcon,
 		iconColor: 'success',
-		iconLabel: 'success, high emphasis',
+		iconLabel: 'success',
 	},
 	successLow: {
 		borderColor: 'border',
 		icon: SuccessIcon,
 		iconColor: 'muted',
-		iconLabel: 'success, low emphasis',
+		iconLabel: 'success',
 	},
 	successMedium: {
 		borderColor: 'success',
 		icon: SuccessIcon,
 		iconColor: 'success',
-		iconLabel: 'success, medium emphasis',
+		iconLabel: 'success',
 	},
 	unknownLow: {
 		borderColor: 'border',
 		icon: HelpIcon,
 		iconColor: 'muted',
-		iconLabel: 'help, low emphasis',
+		iconLabel: 'help',
 	},
 	warningHigh: {
 		borderColor: 'warning',
 		icon: WarningFilledIcon,
 		iconColor: 'warning',
-		iconLabel: 'warning, high emphasis',
+		iconLabel: 'warning',
 	},
 	warningLow: {
 		borderColor: 'border',
 		icon: WarningCircleIcon,
 		iconColor: 'muted',
-		iconLabel: 'warning, low emphasis',
+		iconLabel: 'warning',
 	},
 	warningMedium: {
 		borderColor: 'warning',
 		icon: WarningIcon,
 		iconColor: 'warning',
-		iconLabel: 'warning, medium emphasis',
+		iconLabel: 'warning',
 	},
 } as const;
 
@@ -245,38 +247,38 @@ const legacyToneMap = {
 	neutral: {
 		icon: () => (
 			<Box
-				highContrastOutline
 				css={{
 					width: 8,
 					height: 8,
 					borderRadius: 4,
 					backgroundColor: boxPalette.foregroundMuted,
 				}}
+				highContrastOutline
 			/>
 		),
 		tone: 'border',
 	},
 	success: {
 		icon: () => (
-			<SuccessIcon color="success" aria-hidden="false" aria-label="Success" />
+			<SuccessIcon aria-hidden="false" aria-label="Success" color="success" />
 		),
 		tone: 'success',
 	},
 	error: {
 		icon: () => (
-			<AlertIcon color="error" aria-hidden="false" aria-label="Error" />
+			<AlertIcon aria-hidden="false" aria-label="Error" color="error" />
 		),
 		tone: 'error',
 	},
 	info: {
 		icon: () => (
-			<InfoIcon color="info" aria-hidden="false" aria-label="Information" />
+			<InfoIcon aria-hidden="false" aria-label="Information" color="info" />
 		),
 		tone: 'info',
 	},
 	warning: {
 		icon: () => (
-			<WarningIcon color="warning" aria-hidden="false" aria-label="Warning" />
+			<WarningIcon aria-hidden="false" aria-label="Warning" color="warning" />
 		),
 		tone: 'warning',
 	},

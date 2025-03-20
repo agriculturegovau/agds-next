@@ -74,7 +74,9 @@ export const pictograms = {
 	core,
 	'direction-link': directionLink,
 	'date-picker': datePicker,
+	'date-picker-next': datePicker,
 	'date-range-picker': datePicker,
+	'date-range-picker-next': datePicker,
 	details,
 	divider,
 	'feature-link-list': linkList,
@@ -118,6 +120,9 @@ export const pictograms = {
 	'text-link': textLink,
 	textarea,
 	'text-input': textInput,
+	'time-input': textInput,
+	'time-picker': select,
+	'toggle-button': button,
 };
 
 export function getPictogram(slug: string) {

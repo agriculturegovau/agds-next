@@ -3,7 +3,7 @@
 exports[`Button Loading renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-felo84-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -27,15 +27,15 @@ exports[`Button Loading renders correctly 1`] = `
           </span>
           <span
             aria-hidden="true"
-            class="css-1b171kd-boxStyles-LoadingDots"
+            class="css-ugmwb4-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-1c8uen7-boxStyles-LoadingDots"
+            class="css-135scy7-boxStyles-LoadingDots"
           />
           <span
             aria-hidden="true"
-            class="css-1udhakn-boxStyles-LoadingDots"
+            class="css-163ssqx-boxStyles-LoadingDots"
           />
         </span>
       </span>
@@ -47,7 +47,7 @@ exports[`Button Loading renders correctly 1`] = `
 exports[`Button Small Button renders correctly 1`] = `
 <div>
   <button
-    class="css-uwq2hm-BaseButton-Button"
+    class="css-1f4kmtn-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -68,7 +68,7 @@ exports[`Button Small Button renders correctly 1`] = `
 exports[`Button With Icon renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-felo84-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -95,7 +95,7 @@ exports[`Button With Icon renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M4.5 19.1773C6.74319 17.9616 9.42279 17.0003 11.9999 17.0003C14.5769 17.0003 17.2567 17.9618 19.4999 19.1775M15.2053 9.95293C15.2036 10.4573 15.0723 10.9535 14.823 11.3977C14.5737 11.842 14.2141 12.2205 13.7759 12.5C13.3377 12.7794 12.8345 12.9511 12.3106 13C11.7867 13.0489 11.2584 12.9733 10.7722 12.7801C10.286 12.5869 9.85698 12.2819 9.52298 11.892C9.18899 11.5022 8.96036 11.0396 8.85721 10.545C8.75406 10.0504 8.7796 9.53905 8.93158 9.05615C9.08357 8.57326 9.35732 8.13367 9.72865 7.77621C10.1769 7.34467 10.7489 7.05056 11.372 6.93123C11.9951 6.81191 12.6412 6.87274 13.2281 7.10602C13.815 7.3393 14.3164 7.73449 14.6684 8.2414C15.0204 8.7483 15.2073 9.34403 15.2053 9.95293Z"
+        d="M4.5 19.177C6.743 17.962 9.423 17 12 17s5.257.962 7.5 2.177m-4.295-9.224a2.97 2.97 0 0 1-.382 1.445c-.25.444-.609.822-1.047 1.102a3.332 3.332 0 0 1-3.004.28 3.198 3.198 0 0 1-1.249-.888 3.018 3.018 0 0 1-.666-1.347 2.948 2.948 0 0 1 .075-1.489c.152-.483.425-.922.797-1.28a3.25 3.25 0 0 1 1.643-.845 3.335 3.335 0 0 1 1.856.175 3.18 3.18 0 0 1 1.44 1.135c.352.507.54 1.103.537 1.712Z"
       />
       <circle
         cx="12"
@@ -110,7 +110,7 @@ exports[`Button With Icon renders correctly 1`] = `
 exports[`Button renders correctly 1`] = `
 <div>
   <button
-    class="css-1xaxpdg-BaseButton-Button"
+    class="css-felo84-BaseButton-Button"
     data-testid="example"
     type="button"
   >
@@ -131,7 +131,7 @@ exports[`Button renders correctly 1`] = `
 exports[`ButtonLink renders correctly 1`] = `
 <div>
   <a
-    class="css-pvrlzo-ButtonLink"
+    class="css-p9f4xa-ButtonLink"
     data-testid="example"
     href="#"
   >

@@ -1,22 +1,23 @@
-import { css, CSSObject } from '@emotion/react';
+import { css, type CSSObject } from '@emotion/react';
 import {
-	tokens,
+	boxPalette,
 	BoxPalette,
 	boxPalettes,
-	boxPalette,
-	ResponsiveProp,
+	breakpointNames,
+	fontGrid,
 	mapResponsiveProp,
 	mapSpacing,
 	mq,
-	fontGrid,
-	Spacing,
 	packs,
-	BorderWidth,
-	FontWeight,
-	FontSize,
-	LineHeight,
-	Font,
-	breakpointNames,
+	tokens,
+	type BorderWidth,
+	type Font,
+	type FontSize,
+	type FontWeight,
+	type LineHeight,
+	type MaxWidth,
+	type ResponsiveProp,
+	type Spacing,
 } from '../core';
 
 type PaletteProps = Partial<{
@@ -331,6 +332,10 @@ type LayoutProps = Partial<{
 	maxHeight: ResponsiveProp<number | string>;
 }>;
 
+const isKeyOfMaxWidth = (
+	value: string | number | undefined
+): value is MaxWidth => !!value && value in tokens.maxWidth;
+
 function layoutStyles({
 	alignSelf,
 	display,
@@ -372,7 +377,9 @@ function layoutStyles({
 		rowGap: mapResponsiveProp(rowGap, mapSpacing),
 		width: mapResponsiveProp(width),
 		minWidth: mapResponsiveProp(minWidth),
-		maxWidth: mapResponsiveProp(maxWidth),
+		maxWidth: mapResponsiveProp(maxWidth, (value) =>
+			isKeyOfMaxWidth(value) ? tokens.maxWidth[value] : value
+		),
 		height: mapResponsiveProp(height),
 		minHeight: mapResponsiveProp(minHeight),
 		maxHeight: mapResponsiveProp(maxHeight),
@@ -554,6 +561,11 @@ export const linkStyles = {
 	'@media print': {
 		'&[href]::after': {
 			content: '" (" attr(href) ")" !important',
+		},
+
+		// Hide internal hash link URLs
+		'&[href^="#"]::after': {
+			display: 'none',
 		},
 	},
 };

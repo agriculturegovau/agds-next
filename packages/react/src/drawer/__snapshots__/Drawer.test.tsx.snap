@@ -50,7 +50,7 @@ exports[`Drawer renders correctly 1`] = `
           class="css-10pjjkw-boxStyles-DrawerFooter"
         >
           <button
-            class="css-1xaxpdg-BaseButton-Button"
+            class="css-felo84-BaseButton-Button"
             type="button"
           >
             <span>
@@ -91,17 +91,8 @@ exports[`Drawer renders correctly 1`] = `
             width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
+            <path
+              d="M18 6 6 18M6 6l12 12"
             />
           </svg>
         </button>

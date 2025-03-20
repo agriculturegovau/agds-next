@@ -19,12 +19,12 @@ function renderGroupedFields(props?: Partial<GroupedFieldsProps>) {
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>

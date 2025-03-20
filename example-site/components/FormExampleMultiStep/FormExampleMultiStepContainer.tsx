@@ -27,18 +27,18 @@ export const FormExampleMultiStepContainer = ({
 	return (
 		<Stack gap={3}>
 			<FormStepTitle
-				titleRef={titleRef}
-				formTitle="Title of multi-page form"
-				stepTitle={title}
-				introduction={introduction}
 				callToAction={callToAction}
+				formTitle="Title of multi-page form"
+				introduction={introduction}
+				stepTitle={title}
+				titleRef={titleRef}
 			/>
 			{hasCompletedPreviousStep ? (
 				children
 			) : (
 				<PageAlert
-					tone="warning"
 					title="This section of the form is not ready to be completed"
+					tone="warning"
 				>
 					<Text as="p">
 						Before starting this part of the form, you will need to go back and

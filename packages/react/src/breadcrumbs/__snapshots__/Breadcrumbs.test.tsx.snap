@@ -23,12 +23,12 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polyline
-            points="9 18 15 12 9 6"
+          <path
+            d="m9 18 6-6-6-6"
           />
         </svg>
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#home"
         >
           Home
@@ -49,14 +49,14 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polyline
-            points="9 18 15 12 9 6"
+          <path
+            d="m9 18 6-6-6-6"
           />
         </svg>
         <button
           aria-expanded="false"
           aria-label="Show all breadcrumbs"
-          class="css-eqfuua-BaseButton-boxStyles"
+          class="css-1dlzu3n-BaseButton-boxStyles"
           type="button"
         >
           …
@@ -77,12 +77,12 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polyline
-            points="9 18 15 12 9 6"
+          <path
+            d="m9 18 6-6-6-6"
           />
         </svg>
         <a
-          class="css-koqz57-TextLink"
+          class="css-july2n-TextLink"
           href="#establishments"
         >
           Establishments
@@ -103,8 +103,8 @@ exports[`Breadcrumbs renders correctly 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polyline
-            points="9 18 15 12 9 6"
+          <path
+            d="m9 18 6-6-6-6"
           />
         </svg>
         Applications

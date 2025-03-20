@@ -18,17 +18,17 @@ export function SubNavList({ links, activePath }: SubNavListProps) {
 	return (
 		<Flex
 			as="ul"
+			css={{ position: 'relative', zIndex: tokens.zIndex.elevated }}
 			flexDirection={['column', 'row']}
 			flexWrap="wrap"
-			css={{ position: 'relative', zIndex: tokens.zIndex.elevated }}
 		>
 			{links.map(({ href, label, endElement, ...props }, index) => {
 				const active = href === activePath;
 				return (
-					<SubNavListItem key={index} active={active}>
+					<SubNavListItem active={active} key={index}>
 						<Link
-							href={href}
 							aria-current={active ? 'page' : undefined}
+							href={href}
 							{...props}
 						>
 							<span>{label}</span>

@@ -11,7 +11,7 @@ export function CalendarContainer({ children }: CalendarContainerProps) {
 	return (
 		<Box
 			aria-label="Choose date"
-			aria-modal="true"
+			aria-modal
 			css={reactDayPickerStyles}
 			display="inline-block"
 			paddingX={[0.25, 1]}
@@ -34,7 +34,7 @@ export function CalendarRangeContainer({
 	return (
 		<Box
 			aria-label="Choose date range"
-			aria-modal="true"
+			aria-modal
 			css={[reactDayPickerStyles, reactDayRangePickerStyles(dateRange)]}
 			display="inline-block"
 			paddingX={[0.25, 1]}

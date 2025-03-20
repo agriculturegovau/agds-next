@@ -7,7 +7,6 @@ import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
-import { getRequiredCloseHandler } from '../getCloseHandler';
 import { useDrawerId } from './utils';
 import { DrawerProps } from './Drawer';
 
@@ -16,8 +15,6 @@ export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	/** On close of the drawer, this element will be focused, rather than the trigger element. */
 	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
-	/** @deprecated use `onClose` instead. */
-	onDismiss?: () => void;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
 	style: { translateX: SpringValue<string> };
@@ -41,13 +38,11 @@ export function DrawerDialog({
 	children,
 	elementToFocusOnClose,
 	onClose,
-	onDismiss,
 	style,
 	title,
 	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
-	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 
 	return (
 		<FocusLock
@@ -64,7 +59,7 @@ export function DrawerDialog({
 		>
 			<AnimatedFlex
 				aria-labelledby={titleId}
-				aria-modal="true"
+				aria-modal
 				background="body"
 				css={{
 					boxShadow: tokens.shadow.lg,
@@ -88,9 +83,6 @@ export function DrawerDialog({
 				<DrawerContent>{children}</DrawerContent>
 				{actions ? <DrawerFooter>{actions}</DrawerFooter> : null}
 				<Button
-					variant="text"
-					onClick={handleClose}
-					iconAfter={CloseIcon}
 					css={mq({
 						position: 'fixed',
 						zIndex: tokens.zIndex.elevated,
@@ -100,6 +92,9 @@ export function DrawerDialog({
 							md: mapSpacing(1.5),
 						}),
 					})}
+					iconAfter={CloseIcon}
+					onClick={onClose}
+					variant="text"
 				>
 					Close
 				</Button>
@@ -117,8 +112,6 @@ function DrawerHeader({ children }: DrawerHeaderProps) {
 		<Box
 			background="body"
 			borderBottom
-			paddingX={{ xs: 0.75, md: 1.5 }}
-			paddingY={1}
 			css={{
 				position: 'sticky',
 				top: 0,
@@ -127,6 +120,8 @@ function DrawerHeader({ children }: DrawerHeaderProps) {
 					position: 'relative',
 				},
 			}}
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={1}
 		>
 			{children}
 		</Box>
@@ -139,16 +134,16 @@ function DrawerHeaderTitle({ children, id }: DrawerHeaderTitleProps) {
 	return (
 		<Text
 			as="h2"
-			fontSize="lg"
-			fontWeight="bold"
-			lineHeight="heading"
-			id={id}
-			data-autofocus
-			focusRingFor="keyboard"
-			tabIndex={-1}
 			css={{
 				display: 'inline-block',
 			}}
+			data-autofocus
+			focusRingFor="keyboard"
+			fontSize="lg"
+			fontWeight="bold"
+			id={id}
+			lineHeight="heading"
+			tabIndex={-1}
 		>
 			{children}
 		</Text>
@@ -163,14 +158,14 @@ function DrawerContent({ children }: DrawerContentProps) {
 	return (
 		<Box
 			background="body"
-			flexGrow={1}
-			paddingX={{ xs: 0.75, md: 1.5 }}
-			paddingY={{ xs: 1, md: 1.5 }}
 			css={{
 				[tokens.mediaQuery.min.sm]: {
 					overflowY: 'auto',
 				},
 			}}
+			flexGrow={1}
+			paddingX={{ xs: 0.75, md: 1.5 }}
+			paddingY={{ xs: 1, md: 1.5 }}
 		>
 			{children}
 		</Box>
@@ -186,9 +181,9 @@ function DrawerFooter({ children }: DrawerFooterProps) {
 		<Box
 			background="body"
 			borderTop
+			css={{ marginTop: 'auto' }}
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={1}
-			css={{ marginTop: 'auto' }}
 		>
 			{children}
 		</Box>

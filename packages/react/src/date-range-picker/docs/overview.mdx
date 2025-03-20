@@ -4,8 +4,23 @@ description: The Date range picker component allows users to select a range of d
 group: Forms
 storybookPath: /story/forms-daterangepicker--basic
 figmaGalleryNodeId: 18834%3A97298
-relatedComponents: ['date-picker']
+relatedComponents: ['date-picker-next', 'date-range-picker-next', 'date-picker']
 ---
+
+<PageAlert tone="info" title="This component has been superseded">
+	<Text as="p">
+		{
+			'A newer, backwards-incompatible version of Date range picker is available as: '
+		}
+		<TextLink href="/components/date-range-picker-next">
+			{'Date range picker (Next)'}
+		</TextLink>
+		{'.'}
+	</Text>
+	<Text as="p">
+		{'Date range picker will be removed in the next major release.'}
+	</Text>
+</PageAlert>
 
 ```jsx live
 () => {
@@ -245,8 +260,16 @@ If a valid date is entered using the text input but it falls outside the constra
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 
 	const today = new Date();
-	const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-	const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+	const lastWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() - 7
+	);
+	const nextWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() + 7
+	);
 
 	return (
 		<DateRangePicker

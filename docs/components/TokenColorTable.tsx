@@ -237,18 +237,18 @@ export const ColorTable = ({
 		<div className={proseBlockClassname}>
 			<TableWrapper>
 				<Table
-					aria-labelledby={ariaLabelledby}
 					aria-describedby={ariaDescribedby}
+					aria-labelledby={ariaLabelledby}
 				>
 					<TableHead>
 						<TableRow>
-							<TableHeader width="25%" scope="col">
+							<TableHeader scope="col" width="25%">
 								Name
 							</TableHeader>
-							<TableHeader width="25%" scope="col">
+							<TableHeader scope="col" width="25%">
 								Value
 							</TableHeader>
-							<TableHeader width="50%" scope="col">
+							<TableHeader scope="col" width="50%">
 								Description
 							</TableHeader>
 						</TableRow>
@@ -258,7 +258,7 @@ export const ColorTable = ({
 							return (
 								<TableRow key={name}>
 									<TableCell>
-										<Flex gap={0.5} alignItems="center">
+										<Flex alignItems="center" gap={0.5}>
 											<ColorSquare color={color} />
 											{name}
 										</Flex>

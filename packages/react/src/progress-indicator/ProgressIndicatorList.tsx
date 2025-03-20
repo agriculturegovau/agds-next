@@ -10,8 +10,8 @@ export function ProgressIndicatorList({
 	return (
 		<Box
 			as="ul"
-			borderTop
 			borderBottom
+			borderTop
 			css={{
 				// Avoid double border on smaller devices
 				[tokens.mediaQuery.max.sm]: {

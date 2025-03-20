@@ -25,14 +25,14 @@ const Page: NextPageWithLayout = () => {
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={3}>
 							<DirectionLink
-								href="/services/registrations/pet"
 								direction="left"
+								href="/services/registrations/pet"
 							>
 								Back
 							</DirectionLink>
 							<PageTitle
-								title="Your pet’s details"
 								introduction="Under state regulation you are required to register any pet living with you in your domestic residence in an urban zone."
+								title="Your pet’s details"
 							/>
 							<Stack gap={1.5}>
 								<H2>Registration requirements</H2>

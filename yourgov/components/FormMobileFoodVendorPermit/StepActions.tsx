@@ -7,45 +7,67 @@ import { useTernaryState } from '@ag.ds-next/react/core';
 import { Divider } from '@ag.ds-next/react/divider';
 import { useGlobalForm } from './GlobalFormProvider';
 
-export function StepActions({ submitText = 'Save and continue' }) {
+export function StepActions({
+	hasSaveAndExit = true,
+	onCancel,
+	submitText = 'Save and continue',
+}: {
+	hasSaveAndExit?: boolean;
+	onCancel?: () => void;
+	submitText?: string;
+}) {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 
 	const { isSubmittingStep, saveAndExit, isSavingBeforeExiting, cancel } =
 		useGlobalForm();
 
+	const handleCancel = () => {
+		if (onCancel) {
+			onCancel();
+		}
+		cancel();
+	};
+
 	return (
 		<Fragment>
 			<Stack gap={3}>
 				<Divider />
+
 				<ButtonGroup>
-					<Button type="submit" variant="primary" loading={isSubmittingStep}>
+					<Button loading={isSubmittingStep} type="submit" variant="primary">
 						{submitText}
 					</Button>
-					<Button
-						type="submit"
-						variant="secondary"
-						loading={isSavingBeforeExiting}
-						onClick={saveAndExit}
-					>
-						Save and exit
-					</Button>
-					<Button type="button" variant="tertiary" onClick={openModal}>
+
+					{hasSaveAndExit && (
+						<Button
+							loading={isSavingBeforeExiting}
+							onClick={saveAndExit}
+							type="submit"
+							variant="secondary"
+						>
+							Save and exit
+						</Button>
+					)}
+
+					<Button onClick={openModal} type="button" variant="tertiary">
 						Cancel
 					</Button>
 				</ButtonGroup>
 			</Stack>
+
 			<Modal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				title="Are you sure you want to cancel?"
 				actions={
 					<ButtonGroup>
-						<Button onClick={cancel}>Yes, cancel</Button>
-						<Button variant="secondary" onClick={closeModal}>
+						<Button onClick={handleCancel}>Yes, cancel</Button>
+
+						<Button onClick={closeModal} variant="secondary">
 							No, take me back
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title="Are you sure you want to cancel?"
 			>
 				<Text as="p">
 					If you cancel, you will lose all information entered.

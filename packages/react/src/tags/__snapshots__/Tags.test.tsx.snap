@@ -20,7 +20,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -34,7 +34,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -48,7 +48,7 @@ exports[`Tags With links renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -80,7 +80,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Foo
@@ -102,17 +102,8 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <line
-                x1="18"
-                x2="6"
-                y1="6"
-                y2="18"
-              />
-              <line
-                x1="6"
-                x2="18"
-                y1="6"
-                y2="18"
+              <path
+                d="M18 6 6 18M6 6l12 12"
               />
             </svg>
           </button>
@@ -125,7 +116,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Bar
@@ -147,17 +138,8 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <line
-                x1="18"
-                x2="6"
-                y1="6"
-                y2="18"
-              />
-              <line
-                x1="6"
-                x2="18"
-                y1="6"
-                y2="18"
+              <path
+                d="M18 6 6 18M6 6l12 12"
               />
             </svg>
           </button>
@@ -170,7 +152,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           class="css-1l8g3ew-boxStyles-Tag"
         >
           <a
-            class="css-1qb2lpt-TextLink-boxStyles"
+            class="css-4w3gkw-TextLink-boxStyles"
             href="#"
           >
             Baz
@@ -192,17 +174,8 @@ exports[`Tags With onRemove renders correctly 1`] = `
               width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <line
-                x1="18"
-                x2="6"
-                y1="6"
-                y2="18"
-              />
-              <line
-                x1="6"
-                x2="18"
-                y1="6"
-                y2="18"
+              <path
+                d="M18 6 6 18M6 6l12 12"
               />
             </svg>
           </button>

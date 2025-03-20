@@ -1,0 +1,337 @@
+---
+title: Date range picker (Next)
+description: The Date range picker component allows users to select a range of dates via a calendar or text input.
+group: Forms
+storybookPath: /story/forms-daterangepickerNext--basic
+figmaGalleryNodeId: 18834%3A97298
+relatedComponents: ['date-picker-next']
+---
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return <DateRangePickerNext value={value} onChange={setValue} />;
+};
+```
+
+Date range picker is a [controlled component](https://reactjs.org/docs/forms.html#controlled-components) which means consumers of this component need to manage the state of this component by using the `value` and `onChange` props.
+
+For an example of using this component in a form built with [react-hook-form](https://react-hook-form.com/) and [yup](https://github.com/jquense/yup), please see the [Single-page form template](/templates/single-page-form).
+
+<DoHeading />
+
+- always display the date format above the text input
+- prefer Australian date format 'dd/mm/yyyy'
+- allow users to navigate dates via the calendar
+- ensure users can enter dates via the calendar or text input
+- make sure error messages are specific about what input is required.
+
+<DontHeading />
+
+- hide the date format
+- use international date formats such as USA mm/dd/yyyy
+- hijack built-in keyboard navigation behaviour.
+
+## Legend
+
+Use the `legend` prop to describe the purpose of the group of fields.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			legend="Date period"
+		/>
+	);
+};
+```
+
+## Hint
+
+Use the `hint` prop to provide help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don’t use long paragraphs and lists in hint text. Screen readers read out the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			legend="Date period"
+			hint="Example hint text"
+		/>
+	);
+};
+```
+
+## Invalid
+
+Use the `fromInvalid` and `toInvalid` props to indicate if the user input is invalid.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<FormStack>
+			<DateRangePickerNext
+				value={value}
+				onChange={setValue}
+				fromInvalid={true}
+				toInvalid={true}
+				legend="Date period"
+				message="Enter valid start and end dates"
+			/>
+			<DateRangePickerNext
+				value={value}
+				onChange={setValue}
+				fromInvalid={true}
+				toInvalid={false}
+				legend="Date period"
+				message="Enter a valid start date"
+			/>
+			<DateRangePickerNext
+				value={value}
+				onChange={setValue}
+				fromInvalid={false}
+				toInvalid={true}
+				legend="Date period"
+				message="Enter a valid end date"
+			/>
+		</FormStack>
+	);
+};
+```
+
+Use the `isValidDate` function to check if the user has inputted/picked invalid dates, including dates that are out of order or dates outside of allowed ranges.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
+	// See Single-page form template
+	const isFromInvalid = React.useCallback((value, otherDate) => {
+		return value ? !isValidDate(value, { toDate: otherDate }) : false;
+	}, []);
+
+	const isToInvalid = React.useCallback((value, otherDate) => {
+		return value ? !isValidDate(value, { fromDate: otherDate }) : false;
+	}, []);
+
+	const fromInvalid = isFromInvalid(value.from, value.to);
+	const toInvalid = isToInvalid(value.to, value.from);
+
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			legend="Date period"
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
+		/>
+	);
+};
+```
+
+## Custom labels
+
+Use the `fromLabel` and `toLabel` props to change the field labels.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			fromLabel="From"
+			toLabel="To"
+		/>
+	);
+};
+```
+
+## Disabled
+
+Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return <DateRangePickerNext value={value} onChange={setValue} disabled />;
+};
+```
+
+## Minimum and maximum dates
+
+The `minDate` property can be used to disable any days in the calendar before a specific date.
+
+The `maxDate` property can be used to disable any days in the calendar after a specific date.
+
+A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+
+	const today = new Date();
+	const lastWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() - 7
+	);
+	const nextWeek = new Date(
+		today.getFullYear(),
+		today.getMonth(),
+		today.getDate() + 7
+	);
+
+	const isFromInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, { toDate: otherDate, minDate: lastWeek })
+			: false;
+	}, []);
+
+	const isToInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, { fromDate: otherDate, maxDate: nextWeek })
+			: false;
+	}, []);
+
+	const fromInvalid = isFromInvalid(value.from, value.to);
+	const toInvalid = isToInvalid(value.to, value.from);
+
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			minDate={lastWeek}
+			maxDate={nextWeek}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
+		/>
+	);
+};
+```
+
+## Changing the date format
+
+The Date range picker component allows users to enter dates in various formats. To select the 18th February 2023, a user could input '18/02/2023', '18 Feb 2023', '18th February 2023', or any other supported date format.
+
+When a valid date is typed, the date will be formatted using the `dateFormat` prop, which is set to `'dd/MM/yyyy'` by default.
+
+To modify the date format, you can change the `dateFormat` prop to one of these supported date formats:
+
+- `'dd/MM/yyyy'` (e.g. 18/02/2023)
+- `'dd-MM-yyyy'` (e.g. 18-02-2023)
+- `'dd MM yyyy'` (e.g. 18 02 2023)
+- `'MM/dd/yyyy'` (e.g. 02/18/2023)
+- `'MM-dd-yyyy'` (e.g. 02-18-2023)
+- `'MM dd yyyy'` (e.g. 02 18 2023)
+- `'do MMMM yyyy'` (e.g. 8th February 2023)
+- `'do MMM yyyy'` (e.g. 8th Feb 2023)
+- `'MMMM do yyyy'` (e.g. February 8th 2023)
+- `'MMM do yyyy'` (e.g. Feb 8th 2023)
+- `'d MMMM yyyy'` (e.g. 8 February 2023)
+- `'d MMM yyyy'` (e.g. 8 Feb 2023)
+- `'MMMM d yyyy'` (e.g. February 8 2023)
+- `'MMM d yyyy'` (e.g. Feb 8 2023)
+- `'dd MMMM yyyy'` (e.g. 08 February 2023)
+- `'dd MMM yyyy'` (e.g. 08 Feb 2023)
+- `'MMMM dd yyyy'` (e.g. February 08 2023)
+- `'MMM dd yyyy'` (e.g. Feb 08 2023)
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			dateFormat="d MMM yyyy"
+		/>
+	);
+};
+```
+
+## Changing the allowed date formats
+
+By default, all of the supported date formats are allowed, but should you need to restrict the formats that can be parsed and validated, you can pass in an array of date format strings to the `allowedDateFormats` prop.
+
+Some applications may find it useful to remove US formats, since an invalid AU date could become a valid US date and cause confusion for users.
+
+Date formats are parsed in order from first to last and stops when a valid date is found. The preferred `dateFormat` always becomes the first to check, even if omitted in `allowedDateFormats`.
+
+The array of `allowedDateFormats` will also need to be passed to the `isValidDate` function to correctly validate the user’s input.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: '', to: '' });
+	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];
+
+	const isFromInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, {
+					toDate: otherDate,
+					allowedDateFormats,
+			  })
+			: false;
+	}, []);
+
+	const isToInvalid = React.useCallback((value, otherDate) => {
+		return value
+			? !isValidDate(value, {
+					fromDate: otherDate,
+					allowedDateFormats,
+			  })
+			: false;
+	}, []);
+
+	const fromInvalid = isFromInvalid(value.from, value.to);
+	const toInvalid = isToInvalid(value.to, value.from);
+
+	return (
+		<DateRangePickerNext
+			value={value}
+			onChange={setValue}
+			fromInvalid={fromInvalid}
+			toInvalid={toInvalid}
+			message={
+				fromInvalid && toInvalid
+					? 'Enter valid start and end dates'
+					: fromInvalid
+					? 'Enter a valid start date'
+					: toInvalid
+					? 'Enter a valid end date'
+					: undefined
+			}
+			hint="Only short AU formats allowed"
+			allowedDateFormats={allowedDateFormats}
+		/>
+	);
+};
+```

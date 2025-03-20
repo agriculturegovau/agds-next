@@ -35,7 +35,7 @@ async function openDropdownMenu() {
 	const menuButton = await getDropdownMenuButton();
 	menuButton.focus();
 	expect(menuButton).toHaveFocus();
-	await userEvent.click(menuButton);
+	await act(() => userEvent.click(menuButton));
 }
 
 function renderBasicDropdownMenu() {
@@ -94,7 +94,8 @@ describe('DropdownMenu', () => {
 		expect(menuList).toHaveAttribute('aria-labelledby', menuButton.id);
 
 		// Close the dropdown menu
-		await userEvent.keyboard('{Escape}');
+		const user = userEvent.setup();
+		await act(() => user.keyboard('{Escape}'));
 
 		expect(menuButton).toHaveAttribute('aria-expanded', 'false');
 	});
@@ -103,16 +104,16 @@ describe('DropdownMenu', () => {
 		renderBasicDropdownMenu();
 
 		const menuButton = await getDropdownMenuButton();
-
+		const user = userEvent.setup();
 		// Open the dropdown menu
-		await userEvent.click(menuButton);
+		await act(() => user.click(menuButton));
 
 		// Once the dropdown menu is opened, the menu list should be focused
 		const list = await screen.findByRole('menu');
 		expect(list).toHaveFocus();
 
 		// When closing the dropdown menu, the the trigger should be focused again
-		await userEvent.keyboard('{Escape}');
+		await act(() => user.keyboard('{Escape}'));
 		expect(menuButton).toHaveFocus();
 	});
 
@@ -136,28 +137,30 @@ describe('DropdownMenu', () => {
 		// aria-activedescendant should be empty
 		expect(menuList).not.toHaveAttribute('aria-activedescendant');
 
+		const user = userEvent.setup();
+
 		// Pressing the down key should activate the first descendant
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-1');
 
 		// Pressing the down key should activate the next menu item
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-2');
 
 		// Pressing the down key should activate the previous menu item
-		await userEvent.keyboard('[ArrowUp]');
+		await act(() => user.keyboard('[ArrowUp]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-1');
 
-		await userEvent.keyboard('[ArrowDown]');
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
+		await act(() => user.keyboard('[ArrowDown]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-3');
 
 		// Pressing the down key at the last menu item should activate the first menu item
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-1');
 
 		// Pressing the up key at the first menu item should activate the last menu item
-		await userEvent.keyboard('[ArrowUp]');
+		await act(() => user.keyboard('[ArrowUp]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-3');
 	});
 
@@ -178,15 +181,17 @@ describe('DropdownMenu', () => {
 
 		const menuList = await screen.findByRole('menu');
 
+		const user = userEvent.setup();
+
 		// aria-activedescendant should be empty
 		expect(menuList).not.toHaveAttribute('aria-activedescendant');
 
 		// Pressing the down key should activate the first descendant
-		await userEvent.keyboard('[Home]');
+		await act(() => user.keyboard('[Home]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-1');
 
 		// Pressing the down key should activate the next menu item
-		await userEvent.keyboard('[End]');
+		await act(() => user.keyboard('[End]'));
 		expect(menuList).toHaveAttribute('aria-activedescendant', 'item-3');
 	});
 
@@ -207,7 +212,7 @@ describe('DropdownMenu', () => {
 
 		// Once the dropdown menu is opened, the menu list should be focused
 		const firstListItem = await screen.findByText('Item 1');
-		await userEvent.click(firstListItem);
+		await act(() => userEvent.click(firstListItem));
 
 		// When closing the dropdown menu, the the trigger should be focused again
 		const menuButton = await getDropdownMenuButton();
@@ -239,7 +244,7 @@ describe('DropdownMenu', () => {
 		expect(menuButton).toHaveTextContent('Open');
 
 		// Open the dropdown menu
-		await userEvent.click(menuButton);
+		await act(() => userEvent.click(menuButton));
 
 		expect(menuButton).toHaveTextContent('Close');
 	});
@@ -258,18 +263,18 @@ function renderDecorativeDropdownMenu() {
 					<DropdownMenuPanel>
 						<DropdownMenuItem icon={AvatarIcon}>Profile</DropdownMenuItem>
 						<DropdownMenuItem
-							icon={EmailIcon}
 							endElement={
 								<Fragment>
 									<NotificationBadge
-										value={100}
+										aria-hidden
 										max={99}
 										tone="action"
-										aria-hidden
+										value={100}
 									/>
 									<VisuallyHidden>, 99 plus unread</VisuallyHidden>
 								</Fragment>
 							}
+							icon={EmailIcon}
 						>
 							Messages
 						</DropdownMenuItem>
@@ -361,10 +366,10 @@ describe('DropdownMenu Links', () => {
 			<DropdownMenu>
 				<DropdownMenuButton>Open dropdown menu</DropdownMenuButton>
 				<DropdownMenuPanel>
-					<DropdownMenuItemLink href="/about" target="_blank" rel="noopener">
+					<DropdownMenuItemLink href="/about" rel="noopener" target="_blank">
 						About
 					</DropdownMenuItemLink>
-					<DropdownMenuItemLink href="/contact" target="_blank" rel="noopener">
+					<DropdownMenuItemLink href="/contact" rel="noopener" target="_blank">
 						Contact
 					</DropdownMenuItemLink>
 				</DropdownMenuPanel>
@@ -400,22 +405,18 @@ function renderDropdownMenuRadio() {
 			<DropdownMenuPanel>
 				<DropdownMenuGroup label="Businesses">
 					<DropdownMenuItemRadio
-						id="item-1"
 						checked={false}
+						id="item-1"
 						secondaryText="Sydney"
 					>
 						Antfix
 					</DropdownMenuItemRadio>
-					<DropdownMenuItemRadio
-						id="item-2"
-						checked={true}
-						secondaryText="Brisbane"
-					>
+					<DropdownMenuItemRadio checked id="item-2" secondaryText="Brisbane">
 						Produce Fresh
 					</DropdownMenuItemRadio>
 					<DropdownMenuItemRadio
-						id="item-3"
 						checked={false}
+						id="item-3"
 						secondaryText="Canberra"
 					>
 						Organic Co
@@ -477,26 +478,26 @@ describe('DropdownMenu Radio Group', () => {
 				<DropdownMenuPanel>
 					<DropdownMenuGroup label="Businesses">
 						<DropdownMenuItemRadio
-							id="item-1"
 							checked={false}
-							secondaryText="Sydney"
+							id="item-1"
 							onClick={onClick1}
+							secondaryText="Sydney"
 						>
 							Antfix
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
+							checked
 							id="item-2"
-							checked={true}
-							secondaryText="Brisbane"
 							onClick={onClick2}
+							secondaryText="Brisbane"
 						>
 							Produce Fresh
 						</DropdownMenuItemRadio>
 						<DropdownMenuItemRadio
-							id="item-3"
 							checked={false}
-							secondaryText="Canberra"
+							id="item-3"
 							onClick={onClick3}
+							secondaryText="Canberra"
 						>
 							Organic Co
 						</DropdownMenuItemRadio>
@@ -510,7 +511,7 @@ describe('DropdownMenu Radio Group', () => {
 
 		// Once the dropdown menu is opened, the menu list should be focused
 		const firstListItem = await screen.findByText('Antfix');
-		await userEvent.click(firstListItem);
+		await act(() => userEvent.click(firstListItem));
 
 		// When closing the dropdown menu, the the trigger should be focused again
 		expect(menuButton).toHaveFocus();

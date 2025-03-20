@@ -8,7 +8,7 @@ export function FooterDivider({
 }) {
 	return (
 		<Box
-			aria-hidden="true"
+			aria-hidden
 			as="hr"
 			borderColor={color}
 			borderTop

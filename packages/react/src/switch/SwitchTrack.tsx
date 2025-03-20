@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { CheckIcon } from '../icon';
@@ -16,9 +16,9 @@ export const SwitchContainer = ({ children, size }: SwitchContainerProps) => {
 	return (
 		<Box
 			as="span"
-			width={width}
-			height={height}
 			css={{ position: 'relative', flexShrink: 0 }}
+			height={height}
+			width={width}
 		>
 			{children}
 		</Box>
@@ -38,6 +38,7 @@ export const SwitchTrack = ({ checked, size }: SwitchTrackProps) => {
 				borderRadius: height,
 				position: 'absolute',
 				inset: 0,
+				...print.exactColor,
 				...(checked
 					? {
 							backgroundColor: boxPalette.selected,
@@ -71,11 +72,8 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 	const iconSize = ICON_SIZE_MAP[size];
 	return (
 		<Flex
-			as="span"
 			alignItems="center"
-			justifyContent="center"
-			height={thumbSize}
-			width={thumbSize}
+			as="span"
 			background="body"
 			css={{
 				borderRadius: thumbSize,
@@ -88,14 +86,17 @@ export const SwitchThumb = ({ checked, size }: SwitchThumbProps) => {
 				transition: `left ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 				left: checked ? thumbCheckedPos : '0rem',
 			}}
+			height={thumbSize}
+			justifyContent="center"
+			width={thumbSize}
 		>
 			{checked && (
 				<CheckIcon
-					weight="bold"
 					color="selected"
+					css={{ width: iconSize.actual, height: iconSize.actual }}
 					// This component requires a custom icon size
 					size={iconSize.prop}
-					css={{ width: iconSize.actual, height: iconSize.actual }}
+					weight="bold"
 				/>
 			)}
 		</Flex>

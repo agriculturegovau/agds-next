@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, screen, within } from '../../../../test-utils';
+import { act, render, screen, within } from '../../../../test-utils';
 import { SideNav, SideNavProps } from './SideNav';
 import { alwaysOpenItems, defaultTestingProps } from './test-utils';
 
@@ -61,7 +61,7 @@ describe('SideNav', () => {
 				const button = screen.getByRole('button', {
 					name: defaultTestingProps.title,
 				});
-				await user.click(button);
+				await act(() => user.click(button));
 
 				const titleAsLink = await screen.findByRole('link', {
 					name: defaultTestingProps.title,
@@ -102,7 +102,7 @@ describe('SideNav', () => {
 				const button = screen.getByRole('button', {
 					name: defaultTestingProps.title,
 				});
-				await user.click(button);
+				await act(() => user.click(button));
 
 				expect(
 					screen.queryByRole('link', { name: defaultTestingProps.title })
@@ -344,8 +344,8 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-1"
-							subLevelVisible="always"
 							items={alwaysOpenItems}
+							subLevelVisible="always"
 						/>
 					);
 					const user = userEvent.setup();
@@ -379,8 +379,8 @@ describe('SideNav', () => {
 						<SideNav
 							{...defaultTestingProps}
 							activePath="#page-2"
-							subLevelVisible="always"
 							items={alwaysOpenItems}
+							subLevelVisible="always"
 						/>
 					);
 					const user = userEvent.setup();

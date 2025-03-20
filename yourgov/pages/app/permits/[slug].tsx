@@ -28,7 +28,6 @@ import { TextLinkExternal } from '@ag.ds-next/react/text-link';
 import { DocumentTitle } from '../../../components/DocumentTitle';
 import { AppLayout } from '../../../components/Layout/AppLayout';
 import {
-	formSteps,
 	GlobalFormProvider,
 	useGlobalForm,
 } from '../../../components/FormMobileFoodVendorPermit';
@@ -46,7 +45,8 @@ import { NextPageWithLayout } from '../../_app';
 import {
 	Document,
 	idToDocumentTypeMap,
-} from '../../../components/FormMobileFoodVendorPermit/steps/FormStep9';
+} from '../../../components/FormMobileFoodVendorPermit/steps/StepUploadDocumentsForm';
+import { stepKeyToStepDataMap } from '../../../components/FormMobileFoodVendorPermit/steps/stepsData';
 
 const Page: NextPageWithLayout = () => {
 	const { query, isReady } = useRouter();
@@ -74,12 +74,12 @@ const Page: NextPageWithLayout = () => {
 					{!isReady ? null : isValidSlug ? (
 						<>
 							<Stack gap={1.5}>
-								<FormContainer title={pageTitle} hideRequiredFieldsMessage />
+								<FormContainer hideRequiredFieldsMessage title={pageTitle} />
 								<div>
 									{formState?.completed ? (
-										<StatusBadge tone="successMedium" label="Submitted" />
+										<StatusBadge label="Submitted" tone="successMedium" />
 									) : (
-										<StatusBadge tone="inProgressLow" label="In progress" />
+										<StatusBadge label="In progress" tone="inProgressLow" />
 									)}
 								</div>
 							</Stack>
@@ -100,71 +100,90 @@ const Page: NextPageWithLayout = () => {
 
 									{/** Owner details */}
 									<Stack gap={2}>
-										<H3>{formSteps[0].label}</H3>
+										<H3>{stepKeyToStepDataMap.stepOwnerDetails.label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="First name"
-												value={formState.steps?.step1?.firstName}
+												value={formState.steps?.stepOwnerDetails?.firstName}
 											/>
 											<FormDefinitionListItem
 												label="Last name"
-												value={formState.steps?.step1?.lastName}
+												value={formState.steps?.stepOwnerDetails?.lastName}
 											/>
 											<FormDefinitionListItem
 												label="Email address"
-												value={formState.steps?.step1?.email}
+												value={formState.steps?.stepOwnerDetails?.email}
 											/>
 											<FormDefinitionListItem
-												label="Contact phone number"
-												value={formState.steps?.step1?.contactPhoneNumber}
+												label="Mobile number"
+												value={formState.steps?.stepOwnerDetails?.mobileNumber}
+											/>
+											<FormDefinitionListItem
+												label="Preferred contact method"
+												value={formState.steps?.stepOwnerDetails?.contactMethod}
 											/>
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Business details */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[1].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3>{stepKeyToStepDataMap.stepBusinessDetails.label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="Business name"
-												value={formState.steps?.step2?.businessName}
+												value={
+													formState.steps?.stepBusinessDetails?.businessName
+												}
 											/>
 											<FormDefinitionListItem
 												label="Trading name"
-												value={formState.steps?.step2?.tradingName}
+												value={
+													formState.steps?.stepBusinessDetails?.tradingName
+												}
 											/>
 											<FormDefinitionListItem
 												label="Business structure"
-												value={formState.steps?.step2?.businessStructure}
+												value={
+													formState.steps?.stepBusinessDetails
+														?.businessStructure
+												}
 											/>
-											{formState.steps?.step2?.businessStructure ===
-											'Business' ? (
+											{['Business', 'Sole trader'].includes(
+												formState.steps?.stepBusinessDetails
+													?.businessStructure || ''
+											) ? (
 												<FormDefinitionListItem
 													label="Australian Business Number (ABN)"
-													value={formState.steps?.step2?.abn}
+													value={formState.steps?.stepBusinessDetails?.abn}
 												/>
-											) : formState.steps?.step2?.businessStructure ===
-											  'Company' ? (
+											) : formState.steps?.stepBusinessDetails
+													?.businessStructure === 'Company' ? (
 												<FormDefinitionListItem
 													label="Australian Company Number (ACN)"
-													value={formState.steps?.step2?.acn}
+													value={formState.steps?.stepBusinessDetails?.acn}
 												/>
 											) : null}
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Business address */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[2].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3>{stepKeyToStepDataMap.stepBusinessAddress.label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItemAddress
+												address={
+													formState.steps?.stepBusinessAddress?.streetAddress
+												}
 												label="Street address"
-												address={formState.steps?.step3?.streetAddress}
-												suburb={formState.steps?.step3?.suburbTownCity}
-												state={formState.steps?.step3?.state}
-												postcode={formState.steps?.step3?.postcode}
+												postcode={
+													formState.steps?.stepBusinessAddress?.postcode
+												}
+												state={formState.steps?.stepBusinessAddress?.state}
+												suburb={
+													formState.steps?.stepBusinessAddress?.suburbTownCity
+												}
 											/>
-											{formState.steps?.step3
+											{formState.steps?.stepBusinessAddress
 												?.isPostalAddressSameAsBusinessAddress ? (
 												<FormDefinitionListItem
 													label="Postal address"
@@ -172,55 +191,76 @@ const Page: NextPageWithLayout = () => {
 												/>
 											) : (
 												<FormDefinitionListItemAddress
+													address={
+														formState.steps?.stepBusinessAddress?.postalAddress
+													}
 													label="Postal address"
-													address={formState.steps?.step3?.postalAddress}
-													suburb={formState.steps?.step3?.postalSuburbTownCity}
-													state={formState.steps?.step3?.postalState}
-													postcode={formState.steps?.step3?.postalPostcode}
+													postcode={
+														formState.steps?.stepBusinessAddress?.postalPostcode
+													}
+													state={
+														formState.steps?.stepBusinessAddress?.postalState
+													}
+													suburb={
+														formState.steps?.stepBusinessAddress
+															?.postalSuburbTownCity
+													}
 												/>
 											)}
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Vehicle registration */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[3].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3>
+											{stepKeyToStepDataMap.stepVehicleRegistration.label}
+										</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="Vehicle registration number"
-												value={formState.steps?.step4?.registrationNumber}
+												value={
+													formState.steps?.stepVehicleRegistration
+														?.registrationNumber
+												}
 											/>
 											<FormDefinitionListItemDate
 												label="Registration expiry date"
-												value={formState.steps?.step4?.registrationExpiry}
+												value={
+													formState.steps?.stepVehicleRegistration
+														?.registrationExpiry
+												}
 											/>
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Trading time */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[4].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3>{stepKeyToStepDataMap.stepTradingTime.label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItemDateRange
 												fromLabel="Start date"
-												fromValue={formState.steps?.step5?.tradingPeriod?.from}
+												fromValue={
+													formState.steps?.stepTradingTime?.tradingPeriod?.from
+												}
 												toLabel="End date"
-												toValue={formState.steps?.step5?.tradingPeriod?.to}
+												toValue={
+													formState.steps?.stepTradingTime?.tradingPeriod?.to
+												}
 											/>
 											<FormDefinitionListItem
 												label="Trading hours"
-												value={`${formState.steps?.step5?.openingTime?.formatted} - ${formState.steps?.step5?.closingTime?.formatted}`}
+												value={`${formState.steps?.stepTradingTime?.openingTime?.formatted} - ${formState.steps?.stepTradingTime?.closingTime?.formatted}`}
 											/>
 										</FormDefinitionList>
 									</Stack>
 
 									{/** Food served */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[5].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3>{stepKeyToStepDataMap.stepFoodServed.label}</H3>
 										<FormDefinitionList>
 											<FormDefinitionListItem
 												label="Food served"
-												value={formState.steps?.step6?.foodServed
+												value={formState.steps?.stepFoodServed?.foodServed
 													?.map((item) => item?.label)
 													.join(', ')}
 											/>
@@ -230,8 +270,10 @@ const Page: NextPageWithLayout = () => {
 									<H2>Employee details</H2>
 
 									{/** Employees */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3 id="employees-heading">{formSteps[6].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3 id="employees-heading">
+											{stepKeyToStepDataMap.stepEmployees.label}
+										</H3>
 										<TableWrapper>
 											<Table aria-labelledby="employees-heading">
 												<TableHead>
@@ -241,7 +283,7 @@ const Page: NextPageWithLayout = () => {
 													</TableRow>
 												</TableHead>
 												<TableBody>
-													{formState.steps?.step7?.employee?.map(
+													{formState.steps?.stepEmployees?.employee?.map(
 														(employee) =>
 															employee?.id && (
 																<TableRow key={employee.id}>
@@ -257,22 +299,14 @@ const Page: NextPageWithLayout = () => {
 										</TableWrapper>
 									</Stack>
 
-									{/** Food safety supervisor */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3>{formSteps[7].label}</H3>
-										<FormDefinitionList>
-											<FormDefinitionListItem
-												label="Food safety supervisor"
-												value={formState.steps?.step8?.supervisor}
-											/>
-										</FormDefinitionList>
-									</Stack>
 									<Divider />
 									<H2>Upload documents</H2>
 
 									{/** Upload documents */}
-									<Stack gap={2} alignItems="flex-start">
-										<H3 id="upload-documents-heading">{formSteps[8].label}</H3>
+									<Stack alignItems="flex-start" gap={2}>
+										<H3 id="upload-documents-heading">
+											{stepKeyToStepDataMap.stepUploadDocuments.label}
+										</H3>
 										<TableWrapper>
 											<Table aria-labelledby="upload-documents-heading">
 												<TableHead>
@@ -282,9 +316,11 @@ const Page: NextPageWithLayout = () => {
 													</TableRow>
 												</TableHead>
 												<TableBody>
-													{formState.steps?.step9?.files &&
+													{formState.steps?.stepUploadDocuments?.files &&
 														(
-															Object.entries(formState.steps.step9.files) as [
+															Object.entries(
+																formState.steps.stepUploadDocuments.files
+															) as [
 																Document['id'],
 																{ file: string; size: string },
 															][]
@@ -364,7 +400,7 @@ const Page: NextPageWithLayout = () => {
 					) : (
 						<>
 							<PageTitle title={pageTitle} />
-							<PageAlert tone="error" title="No matching permit found">
+							<PageAlert title="No matching permit found" tone="error">
 								<DirectionLink direction="right" href={managePermitsPage}>
 									Manage existing permits
 								</DirectionLink>
@@ -373,17 +409,17 @@ const Page: NextPageWithLayout = () => {
 					)}
 				</Stack>
 				<Modal
-					isOpen={isModalOpen}
-					onClose={closeModal}
-					title="Are you sure you want to remove this application?"
 					actions={
 						<ButtonGroup>
 							<Button onClick={closeModal}>Yes, remove</Button>
-							<Button variant="secondary" onClick={closeModal}>
+							<Button onClick={closeModal} variant="secondary">
 								No
 							</Button>
 						</ButtonGroup>
 					}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title="Are you sure you want to remove this application?"
 				>
 					<Text as="p">
 						Note: this is for demonstration purposes only and does not function.

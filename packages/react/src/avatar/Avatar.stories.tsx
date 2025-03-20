@@ -64,13 +64,13 @@ export const CompositeNames = () => {
 	const name = 'William Mead';
 	const tone = 'neutral';
 	return (
-		<Stack gap={1} alignItems="flex-start">
+		<Stack alignItems="flex-start" gap={1}>
 			{sizes.map((size) => (
 				<Flex
-					key={size}
-					gap={SIZE_MAP[size].gap}
 					alignItems="center"
+					gap={SIZE_MAP[size].gap}
 					justifyContent="flex-start"
+					key={size}
 				>
 					<Avatar name={name} size={size} tone={tone} />
 					<Text
@@ -90,16 +90,11 @@ export const CompositeNamesLinks = () => {
 	const name = 'William Mead';
 	const tone = 'action';
 	return (
-		<Stack gap={1} alignItems="flex-start">
+		<Stack alignItems="flex-start" gap={1}>
 			{sizes.map((size) => (
 				<Flex
-					key={size}
-					gap={SIZE_MAP[size].gap}
 					alignItems="center"
-					justifyContent="flex-start"
 					as="a"
-					href="#"
-					link
 					css={{
 						textDecoration: 'none',
 						'> span': {
@@ -110,6 +105,11 @@ export const CompositeNamesLinks = () => {
 							color: boxPalette.foregroundText,
 						},
 					}}
+					gap={SIZE_MAP[size].gap}
+					href="#"
+					justifyContent="flex-start"
+					key={size}
+					link
 				>
 					<Avatar name={name} size={size} tone={tone} />
 					<Text

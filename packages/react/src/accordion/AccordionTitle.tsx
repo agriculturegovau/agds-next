@@ -27,35 +27,35 @@ export const AccordionTitle = ({
 	return (
 		<Box as={tag}>
 			<Flex
-				as={BaseButton}
-				id={id}
+				alignItems="center"
 				aria-controls={ariaControls}
 				aria-expanded={isOpen}
-				onClick={onClick}
-				color="action"
-				fontSize="md"
-				lineHeight="heading"
-				fontWeight="bold"
+				as={BaseButton}
 				background={background}
-				paddingY={1}
-				justifyContent="space-between"
-				alignItems="center"
-				width="100%"
-				link
-				focusRingFor="keyboard"
+				color="action"
 				css={{
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
 					},
 				}}
+				focusRingFor="keyboard"
+				fontSize="md"
+				fontWeight="bold"
+				id={id}
+				justifyContent="space-between"
+				lineHeight="heading"
+				link
+				onClick={onClick}
+				paddingY={1}
+				width="100%"
 			>
 				{children}
 				<ChevronDownIcon
-					weight="bold"
 					css={{
 						transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
 						transform: `rotate(${isOpen ? 180 : 0}deg)`,
 					}}
+					weight="bold"
 				/>
 			</Flex>
 		</Box>

@@ -37,7 +37,7 @@ export const Breadcrumbs = ({
 	return (
 		<BreadcrumbsContainer
 			aria-label={ariaLabel}
-			isExpandable={true}
+			isExpandable
 			isExpanded={isExpanded}
 		>
 			<BreadcrumbsItem ref={firstLinkRef} {...firstLink}>

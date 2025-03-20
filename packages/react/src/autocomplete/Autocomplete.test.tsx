@@ -22,8 +22,8 @@ const mockLoadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
 function renderAutocomplete(props?: Partial<AutocompleteProps<Option>>) {
 	return render(
 		<Autocomplete
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			loadOptions={mockLoadOptions}
 			{...props}
 		/>
@@ -63,14 +63,16 @@ describe('Autocomplete', () => {
 		if (!input) return;
 
 		// Focus the input
-		await act(async () => await input.focus());
+		act(() => input.focus());
 		expect(input).toHaveFocus();
 		expect(input).toHaveAttribute('aria-expanded', 'false');
 
 		expect(loadOptions).not.toHaveBeenCalled();
 
+		const user = userEvent.setup();
+
 		// Start typing a search term
-		await userEvent.type(input, 'qld');
+		await act(() => user.type(input, 'qld'));
 
 		// Loading state should be visible
 		expect(container.querySelectorAll('li').length).toBe(1);
@@ -88,7 +90,7 @@ describe('Autocomplete', () => {
 
 		// Select the QLD option
 		const options = container.querySelectorAll('li');
-		await userEvent.click(options[0]);
+		await act(() => user.click(options[0]));
 
 		// Expect the input to be updated
 		expect(input.value).toBe('Queensland');
@@ -96,7 +98,7 @@ describe('Autocomplete', () => {
 		expect(input).toHaveFocus();
 
 		// Since the input is focused, use the arrow down key to open the menu
-		await userEvent.keyboard('[ArrowDown]');
+		await act(() => user.keyboard('[ArrowDown]'));
 
 		// Loading state should be visible
 		expect(container.querySelectorAll('li').length).toBe(1);
@@ -113,7 +115,7 @@ describe('Autocomplete', () => {
 		});
 
 		// Press escape to close the menu
-		await userEvent.keyboard('[Escape]');
+		await act(() => user.keyboard('[Escape]'));
 		expect(input).toHaveAttribute('aria-expanded', 'false');
 		expect(input).toHaveFocus();
 
@@ -122,7 +124,7 @@ describe('Autocomplete', () => {
 		expect(clearButton).toBeInTheDocument();
 		expect(clearButton).toHaveAttribute('aria-label', 'Clear input');
 
-		if (clearButton) await userEvent.click(clearButton);
+		if (clearButton) await act(() => user.click(clearButton));
 
 		// Expect the input to be updated
 		expect(input.value).toBe('');

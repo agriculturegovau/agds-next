@@ -3,7 +3,7 @@ import { SuccessFilledIcon, AlertFilledIcon } from '@ag.ds-next/react/icon';
 
 export const DoHeading = () => (
 	<p>
-		<Flex as="span" alignItems="center" gap={0.5}>
+		<Flex alignItems="center" as="span" gap={0.5}>
 			<SuccessFilledIcon color="success" />
 			<strong>Do</strong>
 		</Flex>
@@ -12,7 +12,7 @@ export const DoHeading = () => (
 
 export const DontHeading = () => (
 	<p>
-		<Flex as="span" alignItems="center" gap={0.5}>
+		<Flex alignItems="center" as="span" gap={0.5}>
 			<AlertFilledIcon color="error" />
 			<strong>Don’t</strong>
 		</Flex>

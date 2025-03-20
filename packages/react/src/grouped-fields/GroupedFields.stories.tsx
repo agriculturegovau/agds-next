@@ -27,12 +27,12 @@ export const Basic: Story = {
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>
@@ -49,12 +49,12 @@ export const HideOptionalLabel: Story = {
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>
@@ -71,12 +71,12 @@ export const VisuallyHideLegend: Story = {
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>
@@ -87,18 +87,18 @@ export const VisuallyHideLegend: Story = {
 
 export const Hint: Story = {
 	render: () => (
-		<GroupedFields legend="Grouped fields" hint="Hint text">
+		<GroupedFields hint="Hint text" legend="Grouped fields">
 			{({ field1Props, field2Props }) => (
 				<>
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>
@@ -119,12 +119,12 @@ export const Field1Invalid: Story = {
 					<TextInput label="TextInput" required {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						{...field2Props}
 					/>
 				</>
@@ -145,12 +145,12 @@ export const Field2Invalid: Story = {
 					<TextInput label="TextInput" {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						required
 						{...field2Props}
 					/>
@@ -173,12 +173,12 @@ export const BothFieldsInvalid: Story = {
 					<TextInput label="TextInput" required {...field1Props} />
 					<Select
 						label="Select"
-						placeholder="Please select"
 						options={[
 							{ value: 'a', label: 'Option A' },
 							{ value: 'b', label: 'Option B' },
 							{ value: 'c', label: 'Option C' },
 						]}
+						placeholder="Please select"
 						required
 						{...field2Props}
 					/>
@@ -242,11 +242,11 @@ export const AllPossibleFieldsInvalid: Story = {
 						/>
 						<DatePicker
 							label="Select date"
-							value={new Date()}
 							onChange={(value) => {
 								console.log(value);
 							}}
 							required
+							value={new Date()}
 							{...field2Props}
 						/>
 					</>
@@ -277,12 +277,12 @@ export const AllPossibleFieldsInvalid: Story = {
 					<>
 						<Select
 							label="Select"
-							placeholder="Please select"
 							options={[
 								{ value: 'a', label: 'Option A' },
 								{ value: 'b', label: 'Option B' },
 								{ value: 'c', label: 'Option C' },
 							]}
+							placeholder="Please select"
 							required
 							{...field1Props}
 						/>

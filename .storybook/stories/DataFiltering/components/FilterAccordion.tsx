@@ -35,31 +35,30 @@ export const FilterAccordion = ({
 
 	return (
 		<animated.section
-			id={id}
 			aria-labelledby={ariaLabelledBy}
-			style={animatedHeight}
 			css={{
 				overflow: 'hidden',
 			}}
+			id={id}
+			style={animatedHeight}
 		>
 			<Flex
-				ref={ref}
-				columnGap={1}
-				rowGap={1.5}
 				alignItems={{ xs: 'stretch', md: 'flex-end' }}
-				flexDirection={{ xs: 'column', md: 'row' }}
 				background="shade"
-				flexWrap="wrap"
-				padding={1}
-				rounded
 				border
 				borderColor="muted"
+				columnGap={1}
+				flexDirection={{ xs: 'column', md: 'row' }}
+				flexWrap="wrap"
+				padding={1}
+				ref={ref}
+				rounded
+				rowGap={1.5}
 			>
 				<FilterStateSelect />
 				<FilterAssigneeSelect />
 				<DateRangePicker
 					fromLabel="Registered from"
-					toLabel="Registered to"
 					hideOptionalLabel
 					onChange={(requestDate) => setFilter({ requestDate })}
 					onFromInputChange={(from) =>
@@ -72,6 +71,7 @@ export const FilterAccordion = ({
 							requestDate: { ...filters.requestDate, to },
 						})
 					}
+					toLabel="Registered to"
 					value={filters.requestDate}
 				/>
 			</Flex>

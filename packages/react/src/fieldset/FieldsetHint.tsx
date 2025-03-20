@@ -6,15 +6,15 @@ export type FieldsetHintProps = PropsWithChildren<{ id?: string }>;
 
 export const FieldsetHint = ({ children, id }: FieldsetHintProps) => {
 	return isValidElement(children) ? (
-		<div id={id} css={{ marginTop: mapSpacing(0.75) }}>
+		<div css={{ marginTop: mapSpacing(0.75) }} id={id}>
 			{children}
 		</div>
 	) : (
 		<Text
-			fontSize="sm"
 			color="muted"
-			display="block"
 			css={{ marginTop: mapSpacing(0.75) }}
+			display="block"
+			fontSize="sm"
 			id={id}
 		>
 			{children}

@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { visuallyHiddenStyles } from '../a11y';
 import { Button, ButtonProps } from '../button';
+import { mergeRefs } from '../core';
 import { Field } from '../field';
 import { AcceptedFileMimeTypes } from '../file-upload';
 import { fileTypeMapping } from '../file-upload/utils';
@@ -57,22 +58,23 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			accept,
 			autoFocus,
 			buttonSize = 'sm',
-			label,
+			disabled,
 			hideOptionalLabel,
-			required,
 			hint,
+			id,
+			invalid,
+			label,
 			message,
 			multiple,
-			invalid,
-			id,
-			disabled,
 			onChange: onChangeProp,
+			onFocus: onFocusProp,
+			required,
 			...props
 		},
 		ref
 	) {
-		const fallbackRef = useRef(null);
-		const hiddenInputRef = ref || fallbackRef;
+		const fallbackRef = useRef<HTMLInputElement>(null);
+		const hiddenInputRef = mergeRefs([ref, fallbackRef]);
 		const visibleButtonRef = useRef<HTMLButtonElement>(null);
 
 		const [fileNames, setFileNames] = useState<string[]>([]);
@@ -87,26 +89,34 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 			[onChangeProp]
 		);
 
+		const onFocus = () => {
+			visibleButtonRef.current?.focus();
+		};
+
 		// Used as a visual front to provide a consistent screen reader announcement across different browsers (e.g. Firefox and Chrome have "Browse..." and "Choose file" respectively)
 		const onVisualButtonClick = () => {
-			if ('current' in hiddenInputRef) hiddenInputRef.current?.click();
+			if (fallbackRef.current) {
+				fallbackRef.current.click();
+			}
 		};
+
 		const onVisualButtonBlur = (event: FocusEvent<HTMLButtonElement>) => {
 			if (!props.onBlur) return;
 
-			if ('current' in hiddenInputRef) {
+			if (fallbackRef?.current) {
 				// We're passing the button's event rather than the input's event as the primary use case is not value reading
 				// TODO: in a future breaking change we will update the types
 				props.onBlur(event as FocusEvent<HTMLInputElement>);
 			}
 		};
-		const onVisualButtonFocus = (event: FocusEvent<HTMLButtonElement>) => {
-			if (!props.onFocus) return;
 
-			if ('current' in hiddenInputRef) {
+		const onVisualButtonFocus = (event: FocusEvent<HTMLButtonElement>) => {
+			if (!onFocusProp) return;
+
+			if (fallbackRef?.current) {
 				// We're passing the button's event rather than the input's event as the primary use case is not value reading
 				// TODO: in a future breaking change we will update the types
-				props.onFocus(event as FocusEvent<HTMLInputElement>);
+				onFocusProp(event as FocusEvent<HTMLInputElement>);
 			}
 		};
 
@@ -205,11 +215,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 						<input
 							{...props}
 							accept={accept?.toString()}
-							aria-hidden={true}
+							aria-hidden
 							css={visuallyHiddenStyles}
 							disabled={disabled}
 							multiple={multiple}
 							onChange={onChange}
+							onFocus={onFocus}
 							ref={hiddenInputRef}
 							tabIndex={-1}
 							type="file"

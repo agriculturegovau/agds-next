@@ -26,7 +26,7 @@ export const Basic: Story = {
 		const { data, loading, error } = useFetchStarWarsAPI();
 		return (
 			<PageContent>
-				<DataLoadingWithCards data={data} loading={loading} error={error} />
+				<DataLoadingWithCards data={data} error={error} loading={loading} />
 			</PageContent>
 		);
 	},

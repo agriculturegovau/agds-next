@@ -4,8 +4,20 @@ description: The Date picker component allows users to select a single date via 
 group: Forms
 storybookPath: /story/forms-datepicker-datepicker--basic
 figmaGalleryNodeId: 12444%3A100327
-relatedComponents: ['date-range-picker']
+relatedComponents:
+  ['date-picker-next', 'date-range-picker-next', 'date-range-picker']
 ---
+
+<PageAlert tone="info" title="This component has been superseded">
+	<Text as="p">
+		{'A newer, backwards-incompatible version of Date picker is available as: '}
+		<TextLink href="/components/date-picker-next">
+			{'Date picker (Next)'}
+		</TextLink>
+		{'.'}
+	</Text>
+	<Text as="p">{'Date picker will be removed in the next major release.'}</Text>
+</PageAlert>
 
 ```jsx live
 () => {

@@ -32,8 +32,6 @@ export default function Page() {
 							<ContentBleed visible={{ md: false }}>
 								<SideNav
 									activePath={router.asPath}
-									title="Services"
-									titleLink="/services"
 									items={[
 										{
 											href: '/not-found',
@@ -95,17 +93,19 @@ export default function Page() {
 											label: 'Real estate and property',
 										},
 									]}
+									title="Services"
+									titleLink="/services"
 								/>
 							</ContentBleed>
 						</Column>
 
 						<Column
 							as="main"
-							id="main-content"
-							tabIndex={-1}
-							css={{ '&:focus': { outline: 'none' } }}
 							columnSpan={{ xs: 12, md: 8 }}
 							columnStart={{ lg: 5 }}
+							css={{ '&:focus': { outline: 'none' } }}
+							id="main-content"
+							tabIndex={-1}
 						>
 							<Stack gap={3}>
 								<Breadcrumbs
@@ -124,14 +124,13 @@ export default function Page() {
 								/>
 								<Stack gap={1.5}>
 									<H1>Operate a food truck, van or stall on public areas</H1>
-									<Text as="p" fontSize="md" color="muted">
+									<Text as="p" color="muted" fontSize="md">
 										If you are preparing and or handling food for retail sale
 										from a vehicle or stall, you must have approval to operate
 										on public areas.
 									</Text>
 								</Stack>
 								<InpageNav
-									title="On this page"
 									links={[
 										{
 											href: '#who-needs-to-do-this',
@@ -144,6 +143,7 @@ export default function Page() {
 										{ href: '#how-to-apply', label: 'How to apply' },
 										{ href: '#more-information', label: 'More information' },
 									]}
+									title="On this page"
 								/>
 
 								<Stack alignItems="flex-start" gap={1.5}>
@@ -210,7 +210,6 @@ export default function Page() {
 										<ul>
 											<li>vehicle registration details and vehicle plans</li>
 											<li>operational plan of management</li>
-											<li>food safety supervisor certificate</li>
 											<li>names of any employees who will be handling food.</li>
 										</ul>
 									</Prose>

@@ -1,5 +1,165 @@
 # @ag.ds-next/react
 
+## 1.26.0
+
+### Minor Changes
+
+- 4397a3dd033: icon: Created `MoveLeftIcon` and `MoveRightIcon`.
+
+  yourgov: Use `MoveLeftIcon` in `HelpReference`.
+
+- d895c373e1f: icon: Add new `ArchiveIcon`, `ClockIcon`, `EmailOpenIcon`, `FlagFilledIcon`, `FlagIcon`, `HistoryIcon`, `RotateLeftIcon`, `RotateRightIcon`, `StarFilledIcon`, `StarIcon`, `TimerIcon`, `ZoomInIcon` and `ZoomOutIcon`.
+- 0fc55e2d892: icon: Add new `BusinessIcon` and `GripIcon`.
+
+  yourgov: Change dashboard labels.
+
+- ab125437b79: file-upload: Add `download` support for uploaded and existing files.
+- ddbcf4aa6de: task-list: Add new `'notRequired'` status.
+- 3ff2cdb9b35: app-layout: Update `AppLayoutSidebarNav` to cater for new native mouse events on links and buttons.
+
+  button: Add TypeScript support for native `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` events to `BaseButton`.
+
+  core: Add TypeScript support for native `onClick`, `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` events to `LinkProps`.
+
+  dropdown-menu: Add `event` to argument to `onClick` function prop.
+
+  main-nav: Update `MainNavList` to cater for new native mouse events on links and buttons.
+
+  table: Add `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` props. Update `onClick` to match `BaseButton`’s signature.
+
+  yourgov: Remove `@ts-ignore` for `CardLink` `onClick`.
+
+- 31c0fd29c64: docs: AgDS Beta v1.26.0 release notes.
+- 7ea33913c23: icon: Created new icon, ProgressNotRequiredIcon.
+- 749f7c7a3c4: toggle-button: Initial release of component.
+- 4caacfd77ca: drawer: Change deprecation warnings to not appear in production environments.
+
+  global-alert: Change deprecation warnings to not appear in production environments.
+
+  modal: Change deprecation warnings to not appear in production environments.
+
+  page-alert: Change deprecation warnings to not appear in production environments.
+
+  section-alert: Change deprecation warnings to not appear in production environments.
+
+- 2167443219d: drawer: Remove deprecated, internal `onDismiss` prop on `DrawerDialog`.
+
+  modal: Remove deprecated, internal `onDismiss` prop on `ModalDialog`.
+
+- 34e1163a486: date-picker-next: Add dynamic validation to stories.
+
+  date-range-picker-next: Add dynamic validation to stories.
+
+  yourgov: Update date-picker implementations to use next components.
+
+- ec0d717949d: date-picker: Add `aria-expanded` attribute to button. Make the example date more relevant. Add superseded announcement to docs.
+
+  date-picker-next: Initial release of component.
+
+  date-range-picker: Add `aria-expanded` attribute to button. Make the example date more relevant. Fix 2nd calendar dropdown updating to the wrong calendar. Add superseded announcement to docs.
+
+  date-range-picker-next: Initial release of component.
+
+- 4679cb597c5: docs: Make `packs` available for use in code snippets and playroom.
+
+  app-layout: `AppLayoutFooter` - Add `maxWidth='container|containerLg'` prop.
+
+  content: Add `maxWidth='container|containerLg'` prop to all content components.
+
+  core: Add new `'containerLg'` `maxWidth` token. Allow `maxWidth` prop to pick from `maxWidth` tokens.
+
+  footer: Add `maxWidth='container|containerLg'` prop.
+
+  header: Add `maxWidth='container|containerLg'` prop.
+
+  main-nav: Add `maxWidth='container|containerLg'` prop.
+
+### Patch Changes
+
+- dd0cc48ff64: accordion: Fix all `act`/state warnings in tests.
+
+  autocomplete: Fix all `act`/state warnings in tests.
+
+  combobox: Fix all `act`/state warnings in tests.
+
+  drawer: Fix all `act`/state warnings in tests.
+
+  dropdown-menu: Fix all `act`/state warnings in tests.
+
+  modal: Fix all `act`/state warnings in tests.
+
+  password-input: Fix all `act`/state warnings in tests.
+
+  search-input: Fix all `act`/state warnings in tests.
+
+  side-nav: Fix all `act`/state warnings in tests.
+
+  tabs: Fix all `act`/state warnings in tests.
+
+  time-input: Fix all `act`/state warnings in tests.
+
+  time-picker: Fix all `act`/state warnings in tests.
+
+- e0d3c17b9a1: date-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  drawer: Add `DatePickerNext` to form example.
+
+  yourgov: Allow pdf files in Upload documents.
+
+- cc95ec6e0ef: status-badge: Update to match design and remove the unnecessary whitespace that was being added below.
+- 491c503608b: file-input: Fix button click not firing when ref is passed. Focus button when hidden input is focused.
+- 94d88ed87d9: core: Update all theme colours to be consistent, 6 character hex codes.
+
+  core: Add `exactColor` print pack.
+
+  button: Use `exactColor` to improve visuals when printing.
+
+  global-alert: Use `exactColor` to improve visuals when printing.
+
+  indicator-dot: Use `exactColor` to improve visuals when printing.
+
+  loading: Use `exactColor` to improve visuals when printing.
+
+  notification-badge: Use `exactColor` to improve visuals when printing.
+
+  page-alert: Use `exactColor` to improve visuals when printing.
+
+  switch: Use `exactColor` to improve visuals when printing.
+
+  tabs: Use `exactColor` to improve visuals when printing.
+
+- 55637c98759: loading: Announce `'fullscreen'` `LoadingBlanket` assertively.
+- 8adc0940fd0: list: Fix docs examples.
+- 21f7862ef6b: button: Add guidance about customising `loadingLabel`.
+- 6c7351c58db: chore: Added `react/jsx-sort-props` eslint rule and sorted all props.
+- 26d7b847dfe: icon: Minify `AlertFilledIcon`, `AlertIcon`, `ArrowDownIcon`, `ArrowLeftIcon`, `ArrowRightIcon`, `ArrowUpDownIcon`, `ArrowUpIcon`, `AvatarIcon`, `CalendarIcon`, `ChartBarIcon`, `ChartLineIcon`, `CheckIcon`, `ChevronDownIcon`, `ChevronLeftIcon`, `ChevronRightIcon`, `ChevronUpIcon`, `ChevronsLeftIcon`, `ChevronsRightIcon`, `ChevronsUpDownIcon`, `CloseIcon`, `CopyIcon`, `DeleteIcon`, `DownloadIcon`, `EditIcon`, `EmailIcon`, `ExitIcon`, `ExternalLinkIcon`, `FacebookIcon`, `FactoryIcon`, `FileIcon`, `FilterIcon`, `HelpIcon`, `HomeIcon`, `InboxIcon`, `InfoFilledIcon`, `InfoIcon`, `InstagramIcon`, `LinkedInIcon`, `MenuIcon`, `MinusIcon`, `PauseIcon`, `PlayIcon`, `PlusIcon`, `PrintIcon`, `ProgressDoingIcon`, `SearchIcon`, `SuccessFilledIcon`, `ThumbsDownIcon`, `ThumbsUpIcon`, `TwitterIcon`, `UploadIcon`, `WarningIcon`, `WebsiteIcon` and `XIcon`.
+- 598725a5f8d: callout: Remove callout in control group story as we no longer support this pattern.
+- 455685ad599: status-badge: Remove emphasis from icon announcement.
+- 95f2d9effe2: box: Apply link style to hide URL on print media for internal hash anchors.
+
+  core: Add new `hideHref` `print` pack to prevent a link’s `href` from being appended when printed.
+
+  file-upload: Apply link style to hide URL on print media for existing file uploads. Existing file URLs should not be displayed and are not required.
+
+  pagination: Apply link style to hide URL for directions and numeric link elements. Pagination links are not functional on print.
+
+- a2473939320: core: modified css parameter name from `'-webkit-print-color-adjust'` -> `WebkitPrintColorAdjust` to resolve hydration warning for using kebab case.
+- 6d12fecc92a: date-picker: Fix all `act`/state warnings in tests.
+
+  date-picker-next: Fix all `act`/state warnings in tests.
+
+  date-range-picker: Fix all `act`/state warnings in tests.
+
+  date-range-picker-next: Fix all `act`/state warnings in tests.
+
+- 8b9a45a9f4d: ag-branding: Format hexadecimal colour codes in the theme with lowercase letters.
+
 ## 1.25.0
 
 ### Minor Changes

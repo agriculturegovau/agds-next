@@ -26,15 +26,15 @@ export default function PackagesContent({
 		<>
 			<DocumentTitle title={`${pkg.title} Content`} />
 			<PkgLayout
-				pkg={pkg}
-				navLinks={navLinks}
 				breadcrumbs={breadcrumbs}
 				editPath={`/packages/react/src/${pkg.slug}/docs/content.mdx`}
+				navLinks={navLinks}
+				pkg={pkg}
 			>
 				{toc?.length > 1 ? (
 					<InpageNav
-						title="On this page"
 						links={toc.map((i) => ({ label: i.title, href: `#${i.slug}` }))}
+						title="On this page"
 					/>
 				) : null}
 				<Prose id="pkg-content">

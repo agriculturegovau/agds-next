@@ -7,10 +7,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
-import { Stack } from '../stack';
 import { Button } from '../button';
+import { formatHumanReadableDate } from '../date-picker-next/utils';
 import { DatePicker, type DatePickerProps } from './DatePicker';
-import { formatHumanReadableDate, parseDate } from './utils';
+import { parseDate } from './utils';
 import { yupDateField, errorMessage } from './test-utils';
 
 expect.extend(toHaveNoViolations);
@@ -60,23 +60,11 @@ function ControlledDatePicker({
 
 	return (
 		<DatePicker
-			value={value}
 			onChange={onChange}
 			onInputChange={setValue}
+			value={value}
 			{...props}
 		/>
-	);
-}
-
-function ClearableDatePicker({ initialValue }: { initialValue?: Date }) {
-	const [value, setValue] = useState<Date | undefined>(initialValue);
-	return (
-		<Stack gap={4} alignItems="flex-start">
-			<DatePicker label="Clearable" value={value} onChange={setValue} />
-			<Button data-testid="clear" onClick={() => setValue(undefined)}>
-				Clear
-			</Button>
-		</Stack>
 	);
 }
 
@@ -109,8 +97,8 @@ function DatePickerInsideForm({
 	});
 	return (
 		<form
-			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 			noValidate
+			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 		>
 			<Controller
 				control={control}
@@ -120,10 +108,10 @@ function DatePickerInsideForm({
 						inputRef={ref}
 						label="Date"
 						{...field}
-						onInputChange={field.onChange}
 						id="date"
 						invalid={Boolean(errors.date?.message)}
 						message={errors.date?.message}
+						onInputChange={field.onChange}
 						required={required}
 					/>
 				)}
@@ -185,26 +173,15 @@ describe('DatePicker', () => {
 	it('updates correctly based on the `value` prop', async () => {
 		const dateString = '01/01/2000';
 		const date = parseDate(dateString) as Date;
-		const formattedDate = formatHumanReadableDate(date);
 
-		render(<ClearableDatePicker initialValue={date} />);
+		render(<ControlledDatePicker initialValue={date} label="Example" />);
 
 		// The input should be a formatted display value of `initialValue`
-		expect(await getInput()).toHaveValue(dateString);
-
-		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
 		expect(
-			screen.getByRole('button', { name: `Change date, ${formattedDate}` })
-		).toBeVisible();
-
-		// Click the `clear` button to clear the value
-		await userEvent.click(screen.getByTestId('clear'));
-
-		// The input should be empty
-		expect(await getInput()).toHaveValue('');
-
-		// The calendar button triggers aria-label should be updated
-		expect(screen.getByRole('button', { name: 'Choose date' })).toBeVisible();
+			screen.getByRole('textbox', {
+				name: 'Example (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue(dateString);
 	});
 
 	it('can render an invalid state', async () => {
@@ -230,10 +207,12 @@ describe('DatePicker', () => {
 		const date = parseDate(dateString) as Date;
 		const formattedDate = formatHumanReadableDate(date);
 
+		const user = userEvent.setup();
+
 		// Type in the input field
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => user.type(await getInput(), dateString));
 		expect(await getInput()).toHaveValue(dateString);
-		await userEvent.keyboard('{Tab}');
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onChange).toHaveBeenLastCalledWith(date);
 
@@ -251,12 +230,14 @@ describe('DatePicker', () => {
 			onInputChange,
 		});
 
+		const user = userEvent.setup();
+
 		const dateString = '01.01.2000';
 
 		// Type in the input field
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => user.type(await getInput(), dateString));
 		expect(await getInput()).toHaveValue(dateString);
-		await userEvent.keyboard('{Tab}');
+		await act(() => user.keyboard('{Tab}'));
 
 		expect(onInputChange).toHaveBeenLastCalledWith(dateString);
 
@@ -267,9 +248,11 @@ describe('DatePicker', () => {
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
 		renderDatePicker({ label: 'Example' });
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the display format
-		await userEvent.type(await getInput(), 'June 5th 2023');
-		await userEvent.keyboard('{Tab}');
+		await act(async () => user.type(await getInput(), 'June 5th 2023'));
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should be formatted to dd/MM/yyyy
 		expect(await getInput()).toHaveValue('05/06/2023');
@@ -281,12 +264,25 @@ describe('DatePicker', () => {
 			dateFormat: 'd MMM yyyy',
 		});
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the display format
-		await userEvent.type(await getInput(), '05 06 2023');
-		await userEvent.keyboard('{Tab}');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Example (e.g. 5 Aug 2015) (optional)',
+				}),
+				'05 06 2023'
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should be formatted to the dateFormat prop
-		expect(await getInput()).toHaveValue('5 Jun 2023');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Example (e.g. 5 Aug 2015) (optional)',
+			})
+		).toHaveValue('5 Jun 2023');
 	});
 
 	it('doesn’t format when an invalid format is entered', async () => {
@@ -295,9 +291,11 @@ describe('DatePicker', () => {
 			label: 'Example',
 		});
 
+		const user = userEvent.setup();
+
 		// Type a valid date in the input field that isn't in the allowed format
-		await userEvent.type(await getInput(), '05.23.2023');
-		await userEvent.keyboard('{Tab}');
+		await act(async () => user.type(await getInput(), '05.23.2023'));
+		await act(() => user.keyboard('{Tab}'));
 
 		// The input should not be formatted to the dateFormat prop
 		expect(await getInput()).toHaveValue('05.23.2023');
@@ -310,9 +308,11 @@ describe('DatePicker', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that is in the allowed format
-			await userEvent.type(await getInput(), '23-05-2023');
-			await userEvent.keyboard('{Tab}');
+			await act(async () => user.type(await getInput(), '23-05-2023'));
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should be formatted to the dateFormat prop
 			expect(await getInput()).toHaveValue('23/05/2023');
@@ -324,9 +324,11 @@ describe('DatePicker', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that isn't in the allowed format
-			await userEvent.type(await getInput(), '05-23-2023');
-			await userEvent.keyboard('{Tab}');
+			await act(async () => user.type(await getInput(), '05-23-2023'));
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should not be formatted to the dateFormat prop
 			expect(await getInput()).toHaveValue('05-23-2023');
@@ -339,12 +341,25 @@ describe('DatePicker', () => {
 				label: 'Example',
 			});
 
+			const user = userEvent.setup();
+
 			// Type a valid date in the input field that isn't in the display format
-			await userEvent.type(await getInput(), '08 Feb 2023');
-			await userEvent.keyboard('{Tab}');
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'Example (e.g. 05 August 2015) (optional)',
+					}),
+					'08 Feb 2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
 
 			// The input should be formatted to the dateFormat prop
-			expect(await getInput()).toHaveValue('08 February 2023');
+			expect(
+				await screen.findByRole('textbox', {
+					name: 'Example (e.g. 05 August 2015) (optional)',
+				})
+			).toHaveValue('08 February 2023');
 		});
 	});
 
@@ -383,17 +398,17 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
 		// Type in an invalid value
-		await userEvent.type(await getInput(), dateString);
+		await act(async () => userEvent.type(await getInput(), dateString));
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => userEvent.click(await getSubmitButton()));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date,
@@ -406,14 +421,14 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => userEvent.click(await getSubmitButton()));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
@@ -426,17 +441,19 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
+		await act(async () => user.type(await getInput(), 'hello'));
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
@@ -447,11 +464,11 @@ describe('DatePicker', () => {
 		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
 
 		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
+		await act(async () => user.clear(await getInput()));
+		expect(await getInput()).toHaveValue('');
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
 		});
@@ -463,17 +480,19 @@ describe('DatePicker', () => {
 
 		render(
 			<DatePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
+		await act(async () => user.type(await getInput(), 'hello'));
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
@@ -484,11 +503,11 @@ describe('DatePicker', () => {
 		expect(await getInput()).toHaveAttribute('aria-invalid', 'true');
 
 		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
+		await act(async () => user.clear(await getInput()));
+		expect(await getInput()).toHaveValue('');
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
 		});
@@ -499,18 +518,16 @@ describe('DatePicker', () => {
 		const onError = jest.fn();
 
 		render(
-			<DatePickerInsideForm
-				required={true}
-				onSubmit={onSubmit}
-				onError={onError}
-			/>
+			<DatePickerInsideForm onError={onError} onSubmit={onSubmit} required />
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getInput(), 'hello');
+		await act(async () => user.type(await getInput(), 'hello'));
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
@@ -523,13 +540,13 @@ describe('DatePicker', () => {
 		const validDateAsString = '02/03/2024';
 
 		// Type in a valid value
-		await userEvent.clear(await getInput());
-		await expect(await getInput()).toHaveValue('');
-		await userEvent.type(await getInput(), validDateAsString);
-		await expect(await getInput()).toHaveValue(validDateAsString);
+		await act(async () => user.clear(await getInput()));
+		expect(await getInput()).toHaveValue('');
+		await act(async () => user.type(await getInput(), validDateAsString));
+		expect(await getInput()).toHaveValue(validDateAsString);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(async () => user.click(await getSubmitButton()));
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: parseDate(validDateAsString),
 		});

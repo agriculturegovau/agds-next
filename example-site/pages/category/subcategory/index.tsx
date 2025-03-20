@@ -33,7 +33,7 @@ export default function SubcategoryPage() {
 					<Stack gap={1.5}>
 						<H2>Subcategory content pages (H2)</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -48,7 +48,7 @@ export default function SubcategoryPage() {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -63,7 +63,7 @@ export default function SubcategoryPage() {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -79,7 +79,7 @@ export default function SubcategoryPage() {
 								</CardInner>
 							</Card>
 							{Array.from(Array(3).keys()).map((idx) => (
-								<Card as="li" key={idx} shadow clickable>
+								<Card as="li" clickable key={idx} shadow>
 									<CardInner>
 										<Stack gap={1}>
 											<H3>

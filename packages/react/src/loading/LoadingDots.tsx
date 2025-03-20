@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { keyframes } from '@emotion/react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { mapSpacing } from '../core';
+import { mapSpacing, print } from '../core';
 import { VisuallyHidden } from '../a11y';
 
 const loadingDotsSizes = {
@@ -40,23 +40,19 @@ export const LoadingDots = ({
 	const dotsArr = Array.from(Array(dots).keys());
 	return (
 		<Flex
-			as="span"
-			gap={gap}
-			className={className}
-			aria-live={ariaLive}
 			aria-atomic="false"
+			aria-live={ariaLive}
+			as="span"
+			className={className}
+			gap={gap}
 			role={role}
 			{...props}
 		>
 			{label && <VisuallyHidden>{label}</VisuallyHidden>}
 			{dotsArr.map((idx) => (
 				<Box
-					key={idx}
+					aria-hidden
 					as="span"
-					height={dotSize}
-					width={dotSize}
-					highContrastOutline
-					aria-hidden="true"
 					css={{
 						opacity: 0,
 						background: 'currentColor',
@@ -65,7 +61,12 @@ export const LoadingDots = ({
 						animationDuration: '1250ms',
 						animationIterationCount: 'infinite',
 						animationDelay: `${idx * 100}ms`,
+						...print.exactColor,
 					}}
+					height={dotSize}
+					highContrastOutline
+					key={idx}
+					width={dotSize}
 				/>
 			))}
 		</Flex>

@@ -18,26 +18,26 @@ export const DataTableBatchActionsBar = () => {
 				</TableBatchActionsTitle>
 				<ButtonGroup>
 					<Button
-						variant="secondary"
-						size="sm"
 						onClick={() => {
 							console.log('Add tracking number');
 							clearRowSelections();
 						}}
+						size="sm"
+						variant="secondary"
 					>
 						Add tracking number
 					</Button>
 					<Button
-						variant="secondary"
-						size="sm"
 						onClick={() => {
 							console.log('Delete');
 							clearRowSelections();
 						}}
+						size="sm"
+						variant="secondary"
 					>
 						Delete
 					</Button>
-					<Button variant="tertiary" size="sm" onClick={clearRowSelections}>
+					<Button onClick={clearRowSelections} size="sm" variant="tertiary">
 						Cancel
 					</Button>
 				</ButtonGroup>

@@ -36,23 +36,23 @@ function renderAppLayout({
 	return render(
 		<AppLayout focusMode={focusMode}>
 			<AppLayoutHeader
-				id="header"
-				href="#"
-				logo={<Logo />}
-				heading="Export Service"
-				subLine="Supporting Australian agricultural exports"
-				badgeLabel="Beta"
 				accountDetails={{
 					name: exampleData.userNames.regular,
 					secondaryText: 'My account',
 					dropdown: (
 						<ExampleAccountDropdown
 							businesses={businessList}
-							selectedBusinessName={businessName}
 							onBusinessChange={jest.fn()}
+							selectedBusinessName={businessName}
 						/>
 					),
 				}}
+				badgeLabel="Beta"
+				heading="Export Service"
+				href="#"
+				id="header"
+				logo={<Logo />}
+				subLine="Supporting Australian agricultural exports"
 			/>
 			<AppLayoutSidebar
 				activePath={activePath}
@@ -60,15 +60,15 @@ function renderAppLayout({
 			/>
 			<AppLayoutContent>
 				<main
+					css={{ '&:focus': { outline: 'none' } }}
 					id="main-content"
 					tabIndex={-1}
-					css={{ '&:focus': { outline: 'none' } }}
 				>
 					<p>Page content</p>
 				</main>
 				<AppLayoutFooter>
 					<nav aria-label="footer">
-						<LinkList links={[{ label: 'Home', href: '/' }]} horizontal />
+						<LinkList horizontal links={[{ label: 'Home', href: '/' }]} />
 					</nav>
 					<AppLayoutFooterDivider />
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>

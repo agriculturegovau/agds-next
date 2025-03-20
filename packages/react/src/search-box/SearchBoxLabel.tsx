@@ -16,9 +16,9 @@ export const SearchBoxLabel = ({
 	return (
 		<Text
 			as="label"
+			css={visible ? { marginBottom: mapSpacing(0.5) } : visuallyHiddenStyles}
 			fontWeight="bold"
 			htmlFor={htmlFor}
-			css={visible ? { marginBottom: mapSpacing(0.5) } : visuallyHiddenStyles}
 		>
 			{children}
 		</Text>

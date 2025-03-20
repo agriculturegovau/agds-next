@@ -1,5 +1,97 @@
 # @ag.ds-next/yourgov
 
+## 0.7.0
+
+### Minor Changes
+
+- 4397a3dd033: icon: Created `MoveLeftIcon` and `MoveRightIcon`.
+
+  yourgov: Use `MoveLeftIcon` in `HelpReference`.
+
+- 0fc55e2d892: icon: Add new `BusinessIcon` and `GripIcon`.
+
+  yourgov: Change dashboard labels.
+
+- f7ed690e647: yourgov: Update Business structure to request ABN for sole trader.
+- 4f042d2fbbf: yourgov: Add & focus success message when saving from review edit.
+- 6ddde0bd67d: yourgov: New conditional reveal pattern that injects revealed content after radio button group, rather than in between radio buttons.
+- 6c948ed2d15: yourgov: Update all error messages to X is Y.
+- 3ff2cdb9b35: app-layout: Update `AppLayoutSidebarNav` to cater for new native mouse events on links and buttons.
+
+  button: Add TypeScript support for native `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` events to `BaseButton`.
+
+  core: Add TypeScript support for native `onClick`, `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` events to `LinkProps`.
+
+  dropdown-menu: Add `event` to argument to `onClick` function prop.
+
+  main-nav: Update `MainNavList` to cater for new native mouse events on links and buttons.
+
+  table: Add `onMouseEnter`, `onMouseLeave`, `onMouseOut` and `onMouseOver` props. Update `onClick` to match `BaseButton`’s signature.
+
+  yourgov: Remove `@ts-ignore` for `CardLink` `onClick`.
+
+- 46a2473d3ff: yourgov: Add mobile number as default contact details. Add preferred contact method field.
+- 1526b45b4eb: yourgov: Change business dashboard to use FeatureLinkList for Popular Links.
+- 34e1163a486: date-picker-next: Add dynamic validation to stories.
+
+  date-range-picker-next: Add dynamic validation to stories.
+
+  yourgov: Update date-picker implementations to use next components.
+
+- 33b0c9a5f5a: yourgov: Reorder ABNs to appear after headings & prefix before digits.
+- 0a35949dd07: yourgov: Remove all steps and references to Food Safety Supervisor.
+- 756a022f321: yourgov: Make steps mutable by decoupling components from array order.
+
+### Patch Changes
+
+- 95933d1aaba: yourgov: Support editing steps from review and submit.
+- d77af495409: yourgov: Simple markup and UI fixes.
+- e0d3c17b9a1: date-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker: Fix Escape keydown listener to not close parent `Drawer`.
+
+  date-range-picker-next: Fix Escape keydown listener to not close parent `Drawer`.
+
+  drawer: Add `DatePickerNext` to form example.
+
+  yourgov: Allow pdf files in Upload documents.
+
+- 6c7351c58db: chore: Added `react/jsx-sort-props` eslint rule and sorted all props.
+- db5efb88d7f: yourgov: Let vehicle registration field to ignore spaces.
+- Updated dependencies [dd0cc48ff64]
+- Updated dependencies [4397a3dd033]
+- Updated dependencies [d895c373e1f]
+- Updated dependencies [0fc55e2d892]
+- Updated dependencies [e0d3c17b9a1]
+- Updated dependencies [cc95ec6e0ef]
+- Updated dependencies [ab125437b79]
+- Updated dependencies [491c503608b]
+- Updated dependencies [94d88ed87d9]
+- Updated dependencies [55637c98759]
+- Updated dependencies [8adc0940fd0]
+- Updated dependencies [21f7862ef6b]
+- Updated dependencies [6c7351c58db]
+- Updated dependencies [ddbcf4aa6de]
+- Updated dependencies [3ff2cdb9b35]
+- Updated dependencies [26d7b847dfe]
+- Updated dependencies [31c0fd29c64]
+- Updated dependencies [598725a5f8d]
+- Updated dependencies [7ea33913c23]
+- Updated dependencies [749f7c7a3c4]
+- Updated dependencies [455685ad599]
+- Updated dependencies [4caacfd77ca]
+- Updated dependencies [2167443219d]
+- Updated dependencies [95f2d9effe2]
+- Updated dependencies [34e1163a486]
+- Updated dependencies [a2473939320]
+- Updated dependencies [ec0d717949d]
+- Updated dependencies [6d12fecc92a]
+- Updated dependencies [4679cb597c5]
+- Updated dependencies [8b9a45a9f4d]
+  - @ag.ds-next/react@1.26.0
+
 ## 0.6.0
 
 ### Minor Changes

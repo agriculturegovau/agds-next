@@ -20,7 +20,7 @@ const meta: Meta<typeof FileUpload> = {
 	component: FileUpload,
 	render: function Render({ value: initialValue = [], ...props }) {
 		const [value, setValue] = useState<FileWithStatus[]>(initialValue);
-		return <FileUpload {...props} value={value} onChange={setValue} />;
+		return <FileUpload {...props} onChange={setValue} value={value} />;
 	},
 	args: {
 		hideThumbnails: false,
@@ -171,7 +171,7 @@ const InstantUploadTemplate = (args: FileUploadProps) => {
 		}, 3000);
 	};
 
-	return <FileUpload {...args} value={value} onChange={onChange} />;
+	return <FileUpload {...args} onChange={onChange} value={value} />;
 };
 
 export const UploadSingleFileOnSubmit: Story = {
@@ -216,7 +216,7 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+		<form noValidate onSubmit={handleSubmit(onSubmit, onError)}>
 			<FormStack>
 				<Controller
 					control={control}
@@ -228,17 +228,17 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 						<div css={{ position: 'relative' }}>
 							<FileUpload
 								{...args}
-								id="file"
 								accept={['image/jpeg', 'image/png']}
-								maxSize={500} // 500kb
-								multiple={false}
-								value={value}
-								onChange={onChange}
-								onBlur={onBlur}
-								name={name}
+								id="file"
 								invalid={invalid}
+								maxSize={500} // 500kb
 								message={error?.message}
+								multiple={false}
+								name={name}
+								onBlur={onBlur}
+								onChange={onChange}
 								required
+								value={value}
 							/>
 							{
 								// We use a LoadingBlanket to communicate that this field is causing the form
@@ -249,7 +249,7 @@ const UploadSingleFileOnSubmitTemplate = (args: FileUploadProps) => {
 					)}
 				/>
 				<div>
-					<Button type="submit" loading={isSubmitting}>
+					<Button loading={isSubmitting} type="submit">
 						Submit evidence
 					</Button>
 				</div>
@@ -274,7 +274,7 @@ export const ExistingFiles: Story = {
 			{
 				name: 'example.png',
 				size: 123456,
-				thumbnailSrc: 'https://via.placeholder.com/150',
+				thumbnailSrc: 'https://placehold.co/144',
 				href: '#',
 				// Use the meta key to keep track of any extra file info
 				// This can be useful info when deleting the file
@@ -291,10 +291,10 @@ export const ExistingFiles: Story = {
 		return (
 			<FileUpload
 				{...args}
-				value={value}
-				onChange={setValue}
 				existingFiles={existingFiles}
+				onChange={setValue}
 				onRemoveExistingFile={onRemoveExistingFile}
+				value={value}
 			/>
 		);
 	},

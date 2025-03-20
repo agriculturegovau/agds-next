@@ -12,9 +12,6 @@ export const PageAlertCloseButton = ({
 }: PageAlertCloseButtonProps) => {
 	return (
 		<Button
-			onClick={onClick}
-			iconAfter={CloseIcon}
-			variant="text"
 			aria-label="Close"
 			css={mq({
 				position: 'absolute',
@@ -33,6 +30,9 @@ export const PageAlertCloseButton = ({
 					},
 				},
 			})}
+			iconAfter={CloseIcon}
+			onClick={onClick}
+			variant="text"
 		>
 			Close
 		</Button>

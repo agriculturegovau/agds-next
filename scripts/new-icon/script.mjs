@@ -10,7 +10,7 @@ export default function newIcon(
 				name: 'iconName',
 				message:
 					'Icon name, please use appropriate PascalCase (e.g. ArrowDownIcon)',
-				validate: (answer) => answer.length > 0,
+				validate: (answer) => answer.length > 0 && answer.endsWith('Icon'),
 			},
 		],
 		actions: (answers) => {
@@ -51,7 +51,7 @@ export default function newIcon(
 				type: 'add',
 				path: '../../.changeset/plop-create-{{iconName}}.md',
 				template:
-					"---\n'@ag.ds-next/react': minor\n---\n\nicon: Created {{iconName}}\n",
+					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\nicon: Add new {{iconName}}\n",
 			});
 
 			return actions;

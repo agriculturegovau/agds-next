@@ -6,8 +6,6 @@ export type SearchIconProps = { disabled?: boolean };
 export function SearchInputIcon({ disabled }: SearchIconProps) {
 	return (
 		<SearchIcon
-			size="md"
-			weight="regular"
 			color="muted"
 			css={{
 				position: 'absolute',
@@ -17,6 +15,8 @@ export function SearchInputIcon({ disabled }: SearchIconProps) {
 				pointerEvents: 'none',
 				opacity: disabled ? 0.3 : undefined,
 			}}
+			size="md"
+			weight="regular"
 		/>
 	);
 }

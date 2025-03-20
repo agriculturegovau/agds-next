@@ -2,7 +2,7 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
 import { getOptionalCloseHandler } from '../getCloseHandler';
@@ -35,51 +35,55 @@ export function GlobalAlert({
 
 	return (
 		<Flex
-			as="section"
 			aria-label={title || ariaLabel}
+			as="section"
 			css={{ backgroundColor: bg }}
 			highContrastOutline
 		>
 			<Flex
 				alignItems="center"
+				css={{
+					backgroundColor: fg,
+					color: boxPalette.backgroundBody,
+					...print.exactColor,
+				}}
+				flexShrink={0}
 				justifyContent="center"
 				padding={0.75}
-				flexShrink={0}
-				css={{ backgroundColor: fg, color: boxPalette.backgroundBody }}
 			>
 				<Icon aria-hidden="false" aria-label={ariaLabel} color="inherit" />
 			</Flex>
 			<Flex
-				flexGrow={1}
 				alignItems="flex-start"
-				padding={1.5}
-				gap={2}
 				css={{ position: 'relative' }}
+				flexGrow={1}
+				gap={2}
+				padding={1.5}
 			>
 				<Stack flexGrow={1} gap={0.75}>
 					{title ? (
 						<Heading
 							as="h2"
-							type="h3"
-							maxWidth={tokens.maxWidth.bodyText}
 							css={{
 								...(addTitleMargin && {
 									marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
 									[tokens.mediaQuery.min.lg]: { marginRight: 0 },
 								}),
 							}}
+							maxWidth={tokens.maxWidth.bodyText}
+							type="h3"
 						>
 							{title}
 						</Heading>
 					) : null}
 					<Box
-						maxWidth={tokens.maxWidth.bodyText}
 						css={{
 							...(addContentMargin && {
 								marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
 								[tokens.mediaQuery.min.lg]: { marginRight: 0 },
 							}),
 						}}
+						maxWidth={tokens.maxWidth.bodyText}
 					>
 						{children}
 					</Box>

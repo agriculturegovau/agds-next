@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerNext renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="css-1904cz9-boxStyles-FieldContainer"
+    >
+      <label
+        class="css-79i25n-boxStyles"
+        for="field-:r0:"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+        >
+          Example
+        </span>
+        <span
+          class="css-axuon-boxStyles"
+        >
+           
+          (e.g. 05/08/2015) (optional)
+        </span>
+      </label>
+      <div
+        class="css-13lwm2a-boxStyles-DateInput"
+      >
+        <input
+          aria-invalid="false"
+          aria-required="false"
+          autocomplete="off"
+          class="css-vgeom5-DateInput"
+          id="field-:r0:"
+          type="text"
+          value="01/01/2000"
+        />
+        <button
+          aria-expanded="false"
+          aria-label="Change date, 1st January 2000 Saturday"
+          class="css-1bg0u8-BaseButton-DateInput"
+          type="button"
+        >
+          <span>
+            <span
+              class="css-oobk4c-Button"
+            >
+              <svg
+                aria-hidden="true"
+                class="css-13q7hln-DateInput"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 3v4M16 3v4M21 20V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1ZM3 12h18"
+                />
+              </svg>
+            </span>
+            <span
+              aria-live="assertive"
+            />
+          </span>
+        </button>
+      </div>
+      <div
+        aria-hidden="true"
+        class="css-9l8g4f-Field"
+      />
+    </div>
+    <div
+      class="css-v1io4a-boxStyles-Popover-DatePickerNext"
+      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+    />
+  </div>
+</div>
+`;

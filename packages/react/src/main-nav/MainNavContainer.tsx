@@ -15,6 +15,8 @@ export type MainNavContainerProps = {
 	id?: string;
 	isMobileMenuOpen: boolean;
 	items?: MainNavListItemType[];
+	/** The maximum width of the container. */
+	maxWidth: 'container' | 'containerLg';
 	openMobileMenu: () => void;
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 };
@@ -27,6 +29,7 @@ export function MainNavContainer({
 	id,
 	isMobileMenuOpen,
 	items,
+	maxWidth,
 	openMobileMenu,
 	secondaryItems,
 }: MainNavContainerProps) {
@@ -50,7 +53,7 @@ export function MainNavContainer({
 					// When the nav and secondaryItems don't fit, wrap-reverse is used to ensure the nav items sit atop the border
 					flexWrap={{ xs: 'wrap', lg: 'wrap-reverse' }}
 					justifyContent="space-between"
-					maxWidth={tokens.maxWidth.container}
+					maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 					paddingX={{ xs: 0.75, lg: 2 }}
 					width="100%"
 				>

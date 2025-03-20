@@ -1,5 +1,5 @@
 import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
-import { LinkProps } from '../core';
+import { LinkProps, print } from '../core';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { TextLink } from '../text-link';
@@ -20,9 +20,9 @@ export function PaginationItemDirection({
 	return (
 		<PaginationItemDirectionListItem direction={direction}>
 			<DirectionLink
+				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 				direction={direction}
 				href={href}
-				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
 			</DirectionLink>
@@ -42,9 +42,9 @@ export function PaginationItemDirectionButton({
 	return (
 		<PaginationItemDirectionListItem direction={direction}>
 			<DirectionButton
+				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 				direction={direction}
 				onClick={onClick}
-				aria-label={`Go to ${direction == 'left' ? 'previous' : 'next'} page`}
 			>
 				{direction === 'left' ? 'Previous' : 'Next'}
 			</DirectionButton>
@@ -63,8 +63,8 @@ function PaginationItemDirectionListItem({
 	return (
 		<Box
 			as="li"
-			paddingRight={direction === 'left' ? { sm: 1 } : undefined}
 			paddingLeft={direction === 'right' ? { sm: 1 } : undefined}
+			paddingRight={direction === 'left' ? { sm: 1 } : undefined}
 		>
 			{children}
 		</Box>
@@ -104,20 +104,21 @@ const BaseDirectionLink = ({
 }: BaseDirectionLinkProps) => {
 	return (
 		<Flex
-			as={as}
-			inline
-			gap={0.5}
-			justifyContent="center"
 			alignItems="center"
-			fontFamily="body"
-			fontWeight="normal"
-			link
-			focusRingFor="keyboard"
-			width={{ xs: BUTTON_SIZE_XS, sm: 'auto' }}
-			height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+			as={as}
 			css={{
 				alignSelf: 'flex-start',
+				...print.hideHref,
 			}}
+			focusRingFor="keyboard"
+			fontFamily="body"
+			fontWeight="normal"
+			gap={0.5}
+			height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+			inline
+			justifyContent="center"
+			link
+			width={{ xs: BUTTON_SIZE_XS, sm: 'auto' }}
 			{...props}
 		>
 			{direction === 'left' ? <ArrowLeftIcon size="sm" /> : null}

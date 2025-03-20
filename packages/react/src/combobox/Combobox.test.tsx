@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { render, act, screen } from '../../../../test-utils';
+import { act, render, screen } from '../../../../test-utils';
 import { Combobox, ComboboxProps } from './Combobox';
 import { STATE_OPTIONS, Option } from './test-utils';
 
@@ -12,8 +12,8 @@ expect.extend(toHaveNoViolations);
 function renderCombobox(props?: Partial<ComboboxProps<Option>>) {
 	return render(
 		<Combobox
-			label="Find your state"
 			hint="Start typing to see results"
+			label="Find your state"
 			options={STATE_OPTIONS}
 			{...props}
 		/>
@@ -47,23 +47,25 @@ describe('Combobox', () => {
 		test('then the input should display the selected value', async () => {
 			render(
 				<Combobox
-					label="Find your state"
 					hint="Start typing to see results"
+					label="Find your state"
 					options={STATE_OPTIONS}
 				/>
 			);
 			const input = screen.getByRole('combobox');
 
 			const user = userEvent.setup();
-			await user.click(input);
-			user.type(input, 'capital');
+			await act(() => user.click(input));
+			await act(() => user.type(input, 'capital'));
 
 			const option = screen.getByRole('option', {
 				name: 'Australian Capital Territory',
 			});
 
 			// userEvent.click(option) does not fire the change event in downshift - using direct click method on the option as a workaround
-			option.click();
+			act(() => {
+				option.click();
+			});
 			const updatedInput = await screen.findByRole('combobox');
 
 			expect(updatedInput).toHaveValue('Australian Capital Territory');
@@ -82,11 +84,11 @@ describe('Combobox', () => {
 
 				return (
 					<Combobox
-						label="Find your state"
-						hint="Start typing to see results"
-						options={STATE_OPTIONS}
-						inputRef={inputRef}
 						disabled={false} // Definitely start in an enabled state
+						hint="Start typing to see results"
+						inputRef={inputRef}
+						label="Find your state"
+						options={STATE_OPTIONS}
 					/>
 				);
 			};

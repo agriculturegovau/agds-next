@@ -13,7 +13,7 @@ import { Button } from '@ag.ds-next/react/button';
 import { Stack } from '@ag.ds-next/react/stack';
 import { DeleteIcon, UploadIcon } from '@ag.ds-next/react/icon';
 import { StatusBadge } from '@ag.ds-next/react/status-badge';
-import { Document } from './steps/FormStep9';
+import { Document } from './steps/StepUploadDocumentsForm';
 
 type UploadFileTableProps = {
 	/** The id of the element to assign the table an accessible name. */
@@ -76,8 +76,8 @@ export const UploadFileTable = forwardRef<
 									<TableCell>
 										{error ? (
 											<StatusBadge
-												label="File missing"
 												appearance="subtle"
+												label="File missing"
 												tone="errorHigh"
 											/>
 										) : (

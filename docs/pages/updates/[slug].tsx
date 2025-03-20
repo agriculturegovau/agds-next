@@ -19,16 +19,16 @@ export default function Updates({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
-			<DocumentTitle title={update.title} description={update.description} />
+			<DocumentTitle description={update.description} title={update.title} />
 			<SiteLayout>
 				<PageLayout
-					editPath={`/docs/content/updates/${update.slug}.mdx`}
 					breadcrumbs={breadcrumbs}
+					editPath={`/docs/content/updates/${update.slug}.mdx`}
 				>
 					<PageTitle
+						introduction={update.description}
 						pretext={update.date}
 						title={update.title}
-						introduction={update.description}
 					/>
 					<Prose>
 						<MDXRemote {...update.source} components={mdxComponents} />

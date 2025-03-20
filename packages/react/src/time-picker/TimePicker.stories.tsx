@@ -12,7 +12,7 @@ const meta: Meta<typeof TimePicker> = {
 	},
 	render: function TimePickerStory(props) {
 		const [value, setValue] = useState<DefaultComboboxOption | null>(null);
-		return <TimePicker {...props} value={value} onChange={setValue} />;
+		return <TimePicker {...props} onChange={setValue} value={value} />;
 	},
 };
 

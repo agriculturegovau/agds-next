@@ -14,13 +14,13 @@ const meta: Meta<typeof ComboboxAsync> = {
 		return (
 			<ComboboxAsync
 				{...props}
-				value={value}
-				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
 					return COUNTRY_OPTIONS;
 				}}
+				onChange={setValue}
+				value={value}
 			/>
 		);
 	},
@@ -93,32 +93,32 @@ export const CustomRender: Story = {
 		return (
 			<ComboboxAsync
 				label="Search users"
-				value={value}
-				onChange={setValue}
 				loadOptions={async function loadOptions() {
 					// Simulate a slow network connection
 					await new Promise((resolve) => setTimeout(resolve, 1000));
 					return NAME_OPTIONS;
 				}}
+				onChange={setValue}
 				renderItem={(item, inputValue) => (
 					<ComboboxRenderItem
-						itemLabel={item.label}
-						inputValue={inputValue}
-						secondaryText={`Role: ${item.jobTitle}`}
-						tertiaryText={`Job: ${item.status}`}
 						beforeElement={
 							<Avatar name={item.fullName} size="sm" tone="action" />
 						}
 						endElement={
 							item.unreadMessageCount > 0 ? (
 								<NotificationBadge
-									value={item.unreadMessageCount}
 									tone="action"
+									value={item.unreadMessageCount}
 								/>
 							) : null
 						}
+						inputValue={inputValue}
+						itemLabel={item.label}
+						secondaryText={`Role: ${item.jobTitle}`}
+						tertiaryText={`Job: ${item.status}`}
 					/>
 				)}
+				value={value}
 			/>
 		);
 	},

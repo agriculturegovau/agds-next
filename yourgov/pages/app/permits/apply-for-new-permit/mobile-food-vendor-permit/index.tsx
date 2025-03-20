@@ -44,10 +44,11 @@ const Page: NextPageWithLayout = () => {
 							/>
 
 							<PageTitle
-								title="Apply for a mobile food vendor permit"
-								introduction="If you are preparing and or handling food for retail sale from a vehicle or stall, you must have approval to operate on public areas."
 								callToAction={
-									<Details label="More information about mobile food vending business types">
+									<Details
+										iconBefore
+										label="More information about mobile food vending business types"
+									>
 										<Prose>
 											<p>
 												Regulating a mobile food vending business is essential
@@ -62,7 +63,7 @@ const Page: NextPageWithLayout = () => {
 													drawerContent={
 														<Stack gap={2}>
 															<H1>What you need to apply for a permit</H1>
-															<Text as="p" fontSize="lg" color="muted">
+															<Text as="p" color="muted" fontSize="lg">
 																Regulating a mobile food vending business is
 																crucial for several reasons, primarily to
 																safeguard public health, ensure safety, and
@@ -114,6 +115,8 @@ const Page: NextPageWithLayout = () => {
 										</Prose>
 									</Details>
 								}
+								introduction="If you are preparing and or handling food for retail sale from a vehicle or stall, you must have approval to operate on public areas."
+								title="Apply for a mobile food vendor permit"
 							/>
 							<GettingStartedForm />
 							<HelpCallout />

@@ -115,7 +115,7 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 		itemToString: (item) => item?.label ?? '',
 		selectedItem: null,
 		defaultHighlightedIndex: 0, // after selection, highlight the first item.
-		stateReducer(state, actionAndChanges) {
+		stateReducer(_state, actionAndChanges) {
 			const { changes, type } = actionAndChanges;
 			switch (type) {
 				case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -155,15 +155,15 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 	return (
 		<ComboboxMultiBase
 			block={block}
+			clearable
 			combobox={combobox}
-			multiSelection={multiSelection}
 			inputId={inputId}
 			inputItems={items}
 			loading={loading}
+			multiSelection={multiSelection}
 			networkError={networkError}
 			selectedItems={selectedItems}
 			setSelectedItems={setSelectedItems}
-			clearable
 			{...props}
 		/>
 	);

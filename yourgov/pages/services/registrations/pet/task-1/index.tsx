@@ -23,14 +23,14 @@ const Page: NextPageWithLayout = () => {
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={3}>
 							<DirectionLink
-								href="/services/registrations/pet"
 								direction="left"
+								href="/services/registrations/pet"
 							>
 								Back
 							</DirectionLink>
 							<PageTitle
-								title="Your personal details"
 								introduction="To complete this process you can check, update and confirm your current contact and address details."
+								title="Your personal details"
 							/>
 							<Stack gap={1.5}>
 								<H2>Registration requirements</H2>

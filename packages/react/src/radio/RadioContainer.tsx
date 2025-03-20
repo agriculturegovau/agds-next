@@ -12,15 +12,15 @@ export const RadioContainer = ({
 	htmlFor,
 }: RadioContainerProps) => (
 	<Flex
-		as="label"
 		alignItems="flex-start"
+		as="label"
 		color="text"
-		gap={0.5}
-		htmlFor={htmlFor}
-		inline
 		css={{
 			cursor: disabled ? 'not-allowed' : 'pointer',
 		}}
+		gap={0.5}
+		htmlFor={htmlFor}
+		inline
 	>
 		{children}
 	</Flex>

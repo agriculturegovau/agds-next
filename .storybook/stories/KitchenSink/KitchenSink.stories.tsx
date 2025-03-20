@@ -12,6 +12,9 @@ import { Columns, Column } from '../../../packages/react/src/columns';
 import { Combobox } from '../../../packages/react/src/combobox';
 import { ControlGroup } from '../../../packages/react/src/control-group';
 import { DatePicker } from '../../../packages/react/src/date-picker';
+import { DatePickerNext } from '../../../packages/react/src/date-picker-next';
+import { DateRangePicker } from '../../../packages/react/src/date-range-picker';
+import { DateRangePickerNext } from '../../../packages/react/src/date-range-picker-next';
 import { Details } from '../../../packages/react/src/details';
 import { DirectionLink } from '../../../packages/react/src/direction-link';
 import { Divider } from '../../../packages/react/src/divider';
@@ -97,6 +100,7 @@ import { GroupedFields } from '../../../packages/react/src/grouped-fields';
 import { TimeInput } from '../../../packages/react/src/time-input';
 import { TimePicker } from '../../../packages/react/src/time-picker';
 import { FeatureLinkList } from '../../../packages/react/src/feature-link-list';
+import { ToggleButton } from '../../../packages/react/src/toggle-button';
 import { useTernaryState } from '../../../packages/react/src/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -179,11 +183,11 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					<Column columnSpan={{ xs: 12, md: 4 }}>
 						<Stack gap={2}>
 							<SideNav
+								activePath="#in-detail/record-keeping/incorrect-amounts"
 								background={page}
+								items={sideNavItems}
 								title="Lodging your tax return"
 								titleLink="#"
-								items={sideNavItems}
-								activePath="#in-detail/record-keeping/incorrect-amounts"
 							/>
 							<ProgressIndicator
 								activePath="#1"
@@ -200,8 +204,8 @@ function KitchenSink({ background }: KitchenSinkProps) {
 					<Column columnSpan={{ xs: 12, md: 8 }}>
 						<Stack gap={2}>
 							<SubNav
-								background={page}
 								activePath="#usage"
+								background={page}
 								links={[
 									{ href: '#usage', label: 'Usage' },
 									{ href: '#code', label: 'Code' },
@@ -211,20 +215,20 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							/>
 
 							<Stack gap={1}>
-								<PageAlert tone="info" title="Notice">
+								<PageAlert title="Notice" tone="info">
 									<Text as="p">
 										All vacancies close on the advertised closing date unless
 										otherwise specified.
 									</Text>
 								</PageAlert>
 
-								<PageAlert tone="success" title="Submission successful">
+								<PageAlert title="Submission successful" tone="success">
 									<Text as="p">
 										Your application has been successfully submitted.
 									</Text>
 								</PageAlert>
 
-								<PageAlert tone="error" title="There is a problem">
+								<PageAlert title="There is a problem" tone="error">
 									<UnorderedList>
 										<ListItem>
 											<TextLink href="#email">Name is required</TextLink>
@@ -235,7 +239,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									</UnorderedList>
 								</PageAlert>
 
-								<PageAlert tone="warning" title="Browser out of date">
+								<PageAlert title="Browser out of date" tone="warning">
 									<Text as="p">Your web browser is out of date.</Text>
 								</PageAlert>
 							</Stack>
@@ -249,7 +253,6 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							/>
 
 							<InpageNav
-								title="On this page"
 								links={[
 									{ href: '#section-1', label: 'Section 1' },
 									{ href: '#section-2', label: 'Section 2' },
@@ -257,6 +260,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									{ href: '#section-4', label: 'Section 4' },
 									{ href: '#section-5', label: 'Section 5' },
 								]}
+								title="On this page"
 							/>
 							<H1>Kitchen sink</H1>
 							<Text>
@@ -273,27 +277,27 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							</Text>
 
 							<Callout
+								onBodyAlt={page === 'bodyAlt'}
 								title="Callout heading"
 								tone="neutral"
-								onBodyAlt={page === 'bodyAlt'}
 							>
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
-							<SectionAlert tone="error" title="This is a Section alert" />
+							<SectionAlert title="This is a Section alert" tone="error" />
 
 							<SectionAlert
-								tone="success"
-								title="This is a Section alert"
 								onClose={console.log}
+								title="This is a Section alert"
+								tone="success"
 							/>
 
-							<SectionAlert tone="warning" title="This is a Section alert">
+							<SectionAlert title="This is a Section alert" tone="warning">
 								<Text as="p">This is a description.</Text>
 							</SectionAlert>
 
 							<Accordion>
-								<AccordionItem title="Accordion One" background={page}>
+								<AccordionItem background={page} title="Accordion One">
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -310,7 +314,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 										</Text>
 									</AccordionItemContent>
 								</AccordionItem>
-								<AccordionItem title="Accordion Two" background={page}>
+								<AccordionItem background={page} title="Accordion Two">
 									<AccordionItemContent>
 										<Text as="p">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -396,12 +400,12 @@ function KitchenSink({ background }: KitchenSinkProps) {
 
 							<H2>Modals</H2>
 							<div>
-								<Button variant="secondary" onClick={openModal}>
+								<Button onClick={openModal} variant="secondary">
 									Open Modal
 								</Button>
 							</div>
 							<div>
-								<Button variant="secondary" onClick={openDrawer}>
+								<Button onClick={openDrawer} variant="secondary">
 									Open Drawer
 								</Button>
 							</div>
@@ -415,24 +419,37 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<PasswordInput label="Password" />
 
 								<TextInput
-									label="Email"
-									invalid
-									message="An email address is required"
 									id="email"
+									invalid
+									label="Email"
+									message="An email address is required"
 								/>
 								<DatePicker
 									label="Birth date"
-									value={new Date()}
 									onChange={() => undefined}
+									value={new Date()}
+								/>
+								<DatePickerNext
+									label="Birth date (Next)"
+									onChange={() => undefined}
+									value={new Date()}
+								/>
+								<DateRangePicker
+									onChange={() => undefined}
+									value={{ from: new Date(), to: undefined }}
+								/>
+								<DateRangePickerNext
+									onChange={() => undefined}
+									value={{ from: new Date(), to: undefined }}
 								/>
 								<Select
 									label="Example"
-									placeholder="Please select"
 									options={[
 										{ value: 'a', label: 'Option A' },
 										{ value: 'b', label: 'Option B' },
 										{ value: 'c', label: 'Option C' },
 									]}
+									placeholder="Please select"
 								/>
 								<FileInput label="Drivers licence" />
 								<FileUpload
@@ -448,28 +465,28 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									<Radio checked={false} onChange={console.log}>
 										Tablet
 									</Radio>
-									<Radio checked={true} onChange={console.log}>
+									<Radio checked onChange={console.log}>
 										Laptop
 									</Radio>
 								</ControlGroup>
-								<Checkbox checked={true} onChange={console.log}>
+								<Checkbox checked onChange={console.log}>
 									Label
 								</Checkbox>
 								<Autocomplete
-									label="Find your country"
 									hint="Start typing to see results"
+									label="Find your country"
 									loadOptions={async function loadOptions() {
 										return COUNTRY_OPTIONS;
 									}}
 								/>
 								<Combobox
-									label="Select country"
 									hint="Start typing to see results"
+									label="Select country"
 									options={COUNTRY_OPTIONS}
 								/>
 								<Switch
+									checked
 									label="Show establishments"
-									checked={true}
 									onChange={console.log}
 								/>
 								<GroupedFields
@@ -482,12 +499,12 @@ function KitchenSink({ background }: KitchenSinkProps) {
 											<TextInput label="TextInput" required {...field1Props} />
 											<Select
 												label="Select"
-												placeholder="Please select"
 												options={[
 													{ value: 'a', label: 'Option A' },
 													{ value: 'b', label: 'Option B' },
 													{ value: 'c', label: 'Option C' },
 												]}
+												placeholder="Please select"
 												{...field2Props}
 											/>
 										</>
@@ -497,6 +514,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<TimeInput label="Start time" onChange={() => undefined} />
 
 								<TimePicker label="Select a time" onChange={() => undefined} />
+
+								<ToggleButton
+									iconType="flag"
+									label="Toggle button"
+									onClick={console.log}
+									pressed
+									pressedLabel="Pressed toggle button"
+								/>
 
 								<ButtonGroup>
 									<Button size="md">Primary</Button>
@@ -530,124 +555,124 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								</DropdownMenu>
 							</div>
 
-							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge tone="successHigh" label="Success" />
-								<StatusBadge tone="errorHigh" label="Error" />
-								<StatusBadge tone="warningHigh" label="Warning" />
-								<StatusBadge tone="infoHigh" label="Info" />
+							<Flex flexWrap="wrap" gap={0.5}>
+								<StatusBadge label="Success" tone="successHigh" />
+								<StatusBadge label="Error" tone="errorHigh" />
+								<StatusBadge label="Warning" tone="warningHigh" />
+								<StatusBadge label="Info" tone="infoHigh" />
 							</Flex>
 
-							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge tone="successMedium" label="Success" />
-								<StatusBadge tone="errorMedium" label="Error" />
-								<StatusBadge tone="warningMedium" label="Warning" />
-								<StatusBadge tone="infoMedium" label="Info" />
+							<Flex flexWrap="wrap" gap={0.5}>
+								<StatusBadge label="Success" tone="successMedium" />
+								<StatusBadge label="Error" tone="errorMedium" />
+								<StatusBadge label="Warning" tone="warningMedium" />
+								<StatusBadge label="Info" tone="infoMedium" />
 							</Flex>
 
-							<Flex gap={0.5} flexWrap="wrap">
-								<StatusBadge tone="successLow" label="Success" />
-								<StatusBadge tone="errorLow" label="Error" />
-								<StatusBadge tone="warningLow" label="Warning" />
-								<StatusBadge tone="infoLow" label="Info" />
-								<StatusBadge tone="cannotStartLow" label="Cannot start" />
-								<StatusBadge tone="inProgressLow" label="In progress" />
-								<StatusBadge tone="pausedLow" label="Paused" />
-								<StatusBadge tone="notStartedLow" label="Not started" />
-								<StatusBadge tone="unknownLow" label="Unknown" />
+							<Flex flexWrap="wrap" gap={0.5}>
+								<StatusBadge label="Success" tone="successLow" />
+								<StatusBadge label="Error" tone="errorLow" />
+								<StatusBadge label="Warning" tone="warningLow" />
+								<StatusBadge label="Info" tone="infoLow" />
+								<StatusBadge label="Cannot start" tone="cannotStartLow" />
+								<StatusBadge label="In progress" tone="inProgressLow" />
+								<StatusBadge label="Paused" tone="pausedLow" />
+								<StatusBadge label="Not started" tone="notStartedLow" />
+								<StatusBadge label="Unknown" tone="unknownLow" />
 							</Flex>
 
-							<Flex gap={0.5} flexWrap="wrap">
+							<Flex flexWrap="wrap" gap={0.5}>
 								<Flex flexWrap="wrap" gap={2}>
 									<StatusBadge
 										appearance="subtle"
+										label="Success"
 										tone="successHigh"
-										label="Success"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Error"
 										tone="errorHigh"
-										label="Error"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Warning"
 										tone="warningHigh"
-										label="Warning"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Info"
 										tone="infoHigh"
-										label="Info"
 									/>
 								</Flex>
 								<Flex flexWrap="wrap" gap={2}>
 									<StatusBadge
 										appearance="subtle"
+										label="Success"
 										tone="successMedium"
-										label="Success"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Error"
 										tone="errorMedium"
-										label="Error"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Warning"
 										tone="warningMedium"
-										label="Warning"
 									/>
 									<StatusBadge
 										appearance="subtle"
+										label="Info"
 										tone="infoMedium"
-										label="Info"
 									/>
 								</Flex>
 								<Flex flexWrap="wrap" gap={2}>
 									<StatusBadge
 										appearance="subtle"
-										tone="successLow"
 										label="Success"
+										tone="successLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="errorLow"
 										label="Error"
+										tone="errorLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="warningLow"
 										label="Warning"
+										tone="warningLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="infoLow"
 										label="Info"
+										tone="infoLow"
 									/>
 								</Flex>
 								<Flex flexWrap="wrap" gap={2}>
 									<StatusBadge
 										appearance="subtle"
-										tone="cannotStartLow"
 										label="Cannot start"
+										tone="cannotStartLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="inProgressLow"
 										label="In progress"
+										tone="inProgressLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="pausedLow"
 										label="Paused"
+										tone="pausedLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="notStartedLow"
 										label="Not started"
+										tone="notStartedLow"
 									/>
 									<StatusBadge
 										appearance="subtle"
-										tone="unknownLow"
 										label="Unknown"
+										tone="unknownLow"
 									/>
 								</Flex>
 							</Flex>
@@ -705,7 +730,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<TableHead>
 									<TableRow>
 										<TableHeader scope="col">Location</TableHeader>
-										<TableHeader textAlign="right" scope="col">
+										<TableHeader scope="col" textAlign="right">
 											Population
 										</TableHeader>
 									</TableRow>
@@ -772,38 +797,38 @@ function KitchenSink({ background }: KitchenSinkProps) {
 				</Columns>
 			</PageContent>
 			<Drawer
-				isOpen={isDrawerOpen}
-				onClose={closeDrawer}
-				title="Drawer title"
 				actions={
 					<ButtonGroup>
 						<Button onClick={closeDrawer}>Primary</Button>
-						<Button variant="secondary" onClick={closeDrawer}>
+						<Button onClick={closeDrawer} variant="secondary">
 							Secondary
 						</Button>
-						<Button variant="tertiary" onClick={closeDrawer}>
+						<Button onClick={closeDrawer} variant="tertiary">
 							Tertiary
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Drawer title"
 			>
 				<Text as="p">Drawer body area.</Text>
 			</Drawer>
 			<Modal
-				isOpen={isModalOpen}
-				onClose={closeModal}
-				title="This is the title of the modal dialog, it can span lines but should not be too long."
 				actions={
 					<ButtonGroup>
 						<Button onClick={closeModal}>Primary button</Button>
-						<Button variant="secondary" onClick={closeModal}>
+						<Button onClick={closeModal} variant="secondary">
 							Secondary button
 						</Button>
-						<Button variant="tertiary" onClick={closeModal}>
+						<Button onClick={closeModal} variant="tertiary">
 							Tertiary button
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title="This is the title of the modal dialog, it can span lines but should not be too long."
 			>
 				<Text as="p">
 					This is the Modal Body paragraph, it provides detailed instruction and

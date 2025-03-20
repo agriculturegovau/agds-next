@@ -4,11 +4,6 @@ import {
 	isBefore,
 	subMonths,
 } from 'date-fns';
-import {
-	type AcceptedDateFormats,
-	formatHumanReadableDate,
-	parseDate,
-} from '../date-picker/utils';
 
 // If the end date is before the start date, swap the end date with the start
 // This prevents the users from typing invalid date ranges
@@ -73,26 +68,4 @@ export function getCalendarDefaultMonth(
 	}
 
 	return value;
-}
-
-// Gets the `aria-label` for the button that opens the start date calendar picker
-export function getFromDateInputButtonAriaLabel(
-	value: string | undefined,
-	allowedDateFormats: ReadonlyArray<AcceptedDateFormats>
-) {
-	if (typeof value !== 'string') return 'Choose start date';
-	const parsed = parseDate(value, allowedDateFormats);
-	if (!parsed) return 'Choose start date';
-	return `Change start date, ${formatHumanReadableDate(parsed)}`;
-}
-
-// Gets the `aria-label` for the button that opens the end date calendar picker
-export function getToDateInputButtonAriaLabel(
-	value: string | undefined,
-	allowedDateFormats: ReadonlyArray<AcceptedDateFormats>
-) {
-	if (typeof value !== 'string') return 'Choose end date';
-	const parsed = parseDate(value, allowedDateFormats);
-	if (!parsed) return 'Choose end date';
-	return `Change end date, ${formatHumanReadableDate(parsed)}`;
 }

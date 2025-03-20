@@ -27,13 +27,13 @@ const Page: NextPageWithLayout = () => {
 						]}
 					/>
 					<PageTitle
-						title="Apply for a new permit"
 						introduction="Stay compliant by registering for business permits."
+						title="Apply for a new permit"
 					/>
 					<Stack gap={2}>
 						<H2>Driver and rider licences</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -46,7 +46,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -59,7 +59,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -78,7 +78,7 @@ const Page: NextPageWithLayout = () => {
 					<Stack gap={2}>
 						<H2>Business permits</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -93,7 +93,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -108,7 +108,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -123,7 +123,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -138,7 +138,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -153,7 +153,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -171,7 +171,7 @@ const Page: NextPageWithLayout = () => {
 					<Stack gap={2}>
 						<H2>Other permits</H2>
 						<Columns as="ul" cols={{ xs: 1, sm: 2, md: 3 }}>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -181,7 +181,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>
@@ -196,7 +196,7 @@ const Page: NextPageWithLayout = () => {
 									</Stack>
 								</CardInner>
 							</Card>
-							<Card as="li" shadow clickable>
+							<Card as="li" clickable shadow>
 								<CardInner>
 									<Stack gap={1}>
 										<H3>

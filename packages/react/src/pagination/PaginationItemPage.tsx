@@ -3,6 +3,7 @@ import {
 	boxPalette,
 	forwardRefWithAs,
 	LinkProps,
+	print,
 	useLinkComponent,
 } from '../core';
 import { Flex } from '../flex';
@@ -23,22 +24,23 @@ export function PaginationItemPage({
 	return (
 		<li>
 			<Flex
-				as={Link}
+				alignItems="center"
+				aria-current={isActive ? 'page' : undefined}
 				aria-label={`Go to page ${pageNumber}`}
+				as={Link}
+				css={{
+					...(isActive
+						? { color: boxPalette.foregroundText, textDecoration: 'none' }
+						: undefined),
+					...print.hideHref,
+				}}
+				focusRingFor="keyboard"
+				fontWeight={isActive ? 'bold' : 'normal'}
+				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 				href={href}
 				justifyContent="center"
-				alignItems="center"
-				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
-				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
-				fontWeight={isActive ? 'bold' : 'normal'}
 				link
-				focusRingFor="keyboard"
-				aria-current={isActive ? 'page' : undefined}
-				css={
-					isActive
-						? { color: boxPalette.foregroundText, textDecoration: 'none' }
-						: undefined
-				}
+				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 			>
 				{pageNumber}
 			</Flex>
@@ -62,23 +64,23 @@ export const PaginationItemPageButton = forwardRefWithAs<
 	return (
 		<li>
 			<Flex
-				as={BaseButton}
-				aria-label={`Go to page ${pageNumber}`}
-				aria-current={isActive ? 'page' : undefined}
-				onClick={onClick}
-				justifyContent="center"
 				alignItems="center"
-				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
-				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
-				fontWeight={isActive ? 'bold' : 'normal'}
-				link
-				focusRingFor="keyboard"
+				aria-current={isActive ? 'page' : undefined}
+				aria-label={`Go to page ${pageNumber}`}
+				as={BaseButton}
 				css={
 					isActive
 						? { color: boxPalette.foregroundText, textDecoration: 'none' }
 						: undefined
 				}
+				focusRingFor="keyboard"
+				fontWeight={isActive ? 'bold' : 'normal'}
+				height={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
+				justifyContent="center"
+				link
+				onClick={onClick}
 				ref={forwardedRef}
+				width={{ xs: BUTTON_SIZE_XS, sm: BUTTON_SIZE_SM }}
 			>
 				{pageNumber}
 			</Flex>

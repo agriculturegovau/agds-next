@@ -20,11 +20,11 @@ import {
 } from '@ag.ds-next/react/dropdown-menu';
 import {
 	AvatarIcon,
+	BusinessIcon,
 	ChevronsLeftIcon,
 	EmailIcon,
 	ExitIcon,
 	HelpIcon,
-	HomeIcon,
 	PermitIcon,
 	SettingsIcon,
 } from '@ag.ds-next/react/icon';
@@ -91,7 +91,7 @@ export function AppLayout({
 					</Box>
 					<AppLayoutFooter>
 						<nav aria-label="footer">
-							<LinkList links={footerLinks} horizontal />
+							<LinkList horizontal links={footerLinks} />
 						</nav>
 						<AppLayoutFooterDivider />
 						<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
@@ -111,23 +111,19 @@ export function AppLayout({
 }
 
 function AppLayoutHeader({ user }: { user: User }) {
-	const { pathname, push } = useRouter();
+	const { pathname, ...router } = useRouter();
 	const { linkedBusinesses, selectedBusiness, setSelectedBusiness } =
 		useLinkedBusinesses();
 
 	function onBusinessClick(business: Business) {
 		setSelectedBusiness(business);
-		push('/app/dashboard');
+		router.push('/app/dashboard');
 	}
 
 	const isAppHomePage = pathname === '/app';
 
 	return (
 		<AgDSAppLayoutHeader
-			heading="yourGov"
-			subLine="Access government services from one place"
-			logo={<Logo />}
-			href="/app"
 			accountDetails={{
 				name: user.displayName,
 				secondaryText: isAppHomePage ? 'My account' : selectedBusiness?.name,
@@ -136,14 +132,14 @@ function AppLayoutHeader({ user }: { user: User }) {
 						<DropdownMenuGroup label="Businesses">
 							{linkedBusinesses.map((linkedBusiness) => (
 								<DropdownMenuItemRadio
-									key={linkedBusiness.name}
 									checked={
 										selectedBusiness?.name
 											? selectedBusiness.name === linkedBusiness.name
 											: false
 									}
-									secondaryText={`ABN ${linkedBusiness.abn}`}
+									key={linkedBusiness.name}
 									onClick={() => onBusinessClick(linkedBusiness)}
+									secondaryText={`ABN ${linkedBusiness.abn}`}
 								>
 									{linkedBusiness.name}
 								</DropdownMenuItemRadio>
@@ -167,6 +163,10 @@ function AppLayoutHeader({ user }: { user: User }) {
 					</DropdownMenuPanel>
 				),
 			}}
+			heading="yourGov"
+			href="/app"
+			logo={<Logo />}
+			subLine="Access government services from one place"
 		/>
 	);
 }
@@ -181,7 +181,7 @@ function AppLayoutSidebar() {
 				options: { disableGroupPadding: true },
 				items: [
 					{
-						label: 'Back to my account',
+						label: 'Back to account dashboard',
 						icon: ChevronsLeftIcon,
 						href: '/app',
 					},
@@ -193,7 +193,7 @@ function AppLayoutSidebar() {
 					{
 						label: (
 							<Fragment>
-								<Text fontWeight="bold" fontSize="xs">
+								<Text fontSize="xs" fontWeight="bold">
 									{selectedBusiness?.name}
 								</Text>
 								<Text color="muted" fontSize="xs">
@@ -206,9 +206,9 @@ function AppLayoutSidebar() {
 			},
 			[
 				{
-					label: 'Dashboard',
+					label: 'Business Dashboard',
 					href: '/app/dashboard',
-					icon: HomeIcon,
+					icon: BusinessIcon,
 				},
 				{
 					label: 'Permits',
@@ -260,5 +260,5 @@ function AppLayoutSidebar() {
 		[selectedBusiness?.abn, selectedBusiness?.name]
 	);
 
-	return <AgDSAppLayoutSidebar items={links} activePath={pathname} />;
+	return <AgDSAppLayoutSidebar activePath={pathname} items={links} />;
 }

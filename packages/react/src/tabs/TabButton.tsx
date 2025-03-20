@@ -1,7 +1,14 @@
 import { KeyboardEvent, PropsWithChildren, ReactNode } from 'react';
 import { BaseButton } from '../button';
 import { Box } from '../box';
-import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
+import {
+	boxPalette,
+	fontGrid,
+	mapSpacing,
+	packs,
+	print,
+	tokens,
+} from '../core';
 import { useTabsContext } from './TabsContext';
 import { useTabListContext } from './TabListContext';
 import { useTabIds, useTabsOrientation } from './utils';
@@ -66,17 +73,9 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 
 	return (
 		<Box
-			as={BaseButton}
-			onKeyDown={onKeyDown}
-			onClick={onClick}
-			role="tab"
-			aria-selected={isSelected}
-			id={tabButtonId}
-			tabIndex={isSelected ? 0 : -1}
 			aria-controls={panelId}
-			paddingX={1.5}
-			paddingY={0.75}
-			focusRingFor="keyboard"
+			aria-selected={isSelected}
+			as={BaseButton}
 			css={{
 				position: 'relative',
 				display: 'flex',
@@ -174,7 +173,17 @@ export function TabButton({ children, endElement }: TabButtonProps) {
 						},
 					}),
 				},
+
+				...print.exactColor,
 			}}
+			focusRingFor="keyboard"
+			id={tabButtonId}
+			onClick={onClick}
+			onKeyDown={onKeyDown}
+			paddingX={1.5}
+			paddingY={0.75}
+			role="tab"
+			tabIndex={isSelected ? 0 : -1}
 		>
 			<span>{children}</span>
 			{endElement}

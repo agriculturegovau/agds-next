@@ -23,7 +23,7 @@ export const Basic: Story = {
 			{
 				name: 'example.jpg',
 				size: 123456,
-				thumbnailSrc: 'https://via.placeholder.com/150',
+				thumbnailSrc: 'https://placehold.co/144',
 			},
 		],
 	},

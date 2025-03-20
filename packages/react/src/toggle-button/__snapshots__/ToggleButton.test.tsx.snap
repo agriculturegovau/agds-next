@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleButton renders alternative icon and label when pressedLabel = true 1`] = `
+<div>
+  <button
+    aria-pressed="true"
+    class="css-fq6zl2-BaseButton-ToggleButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="css-sbsftc-Button"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12Zm0 0v7"
+        fill="currentColor"
+      />
+    </svg>
+    <span>
+      <span
+        class="css-oobk4c-Button"
+      >
+        Unflag message
+      </span>
+      <span
+        aria-live="assertive"
+      />
+    </span>
+  </button>
+</div>
+`;
+
+exports[`ToggleButton renders aria-label when hiddenLabel = true 1`] = `
+<div>
+  <button
+    aria-label="Flag message"
+    aria-pressed="false"
+    class="css-fq6zl2-BaseButton-ToggleButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="css-sbsftc-Button"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12Zm0 0v7"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`ToggleButton renders correctly 1`] = `
+<div>
+  <button
+    aria-pressed="false"
+    class="css-fq6zl2-BaseButton-ToggleButton"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="css-sbsftc-Button"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      focusable="false"
+      height="24"
+      role="img"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12Zm0 0v7"
+      />
+    </svg>
+    <span>
+      <span
+        class="css-oobk4c-Button"
+      >
+        Flag message
+      </span>
+      <span
+        aria-live="assertive"
+      />
+    </span>
+  </button>
+</div>
+`;

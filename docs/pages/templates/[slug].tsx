@@ -23,21 +23,21 @@ export default function TemplatePage({
 	return (
 		<Fragment>
 			<DocumentTitle
-				title={`${template.title} template`}
 				description={template.description}
+				title={`${template.title} template`}
 			/>
 			<TemplateLayout
-				template={template}
 				breadcrumbs={breadcrumbs}
 				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
 				navLinks={navLinks}
+				template={template}
 			>
 				<Prose id="page-content">
 					<Box border borderColor="muted" css={{ img: { display: 'block' } }}>
 						<img
-							src={withBasePath(`/img/templates/${template.slug}.webp`)}
-							role="presentation"
 							alt=""
+							role="presentation"
+							src={withBasePath(`/img/templates/${template.slug}.webp`)}
 						/>
 					</Box>
 					<MDXRemote {...template.source} components={mdxComponents} />

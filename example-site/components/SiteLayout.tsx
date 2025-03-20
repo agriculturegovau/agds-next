@@ -35,8 +35,8 @@ export const SiteLayout = ({
 			<Flex
 				flexDirection="column"
 				fontFamily="body"
-				palette="light"
 				minHeight="100vh"
+				palette="light"
 			>
 				{template ? <TemplateBanner {...template} /> : null}
 				<SiteHeader focusMode={focusMode} />

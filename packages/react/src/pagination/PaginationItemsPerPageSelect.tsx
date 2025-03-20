@@ -17,15 +17,15 @@ export const PaginationItemsPerPageSelect = ({
 	const id = `pagination-per-page-select-${uid}`;
 	return (
 		<PaginationSelect
+			id={id}
 			label="Items per page"
+			maxWidth="sm"
+			onChange={(e) => onChange(Number(e.target.value))}
 			options={options.map((option) => ({
 				label: `${option}`,
 				value: `${option}`,
 			}))}
 			value={`${value}`}
-			onChange={(e) => onChange(Number(e.target.value))}
-			maxWidth="sm"
-			id={id}
 		/>
 	);
 };

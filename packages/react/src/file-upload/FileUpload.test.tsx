@@ -3,7 +3,7 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { useEffect, useState } from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '../../../../test-utils';
+import { act, render, screen } from '../../../../test-utils';
 import { FileWithStatus } from './utils';
 import { createExampleFile } from './test-utils';
 import { FileUpload, FileUploadProps } from './FileUpload';
@@ -24,10 +24,10 @@ function FileUploadExample(
 
 	return (
 		<FileUpload
-			label="Upload file"
 			hint="General hint information"
-			value={value}
+			label="Upload file"
 			onChange={setValue}
+			value={value}
 			{...fileUploadProps}
 		/>
 	);
@@ -129,7 +129,7 @@ describe('FileUpload', () => {
 			{
 				name: 'example.png',
 				size: 123456,
-				thumbnailSrc: 'https://via.placeholder.com/150',
+				thumbnailSrc: 'https://placehold.co/144',
 				href: '#',
 				// Use the meta key to keep track of any extra file info
 				// This can be useful info when deleting the file
@@ -187,13 +187,15 @@ describe('FileUpload', () => {
 
 				const user = userEvent.setup();
 
-				await user.upload(fileInput, [
-					createExampleFile({ name: 'example-1.txt' }),
-					createExampleFile({ name: 'example-2.txt' }),
-				]);
+				await act(() =>
+					user.upload(fileInput, [
+						createExampleFile({ name: 'example-1.txt' }),
+						createExampleFile({ name: 'example-2.txt' }),
+					])
+				);
 			});
 
-			test('then the input should contain the selected files', () => {
+			test('then the input should contain the selected files', async () => {
 				const fileNames = currentValue.map(({ name }) => name);
 
 				expect(fileNames).toEqual(['example-1.txt', 'example-2.txt']);
@@ -213,7 +215,7 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					await user.click(removeButton);
+					await act(() => user.click(removeButton));
 				});
 
 				test('then the corresponding file should be removed from the list', async () => {
@@ -234,7 +236,7 @@ describe('FileUpload', () => {
 			describe('when a single file is selected', () => {
 				test('then it should be accepted', async () => {
 					const { container } = render(
-						<FileUploadExample multiple maxFiles={2} />
+						<FileUploadExample maxFiles={2} multiple />
 					);
 
 					const fileInput = container.querySelector(
@@ -243,9 +245,11 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					await user.upload(fileInput, [
-						createExampleFile({ name: 'example-1.txt' }),
-					]);
+					await act(() =>
+						user.upload(fileInput, [
+							createExampleFile({ name: 'example-1.txt' }),
+						])
+					);
 
 					expect(
 						screen.getByRole('list', { name: 'Selected files' }).textContent
@@ -257,8 +261,8 @@ describe('FileUpload', () => {
 				beforeEach(async () => {
 					const { container } = render(
 						<FileUploadExample
-							multiple
 							maxFiles={2}
+							multiple
 							setCurrentValue={setCurrentValue}
 						/>
 					);
@@ -269,11 +273,13 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					await user.upload(fileInput, [
-						createExampleFile({ name: 'example-1.txt' }),
-						createExampleFile({ name: 'example-2.txt' }),
-						createExampleFile({ name: 'example-3.txt' }),
-					]);
+					await act(() =>
+						user.upload(fileInput, [
+							createExampleFile({ name: 'example-1.txt' }),
+							createExampleFile({ name: 'example-2.txt' }),
+							createExampleFile({ name: 'example-3.txt' }),
+						])
+					);
 				});
 
 				test('then the first files up to that limit should be accepted', () => {
@@ -323,17 +329,19 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					await user.upload(fileInput, [
-						createExampleFile({
-							name: 'example-xml.xml',
-							type: 'application/xml',
-						}),
-						createExampleFile({ name: 'example-txt.txt' }),
-						createExampleFile({
-							name: 'example-pdf.pdf',
-							type: 'application/pdf',
-						}),
-					]);
+					await act(() =>
+						user.upload(fileInput, [
+							createExampleFile({
+								name: 'example-xml.xml',
+								type: 'application/xml',
+							}),
+							createExampleFile({ name: 'example-txt.txt' }),
+							createExampleFile({
+								name: 'example-pdf.pdf',
+								type: 'application/pdf',
+							}),
+						])
+					);
 				});
 
 				test('then the valid file extensions should be accepted', () => {
@@ -385,11 +393,13 @@ describe('FileUpload', () => {
 
 				const user = userEvent.setup();
 
-				await user.upload(fileInput, [
-					createExampleFile({ name: 'example-1.txt' }),
-					createExampleFile({ name: 'example-2.txt' }),
-					createExampleFile({ name: 'example-3.txt', size: maxSize + 1 }),
-				]);
+				await act(() =>
+					user.upload(fileInput, [
+						createExampleFile({ name: 'example-1.txt' }),
+						createExampleFile({ name: 'example-2.txt' }),
+						createExampleFile({ name: 'example-3.txt', size: maxSize + 1 }),
+					])
+				);
 			});
 
 			test('then the valid file sizes should be accepted', () => {
@@ -443,17 +453,19 @@ describe('FileUpload', () => {
 
 				const user = userEvent.setup();
 
-				await user.upload(fileInput, [
-					createExampleFile({ name: 'example-1.txt' }), // Valid file
-					createExampleFile({ name: 'example-2.txt', size: maxSize + 1 }), // Too large but valid file extension
-					createExampleFile({ name: 'example-3.txt' }), // Valid file
-					createExampleFile({ name: 'example-4.txt' }), // Valid file but is above the `maxFiles` limit
-					createExampleFile({
-						name: 'example-5.xml',
-						type: 'application/xml',
-						size: maxSize + 2,
-					}), // Too large and invalid file extension
-				]);
+				await act(() =>
+					user.upload(fileInput, [
+						createExampleFile({ name: 'example-1.txt' }), // Valid file
+						createExampleFile({ name: 'example-2.txt', size: maxSize + 1 }), // Too large but valid file extension
+						createExampleFile({ name: 'example-3.txt' }), // Valid file
+						createExampleFile({ name: 'example-4.txt' }), // Valid file but is above the `maxFiles` limit
+						createExampleFile({
+							name: 'example-5.xml',
+							type: 'application/xml',
+							size: maxSize + 2,
+						}), // Too large and invalid file extension
+					])
+				);
 			});
 
 			describe('when more files than the maxFiles limit are selected, including unaccepted file extensions and sizes above/below the maxSize limit', () => {
@@ -466,8 +478,7 @@ describe('FileUpload', () => {
 					);
 				});
 
-				// Skipping as this isn't rendering correctly in tests but is in the actual component - need to fix this test, likely by mocking `react-dropzone`
-				test.skip('then an error message should be displayed listing the files that were not accepted', () => {
+				test('then an error message should be displayed listing the files that were not accepted', () => {
 					const errorMessage = screen.getByText(
 						'The following files could not be selected'
 					);
@@ -505,10 +516,12 @@ describe('FileUpload', () => {
 
 					const user = userEvent.setup();
 
-					await user.upload(fileInput, [
-						createExampleFile({ name: 'example-6.txt' }), // Valid file but is above the `maxFiles` limit
-						createExampleFile({ name: 'example-7.xml' }), // Invalid file extension
-					]);
+					await act(() =>
+						user.upload(fileInput, [
+							createExampleFile({ name: 'example-6.txt' }), // Valid file but is above the `maxFiles` limit
+							createExampleFile({ name: 'example-7.xml' }), // Invalid file extension
+						])
+					);
 
 					const errorsList = screen.getAllByRole('list')[0];
 

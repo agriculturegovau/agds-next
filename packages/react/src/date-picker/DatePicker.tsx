@@ -12,19 +12,21 @@ import {
 import { SelectSingleEventHandler } from 'react-day-picker';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
-import { normaliseDateString } from '../date-picker/utils';
-import { CalendarSingle } from './Calendar';
-import { CalendarProvider } from './CalendarContext';
-import { DateInput } from './DatePickerInput';
 import {
 	acceptedDateFormats,
-	constrainDate,
-	formatDate,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
+	normaliseDateString,
+	type AcceptedDateFormats,
+} from '../date-picker-next/utils';
+import { DateInput } from '../date-picker-next/DatePickerInput';
+import { CalendarSingle } from './Calendar';
+import { CalendarProvider } from './CalendarContext';
+import {
+	constrainDate,
+	formatDate,
 	parseDate,
 	transformValuePropToInputValue,
-	type AcceptedDateFormats,
 } from './utils';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -188,8 +190,9 @@ export const DatePicker = ({
 				closeCalendar();
 			}
 		};
-		window.addEventListener('keydown', handleKeyDown);
-		return () => window.removeEventListener('keydown', handleKeyDown);
+		window.addEventListener('keydown', handleKeyDown, { capture: true });
+		return () =>
+			window.removeEventListener('keydown', handleKeyDown, { capture: true });
 	}, [isCalendarOpen, closeCalendar]);
 
 	const disabledCalendarDays = useMemo(() => {
@@ -210,7 +213,7 @@ export const DatePicker = ({
 	);
 
 	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
+	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calendar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
@@ -228,22 +231,24 @@ export const DatePicker = ({
 		<div {...popover.getReferenceProps()}>
 			<DateInput
 				{...props}
-				dateFormat={dateFormat}
-				maxWidth={maxWidth}
-				invalid={{ field: invalid, input: invalid }}
-				ref={inputRef}
-				value={inputValue}
-				onBlur={onInputBlur}
-				onChange={onInputChange}
-				buttonRef={triggerRef}
-				buttonOnClick={() => {
-					toggleCalendar();
-					setHasCalendarOpened(true);
-				}}
 				buttonAriaLabel={getDateInputButtonAriaLabel({
 					allowedDateFormats,
 					value: inputValue,
 				})}
+				buttonOnClick={() => {
+					toggleCalendar();
+					setHasCalendarOpened(true);
+				}}
+				buttonRef={triggerRef}
+				dateFormat={dateFormat}
+				invalid={{ field: invalid, input: invalid }}
+				isCalendarOpen={isCalendarOpen}
+				maxWidth={maxWidth}
+				onBlur={onInputBlur}
+				onChange={onInputChange}
+				ref={inputRef}
+				secondaryLabelDate={minDate || maxDate}
+				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
 				{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
@@ -257,8 +262,8 @@ export const DatePicker = ({
 					// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
 					<Popover
 						{...popoverProps}
-						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+						visibility={isCalendarOpen ? 'visible' : 'hidden'}
 					>
 						{isCalendarOpen && <CalendarSingle {...calendarProps} />}
 					</Popover>

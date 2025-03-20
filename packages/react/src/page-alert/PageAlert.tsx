@@ -7,7 +7,7 @@ import {
 	ReactNode,
 } from 'react';
 import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
+import { boxPalette, print, tokens } from '../core';
 import {
 	AlertFilledIcon,
 	InfoFilledIcon,
@@ -84,21 +84,19 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 				tabIndex={tabIndex ?? (focusOnMount || focusOnUpdate ? -1 : undefined)}
 			>
 				<Flex
-					padding={0.5}
 					alignItems="center"
 					css={{
 						borderTopLeftRadius: tokens.borderRadius,
 						borderBottomLeftRadius: tokens.borderRadius,
 						backgroundColor: fg,
 						color: boxPalette.backgroundBody,
+						...print.exactColor,
 					}}
+					padding={0.5}
 				>
 					{icon}
 				</Flex>
 				<Flex
-					padding={1.5}
-					gap={1}
-					flexGrow={1}
 					alignItems="flex-start"
 					css={{
 						// When there is a dismiss button and no title
@@ -108,12 +106,15 @@ export const PageAlert = forwardRef<HTMLDivElement, PageAlertProps>(
 							marginRight: '0',
 						},
 					}}
+					flexGrow={1}
+					gap={1}
+					padding={1.5}
 				>
 					<Flex
+						alignItems="flex-start"
 						flexDirection="column"
 						flexGrow={1}
 						gap={1}
-						alignItems="flex-start"
 					>
 						{title ? (
 							isValidElement(title) ? (

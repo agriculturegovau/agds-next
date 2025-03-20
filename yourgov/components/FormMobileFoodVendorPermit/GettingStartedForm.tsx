@@ -12,6 +12,7 @@ import { Stack } from '@ag.ds-next/react/stack';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
 import { zodString } from '../../lib/zodUtils';
 import { useGlobalForm } from './GlobalFormProvider';
+import { stepsData } from './steps/stepsData';
 
 const formSchema = z.object({
 	businessType: zodString('Business type is required'),
@@ -41,26 +42,25 @@ export function GettingStartedForm() {
 			type: data.businessType,
 		});
 		router.push({
-			pathname:
-				'/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/step-1',
+			pathname: stepsData[0].href, // Always start a new application on the first step
 		});
 	}
 
 	return (
 		<Stack as="form" gap={3} onSubmit={handleSubmit(onSubmit)}>
 			<ControlGroup
-				label="What type of business do you operate?"
+				block
 				invalid={Boolean(errors.businessType?.message)}
+				label="What type of business do you operate?"
 				message={errors.businessType?.message}
 				required
-				block
 			>
 				{['Food truck', 'Market stall', 'Coffee van'].map((option) => (
 					<Radio
-						key={option}
 						{...register('businessType')}
-						value={option}
 						invalid={Boolean(errors.businessType?.message)}
+						key={option}
+						value={option}
 					>
 						{option}
 					</Radio>
@@ -80,7 +80,6 @@ export function GettingStartedForm() {
 					<li>trading times</li>
 					<li>food served</li>
 					<li>details of any employees who will be handling food</li>
-					<li>food safety supervisor certificate</li>
 				</ul>
 				<p>
 					Once you have confirmed business and employee details, we will provide

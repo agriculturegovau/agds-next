@@ -1,5 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { Box } from '../box';
+import { print } from '../core';
 import { Flex } from '../flex';
 import { Text } from '../text';
 import { Button } from '../button';
@@ -19,7 +20,7 @@ export const FileUploadExistingFile = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadExistingFileProps) => {
-	const { name, size, href, thumbnailSrc } = file;
+	const { download, href, name, size, thumbnailSrc } = file;
 	const showThumbnail = !hideThumbnails;
 	return (
 		<Flex
@@ -43,7 +44,13 @@ export const FileUploadExistingFile = ({
 					</Box>
 					{href ? (
 						<Text breakWords paddingY={1.5}>
-							<TextLink href={href} rel="noopener noreferrer" target="_blank">
+							<TextLink
+								css={{ ...print.hideHref }}
+								download={download}
+								href={href}
+								rel="noopener noreferrer"
+								target="_blank"
+							>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>

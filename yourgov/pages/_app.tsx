@@ -36,19 +36,19 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 	return (
 		<>
 			<Head>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta content="width=device-width, initial-scale=1" name="viewport" />
 			</Head>
-			<Core theme={theme} linkComponent={LinkComponent}>
+			<Core linkComponent={LinkComponent} theme={theme}>
 				<AuthProvider>
 					<LinkedBusinessesProvider>
 						{isAlertVisible && (
 							<GlobalAlert
-								tone="info"
-								title="We are planning a maintenance outage to upgrade the service on 22 November 2024 from 12pm to 5pm AEDT"
 								onClose={() => {
 									safeSessionStorage?.setItem('isGlobalAlertVisible', 'false');
 									setIsAlertVisible(false);
 								}}
+								title="We are planning a maintenance outage to upgrade the service on 24 March 2025 from 12pm to 5pm AEDT"
+								tone="info"
 							>
 								<Text as="p">
 									You won’t be able to access yourGov during that time. We

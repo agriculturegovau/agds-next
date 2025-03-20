@@ -45,19 +45,19 @@ const tableHeadingId = 'star-wars-planets-table-heading';
 function LoadingState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1" id={tableHeadingId}>
+			<Heading id={tableHeadingId} type="h1">
 				Star wars planets
 			</Heading>
 			<TableWrapper>
-				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
+				<Table aria-labelledby={tableHeadingId} tableLayout="fixed">
 					<TableHead>
 						<TableRow>
-							<TableHeader width="10rem" scope="col">
+							<TableHeader scope="col" width="10rem">
 								ID
 							</TableHeader>
 							<TableHeader scope="col">Name</TableHeader>
 							<TableHeader scope="col">Climate</TableHeader>
-							<TableHeader width="10rem" textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right" width="10rem">
 								Population
 							</TableHeader>
 						</TableRow>
@@ -93,13 +93,13 @@ function LoadingState() {
 function ErrorState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1" id={tableHeadingId}>
+			<Heading id={tableHeadingId} type="h1">
 				Star wars planets
 			</Heading>
 			<Stack gap={2}>
 				<Stack gap={1}>
 					<AlertFilledIcon color="error" size="lg" />
-					<Heading type="h2" fontSize="lg">
+					<Heading fontSize="lg" type="h2">
 						Failed to load
 					</Heading>
 					<Text>
@@ -117,13 +117,13 @@ function ErrorState() {
 function EmptyState() {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1" id={tableHeadingId}>
+			<Heading id={tableHeadingId} type="h1">
 				Star wars planets
 			</Heading>
 			<Stack gap={2}>
 				<Stack gap={1}>
-					<HelpIcon size="lg" color="muted" />
-					<Heading type="h2" fontSize="lg">
+					<HelpIcon color="muted" size="lg" />
+					<Heading fontSize="lg" type="h2">
 						No planets found
 					</Heading>
 				</Stack>
@@ -138,19 +138,19 @@ function EmptyState() {
 function FinalState({ items }: { items: NonNullable<ApiData['results']> }) {
 	return (
 		<Stack gap={2}>
-			<Heading type="h1" id={tableHeadingId}>
+			<Heading id={tableHeadingId} type="h1">
 				Star wars planets
 			</Heading>
 			<TableWrapper>
-				<Table tableLayout="fixed" aria-labelledby={tableHeadingId}>
+				<Table aria-labelledby={tableHeadingId} tableLayout="fixed">
 					<TableHead>
 						<TableRow>
-							<TableHeader width="10rem" scope="col">
+							<TableHeader scope="col" width="10rem">
 								ID
 							</TableHeader>
 							<TableHeader scope="col">Name</TableHeader>
 							<TableHeader scope="col">Climate</TableHeader>
-							<TableHeader width="10rem" textAlign="right" scope="col">
+							<TableHeader scope="col" textAlign="right" width="10rem">
 								Population
 							</TableHeader>
 						</TableRow>

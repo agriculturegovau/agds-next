@@ -9,7 +9,7 @@ export const iconColors = {
 
 type IconColor = keyof typeof iconColors;
 
-const iconSizes = {
+export const iconSizes = {
 	sm: 1, // 16px
 	md: 1.5, // 24px
 	lg: 2, // 32px

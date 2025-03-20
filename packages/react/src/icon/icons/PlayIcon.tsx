@@ -1,6 +1,3 @@
 import { createIcon } from '../Icon';
 
-export const PlayIcon = createIcon(
-	<polygon points="5 3 19 12 5 21 5 3" />,
-	'PlayIcon'
-);
+export const PlayIcon = createIcon(<path d="m5 3 14 9-14 9V3z" />, 'PlayIcon');

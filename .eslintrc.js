@@ -9,18 +9,6 @@ module.exports = {
 		'prettier',
 	],
 	rules: {
-		'no-restricted-imports': [
-			'error',
-			{
-				paths: [
-					{
-						name: 'react',
-						importNames: ['useId'],
-						message: "Please import 'useId' from '/core' instead.",
-					},
-				],
-			},
-		],
 		'@typescript-eslint/ban-types': [
 			'error',
 			{
@@ -49,6 +37,19 @@ module.exports = {
 				pathGroupsExcludedImportTypes: ['builtin'],
 			},
 		],
+		'no-restricted-imports': [
+			'error',
+			{
+				paths: [
+					{
+						name: 'react',
+						importNames: ['useId'],
+						message: "Please import 'useId' from '/core' instead.",
+					},
+				],
+			},
+		],
+		'react/jsx-sort-props': ['error'],
 	},
 	overrides: [
 		{

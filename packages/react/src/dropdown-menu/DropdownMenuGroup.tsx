@@ -13,17 +13,17 @@ export function DropdownMenuGroup({
 }: DropdownMenuItemGroupProps) {
 	const id = useDropdownMenuGroupId();
 	return (
-		<div role="group" aria-labelledby={id}>
+		<div aria-labelledby={id} role="group">
 			<Text
-				display="block"
-				paddingX={1}
-				paddingTop={1.5}
-				paddingBottom={0.5}
-				lineHeight="heading"
-				fontWeight="bold"
-				fontSize="xs"
 				color="muted"
+				display="block"
+				fontSize="xs"
+				fontWeight="bold"
 				id={id}
+				lineHeight="heading"
+				paddingBottom={0.5}
+				paddingTop={1.5}
+				paddingX={1}
 			>
 				{label}
 			</Text>

@@ -1,8 +1,9 @@
 export {
-	tokens,
-	mq,
-	useTernaryState,
 	boxPalette,
+	mq,
+	packs,
+	tokens,
+	useTernaryState,
 } from '@ag.ds-next/react/core';
 export { Logo } from '@ag.ds-next/react/ag-branding';
 export {
@@ -79,11 +80,13 @@ export { Switch } from '@ag.ds-next/react/switch';
 export {
 	AlertFilledIcon,
 	AlertIcon,
+	ArchiveIcon,
 	ArrowDownIcon,
 	ArrowLeftIcon,
 	ArrowRightIcon,
 	ArrowUpIcon,
 	AvatarIcon,
+	BusinessIcon,
 	CalendarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
@@ -95,6 +98,7 @@ export {
 	ChevronsRightIcon,
 	ChevronsUpDownIcon,
 	ChevronUpIcon,
+	ClockIcon,
 	CloseIcon,
 	CopyIcon,
 	CornerDownRightIcon,
@@ -102,6 +106,7 @@ export {
 	DownloadIcon,
 	EditIcon,
 	EmailIcon,
+	EmailOpenIcon,
 	ExitIcon,
 	ExternalLinkIcon,
 	FacebookIcon,
@@ -109,7 +114,11 @@ export {
 	FileIcon,
 	FileTextIcon,
 	FilterIcon,
+	FlagFilledIcon,
+	FlagIcon,
+	GripIcon,
 	HelpIcon,
+	HistoryIcon,
 	HomeIcon,
 	InboxIcon,
 	InfoFilledIcon,
@@ -121,6 +130,8 @@ export {
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
+	MoveLeftIcon,
+	MoveRightIcon,
 	PauseIcon,
 	PermitIcon,
 	PlayIcon,
@@ -128,15 +139,21 @@ export {
 	PrintIcon,
 	ProgressBlockedIcon,
 	ProgressDoingIcon,
+	ProgressNotRequiredIcon,
 	ProgressTodoIcon,
+	RotateLeftIcon,
+	RotateRightIcon,
 	ScrollbarArrowLeftIcon,
 	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
+	StarFilledIcon,
+	StarIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
 	ThumbsUpIcon,
+	TimerIcon,
 	TwitterIcon,
 	UnlockIcon,
 	UploadIcon,
@@ -146,6 +163,8 @@ export {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	ZoomInIcon,
+	ZoomOutIcon,
 } from '@ag.ds-next/react/icon';
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
@@ -193,7 +212,12 @@ export {
 	TableBatchActionsTitle,
 } from '@ag.ds-next/react/table';
 export { DatePicker } from '@ag.ds-next/react/date-picker';
+export {
+	DatePickerNext,
+	isValidDate,
+} from '@ag.ds-next/react/date-picker-next';
 export { DateRangePicker } from '@ag.ds-next/react/date-range-picker';
+export { DateRangePickerNext } from '@ag.ds-next/react/date-range-picker-next';
 export {
 	HeroBanner,
 	HeroBannerTitleContainer,
@@ -274,6 +298,7 @@ export {
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
 export { TimePicker } from '@ag.ds-next/react/time-picker';
+export { ToggleButton } from '@ag.ds-next/react/toggle-button';
 
 // Used to populate options on documentation site and playroom
 export {

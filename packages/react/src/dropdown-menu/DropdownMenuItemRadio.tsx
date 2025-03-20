@@ -47,17 +47,9 @@ export function DropdownMenuItemRadio({
 
 	return (
 		<Flex
-			ref={ref}
-			role="menuitemradio"
-			aria-checked={checked}
-			id={id}
-			onClick={onClick}
 			alignItems="center"
-			justifyContent="space-between"
+			aria-checked={checked}
 			background="body"
-			gap={1}
-			padding={1}
-			width="18rem"
 			css={{
 				cursor: 'pointer',
 
@@ -92,6 +84,14 @@ export function DropdownMenuItemRadio({
 					},
 				}),
 			}}
+			gap={1}
+			id={id}
+			justifyContent="space-between"
+			onClick={onClick}
+			padding={1}
+			ref={ref}
+			role="menuitemradio"
+			width="18rem"
 		>
 			<Stack>
 				<Text
@@ -100,7 +100,7 @@ export function DropdownMenuItemRadio({
 				>
 					{children}
 				</Text>
-				<Text fontSize="xs" color="muted">
+				<Text color="muted" fontSize="xs">
 					{secondaryText}
 				</Text>
 			</Stack>

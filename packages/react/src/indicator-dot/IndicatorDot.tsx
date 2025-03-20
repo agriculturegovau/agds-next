@@ -1,5 +1,5 @@
 import { Box } from '../box';
-import { boxPalette } from '../core';
+import { boxPalette, print } from '../core';
 
 export type IndicatorDotProps = {
 	/** The accessible label to read out in screen readers. */
@@ -12,13 +12,14 @@ export const IndicatorDot = ({
 	return (
 		<Box
 			aria-label={ariaLabel}
-			highContrastOutline
 			css={{
 				width: 8,
 				height: 8,
 				borderRadius: 4,
 				backgroundColor: boxPalette.foregroundAction,
+				...print.exactColor,
 			}}
+			highContrastOutline
 		/>
 	);
 };

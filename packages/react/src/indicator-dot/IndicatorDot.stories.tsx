@@ -21,7 +21,7 @@ export const Basic: Story = {
 
 export const Example = () => {
 	return (
-		<Flex flexDirection="column" as="ul">
+		<Flex as="ul" flexDirection="column">
 			<Flex
 				as="li"
 				borderColor="muted"

@@ -84,7 +84,7 @@ export function Tabs({
 				goToNextTab,
 			}}
 		>
-			<div ref={ref} id={tabsId} css={setLocalPaletteVars(background)}>
+			<div css={setLocalPaletteVars(background)} id={tabsId} ref={ref}>
 				{children}
 			</div>
 		</TabsContext.Provider>

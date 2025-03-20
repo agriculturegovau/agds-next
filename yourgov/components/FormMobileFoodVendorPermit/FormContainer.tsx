@@ -32,12 +32,12 @@ export function FormContainer({
 	return (
 		<Stack gap={3} width="100%">
 			<FormStepTitle
-				titleRef={titleRef}
-				formTitle={formTitle}
-				stepTitle={title}
-				introduction={introduction}
 				callToAction={callToAction}
+				formTitle={formTitle}
 				hideRequiredFieldsMessage={hideRequiredFieldsMessage}
+				introduction={introduction}
+				stepTitle={title}
+				titleRef={titleRef}
 			/>
 			{children}
 		</Stack>

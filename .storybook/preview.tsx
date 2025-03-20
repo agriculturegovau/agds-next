@@ -78,11 +78,15 @@ function makeViewports() {
 }
 
 const parameters = {
-	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
 		matchers: {
 			color: /(background|color)$/i,
 			date: /Date$/,
+		},
+	},
+	options: {
+		storySort: {
+			method: 'alphabetical',
 		},
 	},
 	viewport: {
@@ -98,12 +102,12 @@ const preview: Preview = {
 			const theme = storybookThemes[context.globals.brand as StorybookThemes];
 			const palette = context.globals.palette;
 			return (
-				<Core theme={theme} linkComponent={LinkComponent}>
+				<Core linkComponent={LinkComponent} theme={theme}>
 					<Box
-						width="100%"
+						background="body"
 						minHeight="100vh"
 						palette={palette}
-						background="body"
+						width="100%"
 					>
 						<Story />
 					</Box>

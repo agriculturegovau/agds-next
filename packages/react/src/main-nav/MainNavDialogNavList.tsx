@@ -22,7 +22,7 @@ export function MainNavDialogNavList({
 	const Link = useLinkComponent();
 	return (
 		<nav aria-label={ariaLabel}>
-			<Flex as="ul" flexDirection="column" borderTop borderColor="muted">
+			<Flex as="ul" borderColor="muted" borderTop flexDirection="column">
 				{items?.map(({ label, endElement, ...item }, index) => {
 					if (isItemLink(item)) {
 						const active = item.href === activePath;
@@ -40,7 +40,7 @@ export function MainNavDialogNavList({
 						);
 					}
 					return (
-						<MainNavDialogNavListItem key={index} active={false}>
+						<MainNavDialogNavListItem active={false} key={index}>
 							<BaseButton {...item}>
 								<span>{label}</span>
 								{endElement}

@@ -14,7 +14,7 @@ type Story = StoryObj<typeof AgLogo>;
 export const Logo: Story = {
 	decorators: [
 		(Story) => (
-			<Box maxWidth={600} color="text">
+			<Box color="text" maxWidth={600}>
 				<Story />
 			</Box>
 		),

@@ -5,12 +5,12 @@ import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { format } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import * as yup from 'yup';
 import { cleanup, render, screen, act } from '../../../../test-utils';
-import { Stack } from '../stack';
 import { Button } from '../button';
-import { formatHumanReadableDate, parseDate } from '../date-picker/utils';
+import { parseDate } from '../date-picker/utils';
+import { formatHumanReadableDate } from '../date-picker-next/utils';
 import { yupDateField, errorMessage } from '../date-picker/test-utils';
 import {
 	type DateRange,
@@ -67,36 +67,12 @@ function ControlledDateRangePicker({
 
 	return (
 		<DateRangePicker
-			value={value}
 			onChange={onChange}
 			onFromInputChange={(from) => setValue({ ...value, from })}
 			onToInputChange={(to) => setValue({ ...value, to })}
+			value={value}
 			{...props}
 		/>
-	);
-}
-
-function ClearableDateRangePicker({
-	initialValue,
-}: {
-	initialValue: DateRangeWithString;
-}) {
-	const [value, setValue] = useState<DateRangeWithString>(initialValue);
-	return (
-		<Stack gap={4} alignItems="flex-start">
-			<DateRangePicker
-				value={value}
-				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
-			/>
-			<Button
-				data-testid="clear"
-				onClick={() => setValue({ from: undefined, to: undefined })}
-			>
-				Clear
-			</Button>
-		</Stack>
 	);
 }
 
@@ -145,53 +121,33 @@ function DateRangePickerInsideForm({
 	});
 	return (
 		<form
-			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 			noValidate
+			onSubmit={handleSubmit((value) => onSubmit(value), onError)}
 		>
 			<Controller
 				control={control}
 				name="dateRange"
 				render={({ field: { ref, value, onChange, ...field } }) => (
 					<DateRangePicker
-						legend="Date range"
 						fromInputRef={ref}
+						legend="Date range"
 						{...field}
-						value={value}
-						onChange={onChange}
-						onFromInputChange={(from) => onChange({ ...value, from })}
-						onToInputChange={(to) => onChange({ ...value, to })}
 						fromInvalid={Boolean(errors.dateRange?.from?.message)}
-						toInvalid={Boolean(errors.dateRange?.to?.message)}
 						message={
 							errors.dateRange?.from?.message || errors.dateRange?.to?.message
 						}
+						onChange={onChange}
+						onFromInputChange={(from) => onChange({ ...value, from })}
+						onToInputChange={(to) => onChange({ ...value, to })}
 						required
+						toInvalid={Boolean(errors.dateRange?.to?.message)}
+						value={value}
 					/>
 				)}
 			/>
 			<Button type="submit">Submit</Button>
 		</form>
 	);
-}
-
-async function getInputs() {
-	return await screen.getAllByRole('textbox');
-}
-
-async function getFromInput() {
-	const inputs = await getInputs();
-	const el = inputs[0];
-	expect(el).toBeInstanceOf(HTMLInputElement);
-	expect(el).toBeInTheDocument();
-	return el as HTMLInputElement;
-}
-
-async function getToInput() {
-	const inputs = await getInputs();
-	const el = inputs[1];
-	expect(el).toBeInstanceOf(HTMLInputElement);
-	expect(el).toBeInTheDocument();
-	return el as HTMLInputElement;
 }
 
 async function getErrorMessage(message = errorMessage) {
@@ -201,18 +157,8 @@ async function getErrorMessage(message = errorMessage) {
 	return el as HTMLSpanElement;
 }
 
-async function getLegend(text = 'Date format') {
-	const el = await screen.getByText(text).closest('legend');
-	expect(el).toBeInstanceOf(HTMLLegendElement);
-	expect(el).toBeInTheDocument();
-	return el as HTMLLegendElement;
-}
-
-async function getSubmitButton() {
-	const el = await screen.getByText('Submit').closest('button');
-	expect(el).toBeInstanceOf(HTMLButtonElement);
-	expect(el).toBeInTheDocument();
-	return el as HTMLButtonElement;
+function getLegend(text = 'Date format') {
+	return screen.getByText(text).closest('legend') as HTMLLegendElement;
 }
 
 describe('DateRangePicker', () => {
@@ -244,14 +190,12 @@ describe('DateRangePicker', () => {
 	it('updates correctly based on the `value` prop', async () => {
 		const fromDateString = '01/01/2000';
 		const fromDate = parseDate(fromDateString) as Date;
-		const fromFormattedDate = formatHumanReadableDate(fromDate);
 
 		const toDateString = '02/01/2000';
 		const toDate = parseDate(toDateString) as Date;
-		const toFormattedDate = formatHumanReadableDate(toDate);
 
-		const { container } = render(
-			<ClearableDateRangePicker
+		render(
+			<ControlledDateRangePicker
 				initialValue={{
 					from: fromDate,
 					to: toDate,
@@ -259,40 +203,16 @@ describe('DateRangePicker', () => {
 			/>
 		);
 
-		let inputs = container.querySelectorAll('input');
-
-		// The inputs should be a formatted display value of `initialValue`
-		expect(inputs[0]).toHaveValue(fromDateString);
-		expect(inputs[1]).toHaveValue(toDateString);
-
-		// The calendar button trigger should have an aria-label with the formatted display value of `initialValue`
 		expect(
-			screen.getByRole('button', {
-				name: `Change start date, ${fromFormattedDate}`,
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
 			})
-		).toBeVisible();
+		).toHaveValue(fromDateString);
 		expect(
-			screen.getByRole('button', {
-				name: `Change end date, ${toFormattedDate}`,
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
 			})
-		).toBeVisible();
-
-		// Click the `clear` button to clear the value
-		await userEvent.click(screen.getByTestId('clear'));
-
-		inputs = container.querySelectorAll('input');
-
-		// The inputs should be empty
-		expect(inputs[0]).toHaveValue('');
-		expect(inputs[1]).toHaveValue('');
-
-		// The calendar button triggers aria-label should be updated
-		expect(
-			screen.getByRole('button', { name: 'Choose start date' })
-		).toBeVisible();
-		expect(
-			screen.getByRole('button', { name: 'Choose end date' })
-		).toBeVisible();
+		).toHaveValue(toDateString);
 	});
 
 	it('responds to an `onChange` callback when a date is valid', async () => {
@@ -310,13 +230,37 @@ describe('DateRangePicker', () => {
 		const toDate = parseDate(toDateString) as Date;
 		const toFormattedDate = formatHumanReadableDate(toDate);
 
+		const user = userEvent.setup();
+
 		// Type in the input fields
-		await userEvent.type(await getFromInput(), fromDateString);
-		await userEvent.keyboard('{Tab}');
-		expect(await getFromInput()).toHaveValue(fromDateString);
-		await userEvent.type(await getToInput(), toDateString);
-		await userEvent.keyboard('{Tab}');
-		expect(await getToInput()).toHaveValue(toDateString);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 05/08/2015) (optional)',
+				}),
+				fromDateString
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue(fromDateString);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 06/08/2015) (optional)',
+				}),
+				toDateString
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveValue(toDateString);
 
 		expect(onChange).toHaveBeenCalledTimes(2);
 
@@ -342,10 +286,23 @@ describe('DateRangePicker', () => {
 
 		const fromDateString = '01.01.2000';
 
+		const user = userEvent.setup();
+
 		// Type in the input fields
-		await userEvent.type(await getFromInput(), fromDateString);
-		await userEvent.keyboard('{Tab}');
-		expect(await getFromInput()).toHaveValue(fromDateString);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 05/08/2015) (optional)',
+				}),
+				fromDateString
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue(fromDateString);
 
 		expect(onFromInputChange).toHaveBeenCalledWith(fromDateString);
 
@@ -364,45 +321,108 @@ describe('DateRangePicker', () => {
 
 		const toDateString = '01.01.2000';
 
+		const user = userEvent.setup();
+
 		// Type in the input fields
-		await userEvent.type(await getToInput(), toDateString);
-		await userEvent.keyboard('{Tab}');
-		expect(await getToInput()).toHaveValue(toDateString);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 06/08/2015) (optional)',
+				}),
+				toDateString
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveValue(toDateString);
 
 		expect(onToInputChange).toHaveBeenCalledWith(toDateString);
 
 		// The calendar button triggers should have an aria-label with the formatted display value
 		expect(
-			screen.getByRole('button', { name: 'Choose end date' })
+			screen.getByRole('button', {
+				name: 'Choose end date',
+			})
 		).toBeVisible();
 	});
 
 	it('formats valid dates to the default date format (dd/MM/yyyy)', async () => {
 		renderDateRangePicker({});
 
+		const user = userEvent.setup();
+
 		// Type valid dates in the input fields that are not in the display format
-		await userEvent.type(await getFromInput(), '5 June 2023');
-		await userEvent.keyboard('{Tab}');
-		await userEvent.type(await getToInput(), '10 June 2023');
-		await userEvent.keyboard('{Tab}');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 05/08/2015) (optional)',
+				}),
+				'5 June 2023'
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 06/08/2015) (optional)',
+				}),
+				'10 June 2023'
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
 
 		// The inputs should be formatted to dd/mm/yyyy
-		expect(await getFromInput()).toHaveValue('05/06/2023');
-		expect(await getToInput()).toHaveValue('10/06/2023');
+		expect(
+			await screen.findByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveValue('05/06/2023');
+		expect(
+			await screen.findByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveValue('10/06/2023');
 	});
 
 	it('formats valid dates to the `dateFormat` prop', async () => {
 		renderDateRangePicker({ dateFormat: 'd MMM yyyy' });
 
+		const user = userEvent.setup();
+
 		// Type valid dates in the input fields that are not in the display format
-		await userEvent.type(await getFromInput(), '05/06/2023');
-		await userEvent.keyboard('{Tab}');
-		await userEvent.type(await getToInput(), '10/06/2023');
-		await userEvent.keyboard('{Tab}');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 5 Aug 2015) (optional)',
+				}),
+				'05/06/2023'
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 6 Aug 2015) (optional)',
+				}),
+				'10/06/2023'
+			)
+		);
+		await act(() => user.keyboard('{Tab}'));
 
 		// The inputs should be formatted to the dateFormat prop
-		expect(await getFromInput()).toHaveValue('5 Jun 2023');
-		expect(await getToInput()).toHaveValue('10 Jun 2023');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 5 Aug 2015) (optional)',
+			})
+		).toHaveValue('5 Jun 2023');
+		expect(
+			await screen.findByRole('textbox', {
+				name: 'End date (e.g. 6 Aug 2015) (optional)',
+			})
+		).toHaveValue('10 Jun 2023');
 	});
 
 	describe('allowedDateFormats', () => {
@@ -411,15 +431,39 @@ describe('DateRangePicker', () => {
 				allowedDateFormats: ['dd-MM-yyyy'],
 			});
 
+			const user = userEvent.setup();
+
 			// Type valid dates in the input fields that are not in the display format
-			await userEvent.type(await getFromInput(), '23-05-2023');
-			await userEvent.keyboard('{Tab}');
-			await userEvent.type(await getToInput(), '24-06-2023');
-			await userEvent.keyboard('{Tab}');
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'Start date (e.g. 05/08/2015) (optional)',
+					}),
+					'23-05-2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'End date (e.g. 06/08/2015) (optional)',
+					}),
+					'24-06-2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
 
 			// The inputs should be formatted to the dateFormat prop
-			expect(await getFromInput()).toHaveValue('23/05/2023');
-			expect(await getToInput()).toHaveValue('24/06/2023');
+			expect(
+				await screen.findByRole('textbox', {
+					name: 'Start date (e.g. 05/08/2015) (optional)',
+				})
+			).toHaveValue('23/05/2023');
+			expect(
+				await screen.findByRole('textbox', {
+					name: 'End date (e.g. 06/08/2015) (optional)',
+				})
+			).toHaveValue('24/06/2023');
 		});
 
 		it('doesn’t format when an invalid format is entered', async () => {
@@ -427,16 +471,40 @@ describe('DateRangePicker', () => {
 				allowedDateFormats: ['dd-MM-yyyy'],
 			});
 
-			// Type valid dates in the input fields that are not in the display format
-			await userEvent.type(await getFromInput(), '05-23-2023');
-			await userEvent.keyboard('{Tab}');
+			const user = userEvent.setup();
 
-			await userEvent.type(await getToInput(), '06-24-2023');
-			await userEvent.keyboard('{Tab}');
+			// Type valid dates in the input fields that are not in the display format
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'Start date (e.g. 05/08/2015) (optional)',
+					}),
+					'05-23-2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
+
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'End date (e.g. 06/08/2015) (optional)',
+					}),
+					'06-24-2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
 
 			// The inputs should not be formatted to the dateFormat prop
-			expect(await getFromInput()).toHaveValue('05-23-2023');
-			expect(await getToInput()).toHaveValue('06-24-2023');
+			expect(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 05/08/2015) (optional)',
+				})
+			).toHaveValue('05-23-2023');
+			expect(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 06/08/2015) (optional)',
+				})
+			).toHaveValue('06-24-2023');
 		});
 
 		it('adds the dateFormat to allowedDateFormats if not explicitly specificied and formats appropriately', async () => {
@@ -445,29 +513,53 @@ describe('DateRangePicker', () => {
 				dateFormat: 'dd MMMM yyyy',
 			});
 
-			// Type valid dates in the input field that isn't in the display format
-			await userEvent.type(await getFromInput(), '08 Feb 2023');
-			await userEvent.keyboard('{Tab}');
+			const user = userEvent.setup();
 
-			await userEvent.type(await getToInput(), '09 Mar 2023');
-			await userEvent.keyboard('{Tab}');
+			// Type valid dates in the input field that isn't in the display format
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'Start date (e.g. 05 August 2015) (optional)',
+					}),
+					'08 Feb 2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
+
+			await act(() =>
+				user.type(
+					screen.getByRole('textbox', {
+						name: 'End date (e.g. 06 August 2015) (optional)',
+					}),
+					'09 Mar 2023'
+				)
+			);
+			await act(() => user.keyboard('{Tab}'));
 
 			// The inputs should be formatted to the dateFormat prop
-			expect(await getFromInput()).toHaveValue('08 February 2023');
-			expect(await getToInput()).toHaveValue('09 March 2023');
+			expect(
+				screen.getByRole('textbox', {
+					name: 'Start date (e.g. 05 August 2015) (optional)',
+				})
+			).toHaveValue('08 February 2023');
+			expect(
+				screen.getByRole('textbox', {
+					name: 'End date (e.g. 06 August 2015) (optional)',
+				})
+			).toHaveValue('09 March 2023');
 		});
 	});
 
 	it('legend: renders a hidden legend by default when optional', async () => {
-		const defaultLegend = 'Date range';
-
 		renderDateRangePicker({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: false,
 		});
-		expect(await await (await getLegend(defaultLegend)).textContent).toEqual(
-			`${defaultLegend} (optional)`
-		);
+		expect(
+			screen.getByText(
+				(_, element) => element?.textContent === 'Date range (optional)'
+			)
+		).toBeVisible();
 	});
 
 	it('legend: renders a hidden legend by default when required', async () => {
@@ -477,9 +569,7 @@ describe('DateRangePicker', () => {
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 			required: true,
 		});
-		expect(await (await getLegend(defaultLegend)).textContent).toEqual(
-			`${defaultLegend}`
-		);
+		expect(getLegend(defaultLegend).textContent).toEqual(`${defaultLegend}`);
 	});
 
 	it('legend: can render a different legend when optional', async () => {
@@ -489,9 +579,7 @@ describe('DateRangePicker', () => {
 			legend,
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
-		expect(await (await getLegend(legend)).textContent).toEqual(
-			`${legend} (optional)`
-		);
+		expect(getLegend(legend).textContent).toEqual(`${legend} (optional)`);
 	});
 
 	it('legend: can render a different legend when required', async () => {
@@ -502,43 +590,48 @@ describe('DateRangePicker', () => {
 			required: true,
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
-		expect(await (await getLegend(legend)).textContent).toEqual(`${legend}`);
+		expect(getLegend(legend).textContent).toEqual(`${legend}`);
 	});
 
 	it('shows date format when legend is supplied', async () => {
-		const { container } = renderDateRangePicker({
+		renderDateRangePicker({
 			legend: 'Date range',
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
-		const inputFromId = await (await getFromInput())?.id;
-		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
+		const inputFrom = screen.getByRole('textbox', {
+			name: 'Start date (e.g. 05/08/2015)',
+		});
 
-		const inputToId = await (await getToInput())?.id;
-		const labelTo = container.querySelector(`[for="${inputToId}"]`);
+		const inputTo = screen.getByRole('textbox', {
+			name: 'End date (e.g. 06/08/2015)',
+		});
 
-		expect(labelFrom?.textContent).toEqual(
-			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
-		);
-		expect(labelTo?.textContent).toEqual(
-			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')})`
-		);
+		expect(inputFrom).toBeVisible();
+		expect(inputTo).toBeVisible();
 	});
 
 	it('shows date format when no legend is supplied', async () => {
 		const { container } = renderDateRangePicker({
 			initialValue: { from: new Date(2000, 1, 1), to: new Date(2000, 1, 2) },
 		});
-		const inputFromId = await (await getFromInput())?.id;
+		const inputFromId = screen.getByRole('textbox', {
+			name: 'Start date (e.g. 05/08/2015) (optional)',
+		})?.id;
 		const labelFrom = container.querySelector(`[for="${inputFromId}"]`);
 
-		const inputToId = await (await getToInput())?.id;
+		const inputToId = screen.getByRole('textbox', {
+			name: 'End date (e.g. 06/08/2015) (optional)',
+		})?.id;
 		const labelTo = container.querySelector(`[for="${inputToId}"]`);
 
 		expect(labelFrom?.textContent).toEqual(
 			`Start date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
 		);
 		expect(labelTo?.textContent).toEqual(
-			`End date (e.g. ${format(mockSystemTime, 'dd/MM/yyyy')}) (optional)`
+			`End date (e.g. ${format(
+				addDays(mockSystemTime, 1),
+				'dd/MM/yyyy'
+			)}) (optional)`
 		);
 	});
 
@@ -549,8 +642,16 @@ describe('DateRangePicker', () => {
 			toInvalid: true,
 			message: errorMessage,
 		});
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'true');
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
@@ -561,8 +662,16 @@ describe('DateRangePicker', () => {
 			toInvalid: false,
 			message: errorMessage,
 		});
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'false');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'false');
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
@@ -573,8 +682,16 @@ describe('DateRangePicker', () => {
 			toInvalid: true,
 			message: errorMessage,
 		});
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'false');
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'Start date (e.g. 05/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'false');
+		expect(
+			screen.getByRole('textbox', {
+				name: 'End date (e.g. 06/08/2015) (optional)',
+			})
+		).toHaveAttribute('aria-invalid', 'true');
 		expect(await getErrorMessage()).toHaveTextContent(errorMessage);
 	});
 
@@ -675,21 +792,37 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
-		// Type in a valid value
-		await userEvent.type(await getFromInput(), fromValidDateAsString);
-		await expect(await getFromInput()).toHaveValue(fromValidDateAsString);
+		const user = userEvent.setup();
 
-		await userEvent.type(await getToInput(), toValidDateAsString);
-		await expect(await getToInput()).toHaveValue(toValidDateAsString);
+		// Type in a valid value
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
+				fromValidDateAsString
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue(fromValidDateAsString);
+
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
+				toValidDateAsString
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue(toValidDateAsString);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: {
@@ -705,14 +838,16 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: { from: undefined, to: undefined },
@@ -725,37 +860,71 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getFromInput(), 'hi');
-		await userEvent.type(await getToInput(), 'hello');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
+				'hi'
+			)
+		);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
+				'hello'
+			)
+		);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
 		const errorMessage = await getErrorMessage();
 		expect(errorMessage).toBeInTheDocument();
-		expect(await getFromInput()).toHaveFocus();
-		expect(await getFromInput()).toHaveValue('hi');
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-		expect(await getToInput()).toHaveValue('hello');
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveFocus();
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('hi');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue('hello');
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveAttribute('aria-invalid', 'true');
 
 		// Type in a valid value
-		await userEvent.clear(await getFromInput());
-		await expect(await getFromInput()).toHaveValue('');
-		await userEvent.clear(await getToInput());
-		await expect(await getToInput()).toHaveValue('');
+		await act(() =>
+			user.clear(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('');
+		await act(() =>
+			user.clear(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue('');
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: { from: undefined, to: undefined },
 		});
@@ -767,32 +936,51 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={false}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required={false}
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getFromInput(), 'hello');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
+				'hello'
+			)
+		);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
 		const errorMessage = await getErrorMessage();
 		expect(errorMessage).toBeInTheDocument();
-		expect(await getFromInput()).toHaveFocus();
-		expect(await getFromInput()).toHaveValue('hello');
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveFocus();
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('hello');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveAttribute('aria-invalid', 'true');
 
 		// Type in a valid value
-		await userEvent.clear(await getFromInput());
-		await expect(await getFromInput()).toHaveValue('');
+		await act(() =>
+			user.clear(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('');
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: { from: undefined, to: undefined },
 		});
@@ -804,45 +992,93 @@ describe('DateRangePicker', () => {
 
 		render(
 			<DateRangePickerInsideForm
-				required={true}
-				onSubmit={onSubmit}
 				onError={onError}
+				onSubmit={onSubmit}
+				required
 			/>
 		);
 
+		const user = userEvent.setup();
+
 		// Type in an invalid value
-		await userEvent.type(await getFromInput(), 'hi');
-		await userEvent.type(await getToInput(), 'hello');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
+				'hi'
+			)
+		);
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
+				'hello'
+			)
+		);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onError).toHaveBeenCalledTimes(1);
 
 		// Expect an error
 		const errorMessage = await getErrorMessage();
 		expect(errorMessage).toBeInTheDocument();
-		expect(await getFromInput()).toHaveFocus();
-		expect(await getFromInput()).toHaveValue('hi');
-		expect(await getFromInput()).toHaveAttribute('aria-invalid', 'true');
-		expect(await getToInput()).toHaveValue('hello');
-		expect(await getToInput()).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveFocus();
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('hi');
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveAttribute('aria-invalid', 'true');
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue('hello');
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveAttribute('aria-invalid', 'true');
 
 		const fromValidDateAsString = '02/03/2024';
 		const toValidDateAsString = '03/03/2024';
 
 		// Type in a valid value
-		await userEvent.clear(await getFromInput());
-		await expect(await getFromInput()).toHaveValue('');
-		await userEvent.type(await getFromInput(), fromValidDateAsString);
-		await expect(await getFromInput()).toHaveValue(fromValidDateAsString);
+		await act(() =>
+			user.clear(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue('');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' }),
+				fromValidDateAsString
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'Start date (e.g. 05/08/2015)' })
+		).toHaveValue(fromValidDateAsString);
 
-		await userEvent.clear(await getToInput());
-		await expect(await getToInput()).toHaveValue('');
-		await userEvent.type(await getToInput(), toValidDateAsString);
-		await expect(await getToInput()).toHaveValue(toValidDateAsString);
+		await act(() =>
+			user.clear(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue('');
+		await act(() =>
+			user.type(
+				screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' }),
+				toValidDateAsString
+			)
+		);
+		expect(
+			screen.getByRole('textbox', { name: 'End date (e.g. 06/08/2015)' })
+		).toHaveValue(toValidDateAsString);
 
 		// Submit the form
-		await userEvent.click(await getSubmitButton());
+		await act(() => user.click(screen.getByRole('button', { name: 'Submit' })));
 		expect(onSubmit).toHaveBeenCalledWith({
 			dateRange: {
 				from: parseDate(fromValidDateAsString),

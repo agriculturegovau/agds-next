@@ -39,9 +39,9 @@ export function PageLayout({
 						<ContentBleed visible={{ md: false }}>
 							<SideNav
 								activePath={router.asPath}
+								items={sideNav.items}
 								title={sideNav.title}
 								titleLink={sideNav.titleLink}
-								items={sideNav.items}
 							/>
 						</ContentBleed>
 					</Column>

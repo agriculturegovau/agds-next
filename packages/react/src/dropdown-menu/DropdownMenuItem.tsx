@@ -1,11 +1,18 @@
 import {
-	ComponentType,
-	PropsWithChildren,
-	ReactNode,
+	type ComponentType,
+	type MouseEvent,
+	type PropsWithChildren,
+	type ReactNode,
 	useEffect,
 	useRef,
 } from 'react';
-import { boxPalette, forwardRefWithAs, mergeRefs, packs } from '../core';
+import {
+	boxPalette,
+	forwardRefWithAs,
+	mergeRefs,
+	packs,
+	type NativeLinkProps,
+} from '../core';
 import { Flex } from '../flex';
 import { IconProps } from '../icon';
 import { Text } from '../text';
@@ -16,7 +23,7 @@ export type DropdownMenuItemProps = PropsWithChildren<{
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
 	/** Function to be fired following a click event of the item. */
-	onClick?: () => void;
+	onClick?: NativeLinkProps['onClick'];
 	/** Used to add an icon to the start of the item. */
 	icon?: ComponentType<IconProps>;
 	/** Used to add decorative elements to the end of the item such as Indicator dot or Notification badge. */
@@ -49,27 +56,16 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 			ref.current?.scrollIntoView({ block: 'nearest' });
 		}, [isActiveDescendant]);
 
-		function onClick() {
-			onClickProp?.();
+		function onClick(event: MouseEvent<HTMLAnchorElement>) {
+			onClickProp?.(event);
 			closeMenu();
 		}
 
 		return (
 			<Flex
-				as={as}
-				ref={mergeRefs([forwardedRef, ref])}
-				role="menuitem"
-				tabIndex={-1}
-				id={id}
-				onClick={onClick}
 				alignItems="center"
-				justifyContent="space-between"
+				as={as}
 				background="body"
-				gap={1}
-				padding={1}
-				width="18rem"
-				link
-				focusRingFor="keyboard"
 				css={{
 					textDecoration: 'none',
 
@@ -83,11 +79,22 @@ export const DropdownMenuItem = forwardRefWithAs<'div', DropdownMenuItemProps>(
 						'& > div:first-of-type > span': packs.underline,
 					},
 				}}
+				focusRingFor="keyboard"
+				gap={1}
+				id={id}
+				justifyContent="space-between"
+				link
+				onClick={onClick}
+				padding={1}
+				ref={mergeRefs([forwardedRef, ref])}
+				role="menuitem"
+				tabIndex={-1}
+				width="18rem"
 				{...props}
 			>
 				<Flex alignItems="center" gap={0.75}>
 					{Icon ? (
-						<Icon color="inherit" size="md" css={{ flexShrink: 0 }} />
+						<Icon color="inherit" css={{ flexShrink: 0 }} size="md" />
 					) : null}
 					<Text color="inherit">{children}</Text>
 				</Flex>

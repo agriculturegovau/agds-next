@@ -28,14 +28,14 @@ export function PageTemplate({
 			<Stack palette="dark">
 				<Header
 					background="bodyAlt"
-					logo={<Logo />}
 					heading="Export Service"
+					logo={<Logo />}
 					subline="Supporting Australian agricultural exports"
 				/>
 				<MainNav
+					activePath="#home"
 					focusMode={focusMode}
 					id="main-nav"
-					activePath="#home"
 					items={[
 						{ label: 'Home', href: '#home' },
 						{ label: 'Category', href: '#category' },
@@ -56,6 +56,7 @@ export function PageTemplate({
 				<Footer background="bodyAlt">
 					<nav aria-label="footer">
 						<LinkList
+							horizontal
 							links={[
 								{ label: 'Home', href: '/' },
 								{
@@ -71,7 +72,6 @@ export function PageTemplate({
 									href: 'https://github.com/agriculturegovau/agds-starter-kit',
 								},
 							]}
-							horizontal
 						/>
 					</nav>
 					<FooterDivider />

@@ -20,7 +20,7 @@ export const DataTableRowAssignee = ({
 	return (
 		<TableCell>
 			<Flex alignItems="center" gap={0.25}>
-				<Avatar name={assignee} size="sm" aria-hidden />
+				<Avatar aria-hidden name={assignee} size="sm" />
 				<Text>{assignee}</Text>
 			</Flex>
 		</TableCell>
@@ -78,9 +78,9 @@ export const DataTableRow = ({
 			<TableRow aria-rowindex={rowIndex} selected={isRowSelected(itemId)}>
 				<TableCell>
 					<Checkbox
-						size="sm"
 						checked={isRowSelected(itemId)}
 						onChange={() => toggleRowSelected(itemId)}
+						size="sm"
 					>
 						<VisuallyHidden>{`Select ${businessName}`}</VisuallyHidden>
 					</Checkbox>

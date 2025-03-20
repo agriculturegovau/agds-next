@@ -102,12 +102,12 @@ export function SelectableTableBatchActions() {
 					{renderNotification()}
 					<TableFilters />
 					<Stack gap={0}>
-						<Box paddingLeft={0.75} paddingBottom={1} borderBottom>
+						<Box borderBottom paddingBottom={1} paddingLeft={0.75}>
 							<Checkbox
-								size="sm"
 								checked={isTableHeaderChecked}
 								indeterminate={isTableHeaderIndeterminate}
 								onChange={toggleAllRows}
+								size="sm"
 							>
 								Select all rows
 							</Checkbox>
@@ -116,7 +116,7 @@ export function SelectableTableBatchActions() {
 							<Stack gap={1}>
 								<Stack gap={0.5}>
 									<TableWrapper>
-										<Table striped aria-labelledby="certificates-heading">
+										<Table aria-labelledby="certificates-heading" striped>
 											<TableHead>
 												<TableRow>
 													<TableHeader scope="col" width="6rem">
@@ -135,14 +135,14 @@ export function SelectableTableBatchActions() {
 											<TableBody>
 												{paginatedData.map((row) => (
 													<Row
-														key={row.id}
-														item={row}
-														isRowSelected={isRowSelected(row)}
-														onRowSelectToggle={() => toggleRowSelected(row)}
 														addTrackingNumber={() =>
 															addTrackingNumberToRow(row)
 														}
 														deleteRow={() => deleteRow(row)}
+														isRowSelected={isRowSelected(row)}
+														item={row}
+														key={row.id}
+														onRowSelectToggle={() => toggleRowSelected(row)}
 													/>
 												))}
 											</TableBody>
@@ -156,23 +156,23 @@ export function SelectableTableBatchActions() {
 											</TableBatchActionsTitle>
 											<ButtonGroup>
 												<Button
-													variant="secondary"
-													size="sm"
 													onClick={() => setModalAddTrackingOpen(true)}
+													size="sm"
+													variant="secondary"
 												>
 													Add tracking number
 												</Button>
 												<Button
-													variant="secondary"
-													size="sm"
 													onClick={() => setDeleteModalOpen(true)}
+													size="sm"
+													variant="secondary"
 												>
 													Delete
 												</Button>
 												<Button
-													variant="tertiary"
-													size="sm"
 													onClick={toggleAllRows}
+													size="sm"
+													variant="tertiary"
 												>
 													Cancel
 												</Button>
@@ -188,7 +188,7 @@ export function SelectableTableBatchActions() {
 							</Stack>
 						) : (
 							<Stack paddingY={1}>
-								<Heading type="h3" fontSize="lg">
+								<Heading fontSize="lg" type="h3">
 									No certificates found
 								</Heading>
 							</Stack>
@@ -197,8 +197,8 @@ export function SelectableTableBatchActions() {
 				</Stack>
 			</Stack>
 			<ModalConfirmDelete
-				itemsToDelete={selectedItems}
 				isOpen={deleteModalOpen}
+				itemsToDelete={selectedItems}
 				onClose={() => setDeleteModalOpen(false)}
 				onConfirm={deleteSelectedItems}
 			/>
@@ -255,13 +255,13 @@ function Row({
 			<TableRow selected={isRowSelected}>
 				<TableCell>
 					<Checkbox
-						size="sm"
+						aria-label={`Select certificate ${certNumber}`}
 						checked={isRowSelected}
 						onChange={onRowSelectToggle}
-						aria-label={`Select certificate ${certNumber}`}
+						size="sm"
 					/>
 				</TableCell>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#">{certNumber}</TextLink>
 				</TableCell>
 				<TableCell>{exporter}</TableCell>
@@ -270,18 +270,18 @@ function Row({
 				<TableCell>{amount}</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<Button variant="text" onClick={onAddTrackingClick}>
+						<Button onClick={onAddTrackingClick} variant="text">
 							Add tracking number
 						</Button>
-						<Button variant="text" onClick={onDeleteClick}>
+						<Button onClick={onDeleteClick} variant="text">
 							Delete
 						</Button>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<ModalConfirmDelete
-				itemsToDelete={item}
 				isOpen={deleteModalOpen}
+				itemsToDelete={item}
 				onClose={() => setDeleteModalOpen(false)}
 				onConfirm={onDeleteConfirm}
 			/>

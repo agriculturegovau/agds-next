@@ -143,7 +143,7 @@ describe('Button', () => {
 
 function renderButtonLink(props?: Partial<ButtonLinkProps>) {
 	return render(
-		<ButtonLink href="#" data-testid="example" {...props}>
+		<ButtonLink data-testid="example" href="#" {...props}>
 			My button link
 		</ButtonLink>
 	);
