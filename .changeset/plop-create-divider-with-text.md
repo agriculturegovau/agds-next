@@ -3,4 +3,6 @@
 '@ag.ds-next/docs': minor
 ---
 
-divider-with-text: Initial release of component
+divider: add `divider-with-text` to related components in documentation.
+
+divider-with-text: Initial release of component.
