@@ -19,24 +19,24 @@ type Story = StoryObj<typeof ToggleButton>;
 
 export const Flag: Story = {
 	args: {
-		label: 'Flag message',
 		iconType: 'flag',
+		label: 'Flag message',
 		pressedLabel: 'Unflag message',
 	},
 };
 
 export const Star: Story = {
 	args: {
-		label: 'Star message',
 		iconType: 'star',
+		label: 'Star message',
 		pressedLabel: 'Unstar message',
 	},
 };
 export const HiddenLabel: Story = {
 	args: {
 		hiddenLabel: true,
-		label: 'Star message',
 		iconType: 'star',
+		label: 'Star message',
 		pressedLabel: 'Unstar message',
 	},
 };

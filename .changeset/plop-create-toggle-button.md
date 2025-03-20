@@ -3,4 +3,4 @@
 '@ag.ds-next/docs': minor
 ---
 
-ToggleButton: Initial release of component
+toggle-button: Initial release of component.

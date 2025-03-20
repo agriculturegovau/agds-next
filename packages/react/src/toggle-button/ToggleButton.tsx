@@ -21,17 +21,17 @@ export type ToggleButtonProps = Omit<
 	| 'role'
 	| 'type'
 > & {
+	/** When true, visually hides the label. */
+	hiddenLabel?: boolean;
+	/** Determines the pair of icons to display in the default and pressed state. */
+	iconType?: 'flag' | 'star';
 	/** The label of the button when in its default state. */
 	label: string;
-	/** When true, visually hides the label.  */
-	hiddenLabel?: boolean;
-	/** The icon type to display. */
-	iconType?: 'flag' | 'star';
 	/** Function to be called when the button is clicked. */
 	onClick: (pressedState: boolean) => void;
 	/** The current pressed state of the ToggleButton. */
 	pressed: boolean;
-	/** The label of the button is pressed. */
+	/** The label of the button when its pressed state. */
 	pressedLabel: string;
 	size?: ButtonSize;
 	variant?: ButtonVariant;

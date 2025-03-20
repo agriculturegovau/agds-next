@@ -15,9 +15,9 @@ describe('ToggleButton', () => {
 	it('renders correctly', () => {
 		const { container } = renderToggleButton({
 			label: 'Flag message',
-			pressedLabel: 'Unflag message',
-			pressed: false,
 			onClick: () => undefined,
+			pressed: false,
+			pressedLabel: 'Unflag message',
 		});
 
 		expect(container).toMatchSnapshot();
@@ -26,9 +26,9 @@ describe('ToggleButton', () => {
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderToggleButton({
 			label: 'Flag message',
-			pressedLabel: 'Unflag message',
-			pressed: false,
 			onClick: () => undefined,
+			pressed: false,
+			pressedLabel: 'Unflag message',
 		});
 
 		expect(container).toHTMLValidate({
@@ -41,9 +41,9 @@ describe('ToggleButton', () => {
 	it('renders alternative icon and label when pressedLabel = true', async () => {
 		const { container } = renderToggleButton({
 			label: 'Flag message',
-			pressedLabel: 'Unflag message',
-			pressed: true,
 			onClick: () => undefined,
+			pressed: true,
+			pressedLabel: 'Unflag message',
 		});
 
 		expect(container).toHTMLValidate({
@@ -56,11 +56,11 @@ describe('ToggleButton', () => {
 
 	it('renders aria-label when hiddenLabel = true', async () => {
 		const { container } = renderToggleButton({
-			label: 'Flag message',
-			pressedLabel: 'Unflag message',
 			hiddenLabel: true,
-			pressed: false,
+			label: 'Flag message',
 			onClick: () => undefined,
+			pressed: false,
+			pressedLabel: 'Unflag message',
 		});
 
 		expect(container).toHTMLValidate({
