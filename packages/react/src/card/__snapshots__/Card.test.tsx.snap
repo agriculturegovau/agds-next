@@ -3,10 +3,10 @@
 exports[`Card Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1yrx9yp-boxStyles-Card"
+    class="css-hzn39x-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-1e4x2o5-boxStyles"
     >
       <div
         class="css-1lvzxao-boxStyles"
@@ -30,10 +30,10 @@ exports[`Card Basic renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-e7y0n5-boxStyles-Card"
+    class="css-e71640-boxStyles-Card"
   >
     <div
-      class="css-z5u98n-boxStyles"
+      class="css-1e4x2o5-boxStyles"
     >
       <div
         class="css-1lvzxao-boxStyles"
@@ -49,7 +49,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-1x2pup-CardLink"
+          class="css-3qosc6-CardLink"
           href="#"
         >
           Linking out
