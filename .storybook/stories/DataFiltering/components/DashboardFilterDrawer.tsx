@@ -41,6 +41,7 @@ export const DashboardFilterDrawer = ({
 	const clearFilters = () => {
 		resetFilters();
 		setFormState({
+			search: undefined,
 			assignee: undefined,
 			businessName: undefined,
 			requestDate: { from: undefined, to: undefined },
