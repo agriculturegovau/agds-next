@@ -86,8 +86,6 @@ To prevent inconsistent implementations and user experience, we limit the icons 
 
 Some space-limited implementations may require an icon-only Toggle button. While the `label` is required for accessibility purposes, it can be visually hidden with the `hiddenLabel` prop.
 
-The interactions for an icon-only version differ to meet WCAG 1.4.1. On hover, the icon size and stroke width increases slightly to indicate that the button is interactive.
-
 ```jsx live
 () => {
 	const [flagIsPressed, setFlagIsPressed] = React.useState(false);

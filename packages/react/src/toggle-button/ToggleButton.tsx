@@ -77,21 +77,14 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 				{...props}
 				aria-label={hiddenLabel ? resolvedLabel : undefined}
 				aria-pressed={pressed}
-				css={
-					hiddenLabel
-						? {
-								svg: {
-									transition: `all ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-								},
-								'&:hover svg': {
-									strokeWidth: 3,
-									transform: `scale(${
-										iconHoverSizeMap[size] / iconSizes[size]
-									})`,
-								},
-						  }
-						: undefined
-				}
+				css={{
+					svg: {
+						transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+					},
+					'&:hover svg': {
+						transform: `scale(${iconHoverSizeMap[size] / iconSizes[size]})`,
+					},
+				}}
 				iconBefore={pressed ? PressedIcon : DefaultIcon}
 				onClick={() => {
 					onClick(!pressed);

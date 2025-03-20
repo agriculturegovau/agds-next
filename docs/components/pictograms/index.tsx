@@ -120,6 +120,9 @@ export const pictograms = {
 	'text-link': textLink,
 	textarea,
 	'text-input': textInput,
+	'time-input': textInput,
+	'time-picker': select,
+	'toggle-button': button,
 };
 
 export function getPictogram(slug: string) {

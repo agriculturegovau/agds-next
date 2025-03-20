@@ -21,6 +21,7 @@ export const Flag: Story = {
 	args: {
 		label: 'Flag message',
 		iconType: 'flag',
+		pressedLabel: 'Unflag message',
 	},
 };
 
@@ -28,5 +29,14 @@ export const Star: Story = {
 	args: {
 		label: 'Star message',
 		iconType: 'star',
+		pressedLabel: 'Unstar message',
+	},
+};
+export const HiddenLabel: Story = {
+	args: {
+		hiddenLabel: true,
+		label: 'Star message',
+		iconType: 'star',
+		pressedLabel: 'Unstar message',
 	},
 };

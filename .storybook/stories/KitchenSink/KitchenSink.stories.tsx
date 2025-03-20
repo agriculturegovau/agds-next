@@ -100,6 +100,7 @@ import { GroupedFields } from '../../../packages/react/src/grouped-fields';
 import { TimeInput } from '../../../packages/react/src/time-input';
 import { TimePicker } from '../../../packages/react/src/time-picker';
 import { FeatureLinkList } from '../../../packages/react/src/feature-link-list';
+import { ToggleButton } from '../../../packages/react/src/toggle-button';
 import { useTernaryState } from '../../../packages/react/src/core';
 import { COUNTRY_OPTIONS } from '../../../docs/components/designSystemComponents';
 import { SiteLayout } from '../../../docs/content/templates/__shared/SiteLayout';
@@ -513,6 +514,14 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<TimeInput label="Start time" onChange={() => undefined} />
 
 								<TimePicker label="Select a time" onChange={() => undefined} />
+
+								<ToggleButton
+									iconType="flag"
+									label="Toggle button"
+									onClick={console.log}
+									pressed
+									pressedLabel="Pressed toggle button"
+								/>
 
 								<ButtonGroup>
 									<Button size="md">Primary</Button>
