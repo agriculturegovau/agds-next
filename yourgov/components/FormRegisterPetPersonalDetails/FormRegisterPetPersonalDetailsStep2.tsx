@@ -1,18 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useRef, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Radio } from '@ag.ds-next/react/radio';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
+import { Divider } from '@ag.ds-next/react/divider';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Radio } from '@ag.ds-next/react/radio';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormRegisterPetPersonalDetails } from './FormRegisterPetPersonalDetails';
 import { FormRegisterPetPersonalDetailsActions } from './FormRegisterPetPersonalDetailsActions';
@@ -126,24 +126,25 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 						<Radio {...register('contactMethod')} value="SMS">
 							SMS
 						</Radio>
-						{showConditionalField ? (
-							<ConditionalFieldContainer>
-								<TextInput
-									{...register('mobileNumber')}
-									autoComplete="tel"
-									id="mobilePhone"
-									invalid={Boolean(errors.mobileNumber?.message)}
-									label="Provide mobile phone number"
-									message={errors.mobileNumber?.message}
-									required
-									type="tel"
-								/>
-							</ConditionalFieldContainer>
-						) : null}
 						<Radio {...register('contactMethod')} value="Email">
 							Email
 						</Radio>
 					</ControlGroup>
+					{showConditionalField ? (
+						<>
+							<Divider />
+							<TextInput
+								{...register('mobileNumber')}
+								autoComplete="tel"
+								id="mobilePhone"
+								invalid={Boolean(errors.mobileNumber?.message)}
+								label="Provide mobile phone number"
+								message={errors.mobileNumber?.message}
+								required
+								type="tel"
+							/>
+						</>
+					) : null}
 				</FormStack>
 				<FormRegisterPetPersonalDetailsActions />
 			</Stack>
