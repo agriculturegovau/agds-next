@@ -28,36 +28,36 @@ If there are large number of items, use [Select](/components/select) instead.
 	const [value, setValue] = React.useState();
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Radio>
+		<Stack gap={1}>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			{value && <Divider paddingY={1} />}
+
 			{isChecked('email') && (
-				<ConditionalFieldContainer>
-					<TextInput type="email" label="Email address" required />
-				</ConditionalFieldContainer>
+				<TextInput type="email" label="Email address" required />
 			)}
-			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Radio>
 			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
+				<TextInput label="Phone number" inputMode="numeric" required />
 			)}
-			<Radio
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Radio>
 			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Mobile phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
+				<TextInput label="Mobile phone number" inputMode="numeric" required />
 			)}
-		</ControlGroup>
+		</>
 	);
 };
 ```
@@ -77,36 +77,42 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 		[]
 	);
 	const isChecked = (key) => value.includes(key);
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Checkbox checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Checkbox>
+		<Stack gap={2}>
+			<ControlGroup label="Preferred contact method" required block>
+				<Checkbox
+					checked={isChecked('email')}
+					onChange={handlerForKey('email')}
+				>
+					Email
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('phone')}
+					onChange={handlerForKey('phone')}
+				>
+					Phone
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Checkbox>
+			</ControlGroup>
+
+			{!!value.length && <Divider />}
+
 			{isChecked('email') && (
-				<ConditionalFieldContainer>
-					<TextInput type="email" label="Email address" required />
-				</ConditionalFieldContainer>
+				<TextInput type="email" label="Email address" required />
 			)}
-			<Checkbox checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Checkbox>
 			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
+				<TextInput inputMode="numeric" label="Phone number" required />
 			)}
-			<Checkbox
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Checkbox>
 			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Mobile phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
+				<TextInput inputMode="numeric" label="Mobile phone number" required />
 			)}
-		</ControlGroup>
+		</Stack>
 	);
 };
 ```
@@ -118,7 +124,79 @@ When a user selects a particular option from a [Select](/components/select) drop
 If there a small number of items, use [Radio](/components/radio) instead.
 
 ```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
+	const isChecked = (key) => value === key;
 
+	return (
+		<Stack gap={2}>
+			<Select
+				placeholder="Please select"
+				label="How would you like to be contacted"
+				onChange={handlerForKey}
+				options={[
+					{ value: 'post', label: 'Post' },
+					{ value: 'sms', label: 'Text message' },
+					{ value: 'email', label: 'E mail' },
+				]}
+				required
+				value={value}
+			/>
+
+			{!!value.length && <Divider />}
+
+			{isChecked('post') && (
+				<>
+					<H2>Address</H2>
+					<TextInput
+						inputMode="text"
+						label="Street address"
+						maxWidth="xl"
+						required
+						type="text"
+					/>
+					<TextInput
+						inputMode="text"
+						label="Suburb, town or city"
+						maxWidth="lg"
+						required
+						type="text"
+					/>
+					<Select
+						label="state or territory"
+						maxWidth="sm"
+						options={[
+							{ value: 'act', label: 'ACT' },
+							{ value: 'nsw', label: 'NSW' },
+							{ value: 'nt', label: 'NT' },
+							{ value: 'qld', label: 'QLD' },
+							{ value: 'sa', label: 'SA' },
+							{ value: 'tas', label: 'TAS' },
+							{ value: 'vic', label: 'VIC' },
+							{ value: 'wa', label: 'WA' },
+						]}
+						required
+					/>
+					<TextInput
+						inputMode="numeric"
+						label="Post code"
+						required
+						maxWidth="sm"
+					/>
+				</>
+			)}
+
+			{isChecked('sms') && (
+				<TextInput inputMode="text" label="Mobile phone number" required />
+			)}
+
+			{isChecked('email') && (
+				<TextInput type="email" label="Email address" required />
+			)}
+		</Stack>
+	);
+};
 ```
 
 ## Invalid
@@ -130,54 +208,54 @@ When a conditionally revealed question is invalid, include an error message on t
 	const [value, setValue] = React.useState('email');
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Radio>
+		<Stack gap={2}>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			{!!value && <Divider />}
+
 			{isChecked('email') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						type="email"
-						label="Email address"
-						required
-						invalid
-						message="Enter a email address"
-					/>
-				</ConditionalFieldContainer>
+				<TextInput
+					type="email"
+					label="Email address"
+					required
+					invalid
+					message="Enter a email address"
+				/>
 			)}
-			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Radio>
 			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						label="Phone number"
-						inputMode="numeric"
-						required
-						invalid
-						message="Enter a phone number"
-					/>
-				</ConditionalFieldContainer>
+				<TextInput
+					label="Phone number"
+					inputMode="numeric"
+					required
+					invalid
+					message="Enter a phone number"
+				/>
 			)}
-			<Radio
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Radio>
 			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						label="Mobile phone number"
-						inputMode="numeric"
-						required
-						invalid
-						message="Enter a mobile phone number"
-					/>
-				</ConditionalFieldContainer>
+				<TextInput
+					label="Mobile phone number"
+					inputMode="numeric"
+					required
+					invalid
+					message="Enter a mobile phone number"
+				/>
 			)}
-		</ControlGroup>
+		</Stack>
 	);
 };
 ```
