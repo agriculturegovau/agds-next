@@ -4,7 +4,7 @@ import { boxPalette, mapSpacing } from '../core';
 import { Divider } from '../divider';
 
 export type DividerWithTextProps = PropsWithChildren<{
-	// /** If false, the first divider element will not be hidden from assistive technologies. */
+	/** If true, the <hr> element only will be hidden from assistive technologies. */
 	'aria-hidden'?: HTMLAttributes<HTMLHRElement>['aria-hidden'];
 	/** Sets the horizontal alignment of the label on the divider. */
 	textAlign?: 'left' | 'center';
@@ -35,8 +35,11 @@ export function DividerWithText(props: DividerWithTextProps) {
 			<Divider aria-hidden={ariaHidden} />
 			<Box
 				css={{
-					color: boxPalette.foregroundMuted,
-					textAlign: textAlign,
+					'&& > * ': {
+						// NOTE: single ampersand was getting overwritten color?
+						color: boxPalette.foregroundMuted,
+						textAlign: textAlign,
+					},
 				}}
 			>
 				{children}

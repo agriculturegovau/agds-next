@@ -1,11 +1,12 @@
 import { StoryObj, Meta } from '@storybook/react';
+import { Text } from '../text';
 import { DividerWithText } from './DividerWithText';
 
 const meta: Meta<typeof DividerWithText> = {
 	title: 'Content/DividerWithText',
 	component: DividerWithText,
 	args: {
-		children: <p>Divider label</p>,
+		children: <Text>Divider label</Text>,
 	},
 	argTypes: {
 		textAlign: {

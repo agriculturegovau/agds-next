@@ -1268,14 +1268,14 @@ const snippets: Array<Snippet> = [
 		group: 'DividerWithText',
 		name: 'Basic',
 		code: `<DividerWithText>
-			<p>Divider label</p>
+			<Text>Divider label</Text>
 		</DividerWithText>`,
 	},
 	{
 		group: 'DividerWithText',
 		name: 'Left align',
 		code: `<DividerWithText textAlign="left">
-			<p>Divider label</p>
+			<Text>Divider label</Text>
 		</DividerWithText>`,
 	},
 	{
