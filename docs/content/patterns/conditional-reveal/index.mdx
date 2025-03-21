@@ -1,15 +1,15 @@
 ---
-title: Conditionally revealed content
+title: Conditionally revealed form content
 description: Revealing additional form questions and help content after a user selects an option can reduce the amount of content a user must read when completing complex forms.
-relatedPatterns: ['search-filters', 'focus-mode']
+relatedPatterns: ['search-filters']
 ---
 
 <DoHeading />
 
 - limit what is revealed to a single set of related questions or information that does not require its own submit action
 - reveal the related set of questions under the initial input or controls
-- use another page if there are multiple related questions
-- only use with vertically stacked checkboxes or radios
+- use another page if there are multiple related questions that need a submit action
+- only use with vertically stacked checkboxes or radios.
 
 <DontHeading />
 
@@ -19,9 +19,9 @@ relatedPatterns: ['search-filters', 'focus-mode']
 
 ## Radio
 
-When a user selects a specific option from a [Radio](/components/radio) control group, additional questions or helpful information relevant to their selection can be revealed. Reveling content after a selection is made ensures a user will only see content that is relevant to them.
+When a user selects a specific option from a [Radio](/components/radio) control group, additional questions or helpful information relevant to their selection can be revealed. Revealing content after a selection is made ensures a user will only see content that is relevant to them.
 
-If there are large number of items, use [Select](/components/select) instead.
+If there a large number of items, use [Select](/components/select) instead.
 
 ```jsx live
 () => {
@@ -30,7 +30,7 @@ If there are large number of items, use [Select](/components/select) instead.
 	const isChecked = (key) => key === value;
 
 	return (
-		<Stack gap={1}>
+		<Stack gap={1.5}>
 			<ControlGroup label="Preferred contact method" required block>
 				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
 					Email
@@ -46,7 +46,7 @@ If there are large number of items, use [Select](/components/select) instead.
 				</Radio>
 			</ControlGroup>
 
-			{value && <Divider paddingY={1} />}
+			{value && <Divider />}
 
 			{isChecked('email') && (
 				<TextInput type="email" label="Email address" required />
@@ -79,8 +79,8 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 	const isChecked = (key) => value.includes(key);
 
 	return (
-		<Stack gap={2}>
-			<ControlGroup label="Preferred contact method" required block>
+		<Stack gap={1.5}>
+			<ControlGroup label="How would you like to be contacted?" required block>
 				<Checkbox
 					checked={isChecked('email')}
 					onChange={handlerForKey('email')}
@@ -125,26 +125,26 @@ If there a small number of items, use [Radio](/components/radio) instead.
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState([]);
+	const [value, setValue] = React.useState(null);
 	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
 	const isChecked = (key) => value === key;
 
 	return (
-		<Stack gap={2}>
+		<Stack gap={1.5}>
 			<Select
 				placeholder="Please select"
-				label="How would you like to be contacted"
+				label="How would you like to be contacted?"
 				onChange={handlerForKey}
 				options={[
 					{ value: 'post', label: 'Post' },
-					{ value: 'sms', label: 'Text message' },
+					{ value: 'textMessage', label: 'Text message' },
 					{ value: 'email', label: 'E mail' },
 				]}
 				required
 				value={value}
 			/>
 
-			{!!value.length && <Divider />}
+			{!!value && <Divider />}
 
 			{isChecked('post') && (
 				<>
@@ -164,17 +164,17 @@ If there a small number of items, use [Radio](/components/radio) instead.
 						type="text"
 					/>
 					<Select
-						label="state or territory"
+						label="State or territory"
 						maxWidth="sm"
 						options={[
-							{ value: 'act', label: 'ACT' },
-							{ value: 'nsw', label: 'NSW' },
-							{ value: 'nt', label: 'NT' },
-							{ value: 'qld', label: 'QLD' },
-							{ value: 'sa', label: 'SA' },
-							{ value: 'tas', label: 'TAS' },
-							{ value: 'vic', label: 'VIC' },
-							{ value: 'wa', label: 'WA' },
+							{ label: 'ACT', value: 'act' },
+							{ label: 'NSW', value: 'nsw' },
+							{ label: 'NT', value: 'nt' },
+							{ label: 'QLD', value: 'qld' },
+							{ label: 'SA', value: 'sa' },
+							{ label: 'TAS', value: 'tas' },
+							{ label: 'VIC', value: 'vic' },
+							{ label: 'WA', value: 'wa' },
 						]}
 						required
 					/>
@@ -187,7 +187,7 @@ If there a small number of items, use [Radio](/components/radio) instead.
 				</>
 			)}
 
-			{isChecked('sms') && (
+			{isChecked('textMessage') && (
 				<TextInput inputMode="text" label="Mobile phone number" required />
 			)}
 
@@ -210,7 +210,7 @@ When a conditionally revealed question is invalid, include an error message on t
 	const isChecked = (key) => key === value;
 
 	return (
-		<Stack gap={2}>
+		<Stack gap={1.5}>
 			<ControlGroup label="Preferred contact method" required block>
 				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
 					Email
@@ -266,6 +266,6 @@ When a conditionally revealed question is invalid, include an error message on t
 
 Before November 2024, additional form elements were conditionally revealed directly after the Radio or Checkbox, inside the control group. The pattern worked well for sighted users who see the relationship and context between the control and conditionally revealed form elements.
 
-However we observed screen reader users become disoriented when they encountered additional form elements between items of the control group. In response, we adjusted the design by positioning the additional questions after the control group.
+However, we observed screen reader users becoming disoriented when they encountered additional form elements between items of the control group. In response, we adjusted the design by positioning the additional questions after the control group.
 
-This updated pattern has been tested in two rounds of useability studies. We have observed no issues since the change
+This updated pattern has been tested in two rounds of useability studies. We have observed no issues since the change.
