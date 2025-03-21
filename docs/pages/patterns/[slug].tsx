@@ -23,6 +23,7 @@ export default function PatternPage({
 	navLinks,
 	toc,
 	relatedComponents,
+	relatedPatterns,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
@@ -57,6 +58,20 @@ export default function PatternPage({
 							</ul>
 						</Fragment>
 					) : null}
+
+					{relatedPatterns?.length ? (
+						<Fragment>
+							<h2 id="related-patterns">Related patterns</h2>
+							<ul>
+								{relatedPatterns.map(({ slug, title, description }) => (
+									<li key={slug}>
+										<TextLink href={`/patterns/${slug}`}>{title}</TextLink>{' '}
+										&ndash; {description}
+									</li>
+								))}
+							</ul>
+						</Fragment>
+					) : null}
 				</Prose>
 			</PatternLayout>
 		</>
@@ -70,6 +85,7 @@ export const getStaticProps: GetStaticProps<
 		breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 		relatedComponents: Awaited<Pkg[]> | null;
+		relatedPatterns: Awaited<Pattern[]> | null;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -98,6 +114,20 @@ export const getStaticProps: GetStaticProps<
 		});
 	}
 
+	// Get related patterns
+	const relatedPatterns = pattern.relatedPatterns?.length
+		? await Promise.all(pattern.relatedPatterns.sort().map(getPattern))
+		: null;
+	if (relatedPatterns?.length) {
+		toc.push({
+			title: 'Related patterns',
+			slug: 'related-patterns',
+			id: 'related-patterns',
+			level: 2,
+			items: [],
+		});
+	}
+
 	return {
 		props: {
 			breadcrumbs,
@@ -105,6 +135,7 @@ export const getStaticProps: GetStaticProps<
 			pattern,
 			toc,
 			relatedComponents,
+			relatedPatterns,
 		},
 	};
 };
