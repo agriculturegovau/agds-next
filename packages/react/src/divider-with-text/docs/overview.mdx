@@ -1,0 +1,96 @@
+---
+title: Divider with Text
+description: A horizontal rule with text that separates blocks of content.
+group: Content
+storybookPath: /story/Content-DividerWithText--basic
+unreleased: true
+figmaGalleryNodeId: 18634%3A85108
+relatedComponents: ['divider']
+---
+
+```jsx live
+<DividerWithText>
+	<Text>Divider label</Text>
+</DividerWithText>
+```
+
+The divider with label should be used sparingly and used only where appropriate to give context on the content split by the divider. For example, this variant can be used for general sign in divider use.
+
+<DoHeading />
+
+- use to create visual space and separation between blocks of content like form field sets in the main content area
+- divide and logically group content sections to enhance clarity and organisation
+- position above buttons groups at the bottom of a form to give prominence to the action area
+- include a concise label.
+
+<DontHeading />
+
+- add anything other than text elements as children
+- include a long label.
+
+## Example
+
+```jsx live
+<Stack gap={2}>
+	<ControlGroup
+		label="Business structure"
+		hint="When you make a selection, you will be asked for your Australian Business Number (ABN) or Australian Company Number (ACN)."
+		block
+		required
+	>
+		<Radio checked={true}>Sol trader</Radio>
+		<Radio checked={false}>Business</Radio>
+		<Radio checked={false}>Company</Radio>
+	</ControlGroup>
+	<DividerWithText textAlign="left">
+		<Text>Divider label</Text>
+	</DividerWithText>
+	<TextInput label="Australian Business Number (ABN)" required />
+</Stack>
+```
+
+## Label alignment
+
+By default, the label alignment is set to centre.
+
+```jsx live
+<DividerWithText label="center">
+	<Text>Divider label</Text>
+</DividerWithText>
+```
+
+You can also align the label to the left.
+
+```jsx live
+<DividerWithText textAlign="left">
+	<Text>Divider label</Text>
+</DividerWithText>
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Box>
+	<Stack gap={1} padding={1}>
+		<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>
+	</Stack>
+
+	<Stack background="shade" dark gap={1} padding={1}>
+		<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>
+	</Stack>
+</Box>
+```

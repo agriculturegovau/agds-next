@@ -36,5 +36,5 @@ Provide an overview of your changes here. Include screenshots, photos or links i
 - [ ] Export components for docs site and Playroom (`docs/components/designSystemComponents.tsx`)
 - [ ] Add component to Kitchen Sink (`.storybook/stories/KitchenSink.tsx`)
 - [ ] Add snippets to Playroom (`docs/playroom/snippets.ts`)
-- [ ] Add `figmaGalleryNodeId` to Docs (`docs/components/pictograms/index.tsx`)
+- [ ] Add `figmaGalleryNodeId` to Docs (`docs/components/[component-name]/overview.mdx`)
 - [ ] Add pictogram to Docs (`docs/components/pictograms/index.tsx`)
