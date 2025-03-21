@@ -28,6 +28,7 @@ export async function getPattern(slug: string) {
 		githubTemplatePath: (data.githubTemplatePath ?? null) as string | null,
 		storybookPath: (data.storybookPath ?? null) as string | null,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
+		relatedPatterns: (data.relatedPatterns ?? null) as string[] | null,
 	};
 }
 

@@ -1,25 +1,27 @@
 ---
 title: Conditionally revealed content
-description: Conditionally reveal a question or information related to a specific radio or checkbox option when a user selects it. This ensures that users only encounter conditionally revealed content when it is applicable to their selection.
-relatedComponents: ['radio', 'checkbox']
+description: Revealing additional form questions and help content after a user selects an option can reduce the amount of content a user must read when completing complex forms.
+relatedPatterns: ['search-filters', 'focus-mode']
 ---
 
 <DoHeading />
 
-- limit what is revealed to 1 related question or piece of information
-- reveal the related question or information directly under the initial question
+- limit what is revealed to a single set of related questions or information that does not require its own submit action
+- reveal the related set of questions under the initial input or controls
 - use another page if there are multiple related questions
 - only use with vertically stacked checkboxes or radios
 
 <DontHeading />
 
-- reveal more than 1 related question or piece of information
+- reveal a complete form with submit action
 - use with horizontally stacked checkboxes or radios
-- reveal anything that is not a question or piece of information relating directly to a specific radio or checkbox option.
+- reveal anything other than questions or supporting information relating directly to the initial option selected by the user.
 
 ## Radio
 
-You can reveal a related question or information specific to that option when users select a particular [Radio](/components/radio), so they only see that content when it is relevant to them.
+When a user selects a specific option from a [Radio](/components/radio) control group, additional questions or helpful information relevant to their selection can be revealed. Reveling content after a selection is made ensures a user will only see content that is relevant to them.
+
+If there are large number of items, use [Select](/components/select) instead.
 
 ```jsx live
 () => {
@@ -62,7 +64,7 @@ You can reveal a related question or information specific to that option when us
 
 ## Checkbox
 
-You can reveal a related question or information related to that option when a user selects a particular [Checkbox](/components/checkbox), so they only see that content when it is relevant to them.
+When a user selects a particular [Checkbox](/components/checkbox), you can reveal additional questions or provide helpful information that is relevant to the selection after the Checkbox control group. Revealing content after a selection is made ensures a user will only see content that is relevant to them.
 
 ```jsx live
 () => {
@@ -107,6 +109,16 @@ You can reveal a related question or information related to that option when a u
 		</ControlGroup>
 	);
 };
+```
+
+## Select
+
+When a user selects a particular option from a [Select](/components/select) dropdown, additional questions or helpful information relevant to their selection can be revealed. This ensures that the user only sees content that is pertinent to their choice.
+
+If there a small number of items, use [Radio](/components/radio) instead.
+
+```jsx live
+
 ```
 
 ## Invalid
@@ -169,3 +181,13 @@ When a conditionally revealed question is invalid, include an error message on t
 	);
 };
 ```
+
+## Research
+
+### March 2025
+
+Before November 2024, additional form elements were conditionally revealed directly after the Radio or Checkbox, inside the control group. The pattern worked well for sighted users who see the relationship and context between the control and conditionally revealed form elements.
+
+However we observed screen reader users become disoriented when they encountered additional form elements between items of the control group. In response, we adjusted the design by positioning the additional questions after the control group.
+
+This updated pattern has been tested in two rounds of useability studies. We have observed no issues since the change
