@@ -51,7 +51,7 @@ export const Basic: Story = {
 	},
 };
 
-export const EntireLink: Story = {
+export const Clickable: Story = {
 	args: {
 		clickable: true,
 		shadow: true,
@@ -81,7 +81,7 @@ export const EntireLink: Story = {
 	},
 };
 
-export const EntireLinkWithFooterOutside: Story = {
+export const ClickableWithFooterOutside: Story = {
 	args: {
 		clickable: true,
 		footerOutside: true,

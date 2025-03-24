@@ -21,12 +21,12 @@ export const CardLink = (props: CardLinkProps) => {
 						? {
 								'&:focus, &:focus-visible': { outline: 'none' },
 								'&::after': {
-									content: '""',
-									position: 'absolute',
-									top: 0,
-									right: 0,
 									bottom: 0,
+									content: '""',
 									left: 0,
+									position: 'absolute',
+									right: 0,
+									top: 0,
 								},
 						  }
 						: focusStyles),

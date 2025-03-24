@@ -11,9 +11,9 @@ export const CardInner = ({ children }: CardInnerProps) => {
 		<Box
 			{...(context?.footerOutside
 				? cardStyleProps({
-						shadow: context?.shadow,
-						clickable: context?.clickable,
 						background: context?.background,
+						clickable: context?.clickable,
+						shadow: context?.shadow,
 				  })
 				: undefined)}
 			data-card="inner"

@@ -89,7 +89,7 @@ exports[`Card With link With footer renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-3qosc6-CardLink"
+          class="css-1qimly2-CardLink"
           href="#"
         >
           Linking out
@@ -149,7 +149,7 @@ exports[`Card With link renders correctly 1`] = `
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
         </p>
         <a
-          class="css-3qosc6-CardLink"
+          class="css-1qimly2-CardLink"
           href="#"
         >
           Linking out
