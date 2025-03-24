@@ -10,7 +10,7 @@ exports[`DividerWithText renders correctly 1`] = `
       class="css-1th2zfi-Divider"
     />
     <div
-      class="css-17wuecz-boxStyles-DividerWithText"
+      class="css-1sh6fgv-boxStyles-DividerWithText"
     >
       <p>
         Divider text

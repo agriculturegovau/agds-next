@@ -529,7 +529,7 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							<Divider />
 
 							<DividerWithText>
-								<p>Divider label</p>
+								<Text>Divider label</Text>
 							</DividerWithText>
 
 							<DirectionLink direction="left" href="#">
