@@ -51,7 +51,7 @@ export const Basic: Story = {
 	},
 };
 
-export const Link: Story = {
+export const EntireLink: Story = {
 	args: {
 		clickable: true,
 		shadow: true,
@@ -75,6 +75,40 @@ export const Link: Story = {
 							</CardLink>
 						</Stack>
 					</CardInner>
+				</Card>
+			</Box>
+		);
+	},
+};
+
+export const EntireLinkWithFooterOutside: Story = {
+	args: {
+		clickable: true,
+		footerOutside: true,
+		shadow: true,
+	},
+	render: function Render(props) {
+		return (
+			<Box maxWidth={300}>
+				<Card {...props}>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h2" type="h3">
+								Card heading
+							</Heading>
+							<Text as="p">
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+								voluptat
+							</Text>
+							<CardLink href="#">
+								Linking out
+								<ChevronRightIcon />
+							</CardLink>
+						</Stack>
+					</CardInner>
+					<CardFooter>
+						<TextLink href="#">Action</TextLink>
+					</CardFooter>
 				</Card>
 			</Box>
 		);
@@ -113,7 +147,7 @@ export const FeatureHeader: Story = {
 	},
 };
 
-export const FeatureFooter: Story = {
+export const WithFooter: Story = {
 	args: {
 		background: 'body',
 	},
@@ -287,6 +321,21 @@ export const Compositions = () => {
 									</Text>
 								</Stack>
 							</CardInner>
+						</Card>
+
+						<Card clickable footerOutside shadow>
+							<CardInner>
+								<Stack gap={0.5}>
+									<Pictogram />
+
+									<Box fontWeight="bold">
+										<CardLink>Card link, footer outside</CardLink>
+									</Box>
+								</Stack>
+							</CardInner>
+							<CardFooter>
+								<TextLink href="#">Action</TextLink>
+							</CardFooter>
 						</Card>
 					</Stack>
 				</Column>

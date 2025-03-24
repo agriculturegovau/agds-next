@@ -1,12 +1,14 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Stack } from '../stack';
 import { Heading } from '../heading';
-import { Text } from '../text';
 import { ChevronRightIcon } from '../icon';
+import { Stack } from '../stack';
+import { Text } from '../text';
+import { TextLink } from '../text-link';
 import { render, cleanup } from '../../../../test-utils';
 import { Card } from './Card';
+import { CardFooter } from './CardFooter';
 import { CardInner } from './CardInner';
 import { CardLink } from './CardLink';
 
@@ -14,7 +16,7 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function CardExample() {
+function CardExample({ footer = false }) {
 	return (
 		<Card>
 			<CardInner>
@@ -28,13 +30,18 @@ function CardExample() {
 					</Text>
 				</Stack>
 			</CardInner>
+			{footer && (
+				<CardFooter>
+					<TextLink href="#">Footer</TextLink>
+				</CardFooter>
+			)}
 		</Card>
 	);
 }
 
-function CardLinkExample() {
+function CardLinkExample({ footer = false }) {
 	return (
-		<Card clickable shadow>
+		<Card clickable footerOutside={footer} shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">
@@ -50,6 +57,11 @@ function CardLinkExample() {
 					</CardLink>
 				</Stack>
 			</CardInner>
+			{footer && (
+				<CardFooter>
+					<TextLink href="#">Footer</TextLink>
+				</CardFooter>
+			)}
 		</Card>
 	);
 }
@@ -60,12 +72,28 @@ describe('Card', () => {
 			const { container } = render(<CardExample />);
 			expect(container).toMatchSnapshot();
 		});
+
 		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<CardExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
 			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		describe('With footer', () => {
+			it('renders correctly', () => {
+				const { container } = render(<CardExample footer />);
+				expect(container).toMatchSnapshot();
+			});
+
+			it('renders valid HTML with no a11y violations', async () => {
+				const { container } = render(<CardExample footer />);
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+				});
+				expect(await axe(container)).toHaveNoViolations();
+			});
 		});
 	});
 
@@ -74,12 +102,28 @@ describe('Card', () => {
 			const { container } = render(<CardLinkExample />);
 			expect(container).toMatchSnapshot();
 		});
+
 		it('renders valid HTML with no a11y violations', async () => {
 			const { container } = render(<CardLinkExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
 			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		describe('With footer', () => {
+			it('renders correctly', () => {
+				const { container } = render(<CardLinkExample footer />);
+				expect(container).toMatchSnapshot();
+			});
+
+			it('renders valid HTML with no a11y violations', async () => {
+				const { container } = render(<CardLinkExample footer />);
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+				});
+				expect(await axe(container)).toHaveNoViolations();
+			});
 		});
 	});
 });

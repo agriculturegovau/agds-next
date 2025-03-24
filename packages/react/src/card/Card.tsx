@@ -41,10 +41,25 @@ export const Card = ({
 				flexDirection="column"
 				flexGrow={1}
 				{...(footerOutside
-					? {}
+					? {
+							css: {
+								// This (and position: relative in CardFooter) allows any images as immediate children to also appear to be clickable on hover.
+								// We can't make the focus ring wrap everything though because it can't look as though it includes any CardFooter content.
+								position: 'relative',
+								'> img:first-of-type': {
+									borderTopLeftRadius: tokens.borderRadius,
+									borderTopRightRadius: tokens.borderRadius,
+									'+ [data-card="inner"]': {
+										borderTopLeftRadius: 0,
+										borderTopRightRadius: 0,
+									},
+								},
+							},
+					  }
 					: cardStyleProps({
 							background,
 							clickable,
+							root: true,
 							shadow,
 					  }))}
 			>
@@ -57,10 +72,12 @@ export const Card = ({
 export const cardStyleProps = ({
 	background,
 	clickable,
+	root,
 	shadow,
 }: {
 	background: CardContextType['background'];
 	clickable?: CardContextType['clickable'];
+	root?: boolean;
 	shadow?: CardContextType['shadow'];
 }) =>
 	({
@@ -69,8 +86,7 @@ export const cardStyleProps = ({
 		borderColor: 'muted',
 		rounded: true,
 		css: {
-			overflow: 'hidden',
-			position: 'relative',
+			position: root ? 'relative' : undefined,
 			...(clickable && {
 				// If any element inside the card receives `:focus-visible`, add a focus ring around the wrapper
 				':has(:focus-visible)': packs.outline,
@@ -79,7 +95,6 @@ export const cardStyleProps = ({
 					':focus-within': packs.outline,
 				},
 			}),
-
 			...(shadow && {
 				boxShadow: tokens.shadow.sm,
 				'&:hover': clickable ? { boxShadow: tokens.shadow.md } : undefined,

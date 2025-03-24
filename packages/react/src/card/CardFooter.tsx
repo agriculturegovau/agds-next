@@ -10,7 +10,12 @@ export const CardFooter = ({ background, children }: CardFooterProps) => {
 	const context = useContext(CardContext);
 
 	return context?.footerOutside ? (
-		<Box background={background} paddingTop={1} paddingX={0.25}>
+		<Box
+			background={background}
+			css={{ position: 'relative' }}
+			paddingTop={1}
+			paddingX={0.25}
+		>
 			{children}
 		</Box>
 	) : (

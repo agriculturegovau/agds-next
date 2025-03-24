@@ -16,6 +16,7 @@ export const CardInner = ({ children }: CardInnerProps) => {
 						background: context?.background,
 				  })
 				: undefined)}
+			data-card="inner"
 			flexGrow={1}
 			padding={1.5}
 		>

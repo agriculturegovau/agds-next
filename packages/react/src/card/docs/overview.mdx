@@ -81,6 +81,33 @@ For cards that contain a single link, the hit area for that link can be made to 
 </Card>
 ```
 
+## Clickable cards with footer actions
+
+Clickable cards can also have additional footer actions. A common use-case allows a user to perform an action related to the card itself.
+
+The `footerOutside` prop must be set to `true` to ensure that the “clickable” region doesn’t overlap anything in the footer.
+
+```jsx live
+<Card shadow clickable footerOutside>
+	<CardInner>
+		<Stack gap={1}>
+			<Heading type="h3">
+				<CardLink href="#">Title of article</CardLink>
+			</Heading>
+			<Text as="p">Some text</Text>
+		</Stack>
+	</CardInner>
+	<CardFooter>
+		<ToggleButton
+			iconType="star"
+			label="Add to favourites"
+			onClick={console.log}
+			pressedLabel="Remove from favourites"
+		/>
+	</CardFooter>
+</Card>
+```
+
 ## Feature headers
 
 Use feature headers to give the card heading more visual prominence.
@@ -152,6 +179,120 @@ Use feature footers to give the card footer more visual prominence. This can be 
 			</CardFooter>
 		</Card>
 	</Column>
+</Columns>
+```
+
+## Equal card heights
+
+The content within each card will often vary in height, so to prevent an uneven, stagged appearance of multiple cards within a list, ensure that the `Card` itself is the immediate child of a flex or grid component, such as `Columns`.
+
+```jsx live
+<Columns as="ul" cols={{ xs: 2 }}>
+	<Card as="li" clickable footerOutside shadow>
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/not-found">Learners permit</CardLink>
+				</H3>
+				<Text>
+					A learner driver licence allows you to drive with a supervisor who has
+					a full Australian driving licence. A learner driver licence allows you
+					to drive with a supervisor who has a full Australian driving licence.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
+
+	<Card as="li" clickable footerOutside shadow>
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/not-found">Provisional licence</CardLink>
+				</H3>
+				<Text>
+					Information on provisional licence applicatios, tests, exemptions,
+					changes and checks.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
+
+	<Card as="li" clickable footerOutside shadow>
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/not-found">Drivers licence</CardLink>
+				</H3>
+				<Text>
+					Get a driver or rider licence, renew, upgrade or change licence and
+					licence details.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
+
+	<Card as="li">
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/not-found">Starting your own business</CardLink>
+				</H3>
+				<Text>
+					When starting a business, we try to make it easy to understand and
+					provide everything you need to get started.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
+
+	<Card as="li">
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/not-found">Selling food for a fundraiser</CardLink>
+				</H3>
+				<Text>
+					Some non-profit organisations that sell food for fundraising purposes
+					using volunteer staff are exempt. Some non-profit organisations that
+					sell food for fundraising purposes using volunteer staff are exempt.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
+
+	<Card as="li">
+		<CardInner>
+			<Stack gap={1}>
+				<H3>
+					<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
+						Apply for a mobile food vendor permit
+					</CardLink>
+				</H3>
+				<Text>
+					Food businesses that sell food to the public need to be registered
+					before opening.
+				</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<TextLink href="#">An action</TextLink>
+		</CardFooter>
+	</Card>
 </Columns>
 ```
 
