@@ -10,7 +10,7 @@ relatedComponents: ['divider']
 
 ```jsx live
 <DividerWithText>
-	<Text as="p">Divider label</Text>
+	<Text>Divider label</Text>
 </DividerWithText>
 ```
 
@@ -21,7 +21,8 @@ The divider with text should be used sparingly and used only where appropriate t
 - use to create visual space and separation between blocks of content like form field sets in the main content area
 - divide and logically group content sections to enhance clarity and organisation
 - position above buttons groups at the bottom of a form to give prominence to the action area
-- include a concise label.
+- include a concise label
+- use the correct semantics on the text element.
 
 <DontHeading />
 
@@ -43,7 +44,7 @@ The divider with text should be used sparingly and used only where appropriate t
 		<Radio checked={false}>Company</Radio>
 	</ControlGroup>
 	<DividerWithText textAlign="left">
-		<Text as="p">Divider label</Text>
+		<Text>Divider label</Text>
 	</DividerWithText>
 	<TextInput label="Australian Business Number (ABN)" required />
 </Stack>
@@ -55,7 +56,7 @@ By default, the label alignment is set to centre.
 
 ```jsx live
 <DividerWithText label="center">
-	<Text as="p">Divider label</Text>
+	<Text>Divider label</Text>
 </DividerWithText>
 ```
 
@@ -63,7 +64,7 @@ You can also align the label to the left.
 
 ```jsx live
 <DividerWithText textAlign="left">
-	<Text as="p">Divider label</Text>
+	<Text>Divider label</Text>
 </DividerWithText>
 ```
 
@@ -77,19 +78,19 @@ This logic ensures sufficient contrast between foreground and background element
 <Box>
 	<Stack gap={1} padding={1}>
 		<DividerWithText>
-			<Text as="p">Divider label</Text>
+			<Text>Divider label</Text>
 		</DividerWithText>
 		<DividerWithText textAlign="left">
-			<Text as="p">Divider label</Text>
+			<Text>Divider label</Text>
 		</DividerWithText>
 	</Stack>
 
 	<Stack background="shade" dark gap={1} padding={1}>
 		<DividerWithText>
-			<Text as="p">Divider label</Text>
+			<Text>Divider label</Text>
 		</DividerWithText>
 		<DividerWithText textAlign="left">
-			<Text as="p">Divider label</Text>
+			<Text>Divider label</Text>
 		</DividerWithText>
 	</Stack>
 </Box>

@@ -7,7 +7,7 @@ const meta: Meta<typeof DividerWithText> = {
 	title: 'Content/DividerWithText',
 	component: DividerWithText,
 	args: {
-		children: <Text as="p">Divider label</Text>,
+		children: <Text>Divider label</Text>,
 	},
 	argTypes: {
 		textAlign: {

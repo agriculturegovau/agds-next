@@ -1,5 +1,4 @@
 import { HTMLAttributes, PropsWithChildren } from 'react';
-import { Box } from '../box';
 import { boxPalette, mapSpacing } from '../core';
 import { Divider } from '../divider';
 
@@ -33,17 +32,18 @@ export function DividerWithText(props: DividerWithTextProps) {
 			}}
 		>
 			<Divider aria-hidden={ariaHidden} />
-			<Box
+			<div
 				css={{
 					'&& > * ': {
 						// double ampersand to force color and text-align
 						color: boxPalette.foregroundMuted,
+						display: 'block',
 						textAlign: textAlign,
 					},
 				}}
 			>
 				{children}
-			</Box>
+			</div>
 			<Divider />
 		</div>
 	);
