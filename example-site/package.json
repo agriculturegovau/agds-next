@@ -15,7 +15,7 @@
 		"@hookform/resolvers": "^2.8.8",
 		"@preconstruct/next": "^4.0.0",
 		"@types/gtag.js": "^0.0.12",
-		"next": "^14.2.25",
+		"next": "^15.2.3",
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
 		"react-hook-form": "^7.27.1",
