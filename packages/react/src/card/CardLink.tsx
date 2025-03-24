@@ -16,7 +16,6 @@ export const CardLink = (props: CardLinkProps) => {
 				{
 					display: 'flex',
 					justifyContent: 'space-between',
-					// NOTE: no focus styles here because the parent Card does it.
 					...(context?.clickable
 						? {
 								'&:focus, &:focus-visible': { outline: 'none' },
