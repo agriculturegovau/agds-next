@@ -1,0 +1,41 @@
+---
+title: Conditional Reveal
+description: This component allows the user to show and reveal additional information based on conditional forms.
+group: Forms
+storybookPath: /story/Forms-ConditionalReveal--basic
+unreleased: true
+figmaGalleryNodeId: REPLACE_ME
+# relatedComponents: ['slug-of-component', 'another-slug']
+relatedPatterns: ['conditional-reveal']
+---
+
+Please refer to the [conditional reveal patterns page](/patterns/conditional-reveal) for guidance on designing with conditional content.
+
+<DoHeading />
+
+- use to reveal content on demand
+- pass the condition
+- place directly under the related query
+
+<DontHeading />
+
+- place directly under the
+- nest multiple conditional reveal components
+
+```jsx live
+<FormStack>
+	<ConditionalReveal visible={true}>
+		<TextInput label="Name" />
+	</ConditionalReveal>
+</FormStack>
+```
+
+**High-level introduction to the component. This paragraph should only be a few sentences long.**
+
+## Name of variant or feature
+
+**Describe the variant or feature here. You can use code examples and multiple parapgraphs if you wish.**
+
+```jsx live
+<ConditionalReveal variant="one" />
+```

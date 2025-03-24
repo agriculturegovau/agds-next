@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConditionalReveal renders correctly 1`] = `
+<div>
+  <button
+    type="button"
+  >
+    Toggle visibility
+  </button>
+  <hr
+    aria-hidden="true"
+    class="css-1th2zfi-Divider"
+  />
+  <p
+    data-testid="child-element"
+  >
+    conditional-content
+  </p>
+</div>
+`;
