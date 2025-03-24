@@ -3,7 +3,7 @@
 exports[`DividerWithText renders correctly 1`] = `
 <div>
   <div
-    class="css-za2mpx-boxStyles-DividerWithText"
+    class="css-1hu9clx-DividerWithText"
   >
     <hr
       aria-hidden="true"

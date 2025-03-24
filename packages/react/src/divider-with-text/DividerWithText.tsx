@@ -24,7 +24,7 @@ export function DividerWithText(props: DividerWithTextProps) {
 	const leftDividerWidth =
 		textAlign === 'left' ? minimumDividerWidth : defaultDividerWidth;
 	return (
-		<Box
+		<div
 			css={{
 				alignItems: 'center',
 				display: 'grid',
@@ -45,6 +45,6 @@ export function DividerWithText(props: DividerWithTextProps) {
 				{children}
 			</Box>
 			<Divider />
-		</Box>
+		</div>
 	);
 }
