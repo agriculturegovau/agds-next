@@ -2,8 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { ConditionalReveal } from '@ag.ds-next/react/conditional-reveal';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { Divider } from '@ag.ds-next/react/divider';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
@@ -130,21 +130,18 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							Email
 						</Radio>
 					</ControlGroup>
-					{showConditionalField ? (
-						<>
-							<Divider />
-							<TextInput
-								{...register('mobileNumber')}
-								autoComplete="tel"
-								id="mobilePhone"
-								invalid={Boolean(errors.mobileNumber?.message)}
-								label="Provide mobile phone number"
-								message={errors.mobileNumber?.message}
-								required
-								type="tel"
-							/>
-						</>
-					) : null}
+					<ConditionalReveal visible={showConditionalField}>
+						<TextInput
+							{...register('mobileNumber')}
+							autoComplete="tel"
+							id="mobilePhone"
+							invalid={Boolean(errors.mobileNumber?.message)}
+							label="Provide mobile phone number"
+							message={errors.mobileNumber?.message}
+							required
+							type="tel"
+						/>
+					</ConditionalReveal>
 				</FormStack>
 				<FormRegisterPetPersonalDetailsActions />
 			</Stack>

@@ -1,5 +1,12 @@
 ---
-'@ag.ds-next/docs': patch
+'@ag.ds-next/react': minor
+'@ag.ds-next/docs': minor
 ---
 
-docs: update conditional-reveal pattern page content and sample code
+conditional-reveal: Initial release of component.
+
+docs: Update conditional-reveal pattern page content and sample code.
+
+example-site: Update conditional-reveal pattern to new pattern.
+
+yourgov: Update conditional-reveal pattern to new pattern. Adjust pet personal details form to focus form heading on form render. Remove duplicate required message.
