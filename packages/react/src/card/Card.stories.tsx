@@ -84,13 +84,19 @@ export const Clickable: Story = {
 export const ClickableWithFooterOutside: Story = {
 	args: {
 		clickable: true,
-		footerOutside: true,
 		shadow: true,
 	},
 	render: function Render(props) {
 		return (
 			<Box maxWidth={300}>
-				<Card {...props}>
+				<Card
+					{...props}
+					footer={
+						<CardFooter>
+							<TextLink href="#">Action</TextLink>
+						</CardFooter>
+					}
+				>
 					<CardInner>
 						<Stack gap={1}>
 							<Heading as="h2" type="h3">
@@ -106,9 +112,6 @@ export const ClickableWithFooterOutside: Story = {
 							</CardLink>
 						</Stack>
 					</CardInner>
-					<CardFooter>
-						<TextLink href="#">Action</TextLink>
-					</CardFooter>
 				</Card>
 			</Box>
 		);
@@ -155,7 +158,14 @@ export const WithFooter: Story = {
 		return (
 			<Columns>
 				<Column columnSpan={6}>
-					<Card {...props}>
+					<Card
+						{...props}
+						footer={
+							<CardFooter>
+								<TextLink href="#">Action</TextLink>
+							</CardFooter>
+						}
+					>
 						<CardInner>
 							<Stack gap={1}>
 								<Heading type="h3">Card title</Heading>
@@ -165,13 +175,17 @@ export const WithFooter: Story = {
 								</Text>
 							</Stack>
 						</CardInner>
-						<CardFooter>
-							<TextLink href="#">Action</TextLink>
-						</CardFooter>
 					</Card>
 				</Column>
 				<Column columnSpan={6}>
-					<Card {...props}>
+					<Card
+						{...props}
+						footer={
+							<CardFooter background="bodyAlt">
+								<TextLink href="#">Action</TextLink>
+							</CardFooter>
+						}
+					>
 						<CardInner>
 							<Stack gap={1}>
 								<Heading type="h3">Card title</Heading>
@@ -181,9 +195,6 @@ export const WithFooter: Story = {
 								</Text>
 							</Stack>
 						</CardInner>
-						<CardFooter background="bodyAlt">
-							<TextLink href="#">Action</TextLink>
-						</CardFooter>
 					</Card>
 				</Column>
 			</Columns>
@@ -278,7 +289,7 @@ export const Compositions = () => {
 			<Columns cols={{ xs: 1, sm: 2 }}>
 				<Column>
 					<Stack gap={2} width="100%">
-						<Card shadow>
+						<Card>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading as="h2" type="h3">
@@ -323,7 +334,15 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card clickable footerOutside shadow>
+						<Card
+							clickable
+							footer={
+								<CardFooter>
+									<TextLink href="#">Action</TextLink>
+								</CardFooter>
+							}
+							shadow
+						>
 							<CardInner>
 								<Stack gap={0.5}>
 									<Pictogram />
@@ -333,9 +352,33 @@ export const Compositions = () => {
 									</Box>
 								</Stack>
 							</CardInner>
-							<CardFooter>
-								<TextLink href="#">Action</TextLink>
-							</CardFooter>
+						</Card>
+
+						<Card
+							clickable
+							footer={
+								<CardFooter>
+									<TextLink href="#">Action</TextLink>
+								</CardFooter>
+							}
+							shadow
+						>
+							<img
+								alt="Placeholder image"
+								src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
+								width="100%"
+							/>
+							<CardInner>
+								<Stack gap={1}>
+									<Box as="h3">
+										<CardLink href="#">News item</CardLink>
+									</Box>
+									<Text>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Cras non finibus leo.
+									</Text>
+								</Stack>
+							</CardInner>
 						</Card>
 					</Stack>
 				</Column>
@@ -389,6 +432,37 @@ export const Compositions = () => {
 						</Card>
 
 						<Card clickable shadow>
+							<Flex>
+								<img
+									alt="Placeholder image"
+									css={{
+										width: '50%',
+										objectFit: 'cover',
+									}}
+									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
+								/>
+								<CardInner>
+									<Stack gap={1}>
+										<Box as="h3">
+											<CardLink href="#">News item</CardLink>
+										</Box>
+										<Text>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Cras non finibus leo.
+										</Text>
+									</Stack>
+								</CardInner>
+							</Flex>
+						</Card>
+						<Card
+							clickable
+							footer={
+								<CardFooter>
+									<TextLink href="#">Action</TextLink>
+								</CardFooter>
+							}
+							shadow
+						>
 							<Flex>
 								<img
 									alt="Placeholder image"

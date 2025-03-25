@@ -41,7 +41,7 @@ function CardExample({ footer = false }) {
 
 function CardLinkExample({ footer = false }) {
 	return (
-		<Card clickable footerOutside={footer} shadow>
+		<Card clickable shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">
@@ -99,7 +99,6 @@ function CardLinkFooterExample() {
 					<TextLink href="#">Footer</TextLink>
 				</CardFooter>
 			}
-			footerOutside
 			shadow
 		>
 			<CardInner>
