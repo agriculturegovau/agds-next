@@ -5,22 +5,12 @@ group: Forms
 storybookPath: /story/Forms-ConditionalReveal--basic
 unreleased: true
 figmaGalleryNodeId: REPLACE_ME
-# relatedComponents: ['slug-of-component', 'another-slug']
 relatedPatterns: ['conditional-reveal']
 ---
 
-Please refer to the [conditional reveal patterns page](/patterns/conditional-reveal) for guidance on designing with conditional content. This component aims to standardise the styling of conditional reveal patterns in the Design System.
+This component aims to standardise the styling and behavior of the conditional reveal pattern in the Design System.
 
-<DoHeading />
-
-- use to show and reveal additional content in forms
-- position directly after the related set of questions or input
-- list all related content as children in the same conditional reveal component
-
-<DontHeading />
-
-- use this component for content other than forms
-- nest additional conditional reveal components inside a conditional reveal
+The conditional reveal component does not wrap the children in a [FormStack](/components/form-stack), you may wrap them but it is not required if the parent element is a [Stack](/components/stack) or [FormStack](/components/form-stack).
 
 ```jsx live
 () => {
@@ -47,9 +37,112 @@ Please refer to the [conditional reveal patterns page](/patterns/conditional-rev
 };
 ```
 
-## Multiple fields
+<DoHeading />
 
-If you require more than one field or content, put them all as children of the component.
+- use to hide and reveal additional content in forms that may not be relevant
+- position directly after the related set of questions or input
+- list all related content as children in the same conditional reveal component.
+
+<DontHeading />
+
+- use this component for any other content than forms
+- nest additional conditional reveal components inside of a conditional reveal
+- execute API calls or run heavy processing operators inside the conditional reveal
+
+## Single value field
+
+Where one input value can be selected (eg. radio or select inputs), you can use multiple conditional reveals to selectively render the conditional content.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
+	const isChecked = (key) => value === key;
+
+	return (
+		<FormStack>
+			<Select
+				placeholder="Please select"
+				label="How would you like to be contacted?"
+				onChange={handlerForKey}
+				options={[
+					{ value: 'textMessage', label: 'Text message' },
+					{ value: 'email', label: 'E mail' },
+				]}
+				required
+				value={value}
+			/>
+
+			<ConditionalReveal visible={isChecked('textMessage')}>
+				<TextInput inputMode="text" label="Mobile phone number" required />
+			</ConditionalReveal>
+
+			<ConditionalReveal visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalReveal>
+		</FormStack>
+	);
+};
+```
+
+## Multiple value fields
+
+If the same input can create multiple conditional revealed fields or content (such as a checkbox input), you can use one conditional reveal component and apply conditional rendering in the children. Using multiple conditional rendering will create multiple dividers.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	const handlerForKey = React.useCallback(
+		(key) => () =>
+			setValue((value) =>
+				value.includes(key) ? value.filter((v) => v !== key) : [...value, key]
+			),
+		[]
+	);
+	const isChecked = (key) => value.includes(key);
+
+	return (
+		<FormStack>
+			<ControlGroup label="How would you like to be contacted?" required block>
+				<Checkbox
+					checked={isChecked('email')}
+					onChange={handlerForKey('email')}
+				>
+					Email
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('phone')}
+					onChange={handlerForKey('phone')}
+				>
+					Phone
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Checkbox>
+			</ControlGroup>
+
+			<ConditionalReveal visible={value.length}>
+				{isChecked('email') && (
+					<TextInput type="email" label="Email address" required />
+				)}
+				{isChecked('phone') && (
+					<TextInput inputMode="numeric" label="Phone number" required />
+				)}
+				{isChecked('textMessage') && (
+					<TextInput inputMode="numeric" label="Mobile phone number" required />
+				)}
+			</ConditionalReveal>
+		</FormStack>
+	);
+};
+```
+
+## Multiple related content
+
+If you require more than one field and/or content, place all relevant elements as children of the conditional reveal component.
 
 ```jsx live
 () => {
@@ -110,5 +203,3 @@ If you require more than one field or content, put them all as children of the c
 	);
 };
 ```
-
-The conditional reveal component does not wrap the children in a [FormStack](/components/form-stack), you may wrap them but it is not required if the parent is a stack.

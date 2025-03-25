@@ -1,25 +1,25 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import {
-	useForm,
-	SubmitHandler,
-	SubmitErrorHandler,
 	Controller,
+	SubmitErrorHandler,
+	SubmitHandler,
+	useForm,
 } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { UnorderedList, ListItem } from '@ag.ds-next/react/list';
+import { useScrollToField } from '@ag.ds-next/react/field';
 import { FileUpload } from '@ag.ds-next/react/file-upload';
 import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { LoadingBlanket } from '@ag.ds-next/react/loading';
 import { PageAlert } from '@ag.ds-next/react/page-alert';
 import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { Textarea } from '@ag.ds-next/react/textarea';
-import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
-import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
+import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
 import { FormExampleMultiStepContainer } from './FormExampleMultiStepContainer';
 
 const formSchema = yup

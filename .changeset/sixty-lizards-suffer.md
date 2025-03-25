@@ -5,7 +5,7 @@
 
 conditional-reveal: Initial release of component.
 
-docs: Update conditional-reveal pattern page content and sample code.
+docs: Update conditional-reveal pattern page content and sample code. Add `relatedPatterns` to patterns documentation page. 
 
 example-site: Update conditional-reveal pattern to new pattern.
 
