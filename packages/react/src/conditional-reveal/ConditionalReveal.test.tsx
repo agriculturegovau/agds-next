@@ -1,27 +1,35 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { useState } from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { act, fireEvent, render, screen } from '../../../../test-utils';
-import { ConditionalReveal } from './ConditionalReveal';
+import { useState } from 'react';
+import {
+	act,
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+} from '../../../../test-utils';
 import type { ConditionalRevealProps } from './ConditionalReveal';
+import { ConditionalReveal } from './ConditionalReveal';
 
 expect.extend(toHaveNoViolations);
+
+afterEach(cleanup);
 
 const childTestID = 'child-element';
 const buttonLabel = 'Toggle visibility';
 const TestComponent = (props: ConditionalRevealProps) => {
-	const { isVisible } = props;
-	const [visible, setVisible] = useState(isVisible);
+	const { visible } = props;
+	const [isVisible, setIsVisible] = useState(visible);
 
-	const handleToggleVisibility = () => setVisible((prev) => !prev);
+	const handleToggleVisibility = () => setIsVisible((prev) => !prev);
 
 	return (
 		<>
 			<button onClick={handleToggleVisibility} type="button">
 				{buttonLabel}
 			</button>
-			<ConditionalReveal isVisible={visible}>
+			<ConditionalReveal visible={isVisible}>
 				<p data-testid={childTestID}>conditional-content</p>
 			</ConditionalReveal>
 		</>
@@ -34,12 +42,12 @@ function renderConditionalReveal(props: ConditionalRevealProps) {
 
 describe('ConditionalReveal', () => {
 	it('renders correctly', () => {
-		const { container } = renderConditionalReveal({ isVisible: true });
+		const { container } = renderConditionalReveal({ visible: true });
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = renderConditionalReveal({ isVisible: true });
+		const { container } = renderConditionalReveal({ visible: true });
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 		});
@@ -47,7 +55,7 @@ describe('ConditionalReveal', () => {
 	});
 
 	it('renders the children elements when the prop `isVisible` is changed from "false" to "true"', async () => {
-		renderConditionalReveal({ isVisible: false });
+		renderConditionalReveal({ visible: false });
 		const initialElement = screen.queryByTestId(childTestID);
 		expect(initialElement).toBe(null);
 

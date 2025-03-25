@@ -9,33 +9,106 @@ figmaGalleryNodeId: REPLACE_ME
 relatedPatterns: ['conditional-reveal']
 ---
 
-Please refer to the [conditional reveal patterns page](/patterns/conditional-reveal) for guidance on designing with conditional content.
+Please refer to the [conditional reveal patterns page](/patterns/conditional-reveal) for guidance on designing with conditional content. This component aims to standardise the styling of conditional reveal patterns in the Design System.
 
 <DoHeading />
 
-- use to reveal content on demand
-- pass the condition
-- place directly under the related query
+- use to show and reveal additional content in forms
+- position directly after the related set of questions or input
+- list all related content as children in the same conditional reveal component
 
 <DontHeading />
 
-- place directly under the
-- nest multiple conditional reveal components
+- use this component for content other than forms
+- nest additional conditional reveal components inside a conditional reveal
 
 ```jsx live
-<FormStack>
-	<ConditionalReveal visible={true}>
-		<TextInput label="Name" />
-	</ConditionalReveal>
-</FormStack>
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<FormStack>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalReveal visible={isChecked('phone')}>
+				<TextInput label="Phone number" inputMode="numeric" required />
+			</ConditionalReveal>
+		</FormStack>
+	);
+};
 ```
 
-**High-level introduction to the component. This paragraph should only be a few sentences long.**
+## Multiple fields
 
-## Name of variant or feature
-
-**Describe the variant or feature here. You can use code examples and multiple parapgraphs if you wish.**
+If you require more than one field or content, put them all as children of the component.
 
 ```jsx live
-<ConditionalReveal variant="one" />
+() => {
+	const [value, setValue] = React.useState('post');
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<FormStack>
+			<ControlGroup label="How would you like to be contacted?" required block>
+				<Radio checked={isChecked('post')} onChange={handlerForKey('post')}>
+					Post
+				</Radio>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalReveal visible={isChecked('post')}>
+				<H2>Address</H2>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					required
+					maxWidth="sm"
+				/>
+			</ConditionalReveal>
+		</FormStack>
+	);
+};
 ```
+
+The conditional reveal component does not wrap the children in a [FormStack](/components/form-stack), you may wrap them but it is not required if the parent is a stack.

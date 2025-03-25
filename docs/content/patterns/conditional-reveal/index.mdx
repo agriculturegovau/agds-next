@@ -30,7 +30,7 @@ If there a large number of items, use [Select](/components/select) instead.
 	const isChecked = (key) => key === value;
 
 	return (
-		<Stack gap={1.5}>
+		<FormStack>
 			<ControlGroup label="Preferred contact method" required block>
 				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
 					Email
@@ -46,18 +46,16 @@ If there a large number of items, use [Select](/components/select) instead.
 				</Radio>
 			</ControlGroup>
 
-			{value && <Divider />}
-
-			{isChecked('email') && (
+			<ConditionalReveal visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			)}
-			{isChecked('phone') && (
+			</ConditionalReveal>
+			<ConditionalReveal visible={isChecked('phone')}>
 				<TextInput label="Phone number" inputMode="numeric" required />
-			)}
-			{isChecked('textMessage') && (
+			</ConditionalReveal>
+			<ConditionalReveal visible={isChecked('textMessage')}>
 				<TextInput label="Mobile phone number" inputMode="numeric" required />
-			)}
-		</>
+			</ConditionalReveal>
+		</FormStack>
 	);
 };
 ```
@@ -79,7 +77,7 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 	const isChecked = (key) => value.includes(key);
 
 	return (
-		<Stack gap={1.5}>
+		<FormStack>
 			<ControlGroup label="How would you like to be contacted?" required block>
 				<Checkbox
 					checked={isChecked('email')}
@@ -101,18 +99,18 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 				</Checkbox>
 			</ControlGroup>
 
-			{!!value.length && <Divider />}
-
-			{isChecked('email') && (
-				<TextInput type="email" label="Email address" required />
-			)}
-			{isChecked('phone') && (
-				<TextInput inputMode="numeric" label="Phone number" required />
-			)}
-			{isChecked('textMessage') && (
-				<TextInput inputMode="numeric" label="Mobile phone number" required />
-			)}
-		</Stack>
+			<ConditionalReveal visible={value.length}>
+				{isChecked('email') && (
+					<TextInput type="email" label="Email address" required />
+				)}
+				{isChecked('phone') && (
+					<TextInput inputMode="numeric" label="Phone number" required />
+				)}
+				{isChecked('textMessage') && (
+					<TextInput inputMode="numeric" label="Mobile phone number" required />
+				)}
+			</ConditionalReveal>
+		</FormStack>
 	);
 };
 ```
@@ -130,7 +128,7 @@ If there a small number of items, use [Radio](/components/radio) instead.
 	const isChecked = (key) => value === key;
 
 	return (
-		<Stack gap={1.5}>
+		<FormStack>
 			<Select
 				placeholder="Please select"
 				label="How would you like to be contacted?"
@@ -144,57 +142,53 @@ If there a small number of items, use [Radio](/components/radio) instead.
 				value={value}
 			/>
 
-			{!!value && <Divider />}
+			<ConditionalReveal visible={isChecked('post')}>
+				<H2>Address</H2>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					required
+					maxWidth="sm"
+				/>
+			</ConditionalReveal>
 
-			{isChecked('post') && (
-				<>
-					<H2>Address</H2>
-					<TextInput
-						inputMode="text"
-						label="Street address"
-						maxWidth="xl"
-						required
-						type="text"
-					/>
-					<TextInput
-						inputMode="text"
-						label="Suburb, town or city"
-						maxWidth="lg"
-						required
-						type="text"
-					/>
-					<Select
-						label="State or territory"
-						maxWidth="sm"
-						options={[
-							{ label: 'ACT', value: 'act' },
-							{ label: 'NSW', value: 'nsw' },
-							{ label: 'NT', value: 'nt' },
-							{ label: 'QLD', value: 'qld' },
-							{ label: 'SA', value: 'sa' },
-							{ label: 'TAS', value: 'tas' },
-							{ label: 'VIC', value: 'vic' },
-							{ label: 'WA', value: 'wa' },
-						]}
-						required
-					/>
-					<TextInput
-						inputMode="numeric"
-						label="Post code"
-						required
-						maxWidth="sm"
-					/>
-				</>
-			)}
-
-			{isChecked('textMessage') && (
+			<ConditionalReveal visible={isChecked('textMessage')}>
 				<TextInput inputMode="text" label="Mobile phone number" required />
-			)}
+			</ConditionalReveal>
 
-			{isChecked('email') && (
+			<ConditionalReveal visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			)}
-		</Stack>
+			</ConditionalReveal>
+		</FormStack>
 	);
 };
 ```
@@ -210,7 +204,7 @@ When a conditionally revealed question is invalid, include an error message on t
 	const isChecked = (key) => key === value;
 
 	return (
-		<Stack gap={1.5}>
+		<FormStack>
 			<ControlGroup label="Preferred contact method" required block>
 				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
 					Email
@@ -226,9 +220,7 @@ When a conditionally revealed question is invalid, include an error message on t
 				</Radio>
 			</ControlGroup>
 
-			{!!value && <Divider />}
-
-			{isChecked('email') && (
+			<ConditionalReveal visible={isChecked('email')}>
 				<TextInput
 					type="email"
 					label="Email address"
@@ -236,8 +228,8 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a email address"
 				/>
-			)}
-			{isChecked('phone') && (
+			</ConditionalReveal>
+			<ConditionalReveal visible={isChecked('phone')}>
 				<TextInput
 					label="Phone number"
 					inputMode="numeric"
@@ -245,8 +237,8 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a phone number"
 				/>
-			)}
-			{isChecked('textMessage') && (
+			</ConditionalReveal>
+			<ConditionalReveal visible={isChecked('textMessage')}>
 				<TextInput
 					label="Mobile phone number"
 					inputMode="numeric"
@@ -254,8 +246,8 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a mobile phone number"
 				/>
-			)}
-		</Stack>
+			</ConditionalReveal>
+		</FormStack>
 	);
 };
 ```

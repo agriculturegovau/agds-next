@@ -3,13 +3,13 @@ import { Divider } from '../divider';
 
 export type ConditionalRevealProps = PropsWithChildren<{
 	/** Controls the visibility state of the children */
-	isVisible: boolean;
+	visible: boolean;
 }>;
 
 export function ConditionalReveal(props: ConditionalRevealProps) {
-	const { isVisible, children } = props;
+	const { visible, children } = props;
 
-	if (!isVisible) {
+	if (!visible) {
 		return null;
 	}
 
