@@ -9,13 +9,14 @@ export const CardInner = ({ children }: CardInnerProps) => {
 
 	return (
 		<Box
-			{...(context?.footerOutside
+			{...(!context?.hasFooter && context?.footerOutside
 				? cardStyleProps({
 						background: context?.background,
 						clickable: context?.clickable,
 						shadow: context?.shadow,
 				  })
 				: undefined)}
+			// This data-card attribute is used in the "legacy" Card when the footer is not provided
 			data-card="inner"
 			flexGrow={1}
 			padding={1.5}

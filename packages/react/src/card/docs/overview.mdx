@@ -88,24 +88,57 @@ Clickable cards can also have additional footer actions. A common use-case allow
 The `footerOutside` prop must be set to `true` to ensure that the “clickable” region doesn’t overlap anything in the footer.
 
 ```jsx live
-<Card shadow clickable footerOutside>
-	<CardInner>
-		<Stack gap={1}>
-			<Heading type="h3">
-				<CardLink href="#">Title of article</CardLink>
-			</Heading>
-			<Text as="p">Some text</Text>
-		</Stack>
-	</CardInner>
-	<CardFooter>
-		<ToggleButton
-			iconType="star"
-			label="Add to favourites"
-			onClick={console.log}
-			pressedLabel="Remove from favourites"
-		/>
-	</CardFooter>
-</Card>
+<Stack gap={2}>
+	<Card
+		shadow
+		clickable
+		footer={
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		}
+		footerOutside
+	>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
+	<Card
+		shadow
+		clickable
+		footer={
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		}
+		footerOutside
+	>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
+</Stack>
 ```
 
 ## Feature headers
@@ -147,23 +180,14 @@ Use feature footers to give the card footer more visual prominence. This can be 
 
 ```jsx live
 <Columns>
-	<Column columnSpan={6}>
-		<Card>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card title</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptatibus.
-					</Text>
-				</Stack>
-			</CardInner>
+	<Column
+		columnSpan={6}
+		footer={
 			<CardFooter>
 				<TextLink href="#">Action</TextLink>
 			</CardFooter>
-		</Card>
-	</Column>
-	<Column columnSpan={6}>
+		}
+	>
 		<Card>
 			<CardInner>
 				<Stack gap={1}>
@@ -174,9 +198,26 @@ Use feature footers to give the card footer more visual prominence. This can be 
 					</Text>
 				</Stack>
 			</CardInner>
-			<CardFooter background="bodyAlt">
+		</Card>
+	</Column>
+	<Column
+		columnSpan={6}
+		footer={
+			<CardFooter>
 				<TextLink href="#">Action</TextLink>
 			</CardFooter>
+		}
+	>
+		<Card>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading type="h3">Card title</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptatibus.
+					</Text>
+				</Stack>
+			</CardInner>
 		</Card>
 	</Column>
 </Columns>
@@ -188,7 +229,17 @@ The content within each card will often vary in height, so to prevent an uneven,
 
 ```jsx live
 <Columns as="ul" cols={{ xs: 2 }}>
-	<Card as="li" clickable footerOutside shadow>
+	<Card
+		as="li"
+		clickable
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+		footerOutside
+		shadow
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -201,12 +252,19 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 
-	<Card as="li" clickable footerOutside shadow>
+	<Card
+		as="li"
+		clickable
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+		footerOutside
+		shadow
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -218,12 +276,19 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 
-	<Card as="li" clickable footerOutside shadow>
+	<Card
+		as="li"
+		clickable
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+		footerOutside
+		shadow
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -235,12 +300,16 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 
-	<Card as="li">
+	<Card
+		as="li"
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -252,12 +321,16 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 
-	<Card as="li">
+	<Card
+		as="li"
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -270,12 +343,16 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 
-	<Card as="li">
+	<Card
+		as="li"
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
@@ -289,9 +366,6 @@ The content within each card will often vary in height, so to prevent an uneven,
 				</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<TextLink href="#">An action</TextLink>
-		</CardFooter>
 	</Card>
 </Columns>
 ```

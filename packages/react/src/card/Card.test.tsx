@@ -66,6 +66,61 @@ function CardLinkExample({ footer = false }) {
 	);
 }
 
+function CardFooterExample() {
+	return (
+		<Card
+			footer={
+				<CardFooter>
+					<TextLink href="#">Footer</TextLink>
+				</CardFooter>
+			}
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h2" type="h3">
+						Card heading
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+	);
+}
+
+function CardLinkFooterExample() {
+	return (
+		<Card
+			clickable
+			footer={
+				<CardFooter>
+					<TextLink href="#">Footer</TextLink>
+				</CardFooter>
+			}
+			footerOutside
+			shadow
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h2" type="h3">
+						Card heading
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+					<CardLink href="#">
+						Linking out
+						<ChevronRightIcon />
+					</CardLink>
+				</Stack>
+			</CardInner>
+		</Card>
+	);
+}
+
 describe('Card', () => {
 	describe('Basic', () => {
 		it('renders correctly', () => {
@@ -81,7 +136,7 @@ describe('Card', () => {
 			expect(await axe(container)).toHaveNoViolations();
 		});
 
-		describe('With footer', () => {
+		describe('With child footer', () => {
 			it('renders correctly', () => {
 				const { container } = render(<CardExample footer />);
 				expect(container).toMatchSnapshot();
@@ -111,7 +166,7 @@ describe('Card', () => {
 			expect(await axe(container)).toHaveNoViolations();
 		});
 
-		describe('With footer', () => {
+		describe('With child footer', () => {
 			it('renders correctly', () => {
 				const { container } = render(<CardLinkExample footer />);
 				expect(container).toMatchSnapshot();
@@ -124,6 +179,36 @@ describe('Card', () => {
 				});
 				expect(await axe(container)).toHaveNoViolations();
 			});
+		});
+	});
+
+	describe('Footer', () => {
+		it('renders correctly', () => {
+			const { container } = render(<CardFooterExample />);
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(<CardFooterExample />);
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+			expect(await axe(container)).toHaveNoViolations();
+		});
+	});
+
+	describe('With link', () => {
+		it('renders correctly', () => {
+			const { container } = render(<CardLinkFooterExample />);
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(<CardLinkFooterExample />);
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+			expect(await axe(container)).toHaveNoViolations();
 		});
 	});
 });

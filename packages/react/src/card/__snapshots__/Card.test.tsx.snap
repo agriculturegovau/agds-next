@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Basic With footer renders correctly 1`] = `
+exports[`Card Basic With child footer renders correctly 1`] = `
 <div>
   <div
     class="css-1jhbrny-boxStyles-Card"
@@ -66,7 +66,53 @@ exports[`Card Basic renders correctly 1`] = `
 </div>
 `;
 
-exports[`Card With link With footer renders correctly 1`] = `
+exports[`Card Footer renders correctly 1`] = `
+<div>
+  <div
+    class="css-1jhbrny-boxStyles-Card"
+  >
+    <div
+      class="css-17szma4-boxStyles"
+    >
+      <div
+        class="css-1e4x2o5-boxStyles"
+        data-card="inner"
+      >
+        <div
+          class="css-1lvzxao-boxStyles"
+        >
+          <h2
+            class="css-e6rsgj-boxStyles"
+          >
+            Card heading
+          </h2>
+          <p
+            class="css-dbscsh-boxStyles"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-79i25n-boxStyles"
+    >
+      <div
+        class="css-1w3s1r0-boxStyles"
+      >
+        <a
+          class="css-july2n-TextLink"
+          href="#"
+        >
+          Footer
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card With link With child footer renders correctly 1`] = `
 <div>
   <div
     class="css-6akge0-boxStyles-Card"
@@ -169,6 +215,74 @@ exports[`Card With link renders correctly 1`] = `
               d="m9 18 6-6-6-6"
             />
           </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card With link renders correctly 2`] = `
+<div>
+  <div
+    class="css-17szma4-boxStyles"
+  >
+    <div
+      class="css-97bn7n-boxStyles-Card"
+    >
+      <div
+        class="css-1e4x2o5-boxStyles"
+        data-card="inner"
+      >
+        <div
+          class="css-1lvzxao-boxStyles"
+        >
+          <h2
+            class="css-e6rsgj-boxStyles"
+          >
+            Card heading
+          </h2>
+          <p
+            class="css-dbscsh-boxStyles"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+          </p>
+          <a
+            class="css-1qimly2-CardLink"
+            href="#"
+          >
+            Linking out
+            <svg
+              aria-hidden="true"
+              class="css-lq07bo-Icon"
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              focusable="false"
+              height="24"
+              role="img"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m9 18 6-6-6-6"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-79i25n-boxStyles"
+    >
+      <div
+        class="css-1xq6tf4-boxStyles-CardFooter"
+      >
+        <a
+          class="css-july2n-TextLink"
+          href="#"
+        >
+          Footer
         </a>
       </div>
     </div>

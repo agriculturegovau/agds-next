@@ -1,4 +1,9 @@
-import { createContext, type PropsWithChildren, type ElementType } from 'react';
+import {
+	createContext,
+	type PropsWithChildren,
+	type ElementType,
+	ReactNode,
+} from 'react';
 import { Box } from '../box';
 import { packs, tokens } from '../core';
 
@@ -6,6 +11,7 @@ type CardContextType = {
 	background?: 'body' | 'bodyAlt';
 	clickable?: boolean;
 	footerOutside?: boolean;
+	hasFooter?: boolean;
 	shadow?: boolean;
 };
 
@@ -18,7 +24,8 @@ export type CardProps = PropsWithChildren<
 		as?: ElementType;
 		/** The CSS class name, typically generated from the `css` prop. */
 		className?: string;
-	} & CardContextType
+		footer?: ReactNode;
+	} & Omit<CardContextType, 'hasFooter'>
 >;
 
 export const Card = ({
@@ -27,44 +34,74 @@ export const Card = ({
 	children,
 	className,
 	clickable,
+	footer,
 	footerOutside,
 	shadow,
 }: CardProps) => {
+	const styleProps = cardStyleProps({
+		background,
+		clickable,
+		root: true,
+		shadow,
+	});
 	return (
 		<CardContext.Provider
-			value={{ background, clickable, footerOutside, shadow }}
+			value={{
+				background,
+				clickable,
+				hasFooter: !!footer,
+				footerOutside,
+				shadow,
+			}}
 		>
-			<Box
-				as={as} // Note: this should be an li when used in a card list
-				className={className}
-				display="flex"
-				flexDirection="column"
-				flexGrow={1}
-				{...(footerOutside
-					? {
-							css: {
-								// This (and position: relative in CardFooter) allows any images as immediate children to also appear to be clickable on hover.
-								// We can't make the focus ring wrap everything though because it can't look as though it includes any CardFooter content.
-								position: 'relative',
-								'> img:first-of-type': {
-									borderTopLeftRadius: tokens.borderRadius,
-									borderTopRightRadius: tokens.borderRadius,
-									'+ [data-card="inner"]': {
-										borderTopLeftRadius: 0,
-										borderTopRightRadius: 0,
+			{/* To support all of the variations of cards, we now also have a footer prop which allows us to structure the markup accordingly. */}
+			{footer ? (
+				<Box
+					as={as} // Note: this should be an li when used in a card list
+					className={className}
+					display="flex"
+					flexDirection="column"
+					flexGrow={1}
+					{...(footerOutside ? {} : styleProps)}
+				>
+					<Box
+						display="flex"
+						flexDirection="column"
+						flexGrow={1}
+						{...(footerOutside ? styleProps : {})}
+					>
+						{children}
+					</Box>
+					<Box>{footer}</Box>
+				</Box>
+			) : (
+				<Box
+					as={as} // Note: this should be an li when used in a card list
+					className={className}
+					display="flex"
+					flexDirection="column"
+					flexGrow={1}
+					{...(footerOutside
+						? {
+								css: {
+									// This (and position: relative in CardFooter) allows any images as immediate children to also appear to be clickable on hover.
+									// We can't make the focus ring wrap everything though because it can't look as though it includes any CardFooter content.
+									position: 'relative',
+									'> img:first-of-type': {
+										borderTopLeftRadius: tokens.borderRadius,
+										borderTopRightRadius: tokens.borderRadius,
+										'+ [data-card="inner"]': {
+											borderTopLeftRadius: 0,
+											borderTopRightRadius: 0,
+										},
 									},
 								},
-							},
-					  }
-					: cardStyleProps({
-							background,
-							clickable,
-							root: true,
-							shadow,
-					  }))}
-			>
-				{children}
-			</Box>
+						  }
+						: styleProps)}
+				>
+					{children}
+				</Box>
+			)}
 		</CardContext.Provider>
 	);
 };
