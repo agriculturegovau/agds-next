@@ -175,10 +175,10 @@ exports[`Card With link With child footer renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-97bn7n-boxStyles-Card"
+    class="css-6akge0-boxStyles-Card"
   >
     <div
-      class="css-1e4x2o5-boxStyles"
+      class="css-1ckmr1h-boxStyles-CardInner"
       data-card="inner"
     >
       <div

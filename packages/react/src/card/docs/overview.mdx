@@ -85,7 +85,9 @@ For cards that contain a single link, the hit area for that link can be made to 
 
 Clickable cards can also have additional footer actions. A common use-case allows a user to perform an action related to the card itself.
 
-The `footerOutside` prop must be set to `true` to ensure that the “clickable” region doesn’t overlap anything in the footer.
+From v1.27.0, you must use the `footer` prop to pass `CardFooter` content to ensure that the “clickable” region doesn’t overlap anything in the footer.
+
+While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), it cannot support the clickable footer actions use-case in full, so we recommend migrating to `footer` for all cases.
 
 ```jsx live
 <Stack gap={2}>
@@ -102,7 +104,6 @@ The `footerOutside` prop must be set to `true` to ensure that the “clickable�
 				/>
 			</CardFooter>
 		}
-		footerOutside
 	>
 		<CardInner>
 			<Stack gap={1}>
@@ -112,6 +113,24 @@ The `footerOutside` prop must be set to `true` to ensure that the “clickable�
 				<Text as="p">Some text</Text>
 			</Stack>
 		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
 	</Card>
 	<Card
 		shadow
@@ -126,7 +145,6 @@ The `footerOutside` prop must be set to `true` to ensure that the “clickable�
 				/>
 			</CardFooter>
 		}
-		footerOutside
 	>
 		<PlaceholderImage />
 		<CardInner>
@@ -137,6 +155,112 @@ The `footerOutside` prop must be set to `true` to ensure that the “clickable�
 				<Text as="p">Some text</Text>
 			</Stack>
 		</CardInner>
+	</Card>
+	<Card shadow clickable>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
+	</Card>
+</Stack>
+```
+
+### DEMO Standard Cards
+
+```jsx live
+<Stack gap={2}>
+	<Card
+		footer={
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		}
+	>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
+	<Card>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
+	</Card>
+	<Card
+		footer={
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		}
+	>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
+	<Card>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
 	</Card>
 </Stack>
 ```
@@ -180,15 +304,14 @@ Use feature footers to give the card footer more visual prominence. This can be 
 
 ```jsx live
 <Columns>
-	<Column
-		columnSpan={6}
-		footer={
-			<CardFooter>
-				<TextLink href="#">Action</TextLink>
-			</CardFooter>
-		}
-	>
-		<Card>
+	<Column columnSpan={6}>
+		<Card
+			footer={
+				<CardFooter>
+					<TextLink href="#">Action</TextLink>
+				</CardFooter>
+			}
+		>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading type="h3">Card title</Heading>
@@ -200,15 +323,14 @@ Use feature footers to give the card footer more visual prominence. This can be 
 			</CardInner>
 		</Card>
 	</Column>
-	<Column
-		columnSpan={6}
-		footer={
-			<CardFooter>
-				<TextLink href="#">Action</TextLink>
-			</CardFooter>
-		}
-	>
-		<Card>
+	<Column columnSpan={6}>
+		<Card
+			footer={
+				<CardFooter>
+					<TextLink href="#">Action</TextLink>
+				</CardFooter>
+			}
+		>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading type="h3">Card title</Heading>
@@ -237,7 +359,6 @@ The content within each card will often vary in height, so to prevent an uneven,
 				<TextLink href="#">An action</TextLink>
 			</CardFooter>
 		}
-		footerOutside
 		shadow
 	>
 		<CardInner>
@@ -262,7 +383,6 @@ The content within each card will often vary in height, so to prevent an uneven,
 				<TextLink href="#">An action</TextLink>
 			</CardFooter>
 		}
-		footerOutside
 		shadow
 	>
 		<CardInner>
@@ -286,7 +406,6 @@ The content within each card will often vary in height, so to prevent an uneven,
 				<TextLink href="#">An action</TextLink>
 			</CardFooter>
 		}
-		footerOutside
 		shadow
 	>
 		<CardInner>

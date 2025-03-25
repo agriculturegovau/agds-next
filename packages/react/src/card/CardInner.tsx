@@ -9,7 +9,7 @@ export const CardInner = ({ children }: CardInnerProps) => {
 
 	return (
 		<Box
-			{...(!context?.hasFooter && context?.footerOutside
+			{...(!context?.hasFooter && context?.clickable
 				? cardStyleProps({
 						background: context?.background,
 						clickable: context?.clickable,
