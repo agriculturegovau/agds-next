@@ -1,0 +1,127 @@
+## Card footer changes
+
+Teams using the Agriculture Design System requested support to add card footers to be displayed below the `Card` component. The `CardFooter` component in v1.26.0 only supported footers inside the Card itself. A clickable card will also place a hover link covering the entire card container that would also cover any footer actions.
+
+In v1.27.0 changes were made to the Card component to accept a `footer` prop that passes `CardFooter` content to ensure that the “clickable” region doesn’t overlap anything in the footer (internal and external). Passing a `CardFooter` as a prop into the card enables us to have more control over the stylings and layout of the overall component.
+
+```
+// Before v1.27.0, `CardFooter` inside the `Card` component as its child
+<Card>
+    <CardInner>
+        ...
+    </CardInner>
+    <CardFooter>
+        ...
+    </CardFooter>
+</Card>
+
+// After v1.27.0, `CardFooter` provided as a prop of `Card`
+<Card
+    footer={
+        <CardFooter>
+            ...
+        </CardFooter>
+    }
+>
+    <CardInner>
+        ...
+    </CardInner>
+</Card>
+```
+
+While Card still supports `CardFooter` as a child (as per v1.26.0 and below), it cannot support the clickable footer actions use-case in full, so we recommend migrating to footer for all cases.
+
+```jsx live
+<Stack gap={2}>
+	<H2>Legacy footer examples (do not use)</H2>
+	<Columns as="ul" cols={{ xs: 2 }}>
+		<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading type="h3">
+						<CardLink href="#">LEGACY Title of article</CardLink>
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		</Card>
+		<Card>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading type="h3">
+						<CardLink href="#">LEGACY Title of article</CardLink>
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		</Card>
+
+		<Card shadow clickable>
+			<PlaceholderImage />
+			<CardInner>
+				<Stack gap={1}>
+					<Heading type="h3">
+						<CardLink href="#">LEGACY Title of article</CardLink>
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		</Card>
+		<Card>
+			<PlaceholderImage />
+			<CardInner>
+				<Stack gap={1}>
+					<Heading type="h3">
+						<CardLink href="#">LEGACY Title of article</CardLink>
+					</Heading>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+			<CardFooter>
+				<ToggleButton
+					iconType="star"
+					label="Add to favourites"
+					onClick={console.log}
+					pressedLabel="Remove from favourites"
+				/>
+			</CardFooter>
+		</Card>
+	</Columns>
+</Stack>
+```

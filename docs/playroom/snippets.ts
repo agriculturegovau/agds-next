@@ -1137,17 +1137,303 @@ const snippets: Array<Snippet> = [
 	{
 		group: 'Card',
 		name: 'Basic',
-		code: `<Card shadow clickable>
+		code: `<Card>
 			<CardInner>
 				<Stack gap={1}>
-				<H3>
-					<CardLink href="#">Card heading</CardLink>
-				</H3>
+					<H3>Card heading</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Image',
+		code: `<Card>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<TextLink href="#">Action</TextLink>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Footer (external)',
+		code: `<Card 
+			clickable // NOTE: This feels off
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>Card heading</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Footer (internal)',
+		code: `<Card 
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>Card heading</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Image and footer (internal)',
+		code: `<Card
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+		>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>Card heading</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Image and footer (external)',
+		code: `<Card
+			clickable
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+		>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>Card heading</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable',
+		code: `<Card clickable shadow>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card heading</CardLink>
+					</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with Image',
+		code: `<Card clickable shadow>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Title of article</CardLink>
+					</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with footer (external)',
+		code: `<Card 
+			shadow 
+			clickable 
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card heading</CardLink>
+					</H3>
+					<Text as="p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with footer (internal)',
+		code: `<Card 
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+			shadow
+		>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card heading</CardLink>
+					</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with image and footer (internal)', // NOTE: This doesn't work right? Limitation?
+		code: `<Card
+			//clickable // NOTE: This is wierd
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+			shadow
+		>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card heading</CardLink>
+					</H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with image and footer (external)',
+		code: `<Card
+			clickable
+			footer={
+				<CardFooter>
+					<ToggleButton
+						iconType="star"
+						label="Add to favourites"
+						onClick={console.log}
+						pressedLabel="Remove from favourites"
+					/>
+				</CardFooter>
+			}
+			shadow
+		>
+			<img alt="" role="presentation" src="/img/placeholder/hero-banner.jpeg" style={{width: '100%'}}/>
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card heading</CardLink>
+					<H3>
+					<Text as="p">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+						voluptat
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Feature headers',
+		code: `<Card>
+			<CardHeader background="bodyAlt">
+				<Heading as="h3" type="h4">
+					Feature card title
+				</Heading>
+			</CardHeader>
+			<CardInner>
 				<Text as="p">
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 					voluptat
 				</Text>
-				</Stack>
 			</CardInner>
 		</Card>`,
 	},
