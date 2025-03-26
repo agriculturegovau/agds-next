@@ -11,5 +11,3 @@ To run this website locally, run the following command from the root of this rep
 ```sh
 yarn yourgov:dev
 ```
-
-[View local website](http://localhost:3000/yourgov)

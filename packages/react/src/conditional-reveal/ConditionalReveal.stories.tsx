@@ -1,13 +1,32 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { ConditionalReveal } from './ConditionalReveal';
+import { Meta, StoryObj } from '@storybook/react';
+import { FormStack } from '../form-stack';
+import { TextInput } from '../text-input';
+import {
+	ConditionalReveal,
+	type ConditionalRevealProps,
+} from './ConditionalReveal';
+
+const ComponentLayout = (props: ConditionalRevealProps) => {
+	const { visible, children } = props;
+	return (
+		<FormStack>
+			<ConditionalReveal visible={visible}>{children}</ConditionalReveal>
+		</FormStack>
+	);
+};
 
 const meta: Meta<typeof ConditionalReveal> = {
 	title: 'Forms/ConditionalReveal',
-	component: ConditionalReveal,
+	component: ComponentLayout,
 };
 
 export default meta;
 
 type Story = StoryObj<typeof ConditionalReveal>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+	args: {
+		visible: true,
+		children: <TextInput label="Email address" required type="email" />,
+	},
+};

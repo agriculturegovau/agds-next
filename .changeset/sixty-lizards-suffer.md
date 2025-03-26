@@ -5,8 +5,8 @@
 
 conditional-reveal: Initial release of component.
 
-docs: Update conditional-reveal pattern page content and sample code. Add `relatedPatterns` to patterns documentation page. 
+docs: Update conditional reveal pattern page and example code. Add `relatedPatterns` link section to patterns page. 
 
-example-site: Update conditional-reveal pattern to new pattern.
+example-site: Update conditional reveal pattern to match new patterns.
 
-yourgov: Update conditional-reveal pattern to new pattern. Adjust pet personal details form to focus form heading on form render. Remove duplicate required message.
+yourgov: Update conditional reveal pattern to match new patterns. Adjust `RegisterFormPetPersonalDetails` form to focus on the form heading when switched to visible. Remove duplicate required message in `RegisterFormPetPersonalDetails` form.

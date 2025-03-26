@@ -1167,6 +1167,55 @@ const snippets: Array<Snippet> = [
 		code: `<ComboboxMulti label="Select option" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 	{
+		group: 'ConditionalReveal',
+		name: 'ConditionalReveal',
+		code: `<ConditionalReveal visible={true}>
+				<TextInput inputMode="numeric" label="Phone number" required />
+			</ConditionalReveal>`,
+	},
+	{
+		group: 'ConditionalReveal',
+		name: 'ConditionalRevealMulti',
+		code: `<ConditionalReveal visible={true}>
+				<H2>Address</H2>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					required
+					maxWidth="sm"
+				/>
+			</ConditionalReveal>`,
+	},
+	{
 		group: 'Details',
 		name: 'Basic',
 		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplementary to the main page

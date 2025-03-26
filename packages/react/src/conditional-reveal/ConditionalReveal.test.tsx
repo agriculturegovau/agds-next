@@ -18,10 +18,9 @@ afterEach(cleanup);
 
 const childTestID = 'child-element';
 const buttonLabel = 'Toggle visibility';
-const TestComponent = (props: ConditionalRevealProps) => {
-	const { visible } = props;
-	const [isVisible, setIsVisible] = useState(visible);
 
+const TestComponent = (props: ConditionalRevealProps) => {
+	const [isVisible, setIsVisible] = useState(props.visible);
 	const handleToggleVisibility = () => setIsVisible((prev) => !prev);
 
 	return (
@@ -54,7 +53,7 @@ describe('ConditionalReveal', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	it('renders the children elements when the prop `isVisible` is changed from "false" to "true"', async () => {
+	it('renders the children elements when the prop `visible` is changed from "false" to "true"', async () => {
 		renderConditionalReveal({ visible: false });
 		const initialElement = screen.queryByTestId(childTestID);
 		expect(initialElement).toBe(null);

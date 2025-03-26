@@ -1,6 +1,6 @@
 ---
 title: Conditional Reveal
-description: This component allows the user to show and reveal additional information based on conditional forms.
+description: A standardised pattern for conditionally hiding and revealing the amount of content a user views in a form.
 group: Forms
 storybookPath: /story/Forms-ConditionalReveal--basic
 unreleased: true
@@ -8,7 +8,7 @@ figmaGalleryNodeId: REPLACE_ME
 relatedPatterns: ['conditional-reveal']
 ---
 
-This component aims to standardise the styling and behavior of the conditional reveal pattern in the Design System.
+This component aims to standardise the styling and behavior of the [conditional reveal pattern](/patterns/conditional-reveal) in the Design System.
 
 The conditional reveal component does not wrap the children in a [FormStack](/components/form-stack), you may wrap them but it is not required if the parent element is a [Stack](/components/stack) or [FormStack](/components/form-stack).
 
@@ -20,7 +20,7 @@ The conditional reveal component does not wrap the children in a [FormStack](/co
 
 	return (
 		<FormStack>
-			<ControlGroup label="Preferred contact method" required block>
+			<ControlGroup block label="Preferred contact method" required>
 				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
 					Phone
 				</Radio>
@@ -30,7 +30,7 @@ The conditional reveal component does not wrap the children in a [FormStack](/co
 			</ControlGroup>
 
 			<ConditionalReveal visible={isChecked('phone')}>
-				<TextInput label="Phone number" inputMode="numeric" required />
+				<TextInput inputMode="numeric" label="Phone number" required />
 			</ConditionalReveal>
 		</FormStack>
 	);
@@ -40,7 +40,7 @@ The conditional reveal component does not wrap the children in a [FormStack](/co
 <DoHeading />
 
 - use to hide and reveal additional content in forms that may not be relevant
-- position directly after the related set of questions or input
+- position directly after the related set of question or input
 - list all related content as children in the same conditional reveal component.
 
 <DontHeading />
@@ -103,7 +103,7 @@ If the same input can create multiple conditional revealed fields or content (su
 
 	return (
 		<FormStack>
-			<ControlGroup label="How would you like to be contacted?" required block>
+			<ControlGroup block label="How would you like to be contacted?" required>
 				<Checkbox
 					checked={isChecked('email')}
 					onChange={handlerForKey('email')}
@@ -124,9 +124,9 @@ If the same input can create multiple conditional revealed fields or content (su
 				</Checkbox>
 			</ControlGroup>
 
-			<ConditionalReveal visible={value.length}>
+			<ConditionalReveal visible={Boolean(value.length)}>
 				{isChecked('email') && (
-					<TextInput type="email" label="Email address" required />
+					<TextInput label="Email address" required type="email" />
 				)}
 				{isChecked('phone') && (
 					<TextInput inputMode="numeric" label="Phone number" required />
@@ -152,7 +152,7 @@ If you require more than one field and/or content, place all relevant elements a
 
 	return (
 		<FormStack>
-			<ControlGroup label="How would you like to be contacted?" required block>
+			<ControlGroup block label="How would you like to be contacted?" required>
 				<Radio checked={isChecked('post')} onChange={handlerForKey('post')}>
 					Post
 				</Radio>
@@ -195,8 +195,8 @@ If you require more than one field and/or content, place all relevant elements a
 				<TextInput
 					inputMode="numeric"
 					label="Post code"
-					required
 					maxWidth="sm"
+					required
 				/>
 			</ConditionalReveal>
 		</FormStack>
