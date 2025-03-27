@@ -115,10 +115,10 @@ exports[`Card Footer renders correctly 1`] = `
 exports[`Card With link With child footer renders correctly 1`] = `
 <div>
   <div
-    class="css-6akge0-boxStyles-Card"
+    class="css-97bn7n-boxStyles-Card"
   >
     <div
-      class="css-1ckmr1h-boxStyles-CardInner"
+      class="css-1e4x2o5-boxStyles"
       data-card="inner"
     >
       <div
@@ -159,7 +159,7 @@ exports[`Card With link With child footer renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1xq6tf4-boxStyles-CardFooter"
+      class="css-1w3s1r0-boxStyles"
     >
       <a
         class="css-july2n-TextLink"
@@ -175,10 +175,10 @@ exports[`Card With link With child footer renders correctly 1`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-6akge0-boxStyles-Card"
+    class="css-97bn7n-boxStyles-Card"
   >
     <div
-      class="css-1ckmr1h-boxStyles-CardInner"
+      class="css-1e4x2o5-boxStyles"
       data-card="inner"
     >
       <div
@@ -225,10 +225,10 @@ exports[`Card With link renders correctly 1`] = `
 exports[`Card With link renders correctly 2`] = `
 <div>
   <div
-    class="css-17szma4-boxStyles"
+    class="css-97bn7n-boxStyles-Card"
   >
     <div
-      class="css-97bn7n-boxStyles-Card"
+      class="css-17szma4-boxStyles"
     >
       <div
         class="css-1e4x2o5-boxStyles"
@@ -276,7 +276,7 @@ exports[`Card With link renders correctly 2`] = `
       class="css-79i25n-boxStyles"
     >
       <div
-        class="css-1xq6tf4-boxStyles-CardFooter"
+        class="css-1w3s1r0-boxStyles"
       >
         <a
           class="css-july2n-TextLink"

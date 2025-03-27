@@ -9,7 +9,7 @@ export type CardFooterProps = PropsWithChildren<{
 export const CardFooter = ({ background, children }: CardFooterProps) => {
 	const context = useContext(CardContext);
 
-	return context?.clickable ? (
+	return context?.footerOutside ? (
 		<Box
 			background={background}
 			css={{ position: 'relative' }}

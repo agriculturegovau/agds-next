@@ -11,6 +11,7 @@ type CardContextType = {
 	background?: 'body' | 'bodyAlt';
 	clickable?: boolean;
 	hasFooter?: boolean;
+	footerOutside?: boolean;
 	shadow?: boolean;
 };
 
@@ -25,7 +26,7 @@ export type CardProps = PropsWithChildren<
 		className?: string;
 		/** A `CardFooter` component. */
 		footer?: ReactNode;
-	} & Omit<CardContextType, 'hasFooter'>
+	} & CardContextType
 >;
 
 export const Card = ({
@@ -35,6 +36,7 @@ export const Card = ({
 	className,
 	clickable,
 	footer,
+	footerOutside,
 	shadow,
 }: CardProps) => {
 	const styleProps = cardStyleProps({
@@ -43,12 +45,14 @@ export const Card = ({
 		root: true,
 		shadow,
 	});
+	const hasFooter = !!footer;
 	return (
 		<CardContext.Provider
 			value={{
 				background,
 				clickable,
-				hasFooter: !!footer,
+				hasFooter,
+				footerOutside,
 				shadow,
 			}}
 		>
@@ -60,13 +64,13 @@ export const Card = ({
 					display="flex"
 					flexDirection="column"
 					flexGrow={1}
-					{...(clickable ? {} : styleProps)}
+					{...(footerOutside ? {} : styleProps)}
 				>
 					<Box
 						display="flex"
 						flexDirection="column"
 						flexGrow={1}
-						{...(clickable ? styleProps : {})}
+						{...(footerOutside ? styleProps : {})}
 					>
 						{children}
 					</Box>
@@ -79,7 +83,7 @@ export const Card = ({
 					display="flex"
 					flexDirection="column"
 					flexGrow={1}
-					{...(clickable
+					{...(footerOutside && !hasFooter
 						? {
 								css: {
 									// This (and position: relative in CardFooter) allows any images as immediate children to also appear to be clickable on hover.

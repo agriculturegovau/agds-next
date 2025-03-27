@@ -91,6 +91,16 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 
 ```jsx live
 <Stack gap={2}>
+	<Card shadow clickable footer={<CardFooter>Metadata</CardFooter>}>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
 	<Card
 		shadow
 		clickable
@@ -104,11 +114,12 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 				/>
 			</CardFooter>
 		}
+		footerOutside
 	>
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">footerOutside Title of article</CardLink>
 				</Heading>
 				<Text as="p">Some text</Text>
 			</Stack>
@@ -132,6 +143,36 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 			/>
 		</CardFooter>
 	</Card>
+	<Card shadow clickable footerOutside>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
+	</Card>
+
+	<Card shadow clickable footer={<CardFooter>Metadata</CardFooter>}>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
 	<Card
 		shadow
 		clickable
@@ -145,12 +186,13 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 				/>
 			</CardFooter>
 		}
+		footerOutside
 	>
 		<PlaceholderImage />
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">footerOutside Title of article</CardLink>
 				</Heading>
 				<Text as="p">Some text</Text>
 			</Stack>
@@ -166,14 +208,19 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 				<Text as="p">Some text</Text>
 			</Stack>
 		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
+		<CardFooter>Metadata</CardFooter>
+	</Card>
+	<Card shadow clickable footerOutside>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>Metadata</CardFooter>
 	</Card>
 </Stack>
 ```
@@ -182,6 +229,16 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 
 ```jsx live
 <Stack gap={2}>
+	<Card footer={<CardFooter>Metadata</CardFooter>}>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
 	<Card
 		footer={
 			<CardFooter>
@@ -193,11 +250,12 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 				/>
 			</CardFooter>
 		}
+		footerOutside
 	>
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">footerOutside Title of article</CardLink>
 				</Heading>
 				<Text as="p">Some text</Text>
 			</Stack>
@@ -221,6 +279,35 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 			/>
 		</CardFooter>
 	</Card>
+	<Card footerOutside>
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
+	</Card>
+	<Card footer={<CardFooter>Metadata</CardFooter>}>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+	</Card>
 	<Card
 		footer={
 			<CardFooter>
@@ -232,12 +319,13 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 				/>
 			</CardFooter>
 		}
+		footerOutside
 	>
 		<PlaceholderImage />
 		<CardInner>
 			<Stack gap={1}>
 				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">footerOutside Title of article</CardLink>
 				</Heading>
 				<Text as="p">Some text</Text>
 			</Stack>
@@ -249,6 +337,25 @@ While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), 
 			<Stack gap={1}>
 				<Heading type="h3">
 					<CardLink href="#">LEGACY Title of article</CardLink>
+				</Heading>
+				<Text as="p">Some text</Text>
+			</Stack>
+		</CardInner>
+		<CardFooter>
+			<ToggleButton
+				iconType="star"
+				label="Add to favourites"
+				onClick={console.log}
+				pressedLabel="Remove from favourites"
+			/>
+		</CardFooter>
+	</Card>
+	<Card footerOutside>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Heading type="h3">
+					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
 				</Heading>
 				<Text as="p">Some text</Text>
 			</Stack>
