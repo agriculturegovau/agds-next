@@ -21,7 +21,7 @@ export const sectionAlertToneMap = {
 	errorLow: {
 		background: 'body',
 		border: true,
-		borderColor: 'muted',
+		borderColor: 'border',
 		Icon: AlertIcon,
 		iconColor: 'muted',
 	},
@@ -42,7 +42,7 @@ export const sectionAlertToneMap = {
 	infoLow: {
 		background: 'body',
 		border: true,
-		borderColor: 'muted',
+		borderColor: 'border',
 		Icon: InfoIcon,
 		iconColor: 'muted',
 	},
@@ -63,7 +63,7 @@ export const sectionAlertToneMap = {
 	successLow: {
 		background: 'body',
 		border: true,
-		borderColor: 'muted',
+		borderColor: 'border',
 		Icon: SuccessIcon,
 		iconColor: 'muted',
 	},
@@ -84,7 +84,7 @@ export const sectionAlertToneMap = {
 	warningLow: {
 		background: 'body',
 		border: true,
-		borderColor: 'muted',
+		borderColor: 'border',
 		Icon: WarningCircleIcon,
 		iconColor: 'muted',
 	},

@@ -363,7 +363,7 @@ exports[`SectionAlert with errorLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r5: section-alert-title-:r5: "
-    class="css-1hkg0u7-boxStyles"
+    class="css-orf1v6-boxStyles"
     role="region"
   >
     <div
@@ -518,7 +518,7 @@ exports[`SectionAlert with infoLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:rb: section-alert-title-:rb: "
-    class="css-1hkg0u7-boxStyles"
+    class="css-orf1v6-boxStyles"
     role="region"
   >
     <div
@@ -673,7 +673,7 @@ exports[`SectionAlert with successLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:rh: section-alert-title-:rh: "
-    class="css-1hkg0u7-boxStyles"
+    class="css-orf1v6-boxStyles"
     role="region"
   >
     <div
@@ -834,7 +834,7 @@ exports[`SectionAlert with warningLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:rn: section-alert-title-:rn: "
-    class="css-1hkg0u7-boxStyles"
+    class="css-orf1v6-boxStyles"
     role="region"
   >
     <div

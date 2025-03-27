@@ -1306,18 +1306,73 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Success',
-		code: `<SectionAlert tone="success" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Dismissable',
+		code: `<SectionAlert tone="successHigh" title="Info" onClose={console.log} />`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Error',
-		code: `<SectionAlert tone="error" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'With description',
+		code: `	<SectionAlert title="Section alert title" tone="success"><Text as="p">Description</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Warning',
-		code: `<SectionAlert tone="warning" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Success high',
+		code: `<SectionAlert tone="successHigh" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Success medium',
+		code: `<SectionAlert tone="successMedium" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Success low',
+		code: `<SectionAlert tone="successLow" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Error high',
+		code: `<SectionAlert tone="errorHigh" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Error medium',
+		code: `<SectionAlert tone="errorMedium" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Error low',
+		code: `<SectionAlert tone="errorLow" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Warning high',
+		code: `<SectionAlert tone="warningHigh" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Warning medium',
+		code: `<SectionAlert tone="warningMedium" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Warning low',
+		code: `<SectionAlert tone="warningLow" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Info high',
+		code: `<SectionAlert tone="infoHigh" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Info medium',
+		code: `<SectionAlert tone="infoMedium" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Info low',
+		code: `<SectionAlert tone="infoLow" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',
