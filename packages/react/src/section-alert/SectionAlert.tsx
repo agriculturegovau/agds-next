@@ -67,7 +67,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		const { childrenId, titleId, toneId } = useSectionAlertIds(id);
 
 		const updatedTone = getUpdatedLegacyTone(tone);
-		const { background, border, borderColor, Icon, iconColor } =
+		const { background, border, borderColor, Icon, iconColor, iconLabel } =
 			sectionAlertToneMap[updatedTone];
 
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
@@ -80,7 +80,6 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				background={background}
 				border
 				borderColor={borderColor}
-				borderLeft={true}
 				borderLeftWidth="xxl"
 				borderWidth={border ? 'sm' : 'none'}
 				focusRingFor="all"
@@ -103,7 +102,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 					>
 						<Icon color={iconColor} />
 						<span css={visuallyHiddenStyles} id={toneId}>
-							{tone}
+							{iconLabel}
 						</span>
 					</span>
 					<Flex flexDirection="column" gap={0.25}>

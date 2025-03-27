@@ -341,7 +341,7 @@ exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:r3:"
         >
-          errorHigh
+          error
         </span>
       </span>
       <div
@@ -385,14 +385,14 @@ exports[`SectionAlert with errorLow tone renders correctly 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M16.753 1.797a1 1 0 0 0-.712-.297H8.05a1 1 0 0 0-.706.291l-5.55 5.525a1 1 0 0 0-.294.709v7.86a1 1 0 0 0 .289.703l5.554 5.615a1 1 0 0 0 .711.297h7.896a1 1 0 0 0 .706-.291l5.55-5.525a1 1 0 0 0 .294-.709V8.02a1 1 0 0 0-.289-.703l-5.458-5.52ZM8 16l8-8M16 16 8 8"
+            d="m16 8-4 4m0 0-4 4m4-4L8 8m4 4 4 4m6-4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
           />
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:r5:"
         >
-          errorLow
+          error
         </span>
       </span>
       <div
@@ -443,7 +443,7 @@ exports[`SectionAlert with errorMedium tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:r7:"
         >
-          errorMedium
+          error
         </span>
       </span>
       <div
@@ -496,7 +496,7 @@ exports[`SectionAlert with infoHigh tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:r9:"
         >
-          infoHigh
+          information
         </span>
       </span>
       <div
@@ -547,7 +547,7 @@ exports[`SectionAlert with infoLow tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rb:"
         >
-          infoLow
+          information
         </span>
       </span>
       <div
@@ -598,7 +598,7 @@ exports[`SectionAlert with infoMedium tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rd:"
         >
-          infoMedium
+          information
         </span>
       </span>
       <div
@@ -651,7 +651,7 @@ exports[`SectionAlert with successHigh tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rf:"
         >
-          successHigh
+          success
         </span>
       </span>
       <div
@@ -705,7 +705,7 @@ exports[`SectionAlert with successLow tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rh:"
         >
-          successLow
+          success
         </span>
       </span>
       <div
@@ -759,7 +759,7 @@ exports[`SectionAlert with successMedium tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rj:"
         >
-          successMedium
+          success
         </span>
       </span>
       <div
@@ -812,7 +812,7 @@ exports[`SectionAlert with warningHigh tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rl:"
         >
-          warningHigh
+          warning
         </span>
       </span>
       <div
@@ -863,7 +863,7 @@ exports[`SectionAlert with warningLow tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rn:"
         >
-          warningLow
+          warning
         </span>
       </span>
       <div
@@ -914,7 +914,7 @@ exports[`SectionAlert with warningMedium tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rp:"
         >
-          warningMedium
+          warning
         </span>
       </span>
       <div

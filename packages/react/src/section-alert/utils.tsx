@@ -1,4 +1,5 @@
 import {
+	AlertCircleIcon,
 	AlertFilledIcon,
 	AlertIcon,
 	InfoFilledIcon,
@@ -17,13 +18,15 @@ export const sectionAlertToneMap = {
 		borderColor: 'error',
 		Icon: AlertFilledIcon,
 		iconColor: 'error',
+		iconLabel: 'error',
 	},
 	errorLow: {
 		background: 'body',
 		border: true,
 		borderColor: 'border',
-		Icon: AlertIcon,
+		Icon: AlertCircleIcon,
 		iconColor: 'muted',
+		iconLabel: 'error',
 	},
 	errorMedium: {
 		background: 'body',
@@ -31,6 +34,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'error',
 		Icon: AlertIcon,
 		iconColor: 'error',
+		iconLabel: 'error',
 	},
 	infoHigh: {
 		background: 'info',
@@ -38,6 +42,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'info',
 		Icon: InfoFilledIcon,
 		iconColor: 'info',
+		iconLabel: 'information',
 	},
 	infoLow: {
 		background: 'body',
@@ -45,6 +50,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'border',
 		Icon: InfoIcon,
 		iconColor: 'muted',
+		iconLabel: 'information',
 	},
 	infoMedium: {
 		background: 'body',
@@ -52,6 +58,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'info',
 		Icon: InfoIcon,
 		iconColor: 'info',
+		iconLabel: 'information',
 	},
 	successHigh: {
 		background: 'success',
@@ -59,6 +66,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'success',
 		Icon: SuccessFilledIcon,
 		iconColor: 'success',
+		iconLabel: 'success',
 	},
 	successLow: {
 		background: 'body',
@@ -66,6 +74,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'border',
 		Icon: SuccessIcon,
 		iconColor: 'muted',
+		iconLabel: 'success',
 	},
 	successMedium: {
 		background: 'body',
@@ -73,6 +82,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'success',
 		Icon: SuccessIcon,
 		iconColor: 'success',
+		iconLabel: 'success',
 	},
 	warningHigh: {
 		background: 'warning',
@@ -80,6 +90,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'warning',
 		Icon: WarningFilledIcon,
 		iconColor: 'warning',
+		iconLabel: 'warning',
 	},
 	warningLow: {
 		background: 'body',
@@ -87,6 +98,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'border',
 		Icon: WarningCircleIcon,
 		iconColor: 'muted',
+		iconLabel: 'warning',
 	},
 	warningMedium: {
 		background: 'body',
@@ -94,6 +106,7 @@ export const sectionAlertToneMap = {
 		borderColor: 'warning',
 		Icon: WarningIcon,
 		iconColor: 'warning',
+		iconLabel: 'warning',
 	},
 } as const;
 
@@ -109,7 +122,7 @@ type SectionAlertLegacyTone = keyof typeof sectionAlertLegacyTonesMap;
 
 export type SectionAlertTone = SectionAlertVariantTone | SectionAlertLegacyTone;
 
-// Legacy tones will default to high variants
+// Legacy tones will default to its high variant
 export function getUpdatedLegacyTone(
 	tone: SectionAlertTone
 ): SectionAlertVariantTone {
