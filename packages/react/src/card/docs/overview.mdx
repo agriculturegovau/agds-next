@@ -7,11 +7,11 @@ figmaGalleryNodeId: 11960%3A99772
 relatedPatterns: ['search-filters']
 ---
 
-Cards are often used to curate groups of related information – for example, Top tasks. There are 2 types of cards – basic and link. They are frequently used on landing pages to help users find what they need.
+Cards are often used to curate groups of related information – for example, Top tasks. They are frequently used on landing pages to help users find what they need.
 
-Cards can contain multiple elements, such as images, links, actions, text and more.
+Cards can be constructed in multiple configurations and can contain multiple elements, such as headers, footers, images, icons, links, actions, text and more.
 
-Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should be equal in height and the same type.
+Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should be equal in height and of the same type.
 
 Consider using other formats such as tables, if more than 12 cards are required.
 
@@ -48,408 +48,202 @@ Consider using other formats such as tables, if more than 12 cards are required.
 - include more than 3 lines of body copy
 - repeat images in card groups
 - use different card types in the same grid
-- add links in the text.
+- add shadows to non-clickable cards
+- add multiple links in the content.
 
 ## Images
 
 For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding, add the `img` tag inside the `CardInner` container.
 
 ```jsx live
-<Card>
-	<PlaceholderImage />
-	<CardInner>
-		<TextLink href="#">Action</TextLink>
-	</CardInner>
-</Card>
+<Columns cols={2}>
+	<Card>
+		<PlaceholderImage />
+		<CardInner>
+			<Stack gap={1}>
+				<Text as="p">Describing content</Text>
+				<CardLink href="#">Relevant link</CardLink>
+			</Stack>
+		</CardInner>
+	</Card>
+
+	<Card>
+		<CardInner>
+			<Stack gap={1}>
+				<PlaceholderImage />
+				<Text as="p">Describing content</Text>
+				<CardLink href="#">Relevant link</CardLink>
+			</Stack>
+		</CardInner>
+	</Card>
+</Columns>
 ```
 
 ## Clickable cards
 
-For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article. Avoid wrapping an entire card in an anchor tag as this can be a difficult experience for a screen reader user.
+For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article.
+
+Fully-clickable cards must be given the `clickable` and `shadow` props to make itself and its `CardLink` appropriately indicate the clickable region. Do not wrap cards in an anchor tag as this can be a difficult experience for screen reader users.
 
 ```jsx live
-<Card shadow clickable>
+<Card clickable shadow>
 	<PlaceholderImage />
 	<CardInner>
 		<Stack gap={1}>
-			<Heading type="h3">
+			<H3>
 				<CardLink href="#">Title of article</CardLink>
-			</Heading>
+			</H3>
 			<Text as="p">Some text</Text>
 		</Stack>
 	</CardInner>
 </Card>
 ```
 
-## Clickable cards with footer actions
+## Card headers
 
-Clickable cards can also have additional footer actions. A common use-case allows a user to perform an action related to the card itself.
+Use `<CardHeader>` to give the card heading more visual prominence.
+
+`<CardHeader>` must come before `<CardInner>`.
+
+```jsx live
+<Columns cols={2}>
+	<Card>
+		<CardHeader>
+			<Heading as="h3" type="h4">
+				Feature card title
+			</Heading>
+		</CardHeader>
+		<CardInner>
+			<Text as="p">Additional conent relating to the card</Text>
+		</CardInner>
+	</Card>
+
+	<Card>
+		<CardHeader background="bodyAlt">
+			<Heading as="h3" type="h4">
+				Feature card title
+			</Heading>
+		</CardHeader>
+		<CardInner>
+			<Text as="p">Additional conent relating to the card</Text>
+		</CardInner>
+	</Card>
+
+	<Card clickable shadow>
+		<CardHeader>
+			<Heading as="h3" type="h4">
+				<CardLink href="#">Feature card title</CardLink>
+			</Heading>
+		</CardHeader>
+		<CardInner>
+			<Text as="p">Additional conent relating to the card</Text>
+		</CardInner>
+	</Card>
+
+	<Card clickable shadow>
+		<CardHeader background="bodyAlt">
+			<Heading as="h3" type="h4">
+				<CardLink href="#">Feature card title</CardLink>
+			</Heading>
+		</CardHeader>
+		<CardInner>
+			<Text as="p">Additional conent relating to the card</Text>
+		</CardInner>
+	</Card>
+</Columns>
+```
+
+## Card footers
+
+Add supplementary information, links or actions to cards by passing a `<CardFooter>` to the `footer` prop.
+
+Use the `footerOutside={true}` prop to render the footer beneath the visible bottom of the card.
+
+A common use-case of `footerOutside` allows for a clickable card to also have separate actions related to the card itself. Do not use `clickable` cards without setting `footerOutside={true}`.
 
 From v1.27.0, you must use the `footer` prop to pass `CardFooter` content to ensure that the “clickable” region doesn’t overlap anything in the footer.
 
-While `Card` still supports `CardFooter` as a child (as per v1.26.0 and below), it cannot support the clickable footer actions use-case in full, so we recommend migrating to `footer` for all cases.
+While `Card` still supports `CardFooter` as a child element (as per v1.26.0 and below), it cannot fully support the clickable footer actions use-case without degrading the UX and accessibility, so we recommend migrating to `footer` for all cases.
 
 ```jsx live
-<Stack gap={2}>
-	<Card shadow clickable footer={<CardFooter>Metadata</CardFooter>}>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card
-		shadow
-		clickable
-		footer={
-			<CardFooter>
-				<ToggleButton
-					iconType="star"
-					label="Add to favourites"
-					onClick={console.log}
-					pressedLabel="Remove from favourites"
-				/>
-			</CardFooter>
-		}
-		footerOutside
-	>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card shadow clickable>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
-	<Card shadow clickable footerOutside>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
+() => {
+	const [isAdded, setIsAdded] = React.useState(false);
+	return (
+		<Columns cols={2}>
+			<Card footer={<CardFooter>Supplementary info</CardFooter>}>
+				<CardInner>
+					<Stack gap={1}>
+						<H3>Card title</H3>
+						<Text as="p">Additional conent relating to the card</Text>
+					</Stack>
+				</CardInner>
+			</Card>
 
-	<Card shadow clickable footer={<CardFooter>Metadata</CardFooter>}>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card
-		shadow
-		clickable
-		footer={
-			<CardFooter>
-				<ToggleButton
-					iconType="star"
-					label="Add to favourites"
-					onClick={console.log}
-					pressedLabel="Remove from favourites"
-				/>
-			</CardFooter>
-		}
-		footerOutside
-	>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card shadow clickable>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>Metadata</CardFooter>
-	</Card>
-	<Card shadow clickable footerOutside>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>Metadata</CardFooter>
-	</Card>
-</Stack>
-```
+			<Card
+				footer={
+					<CardFooter>
+						<ToggleButton
+							iconType="star"
+							label="Add to favourites"
+							onClick={setIsAdded}
+							pressed={isAdded}
+							pressedLabel="Remove from favourites"
+						/>
+					</CardFooter>
+				}
+				footerOutside
+			>
+				<CardInner>
+					<Stack gap={1}>
+						<H3>Card title</H3>
+						<Text as="p">Additional conent relating to the card</Text>
+					</Stack>
+				</CardInner>
+			</Card>
 
-### DEMO Standard Cards
+			<Card
+				clickable
+				footer={<CardFooter>Supplementary info</CardFooter>}
+				shadow
+			>
+				<CardInner>
+					<Stack gap={1}>
+						<H3>
+							<CardLink href="#">Card title</CardLink>
+						</H3>
+						<Text as="p">Additional conent relating to the card</Text>
+					</Stack>
+				</CardInner>
+			</Card>
 
-```jsx live
-<Stack gap={2}>
-	<Card footer={<CardFooter>Metadata</CardFooter>}>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card
-		footer={
-			<CardFooter>
-				<ToggleButton
-					iconType="star"
-					label="Add to favourites"
-					onClick={console.log}
-					pressedLabel="Remove from favourites"
-				/>
-			</CardFooter>
-		}
-		footerOutside
-	>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
-	<Card footerOutside>
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
-	<Card footer={<CardFooter>Metadata</CardFooter>}>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card
-		footer={
-			<CardFooter>
-				<ToggleButton
-					iconType="star"
-					label="Add to favourites"
-					onClick={console.log}
-					pressedLabel="Remove from favourites"
-				/>
-			</CardFooter>
-		}
-		footerOutside
-	>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-	<Card>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
-	<Card footerOutside>
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Heading type="h3">
-					<CardLink href="#">LEGACY footerOutside Title of article</CardLink>
-				</Heading>
-				<Text as="p">Some text</Text>
-			</Stack>
-		</CardInner>
-		<CardFooter>
-			<ToggleButton
-				iconType="star"
-				label="Add to favourites"
-				onClick={console.log}
-				pressedLabel="Remove from favourites"
-			/>
-		</CardFooter>
-	</Card>
-</Stack>
-```
-
-## Feature headers
-
-Use feature headers to give the card heading more visual prominence.
-
-```jsx live
-<Columns>
-	<Column columnSpan={6}>
-		<Card>
-			<CardHeader>
-				<Heading as="h3" type="h4">
-					Feature card title
-				</Heading>
-			</CardHeader>
-			<CardInner>
-				<Text as="p">Additional conent relating to the card</Text>
-			</CardInner>
-		</Card>
-	</Column>
-	<Column columnSpan={6}>
-		<Card>
-			<CardHeader background="bodyAlt">
-				<Heading as="h3" type="h4">
-					Feature card title
-				</Heading>
-			</CardHeader>
-			<CardInner>
-				<Text as="p">Additional conent relating to the card</Text>
-			</CardInner>
-		</Card>
-	</Column>
-</Columns>
-```
-
-## Feature footers
-
-Use feature footers to give the card footer more visual prominence. This can be used to guide users to the call to action.
-
-```jsx live
-<Columns>
-	<Column columnSpan={6}>
-		<Card
-			footer={
-				<CardFooter>
-					<TextLink href="#">Action</TextLink>
-				</CardFooter>
-			}
-		>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card title</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptatibus.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Column>
-	<Column columnSpan={6}>
-		<Card
-			footer={
-				<CardFooter>
-					<TextLink href="#">Action</TextLink>
-				</CardFooter>
-			}
-		>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading type="h3">Card title</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptatibus.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	</Column>
-</Columns>
+			<Card
+				clickable
+				footer={
+					<CardFooter>
+						<ToggleButton
+							iconType="star"
+							label="Add to favourites"
+							onClick={setIsAdded}
+							pressed={isAdded}
+							pressedLabel="Remove from favourites"
+						/>
+					</CardFooter>
+				}
+				footerOutside
+				shadow
+			>
+				<CardInner>
+					<Stack gap={1}>
+						<H3>
+							<CardLink href="#">Card title</CardLink>
+						</H3>
+						<Text as="p">Additional conent relating to the card</Text>
+					</Stack>
+				</CardInner>
+			</Card>
+		</Columns>
+	);
+};
 ```
 
 ## Equal card heights
@@ -466,12 +260,13 @@ The content within each card will often vary in height, so to prevent an uneven,
 				<TextLink href="#">An action</TextLink>
 			</CardFooter>
 		}
+		footerOutside
 		shadow
 	>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="/not-found">Learners permit</CardLink>
+					<CardLink href="#">Learners permit</CardLink>
 				</H3>
 				<Text>
 					A learner driver licence allows you to drive with a supervisor who has
@@ -482,20 +277,11 @@ The content within each card will often vary in height, so to prevent an uneven,
 		</CardInner>
 	</Card>
 
-	<Card
-		as="li"
-		clickable
-		footer={
-			<CardFooter>
-				<TextLink href="#">An action</TextLink>
-			</CardFooter>
-		}
-		shadow
-	>
+	<Card as="li" clickable shadow>
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="/not-found">Provisional licence</CardLink>
+					<CardLink href="#">Provisional licence</CardLink>
 				</H3>
 				<Text>
 					Information on provisional licence applicatios, tests, exemptions,
@@ -507,19 +293,19 @@ The content within each card will often vary in height, so to prevent an uneven,
 
 	<Card
 		as="li"
-		clickable
 		footer={
 			<CardFooter>
-				<TextLink href="#">An action</TextLink>
+				<CardLink href="#">An action</CardLink>
 			</CardFooter>
 		}
-		shadow
 	>
+		<CardHeader>
+			<H3>
+				<CardLink href="#">Drivers licence</CardLink>
+			</H3>
+		</CardHeader>
 		<CardInner>
 			<Stack gap={1}>
-				<H3>
-					<CardLink href="/not-found">Drivers licence</CardLink>
-				</H3>
 				<Text>
 					Get a driver or rider licence, renew, upgrade or change licence and
 					licence details.
@@ -528,68 +314,15 @@ The content within each card will often vary in height, so to prevent an uneven,
 		</CardInner>
 	</Card>
 
-	<Card
-		as="li"
-		footer={
-			<CardFooter>
-				<TextLink href="#">An action</TextLink>
-			</CardFooter>
-		}
-	>
+	<Card>
 		<CardInner>
 			<Stack gap={1}>
-				<H3>
-					<CardLink href="/not-found">Starting your own business</CardLink>
-				</H3>
-				<Text>
+				<PlaceholderImage />
+				<Text as="p">
 					When starting a business, we try to make it easy to understand and
 					provide everything you need to get started.
 				</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-
-	<Card
-		as="li"
-		footer={
-			<CardFooter>
-				<TextLink href="#">An action</TextLink>
-			</CardFooter>
-		}
-	>
-		<CardInner>
-			<Stack gap={1}>
-				<H3>
-					<CardLink href="/not-found">Selling food for a fundraiser</CardLink>
-				</H3>
-				<Text>
-					Some non-profit organisations that sell food for fundraising purposes
-					using volunteer staff are exempt. Some non-profit organisations that
-					sell food for fundraising purposes using volunteer staff are exempt.
-				</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-
-	<Card
-		as="li"
-		footer={
-			<CardFooter>
-				<TextLink href="#">An action</TextLink>
-			</CardFooter>
-		}
-	>
-		<CardInner>
-			<Stack gap={1}>
-				<H3>
-					<CardLink href="/app/permits/apply-for-new-permit/mobile-food-vendor-permit">
-						Apply for a mobile food vendor permit
-					</CardLink>
-				</H3>
-				<Text>
-					Food businesses that sell food to the public need to be registered
-					before opening.
-				</Text>
+				<CardLink href="#">Start a business</CardLink>
 			</Stack>
 		</CardInner>
 	</Card>
@@ -605,69 +338,63 @@ This logic ensures sufficient contrast between foreground and background element
 ```jsx live
 <Fragment>
 	<Flex as="ul" gap={1.5} padding={1.5}>
-		<Box as="li">
-			<Card shadow clickable>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading as="h3" type="h4">
-							<CardLink href="#">Card light 1</CardLink>
-						</Heading>
-						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-							finibus leo.
-						</Text>
-					</Stack>
-				</CardInner>
-			</Card>
-		</Box>
-		<Box as="li">
-			<Card shadow clickable>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading as="h3" type="h4">
-							<CardLink href="#">Card light 2</CardLink>
-						</Heading>
-						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-							finibus leo.
-						</Text>
-					</Stack>
-				</CardInner>
-			</Card>
-		</Box>
+		<Card as="li" shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h3" type="h4">
+						<CardLink href="#">Card light 1</CardLink>
+					</Heading>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo.
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+
+		<Card as="li" shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h3" type="h4">
+						<CardLink href="#">Card light 2</CardLink>
+					</Heading>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo.
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
 	</Flex>
 
 	<Flex as="ul" background="body" gap={1.5} padding={1.5} palette="dark">
-		<Box as="li">
-			<Card clickable>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading as="h3" type="h4">
-							<CardLink href="#">Card dark 1</CardLink>
-						</Heading>
-						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-							finibus leo.
-						</Text>
-					</Stack>
-				</CardInner>
-			</Card>
-		</Box>
-		<Box as="li">
-			<Card clickable>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading as="h3" type="h4">
-							<CardLink href="#">Card dark 2</CardLink>
-						</Heading>
-						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-							finibus leo.
-						</Text>
-					</Stack>
-				</CardInner>
-			</Card>
-		</Box>
+		<Card as="li" clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h3" type="h4">
+						<CardLink href="#">Card dark 1</CardLink>
+					</Heading>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo.
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
+
+		<Card as="li" clickable>
+			<CardInner>
+				<Stack gap={1}>
+					<Heading as="h3" type="h4">
+						<CardLink href="#">Card dark 2</CardLink>
+					</Heading>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+						finibus leo.
+					</Text>
+				</Stack>
+			</CardInner>
+		</Card>
 	</Flex>
 </Fragment>
 ```
