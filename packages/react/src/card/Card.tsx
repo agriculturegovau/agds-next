@@ -46,6 +46,13 @@ export const Card = ({
 		shadow,
 	});
 	const hasFooter = !!footer;
+
+	if (process.env.NODE_ENV !== 'production' && footerOutside && !hasFooter) {
+		console.warn(
+			'Card: The `footerOutside` prop should only be used when a `footer` is provided, otherwise correct behaviour/accessibility is not guaranteed.'
+		);
+	}
+
 	return (
 		<CardContext.Provider
 			value={{
@@ -61,6 +68,7 @@ export const Card = ({
 				<Box
 					as={as} // Note: this should be an li when used in a card list
 					className={className}
+					data-card="root-with-footer"
 					display="flex"
 					flexDirection="column"
 					flexGrow={1}
@@ -80,6 +88,7 @@ export const Card = ({
 				<Box
 					as={as} // Note: this should be an li when used in a card list
 					className={className}
+					data-card="root"
 					display="flex"
 					flexDirection="column"
 					flexGrow={1}
