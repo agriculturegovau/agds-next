@@ -1,13 +1,21 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { Text } from '../text';
 import { cleanup, render } from '../../../../test-utils';
-import { SectionAlert } from './SectionAlert';
+import { Text } from '../text';
 import type { SectionAlertProps } from './SectionAlert';
-import { sectionAlertIconMap, SectionAlertTone } from './utils';
+import { SectionAlert } from './SectionAlert';
+import {
+	SectionAlertTone,
+	sectionAlertLegacyTonesMap,
+	sectionAlertToneMap,
+} from './utils';
 
 const sectionAlertTones = Object.keys(
-	sectionAlertIconMap
+	sectionAlertToneMap
+) as Array<SectionAlertTone>;
+
+const sectionAlertLegacyToneMap = Object.keys(
+	sectionAlertLegacyTonesMap
 ) as Array<SectionAlertTone>;
 
 afterEach(cleanup);
@@ -36,6 +44,26 @@ describe('SectionAlert', () => {
 							'valid-id': 'off',
 						},
 					});
+				});
+			});
+		});
+	}
+
+	{
+		sectionAlertLegacyToneMap.forEach((tone) => {
+			describe(`with legacy ${tone}`, () => {
+				const { container } = renderSectionAlert({ tone });
+				expect(container).toMatchSnapshot();
+			});
+			it('renders a valid HTML structure', () => {
+				const { container } = renderSectionAlert({ tone });
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+					rules: {
+						'prefer-native-element': 'off',
+						// react 18s `useId` break this rule
+						'valid-id': 'off',
+					},
 				});
 			});
 		});

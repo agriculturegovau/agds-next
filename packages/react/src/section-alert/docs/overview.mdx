@@ -39,14 +39,18 @@ Section alerts appear inside of the main content area of the page and are used t
 
 Section alert can be used to communicate different types of messages. Choosing a tone for a Section alert allows the user to understand the importance and severity of the message at a glance.
 
-The three supported tones are `success`, `error` and `warning`.
+The four tones are `success`, `error`, `warning` and `info` that each have three supported levels: high, medium and low variants and are used by applying a suffix eg. `successHigh`, `successMedium`, `successLow`.
 
 ### Success
 
 The success section alert (green) is used for notifying the user that a task is fully completed.
 
 ```jsx live
-<SectionAlert title="Your changes have been saved" tone="success" />
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	<SectionAlert title="Your changes have been saved" tone="successMedium" />
+	<SectionAlert title="Your changes have been saved" tone="successLow" />
+</Stack>
 ```
 
 ### Error
@@ -54,7 +58,20 @@ The success section alert (green) is used for notifying the user that a task is 
 The error section alert (red) should be used when something destructive or critical has happened.
 
 ```jsx live
-<SectionAlert title="There was an error saving your changes" tone="error" />
+<Stack gap={1}>
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorHigh"
+	/>
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorMedium"
+	/>
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorLow"
+	/>
+</Stack>
 ```
 
 ### Warning
@@ -62,7 +79,26 @@ The error section alert (red) should be used when something destructive or criti
 Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
-<SectionAlert title="A warning message for this section" tone="warning" />
+<Stack gap={1}>
+	<SectionAlert title="A warning message for this section" tone="warningHigh" />
+	<SectionAlert
+		title="A warning message for this section"
+		tone="warningMedium"
+	/>
+	<SectionAlert title="A warning message for this section" tone="warningLow" />
+</Stack>
+```
+
+### Info
+
+The information section alert (blue) can be used to alert the user on neutral informative messages.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Please read the comments carefully" tone="infoHigh" />
+	<SectionAlert title="Please read the comments carefully" tone="infoMedium" />
+	<SectionAlert title="Please read the comments carefully" tone="infoLow" />
+</Stack>
 ```
 
 ## Dismissable
