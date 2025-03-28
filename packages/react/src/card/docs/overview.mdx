@@ -53,11 +53,11 @@ Consider using other formats such as tables, if more than 12 cards are required.
 
 ## Images
 
-For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding, add the `img` tag inside the `CardInner` container.
+For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding (such as an icon), add it within the `CardInner` container.
 
 ```jsx live
-<Columns cols={2}>
-	<Card>
+<Columns as="ul" cols={2}>
+	<Card as="li">
 		<PlaceholderImage />
 		<CardInner>
 			<Stack gap={1}>
@@ -67,10 +67,28 @@ For a full-width image in a card, add the `img` tag outside the `CardInner` cont
 		</CardInner>
 	</Card>
 
-	<Card>
+	<Card as="li">
 		<CardInner>
 			<Stack gap={1}>
-				<PlaceholderImage />
+				<svg
+					fill="none"
+					height="64"
+					stroke="#00558B"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeWidth="2"
+					viewBox="0 0 64 64"
+					width="64"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M31 36H17" />
+					<path d="M47 59C53.6274 59 59 53.6274 59 47C59 40.3726 53.6274 35 47 35C40.3726 35 35 40.3726 35 47C35 53.6274 40.3726 59 47 59Z" />
+					<path d="M51 43C49.8647 44.8542 45.5972 50.9964 45.5972 50.9964L43 49" />
+					<path d="M27 46H17" />
+					<path d="M41 26H17" />
+					<path d="M32.9989 59H10.9989C9.89459 59 8.99925 58.1049 8.99897 57.0006C8.99475 40.3336 8.99555 23.6666 8.99894 6.99957C8.99916 5.89517 9.89462 5 10.999 5V5H42.0763C42.6601 5 43.2147 5.25505 43.5946 5.69823L54.5173 18.4382C54.8281 18.8007 54.9989 19.2625 54.9989 19.74V31" />
+					<path d="M43.0003 6L43 17C43 18.1045 43.8955 19 45 19H54" />
+				</svg>
 				<Text as="p">Describing content</Text>
 				<CardLink href="#">Relevant link</CardLink>
 			</Stack>
@@ -106,8 +124,8 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 `<CardHeader>` must come before `<CardInner>`.
 
 ```jsx live
-<Columns cols={2}>
-	<Card>
+<Columns as="ul" cols={2}>
+	<Card as="li">
 		<CardHeader>
 			<Heading as="h3" type="h4">
 				Feature card title
@@ -118,7 +136,7 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 		</CardInner>
 	</Card>
 
-	<Card>
+	<Card as="li">
 		<CardHeader background="bodyAlt">
 			<Heading as="h3" type="h4">
 				Feature card title
@@ -129,7 +147,7 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 		</CardInner>
 	</Card>
 
-	<Card clickable shadow>
+	<Card as="li" clickable shadow>
 		<CardHeader>
 			<Heading as="h3" type="h4">
 				<CardLink href="#">Feature card title</CardLink>
@@ -140,7 +158,7 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 		</CardInner>
 	</Card>
 
-	<Card clickable shadow>
+	<Card as="li" clickable shadow>
 		<CardHeader background="bodyAlt">
 			<Heading as="h3" type="h4">
 				<CardLink href="#">Feature card title</CardLink>
@@ -157,19 +175,25 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 
 Add supplementary information, links or actions to cards by passing a `<CardFooter>` to the `footer` prop.
 
-Use the `footerOutside={true}` prop to render the footer beneath the visible bottom of the card.
+### Outside footers
 
-A common use-case of `footerOutside` allows for a clickable card to also have separate actions related to the card itself. Do not use `clickable` cards without setting `footerOutside={true}`.
+Use the `footerOutside={true}` prop to render the footer directly beneath the card.
 
-From v1.27.0, you must use the `footer` prop to pass `CardFooter` content to ensure that the “clickable” region doesn’t overlap anything in the footer.
+A common use-case allows for a clickable card to also have separate actions related to the card itself. Do not use `clickable` cards without setting `footerOutside={true}`.
 
-While `Card` still supports `CardFooter` as a child element (as per v1.26.0 and below), it cannot fully support the clickable footer actions use-case without degrading the UX and accessibility, so we recommend migrating to `footer` for all cases.
+<Callout tone="info">
+	Previous versions (v1.26.0 and below) only supported `CardFooter` as a child element of `Card`.
+
+    However, that API cannot fully support clickable cards with footer actions
+    without degrading the UX and accessibility, so we recommend migrating to `footer` for all cases.
+
+</Callout>
 
 ```jsx live
 () => {
 	const [isAdded, setIsAdded] = React.useState(false);
 	return (
-		<Columns cols={2}>
+		<Columns as="ul" cols={2}>
 			<Card footer={<CardFooter>Supplementary info</CardFooter>}>
 				<CardInner>
 					<Stack gap={1}>
@@ -180,6 +204,7 @@ While `Card` still supports `CardFooter` as a child element (as per v1.26.0 and 
 			</Card>
 
 			<Card
+				as="li"
 				footer={
 					<CardFooter>
 						<ToggleButton
@@ -202,6 +227,7 @@ While `Card` still supports `CardFooter` as a child element (as per v1.26.0 and 
 			</Card>
 
 			<Card
+				as="li"
 				clickable
 				footer={<CardFooter>Supplementary info</CardFooter>}
 				shadow
@@ -217,6 +243,7 @@ While `Card` still supports `CardFooter` as a child element (as per v1.26.0 and 
 			</Card>
 
 			<Card
+				as="li"
 				clickable
 				footer={
 					<CardFooter>
@@ -266,12 +293,12 @@ The content within each card will often vary in height, so to prevent an uneven,
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Learners permit</CardLink>
+					<CardLink href="#">Card title 1</CardLink>
 				</H3>
 				<Text>
-					A learner driver licence allows you to drive with a supervisor who has
-					a full Australian driving licence. A learner driver licence allows you
-					to drive with a supervisor who has a full Australian driving licence.
+					Vestibulum non dui vitae augue efficitur viverra quis sit amet enim.
+					Vestibulum sagittis lacus arcu, eu interdum elit lobortis a. Aliquam
+					sit amet sollicitudin orci, sit amet rhoncus odio.
 				</Text>
 			</Stack>
 		</CardInner>
@@ -281,11 +308,11 @@ The content within each card will often vary in height, so to prevent an uneven,
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Provisional licence</CardLink>
+					<CardLink href="#">Card title 2</CardLink>
 				</H3>
 				<Text>
-					Information on provisional licence applicatios, tests, exemptions,
-					changes and checks.
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dictum
+					magna justo, ac mattis dolor sollicitudin fringilla.
 				</Text>
 			</Stack>
 		</CardInner>
@@ -301,14 +328,14 @@ The content within each card will often vary in height, so to prevent an uneven,
 	>
 		<CardHeader>
 			<H3>
-				<CardLink href="#">Drivers licence</CardLink>
+				<CardLink href="#">Card title 3</CardLink>
 			</H3>
 		</CardHeader>
 		<CardInner>
 			<Stack gap={1}>
 				<Text>
-					Get a driver or rider licence, renew, upgrade or change licence and
-					licence details.
+					Sed volutpat non enim ac efficitur. Etiam ut dolor tempor, tempor
+					tortor at, luctus elit.
 				</Text>
 			</Stack>
 		</CardInner>
@@ -317,12 +344,31 @@ The content within each card will often vary in height, so to prevent an uneven,
 	<Card>
 		<CardInner>
 			<Stack gap={1}>
-				<PlaceholderImage />
+				<svg
+					fill="none"
+					height="64"
+					stroke="#00558B"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeWidth="2"
+					viewBox="0 0 64 64"
+					width="64"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M31 36H17" />
+					<path d="M47 59C53.6274 59 59 53.6274 59 47C59 40.3726 53.6274 35 47 35C40.3726 35 35 40.3726 35 47C35 53.6274 40.3726 59 47 59Z" />
+					<path d="M51 43C49.8647 44.8542 45.5972 50.9964 45.5972 50.9964L43 49" />
+					<path d="M27 46H17" />
+					<path d="M41 26H17" />
+					<path d="M32.9989 59H10.9989C9.89459 59 8.99925 58.1049 8.99897 57.0006C8.99475 40.3336 8.99555 23.6666 8.99894 6.99957C8.99916 5.89517 9.89462 5 10.999 5V5H42.0763C42.6601 5 43.2147 5.25505 43.5946 5.69823L54.5173 18.4382C54.8281 18.8007 54.9989 19.2625 54.9989 19.74V31" />
+					<path d="M43.0003 6L43 17C43 18.1045 43.8955 19 45 19H54" />
+				</svg>
 				<Text as="p">
-					When starting a business, we try to make it easy to understand and
-					provide everything you need to get started.
+					Quisque mattis orci et dui sagittis, quis molestie elit rhoncus. Sed
+					id luctus nunc, in lacinia nulla. Etiam iaculis nisl sit amet diam
+					auctor, eu ultricies nunc pellentesque.
 				</Text>
-				<CardLink href="#">Start a business</CardLink>
+				<CardLink href="#">An action</CardLink>
 			</Stack>
 		</CardInner>
 	</Card>
