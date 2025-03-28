@@ -1336,43 +1336,13 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Error medium',
-		code: `<SectionAlert tone="errorMedium" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Error low',
-		code: `<SectionAlert tone="errorLow" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
 		name: 'Warning high',
 		code: `<SectionAlert tone="warningHigh" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Warning medium',
-		code: `<SectionAlert tone="warningMedium" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Warning low',
-		code: `<SectionAlert tone="warningLow" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
 		name: 'Info high',
 		code: `<SectionAlert tone="infoHigh" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Info medium',
-		code: `<SectionAlert tone="infoMedium" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Info low',
-		code: `<SectionAlert tone="infoLow" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',
