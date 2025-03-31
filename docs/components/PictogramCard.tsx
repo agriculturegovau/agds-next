@@ -15,14 +15,6 @@ export const PictogramCard = ({
 	<Card
 		as="li"
 		clickable
-		content={
-			<CardInner>
-				<CardLink {...props}>
-					{title}
-					<ChevronRightIcon />
-				</CardLink>
-			</CardInner>
-		}
 		header={
 			<Flex
 				alignItems="center"
@@ -34,5 +26,12 @@ export const PictogramCard = ({
 			</Flex>
 		}
 		shadow
-	/>
+	>
+		<CardInner>
+			<CardLink {...props}>
+				{title}
+				<ChevronRightIcon />
+			</CardLink>
+		</CardInner>
+	</Card>
 );
