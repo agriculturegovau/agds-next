@@ -7,14 +7,18 @@ exports[`ConditionalReveal renders correctly 1`] = `
   >
     Toggle visibility
   </button>
-  <hr
-    aria-hidden="true"
-    class="css-1th2zfi-Divider"
-  />
-  <p
-    data-testid="child-element"
+  <div
+    class="css-h0krvw-boxStyles"
   >
-    conditional-content
-  </p>
+    <hr
+      aria-hidden="true"
+      class="css-1th2zfi-Divider"
+    />
+    <p
+      data-testid="child-element"
+    >
+      conditional-content
+    </p>
+  </div>
 </div>
 `;
