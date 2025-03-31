@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { boxPalette, tokens } from '../core';
 import { theme } from '../ag-branding';
+import { boxPalette, tokens } from '../core';
 import { useTableContext } from './TableContext';
 
 export type TableRowProps = PropsWithChildren<{
@@ -8,6 +8,10 @@ export type TableRowProps = PropsWithChildren<{
 	'aria-rowindex'?: number;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
+	/** Callback function to execute when the row is clicked.
+	 * If you have a clickable element, use e.stopPropagation() to s
+	 */
+	onClick?: () => unknown;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
 }>;
@@ -16,9 +20,18 @@ export function TableRow({
 	'aria-rowindex': ariaRowindex,
 	children,
 	invalid,
+	onClick,
 	selected,
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
+
+	// create alternative hover and selected styles
+	// TODO: Fix js object auto sorting?
+	const alternativeStyles = {
+		...(selected && alternativeSelectedStyles),
+		...(onClick && alternativeHoverStyles),
+	};
+
 	return (
 		<tr
 			aria-rowindex={ariaRowindex}
@@ -35,7 +48,7 @@ export function TableRow({
 							pointerEvents: 'none',
 							position: 'absolute',
 							inset: 0,
-							borderWidth: tokens.borderWidth.md,
+							borderWidth: tokens.borderWidth.sm,
 							borderColor: boxPalette.selected,
 							borderStyle: 'solid',
 						},
@@ -50,21 +63,51 @@ export function TableRow({
 							borderTopWidth: 0,
 						},
 					}),
+				}),
+				...(onClick && {
+					...(tableLayout === 'auto' && {
+						position: 'relative',
 
-					// Chrome and Firefox doesn't support ::after elements in fixed table layouts
-					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
-					...(tableLayout === 'fixed' && alternativeSelectedStyles),
+						'&:hover': {
+							'&::after': {
+								content: '""',
+								pointerEvents: 'none',
+								position: 'absolute',
+								inset: 0,
+								borderWidth: tokens.borderWidth.md,
+								borderColor: boxPalette.selected,
+								borderStyle: 'solid',
+							},
 
-					// Safari does not support relative positioning on `tr` elements
-					// FIXME Once safari fixes this issue, these alternative styles should be removed
-					// More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
-					'@supports (-webkit-appearance: -apple-pay-button)':
-						alternativeSelectedStyles,
+							// Set border bottom for select & hover
+							":has(+ tr[aria-selected='true'])::after": {
+								borderBottomWidth: tokens.borderWidth.md,
+							},
+						},
+					}),
 				}),
 				...(invalid && {
 					background: theme.lightSystemErrorMuted,
 				}),
+
+				...(alternativeStyles && {
+					// // Chrome and Firefox doesn't support ::after elements in fixed table layouts
+					// // FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
+					...(tableLayout === 'fixed' && {
+						...(selected && alternativeSelectedStyles),
+						...(onClick && alternativeHoverStyles),
+					}),
+
+					// // Safari does not support relative positioning on `tr` elements
+					// // FIXME Once safari fixes this issue, these alternative styles should be removed
+					// // More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
+					'@supports (-webkit-appearance: -apple-pay-button)': {
+						...(selected && alternativeSelectedStyles),
+						...(onClick && alternativeHoverStyles),
+					},
+				}),
 			}}
+			onClick={onClick}
 		>
 			{children}
 		</tr>
@@ -74,9 +117,19 @@ export function TableRow({
 // Use an outline instead of an ::after element
 const alternativeSelectedStyles = {
 	backgroundColor: boxPalette.selectedMuted,
-	outlineWidth: '2px',
+	outlineWidth: '1px',
 	outlineStyle: 'solid',
 	outlineColor: boxPalette.selected,
 	outlineOffset: '-3px',
+	'&::after': { display: 'none' },
+};
+
+const alternativeHoverStyles = {
+	'&:hover': {
+		outlineWidth: '2px',
+		outlineStyle: 'solid',
+		outlineColor: boxPalette.selected,
+		outlineOffset: '-3px',
+	},
 	'&::after': { display: 'none' },
 };
