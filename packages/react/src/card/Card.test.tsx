@@ -182,7 +182,7 @@ describe('Card', () => {
 
 			expect(container.querySelector('div')).toHaveAttribute(
 				'data-card',
-				'root-with-footer'
+				'root-with-parts'
 			);
 			expect(container).toMatchSnapshot();
 		});
@@ -217,7 +217,7 @@ describe('Card', () => {
 
 			expect(container.querySelector('div')).toHaveAttribute(
 				'data-card',
-				'root-with-footer'
+				'root-with-parts'
 			);
 			expect(container).toMatchSnapshot();
 		});

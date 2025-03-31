@@ -24,8 +24,12 @@ export type CardProps = PropsWithChildren<
 		as?: ElementType;
 		/** The CSS class name, typically generated from the `css` prop. */
 		className?: string;
-		/** A `CardFooter` component. */
+		/** A `CardInner` component with relevant children. */
+		content?: ReactNode;
+		/** A `CardFooter` component with relevant children. */
 		footer?: ReactNode;
+		/** A `CardHeader` component with relevant children and/or images. */
+		header?: ReactNode;
 	} & CardContextType
 >;
 
@@ -35,8 +39,10 @@ export const Card = ({
 	children,
 	className,
 	clickable,
+	content,
 	footer,
 	footerOutside,
+	header,
 	shadow,
 }: CardProps) => {
 	const styleProps = cardStyleProps({
@@ -63,26 +69,49 @@ export const Card = ({
 				shadow,
 			}}
 		>
-			{/* To support all of the variations of cards, we now also have a footer prop which allows us to structure the markup accordingly. */}
-			{footer ? (
+			{/* To support all of the variations of cards, we now also have a separate content, footer and header props which allows us to structure the markup accordingly. */}
+			{content || footer || header ? (
 				<Box
 					as={as} // Note: this should be an li when used in a card list
 					className={className}
-					data-card="root-with-footer"
+					data-card="root-with-parts"
 					display="flex"
 					flexDirection="column"
 					flexGrow={1}
 					{...(footerOutside ? {} : styleProps)}
 				>
-					<Box
-						display="flex"
-						flexDirection="column"
-						flexGrow={1}
-						{...(footerOutside ? styleProps : {})}
-					>
-						{children}
-					</Box>
-					<Box>{footer}</Box>
+					{header && footerOutside ? (
+						<Box
+							display="flex"
+							flexDirection="column"
+							flexGrow={1}
+							{...styleProps}
+						>
+							<Box display="flex" flexDirection="column">
+								{header}
+							</Box>
+							<Box display="flex" flexDirection="column" flexGrow={1}>
+								{content || children}
+							</Box>
+						</Box>
+					) : (
+						<>
+							{header && (
+								<Box display="flex" flexDirection="column">
+									{header}
+								</Box>
+							)}
+							<Box
+								display="flex"
+								flexDirection="column"
+								flexGrow={1}
+								{...(footerOutside ? styleProps : {})}
+							>
+								{content || children}
+							</Box>
+						</>
+					)}
+					{footer && <Box>{footer}</Box>}
 				</Box>
 			) : (
 				<Box
@@ -134,6 +163,7 @@ export const cardStyleProps = ({
 		borderColor: 'muted',
 		rounded: true,
 		css: {
+			overflow: 'hidden', // Prevents children from overflowing the card's rounded corners
 			position: root ? 'relative' : undefined,
 			...(clickable && {
 				// If any element inside the card receives `:focus-visible`, add a focus ring around the wrapper

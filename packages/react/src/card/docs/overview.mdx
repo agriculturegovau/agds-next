@@ -15,20 +15,29 @@ Cards can be placed in a 2, 3, or 4-column layout. Cards in a grid layout should
 
 Consider using other formats such as tables, if more than 12 cards are required.
 
+<Callout tone="info">
+	To support more card use-cases, v1.27.0 changed the `Card` API to also allow specific `content`, `footer` and `header` props. These props place their content in defined areas of the card to provide better control of their styling.
+
+The legacy (versions v1.26.0 and below) `children` API is still available but will be removed in the next major version. [View the legacy documentation](/components/card/legacy).
+
+</Callout>
+
 ```jsx live
-<Card>
-	<CardInner>
-		<Stack gap={1}>
-			<Heading as="h3" type="h4">
-				Card title
-			</Heading>
-			<Text>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-				finibus leo.
-			</Text>
-		</Stack>
-	</CardInner>
-</Card>
+<Card
+	content={
+		<CardInner>
+			<Stack gap={1}>
+				<Heading as="h3" type="h4">
+					Card title
+				</Heading>
+				<Text>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+					finibus leo.
+				</Text>
+			</Stack>
+		</CardInner>
+	}
+/>
 ```
 
 <DoHeading />
@@ -51,123 +60,81 @@ Consider using other formats such as tables, if more than 12 cards are required.
 - add shadows to non-clickable cards
 - add multiple links in the content.
 
-## Images
-
-For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding (such as an icon), add it within the `CardInner` container.
-
-```jsx live
-<Columns as="ul" cols={2}>
-	<Card as="li">
-		<PlaceholderImage />
-		<CardInner>
-			<Stack gap={1}>
-				<Text as="p">Describing content</Text>
-				<CardLink href="#">Relevant link</CardLink>
-			</Stack>
-		</CardInner>
-	</Card>
-
-	<Card as="li">
-		<CardInner>
-			<Stack gap={1}>
-				<svg
-					fill="none"
-					height="64"
-					stroke="#00558B"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth="2"
-					viewBox="0 0 64 64"
-					width="64"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path d="M31 36H17" />
-					<path d="M47 59C53.6274 59 59 53.6274 59 47C59 40.3726 53.6274 35 47 35C40.3726 35 35 40.3726 35 47C35 53.6274 40.3726 59 47 59Z" />
-					<path d="M51 43C49.8647 44.8542 45.5972 50.9964 45.5972 50.9964L43 49" />
-					<path d="M27 46H17" />
-					<path d="M41 26H17" />
-					<path d="M32.9989 59H10.9989C9.89459 59 8.99925 58.1049 8.99897 57.0006C8.99475 40.3336 8.99555 23.6666 8.99894 6.99957C8.99916 5.89517 9.89462 5 10.999 5V5H42.0763C42.6601 5 43.2147 5.25505 43.5946 5.69823L54.5173 18.4382C54.8281 18.8007 54.9989 19.2625 54.9989 19.74V31" />
-					<path d="M43.0003 6L43 17C43 18.1045 43.8955 19 45 19H54" />
-				</svg>
-				<Text as="p">Describing content</Text>
-				<CardLink href="#">Relevant link</CardLink>
-			</Stack>
-		</CardInner>
-	</Card>
-</Columns>
-```
-
-## Clickable cards
-
-For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article.
-
-Fully-clickable cards must be given the `clickable` and `shadow` props to make itself and its `CardLink` appropriately indicate the clickable region. Do not wrap cards in an anchor tag as this can be a difficult experience for screen reader users.
-
-```jsx live
-<Card clickable shadow>
-	<PlaceholderImage />
-	<CardInner>
-		<Stack gap={1}>
-			<H3>
-				<CardLink href="#">Title of article</CardLink>
-			</H3>
-			<Text as="p">Some text</Text>
-		</Stack>
-	</CardInner>
-</Card>
-```
-
 ## Card headers
 
-Use `<CardHeader>` to give the card heading more visual prominence.
+Pass `<CardHeader>` to the `header` prop to give the card heading more visual prominence.
 
 `<CardHeader>` must come before `<CardInner>`.
 
 ```jsx live
 <Columns as="ul" cols={2}>
-	<Card as="li">
-		<CardHeader>
-			<Heading as="h3" type="h4">
-				Feature card title
-			</Heading>
-		</CardHeader>
-		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
-		</CardInner>
-	</Card>
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Text as="p">Additional conent relating to the card</Text>
+			</CardInner>
+		}
+		header={
+			<CardHeader>
+				<Heading as="h3" type="h4">
+					Feature card title
+				</Heading>
+			</CardHeader>
+		}
+	/>
 
-	<Card as="li">
-		<CardHeader background="bodyAlt">
-			<Heading as="h3" type="h4">
-				Feature card title
-			</Heading>
-		</CardHeader>
-		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
-		</CardInner>
-	</Card>
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Text as="p">Additional conent relating to the card</Text>
+			</CardInner>
+		}
+		header={
+			<CardHeader background="bodyAlt">
+				<Heading as="h3" type="h4">
+					Feature card title
+				</Heading>
+			</CardHeader>
+		}
+	/>
 
-	<Card as="li" clickable shadow>
-		<CardHeader>
-			<Heading as="h3" type="h4">
-				<CardLink href="#">Feature card title</CardLink>
-			</Heading>
-		</CardHeader>
-		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
-		</CardInner>
-	</Card>
+	<Card
+		as="li"
+		clickable
+		content={
+			<CardInner>
+				<Text as="p">Additional conent relating to the card</Text>
+			</CardInner>
+		}
+		header={
+			<CardHeader>
+				<Heading as="h3" type="h4">
+					<CardLink href="#">Feature card title</CardLink>
+				</Heading>
+			</CardHeader>
+		}
+		shadow
+	/>
 
-	<Card as="li" clickable shadow>
-		<CardHeader background="bodyAlt">
-			<Heading as="h3" type="h4">
-				<CardLink href="#">Feature card title</CardLink>
-			</Heading>
-		</CardHeader>
-		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
-		</CardInner>
-	</Card>
+	<Card
+		as="li"
+		clickable
+		content={
+			<CardInner>
+				<Text as="p">Additional conent relating to the card</Text>
+			</CardInner>
+		}
+		header={
+			<CardHeader>
+				<Heading as="h3" type="h4">
+					<CardLink href="#">Feature card title</CardLink>
+				</Heading>
+			</CardHeader>
+		}
+		shadow
+	/>
 </Columns>
 ```
 
@@ -184,8 +151,8 @@ A common use-case allows for a clickable card to also have separate actions rela
 <Callout tone="info">
 	Previous versions (v1.26.0 and below) only supported `CardFooter` as a child element of `Card`.
 
-    However, that API cannot fully support clickable cards with footer actions
-    without degrading the UX and accessibility, so we recommend migrating to `footer` for all cases.
+    However, that API cannot fully support various card configurations without degrading the UX and accessibility, so we recommend migrating  to the `footer`, `content` and
+    `header` props for all instances. [View the legacy documentation](/components/card/legacy).
 
 </Callout>
 
@@ -194,17 +161,28 @@ A common use-case allows for a clickable card to also have separate actions rela
 	const [isAdded, setIsAdded] = React.useState(false);
 	return (
 		<Columns as="ul" cols={2}>
-			<Card footer={<CardFooter>Supplementary info</CardFooter>}>
-				<CardInner>
-					<Stack gap={1}>
-						<H3>Card title</H3>
-						<Text as="p">Additional conent relating to the card</Text>
-					</Stack>
-				</CardInner>
-			</Card>
+			<Card
+				content={
+					<CardInner>
+						<Stack gap={1}>
+							<H3>Card title</H3>
+							<Text as="p">Additional conent relating to the card</Text>
+						</Stack>
+					</CardInner>
+				}
+				footer={<CardFooter>Supplementary info</CardFooter>}
+			/>
 
 			<Card
 				as="li"
+				content={
+					<CardInner>
+						<Stack gap={1}>
+							<H3>Card title</H3>
+							<Text as="p">Additional conent relating to the card</Text>
+						</Stack>
+					</CardInner>
+				}
 				footer={
 					<CardFooter>
 						<ToggleButton
@@ -217,34 +195,38 @@ A common use-case allows for a clickable card to also have separate actions rela
 					</CardFooter>
 				}
 				footerOutside
-			>
-				<CardInner>
-					<Stack gap={1}>
-						<H3>Card title</H3>
-						<Text as="p">Additional conent relating to the card</Text>
-					</Stack>
-				</CardInner>
-			</Card>
+			/>
 
 			<Card
 				as="li"
 				clickable
+				content={
+					<CardInner>
+						<Stack gap={1}>
+							<H3>
+								<CardLink href="#">Card title</CardLink>
+							</H3>
+							<Text as="p">Additional conent relating to the card</Text>
+						</Stack>
+					</CardInner>
+				}
 				footer={<CardFooter>Supplementary info</CardFooter>}
 				shadow
-			>
-				<CardInner>
-					<Stack gap={1}>
-						<H3>
-							<CardLink href="#">Card title</CardLink>
-						</H3>
-						<Text as="p">Additional conent relating to the card</Text>
-					</Stack>
-				</CardInner>
-			</Card>
+			/>
 
 			<Card
 				as="li"
 				clickable
+				content={
+					<CardInner>
+						<Stack gap={1}>
+							<H3>
+								<CardLink href="#">Card title</CardLink>
+							</H3>
+							<Text as="p">Additional conent relating to the card</Text>
+						</Stack>
+					</CardInner>
+				}
 				footer={
 					<CardFooter>
 						<ToggleButton
@@ -258,19 +240,94 @@ A common use-case allows for a clickable card to also have separate actions rela
 				}
 				footerOutside
 				shadow
-			>
-				<CardInner>
-					<Stack gap={1}>
-						<H3>
-							<CardLink href="#">Card title</CardLink>
-						</H3>
-						<Text as="p">Additional conent relating to the card</Text>
-					</Stack>
-				</CardInner>
-			</Card>
+			/>
 		</Columns>
 	);
 };
+```
+
+## Images
+
+For a full-width image in a card, pass the `img` tag to the `header` prop. For images with inner padding (such as an icon), add it within the `content`’s `CardInner` container.
+
+```jsx live
+<Columns as="ul" cols={2}>
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<Text as="p">Describing content</Text>
+					<CardLink href="#">Relevant link</CardLink>
+				</Stack>
+			</CardInner>
+		}
+		header={<PlaceholderImage />}
+	/>
+
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<PlaceholderPictogram />
+					<Text as="p">Describing content</Text>
+					<CardLink href="#">Relevant link</CardLink>
+				</Stack>
+			</CardInner>
+		}
+	/>
+</Columns>
+```
+
+## Clickable cards
+
+For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article.
+
+Fully-clickable cards must be given the `clickable` and `shadow` props to make itself and its `CardLink` appropriately indicate the clickable region. Do not wrap cards in an anchor tag as this can be a difficult experience for screen reader users.
+
+```jsx live
+<Columns as="ul" cols={2}>
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Title of article</CardLink>
+					</H3>
+					<Text as="p">Some text</Text>
+				</Stack>
+			</CardInner>
+		}
+		header={<PlaceholderImage />}
+		clickable
+		shadow
+	/>
+
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Title of article</CardLink>
+					</H3>
+					<Text as="p">Some text</Text>
+				</Stack>
+			</CardInner>
+		}
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+		footerOutside
+		header={<PlaceholderImage />}
+		clickable
+		shadow
+	/>
+</Columns>
 ```
 
 ## Equal card heights
@@ -278,10 +335,24 @@ A common use-case allows for a clickable card to also have separate actions rela
 The content within each card will often vary in height, so to prevent an uneven, stagged appearance of multiple cards within a list, ensure that the `Card` itself is the immediate child of a flex or grid component, such as `Columns`.
 
 ```jsx live
-<Columns as="ul" cols={{ xs: 2 }}>
+<Columns as="ul" cols={2}>
 	<Card
 		as="li"
 		clickable
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card title 1</CardLink>
+					</H3>
+					<Text>
+						Vestibulum non dui vitae augue efficitur viverra quis sit amet enim.
+						Vestibulum sagittis lacus arcu, eu interdum elit lobortis a. Aliquam
+						sit amet sollicitudin orci, sit amet rhoncus odio.
+					</Text>
+				</Stack>
+			</CardInner>
+		}
 		footer={
 			<CardFooter>
 				<TextLink href="#">An action</TextLink>
@@ -289,89 +360,112 @@ The content within each card will often vary in height, so to prevent an uneven,
 		}
 		footerOutside
 		shadow
-	>
-		<CardInner>
-			<Stack gap={1}>
-				<H3>
-					<CardLink href="#">Card title 1</CardLink>
-				</H3>
-				<Text>
-					Vestibulum non dui vitae augue efficitur viverra quis sit amet enim.
-					Vestibulum sagittis lacus arcu, eu interdum elit lobortis a. Aliquam
-					sit amet sollicitudin orci, sit amet rhoncus odio.
-				</Text>
-			</Stack>
-		</CardInner>
-	</Card>
-
-	<Card as="li" clickable shadow>
-		<CardInner>
-			<Stack gap={1}>
-				<H3>
-					<CardLink href="#">Card title 2</CardLink>
-				</H3>
-				<Text>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dictum
-					magna justo, ac mattis dolor sollicitudin fringilla.
-				</Text>
-			</Stack>
-		</CardInner>
-	</Card>
+	/>
 
 	<Card
 		as="li"
+		clickable
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Card title 2</CardLink>
+					</H3>
+					<Text>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dictum
+						magna justo, ac mattis dolor sollicitudin fringilla.
+					</Text>
+				</Stack>
+			</CardInner>
+		}
+		shadow
+	/>
+
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<Text>
+						Sed volutpat non enim ac efficitur. Etiam ut dolor tempor, tempor
+						tortor at, luctus elit.
+					</Text>
+				</Stack>
+			</CardInner>
+		}
 		footer={
 			<CardFooter>
 				<CardLink href="#">An action</CardLink>
 			</CardFooter>
 		}
-	>
-		<CardHeader>
-			<H3>
-				<CardLink href="#">Card title 3</CardLink>
-			</H3>
-		</CardHeader>
-		<CardInner>
-			<Stack gap={1}>
-				<Text>
-					Sed volutpat non enim ac efficitur. Etiam ut dolor tempor, tempor
-					tortor at, luctus elit.
-				</Text>
-			</Stack>
-		</CardInner>
-	</Card>
+		header={
+			<CardHeader>
+				<H3>
+					<CardLink href="#">Card title 3</CardLink>
+				</H3>
+			</CardHeader>
+		}
+	/>
 
-	<Card>
-		<CardInner>
-			<Stack gap={1}>
-				<svg
-					fill="none"
-					height="64"
-					stroke="#00558B"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth="2"
-					viewBox="0 0 64 64"
-					width="64"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path d="M31 36H17" />
-					<path d="M47 59C53.6274 59 59 53.6274 59 47C59 40.3726 53.6274 35 47 35C40.3726 35 35 40.3726 35 47C35 53.6274 40.3726 59 47 59Z" />
-					<path d="M51 43C49.8647 44.8542 45.5972 50.9964 45.5972 50.9964L43 49" />
-					<path d="M27 46H17" />
-					<path d="M41 26H17" />
-					<path d="M32.9989 59H10.9989C9.89459 59 8.99925 58.1049 8.99897 57.0006C8.99475 40.3336 8.99555 23.6666 8.99894 6.99957C8.99916 5.89517 9.89462 5 10.999 5V5H42.0763C42.6601 5 43.2147 5.25505 43.5946 5.69823L54.5173 18.4382C54.8281 18.8007 54.9989 19.2625 54.9989 19.74V31" />
-					<path d="M43.0003 6L43 17C43 18.1045 43.8955 19 45 19H54" />
-				</svg>
-				<Text as="p">
-					Quisque mattis orci et dui sagittis, quis molestie elit rhoncus. Sed
-					id luctus nunc, in lacinia nulla. Etiam iaculis nisl sit amet diam
-					auctor, eu ultricies nunc pellentesque.
-				</Text>
-				<CardLink href="#">An action</CardLink>
-			</Stack>
-		</CardInner>
-	</Card>
+	<Card
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<PlaceholderPictogram />
+					<Text as="p">
+						Quisque mattis orci et dui sagittis, quis molestie elit rhoncus. Sed
+						id luctus nunc, in lacinia nulla. Etiam iaculis nisl sit amet diam
+						auctor, eu ultricies nunc pellentesque.
+					</Text>
+					<CardLink href="#">An action</CardLink>
+				</Stack>
+			</CardInner>
+		}
+	/>
+
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Stack gap={1}>
+					<H3>
+						<CardLink href="#">Title of article</CardLink>
+					</H3>
+					<Text as="p">Some text</Text>
+				</Stack>
+			</CardInner>
+		}
+		header={<PlaceholderImage />}
+		clickable
+		shadow
+	/>
+
+	<Card
+		as="li"
+		content={
+			<CardInner>
+				<Text as="p">Some text</Text>
+			</CardInner>
+		}
+		footer={
+			<CardFooter>
+				<TextLink href="#">An action</TextLink>
+			</CardFooter>
+		}
+		footerOutside
+		header={
+			<>
+				<PlaceholderImage />
+				<CardHeader>
+					<Heading as="h3" type="h4">
+						Feature card title
+					</Heading>
+				</CardHeader>
+			</>
+		}
+		clickable
+		shadow
+	/>
 </Columns>
 ```
 
@@ -384,63 +478,81 @@ This logic ensures sufficient contrast between foreground and background element
 ```jsx live
 <Fragment>
 	<Flex as="ul" gap={1.5} padding={1.5}>
-		<Card as="li" shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card light 1</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
+		<Card
+			as="li"
+			content={
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card light 1</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			}
+			shadow
+			clickable
+		/>
 
-		<Card as="li" shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card light 2</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
+		<Card
+			as="li"
+			content={
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card light 2</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			}
+			shadow
+			clickable
+		/>
 	</Flex>
 
 	<Flex as="ul" background="body" gap={1.5} padding={1.5} palette="dark">
-		<Card as="li" clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card dark 1</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
+		<Card
+			as="li"
+			clickable
+			content={
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card dark 1</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			}
+		/>
 
-		<Card as="li" clickable>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h3" type="h4">
-						<CardLink href="#">Card dark 2</CardLink>
-					</Heading>
-					<Text>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-						finibus leo.
-					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
+		<Card
+			as="li"
+			clickable
+			content={
+				<CardInner>
+					<Stack gap={1}>
+						<Heading as="h3" type="h4">
+							<CardLink href="#">Card dark 2</CardLink>
+						</Heading>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
+							finibus leo.
+						</Text>
+					</Stack>
+				</CardInner>
+			}
+		/>
 	</Flex>
 </Fragment>
 ```

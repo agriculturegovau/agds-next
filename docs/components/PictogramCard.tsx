@@ -12,20 +12,27 @@ export const PictogramCard = ({
 	pictogram: string;
 	title: string;
 } & LinkProps) => (
-	<Card as="li" clickable shadow>
-		<Flex
-			alignItems="center"
-			background="shade"
-			justifyContent="center"
-			padding={1}
-		>
-			<img alt="" aria-hidden src={getPictogram(pictogram).src} />
-		</Flex>
-		<CardInner>
-			<CardLink {...props}>
-				{title}
-				<ChevronRightIcon />
-			</CardLink>
-		</CardInner>
-	</Card>
+	<Card
+		as="li"
+		clickable
+		content={
+			<CardInner>
+				<CardLink {...props}>
+					{title}
+					<ChevronRightIcon />
+				</CardLink>
+			</CardInner>
+		}
+		header={
+			<Flex
+				alignItems="center"
+				background="shade"
+				justifyContent="center"
+				padding={1}
+			>
+				<img alt="" aria-hidden src={getPictogram(pictogram).src} />
+			</Flex>
+		}
+		shadow
+	/>
 );

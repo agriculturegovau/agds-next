@@ -7,7 +7,7 @@ exports[`Card Basic With footerOutside renders correctly 1`] = `
     data-card="root"
   >
     <div
-      class="css-1fdewe2-boxStyles-CardInner"
+      class="css-4e6xlz-boxStyles-CardInner"
       data-card="inner"
     >
       <div
@@ -37,7 +37,7 @@ exports[`Card Basic With footerOutside renders correctly 1`] = `
 exports[`Card Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1jhbrny-boxStyles-Card"
+    class="css-hzn39x-boxStyles-Card"
     data-card="root"
   >
     <div
@@ -72,10 +72,10 @@ exports[`Card Footer prop With footerOutside renders correctly 1`] = `
 <div>
   <div
     class="css-17szma4-boxStyles"
-    data-card="root-with-footer"
+    data-card="root-with-parts"
   >
     <div
-      class="css-1jhbrny-boxStyles-Card"
+      class="css-hzn39x-boxStyles-Card"
     >
       <div
         class="css-1e4x2o5-boxStyles"
@@ -113,8 +113,8 @@ exports[`Card Footer prop With footerOutside renders correctly 1`] = `
 exports[`Card Footer prop renders correctly 1`] = `
 <div>
   <div
-    class="css-1jhbrny-boxStyles-Card"
-    data-card="root-with-footer"
+    class="css-hzn39x-boxStyles-Card"
+    data-card="root-with-parts"
   >
     <div
       class="css-17szma4-boxStyles"
@@ -159,7 +159,7 @@ exports[`Card With link With footerOutside renders correctly 1`] = `
     data-card="root"
   >
     <div
-      class="css-1ckmr1h-boxStyles-CardInner"
+      class="css-143np74-boxStyles-CardInner"
       data-card="inner"
     >
       <div
@@ -212,10 +212,10 @@ exports[`Card With link With footerOutside renders correctly 2`] = `
 <div>
   <div
     class="css-17szma4-boxStyles"
-    data-card="root-with-footer"
+    data-card="root-with-parts"
   >
     <div
-      class="css-97bn7n-boxStyles-Card"
+      class="css-e71640-boxStyles-Card"
     >
       <div
         class="css-1e4x2o5-boxStyles"
@@ -275,7 +275,7 @@ exports[`Card With link With footerOutside renders correctly 2`] = `
 exports[`Card With link renders correctly 1`] = `
 <div>
   <div
-    class="css-97bn7n-boxStyles-Card"
+    class="css-e71640-boxStyles-Card"
     data-card="root"
   >
     <div
@@ -331,8 +331,8 @@ exports[`Card With link renders correctly 1`] = `
 exports[`Card With link renders correctly 2`] = `
 <div>
   <div
-    class="css-97bn7n-boxStyles-Card"
-    data-card="root-with-footer"
+    class="css-e71640-boxStyles-Card"
+    data-card="root-with-parts"
   >
     <div
       class="css-17szma4-boxStyles"
