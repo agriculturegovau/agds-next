@@ -24,8 +24,6 @@ export type CardProps = PropsWithChildren<
 		as?: ElementType;
 		/** The CSS class name, typically generated from the `css` prop. */
 		className?: string;
-		/** A `CardInner` component with relevant children. */
-		content?: ReactNode;
 		/** A `CardFooter` component with relevant children. */
 		footer?: ReactNode;
 		/** A `CardHeader` component with relevant children and/or images. */
@@ -39,7 +37,6 @@ export const Card = ({
 	children,
 	className,
 	clickable,
-	content,
 	footer,
 	footerOutside,
 	header,
@@ -69,8 +66,8 @@ export const Card = ({
 				shadow,
 			}}
 		>
-			{/* To support all of the variations of cards, we now also have a separate content, footer and header props which allows us to structure the markup accordingly. */}
-			{content || footer || header ? (
+			{/* To support all of the variations of cards, we now also have a separate footer and header props which allows us to structure the markup accordingly. */}
+			{footer || header ? (
 				<Box
 					as={as} // Note: this should be an li when used in a card list
 					className={className}
@@ -91,7 +88,7 @@ export const Card = ({
 								{header}
 							</Box>
 							<Box display="flex" flexDirection="column" flexGrow={1}>
-								{content || children}
+								{children}
 							</Box>
 						</Box>
 					) : (
@@ -107,7 +104,7 @@ export const Card = ({
 								flexGrow={1}
 								{...(footerOutside ? styleProps : {})}
 							>
-								{content || children}
+								{children}
 							</Box>
 						</>
 					)}

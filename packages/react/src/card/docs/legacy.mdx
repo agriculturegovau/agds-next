@@ -1,25 +1,9 @@
 <Callout tone="info">
-	This is the legacy (versions v1.26.0 and below) documentation for Cards and will be removed in the next major version.
+	This is the legacy (versions v1.26.0 and below) documentation for Cards.
 
-    To support more card use-cases, v1.27.0 changed the `Card` API to also allow specific `content`, `footer` and `header` props. These props place their content in defined areas of the card to provide better control of their styling.
+    To support more card use-cases, v1.27.0 changed the `Card` API to also allow specific `footer` and `header` props. These props place their content in defined areas of the card to provide better control of their styling.
 
 </Callout>
-
-```jsx live
-<Card>
-	<CardInner>
-		<Stack gap={1}>
-			<Heading as="h3" type="h4">
-				Card title
-			</Heading>
-			<Text>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non
-				finibus leo.
-			</Text>
-		</Stack>
-	</CardInner>
-</Card>
-```
 
 ## Card headers
 
@@ -86,8 +70,8 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 <Callout tone="info">
 	In v1.26.0 and below, the `footerOustide` prop will degrade the visuals, UX
 	and accessibility of various card configurations, especially when `clickable`
-	or `CardHeader` is used. We recommend migrating to the `footer`, `content` and
-	`header` props for all instances.
+	or `CardHeader` is used. We recommend migrating to the `footer` and `header`
+	props for all instances.
 </Callout>
 
 ```jsx live
