@@ -15,7 +15,7 @@ import { StatusBadge } from '@ag.ds-next/react/status-badge';
 import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { VisuallyHidden } from '@ag.ds-next/react/src/a11y';
+import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Box } from '@ag.ds-next/react/box';
 import { mapSpacing, useTernaryState } from '@ag.ds-next/react/core';

@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-feature-link-list.cjs.js"
+	"main": "dist/ag.ds-next-react-feature-link-list.cjs.js",
+	"module": "dist/ag.ds-next-react-feature-link-list.esm.js"
 }
