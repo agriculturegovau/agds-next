@@ -47,7 +47,7 @@ require('prismjs/components/prism-diff');
 
 const PlaceholderImage = () => (
 	<img
-		alt="Grey placeholder image"
+		alt="Grey placeholder"
 		css={{ width: '100%' }}
 		src={withBasePath('/img/placeholder/600X260.png')}
 	/>
