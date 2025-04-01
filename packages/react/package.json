@@ -319,6 +319,10 @@
 			"module": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.esm.js",
 			"default": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.cjs.js"
 		},
+		"./conditional-reveal": {
+			"module": "./conditional-reveal/dist/ag.ds-next-react-conditional-reveal.esm.js",
+			"default": "./conditional-reveal/dist/ag.ds-next-react-conditional-reveal.cjs.js"
+		},
 		"./notification-badge": {
 			"module": "./notification-badge/dist/ag.ds-next-react-notification-badge.esm.js",
 			"default": "./notification-badge/dist/ag.ds-next-react-notification-badge.cjs.js"
