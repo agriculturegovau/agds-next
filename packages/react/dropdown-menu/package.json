@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-dropdown-menu.cjs.js"
+	"main": "dist/ag.ds-next-react-dropdown-menu.cjs.js",
+	"module": "dist/ag.ds-next-react-dropdown-menu.esm.js"
 }

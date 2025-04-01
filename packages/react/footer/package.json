@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-footer.cjs.js"
+	"main": "dist/ag.ds-next-react-footer.cjs.js",
+	"module": "dist/ag.ds-next-react-footer.esm.js"
 }

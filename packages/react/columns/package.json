@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-columns.cjs.js"
+	"main": "dist/ag.ds-next-react-columns.cjs.js",
+	"module": "dist/ag.ds-next-react-columns.esm.js"
 }

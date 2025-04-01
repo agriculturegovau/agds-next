@@ -1,4 +1,4 @@
-import { SearchInput } from '@ag.ds-next/react/src/search-input';
+import { SearchInput } from '@ag.ds-next/react/search-input';
 import { useSortAndFilterContext } from './lib/contexts';
 import { tableId } from './DataTable';
 
