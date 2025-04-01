@@ -8,10 +8,8 @@ export type TableRowProps = PropsWithChildren<{
 	'aria-rowindex'?: number;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
-	/** Callback function to execute when the row is clicked.
-	 * If you have a clickable element, use e.stopPropagation() to s
-	 */
-	onClick?: () => unknown;
+	/** Callback function to execute when the row is clicked. Callback is not run when clicked element is not a th, tr or td. */
+	onClick?: (event: React.MouseEvent<HTMLTableRowElement>) => unknown;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
 }>;
@@ -25,12 +23,17 @@ export function TableRow({
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
 
-	// create alternative hover and selected styles
-	// TODO: Fix js object auto sorting?
-	const alternativeStyles = {
-		...(selected && alternativeSelectedStyles),
-		...(onClick && alternativeHoverStyles),
-	};
+	function handleTableRowClick(event: React.MouseEvent<HTMLTableRowElement>) {
+		// Check when a element is positioned above then the table row element
+		// Cancel the rows click event if target is not a <th>, <tr> or <td>
+		const targetElement = event.target as HTMLElement;
+		if (!('nodeName' in targetElement)) return;
+		if (!['TH', 'TR', 'TD'].includes(targetElement.nodeName)) return;
+
+		event.stopPropagation();
+		if (!onClick) return;
+		onClick(event);
+	}
 
 	return (
 		<tr
@@ -69,6 +72,11 @@ export function TableRow({
 						position: 'relative',
 
 						'&:hover': {
+							'& > td, th': {
+								cursor: 'pointer',
+							},
+
+							// Add outline
 							'&::after': {
 								content: '""',
 								pointerEvents: 'none',
@@ -90,7 +98,7 @@ export function TableRow({
 					background: theme.lightSystemErrorMuted,
 				}),
 
-				...(alternativeStyles && {
+				...((selected || onClick) && {
 					// // Chrome and Firefox doesn't support ::after elements in fixed table layouts
 					// // FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
 					...(tableLayout === 'fixed' && {
@@ -107,7 +115,7 @@ export function TableRow({
 					},
 				}),
 			}}
-			onClick={onClick}
+			onClick={onClick ? handleTableRowClick : undefined}
 		>
 			{children}
 		</tr>
@@ -117,19 +125,19 @@ export function TableRow({
 // Use an outline instead of an ::after element
 const alternativeSelectedStyles = {
 	backgroundColor: boxPalette.selectedMuted,
-	outlineWidth: '1px',
-	outlineStyle: 'solid',
 	outlineColor: boxPalette.selected,
 	outlineOffset: '-3px',
+	outlineStyle: 'solid',
+	outlineWidth: '1px',
 	'&::after': { display: 'none' },
 };
 
 const alternativeHoverStyles = {
 	'&:hover': {
-		outlineWidth: '2px',
-		outlineStyle: 'solid',
 		outlineColor: boxPalette.selected,
 		outlineOffset: '-3px',
+		outlineStyle: 'solid',
+		outlineWidth: '2px',
 	},
 	'&::after': { display: 'none' },
 };

@@ -26,3 +26,13 @@ Using ARIA attributes can help users of assistive technology understand the purp
 The `aria-rowcount` attribute defines the total number of rows in a table, for users of assistive technology. This is useful for tables with pagination.
 
 The `aria-rowindex` attribute on `TableRow` defines its position with respect to the total number of rows within a `Table`.
+
+## TableRow and ‘onClick’
+
+The `onClick` prop on the table row component should only be used as an enhancement for mouse/touch users to be able to quickly activate the "main" action on the table.
+
+The callback function should only be used in scenarios where the paradigm is clearly understood and has many existing examples (eg. Google's Gmail application has a row click event to open the email).
+
+Don't rely on the `onClick` prop as the only means of activation. Users using a keyboard or screen reader must be able to access the `onClick` functionality using their device.
+
+Be aware of clickable regions of elements in table rows and tables (such as buttons and links) and ensure they have accessible sizing within a clickable table row to prevent users from accidentally trigger the table row click event.
