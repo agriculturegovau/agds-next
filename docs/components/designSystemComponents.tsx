@@ -1,8 +1,9 @@
 export {
-	tokens,
-	mq,
-	useTernaryState,
 	boxPalette,
+	mq,
+	packs,
+	tokens,
+	useTernaryState,
 } from '@ag.ds-next/react/core';
 export { Logo } from '@ag.ds-next/react/ag-branding';
 export {
@@ -79,6 +80,7 @@ export { Switch } from '@ag.ds-next/react/switch';
 export {
 	AlertFilledIcon,
 	AlertIcon,
+	ArchiveIcon,
 	ArrowDownIcon,
 	ArrowLeftIcon,
 	ArrowRightIcon,
@@ -96,6 +98,7 @@ export {
 	ChevronsRightIcon,
 	ChevronsUpDownIcon,
 	ChevronUpIcon,
+	ClockIcon,
 	CloseIcon,
 	CopyIcon,
 	CornerDownRightIcon,
@@ -103,6 +106,7 @@ export {
 	DownloadIcon,
 	EditIcon,
 	EmailIcon,
+	EmailOpenIcon,
 	ExitIcon,
 	ExternalLinkIcon,
 	FacebookIcon,
@@ -110,8 +114,11 @@ export {
 	FileIcon,
 	FileTextIcon,
 	FilterIcon,
+	FlagFilledIcon,
+	FlagIcon,
 	GripIcon,
 	HelpIcon,
+	HistoryIcon,
 	HomeIcon,
 	InboxIcon,
 	InfoFilledIcon,
@@ -134,14 +141,19 @@ export {
 	ProgressDoingIcon,
 	ProgressNotRequiredIcon,
 	ProgressTodoIcon,
+	RotateLeftIcon,
+	RotateRightIcon,
 	ScrollbarArrowLeftIcon,
 	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
+	StarFilledIcon,
+	StarIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	ThumbsDownIcon,
 	ThumbsUpIcon,
+	TimerIcon,
 	TwitterIcon,
 	UnlockIcon,
 	UploadIcon,
@@ -151,6 +163,8 @@ export {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	ZoomInIcon,
+	ZoomOutIcon,
 } from '@ag.ds-next/react/icon';
 export { ProgressIndicator } from '@ag.ds-next/react/progress-indicator';
 export { PageAlert, PageAlertTitle } from '@ag.ds-next/react/page-alert';
@@ -285,13 +299,18 @@ export {
 	isValidTime,
 } from '@ag.ds-next/react/time-input';
 export { TimePicker } from '@ag.ds-next/react/time-picker';
+export { ToggleButton } from '@ag.ds-next/react/toggle-button';
 
 // Used to populate options on documentation site and playroom
+// these have to be relative imports because these aren't properly
+// exported from the package and the package has an `exports` field
+// which restricts importing things not specified in the `exports` field
+// (though importing relatively like this isn't restricted)
 export {
 	COUNTRY_OPTIONS,
 	NAME_OPTIONS,
-} from '@ag.ds-next/react/src/combobox/test-utils';
+} from '../../packages/react/src/combobox/test-utils';
 export {
 	createExampleFile,
 	createExampleImageFile,
-} from '@ag.ds-next/react/src/file-upload/test-utils';
+} from '../../packages/react/src/file-upload/test-utils';

@@ -1369,6 +1369,17 @@ const snippets: Array<Snippet> = [
 		name: 'Basic',
 		code: `<TimePicker label="Select a time" onChange={() => {}} />`,
 	},
+	{
+		group: 'ToggleButton',
+		name: 'Basic',
+		code: `<ToggleButton
+					iconType="flag"
+					label="Flag message"
+					onClick={console.log}
+					pressed={false}
+					pressedLabel="Unflag message"
+				/>`,
+	},
 ];
 
 export default snippets;

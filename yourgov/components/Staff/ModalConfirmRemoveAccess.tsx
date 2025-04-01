@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
-import { ButtonGroup, Button } from '@ag.ds-next/react/src/button';
-import { Text } from '@ag.ds-next/react/src/text';
-import { Modal } from '@ag.ds-next/react/src/modal';
+import { ButtonGroup, Button } from '@ag.ds-next/react/button';
+import { Text } from '@ag.ds-next/react/text';
+import { Modal } from '@ag.ds-next/react/modal';
 import { plural /* RowData */ } from './lib/utils';
 import { StaffMember, StaffMemberWithIndex } from './lib/types';
 

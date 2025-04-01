@@ -8,6 +8,8 @@ export type AppLayoutFooterProps = PropsWithChildren<{
 	background?: 'body' | 'bodyAlt';
 	/** Defines an identifier (ID) which must be unique. */
 	id?: string;
+	/** The maximum width of the container. */
+	maxWidth?: 'container' | 'containerLg';
 	palette?: ResponsiveProp<BoxPalette>;
 }>;
 
@@ -15,6 +17,7 @@ export function AppLayoutFooter({
 	background = 'body',
 	children,
 	id,
+	maxWidth,
 	palette,
 }: AppLayoutFooterProps) {
 	return (
@@ -25,7 +28,7 @@ export function AppLayoutFooter({
 			id={id}
 			palette={palette}
 		>
-			<Content>
+			<Content maxWidth={maxWidth}>
 				<Stack
 					borderColor="muted"
 					borderTop

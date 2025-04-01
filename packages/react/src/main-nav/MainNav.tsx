@@ -19,6 +19,8 @@ export type MainNavProps = PropsWithChildren<{
 	id?: string;
 	/** List of navigation items to display. */
 	items?: MainNavListItemType[];
+	/** The maximum width of the container. */
+	maxWidth?: 'container' | 'containerLg';
 	/** Optional list of navigation items to display on the right of the component. */
 	secondaryItems?: (MainNavListItemType | MainNavListDropdown)[];
 }>;
@@ -30,6 +32,7 @@ export function MainNav({
 	focusMode = false,
 	id,
 	items,
+	maxWidth = 'container',
 	secondaryItems,
 }: MainNavProps) {
 	const [isMobileMenuOpen, openMobileMenu, closeMobileMenu] =
@@ -50,6 +53,7 @@ export function MainNav({
 				id={id}
 				isMobileMenuOpen={isMobileMenuOpen}
 				items={items}
+				maxWidth={maxWidth}
 				openMobileMenu={openMobileMenu}
 				secondaryItems={secondaryItems}
 			/>

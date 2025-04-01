@@ -17,6 +17,8 @@ export type HeaderProps = {
 	href?: string;
 	/** The logo to display. */
 	logo?: ReactElement;
+	/** The maximum width of the container. */
+	maxWidth?: 'container' | 'containerLg';
 	/** Content to placed on the right side of the Header. */
 	rightContent?: ReactNode;
 	/** The href to link to, for example "/". */
@@ -36,6 +38,7 @@ export function Header({
 	heading,
 	href = '/',
 	logo,
+	maxWidth = 'container',
 	rightContent,
 	secondHref,
 	secondLogo,
@@ -45,7 +48,7 @@ export function Header({
 	const hasRightContent = !!rightContent;
 
 	return (
-		<HeaderContainer background={background} size={size}>
+		<HeaderContainer background={background} maxWidth={maxWidth} size={size}>
 			<Column columnSpan={{ xs: 12, lg: hasRightContent ? 8 : 12 }}>
 				<HeaderBrand
 					badgeLabel={badgeLabel}
@@ -65,7 +68,12 @@ export function Header({
 				<Column
 					alignSelf="start"
 					columnSpan={{ xs: 12, lg: 4 }}
-					css={packs.print.hidden}
+					css={[
+						{
+							height: '100%',
+						},
+						packs.print.hidden,
+					]}
 				>
 					{rightContent}
 				</Column>

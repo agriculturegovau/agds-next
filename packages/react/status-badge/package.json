@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-status-badge.cjs.js"
+	"main": "dist/ag.ds-next-react-status-badge.cjs.js",
+	"module": "dist/ag.ds-next-react-status-badge.esm.js"
 }
