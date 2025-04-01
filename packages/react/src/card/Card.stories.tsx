@@ -558,6 +558,7 @@ export const Compositions = () => {
 						</Card>
 
 						<Card
+							clickable
 							footer={
 								<CardFooter>
 									<TextLink href="#">An action</TextLink>
@@ -573,12 +574,11 @@ export const Compositions = () => {
 									/>
 									<CardHeader>
 										<Heading as="h3" type="h4">
-											Feature card title
+											<CardLink href="#">Feature card title</CardLink>
 										</Heading>
 									</CardHeader>
 								</>
 							}
-							clickable
 							shadow
 						>
 							<CardInner>

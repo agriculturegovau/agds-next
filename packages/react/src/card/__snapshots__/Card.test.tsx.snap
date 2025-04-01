@@ -3,11 +3,11 @@
 exports[`Card Basic With footerOutside renders correctly 1`] = `
 <div>
   <div
-    class="css-6akge0-boxStyles-Card"
+    class="css-hzn39x-boxStyles-Card"
     data-card="root"
   >
     <div
-      class="css-4e6xlz-boxStyles-CardInner"
+      class="css-1e4x2o5-boxStyles"
       data-card="inner"
     >
       <div
@@ -26,7 +26,7 @@ exports[`Card Basic With footerOutside renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="css-1xq6tf4-boxStyles-CardFooter"
+      class="css-1w3s1r0-boxStyles"
     >
       Footer
     </div>
@@ -76,6 +76,7 @@ exports[`Card Footer prop With footerOutside renders correctly 1`] = `
   >
     <div
       class="css-hzn39x-boxStyles-Card"
+      data-card="children"
     >
       <div
         class="css-1e4x2o5-boxStyles"
@@ -99,12 +100,9 @@ exports[`Card Footer prop With footerOutside renders correctly 1`] = `
     </div>
     <div
       class="css-79i25n-boxStyles"
+      data-card="footer"
     >
-      <div
-        class="css-1xq6tf4-boxStyles-CardFooter"
-      >
-        Footer
-      </div>
+      footer
     </div>
   </div>
 </div>
@@ -118,6 +116,7 @@ exports[`Card Footer prop renders correctly 1`] = `
   >
     <div
       class="css-17szma4-boxStyles"
+      data-card="children"
     >
       <div
         class="css-1e4x2o5-boxStyles"
@@ -141,11 +140,93 @@ exports[`Card Footer prop renders correctly 1`] = `
     </div>
     <div
       class="css-79i25n-boxStyles"
+      data-card="footer"
+    >
+      footer
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Header prop With footerOutside renders correctly 1`] = `
+<div>
+  <div
+    class="css-17szma4-boxStyles"
+    data-card="root-with-parts"
+  >
+    <div
+      class="css-hzn39x-boxStyles-Card"
+      data-card="header-footer-wrapper"
     >
       <div
-        class="css-1w3s1r0-boxStyles"
+        class="css-un0aeu-boxStyles"
+        data-card="header"
       >
-        Footer
+        header
+      </div>
+      <div
+        class="css-17szma4-boxStyles"
+        data-card="children"
+      >
+        <div
+          class="css-4e6xlz-boxStyles-CardInner"
+          data-card="inner"
+        >
+          <div
+            class="css-1lvzxao-boxStyles"
+          >
+            <h2
+              class="css-e6rsgj-boxStyles"
+            >
+              Card heading
+            </h2>
+            <p
+              class="css-dbscsh-boxStyles"
+            >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Header prop renders correctly 1`] = `
+<div>
+  <div
+    class="css-hzn39x-boxStyles-Card"
+    data-card="root-with-parts"
+  >
+    <div
+      class="css-un0aeu-boxStyles"
+      data-card="header"
+    >
+      header
+    </div>
+    <div
+      class="css-17szma4-boxStyles"
+      data-card="children"
+    >
+      <div
+        class="css-1e4x2o5-boxStyles"
+        data-card="inner"
+      >
+        <div
+          class="css-1lvzxao-boxStyles"
+        >
+          <h2
+            class="css-e6rsgj-boxStyles"
+          >
+            Card heading
+          </h2>
+          <p
+            class="css-dbscsh-boxStyles"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -155,11 +236,11 @@ exports[`Card Footer prop renders correctly 1`] = `
 exports[`Card With link With footerOutside renders correctly 1`] = `
 <div>
   <div
-    class="css-6akge0-boxStyles-Card"
+    class="css-e71640-boxStyles-Card"
     data-card="root"
   >
     <div
-      class="css-143np74-boxStyles-CardInner"
+      class="css-1e4x2o5-boxStyles"
       data-card="inner"
     >
       <div
@@ -197,75 +278,6 @@ exports[`Card With link With footerOutside renders correctly 1`] = `
             />
           </svg>
         </a>
-      </div>
-    </div>
-    <div
-      class="css-1xq6tf4-boxStyles-CardFooter"
-    >
-      Footer
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Card With link With footerOutside renders correctly 2`] = `
-<div>
-  <div
-    class="css-17szma4-boxStyles"
-    data-card="root-with-parts"
-  >
-    <div
-      class="css-e71640-boxStyles-Card"
-    >
-      <div
-        class="css-1e4x2o5-boxStyles"
-        data-card="inner"
-      >
-        <div
-          class="css-1lvzxao-boxStyles"
-        >
-          <h2
-            class="css-e6rsgj-boxStyles"
-          >
-            Card heading
-          </h2>
-          <p
-            class="css-dbscsh-boxStyles"
-          >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
-          </p>
-          <a
-            class="css-1qimly2-CardLink"
-            href="#"
-          >
-            Linking out
-            <svg
-              aria-hidden="true"
-              class="css-lq07bo-Icon"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m9 18 6-6-6-6"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      class="css-79i25n-boxStyles"
-    >
-      <div
-        class="css-1xq6tf4-boxStyles-CardFooter"
-      >
-        Footer
       </div>
     </div>
   </div>
@@ -317,75 +329,6 @@ exports[`Card With link renders correctly 1`] = `
             />
           </svg>
         </a>
-      </div>
-    </div>
-    <div
-      class="css-1w3s1r0-boxStyles"
-    >
-      Footer
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Card With link renders correctly 2`] = `
-<div>
-  <div
-    class="css-e71640-boxStyles-Card"
-    data-card="root-with-parts"
-  >
-    <div
-      class="css-17szma4-boxStyles"
-    >
-      <div
-        class="css-1e4x2o5-boxStyles"
-        data-card="inner"
-      >
-        <div
-          class="css-1lvzxao-boxStyles"
-        >
-          <h2
-            class="css-e6rsgj-boxStyles"
-          >
-            Card heading
-          </h2>
-          <p
-            class="css-dbscsh-boxStyles"
-          >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, voluptat
-          </p>
-          <a
-            class="css-1qimly2-CardLink"
-            href="#"
-          >
-            Linking out
-            <svg
-              aria-hidden="true"
-              class="css-lq07bo-Icon"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m9 18 6-6-6-6"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      class="css-79i25n-boxStyles"
-    >
-      <div
-        class="css-1w3s1r0-boxStyles"
-      >
-        Footer
       </div>
     </div>
   </div>

@@ -66,7 +66,7 @@ export const Card = ({
 				shadow,
 			}}
 		>
-			{/* To support all of the variations of cards, we now also have a separate footer and header props which allows us to structure the markup accordingly. */}
+			{/* To support all of the variations of cards, we now also have separate footer and header props to allow us to structure the markup appropriately. */}
 			{footer || header ? (
 				<Box
 					as={as} // Note: this should be an li when used in a card list
@@ -79,26 +79,33 @@ export const Card = ({
 				>
 					{header && footerOutside ? (
 						<Box
+							data-card="header-footer-wrapper"
 							display="flex"
 							flexDirection="column"
 							flexGrow={1}
 							{...styleProps}
 						>
-							<Box display="flex" flexDirection="column">
+							<Box data-card="header" display="flex" flexDirection="column">
 								{header}
 							</Box>
-							<Box display="flex" flexDirection="column" flexGrow={1}>
+							<Box
+								data-card="children"
+								display="flex"
+								flexDirection="column"
+								flexGrow={1}
+							>
 								{children}
 							</Box>
 						</Box>
 					) : (
 						<>
 							{header && (
-								<Box display="flex" flexDirection="column">
+								<Box data-card="header" display="flex" flexDirection="column">
 									{header}
 								</Box>
 							)}
 							<Box
+								data-card="children"
 								display="flex"
 								flexDirection="column"
 								flexGrow={1}
@@ -108,7 +115,7 @@ export const Card = ({
 							</Box>
 						</>
 					)}
-					{footer && <Box>{footer}</Box>}
+					{footer && <Box data-card="footer">{footer}</Box>}
 				</Box>
 			) : (
 				<Box

@@ -15,9 +15,9 @@ expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function CardExample({ footerOutside = false }) {
+function BasicCardExample() {
 	return (
-		<Card footerOutside={footerOutside}>
+		<Card>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">
@@ -34,9 +34,9 @@ function CardExample({ footerOutside = false }) {
 	);
 }
 
-function CardLinkExample({ footerOutside = false }) {
+function BasicCardLinkExample() {
 	return (
-		<Card clickable footerOutside={footerOutside} shadow>
+		<Card clickable shadow>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">
@@ -52,17 +52,13 @@ function CardLinkExample({ footerOutside = false }) {
 					</CardLink>
 				</Stack>
 			</CardInner>
-			<CardFooter>Footer</CardFooter>
 		</Card>
 	);
 }
 
-function CardFooterExample({ footerOutside = false }) {
+function PropCardExample({ footer = '', footerOutside = false, header = '' }) {
 	return (
-		<Card
-			footer={<CardFooter>Footer</CardFooter>}
-			footerOutside={footerOutside}
-		>
+		<Card footer={footer} footerOutside={footerOutside} header={header}>
 			<CardInner>
 				<Stack gap={1}>
 					<Heading as="h2" type="h3">
@@ -72,33 +68,6 @@ function CardFooterExample({ footerOutside = false }) {
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
 						voluptat
 					</Text>
-				</Stack>
-			</CardInner>
-		</Card>
-	);
-}
-
-function CardLinkFooterExample({ footerOutside = false }) {
-	return (
-		<Card
-			clickable
-			footer={<CardFooter>Footer</CardFooter>}
-			footerOutside={footerOutside}
-			shadow
-		>
-			<CardInner>
-				<Stack gap={1}>
-					<Heading as="h2" type="h3">
-						Card heading
-					</Heading>
-					<Text as="p">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-						voluptat
-					</Text>
-					<CardLink href="#">
-						Linking out
-						<ChevronRightIcon />
-					</CardLink>
 				</Stack>
 			</CardInner>
 		</Card>
@@ -108,7 +77,7 @@ function CardLinkFooterExample({ footerOutside = false }) {
 describe('Card', () => {
 	describe('Basic', () => {
 		it('renders correctly', () => {
-			const { container } = render(<CardExample />);
+			const { container } = render(<BasicCardExample />);
 
 			expect(container.querySelector('div')).toHaveAttribute(
 				'data-card',
@@ -118,7 +87,7 @@ describe('Card', () => {
 		});
 
 		it('renders valid HTML with no a11y violations', async () => {
-			const { container } = render(<CardExample />);
+			const { container } = render(<BasicCardExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
@@ -127,12 +96,12 @@ describe('Card', () => {
 
 		describe('With footerOutside', () => {
 			it('renders correctly', () => {
-				const { container } = render(<CardExample footerOutside />);
+				const { container } = render(<BasicCardExample />);
 				expect(container).toMatchSnapshot();
 			});
 
 			it('renders valid HTML with no a11y violations', async () => {
-				const { container } = render(<CardExample footerOutside />);
+				const { container } = render(<BasicCardExample />);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
 				});
@@ -143,7 +112,7 @@ describe('Card', () => {
 
 	describe('With link', () => {
 		it('renders correctly', () => {
-			const { container } = render(<CardLinkExample />);
+			const { container } = render(<BasicCardLinkExample />);
 
 			expect(container.querySelector('div')).toHaveAttribute(
 				'data-card',
@@ -153,7 +122,7 @@ describe('Card', () => {
 		});
 
 		it('renders valid HTML with no a11y violations', async () => {
-			const { container } = render(<CardLinkExample />);
+			const { container } = render(<BasicCardLinkExample />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
@@ -162,12 +131,59 @@ describe('Card', () => {
 
 		describe('With footerOutside', () => {
 			it('renders correctly', () => {
-				const { container } = render(<CardLinkExample footerOutside />);
+				const { container } = render(<BasicCardLinkExample />);
 				expect(container).toMatchSnapshot();
 			});
 
 			it('renders valid HTML with no a11y violations', async () => {
-				const { container } = render(<CardLinkExample footerOutside />);
+				const { container } = render(<BasicCardLinkExample />);
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+				});
+				expect(await axe(container)).toHaveNoViolations();
+			});
+		});
+	});
+
+	describe('Header prop', () => {
+		it('renders correctly', () => {
+			const { container } = render(<PropCardExample header="header" />);
+
+			expect(container.querySelector('div')).toHaveAttribute(
+				'data-card',
+				'root-with-parts'
+			);
+			const header = container.querySelector('[data-card="header"]');
+			expect(header).toBeInTheDocument();
+			expect(header).toHaveTextContent('header');
+			expect(container).toMatchSnapshot();
+		});
+
+		it('renders valid HTML with no a11y violations', async () => {
+			const { container } = render(<PropCardExample header="header" />);
+			expect(container).toHTMLValidate({
+				extends: ['html-validate:recommended'],
+			});
+			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		describe('With footerOutside', () => {
+			it('renders correctly', () => {
+				const { container } = render(
+					<PropCardExample footerOutside header="header" />
+				);
+				const headerFooterWrapper = container.querySelector(
+					'[data-card="header-footer-wrapper"]'
+				);
+				expect(headerFooterWrapper).toBeInTheDocument();
+				expect(headerFooterWrapper).toHaveTextContent('header');
+				expect(container).toMatchSnapshot();
+			});
+
+			it('renders valid HTML with no a11y violations', async () => {
+				const { container } = render(
+					<PropCardExample footerOutside header="header" />
+				);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
 				});
@@ -178,17 +194,20 @@ describe('Card', () => {
 
 	describe('Footer prop', () => {
 		it('renders correctly', () => {
-			const { container } = render(<CardFooterExample />);
+			const { container } = render(<PropCardExample footer="footer" />);
 
 			expect(container.querySelector('div')).toHaveAttribute(
 				'data-card',
 				'root-with-parts'
 			);
+			const footer = container.querySelector('[data-card="footer"]');
+			expect(footer).toBeInTheDocument();
+			expect(footer).toHaveTextContent('footer');
 			expect(container).toMatchSnapshot();
 		});
 
 		it('renders valid HTML with no a11y violations', async () => {
-			const { container } = render(<CardFooterExample />);
+			const { container } = render(<PropCardExample footer="footer" />);
 			expect(container).toHTMLValidate({
 				extends: ['html-validate:recommended'],
 			});
@@ -197,47 +216,16 @@ describe('Card', () => {
 
 		describe('With footerOutside', () => {
 			it('renders correctly', () => {
-				const { container } = render(<CardFooterExample footerOutside />);
+				const { container } = render(
+					<PropCardExample footer="footer" footerOutside />
+				);
 				expect(container).toMatchSnapshot();
 			});
 
 			it('renders valid HTML with no a11y violations', async () => {
-				const { container } = render(<CardFooterExample footerOutside />);
-				expect(container).toHTMLValidate({
-					extends: ['html-validate:recommended'],
-				});
-				expect(await axe(container)).toHaveNoViolations();
-			});
-		});
-	});
-
-	describe('With link', () => {
-		it('renders correctly', () => {
-			const { container } = render(<CardLinkFooterExample />);
-
-			expect(container.querySelector('div')).toHaveAttribute(
-				'data-card',
-				'root-with-parts'
-			);
-			expect(container).toMatchSnapshot();
-		});
-
-		it('renders valid HTML with no a11y violations', async () => {
-			const { container } = render(<CardLinkFooterExample />);
-			expect(container).toHTMLValidate({
-				extends: ['html-validate:recommended'],
-			});
-			expect(await axe(container)).toHaveNoViolations();
-		});
-
-		describe('With footerOutside', () => {
-			it('renders correctly', () => {
-				const { container } = render(<CardLinkFooterExample footerOutside />);
-				expect(container).toMatchSnapshot();
-			});
-
-			it('renders valid HTML with no a11y violations', async () => {
-				const { container } = render(<CardLinkFooterExample footerOutside />);
+				const { container } = render(
+					<PropCardExample footer="footer" footerOutside />
+				);
 				expect(container).toHTMLValidate({
 					extends: ['html-validate:recommended'],
 				});
