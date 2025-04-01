@@ -23,7 +23,7 @@ type Story = StoryObj<typeof DividerWithText>;
 
 export const Basic: Story = {};
 
-export const TextAlign: Story = {
+export const TextAlignLeft: Story = {
 	args: { textAlign: 'left' },
 };
 

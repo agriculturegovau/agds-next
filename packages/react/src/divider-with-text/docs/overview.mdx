@@ -1,6 +1,6 @@
 ---
 title: Divider with Text
-description: A horizontal rule with text that separates blocks of content.
+description: A horizontal rule used to visually separate content with a label.
 group: Content
 storybookPath: /story/Content-DividerWithText--basic
 unreleased: true
@@ -10,62 +10,62 @@ relatedComponents: ['divider']
 
 ```jsx live
 <DividerWithText>
-	<Text>Divider label</Text>
+	<Text>Label</Text>
 </DividerWithText>
 ```
 
-The divider with text should be used sparingly and used only where appropriate to give context on the content split by the divider. For example, this component can be used for general sign in divider use. Use [Divider](/components/divider) if you do not require a label.
+Common use cases include dividing sections of a form, marking a logical break in content, or indicating options such as "or" between choices.
+
+Use the [Divider](/components/divider) component if you want to separate content without a text label.
 
 <DoHeading />
 
 - use to create visual space and separation between blocks of content like form field sets in the main content area
 - divide and logically group content sections to enhance clarity and organisation
-- position above buttons groups at the bottom of a form to give prominence to the action area
-- include a concise label
+- use left alignment when the label needs to align with form fields or buttons for consistency in layout
+- ensure the label text is succinct
 - use the correct semantics on the text element.
 
 <DontHeading />
 
-- passthrough anything other than text elements as children
+- use anything other than text as a label
 - include a long label.
 
 ## Example
 
 ```jsx live
-<Stack gap={2}>
-	<ControlGroup
-		label="Business structure"
-		hint="When you make a selection, you will be asked for your Australian Business Number (ABN) or Australian Company Number (ACN)."
-		block
-		required
-	>
-		<Radio checked={true}>Sole trader</Radio>
-		<Radio checked={false}>Business</Radio>
-		<Radio checked={false}>Company</Radio>
-	</ControlGroup>
-	<DividerWithText textAlign="left">
-		<Text>Divider label</Text>
-	</DividerWithText>
-	<TextInput label="Australian Business Number (ABN)" required />
+<Stack gap={3}>
+	<FormStack>
+		<TextInput label="Email address" maxWidth="xl" required type="email" />
+		<PasswordInput label="Password" maxWidth="xl" required />
+		<ButtonGroup>
+			<Button type="submit">Sign in</Button>
+		</ButtonGroup>
+	</FormStack>
+	<DividerWithText textAlign="left">Or</DividerWithText>
+	<ButtonGroup>
+		<ButtonLink href="#" variant="secondary">
+			Create an account
+		</ButtonLink>
+	</ButtonGroup>
 </Stack>
 ```
 
 ## Label alignment
 
-By default, the label alignment is set to centre.
+In the default state, the divier line spans the full width of the container, with the label centered in the middle.
+
+When the label is left-aligned, it aligns with form inputs, buttons, or any other elements that follow the same alignment.
 
 ```jsx live
-<DividerWithText label="center">
-	<Text>Divider label</Text>
-</DividerWithText>
-```
-
-You can also align the label to the left.
-
-```jsx live
-<DividerWithText textAlign="left">
-	<Text>Divider label</Text>
-</DividerWithText>
+<Stack gap={2}>
+	<DividerWithText>
+		<Text>Or</Text>
+	</DividerWithText>
+	<DividerWithText textAlign="left">
+		<Text>Or</Text>
+	</DividerWithText>
+</Stack>
 ```
 
 ## Colour
