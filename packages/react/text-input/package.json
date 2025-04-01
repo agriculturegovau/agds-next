@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-text-input.cjs.js"
+	"main": "dist/ag.ds-next-react-text-input.cjs.js",
+	"module": "dist/ag.ds-next-react-text-input.esm.js"
 }

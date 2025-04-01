@@ -1,3 +1,4 @@
 {
-	"main": "dist/ag.ds-next-react-filter-sidebar.cjs.js"
+	"main": "dist/ag.ds-next-react-filter-sidebar.cjs.js",
+	"module": "dist/ag.ds-next-react-filter-sidebar.esm.js"
 }

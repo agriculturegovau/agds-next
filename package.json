@@ -32,7 +32,7 @@
 		"lint:typescript": "tsc --noEmit",
 		"lint:yourgov": "yarn --cwd yourgov lint",
 		"new:icon": "plop --plopfile scripts/new-icon/script.mjs && yarn format && yarn manypkg fix && yarn install && yarn test",
-		"new:package": "plop --plopfile scripts/new-package.mjs && yarn format && yarn manypkg fix && yarn install",
+		"new:package": "plop --plopfile scripts/new-package.mjs && yarn format && yarn manypkg fix && preconstruct fix && yarn install",
 		"playroom:build": "yarn --cwd docs playroom:build",
 		"playroom:dev": "yarn --cwd docs playroom:dev",
 		"publish-changed": "yarn build && yarn changeset publish",
@@ -106,6 +106,7 @@
 	"preconstruct": {
 		"packages": [
 			"packages/*"
-		]
+		],
+		"exports": true
 	}
 }
