@@ -8,8 +8,8 @@ export type ConditionalRevealProps = PropsWithChildren<{
 }>;
 
 export function ConditionalReveal({
-	visible,
 	children,
+	visible,
 }: ConditionalRevealProps) {
 	if (!visible) {
 		return null;
