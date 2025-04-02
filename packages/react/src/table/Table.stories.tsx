@@ -1,23 +1,23 @@
-import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { SelectableTableBatchActions } from '../../../../.storybook/stories/SelectableTableBatchActions/SelectableTableBatchActions';
-import { Checkbox } from '../checkbox';
 import { VisuallyHidden } from '../a11y';
+import { Box } from '../box';
+import { Checkbox } from '../checkbox';
+import { Flex } from '../flex';
+import { H1, H2 } from '../heading';
+import { Stack } from '../stack';
+import { StatusBadge } from '../status-badge';
 import { Text } from '../text';
 import { TextLink } from '../text-link';
-import { StatusBadge } from '../status-badge';
-import { Box } from '../box';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
-import { H1, H2 } from '../heading';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
 import { TableCell } from './TableCell';
-import { TableHeader } from './TableHeader';
 import { TableHead } from './TableHead';
-import { TableWrapper } from './TableWrapper';
+import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
+import { TableWrapper } from './TableWrapper';
 
 const meta: Meta<typeof Table> = {
 	title: 'content/Table',
@@ -462,6 +462,52 @@ export const SelectableBasic: Story = {
 export const SelectableWithBatchActions: Story = {
 	name: 'With selectable rows and batch actions',
 	render: SelectableTableBatchActions,
+};
+
+export const WithRowOnClick: Story = {
+	name: 'with clickable rows',
+	render: (args) => (
+		<TableWrapper>
+			<Table {...args}>
+				<TableCaption>
+					Population of Australian states and territories, December 2015
+				</TableCaption>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Population
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous decade %
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{exampleData.map(
+						({ location, population, growthYear, growthDecade }, index) => (
+							<TableRow key={index} onClick={console.log}>
+								<TableCell as="th" fontWeight="bold" scope="row">
+									<TextLink href="#" id="REF-AB3CD4EF">
+										{location}
+									</TextLink>
+								</TableCell>
+
+								<TableCell textAlign="right">
+									{numberFormatter.format(population)}
+								</TableCell>
+								<TableCell textAlign="right">{growthYear}%</TableCell>
+								<TableCell textAlign="right">{growthDecade}%</TableCell>
+							</TableRow>
+						)
+					)}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	),
 };
 
 const exampleData = [
