@@ -87,12 +87,11 @@ describe('TableRow', () => {
 		expect(await axe(container)).toHaveNoViolations();
 	});
 
-	describe('onClick event', () => {
+	describe('row onClick', () => {
 		it('executes the `onClick` event on the table row when the table cell is click', async () => {
 			const mockOnClickTableRow = jest.fn(() => null);
-			const mockOnClickButton = jest.fn(() => null);
 
-			renderTable(mockOnClickTableRow, mockOnClickButton);
+			renderTable(mockOnClickTableRow);
 
 			const tableCellElement = screen.getByText('New South Wales');
 			act(() => {

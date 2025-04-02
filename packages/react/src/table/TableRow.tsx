@@ -8,7 +8,7 @@ export type TableRowProps = PropsWithChildren<{
 	'aria-rowindex'?: number;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
-	/** Callback function to execute when the row is clicked. Callback is not run when clicked element is not a th, tr or td. */
+	/** Callback function to execute when the row is clicked. Callback is not run when the clicked element is not a th, tr or td. */
 	onClick?: (event: React.MouseEvent<HTMLTableRowElement>) => unknown;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
@@ -23,15 +23,16 @@ export function TableRow({
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
 
-	function handleTableRowClick(event: React.MouseEvent<HTMLTableRowElement>) {
-		// Check when a element is positioned above then the table row element
+	function onClickTableRow(event: React.MouseEvent<HTMLTableRowElement>) {
+		// Check when a element is positioned above the table row element
 		// Cancel the rows click event if target is not a <th>, <tr> or <td>
-		const targetElement = event.target as HTMLElement;
+		const targetElement = event.target;
 		if (!('nodeName' in targetElement)) return;
-		if (!['TH', 'TR', 'TD'].includes(targetElement.nodeName)) return;
+		if (!['TH', 'TR', 'TD'].includes((targetElement as HTMLElement).nodeName))
+			return;
 
-		event.stopPropagation();
 		if (!onClick) return;
+		event.stopPropagation();
 		onClick(event);
 	}
 
@@ -97,7 +98,6 @@ export function TableRow({
 				...(invalid && {
 					background: theme.lightSystemErrorMuted,
 				}),
-
 				...((selected || onClick) && {
 					// // Chrome and Firefox doesn't support ::after elements in fixed table layouts
 					// // FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
@@ -115,7 +115,7 @@ export function TableRow({
 					},
 				}),
 			}}
-			onClick={onClick ? handleTableRowClick : undefined}
+			onClick={onClick ? onClickTableRow : undefined}
 		>
 			{children}
 		</tr>
