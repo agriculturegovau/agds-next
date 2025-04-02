@@ -9,8 +9,10 @@ import {
 	render,
 	screen,
 } from '../../../../test-utils';
-import type { ConditionalRevealProps } from './ConditionalReveal';
-import { ConditionalReveal } from './ConditionalReveal';
+import {
+	ConditionalReveal,
+	type ConditionalRevealProps,
+} from './ConditionalReveal';
 
 expect.extend(toHaveNoViolations);
 
@@ -51,6 +53,13 @@ describe('ConditionalReveal', () => {
 			extends: ['html-validate:recommended'],
 		});
 		expect(await axe(container)).toHaveNoViolations();
+	});
+
+	it('does not render the children elements when the prop `visible` is set to `undefined`', () => {
+		renderConditionalReveal({ visible: undefined });
+
+		const childElement = screen.queryByTestId(childTestID);
+		expect(childElement).toBe(null);
 	});
 
 	it('renders the children elements when the prop `visible` is changed from "false" to "true"', async () => {

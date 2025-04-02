@@ -147,7 +147,7 @@ export const FormExampleMultiStep3 = () => {
 							hint="Hint text"
 							id="conditionalField"
 							invalid={Boolean(errors.conditionalField?.message)}
-							label="Nested field"
+							label="Conditional field"
 							message={errors.conditionalField?.message}
 							required
 						/>

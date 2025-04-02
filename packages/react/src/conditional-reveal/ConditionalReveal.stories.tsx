@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { FormStack } from '../form-stack';
 import { TextInput } from '../text-input';
 import {
 	ConditionalReveal,
@@ -8,11 +7,7 @@ import {
 
 const ComponentLayout = (props: ConditionalRevealProps) => {
 	const { visible, children } = props;
-	return (
-		<FormStack>
-			<ConditionalReveal visible={visible}>{children}</ConditionalReveal>
-		</FormStack>
-	);
+	return <ConditionalReveal visible={visible}>{children}</ConditionalReveal>;
 };
 
 const meta: Meta<typeof ConditionalReveal> = {

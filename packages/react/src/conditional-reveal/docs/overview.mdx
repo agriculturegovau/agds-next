@@ -4,7 +4,6 @@ description: A standardised pattern for conditionally hiding and revealing the a
 group: Forms
 storybookPath: /story/Forms-ConditionalReveal--basic
 unreleased: true
-relatedComponents: ['form-stack']
 relatedPatterns: ['conditional-reveal']
 ---
 
@@ -57,7 +56,7 @@ The conditional reveal component wraps the children elements in a [FormStack](/c
 <DontHeading />
 
 - use this component for any other content than forms
-- nest additional conditional reveal components inside of a conditional reveal.
+- nest conditional reveal components.
 
 ## Single value field
 
@@ -97,9 +96,7 @@ Where one input value can be selected (eg. radio or select inputs), you can use 
 
 ## Multiple value fields
 
-If the same input can create multiple conditional revealed fields or content (such as a checkbox input), you can use one conditional reveal component and apply conditional rendering in the children.
-
-Don't use multiple conditional reveal components. Using multiple conditional rendering will create multiple dividers.
+If the same input can create multiple conditional revealed fields or content (such as a checkbox input), use one conditional reveal component and conditional render the children within.
 
 ```jsx live
 () => {
@@ -180,7 +177,7 @@ If you require more than one field and/or content, place all relevant elements a
 			</ControlGroup>
 
 			<ConditionalReveal visible={isChecked('post')}>
-				<H2>Address</H2>
+				<H3>Address</H3>
 				<TextInput
 					inputMode="text"
 					label="Street address"

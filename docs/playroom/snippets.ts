@@ -1168,16 +1168,16 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'ConditionalReveal',
-		name: 'ConditionalReveal',
+		name: 'Basic',
 		code: `<ConditionalReveal visible={true}>
 				<TextInput inputMode="numeric" label="Phone number" required />
 			</ConditionalReveal>`,
 	},
 	{
 		group: 'ConditionalReveal',
-		name: 'ConditionalRevealMulti',
+		name: 'Multiple fields',
 		code: `<ConditionalReveal visible={true}>
-				<H2>Address</H2>
+				<H3>Address</H3>
 				<TextInput
 					inputMode="text"
 					label="Street address"

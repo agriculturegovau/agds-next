@@ -4,12 +4,13 @@ import { FormStack } from '../form-stack';
 
 export type ConditionalRevealProps = PropsWithChildren<{
 	/** Controls the visibility and render state of the children */
-	visible: boolean;
+	visible?: boolean;
 }>;
 
-export function ConditionalReveal(props: ConditionalRevealProps) {
-	const { visible, children } = props;
-
+export function ConditionalReveal({
+	visible,
+	children,
+}: ConditionalRevealProps) {
 	if (!visible) {
 		return null;
 	}
