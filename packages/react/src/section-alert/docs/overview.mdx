@@ -11,7 +11,7 @@ relatedPatterns: ['messaging']
 Section alerts appear inside of the main content area of the page and are used to alert users to a particular section of the screen. They should not be confused with Callouts.
 
 ```jsx live
-<SectionAlert title="Your changes have been saved" tone="success" />
+<SectionAlert title="Your changes have been saved" tone="successHigh" />
 ```
 
 <DoHeading />
@@ -43,7 +43,7 @@ The four tones are `success`, `error`, `warning` and `info`. Each tone has three
 
 ### Success
 
-The success section alert (green) is used for notifying the user that a task is fully completed.
+The success section alert is used for notifying the user that a task is fully completed.
 
 ```jsx live
 <Stack gap={1}>
@@ -55,7 +55,7 @@ The success section alert (green) is used for notifying the user that a task is 
 
 ### Error
 
-The error section alert (red) should be used when something destructive or critical has happened.
+The error section alert should be used when something destructive or critical has happened.
 
 ```jsx live
 <Stack gap={1}>
@@ -76,7 +76,7 @@ The error section alert (red) should be used when something destructive or criti
 
 ### Warning
 
-Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+Use warning section alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
 <Stack gap={1}>
@@ -91,7 +91,7 @@ Use warning section alerts (orange) to tell the user something urgent. Only use 
 
 ### Info
 
-The information section alert (blue) can be used to alert the user on neutral messages.
+The information section alert can be used to alert the user on neutral messages.
 
 ```jsx live
 <Stack gap={1}>
@@ -112,9 +112,9 @@ When a user dismisses an alert, it’s important to manage their focus appropria
 
 ```jsx live
 <SectionAlert
-	title="Section alert title"
-	tone="success"
 	onClose={console.log}
+	title="Section alert title"
+	tone="successHigh"
 />
 ```
 
@@ -127,16 +127,16 @@ The icon and title are mandatory and achieve a compact alert, but we encourage t
 ```jsx live
 <Stack gap={1}>
 	<SectionAlert
-		title="Section alert title"
-		tone="success"
 		onClose={console.log}
+		title="Section alert title"
+		tone="successHigh"
 	/>
 
-	<SectionAlert title="Section alert title" tone="success">
+	<SectionAlert title="Section alert title" tone="successHigh">
 		<Text as="p">Description</Text>
 	</SectionAlert>
 
-	<SectionAlert title="Section alert title" tone="warning">
+	<SectionAlert title="Section alert title" tone="warningHigh">
 		<Stack gap={0.5} alignItems="flex-start">
 			<Text as="p">Description</Text>
 			<ButtonGroup>
@@ -176,7 +176,11 @@ Press the "Toggle alert" button below to mount/unmount the alert. Notice that ea
 			</Button>
 
 			{showAlert && (
-				<SectionAlert focusOnMount title="Something went wrong" tone="error">
+				<SectionAlert
+					focusOnMount
+					title="Something went wrong"
+					tone="errorHigh"
+				>
 					<Text as="p">There was an error submitting the application.</Text>
 				</SectionAlert>
 			)}
@@ -224,7 +228,7 @@ Once the alert is displayed, try updating the content by pressing the "Update al
 				<SectionAlert
 					focusOnUpdate={errors}
 					title="Something went wrong"
-					tone="error"
+					tone="errorHigh"
 				>
 					<UnorderedList>
 						{errors.map((text) => (
@@ -258,7 +262,7 @@ Press the "Focus the alert" button below to set focus on the alert. To achieve t
 				ref={alertRef}
 				tabIndex={-1}
 				title="Submission successful"
-				tone="success"
+				tone="successHigh"
 			>
 				<Text as="p">Your application has been received.</Text>
 			</SectionAlert>

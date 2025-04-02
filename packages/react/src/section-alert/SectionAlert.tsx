@@ -11,11 +11,7 @@ import { Flex } from '../flex';
 import { getOptionalCloseHandler } from '../getCloseHandler';
 import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
-import {
-	getUpdatedLegacyTone,
-	sectionAlertToneMap,
-	type SectionAlertTone,
-} from './utils';
+import { getTone, sectionAlertToneMap, type SectionAlertTone } from './utils';
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
@@ -66,9 +62,15 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		});
 		const { childrenId, titleId, toneId } = useSectionAlertIds(id);
 
-		const updatedTone = getUpdatedLegacyTone(tone);
-		const { background, border, borderColor, Icon, iconColor, iconLabel } =
-			sectionAlertToneMap[updatedTone];
+		const updatedTone = getTone(tone);
+		const {
+			background,
+			borderColor,
+			enclosedBorder,
+			icon: Icon,
+			iconColor,
+			iconLabel,
+		} = sectionAlertToneMap[updatedTone];
 
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
@@ -81,7 +83,7 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				border
 				borderColor={borderColor}
 				borderLeftWidth="xxl"
-				borderWidth={border ? 'sm' : 'none'}
+				borderWidth={enclosedBorder ? 'sm' : 'none'}
 				focusRingFor="all"
 				gap={0.5}
 				highContrastOutline

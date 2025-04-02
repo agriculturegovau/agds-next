@@ -14,121 +14,119 @@ import {
 export const sectionAlertToneMap = {
 	errorHigh: {
 		background: 'error',
-		border: false,
 		borderColor: 'error',
-		Icon: AlertFilledIcon,
+		enclosedBorder: false,
+		icon: AlertFilledIcon,
 		iconColor: 'error',
 		iconLabel: 'error',
 	},
 	errorLow: {
 		background: 'body',
-		border: true,
 		borderColor: 'border',
-		Icon: AlertCircleIcon,
+		enclosedBorder: true,
+		icon: AlertCircleIcon,
 		iconColor: 'muted',
 		iconLabel: 'error',
 	},
 	errorMedium: {
 		background: 'body',
-		border: true,
 		borderColor: 'error',
-		Icon: AlertIcon,
+		enclosedBorder: true,
+		icon: AlertIcon,
 		iconColor: 'error',
 		iconLabel: 'error',
 	},
 	infoHigh: {
 		background: 'info',
-		border: false,
 		borderColor: 'info',
-		Icon: InfoFilledIcon,
+		enclosedBorder: false,
+		icon: InfoFilledIcon,
 		iconColor: 'info',
 		iconLabel: 'information',
 	},
 	infoLow: {
 		background: 'body',
-		border: true,
 		borderColor: 'border',
-		Icon: InfoIcon,
+		enclosedBorder: true,
+		icon: InfoIcon,
 		iconColor: 'muted',
 		iconLabel: 'information',
 	},
 	infoMedium: {
 		background: 'body',
-		border: true,
 		borderColor: 'info',
-		Icon: InfoIcon,
+		enclosedBorder: true,
+		icon: InfoIcon,
 		iconColor: 'info',
 		iconLabel: 'information',
 	},
 	successHigh: {
 		background: 'success',
-		border: false,
 		borderColor: 'success',
-		Icon: SuccessFilledIcon,
+		enclosedBorder: false,
+		icon: SuccessFilledIcon,
 		iconColor: 'success',
 		iconLabel: 'success',
 	},
 	successLow: {
 		background: 'body',
-		border: true,
 		borderColor: 'border',
-		Icon: SuccessIcon,
+		enclosedBorder: true,
+		icon: SuccessIcon,
 		iconColor: 'muted',
 		iconLabel: 'success',
 	},
 	successMedium: {
 		background: 'body',
-		border: true,
 		borderColor: 'success',
-		Icon: SuccessIcon,
+		enclosedBorder: true,
+		icon: SuccessIcon,
 		iconColor: 'success',
 		iconLabel: 'success',
 	},
 	warningHigh: {
 		background: 'warning',
-		border: false,
 		borderColor: 'warning',
-		Icon: WarningFilledIcon,
+		enclosedBorder: false,
+		icon: WarningFilledIcon,
 		iconColor: 'warning',
 		iconLabel: 'warning',
 	},
 	warningLow: {
 		background: 'body',
-		border: true,
 		borderColor: 'border',
-		Icon: WarningCircleIcon,
+		enclosedBorder: true,
+		icon: WarningCircleIcon,
 		iconColor: 'muted',
 		iconLabel: 'warning',
 	},
 	warningMedium: {
 		background: 'body',
-		border: true,
 		borderColor: 'warning',
-		Icon: WarningIcon,
+		enclosedBorder: true,
+		icon: WarningIcon,
 		iconColor: 'warning',
 		iconLabel: 'warning',
 	},
 } as const;
 
-export type SectionAlertVariantTone = keyof typeof sectionAlertToneMap;
+export type SectionAlertTones = keyof typeof sectionAlertToneMap;
 
-export const sectionAlertLegacyTonesMap = {
+export const sectionAlertLegacyToneMap = {
 	error: 'errorHigh',
 	success: 'successHigh',
 	warning: 'warningHigh',
 } as const;
 
-type SectionAlertLegacyTone = keyof typeof sectionAlertLegacyTonesMap;
+type SectionAlertLegacyTone = keyof typeof sectionAlertLegacyToneMap;
 
-export type SectionAlertTone = SectionAlertVariantTone | SectionAlertLegacyTone;
+export type SectionAlertTone = SectionAlertTones | SectionAlertLegacyTone;
 
 // Legacy tones will default to its high variant
-export function getUpdatedLegacyTone(
-	tone: SectionAlertTone
-): SectionAlertVariantTone {
-	if (tone in sectionAlertLegacyTonesMap) {
-		return sectionAlertLegacyTonesMap[tone as SectionAlertLegacyTone];
+export function getTone(tone: SectionAlertTone): SectionAlertTones {
+	if (tone in sectionAlertLegacyToneMap) {
+		return sectionAlertLegacyToneMap[tone as SectionAlertLegacyTone];
 	}
 
-	return tone as SectionAlertVariantTone;
+	return tone as SectionAlertTones;
 }

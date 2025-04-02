@@ -6,7 +6,7 @@ import type { SectionAlertProps } from './SectionAlert';
 import { SectionAlert } from './SectionAlert';
 import {
 	SectionAlertTone,
-	sectionAlertLegacyTonesMap,
+	sectionAlertLegacyToneMap,
 	sectionAlertToneMap,
 } from './utils';
 
@@ -14,8 +14,8 @@ const sectionAlertTones = Object.keys(
 	sectionAlertToneMap
 ) as Array<SectionAlertTone>;
 
-const sectionAlertLegacyToneMap = Object.keys(
-	sectionAlertLegacyTonesMap
+const sectionAlertLegacyTonesMap = Object.keys(
+	sectionAlertLegacyToneMap
 ) as Array<SectionAlertTone>;
 
 afterEach(cleanup);
@@ -50,7 +50,7 @@ describe('SectionAlert', () => {
 	}
 
 	{
-		sectionAlertLegacyToneMap.forEach((tone) => {
+		sectionAlertLegacyTonesMap.forEach((tone) => {
 			describe(`with legacy ${tone}`, () => {
 				const { container } = renderSectionAlert({ tone });
 				expect(container).toMatchSnapshot();
