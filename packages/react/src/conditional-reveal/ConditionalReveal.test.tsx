@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { useState } from 'react';
 import {
 	act,
 	cleanup,
@@ -9,6 +8,7 @@ import {
 	render,
 	screen,
 } from '../../../../test-utils';
+import { useToggleState } from '../core';
 import {
 	ConditionalReveal,
 	type ConditionalRevealProps,
@@ -21,13 +21,12 @@ afterEach(cleanup);
 const childTestID = 'child-element';
 const buttonLabel = 'Toggle visibility';
 
-const TestComponent = (props: ConditionalRevealProps) => {
-	const [isVisible, setIsVisible] = useState(props.visible);
-	const handleToggleVisibility = () => setIsVisible((prev) => !prev);
+const TestComponent = ({ visible = false }: ConditionalRevealProps) => {
+	const [isVisible, setIsVisible] = useToggleState<boolean>(visible, !visible);
 
 	return (
 		<>
-			<button onClick={handleToggleVisibility} type="button">
+			<button onClick={setIsVisible} type="button">
 				{buttonLabel}
 			</button>
 			<ConditionalReveal visible={isVisible}>
