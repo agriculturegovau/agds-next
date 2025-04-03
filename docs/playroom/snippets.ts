@@ -1349,6 +1349,31 @@ const snippets: Array<Snippet> = [
 		code: `<SectionAlert tone="infoHigh" title="Info" onClose={console.log}></SectionAlert>`,
 	},
 	{
+		group: 'SectionAlert',
+		name: 'notStartedLow',
+		code: `<SectionAlert tone="notStartedLow" title="To Do"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'inProgressLow',
+		code: `<SectionAlert tone="inProgressLow" title="Doing"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'pausedLow',
+		code: `<SectionAlert tone="pausedLow" title="Paused"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'unknownLow',
+		code: `<SectionAlert tone="unknownLow" title="Help"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'cannotStartLow',
+		code: `<SectionAlert tone="cannotStartLow" title="Cannot start"></SectionAlert>`,
+	},
+	{
 		group: 'PasswordInput',
 		name: 'Basic',
 		code: `<PasswordInput label="Password" />`,

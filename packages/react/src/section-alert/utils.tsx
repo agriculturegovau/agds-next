@@ -2,8 +2,13 @@ import {
 	AlertCircleIcon,
 	AlertFilledIcon,
 	AlertIcon,
+	HelpIcon,
 	InfoFilledIcon,
 	InfoIcon,
+	ProgressBlockedIcon,
+	ProgressDoingIcon,
+	ProgressPausedIcon,
+	ProgressTodoIcon,
 	SuccessFilledIcon,
 	SuccessIcon,
 	WarningCircleIcon,
@@ -12,6 +17,14 @@ import {
 } from '@ag.ds-next/react/icon';
 
 export const sectionAlertToneMap = {
+	cannotStartLow: {
+		background: 'body',
+		borderColor: 'border',
+		enclosedBorder: true,
+		icon: ProgressBlockedIcon,
+		iconColor: 'muted',
+		iconLabel: 'cannot start',
+	},
 	errorHigh: {
 		background: 'error',
 		borderColor: 'error',
@@ -60,6 +73,30 @@ export const sectionAlertToneMap = {
 		iconColor: 'info',
 		iconLabel: 'information',
 	},
+	inProgressLow: {
+		background: 'body',
+		borderColor: 'border',
+		enclosedBorder: true,
+		icon: ProgressDoingIcon,
+		iconColor: 'muted',
+		iconLabel: 'in progress',
+	},
+	notStartedLow: {
+		background: 'body',
+		borderColor: 'border',
+		enclosedBorder: true,
+		icon: ProgressTodoIcon,
+		iconColor: 'muted',
+		iconLabel: 'not started',
+	},
+	pausedLow: {
+		background: 'body',
+		borderColor: 'border',
+		enclosedBorder: true,
+		icon: ProgressPausedIcon,
+		iconColor: 'muted',
+		iconLabel: 'paused',
+	},
 	successHigh: {
 		background: 'success',
 		borderColor: 'success',
@@ -83,6 +120,14 @@ export const sectionAlertToneMap = {
 		icon: SuccessIcon,
 		iconColor: 'success',
 		iconLabel: 'success',
+	},
+	unknownLow: {
+		background: 'body',
+		borderColor: 'border',
+		enclosedBorder: true,
+		icon: HelpIcon,
+		iconColor: 'muted',
+		iconLabel: 'help',
 	},
 	warningHigh: {
 		background: 'warning',

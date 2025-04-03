@@ -4,7 +4,7 @@ description: Section alerts are non-disruptive notifications that provide Succes
 group: Content
 storybookPath: /story/Content-SectionAlert--basic
 figmaGalleryNodeId: 19223%3A12705
-relatedComponents: ['page-alert', 'global-alert']
+relatedComponents: ['global-alert', 'page-alert', 'status-badge']
 relatedPatterns: ['messaging']
 ---
 
@@ -98,6 +98,20 @@ The information section alert can be used to alert the user on neutral messages.
 	<SectionAlert title="Please read the comments carefully" tone="infoHigh" />
 	<SectionAlert title="Please read the comments carefully" tone="infoMedium" />
 	<SectionAlert title="Please read the comments carefully" tone="infoLow" />
+</Stack>
+```
+
+## Progress
+
+The progress section alert can be used to indicate the users current progress.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="To Do" tone="notStartedLow" />
+	<SectionAlert title="Doing" tone="inProgressLow" />
+	<SectionAlert title="Paused" tone="pausedLow" />
+	<SectionAlert title="Help" tone="unknownLow" />
+	<SectionAlert title="Cannot start" tone="cannotStartLow" />
 </Stack>
 ```
 
