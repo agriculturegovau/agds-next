@@ -1306,43 +1306,33 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Dismissable',
-		code: `<SectionAlert tone="successHigh" title="Info" onClose={console.log} />`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'With description',
-		code: `	<SectionAlert title="Section alert title" tone="success"><Text as="p">Description</Text></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Success high',
+		name: 'Success high with description',
 		code: `<SectionAlert tone="successHigh" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Success medium',
-		code: `<SectionAlert tone="successMedium" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		code: `<SectionAlert tone="successMedium" title="Success"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Success low',
-		code: `<SectionAlert tone="successLow" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		code: `<SectionAlert tone="successLow" title="Success"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Error high',
-		code: `<SectionAlert tone="errorHigh" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		code: `<SectionAlert tone="errorHigh" title="Error"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Warning high',
-		code: `<SectionAlert tone="warningHigh" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		code: `<SectionAlert tone="warningHigh" title="Warning"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Info high',
-		code: `<SectionAlert tone="infoHigh" title="Info"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Info high with dismissable',
+		code: `<SectionAlert tone="infoHigh" title="Info" onClose={console.log}></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',
