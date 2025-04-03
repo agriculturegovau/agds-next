@@ -22,11 +22,14 @@ const childTestID = 'child-element';
 const buttonLabel = 'Toggle visibility';
 
 const TestComponent = ({ visible = false }: ConditionalRevealProps) => {
-	const [isVisible, setIsVisible] = useToggleState<boolean>(visible, !visible);
+	const [isVisible, toggleIsVisible] = useToggleState<boolean>(
+		visible,
+		!visible
+	);
 
 	return (
 		<>
-			<button onClick={setIsVisible} type="button">
+			<button onClick={toggleIsVisible} type="button">
 				{buttonLabel}
 			</button>
 			<ConditionalReveal visible={isVisible}>
