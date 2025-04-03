@@ -73,6 +73,25 @@ export const Info: Story = {
 	},
 };
 
+export const Progress: Story = {
+	args: {
+		title: 'Progress',
+		tone: 'notStartedLow',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: [
+				'notStartedLow',
+				'inProgressLow',
+				'pausedLow',
+				'unknownLow',
+				'cannotStartLow',
+			],
+		},
+	},
+};
+
 export const WithDescription: Story = {
 	args: {
 		title: 'There was an error saving your changes',
