@@ -1,7 +1,7 @@
 <Callout tone="info">
 	This is the legacy (versions v1.26.0 and below) documentation for Cards.
 
-    To support more card use-cases, v1.27.0 changed the `Card` API to also allow specific `footer` and `header` props. These props place their content in defined areas of the card to provide better control of their styling.
+    To support more card use-cases, v1.27.0 changed the `<Card>` API to also allow specific `footer` and `header` props. These props place their content in defined areas of the card to provide better control of their styling.
 
 </Callout>
 
@@ -16,44 +16,44 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 	<Card as="li">
 		<CardHeader>
 			<Heading as="h3" type="h4">
-				Feature card title
+				Static card header
 			</Heading>
 		</CardHeader>
 		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
+			<Text as="p">Describing content</Text>
 		</CardInner>
 	</Card>
 
 	<Card as="li">
 		<CardHeader background="bodyAlt">
 			<Heading as="h3" type="h4">
-				Feature card title
+				Static card header
 			</Heading>
 		</CardHeader>
 		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
+			<Text as="p">Describing content</Text>
 		</CardInner>
 	</Card>
 
 	<Card as="li" clickable shadow>
 		<CardHeader>
 			<Heading as="h3" type="h4">
-				<CardLink href="#">Feature card title</CardLink>
+				<CardLink href="#">Clickable card header</CardLink>
 			</Heading>
 		</CardHeader>
 		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
+			<Text as="p">Describing content</Text>
 		</CardInner>
 	</Card>
 
 	<Card as="li" clickable shadow>
 		<CardHeader background="bodyAlt">
 			<Heading as="h3" type="h4">
-				<CardLink href="#">Feature card title</CardLink>
+				<CardLink href="#">Clickable card header</CardLink>
 			</Heading>
 		</CardHeader>
 		<CardInner>
-			<Text as="p">Additional conent relating to the card</Text>
+			<Text as="p">Describing content</Text>
 		</CardInner>
 	</Card>
 </Columns>
@@ -61,7 +61,7 @@ Use `<CardHeader>` to give the card heading more visual prominence.
 
 ## Card footers
 
-Add supplementary information, links or actions to cards by passing a `<CardFooter>` after the `CardInner` container.
+Add supplementary information, links or actions to cards by passing a `<CardFooter>` after the `<CardInner>` container.
 
 ### Outside footers
 
@@ -70,7 +70,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 <Callout tone="info">
 	In v1.26.0 and below, the `footerOustide` prop will degrade the visuals, UX
 	and accessibility of various card configurations, especially when `clickable`
-	or `CardHeader` is used. We recommend migrating to the `footer` and `header`
+	or `<CardHeader>` is used. We recommend migrating to the `footer` and `header`
 	props for all instances.
 </Callout>
 
@@ -83,7 +83,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 				<CardInner>
 					<Stack gap={1}>
 						<H3>Card title</H3>
-						<Text as="p">Additional conent relating to the card</Text>
+						<Text as="p">Describing content</Text>
 					</Stack>
 				</CardInner>
 				<CardFooter>Supplementary info</CardFooter>
@@ -93,7 +93,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 				<CardInner>
 					<Stack gap={1}>
 						<H3>Card title</H3>
-						<Text as="p">Additional conent relating to the card</Text>
+						<Text as="p">Describing content</Text>
 					</Stack>
 				</CardInner>
 				<CardFooter>
@@ -113,7 +113,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 						<H3>
 							<CardLink href="#">Card title</CardLink>
 						</H3>
-						<Text as="p">Additional conent relating to the card</Text>
+						<Text as="p">Describing content</Text>
 					</Stack>
 				</CardInner>
 				<CardFooter>Supplementary info</CardFooter>
@@ -125,7 +125,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 						<H3>
 							<CardLink href="#">Card title</CardLink>
 						</H3>
-						<Text as="p">Additional conent relating to the card</Text>
+						<Text as="p">Describing content</Text>
 					</Stack>
 				</CardInner>
 				<CardFooter>
@@ -145,7 +145,7 @@ Use the `footerOutside={true}` prop to render the footer directly beneath the ca
 
 ## Images
 
-For a full-width image in a card, add the `img` tag outside the `CardInner` container. For images with inner padding (such as an icon), add it within the `CardInner` container.
+For a full-width image in a card, add the `img` tag outside the `<CardInner>` container. For images with inner padding (such as an icon), add it within the `<CardInner>` container.
 
 ```jsx live
 <Columns as="ul" cols={2}>
@@ -175,7 +175,7 @@ For a full-width image in a card, add the `img` tag outside the `CardInner` cont
 
 For cards that contain a single link, the hit area for that link can be made to wrap the entire card. This pattern may be used on cards that act as a preview for an article or blog post, for example. These cards could contain an image, a title and a brief summary of the article.
 
-Fully-clickable cards must be given the `clickable` and `shadow` props to make itself and its `CardLink` appropriately indicate the clickable region. Do not wrap cards in an anchor tag as this can be a difficult experience for screen reader users.
+Fully-clickable cards must be given the `clickable` and `shadow` props to make itself and its `<CardLink>` appropriately indicate the clickable region. Do not wrap cards in an anchor tag as this can be a difficult experience for screen reader users.
 
 ```jsx live
 <Columns as="ul" cols={2}>
@@ -184,9 +184,9 @@ Fully-clickable cards must be given the `clickable` and `shadow` props to make i
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">Clickable card title</CardLink>
 				</H3>
-				<Text as="p">Some text</Text>
+				<Text as="p">Describing content</Text>
 			</Stack>
 		</CardInner>
 	</Card>
@@ -196,9 +196,9 @@ Fully-clickable cards must be given the `clickable` and `shadow` props to make i
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">Clickable card title</CardLink>
 				</H3>
-				<Text as="p">Degraded UX and accessibility</Text>
+				<Text as="p">Describing content</Text>
 			</Stack>
 		</CardInner>
 		<CardFooter>
@@ -210,7 +210,7 @@ Fully-clickable cards must be given the `clickable` and `shadow` props to make i
 
 ## Equal card heights
 
-The content within each card will often vary in height, so to prevent an uneven, stagged appearance of multiple cards within a list, ensure that the `Card` itself is the immediate child of a flex or grid component, such as `Columns`.
+The content within each card will often vary in height, so to prevent an uneven, stagged appearance of multiple cards within a list, ensure that the `<Card>` itself is the immediate child of a flex or grid component, such as `<Columns>`.
 
 ```jsx live
 <Columns as="ul" cols={2}>
@@ -228,7 +228,7 @@ The content within each card will often vary in height, so to prevent an uneven,
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Card title 1</CardLink>
+					<CardLink href="#">Clickable card title 1</CardLink>
 				</H3>
 				<Text>
 					Vestibulum non dui vitae augue efficitur viverra quis sit amet enim.
@@ -243,7 +243,7 @@ The content within each card will often vary in height, so to prevent an uneven,
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Card title 2</CardLink>
+					<CardLink href="#">Clickable card title 2</CardLink>
 				</H3>
 				<Text>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dictum
@@ -263,7 +263,7 @@ The content within each card will often vary in height, so to prevent an uneven,
 	>
 		<CardHeader>
 			<H3>
-				<CardLink href="#">Card title 3</CardLink>
+				<CardLink href="#">Card header 3</CardLink>
 			</H3>
 		</CardHeader>
 		<CardInner>
@@ -295,9 +295,12 @@ The content within each card will often vary in height, so to prevent an uneven,
 		<CardInner>
 			<Stack gap={1}>
 				<H3>
-					<CardLink href="#">Title of article</CardLink>
+					<CardLink href="#">Clickable card title 4</CardLink>
 				</H3>
-				<Text as="p">Some text</Text>
+				<Text as="p">
+					Sed volutpat non enim ac efficitur. Etiam ut dolor tempor, tempor
+					tortor at, luctus elit.
+				</Text>
 			</Stack>
 		</CardInner>
 	</Card>
@@ -305,12 +308,15 @@ The content within each card will often vary in height, so to prevent an uneven,
 	<Card as="li" clickable footerOutside shadow>
 		<PlaceholderImage />
 		<CardHeader>
-			<Heading as="h3" type="h4">
-				<CardLink href="#">Feature card title</CardLink>
-			</Heading>
+			<H3>
+				<CardLink href="#">Clickable card title 5</CardLink>
+			</H3>
 		</CardHeader>
 		<CardInner>
-			<Text as="p">Degraded UX and accessibility</Text>
+			<Text as="p">
+				Sed volutpat non enim ac efficitur. Etiam ut dolor tempor, tempor tortor
+				at, luctus elit.
+			</Text>
 		</CardInner>
 		<CardFooter>
 			<TextLink href="#">An action</TextLink>

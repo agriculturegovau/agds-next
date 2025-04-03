@@ -21,6 +21,7 @@ export const CardContext = createContext<CardContextType | undefined>(
 
 export type CardProps = PropsWithChildren<
 	{
+		/** The element to render as. Often this will be an `<li>` as Cards are predominantly displayed in lists. */
 		as?: ElementType;
 		/** The CSS class name, typically generated from the `css` prop. */
 		className?: string;
