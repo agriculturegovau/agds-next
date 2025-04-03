@@ -1,14 +1,65 @@
 ---
 title: Icon
-description: The Agriculture Design System supports the use of universal system icons. The icon component is used to apply our set of universal icons to more complex components of the system.
+description: The Agriculture Design System supports the use of meaningful and universal system icons that users understand. The icon component is used to apply our set of universal icons to more complex components of the system.
 group: Foundations
 storybookPath: /story/foundations-icon--all-icons
+relatedComponents:
+  ['app-layout', 'button', 'progress-indicator', 'status-badge', 'task-list']
 ---
 
 ```jsx live
-<AvatarIcon size="md" weight="regular" />
+<Flex alignItems="center" gap={1}>
+	<SuccessIcon size="md" />
+	<AvatarIcon size="md" />
+	<SearchIcon size="md" />
+	<DeleteIcon size="md" />
+	<ArrowRightIcon size="md" />
+</Flex>
 ```
 
-[See the full list of available icons](/foundations/icons).
+Meaningful icons can be used to enhance the experience for sighted users making it easier to scan content, identify actions and understand user interfaces. The icon component gives you access to a suite of system icons that are designed to represent common sats and universal actions.
+
+<DoHeading />
+
+- Only use universal icons, that all users understand, and that clearly represent an intended meaning or context
+- Use icons to support visual recognition of repeatable or consistent system wide states or actions
+- Always use a meaningful text label and accessible name when using an icon or an action
+- Avoid using bespoke icons in your applications as you may confuse users
+- Only consider using an icon without a meaningful label if there is insufficient space and including the label will detract fro the user experience.
+  - An example of this is mobile search bat where including a label for the action will take up essential space for search input, and the icon meaning is explicit like ’search’ or ’close’.
+
+<DontHeading />
+
+- Use icons that are unconventional or are not commonly understood to represent the action or state - this will confuse users.
+
+## Icons
+
+When using an icon, always provide a meaningful label and accessible name to help all users quickly recognise and understand what action will occur. Don’t use icons without labels because you may confuse some users - even the simplest icons will be new or uncommon to some users.
+
+Each icon in our library is meaningful and universal, to ensure users understand them. Icons should not be too detailed, to ensure they’re clear and legible at all available sizes. [See the full list of available icons.](/foundations/icons)
+
+Use icons that accurately communicate the action with a label that describes the action. For example, search fields on mobile often use a magnifying glass icon without a label due to space constants.
+
+## Icon Position
+
+When using an icon with a button or link, the icon should appear before the text except when the icon indicates direction, e.g. Next or external links.
+
+## Sizes
+
+Icons are available in sizes medium, large and extra large.
+
+Medium icons are used in small buttons, in components like accordions, drop down menus, breadcrumbs and links that are nested in content paragraphs such as external link. Always consider the complexity of an icon before using the small variant as small complex icons may be hard to read for some users.
+
+Large icons are most commonly used in medium sized buttons and links. All icons of the system are optimised for legibility at this size.
+
+Extra large icons are used to emphasise content and are most commonly used in empty and error state pages.
+
+```jsx live
+<Flex alignItems="center" gap={1}>
+	<SuccessIcon size="md" />
+	<SuccessIcon size="lg" />
+	<SuccessIcon size="xl" />
+</Flex>
+```
 
 > Do you have a user need for a new or missing icon? [Get in touch](/about) to discuss an icon contribution.
