@@ -315,6 +315,10 @@
 			"module": "./date-range-picker/dist/ag.ds-next-react-date-range-picker.esm.js",
 			"default": "./date-range-picker/dist/ag.ds-next-react-date-range-picker.cjs.js"
 		},
+		"./divider-with-text": {
+			"module": "./divider-with-text/dist/ag.ds-next-react-divider-with-text.esm.js",
+			"default": "./divider-with-text/dist/ag.ds-next-react-divider-with-text.cjs.js"
+		},
 		"./feature-link-list": {
 			"module": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.esm.js",
 			"default": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.cjs.js"

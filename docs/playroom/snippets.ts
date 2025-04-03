@@ -1265,6 +1265,20 @@ const snippets: Array<Snippet> = [
 		code: `<Divider />`,
 	},
 	{
+		group: 'DividerWithText',
+		name: 'Basic',
+		code: `<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>`,
+	},
+	{
+		group: 'DividerWithText',
+		name: 'Left align',
+		code: `<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>`,
+	},
+	{
 		group: 'Tabs',
 		name: 'Basic',
 		code: `<Tabs>
