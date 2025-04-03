@@ -23,17 +23,21 @@ export function TableRow({
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
 
-	function onClickTableRow(event: React.MouseEvent<HTMLTableRowElement>) {
-		// Check when a element is positioned above the table row element
-		// Cancel the rows click event if target is not a <th>, <tr> or <td>
+	function handleOnClick(event: React.MouseEvent<HTMLTableRowElement>) {
+		// Check if the the target has an interactive parent before running row onClick
 		const targetElement = event.target;
-		if (!('nodeName' in targetElement)) return;
-		if (!['TH', 'TR', 'TD'].includes((targetElement as HTMLElement).nodeName))
+		if (
+			(targetElement as HTMLElement).closest(
+				'a, button, input, select, textarea'
+			)
+		) {
 			return;
+		}
 
-		if (!onClick) return;
-		event.stopPropagation();
-		onClick(event);
+		if ((targetElement as HTMLElement).closest('tr')) {
+			event.stopPropagation();
+			onClick?.(event);
+		}
 	}
 
 	return (
@@ -115,7 +119,7 @@ export function TableRow({
 					},
 				}),
 			}}
-			onClick={onClick ? onClickTableRow : undefined}
+			onClick={onClick ? handleOnClick : undefined}
 		>
 			{children}
 		</tr>
