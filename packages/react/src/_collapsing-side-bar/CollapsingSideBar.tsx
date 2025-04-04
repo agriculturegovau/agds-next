@@ -1,13 +1,7 @@
 import { PropsWithChildren, ReactNode, useRef } from 'react';
-import { useSpring, animated } from '@react-spring/web';
 import { BaseButton } from '../button';
 import { Box, type BoxProps } from '../box';
-import {
-	packs,
-	tokens,
-	usePrefersReducedMotion,
-	useToggleState,
-} from '../core';
+import { packs, tokens, useToggleState, useTransitionHeight } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
@@ -50,27 +44,7 @@ export function CollapsingSideBar({
 	const { bodyId, headingId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
-
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animatedHeight = useSpring({
-		from: { display: 'none', height: 0 },
-		to: async (next) => {
-			// Show the element so its height can be animated
-			if (isOpen) await next({ display: 'block', overflow: 'hidden' });
-			// Animate the elements height
-			await next({
-				overflow: 'hidden',
-				height: isOpen ? ref.current?.offsetHeight : 0,
-				immediate: prefersReducedMotion,
-			});
-			// Animation end state
-			await next(
-				isOpen
-					? { height: 'auto', overflow: 'initial' }
-					: { display: 'none', overflow: 'initial' }
-			);
-		},
-	});
+	const transitionHeightCSS = useTransitionHeight(isOpen);
 
 	return (
 		<Stack
@@ -171,20 +145,19 @@ export function CollapsingSideBar({
 					</Flex>
 				</Box>
 			</Box>
-			<animated.div
+			<div
 				css={{
+					...transitionHeightCSS,
 					// Overwrite the animated height for tablet/desktop sizes.
 					[tokens.mediaQuery.min.md]: {
-						display: 'block !important',
 						height: 'auto !important',
 						overflow: 'unset',
 					},
 				}}
 				id={bodyId}
-				style={animatedHeight}
 			>
 				<Box ref={ref}>{children}</Box>
-			</animated.div>
+			</div>
 		</Stack>
 	);
 }
