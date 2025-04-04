@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
-import { animated, SpringValue } from '@react-spring/web';
+// import { animated, SpringValue } from '@react-spring/web';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
@@ -15,9 +15,10 @@ export type DrawerDialogProps = PropsWithChildren<{
 	actions?: ReactNode;
 	/** On close of the drawer, this element will be focused, rather than the trigger element. */
 	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
+	isOpen?: boolean;
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
-	style: { translateX: SpringValue<string> };
+	// style: { translateX: SpringValue<string> };
 	/** The title displayed at the top of the draw. */
 	title: string;
 	/** The width of the draw. */
@@ -31,14 +32,15 @@ const WIDTH_MAP = {
 
 export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
 
-const AnimatedFlex = animated(Flex);
+// const AnimatedFlex = animated(Flex);
 
 export function DrawerDialog({
 	actions,
 	children,
 	elementToFocusOnClose,
+	isOpen,
 	onClose,
-	style,
+	// style,
 	title,
 	width,
 }: DrawerDialogProps) {
@@ -46,18 +48,21 @@ export function DrawerDialog({
 
 	return (
 		<FocusLock
+			disabled={!isOpen}
 			returnFocus={
-				elementToFocusOnClose
-					? () => {
-							// Running focus after focus-lock-react does its cleanup, more info here: https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-							window.setTimeout(() => elementToFocusOnClose.focus(), 0);
+				isOpen
+					? elementToFocusOnClose
+						? () => {
+								// Running focus after focus-lock-react does its cleanup, more info here: https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+								window.setTimeout(() => elementToFocusOnClose.focus(), 0);
 
-							return false;
-					  }
-					: true // Return focus to trigger on close
+								return false;
+						  }
+						: true // Return focus to trigger on close
+					: false
 			}
 		>
-			<AnimatedFlex
+			<Flex
 				aria-labelledby={titleId}
 				aria-modal
 				background="body"
@@ -66,16 +71,19 @@ export function DrawerDialog({
 					position: 'fixed',
 					inset: 0,
 					marginLeft: 'auto',
+					transition: 'opacity, transform 0.5s ease-in-out',
+					transform: isOpen ? 'translateX(0)' : 'translateX(120%)',
 					zIndex: tokens.zIndex.dialog,
 					[tokens.mediaQuery.max.xs]: {
 						overflowY: 'auto',
 					},
+					// opacity: isOpen ? 1 : 0,
 				}}
 				flexDirection="column"
 				highContrastOutline
 				maxWidth={WIDTH_MAP[width]}
 				role="dialog"
-				style={style}
+				// style={style}
 			>
 				<DrawerHeader>
 					<DrawerHeaderTitle id={titleId}>{title}</DrawerHeaderTitle>
@@ -98,7 +106,7 @@ export function DrawerDialog({
 				>
 					Close
 				</Button>
-			</AnimatedFlex>
+			</Flex>
 		</FocusLock>
 	);
 }

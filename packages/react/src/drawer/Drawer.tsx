@@ -59,17 +59,6 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	}, []);
 
 	// Close the Drawer when the user presses the escape key
-	useEffect(() => {
-		const handleKeyDown = (e: KeyboardEvent) => {
-			if (isOpen && e.code === 'Escape') {
-				e.preventDefault();
-				e.stopPropagation();
-				handleClose();
-			}
-		};
-		window.addEventListener('keydown', handleKeyDown);
-		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [isOpen, handleClose]);
 
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
@@ -88,56 +77,67 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	// This component doesn't need to be server side rendered
 	if (!canUseDOM()) return null;
 
+	console.log(`document.activeElement`, document.activeElement);
 	return createPortal(
 		<Fragment>
 			{isOpen ? <LockScroll scrollbarWidth={scrollbarWidth.current} /> : null}
-			{dialogTransitions(({ translateX, opacity }, item) =>
-				item ? (
-					<div ref={modalContainerRef}>
-						<Overlay
-							mutedOverlay={mutedOverlay}
-							onClick={handleClose}
-							style={{ opacity }}
-						/>
-						<DrawerDialog
-							actions={actions}
-							elementToFocusOnClose={elementToFocusOnClose}
-							onClose={handleClose}
-							style={{ translateX }}
-							title={title}
-							width={width}
-						>
-							{children}
-						</DrawerDialog>
-					</div>
-				) : null
-			)}
+			{/* {dialogTransitions(({ translateX, opacity }, item) =>
+				item ? ( */}
+
+			<div ref={modalContainerRef}>
+				<Overlay
+					isOpen={isOpen}
+					mutedOverlay={mutedOverlay}
+					onClick={handleClose}
+					// style={{ opacity }}
+				/>
+				<DrawerDialog
+					actions={actions}
+					elementToFocusOnClose={elementToFocusOnClose}
+					isOpen={isOpen}
+					onClose={handleClose}
+					// style={{ translateX }}
+					title={title}
+					width={width}
+				>
+					{children}
+				</DrawerDialog>
+			</div>
+			{/* ) : null} */}
+			{/* ) : null
+			)} */}
 		</Fragment>,
 		document.body
 	);
 };
 
 function Overlay({
+	isOpen,
 	onClick,
-	style,
+	// style,
 	mutedOverlay,
 }: {
+	isOpen: boolean;
 	onClick: MouseEventHandler<HTMLDivElement>;
-	style: { opacity: SpringValue<number> };
+	// style: { opacity: SpringValue<number> };
 	mutedOverlay: boolean;
 }) {
 	return (
-		<animated.div
+		<div
 			css={{
+				pointerEvents: isOpen ? 'all' : 'none',
 				position: 'fixed',
 				inset: 0,
 				backgroundColor: mutedOverlay
 					? boxPalette.overlayMuted
 					: boxPalette.overlay,
 				zIndex: tokens.zIndex.overlay,
+				opacity: isOpen ? 1 : 0,
+				transition: 'opacity 0.5s ease-in-out',
+				// visibility: isOpen ? 'visible' : 'hidden',
 			}}
 			onClick={onClick}
-			style={style}
+			// style={style}
 		/>
 	);
 }
