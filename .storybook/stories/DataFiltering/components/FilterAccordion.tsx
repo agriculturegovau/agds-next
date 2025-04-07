@@ -1,10 +1,7 @@
 import { useRef } from 'react';
 import { Flex } from '../../../../packages/react/src/flex';
 import { DateRangePicker } from '../../../../packages/react/src/date-range-picker';
-import {
-	mapSpacing,
-	useTransitionHeight,
-} from '../../../../packages/react/src/core';
+import { useTransitionHeight } from '../../../../packages/react/src/core';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
@@ -19,13 +16,19 @@ export const FilterAccordion = ({
 	isOpen: boolean;
 }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
-	const transitionHeightCSS = useTransitionHeight(isOpen, mapSpacing(1));
+	const [transitionHeightProp, transitionHeightStyles] =
+		useTransitionHeight(isOpen);
 
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
 
 	return (
-		<section aria-labelledby={ariaLabelledBy} css={transitionHeightCSS} id={id}>
+		<section
+			aria-labelledby={ariaLabelledBy}
+			css={transitionHeightStyles}
+			id={id}
+			{...transitionHeightProp}
+		>
 			<Flex
 				alignItems={{ xs: 'stretch', md: 'flex-end' }}
 				background="shade"

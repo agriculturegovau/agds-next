@@ -44,7 +44,8 @@ export function CollapsingSideBar({
 	const { bodyId, headingId } = useCollapsingSideBarIds();
 	const ref = useRef<HTMLDivElement>(null);
 	const [isOpen, onToggle] = useToggleState(false, true);
-	const transitionHeightCSS = useTransitionHeight(isOpen);
+	const [transitionHeightProp, transitionHeightStyles] =
+		useTransitionHeight(isOpen);
 
 	return (
 		<Stack
@@ -146,15 +147,19 @@ export function CollapsingSideBar({
 				</Box>
 			</Box>
 			<div
-				css={{
-					...transitionHeightCSS,
-					// Overwrite the animated height for tablet/desktop sizes.
-					[tokens.mediaQuery.min.md]: {
-						height: 'auto !important',
-						overflow: 'unset',
+				css={[
+					transitionHeightStyles,
+					{
+						// Overwrite the animated height for tablet/desktop sizes.
+						[tokens.mediaQuery.min.md]: {
+							display: 'block !important',
+							height: 'auto !important',
+							overflow: 'unset',
+						},
 					},
-				}}
+				]}
 				id={bodyId}
+				{...transitionHeightProp}
 			>
 				<Box ref={ref}>{children}</Box>
 			</div>

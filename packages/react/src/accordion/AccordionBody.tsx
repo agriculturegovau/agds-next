@@ -14,17 +14,16 @@ export const AccordionBody = ({
 	isOpen,
 }: AccordionBodyProps) => {
 	const ref = useRef<HTMLDivElement>(null);
-	const transitionHeightCSS = useTransitionHeight(isOpen);
+	const [transitionHeightProp, transitionHeightStyles] =
+		useTransitionHeight(isOpen);
 
 	return (
 		<div
 			aria-labelledby={ariaLabelledBy}
-			css={{
-				...transitionHeightCSS,
-				...packs.print.visible,
-			}}
+			css={[transitionHeightStyles, packs.print.visible]}
 			id={id}
 			role="region"
+			{...transitionHeightProp}
 		>
 			<div ref={ref}>{children}</div>
 		</div>
