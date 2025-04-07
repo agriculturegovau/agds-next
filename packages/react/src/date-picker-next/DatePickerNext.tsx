@@ -9,15 +9,15 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { SelectSingleEventHandler } from 'react-day-picker';
-import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import { PropsSingle } from 'react-day-picker';
 import { Popover, usePopover } from '../_popover';
-import { asDate } from './utils';
+import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
 import { DateInput } from './DatePickerInput';
 import {
 	acceptedDateFormats,
+	asDate,
 	formatDate,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
@@ -122,14 +122,14 @@ export const DatePickerNext = ({
 
 	const popover = usePopover();
 
-	const onSelect = useCallback<SelectSingleEventHandler>(
-		(_, selectedDay, modifiers) => {
+	const onSelect = useCallback<Exclude<PropsSingle['onSelect'], undefined>>(
+		(selected, triggeredDate, modifiers) => {
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(selectedDay, dateFormat));
+			setInputValue(formatDate(selected, dateFormat));
 			// Trigger the callback
-			onChange(selectedDay);
+			onChange(selected);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},
@@ -209,7 +209,7 @@ export const DatePickerNext = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			initialFocus: true,
+			autoFocus: true,
 			numberOfMonths: 1,
 			onSelect,
 			selected: valueAsDateOrUndefined,
@@ -241,7 +241,6 @@ export const DatePickerNext = ({
 				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
-				{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
 				{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
 					isCalendarOpen && (
 						<Popover {...popoverProps}>

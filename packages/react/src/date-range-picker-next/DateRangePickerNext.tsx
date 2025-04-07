@@ -359,7 +359,7 @@ export const DateRangePickerNext = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			initialFocus: true,
+			autoFocus: true,
 			inputMode,
 			numberOfMonths,
 			onSelect,

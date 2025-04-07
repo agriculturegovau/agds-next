@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Fragment,
 	type ChangeEvent,
@@ -5,27 +6,23 @@ import {
 	type MouseEventHandler,
 	useCallback,
 	useMemo,
-	useRef,
 } from 'react';
 import FocusLock from 'react-focus-lock';
 import {
 	CustomComponents,
 	DayPicker,
 	type CaptionLabelProps,
-	type CaptionProps,
-	type DayPickerRangeProps,
-	type DayPickerSingleProps,
+	type MonthCaptionProps,
+	type PropsRange,
+	type PropsSingle,
 	type DayProps,
-	type RowProps,
 	useDayPicker,
-	useDayRender,
-	useNavigation,
+	DayButtonProps,
 } from 'react-day-picker';
 import {
 	addDays,
 	format,
 	getMonth,
-	getUnixTime,
 	getYear,
 	startOfISOWeek,
 	startOfWeek,
@@ -63,10 +60,7 @@ export function getWeekdays(
 	return days;
 }
 
-export type CalendarSingleProps = Omit<
-	DayPickerSingleProps,
-	'mode' | 'components'
->;
+export type CalendarSingleProps = Omit<PropsSingle, 'mode' | 'components'>;
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
@@ -78,10 +72,7 @@ export function CalendarSingle(props: CalendarSingleProps) {
 	);
 }
 
-export type CalendarRangeProps = Omit<
-	DayPickerRangeProps,
-	'mode' | 'components'
-> & {
+export type CalendarRangeProps = Omit<PropsRange, 'mode' | 'components'> & {
 	inputMode?: 'from' | 'to';
 };
 
@@ -97,7 +88,11 @@ export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
 
 const currentYear = getYear(new Date());
 
-const calendarComponents: CustomComponents = {
+const calendarComponents: Partial<CustomComponents> = {
+	// Overwrite Nav, integrated in MonthCaption
+	Nav: function Nav() {
+		return null;
+	},
 	/*
 		Custom `Caption` component to improve acessibility and focus order of react-day-picker
 		Default:
@@ -105,16 +100,17 @@ const calendarComponents: CustomComponents = {
 		* CaptionNavigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/CaptionNavigation.tsx
 		* Navigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Navigation.tsx
 	*/
-	Caption: function Caption(props: CaptionProps) {
+	MonthCaption: function Caption(props: MonthCaptionProps) {
 		const {
 			classNames,
-			styles,
 			components,
+			goToMonth,
 			labels: { labelPrevious, labelNext },
-			locale,
+			months,
+			nextMonth,
+			previousMonth,
+			styles,
 		} = useDayPicker();
-		const { displayMonths, previousMonth, nextMonth, goToMonth } =
-			useNavigation();
 
 		const handlePreviousClick: MouseEventHandler = () => {
 			if (!previousMonth) return;
@@ -128,27 +124,17 @@ const calendarComponents: CustomComponents = {
 
 		const CaptionLabelComponent = components?.CaptionLabel;
 
-		const previousLabel = labelPrevious(previousMonth, { locale });
-		const previousClassName = [
-			classNames.button_reset,
-			classNames.button,
-			classNames.nav_button,
-			classNames.nav_button_previous,
-		].join(' ');
+		const previousLabel = labelPrevious(previousMonth);
+		const previousClassName = [classNames.button_previous].join(' ');
 
-		const nextLabel = labelNext(nextMonth, { locale });
-		const nextClassName = [
-			classNames.button_reset,
-			classNames.button,
-			classNames.nav_button,
-			classNames.nav_button_next,
-		].join(' ');
+		const nextLabel = labelNext(nextMonth);
+		const nextClassName = [classNames.button_next].join(' ');
 
 		const isFirst = props.displayIndex === 0;
-		const isLast = props.displayIndex === displayMonths.length - 1;
+		const isLast = props.displayIndex === months.length - 1;
 
 		return (
-			<div className={classNames.caption} style={styles.caption}>
+			<div className={classNames.month_caption} style={styles?.month_caption}>
 				{isFirst && (
 					<button
 						aria-label={previousLabel}
@@ -160,13 +146,7 @@ const calendarComponents: CustomComponents = {
 						<ChevronLeftIcon color="inherit" weight="bold" />
 					</button>
 				)}
-				{CaptionLabelComponent && (
-					<CaptionLabelComponent
-						displayIndex={props.displayIndex}
-						displayMonth={props.displayMonth}
-						id={props.id}
-					/>
-				)}
+				{CaptionLabelComponent && <CaptionLabelComponent id={props.id} />}
 				{isLast && (
 					<button
 						aria-label={nextLabel}
@@ -184,12 +164,11 @@ const calendarComponents: CustomComponents = {
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	CaptionLabel: function CaptionLabel({
-		displayIndex,
-		displayMonth,
-		id,
-	}: CaptionLabelProps) {
-		const { goToMonth } = useNavigation();
+	CaptionLabel: function CaptionLabel({ id }: CaptionLabelProps) {
+		const { goToMonth, dayPickerProps, ...rest } = useDayPicker();
+		// TODO: Function this into usable state
+		const displayIndex = 0;
+		const displayMonth = rest.months[displayIndex].date;
 
 		const month = getMonth(displayMonth);
 		const year = getYear(displayMonth);
@@ -327,42 +306,45 @@ const calendarComponents: CustomComponents = {
 	// 		</tr>
 	// 	);
 	// },
-	// Custom `Row` component to abide by Date Picker Dialog ARIA pattern
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Row.tsx
-	Row: function Row(props: RowProps) {
-		const { styles, classNames, components } = useDayPicker();
-
-		// Will always have a DayComponent. To satisfy TypeScript only
-		const DayComponent = components?.Day;
-		if (!DayComponent) return null;
-
-		return (
-			<tr className={classNames.row} style={styles.row}>
-				{props.dates.map((date) => (
-					<DayComponent
-						date={date}
-						displayMonth={props.displayMonth}
-						key={getUnixTime(date)}
-					/>
-				))}
-			</tr>
-		);
-	},
-	// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
-	// Key change: we no longer render <button>s, everything happens on <td>s
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
+	// Custom `Week` component to abide by Date Picker Dialog ARIA pattern
+	// Default: http://github.com/gpbl/react-day-picker/blob/main/src/components/Week.tsx
 	Day: function Day(props: DayProps) {
-		const buttonRef = useRef<HTMLButtonElement>(null);
-		const { activeModifiers, buttonProps, isHidden } = useDayRender(
-			props.date,
-			props.displayMonth,
-			buttonRef
-		);
+		const { modifiers } = props;
+		//console.log(props);
+		// Draw hidden day table cells
+		if (modifiers.hidden) {
+			return <td></td>;
+		}
+		console.log(props);
+		return props.children;
+	},
+	/**
+	 * Custom `DayButton` component combined with the `Day` component to abide by Date Picker Dialog ARIA pattern
+	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/main/src/components/DayButton.tsx
+	 * Default Day: https://github.com/gpbl/react-day-picker/blob/main/src/components/Day.tsx
+	 */
+	DayButton: function DayButton(props: DayButtonProps) {
+		const {
+			children,
+			className,
+			day,
+			disabled,
+			modifiers,
+			onBlur,
+			onClick,
+			onFocus,
+			onKeyDown,
+			...restProps
+		} = props;
+		const { classNames, selected } = useDayPicker();
 		const { onHover, clearHoveredDay } = useCalendar();
 
-		// @ts-expect-error: role is unused
-		const { children, onClick, onKeyDown, role, ...restButtonProps } =
-			buttonProps;
+		const ref = React.useRef<HTMLTableCellElement>(null);
+		React.useEffect(() => {
+			if (modifiers.focused) ref.current?.focus();
+		}, [modifiers.focused]);
+
+		const isHidden = modifiers.hidden;
 
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
@@ -377,45 +359,55 @@ const calendarComponents: CustomComponents = {
 		};
 
 		const interactiveProps = {
-			'aria-current': activeModifiers.today ? 'date' : undefined,
+			'aria-current': (modifiers.today ? 'date' : undefined) as
+				| 'date'
+				| undefined,
 			// Improve the aria labels of each button.
 			// Selected and dates within range are manually announced.
 			'aria-label': `${
-				activeModifiers.selected && !activeModifiers.range_middle
-					? 'Selected. '
-					: ''
-			}${formatHumanReadableDate(props.date)}${
-				activeModifiers.range_middle ? '. Between selected dates' : ''
+				modifiers.selected && !modifiers?.range_middle ? 'Selected. ' : ''
+			}${formatHumanReadableDate(day.date)}${
+				modifiers?.range_middle ? '. Between selected dates' : ''
 			}`,
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
-				activeModifiers.range_middle ? undefined : activeModifiers.selected,
-			onClick,
-			...restButtonProps,
+				modifiers?.range_middle ? undefined : modifiers.selected,
+			// react-day-picker flags types button actions and we will get TS errors for <td>
+			onBlur: onBlur as React.FocusEventHandler<unknown>,
+			onClick: onClick as React.MouseEventHandler<unknown>,
+			onFocus: onFocus as React.FocusEventHandler<unknown>,
+			onKeyDown: handleKeyDown as any, // TODO: Fix this typing
+			onMouseEnter: () => {
+				if (onHover && !isHidden) {
+					clearHoveredDay?.cancel();
+					onHover(day.date);
+				}
+			},
+			onMouseLeave: () => {
+				if (onHover && clearHoveredDay && !isHidden) {
+					clearHoveredDay();
+				}
+			},
 		};
+
+		const tableCellClassNames = [
+			classNames.day,
+			modifiers.today ? classNames.today : undefined,
+			modifiers.selected ? classNames.selected : undefined,
+		].join(' ');
 
 		return (
 			<td
-				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
-				ref={buttonRef}
-				tabIndex={-1}
+				{...restProps}
+				className={tableCellClassNames}
+				//@ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
+				disabled={disabled}
+				ref={ref}
 				{...(isHidden ? undefined : interactiveProps)}
-				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
-				onKeyDown={handleKeyDown}
-				onMouseEnter={() => {
-					if (onHover && !isHidden) {
-						clearHoveredDay?.cancel();
-						onHover(props.date);
-					}
-				}}
-				onMouseLeave={() => {
-					if (onHover && clearHoveredDay && !isHidden) {
-						clearHoveredDay();
-					}
-				}}
 			>
-				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
+				<span className={className} tabIndex={-1}>
+					{children}
+				</span>
 			</td>
 		);
 	},

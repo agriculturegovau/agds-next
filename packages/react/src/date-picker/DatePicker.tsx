@@ -219,7 +219,7 @@ export const DatePicker = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			initialFocus: true,
+			autoFocus: true,
 			numberOfMonths: 1,
 			onSelect,
 			selected: valueAsDateOrUndefined,

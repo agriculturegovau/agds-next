@@ -7,9 +7,9 @@ const cellSizeSmall = '2.75rem';
 
 export const reactDayPickerStyles = {
 	// Visually hidden
-	'.rdp-vhidden': visuallyHiddenStyles,
+	'.rdp-vhidden': visuallyHiddenStyles, //REMOVED
 	// Base button
-	'.rdp-button_reset': {
+	'.rdp-button': {
 		appearance: 'none',
 		background: 'none',
 		border: 'none',
@@ -20,14 +20,14 @@ export const reactDayPickerStyles = {
 		font: 'inherit',
 	},
 	// Header
-	'.rdp-caption': {
+	'.rdp-month_caption': {
 		position: 'relative',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
 		marginBottom: mapSpacing(0.5),
 	},
-	'.rdp-caption_label': {
+	'.rdp-month_caption_label': {
 		zIndex: tokens.zIndex.elevated,
 		whiteSpace: 'nowrap',
 		margin: 0,
@@ -36,7 +36,7 @@ export const reactDayPickerStyles = {
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
-	'.rdp-nav_button': {
+	'.rdp-nav_chevron': {
 		position: 'absolute',
 		top: 0,
 		display: 'flex',
@@ -49,14 +49,14 @@ export const reactDayPickerStyles = {
 		'&:hover': { color: boxPalette.foregroundText },
 		...focusStyles,
 	},
-	'.rdp-nav_button_previous': {
+	'.rdp-button_previous': {
 		left: 0,
 	},
-	'.rdp-nav_button_next': {
+	'.rdp-button_next': {
 		right: 0,
 	},
 	// Days of week
-	'.rdp-head_cell': {
+	'.rdp-weekday': {
 		color: boxPalette.foregroundMuted,
 		fontWeight: tokens.fontWeight.normal,
 		height: cellSizeSmall,
@@ -101,7 +101,7 @@ export const reactDayPickerStyles = {
 		},
 		...focusStyles,
 		// Today's button
-		'&.rdp-day_today': {
+		'&.rdp-today': {
 			fontWeight: tokens.fontWeight.bold,
 			'&::after': {
 				backgroundColor: 'currentColor',
@@ -117,7 +117,7 @@ export const reactDayPickerStyles = {
 			},
 		},
 	},
-	'.rdp-day_outside': {
+	'.rdp-outside': {
 		cursor: 'default',
 	},
 	// Table
@@ -131,17 +131,17 @@ export const reactDayPickerStyles = {
 		'&:first-of-type': { marginLeft: 0 },
 		'&:last-of-type': { marginRight: 0 },
 	},
-	'.rdp-table': {
+	'.rdp-month_grid': {
 		margin: 0,
 		width: `calc(${cellSizeSmall} * 7)`,
 		borderCollapse: 'collapse',
 		tableLayout: 'fixed',
 		'@media (min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
 	},
-	'.rdp-tbody': {
+	'.rdp-weeks': {
 		border: 0,
 	},
-	'.rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
+	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
 		{
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,
@@ -174,19 +174,25 @@ export const reactDayRangePickerStyles = (dateRange?: {
 
 	return {
 		// Middle of the date range
-		'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
+		//'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
+		'.rdp-selected:not([disabled]).rdp-range_middle': {
 			backgroundColor: boxPalette.selectedMuted,
 			color: boxPalette.foregroundText,
 			borderRadius: 0,
 		},
 		// Start day of date range
-		'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
-		'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
+		////'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
+		'.rdp-range_start:not(.rdp-range_end)': startStyles,
+		////'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
+		'.rdp-range_start:not(.rdp-range_end)::before': startStyles,
 		// End day of date range
-		'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
-		'.rdp-day_range_end:not(.rdp-day_range_start)::before': endStyles,
+		//'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
+		'.rdp-range_end:not(.rdp-range_start)': endStyles,
+		//'.rdp-day_range_end:not(.rdp-day_range_start)::before': endStyles,
+		'.rdp-range_end:not(.rdp-range_start)::before': endStyles,
 		// Start and end days of date range
-		'.rdp-day_range_start.rdp-day_range_end': {
+		//'.rdp-day_range_start.rdp-day_range_end': {
+		'.rdp-range_start.rdp-range_end': {
 			...(from && startStyles),
 			...(to && endStyles),
 		},

@@ -342,7 +342,7 @@ export const DateRangePicker = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			initialFocus: true,
+			autoFocus: true,
 			numberOfMonths,
 			onSelect,
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,

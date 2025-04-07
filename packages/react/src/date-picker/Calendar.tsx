@@ -13,14 +13,13 @@ import {
 	CustomComponents,
 	DayPicker,
 	type CaptionLabelProps,
-	type CaptionProps,
-	type DayPickerRangeProps,
-	type DayPickerSingleProps,
+	type MonthCaptionProps,
+	type PropsRange,
+	type PropsSingle,
 	type DayProps,
-	type RowProps,
+	type WeekProps,
 	useDayPicker,
 	useDayRender,
-	useNavigation,
 } from 'react-day-picker';
 import {
 	addDays,
@@ -64,10 +63,7 @@ export function getWeekdays(
 	return days;
 }
 
-export type CalendarSingleProps = Omit<
-	DayPickerSingleProps,
-	'mode' | 'components'
->;
+export type CalendarSingleProps = Omit<PropsSingle, 'mode' | 'components'>;
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
@@ -79,10 +75,7 @@ export function CalendarSingle(props: CalendarSingleProps) {
 	);
 }
 
-export type CalendarRangeProps = Omit<
-	DayPickerRangeProps,
-	'mode' | 'components'
-> & {
+export type CalendarRangeProps = Omit<PropsRange, 'mode' | 'components'> & {
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
@@ -116,7 +109,7 @@ const calendarComponents: CustomComponents = {
 		* CaptionNavigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/CaptionNavigation.tsx
 		* Navigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Navigation.tsx
 	*/
-	Caption: function Caption(props: CaptionProps) {
+	Caption: function Caption(props: MonthCaptionProps) {
 		const {
 			classNames,
 			styles,
@@ -125,7 +118,7 @@ const calendarComponents: CustomComponents = {
 			locale,
 		} = useDayPicker();
 		const { displayMonths, previousMonth, nextMonth, goToMonth } =
-			useNavigation();
+			useDayPicker();
 
 		const handlePreviousClick: MouseEventHandler = () => {
 			if (!previousMonth) return;
@@ -159,7 +152,7 @@ const calendarComponents: CustomComponents = {
 		const isLast = props.displayIndex === displayMonths.length - 1;
 
 		return (
-			<div className={classNames.caption} style={styles.caption}>
+			<div className={classNames.caption} style={styles?.month_caption}>
 				{isFirst && (
 					<button
 						aria-label={previousLabel}
@@ -200,7 +193,7 @@ const calendarComponents: CustomComponents = {
 		displayMonth,
 		id,
 	}: CaptionLabelProps) {
-		const { goToMonth } = useNavigation();
+		const { goToMonth } = useDayPicker();
 
 		const month = getMonth(displayMonth);
 		const year = getYear(displayMonth);
@@ -340,7 +333,7 @@ const calendarComponents: CustomComponents = {
 	// },
 	// Custom `Row` component to abide by Date Picker Dialog ARIA pattern
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Row.tsx
-	Row: function Row(props: RowProps) {
+	Row: function Row(props: WeekProps) {
 		const { styles, classNames, components } = useDayPicker();
 
 		// Will always have a DayComponent. To satisfy TypeScript only
