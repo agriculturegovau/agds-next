@@ -6,10 +6,11 @@ import {
 	ReactNode,
 	useEffect,
 	useRef,
+	useState,
 } from 'react';
 import { Global } from '@emotion/react';
 import { createPortal } from 'react-dom';
-import { useTransition, animated, SpringValue } from '@react-spring/web';
+import { Box } from '../box';
 import {
 	boxPalette,
 	canUseDOM,
@@ -18,7 +19,14 @@ import {
 	usePrefersReducedMotion,
 } from '../core';
 import { getRequiredCloseHandler } from '../getCloseHandler';
-import { DrawerDialog, DrawerDialogWidth } from './DrawerDialog';
+import { DrawerDialog } from './DrawerDialog';
+
+export const WIDTH_MAP = {
+	md: '32rem', // 512px
+	lg: '45rem', // 720px
+};
+
+export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
 
 export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
@@ -52,11 +60,19 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 }) => {
 	const handleClose = getRequiredCloseHandler(onClose, onDismiss);
 	const scrollbarWidth = useRef<number>(0);
+	const prefersReducedMotion = usePrefersReducedMotion();
+	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
 
 	useEffect(() => {
 		scrollbarWidth.current =
 			window.innerWidth - document.documentElement.clientWidth;
 	}, []);
+
+	useEffect(() => {
+		if (isOpen) {
+			setCloseTransitionEnded(false);
+		}
+	}, [isOpen]);
 
 	// Close the Drawer when the user presses the escape key
 	useEffect(() => {
@@ -74,70 +90,94 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	// Polyfill usage of `aria-modal`
 	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
 
-	// Animation styles
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const dialogTransitions = useTransition([isOpen], {
-		from: { translateX: '100%', opacity: 0 },
-		enter: { translateX: '0%', opacity: 1 },
-		leave: { translateX: '100%', opacity: 0 },
-		config: { duration: 150 },
-		immediate: prefersReducedMotion,
-	});
-
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
 	if (!canUseDOM()) return null;
 
+	const showDrawer = isOpen ? true : !closeTransitionEnded;
+
 	return createPortal(
 		<Fragment>
 			{isOpen ? <LockScroll scrollbarWidth={scrollbarWidth.current} /> : null}
-			{dialogTransitions(({ translateX, opacity }, item) =>
-				item ? (
-					<div ref={modalContainerRef}>
-						<Overlay
-							mutedOverlay={mutedOverlay}
-							onClick={handleClose}
-							style={{ opacity }}
-						/>
+
+			<div ref={modalContainerRef}>
+				<div
+					css={{
+						pointerEvents: 'none',
+						position: 'absolute',
+						opacity: isOpen ? 1 : 0,
+						// By only having a transition when it's closed, we know when the close transition has ended
+						// We need a 1ms transition for prefersReducedMotion to still ensure the transitionEnd event fires
+						transition: isOpen
+							? 'none'
+							: `opacity ${prefersReducedMotion ? '1ms' : '150ms'}`,
+					}}
+					onTransitionEnd={() => {
+						setCloseTransitionEnded(true);
+					}}
+				/>
+				<Overlay
+					isOpen={isOpen}
+					mutedOverlay={mutedOverlay}
+					onClick={handleClose}
+					prefersReducedMotion={prefersReducedMotion}
+				/>
+				{/* We have the sliding container always rendered, but the contents are conditionally rendered */}
+				<Box
+					css={{
+						inset: 0,
+						marginLeft: 'auto',
+						position: 'fixed',
+						transform: `translateX(${isOpen ? '0' : '100%'})`,
+						transition: `transform ${
+							prefersReducedMotion ? '1ms' : '150ms'
+						} ease`,
+						zIndex: tokens.zIndex.dialog,
+					}}
+					maxWidth={WIDTH_MAP[width]}
+				>
+					{showDrawer && (
 						<DrawerDialog
 							actions={actions}
 							elementToFocusOnClose={elementToFocusOnClose}
 							onClose={handleClose}
-							style={{ translateX }}
 							title={title}
-							width={width}
 						>
 							{children}
 						</DrawerDialog>
-					</div>
-				) : null
-			)}
+					)}
+				</Box>
+			</div>
 		</Fragment>,
 		document.body
 	);
 };
 
 function Overlay({
-	onClick,
-	style,
+	isOpen,
 	mutedOverlay,
+	onClick,
+	prefersReducedMotion,
 }: {
-	onClick: MouseEventHandler<HTMLDivElement>;
-	style: { opacity: SpringValue<number> };
+	isOpen: boolean;
 	mutedOverlay: boolean;
+	onClick: MouseEventHandler<HTMLDivElement>;
+	prefersReducedMotion: boolean;
 }) {
 	return (
-		<animated.div
+		<div
 			css={{
+				pointerEvents: isOpen ? 'all' : 'none',
 				position: 'fixed',
 				inset: 0,
 				backgroundColor: mutedOverlay
 					? boxPalette.overlayMuted
 					: boxPalette.overlay,
+				opacity: isOpen ? 1 : 0,
+				transition: `opacity ${prefersReducedMotion ? '1ms' : '150ms'} ease`,
 				zIndex: tokens.zIndex.overlay,
 			}}
 			onClick={onClick}
-			style={style}
 		/>
 	);
 }
