@@ -8,6 +8,7 @@ exports[`Drawer renders correctly 1`] = `
   <div>
     <div
       class="css-x4px5f-Drawer"
+      data-drawer="transitioner"
     />
     <div
       class="css-vfmas3-Overlay"

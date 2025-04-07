@@ -21,12 +21,12 @@ import {
 import { getRequiredCloseHandler } from '../getCloseHandler';
 import { DrawerDialog } from './DrawerDialog';
 
-export const WIDTH_MAP = {
+const WIDTH_MAP = {
 	md: '32rem', // 512px
 	lg: '45rem', // 720px
 };
 
-export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
+export type DrawerWidth = keyof typeof WIDTH_MAP;
 
 export type DrawerProps = PropsWithChildren<{
 	/** The actions to display at the bottom of the drawer. Typically a `ButtonGroup`. */
@@ -44,7 +44,7 @@ export type DrawerProps = PropsWithChildren<{
 	/** The title of the drawer. It can span lines but should not be too long. */
 	title: string;
 	/** The width of the drawer. */
-	width?: DrawerDialogWidth;
+	width?: DrawerWidth;
 }>;
 
 export const Drawer: FunctionComponent<DrawerProps> = ({
@@ -112,6 +112,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 							? 'none'
 							: `opacity ${prefersReducedMotion ? '1ms' : '150ms'}`,
 					}}
+					data-drawer="transitioner"
 					onTransitionEnd={() => {
 						setCloseTransitionEnded(true);
 					}}
