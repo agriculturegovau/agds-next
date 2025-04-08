@@ -1,5 +1,4 @@
 import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
-import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
 const cellSizeLarge = '3rem';
@@ -14,7 +13,8 @@ const buttonReset = {
 	cursor: 'pointer',
 	color: 'inherit',
 	font: 'inherit',
-};
+} as const;
+
 const buttonNextPrevious = {
 	position: 'absolute',
 	top: 0,
@@ -27,11 +27,9 @@ const buttonNextPrevious = {
 	color: boxPalette.foregroundAction,
 	'&:hover': { color: boxPalette.foregroundText },
 	...focusStyles,
-};
+} as const;
 
 export const reactDayPickerStyles = {
-	// Visually hidden
-	'.rdp-vhidden': visuallyHiddenStyles, //REMOVED
 	// Header
 	'.rdp-month_caption': {
 		position: 'relative',

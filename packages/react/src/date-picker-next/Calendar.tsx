@@ -310,12 +310,10 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Default: http://github.com/gpbl/react-day-picker/blob/main/src/components/Week.tsx
 	Day: function Day(props: DayProps) {
 		const { modifiers } = props;
-		//console.log(props);
 		// Draw hidden day table cells
 		if (modifiers.hidden) {
 			return <td></td>;
 		}
-		console.log(props);
 		return props.children;
 	},
 	/**
@@ -336,7 +334,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			onKeyDown,
 			...restProps
 		} = props;
-		const { classNames, selected } = useDayPicker();
+		const { classNames } = useDayPicker();
 		const { onHover, clearHoveredDay } = useCalendar();
 
 		const ref = React.useRef<HTMLTableCellElement>(null);
