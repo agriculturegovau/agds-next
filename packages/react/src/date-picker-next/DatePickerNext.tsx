@@ -127,9 +127,9 @@ export const DatePickerNext = ({
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(selected, dateFormat));
+			setInputValue(formatDate(triggeredDate, dateFormat));
 			// Trigger the callback
-			onChange(selected);
+			onChange(triggeredDate);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},

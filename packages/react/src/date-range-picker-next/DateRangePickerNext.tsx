@@ -1,30 +1,30 @@
+import { addDays, isAfter, isBefore } from 'date-fns';
 import {
 	ChangeEvent,
 	FocusEvent,
-	useCallback,
 	Ref,
-	useRef,
-	useState,
+	useCallback,
 	useEffect,
 	useMemo,
+	useRef,
+	useState,
 } from 'react';
-import { SelectRangeEventHandler } from 'react-day-picker';
-import { addDays, isAfter, isBefore } from 'date-fns';
+import { PropsRange } from 'react-day-picker';
 import { useDebouncedCallback } from 'use-debounce';
+import { Popover, usePopover } from '../_popover';
+import { visuallyHiddenStyles } from '../a11y';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
 import {
 	mapSpacing,
 	tokens,
 	useClickOutside,
+	useId,
 	useTernaryState,
 	useWindowSize,
-	useId,
 } from '../core';
-import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
-import { visuallyHiddenStyles } from '../a11y';
-import { Popover, usePopover } from '../_popover';
+import { CalendarRange } from '../date-picker-next/Calendar';
+import { CalendarProvider } from '../date-picker-next/CalendarContext';
+import { DateInput } from '../date-picker-next/DatePickerInput';
 import {
 	acceptedDateFormats,
 	asDate,
@@ -34,9 +34,9 @@ import {
 	transformValuePropToInputValue,
 	type AcceptedDateFormats,
 } from '../date-picker-next/utils';
-import { CalendarRange } from '../date-picker-next/Calendar';
-import { CalendarProvider } from '../date-picker-next/CalendarContext';
-import { DateInput } from '../date-picker-next/DatePickerInput';
+import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { getCalendarDefaultMonth, getHoverRange } from './utils';
 
 export type DateRange = {
@@ -184,9 +184,9 @@ export const DateRangePickerNext = ({
 		transformValuePropToInputValue(value.to, dateFormat, allowedDateFormats)
 	);
 
-	const onSelect = useCallback<SelectRangeEventHandler>(
-		(_, selectedDay, activeModifiers) => {
-			if (!inputMode || activeModifiers.disabled) return;
+	const onSelect = useCallback<Exclude<PropsRange['onSelect'], undefined>>(
+		(_, selectedDay, modifiers) => {
+			if (!inputMode || modifiers.disabled) return;
 
 			const range = {
 				from: valueAsDateOrUndefined.from || fromInputValue,

@@ -1,24 +1,3 @@
-import React from 'react';
-import {
-	Fragment,
-	type ChangeEvent,
-	type ChangeEventHandler,
-	type MouseEventHandler,
-	useCallback,
-	useMemo,
-} from 'react';
-import FocusLock from 'react-focus-lock';
-import {
-	CustomComponents,
-	DayPicker,
-	type CaptionLabelProps,
-	type MonthCaptionProps,
-	type PropsRange,
-	type PropsSingle,
-	type DayProps,
-	useDayPicker,
-	DayButtonProps,
-} from 'react-day-picker';
 import {
 	addDays,
 	format,
@@ -28,14 +7,39 @@ import {
 	startOfWeek,
 	type Locale,
 } from 'date-fns';
-import { boxPalette, mapSpacing, tokens, useId } from '../core';
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
-import { Box } from '../box';
-import { Flex } from '../flex';
+import React, {
+	Fragment,
+	useCallback,
+	useMemo,
+	type ChangeEvent,
+	type ChangeEventHandler,
+	type MouseEventHandler,
+} from 'react';
+import {
+	CustomComponents,
+	DateRange,
+	DayButtonProps,
+	DayPicker,
+	PropsBase,
+	useDayPicker,
+	type CaptionLabelProps,
+	type DayProps,
+	type MonthCaptionProps,
+	type PropsRange,
+	type PropsSingle,
+} from 'react-day-picker';
+import FocusLock from 'react-focus-lock';
 import { visuallyHiddenStyles } from '../a11y';
+import { Box } from '../box';
+import { boxPalette, mapSpacing, tokens, useId } from '../core';
+import { Flex } from '../flex';
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 import { formatHumanReadableDate } from './utils';
+
+type CustomCaptionLabelProps = CaptionLabelProps & { displayIndex: number };
+type CustomDayButtonProps = DayButtonProps & { dayClassName: string };
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -60,7 +64,10 @@ export function getWeekdays(
 	return days;
 }
 
-export type CalendarSingleProps = Omit<PropsSingle, 'mode' | 'components'>;
+export type CalendarSingleProps = Omit<
+	PropsBase & PropsSingle,
+	'mode' | 'components'
+>;
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
@@ -72,7 +79,10 @@ export function CalendarSingle(props: CalendarSingleProps) {
 	);
 }
 
-export type CalendarRangeProps = Omit<PropsRange, 'mode' | 'components'> & {
+export type CalendarRangeProps = Omit<
+	PropsBase & PropsRange,
+	'mode' | 'components'
+> & {
 	inputMode?: 'from' | 'to';
 };
 
@@ -100,7 +110,8 @@ const calendarComponents: Partial<CustomComponents> = {
 		* CaptionNavigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/CaptionNavigation.tsx
 		* Navigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Navigation.tsx
 	*/
-	MonthCaption: function Caption(props: MonthCaptionProps) {
+	MonthCaption: function MonthCaption(props: MonthCaptionProps) {
+		const { children, displayIndex } = props;
 		const {
 			classNames,
 			components,
@@ -125,20 +136,17 @@ const calendarComponents: Partial<CustomComponents> = {
 		const CaptionLabelComponent = components?.CaptionLabel;
 
 		const previousLabel = labelPrevious(previousMonth);
-		const previousClassName = [classNames.button_previous].join(' ');
-
 		const nextLabel = labelNext(nextMonth);
-		const nextClassName = [classNames.button_next].join(' ');
 
-		const isFirst = props.displayIndex === 0;
-		const isLast = props.displayIndex === months.length - 1;
+		const isFirst = displayIndex === 0;
+		const isLast = displayIndex === months.length - 1;
 
 		return (
 			<div className={classNames.month_caption} style={styles?.month_caption}>
 				{isFirst && (
 					<button
 						aria-label={previousLabel}
-						className={previousClassName}
+						className={classNames.button_previous}
 						disabled={!previousMonth}
 						onClick={handlePreviousClick}
 						type="button"
@@ -146,11 +154,17 @@ const calendarComponents: Partial<CustomComponents> = {
 						<ChevronLeftIcon color="inherit" weight="bold" />
 					</button>
 				)}
-				{CaptionLabelComponent && <CaptionLabelComponent id={props.id} />}
+				{CaptionLabelComponent && (
+					<CaptionLabelComponent
+						{...(children as React.ReactElement).props}
+						displayIndex={props.displayIndex}
+					/>
+				)}
+
 				{isLast && (
 					<button
 						aria-label={nextLabel}
-						className={nextClassName}
+						className={classNames.button_next}
 						disabled={!nextMonth}
 						onClick={handleNextClick}
 						type="button"
@@ -163,12 +177,12 @@ const calendarComponents: Partial<CustomComponents> = {
 	},
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
-	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	CaptionLabel: function CaptionLabel({ id }: CaptionLabelProps) {
-		const { goToMonth, dayPickerProps, ...rest } = useDayPicker();
-		// TODO: Function this into usable state
-		const displayIndex = 0;
-		const displayMonth = rest.months[displayIndex].date;
+	// Context is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
+	//@ts-expect-error: Type 'HTMLAttributes<HTMLSpanElement>' is not assignable to type 'CustomCaptionLabelProps'.
+	CaptionLabel: function CaptionLabel(props: CustomCaptionLabelProps) {
+		const { displayIndex } = props;
+		const { goToMonth, months } = useDayPicker();
+		const displayMonth = months[displayIndex].date;
 
 		const month = getMonth(displayMonth);
 		const year = getYear(displayMonth);
@@ -240,7 +254,7 @@ const calendarComponents: Partial<CustomComponents> = {
 
 		return yearOptions.length > 1 ? (
 			<Fragment>
-				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles} id={id}>
+				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles}>
 					{formattedMonthYear}
 				</h2>
 				<Flex gap={0.5} justifyContent="center" width="100%">
@@ -265,7 +279,6 @@ const calendarComponents: Partial<CustomComponents> = {
 				as="h2"
 				fontSize="lg"
 				fontWeight="bold"
-				id={id}
 				lineHeight="heading"
 			>
 				{formattedMonthYear}
@@ -309,20 +322,34 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Custom `Week` component to abide by Date Picker Dialog ARIA pattern
 	// Default: http://github.com/gpbl/react-day-picker/blob/main/src/components/Week.tsx
 	Day: function Day(props: DayProps) {
-		const { modifiers } = props;
+		const { modifiers, className, children } = props;
+		const { components } = useDayPicker();
+
 		// Draw hidden day table cells
 		if (modifiers.hidden) {
 			return <td></td>;
 		}
-		return props.children;
+		if (!children) return;
+
+		const DayButtonComponent = components.DayButton;
+		// We need to pass the Day classNames into the child
+		return (
+			<DayButtonComponent
+				{...(children as React.ReactElement).props}
+				dayClassName={className}
+			/>
+		);
 	},
 	/**
 	 * Custom `DayButton` component combined with the `Day` component to abide by Date Picker Dialog ARIA pattern
+	 * Added prop for the table cell classNames
 	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/main/src/components/DayButton.tsx
 	 * Default Day: https://github.com/gpbl/react-day-picker/blob/main/src/components/Day.tsx
 	 */
-	DayButton: function DayButton(props: DayButtonProps) {
+	//@ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
+	DayButton: function DayButton(props: CustomDayButtonProps) {
 		const {
+			dayClassName,
 			children,
 			className,
 			day,
@@ -334,15 +361,14 @@ const calendarComponents: Partial<CustomComponents> = {
 			onKeyDown,
 			...restProps
 		} = props;
-		const { classNames } = useDayPicker();
-		const { onHover, clearHoveredDay } = useCalendar();
+		const { classNames, dayPickerProps, selected } = useDayPicker();
+		const { clearHoveredDay, onHover } = useCalendar();
+		const isHidden = modifiers.hidden;
 
 		const ref = React.useRef<HTMLTableCellElement>(null);
 		React.useEffect(() => {
 			if (modifiers.focused) ref.current?.focus();
 		}, [modifiers.focused]);
-
-		const isHidden = modifiers.hidden;
 
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
@@ -371,10 +397,10 @@ const calendarComponents: Partial<CustomComponents> = {
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers?.range_middle ? undefined : modifiers.selected,
 			// react-day-picker flags types button actions and we will get TS errors for <td>
-			onBlur: onBlur as React.FocusEventHandler<unknown>,
-			onClick: onClick as React.MouseEventHandler<unknown>,
-			onFocus: onFocus as React.FocusEventHandler<unknown>,
-			onKeyDown: handleKeyDown as any, // TODO: Fix this typing
+			onBlur,
+			onClick,
+			onFocus,
+			onKeyDown: handleKeyDown,
 			onMouseEnter: () => {
 				if (onHover && !isHidden) {
 					clearHoveredDay?.cancel();
@@ -388,11 +414,18 @@ const calendarComponents: Partial<CustomComponents> = {
 			},
 		};
 
-		const tableCellClassNames = [
-			classNames.day,
-			modifiers.today ? classNames.today : undefined,
-			modifiers.selected ? classNames.selected : undefined,
-		].join(' ');
+		// react-day-picker v9 the class names start and end are only given once both are selected
+		// This is a quick hack to add them back in when only one is selected
+		let additionalClass: string[] = [];
+		if (dayPickerProps.mode === 'range' && modifiers.selected && selected) {
+			const { to, from } = selected as DateRange;
+
+			// Start only selected OR End only selected
+			if ((from && !to) || (!from && to)) {
+				additionalClass = [classNames.range_start, classNames.range_end];
+			}
+		}
+		const tableCellClassNames = [dayClassName, ...additionalClass].join(' ');
 
 		return (
 			<td

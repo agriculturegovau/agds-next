@@ -33,7 +33,7 @@ const dateRange = {
 describe('Calendar Single', () => {
 	it('renders correctly', () => {
 		const { container } = renderCalendarSingle({
-			//defaultMonth: dateRange.from,
+			defaultMonth: dateRange.from,
 			selected: dateRange.from,
 			yearRange: {
 				from: dateRange.from.getFullYear() - 10,
@@ -45,7 +45,7 @@ describe('Calendar Single', () => {
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderCalendarSingle({
-			//defaultMonth: dateRange.from,
+			defaultMonth: dateRange.from,
 			selected: dateRange.from,
 			yearRange: {
 				from: dateRange.from.getFullYear() - 10,
@@ -78,7 +78,7 @@ function renderCalendarRange({
 describe('Calendar Range', () => {
 	it('renders correctly', () => {
 		const { container } = renderCalendarRange({
-			//defaultMonth: dateRange.from,
+			defaultMonth: dateRange.from,
 			selected: dateRange,
 			yearRange: {
 				from: dateRange.from.getFullYear() - 10,
@@ -90,7 +90,7 @@ describe('Calendar Range', () => {
 
 	it('renders valid HTML with no a11y violations', async () => {
 		const { container } = renderCalendarRange({
-			//defaultMonth: dateRange.from,
+			defaultMonth: dateRange.from,
 			selected: dateRange,
 			yearRange: {
 				from: dateRange.from.getFullYear() - 10,

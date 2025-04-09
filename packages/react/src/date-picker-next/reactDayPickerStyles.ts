@@ -4,6 +4,7 @@ import { focusStyles, highContrastOutlineStyles } from '../box';
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
 
+// Base button
 const buttonReset = {
 	appearance: 'none',
 	background: 'none',
@@ -15,6 +16,7 @@ const buttonReset = {
 	font: 'inherit',
 } as const;
 
+// Left / right chevrons
 const buttonNextPrevious = {
 	position: 'absolute',
 	top: 0,
