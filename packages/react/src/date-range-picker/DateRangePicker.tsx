@@ -8,7 +8,7 @@ import {
 	useEffect,
 	useMemo,
 } from 'react';
-import { SelectRangeEventHandler } from 'react-day-picker';
+import { PropsRange } from 'react-day-picker';
 import { addDays } from 'date-fns';
 import { Box } from '../box';
 import { Flex } from '../flex';
@@ -174,9 +174,9 @@ export const DateRangePicker = ({
 		[value]
 	);
 
-	const onSelect = useCallback<SelectRangeEventHandler>(
-		(_, selectedDay, activeModifiers) => {
-			if (!inputMode || activeModifiers.disabled) return;
+	const onSelect = useCallback<Exclude<PropsRange['onSelect'], undefined>>(
+		(_, selectedDay, modifiers) => {
+			if (!inputMode || modifiers.disabled) return;
 
 			const range = ensureValidDateRange(
 				inputMode === 'from'

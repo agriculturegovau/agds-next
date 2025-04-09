@@ -349,10 +349,10 @@ const calendarComponents: Partial<CustomComponents> = {
 	//@ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
 	DayButton: function DayButton(props: CustomDayButtonProps) {
 		const {
-			dayClassName,
 			children,
 			className,
 			day,
+			dayClassName,
 			disabled,
 			modifiers,
 			onBlur,

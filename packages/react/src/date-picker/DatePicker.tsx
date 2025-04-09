@@ -9,7 +9,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { SelectSingleEventHandler } from 'react-day-picker';
+import { PropsSingle } from 'react-day-picker';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
 import {
@@ -128,14 +128,14 @@ export const DatePicker = ({
 
 	const popover = usePopover();
 
-	const onSelect = useCallback<SelectSingleEventHandler>(
-		(_, selectedDay, modifiers) => {
+	const onSelect = useCallback<Exclude<PropsSingle['onSelect'], undefined>>(
+		(selected, triggeredDate, modifiers) => {
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
-			setInputValue(formatDate(selectedDay, dateFormat));
+			setInputValue(formatDate(triggeredDate, dateFormat));
 			// Trigger the callback
-			onChange(selectedDay);
+			onChange(triggeredDate);
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},

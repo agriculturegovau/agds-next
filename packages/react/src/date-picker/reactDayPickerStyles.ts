@@ -1,24 +1,37 @@
 import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
-import { visuallyHiddenStyles } from '../a11y';
 import { focusStyles, highContrastOutlineStyles } from '../box';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
 
+// Base button
+const buttonReset = {
+	appearance: 'none',
+	background: 'none',
+	border: 'none',
+	margin: 0,
+	padding: 0,
+	cursor: 'pointer',
+	color: 'inherit',
+	font: 'inherit',
+} as const;
+
+// Left / right chevrons
+const buttonNextPrevious = {
+	position: 'absolute',
+	top: 0,
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	width: '2rem',
+	height: '2rem',
+	borderRadius: tokens.borderRadius,
+	color: boxPalette.foregroundAction,
+	'&:hover': { color: boxPalette.foregroundText },
+	...focusStyles,
+} as const;
+
 export const reactDayPickerStyles = {
-	// Visually hidden
-	'.rdp-vhidden': visuallyHiddenStyles, //REMOVED
-	// Base button
-	'.rdp-button': {
-		appearance: 'none',
-		background: 'none',
-		border: 'none',
-		margin: 0,
-		padding: 0,
-		cursor: 'pointer',
-		color: 'inherit',
-		font: 'inherit',
-	},
 	// Header
 	'.rdp-month_caption': {
 		position: 'relative',
@@ -36,23 +49,14 @@ export const reactDayPickerStyles = {
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
-	'.rdp-nav_chevron': {
-		position: 'absolute',
-		top: 0,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: '2rem',
-		height: '2rem',
-		borderRadius: tokens.borderRadius,
-		color: boxPalette.foregroundAction,
-		'&:hover': { color: boxPalette.foregroundText },
-		...focusStyles,
-	},
 	'.rdp-button_previous': {
+		...buttonReset,
+		...buttonNextPrevious,
 		left: 0,
 	},
 	'.rdp-button_next': {
+		...buttonReset,
+		...buttonNextPrevious,
 		right: 0,
 	},
 	// Days of week
