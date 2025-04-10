@@ -73,7 +73,7 @@ export type CalendarSingleProps = Omit<
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
-		<FocusLock autoFocus={false} returnFocus>
+		<FocusLock autoFocus={false}>
 			<CalendarContainer>
 				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
@@ -333,8 +333,8 @@ const calendarComponents: Partial<CustomComponents> = {
 		}
 		if (!children) return;
 
-		// We need to pass the props into the DayButton component to be rendered into the <td>
-		// These include aria-selected and className, and we filter out the unrequired
+		// We have to pass the props into the DayButton component to be rendered into the <td>
+		// Filter out the props we don’t need
 		const dayProps = {
 			...props,
 			children: undefined,

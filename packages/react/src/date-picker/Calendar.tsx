@@ -71,11 +71,23 @@ export function getWeekdays(
 export type CalendarSingleProps = Omit<
 	PropsBase & PropsSingle,
 	'mode' | 'components'
->;
+> & {
+	returnFocusRef?: RefObject<HTMLButtonElement>;
+};
 
-export function CalendarSingle(props: CalendarSingleProps) {
+export function CalendarSingle({
+	returnFocusRef,
+	...props
+}: CalendarSingleProps) {
 	return (
-		<FocusLock autoFocus={false} returnFocus>
+		<FocusLock
+			autoFocus={false}
+			onDeactivation={() => {
+				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
+				if (!returnFocusRef) return;
+				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
+			}}
+		>
 			<CalendarContainer>
 				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>

@@ -121,6 +121,13 @@ export const DatePickerNext = ({
 
 	const popover = usePopover();
 
+	const closeCalendarAndFocusTrigger = useCallback(() => {
+		closeCalendar();
+		setTimeout(() => {
+			triggerRef.current?.focus();
+		}, 0);
+	}, [closeCalendar, triggerRef]);
+
 	const onSelect = useCallback<Exclude<PropsSingle['onSelect'], undefined>>(
 		(selected, triggeredDate, modifiers) => {
 			// If the day is disabled, do nothing
@@ -130,9 +137,9 @@ export const DatePickerNext = ({
 			// Trigger the callback
 			onChange(triggeredDate);
 			// Close the calendar and focus the calendar icon
-			closeCalendar();
+			closeCalendarAndFocusTrigger();
 		},
-		[onChange, closeCalendar, dateFormat]
+		[onChange, closeCalendarAndFocusTrigger, dateFormat]
 	);
 
 	const [inputValue, setInputValue] = useState(
@@ -165,8 +172,8 @@ export const DatePickerNext = ({
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
-		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
+		if (isCalendarOpen) closeCalendarAndFocusTrigger();
+	}, [isCalendarOpen, closeCalendarAndFocusTrigger]);
 
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
@@ -177,13 +184,13 @@ export const DatePickerNext = ({
 				e.preventDefault();
 				e.stopPropagation();
 				// Close the calendar and focus the calendar icon
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [isCalendarOpen, closeCalendar]);
+	}, [isCalendarOpen, closeCalendarAndFocusTrigger]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;

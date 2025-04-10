@@ -360,7 +360,6 @@ export const DateRangePickerNext = ({
 			inputMode,
 			numberOfMonths,
 			onSelect,
-			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
 			selected: {
 				from:
 					inputMode === 'from' &&

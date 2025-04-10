@@ -10,8 +10,9 @@ import {
 	useState,
 } from 'react';
 import { PropsSingle } from 'react-day-picker';
-import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { Popover, usePopover } from '../_popover';
+import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import { DateInput } from '../date-picker-next/DatePickerInput';
 import {
 	acceptedDateFormats,
 	getCalendarDefaultMonth,
@@ -19,7 +20,6 @@ import {
 	normaliseDateString,
 	type AcceptedDateFormats,
 } from '../date-picker-next/utils';
-import { DateInput } from '../date-picker-next/DatePickerInput';
 import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
 import {
@@ -216,11 +216,12 @@ export const DatePicker = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
+			autoFocus: true,
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: true,
 			numberOfMonths: 1,
 			onSelect,
+			returnFocusRef: triggerRef,
 			selected: valueAsDateOrUndefined,
 		}),
 		[defaultMonth, disabledCalendarDays, onSelect, valueAsDateOrUndefined]
