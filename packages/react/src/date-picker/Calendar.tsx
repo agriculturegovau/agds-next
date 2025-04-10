@@ -41,7 +41,9 @@ import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
 
 type CustomCaptionLabelProps = CaptionLabelProps & { displayIndex: number };
-type CustomDayButtonProps = DayButtonProps & { dayClassName: string };
+type CustomDayButtonProps = DayButtonProps & {
+	dayProps: DayProps;
+};
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -332,7 +334,7 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Custom `Row` component to abide by Date Picker Dialog ARIA pattern
 	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Row.tsx
 	Day: function Day(props: DayProps) {
-		const { modifiers, className, children } = props;
+		const { children, modifiers } = props;
 		const { components } = useDayPicker();
 
 		// Draw hidden day table cells
@@ -341,12 +343,20 @@ const calendarComponents: Partial<CustomComponents> = {
 		}
 		if (!children) return;
 
+		// We need to pass the props into the DayButton component to be rendered into the <td>
+		// These include aria-selected and className, and we filter out the unrequired
+		const dayProps = {
+			...props,
+			children: undefined,
+			day: undefined,
+			modifiers: undefined,
+			role: undefined, // Redundant role "gridcell" on <td> [no-redundant-role]
+		};
 		const DayButtonComponent = components.DayButton;
-		// We need to pass the Day classNames into the child
 		return (
 			<DayButtonComponent
 				{...(children as React.ReactElement).props}
-				dayClassName={className}
+				dayProps={dayProps}
 			/>
 		);
 	},
@@ -356,11 +366,12 @@ const calendarComponents: Partial<CustomComponents> = {
 			children,
 			className,
 			day,
-			dayClassName,
+			dayProps,
 			modifiers,
 			onClick,
 			onKeyDown,
-			...restProps
+			type,
+			...restButtonProps
 		} = props;
 		const { classNames, dayPickerProps, selected } = useDayPicker();
 		const isHidden = modifiers.hidden;
@@ -408,11 +419,14 @@ const calendarComponents: Partial<CustomComponents> = {
 				additionalClass = [classNames.range_start, classNames.range_end];
 			}
 		}
-		const tableCellClassNames = [dayClassName, ...additionalClass].join(' ');
+		const tableCellClassNames = [dayProps.className, ...additionalClass].join(
+			' '
+		);
 
 		return (
 			<td
-				{...restProps}
+				{...dayProps}
+				{...restButtonProps}
 				className={tableCellClassNames}
 				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
 				onKeyDown={handleKeyDown}
@@ -420,9 +434,7 @@ const calendarComponents: Partial<CustomComponents> = {
 				{...(isHidden ? undefined : interactiveProps)}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span className={className} tabIndex={-1}>
-					{children}
-				</span>
+				<span tabIndex={-1}>{children}</span>
 			</td>
 		);
 	},

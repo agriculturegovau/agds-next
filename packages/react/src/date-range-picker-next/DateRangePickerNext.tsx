@@ -126,7 +126,6 @@ export const DateRangePickerNext = ({
 		[dateFormat, allowedDateFormatsProp]
 	);
 
-	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -144,7 +143,6 @@ export const DateRangePickerNext = ({
 
 	function onFromTriggerClick() {
 		setInputMode('from');
-		setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'from'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();
@@ -152,7 +150,6 @@ export const DateRangePickerNext = ({
 
 	function onToTriggerClick() {
 		setInputMode('to');
-		setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'to'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();
@@ -478,24 +475,14 @@ export const DateRangePickerNext = ({
 					onHover={onHover}
 					yearRange={yearRange}
 				>
-					{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
-					{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
-						isCalendarOpen && (
-							<Popover {...popoverProps}>
-								<CalendarRange {...calendarProps} />
-							</Popover>
-						)
-					) : (
-						// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
-						<Popover {...popoverProps}>
-							{isCalendarOpen && (
-								<CalendarRange
-									{...calendarProps}
-									css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
-								/>
-							)}
-						</Popover>
-					)}
+					<Popover {...popoverProps}>
+						{isCalendarOpen && (
+							<CalendarRange
+								{...calendarProps}
+								css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+							/>
+						)}
+					</Popover>
 				</CalendarProvider>
 			</Box>
 		</FieldContainer>

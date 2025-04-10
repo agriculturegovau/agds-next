@@ -39,7 +39,9 @@ import { useCalendar } from './CalendarContext';
 import { formatHumanReadableDate } from './utils';
 
 type CustomCaptionLabelProps = CaptionLabelProps & { displayIndex: number };
-type CustomDayButtonProps = DayButtonProps & { dayClassName: string };
+type CustomDayButtonProps = DayButtonProps & {
+	dayProps: DayProps;
+};
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -322,7 +324,7 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Custom `Week` component to abide by Date Picker Dialog ARIA pattern
 	// Default: http://github.com/gpbl/react-day-picker/blob/main/src/components/Week.tsx
 	Day: function Day(props: DayProps) {
-		const { modifiers, className, children } = props;
+		const { children, modifiers } = props;
 		const { components } = useDayPicker();
 
 		// Draw hidden day table cells
@@ -331,12 +333,20 @@ const calendarComponents: Partial<CustomComponents> = {
 		}
 		if (!children) return;
 
+		// We need to pass the props into the DayButton component to be rendered into the <td>
+		// These include aria-selected and className, and we filter out the unrequired
+		const dayProps = {
+			...props,
+			children: undefined,
+			day: undefined,
+			modifiers: undefined,
+			role: undefined, // Redundant role "gridcell" on <td> [no-redundant-role]
+		};
 		const DayButtonComponent = components.DayButton;
-		// We need to pass the Day classNames into the child
 		return (
 			<DayButtonComponent
 				{...(children as React.ReactElement).props}
-				dayClassName={className}
+				dayProps={dayProps}
 			/>
 		);
 	},
@@ -352,14 +362,15 @@ const calendarComponents: Partial<CustomComponents> = {
 			children,
 			className,
 			day,
-			dayClassName,
+			dayProps,
 			disabled,
 			modifiers,
 			onBlur,
 			onClick,
 			onFocus,
 			onKeyDown,
-			...restProps
+			type,
+			...restButtonProps
 		} = props;
 		const { classNames, dayPickerProps, selected } = useDayPicker();
 		const { clearHoveredDay, onHover } = useCalendar();
@@ -396,7 +407,6 @@ const calendarComponents: Partial<CustomComponents> = {
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers?.range_middle ? undefined : modifiers.selected,
-			// react-day-picker flags types button actions and we will get TS errors for <td>
 			onBlur,
 			onClick,
 			onFocus,
@@ -414,6 +424,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			},
 		};
 
+		// TODO: clean this logic
 		// react-day-picker v9 the class names start and end are only given once both are selected
 		// This is a quick hack to add them back in when only one is selected
 		let additionalClass: string[] = [];
@@ -425,20 +436,21 @@ const calendarComponents: Partial<CustomComponents> = {
 				additionalClass = [classNames.range_start, classNames.range_end];
 			}
 		}
-		const tableCellClassNames = [dayClassName, ...additionalClass].join(' ');
+		const tableCellClassNames = [dayProps.className, ...additionalClass].join(
+			' '
+		);
 
 		return (
 			<td
-				{...restProps}
+				{...dayProps}
+				{...restButtonProps}
 				className={tableCellClassNames}
 				//@ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
 				disabled={disabled}
 				ref={ref}
 				{...(isHidden ? undefined : interactiveProps)}
 			>
-				<span className={className} tabIndex={-1}>
-					{children}
-				</span>
+				<span tabIndex={-1}>{children}</span>
 			</td>
 		);
 	},
