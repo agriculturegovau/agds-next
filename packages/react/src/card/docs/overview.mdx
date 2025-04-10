@@ -138,7 +138,7 @@ Add supplementary information, links or actions to cards by passing a `<CardFoot
 
 ### Outside footers
 
-When you need to provide separate related actiobs to a card, use the `footerOutside={true}` prop to render the footer directly beneath the card.
+When you need to provide separate related actions to a card, use the `footerOutside={true}` prop to render the footer directly beneath the card.
 
 Do not use `clickable` cards without setting `footerOutside={true}`.
 
@@ -306,7 +306,7 @@ Fully-clickable cards must be given the `clickable` and `shadow` props to make i
 
 ## Equal card heights
 
-The content within each card will often vary in height, so to prevent an uneven, staggered appearance of multiple cards within a list, ensure that the `<Card>` itself is the immediate child of a flex or grid component, such as `<Columns>`.
+The content within each card will often vary in height, so to prevent an uneven, ragged appearance of multiple cards within a list, ensure that the `<Card>` itself is the immediate child of a flex or grid component, such as `<Columns>`.
 
 ```jsx live
 <Columns as="ul" cols={2}>
