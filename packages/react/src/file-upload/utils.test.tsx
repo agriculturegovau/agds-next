@@ -46,7 +46,7 @@ describe('createExampleFile', () => {
 		expect(
 			JSON.stringify(
 				createExampleFile({
-					download: true,
+					download: 'renamed.png',
 					href: '/',
 					lastModified: 100,
 					name: 'example',
@@ -60,7 +60,7 @@ describe('createExampleFile', () => {
 				name: 'example',
 				size: 100,
 				type: 'image/png',
-				download: true,
+				download: 'renamed.png',
 				href: '/',
 				status: 'success',
 			})
