@@ -16,15 +16,15 @@ import React, {
 	type MouseEventHandler,
 } from 'react';
 import {
-	CustomComponents,
-	DateRange,
-	DayButtonProps,
 	DayPicker,
-	PropsBase,
 	useDayPicker,
 	type CaptionLabelProps,
+	type CustomComponents,
+	type DateRange,
+	type DayButtonProps,
 	type DayProps,
 	type MonthCaptionProps,
+	type PropsBase,
 	type PropsRange,
 	type PropsSingle,
 } from 'react-day-picker';
@@ -101,16 +101,15 @@ export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
 const currentYear = getYear(new Date());
 
 const calendarComponents: Partial<CustomComponents> = {
-	// Overwrite Nav, integrated in MonthCaption
+	// Nav is combined with the `MonthCaption` component, this forces an override to remove a duplicated navigation
 	Nav: function Nav() {
 		return null;
 	},
 	/*
-		Custom `Caption` component to improve acessibility and focus order of react-day-picker
+		Custom `Caption` component to improve accessibility and focus order of react-day-picker
 		Default:
-		* Caption.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Caption.tsx
-		* CaptionNavigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/CaptionNavigation.tsx
-		* Navigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Navigation.tsx
+		* MonthCaption.tsx: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/MonthCaption.tsx
+		* Nav.tsx: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Nav.tsx
 	*/
 	MonthCaption: function MonthCaption(props: MonthCaptionProps) {
 		const { children, displayIndex } = props;
@@ -180,7 +179,8 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	//@ts-expect-error: Type 'HTMLAttributes<HTMLSpanElement>' is not assignable to type 'CustomCaptionLabelProps'.
+	// Default: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/CaptionLabel.tsx
+	// @ts-expect-error: Type 'HTMLAttributes<HTMLSpanElement>' is not assignable to type 'CustomCaptionLabelProps'.
 	CaptionLabel: function CaptionLabel(props: CustomCaptionLabelProps) {
 		const { displayIndex } = props;
 		const { goToMonth, months } = useDayPicker();
@@ -288,7 +288,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		);
 	},
 	// Custom `HeadRow` component to abide by Date Picker Dialog ARIA pattern
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/HeadRow.tsx
+	// Default: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/HeadRow.tsx
 	// HeadRow: function HeadRow() {
 	// 	const {
 	// 		classNames,
@@ -321,20 +321,24 @@ const calendarComponents: Partial<CustomComponents> = {
 	// 		</tr>
 	// 	);
 	// },
-	// Custom `Week` component to abide by Date Picker Dialog ARIA pattern
-	// Default: http://github.com/gpbl/react-day-picker/blob/main/src/components/Week.tsx
+	// Custom `Day` that passes properties to the `DayButton` component or renders hidden table cells
+	// In v9 `Day` was split into both `Day` and `DayButton`
 	Day: function Day(props: DayProps) {
 		const { children, modifiers } = props;
 		const { components } = useDayPicker();
 
 		// Draw hidden day table cells
-		if (modifiers.hidden) {
-			return <td></td>;
+		if (modifiers.hidden || !children) {
+			return (
+				<td tabIndex={-1}>
+					{/* Without this focusable span, left and right do not work in screen readers */}
+					<span tabIndex={-1}>{children}</span>
+				</td>
+			);
 		}
-		if (!children) return;
 
-		// We have to pass the props into the DayButton component to be rendered into the <td>
-		// Filter out the props we don’t need
+		// We have to pass the props into the DayButton component to be rendered into the `<td>`
+		// Filter out the props that are not required
 		const dayProps = {
 			...props,
 			children: undefined,
@@ -352,11 +356,12 @@ const calendarComponents: Partial<CustomComponents> = {
 	},
 	/**
 	 * Custom `DayButton` component combined with the `Day` component to abide by Date Picker Dialog ARIA pattern
-	 * Added prop for the table cell classNames
-	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/main/src/components/DayButton.tsx
-	 * Default Day: https://github.com/gpbl/react-day-picker/blob/main/src/components/Day.tsx
+	 * Both props are merged into the table cell: `Day` contains styling and current states, `DayButton` contains functionality and events
+	 * Key change: we no longer render <button>s, everything happens on <td>s
+	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/DayButton.tsx
+	 * Default Day: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Day.tsx
 	 */
-	//@ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
+	// @ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
 	DayButton: function DayButton(props: CustomDayButtonProps) {
 		const {
 			children,
@@ -365,12 +370,10 @@ const calendarComponents: Partial<CustomComponents> = {
 			dayProps,
 			disabled,
 			modifiers,
-			onBlur,
 			onClick,
-			onFocus,
 			onKeyDown,
 			type,
-			...restButtonProps
+			...restDayButtonProps
 		} = props;
 		const { classNames, dayPickerProps, selected } = useDayPicker();
 		const { clearHoveredDay, onHover } = useCalendar();
@@ -407,9 +410,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers?.range_middle ? undefined : modifiers.selected,
-			onBlur,
 			onClick,
-			onFocus,
 			onKeyDown: handleKeyDown,
 			onMouseEnter: () => {
 				if (onHover && !isHidden) {
@@ -424,32 +425,38 @@ const calendarComponents: Partial<CustomComponents> = {
 			},
 		};
 
-		// TODO: clean this logic
-		// react-day-picker v9 the class names start and end are only given once both are selected
-		// This is a quick hack to add them back in when only one is selected
-		let additionalClass: string[] = [];
-		if (dayPickerProps.mode === 'range' && modifiers.selected && selected) {
-			const { to, from } = selected as DateRange;
+		// react-day-picker v9 the class names `range_start` and `range_end` are only given once both start and end dates are selected
+		// This function checks either start or end date has been selected and returns the classNames
+		function getDateRangeClassNames() {
+			// Only check in `range` mode
+			if (dayPickerProps.mode !== 'range') return [];
+			// Check if cell is selected and if a start or end date has been selected
+			if (!modifiers.selected || !selected) return [];
 
-			// Start only selected OR End only selected
+			const { to, from } = selected as DateRange;
+			// check for only start date OR end date selected
 			if ((from && !to) || (!from && to)) {
-				additionalClass = [classNames.range_start, classNames.range_end];
+				return [classNames.range_start, classNames.range_end];
 			}
+			return [];
 		}
-		const tableCellClassNames = [dayProps.className, ...additionalClass].join(
-			' '
-		);
+
+		const tableCellClassNames = [
+			dayProps.className,
+			...getDateRangeClassNames(),
+		].join(' ');
 
 		return (
 			<td
 				{...dayProps}
-				{...restButtonProps}
+				{...restDayButtonProps}
 				className={tableCellClassNames}
-				//@ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
+				// @ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
 				disabled={disabled}
 				ref={ref}
 				{...(isHidden ? undefined : interactiveProps)}
 			>
+				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{children}</span>
 			</td>
 		);

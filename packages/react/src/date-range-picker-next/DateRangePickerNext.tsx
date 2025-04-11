@@ -1,15 +1,15 @@
 import { addDays, isAfter, isBefore } from 'date-fns';
 import {
-	ChangeEvent,
-	FocusEvent,
-	Ref,
 	useCallback,
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
+	type ChangeEvent,
+	type FocusEvent,
+	type Ref,
 } from 'react';
-import { PropsRange } from 'react-day-picker';
+import { type PropsRange } from 'react-day-picker';
 import { useDebouncedCallback } from 'use-debounce';
 import { Popover, usePopover } from '../_popover';
 import { visuallyHiddenStyles } from '../a11y';

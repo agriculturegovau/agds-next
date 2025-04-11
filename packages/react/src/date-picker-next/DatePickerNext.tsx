@@ -1,15 +1,15 @@
 import {
-	ChangeEvent,
-	FocusEvent,
-	InputHTMLAttributes,
-	Ref,
+	type ChangeEvent,
+	type FocusEvent,
+	type InputHTMLAttributes,
+	type Ref,
 	useCallback,
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
 } from 'react';
-import { PropsSingle } from 'react-day-picker';
+import { type PropsSingle } from 'react-day-picker';
 import { Popover, usePopover } from '../_popover';
 import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { CalendarSingle } from './Calendar';

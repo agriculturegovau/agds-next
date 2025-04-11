@@ -1,43 +1,43 @@
+import { addDays } from 'date-fns';
 import {
-	ChangeEvent,
-	FocusEvent,
 	useCallback,
-	Ref,
-	useRef,
-	useState,
 	useEffect,
 	useMemo,
+	useRef,
+	useState,
+	type ChangeEvent,
+	type FocusEvent,
+	type Ref,
 } from 'react';
-import { PropsRange } from 'react-day-picker';
-import { addDays } from 'date-fns';
+import { type PropsRange } from 'react-day-picker';
+import { Popover, usePopover } from '../_popover';
+import { visuallyHiddenStyles } from '../a11y';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
 import {
 	mapSpacing,
 	tokens,
 	useClickOutside,
+	useId,
 	useTernaryState,
 	useWindowSize,
-	useId,
 } from '../core';
-import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
-import { visuallyHiddenStyles } from '../a11y';
-import { Popover, usePopover } from '../_popover';
-import {
-	constrainDate,
-	formatDate,
-	parseDate,
-	transformValuePropToInputValue,
-} from '../date-picker/utils';
-import { CalendarRange } from '../date-picker/Calendar';
-import { CalendarProvider } from '../date-picker/CalendarContext';
 import {
 	acceptedDateFormats,
 	getDateInputButtonAriaLabel,
 	normaliseDateString,
 	type AcceptedDateFormats,
 } from '../date-picker-next/utils';
+import { CalendarRange } from '../date-picker/Calendar';
+import { CalendarProvider } from '../date-picker/CalendarContext';
+import {
+	constrainDate,
+	formatDate,
+	parseDate,
+	transformValuePropToInputValue,
+} from '../date-picker/utils';
+import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { DateInput } from './../date-picker-next/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 

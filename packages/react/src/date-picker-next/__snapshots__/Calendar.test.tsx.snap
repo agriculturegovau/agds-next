@@ -383,10 +383,34 @@ exports[`Calendar Range renders correctly 1`] = `
                 <tr
                   class="rdp-week"
                 >
-                  <td />
-                  <td />
-                  <td />
-                  <td />
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
                   <td
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
@@ -772,7 +796,13 @@ exports[`Calendar Range renders correctly 1`] = `
                       30
                     </span>
                   </td>
-                  <td />
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1172,10 +1202,34 @@ exports[`Calendar Single renders correctly 1`] = `
                 <tr
                   class="rdp-week"
                 >
-                  <td />
-                  <td />
-                  <td />
-                  <td />
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
                   <td
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
@@ -1554,7 +1608,13 @@ exports[`Calendar Single renders correctly 1`] = `
                       30
                     </span>
                   </td>
-                  <td />
+                  <td
+                    tabindex="-1"
+                  >
+                    <span
+                      tabindex="-1"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
