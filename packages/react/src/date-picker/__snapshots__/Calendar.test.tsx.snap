@@ -320,9 +320,7 @@ exports[`Calendar Range renders correctly 1`] = `
               class="rdp-month_grid"
               role="grid"
             >
-              <thead
-                aria-hidden="true"
-              >
+              <thead>
                 <tr
                   class="rdp-weekdays"
                 >
@@ -1139,9 +1137,7 @@ exports[`Calendar Single renders correctly 1`] = `
               class="rdp-month_grid"
               role="grid"
             >
-              <thead
-                aria-hidden="true"
-              >
+              <thead>
                 <tr
                   class="rdp-weekdays"
                 >

@@ -28,6 +28,7 @@ import {
 	type PropsBase,
 	type PropsRange,
 	type PropsSingle,
+	type WeekdaysProps,
 } from 'react-day-picker';
 import FocusLock from 'react-focus-lock';
 import { visuallyHiddenStyles } from '../a11y';
@@ -343,6 +344,15 @@ const calendarComponents: Partial<CustomComponents> = {
 	// 		</tr>
 	// 	);
 	// },
+	// Overwrite the default `Weekdays` that passes `aria-hidden` into the <thead> which is not correct
+	// Default: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Weekdays.tsx
+	Weekdays: function Weekdays(props: WeekdaysProps) {
+		return (
+			<thead>
+				<tr {...props} />
+			</thead>
+		);
+	},
 	// Custom `Day` that passes properties to the `DayButton` component or renders hidden table cells
 	// In v9 `Day` was split into both `Day` and `DayButton`
 	Day: function Day(props: DayProps) {
