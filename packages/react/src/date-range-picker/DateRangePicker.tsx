@@ -172,13 +172,13 @@ export const DateRangePicker = ({
 	);
 
 	const onSelect = useCallback<Exclude<PropsRange['onSelect'], undefined>>(
-		(_, selectedDay, modifiers) => {
+		(_selected, triggeredDate, modifiers) => {
 			if (!inputMode || modifiers.disabled) return;
 
 			const range = ensureValidDateRange(
 				inputMode === 'from'
-					? { from: selectedDay, to: valueAsDateOrUndefined.to }
-					: { from: valueAsDateOrUndefined.from, to: selectedDay }
+					? { from: triggeredDate, to: valueAsDateOrUndefined.to }
+					: { from: valueAsDateOrUndefined.from, to: triggeredDate }
 			);
 
 			onChange(range);

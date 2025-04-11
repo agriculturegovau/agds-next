@@ -182,7 +182,7 @@ export const DateRangePickerNext = ({
 	);
 
 	const onSelect = useCallback<Exclude<PropsRange['onSelect'], undefined>>(
-		(_, selectedDay, modifiers) => {
+		(_selected, triggeredDate, modifiers) => {
 			if (!inputMode || modifiers.disabled) return;
 
 			const range = {
@@ -190,7 +190,7 @@ export const DateRangePickerNext = ({
 				to: valueAsDateOrUndefined.to || toInputValue,
 			};
 
-			range[inputMode] = selectedDay;
+			range[inputMode] = triggeredDate;
 
 			onChange(range);
 			setFromInputValue(

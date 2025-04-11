@@ -129,7 +129,7 @@ export const DatePickerNext = ({
 	}, [closeCalendar, triggerRef]);
 
 	const onSelect = useCallback<Exclude<PropsSingle['onSelect'], undefined>>(
-		(selected, triggeredDate, modifiers) => {
+		(_selected, triggeredDate, modifiers) => {
 			// If the day is disabled, do nothing
 			if (modifiers.disabled) return;
 			// Update the input field with the selected day
