@@ -12180,10 +12180,10 @@ react-clientside-effect@^1.2.6:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-day-picker@^9.6.4:
-  version "9.6.4"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-9.6.4.tgz#9f3b2a181076572f783ebe80f175e4ed12b33384"
-  integrity sha512-OekyAWfaypSFN5zms4CD6Bcas5R0KbWdARkWTyQ2phJHQOolDfpLwrN6Q+U3ifPGNmKLf9ngXuSz25NKHMkR6w==
+react-day-picker@^9.6.6:
+  version "9.6.6"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-9.6.6.tgz#5c25b415b8d97e92851c0f5bf5f0983431c40356"
+  integrity sha512-BIbhJu9yqQt8/13mTJIorEC4xpwGTa3JDW0C3UoVwNHhJsb2uWNveXmGYy7n8oV/uBsoEOGTitJOl+XpPzKsOQ==
   dependencies:
     "@date-fns/tz" "^1.2.0"
     date-fns "^4.1.0"
