@@ -9,16 +9,15 @@ import {
 } from 'date-fns';
 import React, {
 	Fragment,
-	useCallback,
-	useMemo,
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
 	type RefObject,
+	useCallback,
+	useMemo,
 } from 'react';
 import {
 	DayPicker,
-	useDayPicker,
 	type CaptionLabelProps,
 	type CustomComponents,
 	type DateRange,
@@ -29,6 +28,7 @@ import {
 	type PropsRange,
 	type PropsSingle,
 	type WeekdaysProps,
+	useDayPicker,
 } from 'react-day-picker';
 import FocusLock from 'react-focus-lock';
 import { visuallyHiddenStyles } from '../a11y';
@@ -132,8 +132,8 @@ const calendarComponents: Partial<CustomComponents> = {
 	/*
 		Custom `Caption` component to improve accessibility and focus order of react-day-picker
 		Default:
-		* MonthCaption.tsx: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/MonthCaption.tsx
-		* Nav.tsx: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Nav.tsx
+		* MonthCaption.tsx: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/MonthCaption.tsx
+		* Nav.tsx: https://github.com/gpbl/react-day-picker/blob/48f00dc20f920ee2174eb5b196bb0034b4ac19d1/src/components/Nav.tsx
 	*/
 	MonthCaption: function MonthCaption(props: MonthCaptionProps) {
 		const { children, displayIndex } = props;
@@ -202,7 +202,7 @@ const calendarComponents: Partial<CustomComponents> = {
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
 	// Context is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	// Default: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/CaptionLabel.tsx
+	// Default: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/CaptionLabel.tsx
 	// @ts-expect-error: Type 'HTMLAttributes<HTMLSpanElement>' is not assignable to type 'CustomCaptionLabelProps'.
 	CaptionLabel: function CaptionLabel(props: CustomCaptionLabelProps) {
 		const { displayIndex } = props;
@@ -310,42 +310,8 @@ const calendarComponents: Partial<CustomComponents> = {
 			</Box>
 		);
 	},
-	// Custom `HeadRow` component to abide by Date Picker Dialog ARIA pattern
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/HeadRow.tsx
-	// HeadRow: function HeadRow() {
-	// 	const {
-	// 		classNames,
-	// 		styles,
-	// 		locale,
-	// 		weekStartsOn,
-	// 		ISOWeek,
-	// 		formatters: { formatWeekdayName },
-	// 		labels: { labelWeekday },
-	// 	} = useDayPicker();
-
-	// 	const weekdays = getWeekdays(locale, weekStartsOn, ISOWeek);
-
-	// 	return (
-	// 		<tr style={styles.head_row} className={classNames.head_row}>
-	// 			{weekdays.map((weekday, i) => (
-	// 				<th
-	// 					key={i}
-	// 					scope="col"
-	// 					className={classNames.head_cell}
-	// 					style={styles.head_cell}
-	// 					// I disagree with using abbr instead of aria-label as it's never announced
-	// 					// As per MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#abbr
-	// 					// A short, abbreviated description of the header cell's content provided as an alternative label to use for the header cell when referencing the cell in other contexts. Some user-agents, such as speech readers, may present this description before the content itself.
-	// 					abbr={labelWeekday(weekday, { locale })}
-	// 				>
-	// 					{formatWeekdayName(weekday, { locale })}
-	// 				</th>
-	// 			))}
-	// 		</tr>
-	// 	);
-	// },
 	// Overwrite the default `Weekdays` that passes `aria-hidden` into the <thead> which is not correct
-	// Default: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Weekdays.tsx
+	// Default: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/Weekdays.tsx
 	Weekdays: function Weekdays(props: WeekdaysProps) {
 		return (
 			<thead>
@@ -389,8 +355,8 @@ const calendarComponents: Partial<CustomComponents> = {
 	 * Custom `DayButton` component combined with the `Day` component to abide by Date Picker Dialog ARIA pattern
 	 * Both props are merged into the table cell: `Day` contains styling and current states, `DayButton` contains functionality and events
 	 * Key change: we no longer render <button>s, everything happens on <td>s
-	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/DayButton.tsx
-	 * Default Day: https://github.com/gpbl/react-day-picker/blob/2a956644bc40b37f04db933c73a1291ac5ed67e5/src/components/Day.tsx
+	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/DayButton.tsx
+	 * Default Day: https://github.com/gpbl/react-day-picker/blob/af8deb602b7ebb4c0f99a86139b63041352157bf/src/components/Day.tsx
 	 */
 	// @ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
 	DayButton: function DayButton(props: CustomDayButtonProps) {
@@ -449,10 +415,11 @@ const calendarComponents: Partial<CustomComponents> = {
 			if (!modifiers.selected || !selected) return [];
 
 			const { to, from } = selected as DateRange;
-			// check for only start date OR end date selected
-			if ((from && !to) || (!from && to)) {
-				return [classNames.range_start, classNames.range_end];
-			}
+			// Only start date selected
+			if (from && !to) return [classNames.range_start];
+			// Only end date selected
+			if (!from && to) return [classNames.range_end];
+
 			return [];
 		}
 
@@ -469,7 +436,7 @@ const calendarComponents: Partial<CustomComponents> = {
 				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
 				onKeyDown={handleKeyDown}
 				ref={ref}
-				{...(isHidden ? undefined : interactiveProps)}
+				{...interactiveProps}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{children}</span>

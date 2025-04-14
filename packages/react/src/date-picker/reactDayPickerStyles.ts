@@ -1,5 +1,5 @@
-import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 import { focusStyles, highContrastOutlineStyles } from '../box';
+import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';

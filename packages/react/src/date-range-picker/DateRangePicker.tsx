@@ -1,13 +1,13 @@
 import { addDays } from 'date-fns';
 import {
+	type ChangeEvent,
+	type FocusEvent,
+	type Ref,
 	useCallback,
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
-	type ChangeEvent,
-	type FocusEvent,
-	type Ref,
 } from 'react';
 import { type PropsRange } from 'react-day-picker';
 import { Popover, usePopover } from '../_popover';
@@ -21,12 +21,6 @@ import {
 	useTernaryState,
 	useWindowSize,
 } from '../core';
-import {
-	acceptedDateFormats,
-	getDateInputButtonAriaLabel,
-	normaliseDateString,
-	type AcceptedDateFormats,
-} from '../date-picker-next/utils';
 import { CalendarRange } from '../date-picker/Calendar';
 import { CalendarProvider } from '../date-picker/CalendarContext';
 import {
@@ -35,6 +29,12 @@ import {
 	parseDate,
 	transformValuePropToInputValue,
 } from '../date-picker/utils';
+import {
+	acceptedDateFormats,
+	getDateInputButtonAriaLabel,
+	normaliseDateString,
+	type AcceptedDateFormats,
+} from '../date-picker-next/utils';
 import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
