@@ -30,17 +30,13 @@ export type CalendarRangeContainerProps = PropsWithChildren<{
 
 export function CalendarRangeContainer({
 	children,
-	dateRange,
 	inputMode,
 }: CalendarRangeContainerProps) {
 	return (
 		<Box
 			aria-label="Choose date range"
 			aria-modal
-			css={[
-				reactDayPickerStyles,
-				reactDayRangePickerStyles(dateRange, inputMode),
-			]}
+			css={[reactDayPickerStyles, reactDayRangePickerStyles(inputMode)]}
 			display="inline-block"
 			paddingX={[0.25, 1]}
 			paddingY={1}

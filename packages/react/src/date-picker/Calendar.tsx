@@ -115,7 +115,7 @@ export function CalendarRange({
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
-			<CalendarRangeContainer dateRange={props.selected}>
+			<CalendarRangeContainer>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>

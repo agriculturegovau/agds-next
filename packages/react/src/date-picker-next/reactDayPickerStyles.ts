@@ -201,27 +201,19 @@ export const reactDayPickerStyles = {
 // rdp-day rdp-selected rdp-range_end
 
 // Start date is end date
-// rdp-day rdp-selected rdp-range_end rdp-range_start
+// rdp-day rdp-selected rdp-range_start rdp-range_end
 
-export const reactDayRangePickerStyles = (
-	dateRange?: {
-		from?: Date;
-		to?: Date;
-	},
-	inputMode?: 'from' | 'to'
-) => {
-	const { from, to } = dateRange ?? {};
-	const startStyles = {
-		borderRadius: 0,
-		borderBottomLeftRadius: '50%',
-		borderTopLeftRadius: '50%',
-	};
-	const endStyles = {
-		borderRadius: 0,
-		borderBottomRightRadius: '50%',
-		borderTopRightRadius: '50%',
-	};
-
+const startStyles = {
+	borderRadius: 0,
+	borderBottomLeftRadius: '50%',
+	borderTopLeftRadius: '50%',
+};
+const endStyles = {
+	borderRadius: 0,
+	borderBottomRightRadius: '50%',
+	borderTopRightRadius: '50%',
+};
+export const reactDayRangePickerStyles = (inputMode?: 'from' | 'to') => {
 	return {
 		// Middle of the date range
 		'.rdp-selected:not([disabled]).rdp-range_middle': {
@@ -236,22 +228,21 @@ export const reactDayRangePickerStyles = (
 			color: boxPalette.foregroundText,
 			fontWeight: 'bold',
 		},
+
 		// Start day of date range
-		'.rdp-range_start:not(.rdp-range_end)': startStyles,
-		'.rdp-range_start:not(.rdp-range_end)::before': startStyles,
+		'.rdp-range_start': startStyles,
+		'.rdp-range_start::before': startStyles,
 		// End day of date range
-		'.rdp-range_end:not(.rdp-range_start)': endStyles,
-		'.rdp-range_end:not(.rdp-range_start)::before': endStyles,
+		'.rdp-range_end': endStyles,
+		'.rdp-range_end::before': endStyles,
 		// Start and end days of date range
 		'.rdp-range_start.rdp-range_end': {
-			...(from && startStyles),
-			...(to && endStyles),
+			...startStyles,
+			...endStyles,
 		},
 
 		...(inputMode && {
 			'.rdp-day': {
-				...(inputMode === 'from' && startStyles),
-				...(inputMode === 'to' && endStyles),
 				'&::before': {
 					borderColor: 'transparent',
 					borderStyle: 'solid',

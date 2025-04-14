@@ -92,7 +92,7 @@ export type CalendarRangeProps = Omit<
 export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
 	return (
 		<FocusLock autoFocus={false}>
-			<CalendarRangeContainer dateRange={props.selected} inputMode={inputMode}>
+			<CalendarRangeContainer inputMode={inputMode}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>

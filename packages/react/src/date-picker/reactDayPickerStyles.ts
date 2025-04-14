@@ -160,45 +160,32 @@ export const reactDayPickerStyles = {
 		},
 } as const;
 
-export const reactDayRangePickerStyles = (dateRange?: {
-	from?: Date;
-	to?: Date;
-}) => {
-	const { from, to } = dateRange ?? {};
-	const startStyles = {
-		borderRadius: 0,
-		borderBottomLeftRadius: '50%',
-		borderTopLeftRadius: '50%',
-	};
-	const endStyles = {
-		borderRadius: 0,
-		borderBottomRightRadius: '50%',
-		borderTopRightRadius: '50%',
-	};
-
-	return {
-		// Middle of the date range
-		//'.rdp-day_selected:not([disabled]).rdp-day_range_middle': {
-		'.rdp-selected:not([disabled]).rdp-range_middle': {
-			backgroundColor: boxPalette.selectedMuted,
-			borderRadius: 0,
-			color: boxPalette.foregroundText,
-		},
-		// Start day of date range
-		////'.rdp-day_range_start:not(.rdp-day_range_end)': startStyles,
-		'.rdp-range_start:not(.rdp-range_end)': startStyles,
-		////'.rdp-day_range_start:not(.rdp-day_range_end)::before': startStyles,
-		'.rdp-range_start:not(.rdp-range_end)::before': startStyles,
-		// End day of date range
-		//'.rdp-day_range_end:not(.rdp-day_range_start)': endStyles,
-		'.rdp-range_end:not(.rdp-range_start)': endStyles,
-		//'.rdp-day_range_end:not(.rdp-day_range_start)::before': endStyles,
-		'.rdp-range_end:not(.rdp-range_start)::before': endStyles,
-		// Start and end days of date range
-		//'.rdp-day_range_start.rdp-day_range_end': {
-		'.rdp-range_start.rdp-range_end': {
-			...(from && startStyles),
-			...(to && endStyles),
-		},
-	};
+const startStyles = {
+	borderRadius: 0,
+	borderBottomLeftRadius: '50%',
+	borderTopLeftRadius: '50%',
 };
+const endStyles = {
+	borderRadius: 0,
+	borderBottomRightRadius: '50%',
+	borderTopRightRadius: '50%',
+};
+export const reactDayRangePickerStyles = {
+	// Middle of the date range
+	'.rdp-selected:not([disabled]).rdp-range_middle': {
+		backgroundColor: boxPalette.selectedMuted,
+		borderRadius: 0,
+		color: boxPalette.foregroundText,
+	},
+	// Start day of date range
+	'.rdp-range_start': startStyles,
+	'.rdp-range_start::before': startStyles,
+	// End day of date range
+	'.rdp-range_end': endStyles,
+	'.rdp-range_end:before': endStyles,
+	// Start and end days of date range
+	'.rdp-range_start.rdp-range_end': {
+		...startStyles,
+		...endStyles,
+	},
+} as const;
