@@ -9,24 +9,24 @@ const buttonReset = {
 	appearance: 'none',
 	background: 'none',
 	border: 'none',
+	color: 'inherit',
+	cursor: 'pointer',
+	font: 'inherit',
 	margin: 0,
 	padding: 0,
-	cursor: 'pointer',
-	color: 'inherit',
-	font: 'inherit',
 } as const;
 
 // Left / right chevrons
 const buttonNextPrevious = {
-	position: 'absolute',
-	top: 0,
-	display: 'flex',
 	alignItems: 'center',
-	justifyContent: 'center',
-	width: '2rem',
-	height: '2rem',
 	borderRadius: tokens.borderRadius,
 	color: boxPalette.foregroundAction,
+	display: 'flex',
+	height: '2rem',
+	justifyContent: 'center',
+	position: 'absolute',
+	top: 0,
+	width: '2rem',
 	'&:hover': { color: boxPalette.foregroundText },
 	...focusStyles,
 } as const;
@@ -34,18 +34,18 @@ const buttonNextPrevious = {
 export const reactDayPickerStyles = {
 	// Header
 	'.rdp-month_caption': {
-		position: 'relative',
-		display: 'flex',
 		alignItems: 'center',
+		display: 'flex',
 		justifyContent: 'center',
 		marginBottom: mapSpacing(0.5),
+		position: 'relative',
 	},
 	'.rdp-month_caption_label': {
-		zIndex: tokens.zIndex.elevated,
-		whiteSpace: 'nowrap',
-		margin: 0,
 		color: boxPalette.foregroundText,
 		fontWeight: tokens.fontWeight.bold,
+		margin: 0,
+		whiteSpace: 'nowrap',
+		zIndex: tokens.zIndex.elevated,
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
@@ -87,8 +87,8 @@ export const reactDayPickerStyles = {
 		width: cellSizeSmall,
 		'&[disabled]': {
 			color: boxPalette.foregroundText,
-			opacity: 0.3,
 			cursor: 'not-allowed',
+			opacity: 0.3,
 		},
 		'&:not([disabled], :focus):hover': {
 			backgroundColor: boxPalette.backgroundShade,
@@ -143,8 +143,8 @@ export const reactDayPickerStyles = {
 				borderRadius: '0.25rem',
 				bottom: '0.3rem',
 				content: '""',
-				left: '50%',
 				height: '0.5rem',
+				left: '50%',
 				marginLeft: '-0.25rem',
 				position: 'absolute',
 				width: '0.5rem',
@@ -167,10 +167,10 @@ export const reactDayPickerStyles = {
 		'&:last-of-type': { marginRight: 0 },
 	},
 	'.rdp-month_grid': {
-		margin: 0,
-		width: `calc(${cellSizeSmall} * 7)`,
 		borderCollapse: 'collapse',
+		margin: 0,
 		tableLayout: 'fixed',
+		width: `calc(${cellSizeSmall} * 7)`,
 		'@media (min-width: 375px)': { width: `calc(${cellSizeLarge} * 7)` },
 	},
 	'.rdp-weeks': {
@@ -195,17 +195,16 @@ export const reactDayPickerStyles = {
 } as const;
 
 // Start date only picked
-// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
-// rdp-day rdp-day_selected rdp-day_range_start
+// rdp-day rdp-selected rdp-range_start
 
 // Middle date
-// rdp-day rdp-day_selected rdp-day_range_middle
+// rdp-day rdp-selected rdp-range_middle
 
 // End date picked
-// rdp-day rdp-day_selected rdp-day_range_end
+// rdp-day rdp-selected rdp-range_end
 
 // Start date is end date
-// rdp-day rdp-day_selected rdp-day_range_end rdp-day_range_start
+// rdp-day rdp-selected rdp-range_end rdp-range_start
 
 export const reactDayRangePickerStyles = (
 	dateRange?: {
@@ -216,13 +215,13 @@ export const reactDayRangePickerStyles = (
 ) => {
 	const { from, to } = dateRange ?? {};
 	const startStyles = {
-		borderRadius: 0,
 		borderBottomLeftRadius: '50%',
+		borderRadius: 0,
 		borderTopLeftRadius: '50%',
 	};
 	const endStyles = {
-		borderRadius: 0,
 		borderBottomRightRadius: '50%',
+		borderRadius: 0,
 		borderTopRightRadius: '50%',
 	};
 
@@ -230,8 +229,8 @@ export const reactDayRangePickerStyles = (
 		// Middle of the date range
 		'.rdp-selected:not([disabled]).rdp-range_middle': {
 			backgroundColor: boxPalette.selectedMuted,
-			color: boxPalette.foregroundText,
 			borderRadius: 0,
+			color: boxPalette.foregroundText,
 		},
 
 		'.hover-range:not([disabled]):not(.rdp-range_start):not(.rdp-range_end)': {
