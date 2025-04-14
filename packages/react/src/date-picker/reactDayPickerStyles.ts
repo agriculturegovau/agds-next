@@ -166,13 +166,13 @@ export const reactDayRangePickerStyles = (dateRange?: {
 }) => {
 	const { from, to } = dateRange ?? {};
 	const startStyles = {
-		borderBottomLeftRadius: '50%',
 		borderRadius: 0,
+		borderBottomLeftRadius: '50%',
 		borderTopLeftRadius: '50%',
 	};
 	const endStyles = {
-		borderBottomRightRadius: '50%',
 		borderRadius: 0,
+		borderBottomRightRadius: '50%',
 		borderTopRightRadius: '50%',
 	};
 

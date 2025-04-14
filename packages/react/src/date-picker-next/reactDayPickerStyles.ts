@@ -181,9 +181,6 @@ export const reactDayPickerStyles = {
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,
 			fontWeight: tokens.fontWeight.bold,
-			'&:hover': {
-				color: boxPalette.foregroundAction,
-			},
 			'&::before': {
 				content: '""',
 				inset: 0,
@@ -215,13 +212,13 @@ export const reactDayRangePickerStyles = (
 ) => {
 	const { from, to } = dateRange ?? {};
 	const startStyles = {
-		borderBottomLeftRadius: '50%',
 		borderRadius: 0,
+		borderBottomLeftRadius: '50%',
 		borderTopLeftRadius: '50%',
 	};
 	const endStyles = {
-		borderBottomRightRadius: '50%',
 		borderRadius: 0,
+		borderBottomRightRadius: '50%',
 		borderTopRightRadius: '50%',
 	};
 

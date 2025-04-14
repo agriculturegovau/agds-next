@@ -13,7 +13,7 @@ exports[`Calendar Range renders correctly 1`] = `
     <div
       aria-label="Choose date range"
       aria-modal="true"
-      class="css-2ljxfy-boxStyles-CalendarRangeContainer"
+      class="css-u4aqdd-boxStyles-CalendarRangeContainer"
       role="dialog"
     >
       <div
@@ -830,7 +830,7 @@ exports[`Calendar Single renders correctly 1`] = `
     <div
       aria-label="Choose date"
       aria-modal="true"
-      class="css-bq3ix0-boxStyles-CalendarContainer"
+      class="css-1aw7fte-boxStyles-CalendarContainer"
       role="dialog"
     >
       <div
