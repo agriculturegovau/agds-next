@@ -2,10 +2,10 @@
 '@ag.ds-next/react': minor
 ---
 
-date-picker: Update component to support `react-day-picker` to version `9.6.4`.
+date-picker: Update `react-day-picker` dependency to support React 19.
 
-date-picker-next: Update component to support `react-day-picker` to version `9.6.4`.
+date-picker-next: Update `react-day-picker` dependency to support React 19.
 
-date-range-picker: Update component to support `react-day-picker` to version `9.6.4`. Fix bug where `aria-selected` was added to dates between selected ranges.
+date-range-picker: Update `react-day-picker` dependency to support React 19. Fix bug where `aria-selected` was added to dates between selected ranges.
 
-date-range-picker-next: Update component to support `react-day-picker` to version `9.6.4`. Fix bug where `aria-selected` was added to dates between selected ranges.
+date-range-picker-next: Update `react-day-picker` dependency to support React 19. Fix bug where `aria-selected` was added to dates between selected ranges.
