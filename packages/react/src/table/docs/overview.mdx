@@ -1261,20 +1261,20 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 </Stack>
 ```
 
-## Table row ‘onClick’
+## Clickable rows
 
-The `<TableRow>` component accepts a callback function that will run when the table row or cell is clicked. Refer to the [Table accessibility document](/components/table/accessibility#tablerow-and-onclick) for further information.
+The `<TableRow>` component accepts an optional, `onClick` callback function that will run when the table row or cell is clicked. Refer to the [Table accessibility document](/components/table/accessibility#tablerow-and-onclick) for further information.
 
-To prevent the table row callback from executing unintentionally, the clicked target is checked and will only run the callback if the target is a `<th>`, `<tr>` or `<td>`.
+To prevent the table row callback from executing unintentionally, it will only run the clicked target is a `<td>`, `<th>` or `<tr>`.
 
 ```jsx live
 () => {
 	const [selectedRows, setSelectedRows] = React.useState([]);
-	const [targetedElement, setTargetedElement] = React.useState(null);
+	const [target, setTarget] = React.useState(null);
 	const [toggleButtonState, setToggleButtonState] = React.useState({});
 
 	function toggleRowSelection(rowIndex) {
-		setTargetedElement('Checkbox');
+		setTarget({ element: 'Checkbox', index: rowIndex });
 		if (selectedRows.includes(rowIndex)) {
 			setSelectedRows((r) => r.filter((s) => s !== rowIndex));
 		} else {
@@ -1294,7 +1294,7 @@ To prevent the table row callback from executing unintentionally, the clicked ta
 	}
 
 	function clickToggleButton(index) {
-		setTargetedElement('ToggleButton');
+		setTarget({ element: 'ToggleButton', index: index });
 		setToggleButtonState((prev) => ({
 			...prev,
 			[index]: index in prev ? !prev[index] : true,
@@ -1305,9 +1305,11 @@ To prevent the table row callback from executing unintentionally, the clicked ta
 		<Stack gap={2}>
 			<Box>
 				<H3>Table onClick events</H3>
-				<Text as="p">
-					{targetedElement
-						? `onClick event called for <${targetedElement} />`
+				<Text aria-live="polite" as="p">
+					{target
+						? `onClick event called for <${target.element} /> on row ${
+								target.index + 1
+						  }.`
 						: 'No element detected, click on the table row to identify the clicked elements region.'}
 				</Text>
 			</Box>
@@ -1317,7 +1319,7 @@ To prevent the table row callback from executing unintentionally, the clicked ta
 					<Checkbox
 						checked={allRowsChecked}
 						indeterminate={anyRowsChecked && !allRowsChecked}
-						onChange={() => toggleAllRows()}
+						onChange={toggleAllRows}
 						size="sm"
 					>
 						Select all rows
@@ -1340,7 +1342,9 @@ To prevent the table row callback from executing unintentionally, the clicked ta
 								return (
 									<TableRow
 										key={index}
-										onClick={() => setTargetedElement('TableRow')}
+										onClick={() =>
+											setTarget({ element: 'TableRow', index: index })
+										}
 										selected={isRowSelected}
 									>
 										<TableCell>

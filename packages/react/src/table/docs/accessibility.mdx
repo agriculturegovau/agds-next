@@ -29,10 +29,10 @@ The `aria-rowindex` attribute on `TableRow` defines its position with respect to
 
 ## TableRow and ‘onClick’
 
-The `onClick` prop on the table row component should only be used as an enhancement for mouse/touch users to be able to quickly activate the "main" action on the table.
+The `onClick` prop on the table row component should only be used as an enhancement for mouse/touch users to be able to quickly activate the “main” action on the table.
 
-The callback function should only be used in scenarios where the paradigm is clearly understood and has many existing examples (eg. Google's Gmail application has a row click event to open the email).
+The callback function should only be used in scenarios where the paradigm is clearly understood and has many existing examples (e.g. email applications often allow users to click the entire row to open an email).
 
-Don't rely on the `onClick` prop as the only means of activation. Users using a keyboard or screen reader must be able to access the `onClick` functionality using their device.
+Don’t rely on the `onClick` prop as the only means of triggering the main action. To support all users, the action must also be present (as either a link or button) within the cell content.
 
-Be aware of clickable regions of elements in table rows and tables (such as buttons and links) and ensure they have adequate sizing within a clickable table row to prevent users from accidentally trigger the table row click event.
+Ensure other interactive elements within a clickable row have adequate spacing and sizing to prevent users from accidentally triggering the row click event instead of pressing the link or button.

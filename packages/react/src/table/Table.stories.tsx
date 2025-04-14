@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import { useState } from 'react';
 import { SelectableTableBatchActions } from '../../../../.storybook/stories/SelectableTableBatchActions/SelectableTableBatchActions';
 import { VisuallyHidden } from '../a11y';
@@ -464,8 +465,9 @@ export const SelectableWithBatchActions: Story = {
 	render: SelectableTableBatchActions,
 };
 
-export const WithRowOnClick: Story = {
+export const WithRowOnClick: StoryObj<typeof Table & typeof TableRow> = {
 	name: 'with clickable rows',
+	args: { onClick: fn() },
 	render: (args) => (
 		<TableWrapper>
 			<Table {...args}>
@@ -488,10 +490,10 @@ export const WithRowOnClick: Story = {
 				</TableHead>
 				<TableBody>
 					{exampleData.map(
-						({ location, population, growthYear, growthDecade }, index) => (
-							<TableRow key={index} onClick={console.log}>
+						({ growthDecade, growthYear, id, location, population }, index) => (
+							<TableRow key={index} onClick={args.onClick}>
 								<TableCell as="th" fontWeight="bold" scope="row">
-									<TextLink href="#" id="REF-AB3CD4EF">
+									<TextLink href="#" id={id}>
 										{location}
 									</TextLink>
 								</TableCell>
