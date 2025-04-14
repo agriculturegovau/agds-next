@@ -8,7 +8,7 @@ export type TableRowProps = PropsWithChildren<{
 	'aria-rowindex'?: number;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
-	/** Callback function to execute when the row is clicked. Callback is not run when the clicked element is not a th, tr or td. */
+	/** Callback function to execute when the row is clicked. Callback is not run when the clicked element is not a td, th or tr. */
 	onClick?: (event: React.MouseEvent<HTMLTableRowElement>) => unknown;
 	/** Indicates the current selected state of the table row. */
 	selected?: boolean;
@@ -47,18 +47,18 @@ export function TableRow({
 			css={{
 				...(selected && {
 					...(tableLayout === 'auto' && {
-						position: 'relative',
 						backgroundColor: boxPalette.selectedMuted,
+						position: 'relative',
 
 						// Add outline
 						'&::after': {
-							content: '""',
-							pointerEvents: 'none',
-							position: 'absolute',
-							inset: 0,
-							borderWidth: tokens.borderWidth.sm,
 							borderColor: boxPalette.selected,
 							borderStyle: 'solid',
+							borderWidth: tokens.borderWidth.sm,
+							content: '""',
+							inset: 0,
+							pointerEvents: 'none',
+							position: 'absolute',
 						},
 
 						// Remove the border top (if next table row is selected)
@@ -77,19 +77,19 @@ export function TableRow({
 						position: 'relative',
 
 						'&:hover': {
-							'& > td, th': {
+							'& > td, & > th': {
 								cursor: 'pointer',
 							},
 
 							// Add outline
 							'&::after': {
-								content: '""',
-								pointerEvents: 'none',
-								position: 'absolute',
-								inset: 0,
-								borderWidth: tokens.borderWidth.md,
 								borderColor: boxPalette.selected,
 								borderStyle: 'solid',
+								borderWidth: tokens.borderWidth.md,
+								content: '""',
+								inset: 0,
+								pointerEvents: 'none',
+								position: 'absolute',
 							},
 
 							// Set border bottom for select & hover
@@ -103,16 +103,16 @@ export function TableRow({
 					background: theme.lightSystemErrorMuted,
 				}),
 				...((selected || onClick) && {
-					// // Chrome and Firefox doesn't support ::after elements in fixed table layouts
-					// // FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
+					// Chrome and Firefox doesn't support ::after elements in fixed table layouts
+					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
 					...(tableLayout === 'fixed' && {
 						...(selected && alternativeSelectedStyles),
 						...(onClick && alternativeHoverStyles),
 					}),
 
-					// // Safari does not support relative positioning on `tr` elements
-					// // FIXME Once safari fixes this issue, these alternative styles should be removed
-					// // More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
+					// Safari does not support relative positioning on `tr` elements
+					// FIXME Once safari fixes this issue, these alternative styles should be removed
+					// More info https://www.reddit.com/r/css/comments/s195xg/safari_alternative_to_positionrelative_on_tr/?rdt=41288
 					'@supports (-webkit-appearance: -apple-pay-button)': {
 						...(selected && alternativeSelectedStyles),
 						...(onClick && alternativeHoverStyles),
@@ -130,18 +130,18 @@ export function TableRow({
 const alternativeSelectedStyles = {
 	backgroundColor: boxPalette.selectedMuted,
 	outlineColor: boxPalette.selected,
-	outlineOffset: '-3px',
+	outlineOffset: `-${tokens.borderWidth.md}px`,
 	outlineStyle: 'solid',
-	outlineWidth: '1px',
+	outlineWidth: `${tokens.borderWidth.sm}px`,
 	'&::after': { display: 'none' },
 };
 
 const alternativeHoverStyles = {
 	'&:hover': {
 		outlineColor: boxPalette.selected,
-		outlineOffset: '-3px',
+		outlineOffset: `-${tokens.borderWidth.lg}px`,
 		outlineStyle: 'solid',
-		outlineWidth: '2px',
+		outlineWidth: `${tokens.borderWidth.md}px`,
 	},
 	'&::after': { display: 'none' },
 };
