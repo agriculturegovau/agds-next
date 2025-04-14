@@ -68,9 +68,9 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r0:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -576,9 +576,9 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r2:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1084,9 +1084,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r5:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1592,9 +1592,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r4:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2100,9 +2100,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r7:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2608,9 +2608,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r6:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3116,9 +3116,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r9:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3624,9 +3624,9 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r8:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"
