@@ -7,7 +7,7 @@ import { useTableContext } from './TableContext';
 export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
 	'aria-rowindex'?: number;
-	/** The background colour of the row. Overridden by `selected` or `invalid`. */
+	/** The background colour of the row. Overridden by `invalid` or `selected`. */
 	background?: BackgroundColor;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;

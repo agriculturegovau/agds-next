@@ -1260,3 +1260,56 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 	</TableWrapper>
 </Stack>
 ```
+
+## Row background colours
+
+While colour alone should not be used to convey information, `<TableRow>` like `<Box>`, supports setting the `background` colour to provide a quick, visual cue as to the meaning of a specific row.
+
+Background colours should only be used in scenarios where the paradigm is clearly understood and has many existing examples (e.g. email applications often show an email’s current state with colour). If the meaning is important, it should also be indicated in another way for non-sighted users.
+
+Background colours will override any striping, but will be overridden if the row is `invalid` or `selected`.
+
+```jsx live
+<TableWrapper>
+	<Table striped>
+		<TableCaption>Support background row colours</TableCaption>
+		<TableHead>
+			<TableRow>
+				<TableHeader scope="col">Colour</TableHeader>
+			</TableRow>
+		</TableHead>
+		<TableBody>
+			<TableRow background="body">
+				<TableCell>body</TableCell>
+			</TableRow>
+			<TableRow background="shade">
+				<TableCell>shade</TableCell>
+			</TableRow>
+			<TableRow background="bodyAlt">
+				<TableCell>bodyAlt</TableCell>
+			</TableRow>
+			<TableRow background="shadeAlt">
+				<TableCell>shadeAlt</TableCell>
+			</TableRow>
+			<TableRow background="info">
+				<TableCell>info</TableCell>
+			</TableRow>
+			<TableRow background="success">
+				<TableCell>success</TableCell>
+			</TableRow>
+			<TableRow background="error">
+				<TableCell>error</TableCell>
+			</TableRow>
+			<TableRow background="warning">
+				<TableCell>warning</TableCell>
+			</TableRow>
+			<TableRow background="shade" invalid>
+				<TableCell>shade invalid</TableCell>
+			</TableRow>
+			<TableRow background="warning" selected>
+				<TableCell>warning selected</TableCell>
+			</TableRow>
+		</TableBody>
+	</Table>
+</TableWrapper>
+```
