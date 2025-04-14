@@ -4,26 +4,21 @@ import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
 
-// Base button
-const buttonReset = {
-	appearance: 'none',
-	background: 'none',
-	border: 'none',
-	color: 'inherit',
-	cursor: 'pointer',
-	font: 'inherit',
-	margin: 0,
-	padding: 0,
-} as const;
-
 // Left / right chevrons
 const buttonNextPrevious = {
 	alignItems: 'center',
+	appearance: 'none',
+	background: 'none',
+	border: 'none',
 	borderRadius: tokens.borderRadius,
 	color: boxPalette.foregroundAction,
+	cursor: 'pointer',
 	display: 'flex',
+	font: 'inherit',
 	height: '2rem',
 	justifyContent: 'center',
+	margin: 0,
+	padding: 0,
 	position: 'absolute',
 	top: 0,
 	width: '2rem',
@@ -50,12 +45,10 @@ export const reactDayPickerStyles = {
 	},
 	// Left / right arrows
 	'.rdp-button_previous': {
-		...buttonReset,
 		...buttonNextPrevious,
 		left: 0,
 	},
 	'.rdp-button_next': {
-		...buttonReset,
 		...buttonNextPrevious,
 		right: 0,
 	},
