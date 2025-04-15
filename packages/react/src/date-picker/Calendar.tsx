@@ -406,7 +406,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			onClick,
 		};
 
-		// react-day-picker v9 the class names `range_start` and `range_end` are only given once both start and end dates are selected
+		// In react-day-picker v9, the class names `range_start` and `range_end` are only given once both start and end dates are selected
 		// This function checks either start or end date has been selected and returns the classNames
 		function getDateRangeClassNames() {
 			// Only check in `range` mode
