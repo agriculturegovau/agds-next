@@ -82,10 +82,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 					aria-invalid={invalid || undefined}
 					aria-required={required}
 					disabled={disabled}
+					height={height}
 					id={id}
 					name={name}
 					ref={ref}
 					type="radio"
+					width={width}
 					{...props}
 				/>
 				<RadioIndicator disabled={disabled} invalid={invalid} size={size} />

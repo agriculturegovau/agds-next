@@ -105,10 +105,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 						aria-required={required}
 						checked={checked}
 						disabled={disabled}
+						height={height}
 						id={id}
 						name={name}
 						ref={mergeRefs([forwardedRef, ref])}
 						type="checkbox"
+						width={width}
 						{...props}
 					/>
 					<CheckboxIndicator
