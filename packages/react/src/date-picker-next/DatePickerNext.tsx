@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { type PropsSingle } from 'react-day-picker';
 import { Popover, usePopover } from '../_popover';
-import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import { type FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { CalendarSingle } from './Calendar';
 import { CalendarProvider } from './CalendarContext';
 import { DateInput } from './DatePickerInput';
