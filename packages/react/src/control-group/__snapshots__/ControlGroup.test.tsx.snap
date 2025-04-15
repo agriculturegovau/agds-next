@@ -34,33 +34,37 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:r2:"
           >
-            <input
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-a"
-              id="checkbox-:r2:"
-              name=":r1:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-a"
+                id="checkbox-:r2:"
+                name=":r1:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -72,33 +76,37 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:r3:"
           >
-            <input
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-b"
-              id="checkbox-:r3:"
-              name=":r1:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-b"
+                id="checkbox-:r3:"
+                name=":r1:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -110,33 +118,37 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:r4:"
           >
-            <input
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-c"
-              id="checkbox-:r4:"
-              name=":r1:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-c"
+                id="checkbox-:r4:"
+                name=":r1:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -148,33 +160,37 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:r5:"
           >
-            <input
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-d"
-              id="checkbox-:r5:"
-              name=":r1:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-d"
+                id="checkbox-:r5:"
+                name=":r1:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -263,35 +279,39 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rk:"
           >
-            <input
-              aria-describedby="control-group-:ri:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-a"
-              id="checkbox-:rk:"
-              name=":rj:"
-              type="checkbox"
-            />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-describedby="control-group-:ri:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-a"
+                id="checkbox-:rk:"
+                name=":rj:"
+                type="checkbox"
+              />
+              <span
+                class="css-80qi0p-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -303,35 +323,39 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rl:"
           >
-            <input
-              aria-describedby="control-group-:ri:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-b"
-              id="checkbox-:rl:"
-              name=":rj:"
-              type="checkbox"
-            />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-describedby="control-group-:ri:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-b"
+                id="checkbox-:rl:"
+                name=":rj:"
+                type="checkbox"
+              />
+              <span
+                class="css-80qi0p-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -343,35 +367,39 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rm:"
           >
-            <input
-              aria-describedby="control-group-:ri:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-c"
-              id="checkbox-:rm:"
-              name=":rj:"
-              type="checkbox"
-            />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-describedby="control-group-:ri:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-c"
+                id="checkbox-:rm:"
+                name=":rj:"
+                type="checkbox"
+              />
+              <span
+                class="css-80qi0p-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -383,35 +411,39 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rn:"
           >
-            <input
-              aria-describedby="control-group-:ri:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-d"
-              id="checkbox-:rn:"
-              name=":rj:"
-              type="checkbox"
-            />
             <span
-              class="css-7h9akr-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-describedby="control-group-:ri:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-d"
+                id="checkbox-:rn:"
+                name=":rj:"
+                type="checkbox"
+              />
+              <span
+                class="css-80qi0p-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -461,33 +493,37 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:re:"
           >
-            <input
-              aria-required="true"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-a"
-              id="checkbox-:re:"
-              name=":rd:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="true"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-a"
+                id="checkbox-:re:"
+                name=":rd:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -499,33 +535,37 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rf:"
           >
-            <input
-              aria-required="true"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-b"
-              id="checkbox-:rf:"
-              name=":rd:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="true"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-b"
+                id="checkbox-:rf:"
+                name=":rd:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -537,33 +577,37 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rg:"
           >
-            <input
-              aria-required="true"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-c"
-              id="checkbox-:rg:"
-              name=":rd:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="true"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-c"
+                id="checkbox-:rg:"
+                name=":rd:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -575,33 +619,37 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
             class="css-hp3wbe-boxStyles-CheckboxContainer"
             for="checkbox-:rh:"
           >
-            <input
-              aria-required="true"
-              class="css-142kh0r-CheckboxInput"
-              data-testid="option-d"
-              id="checkbox-:rh:"
-              name=":rd:"
-              type="checkbox"
-            />
             <span
-              class="css-fhfj02-boxStyles-CheckboxIndicator"
+              class="css-lhbzwe-Checkbox"
             >
-              <svg
-                aria-hidden="true"
-                class="css-lewdp2-Icon"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <input
+                aria-required="true"
+                class="css-v5n1jg-CheckboxInput"
+                data-testid="option-d"
+                id="checkbox-:rh:"
+                name=":rd:"
+                type="checkbox"
+              />
+              <span
+                class="css-5q1w1y-boxStyles-CheckboxIndicator"
               >
-                <path
-                  d="M20 6 9 17l-5-5"
-                />
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  class="css-lewdp2-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 6 9 17l-5-5"
+                  />
+                </svg>
+              </span>
             </span>
             <span
               class="css-1f6xqkn-boxStyles-CheckboxLabel"
@@ -650,20 +698,24 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r16:"
           >
-            <input
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-a"
-              id="radio-:r16:"
-              name=":r15:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-a"
+                id="radio-:r16:"
+                name=":r15:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -675,20 +727,24 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r17:"
           >
-            <input
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-b"
-              id="radio-:r17:"
-              name=":r15:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-b"
+                id="radio-:r17:"
+                name=":r15:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -700,20 +756,24 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r18:"
           >
-            <input
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-c"
-              id="radio-:r18:"
-              name=":r15:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-c"
+                id="radio-:r18:"
+                name=":r15:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -725,20 +785,24 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r19:"
           >
-            <input
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-d"
-              id="radio-:r19:"
-              name=":r15:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-d"
+                id="radio-:r19:"
+                name=":r15:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -827,22 +891,26 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1o:"
           >
-            <input
-              aria-describedby="control-group-:r1m:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-a"
-              id="radio-:r1o:"
-              name=":r1n:"
-              type="radio"
-            />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-describedby="control-group-:r1m:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-a"
+                id="radio-:r1o:"
+                name=":r1n:"
+                type="radio"
               />
+              <span
+                class="css-11u7vp8-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -854,22 +922,26 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1p:"
           >
-            <input
-              aria-describedby="control-group-:r1m:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-b"
-              id="radio-:r1p:"
-              name=":r1n:"
-              type="radio"
-            />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-describedby="control-group-:r1m:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-b"
+                id="radio-:r1p:"
+                name=":r1n:"
+                type="radio"
               />
+              <span
+                class="css-11u7vp8-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -881,22 +953,26 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1q:"
           >
-            <input
-              aria-describedby="control-group-:r1m:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-c"
-              id="radio-:r1q:"
-              name=":r1n:"
-              type="radio"
-            />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-describedby="control-group-:r1m:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-c"
+                id="radio-:r1q:"
+                name=":r1n:"
+                type="radio"
               />
+              <span
+                class="css-11u7vp8-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -908,22 +984,26 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1r:"
           >
-            <input
-              aria-describedby="control-group-:r1m:-message"
-              aria-invalid="true"
-              aria-required="false"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-d"
-              id="radio-:r1r:"
-              name=":r1n:"
-              type="radio"
-            />
             <span
-              class="css-ib2w54-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-describedby="control-group-:r1m:-message"
+                aria-invalid="true"
+                aria-required="false"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-d"
+                id="radio-:r1r:"
+                name=":r1n:"
+                type="radio"
               />
+              <span
+                class="css-11u7vp8-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -973,20 +1053,24 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1i:"
           >
-            <input
-              aria-required="true"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-a"
-              id="radio-:r1i:"
-              name=":r1h:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="true"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-a"
+                id="radio-:r1i:"
+                name=":r1h:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -998,20 +1082,24 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1j:"
           >
-            <input
-              aria-required="true"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-b"
-              id="radio-:r1j:"
-              name=":r1h:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="true"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-b"
+                id="radio-:r1j:"
+                name=":r1h:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -1023,20 +1111,24 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1k:"
           >
-            <input
-              aria-required="true"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-c"
-              id="radio-:r1k:"
-              name=":r1h:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="true"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-c"
+                id="radio-:r1k:"
+                name=":r1h:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"
@@ -1048,20 +1140,24 @@ exports[`ControlGroup  With Radios renders correctly when required 1`] = `
             class="css-6pplfb-boxStyles-RadioContainer"
             for="radio-:r1l:"
           >
-            <input
-              aria-required="true"
-              class="css-o6md8t-RadioInput"
-              data-testid="option-d"
-              id="radio-:r1l:"
-              name=":r1h:"
-              type="radio"
-            />
             <span
-              class="css-osss6w-boxStyles-RadioIndicator"
+              class="css-1i46ndm-Radio"
             >
-              <span
-                class="css-erbirp-boxStyles-RadioIndicator"
+              <input
+                aria-required="true"
+                class="css-1keng9k-RadioInput"
+                data-testid="option-d"
+                id="radio-:r1l:"
+                name=":r1h:"
+                type="radio"
               />
+              <span
+                class="css-1ab3tn0-boxStyles-RadioIndicator"
+              >
+                <span
+                  class="css-erbirp-boxStyles-RadioIndicator"
+                />
+              </span>
             </span>
             <span
               class="css-1vx6497-boxStyles-RadioLabel"

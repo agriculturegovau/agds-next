@@ -6,19 +6,23 @@ exports[`Radio renders correctly 1`] = `
     class="css-6pplfb-boxStyles-RadioContainer"
     for="radio-:r2:"
   >
-    <input
-      class="css-o6md8t-RadioInput"
-      data-testid="example"
-      id="radio-:r2:"
-      name="my-radio"
-      type="radio"
-    />
     <span
-      class="css-osss6w-boxStyles-RadioIndicator"
+      class="css-1i46ndm-Radio"
     >
-      <span
-        class="css-erbirp-boxStyles-RadioIndicator"
+      <input
+        class="css-1keng9k-RadioInput"
+        data-testid="example"
+        id="radio-:r2:"
+        name="my-radio"
+        type="radio"
       />
+      <span
+        class="css-1ab3tn0-boxStyles-RadioIndicator"
+      >
+        <span
+          class="css-erbirp-boxStyles-RadioIndicator"
+        />
+      </span>
     </span>
     <span
       class="css-1vx6497-boxStyles-RadioLabel"
