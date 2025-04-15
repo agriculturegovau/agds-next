@@ -8,6 +8,7 @@ export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
 		return (
 			<input
 				css={{
+					opacity: 0,
 					// When this component is focused, outline the `CheckboxIndicator`
 					'&:focus ~ span:first-of-type': packs.outline,
 					// When this component is checked or indeterminate, show the indicator's active state

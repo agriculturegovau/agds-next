@@ -10,7 +10,7 @@ exports[`Radio renders correctly 1`] = `
       class="css-1i46ndm-Radio"
     >
       <input
-        class="css-1keng9k-RadioInput"
+        class="css-1vibgq8-RadioInput"
         data-testid="example"
         id="radio-:r2:"
         name="my-radio"
