@@ -130,18 +130,18 @@ export function TableRow({
 const alternativeSelectedStyles = {
 	backgroundColor: boxPalette.selectedMuted,
 	outlineColor: boxPalette.selected,
-	outlineOffset: `-${tokens.borderWidth.md}px`,
+	outlineOffset: -tokens.borderWidth.md,
 	outlineStyle: 'solid',
-	outlineWidth: `${tokens.borderWidth.sm}px`,
+	outlineWidth: tokens.borderWidth.sm,
 	'&::after': { display: 'none' },
 };
 
 const alternativeHoverStyles = {
 	'&:hover': {
 		outlineColor: boxPalette.selected,
-		outlineOffset: `-${tokens.borderWidth.lg}px`,
+		outlineOffset: -tokens.borderWidth.lg,
 		outlineStyle: 'solid',
-		outlineWidth: `${tokens.borderWidth.md}px`,
+		outlineWidth: tokens.borderWidth.md,
 	},
 	'&::after': { display: 'none' },
 };
