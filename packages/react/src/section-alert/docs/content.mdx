@@ -39,56 +39,32 @@ Refer to the glossary for more information.
 
 Go to the [TFTM Voice and tone guide](/content/voice-and-tone) for guidance.
 
-## Alert examples
+## Composition
 
-Some common examples of labels for each tone.
+Section alerts are composed of an icon, title, description, action and close action.
 
-### High emphasis
-
-```jsx live
-<Stack gap={1}>
-	<SectionAlert title="Your changes have been saved" tone="successHigh" />
-	<SectionAlert
-		title="There was an error saving your changes"
-		tone="errorHigh"
-	/>
-	<SectionAlert title="A warning message for this section" tone="warningHigh" />
-	<SectionAlert title="Please read the comments carefully" tone="infoHigh" />
-</Stack>
-```
-
-### Medium emphasis
+The icon and title are mandatory and achieve a compact alert, but we encourage the use of description when additional information might be helpful to the user.
 
 ```jsx live
 <Stack gap={1}>
-	<SectionAlert title="Your changes have been saved" tone="successMedium" />
 	<SectionAlert
-		title="There was an error saving your changes"
-		tone="errorMedium"
+		onClose={console.log}
+		title="Section alert title"
+		tone="successHigh"
 	/>
-	<SectionAlert
-		title="A warning message for this section"
-		tone="warningMedium"
-	/>
-	<SectionAlert title="Please read the comments carefully" tone="infoMedium" />
-</Stack>
-```
 
-### Low emphasis
+	<SectionAlert title="Section alert title" tone="successHigh">
+		<Text as="p">Description</Text>
+	</SectionAlert>
 
-```jsx live
-<Stack gap={1}>
-	<SectionAlert title="Your changes have been saved" tone="successLow" />
-	<SectionAlert
-		title="There was an error saving your changes"
-		tone="errorLow"
-	/>
-	<SectionAlert title="A warning message for this section" tone="warningLow" />
-	<SectionAlert title="Please read the comments carefully" tone="infoLow" />
-	<SectionAlert title="To Do" tone="notStartedLow" />
-	<SectionAlert title="Doing" tone="inProgressLow" />
-	<SectionAlert title="Paused" tone="pausedLow" />
-	<SectionAlert title="Help" tone="unknownLow" />
-	<SectionAlert title="Cannot start" tone="cannotStartLow" />
+	<SectionAlert title="Section alert title" tone="warningHigh">
+		<Stack gap={0.5} alignItems="flex-start">
+			<Text as="p">Description</Text>
+			<ButtonGroup>
+				<Button variant="text">Action 1</Button>
+				<Button variant="text">Action 2</Button>
+			</ButtonGroup>
+		</Stack>
+	</SectionAlert>
 </Stack>
 ```
