@@ -126,6 +126,7 @@ export const DateRangePickerNext = ({
 		[dateFormat, allowedDateFormatsProp]
 	);
 
+	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -143,6 +144,7 @@ export const DateRangePickerNext = ({
 
 	function onFromTriggerClick() {
 		setInputMode('from');
+		if (!hasCalendarOpened) setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'from'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();
@@ -150,6 +152,7 @@ export const DateRangePickerNext = ({
 
 	function onToTriggerClick() {
 		setInputMode('to');
+		if (!hasCalendarOpened) setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'to'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();
@@ -284,6 +287,46 @@ export const DateRangePickerNext = ({
 		handleClickOutside
 	);
 
+	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
+	useEffect(
+		() => {
+			// Wrap in timeout 0 to focus after all components renders
+			setTimeout(() => {
+				// Attempts focus on target and returns true if successful
+				function focusDay(queryTarget: string) {
+					const day = document.querySelector(queryTarget);
+					if (day && (day as HTMLElement).focus) {
+						(day as HTMLElement).focus();
+						return true;
+					}
+					return false;
+				}
+
+				if (isCalendarOpen) {
+					const { from, to } = valueAsDateOrUndefined;
+
+					// Focus on the start or end day based on the input mode and if both range days have been selected
+					if (from && to && inputMode === 'from') {
+						if (focusDay('td[data-start-day="true"]')) return;
+					}
+					if (inputMode === 'to' && from && to) {
+						if (focusDay('td[data-end-day="true"]')) return;
+					}
+
+					// Target focus on any currently selected elements (e.g. if to is after)
+					// This covers if dates are mismatched (from is after to) or if only range is selected
+					if (focusDay('td[data-selected="true"]')) return;
+
+					// Default return focus today
+					focusDay('td[data-today="true"]');
+				}
+			}, 0);
+		},
+		// Only run this event when the calendar opens
+		// eslint-disable-next-line
+		[isCalendarOpen]
+	);
+
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -356,7 +399,7 @@ export const DateRangePickerNext = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: true,
+			autoFocus: false, // in react-day-picker v9 autoFocus clashes with popover, manually set focus in above
 			inputMode,
 			numberOfMonths,
 			onSelect,

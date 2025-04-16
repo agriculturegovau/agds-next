@@ -386,6 +386,11 @@ const calendarComponents: Partial<CustomComponents> = {
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers?.range_middle ? undefined : modifiers.selected,
+			// Custom start and end selectors for focus, modifiers ranges are only applied after both are selected
+			'data-start-day': modifiers?.range_start
+				? modifiers.range_start
+				: undefined,
+			'data-end-day': modifiers?.range_end ? modifiers.range_end : undefined,
 			onClick,
 			onKeyDown: handleKeyDown,
 			onMouseEnter: () => {

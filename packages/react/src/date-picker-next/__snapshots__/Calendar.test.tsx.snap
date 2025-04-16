@@ -415,6 +415,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     class="rdp-day rdp-selected rdp-range_start"
                     data-day="2023-06-01"
                     data-selected="true"
+                    data-start-day="true"
                     tabindex="0"
                   >
                     <span
@@ -497,6 +498,7 @@ exports[`Calendar Range renders correctly 1`] = `
                     aria-selected="true"
                     class="rdp-day rdp-selected rdp-range_end"
                     data-day="2023-06-07"
+                    data-end-day="true"
                     data-selected="true"
                     tabindex="-1"
                   >
