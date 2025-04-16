@@ -466,7 +466,7 @@ export const SelectableWithBatchActions: Story = {
 };
 
 export const WithRowOnClick: StoryObj<typeof Table & typeof TableRow> = {
-	name: 'with clickable rows',
+	name: 'With clickable rows',
 	args: { onClick: fn() },
 	render: (args) => (
 		<TableWrapper>
