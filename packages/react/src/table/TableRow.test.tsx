@@ -22,8 +22,8 @@ expect.extend(toHaveNoViolations);
 afterEach(cleanup);
 
 function renderTable(
-	onClickTableRow = jest.fn(() => null),
-	onClickButton = jest.fn(() => null)
+	onClickTableRow: jest.Mock<unknown> | undefined = undefined,
+	onClickButton: jest.Mock<unknown> | undefined = undefined
 ) {
 	return render(
 		<TableWrapper>
