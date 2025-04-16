@@ -351,7 +351,10 @@ export const DateRangePickerNext = ({
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
-	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
+	const numberOfMonths = useMemo(
+		() => (windowWidth > tokens.breakpoint.md + 192 ? 2 : 1), // Added padding to prevent drifting popover and focus
+		[windowWidth]
+	);
 
 	const invalid = fromInvalid || toInvalid;
 
