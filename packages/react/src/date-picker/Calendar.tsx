@@ -99,10 +99,12 @@ export type CalendarRangeProps = Omit<
 	PropsBase & PropsRange,
 	'mode' | 'components'
 > & {
+	calendarRef?: RefObject<HTMLDivElement>;
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
+	calendarRef,
 	returnFocusRef,
 	...props
 }: CalendarRangeProps) {
@@ -115,7 +117,7 @@ export function CalendarRange({
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
-			<CalendarRangeContainer>
+			<CalendarRangeContainer calendarRef={calendarRef}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>

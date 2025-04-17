@@ -332,8 +332,6 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
-	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
@@ -354,6 +352,36 @@ export const DateRangePicker = ({
 			valueAsDateOrUndefined,
 		]
 	);
+
+	// Keep track of the number of shown calendars to run event on change
+	const [shownMonths, setShownMonths] = useState(numberOfMonths);
+	const calendarRef = useRef<HTMLDivElement>(null);
+
+	// This event is to check if the number of shown months has changed
+	// Refocus to the shown month to prevent popover scroll bug
+	useEffect(() => {
+		if (!isCalendarOpen || !calendarRef.current) return;
+
+		// Run updates only when number of shown months has changed
+		if (shownMonths === numberOfMonths) return;
+
+		// Update table size changes to new count
+		setShownMonths(numberOfMonths);
+
+		// Check if the number of table months have decreased
+		if (shownMonths > numberOfMonths) {
+			// Don't change focus if user is on a table cell
+			const currentFocus = document.activeElement;
+			if (currentFocus && currentFocus.nodeName === 'TD') return;
+
+			// Get all table dates and focus on the last date
+			const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
+			const lastDate = tableDates[tableDates.length - 1];
+			if (lastDate && (lastDate as HTMLElement).focus) {
+				(lastDate as HTMLElement).focus();
+			}
+		}
+	}, [isCalendarOpen, numberOfMonths, shownMonths]);
 
 	return (
 		<FieldContainer id={fieldsetId} invalid={invalid}>
@@ -433,6 +461,7 @@ export const DateRangePicker = ({
 						{isCalendarOpen && (
 							<CalendarRange
 								{...calendarProps}
+								calendarRef={calendarRef}
 								css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
 							/>
 						)}
