@@ -1020,7 +1020,7 @@ exports[`SectionAlert with unknownLow tone renders correctly 1`] = `
           class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rt:"
         >
-          help
+          unknown
         </span>
       </span>
       <div

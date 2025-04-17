@@ -127,7 +127,7 @@ export const sectionAlertToneMap = {
 		enclosedBorder: true,
 		icon: HelpIcon,
 		iconColor: 'muted',
-		iconLabel: 'help',
+		iconLabel: 'unknown',
 	},
 	warningHigh: {
 		background: 'warning',
