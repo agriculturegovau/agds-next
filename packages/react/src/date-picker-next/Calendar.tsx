@@ -378,7 +378,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			}
 		};
 
-		const interactiveProps = {
+		const ariaProps = {
 			'aria-current': (modifiers.today ? 'date' : undefined) as
 				| 'date'
 				| undefined,
@@ -392,11 +392,18 @@ const calendarComponents: Partial<CustomComponents> = {
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers?.range_middle ? undefined : modifiers.selected,
-			// Custom start and end selectors for focus, modifiers ranges are only applied after both are selected
+		};
+
+		// Custom start and end selectors for focus, modifiers ranges are only applied after both are selected
+		const dataProps = {
 			'data-start-day': modifiers?.range_start
 				? modifiers.range_start
 				: undefined,
 			'data-end-day': modifiers?.range_end ? modifiers.range_end : undefined,
+		};
+
+		// The interactive props are typed for Button but are used in the <td>
+		const interactiveProps = {
 			onClick,
 			onKeyDown: handleKeyDown,
 			onMouseEnter: () => {
@@ -438,6 +445,8 @@ const calendarComponents: Partial<CustomComponents> = {
 			<td
 				{...dayProps}
 				{...restDayButtonProps}
+				{...ariaProps}
+				{...dataProps}
 				className={tableCellClassNames}
 				// @ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
 				disabled={disabled}

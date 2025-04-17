@@ -393,7 +393,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			}
 		};
 
-		const interactiveProps = {
+		const ariaProps = {
 			'aria-current': modifiers.today ? 'date' : undefined,
 			// Improve the aria labels of each button.
 			// Selected and dates within range are manually announced.
@@ -405,7 +405,6 @@ const calendarComponents: Partial<CustomComponents> = {
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
 				modifiers.range_middle ? undefined : modifiers.selected,
-			onClick,
 		};
 
 		// In react-day-picker v9, the class names `range_start` and `range_end` are only given once both start and end dates are selected
@@ -434,11 +433,13 @@ const calendarComponents: Partial<CustomComponents> = {
 			<td
 				{...dayProps}
 				{...restButtonProps}
+				{...ariaProps}
 				className={tableCellClassNames}
+				// @ts-expect-error: Type 'MouseEventHandler<HTMLButtonElement> | undefined' is not assignable to type 'MouseEventHandler<HTMLTableDataCellElement> | undefined'.
+				onClick={onClick}
 				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
 				onKeyDown={handleKeyDown}
 				ref={ref}
-				{...interactiveProps}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{children}</span>
