@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 import { SectionAlert } from './SectionAlert';
 import { sectionAlertToneMap } from './utils';
 
@@ -34,19 +35,6 @@ export const Success: Story = {
 	},
 };
 
-export const Warning: Story = {
-	args: {
-		title: 'A warning message for this section',
-		tone: 'warningHigh',
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: ['warningHigh', 'warningMedium', 'warningLow'],
-		},
-	},
-};
-
 export const Error: Story = {
 	args: {
 		title: 'There was an error saving your changes',
@@ -60,9 +48,22 @@ export const Error: Story = {
 	},
 };
 
+export const Warning: Story = {
+	args: {
+		title: 'These records need more information',
+		tone: 'warningHigh',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: ['warningHigh', 'warningMedium', 'warningLow'],
+		},
+	},
+};
+
 export const Info: Story = {
 	args: {
-		title: 'Please read the comments carefully',
+		title: 'These records contain information you might need',
 		tone: 'infoHigh',
 	},
 	argTypes: {
@@ -75,7 +76,7 @@ export const Info: Story = {
 
 export const Progress: Story = {
 	args: {
-		title: 'Progress',
+		title: 'Record is in progress',
 		tone: 'notStartedLow',
 	},
 	argTypes: {
@@ -100,10 +101,10 @@ export const WithDescription: Story = {
 	},
 };
 
-export const WithClose: Story = {
+export const Dismissable: Story = {
 	args: {
 		title: 'Your changes have been saved',
 		tone: 'success',
-		onClose: () => console.log('dismissed'),
+		onClose: fn(),
 	},
 };

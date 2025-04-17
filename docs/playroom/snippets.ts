@@ -1321,57 +1321,57 @@ const snippets: Array<Snippet> = [
 	{
 		group: 'SectionAlert',
 		name: 'Success high with description',
-		code: `<SectionAlert tone="successHigh" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		code: `<SectionAlert title="Success" tone="successHigh"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Success medium',
-		code: `<SectionAlert tone="successMedium" title="Success"></SectionAlert>`,
+		code: `<SectionAlert title="Success" tone="successMedium"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Success low',
-		code: `<SectionAlert tone="successLow" title="Success"></SectionAlert>`,
+		code: `<SectionAlert title="Success" tone="successLow"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Error high',
-		code: `<SectionAlert tone="errorHigh" title="Error"></SectionAlert>`,
+		code: `<SectionAlert title="Error" tone="errorHigh"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Warning high',
-		code: `<SectionAlert tone="warningHigh" title="Warning"></SectionAlert>`,
+		code: `<SectionAlert title="Warning" tone="warningHigh"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'Info high with dismissable',
-		code: `<SectionAlert tone="infoHigh" title="Info" onClose={console.log}></SectionAlert>`,
+		code: `<SectionAlert onClose={console.log} title="Info" tone="infoHigh"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'notStartedLow',
-		code: `<SectionAlert tone="notStartedLow" title="To Do"></SectionAlert>`,
+		code: `<SectionAlert title="Cannot start" tone="cannotStartLow"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'inProgressLow',
-		code: `<SectionAlert tone="inProgressLow" title="Doing"></SectionAlert>`,
+		code: `<SectionAlert title="In progress" tone="inProgressLow"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'pausedLow',
-		code: `<SectionAlert tone="pausedLow" title="Paused"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'unknownLow',
-		code: `<SectionAlert tone="unknownLow" title="Help"></SectionAlert>`,
+		code: `<SectionAlert title="Paused" tone="pausedLow"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
 		name: 'cannotStartLow',
-		code: `<SectionAlert tone="cannotStartLow" title="Cannot start"></SectionAlert>`,
+		code: `<SectionAlert title="Not started" tone="notStartedLow"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'unknownLow',
+		code: `<SectionAlert title="Unknown" tone="unknownLow"></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',

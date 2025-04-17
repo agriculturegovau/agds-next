@@ -23,7 +23,7 @@ Section alerts appear inside of the main content area of the page and are used t
 - use constructive, no-blame language, avoid vague descriptions and always provide a solution
 - keep it short - content should be understood at a glance
 - use the appropriate feedback or progress status and tone warning
-- apply tee correct emphasis level to communicate the urgency or importance of the status tone.
+- apply the correct emphasis level to communicate the urgency or importance of the status tone.
 
 <DontHeading />
 
@@ -31,10 +31,10 @@ Section alerts appear inside of the main content area of the page and are used t
 - use to communicate messages which relate to the entire application - use [Global alert](/components/global-alert) instead
 - change tone colours or apply new colours - the default colour set has semantic meaning that matches the ARIA label and meaningful image
 - use to contain text in articles or other blocks of text content - use [Callout](/components/callout) instead
+- close or hide the message automatically. Let the user dismiss the message instead
 - repeat the title in the description
 - use the description if the title is enough to convey the message
-- include a close button for error messages
-- hide the message automatically. Let the user dismiss the message instead.
+- include a close button for error messages.
 
 ## Tones
 
@@ -50,7 +50,7 @@ The five supported tones are:
 
 ### Success
 
-The success section alert is used for notifying the user that a task is fully completed.
+The success section alert (green) is used for notifying the user that a task is fully completed.
 
 ```jsx live
 <Stack gap={1}>
@@ -60,7 +60,7 @@ The success section alert is used for notifying the user that a task is fully co
 
 ### Error
 
-The error section alert should be used when something destructive or critical has happened.
+The error section alert (red) should be used when something destructive or critical has happened.
 
 ```jsx live
 <Stack gap={1}>
@@ -73,7 +73,7 @@ The error section alert should be used when something destructive or critical ha
 
 ### Warning
 
-Use warning section alerts to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
+Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
 <Stack gap={1}>
@@ -83,22 +83,17 @@ Use warning section alerts to tell the user something urgent. Only use an alert 
 
 ### Information
 
-Use the info section alerts to highlight information which is important for users.
+Use info section alerts (blue) to highlight information which is important for users.
 
 ```jsx live
 <Stack gap={1}>
-	<SectionAlert
-		title="These records contain information you might need"
-		tone="infoHigh"
-	/>
+	<SectionAlert title="These records need more information" tone="infoHigh" />
 </Stack>
 ```
 
-## In progress
+### In progress
 
 Use in progress section alerts to highlight information which is relates to status.
-
-The progress section alert can be used to indicate the users current progress.
 
 ```jsx live
 <Stack gap={1}>
@@ -190,6 +185,7 @@ Use low emphasis section alerts to:
 ## Dismissable
 
 Section alerts can be dismissed by a user if they have understood the message and no longer need to see it. Only use the close action when the alert does not impact the user’s available actions.
+
 Avoid dismissing error messages which block the user from completing a task. Instead, provide a way for the user to fix the error, then dismiss the alert once the error has been resolved.
 
 Use the `onClose` prop to make the alert dismissable.
@@ -206,4 +202,18 @@ When a user dismisses an alert, it’s important to manage their focus appropria
 
 ## Colour
 
-too add component here
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Fragment>
+	<Box padding={1.5}>
+		<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	</Box>
+
+	<Box background="body" padding={1.5} palette="dark">
+		<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	</Box>
+</Fragment>
+```
