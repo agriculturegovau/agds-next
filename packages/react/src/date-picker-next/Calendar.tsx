@@ -12,6 +12,7 @@ import React, {
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
+	type RefObject,
 	useCallback,
 	useMemo,
 } from 'react';
@@ -86,13 +87,18 @@ export type CalendarRangeProps = Omit<
 	PropsBase & PropsRange,
 	'mode' | 'components'
 > & {
+	calendarRef?: RefObject<HTMLDivElement>;
 	inputMode?: 'from' | 'to';
 };
 
-export function CalendarRange({ inputMode, ...props }: CalendarRangeProps) {
+export function CalendarRange({
+	calendarRef,
+	inputMode,
+	...props
+}: CalendarRangeProps) {
 	return (
 		<FocusLock autoFocus={false}>
-			<CalendarRangeContainer inputMode={inputMode}>
+			<CalendarRangeContainer calendarRef={calendarRef} inputMode={inputMode}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
