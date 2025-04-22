@@ -38,3 +38,52 @@ Refer to the glossary for more information.
 ## Voice and tone
 
 Go to the [TFTM Voice and tone guide](/content/voice-and-tone) for guidance.
+
+## Alert examples
+
+Some common examples of labels for each tone.
+
+### High emphasis
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorHigh"
+	/>
+	<SectionAlert title="A warning message for this section" tone="warningHigh" />
+	<SectionAlert title="Please read the comments carefully" tone="infoHigh" />
+</Stack>
+```
+
+### Medium emphasis
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successMedium" />
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorMedium"
+	/>
+	<SectionAlert
+		title="A warning message for this section"
+		tone="warningMedium"
+	/>
+	<SectionAlert title="Please read the comments carefully" tone="infoMedium" />
+</Stack>
+```
+
+### Low emphasis
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successLow" />
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorLow"
+	/>
+	<SectionAlert title="A warning message for this section" tone="warningLow" />
+	<SectionAlert title="Please read the comments carefully" tone="infoLow" />
+</Stack>
+```

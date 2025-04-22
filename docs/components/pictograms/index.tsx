@@ -79,6 +79,7 @@ export const pictograms = {
 	'date-range-picker-next': datePicker,
 	details,
 	divider,
+	'divider-with-text': divider,
 	'feature-link-list': linkList,
 	'file-input': fileUpload,
 	'file-upload': fileUpload,

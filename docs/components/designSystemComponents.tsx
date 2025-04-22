@@ -270,6 +270,7 @@ export {
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
 export { Divider } from '@ag.ds-next/react/divider';
+export { DividerWithText } from '@ag.ds-next/react/divider-with-text';
 export { Drawer } from '@ag.ds-next/react/drawer';
 export {
 	Tabs,
