@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
-import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
 import {
 	TableBatchActionsBar,
 	TableBatchActionsTitle,
-} from '@ag.ds-next/react/table';
+} from '@ag.ds-next/react/src/table';
 import { plural } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { ModalConfirmPauseAccess } from './ModalConfirmPauseAccess';

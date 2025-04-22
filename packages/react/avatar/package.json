@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-avatar.cjs.js",
-	"module": "dist/ag.ds-next-react-avatar.esm.js"
+	"main": "dist/ag.ds-next-react-avatar.cjs.js"
 }

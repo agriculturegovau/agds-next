@@ -6,36 +6,32 @@ exports[`Checkbox renders correctly 1`] = `
     class="css-hp3wbe-boxStyles-CheckboxContainer"
     for="checkbox-:r0:"
   >
+    <input
+      class="css-142kh0r-CheckboxInput"
+      data-testid="example"
+      id="checkbox-:r0:"
+      name="my-checkbox"
+      type="checkbox"
+    />
     <span
-      class="css-1246v4c-Checkbox"
+      class="css-fhfj02-boxStyles-CheckboxIndicator"
     >
-      <input
-        class="css-1iw6cs3-CheckboxInput"
-        data-testid="example"
-        id="checkbox-:r0:"
-        name="my-checkbox"
-        type="checkbox"
-      />
-      <span
-        class="css-5q1w1y-boxStyles-CheckboxIndicator"
+      <svg
+        aria-hidden="true"
+        class="css-lewdp2-Icon"
+        clip-rule="evenodd"
+        fill-rule="evenodd"
+        focusable="false"
+        height="24"
+        role="img"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="css-lewdp2-Icon"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20 6 9 17l-5-5"
-          />
-        </svg>
-      </span>
+        <path
+          d="M20 6 9 17l-5-5"
+        />
+      </svg>
     </span>
     <span
       class="css-1f6xqkn-boxStyles-CheckboxLabel"

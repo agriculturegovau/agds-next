@@ -210,7 +210,7 @@ const UnstyledContent = () => (
 		</figure>
 
 		<figure>
-			<img alt="Placeholder" src="/img/placeholder/600X260.png" />
+			<img alt="Placeholder image" src="/img/placeholder/600X260.png" />
 			<figcaption>Placeholder caption</figcaption>
 		</figure>
 

@@ -1,5 +1,5 @@
 import { forwardRef, InputHTMLAttributes, PropsWithChildren } from 'react';
-import { packs, useId } from '../core';
+import { useId } from '../core';
 import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { RadioIndicator } from './RadioIndicator';
 import { RadioInput } from './RadioInput';
@@ -48,7 +48,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 ) {
 	const id = useRadioId(props.id);
 	const controlGroupContext = useControlGroupContext();
-	const { height, width } = packs.control[size];
 
 	// The invalid prop should override the context value
 	const invalid =
@@ -67,31 +66,18 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 
 	return (
 		<RadioContainer disabled={disabled} htmlFor={id}>
-			<span
-				css={{
-					display: 'inline-block',
-					height,
-					position: 'relative',
-					width,
-				}}
-			>
-				<RadioInput
-					aria-describedby={
-						invalid ? controlGroupContext?.messageId : undefined
-					}
-					aria-invalid={invalid || undefined}
-					aria-required={required}
-					disabled={disabled}
-					height={height}
-					id={id}
-					name={name}
-					ref={ref}
-					type="radio"
-					width={width}
-					{...props}
-				/>
-				<RadioIndicator disabled={disabled} invalid={invalid} size={size} />
-			</span>
+			<RadioInput
+				aria-describedby={invalid ? controlGroupContext?.messageId : undefined}
+				aria-invalid={invalid || undefined}
+				aria-required={required}
+				disabled={disabled}
+				id={id}
+				name={name}
+				ref={ref}
+				type="radio"
+				{...props}
+			/>
+			<RadioIndicator disabled={disabled} invalid={invalid} size={size} />
 			<RadioLabel disabled={disabled} size={size}>
 				{children}
 			</RadioLabel>

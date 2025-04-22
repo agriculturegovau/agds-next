@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
-import { TableCell, TableRow } from '@ag.ds-next/react/table';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { StatusBadge } from '@ag.ds-next/react/status-badge';
+import { TableCell, TableRow } from '@ag.ds-next/react/src/table';
+import { Checkbox } from '@ag.ds-next/react/src/checkbox';
+import { VisuallyHidden } from '@ag.ds-next/react/src/a11y';
+import { StatusBadge } from '@ag.ds-next/react/src/status-badge';
 import {
 	DropdownMenu,
 	DropdownMenuButton,

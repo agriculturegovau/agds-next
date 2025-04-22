@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-control-group.cjs.js",
-	"module": "dist/ag.ds-next-react-control-group.esm.js"
+	"main": "dist/ag.ds-next-react-control-group.cjs.js"
 }

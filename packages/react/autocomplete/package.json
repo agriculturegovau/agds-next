@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-autocomplete.cjs.js",
-	"module": "dist/ag.ds-next-react-autocomplete.esm.js"
+	"main": "dist/ag.ds-next-react-autocomplete.cjs.js"
 }

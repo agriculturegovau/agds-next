@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-time-input.cjs.js",
-	"module": "dist/ag.ds-next-react-time-input.esm.js"
+	"main": "dist/ag.ds-next-react-time-input.cjs.js"
 }

@@ -271,7 +271,7 @@ export const EdgeToEdgeImage: Story = {
 		<Accordion>
 			<AccordionItem title="Edge-to-edge image">
 				<img
-					alt="Placeholder"
+					alt="Placeholder image"
 					src="/img/placeholder/600X260.png"
 					width="100%"
 				/>

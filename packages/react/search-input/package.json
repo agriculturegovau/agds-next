@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-search-input.cjs.js",
-	"module": "dist/ag.ds-next-react-search-input.esm.js"
+	"main": "dist/ag.ds-next-react-search-input.cjs.js"
 }

@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-prose.cjs.js",
-	"module": "dist/ag.ds-next-react-prose.esm.js"
+	"main": "dist/ag.ds-next-react-prose.cjs.js"
 }

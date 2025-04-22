@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-grouped-fields.cjs.js",
-	"module": "dist/ag.ds-next-react-grouped-fields.esm.js"
+	"main": "dist/ag.ds-next-react-grouped-fields.cjs.js"
 }

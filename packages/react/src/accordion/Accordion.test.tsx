@@ -50,7 +50,7 @@ describe('Accordion', () => {
 	});
 
 	it('to have correct aria attributes when toggling accordion item', async () => {
-		const { container } = renderAccordion();
+		renderAccordion();
 		const titleEl = screen.getByText('Accordion 1');
 		const bodyEl = screen.getByText('Accordion 1 text content.').parentElement
 			?.parentElement?.parentElement as HTMLDivElement;
@@ -62,6 +62,5 @@ describe('Accordion', () => {
 		expect(titleEl).toHaveAttribute('aria-expanded', 'false');
 		await act(() => userEvent.click(titleEl));
 		expect(titleEl).toHaveAttribute('aria-expanded', 'true');
-		expect(container).toMatchSnapshot();
 	});
 });

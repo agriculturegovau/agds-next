@@ -20,13 +20,11 @@ export function RadioIndicator({
 			alignItems="center"
 			as="span"
 			css={{
-				backgroundColor: boxPalette.backgroundBody,
-				borderColor: boxPalette.border,
+				borderWidth,
 				borderRadius: '100%',
 				borderStyle: 'solid',
-				borderWidth,
-				inset: 0,
-				position: 'absolute',
+				borderColor: boxPalette.border,
+				backgroundColor: boxPalette.backgroundBody,
 
 				...(disabled && {
 					color: boxPalette.borderMuted,

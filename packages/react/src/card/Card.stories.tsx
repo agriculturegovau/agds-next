@@ -51,43 +51,37 @@ export const Basic: Story = {
 	},
 };
 
-export const Header: Story = {
+export const Link: Story = {
 	args: {
-		background: 'body',
+		clickable: true,
+		shadow: true,
 	},
 	render: function Render(props) {
 		return (
-			<Columns>
-				<Column columnSpan={6}>
-					<Card
-						header={
-							<CardHeader>
-								<Heading type="h4">Feature card title</Heading>
-							</CardHeader>
-						}
-						{...props}
-					>
-						<CardInner>
-							<Text as="p">Additional content relating to the card</Text>
-						</CardInner>
-					</Card>
-				</Column>
-				<Column columnSpan={6}>
-					<Card {...props}>
-						<CardHeader background="bodyAlt">
-							<Heading type="h4">Feature card title</Heading>
-						</CardHeader>
-						<CardInner>
-							<Text as="p">Additional content relating to the card</Text>
-						</CardInner>
-					</Card>
-				</Column>
-			</Columns>
+			<Box maxWidth={300}>
+				<Card {...props}>
+					<CardInner>
+						<Stack gap={1}>
+							<Heading as="h2" type="h3">
+								Card heading
+							</Heading>
+							<Text as="p">
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+								voluptat
+							</Text>
+							<CardLink href="#">
+								Linking out
+								<ChevronRightIcon />
+							</CardLink>
+						</Stack>
+					</CardInner>
+				</Card>
+			</Box>
 		);
 	},
 };
 
-export const LegacyHeader: Story = {
+export const FeatureHeader: Story = {
 	args: {
 		background: 'body',
 	},
@@ -119,122 +113,46 @@ export const LegacyHeader: Story = {
 	},
 };
 
-export const Footer: Story = {
+export const FeatureFooter: Story = {
 	args: {
 		background: 'body',
 	},
 	render: function Render(props) {
 		return (
-			<Card
-				{...props}
-				footer={
-					<CardFooter>
-						<TextLink href="#">Action</TextLink>
-					</CardFooter>
-				}
-			>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading type="h3">Card title</Heading>
-						<Text as="p">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-							voluptatibus.
-						</Text>
-					</Stack>
-				</CardInner>
-			</Card>
-		);
-	},
-};
-
-export const FooterLegacy: Story = {
-	args: {
-		background: 'body',
-	},
-	render: function Render(props) {
-		return (
-			<Card {...props}>
-				<CardInner>
-					<Stack gap={1}>
-						<Heading type="h3">Card title</Heading>
-						<Text as="p">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-							voluptatibus.
-						</Text>
-					</Stack>
-				</CardInner>
-				<CardFooter>
-					<TextLink href="#">Action</TextLink>
-				</CardFooter>
-			</Card>
-		);
-	},
-};
-
-export const Clickable: Story = {
-	args: {
-		clickable: true,
-		shadow: true,
-	},
-	render: function Render(props) {
-		return (
-			<Box maxWidth={300}>
-				<Card {...props}>
-					<CardInner>
-						<Stack gap={1}>
-							<Heading as="h2" type="h3">
-								Card heading
-							</Heading>
-							<Text as="p">
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-								voluptat
-							</Text>
-							<CardLink href="#">
-								Linking out
-								<ChevronRightIcon />
-							</CardLink>
-						</Stack>
-					</CardInner>
-				</Card>
-			</Box>
-		);
-	},
-};
-
-export const ClickableWithFooterOutside: Story = {
-	args: {
-		clickable: true,
-		shadow: true,
-	},
-	render: function Render(props) {
-		return (
-			<Box maxWidth={300}>
-				<Card
-					{...props}
-					footer={
+			<Columns>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardInner>
+							<Stack gap={1}>
+								<Heading type="h3">Card title</Heading>
+								<Text as="p">
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+									voluptatibus.
+								</Text>
+							</Stack>
+						</CardInner>
 						<CardFooter>
 							<TextLink href="#">Action</TextLink>
 						</CardFooter>
-					}
-					footerOutside
-				>
-					<CardInner>
-						<Stack gap={1}>
-							<Heading as="h2" type="h3">
-								Card heading
-							</Heading>
-							<Text as="p">
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-								voluptat
-							</Text>
-							<CardLink href="#">
-								Linking out
-								<ChevronRightIcon />
-							</CardLink>
-						</Stack>
-					</CardInner>
-				</Card>
-			</Box>
+					</Card>
+				</Column>
+				<Column columnSpan={6}>
+					<Card {...props}>
+						<CardInner>
+							<Stack gap={1}>
+								<Heading type="h3">Card title</Heading>
+								<Text as="p">
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+									voluptatibus.
+								</Text>
+							</Stack>
+						</CardInner>
+						<CardFooter background="bodyAlt">
+							<TextLink href="#">Action</TextLink>
+						</CardFooter>
+					</Card>
+				</Column>
+			</Columns>
 		);
 	},
 };
@@ -326,7 +244,7 @@ export const Compositions = () => {
 			<Columns cols={{ xs: 1, sm: 2 }}>
 				<Column>
 					<Stack gap={2} width="100%">
-						<Card>
+						<Card shadow>
 							<CardInner>
 								<Stack gap={1}>
 									<Heading as="h2" type="h3">
@@ -370,81 +288,6 @@ export const Compositions = () => {
 								</Stack>
 							</CardInner>
 						</Card>
-
-						<Card
-							clickable
-							footer={
-								<CardFooter>
-									<TextLink href="#">Action</TextLink>
-								</CardFooter>
-							}
-							footerOutside
-							shadow
-						>
-							<CardInner>
-								<Stack gap={0.5}>
-									<Pictogram />
-
-									<Box fontWeight="bold">
-										<CardLink>Card link, footer outside</CardLink>
-									</Box>
-								</Stack>
-							</CardInner>
-						</Card>
-
-						<Card
-							clickable
-							footer={
-								<CardFooter>
-									<TextLink href="#">Action</TextLink>
-								</CardFooter>
-							}
-							footerOutside
-							header={
-								<img
-									alt="Placeholder"
-									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
-									width="100%"
-								/>
-							}
-							shadow
-						>
-							<CardInner>
-								<Stack gap={1}>
-									<Box as="h3">
-										<CardLink href="#">News item</CardLink>
-									</Box>
-									<Text>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Cras non finibus leo.
-									</Text>
-								</Stack>
-							</CardInner>
-						</Card>
-
-						<Card
-							footer={
-								<CardFooter>
-									<CardLink href="#">An action</CardLink>
-								</CardFooter>
-							}
-							header={
-								<CardHeader>
-									<H3>
-										<CardLink href="#">Card title 3</CardLink>
-									</H3>
-								</CardHeader>
-							}
-						>
-							<CardInner>
-								<Stack gap={1}>
-									<Text>
-										Sed volutpat non enim ac efficitur. Etiam ut dolor tempor,
-										tempor tortor at, luctus elit.
-									</Text>
-								</Stack>
-							</CardInner>
-						</Card>
 					</Stack>
 				</Column>
 
@@ -477,17 +320,12 @@ export const Compositions = () => {
 							</CardInner>
 						</Card>
 
-						<Card
-							clickable
-							header={
-								<img
-									alt="Placeholder"
-									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
-									width="100%"
-								/>
-							}
-							shadow
-						>
+						<Card clickable shadow>
+							<img
+								alt="Placeholder image"
+								src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
+								width="100%"
+							/>
 							<CardInner>
 								<Stack gap={1}>
 									<Box as="h3">
@@ -504,7 +342,7 @@ export const Compositions = () => {
 						<Card clickable shadow>
 							<Flex>
 								<img
-									alt="Placeholder"
+									alt="Placeholder image"
 									css={{
 										width: '50%',
 										objectFit: 'cover',
@@ -523,67 +361,6 @@ export const Compositions = () => {
 									</Stack>
 								</CardInner>
 							</Flex>
-						</Card>
-						<Card
-							clickable
-							footer={
-								<CardFooter>
-									<TextLink href="#">Action</TextLink>
-								</CardFooter>
-							}
-							footerOutside
-							shadow
-						>
-							<Flex>
-								<img
-									alt="Placeholder"
-									css={{
-										width: '50%',
-										objectFit: 'cover',
-									}}
-									src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
-								/>
-								<CardInner>
-									<Stack gap={1}>
-										<Box as="h3">
-											<CardLink href="#">News item</CardLink>
-										</Box>
-										<Text>
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-											Cras non finibus leo.
-										</Text>
-									</Stack>
-								</CardInner>
-							</Flex>
-						</Card>
-
-						<Card
-							clickable
-							footer={
-								<CardFooter>
-									<TextLink href="#">An action</TextLink>
-								</CardFooter>
-							}
-							footerOutside
-							header={
-								<>
-									<img
-										alt="Placeholder"
-										src="https://design-system.agriculture.gov.au/img/placeholder/hero-banner.jpeg"
-										width="100%"
-									/>
-									<CardHeader>
-										<Heading as="h3" type="h4">
-											<CardLink href="#">Feature card title</CardLink>
-										</Heading>
-									</CardHeader>
-								</>
-							}
-							shadow
-						>
-							<CardInner>
-								<Text as="p">Some text</Text>
-							</CardInner>
 						</Card>
 					</Stack>
 				</Column>

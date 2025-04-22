@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-hero-banner.cjs.js",
-	"module": "dist/ag.ds-next-react-hero-banner.esm.js"
+	"main": "dist/ag.ds-next-react-hero-banner.cjs.js"
 }

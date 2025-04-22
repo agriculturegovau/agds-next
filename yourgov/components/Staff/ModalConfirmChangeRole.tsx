@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { ButtonGroup, Button } from '@ag.ds-next/react/button';
-import { Drawer } from '@ag.ds-next/react/drawer';
+import { ButtonGroup, Button } from '@ag.ds-next/react/src/button';
+import { Drawer } from '@ag.ds-next/react/src/drawer';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Radio } from '@ag.ds-next/react/radio';
 import { StaffMemberRole } from './lib/types';

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { Checkbox } from '@ag.ds-next/react/src/checkbox';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { StaffMemberWithIndex } from './lib/types';
 

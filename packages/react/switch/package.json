@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-switch.cjs.js",
-	"module": "dist/ag.ds-next-react-switch.esm.js"
+	"main": "dist/ag.ds-next-react-switch.cjs.js"
 }
