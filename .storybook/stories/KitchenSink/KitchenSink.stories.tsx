@@ -285,15 +285,15 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
-							<SectionAlert title="This is a Section alert" tone="error" />
+							<SectionAlert title="This is a Section alert" tone="errorHigh" />
 
 							<SectionAlert
 								onClose={console.log}
 								title="This is a Section alert"
-								tone="success"
+								tone="successHigh"
 							/>
 
-							<SectionAlert title="This is a Section alert" tone="warning">
+							<SectionAlert title="This is a Section alert" tone="warningHigh">
 								<Text as="p">This is a description.</Text>
 							</SectionAlert>
 

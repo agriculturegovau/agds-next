@@ -133,7 +133,7 @@ export const StaffMembersTable = ({
 								? `${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`
 								: ''
 						}
-						tone="success"
+						tone="successHigh"
 					>
 						{successMessageType &&
 							successTypeToMessageText[successMessageType].description && (

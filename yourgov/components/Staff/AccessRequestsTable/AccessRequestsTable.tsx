@@ -150,7 +150,7 @@ export const AccessRequestsTable = () => {
 						'person has',
 						'people have'
 					)} been ${successMessageType}`}
-					tone="success"
+					tone="successHigh"
 				>
 					<Text as="p">
 						Staff members will receive an email letting them know that their
