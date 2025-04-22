@@ -22,11 +22,13 @@ export const CheckboxIndicator = ({
 			alignItems="center"
 			as="span"
 			css={{
-				borderWidth,
-				borderStyle: 'solid',
-				borderColor: boxPalette.border,
 				backgroundColor: boxPalette.backgroundBody,
+				borderColor: boxPalette.border,
+				borderStyle: 'solid',
+				borderWidth,
 				color: boxPalette.foregroundText,
+				inset: 0,
+				position: 'absolute',
 
 				...(disabled && {
 					color: boxPalette.borderMuted,
