@@ -1137,7 +1137,41 @@ const snippets: Array<Snippet> = [
 	{
 		group: 'Card',
 		name: 'Basic',
+		code: `<Card>
+			<CardInner>
+				<Stack gap={1}>
+				<H3>
+					<CardLink href="#">Card heading</CardLink>
+				</H3>
+				<Text as="p">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+					voluptat
+				</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable',
 		code: `<Card shadow clickable>
+			<CardInner>
+				<Stack gap={1}>
+				<H3>
+					<CardLink href="#">Card heading</CardLink>
+				</H3>
+				<Text as="p">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
+					voluptat
+				</Text>
+				</Stack>
+			</CardInner>
+		</Card>`,
+	},
+	{
+		group: 'Card',
+		name: 'Clickable with Footer outside',
+		code: `<Card shadow clickable footer={<CardFooter><TextLink href="#">Action</TextLink></CardFooter>} footerOutside>
 			<CardInner>
 				<Stack gap={1}>
 				<H3>
