@@ -62,9 +62,9 @@ exports[`SideNav renders correctly 1`] = `
       </button>
     </div>
     <div
-      class="css-3b4a55-CollapsingSideBar"
+      class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
+      data-transition-height="collapsed"
       id="collapsing-side-bar-:r0:-body"
-      style="display: none; height: 0px;"
     >
       <div
         class="css-79i25n-boxStyles"

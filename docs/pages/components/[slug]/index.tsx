@@ -104,20 +104,6 @@ export const getStaticProps: GetStaticProps<
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
 	const toc = generateToc(pkgContent.content);
 
-	// Get related patterns
-	const relatedPatterns = pkg.relatedPatterns?.length
-		? await Promise.all(pkg.relatedPatterns.sort().map(getPattern))
-		: null;
-	if (relatedPatterns?.length) {
-		toc.push({
-			title: 'Related patterns',
-			slug: 'related-patterns',
-			id: 'related-patterns',
-			level: 2,
-			items: [],
-		});
-	}
-
 	// Get related components
 	const relatedComponents = pkg.relatedComponents?.length
 		? await Promise.all(pkg.relatedComponents.sort().map(getPkg))
@@ -127,6 +113,20 @@ export const getStaticProps: GetStaticProps<
 			title: 'Related components',
 			slug: 'related-components',
 			id: 'related-components',
+			level: 2,
+			items: [],
+		});
+	}
+
+	// Get related patterns
+	const relatedPatterns = pkg.relatedPatterns?.length
+		? await Promise.all(pkg.relatedPatterns.sort().map(getPattern))
+		: null;
+	if (relatedPatterns?.length) {
+		toc.push({
+			title: 'Related patterns',
+			slug: 'related-patterns',
+			id: 'related-patterns',
 			level: 2,
 			items: [],
 		});

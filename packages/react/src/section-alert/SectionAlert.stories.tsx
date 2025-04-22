@@ -1,5 +1,6 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SectionAlert } from './SectionAlert';
+import { sectionAlertToneMap } from './utils';
 
 const meta: Meta<typeof SectionAlert> = {
 	title: 'Content/SectionAlert',
@@ -7,6 +8,12 @@ const meta: Meta<typeof SectionAlert> = {
 	args: {
 		onDismiss: undefined,
 		onClose: undefined,
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: Object.keys(sectionAlertToneMap),
+		},
 	},
 };
 
@@ -17,21 +24,52 @@ type Story = StoryObj<typeof SectionAlert>;
 export const Success: Story = {
 	args: {
 		title: 'Your changes have been saved',
-		tone: 'success',
+		tone: 'successHigh',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: ['successHigh', 'successMedium', 'successLow'],
+		},
 	},
 };
 
 export const Warning: Story = {
 	args: {
 		title: 'A warning message for this section',
-		tone: 'warning',
+		tone: 'warningHigh',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: ['warningHigh', 'warningMedium', 'warningLow'],
+		},
 	},
 };
 
 export const Error: Story = {
 	args: {
 		title: 'There was an error saving your changes',
-		tone: 'error',
+		tone: 'errorHigh',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: ['errorHigh', 'errorMedium', 'errorLow'],
+		},
+	},
+};
+
+export const Info: Story = {
+	args: {
+		title: 'Please read the comments carefully',
+		tone: 'infoHigh',
+	},
+	argTypes: {
+		tone: {
+			control: { type: 'select' },
+			options: ['infoHigh', 'infoMedium', 'infoLow'],
+		},
 	},
 };
 

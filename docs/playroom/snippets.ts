@@ -1462,6 +1462,20 @@ const snippets: Array<Snippet> = [
 		code: `<Divider />`,
 	},
 	{
+		group: 'DividerWithText',
+		name: 'Basic',
+		code: `<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>`,
+	},
+	{
+		group: 'DividerWithText',
+		name: 'Left align',
+		code: `<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>`,
+	},
+	{
 		group: 'Tabs',
 		name: 'Basic',
 		code: `<Tabs>
@@ -1503,18 +1517,33 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Success',
-		code: `<SectionAlert tone="success" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Success high with description',
+		code: `<SectionAlert tone="successHigh" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Error',
-		code: `<SectionAlert tone="error" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Success medium',
+		code: `<SectionAlert tone="successMedium" title="Success"></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Warning',
-		code: `<SectionAlert tone="warning" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Success low',
+		code: `<SectionAlert tone="successLow" title="Success"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Error high',
+		code: `<SectionAlert tone="errorHigh" title="Error"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Warning high',
+		code: `<SectionAlert tone="warningHigh" title="Warning"></SectionAlert>`,
+	},
+	{
+		group: 'SectionAlert',
+		name: 'Info high with dismissable',
+		code: `<SectionAlert tone="infoHigh" title="Info" onClose={console.log}></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',
