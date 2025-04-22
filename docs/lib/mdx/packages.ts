@@ -62,11 +62,6 @@ async function getPkgSubNavItems(slug: string) {
 				href: `/components/${meta.slug}/accessibility`,
 				path: `${pkgDocsPath(slug)}/accessibility.mdx`,
 			},
-			{
-				label: 'Legacy',
-				href: `/components/${meta.slug}/legacy`,
-				path: `${pkgDocsPath(slug)}/legacy.mdx`,
-			},
 		].filter(({ path }) => existsSync(path));
 	});
 }

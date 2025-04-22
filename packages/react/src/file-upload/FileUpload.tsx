@@ -396,7 +396,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										title={`The following ${
 											pluralAllRejections ? 'files' : 'file'
 										} could not be selected`}
-										tone="errorHigh"
+										tone="error"
 									>
 										<Text as="p">
 											{pluralAllRejections

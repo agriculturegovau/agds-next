@@ -4,8 +4,8 @@ import { filesize } from './filesize';
 export type FileStatus = 'none' | 'uploading' | 'success';
 
 export type FileWithStatus = FileWithPath & {
-	/** Makes the browser treat the linked href as a download. */
-	download?: boolean | string;
+	/** If true, causes the browser to treat the linked href as a download. */
+	download?: boolean;
 	/** Used to link to a webpage where the user can view/download the existing file. */
 	href?: string;
 	/** Use to indicate the upload status of a file. */
@@ -18,8 +18,8 @@ export type RejectedFile = {
 };
 
 export type ExistingFile = {
-	/** Makes the browser treat the linked href as a download. */
-	download?: boolean | string;
+	/** If true, causes the browser to treat the linked href as a download. */
+	download?: boolean;
 	/** The file name. */
 	name: string;
 	/** Link to a webpage where the user can view/download the existing file (optional) */

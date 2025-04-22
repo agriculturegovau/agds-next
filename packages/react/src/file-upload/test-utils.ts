@@ -1,7 +1,7 @@
 import { FileStatus, FileWithStatus } from './utils';
 
 export function createExampleFile(args?: {
-	download?: boolean | string;
+	download?: boolean;
 	href?: string;
 	lastModified?: number;
 	name?: string;
@@ -38,7 +38,7 @@ export function createExampleFile(args?: {
 }
 
 export function createExampleImageFile(args?: {
-	download?: boolean | string;
+	download?: boolean;
 	href?: string;
 	name?: string;
 	status?: FileStatus;

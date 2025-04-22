@@ -36,7 +36,6 @@ import {
 } from '@ag.ds-next/react/table';
 import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
 import { Callout } from '@ag.ds-next/react/callout';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { DirectionLink } from '@ag.ds-next/react/direction-link';
@@ -252,13 +251,4 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	SummaryListItem,
 	SummaryListItemDescription,
 	SummaryListItemTerm,
-	Callout: ({ children, ...props }: PropsWithChildren<{}>) => (
-		<div className={proseBlockClassname}>
-			<Callout {...props}>
-				<Stack css={{ '* + *': { marginTop: '0 !important' } }} gap={1}>
-					{children}
-				</Stack>
-			</Callout>
-		</div>
-	),
 };

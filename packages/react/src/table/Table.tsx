@@ -45,10 +45,9 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
 					borderSpacing: 0,
 					tableLayout,
 					...(striped && {
-						'tbody tr:nth-last-of-type(odd):not([aria-selected="true"], [data-has-background])':
-							{
-								backgroundColor: boxPalette.backgroundShade,
-							},
+						"tbody tr:nth-last-of-type(odd):not([aria-selected='true'])": {
+							backgroundColor: boxPalette.backgroundShade,
+						},
 					}),
 				}}
 				display="table"

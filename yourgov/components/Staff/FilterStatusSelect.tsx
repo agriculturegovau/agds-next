@@ -1,4 +1,4 @@
-import { Select } from '@ag.ds-next/react/select';
+import { Select } from '@ag.ds-next/react/src/select';
 import { useSortAndFilterContext } from './lib/contexts';
 import { StaffMemberStatus } from './lib/types';
 import { tableId } from './DataTable';

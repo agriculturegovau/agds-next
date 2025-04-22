@@ -1,5 +1,5 @@
 import { Box } from '@ag.ds-next/react/box';
-import { Switch } from '@ag.ds-next/react/switch';
+import { Switch } from '@ag.ds-next/react/src/switch';
 import { useSortAndFilterContext } from './lib/contexts';
 import { tableId } from './DataTable';
 

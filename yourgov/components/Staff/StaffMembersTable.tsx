@@ -1,10 +1,10 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Stack } from '@ag.ds-next/react/stack';
-import { Button } from '@ag.ds-next/react/button';
-import { useTernaryState } from '@ag.ds-next/react/core';
-import { FilterIcon } from '@ag.ds-next/react/icon';
-import { Box } from '@ag.ds-next/react/box';
+import { Stack } from '@ag.ds-next/react/src/stack';
+import { Button } from '@ag.ds-next/react/src/button';
+import { useTernaryState } from '@ag.ds-next/react/src/core';
+import { FilterIcon } from '@ag.ds-next/react/src/icon';
+import { Box } from '@ag.ds-next/react/src/box';
 import { Text } from '@ag.ds-next/react/text';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
 import { DataProvider, SortAndFilterProvider } from './lib/contexts';
@@ -133,7 +133,7 @@ export const StaffMembersTable = ({
 								? `${successTypeToMessageText[successMessageType].titlePrefix} ${updatedStaffMemberName} ${successTypeToMessageText[successMessageType].titleSuffix}`
 								: ''
 						}
-						tone="successHigh"
+						tone="success"
 					>
 						{successMessageType &&
 							successTypeToMessageText[successMessageType].description && (

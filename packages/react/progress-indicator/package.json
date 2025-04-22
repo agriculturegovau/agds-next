@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-progress-indicator.cjs.js",
-	"module": "dist/ag.ds-next-react-progress-indicator.esm.js"
+	"main": "dist/ag.ds-next-react-progress-indicator.cjs.js"
 }

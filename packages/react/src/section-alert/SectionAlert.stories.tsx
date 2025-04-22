@@ -1,7 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import { StoryObj, Meta } from '@storybook/react';
 import { SectionAlert } from './SectionAlert';
-import { sectionAlertToneMap } from './utils';
 
 const meta: Meta<typeof SectionAlert> = {
 	title: 'Content/SectionAlert',
@@ -9,12 +7,6 @@ const meta: Meta<typeof SectionAlert> = {
 	args: {
 		onDismiss: undefined,
 		onClose: undefined,
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: Object.keys(sectionAlertToneMap),
-		},
 	},
 };
 
@@ -25,71 +17,21 @@ type Story = StoryObj<typeof SectionAlert>;
 export const Success: Story = {
 	args: {
 		title: 'Your changes have been saved',
-		tone: 'successHigh',
+		tone: 'success',
 	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: ['successHigh', 'successMedium', 'successLow'],
-		},
+};
+
+export const Warning: Story = {
+	args: {
+		title: 'A warning message for this section',
+		tone: 'warning',
 	},
 };
 
 export const Error: Story = {
 	args: {
 		title: 'There was an error saving your changes',
-		tone: 'errorHigh',
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: ['errorHigh', 'errorMedium', 'errorLow'],
-		},
-	},
-};
-
-export const Warning: Story = {
-	args: {
-		title: 'These records need more information',
-		tone: 'warningHigh',
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: ['warningHigh', 'warningMedium', 'warningLow'],
-		},
-	},
-};
-
-export const Info: Story = {
-	args: {
-		title: 'These records contain information you might need',
-		tone: 'infoHigh',
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: ['infoHigh', 'infoMedium', 'infoLow'],
-		},
-	},
-};
-
-export const Progress: Story = {
-	args: {
-		title: 'Record is in progress',
-		tone: 'notStartedLow',
-	},
-	argTypes: {
-		tone: {
-			control: { type: 'select' },
-			options: [
-				'notStartedLow',
-				'inProgressLow',
-				'pausedLow',
-				'unknownLow',
-				'cannotStartLow',
-			],
-		},
+		tone: 'error',
 	},
 };
 
@@ -101,10 +43,10 @@ export const WithDescription: Story = {
 	},
 };
 
-export const Dismissable: Story = {
+export const WithClose: Story = {
 	args: {
 		title: 'Your changes have been saved',
 		tone: 'success',
-		onClose: fn(),
+		onClose: () => console.log('dismissed'),
 	},
 };

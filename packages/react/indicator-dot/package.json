@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-indicator-dot.cjs.js",
-	"module": "dist/ag.ds-next-react-indicator-dot.esm.js"
+	"main": "dist/ag.ds-next-react-indicator-dot.cjs.js"
 }

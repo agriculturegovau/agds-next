@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Avatar } from '@ag.ds-next/react/avatar';
+import { Avatar } from '@ag.ds-next/react/src/avatar';
 import { AvatarIcon, EmailIcon } from '@ag.ds-next/react/icon';
 import { Card, CardInner, CardLink } from '@ag.ds-next/react/card';
 import { Column, Columns } from '@ag.ds-next/react/columns';

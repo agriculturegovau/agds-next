@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-date-range-picker-next.cjs.js",
-	"module": "dist/ag.ds-next-react-date-range-picker-next.esm.js"
+	"main": "dist/ag.ds-next-react-date-range-picker-next.cjs.js"
 }

@@ -91,7 +91,7 @@ export function StepOwnerDetailsForm() {
 							focusOnMount
 							onClose={() => setIsSuccessMessageVisible(false)}
 							title="Business owner details have been updated"
-							tone="successHigh"
+							tone="success"
 						/>
 					)}
 					<Stack gap={1.5}>

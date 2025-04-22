@@ -955,203 +955,6 @@ const snippets: Array<Snippet> = [
 		</TableWrapper>`,
 	},
 	{
-		group: 'Table',
-		name: 'Sortable columns',
-		code: `<TableWrapper>
-		<Table striped>
-			<TableCaption>
-				Population of Australian states and territories, December 2018
-				<VisuallyHidden>
-					, column headers with buttons are sortable.
-				</VisuallyHidden>
-			</TableCaption>
-			<TableHead>
-				<TableRow>
-					<TableHeaderSortable
-						scope="col"
-						sort="ASC"
-						width="50%"
-						onClick={console.log}
-					>
-						Location
-					</TableHeaderSortable>
-					<TableHeaderSortable
-						scope="col"
-						width="50%"
-						onClick={console.log}
-						textAlign="right"
-					>
-						Population
-					</TableHeaderSortable>
-				</TableRow>
-			</TableHead>
-			<TableBody>
-				<TableRow>
-					<TableCell>Australian Capital Territory</TableCell>
-					<TableCell textAlign="right">393,000</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>New South Wales</TableCell>
-					<TableCell textAlign="right">7,670,700</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>Northern Territory</TableCell>
-					<TableCell textAlign="right">244,400</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>Queensland</TableCell>
-					<TableCell textAlign="right">4,808,800</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>South Australia</TableCell>
-					<TableCell textAlign="right">1,702,800</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>Tasmania</TableCell>
-					<TableCell textAlign="right">517,400</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>Victoria</TableCell>
-					<TableCell textAlign="right">5,996,400</TableCell>
-				</TableRow>
-				<TableRow>
-					<TableCell>Western Australia</TableCell>
-					<TableCell textAlign="right">2,603,900</TableCell>
-				</TableRow>
-			</TableBody>
-		</Table>
-	</TableWrapper>`,
-	},
-	{
-		group: 'Table',
-		name: 'With selectable rows',
-		code: `<Stack>
-			<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
-				<Checkbox
-					checked={false}
-					onChange={console.log}
-					size="sm"
-				>
-					Select all rows
-				</Checkbox>
-			</Box>
-				<TableWrapper>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableHeader>Select</TableHeader>
-							<TableHeader scope="col">Reference</TableHeader>
-							<TableHeader scope="col">Date submitted</TableHeader>
-							<TableHeader scope="col">Actions</TableHeader>
-						</TableRow>
-					</TableHead>
-					<TableBody>		
-						<TableRow selected={false}>
-							<TableCell>
-								<Checkbox
-									size="sm"
-									checked={false}
-									onChange={console.log}
-								>
-									<VisuallyHidden>Select</VisuallyHidden>
-								</Checkbox>
-							</TableCell>
-							<TableCell as="th" scope="row" fontWeight="bold">
-								<TextLink href="#" id="REF-AB0CD4EF">
-									REF-AB0CD4EF
-								</TextLink>
-							</TableCell>
-							<TableCell>21/06/2024</TableCell>
-							<TableCell>
-								<Flex gap={1}>
-									<TextLink
-										aria-describedby="REF-AB0CD4EF"
-										href="#"
-									>
-										Download
-									</TextLink>
-									<TextLink
-										aria-describedby="REF-AB0CD4EF"
-										href="#"
-									>
-										Delete
-									</TextLink>
-								</Flex>
-							</TableCell>
-						</TableRow>
-						
-						<TableRow selected={false}>
-							<TableCell>
-								<Checkbox
-									size="sm"
-									checked={false}
-									onChange={console.log}
-								>
-									<VisuallyHidden>Select</VisuallyHidden>
-								</Checkbox>
-							</TableCell>
-							<TableCell as="th" scope="row" fontWeight="bold">
-								<TextLink href="#" id="REF-AB1CD4EF">
-									REF-AB1CD4EF
-								</TextLink>
-							</TableCell>
-							<TableCell>22/06/2024</TableCell>
-							<TableCell>
-								<Flex gap={1}>
-									<TextLink
-										aria-describedby="REF-AB1CD4EF"
-										href="#"
-									>
-										Download
-									</TextLink>
-									<TextLink
-										aria-describedby="REF-AB1CD4EF"
-										href="#"
-									>
-										Delete
-									</TextLink>
-								</Flex>
-							</TableCell>
-						</TableRow>
-						<TableRow selected={false}>
-							<TableCell>
-								<Checkbox
-									size="sm"
-									checked={false}
-									onChange={console.log}
-								>
-									<VisuallyHidden>Select</VisuallyHidden>
-								</Checkbox>
-							</TableCell>
-							<TableCell as="th" scope="row" fontWeight="bold">
-								<TextLink href="#" id="REF-AB2CD4EF">
-									REF-AB2CD4EF
-								</TextLink>
-							</TableCell>
-							<TableCell>22/06/2024</TableCell>
-							<TableCell>
-								<Flex gap={1}>
-									<TextLink
-										aria-describedby="REF-AB2CD4EF"
-										href="#"
-									>
-										Download
-									</TextLink>
-									<TextLink
-										aria-describedby="REF-AB2CD4EF"
-										href="#"
-									>
-										Delete
-									</TextLink>
-								</Flex>
-							</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
-			</TableWrapper>
-		</Stack>`,
-	},
-	{
 		group: 'DatePicker',
 		name: 'Basic',
 		code: `<DatePicker label="Select date" value={new Date()} onChange={() => {}} />`,
@@ -1334,41 +1137,7 @@ const snippets: Array<Snippet> = [
 	{
 		group: 'Card',
 		name: 'Basic',
-		code: `<Card>
-			<CardInner>
-				<Stack gap={1}>
-				<H3>
-					<CardLink href="#">Card heading</CardLink>
-				</H3>
-				<Text as="p">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-					voluptat
-				</Text>
-				</Stack>
-			</CardInner>
-		</Card>`,
-	},
-	{
-		group: 'Card',
-		name: 'Clickable',
 		code: `<Card shadow clickable>
-			<CardInner>
-				<Stack gap={1}>
-				<H3>
-					<CardLink href="#">Card heading</CardLink>
-				</H3>
-				<Text as="p">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. In,
-					voluptat
-				</Text>
-				</Stack>
-			</CardInner>
-		</Card>`,
-	},
-	{
-		group: 'Card',
-		name: 'Clickable with Footer outside',
-		code: `<Card shadow clickable footer={<CardFooter><TextLink href="#">Action</TextLink></CardFooter>} footerOutside>
 			<CardInner>
 				<Stack gap={1}>
 				<H3>
@@ -1496,20 +1265,6 @@ const snippets: Array<Snippet> = [
 		code: `<Divider />`,
 	},
 	{
-		group: 'DividerWithText',
-		name: 'Basic',
-		code: `<DividerWithText>
-			<Text>Divider label</Text>
-		</DividerWithText>`,
-	},
-	{
-		group: 'DividerWithText',
-		name: 'Left align',
-		code: `<DividerWithText textAlign="left">
-			<Text>Divider label</Text>
-		</DividerWithText>`,
-	},
-	{
 		group: 'Tabs',
 		name: 'Basic',
 		code: `<Tabs>
@@ -1551,58 +1306,18 @@ const snippets: Array<Snippet> = [
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Success high with description',
-		code: `<SectionAlert title="Success" tone="successHigh"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
+		name: 'Success',
+		code: `<SectionAlert tone="success" title="Success"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Success medium',
-		code: `<SectionAlert title="Success" tone="successMedium"></SectionAlert>`,
+		name: 'Error',
+		code: `<SectionAlert tone="error" title="Error"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'SectionAlert',
-		name: 'Success low',
-		code: `<SectionAlert title="Success" tone="successLow"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Error high',
-		code: `<SectionAlert title="Error" tone="errorHigh"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Warning high',
-		code: `<SectionAlert title="Warning" tone="warningHigh"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'Info high with dismissable',
-		code: `<SectionAlert onClose={console.log} title="Info" tone="infoHigh"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'notStartedLow',
-		code: `<SectionAlert title="Cannot start" tone="cannotStartLow"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'inProgressLow',
-		code: `<SectionAlert title="In progress" tone="inProgressLow"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'pausedLow',
-		code: `<SectionAlert title="Paused" tone="pausedLow"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'cannotStartLow',
-		code: `<SectionAlert title="Not started" tone="notStartedLow"></SectionAlert>`,
-	},
-	{
-		group: 'SectionAlert',
-		name: 'unknownLow',
-		code: `<SectionAlert title="Unknown" tone="unknownLow"></SectionAlert>`,
+		name: 'Warning',
+		code: `<SectionAlert tone="warning" title="Warning"><Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text></SectionAlert>`,
 	},
 	{
 		group: 'PasswordInput',

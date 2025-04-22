@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
+import { animated, SpringValue } from '@react-spring/web';
 import { Box } from '../box';
 import { Flex } from '../flex';
 import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
@@ -16,16 +17,30 @@ export type DrawerDialogProps = PropsWithChildren<{
 	elementToFocusOnClose?: DrawerProps['elementToFocusOnClose'];
 	/** Function to be called when the 'Close' button is pressed. */
 	onClose?: () => void;
+	style: { translateX: SpringValue<string> };
 	/** The title displayed at the top of the draw. */
 	title: string;
+	/** The width of the draw. */
+	width: DrawerDialogWidth;
 }>;
+
+const WIDTH_MAP = {
+	md: '32rem', // 512px
+	lg: '45rem', // 720px
+};
+
+export type DrawerDialogWidth = keyof typeof WIDTH_MAP;
+
+const AnimatedFlex = animated(Flex);
 
 export function DrawerDialog({
 	actions,
 	children,
 	elementToFocusOnClose,
 	onClose,
+	style,
 	title,
+	width,
 }: DrawerDialogProps) {
 	const { titleId } = useDrawerId();
 
@@ -42,21 +57,25 @@ export function DrawerDialog({
 					: true // Return focus to trigger on close
 			}
 		>
-			<Flex
+			<AnimatedFlex
 				aria-labelledby={titleId}
 				aria-modal
 				background="body"
 				css={{
 					boxShadow: tokens.shadow.lg,
-					inset: 0,
 					position: 'fixed',
+					inset: 0,
+					marginLeft: 'auto',
+					zIndex: tokens.zIndex.dialog,
 					[tokens.mediaQuery.max.xs]: {
 						overflowY: 'auto',
 					},
 				}}
 				flexDirection="column"
 				highContrastOutline
+				maxWidth={WIDTH_MAP[width]}
 				role="dialog"
+				style={style}
 			>
 				<DrawerHeader>
 					<DrawerHeaderTitle id={titleId}>{title}</DrawerHeaderTitle>
@@ -79,7 +98,7 @@ export function DrawerDialog({
 				>
 					Close
 				</Button>
-			</Flex>
+			</AnimatedFlex>
 		</FocusLock>
 	);
 }

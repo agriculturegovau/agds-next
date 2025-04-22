@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-filter-drawer.cjs.js",
-	"module": "dist/ag.ds-next-react-filter-drawer.esm.js"
+	"main": "dist/ag.ds-next-react-filter-drawer.cjs.js"
 }

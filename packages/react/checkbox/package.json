@@ -1,4 +1,3 @@
 {
-	"main": "dist/ag.ds-next-react-checkbox.cjs.js",
-	"module": "dist/ag.ds-next-react-checkbox.esm.js"
+	"main": "dist/ag.ds-next-react-checkbox.cjs.js"
 }
