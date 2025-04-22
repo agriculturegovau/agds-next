@@ -5,7 +5,7 @@ import {
 	useEffect,
 	useRef,
 } from 'react';
-import { mergeRefs, useId } from '../core';
+import { mergeRefs, packs, useId } from '../core';
 import { useControlGroupContext } from '../control-group/ControlGroupProvider';
 import { CheckboxIndicator } from './CheckboxIndicator';
 import { CheckboxInput } from './CheckboxInput';
@@ -59,6 +59,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		const id = useCheckboxId(props.id);
 		const ref = useRef<HTMLInputElement>(null);
 		const controlGroupContext = useControlGroupContext();
+		const { height, width } = packs.control[size];
 
 		// The invalid prop should override the context value
 		const invalid =
@@ -87,27 +88,38 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
 		return (
 			<CheckboxContainer disabled={disabled} htmlFor={id}>
-				<CheckboxInput
-					aria-checked={indeterminate ? 'mixed' : undefined}
-					aria-describedby={
-						invalid ? controlGroupContext?.messageId : undefined
-					}
-					aria-invalid={invalid || undefined}
-					aria-required={required}
-					checked={checked}
-					disabled={disabled}
-					id={id}
-					name={name}
-					ref={mergeRefs([forwardedRef, ref])}
-					type="checkbox"
-					{...props}
-				/>
-				<CheckboxIndicator
-					disabled={disabled}
-					indeterminate={indeterminate}
-					invalid={invalid}
-					size={size}
-				/>
+				<span
+					css={{
+						display: 'inline-block',
+						height,
+						position: 'relative',
+						width,
+					}}
+				>
+					<CheckboxInput
+						aria-checked={indeterminate ? 'mixed' : undefined}
+						aria-describedby={
+							invalid ? controlGroupContext?.messageId : undefined
+						}
+						aria-invalid={invalid || undefined}
+						aria-required={required}
+						checked={checked}
+						disabled={disabled}
+						height={height}
+						id={id}
+						name={name}
+						ref={mergeRefs([forwardedRef, ref])}
+						type="checkbox"
+						width={width}
+						{...props}
+					/>
+					<CheckboxIndicator
+						disabled={disabled}
+						indeterminate={indeterminate}
+						invalid={invalid}
+						size={size}
+					/>
+				</span>
 				<CheckboxLabel disabled={disabled} size={size}>
 					{children}
 				</CheckboxLabel>
