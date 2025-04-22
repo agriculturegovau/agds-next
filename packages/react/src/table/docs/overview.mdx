@@ -1313,3 +1313,128 @@ Background colours will override any striping, but will be overridden if the row
 	</Table>
 </TableWrapper>
 ```
+
+## Clickable rows
+
+The `<TableRow>` component accepts an optional, `onClick` callback function that will run when the table row or cell is clicked. Refer to the [accessibility guidance for clickable rows](/components/table/accessibility#guidance-for-clickable-rows).
+
+To prevent the table row callback from executing unintentionally, it will only run the clicked target is a `<td>`, `<th>` or `<tr>`.
+
+```jsx live
+() => {
+	const [selectedRows, setSelectedRows] = React.useState([]);
+	const [target, setTarget] = React.useState(null);
+	const [toggleButtonState, setToggleButtonState] = React.useState({});
+
+	function toggleRowSelection(rowIndex) {
+		setTarget({ element: 'Checkbox', index: rowIndex });
+		if (selectedRows.includes(rowIndex)) {
+			setSelectedRows((r) => r.filter((s) => s !== rowIndex));
+		} else {
+			setSelectedRows((r) => [...r, rowIndex]);
+		}
+	}
+
+	const anyRowsChecked = selectedRows.length > 0;
+	const allRowsChecked = selectedRows.length === 3;
+
+	function toggleAllRows() {
+		if (anyRowsChecked) {
+			setSelectedRows([]);
+		} else {
+			setSelectedRows([0, 1, 2]);
+		}
+	}
+
+	function clickToggleButton(index) {
+		setTarget({ element: 'ToggleButton', index: index });
+		setToggleButtonState((prev) => ({
+			...prev,
+			[index]: index in prev ? !prev[index] : true,
+		}));
+	}
+
+	return (
+		<Stack gap={2}>
+			<Box>
+				<H3>Table onClick events</H3>
+				<Text aria-live="polite" as="p">
+					{target
+						? `onClick event called for <${target.element} /> on row ${
+								target.index + 1
+						  }.`
+						: 'No clicked element detected.'}
+				</Text>
+			</Box>
+
+			<Stack>
+				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+					<Checkbox
+						checked={allRowsChecked}
+						indeterminate={anyRowsChecked && !allRowsChecked}
+						onChange={toggleAllRows}
+						size="sm"
+					>
+						Select all rows
+					</Checkbox>
+				</Box>
+				<TableWrapper>
+					<Table>
+						<TableHead>
+							<TableRow>
+								<TableHeader>Select</TableHeader>
+								<TableHeader scope="col">Reference</TableHeader>
+								<TableHeader scope="col">Date submitted</TableHeader>
+								<TableHeader scope="col">Actions</TableHeader>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{Array.from(new Array(3).keys()).map((index) => {
+								const isRowSelected = selectedRows.includes(index);
+								const isToggleButtonPressed = toggleButtonState[index];
+								return (
+									<TableRow
+										key={index}
+										onClick={() =>
+											setTarget({ element: 'TableRow', index: index })
+										}
+										selected={isRowSelected}
+									>
+										<TableCell>
+											<Checkbox
+												checked={isRowSelected}
+												onChange={() => toggleRowSelection(index)}
+												size="sm"
+											>
+												<VisuallyHidden>Select</VisuallyHidden>
+											</Checkbox>
+										</TableCell>
+										<TableCell as="th" fontWeight="bold" scope="row">
+											<TextLink href="#" id={`REF-AB${index}CD4EF`}>
+												REF-AB{index}CD4EF
+											</TextLink>
+										</TableCell>
+										<TableCell>2{index}/06/2024</TableCell>
+										<TableCell>
+											<Flex gap={1}>
+												<ToggleButton
+													hiddenLabel
+													iconType="flag"
+													label="Flag message"
+													onClick={() => clickToggleButton(index)}
+													pressed={isToggleButtonPressed}
+													pressedLabel="Unflag message"
+												/>
+											</Flex>
+										</TableCell>
+									</TableRow>
+								);
+							})}
+						</TableBody>
+					</Table>
+				</TableWrapper>
+			</Stack>
+		</Stack>
+	);
+};
+```
