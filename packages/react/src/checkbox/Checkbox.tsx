@@ -91,8 +91,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 				<span
 					css={{
 						display: 'inline-block',
-						position: 'relative',
 						height,
+						position: 'relative',
 						width,
 					}}
 				>

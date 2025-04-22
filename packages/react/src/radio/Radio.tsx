@@ -70,8 +70,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
 			<span
 				css={{
 					display: 'inline-block',
-					position: 'relative',
 					height,
+					position: 'relative',
 					width,
 				}}
 			>
