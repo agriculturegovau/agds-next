@@ -1,5 +1,24 @@
 # @ag.ds-next/example-site
 
+## 0.6.2
+
+### Patch Changes
+
+- e9809255314: build(deps): bump next from 14.2.21 to 14.2.25.
+- Updated dependencies [7add171cc03]
+- Updated dependencies [5c8b1c654cf]
+- Updated dependencies [9c8773b20b2]
+- Updated dependencies [3f19866e785]
+- Updated dependencies [4af03eb39f6]
+- Updated dependencies [7836f3af38c]
+- Updated dependencies [f46a5a76ee2]
+- Updated dependencies [5aff78bb2b1]
+- Updated dependencies [3fa4ead5b02]
+- Updated dependencies [8bdb9132fef]
+- Updated dependencies [ac12f599dbe]
+- Updated dependencies [75682e65a41]
+  - @ag.ds-next/react@1.27.0
+
 ## 0.6.1
 
 ### Patch Changes
