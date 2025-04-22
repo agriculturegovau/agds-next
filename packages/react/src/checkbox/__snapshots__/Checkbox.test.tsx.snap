@@ -7,7 +7,7 @@ exports[`Checkbox renders correctly 1`] = `
     for="checkbox-:r0:"
   >
     <span
-      class="css-lhbzwe-Checkbox"
+      class="css-1246v4c-Checkbox"
     >
       <input
         class="css-1iw6cs3-CheckboxInput"
