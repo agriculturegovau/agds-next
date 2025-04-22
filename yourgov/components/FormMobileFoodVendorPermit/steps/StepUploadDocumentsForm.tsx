@@ -229,7 +229,7 @@ export function StepUploadDocumentsForm() {
 							ref={errorMessageRef}
 							tabIndex={-1}
 							title="You must provide all documents in the table below"
-							tone="error"
+							tone="errorHigh"
 						>
 							<Stack alignItems="flex-start" gap={0.5}>
 								<UnorderedList>
@@ -249,7 +249,7 @@ export function StepUploadDocumentsForm() {
 							ref={successMessageRef}
 							tabIndex={-1}
 							title={`${currentDocument?.documentType} updated`}
-							tone="success"
+							tone="successHigh"
 						>
 							<Text as="p" breakWords>
 								{documents.find(

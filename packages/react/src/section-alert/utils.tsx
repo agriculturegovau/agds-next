@@ -125,6 +125,13 @@ export type SectionAlertTone = SectionAlertTones | SectionAlertLegacyTone;
 // Legacy tones will default to its high variant
 export function getTone(tone: SectionAlertTone): SectionAlertTones {
 	if (tone in sectionAlertLegacyToneMap) {
+		if (process.env.NODE_ENV !== 'production') {
+			console.warn(
+				`The tone "${tone}" is deprecated. Use "${
+					sectionAlertLegacyToneMap[tone as SectionAlertLegacyTone]
+				}" instead.`
+			);
+		}
 		return sectionAlertLegacyToneMap[tone as SectionAlertLegacyTone];
 	}
 
