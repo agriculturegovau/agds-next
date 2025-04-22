@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { backgroundColorMap, type BackgroundColor } from '../box';
 import { boxPalette, tokens } from '../core';
 import { theme } from '../ag-branding';
 import { useTableContext } from './TableContext';
@@ -6,6 +7,8 @@ import { useTableContext } from './TableContext';
 export type TableRowProps = PropsWithChildren<{
 	/** The row index of the table row. */
 	'aria-rowindex'?: number;
+	/** The background colour of the row. Overridden by `invalid` or `selected`. */
+	background?: BackgroundColor;
 	/** Style the row when a cell contains an error. */
 	invalid?: boolean;
 	/** Indicates the current selected state of the table row. */
@@ -14,6 +17,7 @@ export type TableRowProps = PropsWithChildren<{
 
 export function TableRow({
 	'aria-rowindex': ariaRowindex,
+	background,
 	children,
 	invalid,
 	selected,
@@ -24,6 +28,11 @@ export function TableRow({
 			aria-rowindex={ariaRowindex}
 			aria-selected={selected}
 			css={{
+				backgroundColor: invalid
+					? theme.lightSystemErrorMuted
+					: background
+					? backgroundColorMap[background]
+					: undefined,
 				...(selected && {
 					...(tableLayout === 'auto' && {
 						position: 'relative',
@@ -61,10 +70,8 @@ export function TableRow({
 					'@supports (-webkit-appearance: -apple-pay-button)':
 						alternativeSelectedStyles,
 				}),
-				...(invalid && {
-					background: theme.lightSystemErrorMuted,
-				}),
 			}}
+			data-has-background={Boolean(background || invalid) || undefined}
 		>
 			{children}
 		</tr>
