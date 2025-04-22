@@ -1,10 +1,7 @@
 import { forwardRef, Fragment } from 'react';
 import { format, formatDistance } from 'date-fns';
-import {
-	VisuallyHidden,
-	visuallyHiddenStyles,
-} from '@ag.ds-next/react/src/a11y';
-import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/src/skeleton';
+import { VisuallyHidden, visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
+import { SkeletonBox, SkeletonText } from '@ag.ds-next/react/skeleton';
 import {
 	Table,
 	TableBody,
@@ -15,13 +12,13 @@ import {
 	TableHeaderSortable,
 	TableWrapper,
 	TableRow,
-} from '@ag.ds-next/react/src/table';
-import { TextLink } from '@ag.ds-next/react/src/text-link';
-import { Text } from '@ag.ds-next/react/src/text';
-import { Stack } from '@ag.ds-next/react/src/stack';
-import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/src/icon';
-import { Heading } from '@ag.ds-next/react/src/heading';
-import { Button } from '@ag.ds-next/react/src/button';
+} from '@ag.ds-next/react/table';
+import { TextLink } from '@ag.ds-next/react/text-link';
+import { Text } from '@ag.ds-next/react/text';
+import { Stack } from '@ag.ds-next/react/stack';
+import { AlertFilledIcon, HelpIcon } from '@ag.ds-next/react/icon';
+import { Heading } from '@ag.ds-next/react/heading';
+import { Button } from '@ag.ds-next/react/button';
 import { generateTableCaption } from './lib/utils';
 import { useDataContext, useSortAndFilterContext } from './lib/contexts';
 import { DataTableRow, DataTableRowStatus } from './DataTableRow';

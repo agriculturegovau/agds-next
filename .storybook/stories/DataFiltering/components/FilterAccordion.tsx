@@ -1,8 +1,7 @@
-import { useSpring, animated } from '@react-spring/web';
 import { useRef } from 'react';
 import { Flex } from '../../../../packages/react/src/flex';
 import { DateRangePicker } from '../../../../packages/react/src/date-range-picker';
-import { usePrefersReducedMotion } from '../../../../packages/react/src/core';
+import { useTransitionHeight } from '../../../../packages/react/src/core';
 import { useSortAndFilterContext } from '../lib/contexts';
 import { FilterAssigneeSelect } from './FilterAssigneeSelect';
 import { FilterStateSelect } from './FilterStateSelect';
@@ -17,30 +16,18 @@ export const FilterAccordion = ({
 	isOpen: boolean;
 }) => {
 	const { filters, setFilter } = useSortAndFilterContext();
+	const [transitionHeightProp, transitionHeightStyles] =
+		useTransitionHeight(isOpen);
 
 	// This code has been copied from the Accordion component.
 	const ref = useRef<HTMLDivElement>(null);
-	const prefersReducedMotion = usePrefersReducedMotion();
-	const animatedHeight = useSpring({
-		from: { display: 'none', height: 0 },
-		to: async (next) => {
-			if (isOpen) await next({ display: 'block' });
-			await next({
-				height: isOpen ? ref.current?.offsetHeight : 0,
-				immediate: prefersReducedMotion,
-			});
-			await next(isOpen ? { height: 'auto' } : { display: 'none' });
-		},
-	});
 
 	return (
-		<animated.section
+		<section
 			aria-labelledby={ariaLabelledBy}
-			css={{
-				overflow: 'hidden',
-			}}
+			css={transitionHeightStyles}
 			id={id}
-			style={animatedHeight}
+			{...transitionHeightProp}
 		>
 			<Flex
 				alignItems={{ xs: 'stretch', md: 'flex-end' }}
@@ -75,6 +62,6 @@ export const FilterAccordion = ({
 					value={filters.requestDate}
 				/>
 			</Flex>
-		</animated.section>
+		</section>
 	);
 };

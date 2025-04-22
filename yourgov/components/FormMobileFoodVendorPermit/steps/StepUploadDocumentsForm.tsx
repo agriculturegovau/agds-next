@@ -1,8 +1,8 @@
 import { FormEventHandler, useEffect, useRef, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
-import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
-import { useTernaryState } from '@ag.ds-next/react/src/core';
-import { Drawer } from '@ag.ds-next/react/src/drawer';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
+import { useTernaryState } from '@ag.ds-next/react/core';
+import { Drawer } from '@ag.ds-next/react/drawer';
 import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { SectionAlert } from '@ag.ds-next/react/section-alert';
@@ -11,7 +11,7 @@ import { Text } from '@ag.ds-next/react/text';
 import { Box } from '@ag.ds-next/react/box';
 import { H2 } from '@ag.ds-next/react/heading';
 import { visuallyHiddenStyles } from '@ag.ds-next/react/a11y';
-import { filesize } from '@ag.ds-next/react/src/file-upload/filesize';
+import { formatFileSize } from '@ag.ds-next/react/file-upload';
 import { useIsEditingFromReviewStep } from '../../../lib/useIsEditingFromReviewStep';
 import { useGlobalForm } from '../GlobalFormProvider';
 import { UploadFileTable } from '../UploadFileTable';
@@ -128,7 +128,9 @@ export function StepUploadDocumentsForm() {
 				? {
 						...prevDocument,
 						file: uploadedFile[0]?.name || '',
-						size: uploadedFile[0] ? `${filesize(uploadedFile[0].size)}` : '',
+						size: uploadedFile[0]
+							? `${formatFileSize(uploadedFile[0].size)}`
+							: '',
 						error: false,
 				  }
 				: prevDocument
@@ -227,7 +229,7 @@ export function StepUploadDocumentsForm() {
 							ref={errorMessageRef}
 							tabIndex={-1}
 							title="You must provide all documents in the table below"
-							tone="error"
+							tone="errorHigh"
 						>
 							<Stack alignItems="flex-start" gap={0.5}>
 								<UnorderedList>
@@ -247,7 +249,7 @@ export function StepUploadDocumentsForm() {
 							ref={successMessageRef}
 							tabIndex={-1}
 							title={`${currentDocument?.documentType} updated`}
-							tone="success"
+							tone="successHigh"
 						>
 							<Text as="p" breakWords>
 								{documents.find(

@@ -5,7 +5,14 @@ import userEvent from '@testing-library/user-event';
 import { useTernaryState } from '../core';
 import { Button } from '../button';
 import { Text } from '../text';
-import { render, screen, cleanup, waitFor, act } from '../../../../test-utils';
+import {
+	act,
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from '../../../../test-utils';
 import { Drawer } from './Drawer';
 
 expect.extend(toHaveNoViolations);
@@ -109,11 +116,18 @@ describe('Drawer', () => {
 		// Close the Drawer by clicking the "Close" button
 		await act(() => userEvent.click(screen.getByTestId('close-button')));
 
+		// JSDOM doesn't support transitionEnd events, so we need to simulate it
+		const transitionEl = document.querySelector('[data-drawer="transitioner"]');
+		if (transitionEl) {
+			fireEvent.transitionEnd(transitionEl);
+		}
+
 		// After closing the Drawer, the "Open" button should be focused
 		// Note: We need to wait for the closing animation
-		await waitFor(() =>
-			expect(screen.getByTestId('open-button')).toHaveFocus()
-		);
+		await waitFor(() => {
+			expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+			expect(screen.getByTestId('open-button')).toHaveFocus();
+		});
 	});
 
 	it('onDismiss draw focuses the correct elements when opening and closing', async () => {
@@ -129,10 +143,17 @@ describe('Drawer', () => {
 		// Close the Drawer by clicking the "Close" button
 		await act(() => userEvent.click(screen.getByTestId('close-button')));
 
+		// JSDOM doesn't support transitionEnd events, so we need to simulate it
+		const transitionEl = document.querySelector('[data-drawer="transitioner"]');
+		if (transitionEl) {
+			fireEvent.transitionEnd(transitionEl);
+		}
+
 		// After closing the Drawer, the "Open" button should be focused
 		// Note: We need to wait for the closing animation
-		await waitFor(() =>
-			expect(screen.getByTestId('open-button')).toHaveFocus()
-		);
+		await waitFor(() => {
+			expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+			expect(screen.getByTestId('open-button')).toHaveFocus();
+		});
 	});
 });

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableRow renders correctly 1`] = `
+<div>
+  <div
+    class="css-h6dj2w-boxStyles-TableScroller"
+  >
+    <section
+      aria-label="Table Population of Australian states and territories, December 2015"
+      class="css-13n67m1-boxStyles-TableScroller"
+      tabindex="-1"
+    >
+      <table
+        class="css-r11i27-boxStyles-Table"
+        id="table"
+      >
+        <caption
+          class="css-ryzpmp-boxStyles"
+        >
+          Population of Australian states and territories, December 2015
+        </caption>
+        <thead
+          class="css-11khhn7-boxStyles"
+        >
+          <tr
+            class="css-1tx0oac-TableRow"
+          >
+            <th
+              class="css-1gy3b36-boxStyles"
+              scope="col"
+            >
+              Location
+            </th>
+            <th
+              class="css-gt3plj-boxStyles"
+              scope="col"
+            >
+              Population
+            </th>
+            <th
+              class="css-gt3plj-boxStyles"
+              scope="col"
+            >
+              Change over previous year %
+            </th>
+            <th
+              class="css-gt3plj-boxStyles"
+              scope="col"
+            >
+              Change over previous decade %
+            </th>
+            <th
+              class="css-1gy3b36-boxStyles"
+              scope="col"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="css-8u32cd-boxStyles"
+        >
+          <tr
+            class="css-1tx0oac-TableRow"
+          >
+            <th
+              class="css-1qlct29-boxStyles-TableCell"
+              scope="row"
+            >
+              New South Wales
+            </th>
+            <td
+              class="css-18s06pf-boxStyles-TableCell"
+            >
+              7,670,700
+            </td>
+            <td
+              class="css-18s06pf-boxStyles-TableCell"
+            >
+              3.1%
+            </td>
+            <td
+              class="css-18s06pf-boxStyles-TableCell"
+            >
+              12.9%
+            </td>
+            <td
+              class="css-1qlct29-boxStyles-TableCell"
+            >
+              <button
+                data-testid="remove-button"
+                type="button"
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="css-1sekwdr-boxStyles-Shadow"
+      />
+      <div
+        class="css-6rjxly-boxStyles-Shadow"
+      />
+    </section>
+    <div
+      class="css-1bk2ogi-boxStyles-TableScroller"
+    >
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.957 6.319a.299.299 0 0 1 .043.147v11.103a.31.31 0 0 1-.161.263.34.34 0 0 1-.327.002l-9.361-5.552a.327.327 0 0 1-.111-.114.299.299 0 0 1 0-.3.319.319 0 0 1 .111-.114l9.361-5.552a.34.34 0 0 1 .327.002.31.31 0 0 1 .118.115Z"
+          />
+        </svg>
+      </button>
+      <div
+        aria-hidden="true"
+        class="css-rr47rr-boxStyles-TableScroller"
+        tabindex="-1"
+      >
+        <button
+          aria-hidden="true"
+          class="css-k24nkr-boxStyles-TableScroller"
+          style="left: 0px; width: 100%;"
+          tabindex="-1"
+          type="button"
+        />
+      </div>
+      <button
+        aria-hidden="true"
+        class="css-jwqotw-boxStyles-TableScroller"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-i17igh-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.043 17.718A.305.305 0 0 1 7 17.57V6.467a.31.31 0 0 1 .161-.263h0a.34.34 0 0 1 .327-.001l9.361 5.551a.321.321 0 0 1 .111.115.296.296 0 0 1 0 .299.31.31 0 0 1-.111.114l-9.361 5.552a.332.332 0 0 1-.161.041.329.329 0 0 1-.284-.157Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;

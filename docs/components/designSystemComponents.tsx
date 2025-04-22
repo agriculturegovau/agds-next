@@ -269,6 +269,7 @@ export {
 	AppLayoutFooterDivider,
 } from '@ag.ds-next/react/app-layout';
 export { Divider } from '@ag.ds-next/react/divider';
+export { DividerWithText } from '@ag.ds-next/react/divider-with-text';
 export { Drawer } from '@ag.ds-next/react/drawer';
 export {
 	Tabs,
@@ -301,11 +302,15 @@ export { TimePicker } from '@ag.ds-next/react/time-picker';
 export { ToggleButton } from '@ag.ds-next/react/toggle-button';
 
 // Used to populate options on documentation site and playroom
+// these have to be relative imports because these aren't properly
+// exported from the package and the package has an `exports` field
+// which restricts importing things not specified in the `exports` field
+// (though importing relatively like this isn't restricted)
 export {
 	COUNTRY_OPTIONS,
 	NAME_OPTIONS,
-} from '@ag.ds-next/react/src/combobox/test-utils';
+} from '../../packages/react/src/combobox/test-utils';
 export {
 	createExampleFile,
 	createExampleImageFile,
-} from '@ag.ds-next/react/src/file-upload/test-utils';
+} from '../../packages/react/src/file-upload/test-utils';
