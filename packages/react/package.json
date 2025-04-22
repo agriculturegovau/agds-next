@@ -1,15 +1,349 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.26.0",
+	"version": "1.27.0",
 	"license": "MIT",
-	"main": "dist/ag.ds-next-react.cjs.js",
-	"module": "dist/ag.ds-next-react.esm.js",
+	"exports": {
+		"./box": {
+			"module": "./box/dist/ag.ds-next-react-box.esm.js",
+			"default": "./box/dist/ag.ds-next-react-box.cjs.js"
+		},
+		"./a11y": {
+			"module": "./a11y/dist/ag.ds-next-react-a11y.esm.js",
+			"default": "./a11y/dist/ag.ds-next-react-a11y.cjs.js"
+		},
+		"./card": {
+			"module": "./card/dist/ag.ds-next-react-card.esm.js",
+			"default": "./card/dist/ag.ds-next-react-card.cjs.js"
+		},
+		"./core": {
+			"module": "./core/dist/ag.ds-next-react-core.esm.js",
+			"default": "./core/dist/ag.ds-next-react-core.cjs.js"
+		},
+		"./flex": {
+			"module": "./flex/dist/ag.ds-next-react-flex.esm.js",
+			"default": "./flex/dist/ag.ds-next-react-flex.cjs.js"
+		},
+		"./icon": {
+			"module": "./icon/dist/ag.ds-next-react-icon.esm.js",
+			"default": "./icon/dist/ag.ds-next-react-icon.cjs.js"
+		},
+		"./list": {
+			"module": "./list/dist/ag.ds-next-react-list.esm.js",
+			"default": "./list/dist/ag.ds-next-react-list.cjs.js"
+		},
+		"./tabs": {
+			"module": "./tabs/dist/ag.ds-next-react-tabs.esm.js",
+			"default": "./tabs/dist/ag.ds-next-react-tabs.cjs.js"
+		},
+		"./tags": {
+			"module": "./tags/dist/ag.ds-next-react-tags.esm.js",
+			"default": "./tags/dist/ag.ds-next-react-tags.cjs.js"
+		},
+		"./text": {
+			"module": "./text/dist/ag.ds-next-react-text.esm.js",
+			"default": "./text/dist/ag.ds-next-react-text.cjs.js"
+		},
+		"./badge": {
+			"module": "./badge/dist/ag.ds-next-react-badge.esm.js",
+			"default": "./badge/dist/ag.ds-next-react-badge.cjs.js"
+		},
+		"./field": {
+			"module": "./field/dist/ag.ds-next-react-field.esm.js",
+			"default": "./field/dist/ag.ds-next-react-field.cjs.js"
+		},
+		"./modal": {
+			"module": "./modal/dist/ag.ds-next-react-modal.esm.js",
+			"default": "./modal/dist/ag.ds-next-react-modal.cjs.js"
+		},
+		"./prose": {
+			"module": "./prose/dist/ag.ds-next-react-prose.esm.js",
+			"default": "./prose/dist/ag.ds-next-react-prose.cjs.js"
+		},
+		"./radio": {
+			"module": "./radio/dist/ag.ds-next-react-radio.esm.js",
+			"default": "./radio/dist/ag.ds-next-react-radio.cjs.js"
+		},
+		"./stack": {
+			"module": "./stack/dist/ag.ds-next-react-stack.esm.js",
+			"default": "./stack/dist/ag.ds-next-react-stack.cjs.js"
+		},
+		"./table": {
+			"module": "./table/dist/ag.ds-next-react-table.esm.js",
+			"default": "./table/dist/ag.ds-next-react-table.cjs.js"
+		},
+		"./avatar": {
+			"module": "./avatar/dist/ag.ds-next-react-avatar.esm.js",
+			"default": "./avatar/dist/ag.ds-next-react-avatar.cjs.js"
+		},
+		"./button": {
+			"module": "./button/dist/ag.ds-next-react-button.esm.js",
+			"default": "./button/dist/ag.ds-next-react-button.cjs.js"
+		},
+		"./drawer": {
+			"module": "./drawer/dist/ag.ds-next-react-drawer.esm.js",
+			"default": "./drawer/dist/ag.ds-next-react-drawer.cjs.js"
+		},
+		"./footer": {
+			"module": "./footer/dist/ag.ds-next-react-footer.esm.js",
+			"default": "./footer/dist/ag.ds-next-react-footer.cjs.js"
+		},
+		"./header": {
+			"module": "./header/dist/ag.ds-next-react-header.esm.js",
+			"default": "./header/dist/ag.ds-next-react-header.cjs.js"
+		},
+		"./select": {
+			"module": "./select/dist/ag.ds-next-react-select.esm.js",
+			"default": "./select/dist/ag.ds-next-react-select.cjs.js"
+		},
+		"./switch": {
+			"module": "./switch/dist/ag.ds-next-react-switch.esm.js",
+			"default": "./switch/dist/ag.ds-next-react-switch.cjs.js"
+		},
+		"./callout": {
+			"module": "./callout/dist/ag.ds-next-react-callout.esm.js",
+			"default": "./callout/dist/ag.ds-next-react-callout.cjs.js"
+		},
+		"./columns": {
+			"module": "./columns/dist/ag.ds-next-react-columns.esm.js",
+			"default": "./columns/dist/ag.ds-next-react-columns.cjs.js"
+		},
+		"./content": {
+			"module": "./content/dist/ag.ds-next-react-content.esm.js",
+			"default": "./content/dist/ag.ds-next-react-content.cjs.js"
+		},
+		"./details": {
+			"module": "./details/dist/ag.ds-next-react-details.esm.js",
+			"default": "./details/dist/ag.ds-next-react-details.cjs.js"
+		},
+		"./divider": {
+			"module": "./divider/dist/ag.ds-next-react-divider.esm.js",
+			"default": "./divider/dist/ag.ds-next-react-divider.cjs.js"
+		},
+		"./heading": {
+			"module": "./heading/dist/ag.ds-next-react-heading.esm.js",
+			"default": "./heading/dist/ag.ds-next-react-heading.cjs.js"
+		},
+		"./loading": {
+			"module": "./loading/dist/ag.ds-next-react-loading.esm.js",
+			"default": "./loading/dist/ag.ds-next-react-loading.cjs.js"
+		},
+		"./sub-nav": {
+			"module": "./sub-nav/dist/ag.ds-next-react-sub-nav.esm.js",
+			"default": "./sub-nav/dist/ag.ds-next-react-sub-nav.cjs.js"
+		},
+		"./checkbox": {
+			"module": "./checkbox/dist/ag.ds-next-react-checkbox.esm.js",
+			"default": "./checkbox/dist/ag.ds-next-react-checkbox.cjs.js"
+		},
+		"./combobox": {
+			"module": "./combobox/dist/ag.ds-next-react-combobox.esm.js",
+			"default": "./combobox/dist/ag.ds-next-react-combobox.cjs.js"
+		},
+		"./fieldset": {
+			"module": "./fieldset/dist/ag.ds-next-react-fieldset.esm.js",
+			"default": "./fieldset/dist/ag.ds-next-react-fieldset.cjs.js"
+		},
+		"./main-nav": {
+			"module": "./main-nav/dist/ag.ds-next-react-main-nav.esm.js",
+			"default": "./main-nav/dist/ag.ds-next-react-main-nav.cjs.js"
+		},
+		"./side-nav": {
+			"module": "./side-nav/dist/ag.ds-next-react-side-nav.esm.js",
+			"default": "./side-nav/dist/ag.ds-next-react-side-nav.cjs.js"
+		},
+		"./skeleton": {
+			"module": "./skeleton/dist/ag.ds-next-react-skeleton.esm.js",
+			"default": "./skeleton/dist/ag.ds-next-react-skeleton.cjs.js"
+		},
+		"./textarea": {
+			"module": "./textarea/dist/ag.ds-next-react-textarea.esm.js",
+			"default": "./textarea/dist/ag.ds-next-react-textarea.cjs.js"
+		},
+		"./accordion": {
+			"module": "./accordion/dist/ag.ds-next-react-accordion.esm.js",
+			"default": "./accordion/dist/ag.ds-next-react-accordion.cjs.js"
+		},
+		"./link-list": {
+			"module": "./link-list/dist/ag.ds-next-react-link-list.esm.js",
+			"default": "./link-list/dist/ag.ds-next-react-link-list.cjs.js"
+		},
+		"./skip-link": {
+			"module": "./skip-link/dist/ag.ds-next-react-skip-link.esm.js",
+			"default": "./skip-link/dist/ag.ds-next-react-skip-link.cjs.js"
+		},
+		"./task-list": {
+			"module": "./task-list/dist/ag.ds-next-react-task-list.esm.js",
+			"default": "./task-list/dist/ag.ds-next-react-task-list.cjs.js"
+		},
+		"./text-link": {
+			"module": "./text-link/dist/ag.ds-next-react-text-link.esm.js",
+			"default": "./text-link/dist/ag.ds-next-react-text-link.cjs.js"
+		},
+		"./app-layout": {
+			"module": "./app-layout/dist/ag.ds-next-react-app-layout.esm.js",
+			"default": "./app-layout/dist/ag.ds-next-react-app-layout.cjs.js"
+		},
+		"./file-input": {
+			"module": "./file-input/dist/ag.ds-next-react-file-input.esm.js",
+			"default": "./file-input/dist/ag.ds-next-react-file-input.cjs.js"
+		},
+		"./form-stack": {
+			"module": "./form-stack/dist/ag.ds-next-react-form-stack.esm.js",
+			"default": "./form-stack/dist/ag.ds-next-react-form-stack.cjs.js"
+		},
+		"./inpage-nav": {
+			"module": "./inpage-nav/dist/ag.ds-next-react-inpage-nav.esm.js",
+			"default": "./inpage-nav/dist/ag.ds-next-react-inpage-nav.cjs.js"
+		},
+		"./page-alert": {
+			"module": "./page-alert/dist/ag.ds-next-react-page-alert.esm.js",
+			"default": "./page-alert/dist/ag.ds-next-react-page-alert.cjs.js"
+		},
+		"./pagination": {
+			"module": "./pagination/dist/ag.ds-next-react-pagination.esm.js",
+			"default": "./pagination/dist/ag.ds-next-react-pagination.cjs.js"
+		},
+		"./search-box": {
+			"module": "./search-box/dist/ag.ds-next-react-search-box.esm.js",
+			"default": "./search-box/dist/ag.ds-next-react-search-box.cjs.js"
+		},
+		"./text-input": {
+			"module": "./text-input/dist/ag.ds-next-react-text-input.esm.js",
+			"default": "./text-input/dist/ag.ds-next-react-text-input.cjs.js"
+		},
+		"./time-input": {
+			"module": "./time-input/dist/ag.ds-next-react-time-input.esm.js",
+			"default": "./time-input/dist/ag.ds-next-react-time-input.cjs.js"
+		},
+		"./ag-branding": {
+			"module": "./ag-branding/dist/ag.ds-next-react-ag-branding.esm.js",
+			"default": "./ag-branding/dist/ag.ds-next-react-ag-branding.cjs.js"
+		},
+		"./breadcrumbs": {
+			"module": "./breadcrumbs/dist/ag.ds-next-react-breadcrumbs.esm.js",
+			"default": "./breadcrumbs/dist/ag.ds-next-react-breadcrumbs.cjs.js"
+		},
+		"./date-picker": {
+			"module": "./date-picker/dist/ag.ds-next-react-date-picker.esm.js",
+			"default": "./date-picker/dist/ag.ds-next-react-date-picker.cjs.js"
+		},
+		"./file-upload": {
+			"module": "./file-upload/dist/ag.ds-next-react-file-upload.esm.js",
+			"default": "./file-upload/dist/ag.ds-next-react-file-upload.cjs.js"
+		},
+		"./hero-banner": {
+			"module": "./hero-banner/dist/ag.ds-next-react-hero-banner.esm.js",
+			"default": "./hero-banner/dist/ag.ds-next-react-hero-banner.cjs.js"
+		},
+		"./time-picker": {
+			"module": "./time-picker/dist/ag.ds-next-react-time-picker.esm.js",
+			"default": "./time-picker/dist/ag.ds-next-react-time-picker.cjs.js"
+		},
+		"./autocomplete": {
+			"module": "./autocomplete/dist/ag.ds-next-react-autocomplete.esm.js",
+			"default": "./autocomplete/dist/ag.ds-next-react-autocomplete.cjs.js"
+		},
+		"./global-alert": {
+			"module": "./global-alert/dist/ag.ds-next-react-global-alert.esm.js",
+			"default": "./global-alert/dist/ag.ds-next-react-global-alert.cjs.js"
+		},
+		"./search-input": {
+			"module": "./search-input/dist/ag.ds-next-react-search-input.esm.js",
+			"default": "./search-input/dist/ag.ds-next-react-search-input.cjs.js"
+		},
+		"./status-badge": {
+			"module": "./status-badge/dist/ag.ds-next-react-status-badge.esm.js",
+			"default": "./status-badge/dist/ag.ds-next-react-status-badge.cjs.js"
+		},
+		"./summary-list": {
+			"module": "./summary-list/dist/ag.ds-next-react-summary-list.esm.js",
+			"default": "./summary-list/dist/ag.ds-next-react-summary-list.cjs.js"
+		},
+		"./control-group": {
+			"module": "./control-group/dist/ag.ds-next-react-control-group.esm.js",
+			"default": "./control-group/dist/ag.ds-next-react-control-group.cjs.js"
+		},
+		"./control-input": {
+			"module": "./control-input/dist/ag.ds-next-react-control-input.esm.js",
+			"default": "./control-input/dist/ag.ds-next-react-control-input.cjs.js"
+		},
+		"./dropdown-menu": {
+			"module": "./dropdown-menu/dist/ag.ds-next-react-dropdown-menu.esm.js",
+			"default": "./dropdown-menu/dist/ag.ds-next-react-dropdown-menu.cjs.js"
+		},
+		"./filter-drawer": {
+			"module": "./filter-drawer/dist/ag.ds-next-react-filter-drawer.esm.js",
+			"default": "./filter-drawer/dist/ag.ds-next-react-filter-drawer.cjs.js"
+		},
+		"./indicator-dot": {
+			"module": "./indicator-dot/dist/ag.ds-next-react-indicator-dot.esm.js",
+			"default": "./indicator-dot/dist/ag.ds-next-react-indicator-dot.cjs.js"
+		},
+		"./section-alert": {
+			"module": "./section-alert/dist/ag.ds-next-react-section-alert.esm.js",
+			"default": "./section-alert/dist/ag.ds-next-react-section-alert.cjs.js"
+		},
+		"./toggle-button": {
+			"module": "./toggle-button/dist/ag.ds-next-react-toggle-button.esm.js",
+			"default": "./toggle-button/dist/ag.ds-next-react-toggle-button.cjs.js"
+		},
+		"./call-to-action": {
+			"module": "./call-to-action/dist/ag.ds-next-react-call-to-action.esm.js",
+			"default": "./call-to-action/dist/ag.ds-next-react-call-to-action.cjs.js"
+		},
+		"./direction-link": {
+			"module": "./direction-link/dist/ag.ds-next-react-direction-link.esm.js",
+			"default": "./direction-link/dist/ag.ds-next-react-direction-link.cjs.js"
+		},
+		"./filter-sidebar": {
+			"module": "./filter-sidebar/dist/ag.ds-next-react-filter-sidebar.esm.js",
+			"default": "./filter-sidebar/dist/ag.ds-next-react-filter-sidebar.cjs.js"
+		},
+		"./grouped-fields": {
+			"module": "./grouped-fields/dist/ag.ds-next-react-grouped-fields.esm.js",
+			"default": "./grouped-fields/dist/ag.ds-next-react-grouped-fields.cjs.js"
+		},
+		"./password-input": {
+			"module": "./password-input/dist/ag.ds-next-react-password-input.esm.js",
+			"default": "./password-input/dist/ag.ds-next-react-password-input.cjs.js"
+		},
+		"./date-picker-next": {
+			"module": "./date-picker-next/dist/ag.ds-next-react-date-picker-next.esm.js",
+			"default": "./date-picker-next/dist/ag.ds-next-react-date-picker-next.cjs.js"
+		},
+		"./date-range-picker": {
+			"module": "./date-range-picker/dist/ag.ds-next-react-date-range-picker.esm.js",
+			"default": "./date-range-picker/dist/ag.ds-next-react-date-range-picker.cjs.js"
+		},
+		"./divider-with-text": {
+			"module": "./divider-with-text/dist/ag.ds-next-react-divider-with-text.esm.js",
+			"default": "./divider-with-text/dist/ag.ds-next-react-divider-with-text.cjs.js"
+		},
+		"./feature-link-list": {
+			"module": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.esm.js",
+			"default": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.cjs.js"
+		},
+		"./notification-badge": {
+			"module": "./notification-badge/dist/ag.ds-next-react-notification-badge.esm.js",
+			"default": "./notification-badge/dist/ag.ds-next-react-notification-badge.cjs.js"
+		},
+		"./progress-indicator": {
+			"module": "./progress-indicator/dist/ag.ds-next-react-progress-indicator.esm.js",
+			"default": "./progress-indicator/dist/ag.ds-next-react-progress-indicator.cjs.js"
+		},
+		"./date-range-picker-next": {
+			"module": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.esm.js",
+			"default": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.cjs.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"dependencies": {
 		"@babel/runtime": "^7.4.5",
 		"@floating-ui/react-dom": "^2.0.8",
-		"@react-spring/web": "^9.4.5",
+		"@types/facepaint": "^1.2.5",
 		"date-fns": "^2.28.0",
 		"downshift": "^9.0.8",
+		"facepaint": "^1.2.1",
 		"react-day-picker": "^8.10.0",
 		"react-dropzone": "^14.2.3",
 		"react-focus-lock": "^2.9.6",
@@ -18,14 +352,11 @@
 	},
 	"devDependencies": {
 		"@emotion/react": "^11.7.0",
-		"@types/facepaint": "^1.2.5",
-		"facepaint": "^1.2.1",
 		"react": "18.1.0",
 		"react-dom": "18.1.0"
 	},
 	"peerDependencies": {
 		"@emotion/react": "^11.7.0",
-		"facepaint": "^1.2.1",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0",
 		"react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
 	},

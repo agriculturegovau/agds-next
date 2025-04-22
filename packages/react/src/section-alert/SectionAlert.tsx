@@ -11,7 +11,7 @@ import { Flex } from '../flex';
 import { getOptionalCloseHandler } from '../getCloseHandler';
 import { Text } from '../text';
 import { SectionAlertDismissButton } from './SectionAlertDismissButton';
-import { sectionAlertIconMap, type SectionAlertTone } from './utils';
+import { getTone, sectionAlertToneMap, type SectionAlertTone } from './utils';
 
 type DivProps = HTMLAttributes<HTMLDivElement>;
 
@@ -62,7 +62,16 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 		});
 		const { childrenId, titleId, toneId } = useSectionAlertIds(id);
 
-		const icon = sectionAlertIconMap[tone];
+		const updatedTone = getTone(tone);
+		const {
+			background,
+			borderColor,
+			enclosedBorder,
+			icon: Icon,
+			iconColor,
+			iconLabel,
+		} = sectionAlertToneMap[updatedTone];
+
 		const closeHandler = getOptionalCloseHandler(onClose, onDismiss);
 
 		return (
@@ -70,10 +79,11 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 				{...props}
 				alignItems="center"
 				aria-labelledby={`${toneId} ${titleId} ${children ? childrenId : ''}`}
-				background={tone}
-				borderColor={tone}
-				borderLeft
-				borderLeftWidth="xl"
+				background={background}
+				border
+				borderColor={borderColor}
+				borderLeftWidth="xxl"
+				borderWidth={enclosedBorder ? 'sm' : 'none'}
 				focusRingFor="all"
 				gap={0.5}
 				highContrastOutline
@@ -92,9 +102,9 @@ export const SectionAlert = forwardRef<HTMLDivElement, SectionAlertProps>(
 							display: 'inline-flex',
 						}}
 					>
-						{icon}
+						<Icon color={iconColor} />
 						<span css={visuallyHiddenStyles} id={toneId}>
-							{tone}
+							{iconLabel}
 						</span>
 					</span>
 					<Flex flexDirection="column" gap={0.25}>

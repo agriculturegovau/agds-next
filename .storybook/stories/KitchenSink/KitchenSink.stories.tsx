@@ -18,6 +18,7 @@ import { DateRangePickerNext } from '../../../packages/react/src/date-range-pick
 import { Details } from '../../../packages/react/src/details';
 import { DirectionLink } from '../../../packages/react/src/direction-link';
 import { Divider } from '../../../packages/react/src/divider';
+import { DividerWithText } from '../../../packages/react/src/divider-with-text';
 import { FileInput } from '../../../packages/react/src/file-input';
 import { FileUpload } from '../../../packages/react/src/file-upload';
 import { Flex } from '../../../packages/react/src/flex';
@@ -284,15 +285,15 @@ function KitchenSink({ background }: KitchenSinkProps) {
 								<Text as="p">Description of the callout.</Text>
 							</Callout>
 
-							<SectionAlert title="This is a Section alert" tone="error" />
+							<SectionAlert title="This is a Section alert" tone="errorHigh" />
 
 							<SectionAlert
 								onClose={console.log}
 								title="This is a Section alert"
-								tone="success"
+								tone="successHigh"
 							/>
 
-							<SectionAlert title="This is a Section alert" tone="warning">
+							<SectionAlert title="This is a Section alert" tone="warningHigh">
 								<Text as="p">This is a description.</Text>
 							</SectionAlert>
 
@@ -535,6 +536,10 @@ function KitchenSink({ background }: KitchenSinkProps) {
 							</FormStack>
 
 							<Divider />
+
+							<DividerWithText>
+								<Text>Divider label</Text>
+							</DividerWithText>
 
 							<DirectionLink direction="left" href="#">
 								Back

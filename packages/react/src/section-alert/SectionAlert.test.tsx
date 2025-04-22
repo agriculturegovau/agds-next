@@ -1,20 +1,32 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
-import { Text } from '../text';
 import { cleanup, render } from '../../../../test-utils';
-import { SectionAlert } from './SectionAlert';
+import { Text } from '../text';
 import type { SectionAlertProps } from './SectionAlert';
-import { sectionAlertIconMap, SectionAlertTone } from './utils';
+import { SectionAlert } from './SectionAlert';
+import {
+	SectionAlertTone,
+	sectionAlertLegacyToneMap,
+	sectionAlertToneMap,
+} from './utils';
 
 const sectionAlertTones = Object.keys(
-	sectionAlertIconMap
+	sectionAlertToneMap
+) as Array<SectionAlertTone>;
+
+const sectionAlertLegacyTonesMap = Object.keys(
+	sectionAlertLegacyToneMap
 ) as Array<SectionAlertTone>;
 
 afterEach(cleanup);
 
 function renderSectionAlert(props?: Partial<SectionAlertProps>) {
 	return render(
-		<SectionAlert title="Title of Section alert" tone="success" {...props} />
+		<SectionAlert
+			title="Title of Section alert"
+			tone="successHigh"
+			{...props}
+		/>
 	);
 }
 
@@ -36,6 +48,26 @@ describe('SectionAlert', () => {
 							'valid-id': 'off',
 						},
 					});
+				});
+			});
+		});
+	}
+
+	{
+		sectionAlertLegacyTonesMap.forEach((tone) => {
+			describe(`with legacy ${tone}`, () => {
+				const { container } = renderSectionAlert({ tone });
+				expect(container).toMatchSnapshot();
+			});
+			it('renders a valid HTML structure', () => {
+				const { container } = renderSectionAlert({ tone });
+				expect(container).toHTMLValidate({
+					extends: ['html-validate:recommended'],
+					rules: {
+						'prefer-native-element': 'off',
+						// react 18s `useId` break this rule
+						'valid-id': 'off',
+					},
 				});
 			});
 		});

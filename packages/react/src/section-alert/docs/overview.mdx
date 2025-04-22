@@ -1,36 +1,37 @@
 ---
 title: Section alert
-description: Section alerts are non-disruptive notifications that provide Success, Error and Warning messages about a state change in a section of a page.
+description: Section alerts are non-disruptive notifications that provide Success, Error, Warning, Information and Progress messages about a state change in a section of a page.
 group: Content
 storybookPath: /story/Content-SectionAlert--basic
 figmaGalleryNodeId: 19223%3A12705
-relatedComponents: ['page-alert', 'global-alert']
+relatedComponents: ['callout', 'page-alert', 'status-badge', 'global-alert']
 relatedPatterns: ['messaging']
 ---
 
 Section alerts appear inside of the main content area of the page and are used to alert users to a particular section of the screen. They should not be confused with Callouts.
 
 ```jsx live
-<SectionAlert title="Your changes have been saved" tone="success" />
+<SectionAlert title="Your changes have been saved" tone="successHigh" />
 ```
 
 <DoHeading />
 
-- use to notify users about a change in state in a section of a
-  page
-- use to communicate error, warning or success messages
+- use to notify users about a change in state in a section of a page
+- use to communicate error, warning, success, informative or progress messages
 - allow users to dismiss alerts that are not critical
 - place above interactive components or at the top of page sections
 - use constructive, no-blame language, avoid vague descriptions and always provide a solution
 - keep it short - content should be understood at a glance
-- use the appropriate status and tone of success, error or warning.
+- use feedback that accurately communicates the state or progress
+- apply the correct emphasis level to communicate the urgency or importance of the status tone.
 
 <DontHeading />
 
 - use to communicate messages which relate to the entire page - use [Page alert](/components/page-alert) instead
 - use to communicate messages which relate to the entire application - use [Global alert](/components/global-alert) instead
+- change tone colours or apply new colours - the default colour set has semantic meaning that matches the ARIA label and meaningful image
 - use to contain text in articles or other blocks of text content - use [Callout](/components/callout) instead
-- hide the message automatically. Let the user dismiss the message instead
+- close or hide the message automatically. Let the user dismiss the message instead
 - repeat the title in the description
 - use the description if the title is enough to convey the message
 - include a close button for error messages.
@@ -39,14 +40,22 @@ Section alerts appear inside of the main content area of the page and are used t
 
 Section alert can be used to communicate different types of messages. Choosing a tone for a Section alert allows the user to understand the importance and severity of the message at a glance.
 
-The three supported tones are `success`, `error` and `warning`.
+The five supported tones are:
+
+- [Success](#success)
+- [Error](#error)
+- [Warning](#warning)
+- [Information](#information)
+- [Progress](#progress)
 
 ### Success
 
 The success section alert (green) is used for notifying the user that a task is fully completed.
 
 ```jsx live
-<SectionAlert title="Your changes have been saved" tone="success" />
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successHigh" />
+</Stack>
 ```
 
 ### Error
@@ -54,7 +63,12 @@ The success section alert (green) is used for notifying the user that a task is 
 The error section alert (red) should be used when something destructive or critical has happened.
 
 ```jsx live
-<SectionAlert title="There was an error saving your changes" tone="error" />
+<Stack gap={1}>
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorHigh"
+	/>
+</Stack>
 ```
 
 ### Warning
@@ -62,12 +76,116 @@ The error section alert (red) should be used when something destructive or criti
 Use warning section alerts (orange) to tell the user something urgent. Only use an alert if the information will help the user avoid a problem.
 
 ```jsx live
-<SectionAlert title="A warning message for this section" tone="warning" />
+<Stack gap={1}>
+	<SectionAlert title="A warning message for this section" tone="warningHigh" />
+</Stack>
+```
+
+### Information
+
+Use info section alerts (blue) to highlight information which is important for users.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="These records need more information" tone="infoHigh" />
+</Stack>
+```
+
+### Progress
+
+Use in progress section alerts to highlight information which relates to status.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Record is in progress" tone="inProgressLow" />
+</Stack>
+```
+
+## Status and emphasis
+
+The tone prop combines both a status and emphasis, which sets the correct importance and severity of the Section alert by automatically applying appropriate colour, iconography and accessible descriptions.
+
+There are nine unique tones with five levels of emphasis. All tones are available in Low emphasis but others are only available in Medium and High.
+
+### High emphasis
+
+High emphasis Section alerts use filled icons and are available in four tone colours.
+
+Use high emphasis section alerts for:
+
+- important system messages
+- notifications that require user action
+- conveying urgent statuses in lists.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorHigh"
+	/>
+	<SectionAlert title="A warning message for this section" tone="warningHigh" />
+	<SectionAlert
+		title="An information message for this section"
+		tone="infoHigh"
+	/>
+</Stack>
+```
+
+### Medium emphasis
+
+Medium emphasis Section alerts use stroked icons and are available in four tone colours.
+
+Use medium emphasis section alerts to:
+
+- convey non-urgent alerts.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Your changes have been saved" tone="successMedium" />
+	<SectionAlert
+		title="There was an error saving your changes"
+		tone="errorMedium"
+	/>
+	<SectionAlert
+		title="A warning message for this section"
+		tone="warningMedium"
+	/>
+	<SectionAlert
+		title="An information message for this section"
+		tone="infoMedium"
+	/>
+</Stack>
+```
+
+### Low emphasis
+
+Low emphasis Section alerts use stroked icons and are available in the default, neutral colour only.
+
+Use low emphasis section alerts to:
+
+- convey non-urgent alerts
+- convey progress through a process.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert title="Success" tone="successLow" />
+	<SectionAlert title="Error" tone="errorLow" />
+	<SectionAlert title="Warning" tone="warningLow" />
+	<SectionAlert title="Info" tone="infoLow" />
+	<Divider />
+	<SectionAlert title="Cannot start" tone="cannotStartLow" />
+	<SectionAlert title="In progress" tone="inProgressLow" />
+	<SectionAlert title="Paused" tone="pausedLow" />
+	<SectionAlert title="Not started" tone="notStartedLow" />
+	<SectionAlert title="Unknown" tone="unknownLow" />
+</Stack>
 ```
 
 ## Dismissable
 
 Section alerts can be dismissed by a user if they have understood the message and no longer need to see it. Only use the close action when the alert does not impact the user’s available actions.
+
 Avoid dismissing error messages which block the user from completing a task. Instead, provide a way for the user to fix the error, then dismiss the alert once the error has been resolved.
 
 Use the `onClose` prop to make the alert dismissable.
@@ -76,40 +194,10 @@ When a user dismisses an alert, it’s important to manage their focus appropria
 
 ```jsx live
 <SectionAlert
-	title="Section alert title"
-	tone="success"
 	onClose={console.log}
+	title="Section alert title"
+	tone="successHigh"
 />
-```
-
-## Composition
-
-Section alerts are composed of an icon, title, description, action and close action.
-
-The icon and title are mandatory and achieve a compact alert, but we encourage the use of description when additional information might be helpful to the user.
-
-```jsx live
-<Stack gap={1}>
-	<SectionAlert
-		title="Section alert title"
-		tone="success"
-		onClose={console.log}
-	/>
-
-	<SectionAlert title="Section alert title" tone="success">
-		<Text as="p">Description</Text>
-	</SectionAlert>
-
-	<SectionAlert title="Section alert title" tone="warning">
-		<Stack gap={0.5} alignItems="flex-start">
-			<Text as="p">Description</Text>
-			<ButtonGroup>
-				<Button variant="text">Action 1</Button>
-				<Button variant="text">Action 2</Button>
-			</ButtonGroup>
-		</Stack>
-	</SectionAlert>
-</Stack>
 ```
 
 ## Focusing the alert
@@ -124,7 +212,7 @@ In the event you need to focus the alert, you can do so in one of three ways:
 
 ### Automatically focus on mount
 
-Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted it will be focused. Here we use the `focusOnMount` boolean prop to automatically handle the focusing.
+Press the “Toggle alert” button below to mount/unmount the alert. The alert is focused each time it is mounted. The `focusOnMount` boolean prop automatically handles the focus management.
 
 ```jsx live
 () => {
@@ -140,7 +228,11 @@ Press the "Toggle alert" button below to mount/unmount the alert. Notice that ea
 			</Button>
 
 			{showAlert && (
-				<SectionAlert focusOnMount title="Something went wrong" tone="error">
+				<SectionAlert
+					focusOnMount
+					title="Something went wrong"
+					tone="errorHigh"
+				>
 					<Text as="p">There was an error submitting the application.</Text>
 				</SectionAlert>
 			)}
@@ -151,9 +243,9 @@ Press the "Toggle alert" button below to mount/unmount the alert. Notice that ea
 
 ### Automatically focus on update
 
-Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted and subsequently updated it will be focused. Here we use the `focusOnUpdate` prop to automatically handle the focusing both on mount, and on updates to the alert's content.
+Press the “Toggle alert” button below to mount/unmount the alert. The alert is focused each time it is mounted and its content is subsequently updated. The `focusOnUpdate` prop automatically handles the focus management.
 
-Once the alert is displayed, try updating the content by pressing the "Update alert content" button. This will focus the alert.
+Once the alert is displayed, update the content by pressing the “Update alert content” button. Focus will be automatically moved to the alert.
 
 ```jsx live
 () => {
@@ -188,7 +280,7 @@ Once the alert is displayed, try updating the content by pressing the "Update al
 				<SectionAlert
 					focusOnUpdate={errors}
 					title="Something went wrong"
-					tone="error"
+					tone="errorHigh"
 				>
 					<UnorderedList>
 						{errors.map((text) => (
@@ -206,7 +298,7 @@ Once the alert is displayed, try updating the content by pressing the "Update al
 
 ### Manually set focus
 
-Press the "Focus the alert" button below to set focus on the alert. To achieve this, we set the `tabIndex` to `-1`. This will allow programmatic focusing and will render a focus ring to aid accessibility.
+Press the “Focus the alert” button below to manually set focus on the alert. To achieve this, we must set `tabIndex` to `-1` to allow programmatic focusing.
 
 ```jsx live
 () => {
@@ -222,11 +314,29 @@ Press the "Focus the alert" button below to set focus on the alert. To achieve t
 				ref={alertRef}
 				tabIndex={-1}
 				title="Submission successful"
-				tone="success"
+				tone="successHigh"
 			>
 				<Text as="p">Your application has been received.</Text>
 			</SectionAlert>
 		</Stack>
 	);
 };
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Fragment>
+	<Box padding={1.5}>
+		<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	</Box>
+
+	<Box background="body" padding={1.5} palette="dark">
+		<SectionAlert title="Your changes have been saved" tone="successHigh" />
+	</Box>
+</Fragment>
 ```

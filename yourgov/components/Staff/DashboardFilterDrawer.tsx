@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { FormStack } from '@ag.ds-next/react/src/form-stack';
-import { Drawer } from '@ag.ds-next/react/src/drawer';
-import { Button, ButtonGroup } from '@ag.ds-next/react/src/button';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { Drawer } from '@ag.ds-next/react/drawer';
+import { Button, ButtonGroup } from '@ag.ds-next/react/button';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
 import {

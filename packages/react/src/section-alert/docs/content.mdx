@@ -38,3 +38,33 @@ Refer to the glossary for more information.
 ## Voice and tone
 
 Go to the [TFTM Voice and tone guide](/content/voice-and-tone) for guidance.
+
+## Composition
+
+Section alerts are composed of an icon, title, description, action and close action.
+
+The icon and title are mandatory and achieve a compact alert, but we encourage the use of description when additional information might be helpful to the user.
+
+```jsx live
+<Stack gap={1}>
+	<SectionAlert
+		onClose={console.log}
+		title="Section alert title"
+		tone="successHigh"
+	/>
+
+	<SectionAlert title="Section alert title" tone="successHigh">
+		<Text as="p">Description</Text>
+	</SectionAlert>
+
+	<SectionAlert title="Section alert title" tone="warningHigh">
+		<Stack gap={0.5} alignItems="flex-start">
+			<Text as="p">Description</Text>
+			<ButtonGroup>
+				<Button variant="text">Action 1</Button>
+				<Button variant="text">Action 2</Button>
+			</ButtonGroup>
+		</Stack>
+	</SectionAlert>
+</Stack>
+```

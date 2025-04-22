@@ -1,0 +1,96 @@
+---
+title: Divider with text
+description: A horizontal rule used to visually separate content with a label.
+group: Content
+storybookPath: /story/Content-DividerWithText--basic
+figmaGalleryNodeId: 18634%3A85108
+relatedComponents: ['divider']
+---
+
+```jsx live
+<DividerWithText>
+	<Text>Label</Text>
+</DividerWithText>
+```
+
+Common use cases include dividing sections of a form, marking a logical break in content, or indicating options such as "or" between choices.
+
+Use the [Divider](/components/divider) component if you want to separate content without a text label.
+
+<DoHeading />
+
+- use to create visual space and separation between blocks of content like form field sets in the main content area
+- divide and logically group content sections to enhance clarity and organisation
+- use left alignment when the label needs to align with form fields or buttons for consistency in layout
+- ensure the label text is succinct
+- use the correct semantics on the text element.
+
+<DontHeading />
+
+- use anything other than text as a label
+- include a long label.
+
+## Example
+
+```jsx live
+<Stack gap={3}>
+	<FormStack>
+		<TextInput label="Email address" maxWidth="xl" required type="email" />
+		<PasswordInput label="Password" maxWidth="xl" required />
+		<ButtonGroup>
+			<Button type="submit">Sign in</Button>
+		</ButtonGroup>
+	</FormStack>
+	<DividerWithText textAlign="left">Or</DividerWithText>
+	<ButtonGroup>
+		<ButtonLink href="#" variant="secondary">
+			Create an account
+		</ButtonLink>
+	</ButtonGroup>
+</Stack>
+```
+
+## Label alignment
+
+In the default state, the divider line spans the full width of the container, with the label centered in the middle.
+
+When the label is left-aligned, it aligns with form inputs, buttons, or any other elements that follow the same alignment.
+
+```jsx live
+<Stack gap={2}>
+	<DividerWithText>
+		<Text>Or</Text>
+	</DividerWithText>
+	<DividerWithText textAlign="left">
+		<Text>Or</Text>
+	</DividerWithText>
+</Stack>
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Box>
+	<Stack gap={1} padding={1}>
+		<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>
+	</Stack>
+
+	<Stack background="shade" dark gap={1} padding={1}>
+		<DividerWithText>
+			<Text>Divider label</Text>
+		</DividerWithText>
+		<DividerWithText textAlign="left">
+			<Text>Divider label</Text>
+		</DividerWithText>
+	</Stack>
+</Box>
+```

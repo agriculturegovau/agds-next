@@ -1,15 +1,17 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
-import { visuallyHiddenStyles } from '../a11y';
 import { packs } from '../core';
 
 export type ControlInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
-	function CheckboxInput(props, ref) {
+	function CheckboxInput({ height, width, ...props }, ref) {
 		return (
 			<input
 				css={{
-					...visuallyHiddenStyles,
+					height,
+					margin: 0,
+					opacity: 0,
+					width,
 					// When this component is focused, outline the `CheckboxIndicator`
 					'&:focus ~ span:first-of-type': packs.outline,
 					// When this component is checked or indeterminate, show the indicator's active state
