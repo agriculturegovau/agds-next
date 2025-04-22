@@ -93,7 +93,7 @@ Use info section alerts (blue) to highlight information which is important for u
 
 ### Progress
 
-Use in progress section alerts to highlight information which is relates to status.
+Use in progress section alerts to highlight information which relates to status.
 
 ```jsx live
 <Stack gap={1}>
@@ -115,7 +115,7 @@ Use high emphasis section alerts for:
 
 - important system messages
 - notifications that require user action
-- conveying urgent status in lists.
+- conveying urgent statuses in lists.
 
 ```jsx live
 <Stack gap={1}>
@@ -198,6 +198,129 @@ When a user dismisses an alert, it’s important to manage their focus appropria
 	title="Section alert title"
 	tone="successHigh"
 />
+```
+
+## Focusing the alert
+
+_NOTE: When focusing an alert after closing a `Drawer`, use the [focusElementOnClose prop in the Drawer component](/components/drawer#focus-custom-element-on-close)._
+
+In the event you need to focus the alert, you can do so in one of three ways:
+
+1. [Automatically focus on mount](#automatically-focus-on-mount).
+2. [Automatically focus on update](#automatically-focus-on-update).
+3. [Manually set focus](#manually-set-focus).
+
+### Automatically focus on mount
+
+Press the "Toggle alert" button below to mount/unmount the alert. Notice that each time the alert is mounted it will be focused. Here we use the `focusOnMount` boolean prop to automatically handle the focusing.
+
+```jsx live
+() => {
+	const [showAlert, setShowAlert] = React.useState(false);
+
+	return (
+		<Stack gap={2}>
+			<Button
+				alignSelf="start"
+				onClick={() => setShowAlert((prevShowAlert) => !prevShowAlert)}
+			>
+				Toggle alert
+			</Button>
+
+			{showAlert && (
+				<SectionAlert
+					focusOnMount
+					title="Something went wrong"
+					tone="errorHigh"
+				>
+					<Text as="p">There was an error submitting the application.</Text>
+				</SectionAlert>
+			)}
+		</Stack>
+	);
+};
+```
+
+### Automatically focus on update
+
+Press the “Toggle alert” button below to mount/unmount the alert. The alert is focused each time it is mounted and its content is subsequently updated. The `focusOnUpdate` prop automatically handles the focus management.
+
+Once the alert is displayed, update the content by pressing the “Update alert content” button. Focus will be automatically moved to the alert.
+
+```jsx live
+() => {
+	const availableErrors = [
+		'Full name must not be empty.',
+		'Email must not be empty.',
+	];
+
+	const [errors, setErrors] = React.useState([]);
+
+	return (
+		<Stack gap={2}>
+			<Button
+				alignSelf="start"
+				onClick={() =>
+					// Here we mock the updating of errors in our list
+					setErrors((prevErrors) =>
+						availableErrors
+							.toReversed()
+							.slice(
+								availableErrors.length - prevErrors.length - 1,
+								availableErrors.length - prevErrors.length + 1
+							)
+							.reverse()
+					)
+				}
+			>
+				Update alert content
+			</Button>
+
+			{!!errors.length && (
+				<SectionAlert
+					focusOnUpdate={errors}
+					title="Something went wrong"
+					tone="errorHigh"
+				>
+					<UnorderedList>
+						{errors.map((text) => (
+							<ListItem key={text}>
+								<Text as="p">{text}</Text>
+							</ListItem>
+						))}
+					</UnorderedList>
+				</SectionAlert>
+			)}
+		</Stack>
+	);
+};
+```
+
+### Manually set focus
+
+Press the “Focus the alert” button below to manually set focus on the alert. To achieve this, we must set `tabIndex` to `-1` to allow programmatic focusing.
+
+```jsx live
+() => {
+	const alertRef = React.useRef(null);
+
+	return (
+		<Stack gap={2}>
+			<Button alignSelf="start" onClick={() => alertRef.current.focus()}>
+				Focus the alert
+			</Button>
+
+			<SectionAlert
+				ref={alertRef}
+				tabIndex={-1}
+				title="Submission successful"
+				tone="successHigh"
+			>
+				<Text as="p">Your application has been received.</Text>
+			</SectionAlert>
+		</Stack>
+	);
+};
 ```
 
 ## Colour
