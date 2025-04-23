@@ -14,12 +14,9 @@ const buttonNextPrevious = {
 	color: boxPalette.foregroundAction,
 	cursor: 'pointer',
 	display: 'flex',
-	font: 'inherit',
 	height: '2rem',
 	justifyContent: 'center',
-	margin: 0,
 	padding: 0,
-	top: 0,
 	width: '2rem',
 	'&:hover': { color: boxPalette.foregroundText },
 	...focusStyles,
@@ -43,14 +40,8 @@ export const reactDayPickerStyles = {
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
-	'.rdp-button_previous': {
-		...buttonNextPrevious,
-		left: 0,
-	},
-	'.rdp-button_next': {
-		...buttonNextPrevious,
-		right: 0,
-	},
+	'.rdp-button_previous': buttonNextPrevious,
+	'.rdp-button_next': buttonNextPrevious,
 	// Days of week
 	'.rdp-weekday': {
 		color: boxPalette.foregroundMuted,

@@ -288,38 +288,29 @@ export const DateRangePickerNext = ({
 	);
 
 	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
+	// The focus is also set manually to allow us to focus on the end-date when the 'change end date' button is pressed
 	useEffect(
 		() => {
 			// Wrap in timeout 0 to focus after all components renders
 			setTimeout(() => {
-				// Attempts focus on target and returns true if successful
-				function focusDay(queryTarget: string) {
-					const day = document.querySelector(queryTarget);
-					if (day && (day as HTMLElement).focus) {
-						(day as HTMLElement).focus();
-						return true;
-					}
-					return false;
+				if (!isCalendarOpen) return;
+
+				const { from, to } = valueAsDateOrUndefined;
+
+				// Focus on the start or end day based on the input mode and if both range days have been selected
+				if (from && to && inputMode === 'from') {
+					if (focusDay('td[data-start-day="true"]')) return;
+				}
+				if (inputMode === 'to' && from && to) {
+					if (focusDay('td[data-end-day="true"]')) return;
 				}
 
-				if (isCalendarOpen) {
-					const { from, to } = valueAsDateOrUndefined;
+				// Target focus on any currently selected elements (e.g. if to is after)
+				// This covers if dates are mismatched (from is after to) or if only range is selected
+				if (focusDay('td[data-selected="true"]')) return;
 
-					// Focus on the start or end day based on the input mode and if both range days have been selected
-					if (from && to && inputMode === 'from') {
-						if (focusDay('td[data-start-day="true"]')) return;
-					}
-					if (inputMode === 'to' && from && to) {
-						if (focusDay('td[data-end-day="true"]')) return;
-					}
-
-					// Target focus on any currently selected elements (e.g. if to is after)
-					// This covers if dates are mismatched (from is after to) or if only range is selected
-					if (focusDay('td[data-selected="true"]')) return;
-
-					// Default return focus today
-					focusDay('td[data-today="true"]');
-				}
+				// Default return focus today
+				focusDay('td[data-today="true"]');
 			}, 0);
 		},
 		// Only run this event when the calendar opens
@@ -351,10 +342,7 @@ export const DateRangePickerNext = ({
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
-	const numberOfMonths = useMemo(
-		() => (windowWidth > tokens.breakpoint.md ? 2 : 1), // Added padding to prevent drifting popover and focus
-		[windowWidth]
-	);
+	const numberOfMonths = windowWidth > tokens.breakpoint.md ? 2 : 1;
 
 	const invalid = fromInvalid || toInvalid;
 
@@ -400,7 +388,7 @@ export const DateRangePickerNext = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: false, // in react-day-picker v9 autoFocus clashes with popover, manually set focus in above
+			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			inputMode,
 			numberOfMonths,
 			onSelect,
@@ -456,14 +444,13 @@ export const DateRangePickerNext = ({
 		// Check if the number of table months have decreased
 		if (shownMonths > numberOfMonths) {
 			// Don't change focus if user is on a table cell
-			const currentFocus = document.activeElement;
-			if (currentFocus && currentFocus.nodeName === 'TD') return;
+			if (document.activeElement?.nodeName === 'TD') return;
 
 			// Get all table dates and focus on the last date
 			const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
 			const lastDate = tableDates[tableDates.length - 1];
-			if (lastDate && (lastDate as HTMLElement).focus) {
-				(lastDate as HTMLElement).focus();
+			if (lastDate instanceof HTMLElement && lastDate.focus) {
+				lastDate.focus();
 			}
 		}
 	}, [isCalendarOpen, numberOfMonths, shownMonths]);
@@ -571,4 +558,15 @@ export function useDateRangePickerNextIds(idProp?: string) {
 	const fromId = `date-range-picker-${autoId}-from`;
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
+}
+
+// Attempts focus on target and returns true if successful
+function focusDay(queryTarget: string) {
+	const day = document.querySelector(queryTarget);
+
+	if (day instanceof HTMLElement && day.focus) {
+		day.focus();
+		return true;
+	}
+	return false;
 }
