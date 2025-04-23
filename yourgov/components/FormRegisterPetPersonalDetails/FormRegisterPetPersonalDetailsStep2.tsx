@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { ConditionalRevealContainer } from '@ag.ds-next/react/conditional-reveal-container';
+import { ConditionalFieldContainer } from '@ag.ds-next/react/conditional-field-container';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -130,7 +130,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							Email
 						</Radio>
 					</ControlGroup>
-					<ConditionalRevealContainer visible={showConditionalField}>
+					<ConditionalFieldContainer visible={showConditionalField}>
 						<TextInput
 							{...register('mobileNumber')}
 							autoComplete="tel"
@@ -141,7 +141,7 @@ export const FormRegisterPetPersonalDetailsStep2 = () => {
 							required
 							type="tel"
 						/>
-					</ConditionalRevealContainer>
+					</ConditionalFieldContainer>
 				</FormStack>
 				<FormRegisterPetPersonalDetailsActions />
 			</Stack>

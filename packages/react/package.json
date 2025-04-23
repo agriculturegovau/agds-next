@@ -335,9 +335,9 @@
 			"module": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.esm.js",
 			"default": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.cjs.js"
 		},
-		"./conditional-reveal-container": {
-			"module": "./conditional-reveal-container/dist/ag.ds-next-react-conditional-reveal-container.esm.js",
-			"default": "./conditional-reveal-container/dist/ag.ds-next-react-conditional-reveal-container.cjs.js"
+		"./conditional-field-container": {
+			"module": "./conditional-field-container/dist/ag.ds-next-react-conditional-field-container.esm.js",
+			"default": "./conditional-field-container/dist/ag.ds-next-react-conditional-field-container.cjs.js"
 		},
 		"./package.json": "./package.json"
 	},

@@ -2,15 +2,15 @@ import { PropsWithChildren } from 'react';
 import { Divider } from '../divider';
 import { FormStack } from '../form-stack';
 
-export type ConditionalRevealContainerProps = PropsWithChildren<{
+export type ConditionalFieldContainerProps = PropsWithChildren<{
 	/** Controls the visibility and render state of the children */
 	visible?: boolean;
 }>;
 
-export function ConditionalRevealContainer({
+export function ConditionalFieldContainer({
 	children,
 	visible,
-}: ConditionalRevealContainerProps) {
+}: ConditionalFieldContainerProps) {
 	if (!visible) {
 		return null;
 	}

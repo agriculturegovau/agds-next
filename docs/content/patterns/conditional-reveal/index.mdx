@@ -1,7 +1,7 @@
 ---
 title: Conditionally revealed form content
 description: Revealing additional form questions and help content after a user selects an option can reduce the amount of content a user must read when completing complex forms.
-relatedComponents: ['conditional-reveal-container']
+relatedComponents: ['conditional-field-container']
 ---
 
 <DoHeading />
@@ -46,15 +46,15 @@ If there a large number of items, use [Select](/components/select) instead.
 				</Radio>
 			</ControlGroup>
 
-			<ConditionalRevealContainer visible={isChecked('email')}>
+			<ConditionalFieldContainer visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			</ConditionalRevealContainer>
-			<ConditionalRevealContainer visible={isChecked('phone')}>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('phone')}>
 				<TextInput label="Phone number" inputMode="numeric" required />
-			</ConditionalRevealContainer>
-			<ConditionalRevealContainer visible={isChecked('textMessage')}>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
 				<TextInput label="Mobile phone number" inputMode="numeric" required />
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 		</FormStack>
 	);
 };
@@ -99,7 +99,7 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 				</Checkbox>
 			</ControlGroup>
 
-			<ConditionalRevealContainer visible={value.length}>
+			<ConditionalFieldContainer visible={value.length}>
 				{isChecked('email') && (
 					<TextInput type="email" label="Email address" required />
 				)}
@@ -109,7 +109,7 @@ When a user selects a particular [Checkbox](/components/checkbox), you can revea
 				{isChecked('textMessage') && (
 					<TextInput inputMode="numeric" label="Mobile phone number" required />
 				)}
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 		</FormStack>
 	);
 };
@@ -142,7 +142,7 @@ If there a small number of items, use [Radio](/components/radio) instead.
 				value={value}
 			/>
 
-			<ConditionalRevealContainer visible={isChecked('post')}>
+			<ConditionalFieldContainer visible={isChecked('post')}>
 				<H2>Address</H2>
 				<TextInput
 					inputMode="text"
@@ -179,15 +179,15 @@ If there a small number of items, use [Radio](/components/radio) instead.
 					required
 					maxWidth="sm"
 				/>
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 
-			<ConditionalRevealContainer visible={isChecked('textMessage')}>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
 				<TextInput inputMode="text" label="Mobile phone number" required />
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 
-			<ConditionalRevealContainer visible={isChecked('email')}>
+			<ConditionalFieldContainer visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 		</FormStack>
 	);
 };
@@ -220,7 +220,7 @@ When a conditionally revealed question is invalid, include an error message on t
 				</Radio>
 			</ControlGroup>
 
-			<ConditionalRevealContainer visible={isChecked('email')}>
+			<ConditionalFieldContainer visible={isChecked('email')}>
 				<TextInput
 					type="email"
 					label="Email address"
@@ -228,8 +228,8 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a email address"
 				/>
-			</ConditionalRevealContainer>
-			<ConditionalRevealContainer visible={isChecked('phone')}>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('phone')}>
 				<TextInput
 					label="Phone number"
 					inputMode="numeric"
@@ -237,8 +237,8 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a phone number"
 				/>
-			</ConditionalRevealContainer>
-			<ConditionalRevealContainer visible={isChecked('textMessage')}>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
 				<TextInput
 					label="Mobile phone number"
 					inputMode="numeric"
@@ -246,7 +246,7 @@ When a conditionally revealed question is invalid, include an error message on t
 					invalid
 					message="Enter a mobile phone number"
 				/>
-			</ConditionalRevealContainer>
+			</ConditionalFieldContainer>
 		</FormStack>
 	);
 };

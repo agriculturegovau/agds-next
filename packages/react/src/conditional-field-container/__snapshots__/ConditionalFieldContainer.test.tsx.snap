@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConditionalRevealContainer renders correctly 1`] = `
+exports[`ConditionalFieldContainer renders correctly 1`] = `
 <div>
   <button
     type="button"

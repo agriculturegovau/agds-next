@@ -10,7 +10,7 @@ import { Card, CardInner } from '../../../packages/react/src/card';
 import { Checkbox } from '../../../packages/react/src/checkbox';
 import { Columns, Column } from '../../../packages/react/src/columns';
 import { Combobox } from '../../../packages/react/src/combobox';
-import { ConditionalRevealContainer } from '../../../packages/react/src/conditional-reveal-container';
+import { ConditionalFieldContainer } from '../../../packages/react/src/conditional-field-container';
 import { ControlGroup } from '../../../packages/react/src/control-group';
 import { DatePicker } from '../../../packages/react/src/date-picker';
 import { DatePickerNext } from '../../../packages/react/src/date-picker-next';
@@ -486,13 +486,13 @@ function KitchenSink({ background }: KitchenSinkProps) {
 									label="Select country"
 									options={COUNTRY_OPTIONS}
 								/>
-								<ConditionalRevealContainer visible={true}>
+								<ConditionalFieldContainer visible={true}>
 									<TextInput
 										inputMode="numeric"
 										label="Phone number"
 										required
 									/>
-								</ConditionalRevealContainer>
+								</ConditionalFieldContainer>
 								<Switch
 									checked
 									label="Show establishments"
