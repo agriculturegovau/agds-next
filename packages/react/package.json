@@ -323,10 +323,6 @@
 			"module": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.esm.js",
 			"default": "./feature-link-list/dist/ag.ds-next-react-feature-link-list.cjs.js"
 		},
-		"./conditional-reveal": {
-			"module": "./conditional-reveal/dist/ag.ds-next-react-conditional-reveal.esm.js",
-			"default": "./conditional-reveal/dist/ag.ds-next-react-conditional-reveal.cjs.js"
-		},
 		"./notification-badge": {
 			"module": "./notification-badge/dist/ag.ds-next-react-notification-badge.esm.js",
 			"default": "./notification-badge/dist/ag.ds-next-react-notification-badge.cjs.js"
@@ -338,6 +334,10 @@
 		"./date-range-picker-next": {
 			"module": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.esm.js",
 			"default": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.cjs.js"
+		},
+		"./conditional-reveal-container": {
+			"module": "./conditional-reveal-container/dist/ag.ds-next-react-conditional-reveal-container.esm.js",
+			"default": "./conditional-reveal-container/dist/ag.ds-next-react-conditional-reveal-container.cjs.js"
 		},
 		"./package.json": "./package.json"
 	},

@@ -1,8 +1,8 @@
 ---
-title: Conditional reveal
+title: Conditional reveal container
 description: A standardised pattern for conditionally hiding and revealing the amount of content a user views in a form.
 group: Forms
-storybookPath: /story/Forms-ConditionalReveal--basic
+storybookPath: /story/Forms-ConditionalRevealContainer--basic
 unreleased: true
 relatedPatterns: ['conditional-reveal']
 ---
@@ -34,15 +34,15 @@ The conditional reveal component wraps the children elements in a [FormStack](/c
 				</Radio>
 			</ControlGroup>
 
-			<ConditionalReveal visible={isChecked('email')}>
+			<ConditionalRevealContainer visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			</ConditionalReveal>
-			<ConditionalReveal visible={isChecked('phone')}>
+			</ConditionalRevealContainer>
+			<ConditionalRevealContainer visible={isChecked('phone')}>
 				<TextInput label="Phone number" inputMode="numeric" required />
-			</ConditionalReveal>
-			<ConditionalReveal visible={isChecked('textMessage')}>
+			</ConditionalRevealContainer>
+			<ConditionalRevealContainer visible={isChecked('textMessage')}>
 				<TextInput label="Mobile phone number" inputMode="numeric" required />
-			</ConditionalReveal>
+			</ConditionalRevealContainer>
 		</FormStack>
 	);
 };
@@ -82,13 +82,13 @@ Where one input value can be selected (eg. radio or select inputs), you can use 
 				value={value}
 			/>
 
-			<ConditionalReveal visible={isChecked('textMessage')}>
+			<ConditionalRevealContainer visible={isChecked('textMessage')}>
 				<TextInput inputMode="text" label="Mobile phone number" required />
-			</ConditionalReveal>
+			</ConditionalRevealContainer>
 
-			<ConditionalReveal visible={isChecked('email')}>
+			<ConditionalRevealContainer visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			</ConditionalReveal>
+			</ConditionalRevealContainer>
 		</FormStack>
 	);
 };
@@ -133,7 +133,7 @@ If the same input can create multiple conditional revealed fields or content (su
 				</Checkbox>
 			</ControlGroup>
 
-			<ConditionalReveal visible={Boolean(value.length)}>
+			<ConditionalRevealContainer visible={Boolean(value.length)}>
 				{isChecked('email') && (
 					<TextInput label="Email address" required type="email" />
 				)}
@@ -143,7 +143,7 @@ If the same input can create multiple conditional revealed fields or content (su
 				{isChecked('textMessage') && (
 					<TextInput inputMode="numeric" label="Mobile phone number" required />
 				)}
-			</ConditionalReveal>
+			</ConditionalRevealContainer>
 		</FormStack>
 	);
 };
@@ -176,7 +176,7 @@ If you require more than one field and/or content, place all relevant elements a
 				</Radio>
 			</ControlGroup>
 
-			<ConditionalReveal visible={isChecked('post')}>
+			<ConditionalRevealContainer visible={isChecked('post')}>
 				<H3>Address</H3>
 				<TextInput
 					inputMode="text"
@@ -213,13 +213,13 @@ If you require more than one field and/or content, place all relevant elements a
 					maxWidth="sm"
 					required
 				/>
-			</ConditionalReveal>
-			<ConditionalReveal visible={isChecked('email')}>
+			</ConditionalRevealContainer>
+			<ConditionalRevealContainer visible={isChecked('email')}>
 				<TextInput type="email" label="Email address" required />
-			</ConditionalReveal>
-			<ConditionalReveal visible={isChecked('textMessage')}>
+			</ConditionalRevealContainer>
+			<ConditionalRevealContainer visible={isChecked('textMessage')}>
 				<TextInput inputMode="text" label="Mobile phone number" required />
-			</ConditionalReveal>
+			</ConditionalRevealContainer>
 		</FormStack>
 	);
 };

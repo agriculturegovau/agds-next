@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
-import { ConditionalReveal } from '@ag.ds-next/react/conditional-reveal';
+import { ConditionalRevealContainer } from '@ag.ds-next/react/conditional-reveal-container';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { useScrollToField } from '@ag.ds-next/react/field';
 import { FormStack } from '@ag.ds-next/react/form-stack';
@@ -141,7 +141,7 @@ export const FormExampleMultiStep3 = () => {
 						</Checkbox>
 					</ControlGroup>
 
-					<ConditionalReveal visible={showConditionalField}>
+					<ConditionalRevealContainer visible={showConditionalField}>
 						<TextInput
 							{...register('conditionalField')}
 							hint="Hint text"
@@ -151,7 +151,7 @@ export const FormExampleMultiStep3 = () => {
 							message={errors.conditionalField?.message}
 							required
 						/>
-					</ConditionalReveal>
+					</ConditionalRevealContainer>
 				</FormStack>
 				<FormExampleMultiStepActions />
 			</Stack>

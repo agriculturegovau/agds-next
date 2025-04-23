@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-conditional-reveal-container.cjs.js",
+	"module": "dist/ag.ds-next-react-conditional-reveal-container.esm.js"
+}

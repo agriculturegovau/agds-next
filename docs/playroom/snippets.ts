@@ -1398,16 +1398,16 @@ const snippets: Array<Snippet> = [
 		code: `<ComboboxMulti label="Select option" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 	{
-		group: 'ConditionalReveal',
+		group: 'ConditionalRevealContainer',
 		name: 'Basic',
-		code: `<ConditionalReveal visible={true}>
+		code: `<ConditionalRevealContainer visible={true}>
 				<TextInput inputMode="numeric" label="Phone number" required />
-			</ConditionalReveal>`,
+			</ConditionalRevealContainer>`,
 	},
 	{
-		group: 'ConditionalReveal',
+		group: 'ConditionalRevealContainer',
 		name: 'Multiple fields',
-		code: `<ConditionalReveal visible={true}>
+		code: `<ConditionalRevealContainer visible={true}>
 				<H3>Address</H3>
 				<TextInput
 					inputMode="text"
@@ -1444,7 +1444,7 @@ const snippets: Array<Snippet> = [
 					required
 					maxWidth="sm"
 				/>
-			</ConditionalReveal>`,
+			</ConditionalRevealContainer>`,
 	},
 	{
 		group: 'Details',

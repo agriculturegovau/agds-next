@@ -3,7 +3,7 @@
 '@ag.ds-next/docs': minor
 ---
 
-conditional-reveal: Initial release of component.
+conditional-reveal-container: Initial release of component.
 
 docs: Update conditional reveal pattern page and example code. Add `relatedPatterns` link section to patterns page. 
 

@@ -73,7 +73,7 @@ export {
 	BreadcrumbsDivider,
 	BreadcrumbsItem,
 } from '@ag.ds-next/react/breadcrumbs';
-export { ConditionalReveal } from '@ag.ds-next/react/conditional-reveal';
+export { ConditionalRevealContainer } from '@ag.ds-next/react/conditional-reveal-container';
 export { MainNav } from '@ag.ds-next/react/main-nav';
 export { SubNav } from '@ag.ds-next/react/sub-nav';
 export { SideNav } from '@ag.ds-next/react/side-nav';
