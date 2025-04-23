@@ -1,10 +1,14 @@
-import { useLinkComponent, LinkProps } from '../core';
-import { linkStyles } from '../box';
+import { useContext } from 'react';
+import { focusStyles, linkStyles } from '../box';
+import { useLinkComponent, type LinkProps } from '../core';
+import { CardContext } from './Card';
 
 export type CardLinkProps = LinkProps;
 
 export const CardLink = (props: CardLinkProps) => {
 	const Link = useLinkComponent();
+	const context = useContext(CardContext);
+
 	return (
 		<Link
 			css={[
@@ -12,16 +16,19 @@ export const CardLink = (props: CardLinkProps) => {
 				{
 					display: 'flex',
 					justifyContent: 'space-between',
-					// NOTE: no focus styles here because the parent Card does it.
-					'&:focus, &:focus-visible': { outline: 'none' },
-					'&::after': {
-						content: '""',
-						position: 'absolute',
-						top: 0,
-						right: 0,
-						bottom: 0,
-						left: 0,
-					},
+					...(context?.clickable
+						? {
+								'&:focus, &:focus-visible': { outline: 'none' },
+								'&::after': {
+									bottom: 0,
+									content: '""',
+									left: 0,
+									position: 'absolute',
+									right: 0,
+									top: 0,
+								},
+						  }
+						: focusStyles),
 				},
 			]}
 			{...props}

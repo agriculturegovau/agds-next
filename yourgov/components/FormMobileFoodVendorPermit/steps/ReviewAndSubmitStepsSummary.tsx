@@ -82,7 +82,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Owner details has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepOwnerDetails.success ? (
@@ -131,7 +131,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Business details has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepBusinessDetails.success ? (
@@ -186,7 +186,7 @@ export function ReviewAndSubmitStepsSummary() {
 								setHideEditSectionAlert(true);
 							}}
 							title="Business address has been updated"
-							tone="success"
+							tone="successHigh"
 						/>
 					)}
 				{validation.stepBusinessAddress.success ? (
@@ -239,7 +239,7 @@ export function ReviewAndSubmitStepsSummary() {
 								setHideEditSectionAlert(true);
 							}}
 							title="Vehicle registration has been updated"
-							tone="success"
+							tone="successHigh"
 						/>
 					)}
 				{validation.stepVehicleRegistration.success ? (
@@ -279,7 +279,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Trading time has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepTradingTime.success ? (
@@ -317,7 +317,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Food served has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepFoodServed.success ? (
@@ -353,7 +353,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Employees has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepEmployees.success ? (
@@ -404,7 +404,7 @@ export function ReviewAndSubmitStepsSummary() {
 							setHideEditSectionAlert(true);
 						}}
 						title="Uploaded documents has been updated"
-						tone="success"
+						tone="successHigh"
 					/>
 				)}
 				{validation.stepUploadDocuments.success ? (

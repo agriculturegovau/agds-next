@@ -42,7 +42,8 @@ describe('createExampleFile', () => {
 			})
 		);
 	});
-	test('custom file data', () => {
+
+	test('custom file data with boolean `download`', () => {
 		expect(
 			JSON.stringify(
 				createExampleFile({
@@ -61,6 +62,31 @@ describe('createExampleFile', () => {
 				size: 100,
 				type: 'image/png',
 				download: true,
+				href: '/',
+				status: 'success',
+			})
+		);
+	});
+
+	test('custom file data with string `download`', () => {
+		expect(
+			JSON.stringify(
+				createExampleFile({
+					download: 'renamed.png',
+					href: '/',
+					lastModified: 100,
+					name: 'example',
+					status: 'success',
+					type: 'image/png',
+				})
+			)
+		).toBe(
+			JSON.stringify({
+				lastModified: 100,
+				name: 'example',
+				size: 100,
+				type: 'image/png',
+				download: 'renamed.png',
 				href: '/',
 				status: 'success',
 			})

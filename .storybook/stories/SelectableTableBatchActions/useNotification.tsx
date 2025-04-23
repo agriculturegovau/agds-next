@@ -28,7 +28,7 @@ export function useNotification() {
 					ref={notification.ref}
 					tabIndex={-1}
 					title={notification.message}
-					tone="success"
+					tone="successHigh"
 				/>
 			);
 		}

@@ -1,5 +1,43 @@
 # @ag.ds-next/docs
 
+## 0.15.0
+
+### Minor Changes
+
+- 4af03eb39f6: file-upload: Update rejected files’ `SectionAlert` `tone` to `'errorHigh'`.
+
+  section-alert: Deprecate legacy tones and warn appropriately.
+
+  docs: Update all `SectionAlert` `tone`s to tones with emphasis.
+
+  yourgov: Update all `SectionAlert` `tone`s to tones with emphasis.
+
+- 3fa4ead5b02: divider: add `divider-with-text` to related components in documentation.
+
+  divider-with-text: Initial release of component.
+
+### Patch Changes
+
+- 7192cdc072e: github: Update build image for `deploy-preview` to use `ubuntu-latest`. `ubuntu-20.04` was deprecated on 15/04/2025. Changed to `latest` to match `build-and-deploy`.
+- e9809255314: build(deps): bump next from 14.2.21 to 14.2.25.
+- 8bdb9132fef: section-alert: Add progress tones `cannotStartLow`, `inProgressLow`, `notStartedLow`, `pausedLow` and `unknownLow`. Add `status-badge` to related components in docs.
+
+  status-badge: Add `section-alert` to related components in docs. Fix typo in docs.
+
+- Updated dependencies [7add171cc03]
+- Updated dependencies [5c8b1c654cf]
+- Updated dependencies [9c8773b20b2]
+- Updated dependencies [3f19866e785]
+- Updated dependencies [4af03eb39f6]
+- Updated dependencies [7836f3af38c]
+- Updated dependencies [f46a5a76ee2]
+- Updated dependencies [5aff78bb2b1]
+- Updated dependencies [3fa4ead5b02]
+- Updated dependencies [8bdb9132fef]
+- Updated dependencies [ac12f599dbe]
+- Updated dependencies [75682e65a41]
+  - @ag.ds-next/react@1.27.0
+
 ## 0.14.0
 
 ### Minor Changes
