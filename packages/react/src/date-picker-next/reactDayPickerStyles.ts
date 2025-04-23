@@ -1,5 +1,5 @@
 import { focusStyles, highContrastOutlineStyles } from '../box';
-import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
+import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
@@ -20,6 +20,27 @@ const buttonNextPrevious = {
 	width: '2rem',
 	'&:hover': { color: boxPalette.foregroundText },
 	...focusStyles,
+} as const;
+
+const dateBorderOnHover = {
+	backgroundColor: boxPalette.backgroundShade,
+	color: boxPalette.foregroundText,
+	fontWeight: 'bold',
+	textDecoration: 'underline',
+	zIndex: tokens.zIndex.elevated,
+	...highContrastOutlineStyles,
+	'&::before': {
+		backgroundColor: boxPalette.backgroundShade,
+		borderColor: boxPalette.selected,
+		borderRadius: '0.25rem',
+		borderStyle: 'solid',
+		borderWidth: tokens.borderWidth.lg,
+		content: '""',
+		inset: 0,
+		pointerEvents: 'none',
+		position: 'absolute',
+		zIndex: -1,
+	},
 } as const;
 
 export const reactDayPickerStyles = {
@@ -73,26 +94,8 @@ export const reactDayPickerStyles = {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
-		'&:not([disabled], :focus):hover': {
-			backgroundColor: boxPalette.backgroundShade,
-			color: boxPalette.foregroundText,
-			fontWeight: 'bold',
-			textDecoration: 'underline',
-			zIndex: tokens.zIndex.elevated,
-			...highContrastOutlineStyles,
-			'&::before': {
-				backgroundColor: boxPalette.backgroundShade,
-				borderColor: boxPalette.selected,
-				borderRadius: '0.25rem',
-				borderStyle: 'solid',
-				borderWidth: tokens.borderWidth.lg,
-				content: '""',
-				inset: 0,
-				pointerEvents: 'none',
-				position: 'absolute',
-				zIndex: -1,
-			},
-		},
+		'&:not([disabled]):hover': dateBorderOnHover,
+		'&:not([disabled]):hover:focus-visible': packs.outline,
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
 		},
@@ -159,7 +162,7 @@ export const reactDayPickerStyles = {
 	'.rdp-weeks': {
 		border: 0,
 	},
-	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled]), .rdp-selected:hover:not([disabled]), .rdp-selected:hover:not([disabled])':
+	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled])':
 		{
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,
@@ -172,6 +175,7 @@ export const reactDayPickerStyles = {
 				...highContrastOutlineStyles,
 			},
 		},
+	'.rdp-selected:hover:not([disabled])': dateBorderOnHover,
 } as const;
 
 // Start date only picked
