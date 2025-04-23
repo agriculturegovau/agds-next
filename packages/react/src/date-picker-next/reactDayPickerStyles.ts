@@ -19,7 +19,6 @@ const buttonNextPrevious = {
 	justifyContent: 'center',
 	margin: 0,
 	padding: 0,
-	position: 'absolute',
 	top: 0,
 	width: '2rem',
 	'&:hover': { color: boxPalette.foregroundText },

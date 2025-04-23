@@ -136,7 +136,7 @@ export const DateRangePicker = ({
 					),
 				])
 			),
-		[dateFormat, allowedDateFormatsProp]
+		[allowedDateFormatsProp, dateFormat]
 	);
 
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -201,7 +201,7 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
+		[closeCalendar, dateFormat, inputMode, onChange, valueAsDateOrUndefined]
 	);
 
 	// From input state
@@ -268,12 +268,12 @@ export const DateRangePicker = ({
 	useEffect(() => {
 		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
 		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
-	}, [value, dateFormat]);
+	}, [dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	useClickOutside(
 		[popover.popoverRef, fromTriggerRef, toTriggerRef],
@@ -294,7 +294,7 @@ export const DateRangePicker = ({
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -302,7 +302,7 @@ export const DateRangePicker = ({
 			minDate ? { before: minDate } : undefined,
 			maxDate ? { after: maxDate } : undefined,
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
-	}, [minDate, maxDate]);
+	}, [maxDate, minDate]);
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();

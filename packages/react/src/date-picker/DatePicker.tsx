@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { type PropsSingle } from 'react-day-picker';
 import { Popover, usePopover } from '../_popover';
-import { FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
+import { type FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { DateInput } from '../date-picker-next/DatePickerInput';
 import {
 	acceptedDateFormats,
@@ -138,7 +138,7 @@ export const DatePicker = ({
 			// Close the calendar and focus the calendar icon
 			closeCalendar();
 		},
-		[onChange, closeCalendar, dateFormat]
+		[closeCalendar, dateFormat, onChange]
 	);
 
 	const [inputValue, setInputValue] = useState(
@@ -175,7 +175,7 @@ export const DatePicker = ({
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
@@ -192,7 +192,7 @@ export const DatePicker = ({
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -200,7 +200,7 @@ export const DatePicker = ({
 			minDate ? { before: minDate } : undefined,
 			maxDate ? { after: maxDate } : undefined,
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
-	}, [minDate, maxDate]);
+	}, [maxDate, minDate]);
 
 	const valueAsDateOrUndefined =
 		typeof value === 'string' ? normaliseDateString(value) : value;

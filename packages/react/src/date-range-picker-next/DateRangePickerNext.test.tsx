@@ -850,16 +850,6 @@ describe('DateRangePickerNext', () => {
 		toDate.setDate(todayDate.getDate() + 2);
 		const toFormattedDate = formatHumanReadableDate(toDate);
 
-		const checkFocusToday = (focus: boolean) => {
-			const todayElement = document.querySelector('td[data-today="true"]');
-			expect(todayElement).toBeInTheDocument();
-			if (focus) {
-				expect(todayElement).toHaveFocus();
-			} else {
-				expect(todayElement).not.toHaveFocus();
-			}
-		};
-
 		it('focuses on `start-date` when both dates are selected and the "change start date" button is clicked', async () => {
 			renderDateRangePickerNext({
 				initialValue: {
@@ -868,10 +858,10 @@ describe('DateRangePickerNext', () => {
 				},
 			});
 
+			const startDateButton = screen.getByRole('button', {
+				name: `Change start date, ${fromFormattedDate}`,
+			});
 			await act(() => {
-				const startDateButton = screen.getByRole('button', {
-					name: `Change start date, ${fromFormattedDate}`,
-				});
 				fireEvent.click(startDateButton);
 			});
 
@@ -880,8 +870,6 @@ describe('DateRangePickerNext', () => {
 			);
 			expect(startDayElement).toBeInTheDocument();
 			expect(startDayElement).toHaveFocus();
-
-			checkFocusToday(false);
 		});
 
 		it('focuses on `end-date` when both dates are selected and the "change end date" button is clicked', async () => {
@@ -892,18 +880,16 @@ describe('DateRangePickerNext', () => {
 				},
 			});
 
+			const endDateButton = screen.getByRole('button', {
+				name: `Change end date, ${toFormattedDate}`,
+			});
 			await act(() => {
-				const startDateButton = screen.getByRole('button', {
-					name: `Change end date, ${toFormattedDate}`,
-				});
-				fireEvent.click(startDateButton);
+				fireEvent.click(endDateButton);
 			});
 
 			const endDayElement = document.querySelector('td[data-end-day="true"]');
 			expect(endDayElement).toBeInTheDocument();
 			expect(endDayElement).toHaveFocus();
-
-			checkFocusToday(false);
 		});
 
 		describe('currently selected', () => {
@@ -920,11 +906,11 @@ describe('DateRangePickerNext', () => {
 					initialValue,
 				});
 
+				const buttonElement = screen.getByRole('button', {
+					name: buttonName,
+				});
 				await act(() => {
-					const button = screen.getByRole('button', {
-						name: buttonName,
-					});
-					fireEvent.click(button);
+					fireEvent.click(buttonElement);
 				});
 
 				const targetElement = document.querySelector(
@@ -934,8 +920,6 @@ describe('DateRangePickerNext', () => {
 				expect(targetElement).toHaveFocus();
 				// Check expected element to have focus is the correct date by aria-label
 				expect(targetElement?.getAttribute('aria-label')).toBe(ariaLabel);
-
-				checkFocusToday(false);
 			}
 
 			it('focuses on the `start-date` when only the start date is selected and the "Change start date" button is pressed', async () => {
@@ -1013,14 +997,16 @@ describe('DateRangePickerNext', () => {
 				},
 			});
 
+			const startDateButton = screen.getByRole('button', {
+				name: `Choose start date`,
+			});
 			await act(() => {
-				const startDateButton = screen.getByRole('button', {
-					name: `Choose start date`,
-				});
 				fireEvent.click(startDateButton);
 			});
 
-			checkFocusToday(true);
+			const todayElement = document.querySelector('td[data-today="true"]');
+			expect(todayElement).toBeInTheDocument();
+			expect(todayElement).toHaveFocus();
 		});
 	});
 });

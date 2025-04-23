@@ -19,7 +19,6 @@ const buttonNextPrevious = {
 	justifyContent: 'center',
 	margin: 0,
 	padding: 0,
-	position: 'absolute',
 	top: 0,
 	width: '2rem',
 	'&:hover': { color: boxPalette.foregroundText },
@@ -138,7 +137,7 @@ export const reactDayPickerStyles = {
 	'.rdp-weeks': {
 		border: 0,
 	},
-	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]), .rdp-day_selected:hover:not([disabled])':
+	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled]), .rdp-selected:hover:not([disabled]), .rdp-selected:hover:not([disabled])':
 		{
 			backgroundColor: boxPalette.selected,
 			color: boxPalette.backgroundBody,

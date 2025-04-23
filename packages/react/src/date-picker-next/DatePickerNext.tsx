@@ -111,7 +111,7 @@ export const DatePickerNext = ({
 					),
 				])
 			),
-		[dateFormat, allowedDateFormatsProp]
+		[allowedDateFormatsProp, dateFormat]
 	);
 
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -139,7 +139,7 @@ export const DatePickerNext = ({
 			// Close the calendar and focus the calendar icon
 			closeCalendarAndFocusTrigger();
 		},
-		[onChange, closeCalendarAndFocusTrigger, dateFormat]
+		[closeCalendarAndFocusTrigger, dateFormat, onChange]
 	);
 
 	const [inputValue, setInputValue] = useState(
@@ -173,7 +173,7 @@ export const DatePickerNext = ({
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendarAndFocusTrigger();
-	}, [isCalendarOpen, closeCalendarAndFocusTrigger]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
@@ -190,7 +190,7 @@ export const DatePickerNext = ({
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [isCalendarOpen, closeCalendarAndFocusTrigger]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -198,7 +198,7 @@ export const DatePickerNext = ({
 			minDate ? { before: minDate } : undefined,
 			maxDate ? { after: maxDate } : undefined,
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
-	}, [minDate, maxDate]);
+	}, [maxDate, minDate]);
 
 	const valueAsDateOrUndefined = asDate(value, allowedDateFormats);
 
@@ -213,9 +213,9 @@ export const DatePickerNext = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
+			autoFocus: true,
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: true,
 			numberOfMonths: 1,
 			onSelect,
 			selected: valueAsDateOrUndefined,
