@@ -298,7 +298,7 @@ export const DateRangePickerNext = ({
 				const { from, to } = valueAsDateOrUndefined;
 
 				// Focus on the start or end day based on the input mode and if both range days have been selected
-				if (from && to && inputMode === 'from') {
+				if (inputMode === 'from' && from && to) {
 					if (focusDay('td[data-start-day="true"]')) return;
 				}
 				if (inputMode === 'to' && from && to) {
@@ -438,21 +438,21 @@ export const DateRangePickerNext = ({
 		// Run updates only when number of shown months has changed
 		if (shownMonths === numberOfMonths) return;
 
-		// Update table size changes to new count
-		setShownMonths(numberOfMonths);
-
 		// Check if the number of table months have decreased
 		if (shownMonths > numberOfMonths) {
 			// Don't change focus if user is on a table cell
-			if (document.activeElement?.nodeName === 'TD') return;
-
-			// Get all table dates and focus on the last date
-			const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
-			const lastDate = tableDates[tableDates.length - 1];
-			if (lastDate instanceof HTMLElement && lastDate.focus) {
-				lastDate.focus();
+			if (document.activeElement?.nodeName !== 'TD') {
+				// Get all table dates and focus on the last date
+				const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
+				const lastDate = tableDates[tableDates.length - 1];
+				if (lastDate instanceof HTMLElement && lastDate.focus) {
+					lastDate.focus();
+				}
 			}
 		}
+
+		// Update table size changes to new count
+		setShownMonths(numberOfMonths);
 	}, [isCalendarOpen, numberOfMonths, shownMonths]);
 
 	return (
@@ -563,6 +563,7 @@ export function useDateRangePickerNextIds(idProp?: string) {
 // Attempts focus on target and returns true if successful
 function focusDay(queryTarget: string) {
 	const day = document.querySelector(queryTarget);
+	if (!day) return false;
 
 	if (day instanceof HTMLElement && day.focus) {
 		day.focus();

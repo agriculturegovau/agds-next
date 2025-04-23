@@ -365,22 +365,21 @@ export const DateRangePicker = ({
 		// Run updates only when number of shown months has changed
 		if (shownMonths === numberOfMonths) return;
 
-		// Update table size changes to new count
-		setShownMonths(numberOfMonths);
-
 		// Check if the number of table months have decreased
 		if (shownMonths > numberOfMonths) {
 			// Don't change focus if user is on a table cell
-			const currentFocus = document.activeElement;
-			if (currentFocus && currentFocus.nodeName === 'TD') return;
-
-			// Get all table dates and focus on the last date
-			const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
-			const lastDate = tableDates[tableDates.length - 1];
-			if (lastDate && (lastDate as HTMLElement).focus) {
-				(lastDate as HTMLElement).focus();
+			if (document.activeElement?.nodeName !== 'TD') {
+				// Get all table dates and focus on the last date
+				const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
+				const lastDate = tableDates[tableDates.length - 1];
+				if (lastDate instanceof HTMLElement && lastDate.focus) {
+					lastDate.focus();
+				}
 			}
 		}
+
+		// Update table size changes to new count
+		setShownMonths(numberOfMonths);
 	}, [isCalendarOpen, numberOfMonths, shownMonths]);
 
 	return (
