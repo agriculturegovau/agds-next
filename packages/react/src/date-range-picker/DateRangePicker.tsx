@@ -280,6 +280,36 @@ export const DateRangePicker = ({
 		handleClickOutside
 	);
 
+	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
+	// The focus is also set manually to allow us to focus on the end-date when the 'change end date' button is pressed
+	useEffect(
+		() => {
+			// Wrap in timeout 0 to focus after all components renders
+			setTimeout(() => {
+				if (!isCalendarOpen) return;
+
+				const { from, to } = valueAsDateOrUndefined;
+				// Focus on the start or end day based on the input mode and if both range days have been selected
+				if (inputMode === 'from' && from && to) {
+					if (focusDay('td[data-start-day="true"]')) return;
+				}
+				if (inputMode === 'to' && from && to) {
+					if (focusDay('td[data-end-day="true"]')) return;
+				}
+
+				// Target focus on any currently selected elements (e.g. if to is after)
+				// This covers if dates are mismatched (from is after to) or if only range is selected
+				if (focusDay('td[data-selected="true"]')) return;
+
+				// Default return focus today
+				focusDay('td[data-today="true"]');
+			}, 0);
+		},
+		// Only run this event when the calendar opens
+		// eslint-disable-next-line
+		[isCalendarOpen]
+	);
+
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -337,7 +367,7 @@ export const DateRangePicker = ({
 		() => ({
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: true,
+			autoFocus: false,
 			numberOfMonths,
 			onSelect,
 			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
@@ -460,7 +490,7 @@ export const DateRangePicker = ({
 						{isCalendarOpen && (
 							<CalendarRange
 								{...calendarProps}
-								Ref={calendarRef}
+								calendarRef={calendarRef}
 								css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
 							/>
 						)}
@@ -479,4 +509,16 @@ export function useDateRangePickerIds(idProp?: string) {
 	const fromId = `date-range-picker-${autoId}-from`;
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
+}
+
+// Attempts focus on target and returns true if successful
+function focusDay(queryTarget: string) {
+	const day = document.querySelector(queryTarget);
+	if (!day) return false;
+
+	if (day instanceof HTMLElement && day.focus) {
+		day.focus();
+		return true;
+	}
+	return false;
 }

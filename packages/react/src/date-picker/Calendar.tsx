@@ -13,6 +13,7 @@ import React, {
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
+	type Ref,
 	type RefObject,
 	useCallback,
 	useMemo,
@@ -100,12 +101,12 @@ export type CalendarRangeProps = Omit<
 	PropsBase & PropsRange,
 	'mode' | 'components'
 > & {
-	Ref?: RefObject<HTMLDivElement>;
+	calendarRef?: Ref<HTMLDivElement>;
 	returnFocusRef?: RefObject<HTMLButtonElement>;
 };
 
 export function CalendarRange({
-	Ref,
+	calendarRef,
 	returnFocusRef,
 	...props
 }: CalendarRangeProps) {
@@ -115,10 +116,11 @@ export function CalendarRange({
 			onDeactivation={() => {
 				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
 				if (!returnFocusRef) return;
+				// NOTE: timeout is happening on open
 				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
 			}}
 		>
-			<CalendarRangeContainer Ref={Ref}>
+			<CalendarRangeContainer calendarRef={calendarRef}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
@@ -337,6 +339,7 @@ const calendarComponents: Partial<CustomComponents> = {
 				</td>
 			);
 		}
+
 		// We have to pass the props into the DayButton component to be rendered into the `<td>`
 		// Filter out the props that are not required
 		const dayProps = {
@@ -377,6 +380,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		const { classNames, dayPickerProps, selected } = useDayPicker();
 		const isHidden = modifiers.hidden;
 
+		// Default `DayButton` component, used for arrow-key navigation
 		const ref = React.useRef<HTMLTableCellElement>(null);
 		React.useEffect(() => {
 			if (modifiers.focused) ref.current?.focus();
@@ -399,13 +403,21 @@ const calendarComponents: Partial<CustomComponents> = {
 			// Improve the aria labels of each button.
 			// Selected and dates within range are manually announced.
 			'aria-label': `${
-				modifiers.selected && !modifiers.range_middle ? 'Selected. ' : ''
+				modifiers.selected && !modifiers?.range_middle ? 'Selected. ' : ''
 			}${formatHumanReadableDate(day.date)}${
-				modifiers.range_middle ? '. Between selected dates' : ''
+				modifiers?.range_middle ? '. Between selected dates' : ''
 			}`,
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
-				modifiers.range_middle ? undefined : modifiers.selected,
+				modifiers?.range_middle ? undefined : modifiers.selected,
+		};
+
+		// Custom start and end selectors for focus, modifiers ranges are only applied after both are selected
+		const dataProps = {
+			'data-start-day': modifiers?.range_start
+				? modifiers.range_start
+				: undefined,
+			'data-end-day': modifiers?.range_end ? modifiers.range_end : undefined,
 		};
 
 		// In react-day-picker v9, the class names `range_start` and `range_end` are only given once both start and end dates are selected
@@ -435,6 +447,7 @@ const calendarComponents: Partial<CustomComponents> = {
 				{...dayProps}
 				{...restButtonProps}
 				{...ariaProps}
+				{...dataProps}
 				className={tableCellClassNames}
 				// @ts-expect-error: Type 'MouseEventHandler<HTMLButtonElement> | undefined' is not assignable to type 'MouseEventHandler<HTMLTableDataCellElement> | undefined'.
 				onClick={onClick}
