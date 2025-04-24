@@ -24,15 +24,15 @@ export function CalendarContainer({ children }: CalendarContainerProps) {
 }
 
 export type CalendarRangeContainerProps = PropsWithChildren<{
-	calendarRef?: RefObject<HTMLDivElement>;
 	dateRange?: { from?: Date; to?: Date };
 	inputMode?: 'from' | 'to';
+	Ref?: RefObject<HTMLDivElement>;
 }>;
 
 export function CalendarRangeContainer({
-	calendarRef,
 	children,
 	inputMode,
+	Ref,
 }: CalendarRangeContainerProps) {
 	return (
 		<Box
@@ -42,7 +42,7 @@ export function CalendarRangeContainer({
 			display="inline-block"
 			paddingX={[0.25, 1]}
 			paddingY={1}
-			ref={calendarRef}
+			ref={Ref}
 			role="dialog"
 		>
 			{children}

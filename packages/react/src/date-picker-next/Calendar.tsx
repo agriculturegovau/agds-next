@@ -87,18 +87,18 @@ export type CalendarRangeProps = Omit<
 	PropsBase & PropsRange,
 	'mode' | 'components'
 > & {
-	calendarRef?: RefObject<HTMLDivElement>;
 	inputMode?: 'from' | 'to';
+	Ref?: RefObject<HTMLDivElement>;
 };
 
 export function CalendarRange({
-	calendarRef,
 	inputMode,
+	Ref,
 	...props
 }: CalendarRangeProps) {
 	return (
 		<FocusLock autoFocus={false}>
-			<CalendarRangeContainer calendarRef={calendarRef} inputMode={inputMode}>
+			<CalendarRangeContainer Ref={Ref} inputMode={inputMode}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
