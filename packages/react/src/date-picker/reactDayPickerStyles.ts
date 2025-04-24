@@ -1,5 +1,5 @@
 import { focusStyles, highContrastOutlineStyles } from '../box';
-import { boxPalette, fontGrid, mapSpacing, tokens } from '../core';
+import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
@@ -40,8 +40,7 @@ export const reactDayPickerStyles = {
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
-	'.rdp-button_previous': buttonNextPrevious,
-	'.rdp-button_next': buttonNextPrevious,
+	'.rdp-button_previous, .rdp-button_next': buttonNextPrevious,
 	// Days of week
 	'.rdp-weekday': {
 		color: boxPalette.foregroundMuted,
@@ -63,6 +62,7 @@ export const reactDayPickerStyles = {
 		color: boxPalette.foregroundAction,
 		cursor: 'pointer',
 		height: cellSizeSmall,
+		padding: 0,
 		position: 'relative',
 		textAlign: 'center',
 		verticalAlign: 'middle',
@@ -72,15 +72,24 @@ export const reactDayPickerStyles = {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
-		'&:not([disabled], :focus):hover': {
+		'&:not([disabled]):hover': {
 			backgroundColor: boxPalette.backgroundShade,
 			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 			zIndex: tokens.zIndex.elevated,
 			...highContrastOutlineStyles,
+			'&:focus-visible': {
+				// Keep focus outline with day hover styles
+				...packs.outline,
+			},
 		},
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
+		},
+		'&:focus-visible': {
+			// Keep focus outline with day hover styles and above other stylings
+			...packs.outline,
+			zIndex: tokens.zIndex.elevated + 1,
 		},
 		'@media (min-width: 375px)': {
 			height: cellSizeLarge,
@@ -128,19 +137,19 @@ export const reactDayPickerStyles = {
 	'.rdp-weeks': {
 		border: 0,
 	},
-	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled]), .rdp-selected:hover:not([disabled]), .rdp-selected:hover:not([disabled])':
-		{
-			backgroundColor: boxPalette.selected,
-			color: boxPalette.backgroundBody,
-			fontWeight: tokens.fontWeight.bold,
-			'&::before': {
-				content: '""',
-				inset: 0,
-				pointerEvents: 'none',
-				position: 'absolute',
-				...highContrastOutlineStyles,
-			},
+	// Selected date
+	'.rdp-selected:not([disabled])': {
+		backgroundColor: boxPalette.selected,
+		color: boxPalette.backgroundBody,
+		fontWeight: tokens.fontWeight.bold,
+		'&::before': {
+			content: '""',
+			inset: 0,
+			pointerEvents: 'none',
+			position: 'absolute',
+			...highContrastOutlineStyles,
 		},
+	},
 } as const;
 
 const startStyles = {

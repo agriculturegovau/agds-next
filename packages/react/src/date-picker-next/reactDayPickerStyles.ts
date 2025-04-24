@@ -22,7 +22,8 @@ const buttonNextPrevious = {
 	...focusStyles,
 } as const;
 
-const dateBorderOnHover = {
+// Date onHover border and background
+const dayOnHover = {
 	backgroundColor: boxPalette.backgroundShade,
 	color: boxPalette.foregroundText,
 	fontWeight: 'bold',
@@ -61,8 +62,7 @@ export const reactDayPickerStyles = {
 		...fontGrid('lg', 'nospace'),
 	},
 	// Left / right arrows
-	'.rdp-button_previous': buttonNextPrevious,
-	'.rdp-button_next': buttonNextPrevious,
+	'.rdp-button_previous, .rdp-button_next': buttonNextPrevious,
 	// Days of week
 	'.rdp-weekday': {
 		color: boxPalette.foregroundMuted,
@@ -94,10 +94,19 @@ export const reactDayPickerStyles = {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
-		'&:not([disabled]):hover': dateBorderOnHover,
-		'&:not([disabled]):hover:focus-visible': packs.outline,
+		'&:not([disabled]):hover': {
+			...dayOnHover,
+			'&:focus-visible': {
+				// Keep focus outline when focused and hover
+				...packs.outline,
+			},
+		},
 		'&:focus': {
 			zIndex: tokens.zIndex.elevated,
+		},
+		'&:focus-visible': {
+			// Keep focus outline with day hover styles and above other stylings
+			zIndex: tokens.zIndex.elevated + 1,
 		},
 		'& span': {
 			alignItems: 'center',
@@ -162,20 +171,19 @@ export const reactDayPickerStyles = {
 	'.rdp-weeks': {
 		border: 0,
 	},
-	'.rdp-selected:not([disabled]), .rdp-selected:focus:not([disabled]), .rdp-selected:active:not([disabled])':
-		{
-			backgroundColor: boxPalette.selected,
-			color: boxPalette.backgroundBody,
-			fontWeight: tokens.fontWeight.bold,
-			'&::before': {
-				content: '""',
-				inset: 0,
-				pointerEvents: 'none',
-				position: 'absolute',
-				...highContrastOutlineStyles,
-			},
+	// Selected date
+	'.rdp-selected:not([disabled])': {
+		backgroundColor: boxPalette.selected,
+		color: boxPalette.backgroundBody,
+		fontWeight: tokens.fontWeight.bold,
+		'&::before': {
+			content: '""',
+			inset: 0,
+			pointerEvents: 'none',
+			position: 'absolute',
+			...highContrastOutlineStyles,
 		},
-	'.rdp-selected:hover:not([disabled])': dateBorderOnHover,
+	},
 } as const;
 
 // Start date only picked
