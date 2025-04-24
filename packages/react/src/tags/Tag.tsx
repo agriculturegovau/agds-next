@@ -31,7 +31,7 @@ export const Tag = ({
 			border
 			color={href ? 'action' : 'text'}
 			css={{
-				borderRadius: 999,
+				borderRadius: '0.75rem',
 				paddingBottom: '0.0625rem',
 				paddingTop: '0.0625rem',
 			}}
