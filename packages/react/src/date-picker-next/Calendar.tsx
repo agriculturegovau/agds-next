@@ -9,6 +9,7 @@ import {
 } from 'date-fns';
 import React, {
 	Fragment,
+	ReactElement,
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
@@ -164,11 +165,10 @@ const calendarComponents: Partial<CustomComponents> = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
-						{...(children as React.ReactElement).props}
+						{...(children as ReactElement).props}
 						displayIndex={props.displayIndex}
 					/>
 				)}
-
 				{isLast && (
 					<button
 						aria-label={nextLabel}
@@ -331,7 +331,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		const DayButtonComponent = components.DayButton;
 		return (
 			<DayButtonComponent
-				{...(children as React.ReactElement).props}
+				{...(children as ReactElement).props}
 				dayProps={dayProps}
 			/>
 		);
@@ -361,6 +361,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		const { clearHoveredDay, onHover } = useCalendar();
 		const isHidden = modifiers.hidden;
 
+		// Default `DayButton` component, used for arrow-key navigation
 		const ref = React.useRef<HTMLTableCellElement>(null);
 		React.useEffect(() => {
 			if (modifiers.focused) ref.current?.focus();
@@ -379,9 +380,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		};
 
 		const ariaProps = {
-			'aria-current': (modifiers.today ? 'date' : undefined) as
-				| 'date'
-				| undefined,
+			'aria-current': modifiers.today ? 'date' : undefined,
 			// Improve the aria labels of each button.
 			// Selected and dates within range are manually announced.
 			'aria-label': `${

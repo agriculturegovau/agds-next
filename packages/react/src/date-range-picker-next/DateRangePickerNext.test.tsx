@@ -13,6 +13,7 @@ import {
 	screen,
 	act,
 	fireEvent,
+	waitFor,
 } from '../../../../test-utils';
 import { Button } from '../button';
 import { parseDate } from '../date-picker/utils';
@@ -861,15 +862,15 @@ describe('DateRangePickerNext', () => {
 			const startDateButton = screen.getByRole('button', {
 				name: `Change start date, ${fromFormattedDate}`,
 			});
-			await act(() => {
-				fireEvent.click(startDateButton);
-			});
+			fireEvent.click(startDateButton);
 
-			const startDayElement = document.querySelector(
-				'td[data-start-day="true"]'
-			);
-			expect(startDayElement).toBeInTheDocument();
-			expect(startDayElement).toHaveFocus();
+			await waitFor(() => {
+				const startDayElement = document.querySelector(
+					'td[data-start-day="true"]'
+				);
+				expect(startDayElement).toBeInTheDocument();
+				expect(startDayElement).toHaveFocus();
+			});
 		});
 
 		it('focuses on `end-date` when both dates are selected and the "change end date" button is clicked', async () => {
@@ -883,13 +884,13 @@ describe('DateRangePickerNext', () => {
 			const endDateButton = screen.getByRole('button', {
 				name: `Change end date, ${toFormattedDate}`,
 			});
-			await act(() => {
-				fireEvent.click(endDateButton);
-			});
+			fireEvent.click(endDateButton);
 
-			const endDayElement = document.querySelector('td[data-end-day="true"]');
-			expect(endDayElement).toBeInTheDocument();
-			expect(endDayElement).toHaveFocus();
+			await waitFor(() => {
+				const endDayElement = document.querySelector('td[data-end-day="true"]');
+				expect(endDayElement).toBeInTheDocument();
+				expect(endDayElement).toHaveFocus();
+			});
 		});
 
 		describe('currently selected', () => {
@@ -909,17 +910,17 @@ describe('DateRangePickerNext', () => {
 				const buttonElement = screen.getByRole('button', {
 					name: buttonName,
 				});
-				await act(() => {
-					fireEvent.click(buttonElement);
-				});
+				fireEvent.click(buttonElement);
 
-				const targetElement = document.querySelector(
-					'td[data-selected="true"]'
-				);
-				expect(targetElement).toBeInTheDocument();
-				expect(targetElement).toHaveFocus();
-				// Check expected element to have focus is the correct date by aria-label
-				expect(targetElement?.getAttribute('aria-label')).toBe(ariaLabel);
+				await waitFor(() => {
+					const targetElement = document.querySelector(
+						'td[data-selected="true"]'
+					);
+					expect(targetElement).toBeInTheDocument();
+					expect(targetElement).toHaveFocus();
+					// Check expected element to have focus is the correct date by aria-label
+					expect(targetElement?.getAttribute('aria-label')).toBe(ariaLabel);
+				});
 			}
 
 			it('focuses on the `start-date` when only the start date is selected and the "Change start date" button is pressed', async () => {
@@ -1000,13 +1001,13 @@ describe('DateRangePickerNext', () => {
 			const startDateButton = screen.getByRole('button', {
 				name: `Choose start date`,
 			});
-			await act(() => {
-				fireEvent.click(startDateButton);
-			});
+			fireEvent.click(startDateButton);
 
-			const todayElement = document.querySelector('td[data-today="true"]');
-			expect(todayElement).toBeInTheDocument();
-			expect(todayElement).toHaveFocus();
+			await waitFor(() => {
+				const todayElement = document.querySelector('td[data-today="true"]');
+				expect(todayElement).toBeInTheDocument();
+				expect(todayElement).toHaveFocus();
+			});
 		});
 	});
 });

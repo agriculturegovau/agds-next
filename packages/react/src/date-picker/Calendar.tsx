@@ -9,6 +9,7 @@ import {
 } from 'date-fns';
 import React, {
 	Fragment,
+	ReactElement,
 	type ChangeEvent,
 	type ChangeEventHandler,
 	type MouseEventHandler,
@@ -183,7 +184,7 @@ const calendarComponents: Partial<CustomComponents> = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
-						{...(children as React.ReactElement).props}
+						{...(children as ReactElement).props}
 						displayIndex={props.displayIndex}
 					/>
 				)}
@@ -348,7 +349,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		const DayButtonComponent = components.DayButton;
 		return (
 			<DayButtonComponent
-				{...(children as React.ReactElement).props}
+				{...(children as ReactElement).props}
 				dayProps={dayProps}
 			/>
 		);
