@@ -73,11 +73,14 @@ export const reactDayPickerStyles = {
 			opacity: 0.3,
 		},
 		'&:not([disabled]):hover': {
-			backgroundColor: boxPalette.backgroundShade,
-			color: boxPalette.foregroundText,
 			textDecoration: 'underline',
 			zIndex: tokens.zIndex.elevated,
 			...highContrastOutlineStyles,
+			'&:not(.rdp-selected, .rdp-range_start, .rdp-range_end)': {
+				// Apply hover background when not already selected
+				backgroundColor: boxPalette.backgroundShade,
+				color: boxPalette.foregroundText,
+			},
 			'&:focus-visible': {
 				// Keep focus outline with day hover styles
 				...packs.outline,
@@ -169,6 +172,7 @@ export const reactDayRangePickerStyles = {
 		borderRadius: 0,
 		color: boxPalette.foregroundText,
 	},
+
 	// Start day of date range
 	'.rdp-range_start': startStyles,
 	'.rdp-range_start::before': startStyles,
