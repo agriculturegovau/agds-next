@@ -5,7 +5,7 @@ export function ValidateSectionAlert() {
 		<div css={{ width: '100%' }}>
 			<SectionAlert
 				title="Errors detected. Please edit your answers in this section."
-				tone="error"
+				tone="errorHigh"
 			/>
 		</div>
 	);

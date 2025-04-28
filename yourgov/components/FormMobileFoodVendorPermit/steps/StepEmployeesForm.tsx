@@ -173,7 +173,7 @@ export function StepEmployeesForm() {
 						onClose={() => setShowAddedEmployeeMessage(false)}
 						title={`${addedEmployee?.firstName} ${addedEmployee?.lastName} has been added as an
 							employee`}
-						tone="success"
+						tone="successHigh"
 					/>
 				</Box>
 				<Box
@@ -188,7 +188,7 @@ export function StepEmployeesForm() {
 						onClose={() => setShowRemovedEmployeeMessage(false)}
 						title={`${removedEmployee} has been removed as an
 							employee`}
-						tone="success"
+						tone="successHigh"
 					/>
 				</Box>
 				{stepState?.employee && stepState.employee.length > 0 ? (

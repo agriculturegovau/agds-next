@@ -162,7 +162,7 @@ exports[` 3`] = `
 exports[`SectionAlert which is closable renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:r10: section-alert-title-:r10: "
+    aria-labelledby="section-alert-icon-:r1a: section-alert-title-:r1a: "
     class="css-r2n3u-boxStyles"
     role="region"
   >
@@ -192,7 +192,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:r10:"
+          id="section-alert-icon-:r1a:"
         >
           success
         </span>
@@ -202,7 +202,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:r10:"
+          id="section-alert-title-:r1a:"
         >
           Title of Section alert
         </span>
@@ -247,7 +247,7 @@ exports[`SectionAlert which is closable renders correctly 1`] = `
 exports[`SectionAlert with a description renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:ru: section-alert-title-:ru: section-alert-children-:ru:"
+    aria-labelledby="section-alert-icon-:r18: section-alert-title-:r18: section-alert-children-:r18:"
     class="css-r2n3u-boxStyles"
     role="region"
   >
@@ -277,7 +277,7 @@ exports[`SectionAlert with a description renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:ru:"
+          id="section-alert-icon-:r18:"
         >
           success
         </span>
@@ -287,12 +287,12 @@ exports[`SectionAlert with a description renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:ru:"
+          id="section-alert-title-:r18:"
         >
           Title of Section alert
         </span>
         <div
-          id="section-alert-children-:ru:"
+          id="section-alert-children-:r18:"
         >
           <p
             class="css-dbscsh-boxStyles"
@@ -306,10 +306,61 @@ exports[`SectionAlert with a description renders correctly 1`] = `
 </div>
 `;
 
-exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
+exports[`SectionAlert with cannotStartLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:r3: section-alert-title-:r3: "
+    class="css-orf1v6-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-16t9tz1-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10ZM7 12h10"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:r3:"
+        >
+          cannot start
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:r3:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:r5: section-alert-title-:r5: "
     class="css-17u5dk6-boxStyles"
     role="region"
   >
@@ -339,7 +390,7 @@ exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:r3:"
+          id="section-alert-icon-:r5:"
         >
           error
         </span>
@@ -349,7 +400,7 @@ exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:r3:"
+          id="section-alert-title-:r5:"
         >
           Title of Section alert
         </span>
@@ -362,7 +413,7 @@ exports[`SectionAlert with errorHigh tone renders correctly 1`] = `
 exports[`SectionAlert with errorLow tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:r5: section-alert-title-:r5: "
+    aria-labelledby="section-alert-icon-:r7: section-alert-title-:r7: "
     class="css-orf1v6-boxStyles"
     role="region"
   >
@@ -390,7 +441,7 @@ exports[`SectionAlert with errorLow tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:r5:"
+          id="section-alert-icon-:r7:"
         >
           error
         </span>
@@ -400,7 +451,7 @@ exports[`SectionAlert with errorLow tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:r5:"
+          id="section-alert-title-:r7:"
         >
           Title of Section alert
         </span>
@@ -413,7 +464,7 @@ exports[`SectionAlert with errorLow tone renders correctly 1`] = `
 exports[`SectionAlert with errorMedium tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:r7: section-alert-title-:r7: "
+    aria-labelledby="section-alert-icon-:r9: section-alert-title-:r9: "
     class="css-1nd9vbs-boxStyles"
     role="region"
   >
@@ -441,7 +492,7 @@ exports[`SectionAlert with errorMedium tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:r7:"
+          id="section-alert-icon-:r9:"
         >
           error
         </span>
@@ -451,7 +502,63 @@ exports[`SectionAlert with errorMedium tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:r7:"
+          id="section-alert-title-:r9:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with inProgressLow tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:rh: section-alert-title-:rh: "
+    class="css-orf1v6-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-16t9tz1-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM12 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <path
+            d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:rh:"
+        >
+          in progress
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:rh:"
         >
           Title of Section alert
         </span>
@@ -464,7 +571,7 @@ exports[`SectionAlert with errorMedium tone renders correctly 1`] = `
 exports[`SectionAlert with infoHigh tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:r9: section-alert-title-:r9: "
+    aria-labelledby="section-alert-icon-:rb: section-alert-title-:rb: "
     class="css-s1p38e-boxStyles"
     role="region"
   >
@@ -494,57 +601,6 @@ exports[`SectionAlert with infoHigh tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:r9:"
-        >
-          information
-        </span>
-      </span>
-      <div
-        class="css-1i7cdx8-boxStyles"
-      >
-        <span
-          class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:r9:"
-        >
-          Title of Section alert
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`SectionAlert with infoLow tone renders correctly 1`] = `
-<div>
-  <div
-    aria-labelledby="section-alert-icon-:rb: section-alert-title-:rb: "
-    class="css-orf1v6-boxStyles"
-    role="region"
-  >
-    <div
-      class="css-1urm0li-boxStyles"
-    >
-      <span
-        class="css-1lb5yh3-SectionAlert"
-      >
-        <svg
-          aria-hidden="true"
-          class="css-16t9tz1-Icon"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          focusable="false"
-          height="24"
-          role="img"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-10 5v-6m0-4h.01"
-          />
-        </svg>
-        <span
-          class="css-1qt259f-SectionAlert"
           id="section-alert-icon-:rb:"
         >
           information
@@ -565,11 +621,11 @@ exports[`SectionAlert with infoLow tone renders correctly 1`] = `
 </div>
 `;
 
-exports[`SectionAlert with infoMedium tone renders correctly 1`] = `
+exports[`SectionAlert with infoLow tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:rd: section-alert-title-:rd: "
-    class="css-1ib5mre-boxStyles"
+    class="css-orf1v6-boxStyles"
     role="region"
   >
     <div
@@ -580,7 +636,7 @@ exports[`SectionAlert with infoMedium tone renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="css-1fy6eq9-Icon"
+          class="css-16t9tz1-Icon"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
@@ -616,10 +672,164 @@ exports[`SectionAlert with infoMedium tone renders correctly 1`] = `
 </div>
 `;
 
-exports[`SectionAlert with successHigh tone renders correctly 1`] = `
+exports[`SectionAlert with infoMedium tone renders correctly 1`] = `
 <div>
   <div
     aria-labelledby="section-alert-icon-:rf: section-alert-title-:rf: "
+    class="css-1ib5mre-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-1fy6eq9-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-10 5v-6m0-4h.01"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:rf:"
+        >
+          information
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:rf:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with notStartedLow tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:rj: section-alert-title-:rj: "
+    class="css-orf1v6-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-16t9tz1-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+            stroke-dasharray="4 4"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:rj:"
+        >
+          not started
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:rj:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with pausedLow tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:rl: section-alert-title-:rl: "
+    class="css-orf1v6-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-16t9tz1-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 16V8m4 8V8m8 4c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:rl:"
+        >
+          paused
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:rl:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with successHigh tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:rn: section-alert-title-:rn: "
     class="css-r2n3u-boxStyles"
     role="region"
   >
@@ -649,7 +859,7 @@ exports[`SectionAlert with successHigh tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rf:"
+          id="section-alert-icon-:rn:"
         >
           success
         </span>
@@ -659,7 +869,7 @@ exports[`SectionAlert with successHigh tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rf:"
+          id="section-alert-title-:rn:"
         >
           Title of Section alert
         </span>
@@ -672,7 +882,7 @@ exports[`SectionAlert with successHigh tone renders correctly 1`] = `
 exports[`SectionAlert with successLow tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:rh: section-alert-title-:rh: "
+    aria-labelledby="section-alert-icon-:rp: section-alert-title-:rp: "
     class="css-orf1v6-boxStyles"
     role="region"
   >
@@ -703,7 +913,7 @@ exports[`SectionAlert with successLow tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rh:"
+          id="section-alert-icon-:rp:"
         >
           success
         </span>
@@ -713,7 +923,7 @@ exports[`SectionAlert with successLow tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rh:"
+          id="section-alert-title-:rp:"
         >
           Title of Section alert
         </span>
@@ -726,7 +936,7 @@ exports[`SectionAlert with successLow tone renders correctly 1`] = `
 exports[`SectionAlert with successMedium tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:rj: section-alert-title-:rj: "
+    aria-labelledby="section-alert-icon-:rr: section-alert-title-:rr: "
     class="css-1df7i9s-boxStyles"
     role="region"
   >
@@ -757,7 +967,7 @@ exports[`SectionAlert with successMedium tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rj:"
+          id="section-alert-icon-:rr:"
         >
           success
         </span>
@@ -767,7 +977,58 @@ exports[`SectionAlert with successMedium tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rj:"
+          id="section-alert-title-:rr:"
+        >
+          Title of Section alert
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SectionAlert with unknownLow tone renders correctly 1`] = `
+<div>
+  <div
+    aria-labelledby="section-alert-icon-:rt: section-alert-title-:rt: "
+    class="css-orf1v6-boxStyles"
+    role="region"
+  >
+    <div
+      class="css-1urm0li-boxStyles"
+    >
+      <span
+        class="css-1lb5yh3-SectionAlert"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-16t9tz1-Icon"
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          focusable="false"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+          />
+        </svg>
+        <span
+          class="css-1qt259f-SectionAlert"
+          id="section-alert-icon-:rt:"
+        >
+          unknown
+        </span>
+      </span>
+      <div
+        class="css-1i7cdx8-boxStyles"
+      >
+        <span
+          class="css-1jywj6f-boxStyles"
+          id="section-alert-title-:rt:"
         >
           Title of Section alert
         </span>
@@ -780,7 +1041,7 @@ exports[`SectionAlert with successMedium tone renders correctly 1`] = `
 exports[`SectionAlert with warningHigh tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:rl: section-alert-title-:rl: "
+    aria-labelledby="section-alert-icon-:rv: section-alert-title-:rv: "
     class="css-14l7ajk-boxStyles"
     role="region"
   >
@@ -810,7 +1071,7 @@ exports[`SectionAlert with warningHigh tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rl:"
+          id="section-alert-icon-:rv:"
         >
           warning
         </span>
@@ -820,7 +1081,7 @@ exports[`SectionAlert with warningHigh tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rl:"
+          id="section-alert-title-:rv:"
         >
           Title of Section alert
         </span>
@@ -833,7 +1094,7 @@ exports[`SectionAlert with warningHigh tone renders correctly 1`] = `
 exports[`SectionAlert with warningLow tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:rn: section-alert-title-:rn: "
+    aria-labelledby="section-alert-icon-:r11: section-alert-title-:r11: "
     class="css-orf1v6-boxStyles"
     role="region"
   >
@@ -861,7 +1122,7 @@ exports[`SectionAlert with warningLow tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rn:"
+          id="section-alert-icon-:r11:"
         >
           warning
         </span>
@@ -871,7 +1132,7 @@ exports[`SectionAlert with warningLow tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rn:"
+          id="section-alert-title-:r11:"
         >
           Title of Section alert
         </span>
@@ -884,7 +1145,7 @@ exports[`SectionAlert with warningLow tone renders correctly 1`] = `
 exports[`SectionAlert with warningMedium tone renders correctly 1`] = `
 <div>
   <div
-    aria-labelledby="section-alert-icon-:rp: section-alert-title-:rp: "
+    aria-labelledby="section-alert-icon-:r13: section-alert-title-:r13: "
     class="css-kdahuh-boxStyles"
     role="region"
   >
@@ -912,7 +1173,7 @@ exports[`SectionAlert with warningMedium tone renders correctly 1`] = `
         </svg>
         <span
           class="css-1qt259f-SectionAlert"
-          id="section-alert-icon-:rp:"
+          id="section-alert-icon-:r13:"
         >
           warning
         </span>
@@ -922,7 +1183,7 @@ exports[`SectionAlert with warningMedium tone renders correctly 1`] = `
       >
         <span
           class="css-1jywj6f-boxStyles"
-          id="section-alert-title-:rp:"
+          id="section-alert-title-:r13:"
         >
           Title of Section alert
         </span>

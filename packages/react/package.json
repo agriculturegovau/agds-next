@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.26.0",
+	"version": "1.27.0",
 	"license": "MIT",
 	"exports": {
 		"./box": {
@@ -335,6 +335,10 @@
 			"module": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.esm.js",
 			"default": "./date-range-picker-next/dist/ag.ds-next-react-date-range-picker-next.cjs.js"
 		},
+		"./conditional-field-container": {
+			"module": "./conditional-field-container/dist/ag.ds-next-react-conditional-field-container.esm.js",
+			"default": "./conditional-field-container/dist/ag.ds-next-react-conditional-field-container.cjs.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"dependencies": {
@@ -357,8 +361,8 @@
 	},
 	"peerDependencies": {
 		"@emotion/react": "^11.7.0",
-		"react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-		"react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+		"react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+		"react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
 	},
 	"preconstruct": {
 		"entrypoints": [

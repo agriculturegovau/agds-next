@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Text } from '@ag.ds-next/react/text';
-import { TextLink } from '@ag.ds-next/react/text-link';
-import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Checkbox } from '@ag.ds-next/react/checkbox';
+import { ConditionalFieldContainer } from '@ag.ds-next/react/conditional-field-container';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { FormStack } from '@ag.ds-next/react/form-stack';
-import { PageAlert } from '@ag.ds-next/react/page-alert';
-import { TextInput } from '@ag.ds-next/react/text-input';
 import { useScrollToField } from '@ag.ds-next/react/field';
-import { ConditionalFieldContainer } from '../ConditionalFieldContainer';
+import { FormStack } from '@ag.ds-next/react/form-stack';
+import { ListItem, UnorderedList } from '@ag.ds-next/react/list';
+import { PageAlert } from '@ag.ds-next/react/page-alert';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
+import { TextInput } from '@ag.ds-next/react/text-input';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { FormRequiredFieldsMessage } from '../FormRequiredFieldsMessage';
 import { useFormExampleMultiStep } from './FormExampleMultiStep';
 import { FormExampleMultiStepActions } from './FormExampleMultiStepActions';
@@ -133,19 +133,6 @@ export const FormExampleMultiStep3 = () => {
 						<Checkbox {...register('checkbox')} value="B">
 							Checkbox label B
 						</Checkbox>
-						{showConditionalField ? (
-							<ConditionalFieldContainer>
-								<TextInput
-									{...register('conditionalField')}
-									hint="Hint text"
-									id="conditionalField"
-									invalid={Boolean(errors.conditionalField?.message)}
-									label="Nested field"
-									message={errors.conditionalField?.message}
-									required
-								/>
-							</ConditionalFieldContainer>
-						) : null}
 						<Checkbox {...register('checkbox')} value="C">
 							Checkbox label C
 						</Checkbox>
@@ -153,6 +140,18 @@ export const FormExampleMultiStep3 = () => {
 							Checkbox label D
 						</Checkbox>
 					</ControlGroup>
+
+					<ConditionalFieldContainer visible={showConditionalField}>
+						<TextInput
+							{...register('conditionalField')}
+							hint="Hint text"
+							id="conditionalField"
+							invalid={Boolean(errors.conditionalField?.message)}
+							label="Conditional field"
+							message={errors.conditionalField?.message}
+							required
+						/>
+					</ConditionalFieldContainer>
 				</FormStack>
 				<FormExampleMultiStepActions />
 			</Stack>

@@ -53,7 +53,8 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 	const { next, stepFormState } = useFormRegisterPetPersonalDetails();
 	const scrollToField = useScrollToField();
 	const errorRef = useRef<HTMLDivElement>(null);
-	const headingRef = useRef<HTMLHeadingElement>(null);
+	const headingDetailsRef = useRef<HTMLHeadingElement>(null);
+	const headingFormRef = useRef<HTMLHeadingElement>(null);
 	const [focusedError, setFocusedError] = useState(false);
 
 	const {
@@ -67,6 +68,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 		resolver: yupResolver(formSchema),
 	});
 
+	const [hasOpenedForm, setHasOpenedForm] = useState(false);
 	const [hasClosedForm, setHasClosedForm] = useState(false);
 	const [localFormState, setLocalFormState] = useState(stepFormState);
 	const [isSaving, setIsSaving] = useState(false);
@@ -90,8 +92,14 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 	};
 
 	useEffect(() => {
+		if (!hasOpenedForm) return;
+		headingFormRef.current?.focus();
+		setHasOpenedForm(false);
+	}, [hasOpenedForm]);
+
+	useEffect(() => {
 		if (!hasClosedForm) return;
-		headingRef.current?.focus();
+		headingDetailsRef.current?.focus();
 		setHasClosedForm(false);
 	}, [hasClosedForm]);
 
@@ -140,7 +148,9 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 			<Stack alignItems="flex-start" gap={3} width="100%">
 				{isFormVisibile ? (
 					<Stack gap={1.5} width="100%">
-						<H2>Update personal details</H2>
+						<H2 focusRingFor="keyboard" ref={headingFormRef} tabIndex={-1}>
+							Update personal details
+						</H2>
 						<FormRequiredFieldsMessage />
 						<Stack
 							as="form"
@@ -234,7 +244,7 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 				) : (
 					<>
 						<Stack alignItems="flex-start" gap={1.5} width="100%">
-							<H2 focusRingFor="keyboard" ref={headingRef} tabIndex={-1}>
+							<H2 focusRingFor="keyboard" ref={headingDetailsRef} tabIndex={-1}>
 								Check personal details
 							</H2>
 							<SummaryList>
@@ -263,7 +273,13 @@ export const FormRegisterPetPersonalDetailsStep0 = () => {
 									</SummaryListItemDescription>
 								</SummaryListItem>
 							</SummaryList>
-							<Button onClick={() => toggleFormVisibilty()} variant="text">
+							<Button
+								onClick={() => {
+									toggleFormVisibilty();
+									setHasOpenedForm(true);
+								}}
+								variant="text"
+							>
 								Change personal details
 							</Button>
 						</Stack>

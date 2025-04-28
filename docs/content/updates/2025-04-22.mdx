@@ -1,0 +1,102 @@
+---
+date: 22nd April 2025
+title: AgDS Beta v1.27.0 release
+description: Adds a new Divider with text component, improves the functionality of Card, adds new tones to Section alert, enhances Table row functionality, updates various components to support React 19, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [Accordion](/components/accordion)
+
+- Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [App layout](/components/app-layout)
+
+- `AppLayoutSidebar`: Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [Card](/components/card)
+
+- Add `footer` and `header` props to provide better control of rendering footers and headers.
+- Add `footerOutside` prop to render footers outside the visible card.
+- Fix card layout so the heights stretch and match when in flex/grid lists.
+- Fix `CardLink` not applying focus ring when `clickable` is `false`.
+- Fix `CardLink` to only take up the full card when `clickable` is `true`.
+
+### [Checkbox](/components/checkbox)
+
+- Fix input not scrolling into view when receiving focus.
+- Make screen reader virtual cursor match visible control.
+
+### [Core](/components/core)
+
+- Add `useTransitionHeight` hook to allow transitioning the height and display of content.
+
+### [Divider with text](/components/divider-with-text)
+
+- Initial release of component.
+
+### [Drawer](/components/drawer)
+
+- Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [File upload](/components/file-upload)
+
+- Update the `download` type for existing and uploaded files to also support strings.
+- Update rejected files’ `SectionAlert` `tone` to `'errorHigh'`.
+
+### [Filter sidebar](/components/filter-sidebar)
+
+- Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [Icon](/components/icon)
+
+- Revert `WarningIcon` to previous version to fix missing path.
+
+### [Progress indicator](/components/progress-indicator)
+
+- Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [Radio](/components/radio)
+
+- Fix input not scrolling into view when receiving focus.
+- Make screen reader virtual cursor match visible control.
+
+### [Section alert](/components/section-alert)
+
+- Add `Info` and various “Progress” tones.
+- Add `High`, `Medium` and `Low` variants to appropriate tones.
+- Map legacy `success`, `error` and `warning` tones to `successHigh`, `errorHigh` and `warningHigh` respectively.
+
+### [Side nav](/components/side-nav)
+
+- Remove `react-spring` and use native CSS transitions to fix React 19/Strict mode issues.
+
+### [Table](/components/table)
+
+- Add `onClick` prop to `TableRow`.
+- Add `background` prop to `TableRow`.
+- Fix `invalid` not overriding striped background.
+
+### Build
+
+- Add `exports` field to support importing in Node ESM environments and add ESM build for bundlers.
+- Move `facepaint` to a normal dependency.
+- Update dependencies.
+
+### Other docs
+
+- Update all `SectionAlert` `tone`s to tones with emphasis.
+
+### [yourgov](/yourgov)
+
+- Update all `SectionAlert` `tone`s to tones with emphasis.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.27.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/1987) for this release.
