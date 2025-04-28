@@ -227,11 +227,11 @@ export const reactDayRangePickerStyles = (inputMode?: 'from' | 'to') => {
 		},
 
 		// Start day of date range
-		'.rdp-range_start': startStyles,
-		'.rdp-range_start::before': startStyles,
+		'.rdp-range_start:not(.rdp-range_end)': startStyles,
+		'.rdp-range_start:not(.rdp-range_end)::before': startStyles,
 		// End day of date range
-		'.rdp-range_end': endStyles,
-		'.rdp-range_end::before': endStyles,
+		'.rdp-range_end:not(.rdp-range_start)': endStyles,
+		'.rdp-range_end:not(.rdp-range_start):before': endStyles,
 		// Start and end days of date range
 		'.rdp-range_start.rdp-range_end': {
 			...startStyles,

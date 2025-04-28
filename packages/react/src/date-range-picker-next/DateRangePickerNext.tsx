@@ -126,7 +126,6 @@ export const DateRangePickerNext = ({
 		[dateFormat, allowedDateFormatsProp]
 	);
 
-	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 
 	const [inputMode, setInputMode] = useState<'from' | 'to'>();
@@ -144,7 +143,6 @@ export const DateRangePickerNext = ({
 
 	function onFromTriggerClick() {
 		setInputMode('from');
-		if (!hasCalendarOpened) setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'from'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();
@@ -152,7 +150,6 @@ export const DateRangePickerNext = ({
 
 	function onToTriggerClick() {
 		setInputMode('to');
-		if (!hasCalendarOpened) setHasCalendarOpened(true);
 		isCalendarOpen && inputMode === 'to'
 			? closeCalendarAndFocusTrigger()
 			: openCalendar();

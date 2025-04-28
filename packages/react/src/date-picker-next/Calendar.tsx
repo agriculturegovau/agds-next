@@ -305,6 +305,7 @@ const calendarComponents: Partial<CustomComponents> = {
 	},
 	// Custom `Day` that passes properties to the `DayButton` component or renders hidden table cells
 	// In v9 `Day` was split into both `Day` and `DayButton`
+	// Default: https://github.com/gpbl/react-day-picker/blob/af8deb602b7ebb4c0f99a86139b63041352157bf/src/components/Day.tsx
 	Day: function Day(props: DayProps) {
 		const { children, modifiers } = props;
 		const { components } = useDayPicker();
@@ -361,7 +362,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		const { clearHoveredDay, onHover } = useCalendar();
 		const isHidden = modifiers.hidden;
 
-		// Default `DayButton` component, used for arrow-key navigation
+		// Default `DayButton` component, required for arrow-key navigation
 		const ref = React.useRef<HTMLTableCellElement>(null);
 		React.useEffect(() => {
 			if (modifiers.focused) ref.current?.focus();
