@@ -879,7 +879,7 @@ describe('DateRangePickerNext', () => {
 
 		// Target tests should be run when any changes are made to the component
 		// We disable these tests to reduce runtime duration in pipeline
-		describe('race condition targets', () => {
+		describe.skip('race condition targets', () => {
 			it('focuses on `start-date` when both dates are selected and the "change start date" button is clicked', async () => {
 				renderDateRangePickerNext({
 					initialValue: {
