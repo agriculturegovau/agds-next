@@ -296,7 +296,6 @@ export const DateRangePickerNext = ({
 				if (!isCalendarOpen) return;
 
 				const { from, to } = valueAsDateOrUndefined;
-
 				// Focus on the start or end day based on the input mode and if both range days have been selected
 				if (inputMode === 'from' && from && to) {
 					if (focusDay('td[data-start-day="true"]')) return;
@@ -386,10 +385,16 @@ export const DateRangePickerNext = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
+			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			inputMode,
+			modifiers: {
+				hoverRange: (day: Date) => hoverRange()[day.toISOString()],
+			},
+			modifiersClassNames: {
+				hoverRange: 'hover-range',
+			},
 			numberOfMonths,
 			onSelect,
 			selected: {
@@ -407,12 +412,6 @@ export const DateRangePickerNext = ({
 					isBefore(valueAsDateOrUndefined.to, valueAsDateOrUndefined.from)
 						? undefined
 						: valueAsDateOrUndefined.to,
-			},
-			modifiers: {
-				hoverRange: (day: Date) => hoverRange()[day.toISOString()],
-			},
-			modifiersClassNames: {
-				hoverRange: 'hover-range',
 			},
 		}),
 		[

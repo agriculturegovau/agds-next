@@ -147,6 +147,14 @@ export const DateRangePicker = ({
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
+	const closeCalendarAndFocusTrigger = useCallback(() => {
+		closeCalendar();
+		setTimeout(() => {
+			if (inputMode === 'from') fromTriggerRef.current?.focus();
+			else toTriggerRef.current?.focus();
+		}, 0);
+	}, [closeCalendar, fromTriggerRef, inputMode, toTriggerRef]);
+
 	function onFromTriggerClick() {
 		setInputMode('from');
 		toggleCalendar();
@@ -186,7 +194,7 @@ export const DateRangePicker = ({
 			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 				setInputMode(undefined);
 				return;
 			}
@@ -201,7 +209,13 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, dateFormat, inputMode, onChange, valueAsDateOrUndefined]
+		[
+			closeCalendarAndFocusTrigger,
+			dateFormat,
+			inputMode,
+			onChange,
+			valueAsDateOrUndefined,
+		]
 	);
 
 	// From input state
@@ -300,7 +314,6 @@ export const DateRangePicker = ({
 				// Target focus on any currently selected elements (e.g. if to is after)
 				// This covers if dates are mismatched (from is after to) or if only range is selected
 				if (focusDay('td[data-selected="true"]')) return;
-
 				// Default return focus today
 				focusDay('td[data-today="true"]');
 			}, 0);
@@ -317,14 +330,14 @@ export const DateRangePicker = ({
 				e.preventDefault();
 				e.stopPropagation();
 				// Close the calendar and focus the calendar icon
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 				setInputMode(undefined);
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [closeCalendar, isCalendarOpen]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -365,18 +378,16 @@ export const DateRangePicker = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
+			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			autoFocus: false,
 			numberOfMonths,
 			onSelect,
-			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
 			selected: valueAsDateOrUndefined,
 		}),
 		[
 			defaultMonth,
 			disabledCalendarDays,
-			inputMode,
 			numberOfMonths,
 			onSelect,
 			valueAsDateOrUndefined,
