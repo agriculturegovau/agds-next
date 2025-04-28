@@ -24,12 +24,14 @@ const buttonNextPrevious = {
 
 // Date onHover border and background
 const dayOnHover = {
-	backgroundColor: boxPalette.backgroundShade,
 	color: boxPalette.foregroundText,
 	fontWeight: 'bold',
 	textDecoration: 'underline',
 	zIndex: tokens.zIndex.elevated,
 	...highContrastOutlineStyles,
+	'&:not([.rdp-range_start, .rdp-range_end])': {
+		backgroundColor: boxPalette.backgroundShade,
+	},
 	'&::before': {
 		backgroundColor: boxPalette.backgroundShade,
 		borderColor: boxPalette.selected,
