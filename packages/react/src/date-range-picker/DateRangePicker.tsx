@@ -495,15 +495,15 @@ export const DateRangePicker = ({
 					</Flex>
 				</Stack>
 				<CalendarProvider yearRange={yearRange}>
-					<Popover {...popoverProps}>
-						{isCalendarOpen && (
+					{isCalendarOpen && (
+						<Popover {...popoverProps}>
 							<CalendarRange
 								{...calendarProps}
 								calendarRef={calendarRef}
 								css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
 							/>
-						)}
-					</Popover>
+						</Popover>
+					)}
 				</CalendarProvider>
 			</Box>
 		</FieldContainer>

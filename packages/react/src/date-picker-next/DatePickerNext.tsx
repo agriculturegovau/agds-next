@@ -177,6 +177,21 @@ export const DatePickerNext = ({
 
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
+	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
+	// The focus is also set manually to allow us to focus on the end-date when the 'change end date' button is pressed
+	useEffect(() => {
+		// Wrap in timeout 0 to focus after all components renders
+		setTimeout(() => {
+			if (!isCalendarOpen) return;
+
+			// Target focus on any currently selected elements
+			if (focusDay('td[data-selected="true"]')) return;
+
+			// Default return focus today
+			focusDay('td[data-today="true"]');
+		}, 0);
+	}, [isCalendarOpen]);
+
 	// Close the calendar when the user presses the escape key
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -211,7 +226,7 @@ export const DatePickerNext = ({
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
-			autoFocus: true,
+			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			defaultMonth,
 			disabled: disabledCalendarDays,
 			numberOfMonths: 1,
@@ -242,14 +257,25 @@ export const DatePickerNext = ({
 				value={inputValue}
 			/>
 			<CalendarProvider yearRange={yearRange}>
-				<Popover
-					{...popoverProps}
-					css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
-					visibility={isCalendarOpen ? 'visible' : 'hidden'}
-				>
-					{isCalendarOpen && <CalendarSingle {...calendarProps} />}
-				</Popover>
+				{isCalendarOpen && (
+					<Popover
+						{...popoverProps}
+						css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+						visibility={isCalendarOpen ? 'visible' : 'hidden'}
+					>
+						<CalendarSingle {...calendarProps} />
+					</Popover>
+				)}
 			</CalendarProvider>
 		</div>
 	);
 };
+
+// Attempts focus on target and returns true if successful
+function focusDay(queryTarget: string) {
+	const day = document.querySelector(queryTarget);
+	if (!day) return false;
+
+	(day as HTMLElement).focus();
+	return true;
+}
