@@ -154,6 +154,18 @@ export const reactDayPickerStyles = {
 	},
 } as const;
 
+// Start date only picked
+// rdp-day rdp-selected rdp-range_start
+
+// Middle date
+// rdp-day rdp-selected rdp-range_middle
+
+// End date picked
+// rdp-day rdp-selected rdp-range_end
+
+// Start date is end date
+// rdp-day rdp-selected rdp-range_start rdp-range_end
+
 const startStyles = {
 	borderRadius: 0,
 	borderBottomLeftRadius: '50%',

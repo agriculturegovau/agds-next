@@ -351,7 +351,6 @@ const calendarComponents: Partial<CustomComponents> = {
 			className,
 			day,
 			dayProps,
-			disabled,
 			modifiers,
 			onClick,
 			onKeyDown,
@@ -402,23 +401,6 @@ const calendarComponents: Partial<CustomComponents> = {
 			'data-end-day': modifiers?.range_end ? modifiers.range_end : undefined,
 		};
 
-		// The interactive props are typed for Button but are used in the <td>
-		const interactiveProps = {
-			onClick,
-			onKeyDown: handleKeyDown,
-			onMouseEnter: () => {
-				if (onHover && !isHidden) {
-					clearHoveredDay?.cancel();
-					onHover(day.date);
-				}
-			},
-			onMouseLeave: () => {
-				if (onHover && clearHoveredDay && !isHidden) {
-					clearHoveredDay();
-				}
-			},
-		};
-
 		// In react-day-picker v9, the class names `range_start` and `range_end` are only given once both start and end dates are selected
 		// This function checks either start or end date has been selected and returns the classNames
 		function getDateRangeClassNames() {
@@ -448,10 +430,22 @@ const calendarComponents: Partial<CustomComponents> = {
 				{...ariaProps}
 				{...dataProps}
 				className={tableCellClassNames}
-				// @ts-expect-error: Property 'disabled' does not exist on type 'ClassAttributes<HTMLTableDataCellElement> & TdHTMLAttributes<HTMLTableDataCellElement> & { ...; }'
-				disabled={disabled}
+				// @ts-expect-error: Type 'MouseEventHandler<HTMLButtonElement> | undefined' is not assignable to type 'MouseEventHandler<HTMLTableDataCellElement> | undefined'.
+				onClick={onClick}
+				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
+				onKeyDown={handleKeyDown}
+				onMouseEnter={() => {
+					if (onHover && !isHidden) {
+						clearHoveredDay?.cancel();
+						onHover(day.date);
+					}
+				}}
+				onMouseLeave={() => {
+					if (onHover && clearHoveredDay && !isHidden) {
+						clearHoveredDay();
+					}
+				}}
 				ref={ref}
-				{...interactiveProps}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
 				<span tabIndex={-1}>{children}</span>
