@@ -181,8 +181,8 @@ export const DatePicker = ({
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
-		if (isCalendarOpen) closeCalendar();
-	}, [closeCalendar, isCalendarOpen]);
+		if (isCalendarOpen) closeCalendarAndFocusTrigger();
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 

@@ -413,9 +413,7 @@ export const DateRangePicker = ({
 				// Get all table dates and focus on the last date
 				const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
 				const lastDate = tableDates[tableDates.length - 1];
-				if (lastDate instanceof HTMLElement && lastDate.focus) {
-					lastDate.focus();
-				}
+				if (lastDate) (lastDate as HTMLElement).focus();
 			}
 		}
 
@@ -527,9 +525,6 @@ function focusDay(queryTarget: string) {
 	const day = document.querySelector(queryTarget);
 	if (!day) return false;
 
-	if (day instanceof HTMLElement && day.focus) {
-		day.focus();
-		return true;
-	}
-	return false;
+	(day as HTMLElement).focus();
+	return true;
 }

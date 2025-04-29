@@ -82,7 +82,7 @@ export const reactDayPickerStyles = {
 				color: boxPalette.foregroundText,
 			},
 			'&:focus-visible': {
-				// Keep focus outline with day hover styles
+				// Keep focus outline with hover and focus active
 				...packs.outline,
 			},
 		},
@@ -90,8 +90,7 @@ export const reactDayPickerStyles = {
 			zIndex: tokens.zIndex.elevated,
 		},
 		'&:focus-visible': {
-			// Keep focus outline with day hover styles and above other stylings
-			...packs.outline,
+			// Position focus outline above adjacent elements
 			zIndex: tokens.zIndex.elevated + 1,
 		},
 		'@media (min-width: 375px)': {

@@ -99,7 +99,7 @@ export const reactDayPickerStyles = {
 		'&:not([disabled]):hover': {
 			...dayOnHover,
 			'&:focus-visible': {
-				// Keep focus outline when focused and hover
+				// Keep focus outline with hover and focus active
 				...packs.outline,
 			},
 		},
@@ -107,7 +107,7 @@ export const reactDayPickerStyles = {
 			zIndex: tokens.zIndex.elevated,
 		},
 		'&:focus-visible': {
-			// Keep focus outline with day hover styles and above other stylings
+			// Position focus outline above adjacent elements
 			zIndex: tokens.zIndex.elevated + 1,
 		},
 		'& span': {
@@ -238,39 +238,37 @@ export const reactDayRangePickerStyles = (inputMode?: 'from' | 'to') => {
 			...endStyles,
 		},
 
-		...(inputMode && {
-			'.rdp-day': {
-				'&::before': {
-					borderColor: 'transparent',
-					borderStyle: 'solid',
-					borderWidth: tokens.borderWidth.lg,
-					content: '""',
-					inset: 0,
-					pointerEvents: 'none',
-					position: 'absolute',
-					zIndex: -1,
-				} as const,
-				'&:hover:not([disabled])::before': {
-					...(inputMode === 'from' && startStyles),
-					...(inputMode === 'to' && endStyles),
-					...highContrastOutlineStyles,
-					backgroundColor: boxPalette.backgroundShade,
-					borderColor: boxPalette.selected,
-				},
-				'&:hover:not([disabled])': {
-					color: boxPalette.foregroundText,
-					textDecoration: 'underline',
-				},
+		'.rdp-day': {
+			'&::before': {
+				borderColor: 'transparent',
+				borderStyle: 'solid',
+				borderWidth: tokens.borderWidth.lg,
+				content: '""',
+				inset: 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				zIndex: -1,
+			} as const,
+			'&:hover:not([disabled])::before': {
+				...(inputMode === 'from' && startStyles),
+				...(inputMode === 'to' && endStyles),
+				...highContrastOutlineStyles,
+				backgroundColor: boxPalette.backgroundShade,
+				borderColor: boxPalette.selected,
 			},
-			'.rdp-range_start:hover:not([disabled])::before': {
-				borderRadius: inputMode === 'to' ? '50%' : undefined,
+			'&:hover:not([disabled])': {
+				color: boxPalette.foregroundText,
+				textDecoration: 'underline',
 			},
-			'.rdp-range_end:hover:not([disabled])::before': {
-				borderRadius: inputMode === 'from' ? '50%' : undefined,
-			},
-			'.rdp-range_start.rdp-range_end:hover': {
-				backgroundColor: boxPalette.backgroundBody,
-			},
-		}),
+		},
+		'.rdp-range_start:hover:not([disabled])::before': {
+			borderRadius: inputMode === 'to' ? '50%' : undefined,
+		},
+		'.rdp-range_end:hover:not([disabled])::before': {
+			borderRadius: inputMode === 'from' ? '50%' : undefined,
+		},
+		'.rdp-range_start.rdp-range_end:hover': {
+			backgroundColor: boxPalette.backgroundBody,
+		},
 	};
 };
