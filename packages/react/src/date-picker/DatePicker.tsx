@@ -127,6 +127,13 @@ export const DatePicker = ({
 
 	const popover = usePopover();
 
+	const closeCalendarAndFocusTrigger = useCallback(() => {
+		closeCalendar();
+		setTimeout(() => {
+			triggerRef.current?.focus();
+		}, 0);
+	}, [closeCalendar, triggerRef]);
+
 	const onSelect = useCallback<Exclude<PropsSingle['onSelect'], undefined>>(
 		(_selected, triggeredDate, modifiers) => {
 			// If the day is disabled, do nothing
@@ -136,9 +143,9 @@ export const DatePicker = ({
 			// Trigger the callback
 			onChange(triggeredDate);
 			// Close the calendar and focus the calendar icon
-			closeCalendar();
+			closeCalendarAndFocusTrigger();
 		},
-		[closeCalendar, dateFormat, onChange]
+		[closeCalendarAndFocusTrigger, dateFormat, onChange]
 	);
 
 	const [inputValue, setInputValue] = useState(
@@ -186,13 +193,13 @@ export const DatePicker = ({
 				e.preventDefault();
 				e.stopPropagation();
 				// Close the calendar and focus the calendar icon
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [closeCalendar, isCalendarOpen]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -219,7 +226,6 @@ export const DatePicker = ({
 			disabled: disabledCalendarDays,
 			numberOfMonths: 1,
 			onSelect,
-			returnFocusRef: triggerRef,
 			selected: valueAsDateOrUndefined,
 		}),
 		[defaultMonth, disabledCalendarDays, onSelect, valueAsDateOrUndefined]
