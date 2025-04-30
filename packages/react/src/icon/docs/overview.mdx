@@ -23,7 +23,7 @@ Meaningful icons can be used to enhance the experience for sighted users; making
 
 - Use icons, that all users understand, and that clearly represent an intended meaning or context
 - Use icons to support visual recognition of repeatable or consistent system-wide states or actions
-- Always use a meaningful text label and accessible name when using an icon in an action
+- Use a meaningful text label and accessible name when using an icon in an action
 - Avoid using bespoke icons in your applications as you may confuse users
 - Only consider using an icon without a visible label when there is insufficient space and including the label will detract from the user experience.
 
@@ -51,16 +51,17 @@ When using an icon with a button or link, the icon should appear before the text
 
 ## Sizes
 
-Icons are available in sizes medium, large and extra large.
+Icons are available in sizes small, medium, large and extra large.
 
-Medium icons are used in small buttons, in components like accordions, drop-down menus, breadcrumbs and links that are nested in content paragraphs. Always consider the complexity of an icon before using the small variant, as small complex icons may be hard to read for some users.
+Small icons are used in small buttons, in components like accordions, drop-down menus, breadcrumbs and links that are nested in content paragraphs. Always consider the complexity of an icon before using the small variant, as small complex icons may be hard to read for some users.
 
-Large icons are most commonly used in medium-sized buttons and links. All icons of the system are optimised for legibility at this size.
+Medium icons are most commonly used in medium-sized buttons and links. All icons of the system are optimised for legibility at this size.
 
-Extra large icons are used to emphasise content and are most commonly used in empty and error state pages.
+Large and extra large icons are used to emphasise content and are most commonly used in empty and error state pages.
 
 ```jsx live
 <Flex alignItems="center" gap={1}>
+	<SuccessIcon size="sm" />
 	<SuccessIcon size="md" />
 	<SuccessIcon size="lg" />
 	<SuccessIcon size="xl" />
