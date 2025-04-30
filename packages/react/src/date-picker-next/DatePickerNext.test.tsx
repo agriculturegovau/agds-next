@@ -465,7 +465,7 @@ describe('DatePickerNext', () => {
 
 		// Target tests should be run when any changes are made to the component
 		// We disable these tests to reduce runtime duration in pipeline
-		describe('race condition targets', () => {
+		describe.skip('race condition targets', () => {
 			it('focuses on the `selected` date when the calendar opens and there is a date value', async () => {
 				renderDatePickerNext({
 					label: 'Example',

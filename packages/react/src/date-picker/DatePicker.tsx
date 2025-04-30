@@ -187,7 +187,6 @@ export const DatePicker = ({
 	useClickOutside([popover.popoverRef, triggerRef], handleClickOutside);
 
 	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
-	// The focus is also set manually to allow us to focus on the end-date when the 'change end date' button is pressed
 	useEffect(() => {
 		// Wrap in timeout 0 to focus after all components renders
 		setTimeout(() => {

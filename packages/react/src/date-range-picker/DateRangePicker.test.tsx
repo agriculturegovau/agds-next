@@ -1178,7 +1178,7 @@ describe('DateRangePicker', () => {
 				});
 			});
 
-			describe('currently selected', () => {
+			describe('one date currently selected', () => {
 				async function renderAndCheckFocuses({
 					ariaLabel,
 					buttonName,
@@ -1208,7 +1208,7 @@ describe('DateRangePicker', () => {
 					});
 				}
 
-				it('focuses on the `start-date` when only the start date is selected and the "Change start date" button is pressed', async () => {
+				it('focuses on the `start-date` when the start date is selected and the "Change start date" button is pressed', async () => {
 					await renderAndCheckFocuses({
 						ariaLabel: `Selected. ${fromFormattedDate}`,
 						buttonName: `Change start date, ${fromFormattedDate}`,
@@ -1219,7 +1219,7 @@ describe('DateRangePicker', () => {
 					});
 				});
 
-				it('focuses on the `start-date` when only the start date is selected and the "Choose end date" button is pressed', async () => {
+				it('focuses on the `start-date` when the start date is selected and the "Choose end date" button is pressed', async () => {
 					await renderAndCheckFocuses({
 						ariaLabel: `Selected. ${fromFormattedDate}`,
 						buttonName: 'Choose end date',
@@ -1230,7 +1230,7 @@ describe('DateRangePicker', () => {
 					});
 				});
 
-				it('focuses on the `end-date` when only the end date is selected and the "Choose start date" button is pressed', async () => {
+				it('focuses on the `end-date` when the end date is selected and the "Choose start date" button is pressed', async () => {
 					await renderAndCheckFocuses({
 						ariaLabel: `Selected. ${toFormattedDate}`,
 						buttonName: 'Choose start date',
@@ -1241,7 +1241,7 @@ describe('DateRangePicker', () => {
 					});
 				});
 
-				it('focuses on the `end-date` when only the end date is selected and the "Change end date" button is pressed', async () => {
+				it('focuses on the `end-date` when the end date is selected and the "Change end date" button is pressed', async () => {
 					await renderAndCheckFocuses({
 						ariaLabel: `Selected. ${toFormattedDate}`,
 						buttonName: `Change end date, ${toFormattedDate}`,
