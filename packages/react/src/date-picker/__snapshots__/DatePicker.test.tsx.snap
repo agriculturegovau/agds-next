@@ -72,10 +72,6 @@ exports[`DatePicker renders correctly 1`] = `
         class="css-9l8g4f-Field"
       />
     </div>
-    <div
-      class="css-7k6877-boxStyles-Popover-DatePicker"
-      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-    />
   </div>
 </div>
 `;
