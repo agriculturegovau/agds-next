@@ -350,7 +350,7 @@ const calendarComponents: Partial<CustomComponents> = {
 			onClick,
 			onKeyDown,
 			type,
-			...restButtonProps
+			...restDayButtonProps
 		} = props;
 		const { classNames, dayPickerProps, selected } = useDayPicker();
 		const isHidden = modifiers.hidden;
@@ -420,7 +420,7 @@ const calendarComponents: Partial<CustomComponents> = {
 		return (
 			<td
 				{...dayProps}
-				{...restButtonProps}
+				{...restDayButtonProps}
 				{...ariaProps}
 				{...dataProps}
 				className={tableCellClassNames}
