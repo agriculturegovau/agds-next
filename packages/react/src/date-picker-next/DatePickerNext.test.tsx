@@ -3,14 +3,21 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { cleanup, render, screen, act } from '../../../../test-utils';
+import {
+	act,
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from '../../../../test-utils';
 import { Button } from '../button';
 import { DatePickerNext, type DatePickerNextProps } from './DatePickerNext';
 import { formatHumanReadableDate, parseDate } from './utils';
-import { yupDateField, errorMessage } from './test-utils';
+import { errorMessage, yupDateField } from './test-utils';
 
 expect.extend(toHaveNoViolations);
 
@@ -426,6 +433,77 @@ describe('DatePickerNext', () => {
 		expect(onError).not.toHaveBeenCalled();
 		expect(onSubmit).toHaveBeenCalledWith({
 			date: undefined,
+		});
+	});
+
+	describe('focus', () => {
+		const todayDate = new Date(mockSystemTime);
+		const selectedDate = new Date(todayDate);
+		selectedDate.setDate(todayDate.getDate() + 2);
+		const selectedFormattedDate = formatHumanReadableDate(selectedDate);
+
+		it('contains all the required data attributes in the calendar table cells required for focus events', async () => {
+			renderDatePickerNext({
+				label: 'Example',
+				initialValue: selectedDate,
+			});
+
+			const selectDateButton = screen.getByRole('button', {
+				name: `Change date, ${selectedFormattedDate}`,
+			});
+			fireEvent.click(selectDateButton);
+
+			await waitFor(() => {
+				['td[data-selected="true"]', 'td[data-today="true"]'].forEach(
+					(query) => {
+						const element = document.querySelector(query);
+						expect(element).toBeInTheDocument();
+					}
+				);
+			});
+		});
+
+		// Target tests should be run when any changes are made to the component
+		// We disable these tests to reduce runtime duration in pipeline
+		describe.skip('race condition targets', () => {
+			it('focuses on the `selected` date when the calendar opens and there is a date value', async () => {
+				renderDatePickerNext({
+					label: 'Example',
+					initialValue: selectedDate,
+				});
+
+				const selectDateButton = screen.getByRole('button', {
+					name: `Change date, ${selectedFormattedDate}`,
+				});
+				fireEvent.click(selectDateButton);
+
+				await waitFor(() => {
+					const selectedDateElement = document.querySelector(
+						'td[data-selected="true"]'
+					);
+					expect(selectedDateElement).toBeInTheDocument();
+					expect(selectedDateElement).toHaveFocus();
+				});
+			});
+
+			it('focuses on the `today` date when the calendar opens and there is no date value', async () => {
+				renderDatePickerNext({
+					label: 'Example',
+				});
+
+				const selectDateButton = screen.getByRole('button', {
+					name: `Choose date`,
+				});
+				fireEvent.click(selectDateButton);
+
+				await waitFor(() => {
+					const todayDateElement = document.querySelector(
+						'td[data-today="true"]'
+					);
+					expect(todayDateElement).toBeInTheDocument();
+					expect(todayDateElement).toHaveFocus();
+				});
+			});
 		});
 	});
 });

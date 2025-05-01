@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, type Ref } from 'react';
 import { Box } from '../box';
 import {
 	reactDayPickerStyles,
@@ -24,26 +24,25 @@ export function CalendarContainer({ children }: CalendarContainerProps) {
 }
 
 export type CalendarRangeContainerProps = PropsWithChildren<{
+	calendarRef?: Ref<HTMLDivElement>;
 	dateRange?: { from?: Date; to?: Date };
 	inputMode?: 'from' | 'to';
 }>;
 
 export function CalendarRangeContainer({
+	calendarRef,
 	children,
-	dateRange,
 	inputMode,
 }: CalendarRangeContainerProps) {
 	return (
 		<Box
 			aria-label="Choose date range"
 			aria-modal
-			css={[
-				reactDayPickerStyles,
-				reactDayRangePickerStyles(dateRange, inputMode),
-			]}
+			css={[reactDayPickerStyles, reactDayRangePickerStyles(inputMode)]}
 			display="inline-block"
 			paddingX={[0.25, 1]}
 			paddingY={1}
+			ref={calendarRef}
 			role="dialog"
 		>
 			{children}

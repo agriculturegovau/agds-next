@@ -1,45 +1,50 @@
 import {
-	Fragment,
-	type ChangeEvent,
-	type ChangeEventHandler,
-	type MouseEventHandler,
-	type RefObject,
-	useCallback,
-	useMemo,
-	useRef,
-} from 'react';
-import FocusLock from 'react-focus-lock';
-import {
-	CustomComponents,
-	DayPicker,
-	type CaptionLabelProps,
-	type CaptionProps,
-	type DayPickerRangeProps,
-	type DayPickerSingleProps,
-	type DayProps,
-	type RowProps,
-	useDayPicker,
-	useDayRender,
-	useNavigation,
-} from 'react-day-picker';
-import {
 	addDays,
 	format,
 	getMonth,
-	getUnixTime,
 	getYear,
 	startOfISOWeek,
 	startOfWeek,
 	type Locale,
 } from 'date-fns';
+import React, {
+	Fragment,
+	type ChangeEvent,
+	type ChangeEventHandler,
+	type MouseEventHandler,
+	type ReactElement,
+	type Ref,
+	useCallback,
+	useMemo,
+} from 'react';
+import {
+	DayPicker,
+	type CaptionLabelProps,
+	type CustomComponents,
+	type DateRange,
+	type DayButtonProps,
+	type DayProps,
+	type MonthCaptionProps,
+	type PropsBase,
+	type PropsRange,
+	type PropsSingle,
+	type WeekdaysProps,
+	useDayPicker,
+} from 'react-day-picker';
+import FocusLock from 'react-focus-lock';
+import { visuallyHiddenStyles } from '../a11y';
+import { Box } from '../box';
 import { boxPalette, mapSpacing, tokens, useId } from '../core';
 import { formatHumanReadableDate } from '../date-picker-next/utils';
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
-import { Box } from '../box';
 import { Flex } from '../flex';
-import { visuallyHiddenStyles } from '../a11y';
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '../icon';
 import { CalendarContainer, CalendarRangeContainer } from './CalendarContainer';
 import { useCalendar } from './CalendarContext';
+
+type CustomCaptionLabelProps = CaptionLabelProps & { displayIndex: number };
+type CustomDayButtonProps = DayButtonProps & {
+	dayProps: DayProps;
+};
 
 /**
  * Generate a series of 7 days, starting from the week, to use for formatting
@@ -65,13 +70,13 @@ export function getWeekdays(
 }
 
 export type CalendarSingleProps = Omit<
-	DayPickerSingleProps,
+	PropsBase & PropsSingle,
 	'mode' | 'components'
 >;
 
 export function CalendarSingle(props: CalendarSingleProps) {
 	return (
-		<FocusLock autoFocus={false} returnFocus>
+		<FocusLock autoFocus={false}>
 			<CalendarContainer>
 				<DayPicker mode="single" {...defaultDayPickerProps} {...props} />
 			</CalendarContainer>
@@ -80,26 +85,16 @@ export function CalendarSingle(props: CalendarSingleProps) {
 }
 
 export type CalendarRangeProps = Omit<
-	DayPickerRangeProps,
+	PropsBase & PropsRange,
 	'mode' | 'components'
 > & {
-	returnFocusRef?: RefObject<HTMLButtonElement>;
+	calendarRef?: Ref<HTMLDivElement>;
 };
 
-export function CalendarRange({
-	returnFocusRef,
-	...props
-}: CalendarRangeProps) {
+export function CalendarRange({ calendarRef, ...props }: CalendarRangeProps) {
 	return (
-		<FocusLock
-			autoFocus={false}
-			onDeactivation={() => {
-				// https://github.com/theKashey/react-focus-lock#unmounting-and-focus-management
-				if (!returnFocusRef) return;
-				window.setTimeout(() => returnFocusRef.current?.focus(), 0);
-			}}
-		>
-			<CalendarRangeContainer dateRange={props.selected}>
+		<FocusLock autoFocus={false}>
+			<CalendarRangeContainer calendarRef={calendarRef}>
 				<DayPicker mode="range" {...defaultDayPickerProps} {...props} />
 			</CalendarRangeContainer>
 		</FocusLock>
@@ -108,24 +103,29 @@ export function CalendarRange({
 
 const currentYear = getYear(new Date());
 
-const calendarComponents: CustomComponents = {
+const calendarComponents: Partial<CustomComponents> = {
+	// Nav is combined with the `MonthCaption` component, this forces an override to remove a duplicated navigation
+	Nav: function Nav() {
+		return null;
+	},
 	/*
-		Custom `Caption` component to improve acessibility and focus order of react-day-picker
+		Custom `Caption` component to improve accessibility and focus order of react-day-picker
 		Default:
-		* Caption.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Caption.tsx
-		* CaptionNavigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/CaptionNavigation.tsx
-		* Navigation.tsx: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Navigation.tsx
+		* MonthCaption.tsx: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/MonthCaption.tsx
+		* Nav.tsx: https://github.com/gpbl/react-day-picker/blob/48f00dc20f920ee2174eb5b196bb0034b4ac19d1/src/components/Nav.tsx
 	*/
-	Caption: function Caption(props: CaptionProps) {
+	MonthCaption: function MonthCaption(props: MonthCaptionProps) {
+		const { children, displayIndex } = props;
 		const {
 			classNames,
-			styles,
 			components,
+			goToMonth,
 			labels: { labelPrevious, labelNext },
-			locale,
+			months,
+			nextMonth,
+			previousMonth,
+			styles,
 		} = useDayPicker();
-		const { displayMonths, previousMonth, nextMonth, goToMonth } =
-			useNavigation();
 
 		const handlePreviousClick: MouseEventHandler = () => {
 			if (!previousMonth) return;
@@ -139,31 +139,18 @@ const calendarComponents: CustomComponents = {
 
 		const CaptionLabelComponent = components?.CaptionLabel;
 
-		const previousLabel = labelPrevious(previousMonth, { locale });
-		const previousClassName = [
-			classNames.button_reset,
-			classNames.button,
-			classNames.nav_button,
-			classNames.nav_button_previous,
-		].join(' ');
+		const previousLabel = labelPrevious(previousMonth);
+		const nextLabel = labelNext(nextMonth);
 
-		const nextLabel = labelNext(nextMonth, { locale });
-		const nextClassName = [
-			classNames.button_reset,
-			classNames.button,
-			classNames.nav_button,
-			classNames.nav_button_next,
-		].join(' ');
-
-		const isFirst = props.displayIndex === 0;
-		const isLast = props.displayIndex === displayMonths.length - 1;
+		const isFirst = displayIndex === 0;
+		const isLast = displayIndex === months.length - 1;
 
 		return (
-			<div className={classNames.caption} style={styles.caption}>
+			<div className={classNames.month_caption} style={styles?.month_caption}>
 				{isFirst && (
 					<button
 						aria-label={previousLabel}
-						className={previousClassName}
+						className={classNames.button_previous}
 						disabled={!previousMonth}
 						onClick={handlePreviousClick}
 						type="button"
@@ -173,15 +160,14 @@ const calendarComponents: CustomComponents = {
 				)}
 				{CaptionLabelComponent && (
 					<CaptionLabelComponent
+						{...(children as ReactElement).props}
 						displayIndex={props.displayIndex}
-						displayMonth={props.displayMonth}
-						id={props.id}
 					/>
 				)}
 				{isLast && (
 					<button
 						aria-label={nextLabel}
-						className={nextClassName}
+						className={classNames.button_next}
 						disabled={!nextMonth}
 						onClick={handleNextClick}
 						type="button"
@@ -194,13 +180,13 @@ const calendarComponents: CustomComponents = {
 	},
 	// Customizing the label to include a year dropdown
 	// By default, the year select will include the previous and next 10 years
-	// Context  is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
-	CaptionLabel: function CaptionLabel({
-		displayIndex,
-		displayMonth,
-		id,
-	}: CaptionLabelProps) {
-		const { goToMonth } = useNavigation();
+	// Context is used to pass props between the react components we own (e.g. CalendarRange) and react-day-picker components
+	// Default: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/CaptionLabel.tsx
+	// @ts-expect-error: Type 'HTMLAttributes<HTMLSpanElement>' is not assignable to type 'CustomCaptionLabelProps'.
+	CaptionLabel: function CaptionLabel(props: CustomCaptionLabelProps) {
+		const { displayIndex } = props;
+		const { goToMonth, months } = useDayPicker();
+		const displayMonth = months[displayIndex].date;
 
 		const month = getMonth(displayMonth);
 		const year = getYear(displayMonth);
@@ -272,7 +258,7 @@ const calendarComponents: CustomComponents = {
 
 		return yearOptions.length > 1 ? (
 			<Fragment>
-				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles} id={id}>
+				<h2 aria-atomic aria-live="polite" css={visuallyHiddenStyles}>
 					{formattedMonthYear}
 				</h2>
 				<Flex gap={0.5} justifyContent="center" width="100%">
@@ -297,82 +283,83 @@ const calendarComponents: CustomComponents = {
 				as="h2"
 				fontSize="lg"
 				fontWeight="bold"
-				id={id}
 				lineHeight="heading"
 			>
 				{formattedMonthYear}
 			</Box>
 		);
 	},
-	// Custom `HeadRow` component to abide by Date Picker Dialog ARIA pattern
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/HeadRow.tsx
-	// HeadRow: function HeadRow() {
-	// 	const {
-	// 		classNames,
-	// 		styles,
-	// 		locale,
-	// 		weekStartsOn,
-	// 		ISOWeek,
-	// 		formatters: { formatWeekdayName },
-	// 		labels: { labelWeekday },
-	// 	} = useDayPicker();
-
-	// 	const weekdays = getWeekdays(locale, weekStartsOn, ISOWeek);
-
-	// 	return (
-	// 		<tr style={styles.head_row} className={classNames.head_row}>
-	// 			{weekdays.map((weekday, i) => (
-	// 				<th
-	// 					key={i}
-	// 					scope="col"
-	// 					className={classNames.head_cell}
-	// 					style={styles.head_cell}
-	// 					// I disagree with using abbr instead of aria-label as it's never announced
-	// 					// As per MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#abbr
-	// 					// A short, abbreviated description of the header cell's content provided as an alternative label to use for the header cell when referencing the cell in other contexts. Some user-agents, such as speech readers, may present this description before the content itself.
-	// 					abbr={labelWeekday(weekday, { locale })}
-	// 				>
-	// 					{formatWeekdayName(weekday, { locale })}
-	// 				</th>
-	// 			))}
-	// 		</tr>
-	// 	);
-	// },
-	// Custom `Row` component to abide by Date Picker Dialog ARIA pattern
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Row.tsx
-	Row: function Row(props: RowProps) {
-		const { styles, classNames, components } = useDayPicker();
-
-		// Will always have a DayComponent. To satisfy TypeScript only
-		const DayComponent = components?.Day;
-		if (!DayComponent) return null;
-
+	// Overwrite the default `Weekdays` that passes `aria-hidden` into the <thead> which is not correct
+	// Default: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/Weekdays.tsx
+	Weekdays: function Weekdays(props: WeekdaysProps) {
 		return (
-			<tr className={classNames.row} style={styles.row}>
-				{props.dates.map((date) => (
-					<DayComponent
-						date={date}
-						displayMonth={props.displayMonth}
-						key={getUnixTime(date)}
-					/>
-				))}
-			</tr>
+			<thead>
+				<tr {...props} />
+			</thead>
 		);
 	},
-	// Custom `Day` component to abide by the Date Picker Dialog ARIA pattern
-	// Key change: we no longer render <button>s, everything happens on <td>s
-	// Default: https://github.com/gpbl/react-day-picker/blob/9ad13dc72fff814dcf720a62f6e3b5ea38e8af6d/src/components/Day.tsx
+	// Custom `Day` that passes properties to the `DayButton` component or renders hidden table cells
+	// In v9 `Day` was split into both `Day` and `DayButton`
+	// Default: https://github.com/gpbl/react-day-picker/blob/af8deb602b7ebb4c0f99a86139b63041352157bf/src/components/Day.tsx
 	Day: function Day(props: DayProps) {
-		const buttonRef = useRef<HTMLButtonElement>(null);
-		const { activeModifiers, buttonProps, isHidden } = useDayRender(
-			props.date,
-			props.displayMonth,
-			buttonRef
-		);
+		const { children, modifiers } = props;
+		const { components } = useDayPicker();
 
-		// @ts-expect-error: role is unused
-		const { children, onClick, onKeyDown, role, ...restButtonProps } =
-			buttonProps;
+		// Draw hidden day table cells
+		if (modifiers.hidden || !children) {
+			return (
+				<td tabIndex={-1}>
+					{/* Without this focusable span, left and right do not work in screen readers */}
+					<span tabIndex={-1}>{children}</span>
+				</td>
+			);
+		}
+
+		// We have to pass the props into the DayButton component to be rendered into the `<td>`
+		// Filter out the props that are not required
+		const dayProps = {
+			...props,
+			children: undefined,
+			day: undefined,
+			modifiers: undefined,
+			role: undefined, // Redundant role "gridcell" on <td> [no-redundant-role]
+		};
+		const DayButtonComponent = components.DayButton;
+		return (
+			<DayButtonComponent
+				{...(children as ReactElement).props}
+				dayProps={dayProps}
+			/>
+		);
+	},
+	/**
+	 * Custom `DayButton` component combined with the `Day` component to abide by Date Picker Dialog ARIA pattern
+	 * Both props are merged into the table cell: `Day` contains styling and current states, `DayButton` contains functionality and events
+	 * Key change: we no longer render <button>s, everything happens on <td>s
+	 * Default DayButton: https://github.com/gpbl/react-day-picker/blob/667be07ff1884257abbbafc005008f18ef318cc9/src/components/DayButton.tsx
+	 * Default Day: https://github.com/gpbl/react-day-picker/blob/af8deb602b7ebb4c0f99a86139b63041352157bf/src/components/Day.tsx
+	 */
+	// @ts-expect-error Property 'dayClassName' is missing in type '{ day: CalendarDay; modifiers: Modifiers; } & ButtonHTMLAttributes<HTMLButtonElement>'
+	DayButton: function DayButton(props: CustomDayButtonProps) {
+		const {
+			children,
+			className,
+			day,
+			dayProps,
+			modifiers,
+			onClick,
+			onKeyDown,
+			type,
+			...restDayButtonProps
+		} = props;
+		const { classNames, dayPickerProps, selected } = useDayPicker();
+		const isHidden = modifiers.hidden;
+
+		// Default `DayButton` component, required for arrow-key navigation
+		const ref = React.useRef<HTMLTableCellElement>(null);
+		React.useEffect(() => {
+			if (modifiers.focused) ref.current?.focus();
+		}, [modifiers.focused]);
 
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (!isHidden && (event.key === 'Enter' || event.key === 'Space')) {
@@ -386,35 +373,65 @@ const calendarComponents: CustomComponents = {
 			}
 		};
 
-		const interactiveProps = {
-			'aria-current': activeModifiers.today ? 'date' : undefined,
+		const ariaProps = {
+			'aria-current': modifiers.today ? 'date' : undefined,
 			// Improve the aria labels of each button.
 			// Selected and dates within range are manually announced.
 			'aria-label': `${
-				activeModifiers.selected && !activeModifiers.range_middle
-					? 'Selected. '
-					: ''
-			}${formatHumanReadableDate(props.date)}${
-				activeModifiers.range_middle ? '. Between selected dates' : ''
+				modifiers.selected && !modifiers?.range_middle ? 'Selected. ' : ''
+			}${formatHumanReadableDate(day.date)}${
+				modifiers?.range_middle ? '. Between selected dates' : ''
 			}`,
 			'aria-selected':
 				// React Day Picker incorrectly marks ranges as selected
-				activeModifiers.range_middle ? undefined : activeModifiers.selected,
-			onClick,
-			...restButtonProps,
+				modifiers?.range_middle ? undefined : modifiers.selected,
 		};
+
+		// Custom start and end selectors for focus, modifiers ranges are only applied after both are selected
+		const dataProps = {
+			'data-start-day': modifiers?.range_start
+				? modifiers.range_start
+				: undefined,
+			'data-end-day': modifiers?.range_end ? modifiers.range_end : undefined,
+		};
+
+		// In react-day-picker v9, the class names `range_start` and `range_end` are only given once both start and end dates are selected
+		// This function checks either start or end date has been selected and returns the classNames
+		function getDateRangeClassNames() {
+			// Only check in `range` mode
+			if (dayPickerProps.mode !== 'range') return [];
+			// Check if cell is selected and if a start or end date has been selected
+			if (!modifiers.selected || !selected) return [];
+
+			const { to, from } = selected as DateRange;
+			// Only start date selected
+			if (from && !to) return [classNames.range_start];
+			// Only end date selected
+			if (!from && to) return [classNames.range_end];
+
+			return [];
+		}
+
+		const tableCellClassNames = [
+			dayProps.className,
+			...getDateRangeClassNames(),
+		].join(' ');
 
 		return (
 			<td
+				{...dayProps}
+				{...restDayButtonProps}
+				{...ariaProps}
+				{...dataProps}
+				className={tableCellClassNames}
+				// @ts-expect-error: Type 'MouseEventHandler<HTMLButtonElement> | undefined' is not assignable to type 'MouseEventHandler<HTMLTableDataCellElement> | undefined'.
+				onClick={onClick}
 				// @ts-expect-error: Type '(event: KeyboardEvent) => void' is not assignable to type 'KeyboardEventHandler<HTMLTableDataCellElement>'.
 				onKeyDown={handleKeyDown}
-				// @ts-expect-error: Type 'RefObject<HTMLButtonElement>' is not assignable to type 'LegacyRef<HTMLTableDataCellElement> | undefined'
-				ref={buttonRef}
-				tabIndex={-1}
-				{...(isHidden ? undefined : interactiveProps)}
+				ref={ref}
 			>
 				{/* Without this focusable span, left and right do not work in screen readers */}
-				<span tabIndex={-1}>{isHidden ? undefined : children}</span>
+				<span tabIndex={-1}>{children}</span>
 			</td>
 		);
 	},
