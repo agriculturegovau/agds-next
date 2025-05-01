@@ -7,7 +7,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for="field-«r0»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -50,7 +50,7 @@ exports[`SearchInput Basic renders correctly 1`] = `
         aria-required="false"
         autocomplete="off"
         class="css-cpic2n"
-        id="field-:r0:"
+        id="field-«r0»"
         type="search"
         value=""
       />
@@ -70,7 +70,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r4:"
+      for="field-«r4»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -112,7 +112,7 @@ exports[`SearchInput Invalid renders correctly 1`] = `
       </div>
       <span
         class="css-o7cidz-boxStyles"
-        id="field-:r4:-message"
+        id="field-«r4»-message"
       >
         A search term is required to see results
       </span>
@@ -142,12 +142,12 @@ exports[`SearchInput Invalid renders correctly 1`] = `
         />
       </svg>
       <input
-        aria-describedby="field-:r4:-message"
+        aria-describedby="field-«r4»-message"
         aria-invalid="true"
         aria-required="false"
         autocomplete="off"
         class="css-cpic2n"
-        id="field-:r4:"
+        id="field-«r4»"
         type="search"
         value=""
       />
@@ -167,7 +167,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for="field-«r2»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -183,7 +183,7 @@ exports[`SearchInput With hint renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r2:-hint"
+      id="field-«r2»-hint"
     >
       Hint text
     </span>
@@ -212,12 +212,12 @@ exports[`SearchInput With hint renders correctly 1`] = `
         />
       </svg>
       <input
-        aria-describedby="field-:r2:-hint"
+        aria-describedby="field-«r2»-hint"
         aria-invalid="false"
         aria-required="false"
         autocomplete="off"
         class="css-cpic2n"
-        id="field-:r2:"
+        id="field-«r2»"
         type="search"
         value=""
       />

@@ -3,11 +3,11 @@
 exports[`DropdownMenu Decorative renders correctly 1`] = `
 <div>
   <button
-    aria-controls="dropdown-menu-:ru:-panel"
+    aria-controls="dropdown-menu-«ru»-panel"
     aria-expanded="true"
     aria-haspopup="true"
     class="css-psfrx5-BaseButton-Button"
-    id="dropdown-menu-:ru:-button"
+    id="dropdown-menu-«ru»-button"
     type="button"
   >
     <span>
@@ -38,16 +38,16 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </svg>
   </button>
   <div
-    aria-labelledby="dropdown-menu-:ru:-button"
+    aria-labelledby="dropdown-menu-«ru»-button"
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
-    id="dropdown-menu-:ru:-panel"
+    id="dropdown-menu-«ru»-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:ru:-item-:rv:"
+      id="dropdown-menu-«ru»-item-«rv»"
       role="menuitem"
       tabindex="-1"
     >
@@ -87,7 +87,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </div>
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:ru:-item-:r10:"
+      id="dropdown-menu-«ru»-item-«r10»"
       role="menuitem"
       tabindex="-1"
     >
@@ -138,7 +138,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     />
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:ru:-item-:r11:"
+      id="dropdown-menu-«ru»-item-«r11»"
       role="menuitem"
       tabindex="-1"
     >
@@ -183,11 +183,11 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
 exports[`DropdownMenu Links renders correctly 1`] = `
 <div>
   <button
-    aria-controls="dropdown-menu-:r16:-panel"
+    aria-controls="dropdown-menu-«r16»-panel"
     aria-expanded="true"
     aria-haspopup="true"
     class="css-psfrx5-BaseButton-Button"
-    id="dropdown-menu-:r16:-button"
+    id="dropdown-menu-«r16»-button"
     type="button"
   >
     <span>
@@ -218,9 +218,9 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     </svg>
   </button>
   <div
-    aria-labelledby="dropdown-menu-:r16:-button"
+    aria-labelledby="dropdown-menu-«r16»-button"
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
-    id="dropdown-menu-:r16:-panel"
+    id="dropdown-menu-«r16»-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
@@ -228,7 +228,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     <a
       class="css-1we45ed-boxStyles-DropdownMenuItem"
       href="/about"
-      id="dropdown-menu-:r16:-item-:r17:"
+      id="dropdown-menu-«r16»-item-«r17»"
       role="menuitem"
       tabindex="-1"
     >
@@ -248,7 +248,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     <a
       class="css-1we45ed-boxStyles-DropdownMenuItem"
       href="/contact"
-      id="dropdown-menu-:r16:-item-:r18:"
+      id="dropdown-menu-«r16»-item-«r18»"
       role="menuitem"
       tabindex="-1"
     >
@@ -272,11 +272,11 @@ exports[`DropdownMenu Links renders correctly 1`] = `
 exports[`DropdownMenu Radio Group renders correctly 1`] = `
 <div>
   <button
-    aria-controls="dropdown-menu-:r1i:-panel"
+    aria-controls="dropdown-menu-«r1i»-panel"
     aria-expanded="true"
     aria-haspopup="true"
     class="css-psfrx5-BaseButton-Button"
-    id="dropdown-menu-:r1i:-button"
+    id="dropdown-menu-«r1i»-button"
     type="button"
   >
     <span>
@@ -307,20 +307,20 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     </svg>
   </button>
   <div
-    aria-labelledby="dropdown-menu-:r1i:-button"
+    aria-labelledby="dropdown-menu-«r1i»-button"
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
-    id="dropdown-menu-:r1i:-panel"
+    id="dropdown-menu-«r1i»-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
-      aria-labelledby="dropdown-menu-:r1i:-group-:r1j:"
+      aria-labelledby="dropdown-menu-«r1i»-group-«r1j»"
       role="group"
     >
       <span
         class="css-u1nrgg-boxStyles"
-        id="dropdown-menu-:r1i:-group-:r1j:"
+        id="dropdown-menu-«r1i»-group-«r1j»"
       >
         Businesses
       </span>
@@ -404,11 +404,11 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
 exports[`DropdownMenu renders correctly 1`] = `
 <div>
   <button
-    aria-controls="dropdown-menu-:r0:-panel"
+    aria-controls="dropdown-menu-«r0»-panel"
     aria-expanded="true"
     aria-haspopup="true"
     class="css-psfrx5-BaseButton-Button"
-    id="dropdown-menu-:r0:-button"
+    id="dropdown-menu-«r0»-button"
     type="button"
   >
     <span>
@@ -439,16 +439,16 @@ exports[`DropdownMenu renders correctly 1`] = `
     </svg>
   </button>
   <div
-    aria-labelledby="dropdown-menu-:r0:-button"
+    aria-labelledby="dropdown-menu-«r0»-button"
     class="css-lbt6m6-boxStyles-boxStyles-Popover"
-    id="dropdown-menu-:r0:-panel"
+    id="dropdown-menu-«r0»-panel"
     role="menu"
     style="position: absolute; left: 0px; top: 0px; transform: translate(1px, 8px); max-height: -16px; max-width: calc(100vw - 2px);"
     tabindex="-1"
   >
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:r0:-item-:r1:"
+      id="dropdown-menu-«r0»-item-«r1»"
       role="menuitem"
       tabindex="-1"
     >
@@ -467,7 +467,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </div>
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:r0:-item-:r2:"
+      id="dropdown-menu-«r0»-item-«r2»"
       role="menuitem"
       tabindex="-1"
     >
@@ -486,7 +486,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </div>
     <div
       class="css-1we45ed-boxStyles-DropdownMenuItem"
-      id="dropdown-menu-:r0:-item-:r3:"
+      id="dropdown-menu-«r0»-item-«r3»"
       role="menuitem"
       tabindex="-1"
     >

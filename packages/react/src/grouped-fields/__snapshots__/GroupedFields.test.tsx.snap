@@ -54,7 +54,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
           </div>
           <span
             class="css-o7cidz-boxStyles"
-            id="grouped-fields-:r6:-message"
+            id="grouped-fields-«r6»-message"
           >
             Enter a valid value
           </span>
@@ -67,7 +67,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r7:"
+              for="field-«r7»"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -82,11 +82,11 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               </span>
             </label>
             <input
-              aria-describedby="grouped-fields-:r6:-message"
+              aria-describedby="grouped-fields-«r6»-message"
               aria-invalid="true"
               aria-required="false"
               class="css-mtd7ku"
-              id="field-:r7:"
+              id="field-«r7»"
               type="text"
             />
             <div
@@ -99,7 +99,7 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r8:"
+              for="field-«r8»"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -117,11 +117,11 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
               class="css-1bg5d3h-SelectContainer"
             >
               <select
-                aria-describedby="grouped-fields-:r6:-message"
+                aria-describedby="grouped-fields-«r6»-message"
                 aria-invalid="true"
                 aria-required="false"
                 class="css-kwpsq8"
-                id="field-:r8:"
+                id="field-«r8»"
               >
                 <option
                   value=""
@@ -207,7 +207,7 @@ exports[`GroupedFields renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r1:"
+              for="field-«r1»"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -225,7 +225,7 @@ exports[`GroupedFields renders correctly 1`] = `
               aria-invalid="false"
               aria-required="false"
               class="css-mtd7ku"
-              id="field-:r1:"
+              id="field-«r1»"
               type="text"
             />
             <div
@@ -238,7 +238,7 @@ exports[`GroupedFields renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="field-:r2:"
+              for="field-«r2»"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -259,7 +259,7 @@ exports[`GroupedFields renders correctly 1`] = `
                 aria-invalid="false"
                 aria-required="false"
                 class="css-kwpsq8"
-                id="field-:r2:"
+                id="field-«r2»"
               >
                 <option
                   value=""

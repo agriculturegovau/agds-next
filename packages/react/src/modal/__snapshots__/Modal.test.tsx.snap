@@ -17,7 +17,7 @@ exports[`Modal renders correctly 1`] = `
       data-focus-lock-disabled="false"
     >
       <div
-        aria-labelledby="modal-:r0:-title"
+        aria-labelledby="modal-«r0»-title"
         aria-modal="true"
         class="css-1y0y207-boxStyles-ModalDialog"
         role="dialog"
@@ -57,7 +57,7 @@ exports[`Modal renders correctly 1`] = `
         <h2
           class="css-lltnmr-boxStyles"
           data-autofocus="true"
-          id="modal-:r0:-title"
+          id="modal-«r0»-title"
           tabindex="-1"
         >
           Modal title

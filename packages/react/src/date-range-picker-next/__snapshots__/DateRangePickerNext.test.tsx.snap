@@ -4,7 +4,7 @@ exports[`DateRangePickerNext renders correctly 1`] = `
 <div>
   <div
     class="css-1904cz9-boxStyles-FieldContainer"
-    id="date-range-picker-:r0:"
+    id="date-range-picker-«r0»"
   >
     <fieldset
       class="css-79i25n-boxStyles"
@@ -35,7 +35,7 @@ exports[`DateRangePickerNext renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="date-range-picker-:r0:-from"
+              for="date-range-picker-«r0»-from"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -57,7 +57,7 @@ exports[`DateRangePickerNext renders correctly 1`] = `
                 aria-required="false"
                 autocomplete="off"
                 class="css-vgeom5-DateInput"
-                id="date-range-picker-:r0:-from"
+                id="date-range-picker-«r0»-from"
                 type="text"
                 value="01/01/2000"
               />
@@ -104,7 +104,7 @@ exports[`DateRangePickerNext renders correctly 1`] = `
           >
             <label
               class="css-79i25n-boxStyles"
-              for="date-range-picker-:r0:-to"
+              for="date-range-picker-«r0»-to"
             >
               <span
                 class="css-1jywj6f-boxStyles"
@@ -126,7 +126,7 @@ exports[`DateRangePickerNext renders correctly 1`] = `
                 aria-required="false"
                 autocomplete="off"
                 class="css-vgeom5-DateInput"
-                id="date-range-picker-:r0:-to"
+                id="date-range-picker-«r0»-to"
                 type="text"
                 value="02/01/2000"
               />
