@@ -15,6 +15,7 @@ import { type FieldMaxWidth, useClickOutside, useTernaryState } from '../core';
 import { DateInput } from '../date-picker-next/DatePickerInput';
 import {
 	acceptedDateFormats,
+	focusDay,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
 	normaliseDateString,
@@ -279,12 +280,3 @@ export const DatePicker = ({
 		</div>
 	);
 };
-
-// Attempts focus on target and returns true if successful
-function focusDay(queryTarget: string) {
-	const day = document.querySelector(queryTarget);
-	if (!day) return false;
-
-	(day as HTMLElement).focus();
-	return true;
-}

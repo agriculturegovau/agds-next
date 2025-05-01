@@ -18,6 +18,7 @@ import { DateInput } from './DatePickerInput';
 import {
 	acceptedDateFormats,
 	asDate,
+	focusDay,
 	formatDate,
 	getCalendarDefaultMonth,
 	getDateInputButtonAriaLabel,
@@ -269,12 +270,3 @@ export const DatePickerNext = ({
 		</div>
 	);
 };
-
-// Attempts focus on target and returns true if successful
-function focusDay(queryTarget: string) {
-	const day = document.querySelector(queryTarget);
-	if (!day) return false;
-
-	(day as HTMLElement).focus();
-	return true;
-}

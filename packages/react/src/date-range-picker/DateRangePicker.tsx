@@ -31,6 +31,7 @@ import {
 } from '../date-picker/utils';
 import {
 	acceptedDateFormats,
+	focusDay,
 	getDateInputButtonAriaLabel,
 	normaliseDateString,
 	type AcceptedDateFormats,
@@ -518,13 +519,4 @@ export function useDateRangePickerIds(idProp?: string) {
 	const fromId = `date-range-picker-${autoId}-from`;
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
-}
-
-// Attempts focus on target and returns true if successful
-function focusDay(queryTarget: string) {
-	const day = document.querySelector(queryTarget);
-	if (!day) return false;
-
-	(day as HTMLElement).focus();
-	return true;
 }

@@ -22,30 +22,6 @@ const buttonNextPrevious = {
 	...focusStyles,
 } as const;
 
-// Date onHover border and background
-const dayOnHover = {
-	color: boxPalette.foregroundText,
-	fontWeight: 'bold',
-	textDecoration: 'underline',
-	zIndex: tokens.zIndex.elevated,
-	...highContrastOutlineStyles,
-	'&:not([.rdp-range_start, .rdp-range_end])': {
-		backgroundColor: boxPalette.backgroundShade,
-	},
-	'&::before': {
-		backgroundColor: boxPalette.backgroundShade,
-		borderColor: boxPalette.selected,
-		borderRadius: '0.25rem',
-		borderStyle: 'solid',
-		borderWidth: tokens.borderWidth.lg,
-		content: '""',
-		inset: 0,
-		pointerEvents: 'none',
-		position: 'absolute',
-		zIndex: -1,
-	},
-} as const;
-
 export const reactDayPickerStyles = {
 	// Header
 	'.rdp-month_caption': {
@@ -97,7 +73,26 @@ export const reactDayPickerStyles = {
 			opacity: 0.3,
 		},
 		'&:not([disabled]):hover': {
-			...dayOnHover,
+			color: boxPalette.foregroundText,
+			fontWeight: 'bold',
+			textDecoration: 'underline',
+			zIndex: tokens.zIndex.elevated,
+			...highContrastOutlineStyles,
+			'&:not([.rdp-range_start, .rdp-range_end])': {
+				backgroundColor: boxPalette.backgroundShade,
+			},
+			'&::before': {
+				backgroundColor: boxPalette.backgroundShade,
+				borderColor: boxPalette.selected,
+				borderRadius: '0.25rem',
+				borderStyle: 'solid',
+				borderWidth: tokens.borderWidth.lg,
+				content: '""',
+				inset: 0,
+				pointerEvents: 'none',
+				position: 'absolute',
+				zIndex: -1,
+			},
 			'&:focus-visible': {
 				// Keep focus outline with hover and focus active
 				...packs.outline,

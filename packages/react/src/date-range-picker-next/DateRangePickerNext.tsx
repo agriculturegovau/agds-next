@@ -28,6 +28,7 @@ import { DateInput } from '../date-picker-next/DatePickerInput';
 import {
 	acceptedDateFormats,
 	asDate,
+	focusDay,
 	formatDate,
 	getDateInputButtonAriaLabel,
 	parseDate,
@@ -123,7 +124,7 @@ export const DateRangePickerNext = ({
 					),
 				])
 			),
-		[dateFormat, allowedDateFormatsProp]
+		[allowedDateFormatsProp, dateFormat]
 	);
 
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
@@ -277,7 +278,7 @@ export const DateRangePickerNext = ({
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	useClickOutside(
 		[popover.popoverRef, fromTriggerRef, toTriggerRef],
@@ -334,7 +335,7 @@ export const DateRangePickerNext = ({
 			minDate ? { before: minDate } : undefined,
 			maxDate ? { after: maxDate } : undefined,
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
-	}, [minDate, maxDate]);
+	}, [maxDate, minDate]);
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
@@ -552,13 +553,4 @@ export function useDateRangePickerNextIds(idProp?: string) {
 	const fromId = `date-range-picker-${autoId}-from`;
 	const toId = `date-range-picker-${autoId}-to`;
 	return { fieldsetId, fromId, hintId, messageId, toId };
-}
-
-// Attempts focus on target and returns true if successful
-function focusDay(queryTarget: string) {
-	const day = document.querySelector(queryTarget);
-	if (!day) return false;
-
-	(day as HTMLElement).focus();
-	return true;
 }

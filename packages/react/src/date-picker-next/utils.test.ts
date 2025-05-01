@@ -1,4 +1,5 @@
 import {
+	focusDay,
 	formatDate,
 	formatHumanReadableDate,
 	getCalendarDefaultMonth,
@@ -528,5 +529,42 @@ describe('normaliseDateString', () => {
 		expect(normaliseDateString('2025-01-23T23:30:23.954AAA')).toEqual(
 			undefined
 		);
+	});
+});
+
+describe('focusDay', () => {
+	afterEach(() => {
+		jest.restoreAllMocks();
+	});
+
+	it('returns `true` and calls the focus function on the element if the query target is found in the document', () => {
+		const queryTarget = 'td[data-today="true"]';
+		const mockedFocus = jest.fn();
+		const spyQuerySelector = jest
+			.spyOn(document, 'querySelector')
+			.mockImplementation(() => {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				return { focus: mockedFocus } as any;
+			});
+		const result = focusDay(queryTarget);
+
+		expect(spyQuerySelector).toHaveBeenCalledTimes(1);
+		expect(spyQuerySelector).toHaveBeenCalledWith(queryTarget);
+
+		expect(mockedFocus).toHaveBeenCalledTimes(1);
+		expect(result).toBe(true);
+	});
+
+	it('returns `false` if the query target cannot be found in the document', () => {
+		const queryTarget = 'td[data-today="true"]';
+		const spyQuerySelector = jest
+			.spyOn(document, 'querySelector')
+			.mockImplementation(() => null);
+		const result = focusDay(queryTarget);
+
+		expect(spyQuerySelector).toHaveBeenCalledTimes(1);
+		expect(spyQuerySelector).toHaveBeenCalledWith(queryTarget);
+
+		expect(result).toBe(false);
 	});
 });
