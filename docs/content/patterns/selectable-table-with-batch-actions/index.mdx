@@ -112,7 +112,7 @@ Unlike the checkboxes in each row, the ‘Select all rows’ checkbox above the 
 						{Array.from(new Array(3).keys()).map((idx) => {
 							const isRowSelected = selectedRows.includes(idx);
 							return (
-								<TableRow selected={isRowSelected}>
+								<TableRow key={idx} selected={isRowSelected}>
 									<TableCell>
 										<Checkbox
 											size="sm"
@@ -214,7 +214,7 @@ Only small [Buttons](/components/button) should be placed inside of the `TableBa
 							{Array.from(new Array(3).keys()).map((idx) => {
 								const isRowSelected = selectedRows.includes(idx);
 								return (
-									<TableRow selected={isRowSelected}>
+									<TableRow key={idx} selected={isRowSelected}>
 										<TableCell>
 											<Checkbox
 												size="sm"

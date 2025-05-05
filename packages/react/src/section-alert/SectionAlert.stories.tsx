@@ -96,7 +96,7 @@ export const Progress: Story = {
 export const WithDescription: Story = {
 	args: {
 		title: 'There was an error saving your changes',
-		tone: 'error',
+		tone: 'errorHigh',
 		children: 'Please try again later.',
 	},
 };
@@ -104,7 +104,7 @@ export const WithDescription: Story = {
 export const Dismissable: Story = {
 	args: {
 		title: 'Your changes have been saved',
-		tone: 'success',
+		tone: 'successHigh',
 		onClose: fn(),
 	},
 };
