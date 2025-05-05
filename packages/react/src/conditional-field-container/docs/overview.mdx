@@ -64,7 +64,7 @@ Where one input value can be selected (eg. radio or select inputs), you can use 
 
 ```jsx live
 () => {
-	const [value, setValue] = React.useState(null);
+	const [value, setValue] = React.useState('');
 	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
 	const isChecked = (key) => value === key;
 
