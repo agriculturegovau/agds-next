@@ -1,5 +1,21 @@
 # @ag.ds-next/yourgov
 
+## 0.8.1
+
+### Patch Changes
+
+- 39ea1661678: docs: Fix various React and deprecation warnings throughout examples.
+
+  yourgov: Fix error for staff with no training when filtering by `trainingCompleted`.
+
+- Updated dependencies [fb0e9e5c3a5]
+- Updated dependencies [241a6b6c454]
+- Updated dependencies [5c1301b0bfe]
+- Updated dependencies [421a3511966]
+- Updated dependencies [3b5f4e7f30a]
+- Updated dependencies [39ea1661678]
+  - @ag.ds-next/react@1.28.0
+
 ## 0.8.0
 
 ### Minor Changes

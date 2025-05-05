@@ -1,5 +1,31 @@
 # @ag.ds-next/docs
 
+## 0.16.0
+
+### Minor Changes
+
+- 421a3511966: conditional-field-container: Initial release of component.
+
+  docs: Update conditional reveal pattern page and example code. Add `relatedPatterns` link section to patterns page.
+
+  example-site: Update conditional reveal pattern to match new patterns.
+
+  yourgov: Update conditional reveal pattern to match new patterns. Adjust `RegisterFormPetPersonalDetails` form to focus on the form heading when switched to visible. Remove duplicate required message in `RegisterFormPetPersonalDetails` form.
+
+### Patch Changes
+
+- 39ea1661678: docs: Fix various React and deprecation warnings throughout examples.
+
+  yourgov: Fix error for staff with no training when filtering by `trainingCompleted`.
+
+- Updated dependencies [fb0e9e5c3a5]
+- Updated dependencies [241a6b6c454]
+- Updated dependencies [5c1301b0bfe]
+- Updated dependencies [421a3511966]
+- Updated dependencies [3b5f4e7f30a]
+- Updated dependencies [39ea1661678]
+  - @ag.ds-next/react@1.28.0
+
 ## 0.15.0
 
 ### Minor Changes
