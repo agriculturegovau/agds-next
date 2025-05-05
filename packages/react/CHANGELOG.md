@@ -1,5 +1,34 @@
 # @ag.ds-next/react
 
+## 1.28.0
+
+### Minor Changes
+
+- 241a6b6c454: docs: AgDS Beta v1.27.0 release notes.
+- 5c1301b0bfe: date-picker: Update `react-day-picker` dependency to support React 19. Fix the focus style on calendar dates that prevented hover styles.
+
+  date-picker-next: Update `react-day-picker` dependency to support React 19. Fix the focus style on calendar dates that prevented hover styles.
+
+  date-range-picker: Update `react-day-picker` dependency to support React 19. Fix bug where `aria-selected` was added to dates between selected ranges. Changing the end date will now attempt to focus on the current end date on the calendar.
+
+  date-range-picker-next: Update `react-day-picker` dependency to support React 19. Fix bug where `aria-selected` was added to dates between selected ranges. Changing the end date will now attempt to focus on the current end date on the calendar.
+
+- 421a3511966: conditional-field-container: Initial release of component.
+
+  docs: Update conditional reveal pattern page and example code. Add `relatedPatterns` link section to patterns page.
+
+  example-site: Update conditional reveal pattern to match new patterns.
+
+  yourgov: Update conditional reveal pattern to match new patterns. Adjust `RegisterFormPetPersonalDetails` form to focus on the form heading when switched to visible. Remove duplicate required message in `RegisterFormPetPersonalDetails` form.
+
+### Patch Changes
+
+- fb0e9e5c3a5: build: Add React 19 to peer dependencies.
+- 3b5f4e7f30a: tag: Prevent border radius from scaling when tag label wraps on multiple lines.
+- 39ea1661678: docs: Fix various React and deprecation warnings throughout examples.
+
+  yourgov: Fix error for staff with no training when filtering by `trainingCompleted`.
+
 ## 1.27.0
 
 ### Minor Changes
