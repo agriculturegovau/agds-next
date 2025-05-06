@@ -8,7 +8,7 @@ relatedComponents: ['callout', 'page-alert', 'status-badge', 'global-alert']
 relatedPatterns: ['messaging']
 ---
 
-Section alerts appear inside of the main content area of the page and are used to alert users to a particular section of the screen. They should not be confused with Callouts.
+Section alerts are used to notify users about the outcome of an action in a particular section of the screen. The alert should be located immediately before the area where the action has occurred. They should not be confused with Callouts.
 
 ```jsx live
 <SectionAlert title="Your changes have been saved" tone="successHigh" />
@@ -18,6 +18,7 @@ Section alerts appear inside of the main content area of the page and are used t
 
 - use to notify users about a change in state in a section of a page
 - use to communicate error, warning, success, informative or progress messages
+- consider providing an 'undo' action in the alert to help users reverse a destructive action
 - allow users to dismiss alerts that are not critical
 - place above interactive components or at the top of page sections
 - use constructive, no-blame language, avoid vague descriptions and always provide a solution
