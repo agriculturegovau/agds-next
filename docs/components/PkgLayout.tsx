@@ -85,6 +85,11 @@ export function PkgLayout({
 					<Fragment>
 						{!pkg.unreleased ? (
 							<Prose>
+								<p>
+									{pkg.title} component(s) can be imported via the{' '}
+									<code>{pkg.name}</code> entrypoint in the{' '}
+									<code>@ag.ds-next/react</code> package.
+								</p>
 								<pre>
 									<code>{`import { ... } from '@ag.ds-next/react/${pkg.name}';`}</code>
 								</pre>
