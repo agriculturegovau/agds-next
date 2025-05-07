@@ -2,4 +2,4 @@
 "@ag.ds-next/react": patch
 ---
 
-button: Add guidance about customising `loadingLabel`.
+docs: Update section alert guidance in Patterns > Messaging.
