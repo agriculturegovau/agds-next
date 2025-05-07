@@ -21,6 +21,7 @@ export type GetDataPagination = {
 };
 
 export type GetDataFilters = {
+	search: string | undefined;
 	assignee: string | undefined;
 	businessName: string | undefined;
 	state: string | undefined;
@@ -55,6 +56,7 @@ export const doesBusinessMatchFilters = (
 	let isValid = true;
 
 	const {
+		search,
 		requestDate,
 		state,
 		status,
@@ -63,6 +65,24 @@ export const doesBusinessMatchFilters = (
 		services,
 		destinations,
 	} = filters;
+
+	const allKeywords = search
+		?.toLowerCase()
+		.replace(/\s+/g, ' ')
+		.split(' ')
+		.filter(Boolean);
+
+	if (allKeywords && allKeywords.length > 0) {
+		const hasAllKeywords = allKeywords.every((keyword) => {
+			return (
+				business.businessName.toString().toLowerCase().includes(keyword) ||
+				(business?.assignee || '').toString().toLowerCase().includes(keyword) ||
+				(business?.state || '').toString().toLowerCase().includes(keyword) ||
+				(business?.status || '').toString().toLowerCase().includes(keyword)
+			);
+		});
+		isValid = hasAllKeywords;
+	}
 
 	if (requestDate && requestDate.from && typeof requestDate.from !== 'string') {
 		if (business.requestDate < requestDate.from) {
