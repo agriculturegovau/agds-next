@@ -1398,6 +1398,55 @@ const snippets: Array<Snippet> = [
 		code: `<ComboboxMulti label="Select option" options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }, { value: 'c', label: 'Option C' }]} />`,
 	},
 	{
+		group: 'ConditionalFieldContainer',
+		name: 'Basic',
+		code: `<ConditionalFieldContainer visible={true}>
+				<TextInput inputMode="numeric" label="Phone number" required />
+			</ConditionalFieldContainer>`,
+	},
+	{
+		group: 'ConditionalFieldContainer',
+		name: 'Multiple fields',
+		code: `<ConditionalFieldContainer visible={true}>
+				<H3>Address</H3>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					required
+					maxWidth="sm"
+				/>
+			</ConditionalFieldContainer>`,
+	},
+	{
 		group: 'Details',
 		name: 'Basic',
 		code: `<Details label="Details"><Text as="p">This is a small paragraph of text that is supplementary to the main page

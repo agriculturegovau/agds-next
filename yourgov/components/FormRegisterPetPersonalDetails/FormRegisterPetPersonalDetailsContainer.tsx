@@ -30,6 +30,7 @@ export const FormRegisterPetPersonalDetailsContainer = ({
 			<FormStepTitle
 				callToAction={callToAction}
 				formTitle="Your personal details"
+				hideRequiredFieldsMessage
 				introduction={introduction}
 				stepTitle={title}
 				titleRef={titleRef}

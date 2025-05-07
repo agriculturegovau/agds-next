@@ -1,68 +1,68 @@
 ---
-title: Conditionally revealed content
-description: Conditionally reveal a question or information related to a specific radio or checkbox option when a user selects it. This ensures that users only encounter conditionally revealed content when it is applicable to their selection.
-relatedComponents: ['radio', 'checkbox']
+title: Conditionally revealed form content
+description: Revealing additional form questions and help content after a user selects an option can reduce the amount of content a user must read when completing complex forms.
+relatedComponents: ['conditional-field-container']
 ---
 
 <DoHeading />
 
-- limit what is revealed to 1 related question or piece of information
-- reveal the related question or information directly under the initial question
-- use another page if there are multiple related questions
-- only use with vertically stacked checkboxes or radios
+- limit what is revealed to a single set of related questions or information that does not require its own submit action
+- reveal the related set of questions under the initial input or controls
+- use another page if there are multiple related questions that need a submit action
+- only use with vertically stacked checkboxes or radios.
 
 <DontHeading />
 
-- reveal more than 1 related question or piece of information
+- reveal a complete form with submit action
 - use with horizontally stacked checkboxes or radios
-- reveal anything that is not a question or piece of information relating directly to a specific radio or checkbox option.
+- reveal anything other than questions or supporting information relating directly to the initial option selected by the user.
 
 ## Radio
 
-You can reveal a related question or information specific to that option when users select a particular [Radio](/components/radio), so they only see that content when it is relevant to them.
+When a user selects a specific option from a [Radio](/components/radio) control group, additional questions or helpful information relevant to their selection can be revealed. Revealing content after a selection is made ensures a user will only see content that is relevant to them.
+
+If there a large number of items, use [Select](/components/select) instead.
 
 ```jsx live
 () => {
 	const [value, setValue] = React.useState();
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Radio>
-			{isChecked('email') && (
-				<ConditionalFieldContainer>
-					<TextInput type="email" label="Email address" required />
-				</ConditionalFieldContainer>
-			)}
-			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Radio>
-			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
-			)}
-			<Radio
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Radio>
-			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Mobile phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
-			)}
-		</ControlGroup>
+		<FormStack>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('phone')}>
+				<TextInput label="Phone number" inputMode="numeric" required />
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput label="Mobile phone number" inputMode="numeric" required />
+			</ConditionalFieldContainer>
+		</FormStack>
 	);
 };
 ```
 
 ## Checkbox
 
-You can reveal a related question or information related to that option when a user selects a particular [Checkbox](/components/checkbox), so they only see that content when it is relevant to them.
+When a user selects a particular [Checkbox](/components/checkbox), you can reveal additional questions or provide helpful information that is relevant to the selection after the Checkbox control group. Revealing content after a selection is made ensures a user will only see content that is relevant to them.
 
 ```jsx live
 () => {
@@ -75,36 +75,120 @@ You can reveal a related question or information related to that option when a u
 		[]
 	);
 	const isChecked = (key) => value.includes(key);
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Checkbox checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Checkbox>
-			{isChecked('email') && (
-				<ConditionalFieldContainer>
+		<FormStack>
+			<ControlGroup label="How would you like to be contacted?" required block>
+				<Checkbox
+					checked={isChecked('email')}
+					onChange={handlerForKey('email')}
+				>
+					Email
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('phone')}
+					onChange={handlerForKey('phone')}
+				>
+					Phone
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Checkbox>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={value.length}>
+				{isChecked('email') && (
 					<TextInput type="email" label="Email address" required />
-				</ConditionalFieldContainer>
-			)}
-			<Checkbox checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Checkbox>
-			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
-			)}
-			<Checkbox
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Checkbox>
-			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput label="Mobile phone number" inputMode="numeric" required />
-				</ConditionalFieldContainer>
-			)}
-		</ControlGroup>
+				)}
+				{isChecked('phone') && (
+					<TextInput inputMode="numeric" label="Phone number" required />
+				)}
+				{isChecked('textMessage') && (
+					<TextInput inputMode="numeric" label="Mobile phone number" required />
+				)}
+			</ConditionalFieldContainer>
+		</FormStack>
+	);
+};
+```
+
+## Select
+
+When a user selects a particular option from a [Select](/components/select) dropdown, additional questions or helpful information relevant to their selection can be revealed. This ensures that the user only sees content that is pertinent to their choice.
+
+If there a small number of items, use [Radio](/components/radio) instead.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState('');
+	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
+	const isChecked = (key) => value === key;
+
+	return (
+		<FormStack>
+			<Select
+				placeholder="Please select"
+				label="How would you like to be contacted?"
+				onChange={handlerForKey}
+				options={[
+					{ value: 'post', label: 'Post' },
+					{ value: 'textMessage', label: 'Text message' },
+					{ value: 'email', label: 'E mail' },
+				]}
+				required
+				value={value}
+			/>
+
+			<ConditionalFieldContainer visible={isChecked('post')}>
+				<H2>Address</H2>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					required
+					maxWidth="sm"
+				/>
+			</ConditionalFieldContainer>
+
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput inputMode="text" label="Mobile phone number" required />
+			</ConditionalFieldContainer>
+
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalFieldContainer>
+		</FormStack>
 	);
 };
 ```
@@ -118,54 +202,62 @@ When a conditionally revealed question is invalid, include an error message on t
 	const [value, setValue] = React.useState('email');
 	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
 	const isChecked = (key) => key === value;
+
 	return (
-		<ControlGroup label="Preferred contact method" required block>
-			<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
-				Email
-			</Radio>
-			{isChecked('email') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						type="email"
-						label="Email address"
-						required
-						invalid
-						message="Enter a email address"
-					/>
-				</ConditionalFieldContainer>
-			)}
-			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
-				Phone
-			</Radio>
-			{isChecked('phone') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						label="Phone number"
-						inputMode="numeric"
-						required
-						invalid
-						message="Enter a phone number"
-					/>
-				</ConditionalFieldContainer>
-			)}
-			<Radio
-				checked={isChecked('textMessage')}
-				onChange={handlerForKey('textMessage')}
-			>
-				Text message
-			</Radio>
-			{isChecked('textMessage') && (
-				<ConditionalFieldContainer>
-					<TextInput
-						label="Mobile phone number"
-						inputMode="numeric"
-						required
-						invalid
-						message="Enter a mobile phone number"
-					/>
-				</ConditionalFieldContainer>
-			)}
-		</ControlGroup>
+		<FormStack>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput
+					type="email"
+					label="Email address"
+					required
+					invalid
+					message="Enter a email address"
+				/>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('phone')}>
+				<TextInput
+					label="Phone number"
+					inputMode="numeric"
+					required
+					invalid
+					message="Enter a phone number"
+				/>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput
+					label="Mobile phone number"
+					inputMode="numeric"
+					required
+					invalid
+					message="Enter a mobile phone number"
+				/>
+			</ConditionalFieldContainer>
+		</FormStack>
 	);
 };
 ```
+
+## Research
+
+### March 2025
+
+Before March 2025, conditional form elements were revealed immediately after their parent radio or checkbox, and inside their control group.
+
+This pattern worked well for sighted users who could see the relationship and context between the control and conditionally revealed form elements. However, we observed screen reader users becoming disoriented when they encountered additional form elements between items in the control group. In response, we adjusted our guidance to position the additional questions immediately after the control group.
+
+This updated pattern has been tested in two rounds of usability studies. We have observed no issues since the change.

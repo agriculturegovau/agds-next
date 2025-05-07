@@ -1,43 +1,44 @@
+import { addDays } from 'date-fns';
 import {
-	ChangeEvent,
-	FocusEvent,
+	type ChangeEvent,
+	type FocusEvent,
+	type Ref,
 	useCallback,
-	Ref,
-	useRef,
-	useState,
 	useEffect,
 	useMemo,
+	useRef,
+	useState,
 } from 'react';
-import { SelectRangeEventHandler } from 'react-day-picker';
-import { addDays } from 'date-fns';
+import { type PropsRange } from 'react-day-picker';
+import { Popover, usePopover } from '../_popover';
+import { visuallyHiddenStyles } from '../a11y';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { Stack } from '../stack';
 import {
 	mapSpacing,
 	tokens,
 	useClickOutside,
+	useId,
 	useTernaryState,
 	useWindowSize,
-	useId,
 } from '../core';
-import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
-import { visuallyHiddenStyles } from '../a11y';
-import { Popover, usePopover } from '../_popover';
+import { CalendarRange } from '../date-picker/Calendar';
+import { CalendarProvider } from '../date-picker/CalendarContext';
 import {
 	constrainDate,
 	formatDate,
 	parseDate,
 	transformValuePropToInputValue,
 } from '../date-picker/utils';
-import { CalendarRange } from '../date-picker/Calendar';
-import { CalendarProvider } from '../date-picker/CalendarContext';
 import {
 	acceptedDateFormats,
+	focusDay,
 	getDateInputButtonAriaLabel,
 	normaliseDateString,
 	type AcceptedDateFormats,
 } from '../date-picker-next/utils';
+import { FieldContainer, FieldHint, FieldLabel, FieldMessage } from '../field';
+import { Flex } from '../flex';
+import { Stack } from '../stack';
 import { DateInput } from './../date-picker-next/DatePickerInput';
 import { ensureValidDateRange, getCalendarDefaultMonth } from './utils';
 
@@ -136,10 +137,9 @@ export const DateRangePicker = ({
 					),
 				])
 			),
-		[dateFormat, allowedDateFormatsProp]
+		[allowedDateFormatsProp, dateFormat]
 	);
 
-	const [hasCalendarOpened, setHasCalendarOpened] = useState(false);
 	const [isCalendarOpen, openCalendar, closeCalendar] = useTernaryState(false);
 	const toggleCalendar = isCalendarOpen ? closeCalendar : openCalendar;
 
@@ -148,16 +148,22 @@ export const DateRangePicker = ({
 	const fromTriggerRef = useRef<HTMLButtonElement>(null);
 	const toTriggerRef = useRef<HTMLButtonElement>(null);
 
+	const closeCalendarAndFocusTrigger = useCallback(() => {
+		closeCalendar();
+		setTimeout(() => {
+			if (inputMode === 'from') fromTriggerRef.current?.focus();
+			else toTriggerRef.current?.focus();
+		}, 0);
+	}, [closeCalendar, fromTriggerRef, inputMode, toTriggerRef]);
+
 	function onFromTriggerClick() {
 		setInputMode('from');
 		toggleCalendar();
-		setHasCalendarOpened(true);
 	}
 
 	function onToTriggerClick() {
 		setInputMode('to');
 		toggleCalendar();
-		setHasCalendarOpened(true);
 	}
 
 	const popover = usePopover();
@@ -174,14 +180,14 @@ export const DateRangePicker = ({
 		[value]
 	);
 
-	const onSelect = useCallback<SelectRangeEventHandler>(
-		(_, selectedDay, activeModifiers) => {
-			if (!inputMode || activeModifiers.disabled) return;
+	const onSelect = useCallback<Exclude<PropsRange['onSelect'], undefined>>(
+		(_selected, triggeredDate, modifiers) => {
+			if (!inputMode || modifiers.disabled) return;
 
 			const range = ensureValidDateRange(
 				inputMode === 'from'
-					? { from: selectedDay, to: valueAsDateOrUndefined.to }
-					: { from: valueAsDateOrUndefined.from, to: selectedDay }
+					? { from: triggeredDate, to: valueAsDateOrUndefined.to }
+					: { from: valueAsDateOrUndefined.from, to: triggeredDate }
 			);
 
 			onChange(range);
@@ -189,7 +195,7 @@ export const DateRangePicker = ({
 			setToInputValue(range.to ? formatDate(range.to, dateFormat) : '');
 
 			if (range.from && range.to) {
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 				setInputMode(undefined);
 				return;
 			}
@@ -204,7 +210,13 @@ export const DateRangePicker = ({
 				return;
 			}
 		},
-		[closeCalendar, inputMode, onChange, valueAsDateOrUndefined, dateFormat]
+		[
+			closeCalendarAndFocusTrigger,
+			dateFormat,
+			inputMode,
+			onChange,
+			valueAsDateOrUndefined,
+		]
 	);
 
 	// From input state
@@ -271,16 +283,45 @@ export const DateRangePicker = ({
 	useEffect(() => {
 		setFromInputValue(transformValuePropToInputValue(value.from, dateFormat));
 		setToInputValue(transformValuePropToInputValue(value.to, dateFormat));
-	}, [value, dateFormat]);
+	}, [dateFormat, value]);
 
 	// Close the calendar when the user clicks outside
 	const handleClickOutside = useCallback(() => {
 		if (isCalendarOpen) closeCalendar();
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendar, isCalendarOpen]);
 
 	useClickOutside(
 		[popover.popoverRef, fromTriggerRef, toTriggerRef],
 		handleClickOutside
+	);
+
+	// react-day-picker autoFocus was clashing with popover, the focus is set here when the calendar is opened
+	// The focus is also set manually to allow us to focus on the end-date when the 'change end date' button is pressed
+	useEffect(
+		() => {
+			// Wrap in timeout 0 to focus after all components renders
+			setTimeout(() => {
+				if (!isCalendarOpen) return;
+
+				const { from, to } = valueAsDateOrUndefined;
+				// Focus on the start or end day based on the input mode and if both range days have been selected
+				if (inputMode === 'from' && from && to) {
+					if (focusDay('td[data-start-day="true"]')) return;
+				}
+				if (inputMode === 'to' && from && to) {
+					if (focusDay('td[data-end-day="true"]')) return;
+				}
+
+				// Target focus on any currently selected elements (e.g. if to is after)
+				// This covers if dates are mismatched (from is after to) or if only range is selected
+				if (focusDay('td[data-selected="true"]')) return;
+				// Default return focus today
+				focusDay('td[data-today="true"]');
+			}, 0);
+		},
+		// Only run this event when the calendar opens
+		// eslint-disable-next-line
+		[isCalendarOpen]
 	);
 
 	// Close the calendar when the user presses the escape key
@@ -290,14 +331,14 @@ export const DateRangePicker = ({
 				e.preventDefault();
 				e.stopPropagation();
 				// Close the calendar and focus the calendar icon
-				closeCalendar();
+				closeCalendarAndFocusTrigger();
 				setInputMode(undefined);
 			}
 		};
 		window.addEventListener('keydown', handleKeyDown, { capture: true });
 		return () =>
 			window.removeEventListener('keydown', handleKeyDown, { capture: true });
-	}, [isCalendarOpen, closeCalendar]);
+	}, [closeCalendarAndFocusTrigger, isCalendarOpen]);
 
 	const disabledCalendarDays = useMemo(() => {
 		if (!(minDate || maxDate)) return;
@@ -305,7 +346,7 @@ export const DateRangePicker = ({
 			minDate ? { before: minDate } : undefined,
 			maxDate ? { after: maxDate } : undefined,
 		].filter((x): x is NonNullable<typeof x> => Boolean(x));
-	}, [minDate, maxDate]);
+	}, [maxDate, minDate]);
 
 	// 2 months visible on desktop, 1 on mobile
 	const { windowWidth = 0 } = useWindowSize();
@@ -335,28 +376,51 @@ export const DateRangePicker = ({
 		numberOfMonths
 	);
 
-	// These prop objects serve as a single source of truth for the duplicated Popovers and Calendars below
-	// We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059
 	const popoverProps = useMemo(() => popover.getPopoverProps(), [popover]);
 	const calendarProps = useMemo(
 		() => ({
+			autoFocus: false, // as above, disabled autoFocus to prevent focus clashing and to set manual focus
 			defaultMonth,
 			disabled: disabledCalendarDays,
-			initialFocus: true,
 			numberOfMonths,
 			onSelect,
-			returnFocusRef: inputMode === 'from' ? fromTriggerRef : toTriggerRef,
 			selected: valueAsDateOrUndefined,
 		}),
 		[
 			defaultMonth,
 			disabledCalendarDays,
-			inputMode,
 			numberOfMonths,
 			onSelect,
 			valueAsDateOrUndefined,
 		]
 	);
+
+	// Keep track of the number of shown calendars to run event on change
+	const [shownMonths, setShownMonths] = useState(numberOfMonths);
+	const calendarRef = useRef<HTMLDivElement>(null);
+
+	// This event is to check if the number of shown months has changed
+	// Refocus to the shown month to prevent popover scroll bug
+	useEffect(() => {
+		if (!isCalendarOpen || !calendarRef.current) return;
+
+		// Run updates only when number of shown months has changed
+		if (shownMonths === numberOfMonths) return;
+
+		// Check if the number of table months have decreased
+		if (shownMonths > numberOfMonths) {
+			// Don't change focus if user is on a table cell
+			if (document.activeElement?.nodeName !== 'TD') {
+				// Get all table dates and focus on the last date
+				const tableDates = calendarRef.current.querySelectorAll('td.rdp-day');
+				const lastDate = tableDates[tableDates.length - 1];
+				if (lastDate) (lastDate as HTMLElement).focus();
+			}
+		}
+
+		// Update table size changes to new count
+		setShownMonths(numberOfMonths);
+	}, [isCalendarOpen, numberOfMonths, shownMonths]);
 
 	return (
 		<FieldContainer id={fieldsetId} invalid={invalid}>
@@ -432,22 +496,13 @@ export const DateRangePicker = ({
 					</Flex>
 				</Stack>
 				<CalendarProvider yearRange={yearRange}>
-					{/* We duplicate the Popover + Calendar as a workaround for a bug that scrolls the page to the top on initial open of the calandar - https://github.com/gpbl/react-day-picker/discussions/2059 */}
-					{hasCalendarOpened ? ( // If the calendar has opened at least once, we conditionally render the Popover + children to prevent the scroll-to-top bug
-						isCalendarOpen && (
-							<Popover {...popoverProps}>
-								<CalendarRange {...calendarProps} />
-							</Popover>
-						)
-					) : (
-						// If the calendar has _not_ opened at least once, we conditionally render only the children of the Popover, i.e. the Calendar to prevent the UI jumping about everytime the calendar is opened
+					{isCalendarOpen && (
 						<Popover {...popoverProps}>
-							{isCalendarOpen && (
-								<CalendarRange
-									{...calendarProps}
-									css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
-								/>
-							)}
+							<CalendarRange
+								{...calendarProps}
+								calendarRef={calendarRef}
+								css={{ minHeight: '200px' }} // Using 200px as a safety buffer so that when opening the date picker for the first time and the input is at the bottom of the screen, it can't render the calendar almost hidden, e.g. 2px height.
+							/>
 						</Popover>
 					)}
 				</CalendarProvider>

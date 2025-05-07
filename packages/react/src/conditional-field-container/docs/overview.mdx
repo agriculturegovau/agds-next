@@ -1,0 +1,226 @@
+---
+title: Conditional field container
+description: A standardised pattern for conditionally hiding and revealing the amount of content a user views in a form.
+group: Forms
+storybookPath: /story/Forms-ConditionalFieldContainer--basic
+unreleased: true
+relatedPatterns: ['conditional-reveal']
+---
+
+This component aims to standardise the styling and behavior of the [conditional reveal pattern](/patterns/conditional-reveal) in the Design System.
+
+The conditional field container component wraps its children in a [FormStack](/components/form-stack).
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<FormStack>
+			<ControlGroup label="Preferred contact method" required block>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+					Phone
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('phone')}>
+				<TextInput label="Phone number" inputMode="numeric" required />
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput label="Mobile phone number" inputMode="numeric" required />
+			</ConditionalFieldContainer>
+		</FormStack>
+	);
+};
+```
+
+<DoHeading />
+
+- position directly after the related set of questions
+- insert all related content as children in the same conditional field container component.
+
+<DontHeading />
+
+- use this component for conditional reveals in a non-form content
+- nest conditional field container components.
+
+## Single value field
+
+Where one input value can be selected (eg. radio or select inputs), you can use multiple conditional reveals to selectively render the conditional content.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState('');
+	const handlerForKey = React.useCallback((e) => setValue(e.target.value), []);
+	const isChecked = (key) => value === key;
+
+	return (
+		<FormStack>
+			<Select
+				placeholder="Please select"
+				label="How would you like to be contacted?"
+				onChange={handlerForKey}
+				options={[
+					{ value: 'textMessage', label: 'Text message' },
+					{ value: 'email', label: 'Email' },
+				]}
+				required
+				value={value}
+			/>
+
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput inputMode="text" label="Mobile phone number" required />
+			</ConditionalFieldContainer>
+
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalFieldContainer>
+		</FormStack>
+	);
+};
+```
+
+## Multiple value fields
+
+If the same input can create multiple conditional revealed fields or content (such as a checkbox input), use one conditional field container component and conditional render the children within.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState([]);
+	const handlerForKey = React.useCallback(
+		(key) => () =>
+			setValue((value) =>
+				value.includes(key) ? value.filter((v) => v !== key) : [...value, key]
+			),
+		[]
+	);
+	const isChecked = (key) => value.includes(key);
+
+	return (
+		<FormStack>
+			<ControlGroup block label="How would you like to be contacted?" required>
+				<Checkbox
+					checked={isChecked('email')}
+					onChange={handlerForKey('email')}
+				>
+					Email
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('phone')}
+					onChange={handlerForKey('phone')}
+				>
+					Phone
+				</Checkbox>
+				<Checkbox
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Checkbox>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={Boolean(value.length)}>
+				{isChecked('email') && (
+					<TextInput label="Email address" required type="email" />
+				)}
+				{isChecked('phone') && (
+					<TextInput inputMode="numeric" label="Phone number" required />
+				)}
+				{isChecked('textMessage') && (
+					<TextInput inputMode="numeric" label="Mobile phone number" required />
+				)}
+			</ConditionalFieldContainer>
+		</FormStack>
+	);
+};
+```
+
+## Display multiple related fields
+
+If you require more than one field and/or content, place all relevant elements as children of the conditional field container component.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+
+	return (
+		<FormStack>
+			<ControlGroup block label="How would you like to be contacted?" required>
+				<Radio checked={isChecked('post')} onChange={handlerForKey('post')}>
+					Post
+				</Radio>
+				<Radio checked={isChecked('email')} onChange={handlerForKey('email')}>
+					Email
+				</Radio>
+				<Radio
+					checked={isChecked('textMessage')}
+					onChange={handlerForKey('textMessage')}
+				>
+					Text message
+				</Radio>
+			</ControlGroup>
+
+			<ConditionalFieldContainer visible={isChecked('post')}>
+				<H3>Address</H3>
+				<TextInput
+					inputMode="text"
+					label="Street address"
+					maxWidth="xl"
+					required
+					type="text"
+				/>
+				<TextInput
+					inputMode="text"
+					label="Suburb, town or city"
+					maxWidth="lg"
+					required
+					type="text"
+				/>
+				<Select
+					label="State or territory"
+					maxWidth="sm"
+					options={[
+						{ label: 'ACT', value: 'act' },
+						{ label: 'NSW', value: 'nsw' },
+						{ label: 'NT', value: 'nt' },
+						{ label: 'QLD', value: 'qld' },
+						{ label: 'SA', value: 'sa' },
+						{ label: 'TAS', value: 'tas' },
+						{ label: 'VIC', value: 'vic' },
+						{ label: 'WA', value: 'wa' },
+					]}
+					required
+				/>
+				<TextInput
+					inputMode="numeric"
+					label="Post code"
+					maxWidth="sm"
+					required
+				/>
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('email')}>
+				<TextInput type="email" label="Email address" required />
+			</ConditionalFieldContainer>
+			<ConditionalFieldContainer visible={isChecked('textMessage')}>
+				<TextInput inputMode="text" label="Mobile phone number" required />
+			</ConditionalFieldContainer>
+		</FormStack>
+	);
+};
+```
