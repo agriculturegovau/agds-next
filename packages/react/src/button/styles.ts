@@ -8,6 +8,7 @@ import {
 	print,
 	tokens,
 } from '../core';
+import { iconSizes } from '../icon/Icon';
 
 const variants = {
 	primary: {
@@ -128,6 +129,11 @@ type ButtonStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
 	? ReturnType<typeof getBaseStyles> // For backwards compatibility we return a single object of CSS properties, unless...
 	: ReturnType<typeof mq>; // ...we have a responsive property included as an arg, then we return the responsive array of CSS properties.
 
+const iconHoverSizeMap = {
+	sm: iconSizes.sm + 2 / 16,
+	md: iconSizes.md + 2 / 16,
+};
+
 function getBaseStyles({
 	block,
 	focusRingFor = 'keyboard',
@@ -158,9 +164,13 @@ function getBaseStyles({
 			opacity: 0.3,
 		},
 
-		// Ensure button icons do not shrink
+		// Ensure button icons do not shrink and scale on hover
 		'& > svg': {
 			flexShrink: 0,
+			transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+		},
+		'&:hover > svg': {
+			transform: `scale(${iconHoverSizeMap[size] / iconSizes[size]})`,
 		},
 
 		...focusStylesMap[focusRingFor],
