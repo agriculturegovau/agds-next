@@ -4,7 +4,7 @@ exports[`Tabs renders correctly 1`] = `
 <div>
   <div
     class="css-1b120x5-Tabs"
-    id="tabs-:r0:"
+    id="tabs-«r0»"
   >
     <div
       aria-orientation="horizontal"
@@ -12,10 +12,10 @@ exports[`Tabs renders correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-controls="tabs-:r0:-tab-panel-0"
+        aria-controls="tabs-«r0»-tab-panel-0"
         aria-selected="true"
         class="css-33qtdv-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-button-0"
+        id="tabs-«r0»-tab-button-0"
         role="tab"
         tabindex="0"
         type="button"
@@ -25,10 +25,10 @@ exports[`Tabs renders correctly 1`] = `
         </span>
       </button>
       <button
-        aria-controls="tabs-:r0:-tab-panel-1"
+        aria-controls="tabs-«r0»-tab-panel-1"
         aria-selected="false"
         class="css-zjryi7-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-button-1"
+        id="tabs-«r0»-tab-button-1"
         role="tab"
         tabindex="-1"
         type="button"
@@ -38,10 +38,10 @@ exports[`Tabs renders correctly 1`] = `
         </span>
       </button>
       <button
-        aria-controls="tabs-:r0:-tab-panel-2"
+        aria-controls="tabs-«r0»-tab-panel-2"
         aria-selected="false"
         class="css-zjryi7-BaseButton-boxStyles-TabButton"
-        id="tabs-:r0:-tab-button-2"
+        id="tabs-«r0»-tab-button-2"
         role="tab"
         tabindex="-1"
         type="button"
@@ -53,27 +53,27 @@ exports[`Tabs renders correctly 1`] = `
     </div>
     <div>
       <div
-        aria-labelledby="tabs-:r0:-tab-button-0"
+        aria-labelledby="tabs-«r0»-tab-button-0"
         class="css-mbs2xi-boxStyles-TabPanel"
-        id="tabs-:r0:-tab-panel-0"
+        id="tabs-«r0»-tab-panel-0"
         role="tabpanel"
         tabindex="0"
       >
         Tab panel 1
       </div>
       <div
-        aria-labelledby="tabs-:r0:-tab-button-1"
+        aria-labelledby="tabs-«r0»-tab-button-1"
         class="css-h9s0k-boxStyles-TabPanel"
-        id="tabs-:r0:-tab-panel-1"
+        id="tabs-«r0»-tab-panel-1"
         role="tabpanel"
         tabindex="-1"
       >
         Tab panel 2
       </div>
       <div
-        aria-labelledby="tabs-:r0:-tab-button-2"
+        aria-labelledby="tabs-«r0»-tab-button-2"
         class="css-h9s0k-boxStyles-TabPanel"
-        id="tabs-:r0:-tab-panel-2"
+        id="tabs-«r0»-tab-panel-2"
         role="tabpanel"
         tabindex="-1"
       >

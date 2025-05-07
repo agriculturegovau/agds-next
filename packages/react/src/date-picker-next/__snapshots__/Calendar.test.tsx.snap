@@ -66,14 +66,14 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <label
                     class="css-g8kyc5-YearMonthSelect"
-                    for="calendar-:r4:-select"
+                    for="calendar-«r4»-select"
                   >
                     Month
                   </label>
                   <select
                     autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
-                    id="calendar-:r4:-select"
+                    id="calendar-«r4»-select"
                   >
                     <option
                       value="0"
@@ -158,14 +158,14 @@ exports[`Calendar Range renders correctly 1`] = `
                 >
                   <label
                     class="css-g8kyc5-YearMonthSelect"
-                    for="calendar-:r5:-select"
+                    for="calendar-«r5»-select"
                   >
                     Year
                   </label>
                   <select
                     autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
-                    id="calendar-:r5:-select"
+                    id="calendar-«r5»-select"
                   >
                     <option
                       value="2013"
@@ -885,14 +885,14 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <label
                     class="css-g8kyc5-YearMonthSelect"
-                    for="calendar-:r0:-select"
+                    for="calendar-«r0»-select"
                   >
                     Month
                   </label>
                   <select
                     autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
-                    id="calendar-:r0:-select"
+                    id="calendar-«r0»-select"
                   >
                     <option
                       value="0"
@@ -977,14 +977,14 @@ exports[`Calendar Single renders correctly 1`] = `
                 >
                   <label
                     class="css-g8kyc5-YearMonthSelect"
-                    for="calendar-:r1:-select"
+                    for="calendar-«r1»-select"
                   >
                     Year
                   </label>
                   <select
                     autocomplete="off"
                     class="css-lbmsza-boxStyles-YearMonthSelect"
-                    id="calendar-:r1:-select"
+                    id="calendar-«r1»-select"
                   >
                     <option
                       value="2013"

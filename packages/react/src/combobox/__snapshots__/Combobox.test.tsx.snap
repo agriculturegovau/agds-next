@@ -7,8 +7,8 @@ exports[`Combobox renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="combobox-input-:r0:"
-      id="downshift-:r1:-label"
+      for="combobox-input-«r0»"
+      id="downshift-«r1»-label"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -24,7 +24,7 @@ exports[`Combobox renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-combobox-input-:r0:-hint"
+      id="field-combobox-input-«r0»-hint"
     >
       Start typing to see results
     </span>
@@ -34,15 +34,15 @@ exports[`Combobox renders correctly 1`] = `
       <input
         aria-activedescendant=""
         aria-autocomplete="list"
-        aria-controls="downshift-:r1:-menu"
-        aria-describedby="field-combobox-input-:r0:-hint"
+        aria-controls="downshift-«r1»-menu"
+        aria-describedby="field-combobox-input-«r0»-hint"
         aria-expanded="false"
         aria-invalid="false"
-        aria-labelledby="downshift-:r1:-label"
+        aria-labelledby="downshift-«r1»-label"
         aria-required="false"
         autocomplete="off"
         class="css-wjczfb-ComboboxBase"
-        id="combobox-input-:r0:"
+        id="combobox-input-«r0»"
         role="combobox"
         type="text"
         value=""
@@ -51,11 +51,11 @@ exports[`Combobox renders correctly 1`] = `
         class="css-1733k8b-boxStyles-ComboboxButtonContainer"
       >
         <button
-          aria-controls="downshift-:r1:-menu"
+          aria-controls="downshift-«r1»-menu"
           aria-expanded="false"
           aria-label="Toggle menu"
           class="css-148kr79-BaseButton-ComboboxIconButton"
-          id="downshift-:r1:-toggle-button"
+          id="downshift-«r1»-toggle-button"
           tabindex="-1"
           type="button"
         >
@@ -78,9 +78,9 @@ exports[`Combobox renders correctly 1`] = `
         </button>
       </div>
       <ul
-        aria-labelledby="downshift-:r1:-label"
+        aria-labelledby="downshift-«r1»-label"
         class="css-x1k9i4-boxStyles-Popover"
-        id="downshift-:r1:-menu"
+        id="downshift-«r1»-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
       />

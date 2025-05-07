@@ -7,8 +7,8 @@ exports[`Autocomplete renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="combobox-input-:r0:"
-      id="downshift-:r1:-label"
+      for="combobox-input-«r0»"
+      id="downshift-«r1»-label"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -24,7 +24,7 @@ exports[`Autocomplete renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-combobox-input-:r0:-hint"
+      id="field-combobox-input-«r0»-hint"
     >
       Start typing to see results
     </span>
@@ -55,23 +55,23 @@ exports[`Autocomplete renders correctly 1`] = `
       <input
         aria-activedescendant=""
         aria-autocomplete="list"
-        aria-controls="downshift-:r1:-menu"
-        aria-describedby="field-combobox-input-:r0:-hint"
+        aria-controls="downshift-«r1»-menu"
+        aria-describedby="field-combobox-input-«r0»-hint"
         aria-expanded="false"
         aria-invalid="false"
-        aria-labelledby="downshift-:r1:-label"
+        aria-labelledby="downshift-«r1»-label"
         aria-required="false"
         autocomplete="off"
         class="css-mvp56b-ComboboxBase"
-        id="combobox-input-:r0:"
+        id="combobox-input-«r0»"
         role="combobox"
         type="text"
         value=""
       />
       <ul
-        aria-labelledby="downshift-:r1:-label"
+        aria-labelledby="downshift-«r1»-label"
         class="css-x1k9i4-boxStyles-Popover"
-        id="downshift-:r1:-menu"
+        id="downshift-«r1»-menu"
         role="listbox"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
       />

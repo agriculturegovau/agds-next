@@ -14,14 +14,14 @@ exports[`SearchBox renders correctly 1`] = `
       >
         <label
           class="css-1wmhsmi-boxStyles-SearchBoxLabel"
-          for="search-:r0:"
+          for="search-«r0»"
         >
           Search
         </label>
         <input
           autocomplete="off"
           class="css-w5d386-SearchBoxInput"
-          id="search-:r0:"
+          id="search-«r0»"
           type="search"
         />
       </div>

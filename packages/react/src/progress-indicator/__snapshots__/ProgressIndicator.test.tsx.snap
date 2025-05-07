@@ -3,7 +3,7 @@
 exports[`ProgressIndicator With anchors renders correctly 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r0:-heading"
+    aria-labelledby="collapsing-side-bar-«r0»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -11,7 +11,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r0:-heading"
+        id="collapsing-side-bar-«r0»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -25,7 +25,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r0:-body"
+        aria-controls="collapsing-side-bar-«r0»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -70,7 +70,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r0:-body"
+      id="collapsing-side-bar-«r0»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -511,7 +511,7 @@ exports[`ProgressIndicator With anchors renders correctly 1`] = `
 exports[`ProgressIndicator With buttons renders correctly 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r2:-heading"
+    aria-labelledby="collapsing-side-bar-«r2»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -519,7 +519,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r2:-heading"
+        id="collapsing-side-bar-«r2»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -533,7 +533,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r2:-body"
+        aria-controls="collapsing-side-bar-«r2»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -578,7 +578,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r2:-body"
+      id="collapsing-side-bar-«r2»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1019,7 +1019,7 @@ exports[`ProgressIndicator With buttons renders correctly 1`] = `
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active button 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r5:-heading"
+    aria-labelledby="collapsing-side-bar-«r5»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -1027,7 +1027,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r5:-heading"
+        id="collapsing-side-bar-«r5»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -1041,7 +1041,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r5:-body"
+        aria-controls="collapsing-side-bar-«r5»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -1086,7 +1086,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r5:-body"
+      id="collapsing-side-bar-«r5»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -1527,7 +1527,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied blocked status active renders active link 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r4:-heading"
+    aria-labelledby="collapsing-side-bar-«r4»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -1535,7 +1535,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r4:-heading"
+        id="collapsing-side-bar-«r4»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -1549,7 +1549,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r4:-body"
+        aria-controls="collapsing-side-bar-«r4»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -1594,7 +1594,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r4:-body"
+      id="collapsing-side-bar-«r4»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2035,7 +2035,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied blocked status 
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active button 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r7:-heading"
+    aria-labelledby="collapsing-side-bar-«r7»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -2043,7 +2043,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r7:-heading"
+        id="collapsing-side-bar-«r7»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -2057,7 +2057,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r7:-body"
+        aria-controls="collapsing-side-bar-«r7»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -2102,7 +2102,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r7:-body"
+      id="collapsing-side-bar-«r7»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -2543,7 +2543,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied doing status active renders active link 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r6:-heading"
+    aria-labelledby="collapsing-side-bar-«r6»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -2551,7 +2551,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r6:-heading"
+        id="collapsing-side-bar-«r6»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -2565,7 +2565,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r6:-body"
+        aria-controls="collapsing-side-bar-«r6»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -2610,7 +2610,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r6:-body"
+      id="collapsing-side-bar-«r6»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3051,7 +3051,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied doing status ac
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active button 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r9:-heading"
+    aria-labelledby="collapsing-side-bar-«r9»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -3059,7 +3059,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r9:-heading"
+        id="collapsing-side-bar-«r9»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -3073,7 +3073,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r9:-body"
+        aria-controls="collapsing-side-bar-«r9»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -3118,7 +3118,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r9:-body"
+      id="collapsing-side-bar-«r9»-body"
     >
       <div
         class="css-79i25n-boxStyles"
@@ -3559,7 +3559,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
 exports[`ProgressIndicator legacy handlers With isActive applied started status active renders active link 1`] = `
 <div>
   <section
-    aria-labelledby="collapsing-side-bar-:r8:-heading"
+    aria-labelledby="collapsing-side-bar-«r8»-heading"
     class="css-1dkbvi7-boxStyles-CollapsingSideBar"
   >
     <div
@@ -3567,7 +3567,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     >
       <div
         class="css-1ynq4lf-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r8:-heading"
+        id="collapsing-side-bar-«r8»-heading"
       >
         <h2
           class="css-pkkmd5-boxStyles"
@@ -3581,7 +3581,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
         </span>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r8:-body"
+        aria-controls="collapsing-side-bar-«r8»-body"
         aria-expanded="false"
         aria-label="Progress"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -3626,7 +3626,7 @@ exports[`ProgressIndicator legacy handlers With isActive applied started status 
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r8:-body"
+      id="collapsing-side-bar-«r8»-body"
     >
       <div
         class="css-79i25n-boxStyles"

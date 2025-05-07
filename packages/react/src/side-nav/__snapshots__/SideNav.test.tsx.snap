@@ -3,7 +3,7 @@
 exports[`SideNav renders correctly 1`] = `
 <div>
   <nav
-    aria-labelledby="collapsing-side-bar-:r0:-heading"
+    aria-labelledby="collapsing-side-bar-«r0»-heading"
     class="css-2yhndx-boxStyles-CollapsingSideBar"
   >
     <div
@@ -11,7 +11,7 @@ exports[`SideNav renders correctly 1`] = `
     >
       <div
         class="css-lr9d04-boxStyles-CollapsingSideBar"
-        id="collapsing-side-bar-:r0:-heading"
+        id="collapsing-side-bar-«r0»-heading"
       >
         <h2
           class="css-m2oixi-boxStyles-SideNav"
@@ -24,7 +24,7 @@ exports[`SideNav renders correctly 1`] = `
         </h2>
       </div>
       <button
-        aria-controls="collapsing-side-bar-:r0:-body"
+        aria-controls="collapsing-side-bar-«r0»-body"
         aria-expanded="false"
         aria-label="Lodging your tax return"
         class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
@@ -64,7 +64,7 @@ exports[`SideNav renders correctly 1`] = `
     <div
       class="css-5z6nrp-useTransitionHeight-CollapsingSideBar"
       data-transition-height="collapsed"
-      id="collapsing-side-bar-:r0:-body"
+      id="collapsing-side-bar-«r0»-body"
     >
       <div
         class="css-79i25n-boxStyles"

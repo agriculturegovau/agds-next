@@ -275,16 +275,23 @@ const StaticCode = ({
 							style={style}
 						>
 							<code>
-								{tokens.map((line, lineKey) => (
-									<div key={lineKey} {...getLineProps({ line, key: lineKey })}>
-										{line.map((token, tokenKey) => (
-											<span
-												key={tokenKey}
-												{...getTokenProps({ token, key: tokenKey })}
-											/>
-										))}
-									</div>
-								))}
+								{tokens.map((line, lineKey) => {
+									const { key, ...lineProps } = getLineProps({
+										line,
+										key: lineKey,
+									});
+									return (
+										<div key={lineKey} {...lineProps}>
+											{line.map((token, tokenKey) => {
+												const { key, ...tokenProps } = getTokenProps({
+													token,
+													key: tokenKey,
+												});
+												return <span key={tokenKey} {...tokenProps} />;
+											})}
+										</div>
+									);
+								})}
 							</code>
 						</pre>
 					)}

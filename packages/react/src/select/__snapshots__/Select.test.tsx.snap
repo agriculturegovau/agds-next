@@ -7,7 +7,7 @@ exports[`Select Basic renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for="field-«r0»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -28,7 +28,7 @@ exports[`Select Basic renders correctly 1`] = `
         aria-invalid="false"
         aria-required="false"
         class="css-kwpsq8"
-        id="field-:r0:"
+        id="field-«r0»"
       >
         <option
           value="a"
@@ -78,7 +78,7 @@ exports[`Select Grouped options renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for="field-«r2»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -99,7 +99,7 @@ exports[`Select Grouped options renders correctly 1`] = `
         aria-invalid="false"
         aria-required="false"
         class="css-kwpsq8"
-        id="field-:r2:"
+        id="field-«r2»"
       >
         <optgroup
           label="Group A"
@@ -172,7 +172,7 @@ exports[`Select Invalid renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r6:"
+      for="field-«r6»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -214,7 +214,7 @@ exports[`Select Invalid renders correctly 1`] = `
       </div>
       <span
         class="css-o7cidz-boxStyles"
-        id="field-:r6:-message"
+        id="field-«r6»-message"
       >
         This field is required
       </span>
@@ -223,11 +223,11 @@ exports[`Select Invalid renders correctly 1`] = `
       class="css-1bg5d3h-SelectContainer"
     >
       <select
-        aria-describedby="field-:r6:-message"
+        aria-describedby="field-«r6»-message"
         aria-invalid="true"
         aria-required="false"
         class="css-kwpsq8"
-        id="field-:r6:"
+        id="field-«r6»"
       >
         <option
           value="a"
@@ -277,7 +277,7 @@ exports[`Select With hint renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r4:"
+      for="field-«r4»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -298,7 +298,7 @@ exports[`Select With hint renders correctly 1`] = `
         aria-invalid="false"
         aria-required="false"
         class="css-kwpsq8"
-        id="field-:r4:"
+        id="field-«r4»"
       >
         <option
           value="a"

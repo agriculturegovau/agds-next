@@ -8,7 +8,7 @@ exports[`DatePickerNext renders correctly 1`] = `
     >
       <label
         class="css-79i25n-boxStyles"
-        for="field-:r0:"
+        for="field-«r0»"
       >
         <span
           class="css-1jywj6f-boxStyles"
@@ -30,7 +30,7 @@ exports[`DatePickerNext renders correctly 1`] = `
           aria-required="false"
           autocomplete="off"
           class="css-vgeom5-DateInput"
-          id="field-:r0:"
+          id="field-«r0»"
           type="text"
           value="01/01/2000"
         />

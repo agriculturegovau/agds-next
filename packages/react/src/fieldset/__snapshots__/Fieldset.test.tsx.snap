@@ -3,9 +3,9 @@
 exports[`Fieldset Basic renders correctly 1`] = `
 <div>
   <fieldset
-    aria-describedby="fieldset-:r0:-hint"
+    aria-describedby="fieldset-«r0»-hint"
     class="css-79i25n-boxStyles"
-    id="fieldset-:r0:"
+    id="fieldset-«r0»"
   >
     <legend
       class="css-e6rsgj-boxStyles"
@@ -14,7 +14,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
     </legend>
     <span
       class="css-12r1vmf-boxStyles-FieldsetHint"
-      id="fieldset-:r0:-hint"
+      id="fieldset-«r0»-hint"
     >
       We will only use this to respond to your requests
     </span>
@@ -29,7 +29,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
         >
           <label
             class="css-79i25n-boxStyles"
-            for="field-:r1:"
+            for="field-«r1»"
           >
             <span
               class="css-1jywj6f-boxStyles"
@@ -41,7 +41,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
             aria-invalid="false"
             aria-required="true"
             class="css-mtd7ku"
-            id="field-:r1:"
+            id="field-«r1»"
             type="text"
           />
           <div
@@ -54,7 +54,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
         >
           <label
             class="css-79i25n-boxStyles"
-            for="field-:r2:"
+            for="field-«r2»"
           >
             <span
               class="css-1jywj6f-boxStyles"
@@ -66,7 +66,7 @@ exports[`Fieldset Basic renders correctly 1`] = `
             aria-invalid="false"
             aria-required="true"
             class="css-mtd7ku"
-            id="field-:r2:"
+            id="field-«r2»"
             type="text"
           />
           <div
@@ -83,9 +83,9 @@ exports[`Fieldset Basic renders correctly 1`] = `
 exports[`Fieldset Legend as page heading renders correctly 1`] = `
 <div>
   <fieldset
-    aria-describedby="fieldset-:r9:-hint"
+    aria-describedby="fieldset-«r9»-hint"
     class="css-79i25n-boxStyles"
-    id="fieldset-:r9:"
+    id="fieldset-«r9»"
   >
     <legend>
       <h1
@@ -96,7 +96,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
     </legend>
     <div
       class="css-uw4i6o-FieldsetHint"
-      id="fieldset-:r9:-hint"
+      id="fieldset-«r9»-hint"
     >
       <span
         class="css-d4xkeo-boxStyles"
@@ -115,7 +115,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
         >
           <label
             class="css-79i25n-boxStyles"
-            for="field-:ra:"
+            for="field-«ra»"
           >
             <span
               class="css-1jywj6f-boxStyles"
@@ -127,7 +127,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             aria-invalid="false"
             aria-required="true"
             class="css-mtd7ku"
-            id="field-:ra:"
+            id="field-«ra»"
             type="text"
           />
           <div
@@ -140,7 +140,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
         >
           <label
             class="css-79i25n-boxStyles"
-            for="field-:rb:"
+            for="field-«rb»"
           >
             <span
               class="css-1jywj6f-boxStyles"
@@ -152,7 +152,7 @@ exports[`Fieldset Legend as page heading renders correctly 1`] = `
             aria-invalid="false"
             aria-required="true"
             class="css-mtd7ku"
-            id="field-:rb:"
+            id="field-«rb»"
             type="text"
           />
           <div

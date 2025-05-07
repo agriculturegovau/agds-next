@@ -25,7 +25,7 @@ exports[`Drawer renders correctly 1`] = `
         data-focus-lock-disabled="false"
       >
         <div
-          aria-labelledby="drawer-:r0:-title"
+          aria-labelledby="drawer-«r0»-title"
           aria-modal="true"
           class="css-1nou9z3-boxStyles-DrawerDialog"
           role="dialog"
@@ -36,7 +36,7 @@ exports[`Drawer renders correctly 1`] = `
             <h2
               class="css-1ri2f4k-boxStyles-DrawerHeaderTitle"
               data-autofocus="true"
-              id="drawer-:r0:-title"
+              id="drawer-«r0»-title"
               tabindex="-1"
             >
               Drawer title

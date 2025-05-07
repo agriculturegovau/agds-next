@@ -7,7 +7,7 @@ exports[`TextInput Basic renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for="field-«r0»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -25,7 +25,7 @@ exports[`TextInput Basic renders correctly 1`] = `
       aria-invalid="false"
       aria-required="false"
       class="css-mtd7ku"
-      id="field-:r0:"
+      id="field-«r0»"
       type="text"
     />
     <div
@@ -43,7 +43,7 @@ exports[`TextInput Invalid renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r4:"
+      for="field-«r4»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -85,17 +85,17 @@ exports[`TextInput Invalid renders correctly 1`] = `
       </div>
       <span
         class="css-o7cidz-boxStyles"
-        id="field-:r4:-message"
+        id="field-«r4»-message"
       >
         This field is required
       </span>
     </div>
     <input
-      aria-describedby="field-:r4:-message"
+      aria-describedby="field-«r4»-message"
       aria-invalid="true"
       aria-required="false"
       class="css-mtd7ku"
-      id="field-:r4:"
+      id="field-«r4»"
       type="text"
     />
     <div
@@ -113,7 +113,7 @@ exports[`TextInput With hint renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for="field-«r2»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -129,16 +129,16 @@ exports[`TextInput With hint renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r2:-hint"
+      id="field-«r2»-hint"
     >
       Hint text
     </span>
     <input
-      aria-describedby="field-:r2:-hint"
+      aria-describedby="field-«r2»-hint"
       aria-invalid="false"
       aria-required="false"
       class="css-mtd7ku"
-      id="field-:r2:"
+      id="field-«r2»"
       type="text"
     />
     <div

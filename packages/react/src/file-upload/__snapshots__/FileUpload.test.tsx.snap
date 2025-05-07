@@ -7,7 +7,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r9:"
+      for="field-«r9»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -23,7 +23,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r9:-hint"
+      id="field-«r9»-hint"
     >
       General hint information
     </span>
@@ -83,10 +83,10 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby="field-:r9:-hint"
+            aria-describedby="field-«r9»-hint"
             aria-label="Select file, Upload file, (optional), 1 file selected"
             class="css-1qjel8e-BaseButton-Button"
-            id="field-:r9:"
+            id="field-«r9»"
             type="button"
           >
             <span>
@@ -212,7 +212,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r1:"
+      for="field-«r1»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -228,7 +228,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r1:-hint"
+      id="field-«r1»-hint"
     >
       General hint information
     </span>
@@ -288,10 +288,10 @@ exports[`FileUpload Basic renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby="field-:r1:-hint"
+            aria-describedby="field-«r1»-hint"
             aria-label="Select file, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
-            id="field-:r1:"
+            id="field-«r1»"
             type="button"
           >
             <span>
@@ -319,7 +319,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:rd:"
+      for="field-«rd»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -335,7 +335,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:rd:-hint"
+      id="field-«rd»-hint"
     >
       General hint information
     </span>
@@ -395,10 +395,10 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             </span>
           </div>
           <button
-            aria-describedby="field-:rd:-hint"
+            aria-describedby="field-«rd»-hint"
             aria-label="Select file, Upload file, (optional), 2 files selected"
             class="css-1qjel8e-BaseButton-Button"
-            id="field-:rd:"
+            id="field-«rd»"
             type="button"
           >
             <span>
@@ -634,7 +634,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r5:"
+      for="field-«r5»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -650,7 +650,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
     </label>
     <span
       class="css-1jndov8-boxStyles"
-      id="field-:r5:-hint"
+      id="field-«r5»-hint"
     >
       General hint information
     </span>
@@ -712,7 +712,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
             <span
               class="css-axuon-boxStyles"
-              id=":r4:-file-size-desc"
+              id="«r4»-file-size-desc"
             >
               Each file
                cannot exceed
@@ -722,7 +722,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
             <span
               class="css-axuon-boxStyles"
-              id=":r4:-accepted-files-desc"
+              id="«r4»-accepted-files-desc"
             >
               Files accepted: 
               jpeg, jpg, png
@@ -730,10 +730,10 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
             </span>
           </div>
           <button
-            aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
+            aria-describedby="field-«r5»-hint «r4»-file-size-desc «r4»-accepted-files-desc"
             aria-label="Select files, Upload file, (optional)"
             class="css-1qjel8e-BaseButton-Button"
-            id="field-:r5:"
+            id="field-«r5»"
             type="button"
           >
             <span>

@@ -1,5 +1,5 @@
 import { normalize } from 'path';
-import { useMemo, useState } from 'react';
+import { startTransition, useMemo, useState } from 'react';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { SearchInput } from '@ag.ds-next/react/search-input';
@@ -32,6 +32,7 @@ export default function PackagesHome({
 	title,
 	description,
 }: StaticProps) {
+	const [inputValue, setInputValue] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
 	const [activeCategories, setActiveCategories] = useState<string[]>([]);
 
@@ -40,22 +41,22 @@ export default function PackagesHome({
 		setActiveCategories([]);
 	};
 
+	const handleChange = (val: string) => {
+		setInputValue(val);
+		startTransition(() => setSearchTerm(val.toLocaleLowerCase()));
+	};
+
 	const hasFilters = searchTerm !== '' || activeCategories.length > 0;
 
 	const filteredPkgs = useMemo(
 		() =>
 			pkgList.filter((p) => {
-				if (activeCategories.length) {
-					if (!activeCategories.includes(p.groupName)) return false;
-				}
+				if (activeCategories.length && !activeCategories.includes(p.groupName))
+					return false;
 
 				if (!searchTerm) return true;
 
-				return (
-					p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					p.groupName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					p.description?.toLowerCase().includes(searchTerm.toLowerCase())
-				);
+				return p.text.includes(searchTerm);
 			}),
 		[pkgList, searchTerm, activeCategories]
 	);
@@ -79,8 +80,8 @@ export default function PackagesHome({
 											hint="Filter by name or category"
 											label="Find a component"
 											maxWidth="xl"
-											onChange={setSearchTerm}
-											value={searchTerm}
+											onChange={handleChange}
+											value={inputValue}
 										/>
 									</div>
 									<ControlGroup
@@ -162,7 +163,12 @@ export async function getStaticProps() {
 			description: data?.description as string,
 			navLinks,
 			groupList,
-			pkgList,
+			pkgList: pkgList.map((pkg) => ({
+				...pkg,
+				text: [pkg.description, pkg.groupName, pkg.title]
+					.join(' ')
+					.toLowerCase(),
+			})),
 		},
 	};
 }
