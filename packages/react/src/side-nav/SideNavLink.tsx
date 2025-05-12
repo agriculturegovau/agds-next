@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { collapsingSideBarHoverVar } from '../_collapsing-side-bar';
 import {
 	boxPalette,
@@ -8,8 +8,8 @@ import {
 	useLinkComponent,
 } from '../core';
 import { Flex } from '../flex';
-import { ChevronDownIcon, ChevronRightIcon } from '../icon';
-import { SideNavLinkProps } from './SideNavListItem';
+import { ChevronRightIcon } from '../icon';
+import { type SideNavLinkProps } from './SideNavListItem';
 import { useLinkListDepth } from './context';
 
 export const SideNavLink = ({
@@ -77,26 +77,25 @@ export const SideNavLink = ({
 
 			<span css={{ flexGrow: 1 }}>{label}</span>
 
-			{hasSubLevelItemsIndicator &&
-				(isOpen ? (
-					<ChevronDownIcon
-						aria-hidden={false}
-						aria-label={`. Sub-level ${
-							numberOfItems === 1 ? 'link' : 'links'
-						} below.`}
-						css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
-						size={depth > 1 ? 'sm' : 'md'}
-					/>
-				) : (
-					<ChevronRightIcon
-						aria-hidden={false}
-						aria-label={`. Has ${numberOfItems} sub-level ${
-							numberOfItems === 1 ? 'link' : 'links'
-						}.`}
-						css={depth > 1 ? { marginRight: mapSpacing(0.25) } : undefined}
-						size={depth > 1 ? 'sm' : 'md'}
-					/>
-				))}
+			{hasSubLevelItemsIndicator && (
+				<ChevronRightIcon
+					aria-hidden={false}
+					aria-label={
+						isOpen
+							? `. Sub-level ${numberOfItems === 1 ? 'link' : 'links'} below.`
+							: `. Has ${numberOfItems} sub-level ${
+									numberOfItems === 1 ? 'link' : 'links'
+							  }.`
+					}
+					css={{
+						transform: isOpen ? 'rotate(90deg)' : undefined,
+						...(depth > 1
+							? { height: '1lh', marginRight: mapSpacing(0.25) }
+							: undefined),
+					}}
+					size={depth > 1 ? 'sm' : 'md'}
+				/>
+			)}
 		</Flex>
 	);
 };

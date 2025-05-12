@@ -1,5 +1,6 @@
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { focusStyles } from '../box';
+import { scaleIconOnHover } from '../button';
 import { boxPalette, mapSpacing, mapResponsiveProp, packs, mq } from '../core';
 import { Flex } from '../flex';
 import { localPalette } from './localPalette';
@@ -14,6 +15,7 @@ export function MainNavListItem({
 	children,
 	type,
 }: MainNavListItemProps) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			as="li"
@@ -60,6 +62,10 @@ export function MainNavListItem({
 						'&::after': { zIndex: -1 },
 					},
 
+					svg: {
+						transition: scaleIconCSS.transition,
+					},
+
 					// Hover styles
 					'&:hover': {
 						color: boxPalette.foregroundText,
@@ -69,6 +75,10 @@ export function MainNavListItem({
 
 						'&::after': {
 							background: localPalette.linkHoverBg,
+						},
+
+						svg: {
+							transform: scaleIconCSS.transform,
 						},
 					},
 				},

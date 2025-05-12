@@ -16,7 +16,7 @@ exports[`Pagination renders correctly 1`] = `
         >
           <a
             aria-label="Go to previous page"
-            class="css-16wr18x-TextLink-boxStyles-BaseDirectionLink"
+            class="css-kpkp3p-TextLink-boxStyles-BaseDirectionLink"
             href="page-4"
           >
             <svg
@@ -113,7 +113,7 @@ exports[`Pagination renders correctly 1`] = `
         >
           <a
             aria-label="Go to next page"
-            class="css-16wr18x-TextLink-boxStyles-BaseDirectionLink"
+            class="css-kpkp3p-TextLink-boxStyles-BaseDirectionLink"
             href="page-6"
           >
             <span

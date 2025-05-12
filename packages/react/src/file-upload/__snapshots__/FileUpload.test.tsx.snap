@@ -85,7 +85,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           <button
             aria-describedby="field-:r9:-hint"
             aria-label="Select file, Upload file, (optional), 1 file selected"
-            class="css-kuq2xd-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r9:"
             type="button"
           >
@@ -166,7 +166,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example.txt"
-                class="css-511wwq-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
@@ -290,7 +290,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           <button
             aria-describedby="field-:r1:-hint"
             aria-label="Select file, Upload file, (optional)"
-            class="css-kuq2xd-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r1:"
             type="button"
           >
@@ -397,7 +397,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           <button
             aria-describedby="field-:rd:-hint"
             aria-label="Select file, Upload file, (optional), 2 files selected"
-            class="css-kuq2xd-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:rd:"
             type="button"
           >
@@ -481,7 +481,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example.png"
-                class="css-511wwq-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
@@ -588,7 +588,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example-no-thumbnail.doc"
-                class="css-511wwq-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
@@ -732,7 +732,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
             aria-label="Select files, Upload file, (optional)"
-            class="css-kuq2xd-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r5:"
             type="button"
           >

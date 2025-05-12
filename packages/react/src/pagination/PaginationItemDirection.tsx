@@ -1,10 +1,14 @@
-import { ElementType, MouseEventHandler, PropsWithChildren } from 'react';
-import { LinkProps, print } from '../core';
+import {
+	type ElementType,
+	type MouseEventHandler,
+	type PropsWithChildren,
+} from 'react';
+import { BaseButton, scaleIconOnHover, type BaseButtonProps } from '../button';
 import { Box } from '../box';
+import { type LinkProps, print } from '../core';
 import { Flex } from '../flex';
-import { TextLink } from '../text-link';
-import { BaseButton, BaseButtonProps } from '../button';
 import { ArrowRightIcon, ArrowLeftIcon } from '../icon';
+import { TextLink } from '../text-link';
 import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
 
 type Direction = 'left' | 'right';
@@ -102,12 +106,19 @@ const BaseDirectionLink = ({
 	direction,
 	...props
 }: BaseDirectionLinkProps) => {
+	const scaleIconCSS = scaleIconOnHover('sm');
 	return (
 		<Flex
 			alignItems="center"
 			as={as}
 			css={{
 				alignSelf: 'flex-start',
+				svg: {
+					transition: scaleIconCSS.transition,
+				},
+				':hover svg': {
+					transform: scaleIconCSS.transform,
+				},
 				...print.hideHref,
 			}}
 			focusRingFor="keyboard"

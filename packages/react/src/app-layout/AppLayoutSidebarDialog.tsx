@@ -21,7 +21,7 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
 import { VisuallyHidden } from '../a11y';
-import { BaseButton } from '../button';
+import { BaseButton, scaleIconOnHover } from '../button';
 import { useAppLayoutContext } from './AppLayoutContext';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
@@ -187,6 +187,7 @@ function CloseMenuButton({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -200,7 +201,13 @@ function CloseMenuButton({
 				as={BaseButton}
 				color="action"
 				css={{
+					svg: {
+						transition: scaleIconCSS.transition,
+					},
 					':focus': { outlineOffset: `-${packs.outline.outlineWidth}` },
+					':hover svg': {
+						transform: scaleIconCSS.transform,
+					},
 				}}
 				flexDirection="column"
 				focusRingFor="keyboard"

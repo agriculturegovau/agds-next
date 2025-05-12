@@ -256,7 +256,7 @@ exports[`PageAlert with a close button renders correctly 1`] = `
       </div>
       <button
         aria-label="Close"
-        class="css-dc0eyu-BaseButton-PageAlertCloseButton"
+        class="css-1vkr3w4-BaseButton-PageAlertCloseButton"
         type="button"
       >
         <span>

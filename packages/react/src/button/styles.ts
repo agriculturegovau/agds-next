@@ -129,9 +129,11 @@ type ButtonStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
 	? ReturnType<typeof getBaseStyles> // For backwards compatibility we return a single object of CSS properties, unless...
 	: ReturnType<typeof mq>; // ...we have a responsive property included as an arg, then we return the responsive array of CSS properties.
 
-const iconHoverSizeMap = {
-	sm: iconSizes.sm + 2 / 16,
-	md: iconSizes.md + 2 / 16,
+export const scaleIconOnHover = (size: keyof typeof iconSizes = 'md') => {
+	return {
+		transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+		transform: `scale(${(iconSizes[size] + 2 / 16) / iconSizes[size]})`,
+	};
 };
 
 function getBaseStyles({
@@ -140,6 +142,7 @@ function getBaseStyles({
 	size,
 	variant,
 }: BaseStylesArgs) {
+	const scaleIconCSS = scaleIconOnHover(size);
 	return {
 		appearance: 'none',
 		boxSizing: 'border-box',
@@ -159,18 +162,18 @@ function getBaseStyles({
 			width: '100%',
 		}),
 
-		'&:disabled': {
+		':disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
 
 		// Ensure button icons do not shrink and scale on hover
-		'& > svg': {
+		'> svg': {
 			flexShrink: 0,
-			transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+			transition: scaleIconCSS.transition,
 		},
-		'&:hover > svg': {
-			transform: `scale(${iconHoverSizeMap[size] / iconSizes[size]})`,
+		':hover > svg': {
+			transform: scaleIconCSS.transform,
 		},
 
 		...focusStylesMap[focusRingFor],

@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { VisuallyHidden } from '../a11y';
 import { Avatar } from '../avatar';
-import { BaseButton } from '../button';
+import { BaseButton, scaleIconOnHover } from '../button';
 import { boxPalette, mq, packs } from '../core';
 import {
 	useDropdownMenuButton,
@@ -45,6 +45,7 @@ function AppLayoutHeaderAccountDropdownButton({
 	const { isMenuOpen } = useDropdownMenuContext();
 	const { ref, ...buttonProps } = useDropdownMenuButton();
 	const scrollbarWidthRef = useRef(0);
+	const scaleIconCSS = scaleIconOnHover('sm');
 
 	useEffect(() => {
 		scrollbarWidthRef.current =
@@ -65,10 +66,19 @@ function AppLayoutHeaderAccountDropdownButton({
 				// 17.625rem is the available space beside the hamburger at 375px
 				maxWidth: `calc(17.625rem - ${scrollbarWidthRef.current}px)`,
 				overflow: 'hidden',
-				'&:hover': {
+				svg: {
+					transform: isMenuOpen ? 'rotate(180deg)' : undefined,
+					transition: scaleIconCSS.transition,
+				},
+				':hover': {
 					backgroundColor: boxPalette.backgroundShade,
 					// Underline the name + secondary text
 					'& > span:last-of-type > span:last-of-type': packs.underline,
+					svg: {
+						transform: isMenuOpen
+							? `rotate(180deg) ${scaleIconCSS.transform}`
+							: scaleIconCSS.transform,
+					},
 				},
 			})}
 			focusRingFor="keyboard"
@@ -108,11 +118,7 @@ function AppLayoutHeaderAccountDropdownButton({
 					) : null}
 				</Flex>
 			</Flex>
-			{isMenuOpen ? (
-				<ChevronUpIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
-			) : (
-				<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
-			)}
+			<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 		</Flex>
 	);
 }

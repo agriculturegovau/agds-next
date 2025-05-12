@@ -41,7 +41,7 @@ exports[`HeroBanner renders correctly 1`] = `
               </p>
             </div>
             <button
-              class="css-9mki7a-BaseButton-Button"
+              class="css-1g162wt-BaseButton-Button"
               type="button"
             >
               <span>

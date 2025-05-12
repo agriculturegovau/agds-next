@@ -1,5 +1,6 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, type PropsWithChildren } from 'react';
 import { Box } from '../box';
+import { scaleIconOnHover } from '../button';
 import { mapSpacing } from '../core';
 import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
@@ -18,11 +19,21 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
 		{ children, onBodyAlt = false, iconBefore = false, label = 'Details' },
 		ref
 	) {
+		const scaleIconCSS = scaleIconOnHover();
 		return (
 			<details
 				css={{
+					'summary svg:last-of-type': {
+						transition: scaleIconCSS.transition,
+					},
+					'summary:hover svg:last-of-type': {
+						transform: scaleIconCSS.transform,
+					},
 					'&[open] summary svg:last-of-type': {
 						transform: 'rotate(180deg)',
+					},
+					'&[open] summary:hover svg:last-of-type': {
+						transform: `rotate(180deg) ${scaleIconCSS.transform}`,
 					},
 					'summary::marker, summary::-webkit-details-marker': {
 						display: 'none',

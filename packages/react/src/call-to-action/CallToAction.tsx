@@ -1,7 +1,7 @@
-import { ElementType, PropsWithChildren } from 'react';
-import { LinkProps } from '../core';
+import { type ElementType, type PropsWithChildren } from 'react';
+import { type LinkProps } from '../core';
 import { Flex } from '../flex';
-import { BaseButton, BaseButtonProps } from '../button';
+import { BaseButton, scaleIconOnHover, type BaseButtonProps } from '../button';
 import { ChevronRightIcon } from '../icon';
 import { TextLink } from '../text-link';
 
@@ -28,12 +28,21 @@ const CallToAction = ({
 	className,
 	...props
 }: CallToActionProps) => {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex css={{ alignSelf: 'flex-start' }} inline>
 			<Flex
 				alignItems="center"
 				as={as}
 				className={className}
+				css={{
+					svg: {
+						transition: scaleIconCSS.transition,
+					},
+					':hover svg': {
+						transform: scaleIconCSS.transform,
+					},
+				}}
 				focusRingFor="keyboard"
 				fontSize="md"
 				fontWeight="bold"

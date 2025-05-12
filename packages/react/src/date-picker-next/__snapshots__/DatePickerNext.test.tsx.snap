@@ -37,7 +37,7 @@ exports[`DatePickerNext renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-label="Change date, 1st January 2000 Saturday"
-          class="css-18lt9yj-BaseButton-DateInput"
+          class="css-4pxl79-BaseButton-DateInput"
           type="button"
         >
           <svg

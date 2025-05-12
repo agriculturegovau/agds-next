@@ -1,6 +1,6 @@
-import { useEffect, useState, KeyboardEvent } from 'react';
-import { Button, ButtonProps } from '../button';
-import { ChevronUpIcon, ChevronDownIcon } from '../icon';
+import { type KeyboardEvent, useEffect, useState } from 'react';
+import { Button, scaleIconOnHover, type ButtonProps } from '../button';
+import { ChevronDownIcon } from '../icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 
@@ -16,10 +16,23 @@ export function DropdownMenuButton({
 }: DropdownMenuButtonProps) {
 	const { isMenuOpen } = useDropdownMenuContext();
 	const buttonProps = useDropdownMenuButton();
-	const defaultIconAfter = isMenuOpen ? ChevronUpIcon : ChevronDownIcon;
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Button
-			iconAfter={iconAfter ? iconAfter : defaultIconAfter}
+			css={{
+				...(!iconAfter && {
+					svg: {
+						transform: isMenuOpen ? 'rotate(180deg)' : undefined,
+						transition: scaleIconCSS.transition,
+					},
+					':hover svg': {
+						transform: isMenuOpen
+							? `rotate(180deg) ${scaleIconCSS.transform}`
+							: scaleIconCSS.transform,
+					},
+				}),
+			}}
+			iconAfter={iconAfter ? iconAfter : ChevronDownIcon}
 			variant={variant}
 			{...buttonProps}
 			{...props}
