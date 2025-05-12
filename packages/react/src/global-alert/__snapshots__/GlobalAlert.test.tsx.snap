@@ -67,7 +67,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-sbsftc-Button"
+          class="css-16yahzk-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"
