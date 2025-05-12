@@ -23,6 +23,7 @@ import { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 import { ChevronUpIcon } from './icons/ChevronUpIcon';
 import { ClockIcon } from './icons/ClockIcon';
 import { CloseIcon } from './icons/CloseIcon';
+import { CodeIcon } from './icons/CodeIcon';
 import { CopyIcon } from './icons/CopyIcon';
 import { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
@@ -118,6 +119,7 @@ export const allIcons = {
 	ChevronUpIcon,
 	ClockIcon,
 	CloseIcon,
+	CodeIcon,
 	CopyIcon,
 	CornerDownRightIcon,
 	DeleteIcon,
