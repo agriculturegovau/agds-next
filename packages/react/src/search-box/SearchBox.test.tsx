@@ -18,7 +18,7 @@ expect.extend(toHaveNoViolations);
 afterEach(cleanup);
 
 const searchInputLabel = 'Search this website';
-const clearLabel = 'Clear search';
+const clearButtonLabel = 'Clear search';
 
 function renderSearchBox({
 	searchBoxInputProps,
@@ -45,7 +45,7 @@ const TestComponentWithState = ({
 			<SearchBoxInput
 				{...searchBoxInputProps}
 				onChange={(e) => {
-					// Used to check that onChange function was run
+					// Used to check that onChange function was called
 					if (searchBoxInputProps?.onChange) {
 						searchBoxInputProps.onChange(e);
 					}
@@ -120,7 +120,7 @@ describe('SearchBox', () => {
 				searchBoxInputProps: { clearButton: false, value: 'Orange' },
 			});
 
-			const clearButtonElement = screen.queryByLabelText(clearLabel);
+			const clearButtonElement = screen.queryByLabelText(clearButtonLabel);
 			expect(clearButtonElement).toBeNull();
 		});
 
@@ -129,7 +129,7 @@ describe('SearchBox', () => {
 				searchBoxInputProps: { clearButton: true, value: undefined },
 			});
 
-			const clearButtonElement = screen.queryByLabelText(clearLabel);
+			const clearButtonElement = screen.queryByLabelText(clearButtonLabel);
 			expect(clearButtonElement).toBeNull();
 		});
 
@@ -138,7 +138,7 @@ describe('SearchBox', () => {
 				searchBoxInputProps: { clearButton: true, value: 'Orange' },
 			});
 
-			const clearButtonElement = screen.getByLabelText(clearLabel);
+			const clearButtonElement = screen.getByLabelText(clearButtonLabel);
 			expect(clearButtonElement).toBeInTheDocument();
 		});
 
@@ -157,7 +157,7 @@ describe('SearchBox', () => {
 			});
 			expect(searchInputElement.getAttribute('value')).toBe('Orange');
 
-			const clearButtonElement = screen.getByLabelText(clearLabel);
+			const clearButtonElement = screen.getByLabelText(clearButtonLabel);
 			await act(() => {
 				fireEvent.click(clearButtonElement);
 			});
@@ -179,7 +179,7 @@ describe('SearchBox', () => {
 			);
 
 			// TestComponentWithState has a useState set using an initial value
-			const clearButtonElement = screen.getByLabelText(clearLabel);
+			const clearButtonElement = screen.getByLabelText(clearButtonLabel);
 			await act(() => {
 				fireEvent.click(clearButtonElement);
 			});

@@ -103,7 +103,6 @@ const inputStyles = ({ showClearButton }: { showClearButton: boolean }) => {
 		color: globalPalette.lightForegroundText,
 		background: globalPalette.lightBackgroundBody,
 
-		maxWidth: undefined,
 		...(showClearButton && { paddingRight: '3rem' }),
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
