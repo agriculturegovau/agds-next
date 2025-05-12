@@ -24,6 +24,7 @@ type BaseSearchBoxInputProps = {
 };
 
 export type SearchBoxInputProps = BaseSearchBoxInputProps & {
+	clearButton?: boolean;
 	label?: string;
 	labelVisible?: boolean;
 };
@@ -31,6 +32,7 @@ export type SearchBoxInputProps = BaseSearchBoxInputProps & {
 export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 	function SearchBoxInput(
 		{
+			clearButton = false,
 			id,
 			label = 'Search',
 			labelVisible = false,
@@ -44,7 +46,7 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 		const [internalValue, setInternalValue] = useState(valueProp || '');
 
 		const value = typeof valueProp === 'string' ? valueProp : internalValue;
-		const showClearButton = Boolean(value);
+		const showClearButton = clearButton ? Boolean(value) : false;
 
 		const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 			onChangeProps?.(event);
@@ -101,6 +103,7 @@ const inputStyles = ({ showClearButton }: { showClearButton: boolean }) => {
 		color: globalPalette.lightForegroundText,
 		background: globalPalette.lightBackgroundBody,
 
+		maxWidth: undefined,
 		...(showClearButton && { paddingRight: '3rem' }),
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':

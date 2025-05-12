@@ -20,7 +20,7 @@ exports[`SearchBox renders correctly 1`] = `
         </label>
         <input
           autocomplete="off"
-          class="css-w5d386-SearchBoxInput"
+          class="css-1w0tbux-SearchBoxInput"
           id="search-:r0:"
           type="search"
           value=""

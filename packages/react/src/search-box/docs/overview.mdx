@@ -21,12 +21,15 @@ Use the `SearchBox` component to help users find content or pages through keywor
 - use to allow users to search for and discover content
 - include placeholder text to explain what the box is for
 - use to search for content on a server
+- allow users to clear the input and the active search term
+- allow users to clear the input and remove the current search term.
 
 <DontHeading />
 
-- use to filter information that has loaded – use SearchInput
-- indicate that the field is optional
-- include a label.
+- use to filter information that has loaded – use [SearchInput](/components/search-input)
+- include a label when used in [Header](/components/header)
+- display the active search term as a filter when used with [Search filters](/patterns/search-filters)
+- indicate that the field is optional.
 
 ## Responsive icon
 
@@ -37,4 +40,53 @@ Use the `iconOnly` prop to configure at which breakpoints the search icon should
 	<SearchBoxInput label="Search this website" />
 	<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
 </SearchBox>
+```
+
+## Clear button
+
+Use the `clearButton` prop when you need to enable persistent search terms that can be removed after a search has been completed.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState('Oranges');
+	return (
+		<SearchBox onSubmit={console.log}>
+			<SearchBoxInput
+				clearButton
+				label="Search this website"
+				onChange={(e) => setValue(e.target.value)}
+				value={value}
+			/>
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
+	);
+};
+```
+
+## Colour
+
+AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
+
+This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+
+```jsx live
+<Fragment>
+	<Box gap={1.5} padding={1.5}>
+		<SearchBox onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
+	</Box>
+
+	<Box background="body" gap={1.5} padding={1.5} palette="dark">
+		<SearchBox onSubmit={console.log}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
+				Search
+			</SearchBoxButton>
+		</SearchBox>
+	</Box>
+</Fragment>
 ```
