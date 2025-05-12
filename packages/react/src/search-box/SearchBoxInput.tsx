@@ -1,7 +1,14 @@
-import { InputHTMLAttributes, forwardRef } from 'react';
+import {
+	forwardRef,
+	type ChangeEvent,
+	type InputHTMLAttributes,
+	useRef,
+	useState,
+} from 'react';
 import { textInputStyles } from '../text-input';
 import { Stack } from '../stack';
-import { globalPalette, useId } from '../core';
+import { globalPalette, mergeRefs, useId } from '../core';
+import { SearchBoxClearButton } from './SearchBoxClearButton';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -23,13 +30,43 @@ export type SearchBoxInputProps = BaseSearchBoxInputProps & {
 
 export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 	function SearchBoxInput(
-		{ label = 'Search', labelVisible = false, id, ...props },
+		{
+			id,
+			label = 'Search',
+			labelVisible = false,
+			onChange: onChangeProps,
+			value: valueProp,
+			...props
+		},
 		ref
 	) {
+		const internalRef = useRef<HTMLInputElement>(null);
+		const [internalValue, setInternalValue] = useState(valueProp || '');
+
+		const value = typeof valueProp === 'string' ? valueProp : internalValue;
+		const showClearButton = Boolean(value);
+
+		const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+			onChangeProps?.(event);
+			setInternalValue(event.target.value);
+		};
+
+		// Clears the input while also triggering the `onChange` event to consumers
+		const clearInput = () => {
+			if (!value) return;
+			// Cannot change the API, we still need to pass it as an HTMLInputEvent
+			onChange({
+				target: {
+					value: '',
+				},
+			} as ChangeEvent<HTMLInputElement>);
+			internalRef.current?.focus();
+		};
+
 		const inputId = useInputId(id);
-		const styles = inputStyles();
+		const styles = inputStyles({ showClearButton });
 		return (
-			<Stack width="100%">
+			<Stack css={{ position: 'relative' }} width="100%">
 				<SearchBoxLabel htmlFor={inputId} visible={labelVisible}>
 					{label}
 				</SearchBoxLabel>
@@ -37,10 +74,13 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 					autoComplete="off"
 					css={styles}
 					id={inputId}
-					ref={ref}
+					onChange={onChange}
+					ref={mergeRefs([internalRef, ref])}
 					type="search"
+					value={value}
 					{...props}
 				/>
+				{showClearButton ? <SearchBoxClearButton onClick={clearInput} /> : null}
 			</Stack>
 		);
 	}
@@ -51,7 +91,7 @@ const useInputId = (idProp?: string) => {
 	return idProp || `search-${autoId}`;
 };
 
-const inputStyles = () => {
+const inputStyles = ({ showClearButton }: { showClearButton: boolean }) => {
 	const baseStyles = textInputStyles({ block: true });
 	return {
 		...baseStyles,
@@ -60,6 +100,8 @@ const inputStyles = () => {
 		borderBottomRightRadius: 0,
 		color: globalPalette.lightForegroundText,
 		background: globalPalette.lightBackgroundBody,
+
+		...(showClearButton && { paddingRight: '3rem' }),
 
 		'&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
 			{
