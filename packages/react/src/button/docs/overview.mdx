@@ -95,7 +95,7 @@ A Block button spans the full width of the container or parent element.
 
 ## Loading
 
-Use the loading property to let users know their action is being processed.
+Use the `loading` property to let users know their action is being processed.
 
 ```jsx live
 <Button type="submit" loading>
@@ -132,9 +132,10 @@ Use icons that accurately communicate the label meaning and describe the action.
 The icon should appear before the text except when the icon indicates direction, e.g. Next or external links.
 
 ```jsx live
-<ButtonLink href="/sign-out" iconBefore={AvatarIcon}>
-	Sign out
-</ButtonLink>
+<Stack alignItems="start" gap={1}>
+	<Button iconBefore={AvatarIcon}>Sign out</Button>
+	<Button iconAfter={ArrowRightIcon}>Next</Button>
+</Stack>
 ```
 
 ## Links

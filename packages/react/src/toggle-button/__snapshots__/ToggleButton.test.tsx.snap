@@ -9,7 +9,7 @@ exports[`ToggleButton renders alternative icon and label when pressedLabel = tru
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -48,7 +48,7 @@ exports[`ToggleButton renders aria-label when hiddenLabel = true 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -75,7 +75,7 @@ exports[`ToggleButton renders correctly 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
