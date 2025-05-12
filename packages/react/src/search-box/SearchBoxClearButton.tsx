@@ -27,6 +27,7 @@ export function SearchBoxClearButton({ onClick }: SearchBoxClearButtonProps) {
 			}}
 			height="2rem"
 			justifyContent="center"
+			light // Use light theme, contrast issues with dark.foregroundAction and light.backgroundBody
 			onClick={onClick}
 			role="button"
 			width="2rem"

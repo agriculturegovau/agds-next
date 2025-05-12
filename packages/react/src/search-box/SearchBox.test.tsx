@@ -1,32 +1,71 @@
 import '@testing-library/jest-dom';
 import 'html-validate/jest';
+import { useState } from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { cleanup, render } from '../../../../test-utils';
+import {
+	act,
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+} from '../../../../test-utils';
 import { SearchBox } from './SearchBox';
-import { SearchBoxInput } from './SearchBoxInput';
+import { SearchBoxInput, type SearchBoxInputProps } from './SearchBoxInput';
 import { SearchBoxButton } from './SearchBoxButton';
 
 expect.extend(toHaveNoViolations);
 
 afterEach(cleanup);
 
-function renderSearch() {
+const searchInputLabel = 'Search this website';
+const clearLabel = 'Clear search';
+
+function renderSearchBox({
+	searchBoxInputProps,
+}: {
+	searchBoxInputProps?: SearchBoxInputProps;
+}) {
 	return render(
 		<SearchBox>
-			<SearchBoxInput />
+			<SearchBoxInput {...searchBoxInputProps} />
 			<SearchBoxButton>Search</SearchBoxButton>
 		</SearchBox>
 	);
 }
 
+const TestComponentWithState = ({
+	searchBoxInputProps,
+}: {
+	searchBoxInputProps?: SearchBoxInputProps;
+}) => {
+	const [value, setValue] = useState(searchBoxInputProps?.value || '');
+
+	return (
+		<SearchBox>
+			<SearchBoxInput
+				{...searchBoxInputProps}
+				onChange={(e) => {
+					// Used to check that onChange function was run
+					if (searchBoxInputProps?.onChange) {
+						searchBoxInputProps.onChange(e);
+					}
+					setValue(e.target.value);
+				}}
+				value={value}
+			/>
+			<SearchBoxButton>Search</SearchBoxButton>
+		</SearchBox>
+	);
+};
+
 describe('SearchBox', () => {
 	it('renders correctly', () => {
-		const { container } = renderSearch();
+		const { container } = renderSearchBox({});
 		expect(container).toMatchSnapshot();
 	});
 
 	it('renders valid HTML with no a11y violations', async () => {
-		const { container } = renderSearch();
+		const { container } = renderSearchBox({});
 		expect(container).toHTMLValidate({
 			extends: ['html-validate:recommended'],
 			rules: {
@@ -35,5 +74,125 @@ describe('SearchBox', () => {
 			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
+	});
+
+	// Check internal state (no `value` or `onChange` prop passed into the input component)
+	it('updates the input state value when the input has changed (internal state)', async () => {
+		renderSearchBox({
+			searchBoxInputProps: { label: searchInputLabel },
+		});
+
+		const searchInputElement = screen.getByLabelText(searchInputLabel);
+		expect(searchInputElement).toBeInTheDocument();
+		await act(() => {
+			fireEvent.change(searchInputElement, { target: { value: 'Orange' } });
+		});
+
+		expect(searchInputElement.getAttribute('value')).toBe('Orange');
+	});
+
+	// Check parent or store managed state state (when the prop `value` or `onChange` has been passed into the input component)
+	it('executes the `onChange` function when the input has changes (parent state managed)', async () => {
+		const mockOnChange = jest.fn();
+		render(
+			<TestComponentWithState
+				searchBoxInputProps={{
+					clearButton: true,
+					label: searchInputLabel,
+					onChange: mockOnChange,
+				}}
+			/>
+		);
+
+		const searchInputElement = screen.getByLabelText(searchInputLabel);
+		expect(searchInputElement).toBeInTheDocument();
+		await act(() => {
+			fireEvent.change(searchInputElement, { target: { value: 'Orange' } });
+		});
+
+		expect(mockOnChange).toHaveBeenCalledTimes(1);
+		expect(searchInputElement.getAttribute('value')).toBe('Orange');
+	});
+
+	describe('SearchBoxInput clear button', () => {
+		it('does not render a "clear input" button when the `clearButton` prop is `false`', () => {
+			renderSearchBox({
+				searchBoxInputProps: { clearButton: false, value: 'Orange' },
+			});
+
+			const clearButtonElement = screen.queryByLabelText(clearLabel);
+			expect(clearButtonElement).toBeNull();
+		});
+
+		it('does not render a "clear input" button when the `clearButton` prop is `true` and the value is not truthy and string', () => {
+			renderSearchBox({
+				searchBoxInputProps: { clearButton: true, value: undefined },
+			});
+
+			const clearButtonElement = screen.queryByLabelText(clearLabel);
+			expect(clearButtonElement).toBeNull();
+		});
+
+		it('renders a "clear input" button when the `clearButton` prop is `true` and the input has a valid value', () => {
+			renderSearchBox({
+				searchBoxInputProps: { clearButton: true, value: 'Orange' },
+			});
+
+			const clearButtonElement = screen.getByLabelText(clearLabel);
+			expect(clearButtonElement).toBeInTheDocument();
+		});
+
+		it('clears and updates the field value when the "clear input" button is pressed (internal state)', async () => {
+			renderSearchBox({
+				searchBoxInputProps: {
+					clearButton: true,
+					label: searchInputLabel,
+				},
+			});
+
+			// Manage internal state value
+			const searchInputElement = screen.getByLabelText(searchInputLabel);
+			await act(() => {
+				fireEvent.change(searchInputElement, { target: { value: 'Orange' } });
+			});
+			expect(searchInputElement.getAttribute('value')).toBe('Orange');
+
+			const clearButtonElement = screen.getByLabelText(clearLabel);
+			await act(() => {
+				fireEvent.click(clearButtonElement);
+			});
+
+			expect(searchInputElement.getAttribute('value')).toBe('');
+		});
+
+		it('clears and updates the field value when the "clear input" button is pressed (parent state managed)', async () => {
+			const mockOnChange = jest.fn();
+			render(
+				<TestComponentWithState
+					searchBoxInputProps={{
+						clearButton: true,
+						label: searchInputLabel,
+						onChange: mockOnChange,
+						value: 'Orange',
+					}}
+				/>
+			);
+
+			// TestComponentWithState has a useState set using an initial value
+			const clearButtonElement = screen.getByLabelText(clearLabel);
+			await act(() => {
+				fireEvent.click(clearButtonElement);
+			});
+
+			const searchInputElement = screen.getByLabelText(searchInputLabel);
+			expect(searchInputElement.getAttribute('value')).toBe('');
+
+			expect(mockOnChange).toHaveBeenCalledTimes(1);
+			expect(mockOnChange).toHaveBeenCalledWith({
+				target: {
+					value: '',
+				},
+			});
+		});
 	});
 });
