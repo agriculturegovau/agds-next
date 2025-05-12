@@ -1,5 +1,5 @@
 ---
-"@ag.ds-next/docs": patch
+"@ag.ds-next/docs": minor
 ---
 
 docs: Remove roadmap page.
