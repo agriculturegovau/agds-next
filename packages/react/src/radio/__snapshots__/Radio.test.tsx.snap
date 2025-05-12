@@ -4,7 +4,7 @@ exports[`Radio renders correctly 1`] = `
 <div>
   <label
     class="css-6pplfb-boxStyles-RadioContainer"
-    for="radio-:r2:"
+    for="radio-«r2»"
   >
     <span
       class="css-7y4mhc-Radio"
@@ -12,7 +12,7 @@ exports[`Radio renders correctly 1`] = `
       <input
         class="css-w4mqhh-RadioInput"
         data-testid="example"
-        id="radio-:r2:"
+        id="radio-«r2»"
         name="my-radio"
         type="radio"
       />

@@ -7,7 +7,7 @@ exports[`TimeInput renders correctly 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r0:"
+      for="field-«r0»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -25,7 +25,7 @@ exports[`TimeInput renders correctly 1`] = `
       aria-invalid="false"
       aria-required="false"
       class="css-mtd7ku"
-      id="field-:r0:"
+      id="field-«r0»"
       type="text"
       value=""
     />
@@ -44,7 +44,7 @@ exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
   >
     <label
       class="css-79i25n-boxStyles"
-      for="field-:r2:"
+      for="field-«r2»"
     >
       <span
         class="css-1jywj6f-boxStyles"
@@ -62,7 +62,7 @@ exports[`TimeInput updates correctly based on the \`value\` prop 1`] = `
       aria-invalid="false"
       aria-required="false"
       class="css-mtd7ku"
-      id="field-:r2:"
+      id="field-«r2»"
       type="text"
       value="9:30 pm"
     />

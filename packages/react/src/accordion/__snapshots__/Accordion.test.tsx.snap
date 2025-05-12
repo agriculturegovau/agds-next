@@ -12,10 +12,10 @@ exports[`Accordion renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <button
-          aria-controls="accordion-:r0:-body"
+          aria-controls="accordion-«r0»-body"
           aria-expanded="false"
           class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
-          id="accordion-:r0:-title"
+          id="accordion-«r0»-title"
           type="button"
         >
           Accordion 1
@@ -38,10 +38,10 @@ exports[`Accordion renders correctly 1`] = `
         </button>
       </h3>
       <div
-        aria-labelledby="accordion-:r0:-title"
+        aria-labelledby="accordion-«r0»-title"
         class="css-16v4kax-useTransitionHeight-AccordionBody"
         data-transition-height="collapsed"
-        id="accordion-:r0:-body"
+        id="accordion-«r0»-body"
         role="region"
       >
         <div>
@@ -64,10 +64,10 @@ exports[`Accordion renders correctly 1`] = `
         class="css-79i25n-boxStyles"
       >
         <button
-          aria-controls="accordion-:r1:-body"
+          aria-controls="accordion-«r1»-body"
           aria-expanded="false"
           class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
-          id="accordion-:r1:-title"
+          id="accordion-«r1»-title"
           type="button"
         >
           Accordion 2
@@ -90,10 +90,10 @@ exports[`Accordion renders correctly 1`] = `
         </button>
       </h3>
       <div
-        aria-labelledby="accordion-:r1:-title"
+        aria-labelledby="accordion-«r1»-title"
         class="css-16v4kax-useTransitionHeight-AccordionBody"
         data-transition-height="collapsed"
-        id="accordion-:r1:-body"
+        id="accordion-«r1»-body"
         role="region"
       >
         <div>
@@ -125,10 +125,10 @@ exports[`Accordion to have correct aria attributes when toggling accordion item 
         class="css-79i25n-boxStyles"
       >
         <button
-          aria-controls="accordion-:r4:-body"
+          aria-controls="accordion-«r4»-body"
           aria-expanded="true"
           class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
-          id="accordion-:r4:-title"
+          id="accordion-«r4»-title"
           type="button"
         >
           Accordion 1
@@ -151,10 +151,10 @@ exports[`Accordion to have correct aria attributes when toggling accordion item 
         </button>
       </h3>
       <div
-        aria-labelledby="accordion-:r4:-title"
+        aria-labelledby="accordion-«r4»-title"
         class="css-16v4kax-useTransitionHeight-AccordionBody"
         data-transition-height="expanded"
-        id="accordion-:r4:-body"
+        id="accordion-«r4»-body"
         role="region"
       >
         <div>
@@ -177,10 +177,10 @@ exports[`Accordion to have correct aria attributes when toggling accordion item 
         class="css-79i25n-boxStyles"
       >
         <button
-          aria-controls="accordion-:r5:-body"
+          aria-controls="accordion-«r5»-body"
           aria-expanded="false"
           class="css-1y8bkn8-BaseButton-boxStyles-AccordionTitle"
-          id="accordion-:r5:-title"
+          id="accordion-«r5»-title"
           type="button"
         >
           Accordion 2
@@ -203,10 +203,10 @@ exports[`Accordion to have correct aria attributes when toggling accordion item 
         </button>
       </h3>
       <div
-        aria-labelledby="accordion-:r5:-title"
+        aria-labelledby="accordion-«r5»-title"
         class="css-16v4kax-useTransitionHeight-AccordionBody"
         data-transition-height="collapsed"
-        id="accordion-:r5:-body"
+        id="accordion-«r5»-body"
         role="region"
       >
         <div>

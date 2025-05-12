@@ -4,7 +4,7 @@ exports[`Checkbox renders correctly 1`] = `
 <div>
   <label
     class="css-hp3wbe-boxStyles-CheckboxContainer"
-    for="checkbox-:r0:"
+    for="checkbox-«r0»"
   >
     <span
       class="css-1246v4c-Checkbox"
@@ -12,7 +12,7 @@ exports[`Checkbox renders correctly 1`] = `
       <input
         class="css-1iw6cs3-CheckboxInput"
         data-testid="example"
-        id="checkbox-:r0:"
+        id="checkbox-«r0»"
         name="my-checkbox"
         type="checkbox"
       />
