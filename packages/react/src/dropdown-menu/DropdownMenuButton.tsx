@@ -32,7 +32,7 @@ export function DropdownMenuButton({
 					},
 				}),
 			}}
-			iconAfter={iconAfter ? iconAfter : ChevronDownIcon}
+			iconAfter={iconAfter || ChevronDownIcon}
 			variant={variant}
 			{...buttonProps}
 			{...props}

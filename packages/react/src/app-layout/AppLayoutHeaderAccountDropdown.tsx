@@ -9,7 +9,7 @@ import {
 	DropdownMenu,
 } from '../dropdown-menu';
 import { Flex } from '../flex';
-import { ChevronDownIcon, ChevronUpIcon } from '../icon';
+import { ChevronDownIcon } from '../icon';
 import { Text } from '../text';
 
 export type AppLayoutHeaderAccountDropdownProps = PropsWithChildren<{
