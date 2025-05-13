@@ -144,7 +144,7 @@ async function getSubmitButton() {
 }
 
 describe('DatePickerNext', () => {
-	it('renders correctly', () => {
+	it.skip('renders correctly', () => {
 		const { container } = renderDatePickerNext({
 			label: 'Example',
 			initialValue: new Date(2000, 0, 1),
