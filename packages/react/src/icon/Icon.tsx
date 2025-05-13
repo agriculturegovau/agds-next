@@ -1,12 +1,12 @@
 import { ReactNode, SVGAttributes } from 'react';
+import { foregroundColorMap } from '../box';
 import {
 	boxPalette,
-	ResponsiveProp,
 	mq,
-	mapResponsiveProp,
 	tokens,
+	type mapResponsiveProp,
+	type ResponsiveProp,
 } from '../core';
-import { foregroundColorMap } from '../box';
 
 export const iconColors = {
 	...foregroundColorMap,
