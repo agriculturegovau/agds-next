@@ -87,7 +87,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Foo"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-otc11z-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -123,7 +123,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Bar"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-otc11z-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
@@ -159,7 +159,7 @@ exports[`Tags With onRemove renders correctly 1`] = `
           </a>
           <button
             aria-label="Remove Baz"
-            class="css-1krg97w-BaseButton-boxStyles-TagRemoveButton"
+            class="css-otc11z-BaseButton-boxStyles-TagRemoveButton"
             type="button"
           >
             <svg
