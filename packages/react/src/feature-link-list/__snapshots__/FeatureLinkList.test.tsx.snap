@@ -6,7 +6,7 @@ exports[`FeatureLinkList renders correctly 1`] = `
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
+      class="css-lvfvs1-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
@@ -60,7 +60,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
     class="css-1goluyv-boxStyles"
   >
     <li
-      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
+      class="css-lvfvs1-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"
@@ -98,7 +98,7 @@ exports[`FeatureLinkList renders valid HTML with no a11y violations, when no des
       </div>
     </li>
     <li
-      class="css-1cw48f3-boxStyles-FeatureLinkListItem"
+      class="css-lvfvs1-boxStyles-FeatureLinkListItem"
     >
       <div
         class="css-1cqkcqi-boxStyles-FeatureLinkListItem"

@@ -55,7 +55,7 @@ exports[`Drawer renders correctly 1`] = `
             class="css-10pjjkw-boxStyles-DrawerFooter"
           >
             <button
-              class="css-felo84-BaseButton-Button"
+              class="css-1g162wt-BaseButton-Button"
               type="button"
             >
               <span>
@@ -71,7 +71,7 @@ exports[`Drawer renders correctly 1`] = `
             </button>
           </div>
           <button
-            class="css-1ubheky-BaseButton-DrawerDialog"
+            class="css-1jiaeqo-BaseButton-DrawerDialog"
             type="button"
           >
             <span>

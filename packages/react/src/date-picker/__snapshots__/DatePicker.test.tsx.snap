@@ -37,34 +37,25 @@ exports[`DatePicker renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-label="Change date, 1st January 2000 Saturday"
-          class="css-1bg0u8-BaseButton-DateInput"
+          class="css-4pxl79-BaseButton-DateInput"
           type="button"
         >
-          <span>
-            <span
-              class="css-oobk4c-Button"
-            >
-              <svg
-                aria-hidden="true"
-                class="css-13q7hln-DateInput"
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                focusable="false"
-                height="24"
-                role="img"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 3v4M16 3v4M21 20V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1ZM3 12h18"
-                />
-              </svg>
-            </span>
-            <span
-              aria-live="assertive"
+          <svg
+            aria-hidden="true"
+            class="css-sbsftc-Button"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            focusable="false"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 3v4M16 3v4M21 20V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1ZM3 12h18"
             />
-          </span>
+          </svg>
         </button>
       </div>
       <div

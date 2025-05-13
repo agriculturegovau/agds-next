@@ -1,8 +1,9 @@
-import { MouseEventHandler, PropsWithChildren } from 'react';
+import { type MouseEventHandler, type PropsWithChildren } from 'react';
 import { BaseButton } from '../button';
-import { Flex } from '../flex';
 import { boxPalette, packs } from '../core';
+import { Flex } from '../flex';
 import { CloseIcon, MenuIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{
@@ -14,6 +15,7 @@ export function MainNavOpenButton({
 	isMobileMenuOpen,
 	onClick,
 }: MainNavOpenButtonProps) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -23,10 +25,16 @@ export function MainNavOpenButton({
 			as={BaseButton}
 			css={{
 				color: boxPalette.foregroundAction,
-				'&:hover': {
+				':hover': {
 					color: boxPalette.foregroundText,
 					backgroundColor: localPalette.linkHoverBg,
 					...packs.underline,
+				},
+				svg: {
+					transition: scaleIconCSS.transition,
+				},
+				':hover svg': {
+					transform: scaleIconCSS.transform,
 				},
 			}}
 			display={{ xs: 'flex', lg: 'none' }}
@@ -51,6 +59,7 @@ export type MainNavCloseButtonProps = PropsWithChildren<{
 }>;
 
 export function MainNavCloseButton({ onClick }: MainNavCloseButtonProps) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -59,10 +68,16 @@ export function MainNavCloseButton({ onClick }: MainNavCloseButtonProps) {
 			css={{
 				alignSelf: 'flex-start',
 				color: boxPalette.foregroundAction,
-				'&:hover': {
+				':hover': {
 					color: boxPalette.foregroundText,
 					backgroundColor: localPalette.linkHoverBg,
 					...packs.underline,
+				},
+				svg: {
+					transition: scaleIconCSS.transition,
+				},
+				':hover svg': {
+					transform: scaleIconCSS.transform,
 				},
 			}}
 			flexDirection="column"

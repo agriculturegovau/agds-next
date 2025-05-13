@@ -4,6 +4,7 @@ import { Box, type BoxProps } from '../box';
 import { packs, tokens, useToggleState, useTransitionHeight } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { Flex } from '../flex';
+import { scaleIconOnHover } from '../icon/Icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import {
@@ -46,6 +47,7 @@ export function CollapsingSideBar({
 	const [isOpen, onToggle] = useToggleState(false, true);
 	const [transitionHeightProp, transitionHeightStyles] =
 		useTransitionHeight(isOpen);
+	const scaleIconCSS = scaleIconOnHover();
 
 	return (
 		<Stack
@@ -107,6 +109,16 @@ export function CollapsingSideBar({
 						[tokens.mediaQuery.min.md]: {
 							display: 'none',
 						},
+						'& svg': {
+							transition: scaleIconCSS.transition,
+							transform: `rotate(${isOpen ? 180 : 0}deg)`,
+						},
+						':hover svg': {
+							transition: scaleIconCSS.transition,
+							transform: `rotate(${isOpen ? 180 : 0}deg) ${
+								scaleIconCSS.transform
+							}`,
+						},
 					}}
 					focusRingFor="keyboard"
 					onClick={onToggle}
@@ -136,13 +148,7 @@ export function CollapsingSideBar({
 								</Text>
 							)}
 						</Stack>
-						<ChevronDownIcon
-							css={{
-								transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-								transform: `rotate(${isOpen ? 180 : 0}deg)`,
-							}}
-							weight="bold"
-						/>
+						<ChevronDownIcon weight="bold" />
 					</Flex>
 				</Box>
 			</Box>

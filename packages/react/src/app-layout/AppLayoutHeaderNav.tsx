@@ -1,9 +1,10 @@
 import { MouseEventHandler } from 'react';
-import { Flex } from '../flex';
-import { boxPalette, tokens } from '../core';
-import { MenuIcon } from '../icon';
 import { BaseButton } from '../button';
-import { AppLayoutHeaderProps } from './AppLayoutHeader';
+import { boxPalette, tokens } from '../core';
+import { Flex } from '../flex';
+import { MenuIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
+import { type AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { APP_LAYOUT_DESKTOP_BREAKPOINT } from './utils';
@@ -40,6 +41,7 @@ function AppLayoutHeaderNavMenuButton({
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
 	const { isMobileMenuOpen } = useAppLayoutContext();
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -48,9 +50,15 @@ function AppLayoutHeaderNavMenuButton({
 			as={BaseButton}
 			color="action"
 			css={{
+				svg: {
+					transition: scaleIconCSS.transition,
+				},
 				'&:hover': {
 					backgroundColor: boxPalette.backgroundShade,
 					textDecoration: 'underline',
+					svg: {
+						transform: scaleIconCSS.transform,
+					},
 				},
 			}}
 			flexDirection="column"

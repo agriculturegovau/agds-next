@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
-import { LinkProps, packs, useId } from '../core';
-import { TextLink, TextLinkExternal } from '../text-link';
+import { type ReactNode } from 'react';
 import { Box, linkStyles } from '../box';
+import { packs, type LinkProps, useId } from '../core';
 import { Flex } from '../flex';
+import { ArrowRightIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { ArrowRightIcon } from '../icon';
+import { TextLink, TextLinkExternal } from '../text-link';
 import { FeatureLinkListBackground, hoverColorMap } from './utils';
 
 export type FeatureLinkListItemProps = LinkProps & {
@@ -22,6 +23,7 @@ export const FeatureLinkListItem = ({
 }: FeatureLinkListItemProps) => {
 	const LinkComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
 	const descriptionId = useDescriptionId(props.id);
+	const scaleIconCSS = scaleIconOnHover();
 
 	return (
 		<Box
@@ -32,8 +34,14 @@ export const FeatureLinkListItem = ({
 				linkStyles,
 				{
 					textDecoration: 'none',
-					'&:hover': {
+					'> div > svg': {
+						transition: scaleIconCSS.transition,
+					},
+					':hover': {
 						backgroundColor: hoverColorMap[background],
+						'> div > svg': {
+							transform: scaleIconCSS.transform,
+						},
 					},
 				},
 			]}
@@ -78,7 +86,7 @@ export const FeatureLinkListItem = ({
 						</Text>
 					)}
 				</Stack>
-				<ArrowRightIcon size="md" weight="regular" />
+				<ArrowRightIcon />
 			</Flex>
 		</Box>
 	);

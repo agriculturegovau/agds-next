@@ -16,7 +16,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         >
           <button
             aria-label="Go to previous page"
-            class="css-1fdgfpf-BaseButton-boxStyles-BaseDirectionLink"
+            class="css-x9kp3s-BaseButton-boxStyles-BaseDirectionLink"
             type="button"
           >
             <svg
@@ -113,7 +113,7 @@ exports[`PaginationButtons renders correctly 1`] = `
         >
           <button
             aria-label="Go to next page"
-            class="css-1fdgfpf-BaseButton-boxStyles-BaseDirectionLink"
+            class="css-x9kp3s-BaseButton-boxStyles-BaseDirectionLink"
             type="button"
           >
             <span

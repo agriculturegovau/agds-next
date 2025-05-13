@@ -1,8 +1,11 @@
 import { focusStyles, highContrastOutlineStyles } from '../box';
 import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
+import { scaleIconOnHover } from '../icon/Icon';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';
+
+const scaleIconCSS = scaleIconOnHover();
 
 // Left / right chevrons
 const buttonNextPrevious = {
@@ -17,8 +20,14 @@ const buttonNextPrevious = {
 	height: '2rem',
 	justifyContent: 'center',
 	padding: 0,
+	transition: scaleIconCSS.transition,
 	width: '2rem',
-	'&:hover': { color: boxPalette.foregroundText },
+	':hover': {
+		color: boxPalette.foregroundText,
+		svg: {
+			transform: scaleIconCSS.transform,
+		},
+	},
 	...focusStyles,
 } as const;
 
