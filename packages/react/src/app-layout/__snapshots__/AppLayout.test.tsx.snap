@@ -80,7 +80,7 @@ exports[`AppLayout renders correctly 1`] = `
             aria-controls="dropdown-menu-:r0:-panel"
             aria-expanded="false"
             aria-haspopup="true"
-            class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+            class="css-1ycf44d-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
             id="dropdown-menu-:r0:-button"
             type="button"
           >
@@ -142,7 +142,7 @@ exports[`AppLayout renders correctly 1`] = `
         <button
           aria-expanded="false"
           aria-haspopup="dialog"
-          class="css-1gjhpau-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
+          class="css-1m2iwz5-BaseButton-boxStyles-AppLayoutHeaderNavMenuButton"
           type="button"
         >
           <svg
@@ -169,7 +169,7 @@ exports[`AppLayout renders correctly 1`] = `
           aria-controls="dropdown-menu-:r1:-panel"
           aria-expanded="false"
           aria-haspopup="true"
-          class="css-1iqj86f-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+          class="css-1ycf44d-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
           id="dropdown-menu-:r1:-button"
           type="button"
         >

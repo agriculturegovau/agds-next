@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { type ReactNode, useEffect, useRef } from 'react';
 import { BaseButton } from '../button';
 import { boxPalette, packs } from '../core';
 import {
@@ -7,7 +7,8 @@ import {
 	useDropdownMenuContext,
 } from '../dropdown-menu';
 import { Flex } from '../flex';
-import { ChevronDownIcon, ChevronUpIcon } from '../icon';
+import { ChevronDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { localPalette } from './localPalette';
 
 export type MainNavListDropdown = {
@@ -36,6 +37,7 @@ function MainNavListItemDropdownButton({
 	const { isMenuOpen } = useDropdownMenuContext();
 	const { ref, ...buttonProps } = useDropdownMenuButton();
 	const scrollbarWidthRef = useRef(0);
+	const scaleIconCSS = scaleIconOnHover('sm');
 
 	useEffect(() => {
 		scrollbarWidthRef.current =
@@ -51,10 +53,19 @@ function MainNavListItemDropdownButton({
 				isMenuOpen ? { background: localPalette.linkHoverBg } : undefined,
 				{
 					overflow: 'hidden',
-					'&:hover': {
+					':hover': {
 						color: boxPalette.foregroundText,
 						backgroundColor: localPalette.linkHoverBg,
 						'& > span[data-main-nav-list-item-label]': packs.underline,
+					},
+					svg: {
+						transform: isMenuOpen ? 'rotate(180deg)' : undefined,
+						transition: scaleIconCSS.transition,
+					},
+					':hover svg': {
+						transform: isMenuOpen
+							? `rotate(180deg) ${scaleIconCSS.transform}`
+							: scaleIconCSS.transform,
 					},
 				},
 			]}
@@ -81,11 +92,7 @@ function MainNavListItemDropdownButton({
 				{label}
 			</span>
 			{endElement}
-			{isMenuOpen ? (
-				<ChevronUpIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
-			) : (
-				<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
-			)}
+			<ChevronDownIcon css={{ flexShrink: 0 }} size="sm" weight="bold" />
 		</Flex>
 	);
 }

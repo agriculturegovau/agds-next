@@ -56,8 +56,8 @@ export const doesStaffMemberMatchFilters = (
 	}
 
 	if (trainingCompleted && Object.values(trainingCompleted).some(Boolean)) {
-		isValid = staffMember.trainingCompleted
-			.map((training) => trainingCompleted[training])
+		isValid = staffMember?.trainingCompleted
+			?.map((training) => trainingCompleted[training])
 			.some(Boolean)
 			? isValid
 			: false;

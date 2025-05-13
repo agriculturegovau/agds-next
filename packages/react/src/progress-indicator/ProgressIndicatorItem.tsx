@@ -1,10 +1,10 @@
 import { type ElementType, type PropsWithChildren } from 'react';
 import { Box, backgroundColorMap } from '../box';
+import { boxPalette, mapSpacing, packs, tokens } from '../core';
 import { Flex } from '../flex';
+import { CornerDownRightIcon } from '../icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
-import { CornerDownRightIcon } from '../icon';
-import { boxPalette, mapSpacing, packs, tokens } from '../core';
 import {
 	hoverColorMap,
 	ProgressIndicatorBackground,
@@ -100,10 +100,10 @@ export const ProgressIndicatorItem = ({
 					as={as}
 					css={{
 						textDecoration: 'none',
-						'&:hover': {
+						':hover': {
 							backgroundColor: hoverColorMap[background],
 						},
-						'&:hover span:not(:last-of-type)': {
+						':hover span:not(:last-of-type)': {
 							...packs.underline,
 						},
 					}}

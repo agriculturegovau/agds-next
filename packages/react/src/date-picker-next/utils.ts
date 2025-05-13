@@ -201,3 +201,12 @@ export const normaliseDateString = (date: string) => {
 		? undefined
 		: parsedISODate;
 };
+
+// Attempts focus on target and returns true if successful
+export function focusDay(queryTarget: string) {
+	const day = document.querySelector(queryTarget);
+	if (!day) return false;
+
+	(day as HTMLElement).focus();
+	return true;
+}

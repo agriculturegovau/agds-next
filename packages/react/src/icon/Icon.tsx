@@ -1,6 +1,12 @@
-import { ReactNode, SVGAttributes } from 'react';
-import { boxPalette, ResponsiveProp, mq, mapResponsiveProp } from '../core';
+import { type ReactNode, type SVGAttributes } from 'react';
 import { foregroundColorMap } from '../box';
+import {
+	boxPalette,
+	mapResponsiveProp,
+	mq,
+	tokens,
+	type ResponsiveProp,
+} from '../core';
 
 export const iconColors = {
 	...foregroundColorMap,
@@ -38,6 +44,13 @@ const iconWeights = {
 type IconWeight = keyof typeof iconWeights;
 
 type NativeSvgProps = SVGAttributes<SVGSVGElement>;
+
+export const scaleIconOnHover = (size: IconSize = 'md') => {
+	return {
+		transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+		transform: `scale(${(iconSizes[size] + 2 / 16) / iconSizes[size]})`,
+	};
+};
 
 export type IconProps = {
 	'aria-hidden'?: NativeSvgProps['aria-hidden'];

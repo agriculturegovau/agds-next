@@ -51,7 +51,7 @@ export default function newIcon(
 				type: 'add',
 				path: '../../.changeset/plop-create-{{iconName}}.md',
 				template:
-					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\nicon: Add new {{iconName}}\n",
+					"---\n'@ag.ds-next/react': minor\n'@ag.ds-next/docs': minor\n---\n\nicon: Add new {{iconName}}.\n",
 			});
 
 			return actions;

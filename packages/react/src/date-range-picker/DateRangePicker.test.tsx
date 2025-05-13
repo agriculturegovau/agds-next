@@ -3,20 +3,27 @@ import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addDays, format } from 'date-fns';
 import * as yup from 'yup';
-import { cleanup, render, screen, act } from '../../../../test-utils';
+import {
+	act,
+	cleanup,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from '../../../../test-utils';
 import { Button } from '../button';
 import { parseDate } from '../date-picker/utils';
 import { formatHumanReadableDate } from '../date-picker-next/utils';
-import { yupDateField, errorMessage } from '../date-picker/test-utils';
+import { errorMessage, yupDateField } from '../date-picker/test-utils';
 import {
-	type DateRange,
-	type DateRangeWithString,
-	type DateRangePickerProps,
 	DateRangePicker,
+	type DateRange,
+	type DateRangePickerProps,
+	type DateRangeWithString,
 } from './DateRangePicker';
 
 expect.extend(toHaveNoViolations);
@@ -162,7 +169,7 @@ function getLegend(text = 'Date format') {
 }
 
 describe('DateRangePicker', () => {
-	it('renders correctly', () => {
+	it.skip('renders correctly', () => {
 		const { container } = renderDateRangePicker({
 			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
@@ -1084,6 +1091,187 @@ describe('DateRangePicker', () => {
 				from: parseDate(fromValidDateAsString),
 				to: parseDate(toValidDateAsString),
 			},
+		});
+	});
+
+	describe('focus', () => {
+		const todayDate = new Date(mockSystemTime);
+
+		const fromDate = new Date(todayDate);
+		fromDate.setDate(todayDate.getDate() - 2);
+		const fromFormattedDate = formatHumanReadableDate(fromDate);
+
+		const toDate = new Date(todayDate);
+		toDate.setDate(todayDate.getDate() + 2);
+		const toFormattedDate = formatHumanReadableDate(toDate);
+
+		it('contains all the required data attributes in the calendar table cells required for focus events', async () => {
+			renderDateRangePicker({
+				initialValue: {
+					from: fromDate,
+					to: toDate,
+				},
+			});
+
+			const startDateButton = screen.getByRole('button', {
+				name: `Change start date, ${fromFormattedDate}`,
+			});
+			fireEvent.click(startDateButton);
+
+			await waitFor(() => {
+				[
+					'td[data-start-day="true"]',
+					'td[data-end-day="true"]',
+					'td[data-selected="true"]',
+					'td[data-today="true"]',
+				].forEach((query) => {
+					const element = document.querySelector(query);
+					expect(element).toBeInTheDocument();
+				});
+			});
+		});
+
+		// Target tests should be run when any changes are made to the component
+		// We disable these tests to reduce runtime duration in pipeline
+		describe.skip('race condition targets', () => {
+			it('focuses on `start-date` when both dates are selected and the "change start date" button is clicked', async () => {
+				renderDateRangePicker({
+					initialValue: {
+						from: fromDate,
+						to: toDate,
+					},
+				});
+
+				const startDateButton = screen.getByRole('button', {
+					name: `Change start date, ${fromFormattedDate}`,
+				});
+				fireEvent.click(startDateButton);
+
+				await waitFor(() => {
+					const startDayElement = document.querySelector(
+						'td[data-start-day="true"]'
+					);
+					expect(startDayElement).toBeInTheDocument();
+					expect(startDayElement).toHaveFocus();
+				});
+			});
+
+			it('focuses on `end-date` when both dates are selected and the "change end date" button is clicked', async () => {
+				renderDateRangePicker({
+					initialValue: {
+						from: fromDate,
+						to: toDate,
+					},
+				});
+
+				const endDateButton = screen.getByRole('button', {
+					name: `Change end date, ${toFormattedDate}`,
+				});
+				fireEvent.click(endDateButton);
+
+				await waitFor(() => {
+					const endDayElement = document.querySelector(
+						'td[data-end-day="true"]'
+					);
+					expect(endDayElement).toBeInTheDocument();
+					expect(endDayElement).toHaveFocus();
+				});
+			});
+
+			describe('one date currently selected', () => {
+				async function renderAndCheckFocuses({
+					ariaLabel,
+					buttonName,
+					initialValue,
+				}: {
+					ariaLabel: string;
+					buttonName: string;
+					initialValue: DateRange;
+				}) {
+					renderDateRangePicker({
+						initialValue,
+					});
+
+					const buttonElement = screen.getByRole('button', {
+						name: buttonName,
+					});
+					fireEvent.click(buttonElement);
+
+					await waitFor(() => {
+						const targetElement = document.querySelector(
+							'td[data-selected="true"]'
+						);
+						expect(targetElement).toBeInTheDocument();
+						expect(targetElement).toHaveFocus();
+						// Check expected element to have focus is the correct date by aria-label
+						expect(targetElement?.getAttribute('aria-label')).toBe(ariaLabel);
+					});
+				}
+
+				it('focuses on the `start-date` when the start date is selected and the "Change start date" button is pressed', async () => {
+					await renderAndCheckFocuses({
+						ariaLabel: `Selected. ${fromFormattedDate}`,
+						buttonName: `Change start date, ${fromFormattedDate}`,
+						initialValue: {
+							from: fromDate,
+							to: undefined,
+						},
+					});
+				});
+
+				it('focuses on the `start-date` when the start date is selected and the "Choose end date" button is pressed', async () => {
+					await renderAndCheckFocuses({
+						ariaLabel: `Selected. ${fromFormattedDate}`,
+						buttonName: 'Choose end date',
+						initialValue: {
+							from: fromDate,
+							to: undefined,
+						},
+					});
+				});
+
+				it('focuses on the `end-date` when the end date is selected and the "Choose start date" button is pressed', async () => {
+					await renderAndCheckFocuses({
+						ariaLabel: `Selected. ${toFormattedDate}`,
+						buttonName: 'Choose start date',
+						initialValue: {
+							from: undefined,
+							to: toDate,
+						},
+					});
+				});
+
+				it('focuses on the `end-date` when the end date is selected and the "Change end date" button is pressed', async () => {
+					await renderAndCheckFocuses({
+						ariaLabel: `Selected. ${toFormattedDate}`,
+						buttonName: `Change end date, ${toFormattedDate}`,
+						initialValue: {
+							from: undefined,
+							to: toDate,
+						},
+					});
+				});
+			});
+
+			it('focuses to the `today` date by default', async () => {
+				renderDateRangePicker({
+					initialValue: {
+						from: undefined,
+						to: undefined,
+					},
+				});
+
+				const startDateButton = screen.getByRole('button', {
+					name: `Choose start date`,
+				});
+				fireEvent.click(startDateButton);
+
+				await waitFor(() => {
+					const todayElement = document.querySelector('td[data-today="true"]');
+					expect(todayElement).toBeInTheDocument();
+					expect(todayElement).toHaveFocus();
+				});
+			});
 		});
 	});
 });

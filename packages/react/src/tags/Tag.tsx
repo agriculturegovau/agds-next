@@ -1,10 +1,11 @@
 import { type MouseEventHandler } from 'react';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { TextLink } from '../text-link';
-import { boxPalette, type LinkProps } from '../core';
-import { CloseIcon } from '../icon';
 import { BaseButton } from '../button';
+import { boxPalette, type LinkProps } from '../core';
+import { Flex } from '../flex';
+import { CloseIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
+import { TextLink } from '../text-link';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
@@ -31,7 +32,7 @@ export const Tag = ({
 			border
 			color={href ? 'action' : 'text'}
 			css={{
-				borderRadius: 999,
+				borderRadius: '0.75rem',
 				paddingBottom: '0.0625rem',
 				paddingTop: '0.0625rem',
 			}}
@@ -66,6 +67,7 @@ const TagRemoveButton = ({
 	['aria-label']: string;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
+	const scaleIconCSS = scaleIconOnHover('sm');
 	return (
 		<Flex
 			alignItems="center"
@@ -79,10 +81,12 @@ const TagRemoveButton = ({
 				svg: {
 					color: boxPalette.foregroundAction,
 					display: 'block',
+					transition: scaleIconCSS.transition,
 				},
 				'&:hover': {
 					svg: {
 						color: boxPalette.foregroundText,
+						transform: scaleIconCSS.transform,
 					},
 				},
 			}}

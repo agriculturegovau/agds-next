@@ -7,6 +7,8 @@ import {
 import { createPortal } from 'react-dom';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
+import { VisuallyHidden } from '../a11y';
+import { Box } from '../box';
 import {
 	boxPalette,
 	canUseDOM,
@@ -17,11 +19,10 @@ import {
 	usePrefersReducedMotion,
 	packs,
 } from '../core';
-import { Box } from '../box';
+import { BaseButton } from '../button';
 import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
-import { VisuallyHidden } from '../a11y';
-import { BaseButton } from '../button';
+import { scaleIconOnHover } from '../icon/Icon';
 import { useAppLayoutContext } from './AppLayoutContext';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
@@ -187,6 +188,7 @@ function CloseMenuButton({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -200,7 +202,13 @@ function CloseMenuButton({
 				as={BaseButton}
 				color="action"
 				css={{
+					svg: {
+						transition: scaleIconCSS.transition,
+					},
 					':focus': { outlineOffset: `-${packs.outline.outlineWidth}` },
+					':hover svg': {
+						transform: scaleIconCSS.transform,
+					},
 				}}
 				flexDirection="column"
 				focusRingFor="keyboard"

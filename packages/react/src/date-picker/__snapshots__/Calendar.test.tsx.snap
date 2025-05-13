@@ -13,24 +13,25 @@ exports[`Calendar Range renders correctly 1`] = `
     <div
       aria-label="Choose date range"
       aria-modal="true"
-      class="css-107ohbv-boxStyles-CalendarRangeContainer"
+      class="css-k1jxuy-boxStyles-CalendarRangeContainer"
       role="dialog"
     >
       <div
-        class="rdp "
+        class="rdp-root"
+        data-mode="range"
       >
         <div
           class="rdp-months"
         >
           <div
-            class="rdp-month rdp-caption_start rdp-caption_end"
+            class="rdp-month"
           >
             <div
-              class="rdp-caption"
+              class="rdp-month_caption"
             >
               <button
-                aria-label="Go to previous month"
-                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                aria-label="Go to the Previous Month"
+                class="rdp-button_previous"
                 type="button"
               >
                 <svg
@@ -54,7 +55,6 @@ exports[`Calendar Range renders correctly 1`] = `
                 aria-atomic="true"
                 aria-live="polite"
                 class="css-3ucdhc-CaptionLabel"
-                id="react-day-picker-4"
               >
                 June 2023
               </h2>
@@ -292,8 +292,8 @@ exports[`Calendar Range renders correctly 1`] = `
                 </div>
               </div>
               <button
-                aria-label="Go to next month"
-                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                aria-label="Go to the Next Month"
+                class="rdp-button_next"
                 type="button"
               >
                 <svg
@@ -315,61 +315,60 @@ exports[`Calendar Range renders correctly 1`] = `
               </button>
             </div>
             <table
-              aria-labelledby="react-day-picker-4"
-              class="rdp-table"
+              aria-label="June 2023"
+              aria-multiselectable="true"
+              class="rdp-month_grid"
               role="grid"
             >
-              <thead
-                class="rdp-head"
-              >
+              <thead>
                 <tr
-                  class="rdp-head_row"
+                  class="rdp-weekdays"
                 >
                   <th
                     aria-label="Sunday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Su
                   </th>
                   <th
                     aria-label="Monday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Mo
                   </th>
                   <th
                     aria-label="Tuesday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Tu
                   </th>
                   <th
                     aria-label="Wednesday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     We
                   </th>
                   <th
                     aria-label="Thursday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Th
                   </th>
                   <th
                     aria-label="Friday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Fr
                   </th>
                   <th
                     aria-label="Saturday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Sa
@@ -377,10 +376,10 @@ exports[`Calendar Range renders correctly 1`] = `
                 </tr>
               </thead>
               <tbody
-                class="rdp-tbody"
+                class="rdp-weeks"
               >
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     tabindex="-1"
@@ -413,7 +412,10 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_start"
+                    class="rdp-day rdp-selected rdp-range_start"
+                    data-day="2023-06-01"
+                    data-selected="true"
+                    data-start-day="true"
                     tabindex="0"
                   >
                     <span
@@ -424,8 +426,9 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     aria-label="2nd June 2023 Friday. Between selected dates"
-                    aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    class="rdp-day rdp-selected rdp-range_middle"
+                    data-day="2023-06-02"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -436,8 +439,9 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     aria-label="3rd June 2023 Saturday. Between selected dates"
-                    aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    class="rdp-day rdp-selected rdp-range_middle"
+                    data-day="2023-06-03"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -448,12 +452,13 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="4th June 2023 Sunday. Between selected dates"
-                    aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    class="rdp-day rdp-selected rdp-range_middle"
+                    data-day="2023-06-04"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -464,8 +469,9 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     aria-label="5th June 2023 Monday. Between selected dates"
-                    aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    class="rdp-day rdp-selected rdp-range_middle"
+                    data-day="2023-06-05"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -476,8 +482,9 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                   <td
                     aria-label="6th June 2023 Tuesday. Between selected dates"
-                    aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_middle"
+                    class="rdp-day rdp-selected rdp-range_middle"
+                    data-day="2023-06-06"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -489,7 +496,10 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="Selected. 7th June 2023 Wednesday"
                     aria-selected="true"
-                    class="rdp-day rdp-day_selected rdp-day_range_end"
+                    class="rdp-day rdp-selected rdp-range_end"
+                    data-day="2023-06-07"
+                    data-end-day="true"
+                    data-selected="true"
                     tabindex="-1"
                   >
                     <span
@@ -501,6 +511,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="8th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-08"
                     tabindex="-1"
                   >
                     <span
@@ -512,6 +523,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="9th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-09"
                     tabindex="-1"
                   >
                     <span
@@ -523,6 +535,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="10th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-10"
                     tabindex="-1"
                   >
                     <span
@@ -533,11 +546,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="11th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-11"
                     tabindex="-1"
                   >
                     <span
@@ -549,6 +563,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="12th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-12"
                     tabindex="-1"
                   >
                     <span
@@ -560,6 +575,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="13th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-13"
                     tabindex="-1"
                   >
                     <span
@@ -571,6 +587,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="14th June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-14"
                     tabindex="-1"
                   >
                     <span
@@ -582,6 +599,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="15th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-15"
                     tabindex="-1"
                   >
                     <span
@@ -593,6 +611,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="16th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-16"
                     tabindex="-1"
                   >
                     <span
@@ -604,6 +623,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="17th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-17"
                     tabindex="-1"
                   >
                     <span
@@ -614,11 +634,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="18th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-18"
                     tabindex="-1"
                   >
                     <span
@@ -630,6 +651,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="19th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-19"
                     tabindex="-1"
                   >
                     <span
@@ -641,6 +663,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="20th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-20"
                     tabindex="-1"
                   >
                     <span
@@ -652,6 +675,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="21st June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-21"
                     tabindex="-1"
                   >
                     <span
@@ -663,6 +687,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="22nd June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-22"
                     tabindex="-1"
                   >
                     <span
@@ -674,6 +699,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="23rd June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-23"
                     tabindex="-1"
                   >
                     <span
@@ -685,6 +711,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="24th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-24"
                     tabindex="-1"
                   >
                     <span
@@ -695,11 +722,12 @@ exports[`Calendar Range renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="25th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-25"
                     tabindex="-1"
                   >
                     <span
@@ -711,6 +739,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="26th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-26"
                     tabindex="-1"
                   >
                     <span
@@ -722,6 +751,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="27th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-27"
                     tabindex="-1"
                   >
                     <span
@@ -733,6 +763,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="28th June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-28"
                     tabindex="-1"
                   >
                     <span
@@ -744,6 +775,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="29th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-29"
                     tabindex="-1"
                   >
                     <span
@@ -755,6 +787,7 @@ exports[`Calendar Range renders correctly 1`] = `
                   <td
                     aria-label="30th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-30"
                     tabindex="-1"
                   >
                     <span
@@ -799,24 +832,25 @@ exports[`Calendar Single renders correctly 1`] = `
     <div
       aria-label="Choose date"
       aria-modal="true"
-      class="css-hq8f46-boxStyles-CalendarContainer"
+      class="css-snk9lh-boxStyles-CalendarContainer"
       role="dialog"
     >
       <div
-        class="rdp "
+        class="rdp-root"
+        data-mode="single"
       >
         <div
           class="rdp-months"
         >
           <div
-            class="rdp-month rdp-caption_start rdp-caption_end"
+            class="rdp-month"
           >
             <div
-              class="rdp-caption"
+              class="rdp-month_caption"
             >
               <button
-                aria-label="Go to previous month"
-                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_previous"
+                aria-label="Go to the Previous Month"
+                class="rdp-button_previous"
                 type="button"
               >
                 <svg
@@ -840,7 +874,6 @@ exports[`Calendar Single renders correctly 1`] = `
                 aria-atomic="true"
                 aria-live="polite"
                 class="css-3ucdhc-CaptionLabel"
-                id="react-day-picker-1"
               >
                 June 2023
               </h2>
@@ -1078,8 +1111,8 @@ exports[`Calendar Single renders correctly 1`] = `
                 </div>
               </div>
               <button
-                aria-label="Go to next month"
-                class="rdp-button_reset rdp-button rdp-nav_button rdp-nav_button_next"
+                aria-label="Go to the Next Month"
+                class="rdp-button_next"
                 type="button"
               >
                 <svg
@@ -1101,61 +1134,60 @@ exports[`Calendar Single renders correctly 1`] = `
               </button>
             </div>
             <table
-              aria-labelledby="react-day-picker-1"
-              class="rdp-table"
+              aria-label="June 2023"
+              aria-multiselectable="false"
+              class="rdp-month_grid"
               role="grid"
             >
-              <thead
-                class="rdp-head"
-              >
+              <thead>
                 <tr
-                  class="rdp-head_row"
+                  class="rdp-weekdays"
                 >
                   <th
                     aria-label="Sunday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Su
                   </th>
                   <th
                     aria-label="Monday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Mo
                   </th>
                   <th
                     aria-label="Tuesday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Tu
                   </th>
                   <th
                     aria-label="Wednesday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     We
                   </th>
                   <th
                     aria-label="Thursday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Th
                   </th>
                   <th
                     aria-label="Friday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Fr
                   </th>
                   <th
                     aria-label="Saturday"
-                    class="rdp-head_cell"
+                    class="rdp-weekday"
                     scope="col"
                   >
                     Sa
@@ -1163,10 +1195,10 @@ exports[`Calendar Single renders correctly 1`] = `
                 </tr>
               </thead>
               <tbody
-                class="rdp-tbody"
+                class="rdp-weeks"
               >
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     tabindex="-1"
@@ -1199,7 +1231,9 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="Selected. 1st June 2023 Thursday"
                     aria-selected="true"
-                    class="rdp-day rdp-day_selected"
+                    class="rdp-day rdp-selected"
+                    data-day="2023-06-01"
+                    data-selected="true"
                     tabindex="0"
                   >
                     <span
@@ -1211,6 +1245,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="2nd June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-02"
                     tabindex="-1"
                   >
                     <span
@@ -1222,6 +1257,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="3rd June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-03"
                     tabindex="-1"
                   >
                     <span
@@ -1232,11 +1268,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="4th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-04"
                     tabindex="-1"
                   >
                     <span
@@ -1248,6 +1285,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="5th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-05"
                     tabindex="-1"
                   >
                     <span
@@ -1259,6 +1297,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="6th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-06"
                     tabindex="-1"
                   >
                     <span
@@ -1270,6 +1309,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="7th June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-07"
                     tabindex="-1"
                   >
                     <span
@@ -1281,6 +1321,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="8th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-08"
                     tabindex="-1"
                   >
                     <span
@@ -1292,6 +1333,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="9th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-09"
                     tabindex="-1"
                   >
                     <span
@@ -1303,6 +1345,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="10th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-10"
                     tabindex="-1"
                   >
                     <span
@@ -1313,11 +1356,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="11th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-11"
                     tabindex="-1"
                   >
                     <span
@@ -1329,6 +1373,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="12th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-12"
                     tabindex="-1"
                   >
                     <span
@@ -1340,6 +1385,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="13th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-13"
                     tabindex="-1"
                   >
                     <span
@@ -1351,6 +1397,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="14th June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-14"
                     tabindex="-1"
                   >
                     <span
@@ -1362,6 +1409,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="15th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-15"
                     tabindex="-1"
                   >
                     <span
@@ -1373,6 +1421,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="16th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-16"
                     tabindex="-1"
                   >
                     <span
@@ -1384,6 +1433,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="17th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-17"
                     tabindex="-1"
                   >
                     <span
@@ -1394,11 +1444,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="18th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-18"
                     tabindex="-1"
                   >
                     <span
@@ -1410,6 +1461,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="19th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-19"
                     tabindex="-1"
                   >
                     <span
@@ -1421,6 +1473,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="20th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-20"
                     tabindex="-1"
                   >
                     <span
@@ -1432,6 +1485,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="21st June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-21"
                     tabindex="-1"
                   >
                     <span
@@ -1443,6 +1497,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="22nd June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-22"
                     tabindex="-1"
                   >
                     <span
@@ -1454,6 +1509,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="23rd June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-23"
                     tabindex="-1"
                   >
                     <span
@@ -1465,6 +1521,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="24th June 2023 Saturday"
                     class="rdp-day"
+                    data-day="2023-06-24"
                     tabindex="-1"
                   >
                     <span
@@ -1475,11 +1532,12 @@ exports[`Calendar Single renders correctly 1`] = `
                   </td>
                 </tr>
                 <tr
-                  class="rdp-row"
+                  class="rdp-week"
                 >
                   <td
                     aria-label="25th June 2023 Sunday"
                     class="rdp-day"
+                    data-day="2023-06-25"
                     tabindex="-1"
                   >
                     <span
@@ -1491,6 +1549,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="26th June 2023 Monday"
                     class="rdp-day"
+                    data-day="2023-06-26"
                     tabindex="-1"
                   >
                     <span
@@ -1502,6 +1561,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="27th June 2023 Tuesday"
                     class="rdp-day"
+                    data-day="2023-06-27"
                     tabindex="-1"
                   >
                     <span
@@ -1513,6 +1573,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="28th June 2023 Wednesday"
                     class="rdp-day"
+                    data-day="2023-06-28"
                     tabindex="-1"
                   >
                     <span
@@ -1524,6 +1585,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="29th June 2023 Thursday"
                     class="rdp-day"
+                    data-day="2023-06-29"
                     tabindex="-1"
                   >
                     <span
@@ -1535,6 +1597,7 @@ exports[`Calendar Single renders correctly 1`] = `
                   <td
                     aria-label="30th June 2023 Friday"
                     class="rdp-day"
+                    data-day="2023-06-30"
                     tabindex="-1"
                   >
                     <span

@@ -21,9 +21,14 @@ export const SearchBoxButton = forwardRef<
 			css={{ position: 'relative' }}
 			flexShrink={0}
 		>
-			<Button aria-label={children} css={buttonStyles} ref={ref} type="submit">
+			<Button
+				aria-label={children}
+				css={buttonStyles}
+				iconBefore={iconOnly ? SearchIcon : undefined}
+				ref={ref}
+				type="submit"
+			>
 				<span>{children}</span>
-				{iconOnly ? <SearchIcon size="md" /> : null}
 			</Button>
 		</Box>
 	);
@@ -38,7 +43,7 @@ const getButtonStyles = ({
 		paddingLeft: mapSpacing(1),
 		paddingRight: mapSpacing(1),
 
-		'& span > span > span': {
+		'& span': {
 			display: mapResponsiveProp(iconOnly, (value) =>
 				value ? 'none' : 'block'
 			),

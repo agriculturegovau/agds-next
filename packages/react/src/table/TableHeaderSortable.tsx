@@ -1,9 +1,10 @@
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { BaseButton, BaseButtonProps } from '../button';
+import { BaseButton, type BaseButtonProps } from '../button';
 import { boxPalette, packs, type ResponsiveProp } from '../core';
+import { Flex } from '../flex';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
 
@@ -39,6 +40,7 @@ export const TableHeaderSortable = ({
 }: PropsWithChildren<TableHeaderSortableProps>) => {
 	const Icon = getSortIcon(sort);
 	const sortLabel = getSortLabel(sort);
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Box
 			aria-sort={sortLabel}
@@ -58,12 +60,14 @@ export const TableHeaderSortable = ({
 					...packs.underline,
 					svg: {
 						color: boxPalette.foregroundAction,
+						transition: scaleIconCSS.transition,
 					},
 					'&:hover': {
 						backgroundColor: boxPalette.backgroundShade,
 						textDecoration: 'none',
 						svg: {
 							color: boxPalette.foregroundText,
+							transform: scaleIconCSS.transform,
 						},
 					},
 				}}
@@ -93,7 +97,7 @@ export const TableHeaderSortable = ({
 				>
 					{children}
 				</Box>
-				<Icon color="inherit" size="md" />
+				<Icon color="inherit" />
 			</Flex>
 		</Box>
 	);

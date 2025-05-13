@@ -6,7 +6,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     aria-controls="dropdown-menu-:ru:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-psfrx5-BaseButton-Button"
+    class="css-1vill1w-BaseButton-DropdownMenuButton"
     id="dropdown-menu-:ru:-button"
     type="button"
   >
@@ -22,7 +22,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -33,7 +33,7 @@ exports[`DropdownMenu Decorative renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="m18 15-6-6-6 6"
+        d="m6 9 6 6 6-6"
       />
     </svg>
   </button>
@@ -186,7 +186,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     aria-controls="dropdown-menu-:r16:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-psfrx5-BaseButton-Button"
+    class="css-1vill1w-BaseButton-DropdownMenuButton"
     id="dropdown-menu-:r16:-button"
     type="button"
   >
@@ -202,7 +202,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -213,7 +213,7 @@ exports[`DropdownMenu Links renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="m18 15-6-6-6 6"
+        d="m6 9 6 6 6-6"
       />
     </svg>
   </button>
@@ -275,7 +275,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     aria-controls="dropdown-menu-:r1i:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-psfrx5-BaseButton-Button"
+    class="css-1vill1w-BaseButton-DropdownMenuButton"
     id="dropdown-menu-:r1i:-button"
     type="button"
   >
@@ -291,7 +291,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -302,7 +302,7 @@ exports[`DropdownMenu Radio Group renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="m18 15-6-6-6 6"
+        d="m6 9 6 6 6-6"
       />
     </svg>
   </button>
@@ -407,7 +407,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     aria-controls="dropdown-menu-:r0:-panel"
     aria-expanded="true"
     aria-haspopup="true"
-    class="css-psfrx5-BaseButton-Button"
+    class="css-1vill1w-BaseButton-DropdownMenuButton"
     id="dropdown-menu-:r0:-button"
     type="button"
   >
@@ -423,7 +423,7 @@ exports[`DropdownMenu renders correctly 1`] = `
     </span>
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -434,7 +434,7 @@ exports[`DropdownMenu renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="m18 15-6-6-6 6"
+        d="m6 9 6 6 6-6"
       />
     </svg>
   </button>
