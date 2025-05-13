@@ -731,14 +731,6 @@ const snippets: Array<Snippet> = [
 		</SearchBox>`,
 	},
 	{
-		group: 'Searchbox',
-		name: 'With clear button',
-		code: `<SearchBox onSubmit={console.log}>
-			<SearchBoxInput clearButton label="Search this website"/>
-			<SearchBoxButton>Search</SearchBoxButton>
-		</SearchBox>`,
-	},
-	{
 		group: 'SkipLinks',
 		name: 'Basic',
 		code: `<SkipLinks

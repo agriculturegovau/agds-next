@@ -3,6 +3,6 @@
 '@ag.ds-next/docs': patch
 ---
 
-search-box: Add `clearButton` prop to `SearchBoxInput` component.
+search-box: Add clear button to `SearchBoxInput` component.
 
 search-input: Update docs with links to components and patterns.

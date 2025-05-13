@@ -55,16 +55,6 @@ export const ResponsiveButtonIcon: Story = {
 	),
 };
 
-export const ClearButton: Story = {
-	args: {},
-	render: (args) => (
-		<SearchBox {...args}>
-			<SearchBoxInput clearButton />
-			<SearchBoxButton>Search</SearchBoxButton>
-		</SearchBox>
-	),
-};
-
 export const Controlled = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 

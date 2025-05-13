@@ -97,7 +97,6 @@ describe('SearchBox', () => {
 		render(
 			<TestComponentWithState
 				searchBoxInputProps={{
-					clearButton: true,
 					label: searchInputLabel,
 					onChange: mockOnChange,
 				}}
@@ -115,27 +114,18 @@ describe('SearchBox', () => {
 	});
 
 	describe('SearchBoxInput clear button', () => {
-		it('does not render a "clear input" button when the `clearButton` prop is `false`', () => {
+		it('does not render a "clear input" button when the value is not truthy and string', () => {
 			renderSearchBox({
-				searchBoxInputProps: { clearButton: false, value: 'Orange' },
+				searchBoxInputProps: { value: undefined },
 			});
 
 			const clearButtonElement = screen.queryByLabelText(clearButtonLabel);
 			expect(clearButtonElement).toBeNull();
 		});
 
-		it('does not render a "clear input" button when the `clearButton` prop is `true` and the value is not truthy and string', () => {
+		it('renders a "clear input" button when the input has a valid value', () => {
 			renderSearchBox({
-				searchBoxInputProps: { clearButton: true, value: undefined },
-			});
-
-			const clearButtonElement = screen.queryByLabelText(clearButtonLabel);
-			expect(clearButtonElement).toBeNull();
-		});
-
-		it('renders a "clear input" button when the `clearButton` prop is `true` and the input has a valid value', () => {
-			renderSearchBox({
-				searchBoxInputProps: { clearButton: true, value: 'Orange' },
+				searchBoxInputProps: { value: 'Orange' },
 			});
 
 			const clearButtonElement = screen.getByLabelText(clearButtonLabel);
@@ -145,7 +135,6 @@ describe('SearchBox', () => {
 		it('clears and updates the field value when the "clear input" button is pressed (internal state)', async () => {
 			renderSearchBox({
 				searchBoxInputProps: {
-					clearButton: true,
 					label: searchInputLabel,
 				},
 			});
@@ -170,7 +159,6 @@ describe('SearchBox', () => {
 			render(
 				<TestComponentWithState
 					searchBoxInputProps={{
-						clearButton: true,
 						label: searchInputLabel,
 						onChange: mockOnChange,
 						value: 'Orange',
