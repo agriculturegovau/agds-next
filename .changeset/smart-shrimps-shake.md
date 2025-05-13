@@ -37,3 +37,5 @@ side-nav: Scale and transition `CollapsingSideBar` chevron on hover.
 side-nav: Vertically align nested sub-level chevron to text.
 
 table: Scale and transition sortable icons on hover.
+
+tags: Scale and transition remove button icon on hover.

@@ -4,7 +4,7 @@ import { Flex } from '../flex';
 import { TextLink } from '../text-link';
 import { boxPalette, type LinkProps } from '../core';
 import { CloseIcon } from '../icon';
-import { BaseButton } from '../button';
+import { BaseButton, scaleIconOnHover } from '../button';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;
@@ -66,6 +66,7 @@ const TagRemoveButton = ({
 	['aria-label']: string;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
+	const scaleIconCSS = scaleIconOnHover('sm');
 	return (
 		<Flex
 			alignItems="center"
@@ -79,10 +80,12 @@ const TagRemoveButton = ({
 				svg: {
 					color: boxPalette.foregroundAction,
 					display: 'block',
+					transition: scaleIconCSS.transition,
 				},
 				'&:hover': {
 					svg: {
 						color: boxPalette.foregroundText,
+						transform: scaleIconCSS.transform,
 					},
 				},
 			}}
