@@ -1,4 +1,4 @@
-import { ReactNode, SVGAttributes } from 'react';
+import { type ReactNode, type SVGAttributes } from 'react';
 import { foregroundColorMap } from '../box';
 import {
 	boxPalette,
