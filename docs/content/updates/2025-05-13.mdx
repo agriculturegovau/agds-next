@@ -1,0 +1,138 @@
+---
+date: 13th May 2025
+title: AgDS Beta v1.28.0 release
+description: Adds a new Conditional field container component, updates Date pickers to support React 19, adds React 19 as an allowed peer dependency, adds hover transitions to many icons within buttons, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- Scale and transition Menu, Close and Dropdown icons on hover.
+
+### [Button](/components/button)
+
+- Hide icons when `loading`.
+- Scale and transition `iconAfter` and `iconBefore` on hover.
+
+### [Call to action](/components/call-to-action)
+
+- Scale and transition icon on hover.
+
+### [Conditional field container](/components/conditional-field-container)
+
+- Initial release of component.
+
+### [Date picker](/components/date-picker)
+
+- Update `react-day-picker` dependency to support React 19.
+- Fix hover styles not appearing on some dates.
+- Scale and transition button icons on hover.
+
+### [Date picker next](/components/date-picker-next)
+
+- Update `react-day-picker` dependency to support React 19.
+- Fix hover styles not appearing on some dates.
+- Scale and transition button icons on hover.
+
+### [Date range picker](/components/date-range-picker)
+
+- Update `react-day-picker` dependency to support React 19.
+- Fix bug where `aria-selected` was added to dates between selected ranges.
+- Changing the end date will now attempt to focus on the current end date on the calendar.
+- Scale and transition button icons on hover.
+
+### [Date range picker next](/components/date-range-picker-next)
+
+- Update `react-day-picker` dependency to support React 19.
+- Fix bug where `aria-selected` was added to dates between selected ranges.
+- Changing the end date will now attempt to focus on the current end date on the calendar.
+- Scale and transition button icons on hover.
+
+### [Details](/components/details)
+
+- Scale and transition chevron on hover.
+
+### [Direction link](/components/direction-link)
+
+- Scale and transition icons on hover.
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Scale and transition chevron on hover.
+
+### [Feature link list](/components/feature-link-list)
+
+- Scale and transition chevron on hover.
+
+### [Filter sidebar](/components/filter-sidebar)
+
+- Scale and transition `CollapsingSideBar` chevron on hover.
+
+### [Icon](/components/icon)
+
+- Add new CodeIcon.
+- Update documentation to include more information and guidance on usage, sizes and
+  positioning.
+
+### [Main nav](/components/main-nav)
+
+- Scale and transition Menu, Close and Dropdown icons on hover.
+
+### [Pagination](/components/pagination)
+
+- Scale and transition icons on hover.
+
+### [Progress indicator](/components/progress-indicator)
+
+- Scale and transition `CollapsingSideBar` chevron on hover.
+
+### [Section alert](/components/section-alert)
+
+- Update description and Do guidance.
+
+### [Side nav](/components/side-nav)
+
+- Scale and transition `CollapsingSideBar` chevron on hover.
+- Vertically align nested sub-level chevron to text.
+
+### [Table](/components/table)
+
+- Scale and transition sortable icons on hover.
+
+### [Tags](/components/tags)
+
+- Prevent border radius from scaling when tag label wraps on multiple lines.
+- Scale and transition remove button icon on hover.
+
+### Build
+
+- Add React 19 as an allowed peer dependency.
+- Update prism-react-renderer.
+
+### Other docs
+
+- Fix various React and deprecation warnings throughout examples.
+- Remove roadmap page.
+- Update conditional reveal pattern page and example code.
+- Add `relatedPatterns` link section to patterns page.
+- Update section alert guidance in Patterns > Messaging.
+
+### [Example site](/example-site)
+
+- Update conditional reveal pattern.
+
+### [yourgov](/yourgov)
+
+- Update conditional reveal pattern.
+- Fix error for staff with no training when filtering by `trainingCompleted`.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.28.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/2014) for this release.
