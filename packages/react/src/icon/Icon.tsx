@@ -2,9 +2,9 @@ import { ReactNode, SVGAttributes } from 'react';
 import { foregroundColorMap } from '../box';
 import {
 	boxPalette,
+	mapResponsiveProp,
 	mq,
 	tokens,
-	type mapResponsiveProp,
 	type ResponsiveProp,
 } from '../core';
 
