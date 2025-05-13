@@ -3,11 +3,12 @@ import {
 	type MouseEventHandler,
 	type PropsWithChildren,
 } from 'react';
-import { BaseButton, scaleIconOnHover, type BaseButtonProps } from '../button';
+import { BaseButton, type BaseButtonProps } from '../button';
 import { Box } from '../box';
 import { type LinkProps, print } from '../core';
 import { Flex } from '../flex';
 import { ArrowRightIcon, ArrowLeftIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { TextLink } from '../text-link';
 import { BUTTON_SIZE_XS, BUTTON_SIZE_SM } from './utils';
 

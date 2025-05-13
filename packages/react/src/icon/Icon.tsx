@@ -1,5 +1,11 @@
 import { ReactNode, SVGAttributes } from 'react';
-import { boxPalette, ResponsiveProp, mq, mapResponsiveProp } from '../core';
+import {
+	boxPalette,
+	ResponsiveProp,
+	mq,
+	mapResponsiveProp,
+	tokens,
+} from '../core';
 import { foregroundColorMap } from '../box';
 
 export const iconColors = {
@@ -38,6 +44,13 @@ const iconWeights = {
 type IconWeight = keyof typeof iconWeights;
 
 type NativeSvgProps = SVGAttributes<SVGSVGElement>;
+
+export const scaleIconOnHover = (size: IconSize = 'md') => {
+	return {
+		transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
+		transform: `scale(${(iconSizes[size] + 2 / 16) / iconSizes[size]})`,
+	};
+};
 
 export type IconProps = {
 	'aria-hidden'?: NativeSvgProps['aria-hidden'];

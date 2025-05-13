@@ -1,8 +1,9 @@
 import { type MouseEventHandler, type PropsWithChildren } from 'react';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { BaseButton } from '../button';
 import { boxPalette, packs } from '../core';
 import { Flex } from '../flex';
 import { CloseIcon, MenuIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { localPalette } from './localPalette';
 
 export type MainNavOpenButtonProps = PropsWithChildren<{

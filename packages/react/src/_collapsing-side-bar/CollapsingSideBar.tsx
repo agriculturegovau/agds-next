@@ -1,9 +1,10 @@
 import { PropsWithChildren, ReactNode, useRef } from 'react';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { BaseButton } from '../button';
 import { Box, type BoxProps } from '../box';
 import { packs, tokens, useToggleState, useTransitionHeight } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { Flex } from '../flex';
+import { scaleIconOnHover } from '../icon/Icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import {

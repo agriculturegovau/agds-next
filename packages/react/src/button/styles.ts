@@ -8,7 +8,7 @@ import {
 	print,
 	tokens,
 } from '../core';
-import { iconSizes } from '../icon/Icon';
+import { scaleIconOnHover } from '../icon/Icon';
 
 const variants = {
 	primary: {
@@ -128,13 +128,6 @@ type ResponsiveStylesArgs = BaseStylesArgs & {
 type ButtonStyles<T extends ResponsiveStylesArgs> = T extends BaseStylesArgs
 	? ReturnType<typeof getBaseStyles> // For backwards compatibility we return a single object of CSS properties, unless...
 	: ReturnType<typeof mq>; // ...we have a responsive property included as an arg, then we return the responsive array of CSS properties.
-
-export const scaleIconOnHover = (size: keyof typeof iconSizes = 'md') => {
-	return {
-		transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-		transform: `scale(${(iconSizes[size] + 2 / 16) / iconSizes[size]})`,
-	};
-};
 
 function getBaseStyles({
 	block,

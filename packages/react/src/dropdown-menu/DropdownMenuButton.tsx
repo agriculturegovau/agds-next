@@ -1,6 +1,7 @@
 import { type KeyboardEvent, useEffect, useState } from 'react';
-import { Button, scaleIconOnHover, type ButtonProps } from '../button';
+import { Button, type ButtonProps } from '../button';
 import { ChevronDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { useDropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownMenuControlIds } from './utils';
 

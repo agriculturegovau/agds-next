@@ -1,10 +1,11 @@
 import { type MouseEventHandler } from 'react';
 import { Box } from '../box';
-import { Flex } from '../flex';
-import { TextLink } from '../text-link';
+import { BaseButton } from '../button';
 import { boxPalette, type LinkProps } from '../core';
+import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { scaleIconOnHover } from '../icon/Icon';
+import { TextLink } from '../text-link';
 
 export type TagProps = Omit<LinkProps, 'children'> & {
 	children: string;

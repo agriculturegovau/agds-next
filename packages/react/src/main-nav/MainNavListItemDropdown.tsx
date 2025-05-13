@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect, useRef } from 'react';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { BaseButton } from '../button';
 import { boxPalette, packs } from '../core';
 import {
 	DropdownMenu,
@@ -8,6 +8,7 @@ import {
 } from '../dropdown-menu';
 import { Flex } from '../flex';
 import { ChevronDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { localPalette } from './localPalette';
 
 export type MainNavListDropdown = {

@@ -1,8 +1,9 @@
 import { MouseEventHandler } from 'react';
-import { Flex } from '../flex';
+import { BaseButton } from '../button';
 import { boxPalette, tokens } from '../core';
+import { Flex } from '../flex';
 import { MenuIcon } from '../icon';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { scaleIconOnHover } from '../icon/Icon';
 import { type AppLayoutHeaderProps } from './AppLayoutHeader';
 import { AppLayoutHeaderAccount } from './AppLayoutHeaderAccount';
 import { useAppLayoutContext } from './AppLayoutContext';

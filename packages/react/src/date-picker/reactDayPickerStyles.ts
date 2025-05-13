@@ -1,6 +1,6 @@
 import { focusStyles, highContrastOutlineStyles } from '../box';
-import { scaleIconOnHover } from '../button';
 import { boxPalette, fontGrid, mapSpacing, packs, tokens } from '../core';
+import { scaleIconOnHover } from '../icon/Icon';
 
 const cellSizeLarge = '3rem';
 const cellSizeSmall = '2.75rem';

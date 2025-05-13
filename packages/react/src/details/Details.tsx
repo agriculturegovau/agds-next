@@ -1,9 +1,9 @@
 import { forwardRef, type PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { scaleIconOnHover } from '../button';
 import { mapSpacing } from '../core';
 import { Flex } from '../flex';
 import { InfoIcon, ChevronDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 
 export type DetailsProps = PropsWithChildren<{
 	/** If the Details component is placed on a page with `bodyAlt` background, set this prop to `true`. */

@@ -1,9 +1,9 @@
 import { type ReactNode } from 'react';
 import { Box, linkStyles } from '../box';
-import { scaleIconOnHover } from '../button';
 import { packs, type LinkProps, useId } from '../core';
 import { Flex } from '../flex';
 import { ArrowRightIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { Stack } from '../stack';
 import { Text } from '../text';
 import { TextLink, TextLinkExternal } from '../text-link';

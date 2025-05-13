@@ -7,6 +7,8 @@ import {
 import { createPortal } from 'react-dom';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
+import { VisuallyHidden } from '../a11y';
+import { Box } from '../box';
 import {
 	boxPalette,
 	canUseDOM,
@@ -17,11 +19,10 @@ import {
 	usePrefersReducedMotion,
 	packs,
 } from '../core';
-import { Box } from '../box';
+import { BaseButton } from '../button';
 import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
-import { VisuallyHidden } from '../a11y';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { scaleIconOnHover } from '../icon/Icon';
 import { useAppLayoutContext } from './AppLayoutContext';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,

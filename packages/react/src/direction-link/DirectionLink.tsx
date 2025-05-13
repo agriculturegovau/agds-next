@@ -1,5 +1,5 @@
 import { type ElementType, type PropsWithChildren } from 'react';
-import { BaseButton, scaleIconOnHover, type BaseButtonProps } from '../button';
+import { BaseButton, type BaseButtonProps } from '../button';
 import { type LinkProps } from '../core';
 import { Flex } from '../flex';
 import {
@@ -8,6 +8,7 @@ import {
 	ArrowLeftIcon,
 	ArrowUpIcon,
 } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { TextLink } from '../text-link';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';

@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { VisuallyHidden } from '../a11y';
 import { Avatar } from '../avatar';
-import { BaseButton, scaleIconOnHover } from '../button';
+import { BaseButton } from '../button';
 import { boxPalette, mq, packs } from '../core';
 import {
 	useDropdownMenuButton,
@@ -10,6 +10,7 @@ import {
 } from '../dropdown-menu';
 import { Flex } from '../flex';
 import { ChevronDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { Text } from '../text';
 
 export type AppLayoutHeaderAccountDropdownProps = PropsWithChildren<{

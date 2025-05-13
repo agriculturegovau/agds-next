@@ -1,9 +1,10 @@
 import { type PropsWithChildren } from 'react';
 import { Box } from '../box';
-import { BaseButton, scaleIconOnHover, type BaseButtonProps } from '../button';
+import { BaseButton, type BaseButtonProps } from '../button';
 import { boxPalette, packs, type ResponsiveProp } from '../core';
 import { Flex } from '../flex';
 import { ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 
 export type TableSortDirection = 'ASC' | 'DESC';
 

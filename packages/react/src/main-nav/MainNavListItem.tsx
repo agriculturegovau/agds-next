@@ -1,8 +1,8 @@
 import { type PropsWithChildren } from 'react';
 import { focusStyles } from '../box';
-import { scaleIconOnHover } from '../button';
 import { boxPalette, mapSpacing, mapResponsiveProp, packs, mq } from '../core';
 import { Flex } from '../flex';
+import { scaleIconOnHover } from '../icon/Icon';
 import { localPalette } from './localPalette';
 
 export type MainNavListItemProps = PropsWithChildren<{
