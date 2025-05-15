@@ -9,7 +9,7 @@ import React, {
 	useEffect,
 } from 'react';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
-import { createUrl } from 'playroom/utils';
+import { createPreviewUrl, createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
@@ -23,6 +23,10 @@ import {
 	useToggleState,
 } from '@ag.ds-next/react/core';
 import { Box } from '@ag.ds-next/react/box';
+import { Drawer } from '@ag.ds-next/react/drawer';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { TextLinkExternal } from '@ag.ds-next/react/text-link';
+import { Radio } from '@ag.ds-next/react/radio';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import {
@@ -34,6 +38,7 @@ import {
 	CopyIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
+	ExternalLinkIcon,
 } from '@ag.ds-next/react/icon';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
@@ -74,6 +79,26 @@ const PlaceholderPictogram = () => (
 	</svg>
 );
 
+const responsiveFrameSizes = {
+	sm: {
+		label: 'Mobile',
+		width: 375,
+		height: 667,
+	},
+	md: {
+		label: 'Tablet',
+		width: tokens.breakpoint.md,
+		height: 1024,
+	},
+	lg: {
+		label: 'Desktop',
+		width: tokens.breakpoint.xl,
+		height: 1024,
+	},
+};
+
+type ResponsiveFrameSizes = keyof typeof responsiveFrameSizes;
+
 function LiveCode({
 	showCode = false,
 	enableProse = false,
@@ -95,6 +120,10 @@ function LiveCode({
 		showCode,
 		!showCode
 	);
+	const [isResponsiveDrawerVisible, toggleIsResponsiveDrawerVisible] =
+		useToggleState(false, true);
+	const [frameSize, setFrameSize] = useState<ResponsiveFrameSizes>('sm');
+	const isChecked = (key: ResponsiveFrameSizes) => key === frameSize;
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -108,14 +137,21 @@ function LiveCode({
 		[liveOnChange]
 	);
 
+	const playroomCodeUrl = live.code.startsWith('<')
+		? live.code
+		: `<Render>\n    {${live.code
+				.slice(0, -1)
+				.split('\n')
+				.join('\n    ')}}\n</Render>`;
+
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: live.code.startsWith('<')
-			? live.code
-			: `<Render>\n    {${live.code
-					.slice(0, -1)
-					.split('\n')
-					.join('\n    ')}}\n</Render>`,
+		code: playroomCodeUrl,
+	});
+	const playroomPreviewUrl = createPreviewUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: playroomCodeUrl,
+		editorHidden: true,
 	});
 
 	const id = useId();
@@ -196,7 +232,63 @@ function LiveCode({
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
+				<Button
+					onClick={toggleIsResponsiveDrawerVisible}
+					size="sm"
+					variant="tertiary"
+				>
+					Preview responsive component
+				</Button>
 			</Flex>
+			<React.Fragment>
+				<Drawer
+					actions={
+						<div
+							css={{
+								display: 'flex',
+								alignItems: 'flex-end',
+								justifyContent: 'space-between',
+							}}
+						>
+							<ControlGroup label="Preview" required>
+								{(
+									Object.keys(
+										responsiveFrameSizes
+									) as Array<ResponsiveFrameSizes>
+								).map((key) => {
+									const { label } = responsiveFrameSizes[key];
+									return (
+										<Radio
+											checked={isChecked(key)}
+											key={key}
+											onChange={() => setFrameSize(key)}
+											size="sm"
+										>
+											{label}
+										</Radio>
+									);
+								})}
+							</ControlGroup>
+							<TextLinkExternal href={playroomPreviewUrl}>
+								Open in new tab
+							</TextLinkExternal>
+						</div>
+					}
+					isOpen={isResponsiveDrawerVisible}
+					onClose={toggleIsResponsiveDrawerVisible}
+					title="Header"
+					width="lg"
+				>
+					<iframe
+						css={{
+							width: responsiveFrameSizes[frameSize].width,
+							height: responsiveFrameSizes[frameSize].height,
+						}}
+						src={playroomPreviewUrl}
+						title="preview"
+					></iframe>
+				</Drawer>
+			</React.Fragment>
 			<Box
 				css={packs.print.visible}
 				display={isCodeVisible ? 'block' : 'none'}
