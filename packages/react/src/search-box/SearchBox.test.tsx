@@ -177,6 +177,9 @@ describe('SearchBox', () => {
 
 			expect(mockOnChange).toHaveBeenCalledTimes(1);
 			expect(mockOnChange).toHaveBeenCalledWith({
+				currentTarget: {
+					value: '',
+				},
 				target: {
 					value: '',
 				},

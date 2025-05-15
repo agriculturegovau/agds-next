@@ -59,6 +59,9 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 				target: {
 					value: '',
 				},
+				currentTarget: {
+					value: '',
+				},
 			} as ChangeEvent<HTMLInputElement>);
 			internalRef.current?.focus();
 		};

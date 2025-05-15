@@ -44,7 +44,7 @@ Use the `iconOnly` prop to configure at which breakpoints the search icon should
 
 ## Clear button
 
-Users can use the Clear button to the right of the input to remove the current search term after a search has been completed.
+Users can use the ‘Clear search’ button to the right of the input field to remove the current search term.
 
 ```jsx live
 () => {
@@ -52,7 +52,6 @@ Users can use the Clear button to the right of the input to remove the current s
 	return (
 		<SearchBox onSubmit={console.log}>
 			<SearchBoxInput
-				clearButton
 				label="Search this website"
 				onChange={(e) => setValue(e.target.value)}
 				value={value}
