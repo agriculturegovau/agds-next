@@ -86,11 +86,13 @@ function LiveCode({
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive Preview',
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -258,7 +260,7 @@ function LiveCode({
 				</Box>
 			) : null}
 			<PreviewResponsiveComponent
-				heading={'App Layout'}
+				heading={responsivePreviewHeading}
 				onClose={setIsResponsivePreviewVisible}
 				playroomPreviewUrl={playroomPreviewUrl}
 				visible={isResponsivePreviewVisible}
@@ -449,10 +451,10 @@ const PreviewResponsiveComponent = ({
 				}}
 			>
 				<Flex
-					alignItems={{ sm: 'flex-start', md: 'center' }}
+					alignItems={{ xs: 'flex-start', md: 'center' }}
 					background="shade"
 					dark
-					flexDirection={{ xs: 'column', sm: 'column', md: 'row' }}
+					flexDirection={{ xs: 'column', md: 'row' }}
 					gap={1}
 					justifyContent="space-between"
 					paddingX={1.5}
@@ -479,30 +481,36 @@ const PreviewResponsiveComponent = ({
 						</Button>
 						<H3>{heading}</H3>
 					</Flex>
-					<div>
-						<ControlGroup label="Preview" required>
-							{(Object.keys(sizes) as Array<Sizes>).map((key) => {
-								const { label } = sizes[key];
-								return (
-									<Radio
-										checked={isChecked(key)}
-										key={key}
-										onChange={handlerForKey(key)}
-										size="sm"
-									>
-										{label}
-									</Radio>
-								);
-							})}
-						</ControlGroup>
+					<ControlGroup label="Preview" required>
+						{(Object.keys(sizes) as Array<Sizes>).map((key) => {
+							const { label } = sizes[key];
+							return (
+								<Radio
+									checked={isChecked(key)}
+									key={key}
+									onChange={handlerForKey(key)}
+									size="sm"
+								>
+									{label}
+								</Radio>
+							);
+						})}
+					</ControlGroup>
+				</Flex>
+				<Box background="bodyAlt" flexGrow={1}>
+					<div css={{ overflowX: 'auto', height: '100%' }}>
+						<iframe
+							css={{
+								border: 0,
+								display: 'block',
+								height: '100%',
+								margin: '0 auto',
+								width: sizes[frameSize].width,
+							}}
+							src={playroomPreviewUrl}
+						></iframe>
 					</div>
-				</Flex>
-				<Flex background="bodyAlt" flexGrow={1} justifyContent="center">
-					<iframe
-						css={{ border: 0, width: sizes[frameSize].width }}
-						src={playroomPreviewUrl}
-					></iframe>
-				</Flex>
+				</Box>
 			</div>
 		</FocusLock>,
 		document.body
