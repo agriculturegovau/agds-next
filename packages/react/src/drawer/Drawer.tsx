@@ -18,6 +18,7 @@ import {
 	useAriaModalPolyfill,
 	usePrefersReducedMotion,
 } from '../core';
+import { useIsMounted } from '../core/utils/useIsMounted';
 import { getRequiredCloseHandler } from '../getCloseHandler';
 import { DrawerDialog } from './DrawerDialog';
 
@@ -62,6 +63,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	const scrollbarWidth = useRef<number>(0);
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
+	const isMounted = useIsMounted();
 
 	useEffect(() => {
 		scrollbarWidth.current =
@@ -88,11 +90,13 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	}, [isOpen, handleClose]);
 
 	// Polyfill usage of `aria-modal`
-	const { modalContainerRef } = useAriaModalPolyfill(isOpen);
+	const { modalContainerRef } = useAriaModalPolyfill(
+		!isMounted ? false : isOpen
+	);
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
-	if (!canUseDOM()) return null;
+	if (!isMounted || !canUseDOM()) return null;
 
 	const showDrawer = isOpen ? true : !closeTransitionEnded;
 
