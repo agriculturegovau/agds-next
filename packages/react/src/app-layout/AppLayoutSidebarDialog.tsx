@@ -41,6 +41,7 @@ export function AppLayoutSidebarDialog({
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
+	// We need to check if the component is mounted to avoid hydration mismatch errors
 	const isMounted = useIsMounted();
 
 	useEffect(() => {

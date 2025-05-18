@@ -63,6 +63,7 @@ export const Drawer: FunctionComponent<DrawerProps> = ({
 	const scrollbarWidth = useRef<number>(0);
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
+	// We need to check if the component is mounted to avoid hydration mismatch errors
 	const isMounted = useIsMounted();
 
 	useEffect(() => {
