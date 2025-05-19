@@ -8,7 +8,7 @@ figmaGalleryNodeId: 16226%3A40311
 
 Avatars are used to show a thumbnail representation of an individual.
 
-```jsx live
+```jsx live responsivePreviewHeading="Avatar"
 <Avatar name="William Mead" />
 ```
 
@@ -16,7 +16,7 @@ Avatars are used to show a thumbnail representation of an individual.
 
 Use the `size` prop to change the size of the avatar.
 
-```jsx live
+```jsx live responsivePreviewHeading="Avatar"
 <Flex alignItems="center" gap={0.5}>
 	<Avatar name="Taj Grainger" size="sm" />
 	<Avatar name="Isabel Edmund" size="md" />
@@ -33,7 +33,7 @@ Avatar supports two tones: `neutral` and `action`.
 
 Use the `action` tone if the Avatar is used within an interactive element such as a button or link.
 
-```jsx live
+```jsx live responsivePreviewHeading="Avatar"
 <Flex alignItems="center" gap={0.5}>
 	<Avatar name="William Mead" tone="neutral" />
 	<Avatar name="William Mead" tone="action" />
@@ -46,7 +46,7 @@ AgDS foreground components respond to the background colour of their parent cont
 
 This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
 
-```jsx live
+```jsx live responsivePreviewHeading="Avatar"
 <Fragment>
 	<Box padding={1.5}>
 		<Avatar name="William Mead" tone="action" />

@@ -97,7 +97,7 @@ function LiveCode({
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
 	const live = useContext(LiveContext);
-	console.log(live);
+
 	const liveOnChange = live.onChange;
 	const [localCopy, setLocalCopy] = useState<string>(live.code);
 	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
@@ -351,6 +351,7 @@ type CodeProps = {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 };
 
 export function Code({
@@ -361,6 +362,7 @@ export function Code({
 	className,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	responsivePreviewHeading,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -378,6 +380,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					responsivePreviewHeading={responsivePreviewHeading}
 					showCode={showCode}
 				/>
 			</LiveProvider>
@@ -498,7 +501,7 @@ const PreviewResponsiveComponent = ({
 					</ControlGroup>
 				</Flex>
 				<Box background="bodyAlt" flexGrow={1}>
-					<div css={{ overflowX: 'auto', height: '100%' }}>
+					<div css={{ overflowX: 'auto', height: '100%', margin: '0 0.75rem' }}>
 						<iframe
 							css={{
 								border: 0,

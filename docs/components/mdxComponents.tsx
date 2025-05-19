@@ -1,21 +1,21 @@
 import {
-	Fragment,
 	Children,
+	Fragment,
 	isValidElement,
-	HTMLAttributes,
-	AnchorHTMLAttributes,
-	ImgHTMLAttributes,
-	ReactNode,
-	PropsWithChildren,
+	type AnchorHTMLAttributes,
+	type HTMLAttributes,
+	type ImgHTMLAttributes,
+	type PropsWithChildren,
+	type ReactNode,
 } from 'react';
-import type { MDXRemoteProps } from 'next-mdx-remote';
+import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	PageAlert,
-	PageAlertProps,
 	PageAlertTitle,
+	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
@@ -65,17 +65,19 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		live,
-		showCode,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		live,
+		responsivePreviewHeading = 'Preview',
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
-		live?: boolean;
-		showCode?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		live?: boolean;
+		responsivePreviewHeading?: string;
+		showCode?: boolean;
 	}) => {
 		return (
 			<Fragment>
@@ -88,6 +90,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							exampleContentHeadingType={exampleContentHeadingType}
 							key={element.key}
 							live={live}
+							responsivePreviewHeading={responsivePreviewHeading}
 							showCode={showCode}
 							{...element.props}
 						/>
