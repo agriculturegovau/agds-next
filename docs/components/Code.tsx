@@ -23,7 +23,7 @@ import {
 	useToggleState,
 } from '@ag.ds-next/react/core';
 import { Box } from '@ag.ds-next/react/box';
-import { Drawer } from '@ag.ds-next/react/drawer';
+import { Drawer, DrawerWidth } from '@ag.ds-next/react/drawer';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { TextLinkExternal } from '@ag.ds-next/react/text-link';
 import { Radio } from '@ag.ds-next/react/radio';
@@ -38,7 +38,6 @@ import {
 	CopyIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
-	ExternalLinkIcon,
 } from '@ag.ds-next/react/icon';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
@@ -83,17 +82,17 @@ const responsiveFrameSizes = {
 	sm: {
 		label: 'Mobile',
 		width: 375,
-		height: 667,
+		drawerWidth: 'previewMobile',
 	},
 	md: {
 		label: 'Tablet',
 		width: tokens.breakpoint.md,
-		height: 1024,
+		drawerWidth: 'previewTablet',
 	},
 	lg: {
 		label: 'Desktop',
 		width: tokens.breakpoint.xl,
-		height: 1024,
+		drawerWidth: 'previewDesktop',
 	},
 };
 
@@ -277,16 +276,18 @@ function LiveCode({
 					isOpen={isResponsiveDrawerVisible}
 					onClose={toggleIsResponsiveDrawerVisible}
 					title="Header"
-					width="lg"
+					width={responsiveFrameSizes[frameSize].drawerWidth as DrawerWidth}
 				>
-					<iframe
-						css={{
-							width: responsiveFrameSizes[frameSize].width,
-							height: responsiveFrameSizes[frameSize].height,
-						}}
-						src={playroomPreviewUrl}
-						title="preview"
-					></iframe>
+					<Flex alignItems="stretch" height="100%">
+						<iframe
+							css={{
+								border: 0,
+								width: responsiveFrameSizes[frameSize].width,
+							}}
+							src={playroomPreviewUrl}
+							title="preview"
+						></iframe>
+					</Flex>
 				</Drawer>
 			</React.Fragment>
 			<Box

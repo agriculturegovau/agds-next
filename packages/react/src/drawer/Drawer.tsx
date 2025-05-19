@@ -24,6 +24,9 @@ import { DrawerDialog } from './DrawerDialog';
 const WIDTH_MAP = {
 	md: '32rem', // 512px
 	lg: '45rem', // 720px
+	previewMobile: 375 + 16 * 3,
+	previewTablet: tokens.breakpoint.md + 16 * 3,
+	previewDesktop: tokens.breakpoint.xl + 16 * 3,
 };
 
 export type DrawerWidth = keyof typeof WIDTH_MAP;
