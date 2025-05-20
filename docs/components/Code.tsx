@@ -99,15 +99,17 @@ const responsiveFrameSizes = {
 type ResponsiveFrameSizes = keyof typeof responsiveFrameSizes;
 
 function LiveCode({
-	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive preview',
+	showCode = false,
 }: {
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
+	showCode?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -275,7 +277,7 @@ function LiveCode({
 					}
 					isOpen={isResponsiveDrawerVisible}
 					onClose={toggleIsResponsiveDrawerVisible}
-					title="Header"
+					title={responsivePreviewHeading}
 					width={responsiveFrameSizes[frameSize].drawerWidth as DrawerWidth}
 				>
 					<Flex alignItems="stretch" height="100%">
@@ -410,21 +412,23 @@ const LIVE_SCOPE = {
 type CodeProps = {
 	children?: ReactNode;
 	className?: string;
-	live?: boolean;
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	live?: boolean;
+	responsivePreviewHeading?: string;
+	showCode?: boolean;
 };
 
 export function Code({
 	children,
-	live,
-	showCode,
-	enableProse,
 	className,
+	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	live,
+	responsivePreviewHeading,
+	showCode,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -442,6 +446,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					responsivePreviewHeading={responsivePreviewHeading}
 					showCode={showCode}
 				/>
 			</LiveProvider>
