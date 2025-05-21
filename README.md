@@ -23,7 +23,7 @@ You should only clone this repo if you are looking to contribute to it, such asâ
 
 ### System dependencies
 
-To run the dev and builds in this repository you will need version `18.18.2` of Node.js installed
+To run the dev and builds in this repository you will need version `22.15.1` of Node.js installed
 and the [`yarn` (v1) package manager](https://classic.yarnpkg.com/lang/en/docs/install).
 
 We recommend using `nvm` to manage node versions: https://github.com/nvm-sh/nvm

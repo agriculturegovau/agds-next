@@ -20,6 +20,7 @@ import {
 	packs,
 } from '../core';
 import { BaseButton } from '../button';
+import { useIsMounted } from '../core/utils/useIsMounted';
 import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
 import { scaleIconOnHover } from '../icon/Icon';
@@ -40,6 +41,8 @@ export function AppLayoutSidebarDialog({
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
+	// We need to check if the component is mounted to avoid hydration mismatch errors
+	const isMounted = useIsMounted();
 
 	useEffect(() => {
 		if (isMobileMenuOpen) {
@@ -61,11 +64,13 @@ export function AppLayoutSidebarDialog({
 	}, [closeMobileMenu]);
 
 	// Polyfill usage of `aria-modal`
-	const { modalContainerRef } = useAriaModalPolyfill(isMobileMenuOpen);
+	const { modalContainerRef } = useAriaModalPolyfill(
+		!isMounted ? false : isMobileMenuOpen
+	);
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
-	if (!canUseDOM()) return null;
+	if (!isMounted || !canUseDOM()) return null;
 
 	const showDrawer = isMobileMenuOpen ? true : !closeTransitionEnded;
 
