@@ -17,7 +17,6 @@
 		"docs:build": "yarn --cwd docs build",
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
-		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
 		"example:build": "yarn --cwd example-site build",
 		"example:dev": "yarn --cwd example-site dev",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
