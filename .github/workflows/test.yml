@@ -15,10 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18.18.2
+      - name: Setup Node.js 22.15.1
         uses: actions/setup-node@v4
         with:
-          node-version: 18.18.2
+          node-version: 22.15.1
 
       - name: Get number of CPU cores
         id: cpu-cores
@@ -37,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile  --ignore-scripts
+        run: yarn install --frozen-lockfile
 
       - name: Unit tests
         run: yarn test --max-workers ${{ steps.cpu-cores.outputs.count }}
@@ -49,10 +49,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18.18.2
+      - name: Setup Node.js 22.15.1
         uses: actions/setup-node@v4
         with:
-          node-version: 18.18.2
+          node-version: 22.15.1
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -67,7 +67,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile  --ignore-scripts
+        run: yarn install --frozen-lockfile
 
       - name: Generate component props
         run: yarn docs:generate-component-props
@@ -82,10 +82,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18.18.2
+      - name: Setup Node.js 22.15.1
         uses: actions/setup-node@v4
         with:
-          node-version: 18.18.2
+          node-version: 22.15.1
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -100,7 +100,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile  --ignore-scripts
+        run: yarn install --frozen-lockfile
 
       - name: Build packages
         run: yarn build

@@ -22,7 +22,7 @@
 		"example:dev": "yarn --cwd example-site dev",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"fresh": "yarn clean && yarn",
-		"postinstall": "manypkg check && (test \"$CI\" != \"true\" && echo 'Running preconstruct dev' && preconstruct dev || echo 'Skipping preconstruct dev in CI')",
+		"postinstall": "manypkg check && preconstruct dev",
 		"lint": "concurrently 'yarn:lint:*' --kill-others-on-fail",
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:example": "yarn --cwd example-site lint",
@@ -95,7 +95,7 @@
 		"webpack": "^5.97.0"
 	},
 	"engines": {
-		"node": "18"
+		"node": "22"
 	},
 	"manypkg": {
 		"defaultBranch": "main",
