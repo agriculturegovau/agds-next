@@ -37,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn cache clean && yarn install --frozen-lockfile
+        run: yarn cache clean && yarn install --frozen-lockfile --verbose
 
       - name: Unit tests
         run: yarn test --max-workers ${{ steps.cpu-cores.outputs.count }}
@@ -67,7 +67,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn cache clean && yarn install --frozen-lockfile
+        run: yarn cache clean && yarn install --frozen-lockfile --verbose
 
       - name: Generate component props
         run: yarn docs:generate-component-props
@@ -100,7 +100,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn cache clean && yarn install --frozen-lockfile
+        run: yarn cache clean && yarn install --frozen-lockfile --verbose
 
       - name: Build packages
         run: yarn build
