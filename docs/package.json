@@ -37,8 +37,6 @@
 	},
 	"devDependencies": {
 		"glob": "^10.3.3",
-		"puppeteer": "^21.0.0",
-		"react-docgen-typescript": "^2.2.2",
-		"sharp": "0.32.6"
+		"react-docgen-typescript": "^2.2.2"
 	}
 }
