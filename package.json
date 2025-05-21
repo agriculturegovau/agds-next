@@ -22,7 +22,7 @@
 		"example:dev": "yarn --cwd example-site dev",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
 		"fresh": "yarn clean && yarn",
-		"postinstall": "manypkg check && preconstruct dev",
+		"postinstall": "manypkg check && [ \"$CI\" != \"true\" ] && preconstruct dev",
 		"lint": "concurrently 'yarn:lint:*' --kill-others-on-fail",
 		"lint:docs": "yarn --cwd docs lint",
 		"lint:example": "yarn --cwd example-site lint",
