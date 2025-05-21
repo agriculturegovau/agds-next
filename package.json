@@ -50,7 +50,7 @@
 		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@emotion/react": "^11.7.0",
 		"@faker-js/faker": "^7.6.0",
-		"@manypkg/cli": "^0.20.0",
+		"@manypkg/cli": "^0.24.0",
 		"@preconstruct/cli": "^2.8.10",
 		"@preconstruct/next": "^4.0.0",
 		"@storybook/addon-a11y": "^8.4.7",
