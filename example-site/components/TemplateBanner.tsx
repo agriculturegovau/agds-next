@@ -15,6 +15,7 @@ export const TemplateBanner = ({ name, slug }: TemplateBannerProps) => {
 			background="body"
 			flexDirection={['column', 'row']}
 			gap={[2, 1]}
+			id="template-banner"
 			padding={1}
 			palette="dark"
 		>
