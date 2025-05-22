@@ -1,5 +1,21 @@
 # @ag.ds-next/example-site
 
+## 0.7.0
+
+### Minor Changes
+
+- c1bee3e25a3: build: Update node version to 22.15.1.
+
+  docs: Update screenshots of templates and guides.
+
+  docs: Remove `sharp` and `puppeteer` dependencies and image generation scripts.
+
+### Patch Changes
+
+- Updated dependencies [1bfdc0ae68b]
+- Updated dependencies [f17da0f24b2]
+  - @ag.ds-next/react@1.28.1
+
 ## 0.6.2
 
 ### Patch Changes
