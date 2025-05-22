@@ -7,7 +7,7 @@ relatedComponents: ['a11y']
 ---
 
 ```jsx
-<React.Fragment>
+<>
 	<SkipLinks
 		links={[
 			{ href: '#main-content', label: 'Skip to main content' },
@@ -18,7 +18,7 @@ relatedComponents: ['a11y']
 	<main id="main-content" tabIndex={-1} css={{ '&:focus': { outline: 'none' } }}>
 		...
 	</main>
-</React.Fragment>
+</>
 ```
 
 Skip links help screen reader and keyboard-only users skip to noteworthy sections of a page. Skip links are not visual until they receive focus.

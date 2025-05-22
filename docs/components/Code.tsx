@@ -47,7 +47,7 @@ const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 require('prismjs/components/prism-diff');
 
-const PlaceholderImage = () => (
+export const PlaceholderImage = () => (
 	<img
 		alt="Grey placeholder"
 		css={{ width: '100%' }}
@@ -55,7 +55,7 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const PlaceholderPictogram = () => (
+export const PlaceholderPictogram = () => (
 	<svg
 		fill="none"
 		height="64"

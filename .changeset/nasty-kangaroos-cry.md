@@ -8,7 +8,7 @@ callout: Fix live code examples to work in Playroom.
 
 cards: Fix live code examples to work in Playroom.
 
-control-group: Fix live code examples to work in Playroom.
+control-group: Fix broken link in docs.
 
 docs: Update live code URL generation to fix patterns in documents
 
@@ -18,7 +18,7 @@ file-upload: Fix live code examples to work in Playroom.
 
 filter-sidebar: Fix live code examples to work in Playroom.
 
-playroom: Add `PlaceholderImage` and `PlaceholderPictogram` components.
+playroom: Export `PlaceholderImage` and `PlaceholderPictogram` for Playroom.
 
 section-alert: Fix live code examples to work in Playroom.
 

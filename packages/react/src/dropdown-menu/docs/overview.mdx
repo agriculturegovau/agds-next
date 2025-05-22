@@ -145,10 +145,10 @@ Use the `endElement` prop to add elements such as an [Indicator dot](/components
 		<DropdownMenuItem
 			icon={EmailIcon}
 			endElement={
-				<React.Fragment>
+				<>
 					<NotificationBadge value={100} max={99} tone="action" aria-hidden />
 					<VisuallyHidden>, 99+ unread</VisuallyHidden>
-				</React.Fragment>
+				</>
 			}
 		>
 			Messages
@@ -170,10 +170,10 @@ Use a `DropdownMenuDivider` to separate destructive actions at the bottom of the
 		<DropdownMenuItem
 			icon={EmailIcon}
 			endElement={
-				<React.Fragment>
+				<>
 					<NotificationBadge value={100} max={99} tone="action" aria-hidden />
 					<VisuallyHidden>, 99+ unread</VisuallyHidden>
-				</React.Fragment>
+				</>
 			}
 		>
 			Messages
@@ -205,10 +205,10 @@ Use the `DropdownMenuGroup` component to group related items. Use the label prop
 			<DropdownMenuItem
 				icon={EmailIcon}
 				endElement={
-					<React.Fragment>
+					<>
 						<NotificationBadge value={100} max={99} tone="action" aria-hidden />
 						<VisuallyHidden>, 99+ unread</VisuallyHidden>
-					</React.Fragment>
+					</>
 				}
 			>
 				Messages
@@ -328,7 +328,7 @@ If you need to access the internal state of the menu, you can provide a render c
 ```jsx live
 <DropdownMenu>
 	{({ isMenuOpen }) => (
-		<React.Fragment>
+		<>
 			<DropdownMenuButton
 				iconAfter={isMenuOpen ? ChevronUpIcon : ChevronDownIcon}
 			>
@@ -339,7 +339,7 @@ If you need to access the internal state of the menu, you can provide a render c
 				<DropdownMenuItem>Messages</DropdownMenuItem>
 				<DropdownMenuItem>Account settings</DropdownMenuItem>
 			</DropdownMenuPanel>
-		</React.Fragment>
+		</>
 	)}
 </DropdownMenu>
 ```
