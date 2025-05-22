@@ -8,7 +8,6 @@ export function Render({ children }: { children: () => JSX.Element }) {
 	return children();
 }
 
-// TODO: check this image src works
 // Copy for Playroom from `docs/components`
 export const PlaceholderImage = () => (
 	<img

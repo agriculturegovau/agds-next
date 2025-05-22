@@ -39,6 +39,9 @@ import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
+// testing this
+const playroomURL = process.env.NEXT_PUBLIC_PLAYROOM_URL;
+
 // Find multi-line comments at start `/** ... */`
 const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 
@@ -127,7 +130,7 @@ function LiveCode({
 	}, [live.code]);
 
 	const playroomUrl = createUrl({
-		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		baseUrl: playroomURL,
 		code: codeUrl(),
 	});
 
