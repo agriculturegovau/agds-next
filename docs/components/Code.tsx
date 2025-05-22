@@ -86,7 +86,7 @@ function LiveCode({
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
-	responsivePreviewHeading = 'Responsive Preview',
+	responsivePreviewHeading = 'Responsive preview',
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
@@ -260,9 +260,9 @@ function LiveCode({
 				</Box>
 			) : null}
 			<PreviewResponsiveComponent
-				heading={responsivePreviewHeading}
 				onClose={setIsResponsivePreviewVisible}
 				playroomPreviewUrl={playroomPreviewUrl}
+				responsivePreviewHeading={responsivePreviewHeading}
 				visible={isResponsivePreviewVisible}
 			/>
 		</Box>
@@ -415,14 +415,14 @@ const sizes = {
 type Sizes = keyof typeof sizes;
 
 const PreviewResponsiveComponent = ({
-	heading,
 	onClose,
 	playroomPreviewUrl,
+	responsivePreviewHeading,
 	visible,
 }: {
-	heading: string;
 	onClose: () => void;
 	playroomPreviewUrl: string;
+	responsivePreviewHeading: string;
 	visible: boolean;
 }) => {
 	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
@@ -450,7 +450,7 @@ const PreviewResponsiveComponent = ({
 					position: 'fixed',
 					top: 0,
 					width: '100%',
-					zIndex: 1,
+					zIndex: tokens.zIndex.popover,
 				}}
 			>
 				<Flex
@@ -482,7 +482,7 @@ const PreviewResponsiveComponent = ({
 						>
 							Back to documentation
 						</Button>
-						<H3>{heading}</H3>
+						<H3>{responsivePreviewHeading}</H3>
 					</Flex>
 					<ControlGroup label="Preview" required>
 						{(Object.keys(sizes) as Array<Sizes>).map((key) => {

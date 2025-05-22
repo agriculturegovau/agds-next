@@ -69,7 +69,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
 		live,
-		responsivePreviewHeading = 'Preview',
+		responsivePreviewHeading,
 		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
 		enableProse?: boolean;
