@@ -244,12 +244,14 @@ function LiveCode({
 			<React.Fragment>
 				<Drawer
 					actions={
-						<div
-							css={{
-								display: 'flex',
-								alignItems: 'flex-end',
-								justifyContent: 'space-between',
-							}}
+						<Flex
+							// Tried to do `@container` but couldn't get it to work
+							alignItems={frameSize === 'sm' ? 'flex-start' : 'flex-end'}
+							flexDirection={frameSize === 'sm' ? 'column' : 'row'}
+							gap={1.5}
+							justifyContent={
+								frameSize === 'sm' ? 'flex-start' : 'space-between'
+							}
 						>
 							<ControlGroup label="Preview" required>
 								{(
@@ -273,7 +275,7 @@ function LiveCode({
 							<TextLinkExternal href={playroomPreviewUrl}>
 								Open in new tab
 							</TextLinkExternal>
-						</div>
+						</Flex>
 					}
 					isOpen={isResponsiveDrawerVisible}
 					onClose={toggleIsResponsiveDrawerVisible}
@@ -281,14 +283,18 @@ function LiveCode({
 					width={responsiveFrameSizes[frameSize].drawerWidth as DrawerWidth}
 				>
 					<Flex alignItems="stretch" height="100%">
-						<iframe
-							css={{
-								border: 0,
-								width: responsiveFrameSizes[frameSize].width,
-							}}
-							src={playroomPreviewUrl}
-							title="preview"
-						></iframe>
+						<div css={{ overflowX: 'auto', height: '100%' }}>
+							<iframe
+								css={{
+									border: 0,
+									display: 'block',
+									height: '100%',
+									margin: '0 auto',
+									width: responsiveFrameSizes[frameSize].width,
+								}}
+								src={playroomPreviewUrl}
+							></iframe>
+						</div>
 					</Flex>
 				</Drawer>
 			</React.Fragment>
