@@ -40,7 +40,7 @@ import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
 // Find multi-line comments at start `/** ... */`
-const multiLineCommentRegex = /^\/\*[\s\S]+\*\//gi;
+const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 
 // Add support for diff language support
 // https://github.com/FormidableLabs/prism-react-renderer#custom-language-support
