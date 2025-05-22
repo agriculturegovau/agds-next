@@ -1,5 +1,14 @@
 # @ag.ds-next/react
 
+## 1.28.1
+
+### Patch Changes
+
+- 1bfdc0ae68b: combobox: Prevent useIsIos from attempting to run on the server.
+- f17da0f24b2: app-layout: `AppLayoutSidebar` - Fix hydration mismatch warning when using Next.js’ App Router.
+
+  drawer: Fix hydration mismatch warning when using Next.js’ App Router.
+
 ## 1.28.0
 
 ### Minor Changes
