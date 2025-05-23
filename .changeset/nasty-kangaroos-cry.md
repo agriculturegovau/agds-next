@@ -10,7 +10,7 @@ cards: Fix live code examples to work in Playroom.
 
 control-group: Fix broken link in docs.
 
-docs: Update live code URL generation to fix patterns in documents
+docs: Update live code URL generation to fix various sample code patterns in documents.
 
 dropdown-menu: Fix live code examples to work in Playroom.
 
