@@ -272,6 +272,13 @@ export const ExistingFiles: Story = {
 				size: 100000,
 			},
 			{
+				name: 'police-check.pdf',
+				size: 100000,
+				onClick: () => {
+					console.log('Existing file clicked');
+				},
+			},
+			{
 				name: 'example.png',
 				size: 123456,
 				thumbnailSrc: 'https://placehold.co/144',
