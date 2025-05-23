@@ -46,12 +46,15 @@ import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
+// Find multi-line comments at start `/** ... */`
+const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
+
 // Add support for diff language support
 // https://github.com/FormidableLabs/prism-react-renderer#custom-language-support
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 require('prismjs/components/prism-diff');
 
-const PlaceholderImage = () => (
+export const PlaceholderImage = () => (
 	<img
 		alt="Grey placeholder"
 		css={{ width: '100%' }}
@@ -59,7 +62,7 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const PlaceholderPictogram = () => (
+export const PlaceholderPictogram = () => (
 	<svg
 		fill="none"
 		height="64"
@@ -119,19 +122,28 @@ function LiveCode({
 		[liveOnChange]
 	);
 
-	const codeUrl = live.code.startsWith('<')
-		? live.code
-		: `<Render>\n    {${live.code
-				.slice(0, -1)
-				.split('\n')
-				.join('\n    ')}}\n</Render>`;
+	const codeUrl = useCallback(() => {
+		// Wrap `/* ... */` comments with brackets `{ .. }`
+		let code = live.code.replaceAll(multiLineCommentRegex, '{$&}');
+		// No formatting required for JSX only
+		if (code.startsWith('<') || code.endsWith('>')) return code;
+
+		// Remove `;` from the end of `() => {};`
+		if (code.endsWith(';')) {
+			code = code.slice(0, -1);
+		}
+
+		const formattedCode = code.split('\n').join('\n    ');
+		return `<Render>\n    {${formattedCode}}\n</Render>`;
+	}, [live.code]);
+
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: codeUrl,
+		code: codeUrl(),
 	});
 	const playroomPreviewUrl = createPreviewUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: codeUrl,
+		code: codeUrl(),
 	});
 
 	const id = useId();
