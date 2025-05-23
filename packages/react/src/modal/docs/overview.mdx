@@ -11,7 +11,7 @@ relatedComponents: ['drawer']
 () => {
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openModal}>Open modal</Button>
 			<Modal
 				isOpen={isModalOpen}
@@ -35,7 +35,7 @@ relatedComponents: ['drawer']
 					content should be avoided.
 				</Text>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 ```

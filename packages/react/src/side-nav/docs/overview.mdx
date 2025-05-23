@@ -8,8 +8,10 @@ relatedComponents: ['inpage-nav', 'link-list', 'sub-nav']
 ---
 
 ```jsx live
-// Note: we are only restricting this example to 6 cols for the docs,
-// 12 cols is the recommendation for best results in application code
+/**
+ * Note: we are only restricting this example to 6 cols for the docs,
+ * 12 cols is the recommendation for best results in application code
+ */
 <Columns cols={6}>
 	<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 		<SideNav
@@ -103,8 +105,10 @@ To help users comprehend the side navigation, choose a strategy that is appropri
 When the list of items is long, prefer showing any sub-level lists when either navigating to the parent item or one of the sub-level items. Since this is the default behaviour, either setting `subLevelVisible="whenActive"` or omitting this prop will use this strategy.
 
 ```jsx live
-// Note: we are only restricting this example to 6 cols for the docs,
-// 12 cols is the recommendation for best results in application code
+/**
+ * Note: we are only restricting this example to 6 cols for the docs,
+ * 12 cols is the recommendation for best results in application code
+ */
 <Columns cols={6}>
 	<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 		<SideNav
@@ -178,8 +182,10 @@ When the list of items is long, prefer showing any sub-level lists when either n
 When you have a small number of sub-level items, it’s easier for users to see all items at once. Set `subLevelVisible="always"` to achieve this.
 
 ```jsx live
-// Note: we are only restricting this example to 6 cols for the docs,
-// 12 cols is the recommendation for best results in application code
+/**
+ * Note: we are only restricting this example to 6 cols for the docs,
+ * 12 cols is the recommendation for best results in application code
+ */
 <Columns cols={6}>
 	<Column columnSpan={{ xs: 12, md: 4, lg: 3 }}>
 		<SideNav

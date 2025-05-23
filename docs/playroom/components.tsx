@@ -1,3 +1,4 @@
+export { PlaceholderImage, PlaceholderPictogram } from '../components/Code';
 export * from '../components/designSystemComponents';
 
 /**

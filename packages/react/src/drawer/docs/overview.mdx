@@ -12,7 +12,7 @@ relatedPatterns: ['search-filters']
 () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openDrawer}>Open Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
@@ -32,7 +32,7 @@ relatedPatterns: ['search-filters']
 			>
 				<Text as="p">Drawer body area.</Text>
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 };
 ```
@@ -85,7 +85,7 @@ The Drawer comes in the following 2 widths:
 () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openDrawer}>Open Medium Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
@@ -115,7 +115,7 @@ The Drawer comes in the following 2 widths:
 					block
 				/>
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 };
 ```
@@ -124,7 +124,7 @@ The Drawer comes in the following 2 widths:
 () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openDrawer}>Open Large Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
@@ -307,7 +307,7 @@ The Drawer comes in the following 2 widths:
 					</p>
 				</Prose>
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 };
 ```
@@ -320,7 +320,7 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openDrawer}>Open Muted Drawer</Button>
 			<Drawer
 				isOpen={isDrawerOpen}
@@ -343,7 +343,7 @@ By default, Drawer’s overlay defaults to 80% opacity, however, by adding `mute
 					Notice that the main page content is much easier to read.
 				</Text>
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 };
 ```
@@ -441,7 +441,7 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			<Button onClick={openDrawer}>Open Drawer</Button>
 
 			<Drawer
@@ -478,7 +478,7 @@ This will allow keyboard users to submit the form by pressing "enter" on the for
 					</FormStack>
 				</form>
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 };
 ```

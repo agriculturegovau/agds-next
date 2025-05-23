@@ -65,17 +65,19 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		live,
-		showCode,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		live,
+		responsivePreviewHeading,
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
-		live?: boolean;
-		showCode?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		live?: boolean;
+		responsivePreviewHeading?: string;
+		showCode?: boolean;
 	}) => {
 		return (
 			<Fragment>
@@ -88,6 +90,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							exampleContentHeadingType={exampleContentHeadingType}
 							key={element.key}
 							live={live}
+							responsivePreviewHeading={responsivePreviewHeading}
 							showCode={showCode}
 							{...element.props}
 						/>

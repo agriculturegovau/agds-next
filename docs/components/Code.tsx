@@ -9,7 +9,7 @@ import React, {
 	useEffect,
 } from 'react';
 import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
-import { createUrl } from 'playroom/utils';
+import { createPreviewUrl, createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
 import copy from 'clipboard-copy';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
@@ -23,6 +23,10 @@ import {
 	useToggleState,
 } from '@ag.ds-next/react/core';
 import { Box } from '@ag.ds-next/react/box';
+import { Drawer, DrawerWidth } from '@ag.ds-next/react/drawer';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { TextLinkExternal } from '@ag.ds-next/react/text-link';
+import { Radio } from '@ag.ds-next/react/radio';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import {
@@ -39,12 +43,15 @@ import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
+// Find multi-line comments at start `/** ... */`
+const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
+
 // Add support for diff language support
 // https://github.com/FormidableLabs/prism-react-renderer#custom-language-support
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 require('prismjs/components/prism-diff');
 
-const PlaceholderImage = () => (
+export const PlaceholderImage = () => (
 	<img
 		alt="Grey placeholder"
 		css={{ width: '100%' }}
@@ -52,7 +59,7 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const PlaceholderPictogram = () => (
+export const PlaceholderPictogram = () => (
 	<svg
 		fill="none"
 		height="64"
@@ -74,16 +81,38 @@ const PlaceholderPictogram = () => (
 	</svg>
 );
 
+const responsiveFrameSizes = {
+	sm: {
+		label: 'Mobile',
+		width: 375,
+		drawerWidth: 'previewMobile',
+	},
+	md: {
+		label: 'Tablet',
+		width: tokens.breakpoint.md,
+		drawerWidth: 'previewTablet',
+	},
+	lg: {
+		label: 'Desktop',
+		width: tokens.breakpoint.xl,
+		drawerWidth: 'previewDesktop',
+	},
+};
+
+type ResponsiveFrameSizes = keyof typeof responsiveFrameSizes;
+
 function LiveCode({
-	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive preview',
+	showCode = false,
 }: {
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
+	showCode?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -95,6 +124,10 @@ function LiveCode({
 		showCode,
 		!showCode
 	);
+	const [isResponsiveDrawerVisible, toggleIsResponsiveDrawerVisible] =
+		useToggleState(false, true);
+	const [frameSize, setFrameSize] = useState<ResponsiveFrameSizes>('sm');
+	const isChecked = (key: ResponsiveFrameSizes) => key === frameSize;
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -108,14 +141,29 @@ function LiveCode({
 		[liveOnChange]
 	);
 
+	const codeUrl = useCallback(() => {
+		// Wrap `/* ... */` comments with brackets `{ .. }`
+		let code = live.code.replaceAll(multiLineCommentRegex, '{$&}');
+		// No formatting required for JSX only
+		if (code.startsWith('<') || code.endsWith('>')) return code;
+
+		// Remove `;` from the end of `() => {};`
+		if (code.endsWith(';')) {
+			code = code.slice(0, -1);
+		}
+
+		const formattedCode = code.split('\n').join('\n    ');
+		return `<Render>\n    {${formattedCode}}\n</Render>`;
+	}, [live.code]);
+
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: live.code.startsWith('<')
-			? live.code
-			: `<Render>\n    {${live.code
-					.slice(0, -1)
-					.split('\n')
-					.join('\n    ')}}\n</Render>`,
+		code: codeUrl(),
+	});
+	const playroomPreviewUrl = createPreviewUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: codeUrl(),
+		editorHidden: true,
 	});
 
 	const id = useId();
@@ -196,7 +244,71 @@ function LiveCode({
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
+				<Button
+					onClick={toggleIsResponsiveDrawerVisible}
+					size="sm"
+					variant="tertiary"
+				>
+					Preview responsive component
+				</Button>
 			</Flex>
+			<React.Fragment>
+				<Drawer
+					actions={
+						<Flex
+							// Tried to do `@container` but couldn't get it to work
+							alignItems={frameSize === 'sm' ? 'flex-start' : 'flex-end'}
+							flexDirection={frameSize === 'sm' ? 'column' : 'row'}
+							gap={1.5}
+							justifyContent={
+								frameSize === 'sm' ? 'flex-start' : 'space-between'
+							}
+						>
+							<ControlGroup label="Preview" required>
+								{(
+									Object.keys(
+										responsiveFrameSizes
+									) as Array<ResponsiveFrameSizes>
+								).map((key) => {
+									const { label } = responsiveFrameSizes[key];
+									return (
+										<Radio
+											checked={isChecked(key)}
+											key={key}
+											onChange={() => setFrameSize(key)}
+											size="sm"
+										>
+											{label}
+										</Radio>
+									);
+								})}
+							</ControlGroup>
+							<TextLinkExternal href={playroomPreviewUrl}>
+								Open in new tab
+							</TextLinkExternal>
+						</Flex>
+					}
+					isOpen={isResponsiveDrawerVisible}
+					onClose={toggleIsResponsiveDrawerVisible}
+					title={responsivePreviewHeading}
+					width={responsiveFrameSizes[frameSize].drawerWidth as DrawerWidth}
+				>
+					<Flex alignItems="stretch" height="100%">
+						<div css={{ overflowX: 'auto', height: '100%' }}>
+							<iframe
+								css={{
+									border: 0,
+									display: 'block',
+									height: '100%',
+									margin: '0 auto',
+									width: responsiveFrameSizes[frameSize].width,
+								}}
+								src={playroomPreviewUrl}
+							></iframe>
+						</div>
+					</Flex>
+				</Drawer>
+			</React.Fragment>
 			<Box
 				css={packs.print.visible}
 				display={isCodeVisible ? 'block' : 'none'}
@@ -317,21 +429,23 @@ const LIVE_SCOPE = {
 type CodeProps = {
 	children?: ReactNode;
 	className?: string;
-	live?: boolean;
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	live?: boolean;
+	responsivePreviewHeading?: string;
+	showCode?: boolean;
 };
 
 export function Code({
 	children,
-	live,
-	showCode,
-	enableProse,
 	className,
+	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	live,
+	responsivePreviewHeading,
+	showCode,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -349,6 +463,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					responsivePreviewHeading={responsivePreviewHeading}
 					showCode={showCode}
 				/>
 			</LiveProvider>
