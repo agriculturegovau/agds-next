@@ -30,6 +30,8 @@ export type ExistingFile = {
 	thumbnailSrc?: string;
 	/** Use the meta key to keep track of any extra file information, which can be useful when deleting the file. */
 	meta?: Record<string, unknown>;
+	/** Callback function when the file link is clicked. */
+	onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export function formatFileSize(bytes: number) {

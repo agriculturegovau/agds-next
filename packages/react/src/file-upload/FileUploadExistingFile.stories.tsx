@@ -53,3 +53,17 @@ export const WithHref: Story = {
 		},
 	},
 };
+
+export const WithOnClick: Story = {
+	name: 'with onClick',
+	args: {
+		file: {
+			name: 'onClick.jpg',
+			thumbnailSrc: 'https://placehold.co/144',
+			size: 123456,
+			onClick: () => {
+				alert('Existing file clicked');
+			},
+		},
+	},
+};

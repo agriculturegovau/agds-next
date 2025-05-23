@@ -20,8 +20,16 @@ export const FileUploadExistingFile = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadExistingFileProps) => {
-	const { download, href, name, size, thumbnailSrc } = file;
+	const {
+		download,
+		href,
+		name,
+		size,
+		thumbnailSrc,
+		onClick: fileOnClick,
+	} = file;
 	const showThumbnail = !hideThumbnails;
+
 	return (
 		<Flex
 			as="li"
@@ -48,9 +56,17 @@ export const FileUploadExistingFile = ({
 								css={{ ...print.hideHref }}
 								download={download}
 								href={href}
+								onClick={fileOnClick}
 								rel="noopener noreferrer"
 								target="_blank"
 							>
+								{name}
+								{size ? ` (${formatFileSize(size)})` : null}
+							</TextLink>
+						</Text>
+					) : fileOnClick ? (
+						<Text breakWords paddingY={1.5}>
+							<TextLink onClick={fileOnClick}>
 								{name}
 								{size ? ` (${formatFileSize(size)})` : null}
 							</TextLink>
