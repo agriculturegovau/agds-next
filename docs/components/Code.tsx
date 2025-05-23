@@ -1,20 +1,27 @@
+import { Global } from '@emotion/react';
+import FocusLock from 'react-focus-lock';
+import copy from 'clipboard-copy';
+import { createPreviewUrl, createUrl } from 'playroom/utils';
+import { Highlight, Prism } from 'prism-react-renderer';
 import React, {
-	ReactNode,
-	useState,
-	useCallback,
 	Fragment,
-	useRef,
-	KeyboardEvent,
+	type KeyboardEvent,
+	type ReactNode,
+	useCallback,
 	useContext,
 	useEffect,
+	useRef,
+	useState,
 } from 'react';
-import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
-import { createUrl } from 'playroom/utils';
-import { Highlight, Prism } from 'prism-react-renderer';
-import copy from 'clipboard-copy';
+import { createPortal } from 'react-dom';
+import { LiveContext, LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
+import { Box } from '@ag.ds-next/react/box';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { CardHeader } from '@ag.ds-next/react/card';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import {
+	canUseDOM,
 	globalPalette,
 	mapSpacing,
 	packs,
@@ -22,29 +29,32 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { Box } from '@ag.ds-next/react/box';
 import { Flex } from '@ag.ds-next/react/flex';
-import { Heading } from '@ag.ds-next/react/heading';
+import { H3, Heading } from '@ag.ds-next/react/heading';
 import {
-	unsetProseStylesClassname,
-	proseBlockClassname,
-} from '@ag.ds-next/react/prose';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import {
-	CopyIcon,
+	ArrowLeftIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
+	CopyIcon,
 } from '@ag.ds-next/react/icon';
+import {
+	proseBlockClassname,
+	unsetProseStylesClassname,
+} from '@ag.ds-next/react/prose';
+import { Radio } from '@ag.ds-next/react/radio';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
+
+// Find multi-line comments at start `/** ... */`
+const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 
 // Add support for diff language support
 // https://github.com/FormidableLabs/prism-react-renderer#custom-language-support
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
 require('prismjs/components/prism-diff');
 
-const PlaceholderImage = () => (
+export const PlaceholderImage = () => (
 	<img
 		alt="Grey placeholder"
 		css={{ width: '100%' }}
@@ -52,7 +62,7 @@ const PlaceholderImage = () => (
 	/>
 );
 
-const PlaceholderPictogram = () => (
+export const PlaceholderPictogram = () => (
 	<svg
 		fill="none"
 		height="64"
@@ -79,11 +89,13 @@ function LiveCode({
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive preview',
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -95,6 +107,8 @@ function LiveCode({
 		showCode,
 		!showCode
 	);
+	const [isResponsivePreviewVisible, setIsResponsivePreviewVisible] =
+		useToggleState(false, true);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -108,14 +122,28 @@ function LiveCode({
 		[liveOnChange]
 	);
 
+	const codeUrl = useCallback(() => {
+		// Wrap `/* ... */` comments with brackets `{ .. }`
+		let code = live.code.replaceAll(multiLineCommentRegex, '{$&}');
+		// No formatting required for JSX only
+		if (code.startsWith('<') || code.endsWith('>')) return code;
+
+		// Remove `;` from the end of `() => {};`
+		if (code.endsWith(';')) {
+			code = code.slice(0, -1);
+		}
+
+		const formattedCode = code.split('\n').join('\n    ');
+		return `<Render>\n    {${formattedCode}}\n</Render>`;
+	}, [live.code]);
+
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: live.code.startsWith('<')
-			? live.code
-			: `<Render>\n    {${live.code
-					.slice(0, -1)
-					.split('\n')
-					.join('\n    ')}}\n</Render>`,
+		code: codeUrl(),
+	});
+	const playroomPreviewUrl = createPreviewUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: codeUrl(),
 	});
 
 	const id = useId();
@@ -196,6 +224,13 @@ function LiveCode({
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
+				<Button
+					onClick={setIsResponsivePreviewVisible}
+					size="sm"
+					variant="tertiary"
+				>
+					Preview responsive component
+				</Button>
 			</Flex>
 			<Box
 				css={packs.print.visible}
@@ -236,6 +271,12 @@ function LiveCode({
 					{live.error}
 				</Box>
 			) : null}
+			<PreviewResponsiveComponent
+				onClose={setIsResponsivePreviewVisible}
+				playroomPreviewUrl={playroomPreviewUrl}
+				responsivePreviewHeading={responsivePreviewHeading}
+				visible={isResponsivePreviewVisible}
+			/>
 		</Box>
 	);
 }
@@ -322,6 +363,7 @@ type CodeProps = {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 };
 
 export function Code({
@@ -332,6 +374,7 @@ export function Code({
 	className,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	responsivePreviewHeading,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -349,6 +392,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					responsivePreviewHeading={responsivePreviewHeading}
 					showCode={showCode}
 				/>
 			</LiveProvider>
@@ -357,3 +401,135 @@ export function Code({
 
 	return <StaticCode code={childrenAsString} language={language} />;
 }
+
+const sizes = {
+	mobile: {
+		label: 'Mobile',
+		width: 375,
+		height: 667,
+	},
+	tablet: {
+		label: 'Tablet',
+		width: 768,
+		height: 1024,
+	},
+	desktop: {
+		label: 'Desktop',
+		width: 1280,
+		height: 720,
+	},
+	xlDesktop: {
+		label: 'XL Desktop',
+		width: 1920,
+		height: 1080,
+	},
+};
+type Sizes = keyof typeof sizes;
+
+const PreviewResponsiveComponent = ({
+	onClose,
+	playroomPreviewUrl,
+	responsivePreviewHeading,
+	visible,
+}: {
+	onClose: () => void;
+	playroomPreviewUrl: string;
+	responsivePreviewHeading: string;
+	visible: boolean;
+}) => {
+	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
+	const handlerForKey = useCallback(
+		(key: Sizes) => () => setFrameSize(key),
+		[]
+	);
+	const isChecked = (key: Sizes) => key === frameSize;
+
+	if (!visible) return null;
+
+	// Since react portals can not be rendered on the server and this component is always closed by default
+	// This component doesn't need to be server side rendered
+	if (!canUseDOM()) return null;
+
+	return createPortal(
+		<FocusLock returnFocus>
+			<LockScroll />
+			<div
+				css={{
+					display: 'flex',
+					flexDirection: 'column',
+					height: '100vh',
+					left: 0,
+					position: 'fixed',
+					top: 0,
+					width: '100%',
+					zIndex: tokens.zIndex.popover,
+				}}
+			>
+				<Flex
+					alignItems={{ xs: 'flex-start', md: 'center' }}
+					background="shade"
+					dark
+					flexDirection={{ xs: 'column', md: 'row' }}
+					gap={1}
+					justifyContent="space-between"
+					paddingX={1.5}
+					paddingY={1}
+				>
+					<Flex
+						dark
+						display="flex"
+						flexDirection={{
+							xs: 'column',
+							sm: 'column',
+							md: 'column',
+							lg: 'row',
+						}}
+						gap={1}
+					>
+						<Button
+							iconBefore={ArrowLeftIcon}
+							onClick={() => onClose()}
+							size="sm"
+							variant="tertiary"
+						>
+							Back to documentation
+						</Button>
+						<H3>{responsivePreviewHeading}</H3>
+					</Flex>
+					<ControlGroup label="Preview" required>
+						{(Object.keys(sizes) as Array<Sizes>).map((key) => {
+							const { label } = sizes[key];
+							return (
+								<Radio
+									checked={isChecked(key)}
+									key={key}
+									onChange={handlerForKey(key)}
+									size="sm"
+								>
+									{label}
+								</Radio>
+							);
+						})}
+					</ControlGroup>
+				</Flex>
+				<Box background="bodyAlt" flexGrow={1}>
+					<div css={{ overflowX: 'auto', height: '100%', margin: '0 0.75rem' }}>
+						<iframe
+							css={{
+								border: 0,
+								display: 'block',
+								height: '100%',
+								margin: '0 auto',
+								width: sizes[frameSize].width,
+							}}
+							src={playroomPreviewUrl}
+						></iframe>
+					</div>
+				</Box>
+			</div>
+		</FocusLock>,
+		document.body
+	);
+};
+
+const LockScroll = () => <Global styles={{ body: { overflow: 'hidden' } }} />;
