@@ -53,15 +53,16 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 
 		// Clears the input while also triggering the `onChange` event to consumers
 		const clearInput = () => {
-			if (!value) return;
-			// Cannot change the API, we still need to pass it as an HTMLInputEvent
+			if (!internalRef.current?.value) return;
+			internalRef.current.value = '';
+			// A synthetic copy of the ChangeEvent<HTMLInputElement>, can't be manually trigger
 			onChange({
-				target: {
-					value: '',
-				},
-				currentTarget: {
-					value: '',
-				},
+				bubbles: true,
+				cancelable: false,
+				defaultPrevented: false,
+				isTrusted: true,
+				target: internalRef.current,
+				type: 'change',
 			} as ChangeEvent<HTMLInputElement>);
 			internalRef.current?.focus();
 		};

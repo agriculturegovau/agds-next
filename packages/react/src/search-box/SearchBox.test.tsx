@@ -176,14 +176,19 @@ describe('SearchBox', () => {
 			expect(searchInputElement.getAttribute('value')).toBe('');
 
 			expect(mockOnChange).toHaveBeenCalledTimes(1);
-			expect(mockOnChange).toHaveBeenCalledWith({
-				currentTarget: {
-					value: '',
-				},
-				target: {
-					value: '',
-				},
+			const mockArguments = mockOnChange.mock.calls[0][0];
+			const { target, ...mockArgs } = mockArguments;
+			expect(mockArgs).toStrictEqual({
+				bubbles: true,
+				cancelable: false,
+				defaultPrevented: false,
+				isTrusted: true,
+				type: 'change',
 			});
+			// Can't test exact target value but we can check the node type and updated value
+			expect(target).toBeTruthy();
+			expect((target as HTMLElement).nodeName).toBe('INPUT');
+			expect(target.getAttribute('value')).toBe('');
 		});
 	});
 });
