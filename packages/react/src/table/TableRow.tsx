@@ -33,7 +33,7 @@ export function TableRow({
 		const targetElement = event.target;
 		if (
 			(targetElement as HTMLElement).closest(
-				'a, button, input, select, textarea'
+				'a, button, input, label, select, textarea'
 			)
 		) {
 			return;

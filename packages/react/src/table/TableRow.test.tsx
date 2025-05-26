@@ -8,6 +8,7 @@ import {
 	render,
 	screen,
 } from '../../../../test-utils';
+import { Checkbox } from '../checkbox';
 import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableCaption } from './TableCaption';
@@ -23,7 +24,8 @@ afterEach(cleanup);
 
 function renderTable(
 	onClickTableRow: jest.Mock<unknown> | undefined = undefined,
-	onClickButton: jest.Mock<unknown> | undefined = undefined
+	onClickButton: jest.Mock<unknown> | undefined = undefined,
+	onClickCheckbox: jest.Mock<unknown> | undefined = undefined
 ) {
 	return render(
 		<TableWrapper>
@@ -48,6 +50,15 @@ function renderTable(
 				</TableHead>
 				<TableBody>
 					<TableRow onClick={onClickTableRow}>
+						<TableCell>
+							<Checkbox
+								id="nsw-checkbox"
+								onChange={onClickCheckbox}
+								value="nsw"
+							>
+								Select checkbox
+							</Checkbox>
+						</TableCell>
 						<TableCell as="th" scope="row">
 							New South Wales
 						</TableCell>
@@ -82,6 +93,7 @@ describe('TableRow', () => {
 			extends: ['html-validate:recommended'],
 			rules: {
 				'no-inline-style': 'off',
+				'no-redundant-for': 'off', // disabled for Checkbox component
 			},
 		});
 		expect(await axe(container)).toHaveNoViolations();
@@ -113,6 +125,21 @@ describe('TableRow', () => {
 			});
 
 			expect(mockOnClickButton).toHaveBeenCalledTimes(1);
+			expect(mockOnClickTableRow).toHaveBeenCalledTimes(0);
+		});
+
+		it('does not execute the `onClick` event on the table row when the Checkbox component in a table cell is clicked', async () => {
+			const mockOnClickTableRow = jest.fn(() => null);
+			const mockOnClickCheckbox = jest.fn(() => null);
+
+			renderTable(mockOnClickTableRow, undefined, mockOnClickCheckbox);
+
+			const checkboxElement = screen.getByLabelText('Select checkbox');
+			await act(() => {
+				fireEvent.click(checkboxElement);
+			});
+
+			expect(mockOnClickCheckbox).toHaveBeenCalledTimes(1);
 			expect(mockOnClickTableRow).toHaveBeenCalledTimes(0);
 		});
 	});
