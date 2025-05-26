@@ -20,14 +20,7 @@ export const FileUploadExistingFile = ({
 	hideThumbnails,
 	onRemove,
 }: FileUploadExistingFileProps) => {
-	const {
-		download,
-		href,
-		name,
-		size,
-		thumbnailSrc,
-		onClick,
-	} = file;
+	const { download, href, name, onClick, size, thumbnailSrc } = file;
 	const showThumbnail = !hideThumbnails;
 
 	return (
