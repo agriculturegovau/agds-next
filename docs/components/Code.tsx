@@ -29,6 +29,7 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
+import { ChevronRightIcon } from '@ag.ds-next/react/icon';
 import { Flex } from '@ag.ds-next/react/flex';
 import { H3, Heading } from '@ag.ds-next/react/heading';
 import {
@@ -81,12 +82,21 @@ const PlaceholderPictogram = () => (
 	</svg>
 );
 
+function generatePlayroomCode(code: string) {
+	return code.startsWith('<')
+		? code
+		: `<Render>\n    {${code
+				.slice(0, -1)
+				.split('\n')
+				.join('\n    ')}}\n</Render>`;
+}
+
 function LiveCode({
 	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
-	responsivePreviewHeading = 'Responsive preview',
+	responsivePreviewHeading,
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
@@ -119,17 +129,8 @@ function LiveCode({
 		[liveOnChange]
 	);
 
-	const codeUrl = live.code.startsWith('<')
-		? live.code
-		: `<Render>\n    {${live.code
-				.slice(0, -1)
-				.split('\n')
-				.join('\n    ')}}\n</Render>`;
+	const codeUrl = generatePlayroomCode(live.code);
 	const playroomUrl = createUrl({
-		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: codeUrl,
-	});
-	const playroomPreviewUrl = createPreviewUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 		code: codeUrl,
 	});
@@ -260,8 +261,8 @@ function LiveCode({
 				</Box>
 			) : null}
 			<PreviewResponsiveComponent
+				code={live.code}
 				onClose={setIsResponsivePreviewVisible}
-				playroomPreviewUrl={playroomPreviewUrl}
 				responsivePreviewHeading={responsivePreviewHeading}
 				visible={isResponsivePreviewVisible}
 			/>
@@ -369,6 +370,15 @@ export function Code({
 
 	if (!childrenAsString) return null;
 
+	if (responsivePreviewHeading && !live) {
+		return (
+			<CodePreview
+				code={childrenAsString}
+				responsivePreviewHeading={responsivePreviewHeading}
+			/>
+		);
+	}
+
 	if (live) {
 		return (
 			<LiveProvider
@@ -390,39 +400,63 @@ export function Code({
 	return <StaticCode code={childrenAsString} language={language} />;
 }
 
+export function CodePreview({
+	code,
+	responsivePreviewHeading,
+}: {
+	code: string;
+	responsivePreviewHeading: string;
+}) {
+	const [isModalVisible, setIsModalVisible] = useToggleState(false, true);
+
+	return (
+		<div css={{ marginTop: '1.5rem' }}>
+			<Button
+				iconAfter={ChevronRightIcon}
+				onClick={setIsModalVisible}
+				variant="text"
+			>
+				Preview deleting a record from a table
+			</Button>
+			<PreviewResponsiveComponent
+				code={code}
+				onClose={setIsModalVisible}
+				responsivePreviewHeading={responsivePreviewHeading}
+				visible={isModalVisible}
+			/>
+		</div>
+	);
+}
+
 const sizes = {
 	mobile: {
 		label: 'Mobile',
 		width: 375,
-		height: 667,
 	},
 	tablet: {
 		label: 'Tablet',
 		width: 768,
-		height: 1024,
 	},
 	desktop: {
 		label: 'Desktop',
 		width: 1280,
-		height: 720,
 	},
 	xlDesktop: {
 		label: 'XL Desktop',
 		width: 1920,
-		height: 1080,
 	},
 };
 type Sizes = keyof typeof sizes;
 
 const PreviewResponsiveComponent = ({
+	code,
 	onClose,
-	playroomPreviewUrl,
-	responsivePreviewHeading,
+	responsivePreviewHeading = 'Responsive preview',
 	visible,
 }: {
+	code: string;
 	onClose: () => void;
-	playroomPreviewUrl: string;
-	responsivePreviewHeading: string;
+	responsivePreviewHeading?: string;
 	visible: boolean;
 }) => {
 	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
@@ -431,6 +465,12 @@ const PreviewResponsiveComponent = ({
 		[]
 	);
 	const isChecked = (key: Sizes) => key === frameSize;
+
+	const codeUrl = generatePlayroomCode(code);
+	const playroomPreviewUrl = createPreviewUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: codeUrl,
+	});
 
 	if (!visible) return null;
 
