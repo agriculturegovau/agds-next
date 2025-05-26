@@ -25,6 +25,22 @@ export const Basic: Story = {
 				size: 123456,
 				thumbnailSrc: 'https://placehold.co/144',
 			},
+			{
+				name: 'example.jpg',
+				size: 123456,
+				thumbnailSrc: 'https://placehold.co/144',
+				href: '#',
+			},
+			{
+				name: 'onclick.jpg',
+				size: 123456,
+				href: '#',
+				thumbnailSrc: 'https://placehold.co/144',
+				onClick: (event) => {
+					event.preventDefault();
+					console.log('Existing file clicked');
+				},
+			},
 		],
 	},
 };

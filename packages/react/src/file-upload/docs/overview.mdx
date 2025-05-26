@@ -208,6 +208,14 @@ Image files should be displayed with thumbnails which are 144px by 144px. Passin
 			// This can be useful info when deleting the file
 			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 		},
+		{
+			name: 'example-onclick.html',
+			size: 123,
+			href: '/components/file-upload',
+			// This can be useful info when deleting the file
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+			onClick: () => alert('example-onclick.html clicked'),
+		},
 	]);
 
 	function onRemoveExistingFile(fileToRemove) {
