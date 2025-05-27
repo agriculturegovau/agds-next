@@ -1,5 +1,4 @@
-import { Global } from '@emotion/react';
-import FocusLock from 'react-focus-lock';
+import { usePathname } from 'next/navigation';
 import copy from 'clipboard-copy';
 import { createPreviewUrl, createUrl } from 'playroom/utils';
 import { Highlight, Prism } from 'prism-react-renderer';
@@ -13,15 +12,12 @@ import React, {
 	useRef,
 	useState,
 } from 'react';
-import { createPortal } from 'react-dom';
 import { LiveContext, LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
 import { Box } from '@ag.ds-next/react/box';
 import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { CardHeader } from '@ag.ds-next/react/card';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
 import {
-	canUseDOM,
 	globalPalette,
 	mapSpacing,
 	packs,
@@ -31,9 +27,8 @@ import {
 } from '@ag.ds-next/react/core';
 import { ChevronRightIcon } from '@ag.ds-next/react/icon';
 import { Flex } from '@ag.ds-next/react/flex';
-import { H3, Heading } from '@ag.ds-next/react/heading';
+import { Heading } from '@ag.ds-next/react/heading';
 import {
-	ArrowLeftIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
 	CopyIcon,
@@ -42,7 +37,7 @@ import {
 	proseBlockClassname,
 	unsetProseStylesClassname,
 } from '@ag.ds-next/react/prose';
-import { Radio } from '@ag.ds-next/react/radio';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
@@ -91,12 +86,72 @@ function generatePlayroomCode(code: string) {
 				.join('\n    ')}}\n</Render>`;
 }
 
+function ResponsivePreviewLink({
+	children,
+	code,
+	frameUrl,
+	title,
+	standalone = false,
+}: {
+	children: React.ReactNode;
+	code?: string;
+	frameUrl?: string;
+	title: string;
+	standalone?: boolean;
+}) {
+	const urlParams = new URLSearchParams();
+
+	if (title) urlParams.append('title', title);
+
+	if (frameUrl) urlParams.append('frame-url', frameUrl);
+	if (code) {
+		const playroomPreviewUrl = createPreviewUrl({
+			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+			code: code,
+		});
+		urlParams.append('playroom-url', playroomPreviewUrl);
+	}
+
+	const pathname = usePathname();
+	urlParams.append('back-url', pathname);
+
+	const href = `/preview/responsive?${urlParams.toString()}`;
+
+	// As link without code
+	if (standalone) {
+		return (
+			<Box css={{ marginTop: '1.5rem' }}>
+				<TextLink href={href} rel="noopener" target="_blank">
+					<Heading
+						alignItems="center"
+						as="span"
+						color="inherit"
+						gap={0.25}
+						type="h3"
+					>
+						{children} <ExternalLinkCallout />
+					</Heading>
+					<ChevronRightIcon css={{ verticalAlign: 'text-bottom' }} />
+				</TextLink>
+			</Box>
+		);
+	}
+
+	// Inline with code actions
+	return (
+		<ButtonLink href={href} size="sm" variant="tertiary">
+			{children}
+			<ExternalLinkCallout />
+		</ButtonLink>
+	);
+}
+
 function LiveCode({
 	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
-	responsivePreviewHeading,
+	responsivePreviewHeading = 'Responsive preview',
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
@@ -114,8 +169,6 @@ function LiveCode({
 		showCode,
 		!showCode
 	);
-	const [isResponsivePreviewVisible, setIsResponsivePreviewVisible] =
-		useToggleState(false, true);
 
 	const copyLiveCode = useCallback(() => {
 		copy(localCopy);
@@ -213,13 +266,12 @@ function LiveCode({
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
-				<Button
-					onClick={setIsResponsivePreviewVisible}
-					size="sm"
-					variant="tertiary"
+				<ResponsivePreviewLink
+					code={live.code}
+					title={responsivePreviewHeading}
 				>
 					Preview responsive component
-				</Button>
+				</ResponsivePreviewLink>
 			</Flex>
 			<Box
 				css={packs.print.visible}
@@ -260,12 +312,6 @@ function LiveCode({
 					{live.error}
 				</Box>
 			) : null}
-			<PreviewResponsiveComponent
-				code={live.code}
-				onClose={setIsResponsivePreviewVisible}
-				responsivePreviewHeading={responsivePreviewHeading}
-				visible={isResponsivePreviewVisible}
-			/>
 		</Box>
 	);
 }
@@ -370,12 +416,16 @@ export function Code({
 
 	if (!childrenAsString) return null;
 
+	// Standalone link
 	if (responsivePreviewHeading && !live) {
 		return (
-			<CodePreview
+			<ResponsivePreviewLink
 				code={childrenAsString}
-				responsivePreviewHeading={responsivePreviewHeading}
-			/>
+				standalone
+				title={responsivePreviewHeading}
+			>
+				{responsivePreviewHeading}
+			</ResponsivePreviewLink>
 		);
 	}
 
@@ -399,165 +449,3 @@ export function Code({
 
 	return <StaticCode code={childrenAsString} language={language} />;
 }
-
-export function CodePreview({
-	code,
-	responsivePreviewHeading,
-}: {
-	code: string;
-	responsivePreviewHeading: string;
-}) {
-	const [isModalVisible, setIsModalVisible] = useToggleState(false, true);
-
-	return (
-		<div css={{ marginTop: '1.5rem' }}>
-			<Button
-				iconAfter={ChevronRightIcon}
-				onClick={setIsModalVisible}
-				variant="text"
-			>
-				Preview deleting a record from a table
-			</Button>
-			<PreviewResponsiveComponent
-				code={code}
-				onClose={setIsModalVisible}
-				responsivePreviewHeading={responsivePreviewHeading}
-				visible={isModalVisible}
-			/>
-		</div>
-	);
-}
-
-const sizes = {
-	mobile: {
-		label: 'Mobile',
-		width: 375,
-	},
-	tablet: {
-		label: 'Tablet',
-		width: 768,
-	},
-	desktop: {
-		label: 'Desktop',
-		width: 1280,
-	},
-	xlDesktop: {
-		label: 'XL Desktop',
-		width: 1920,
-	},
-};
-type Sizes = keyof typeof sizes;
-
-const PreviewResponsiveComponent = ({
-	code,
-	onClose,
-	responsivePreviewHeading = 'Responsive preview',
-	visible,
-}: {
-	code: string;
-	onClose: () => void;
-	responsivePreviewHeading?: string;
-	visible: boolean;
-}) => {
-	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
-	const handlerForKey = useCallback(
-		(key: Sizes) => () => setFrameSize(key),
-		[]
-	);
-	const isChecked = (key: Sizes) => key === frameSize;
-
-	const codeUrl = generatePlayroomCode(code);
-	const playroomPreviewUrl = createPreviewUrl({
-		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-		code: codeUrl,
-	});
-
-	if (!visible) return null;
-
-	// Since react portals can not be rendered on the server and this component is always closed by default
-	// This component doesn't need to be server side rendered
-	if (!canUseDOM()) return null;
-
-	return createPortal(
-		<FocusLock returnFocus>
-			<LockScroll />
-			<div
-				css={{
-					display: 'flex',
-					flexDirection: 'column',
-					height: '100vh',
-					left: 0,
-					position: 'fixed',
-					top: 0,
-					width: '100%',
-					zIndex: tokens.zIndex.popover,
-				}}
-			>
-				<Flex
-					alignItems={{ xs: 'flex-start', md: 'center' }}
-					background="shade"
-					dark
-					flexDirection={{ xs: 'column', md: 'row' }}
-					gap={1}
-					justifyContent="space-between"
-					paddingX={1.5}
-					paddingY={1}
-				>
-					<Flex
-						dark
-						display="flex"
-						flexDirection={{
-							xs: 'column',
-							sm: 'column',
-							md: 'column',
-							lg: 'row',
-						}}
-						gap={1}
-					>
-						<Button
-							iconBefore={ArrowLeftIcon}
-							onClick={() => onClose()}
-							size="sm"
-							variant="tertiary"
-						>
-							Back to documentation
-						</Button>
-						<H3>{responsivePreviewHeading}</H3>
-					</Flex>
-					<ControlGroup label="Preview" required>
-						{(Object.keys(sizes) as Array<Sizes>).map((key) => {
-							const { label } = sizes[key];
-							return (
-								<Radio
-									checked={isChecked(key)}
-									key={key}
-									onChange={handlerForKey(key)}
-									size="sm"
-								>
-									{label}
-								</Radio>
-							);
-						})}
-					</ControlGroup>
-				</Flex>
-				<Box background="bodyAlt" flexGrow={1}>
-					<div css={{ overflowX: 'auto', height: '100%', margin: '0 0.75rem' }}>
-						<iframe
-							css={{
-								border: 0,
-								display: 'block',
-								height: '100%',
-								margin: '0 auto',
-								width: sizes[frameSize].width,
-							}}
-							src={playroomPreviewUrl}
-						></iframe>
-					</div>
-				</Box>
-			</div>
-		</FocusLock>,
-		document.body
-	);
-};
-
-const LockScroll = () => <Global styles={{ body: { overflow: 'hidden' } }} />;
