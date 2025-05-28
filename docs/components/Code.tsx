@@ -86,34 +86,45 @@ function generatePlayroomCode(code: string) {
 				.join('\n    ')}}\n</Render>`;
 }
 
-function ResponsivePreviewLink({
+export const responsivePreviewQueryKeys = {
+	title: 'title',
+	frameSrc: 'frame-src',
+	playroomSrc: 'playroom-code',
+	returnLink: 'return',
+};
+
+export function ResponsivePreviewLink({
 	children,
 	code,
-	frameUrl,
-	title,
+	frameAddress,
 	standalone = false,
+	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
-	frameUrl?: string;
-	title: string;
+	frameAddress?: string;
 	standalone?: boolean;
+	title: string;
 }) {
 	const urlParams = new URLSearchParams();
 
-	if (title) urlParams.append('title', title);
+	if (title) urlParams.append(responsivePreviewQueryKeys.title, title);
 
-	if (frameUrl) urlParams.append('frame-url', frameUrl);
+	if (frameAddress)
+		urlParams.append(responsivePreviewQueryKeys.frameSrc, frameAddress);
 	if (code) {
 		const playroomPreviewUrl = createPreviewUrl({
 			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 			code: code,
 		});
-		urlParams.append('playroom-url', playroomPreviewUrl);
+		urlParams.append(
+			responsivePreviewQueryKeys.playroomSrc,
+			playroomPreviewUrl
+		);
 	}
 
 	const pathname = usePathname();
-	urlParams.append('back-url', pathname);
+	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);
 
 	const href = `/preview/responsive?${urlParams.toString()}`;
 

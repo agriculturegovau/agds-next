@@ -8,6 +8,7 @@ import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
 import { Radio } from '@ag.ds-next/react/radio';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { DocumentTitle } from '../../components/DocumentTitle';
+import { responsivePreviewQueryKeys } from '../../components/Code';
 
 const sizes = {
 	mobile: {
@@ -30,20 +31,23 @@ const sizes = {
 type Sizes = keyof typeof sizes;
 
 export default function ResponsivePage() {
-	const searchParams = useSearchParams();
-	const backUrl = searchParams.get('back-url') || '/';
-	const frameUrl = searchParams.get('frame-url');
-	const playroomUrl = searchParams.get('playroom-url');
-	const title = searchParams.get('title') || 'Responsive preview';
-
 	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
+	const searchParams = useSearchParams();
+	const returnLink =
+		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
+	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
+	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
+	const title =
+		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
+
+	const iFrameSrc = frameSrc || playroomSrc;
+
 	const handlerForKey = useCallback(
 		(key: Sizes) => () => setFrameSize(key),
 		[]
 	);
 	const isChecked = (key: Sizes) => key === frameSize;
 
-	const iFrameSrc = frameUrl || playroomUrl;
 	return (
 		<Fragment>
 			<DocumentTitle title={title} />
@@ -57,6 +61,7 @@ export default function ResponsivePage() {
 			>
 				<Flex
 					alignItems={{ xs: 'flex-start', md: 'center' }}
+					as="header"
 					background="shade"
 					dark
 					flexDirection={{ xs: 'column', md: 'row' }}
@@ -76,7 +81,7 @@ export default function ResponsivePage() {
 						gap={1}
 					>
 						<ButtonLink
-							href={backUrl}
+							href={returnLink}
 							iconBefore={ArrowLeftIcon}
 							variant="text"
 						>
@@ -102,8 +107,14 @@ export default function ResponsivePage() {
 						})}
 					</ControlGroup>
 				</Flex>
-				<Box background="bodyAlt" flexGrow={1}>
-					<div css={{ overflowX: 'auto', height: '100%', margin: '0 0.75rem' }}>
+				<Box as="main" background="bodyAlt" flexGrow={1}>
+					<div
+						css={{
+							overflowX: 'auto',
+							height: '100%',
+							margin: '0 min(auto, 0.75rem)',
+						}}
+					>
 						{iFrameSrc && (
 							<iframe
 								css={{
@@ -114,6 +125,7 @@ export default function ResponsivePage() {
 									width: sizes[frameSize].width,
 								}}
 								src={iFrameSrc}
+								title={`Framed content, ${title}`}
 							></iframe>
 						)}
 					</div>

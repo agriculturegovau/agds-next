@@ -45,10 +45,10 @@ import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
-import { Code } from './Code';
+import { AllIconsPlayground } from './AllIconsPlayground';
+import { Code, ResponsivePreviewLink } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
-import { AllIconsPlayground } from './AllIconsPlayground';
 import {
 	BreakpointsTokenChart,
 	SpacingTokenChart,
@@ -263,5 +263,18 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 				</Stack>
 			</Callout>
 		</div>
+	),
+	ResponsivePreview: ({
+		href,
+		label,
+		title,
+	}: {
+		href: string;
+		label: string;
+		title: string;
+	}) => (
+		<ResponsivePreviewLink frameAddress={href} standalone title={title}>
+			{label}
+		</ResponsivePreviewLink>
 	),
 };
