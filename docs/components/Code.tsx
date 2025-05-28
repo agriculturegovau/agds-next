@@ -77,7 +77,8 @@ const PlaceholderPictogram = () => (
 	</svg>
 );
 
-function generatePlayroomCode(code: string) {
+// Checks if the code requires React support or is JSX
+function checkAndModifyCode(code: string) {
 	return code.startsWith('<')
 		? code
 		: `<Render>\n    {${code
@@ -115,7 +116,7 @@ export function ResponsivePreviewLink({
 	if (code) {
 		const playroomPreviewUrl = createPreviewUrl({
 			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
-			code: code,
+			code: checkAndModifyCode(code),
 		});
 		urlParams.append(
 			responsivePreviewQueryKeys.playroomSrc,
@@ -132,7 +133,7 @@ export function ResponsivePreviewLink({
 	if (standalone) {
 		return (
 			<Box css={{ marginTop: '1.5rem' }}>
-				<TextLink href={href} rel="noopener" target="_blank">
+				<TextLink href={href}>
 					<Heading
 						alignItems="center"
 						as="span"
@@ -140,7 +141,7 @@ export function ResponsivePreviewLink({
 						gap={0.25}
 						type="h3"
 					>
-						{children} <ExternalLinkCallout />
+						{children}
 					</Heading>
 					<ChevronRightIcon css={{ verticalAlign: 'text-bottom' }} />
 				</TextLink>
@@ -152,7 +153,6 @@ export function ResponsivePreviewLink({
 	return (
 		<ButtonLink href={href} size="sm" variant="tertiary">
 			{children}
-			<ExternalLinkCallout />
 		</ButtonLink>
 	);
 }
@@ -193,7 +193,7 @@ function LiveCode({
 		[liveOnChange]
 	);
 
-	const codeUrl = generatePlayroomCode(live.code);
+	const codeUrl = checkAndModifyCode(live.code);
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 		code: codeUrl,
