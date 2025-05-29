@@ -88,7 +88,11 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 					{...props}
 				/>
 				{showClearButton ? (
-					<SearchInputClearButton onClick={clearInput} palette="light" />
+					<SearchInputClearButton
+						onClick={clearInput}
+						// The input always uses the light background colour, button should also use the light action colour
+						palette="light"
+					/>
 				) : null}
 			</Stack>
 		);
