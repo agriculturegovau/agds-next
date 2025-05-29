@@ -7,6 +7,8 @@ import {
 import { createPortal } from 'react-dom';
 import { Global } from '@emotion/react';
 import FocusLock from 'react-focus-lock';
+import { VisuallyHidden } from '../a11y';
+import { Box } from '../box';
 import {
 	boxPalette,
 	canUseDOM,
@@ -17,11 +19,11 @@ import {
 	usePrefersReducedMotion,
 	packs,
 } from '../core';
-import { Box } from '../box';
+import { BaseButton } from '../button';
+import { useIsMounted } from '../core/utils/useIsMounted';
 import { Flex } from '../flex';
 import { CloseIcon } from '../icon';
-import { VisuallyHidden } from '../a11y';
-import { BaseButton } from '../button';
+import { scaleIconOnHover } from '../icon/Icon';
 import { useAppLayoutContext } from './AppLayoutContext';
 import {
 	APP_LAYOUT_DESKTOP_BREAKPOINT,
@@ -39,6 +41,8 @@ export function AppLayoutSidebarDialog({
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const [closeTransitionEnded, setCloseTransitionEnded] = useState(true);
+	// We need to check if the component is mounted to avoid hydration mismatch errors
+	const isMounted = useIsMounted();
 
 	useEffect(() => {
 		if (isMobileMenuOpen) {
@@ -60,11 +64,13 @@ export function AppLayoutSidebarDialog({
 	}, [closeMobileMenu]);
 
 	// Polyfill usage of `aria-modal`
-	const { modalContainerRef } = useAriaModalPolyfill(isMobileMenuOpen);
+	const { modalContainerRef } = useAriaModalPolyfill(
+		!isMounted ? false : isMobileMenuOpen
+	);
 
 	// Since react portals can not be rendered on the server and this component is always closed by default
 	// This component doesn't need to be server side rendered
-	if (!canUseDOM()) return null;
+	if (!isMounted || !canUseDOM()) return null;
 
 	const showDrawer = isMobileMenuOpen ? true : !closeTransitionEnded;
 
@@ -187,6 +193,7 @@ function CloseMenuButton({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+	const scaleIconCSS = scaleIconOnHover();
 	return (
 		<Flex
 			alignItems="center"
@@ -200,7 +207,13 @@ function CloseMenuButton({
 				as={BaseButton}
 				color="action"
 				css={{
+					svg: {
+						transition: scaleIconCSS.transition,
+					},
 					':focus': { outlineOffset: `-${packs.outline.outlineWidth}` },
+					':hover svg': {
+						transform: scaleIconCSS.transform,
+					},
 				}}
 				flexDirection="column"
 				focusRingFor="keyboard"

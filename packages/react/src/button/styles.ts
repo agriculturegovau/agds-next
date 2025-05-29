@@ -8,6 +8,7 @@ import {
 	print,
 	tokens,
 } from '../core';
+import { scaleIconOnHover } from '../icon/Icon';
 
 const variants = {
 	primary: {
@@ -134,6 +135,7 @@ function getBaseStyles({
 	size,
 	variant,
 }: BaseStylesArgs) {
+	const scaleIconCSS = scaleIconOnHover(size);
 	return {
 		appearance: 'none',
 		boxSizing: 'border-box',
@@ -153,14 +155,18 @@ function getBaseStyles({
 			width: '100%',
 		}),
 
-		'&:disabled': {
+		':disabled': {
 			cursor: 'not-allowed',
 			opacity: 0.3,
 		},
 
-		// Ensure button icons do not shrink
-		'& > svg': {
+		// Ensure button icons do not shrink and scale on hover
+		'> svg': {
 			flexShrink: 0,
+			transition: scaleIconCSS.transition,
+		},
+		':hover > svg': {
+			transform: scaleIconCSS.transform,
 		},
 
 		...focusStylesMap[focusRingFor],

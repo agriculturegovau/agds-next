@@ -1,13 +1,14 @@
-import { ElementType, PropsWithChildren } from 'react';
-import { LinkProps } from '../core';
+import { type ElementType, type PropsWithChildren } from 'react';
+import { BaseButton, type BaseButtonProps } from '../button';
+import { type LinkProps } from '../core';
 import { Flex } from '../flex';
-import { BaseButton, BaseButtonProps } from '../button';
 import {
 	ArrowDownIcon,
 	ArrowRightIcon,
 	ArrowLeftIcon,
 	ArrowUpIcon,
 } from '../icon';
+import { scaleIconOnHover } from '../icon/Icon';
 import { TextLink } from '../text-link';
 
 export type Direction = 'up' | 'right' | 'down' | 'left';
@@ -52,12 +53,21 @@ const BaseDirectionLink = ({
 }: BaseDirectionLinkProps) => {
 	const Icon = iconMap[direction];
 	const iconLeft = direction === 'left';
+	const scaleIconCSS = scaleIconOnHover('sm');
 	return (
 		<Flex
 			alignItems="center"
 			as={as}
 			className={className}
-			css={{ alignSelf: 'flex-start' }}
+			css={{
+				alignSelf: 'flex-start',
+				svg: {
+					transition: scaleIconCSS.transition,
+				},
+				':hover svg': {
+					transform: scaleIconCSS.transform,
+				},
+			}}
 			focusRingFor="keyboard"
 			fontFamily="body"
 			fontWeight="normal"

@@ -23,7 +23,7 @@ exports[`FilterSidebar renders correctly 1`] = `
         aria-controls="collapsing-side-bar-:r0:-body"
         aria-expanded="false"
         aria-label="Filters (1)"
-        class="css-1c4meu7-BaseButton-boxStyles-CollapsingSideBar"
+        class="css-1wqtlfl-BaseButton-boxStyles-CollapsingSideBar"
         type="button"
       >
         <span
@@ -40,7 +40,7 @@ exports[`FilterSidebar renders correctly 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            class="css-ln9yj9-CollapsingSideBar"
+            class="css-lewdp2-Icon"
             clip-rule="evenodd"
             fill-rule="evenodd"
             focusable="false"

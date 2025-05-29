@@ -5,9 +5,7 @@ import {
 	type ButtonSize,
 	type ButtonVariant,
 } from '../button';
-import { tokens } from '../core';
 import { FlagFilledIcon, FlagIcon, StarFilledIcon, StarIcon } from '../icon';
-import { iconSizes } from '../icon/Icon';
 
 export type ToggleButtonProps = Omit<
 	BaseButtonProps,
@@ -48,11 +46,6 @@ const iconTypeMap = {
 	},
 };
 
-const iconHoverSizeMap = {
-	sm: iconSizes.sm + 2 / 16,
-	md: iconSizes.md + 2 / 16,
-};
-
 export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 	function ToggleButton(
 		{
@@ -77,14 +70,6 @@ export const ToggleButton = forwardRef<HTMLButtonElement, ToggleButtonProps>(
 				{...props}
 				aria-label={hiddenLabel ? resolvedLabel : undefined}
 				aria-pressed={pressed}
-				css={{
-					svg: {
-						transition: `transform ${tokens.transition.duration}ms ${tokens.transition.timingFunction}`,
-					},
-					'&:hover svg': {
-						transform: `scale(${iconHoverSizeMap[size] / iconSizes[size]})`,
-					},
-				}}
 				iconBefore={pressed ? PressedIcon : DefaultIcon}
 				onClick={() => {
 					onClick(!pressed);

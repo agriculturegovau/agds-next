@@ -4,12 +4,12 @@ exports[`ToggleButton renders alternative icon and label when pressedLabel = tru
 <div>
   <button
     aria-pressed="true"
-    class="css-fq6zl2-BaseButton-ToggleButton"
+    class="css-wivgf-BaseButton-Button"
     type="button"
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -43,12 +43,12 @@ exports[`ToggleButton renders aria-label when hiddenLabel = true 1`] = `
   <button
     aria-label="Flag message"
     aria-pressed="false"
-    class="css-fq6zl2-BaseButton-ToggleButton"
+    class="css-wivgf-BaseButton-Button"
     type="button"
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"
@@ -70,12 +70,12 @@ exports[`ToggleButton renders correctly 1`] = `
 <div>
   <button
     aria-pressed="false"
-    class="css-fq6zl2-BaseButton-ToggleButton"
+    class="css-wivgf-BaseButton-Button"
     type="button"
   >
     <svg
       aria-hidden="true"
-      class="css-sbsftc-Button"
+      class="css-16yahzk-Button"
       clip-rule="evenodd"
       fill-rule="evenodd"
       focusable="false"

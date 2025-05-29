@@ -85,7 +85,7 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
           <button
             aria-describedby="field-:r9:-hint"
             aria-label="Select file, Upload file, (optional), 1 file selected"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r9:"
             type="button"
           >
@@ -166,12 +166,12 @@ exports[`FileUpload 1 selected file renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example.txt"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-wfexcw-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -290,7 +290,7 @@ exports[`FileUpload Basic renders correctly 1`] = `
           <button
             aria-describedby="field-:r1:-hint"
             aria-label="Select file, Upload file, (optional)"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r1:"
             type="button"
           >
@@ -396,8 +396,8 @@ exports[`FileUpload Existing files renders correctly 1`] = `
           </div>
           <button
             aria-describedby="field-:rd:-hint"
-            aria-label="Select file, Upload file, (optional), 2 files selected"
-            class="css-1qjel8e-BaseButton-Button"
+            aria-label="Select file, Upload file, (optional), 3 files selected"
+            class="css-agqaed-BaseButton-Button"
             id="field-:rd:"
             type="button"
           >
@@ -420,7 +420,7 @@ exports[`FileUpload Existing files renders correctly 1`] = `
         <span
           class="css-axuon-boxStyles"
         >
-          2 files selected
+          3 files selected
         </span>
         <ul
           aria-label="Existing files"
@@ -481,12 +481,12 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example.png"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-wfexcw-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -588,12 +588,119 @@ exports[`FileUpload Existing files renders correctly 1`] = `
             >
               <button
                 aria-label="Remove file: example-no-thumbnail.doc"
-                class="css-psfrx5-BaseButton-Button"
+                class="css-fbcxtb-BaseButton-Button"
                 type="button"
               >
                 <svg
                   aria-hidden="true"
-                  class="css-aw6h11-Button"
+                  class="css-wfexcw-Button"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 6 6 18M6 6l12 12"
+                  />
+                </svg>
+                <span>
+                  <span
+                    class="css-oobk4c-Button"
+                  >
+                    Remove
+                  </span>
+                  <span
+                    aria-live="assertive"
+                  />
+                </span>
+              </button>
+            </div>
+          </li>
+          <li
+            class="css-8coe2o-boxStyles"
+          >
+            <div
+              class="css-1jhrbpg-boxStyles"
+            >
+              <div
+                class="css-iineh1-boxStyles-FileUploadFileThumbnail"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-16t9tz1-Icon"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  focusable="false"
+                  height="24"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  />
+                  <path
+                    d="M13 2v7h7"
+                  />
+                </svg>
+              </div>
+              <div
+                class="css-w79ye0-boxStyles"
+              >
+                <div
+                  class="css-1ldvxqr-boxStyles"
+                >
+                  <svg
+                    aria-hidden="false"
+                    aria-label="Success"
+                    class="css-1qd7isr-FileUploadExistingFile"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    focusable="false"
+                    height="24"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11Zm5.707-13.293a1 1 0 0 0-1.414-1.414L10 14.586l-2.293-2.293a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l7-7Z"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="css-ayz5ov-boxStyles"
+                >
+                  <a
+                    class="css-4xsxs2-TextLink-FileUploadExistingFile"
+                    href="#"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    example-onclick.doc
+                     (654.32 kB)
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-jd5yi9-boxStyles"
+            >
+              <button
+                aria-label="Remove file: example-onclick.doc"
+                class="css-fbcxtb-BaseButton-Button"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="css-wfexcw-Button"
                   clip-rule="evenodd"
                   fill-rule="evenodd"
                   focusable="false"
@@ -732,7 +839,7 @@ exports[`FileUpload Multiple, maxSize and accepted file extensions renders corre
           <button
             aria-describedby="field-:r5:-hint :r4:-file-size-desc :r4:-accepted-files-desc"
             aria-label="Select files, Upload file, (optional)"
-            class="css-1qjel8e-BaseButton-Button"
+            class="css-agqaed-BaseButton-Button"
             id="field-:r5:"
             type="button"
           >

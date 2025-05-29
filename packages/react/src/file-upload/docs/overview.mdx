@@ -26,8 +26,8 @@ File upload is used in forms to enable users to upload files. Unlike [File input
 - specify accepted file types, maximum file size and whether the user can upload one file at a time or several at once
 - include hint text to provide more general information about the field/file
 - indicate file uploading state
-- Make use of the ‘instant upload’ pattern if your backend supports it
-- Consider the ‘simple download’ pattern for small screens
+- make use of the ‘instant upload’ pattern if your backend supports it
+- consider the ‘simple download’ pattern for small screens.
 
 <DontHeading />
 
@@ -180,7 +180,7 @@ Image files should be displayed with thumbnails which are 144px by 144px. Passin
 
 ```jsx live
 () => {
-	const [existingFiles, setExistingFiles] = useState([
+	const [existingFiles, setExistingFiles] = React.useState([
 		{
 			name: 'example.png',
 			size: 123456,
@@ -207,6 +207,14 @@ Image files should be displayed with thumbnails which are 144px by 144px. Passin
 			// Use the meta key to keep track of any extra file info
 			// This can be useful info when deleting the file
 			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+		},
+		{
+			name: 'example-onclick.html',
+			size: 123,
+			href: '/components/file-upload',
+			// This can be useful info when deleting the file
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+			onClick: () => alert('example-onclick.html clicked'),
 		},
 	]);
 

@@ -52,7 +52,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
       </div>
       <button
         aria-label="Close"
-        class="css-12jvszj-BaseButton-GlobalAlertCloseButton"
+        class="css-1oaw25b-BaseButton-GlobalAlertCloseButton"
         type="button"
       >
         <span>
@@ -67,7 +67,7 @@ exports[`GlobalAlert Dismissable renders correctly 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="css-sbsftc-Button"
+          class="css-16yahzk-Button"
           clip-rule="evenodd"
           fill-rule="evenodd"
           focusable="false"

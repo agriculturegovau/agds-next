@@ -101,6 +101,7 @@ export {
 	ChevronUpIcon,
 	ClockIcon,
 	CloseIcon,
+	CodeIcon,
 	CopyIcon,
 	CornerDownRightIcon,
 	DeleteIcon,

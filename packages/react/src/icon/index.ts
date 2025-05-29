@@ -30,6 +30,7 @@ export { ChevronsUpDownIcon } from './icons/ChevronsUpDownIcon';
 export { ChevronUpIcon } from './icons/ChevronUpIcon';
 export { ClockIcon } from './icons/ClockIcon';
 export { CloseIcon } from './icons/CloseIcon';
+export { CodeIcon } from './icons/CodeIcon';
 export { CopyIcon } from './icons/CopyIcon';
 export { CornerDownRightIcon } from './icons/CornerDownRightIcon';
 export { DeleteIcon } from './icons/DeleteIcon';

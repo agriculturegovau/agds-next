@@ -67,7 +67,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			<BaseButton css={styles} ref={ref} type={type} {...props}>
 				{IconBefore ? (
 					<IconBefore
-						css={{ flexShrink: 0 }}
+						css={{ flexShrink: 0, opacity: loading ? 0 : 1 }}
 						size={iconSize[size]}
 						weight="regular"
 					/>
@@ -84,7 +84,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				) : null}
 				{IconAfter ? (
 					<IconAfter
-						css={{ flexShrink: 0 }}
+						css={{ flexShrink: 0, opacity: loading ? 0 : 1 }}
 						size={iconSize[size]}
 						weight="regular"
 					/>

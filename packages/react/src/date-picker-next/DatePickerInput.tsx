@@ -112,13 +112,12 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
 								paddingRight: mapSpacing(1),
 							}}
 							disabled={disabled}
+							iconBefore={CalendarIcon}
 							onClick={buttonOnClick}
 							ref={buttonRef}
 							type="button"
 							variant="secondary"
-						>
-							<CalendarIcon css={{ display: 'block' }} size="md" />
-						</Button>
+						/>
 					</Flex>
 				)}
 			</Field>

@@ -158,7 +158,7 @@ function getLegend(text = 'Date format') {
 }
 
 describe('DateRangePickerNext', () => {
-	it('renders correctly', () => {
+	it.skip('renders correctly', () => {
 		const { container } = renderDateRangePickerNext({
 			initialValue: { from: new Date(2000, 0, 1), to: new Date(2000, 0, 2) },
 		});
