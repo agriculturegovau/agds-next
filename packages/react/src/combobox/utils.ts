@@ -1,5 +1,5 @@
 import { type CSSProperties, useMemo } from 'react';
-import { useId } from '../core';
+import { canUseDOM, useId } from '../core';
 
 export function useComboboxInputId(idProp?: string) {
 	const autoId = useId();
@@ -92,13 +92,16 @@ export function generateHighlightStyles(
 }
 
 export function useIsIos() {
-	const isIos = useMemo(
-		() =>
+	const isIos = useMemo(() => {
+		if (!canUseDOM()) return false;
+
+		return (
 			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
-			CSS.supports('-webkit-appearance', '-apple-pay-button') &&
-			CSS.supports('-webkit-overflow-scrolling', 'auto'),
-		[]
-	);
+			CSS &&
+			CSS?.supports('-webkit-appearance', '-apple-pay-button') &&
+			CSS?.supports('-webkit-overflow-scrolling', 'auto')
+		);
+	}, []);
 
 	return isIos;
 }

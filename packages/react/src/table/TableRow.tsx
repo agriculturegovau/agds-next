@@ -26,13 +26,14 @@ export function TableRow({
 	selected,
 }: TableRowProps) {
 	const { tableLayout } = useTableContext();
+	const isFixedTable = tableLayout === 'fixed';
 
 	function handleOnClick(event: React.MouseEvent<HTMLTableRowElement>) {
 		// Check if the the target has an interactive parent before running row onClick
 		const targetElement = event.target;
 		if (
 			(targetElement as HTMLElement).closest(
-				'a, button, input, select, textarea'
+				'a, button, input, label, select, textarea'
 			)
 		) {
 			return;
@@ -55,7 +56,7 @@ export function TableRow({
 					? backgroundColorMap[background]
 					: undefined,
 				...(selected && {
-					...(tableLayout === 'auto' && {
+					...(!isFixedTable && {
 						backgroundColor: boxPalette.selectedMuted,
 						position: 'relative',
 
@@ -82,7 +83,7 @@ export function TableRow({
 					}),
 				}),
 				...(onClick && {
-					...(tableLayout === 'auto' && {
+					...(!isFixedTable && {
 						position: 'relative',
 
 						'&:hover': {
@@ -114,7 +115,7 @@ export function TableRow({
 				...((selected || onClick) && {
 					// Chrome and Firefox doesn't support ::after elements in fixed table layouts
 					// FIXME Once Chrome Firefox fixes this issue, these alternative styles should be removed
-					...(tableLayout === 'fixed' && {
+					...(isFixedTable && {
 						...(selected && alternativeSelectedStyles),
 						...(onClick && alternativeHoverStyles),
 					}),
@@ -148,6 +149,7 @@ const alternativeSelectedStyles = {
 
 const alternativeHoverStyles = {
 	'&:hover': {
+		cursor: 'pointer',
 		outlineColor: boxPalette.selected,
 		outlineOffset: -tokens.borderWidth.lg,
 		outlineStyle: 'solid',

@@ -272,6 +272,15 @@ export const ExistingFiles: Story = {
 				size: 100000,
 			},
 			{
+				name: 'onclick.pdf',
+				size: 100000,
+				href: '#',
+				onClick: (event) => {
+					event.preventDefault();
+					console.log('Existing file clicked');
+				},
+			},
+			{
 				name: 'example.png',
 				size: 123456,
 				thumbnailSrc: 'https://placehold.co/144',
