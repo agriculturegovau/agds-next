@@ -55,7 +55,7 @@ export default function ResponsivePage() {
 				css={{
 					display: 'flex',
 					flexDirection: 'column',
-					height: ['100vh', '100svh'],
+					height: ['100vh', '100dvh'],
 					width: '100%',
 				}}
 			>
