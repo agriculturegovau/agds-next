@@ -1,20 +1,3 @@
-## Clear button and controlled input
-
-If the user clicks the ‘Clear search’ and you are **controlling the component using the props `value` and `onChange`**, a synthetic object is passed in the argument for an `onChange` event.
-
-The ‘Clear search’ function provides the target and some event attributes, but you cannot run any native event functions.
-
-```jsx
-const [value, setValue] = useState("Initial value");
-<SearchBoxInput
-    ...
-    onChange={(event) => setValue(event.target.value)}
-    value={value}
-/>
-```
-
-If you identify a use case that requires require the `ChangeEvent` properties that have not been provided by the ‘Clear search’ button, [please contact the Design System team](/about#connect-with-us).
-
 ## Props
 
 <ComponentPropsTable name="SearchBox" />

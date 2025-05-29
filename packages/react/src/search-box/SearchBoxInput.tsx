@@ -1,14 +1,14 @@
 import {
 	forwardRef,
-	type ChangeEvent,
-	type InputHTMLAttributes,
 	useRef,
 	useState,
+	type ChangeEvent,
+	type InputHTMLAttributes,
 } from 'react';
-import { textInputStyles } from '../text-input';
-import { Stack } from '../stack';
 import { globalPalette, mergeRefs, useId } from '../core';
-import { SearchBoxClearButton } from './SearchBoxClearButton';
+import { SearchInputClearButton } from '../search-input/SearchInputClearButton';
+import { Stack } from '../stack';
+import { textInputStyles } from '../text-input';
 import { SearchBoxLabel } from './SearchBoxLabel';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -58,6 +58,8 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 		// Clears the input while also triggering the `onChange` event to consumers
 		const clearInput = () => {
 			if (!internalRef.current) return;
+			// Workaround to setting the value and trigger an `onChange` event
+			// See: https://stackoverflow.com/a/46012210
 			const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
 				window.HTMLInputElement.prototype,
 				'value'
@@ -85,7 +87,9 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 					value={value}
 					{...props}
 				/>
-				{showClearButton ? <SearchBoxClearButton onClick={clearInput} /> : null}
+				{showClearButton ? (
+					<SearchInputClearButton onClick={clearInput} palette="light" />
+				) : null}
 			</Stack>
 		);
 	}

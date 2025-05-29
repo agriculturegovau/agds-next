@@ -5,11 +5,11 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { Field } from '../field';
 import { mergeRefs, type FieldMaxWidth } from '../core';
+import { Field } from '../field';
 import { textInputStyles } from '../text-input';
-import { SearchInputContainer } from './SearchInputContainer';
 import { SearchInputClearButton } from './SearchInputClearButton';
+import { SearchInputContainer } from './SearchInputContainer';
 import { SearchInputIcon } from './SearchInputIcon';
 
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;

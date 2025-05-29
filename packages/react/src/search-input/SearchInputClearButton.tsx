@@ -1,11 +1,12 @@
-import { MouseEventHandler } from 'react';
-import { CloseIcon } from '../icon';
+import { type MouseEventHandler } from 'react';
+import { boxPalette, mapSpacing, tokens, type BoxPalette } from '../core';
 import { Flex } from '../flex';
-import { boxPalette, mapSpacing, tokens } from '../core';
+import { CloseIcon } from '../icon';
 
 export type SearchInputClearButtonProps = {
 	disabled?: boolean;
 	onClick: MouseEventHandler<HTMLDivElement>;
+	palette?: BoxPalette;
 };
 
 // This component renders a `div` element and not a `button`
@@ -15,6 +16,7 @@ export type SearchInputClearButtonProps = {
 export function SearchInputClearButton({
 	disabled,
 	onClick,
+	palette,
 }: SearchInputClearButtonProps) {
 	return (
 		<Flex
@@ -35,6 +37,7 @@ export function SearchInputClearButton({
 			onClick={onClick}
 			role="button"
 			width="2rem"
+			{...(palette && { [palette]: true })}
 		>
 			<CloseIcon color="inherit" />
 		</Flex>
