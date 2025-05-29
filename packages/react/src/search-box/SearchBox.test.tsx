@@ -113,6 +113,20 @@ describe('SearchBox', () => {
 		expect(searchInputElement.getAttribute('value')).toBe('Orange');
 	});
 
+	it('applies the default value to the input when the prop `defaultValue` is provided', () => {
+		const defaultValue = 'Orange';
+		renderSearchBox({
+			searchBoxInputProps: {
+				defaultValue,
+				label: searchInputLabel,
+			},
+		});
+
+		const searchInputElement = screen.getByLabelText(searchInputLabel);
+		expect(searchInputElement).toBeInTheDocument();
+		expect(searchInputElement.getAttribute('value')).toBe(defaultValue);
+	});
+
 	describe('SearchBoxInput clear button', () => {
 		it('does not render a "clear input" button when the value is not truthy and string', () => {
 			renderSearchBox({

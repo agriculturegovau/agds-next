@@ -1,12 +1,12 @@
 import {
 	forwardRef,
-	InputHTMLAttributes,
-	KeyboardEvent,
+	type InputHTMLAttributes,
+	type KeyboardEvent,
 	useRef,
 	useState,
 } from 'react';
 import { Field } from '../field';
-import { FieldMaxWidth, mergeRefs } from '../core';
+import { mergeRefs, type FieldMaxWidth } from '../core';
 import { textInputStyles } from '../text-input';
 import { SearchInputContainer } from './SearchInputContainer';
 import { SearchInputClearButton } from './SearchInputClearButton';
@@ -16,6 +16,7 @@ type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseSearchInputProps = {
 	autoFocus?: NativeInputProps['autoFocus'];
+	defaultValue?: NativeInputProps['defaultValue'];
 	disabled?: NativeInputProps['disabled'];
 	id?: NativeInputProps['id'];
 	name?: NativeInputProps['name'];
@@ -28,48 +29,51 @@ type BaseSearchInputProps = {
 export type SearchInputMaxWidth = Extract<FieldMaxWidth, 'md' | 'lg' | 'xl'>;
 
 export type SearchInputProps = BaseSearchInputProps & {
-	/** Describes the purpose of the field. */
-	label: string;
-	/** If true, "(optional)" will never be appended to the label. */
-	hideOptionalLabel?: boolean;
-	/** If false, "(optional)" will be appended to the label. */
-	required?: boolean;
-	/** Provides extra information about the field. */
-	hint?: string;
-	/** Message to show when the field is invalid. */
-	message?: string;
-	/** If true, the invalid state will be rendered. */
-	invalid?: boolean;
 	/** If true, the field will stretch to the fill the width of its container. */
 	block?: boolean;
+	/** If true, "(optional)" will never be appended to the label. */
+	hideOptionalLabel?: boolean;
+	/** Provides extra information about the field. */
+	hint?: string;
+	/** If true, the invalid state will be rendered. */
+	invalid?: boolean;
+	/** Describes the purpose of the field. */
+	label: string;
 	/** The maximum width of the field. */
 	maxWidth?: SearchInputMaxWidth;
+	/** Message to show when the field is invalid. */
+	message?: string;
 	/** Function to be called when the input is cleared. */
 	onClear?: () => void;
+	/** If false, "(optional)" will be appended to the label. */
+	required?: boolean;
 };
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 	function SearchInput(
 		{
-			label,
-			hideOptionalLabel,
-			required,
-			hint,
-			message,
-			invalid,
 			block,
-			maxWidth: maxWidthProp = 'md',
-			id,
+			defaultValue,
 			disabled,
-			value: valueProp,
+			hideOptionalLabel,
+			hint,
+			id,
+			invalid,
+			label,
+			maxWidth: maxWidthProp = 'md',
+			message,
 			onChange: onChangeProp,
 			onClear,
+			required,
+			value: valueProp,
 			...props
 		},
 		forwardedRef
 	) {
 		const internalRef = useRef<HTMLInputElement>(null);
-		const [internalValue, setInternalValue] = useState(valueProp || '');
+		const [internalValue, setInternalValue] = useState(
+			valueProp || defaultValue || ''
+		);
 
 		const value = typeof valueProp === 'string' ? valueProp : internalValue;
 

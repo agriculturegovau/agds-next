@@ -14,6 +14,7 @@ import { SearchBoxLabel } from './SearchBoxLabel';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type BaseSearchBoxInputProps = {
+	defaultValue?: NativeInputProps['defaultValue'];
 	id?: NativeInputProps['id'];
 	name?: NativeInputProps['name'];
 	onBlur?: NativeInputProps['onBlur'];
@@ -31,6 +32,7 @@ export type SearchBoxInputProps = BaseSearchBoxInputProps & {
 export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 	function SearchBoxInput(
 		{
+			defaultValue,
 			id,
 			label = 'Search',
 			labelVisible = false,
@@ -41,7 +43,9 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 		ref
 	) {
 		const internalRef = useRef<HTMLInputElement>(null);
-		const [internalValue, setInternalValue] = useState(valueProp || '');
+		const [internalValue, setInternalValue] = useState(
+			valueProp || defaultValue || ''
+		);
 
 		const value = typeof valueProp === 'string' ? valueProp : internalValue;
 		const showClearButton = Boolean(value);
