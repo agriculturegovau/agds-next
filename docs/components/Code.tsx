@@ -81,13 +81,19 @@ export const PlaceholderPictogram = () => (
 );
 
 // Checks if the code requires React support or is JSX
-function checkAndModifyCode(code: string) {
-	return code.startsWith('<')
-		? code
-		: `<Render>\n    {${code
-				.slice(0, -1)
-				.split('\n')
-				.join('\n    ')}}\n</Render>`;
+function checkAndModifyCode(liveCode: string) {
+	// Wrap `/* ... */` comments with brackets `{ .. }`
+	let code = liveCode.replaceAll(multiLineCommentRegex, '{$&}');
+	// No formatting required for JSX only
+	if (code.startsWith('<') || code.endsWith('>')) return code;
+
+	// Remove `;` from the end of `() => {};`
+	if (code.endsWith(';')) {
+		code = code.slice(0, -1);
+	}
+
+	const formattedCode = code.split('\n').join('\n    ');
+	return `<Render>\n    {${formattedCode}}\n</Render>`;
 }
 
 export const responsivePreviewQueryKeys = {
@@ -196,20 +202,7 @@ function LiveCode({
 		[liveOnChange]
 	);
 
-	const codeUrl = useCallback(() => {
-		// Wrap `/* ... */` comments with brackets `{ .. }`
-		let code = live.code.replaceAll(multiLineCommentRegex, '{$&}');
-		// No formatting required for JSX only
-		if (code.startsWith('<') || code.endsWith('>')) return code;
-
-		// Remove `;` from the end of `() => {};`
-		if (code.endsWith(';')) {
-			code = code.slice(0, -1);
-		}
-
-		const formattedCode = code.split('\n').join('\n    ');
-		return `<Render>\n    {${formattedCode}}\n</Render>`;
-	}, [live.code]);
+	const codeUrl = useCallback(() => checkAndModifyCode(live.code), [live.code]);
 
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
