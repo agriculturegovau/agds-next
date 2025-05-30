@@ -35,9 +35,9 @@ export function SearchInputClearButton({
 			height="2rem"
 			justifyContent="center"
 			onClick={onClick}
+			palette={palette}
 			role="button"
 			width="2rem"
-			palette={palette}
 		>
 			<CloseIcon color="inherit" />
 		</Flex>

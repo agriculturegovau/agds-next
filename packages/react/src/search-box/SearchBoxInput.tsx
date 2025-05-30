@@ -1,9 +1,9 @@
 import {
 	forwardRef,
-	useRef,
-	useState,
 	type ChangeEvent,
 	type InputHTMLAttributes,
+	useRef,
+	useState,
 } from 'react';
 import { globalPalette, mergeRefs, useId } from '../core';
 import { SearchInputClearButton } from '../search-input/SearchInputClearButton';
