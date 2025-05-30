@@ -1,3 +1,4 @@
+'use client';
 /**
  * This file use to just be a simple re-export of `useId` from @reach/auto-id
  * We can not just use `useId` from React as we need to provide support for React 16, 17 and 18

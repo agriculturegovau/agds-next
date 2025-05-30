@@ -1,3 +1,4 @@
+'use client';
 import { css } from '@emotion/react';
 import { RefObject, useEffect, useState } from 'react';
 import { themeVars } from './theme';

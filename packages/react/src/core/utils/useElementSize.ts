@@ -1,3 +1,4 @@
+'use client';
 import { RefObject, useCallback, useEffect, useState } from 'react';
 
 export function useElementSize<T extends HTMLElement = HTMLDivElement>(
