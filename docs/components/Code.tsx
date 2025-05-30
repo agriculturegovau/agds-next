@@ -1,18 +1,21 @@
+import { usePathname } from 'next/navigation';
+import copy from 'clipboard-copy';
+import { createPreviewUrl, createUrl } from 'playroom/utils';
+import { Highlight, Prism } from 'prism-react-renderer';
 import React, {
-	ReactNode,
-	useState,
-	useCallback,
 	Fragment,
-	useRef,
-	KeyboardEvent,
+	type KeyboardEvent,
+	type ReactNode,
+	useCallback,
 	useContext,
 	useEffect,
+	useRef,
+	useState,
 } from 'react';
-import { LiveProvider, LiveEditor, LivePreview, LiveContext } from 'react-live';
-import { createUrl } from 'playroom/utils';
-import { Highlight, Prism } from 'prism-react-renderer';
-import copy from 'clipboard-copy';
+import { LiveContext, LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
+import { Box } from '@ag.ds-next/react/box';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
 import { CardHeader } from '@ag.ds-next/react/card';
 import {
 	globalPalette,
@@ -22,19 +25,19 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { Box } from '@ag.ds-next/react/box';
+import { ChevronRightIcon } from '@ag.ds-next/react/icon';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import {
-	unsetProseStylesClassname,
-	proseBlockClassname,
-} from '@ag.ds-next/react/prose';
-import { Button, ButtonLink } from '@ag.ds-next/react/button';
-import {
-	CopyIcon,
 	ChevronDownIcon,
 	ChevronUpIcon,
+	CopyIcon,
 } from '@ag.ds-next/react/icon';
+import {
+	proseBlockClassname,
+	unsetProseStylesClassname,
+} from '@ag.ds-next/react/prose';
+import { TextLink } from '@ag.ds-next/react/text-link';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
@@ -77,16 +80,110 @@ export const PlaceholderPictogram = () => (
 	</svg>
 );
 
+// Checks if the code requires React support or is JSX
+function checkAndModifyCode(liveCode: string) {
+	// Wrap `/* ... */` comments with brackets `{ .. }`
+	let code = liveCode.replaceAll(multiLineCommentRegex, '{$&}');
+	// No formatting required for JSX only
+	if (code.startsWith('<') || code.endsWith('>')) return code;
+
+	// Remove `;` from the end of `() => {};`
+	if (code.endsWith(';')) {
+		code = code.slice(0, -1);
+	}
+
+	const formattedCode = code.split('\n').join('\n    ');
+	return `<Render>\n    {${formattedCode}}\n</Render>`;
+}
+
+export const responsivePreviewQueryKeys = {
+	disablePadding: 'disable-padding',
+	frameSrc: 'frame-src',
+	playroomSrc: 'playroom-code',
+	returnLink: 'return',
+	title: 'title',
+};
+
+export function ResponsivePreviewLink({
+	children,
+	code,
+	frameAddress,
+	padding = true,
+	standalone = false,
+	title,
+}: {
+	children: React.ReactNode;
+	code?: string;
+	frameAddress?: string;
+	padding?: boolean;
+	standalone?: boolean;
+	title: string;
+}) {
+	const urlParams = new URLSearchParams();
+
+	if (title) urlParams.append(responsivePreviewQueryKeys.title, title);
+
+	if (frameAddress)
+		urlParams.append(responsivePreviewQueryKeys.frameSrc, frameAddress);
+	if (code) {
+		const playroomPreviewUrl = createPreviewUrl({
+			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+			code: checkAndModifyCode(code),
+		});
+		urlParams.append(
+			responsivePreviewQueryKeys.playroomSrc,
+			playroomPreviewUrl
+		);
+	}
+
+	if (padding)
+		urlParams.append(responsivePreviewQueryKeys.disablePadding, 'true');
+
+	const pathname = usePathname();
+	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);
+
+	const href = `/preview/responsive?${urlParams.toString()}`;
+
+	// As link without code
+	if (standalone) {
+		return (
+			<Box css={{ marginTop: '1.5rem' }}>
+				<TextLink href={href}>
+					<Heading
+						alignItems="center"
+						as="span"
+						color="inherit"
+						gap={0.25}
+						type="h3"
+					>
+						{children}
+					</Heading>
+					<ChevronRightIcon css={{ verticalAlign: 'text-bottom' }} />
+				</TextLink>
+			</Box>
+		);
+	}
+
+	// Inline with code actions
+	return (
+		<ButtonLink href={href} size="sm" variant="tertiary">
+			{children}
+		</ButtonLink>
+	);
+}
+
 function LiveCode({
 	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive preview',
 }: {
 	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -111,20 +208,7 @@ function LiveCode({
 		[liveOnChange]
 	);
 
-	const codeUrl = useCallback(() => {
-		// Wrap `/* ... */` comments with brackets `{ .. }`
-		let code = live.code.replaceAll(multiLineCommentRegex, '{$&}');
-		// No formatting required for JSX only
-		if (code.startsWith('<') || code.endsWith('>')) return code;
-
-		// Remove `;` from the end of `() => {};`
-		if (code.endsWith(';')) {
-			code = code.slice(0, -1);
-		}
-
-		const formattedCode = code.split('\n').join('\n    ');
-		return `<Render>\n    {${formattedCode}}\n</Render>`;
-	}, [live.code]);
+	const codeUrl = useCallback(() => checkAndModifyCode(live.code), [live.code]);
 
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
@@ -209,6 +293,12 @@ function LiveCode({
 					Open in Playroom
 					<ExternalLinkCallout />
 				</ButtonLink>
+				<ResponsivePreviewLink
+					code={live.code}
+					title={responsivePreviewHeading}
+				>
+					Preview responsive component
+				</ResponsivePreviewLink>
 			</Flex>
 			<Box
 				css={packs.print.visible}
@@ -335,7 +425,38 @@ type CodeProps = {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
 };
+
+const removePath = [
+	'/components/',
+	'/content/',
+	'/foundations/',
+	'/guides/',
+	'/patterns/',
+	'/templates/',
+];
+
+function createTitleFromPathname(pathname: string) {
+	// Remove known path prefixing
+	const title = removePath.reduce((acc, str) => {
+		if (acc.startsWith(str)) {
+			return acc.replace(str, '');
+		}
+		return acc;
+	}, pathname);
+
+	return title
+		.split('/') // Nested paths
+		.map((str) => {
+			// Remove `-` from file names
+			const newStr = str.replaceAll('-', ' ');
+
+			// Capitalise first letter
+			return newStr.charAt(0).toUpperCase() + newStr.slice(1);
+		})
+		.join(': ');
+}
 
 export function Code({
 	children,
@@ -345,11 +466,24 @@ export function Code({
 	className,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	responsivePreviewHeading,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
+	const pathname = usePathname();
 
 	if (!childrenAsString) return null;
+
+	const title = responsivePreviewHeading || createTitleFromPathname(pathname);
+
+	// Standalone link
+	if (responsivePreviewHeading && !live) {
+		return (
+			<ResponsivePreviewLink code={childrenAsString} standalone title={title}>
+				{responsivePreviewHeading}
+			</ResponsivePreviewLink>
+		);
+	}
 
 	if (live) {
 		return (
@@ -362,6 +496,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					responsivePreviewHeading={title}
 					showCode={showCode}
 				/>
 			</LiveProvider>

@@ -1,21 +1,21 @@
 import {
-	Fragment,
 	Children,
+	Fragment,
 	isValidElement,
-	HTMLAttributes,
-	AnchorHTMLAttributes,
-	ImgHTMLAttributes,
-	ReactNode,
-	PropsWithChildren,
+	type AnchorHTMLAttributes,
+	type HTMLAttributes,
+	type ImgHTMLAttributes,
+	type PropsWithChildren,
+	type ReactNode,
 } from 'react';
-import type { MDXRemoteProps } from 'next-mdx-remote';
+import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	PageAlert,
-	PageAlertProps,
 	PageAlertTitle,
+	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
@@ -45,10 +45,10 @@ import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
-import { Code } from './Code';
+import { AllIconsPlayground } from './AllIconsPlayground';
+import { Code, ResponsivePreviewLink } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
-import { AllIconsPlayground } from './AllIconsPlayground';
 import {
 	BreakpointsTokenChart,
 	SpacingTokenChart,
@@ -65,17 +65,19 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		live,
-		showCode,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		live,
+		responsivePreviewHeading,
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
-		live?: boolean;
-		showCode?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		live?: boolean;
+		responsivePreviewHeading?: string;
+		showCode?: boolean;
 	}) => {
 		return (
 			<Fragment>
@@ -88,6 +90,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							exampleContentHeadingType={exampleContentHeadingType}
 							key={element.key}
 							live={live}
+							responsivePreviewHeading={responsivePreviewHeading}
 							showCode={showCode}
 							{...element.props}
 						/>
@@ -260,5 +263,18 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 				</Stack>
 			</Callout>
 		</div>
+	),
+	ResponsivePreview: ({
+		href,
+		label,
+		title,
+	}: {
+		href: string;
+		label: string;
+		title: string;
+	}) => (
+		<ResponsivePreviewLink frameAddress={href} standalone title={title}>
+			{label}
+		</ResponsivePreviewLink>
 	),
 };
