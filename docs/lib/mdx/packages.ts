@@ -38,9 +38,14 @@ async function getPkgSubNavItems(slug: string) {
 		const meta = pkgNavMetaData(slug, data);
 		return [
 			{
-				label: 'Overview',
+				label: 'Usage',
 				href: `/components/${meta.slug}`,
 				path: pkgReadmePath(slug),
+			},
+			{
+				label: 'Props',
+				href: `/components/${meta.slug}/code`,
+				path: `${pkgDocsPath(slug)}/code.mdx`,
 			},
 			{
 				label: 'Rationale',
@@ -51,11 +56,6 @@ async function getPkgSubNavItems(slug: string) {
 				label: 'Content',
 				href: `/components/${meta.slug}/content`,
 				path: `${pkgDocsPath(slug)}/content.mdx`,
-			},
-			{
-				label: 'Code',
-				href: `/components/${meta.slug}/code`,
-				path: `${pkgDocsPath(slug)}/code.mdx`,
 			},
 			{
 				label: 'Accessibility',

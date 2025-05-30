@@ -43,6 +43,7 @@ export default function Packages({
 					/>
 				) : null}
 				<Prose id="pkg-content">
+					<h2 id="overview">Overview</h2>
 					<MDXRemote {...source} components={mdxComponents} />
 					{relatedComponents?.length ? (
 						<Fragment>
@@ -137,7 +138,16 @@ export const getStaticProps: GetStaticProps<
 			pkg,
 			navLinks,
 			breadcrumbs,
-			toc,
+			toc: [
+				{
+					title: 'Overview',
+					slug: 'overview',
+					id: 'overview',
+					level: 2,
+					items: [],
+				},
+				...toc,
+			],
 			source: pkgContent.source,
 			relatedPatterns,
 			relatedComponents,
