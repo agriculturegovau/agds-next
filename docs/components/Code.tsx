@@ -97,22 +97,25 @@ function checkAndModifyCode(liveCode: string) {
 }
 
 export const responsivePreviewQueryKeys = {
-	title: 'title',
+	disablePadding: 'disable-padding',
 	frameSrc: 'frame-src',
 	playroomSrc: 'playroom-code',
 	returnLink: 'return',
+	title: 'title',
 };
 
 export function ResponsivePreviewLink({
 	children,
 	code,
 	frameAddress,
+	padding = true,
 	standalone = false,
 	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
 	frameAddress?: string;
+	padding?: boolean;
 	standalone?: boolean;
 	title: string;
 }) {
@@ -132,6 +135,9 @@ export function ResponsivePreviewLink({
 			playroomPreviewUrl
 		);
 	}
+
+	if (padding)
+		urlParams.append(responsivePreviewQueryKeys.disablePadding, 'true');
 
 	const pathname = usePathname();
 	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);
@@ -422,6 +428,36 @@ type CodeProps = {
 	responsivePreviewHeading?: string;
 };
 
+const removePath = [
+	'/components/',
+	'/content/',
+	'/foundations/',
+	'/guides/',
+	'/patterns/',
+	'/templates/',
+];
+
+function createTitleFromPathname(pathname: string) {
+	// Remove known path prefixing
+	const title = removePath.reduce((acc, str) => {
+		if (acc.startsWith(str)) {
+			return acc.replace(str, '');
+		}
+		return acc;
+	}, pathname);
+
+	return title
+		.split('/') // Nested paths
+		.map((str) => {
+			// Remove `-` from file names
+			const newStr = str.replaceAll('-', ' ');
+
+			// Capitalise first letter
+			return newStr.charAt(0).toUpperCase() + newStr.slice(1);
+		})
+		.join(': ');
+}
+
 export function Code({
 	children,
 	live,
@@ -434,17 +470,16 @@ export function Code({
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
+	const pathname = usePathname();
 
 	if (!childrenAsString) return null;
+
+	const title = responsivePreviewHeading || createTitleFromPathname(pathname);
 
 	// Standalone link
 	if (responsivePreviewHeading && !live) {
 		return (
-			<ResponsivePreviewLink
-				code={childrenAsString}
-				standalone
-				title={responsivePreviewHeading}
-			>
+			<ResponsivePreviewLink code={childrenAsString} standalone title={title}>
 				{responsivePreviewHeading}
 			</ResponsivePreviewLink>
 		);
@@ -461,7 +496,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
-					responsivePreviewHeading={responsivePreviewHeading}
+					responsivePreviewHeading={title}
 					showCode={showCode}
 				/>
 			</LiveProvider>

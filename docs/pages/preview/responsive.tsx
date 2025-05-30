@@ -9,6 +9,7 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/Code';
+import { boxPalette } from '@ag.ds-next/react/core';
 
 const sizes = {
 	mobile: {
@@ -35,11 +36,15 @@ export default function ResponsivePage() {
 	const searchParams = useSearchParams();
 	const returnLink =
 		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
-	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
-	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
+	const disablePadding = Boolean(
+		searchParams.get(responsivePreviewQueryKeys.disablePadding)
+	);
+	console.log(searchParams.get(responsivePreviewQueryKeys.disablePadding));
 
+	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
+	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
 	const iFrameSrc = frameSrc || playroomSrc;
 
 	const handlerForKey = useCallback(
@@ -63,7 +68,6 @@ export default function ResponsivePage() {
 					alignItems={{ xs: 'flex-start', md: 'center' }}
 					as="header"
 					background="shade"
-					dark
 					flexDirection={{ xs: 'column', md: 'row' }}
 					gap={1}
 					justifyContent="space-between"
@@ -72,7 +76,6 @@ export default function ResponsivePage() {
 				>
 					<Flex
 						alignItems={{ xs: 'start', xl: 'center' }}
-						dark
 						display="flex"
 						flexDirection={{
 							xs: 'column',
@@ -85,13 +88,13 @@ export default function ResponsivePage() {
 							iconBefore={ArrowLeftIcon}
 							variant="text"
 						>
-							Back to documentation
+							Back
 						</ButtonLink>
-						<Heading as="h1" fontSize="xl">
+						<Heading as="h1" fontSize="md">
 							{title}
 						</Heading>
 					</Flex>
-					<ControlGroup label="Preview" required>
+					<ControlGroup label="Preview size" required>
 						{(Object.keys(sizes) as Array<Sizes>).map((key) => {
 							const { label } = sizes[key];
 							return (
@@ -110,24 +113,37 @@ export default function ResponsivePage() {
 				<Box as="main" background="bodyAlt" flexGrow={1}>
 					<div
 						css={{
-							overflowX: 'auto',
 							height: '100%',
 							margin: '0 min(auto, 0.75rem)',
+							overflowX: 'auto',
 						}}
 					>
-						{iFrameSrc && (
-							<iframe
-								css={{
-									border: 0,
-									display: 'block',
-									height: '100%',
-									margin: '0 auto',
-									width: sizes[frameSize].width,
-								}}
-								src={iFrameSrc}
-								title={`Framed content, ${title}`}
-							></iframe>
-						)}
+						<div
+							css={{
+								backgroundColor: boxPalette.backgroundBody,
+								display: 'block',
+								height: 'calc(100% - 1rem)',
+								margin: '0 auto',
+								padding: disablePadding ? 0 : '1rem 1rem 0 1rem',
+								width: 'fit-content',
+							}}
+						>
+							{iFrameSrc ? (
+								<iframe
+									css={{
+										border: 0,
+										// display: 'block',
+										height: '100%',
+										// margin: '0 auto',
+										width: sizes[frameSize].width,
+									}}
+									src={iFrameSrc}
+									title={`Framed content, ${title}`}
+								></iframe>
+							) : (
+								<p>FAIL CASE ERROR</p>
+							)}
+						</div>
 					</div>
 				</Box>
 			</div>
