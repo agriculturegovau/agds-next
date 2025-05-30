@@ -172,7 +172,7 @@ In this example, the file is instantly uploaded to a file hosting service, and t
 
 You can display a list of files that have already been uploaded by using the `existingFiles` and `onRemoveExistingFile` props.
 
-Unlike the `value` prop, which expects an array of `File` objects, `existingFiles` expects an array of objects with a name, size and thumbnail url.
+Unlike the `value` prop, which expects an array of `File` objects, `existingFiles` expects an array of objects with a name, size and optional thumbnail url and other properties.
 
 If a user attempts to delete an existing file, a destructive confirmation modal should be displayed. If confirmed, the file should be deleted on the server.
 
