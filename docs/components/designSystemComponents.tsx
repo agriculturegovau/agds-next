@@ -165,6 +165,7 @@ export {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	YouTubeIcon,
 	ZoomInIcon,
 	ZoomOutIcon,
 } from '@ag.ds-next/react/icon';

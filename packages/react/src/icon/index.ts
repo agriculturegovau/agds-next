@@ -97,5 +97,6 @@ export { WarningFilledIcon } from './icons/WarningFilledIcon';
 export { WarningIcon } from './icons/WarningIcon';
 export { WebsiteIcon } from './icons/WebsiteIcon';
 export { XIcon } from './icons/XIcon';
+export { YouTubeIcon } from './icons/YouTubeIcon';
 export { ZoomInIcon } from './icons/ZoomInIcon';
 export { ZoomOutIcon } from './icons/ZoomOutIcon';

@@ -90,6 +90,7 @@ import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
 import { XIcon } from './icons/XIcon';
+import { YouTubeIcon } from './icons/YouTubeIcon';
 import { ZoomInIcon } from './icons/ZoomInIcon';
 import { ZoomOutIcon } from './icons/ZoomOutIcon';
 
@@ -186,6 +187,7 @@ export const allIcons = {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	YouTubeIcon,
 	ZoomInIcon,
 	ZoomOutIcon,
 };
