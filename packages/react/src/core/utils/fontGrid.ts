@@ -1,4 +1,3 @@
-'use client';
 import { CSSObject } from '@emotion/react';
 import { FontSize, tokens, LineHeight } from '../tokens';
 
