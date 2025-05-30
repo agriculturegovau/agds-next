@@ -1,3 +1,4 @@
+'use client';
 import { ForwardedRef, useEffect, useRef } from 'react';
 
 export type UseFocusParams<T> = {
