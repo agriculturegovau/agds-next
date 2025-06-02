@@ -1,0 +1,90 @@
+---
+date: 3rd June 2025
+title: AgDS Beta v1.29.0 release
+description: Fixes various hydration issues and improves consumption when using Next.js’ App Router, improves clickable table rows, adds a new YouTube icon, plus various bug fixes and improvements.
+---
+
+## Updates
+
+### [App layout](/components/app-layout)
+
+- `AppLayoutSidebar` - Fix hydration mismatch warning when using Next.js’ App Router.
+
+### [Avatar](/components/avatar)
+
+- Fix live code examples when opened in Playroom.
+
+### [Callout](/components/callout)
+
+- Fix live code examples when opened in Playroom.
+
+### [Cards](/components/cards)
+
+- Fix live code examples when opened in Playroom.
+
+### [Combobox](/components/combobox)
+
+- Prevent `useIsIos` from attempting to run on the server.
+
+### [Control group](/components/control-group)
+
+- Fix broken link in docs.
+
+### [Core](/components/core)
+
+- Selectively apply the `'use-client'` directive to only the files that need it.
+
+### [Drawer](/components/drawer)
+
+- Fix hydration mismatch warning when using Next.js’ App Router.
+
+### [Dropdown menu](/components/dropdown-menu)
+
+- Fix live code examples when opened in Playroom.
+
+### [File upload](/components/file-upload)
+
+- Add `onClick` support to `ExistingFile`s.
+- Fix live code examples when opened in Playroom.
+
+### [Filter sidebar](/components/filter-sidebar)
+
+- Fix live code examples when opened in Playroom.
+
+### [Icon](/components/icon)
+
+- Add new `YouTubeIcon`.
+
+### [Search input](/components/search-input)
+
+- Add `defaultValue` support to `SearchInput`.
+- Fix links to components and patterns in docs.
+
+### [Section alert](/components/section-alert)
+
+- Fix live code examples when opened in Playroom.
+
+### [Side nav](/components/side-nav)
+
+- Fix live code examples when opened in Playroom.
+
+### [Table](/components/table)
+
+- Update `TableRow`’s `onClick` to disable firing the row function when clicking on a label element.
+- Add `pointer` cursor for clickable rows in fixed tables.
+- Fix `TableRow`’s `selected` and hover styles not getting applied when an incorrect `tableLayout` is set.
+
+### Build
+
+- Remove `sharp` and `puppeteer` dependencies.
+- Update node version to 22.15.1.
+
+## Released packages
+
+```sh
+"@ag.ds-next/react": "1.29.0"
+```
+
+## Full changelog
+
+Aside from the complete release notes on the @ag.ds-next website, you can also view the verbose change log in the [related PR](https://github.com/agriculturegovau/agds-next/pull/2044) for this release.
