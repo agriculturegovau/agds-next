@@ -41,6 +41,7 @@ import { TextLink } from '@ag.ds-next/react/text-link';
 import { withBasePath } from '../lib/img';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
+import useGetScrollbarWidth from './_PagePreviewFrame';
 
 // Find multi-line comments at start `/** ... */`
 const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
@@ -80,6 +81,20 @@ export const PlaceholderPictogram = () => (
 	</svg>
 );
 
+function CodeHeading({
+	exampleContentHeadingType,
+	children,
+}: {
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	children: React.ReactNode;
+}) {
+	return (
+		<CardHeader>
+			<Heading type={exampleContentHeadingType}>{children}</Heading>
+		</CardHeader>
+	);
+}
+
 // Checks if the code requires React support or is JSX
 function checkAndModifyCode(liveCode: string) {
 	// Wrap `/* ... */` comments with brackets `{ .. }`
@@ -96,6 +111,37 @@ function checkAndModifyCode(liveCode: string) {
 	return `<Render>\n    {${formattedCode}}\n</Render>`;
 }
 
+const removePath = [
+	'/components/',
+	'/content/',
+	'/foundations/',
+	'/guides/',
+	'/patterns/',
+	'/templates/',
+];
+
+function createTitleFromPathname(pathname: string) {
+	// Remove known path prefixing
+	const title = removePath.reduce((acc, str) => {
+		if (acc.startsWith(str)) {
+			return acc.replace(str, '');
+		}
+		return acc;
+	}, pathname);
+
+	return title
+		.split('/') // Nested paths
+		.map((str) => {
+			// Remove `-` from file names
+			const newStr = str.replaceAll('-', ' ');
+
+			// Capitalise first letter
+			return newStr.charAt(0).toUpperCase() + newStr.slice(1);
+		})
+		.join(': ');
+}
+
+// Query param keys used in responsive preview page
 export const responsivePreviewQueryKeys = {
 	disablePadding: 'disable-padding',
 	frameSrc: 'frame-src',
@@ -107,15 +153,15 @@ export const responsivePreviewQueryKeys = {
 export function ResponsivePreviewLink({
 	children,
 	code,
+	disablePadding = false,
 	frameAddress,
-	padding = true,
 	standalone = false,
 	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
+	disablePadding?: boolean;
 	frameAddress?: string;
-	padding?: boolean;
 	standalone?: boolean;
 	title: string;
 }) {
@@ -136,7 +182,7 @@ export function ResponsivePreviewLink({
 		);
 	}
 
-	if (padding)
+	if (disablePadding)
 		urlParams.append(responsivePreviewQueryKeys.disablePadding, 'true');
 
 	const pathname = usePathname();
@@ -172,18 +218,71 @@ export function ResponsivePreviewLink({
 	);
 }
 
+const PreviewActionContainer = ({
+	children,
+}: {
+	children: React.ReactNode;
+}) => (
+	<Flex
+		borderColor="muted"
+		borderTop
+		css={packs.print.hidden}
+		flexWrap="wrap"
+		gap={0.5}
+		padding={0.5}
+	>
+		{children}
+	</Flex>
+);
+
+const CopyCodeButton = ({ code }: { code: string }) => {
+	const copyLiveCode = useCallback(() => {
+		copy(code);
+	}, [code]);
+
+	return (
+		<Button
+			iconAfter={CopyIcon}
+			onClick={copyLiveCode}
+			size="sm"
+			variant="tertiary"
+		>
+			Copy code
+		</Button>
+	);
+};
+
+const OpenInPlayroomButton = ({ playroomUrl }: { playroomUrl: string }) => (
+	<ButtonLink href={playroomUrl} size="sm" variant="tertiary">
+		Open in Playroom
+		<ExternalLinkCallout />
+	</ButtonLink>
+);
+
+const ResponsivePreviewButton = ({
+	code,
+	title,
+}: {
+	code: string;
+	title: string;
+}) => (
+	<ResponsivePreviewLink code={code} title={title}>
+		Preview responsive component
+	</ResponsivePreviewLink>
+);
+
 function LiveCode({
-	showCode = false,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
 	responsivePreviewHeading = 'Responsive preview',
+	showCode = false,
 }: {
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	responsivePreviewHeading?: string;
+	showCode?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -195,10 +294,6 @@ function LiveCode({
 		showCode,
 		!showCode
 	);
-
-	const copyLiveCode = useCallback(() => {
-		copy(localCopy);
-	}, [localCopy]);
 
 	const handleChange = useCallback(
 		(code: string) => {
@@ -243,11 +338,9 @@ function LiveCode({
 	return (
 		<Box border borderColor="muted" className={proseBlockClassname} rounded>
 			{exampleContentHeadingType && (
-				<CardHeader>
-					<Heading type={exampleContentHeadingType}>
-						{exampleContentHeading}
-					</Heading>
-				</CardHeader>
+				<CodeHeading exampleContentHeadingType={exampleContentHeadingType}>
+					{exampleContentHeading}
+				</CodeHeading>
 			)}
 			<LivePreview
 				aria-label={`Rendered code snippet example ${id}`}
@@ -262,14 +355,7 @@ function LiveCode({
 				}}
 				role="region"
 			/>
-			<Flex
-				borderColor="muted"
-				borderTop
-				css={packs.print.hidden}
-				flexWrap="wrap"
-				gap={0.5}
-				padding={0.5}
-			>
+			<PreviewActionContainer>
 				<Button
 					aria-controls={codeId}
 					aria-expanded={isCodeVisible}
@@ -281,25 +367,13 @@ function LiveCode({
 				>
 					{isCodeVisible ? 'Hide live code' : 'Show live code'}
 				</Button>
-				<Button
-					iconAfter={CopyIcon}
-					onClick={copyLiveCode}
-					size="sm"
-					variant="tertiary"
-				>
-					Copy code
-				</Button>
-				<ButtonLink href={playroomUrl} size="sm" variant="tertiary">
-					Open in Playroom
-					<ExternalLinkCallout />
-				</ButtonLink>
-				<ResponsivePreviewLink
+				<CopyCodeButton code={localCopy} />
+				<OpenInPlayroomButton playroomUrl={playroomUrl} />
+				<ResponsivePreviewButton
 					code={live.code}
 					title={responsivePreviewHeading}
-				>
-					Preview responsive component
-				</ResponsivePreviewLink>
-			</Flex>
+				/>
+			</PreviewActionContainer>
 			<Box
 				css={packs.print.visible}
 				display={isCodeVisible ? 'block' : 'none'}
@@ -346,20 +420,21 @@ function LiveCode({
 const StaticCode = ({
 	code,
 	language = '', // By default render as plain text (ie. no language)
+	inline = false,
 }: {
 	code: string;
 	language?: string;
+	inline?: boolean;
 }) => {
 	return (
 		<Box
 			border
 			borderColor="muted"
 			css={{
-				marginTop: mapSpacing(1.5),
+				marginTop: inline ? 0 : mapSpacing(1.5),
 
 				pre: {
 					padding: `${mapSpacing(1.5)} !important`,
-					tabSize: `4 !important`,
 					overflowX: 'auto',
 				},
 
@@ -420,53 +495,25 @@ const LIVE_SCOPE = {
 type CodeProps = {
 	children?: ReactNode;
 	className?: string;
-	live?: boolean;
-	showCode?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	iFrame?: boolean;
+	live?: boolean;
 	responsivePreviewHeading?: string;
+	showCode?: boolean;
 };
-
-const removePath = [
-	'/components/',
-	'/content/',
-	'/foundations/',
-	'/guides/',
-	'/patterns/',
-	'/templates/',
-];
-
-function createTitleFromPathname(pathname: string) {
-	// Remove known path prefixing
-	const title = removePath.reduce((acc, str) => {
-		if (acc.startsWith(str)) {
-			return acc.replace(str, '');
-		}
-		return acc;
-	}, pathname);
-
-	return title
-		.split('/') // Nested paths
-		.map((str) => {
-			// Remove `-` from file names
-			const newStr = str.replaceAll('-', ' ');
-
-			// Capitalise first letter
-			return newStr.charAt(0).toUpperCase() + newStr.slice(1);
-		})
-		.join(': ');
-}
 
 export function Code({
 	children,
-	live,
-	showCode,
-	enableProse,
 	className,
+	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
+	iFrame,
+	live,
 	responsivePreviewHeading,
+	showCode,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -482,6 +529,17 @@ export function Code({
 			<ResponsivePreviewLink code={childrenAsString} standalone title={title}>
 				{responsivePreviewHeading}
 			</ResponsivePreviewLink>
+		);
+	}
+
+	if (iFrame) {
+		return (
+			<PagePreviewFrame
+				code={childrenAsString}
+				language={language}
+				showCode={showCode}
+				title={exampleContentHeading}
+			/>
 		);
 	}
 
@@ -504,4 +562,82 @@ export function Code({
 	}
 
 	return <StaticCode code={childrenAsString} language={language} />;
+}
+
+function PagePreviewFrame({
+	code,
+	language,
+	showCode = false,
+	title,
+}: {
+	code: string;
+	language?: string;
+	showCode?: boolean;
+	title: string;
+}) {
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
+		showCode,
+		!showCode
+	);
+
+	const id = useId();
+	const codeId = `live-code-${id}`;
+
+	const getScrollbarWidth = useGetScrollbarWidth();
+	const scrollbarWidth = getScrollbarWidth();
+	console.log(scrollbarWidth);
+
+	const playroomUrl = createUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: checkAndModifyCode(code),
+	});
+	const playroomPreviewUrl = createPreviewUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: checkAndModifyCode(code),
+	});
+
+	return (
+		<Box border borderColor="muted">
+			<div
+				css={{
+					margin: '1rem',
+					marginRight: `calc(1rem - ${scrollbarWidth}px)`,
+					marginBottom: 0,
+				}}
+			>
+				<iframe
+					css={{
+						width: '100%',
+						height: '36rem',
+						border: 0,
+					}}
+					src={playroomPreviewUrl}
+					title={title}
+				></iframe>
+			</div>
+			<PreviewActionContainer>
+				<Button
+					aria-controls={codeId}
+					aria-expanded={isCodeVisible}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+					onClick={toggleIsCodeVisible}
+					size="sm"
+					variant="tertiary"
+				>
+					{isCodeVisible ? 'Hide code' : 'Show code'}
+				</Button>
+				<CopyCodeButton code={code} />
+				<OpenInPlayroomButton playroomUrl={playroomUrl} />
+				<ResponsivePreviewButton code={code} title={title} />
+			</PreviewActionContainer>
+			<Box
+				css={packs.print.visible}
+				display={isCodeVisible ? 'block' : 'none'}
+				id={codeId}
+				palette="dark"
+			>
+				<StaticCode code={code} inline language={language} />
+			</Box>
+		</Box>
+	);
 }

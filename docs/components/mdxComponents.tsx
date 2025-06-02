@@ -68,6 +68,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		iFrame,
 		live,
 		responsivePreviewHeading,
 		showCode,
@@ -75,6 +76,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		iFrame?: boolean;
 		live?: boolean;
 		responsivePreviewHeading?: string;
 		showCode?: boolean;
@@ -88,6 +90,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							enableProse={enableProse}
 							exampleContentHeading={exampleContentHeading}
 							exampleContentHeadingType={exampleContentHeadingType}
+							iFrame={iFrame}
 							key={element.key}
 							live={live}
 							responsivePreviewHeading={responsivePreviewHeading}

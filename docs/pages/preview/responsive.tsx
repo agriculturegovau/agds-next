@@ -2,6 +2,7 @@ import { Fragment, useCallback, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Box } from '@ag.ds-next/react/box';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
+import { boxPalette } from '@ag.ds-next/react/core';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
@@ -9,7 +10,6 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/Code';
-import { boxPalette } from '@ag.ds-next/react/core';
 
 const sizes = {
 	mobile: {
@@ -41,7 +41,6 @@ export default function ResponsivePage() {
 	const disablePadding = Boolean(
 		searchParams.get(responsivePreviewQueryKeys.disablePadding)
 	);
-	console.log(searchParams.get(responsivePreviewQueryKeys.disablePadding));
 
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
@@ -68,6 +67,7 @@ export default function ResponsivePage() {
 					alignItems={{ xs: 'flex-start', md: 'center' }}
 					as="header"
 					background="shade"
+					borderBottom
 					flexDirection={{ xs: 'column', md: 'row' }}
 					gap={1}
 					justifyContent="space-between"
@@ -114,16 +114,15 @@ export default function ResponsivePage() {
 					<div
 						css={{
 							height: '100%',
-							margin: '0 min(auto, 0.75rem)',
 							overflowX: 'auto',
+							lineHeight: 0, // Weird 3px line on bottom w/o this
 						}}
 					>
 						<div
 							css={{
 								backgroundColor: boxPalette.backgroundBody,
-								display: 'block',
-								height: 'calc(100% - 1rem)',
-								margin: '0 auto',
+								height: disablePadding ? '100%' : 'calc(100% - 1rem)',
+								margin: 'auto',
 								padding: disablePadding ? 0 : '1rem 1rem 0 1rem',
 								width: 'fit-content',
 							}}
@@ -132,9 +131,7 @@ export default function ResponsivePage() {
 								<iframe
 									css={{
 										border: 0,
-										// display: 'block',
 										height: '100%',
-										// margin: '0 auto',
 										width: sizes[frameSize].width,
 									}}
 									src={iFrameSrc}
