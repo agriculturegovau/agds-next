@@ -58,6 +58,7 @@ export { InstagramIcon } from './icons/InstagramIcon';
 export { LicenceBusinessIcon } from './icons/LicenceBusinessIcon';
 export { LicenceIcon } from './icons/LicenceIcon';
 export { LinkedInIcon } from './icons/LinkedInIcon';
+export { LinkIcon } from './icons/LinkIcon';
 export { LockIcon } from './icons/LockIcon';
 export { MenuIcon } from './icons/MenuIcon';
 export { MinusIcon } from './icons/MinusIcon';

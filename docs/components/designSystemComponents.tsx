@@ -129,6 +129,7 @@ export {
 	LicenceBusinessIcon,
 	LicenceIcon,
 	LinkedInIcon,
+	LinkIcon,
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
