@@ -10,7 +10,7 @@ exports[`SearchBox renders correctly 1`] = `
       class="css-vfcxlf-boxStyles"
     >
       <div
-        class="css-12in0u0-boxStyles"
+        class="css-yhbzqu-boxStyles-SearchBoxInput"
       >
         <label
           class="css-1wmhsmi-boxStyles-SearchBoxLabel"
@@ -23,6 +23,7 @@ exports[`SearchBox renders correctly 1`] = `
           class="css-w5d386-SearchBoxInput"
           id="search-:r0:"
           type="search"
+          value=""
         />
       </div>
       <div

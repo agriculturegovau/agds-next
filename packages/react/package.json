@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.28.0",
+	"version": "1.29.0",
 	"license": "MIT",
 	"exports": {
 		"./box": {
@@ -342,7 +342,7 @@
 		"./package.json": "./package.json"
 	},
 	"dependencies": {
-		"@babel/runtime": "^7.4.5",
+		"@babel/runtime": "^7.27.1",
 		"@floating-ui/react-dom": "^2.0.8",
 		"@types/facepaint": "^1.2.5",
 		"date-fns": "^2.28.0",

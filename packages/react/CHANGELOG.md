@@ -1,5 +1,27 @@
 # @ag.ds-next/react
 
+## 1.29.0
+
+### Minor Changes
+
+- a0b844a6fe2: core: Selectively apply the `'use-client'` directive to only the files that need it.
+- 3b0903e7f81: icon: Add new `LinkIcon`.
+- 2f53e926534: icon: Add new YouTubeIcon.
+- 542c6d4ba77: file-upload: Add `onClick` support to `ExistingFile`s.
+
+### Patch Changes
+
+- 83a3564274a: search-box: Add clear button to `SearchBoxInput` component. Add `defaultValue` support to `SearchBoxInput`.
+
+  search-input: Fix links to components and patterns in docs. Add `defaultValue` support to `SearchInput`.
+
+- 1bfdc0ae68b: combobox: Prevent useIsIos from attempting to run on the server.
+- f17da0f24b2: app-layout: `AppLayoutSidebar` - Fix hydration mismatch warning when using Next.js’ App Router.
+
+  drawer: Fix hydration mismatch warning when using Next.js’ App Router.
+
+- 14bb1cfcbf4: table: Fix `TableRow`’s `selected` and hover styles not getting applied when an incorrect `tableLayout` is set. Add `pointer` cursor for clickable rows in fixed tables. Update `TableRow`’s `onClick` to disable firing the row function when clicking on a label element.
+
 ## 1.28.0
 
 ### Minor Changes

@@ -17,7 +17,6 @@
 		"docs:build": "yarn --cwd docs build",
 		"docs:dev": "yarn --cwd docs dev",
 		"docs:generate-component-props": "yarn --cwd docs generate-component-props",
-		"docs:generate-template-images": "yarn --cwd docs generate-template-images",
 		"example:build": "yarn --cwd example-site build",
 		"example:dev": "yarn --cwd example-site dev",
 		"format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,yml,yaml}\"",
@@ -51,7 +50,7 @@
 		"@emotion/babel-preset-css-prop": "^11.2.0",
 		"@emotion/react": "^11.7.0",
 		"@faker-js/faker": "^7.6.0",
-		"@manypkg/cli": "^0.20.0",
+		"@manypkg/cli": "^0.24.0",
 		"@preconstruct/cli": "^2.8.10",
 		"@preconstruct/next": "^4.0.0",
 		"@storybook/addon-a11y": "^8.4.7",
@@ -95,7 +94,7 @@
 		"webpack": "^5.97.0"
 	},
 	"engines": {
-		"node": "18"
+		"node": "22"
 	},
 	"manypkg": {
 		"defaultBranch": "main",

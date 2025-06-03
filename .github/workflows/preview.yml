@@ -17,10 +17,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18.18.2
+      - name: Setup Node.js 22.15.1
         uses: actions/setup-node@v4
         with:
-          node-version: 18.18.2
+          node-version: 22.15.1
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -35,7 +35,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Build
         run: yarn build-site

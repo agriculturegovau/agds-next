@@ -1,3 +1,4 @@
+'use client';
 import { boxPalette } from './boxPalette';
 import { mapSpacing, tokens } from './tokens';
 import { fontGrid } from './utils';

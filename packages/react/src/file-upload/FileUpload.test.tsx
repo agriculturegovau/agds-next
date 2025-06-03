@@ -143,6 +143,13 @@ describe('FileUpload', () => {
 				// This can be useful info when deleting the file
 				meta: { uid: 'fed=cba', bucketId: '654-321' },
 			},
+			{
+				name: 'example-onclick.doc',
+				size: 654321,
+				href: '#',
+				onClick: () => alert('example-onclick.doc'),
+				meta: { uid: 'asd-qwe', bucketId: '987-654' },
+			},
 		];
 		it('renders correctly', () => {
 			const { container } = render(
@@ -165,6 +172,29 @@ describe('FileUpload', () => {
 				},
 			});
 			expect(await axe(container)).toHaveNoViolations();
+		});
+
+		it('should call file.onClick when an existing file is clicked', async () => {
+			const fileOnClick = jest.fn(
+				(event?: React.MouseEvent<HTMLAnchorElement>) => {
+					event?.preventDefault();
+				}
+			);
+			const { getByText } = render(
+				<FileUpload
+					existingFiles={[
+						{ name: 'existing.txt', href: '#', onClick: fileOnClick },
+					]}
+					label="Test"
+					onChange={jest.fn()}
+					value={[]}
+				/>
+			);
+			const user = userEvent.setup();
+			await act(async () => {
+				await user.click(getByText('existing.txt'));
+			});
+			expect(fileOnClick).toHaveBeenCalledTimes(1);
 		});
 	});
 

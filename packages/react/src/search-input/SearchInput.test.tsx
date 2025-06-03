@@ -125,4 +125,16 @@ describe('SearchInput', () => {
 		expect(input).toHaveValue('');
 		expect(onClear).toHaveBeenCalledTimes(1);
 	});
+
+	it('applies the default value to the input when the prop `defaultValue` is provided', async () => {
+		const defaultValue = 'Pineapple';
+		renderSearchInput({
+			defaultValue,
+			label: 'Search',
+		});
+
+		const input = document.querySelector('input');
+		expect(input).toBeInTheDocument();
+		expect(input?.getAttribute('value')).toBe(defaultValue);
+	});
 });

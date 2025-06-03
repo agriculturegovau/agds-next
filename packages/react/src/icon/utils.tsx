@@ -51,6 +51,7 @@ import { InstagramIcon } from './icons/InstagramIcon';
 import { LicenceBusinessIcon } from './icons/LicenceBusinessIcon';
 import { LicenceIcon } from './icons/LicenceIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
+import { LinkIcon } from './icons/LinkIcon';
 import { LockIcon } from './icons/LockIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
@@ -90,6 +91,7 @@ import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
 import { XIcon } from './icons/XIcon';
+import { YouTubeIcon } from './icons/YouTubeIcon';
 import { ZoomInIcon } from './icons/ZoomInIcon';
 import { ZoomOutIcon } from './icons/ZoomOutIcon';
 
@@ -147,6 +149,7 @@ export const allIcons = {
 	LicenceBusinessIcon,
 	LicenceIcon,
 	LinkedInIcon,
+	LinkIcon,
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
@@ -186,6 +189,7 @@ export const allIcons = {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	YouTubeIcon,
 	ZoomInIcon,
 	ZoomOutIcon,
 };
