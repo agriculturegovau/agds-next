@@ -1,38 +1,60 @@
-import { Fragment, useCallback, useState } from 'react';
+import {
+	Fragment,
+	type Ref,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { useSearchParams } from 'next/navigation';
+import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
+import { boxPalette, tokens, useWindowSize } from '@ag.ds-next/react/core';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
-import { boxPalette } from '@ag.ds-next/react/core';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
 import { Radio } from '@ag.ds-next/react/radio';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { Select } from '@ag.ds-next/react/select';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/Code';
 
-const sizes = {
-	mobile: {
-		label: 'Mobile',
-		width: 375,
+const screenSizes = {
+	xs: {
+		label: '320px (xs)',
+		width: 320,
 	},
-	tablet: {
-		label: 'Tablet',
+	sm: {
+		label: '576px (sm)',
+		width: 576,
+	},
+	md: {
+		label: '768px (md)',
 		width: 768,
 	},
-	desktop: {
-		label: 'Desktop',
-		width: 1280,
+	lg: {
+		label: '992px (lg)',
+		width: 992,
 	},
-	xlDesktop: {
-		label: 'XL Desktop',
-		width: 1920,
+	xl: {
+		label: '1200px (xl)',
+		width: 1200,
+	},
+	xxl: {
+		label: '1600px (xxl)',
+		width: 1600,
 	},
 };
-type Sizes = keyof typeof sizes;
+type Sizes = keyof typeof screenSizes;
+
+const constructRadioId = (size: Sizes) => `radio-id-${size}`;
+
+type UnmountTargets = 'radio' | 'select';
 
 export default function ResponsivePage() {
-	const [frameSize, setFrameSize] = useState<Sizes>('mobile');
+	const selectRef = useRef<HTMLSelectElement>(null);
+	const [frameSize, setFrameSize] = useState<Sizes>('xs');
+
 	const searchParams = useSearchParams();
 	const returnLink =
 		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
@@ -46,11 +68,24 @@ export default function ResponsivePage() {
 	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
 	const iFrameSrc = frameSrc || playroomSrc;
 
-	const handlerForKey = useCallback(
-		(key: Sizes) => () => setFrameSize(key),
-		[]
-	);
+	const handlerForKey = useCallback((key: Sizes) => setFrameSize(key), []);
 	const isChecked = (key: Sizes) => key === frameSize;
+
+	const { windowWidth = 0 } = useWindowSize();
+	const radioVisible = windowWidth > tokens.breakpoint.xl;
+
+	const handleOnUnmount = (target: UnmountTargets) => {
+		// focus on selectRef
+		if (target === 'select') {
+			if (selectRef) selectRef.current?.focus();
+			return;
+		}
+
+		// focus radio buttons
+		const radioId = constructRadioId(frameSize);
+		const radioElement = document.getElementById(radioId);
+		if (radioElement) radioElement.focus();
+	};
 
 	return (
 		<Fragment>
@@ -79,7 +114,6 @@ export default function ResponsivePage() {
 						display="flex"
 						flexDirection={{
 							xs: 'column',
-							xl: 'row',
 						}}
 						gap={1}
 					>
@@ -94,21 +128,29 @@ export default function ResponsivePage() {
 							{title}
 						</Heading>
 					</Flex>
-					<ControlGroup label="Preview size" required>
-						{(Object.keys(sizes) as Array<Sizes>).map((key) => {
-							const { label } = sizes[key];
-							return (
-								<Radio
-									checked={isChecked(key)}
-									key={key}
-									onChange={handlerForKey(key)}
-									size="sm"
-								>
-									{label}
-								</Radio>
-							);
-						})}
-					</ControlGroup>
+
+					{radioVisible ? (
+						<ControlGroup label="Preview size" required>
+							{(Object.keys(screenSizes) as Array<Sizes>).map((size) => (
+								<RadioButton
+									checked={isChecked(size)}
+									key={size}
+									onChange={handlerForKey}
+									onUnmount={handleOnUnmount}
+									size={size}
+								/>
+							))}
+						</ControlGroup>
+					) : (
+						<Box width={{ xs: '100%', md: 'auto' }}>
+							<SelectWrapper
+								currentSize={frameSize}
+								onChange={handlerForKey}
+								onUnmount={handleOnUnmount}
+								selectRef={selectRef}
+							/>
+						</Box>
+					)}
 				</Flex>
 				<Box as="main" background="bodyAlt" flexGrow={1}>
 					<div
@@ -132,7 +174,7 @@ export default function ResponsivePage() {
 									css={{
 										border: 0,
 										height: '100%',
-										width: sizes[frameSize].width,
+										width: screenSizes[frameSize].width,
 									}}
 									src={iFrameSrc}
 									title={`Framed content, ${title}`}
@@ -147,3 +189,90 @@ export default function ResponsivePage() {
 		</Fragment>
 	);
 }
+
+const RadioButton = ({
+	checked,
+	onChange,
+	onUnmount,
+	size: screenSize,
+}: {
+	checked: boolean;
+	onChange: (size: Sizes) => void;
+	onUnmount: (target: UnmountTargets) => void;
+	size: Sizes;
+}) => {
+	const { label } = screenSizes[screenSize];
+	const radioRef = useRef<HTMLInputElement>(null);
+	const [isFocused, setIsFocused] = useState(false);
+
+	useEffect(() => {
+		return () => {
+			// We want to purposely check the current, as it would have unmounted
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+			if (!radioRef.current && isFocused) {
+				onUnmount('select');
+			}
+		};
+	}, [isFocused, onUnmount]);
+
+	return (
+		<Radio
+			checked={checked}
+			id={constructRadioId(screenSize)}
+			onBlur={() => setIsFocused(false)}
+			onChange={() => onChange(screenSize)}
+			onFocus={() => setIsFocused(true)}
+			ref={radioRef}
+			size="sm"
+		>
+			{label}
+		</Radio>
+	);
+};
+
+const SelectWrapper = ({
+	currentSize,
+	onChange,
+	onUnmount,
+	selectRef,
+}: {
+	currentSize: Sizes;
+	onChange: (value: Sizes) => void;
+	onUnmount: (target: UnmountTargets) => void;
+	selectRef: Ref<HTMLSelectElement>;
+}) => {
+	const [isFocused, setIsFocused] = useState(false);
+
+	useEffect(() => {
+		return () => {
+			// We want to purposely check the current, as it would have unmounted
+			// @ts-expect-error: TODO fix `select.Ref.current` issue
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+			if (selectRef && !selectRef.current && isFocused) {
+				onUnmount('radio');
+			}
+		};
+	}, [isFocused, onUnmount, selectRef]);
+
+	const options = Object.keys(screenSizes).map((size) => {
+		const { label } = screenSizes[size as Sizes];
+		return {
+			value: size,
+			label: label,
+		};
+	});
+
+	return (
+		<Select
+			block
+			label="Preview size"
+			onBlur={() => setIsFocused(false)}
+			onChange={(event) => onChange(event?.target.value as Sizes)}
+			onFocus={() => setIsFocused(true)}
+			options={options}
+			ref={selectRef}
+			required
+			value={currentSize}
+		/>
+	);
+};
