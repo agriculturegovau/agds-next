@@ -51,6 +51,7 @@ import { InstagramIcon } from './icons/InstagramIcon';
 import { LicenceBusinessIcon } from './icons/LicenceBusinessIcon';
 import { LicenceIcon } from './icons/LicenceIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
+import { LinkIcon } from './icons/LinkIcon';
 import { LockIcon } from './icons/LockIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
@@ -148,6 +149,7 @@ export const allIcons = {
 	LicenceBusinessIcon,
 	LicenceIcon,
 	LinkedInIcon,
+	LinkIcon,
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
