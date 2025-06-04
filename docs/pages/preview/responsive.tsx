@@ -16,8 +16,9 @@ import { Heading } from '@ag.ds-next/react/heading';
 import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
 import { Radio } from '@ag.ds-next/react/radio';
 import { Select } from '@ag.ds-next/react/select';
-import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/Code';
+import { DocumentTitle } from '../../components/DocumentTitle';
+import useGetScrollbarWidth from '../../lib/hooks/useGetScrollbarWidth';
 
 const screenSizes = {
 	xs: {
@@ -25,24 +26,24 @@ const screenSizes = {
 		width: 320,
 	},
 	sm: {
-		label: '576px (sm)',
-		width: 576,
+		label: `${tokens.breakpoint.sm}px (sm)`,
+		width: tokens.breakpoint.sm,
 	},
 	md: {
-		label: '768px (md)',
-		width: 768,
+		label: `${tokens.breakpoint.md}px (md)`,
+		width: tokens.breakpoint.md,
 	},
 	lg: {
-		label: '992px (lg)',
-		width: 992,
+		label: `${tokens.breakpoint.lg}px (lg)`,
+		width: tokens.breakpoint.lg,
 	},
 	xl: {
-		label: '1200px (xl)',
-		width: 1200,
+		label: `${tokens.breakpoint.xl}px (xl)`,
+		width: tokens.breakpoint.xl,
 	},
 	xxl: {
-		label: '1600px (xxl)',
-		width: 1600,
+		label: `${tokens.breakpoint.xxl}px (xxl)`,
+		width: tokens.breakpoint.xxl,
 	},
 };
 type Sizes = keyof typeof screenSizes;
@@ -52,8 +53,10 @@ const constructRadioId = (size: Sizes) => `radio-id-${size}`;
 type UnmountTargets = 'radio' | 'select';
 
 export default function ResponsivePage() {
+	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
 	const [frameSize, setFrameSize] = useState<Sizes>('xs');
+	const scrollbarWidth = useGetScrollbarWidth();
 
 	const searchParams = useSearchParams();
 	const returnLink =
@@ -61,42 +64,42 @@ export default function ResponsivePage() {
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
 	const disablePadding = Boolean(
-		searchParams.get(responsivePreviewQueryKeys.disablePadding)
+		searchParams.get(responsivePreviewQueryKeys.disablePadding) === 'true'
 	);
-
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
 	const iFrameSrc = frameSrc || playroomSrc;
-
-	const handlerForKey = useCallback((key: Sizes) => setFrameSize(key), []);
-	const isChecked = (key: Sizes) => key === frameSize;
 
 	const { windowWidth = 0 } = useWindowSize();
 	const radioVisible = windowWidth > tokens.breakpoint.xl;
 
 	const handleOnUnmount = (target: UnmountTargets) => {
-		// focus on selectRef
+		// focus on select
 		if (target === 'select') {
 			if (selectRef) selectRef.current?.focus();
 			return;
 		}
 
-		// focus radio buttons
+		// focus on current radio
 		const radioId = constructRadioId(frameSize);
 		const radioElement = document.getElementById(radioId);
 		if (radioElement) radioElement.focus();
 	};
 
+	const handlerForKey = useCallback((key: Sizes) => setFrameSize(key), []);
+	const isChecked = (key: Sizes) => key === frameSize;
+
+	if (!iFrameSrc) return null;
+
 	return (
 		<Fragment>
 			<DocumentTitle title={title} />
-			<div
+			<Flex
 				css={{
-					display: 'flex',
-					flexDirection: 'column',
 					height: ['100vh', '100dvh'],
-					width: '100%',
 				}}
+				flexDirection="column"
+				width="100%"
 			>
 				<Flex
 					alignItems={{ xs: 'flex-start', md: 'center' }}
@@ -112,9 +115,7 @@ export default function ResponsivePage() {
 					<Flex
 						alignItems={{ xs: 'start', xl: 'center' }}
 						display="flex"
-						flexDirection={{
-							xs: 'column',
-						}}
+						flexDirection="column"
 						gap={1}
 					>
 						<ButtonLink
@@ -163,29 +164,31 @@ export default function ResponsivePage() {
 						<div
 							css={{
 								backgroundColor: boxPalette.backgroundBody,
-								height: disablePadding ? '100%' : 'calc(100% - 1rem)',
+								height: '100%',
 								margin: 'auto',
-								padding: disablePadding ? 0 : '1rem 1rem 0 1rem',
 								width: 'fit-content',
 							}}
 						>
-							{iFrameSrc ? (
-								<iframe
-									css={{
-										border: 0,
-										height: '100%',
-										width: screenSizes[frameSize].width,
-									}}
-									src={iFrameSrc}
-									title={`Framed content, ${title}`}
-								></iframe>
-							) : (
-								<p>FAIL CASE ERROR</p>
-							)}
+							<iframe
+								css={{
+									border: 0,
+									height: '100%',
+									width: screenSizes[frameSize].width,
+									...(!disablePadding && {
+										height: 'calc(100% - 1.5rem)',
+										marginLeft: '1rem',
+										marginRight: `calc(1rem - ${scrollbarWidth}px)`,
+										marginTop: '1.5rem',
+									}),
+								}}
+								ref={iframeRef}
+								src={iFrameSrc}
+								title={`Framed content, ${title}`}
+							></iframe>
 						</div>
 					</div>
 				</Box>
-			</div>
+			</Flex>
 		</Fragment>
 	);
 }

@@ -39,9 +39,9 @@ import {
 } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { withBasePath } from '../lib/img';
+import useGetScrollbarWidth from '../lib/hooks/useGetScrollbarWidth';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
-import useGetScrollbarWidth from './_PagePreviewFrame';
 
 // Find multi-line comments at start `/** ... */`
 const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
@@ -575,6 +575,7 @@ function PagePreviewFrame({
 	showCode?: boolean;
 	title: string;
 }) {
+	const scrollbarWidth = useGetScrollbarWidth();
 	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
 		showCode,
 		!showCode
@@ -582,10 +583,6 @@ function PagePreviewFrame({
 
 	const id = useId();
 	const codeId = `live-code-${id}`;
-
-	const getScrollbarWidth = useGetScrollbarWidth();
-	const scrollbarWidth = getScrollbarWidth();
-	console.log(scrollbarWidth);
 
 	const playroomUrl = createUrl({
 		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
