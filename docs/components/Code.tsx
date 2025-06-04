@@ -261,12 +261,18 @@ const OpenInPlayroomButton = ({ playroomUrl }: { playroomUrl: string }) => (
 
 const ResponsivePreviewButton = ({
 	code,
+	disablePadding,
 	title,
 }: {
 	code: string;
+	disablePadding?: boolean;
 	title: string;
 }) => (
-	<ResponsivePreviewLink code={code} title={title}>
+	<ResponsivePreviewLink
+		code={code}
+		disablePadding={disablePadding}
+		title={title}
+	>
 		Preview responsive component
 	</ResponsivePreviewLink>
 );
@@ -277,12 +283,14 @@ function LiveCode({
 	exampleContentHeadingType,
 	responsivePreviewHeading = 'Responsive preview',
 	showCode = false,
+	disablePadding,
 }: {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	responsivePreviewHeading?: string;
 	showCode?: boolean;
+	disablePadding?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -371,6 +379,7 @@ function LiveCode({
 				<OpenInPlayroomButton playroomUrl={playroomUrl} />
 				<ResponsivePreviewButton
 					code={live.code}
+					disablePadding={disablePadding}
 					title={responsivePreviewHeading}
 				/>
 			</PreviewActionContainer>
@@ -502,6 +511,7 @@ type CodeProps = {
 	live?: boolean;
 	responsivePreviewHeading?: string;
 	showCode?: boolean;
+	disablePadding?: boolean;
 };
 
 export function Code({
@@ -514,6 +524,7 @@ export function Code({
 	live,
 	responsivePreviewHeading,
 	showCode,
+	disablePadding,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -526,7 +537,12 @@ export function Code({
 	// Standalone link
 	if (responsivePreviewHeading && !live) {
 		return (
-			<ResponsivePreviewLink code={childrenAsString} standalone title={title}>
+			<ResponsivePreviewLink
+				code={childrenAsString}
+				disablePadding={disablePadding}
+				standalone
+				title={title}
+			>
 				{responsivePreviewHeading}
 			</ResponsivePreviewLink>
 		);
@@ -551,6 +567,7 @@ export function Code({
 				scope={LIVE_SCOPE}
 			>
 				<LiveCode
+					disablePadding={disablePadding}
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
@@ -569,11 +586,13 @@ function PagePreviewFrame({
 	language,
 	showCode = false,
 	title,
+	disablePadding,
 }: {
 	code: string;
 	language?: string;
 	showCode?: boolean;
 	title: string;
+	disablePadding?: boolean;
 }) {
 	const scrollbarWidth = useGetScrollbarWidth();
 	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
@@ -625,7 +644,11 @@ function PagePreviewFrame({
 				</Button>
 				<CopyCodeButton code={code} />
 				<OpenInPlayroomButton playroomUrl={playroomUrl} />
-				<ResponsivePreviewButton code={code} title={title} />
+				<ResponsivePreviewButton
+					code={code}
+					disablePadding={disablePadding}
+					title={title}
+				/>
 			</PreviewActionContainer>
 			<Box
 				css={packs.print.visible}

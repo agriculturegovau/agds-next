@@ -65,6 +65,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
+		disablePadding,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
@@ -73,6 +74,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		responsivePreviewHeading,
 		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
+		disablePadding?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
@@ -87,6 +89,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 					if (!isValidElement(element)) return null;
 					return (
 						<Code
+							disablePadding={disablePadding}
 							enableProse={enableProse}
 							exampleContentHeading={exampleContentHeading}
 							exampleContentHeadingType={exampleContentHeadingType}

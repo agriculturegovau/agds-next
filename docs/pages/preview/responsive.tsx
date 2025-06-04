@@ -66,6 +66,7 @@ export default function ResponsivePage() {
 	const disablePadding = Boolean(
 		searchParams.get(responsivePreviewQueryKeys.disablePadding) === 'true'
 	);
+
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
 	const iFrameSrc = frameSrc || playroomSrc;
@@ -113,7 +114,7 @@ export default function ResponsivePage() {
 					paddingY={1}
 				>
 					<Flex
-						alignItems={{ xs: 'start', xl: 'center' }}
+						alignItems="start"
 						display="flex"
 						flexDirection="column"
 						gap={1}
