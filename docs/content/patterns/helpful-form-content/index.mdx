@@ -15,11 +15,11 @@ Supporting headings should be used to organise sections logically. This is impor
 
 ## Introductory paragraphs
 
-Use a concise, introductory paragraph of 1 or 2 sentences, immediately after the H1. This provides the user with an further context they need to understand the purpose of the form.
+Use a concise, introductory paragraph of 1 or 2 sentences, immediately after the H1. This provides the user with any further context they need to understand the purpose of the form.
 
 ## Requirements list
 
-List anything the user will need to complete the form. This helps users prepare and reduce the risk of abandoned forms.
+List anything the user will need to complete the form. This helps users prepare and reduces the risk of abandoned forms.
 
 Give the list a help title such as ’What you will need’. This should appear before any forms fields. For a multi-page form, this should appear on a ’Getting started’ page.
 
@@ -27,7 +27,7 @@ Present requirements as a scannable list of specific items. Use plain language t
 
 ## Hint text
 
-Use hit text for the smallest piece of information that will help users to understand each form input or control and complete forms. This could be the mark a field as optional or to let them know the required format for a field.
+Use hint text for the smallest piece of information that will help users to understand each form input or control and complete forms. This could be to mark a field as optional or to let them know the required format for a field.
 
 The hint prop provides help that’s relevant to the majority of users, like how their information will be used, or where to find it.
 
@@ -37,8 +37,8 @@ Don’t include links within hint text. While screen readers will read out the l
 
 ```jsx live
 <TextInput
-    label="Phone number"
-    hint="Any Australian mobile or landline. For example, 0444 111 222 or 02 9988 7766"
+	label="Phone number"
+	hint="Any Australian mobile or landline. For example, 0444 111 222 or 02 9988 7766"
 />
 ```
 
@@ -46,20 +46,24 @@ Don’t include links within hint text. While screen readers will read out the l
 
 The Details component reveals more information when opened. Use the Details component for information that is useful for some users, but not needed by everyone to complete a form. Do not use the Details component if all users need the information to complete a form.
 
-Details should only be used for one piece of content. We recommended keeping this to a paragraph or short list. If more than one piece of content is required, use a [Drawer](#drawer).
+Details should only be used for one piece of content. We recommend keeping this to a paragraph or short list. If more than one piece of content is required, use a Drawer.
 
 If the guidance pertains to a list, provide the list, then link to more detailed information on all items.
 
-We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening lists into the same tab can cause a user to lose their place. In this case it’s preferable to open a link into a drawer or new tab. Clearly indicated this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
+We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
 
 ```jsx live
 <Details label="Why should I invite a new staff member?" iconBefore>
 	<Text as="p">
-		Inviting individuals to the service can help you streamline your operations. You can then assign them a role, so they can access necessary information and tasks.
+		Inviting individuals to the service can help you streamline your operations.
+		You can then assign them a role, so they can access necessary information
+		and tasks.
 	</Text>
-    <TextLinkExternal href="#">
-		Learn more about inviting a staff member
-	</TextLinkExternal>
+	<Text as="p">
+		<TextLinkExternal href="#">
+			Learn more about inviting a staff member
+		</TextLinkExternal>
+	</Text>
 </Details>
 ```
 
@@ -69,7 +73,7 @@ A Drawer is a panel that slides in from the right side of the screen. The Drawer
 
 Drawers can be used to filter data, for small subtask forms and to provide supporting information to users when completing a task.
 
-Avoid lengthy context that would result in scrolling.
+Avoid lengthy content that would result in scrolling.
 
 Explore the [Drawer](/components/drawer) options to see if they might be suitable.
 
