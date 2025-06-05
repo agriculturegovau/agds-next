@@ -70,6 +70,23 @@ export const Field = ({
 				<FieldMessage id={messageId}>{message}</FieldMessage>
 			) : null}
 			{typeof children === 'function' ? children(a11yProps) : children}
+			{maxWidth ? (
+				// This acts as spacer so that inputs always try to be as wide as their maxWidth.
+				// Otherwise, when inside a Flex they will shrink to an undesired size.
+				<div
+					aria-hidden
+					css={{
+						height: 0,
+						marginTop: `-${mapSpacing(0.5)}`,
+						maxWidth: tokens.maxWidth.field[maxWidth],
+						overflow: 'hidden',
+						'::after': {
+							content:
+								'"---------------------------------------------------------------"',
+						},
+					}}
+				/>
+			) : null}
 		</FieldContainer>
 	);
 };
