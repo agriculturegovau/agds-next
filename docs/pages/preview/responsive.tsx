@@ -9,7 +9,12 @@ import {
 import { useSearchParams } from 'next/navigation';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
-import { boxPalette, tokens, useWindowSize } from '@ag.ds-next/react/core';
+import {
+	boxPalette,
+	mapSpacing,
+	tokens,
+	useWindowSize,
+} from '@ag.ds-next/react/core';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
@@ -91,6 +96,12 @@ export default function ResponsivePage() {
 	const isChecked = (key: Sizes) => key === frameSize;
 
 	if (!iFrameSrc) return null;
+
+	const horizontalSpacing =
+		screenSizes[frameSize].width < screenSizes.md.width
+			? mapSpacing(0.75)
+			: mapSpacing(2);
+	const topSpacing = mapSpacing(1.5);
 
 	return (
 		<Fragment>
@@ -175,10 +186,11 @@ export default function ResponsivePage() {
 									border: 0,
 									height: '100%',
 									...(!disablePadding && {
-										height: 'calc(100% - 1.5rem)',
-										marginLeft: '1rem',
-										marginRight: `calc(1rem - ${scrollbarWidth}px)`,
-										marginTop: '1.5rem',
+										height: `calc(100% - ${topSpacing})`,
+										marginLeft: `max(${horizontalSpacing}, ${scrollbarWidth}px)`,
+										// Clamp to prevent negative margin
+										marginRight: `clamp(0px, calc(${horizontalSpacing} - ${scrollbarWidth}px), ${horizontalSpacing})`,
+										marginTop: topSpacing,
 									}),
 								}}
 								ref={iframeRef}
