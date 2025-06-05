@@ -1,0 +1,183 @@
+import {
+	type KeyboardEvent,
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
+import { createUrl } from 'playroom';
+import { LiveContext, LiveEditor, LivePreview } from 'react-live';
+import { Box } from '@ag.ds-next/react/box';
+import { Button } from '@ag.ds-next/react/button';
+import {
+	globalPalette,
+	mapSpacing,
+	packs,
+	tokens,
+	useId,
+	useToggleState,
+} from '@ag.ds-next/react/core';
+import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/react/icon';
+import {
+	proseBlockClassname,
+	unsetProseStylesClassname,
+} from '@ag.ds-next/react/prose';
+import {
+	CodeHeading,
+	CopyCodeButton,
+	OpenInPlayroomButton,
+	PreviewActionContainer,
+	ResponsivePreviewButton,
+} from './PreviewComponents';
+import { prismTheme } from './prism-theme';
+import { checkAndModifyCode } from './utils';
+
+export function LiveCode({
+	enableProse = false,
+	exampleContentHeading,
+	exampleContentHeadingType,
+	responsivePreviewHeading = 'Responsive preview',
+	showCode = false,
+	disablePadding,
+}: {
+	enableProse?: boolean;
+	exampleContentHeading?: string;
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	responsivePreviewHeading?: string;
+	showCode?: boolean;
+	disablePadding?: boolean;
+}) {
+	const liveEditorRef = useRef<HTMLDivElement>(null);
+	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
+	const live = useContext(LiveContext);
+
+	const liveOnChange = live.onChange;
+	const [localCopy, setLocalCopy] = useState<string>(live.code);
+	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
+		showCode,
+		!showCode
+	);
+
+	const handleChange = useCallback(
+		(code: string) => {
+			liveOnChange(code);
+			setLocalCopy(code);
+		},
+		[liveOnChange]
+	);
+
+	const codeUrl = useCallback(() => checkAndModifyCode(live.code), [live.code]);
+
+	const playroomUrl = createUrl({
+		baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+		code: codeUrl(),
+	});
+
+	const id = useId();
+	const codeId = `live-code-${id}`;
+
+	const onLiveEditorContainerKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLDivElement>) => {
+			if (event.code === 'Escape') {
+				toggleIsCodeVisible();
+				liveCodeToggleButton.current?.focus();
+			}
+		},
+		[toggleIsCodeVisible]
+	);
+
+	// LiveEditor doesn't support aria-label, so we have to do it the DOM way
+	useEffect(() => {
+		const pre = liveEditorRef.current?.querySelector('pre');
+		if (pre) {
+			pre.ariaLabel = `Live code editor ${id}`;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore Property 'role' does not exist on type 'HTMLPreElement'
+			pre.role = 'region';
+		}
+	}, [id]);
+
+	// Using `Box` here instead of Code snippets with popovers (date picker, combobox, dropdown menu etc) need overflow
+	return (
+		<Box border borderColor="muted" className={proseBlockClassname} rounded>
+			{exampleContentHeadingType && (
+				<CodeHeading exampleContentHeadingType={exampleContentHeadingType}>
+					{exampleContentHeading}
+				</CodeHeading>
+			)}
+			<LivePreview
+				aria-label={`Rendered code snippet example ${id}`}
+				// Prevents prose styles from being inherited in live code examples (except for the prose example)
+				className={enableProse ? undefined : unsetProseStylesClassname}
+				css={{
+					// The mdx codeblock transform wraps the code component in a pre which
+					// applies some weirdness here. This resets back to normal things
+					whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
+					fontFamily: tokens.font.body, // because pre applies gets monospace font.
+					padding: mapSpacing(1.5),
+				}}
+				role="region"
+			/>
+			<PreviewActionContainer>
+				<Button
+					aria-controls={codeId}
+					aria-expanded={isCodeVisible}
+					iconAfter={isCodeVisible ? ChevronUpIcon : ChevronDownIcon}
+					onClick={toggleIsCodeVisible}
+					ref={liveCodeToggleButton}
+					size="sm"
+					variant="tertiary"
+				>
+					{isCodeVisible ? 'Hide live code' : 'Show live code'}
+				</Button>
+				<CopyCodeButton code={localCopy} />
+				<OpenInPlayroomButton playroomUrl={playroomUrl} />
+				<ResponsivePreviewButton
+					code={live.code}
+					disablePadding={disablePadding}
+					title={responsivePreviewHeading}
+				/>
+			</PreviewActionContainer>
+			<Box
+				css={packs.print.visible}
+				display={isCodeVisible ? 'block' : 'none'}
+				id={codeId}
+				onKeyDown={onLiveEditorContainerKeyDown}
+				palette="dark"
+				ref={liveEditorRef}
+			>
+				<LiveEditor
+					code={live.code}
+					css={{
+						'&:focus-within': packs.outline,
+						'textarea, pre': {
+							padding: `${mapSpacing(1.5)} !important`,
+							tabSize: `4 !important`,
+						},
+						'& ::selection': {
+							color: globalPalette.darkBackgroundBody,
+							backgroundColor: globalPalette.darkForegroundAction,
+						},
+					}}
+					disabled={live.disabled}
+					language={live.language}
+					onChange={handleChange}
+					tabMode="focus"
+					theme={prismTheme}
+				/>
+			</Box>
+			{live.error ? (
+				<Box
+					background="shade"
+					color="error"
+					fontFamily="monospace"
+					fontSize="xs"
+					padding={1}
+				>
+					{live.error}
+				</Box>
+			) : null}
+		</Box>
+	);
+}

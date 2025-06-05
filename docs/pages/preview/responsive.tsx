@@ -16,9 +16,9 @@ import { Heading } from '@ag.ds-next/react/heading';
 import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
 import { Radio } from '@ag.ds-next/react/radio';
 import { Select } from '@ag.ds-next/react/select';
-import { responsivePreviewQueryKeys } from '../../components/Code';
 import { DocumentTitle } from '../../components/DocumentTitle';
-//import useGetScrollbarWidth from '../../lib/hooks/useGetScrollbarWidth';
+import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePreviewLink';
+import useGetScrollbarWidth from '../../lib/hooks/useGetScrollbarWidth';
 
 const screenSizes = {
 	xs: {
@@ -56,16 +56,16 @@ export default function ResponsivePage() {
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
 	const [frameSize, setFrameSize] = useState<Sizes>('xs');
-	//const scrollbarWidth = useGetScrollbarWidth();
+	const scrollbarWidth = useGetScrollbarWidth();
 
 	const searchParams = useSearchParams();
 	const returnLink =
 		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
-	// const disablePadding = Boolean(
-	// 	searchParams.get(responsivePreviewQueryKeys.disablePadding) === 'true'
-	// );
+	const disablePadding = Boolean(
+		searchParams.get(responsivePreviewQueryKeys.disablePadding) === 'true'
+	);
 
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
@@ -167,28 +167,24 @@ export default function ResponsivePage() {
 								backgroundColor: boxPalette.backgroundBody,
 								height: '100%',
 								margin: 'auto',
-								//width: 'fit-content',
-								width: screenSizes[frameSize].width,
+								width: 'fit-content',
 							}}
 						>
 							<iframe
 								css={{
 									border: 0,
 									height: '100%',
-									//width: screenSizes[frameSize].width,
-									// ...(!disablePadding && {
-									// 	height: 'calc(100% - 1.5rem)',
-									// 	marginLeft: '1rem',
-									// 	marginRight: `calc(1rem - ${scrollbarWidth}px)`,
-									// 	marginTop: '1.5rem',
-									// }),
-									width: '1px',
-									minWidth: '100%',
+									...(!disablePadding && {
+										height: 'calc(100% - 1.5rem)',
+										marginLeft: '1rem',
+										marginRight: `calc(1rem - ${scrollbarWidth}px)`,
+										marginTop: '1.5rem',
+									}),
 								}}
 								ref={iframeRef}
 								src={iFrameSrc}
 								title={`Framed content, ${title}`}
-								//width={screenSizes[frameSize].width}
+								width={screenSizes[frameSize].width}
 							></iframe>
 						</div>
 					</div>

@@ -46,7 +46,7 @@ import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
 import { AllIconsPlayground } from './AllIconsPlayground';
-import { Code, ResponsivePreviewLink } from './Code';
+import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import {
@@ -55,6 +55,7 @@ import {
 	ZIndexTokenChart,
 	ShadowTokenChart,
 } from './TokenCharts';
+import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -271,15 +272,22 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</div>
 	),
 	ResponsivePreview: ({
+		disablePadding = false,
 		href,
 		label,
 		title,
 	}: {
+		disablePadding: boolean;
 		href: string;
 		label: string;
 		title: string;
 	}) => (
-		<ResponsivePreviewLink frameAddress={href} standalone title={title}>
+		<ResponsivePreviewLink
+			disablePadding={disablePadding}
+			frameAddress={href}
+			standalone
+			title={title}
+		>
 			{label}
 		</ResponsivePreviewLink>
 	),
