@@ -181,10 +181,12 @@ export default function ResponsivePage() {
 										marginRight: `calc(1rem - ${scrollbarWidth}px)`,
 										marginTop: '1.5rem',
 									}),
+									//width: 1px; min-width:100%
 								}}
 								ref={iframeRef}
 								src={iFrameSrc}
 								title={`Framed content, ${title}`}
+								width={screenSizes[frameSize].width}
 							></iframe>
 						</div>
 					</div>
