@@ -8,6 +8,35 @@ relatedComponents: ['modal']
 relatedPatterns: ['search-filters']
 ---
 
+```jsx live iframe
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(true);
+	return (
+		<>
+			<Button onClick={openDrawer}>Open Drawer</Button>
+			<Drawer
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Drawer title"
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Primary</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Secondary
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Tertiary
+						</Button>
+					</ButtonGroup>
+				}
+			>
+				<Text as="p">Drawer body area.</Text>
+			</Drawer>
+		</>
+	);
+};
+```
+
 ```jsx live
 () => {
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);

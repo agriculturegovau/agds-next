@@ -54,7 +54,7 @@ type CodeProps = {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
-	iFrame?: boolean;
+	iframe?: boolean;
 	live?: boolean;
 	responsivePreviewHeading?: string;
 	showCode?: boolean;
@@ -67,7 +67,7 @@ export function Code({
 	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
-	iFrame,
+	iframe,
 	live,
 	responsivePreviewHeading,
 	showCode,
@@ -95,7 +95,7 @@ export function Code({
 		);
 	}
 
-	if (iFrame) {
+	if (iframe) {
 		return (
 			<PagePreviewIFrame
 				code={childrenAsString}
