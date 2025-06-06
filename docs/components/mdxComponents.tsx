@@ -1,21 +1,21 @@
 import {
-	Fragment,
 	Children,
+	Fragment,
 	isValidElement,
-	HTMLAttributes,
-	AnchorHTMLAttributes,
-	ImgHTMLAttributes,
-	ReactNode,
-	PropsWithChildren,
+	type AnchorHTMLAttributes,
+	type HTMLAttributes,
+	type ImgHTMLAttributes,
+	type PropsWithChildren,
+	type ReactNode,
 } from 'react';
-import type { MDXRemoteProps } from 'next-mdx-remote';
+import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	PageAlert,
-	PageAlertProps,
 	PageAlertTitle,
+	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
@@ -45,16 +45,17 @@ import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
+import { AllIconsPlayground } from './AllIconsPlayground';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
-import { AllIconsPlayground } from './AllIconsPlayground';
 import {
 	BreakpointsTokenChart,
 	SpacingTokenChart,
 	ZIndexTokenChart,
 	ShadowTokenChart,
 } from './TokenCharts';
+import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -65,17 +66,23 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		live,
-		showCode,
+		disablePadding,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		iframe,
+		live,
+		previewHeading,
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
-		live?: boolean;
-		showCode?: boolean;
+		disablePadding?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		iframe?: boolean;
+		live?: boolean;
+		previewHeading?: string;
+		showCode?: boolean;
 	}) => {
 		return (
 			<Fragment>
@@ -83,11 +90,14 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 					if (!isValidElement(element)) return null;
 					return (
 						<Code
+							disablePadding={disablePadding}
 							enableProse={enableProse}
 							exampleContentHeading={exampleContentHeading}
 							exampleContentHeadingType={exampleContentHeadingType}
+							iframe={iframe}
 							key={element.key}
 							live={live}
+							previewHeading={previewHeading}
 							showCode={showCode}
 							{...element.props}
 						/>
@@ -260,5 +270,25 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 				</Stack>
 			</Callout>
 		</div>
+	),
+	ResponsivePreview: ({
+		disablePadding = false,
+		href,
+		label,
+		title,
+	}: {
+		disablePadding: boolean;
+		href: string;
+		label: string;
+		title: string;
+	}) => (
+		<ResponsivePreviewLink
+			disablePadding={disablePadding}
+			frameAddress={href}
+			standalone
+			title={title}
+		>
+			{label}
+		</ResponsivePreviewLink>
 	),
 };
