@@ -17,13 +17,13 @@ relatedPatterns: ['selectable-table-with-batch-actions', 'search-filters']
 		<TableHead>
 			<TableRow>
 				<TableHeader scope="col">Location</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Population
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous year %
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous decade %
 				</TableHeader>
 			</TableRow>
@@ -137,13 +137,13 @@ You can enable zebra stripes by applying the `striped` prop.
 		<TableHead>
 			<TableRow>
 				<TableHeader scope="col">Location</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Population
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous year %
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous decade %
 				</TableHeader>
 			</TableRow>
@@ -217,13 +217,13 @@ You can use custom widths based on the expected length of the data under each co
 				<TableHeader scope="col" width="50%">
 					Location
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Population
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous year %
 				</TableHeader>
-				<TableHeader textAlign="right" scope="col">
+				<TableHeader scope="col" textAlign="right">
 					Change over previous decade %
 				</TableHeader>
 			</TableRow>
@@ -284,13 +284,16 @@ You can use custom widths based on the expected length of the data under each co
 
 ## Sortable columns
 
-You can use the `<TableHeaderSortable>` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary aria attributes to make the column sortable.
+You can use the `<TableHeaderSortable>` component to make columns sortable. This component is a wrapper around the `TableHeader` component and adds the necessary `aria-` and `scope` attributes to make the column sortable.
 
 It is important to add `<VisuallyHidden>` text in the table’s caption to explain the purpose of the `TableHeaderSortable` buttons. This reduces confusion for screen reader users who may not understand their significance when focusing them.
 
-You can see a working example of this component in the [Search filters patterns](/storybook/index.html?path=/story/patterns-search-filters--table-medium).
+You can see a working example of this component in the [Search filters patterns](/storybook/index.html?path=/story/patterns-search-filters--table-medium). The `<VisuallyHidden>` component can be imported from [A11y](/components/a11y).
 
 ```jsx live
+/**
+ * import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+ */
 <TableWrapper>
 	<Table striped>
 		<TableCaption>
@@ -301,19 +304,13 @@ You can see a working example of this component in the [Search filters patterns]
 		</TableCaption>
 		<TableHead>
 			<TableRow>
-				<TableHeaderSortable
-					scope="col"
-					sort="ASC"
-					width="50%"
-					onClick={console.log}
-				>
+				<TableHeaderSortable onClick={console.log} sort="ASC" width="50%">
 					Location
 				</TableHeaderSortable>
 				<TableHeaderSortable
-					scope="col"
-					width="50%"
 					onClick={console.log}
 					textAlign="right"
+					width="50%"
 				>
 					Population
 				</TableHeaderSortable>
@@ -370,13 +367,13 @@ A Table must have some form of caption or heading to describe the data it contai
 			<TableHead>
 				<TableRow>
 					<TableHeader scope="col">Location</TableHeader>
-					<TableHeader textAlign="right" scope="col">
+					<TableHeader scope="col" textAlign="right">
 						Population
 					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
+					<TableHeader scope="col" textAlign="right">
 						Change over previous year %
 					</TableHeader>
-					<TableHeader textAlign="right" scope="col">
+					<TableHeader scope="col" textAlign="right">
 						Change over previous decade %
 					</TableHeader>
 				</TableRow>
@@ -487,7 +484,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Oscar Piastri" size="sm" />
 							<Text>Oscar Piastri</Text>
 						</Flex>
 					</TableCell>
@@ -503,7 +500,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="George Russell" size="sm" aria-hidden />
+							<Avatar aria-hidden name="George Russell" size="sm" />
 							<Text>George Russell</Text>
 						</Flex>
 					</TableCell>
@@ -523,7 +520,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Lando Norris" size="sm" />
 							<Text>Lando Norris</Text>
 						</Flex>
 					</TableCell>
@@ -539,7 +536,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Lando Norris" size="sm" />
 							<Text>Lando Norris</Text>
 						</Flex>
 					</TableCell>
@@ -559,7 +556,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Lando Norris" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Lando Norris" size="sm" />
 							<Text>Lando Norris</Text>
 						</Flex>
 					</TableCell>
@@ -575,7 +572,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Oscar Piastri" size="sm" />
 							<Text>Oscar Piastri</Text>
 						</Flex>
 					</TableCell>
@@ -591,7 +588,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Oscar Piastri" size="sm" />
 							<Text>Oscar Piastri</Text>
 						</Flex>
 					</TableCell>
@@ -607,7 +604,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="George Russell" size="sm" aria-hidden />
+							<Avatar aria-hidden name="George Russell" size="sm" />
 							<Text>George Russell</Text>
 						</Flex>
 					</TableCell>
@@ -642,7 +639,7 @@ When a table is too wide for its container, a custom scrollbar will be rendered.
 					</TableCell>
 					<TableCell>
 						<Flex alignItems="center" gap={0.25}>
-							<Avatar name="Oscar Piastri" size="sm" aria-hidden />
+							<Avatar aria-hidden name="Oscar Piastri" size="sm" />
 							<Text>Oscar Piastri</Text>
 						</Flex>
 					</TableCell>
@@ -689,7 +686,7 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 		</TableHead>
 		<TableBody>
 			<TableRow>
-				<TableCell as="th" fontWeight="bold" rowSpan="2" scope="rowgroup">
+				<TableCell as="th" fontWeight="bold" rowSpan={2} scope="rowgroup">
 					Australia
 				</TableCell>
 				<TableCell as="th" fontWeight="bold" scope="row">
@@ -710,7 +707,7 @@ Some tables require cells which represent multiple rows or columns. Instead of r
 				<TableCell textAlign="right">85</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" fontWeight="bold" rowSpan="3" scope="rowgroup">
+				<TableCell as="th" fontWeight="bold" rowSpan={3} scope="rowgroup">
 					Belgium
 				</TableCell>
 				<TableCell as="th" fontWeight="bold" scope="row">
@@ -768,7 +765,7 @@ Links that open a page to view a record or more information should be located in
 		</TableHead>
 		<TableBody>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-AB3CD4EF">
 						REF-AB3CD4EF
 					</TextLink>
@@ -777,23 +774,23 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<TextLink href="#" aria-describedby="REF-AB3CD4EF">
+						<TextLink aria-describedby="REF-AB3CD4EF" href="#">
 							Edit
 						</TextLink>
-						<TextLink href="#" aria-describedby="REF-AB3CD4EF">
+						<TextLink aria-describedby="REF-AB3CD4EF" href="#">
 							Download
 						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-5GH6IJ7K">
 						REF-5GH6IJ7K
 					</TextLink>
@@ -802,23 +799,23 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<TextLink href="#" aria-describedby="REF-5GH6IJ7K">
+						<TextLink aria-describedby="REF-5GH6IJ7K" href="#">
 							Edit
 						</TextLink>
-						<TextLink href="#" aria-describedby="REF-5GH6IJ7K">
+						<TextLink aria-describedby="REF-5GH6IJ7K" href="#">
 							Download
 						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-M8NO9PQR">
 						REF-M8NO9PQR
 					</TextLink>
@@ -827,23 +824,23 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="successMedium"
 						label="Completed"
+						tone="successMedium"
 					/>
 				</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<TextLink href="#" aria-describedby="REF-M8NO9PQR">
+						<TextLink aria-describedby="REF-M8NO9PQR" href="#">
 							Edit
 						</TextLink>
-						<TextLink href="#" aria-describedby="REF-M8NO9PQR">
+						<TextLink aria-describedby="REF-M8NO9PQR" href="#">
 							Download
 						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-S1TU2VWX">
 						REF-S1TU2VWX
 					</TextLink>
@@ -852,23 +849,23 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<TextLink href="#" aria-describedby="REF-S1TU2VWX">
+						<TextLink aria-describedby="REF-S1TU2VWX" href="#">
 							Edit
 						</TextLink>
-						<TextLink href="#" aria-describedby="REF-S1TU2VWX">
+						<TextLink aria-describedby="REF-S1TU2VWX" href="#">
 							Download
 						</TextLink>
 					</Flex>
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-Y3ZA4B5C">
 						REF-Y3ZA4B5C
 					</TextLink>
@@ -877,16 +874,16 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="successMedium"
 						label="Completed"
+						tone="successMedium"
 					/>
 				</TableCell>
 				<TableCell>
 					<Flex gap={1}>
-						<TextLink href="#" aria-describedby="REF-Y3ZA4B5C">
+						<TextLink aria-describedby="REF-Y3ZA4B5C" href="#">
 							Edit
 						</TextLink>
-						<TextLink href="#" aria-describedby="REF-Y3ZA4B5C">
+						<TextLink aria-describedby="REF-Y3ZA4B5C" href="#">
 							Download
 						</TextLink>
 					</Flex>
@@ -911,7 +908,7 @@ Links that open a page to view a record or more information should be located in
 		</TableHead>
 		<TableBody>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-ABC3CD4EF">
 						REF-ABC3CD4EF
 					</TextLink>
@@ -920,8 +917,8 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
@@ -938,7 +935,7 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-5GHC6IJ7K">
 						REF-5GHC6IJ7K
 					</TextLink>
@@ -947,8 +944,8 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
@@ -965,7 +962,7 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-M8NCO9PQR">
 						REF-M8NCO9PQR
 					</TextLink>
@@ -974,8 +971,8 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="successMedium"
 						label="Completed"
+						tone="successMedium"
 					/>
 				</TableCell>
 				<TableCell>
@@ -992,7 +989,7 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-S1TCU2VWX">
 						REF-S1TCU2VWX
 					</TextLink>
@@ -1001,8 +998,8 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="infoMedium"
 						label="In progress"
+						tone="infoMedium"
 					/>
 				</TableCell>
 				<TableCell>
@@ -1019,7 +1016,7 @@ Links that open a page to view a record or more information should be located in
 				</TableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell as="th" scope="row" fontWeight="bold">
+				<TableCell as="th" fontWeight="bold" scope="row">
 					<TextLink href="#" id="REF-Y3ZCA4B5C">
 						REF-Y3ZCA4B5C
 					</TextLink>
@@ -1028,8 +1025,8 @@ Links that open a page to view a record or more information should be located in
 				<TableCell>
 					<StatusBadge
 						appearance="subtle"
-						tone="successMedium"
 						label="Completed"
+						tone="successMedium"
 					/>
 				</TableCell>
 				<TableCell>
@@ -1082,12 +1079,12 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 	return (
 		<Stack gap={0.5}>
 			<Stack>
-				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+				<Box borderBottom paddingBottom={0.75} paddingLeft={0.75}>
 					<Checkbox
-						size="sm"
 						checked={allRowsChecked}
 						indeterminate={anyRowsChecked && !allRowsChecked}
 						onChange={() => toggleAllRows()}
+						size="sm"
 					>
 						Select all rows
 					</Checkbox>
@@ -1106,17 +1103,17 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 							{Array.from(new Array(3).keys()).map((index) => {
 								const isRowSelected = selectedRows.includes(index);
 								return (
-									<TableRow selected={isRowSelected} key={index}>
+									<TableRow key={index} selected={isRowSelected}>
 										<TableCell>
 											<Checkbox
-												size="sm"
 												checked={isRowSelected}
 												onChange={() => toggleRowSelection(index)}
+												size="sm"
 											>
 												<VisuallyHidden>Select</VisuallyHidden>
 											</Checkbox>
 										</TableCell>
-										<TableCell as="th" scope="row" fontWeight="bold">
+										<TableCell as="th" fontWeight="bold" scope="row">
 											<TextLink href="#" id={`REF-AB${index}CD4EF`}>
 												REF-AB{index}CD4EF
 											</TextLink>
@@ -1151,13 +1148,13 @@ For more information, read the [Selectable tables with batch actions pattern](/p
 						Apply action to {selectedRows.length} items
 					</TableBatchActionsTitle>
 					<ButtonGroup>
-						<Button variant="secondary" size="sm">
+						<Button size="sm" variant="secondary">
 							Download
 						</Button>
-						<Button variant="secondary" size="sm">
+						<Button size="sm" variant="secondary">
 							Delete
 						</Button>
-						<Button variant="tertiary" size="sm" onClick={toggleAllRows}>
+						<Button onClick={toggleAllRows} size="sm" variant="tertiary">
 							Cancel
 						</Button>
 					</ButtonGroup>
@@ -1223,7 +1220,6 @@ To indicate an error in a row containing an action, set the `invalid` prop to `t
 						<StatusBadge
 							appearance="subtle"
 							label="File missing"
-							appearance="subtle"
 							tone="errorHigh"
 						/>
 					</TableCell>
@@ -1368,7 +1364,7 @@ To prevent the table row callback from executing unintentionally, it will only r
 			</Box>
 
 			<Stack>
-				<Box paddingBottom={0.75} paddingLeft={0.75} borderBottom>
+				<Box borderBottom paddingBottom={0.75} paddingLeft={0.75}>
 					<Checkbox
 						checked={allRowsChecked}
 						indeterminate={anyRowsChecked && !allRowsChecked}
