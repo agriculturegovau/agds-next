@@ -10,11 +10,11 @@ import { CopyIcon } from '@ag.ds-next/react/icon';
 import { ResponsivePreviewLink } from './ResponsivePreviewLink';
 
 export function CodeHeading({
-	exampleContentHeadingType,
 	children,
+	exampleContentHeadingType,
 }: {
-	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	children: React.ReactNode;
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 }) {
 	return (
 		<CardHeader>

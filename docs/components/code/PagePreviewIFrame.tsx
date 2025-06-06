@@ -15,16 +15,16 @@ import { checkAndModifyCode } from './utils';
 
 export function PagePreviewIFrame({
 	code,
+	disablePadding,
 	language,
 	showCode = false,
 	title,
-	disablePadding,
 }: {
 	code: string;
+	disablePadding?: boolean;
 	language?: string;
 	showCode?: boolean;
 	title: string;
-	disablePadding?: boolean;
 }) {
 	const scrollbarWidth = useGetScrollbarWidth();
 	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(

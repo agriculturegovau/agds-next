@@ -72,7 +72,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		exampleContentHeadingType,
 		iframe,
 		live,
-		responsivePreviewHeading,
+		previewHeading,
 		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
 		disablePadding?: boolean;
@@ -81,7 +81,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 		iframe?: boolean;
 		live?: boolean;
-		responsivePreviewHeading?: string;
+		previewHeading?: string;
 		showCode?: boolean;
 	}) => {
 		return (
@@ -97,7 +97,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							iframe={iframe}
 							key={element.key}
 							live={live}
-							responsivePreviewHeading={responsivePreviewHeading}
+							previewHeading={previewHeading}
 							showCode={showCode}
 							{...element.props}
 						/>

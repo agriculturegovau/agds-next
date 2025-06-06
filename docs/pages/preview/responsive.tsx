@@ -7,6 +7,7 @@ import {
 	useState,
 } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
 import {
@@ -135,7 +136,7 @@ export default function ResponsivePage() {
 							iconBefore={ArrowLeftIcon}
 							variant="text"
 						>
-							Back
+							Back<VisuallyHidden> to Documentation</VisuallyHidden>
 						</ButtonLink>
 						<Heading as="h1" fontSize="md">
 							{title}

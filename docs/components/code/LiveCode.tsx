@@ -34,19 +34,19 @@ import { prismTheme } from './prism-theme';
 import { checkAndModifyCode } from './utils';
 
 export function LiveCode({
+	disablePadding,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
-	responsivePreviewHeading = 'Responsive preview',
+	previewHeading = 'Responsive preview',
 	showCode = false,
-	disablePadding,
 }: {
+	disablePadding?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
-	responsivePreviewHeading?: string;
+	previewHeading?: string;
 	showCode?: boolean;
-	disablePadding?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
 	const liveCodeToggleButton = useRef<HTMLButtonElement>(null);
@@ -136,7 +136,7 @@ export function LiveCode({
 				<ResponsivePreviewButton
 					code={live.code}
 					disablePadding={disablePadding}
-					title={responsivePreviewHeading}
+					title={previewHeading}
 				/>
 			</PreviewActionContainer>
 			<Box

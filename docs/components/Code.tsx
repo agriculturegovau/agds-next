@@ -51,27 +51,27 @@ const LIVE_SCOPE = {
 type CodeProps = {
 	children?: ReactNode;
 	className?: string;
+	disablePadding?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	iframe?: boolean;
 	live?: boolean;
-	responsivePreviewHeading?: string;
+	previewHeading?: string;
 	showCode?: boolean;
-	disablePadding?: boolean;
 };
 
 export function Code({
 	children,
 	className,
+	disablePadding,
 	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
 	iframe,
 	live,
-	responsivePreviewHeading,
+	previewHeading,
 	showCode,
-	disablePadding,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
 	const language = className?.replace(/language-/, '');
@@ -79,10 +79,11 @@ export function Code({
 
 	if (!childrenAsString) return null;
 
-	const title = responsivePreviewHeading || createTitleFromPathname(pathname);
+	const title =
+		previewHeading || `${createTitleFromPathname(pathname)} preview`;
 
 	// Standalone link
-	if (responsivePreviewHeading && !live) {
+	if (previewHeading && !live) {
 		return (
 			<ResponsivePreviewLink
 				code={childrenAsString}
@@ -90,11 +91,12 @@ export function Code({
 				standalone
 				title={title}
 			>
-				{responsivePreviewHeading}
+				{previewHeading}
 			</ResponsivePreviewLink>
 		);
 	}
 
+	// Inline iframe
 	if (iframe) {
 		return (
 			<PagePreviewIFrame
@@ -118,7 +120,7 @@ export function Code({
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
-					responsivePreviewHeading={title}
+					previewHeading={title}
 					showCode={showCode}
 				/>
 			</LiveProvider>

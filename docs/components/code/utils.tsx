@@ -2,6 +2,7 @@
 const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 
 // Checks if the code requires React support or is JSX
+// Returned value is for playroom
 export function checkAndModifyCode(liveCode: string) {
 	// Wrap `/* ... */` comments with brackets `{ .. }`
 	let code = liveCode.replaceAll(multiLineCommentRegex, '{$&}');
@@ -17,7 +18,7 @@ export function checkAndModifyCode(liveCode: string) {
 	return `<Render>\n    {${formattedCode}}\n</Render>`;
 }
 
-const removePath = [
+const removeParentPaths = [
 	'/components/',
 	'/content/',
 	'/foundations/',
@@ -26,10 +27,10 @@ const removePath = [
 	'/templates/',
 ];
 
-// TODO: add here
+// Create a display heading based on the pathname
 export function createTitleFromPathname(pathname: string) {
 	// Remove known path prefixing
-	const title = removePath.reduce((acc, str) => {
+	const title = removeParentPaths.reduce((acc, str) => {
 		if (acc.startsWith(str)) {
 			return acc.replace(str, '');
 		}
