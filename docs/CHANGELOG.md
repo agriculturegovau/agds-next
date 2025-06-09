@@ -1,5 +1,13 @@
 # @ag.ds-next/docs
 
+## 0.17.1
+
+### Patch Changes
+
+- 7cb232595ca: summary-list: Update docs with `VisuallyHidden` link and import reference.
+
+  table: Fix and lint code sample examples. Update docs with `VisuallyHidden` link and import reference.
+
 ## 0.17.0
 
 ### Minor Changes
