@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/docs",
-	"version": "0.17.0",
+	"version": "0.17.1",
 	"private": true,
 	"repository": "https://github.com/agriculturegovau/agds-next/tree/main/docs",
 	"license": "MIT",
