@@ -27,6 +27,7 @@ Provide an overview of your changes here. Include screenshots, photos or links i
 - [ ] Create or update documentation on the website
 - [ ] Create or update stories for Storybook
 - [ ] Create or update stories for Playroom snippets
+- [ ] Verify anchor links and hashes are correct for rename existing pages and headings
 
 **Creating new component**
 
