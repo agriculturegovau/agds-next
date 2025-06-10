@@ -70,18 +70,14 @@ export const OpenInPlayroomButton = ({
 
 export const ResponsivePreviewButton = ({
 	code,
-	disablePadding,
+	padding,
 	title,
 }: {
 	code: string;
-	disablePadding?: boolean;
+	padding?: boolean;
 	title: string;
 }) => (
-	<ResponsivePreviewLink
-		code={code}
-		disablePadding={disablePadding}
-		title={title}
-	>
+	<ResponsivePreviewLink code={code} padding={padding} title={title}>
 		Preview responsive component
 	</ResponsivePreviewLink>
 );

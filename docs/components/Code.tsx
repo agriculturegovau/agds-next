@@ -51,12 +51,12 @@ const LIVE_SCOPE = {
 type CodeProps = {
 	children?: ReactNode;
 	className?: string;
-	disablePadding?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	iframe?: boolean;
 	live?: boolean;
+	padding?: boolean;
 	previewHeading?: string;
 	showCode?: boolean;
 };
@@ -64,12 +64,12 @@ type CodeProps = {
 export function Code({
 	children,
 	className,
-	disablePadding,
 	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
 	iframe,
 	live,
+	padding,
 	previewHeading,
 	showCode,
 }: CodeProps) {
@@ -87,7 +87,7 @@ export function Code({
 		return (
 			<ResponsivePreviewLink
 				code={childrenAsString}
-				disablePadding={disablePadding}
+				padding={padding}
 				standalone
 				title={title}
 			>
@@ -116,10 +116,10 @@ export function Code({
 				scope={LIVE_SCOPE}
 			>
 				<LiveCode
-					disablePadding={disablePadding}
 					enableProse={enableProse}
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
+					padding={padding}
 					previewHeading={title}
 					showCode={showCode}
 				/>

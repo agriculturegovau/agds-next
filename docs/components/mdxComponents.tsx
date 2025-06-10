@@ -66,21 +66,21 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		disablePadding,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
 		iframe,
 		live,
+		padding,
 		previewHeading,
 		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
-		disablePadding?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 		iframe?: boolean;
 		live?: boolean;
+		padding?: boolean;
 		previewHeading?: string;
 		showCode?: boolean;
 	}) => {
@@ -90,13 +90,13 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 					if (!isValidElement(element)) return null;
 					return (
 						<Code
-							disablePadding={disablePadding}
 							enableProse={enableProse}
 							exampleContentHeading={exampleContentHeading}
 							exampleContentHeadingType={exampleContentHeadingType}
 							iframe={iframe}
 							key={element.key}
 							live={live}
+							padding={padding}
 							previewHeading={previewHeading}
 							showCode={showCode}
 							{...element.props}
@@ -272,19 +272,19 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		</div>
 	),
 	ResponsivePreview: ({
-		disablePadding = false,
 		href,
 		label,
+		padding,
 		title,
 	}: {
-		disablePadding: boolean;
 		href: string;
 		label: string;
+		padding?: boolean;
 		title: string;
 	}) => (
 		<ResponsivePreviewLink
-			disablePadding={disablePadding}
 			frameAddress={href}
+			padding={padding}
 			standalone
 			title={title}
 		>

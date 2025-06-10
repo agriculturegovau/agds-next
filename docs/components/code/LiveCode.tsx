@@ -34,17 +34,17 @@ import { prismTheme } from './prism-theme';
 import { checkAndModifyCode } from './utils';
 
 export function LiveCode({
-	disablePadding,
 	enableProse = false,
 	exampleContentHeading,
 	exampleContentHeadingType,
+	padding = true,
 	previewHeading = 'Responsive preview',
 	showCode = false,
 }: {
-	disablePadding?: boolean;
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	padding?: boolean;
 	previewHeading?: string;
 	showCode?: boolean;
 }) {
@@ -115,7 +115,7 @@ export function LiveCode({
 					// applies some weirdness here. This resets back to normal things
 					whiteSpace: 'normal', // other wise text content will not wrap and long lines can break the layout
 					fontFamily: tokens.font.body, // because pre applies gets monospace font.
-					padding: mapSpacing(1.5),
+					padding: padding ? mapSpacing(1.5) : 0,
 				}}
 				role="region"
 			/>
@@ -135,7 +135,7 @@ export function LiveCode({
 				<OpenInPlayroomButton playroomUrl={playroomUrl} />
 				<ResponsivePreviewButton
 					code={live.code}
-					disablePadding={disablePadding}
+					padding={padding}
 					title={previewHeading}
 				/>
 			</PreviewActionContainer>

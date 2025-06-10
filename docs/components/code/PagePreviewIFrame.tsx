@@ -3,7 +3,7 @@ import { Box } from '@ag.ds-next/react/box';
 import { Button } from '@ag.ds-next/react/button';
 import { packs, useId, useToggleState } from '@ag.ds-next/react/core';
 import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/react/icon';
-import useGetScrollbarWidth from '../../lib/hooks/useGetScrollbarWidth';
+import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
 import {
 	CopyCodeButton,
 	OpenInPlayroomButton,
@@ -15,18 +15,18 @@ import { checkAndModifyCode } from './utils';
 
 export function PagePreviewIFrame({
 	code,
-	disablePadding,
 	language,
+	padding,
 	showCode = false,
 	title,
 }: {
 	code: string;
-	disablePadding?: boolean;
 	language?: string;
+	padding?: boolean;
 	showCode?: boolean;
 	title: string;
 }) {
-	const scrollbarWidth = useGetScrollbarWidth();
+	const scrollbarSizes = useGetScrollbarSizes();
 	const [isCodeVisible, toggleIsCodeVisible] = useToggleState(
 		showCode,
 		!showCode
@@ -49,7 +49,7 @@ export function PagePreviewIFrame({
 			<div
 				css={{
 					margin: '1rem',
-					marginRight: `calc(1rem - ${scrollbarWidth}px)`,
+					marginRight: `calc(1rem - ${scrollbarSizes.width}px)`,
 					marginBottom: 0,
 				}}
 			>
@@ -76,11 +76,7 @@ export function PagePreviewIFrame({
 				</Button>
 				<CopyCodeButton code={code} />
 				<OpenInPlayroomButton playroomUrl={playroomUrl} />
-				<ResponsivePreviewButton
-					code={code}
-					disablePadding={disablePadding}
-					title={title}
-				/>
+				<ResponsivePreviewButton code={code} padding={padding} title={title} />
 			</PreviewActionContainer>
 			<Box
 				css={packs.print.visible}

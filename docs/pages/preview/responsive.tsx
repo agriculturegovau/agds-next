@@ -6,6 +6,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
+import { css, Global } from '@emotion/react';
 import { useSearchParams } from 'next/navigation';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { ButtonLink } from '@ag.ds-next/react/button';
@@ -24,7 +25,7 @@ import { Radio } from '@ag.ds-next/react/radio';
 import { Select } from '@ag.ds-next/react/select';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePreviewLink';
-import useGetScrollbarWidth from '../../lib/hooks/useGetScrollbarWidth';
+import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
 
 const screenSizes = {
 	xs: {
@@ -62,7 +63,7 @@ export default function ResponsivePage() {
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
 	const [frameSize, setFrameSize] = useState<Sizes>('xs');
-	const scrollbarWidth = useGetScrollbarWidth();
+	const scrollbarSizes = useGetScrollbarSizes();
 
 	const searchParams = useSearchParams();
 	const returnLink =
@@ -70,7 +71,7 @@ export default function ResponsivePage() {
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
 	const disablePadding = Boolean(
-		searchParams.get(responsivePreviewQueryKeys.disablePadding) === 'true'
+		searchParams.get(responsivePreviewQueryKeys.padding) === 'false'
 	);
 
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
@@ -106,6 +107,14 @@ export default function ResponsivePage() {
 
 	return (
 		<Fragment>
+			<Global
+				styles={css`
+					html {
+						overflow: hidden;
+						scrollbar-gutter: auto;
+					}
+				`}
+			/>
 			<DocumentTitle title={title} />
 			<Flex
 				css={{
@@ -188,9 +197,9 @@ export default function ResponsivePage() {
 									height: '100%',
 									...(!disablePadding && {
 										height: `calc(100% - ${topSpacing})`,
-										marginLeft: `max(${horizontalSpacing}, ${scrollbarWidth}px)`,
+										marginLeft: `max(${horizontalSpacing}, ${scrollbarSizes.width}px)`,
 										// Clamp to prevent negative margin
-										marginRight: `clamp(0px, calc(${horizontalSpacing} - ${scrollbarWidth}px), ${horizontalSpacing})`,
+										marginRight: `clamp(0px, calc(${horizontalSpacing} - ${scrollbarSizes.width}px), ${horizontalSpacing})`,
 										marginTop: topSpacing,
 									}),
 								}}

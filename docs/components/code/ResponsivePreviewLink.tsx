@@ -9,10 +9,10 @@ import { checkAndModifyCode } from './utils';
 
 // Query param keys for responsive preview page
 export const responsivePreviewQueryKeys = {
-	/** Option to disable padding on top, left and right of the frame. Used for full page previews. */
-	disablePadding: 'disable-padding',
 	/** iframe URL support, use instead of `playroomSrc` */
 	frameSrc: 'frame-src',
+	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
+	padding: 'padding',
 	playroomSrc: 'playroom-code',
 	returnLink: 'return',
 	title: 'title',
@@ -21,15 +21,15 @@ export const responsivePreviewQueryKeys = {
 export function ResponsivePreviewLink({
 	children,
 	code,
-	disablePadding = false,
 	frameAddress,
+	padding = true,
 	standalone = false,
 	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
-	disablePadding?: boolean;
 	frameAddress?: string;
+	padding?: boolean;
 	standalone?: boolean;
 	title: string;
 }) {
@@ -48,8 +48,7 @@ export function ResponsivePreviewLink({
 			playroomPreviewUrl
 		);
 	}
-	if (disablePadding)
-		urlParams.append(responsivePreviewQueryKeys.disablePadding, 'true');
+	if (!padding) urlParams.append(responsivePreviewQueryKeys.padding, 'false');
 
 	const pathname = usePathname();
 	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);
