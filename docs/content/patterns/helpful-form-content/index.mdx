@@ -53,17 +53,17 @@ If the guidance pertains to a list, provide the list, then link to more detailed
 We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
 
 ```jsx live
-<Details label="Why should I invite a new staff member?" iconBefore>
-	<Text as="p">
-		Inviting individuals to the service can help you streamline your operations.
-		You can then assign them a role, so they can access necessary information
-		and tasks.
-	</Text>
-	<Text as="p">
+<Details iconBefore label="Why should I invite a new staff member?">
+	<Flex flexDirection="column" gap={1}>
+		<Text as="p">
+			Inviting individuals to the service can help you streamline your
+			operations. You can then assign them a role, so they can access necessary
+			information and tasks.
+		</Text>
 		<TextLinkExternal href="#">
 			Learn more about inviting a staff member
 		</TextLinkExternal>
-	</Text>
+	</Flex>
 </Details>
 ```
 
@@ -114,7 +114,7 @@ Outside of forms, avoid opening links in new tabs. This can be confusing and dis
 
 If the supporting information won’t fit into a drawer without scrolling, then open this form help content into a new tab.
 
-## Supporting content
+## Related guidance
 
 - [Hint](/components/field#hint) - Short, in context help.
 
