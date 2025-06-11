@@ -140,13 +140,9 @@ export default function ResponsivePage() {
 			/>
 			<DocumentTitle title={title} />
 			<Flex
-				//@ts-expect-error TODO
 				css={{
-					height: [
-						'100vh',
-						'100dvh',
-						isIos ? '-webkit-fill-available' : undefined,
-					],
+					height: ['100vh', '100dvh'],
+					minHeight: isIos ? '-webkit-fill-available' : 'auto',
 				}}
 				flexDirection="column"
 				width="100%"
