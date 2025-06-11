@@ -280,8 +280,8 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		title: string;
 	}) => (
 		<ResponsivePreviewLink
-			frameSrc={href}
 			padding={padding}
+			src={href}
 			standalone
 			title={title}
 		>

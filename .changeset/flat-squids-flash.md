@@ -3,7 +3,7 @@
 '@ag.ds-next/docs': patch
 ---
 
-docs: Add responsive preview page.
+docs: Add 'Responsive preview' page designed to view components and examples with selectable document widths. Add responsive preview link to documentation code snippets. Modify code snippet components with padding option.
 
 header: Remove padding from preview examples.
 

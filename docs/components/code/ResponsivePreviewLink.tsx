@@ -9,9 +9,7 @@ import { checkAndModifyCode } from './utils';
 
 // Query param keys consumed by the responsive preview page
 export const responsivePreviewQueryKeys = {
-	/** iframe URL support, use instead of `code`*/
 	frameSrc: 'src',
-	playroomCode: 'code',
 	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
 	padding: 'padding',
 	returnLink: 'return',
@@ -23,14 +21,14 @@ export const responsivePreviewQueryKeys = {
 export function ResponsivePreviewLink({
 	children,
 	code,
-	frameSrc,
+	src,
 	padding = true,
 	standalone = false,
 	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
-	frameSrc?: string;
+	src?: string;
 	padding?: boolean;
 	standalone?: boolean;
 	title: string;
@@ -38,18 +36,16 @@ export function ResponsivePreviewLink({
 	const urlParams = new URLSearchParams();
 
 	if (title) urlParams.append(responsivePreviewQueryKeys.title, title);
-	if (frameSrc) urlParams.append(responsivePreviewQueryKeys.frameSrc, frameSrc);
-	if (code) {
+	if (!padding) urlParams.append(responsivePreviewQueryKeys.padding, 'false');
+
+	if (src) urlParams.append(responsivePreviewQueryKeys.frameSrc, src);
+	else if (code) {
 		const playroomPreviewUrl = createPreviewUrl({
 			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 			code: checkAndModifyCode(code),
 		});
-		urlParams.append(
-			responsivePreviewQueryKeys.playroomCode,
-			playroomPreviewUrl
-		);
+		urlParams.append(responsivePreviewQueryKeys.frameSrc, playroomPreviewUrl);
 	}
-	if (!padding) urlParams.append(responsivePreviewQueryKeys.padding, 'false');
 
 	const pathname = usePathname();
 	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);

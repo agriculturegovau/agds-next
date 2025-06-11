@@ -91,9 +91,7 @@ export default function ResponsivePage() {
 		searchParams.get(responsivePreviewQueryKeys.padding) === 'false'
 	);
 
-	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
-	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomCode);
-	const iFrameSrc = frameSrc || playroomSrc;
+	const iframeSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 
 	const { windowWidth = 0 } = useWindowSize();
 	const radioVisible = windowWidth > tokens.breakpoint.xl;
@@ -121,7 +119,7 @@ export default function ResponsivePage() {
 	};
 	const isChecked = (key: Sizes) => key === frameSize;
 
-	if (!iFrameSrc) return null;
+	if (!iframeSrc) return null;
 
 	const horizontalSpacing =
 		screenSizes[frameSize].width < screenSizes.md.width
@@ -229,7 +227,7 @@ export default function ResponsivePage() {
 									}),
 								}}
 								ref={iframeRef}
-								src={iFrameSrc}
+								src={iframeSrc}
 								title={`Framed content, ${title}`}
 								width={screenSizes[frameSize].width}
 							></iframe>
