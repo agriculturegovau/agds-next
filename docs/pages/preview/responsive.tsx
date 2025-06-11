@@ -132,7 +132,7 @@ export default function ResponsivePage() {
 			<DocumentTitle title={title} />
 			<Flex
 				css={{
-					height: ['100vh', '100dvh'],
+					height: ['100vh', '-webkit-fill-available', '100dvh'],
 				}}
 				flexDirection="column"
 				width="100%"
