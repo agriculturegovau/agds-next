@@ -1,13 +1,6 @@
-import {
-	Fragment,
-	type Ref,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { Fragment, type Ref, useEffect, useRef, useState } from 'react';
 import { css, Global } from '@emotion/react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
@@ -60,12 +53,26 @@ const constructRadioId = (size: Sizes) => `radio-id-${size}`;
 type UnmountTargets = 'radio' | 'select';
 
 export default function ResponsivePage() {
+	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
+	const [frameSize, setFrameSize] = useState<Sizes>('xs');
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
-	const [frameSize, setFrameSize] = useState<Sizes>('xs');
 	const scrollbarSizes = useGetScrollbarSizes();
 
-	const searchParams = useSearchParams();
+	useEffect(() => {
+		// useSearchParams is too slow on initial render
+		const initQueryParams = new URLSearchParams(window.location.search);
+		const defaultSize = initQueryParams.get(
+			responsivePreviewQueryKeys.previewSize
+		);
+
+		if (defaultSize && defaultSize in screenSizes) {
+			setFrameSize(defaultSize as Sizes);
+		}
+	}, [setFrameSize]);
+
 	const returnLink =
 		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
 	const title =
@@ -75,7 +82,7 @@ export default function ResponsivePage() {
 	);
 
 	const frameSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
-	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomSrc);
+	const playroomSrc = searchParams.get(responsivePreviewQueryKeys.playroomCode);
 	const iFrameSrc = frameSrc || playroomSrc;
 
 	const { windowWidth = 0 } = useWindowSize();
@@ -94,7 +101,14 @@ export default function ResponsivePage() {
 		if (radioElement) radioElement.focus();
 	};
 
-	const handlerForKey = useCallback((key: Sizes) => setFrameSize(key), []);
+	const handleSetFrameSize = (size: Sizes) => {
+		setFrameSize(size);
+
+		// Set frame size to URL
+		const newQueryParams = new URLSearchParams(searchParams.toString());
+		newQueryParams.set(responsivePreviewQueryKeys.previewSize, size);
+		router.replace(`${pathname}?${newQueryParams}`);
+	};
 	const isChecked = (key: Sizes) => key === frameSize;
 
 	if (!iFrameSrc) return null;
@@ -158,7 +172,7 @@ export default function ResponsivePage() {
 								<RadioButton
 									checked={isChecked(size)}
 									key={size}
-									onChange={handlerForKey}
+									onChange={handleSetFrameSize}
 									onUnmount={handleOnUnmount}
 									size={size}
 								/>
@@ -168,7 +182,7 @@ export default function ResponsivePage() {
 						<Box width={{ xs: '100%', md: 'auto' }}>
 							<SelectWrapper
 								currentSize={frameSize}
-								onChange={handlerForKey}
+								onChange={handleSetFrameSize}
 								onUnmount={handleOnUnmount}
 								selectRef={selectRef}
 							/>
@@ -179,8 +193,9 @@ export default function ResponsivePage() {
 					<div
 						css={{
 							height: '100%',
-							overflowX: 'auto',
 							lineHeight: 0, // Weird 3px line on bottom w/o this
+							overflowX: 'auto',
+							overscrollBehavior: 'contain',
 						}}
 					>
 						<div

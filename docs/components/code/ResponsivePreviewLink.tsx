@@ -9,12 +9,13 @@ import { checkAndModifyCode } from './utils';
 
 // Query param keys for responsive preview page
 export const responsivePreviewQueryKeys = {
-	/** iframe URL support, use instead of `playroomSrc` */
-	frameSrc: 'frame-src',
+	/** iframe URL support, use instead of `code`*/
+	frameSrc: 'src',
+	playroomCode: 'code',
 	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
 	padding: 'padding',
-	playroomSrc: 'playroom-code',
 	returnLink: 'return',
+	previewSize: 'size',
 	title: 'title',
 };
 
@@ -44,7 +45,7 @@ export function ResponsivePreviewLink({
 			code: checkAndModifyCode(code),
 		});
 		urlParams.append(
-			responsivePreviewQueryKeys.playroomSrc,
+			responsivePreviewQueryKeys.playroomCode,
 			playroomPreviewUrl
 		);
 	}
