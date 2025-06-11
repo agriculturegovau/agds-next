@@ -41,14 +41,14 @@ export function LiveCode({
 	exampleContentHeading,
 	exampleContentHeadingType,
 	padding = true,
-	previewHeading = 'Responsive preview',
+	previewTitle,
 	showCode = false,
 }: {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	padding?: boolean;
-	previewHeading?: string;
+	previewTitle: string;
 	showCode?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
@@ -161,7 +161,7 @@ export function LiveCode({
 				<ResponsivePreviewLink
 					code={live.code}
 					padding={padding}
-					title={previewHeading}
+					title={previewTitle}
 				>
 					Preview responsive component
 				</ResponsivePreviewLink>

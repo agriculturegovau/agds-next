@@ -7,7 +7,7 @@ import { ChevronRightIcon } from '@ag.ds-next/react/icon';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { checkAndModifyCode } from './utils';
 
-// Query param keys for responsive preview page
+// Query param keys consumed by the responsive preview page
 export const responsivePreviewQueryKeys = {
 	/** iframe URL support, use instead of `code`*/
 	frameSrc: 'src',
@@ -15,6 +15,7 @@ export const responsivePreviewQueryKeys = {
 	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
 	padding: 'padding',
 	returnLink: 'return',
+	/** Sizes are set by the user on the responsive preview page */
 	previewSize: 'size',
 	title: 'title',
 };
@@ -22,14 +23,14 @@ export const responsivePreviewQueryKeys = {
 export function ResponsivePreviewLink({
 	children,
 	code,
-	frameAddress,
+	frameSrc,
 	padding = true,
 	standalone = false,
 	title,
 }: {
 	children: React.ReactNode;
 	code?: string;
-	frameAddress?: string;
+	frameSrc?: string;
 	padding?: boolean;
 	standalone?: boolean;
 	title: string;
@@ -37,8 +38,7 @@ export function ResponsivePreviewLink({
 	const urlParams = new URLSearchParams();
 
 	if (title) urlParams.append(responsivePreviewQueryKeys.title, title);
-	if (frameAddress)
-		urlParams.append(responsivePreviewQueryKeys.frameSrc, frameAddress);
+	if (frameSrc) urlParams.append(responsivePreviewQueryKeys.frameSrc, frameSrc);
 	if (code) {
 		const playroomPreviewUrl = createPreviewUrl({
 			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,

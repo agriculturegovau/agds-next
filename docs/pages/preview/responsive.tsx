@@ -1,6 +1,6 @@
 import {
 	Fragment,
-	type Ref,
+	type RefObject,
 	useEffect,
 	useMemo,
 	useRef,
@@ -71,7 +71,8 @@ export default function ResponsivePage() {
 	const isIos = useIsIos();
 
 	useEffect(() => {
-		// useSearchParams is too slow on initial render
+		// useSearchParams hook is too slow on initial render
+		// Using browser API to set the initial size
 		const initQueryParams = new URLSearchParams(window.location.search);
 		const defaultSize = initQueryParams.get(
 			responsivePreviewQueryKeys.previewSize
@@ -141,8 +142,7 @@ export default function ResponsivePage() {
 			<DocumentTitle title={title} />
 			<Flex
 				css={{
-					height: ['100vh', '100dvh'],
-					minHeight: isIos ? '-webkit-fill-available' : 'auto',
+					height: ['100vh', isIos ? '100svh' : '100dvh'],
 				}}
 				flexDirection="column"
 				width="100%"
@@ -252,13 +252,13 @@ const RadioButton = ({
 	onUnmount: (target: UnmountTargets) => void;
 	size: Sizes;
 }) => {
-	const { label } = screenSizes[screenSize];
 	const radioRef = useRef<HTMLInputElement>(null);
 	const [isFocused, setIsFocused] = useState(false);
+	const { label } = screenSizes[screenSize];
 
 	useEffect(() => {
 		return () => {
-			// We want to purposely check the current, as it would have unmounted
+			// We want to purposely check the most recent state to check if it has unmounted
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			if (!radioRef.current && isFocused) {
 				onUnmount('select');
@@ -290,14 +290,13 @@ const SelectWrapper = ({
 	currentSize: Sizes;
 	onChange: (value: Sizes) => void;
 	onUnmount: (target: UnmountTargets) => void;
-	selectRef: Ref<HTMLSelectElement>;
+	selectRef: RefObject<HTMLSelectElement>;
 }) => {
 	const [isFocused, setIsFocused] = useState(false);
 
 	useEffect(() => {
 		return () => {
-			// We want to purposely check the current, as it would have unmounted
-			// @ts-expect-error: TODO fix `select.Ref.current` issue
+			// We want to purposely check the most recent state to check if it has unmounted
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			if (selectRef && !selectRef.current && isFocused) {
 				onUnmount('radio');

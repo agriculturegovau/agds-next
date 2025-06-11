@@ -76,23 +76,24 @@ export function Code({
 
 	if (!childrenAsString) return null;
 
-	const title =
+	const responsivePreviewTitle =
 		previewHeading || `${createTitleFromPathname(pathname)} preview`;
 
-	// Standalone link
+	// Standalone link, inline docs
 	if (previewHeading && !live) {
 		return (
 			<ResponsivePreviewLink
 				code={childrenAsString}
 				padding={padding}
 				standalone
-				title={title}
+				title={responsivePreviewTitle}
 			>
 				{previewHeading}
 			</ResponsivePreviewLink>
 		);
 	}
 
+	// Live preview code with CTAs
 	if (live) {
 		return (
 			<LiveProvider
@@ -105,7 +106,7 @@ export function Code({
 					exampleContentHeading={exampleContentHeading}
 					exampleContentHeadingType={exampleContentHeadingType}
 					padding={padding}
-					previewHeading={title}
+					previewTitle={responsivePreviewTitle}
 					showCode={showCode}
 				/>
 			</LiveProvider>
