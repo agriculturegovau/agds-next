@@ -5,4 +5,6 @@
 
 docs: Add responsive preview page.
 
-radio: Add onFocus prop support
+header: Remove padding from preview examples.
+
+radio: Add `onFocus` prop support.

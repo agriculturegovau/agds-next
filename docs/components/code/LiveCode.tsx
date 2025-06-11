@@ -6,10 +6,13 @@ import {
 	useRef,
 	useState,
 } from 'react';
+import copy from 'clipboard-copy';
 import { createUrl } from 'playroom';
 import { LiveContext, LiveEditor, LivePreview } from 'react-live';
+import { ExternalLinkCallout } from '@ag.ds-next/react/a11y';
 import { Box } from '@ag.ds-next/react/box';
-import { Button } from '@ag.ds-next/react/button';
+import { Button, ButtonLink } from '@ag.ds-next/react/button';
+import { CardHeader } from '@ag.ds-next/react/card';
 import {
 	globalPalette,
 	mapSpacing,
@@ -18,19 +21,19 @@ import {
 	useId,
 	useToggleState,
 } from '@ag.ds-next/react/core';
-import { ChevronDownIcon, ChevronUpIcon } from '@ag.ds-next/react/icon';
+import { Flex } from '@ag.ds-next/react/flex';
+import { Heading } from '@ag.ds-next/react/heading';
+import {
+	ChevronDownIcon,
+	ChevronUpIcon,
+	CopyIcon,
+} from '@ag.ds-next/react/icon';
 import {
 	proseBlockClassname,
 	unsetProseStylesClassname,
 } from '@ag.ds-next/react/prose';
-import {
-	CodeHeading,
-	CopyCodeButton,
-	OpenInPlayroomButton,
-	PreviewActionContainer,
-	ResponsivePreviewButton,
-} from './PreviewComponents';
 import { prismTheme } from './prism-theme';
+import { ResponsivePreviewLink } from './ResponsivePreviewLink';
 import { checkAndModifyCode } from './utils';
 
 export function LiveCode({
@@ -67,6 +70,9 @@ export function LiveCode({
 		[liveOnChange]
 	);
 
+	const copyLiveCode = useCallback(() => {
+		copy(localCopy);
+	}, [localCopy]);
 	const codeUrl = useCallback(() => checkAndModifyCode(live.code), [live.code]);
 
 	const playroomUrl = createUrl({
@@ -102,9 +108,11 @@ export function LiveCode({
 	return (
 		<Box border borderColor="muted" className={proseBlockClassname} rounded>
 			{exampleContentHeadingType && (
-				<CodeHeading exampleContentHeadingType={exampleContentHeadingType}>
-					{exampleContentHeading}
-				</CodeHeading>
+				<CardHeader>
+					<Heading type={exampleContentHeadingType}>
+						{exampleContentHeading}
+					</Heading>
+				</CardHeader>
 			)}
 			<LivePreview
 				aria-label={`Rendered code snippet example ${id}`}
@@ -119,7 +127,14 @@ export function LiveCode({
 				}}
 				role="region"
 			/>
-			<PreviewActionContainer>
+			<Flex
+				borderColor="muted"
+				borderTop
+				css={packs.print.hidden}
+				flexWrap="wrap"
+				gap={0.5}
+				padding={0.5}
+			>
 				<Button
 					aria-controls={codeId}
 					aria-expanded={isCodeVisible}
@@ -131,14 +146,26 @@ export function LiveCode({
 				>
 					{isCodeVisible ? 'Hide live code' : 'Show live code'}
 				</Button>
-				<CopyCodeButton code={localCopy} />
-				<OpenInPlayroomButton playroomUrl={playroomUrl} />
-				<ResponsivePreviewButton
+				<Button
+					iconAfter={CopyIcon}
+					onClick={copyLiveCode}
+					size="sm"
+					variant="tertiary"
+				>
+					Copy code
+				</Button>
+				<ButtonLink href={playroomUrl} size="sm" variant="tertiary">
+					Open in Playroom
+					<ExternalLinkCallout />
+				</ButtonLink>
+				<ResponsivePreviewLink
 					code={live.code}
 					padding={padding}
 					title={previewHeading}
-				/>
-			</PreviewActionContainer>
+				>
+					Preview responsive component
+				</ResponsivePreviewLink>
+			</Flex>
 			<Box
 				css={packs.print.visible}
 				display={isCodeVisible ? 'block' : 'none'}

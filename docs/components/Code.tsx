@@ -7,7 +7,6 @@ import { createTitleFromPathname } from './code/utils';
 import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 import { StaticCode } from './code/StaticCode';
 import { LiveCode } from './code/LiveCode';
-import { PagePreviewIFrame } from './code/PagePreviewIFrame';
 
 export const PlaceholderImage = () => (
 	<img
@@ -54,7 +53,6 @@ type CodeProps = {
 	enableProse?: boolean;
 	exampleContentHeading?: string;
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
-	iframe?: boolean;
 	live?: boolean;
 	padding?: boolean;
 	previewHeading?: string;
@@ -67,7 +65,6 @@ export function Code({
 	enableProse,
 	exampleContentHeading = 'Example',
 	exampleContentHeadingType,
-	iframe,
 	live,
 	padding,
 	previewHeading,
@@ -93,18 +90,6 @@ export function Code({
 			>
 				{previewHeading}
 			</ResponsivePreviewLink>
-		);
-	}
-
-	// Inline iframe
-	if (iframe) {
-		return (
-			<PagePreviewIFrame
-				code={childrenAsString}
-				language={language}
-				showCode={showCode}
-				title={exampleContentHeading}
-			/>
 		);
 	}
 
