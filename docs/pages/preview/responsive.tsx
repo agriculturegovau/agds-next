@@ -1,4 +1,11 @@
-import { Fragment, type Ref, useEffect, useRef, useState } from 'react';
+import {
+	Fragment,
+	type Ref,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import { css, Global } from '@emotion/react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
@@ -6,6 +13,7 @@ import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
 import {
 	boxPalette,
+	canUseDOM,
 	mapSpacing,
 	tokens,
 	useWindowSize,
@@ -60,6 +68,7 @@ export default function ResponsivePage() {
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
 	const scrollbarSizes = useGetScrollbarSizes();
+	const isIos = useIsIos();
 
 	useEffect(() => {
 		// useSearchParams is too slow on initial render
@@ -131,8 +140,13 @@ export default function ResponsivePage() {
 			/>
 			<DocumentTitle title={title} />
 			<Flex
+				//@ts-expect-error TODO
 				css={{
-					height: ['100vh', '-webkit-fill-available', '100dvh'],
+					height: [
+						'100vh',
+						'100dvh',
+						isIos ? '-webkit-fill-available' : undefined,
+					],
 				}}
 				flexDirection="column"
 				width="100%"
@@ -317,3 +331,18 @@ const SelectWrapper = ({
 		/>
 	);
 };
+
+export function useIsIos() {
+	const isIos = useMemo(() => {
+		if (!canUseDOM()) return false;
+
+		return (
+			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
+			CSS &&
+			CSS?.supports('-webkit-appearance', '-apple-pay-button') &&
+			CSS?.supports('-webkit-overflow-scrolling', 'auto')
+		);
+	}, []);
+
+	return isIos;
+}
