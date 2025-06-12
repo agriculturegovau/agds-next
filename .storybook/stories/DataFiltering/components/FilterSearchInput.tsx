@@ -11,15 +11,13 @@ export const FilterSearchInput = ({ block }: { block?: boolean }) => {
 				aria-controls={tableId}
 				block={block}
 				hideOptionalLabel
-				label="Search Business name"
+				label="Search"
 				maxWidth="lg"
 				onChange={(searchString) => {
 					// TODO debounce
-					setFilter({
-						businessName: searchString,
-					});
+					setFilter({ search: searchString });
 				}}
-				value={filters.businessName || ''}
+				value={filters.search || ''}
 			/>
 		</div>
 	);
