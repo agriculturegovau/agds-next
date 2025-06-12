@@ -12,7 +12,7 @@ import { FileWithStatus, formatFileSize, getImageThumbnail } from './utils';
 type FileUploadFileProps = {
 	file: FileWithStatus;
 	hideThumbnails?: boolean;
-	onRemove: MouseEventHandler<HTMLButtonElement>;
+	onRemove?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const FileUploadFile = ({
@@ -75,7 +75,7 @@ export const FileUploadFile = ({
 					<Box paddingY={1}>
 						<LoadingDots label="Uploading" />
 					</Box>
-				) : (
+				) : onRemove ? (
 					<Button
 						aria-label={`Remove file: ${name}`}
 						iconBefore={CloseIcon}
@@ -85,7 +85,7 @@ export const FileUploadFile = ({
 					>
 						Remove
 					</Button>
-				)}
+				) : null}
 			</Flex>
 		</Flex>
 	);
