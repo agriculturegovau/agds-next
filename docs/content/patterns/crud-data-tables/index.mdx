@@ -1,0 +1,449 @@
+---
+title: Creating, reading, editing and deleting data in tables
+description: Applications that require persistent data storage commonly require table layouts to present stored data. Here are some patterns that enable users to create, read, edit and delete persistent data in tables.
+relatedComponents:
+  ['button', 'file-input', 'file-upload', 'section-alert', 'table']
+---
+
+## Overview
+
+When persistent stored data is used in applications CRUD table interactions are required to enable users to Create, Read, Update or Delete data presented in table layouts. These common interactions can be achieved by providing an additional drawer or subpage surface for the action, to reduce the length and complexity of the form page and to provide the user content that is relevant to the interaction through progressive disclosure.
+
+The type of data required in a table will vary from...
+
+## Create, Read, Update or Delete a record in a data table
+
+If your service requires or permits the user to interact directly with persistent data in tables CRUD actions can be used.
+
+### Add a record to a data table
+
+If adding a record to a data table is the primary action of the page, provide a primary action immediately before the table so it is above the table in the page hierarchy.
+
+If adding a record to a data table is a secondary or supplementary action of the page provide a small secondary action immediately after the table.
+
+If no records have been added to a data table provide an empty state to inform users there are no available records.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>
+			<Text
+				color="muted"
+				display="block"
+				fontSize="sm"
+				fontWeight="bold"
+				lineHeight="heading"
+			>
+				Form title
+			</Text>
+			Create a record in this data table
+		</H1>
+		<Text as="p" color="muted" fontSize="md">
+			Add other equipment
+		</Text>
+	</Stack>
+	<Stack gap={2} alignItems="flex-start">
+		<H2>Table of persistent data records</H2>
+		<Stack gap={1}>
+			<InfoIcon size="lg" />
+			<Heading type="h2" fontSize="lg">
+				No records added
+			</Heading>
+			<Text>You must add an equipment to proceed.</Text>
+		</Stack>
+		<ButtonGroup>
+			<Button variant="secondary" size="sm" iconBefore={PlusIcon}>
+				Add record
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+In most situations use a side drawer or side page to provide all form inputs and controls required to add a new record. Use [drawer](/components/drawer) when the form is small or side pages for longer forms that a user will need to scroll.
+
+```jsx live
+<p>Drawer</p>
+```
+
+Once the form used for adding a record to the table is completed, return the user to the table page and display a new row in the table. Show a section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+
+The add record to table pattern is repeatable and scalable.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>
+			<Text
+				color="muted"
+				display="block"
+				fontSize="sm"
+				fontWeight="bold"
+				lineHeight="heading"
+			>
+				Form title
+			</Text>
+			Create a record in this data table
+		</H1>
+		<Text as="p" color="muted" fontSize="md">
+			Add other equipment
+		</Text>
+	</Stack>
+	<SectionAlert
+		onClose={console.log}
+		title="ABC123456 was added to records"
+		tone="successHigh"
+	/>
+	<Stack gap={2}>
+		<H2>Table of persistent data records</H2>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Record name</TableHeader>
+						<TableHeader scope="col">Record type</TableHeader>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					<TableRow>
+						<TableCell as="th" fontWeight="bold" scope="row">
+							<TextLink href="#" id="ABC123456">
+								ABC123456
+							</TextLink>
+						</TableCell>
+						<TableCell>Type 1</TableCell>
+						<TableCell>123 Address, State</TableCell>
+						<TableCell>
+							<Flex gap={1}>
+								<TextLink aria-describedby="ABC123456" href="#">
+									Edit
+								</TextLink>
+								<TextLink aria-describedby="ABC123456" href="#">
+									Delete
+								</TextLink>
+							</Flex>
+						</TableCell>
+					</TableRow>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+		<ButtonGroup>
+			<Button variant="secondary" size="sm" iconBefore={PlusIcon}>
+				Add record
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+### View or edit a record in a data table
+
+Provide a link in the first column of the table so users can open and read a record. The record number or other unique identifier should be made bold and used for the link label.
+
+Provide a side drawer or side page to provide the record information. Use side drawer for small records or side pages for longer records that a user will need to scroll.
+
+After a user has read the record return them to the table page.
+
+Viewing a record in a table is repeatable and scalable pattern.
+
+### Edit a record in a data table
+
+Provide an `Edit` link in the last column of the table so users can open and edit existing records. The edit link can be included in a drop down of actions in the last column if there are more than two actions required.
+
+We can't edit content in place in semantic tables, so use a side page or side drawer to provide all inputs and controls required to edit the record.
+
+After the record is edited in the side page or drawer, return the user to the table page, show the edited record in the table, and provide a Section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+
+The edit pattern is repeatable and scalable.
+
+```jsx live
+
+```
+
+### Delete a record from a data table
+
+Provide a ’Delete’ link in the last column of the table so users can delete existing records. The delete link can be included in a drop down of actions in the last column if there are more than two actions required.
+
+If the table supports batch actions more than one record can be deleted at the same time.
+
+Before any record is deleted provide a destructive action modal to make sure a user intends to remove the record.
+
+After the record is deleted, remove the record from the table, and provide a Section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+
+The delete pattern is repeatable and scalable.
+
+```jsx live
+
+```
+
+## Upload a undefined list of files to a table
+
+When a user needs to upload an undefined list of files, of different categories or requiring specific metadata, the repeatable file upload pattern can be used. When using this pattern metadata can be associated with uploaded files to support back stage processing.
+
+The upload undefined list of files pattern reduces the amount of form content on the parent page page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
+
+### Empty state
+
+Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users, Tey will not need to navigate through a table to find out it is empty.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>Upload undefined list of files to data table (repeatable)</H1>
+	</Stack>
+	<Stack gap={2} alignItems="flex-start">
+		<H2>List of equipment</H2>
+		<Stack gap={1}>
+			<InfoIcon size="lg" />
+			<Heading type="h2" fontSize="lg">
+				No equipment added
+			</Heading>
+			<Text>You must add an equipment to proceed.</Text>
+		</Stack>
+		<ButtonGroup>
+			<Button variant="secondary" size="sm" iconBefore={PlusIcon}>
+				Upload file
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+### Side page or drawer
+
+The pattern will direct the user to a subpage or side drawer to compete each upload task. The choice of subpage or drawer will be determined by the amount of content, inputs and controls required. We do not encourage side drawers that scroll, so use side pages for longer upload form pages. Try to choose one option, either side drawer or side page, that can be implemented consistently across the multi-page form or service it is used in.
+
+Metadata for each uploaded file can be provided in a side drawer or side page containing the required inputs and controls. This pattern reduces the amount of form content on the parent page making it easier for users to complete the form. It keeps the users context and focus when providing all required metadata in the side drawer or side page.
+
+### File categorisation
+
+The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the record category or type and provide any additional information required about an upload. Radio groups or Selected can be used to help the user determine which category should be applied to an uploaded file.
+
+```jsx live
+
+```
+
+### Validation and focus
+
+When a file is added in a subpage or drawer, return the user to the parent form page, set their focus on a Section alert to inform them if the upload was successful or an error has occurred.
+
+The uploaded file should also be visible in a table or list on the parent page. Provide an edit or remove action in the table row or list to enable files to be changed.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>Upload undefined list of files to table (repeatable)</H1>
+	</Stack>
+	<SectionAlert
+		onClose={console.log}
+		title="FileName1.png was uploaded"
+		tone="successHigh"
+	/>
+	<Stack gap={2}>
+		<H2>List of equipment</H2>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Item</TableHeader>
+						<TableHeader scope="col">Qty</TableHeader>
+						<TableHeader scope="col">Files</TableHeader>
+						<TableHeader scope="col">Actions</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					<TableRow>
+						<TableCell>Type 1</TableCell>
+						<TableCell>1</TableCell>
+						<TableCell as="th" scope="row">
+							FileName1.png
+						</TableCell>
+						<TableCell>
+							<TextLink aria-describedby="FileName1.png" href="#">
+								Remove
+							</TextLink>
+						</TableCell>
+					</TableRow>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+		<ButtonGroup>
+			<Button variant="secondary" size="sm" iconBefore={PlusIcon}>
+				Upload file
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+If a required file is not uploaded before the page is submitted, show an error in the row where the file is missing and provide a section alert above the table to assist with error correction.
+
+## Upload a defined list of files to a data table
+
+A specific or defined list of files can be uploaded several ways. The number of items on the list and number of files for each list item will determine the appropriate pattern to use.
+
+The upload defined list of pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
+
+### Empty state
+
+Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>Upload defined list of files to data table</H1>
+	</Stack>
+	<Stack gap={2} alignItems="flex-start">
+		<H2>List of equipment</H2>
+		<Stack gap={1}>
+			<InfoIcon size="lg" />
+			<Heading type="h2" fontSize="lg">
+				No equipment added
+			</Heading>
+			<Text>You must add an equipment to proceed.</Text>
+		</Stack>
+		<ButtonGroup>
+			<Button variant="secondary" size="sm" iconBefore={PlusIcon}>
+				Upload file
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+### Large lists
+
+When large defined lists of files in tables are required a drawer or subpage for each upload action should be used. The File Upload component can be used in the side drawer or subpage to allow multiple files for each required category to listed and uploaded to a table.
+
+### File categorisation
+
+The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selected can be used to help the user determine which category should be applied to an upload file.
+
+```jsx live
+
+```
+
+### Validation and focus
+
+When a file is added in a subpage or drawer, return the user to the parent form page, set their focus on a section alert to inform them if the upload was successful or an error has occurred.
+
+The uploaded file should also be visible in a table or list on the parent page. Provided an edit or remove action in the table row or list to enable files to be changed.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>Upload defined list of files to table</H1>
+	</Stack>
+	<SectionAlert
+		onClose={console.log}
+		title="FileName1.png was uploaded"
+		tone="successHigh"
+	/>
+	<Stack gap={2}>
+		<H2>List of files</H2>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Document type</TableHeader>
+						<TableHeader scope="col">File</TableHeader>
+						<TableHeader scope="col">Size</TableHeader>
+						<TableHeader scope="col">Action</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{[...Array(4).keys()].map((idx) => {
+						return (
+							<TableRow key={idx}>
+								<TableCell>Required file category {idx + 1}</TableCell>
+								<TableCell>
+									<Box width="2rem" />
+								</TableCell>
+								<TableCell>
+									<Box width="2rem" />
+								</TableCell>
+								<TableCell>
+									<Button iconBefore={UploadIcon} variant="text">
+										Upload
+									</Button>
+								</TableCell>
+							</TableRow>
+						);
+					})}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+		<ButtonGroup>
+			<Button iconBefore={PlusIcon} size="sm" variant="secondary">
+				Upload file
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
+
+If a required file is not uploaded before the page is submitted, show an error in the row where the file is missing and provide a section alert above the table to assist with error correction.
+
+```jsx live
+<Stack gap={3}>
+	<Stack gap={1.5}>
+		<H1>Upload defined list of files to table</H1>
+	</Stack>
+	<SectionAlert
+		onClose={console.log}
+		title="You must provide all documents in the table below"
+		tone="errorHigh"
+	>
+		<UnorderedList>
+			<ListItem>Required file category 1 is required</ListItem>
+			<ListItem>Required file category 2 is required</ListItem>
+			<ListItem>Required file category 3 is required</ListItem>
+		</UnorderedList>
+	</SectionAlert>
+	<Stack gap={2}>
+		<H2>List of files</H2>
+		<TableWrapper>
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Document type</TableHeader>
+						<TableHeader scope="col">File</TableHeader>
+						<TableHeader scope="col">Size</TableHeader>
+						<TableHeader scope="col">Action</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{[...Array(3).keys()].map((idx) => {
+						return (
+							<TableRow key={idx}>
+								<TableCell>Required file category {idx + 1}</TableCell>
+								<TableCell>
+									<Box width="5rem" />
+								</TableCell>
+								<TableCell>
+									<Flex alignItems="center" gap={0.5}>
+										<AlertFilledIcon color="error" />
+										<Text>File missing</Text>
+									</Flex>
+								</TableCell>
+								<TableCell>
+									<Button iconBefore={UploadIcon} variant="text">
+										Upload
+									</Button>
+								</TableCell>
+							</TableRow>
+						);
+					})}
+				</TableBody>
+			</Table>
+		</TableWrapper>
+		<ButtonGroup>
+			<Button iconBefore={PlusIcon} size="sm" variant="secondary">
+				Upload file
+			</Button>
+		</ButtonGroup>
+	</Stack>
+</Stack>
+```
