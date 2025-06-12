@@ -7,10 +7,12 @@ import {
 	useState,
 } from 'react';
 import { css, Global } from '@emotion/react';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { VisuallyHidden } from '@ag.ds-next/react/a11y';
-import { ButtonLink } from '@ag.ds-next/react/button';
 import { Box } from '@ag.ds-next/react/box';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { PageContent } from '@ag.ds-next/react/content';
+import { ControlGroup } from '@ag.ds-next/react/control-group';
 import {
 	boxPalette,
 	canUseDOM,
@@ -18,12 +20,13 @@ import {
 	tokens,
 	useWindowSize,
 } from '@ag.ds-next/react/core';
-import { ControlGroup } from '@ag.ds-next/react/control-group';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
-import { ArrowLeftIcon } from '@ag.ds-next/react/icon';
+import { AlertFilledIcon, ArrowLeftIcon } from '@ag.ds-next/react/icon';
 import { Radio } from '@ag.ds-next/react/radio';
 import { Select } from '@ag.ds-next/react/select';
+import { Stack } from '@ag.ds-next/react/stack';
+import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePreviewLink';
 import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
@@ -119,8 +122,6 @@ export default function ResponsivePage() {
 	};
 	const isChecked = (key: Sizes) => key === frameSize;
 
-	if (!iframeSrc) return null;
-
 	const horizontalSpacing =
 		screenSizes[frameSize].width < screenSizes.md.width
 			? mapSpacing(0.75)
@@ -154,7 +155,7 @@ export default function ResponsivePage() {
 					flexDirection={{ xs: 'column', md: 'row' }}
 					gap={{ xs: 1, md: 1.5 }}
 					justifyContent="space-between"
-					paddingX={1.5}
+					paddingX={{ xs: 0.75, md: 2 }}
 					paddingY={1}
 				>
 					<Flex
@@ -206,43 +207,58 @@ export default function ResponsivePage() {
 						)}
 					</div>
 				</Flex>
-				<Box as="main" background="bodyAlt" flexGrow={1}>
-					<div
-						css={{
-							height: '100%',
-							lineHeight: 0, // 3px line on bottom without this setting
-							overflowX: 'auto',
-							overscrollBehavior: 'contain',
-						}}
-					>
+				{iframeSrc ? (
+					<Box as="main" background="bodyAlt" flexGrow={1}>
 						<div
 							css={{
-								backgroundColor: boxPalette.backgroundBody,
 								height: '100%',
-								margin: 'auto',
-								width: 'fit-content',
+								lineHeight: 0, // 3px line on bottom without this setting
+								overflowX: 'auto',
+								overscrollBehavior: 'contain',
 							}}
 						>
-							<iframe
+							<div
 								css={{
-									border: 0,
+									backgroundColor: boxPalette.backgroundBody,
 									height: '100%',
-									...(!disablePadding && {
-										height: `calc(100% - ${topSpacing})`,
-										marginLeft: `max(${horizontalSpacing}, ${scrollbarSizes.width}px)`,
-										// Clamp to prevent negative margin
-										marginRight: `clamp(0px, calc(${horizontalSpacing} - ${scrollbarSizes.width}px), ${horizontalSpacing})`,
-										marginTop: topSpacing,
-									}),
+									margin: 'auto',
+									width: 'fit-content',
 								}}
-								ref={iframeRef}
-								src={iframeSrc}
-								title={`Framed content, ${title}`}
-								width={screenSizes[frameSize].width}
-							></iframe>
+							>
+								<iframe
+									css={{
+										border: 0,
+										height: '100%',
+										...(!disablePadding && {
+											height: `calc(100% - ${topSpacing})`,
+											marginLeft: `max(${horizontalSpacing}, ${scrollbarSizes.width}px)`,
+											// Clamp to prevent negative margin
+											marginRight: `clamp(0px, calc(${horizontalSpacing} - ${scrollbarSizes.width}px), ${horizontalSpacing})`,
+											marginTop: topSpacing,
+										}),
+									}}
+									ref={iframeRef}
+									src={iframeSrc}
+									title={`Framed content, ${title}`}
+									width={screenSizes[frameSize].width}
+								></iframe>
+							</div>
 						</div>
-					</div>
-				</Box>
+					</Box>
+				) : (
+					<PageContent as="main">
+						<Stack alignItems="flex-start" gap={2} role="alert">
+							<Stack gap={1}>
+								<AlertFilledIcon color="error" size="lg" />
+								<Heading fontSize="lg" type="h2">
+									Failed to load
+								</Heading>
+								<Text>There was an error loading the preview.</Text>
+							</Stack>
+							<ButtonLink href={returnLink}>Back to documentation</ButtonLink>
+						</Stack>
+					</PageContent>
+				)}
 			</Flex>
 		</Fragment>
 	);
@@ -328,7 +344,6 @@ const SelectWrapper = ({
 			onFocus={() => setIsFocused(true)}
 			options={options}
 			ref={selectRef}
-			required
 			value={currentSize}
 		/>
 	);
