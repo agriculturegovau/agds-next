@@ -140,6 +140,7 @@ export default function ResponsivePage() {
 			<DocumentTitle title={title} />
 			<Flex
 				css={{
+					// IOS can't handle `dvh` when the browser has the address bar at the top, use `svh` instead
 					height: ['100vh', isIos ? '100svh' : '100dvh'],
 				}}
 				flexDirection="column"
@@ -151,7 +152,7 @@ export default function ResponsivePage() {
 					background="shade"
 					borderBottom
 					flexDirection={{ xs: 'column', md: 'row' }}
-					gap={1}
+					gap={{ xs: 1, md: 1.5 }}
 					justifyContent="space-between"
 					paddingX={1.5}
 					paddingY={1}
@@ -161,6 +162,8 @@ export default function ResponsivePage() {
 						display="flex"
 						flexDirection="column"
 						gap={1}
+						height="100%"
+						justifyContent="space-between"
 					>
 						<ButtonLink
 							href={returnLink}
@@ -173,35 +176,41 @@ export default function ResponsivePage() {
 							{title}
 						</Heading>
 					</Flex>
-
-					{radioVisible ? (
-						<ControlGroup label="Preview size" required>
-							{(Object.keys(screenSizes) as Array<Sizes>).map((size) => (
-								<RadioButton
-									checked={isChecked(size)}
-									key={size}
+					<div css={{ marginTop: 'auto' }}>
+						{radioVisible ? (
+							<Flex gap={1} width="max-content">
+								<ControlGroup label="Preview size" required>
+									{(Object.keys(screenSizes) as Array<Sizes>).map((size) => (
+										<RadioButton
+											checked={isChecked(size)}
+											key={size}
+											onChange={handleSetFrameSize}
+											onUnmount={handleOnUnmount}
+											size={size}
+										/>
+									))}
+								</ControlGroup>
+							</Flex>
+						) : (
+							<Box
+								minWidth={tokens.maxWidth.field.md}
+								width={{ xs: '100%', md: 'auto' }}
+							>
+								<SelectWrapper
+									currentSize={frameSize}
 									onChange={handleSetFrameSize}
 									onUnmount={handleOnUnmount}
-									size={size}
+									selectRef={selectRef}
 								/>
-							))}
-						</ControlGroup>
-					) : (
-						<Box width={{ xs: '100%', md: 'auto' }}>
-							<SelectWrapper
-								currentSize={frameSize}
-								onChange={handleSetFrameSize}
-								onUnmount={handleOnUnmount}
-								selectRef={selectRef}
-							/>
-						</Box>
-					)}
+							</Box>
+						)}
+					</div>
 				</Flex>
 				<Box as="main" background="bodyAlt" flexGrow={1}>
 					<div
 						css={{
 							height: '100%',
-							lineHeight: 0, // Weird 3px line on bottom w/o this
+							lineHeight: 0, // 3px line on bottom without this setting
 							overflowX: 'auto',
 							overscrollBehavior: 'contain',
 						}}
