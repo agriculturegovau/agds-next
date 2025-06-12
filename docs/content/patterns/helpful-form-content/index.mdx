@@ -53,18 +53,51 @@ If the guidance pertains to a list, provide the list, then link to more detailed
 We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
 
 ```jsx live
-<Details iconBefore label="Why should I invite a new staff member?">
-	<Flex flexDirection="column" gap={1}>
-		<Text as="p">
-			Inviting individuals to the service can help you streamline your
-			operations. You can then assign them a role, so they can access necessary
-			information and tasks.
-		</Text>
-		<TextLinkExternal href="#">
-			Learn more about inviting a staff member
-		</TextLinkExternal>
-	</Flex>
-</Details>
+() => {
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<>
+			<Details iconBefore label="Why should I invite a new staff member?">
+				<Flex flexDirection="column" gap={1}>
+					<Text as="p">
+						Inviting individuals to the service can help you streamline your
+						operations. You can then assign them a role, so they can access
+						necessary information and tasks.
+					</Text>
+					<Text as="p">
+						Learn more about{' '}
+						<Button
+							iconAfter={MoveLeftIcon}
+							onClick={openDrawer}
+							size="sm"
+							variant="text"
+						>
+							inviting a staff member
+						</Button>
+					</Text>
+				</Flex>
+			</Details>
+			<Drawer
+				actions={
+					<ButtonGroup>
+						<Button onClick={closeDrawer}>Primary</Button>
+						<Button variant="secondary" onClick={closeDrawer}>
+							Secondary
+						</Button>
+						<Button variant="tertiary" onClick={closeDrawer}>
+							Tertiary
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Inviting a staff member"
+			>
+				<Text as="p">Drawer body area.</Text>
+			</Drawer>
+		</>
+	);
+};
 ```
 
 ## Drawer
