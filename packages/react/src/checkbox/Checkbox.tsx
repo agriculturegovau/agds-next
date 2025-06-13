@@ -27,6 +27,7 @@ type BaseCheckboxProps = PropsWithChildren<{
 	name?: NativeCheckboxProps['name'];
 	onBlur?: NativeCheckboxProps['onBlur'];
 	onChange?: NativeCheckboxProps['onChange'];
+	onFocus?: NativeCheckboxProps['onFocus'];
 	pattern?: NativeCheckboxProps['pattern'];
 	required?: NativeCheckboxProps['required'];
 	value?: NativeCheckboxProps['value'];
