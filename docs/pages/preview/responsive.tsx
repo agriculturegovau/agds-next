@@ -23,8 +23,8 @@ import {
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
 import { AlertFilledIcon, ArrowLeftIcon } from '@ag.ds-next/react/icon';
-import { Radio } from '@ag.ds-next/react/radio';
-import { Select } from '@ag.ds-next/react/select';
+import { Radio as AgDSRadio } from '@ag.ds-next/react/radio';
+import { Select as AgDSSelect } from '@ag.ds-next/react/select';
 import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
@@ -86,8 +86,8 @@ export default function ResponsivePage() {
 		}
 	}, [setFrameSize]);
 
-	const returnLink =
-		searchParams.get(responsivePreviewQueryKeys.returnLink) || '/';
+	const referrerLink =
+		searchParams.get(responsivePreviewQueryKeys.referrerLink) || '/';
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
 	const disablePadding = Boolean(
@@ -167,7 +167,7 @@ export default function ResponsivePage() {
 						justifyContent="space-between"
 					>
 						<ButtonLink
-							href={returnLink}
+							href={referrerLink}
 							iconBefore={ArrowLeftIcon}
 							variant="text"
 						>
@@ -182,7 +182,7 @@ export default function ResponsivePage() {
 							<Flex gap={1} width="max-content">
 								<ControlGroup label="Preview size" required>
 									{(Object.keys(screenSizes) as Array<Sizes>).map((size) => (
-										<RadioButton
+										<Radio
 											checked={isChecked(size)}
 											key={size}
 											onChange={handleSetFrameSize}
@@ -197,7 +197,7 @@ export default function ResponsivePage() {
 								minWidth={tokens.maxWidth.field.md}
 								width={{ xs: '100%', md: 'auto' }}
 							>
-								<SelectWrapper
+								<Select
 									currentSize={frameSize}
 									onChange={handleSetFrameSize}
 									onUnmount={handleOnUnmount}
@@ -255,7 +255,7 @@ export default function ResponsivePage() {
 								</Heading>
 								<Text>There was an error loading the preview.</Text>
 							</Stack>
-							<ButtonLink href={returnLink}>Back to documentation</ButtonLink>
+							<ButtonLink href={referrerLink}>Back to documentation</ButtonLink>
 						</Stack>
 					</PageContent>
 				)}
@@ -264,7 +264,7 @@ export default function ResponsivePage() {
 	);
 }
 
-const RadioButton = ({
+const Radio = ({
 	checked,
 	onChange,
 	onUnmount,
@@ -290,7 +290,7 @@ const RadioButton = ({
 	}, [isFocused, onUnmount]);
 
 	return (
-		<Radio
+		<AgDSRadio
 			checked={checked}
 			id={constructRadioId(screenSize)}
 			onBlur={() => setIsFocused(false)}
@@ -300,11 +300,11 @@ const RadioButton = ({
 			size="sm"
 		>
 			{label}
-		</Radio>
+		</AgDSRadio>
 	);
 };
 
-const SelectWrapper = ({
+const Select = ({
 	currentSize,
 	onChange,
 	onUnmount,
@@ -336,7 +336,7 @@ const SelectWrapper = ({
 	});
 
 	return (
-		<Select
+		<AgDSSelect
 			block
 			label="Preview size"
 			onBlur={() => setIsFocused(false)}

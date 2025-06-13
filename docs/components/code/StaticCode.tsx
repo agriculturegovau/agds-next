@@ -16,34 +16,33 @@ require('prismjs/components/prism-diff');
 export const StaticCode = ({
 	code,
 	language = '', // By default render as plain text (ie. no language)
-	inline = false,
 }: {
 	code: string;
 	language?: string;
-	inline?: boolean;
 }) => {
 	return (
 		<Box
 			border
 			borderColor="muted"
 			css={{
-				marginTop: inline ? 0 : mapSpacing(1.5),
+				marginTop: mapSpacing(1.5),
 
 				pre: {
-					padding: `${mapSpacing(1.5)} !important`,
 					overflowX: 'auto',
+					padding: `${mapSpacing(1.5)} !important`,
+					tabSize: `4 !important`,
 				},
 
 				'& ::selection': {
-					color: globalPalette.darkBackgroundBody,
 					backgroundColor: globalPalette.darkForegroundAction,
+					color: globalPalette.darkBackgroundBody,
 				},
 			}}
 			rounded
 		>
 			<Box dark>
 				<Highlight code={code} language={language} theme={prismTheme}>
-					{({ className, style, tokens, getLineProps, getTokenProps }) => (
+					{({ className, getLineProps, getTokenProps, style, tokens }) => (
 						<pre
 							className={[className, unsetProseStylesClassname].join(' ')}
 							style={style}

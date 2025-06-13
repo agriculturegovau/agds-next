@@ -2,8 +2,9 @@ import { usePathname } from 'next/navigation';
 import { createPreviewUrl } from 'playroom';
 import { Box } from '@ag.ds-next/react/box';
 import { ButtonLink } from '@ag.ds-next/react/button';
-import { Heading } from '@ag.ds-next/react/heading';
+import { mapSpacing } from '@ag.ds-next/react/core';
 import { ChevronRightIcon } from '@ag.ds-next/react/icon';
+import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import { checkAndModifyCode } from './utils';
 
@@ -12,7 +13,7 @@ export const responsivePreviewQueryKeys = {
 	frameSrc: 'src',
 	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
 	padding: 'padding',
-	returnLink: 'return',
+	referrerLink: 'referrer',
 	/** Sizes are set by the user on the responsive preview page */
 	previewSize: 'size',
 	title: 'title',
@@ -48,24 +49,18 @@ export function ResponsivePreviewLink({
 	}
 
 	const pathname = usePathname();
-	urlParams.append(responsivePreviewQueryKeys.returnLink, pathname);
+	urlParams.append(responsivePreviewQueryKeys.referrerLink, pathname);
 
 	const href = `/preview/responsive?${urlParams.toString()}`;
 
 	// Link without live preview
 	if (standalone) {
 		return (
-			<Box css={{ marginTop: '1.5rem' }}>
+			<Box css={{ marginTop: mapSpacing(1.5) }}>
 				<TextLink href={href}>
-					<Heading
-						alignItems="center"
-						as="span"
-						color="inherit"
-						gap={0.25}
-						type="h3"
-					>
+					<Text as="span" color="inherit" fontSize="lg" fontWeight="bold">
 						{children}
-					</Heading>
+					</Text>
 					<ChevronRightIcon css={{ verticalAlign: 'text-bottom' }} />
 				</TextLink>
 			</Box>

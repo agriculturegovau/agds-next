@@ -163,7 +163,7 @@ export function LiveCode({
 					padding={padding}
 					title={previewTitle}
 				>
-					Preview responsive component
+					Open responsive preview
 				</ResponsivePreviewLink>
 			</Flex>
 			<Box

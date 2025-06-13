@@ -7,7 +7,7 @@ figmaGalleryNodeId: 18834%3A97298
 relatedComponents: ['date-picker-next']
 ---
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return <DateRangePickerNext value={value} onChange={setValue} />;
@@ -36,7 +36,7 @@ For an example of using this component in a form built with [react-hook-form](ht
 
 Use the `legend` prop to describe the purpose of the group of fields.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
@@ -57,7 +57,7 @@ Don’t use long paragraphs and lists in hint text. Screen readers read out the 
 
 Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
@@ -75,7 +75,7 @@ Don’t include links within hint text. While screen readers will read out the l
 
 Use the `fromInvalid` and `toInvalid` props to indicate if the user input is invalid.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
@@ -111,7 +111,7 @@ Use the `fromInvalid` and `toInvalid` props to indicate if the user input is inv
 
 Use the `isValidDate` function to check if the user has inputted/picked invalid dates, including dates that are out of order or dates outside of allowed ranges.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	// This logic is for documentation purposes only. This should be done with `yup` or `zod`.
@@ -152,7 +152,7 @@ Use the `isValidDate` function to check if the user has inputted/picked invalid 
 
 Use the `fromLabel` and `toLabel` props to change the field labels.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
@@ -170,7 +170,7 @@ Use the `fromLabel` and `toLabel` props to change the field labels.
 
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return <DateRangePickerNext value={value} onChange={setValue} disabled />;
@@ -185,7 +185,7 @@ The `maxDate` property can be used to disable any days in the calendar after a s
 
 A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 
@@ -265,7 +265,7 @@ To modify the date format, you can change the `dateFormat` prop to one of these 
 - `'MMMM dd yyyy'` (e.g. February 08 2023)
 - `'MMM dd yyyy'` (e.g. Feb 08 2023)
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
 	return (
@@ -288,7 +288,7 @@ Date formats are parsed in order from first to last and stops when a valid date 
 
 The array of `allowedDateFormats` will also need to be passed to the `isValidDate` function to correctly validate the user’s input.
 
-```jsx live previewHeading="Date range picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState({ from: '', to: '' });
 	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];

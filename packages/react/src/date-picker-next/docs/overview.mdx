@@ -7,7 +7,7 @@ figmaGalleryNodeId: 12444%3A100327
 relatedComponents: ['date-range-picker-next']
 ---
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -42,7 +42,7 @@ Don’t use long paragraphs and lists in hint text. Screen readers read out the 
 
 Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -60,7 +60,7 @@ Don’t include links within hint text. While screen readers will read out the l
 
 Use the `block` prop to expand the component to fill the available space.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -78,7 +78,7 @@ Use the `block` prop to expand the component to fill the available space.
 
 Use the `invalid` prop to indicate if the user input is invalid.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -95,7 +95,7 @@ Use the `invalid` prop to indicate if the user input is invalid.
 
 Use the `isValidDate` function to check if the user has inputted/picked an invalid date.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 
@@ -118,11 +118,11 @@ Use the `isValidDate` function to check if the user has inputted/picked an inval
 };
 ```
 
-## Disabled previewHeading="Date picker (Next)"
+## Disabled previewHeading={title}
 
 Disabled input elements are unusable and can not be clicked. This prevents a user from interacting with the input element until another action is complete.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -144,7 +144,7 @@ The `maxDate` property can be used to disable any days in the calendar after a s
 
 A user can still enter days outside of the range, so their input must be validated with `isValidDate` like in the example below.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 
@@ -187,7 +187,7 @@ A user can still enter days outside of the range, so their input must be validat
 
 The `yearRange` prop can be used to change the range of options to display in calendar year select.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	const thisYear = new Date().getFullYear();
@@ -230,7 +230,7 @@ To modify the date format, you can change the `dateFormat` prop to one of these 
 - `'MMMM dd yyyy'` (e.g. February 08 2023)
 - `'MMM dd yyyy'` (e.g. Feb 08 2023)
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	return (
@@ -254,7 +254,7 @@ Date formats are parsed in order from first to last and stops when a valid date 
 
 The array of `allowedDateFormats` will also need to be passed to the `isValidDate` function to correctly validate the user’s input.
 
-```jsx live previewHeading="Date picker (Next)"
+```jsx live previewHeading={title}
 () => {
 	const [value, setValue] = React.useState();
 	const allowedDateFormats = ['dd/MM/yyyy', 'dd MM yyyy', 'dd-MM-yyyy'];
