@@ -422,7 +422,7 @@ If a required file is not uploaded before the page is submitted, show an error i
 				<TableBody>
 					{[...Array(3).keys()].map((idx) => {
 						return (
-							<TableRow key={idx}>
+							<TableRow invalid={true} key={idx}>
 								<TableCell>Required file category {idx + 1}</TableCell>
 								<TableCell>
 									<Box width="5rem" />
