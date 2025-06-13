@@ -68,6 +68,9 @@ export default function ResponsivePage() {
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
 	const [frameSize, setFrameSize] = useState<Sizes>('xs');
+	const [iframeSrc, setIframeSrc] = useState<undefined | null | string>(
+		undefined
+	);
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
 	const scrollbarSizes = useGetScrollbarSizes();
@@ -86,6 +89,15 @@ export default function ResponsivePage() {
 		}
 	}, [setFrameSize]);
 
+	useEffect(() => {
+		// useSearchParams hook is too slow on initial render
+		// Using browser API to set iframe source
+		const initQueryParams = new URLSearchParams(window.location.search);
+		const iframeSrc = initQueryParams.get(responsivePreviewQueryKeys.frameSrc);
+
+		setIframeSrc(iframeSrc);
+	}, [setIframeSrc]);
+
 	const referrerLink =
 		searchParams.get(responsivePreviewQueryKeys.referrerLink) || '/';
 	const title =
@@ -93,8 +105,6 @@ export default function ResponsivePage() {
 	const disablePadding = Boolean(
 		searchParams.get(responsivePreviewQueryKeys.padding) === 'false'
 	);
-
-	const iframeSrc = searchParams.get(responsivePreviewQueryKeys.frameSrc);
 
 	const { windowWidth = 0 } = useWindowSize();
 	const radioVisible = windowWidth > tokens.breakpoint.xl;
@@ -207,12 +217,25 @@ export default function ResponsivePage() {
 						)}
 					</div>
 				</Flex>
-				{iframeSrc ? (
+
+				{iframeSrc === null ? (
+					<PageContent as="main">
+						<Stack alignItems="flex-start" gap={2} role="alert">
+							<Stack gap={1}>
+								<AlertFilledIcon color="error" size="lg" />
+								<Heading fontSize="lg" type="h2">
+									Failed to load
+								</Heading>
+								<Text>There was an error loading the preview.</Text>
+							</Stack>
+							<ButtonLink href={referrerLink}>Back to documentation</ButtonLink>
+						</Stack>
+					</PageContent>
+				) : (
 					<Box as="main" background="bodyAlt" flexGrow={1}>
 						<div
 							css={{
 								height: '100%',
-								lineHeight: 0, // 3px line on bottom without this setting
 								overflowX: 'auto',
 								overscrollBehavior: 'contain',
 							}}
@@ -229,6 +252,7 @@ export default function ResponsivePage() {
 									css={{
 										border: 0,
 										height: '100%',
+										verticalAlign: 'bottom',
 										...(!disablePadding && {
 											height: `calc(100% - ${topSpacing})`,
 											marginLeft: `max(${horizontalSpacing}, ${scrollbarSizes.width}px)`,
@@ -245,19 +269,6 @@ export default function ResponsivePage() {
 							</div>
 						</div>
 					</Box>
-				) : (
-					<PageContent as="main">
-						<Stack alignItems="flex-start" gap={2} role="alert">
-							<Stack gap={1}>
-								<AlertFilledIcon color="error" size="lg" />
-								<Heading fontSize="lg" type="h2">
-									Failed to load
-								</Heading>
-								<Text>There was an error loading the preview.</Text>
-							</Stack>
-							<ButtonLink href={referrerLink}>Back to documentation</ButtonLink>
-						</Stack>
-					</PageContent>
 				)}
 			</Flex>
 		</Fragment>
@@ -338,6 +349,7 @@ const Select = ({
 	return (
 		<AgDSSelect
 			block
+			hideOptionalLabel
 			label="Preview size"
 			onBlur={() => setIsFocused(false)}
 			onChange={(event) => onChange(event?.target.value as Sizes)}
