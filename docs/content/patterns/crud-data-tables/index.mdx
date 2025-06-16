@@ -9,8 +9,6 @@ relatedComponents:
 
 When persistent stored data is used in applications CRUD table interactions are required to enable users to Create, Read, Update or Delete data presented in table layouts. These common interactions can be achieved by providing an additional drawer or subpage surface for the action, to reduce the length and complexity of the form page and to provide the user content that is relevant to the interaction through progressive disclosure.
 
-The type of data required in a table will vary from...
-
 ## Create, Read, Update or Delete a record in a data table
 
 If your service requires or permits the user to interact directly with persistent data in tables CRUD actions can be used.
@@ -189,7 +187,7 @@ The upload undefined list of files pattern reduces the amount of form content on
 
 ### Empty state
 
-Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users, Tey will not need to navigate through a table to find out it is empty.
+Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
 
 ```jsx live
 <Stack gap={3}>
@@ -323,7 +321,7 @@ When large defined lists of files in tables are required a drawer or subpage for
 
 ### File categorisation
 
-The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an upload file.
+The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
 	alt="Screenshot of an open side drawer with the title ‘Upload file’, example fields and form buttons ‘Upload file’ and ‘Cancel’"
