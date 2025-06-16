@@ -1,21 +1,13 @@
-import {
-	Fragment,
-	type RefObject,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import { Fragment, type RefObject, useEffect, useRef, useState } from 'react';
 import { css, Global } from '@emotion/react';
+import Head from 'next/head';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { VisuallyHidden } from '@ag.ds-next/react/a11y';
 import { Box } from '@ag.ds-next/react/box';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import { PageContent } from '@ag.ds-next/react/content';
 import { ControlGroup } from '@ag.ds-next/react/control-group';
 import {
 	boxPalette,
-	canUseDOM,
 	mapSpacing,
 	tokens,
 	useWindowSize,
@@ -30,7 +22,9 @@ import { Text } from '@ag.ds-next/react/text';
 import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePreviewLink';
 import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
+import { useIsIos } from '../../../packages/react/src/combobox/utils';
 
+const isProd = !!process.env.NEXT_PUBLIC_BASE_PATH;
 const trustedUrls = [
 	process.env.SITE_URL,
 	process.env.NEXT_PUBLIC_PLAYROOM_URL,
@@ -102,8 +96,11 @@ export default function ResponsivePage() {
 
 		// Verify address is from AgDS
 		if (iframeSrc) {
+			const sanitizedUrl = encodeURI(iframeSrc);
+			const parsedUrl = new URL(sanitizedUrl);
+
 			const isValidSrc = trustedUrls.some(
-				(domain) => domain && iframeSrc.startsWith(domain)
+				(domain) => domain && parsedUrl.hostname === new URL(domain).hostname
 			);
 			if (isValidSrc) {
 				setIframeSrc(iframeSrc);
@@ -117,6 +114,9 @@ export default function ResponsivePage() {
 
 	const referrerLink =
 		searchParams.get(responsivePreviewQueryKeys.referrerLink) || '/';
+	const referrerLabel =
+		searchParams.get(responsivePreviewQueryKeys.referrerLabel) ||
+		'Back to documentation';
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
 	const disablePadding = Boolean(
@@ -157,6 +157,14 @@ export default function ResponsivePage() {
 
 	return (
 		<Fragment>
+			{isProd && (
+				<Head>
+					<meta
+						content="child-src 'self'" // Restrict iframe to AgDS Url
+						http-equiv="Content-Security-Policy"
+					/>
+				</Head>
+			)}
 			<Global
 				styles={css`
 					html {
@@ -198,7 +206,7 @@ export default function ResponsivePage() {
 							iconBefore={ArrowLeftIcon}
 							variant="text"
 						>
-							Back<VisuallyHidden> to Documentation</VisuallyHidden>
+							{referrerLabel}
 						</ButtonLink>
 						<Heading as="h1" fontSize="md">
 							{title}
@@ -377,18 +385,3 @@ const Select = ({
 		/>
 	);
 };
-
-export function useIsIos() {
-	const isIos = useMemo(() => {
-		if (!canUseDOM()) return false;
-
-		return (
-			// See https://github.com/stowball/Layout-Engine/blob/master/layout.engine.js#L86
-			CSS &&
-			CSS?.supports('-webkit-appearance', '-apple-pay-button') &&
-			CSS?.supports('-webkit-overflow-scrolling', 'auto')
-		);
-	}, []);
-
-	return isIos;
-}

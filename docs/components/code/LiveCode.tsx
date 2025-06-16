@@ -42,6 +42,7 @@ export function LiveCode({
 	exampleContentHeadingType,
 	padding = true,
 	previewTitle,
+	referrerLabel,
 	showCode = false,
 }: {
 	enableProse?: boolean;
@@ -49,6 +50,7 @@ export function LiveCode({
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	padding?: boolean;
 	previewTitle: string;
+	referrerLabel?: string;
 	showCode?: boolean;
 }) {
 	const liveEditorRef = useRef<HTMLDivElement>(null);
@@ -161,6 +163,7 @@ export function LiveCode({
 				<ResponsivePreviewLink
 					code={live.code}
 					padding={padding}
+					referrerLabel={referrerLabel}
 					title={previewTitle}
 				>
 					Open responsive preview

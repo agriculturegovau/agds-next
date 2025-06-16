@@ -272,15 +272,18 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		href,
 		label,
 		padding,
+		referrerLabel,
 		title,
 	}: {
 		href: string;
 		label: string;
 		padding?: boolean;
 		title: string;
+		referrerLabel?: string;
 	}) => (
 		<ResponsivePreviewLink
 			padding={padding}
+			referrerLabel={referrerLabel}
 			src={href}
 			standalone
 			title={title}

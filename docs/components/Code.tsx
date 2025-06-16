@@ -56,6 +56,7 @@ type CodeProps = {
 	live?: boolean;
 	padding?: boolean;
 	previewHeading?: string;
+	referrerLabel?: string;
 	showCode?: boolean;
 };
 
@@ -68,6 +69,7 @@ export function Code({
 	live,
 	padding,
 	previewHeading,
+	referrerLabel,
 	showCode,
 }: CodeProps) {
 	const childrenAsString = children?.toString().trim();
@@ -78,6 +80,8 @@ export function Code({
 
 	const responsivePreviewTitle =
 		previewHeading || `${createTitleFromPathname(pathname)} preview`;
+	const responsiveReferrerLabel =
+		referrerLabel || `Back to ${createTitleFromPathname(pathname)}`;
 
 	// Standalone link, inline docs
 	if (previewHeading && !live) {
@@ -85,6 +89,7 @@ export function Code({
 			<ResponsivePreviewLink
 				code={childrenAsString}
 				padding={padding}
+				referrerLabel={responsiveReferrerLabel}
 				standalone
 				title={responsivePreviewTitle}
 			>
@@ -107,6 +112,7 @@ export function Code({
 					exampleContentHeadingType={exampleContentHeadingType}
 					padding={padding}
 					previewTitle={responsivePreviewTitle}
+					referrerLabel={responsiveReferrerLabel}
 					showCode={showCode}
 				/>
 			</LiveProvider>

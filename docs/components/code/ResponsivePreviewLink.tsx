@@ -13,7 +13,8 @@ export const responsivePreviewQueryKeys = {
 	frameSrc: 'src',
 	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
 	padding: 'padding',
-	referrerLink: 'referrer',
+	referrerLabel: 'referrer-label',
+	referrerLink: 'referrer-link',
 	/** Sizes are set by the user on the responsive preview page */
 	previewSize: 'size',
 	title: 'title',
@@ -22,6 +23,7 @@ export const responsivePreviewQueryKeys = {
 export function ResponsivePreviewLink({
 	children,
 	code,
+	referrerLabel,
 	src,
 	padding = true,
 	standalone = false,
@@ -29,8 +31,9 @@ export function ResponsivePreviewLink({
 }: {
 	children: React.ReactNode;
 	code?: string;
-	src?: string;
 	padding?: boolean;
+	referrerLabel?: string;
+	src?: string;
 	standalone?: boolean;
 	title: string;
 }) {
@@ -50,6 +53,9 @@ export function ResponsivePreviewLink({
 
 	const pathname = usePathname();
 	urlParams.append(responsivePreviewQueryKeys.referrerLink, pathname);
+	if (referrerLabel) {
+		urlParams.append(responsivePreviewQueryKeys.referrerLabel, referrerLabel);
+	}
 
 	const href = `/preview/responsive?${urlParams.toString()}`;
 
