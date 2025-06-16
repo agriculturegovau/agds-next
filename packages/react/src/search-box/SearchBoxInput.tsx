@@ -73,27 +73,29 @@ export const SearchBoxInput = forwardRef<HTMLInputElement, SearchBoxInputProps>(
 		const inputId = useInputId(id);
 		const styles = inputStyles({ showClearButton });
 		return (
-			<Stack css={{ position: 'relative' }} width="100%">
+			<Stack width="100%">
 				<SearchBoxLabel htmlFor={inputId} visible={labelVisible}>
 					{label}
 				</SearchBoxLabel>
-				<input
-					autoComplete="off"
-					css={styles}
-					id={inputId}
-					onChange={onChange}
-					ref={mergeRefs([internalRef, ref])}
-					type="search"
-					value={value}
-					{...props}
-				/>
-				{showClearButton ? (
-					<SearchInputClearButton
-						onClick={clearInput}
-						// The input always uses the light background colour, button should also use the light action colour
-						palette="light"
+				<div css={{ position: 'relative' }}>
+					<input
+						autoComplete="off"
+						css={styles}
+						id={inputId}
+						onChange={onChange}
+						ref={mergeRefs([internalRef, ref])}
+						type="search"
+						value={value}
+						{...props}
 					/>
-				) : null}
+					{showClearButton ? (
+						<SearchInputClearButton
+							onClick={clearInput}
+							// The input always uses the light background colour, button should also use the light action colour
+							palette="light"
+						/>
+					) : null}
+				</div>
 			</Stack>
 		);
 	}
