@@ -31,6 +31,11 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePreviewLink';
 import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
 
+const trustedUrls = [
+	process.env.SITE_URL,
+	process.env.NEXT_PUBLIC_PLAYROOM_URL,
+];
+
 const screenSizes = {
 	xs: {
 		label: '320px (xs)',
@@ -95,7 +100,19 @@ export default function ResponsivePage() {
 		const initQueryParams = new URLSearchParams(window.location.search);
 		const iframeSrc = initQueryParams.get(responsivePreviewQueryKeys.frameSrc);
 
-		setIframeSrc(iframeSrc);
+		// Verify address is from AgDS
+		if (iframeSrc) {
+			const isValidSrc = trustedUrls.some(
+				(domain) => domain && iframeSrc.startsWith(domain)
+			);
+			if (isValidSrc) {
+				setIframeSrc(iframeSrc);
+				return;
+			}
+		}
+
+		// Invalid url or no url found, set as null
+		setIframeSrc(null);
 	}, [setIframeSrc]);
 
 	const referrerLink =
