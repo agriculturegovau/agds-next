@@ -107,7 +107,7 @@ export default function ResponsivePage() {
 				}
 			});
 			if (isValidSrc) {
-				setIframeSrc(iframeSrc);
+				setIframeSrc(sanitizedUrl);
 				return;
 			}
 		}
