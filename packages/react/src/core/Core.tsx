@@ -1,3 +1,4 @@
+'use client';
 import { PropsWithChildren } from 'react';
 import { Global } from '@emotion/react';
 import { goldTheme } from './goldTheme';

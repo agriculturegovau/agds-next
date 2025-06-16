@@ -1,5 +1,56 @@
 # @ag.ds-next/docs
 
+## 0.17.0
+
+### Minor Changes
+
+- bd2f6f9048d: docs: AgDS Beta v1.29.0 release notes.
+- 3b0903e7f81: icon: Add new `LinkIcon`.
+- 2f53e926534: icon: Add new YouTubeIcon.
+- c1bee3e25a3: build: Update node version to 22.15.1.
+
+  docs: Update screenshots of templates and guides.
+
+  docs: Remove `sharp` and `puppeteer` dependencies and image generation scripts.
+
+### Patch Changes
+
+- 83a3564274a: search-box: Add clear button to `SearchBoxInput` component. Add `defaultValue` support to `SearchBoxInput`.
+
+  search-input: Fix links to components and patterns in docs. Add `defaultValue` support to `SearchInput`.
+
+- 87561dec239: avatar: Fix live code examples to work in Playroom.
+
+  callout: Fix live code examples to work in Playroom.
+
+  cards: Fix live code examples to work in Playroom.
+
+  control-group: Fix broken link in docs.
+
+  docs: Update live code URL generation to fix various sample code patterns in documents.
+
+  dropdown-menu: Fix live code examples to work in Playroom.
+
+  file-upload: Fix live code examples to work in Playroom.
+
+  filter-sidebar: Fix live code examples to work in Playroom.
+
+  playroom: Export `PlaceholderImage` and `PlaceholderPictogram` for Playroom.
+
+  section-alert: Fix live code examples to work in Playroom.
+
+  side-nav: Fix live code examples to work in Playroom.
+
+- Updated dependencies [83a3564274a]
+- Updated dependencies [1bfdc0ae68b]
+- Updated dependencies [f17da0f24b2]
+- Updated dependencies [14bb1cfcbf4]
+- Updated dependencies [a0b844a6fe2]
+- Updated dependencies [3b0903e7f81]
+- Updated dependencies [2f53e926534]
+- Updated dependencies [542c6d4ba77]
+  - @ag.ds-next/react@1.29.0
+
 ## 0.16.0
 
 ### Minor Changes

@@ -129,6 +129,7 @@ export {
 	LicenceBusinessIcon,
 	LicenceIcon,
 	LinkedInIcon,
+	LinkIcon,
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
@@ -165,6 +166,7 @@ export {
 	WarningIcon,
 	WebsiteIcon,
 	XIcon,
+	YouTubeIcon,
 	ZoomInIcon,
 	ZoomOutIcon,
 } from '@ag.ds-next/react/icon';

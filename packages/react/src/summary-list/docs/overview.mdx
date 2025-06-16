@@ -54,9 +54,12 @@ Common uses for this component are to implement a glossary or to display metadat
 
 You can add actions to the end of a SummaryList by nesting `<SummaryListItemAction>`s and interactive components such as `<TextLink>`.
 
-Ensure each action’s accessible label is unique for screen reader users by including `<VisuallyHidden>` text that matches the `<SummaryListItemTerm>`’s content.
+Ensure each action’s accessible label is unique for screen reader users by including `<VisuallyHidden>` text that matches the `<SummaryListItemTerm>`’s content. The `<VisuallyHidden>` component can be imported from [A11y](/components/a11y).
 
 ```jsx live
+/**
+ * import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+ */
 <SummaryList>
 	<SummaryListItem>
 		<SummaryListItemTerm>First name</SummaryListItemTerm>

@@ -1,3 +1,4 @@
+'use client';
 // The contents of this file has been copied from https://github.com/reach/reach-ui/blob/dev/packages/utils/src/use-isomorphic-layout-effect.ts
 
 import { useEffect, useLayoutEffect } from 'react';
