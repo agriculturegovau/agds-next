@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useGetScrollbarSizes = () => {
-	const [scrollBarSizes, setScrollbarSizes] = useState<{
+	const [scrollbarSizes, setScrollbarSizes] = useState<{
 		width: number;
 		height: number;
 	}>({ width: 0, height: 0 });
@@ -10,7 +10,7 @@ export const useGetScrollbarSizes = () => {
 		// Create temporary element with scrollbars
 		const element = document.createElement('div');
 		element.style.cssText =
-			'overflow:scroll; visibility:hidden; position:absolute;';
+			'overflow:scroll; position:absolute; visibility:hidden;';
 		document.body.appendChild(element);
 
 		const width = element.offsetWidth - element.clientWidth;
@@ -20,5 +20,5 @@ export const useGetScrollbarSizes = () => {
 		element.remove();
 	}, [setScrollbarSizes]);
 
-	return scrollBarSizes;
+	return scrollbarSizes;
 };
