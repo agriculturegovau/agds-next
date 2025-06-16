@@ -651,6 +651,38 @@ const snippets: Array<Snippet> = [
 		</Accordion>`,
 	},
 	{
+		group: 'Accordion',
+		name: 'Indented',
+		code: `<Accordion indent>
+			<AccordionItem title="Accordion">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>`,
+	},
+	{
+		group: 'Accordion',
+		name: 'Group',
+		code: `<Accordion>
+			<AccordionItem title="Accordion title 1">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 1</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+			<AccordionItem title="Accordion title 2">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 2</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+			<AccordionItem title="Accordion title 3">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 3</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>`,
+	},
+	{
 		group: 'ProgressIndicator',
 		name: 'Basic',
 		code: `<ProgressIndicator
@@ -1045,7 +1077,7 @@ const snippets: Array<Snippet> = [
 							<TableHeader scope="col">Actions</TableHeader>
 						</TableRow>
 					</TableHead>
-					<TableBody>		
+					<TableBody>
 						<TableRow selected={false}>
 							<TableCell>
 								<Checkbox
@@ -1079,7 +1111,7 @@ const snippets: Array<Snippet> = [
 								</Flex>
 							</TableCell>
 						</TableRow>
-						
+
 						<TableRow selected={false}>
 							<TableCell>
 								<Checkbox
