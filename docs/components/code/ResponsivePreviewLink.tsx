@@ -44,8 +44,10 @@ export function ResponsivePreviewLink({
 
 	if (src) urlParams.append(responsivePreviewQueryKeys.frameSrc, src);
 	else if (code) {
+		// Apply base path for iframe src in prod
+		const basePath = process.env.SITE_URL || '';
 		const playroomPreviewUrl = createPreviewUrl({
-			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+			baseUrl: basePath + process.env.NEXT_PUBLIC_PLAYROOM_URL,
 			code: checkAndModifyCode(code),
 		});
 		urlParams.append(responsivePreviewQueryKeys.frameSrc, playroomPreviewUrl);

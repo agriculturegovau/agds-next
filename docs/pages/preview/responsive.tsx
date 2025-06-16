@@ -99,9 +99,13 @@ export default function ResponsivePage() {
 			const sanitizedUrl = encodeURI(iframeSrc);
 			const parsedUrl = new URL(sanitizedUrl);
 
-			const isValidSrc = trustedUrls.some(
-				(domain) => domain && parsedUrl.hostname === new URL(domain).hostname
-			);
+			const isValidSrc = trustedUrls.some((domain) => {
+				try {
+					return domain && parsedUrl.hostname === new URL(domain).hostname;
+				} catch {
+					return false;
+				}
+			});
 			if (isValidSrc) {
 				setIframeSrc(iframeSrc);
 				return;
