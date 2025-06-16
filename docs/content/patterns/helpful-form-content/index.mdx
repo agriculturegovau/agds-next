@@ -93,7 +93,46 @@ We recommend the use of one link to give a clear path to the right information f
 				onClose={closeDrawer}
 				title="Inviting a staff member"
 			>
-				<Text as="p">Drawer body area.</Text>
+				<Stack gap={1.5}>
+					<Text as="p" color="muted" fontSize="md">
+						Inviting individuals to join your staff can bring numerous benefits
+						to your business and help streamline your operations.
+					</Text>
+					<Text as="p">
+						As your business grows, you’ll need to scale your team accordingly.
+						Inviting new staff members allows you to expand your workforce in
+						line with your evolving needs.
+					</Text>
+					<Text as="p">Below are a list of the types of roles available:</Text>
+					<H2>Owner</H2>
+					<Text as="p">
+						Owners have the highest level of access. They can add, edit and
+						remove managers and staff members. They can set rosters, send an
+						receive messages with owners, employees and other managers.
+					</Text>
+					<H2>Manager</H2>
+					<Text as="p">
+						Managers can add, edit and remove staff members. They can set
+						rosters, send an receive messages with owners, employees and other
+						managers.
+					</Text>
+					<H2>Employee</H2>
+					<Text as="p">
+						Employees can see their shifts, send an receive messages with
+						managers and edit their personal and contact information.
+					</Text>
+					<Callout title="Need help?">
+						<Text as="p">
+							Call <strong>02 9481 1122</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<TextLink href="mailto:emailaccount@yourgov.gov.au">
+								emailaccount@yourgov.gov.au
+							</TextLink>
+						</Text>
+					</Callout>
+				</Stack>
 			</Drawer>
 		</>
 	);
@@ -149,6 +188,6 @@ If the supporting information won’t fit into a drawer without scrolling, then 
 
 ## Related guidance
 
-- [Hint](/components/field#hint) - Short, in context help.
+- [Hint](/components/field#hint) – Short, in context help.
 
-- [Links](/content/content-styles#links) - Also known as hyperlinks, connects users to helpful, related content.
+- [Links](/content/content-styles#links) – Also known as hyperlinks, connects users to helpful, related content.
