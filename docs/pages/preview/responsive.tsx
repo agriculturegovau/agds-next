@@ -29,7 +29,7 @@ const isLocal =
 const trustedUrls = [
 	process.env.NEXT_PUBLIC_SITE_URL,
 	process.env.NEXT_PUBLIC_PLAYROOM_URL?.startsWith('/')
-		? `${process.env.NEXT_PUBLIC_SITE_URL}/${process.env.NEXT_PUBLIC_PLAYROOM_URL}`
+		? undefined
 		: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 ].filter(Boolean);
 
@@ -101,6 +101,13 @@ export default function ResponsivePage() {
 		if (iframeSrc) {
 			try {
 				const sanitizedUrl = encodeURI(iframeSrc);
+
+				// If URL is AgDS, allow through
+				if (sanitizedUrl.startsWith('/')) {
+					setIframeSrc(sanitizedUrl);
+					return;
+				}
+
 				const parsedUrl = new URL(sanitizedUrl);
 				const isValidSrc = trustedUrls.some(
 					(domain) => domain && parsedUrl.hostname === new URL(domain).hostname
@@ -109,8 +116,7 @@ export default function ResponsivePage() {
 					setIframeSrc(sanitizedUrl);
 					return;
 				}
-			} catch (e) {
-				console.log(e);
+			} catch {
 				setIframeSrc(null);
 				return;
 			}

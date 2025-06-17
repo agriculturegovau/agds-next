@@ -44,15 +44,8 @@ export function ResponsivePreviewLink({
 
 	if (src) urlParams.append(responsivePreviewQueryKeys.frameSrc, src);
 	else if (code) {
-		// Prefix the Playroom URL with the AgDS address
-		// The URL is checked in the responsive preview page
-		const playroomUrl = process.env.NEXT_PUBLIC_PLAYROOM_URL;
-		const baseUrl =
-			playroomUrl?.startsWith('/') && process.env.NEXT_PUBLIC_SITE_URL
-				? process.env.NEXT_PUBLIC_SITE_URL + playroomUrl
-				: playroomUrl;
 		const playroomPreviewUrl = createPreviewUrl({
-			baseUrl,
+			baseUrl: process.env.NEXT_PUBLIC_PLAYROOM_URL,
 			code: checkAndModifyCode(code),
 		});
 		urlParams.append(responsivePreviewQueryKeys.frameSrc, playroomPreviewUrl);
