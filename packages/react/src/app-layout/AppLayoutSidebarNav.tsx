@@ -9,7 +9,7 @@ import {
 } from '../core';
 import { Box, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
-import { ChevronDownIcon, ChevronRightIcon, IconProps } from '../icon';
+import { ChevronRightIcon, IconProps } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarProps } from './AppLayoutSidebar';
