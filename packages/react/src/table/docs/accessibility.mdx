@@ -1,3 +1,138 @@
+Table 
+
+Tables help make complex information easier to scan and compare. Use tables for exact values or information that would be hard to read in body text. 
+
+ 
+
+Learn more about how to meet WCAG success criteria when implementing tables. This makes them accessible and inclusive for users of all abilities and situations. 
+
+The table component passed accessibility testing in 2022 and 2024. 
+
+ 
+
+ARIA usage for enhanced accessibility 
+
+Requirements 
+
+Only add ARIA when semantic HTML is insufficient. 
+
+Include `aria-label` or `aria-labelledby` when `<TableCaption>` or other visible text is insufficient. 
+
+Use `aria-rowcount` to define total number of table rows in a paginated table. 
+
+Use `aria-rowindex` on `TableRow` to define a row’s position in a paginated table. 
+
+Use `aria-selected` when selecting a row for a batch action. 
+
+Use `aria-described-by`or `VisuallyHidden` on table actions when the visible text is insufficient – for example, ‘Edit’ fits into a table, but ‘Edit record 2’ doesn’t. 
+
+ 
+
+Benefits 
+
+Communicates table purpose and context to assistive technology users. 
+
+Clarifies the current state of a table and its rows. 
+
+Improves the navigational experience for screen reader users. 
+
+Provides feedback on the results of user interactions. 
+
+Ensures all users have equal access to functionality. 
+
+  
+
+WCAG references 
+
+Understanding success criterion 1.3.1 Info and relationships 
+
+Understanding success criterion 4.1.2 Name, role, value 
+
+ARIA authoring practices guide 
+
+ 
+
+Clear captions 
+
+Requirements 
+
+Table has a caption that is clear and succinct in the way it describes the purpose of the table. 
+
+The caption is associated with the correct table by putting the `<TableCaption>` component immediately after the opening `<Table>` tag in your code.   
+
+ 
+
+Benefits 
+
+Helps users understand the table’s purpose before navigating its contents. 
+
+Provides context for screen readers users. 
+
+Enhances document structure and navigation. 
+
+Makes tables more discoverable in page content. 
+
+Aids users in determining if the table is relevant to their needs. 
+
+ 
+
+WCAG references 
+
+Understanding success criterion 1.3.1 Info and relationships 
+
+Understanding success criterion 2.4.2 Page titled 
+
+Understanding success criterion 2.4.6 Headings and labels 
+
+ 
+
+Semantic structure 
+
+Requirements 
+
+Use the provided components and sub-components to enforce the correct structure of a table – for example, TableRow, TableHeader, TableCell. 
+
+Avoid merged or split cells unless they have proper header associations that are understood and conveyed by assistive technology. 
+
+Set the appropriate scope attribute on TableHeader – for example, `scope=row`, `scope=col`. 
+
+ 
+
+Benefits 
+
+Screen readers can accurately convey which column and row the cell data is for. 
+
+Improves understanding of data relationships for all users. 
+
+  
+
+WCAG references 
+
+Understanding success criterion 1.3.1 Info and relationships 
+
+Understanding success criterion 1.3.2 Meaningful sequence 
+
+Understanding success criterion 4.1.1 Parsing 
+
+Understanding success criterion 4.1.2 Name, role, value 
+
+ 
+
+Related guidance 
+
+AgDS accessibility guidance 
+
+WCAG 2 Overview 
+
+ARIA Authoring Practices Guide (APG) 
+
+Accessibility – MDN 
+
+ 
+---
+
+OLD
+
 To be accessible to all users, tables must have:
 
 - a title or caption

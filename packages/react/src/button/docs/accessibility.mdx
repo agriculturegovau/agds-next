@@ -1,29 +1,155 @@
-Here are ways to make a button more accessible and inclusive for users of any ability or environment.
+Button 
 
-For more help, go to the [Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/).
+A button communicates an action to a user and indicates what will happen next. 
 
-## Use accessible button labels
+ 
 
-The visual text label is the accessible name of a button with an icon in the page code. It’s read aloud by screen readers.
+Learn more about how to meet WCAG success criteria when implementing buttons. This makes them accessible and inclusive for users of all abilities and situations. 
 
-Include the [text of the visible label in the accessible name](https://www.w3.org/WAI/WCAG21/Techniques/general/G208.html) in the code to help speech input users. For example, ‘View Corrective Action 12345’.
+The button component passed accessibility testing in 2022. 
 
-It especially helps those with cognitive, language and learning disabilities enter information correctly, or avoid submitting an incomplete form.
+ 
 
-Go to [Understanding Success Criterion 3.3.2 Labels or Instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions) for more guidance.
+ARIA usage for enhanced accessibility 
 
-## Buttons as links
+Requirements 
 
-You can implement a button as an anchor or button element by using either `Button` or `ButtonLink`. Mark up your code in the most semantic way possible.
+Include `aria-label` or `aria-labelledby` when visible text alone is insufficient – for example, ‘Edit’ fits into a table, but ‘Edit record 2’ doesn’t. 
 
-Using incorrect HTML in some situations can cause [accessibility issues](https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html).
+Use `aria-expanded` for buttons that control expandable content (true/false). 
 
-Go to [G115: Using semantic elements to markup structure](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G115.html) for important information about techniques.
+Use `aria-haspopup` for buttons that trigger menus or dialogues. 
 
-## Hover
+Use `aria-pressed for toggle buttons (true/false/mixed). 
 
-Buttons have an underline on hover to address [WCAG 2.0 Criterion 1.4.1 Use of Color](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html):
+Use `aria-disabled="true"` for buttons that appear disabled, but are still functional. 
 
-Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. (Level A)
+Update ARIA attributes when the button state changes. 
 
-However, the ‘focus’ state is not underlined as it’s conveyed using the global focus outline.
+ 
+
+Benefits 
+
+Communicates context to assistive technology users. 
+
+Clarifies the current state of interactive elements. 
+
+Improves the navigational experience for screen reader users. 
+
+Provides feedback on the results of user interactions. 
+
+Ensures all users have equal access to functionality. 
+
+  
+
+WCAG references 
+
+Understanding success criterion 1.3.1 Info and relationships 
+
+Understanding success criterion 4.1.2 Name, role, value 
+
+ARIA authoring practices guide 
+
+ 
+
+Button label in accessible name 
+
+Requirements 
+
+Visible button text must match the beginning of the accessible name. If you want to avoid horizontal scroll in a table, you may not have space to include a noun/verb pair. For example, the visible button label might read ‘Edit’, but the accessible name is ’Edit record 2’. 
+
+ 
+
+Benefits 
+
+Screen reader users hear the action that will occur when the button is used. 
+
+People who use speech recognition can activate the button by saying the text they see on the button. 
+
+ 
+
+WCAG references 
+
+Understanding success criterion 2.5.3 Label in name 
+
+ 
+
+Clear and descriptive button labels 
+
+Requirements 
+
+Use clear, concise button labels that describe the action. We recommend using verb and noun pairs – for example: ‘Save changes’, ‘Submit application’, ‘Delete record’. 
+
+Button labels are unique when multiple buttons appear on the same page. 
+
+When icons are used alone, ensure the button's accessible name is a clear, sensible interpretation of that icon's action. 
+
+ 
+
+Benefits 
+
+Improves understanding of available actions. 
+
+Makes navigation more efficient for screen reader users. 
+
+Supports users with cognitive disabilities through clear labelling. 
+
+Helps users predict outcomes of interactions. 
+
+ 
+
+WCAG references 
+
+Understanding success criterion 3.3.2 Labels or Instructions 
+
+ 
+
+Semantic markup 
+
+Requirements 
+
+Code is marked up in the most semantic way possible. 
+
+Use Button to trigger an action, such as opening a dialogue or submitting a form. 
+
+Use ButtonLink to navigate to a new location, such as a Sign In page. 
+
+All buttons have accessible names (via the button text, aria-label, or aria-labelledby). 
+
+ 
+
+Benefits 
+
+Ensures proper button functionality across different assistive devices. 
+
+Ensures built-in keyboard accessibility without additional code. 
+
+Simplifies development by leveraging built-in browser behaviours. 
+
+Makes maintenance easier by using standard patterns. 
+
+Improves compatibility across different assistive technologies. 
+
+ 
+
+WCAG references 
+
+Understanding success criterion 1.3.1 Info and relationships  
+
+Understanding success criterion 4.1.2 Name, role, value 
+
+ 
+
+Related guidance 
+
+AgDS accessibility guidance 
+
+WCAG 2 Overview 
+
+ARIA Authoring Practices Guide (APG) 
+
+Accessibility – MDN 
+
+ 
+
+ 
