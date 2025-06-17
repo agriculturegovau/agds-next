@@ -73,6 +73,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		padding,
 		previewHeading,
 		showCode,
+		referrerLabel,
 	}: HTMLAttributes<HTMLPreElement> & {
 		enableProse?: boolean;
 		exampleContentHeading?: string;
@@ -81,6 +82,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		padding?: boolean;
 		previewHeading?: string;
 		showCode?: boolean;
+		referrerLabel?: string;
 	}) => {
 		return (
 			<Fragment>
@@ -95,6 +97,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							live={live}
 							padding={padding}
 							previewHeading={previewHeading}
+							referrerLabel={referrerLabel}
 							showCode={showCode}
 							{...element.props}
 						/>
