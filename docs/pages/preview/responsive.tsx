@@ -24,11 +24,14 @@ import { responsivePreviewQueryKeys } from '../../components/code/ResponsivePrev
 import { useGetScrollbarSizes } from '../../lib/hooks/useGetScrollbarSizes';
 import { useIsIos } from '../../../packages/react/src/combobox/utils';
 
-const isProd = !!process.env.NEXT_PUBLIC_BASE_PATH;
+const isLocal =
+	!process.env.NEXT_PUBLIC_BASE_PATH && process.env.NODE_ENV !== 'production';
 const trustedUrls = [
-	process.env.SITE_URL,
-	process.env.NEXT_PUBLIC_PLAYROOM_URL,
-];
+	process.env.NEXT_PUBLIC_SITE_URL,
+	process.env.NEXT_PUBLIC_PLAYROOM_URL?.startsWith('/')
+		? `${process.env.NEXT_PUBLIC_SITE_URL}/${process.env.NEXT_PUBLIC_PLAYROOM_URL}`
+		: process.env.NEXT_PUBLIC_PLAYROOM_URL,
+].filter(Boolean);
 
 const screenSizes = {
 	xs: {
@@ -96,18 +99,19 @@ export default function ResponsivePage() {
 
 		// Verify address is from AgDS
 		if (iframeSrc) {
-			const sanitizedUrl = encodeURI(iframeSrc);
-			const parsedUrl = new URL(sanitizedUrl);
-
-			const isValidSrc = trustedUrls.some((domain) => {
-				try {
-					return domain && parsedUrl.hostname === new URL(domain).hostname;
-				} catch {
-					return false;
+			try {
+				const sanitizedUrl = encodeURI(iframeSrc);
+				const parsedUrl = new URL(sanitizedUrl);
+				const isValidSrc = trustedUrls.some(
+					(domain) => domain && parsedUrl.hostname === new URL(domain).hostname
+				);
+				if (isValidSrc) {
+					setIframeSrc(sanitizedUrl);
+					return;
 				}
-			});
-			if (isValidSrc) {
-				setIframeSrc(sanitizedUrl);
+			} catch (e) {
+				console.log(e);
+				setIframeSrc(null);
 				return;
 			}
 		}
@@ -161,7 +165,7 @@ export default function ResponsivePage() {
 
 	return (
 		<Fragment>
-			{isProd && (
+			{!isLocal && (
 				<Head>
 					<meta
 						content="child-src 'self'" // Restrict iframe to AgDS Url

@@ -44,10 +44,12 @@ export function ResponsivePreviewLink({
 
 	if (src) urlParams.append(responsivePreviewQueryKeys.frameSrc, src);
 	else if (code) {
-		// Apply base path for iframe src in prod
-		const basePath = process.env.SITE_URL || '';
+		// Append current location to playroom url
+		const basePath = process.env.NEXT_PUBLIC_PLAYROOM_URL?.startsWith('/')
+			? `${process.env.NEXT_PUBLIC_SITE_URL}${process.env.NEXT_PUBLIC_PLAYROOM_URL}`
+			: process.env.NEXT_PUBLIC_PLAYROOM_URL;
 		const playroomPreviewUrl = createPreviewUrl({
-			baseUrl: basePath + process.env.NEXT_PUBLIC_PLAYROOM_URL,
+			baseUrl: basePath,
 			code: checkAndModifyCode(code),
 		});
 		urlParams.append(responsivePreviewQueryKeys.frameSrc, playroomPreviewUrl);
