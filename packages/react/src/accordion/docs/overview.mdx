@@ -137,11 +137,75 @@ Users can choose what content they want to see.
 </Accordion>
 ```
 
+## Indented accordion
+
+The `indent` prop of the the accordion adds padding to the left and right of the title and content. This separates it from the edge of the container and can also help to show hierarchy in complex layouts.
+
+```jsx live enableProse
+<Accordion indent>
+	<AccordionItem title="Accordion 1">
+		<AccordionItemContent>
+			<Prose>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a
+					libero vel dolor sollicitudin pretium quis quis mi. Fusce sapien mi,
+					efficitur sit amet ex et, bibendum efficitur odio. Ut nec gravida
+					metus, nec suscipit nulla. Donec est nulla, dictum sed ultricies
+					congue, suscipit at velit. Integer ut leo lectus. Nullam volutpat ex
+					quis imperdiet scelerisque. Etiam ultrices et nisi eget pulvinar. Cras
+					ultrices lectus ut nisl gravida, eu rutrum sem luctus. Praesent
+					vulputate eu dolor commodo tempor. Sed nec lorem consectetur, maximus
+					justo at, tincidunt quam. Suspendisse pellentesque accumsan accumsan.
+					Cras in odio leo. Nam pharetra, lorem eget aliquam gravida, felis ex
+					tempor sapien, a ornare leo nulla eget magna. Quisque tempus ipsum eu
+					elit bibendum, nec bibendum ligula posuere. Nam porttitor est eros, ac
+					maximus nisl euismod nec.
+				</p>
+			</Prose>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 2">
+		<AccordionItemContent>
+			<Prose>
+				<p>
+					Curabitur urna erat, ornare in nulla vitae, tempor porttitor dolor.
+					Nam luctus fermentum tellus, vitae maximus turpis viverra eget.
+					Phasellus hendrerit tortor eu mauris ultricies congue. Suspendisse
+					cursus, purus quis viverra pharetra, purus quam hendrerit magna,
+					condimentum cursus massa nisi ut est. Mauris in tristique augue.
+					Phasellus tellus ante, fermentum eget fringilla eget, tempor nec nunc.
+					Ut nec dui vitae ex dignissim tempus ac et ante. Donec imperdiet
+					suscipit leo. Suspendisse mattis quis nisl id mattis. Sed dictum
+					tempus nibh, quis feugiat magna efficitur in. Sed vulputate et dui eu
+					malesuada.
+				</p>
+			</Prose>
+		</AccordionItemContent>
+	</AccordionItem>
+	<AccordionItem title="Accordion 3">
+		<AccordionItemContent>
+			<Prose>
+				<p>
+					Curabitur urna erat, ornare in nulla vitae, tempor porttitor dolor.
+					Nam luctus fermentum tellus, vitae maximus turpis viverra eget.
+					Phasellus hendrerit tortor eu mauris ultricies congue. Suspendisse
+					cursus, purus quis viverra pharetra, purus quam hendrerit magna,
+					condimentum cursus massa nisi ut est. Mauris in tristique augue.
+					Phasellus tellus ante, fermentum eget fringilla eget, tempor nec nunc.
+					Ut nec dui vitae ex dignissim tempus ac et ante. Donec imperdiet
+					suscipit leo. Suspendisse mattis quis nisl id mattis. Sed dictum
+					tempus nibh, quis feugiat magna efficitur in. Sed vulputate et dui eu
+					malesuada.
+				</p>
+			</Prose>
+		</AccordionItemContent>
+	</AccordionItem>
+</Accordion>
+```
+
 ## Accordion edge-to-edge image
 
 An accordion can open to reveal an image the full width of the panel.
-
-Remove the default padding from the accordion to display an edge-to-edge image.
 
 This text is wrapped in the `AccordionContent` component.
 
