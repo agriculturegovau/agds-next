@@ -335,6 +335,7 @@ exports[`AppLayout renders correctly 1`] = `
           >
             <a
               aria-current="page"
+              aria-label="Establishments, has expanded sub links"
               href="/establishments"
             >
               <svg
@@ -359,9 +360,8 @@ exports[`AppLayout renders correctly 1`] = `
                 Establishments
               </span>
               <svg
-                aria-hidden="false"
-                aria-label=". Sub-level links below."
-                class="css-lq07bo-Icon"
+                aria-hidden="true"
+                class="css-bisuz9-AppLayoutSidebarNavListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
@@ -372,7 +372,7 @@ exports[`AppLayout renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="m6 9 6 6 6-6"
+                  d="m9 18 6-6-6-6"
                 />
               </svg>
             </a>
@@ -450,6 +450,7 @@ exports[`AppLayout renders correctly 1`] = `
             class="css-1oxkyzz-AppLayoutSidebarNavItemInner"
           >
             <a
+              aria-label="Compliance, has sub links"
               href="/compliance"
             >
               <svg
@@ -477,9 +478,8 @@ exports[`AppLayout renders correctly 1`] = `
                 Compliance
               </span>
               <svg
-                aria-hidden="false"
-                aria-label=". Has 2 sub-level links."
-                class="css-lq07bo-Icon"
+                aria-hidden="true"
+                class="css-11xq89r-AppLayoutSidebarNavListItem"
                 clip-rule="evenodd"
                 fill-rule="evenodd"
                 focusable="false"
