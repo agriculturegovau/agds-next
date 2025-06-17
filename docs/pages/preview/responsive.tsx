@@ -170,7 +170,7 @@ export default function ResponsivePage() {
 					<meta
 						// Restrict iframe to AgDS and Figma
 						// This policy does unmount but will still be enforced until refresh
-						content="default-src 'self'; frame-src 'self' https://www.figma.com/; child-src 'self' https://www.figma.com/;"
+						content="frame-src 'self' https://www.figma.com/; child-src 'self' https://www.figma.com/;"
 						http-equiv="Content-Security-Policy"
 					/>
 				</Head>
