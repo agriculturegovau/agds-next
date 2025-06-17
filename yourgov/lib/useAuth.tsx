@@ -5,6 +5,7 @@ import {
 	useContext,
 	PropsWithChildren,
 } from 'react';
+import { mockUser } from '../data/mockUsers';
 import { safeSessionStorage } from './useSessionFormState';
 
 export type User = {
@@ -38,6 +39,10 @@ export function AuthProvider({ children }: PropsWithChildren<{}>) {
 
 	useEffect(() => {
 		if (!safeSessionStorage) return;
+
+		// MAINTENANCE MODE: Bypass auth to allow navigating through the app
+		signIn(mockUser);
+
 		const value = safeSessionStorage.getItem('user');
 		const parsedValue = value ? (JSON.parse(value) as User) : null;
 		setUserState(parsedValue);
