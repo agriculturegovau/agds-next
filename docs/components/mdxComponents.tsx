@@ -55,6 +55,7 @@ import {
 	ZIndexTokenChart,
 	ShadowTokenChart,
 } from './TokenCharts';
+import { ColourComponentSection } from './ColourComponentSection';
 
 export const mdxComponents: MDXRemoteProps['components'] = {
 	Fragment,
@@ -261,4 +262,5 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			</Callout>
 		</div>
 	),
+	ColourComponentSection,
 };
