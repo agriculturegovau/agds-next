@@ -40,28 +40,31 @@ Use the `action` tone if the Avatar is used within an interactive element such a
 </Flex>
 ```
 
-## Colour
+## Inside an interactive element
 
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
-
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+The avatar can be incorporated in interactive elements like an account dropdown menu. Ensure the interactive element has a meaningful accessible name. For example, if the button opens account options, ensure the button with the avatar name includes the purpose of the element in its accessible name.
 
 ```jsx live
-<>
-	<Box padding={1.5}>
-		<Avatar name="William Mead" tone="action" />
-	</Box>
-
-	<Box background="body" padding={1.5} palette="dark">
-		<Avatar name="William Mead" tone="action" />
-	</Box>
-</>
+<p>no components</p>
 ```
 
 <ColourComponentSection>
-	{`
-<Box maxWidth={600}>
-	<Avatar name="William Mead" tone="action" />
-</Box>
-`}
+	{`<Stack gap={1}>
+	<Flex alignItems="center" gap={0.5}>
+		<Avatar name="Taj Grainger" size="sm" tone="action" />
+		<Avatar name="Isabel Edmund" size="md" tone="action" />
+		<Avatar name="Ethan Polglaze" size="lg" tone="action" />
+		<Avatar name="Rachel Warlow-Davies" size="xl" tone="action" />
+		<Avatar name="Callum Lascelles" size="xxl" tone="action" />
+		<Avatar name="William Mead" size="xxxl" tone="action" />
+	</Flex>
+	<Flex alignItems="center" gap={0.5}>
+		<Avatar name="Taj Grainger" size="sm" tone="neutral" />
+		<Avatar name="Isabel Edmund" size="md" tone="neutral" />
+		<Avatar name="Ethan Polglaze" size="lg" tone="neutral" />
+		<Avatar name="Rachel Warlow-Davies" size="xl" tone="neutral" />
+		<Avatar name="Callum Lascelles" size="xxl" tone="neutral" />
+		<Avatar name="William Mead" size="xxxl" tone="neutral" />
+	</Flex>
+</Stack>`}
 </ColourComponentSection>

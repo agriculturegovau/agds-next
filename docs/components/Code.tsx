@@ -36,6 +36,7 @@ import {
 	ChevronUpIcon,
 } from '@ag.ds-next/react/icon';
 import { withBasePath } from '../lib/img';
+import { Render } from '../playroom/components';
 import * as designSystemComponents from './designSystemComponents';
 import { prismTheme } from './prism-theme';
 
@@ -320,11 +321,12 @@ const StaticCode = ({
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	Fragment,
 	PlaceholderImage,
 	PlaceholderPictogram,
-	useState,
-	Fragment,
 	React,
+	Render,
+	useState,
 };
 
 type CodeProps = {

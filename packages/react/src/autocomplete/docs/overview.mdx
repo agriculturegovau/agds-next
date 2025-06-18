@@ -200,3 +200,22 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 	);
 };
 ```
+
+<ColourComponentSection>
+	{`<Render>{() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Find your country"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+}}</Render>`}
+</ColourComponentSection>

@@ -226,7 +226,7 @@ This text is wrapped in the `AccordionContent` component.
 
 ## Backgrounds
 
-The background of the `AccordionItem` must pair with the background it is being placed on. For example, if AccordionItem is placed on a `bodyAlt` background, please set the `background` prop to `'bodyAlt'`.
+The background of the `AccordionItem` must pair with the background it is being placed on. For example, if `AccordionItem` is placed on a `bodyAlt` background, please set the `background` prop to `'bodyAlt'`.
 
 ```jsx live
 <Stack background="bodyAlt" padding={3} gap={1}>
@@ -243,3 +243,35 @@ The background of the `AccordionItem` must pair with the background it is being 
 	</Accordion>
 </Stack>
 ```
+
+<ColourComponentSection bodyAlt>
+	{`<>
+	<Box padding={1.5}>
+		<Accordion>
+			<AccordionItem title="Accordion: on body background" background="body">
+				<AccordionItemContent>
+					<Stack gap={1}>
+						<Text as="p">Here is the accordion content.</Text>
+						<TextLink href="#">Text link</TextLink>
+					</Stack>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	</Box>
+	<Box background="bodyAlt" padding={1.5}>
+		<Accordion>
+			<AccordionItem
+				title="Accordion: on bodyAlt background"
+				background="bodyAlt"
+			>
+				<AccordionItemContent>
+					<Stack gap={1}>
+						<Text as="p">Here is the accordion content.</Text>
+						<TextLink href="#">Text link</TextLink>
+					</Stack>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>
+	</Box>
+</>`}
+</ColourComponentSection>

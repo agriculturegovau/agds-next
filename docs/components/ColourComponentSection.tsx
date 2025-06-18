@@ -1,4 +1,3 @@
-import { Box } from '@ag.ds-next/react/box';
 import { Code } from './Code';
 
 export const ColourComponentSection = ({
@@ -12,7 +11,7 @@ export const ColourComponentSection = ({
 	const children = ReactChildren?.toString()
 		.trim()
 		.split('\n')
-		.map((child) => '\t' + child) // Add indent for box
+		.map((line) => '\t' + line) // Add indent for box
 		.join('\n');
 
 	return (
@@ -42,18 +41,15 @@ export const ColourComponentSection = ({
 
 			<h3>Light palette</h3>
 
-			<Box padding={1.5}>
-				<Code
-					live
-				>{`<Box background="body" padding={1}>\n${children}\n</Box>`}</Code>
-			</Box>
+			<Code
+				live
+			>{`<Box background="body" padding={1.5}>\n${children}\n</Box>`}</Code>
 
 			<h3>Dark palette</h3>
-			<Box padding={1.5}>
-				<Code
-					live
-				>{`<Box background="body" padding={1} palette="dark">\n${children}\n</Box>`}</Code>
-			</Box>
+
+			<Code
+				live
+			>{`<Box background="body" padding={1.5} palette="dark">\n${children}\n</Box>`}</Code>
 		</>
 	);
 };
