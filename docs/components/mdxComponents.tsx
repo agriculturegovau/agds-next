@@ -57,7 +57,13 @@ import {
 } from './TokenCharts';
 import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 
-export const mdxComponents: MDXRemoteProps['components'] = {
+export interface MDXComponentsPageData {
+	title?: string;
+}
+
+export const mdxComponents = (
+	pageData: MDXComponentsPageData
+): MDXRemoteProps['components'] => ({
 	Fragment,
 	blockquote: ({ children }) => (
 		<div className={proseBlockClassname}>
@@ -80,8 +86,10 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 		live?: boolean;
 		padding?: boolean;
+		/** Heading for responsive preview page and standalone link label */
 		previewHeading?: string;
 		showCode?: boolean;
+		/** Back link label for responsive preview page */
 		referrerLabel?: string;
 	}) => {
 		return (
@@ -96,6 +104,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							key={element.key}
 							live={live}
 							padding={padding}
+							pageData={pageData}
 							previewHeading={previewHeading}
 							referrerLabel={referrerLabel}
 							showCode={showCode}
@@ -294,4 +303,4 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			{label}
 		</ResponsivePreviewLink>
 	),
-};
+});

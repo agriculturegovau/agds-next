@@ -2,11 +2,12 @@ import { usePathname } from 'next/navigation';
 import React, { Fragment, type ReactNode, useState } from 'react';
 import { LiveProvider } from 'react-live';
 import { withBasePath } from '../lib/img';
-import * as designSystemComponents from './designSystemComponents';
 import { createTitleFromPathname } from './code/utils';
 import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 import { StaticCode } from './code/StaticCode';
 import { LiveCode } from './code/LiveCode';
+import * as designSystemComponents from './designSystemComponents';
+import { type MDXComponentsPageData } from './mdxComponents';
 
 export const PlaceholderImage = () => (
 	<img
@@ -55,6 +56,7 @@ type CodeProps = {
 	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
 	live?: boolean;
 	padding?: boolean;
+	pageData?: MDXComponentsPageData;
 	previewHeading?: string;
 	referrerLabel?: string;
 	showCode?: boolean;
@@ -68,6 +70,7 @@ export function Code({
 	exampleContentHeadingType,
 	live,
 	padding,
+	pageData,
 	previewHeading,
 	referrerLabel,
 	showCode,
@@ -78,10 +81,10 @@ export function Code({
 
 	if (!childrenAsString) return null;
 
-	const responsivePreviewTitle =
-		previewHeading || `${createTitleFromPathname(pathname)} preview`;
-	const responsiveReferrerLabel =
-		referrerLabel || `Back to ${createTitleFromPathname(pathname)}`;
+	const defaultTitle = pageData?.title || createTitleFromPathname(pathname);
+
+	const responsivePreviewTitle = previewHeading || `${defaultTitle} preview`;
+	const responsiveReferrerLabel = referrerLabel || `Back to ${defaultTitle}`;
 
 	// Standalone link, inline docs
 	if (previewHeading && !live) {

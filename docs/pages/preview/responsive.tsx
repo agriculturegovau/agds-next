@@ -79,8 +79,6 @@ export default function ResponsivePage() {
 	const isIos = useIsIos();
 
 	useEffect(() => {
-		// useSearchParams hook is too slow on initial render
-		// Using browser API to set the initial size
 		const initQueryParams = new URLSearchParams(window.location.search);
 		const defaultSize = initQueryParams.get(
 			responsivePreviewQueryKeys.previewSize
@@ -92,28 +90,26 @@ export default function ResponsivePage() {
 	}, [setFrameSize]);
 
 	useEffect(() => {
-		// useSearchParams hook is too slow on initial render
-		// Using browser API to set iframe source
 		const initQueryParams = new URLSearchParams(window.location.search);
 		const iframeSrc = initQueryParams.get(responsivePreviewQueryKeys.frameSrc);
 
 		// Verify address is from AgDS
 		if (iframeSrc) {
 			try {
-				const sanitizedUrl = encodeURI(iframeSrc);
+				const encodedUrl = encodeURI(iframeSrc);
 
 				// If URL is AgDS, allow through
-				if (sanitizedUrl.startsWith('/')) {
-					setIframeSrc(sanitizedUrl);
+				if (encodedUrl.startsWith('/')) {
+					setIframeSrc(encodedUrl);
 					return;
 				}
 
-				const parsedUrl = new URL(sanitizedUrl);
+				const parsedUrl = new URL(encodedUrl);
 				const isValidSrc = trustedUrls.some(
 					(domain) => domain && parsedUrl.hostname === new URL(domain).hostname
 				);
 				if (isValidSrc) {
-					setIframeSrc(sanitizedUrl);
+					setIframeSrc(encodedUrl);
 					return;
 				}
 			} catch {
@@ -269,7 +265,7 @@ export default function ResponsivePage() {
 								</Heading>
 								<Text>There was an error loading the preview.</Text>
 							</Stack>
-							<ButtonLink href={referrerLink}>Back to documentation</ButtonLink>
+							<ButtonLink href={referrerLink}>{referrerLabel}</ButtonLink>
 						</Stack>
 					</PageContent>
 				) : (
