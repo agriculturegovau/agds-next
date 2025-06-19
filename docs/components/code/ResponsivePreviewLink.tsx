@@ -64,7 +64,7 @@ export function ResponsivePreviewLink({
 		urlParams.append(responsivePreviewQueryKeys.referrerLabel, referrerLabel);
 	}
 
-	const href = `/preview/responsive?${urlParams.toString()}`;
+	const href = `/responsive-preview?${urlParams.toString()}`;
 
 	// Link without live preview
 	if (standalone) {
