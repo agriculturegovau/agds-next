@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Flex } from '@ag.ds-next/react/flex';
 import { Heading } from '@ag.ds-next/react/heading';
@@ -17,6 +17,7 @@ export default function ContentPage({
 	document,
 	pageList,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: document.title });
 	return (
 		<>
 			<DocumentTitle
@@ -46,7 +47,7 @@ export default function ContentPage({
 				</Columns>
 				<Divider />
 				<Prose>
-					<MDXRemote {...document.source} components={mdxComponents} />
+					<MDXRemote {...document.source} components={components} />
 				</Prose>
 			</CategoryPageTemplate>
 		</>
@@ -61,8 +62,8 @@ export const getStaticProps: GetStaticProps<{
 	const pageList = await getContentList();
 	return {
 		props: {
-			pageList,
 			document,
+			pageList,
 		},
 	};
 };

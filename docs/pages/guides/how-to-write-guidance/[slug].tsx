@@ -1,8 +1,8 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
-import { Guide } from '../../../lib/mdx/guides';
+import { type Guide } from '../../../lib/mdx/guides';
 import {
 	getNestedGuide,
 	getNestedGuideSlugs,
@@ -17,11 +17,12 @@ import { PageTitle } from '../../../components/PageTitle';
 import { generateToc } from '../../../lib/generateToc';
 
 export default function Guides({
-	guide,
-	toc,
 	breadcrumbs,
+	guide,
 	navLinks,
+	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: guide.title });
 	return (
 		<>
 			<DocumentTitle description={guide.opener} title={guide.title} />
@@ -44,7 +45,7 @@ export default function Guides({
 						/>
 					) : null}
 					<Prose>
-						<MDXRemote {...guide.source} components={mdxComponents} />
+						<MDXRemote {...guide.source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -54,8 +55,8 @@ export default function Guides({
 
 export const getStaticProps: GetStaticProps<
 	{
-		guide: Guide;
 		breadcrumbs: Awaited<ReturnType<typeof getNestedGuidesBreadcrumbs>>;
+		guide: Guide;
 		navLinks: Awaited<ReturnType<typeof getNestedGuidesNavLinks>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
@@ -74,8 +75,8 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			guide,
 			breadcrumbs,
+			guide,
 			navLinks,
 			slug,
 			toc,
@@ -86,9 +87,9 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const slugs = await getNestedGuideSlugs();
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };
