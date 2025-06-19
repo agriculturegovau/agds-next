@@ -84,7 +84,7 @@ export function Code({
 	const defaultTitle = pageData?.title || createTitleFromPathname(pathname);
 
 	const responsivePreviewTitle = previewHeading || `${defaultTitle} preview`;
-	const responsiveReferrerLabel = referrerLabel || `${defaultTitle}`;
+	const responsiveReferrerLabel = referrerLabel || defaultTitle;
 
 	// Standalone link, inline docs
 	if (previewHeading && !live) {
