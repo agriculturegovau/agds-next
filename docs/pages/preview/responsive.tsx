@@ -124,9 +124,10 @@ export default function ResponsivePage() {
 
 	const referrerLink =
 		searchParams.get(responsivePreviewQueryKeys.referrerLink) || '/';
-	const referrerLabel =
+	const referrerLabel = `Back to ${
 		searchParams.get(responsivePreviewQueryKeys.referrerLabel) ||
-		'Back to documentation';
+		'documentation'
+	}`;
 	const title =
 		searchParams.get(responsivePreviewQueryKeys.title) || 'Responsive preview';
 	const disablePadding = Boolean(

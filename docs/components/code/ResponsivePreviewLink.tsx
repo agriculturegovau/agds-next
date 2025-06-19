@@ -10,13 +10,20 @@ import { checkAndModifyCode } from './utils';
 
 // Query param keys consumed by the responsive preview page
 export const responsivePreviewQueryKeys = {
+	/** iframe source used for the responsive preview. */
 	frameSrc: 'src',
-	/** Option to enable/disable padding on top, left and right of the frame. Used for full page previews. */
+	/**
+	 * Option to enable/disable padding on top, left and right of the frame.
+	 * Only use for full page or already padded previews, not component previews.
+	 */
 	padding: 'padding',
+	/** Label text for the back button. Back button is prefixed with `Back to {referrerLabel}`. */
 	referrerLabel: 'referrer-label',
+	/** Back button link href. */
 	referrerLink: 'referrer-link',
-	/** Sizes are set by the user on the responsive preview page */
+	/** Sizes are set by the user on the responsive preview page. */
 	previewSize: 'size',
+	/** H1 title on responsive preview page. */
 	title: 'title',
 };
 
