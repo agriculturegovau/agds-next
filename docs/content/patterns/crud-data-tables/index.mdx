@@ -1,5 +1,5 @@
 ---
-title: Creating, reading, editing and deleting data in tables
+title: Creating, reading, update and deleting data in tables
 description: Applications that require persistent data storage commonly require table layouts to present stored data. Here are some patterns that enable users to create, read, edit and delete persistent data in tables.
 relatedComponents:
   ['button', 'file-input', 'file-upload', 'section-alert', 'table']
@@ -7,19 +7,15 @@ relatedComponents:
 
 ## Overview
 
-When persistent stored data is used in applications CRUD table interactions are required to enable users to Create, Read, Update or Delete data presented in table layouts. These common interactions can be achieved by providing an additional drawer or subpage surface for the action, to reduce the length and complexity of the form page and to provide the user content that is relevant to the interaction through progressive disclosure.
+Use CRUD table interactions to help users to Create, Read, Update or Delete (CRUD) data presented in tables. These common interactions can be achieved by providing an additional drawer or subpage surface for the action, to reduce the length and complexity of the form page and to provide the user content that is relevant to the interaction through progressive disclosure.
 
-## Create, Read, Update or Delete a record in a data table
+### Create a record in a data table
 
-If your service requires or permits the user to interact directly with persistent data in tables CRUD actions can be used.
+When creating a record to a data table is the primary action of the page, provide a primary button immediately before the table so it is above the table in the reading order and page hierarchy.
 
-### Add a record to a data table
+When adding a record to a data table is a secondary or supplementary action of the page provide a small secondary action immediately after the table.
 
-If adding a record to a data table is the primary action of the page, provide a primary action immediately before the table so it is above the table in the page hierarchy.
-
-If adding a record to a data table is a secondary or supplementary action of the page provide a small secondary action immediately after the table.
-
-If no records have been added to a data table provide an empty state to inform users there are no available records.
+Before any records have been added to a data table provide an empty state to inform users there are no available records.
 
 ```jsx live
 <Stack gap={3}>
@@ -61,11 +57,11 @@ If no records have been added to a data table provide an empty state to inform u
 In most situations use a side drawer or side page to provide all form inputs and controls required to add a new record. Use [drawer](/components/drawer) when the form is small or side pages for longer forms that a user will need to scroll.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’, three example field and form buttons ‘Add record’ and ‘Cancel’"
-	src="/img/patterns/crud-tables-add-record.png"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with text input, radio buttons, a Select component and form buttons ‘Add record’ and ‘Cancel’"
+	src="/img/patterns/crud-tables-create-record.png"
 />
 
-Once the form used for adding a record to the table is completed, return the user to the table page and display a new row in the table. Show a section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+Once the form used for adding a record to the table is completed, return the user to the table page and display the new record as a row in the table. Show a section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
 
 The add record to table pattern is repeatable and scalable.
 
@@ -85,7 +81,7 @@ The add record to table pattern is repeatable and scalable.
 			Create a record in this data table
 		</H1>
 		<Text as="p" color="muted" fontSize="md">
-			Add other equipment
+			Introductory paragraph.
 		</Text>
 	</Stack>
 	<SectionAlert
@@ -137,7 +133,7 @@ The add record to table pattern is repeatable and scalable.
 </Stack>
 ```
 
-### View or edit a record in a data table
+### Read a record in a data table
 
 Provide a link in the first column of the table so users can open and read a record. The record number or other unique identifier should be made bold and used for the link label.
 
@@ -145,20 +141,20 @@ Provide a side drawer or side page to provide the record information. Use side d
 
 After a user has read the record return them to the table page.
 
-Viewing a record in a table is repeatable and scalable pattern.
+Reading a record in a table is repeatable and scalable pattern.
 
-### Edit a record in a data table
+### Update a record in a data table
 
-Provide an ’Edit’ link in the last column of the table so users can open and edit existing records. The edit link can be included in a drop down of actions in the last column if there are more than two actions required.
+Provide an ‘Edit’ link in the last column of the table so users can open and update or edit existing records. The edit link can be included in a drop down of actions in the last column if there are more than two actions required.
 
-We can't edit content in place in semantic tables, so use a side page or side drawer to provide all inputs and controls required to edit the record. When a user elects to edit a record open the side drawer or side page and show the populated fields to be edited.
+Editing content in place in semantic tables is difficult for some users, so use a side page or side drawer to provide all inputs and controls required to edit the record. When a user elects to edit a record open the side drawer or side page and show the populated fields to be edited.
 
 After the record is edited in the side page or drawer, return the user to the table page, show the edited record in the table, and provide a Section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
 
-The edit pattern is repeatable and scalable.
+The update or edit pattern is repeatable and scalable.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’, three pre-filled example field and form buttons ‘Add record’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and a populated short form with text input, radio buttons, a Select component and form buttons ‘Add record’ and ‘Cancel’"
 	src="/img/patterns/crud-tables-edit-record.png"
 />
 
@@ -181,13 +177,13 @@ The delete pattern is repeatable and scalable.
 
 ## Upload an undefined list of files to a table
 
-When a user needs to upload an undefined list of files, of different categories or requiring specific metadata, the repeatable file upload pattern can be used. When using this pattern metadata can be associated with uploaded files to support back stage processing.
+Use a repeatable file upload pattern when uploading an undefined list of files of different categories or when specific meta data for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
 
 The upload undefined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
 
 ### Empty state
 
-Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
+Before any files are uploaded provide an empty state. Use a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
 
 ```jsx live
 <Stack gap={3}>
@@ -223,7 +219,7 @@ Metadata for each uploaded file can be provided in a side drawer or side page co
 The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the record category or type and provide any additional information required about an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Upload file’, example fields and form buttons ‘Upload file’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Upload file’ and an empty state short form with text input, radio buttons, text input, a Select, File upload and form buttons ‘Upload file’ and ‘Cancel’"
 	src="/img/patterns/crud-tables-upload-undefined-list.png"
 />
 
@@ -324,7 +320,7 @@ When large defined lists of files in tables are required a drawer or subpage for
 The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Upload file’, example fields and form buttons ‘Upload file’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with a Select, File upload ad form buttons ‘Upload file’ and ‘Cancel’"
 	src="/img/patterns/crud-tables-upload-defined-list.png"
 />
 
