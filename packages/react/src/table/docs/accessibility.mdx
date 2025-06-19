@@ -1,173 +1,76 @@
-Table 
+Learn more about how to meet WCAG success criteria when implementing tables. This makes them accessible and inclusive for users of all abilities and situations.
 
-Tables help make complex information easier to scan and compare. Use tables for exact values or information that would be hard to read in body text. 
+The table component passed accessibility testing in 2022 and 2024.
 
- 
+## ARIA usage for enhanced accessibility
 
-Learn more about how to meet WCAG success criteria when implementing tables. This makes them accessible and inclusive for users of all abilities and situations. 
+### Requirements
 
-The table component passed accessibility testing in 2022 and 2024. 
+- Only add ARIA when semantic HTML is insufficient.
+- Include `aria-label` or `aria-labelledby` when `<TableCaption>` or other visible text is insufficient.
+- Use `aria-rowcount` to define total number of table rows in a paginated table.
+- Use `aria-rowindex` on `TableRow` to define a row’s position in a paginated table.
+- Use `aria-selected` when selecting a row for a batch action.
+- Use `aria-described-by`or `VisuallyHidden` on table actions when the visible text is insufficient – for example, ‘Edit’ fits into a table, but ‘Edit record 2’ doesn’t.
 
- 
+### Benefits
 
-ARIA usage for enhanced accessibility 
+- Communicates table purpose and context to assistive technology users.
+- Clarifies the current state of a table and its rows.
+- Improves the navigational experience for screen reader users.
+- Provides feedback on the results of user interactions.
+- Ensures all users have equal access to functionality.
 
-Requirements 
+### WCAG references
 
-Only add ARIA when semantic HTML is insufficient. 
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
 
-Include `aria-label` or `aria-labelledby` when `<TableCaption>` or other visible text is insufficient. 
+## Clear captions
 
-Use `aria-rowcount` to define total number of table rows in a paginated table. 
+### Requirements
 
-Use `aria-rowindex` on `TableRow` to define a row’s position in a paginated table. 
+- `<Table>` has a caption that is clear and succinct in the way it describes the purpose of the table.
+- The caption is associated with the correct table by putting the `<TableCaption>` component immediately after the opening `<Table>` tag in your code.
 
-Use `aria-selected` when selecting a row for a batch action. 
+### Benefits
 
-Use `aria-described-by`or `VisuallyHidden` on table actions when the visible text is insufficient – for example, ‘Edit’ fits into a table, but ‘Edit record 2’ doesn’t. 
+- Helps users understand the table’s purpose before navigating its contents.
+- Provides context for screen readers users.
+- Enhances document structure and navigation.
+- Makes tables more discoverable in page content.
+- Aids users in determining if the table is relevant to their needs.
 
- 
+### WCAG references
 
-Benefits 
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 2.4.2 Page titled](https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html)
+- [Understanding success criterion 2.4.6 Headings and labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
 
-Communicates table purpose and context to assistive technology users. 
+## Semantic structure
 
-Clarifies the current state of a table and its rows. 
+### Requirements
 
-Improves the navigational experience for screen reader users. 
+- Use the provided components and sub-components to enforce the correct structure of a table – for example, `<TableRow>`, `<TableHeader>`, `<TableCell>`.
+- Avoid merged or split cells unless they have proper header associations that are understood and conveyed by assistive technology.
+- Set the appropriate `scope` attribute on `<TableHeader>` – for example, `scope="row"`, `scope="col"`.
 
-Provides feedback on the results of user interactions. 
+### Benefits
 
-Ensures all users have equal access to functionality. 
+- Screen readers can accurately convey which column and row the cell data is for.
+- Improves understanding of data relationships for all users.
 
-  
+### WCAG references
 
-WCAG references 
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 1.3.2 Meaningful sequence](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html)
+- [Understanding success criterion 4.1.1 Parsing](https://www.w3.org/WAI/WCAG21/Understanding/parsing.html)
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
-Understanding success criterion 1.3.1 Info and relationships 
+## Related guidance
 
-Understanding success criterion 4.1.2 Name, role, value 
-
-ARIA authoring practices guide 
-
- 
-
-Clear captions 
-
-Requirements 
-
-Table has a caption that is clear and succinct in the way it describes the purpose of the table. 
-
-The caption is associated with the correct table by putting the `<TableCaption>` component immediately after the opening `<Table>` tag in your code.   
-
- 
-
-Benefits 
-
-Helps users understand the table’s purpose before navigating its contents. 
-
-Provides context for screen readers users. 
-
-Enhances document structure and navigation. 
-
-Makes tables more discoverable in page content. 
-
-Aids users in determining if the table is relevant to their needs. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 1.3.1 Info and relationships 
-
-Understanding success criterion 2.4.2 Page titled 
-
-Understanding success criterion 2.4.6 Headings and labels 
-
- 
-
-Semantic structure 
-
-Requirements 
-
-Use the provided components and sub-components to enforce the correct structure of a table – for example, TableRow, TableHeader, TableCell. 
-
-Avoid merged or split cells unless they have proper header associations that are understood and conveyed by assistive technology. 
-
-Set the appropriate scope attribute on TableHeader – for example, `scope=row`, `scope=col`. 
-
- 
-
-Benefits 
-
-Screen readers can accurately convey which column and row the cell data is for. 
-
-Improves understanding of data relationships for all users. 
-
-  
-
-WCAG references 
-
-Understanding success criterion 1.3.1 Info and relationships 
-
-Understanding success criterion 1.3.2 Meaningful sequence 
-
-Understanding success criterion 4.1.1 Parsing 
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Related guidance 
-
-AgDS accessibility guidance 
-
-WCAG 2 Overview 
-
-ARIA Authoring Practices Guide (APG) 
-
-Accessibility – MDN 
-
- 
----
-
-OLD
-
-To be accessible to all users, tables must have:
-
-- a title or caption
-- row and column headings
-- a cross-reference in the text.
-
-You may need to add notes below the table to help users understand the information and where it is from.
-
-Don’t rely on colour to convey information.
-
-Don’t leave cells empty. Use ‘zero’ or ‘nil’ or ‘n/a’ where there is no data. If it is numeric data, use zero (0). Only use zero if that is the true value.
-
-Consider screen size and how much information you can include.
-
-For more guidance, see:
-
-- [1.3.1 Info and relationships – level A](https://www.w3.org/WAI/WCAG21/quickref/#info-and-relationships)
-- [1.4.1 Use of colour – level A](https://www.w3.org/WAI/WCAG21/quickref/#use-of-color)
-
-## ARIA attributes
-
-Using ARIA attributes can help users of assistive technology understand the purpose of an element.
-
-`aria-labelledby` and `aria-describedby` attributes can help users of assistive technology understand the purpose of a table, by relating a Heading or Text element to the table by their ID.
-
-The `aria-rowcount` attribute defines the total number of rows in a table, for users of assistive technology. This is useful for tables with pagination.
-
-The `aria-rowindex` attribute on `TableRow` defines its position with respect to the total number of rows within a `Table`.
-
-## Guidance for clickable rows
-
-The `onClick` prop on the table row component should only be used as an enhancement for mouse/touch users to be able to quickly activate the “main” action on the table.
-
-The callback function should only be used in scenarios where the concept is clearly understood with many existing examples (e.g. email applications often allow users to click the entire row to open an email).
-
-Don’t rely on the `onClick` prop as the only means of triggering the main action. To support all users, the action must also be present (as either a link or button) within the cell content.
-
-Ensure other interactive elements within a clickable row have adequate spacing and sizing to prevent users from accidentally triggering the row click event instead of pressing the link or button.
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

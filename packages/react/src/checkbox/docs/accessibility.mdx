@@ -1,95 +1,57 @@
-Checkbox 
+Learn more about how to meet WCAG success criteria when implementing checkboxes. This makes them accessible and inclusive for users of all abilities and situations.
 
-Checkboxes allow users to select one or more options from a list. 
+The checkbox component passed accessibility testing in 2022 and 2024.
 
- 
+## Clear and descriptive labels
 
-Learn more about how to meet WCAG success criteria when implementing checkboxes. This makes them accessible and inclusive for users of all abilities and situations. 
+### Requirements
 
-The checkbox component passed accessibility testing in 2022 and 2024. 
+- Labels clearly identify the purpose of the checkbox.
+- The purpose of the checkbox is understood and conveyed by assistive technology.
+- Wrap groups of checkboxes in a fieldset with a legend that describes the purpose of the set.
 
- 
+### Benefits
 
-Clear and descriptive labels 
+- Improves understanding of available options.
+- Helps all users avoid submitting an incomplete or incorrect form.
+- Makes filling in forms easier for people with cognitive and learning disabilities.
+- Assistive technology users have equal access to information about the purpose of the component.
+- Clear labelling supports users with English as a second language.
 
-Requirements 
+### WCAG references
 
-Labels clearly identify the purpose of the checkbox. 
+- [Understanding success criterion 1.3.5 Identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html)
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 
-The purpose of the checkbox is understood and conveyed by assistive technology. 
+## Name, role, value
 
-Wrap groups of checkboxes in a fieldset with a legend that describes the purpose of the set. 
+### Requirements
 
- 
+- All checkboxes have appropriate names, roles and values that are understood and conveyed by assistive technology.
+- Clear label identifying the checkbox.
+- ARIA roles and states where needed (e.g., `aria-checked`, `aria-required`).
+- All checkboxes in a fieldset should have the same `name` – for example:
 
-Benefits 
+```
+name="device" value="mobile"
+name="device" value="tablet"
+name="device" value="desktop"
+```
 
-Improves understanding of available options. 
+### Benefits
 
-Helps all users avoid submitting an incomplete or incorrect form. 
+- Assistive technology users have equal access to information about the state of the component.
+- Improves usability for voice control software users.
+- Helps users with cognitive challenges understand component functionality.
+- Makes automation and testing more reliable.
 
-Makes filling in forms easier for people with cognitive and learning disabilities. 
+### WCAG references
 
-Assistive technology users have equal access to information about the purpose of the component. 
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
-Clear labelling supports users with English as a second language. 
+## Related guidance
 
- 
-
-WCAG references 
-
-Understanding success criterion 1.3.5 Identify input purpose 
-
-Understanding success criterion 3.3.2 Labels or instructions 
-
- 
-
-Name, role, value 
-
-Requirements 
-
-All checkboxes have appropriate names, roles and values that are understood and conveyed by assistive technology. 
-
-Clear label identifying the checkbox. 
-
-ARIA roles and states where needed (e.g., `aria-checked`, `aria-required`). 
-
-All checkboxes in a fieldset should have the same `name`– for example: 
-
-```name =”device’ value=”mobile” 
-
-name =”device’ value=”tablet” 
-
-name =”device’ value=”desktop” ``` 
-
- 
-
-Benefits 
-
-Assistive technology users have equal access to information about the state of the component. 
-
-Improves usability for voice control software users. 
-
-Helps users with cognitive challenges understand component functionality. 
-
-Makes automation and testing more reliable. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Related guidance 
-
-AgDS accessibility guidance 
-
-WCAG 2 Overview 
-
-ARIA Authoring Practices Guide (APG) 
-
-Accessibility – MDN 
-
- 
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

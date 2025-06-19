@@ -1,157 +1,91 @@
-Date range picker (Next) 
+Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations.
 
-The Date range picker component allows users to select a range of dates via a calendar or text input. 
+The date range picker component passed accessibility testing in 2022 and 2024.
 
- 
+## Clear labels and instructions
 
-Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations. 
+### Requirements
 
-The date range picker component passed accessibility testing in 2022 and 2024. 
+- Labels and hint text are clear and succinct.
+- The purpose of the date range picker is understood and conveyed by assistive technology.
 
- 
+### Benefits
 
-Clear labels and instructions 
+- Assistive technology users have equal access to information about the purpose and state of the component.
+- Helps all users avoid submitting an incomplete or incorrect form.
+- Reduces the cognitive load for all users.
+- Makes filling in forms easier for people with cognitive and learning disabilities.
+- Clear labelling supports users with English as a second language.
 
-Requirements 
+### WCAG references
 
-Labels and hint text are clear and succinct. 
+- [Understanding success criterion 1.3.5 Identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html)
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 
-The purpose of the date range picker is understood and conveyed by assistive technology. 
+## Error identification
 
- 
+### Requirements
 
-Benefits 
+- Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates.
+- Error notifications are accessible to all users, including those with disabilities.
+- Error messages clearly identify the error.
+- Error messages provide sufficient information for users to locate and fix the problem.
+- Error messages are understood and conveyed by assistive technology.
 
-Assistive technology users have equal access to information about the purpose and state of the component. 
+### Benefits
 
-Helps all users avoid submitting an incomplete or incorrect form. 
+- Assistive technology users have equal access to error messages.
+- Reduces user frustration by clearly explaining what went wrong.
+- Helps users with cognitive disabilities understand and fix problems.
+- Saves time by preventing repeated unsuccessful attempts.
+- Reduces support tickets and user assistance needs.
 
-Reduces the cognitive load for all users. 
+### WCAG references
 
-Makes filling in forms easier for people with cognitive and learning disabilities. 
+- [Understanding success criterion 3.3.1 Error identification](https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html)
 
-Clear labelling supports users with English as a second language. 
+## Error prevention
 
- 
+### Requirements
 
-WCAG references 
+- Hint text is provided when it’s helpful.
+- Labels and hint text are clear and succinct.
+- Users can check, reverse or confirm their input on forms with legal commitments, financial transactions or data modifications.
 
-Understanding success criterion 1.3.5 Identify input purpose 
+### Benefits
 
-Understanding success criterion 3.3.2 Labels or instructions 
+- Clear guidance reduces anxiety about making mistakes.
+- Helps users understand requirements.
+- Saves time by preventing repeated incorrect input.
+- Particularly valuable for users with cognitive or motor impairments.
+- Provides safeguards against critical errors with significant consequences.
 
- 
+### WCAG references
 
-Error identification 
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
+- [Understanding success criterion 3.3.4 Error prevention (legal, financial, data)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html)
 
-Requirements 
+## Name, role, value
 
-Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates. 
+### Requirements
 
-Error notifications are accessible to all users, including those with disabilities. 
+- All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
+- Clear labels identifying the date range picker.
 
-Error messages clearly identify the error. 
+### Benefits
 
-Error messages provide sufficient information for users to locate and fix the problem. 
+- Assistive technology users have equal access to information about the purpose and state of the component.
+- Improves usability for voice control software users.
+- Helps users with cognitive challenges understand component functionality.
+- Makes automation and testing more reliable.
 
-Error messages are understood and conveyed by assistive technology. 
+### WCAG references
 
- 
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
-Benefits 
+## Related guidance
 
-Assistive technology users have equal access to error messages.   
-
-Reduces user frustration by clearly explaining what went wrong. 
-
-Helps users with cognitive disabilities understand and fix problems. 
-
-Saves time by preventing repeated unsuccessful attempts. 
-
-Reduces support tickets and user assistance needs. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 3.3.4 Error identification 
-
- 
-
-Error prevention 
-
-Requirements 
-
-Hint text is provided when it’s helpful. 
-
-Labels and hint text are clear and succinct. 
-
-Users can check, reverse or confirm their input on forms with legal commitments, financial transactions or data modifications. 
-
- 
-
-Benefits 
-
-Clear guidance reduces anxiety about making mistakes. 
-
-Helps users understand upload requirements. 
-
-Saves time by preventing repeated incorrect input. 
-
-Particularly valuable for users with cognitive or motor impairments. 
-
-Provides safeguards against critical errors with significant consequences. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 3.3.2 Labels or instructions 
-
-Understanding success criterion 3.3.4 Error prevention (legal, financial, data) 
-
- 
-
-Name, role, value 
-
-Requirements 
-
-All form components have appropriate names, roles and values that are understood and conveyed by assistive technology. 
-
-Clear labels identifying the date range picker. 
-
- 
-
-Benefits 
-
-Assistive technology users have equal access to information about the purpose and state of the component. 
-
-Improves usability for voice control software users. 
-
-Helps users with cognitive challenges understand component functionality. 
-
-Makes automation and testing more reliable. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Related guidance 
-
-AgDS accessibility guidance 
-
-WCAG 2 Overview 
-
-ARIA Authoring Practices Guide (APG) 
-
-Accessibility – MDN 
-
- 
-
- 
-
- 
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

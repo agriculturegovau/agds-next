@@ -1,173 +1,106 @@
-Dropdown menu 
+Learn more about how to meet WCAG success criteria when implementing dropdown menus. This makes them accessible and inclusive for users of all abilities and situations.
 
-A dropdown menu displays a list of actions when a trigger is pressed. 
+The dropdown component passed accessibility testing 2024.
 
- 
+## Clear and descriptive labels
 
-Learn more about how to meet WCAG success criteria when implementing dropdown menus. This makes them accessible and inclusive for users of all abilities and situations. 
+### Requirements
 
-The dropdown component passed accessibility testing 2024. 
+- Dropdowns and their menu items have clear, concise labels that describe the action. We recommend using verb and noun pairs – for example: ‘Remove access’, ‘Approve application’, ‘Delete record’.
+- The purpose of the dropdown menu and its actions are understood and conveyed by assistive technology.
 
- 
+### Benefits
 
-Clear and descriptive labels 
+- Improves understanding of available actions.
+- Reduces the cognitive load for all users.
+- Supports users with cognitive disabilities through clear labelling.
+- Helps users predict outcomes of interactions.
+- Clear labelling supports users with English as a second language.
+- Assistive technology users have equal access to information about the purpose of the component.
 
-Requirements 
+### WCAG references
 
-Dropdowns and their menu items have clear, concise labels that describe the action. We recommend using verb and noun pairs – for example: ‘Remove access’, ‘Approve application’, ‘Delete record’. 
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 
-The purpose of the dropdown menu and its actions are understood and conveyed by assistive technology. 
+## Consistent identification
 
- 
+### Requirements
 
-Benefits 
+Components with the same functionality have consistent identification – for example to remove an item from a table, the actions dropdown menus should always use ‘Delete’ or always use ‘Remove’. Mixing terms can lead to confusion about what happens when the menu item is activated.
 
-Improves understanding of available actions. 
+### Benefits
 
-Reduces the cognitive load for all users. 
+- Improves learnability.
+- Reduces the cognitive load for all users.
+- Increases accessibility for users with cognitive disabilities.
 
-Supports users with cognitive disabilities through clear labelling. 
+### WCAG references
 
-Helps users predict outcomes of interactions. 
+- [Understanding success criterion 3.2.4 Consistent identification](https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html)
 
-Clear labelling supports users with English as a second language. 
+## Label in accessible name
 
-Assistive technology users have equal access to information about the purpose of the component. 
+### Requirements
 
- 
+Visible dropdown labels must match the beginning of the accessible name. If you want to avoid horizontal scroll in a table, you may not have space to include a noun/verb pair. For example, the visible label might read ‘Actions’, but the accessible name is ’Actions - Record 2’.
 
-WCAG references 
+### Benefits
 
-Understanding success criterion 3.3.2 Labels or Instructions 
+- Screen reader users hear the action that will occur when the menu item is used.
+- People who use speech recognition can activate the menu item by saying the text they see on the dropdown option.
 
- 
+### WCAG references
 
-Consistent identification 
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html)
 
-Requirements 
+## Name, role, value
 
-Components with the same functionality have consistent identification – for example to remove an item from a table, the actions dropdown menus should always use ‘Delete’ or always use ‘Remove’. Mixing terms can lead to confusion about what happens when the menu item is activated. 
+### Requirements
 
- 
+- All dropdown actions have appropriate names, roles and values that are understood and conveyed by assistive technology.
+- Clear label identifying the dropdown and its actions.
+- ARIA roles and states where needed – for example, `aria-expanded`, `role="menuitemradio"`.
 
-Benefits 
+### Benefits
 
-Improves learnability. 
+- Assistive technology users have equal access to information on the state of the component.
+- Improves usability for voice control software users.
+- Helps users with cognitive challenges understand component functionality.
+- Makes automation and testing more reliable.
 
-Reduces the cognitive load for all users. 
+### WCAG references
 
-Increases accessibility for users with cognitive disabilities. 
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
- 
+## Semantic markup
 
-WCAG references 
+### Requirements
 
-Understanding success criterion 3.2.4 Consistent identification 
+- Code is marked up in the most semantic way possible.
+- `DropdownMenuItem` components use the `menuitem` role.
+- `DropdownMenuItemRadio` component uses the `menuitemradio` role.
 
- 
+### Benefits
 
-Label in accessible name 
+- Ensures proper functionality across different assistive devices.
+- Ensures built-in keyboard accessibility without additional code.
+- Simplifies development by leveraging built-in browser behaviours.
+- Makes maintenance easier by using standard patterns.
+- Improves compatibility across different assistive technologies.
 
-Requirements 
+### WCAG references
 
-Visible dropdown labels must match the beginning of the accessible name. If you want to avoid horizontal scroll in a table, you may not have space to include a noun/verb pair. For example, the visible label might read ‘Actions’, but the accessible name is ’Actions - Record 2’. 
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
- 
+## Status messages
 
-Benefits 
+Dropdown menu actions can have important consequences. Learn about using status messages to communicate important changes in content, especially destructive ones. Visit [AgDS Accessibility – States and status – requirements](#TODO).
 
-Screen reader users hear the action that will occur when the menu item is used. 
+## Related guidance
 
-People who use speech recognition can activate the menu item by saying the text they see on the dropdown option. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 2.5.3 Label in name 
-
- 
-
-Name, role, value 
-
-Requirements 
-
-All dropdown actions have appropriate names, roles and values that are understood and conveyed by assistive technology. 
-
-Clear label identifying the dropdown and its actions. 
-
-ARIA roles and states where needed – for example, `aria-expanded`, `role=menuitemradio`). 
-
- 
-
-Benefits 
-
-Assistive technology users have equal access to information on the state of the component. 
-
-Improves usability for voice control software users. 
-
-Helps users with cognitive challenges understand component functionality. 
-
-Makes automation and testing more reliable. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Semantic markup 
-
-Requirements 
-
-Code is marked up in the most semantic way possible.  
-
-`DropdownMenuItem` components use the menuitem role. 
-
-`DropdownMenuItemRadio` component uses the menuitemradio role. 
-
- 
-
-Benefits 
-
-Ensures proper functionality across different assistive devices. 
-
-Ensures built-in keyboard accessibility without additional code. 
-
-Simplifies development by leveraging built-in browser behaviours. 
-
-Makes maintenance easier by using standard patterns. 
-
-Improves compatibility across different assistive technologies. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 1.3.1 Info and relationships  
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Status messages 
-
-Dropdown menu actions can have important consequences. Learn about using status messages to communicate important changes in content, especially destructive ones. Visit AgDS Accessibility – States and status – Requirements. 
-
- 
-
-Related guidance 
-
-AgDS accessibility guidance 
-
-WCAG 2 Overview 
-
-ARIA Authoring Practices Guide (APG) 
-
-Accessibility – MDN 
-
-APG Menu Button Pattern 
-
- 
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+- [APG Menu Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/)

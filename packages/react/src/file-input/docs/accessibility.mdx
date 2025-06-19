@@ -1,206 +1,117 @@
-Please note that this is on hold until we can improve the component. 
+**Please note that this is on hold until we can improve the component.**
 
-File input 
+Learn more about how to meet WCAG success criteria when implementing file inputs. This makes them accessible and inclusive for users of all abilities and situations.
 
-The File input component allows users to attach one file to a form field by browsing their device. 
+The file input component passed accessibility testing in 2024.
 
- 
+## Clear labels and instructions
 
-Learn more about how to meet WCAG success criteria when implementing file inputs. This makes them accessible and inclusive for users of all abilities and situations. 
- 
+### Requirements
 
-The file input component passed accessibility testing in 2024. 
+- Labels are clear and descriptive in the way they describe purpose.
+- The purpose of the file input is understood and conveyed by assistive technology.
+- Hint text is provided for file format and size.
+- Indicate required or optional fields where applicable.
 
- 
+### Benefits
 
-Clear labels and instructions 
+- Users of assistive technologies have equal access to labels and instructions.
+- Helps all users avoid submitting an incomplete or incorrect form.
+- Reduces cognitive load by making requirements clear upfront.
+- Makes uploading documents easier for people with cognitive and learning disabilities.
+- Clear labelling supports users with English as a second language.
 
-Requirements 
+### WCAG references
 
-Labels are clear and descriptive in the way they describe purpose. 
+- [Understanding success criterion 1.3.5 Identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html)
+- [Understanding success criterion 2.4.6 Headings and labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 
-The purpose of the file input is understood and conveyed by assistive technology. 
+## Error identification
 
-Hint text is provided for file format and size. 
+### Requirements
 
-Indicate required or optional fields where applicable. 
+- Clear error messages for invalid file types and sizes.
+- Input errors are detected and communicated to the user.
+- Error notifications are accessible to all users, including those with disabilities.
+- Error messages are understood and conveyed by assistive technology.
 
- 
+### Benefits
 
-Benefits 
+- Assistive technology users have equal access to error messages.
+- Reduces user frustration by clearly explaining what went wrong.
+- Helps users with cognitive disabilities understand and fix problems.
+- Saves time by preventing repeated unsuccessful upload attempts.
+- Reduces support tickets and user assistance needs.
 
-Users of assistive technologies have equal access to labels and instructions. 
+### WCAG references
 
-Helps all users avoid submitting an incomplete or incorrect form. 
+- [Understanding success criterion 3.3.1 Error identification](https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html)
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 
-Reduces cognitive load by making requirements clear upfront. 
+## Error prevention
 
-Makes uploading documents easier for people with cognitive and learning disabilities. 
+### Requirements
 
-Clear labelling supports users with English as a second language. 
+- Provide hint text when it’s helpful – for example, to show the file format and size requirements.
+- Labels and hint text are clear and succinct.
+- Users can check, reverse or confirm their input on forms with legal. commitments, financial transactions or data modifications.
 
- 
+### Benefits
 
-WCAG references 
+- Clear guidance reduces anxiety about making mistakes.
+- Helps users understand upload requirements.
+- Saves bandwidth and time by preventing repeated incorrect uploads.
+- Particularly valuable for users with cognitive or motor impairments.
+- Provides safeguards against critical errors with significant consequences.
 
-Understanding success criterion 1.3.5 Identify input purpose 
+### WCAG references
 
-Understanding success criterion 2.4.6 Headings and labels 
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
+- [Understanding success criterion 3.3.4 Error prevention (legal, financial, data)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html)
 
-Understanding success criterion 3.3.2 Labels or instructions 
+## Keyboard accessibility
 
- 
+### Requirements
 
-Error identification 
+- Users can navigate to and from a file input using the Tab key.
+- File inputs activate using Enter and Space keys.
 
-Requirements 
+### Benefits
 
-Clear error messages for invalid file types and sizes. 
+- Enables use by people who can’t use a mouse or touchscreen.
+- Supports limited dexterity users who rely on keyboard navigation.
+- Improves usability for screen reader users.
+- Ensures compatibility with a wide range of input devices.
+- Increases efficiency for power users who prefer keyboard use.
 
-Input errors are detected and communicated to the user. 
+### WCAG references
 
-Error notifications are accessible to all users, including those with disabilities. 
+- [Understanding success criterion 2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html)
+- [Understanding success criterion 2.1.2 No keyboard trap](https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html)
 
-Error messages are understood and conveyed by assistive technology. 
+## Name, role, value
 
- 
+### Requirements
 
-Benefits 
+- Clear label identifying the upload function.
+- All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
+- ARIA roles and states where needed – for example, `aria-label`, `aria-describedby`.
 
-Assistive technology users have equal access to error messages. 
+### Benefits
 
-Reduces user frustration by clearly explaining what went wrong. 
+- Assistive technology users have equal access to information on the state of the component.
+- Improves usability for voice control software users.
+- Helps users with cognitive challenges understand component functionality.
+- Makes automation and testing more reliable.
 
-Helps users with cognitive disabilities understand and fix problems. 
+### WCAG references
 
-Saves time by preventing repeated unsuccessful upload attempts. 
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
 
-Reduces support tickets and user assistance needs. 
+## Related guidance
 
- 
-
-WCAG references 
-
-Understanding success criterion 3.3.1 Error identification 
-
-Understanding success criterion 3.3.2 Labels or instructions 
-
- 
-
-Error prevention 
-
-Requirements 
-
-Provide hint text when it’s helpful – for example, to show the file format and size requirements. 
-
-Labels and hint text are clear and succinct. 
-
-Users can check, reverse or confirm their input on forms with legal. commitments, financial transactions or data modifications. 
-
- 
-
-Benefits 
-
-Clear guidance reduces anxiety about making mistakes. 
-
-Helps users understand upload requirements. 
-
-Saves bandwidth and time by preventing repeated incorrect uploads. 
-
-Particularly valuable for users with cognitive or motor impairments. 
-
-Provides safeguards against critical errors with significant consequences. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 3.3.2 Labels or instructions 
-
-Understanding success criterion 3.3.4 Error prevention (legal, financial, data) 
-
- 
-
-Keyboard accessibility 
-
-Requirements 
-
-Users can navigate to and from a file input using the Tab key. 
-
-File inputs activate using Enter and Space keys. 
-
- 
-
-Benefits 
-
-Enables use by people who can’t use a mouse or touchscreen. 
-
-Supports limited dexterity users who rely on keyboard navigation. 
-
-Improves usability for screen reader users. 
-
-Ensures compatibility with a wide range of input devices. 
-
-Increases efficiency for power users who prefer keyboard use. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 2.1.1 Keyboard 
-
-Understanding success criterion 2.1.2 No keyboard trap 
-
- 
-
-Name, role, value 
-
-Requirements 
-
-Clear label identifying the upload function. 
-
-All form components have appropriate names, roles and values that are understood and conveyed by assistive technology. 
-
-ARIA roles and states where needed – for example, ‘aria-label', ‘aria-describedby`. 
-
- 
-
-Benefits 
-
-Assistive technology users have equal access to information on the state of the component. 
-
-Improves usability for voice control software users. 
-
-Helps users with cognitive challenges understand component functionality. 
-
-Makes automation and testing more reliable. 
-
- 
-
-WCAG references 
-
-Understanding success criterion 4.1.2 Name, role, value 
-
- 
-
-Related guidance 
-
-AgDS accessibility guidance 
-
-WCAG 2 Overview 
-
-ARIA Authoring Practices Guide (APG) 
-
-Accessibility – MDN 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
