@@ -28,8 +28,6 @@ field: Add accessibiity documentation.
 
 fieldset: Update accessibility documentation.
 
-file-input: Add accessibiity documentation.
-
 file-upload: Update accessibility documentation.
 
 form-stack: Add accessibiity documentation.
