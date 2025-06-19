@@ -298,3 +298,18 @@ Date formats are parsed in order from first to last and stops when a valid date 
 	);
 };
 ```
+
+<ColourComponentSection>
+	{`<Render>
+	{() => {
+		const [value, setValue] = React.useState();
+		return (
+			<DatePicker
+				label="Date picker: on [[PALETTE]] background"
+				onChange={setValue}
+				value={value}
+			/>
+		);
+	}}
+</Render>`}
+</ColourComponentSection>

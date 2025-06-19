@@ -30,6 +30,7 @@ export async function getPkg(slug: string) {
 		relatedPatterns: (data.relatedPatterns ?? null) as string[] | null,
 		deprecated: (data.deprecated ?? false) as boolean,
 		unreleased: (data.unreleased ?? false) as boolean,
+		colourSection: (data.colourSection ?? true) as boolean,
 	};
 }
 

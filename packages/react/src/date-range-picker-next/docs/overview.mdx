@@ -335,3 +335,21 @@ The array of `allowedDateFormats` will also need to be passed to the `isValidDat
 	);
 };
 ```
+
+<ColourComponentSection>
+	{`<Render>
+	{() => {
+		const [value, setValue] = React.useState({
+			from: undefined,
+			to: undefined,
+		});
+		return (
+			<DateRangePickerNext
+				legend="Date range picker (Next): on [[PALETTE]] background"
+				onChange={setValue}
+				value={value}
+			/>
+		);
+	}}
+</Render>`}
+</ColourComponentSection>

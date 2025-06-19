@@ -130,3 +130,56 @@ The footer at the bottom of a page. Usually contains copyright information and l
 	</Footer>
 </Box>
 ```
+
+<ColourComponentSection shadeAlt>
+	{`<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Footer: on [[PALETTE]] body background</H4>
+		<Footer>
+			<nav aria-label="footer">
+				<LinkList
+					links={[
+						{ href: '#1', label: 'Accessibility' },
+						{ href: '#2', label: 'Disclaimer' },
+						{ href: '#3', label: 'Privacy' },
+					]}
+					horizontal
+				/>
+			</nav>
+			<FooterDivider />
+			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				We acknowledge the traditional owners of country throughout Australia
+				and recognise their continuing connection to land, waters and culture.
+				We pay our respects to their Elders past, present and emerging.
+			</Text>
+			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				&copy; 2024 Department of Agriculture, Fisheries and Forestry
+			</Text>
+		</Footer>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Footer: on [[PALETTE]] bodyAlt background</H4>
+		<Footer background="bodyAlt">
+			<nav aria-label="footer">
+				<LinkList
+					links={[
+						{ href: '#1', label: 'Accessibility' },
+						{ href: '#2', label: 'Disclaimer' },
+						{ href: '#3', label: 'Privacy' },
+					]}
+					horizontal
+				/>
+			</nav>
+			<FooterDivider />
+			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				We acknowledge the traditional owners of country throughout Australia
+				and recognise their continuing connection to land, waters and culture.
+				We pay our respects to their Elders past, present and emerging.
+			</Text>
+			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
+				&copy; 2024 Department of Agriculture, Fisheries and Forestry
+			</Text>
+		</Footer>
+	</Stack>
+</>`}
+</ColourComponentSection>
