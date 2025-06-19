@@ -66,10 +66,12 @@ If the Details component is placed on a page with `bodyAlt` background, set the 
 </Box>
 ```
 
-<ColourComponentSection shadeAlt>
-	{`<>
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
 	<Box background="body" padding={1.5}>
-		<Details label="Details: on [[PALETTE]] body background" iconBefore>
+		<Details label="Details: on {%PALETTE%} body background" iconBefore>
 			<Text as="p">
 				This is a small paragraph of text that is supplementary to the main page
 				content.
@@ -77,12 +79,12 @@ If the Details component is placed on a page with `bodyAlt` background, set the 
 		</Details>
 	</Box>
 	<Box background="bodyAlt" padding={1.5}>
-		<Details label="Details: on [[PALETTE]] bodyAlt background" iconBefore>
+		<Details label="Details: on {%PALETTE%} bodyAlt background" iconBefore>
 			<Text as="p">
 				This is a small paragraph of text that is supplementary to the main page
 				content.
 			</Text>
 		</Details>
 	</Box>
-</>`}
-</ColourComponentSection>
+</>
+```

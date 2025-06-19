@@ -269,65 +269,65 @@ Use the `invalid` prop to indicate if the user input is invalid.
 };
 ```
 
-<ColourComponentSection>
-	{`<Render>
-	{() => {
-		const [existingFiles, setExistingFiles] = React.useState([
-			{
-				name: 'fileName.pdf',
-				size: 654321,
-				meta: { uid: 'fed-cba', bucketId: '654-321' },
-			},
-			{
-				name: 'fileName.pdf',
-				size: 999,
-				meta: { uid: 'zyx-wvu', bucketId: '999-888' },
-			},
-			{
-				name: 'fileName.pdf',
-				size: 123,
-				meta: { uid: 'zyx-wvu', bucketId: '999-888' },
-			},
-		]);
+## Colour
 
-    	function onRemoveExistingFile(fileToRemove) {
-    		setExistingFiles((existingFiles) =>
-    			existingFiles.filter((file) => file.meta.uid !== fileToRemove.meta.uid)
-    		);
-    	}
+```jsx live colorSection
+() => {
+	const [existingFiles, setExistingFiles] = React.useState([
+		{
+			name: 'fileName.pdf',
+			size: 654321,
+			meta: { uid: 'fed-cba', bucketId: '654-321' },
+		},
+		{
+			name: 'fileName.pdf',
+			size: 999,
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+		},
+		{
+			name: 'fileName.pdf',
+			size: 123,
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
+		},
+	]);
 
-    	const [value, setValue] = React.useState();
+	function onRemoveExistingFile(fileToRemove) {
+		setExistingFiles((existingFiles) =>
+			existingFiles.filter((file) => file.meta.uid !== fileToRemove.meta.uid)
+		);
+	}
 
-    	return (
-    		<>
-    			<Box padding={1.5}>
-    				<FileUpload
-    					accept={['image/jpeg', 'image/jpg', 'image/png']}
-    					existingFiles={existingFiles}
-    					hideThumbnails
-    					label="File upload: on [[PALETTE]] body background"
-    					maxSize={2000}
-    					multiple={true}
-    					onChange={setValue}
-    					onRemoveExistingFile={onRemoveExistingFile}
-    					value={value}
-    				/>
-    			</Box>
-    			<Box background="bodyAlt" padding={1.5}>
-    				<FileUpload
-    					accept={['image/jpeg', 'image/jpg', 'image/png']}
-    					existingFiles={existingFiles}
-    					hideThumbnails
-    					label="File upload: on [[PALETTE]] body background"
-    					maxSize={2000}
-    					multiple={true}
-    					onChange={setValue}
-    					onRemoveExistingFile={onRemoveExistingFile}
-    					value={value}
-    				/>
-    			</Box>
-    		</>
-    	);
-    }}
-</Render>`}
-</ColourComponentSection>
+	const [value, setValue] = React.useState();
+
+	return (
+		<>
+			<Box padding={1.5}>
+				<FileUpload
+					accept={['image/jpeg', 'image/jpg', 'image/png']}
+					existingFiles={existingFiles}
+					hideThumbnails
+					label="File upload: on {%PALETTE%} body background"
+					maxSize={2000}
+					multiple={true}
+					onChange={setValue}
+					onRemoveExistingFile={onRemoveExistingFile}
+					value={value}
+				/>
+			</Box>
+			<Box background="bodyAlt" padding={1.5}>
+				<FileUpload
+					accept={['image/jpeg', 'image/jpg', 'image/png']}
+					existingFiles={existingFiles}
+					hideThumbnails
+					label="File upload: on {%PALETTE%} body background"
+					maxSize={2000}
+					multiple={true}
+					onChange={setValue}
+					onRemoveExistingFile={onRemoveExistingFile}
+					value={value}
+				/>
+			</Box>
+		</>
+	);
+};
+```

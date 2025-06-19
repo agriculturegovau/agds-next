@@ -94,3 +94,29 @@ _Note: The first logo’s `href` will be assigned to the `heading` and `subline`
 	/>
 </Box>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Header: on {%PALETTE%} body background</H4>
+		<Header
+			badgeLabel="Beta"
+			heading="Export Service"
+			logo={<Logo />}
+			subline="Supporting Australian agricultural exports"
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Header: on {%PALETTE%} bodyAlt background</H4>
+		<Header
+			background="bodyAlt"
+			badgeLabel="Beta"
+			heading="Export Service"
+			logo={<Logo />}
+			subline="Supporting Australian agricultural exports"
+		/>
+	</Stack>
+</>
+```

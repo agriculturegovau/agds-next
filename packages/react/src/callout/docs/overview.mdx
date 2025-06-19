@@ -134,8 +134,10 @@ import { CalloutTitle } from '@ag.ds-next/react/callout';
 </Callout>;
 ```
 
-<ColourComponentSection shadeAlt>
-	{`<Stack
+## Colour
+
+```jsx live colorSection shadeAlt
+<Stack
 	as="ul"
 	background="body"
 	css={{ listStyle: 'none' }}
@@ -155,10 +157,9 @@ import { CalloutTitle } from '@ag.ds-next/react/callout';
 </Stack>
 <Stack as="ul" background="bodyAlt" css={{ listStyle: 'none' }} padding={1.5}>
 	<Box as="li">
-		<Callout title="Callout: on bodyAlt background">
+		<Callout background="shadeAlt" title="Callout: on bodyAlt background">
 			<Text as="p">Description of the callout.</Text>
 		</Callout>
 	</Box>
 </Stack>
-`}
-</ColourComponentSection>
+```

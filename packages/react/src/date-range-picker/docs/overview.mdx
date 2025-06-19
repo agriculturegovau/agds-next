@@ -389,22 +389,22 @@ Date formats are parsed in order from first to last and stops when a valid date 
 };
 ```
 
-<ColourComponentSection>
-	{`<Render>
-	{() => {
-		const [value, setValue] = React.useState({
-			from: undefined,
-			to: undefined,
-		});
-		return (
-			<DateRangePicker
-				legend="Date range picker: on [[PALETTE]] background"
-				onChange={setValue}
-				onFromInputChange={(from) => setValue({ ...value, from })}
-				onToInputChange={(to) => setValue({ ...value, to })}
-				value={value}
-			/>
-		);
-	}}
-</Render>`}
-</ColourComponentSection>
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState({
+		from: undefined,
+		to: undefined,
+	});
+	return (
+		<DateRangePicker
+			legend="Date range picker: on {%PALETTE%} background"
+			onChange={setValue}
+			onFromInputChange={(from) => setValue({ ...value, from })}
+			onToInputChange={(to) => setValue({ ...value, to })}
+			value={value}
+		/>
+	);
+};
+```

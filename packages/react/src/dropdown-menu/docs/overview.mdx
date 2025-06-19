@@ -344,9 +344,11 @@ If you need to access the internal state of the menu, you can provide a render c
 </DropdownMenu>
 ```
 
-<ColourComponentSection>
-	{`<Stack alignItems="flex-start" gap={1.5}>
-	<H4>Dropdown menu list: on [[PALETTE]] background</H4>
+## Colours
+
+```jsx live colorSection
+<Stack alignItems="flex-start" gap={1.5}>
+	<H4>Dropdown menu list: on {%PALETTE%} background</H4>
 	<DropdownMenu>
 		<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
 		<DropdownMenuPanel>
@@ -361,5 +363,5 @@ If you need to access the internal state of the menu, you can provide a render c
 			</DropdownMenuItem>
 		</DropdownMenuPanel>
 	</DropdownMenu>
-</Stack>`}
-</ColourComponentSection>
+</Stack>
+```

@@ -20,17 +20,17 @@ export async function getPkg(slug: string) {
 	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
-		name: slug,
-		title: (data.title ?? slug) as string,
+		colourSection: (data.colourSection ?? true) as boolean,
+		deprecated: (data.deprecated ?? false) as boolean,
 		description: (data.description ?? null) as string | null,
-		storybookPath: (data.storybookPath ?? null) as string | null,
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,
-		subNavItems: subNavItems ?? null,
+		name: slug,
 		relatedComponents: (data.relatedComponents ?? null) as string[] | null,
 		relatedPatterns: (data.relatedPatterns ?? null) as string[] | null,
-		deprecated: (data.deprecated ?? false) as boolean,
+		storybookPath: (data.storybookPath ?? null) as string | null,
+		subNavItems: subNavItems ?? null,
+		title: (data.title ?? slug) as string,
 		unreleased: (data.unreleased ?? false) as boolean,
-		colourSection: (data.colourSection ?? true) as boolean,
 	};
 }
 

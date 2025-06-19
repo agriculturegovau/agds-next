@@ -283,17 +283,17 @@ The array of `allowedDateFormats` will also need to be passed to the `isValidDat
 };
 ```
 
-<ColourComponentSection>
-	{`<Render>
-	{() => {
-		const [value, setValue] = React.useState();
-		return (
-			<DatePickerNext
-				label="Date picker (Next): on [[PALETTE]] background"
-				onChange={setValue}
-				value={value}
-			/>
-		);
-	}}
-</Render>`}
-</ColourComponentSection>
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext
+			label="Date picker (Next): on {%PALETTE%} background"
+			onChange={setValue}
+			value={value}
+		/>
+	);
+}
+```

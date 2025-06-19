@@ -131,10 +131,12 @@ The footer at the bottom of a page. Usually contains copyright information and l
 </Box>
 ```
 
-<ColourComponentSection shadeAlt>
-	{`<>
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
 	<Stack gap={1.5} padding={1.5}>
-		<H4>Footer: on [[PALETTE]] body background</H4>
+		<H4>Footer: on {%PALETTE%} body background</H4>
 		<Footer>
 			<nav aria-label="footer">
 				<LinkList
@@ -158,7 +160,7 @@ The footer at the bottom of a page. Usually contains copyright information and l
 		</Footer>
 	</Stack>
 	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
-		<H4>Footer: on [[PALETTE]] bodyAlt background</H4>
+		<H4>Footer: on {%PALETTE%} bodyAlt background</H4>
 		<Footer background="bodyAlt">
 			<nav aria-label="footer">
 				<LinkList
@@ -181,5 +183,5 @@ The footer at the bottom of a page. Usually contains copyright information and l
 			</Text>
 		</Footer>
 	</Stack>
-</>`}
-</ColourComponentSection>
+</>
+```

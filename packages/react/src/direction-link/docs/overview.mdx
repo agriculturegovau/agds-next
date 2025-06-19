@@ -61,9 +61,11 @@ Back buttons should not be used on content pages as they do not show a user wher
 
 When using Back buttons always use the label ‘Back’ rather than the name of the parent page. The label ‘Back’ is universal, can be understood in any context and does not require the user to remember the name of the parent page.
 
-<ColourComponentSection>
-	{`<Stack gap={1.5}>
-	<H4>Directional links: on [[PALETTE]] background</H4>
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Directional links: on {%PALETTE%} background</H4>
 	<Flex gap={2}>
 		<DirectionLink href="#" direction="left">
 			Back
@@ -78,5 +80,5 @@ When using Back buttons always use the label ‘Back’ rather than the name of 
 			Skip to footer
 		</DirectionLink>
 	</Flex>
-</Stack>`}
-</ColourComponentSection>
+</Stack>
+```

@@ -345,17 +345,19 @@ If you would like to see how Combobox performs with various option lengths, you 
 };
 ```
 
-<ColourComponentSection>
-	{`<Render>{() => {
+## Colour
+
+```jsx live colorSection
+() => {
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Combobox: on {[[PALETTE]]} background"
+			label="Combobox: on {%PALETTE%} background"
 			hint="Start typing to see results"
 			value={value}
 			onChange={setValue}
 			options={COUNTRY_OPTIONS}
 		/>
 	);
-}}</Render>`}
-</ColourComponentSection>
+};
+```

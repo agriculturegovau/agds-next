@@ -97,77 +97,77 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 };
 ```
 
-<ColourComponentSection>
-	{`<Render>
-	{() => {
-		const listData = [
-			{
-				title: 'Example article one',
-				desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
-				author: 'Lando Norris',
-			},
-			{
-				title: 'Example article two',
-				desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
-				author: 'Toto Wolff',
-			},
-		];
+## Colour
 
-		return (
-			<Columns gap={{ xs: 1, md: 3 }}>
-				<Column columnSpan={{ xs: 12 }}>
-					<H4>Filter sidebar: on [[PALETTE]] background</H4>
-				</Column>
-				<Column columnSpan={{ xs: 12, md: 4 }}>
-					<FilterSidebar activeFiltersCount={3}>
-						<FormStack>
-							<TextInput block label="Example input 1" />
-							<TextInput block label="Example input 2" />
-							<TextInput block label="Example input 3" />
-							<TextInput block label="Example input 4" />
-						</FormStack>
-					</FilterSidebar>
-				</Column>
-				<Column columnSpan={{ xs: 12, md: 8 }}>
-					<Stack gap={2}>
-						<Text
-							as="h2"
-							fontSize="md"
-							fontWeight={{ xs: 'normal', md: 'bold' }}
-							lineHeight="heading"
-						>
-							Search results
-						</Text>
-						<Stack as="ul" gap={1}>
-							{listData.map((item, index) => (
-								<Card as="li" shadow clickable key={index}>
-									<CardInner>
-										<Stack gap={0.5} width="100%" flexWrap="wrap">
-											<H3>
-												<CardLink href="#">{item.title}</CardLink>
-											</H3>
+```jsx live colorSection
+() => {
+	const listData = [
+		{
+			title: 'Example article one',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			author: 'Lando Norris',
+		},
+		{
+			title: 'Example article two',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			author: 'Toto Wolff',
+		},
+	];
 
-											<Text as="p">{item.desc}</Text>
+	return (
+		<Columns gap={{ xs: 1, md: 3 }}>
+			<Column columnSpan={{ xs: 12 }}>
+				<H4>Filter sidebar: on {%PALETTE%} background</H4>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 4 }}>
+				<FilterSidebar activeFiltersCount={3}>
+					<FormStack>
+						<TextInput block label="Example input 1" />
+						<TextInput block label="Example input 2" />
+						<TextInput block label="Example input 3" />
+						<TextInput block label="Example input 4" />
+					</FormStack>
+				</FilterSidebar>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
+				<Stack gap={2}>
+					<Text
+						as="h2"
+						fontSize="md"
+						fontWeight={{ xs: 'normal', md: 'bold' }}
+						lineHeight="heading"
+					>
+						Search results
+					</Text>
+					<Stack as="ul" gap={1}>
+						{listData.map((item, index) => (
+							<Card as="li" shadow clickable key={index}>
+								<CardInner>
+									<Stack gap={0.5} width="100%" flexWrap="wrap">
+										<H3>
+											<CardLink href="#">{item.title}</CardLink>
+										</H3>
 
-											<Flex
-												gap={0.5}
-												flexWrap="wrap"
-												justifyContent="space-between"
-												alignItems="center"
-											>
-												<Text color="muted" fontSize="xs">
-													{item.author}
-												</Text>
-											</Flex>
-										</Stack>
-									</CardInner>
-								</Card>
-							))}
-						</Stack>
+										<Text as="p">{item.desc}</Text>
+
+										<Flex
+											gap={0.5}
+											flexWrap="wrap"
+											justifyContent="space-between"
+											alignItems="center"
+										>
+											<Text color="muted" fontSize="xs">
+												{item.author}
+											</Text>
+										</Flex>
+									</Stack>
+								</CardInner>
+							</Card>
+						))}
 					</Stack>
-				</Column>
-			</Columns>
-		);
-    }}
-</Render>`}
-</ColourComponentSection>
+				</Stack>
+			</Column>
+		</Columns>
+	);
+};
+```

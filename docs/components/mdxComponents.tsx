@@ -71,13 +71,37 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		colorSection,
+		shadeAlt,
 	}: HTMLAttributes<HTMLPreElement> & {
 		live?: boolean;
 		showCode?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		colorSection?: boolean;
+		shadeAlt?: boolean;
 	}) => {
+		if (colorSection) {
+			return (
+				/*
+					enableProse={enableProse}
+					exampleContentHeading={exampleContentHeading}
+					exampleContentHeadingType={exampleContentHeadingType}
+					key={element.key}
+					live={live}
+					showCode={showCode}
+				*/
+				<Fragment>
+					{Children.map(children, (element) => {
+						if (!isValidElement(element)) return null;
+						return (
+							<ColourComponentSection shadeAlt={shadeAlt} {...element.props} />
+						);
+					})}
+				</Fragment>
+			);
+		}
 		return (
 			<Fragment>
 				{Children.map(children, (element) => {

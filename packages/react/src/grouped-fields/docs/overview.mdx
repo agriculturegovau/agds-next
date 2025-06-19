@@ -259,3 +259,28 @@ The `message` should be helpful but generic enough to apply and make sense to bo
 	</GroupedFields>
 </FormStack>
 ```
+
+## Colour
+
+```jsx live colorSection
+<GroupedFields legend="Grouped fields: on {%PALETTE%} background">
+	{({ field1Props, field2Props }) => (
+		<>
+			<TextInput label="Weight" {...field1Props} />
+			<Select
+				label="Unit"
+				options={[
+					{ value: 'mg', label: 'mg' },
+					{ value: 'g', label: 'g' },
+					{ value: 'kg', label: 'kg' },
+					{ value: 't', label: 't' },
+					{ value: 'Mt', label: 'Mt' },
+				]}
+				hideOptionalLabel
+				maxWidth="sm"
+				{...field2Props}
+			/>
+		</>
+	)}
+</GroupedFields>
+```
