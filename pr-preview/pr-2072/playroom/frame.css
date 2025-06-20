@@ -43,17 +43,17 @@
   --zmhab2b: #cd193d;
   --zmhab2c: #005ad2;
   --zmhab2d: #1da584;
-  --zmhab2e: rgba(0, 0, 0, .05);
+  --zmhab2e: rgb(0, 0, 0, .05);
   --zmhab2f: #005ad2;
   --zmhab2g: #c5f5e9;
   --zmhab2h: #fee1e9;
   --zmhab2i: #eeeeee;
   --zmhab2j: #fff;
   --zmhab2k: #f4f4f4;
-  --zmhab2l: rgba(0,136,255,0.15);
-  --zmhab2m: #98d0ff;
+  --zmhab2l: rgb(from #0088ff r g b / calc(alpha - 0.85));
+  --zmhab2m: hsl(from #e5f3ff h s calc(l - 15));
   --zmhab2n: #eeeeee;
-  --zmhab2o: 0 2px 8px rgba(18, 21, 26, 0.3);
+  --zmhab2o: 0 2px 8px rgb(18, 21, 26, 0.3);
   --zmhab2p: 0 0 0 5px #e5f3ff;
 }
 :root[data-playroom-dark] {
@@ -71,18 +71,18 @@
   --zmhab2b: #fa6b6c;
   --zmhab2c: #3e8fe0;
   --zmhab2d: #28b888;
-  --zmhab2e: rgba(255, 255, 255, .07);
+  --zmhab2e: rgb(255, 255, 255, .07);
   --zmhab2f: #3e8fe0;
-  --zmhab2g: #195546;
-  --zmhab2h: #4c1a20;
+  --zmhab2g: color-mix(in srgb, #0f131b 60%, #28b888);
+  --zmhab2h: color-mix(in srgb, #0f131b 70%, #db2d2d);
   --zmhab2i: #1c2230;
   --zmhab2j: #0f131b;
-  --zmhab2k: #0a0c11;
-  --zmhab2l: rgba(41,111,192,0.25);
-  --zmhab2m: rgba(41,111,192,0.75);
+  --zmhab2k: hsl(from #0f131b h s calc(l - 3));
+  --zmhab2l: rgb(from #296fc0 r g b / calc(alpha - 0.75));
+  --zmhab2m: rgb(from #296fc0 r g b / calc(alpha - 0.25));
   --zmhab2n: #1c2230;
   --zmhab2o: 0 0 10px -2px #2d3648;
-  --zmhab2p: 0 0 0 5px rgba(104,174,234,0.4);
+  --zmhab2p: 0 0 0 5px rgb(from #68aeea r g b / calc(alpha - 0.6));
 }
 .zmhab2q {
   position: absolute;
@@ -552,15 +552,27 @@
 .zmhab251 {
   border: 0;
 }
-._1qm7qre1 {
-  color: var(--zmhab28);
+._1qa2ij02 {
+  top: var(--k22gf8m);
+  left: var(--k22gf8m);
+  right: var(--k22gf8m);
+  margin-inline: auto;
+  width: fit-content;
+  max-width: 80ex;
+  color: #f6f8fa;
+  background: #cd193d;
+  box-shadow: 0 2px 10px -2px #cd193d;
+  word-break: break-word;
+  white-space: pre-line;
 }
-._1qm7qre2 {
-  color: var(--zmhab2b);
+._1qa2ij02:not(._1qa2ij00) {
+  transform: translateY(calc(var(--k22gf8m) * -1));
+  transition: none;
+  opacity: 0;
 }
-._1qm7qre3 {
-  color: var(--zmhab2a);
+._1qa2ij02 a {
+  color: inherit;
 }
-._1qm7qrea {
-  text-overflow: ellipsis;
+._1qa2ij03 {
+  transition-delay: 1000ms;
 }
