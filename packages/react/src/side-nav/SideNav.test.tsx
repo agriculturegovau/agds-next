@@ -151,7 +151,7 @@ describe('SideNav', () => {
 				});
 
 				test('aria-labels indicating hidden sub links should exist', async () => {
-					expect(screen.getAllByLabelText(', has sub links')).toHaveLength(2);
+					expect(screen.getAllByLabelText(/, has sub links/)).toHaveLength(2);
 				});
 			});
 
