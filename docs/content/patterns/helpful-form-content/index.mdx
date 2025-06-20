@@ -9,7 +9,7 @@ relatedContent: ['content-styles']
 
 Headings play a crucial role in user-friendly form page design. They establish hierarchy and help users understand the purpose and structure of a form.
 
-The H1 heading should clearly state the purpose or primary action of the form. This purpose should be reflected in the primary button label. For example, where the H1 is ’Sign in to your account’, the primary button label might be ’Sign in’.
+The H1 heading should clearly state the purpose or primary action of the form. This purpose should be reflected in the primary button label. For example, where the H1 is ‘Sign in to your account’, the primary button label might be ‘Sign in’.
 
 Supporting headings should be used to organise sections logically. This is important for making complex forms easier to understand and complete.
 
@@ -21,7 +21,7 @@ Use a concise, introductory paragraph of 1 or 2 sentences, immediately after the
 
 List anything the user will need to complete the form. This helps users prepare and reduces the risk of abandoned forms.
 
-Give the list a help title such as ’What you will need’. This should appear before any forms fields. For a multi-page form, this should appear on a ’Getting started’ page.
+Give the list a help title such as ‘What you will need’. This should appear before any form’s fields. For a multi-page form, this should appear on a ‘Getting started’ page.
 
 Present requirements as a scannable list of specific items. Use plain language to ensure a good understanding of what they will need.
 
@@ -29,11 +29,11 @@ Present requirements as a scannable list of specific items. Use plain language t
 
 Use hint text for the smallest piece of information that will help users to understand each form input or control and complete forms. This could be to mark a field as optional or to let them know the required format for a field.
 
-The hint prop provides help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+The `hint` prop provides help that’s relevant to the majority of users, like how their information will be used, or where to find it.
 
 Don’t use long paragraphs or lists in hint text. Screen readers announce the entire text when users interact with the form element. This could frustrate users if the text is long.
 
-Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not tell users that the text is a link.
+Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not not be informed that it is a link.
 
 ```jsx live
 <TextInput
@@ -50,7 +50,7 @@ Details should only be used for one piece of content. We recommend keeping this 
 
 If the guidance pertains to a list, provide the list, then link to more detailed information on all items.
 
-We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
+We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case, it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
 
 ```jsx live
 () => {
@@ -188,6 +188,5 @@ If the supporting information won’t fit into a drawer without scrolling, then 
 
 ## Related guidance
 
-- [Hint](/components/field#hint) – Short, in context help.
-
-- [Links](/content/content-styles#links) – Also known as hyperlinks, connects users to helpful, related content.
+- [Field hints](/components/field#hint) – Short, in context help.
+- [Content styles - links](/content/content-styles#links) – Also known as hyperlinks, connects users to helpful, related content.
