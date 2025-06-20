@@ -1,6 +1,6 @@
 ---
-title: Creating, reading, update and deleting data in tables
-description: Applications that require persistent data storage commonly require table layouts to present stored data. Here are some patterns that enable users to create, read, edit and delete persistent data in tables.
+title: Create, read, update and delete data in tables
+description: Applications that require persistent data storage commonly require table layouts to present stored data. Here are some patterns that enable users to create, read, update and delete persistent data in tables.
 relatedComponents:
   ['button', 'file-input', 'file-upload', 'section-alert', 'table']
 ---
@@ -177,7 +177,7 @@ The delete pattern is repeatable and scalable.
 
 ## Upload an undefined list of files to a table
 
-Use a repeatable file upload pattern when uploading an undefined list of files of different categories or when specific meta data for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
+Use a repeatable file upload pattern when uploading an undefined list of files of different categories or when specific metadata for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
 
 The upload undefined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
 
@@ -320,7 +320,7 @@ When large defined lists of files in tables are required a drawer or subpage for
 The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with a Select, File upload ad form buttons ‘Upload file’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with a Select, File upload and form buttons ‘Add record’ and ‘Cancel’"
 	src="/img/patterns/crud-tables-upload-defined-list.png"
 />
 
