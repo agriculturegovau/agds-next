@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
-import { act, render, screen, within } from '../../../../test-utils';
+import { act, render, screen } from '../../../../test-utils';
 import { SideNav, SideNavProps } from './SideNav';
 import { alwaysOpenItems, defaultTestingProps } from './test-utils';
 
