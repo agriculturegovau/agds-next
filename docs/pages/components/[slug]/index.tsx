@@ -1,16 +1,16 @@
 import { Fragment } from 'react';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import {
-	getPkgSlugs,
 	getPkg,
-	Pkg,
-	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
+	getPkgNavLinks,
+	getPkgSlugs,
+	type Pkg,
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
@@ -19,14 +19,15 @@ import { generateToc } from '../../../lib/generateToc';
 import { getPattern, Pattern } from '../../../lib/mdx/patterns';
 
 export default function Packages({
-	pkg,
-	navLinks,
 	breadcrumbs,
-	toc,
-	source,
-	relatedPatterns,
+	navLinks,
+	pkg,
 	relatedComponents,
+	relatedPatterns,
+	source,
+	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: pkg.title });
 	return (
 		<>
 			<DocumentTitle description={pkg.description} title={pkg.title} />
@@ -43,7 +44,7 @@ export default function Packages({
 					/>
 				) : null}
 				<Prose id="pkg-content">
-					<MDXRemote {...source} components={mdxComponents} />
+					<MDXRemote {...source} components={components} />
 					{relatedComponents?.length ? (
 						<Fragment>
 							<h2 id="related-components">Related components</h2>
@@ -78,15 +79,15 @@ export default function Packages({
 
 export const getStaticProps: GetStaticProps<
 	{
-		pkg: NonNullable<Pkg>;
-		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
-		toc: Awaited<ReturnType<typeof generateToc>>;
+		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
+		pkg: NonNullable<Pkg>;
+		relatedComponents: Awaited<Pkg[]> | null;
+		relatedPatterns: Awaited<Pattern[]> | null;
 		source: NonNullable<
 			Awaited<ReturnType<typeof getPkgDocsContent>>
 		>['source'];
-		relatedPatterns: Awaited<Pattern[]> | null;
-		relatedComponents: Awaited<Pkg[]> | null;
+		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -121,11 +122,11 @@ export const getStaticProps: GetStaticProps<
 		: null;
 	if (relatedComponents?.length) {
 		toc.push({
-			title: 'Related components',
-			slug: 'related-components',
 			id: 'related-components',
-			level: 2,
 			items: [],
+			level: 2,
+			slug: 'related-components',
+			title: 'Related components',
 		});
 	}
 
@@ -135,23 +136,23 @@ export const getStaticProps: GetStaticProps<
 		: null;
 	if (relatedPatterns?.length) {
 		toc.push({
-			title: 'Related patterns',
-			slug: 'related-patterns',
 			id: 'related-patterns',
-			level: 2,
 			items: [],
+			level: 2,
+			slug: 'related-patterns',
+			title: 'Related patterns',
 		});
 	}
 
 	return {
 		props: {
-			pkg,
-			navLinks,
 			breadcrumbs,
-			toc,
-			source: pkgContent.source,
-			relatedPatterns,
+			navLinks,
+			pkg,
 			relatedComponents,
+			relatedPatterns,
+			source: pkgContent.source,
+			toc,
 		},
 	};
 };
@@ -159,9 +160,9 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const slugs = await getPkgSlugs();
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

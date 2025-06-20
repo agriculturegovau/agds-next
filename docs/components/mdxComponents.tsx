@@ -1,21 +1,21 @@
 import {
-	Fragment,
 	Children,
+	Fragment,
 	isValidElement,
-	HTMLAttributes,
-	AnchorHTMLAttributes,
-	ImgHTMLAttributes,
-	ReactNode,
-	PropsWithChildren,
+	type AnchorHTMLAttributes,
+	type HTMLAttributes,
+	type ImgHTMLAttributes,
+	type PropsWithChildren,
+	type ReactNode,
 } from 'react';
-import type { MDXRemoteProps } from 'next-mdx-remote';
+import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
 import { proseBlockClassname } from '@ag.ds-next/react/prose';
 import {
 	PageAlert,
-	PageAlertProps,
 	PageAlertTitle,
+	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
 import { ButtonLink } from '@ag.ds-next/react/button';
 import {
@@ -45,19 +45,26 @@ import { H3, H4 } from '@ag.ds-next/react/heading';
 import { slugify } from '../lib/slugify';
 import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
+import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
+import { AllIconsPlayground } from './AllIconsPlayground';
 import { Code } from './Code';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
-import { AllIconsPlayground } from './AllIconsPlayground';
 import {
 	BreakpointsTokenChart,
 	SpacingTokenChart,
 	ZIndexTokenChart,
 	ShadowTokenChart,
 } from './TokenCharts';
+
+export interface MDXComponentsPageData {
+	title?: string;
+}
 import { ColourComponentSection } from './ColourComponentSection';
 
-export const mdxComponents: MDXRemoteProps['components'] = {
+export const mdxComponents = (
+	pageData: MDXComponentsPageData
+): MDXRemoteProps['components'] => ({
 	Fragment,
 	blockquote: ({ children }) => (
 		<div className={proseBlockClassname}>
@@ -66,19 +73,27 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 	),
 	pre: ({
 		children,
-		live,
-		showCode,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
+		live,
+		padding,
+		previewHeading,
+		showCode,
+		referrerLabel,
 		colorSection,
 		shadeAlt,
 	}: HTMLAttributes<HTMLPreElement> & {
-		live?: boolean;
-		showCode?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+		live?: boolean;
+		padding?: boolean;
+		/** Heading for responsive preview page and standalone link label */
+		previewHeading?: string;
+		showCode?: boolean;
+		/** Back link label for responsive preview page */
+		referrerLabel?: string;
 		colorSection?: boolean;
 		shadeAlt?: boolean;
 	}) => {
@@ -113,6 +128,10 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 							exampleContentHeadingType={exampleContentHeadingType}
 							key={element.key}
 							live={live}
+							padding={padding}
+							pageData={pageData}
+							previewHeading={previewHeading}
+							referrerLabel={referrerLabel}
 							showCode={showCode}
 							{...element.props}
 						/>
@@ -286,5 +305,27 @@ export const mdxComponents: MDXRemoteProps['components'] = {
 			</Callout>
 		</div>
 	),
-	ColourComponentSection,
-};
+	ResponsivePreview: ({
+		href,
+		label,
+		padding,
+		referrerLabel,
+		title,
+	}: {
+		href: string;
+		label: string;
+		padding?: boolean;
+		title: string;
+		referrerLabel?: string;
+	}) => (
+		<ResponsivePreviewLink
+			padding={padding}
+			referrerLabel={referrerLabel}
+			src={href}
+			standalone
+			title={title}
+		>
+			{label}
+		</ResponsivePreviewLink>
+	),
+});
