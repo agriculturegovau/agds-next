@@ -33,8 +33,8 @@ export const ColourComponentSection = ({
 }) => {
 	// Add new tab padding on left of each line
 	const children = lintCodeString(ReactChildren?.toString() || '');
-	const light = children.replaceAll('{%PALETTE%}', 'light');
-	const dark = children.replaceAll('{%PALETTE%}', 'dark');
+	const light = children.replaceAll('[%_PALETTE_%]', 'light');
+	const dark = children.replaceAll('[%_PALETTE_%]', 'dark');
 
 	return (
 		<>
