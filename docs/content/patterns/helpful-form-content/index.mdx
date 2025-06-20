@@ -66,14 +66,26 @@ We recommend the use of one link to give a clear path to the right information f
 					</Text>
 					<Text as="p">
 						Learn more about{' '}
-						<Button
-							iconAfter={MoveLeftIcon}
-							onClick={openDrawer}
-							size="sm"
-							variant="text"
+						<TextLink
+							href="/help/inviting-a-staff-member"
+							onClick={(event) => {
+								if (event.metaKey) return;
+								event.preventDefault();
+								openDrawer();
+							}}
 						>
 							inviting a staff member
-						</Button>
+							<Box
+								css={{
+									display: 'inline',
+									marginLeft: '0.25rem',
+									position: 'relative',
+									top: 3,
+								}}
+							>
+								<MoveLeftIcon size="sm" weight="regular" />
+							</Box>
+						</TextLink>
 					</Text>
 				</Flex>
 			</Details>
