@@ -1,41 +1,41 @@
 import { Code } from './Code';
+import { checkAndModifyCode } from './code/utils';
 
-const lintCodeString = (code: string) => {
-	const c = cleanCode(code.trim());
-	return c
+const lintCodeString = (originalCode: string) => {
+	const code = checkAndModifyCode(originalCode.trim());
+	return code
 		.split('\n')
 		.map((line) => '\t' + line) // Add indent to each line
 		.join('\n');
 };
 
-// TODO: Fix this
-const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
-const cleanCode = (c: string) => {
-	// Wrap `/* ... */` comments with brackets `{ .. }`
-	let code = c.replaceAll(multiLineCommentRegex, '{$&}');
-	// No formatting required for JSX only
-	if (code.startsWith('<') || code.endsWith('>')) return code;
+/**
+ * Code examples require `light` and `dark` text
+ * The below string will be replaced by the appropriate palette label in their respective code blocks
+ */
+const paletteReplacedString = '[%_PALETTE_%]';
 
-	// Remove `;` from the end of `() => {};`
-	if (code.endsWith(';')) {
-		code = code.slice(0, -1);
-	}
-
-	const formattedCode = code.split('\n').join('\n    ');
-	return `<Render>\n    {${formattedCode}}\n</Render>`;
-};
-
-export const ColourComponentSection = ({
+export const ColorComponentSection = ({
 	children: ReactChildren,
+	enableProse,
+	exampleContentHeading,
+	exampleContentHeadingType,
+	live,
 	shadeAlt = false,
+	showCode,
 }: {
 	children: React.ReactNode;
+	enableProse?: boolean;
+	exampleContentHeading?: string;
+	exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
+	live?: boolean;
 	shadeAlt?: boolean;
+	showCode?: boolean;
 }) => {
 	// Add new tab padding on left of each line
 	const children = lintCodeString(ReactChildren?.toString() || '');
-	const light = children.replaceAll('[%_PALETTE_%]', 'light');
-	const dark = children.replaceAll('[%_PALETTE_%]', 'dark');
+	const light = children.replaceAll(paletteReplacedString, 'light');
+	const dark = children.replaceAll(paletteReplacedString, 'dark');
 
 	return (
 		<>
@@ -63,14 +63,22 @@ export const ColourComponentSection = ({
 
 			<h3>Light palette</h3>
 			<Code
-				live
+				enableProse={enableProse}
+				exampleContentHeading={exampleContentHeading}
+				exampleContentHeadingType={exampleContentHeadingType}
+				live={live}
 				padding={false}
+				showCode={showCode}
 			>{`<Box background="body" padding={1.5}>\n${light}\n</Box>`}</Code>
 
 			<h3>Dark palette</h3>
 			<Code
-				live
+				enableProse={enableProse}
+				exampleContentHeading={exampleContentHeading}
+				exampleContentHeadingType={exampleContentHeadingType}
+				live={live}
 				padding={false}
+				showCode={showCode}
 			>{`<Box background="body" padding={1.5} palette="dark">\n${dark}\n</Box>`}</Code>
 		</>
 	);

@@ -48,7 +48,7 @@ import { slugify } from '../lib/slugify';
 import { AllIconsPlayground } from './AllIconsPlayground';
 import { Code } from './Code';
 import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
-import { ColourComponentSection } from './ColourComponentSection';
+import { ColorComponentSection } from './ColorComponentSection';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import {
@@ -73,17 +73,22 @@ export const mdxComponents = (
 	),
 	pre: ({
 		children,
+		colorSection,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
 		live,
 		padding,
 		previewHeading,
-		showCode,
 		referrerLabel,
-		colorSection,
 		shadeAlt,
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
+		/**
+		 * If `true`, returns colour documentation and two code blocks wrapped in a light and dark palette
+		 * Used on the component documentation page
+		 * */
+		colorSection?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
@@ -91,29 +96,26 @@ export const mdxComponents = (
 		padding?: boolean;
 		/** Heading for responsive preview page and standalone link label */
 		previewHeading?: string;
-		showCode?: boolean;
 		/** Back link label for responsive preview page */
 		referrerLabel?: string;
-		colorSection?: boolean;
+		/** If `true` and `colorSelection={true}`, returns an additional colour documentation paragraph */
 		shadeAlt?: boolean;
+		showCode?: boolean;
 	}) => {
 		if (colorSection) {
 			return (
-				/*
-					enableProse={enableProse}
-					exampleContentHeading={exampleContentHeading}
-					exampleContentHeadingType={exampleContentHeadingType}
-					key={element.key}
-					live={live}
-					showCode={showCode}
-				*/
 				<Fragment>
 					{Children.map(children, (element) => {
 						if (!isValidElement(element)) return null;
 						return (
-							<ColourComponentSection
-								padding={false}
+							<ColorComponentSection
+								enableProse={enableProse}
+								exampleContentHeading={exampleContentHeading}
+								exampleContentHeadingType={exampleContentHeadingType}
+								key={element.key}
+								live={live}
 								shadeAlt={shadeAlt}
+								showCode={showCode}
 								{...element.props}
 							/>
 						);
