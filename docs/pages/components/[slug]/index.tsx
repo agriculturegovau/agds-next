@@ -105,17 +105,6 @@ export const getStaticProps: GetStaticProps<
 	const breadcrumbs = await getPkgBreadcrumbs(slug);
 	const toc = generateToc(pkgContent.content);
 
-	// Add Colour link to ToC
-	if (pkg?.colourSection) {
-		toc.push({
-			title: 'Colour',
-			slug: 'colour',
-			id: 'colour',
-			level: 2,
-			items: [],
-		});
-	}
-
 	// Get related components
 	const relatedComponents = pkg.relatedComponents?.length
 		? await Promise.all(pkg.relatedComponents.sort().map(getPkg))

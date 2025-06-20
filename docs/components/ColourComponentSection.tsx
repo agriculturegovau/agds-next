@@ -4,10 +4,11 @@ const lintCodeString = (code: string) => {
 	const c = cleanCode(code.trim());
 	return c
 		.split('\n')
-		.map((line) => '\t' + line) // Add indent for box
+		.map((line) => '\t' + line) // Add indent to each line
 		.join('\n');
 };
 
+// TODO: Fix this
 const multiLineCommentRegex = /^\/\*[\s\S]*?\*\//gi;
 const cleanCode = (c: string) => {
 	// Wrap `/* ... */` comments with brackets `{ .. }`
@@ -63,11 +64,13 @@ export const ColourComponentSection = ({
 			<h3>Light palette</h3>
 			<Code
 				live
+				padding={false}
 			>{`<Box background="body" padding={1.5}>\n${light}\n</Box>`}</Code>
 
 			<h3>Dark palette</h3>
 			<Code
 				live
+				padding={false}
 			>{`<Box background="body" padding={1.5} palette="dark">\n${dark}\n</Box>`}</Code>
 		</>
 	);

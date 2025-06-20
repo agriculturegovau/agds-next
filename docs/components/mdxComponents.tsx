@@ -111,7 +111,11 @@ export const mdxComponents = (
 					{Children.map(children, (element) => {
 						if (!isValidElement(element)) return null;
 						return (
-							<ColourComponentSection shadeAlt={shadeAlt} {...element.props} />
+							<ColourComponentSection
+								padding={false}
+								shadeAlt={shadeAlt}
+								{...element.props}
+							/>
 						);
 					})}
 				</Fragment>

@@ -326,18 +326,57 @@ Press the “Focus the alert” button below to manually set focus on the alert.
 
 ## Colour
 
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
+```jsx live colorSection
+<Stack gap={1}>
+	<SectionAlert
+		title="Section alert: successHigh tone on [%_PALETTE_%] background"
+		tone="successHigh"
+	/>
+	<SectionAlert
+		title="Section alert: errorHigh tone on [%_PALETTE_%] background"
+		tone="errorHigh"
+	/>
+	<SectionAlert
+		title="Section alert: warningHigh tone on [%_PALETTE_%] background"
+		tone="warningHigh"
+	/>
+	<SectionAlert
+		title="Section alert: infoHigh tone on [%_PALETTE_%] background"
+		tone="infoHigh"
+	/>
 
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+	<SectionAlert
+		title="Section alert: successMedium tone on [%_PALETTE_%] background"
+		tone="successMedium"
+	/>
+	<SectionAlert
+		title="Section alert: errorMedium tone on [%_PALETTE_%] background"
+		tone="errorMedium"
+	/>
+	<SectionAlert
+		title="Section alert: warningMedium tone on [%_PALETTE_%] background"
+		tone="warningMedium"
+	/>
+	<SectionAlert
+		title="Section alert: infoMedium tone on [%_PALETTE_%] background"
+		tone="infoMedium"
+	/>
 
-```jsx live
-<>
-	<Box padding={1.5}>
-		<SectionAlert title="Your changes have been saved" tone="successHigh" />
-	</Box>
-
-	<Box background="body" padding={1.5} palette="dark">
-		<SectionAlert title="Your changes have been saved" tone="successHigh" />
-	</Box>
-</>
+	<SectionAlert
+		title="Section alert: successLow tone on [%_PALETTE_%] background"
+		tone="successLow"
+	/>
+	<SectionAlert
+		title="Section alert: errorLow tone on [%_PALETTE_%] background"
+		tone="errorLow"
+	/>
+	<SectionAlert
+		title="Section alert: warningLow tone on [%_PALETTE_%] background"
+		tone="warningLow"
+	/>
+	<SectionAlert
+		title="Section alert: infoLow tone on [%_PALETTE_%] background"
+		tone="infoLow"
+	/>
+</Stack>
 ```

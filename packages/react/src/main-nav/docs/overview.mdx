@@ -157,3 +157,33 @@ Focus mode refers to temporarily hiding the main navigation of a website or appl
 	/>
 </Box>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Main nav: on [%_PALETTE_%] body background</H4>
+		<MainNav
+			activePath="#home"
+			items={[
+				{ href: '#home', label: 'Home' },
+				{ href: '#about', label: 'About' },
+				{ href: '#contact', label: 'Contact' },
+			]}
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Main nav: on [%_PALETTE_%] bodyAlt background</H4>
+		<MainNav
+			activePath="#home"
+			background="bodyAlt"
+			items={[
+				{ href: '#home', label: 'Home' },
+				{ href: '#about', label: 'About' },
+				{ href: '#contact', label: 'Contact' },
+			]}
+		/>
+	</Stack>
+</>
+```

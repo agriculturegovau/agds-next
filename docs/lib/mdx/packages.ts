@@ -20,7 +20,6 @@ export async function getPkg(slug: string) {
 	const subNavItems = await getPkgSubNavItems(slug);
 	return {
 		slug,
-		colourSection: (data.colourSection ?? true) as boolean,
 		deprecated: (data.deprecated ?? false) as boolean,
 		description: (data.description ?? null) as string | null,
 		figmaGalleryNodeId: (data.figmaGalleryNodeId ?? null) as string | null,

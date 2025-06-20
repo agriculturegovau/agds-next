@@ -230,3 +230,26 @@ Otherwise, avoid selecting a default option, as users could mistakenly miss or s
 - It’s especially important not to select a default option when:
 - the question is important or has legal consequences.
 - when the user needs to make conscious action to confirm their choice.
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState();
+	const handlerForKey = React.useCallback((key) => () => setValue(key), []);
+	const isChecked = (key) => key === value;
+	return (
+		<ControlGroup block label="Radio group: on [%_PALETTE_%] background">
+			<Radio checked={isChecked('phone')} onChange={handlerForKey('phone')}>
+				Phone
+			</Radio>
+			<Radio checked={isChecked('tablet')} onChange={handlerForKey('tablet')}>
+				Tablet
+			</Radio>
+			<Radio checked={isChecked('laptop')} onChange={handlerForKey('laptop')}>
+				Laptop
+			</Radio>
+		</ControlGroup>
+	);
+};
+```
