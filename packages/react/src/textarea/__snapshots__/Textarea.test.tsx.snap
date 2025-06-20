@@ -3,7 +3,8 @@
 exports[`Textarea Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -38,7 +39,8 @@ exports[`Textarea Basic renders correctly 1`] = `
 exports[`Textarea Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-9biixk-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -107,7 +109,8 @@ exports[`Textarea Invalid renders correctly 1`] = `
 exports[`Textarea With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
