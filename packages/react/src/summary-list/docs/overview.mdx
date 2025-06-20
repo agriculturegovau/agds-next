@@ -103,3 +103,34 @@ Ensure each action’s accessible label is unique for screen reader users by inc
 	</SummaryListItem>
 </SummaryList>
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Summary list: on [%_PALETTE_%] body background</H4>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>First name</SummaryListItemTerm>
+			<SummaryListItemDescription>Will</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Last name</SummaryListItemTerm>
+			<SummaryListItemDescription>Power</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Contact information</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				+61 9912 3456
+				<br />
+				will.power@example.com
+			</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Date of birth</SummaryListItemTerm>
+			<SummaryListItemDescription>09/06/1995</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+	<TextLink href="#">Change all</TextLink>
+</Stack>
+```

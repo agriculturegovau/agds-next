@@ -11,13 +11,19 @@ import {
 import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
-import { proseBlockClassname } from '@ag.ds-next/react/prose';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { Callout } from '@ag.ds-next/react/callout';
+import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
+import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { H3, H4 } from '@ag.ds-next/react/heading';
 import {
 	PageAlert,
 	PageAlertTitle,
 	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { proseBlockClassname } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/stack';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -25,37 +31,32 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import {
-	Table as TableComponent,
 	TableBody,
 	TableCaption,
-	TableRow,
 	TableCell,
+	Table as TableComponent,
 	TableHead,
 	TableHeader,
+	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
-import { Callout } from '@ag.ds-next/react/callout';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
-import { H3, H4 } from '@ag.ds-next/react/heading';
-import { slugify } from '../lib/slugify';
-import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
+import { withBasePath } from '../lib/img';
+import { slugify } from '../lib/slugify';
 import { AllIconsPlayground } from './AllIconsPlayground';
 import { Code } from './Code';
+import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
+import { ColorComponentSection } from './ColorComponentSection';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import {
 	BreakpointsTokenChart,
+	ShadowTokenChart,
 	SpacingTokenChart,
 	ZIndexTokenChart,
-	ShadowTokenChart,
 } from './TokenCharts';
-import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 
 export interface MDXComponentsPageData {
 	title?: string;
@@ -72,15 +73,22 @@ export const mdxComponents = (
 	),
 	pre: ({
 		children,
+		colorSection,
 		enableProse,
 		exampleContentHeading = 'Example',
 		exampleContentHeadingType,
 		live,
 		padding,
 		previewHeading,
-		showCode,
 		referrerLabel,
+		shadeAlt,
+		showCode,
 	}: HTMLAttributes<HTMLPreElement> & {
+		/**
+		 * If `true`, returns colour documentation and two code blocks wrapped in a light and dark palette
+		 * Used on the component documentation page
+		 * */
+		colorSection?: boolean;
 		enableProse?: boolean;
 		exampleContentHeading?: string;
 		exampleContentHeadingType?: 'h2' | 'h3' | 'h4';
@@ -88,10 +96,33 @@ export const mdxComponents = (
 		padding?: boolean;
 		/** Heading for responsive preview page and standalone link label */
 		previewHeading?: string;
-		showCode?: boolean;
 		/** Back link label for responsive preview page */
 		referrerLabel?: string;
+		/** If `true` and `colorSelection={true}`, returns an additional colour documentation paragraph */
+		shadeAlt?: boolean;
+		showCode?: boolean;
 	}) => {
+		if (colorSection) {
+			return (
+				<Fragment>
+					{Children.map(children, (element) => {
+						if (!isValidElement(element)) return null;
+						return (
+							<ColorComponentSection
+								enableProse={enableProse}
+								exampleContentHeading={exampleContentHeading}
+								exampleContentHeadingType={exampleContentHeadingType}
+								key={element.key}
+								live={live}
+								shadeAlt={shadeAlt}
+								showCode={showCode}
+								{...element.props}
+							/>
+						);
+					})}
+				</Fragment>
+			);
+		}
 		return (
 			<Fragment>
 				{Children.map(children, (element) => {

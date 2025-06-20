@@ -200,3 +200,24 @@ Note: When you are using this prop, you still need to assign a `label` and `valu
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState(null);
+	return (
+		<Autocomplete
+			label="Autocomplete: on [%_PALETTE_%] background"
+			hint="Start typing to see results"
+			value={value}
+			onChange={setValue}
+			loadOptions={async function loadOptions(inputValue) {
+				// Simulate a slow network call
+				await new Promise((resolve) => setTimeout(resolve, 1500));
+				return COUNTRY_OPTIONS;
+			}}
+		/>
+	);
+};
+```

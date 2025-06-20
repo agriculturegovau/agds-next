@@ -63,28 +63,24 @@ Users can use the ‘Clear search’ button to the right of the input field to r
 
 ## Colour
 
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
-
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
-
-```jsx live
-<Fragment>
-	<Box gap={1.5} padding={1.5}>
+```jsx live colorSection
+<Stack gap={1.5}>
+	<Box maxWidth="32rem">
 		<SearchBox onSubmit={console.log}>
-			<SearchBoxInput label="Search this website" />
-			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
-				Search
-			</SearchBoxButton>
+			<SearchBoxInput
+				label="Search box: icon search button on [%_PALETTE_%] background"
+				labelVisible
+			/>
+			<SearchBoxButton iconOnly={true}>Search</SearchBoxButton>
 		</SearchBox>
 	</Box>
-
-	<Box background="body" gap={1.5} padding={1.5} palette="dark">
-		<SearchBox onSubmit={console.log}>
-			<SearchBoxInput label="Search this website" />
-			<SearchBoxButton iconOnly={{ xs: true, md: false }}>
-				Search
-			</SearchBoxButton>
-		</SearchBox>
-	</Box>
-</Fragment>
+	<SearchBox onSubmit={console.log}>
+		<SearchBoxInput
+			label="Search box: icon search button on [%_PALETTE_%] background"
+			labelVisible
+			defaultValue="Oranges"
+		/>
+		<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
+	</SearchBox>
+</Stack>
 ```

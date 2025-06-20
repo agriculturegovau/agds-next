@@ -104,3 +104,16 @@ The `Pagination` component accepts props which are used to display and change th
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Pagination: on [%_PALETTE_%] background</H4>
+	<Pagination
+		currentPage={5}
+		generateHref={(page) => `/example?page=${page}`}
+		totalPages={10}
+	/>
+</Stack>
+```

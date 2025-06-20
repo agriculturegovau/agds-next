@@ -118,42 +118,6 @@ The feature variant of the callout can be used to draw even more emphasis to the
 </Callout>
 ```
 
-## Colour
-
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
-
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
-
-```jsx live
-<>
-	<Stack as="ul" css={{ listStyle: 'none' }} gap="1" paddingBottom="1">
-		<Box as="li">
-			<Callout title="Callout light 1">
-				<Text as="p">Description of the callout.</Text>
-			</Callout>
-		</Box>
-		<Box as="li">
-			<Callout title="Callout light 2" tone="info">
-				<Text as="p">Description of the callout.</Text>
-			</Callout>
-		</Box>
-	</Stack>
-
-	<Stack as="ul" css={{ listStyle: 'none' }} gap="1" palette="dark">
-		<Box as="li">
-			<Callout title="Callout dark 1">
-				<Text as="p">Description of the callout.</Text>
-			</Callout>
-		</Box>
-		<Box as="li">
-			<Callout title="Callout dark 2" tone="info">
-				<Text as="p">Description of the callout.</Text>
-			</Callout>
-		</Box>
-	</Stack>
-</>
-```
-
 ## Customising the title
 
 By default, `Callout` renders its title as an `h2`. However, should the need arise, you can change the title’s semantic tag to an `h3`, for example, by passing the `CalloutTitle` component to the `title` prop. For information on maintaining proper heading levels, refer to [Structuring headings and labels](/content/content-structure#structuring-headings-and-labels).
@@ -168,4 +132,34 @@ import { CalloutTitle } from '@ag.ds-next/react/callout';
 >
 	<Text as="p">Description of the callout.</Text>
 </Callout>;
+```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<Stack
+	as="ul"
+	background="body"
+	css={{ listStyle: 'none' }}
+	gap={1}
+	padding={1.5}
+>
+	<Box as="li">
+		<Callout title="Callout: on body background">
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	</Box>
+	<Box as="li">
+		<Callout title="Callout: info tone on body background" tone="info">
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	</Box>
+</Stack>
+<Stack as="ul" background="bodyAlt" css={{ listStyle: 'none' }} padding={1.5}>
+	<Box as="li">
+		<Callout background="shadeAlt" title="Callout: on bodyAlt background">
+			<Text as="p">Description of the callout.</Text>
+		</Callout>
+	</Box>
+</Stack>
 ```

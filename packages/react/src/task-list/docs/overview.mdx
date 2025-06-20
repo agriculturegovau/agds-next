@@ -214,3 +214,66 @@ If an item does not specify an `href` attribute a `button` element will be rende
 	]}
 />
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Task list: on [%_PALETTE_%] body background</H4>
+		<TaskList
+			items={[
+				{
+					href: '#',
+					label: 'Check eligibility',
+					status: 'doing',
+				},
+				{
+					href: '#',
+					label: 'Personal details',
+					status: 'todo',
+				},
+				{
+					href: '#',
+					label: 'Case Studies',
+					status: 'notRequired',
+				},
+				{
+					href: '#',
+					label: 'Review and submit',
+					message: 'Not available until previous tasks are done',
+					status: 'blocked',
+				},
+			]}
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Task list: on [%_PALETTE_%] bodyAlt background</H4>
+		<TaskList
+			items={[
+				{
+					href: '#',
+					label: 'Check eligibility',
+					status: 'doing',
+				},
+				{
+					href: '#',
+					label: 'Personal details',
+					status: 'todo',
+				},
+				{
+					href: '#',
+					label: 'Case Studies',
+					status: 'notRequired',
+				},
+				{
+					href: '#',
+					label: 'Review and submit',
+					message: 'Not available until previous tasks are done',
+					status: 'blocked',
+				},
+			]}
+		/>
+	</Stack>
+</>
+```

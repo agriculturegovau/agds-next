@@ -166,3 +166,23 @@ The medium button should be used in most cases to provide a larger icon.
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [isPressed, setPressed] = React.useState(false);
+
+	return (
+		<Stack alignItems="flex-start" gap={1.5}>
+			<H4>Toggle button: on [%_PALETTE_%] background</H4>
+			<ToggleButton
+				label="Flag message"
+				pressedLabel="Unflag message"
+				onClick={setPressed}
+				pressed={isPressed}
+			/>
+		</Stack>
+	);
+};
+```

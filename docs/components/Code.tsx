@@ -2,6 +2,7 @@ import { usePathname } from 'next/navigation';
 import React, { Fragment, type ReactNode, useState } from 'react';
 import { LiveProvider } from 'react-live';
 import { withBasePath } from '../lib/img';
+import { Render } from '../playroom/components';
 import { createTitleFromPathname } from './code/utils';
 import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
 import { StaticCode } from './code/StaticCode';
@@ -41,11 +42,12 @@ export const PlaceholderPictogram = () => (
 
 const LIVE_SCOPE = {
 	...designSystemComponents,
+	Fragment,
 	PlaceholderImage,
 	PlaceholderPictogram,
-	useState,
-	Fragment,
 	React,
+	Render,
+	useState,
 };
 
 type CodeProps = {
