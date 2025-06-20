@@ -8,12 +8,9 @@ exports[`ConditionalFieldContainer renders correctly 1`] = `
     Toggle visibility
   </button>
   <div
-    class="css-h0krvw-boxStyles"
+    class="css-2j0r52-boxStyles"
+    data-conditional-field-container="true"
   >
-    <hr
-      aria-hidden="true"
-      class="css-1th2zfi-Divider"
-    />
     <p
       data-testid="child-element"
     >

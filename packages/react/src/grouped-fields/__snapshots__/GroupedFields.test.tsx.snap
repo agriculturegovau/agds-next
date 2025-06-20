@@ -3,7 +3,8 @@
 exports[`GroupedFields invalid: can render an invalid state when both fields are invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-9biixk-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <fieldset
       class="css-79i25n-boxStyles"
@@ -61,9 +62,11 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
         </div>
         <div
           class="css-72257o-boxStyles"
+          data-grouped-fields="true"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-12o2rsn-boxStyles-FieldContainer"
+            data-field-container="true"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -95,7 +98,8 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-12o2rsn-boxStyles-FieldContainer"
+            data-field-container="true"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -176,7 +180,8 @@ exports[`GroupedFields invalid: can render an invalid state when both fields are
 exports[`GroupedFields renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <fieldset
       class="css-79i25n-boxStyles"
@@ -201,9 +206,11 @@ exports[`GroupedFields renders correctly 1`] = `
       >
         <div
           class="css-72257o-boxStyles"
+          data-grouped-fields="true"
         >
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-12o2rsn-boxStyles-FieldContainer"
+            data-field-container="true"
           >
             <label
               class="css-79i25n-boxStyles"
@@ -234,7 +241,8 @@ exports[`GroupedFields renders correctly 1`] = `
             />
           </div>
           <div
-            class="css-1904cz9-boxStyles-FieldContainer"
+            class="css-12o2rsn-boxStyles-FieldContainer"
+            data-field-container="true"
           >
             <label
               class="css-79i25n-boxStyles"

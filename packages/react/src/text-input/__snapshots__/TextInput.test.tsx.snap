@@ -3,7 +3,8 @@
 exports[`TextInput Basic renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -39,7 +40,8 @@ exports[`TextInput Basic renders correctly 1`] = `
 exports[`TextInput Invalid renders correctly 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-9biixk-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
@@ -109,7 +111,8 @@ exports[`TextInput Invalid renders correctly 1`] = `
 exports[`TextInput With hint renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"

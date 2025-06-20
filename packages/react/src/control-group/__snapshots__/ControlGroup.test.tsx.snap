@@ -3,7 +3,8 @@
 exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:r0:"
   >
     <fieldset
@@ -208,7 +209,8 @@ exports[`ControlGroup  With Checkboxes renders correctly 1`] = `
 exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-9biixk-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:ri:"
   >
     <fieldset
@@ -461,7 +463,8 @@ exports[`ControlGroup  With Checkboxes renders correctly when invalid 1`] = `
 exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:rc:"
   >
     <fieldset
@@ -667,7 +670,8 @@ exports[`ControlGroup  With Checkboxes renders correctly when required 1`] = `
 exports[`ControlGroup  With Radios renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:r14:"
   >
     <fieldset
@@ -820,7 +824,8 @@ exports[`ControlGroup  With Radios renders correctly 1`] = `
 exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 <div>
   <div
-    class="css-1n67ua0-boxStyles-FieldContainer"
+    class="css-9biixk-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:r1m:"
   >
     <fieldset
@@ -1021,7 +1026,8 @@ exports[`ControlGroup  With Radios renders correctly when invalid 1`] = `
 exports[`ControlGroup  With Radios renders correctly when required 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
     id="control-group-:r1g:"
   >
     <fieldset

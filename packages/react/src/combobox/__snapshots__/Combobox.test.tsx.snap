@@ -3,7 +3,8 @@
 exports[`Combobox renders correctly 1`] = `
 <div>
   <div
-    class="css-1904cz9-boxStyles-FieldContainer"
+    class="css-12o2rsn-boxStyles-FieldContainer"
+    data-field-container="true"
   >
     <label
       class="css-79i25n-boxStyles"
