@@ -11,13 +11,19 @@ import {
 import { type MDXRemoteProps } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Box } from '@ag.ds-next/react/box';
-import { proseBlockClassname } from '@ag.ds-next/react/prose';
+import { ButtonLink } from '@ag.ds-next/react/button';
+import { Callout } from '@ag.ds-next/react/callout';
+import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
+import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
+import { DirectionLink } from '@ag.ds-next/react/direction-link';
+import { H3, H4 } from '@ag.ds-next/react/heading';
 import {
 	PageAlert,
 	PageAlertTitle,
 	type PageAlertProps,
 } from '@ag.ds-next/react/page-alert';
-import { ButtonLink } from '@ag.ds-next/react/button';
+import { proseBlockClassname } from '@ag.ds-next/react/prose';
+import { Stack } from '@ag.ds-next/react/stack';
 import {
 	SummaryList,
 	SummaryListItem,
@@ -25,42 +31,36 @@ import {
 	SummaryListItemTerm,
 } from '@ag.ds-next/react/summary-list';
 import {
-	Table as TableComponent,
 	TableBody,
 	TableCaption,
-	TableRow,
 	TableCell,
+	Table as TableComponent,
 	TableHead,
 	TableHeader,
+	TableRow,
 	TableWrapper,
 } from '@ag.ds-next/react/table';
-import { boxPalette, fontGrid, mapSpacing } from '@ag.ds-next/react/core';
-import { Callout } from '@ag.ds-next/react/callout';
-import { Stack } from '@ag.ds-next/react/stack';
 import { Text } from '@ag.ds-next/react/text';
 import { TextLink } from '@ag.ds-next/react/text-link';
-import { DirectionLink } from '@ag.ds-next/react/direction-link';
-import { Card, CardHeader, CardInner } from '@ag.ds-next/react/card';
-import { H3, H4 } from '@ag.ds-next/react/heading';
-import { slugify } from '../lib/slugify';
-import { withBasePath } from '../lib/img';
 import generatedComponentPropsData from '../__generated__/componentProps.json';
-import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
+import { withBasePath } from '../lib/img';
+import { slugify } from '../lib/slugify';
 import { AllIconsPlayground } from './AllIconsPlayground';
 import { Code } from './Code';
+import { ResponsivePreviewLink } from './code/ResponsivePreviewLink';
+import { ColourComponentSection } from './ColourComponentSection';
 import { ComponentPropsTable } from './ComponentPropsTable';
 import { DoHeading, DontHeading } from './DoDontHeading';
 import {
 	BreakpointsTokenChart,
+	ShadowTokenChart,
 	SpacingTokenChart,
 	ZIndexTokenChart,
-	ShadowTokenChart,
 } from './TokenCharts';
 
 export interface MDXComponentsPageData {
 	title?: string;
 }
-import { ColourComponentSection } from './ColourComponentSection';
 
 export const mdxComponents = (
 	pageData: MDXComponentsPageData
