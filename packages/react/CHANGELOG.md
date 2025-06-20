@@ -1,5 +1,23 @@
 # @ag.ds-next/react
 
+## 1.30.0
+
+### Minor Changes
+
+- dd3c366a455: checkbox: Add `onFocus` as valid TypeScript prop.
+
+  docs: Add 'Responsive preview' page designed to view components and examples with selectable document widths. Add responsive preview link to documentation code snippets. Modify code snippet components with padding option.
+
+  header: Remove padding from preview examples.
+
+  radio: Add `onFocus` as valid TypeScript prop.
+
+- 687d9dba075: accordion: Add `indent` prop to apply horizontal padding to `AccordionTitle` and `AccordionBody`.
+
+### Patch Changes
+
+- d297f81fe25: search-box: Fix clear button position on `SearchBoxInput` when `labelVisible` prop is provided.
+
 ## 1.29.0
 
 ### Minor Changes
