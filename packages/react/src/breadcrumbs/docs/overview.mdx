@@ -37,12 +37,17 @@ Breadcrumbs are best applied to content pages and should not be used on form flo
 
 If you want to keep a user in a flow or to maintain the parent child relationship between two pages use a [Back button](/components/direction-link) instead.
 
-<ColourComponentSection>
-	{`<Breadcrumbs
-	links={[
-		{ href: '#', label: 'Home' },
-		{ href: '#', label: 'Establishments' },
-		{ label: 'Applications' },
-	]}
-/>`}
-</ColourComponentSection>
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Breadcrumbs: on [%_PALETTE_%] background</H4>
+	<Breadcrumbs
+		links={[
+			{ href: '#', label: 'Home' },
+			{ href: '#', label: 'Establishments' },
+			{ label: 'Applications' },
+		]}
+	/>
+</Stack>
+```
