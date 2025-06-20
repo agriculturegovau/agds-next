@@ -9,7 +9,7 @@ import {
 } from '../core';
 import { Box, focusStyles } from '../box';
 import { BaseButton, BaseButtonProps } from '../button';
-import { ChevronDownIcon, ChevronRightIcon, IconProps } from '../icon';
+import { ChevronRightIcon, IconProps } from '../icon';
 import { Stack } from '../stack';
 import { useAppLayoutContext } from './AppLayoutContext';
 import { AppLayoutSidebarProps } from './AppLayoutSidebar';
@@ -167,6 +167,13 @@ function AppLayoutSidebarNavListItem({
 			>
 				<Link
 					aria-current={isCurrentPage ? 'page' : undefined}
+					aria-label={
+						hasSubLevelItemsIndicator
+							? `${label}${
+									isActive ? ', has expanded sub links' : ', has sub links'
+							  }`
+							: undefined
+					}
 					{...(restItemProps as NavLink)}
 				>
 					{Icon && level === 1 && <Icon color="inherit" />}
@@ -177,24 +184,12 @@ function AppLayoutSidebarNavListItem({
 
 					{endElement}
 
-					{hasSubLevelItemsIndicator &&
-						(isActive ? (
-							<ChevronDownIcon
-								aria-hidden={false}
-								aria-label={`. Sub-level ${
-									numberOfItems === 1 ? 'link' : 'links'
-								} below.`}
-								size="md"
-							/>
-						) : (
-							<ChevronRightIcon
-								aria-hidden={false}
-								aria-label={`. Has ${numberOfItems} sub-level ${
-									numberOfItems === 1 ? 'link' : 'links'
-								}.`}
-								size="md"
-							/>
-						))}
+					{hasSubLevelItemsIndicator && (
+						<ChevronRightIcon
+							css={{ transform: isActive ? 'rotate(90deg)' : undefined }}
+							size="md"
+						/>
+					)}
 				</Link>
 
 				{Boolean(item.items?.length) && (isOpen || isCurrentPage) && (
