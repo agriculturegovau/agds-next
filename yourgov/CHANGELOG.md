@@ -1,5 +1,18 @@
 # @ag.ds-next/yourgov
 
+## 0.10.0
+
+### Minor Changes
+
+- d9cc7575106: yourgov: Bypass auth to allow navigating through the app.
+
+### Patch Changes
+
+- Updated dependencies [dd3c366a455]
+- Updated dependencies [687d9dba075]
+- Updated dependencies [d297f81fe25]
+  - @ag.ds-next/react@1.30.0
+
 ## 0.9.0
 
 ### Minor Changes
