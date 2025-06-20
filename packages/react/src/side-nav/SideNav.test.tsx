@@ -150,12 +150,8 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(levelOneItemHrefs);
 				});
 
-				test('icons indicating hidden sub-level items should be visible', async () => {
-					expect(
-						await screen.findAllByRole('img', {
-							name: /. Has [2-9] sub-level links.|. Has 1 sub-level link./,
-						})
-					).toHaveLength(2);
+				test('aria-labels indicating hidden sub links should exist', async () => {
+					expect(screen.getAllByLabelText(/\, has sub links/)).toHaveLength(2);
 				});
 			});
 
@@ -197,12 +193,10 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(itemHrefs);
 				});
 
-				test('an icon indicating visible sub-level items should be visible', async () => {
+				test('aria-labels indicating visibe sub links should exist', async () => {
 					expect(
-						await screen.findByRole('img', {
-							name: '. Sub-level links below.',
-						})
-					).toBeVisible();
+						screen.getByLabelText('Lodge online, has sub links')
+					).toBeTruthy();
 				});
 			});
 
@@ -250,89 +244,6 @@ describe('SideNav', () => {
 						.filter((href) => href !== '/'); // Remove the heading's link
 
 					expect(navItemPathnames).toEqual(itemHrefs);
-				});
-
-				// Skipping because this is failing only in CI
-				test.skip('an icon indicating visible sub-level items should be visible', async () => {
-					const link = await screen.findByRole('link', {
-						name: 'Record keeping. Sub-level links below.',
-					});
-
-					const chevronIcon = within(link).getByRole('img', {
-						name: '. Sub-level links below.',
-					});
-
-					expect(chevronIcon).toBeVisible();
-				});
-
-				// Skipping because this is failing only in CI
-				test.skip('its parent should have an icon indicating visible sub-level items', async () => {
-					const link = await screen.findByRole('link', {
-						name: 'In detail. Sub-level links below.',
-					});
-
-					const chevronIcon = within(link).getByRole('img', {
-						name: '. Sub-level links below.',
-					});
-
-					expect(chevronIcon).toBeVisible();
-				});
-			});
-
-			describe('when the active item is level three and has no sub-level items', () => {
-				beforeEach(() => {
-					render(
-						<SideNav
-							{...defaultTestingProps}
-							activePath="/in-detail/record-keeping/tax"
-							subLevelVisible="whenActive"
-						/>
-					);
-
-					const user = userEvent.setup();
-
-					user.click(
-						screen.getByRole('button', {
-							name: `${defaultTestingProps.title}`,
-						})
-					);
-				});
-
-				// Skipping because this is failing only in CI
-				test.skip('no icon indicating visible sub-level items should be visible', async () => {
-					const link = await screen.findByRole('link', {
-						name: 'Keeping your tax records',
-					});
-
-					const chevronIcon = within(link).queryByRole('img');
-
-					expect(chevronIcon).toBeNull();
-				});
-
-				// Skipping because this is failing only in CI
-				test.skip('its parent should have an icon indicating visible sub-level items', async () => {
-					const link = await screen.findByRole('link', {
-						name: 'Record keeping. Sub-level links below.',
-					});
-
-					const chevronIcon = within(link).getByRole('img', {
-						name: '. Sub-level links below.',
-					});
-
-					expect(chevronIcon).toBeVisible();
-				});
-
-				// Skipping because this is failing only in CI
-				test.skip('its grandparent should have an icon indicating visible sub-level items', async () => {
-					const link = await screen.findByRole('link', {
-						name: 'In detail. Sub-level links below.',
-					});
-
-					const chevronIcon = within(link).getByRole('img', {
-						name: '. Sub-level links below.',
-					});
-
-					expect(chevronIcon).toBeVisible();
 				});
 			});
 		});
