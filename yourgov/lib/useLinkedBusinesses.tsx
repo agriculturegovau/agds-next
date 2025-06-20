@@ -40,6 +40,10 @@ export function LinkedBusinessesProvider({ children }: PropsWithChildren<{}>) {
 
 	useEffect(() => {
 		if (!safeSessionStorage) return;
+
+		// MAINTENANCE MODE: Bypass auth to allow navigating through the app
+		setSelectedBusiness(mockBusinesses[0]);
+
 		const value = safeSessionStorage.getItem('selectedBusiness');
 		const parsedValue = value ? (JSON.parse(value) as Business) : null;
 		setSelectedBusinessState(parsedValue);
