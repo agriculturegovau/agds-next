@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Divider } from '../divider';
-import { FormStack } from '../form-stack';
+import { Flex } from '../flex';
 
 export type ConditionalFieldContainerProps = PropsWithChildren<{
 	/** Controls the visibility and render state of the children */
@@ -16,9 +15,20 @@ export function ConditionalFieldContainer({
 	}
 
 	return (
-		<FormStack>
-			<Divider />
+		// Duplicates FormStack's spacing with additional properties
+		<Flex
+			{...{ [CONDITIONAL_FIELD_CONTAINER_DATA_ATTR]: true }}
+			borderColor="muted"
+			borderLeft
+			borderLeftWidth="xl"
+			flexDirection="column"
+			gap={2}
+			paddingLeft={1}
+		>
 			{children}
-		</FormStack>
+		</Flex>
 	);
 }
+
+export const CONDITIONAL_FIELD_CONTAINER_DATA_ATTR =
+	'data-conditional-field-container';
