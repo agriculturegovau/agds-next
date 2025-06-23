@@ -193,7 +193,7 @@ describe('SideNav', () => {
 					expect(navItemPathnames).toEqual(itemHrefs);
 				});
 
-				test('aria-labels indicating visibe sub links should exist', async () => {
+				test('aria-labels indicating visible sub links should exist', async () => {
 					expect(
 						screen.getByLabelText('Lodge online, has sub links')
 					).toBeTruthy();
