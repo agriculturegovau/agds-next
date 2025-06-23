@@ -268,7 +268,9 @@ The `message` should be helpful but generic enough to apply and make sense to bo
 		<>
 			<TextInput label="Weight" {...field1Props} />
 			<Select
+				hideOptionalLabel
 				label="Unit"
+				maxWidth="sm"
 				options={[
 					{ value: 'mg', label: 'mg' },
 					{ value: 'g', label: 'g' },
@@ -276,8 +278,6 @@ The `message` should be helpful but generic enough to apply and make sense to bo
 					{ value: 't', label: 't' },
 					{ value: 'Mt', label: 'Mt' },
 				]}
-				hideOptionalLabel
-				maxWidth="sm"
 				{...field2Props}
 			/>
 		</>

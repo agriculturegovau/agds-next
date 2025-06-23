@@ -275,19 +275,19 @@ Use the `invalid` prop to indicate if the user input is invalid.
 () => {
 	const [existingFiles, setExistingFiles] = React.useState([
 		{
+			meta: { uid: 'fed-cba', bucketId: '654-321' },
 			name: 'fileName.pdf',
 			size: 654321,
-			meta: { uid: 'fed-cba', bucketId: '654-321' },
 		},
 		{
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 			name: 'fileName.pdf',
 			size: 999,
-			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 		},
 		{
+			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 			name: 'fileName.pdf',
 			size: 123,
-			meta: { uid: 'zyx-wvu', bucketId: '999-888' },
 		},
 	]);
 

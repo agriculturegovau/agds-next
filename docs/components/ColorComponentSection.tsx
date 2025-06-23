@@ -1,7 +1,11 @@
 import { Code } from './Code';
 import { checkAndModifyCode } from './code/utils';
 
-const lintCodeString = (originalCode: string) => {
+/**
+ * We will be wrapping the code in a Box with the palette
+ * Add one tab to each line for Playroom and code preview
+ */
+const formatCodeString = (originalCode: string) => {
 	const code = checkAndModifyCode(originalCode.trim());
 	return code
 		.split('\n')
@@ -32,10 +36,9 @@ export const ColorComponentSection = ({
 	shadeAlt?: boolean;
 	showCode?: boolean;
 }) => {
-	// Add new tab padding on left of each line
-	const children = lintCodeString(ReactChildren?.toString() || '');
-	const light = children.replaceAll(paletteReplacedString, 'light');
-	const dark = children.replaceAll(paletteReplacedString, 'dark');
+	const children = formatCodeString(ReactChildren?.toString() || '');
+	const lightCode = children.replaceAll(paletteReplacedString, 'light');
+	const darkCode = children.replaceAll(paletteReplacedString, 'dark');
 
 	return (
 		<>
@@ -69,7 +72,7 @@ export const ColorComponentSection = ({
 				live={live}
 				padding={false}
 				showCode={showCode}
-			>{`<Box background="body" padding={1.5}>\n${light}\n</Box>`}</Code>
+			>{`<Box background="body" padding={1.5}>\n${lightCode}\n</Box>`}</Code>
 
 			<h3>Dark palette</h3>
 			<Code
@@ -79,7 +82,7 @@ export const ColorComponentSection = ({
 				live={live}
 				padding={false}
 				showCode={showCode}
-			>{`<Box background="body" padding={1.5} palette="dark">\n${dark}\n</Box>`}</Code>
+			>{`<Box background="body" padding={1.5} palette="dark">\n${darkCode}\n</Box>`}</Code>
 		</>
 	);
 };

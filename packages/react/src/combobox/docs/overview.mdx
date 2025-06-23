@@ -17,11 +17,11 @@ All Combobox components are [controlled components](https://reactjs.org/docs/for
 	const [value, setValue] = React.useState(null);
 	return (
 		<Combobox
-			label="Select country"
 			hint="Start typing to see results"
-			value={value}
+			label="Select country"
 			onChange={setValue}
 			options={COUNTRY_OPTIONS}
+			value={value}
 		/>
 	);
 };

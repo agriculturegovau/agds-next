@@ -103,14 +103,14 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 () => {
 	const listData = [
 		{
-			title: 'Example article one',
-			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
 			author: 'Lando Norris',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			title: 'Example article one',
 		},
 		{
-			title: 'Example article two',
-			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
 			author: 'Toto Wolff',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			title: 'Example article two',
 		},
 	];
 
@@ -141,9 +141,9 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 					</Text>
 					<Stack as="ul" gap={1}>
 						{listData.map((item, index) => (
-							<Card as="li" shadow clickable key={index}>
+							<Card as="li" clickable key={index} shadow>
 								<CardInner>
-									<Stack gap={0.5} width="100%" flexWrap="wrap">
+									<Stack flexWrap="wrap" gap={0.5} width="100%">
 										<H3>
 											<CardLink href="#">{item.title}</CardLink>
 										</H3>
@@ -151,10 +151,10 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 										<Text as="p">{item.desc}</Text>
 
 										<Flex
-											gap={0.5}
-											flexWrap="wrap"
-											justifyContent="space-between"
 											alignItems="center"
+											flexWrap="wrap"
+											gap={0.5}
+											justifyContent="space-between"
 										>
 											<Text color="muted" fontSize="xs">
 												{item.author}

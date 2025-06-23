@@ -221,7 +221,7 @@ When you have a small number of sub-level items, it’s easier for users to see 
 ## Colour
 
 ```jsx live colorSection shadeAlt
-<Columns gap={0} cols={{ xs: 1, sm: 2 }}>
+<Columns cols={{ xs: 1, sm: 2 }} gap={0}>
 	<Stack gap={1.5} padding={1.5}>
 		<H4>Side nav: on [%_PALETTE_%] body background</H4>
 		<SideNav
@@ -237,13 +237,13 @@ When you have a small number of sub-level items, it’s easier for users to see 
 				},
 				{
 					href: '#lodge-online',
-					label: 'Lodge online',
 					items: [
 						{
 							href: '#lodge-online/pre-filling',
 							label: 'Pre-filling your online tax return',
 						},
 					],
+					label: 'Lodge online',
 				},
 				{
 					href: '#whats-new-for-individuals',
@@ -255,7 +255,6 @@ When you have a small number of sub-level items, it’s easier for users to see 
 				},
 				{
 					href: '#in-detail',
-					label: 'In detail',
 					items: [
 						{
 							href: '#in-detail/record-keeping',
@@ -280,6 +279,7 @@ When you have a small number of sub-level items, it’s easier for users to see 
 							label: 'Pre-fill availability',
 						},
 					],
+					label: 'In detail',
 				},
 			]}
 			title="Lodging your tax return"
@@ -302,13 +302,14 @@ When you have a small number of sub-level items, it’s easier for users to see 
 				},
 				{
 					href: '#lodge-online',
-					label: 'Lodge online',
+
 					items: [
 						{
 							href: '#lodge-online/pre-filling',
 							label: 'Pre-filling your online tax return',
 						},
 					],
+					label: 'Lodge online',
 				},
 				{
 					href: '#whats-new-for-individuals',
@@ -320,7 +321,6 @@ When you have a small number of sub-level items, it’s easier for users to see 
 				},
 				{
 					href: '#in-detail',
-					label: 'In detail',
 					items: [
 						{
 							href: '#in-detail/record-keeping',
@@ -345,6 +345,7 @@ When you have a small number of sub-level items, it’s easier for users to see 
 							label: 'Pre-fill availability',
 						},
 					],
+					label: 'In detail',
 				},
 			]}
 			title="Lodging your tax return"
