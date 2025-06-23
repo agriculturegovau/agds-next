@@ -91,19 +91,12 @@ We recommend the use of one link to give a clear path to the right information f
 			</Details>
 			<Drawer
 				actions={
-					<ButtonGroup>
-						<Button onClick={closeDrawer}>Primary</Button>
-						<Button variant="secondary" onClick={closeDrawer}>
-							Secondary
-						</Button>
-						<Button variant="tertiary" onClick={closeDrawer}>
-							Tertiary
-						</Button>
-					</ButtonGroup>
+					<TextLinkExternal href="#">Open in new window</TextLinkExternal>
 				}
 				isOpen={isDrawerOpen}
 				onClose={closeDrawer}
 				title="Inviting a staff member"
+				width="lg"
 			>
 				<Stack gap={1.5}>
 					<Text as="p" color="muted" fontSize="md">
