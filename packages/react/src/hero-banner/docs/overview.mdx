@@ -89,7 +89,7 @@ Use the `HeroSubcategoryBanner` components pages within a category.
 ## Colour
 
 ```jsx live colorSection shadeAlt
-<Stack padding={1.5} gap={1.5}>
+<Stack gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
 	<H4>Hero banner: on [%_PALETTE_%] body background</H4>
 	<HeroBanner
 		image={
@@ -105,7 +105,7 @@ Use the `HeroSubcategoryBanner` components pages within a category.
 				Website hero banner title
 			</HeroBannerTitle>
 			<HeroBannerSubtitle>
-				Short hero banner sentence - md/default (P)
+				Short hero banner sentence
 			</HeroBannerSubtitle>
 		</HeroBannerTitleContainer>
 		<SearchBox onSubmit={() => console.log()}>
@@ -114,7 +114,7 @@ Use the `HeroSubcategoryBanner` components pages within a category.
 		</SearchBox>
 	</HeroBanner>
 </Stack>
-<Stack background="bodyAlt" padding={1.5} gap={1.5}>
+<Stack background="bodyAlt" gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
 	<H4>Hero banner: on [%_PALETTE_%] bodyAlt background</H4>
 	<HeroBanner
 		background="shadeAlt"
@@ -131,7 +131,7 @@ Use the `HeroSubcategoryBanner` components pages within a category.
 				Website hero banner title
 			</HeroBannerTitle>
 			<HeroBannerSubtitle>
-				Short hero banner sentence - md/default (P)
+				Short hero banner sentence
 			</HeroBannerSubtitle>
 		</HeroBannerTitleContainer>
 		<SearchBox onSubmit={() => console.log()}>

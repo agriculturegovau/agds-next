@@ -250,7 +250,11 @@ The background of the `AccordionItem` must pair with the background it is being 
 <>
 	<Box padding={1.5}>
 		<Accordion>
-			<AccordionItem background="body" title="Accordion: on body background">
+			<AccordionItem
+				background="body"
+				isOpen
+				title="Accordion: on body background"
+			>
 				<AccordionItemContent>
 					<Stack gap={1}>
 						<Text as="p">Here is the accordion content.</Text>
@@ -264,6 +268,7 @@ The background of the `AccordionItem` must pair with the background it is being 
 		<Accordion>
 			<AccordionItem
 				background="bodyAlt"
+				isOpen
 				title="Accordion: on bodyAlt background"
 			>
 				<AccordionItemContent>
