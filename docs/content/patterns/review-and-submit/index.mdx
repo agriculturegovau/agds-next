@@ -1,0 +1,92 @@
+---
+title: Review and submit
+description: Review and submit is an important step of a multi-page where users can review all information provided, make changes, understand privacy and security policies and submit the form. This pattern is used in forms where there are multiple pages such as a multi-task form or a multi-page form.
+relatedComponents: ['checkbox', 'combobox']
+---
+
+## Summary of input
+
+The layout of the Review and Submit page should include read only information from all form pages of the Multi-page form. Each form page should have it’s own section and heading to help users scan the page.
+
+Information for each form page section should be presented to the user as a summary list. A table can be used instead of a Summary list if a table was used on the form page. Summary lists are preferred because they provide less issues to screen reader users.
+
+The user should have the ability to edit any information prior to Review and Submit. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used.
+
+When multiple closely related inputs are included in the Summary list, combining similar fields together in the list can reduce the complexity of the page and make it easier to read. For example the individual fields of an address form page can be combined into one row of a summary list.
+
+```jsx live
+<Stack gap={1.5}>
+	<H4>Owner details</H4>
+	<SummaryList>
+		<SummaryListItem>
+			<SummaryListItemTerm>First name</SummaryListItemTerm>
+			<SummaryListItemDescription>Charlie</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Family name</SummaryListItemTerm>
+			<SummaryListItemDescription>Walker</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Email address</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				charlie@walkersfrozenfood.com
+			</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Contact phone number</SummaryListItemTerm>
+			<SummaryListItemDescription>0494 811 111</SummaryListItemDescription>
+		</SummaryListItem>
+		<SummaryListItem>
+			<SummaryListItemTerm>Address</SummaryListItemTerm>
+			<SummaryListItemDescription>
+				42 Wallaby Way
+				<br />
+				Sydney NSW 2000
+			</SummaryListItemDescription>
+		</SummaryListItem>
+	</SummaryList>
+	<TextLink href="#">Change owner details</TextLink>
+</Stack>
+```
+
+## When to use ’Review and submit’
+
+### Multi-task form
+
+In a Multi-task form, each Multi-page form should have it’s own Review and Submit step. This allows different forms to be combined in a modular and scalable way to create a Multi-task process.
+
+In cases where a final Review and Submit step is required on a Multi-task process, do not include a Review and Submit page in each step or Multi-page form.
+
+In all situations Review and Submit tasks should enable the user to review all information they have provided before submitting a form.
+
+### Multi-task form sequence
+
+LIST HERE
+
+## Editing from ’Review and submit’
+
+To edit information on the ’Review and submit’ page, users can click the ’Change’ link available under each summary list on the Review and submit page.
+
+The ’Edit’ page will appear as a sub-step of the ’Review and submit’ Progress indicator item.
+
+Once the changes are saved, the user will be returned to the ’Review and submit’ page, where a success message will be displayed above the updated information in the summary list.
+
+### Editing from ’Review and submit’ sequence
+
+LIST HERE
+
+## Editing a sub-step from ’Review and submit’
+
+To edit information the the ’Review and Submit’ page, users can click the ’Change’ link available under each summary list on the Review and submit page.
+
+If the information they need to edit was originally provided via a sub-step of a form page, users need to navigate from the form page into the sub-step to make the change.
+
+When editing information within a sub-step, there will be no progress indicator. Instead, the user will be presented with a simple, single-page form. Users can navigate with the ’Review and Submit’ action at the bottom of the sub-page form or the back button at the top of the page.
+
+A user must save and continue on the sub page and sub-step before those changes are saved and updated on the Review and submit page.
+
+A destructive action modal dialogue should be used to avoid data loss if the user elects to navigate back to the Review and Submit page with any other method than ’Save and Continue’.
+
+### Editing a sub-step from ’Review and Submit’ sequence
+
+LIST HERE
