@@ -1439,7 +1439,7 @@ To prevent the table row callback from executing unintentionally, it will only r
 
 ```jsx live colorSection shadeAlt
 <>
-	<Stack gap={1.5} padding={1.5}>
+	<Stack gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
 		<TableWrapper>
 			<Table striped>
 				<TableCaption>Table: on [%_PALETTE_%] body background</TableCaption>
@@ -1510,7 +1510,12 @@ To prevent the table row callback from executing unintentionally, it will only r
 			</Table>
 		</TableWrapper>
 	</Stack>
-	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+	<Stack
+		background="bodyAlt"
+		gap={1.5}
+		paddingX={{ xs: 0.75, md: 1.5 }}
+		paddingY={1.5}
+	>
 		<TableWrapper>
 			<Table striped>
 				<TableCaption>Table: on [%_PALETTE_%] bodyAlt background</TableCaption>

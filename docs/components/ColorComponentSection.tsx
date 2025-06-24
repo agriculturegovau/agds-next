@@ -72,7 +72,7 @@ export const ColorComponentSection = ({
 				live={live}
 				padding={false}
 				showCode={showCode}
-			>{`<Box background="body" padding={1.5}>\n${lightCode}\n</Box>`}</Code>
+			>{`<Box background="body" paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>\n${lightCode}\n</Box>`}</Code>
 
 			<h3>Dark palette</h3>
 			<Code
@@ -82,7 +82,7 @@ export const ColorComponentSection = ({
 				live={live}
 				padding={false}
 				showCode={showCode}
-			>{`<Box background="body" padding={1.5} palette="dark">\n${darkCode}\n</Box>`}</Code>
+			>{`<Box background="body" paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5} palette="dark">\n${darkCode}\n</Box>`}</Code>
 		</>
 	);
 };

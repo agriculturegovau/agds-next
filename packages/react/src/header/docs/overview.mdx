@@ -99,8 +99,10 @@ _Note: The first logo’s `href` will be assigned to the `heading` and `subline`
 
 ```jsx live colorSection shadeAlt
 <>
-	<Stack gap={1.5} padding={1.5}>
-		<H4>Header: on [%_PALETTE_%] body background</H4>
+	<Stack>
+		<H4 paddingTop={1.5} paddingX={{ xs: 0.75, md: 1.5 }}>
+			Header: on [%_PALETTE_%] body background
+		</H4>
 		<Header
 			badgeLabel="Beta"
 			heading="Export Service"
@@ -108,8 +110,10 @@ _Note: The first logo’s `href` will be assigned to the `heading` and `subline`
 			subline="Supporting Australian agricultural exports"
 		/>
 	</Stack>
-	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
-		<H4>Header: on [%_PALETTE_%] bodyAlt background</H4>
+	<Stack background="bodyAlt">
+		<H4 paddingTop={1.5} paddingX={{ xs: 0.75, md: 1.5 }}>
+			Header: on [%_PALETTE_%] bodyAlt background
+		</H4>
 		<Header
 			background="bodyAlt"
 			badgeLabel="Beta"
