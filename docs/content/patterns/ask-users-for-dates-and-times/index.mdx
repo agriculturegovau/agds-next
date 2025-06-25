@@ -25,6 +25,7 @@ It should be used in situations when user know and can provide an exact and arbi
 
 	return (
 		<TimeInput
+			hideOptionalLabel
 			invalid={invalid}
 			label="Time"
 			message="Enter a valid time"
@@ -56,6 +57,7 @@ It should be used when a user needs to select from a large list of specific time
 
 	return (
 		<TimePicker
+			hideOptionalLabel
 			hint="Start typing to see results"
 			label="Select a time"
 			onChange={onChange}
@@ -72,19 +74,28 @@ When a specific known date is required use a format tolerant [Text input](/compo
 Examples of a specific known date are birth date, when an application was made or an expiry date.
 
 ```jsx live
-<TextInput hint="(e.g. 15/02/1982)" label="Date of event" type="date" />
+<TextInput
+	hideOptionalLabel
+	hint="(e.g. 15/02/1982)"
+	label="Date of event"
+	type="date"
+/>
 ```
 
 ## Asking for approximate dates
 
 When asking for a date that may be general or hard for users to remember, allow them to provide an approximate date.
 
-Use a format-tolerant text input that accepts a range of valid forms and automatically reformats minor issues, such as extra spaces or capital letters.
+Use a format-tolerant text input that accepts a range of valid formats and automatically reformats minor issues, such as extra spaces or capital letters.
 
 Examples of approximate dates include any dates that are indicative and non-specific like ’January 2025’.
 
 ```jsx live
-<TextInput hint="(e.g. December 2025)" label="Approximate date" />
+<TextInput
+	hideOptionalLabel
+	hint="(e.g. December 2025)"
+	label="Approximate date"
+/>
 ```
 
 ## Picking dates
@@ -99,7 +110,12 @@ Use Date picker when a user needs to pick an unknown date or when they need to f
 () => {
 	const [value, setValue] = React.useState();
 	return (
-		<DatePickerNext label="Select date" value={value} onChange={setValue} />
+		<DatePickerNext
+			hideOptionalLabel
+			label="Select date"
+			onChange={setValue}
+			value={value}
+		/>
 	);
 };
 ```
@@ -115,13 +131,15 @@ Use Date range picker when a user needs to pick a start and end. For example, wh
 ```jsx live
 () => {
 	const [value, setValue] = React.useState({ from: undefined, to: undefined });
-	return <DateRangePickerNext value={value} onChange={setValue} />;
+	return (
+		<DateRangePickerNext value={value} onChange={setValue} hideOptionalLabel />
+	);
 };
 ```
 
 ## Picking a date and time
 
-Using the [Grouped fields](/components/grouped-fields) component to combine closely related inputs like [Date picker](/components/date-picker-next) and [Time picker](/components/time-picker) when asking users to provide a specific date and time.
+Use the [Grouped fields](/components/grouped-fields) component to combine closely related inputs like [Date picker](/components/date-picker-next) and [Time picker](/components/time-picker) when asking users to provide a specific date and time.
 
 An examples of when we combine date and time in Grouped fields is booking a departure time or an appointment.
 
@@ -134,12 +152,14 @@ An examples of when we combine date and time in Grouped fields is booking a depa
 			{({ field1Props, field2Props }) => (
 				<>
 					<DatePickerNext
+						hideOptionalLabel
 						label="Select date"
 						onChange={setDateValue}
 						value={dateValue}
 						{...field1Props}
 					/>
 					<TimePicker
+						hideOptionalLabel
 						label="Select available time"
 						onChange={setTimeValue}
 						value={timeValue}
@@ -167,22 +187,26 @@ An example of when we combine time and time zone in Grouped fields is when the t
 			{({ field1Props, field2Props }) => (
 				<>
 					<TimePicker
+						hideOptionalLabel
 						label="Time"
+						message="Enter a valid time"
 						onChange={setTimeValue}
 						value={timeValue}
 						{...field1Props}
 					/>
 					<Select
+						hideOptionalLabel
 						label="Select time"
 						onChange={(e) => setTimezoneValue(e.target.value)}
-						options={[{ value: 'AWST', label: 'AWST' },
+						options={[
+							{ value: 'AWST', label: 'AWST' },
 							{ value: 'ACWST', label: 'ACWST' },
 							{ value: 'ACST', label: 'ACST' },
 							{ value: 'AEST', label: 'AEST' },
 							{ value: 'LHST', label: 'LHST' },
 						]}
 						placeholder="Please select"
-                        value={timezoneValue}
+						value={timezoneValue}
 					/>
 				</>
 			)}
