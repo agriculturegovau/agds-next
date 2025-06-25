@@ -1,0 +1,192 @@
+---
+title: Ask users for dates and times
+description: When we ask for date, time or a combination of both there are a range of components that can be used to meet user needs in different situations.
+relatedComponents: ['time-input', 'time-picker']
+---
+
+## Time input
+
+[Time input](/components/time-input) allows users to type an exact time - for example, the known time of an incident or event.
+
+When the user enters a time, formatting is applied to collect input in a consistent format.
+
+It should be used in situations when user know and can provide an exact and arbitrary time.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	const invalid = value && !isValidTime(value.value);
+
+	return (
+		<TimeInput
+			invalid={invalid}
+			label="Time"
+			message="Enter a valid time"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```
+
+## Time picker
+
+[Time picker](/components/time-picker) is a composition of [combobox](/components/combobox) that allows users to select a time from a predefined list of consistent time intervals.
+
+As the user enters text into the field, autocomplete narrows the list to match their input.
+
+The list is closed when a time is selected.
+
+It should be used when a user needs to select from a large list of specific times.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	return (
+		<TimePicker
+			hint="Start typing to see results"
+			label="Select a time"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```
+
+## Asking for specific known dates
+
+When a specific known date is required use a format tolerant [Text input](/components/text-input) that validates acceptable formats and auto formats minor issues like spaces or capital letters.
+
+Examples of a specific known date are birth date, when an application was made or an expiry date.
+
+```jsx live
+<TextInput hint="(e.g. 15/02/1982)" label="Date of event" type="date" />
+```
+
+## Asking for approximate dates
+
+When asking for a date that may be general or hard for users to remember, allow them to provide an approximate date.
+
+Use a format-tolerant text input that accepts a range of valid forms and automatically reformats minor issues, such as extra spaces or capital letters.
+
+Examples of approximate dates include any dates that are indicative and non-specific like ’January 2025’.
+
+```jsx live
+<TextInput hint="(e.g. December 2025)" label="Approximate date" />
+```
+
+## Picking dates
+
+Use [Date picker](/components/date-picker-next) when a user needs to pick a specific or available date from a calendar.
+
+The Date picker calendar allows selection of both past and future dates. It displays one month at a time, with controls to navigate by month or year.
+
+Use Date picker when a user needs to pick an unknown date or when they need to find an available date like when booking appointments.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState();
+	return (
+		<DatePickerNext label="Select date" value={value} onChange={setValue} />
+	);
+};
+```
+
+## Picking date spans
+
+Use [Date range picker](/components/date-range-picker-next) when a user needs to pick a specific or available date range from a calendar.
+
+The Date range picker calendars allow selection of both past and future dates. They display two months at a time on large screens, with controls to navigate by month or year.
+
+Use Date range picker when a user needs to pick a start and end. For example, when providing transport times or booking accommodation.
+
+```jsx live
+() => {
+	const [value, setValue] = React.useState({ from: undefined, to: undefined });
+	return <DateRangePickerNext value={value} onChange={setValue} />;
+};
+```
+
+## Picking a date and time
+
+Using the [Grouped fields](/components/grouped-fields) component to combine closely related inputs like [Date picker](/components/date-picker-next) and [Time picker](/components/time-picker) when asking users to provide a specific date and time.
+
+An examples of when we combine date and time in Grouped fields is booking a departure time or an appointment.
+
+```jsx live
+() => {
+	const [dateValue, setDateValue] = React.useState();
+	const [timeValue, setTimeValue] = React.useState();
+	return (
+		<GroupedFields legend="Departure time" hideOptionalLabel>
+			{({ field1Props, field2Props }) => (
+				<>
+					<DatePickerNext
+						label="Select date"
+						onChange={setDateValue}
+						value={dateValue}
+						{...field1Props}
+					/>
+					<TimePicker
+						label="Select available time"
+						onChange={setTimeValue}
+						value={timeValue}
+						{...field2Props}
+					/>
+				</>
+			)}
+		</GroupedFields>
+	);
+};
+```
+
+## Time zones
+
+Use the [Grouped fields](/components/grouped-fields) component to combine closely related inputs like [Time picker](/components/time-picker) and a time zone [Select](/components/select) when asking users for a time and the time zone is important.
+
+An example of when we combine time and time zone in Grouped fields is when the time a consignment will arrive in another country is required.
+
+```jsx live
+() => {
+	const [timeValue, setTimeValue] = React.useState();
+	const [timezoneValue, setTimezoneValue] = React.useState();
+	return (
+		<GroupedFields legend="Departure time" hideOptionalLabel>
+			{({ field1Props, field2Props }) => (
+				<>
+					<TimePicker
+						label="Time"
+						onChange={setTimeValue}
+						value={timeValue}
+						{...field1Props}
+					/>
+					<Select
+						label="Select time"
+						onChange={(e) => setTimezoneValue(e.target.value)}
+						options={[{ value: 'AWST', label: 'AWST' },
+							{ value: 'ACWST', label: 'ACWST' },
+							{ value: 'ACST', label: 'ACST' },
+							{ value: 'AEST', label: 'AEST' },
+							{ value: 'LHST', label: 'LHST' },
+						]}
+						placeholder="Please select"
+                        value={timezoneValue}
+					/>
+				</>
+			)}
+		</GroupedFields>
+	);
+};
+```
