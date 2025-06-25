@@ -50,17 +50,17 @@ export const ColorComponentSection = ({
 			</p>
 			<p>
 				This logic ensures sufficient contrast between foreground and background
-				elements is maintained to meet WCAG 2.1 AA, 4:5:1 contrast ratio for text
-				(WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG
-				1.4.11).
+				elements is maintained to meet WCAG 2.1 AA, 4:5:1 contrast ratio for
+				text (WCAG 1.4.3) and 3:1 for graphic elements that convey information
+				(WCAG 1.4.11).
 			</p>
 			{shadeAlt && (
 				<p>
 					This component has a ’bodyAlt’ variant. Components with a ’bodyAlt’
 					variant utilise ’shadeAlt’ to highlight interface components and
 					content that sit on ’bodyAlt’ background. ’shadeAlt’ is also used to
-					fill interactive components, ensuring sufficient contrast is maintained
-					for hover states.
+					fill interactive components, ensuring sufficient contrast is
+					maintained for hover states.
 				</p>
 			)}
 
