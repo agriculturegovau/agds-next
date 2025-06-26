@@ -243,3 +243,45 @@ import { PageAlertTitle } from '@ag.ds-next/react/page-alert';
 	<Text as="p">Your application has been successfully submitted.</Text>
 </PageAlert>;
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1}>
+	<PageAlert
+		title="Page alert: info tone on [%_PALETTE_%] background"
+		tone="info"
+	>
+		<Text as="p">
+			All vacancies close on the advertised closing date unless otherwise
+			specified.
+		</Text>
+	</PageAlert>
+	<PageAlert
+		title="Page alert: success tone on [%_PALETTE_%] background"
+		tone="success"
+	>
+		<Text as="p">Your application has been successfully submitted.</Text>
+	</PageAlert>
+	<PageAlert
+		title="Page alert: error tone on [%_PALETTE_%] background"
+		tone="error"
+	>
+		<Text as="p">Please correct the following fields and try again</Text>
+		<UnorderedList>
+			<ListItem>
+				<TextLink href="#">Full name must not be empty</TextLink>
+			</ListItem>
+			<ListItem>
+				<TextLink href="#">Email must not be empty</TextLink>
+			</ListItem>
+		</UnorderedList>
+	</PageAlert>
+	<PageAlert
+		title="Page alert: warning tone on [%_PALETTE_%] background"
+		tone="warning"
+	>
+		<Text as="p">Your web browser is out of date.</Text>
+	</PageAlert>
+</Stack>
+```

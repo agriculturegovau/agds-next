@@ -343,3 +343,25 @@ If you need to access the internal state of the menu, you can provide a render c
 	)}
 </DropdownMenu>
 ```
+
+## Colours
+
+```jsx live colorSection
+<Stack alignItems="flex-start" gap={1.5}>
+	<H4>Dropdown menu list: on [%_PALETTE_%] background</H4>
+	<DropdownMenu>
+		<DropdownMenuButton>Toggle dropdown menu</DropdownMenuButton>
+		<DropdownMenuPanel>
+			<DropdownMenuItem onClick={() => console.log('Profile')}>
+				Profile
+			</DropdownMenuItem>
+			<DropdownMenuItem onClick={() => console.log('Messages')}>
+				Messages
+			</DropdownMenuItem>
+			<DropdownMenuItem onClick={() => console.log('Account settings')}>
+				Account settings
+			</DropdownMenuItem>
+		</DropdownMenuPanel>
+	</DropdownMenu>
+</Stack>
+```

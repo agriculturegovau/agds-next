@@ -69,3 +69,31 @@ This could include a general announcement about a feature or policy. This varian
 	</Text>
 </GlobalAlert>
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<GlobalAlert
+		onClose={console.log}
+		title="Global alert: warning tone on [%_PALETTE_%] background"
+		tone="warning"
+	>
+		<Text as="p">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+			aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+			vulputate nibh sagittis blandit.
+		</Text>
+	</GlobalAlert>
+	<GlobalAlert
+		title="Global alert: information tone on [%_PALETTE_%] background"
+		tone="info"
+	>
+		<Text as="p">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa nibh,
+			aliquam vel dolor non, gravida porttitor nulla. Pellentesque cursus orci
+			vulputate nibh sagittis blandit.
+		</Text>
+	</GlobalAlert>
+</Stack>
+```

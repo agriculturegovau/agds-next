@@ -1434,3 +1434,157 @@ To prevent the table row callback from executing unintentionally, it will only r
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
+		<TableWrapper>
+			<Table striped>
+				<TableCaption>Table: on [%_PALETTE_%] body background</TableCaption>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Population
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous decade %
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					<TableRow>
+						<TableCell>New South Wales</TableCell>
+						<TableCell textAlign="right">7,670,700</TableCell>
+						<TableCell textAlign="right">3.1%</TableCell>
+						<TableCell textAlign="right">12.9%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Victoria</TableCell>
+						<TableCell textAlign="right">5,996,400</TableCell>
+						<TableCell textAlign="right">2.5%</TableCell>
+						<TableCell textAlign="right">9.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Queensland</TableCell>
+						<TableCell textAlign="right">4,808,800</TableCell>
+						<TableCell textAlign="right">1.7%</TableCell>
+						<TableCell textAlign="right">13.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Western Australia</TableCell>
+						<TableCell textAlign="right">2,603,900</TableCell>
+						<TableCell textAlign="right">2.3%</TableCell>
+						<TableCell textAlign="right">11.6%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>South Australia</TableCell>
+						<TableCell textAlign="right">1,702,800</TableCell>
+						<TableCell textAlign="right">2.0%</TableCell>
+						<TableCell textAlign="right">6.8%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Tasmania</TableCell>
+						<TableCell textAlign="right">517,400</TableCell>
+						<TableCell textAlign="right">4%</TableCell>
+						<TableCell textAlign="right">5.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Northern Territory</TableCell>
+						<TableCell textAlign="right">244,400</TableCell>
+						<TableCell textAlign="right">1.2%</TableCell>
+						<TableCell textAlign="right">4.5%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Australian Capital Territory</TableCell>
+						<TableCell textAlign="right">393,000</TableCell>
+						<TableCell textAlign="right">2.4%</TableCell>
+						<TableCell textAlign="right">9.6%</TableCell>
+					</TableRow>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	</Stack>
+	<Stack
+		background="bodyAlt"
+		gap={1.5}
+		paddingX={{ xs: 0.75, md: 1.5 }}
+		paddingY={1.5}
+	>
+		<TableWrapper>
+			<Table striped>
+				<TableCaption>Table: on [%_PALETTE_%] bodyAlt background</TableCaption>
+				<TableHead>
+					<TableRow>
+						<TableHeader scope="col">Location</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Population
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous year %
+						</TableHeader>
+						<TableHeader scope="col" textAlign="right">
+							Change over previous decade %
+						</TableHeader>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					<TableRow>
+						<TableCell>New South Wales</TableCell>
+						<TableCell textAlign="right">7,670,700</TableCell>
+						<TableCell textAlign="right">3.1%</TableCell>
+						<TableCell textAlign="right">12.9%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Victoria</TableCell>
+						<TableCell textAlign="right">5,996,400</TableCell>
+						<TableCell textAlign="right">2.5%</TableCell>
+						<TableCell textAlign="right">9.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Queensland</TableCell>
+						<TableCell textAlign="right">4,808,800</TableCell>
+						<TableCell textAlign="right">1.7%</TableCell>
+						<TableCell textAlign="right">13.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Western Australia</TableCell>
+						<TableCell textAlign="right">2,603,900</TableCell>
+						<TableCell textAlign="right">2.3%</TableCell>
+						<TableCell textAlign="right">11.6%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>South Australia</TableCell>
+						<TableCell textAlign="right">1,702,800</TableCell>
+						<TableCell textAlign="right">2.0%</TableCell>
+						<TableCell textAlign="right">6.8%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Tasmania</TableCell>
+						<TableCell textAlign="right">517,400</TableCell>
+						<TableCell textAlign="right">4%</TableCell>
+						<TableCell textAlign="right">5.3%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Northern Territory</TableCell>
+						<TableCell textAlign="right">244,400</TableCell>
+						<TableCell textAlign="right">1.2%</TableCell>
+						<TableCell textAlign="right">4.5%</TableCell>
+					</TableRow>
+					<TableRow>
+						<TableCell>Australian Capital Territory</TableCell>
+						<TableCell textAlign="right">393,000</TableCell>
+						<TableCell textAlign="right">2.4%</TableCell>
+						<TableCell textAlign="right">9.6%</TableCell>
+					</TableRow>
+				</TableBody>
+			</Table>
+		</TableWrapper>
+	</Stack>
+</>
+```

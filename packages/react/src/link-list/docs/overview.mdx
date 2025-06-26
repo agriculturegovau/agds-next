@@ -57,3 +57,24 @@ Setting the `horizontal` prop will stack the links horizontally.
 	horizontal
 />
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Link list: on [%_PALETTE_%] background</H4>
+	<LinkList
+		links={[
+			{ href: '#', label: 'Home' },
+			{ href: '#', label: 'Establishments' },
+			{ href: '#', label: 'Applications' },
+			{
+				href: 'https://design-system.agriculture.gov.au',
+				label: 'External link',
+				rel: 'noopener',
+				target: '_blank',
+			},
+		]}
+	/>
+</Stack>
+```
