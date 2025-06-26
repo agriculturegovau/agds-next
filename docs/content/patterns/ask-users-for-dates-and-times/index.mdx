@@ -1,7 +1,7 @@
 ---
 title: Ask users for dates and times
-description: When we ask for date, time or a combination of both there are a range of components that can be used to meet user needs in different situations.
-relatedComponents: ['time-input', 'time-picker']
+description: When we ask for date, time or a combination of both, there are a range of components that can be used to meet user needs in different situations.
+relatedComponents: ['date-picker-next', 'date-range-picker-next', 'time-input', 'time-picker']
 ---
 
 ## Time input
@@ -69,7 +69,7 @@ It should be used when a user needs to select from a large list of specific time
 
 ## Asking for specific known dates
 
-When a specific known date is required use a format tolerant [Text input](/components/text-input) that validates acceptable formats and auto formats minor issues like spaces or capital letters.
+When a specific known date is required, use a format tolerant [Text input](/components/text-input) that validates acceptable formats and auto formats minor issues like spaces or capital letters.
 
 Examples of a specific known date are birth date, when an application was made or an expiry date.
 
@@ -153,14 +153,14 @@ An examples of when we combine date and time in Grouped fields is booking a depa
 				<>
 					<DatePickerNext
 						hideOptionalLabel
-						label="Select date"
+						label="Date"
 						onChange={setDateValue}
 						value={dateValue}
 						{...field1Props}
 					/>
 					<TimePicker
 						hideOptionalLabel
-						label="Select available time"
+						label="Time"
 						onChange={setTimeValue}
 						value={timeValue}
 						{...field2Props}
@@ -196,7 +196,7 @@ An example of when we combine time and time zone in Grouped fields is when the t
 					/>
 					<Select
 						hideOptionalLabel
-						label="Select time"
+						label="Timezone"
 						onChange={(e) => setTimezoneValue(e.target.value)}
 						options={[
 							{ value: 'AWST', label: 'AWST' },
