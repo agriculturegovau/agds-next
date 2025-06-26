@@ -1,1 +1,47 @@
-TODO
+ARIA and semantic code
+
+The Accessible Rich Internet Application (ARIA) specification helps you to create accessible digital products and services.
+[ in-page nav ]
+ARIA in AgDS 
+ARIA has been used throughout AgDS to ensure that our components and design patterns are fully accessible to everyone. This means you can get started on building accessibility into your digital products and services right away.
+The ARIA usage in our components achieved full WCAG conformance in accessibility audits in 2022 and 2024.  Our implementation of ARIA is also demonstrated in the yourGov application.
+
+What is semantic markup?
+Semantic markup means using HTML elements according to their intended meaning, structure and purpose, rather than just for visual styling.
+Using the correct semantic elements provides built-in accessibility, keyboard support, and screen reader compatibility. This also improves the readability and maintainability of your code.
+In addition to native HTML, AgDS provides a suite of components that apply semantic markup alongside appropriate visual styling, performance optimisations, and accessibility features.
+What is ARIA?
+ARIA (Accessible Rich Internet Applications) is a set of HTML attributes that define roles, states, and properties to help make web content and applications more accessible. This is particularly important for people using assistive technologies like screen readers.
+ARIA roles describe what an element is – for example, `role="combobox"`, `role="dialog"`. This is important when that element doesn’t exist natively in HTML.
+ARIA states and properties describe the current state or behaviour of an element –for example,  `aria-busy`, `aria-expanded`, `aria-invalid`, `aria-labelledby`.
+Before using ARIA
+“If you can use a native HTML element or attribute with the semantics and behaviour you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.”
+From Using ARIA – First rule of ARIA
+
+You may also hear the phrase:
+“No ARIA is better than bad ARIA.”
+In WebAim’s survey of over one million home pages, they found that pages using ARIA averaged 41% more detected accessibility errors than those without it. While ARIA is intended to improve accessibility, incorrect use can significantly worsen the user experience. This is especially true for people relying on assistive technologies.
+Requirements
+•	Use semantic HTML wherever possible – for example, `<button>`, `<nav>`, `<header>`, `<ul>`, `<h1>`.
+•	Only use ARIA when native HTML doesn't provide the semantics or behaviour needed.
+•	Don’t override native semantics with ARIA roles – for example, avoid `role=link"` on a `<button>`.
+•	Use `aria-label` or `aria-labelledby` to provide accessible names for non-text or custom elements
+•	Use `aria-hidden="true"` only to hide non-interactive elements from assistive tech.
+•	Use ARIA state attributes like `aria-expanded` or `aria-selected` to reflect UI state where needed.
+•	Ensure interactive elements are focusable and support keyboard interaction.
+•	Follow  WAI-ARIA Authoring Practices for any custom widgets.
+•	Test with screen readers and keyboard navigation.
+Benefits
+•	Improves accessibility for users relying on assistive technologies.
+•	Provides clearer structure and meaning to content.
+•	Reduces reliance on ARIA, which can be error-prone.
+•	Increases compatibility across browsers and devices.
+•	Makes code easier to maintain and debug.
+•	Helps our components “just work” without needing manual ARIA intervention.
+•	Ensures consistent behaviour across different user agents.
+•	Contributes to meeting WCAG level AA requirements.
+
+WCAG references
+•	Accessible Rich Internet Applications (WAI-ARIA) 1.2
+•	ARIA Authoring Practices Guide
+•	Using ARIA – W3C
