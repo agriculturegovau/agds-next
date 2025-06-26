@@ -13,9 +13,9 @@ Use CRUD table interactions to help users to Create, Read, Update or Delete (CRU
 
 When creating a record to a data table is the primary action of the page, provide a primary button immediately before the table so it is above the table in the reading order and page hierarchy.
 
-When adding a record to a data table is a secondary or supplementary action of the page provide a small secondary action immediately after the table.
+When adding a record to a data table is a secondary or supplementary action of the page, provide a small secondary action immediately after the table.
 
-Before any records have been added to a data table provide an empty state to inform users there are no available records.
+Before any records have been added to a data table, provide an empty state to inform users there are no available records.
 
 ```jsx live
 <Stack gap={3}>
@@ -57,11 +57,11 @@ Before any records have been added to a data table provide an empty state to inf
 In most situations use a side drawer or side page to provide all form inputs and controls required to add a new record. Use [drawer](/components/drawer) when the form is small or side pages for longer forms that a user will need to scroll.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with text input, radio buttons, a Select component and form buttons ‘Add record’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with text input, radio buttons, a select component and form buttons: ‘Add record’ and ‘Cancel’."
 	src="/img/patterns/crud-tables-create-record.png"
 />
 
-Once the form used for adding a record to the table is completed, return the user to the table page and display the new record as a row in the table. Show a section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+Once the form used for adding a record to the table has been submitted, return the user to the table page and display the new record as a row in the table. Show a [section alert](/components/section-alert) immediately above the table to show success. Focus the section alert so the change is announced to screen reader users.
 
 The add record to table pattern is repeatable and scalable.
 
@@ -139,7 +139,7 @@ Provide a link in the first column of the table so users can open and read a rec
 
 Provide a side drawer or side page to provide the record information. Use side drawers for small records or side pages for longer records that a user will need to scroll.
 
-After a user has read the record return them to the table page.
+After a user has read the record, return them to the table page.
 
 Reading a record in a table is repeatable and scalable pattern.
 
@@ -154,24 +154,24 @@ After the record is edited in the side page or drawer, return the user to the ta
 The update or edit pattern is repeatable and scalable.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’ and a populated short form with text input, radio buttons, a Select component and form buttons ‘Add record’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and a populated short form with text input, radio buttons, a select component and form buttons: ‘Add record’ and ‘Cancel’."
 	src="/img/patterns/crud-tables-edit-record.png"
 />
 
 ### Delete a record from a data table
 
-Provide a ’Delete’ link in the last column of the table so users can delete existing records. The delete link can be included in a drop down of actions in the last column if there are more than two actions required.
+Provide a ’Delete’ button in the last column of the table so users can delete existing records. Delete can be included in a dropdown menu of actions in the last column if there more than two actions are available.
 
-If the table supports batch actions more than one record can be deleted at the same time.
+If the table supports batch actions, more than one record can be deleted at the same time.
 
-Before any record is deleted provide a destructive action modal to make sure a user intends to remove the record.
+Before any record is deleted provide, a destructive action [modal](/components/modal) to make sure a user purposely intends to remove the record.
 
-After the record is deleted, remove the record from the table, and provide a Section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+After the record is deleted, remove the record from the table, and provide a section alert immediately above the table to show success. Focus the section alert so the change is announced to screen reader users.
 
 The delete pattern is repeatable and scalable.
 
 <ImageWithBorder
-	alt="Screenshot of an open Modal dialog with the title ‘Are you sure you want to remove this record’ and description ‘It will be removed immediately. You can't undo this action.’"
+	alt="Screenshot of an open Modal dialog with the title ‘Are you sure you want to delete this record?’ and description ‘It will be deleted immediately. You can't undo this action.’"
 	src="/img/patterns/crud-tables-delete-record.png"
 />
 
@@ -179,11 +179,11 @@ The delete pattern is repeatable and scalable.
 
 Use a repeatable file upload pattern when uploading an undefined list of files of different categories or when specific metadata for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
 
-The upload undefined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
+The upload undefined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the user’s context and focus when providing all required metadata in the side drawer or subpage.
 
 ### Empty state
 
-Before any files are uploaded provide an empty state. Use a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
+Before any files are uploaded, provide an empty state. Use a standard empty state rather than an empty table because the experience of the empty state is simpler for many users. Screen reader users will not need to navigate through a table to find out it is empty.
 
 ```jsx live
 <Stack gap={3}>
@@ -210,16 +210,16 @@ Before any files are uploaded provide an empty state. Use a standard empty state
 
 ### Side page or drawer
 
-The pattern will direct the user to a subpage or side drawer to compete each upload task. The choice of subpage or drawer will be determined by the amount of content, inputs and controls required. We do not encourage side drawers that scroll, so use side pages for longer upload form pages. Try to choose one option, either side drawer or side page, that can be implemented consistently across the multi-page form or service it is used in.
+This pattern will direct the user to a subpage or side drawer to compete each upload task. The choice of subpage or drawer will be determined by the amount of content, inputs and controls required. We do not encourage side drawers that scroll, so use side pages for longer or more complex upload form pages. Try to choose one option, either side drawer or side page, that can be implemented consistently across the multi-page form or service it is used in.
 
-Metadata for each uploaded file can be provided in a side drawer or side page containing the required inputs and controls. This pattern reduces the amount of form content on the parent page making it easier for users to complete the form. It keeps the users context and focus when providing all required metadata in the side drawer or side page.
+Metadata for each uploaded file can be provided in a side drawer or side page containing the required inputs and controls. This pattern reduces the amount of form content on the parent page making it easier for users to complete the form. It keeps the user’s context and focus when providing all required metadata in the side drawer or side page.
 
 ### File categorisation
 
-The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the record category or type and provide any additional information required about an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
+The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the record category or type, and provide any additional information required about an upload. Radio groups or selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Upload file’ and an empty state short form with text input, radio buttons, text input, a Select, File upload and form buttons ‘Upload file’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Upload file’ and an empty state short form with text input, radio buttons, text input, a select, file upload and form buttons: ‘Upload file’ and ‘Cancel’."
 	src="/img/patterns/crud-tables-upload-undefined-list.png"
 />
 
@@ -227,7 +227,7 @@ The use of a subpage or drawer enables you to insert questions and fields specif
 
 When a file is added in a subpage or drawer, return the user to the parent form page, set their focus on a Section alert to inform them if the upload was successful or an error has occurred.
 
-The uploaded file should also be visible in a table or list on the parent page. Provide an edit or remove action in the table row or list to enable files to be changed.
+The uploaded file should also be visible in a table or list on the parent page. Provide an edit or delete action in the table row or list to enable files to be changed.
 
 ```jsx live
 <Stack gap={3}>
@@ -280,13 +280,13 @@ If a required file is not uploaded before the page is submitted, show an error i
 
 ## Upload a defined list of files to a data table
 
-A specific or defined list of files can be uploaded several ways. The number of items on the list and number of files for each list item will determine the appropriate pattern to use.
+A specific or defined list of files can be uploaded several ways. The number of items in the list and number of files for each list item will determine the appropriate pattern to use.
 
-The upload defined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the users context and focus when providing all required metadata in the side drawer or subpage.
+The upload defined list of files pattern reduces the amount of form content on the parent page, making it easier for users to complete the form and keeps the user’s context and focus when providing all required metadata in the side drawer or subpage.
 
 ### Empty state
 
-Before any files are uploaded provide an empty state. We prefer using a standard empty state rather than an empty table because the experience of the empty state will be better for screen reader users. They will not need to navigate through a table to find out it is empty.
+Before any files are uploaded, provide an empty state. Use a standard empty state rather than an empty table because the experience of the empty state is simpler for many users. Screen reader users will not need to navigate through a table to find out it is empty.
 
 ```jsx live
 <Stack gap={3}>
@@ -313,22 +313,22 @@ Before any files are uploaded provide an empty state. We prefer using a standard
 
 ### Large lists
 
-When large defined lists of files in tables are required a drawer or subpage for each upload action should be used. The File Upload component can be used in the side drawer or subpage to allow multiple files for each required category to listed and uploaded to a table.
+When large, defined lists of files in tables are required, a drawer or subpage for each upload action should be used. The [file upload](/components/file-upload) component can be used in the side drawer or subpage to allow multiple files for each required category to be upload and added to a table.
 
 ### File categorisation
 
 The use of a subpage or drawer enables you to insert questions and fields specific to each file upload to define the category and provide any additional information or metadata related to an upload. Radio groups or Selects can be used to help the user determine which category should be applied to an uploaded file.
 
 <ImageWithBorder
-	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with a Select, File upload and form buttons ‘Add record’ and ‘Cancel’"
+	alt="Screenshot of an open side drawer with the title ‘Add record’ and an empty state short form with a select, file upload and form buttons: ‘Add record’ and ‘Cancel’."
 	src="/img/patterns/crud-tables-upload-defined-list.png"
 />
 
 ### Validation and focus
 
-When a file is added in a subpage or drawer, return the user to the parent form page, set their focus on a section alert to inform them if the upload was successful or an error has occurred.
+When a file is added in a subpage or drawer, return the user to the parent page and set their focus on a section alert to inform them if the upload was successful or an error has occurred.
 
-The uploaded file should also be visible in a table or list on the parent page. Provide an edit or remove action in the table row or list to enable files to be changed.
+The uploaded file should be visible in a table or list on the parent page. Provide an edit or remove action in the table row or list to enable the files to be changed.
 
 ```jsx live
 <Stack gap={3}>
