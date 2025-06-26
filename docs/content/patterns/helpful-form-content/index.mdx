@@ -54,6 +54,12 @@ We recommend the use of one link to give a clear path to the right information f
 
 ```jsx live
 () => {
+	/**
+	 * This implementation is for documentation purposes only.
+	 * Use <ArticleLink> from ag.common/help-reference to handle drawers with help information.
+	 *
+	 * import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+	 */
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<>
@@ -75,6 +81,7 @@ We recommend the use of one link to give a clear path to the right information f
 							}}
 						>
 							inviting a staff member
+							<VisuallyHidden>, Opens in a side drawer</VisuallyHidden>
 							<Box
 								as="span"
 								css={{
@@ -155,25 +162,35 @@ Explore the [Drawer](/components/drawer) options to see if they might be suitabl
 
 ```jsx live
 () => {
+	/** import { VisuallyHidden } from '@ag.ds-next/react/a11y'; */
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<>
-			<Text>
+			<Text as="p">
 				Learn more about{' '}
-				<Button variant="text" onClick={openDrawer}>
-					understanding access requests
-				</Button>{' '}
-				for your staff
-				<Box
-					css={{
-						display: 'inline',
-						marginLeft: '0.25rem',
-						position: 'relative',
-						top: 3,
+				<TextLink
+					href="/help/access-requests"
+					onClick={(event) => {
+						if (event.metaKey) return;
+						event.preventDefault();
+						openDrawer();
 					}}
 				>
-					<MoveLeftIcon size="sm" weight="regular" />
-				</Box>
+					understanding access requests
+					<VisuallyHidden>, Opens in a side drawer</VisuallyHidden>
+					<Box
+						as="span"
+						css={{
+							display: 'inline',
+							marginLeft: '0.25rem',
+							position: 'relative',
+							top: 3,
+						}}
+					>
+						<MoveLeftIcon size="sm" weight="regular" />
+					</Box>
+				</TextLink>{' '}
+				for your staff
 			</Text>
 			<Drawer
 				actions={<TextLinkExternal href="#">Open in new tab</TextLinkExternal>}
