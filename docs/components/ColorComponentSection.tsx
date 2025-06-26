@@ -56,11 +56,12 @@ export const ColorComponentSection = ({
 			</p>
 			{shadeAlt && (
 				<p>
-					This component has a <code>bodyAlt</code> variant. Components with a
-					<code>bodyAlt</code> variant utilise ’shadeAlt’ to highlight interface
-					components and content that sit on <code>bodyAlt</code> background.
-					’shadeAlt’ is also used to fill interactive components, ensuring
-					sufficient contrast is maintained for hover states.
+					This component has a <code>&apos;bodyAlt&apos;</code> variant.
+					Components with a <code>&apos;bodyAlt&apos;</code> variant utilise
+					<code>shadeAlt</code> to highlight interface components and content
+					that sit on <code>&apos;bodyAlt&apos;</code> background.{' '}
+					<code>shadeAlt</code> is also used to fill interactive components,
+					ensuring sufficient contrast is maintained for hover states.
 				</p>
 			)}
 
