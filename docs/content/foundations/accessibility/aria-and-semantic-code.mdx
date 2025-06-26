@@ -22,9 +22,15 @@ ARIA (Accessible Rich Internet Applications) is a set of HTML attributes that de
 
 ## Before using ARIA
 
-> “If you can use a native HTML element or attribute with the semantics and behaviour you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.”
-
-From [Using ARIA – First rule of ARIA](https://www.w3.org/TR/using-aria/#rule1)
+<Callout>
+	“If you can use a native HTML element or attribute with the semantics and
+	behaviour you require already built in, instead of re-purposing an element and
+	adding an ARIA role, state or property to make it accessible, then do so.”
+	<cite>
+		From [Using ARIA – First rule of
+		ARIA](https://www.w3.org/TR/using-aria/#rule1)
+	</cite>
+</Callout>
 
 You may also hear the phrase:
 
@@ -35,13 +41,13 @@ In [WebAim’s survey of over one million home pages](https://webaim.org/project
 ## Requirements
 
 - Use semantic HTML wherever possible – for example, `<button>`, `<nav>`, `<header>`, `<ul>`, `<h1>`.
-- Only use ARIA when native HTML doesn't provide the semantics or behaviour needed.
-- Don’t override native semantics with ARIA roles – for example, avoid `role=link"` on a `<button>`.
+- Only use ARIA when native HTML doesn’t provide the semantics or behaviour needed.
+- Don’t override native semantics with ARIA roles – for example, avoid `role="link"` on a `<button>`.
 - Use `aria-label` or `aria-labelledby` to provide accessible names for non-text or custom elements
 - Use `aria-hidden="true"` only to hide non-interactive elements from assistive tech.
 - Use ARIA state attributes like `aria-expanded` or `aria-selected` to reflect UI state where needed.
 - Ensure interactive elements are focusable and support keyboard interaction.
-- Follow [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) for any custom widgets.
+- Follow [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) for any custom widgets.
 - Test with screen readers and keyboard navigation.
 
 ## Benefits
