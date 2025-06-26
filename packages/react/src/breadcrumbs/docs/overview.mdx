@@ -36,3 +36,18 @@ Breadcrumbs show users where they are in the website hierarchy and how to naviga
 Breadcrumbs are best applied to content pages and should not be used on form flows as they make it easier for users to navigate away from the form.
 
 If you want to keep a user in a flow or to maintain the parent child relationship between two pages use a [Back button](/components/direction-link) instead.
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Breadcrumbs: on [%_PALETTE_%] background</H4>
+	<Breadcrumbs
+		links={[
+			{ href: '#', label: 'Home' },
+			{ href: '#', label: 'Establishments' },
+			{ label: 'Applications' },
+		]}
+	/>
+</Stack>
+```

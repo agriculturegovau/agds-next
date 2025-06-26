@@ -1,36 +1,35 @@
 import { Fragment } from 'react';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { TextLink } from '@ag.ds-next/react/text-link';
 import {
 	getPattern,
-	getPatternSlugs,
 	getPatternBreadcrumbs,
 	getPatternNavLinks,
-	Pattern,
+	getPatternSlugs,
+	type Pattern,
 } from '../../lib/mdx/patterns';
 import { generateToc } from '../../lib/generateToc';
 import { PatternLayout } from '../../components/PatternLayout';
 import { mdxComponents } from '../../components/mdxComponents';
 import { DocumentTitle } from '../../components/DocumentTitle';
-import { getPkg, Pkg } from '../../lib/mdx/packages';
+import { getPkg, type Pkg } from '../../lib/mdx/packages';
 
 export default function PatternPage({
 	breadcrumbs,
-	pattern,
 	navLinks,
-	toc,
+	pattern,
 	relatedComponents,
 	relatedPatterns,
+	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const documentTitle = `${pattern.title} pattern`;
+	const components = mdxComponents({ title: documentTitle });
 	return (
 		<>
-			<DocumentTitle
-				description={pattern.description}
-				title={`${pattern.title} pattern`}
-			/>
+			<DocumentTitle description={pattern.description} title={documentTitle} />
 			<PatternLayout
 				breadcrumbs={breadcrumbs}
 				editPath={`/docs/content/patterns/${pattern.slug}/index.mdx`}
@@ -44,7 +43,7 @@ export default function PatternPage({
 					/>
 				) : null}
 				<Prose id="page-content">
-					<MDXRemote {...pattern.source} components={mdxComponents} />
+					<MDXRemote {...pattern.source} components={components} />
 					{relatedComponents?.length ? (
 						<Fragment>
 							<h2 id="related-components">Related components</h2>
@@ -80,12 +79,12 @@ export default function PatternPage({
 
 export const getStaticProps: GetStaticProps<
 	{
-		pattern: Pattern;
-		navLinks: Awaited<ReturnType<typeof getPatternNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPatternBreadcrumbs>>;
-		toc: Awaited<ReturnType<typeof generateToc>>;
+		navLinks: Awaited<ReturnType<typeof getPatternNavLinks>>;
+		pattern: Pattern;
 		relatedComponents: Awaited<Pkg[]> | null;
 		relatedPatterns: Awaited<Pattern[]> | null;
+		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -106,11 +105,11 @@ export const getStaticProps: GetStaticProps<
 		: null;
 	if (relatedComponents?.length) {
 		toc.push({
-			title: 'Related components',
-			slug: 'related-components',
 			id: 'related-components',
-			level: 2,
 			items: [],
+			level: 2,
+			slug: 'related-components',
+			title: 'Related components',
 		});
 	}
 
@@ -120,11 +119,11 @@ export const getStaticProps: GetStaticProps<
 		: null;
 	if (relatedPatterns?.length) {
 		toc.push({
-			title: 'Related patterns',
-			slug: 'related-patterns',
 			id: 'related-patterns',
-			level: 2,
 			items: [],
+			level: 2,
+			slug: 'related-patterns',
+			title: 'Related patterns',
 		});
 	}
 
@@ -133,9 +132,9 @@ export const getStaticProps: GetStaticProps<
 			breadcrumbs,
 			navLinks,
 			pattern,
-			toc,
 			relatedComponents,
 			relatedPatterns,
+			toc,
 		},
 	};
 };
@@ -143,9 +142,9 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const slugs = await getPatternSlugs();
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

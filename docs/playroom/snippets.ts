@@ -357,7 +357,7 @@ const snippets: Array<Snippet> = [
 				We pay our respects to their Elders past, present and emerging.
 			</Text>
 			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-				&copy; 2024 Department of Agriculture, Fisheries and Forestry
+				&copy; 2025 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer></Box>`,
 	},
@@ -481,7 +481,7 @@ const snippets: Array<Snippet> = [
 				We pay our respects to their Elders past, present and emerging.
 			</Text>
 			<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-				&copy; 2024 Department of Agriculture, Fisheries and Forestry
+				&copy; 2025 Department of Agriculture, Fisheries and Forestry
 			</Text>
 		</Footer></Box>`,
 	},
@@ -646,6 +646,38 @@ const snippets: Array<Snippet> = [
 			<AccordionItem title="Accordion">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>`,
+	},
+	{
+		group: 'Accordion',
+		name: 'Indented',
+		code: `<Accordion indent>
+			<AccordionItem title="Accordion">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+		</Accordion>`,
+	},
+	{
+		group: 'Accordion',
+		name: 'Group',
+		code: `<Accordion>
+			<AccordionItem title="Accordion title 1">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 1</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+			<AccordionItem title="Accordion title 2">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 2</Text>
+				</AccordionItemContent>
+			</AccordionItem>
+			<AccordionItem title="Accordion title 3">
+				<AccordionItemContent>
+					<Text as="p">This is some text inside an Accordion 3</Text>
 				</AccordionItemContent>
 			</AccordionItem>
 		</Accordion>`,
@@ -1045,7 +1077,7 @@ const snippets: Array<Snippet> = [
 							<TableHeader scope="col">Actions</TableHeader>
 						</TableRow>
 					</TableHead>
-					<TableBody>		
+					<TableBody>
 						<TableRow selected={false}>
 							<TableCell>
 								<Checkbox
@@ -1079,7 +1111,7 @@ const snippets: Array<Snippet> = [
 								</Flex>
 							</TableCell>
 						</TableRow>
-						
+
 						<TableRow selected={false}>
 							<TableCell>
 								<Checkbox

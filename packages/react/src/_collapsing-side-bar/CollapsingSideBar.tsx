@@ -148,7 +148,7 @@ export function CollapsingSideBar({
 								</Text>
 							)}
 						</Stack>
-						<ChevronDownIcon weight="bold" />
+						<ChevronDownIcon color="action" weight="bold" />
 					</Flex>
 				</Box>
 			</Box>

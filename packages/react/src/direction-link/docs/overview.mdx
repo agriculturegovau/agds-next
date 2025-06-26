@@ -8,7 +8,7 @@ relatedComponents: ['call-to-action', 'text-link']
 ---
 
 ```jsx live
-<Flex gap={2}>
+<Flex flexWrap="wrap" gap={2}>
 	<DirectionLink href="#" direction="left">
 		Back
 	</DirectionLink>
@@ -60,3 +60,25 @@ A Back button can be used in place of [Breadcrumbs](/components/breadcrumbs) whe
 Back buttons should not be used on content pages as they do not show a user where they are in relation to the rest of a site structure. They allow a user to navigate up only one level whereas a breadcrumb allow navigation back through the entire site.
 
 When using Back buttons always use the label ‘Back’ rather than the name of the parent page. The label ‘Back’ is universal, can be understood in any context and does not require the user to remember the name of the parent page.
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Directional links: on [%_PALETTE_%] background</H4>
+	<Flex flexWrap="wrap" gap={2}>
+		<DirectionLink direction="left" href="#">
+			Back
+		</DirectionLink>
+		<DirectionLink direction="right" href="#">
+			Next
+		</DirectionLink>
+		<DirectionLink direction="up" href="#">
+			Top
+		</DirectionLink>
+		<DirectionLink direction="down" href="#">
+			Skip to footer
+		</DirectionLink>
+	</Flex>
+</Stack>
+```

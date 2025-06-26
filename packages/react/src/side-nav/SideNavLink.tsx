@@ -17,14 +17,12 @@ export const SideNavLink = ({
 	isCurrentPage,
 	isOpen,
 	label,
-	numberOfItems,
 	...props
 }: Omit<SideNavLinkProps, 'subLevelVisible'> & {
 	hasSubLevelItemsIndicator?: boolean;
 	isCurrentPage?: boolean;
 	isOpen: boolean;
 	label: ReactNode;
-	numberOfItems: number;
 }) => {
 	const Link = useLinkComponent();
 	const depth = useLinkListDepth();
@@ -32,6 +30,11 @@ export const SideNavLink = ({
 	return (
 		<Flex
 			aria-current={isCurrentPage ? 'page' : undefined}
+			aria-label={
+				hasSubLevelItemsIndicator
+					? `${label}${isOpen ? ', has expanded sub links' : ', has sub links'}`
+					: undefined
+			}
 			as={Link}
 			borderBottom
 			borderBottomWidth="sm"
@@ -79,14 +82,6 @@ export const SideNavLink = ({
 
 			{hasSubLevelItemsIndicator && (
 				<ChevronRightIcon
-					aria-hidden={false}
-					aria-label={
-						isOpen
-							? `. Sub-level ${numberOfItems === 1 ? 'link' : 'links'} below.`
-							: `. Has ${numberOfItems} sub-level ${
-									numberOfItems === 1 ? 'link' : 'links'
-							  }.`
-					}
 					css={{
 						transform: isOpen ? 'rotate(90deg)' : undefined,
 						...(depth > 1

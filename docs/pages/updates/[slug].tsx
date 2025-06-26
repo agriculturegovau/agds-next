@@ -1,11 +1,11 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
 import {
 	getUpdate,
 	getUpdateBreadcrumbs,
 	getUpdateSlugs,
-	Update,
+	type Update,
 } from '../../lib/mdx/updates';
 import { mdxComponents } from '../../components/mdxComponents';
 import { SiteLayout } from '../../components/SiteLayout';
@@ -14,9 +14,10 @@ import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
 
 export default function Updates({
-	update,
 	breadcrumbs,
+	update,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: update.title });
 	return (
 		<>
 			<DocumentTitle description={update.description} title={update.title} />
@@ -31,7 +32,7 @@ export default function Updates({
 						title={update.title}
 					/>
 					<Prose>
-						<MDXRemote {...update.source} components={mdxComponents} />
+						<MDXRemote {...update.source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -41,8 +42,8 @@ export default function Updates({
 
 export const getStaticProps: GetStaticProps<
 	{
-		update: Update;
 		breadcrumbs: Awaited<ReturnType<typeof getUpdateBreadcrumbs>>;
+		update: Update;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -57,9 +58,9 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			update,
 			breadcrumbs,
 			slug,
+			update,
 		},
 	};
 };
@@ -68,9 +69,9 @@ export const getStaticPaths = async () => {
 	const slugs = await getUpdateSlugs();
 
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

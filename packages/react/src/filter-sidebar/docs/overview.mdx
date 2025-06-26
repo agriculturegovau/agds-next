@@ -96,3 +96,78 @@ The Filter sidebar collapses on mobile devices, and displays a number of active 
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const listData = [
+		{
+			author: 'Lando Norris',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			title: 'Example article one',
+		},
+		{
+			author: 'Toto Wolff',
+			desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc. Donec auctor, nisl eget ultricies aliquam, nunc nisl aliquet nunc, quis aliquam nisl nunc eget nunc.',
+			title: 'Example article two',
+		},
+	];
+
+	return (
+		<Columns gap={1.5}>
+			<Column columnSpan={{ xs: 12 }}>
+				<H4>Filter sidebar: on [%_PALETTE_%] background</H4>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 4 }}>
+				<FilterSidebar activeFiltersCount={3}>
+					<FormStack>
+						<TextInput block label="Example input 1" />
+						<TextInput block label="Example input 2" />
+						<TextInput block label="Example input 3" />
+						<TextInput block label="Example input 4" />
+					</FormStack>
+				</FilterSidebar>
+			</Column>
+			<Column columnSpan={{ xs: 12, md: 8 }}>
+				<Stack gap={2}>
+					<Text
+						as="h2"
+						fontSize="md"
+						fontWeight={{ xs: 'normal', md: 'bold' }}
+						lineHeight="heading"
+					>
+						Search results
+					</Text>
+					<Stack as="ul" gap={1}>
+						{listData.map((item, index) => (
+							<Card as="li" clickable key={index} shadow>
+								<CardInner>
+									<Stack flexWrap="wrap" gap={0.5} width="100%">
+										<H3>
+											<CardLink href="#">{item.title}</CardLink>
+										</H3>
+
+										<Text as="p">{item.desc}</Text>
+
+										<Flex
+											alignItems="center"
+											flexWrap="wrap"
+											gap={0.5}
+											justifyContent="space-between"
+										>
+											<Text color="muted" fontSize="xs">
+												{item.author}
+											</Text>
+										</Flex>
+									</Stack>
+								</CardInner>
+							</Card>
+						))}
+					</Stack>
+				</Stack>
+			</Column>
+		</Columns>
+	);
+};
+```

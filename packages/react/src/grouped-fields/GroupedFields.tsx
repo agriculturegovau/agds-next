@@ -108,7 +108,12 @@ export function GroupedFields({
 					{message && invalid ? (
 						<FieldMessage id={messageId}>{message}</FieldMessage>
 					) : null}
-					<Flex flexWrap="wrap" gap={1} inline>
+					<Flex
+						{...{ [GROUPED_FIELDS_DATA_ATTR]: true }}
+						flexWrap="wrap"
+						gap={1}
+						inline
+					>
 						{children({ field1Props, field2Props })}
 					</Flex>
 				</Stack>
@@ -116,6 +121,8 @@ export function GroupedFields({
 		</FieldContainer>
 	);
 }
+
+export const GROUPED_FIELDS_DATA_ATTR = 'data-grouped-fields';
 
 export function useGroupedFieldsIds(id?: string) {
 	const autoId = useId(id);

@@ -94,3 +94,33 @@ _Note: The first logo’s `href` will be assigned to the `heading` and `subline`
 	/>
 </Box>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack>
+		<H4 paddingTop={1.5} paddingX={{ xs: 0.75, md: 1.5 }}>
+			Header: on [%_PALETTE_%] body background
+		</H4>
+		<Header
+			badgeLabel="Beta"
+			heading="Export Service"
+			logo={<Logo />}
+			subline="Supporting Australian agricultural exports"
+		/>
+	</Stack>
+	<Stack background="bodyAlt">
+		<H4 paddingTop={1.5} paddingX={{ xs: 0.75, md: 1.5 }}>
+			Header: on [%_PALETTE_%] bodyAlt background
+		</H4>
+		<Header
+			background="bodyAlt"
+			badgeLabel="Beta"
+			heading="Export Service"
+			logo={<Logo />}
+			subline="Supporting Australian agricultural exports"
+		/>
+	</Stack>
+</>
+```
