@@ -11,13 +11,11 @@ export const ACCESSIBILITY_PATH = normalize(
 	`${process.cwd()}/content/foundations/accessibility`
 );
 
-const accessibilityPath = (slug: string) =>
+const accessibilityPathPage = (slug: string) =>
 	normalize(`${ACCESSIBILITY_PATH}/${slug}.mdx`);
 
 export async function getAccessibilityPage(slug: string) {
-	const accessibilityPagePath = (slug: string) =>
-		normalize(`${ACCESSIBILITY_PATH}/${slug}.mdx`);
-	const { content, data } = await getMarkdownData(accessibilityPagePath(slug));
+	const { content, data } = await getMarkdownData(accessibilityPathPage(slug));
 	const source = await serializeMarkdown(content, data);
 	return {
 		slug,
@@ -47,7 +45,7 @@ export async function getAccessibilityList() {
 	const slugs = await getAccessibilitySlugs();
 	const list = await Promise.all(
 		slugs.map((slug) =>
-			getMarkdownData(accessibilityPath(slug)).then(({ data }) => ({
+			getMarkdownData(accessibilityPathPage(slug)).then(({ data }) => ({
 				order: (data.order as number | null) || 100,
 				title: (data?.title ?? slug) as string,
 				description: (data.description ?? null) as string | null,

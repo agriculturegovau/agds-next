@@ -94,16 +94,16 @@ const getBreadcrumbs = (currentPageTitle: string) => {
 };
 
 type AccessibilityLayoutProps = PropsWithChildren<{
+	description: string;
 	editPath: string;
 	title: string;
-	description: string;
 }>;
 
 export const AccessibilityLayout = ({
-	editPath,
 	children,
-	title,
 	description,
+	editPath,
+	title,
 }: AccessibilityLayoutProps) => {
 	return (
 		<SiteLayout applyMainElement={false}>
@@ -113,7 +113,7 @@ export const AccessibilityLayout = ({
 				editPath={editPath}
 				sideNav={{
 					title: 'Accessibility',
-					titleLink: '/foundations/tokens',
+					titleLink: '/foundations/accessibility',
 					items: ACCESSIBILITY_NAV_LINKS.map(({ href, label }) => ({
 						href,
 						label,
