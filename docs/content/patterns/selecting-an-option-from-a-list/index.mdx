@@ -1,0 +1,147 @@
+---
+title: Selecting an option from a list
+description: The type of list component to use is determined by the task, the experience level of the user, and the number of items in the list. Selecting the appropriate input type helps users make choices more easily and accessibly.
+relatedComponents:
+  [
+    'checkbox',
+    'combobox',
+    'conditional-field-container',
+    'radio',
+    'select',
+    'text-input',
+  ]
+---
+
+## Small lists
+
+Use a [Control group](/components/control-group) with a list of [Checkboxes](/components/checkboxes) or [Radio buttons](/components/radio) when there are 8 or fewer options.
+
+Users can make choices faster when they can see the full list and not have to a dropdown or scroll to find options.
+
+```jsx live
+<ControlGroup hideOptionalLabel label="Fruits" hint="Hint text" block>
+	<Checkbox value="apple">Apple</Checkbox>
+	<Checkbox value="banana">Banana</Checkbox>
+	<Checkbox value="mango">Mango</Checkbox>
+	<Checkbox value="peach">Peach</Checkbox>
+</ControlGroup>
+```
+
+## Lists with more than 8 items
+
+Use a [Select](/components/select) menu or [Combobox](/components/combobox) with a list of 8 items or more. The task and complexity of the list will determine which option is most suitable.
+
+A select menu works best when users can see all options without excessive scrolling. A key benefit of using a select is that mobile devices handle them natively. This provides familiar, accessible and space-efficient controls.
+
+Use a combobox for longer lists where searching or filtering items will help users find the options they want.
+
+Combobox is an efficient tool for power users, but less experienced users may still scroll to find and select an option. They are often not aware that they can use the input to type and filter.
+
+```jsx live
+<Combobox
+	hint="Start typing to see results"
+	label="Food served"
+	onChange={console.log}
+	options={[
+		{ value: 'asian noodle bowls', label: 'Asian Noodle Bowls' },
+		{ value: 'banh mi sandwiches', label: 'Banh Mi Sandwiches' },
+		{ value: 'bbq ribs', label: 'BBQ Ribs' },
+		{ value: 'burgers', label: 'Burgers' },
+		{ value: 'cake', label: 'Cake' },
+		{ value: 'coffee', label: 'Coffee' },
+		{ value: 'cookies', label: 'Cookies' },
+		{ value: 'falafel pitas', label: 'Falafel Pitas' },
+		{ value: 'fish and chips', label: 'Fish and Chips' },
+		{ value: 'fried chicken', label: 'Fried Chicken' },
+		{ value: 'fries', label: 'Fries' },
+		{ value: 'grilled cheese sandwiches', label: 'Grilled Cheese Sandwiches' },
+		{ value: 'ice cream', label: 'Ice Cream' },
+		{ value: 'mexican', label: 'Mexican' },
+		{ value: 'pasta', label: 'Pasta' },
+		{ value: 'pulled pork', label: 'Pulled Pork' },
+		{ value: 'soft drinks', label: 'Soft Drinks' },
+		{ value: 'veggie wraps', label: 'Veggie Wraps' },
+	]}
+/>
+```
+
+## Picking an option that is not listed
+
+### Picking an option that is not available in a small list
+
+If users need to enter a value that isn’t in the list, include an ‘Other’ option at the end of the group. When they select it, conditionally review a text field so they can input their own answer.
+
+If users need to give more than one custom answer, include an ‘Add another’ button below the conditionally revealed input. This lets them add more fields as needed. Each new input should have a unique, descriptive label to ensure they’re accessible and identifiable – for example, ‘Other option 2’. This pattern should only be used with Checkbox groups, not radio buttons.
+
+Limit the number of additional fields where possible to avoid overwhelming the form.
+
+```jsx live
+<FormStack>
+	<ControlGroup hideOptionalLabel label="Fruits" hint="Hint text" block>
+		<Checkbox value="apple">Apple</Checkbox>
+		<Checkbox value="banana">Banana</Checkbox>
+		<Checkbox value="mango">Mango</Checkbox>
+		<Checkbox value="peach">Peach</Checkbox>
+		<Checkbox checked value="other">
+			Other
+		</Checkbox>
+	</ControlGroup>
+	<ConditionalFieldContainer visible>
+		<TextInput label="Other fruit" required value="Plum" />
+		<Button alignSelf="start" iconBefore={PlusIcon} variant="text">
+			Add another fruit
+		</Button>
+	</ConditionalFieldContainer>
+</FormStack>
+```
+
+### Picking an option that is not available in a list with more than 8 items
+
+To add another option to a large list, compose a pattern of [Select](/components/select) or [Combobox](/components/combobox) with an ‘Other’ option. When ‘Other’ is selected:
+
+- the field will show ‘Other’ as the selected value
+- a secondary text input will be conditionally revealed below the select/combobox
+- focus will be immediately moved to the newly revealed input field.
+
+```jsx live
+<FormStack>
+	<Combobox
+		hint="Start typing to see results"
+		label="Food served"
+		onChange={console.log}
+		options={[
+			{ value: 'asian noodle bowls', label: 'Asian Noodle Bowls' },
+			{ value: 'banh mi sandwiches', label: 'Banh Mi Sandwiches' },
+			{ value: 'bbq ribs', label: 'BBQ Ribs' },
+			{ value: 'burgers', label: 'Burgers' },
+			{ value: 'cake', label: 'Cake' },
+			{ value: 'coffee', label: 'Coffee' },
+			{ value: 'cookies', label: 'Cookies' },
+			{ value: 'falafel pitas', label: 'Falafel Pitas' },
+			{ value: 'fish and chips', label: 'Fish and Chips' },
+			{ value: 'fried chicken', label: 'Fried Chicken' },
+			{ value: 'fries', label: 'Fries' },
+			{
+				value: 'grilled cheese sandwiches',
+				label: 'Grilled Cheese Sandwiches',
+			},
+			{ value: 'ice cream', label: 'Ice Cream' },
+			{ value: 'mexican', label: 'Mexican' },
+			{ value: 'pasta', label: 'Pasta' },
+			{ value: 'pulled pork', label: 'Pulled Pork' },
+			{ value: 'soft drinks', label: 'Soft Drinks' },
+			{ value: 'veggie wraps', label: 'Veggie Wraps' },
+			{ value: 'other', label: 'Other' },
+		]}
+		value={{ value: 'other', label: 'Other' }}
+	/>
+	<ConditionalFieldContainer visible>
+		<TextInput
+			hint="Add another type of food served that was not previously listed"
+			label="Other food served"
+			required
+			value="Pizza"
+		/>
+	</ConditionalFieldContainer>
+</FormStack>
+```
