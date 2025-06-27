@@ -30,10 +30,9 @@ export const SiteHeader = () => {
 		<Stack palette="dark">
 			<Header
 				background="bodyAlt"
-				badgeLabel="Beta"
 				heading="Agriculture Design System"
 				logo={<Logo />}
-				subline="Design System for the Export Service"
+				subline="Design System for import and export services"
 			/>
 			<MainNav
 				activePath={router.asPath}
