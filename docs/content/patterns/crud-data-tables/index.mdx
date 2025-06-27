@@ -147,7 +147,7 @@ Reading a record in a table is repeatable and scalable pattern.
 
 Provide an ‘Edit’ link or button in the last column of the table so users can open and update or edit existing records. If more than two actions can be performed on a record, put them within an ‘Actions’ [dropdown menu](/components/dropdown-menu) instead.
 
-Editing content in place in semantic tables is difficult for some users, so use a side page or side drawer to provide all inputs and controls required to edit the record. When a user elects to edit a record open the side drawer or side page and show the populated fields to be edited.
+When a user activates the ‘Edit’ action, open a side drawer or side page containing all of the pre-filled form inputs and controls necessary to edit the record. We do not endorse editing content in-place within tables, as form inputs within table cells compromise accessibility and are difficult for some users.
 
 After the record is edited in the side page or drawer, return the user to the table page with the updated record showing in table, and provide a section alert immediately above the table to show success. Focus the section alert so the change is announced to screen reader users.
 
@@ -225,7 +225,7 @@ The use of a subpage or drawer enables you to insert questions and fields specif
 
 ### Validation and focus
 
-When a file is added in a subpage or drawer, return the user to the parent form page, set their focus on a Section alert to inform them if the upload was successful or an error has occurred.
+When a file is added in a subpage or drawer, return the user to the parent page and set their focus on a section alert to inform them if the upload was successful or an error has occurred.
 
 The uploaded file should also be visible in a table or list on the parent page. Provide an edit or delete action in the table row or list to enable files to be changed.
 
