@@ -8,11 +8,11 @@ If there are any [declarations](/patterns/declarations), this is where they can 
 
 ## Summary of input
 
-The layout for the Review and submit page should include read only information from all form pages of the form Multi-page form. Each form page should have it’s own section and heading to help users scan the page.
+The layout for the ‘Review and submit’ page should include read only information from all form pages of the form Multi-page form. Each form page should have it’s own section and heading to help users scan the page.
 
 Information for each form page section should be presented to the user as a summary list. A Table can be used instead of a Summary list if a table was used on the form page. Summary lists are preferred because they provide less issues to screen reader users.
 
-Users should have the ability to edit any information prior to Review and submit. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used.
+Users should have the ability to edit any information prior to ‘Review and submit’. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used.
 
 When multiple closely related inputs are included in the Summary list, combining similar fields together in the list can reduce the complexity of the page and make it easier to read. For example the individual fields of an address form page can be combined into one row of a summary list.
 
@@ -108,9 +108,9 @@ When multiple closely related inputs are included in the Summary list, combining
 
 ### Multi-page form
 
-In a multi-page form, the journey should begin with a Getting started page that explains the purpose of the form, what the user will need, and what to expect. This is followed by the main form pages where the user provides their information.
+In a multi-page form, the journey should begin with a ‘Getting started’ page that explains the purpose of the form, what the user will need, and what to expect. This is followed by the main form pages where the user provides their information.
 
-Before submitting, the user should be shown a Review and submit page to check all the details they’ve entered. Once the form is submitted, a Success page should confirm the submission and explain what happens next.
+Before submitting, the user should be shown a ‘Review and submit’ page to check all the details they’ve entered. Once the form is submitted, a ‘Success’ page should confirm the submission and explain what happens next.
 
 The yourGov example app demonstrates the multi-page form pattern.
 
@@ -124,11 +124,11 @@ The yourGov example app demonstrates the multi-page form pattern.
 
 ### Multi-task form
 
-In a Multi-task form process, each Multi-page form should have it’s own Review and Submit step. This allows different forms to be combined in a modular and scalable way to create a Muti-task process.
+In a Multi-task form process, each Multi-page form should have it’s own ‘Review and Submit’ step. This allows different forms to be combined in a modular and scalable way to create a Muti-task process.
 
 When multiple different forms are required, a Task list can be used to guide a user through a Multi-task process. A multi-task process is usually made up of multiple multi-page forms. Each Multi-page form included in a Task-list should have it’s own review and submit step. This is important because Multi-page forms can be used in a modular way across different Multi-task services.
 
-In all situations Review and submit tasks should enable the user to review all information they have provided before submitting a form.
+In all situations ‘Review and submit’ tasks should enable the user to review all information they have provided before submitting a form.
 
 ```jsx live
 <Stack gap={3}>
@@ -178,7 +178,7 @@ In all situations Review and submit tasks should enable the user to review all i
 
 ## Editing from ‘Review and submit’
 
-To edit information on the ‘Review and Submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page.
+To edit information on the ‘Review and Submit’ page, users can click the ‘Change’ link available under each summary list on the ‘Review and submit’ page.
 
 The ‘Edit’ page will appear as a sub-step of the ‘Review and submit’ Progress indicator item.
 
@@ -248,17 +248,17 @@ Once the changes are saved, the user will be returned to the ‘Review and submi
 
 ### Editing a sub-page from ‘Review and submit’
 
-To edit information on the ‘Review and submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page.
+To edit information on the ‘Review and submit’ page, users can click the ‘Change’ link available under each summary list on the ‘Review and submit’ page.
 
-If the information they need to edit was originally provided via a sub-step of a form page, users will be taken to that sub-step on the Review and submit page. From there, they will need into navigate to that form’s level 2 page to make the change.
+If the information they need to edit was originally provided via a sub-step of a form page, users will be taken to that sub-step on the ‘Review and submit’ page. From there, they will need into navigate to that form’s level 2 page to make the change.
 
 When editing information within a level 2 page, there will be no progress indicator visible. Instead, the user will be presented with a simple, single-page form. Users can navigate with the ‘Save and continue’ action at the bottom, or the back button at the top of the page.
 
-A user must save and continue on the level 2 form and the sub-step before those changes are saved and updated on the Review and submit page.
+A user must save and continue on the level 2 form and the sub-step before those changes are saved and updated on the ‘Review and submit’ page.
 
-To avoid data loss, the [Warn before leaving pattern](/patterns/warn-before-leaving) should be used if the user elects to navigate back to the Review and Submit page with any other method than ‘Save and continue’.
+To avoid data loss, the [Warn before leaving pattern](/patterns/warn-before-leaving) should be used if the user elects to navigate back to the ‘Review and Submit’ page with any other method than ‘Save and continue’.
 
-For an interactive example you can complete the ‘Apply for a mobile food vendor permit’ form and edit the ‘Change business owner details’ section on the Review and submit page.
+For an interactive example you can complete the ‘Apply for a mobile food vendor permit’ form and edit the ‘Change business owner details’ section on the ‘Review and submit’ page.
 
 <ResponsivePreview
 	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/owner-details"
