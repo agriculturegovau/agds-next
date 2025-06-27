@@ -1,6 +1,6 @@
 ---
 title: yourGov example application
-description: The yourGov application is designed to showcase the components and patters of the design system. It enables usability testing with a diverse range of users.
+description: The yourGov application is designed to showcase the components and patterns of the design system. It enables usability testing with a diverse range of users.
 ---
 
 ## Overview
@@ -21,7 +21,7 @@ The yourGov application benefits teams by providing a:
 
 ## Patterns used in yourGov
 
-The patterns included in yourGov demonstrate important details of component use and integration that are difficult to show is standard design system documentation. Details demonstrated in the app like layout spacing, focus management, keyboard navigation, form validation and correction are some of the concepts that impact usability and accessibility.
+The patterns included in yourGov demonstrate important details of component use and integration that are difficult to show in standard design system documentation. Details demonstrated in the app like layout spacing, focus management, keyboard navigation, form validation and correction are some of the concepts that impact usability and accessibility.
 
 ### Entering a service
 
@@ -39,7 +39,7 @@ The entry point for yourGov uses a unauthenticated page with a [Hero banner](/co
 
 ### Sign in
 
-yourGov has a simple sign in pattern that is typical of simple authenticated applications that do not rely on third party identity solutions.
+yourGov has a simple sign in pattern that is typical of simple, authenticated applications that do not rely on third party identity solutions.
 
 <ResponsivePreview
 	href="/yourgov/sign-in"
@@ -55,7 +55,7 @@ yourGov has a simple sign in pattern that is typical of simple authenticated app
 
 #### Application landing page
 
-A basic landing page typical of authenticated applications where the profile is managed and entities can be established and linked to the experience.
+A basic landing page – typical of authenticated applications – where the profile is managed, and entities can be established and linked to the experience.
 
 <ResponsivePreview
 	href="/yourgov/app"
@@ -93,11 +93,11 @@ Providing [Helpful form content](/patterns/helpful-form-content) can help users 
 
 Good [focus management](/foundations/accessibility/focus-management#requirements) helps all users track their position, but it’s essential for people with low vision.
 
-It’s important to move focus to the title of the current step as the user navigates through the form. We do this so users can start interacting straight away.
+It’s important to move focus to the title of the current step as the user navigates through the form. We do this so users understand the change of context and can start interacting straight away.
 
 #### Single-page form
 
-This demonstration of the [Single-page form](/templates/single-page-form) pattern multi-question form. It illustrates how an invitation can be sent to add someone as an employee within an application.
+This demonstration of the [Single-page form](/templates/single-page-form) pattern multi-question form illustrates how an invitation can be sent to add someone as an employee within an application.
 
 <ResponsivePreview
 	href="/yourgov/app/staff/invite-staff-member"
@@ -109,14 +109,14 @@ This demonstration of the [Single-page form](/templates/single-page-form) patter
 
 #### Multi-page form
 
-yourGov includes a [Multi-page form](/templates/multi-page-form) pattern that breaks up a large form into multiple smaller steps. In this example, a food truck permit application has been used.
+yourGov includes a [Multi-page form](/templates/multi-page-form) pattern that breaks up a large form into multiple, smaller steps. In this example, a food truck permit application has been used.
 
 Within this form, you will see some patterns that are typical of a form flow:
 
 - [Getting started page](#form-getting-started-page)
 - Presenting data that is already known by the system (Tell Us Once)
 - Editing data that is already known by the system
-- Conditional reveal of relation question/s
+- Conditional reveal of related question/s
 - Address input
 - Grouped fields
 - Add records to an empty state
@@ -133,12 +133,12 @@ Within this form, you will see some patterns that are typical of a form flow:
 	referrerLabel={title}
 />
 
-<h4 id="form-getting-started-page">Form “Getting started” page</h4>
+<h4 id="form-getting-started-page">Form ‘Getting started’ page</h4>
 
 A Getting started page helps users understand what to expect before beginning a multi-page form. It typically includes key information such as:
 
 - what the form is for and how it works
-- what the user needs to complete the form (e.g. documents or account details)
+- what the user needs to complete the form – for example, documents or account details
 - how long the form usually takes to complete
 - how to get help or find further information.
 
@@ -148,9 +148,9 @@ In some cases, a question may be included on the Getting started page to tailor 
 
 <ResponsivePreview
 	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit"
-	label="Form “Getting started” page"
+	label="Form ‘Getting started’ page"
 	padding={false}
-	title="yourGov: “Getting started” page preview"
+	title="yourGov: ‘Getting started’ page preview"
 	referrerLabel={title}
 />
 
@@ -160,15 +160,15 @@ In some cases, a question may be included on the Getting started page to tailor 
 
 #### Complex data table
 
-yourGov includes a complex data table that displays staff records. The table supports advanced interactions such as sorting, [filtering](/patterns/search-filters), individual and batch actions. Users are able to see, compare, and manage a dataset.
+yourGov includes a complex data table that displays staff records. The table supports advanced interactions such as sorting, [filtering](/patterns/search-filters), individual actions and batch actions. Users are able to see, compare, and manage a dataset.
 
 #### Filtering data
 
-yourGov includes the use of our [Search filters pattern](/patterns/search-filters) to demonstrate how this pattern works with data. The filters allow users to refine a dataset based on multiple criteria. This showcases how the pattern behaves, both in terms of usability and accessibility.
+yourGov includes the use of our [Search filters pattern](/patterns/search-filters) to demonstrate how this pattern works with data. The filters allow users to refine a dataset based on multiple criteria. It showcases how the pattern behaves, both in terms of usability and accessibility.
 
 #### Table batch actions
 
-yourGov includes a list of staff who are requesting access to the system. Users have the choice of applying actions on each row or multiple rows via batch actions.
+yourGov includes a list of staff who are requesting access to the system. Users have the choice of applying actions to each row individually or to multiple rows via batch actions.
 
 <ResponsivePreview
 	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit"
@@ -194,8 +194,8 @@ Over 4 rounds of usability testing, we explored how well the app supported a wid
 
 - Success and error messages​
 - Clarity of the ‘Getting started page’​
-- Details component and [Drawer](/components/drawer) for additional info​
-- Complex tables actions – filtering, batch processes​
+- Details component and [Drawer](/components/drawer) for additional info​rmation
+- Complex table actions – for example, filtering and batch processes​
 - Overall simplicity​
 - Font size and form inputs​
 
@@ -205,13 +205,13 @@ Over 4 rounds of usability testing, we explored how well the app supported a wid
 
 #### Conditional reveal pattern​
 
-In our first round of testing, we had the [conditional reveal](/patterns/conditional-reveal) question right under the radio option the user had just picked – thinking that asking a related question right after their choice would be logical.​
+In our first round of testing, we had the [conditional reveal](/patterns/conditional-reveal) question immediately after the radio option picked by the user. We thought that asking a related question right after their choice would be logical and clear.​
 
-In 2022, usability testing showed a positive response to conditionally revealed content between radio buttons in a group. However, in 2024 testing, some users found the pattern confusing. One participant completed a conditionally revealed input, then continued to select a different radio option. This caused them to lose the conditionally entered information. This resulted in confusion and disorientation.
+In 2022, usability testing showed a positive response to our pattern of revealing conditional content between the radio buttons in a group. However, in 2024’s testing, some users found the pattern confusing. One participant completed a conditionally revealed input, then continued to select a different radio option. This caused them to lose the conditionally entered information and resulted in confusion and disorientation.
 
-Some users found it confusing, saying that they thought the field would be below the list of all radio options. One user assumed that the radio buttons below was a new question.​
+Other users also found it confusing, saying that they thought the field would be below the list of all radio options. One user assumed that the radio buttons below the conditionally revealed field was a new question.​
 
-We reverted to moving below the radio group and observed no issues.​
+We reverted to moving conditionally revaled fields underneath the radio group, and observed no further issues.​
 
 #### Validation of date range picker​
 
@@ -221,7 +221,7 @@ Initially, the component swapped start and end dates if the end date value was e
 
 The logic was revised to display an error message when the selected end date was earlier than the start date. This allowed users to correct the input themselves.
 
-Another enhancement was added to provide a better understanding of date range. A visual highlight now appears for the dates between the selected range, when users hover over a potential end date.
+Another enhancement was added to provide a better understanding of date range. A visual highlight now appears for the dates between the selected range when users hover over a potential end date.
 
 #### Editing from ‘Review and submit’ pattern​
 
@@ -229,19 +229,19 @@ At the end of the multi-step form, users are given the option to review and edit
 
 In early testing, editing a response redirected users back to the original step where the data was entered. However, users did not always realise they could use the progress indicator to return to the Review and submit page afterward. This led to confusion and disrupted the overall review flow.
 
-Feedback indicated that users expected to return directly to the Review and submit step after making edits. Some users attempted to navigate back using the progress indicator, but this approach did not save their changes. In response, a Review and submit sub-step pattern was introduced so users can edit sections of the form without leaving the Review and submit sub-page.
+Feedback indicated that users expected to return directly to the Review and submit step after making edits. Some users attempted to navigate back using the progress indicator, but this approach did not save their changes. In response, a Review and submit sub-step pattern was introduced so users could edit sections of the form without leaving the Review and submit sub-page.
 
 Further refinements have been identified to improve this experience:
 
 1. When editing a form sub-step, return users directly to 'Review and submit' to maintain clarity and reduce cognitive load.
-2. Apply the [Warn before leaving pattern](/pattern/warn-before-leaving) to the progress indicator. This prevent accidental data loss when navigating away from a page.
+2. Apply the [Warn before leaving pattern](/pattern/warn-before-leaving) to the progress indicator. This prevents accidental data loss when navigating away from a page.
 
 #### Switching entities with the sidebar
 
-At the end of the first task, participants were asked to switch to another entity linked to their account.​
+After completing the first usability testing task, participants were asked to switch to another entity linked to their account.​
 
 Most participants hesitated or returned to the entity dashboard before finding the correct option. Some associated the ‘home’ icon used on the entity dashboard with switching entities, and others overlooked the control entirely due to unclear labelling and iconography.
 ​
-In later rounds, we updated the labels and replaced the entity dashboard ‘home’ icon with a entity-related icon to improve understanding.​
+In later rounds, we updated the labels, and replaced the entity dashboard ‘home’ icon with an entity-related icon to improve understanding.​
 
 <BackToTop />
