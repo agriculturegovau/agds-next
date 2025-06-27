@@ -11,6 +11,7 @@ export const RadioInput = forwardRef<HTMLInputElement, RadioInputProps>(
 					height,
 					margin: 0,
 					opacity: 0,
+					verticalAlign: 'middle',
 					width,
 					// When this component is focused, outline the `RadioIndicator`
 					'&:focus ~ span:first-of-type': packs.outline,

@@ -74,7 +74,7 @@ exports[`TableRow renders correctly 1`] = `
                   class="css-1246v4c-Checkbox"
                 >
                   <input
-                    class="css-1iw6cs3-CheckboxInput"
+                    class="css-beu66l-CheckboxInput"
                     id="nsw-checkbox"
                     type="checkbox"
                     value="nsw"
