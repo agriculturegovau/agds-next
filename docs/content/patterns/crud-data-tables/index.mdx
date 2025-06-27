@@ -145,11 +145,11 @@ Reading a record in a table is repeatable and scalable pattern.
 
 ### Update a record in a data table
 
-Provide an ‘Edit’ link in the last column of the table so users can open and update or edit existing records. The edit link can be included in a drop down of actions in the last column if there are more than two actions required.
+Provide an ‘Edit’ link or button in the last column of the table so users can open and update or edit existing records. If more than two actions can be performed on a record, put them within an ‘Actions’ [dropdown menu](/components/dropdown-menu) instead.
 
 Editing content in place in semantic tables is difficult for some users, so use a side page or side drawer to provide all inputs and controls required to edit the record. When a user elects to edit a record open the side drawer or side page and show the populated fields to be edited.
 
-After the record is edited in the side page or drawer, return the user to the table page, show the edited record in the table, and provide a Section alert immediately above the table to show success. Focus the Section alert so the change is announced to screen reader users.
+After the record is edited in the side page or drawer, return the user to the table page with the updated record showing in table, and provide a section alert immediately above the table to show success. Focus the section alert so the change is announced to screen reader users.
 
 The update or edit pattern is repeatable and scalable.
 
@@ -175,11 +175,11 @@ The delete pattern is repeatable and scalable.
 	src="/img/patterns/crud-tables-delete-record.png"
 />
 
-## Upload an undefined list of files to a table
+## Upload an unspecified list of files to a table
 
-Use a repeatable file upload pattern when uploading an undefined list of files of different categories or when specific metadata for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
+Use a repeatable file upload pattern when uploading an unspecified list of files of different categories or when specific metadata for each file is required. Metadata can be associated with uploaded files when using this pattern to support back stage processing.
 
-The upload undefined list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the user’s context and focus when providing all required metadata in the side drawer or subpage.
+The upload unspecified list of files pattern reduces the amount of form content on the parent page making it easier for users to complete the form, and keeps the user’s context and focus when providing all required metadata in the side drawer or subpage.
 
 ### Empty state
 
@@ -188,7 +188,7 @@ Before any files are uploaded, provide an empty state. Use a standard empty stat
 ```jsx live
 <Stack gap={3}>
 	<Stack gap={1.5}>
-		<H1>Upload undefined list of files to data table (repeatable)</H1>
+		<H1>Upload unspecified list of files to data table (repeatable)</H1>
 	</Stack>
 	<Stack gap={2} alignItems="flex-start">
 		<H2>List of equipment</H2>
@@ -220,7 +220,7 @@ The use of a subpage or drawer enables you to insert questions and fields specif
 
 <ImageWithBorder
 	alt="Screenshot of an open side drawer with the title ‘Upload file’ and an empty state short form with text input, radio buttons, text input, a select, file upload and form buttons: ‘Upload file’ and ‘Cancel’."
-	src="/img/patterns/crud-tables-upload-undefined-list.png"
+	src="/img/patterns/crud-tables-upload-unspecified-list.png"
 />
 
 ### Validation and focus
@@ -232,7 +232,7 @@ The uploaded file should also be visible in a table or list on the parent page. 
 ```jsx live
 <Stack gap={3}>
 	<Stack gap={1.5}>
-		<H1>Upload undefined list of files to table (repeatable)</H1>
+		<H1>Upload unspecified list of files to table (repeatable)</H1>
 	</Stack>
 	<SectionAlert
 		onClose={console.log}
