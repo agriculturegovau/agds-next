@@ -4,54 +4,104 @@ description: Review and submit is an important step of a multi-page where users 
 relatedComponents: ['checkbox', 'combobox']
 ---
 
-If there are any [declarations](), this is where they can be added.
+If there are any [declarations](/patterns/declarations), this is where they can be added.
 
 ## Summary of input
 
-The layout for the Review and submit page should include read only information from all form pages of the form Multi-page form. Each form page should have it’s own section and heading to help users scan the page. 
+The layout for the Review and submit page should include read only information from all form pages of the form Multi-page form. Each form page should have it’s own section and heading to help users scan the page.
 
 Information for each form page section should be presented to the user as a summary list. A Table can be used instead of a Summary list if a table was used on the form page. Summary lists are preferred because they provide less issues to screen reader users.
 
-Users should have the ability to edit any information prior to Review and submit. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used. 
+Users should have the ability to edit any information prior to Review and submit. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used.
 
 When multiple closely related inputs are included in the Summary list, combining similar fields together in the list can reduce the complexity of the page and make it easier to read. For example the individual fields of an address form page can be combined into one row of a summary list.
 
-SNIPPIT HERER
-
-
 ```jsx live
-<Stack gap={1.5}>
-	<H4>Owner details</H4>
-	<SummaryList>
-		<SummaryListItem>
-			<SummaryListItemTerm>First name</SummaryListItemTerm>
-			<SummaryListItemDescription>Charlie</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Family name</SummaryListItemTerm>
-			<SummaryListItemDescription>Walker</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Email address</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				charlie@walkersfrozenfood.com
-			</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Contact phone number</SummaryListItemTerm>
-			<SummaryListItemDescription>0494 811 111</SummaryListItemDescription>
-		</SummaryListItem>
-		<SummaryListItem>
-			<SummaryListItemTerm>Address</SummaryListItemTerm>
-			<SummaryListItemDescription>
-				42 Wallaby Way
-				<br />
-				Sydney NSW 2000
-			</SummaryListItemDescription>
-		</SummaryListItem>
-	</SummaryList>
-	<TextLink href="#">Change owner details</TextLink>
-</Stack>
+<Columns gap={{ xs: 1, md: 3 }}>
+	<Column columnSpan={{ xs: 12, md: 4 }}>
+		<ProgressIndicator
+			activePath="#review"
+			items={[
+				{ label: 'Page 1', status: 'done', href: '#page-1' },
+				{ label: 'Page 2', status: 'done', href: '#page-2' },
+				{
+					label: 'Review and submit',
+					status: 'started',
+					href: '#review',
+					items: [
+						{
+							label: 'Page 1 sub step',
+							href: '#review/page-1',
+						},
+					],
+				},
+			]}
+		/>
+	</Column>
+	<Column columnSpan={{ xs: 12, md: 8 }}>
+		<Stack gap={3}>
+			<DirectionLink direction="left" href="#">
+				Back
+			</DirectionLink>
+			<Stack gap={1.5}>
+				<H1>
+					<Text
+						color="muted"
+						display="block"
+						fontSize="sm"
+						fontWeight="bold"
+						lineHeight="heading"
+					>
+						Title of multi page form
+					</Text>
+					Review and submit
+				</H1>
+				<Text as="p" color="muted" fontSize="md">
+					Check and confirm all details on this page
+				</Text>
+			</Stack>
+			<Stack gap={1.5}>
+				<H2>Page 1 summary list</H2>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemDescription>Description</SummaryListItemDescription>
+					</SummaryListItem>
+					<SummaryListItem>
+						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemDescription>Description</SummaryListItemDescription>
+					</SummaryListItem>
+					<SummaryListItem>
+						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemDescription>Description</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
+				<TextLink href="#">Change page 1 summary list</TextLink>
+			</Stack>
+			<Stack gap={1.5}>
+				<H2>Page 2 summary list</H2>
+				<SummaryList>
+					<SummaryListItem>
+						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemDescription>Description</SummaryListItemDescription>
+					</SummaryListItem>
+					<SummaryListItem>
+						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemDescription>Description</SummaryListItemDescription>
+					</SummaryListItem>
+				</SummaryList>
+				<TextLink href="#">Change page 2 summary list</TextLink>
+			</Stack>
+
+			<Divider />
+			<ButtonGroup>
+				<Button>Submit form</Button>
+				<Button variant="secondary">Save and exit</Button>
+				<Button variant="tertiary">Cancel</Button>
+			</ButtonGroup>
+		</Stack>
+	</Column>
+</Columns>
 ```
 
 ## When to use ‘Review and submit’
@@ -64,7 +114,13 @@ Before submitting, the user should be shown a Review and submit page to check al
 
 The yourGov example app demonstrates the multi-page form pattern.
 
-LINK
+<ResponsivePreview
+	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/owner-details"
+	label="Preview Multi-page form"
+	padding={false}
+	referrerLabel={title}
+	title="yourGov: multi-page form preview"
+/>
 
 ### Multi-task form
 
@@ -74,23 +130,125 @@ When multiple different forms are required, a Task list can be used to guide a u
 
 In all situations Review and submit tasks should enable the user to review all information they have provided before submitting a form.
 
-CODE
+```jsx live
+<Stack gap={3}>
+	<DirectionLink direction="left" href="#">
+		Back
+	</DirectionLink>
+	<Stack gap={1.5}>
+		<H1>Title of multi-task process</H1>
+		<Text as="p" color="muted" fontSize="md">
+			The introductory paragraph provides context about the entire multi-task
+			form.
+		</Text>
+		<Text as="p" color="muted" fontSize="sm">
+			Takes around 15 minutes.
+		</Text>
+	</Stack>
+	<Details iconBefore label="More information about form">
+		<Text as="p">
+			This is a small paragraph of text that is supplementary to the main page
+			content.
+		</Text>
+	</Details>
+	<TaskList
+		items={[
+			{
+				href: '#',
+				label: 'Multi-page form 1',
+				message: 'Short description of the task',
+				status: 'todo',
+			},
+			{
+				href: '#',
+				label: 'Multi-page form 2',
+				message: 'Short description of the task',
+				status: 'todo',
+			},
+			{
+				href: '#',
+				label: 'Multi-page form 3',
+				message: 'Short description of the task',
+				status: 'blocked',
+			},
+		]}
+	/>
+</Stack>
+```
 
 ## Editing from ‘Review and submit’
 
-To edit information on the ‘Review and Submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page. 
+To edit information on the ‘Review and Submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page.
 
-The ‘Edit’ page will appear as a sub-step of the ‘Review and submit’ Progress indicator item. 
+The ‘Edit’ page will appear as a sub-step of the ‘Review and submit’ Progress indicator item.
 
 Once the changes are saved, the user will be returned to the ‘Review and submit’ page, where a success message will be displayed above the updated information in the summary list.
 
 ### Review and submit sub-step
 
-CODE
+```jsx live
+<Columns gap={{ xs: 1, md: 3 }}>
+	<Column columnSpan={{ xs: 12, md: 4 }}>
+		<ProgressIndicator
+			activePath="#review/page-1"
+			items={[
+				{ label: 'Page 1', status: 'done', href: '#page-1' },
+				{ label: 'Page 2', status: 'done', href: '#page-2' },
+				{
+					items: [
+						{
+							label: 'Page 1 sub step',
+							href: '#review/page-1',
+						},
+					],
+					label: 'Review and submit',
+					status: 'started',
+					href: '#review',
+				},
+			]}
+		/>
+	</Column>
+	<Column columnSpan={{ xs: 12, md: 8 }}>
+		<Stack gap={3}>
+			<DirectionLink direction="left" href="#">
+				Back
+			</DirectionLink>
+			<Stack gap={1.5}>
+				<H1>
+					<Text
+						color="muted"
+						display="block"
+						fontSize="sm"
+						fontWeight="bold"
+						lineHeight="heading"
+					>
+						Title of multi page form
+					</Text>
+					Page 1 title
+				</H1>
+				<Text as="p" color="muted" fontSize="md">
+					Check your name and contact details.
+				</Text>
+			</Stack>
+			<FormStack>
+				<TextInput hideOptionalLabel label="Term" value="Description" />
+				<TextInput hideOptionalLabel label="Label text" value="text" />
+				<TextInput hideOptionalLabel label="Label text" value="text" />
+			</FormStack>
+			<Divider />
+			<ButtonGroup>
+				<Button>Save and continue</Button>
+				<Button variant="secondary">Save and exit</Button>
+				<Button variant="tertiary">Cancel</Button>
+			</ButtonGroup>
+		</Stack>
+	</Column>
+</Columns>
+```
 
 ### Editing a sub-page from ‘Review and submit’
 
-To edit information on the ‘Review and submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page. 
+To edit information on the ‘Review and submit’ page, users can click the ‘Change’ link available under each summary list on the Review and submit page.
 
 If the information they need to edit was originally provided via a sub-step of a form page, users will be taken to that sub-step on the Review and submit page. From there, they will need into navigate to that form’s level 2 page to make the change.
 
@@ -98,254 +256,52 @@ When editing information within a level 2 page, there will be no progress indica
 
 A user must save and continue on the level 2 form and the sub-step before those changes are saved and updated on the Review and submit page.
 
-To avoid data loss, the [Warn before leaving pattern]() should be used if the user elects to navigate back to the Review and Submit page with any other method than ‘Save and continue’. 
+To avoid data loss, the [Warn before leaving pattern](/patterns/warn-before-leaving) should be used if the user elects to navigate back to the Review and Submit page with any other method than ‘Save and continue’.
 
 For an interactive example you can complete the ‘Apply for a mobile food vendor permit’ form and edit the ‘Change business owner details’ section on the Review and submit page.
 
-LINK
+<ResponsivePreview
+	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/owner-details"
+	label="Review and submit interactive example"
+	padding={false}
+	referrerLabel={title}
+	title="yourGov: review and submit interactive preview"
+/>
 
-## Review and submit sub-step level 2 page
+### Review and submit sub-step level 2 page
 
-CODE
-
----
-
-```jsx live exampleContentHeading="'Review and submit' page" exampleContentHeadingType="h4"
-<Columns gap={{ xs: 1, md: 3 }}>
-	<Column columnSpan={{ xs: 12, md: 4 }}>
-		<ProgressIndicator
-			activePath="#review"
-			items={[
-				{ label: 'Introduction', status: 'done', href: '#introduction' },
-				{ label: 'Owner details', status: 'done', href: '#owner' },
-				{
-					label: 'Review and submit',
-					status: 'started',
-					href: '#review',
-					items: [
-						{
-							label: 'Change owner details',
-							href: '#review/edit-owner',
-						},
-					],
-				},
-			]}
-		/>
-	</Column>
-	<Column columnSpan={{ xs: 12, md: 8 }}>
-		<Stack gap={3}>
-			<Stack gap={1.5}>
-				<H1>
-					<Text
-						color="muted"
-						display="block"
-						fontSize="sm"
-						fontWeight="bold"
-						lineHeight="heading"
-					>
-						Title of multi page form
-					</Text>
-					Review and submit
-				</H1>
-				<Text as="p" color="muted" fontSize="md">
-					Check and confirm all details on this page
-				</Text>
-			</Stack>
-			<Stack gap={1.5}>
-				<H2>Owner details</H2>
-				<SummaryList>
-					<SummaryListItem>
-						<SummaryListItemTerm>First name</SummaryListItemTerm>
-						<SummaryListItemDescription>Charlie</SummaryListItemDescription>
-					</SummaryListItem>
-					<SummaryListItem>
-						<SummaryListItemTerm>Family name</SummaryListItemTerm>
-						<SummaryListItemDescription>Walker</SummaryListItemDescription>
-					</SummaryListItem>
-				</SummaryList>
-				<TextLink href="#">Change owner details</TextLink>
-			</Stack>
-			<Divider />
-			<ButtonGroup>
-				<Button>Submit application</Button>
-				<Button variant="secondary">Save and exit</Button>
-				<Button variant="tertiary">Cancel</Button>
-			</ButtonGroup>
-		</Stack>
-	</Column>
-</Columns>
-```
-
-```jsx live exampleContentHeading="Edit page from 'Review and submit'" exampleContentHeadingType="h4"
-<Columns gap={{ xs: 1, md: 3 }}>
-	<Column columnSpan={{ xs: 12, md: 4 }}>
-		<ProgressIndicator
-			activePath="#review/edit-owner"
-			items={[
-				{ label: 'Introduction', status: 'done', href: '#introduction' },
-				{ label: 'Owner details', status: 'done', href: '#owner' },
-				{
-					label: 'Review and submit',
-					status: 'started',
-					href: '#review',
-					items: [
-						{
-							label: 'Change owner details',
-							href: '#review/edit-owner',
-						},
-					],
-				},
-			]}
-		/>
-	</Column>
-	<Column columnSpan={{ xs: 12, md: 8 }}>
-		<Stack gap={3}>
-			<Stack gap={1.5}>
-				<H1>
-					<Text
-						color="muted"
-						display="block"
-						fontSize="sm"
-						fontWeight="bold"
-						lineHeight="heading"
-					>
-						Title of multi page form
-					</Text>
-					Review and submit
-				</H1>
-				<Text as="p" color="muted" fontSize="md">
-					Check and confirm all details on this page
-				</Text>
-			</Stack>
-			<Stack gap={2}>
-				<TextInput label="First name" value="Charlie" />
-				<TextInput label="Last name" value="Walker" />
-			</Stack>
-			<Divider />
-			<ButtonGroup>
-				<Button>Save changes</Button>
-				<Button variant="tertiary">Cancel</Button>
-			</ButtonGroup>
-		</Stack>
-	</Column>
-</Columns>
-```
-
-```jsx live exampleContentHeading="'Review and submit' page with updated content" exampleContentHeadingType="h4"
-<Columns gap={{ xs: 1, md: 3 }}>
-	<Column columnSpan={{ xs: 12, md: 4 }}>
-		<ProgressIndicator
-			activePath="#review"
-			items={[
-				{ label: 'Introduction', status: 'done', href: '#introduction' },
-				{ label: 'Owner details', status: 'done', href: '#owner' },
-				{
-					label: 'Review and submit',
-					status: 'started',
-					href: '#review',
-					items: [
-						{
-							label: 'Change owner details',
-							href: '#review/edit-owner',
-						},
-					],
-				},
-			]}
-		/>
-	</Column>
-	<Column columnSpan={{ xs: 12, md: 8 }}>
-		<Stack gap={3}>
-			<Stack gap={1.5}>
-				<H1>
-					<Text
-						color="muted"
-						display="block"
-						fontSize="sm"
-						fontWeight="bold"
-						lineHeight="heading"
-					>
-						Title of multi page form
-					</Text>
-					Review and submit
-				</H1>
-				<Text as="p" color="muted" fontSize="md">
-					Check and confirm all details on this page
-				</Text>
-			</Stack>
-			<Stack gap={1.5}>
-				<SectionAlert
-					title="Owner details have been updated"
-					tone="successHigh"
-				/>
-				<H2>Owner details</H2>
-				<SummaryList>
-					<SummaryListItem>
-						<SummaryListItemTerm>First name</SummaryListItemTerm>
-						<SummaryListItemDescription>Jane</SummaryListItemDescription>
-					</SummaryListItem>
-					<SummaryListItem>
-						<SummaryListItemTerm>Family name</SummaryListItemTerm>
-						<SummaryListItemDescription>Dole</SummaryListItemDescription>
-					</SummaryListItem>
-				</SummaryList>
-				<TextLink href="#">Change owner details</TextLink>
-			</Stack>
-			<Divider />
-			<ButtonGroup>
-				<Button>Submit application</Button>
-				<Button variant="secondary">Save and exit</Button>
-				<Button variant="tertiary">Cancel</Button>
-			</ButtonGroup>
-		</Stack>
-	</Column>
-</Columns>
-```
-
-```jsx live exampleContentHeading="Success page content" exampleContentHeadingType="h4"
+```jsx live
 <Stack gap={3}>
-	<H1>
-		<Text
-			color="muted"
-			display="block"
-			fontSize="sm"
-			fontWeight="bold"
-			lineHeight="heading"
-		>
-			Title of multi page form
-		</Text>
-		Application submitted
-	</H1>
-	<PageAlert tone="success" title="Submission successful">
-		<Text as="p">
-			Your application has been successfully submitted. Reference:{' '}
-			<TextLink href="#">REF-77437785</TextLink>
-		</Text>
-	</PageAlert>
-
+	<DirectionLink direction="left" href="#">
+		Back
+	</DirectionLink>
 	<Stack gap={1.5}>
-		<H2>What happens next</H2>
-		<Text as="p">
-			It will take 10 business days for your application to be reviewed.
+		<H1>
+			<Text
+				color="muted"
+				display="block"
+				fontSize="sm"
+				fontWeight="bold"
+				lineHeight="heading"
+			>
+				Title of multi page form
+			</Text>
+			Page 1 title
+		</H1>
+		<Text as="p" color="muted" fontSize="md">
+			Check your name and contact details.
 		</Text>
-		<TextLink href="#">
-			View your applications <ArrowRightIcon size="sm" />
-		</TextLink>
 	</Stack>
+	<FormStack>
+		<TextInput hideOptionalLabel label="Term" value="Description" />
+		<TextInput hideOptionalLabel label="Label text" value="text" />
+		<TextInput hideOptionalLabel label="Label text" value="text" />
+	</FormStack>
+	<Divider />
+	<ButtonGroup>
+		<Button>Save and continue</Button>
+		<Button variant="secondary">Save and exit</Button>
+		<Button variant="tertiary">Cancel</Button>
+	</ButtonGroup>
 </Stack>
 ```
-
-## Editing a sub-step from ’Review and submit’
-
-To edit information the the ’Review and Submit’ page, users can click the ’Change’ link available under each summary list on the Review and submit page.
-
-If the information they need to edit was originally provided via a sub-step of a form page, users need to navigate from the form page into the sub-step to make the change.
-
-When editing information within a sub-step, there will be no progress indicator. Instead, the user will be presented with a simple, single-page form. Users can navigate with the ’Review and Submit’ action at the bottom of the sub-page form or the back button at the top of the page.
-
-A user must save and continue on the sub page and sub-step before those changes are saved and updated on the Review and submit page.
-
-A destructive action modal dialogue should be used to avoid data loss if the user elects to navigate back to the Review and Submit page with any other method than ’Save and Continue’.
-
-### Editing a sub-step from ’Review and Submit’ sequence
-
-LIST HERE
