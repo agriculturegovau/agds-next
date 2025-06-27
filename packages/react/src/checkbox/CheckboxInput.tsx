@@ -11,6 +11,7 @@ export const CheckboxInput = forwardRef<HTMLInputElement, ControlInputProps>(
 					height,
 					margin: 0,
 					opacity: 0,
+					verticalAlign: 'middle',
 					width,
 					// When this component is focused, outline the `CheckboxIndicator`
 					'&:focus ~ span:first-of-type': packs.outline,
