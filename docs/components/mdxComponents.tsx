@@ -212,6 +212,13 @@ export const mdxComponents = (
 			</h3>
 		);
 	},
+	h4: ({ children }: HTMLAttributes<HTMLHeadingElement>) => {
+		return (
+			<h4 id={children ? slugify(children.toString()) : undefined}>
+				{children}
+			</h4>
+		);
+	},
 	H3,
 	H4,
 	PageAlert: (props: PageAlertProps) => (
