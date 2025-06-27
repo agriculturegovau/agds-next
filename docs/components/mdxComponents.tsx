@@ -321,7 +321,7 @@ export const mdxComponents = (
 	ResponsivePreview: ({
 		href,
 		label,
-		padding,
+		padding = false,
 		referrerLabel,
 		title,
 	}: {
