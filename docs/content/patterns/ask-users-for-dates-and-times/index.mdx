@@ -1,7 +1,8 @@
 ---
 title: Ask users for dates and times
 description: When we ask for date, time or a combination of both, there are a range of components that can be used to meet user needs in different situations.
-relatedComponents: ['date-picker-next', 'date-range-picker-next', 'time-input', 'time-picker']
+relatedComponents:
+  ['date-picker-next', 'date-range-picker-next', 'time-input', 'time-picker']
 ---
 
 ## Time input
@@ -74,11 +75,7 @@ When a specific known date is required, use a format tolerant [Text input](/comp
 Examples of a specific known date are birth date, when an application was made or an expiry date.
 
 ```jsx live
-<TextInput
-	hideOptionalLabel
-	hint="(e.g. 15/02/1982)"
-	label="Date of event"
-/>
+<TextInput hideOptionalLabel hint="(e.g. 15/02/1982)" label="Date of event" />
 ```
 
 The [Date picker](/components/date-picker-next) component can also be used when a specific known date is required.
