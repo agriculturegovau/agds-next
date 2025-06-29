@@ -71,7 +71,7 @@ export function ResponsivePreviewLink({
 		return (
 			<Box css={{ marginTop: mapSpacing(1.5) }}>
 				<TextLink href={href}>
-					<Text as="span" color="inherit" fontSize="lg" fontWeight="bold">
+					<Text as="span" color="inherit" fontSize="md" fontWeight="bold">
 						{children}
 					</Text>
 					<ChevronRightIcon css={{ verticalAlign: 'text-bottom' }} />
