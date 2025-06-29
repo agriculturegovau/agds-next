@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const foundations = await (
 		await getFoundationList()
-	).filter(({ slug }) => !['tokens'].includes(slug));
+	).filter(({ slug }) => !['accessibility', 'tokens'].includes(slug));
 
 	return {
 		fallback: false,
