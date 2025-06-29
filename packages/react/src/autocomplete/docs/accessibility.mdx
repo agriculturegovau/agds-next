@@ -1,17 +1,18 @@
-Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations.
+Learn more about how to meet WCAG success criteria when implementing autocomplete. This makes them accessible and inclusive for users of all abilities and situations.
 
-The date range picker component passed accessibility testing in 2022 and 2024.
+The autocomplete component passed accessibility testing in 2024.
 
 ## Clear labels and instructions
 
 ### Requirements
 
-- Labels and hint text are clear and succinct.
-- The purpose of the date range picker is understood and conveyed by assistive technology.
+- Labels clearly identify the purpose of the autocomplete.
+- The purpose of the autocomplete is understood and conveyed by assistive technologies.
+- Hint text is provided when its helpful – for example, let users know they can type to see results.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
+- Assistive technology users have equal access to labels and instructions.
 - Helps all users avoid submitting an incomplete or incorrect form.
 - Reduces the cognitive load for all users.
 - Makes filling in forms easier for people with cognitive and learning disabilities.
@@ -26,7 +27,7 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ### Requirements
 
-- Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates.
+- Input errors are detected and communicated to the user – for example, required data not entered.
 - Error messages are accessible to all users, including those with disabilities.
 - Error messages clearly identify the error.
 - Error messages provide sufficient information for users to locate and fix the problem.
@@ -70,7 +71,8 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 ### Requirements
 
 - All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
-- Clear labels identifying the date range picker.
+- Clear label identifying the autocomplete.
+- ARIA roles and states where needed – for example, `aria-invalid`, `aria-required`.
 
 ### Benefits
 
@@ -85,6 +87,8 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ## Related guidance
 
+- [AgDS accessibility guidance – Error management](/foundations/accessibility/error-management)
+- [AgDS accessibility guidance – Clear communication – Labels](/foundations/accessibility/clear-communication#labels)
 - [AgDS accessibility guidance](/foundations/accessibility)
 - [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)

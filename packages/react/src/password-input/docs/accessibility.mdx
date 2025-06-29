@@ -1,21 +1,24 @@
-Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations.
+Learn more about how to meet WCAG success criteria when implementing password inputs. This makes them accessible and inclusive for users of all abilities and situations.
 
-The date range picker component passed accessibility testing in 2022 and 2024.
+The password input component passed accessibility testing in 2024.
 
 ## Clear labels and instructions
 
 ### Requirements
 
 - Labels and hint text are clear and succinct.
-- The purpose of the date range picker is understood and conveyed by assistive technology.
+- The purpose of the password input is understood and conveyed by assistive technology.
+- Hint text is provided when it’s helpful – for example, when creating a new password, include any format or length requirements.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
-- Helps all users avoid submitting an incomplete or incorrect form.
+- Assistive technology users have equal access to labels and instructions.
+- Helps all users avoid submitting an incorrect password.
 - Reduces the cognitive load for all users.
-- Makes filling in forms easier for people with cognitive and learning disabilities.
+- Makes it easier for people with cognitive and learning disabilities.
 - Clear labelling supports users with English as a second language.
+- Clear guidance reduces anxiety about making mistakes.
+- Helps users understand password requirements.
 
 ### WCAG references
 
@@ -26,7 +29,7 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ### Requirements
 
-- Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates.
+- Input errors are detected and communicated to the user.
 - Error messages are accessible to all users, including those with disabilities.
 - Error messages clearly identify the error.
 - Error messages provide sufficient information for users to locate and fix the problem.
@@ -55,26 +58,26 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 ### Benefits
 
 - Clear guidance reduces anxiety about making mistakes.
-- Helps users understand requirements.
-- Saves time by preventing repeated incorrect input.
+- Helps users understand form requirements.
+- Saves time by preventing the entry of incorrect information.
 - Particularly valuable for users with cognitive or motor impairments.
 - Provides safeguards against critical errors with significant consequences.
 
 ### WCAG references
 
 - [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
-- [Understanding success criterion 3.3.4 Error prevention (legal, financial, data)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html)
 
 ## Name, role, value
 
 ### Requirements
 
-- All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
-- Clear labels identifying the date range picker.
+- All components have appropriate names, roles and values that are understood and conveyed by assistive technology.
+- Clear label identifying the password field.
+- ARIA roles and states where needed – for example, `aria-invalid`, `aria-required`.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
+- Assistive technology users have equal access to information on the state of the component.
 - Improves usability for voice control software users.
 - Helps users with cognitive challenges understand component functionality.
 - Makes automation and testing more reliable.

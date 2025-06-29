@@ -1,20 +1,44 @@
-Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations.
+Learn more about how to meet WCAG success criteria when implementing grouped fields. This makes them accessible and inclusive for users of all abilities and situations.
 
-The date range picker component passed accessibility testing in 2022 and 2024.
+This component passed accessibility testing in 2022 and 2024.
+
+## Clear legend
+
+### Requirements
+
+- Legends clearly identify the purpose of the grouped fields.
+- The purpose of the grouped fields is understood and conveyed by assistive technology.
+- Hint text is provided when it’s helpful.
+
+### Benefits
+
+- Assistive technology users have equal access to legends.
+- Helps all users avoid submitting an incomplete or incorrect form.
+- Reduces the cognitive load for all users.
+- Makes filling in forms easier for people with cognitive and learning disabilities.
+- Improves understanding of available options.
+- Clear headings support users with English as a second language.
+
+### WCAG references
+
+- [Understanding success criteria 2.4.2 Page titled](https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html)
+- [Understanding success criteria 2.4.6 Headings and labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
 
 ## Clear labels and instructions
 
 ### Requirements
 
 - Labels and hint text are clear and succinct.
-- The purpose of the date range picker is understood and conveyed by assistive technology.
+- The purpose of the grouped field is understood and conveyed by assistive technology.
+- Hint text is provided when it’s helpful.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
+- Assistive technology users have equal access to labels and instructions.
 - Helps all users avoid submitting an incomplete or incorrect form.
 - Reduces the cognitive load for all users.
 - Makes filling in forms easier for people with cognitive and learning disabilities.
+- Improves understanding of available options.
 - Clear labelling supports users with English as a second language.
 
 ### WCAG references
@@ -26,7 +50,7 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ### Requirements
 
-- Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates.
+- Input errors are detected and communicated to the user – for example, required data not entered.
 - Error messages are accessible to all users, including those with disabilities.
 - Error messages clearly identify the error.
 - Error messages provide sufficient information for users to locate and fix the problem.
@@ -70,11 +94,12 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 ### Requirements
 
 - All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
-- Clear labels identifying the date range picker.
+- Clear label identifying the grouped field.
+- ARIA roles and states where needed – for example, `aria-invalid`, `aria-required`.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
+- Assistive technology users have equal access to information on the purpose and state of the component.
 - Improves usability for voice control software users.
 - Helps users with cognitive challenges understand component functionality.
 - Makes automation and testing more reliable.

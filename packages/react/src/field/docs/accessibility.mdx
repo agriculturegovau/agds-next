@@ -1,20 +1,20 @@
-Learn more about how to meet WCAG success criteria when implementing date range pickers. This makes them accessible and inclusive for users of all abilities and situations.
-
-The date range picker component passed accessibility testing in 2022 and 2024.
+Learn more about how to meet WCAG success criteria when implementing fields. This makes them accessible and inclusive for users of all abilities and situations.
 
 ## Clear labels and instructions
 
 ### Requirements
 
 - Labels and hint text are clear and succinct.
-- The purpose of the date range picker is understood and conveyed by assistive technology.
+- The purpose of the field is understood and conveyed by assistive technology.
+- Hint text is provided when it’s helpful – for example, when requesting a specific format.
 
 ### Benefits
 
-- Assistive technology users have equal access to information about the purpose and state of the component.
+- Assistive technology users have equal access to labels and instructions.
 - Helps all users avoid submitting an incomplete or incorrect form.
 - Reduces the cognitive load for all users.
 - Makes filling in forms easier for people with cognitive and learning disabilities.
+- Improves understanding of available options.
 - Clear labelling supports users with English as a second language.
 
 ### WCAG references
@@ -26,7 +26,7 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ### Requirements
 
-- Input errors are detected and communicated to the user – for example, invalid date formats and out-of-range dates.
+- Input errors are detected and communicated to the user.
 - Error messages are accessible to all users, including those with disabilities.
 - Error messages clearly identify the error.
 - Error messages provide sufficient information for users to locate and fix the problem.
@@ -42,35 +42,36 @@ The date range picker component passed accessibility testing in 2022 and 2024.
 
 ### WCAG references
 
+- [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
 - [Understanding success criterion 3.3.1 Error identification](https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html)
 
 ## Error prevention
 
 ### Requirements
 
-- Hint text is provided when it’s helpful.
+- Hint text is provided when it’s helpful – for example, to show the format for an Australian Business Number (ABN).
 - Labels and hint text are clear and succinct.
 - Users can check, reverse or confirm their input on forms with legal commitments, financial transactions or data modifications.
 
 ### Benefits
 
 - Clear guidance reduces anxiety about making mistakes.
-- Helps users understand requirements.
-- Saves time by preventing repeated incorrect input.
+- Helps users understand form requirements.
+- Saves time by preventing the entry of incorrect information.
 - Particularly valuable for users with cognitive or motor impairments.
 - Provides safeguards against critical errors with significant consequences.
 
 ### WCAG references
 
 - [Understanding success criterion 3.3.2 Labels or instructions](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
-- [Understanding success criterion 3.3.4 Error prevention (legal, financial, data)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html)
 
 ## Name, role, value
 
 ### Requirements
 
 - All form components have appropriate names, roles and values that are understood and conveyed by assistive technology.
-- Clear labels identifying the date range picker.
+- Clear label identifying the text input.
+- ARIA roles and states where needed – for example, aria-invalid, aria-required.
 
 ### Benefits
 
