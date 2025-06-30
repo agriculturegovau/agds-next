@@ -13,104 +13,119 @@ If you’re new to React, we recommend going through the official [React getting
 
 ## If you’re starting a new project…
 
-We have built a [starter kit](https://github.com/agriculturegovau/agds-starter-kit) in [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Emotion](https://emotion.sh/) which you can clone and use as a starting point for your next project.
+For new projects, we recommend using [Next.js](https://nextjs.org/). A new application can be scaffolded with `npx create-next-app@latest`. Read their docs for more information.
 
-### 1. Clone latest code
+### Install dependencies
 
-These commands clone the latest starter kit code, without the version history or ties to the remote repository.
+The following dependencies will need to be installed:
 
-```sh
-git clone --depth=1 --branch=main git@github.com:agriculturegovau/agds-starter-kit.git my-app
-rm -rf ./my-app/.git
-```
+1. `@ag.ds-next/react`
+2. `@emotion/cache`
+3. `@emotion/react`
 
-### 2. Create new git repository
+### Add support for Emotion
 
-The code has been downloaded, but you probably want to set up your own version control. **Rename the project `name` in `package.json`** and then initialise git.
+Our component library uses the CSS-in-JS styling library, [Emotion](https://emotion.sh). While in-built support for Next.js’s App Router is still [in progress](https://github.com/emotion-js/emotion/issues/2928), you can add support now with a custom `RootStyleRegistry`.
 
-```sh
-git init
-```
-
-### 3. Install dependencies
-
-Now run the following commands to install packages and run the project.
-
-```sh
-yarn && yarn dev
-```
-
-## If you’re implementing components in an existing project…
-
-All of our AgDS components can be used in existing React applications. To get everything set up, we need to go through the following steps:
-
-### 1. Install dependencies
-
-Our component library uses the CSS-in-JS styling library Emotion which need to be installed as a dependency in your application. This can be done by running the following command in your terminal:
-
-```sh
-yarn add @emotion/react
-```
-
-You will also need to configure the Emotion Babel plugin for the minification and optimization of Emotion styles.
-
-```
-yarn add --dev @emotion/babel-plugin
-```
-
-Your `.babelrc` should contain:
-
-```
-{
-  "plugins": ["@emotion"]
-}
-```
-
-If you’re using TypeScript, your TSConfig `compilerOptions` should contain:
-
-```
-
-"jsx": "react-jsx",
-"jsxImportSource": "@emotion/react"
-
-```
-
-Fore more information about using Emotion with TypeScript, please refer to the [official documentation](https://emotion.sh/docs/typescript).
-
-### 2. Install AgDS
-
-Install the `@ag.ds-next/react` package by running the following command in your terminal:
-
-```sh
-yarn add @ag.ds-next/react
-```
-
-### 3. Wrap your application in our `Core` component
-
-The `Core` component needs to wrap your entire application and it is where you can configure the theme and routing/links. For an example of configuring routing/links in AgDS for a Next.js application, please see [the code for our example site](https://github.com/agriculturegovau/agds-next/tree/main/example-site/components/LinkComponent.tsx).
+Create the following component in `src/components/RootStyleRegistry/index.tsx`.
 
 ```tsx
-// This example assumes you are using NextJS
-// This is an example of `_app.tsx`
+'use client';
 
-import { Core } from '@ag.ds-next/react/core';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import { useServerInsertedHTML } from 'next/navigation';
+import { JSX, useState } from 'react';
+
+export const RootStyleRegistry = ({ children }: { children: JSX.Element }) => {
+	const [{ cache, flush }] = useState(() => {
+		const cache = createCache({ key: 'css' });
+		cache.compat = true;
+		const prevInsert = cache.insert;
+		let inserted: string[] = [];
+		cache.insert = (...args) => {
+			const serialized = args[1];
+			if (cache.inserted[serialized.name] === undefined) {
+				inserted.push(serialized.name);
+			}
+			return prevInsert(...args);
+		};
+		const flush = () => {
+			const prevInserted = inserted;
+			inserted = [];
+			return prevInserted;
+		};
+		return { cache, flush };
+	});
+
+	useServerInsertedHTML(() => {
+		const names = flush();
+		if (names.length === 0) return null;
+		let styles = '';
+		for (const name of names) {
+			styles += cache.inserted[name];
+		}
+		return (
+			<style
+				data-emotion={`${cache.key} ${names.join(' ')}`}
+				dangerouslySetInnerHTML={{
+					__html: styles,
+				}}
+			/>
+		);
+	});
+
+	return <CacheProvider value={cache}>{children}</CacheProvider>;
+};
+```
+
+### 3. Create an App component to wrap your application
+
+The `RootStyleRegistry` and `Core` components needs to wrap your entire application. `Core` is where you can configure the theme and routing/links. For an example of configuring routing/links in AgDS for a Next.js application, please see [the code for our example site](https://github.com/agriculturegovau/agds-next/tree/main/example-site/components/LinkComponent.tsx).
+
+```tsx
+/** @jsxImportSource @emotion/react */
+'use client';
+
+import { type ReactNode } from 'react';
 import { theme } from '@ag.ds-next/react/ag-branding';
-
+import { Core } from '@ag.ds-next/react/core';
 // Note: You will need to create this import
-import { LinkComponent } from './LinkComponent';
+import { LinkComponent } from '../LinkComponent';
+import { RootStyleRegistry } from '../RootStyleRegistry';
 
-export default function MyApp({ Component, pageProps }) {
+export const App = ({ children }: { children: ReactNode }) => {
 	return (
-		<Core theme={theme} linkComponent={LinkComponent}>
-			<Component {...pageProps} />
-		</Core>
+		<RootStyleRegistry>
+			<Core linkComponent={LinkComponent} theme={theme}>
+				{children}
+			</Core>
+		</RootStyleRegistry>
+	);
+};
+```
+
+Then import this into the root `layout.tsx`.
+
+```tsx
+export default function RootLayout({
+	children,
+}: Readonly<{
+	children: ReactNode;
+}>) {
+	return (
+		<html lang="en">
+			<body>
+				<App>{children}</App>
+			</body>
+		</html>
 	);
 }
 ```
 
 ## That’s it
 
-You can now start using our components!
+You can now start using AgDS!
 
 > We recommend using TypeScript to get the most out of these components. Our example site already uses TypeScript so you can use that as reference. [See code](https://github.com/agriculturegovau/agds-next/tree/main/example-site).
 
@@ -119,5 +134,3 @@ You can now start using our components!
 [Explore our example site](/example-site) to see our list of interface examples, as well as the [related code on GitHub](https://github.com/agriculturegovau/agds-next/tree/main/example-site).
 
 You should also explore our wide range of [components](/components), and install the ones you need in your application.
-
-If you get stuck, feel free to reach out to us in the Design System Teams Chat.
