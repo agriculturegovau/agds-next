@@ -1,20 +1,20 @@
 ---
 title: Review and submit
 description: Review and submit is an important step of a multi-page where users can review all information provided, make changes, understand privacy and security policies and submit the form. This pattern is used in multi-page forms.
-relatedComponents: ['progress-indicator', 'summary-list', 'task-list']
+relatedComponents: ['progress-indicator', 'summary-list', 'table', 'task-list']
 ---
 
 If there are any [declarations](/patterns/declarations), this is where they can be added.
 
 ## Summary of input
 
-The layout for the ‘Review and submit’ page should include read only information from all form pages of the form Multi-page form. Each form page should have it’s own section and heading to help users scan the page.
+The layout for the ‘Review and submit’ page should include read-only information from all form pages of the multi-page form. Each form page should have its own section and heading to help users scan the page.
 
-Information for each form page section should be presented to the user as a summary list. A Table can be used instead of a Summary list if a table was used on the form page. Summary lists are preferred because they provide less issues to screen reader users.
+Information for each form page section should be presented to the user as a [summary list](/components/summary-list). A [table](/components/table) can be used instead of a summary list if a table was used on the corresponding form page. Summary lists are preferred because they are easier for screen reader users to navigate.
 
-Users should have the ability to edit any information prior to ‘Review and submit’. This can be achieved with an action at the bottom of the summary list or table. In some cases an edit action on each row can also be used.
+Users should have the ability to edit any information prior to ‘Review and submit’. This can be achieved with an action beneath each summary list or table. In some cases, an edit action on each row can also be used.
 
-When multiple closely related inputs are included in the Summary list, combining similar fields together in the list can reduce the complexity of the page and make it easier to read. For example the individual fields of an address form page can be combined into one row of a summary list.
+Multiple, closely-related inputs can be combined in a summary list to reduce the complexity of the page and make it easier to read. For example, the individual fields of an address form page can be combined into one ‘Address’ row in a summary list.
 
 ```jsx live
 <Columns gap={{ xs: 1, md: 3 }}>
@@ -108,26 +108,26 @@ When multiple closely related inputs are included in the Summary list, combining
 
 ### Multi-page form
 
-In a multi-page form, the journey should begin with a ‘Getting started’ page that explains the purpose of the form, what the user will need, and what to expect. This is followed by the main form pages where the user provides their information.
+In a multi-page form, the journey should begin with a ‘Getting started’ page that explains the purpose of the form, what the user will need, and what to expect when completing the form. This is then followed by the individual form pages where the user must provide the appropriate information.
 
-Before submitting, the user should be shown a ‘Review and submit’ page to check all the details they’ve entered. Once the form is submitted, a ‘Success’ page should confirm the submission and explain what happens next.
+Before submitting the entire form, users should be shown a ‘Review and submit’ page to allow them to check all the details they’ve entered. Once the form is submitted, a ‘Success’ page should confirm the submission and explain what happens next.
 
-The yourGov example app demonstrates the multi-page form pattern.
+The [yourGov](/yourgov) example app demonstrates the multi-page form pattern.
 
 <ResponsivePreview
 	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/owner-details"
-	label="Preview Multi-page form"
+	label="Preview multi-page form"
 	referrerLabel={title}
-	title="yourGov: multi-page form preview"
+	title="yourGov: Multi-page form preview"
 />
 
 ### Multi-task form
 
-In a Multi-task form process, each Multi-page form should have it’s own ‘Review and Submit’ step. This allows different forms to be combined in a modular and scalable way to create a Muti-task process.
+In a multi-task form process, each multi-page form should have its own ‘Review and submit’ step. This allows different forms to be combined in a modular and scalable way to create a muti-task process.
 
-When multiple different forms are required, a Task list can be used to guide a user through a Multi-task process. A multi-task process is usually made up of multiple multi-page forms. Each Multi-page form included in a Task-list should have it’s own review and submit step. This is important because Multi-page forms can be used in a modular way across different Multi-task services.
+When multiple different forms are required, a [task list](/components/task-list) can be used to guide a user through a multi-task process. A multi-task process is usually made up of multiple multi-page forms. Each multi-page form included in a task list should have its own ‘Review and submit’ step. This is important because multi-page forms can be used in a modular way across different multi-task services.
 
-In all situations ‘Review and submit’ tasks should enable the user to review all information they have provided before submitting a form.
+In all situations ‘Review and submit’ tasks should enable the user to review all of the  information they have provided before submitting the form.
 
 ```jsx live
 <Stack gap={3}>
@@ -177,11 +177,11 @@ In all situations ‘Review and submit’ tasks should enable the user to review
 
 ## Editing from ‘Review and submit’
 
-To edit information on the ‘Review and Submit’ page, users can click the ‘Change’ link available under each summary list on the ‘Review and submit’ page.
+To edit information on the ‘Review and submit’ page, users can click the ‘Change…’ link available under each summary list and table.
 
-The ‘Edit’ page will appear as a sub-step of the ‘Review and submit’ Progress indicator item.
+The ‘Edit’ page will appear as a sub-step of the ‘Review and submit’ item in the [progress indicator](/components/progress-indicator).
 
-Once the changes are saved, the user will be returned to the ‘Review and submit’ page, where a success message will be displayed above the updated information in the summary list.
+Once the changes are saved, the user will be returned to the ‘Review and submit’ page, where a success message is displayed above the updated information in the summary list or table.
 
 ### Review and submit sub-step
 
@@ -247,7 +247,7 @@ Once the changes are saved, the user will be returned to the ‘Review and submi
 
 ### Editing a sub-page from ‘Review and submit’
 
-To edit information on the ‘Review and submit’ page, users can click the ‘Change’ link available under each summary list on the ‘Review and submit’ page.
+To edit information on the ‘Review and submit’ page, users can click the ‘Change…’ link available under each summary list and table.
 
 When editing, the form page will be added as a sub-step of ‘Review and submit’. When a user needs to edit a sub-step of the original form page, they must navigate to that level 2 page to make the change.
 
@@ -263,7 +263,7 @@ For an interactive example you can complete the ‘Apply for a mobile food vendo
 	href="/yourgov/app/permits/apply-for-new-permit/mobile-food-vendor-permit/steps/owner-details"
 	label="Review and submit interactive example"
 	referrerLabel={title}
-	title="yourGov: review and submit interactive preview"
+	title="yourGov: Review and submit interactive preview"
 />
 
 ### Review and submit sub-step level 2 page
