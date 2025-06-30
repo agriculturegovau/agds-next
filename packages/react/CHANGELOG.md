@@ -1,5 +1,101 @@
 # @ag.ds-next/react
 
+## 1.30.0
+
+### Minor Changes
+
+- 5cd422a9fe2: app-layout: `AppLayoutSidebar` - Simplify announcements of parent links.
+
+  side-nav: Simplify announcements of parent links.
+
+- b5635a629fd: conditional-field-container: Update style to use a left border instead of a horizontal divider.
+
+  field: `<FieldContainer>`: Update style to support invalid fields within `<ConditionalFieldContainer>`.
+
+  grouped-fields: Update style to support invalid fields within `<ConditionalFieldContainer>`.
+
+- dd3c366a455: checkbox: Add `onFocus` as valid TypeScript prop.
+
+  docs: Add 'Responsive preview' page designed to view components and examples with selectable document widths. Add responsive preview link to documentation code snippets. Modify code snippet components with padding option.
+
+  header: Remove padding from preview examples.
+
+  radio: Add `onFocus` as valid TypeScript prop.
+
+- 736ad093ff5: accordion: Update accessibility documentation.
+
+  autocomplete: Add accessibiity documentation.
+
+  button: Update accessibility documentation.
+
+  callout: Update accessibility documentation.
+
+  checkbox: Add accessibiity documentation.
+
+  combobox: Add accessibiity documentation.
+
+  control-group: Add accessibiity documentation.
+
+  date-picker-next: Update accessibility documentation.
+
+  date-range-picker-next: Update accessibility documentation.
+
+  drawer: Add accessibiity documentation.
+
+  feature-link-list: Add accessibiity documentation.
+
+  field: Add accessibiity documentation.
+
+  fieldset: Update accessibility documentation.
+
+  file-upload: Update accessibility documentation.
+
+  form-stack: Add accessibiity documentation.
+
+  grouped-fields: Add accessibiity documentation.
+
+  password-input: Add accessibiity documentation.
+
+  progress-indicator: Add accessibiity documentation.
+
+  radio: Add accessibiity documentation.
+
+  search-box: Add accessibiity documentation.
+
+  select: Add accessibiity documentation.
+
+  table: Update accessibility documentation.
+
+  task-list: Add accessibiity documentation.
+
+  text-input: Add accessibiity documentation.
+
+  textarea: Add accessibiity documentation.
+
+  time-input: Add accessibiity documentation.
+
+  time-picker: Add accessibiity documentation.
+
+- 687d9dba075: accordion: Add `indent` prop to apply horizontal padding to `AccordionTitle` and `AccordionBody`.
+
+### Patch Changes
+
+- a898848e32e: drawer: Make the content area keyboard-accessible.
+
+  drawer: Prevent title from overlapping Close button.
+
+- 2a6cb20bca0: filter-sidebar: Update `CollapsingSideBar` chevron to `action` colour.
+
+  process-indicator: Update `CollapsingSideBar` chevron to `action` colour.
+
+  side-nav: Update `CollapsingSideBar` chevron to `action` colour.
+
+- 5cbdd2f97c1: filter-sidebar: Enhanced documentation and guidance around mobile usage.
+- d297f81fe25: search-box: Fix clear button position on `SearchBoxInput` when `labelVisible` prop is provided.
+- 48661f6da5b: checkbox: Remove space beneath when in the normal document flow.
+
+  radio: Remove space beneath when in the normal document flow.
+
 ## 1.29.0
 
 ### Minor Changes
