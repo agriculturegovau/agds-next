@@ -14,13 +14,13 @@ These instructions capture the internal process for making a release of the `@ag
    - The new package release version from above.
    - A link to the Version Packages PR.
 
-5. Add a minor docs changeset of ‘docs: AgDS Beta v[version-number] release notes.‘
+5. Add a minor docs changeset of ‘docs: AgDS v[version-number] release notes.‘
 6. Commit these changes with a description ‘Release notes v[version number]’, create a PR and merge it to `develop` when approved.
 
 ## npm release
 
 1. Merge the PR named `Version Packages` into `develop` on GitHub once all checks pass.
-2. Create and merge a new PR titled ‘Release v[version-number]’ which merges `develop` into `main`.
+2. Create and merge a new PR titled ‘Release v[version-number]’ which merges (not squashes) `develop` into `main`.
 3. After `main` finishes building and deploying, on the command line, run `git pull` on the `main` branch to fetch latest changes.
 4. Run `yarn fresh` to rebuild `node_modules` and clean-up any build output.
 5. Run `yarn publish-changed` to find packages where the version listed in the `package.json` is ahead of the version published on npm, and publish just those packages.
@@ -32,6 +32,6 @@ These instructions capture the internal process for making a release of the `@ag
 ## Github release notes
 
 1. Create a draft release on GitHub based on the new release’s tag (such as @ag.ds-next/react@[version-number]).
-2. Title the release with the version number, for example, ‘AgDS Beta v[version-number] release’.
+2. Title the release with the version number, for example, ‘AgDS v[version-number] release’.
 3. Copy the latest docs release notes content without the frontmatter and with all urls updated to include the protocol and domain.
 4. Publish the release.
